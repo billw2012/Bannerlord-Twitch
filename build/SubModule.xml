@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Module>
+	<Name value = "Bannerlord-Twitch"/>
+	<Id value = "BannerlordTwitch"/>
+	<Version value = "v0.1.0"/>
+	<DefaultModule value="true"/>
+	<SingleplayerModule value="true"/>
+	<Official value="false" />
+	<DependedModules>
+		<DependedModule Id="Native"/>
+		<DependedModule Id="Sandbox"/>
+		<DependedModule Id="SandBoxCore"/>
+	</DependedModules>
+	<SubModules>
+		<SubModule>
+			<Name value = "BannerlordTwitch"/>
+			<DLLName value = "BannerlordTwitch.dll"/>
+			<SubModuleClassType value = "BannerlordTwitch.SubModule"/>
+			<Tags>
+			</Tags>
+		</SubModule>
+	</SubModules>
+	<Xmls>
+	</Xmls>
+</Module>
