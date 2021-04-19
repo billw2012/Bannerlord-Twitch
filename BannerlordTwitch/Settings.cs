@@ -64,7 +64,7 @@ namespace BannerlordTwitch
         public SimTestingConfig SimTesting;
 
         private static string SaveFilePath => Path.Combine(Common.PlatformFileHelper.DocumentsPath,
-            "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch.json");
+            "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch.jsonc");
         
         public static Settings Load()
         {

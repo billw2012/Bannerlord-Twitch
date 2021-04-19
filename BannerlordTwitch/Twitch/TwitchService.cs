@@ -171,7 +171,7 @@ namespace BannerlordTwitch
             private void Client_OnJoinedChannel(object sender, OnJoinedChannelArgs e)
             {
                 Log.Screen($"BLT bot has joined {e.Channel}");
-                SendChat("BLT bot reporting for duty!");
+                SendChat("BLT bot reporting for duty!", "Type !help for command list");
             }
             
             private void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)

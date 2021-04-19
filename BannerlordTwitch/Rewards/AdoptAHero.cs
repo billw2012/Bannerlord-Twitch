@@ -328,6 +328,8 @@ namespace BannerlordTwitch.Rewards
         public struct Settings
         {
             public bool AllowFieldBattle;
+            public bool AllowVillageBattle;
+            public bool AllowSiegeBattle;
             public bool AllowFriendlyMission;
             public bool AllowArena;
             public bool AllowHideOut;
@@ -361,6 +363,8 @@ namespace BannerlordTwitch.Rewards
                 RewardManager.NotifyCancelled(redemptionId, $"You are a player companion, you cannot be summoned in this manner!");
                 return;
             }
+            
+            // SpawnAgent crashes in MissionMode.Deployment, would be nice to make it work though
             if (Mission.Current == null 
                 || Mission.Current.Mode is MissionMode.Barter or MissionMode.Conversation or MissionMode.Deployment or
                     MissionMode.Duel or MissionMode.Replay or MissionMode.CutScene)
@@ -369,8 +373,11 @@ namespace BannerlordTwitch.Rewards
                 return;
             }
             
-            if(InArenaMission() && !settings.AllowArena
+            if(
+                  InArenaMission() && !settings.AllowArena
                || InFieldBattleMission() && !settings.AllowFieldBattle
+               || InVillageEncounter() && !settings.AllowVillageBattle
+               || InSiegeMission() && !settings.AllowSiegeBattle
                || Mission.Current.IsFriendlyMission && !settings.AllowFriendlyMission
                || InHideOutMission() && !settings.AllowHideOut
                || InTrainingFieldMission()
@@ -380,6 +387,7 @@ namespace BannerlordTwitch.Rewards
                 RewardManager.NotifyCancelled(redemptionId, $"You cannot be summoned now, this mission does not allow it!");
                 return;
             }
+
             if (!Mission.Current.IsLoadingFinished)
             {
                 RewardManager.NotifyCancelled(redemptionId, $"You cannot be summoned now, the mission has not started yet!");
@@ -447,6 +455,9 @@ namespace BannerlordTwitch.Rewards
 
         private static bool InHideOutMission() => Mission.Current?.Mode == MissionMode.Stealth;
         private static bool InFieldBattleMission() => Mission.Current?.IsFieldBattle ?? false;
+
+        private static bool InSiegeMission() => !(Mission.Current?.IsFieldBattle ?? false)
+                                                && Mission.Current?.GetMissionBehaviour<CampaignSiegeStateHandler>() != null;
         private static bool InArenaMission() => CampaignMission.Current?.Location?.StringId == "arena" 
                                                       && Mission.Current?.Mode == MissionMode.Battle;
         private static bool InArenaVisitingArea() => CampaignMission.Current?.Location?.StringId == "arena" 
