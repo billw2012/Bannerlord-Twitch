@@ -62,7 +62,7 @@ namespace BannerlordTwitch.Util
             MainThreadSync.Run(() =>
             {
                 LogFilePrint(str);
-                InformationManager.DisplayMessage(new InformationMessage("!! BLT-CRITICAL !!: " + str, new Color(1, 1, 1),
+                InformationManager.DisplayMessage(new InformationMessage("!! BLT-CRITICAL !!: " + str, new Color(1, 0, 0),
                     "event:/ui/notification/quest_fail"));
             });
         }

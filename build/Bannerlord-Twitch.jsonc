@@ -49,6 +49,40 @@
           "AllowNewAdoptionOnDeath": true // Allows the viewer to adopt again if their previous hero dies
         }
       }
+      // SummonHero -------------------------------------------------------------------
+      , {
+        // This allows spawning into all battles, on the players side
+        "RewardSpec": {
+          "title": "Summon Hero to Battle",
+          "cost": 2000,
+          "is_enabled": true,
+          "max_per_user_per_stream": 10
+        },
+        "ActionId": "SummonHero",
+        "ActionConfig": {
+          // These flags allow you to limit where the spawning is allowed
+          "AllowFieldBattle": true,
+          "AllowSiegeBattle": true,
+          "AllowVillageBattle": true,
+          "AllowArena": true,
+          "AllowHideOut": true,
+          "AllowFriendlyMission": false,
+          "OnPlayerSide": true // only player side is tested so far
+        }
+      }, {
+        // This allows spawning into civilian walkabouts (town etc) as a bodyguard
+        "RewardSpec": {
+          "title": "Summon Hero as Bodyguard",
+          "cost": 1000,
+          "is_enabled": true,
+          "max_per_user_per_stream": 20
+        },
+        "ActionId": "SummonHero",
+        "ActionConfig": {
+          "AllowFriendlyMission": true,
+          "OnPlayerSide": true // only player side is tested so far
+        }
+      }
       // SkillXP -------------------------------------------------------------------
       // These rewards add XP to the specified skills
       , {
@@ -222,41 +256,7 @@
           "AmountHigh": 1
         }
       }
-      // SummonHero -------------------------------------------------------------------
-      , {
-        // This allows spawning into all battles, on the players side
-        "RewardSpec": {
-          "title": "Summon Hero to Battle",
-          "cost": 2000,
-          "is_enabled": true,
-          "max_per_user_per_stream": 10
-        },
-        "ActionId": "SummonHero",
-        "ActionConfig": {
-          // These flags allow you to limit where the spawning is allowed
-          "AllowFieldBattle": true,
-          "AllowSiegeBattle": true,
-          "AllowVillageBattle": true,
-          "AllowArena": true,
-          "AllowHideOut": true,
-          "AllowFriendlyMission": false,
-          "OnPlayerSide": true // only player side is tested so far
-        }
-      }, {
-        // This allows spawning into civilian walkabouts (town etc) as a bodyguard
-        "RewardSpec": {
-          "title": "Summon Hero as Bodyguard",
-          "cost": 1000,
-          "is_enabled": true,
-          "max_per_user_per_stream": 20
-        },
-        "ActionId": "SummonHero",
-        "ActionConfig": {
-          "AllowFriendlyMission": true,
-          "OnPlayerSide": true // only player side is tested so far
-        }
-      }
-      // SummonHero -------------------------------------------------------------------
+      // EquipHero -------------------------------------------------------------------
       , {
         "RewardSpec": {
           "title": "Equip Tier 1",
@@ -408,7 +408,7 @@
       "IntervalMaxMS": 2500,
       // These will be performed first, in sequence when a new user is created, before they do anything else.
       "Init": [
-        { "Type": "Reward", "Id": "Adopt" }
+        { "Type": "Reward", "Id": "Adopt a Hero" }
       ],
       // These will be randomly done by a random user at random intervals
       "Use": [

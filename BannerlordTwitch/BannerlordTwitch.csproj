@@ -222,6 +222,7 @@
     <Compile Include="BLTModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Testing\SimulationTest.cs" />
+    <Compile Include="Twitch\TwitchService.Bot.cs" />
     <Compile Include="Twitch\TwitchService.cs" />
     <Compile Include="Util\Assembly.cs" />
     <Compile Include="Util\ConsoleCommands.cs" />
@@ -232,6 +233,9 @@
     <Compile Include="Util\Publicize.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\build\Bannerlord-Twitch.jsonc">
+      <Link>Bannerlord-Twitch.jsonc</Link>
+    </Content>
     <Content Include="..\build\SubModule.xml">
       <Link>SubModule.xml</Link>
     </Content>

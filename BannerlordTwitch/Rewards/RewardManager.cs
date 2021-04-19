@@ -37,10 +37,10 @@ namespace BannerlordTwitch.Rewards
             var id = action.GetType().Name;
             if (actions.ContainsKey(id))
             {
-                Log.ScreenFail($"Reward Action {id} already registered, please choose another name");
+                Log.Error($"Reward Action {id} already registered, please choose another name");
                 return false;
             }
-            Log.Screen($"Registered Reward Action {id}");
+            Log.Trace($"Registered Reward Action {id}");
             actions.Add(id, action);
             return true;
         }
@@ -50,10 +50,10 @@ namespace BannerlordTwitch.Rewards
             var id = command.GetType().Name;
             if (commands.ContainsKey(id))
             {
-                Log.ScreenFail($"Bot Command {id} already registered, please choose another name");
+                Log.Error($"Bot Command {id} already registered, please choose another name");
                 return false;
             }
-            Log.Screen($"Registered Bot Command {id}");
+            Log.Trace($"Registered Bot Command {id}");
             commands.Add(id, command);
             return true;
         }

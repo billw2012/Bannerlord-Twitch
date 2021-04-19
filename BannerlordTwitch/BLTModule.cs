@@ -30,7 +30,7 @@ namespace BannerlordTwitch
 				{
 					harmony = new Harmony("mod.bannerlord.bannerlordtwitch");
 					harmony.PatchAll();
-					Log.Screen("Loaded");
+					Log.Screen($"Loaded v{Ver}");
 					
 					TwitchService = new TwitchService();
 					Log.Screen("API initialized");

@@ -162,34 +162,37 @@ namespace BannerlordTwitch.Rewards
             {
                 if (settings.ShowGeneral)
                 {
-                    infoStrings.Add($"{usersHero.HitPoints} / {usersHero.CharacterObject.MaxHitPoints()} hp");
+                    infoStrings.Add($"{usersHero.HitPoints} / {usersHero.CharacterObject.MaxHitPoints()} HP");
                     infoStrings.Add($"{usersHero.Gold} gold");
-                    infoStrings.Add(StringHelpers.GetLastKnownLocation(usersHero).ToString());
+                    if (usersHero.LastSeenPlace != null)
+                    {
+                        infoStrings.Add($"Last seen near {usersHero.LastSeenPlace.Name}");
+                    }
                 }
                 if (settings.ShowTopSkills)
                 {
                     infoStrings.Add($"Level {usersHero.Level}");
-                    infoStrings.Add("Skills: " + string.Join(" | ", 
+                    infoStrings.Add("SKILLS: " + string.Join(" | ", 
                         SkillObject.All
                         .Where(s => usersHero.GetSkillValue(s) >= settings.MinSkillToShow)
                         .OrderByDescending(s => usersHero.GetSkillValue(s))
-                        .Select(skill => $"{skill.Name}: {usersHero.GetSkillValue(skill)} " +
+                        .Select(skill => $"{skill.Name} {usersHero.GetSkillValue(skill)} " +
                                          $"({usersHero.HeroDeveloper.GetFocus(skill)} focus)")
                         ));
                 }
                 if (settings.ShowAttributes)
                 {
-                    infoStrings.Add("Attr: " + string.Join(" | ", AdoptAHero.CharAttributes
+                    infoStrings.Add("ATTR: " + string.Join(", ", AdoptAHero.CharAttributes
                             .Select(a => $"{a.shortName} {usersHero.GetAttributeValue(a.val)}")));
                 }
                 if (settings.ShowEquipment)
                 {
-                    infoStrings.Add("Battle: " + string.Join(" | ", usersHero.BattleEquipment
+                    infoStrings.Add("BATTLE: " + string.Join(", ", usersHero.BattleEquipment
                         .YieldEquipmentSlots()
                         .Where(e => !e.element.IsEmpty)
                         .Select(e => $"{e.element.Item.Name}")
                     ));
-                    infoStrings.Add("Civilian: " + string.Join(" | ", usersHero.CivilianEquipment
+                    infoStrings.Add("CIVILIAN: " + string.Join(", ", usersHero.CivilianEquipment
                         .YieldEquipmentSlots()
                         .Where(e => !e.element.IsEmpty)
                         .Select(e => $"{e.element.Item.Name}")
