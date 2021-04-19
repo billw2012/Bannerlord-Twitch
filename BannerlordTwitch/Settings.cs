@@ -23,7 +23,7 @@ namespace BannerlordTwitch
         public string Cmd;
         public string Help;
         public string Handler;
-        public JObject Config;
+        public JObject HandlerConfig;
     }
     
     internal class GlobalConfig
@@ -101,7 +101,7 @@ namespace BannerlordTwitch
                             Cmd = "chat command name goes here, no spaces",
                             Help = "short description of the command, no longer than this",
                             Handler = "registered handler name, from whatever extensions you have installed",
-                            Config = JObject.FromObject( 
+                            HandlerConfig = JObject.FromObject( 
                                 new {
                                     a_string = "hello",
                                     a_number = 42.0f,

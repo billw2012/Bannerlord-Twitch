@@ -64,7 +64,15 @@ namespace BannerlordTwitch.Rewards
         {
             if (commands.TryGetValue(id, out var cmdHandler))
             {
-                cmdHandler.Execute(args, userName, replyId, config);
+                try
+                {
+                    cmdHandler.Execute(args, userName, replyId, config);
+                }
+                catch (Exception e)
+                {
+                    Log.ScreenCritical($"Command {id} failed with exception {e.Message}, game might be unstable now!");
+                    Log.Error(e.ToString());
+                }
             }
             else
             {
@@ -89,8 +97,9 @@ namespace BannerlordTwitch.Rewards
             }
             catch (Exception e)
             {
-                Log.ScreenCritical($"Error trying to enqueue redemption {redemptionId}, game might be unstable now: {e.Message}");
-                NotifyCancelled(redemptionId, $"Error occurred while trying to enqueue redemption");
+                Log.ScreenCritical($"Action {actionId} failed with exception {e.Message}, game might be unstable now!");
+                Log.Error(e.ToString());
+                NotifyCancelled(redemptionId, $"Error occurred while trying to process the redemption");
             }
 
             if (st.ElapsedMilliseconds > 5)

@@ -98,8 +98,11 @@ namespace BannerlordTwitch.Rewards
         {
             var tagObject = new TextObject(AdoptAHero.Tag);
             var nameObject = new TextObject(name);
-            return Campaign.Current?.AliveHeroes?
-                .FirstOrDefault(h => (h.Name?.Contains(tagObject) ?? false) && (h.FirstName?.Contains(nameObject) ?? false));
+            return Campaign.Current?
+                .AliveHeroes?
+                .FirstOrDefault(h => (h.Name?.Contains(tagObject) ?? false) 
+                                     && (h.FirstName?.Contains(nameObject) ?? false) 
+                                     && h.FirstName?.ToString() == name);
         }
 
         public void Enqueue(Guid redemptionId, string _, string userName, JObject config)
@@ -151,7 +154,7 @@ namespace BannerlordTwitch.Rewards
         
         public void Execute(string args, string userName, string replyId, JObject config)
         {
-            var settings = config.ToObject<Settings>();
+            var settings = config?.ToObject<Settings>() ?? new Settings();
             var usersHero = AdoptAHero.GetAdoptedHero(userName);
             var infoStrings = new List<string>{};
             if (usersHero == null)
@@ -174,10 +177,10 @@ namespace BannerlordTwitch.Rewards
                     infoStrings.Add($"Level {usersHero.Level}");
                     infoStrings.Add("SKILLS: " + string.Join(" | ", 
                         SkillObject.All
-                        .Where(s => usersHero.GetSkillValue(s) >= settings.MinSkillToShow)
-                        .OrderByDescending(s => usersHero.GetSkillValue(s))
-                        .Select(skill => $"{skill.Name} {usersHero.GetSkillValue(skill)} " +
-                                         $"({usersHero.HeroDeveloper.GetFocus(skill)} focus)")
+                            .Where(s => usersHero.GetSkillValue(s) >= settings.MinSkillToShow)
+                            .OrderByDescending(s => usersHero.GetSkillValue(s))
+                            .Select(skill => $"{skill.Name} {usersHero.GetSkillValue(skill)} " +
+                                             $"({usersHero.HeroDeveloper.GetFocus(skill)} focus)")
                         ));
                 }
                 if (settings.ShowAttributes)

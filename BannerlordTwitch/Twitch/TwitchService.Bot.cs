@@ -148,8 +148,8 @@ namespace BannerlordTwitch
 
             private void Client_OnJoinedChannel(object sender, OnJoinedChannelArgs e)
             {
-                Log.Screen($"BLT bot has joined {e.Channel}");
-                SendChat("BLT bot reporting for duty!", "Type !help for command list");
+                Log.Screen($"bot has joined {e.Channel}");
+                SendChat("bot reporting for duty!", "Type !help for command list");
             }
             
             private void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)
@@ -173,7 +173,7 @@ namespace BannerlordTwitch
                     var cmd = settings.Commands.FirstOrDefault(c => c.Cmd == parts[0]);
                     if (cmd != null)
                     {
-                        RewardManager.Command(cmd.Handler, msg.Substring(parts[0].Length).Trim(), userName, replyId, cmd.Config);
+                        RewardManager.Command(cmd.Handler, msg.Substring(parts[0].Length).Trim(), userName, replyId, cmd.HandlerConfig);
                     }
                 }
             }
