@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Threading;
 
 namespace BannerlordTwitch.Util
 {
-    internal static class MainThreadSync
+    public static class MainThreadSync
     {
         private static readonly ConcurrentQueue<Action> actions = new();
+        private static int MainThreadId;
+
+        internal static void InitMainThread()
+        {
+            MainThreadId = Thread.CurrentThread.ManagedThreadId;
+        }
         
-        public static void Run()
+        internal static void RunQueued()
         {
             var st = new Stopwatch();
             st.Start();
@@ -18,9 +25,16 @@ namespace BannerlordTwitch.Util
             }
         }
 
-        public static void Enqueue(Action action)
+        public static void Run(Action action)
         {
-            actions.Enqueue(action);
+            if (Thread.CurrentThread.ManagedThreadId == MainThreadId)
+            {
+                action();
+            }
+            else
+            {
+                actions.Enqueue(action);
+            }
         }
     }
 }

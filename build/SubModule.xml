@@ -15,7 +15,7 @@
 		<SubModule>
 			<Name value = "BannerlordTwitch"/>
 			<DLLName value = "BannerlordTwitch.dll"/>
-			<SubModuleClassType value = "BannerlordTwitch.SubModule"/>
+			<SubModuleClassType value = "BannerlordTwitch.BLTModule"/>
 			<Tags>
 			</Tags>
 		</SubModule>

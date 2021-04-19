@@ -1,75 +1,79 @@
 using HarmonyLib;
 using System;
-using System.Windows.Forms;
+using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
-using TaleWorlds.CampaignSystem;
-using TaleWorlds.Core;
-using TaleWorlds.Library;
-using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 
 #pragma warning disable IDE0051 // Remove unused private members
 namespace BannerlordTwitch
 {
-	public class SubModule : MBSubModuleBase
+	// ReSharper disable once ClassNeverInstantiated.Global
+	internal class BLTModule : MBSubModuleBase
 	{
+		public const string Name = "BannerlordTwitch";
+		public const string Ver = "0.1.0";
+		
 		private static Harmony harmony = null;
-		private Settings settings;
 
-		public SubModule()
+		public BLTModule()
 		{
+			MainThreadSync.InitMainThread();
 			AssemblyHelper.Redirect("Newtonsoft.Json", Version.Parse("13.0.0.0"), "30ad4fe6b2a6aeed");
 			AssemblyHelper.Redirect("Microsoft.Extensions.Logging.Abstractions", Version.Parse("3.1.5.0"), "adb9793829ddae60");
-			
-			settings = Settings.Load();
 		}
 		
-		// protected override void OnBeforeInitialModuleScreenSetAsRoot()
-		// {
-		// 	if (harmony == null)
-		// 	{
-		// 		try
-		// 		{
-		// 			harmony = new Harmony("mod.bannerlord.bannerlordtwitch");
-		// 			harmony.PatchAll();
-		// 		}
-		// 		catch (Exception ex)
-		// 		{
-		// 			MessageBox.Show($"Error Initialising Bannerlord Twitch:\n\n{ex}");
-		// 		}
-		// 	}
-		// }
+		public override void OnBeforeInitialModuleScreenSetAsRoot()
+		{
+			if (harmony == null)
+			{
+				try
+				{
+					harmony = new Harmony("mod.bannerlord.bannerlordtwitch");
+					harmony.PatchAll();
+					Log.Screen("Loaded");
+					
+					TwitchService = new TwitchService();
+					Log.Screen("API initialized");
 
-		protected override void OnApplicationTick(float dt)
+					RewardManager.Init();
+					Log.Screen("Reward Manager initialized");
+				}
+				catch (Exception ex)
+				{
+					Log.ScreenCritical($"Error Initialising Bannerlord Twitch: {ex.Message}");
+				}
+			}
+		}
+
+		public override void OnApplicationTick(float dt)
 		{
 			base.OnApplicationTick(dt);
-			MainThreadSync.Run();
+			MainThreadSync.RunQueued();
 		}
 
-		private static TwitchService subListener;
+		public static TwitchService TwitchService;
 		
-		protected override void OnSubModuleLoad()
-		{
-		 	base.OnSubModuleLoad();
-		    
-		    try
-		    {
-			    harmony = new Harmony("mod.bannerlord.bannerlordtwitch");
-			    harmony.PatchAll();
-		    }
-		    catch (Exception ex)
-		    {
-			    MessageBox.Show($"Error Initialising Bannerlord Twitch:\n\n{ex}");
-		    }
-		    
-			// Module.CurrentModule.AddInitialStateOption(new InitialStateOption("Message",
-			// 	new TextObject("Message", null),
-			// 	9990,
-			// 	() => { InformationManager.DisplayMessage(new InformationMessage("Hello World!")); },
-			// 	() => false));
-		
-			subListener = new TwitchService(settings.AccessToken);
-		}
+		// protected override void OnSubModuleLoad()
+		// {
+		//  	base.OnSubModuleLoad();
+		//     
+		//     // try
+		//     // {
+		// 	   //  harmony = new Harmony("mod.bannerlord.bannerlordtwitch");
+		// 	   //  harmony.PatchAll();
+		//     // }
+		//     // catch (Exception ex)
+		//     // {
+		// 	   //  MessageBox.Show($"Error Initialising Bannerlord Twitch:\n\n{ex}");
+		//     // }
+		//     
+		// 	// Module.CurrentModule.AddInitialStateOption(new InitialStateOption("Message",
+		// 	// 	new TextObject("Message", null),
+		// 	// 	9990,
+		// 	// 	() => { InformationManager.DisplayMessage(new InformationMessage("Hello World!")); },
+		// 	// 	() => false));
+		//
+		// }
 
 		// public override void OnGameLoaded(Game game, object initializerObject)
 		// {

@@ -22,7 +22,7 @@ namespace BannerlordTwitch.Util
                 requestedAssembly.SetPublicKeyToken(new AssemblyName("x, PublicKeyToken=" + publicKeyToken).GetPublicKeyToken());
                 requestedAssembly.CultureInfo = CultureInfo.InvariantCulture;
 
-                AppDomain.CurrentDomain.AssemblyResolve -= handler;
+                // AppDomain.CurrentDomain.AssemblyResolve -= handler;
 
                 return Assembly.Load(requestedAssembly);
             };
