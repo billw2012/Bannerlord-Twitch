@@ -21,13 +21,15 @@ Viewers can "adopt" and in-game hero of types that can be specified in the confi
 1. Install [Bannerlord Harmony](https://www.nexusmods.com/mountandblade2bannerlord/mods/2006?tab=files)
 2. Unzip to the Bannerlords Modules directory (by default at `C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules`).
    It should create the `BannerlordTwitch` directory, and the `BannerlordTwitch.dll` should be at `Modules\BannerlordTwitch\bin\Win64_Shipping_Client\BannerlordTwitch.dll`
+   ![image](https://user-images.githubusercontent.com/1453936/115397098-9daae880-a1dd-11eb-87c7-0bda9af4c79d.png)
 3. Copy `BannerlordTwitch\Bannerlord-Twitch.jsonc` to `%USERPROFILE%\Documents\Mount and Blade II Bannerlord\Configs` (this location is for Windows 10, for other OSes you should find out the equivalent location).
 4. Edit the copy of the file to your requirements, it contains instructions, and documentation for the configuration sections.
 5. Make sure Harmony loads first and Bannerlord Twitch loads after the game modules and before any BLT extensions.  
-6. Run the game.
-7. During startup watch for notification messages that indicate if the mod initialized successfully and connected to your Twitch channel.
-8. Once you get to the main menu in game it should be initialized, and the Channel Rewards should have been created automatically.
-9. If you have problems you can search for `[BLT]` lines in the `rgl_log` files at `C:\ProgramData\Mount and Blade II Bannerlord\logs`
+   ![image](https://user-images.githubusercontent.com/1453936/115396769-43aa2300-a1dd-11eb-8748-fe6ec2dcfda0.png)
+7. Run the game.
+8. During startup watch for notification messages that indicate if the mod initialized successfully and connected to your Twitch channel.
+9. Once you get to the main menu in game it should be initialized, and the Channel Rewards should have been created automatically.
+10. If you have problems you can search for `[BLT]` lines in the `rgl_log` files at `C:\ProgramData\Mount and Blade II Bannerlord\logs`
 
 If you have problems you can ping me (billw#7855) in the [TW modding discord](https://discord.gg/hqKcnSNfb6).
 
@@ -39,3 +41,4 @@ You can implement new reward actions and commands quite easily:
 
 Rewards that have an `ActionId` that matches the class name of your `IRedemptionAction` will be passed to your registered instance, along with the `ActionConfig` specified.  
 Commands work the same, with `Handler` matching the class name of your `IBotCommand`, and the `HandlerConfig` section being passed.
+
