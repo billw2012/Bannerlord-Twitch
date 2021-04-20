@@ -5,6 +5,7 @@ using System.Linq;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Testing;
 using BannerlordTwitch.Util;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using TwitchLib.Api;
 using TwitchLib.Api.Core.Enums;
@@ -88,6 +89,20 @@ namespace BannerlordTwitch
                     //_pubSub.OnWhisper += OnWhisper;
                     pubSub.OnPubSubServiceConnected += OnPubSubServiceConnected;
                     pubSub.OnRewardRedeemed += OnRewardRedeemed;
+                    pubSub.OnLog += (sender, args) =>
+                    {
+                        if (args.Data.Contains("PONG")) return;
+                        try
+                        {
+                            Log.Trace(args.Data);
+                        }
+                        catch
+                        {
+                            // ignored
+                        }
+                    };
+
+                    // pubSub.OnPubSubServiceClosed += OnOnPubSubServiceClosed;
 
                     RegisterRewardsAsync();
 
@@ -306,13 +321,21 @@ namespace BannerlordTwitch
 
         private void OnPubSubServiceConnected(object sender, System.EventArgs e)
         {
-            Log.Info("PubSub Service Connected!");
+            Log.Screen("PubSub Service connected, now listening for rewards");
 
 #pragma warning disable 618
             // Obsolete warning disabled because no new version has yet been written!
             pubSub.ListenToRewards(channelId);
 #pragma warning restore 618
+            pubSub.SendTopics(settings.AccessToken);
         }
+        
+        // private void OnOnPubSubServiceClosed(object sender, EventArgs e)
+        // {
+        //     Log.ScreenFail("PubSub Service closed, attempting reconnect...");
+        //     pubSub.Connect();
+        // }
+
 
         public JObject FindGlobalConfig(string id) => settings?.GlobalConfigs?.FirstOrDefault(c => c.Id == id)?.Config;
 
