@@ -384,7 +384,7 @@ namespace BannerlordTwitch.Rewards
                || InFieldBattleMission() && !settings.AllowFieldBattle
                || InVillageEncounter() && !settings.AllowVillageBattle
                || InSiegeMission() && !settings.AllowSiegeBattle
-               || Mission.Current.IsFriendlyMission && !settings.AllowFriendlyMission
+               || InFriendlyMission() && !settings.AllowFriendlyMission
                || InHideOutMission() && !settings.AllowHideOut
                || InTrainingFieldMission()
                || InArenaVisitingArea()
@@ -424,7 +424,15 @@ namespace BannerlordTwitch.Rewards
                 CampaignMission.Current.Location.AddCharacter(locationCharacter);
                 var agent = SpawnWanderingAgent(missionAgentHandler, locationCharacter, worldFrame.ToGroundMatrixFrame(), false, true); 
 
-                agent.SetTeam(missionAgentHandler.Mission.PlayerTeam, true);
+                if (InArenaMission())
+                {
+                    agent.SetWatchState(AgentAIStateFlagComponent.WatchState.Alarmed);
+                    agent.SetTeam(missionAgentHandler.Mission.PlayerTeam, settings.OnPlayerSide);
+                }
+                else
+                {
+                    agent.SetTeam(missionAgentHandler.Mission.PlayerTeam, true);
+                }
 
                 if (agent.GetComponent<CampaignAgentComponent>().AgentNavigator != null)
                 {
@@ -468,6 +476,8 @@ namespace BannerlordTwitch.Rewards
                                                       && Mission.Current?.Mode == MissionMode.Battle;
         private static bool InArenaVisitingArea() => CampaignMission.Current?.Location?.StringId == "arena" 
                                                 && Mission.Current?.Mode != MissionMode.Battle;
+
+        private static bool InFriendlyMission() => (Mission.Current?.IsFriendlyMission ?? false) && !InArenaMission();
         private static bool InConversation() => Mission.Current?.Mode == MissionMode.Conversation;
         private static bool InTrainingFieldMission() => Mission.Current?.GetMissionBehaviour<TrainingFieldMissionController>() != null;
         private static bool InVillageEncounter() => PlayerEncounter.LocationEncounter?.GetType() == typeof(VillageEncouter);
