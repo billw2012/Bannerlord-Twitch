@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BannerlordTwitch;
+using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using HarmonyLib;
 using Helpers;
@@ -19,11 +21,20 @@ using TaleWorlds.MountAndBlade;
 
 #pragma warning disable 649
 
-namespace BannerlordTwitch.Rewards
+namespace BLTAdoptAHero
 {
     [UsedImplicitly]
-    internal class AdoptAHero : IRedemptionAction
+    public class BLTAdoptAHeroModule : MBSubModuleBase, IRedemptionAction
     {
+        public const string Name = "BLTAdoptAHero";
+        public const string Ver = "1.0.0";
+        
+        public BLTAdoptAHeroModule()
+        {
+            RewardManager.Register(this);
+            RewardManager.Register(new HeroCommand());
+        }
+        
         public static readonly (CharacterAttributesEnum val, string shortName)[] CharAttributes = {
             (CharacterAttributesEnum.Vigor, "Vig"),
             (CharacterAttributesEnum.Control, "Con"),
@@ -68,6 +79,7 @@ namespace BannerlordTwitch.Rewards
         //     gSettings ??= new GlobalSettings {};
         //     return gSettings;
         // }
+        
 
         public struct Settings
         {
@@ -92,11 +104,11 @@ namespace BannerlordTwitch.Rewards
             ).Where(n => !n.Name.Contains(tagText));
         }
 
-        internal static string GetFullName(string name) => $"{name} {AdoptAHero.Tag}";
+        internal static string GetFullName(string name) => $"{name} {BLTAdoptAHeroModule.Tag}";
 
         internal static Hero GetAdoptedHero(string name)
         {
-            var tagObject = new TextObject(AdoptAHero.Tag);
+            var tagObject = new TextObject(BLTAdoptAHeroModule.Tag);
             var nameObject = new TextObject(name);
             return Campaign.Current?
                 .AliveHeroes?
@@ -109,7 +121,7 @@ namespace BannerlordTwitch.Rewards
         {
             if (Campaign.Current == null)
             {
-                RewardManager.NotifyCancelled(redemptionId, AdoptAHero.NotStartedMessage);
+                RewardManager.NotifyCancelled(redemptionId, BLTAdoptAHeroModule.NotStartedMessage);
                 return;
             }
             
@@ -155,11 +167,11 @@ namespace BannerlordTwitch.Rewards
         public void Execute(string args, string userName, string replyId, JObject config)
         {
             var settings = config?.ToObject<Settings>() ?? new Settings();
-            var usersHero = AdoptAHero.GetAdoptedHero(userName);
+            var usersHero = BLTAdoptAHeroModule.GetAdoptedHero(userName);
             var infoStrings = new List<string>{};
             if (usersHero == null)
             {
-                infoStrings.Add(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
+                infoStrings.Add(Campaign.Current == null ? BLTAdoptAHeroModule.NotStartedMessage : BLTAdoptAHeroModule.NoHeroMessage);
             }
             else
             {
@@ -185,7 +197,7 @@ namespace BannerlordTwitch.Rewards
                 }
                 if (settings.ShowAttributes)
                 {
-                    infoStrings.Add("ATTR: " + string.Join(", ", AdoptAHero.CharAttributes
+                    infoStrings.Add("ATTR: " + string.Join(", ", BLTAdoptAHeroModule.CharAttributes
                             .Select(a => $"{a.shortName} {usersHero.GetAttributeValue(a.val)}")));
                 }
                 if (settings.ShowEquipment)
@@ -220,10 +232,10 @@ namespace BannerlordTwitch.Rewards
         public void Enqueue(Guid redemptionId, string _, string userName, JObject config)
         {
             var settings = config.ToObject<Settings>();
-            var usersHero = AdoptAHero.GetAdoptedHero(userName);
+            var usersHero = BLTAdoptAHeroModule.GetAdoptedHero(userName);
             if (usersHero == null)
             {
-                RewardManager.NotifyCancelled(redemptionId, Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
+                RewardManager.NotifyCancelled(redemptionId, Campaign.Current == null ? BLTAdoptAHeroModule.NotStartedMessage : BLTAdoptAHeroModule.NoHeroMessage);
                 return;
             }
             int amount = MBRandom.RandomInt(settings.AmountLow, settings.AmountHigh);
@@ -277,7 +289,7 @@ namespace BannerlordTwitch.Rewards
             Hero usersHero, int amount, Settings settings)
         {
             // Get attributes that can be buffed
-            var improvableAttributes = AdoptAHero.CharAttributes
+            var improvableAttributes = BLTAdoptAHeroModule.CharAttributes
                 .Select(c => c.val)
                 .Where(a => usersHero.GetAttributeValue(a) < 10)
                 .ToList();
@@ -358,10 +370,10 @@ namespace BannerlordTwitch.Rewards
         public void Enqueue(Guid redemptionId, string message, string userName, JObject config)
         {
             var settings = config.ToObject<Settings>();
-            var usersHero = AdoptAHero.GetAdoptedHero(userName);
+            var usersHero = BLTAdoptAHeroModule.GetAdoptedHero(userName);
             if (usersHero == null)
             {
-                RewardManager.NotifyCancelled(redemptionId, Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
+                RewardManager.NotifyCancelled(redemptionId, Campaign.Current == null ? BLTAdoptAHeroModule.NotStartedMessage : BLTAdoptAHeroModule.NoHeroMessage);
                 return;
             }
             if (usersHero.IsPlayerCompanion)
@@ -533,10 +545,10 @@ namespace BannerlordTwitch.Rewards
         public void Enqueue(Guid redemptionId, string message, string userName, JObject config)
         {
             var settings = config.ToObject<Settings>();
-            var usersHero = AdoptAHero.GetAdoptedHero(userName);
+            var usersHero = BLTAdoptAHeroModule.GetAdoptedHero(userName);
             if (usersHero == null)
             {
-                RewardManager.NotifyCancelled(redemptionId, Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
+                RewardManager.NotifyCancelled(redemptionId, Campaign.Current == null ? BLTAdoptAHeroModule.NotStartedMessage : BLTAdoptAHeroModule.NoHeroMessage);
                 return;
             }
             if (!settings.AllowCompanionUpgrade && usersHero.IsPlayerCompanion)

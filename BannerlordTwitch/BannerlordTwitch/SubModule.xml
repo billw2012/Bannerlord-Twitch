@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Module>
-	<Name value = "Bannerlord-Twitch"/>
+	<Name value = "BannerlordTwitch"/>
 	<Id value = "BannerlordTwitch"/>
 	<Version value = "v0.1.1"/>
 	<DefaultModule value="true"/>

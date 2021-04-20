@@ -14,3 +14,11 @@ BannerlordTwitch/.idea/
 BannerlordTwitch/bin/
 
 deploy/
+
+build/
+
+BannerlordTwitch/BannerlordTwitch/obj/
+
+BannerlordTwitch/BLTAdoptAHero/bin/
+
+BannerlordTwitch/BLTAdoptAHero/obj/

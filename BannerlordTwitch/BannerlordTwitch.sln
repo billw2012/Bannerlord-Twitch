@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BannerlordTwitch", "BannerlordTwitch.csproj", "{A858B7FE-DD3E-4969-9D30-670042C75B16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BannerlordTwitch", "BannerlordTwitch\BannerlordTwitch.csproj", "{A858B7FE-DD3E-4969-9D30-670042C75B16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLTAdoptAHero", "BLTAdoptAHero\BLTAdoptAHero.csproj", "{E475EB9D-3C49-461B-88F7-9D88B746A3AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A858B7FE-DD3E-4969-9D30-670042C75B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A858B7FE-DD3E-4969-9D30-670042C75B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A858B7FE-DD3E-4969-9D30-670042C75B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E475EB9D-3C49-461B-88F7-9D88B746A3AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E475EB9D-3C49-461B-88F7-9D88B746A3AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E475EB9D-3C49-461B-88F7-9D88B746A3AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E475EB9D-3C49-461B-88F7-9D88B746A3AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
