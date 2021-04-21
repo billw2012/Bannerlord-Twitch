@@ -20,10 +20,12 @@ namespace BannerlordTwitch
             private TwitchClient client;
             private string channel;
             private readonly Settings settings;
+            private readonly AuthSettings authSettings;
 	    
-            public Bot(string channel, Settings settings)
+            public Bot(string channel, AuthSettings authSettings, Settings settings)
             {
                 this.settings = settings;
+                this.authSettings = authSettings;
                 this.channel = channel;
                 
                 Connect();
@@ -31,7 +33,7 @@ namespace BannerlordTwitch
 
             private void Connect()
             {
-                var credentials = new ConnectionCredentials(channel, settings.BotAccessToken, disableUsernameCheck: true);
+                var credentials = new ConnectionCredentials(channel, authSettings.BotAccessToken, disableUsernameCheck: true);
                 var clientOptions = new ClientOptions
                 {
                     MessagesAllowedInPeriod = 750,
@@ -53,7 +55,7 @@ namespace BannerlordTwitch
 
             public List<string> FormatMessage(params string[] msg)
             {
-                const string space = " ░▓█▓░ ";// " ▄▓▄▓▄ ";
+                const string space = " ░ "; // " ░▓█▓░ ";// " ▄▓▄▓▄ ";
                 var parts = new List<string>();
                 string currPart = msg.First();
                 foreach (var msgPart in msg.Skip(1))
@@ -85,7 +87,7 @@ namespace BannerlordTwitch
                         var parts = FormatMessage(msg);
                         foreach (var part in parts)
                         {
-                            client.SendMessage(channel, (settings.BotMessagePrefix ?? "[BLT] ") + part);
+                            client.SendMessage(channel, (authSettings.BotMessagePrefix ?? "[BLT] ") + part);
                         }
                     }
                     catch (Exception e)
@@ -108,7 +110,7 @@ namespace BannerlordTwitch
                         var parts = FormatMessage(msg);
                         foreach (var part in parts)
                         {
-                            client.SendReply(channel, replyId, (settings.BotMessagePrefix ?? "[BLT] ") + part);
+                            client.SendReply(channel, replyId, (authSettings.BotMessagePrefix ?? "[BLT] ") + part);
                         }
                     }
                     catch (Exception e)
@@ -151,29 +153,48 @@ namespace BannerlordTwitch
                 Log.Screen($"bot has joined {e.Channel}");
                 SendChat("bot reporting for duty!", "Type !help for command list");
             }
-            
+
+            private static CommandMessage GetCommandMessage(ChatMessage from) =>
+                new()
+                {
+                    UserName = from.Username,
+                    ReplyId = @from.Id,
+                    Bits = @from.Bits,
+                    BitsInDollars = @from.BitsInDollars,
+                    SubscribedMonthCount = @from.SubscribedMonthCount,
+                    IsBroadcaster = @from.IsBroadcaster,
+                    IsHighlighted = @from.IsHighlighted,
+                    IsMe = @from.IsMe,
+                    IsModerator = @from.IsModerator,
+                    IsSkippingSubMode = @from.IsSkippingSubMode,
+                    IsSubscriber = @from.IsSubscriber,
+                    IsVip = @from.IsVip,
+                    IsStaff = @from.IsStaff,
+                    IsPartner = @from.IsPartner
+                };
+
             private void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)
             {
                 var msg = e.ChatMessage.Message;
                 if (msg.StartsWith("!"))
                 {
-                    HandleChatBoxMessage(msg.TrimStart('!'), e.ChatMessage.Username, e.ChatMessage.Id);
+                    HandleChatBoxMessage(msg.TrimStart('!'), GetCommandMessage(e.ChatMessage));
                 }
             }
 
-            private void HandleChatBoxMessage(string msg, string userName, string replyId)
+            private void HandleChatBoxMessage(string msg, CommandMessage commandMessage)
             {
                 var parts = msg.Split(' ');
                 if (parts[0] == "help")
                 {
-                    BLTModule.TwitchService.ShowCommandHelp(replyId);
+                    BLTModule.TwitchService.ShowCommandHelp(commandMessage.ReplyId);
                 }
                 else
                 {
                     var cmd = settings.Commands.FirstOrDefault(c => c.Cmd == parts[0]);
                     if (cmd != null)
                     {
-                        RewardManager.Command(cmd.Handler, msg.Substring(parts[0].Length).Trim(), userName, replyId, cmd.HandlerConfig);
+                        RewardManager.Command(cmd.Handler, msg.Substring(parts[0].Length).Trim(), commandMessage, cmd.HandlerConfig);
                     }
                 }
             }

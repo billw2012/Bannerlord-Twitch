@@ -24,17 +24,20 @@ using TaleWorlds.MountAndBlade;
 namespace BLTAdoptAHero
 {
     [UsedImplicitly]
-    public class BLTAdoptAHeroModule : MBSubModuleBase, IRedemptionAction
+    public class BLTAdoptAHeroModule : MBSubModuleBase
     {
         public const string Name = "BLTAdoptAHero";
         public const string Ver = "1.0.0";
-        
+
         public BLTAdoptAHeroModule()
         {
-            RewardManager.Register(this);
-            RewardManager.Register(new HeroCommand());
+            RewardManager.RegisterAll(typeof(BLTAdoptAHeroModule).Assembly);
         }
-        
+    }
+    
+    [UsedImplicitly]
+    public class AdoptAHero : IRedemptionAction, IBotCommand
+    {
         public static readonly (CharacterAttributesEnum val, string shortName)[] CharAttributes = {
             (CharacterAttributesEnum.Vigor, "Vig"),
             (CharacterAttributesEnum.Control, "Con"),
@@ -53,15 +56,15 @@ namespace BLTAdoptAHero
         // }
         //
         // private static GlobalSettings gSettings;
-
+        //
         // public static GlobalSettings GetGlobalSettings()
         // {
         //     if (gSettings == null)
         //     {
-        //         var config = RewardManager.FindGlobalConfig("AdoptAHero"); // ?? 
+        //         var config = RewardManager.FindGlobalConfig("BLTAdoptAHero");
         //         if (config == null)
         //         {
-        //             Log.Trace($"{nameof(AdoptAHero)} - No global config found. Setting defaults.");
+        //             Log.Trace($"{Name} - No global config found. Setting defaults.");
         //         }
         //         else
         //         {
@@ -72,7 +75,7 @@ namespace BLTAdoptAHero
         //             catch (Exception ex)
         //             {
         //                 Log.ScreenCritical(
-        //                     $"{nameof(AdoptAHero)} - global settings object couldn't be parsed ({ex.Message}), check your config file. Setting defaults.");
+        //                     $"{Name} - global settings object couldn't be parsed ({ex.Message}), check your config file. Setting defaults.");
         //             }
         //         }
         //     }
@@ -80,7 +83,6 @@ namespace BLTAdoptAHero
         //     return gSettings;
         // }
         
-
         public struct Settings
         {
             public bool IsNoble;
@@ -88,6 +90,12 @@ namespace BLTAdoptAHero
             public bool IsWanderer;
             public bool OnlySameFaction;
             public bool AllowNewAdoptionOnDeath;
+            public bool SubscriberOnly;
+            public int MinSubscribedMonths;
+            public int StartingGold;
+            public int StartingEquipmentTier;
+            public bool StartWithHorse;
+            public bool StartWithArmor;
         }
 
         private static IEnumerable<Hero> GetAvailableHeroes(Settings settings)
@@ -104,11 +112,11 @@ namespace BLTAdoptAHero
             ).Where(n => !n.Name.Contains(tagText));
         }
 
-        internal static string GetFullName(string name) => $"{name} {BLTAdoptAHeroModule.Tag}";
+        internal static string GetFullName(string name) => $"{name} {AdoptAHero.Tag}";
 
         internal static Hero GetAdoptedHero(string name)
         {
-            var tagObject = new TextObject(BLTAdoptAHeroModule.Tag);
+            var tagObject = new TextObject(AdoptAHero.Tag);
             var nameObject = new TextObject(name);
             return Campaign.Current?
                 .AliveHeroes?
@@ -117,43 +125,82 @@ namespace BLTAdoptAHero
                                      && h.FirstName?.ToString() == name);
         }
 
-        public void Enqueue(Guid redemptionId, string _, string userName, JObject config)
+        void IRedemptionAction.Enqueue(Guid redemptionId, string _, string userName, JObject config)
         {
-            if (Campaign.Current == null)
-            {
-                RewardManager.NotifyCancelled(redemptionId, BLTAdoptAHeroModule.NotStartedMessage);
-                return;
-            }
-            
-            var settings = config.ToObject<Settings>();
             var hero = GetAdoptedHero(userName);
             if (hero?.IsAlive == true)
             {
-                RewardManager.NotifyCancelled(redemptionId, $"You have already adopted a hero!");
+                RewardManager.NotifyCancelled(redemptionId, "You have already adopted a hero!");
                 return;
             }
+            var settings = config.ToObject<Settings>();
+            var (success, message) = ExecuteInternal(hero, userName, settings);
+            if (success)
+            {
+                RewardManager.NotifyComplete(redemptionId, message);
+            }
+            else
+            {
+                RewardManager.NotifyCancelled(redemptionId, message);
+            }
+        }
+
+        void IBotCommand.Execute(string _, CommandMessage commandMessage, JObject config)
+        {
+            var hero = GetAdoptedHero(commandMessage.UserName);
+            if (hero?.IsAlive == true)
+            {
+                RewardManager.SendReply(commandMessage.ReplyId, "You have already adopted a hero!");
+                return;
+            }
+            var settings = config.ToObject<Settings>();
+            if (settings.MinSubscribedMonths > 0 && commandMessage.SubscribedMonthCount < settings.MinSubscribedMonths)
+            {
+                RewardManager.SendReply(commandMessage.ReplyId, $"You must be subscribed for at least {settings.MinSubscribedMonths} months to adopt a hero with this command!");
+                return;
+            }
+            if(!commandMessage.IsSubscriber && settings.SubscriberOnly)
+            {
+                RewardManager.SendReply(commandMessage.ReplyId, $"You must be subscribed to adopt a hero with this command!");
+                return;
+            }
+                
+            var (_, message) = ExecuteInternal(hero, commandMessage.UserName, settings);
+            RewardManager.SendReply(commandMessage.ReplyId, message);
+        }
+        
+        private static (bool success, string message) ExecuteInternal(Hero hero, string userName, Settings settings)
+        {
+            if (Campaign.Current == null)
+            {
+                return (false, AdoptAHero.NotStartedMessage);
+            }
+            
             if (hero?.IsAlive == false && !settings.AllowNewAdoptionOnDeath)
             {
-                RewardManager.NotifyCancelled(redemptionId, $"Your hero died, and you may not adopt another!");
-                return;
+                return (false, $"Your hero died, and you may not adopt another!");
             }
             
             var randomHero = GetAvailableHeroes(settings).SelectRandom();
             if (randomHero == null)
             {
-                RewardManager.NotifyCancelled(redemptionId, $"You can't adopt a hero: no available hero matching the requirements was found!");
-                return;
+                return (false, $"You can't adopt a hero: no available hero matching the requirements was found!");
             }
             
             var oldName = randomHero.Name.ToString();
             randomHero.FirstName = new TextObject(userName);
             randomHero.Name = new TextObject(GetFullName(userName));
-            RewardManager.NotifyComplete(redemptionId, $"You have adopted {oldName}!");
+            randomHero.Gold = settings.StartingGold;
+
+            EquipHero.RemoveAllEquipment(randomHero);
+            EquipHero.UpgradeEquipment(randomHero, settings.StartingEquipmentTier, true, true, settings.StartWithArmor, settings.StartWithHorse, true);
+
+            return (true, $"You have adopted {oldName}, they have {randomHero.Gold} gold!");
         }
     }
 
     [UsedImplicitly]
-    internal class HeroCommand : IBotCommand
+    internal class HeroInfoCommand : IBotCommand
     {
         public struct Settings
         {
@@ -163,22 +210,22 @@ namespace BLTAdoptAHero
             public bool ShowAttributes;
             public bool ShowEquipment;
         }
-        
-        public void Execute(string args, string userName, string replyId, JObject config)
+
+        void IBotCommand.Execute(string args, CommandMessage commandMessage, JObject config)
         {
             var settings = config?.ToObject<Settings>() ?? new Settings();
-            var usersHero = BLTAdoptAHeroModule.GetAdoptedHero(userName);
+            var usersHero = AdoptAHero.GetAdoptedHero(commandMessage.UserName);
             var infoStrings = new List<string>{};
             if (usersHero == null)
             {
-                infoStrings.Add(Campaign.Current == null ? BLTAdoptAHeroModule.NotStartedMessage : BLTAdoptAHeroModule.NoHeroMessage);
+                infoStrings.Add(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
             }
             else
             {
                 if (settings.ShowGeneral)
                 {
-                    infoStrings.Add($"{usersHero.HitPoints} / {usersHero.CharacterObject.MaxHitPoints()} HP");
                     infoStrings.Add($"{usersHero.Gold} gold");
+                    infoStrings.Add($"{usersHero.HitPoints} / {usersHero.CharacterObject.MaxHitPoints()} HP");
                     if (usersHero.LastSeenPlace != null)
                     {
                         infoStrings.Add($"Last seen near {usersHero.LastSeenPlace.Name}");
@@ -197,11 +244,12 @@ namespace BLTAdoptAHero
                 }
                 if (settings.ShowAttributes)
                 {
-                    infoStrings.Add("ATTR: " + string.Join(", ", BLTAdoptAHeroModule.CharAttributes
+                    infoStrings.Add("ATTR: " + string.Join(", ", AdoptAHero.CharAttributes
                             .Select(a => $"{a.shortName} {usersHero.GetAttributeValue(a.val)}")));
                 }
                 if (settings.ShowEquipment)
                 {
+                    infoStrings.Add($"EQUIP TIER {EquipHero.GetHeroEquipmentTier(usersHero) + 1}");
                     infoStrings.Add("BATTLE: " + string.Join(", ", usersHero.BattleEquipment
                         .YieldEquipmentSlots()
                         .Where(e => !e.element.IsEmpty)
@@ -215,11 +263,66 @@ namespace BLTAdoptAHero
                 }
             }
 
-            RewardManager.SendReply(replyId, infoStrings.ToArray());
+            RewardManager.SendReply(commandMessage.ReplyId, infoStrings.ToArray());
         }
     }
 
-    internal abstract class ImproveAdoptedHero : IRedemptionAction
+    // We could do this, but they could also gain money so...
+    // public static class Patches
+    // {
+    //     [HarmonyPrefix]
+    //     [HarmonyPatch(typeof(Hero), nameof(Hero.Gold), MethodType.Setter)]
+    //     public static bool set_GoldPrefix(Hero __instance, int value)
+    //     {
+    //         // Don't allow changing gold of our adopted heroes, as we use it ourselves
+    //         return !__instance.GetName().Contains(AdoptAHero.Tag);
+    //     }
+    // }
+    
+    [UsedImplicitly]
+    internal class AddGoldToHero : IRedemptionAction
+    {
+        public struct Settings
+        {
+            public int Amount;
+        }
+
+        void IRedemptionAction.Enqueue(Guid redemptionId, string message, string userName, JObject config)
+        {
+            var settings = config.ToObject<Settings>();
+            var usersHero = AdoptAHero.GetAdoptedHero(userName);
+            if (usersHero == null)
+            {
+                RewardManager.NotifyCancelled(redemptionId, Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
+                return;
+            }
+
+            usersHero.Gold += settings.Amount;
+            RewardManager.NotifyComplete(redemptionId, $"+{settings.Amount} gold, you now have {usersHero.Gold}!");
+        }
+    }
+
+    internal abstract class RewardAndBotCommandBase : IRedemptionAction, IBotCommand
+    {
+        void IRedemptionAction.Enqueue(Guid redemptionId, string args, string userName, JObject config)
+        {
+            ExecuteInternal(userName, args, config, 
+                s => RewardManager.NotifyComplete(redemptionId, s), 
+                s => RewardManager.NotifyCancelled(redemptionId, s));
+        }
+
+        void IBotCommand.Execute(string args, CommandMessage message, JObject config)
+        {
+            ExecuteInternal(message.UserName, args, config, 
+                s => RewardManager.SendReply(message.ReplyId, s), 
+                s => RewardManager.SendReply(message.ReplyId, s));
+        }
+
+        protected abstract void ExecuteInternal(string userName, string args, JObject config, Action<string> onSuccess,
+            Action<string> onFailure);
+    }
+    
+    internal abstract class ImproveAdoptedHero : RewardAndBotCommandBase
     {
         public struct Settings
         {
@@ -227,53 +330,83 @@ namespace BLTAdoptAHero
             public int AmountLow;
             public int AmountHigh;
             public bool Random;
+            public bool Auto;
+            public int GoldCost;
         }
         
-        public void Enqueue(Guid redemptionId, string _, string userName, JObject config)
+        protected override void ExecuteInternal(string userName, string args, JObject config, Action<string> onSuccess,
+            Action<string> onFailure) 
         {
             var settings = config.ToObject<Settings>();
-            var usersHero = BLTAdoptAHeroModule.GetAdoptedHero(userName);
+            var usersHero = AdoptAHero.GetAdoptedHero(userName);
             if (usersHero == null)
             {
-                RewardManager.NotifyCancelled(redemptionId, Campaign.Current == null ? BLTAdoptAHeroModule.NotStartedMessage : BLTAdoptAHeroModule.NoHeroMessage);
+                onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
                 return;
             }
-            int amount = MBRandom.RandomInt(settings.AmountLow, settings.AmountHigh);
-            (bool success, string description) = Improve(redemptionId, userName, usersHero, amount, settings);
+
+            if (usersHero.Gold < settings.GoldCost)
+            {
+                onFailure($"You do not have enough gold: you need {settings.GoldCost}, and you only have {usersHero.Gold}!");
+                return;
+            }
+            
+            var amount = MBRandom.RandomInt(settings.AmountLow, settings.AmountHigh);
+            var (success, description) = Improve(userName, usersHero, amount, settings);
             if (success)
             {
-                RewardManager.NotifyComplete(redemptionId, description);
+                onSuccess(description);
+                usersHero.Gold -= settings.GoldCost;
             }
             else
             {
-                RewardManager.NotifyCancelled(redemptionId, description);
+                onFailure(description);
             }
         }
-        protected abstract (bool success, string description) Improve(Guid redemptionId, string userName,
-            Hero usersHero, int amount, Settings settings);
+
+        protected abstract (bool success, string description) Improve(string userName, Hero usersHero, int amount, Settings settings);
 
         // One Handed, Two Handed, Polearm, Bow, Crossbow, Throwing, Riding, Athletics, Smithing
         // Scouting, Tactics, Roguery, Charm, Leadership, Trade, Steward, Medicine, Engineering
-        protected static SkillObject GetSkill(Hero hero, string improvement, bool random, Func<SkillObject, bool> predicate = null)
+
+        private static string[][] SkillGroups =
         {
-            var skills = improvement.Split(',').Select(s => s.Trim());
-            var selectedSkills = DefaultSkills.GetAllSkills()
-                .Where(so => skills.Any(sn => string.Equals(so.Name.ToString(), sn, StringComparison.CurrentCultureIgnoreCase)))
-                .Where(predicate ?? (s => true))
-                .ToList();
+            new[] { "One Handed", "Two Handed", "Polearm" }, // melee
+            new[] { "Bow", "Crossbow", "Throwing" }, // ranged
+            new[] { "Smithing", "Scouting", "Trade", "Steward", "Engineering" }, // support
+            new[] { "Riding", "Athletics" }, // movement
+            new[] { "Tactics", "Roguery", "Charm", "Leadership" }, // personal
+        };
+        protected static SkillObject GetSkill(Hero hero, string improvement, bool random, bool auto, Func<SkillObject, bool> predicate = null)
+        {
+            // DOING: fix this so that group is selected last (so if all items in a group fail the predicate that group isn't chosen. Perhaps choose top skill in each group then randomly among those).
+            // We will select automatically which skill from groups
+            var selectedSkills = auto
+                    ? SkillGroups
+                        .Select(g 
+                            => g.Select(sn => DefaultSkills.GetAllSkills().FirstOrDefault(so => string.Equals(so.Name.ToString(), sn, StringComparison.CurrentCultureIgnoreCase)))
+                                .Where(predicate ?? (s => true)))
+                        .Where(g => g.Any())
+                        .SelectRandom()
+                    : improvement
+                        .Split(',')
+                        .Select(s => s.Trim())
+                        .Select(sn => DefaultSkills.GetAllSkills().FirstOrDefault(so => string.Equals(so.Name.ToString(), sn, StringComparison.CurrentCultureIgnoreCase)))
+                        .Where(predicate ?? (s => true))
+                ;
             return random 
-                ? selectedSkills.SelectRandom() 
-                : selectedSkills.OrderByDescending(hero.GetSkillValue).FirstOrDefault();
+                ? selectedSkills?.SelectRandom() 
+                : selectedSkills?.OrderByDescending(hero.GetSkillValue).FirstOrDefault();
         }
     }
     
     [UsedImplicitly]
     internal class SkillXP : ImproveAdoptedHero
     {
-        protected override (bool success, string description) Improve(Guid redemptionId, string userName,
+        protected override (bool success, string description) Improve(string userName,
             Hero usersHero, int amount, Settings settings)
         {
-            var skill = GetSkill(usersHero, settings.Improvement, settings.Random);
+            var skill = GetSkill(usersHero, settings.Improvement, settings.Random, settings.Auto);
             if (skill == null) return (false, $"Couldn't improve skill {settings.Improvement}: its not a valid skill name!");
             usersHero.HeroDeveloper.AddSkillXp(skill, amount);
             return (true, $"You have gained {amount}xp in {skill.Name}, you now have {usersHero.HeroDeveloper.GetPropertyValue(skill)}!");
@@ -285,11 +418,11 @@ namespace BLTAdoptAHero
     {
 
         // Vigor, Control, Endurance, Cunning, Social, Intelligence
-        protected override (bool success, string description) Improve(Guid redemptionId, string userName,
+        protected override (bool success, string description) Improve(string userName,
             Hero usersHero, int amount, Settings settings)
         {
             // Get attributes that can be buffed
-            var improvableAttributes = BLTAdoptAHeroModule.CharAttributes
+            var improvableAttributes = AdoptAHero.CharAttributes
                 .Select(c => c.val)
                 .Where(a => usersHero.GetAttributeValue(a) < 10)
                 .ToList();
@@ -324,10 +457,10 @@ namespace BLTAdoptAHero
     [UsedImplicitly]
     internal class FocusPoints : ImproveAdoptedHero
     {
-        protected override (bool success, string description) Improve(Guid redemptionId, string userName,
+        protected override (bool success, string description) Improve(string userName,
             Hero usersHero, int amount, Settings settings)
         {
-            var skill = GetSkill(usersHero, settings.Improvement, settings.Random,
+            var skill = GetSkill(usersHero, settings.Improvement, settings.Random, settings.Auto,
                 s => usersHero.HeroDeveloper.GetFocus(s) < 5);
             if (skill == null)
             {
@@ -341,7 +474,7 @@ namespace BLTAdoptAHero
     }
 
     [UsedImplicitly]
-    internal class SummonHero : IRedemptionAction
+    internal class SummonHero : RewardAndBotCommandBase
     {
         public struct Settings
         {
@@ -352,6 +485,7 @@ namespace BLTAdoptAHero
             public bool AllowArena;
             public bool AllowHideOut;
             public bool OnPlayerSide;
+            public int GoldCost;
         }
 
         private delegate Agent SpawnWanderingAgentDelegate(
@@ -367,18 +501,25 @@ namespace BLTAdoptAHero
                     new[] {typeof(LocationCharacter), typeof(MatrixFrame), typeof(bool), typeof(bool)})
                 .CreateDelegate(typeof(SpawnWanderingAgentDelegate));
         
-        public void Enqueue(Guid redemptionId, string message, string userName, JObject config)
+        protected override void ExecuteInternal(string userName, string args, JObject config, Action<string> onSuccess,
+            Action<string> onFailure)
         {
             var settings = config.ToObject<Settings>();
-            var usersHero = BLTAdoptAHeroModule.GetAdoptedHero(userName);
+
+            var usersHero = AdoptAHero.GetAdoptedHero(userName);
             if (usersHero == null)
             {
-                RewardManager.NotifyCancelled(redemptionId, Campaign.Current == null ? BLTAdoptAHeroModule.NotStartedMessage : BLTAdoptAHeroModule.NoHeroMessage);
+                onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
+                return;
+            }
+            if (usersHero.Gold < settings.GoldCost)
+            {
+                onFailure($"You do not have enough gold: you need {settings.GoldCost}, and you only have {usersHero.Gold}!");
                 return;
             }
             if (usersHero.IsPlayerCompanion)
             {
-                RewardManager.NotifyCancelled(redemptionId, $"You are a player companion, you cannot be summoned in this manner!");
+                onFailure($"You are a player companion, you cannot be summoned in this manner!");
                 return;
             }
             
@@ -387,7 +528,7 @@ namespace BLTAdoptAHero
                 || Mission.Current.Mode is MissionMode.Barter or MissionMode.Conversation or MissionMode.Deployment or
                     MissionMode.Duel or MissionMode.Replay or MissionMode.CutScene)
             {
-                RewardManager.NotifyCancelled(redemptionId, $"You cannot be summoned now!");
+                onFailure($"You cannot be summoned now!");
                 return;
             }
             
@@ -402,24 +543,24 @@ namespace BLTAdoptAHero
                || InArenaVisitingArea()
                )
             {
-                RewardManager.NotifyCancelled(redemptionId, $"You cannot be summoned now, this mission does not allow it!");
+                onFailure($"You cannot be summoned now, this mission does not allow it!");
                 return;
             }
 
             if (!Mission.Current.IsLoadingFinished)
             {
-                RewardManager.NotifyCancelled(redemptionId, $"You cannot be summoned now, the mission has not started yet!");
+                onFailure($"You cannot be summoned now, the mission has not started yet!");
                 return;
             }
             if (Mission.Current.IsMissionEnding || (Mission.Current.MissionResult?.BattleResolved ?? false))
             {
-                RewardManager.NotifyCancelled(redemptionId, $"You cannot be summoned now, the mission is ending!");
+                onFailure($"You cannot be summoned now, the mission is ending!");
                 return;
             }
             
             if (HeroIsSpawned(usersHero))
             {
-                RewardManager.NotifyCancelled(redemptionId, $"You cannot be summoned, you are already here!");
+                onFailure($"You cannot be summoned, you are already here!");
                 return;
             }
             
@@ -469,8 +610,9 @@ namespace BLTAdoptAHero
                     isAlarmed: true,
                     wieldInitialWeapons: true);
             }
-            
-            RewardManager.NotifyComplete(redemptionId, $"You have joined the battle!");
+
+            usersHero.Gold -= settings.GoldCost;
+            onSuccess($"You have joined the battle!");
         }
 
         private static bool HeroIsSpawned(Hero hero)
@@ -496,7 +638,7 @@ namespace BLTAdoptAHero
     }
     
     [UsedImplicitly]
-    internal class EquipHero : IRedemptionAction
+    internal class EquipHero : RewardAndBotCommandBase
     {
         // These must be properties not fields, as these values are dynamic
         private static SkillObject[] MeleeSkills => new [] {
@@ -540,47 +682,109 @@ namespace BLTAdoptAHero
             public bool Civilian;
             public bool AllowCompanionUpgrade;
             public int Tier; // 0 to 5
+            public bool Upgrade;
+            public int GoldCost;
         }
 
-        public void Enqueue(Guid redemptionId, string message, string userName, JObject config)
+        public static int GetHeroEquipmentTier(Hero hero) =>
+            // The Mode of the tiers of the equipment
+            hero.BattleEquipment.YieldEquipmentSlots().Concat(hero.CivilianEquipment.YieldEquipmentSlots())
+                .Select(s => s.element.Item)
+                .Where(i => i != null)
+                .Select(i => (int)i.Tier)
+                .GroupBy(v => v)
+                .OrderByDescending(g => g.Count())
+                .First()
+                .Key;
+
+        protected override void ExecuteInternal(string userName, string args, JObject config, Action<string> onSuccess,
+            Action<string> onFailure)
         {
             var settings = config.ToObject<Settings>();
-            var usersHero = BLTAdoptAHeroModule.GetAdoptedHero(userName);
+            var usersHero = AdoptAHero.GetAdoptedHero(userName);
             if (usersHero == null)
             {
-                RewardManager.NotifyCancelled(redemptionId, Campaign.Current == null ? BLTAdoptAHeroModule.NotStartedMessage : BLTAdoptAHeroModule.NoHeroMessage);
+                onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
+                return;
+            }
+            if (usersHero.Gold < settings.GoldCost)
+            {
+                onFailure($"You do not have enough gold: you need {settings.GoldCost}, and you only have {usersHero.Gold}!");
                 return;
             }
             if (!settings.AllowCompanionUpgrade && usersHero.IsPlayerCompanion)
             {
-                RewardManager.NotifyCancelled(redemptionId, $"You are a player companion, you cannot change your own equipment!");
+                onFailure($"You are a player companion, you cannot change your own equipment!");
                 return;
             }
             if (Mission.Current != null)
             {
-                RewardManager.NotifyCancelled(redemptionId, $"You cannot upgrade equipment, as a mission is active!");
+                onFailure($"You cannot upgrade equipment, as a mission is active!");
                 return;
             }
 
+            int targetTier = settings.Tier;
+            if (settings.Upgrade)
+            {
+                targetTier = GetHeroEquipmentTier(usersHero) + 1;
+            }
+            if (targetTier > 5)
+            {
+                onFailure($"You cannot upgrade any further!");
+                return;
+            }
+
+            var itemsPurchased = UpgradeEquipment(usersHero, targetTier, settings.Melee, settings.Ranged, settings.Armor, settings.Horse, settings.Civilian);
+
+            if (!itemsPurchased.Any())
+            {
+                onFailure($"Couldn't find any items to upgrade!");
+                return;
+            }
+            
+            var itemsStr = string.Join(", ", itemsPurchased.Select(i => i.Name.ToString()));
+            
+            usersHero.Gold -= settings.GoldCost;
+            onSuccess($"You purchased these items: {itemsStr}!");
+        }
+
+        internal static void RemoveAllEquipment(Hero usersHero)
+        {
+            foreach (var slot in usersHero.BattleEquipment.YieldEquipmentSlots())
+            {
+                usersHero.BattleEquipment[slot.index] = EquipmentElement.Invalid;
+            }
+            foreach (var slot in usersHero.CivilianEquipment.YieldEquipmentSlots())
+            {
+                usersHero.CivilianEquipment[slot.index] = EquipmentElement.Invalid;
+            }
+        }
+        
+        internal static List<ItemObject> UpgradeEquipment(Hero usersHero, int targetTier, bool upgradeMelee, bool upgradeRanged, bool upgradeArmor, bool upgradeHorse, bool upgradeCivilian)
+        {
             var itemsPurchased = new List<ItemObject>();
 
             static bool CanUseItem(ItemObject item, Hero hero)
             {
                 var relevantSkill = item.RelevantSkill;
-                return (relevantSkill == null || hero.GetSkillValue(relevantSkill) >= item.Difficulty) 
-                       && (!hero.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByFemale)) 
+                return (relevantSkill == null || hero.GetSkillValue(relevantSkill) >= item.Difficulty)
+                       && (!hero.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByFemale))
                        && (hero.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByMale));
             }
 
-            static List<(EquipmentElement element, EquipmentIndex index)> GetMatchingItems(SkillObject skill, Equipment equipment, params ItemObject.ItemTypeEnum[] itemTypeEnums) =>
-                equipment
+            static List<(EquipmentElement element, EquipmentIndex index)> GetMatchingItems(SkillObject skill,
+                Equipment equipment, params ItemObject.ItemTypeEnum[] itemTypeEnums)
+            {
+                return equipment
                     .YieldWeaponSlots()
                     .Where(e => !e.element.IsEmpty)
                     .Where(e => itemTypeEnums.Contains(e.element.Item.Type))
                     .Where(e => e.element.Item.RelevantSkill == skill)
                     .ToList();
+            }
 
-            static void RemoveNonBestSkillItems(IEnumerable<SkillObject> skills, SkillObject bestSkill, Equipment equipment, params ItemObject.ItemTypeEnum[] itemTypeEnums)
+            static void RemoveNonBestSkillItems(IEnumerable<SkillObject> skills, SkillObject bestSkill, Equipment equipment,
+                params ItemObject.ItemTypeEnum[] itemTypeEnums)
             {
                 foreach (var x in equipment
                     .YieldWeaponSlots()
@@ -595,7 +799,8 @@ namespace BLTAdoptAHero
                 }
             }
 
-            static void RemoveNonBestMatchingWeapons(SkillObject skillObject, Equipment equipment, params ItemObject.ItemTypeEnum[] itemTypeEnums)
+            static void RemoveNonBestMatchingWeapons(SkillObject skillObject, Equipment equipment,
+                params ItemObject.ItemTypeEnum[] itemTypeEnums)
             {
                 foreach (var x in GetMatchingItems(skillObject, equipment, itemTypeEnums)
                     // Highest tier first
@@ -614,14 +819,15 @@ namespace BLTAdoptAHero
                     .Where(e => e.element.IsEmpty)
                     .ToList();
             }
-            
+
             static (EquipmentElement element, EquipmentIndex index) FindEmptyWeaponSlot(Equipment equipment)
             {
                 var emptySlots = FindAllEmptyWeaponSlots(equipment);
                 return emptySlots.Any() ? emptySlots.First() : (EquipmentElement.Invalid, EquipmentIndex.None);
             }
 
-            static ItemObject FindRandomTieredEquipment(SkillObject skill, int tier, Hero hero, Func<ItemObject, bool> filter = null, params ItemObject.ItemTypeEnum[] itemTypeEnums)
+            static ItemObject FindRandomTieredEquipment(SkillObject skill, int tier, Hero hero,
+                Func<ItemObject, bool> filter = null, params ItemObject.ItemTypeEnum[] itemTypeEnums)
             {
                 var items = ItemObject.All
                     // Usable
@@ -631,7 +837,7 @@ namespace BLTAdoptAHero
                     // Correct skill
                     .Where(item => skill == null || item.RelevantSkill == skill)
                     .ToList();
-                    
+
                 // Correct tier
                 var tieredItems = items.Where(item => (int) item.Tier == tier).ToList();
 
@@ -645,7 +851,9 @@ namespace BLTAdoptAHero
                 return tieredItems.SelectRandom();
             }
 
-            static ItemObject UpgradeWeapon(SkillObject skill, SkillObject[] skillGroup, ItemObject.ItemTypeEnum[] itemTypeEnums, EquipmentIndex defaultEquipmentIndex, Hero hero, Equipment equipment, int tier, Func<ItemObject, bool> filter = null)
+            static ItemObject UpgradeWeapon(SkillObject skill, SkillObject[] skillGroup,
+                ItemObject.ItemTypeEnum[] itemTypeEnums, EquipmentIndex defaultEquipmentIndex, Hero hero, Equipment equipment,
+                int tier, Func<ItemObject, bool> filter = null)
             {
                 // Remove all non-skill matching weapons
                 RemoveNonBestSkillItems(skillGroup, skill, equipment, itemTypeEnums);
@@ -679,8 +887,9 @@ namespace BLTAdoptAHero
 
                 return element.Item;
             }
-            
-            static ItemObject UpgradeItemInSlot(EquipmentIndex equipmentIndex, ItemObject.ItemTypeEnum itemTypeEnum, int tier, Equipment equipment, Hero hero, Func<ItemObject, bool> filter = null)
+
+            static ItemObject UpgradeItemInSlot(EquipmentIndex equipmentIndex, ItemObject.ItemTypeEnum itemTypeEnum, int tier,
+                Equipment equipment, Hero hero, Func<ItemObject, bool> filter = null)
             {
                 var slot = equipment[equipmentIndex];
                 if (slot.Item == null || slot.Item.Tier < (ItemObject.ItemTiers) tier)
@@ -692,16 +901,18 @@ namespace BLTAdoptAHero
                         return item;
                     }
                 }
+
                 return null;
             }
-            
-            if (settings.Melee)
+
+            if (upgradeMelee)
             {
                 // We want to be left with only one melee weapon of the appropriate skill, of the highest tier, then we will 
                 // try and upgrade it
                 var highestSkill = MeleeSkills.OrderByDescending(s => usersHero.GetSkillValue(s)).First();
 
-                var newWeapon = UpgradeWeapon(highestSkill, MeleeSkills, MeleeItems, EquipmentIndex.Weapon0, usersHero, usersHero.BattleEquipment, settings.Tier);
+                var newWeapon = UpgradeWeapon(highestSkill, MeleeSkills, MeleeItems, EquipmentIndex.Weapon0, usersHero,
+                    usersHero.BattleEquipment, targetTier);
                 if (newWeapon != null)
                 {
                     itemsPurchased.Add(newWeapon);
@@ -714,13 +925,14 @@ namespace BLTAdoptAHero
 
                 if (highestSkill == DefaultSkills.OneHanded)
                 {
-                    var (element, index) = !shieldSlots.Any() ? FindEmptyWeaponSlot(usersHero.BattleEquipment) : shieldSlots.First();
+                    var (element, index) =
+                        !shieldSlots.Any() ? FindEmptyWeaponSlot(usersHero.BattleEquipment) : shieldSlots.First();
                     if (index == EquipmentIndex.None)
                         index = EquipmentIndex.Weapon1;
 
-                    if (element.Item == null || element.Item.Tier < (ItemObject.ItemTiers) settings.Tier)
+                    if (element.Item == null || element.Item.Tier < (ItemObject.ItemTiers) targetTier)
                     {
-                        var shield = FindRandomTieredEquipment(DefaultSkills.OneHanded, settings.Tier, usersHero,
+                        var shield = FindRandomTieredEquipment(DefaultSkills.OneHanded, targetTier, usersHero,
                             null, ItemObject.ItemTypeEnum.Shield);
                         if (shield != null)
                         {
@@ -731,13 +943,14 @@ namespace BLTAdoptAHero
                 }
             }
 
-            if (settings.Ranged)
+            if (upgradeRanged)
             {
                 // We want to be left with only one weapon of the appropriate skill, of the highest tier, then we will 
                 // try and upgrade it
                 var highestSkill = RangedSkills.OrderByDescending(s => usersHero.GetSkillValue(s)).First();
-                
-                var weapon = UpgradeWeapon(highestSkill, RangedSkills, RangedItems, EquipmentIndex.Weapon3, usersHero, usersHero.BattleEquipment, settings.Tier);
+
+                var weapon = UpgradeWeapon(highestSkill, RangedSkills, RangedItems, EquipmentIndex.Weapon3, usersHero,
+                    usersHero.BattleEquipment, targetTier);
 
                 if (weapon?.Type == ItemObject.ItemTypeEnum.Thrown)
                 {
@@ -748,7 +961,7 @@ namespace BLTAdoptAHero
                         usersHero.BattleEquipment[index] = new EquipmentElement(weapon);
                     }
                 }
-                else if(weapon?.Type is ItemObject.ItemTypeEnum.Bow or ItemObject.ItemTypeEnum.Crossbow)
+                else if (weapon?.Type is ItemObject.ItemTypeEnum.Bow or ItemObject.ItemTypeEnum.Crossbow)
                 {
                     var ammoType = ItemObject.GetAmmoTypeForItemType(weapon.Type);
                     var arrowSlots = usersHero.BattleEquipment
@@ -758,9 +971,9 @@ namespace BLTAdoptAHero
                     var (slot, index) = !arrowSlots.Any() ? FindEmptyWeaponSlot(usersHero.BattleEquipment) : arrowSlots.First();
                     if (index == EquipmentIndex.None)
                         index = EquipmentIndex.Weapon3;
-                    if (slot.Item == null || slot.Item.Tier < (ItemObject.ItemTiers) settings.Tier)
+                    if (slot.Item == null || slot.Item.Tier < (ItemObject.ItemTiers) targetTier)
                     {
-                        var ammo = FindRandomTieredEquipment(null, settings.Tier, usersHero, null, ammoType);
+                        var ammo = FindRandomTieredEquipment(null, targetTier, usersHero, null, ammoType);
                         if (ammo != null)
                         {
                             usersHero.BattleEquipment[index] = new EquipmentElement(ammo);
@@ -770,46 +983,43 @@ namespace BLTAdoptAHero
                 }
             }
 
-            if (settings.Armor)
+            if (upgradeArmor)
             {
                 foreach (var (index, itemType) in ArmorIndexType)
                 {
-                    var newItem = UpgradeItemInSlot(index, itemType, settings.Tier, usersHero.BattleEquipment, usersHero);
-                    if (newItem != null) itemsPurchased.Add(newItem); 
+                    var newItem = UpgradeItemInSlot(index, itemType, targetTier, usersHero.BattleEquipment, usersHero);
+                    if (newItem != null) itemsPurchased.Add(newItem);
                 }
             }
 
-            if (settings.Horse)
+            if (upgradeHorse)
             {
-                var newHorse = UpgradeItemInSlot(EquipmentIndex.Horse, ItemObject.ItemTypeEnum.Horse, settings.Tier, usersHero.BattleEquipment, usersHero);
-                if (newHorse != null) itemsPurchased.Add(newHorse); 
-                var newHarness = UpgradeItemInSlot(EquipmentIndex.HorseHarness, ItemObject.ItemTypeEnum.HorseHarness, settings.Tier, usersHero.BattleEquipment, usersHero);
+                var newHorse = UpgradeItemInSlot(EquipmentIndex.Horse, ItemObject.ItemTypeEnum.Horse, targetTier,
+                    usersHero.BattleEquipment, usersHero);
+                if (newHorse != null) itemsPurchased.Add(newHorse);
+                var newHarness = UpgradeItemInSlot(EquipmentIndex.HorseHarness, ItemObject.ItemTypeEnum.HorseHarness,
+                    targetTier, usersHero.BattleEquipment, usersHero);
                 if (newHarness != null) itemsPurchased.Add(newHarness);
             }
 
-            if (settings.Civilian)
+            if (upgradeCivilian)
             {
                 foreach (var (index, itemType) in ArmorIndexType)
                 {
-                    var newItem = UpgradeItemInSlot(index, itemType, settings.Tier, usersHero.CivilianEquipment, usersHero, o => o.IsCivilian);
-                    if (newItem != null) itemsPurchased.Add(newItem); 
+                    var newItem = UpgradeItemInSlot(index, itemType, targetTier, usersHero.CivilianEquipment, usersHero,
+                        o => o.IsCivilian);
+                    if (newItem != null) itemsPurchased.Add(newItem);
                 }
 
                 var upgradeSlot = usersHero.CivilianEquipment.YieldWeaponSlots().FirstOrDefault(s => !s.element.IsEmpty);
                 if (upgradeSlot.element.IsEmpty)
                     upgradeSlot = FindEmptyWeaponSlot(usersHero.CivilianEquipment);
 
-                UpgradeItemInSlot(upgradeSlot.index, ItemObject.ItemTypeEnum.OneHandedWeapon, settings.Tier, usersHero.CivilianEquipment, usersHero);
+                UpgradeItemInSlot(upgradeSlot.index, ItemObject.ItemTypeEnum.OneHandedWeapon, targetTier,
+                    usersHero.CivilianEquipment, usersHero);
             }
-            
-            if (!itemsPurchased.Any())
-            {
-                RewardManager.NotifyCancelled(redemptionId, $"Couldn't find any items to upgrade!");
-                return;
-            }
-            
-            var itemsStr = string.Join(", ", itemsPurchased.Select(i => i.Name.ToString()));
-            RewardManager.NotifyComplete(redemptionId, $"You purchased these items: {itemsStr}!");
+
+            return itemsPurchased;
         }
     }
 }

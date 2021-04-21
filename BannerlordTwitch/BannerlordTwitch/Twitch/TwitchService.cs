@@ -7,6 +7,8 @@ using BannerlordTwitch.Testing;
 using BannerlordTwitch.Util;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TwitchLib.Api;
 using TwitchLib.Api.Core.Enums;
 using TwitchLib.Api.Helix.Models.ChannelPoints;
@@ -25,6 +27,7 @@ namespace BannerlordTwitch
         private TwitchPubSub pubSub;
         private readonly TwitchAPI api;
         private string channelId;
+        private readonly AuthSettings authSettings;
         private readonly Settings settings;
 
         private ConcurrentDictionary<Guid, OnRewardRedeemedArgs> redemptionCache = new ConcurrentDictionary<Guid, OnRewardRedeemedArgs>();
@@ -42,23 +45,64 @@ namespace BannerlordTwitch
                 settings = Settings.Load();
                 if (settings == null)
                 {
+                    InformationManager.ShowInquiry(
+                        new InquiryData(
+                            "Bannerlord Twitch MOD DISABLED",
+                            $"Failed to load action/command settings, please check the formatting in Bannerlord-Twitch.jsonc",
+                            true, false, "Okay", null,
+                            () => {}, () => {}), true);
                     Log.ScreenCritical($"MOD DISABLED: Failed to load settings from settings file, please check the formatting");
                     return;
                 }
             }
             catch (Exception e)
             {
+                InformationManager.ShowInquiry(
+                    new InquiryData(
+                        "Bannerlord Twitch MOD DISABLED",
+                        $"Failed to load action/command settings, please check the formatting in Bannerlord-Twitch.jsonc\n{e.Message}",
+                        true, false, "Okay", null,
+                        () => {}, () => {}), true);
                 Log.ScreenCritical(
                     $"MOD DISABLED: Failed to load settings from settings file, please check the formatting ({e.Message})");
+                return;
+            }
+            try
+            {
+                authSettings = AuthSettings.Load();
+                if (authSettings == null)
+                {
+                    InformationManager.ShowInquiry(
+                        new InquiryData(
+                            "Bannerlord Twitch MOD DISABLED",
+                            $"Failed to load auth settings, please check the formatting in Bannerlord-Twitch-Auth.jsonc",
+                            true, false, "Okay", null,
+                            () => {}, () => {}), true);
+                    Log.ScreenCritical($"MOD DISABLED: Failed to load auth settings from the auth file, please check the formatting");
+                    return;
+                }
+            }
+            catch(Exception e)
+            {
+                // Don't show the exception message, it might leak something
+                InformationManager.ShowInquiry(
+                    new InquiryData(
+                        "Bannerlord Twitch MOD DISABLED",
+                        $"Failed to load auth settings, please check the formatting in Bannerlord-Twitch-Auth.jsonc",
+                        true, false, "Okay", null,
+                        () => {}, () => {}), true);
+                Log.ScreenCritical(
+                    $"MOD DISABLED: Failed to load auth settings from the auth file, please check the formatting");
+                Log.Error(e.ToString());
                 return;
             }
 
             api = new TwitchAPI();
             //api.Settings.Secret = SECRET;
-            api.Settings.ClientId = settings.ClientID;
-            api.Settings.AccessToken = settings.AccessToken;
+            api.Settings.ClientId = authSettings.ClientID;
+            api.Settings.AccessToken = authSettings.AccessToken;
 
-            api.Helix.Users.GetUsersAsync(accessToken: settings.AccessToken).ContinueWith(t =>
+            api.Helix.Users.GetUsersAsync(accessToken: authSettings.AccessToken).ContinueWith(t =>
             {
                 MainThreadSync.Run(() =>
                 {
@@ -74,7 +118,7 @@ namespace BannerlordTwitch
                     channelId = user.Id;
                     
                     // Connect the chatbot
-                    bot = new Bot(user.Login, settings);
+                    bot = new Bot(user.Login, authSettings, settings);
 
                     if (string.IsNullOrEmpty(user.BroadcasterType))
                     {
@@ -117,7 +161,7 @@ namespace BannerlordTwitch
             GetCustomRewardsResponse existingRewards = null;
             try
             {
-                existingRewards = await api.Helix.ChannelPoints.GetCustomReward(channelId, accessToken: settings.AccessToken);
+                existingRewards = await api.Helix.ChannelPoints.GetCustomReward(channelId, accessToken: authSettings.AccessToken);
             }
             catch (Exception e)
             {
@@ -129,7 +173,7 @@ namespace BannerlordTwitch
             // {
             //     try
             //     {
-            //         await api.Helix.ChannelPoints.DeleteCustomReward(channelId, reward.Id, accessToken: settings.AccessToken);
+            //         await api.Helix.ChannelPoints.DeleteCustomReward(channelId, reward.Id, accessToken: authSettings.AccessToken);
             //         Log.Info($"Removed reward {reward.Title} ({reward.Id})");
             //     }
             //     catch (Exception e)
@@ -142,7 +186,7 @@ namespace BannerlordTwitch
             {
                 try
                 {
-                    var createdReward = (await api.Helix.ChannelPoints.CreateCustomRewards(channelId, rewardDef.RewardSpec, settings.AccessToken)).Data.First();
+                    var createdReward = (await api.Helix.ChannelPoints.CreateCustomRewards(channelId, rewardDef.RewardSpec, authSettings.AccessToken)).Data.First();
                     rewardMap.TryAdd(createdReward.Id, rewardDef);
                     Log.Info($"Created reward {createdReward.Title} ({createdReward.Id})");
                 }
@@ -309,7 +353,7 @@ namespace BannerlordTwitch
                     redemption.RewardId.ToString(),
                     new List<string> {redemption.RedemptionId.ToString()},
                     new UpdateCustomRewardRedemptionStatusRequest {Status = status},
-                    settings.AccessToken
+                    authSettings.AccessToken
                 );
                 Log.Info($"Set redemption status of {redemption.RedemptionId} ({redemption.RewardTitle} for {redemption.DisplayName}) to {status}");
             }
@@ -327,7 +371,7 @@ namespace BannerlordTwitch
             // Obsolete warning disabled because no new version has yet been written!
             pubSub.ListenToRewards(channelId);
 #pragma warning restore 618
-            pubSub.SendTopics(settings.AccessToken);
+            pubSub.SendTopics(authSettings.AccessToken);
         }
         
         // private void OnOnPubSubServiceClosed(object sender, EventArgs e)

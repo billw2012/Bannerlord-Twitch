@@ -5,23 +5,6 @@
     // Use something with proper json validation to edit this, e.g. Visual Studio Code (https://code.visualstudio.com/download).
     // If you use notepad you will make mistakes and the mod won't work (usually too many or too few commas)!
 
-    // Auth Settings ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Go to https://twitchtokengenerator.com/quick/rv3hDDw31w to generate an access token then paste it in AccessToken below.
-    // It will last 60 days, after which you can just generate another one.
-    //   !!! Keep it secret as it gives write access to channel point rewards (although it can only modify ones it created) !!!
-    //   !!! If you think it was compromised then go to https://twitchtokengenerator.com and revoke it. !!!
-    "AccessToken": "<paste your token here>",
-    // You can use the same access token for the bot if you want, this means your own account will respond to 
-    // commands in your chat (with the bot prefix).
-    // Alternatively if you want a different bot account, then create a new twitch account with the name you want, 
-    // login to it, then goto https://twitchtokengenerator.com/quick/VKKQSNK5tT to generate a token and paste 
-    // it below:
-    "BotAccessToken": "<paste bot token here>",
-    // This is the twitchtokengenerator client ID, it shouldn't change
-    "ClientID": "gp762nuuoqcoxypju8c569th9wz7q5",
-    // This is prefixed on all chat messages sent by the bot
-    "BotMessagePrefix": "[BLT] ",
-
     // Rewards ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Here you can specify the channel point rewards that will be created by the mod.
     // There is a range of documented examples using the Adopt a Hero module that comes with the mod.
@@ -38,23 +21,63 @@
         {
             // All Rewards have a RewardSpec, which defines the reward for twitch
             "RewardSpec": {
-                "title": "Adopt a Hero", // Name of the reward, as it will appear on twitch
-                "cost": 5000, // Channel point cost
-                "is_enabled": true, // Set this to enable the reward immediately upon creation
-                "background_color": "#cca6de", // Standard web format color code, use something like https://www.google.com/search?q=color+picker
-                "max_per_stream": 10, // Total maximum that can happen in a single stream
-                "max_per_user_per_stream": 1, // Max an individual viewer can redeem per stream
-                "global_cooldown_seconds": 30 // Can only be redeemed once every 30 seconds by anyone
+                "title": "Adopt a Hero",
+                // Name of the reward, as it will appear on twitch
+                "cost": 5000,
+                // Channel point cost
+                "is_enabled": true,
+                // Set this to enable the reward immediately upon creation
+                "background_color": "#cca6de",
+                // Standard web format color code, use something like https://www.google.com/search?q=color+picker
+                "max_per_stream": 10,
+                // Total maximum that can happen in a single stream
+                "max_per_user_per_stream": 1,
+                // Max an individual viewer can redeem per stream
+                "global_cooldown_seconds": 30
+                // Can only be redeemed once every 30 seconds by anyone
             },
             // This is the Id of the Action that will handle this Reward
             "ActionId": "AdoptAHero",
             // This is the Action config, its specification depends on the Action itself
             "ActionConfig": {
-                "IsNoble": true, // Adopt only nobles
+                "IsNoble": true,
+                // Adopt only nobles
                 // "IsPlayerCompanion": true, // Adopt only companions *NOT TESTED YET*
-                "IsWanderer": true, // Adopt only wanderers
+                "IsWanderer": true,
+                // Adopt only wanderers
                 // "OnlySameFaction": true, // Adopt only within the same faction *NOT TESTED YET*
-                "AllowNewAdoptionOnDeath": true // Allows the viewer to adopt again if their previous hero dies
+                "AllowNewAdoptionOnDeath": true, // Allows the viewer to adopt again if their previous hero dies
+                // "SubscriberOnly": false, // This is intended for the bot command version, so you can limit to subs only
+                // "MinSubscribedMonths": 0, // This is intended for the bot command version, so you can limit to subs only
+                "StartingGold": 0,
+                "StartingEquipmentTier": 0,
+                "StartWithHorse": false,
+                "StartWithArmor": false
+            }
+        },
+        // AddGoldToHero ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // This converts channel points to gold, that is given to the adopted hero
+        // The player can spend this gold using other commands, if the config specifies it
+        {
+            "RewardSpec": {
+                "title": "10k gold",
+                "cost": 1000,
+                "is_enabled": true
+            },
+            "ActionId": "AddGoldToHero",
+            "ActionConfig": {
+                "Amount": 10000
+            }
+        },
+        {
+            "RewardSpec": {
+                "title": "100k gold",
+                "cost": 10000,
+                "is_enabled": true
+            },
+            "ActionId": "AddGoldToHero",
+            "ActionConfig": {
+                "Amount": 100000
             }
         },
         // SummonHero ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,7 +99,8 @@
                 "AllowArena": true,
                 "AllowHideOut": true,
                 "AllowFriendlyMission": false,
-                "OnPlayerSide": true // only player side is tested so far
+                "OnPlayerSide": true
+                // only player side is tested so far
             }
         },
         {
@@ -90,7 +114,8 @@
             "ActionId": "SummonHero",
             "ActionConfig": {
                 "AllowFriendlyMission": true,
-                "OnPlayerSide": true // only player side is tested so far
+                "OnPlayerSide": true
+                // only player side is tested so far
             }
         },
         // SkillXP ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -388,13 +413,14 @@
     // Commands ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // These specify the bot commands, and the actions they should trigger.
     "Commands": [
+        // HeroInfoCommand ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         {
             // The actual chat text, chat users will type !stats to activate this command
             "Cmd": "stats",
             // When chat users type !help, this will be displayed, along with the Cmd above like: !stats - show your hero stats
-            "Help": "show your hero stats",
+            "Help": "Hero stats",
             // HeroCommand is part of the Adopt a Hero module
-            "Handler": "HeroCommand",
+            "Handler": "HeroInfoCommand",
             "HandlerConfig": {
                 // Shows HP, Gold, last seen location
                 "ShowGeneral": true,
@@ -409,10 +435,100 @@
         },
         {
             "Cmd": "inv",
-            "Help": "show your hero equipment",
-            "Handler": "HeroCommand",
+            "Help": "Hero equipment",
+            "Handler": "HeroInfoCommand",
             "HandlerConfig": {
                 "ShowEquipment": true
+            }
+        },
+        // AdoptAHero ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // This is the bot command equivalent of the Adopt a Hero reward, allowing subscribers to run it only
+        {
+            "Cmd": "adopt",
+            "Help": "Adopt a Hero (subs only)",
+            "Handler": "AdoptAHero",
+            "HandlerConfig": {
+                "IsNoble": true,
+                // Adopt only nobles
+                // "IsPlayerCompanion": true, // Adopt only companions *NOT TESTED YET*
+                "IsWanderer": true,
+                // Adopt only wanderers
+                // "OnlySameFaction": true, // Adopt only within the same faction *NOT TESTED YET*
+                "AllowNewAdoptionOnDeath": true,
+                // Allows the viewer to adopt again if their previous hero dies
+                "SubscriberOnly": true
+            }
+        },
+        // SummonHero ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // This allows summoning the hero to the player
+        {
+            "Cmd": "summon",
+            "Help": "Appear near player (5k gold)",
+            "Handler": "SummonHero",
+            "HandlerConfig": {
+                // These flags allow you to limit where the spawning is allowed
+                "AllowFieldBattle": true,
+                "AllowSiegeBattle": true,
+                "AllowVillageBattle": true,
+                "AllowArena": true,
+                "AllowHideOut": true,
+                "AllowFriendlyMission": true,
+                "OnPlayerSide": true,
+                // only player side is tested so far
+                "GoldCost": 5000
+            }
+        },
+        // SkillXP ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        {
+            "Cmd": "skill",
+            "Help": "+5000xp to Skill (5k gold)",
+            "Handler": "SkillXP",
+            "HandlerConfig": {
+                "Auto": true,
+                "AmountLow": 5000,
+                "AmountHigh": 5000,
+                "GoldCost": 5000
+            }
+        },
+        // AttributePoints ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        {
+            "Cmd": "attr",
+            "Help": "+1 Attr (10k gold)",
+            "Handler": "AttributePoints",
+            "HandlerConfig": {
+                "Improvement": "Vigor, Control, Endurance, Cunning, Social, Intelligence",
+                "Random": true,
+                "AmountLow": 1,
+                "AmountHigh": 1,
+                "GoldCost": 10000
+            }
+        },
+        // FocusPoints ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        {
+            "Cmd": "focus",
+            "Help": "+1 Focus (10k gold)",
+            "Handler": "FocusPoints",
+            "HandlerConfig": {
+                "Auto": true,
+                "AmountLow": 1,
+                "AmountHigh": 1,
+                "GoldCost": 10000
+            }
+        },
+        // EquipHero ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        {
+            "Cmd": "equip",
+            "Help": "Improve Equip (15k gold)",
+            "Handler": "EquipHero",
+            "HandlerConfig": {
+                "AllowCompanionUpgrade": true,
+                "Armor": true,
+                "Melee": true,
+                "Ranged": true,
+                "Horse": true,
+                "Civilian": true,
+                "Upgrade": true, // this means just improve on whatever the hero currently has
+                "GoldCost": 15000
             }
         }
     ],

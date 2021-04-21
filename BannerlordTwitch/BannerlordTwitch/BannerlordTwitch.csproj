@@ -238,6 +238,7 @@
     <Content Include="..\..\README.md">
       <Link>README.md</Link>
     </Content>
+    <Content Include="Bannerlord-Twitch-Auth.jsonc" />
     <None Include="Bannerlord-Twitch.jsonc" />
     <None Include="SubModule.xml" />
   </ItemGroup>
@@ -246,8 +247,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
-    <Copy SourceFiles="Bannerlord-Twitch.jsonc;SubModule.xml" DestinationFolder="$(SolutionDir)\..\build\BannerlordTwitch"/>
-    <Copy SourceFiles="..\..\README.md" DestinationFolder="$(SolutionDir)\..\build\BannerlordTwitch"/>
+    <Copy SourceFiles="Bannerlord-Twitch.jsonc;Bannerlord-Twitch-Auth.jsonc;SubModule.xml" DestinationFolder="$(SolutionDir)\..\build\BannerlordTwitch" />
+    <Copy SourceFiles="..\..\README.md" DestinationFolder="$(SolutionDir)\..\build\BannerlordTwitch" />
+    <Copy SourceFiles="Bannerlord-Twitch.jsonc" DestinationFolder="$(SolutionDir)\..\build\BannerlordTwitch" />
     <ItemGroup>
       <SomeDir Include="$(SolutionDir)\..\build\BannerlordTwitch\**\*" />
     </ItemGroup>

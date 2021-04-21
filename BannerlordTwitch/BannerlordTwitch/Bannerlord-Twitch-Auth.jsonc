@@ -1,0 +1,26 @@
+﻿{
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // This is an example config file. You should copy it to %USERPROFILE%\Documents\Mount and Blade II Bannerlord\Configs 
+  // and edit it there.
+  // Use something with proper json validation to edit this, e.g. Visual Studio Code (https://code.visualstudio.com/download).
+  // If you use notepad you will make mistakes and the mod won't work (usually too many or too few commas)!
+
+  // Auth Settings ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Go to https://twitchtokengenerator.com/quick/rv3hDDw31w to generate an access token then paste it in AccessToken below.
+  // It will last 60 days, after which you can just generate another one.
+  //   !!! Keep it secret as it gives write access to channel point rewards (although it can only modify ones it created) !!!
+  //   !!! If you think it was compromised then go to https://twitchtokengenerator.com and revoke it. !!!
+  "AccessToken": "<paste your token here>",
+  // You can use the same access token for the bot if you want, this means your own account will respond to 
+  // commands in your chat (with the bot prefix).
+  // Alternatively if you want a different bot account, then create a new twitch account with the name you want, 
+  // login to it, then goto https://twitchtokengenerator.com/quick/VKKQSNK5tT to generate a token and paste 
+  // it below:
+  "BotAccessToken": "<paste bot token here>",
+  // This is the twitchtokengenerator client ID, it shouldn't change
+  "ClientID": "gp762nuuoqcoxypju8c569th9wz7q5",
+  // This is prefixed on all chat messages sent by the bot
+  "BotMessagePrefix": "░BLT░ "
+  
+  // Once these are configured you can move on to editing the Rewards and Commands in Bannerlord-Twitch.jsonc
+}

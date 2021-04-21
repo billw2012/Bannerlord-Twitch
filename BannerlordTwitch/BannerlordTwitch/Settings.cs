@@ -3,7 +3,9 @@ using System.IO;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TwitchLib.Api.Helix.Models.ChannelPoints.CreateCustomReward;
 using Formatting = Newtonsoft.Json.Formatting;
 #pragma warning disable 649
@@ -38,6 +40,7 @@ namespace BannerlordTwitch
         public string Type;
         public string Id;
         public string Args;
+        public CommandMessage command;
     }
     
     [UsedImplicitly]
@@ -50,14 +53,39 @@ namespace BannerlordTwitch
         public SimTestingItem[] Init;
         public SimTestingItem[] Use;
     }
-    
-    internal class Settings
+
+    internal class AuthSettings
     {
-        // public string Instructions;
         public string AccessToken;
         public string ClientID;
         public string BotAccessToken;
         public string BotMessagePrefix;
+        
+        private static string SaveFilePath => Path.Combine(Common.PlatformFileHelper.DocumentsPath,
+            "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch-Auth.jsonc");
+
+        public static AuthSettings Load()
+        {
+            if (!File.Exists(SaveFilePath))
+            {
+                var templateFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
+                    Path.GetFileName(SaveFilePath));
+                File.Copy(templateFileName, SaveFilePath);
+                InformationManager.ShowInquiry(
+                    new InquiryData(
+                        "Bannerlord Twitch",
+                        $"Auth settings file created, please close the game, and edit it at {SaveFilePath}",
+                        true, false, "Okay", null,
+                        () => {}, () => {}), true);
+            }
+            return JsonConvert.DeserializeObject<AuthSettings>(File.ReadAllText(SaveFilePath));
+        }
+    }
+    
+    internal class Settings
+    {
+        // public string Instructions;
+
         public Reward[] Rewards;
         public Command[] Commands;
         public GlobalConfig[] GlobalConfigs;
@@ -68,95 +96,50 @@ namespace BannerlordTwitch
         
         public static Settings Load()
         {
-            var filename = SaveFilePath;
-            if (!File.Exists(filename))
+            if (!File.Exists(SaveFilePath))
             {
-                Save(new Settings {
-                    AccessToken = "Go to https://twitchtokengenerator.com/quick/TgpaAFT9Sp to generate an ACCESS TOKEN (with the twitch account of your channel), then paste it here",
-                    ClientID = "gp762nuuoqcoxypju8c569th9wz7q5",
-                    BotAccessToken = "Either use the same access token as above (the bot will have your name), or sign into the twitch account you want to use as a bot, go to https://twitchtokengenerator.com/quick/0iN22Qaitu to generate an ACCESS TOKEN, and paste it here",
-                    BotMessagePrefix = "(BLT)",
-                    Rewards = new[] {
-                        new Reward {
-                            RewardSpec = new CreateCustomRewardsRequest
-                            {
-                                Title = "The title of the reward",
-                                Prompt = "The prompt for the viewer when they are redeeming the reward",
-                                Cost = 42,
-                                IsEnabled = true,
-                                BackgroundColor = "#7F2020",
-                            },
-                            ActionId = "ExampleAction",
-                            ActionConfig = JObject.FromObject( 
-                                new {
-                                    a_string = "hello",
-                                    a_number = 42.0f,
-                                })
-                        }
-                    },
-                    Commands = new []
-                    {
-                        new Command
-                        {
-                            Cmd = "chat command name goes here, no spaces",
-                            Help = "short description of the command, no longer than this",
-                            Handler = "registered handler name, from whatever extensions you have installed",
-                            HandlerConfig = JObject.FromObject( 
-                                new {
-                                    a_string = "hello",
-                                    a_number = 42.0f,
-                                })
-                        }
-                    },
-                    GlobalConfigs = new []
-                    {
-                        new GlobalConfig
-                        {
-                            Id = "these can be accessed by actions and commands, to allow plugins to have shared config across reward specs",
-                            Config = JObject.FromObject( 
-                                new {
-                                    a_string = "hello",
-                                    a_number = 42.0f,
-                                })
-                        }
-                    }
-                });
-                return default;
+                var templateFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
+                    Path.GetFileName(SaveFilePath));
+                File.Copy(templateFileName, SaveFilePath);
+                InformationManager.ShowInquiry(
+                    new InquiryData(
+                        "Bannerlord Twitch",
+                        $"Reward/Command settings file created, please close the game, and edit it at {SaveFilePath}",
+                        true, false, "Okay", null,
+                    () => {}, () => {}), true);
             }
-            else
-            {
-                var settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(filename));
-                if (settings == null)
-                    return null;
-                
-                // Fix up the settings to avoid NullReferences etc
-                settings.Rewards ??= new Reward[] { };
-                settings.Commands ??= new Command[] { };
-                settings.GlobalConfigs ??= new GlobalConfig[] { };
+            
+            var settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(SaveFilePath));
+            if (settings == null)
+                return null;
+            
+            // Fix up the settings to avoid NullReferences etc
+            settings.Rewards ??= new Reward[] { };
+            settings.Commands ??= new Command[] { };
+            settings.GlobalConfigs ??= new GlobalConfig[] { };
 
-                foreach (var reward in settings.Rewards)
+            foreach (var reward in settings.Rewards)
+            {
+                if (reward.RewardSpec == null)
                 {
-                    if (reward.RewardSpec == null)
-                    {
-                        throw new FormatException($"A reward is missing a RewardSpec");
-                    }
-                    if (reward.ActionId == null)
-                    {
-                        throw new FormatException($"A reward is missing an ActionId");
-                    }
-                    reward.RewardSpec.IsMaxPerStreamEnabled = reward.RewardSpec.MaxPerStream.HasValue;
-                    reward.RewardSpec.IsMaxPerUserPerStreamEnabled = reward.RewardSpec.MaxPerUserPerStream.HasValue;
-                    reward.RewardSpec.IsGlobalCooldownEnabled = reward.RewardSpec.GlobalCooldownSeconds.HasValue;
+                    throw new FormatException($"A reward is missing a RewardSpec");
                 }
-                
-                return settings;
+                if (reward.ActionId == null)
+                {
+                    throw new FormatException($"A reward is missing an ActionId");
+                }
+                reward.RewardSpec.IsMaxPerStreamEnabled = reward.RewardSpec.MaxPerStream.HasValue;
+                reward.RewardSpec.IsMaxPerUserPerStreamEnabled = reward.RewardSpec.MaxPerUserPerStream.HasValue;
+                reward.RewardSpec.IsGlobalCooldownEnabled = reward.RewardSpec.GlobalCooldownSeconds.HasValue;
             }
+            
+            return settings;
         }
 
-        public static void Save(Settings settings)
-        {
-            var filename = SaveFilePath;
-            File.WriteAllText(filename, JsonConvert.SerializeObject(settings, Formatting.Indented));
-        }
+        // public static void Save(Settings settings)
+        // {
+        //     var filename = SaveFilePath;
+        //     File.WriteAllText(filename, JsonConvert.SerializeObject(settings, Formatting.Indented));
+        // }
     }
 }

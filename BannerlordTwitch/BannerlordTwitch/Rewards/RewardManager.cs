@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using BannerlordTwitch.Util;
 using Newtonsoft.Json.Linq;
 using TaleWorlds.Core;
@@ -15,24 +16,29 @@ namespace BannerlordTwitch.Rewards
         
         public static void Init()
         {
-            var redemptionActionTypes = typeof(RewardManager).Assembly
+            RegisterAll(typeof(RewardManager).Assembly);
+        }
+
+        public static void RegisterAll(Assembly assembly)
+        {
+            var redemptionActionTypes = assembly
                 .GetTypes()
                 .Where(t => typeof(IRedemptionAction).IsAssignableFrom(t) && !t.IsAbstract);
             foreach (var redemptionActionType in redemptionActionTypes)
             {
-                Register((IRedemptionAction)Activator.CreateInstance(redemptionActionType));
+                RegisterAction((IRedemptionAction) Activator.CreateInstance(redemptionActionType));
             }
-            
-            var botCommands = typeof(RewardManager).Assembly
+
+            var botCommands = assembly
                 .GetTypes()
                 .Where(t => typeof(IBotCommand).IsAssignableFrom(t) && !t.IsAbstract);
             foreach (var botCommandType in botCommands)
             {
-                Register((IBotCommand)Activator.CreateInstance(botCommandType));
+                RegisterCommand((IBotCommand) Activator.CreateInstance(botCommandType));
             }
         }
-        
-        public static bool Register(IRedemptionAction action)
+
+        public static bool RegisterAction(IRedemptionAction action)
         {
             var id = action.GetType().Name;
             if (actions.ContainsKey(id))
@@ -45,7 +51,7 @@ namespace BannerlordTwitch.Rewards
             return true;
         }
         
-        public static bool Register(IBotCommand command)
+        public static bool RegisterCommand(IBotCommand command)
         {
             var id = command.GetType().Name;
             if (commands.ContainsKey(id))
@@ -60,13 +66,13 @@ namespace BannerlordTwitch.Rewards
 
         public static JObject FindGlobalConfig(string id) => BLTModule.TwitchService.FindGlobalConfig(id);
 
-        internal static void Command(string id, string args, string userName, string replyId, JObject config)
+        internal static void Command(string id, string args, CommandMessage commandMessage, JObject config)
         {
             if (commands.TryGetValue(id, out var cmdHandler))
             {
                 try
                 {
-                    cmdHandler.Execute(args, userName, replyId, config);
+                    cmdHandler.Execute(args, commandMessage, config);
                 }
                 catch (Exception e)
                 {
