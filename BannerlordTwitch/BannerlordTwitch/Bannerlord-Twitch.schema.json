@@ -1,0 +1,76 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "Rewards": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "RewardSpec": {
+              "type": "object",
+              "properties": {
+                "Title": {
+                  "type": "string"
+                },
+                "Cost": {
+                  "type": "integer"
+                },
+                "IsEnabled": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "Title",
+                "Cost",
+                "IsEnabled"
+              ]
+            },
+            "ActionId": {
+              "type": "string"
+            },
+            "ActionConfig": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "RewardSpec",
+            "ActionId"
+          ]
+        }
+      ]
+    },
+    "Commands": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "Cmd": {
+              "type": "string"
+            },
+            "Help": {
+              "type": "string"
+            },
+            "Handler": {
+              "type": "string"
+            },
+            "HandlerConfig": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "Cmd",
+            "Help",
+            "Handler"
+          ]
+        }
+      ]
+    },
+    "GlobalConfigs": {
+      "type": "array",
+      "items": {}
+    }
+  }
+}
