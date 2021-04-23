@@ -156,8 +156,15 @@ namespace BannerlordTwitch
             });
         }
 
+        ~TwitchService()
+        {
+            RemoveRewards();
+        }
+        
         private async void RegisterRewardsAsync()
         {
+            var db = Db.Load();
+            
             GetCustomRewardsResponse existingRewards = null;
             try
             {
@@ -167,34 +174,42 @@ namespace BannerlordTwitch
             {
                 Log.Error($"Couldn't retrieve existing rewards: {e.Message}");
             }
-            
-            // Can't really do this, channel might have rewards created by other people using the twitchtokengenerator
-            // foreach (var reward in rewards?.Data ?? Enumerable.Empty<CustomReward>())
-            // {
-            //     try
-            //     {
-            //         await api.Helix.ChannelPoints.DeleteCustomReward(channelId, reward.Id, accessToken: authSettings.AccessToken);
-            //         Log.Info($"Removed reward {reward.Title} ({reward.Id})");
-            //     }
-            //     catch (Exception e)
-            //     {
-            //         Log.Info($"Couldn't remove reward {reward.Title} ({reward.Id}): {e.Message}");
-            //     }
-            // }
-            
-            foreach (var rewardDef in settings.Rewards.Where(r => existingRewards == null || !existingRewards.Data.Any(e => e.Title == r.RewardSpec?.Title)))
+
+            foreach (var rewardDef in settings.Rewards.Where(r => existingRewards == null || existingRewards.Data.All(e => e.Title != r.RewardSpec?.Title)))
             {
                 try
                 {
                     var createdReward = (await api.Helix.ChannelPoints.CreateCustomRewards(channelId, rewardDef.RewardSpec, authSettings.AccessToken)).Data.First();
                     rewardMap.TryAdd(createdReward.Id, rewardDef);
                     Log.Info($"Created reward {createdReward.Title} ({createdReward.Id})");
+                    db.RewardsCreated.Add(createdReward.Id);
                 }
                 catch (Exception e)
                 {
                     Log.Error($"Couldn't create reward {rewardDef.RewardSpec.Title}: {e.Message}");
                 }
             }
+            
+            Db.Save(db);
+        }
+
+        private void RemoveRewards()
+        {
+            var db = Db.Load();
+            foreach (var reward in db.RewardsCreated)
+            {
+                try
+                {
+                    api.Helix.ChannelPoints.DeleteCustomReward(channelId, reward, accessToken: authSettings.AccessToken).Wait();
+                    Log.Info($"Removed reward {reward}");
+                }
+                catch (Exception e)
+                {
+                    Log.Info($"Couldn't remove reward {reward}: {e.Message}");
+                }
+            }
+            db.RewardsCreated.Clear();
+            Db.Save(db);
         }
 
         private void OnRewardRedeemed(object sender, OnRewardRedeemedArgs redeemedArgs)
@@ -207,6 +222,12 @@ namespace BannerlordTwitch
                     Log.Info($"Reward {redeemedArgs.RewardTitle} not owned by this extension, ignoring it");
                     // We don't cancel redemptions we don't know about!
                     // RedemptionCancelled(e.RedemptionId, $"Reward {e.RewardTitle} not found");
+                    return;
+                }
+
+                if (redeemedArgs.Status != "UNFULFILLED")
+                {
+                    Log.Info($"Reward {redeemedArgs.RewardTitle} status {redeemedArgs.Status} is not interesting, ignoring it");
                     return;
                 }
 
@@ -232,25 +253,6 @@ namespace BannerlordTwitch
             });
         }
 
-        // public void TestRandomRewardOrCommand(string user, string args)
-        // {
-        //     var randomRewardOrCmd = settings.Rewards.Cast<object>().Concat(settings.Commands).SelectRandom();
-        //
-        //     switch (randomRewardOrCmd)
-        //     {
-        //         case Reward reward:
-        //             TestRedeem(reward.RewardSpec.Title, user, args);
-        //             break;
-        //         case Command command:
-        //             var cmd = settings.Commands.FirstOrDefault(c => c.Cmd == command.Cmd);
-        //             if (cmd != null)
-        //             {
-        //                 RewardManager.Command(cmd.Handler, args, user, null, cmd.Config);
-        //             }
-        //             break;
-        //     }
-        // }
-
         public void TestRedeem(string rewardName, string user, string message)
         {
             var reward = settings?.Rewards.FirstOrDefault(r => r.RewardSpec.Title == rewardName);
@@ -274,13 +276,13 @@ namespace BannerlordTwitch
             RewardManager.Enqueue(reward.ActionId, guid, message, user, reward.ActionConfig);
         }
 
-        public void ShowMessage(string screenMsg, string botMsg, string userToAt)
+        private void ShowMessage(string screenMsg, string botMsg, string userToAt)
         {
             Log.Screen(screenMsg);
             SendChat($"@{userToAt}: {botMsg}");
         }
-        
-        public void ShowMessageFail(string screenMsg, string botMsg, string userToAt)
+
+        private void ShowMessageFail(string screenMsg, string botMsg, string userToAt)
         {
             Log.ScreenFail(screenMsg);
             SendChat($"@{userToAt}: {botMsg}");
@@ -297,8 +299,8 @@ namespace BannerlordTwitch
             Log.Trace($"[chat] {replyId}->{string.Join(" - ", message)}");
             bot.SendReply(replyId, message);
         }
-        
-        public void ShowCommandHelp(string replyId)
+
+        private void ShowCommandHelp(string replyId)
         {
             bot.SendReply(replyId, "Commands: ".Yield()
                 .Concat(settings.Commands
@@ -379,9 +381,8 @@ namespace BannerlordTwitch
         //     Log.ScreenFail("PubSub Service closed, attempting reconnect...");
         //     pubSub.Connect();
         // }
-
-
-        public JObject FindGlobalConfig(string id) => settings?.GlobalConfigs?.FirstOrDefault(c => c.Id == id)?.Config;
+        
+        public object FindGlobalConfig(string id) => settings?.GlobalConfigs?.FirstOrDefault(c => c.Id == id)?.Config;
 
         private static SimulationTest simTest;
         

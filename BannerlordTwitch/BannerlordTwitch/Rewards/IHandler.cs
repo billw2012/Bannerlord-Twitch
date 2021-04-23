@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace BannerlordTwitch
 {
@@ -20,8 +22,9 @@ namespace BannerlordTwitch
         public bool IsPartner;
     }
     
-    public interface IBotCommand
+    public interface IHandler
     {
-        void Execute(string args, CommandMessage message, JObject config);
+        void Execute(string args, CommandMessage message, object config);
+        Type HandlerConfigType { get; }
     }
 }

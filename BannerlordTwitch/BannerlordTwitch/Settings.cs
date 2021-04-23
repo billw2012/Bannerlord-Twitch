@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
@@ -7,6 +8,8 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TwitchLib.Api.Helix.Models.ChannelPoints.CreateCustomReward;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 using Formatting = Newtonsoft.Json.Formatting;
 #pragma warning disable 649
 
@@ -17,7 +20,7 @@ namespace BannerlordTwitch
         // Docs here https://dev.twitch.tv/docs/api/reference#create-custom-rewards
         public CreateCustomRewardsRequest RewardSpec;
         public string ActionId;
-        public JObject ActionConfig;
+        public object ActionConfig;
     }
     
     internal class Command
@@ -25,13 +28,13 @@ namespace BannerlordTwitch
         public string Cmd;
         public string Help;
         public string Handler;
-        public JObject HandlerConfig;
+        public object HandlerConfig;
     }
     
     internal class GlobalConfig
     {
         public string Id;
-        public JObject Config;
+        public object Config;
     }
 
     [UsedImplicitly]
@@ -60,9 +63,10 @@ namespace BannerlordTwitch
         public string ClientID;
         public string BotAccessToken;
         public string BotMessagePrefix;
+        public object Test;
         
         private static string SaveFilePath => Path.Combine(Common.PlatformFileHelper.DocumentsPath,
-            "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch-Auth.jsonc");
+            "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch-Auth.yaml");
 
         public static AuthSettings Load()
         {
@@ -78,8 +82,28 @@ namespace BannerlordTwitch
                         true, false, "Okay", null,
                         () => {}, () => {}), true);
             }
-            return JsonConvert.DeserializeObject<AuthSettings>(File.ReadAllText(SaveFilePath));
+            return new DeserializerBuilder().Build().Deserialize<AuthSettings>(File.ReadAllText(SaveFilePath));
         }
+    }
+    
+    internal class Db
+    {
+#pragma warning disable 414
+        public int Version = 1;
+#pragma warning restore 414
+        public List<string> RewardsCreated = new();
+        
+        private static string DbFilePath => Path.Combine(Common.PlatformFileHelper.DocumentsPath,
+            "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch-Db.yaml");
+
+        public static Db Load()
+        {
+            return !File.Exists(DbFilePath) 
+                ? new Db()
+                : new DeserializerBuilder().Build().Deserialize<Db>(File.ReadAllText(DbFilePath));
+        }
+        
+        public static void Save(Db db) => File.WriteAllText(DbFilePath, new SerializerBuilder().Build().Serialize(db));
     }
     
     internal class Settings
@@ -92,7 +116,7 @@ namespace BannerlordTwitch
         public SimTestingConfig SimTesting;
 
         private static string SaveFilePath => Path.Combine(Common.PlatformFileHelper.DocumentsPath,
-            "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch.jsonc");
+            "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch.yaml");
         
         public static Settings Load()
         {
@@ -108,8 +132,9 @@ namespace BannerlordTwitch
                         true, false, "Okay", null,
                     () => {}, () => {}), true);
             }
-            
-            var settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(SaveFilePath));
+            var deserializer = new DeserializerBuilder().Build();
+            var settings = deserializer.Deserialize<Settings>(File.ReadAllText(SaveFilePath));
+            //var settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(SaveFilePath));
             if (settings == null)
                 return null;
             

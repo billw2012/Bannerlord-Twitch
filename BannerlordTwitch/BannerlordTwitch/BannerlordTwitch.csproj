@@ -215,10 +215,14 @@
       <HintPath>..\packages\TwitchLib.PubSub.3.2.2-preview-f81ffdb933a8372061655ebf96ba45439c6443ab\lib\netstandard2.0\TwitchLib.PubSub.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="YamlDotNet, Version=11.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e">
+      <HintPath>..\packages\YamlDotNet.11.1.1\lib\net45\YamlDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Rewards\IBotCommand.cs" />
-    <Compile Include="Rewards\IRedemptionAction.cs" />
+    <Compile Include="Rewards\IHandler.cs" />
+    <Compile Include="Rewards\IAction.cs" />
     <Compile Include="Rewards\RewardManager.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="BLTModule.cs" />
@@ -238,8 +242,13 @@
     <Content Include="..\..\README.md">
       <Link>README.md</Link>
     </Content>
-    <Content Include="Bannerlord-Twitch-Auth.jsonc" />
-    <None Include="Bannerlord-Twitch.jsonc" />
+    <Content Include="Bannerlord-Twitch-Auth.yaml" />
+    <Content Include="Bannerlord-Twitch.schema.json" />
+    <Content Include="Bannerlord-Twitch.yaml" />
+    <Content Include="ExampleConfigs\SimTesting.yaml" />
+    <Content Include="ExampleConfigs\Config-Simple-Chat.yaml" />
+    <Content Include="ExampleConfigs\Config-Simple-Rewards.yaml" />
+    <Content Include="ExampleConfigs\Config-Simple-Reward-Chat.yaml" />
     <None Include="SubModule.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -247,9 +256,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
-    <Copy SourceFiles="Bannerlord-Twitch.jsonc;Bannerlord-Twitch-Auth.jsonc;SubModule.xml" DestinationFolder="$(SolutionDir)\..\build\BannerlordTwitch" />
+    <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml;SubModule.xml" DestinationFolder="$(SolutionDir)\..\build\BannerlordTwitch" />
     <Copy SourceFiles="..\..\README.md" DestinationFolder="$(SolutionDir)\..\build\BannerlordTwitch" />
-    <Copy SourceFiles="Bannerlord-Twitch.jsonc" DestinationFolder="$(SolutionDir)\..\build\BannerlordTwitch" />
+    <Copy SourceFiles="Bannerlord-Twitch.yaml" DestinationFolder="$(SolutionDir)\..\build\BannerlordTwitch" />
     <ItemGroup>
       <SomeDir Include="$(SolutionDir)\..\build\BannerlordTwitch\**\*" />
     </ItemGroup>

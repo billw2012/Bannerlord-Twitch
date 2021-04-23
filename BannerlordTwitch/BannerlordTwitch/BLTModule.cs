@@ -21,7 +21,13 @@ namespace BannerlordTwitch
 			AssemblyHelper.Redirect("Newtonsoft.Json", Version.Parse("13.0.0.0"), "30ad4fe6b2a6aeed");
 			AssemblyHelper.Redirect("Microsoft.Extensions.Logging.Abstractions", Version.Parse("3.1.5.0"), "adb9793829ddae60");
 		}
-		
+
+		public override void OnSubModuleUnloaded()
+		{
+			RewardManager.GenerateDocumentation();
+			base.OnSubModuleUnloaded();
+		}
+
 		public override void OnBeforeInitialModuleScreenSetAsRoot()
 		{
 			if (harmony == null)

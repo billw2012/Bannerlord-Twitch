@@ -17,8 +17,8 @@ namespace BannerlordTwitch
     {
         private class Bot
         {
+            private readonly string channel;
             private TwitchClient client;
-            private string channel;
             private readonly Settings settings;
             private readonly AuthSettings authSettings;
 	    
@@ -46,18 +46,16 @@ namespace BannerlordTwitch
                 client.OnLog += Client_OnLog;
                 client.OnJoinedChannel += Client_OnJoinedChannel;
                 client.OnMessageReceived += Client_OnMessageReceived;
-                //client.OnWhisperReceived += Client_OnWhisperReceived;
-                // client.OnNewSubscriber += Client_OnNewSubscriber;
                 client.OnConnected += Client_OnConnected;
 
                 client.Connect();
             }
 
-            public List<string> FormatMessage(params string[] msg)
+            private static IEnumerable<string> FormatMessage(params string[] msg)
             {
                 const string space = " ░ "; // " ░▓█▓░ ";// " ▄▓▄▓▄ ";
                 var parts = new List<string>();
-                string currPart = msg.First();
+                var currPart = msg.First();
                 foreach (var msgPart in msg.Skip(1))
                 {
                     if (currPart.Length + space.Length + msgPart.Length > 450)
@@ -76,10 +74,6 @@ namespace BannerlordTwitch
             
             public void SendChat(params string[] msg)
             {
-                // if (!client.IsConnected)
-                // {
-                //     client.Connect();
-                // }
                 if (client.IsConnected)
                 {
                     try
@@ -99,10 +93,6 @@ namespace BannerlordTwitch
 
             public void SendReply(string replyId, params string[] msg)
             {
-                // if (!client.IsConnected)
-                // {
-                //     client.Connect();
-                // }
                 if (client.IsConnected)
                 {
                     try
@@ -157,20 +147,20 @@ namespace BannerlordTwitch
             private static CommandMessage GetCommandMessage(ChatMessage from) =>
                 new()
                 {
-                    UserName = from.Username,
-                    ReplyId = @from.Id,
-                    Bits = @from.Bits,
-                    BitsInDollars = @from.BitsInDollars,
-                    SubscribedMonthCount = @from.SubscribedMonthCount,
-                    IsBroadcaster = @from.IsBroadcaster,
-                    IsHighlighted = @from.IsHighlighted,
-                    IsMe = @from.IsMe,
-                    IsModerator = @from.IsModerator,
-                    IsSkippingSubMode = @from.IsSkippingSubMode,
-                    IsSubscriber = @from.IsSubscriber,
-                    IsVip = @from.IsVip,
-                    IsStaff = @from.IsStaff,
-                    IsPartner = @from.IsPartner
+                    UserName = from.DisplayName, // DisplayName not UserName, as it has correct capitalization
+                    ReplyId = from.Id,
+                    Bits = from.Bits,
+                    BitsInDollars = from.BitsInDollars,
+                    SubscribedMonthCount = from.SubscribedMonthCount,
+                    IsBroadcaster = from.IsBroadcaster,
+                    IsHighlighted = from.IsHighlighted,
+                    IsMe = from.IsMe,
+                    IsModerator = from.IsModerator,
+                    IsSkippingSubMode = from.IsSkippingSubMode,
+                    IsSubscriber = from.IsSubscriber,
+                    IsVip = from.IsVip,
+                    IsStaff = from.IsStaff,
+                    IsPartner = from.IsPartner
                 };
 
             private void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)
@@ -184,33 +174,24 @@ namespace BannerlordTwitch
 
             private void HandleChatBoxMessage(string msg, CommandMessage commandMessage)
             {
-                var parts = msg.Split(' ');
-                if (parts[0] == "help")
-                {
-                    BLTModule.TwitchService.ShowCommandHelp(commandMessage.ReplyId);
-                }
-                else
-                {
-                    var cmd = settings.Commands.FirstOrDefault(c => c.Cmd == parts[0]);
-                    if (cmd != null)
+                MainThreadSync.Run(() =>
                     {
-                        RewardManager.Command(cmd.Handler, msg.Substring(parts[0].Length).Trim(), commandMessage, cmd.HandlerConfig);
-                    }
-                }
+                        var parts = msg.Split(' ');
+                        if (parts[0] == "help")
+                        {
+                            BLTModule.TwitchService.ShowCommandHelp(commandMessage.ReplyId);
+                        }
+                        else
+                        {
+                            var cmd = settings.Commands.FirstOrDefault(c => c.Cmd == parts[0]);
+                            if (cmd != null)
+                            {
+                                RewardManager.Command(cmd.Handler, msg.Substring(parts[0].Length).Trim(),
+                                    commandMessage, cmd.HandlerConfig);
+                            }
+                        }
+                    });
             }
-
-            // private void Client_OnWhisperReceived(object sender, OnWhisperReceivedArgs e)
-            // {
-            //     //HandleChatBoxMessage(e.WhisperMessage.Message, e.WhisperMessage.Username, e.WhisperMessage.MessageId);
-            // }
-            
-            // private void Client_OnNewSubscriber(object sender, OnNewSubscriberArgs e)
-            // {
-            //     if (e.Subscriber.SubscriptionPlan == TwitchLib.Client.Enums.SubscriptionPlan.Prime)
-            //         client.SendMessage(e.Channel, $"Welcome {e.Subscriber.DisplayName} to the substers! You just earned 500 points! So kind of you to use your Twitch Prime on this channel!");
-            //     else
-            //         client.SendMessage(e.Channel, $"Welcome {e.Subscriber.DisplayName} to the substers! You just earned 500 points!");
-            // }
         }
     }
 }
