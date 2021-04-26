@@ -1,6 +1,0 @@
-C:\Users\billw\Documents\GitHub\Bannerlord-Twitch\BannerlordTwitch\BLTBuffet\obj\Debug\BLTBuffet.csprojAssemblyReference.cache
-C:\Users\billw\Documents\GitHub\Bannerlord-Twitch\BannerlordTwitch\BLTBuffet\obj\Debug\BLTBuffet.csproj.CoreCompileInputs.cache
-C:\Users\billw\Documents\GitHub\Bannerlord-Twitch\BannerlordTwitch\BLTBuffet\build\bin\Win64_Shipping_Client\BLTBuffet.dll
-C:\Users\billw\Documents\GitHub\Bannerlord-Twitch\BannerlordTwitch\BLTBuffet\build\bin\Win64_Shipping_Client\BLTBuffet.pdb
-C:\Users\billw\Documents\GitHub\Bannerlord-Twitch\BannerlordTwitch\BLTBuffet\obj\Debug\BLTBuffet.dll
-C:\Users\billw\Documents\GitHub\Bannerlord-Twitch\BannerlordTwitch\BLTBuffet\obj\Debug\BLTBuffet.pdb
