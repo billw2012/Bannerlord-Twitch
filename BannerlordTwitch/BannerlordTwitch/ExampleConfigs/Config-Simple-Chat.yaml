@@ -3,7 +3,7 @@
 # This config uses bot commands only: subs can adopt a hero for free, with some starting money, then earn more through
 # attacking the player and winning, which they can use to upgrade.
 Rewards:
-  - Cmd: stats
+  - Name: stats
     Help: Hero stats
     Handler: HeroInfoCommand
     HandlerConfig:
@@ -11,12 +11,12 @@ Rewards:
       ShowTopSkills: true
       MinSkillToShow: 50
       ShowAttributes: true
-  - Cmd: inv
+  - Name: inv
     Help: Hero equipment
     Handler: HeroInfoCommand
     HandlerConfig:
       ShowEquipment: true
-  - Cmd: adopt
+  - Name: adopt
     Help: Adopt a Hero (subs only)
     Handler: AdoptAHero
     HandlerConfig:
@@ -26,7 +26,7 @@ Rewards:
       SubscriberOnly: true
       StartingGold: 20000
       StartingEquipmentTier: 0
-  - Cmd: adopt2
+  - Name: adopt2
     Help: Adopt a Better Hero (2 month subs only)
     Handler: AdoptAHero
     HandlerConfig:
@@ -37,7 +37,7 @@ Rewards:
       MinSubscribedMonths: 2
       StartingGold: 50000
       StartingEquipmentTier: 2
-  - Cmd: summon
+  - Name: summon
     Help: Appear near player (5k gold)
     Handler: SummonHero
     HandlerConfig:
@@ -49,7 +49,7 @@ Rewards:
       AllowFriendlyMission: true
       OnPlayerSide: true
       GoldCost: 5000
-  - Cmd: attack
+  - Name: attack
     Help: Attack (+/- 10k gold)
     Handler: SummonHero
     HandlerConfig:
@@ -62,7 +62,7 @@ Rewards:
       OnPlayerSide: false
       GoldCost: 0
       WinGold: 10000
-  - Cmd: skill
+  - Name: skill
     Help: "+Skill (5k gold)"
     Handler: SkillXP
     HandlerConfig:
@@ -70,7 +70,7 @@ Rewards:
       AmountLow: 5000
       AmountHigh: 5000
       GoldCost: 5000
-  - Cmd: attr
+  - Name: attr
     Help: "+Attr (10k gold)"
     Handler: AttributePoints
     HandlerConfig:
@@ -79,7 +79,7 @@ Rewards:
       AmountLow: 1
       AmountHigh: 1
       GoldCost: 10000
-  - Cmd: focus
+  - Name: focus
     Help: "+Focus (10k gold)"
     Handler: FocusPoints
     HandlerConfig:
@@ -87,7 +87,7 @@ Rewards:
       AmountLow: 1
       AmountHigh: 1
       GoldCost: 10000
-  - Cmd: equip
+  - Name: equip
     Help: +Equipment (15k gold)
     Handler: EquipHero
     HandlerConfig:

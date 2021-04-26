@@ -37,12 +37,16 @@ namespace BannerlordTwitch.Util
 #endif
         }
 
-        public static void Screen(string str)
+        public static void Screen(string str, Color color = default)
         {
             MainThreadSync.Run(() =>
             {
                 LogFilePrint(str);
-                InformationManager.DisplayMessage(new InformationMessage("BLT: " + str, new Color(31 / 255f, 195 / 255f, 255 / 255f),
+                InformationManager.DisplayMessage(new InformationMessage("BLT: " + str,
+                    color == default
+                        ? new Color(31 / 255f, 195 / 255f, 255 / 255f)
+                        : color
+                    ,
                     "event:/ui/notification/quest_finished"));
             });
         }

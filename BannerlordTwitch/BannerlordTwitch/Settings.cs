@@ -1,33 +1,86 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using BannerlordTwitch.Rewards;
 using JetBrains.Annotations;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
-using TaleWorlds.Localization;
 using TwitchLib.Api.Helix.Models.ChannelPoints.CreateCustomReward;
 using YamlDotNet.Serialization;
-using YamlDotNet.Serialization.NamingConventions;
-using Formatting = Newtonsoft.Json.Formatting;
+
 #pragma warning disable 649
 
 namespace BannerlordTwitch
 {
+    [Desc("Channel points reward definition")]
     internal class Reward
     {
-        // Docs here https://dev.twitch.tv/docs/api/reference#create-custom-rewards
-        public CreateCustomRewardsRequest RewardSpec;
-        public string ActionId;
+        [Desc("Channel points reward definition")]
+        public RewardSpec RewardSpec;
+        [Desc("Name of the BLT action")]
+        public string Action;
+        [Desc("Custom config for the BLT action")]
         public object ActionConfig;
     }
     
+    // Docs here https://dev.twitch.tv/docs/api/reference#create-custom-rewards
+    [Desc("The Twitch specific part of the channel points reward specification")]
+    internal class RewardSpec
+    {
+        [Desc("The title of the reward")]
+        public string Title;
+        [Desc("The prompt for the viewer when they are redeeming the reward")]
+        public string Prompt;
+        [Desc("The cost of the reward")]
+        public int Cost;
+        [Desc("Is the reward currently enabled, if false the reward won’t show up to viewers. Defaults true")]
+        public bool IsEnabled;
+        [Desc("Custom background color for the reward. Format: Hex with # prefix. Example: #00E5CB")]
+        public string BackgroundColor;
+        [Desc("Does the user need to enter information when redeeming the reward. Defaults false")]
+        public bool IsUserInputRequired;
+        [Desc("The maximum number per stream if enabled")]
+        public int? MaxPerStream;
+        [Desc("The maximum number per user per stream if enabled")]
+        public int? MaxPerUserPerStream;
+        [Desc("The cooldown in seconds if enabled")]
+        public int? GlobalCooldownSeconds;
+
+        public CreateCustomRewardsRequest GetTwitchSpec() =>
+            new()
+            {
+                BackgroundColor = BackgroundColor,
+                Cost = Cost,
+                GlobalCooldownSeconds = GlobalCooldownSeconds,
+                IsEnabled = IsEnabled,
+                IsGlobalCooldownEnabled = GlobalCooldownSeconds.HasValue,
+                IsMaxPerStreamEnabled = MaxPerStream.HasValue,
+                IsMaxPerUserPerStreamEnabled = MaxPerUserPerStream.HasValue,
+                IsUserInputRequired = IsUserInputRequired,
+                MaxPerStream = MaxPerStream,
+                MaxPerUserPerStream = MaxPerUserPerStream,
+                Prompt = Prompt,
+                ShouldRedemptionsSkipRequestQueue = false,
+                Title = Title
+            };
+    }
+    
+    [Desc("Bot command definition")]
     internal class Command
     {
-        public string Cmd;
+        [Desc("The command itself, not including the !")]
+        public string Name;
+        [Desc("Hides the help for the command from the !help action")]
+        public bool HideHelp;
+        [Desc("Only allows the broadcaster to use this command, and hides it from !help")]
+        public bool BroadcasterOnly;
+        [Desc("Only allows the mods or broadcaster to use this command, and hides it from !help")]
+        public bool ModOnly;
+        [Desc("What to show in the !help command")]
         public string Help;
+        [Desc("The name of the BLT command handler")]
         public string Handler;
+        [Desc("The custom config for the command handler")]
         public object HandlerConfig;
     }
     
@@ -120,11 +173,13 @@ namespace BannerlordTwitch
         
         public static Settings Load()
         {
+#if RELEASE
             if (!File.Exists(SaveFilePath))
+#endif
             {
                 var templateFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
                     Path.GetFileName(SaveFilePath));
-                File.Copy(templateFileName, SaveFilePath);
+                File.Copy(templateFileName, SaveFilePath, overwrite: true);
                 InformationManager.ShowInquiry(
                     new InquiryData(
                         "Bannerlord Twitch",
@@ -149,13 +204,10 @@ namespace BannerlordTwitch
                 {
                     throw new FormatException($"A reward is missing a RewardSpec");
                 }
-                if (reward.ActionId == null)
+                if (reward.Action == null)
                 {
                     throw new FormatException($"A reward is missing an ActionId");
                 }
-                reward.RewardSpec.IsMaxPerStreamEnabled = reward.RewardSpec.MaxPerStream.HasValue;
-                reward.RewardSpec.IsMaxPerUserPerStreamEnabled = reward.RewardSpec.MaxPerUserPerStream.HasValue;
-                reward.RewardSpec.IsGlobalCooldownEnabled = reward.RewardSpec.GlobalCooldownSeconds.HasValue;
             }
             
             return settings;

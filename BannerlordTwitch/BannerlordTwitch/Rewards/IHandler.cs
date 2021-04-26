@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
 
-namespace BannerlordTwitch
+namespace BannerlordTwitch.Rewards
 {
     public class CommandMessage
     {
@@ -22,7 +20,7 @@ namespace BannerlordTwitch
         public bool IsPartner;
     }
     
-    public interface IHandler
+    public interface ICommandHandler
     {
         void Execute(string args, CommandMessage message, object config);
         Type HandlerConfigType { get; }

@@ -174,23 +174,25 @@ namespace BannerlordTwitch
 
             private void HandleChatBoxMessage(string msg, CommandMessage commandMessage)
             {
-                MainThreadSync.Run(() =>
+                MainThreadSync.Run(() => {
+                    string[] parts = msg.Split(' ');
+                    if (parts[0] == "help")
                     {
-                        var parts = msg.Split(' ');
-                        if (parts[0] == "help")
+                        BLTModule.TwitchService.ShowCommandHelp(commandMessage.ReplyId);
+                    }
+                    else
+                    {
+                        var cmd = settings.Commands.FirstOrDefault(c => c.Name == parts[0]);
+                        if (cmd != null 
+                            && (!cmd.ModOnly || commandMessage.IsModerator || commandMessage.IsBroadcaster)
+                            && (!cmd.BroadcasterOnly || commandMessage.IsBroadcaster)
+                            )
                         {
-                            BLTModule.TwitchService.ShowCommandHelp(commandMessage.ReplyId);
+                            RewardManager.Command(cmd.Handler, msg.Substring(parts[0].Length).Trim(),
+                                commandMessage, cmd.HandlerConfig);
                         }
-                        else
-                        {
-                            var cmd = settings.Commands.FirstOrDefault(c => c.Cmd == parts[0]);
-                            if (cmd != null)
-                            {
-                                RewardManager.Command(cmd.Handler, msg.Substring(parts[0].Length).Trim(),
-                                    commandMessage, cmd.HandlerConfig);
-                            }
-                        }
-                    });
+                    }
+                });
             }
         }
     }

@@ -5,7 +5,7 @@ Rewards:
       Title: Adopt a Hero
       Cost: 5000
       IsEnabled: true
-    ActionId: AdoptAHero
+    Action: AdoptAHero
     ActionConfig:
       AllowNoble: true
       AllowWanderer: true
@@ -18,18 +18,18 @@ Rewards:
       Title: 10k gold
       Cost: 1000
       IsEnabled: true
-    ActionId: AddGoldToHero
+    Action: AddGoldToHero
     ActionConfig:
       Amount: 10000
   - RewardSpec:
       Title: 100k gold
       Cost: 10000
       IsEnabled: true
-    ActionId: AddGoldToHero
+    Action: AddGoldToHero
     ActionConfig:
       Amount: 100000
 Commands:
-  - Cmd: stats
+  - Name: stats
     Help: Hero stats
     Handler: HeroInfoCommand
     HandlerConfig:
@@ -37,12 +37,12 @@ Commands:
       ShowTopSkills: true
       MinSkillToShow: 50
       ShowAttributes: true
-  - Cmd: inv
+  - Name: inv
     Help: Hero equipment
     Handler: HeroInfoCommand
     HandlerConfig:
       ShowEquipment: true
-  - Cmd: adopt
+  - Name: adopt
     Help: Adopt a Hero (subs only)
     Handler: AdoptAHero
     HandlerConfig:
@@ -50,7 +50,7 @@ Commands:
       AllowWanderer: true
       AllowNewAdoptionOnDeath: true
       SubscriberOnly: true
-  - Cmd: summon
+  - Name: summon
     Help: Appear near player (5k gold)
     Handler: SummonHero
     HandlerConfig:
@@ -62,7 +62,7 @@ Commands:
       AllowFriendlyMission: true
       OnPlayerSide: true
       GoldCost: 5000
-  - Cmd: attack
+  - Name: attack
     Help: Attack player (5k gold)
     Handler: SummonHero
     HandlerConfig:
@@ -75,7 +75,7 @@ Commands:
       OnPlayerSide: false
       GoldCost: 5000
       WinGold: 5000
-  - Cmd: skill
+  - Name: skill
     Help: "+Skill (5k gold)"
     Handler: SkillXP
     HandlerConfig:
@@ -83,7 +83,7 @@ Commands:
       AmountLow: 5000
       AmountHigh: 5000
       GoldCost: 5000
-  - Cmd: attr
+  - Name: attr
     Help: "+Attr (10k gold)"
     Handler: AttributePoints
     HandlerConfig:
@@ -92,7 +92,7 @@ Commands:
       AmountLow: 1
       AmountHigh: 1
       GoldCost: 10000
-  - Cmd: focus
+  - Name: focus
     Help: "+Focus (10k gold)"
     Handler: FocusPoints
     HandlerConfig:
@@ -100,7 +100,7 @@ Commands:
       AmountLow: 1
       AmountHigh: 1
       GoldCost: 10000
-  - Cmd: equip
+  - Name: equip
     Help: Improve Equip (15k gold)
     Handler: EquipHero
     HandlerConfig:

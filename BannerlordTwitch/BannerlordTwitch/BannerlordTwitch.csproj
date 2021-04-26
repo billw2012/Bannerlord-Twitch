@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\build\BannerlordTwitch\bin\Win64_Shipping_Client\</OutputPath>
+    <OutputPath>build\bin\Win64_Shipping_Client\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -28,7 +28,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\build\BannerlordTwitch\bin\Win64_Shipping_Client\</OutputPath>
+    <OutputPath>build\bin\Win64_Shipping_Client\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -223,6 +223,7 @@
   <ItemGroup>
     <Compile Include="Rewards\IHandler.cs" />
     <Compile Include="Rewards\IAction.cs" />
+    <Compile Include="Rewards\RewardAndBotBase.cs" />
     <Compile Include="Rewards\RewardManager.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="BLTModule.cs" />
@@ -256,12 +257,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
-    <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml;SubModule.xml" DestinationFolder="$(SolutionDir)\..\build\BannerlordTwitch" />
-    <Copy SourceFiles="..\..\README.md" DestinationFolder="$(SolutionDir)\..\build\BannerlordTwitch" />
-    <Copy SourceFiles="Bannerlord-Twitch.yaml" DestinationFolder="$(SolutionDir)\..\build\BannerlordTwitch" />
+    <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml;SubModule.xml" DestinationFolder="$(OutDir)..\.." />
+    <Copy SourceFiles="..\..\README.md" DestinationFolder="$(OutDir)..\.." />
+    <Copy SourceFiles="Bannerlord-Twitch.yaml" DestinationFolder="$(OutDir)..\.." />
     <ItemGroup>
-      <SomeDir Include="$(SolutionDir)\..\build\BannerlordTwitch\**\*" />
+      <SomeDir Include="$(OutDir)\..\..\**\*" />
     </ItemGroup>
-    <Copy SourceFiles="@(SomeDir)" DestinationFiles="@(SomeDir->'C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\BannerlordTwitch\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+    <Copy SourceFiles="@(SomeDir)" DestinationFiles="@(SomeDir->'C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
   </Target>
 </Project>

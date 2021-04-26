@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
-using TaleWorlds.Core;
 
 namespace BannerlordTwitch.Testing
 {
@@ -72,7 +70,7 @@ namespace BannerlordTwitch.Testing
             }
             else
             {
-                var cmd = settings.Commands.FirstOrDefault(c => c.Cmd == item.Id);
+                var cmd = settings.Commands.FirstOrDefault(c => c.Name == item.Id);
                 if (cmd != null)
                 {
                     RewardManager.Command(cmd.Handler, item.Args, new CommandMessage {}, cmd.HandlerConfig);

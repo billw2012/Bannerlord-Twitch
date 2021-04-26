@@ -6,7 +6,7 @@ Rewards:
       Title: Adopt a Hero
       Cost: 5000
       IsEnabled: true
-    ActionId: AdoptAHero
+    Action: AdoptAHero
     ActionConfig:
       AllowNoble: true
       AllowWanderer: true
@@ -19,7 +19,7 @@ Rewards:
       Title: Summon Hero
       Cost: 2000
       IsEnabled: true
-    ActionId: SummonHero
+    Action: SummonHero
     ActionConfig:
       AllowFieldBattle: true
       AllowSiegeBattle: true
@@ -32,7 +32,7 @@ Rewards:
       Title: Attack Player
       Cost: 2000
       IsEnabled: true
-    ActionId: SummonHero
+    Action: SummonHero
     ActionConfig:
       AllowFriendlyMission: true
       OnPlayerSide: false
@@ -41,7 +41,7 @@ Rewards:
       Title: +Skills
       Cost: 2000
       IsEnabled: true
-    ActionId: SkillXP
+    Action: SkillXP
     ActionConfig:
       Auto: true
       AmountLow: 5000
@@ -50,7 +50,7 @@ Rewards:
       Title: +Attributes
       Cost: 5000
       IsEnabled: true
-    ActionId: AttributePoints
+    Action: AttributePoints
     ActionConfig:
       Improvement: Vigor, Control, Endurance, Cunning, Social, Intelligence
       Random: true
@@ -60,7 +60,7 @@ Rewards:
       Title: +Focus
       Cost: 5000
       IsEnabled: true
-    ActionId: FocusPoints
+    Action: FocusPoints
     ActionConfig:
       Auto: true
       AmountLow: 1
@@ -69,7 +69,7 @@ Rewards:
       Title: +Equipment
       Cost: 2000
       IsEnabled: true
-    ActionId: EquipHero
+    Action: EquipHero
     ActionConfig:
       Upgrade: true
       AllowCompanionUpgrade: true
@@ -79,7 +79,7 @@ Rewards:
       Horse: true
       Civilian: true
 Commands:
-  - Cmd: stats
+  - Name: stats
     Help: Hero stats
     Handler: HeroInfoCommand
     HandlerConfig:
@@ -87,7 +87,7 @@ Commands:
       ShowTopSkills: true
       MinSkillToShow: 50
       ShowAttributes: true
-  - Cmd: inv
+  - Name: inv
     Help: Hero equipment
     Handler: HeroInfoCommand
     HandlerConfig:

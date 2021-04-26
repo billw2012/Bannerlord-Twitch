@@ -15,6 +15,8 @@ namespace BannerlordTwitch
 		
 		private static Harmony harmony = null;
 
+		public static TwitchService TwitchService;
+
 		public BLTModule()
 		{
 			MainThreadSync.InitMainThread();
@@ -56,81 +58,5 @@ namespace BannerlordTwitch
 			base.OnApplicationTick(dt);
 			MainThreadSync.RunQueued();
 		}
-
-		public static TwitchService TwitchService;
-		
-		// protected override void OnSubModuleLoad()
-		// {
-		//  	base.OnSubModuleLoad();
-		//     
-		//     // try
-		//     // {
-		// 	   //  harmony = new Harmony("mod.bannerlord.bannerlordtwitch");
-		// 	   //  harmony.PatchAll();
-		//     // }
-		//     // catch (Exception ex)
-		//     // {
-		// 	   //  MessageBox.Show($"Error Initialising Bannerlord Twitch:\n\n{ex}");
-		//     // }
-		//     
-		// 	// Module.CurrentModule.AddInitialStateOption(new InitialStateOption("Message",
-		// 	// 	new TextObject("Message", null),
-		// 	// 	9990,
-		// 	// 	() => { InformationManager.DisplayMessage(new InformationMessage("Hello World!")); },
-		// 	// 	() => false));
-		//
-		// }
-
-		// public override void OnGameLoaded(Game game, object initializerObject)
-		// {
-		// 	base.OnGameLoaded(game, initializerObject);
-		// }
-
-		// public override void OnCampaignStart(Game game, object starterObject)
-		// {
-		// 	base.OnCampaignStart(game, starterObject);
-		// }
-		
-		//public override void OnGameEnd(Game game)
-		//{
-		//	base.OnGameEnd(game);
-		//	BannerlordTwitch.Log("BannersampleSubModule.OnGameEnd");
-		//}
-
-		//protected override void OnSubModuleLoad()
-		//{
-		//	base.OnSubModuleLoad();
-		//	BannerlordTwitch.Log("BannersampleSubModule.OnSubModuleLoad");
-
-		//	// Null checks a method from the Army of Poachers Quest to prevent a bug fixed in 1.0.1
-		//	// Bannersample.Prefix(
-		//	//   "TaleWorlds.CampaignSystem.SandBox.Issues.MerchantArmyOfPoachersIssueBehavior",
-		//	//   "MerchantArmyOfPoachersIssueQuest",
-		//	//   "OnFinalize",
-		//	//   "Bannersample.BannersampleSubModule",
-		//	//   "OnFinalize"
-		//	// );
-
-		//	// Silently catches an exception occurring on formation change in a campaign siege as of 1.0.2
-		//	// Bannersample.Finalize(
-		//	//   "TaleWorlds.MountAndBlade.DetachmentManager",
-		//	//   "Team_OnFormationsChanged",
-		//	//   "Bannersample.Bannersample",
-		//	//   "Catch"
-		//	// );
-		//}
-
-		//public static bool OnFinalize(Object __instance)
-		//{
-		//	Type instType = AccessTools.TypeByName("TaleWorlds.CampaignSystem.SandBox.Issues.MerchantArmyOfPoachersIssueBehavior");
-		//	Traverse t = Traverse.Create(__instance);
-		//	MobileParty _poachersParty = t.Field("_poachersParty").GetValue<MobileParty>();
-		//	if (_poachersParty == null)
-		//	{
-		//		Bannersample.Log("_poachersParty NULL!");
-		//		return false;
-		//	}
-		//	return true;
-		//}
 	}
 }

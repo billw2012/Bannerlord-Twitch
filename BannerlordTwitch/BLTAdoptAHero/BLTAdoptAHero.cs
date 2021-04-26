@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using HarmonyLib;
-using Helpers;
 using JetBrains.Annotations;
-using Newtonsoft.Json.Linq;
 using SandBox;
-using SandBox.Source.Missions;
 using SandBox.Source.Missions.Handlers;
-using SandBox.View.Missions;
 using StoryMode.Missions;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox;
 using TaleWorlds.Core;
+using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
@@ -38,7 +34,7 @@ namespace BLTAdoptAHero
     
     [UsedImplicitly]
     [Desc("Allows viewer to 'adopt' a hero in game -- the hero name will change to the viewers, and they can control it with further commands")]
-    public class AdoptAHero : IAction, IHandler
+    public class AdoptAHero : IAction, ICommandHandler
     {
         public static readonly (CharacterAttributesEnum val, string shortName)[] CharAttributes = {
             (CharacterAttributesEnum.Vigor, "Vig"),
@@ -122,14 +118,14 @@ namespace BLTAdoptAHero
             [Desc("Only subscribers can adopt")]
             public bool SubscriberOnly;
             [Desc("Only viewers who have been subscribers for at least this many months can adopt")]
-            public int MinSubscribedMonths;
-            [Desc("Gold the adopted hero will start with")]
-            public int StartingGold;
-            [Desc("Equipment tier the adopted hero will start with")]
-            public int StartingEquipmentTier;
-            [Desc("Whether the hero will start with a horse")]
+            public int? MinSubscribedMonths;
+            [Desc("Gold the adopted hero will start with, if you don't specify then they get the heroes existing gold")]
+            public int? StartingGold;
+            [Desc("Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment")]
+            public int? StartingEquipmentTier;
+            [Desc("Whether the hero will start with a horse, only applies if <b>StartingEquipmentTier</b> is specified")]
             public bool StartWithHorse;
-            [Desc("Whether the hero will start with armor")]
+            [Desc("Whether the hero will start with armor, only applies if <b>StartingEquipmentTier</b> is specified")]
             public bool StartWithArmor;
         }
 
@@ -181,8 +177,8 @@ namespace BLTAdoptAHero
             }
         }
         
-        Type IHandler.HandlerConfigType => typeof(Settings);
-        void IHandler.Execute(string args, CommandMessage commandMessage, object config)
+        Type ICommandHandler.HandlerConfigType => typeof(Settings);
+        void ICommandHandler.Execute(string args, CommandMessage commandMessage, object config)
         {
             var hero = GetAdoptedHero(commandMessage.UserName);
             if (hero?.IsAlive == true)
@@ -230,32 +226,44 @@ namespace BLTAdoptAHero
             var oldName = randomHero.Name.ToString();
             randomHero.FirstName = new TextObject(userName);
             randomHero.Name = new TextObject(GetFullName(userName));
-            randomHero.Gold = settings.StartingGold;
+            if(settings.StartingGold.HasValue)
+                randomHero.Gold = settings.StartingGold.Value;
 
-            EquipHero.RemoveAllEquipment(randomHero);
-            EquipHero.UpgradeEquipment(randomHero, settings.StartingEquipmentTier, true, true, settings.StartWithArmor, settings.StartWithHorse, true);
+            if (settings.StartingEquipmentTier.HasValue)
+            {
+                EquipHero.RemoveAllEquipment(randomHero);
+                EquipHero.UpgradeEquipment(randomHero, settings.StartingEquipmentTier.Value, true, true,
+                    settings.StartWithArmor, settings.StartWithHorse, true);
+            }
 
             return (true, $"You have adopted {oldName}, they have {randomHero.Gold} gold!");
         }
     }
 
     [UsedImplicitly]
-    internal class HeroInfoCommand : IHandler
+    [Desc("Will write various hero stats to chat")]
+    internal class HeroInfoCommand : ICommandHandler
     {
+        
         private class Settings
         {
+            [Desc("Show general info: gold, health, location, age")]
             public bool ShowGeneral;
-            public int MinSkillToShow;
+            [Desc("Shows skills (and focuse values) above the specified MinSkillToShow value")]
             public bool ShowTopSkills;
+            [Desc("If ShowTopSkills is specified, this defines what skills are shown")]
+            public int MinSkillToShow;
+            [Desc("Shows all hero attributes")]
             public bool ShowAttributes;
+            [Desc("Shows the battle and civilian equipment of the hero")]
             public bool ShowEquipment;
         }
         
         // One Handed, Two Handed, Polearm, Bow, Crossbow, Throwing, Riding, Athletics, Smithing
         // Scouting, Tactics, Roguery, Charm, Leadership, Trade, Steward, Medicine, Engineering
 
-        Type IHandler.HandlerConfigType => typeof(Settings);
-        void IHandler.Execute(string args, CommandMessage commandMessage, object config)
+        Type ICommandHandler.HandlerConfigType => typeof(Settings);
+        void ICommandHandler.Execute(string args, CommandMessage commandMessage, object config)
         {
             var settings = config as Settings ?? new Settings();
             var adoptedHero = AdoptAHero.GetAdoptedHero(commandMessage.UserName);
@@ -330,10 +338,12 @@ namespace BLTAdoptAHero
     // }
     
     [UsedImplicitly]
+    [Desc("Gives gold to the adopted hero")]
     internal class AddGoldToHero : IAction
     {
         private class Settings
         {
+            [Desc("How much gold to give the adopted hero")]
             public int Amount;
         }
 
@@ -353,50 +363,24 @@ namespace BLTAdoptAHero
         }
     }
 
-    internal abstract class RewardAndBotCommandBase : IAction, IHandler
+    internal abstract class ImproveAdoptedHero : ActionAndHandlerBase
     {
-        protected virtual Type ConfigType => null;
-
-        Type IAction.ActionConfigType => ConfigType;
-        void IAction.Enqueue(Guid redemptionId, string args, string userName, object config)
+        protected class SettingsBase
         {
-            ExecuteInternal(userName, args, config, 
-                s => RewardManager.NotifyComplete(redemptionId, s), 
-                s => RewardManager.NotifyCancelled(redemptionId, s));
-        }
-
-        Type IHandler.HandlerConfigType => ConfigType;
-        void IHandler.Execute(string args, CommandMessage message, object config)
-        {
-            ExecuteInternal(message.UserName, args, config, 
-                s => RewardManager.SendReply(message.ReplyId, s), 
-                s => RewardManager.SendReply(message.ReplyId, s));
-        }
-
-        protected abstract void ExecuteInternal(string userName, string args, object config,
-            Action<string> onSuccess,
-            Action<string> onFailure);
-    }
-    
-    internal abstract class ImproveAdoptedHero : RewardAndBotCommandBase
-    {
-        protected struct Settings
-        {
-            public string Improvement;
+            [Desc("Lower bound of amount to improve")]
             public int AmountLow;
+            [Desc("Upper bound of amount to improve")]
             public int AmountHigh;
-            public bool Random;
-            public bool Auto;
             public int GoldCost;
         }
 
-        protected override Type ConfigType => typeof(Settings);
+        // protected override Type ConfigType => typeof(SettingsBase);
 
         protected override void ExecuteInternal(string userName, string args, object config,
             Action<string> onSuccess,
             Action<string> onFailure) 
         {
-            var settings = (Settings)config;
+            var settings = (SettingsBase)config;
             var adoptedHero = AdoptAHero.GetAdoptedHero(userName);
             if (adoptedHero == null)
             {
@@ -423,7 +407,7 @@ namespace BLTAdoptAHero
             }
         }
 
-        protected abstract (bool success, string description) Improve(string userName, Hero adoptedHero, int amount, Settings settings);
+        protected abstract (bool success, string description) Improve(string userName, Hero adoptedHero, int amount, SettingsBase settings);
 
         // One Handed, Two Handed, Polearm, Bow, Crossbow, Throwing, Riding, Athletics, Smithing
         // Scouting, Tactics, Roguery, Charm, Leadership, Trade, Steward, Medicine, Engineering
@@ -460,70 +444,60 @@ namespace BLTAdoptAHero
     }
     
     [UsedImplicitly]
+    [Desc("Improve adopted heroes skills")]
     internal class SkillXP : ImproveAdoptedHero
     {
-        protected override (bool success, string description) Improve(string userName,
-            Hero adoptedHero, int amount, Settings settings)
+        protected class SkillXPSettings : SettingsBase
         {
-            var skill = GetSkill(adoptedHero, settings.Improvement, settings.Random, settings.Auto);
-            if (skill == null) return (false, $"Couldn't improve skill {settings.Improvement}: its not a valid skill name!");
-            var prevSkill = adoptedHero.GetSkillValue(skill);
+            [Desc("What to improve, multiple values can be separated by commas. Skills are One Handed, Two Handed, Polearm, Bow, Crossbow, Throwing, Riding, Athletics, Smithing, Scouting, Tactics, Roguery, Charm, Leadership, Trade, Steward, Medicine, Engineering.")]
+            public string Skills;
+            [Desc("Improve a random skill from the Skills specified, rather than the best one")]
+            public bool Random;
+            [Desc("If this is specified then the best skill from a random skill group will be improved, Skills list is ignored. Groups are melee (One Handed, Two Handed, Polearm), ranged (Bow, Crossbow, Throwing), support (Smithing, Scouting, Trade, Steward, Engineering), movement (Riding, Athletics), personal (Tactics, Roguery, Charm, Leadership)")]
+            public bool Auto;
+        }
+        
+        protected override Type ConfigType => typeof(SkillXPSettings);
+
+        protected override (bool success, string description) Improve(string userName,
+            Hero adoptedHero, int amount, SettingsBase baseSettings)
+        {
+            var settings = (SkillXPSettings) baseSettings;
+            var skill = GetSkill(adoptedHero, settings.Skills, settings.Random, settings.Auto);
+            if (skill == null) return (false, $"Couldn't improve skill {settings.Skills}: its not a valid skill name!");
+            int prevSkill = adoptedHero.GetSkillValue(skill);
             adoptedHero.HeroDeveloper.AddSkillXp(skill, amount);
-            var realGainedXp = adoptedHero.GetSkillValue(skill) - prevSkill;
-            return realGainedXp < 1f 
-                ? (false, $"Couldn't improve skill {settings.Improvement} any further, get more focus points!")
+            int realGainedXp = adoptedHero.GetSkillValue(skill) - prevSkill;
+            return realGainedXp <= 0
+                ? (false, $"Couldn't improve skill {settings.Skills} any further, get more focus points!")
                 : (true, $"You have gained {realGainedXp}xp (adjusted by focus) in {skill.Name}, you now have {adoptedHero.GetSkillValue(skill)}!");
         }
     }
 
     [UsedImplicitly]
-    internal class AttributePoints : ImproveAdoptedHero
-    {
-        // Vigor, Control, Endurance, Cunning, Social, Intelligence
-        protected override (bool success, string description) Improve(string userName,
-            Hero adoptedHero, int amount, Settings settings)
-        {
-            // Get attributes that can be buffed
-            var improvableAttributes = AdoptAHero.CharAttributes
-                .Select(c => c.val)
-                .Where(a => adoptedHero.GetAttributeValue(a) < 10)
-                .ToList();
-
-            if (!improvableAttributes.Any())
-            {
-                return (false, $"Couldn't improve any attributes, they are all at max level!");
-            }
-            CharacterAttributesEnum attribute;
-            if (settings.Random)
-            {
-                attribute = improvableAttributes.SelectRandom();
-            }
-            else
-            {
-                var matching = improvableAttributes
-                    .Where(a => string.Equals(a.ToString(), settings.Improvement, StringComparison.CurrentCultureIgnoreCase))
-                    .ToList();
-                if (!matching.Any())
-                {
-                    return (false, $"Couldn't improve attribute {settings.Improvement}, its not a valid attribute name!");
-                }
-                attribute = matching.First();
-            }
-
-            amount = Math.Min(amount, 10 - adoptedHero.GetAttributeValue(attribute));
-            adoptedHero.HeroDeveloper.AddAttribute(attribute, amount, checkUnspentPoints: false);
-            return (true, $"You have gained {amount} point{(amount > 1? "s" : "")} in {attribute}, you now have {adoptedHero.GetAttributeValue(attribute)}!");
-        }
-    }
-    
-    [UsedImplicitly]
+    [Desc("Add focus points to heroes skills")]
     internal class FocusPoints : ImproveAdoptedHero
     {
-        protected override (bool success, string description) Improve(string userName,
-            Hero adoptedHero, int amount, Settings settings)
+        protected class FocusPointsSettings : SettingsBase
         {
-            var skill = GetSkill(adoptedHero, settings.Improvement, settings.Random, settings.Auto,
+            [Desc("What to add focus to, multiple values can be separated by commas. Skills are One Handed, Two Handed, Polearm, Bow, Crossbow, Throwing, Riding, Athletics, Smithing, Scouting, Tactics, Roguery, Charm, Leadership, Trade, Steward, Medicine, Engineering.")]
+            public string Skills;
+            [Desc("Add focus to a random skill <b>from the Skills specified</b>, rather than the best one.")]
+            public bool Random;
+            [Desc("If this is specified then the best skill from a random skill group will have focus added, <code>Skills</code> list is ignored. Groups are melee (One Handed, Two Handed, Polearm), ranged (Bow, Crossbow, Throwing), support (Smithing, Scouting, Trade, Steward, Engineering), movement (Riding, Athletics), personal (Tactics, Roguery, Charm, Leadership)")]
+            public bool Auto;
+        }
+        
+        protected override Type ConfigType => typeof(FocusPointsSettings);
+        
+        protected override (bool success, string description) Improve(string userName,
+            Hero adoptedHero, int amount, SettingsBase baseSettings)
+        {
+            var settings = (FocusPointsSettings) baseSettings;
+            
+            var skill = GetSkill(adoptedHero, settings.Skills, settings.Random, settings.Auto,
                 s => adoptedHero.HeroDeveloper.GetFocus(s) < 5);
+
             if (skill == null)
             {
                 return (false, $"Couldn't find a valid skill to add focus points to!");
@@ -536,7 +510,58 @@ namespace BLTAdoptAHero
     }
 
     [UsedImplicitly]
-    internal class SummonHero : RewardAndBotCommandBase
+    [Desc("Improve adopted heroes attribute points")]
+    internal class AttributePoints : ImproveAdoptedHero
+    {
+        protected class AttributePointsSettings : SettingsBase
+        {
+            [Desc("Which attribute to improve (specify one only). Possible values are Random (to improve any random attribute) Vigor, Control, Endurance, Cunning, Social, Intelligence.")]
+            public string Attribute;
+        }
+        
+        protected override Type ConfigType => typeof(AttributePointsSettings);
+        
+        // Vigor, Control, Endurance, Cunning, Social, Intelligence
+        protected override (bool success, string description) Improve(string userName,
+            Hero adoptedHero, int amount, SettingsBase baseSettings)
+        {
+            var settings = (AttributePointsSettings) baseSettings;
+            // Get attributes that can be buffed
+            var improvableAttributes = AdoptAHero.CharAttributes
+                .Select(c => c.val)
+                .Where(a => adoptedHero.GetAttributeValue(a) < 10)
+                .ToList();
+
+            if (!improvableAttributes.Any())
+            {
+                return (false, $"Couldn't improve any attributes, they are all at max level!");
+            }
+            CharacterAttributesEnum attribute;
+            if (string.Equals(settings.Attribute, "random", StringComparison.InvariantCultureIgnoreCase))
+            {
+                attribute = improvableAttributes.SelectRandom();
+            }
+            else
+            {
+                var matching = improvableAttributes
+                    .Where(a => string.Equals(a.ToString(), settings.Attribute, StringComparison.CurrentCultureIgnoreCase))
+                    .ToList();
+                if (!matching.Any())
+                {
+                    return (false, $"Couldn't improve attribute {settings.Attribute}, its not a valid attribute name!");
+                }
+                attribute = matching.First();
+            }
+
+            amount = Math.Min(amount, 10 - adoptedHero.GetAttributeValue(attribute));
+            adoptedHero.HeroDeveloper.AddAttribute(attribute, amount, checkUnspentPoints: false);
+            return (true, $"You have gained {amount} point{(amount > 1? "s" : "")} in {attribute}, you now have {adoptedHero.GetAttributeValue(attribute)}!");
+        }
+    }
+
+    [UsedImplicitly]
+    [Desc("Spawns the adopted hero into the current active mission")]
+    internal class SummonHero : ActionAndHandlerBase
     {
         private class Settings
         {
@@ -611,7 +636,7 @@ namespace BLTAdoptAHero
                 listeners.Remove(hero);
             }
 
-            public override void OnEndMission()
+            protected override void OnEndMission()
             {
                 foreach (var (hero, ev) in listeners.Select(kv => (hero: kv.Key, ev: kv.Value)).ToArray())
                 {
@@ -619,20 +644,20 @@ namespace BLTAdoptAHero
                 }
             }
 
-            public override void OnMissionActivate()
-            {
-                base.OnMissionActivate();
-            }
-
-            public override void OnMissionDeactivate()
-            {
-                base.OnMissionDeactivate();
-            }
-
-            public override void OnMissionRestart()
-            {
-                base.OnMissionRestart();
-            }
+            // public override void OnMissionActivate()
+            // {
+            //     base.OnMissionActivate();
+            // }
+            //
+            // public override void OnMissionDeactivate()
+            // {
+            //     base.OnMissionDeactivate();
+            // }
+            //
+            // public override void OnMissionRestart()
+            // {
+            //     base.OnMissionRestart();
+            // }
 
             public override void OnMissionModeChange(MissionMode oldMissionMode, bool atStart)
             {
@@ -640,6 +665,79 @@ namespace BLTAdoptAHero
                 {
                     ev.onModeChange?.Invoke(hero, oldMissionMode, Mission.Current.Mode, atStart);
                 }
+            }
+            
+            public static BLTMissionResultListener Get()
+            {
+                var beh = Mission.Current.GetMissionBehaviour<BLTMissionResultListener>();
+                if (beh == null)
+                {
+                    beh = new BLTMissionResultListener();
+                    Mission.Current.AddMissionBehaviour(beh);
+                }
+                return beh;
+            }
+        }
+
+        private class RemoveAgentsBehavior : MissionBehaviour
+        {
+            private List<Hero> herosAdded = new();
+            
+            public override MissionBehaviourType BehaviourType => MissionBehaviourType.Other;
+
+            public void Add(Hero hero)
+            {
+                herosAdded.Add(hero);
+            }
+
+            private void RemoveHeroes()
+            {
+                foreach (var hero in herosAdded)
+                {
+                    LocationComplex.Current?.RemoveCharacterIfExists(hero);
+                    if(CampaignMission.Current?.Location?.ContainsCharacter(hero) ?? false)
+                        CampaignMission.Current.Location.RemoveCharacter(hero);
+                }
+                herosAdded.Clear();
+            }
+            
+            public override void HandleOnCloseMission()
+            {
+                base.HandleOnCloseMission();
+                Log.Screen($"HandleOnCloseMission {this.Mission.SceneName}");
+                RemoveHeroes();
+            }
+
+            protected override void OnEndMission()
+            {
+                base.OnEndMission();
+                Log.Screen($"OnEndMission {this.Mission.SceneName}");
+                RemoveHeroes();
+            }
+
+            public override void OnMissionDeactivate()
+            {
+                base.OnMissionDeactivate();
+                Log.Screen($"OnMissionDeactivate {this.Mission.SceneName}");
+                RemoveHeroes();
+            }
+
+            public override void OnMissionRestart()
+            {
+                base.OnMissionRestart();
+                Log.Screen($"OnMissionRestart {this.Mission.SceneName}");
+                RemoveHeroes();
+            }
+
+            public static RemoveAgentsBehavior Get()
+            {
+                var beh = Mission.Current.GetMissionBehaviour<RemoveAgentsBehavior>();
+                if (beh == null)
+                {
+                    beh = new RemoveAgentsBehavior();
+                    Mission.Current.AddMissionBehaviour(beh);
+                }
+                return beh;
             }
         }
 
@@ -674,7 +772,7 @@ namespace BLTAdoptAHero
                 onFailure($"You cannot be summoned now!");
                 return;
             }
-            
+
             if(InArenaPracticeMission() && (!settings.AllowArena || !settings.OnPlayerSide) 
                || InTournament() && (!settings.AllowTournament)
                || InFieldBattleMission() && !settings.AllowFieldBattle
@@ -707,16 +805,7 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            // if(Mission.Current)
-            // DOING: do this better, we should have one listener per mission, with one callback per event, per hero to enforce no duplication
 
-            var listener = Mission.Current.GetMissionBehaviour<BLTMissionResultListener>();
-            if (listener == null)
-            {
-                listener = new BLTMissionResultListener();
-                Mission.Current.AddMissionBehaviour(listener);
-            }
-            
             if (CampaignMission.Current.Location != null)
             {
                 var locationCharacter = LocationCharacter.CreateBodyguardHero(adoptedHero,
@@ -750,8 +839,6 @@ namespace BLTAdoptAHero
                 // For other player hostile situations we setup a 1v1 fight
                 else if (!settings.OnPlayerSide)
                 {
-                    InformationManager.AddQuickInformation(new TextObject($"Defend yourself!"), 1000,
-                        adoptedHero.CharacterObject, "event:/ui/mission/horns/attack");
                     Mission.Current.GetMissionBehaviour<MissionFightHandler>().StartCustomFight(
                         new() {Agent.Main},
                         new() {agent}, false, false, false,
@@ -778,6 +865,11 @@ namespace BLTAdoptAHero
                         },
                         true, null, null, null, null);
                 }
+                else
+                {
+                    InformationManager.AddQuickInformation(new TextObject($"I'm here!"), 1000,
+                        adoptedHero.CharacterObject, "event:/ui/mission/horns/move");
+                }
 
                 // Bodyguard
                 if (settings.OnPlayerSide && agent.GetComponent<CampaignAgentComponent>().AgentNavigator != null)
@@ -787,6 +879,7 @@ namespace BLTAdoptAHero
                     behaviorGroup.SetScriptedBehavior<FollowAgentBehavior>();
                 }
                 
+                RemoveAgentsBehavior.Get().Add(adoptedHero);
                 // missionAgentHandler.SimulateAgent(agent);
             }
             else
@@ -809,7 +902,7 @@ namespace BLTAdoptAHero
                     return;
                 }
                 
-                listener.AddListeners(adoptedHero, onMissionOver: _ =>
+                BLTMissionResultListener.Get().AddListeners(adoptedHero, onMissionOver: _ =>
                 {
                     if (Mission.Current.MissionResult != null)
                     {
@@ -840,6 +933,29 @@ namespace BLTAdoptAHero
                     wieldInitialWeapons: true);
             }
 
+            var messages = settings.OnPlayerSide
+                ? new List<string>
+                {
+                    "Don't worry, I've got your back!",
+                    "I'm here!",
+                    "Which one should I stab?",
+                    "Once more unto the breach!",
+                    "It's nothing personal!",
+                    "Freeeeeedddooooooommmm!",
+                }
+                : new List<string>
+                {
+                    "Defend yourself!",
+                    "Time for you to die!",
+                    "You killed my father, prepare to die!",
+                    "En garde!",
+                    "Its stabbing time!",
+                    "It's nothing personal!",
+                };
+            if (InSiegeMission() && settings.OnPlayerSide) messages.Add($"Don't send me up the siege tower, its confusing!");
+            InformationManager.AddQuickInformation(new TextObject(!string.IsNullOrEmpty(args) ? args : messages.SelectRandom()), 1000,
+                adoptedHero.CharacterObject, "event:/ui/mission/horns/attack");
+
             adoptedHero.Gold -= settings.GoldCost;
             onSuccess($"You have joined the battle!");
         }
@@ -868,7 +984,8 @@ namespace BLTAdoptAHero
     }
     
     [UsedImplicitly]
-    internal class EquipHero : RewardAndBotCommandBase
+    [Desc("Improve adopted heroes equipment")]
+    internal class EquipHero : ActionAndHandlerBase
     {
         // These must be properties not fields, as these values are dynamic
         private static SkillObject[] MeleeSkills => new [] {
@@ -905,15 +1022,26 @@ namespace BLTAdoptAHero
 
         private struct Settings
         {
+            [Desc("Improve armor")]
             public bool Armor;
+            [Desc("Improve melee weapons (one handled, two handed, polearm). The one the player has the highest skill in will be selected.")]
             public bool Melee;
+            [Desc("Improve ranged weapons (bow, crossbow, throwing). The one the player has the highest skill in will be selected.")]
             public bool Ranged;
+            [Desc("Improve the heroes horse (if they can ride a better one).")]
             public bool Horse;
+            [Desc("Improve the heroes civilian equipment.")]
             public bool Civilian;
+            [Desc("Allow improvement of adopted heroes who are also companions of the player.")]
             public bool AllowCompanionUpgrade;
-            public int Tier; // 0 to 5
+            [Desc("Tier to upgrade to. Anything better than this tier will be left alone, viewer will be refunded if nothing could be upgraded.")]
+            public int? Tier; // 0 to 5
+            [Desc("Upgrade to the next tier from the current one, viewer will be refunded if nothing could be upgraded.")]
             public bool Upgrade;
+            [Desc("Gold cost to the adopted hero")]
             public int GoldCost;
+            [Desc("Whether to multiply the cost by the current tier")]
+            public bool MultiplyCostByCurrentTier;
         }
 
         protected override Type ConfigType => typeof(Settings);
@@ -940,11 +1068,6 @@ namespace BLTAdoptAHero
                 onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
                 return;
             }
-            if (adoptedHero.Gold < settings.GoldCost)
-            {
-                onFailure($"You do not have enough gold: you need {settings.GoldCost}, and you only have {adoptedHero.Gold}!");
-                return;
-            }
             if (!settings.AllowCompanionUpgrade && adoptedHero.IsPlayerCompanion)
             {
                 onFailure($"You are a player companion, you cannot change your own equipment!");
@@ -955,15 +1078,29 @@ namespace BLTAdoptAHero
                 onFailure($"You cannot upgrade equipment, as a mission is active!");
                 return;
             }
-
-            int targetTier = settings.Tier;
-            if (settings.Upgrade)
+            if (!settings.Tier.HasValue && !settings.Upgrade)
             {
-                targetTier = GetHeroEquipmentTier(adoptedHero) + 1;
+                onFailure($"Configuration is invalid, either Tier or Upgrade must be specified");
+                return;
             }
+            int targetTier = settings.Upgrade 
+                ? GetHeroEquipmentTier(adoptedHero) + 1 
+                : settings.Tier.Value
+                ;
+            
             if (targetTier > 5)
             {
                 onFailure($"You cannot upgrade any further!");
+                return;
+            }
+
+            int cost = settings.MultiplyCostByCurrentTier
+                ? settings.GoldCost * targetTier
+                : settings.GoldCost;
+
+            if (adoptedHero.Gold < cost)
+            {
+                onFailure($"You do not have enough gold: you need {cost}, and you only have {adoptedHero.Gold}!");
                 return;
             }
 
@@ -975,9 +1112,9 @@ namespace BLTAdoptAHero
                 return;
             }
             
-            var itemsStr = string.Join(", ", itemsPurchased.Select(i => i.Name.ToString()));
+            string itemsStr = string.Join(", ", itemsPurchased.Select(i => i.Name.ToString()));
             
-            adoptedHero.Gold -= settings.GoldCost;
+            adoptedHero.Gold -= cost;
             onSuccess($"You purchased these items: {itemsStr}!");
         }
 

@@ -5,16 +5,11 @@ using System.Linq;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Testing;
 using BannerlordTwitch.Util;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TwitchLib.Api;
 using TwitchLib.Api.Core.Enums;
-using TwitchLib.Api.Helix.Models.ChannelPoints;
 using TwitchLib.Api.Helix.Models.ChannelPoints.GetCustomReward;
 using TwitchLib.Api.Helix.Models.ChannelPoints.UpdateCustomRewardRedemptionStatus;
-using TwitchLib.Client.Extensions;
 using TwitchLib.PubSub;
 using TwitchLib.PubSub.Events;
 
@@ -179,7 +174,7 @@ namespace BannerlordTwitch
             {
                 try
                 {
-                    var createdReward = (await api.Helix.ChannelPoints.CreateCustomRewards(channelId, rewardDef.RewardSpec, authSettings.AccessToken)).Data.First();
+                    var createdReward = (await api.Helix.ChannelPoints.CreateCustomRewards(channelId, rewardDef.RewardSpec.GetTwitchSpec(), authSettings.AccessToken)).Data.First();
                     rewardMap.TryAdd(createdReward.Id, rewardDef);
                     Log.Info($"Created reward {createdReward.Title} ({createdReward.Id})");
                     db.RewardsCreated.Add(createdReward.Id);
@@ -234,11 +229,11 @@ namespace BannerlordTwitch
                 try
                 {
                     redemptionCache.TryAdd(redeemedArgs.RedemptionId, redeemedArgs);
-                    if (!RewardManager.Enqueue(reward.ActionId, redeemedArgs.RedemptionId, redeemedArgs.Message, redeemedArgs.DisplayName, reward.ActionConfig))
+                    if (!RewardManager.Enqueue(reward.Action, redeemedArgs.RedemptionId, redeemedArgs.Message, redeemedArgs.DisplayName, reward.ActionConfig))
                     {
-                        Log.Error($"Couldn't enqueue redemption {redeemedArgs.RedemptionId}: RedemptionAction {reward.ActionId} not found, check you have its Reward extension installed!");
+                        Log.Error($"Couldn't enqueue redemption {redeemedArgs.RedemptionId}: RedemptionAction {reward.Action} not found, check you have its Reward extension installed!");
                         // We DO cancel redemptions we know about, where the implementation is missing
-                        RedemptionCancelled(redeemedArgs.RedemptionId, $"Redemption action {reward.ActionId} wasn't found");
+                        RedemptionCancelled(redeemedArgs.RedemptionId, $"Redemption action {reward.Action} wasn't found");
                     }
                     else
                     {
@@ -273,7 +268,7 @@ namespace BannerlordTwitch
                 ChannelId = null,
             });
 
-            RewardManager.Enqueue(reward.ActionId, guid, message, user, reward.ActionConfig);
+            RewardManager.Enqueue(reward.Action, guid, message, user, reward.ActionConfig);
         }
 
         private void ShowMessage(string screenMsg, string botMsg, string userToAt)
@@ -303,8 +298,9 @@ namespace BannerlordTwitch
         private void ShowCommandHelp(string replyId)
         {
             bot.SendReply(replyId, "Commands: ".Yield()
-                .Concat(settings.Commands
-                    .Select(c => $"!{c.Cmd} - {c.Help}")
+                .Concat(settings.Commands.Where(c 
+                        => !c.HideHelp && !c.BroadcasterOnly && !c.ModOnly)
+                    .Select(c => $"!{c.Name} - {c.Help}")
                 ).ToArray());
         }
         

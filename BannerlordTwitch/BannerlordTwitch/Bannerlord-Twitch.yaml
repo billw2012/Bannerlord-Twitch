@@ -5,7 +5,7 @@ Rewards:
       Title: Adopt a Hero
       Cost: 5000
       IsEnabled: true
-    ActionId: AdoptAHero
+    Action: AdoptAHero
     ActionConfig:
       AllowNoble: true
       AllowWanderer: true
@@ -18,18 +18,18 @@ Rewards:
       Title: 10k gold
       Cost: 1000
       IsEnabled: true
-    ActionId: AddGoldToHero
+    Action: AddGoldToHero
     ActionConfig:
       Amount: 10000
   - RewardSpec:
       Title: 100k gold
       Cost: 10000
       IsEnabled: true
-    ActionId: AddGoldToHero
+    Action: AddGoldToHero
     ActionConfig:
       Amount: 100000
 Commands:
-  - Cmd: stats
+  - Name: stats
     Help: Hero stats
     Handler: HeroInfoCommand
     HandlerConfig:
@@ -37,20 +37,22 @@ Commands:
       ShowTopSkills: true
       MinSkillToShow: 50
       ShowAttributes: true
-  - Cmd: inv
+  - Name: inv
     Help: Hero equipment
     Handler: HeroInfoCommand
     HandlerConfig:
       ShowEquipment: true
-  - Cmd: adopt
+  - Name: adopt
     Help: Adopt a Hero (subs only)
     Handler: AdoptAHero
     HandlerConfig:
       AllowNoble: true
       AllowWanderer: true
       AllowNewAdoptionOnDeath: true
-      SubscriberOnly: true
-  - Cmd: summon
+      StartingGold: 100000
+      StartingEquipmentTier: 0
+      # SubscriberOnly: true
+  - Name: summon
     Help: Appear near player (5k gold)
     Handler: SummonHero
     HandlerConfig:
@@ -64,7 +66,7 @@ Commands:
       GoldCost: 5000
       WinGold: 5000
       LoseGold: 5000
-  - Cmd: attack
+  - Name: attack
     Help: Attack player (5k gold)
     Handler: SummonHero
     HandlerConfig:
@@ -78,7 +80,7 @@ Commands:
       GoldCost: 5000
       WinGold: 5000
       LoseGold: 5000
-  - Cmd: skill
+  - Name: skill
     Help: "+Skill (5k gold)"
     Handler: SkillXP
     HandlerConfig:
@@ -86,16 +88,15 @@ Commands:
       AmountLow: 5000
       AmountHigh: 5000
       GoldCost: 5000
-  - Cmd: attr
+  - Name: attr
     Help: "+Attr (10k gold)"
     Handler: AttributePoints
     HandlerConfig:
-      Improvement: Vigor, Control, Endurance, Cunning, Social, Intelligence
-      Random: true
+      Attribute: Random
       AmountLow: 1
       AmountHigh: 1
       GoldCost: 10000
-  - Cmd: focus
+  - Name: focus
     Help: "+Focus (10k gold)"
     Handler: FocusPoints
     HandlerConfig:
@@ -103,8 +104,8 @@ Commands:
       AmountLow: 1
       AmountHigh: 1
       GoldCost: 10000
-  - Cmd: equip
-    Help: Improve Equip (15k gold)
+  - Name: equip
+    Help: Improve Equip (10k gold x Tier)
     Handler: EquipHero
     HandlerConfig:
       AllowCompanionUpgrade: true
@@ -114,7 +115,245 @@ Commands:
       Horse: true
       Civilian: true
       Upgrade: true
-      GoldCost: 15000
+      GoldCost: 10000
+      MultiplyCostByCurrentTier: true
+  - Name: giantenemy
+    Help: Random enemy giant mode
+    Handler: CharacterEffect
+    HandlerConfig:
+      Name: Giant mode
+      Target: EnemyTeam
+      Duration: 30
+      Scale: 1.5
+      Properties:
+        - Name: ArmorArms
+          Add: 40
+        - Name: ArmorEncumbrance
+          Add: 100
+        - Name: ArmorLegs
+          Add: 40
+        - Name: ArmorTorso
+          Add: 40
+        - Name: MaxSpeedMultiplier
+          Multiply: 0.75
+        - Name: SwingSpeedMultiplier
+          Multiply: 0.75
+  - Name: babyenemy
+    Help: Random enemy baby mode
+    Handler: CharacterEffect
+    HandlerConfig:
+      Name: Baby mode
+      Target: EnemyTeam
+      Duration: 30
+      Scale: 0.5
+      Properties:
+        - Name: ArmorArms
+          Multiply: 0.5
+        - Name: ArmorEncumbrance
+          Multiply: 0.5
+        - Name: ArmorHead
+          Multiply: 0.5
+        - Name: ArmorLegs
+          Multiply: 0.5
+        - Name: ArmorTorso
+          Multiply: 0.5
+        - Name: MaxSpeedMultiplier
+          Multiply: 2
+  - Name: giantplayer
+    Help: Player giant mode
+    Handler: CharacterEffect
+    HandlerConfig:
+      Name: Giant mode
+      Target: Player
+      Duration: 30
+      Scale: 1.5
+      Properties:
+        - Name: ArmorArms
+          Add: 40
+        - Name: ArmorEncumbrance
+          Add: 100
+        - Name: ArmorLegs
+          Add: 40
+        - Name: ArmorTorso
+          Add: 40
+        - Name: MaxSpeedMultiplier
+          Multiply: 0.75
+        - Name: SwingSpeedMultiplier
+          Multiply: 0.75
+  - Name: babyplayer
+    Help: Player baby mode
+    Handler: CharacterEffect
+    HandlerConfig:
+      Name: Baby mode
+      Target: Player
+      Duration: 30
+      Scale: 0.5
+      Properties:
+        - Name: ArmorArms
+          Multiply: 0.5
+        - Name: ArmorEncumbrance
+          Multiply: 0.5
+        - Name: ArmorHead
+          Multiply: 0.5
+        - Name: ArmorLegs
+          Multiply: 0.5
+        - Name: ArmorTorso
+          Multiply: 0.5
+        - Name: MaxSpeedMultiplier
+          Multiply: 2
+  - Name: gianthero
+    Help: Player giant mode
+    Handler: CharacterEffect
+    HandlerConfig:
+      Name: Giant mode
+      Target: Adopted
+      Duration: 30
+      Scale: 1.5
+      Properties:
+        - Name: ArmorArms
+          Add: 40
+        - Name: ArmorEncumbrance
+          Add: 100
+        - Name: ArmorLegs
+          Add: 40
+        - Name: ArmorTorso
+          Add: 40
+        - Name: MaxSpeedMultiplier
+          Multiply: 0.75
+        - Name: SwingSpeedMultiplier
+          Multiply: 0.75
+  - Name: babyhero
+    Help: Player baby mode
+    Handler: CharacterEffect
+    HandlerConfig:
+      Name: Baby mode
+      Target: Adopted
+      Duration: 30
+      Scale: 0.5
+      Properties:
+        - Name: ArmorArms
+          Multiply: 0.5
+        - Name: ArmorEncumbrance
+          Multiply: 0.5
+        - Name: ArmorHead
+          Multiply: 0.5
+        - Name: ArmorLegs
+          Multiply: 0.5
+        - Name: ArmorTorso
+          Multiply: 0.5
+        - Name: MaxSpeedMultiplier
+          Multiply: 2
+  - Name: burn
+    Help: Burn player
+    Handler: CharacterEffect
+    HandlerConfig:
+      Name: Burn
+      Duration: 15
+      DamagePerSecond: 2
+      Properties:
+        - Name: MaxSpeedMultiplier
+          Multiply: 0.5
+      ParticleEffects:
+        - Name: psys_game_burning_agent
+          OnBody: true
+  - Name: heal
+    Help: Heal player
+    Handler: CharacterEffect
+    HandlerConfig:
+      Name: Heal
+      Duration: 15
+      HealPerSecond: 3
+      ParticleEffects:
+        - Name: psys_bug_fly_1
+          OnBody: true
+  - Name: healhero
+    Help: Heal Adopted Hero
+    Handler: CharacterEffect
+    HandlerConfig:
+      Name: Heal
+      Duration: 15
+      Target: Adopted
+      HealPerSecond: 3
+      ParticleEffects:
+        - Name: psys_bug_fly_1
+          OnBody: true          
+  - Name: firesword
+    Help: Fire Sword
+    Handler: CharacterEffect
+    HandlerConfig:
+      Name: Firesword
+      Duration: 30
+      Properties:
+        - Name: SwingSpeedMultiplier
+          Multiply: 2
+        - Name: MaxSpeedMultiplier
+          Multiply: 1.1
+      ParticleEffects:
+        - Name: psys_torch_fire_moving
+          OnWeapon: true
+  - Name: fireswordhero
+    Help: Fire Sword for Adopted Hero
+    Handler: CharacterEffect
+    HandlerConfig:
+      Name: Firesword
+      Duration: 30
+      Target: Adopted
+      Properties:
+        - Name: SwingSpeedMultiplier
+          Multiply: 2
+        - Name: MaxSpeedMultiplier
+          Multiply: 1.1
+      ParticleEffects:
+        - Name: psys_torch_fire_moving
+          OnWeapon: true
+  - Name: fury
+    Help: Player Fists of Fury
+    Handler: CharacterEffect
+    HandlerConfig:
+      Name: Fists of Fury
+      DamageMultiplier: 10
+      Duration: 20
+      ActivateParticleEffect: psys_burning_projectile_stone_coll
+      ActivateSound: event:/mission/combat/impact/burning_jar/adobe
+      DeactivateParticleEffect: psys_burning_projectile_water_coll
+      DeactivateSound: event:/mission/siege/merlon/stone_destroy
+      Properties:
+        - Name: SwingSpeedMultiplier
+          Multiply: 3
+        - Name: MaxSpeedMultiplier
+          Multiply: 2
+      ParticleEffects:
+        - Name: psys_torch_fire_moving
+          OnHands: true
+        - Name: psys_game_burning_agent
+          OnHands: true
+        - Name: psys_campfire
+          OnHands: true
+        - Name: psys_campfire_sparks
+          OnHands: true
+        - Name: psys_campfire_sparks
+          OnHands: true
+        - Name: psys_campfire_sparks
+          OnHands: true
+      ForceDropWeapons: true
+  - Name: dust
+    Help: Dust storm
+    Handler: CharacterEffect
+    HandlerConfig:
+      Name: Dust storm
+      Duration: 20
+      ParticleEffects:
+        - Name: psys_adobe_battlement_destroyed
+          OnHead: true
+  - Name: pfxtest
+    Help: Test particle effects on the player
+    Handler: TestPfx
+    BroadcasterOnly: true
+  - Name: sfxtest
+    Help: Test sounds effects
+    Handler: TestSfx
+    BroadcasterOnly: true    
+    
 GlobalConfigs: []
 SimTesting:
   UserCount: 10

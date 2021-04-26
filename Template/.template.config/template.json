@@ -1,0 +1,12 @@
+{
+    "author": "billw2011",
+    "name": "BLTTemplate",
+    "description": "You can implement your own reward actions and commands",
+    "identity": "billw2011.BLTTemplate.1.0",
+    "shortName": "BLTTemplate",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    },
+    "sourceName": "BLTTemplate"
+  }
