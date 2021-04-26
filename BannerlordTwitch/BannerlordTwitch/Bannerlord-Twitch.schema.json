@@ -12,31 +12,59 @@
               "type": "object",
               "properties": {
                 "Title": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "The title of the reward"
+                },
+                "Prompt": {
+                  "type": "string",
+                  "description": "The prompt for the viewer when they are redeeming the reward"
                 },
                 "Cost": {
-                  "type": "integer"
+                  "type": "integer",
+                  "description": "The cost of the reward in channel points"
                 },
                 "IsEnabled": {
-                  "type": "boolean"
+                  "type": "boolean",
+                  "description": "Is the reward currently enabled, if false the reward won’t show up to viewers. Defaults to true if not specified."
+                },
+                "BackgroundColor": {
+                  "type": "string",
+                  "description": "Custom background color for the reward. Format: Hex with # prefix. Example: #00E5CB."
+                },
+                "IsUserInputRequired": {
+                  "type": "boolean",
+                  "description": "Does the user need to enter information when redeeming the reward. Defaults false."
+                },
+                "MaxPerStream": {
+                  "type": "integer",
+                  "description": "The maximum number per stream, defaults to unlimited"
+                },
+                "MaxPerUserPerStream": {
+                  "type": "integer",
+                  "description": "The maximum number per user per stream, defaults to unlimited"
+                },
+                "GlobalCooldownSeconds": {
+                  "type": "integer",
+                  "description": "The cooldown in seconds, defaults to unlimited"
                 }
               },
               "required": [
                 "Title",
-                "Cost",
-                "IsEnabled"
+                "Cost"
               ]
             },
-            "ActionId": {
-              "type": "string"
+            "Action": {
+              "type": "string",
+              "description": "Name of the BLT action"
             },
             "ActionConfig": {
-              "type": "object"
+              "type": "object",
+              "description": "Custom config for the BLT action"
             }
           },
           "required": [
             "RewardSpec",
-            "ActionId"
+            "Action"
           ]
         }
       ]
@@ -47,22 +75,37 @@
         {
           "type": "object",
           "properties": {
-            "Cmd": {
-              "type": "string"
+            "Name": {
+              "type": "string",
+              "description": "The command itself, not including the !"
+            },
+            "HideHelp": {
+              "type": "boolean",
+              "description": "Hides the command from the !help action"
             },
             "Help": {
-              "type": "string"
+              "type": "string",
+              "description": "What to show in the !help command"
+            },
+            "BroadcasterOnly": {
+              "type": "boolean",
+              "description": "Only allows the broadcaster to use this command, and hides it from !help"
+            },
+            "ModOnly": {
+              "type": "boolean",
+              "description": "Only allows the mods or broadcaster to use this command, and hides it from !help"
             },
             "Handler": {
-              "type": "string"
+              "type": "string",
+              "description": "The name of the BLT command handler"
             },
             "HandlerConfig": {
-              "type": "object"
+              "type": "object",
+              "description": "The custom config for the command handler"
             }
           },
           "required": [
-            "Cmd",
-            "Help",
+            "Name",
             "Handler"
           ]
         }
