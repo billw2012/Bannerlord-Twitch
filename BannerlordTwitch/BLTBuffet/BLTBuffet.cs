@@ -48,8 +48,6 @@ namespace BLTBuffet
     [UsedImplicitly]
     public class TestPfx : ICommandHandler
     {
-        //private List<ParticleSystem> active;
-
         private BoneAttachments active;
         public void Execute(string args, CommandMessage message, object config)
         {

@@ -128,6 +128,9 @@
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Target Name="AfterBuild">
         <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
+        <Copy SourceFiles="CharacterEffectProperties.txt" DestinationFolder="$(OutDir)..\.." />
+        <Copy SourceFiles="ParticleEffects.txt" DestinationFolder="$(OutDir)..\.." />
+        <Copy SourceFiles="Sounds.txt" DestinationFolder="$(OutDir)..\.." />
         <ItemGroup>
             <SomeDir Include="$(OutDir)\..\..\**\*" />
         </ItemGroup>

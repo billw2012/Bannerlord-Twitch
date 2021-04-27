@@ -246,6 +246,7 @@
     <Content Include="Bannerlord-Twitch-Auth.yaml" />
     <Content Include="Bannerlord-Twitch.schema.json" />
     <Content Include="Bannerlord-Twitch.yaml" />
+    <Content Include="ExampleConfigs\Config-For-Dev.yaml" />
     <Content Include="ExampleConfigs\SimTesting.yaml" />
     <Content Include="ExampleConfigs\Config-Simple-Chat.yaml" />
     <Content Include="ExampleConfigs\Config-Simple-Rewards.yaml" />
@@ -257,9 +258,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
-    <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml;SubModule.xml" DestinationFolder="$(OutDir)..\.." />
-    <Copy SourceFiles="..\..\README.md" DestinationFolder="$(OutDir)..\.." />
+    <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml" DestinationFolder="$(OutDir)..\.." />
     <Copy SourceFiles="Bannerlord-Twitch.yaml" DestinationFolder="$(OutDir)..\.." />
+    <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
+    <Copy SourceFiles="..\..\README.md" DestinationFolder="$(OutDir)..\.." />
     <ItemGroup>
       <SomeDir Include="$(OutDir)\..\..\**\*" />
     </ItemGroup>

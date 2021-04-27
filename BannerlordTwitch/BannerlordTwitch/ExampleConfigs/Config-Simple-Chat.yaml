@@ -1,7 +1,7 @@
 ﻿# yaml-language-server: $schema=https://raw.githubusercontent.com/billw2012/Bannerlord-Twitch/main/BannerlordTwitch/BannerlordTwitch/Bannerlord-Twitch.schema.json
 ---
 # This config uses bot commands only: subs can adopt a hero for free, with some starting money, then earn more through
-# attacking the player and winning, which they can use to upgrade.
+# their side winning in battle, which they can use to upgrade equipment and stats.
 Rewards:
   - Name: stats
     Help: Hero stats
@@ -60,7 +60,8 @@ Rewards:
       AllowHideOut: true
       AllowFriendlyMission: true
       OnPlayerSide: false
-      GoldCost: 0
+      # Free to attack!
+      GoldCost: 0 
       WinGold: 10000
   - Name: skill
     Help: "+Skill (5k gold)"
@@ -74,8 +75,7 @@ Rewards:
     Help: "+Attr (10k gold)"
     Handler: AttributePoints
     HandlerConfig:
-      Improvement: Vigor, Control, Endurance, Cunning, Social, Intelligence
-      Random: true
+      Attribute: Random
       AmountLow: 1
       AmountHigh: 1
       GoldCost: 10000
@@ -88,7 +88,7 @@ Rewards:
       AmountHigh: 1
       GoldCost: 10000
   - Name: equip
-    Help: +Equipment (15k gold)
+    Help: "Improve Equip (10k gold x Tier)"
     Handler: EquipHero
     HandlerConfig:
       AllowCompanionUpgrade: true
@@ -98,4 +98,5 @@ Rewards:
       Horse: true
       Civilian: true
       Upgrade: true
-      GoldCost: 15000
+      GoldCost: 10000
+      MultiplyCostByCurrentTier: true

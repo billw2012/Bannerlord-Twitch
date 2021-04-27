@@ -8,6 +8,7 @@ using TaleWorlds.Library;
 using TwitchLib.Api.Helix.Models.ChannelPoints.CreateCustomReward;
 using YamlDotNet.Serialization;
 
+// ReSharper disable MemberCanBePrivate.Global
 #pragma warning disable 649
 
 namespace BannerlordTwitch
@@ -25,6 +26,7 @@ namespace BannerlordTwitch
     
     // Docs here https://dev.twitch.tv/docs/api/reference#create-custom-rewards
     [Desc("The Twitch specific part of the channel points reward specification")]
+    [UsedImplicitly]
     internal class RewardSpec
     {
         [Desc("The title of the reward")]
@@ -33,35 +35,36 @@ namespace BannerlordTwitch
         public string Prompt;
         [Desc("The cost of the reward")]
         public int Cost;
-        [Desc("Is the reward currently enabled, if false the reward won’t show up to viewers. Defaults true")]
-        public bool IsEnabled;
-        [Desc("Custom background color for the reward. Format: Hex with # prefix. Example: #00E5CB")]
+        [Desc("Is the reward currently enabled, if false the reward won’t show up to viewers. Defaults to true if not specified.")]
+        public bool? IsEnabled;
+        [Desc("Custom background color for the reward. Format: Hex with # prefix. Example: #00E5CB.")]
         public string BackgroundColor;
-        [Desc("Does the user need to enter information when redeeming the reward. Defaults false")]
+        [Desc("Does the user need to enter information when redeeming the reward. Defaults false.")]
         public bool IsUserInputRequired;
-        [Desc("The maximum number per stream if enabled")]
+        [Desc("The maximum number per stream, defaults to unlimited")]
         public int? MaxPerStream;
-        [Desc("The maximum number per user per stream if enabled")]
+        [Desc("The maximum number per user per stream, defaults to unlimited")]
         public int? MaxPerUserPerStream;
-        [Desc("The cooldown in seconds if enabled")]
+        [Desc("The cooldown in seconds, defaults to unlimited")]
         public int? GlobalCooldownSeconds;
 
         public CreateCustomRewardsRequest GetTwitchSpec() =>
             new()
             {
-                BackgroundColor = BackgroundColor,
+                Title = Title,
                 Cost = Cost,
-                GlobalCooldownSeconds = GlobalCooldownSeconds,
-                IsEnabled = IsEnabled,
-                IsGlobalCooldownEnabled = GlobalCooldownSeconds.HasValue,
-                IsMaxPerStreamEnabled = MaxPerStream.HasValue,
-                IsMaxPerUserPerStreamEnabled = MaxPerUserPerStream.HasValue,
+                IsEnabled = IsEnabled ?? true,
+                BackgroundColor = BackgroundColor,
                 IsUserInputRequired = IsUserInputRequired,
-                MaxPerStream = MaxPerStream,
-                MaxPerUserPerStream = MaxPerUserPerStream,
                 Prompt = Prompt,
+                // as we are performing the redemption we don't want to skip the queue
                 ShouldRedemptionsSkipRequestQueue = false,
-                Title = Title
+                IsGlobalCooldownEnabled = GlobalCooldownSeconds.HasValue,
+                GlobalCooldownSeconds = GlobalCooldownSeconds,
+                IsMaxPerStreamEnabled = MaxPerStream.HasValue,
+                MaxPerStream = MaxPerStream,
+                IsMaxPerUserPerStreamEnabled = MaxPerUserPerStream.HasValue,
+                MaxPerUserPerStream = MaxPerUserPerStream,
             };
     }
     
@@ -70,20 +73,21 @@ namespace BannerlordTwitch
     {
         [Desc("The command itself, not including the !")]
         public string Name;
-        [Desc("Hides the help for the command from the !help action")]
+        [Desc("Hides the command from the !help action")]
         public bool HideHelp;
+        [Desc("What to show in the !help command")]
+        public string Help;
         [Desc("Only allows the broadcaster to use this command, and hides it from !help")]
         public bool BroadcasterOnly;
         [Desc("Only allows the mods or broadcaster to use this command, and hides it from !help")]
         public bool ModOnly;
-        [Desc("What to show in the !help command")]
-        public string Help;
         [Desc("The name of the BLT command handler")]
         public string Handler;
         [Desc("The custom config for the command handler")]
         public object HandlerConfig;
     }
     
+    [UsedImplicitly]
     internal class GlobalConfig
     {
         public string Id;
@@ -110,6 +114,7 @@ namespace BannerlordTwitch
         public SimTestingItem[] Use;
     }
 
+    [UsedImplicitly]
     internal class AuthSettings
     {
         public string AccessToken;
@@ -118,24 +123,24 @@ namespace BannerlordTwitch
         public string BotMessagePrefix;
         public object Test;
         
-        private static string SaveFilePath => Path.Combine(Common.PlatformFileHelper.DocumentsPath,
+        private static string AuthFilePath => Path.Combine(Common.PlatformFileHelper.DocumentsPath,
             "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch-Auth.yaml");
 
         public static AuthSettings Load()
         {
-            if (!File.Exists(SaveFilePath))
+            if (!File.Exists(AuthFilePath))
             {
-                var templateFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
-                    Path.GetFileName(SaveFilePath));
-                File.Copy(templateFileName, SaveFilePath);
+                string templateFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
+                    Path.GetFileName(AuthFilePath));
+                File.Copy(templateFileName, AuthFilePath);
                 InformationManager.ShowInquiry(
                     new InquiryData(
                         "Bannerlord Twitch",
-                        $"Auth settings file created, please close the game, and edit it at {SaveFilePath}",
+                        $"Auth settings file created, please close the game, and edit it at {AuthFilePath}",
                         true, false, "Okay", null,
                         () => {}, () => {}), true);
             }
-            return new DeserializerBuilder().Build().Deserialize<AuthSettings>(File.ReadAllText(SaveFilePath));
+            return new DeserializerBuilder().Build().Deserialize<AuthSettings>(File.ReadAllText(AuthFilePath));
         }
     }
     
@@ -161,8 +166,7 @@ namespace BannerlordTwitch
     
     internal class Settings
     {
-        // public string Instructions;
-
+        public bool DeleteRewardsOnExit;
         public Reward[] Rewards;
         public Command[] Commands;
         public GlobalConfig[] GlobalConfigs;
@@ -177,19 +181,18 @@ namespace BannerlordTwitch
             if (!File.Exists(SaveFilePath))
 #endif
             {
-                var templateFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
+                string templateFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
                     Path.GetFileName(SaveFilePath));
                 File.Copy(templateFileName, SaveFilePath, overwrite: true);
                 InformationManager.ShowInquiry(
                     new InquiryData(
                         "Bannerlord Twitch",
-                        $"Reward/Command settings file created, please close the game, and edit it at {SaveFilePath}",
+                        $"Default Reward/Command settings file created, you can edit it at {SaveFilePath}",
                         true, false, "Okay", null,
                     () => {}, () => {}), true);
             }
             var deserializer = new DeserializerBuilder().Build();
             var settings = deserializer.Deserialize<Settings>(File.ReadAllText(SaveFilePath));
-            //var settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(SaveFilePath));
             if (settings == null)
                 return null;
             

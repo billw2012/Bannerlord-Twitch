@@ -465,12 +465,19 @@ namespace BLTAdoptAHero
             var settings = (SkillXPSettings) baseSettings;
             var skill = GetSkill(adoptedHero, settings.Skills, settings.Random, settings.Auto);
             if (skill == null) return (false, $"Couldn't improve skill {settings.Skills}: its not a valid skill name!");
-            int prevSkill = adoptedHero.GetSkillValue(skill);
+            float prevSkill = adoptedHero.HeroDeveloper.GetPropertyValue(skill);
+            int prevLevel = adoptedHero.GetSkillValue(skill);
             adoptedHero.HeroDeveloper.AddSkillXp(skill, amount);
-            int realGainedXp = adoptedHero.GetSkillValue(skill) - prevSkill;
-            return realGainedXp <= 0
-                ? (false, $"Couldn't improve skill {settings.Skills} any further, get more focus points!")
-                : (true, $"You have gained {realGainedXp}xp (adjusted by focus) in {skill.Name}, you now have {adoptedHero.GetSkillValue(skill)}!");
+            float realGainedXp = adoptedHero.HeroDeveloper.GetPropertyValue(skill) - prevSkill;
+            int newLevel = adoptedHero.GetSkillValue(skill);
+            int gainedLevels = newLevel - prevLevel;
+            return realGainedXp < 1f
+                ? (false, $"Couldn't improve skill {skill.Name} any further, get more focus points!")
+                : gainedLevels > 1
+                    ? (true, $"You have gained {gainedLevels} levels in {skill.Name}, you are now {newLevel}!")
+                    : gainedLevels == 1
+                        ? (true, $"You have gained a level in {skill.Name}, you are now {newLevel}!")
+                        : (true, $"You have gained {realGainedXp:0}xp (adjusted by focus) in {skill.Name}, you now have {adoptedHero.GetSkillValue(skill)}!");
         }
     }
 

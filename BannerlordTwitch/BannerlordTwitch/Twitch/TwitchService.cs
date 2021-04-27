@@ -153,7 +153,10 @@ namespace BannerlordTwitch
 
         ~TwitchService()
         {
-            RemoveRewards();
+            if (settings.DeleteRewardsOnExit)
+            {
+                RemoveRewards();
+            }
         }
         
         private async void RegisterRewardsAsync()
