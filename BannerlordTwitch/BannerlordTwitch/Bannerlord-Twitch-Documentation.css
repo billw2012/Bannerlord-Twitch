@@ -1,0 +1,92 @@
+﻿table {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+table, th, td {
+    /*border: 0px solid black;*/
+    border-collapse: collapse;
+    font-family: verdana, sans-serif;
+}
+th, td {
+    padding: 4px 10px;
+    text-align: left;
+}
+table td:nth-child(1) {
+    width: 20%;
+}
+table td:nth-child(2) {
+    width: 10%;
+}
+table td:nth-child(3) {
+    width: 15%;
+}
+table td:nth-child(4) {
+    width: 40%;
+}
+.aclist td:nth-child(1) {
+    width: 30%;
+}
+.aclist td:nth-child(2) {
+    width: 70%;
+}
+table tr:nth-child(even) {
+    background-color: #2a2a2a;
+}
+table tr:nth-child(odd) {
+    background-color: #181818;
+}
+table th {
+    background-color: #959595;
+    color: #282828;
+}
+h1, h2, h3, p {
+    font-family: verdana, sans-serif;
+}
+a:link {
+    color: aquamarine;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #ff927f;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #00ffb2;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #ffffff;
+    text-decoration: underline;
+}
+.example {
+    background: #151b31;
+    border: 1px solid #ddd;
+    border-left: 5px solid #f36d33;
+    color: #dedede;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}
+.content {
+    max-width: 1000px;
+    margin: auto;
+    background: #1f1f1f;
+    color: #dcdedc;
+    padding: 10px;
+}
+body {
+    background: #282828;
+}

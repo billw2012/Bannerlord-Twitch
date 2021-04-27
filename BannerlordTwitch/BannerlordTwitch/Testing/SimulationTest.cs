@@ -73,7 +73,7 @@ namespace BannerlordTwitch.Testing
                 var cmd = settings.Commands.FirstOrDefault(c => c.Name == item.Id);
                 if (cmd != null)
                 {
-                    RewardManager.Command(cmd.Handler, item.Args, new CommandMessage {}, cmd.HandlerConfig);
+                    RewardManager.Command(cmd.Handler, item.Args, new CommandMessage { UserName = user.name }, cmd.HandlerConfig);
                 }
             }
         }

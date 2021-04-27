@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using BannerlordTwitch.Rewards;
 using JetBrains.Annotations;
 using TaleWorlds.Core;
+using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TwitchLib.Api.Helix.Models.ChannelPoints.CreateCustomReward;
 using YamlDotNet.Serialization;
+using Path = System.IO.Path;
 
 // ReSharper disable MemberCanBePrivate.Global
 #pragma warning disable 649
@@ -136,9 +139,13 @@ namespace BannerlordTwitch
                 InformationManager.ShowInquiry(
                     new InquiryData(
                         "Bannerlord Twitch",
-                        $"Auth settings file created, please close the game, and edit it at {AuthFilePath}",
+                        $"Auth settings file created at {AuthFilePath}, you need to edit it to provide authorization. Press Okay to exit now and edit the file.",
                         true, false, "Okay", null,
-                        () => {}, () => {}), true);
+                        () => { 
+                            Utilities.DoDelayedexit(0);
+                            Process.Start("explorer.exe", $"/select, \"{AuthFilePath}\"");
+                            Process.Start(AuthFilePath);
+                        }, () => {}), true);
             }
             return new DeserializerBuilder().Build().Deserialize<AuthSettings>(File.ReadAllText(AuthFilePath));
         }
@@ -177,7 +184,7 @@ namespace BannerlordTwitch
         
         public static Settings Load()
         {
-#if RELEASE
+#if !DEBUG
             if (!File.Exists(SaveFilePath))
 #endif
             {
@@ -187,7 +194,7 @@ namespace BannerlordTwitch
                 InformationManager.ShowInquiry(
                     new InquiryData(
                         "Bannerlord Twitch",
-                        $"Default Reward/Command settings file created, you can edit it at {SaveFilePath}",
+                        $"Default settings file created at {SaveFilePath}",
                         true, false, "Okay", null,
                     () => {}, () => {}), true);
             }

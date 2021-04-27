@@ -133,13 +133,15 @@ namespace BLTAdoptAHero
         {
             var tagText = new TextObject(Tag);
             return Campaign.Current?.AliveHeroes?.Where(h =>
+                // Not the player of course
+                h != Hero.MainHero
                 // Don't want notables ever
-                !h.IsNotable && h.Age >= 18f && 
-                (settings.AllowPlayerCompanion && h.IsPlayerCompanion
-                 || settings.AllowNoble && h.IsNoble
-                 || settings.AllowWanderer && h.IsWanderer)
-                && (!settings.OnlySameFaction || Clan.PlayerClan?.MapFaction != null &&
-                    Clan.PlayerClan?.MapFaction == h.Clan?.MapFaction)
+                && !h.IsNotable && h.Age >= 18f 
+                && (settings.AllowPlayerCompanion && h.IsPlayerCompanion
+                   || settings.AllowNoble && h.IsNoble
+                   || settings.AllowWanderer && h.IsWanderer)
+                && (!settings.OnlySameFaction 
+                    || Clan.PlayerClan?.MapFaction != null && Clan.PlayerClan?.MapFaction == h.Clan?.MapFaction)
             ).Where(n => !n.Name.Contains(tagText));
         }
 
@@ -711,28 +713,24 @@ namespace BLTAdoptAHero
             public override void HandleOnCloseMission()
             {
                 base.HandleOnCloseMission();
-                Log.Screen($"HandleOnCloseMission {this.Mission.SceneName}");
                 RemoveHeroes();
             }
 
             protected override void OnEndMission()
             {
                 base.OnEndMission();
-                Log.Screen($"OnEndMission {this.Mission.SceneName}");
                 RemoveHeroes();
             }
 
             public override void OnMissionDeactivate()
             {
                 base.OnMissionDeactivate();
-                Log.Screen($"OnMissionDeactivate {this.Mission.SceneName}");
                 RemoveHeroes();
             }
 
             public override void OnMissionRestart()
             {
                 base.OnMissionRestart();
-                Log.Screen($"OnMissionRestart {this.Mission.SceneName}");
                 RemoveHeroes();
             }
 
