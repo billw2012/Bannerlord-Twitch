@@ -1,10 +1,10 @@
-# [Trailer](https://youtu.be/fY7Vbl9KKuM) | [~~Download~~]() | [Github](https://github.com/billw2012/Bannerlord-Twitch)
-
-[![Trailer link](https://img.youtube.com/vi/fY7Vbl9KKuM/0.jpg)](https://youtu.be/fY7Vbl9KKuM)
+# [Trailer](https://youtu.be/fY7Vbl9KKuM) | [Download]() | [Github](https://github.com/billw2012/Bannerlord-Twitch)
 
 # Bannerlord Twitch (BLT)
 This is a modification for [Mount & Blade II: Bannerlord](https://www.taleworlds.com/en/Games/Bannerlord) that adds Twitch integration to the game. This allows events in a Twitch
 stream to trigger actions in game, for instance Redemption of Channel Point Rewards, or specific chat messages.
+
+[![Trailer link](https://img.youtube.com/vi/fY7Vbl9KKuM/0.jpg)](https://youtu.be/fY7Vbl9KKuM)
 
 # Features
 - **Define Channel Point Rewards**, along with their in game effects, via the configuration file, they will be automatically added to your channel for you, and optionally removed again when the game exits
@@ -38,7 +38,10 @@ Possible changes:
 # Instructions
 
 ## Installation
-1. Install [Bannerlord Harmony](https://www.nexusmods.com/mountandblade2bannerlord/mods/2006?tab=files)
+
+### [Installation Guide Video](https://youtu.be/1cBSBwERHjQ)
+
+1. Install [Bannerlord Harmony](https://www.nexusmods.com/mountandblade2bannerlord/mods/2006?tab=files).
    
 2. Unzip to the Bannerlords Modules directory (by default at `C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules`).
    It should create the `BannerlordTwitch` directory, and the `BannerlordTwitch.dll` should be at `Modules\BannerlordTwitch\bin\Win64_Shipping_Client\BannerlordTwitch.dll`
@@ -48,15 +51,15 @@ Possible changes:
 3. Run the launcher, make sure Harmony loads first and Bannerlord Twitch loads after the game modules and before any BLT extensions:  
    ![image](https://user-images.githubusercontent.com/1453936/116240320-95155d80-a75b-11eb-8920-6e0629ab81b9.png)
    
-4. Run the game
+4. Run the game.
    
-5. The mod should popup notifications that it has copied the settings files to their proper locations, you can now close the game, goto the location specified and edit the files. The `Bannerlord-Twitch-Auth.yaml` is the important one that must be edited before the mod will function. Instructions are in the file itself.
+5. The mod should popup notifications that it has copied the settings files to their proper locations. When you click okay it will open up `Bannerlord-Twitch-Auth.yaml` for you to edit, to provide authorization. Instructions are in the file itself.
    
-6. Once you have edited the config files as you wish you can run the game again
+6. Once you have edited the config files as you wish you can run the game again.
    
-7. During startup watch for notification messages that indicate if the mod initialized successfully and connected to your Twitch channel
+7. During startup watch for notification messages that indicate if the mod initialized successfully and connected to your Twitch channel.
    
-9. Once you get to the main menu in game it should be initialized, and the Channel Rewards should have been created automatically
+9. Once you get to the main menu in game it should be initialized, and the Channel Rewards should have been created automatically.
 
 ## Trouble Shooting   
 If you have problems you can search for `[BLT]` lines in the `rgl_log` files at `C:\ProgramData\Mount and Blade II Bannerlord\logs`. I added logging for everything so you should see failures and critical errors in here.
