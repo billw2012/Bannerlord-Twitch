@@ -1,4 +1,4 @@
-# [Trailer](https://youtu.be/fY7Vbl9KKuM) | [Download]() | [Github](https://github.com/billw2012/Bannerlord-Twitch)
+# [Trailer](https://youtu.be/fY7Vbl9KKuM) | [Download](https://github.com/billw2012/Bannerlord-Twitch/releases) | [Github](https://github.com/billw2012/Bannerlord-Twitch)
 
 # Bannerlord Twitch (BLT)
 This is a modification for [Mount & Blade II: Bannerlord](https://www.taleworlds.com/en/Games/Bannerlord) that adds Twitch integration to the game. This allows events in a Twitch
