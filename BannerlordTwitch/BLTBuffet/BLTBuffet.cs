@@ -17,7 +17,7 @@ namespace BLTBuffet
     public class BLTBuffetModule : MBSubModuleBase
     {
         public const string Name = "BLTBuffet";
-        public const string Ver = "1.0.0";
+        public const string Ver = "1.0.1";
 
         public BLTBuffetModule()
         {
@@ -274,6 +274,8 @@ namespace BLTBuffet
             public string Name;
             [Desc("Character target, defaults to player if not specified. You can also specify a specific hero name (e.g. <b>Caladog</b>), or use <b>Adopted</b> for the viewers adopted hero, <b>Any</b> for any random unit, <b>EnemyTeam</b> for a random enemy, <b>PlayerTeam</b> for a random player controlled unit, <b>AllyTeam</b> for a random non-player controlled ally unit")]
             public string Target;
+            [Desc("Will target unmounted soldiers only")]
+            public bool TargetOnFootOnly;
             [Desc("Scaling of the target")]
             public float? Scale;
             [Desc("Particle effects to apply")]
@@ -290,6 +292,8 @@ namespace BLTBuffet
             public float? Duration;
             [Desc("Force agent to drop weapons")]
             public bool ForceDropWeapons;
+            [Desc("Force agent dismount")]
+            public bool ForceDismount;
             [Desc("Raw damage multiplier")]
             public float? DamageMultiplier;
             [Desc("One shot vfx to apply when the effect is activated, see ParticleEffects.txt for the full vanilla list")]
@@ -364,6 +368,11 @@ namespace BLTBuffet
                     }
                 }
 
+                if (config.ForceDismount)
+                {
+                    AccessTools.Method(typeof(Agent), "SetMountAgent").Invoke(agent, new object[] { null });
+                }
+
                 if (config.Properties != null)
                 {
                     ApplyPropertyModifiers(agent, config);
@@ -401,11 +410,6 @@ namespace BLTBuffet
                 if (light != null)
                 {
                     RemoveLight(agent, light);
-                }
-                
-                if (config.Scale.HasValue)
-                {
-                    MultiplyAgentScale(agent, 1f / config.Scale.Value);
                 }
                 
                 agent.UpdateAgentProperties();
@@ -512,6 +516,7 @@ namespace BLTBuffet
             }
 
             private readonly Dictionary<Agent, float[]> agentDrivenPropertiesCache = new();
+            private readonly Dictionary<Agent, float> agentBaseScaleCache = new();
 
             public override void OnMissionTick(float dt)
             {
@@ -554,6 +559,14 @@ namespace BLTBuffet
                             agent.AgentDrivenProperties.SetStat((DrivenProperty) i, initialAgentDrivenProperties[i]);
                         }
                     }
+
+                    if (!agentBaseScaleCache.TryGetValue(agent, out float baseAgentScale))
+                    {
+                        agentBaseScaleCache.Add(agent, agent.AgentScale);
+                        baseAgentScale = agent.AgentScale;
+                    }
+
+                    float newAgentScale = baseAgentScale;
                     // Now update the dynamic properties
                     agent.UpdateAgentProperties();
                     // Then apply our effects as a stack
@@ -564,6 +577,13 @@ namespace BLTBuffet
                         {
                             agentEffects.Value.Remove(effect);
                         }
+
+                        newAgentScale *= effect.config.Scale ?? 1;
+                    }
+
+                    if (newAgentScale != agent.AgentScale)
+                    {
+                        SetAgentScale(agent, baseAgentScale, newAgentScale);
                     }
                     // Finally commit our modified values to the engine
                     agent.UpdateCustomDrivenProperties();
@@ -590,8 +610,12 @@ namespace BLTBuffet
 
             var config = (Config) baseConfig;
             Agent target;
+
+            bool GeneralAgentFilter(Agent agent) 
+                => !config.TargetOnFootOnly || agent.HasMount == false && !effectsBehaviour.Contains(agent, config);
+
             if (config.Target == null
-                || string.Equals(config.Target.ToLower(), "Player", StringComparison.InvariantCultureIgnoreCase))
+                || string.Equals(config.Target, "Player", StringComparison.InvariantCultureIgnoreCase))
             {
                 target = Agent.Main;
             }
@@ -605,31 +629,40 @@ namespace BLTBuffet
                            && charObj.HeroObject.FirstName.ToString() == userName;
                 });
             }
-            else if(string.Equals(config.Target.ToLower(), "any", StringComparison.InvariantCultureIgnoreCase))
+            else if(string.Equals(config.Target, "Any", StringComparison.InvariantCultureIgnoreCase))
             {
-                target = Mission.Current.Agents.Where(a => !effectsBehaviour.Contains(a, config)).SelectRandom();
+                target = Mission.Current.Agents
+                    .Where(GeneralAgentFilter)
+                    .SelectRandom();
             }
-            else if(string.Equals(config.Target.ToLower(), "enemyteam", StringComparison.InvariantCultureIgnoreCase))
+            else if(string.Equals(config.Target, "EnemyTeam", StringComparison.InvariantCultureIgnoreCase))
             {
-                target = Mission.Current.Agents.Where(a => !effectsBehaviour.Contains(a, config) && a.Team != null && !a.Team.IsPlayerTeam && !a.Team.IsPlayerAlly).SelectRandom();
+                target = Mission.Current.Agents
+                    .Where(GeneralAgentFilter)
+                    .Where(a => a.Team?.IsPlayerTeam == false && !a.Team.IsPlayerAlly).SelectRandom();
             }
-            else if(string.Equals(config.Target.ToLower(), "playerteam", StringComparison.InvariantCultureIgnoreCase))
+            else if(string.Equals(config.Target, "PlayerTeam", StringComparison.InvariantCultureIgnoreCase))
             {
-                target = Mission.Current.Agents.Where(a => !effectsBehaviour.Contains(a, config) && a.Team != null && a.Team.IsPlayerTeam).SelectRandom();
+                target = Mission.Current.Agents
+                    .Where(GeneralAgentFilter)
+                    .Where(a => a.Team?.IsPlayerTeam == true).SelectRandom();
             }
-            else if(string.Equals(config.Target.ToLower(), "allyteam", StringComparison.InvariantCultureIgnoreCase))
+            else if(string.Equals(config.Target, "AllyTeam", StringComparison.InvariantCultureIgnoreCase))
             {
-                target = Mission.Current.Agents.Where(a => !effectsBehaviour.Contains(a, config) && a.Team != null && !a.Team.IsPlayerAlly).SelectRandom();
+                target = Mission.Current.Agents
+                    .Where(GeneralAgentFilter)
+                    .Where(a => a.Team?.IsPlayerAlly == false).SelectRandom();
             }
             else
             {
-                target = Mission.Current.Agents.FirstOrDefault(a =>
-                {
-                    if (a.Character is not CharacterObject charObj) return false;
-                    return charObj.HeroObject != null
-                           && charObj.HeroObject.FirstName.Contains(config.Target)
-                           && charObj.HeroObject.FirstName.ToString() == config.Target;
-                });
+                target = Mission.Current.Agents
+                    .FirstOrDefault(a =>
+                    {
+                        if (a.Character is not CharacterObject charObj) return false;
+                        return charObj.HeroObject != null
+                               && charObj.HeroObject.FirstName.Contains(config.Target)
+                               && charObj.HeroObject.FirstName.ToString() == config.Target;
+                    });
             }
 
             if (target == null || target.AgentVisuals == null)
@@ -649,12 +682,14 @@ namespace BLTBuffet
                 onFailure($"{target.Name} already affected by {config.Name}!");
                 return;
             }
-            var effectState = effectsBehaviour.Add(target, config);
-
-            if (config.Scale.HasValue)
+            
+            if (config.TargetOnFootOnly && target.HasMount)
             {
-                MultiplyAgentScale(target, config.Scale.Value);
+                onFailure($"{target.Name} is mounted so cannot be affected by {config.Name}!");
+                return;
             }
+            
+            var effectState = effectsBehaviour.Add(target, config);
 
             foreach (var pfx in config.ParticleEffects ?? Enumerable.Empty<ParticleEffectDef>())
             {
@@ -734,9 +769,16 @@ namespace BLTBuffet
             // target.UpdateCustomDrivenProperties();
         }
 
-        public static void MultiplyAgentScale(Agent agent, float scale)
+        public static void SetAgentScale(Agent agent, float baseScale, float scale)
         {
-            AccessTools.Method(typeof(Agent), "SetInitialAgentScale").Invoke(agent, new []{ (object) (scale * agent.AgentScale) });
+            AccessTools.Method(typeof(Agent), "SetInitialAgentScale").Invoke(agent, new []{ (object) scale });
+            // Doesn't have any affect...
+            //AgentVisualsNativeData agentVisualsNativeData = agent.Monster.FillAgentVisualsNativeData();
+            //AnimationSystemData animationSystemData = agent.Monster.FillAnimationSystemData(agent.Character.GetStepSize() * scale / baseScale , false);
+            // animationSystemData.WalkingSpeedLimit *= scale;
+            // animationSystemData.CrouchWalkingSpeedLimit *= scale;
+            //animationSystemData.NumPaces = 10;
+            //agent.SetActionSet(ref agentVisualsNativeData, ref animationSystemData);
         }
         
         public static List<GameEntityComponent> CreateWeaponEffects(Agent agent, string pfxSystem)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.CompilerServices;
 using BannerlordTwitch.Rewards;
 using JetBrains.Annotations;
 using TaleWorlds.Core;
@@ -179,14 +180,17 @@ namespace BannerlordTwitch
         public GlobalConfig[] GlobalConfigs;
         public SimTestingConfig SimTesting;
 
+        #if DEBUG
+        private static string ProjectRootDir([CallerFilePath]string file = "") => Path.GetDirectoryName(file);
+        private static string SaveFilePath => Path.Combine(ProjectRootDir(), "Bannerlord-Twitch.yaml");
+        #else
         private static string SaveFilePath => Path.Combine(Common.PlatformFileHelper.DocumentsPath,
             "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch.yaml");
+        #endif
         
         public static Settings Load()
         {
-#if !DEBUG
             if (!File.Exists(SaveFilePath))
-#endif
             {
                 string templateFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
                     Path.GetFileName(SaveFilePath));

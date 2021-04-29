@@ -24,7 +24,7 @@ namespace BLTAdoptAHero
     public class BLTAdoptAHeroModule : MBSubModuleBase
     {
         public const string Name = "BLTAdoptAHero";
-        public const string Ver = "1.0.0";
+        public const string Ver = "1.0.1";
 
         public BLTAdoptAHeroModule()
         {

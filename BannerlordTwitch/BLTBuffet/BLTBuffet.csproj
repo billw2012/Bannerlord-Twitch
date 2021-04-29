@@ -36,9 +36,9 @@
             <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\Bannerlord.Harmony\bin\Win64_Shipping_Client\0Harmony.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="BannerlordTwitch, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\BannerlordTwitch\bin\Win64_Shipping_Client\BannerlordTwitch.dll</HintPath>
-            <Private>False</Private>
+        <Reference Include="BannerlordTwitch, Version=0.2.1.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\BannerlordTwitch\build\bin\Win64_Shipping_Client\BannerlordTwitch.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />

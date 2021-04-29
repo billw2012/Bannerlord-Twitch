@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Testing;
 using BannerlordTwitch.Util;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TwitchLib.Api;
 using TwitchLib.Api.Core.Enums;
 using TwitchLib.Api.Helix.Models.ChannelPoints.GetCustomReward;
@@ -23,45 +26,19 @@ namespace BannerlordTwitch
         private readonly TwitchAPI api;
         private string channelId;
         private readonly AuthSettings authSettings;
-        private readonly Settings settings;
 
-        private ConcurrentDictionary<Guid, OnRewardRedeemedArgs> redemptionCache = new ConcurrentDictionary<Guid, OnRewardRedeemedArgs>();
-        private ConcurrentDictionary<string, Reward> rewardMap = new ConcurrentDictionary<string, Reward>();
+        private Settings Settings { get; set; }
+
+        private readonly ConcurrentDictionary<Guid, OnRewardRedeemedArgs> redemptionCache = new();
         private Bot bot;
 
         public TwitchService()
         {
-            // To keep the Unity application active in the background, you can enable "Run In Background" in the player settings:
-            // Unity Editor --> Edit --> Project Settings --> Player --> Resolution and Presentation --> Resolution --> Run In Background
-            // This option seems to be enabled by default in more recent versions of Unity. An aditional, less recommended option is to set it in code:
-            // Application.runInBackground = true;
-            try
+            if (!LoadSettings())
             {
-                settings = Settings.Load();
-                if (settings == null)
-                {
-                    InformationManager.ShowInquiry(
-                        new InquiryData(
-                            "Bannerlord Twitch MOD DISABLED",
-                            $"Failed to load action/command settings, please check the formatting in Bannerlord-Twitch.jsonc",
-                            true, false, "Okay", null,
-                            () => {}, () => {}), true);
-                    Log.ScreenCritical($"MOD DISABLED: Failed to load settings from settings file, please check the formatting");
-                    return;
-                }
-            }
-            catch (Exception e)
-            {
-                InformationManager.ShowInquiry(
-                    new InquiryData(
-                        "Bannerlord Twitch MOD DISABLED",
-                        $"Failed to load action/command settings, please check the formatting in Bannerlord-Twitch.jsonc\n{e.Message}",
-                        true, false, "Okay", null,
-                        () => {}, () => {}), true);
-                Log.ScreenCritical(
-                    $"MOD DISABLED: Failed to load settings from settings file, please check the formatting ({e.Message})");
                 return;
             }
+
             try
             {
                 authSettings = AuthSettings.Load();
@@ -113,7 +90,7 @@ namespace BannerlordTwitch
                     channelId = user.Id;
                     
                     // Connect the chatbot
-                    bot = new Bot(user.Login, authSettings, settings);
+                    bot = new Bot(user.Login, authSettings, this);
 
                     if (string.IsNullOrEmpty(user.BroadcasterType))
                     {
@@ -151,12 +128,45 @@ namespace BannerlordTwitch
             });
         }
 
-        ~TwitchService()
+        public bool LoadSettings()
         {
-            if (settings.DeleteRewardsOnExit)
+            try
+            {
+                Settings = Settings.Load();
+                if (Settings == null)
+                {
+                    InformationManager.ShowInquiry(
+                        new InquiryData(
+                            "Bannerlord Twitch MOD DISABLED",
+                            $"Failed to load action/command settings, please check the formatting in Bannerlord-Twitch.jsonc",
+                            true, false, "Okay", null,
+                            () => {}, () => {}), true);
+                    Log.ScreenCritical($"MOD DISABLED: Failed to load settings from settings file, please check the formatting");
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                InformationManager.ShowInquiry(
+                    new InquiryData(
+                        "Bannerlord Twitch MOD DISABLED",
+                        $"Failed to load action/command settings, please check the formatting in Bannerlord-Twitch.jsonc\n{e.Message}",
+                        true, false, "Okay", null,
+                        () => {}, () => {}), true);
+                Log.ScreenCritical($"MOD DISABLED: Failed to load settings from settings file, please check the formatting ({e.Message})");
+                return false;
+            }
+
+            return true;
+        }
+        
+        public void Exit()
+        {
+            if (Settings.DeleteRewardsOnExit)
             {
                 RemoveRewards();
             }
+            Log.Info($"Exiting");
         }
         
         private async void RegisterRewardsAsync()
@@ -170,22 +180,54 @@ namespace BannerlordTwitch
             }
             catch (Exception e)
             {
-                Log.Error($"Couldn't retrieve existing rewards: {e.Message}");
+                Log.ScreenFail($"ERROR: Couldn't retrieve existing rewards: {e.Message}");
             }
 
-            foreach (var rewardDef in settings.Rewards.Where(r => existingRewards == null || existingRewards.Data.All(e => e.Title != r.RewardSpec?.Title)))
+            bool anyFailed = false;
+            foreach (var rewardDef in Settings.Rewards.Where(r => existingRewards == null || existingRewards.Data.All(e => e.Title != r.RewardSpec?.Title)))
             {
                 try
                 {
                     var createdReward = (await api.Helix.ChannelPoints.CreateCustomRewards(channelId, rewardDef.RewardSpec.GetTwitchSpec(), authSettings.AccessToken)).Data.First();
-                    rewardMap.TryAdd(createdReward.Id, rewardDef);
                     Log.Info($"Created reward {createdReward.Title} ({createdReward.Id})");
                     db.RewardsCreated.Add(createdReward.Id);
                 }
                 catch (Exception e)
                 {
-                    Log.Error($"Couldn't create reward {rewardDef.RewardSpec.Title}: {e.Message}");
+                    Log.ScreenCritical($"Couldn't create reward {rewardDef.RewardSpec.Title}: {e.Message}");
+                    anyFailed = true;
                 }
+            }
+
+            if (anyFailed)
+            {
+                InformationManager.ShowInquiry(
+                    new InquiryData(
+                        "Bannerlord Twitch",
+                        $"Failed to create some of the channel rewards, please check the logs for details!",
+                        true, true, "View Log", "Ignore",
+                        () =>
+                        {
+                            string logDir = Path.Combine(Common.PlatformFileHelper.DocumentsPath, "Mount and Blade II Bannerlord", "logs");
+                            try
+                            {
+                                string logFile = Directory.GetFiles(logDir, "rgl_log_*.txt")
+                                    .FirstOrDefault(f => !f.Contains("errors"));
+                                if (logFile != null)
+                                {
+                                    // open with default editor
+                                    Process.Start(logFile);
+                                }
+                                else
+                                {
+                                    Log.ScreenFail($"ERROR: Couldn't find the log file at {logDir}");
+                                }
+                            }
+                            catch
+                            {
+                                // ignored
+                            }
+                        }, () => {}), true);
             }
             
             Db.Save(db);
@@ -194,19 +236,19 @@ namespace BannerlordTwitch
         private void RemoveRewards()
         {
             var db = Db.Load();
-            foreach (var reward in db.RewardsCreated)
+            foreach (string rewardId in db.RewardsCreated.ToList())
             {
                 try
                 {
-                    api.Helix.ChannelPoints.DeleteCustomReward(channelId, reward, accessToken: authSettings.AccessToken).Wait();
-                    Log.Info($"Removed reward {reward}");
+                    api.Helix.ChannelPoints.DeleteCustomReward(channelId, rewardId, accessToken: authSettings.AccessToken).Wait();
+                    Log.Info($"Removed reward {rewardId}");
+                    db.RewardsCreated.Remove(rewardId);
                 }
                 catch (Exception e)
                 {
-                    Log.Info($"Couldn't remove reward {reward}: {e.Message}");
+                    Log.Info($"Couldn't remove reward {rewardId}: {e.Message}");
                 }
             }
-            db.RewardsCreated.Clear();
             Db.Save(db);
         }
 
@@ -214,7 +256,7 @@ namespace BannerlordTwitch
         {
             MainThreadSync.Run(() =>
             {
-                var reward = settings.Rewards.FirstOrDefault(r => r.RewardSpec.Title == redeemedArgs.RewardTitle);
+                var reward = Settings.Rewards.FirstOrDefault(r => r.RewardSpec.Title == redeemedArgs.RewardTitle);
                 if (reward == null)
                 {
                     Log.Info($"Reward {redeemedArgs.RewardTitle} not owned by this extension, ignoring it");
@@ -253,7 +295,7 @@ namespace BannerlordTwitch
 
         public void TestRedeem(string rewardName, string user, string message)
         {
-            var reward = settings?.Rewards.FirstOrDefault(r => r.RewardSpec.Title == rewardName);
+            var reward = Settings?.Rewards.FirstOrDefault(r => r.RewardSpec.Title == rewardName);
             if (reward == null)
             {
                 Log.Error($"Reward {rewardName} not found!");
@@ -301,7 +343,7 @@ namespace BannerlordTwitch
         private void ShowCommandHelp(string replyId)
         {
             bot.SendReply(replyId, "Commands: ".Yield()
-                .Concat(settings.Commands.Where(c 
+                .Concat(Settings.Commands.Where(c 
                         => !c.HideHelp && !c.BroadcasterOnly && !c.ModOnly)
                     .Select(c => $"!{c.Name} - {c.Help}")
                 ).ToArray());
@@ -381,14 +423,14 @@ namespace BannerlordTwitch
         //     pubSub.Connect();
         // }
         
-        public object FindGlobalConfig(string id) => settings?.GlobalConfigs?.FirstOrDefault(c => c.Id == id)?.Config;
+        public object FindGlobalConfig(string id) => Settings?.GlobalConfigs?.FirstOrDefault(c => c.Id == id)?.Config;
 
         private static SimulationTest simTest;
         
         public void StartSim()
         {
             StopSim();
-            simTest = new SimulationTest(settings);
+            simTest = new SimulationTest(Settings);
         }
         
         public void StopSim()

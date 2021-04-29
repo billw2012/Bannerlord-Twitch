@@ -28,10 +28,20 @@ namespace BannerlordTwitch.Util
         }
 
         [CommandLineFunctionality.CommandLineArgumentFunction("simteststop", "blt")]
+        [UsedImplicitly]
         public static string SimTestStop(List<string> strings)
         {
             BLTModule.TwitchService.StopSim();
             return "Test stopped";
+        }
+        
+        [CommandLineFunctionality.CommandLineArgumentFunction("reload", "blt")]
+        [UsedImplicitly]
+        public static string Reload(List<string> strings)
+        {
+            return BLTModule.TwitchService.LoadSettings() 
+                ? "Success" 
+                : "Failed";
         }
     }
 }

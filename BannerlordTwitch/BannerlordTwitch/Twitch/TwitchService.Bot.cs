@@ -19,12 +19,12 @@ namespace BannerlordTwitch
         {
             private readonly string channel;
             private TwitchClient client;
-            private readonly Settings settings;
+            private readonly TwitchService twitchService;
             private readonly AuthSettings authSettings;
 	    
-            public Bot(string channel, AuthSettings authSettings, Settings settings)
+            public Bot(string channel, AuthSettings authSettings, TwitchService twitchService)
             {
-                this.settings = settings;
+                this.twitchService = twitchService;
                 this.authSettings = authSettings;
                 this.channel = channel;
                 
@@ -182,7 +182,7 @@ namespace BannerlordTwitch
                     }
                     else
                     {
-                        var cmd = settings.Commands.FirstOrDefault(c => c.Name == parts[0]);
+                        var cmd = twitchService.Settings.Commands.FirstOrDefault(c => c.Name == parts[0]);
                         if (cmd != null 
                             && (!cmd.ModOnly || commandMessage.IsModerator || commandMessage.IsBroadcaster)
                             && (!cmd.BroadcasterOnly || commandMessage.IsBroadcaster)

@@ -11,7 +11,7 @@ namespace BannerlordTwitch
 	internal class BLTModule : MBSubModuleBase
 	{
 		public const string Name = "BannerlordTwitch";
-		public const string Ver = "0.1.1";
+		public const string Ver = "0.2.1";
 		
 		private static Harmony harmony = null;
 
@@ -24,13 +24,14 @@ namespace BannerlordTwitch
 			AssemblyHelper.Redirect("Microsoft.Extensions.Logging.Abstractions", Version.Parse("3.1.5.0"), "adb9793829ddae60");
 		}
 
-		public override void OnSubModuleUnloaded()
+		protected override void OnSubModuleUnloaded()
 		{
 			RewardManager.GenerateDocumentation();
+			TwitchService?.Exit();
 			base.OnSubModuleUnloaded();
 		}
 
-		public override void OnBeforeInitialModuleScreenSetAsRoot()
+		protected override void OnBeforeInitialModuleScreenSetAsRoot()
 		{
 			if (harmony == null)
 			{
@@ -53,7 +54,7 @@ namespace BannerlordTwitch
 			}
 		}
 
-		public override void OnApplicationTick(float dt)
+		protected override void OnApplicationTick(float dt)
 		{
 			base.OnApplicationTick(dt);
 			MainThreadSync.RunQueued();
