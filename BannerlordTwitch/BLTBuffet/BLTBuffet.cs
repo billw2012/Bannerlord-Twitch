@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
@@ -10,6 +11,8 @@ using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+
 #pragma warning disable 649
 
 namespace BLTBuffet
@@ -181,23 +184,22 @@ namespace BLTBuffet
         }
     }
 
-    [HarmonyPatch]
-    [UsedImplicitly]
+    [HarmonyPatch, UsedImplicitly]
     public static class Patches
     {
-        [UsedImplicitly]
-        [HarmonyPostfix]
-        [HarmonyPatch(typeof(Mission), "GetAttackCollisionResults",
-            new[] {
-                typeof(Agent), typeof(Agent), typeof(GameEntity), typeof(float), typeof(AttackCollisionData),
-                typeof(MissionWeapon), typeof(bool), typeof(bool), typeof(bool), typeof(WeaponComponentData),
-                typeof(CombatLogData)
-            }, 
-            new[] {
-                ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Ref,
-                ArgumentType.Ref, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Out,
-                ArgumentType.Out
-            })]
+        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(Mission), "GetAttackCollisionResults",
+             new[]
+             {
+                 typeof(Agent), typeof(Agent), typeof(GameEntity), typeof(float), typeof(AttackCollisionData),
+                 typeof(MissionWeapon), typeof(bool), typeof(bool), typeof(bool), typeof(WeaponComponentData),
+                 typeof(CombatLogData)
+             },
+             new[]
+             {
+                 ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Ref,
+                 ArgumentType.Ref, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Out,
+                 ArgumentType.Out
+             })]
         public static void GetAttackCollisionResultsPostfix(Mission __instance, Agent attackerAgent, Agent victimAgent, ref AttackCollisionData attackCollisionData)
         {
             CharacterEffect.BLTEffectsBehaviour.Get().ApplyHitDamage(attackerAgent, victimAgent, ref attackCollisionData);
@@ -211,40 +213,70 @@ namespace BLTBuffet
         //     Log.Screen("Test");
         // }
     }
-    
-    [Desc("Applies effects to a character / the player")]
-    [UsedImplicitly]
+
+    [Description("Applies effects to a character / the player"), UsedImplicitly]
     public class CharacterEffect : ActionAndHandlerBase
     {
         internal class PropertyDef
         {
-            [Desc("The property to modify, see CharacterEffectProperties.txt for the full list")]
-            public string Name;
-            [Desc("Add to the property value")]
-            public float? Add;
-            [Desc("Multiply the property value")]
-            public float? Multiply;
+            [Description("The property to modify"), PropertyOrder(1)]
+            public DrivenProperty Name { get; set; }
+            [Description("Add to the property value"), PropertyOrder(2)]
+            public float? Add { get; set; }
+            [Description("Multiply the property value"), PropertyOrder(3)]
+            public float? Multiply { get; set; }
+
+            public override string ToString()
+            {
+                var parts = new List<string> { Name.ToString() };
+                if (Multiply.HasValue && Multiply.Value != 0)
+                {
+                    parts.Add($"* {Multiply}");
+                }
+                if (Add.HasValue && Add.Value != 0)
+                {
+                    parts.Add(Add > 0 ? $"+ {Add}" : $"{Add}");
+                }
+                return string.Join(" ", parts);
+            }
         }
 
         internal class ParticleEffectDef
         {
-            [Desc("Particle effect system name, see ParticleEffects.txt for the full vanilla list")]
-            public string Name;
-            [Desc("Apply the effect to the weapon")]
-            public bool OnWeapon;
-            [Desc("Apply the effect to the hands")]
-            public bool OnHands;
-            [Desc("Apply the effect to the head")]
-            public bool OnHead;
-            [Desc("Apply the effect to the whole body")]
-            public bool OnBody;
+            [Description("Particle effect system name, see ParticleEffects.txt for the full vanilla list"),
+             ItemsSource(typeof(ParticleEffectItemSource)), PropertyOrder(1)]
+            public string Name { get; set; }
+
+            public enum AttachPointEnum
+            {
+                OnWeapon,
+                OnHands,
+                OnHead,
+                OnBody,
+            }
+            
+            [Description("Where to attach the particles"), PropertyOrder(2)]
+            public AttachPointEnum AttachPoint { get; set; }
+            
+            // [Description("Apply the effect to the weapon")]
+            // public bool OnWeapon { get; set; }
+            // [Description("Apply the effect to the hands")]
+            // public bool OnHands { get; set; }
+            // [Description("Apply the effect to the head")]
+            // public bool OnHead { get; set; }
+            // [Description("Apply the effect to the whole body")]
+            // public bool OnBody { get; set; }
+            public override string ToString()
+            {
+                return $"{Name} {AttachPoint}";
+            }
         }
 
         internal class LightDef
         {
-            public float Radius;
-            public float Intensity;
-            public string Color;
+            public float Radius { get; set; }
+            public float Intensity { get; set; }
+            public string Color { get; set; }
 
             public Vec3 ColorParsed
             {
@@ -268,42 +300,62 @@ namespace BLTBuffet
             }
         }
 
+        internal enum Target
+        {
+            Player,
+            AdoptedHero,
+            Any,
+            EnemyTeam,
+            PlayerTeam,
+            AllyTeam,
+            Random
+        }
+        
         internal class Config
         {
-            [Desc("Name to use when referring to this effect")]
-            public string Name;
-            [Desc("Character target, defaults to player if not specified. You can also specify a specific hero name (e.g. <b>Caladog</b>), or use <b>Adopted</b> for the viewers adopted hero, <b>Any</b> for any random unit, <b>EnemyTeam</b> for a random enemy, <b>PlayerTeam</b> for a random player controlled unit, <b>AllyTeam</b> for a random non-player controlled ally unit")]
-            public string Target;
-            [Desc("Will target unmounted soldiers only")]
-            public bool TargetOnFootOnly;
-            [Desc("Scaling of the target")]
-            public float? Scale;
-            [Desc("Particle effects to apply")]
-            public ParticleEffectDef[] ParticleEffects;
-            [Desc("Properties to change, and how much by")]
-            public PropertyDef[] Properties;
-            [Desc("Creates a light attached to the target")]
-            public LightDef Light;
-            [Desc("Heal amount per second")]
-            public float? HealPerSecond;
-            [Desc("Damage amount per second")]
-            public float? DamagePerSecond;
-            [Desc("Duration the effect will last for, if not specified the effect will last until the end of the mission")]
-            public float? Duration;
-            [Desc("Force agent to drop weapons")]
-            public bool ForceDropWeapons;
-            [Desc("Force agent dismount")]
-            public bool ForceDismount;
-            [Desc("Raw damage multiplier")]
-            public float? DamageMultiplier;
-            [Desc("One shot vfx to apply when the effect is activated, see ParticleEffects.txt for the full vanilla list")]
-            public string ActivateParticleEffect;
-            [Desc("Sound to play when effect is activated, see Sounds.txt for the full vanilla list")]
-            public string ActivateSound;
-            [Desc("One shot vfx to apply when the effect is deactivated, see ParticleEffects.txt for the full vanilla list")]
-            public string DeactivateParticleEffect;
-            [Desc("Sound to play when effect is deactivated, see Sounds.txt for the full vanilla list")]
-            public string DeactivateSound;
+            [Description("Name to use when referring to this effect"), PropertyOrder(1)]
+            public string Name { get; set; }
+            [Description("Target of the effect"), PropertyOrder(2)]
+            public Target Target { get; set; }
+            [Description("Will target unmounted soldiers only"), PropertyOrder(3)]
+            public bool TargetOnFootOnly { get; set; }
+            [Description("Scaling of the target"), PropertyOrder(4)]
+            public float? Scale { get; set; }
+            [Description("Particle effects to apply"), PropertyOrder(5)]
+            public List<ParticleEffectDef> ParticleEffects { get; set; }
+            [Description("Properties to change, and how much by"), PropertyOrder(6)]
+            public List<PropertyDef> Properties { get; set; }
+            [Description("Creates a light attached to the target"), PropertyOrder(7)]
+            public LightDef Light { get; set; }
+            [Description("Heal amount per second"), PropertyOrder(8)]
+            public float? HealPerSecond { get; set; }
+            [Description("Damage amount per second"), PropertyOrder(9)]
+            public float? DamagePerSecond { get; set; }
+            [Description("Duration the effect will last for, if not specified the effect will last until the end of the mission"), PropertyOrder(10)]
+            public float? Duration { get; set; }
+            [Description("Force agent to drop weapons"), PropertyOrder(11)]
+            public bool ForceDropWeapons { get; set; }
+            [Description("Force agent dismount"), PropertyOrder(12)]
+            public bool ForceDismount { get; set; }
+            [Description("Remove all armor"), PropertyOrder(13)]
+            public bool RemoveArmor { get; set; }
+            [Description("Raw damage multiplier"), PropertyOrder(14)]
+            public float? DamageMultiplier { get; set; }
+
+            [Description("One shot vfx to apply when the effect is activated"),
+             ItemsSource(typeof(ParticleEffectItemSource)), PropertyOrder(15)]
+            public string ActivateParticleEffect { get; set; }
+
+            [Description("Sound to play when effect is activated, see Sounds.txt for the full vanilla list"),
+             ItemsSource(typeof(SoundEffectItemSource)), PropertyOrder(16)]
+            public string ActivateSound { get; set; }
+
+            [Description("One shot vfx to apply when the effect is deactivated, see ParticleEffects.txt for the full vanilla list"), ItemsSource(typeof(ParticleEffectItemSource)), PropertyOrder(17)]
+            public string DeactivateParticleEffect { get; set; }
+
+            [Description("Sound to play when effect is deactivated, see Sounds.txt for the full vanilla list"),
+             ItemsSource(typeof(SoundEffectItemSource)), PropertyOrder(18)]
+            public string DeactivateSound { get; set; }
         }
 
         protected override Type ConfigType => typeof(Config);
@@ -609,61 +661,31 @@ namespace BLTBuffet
             var effectsBehaviour = BLTEffectsBehaviour.Get();
 
             var config = (Config) baseConfig;
-            Agent target;
 
             bool GeneralAgentFilter(Agent agent) 
                 => !config.TargetOnFootOnly || agent.HasMount == false && !effectsBehaviour.Contains(agent, config);
 
-            if (config.Target == null
-                || string.Equals(config.Target, "Player", StringComparison.InvariantCultureIgnoreCase))
+            var target = config.Target switch
             {
-                target = Agent.Main;
-            }
-            else if (string.Equals(config.Target, "Adopted", StringComparison.InvariantCultureIgnoreCase))
-            {
-                target = Mission.Current.Agents.FirstOrDefault(a =>
+                Target.Player => Agent.Main,
+                Target.AdoptedHero => Mission.Current.Agents.FirstOrDefault(a =>
                 {
                     if (a.Character is not CharacterObject charObj) return false;
-                    return charObj.HeroObject != null
-                           && charObj.HeroObject.FirstName.Contains(userName)
-                           && charObj.HeroObject.FirstName.ToString() == userName;
-                });
-            }
-            else if(string.Equals(config.Target, "Any", StringComparison.InvariantCultureIgnoreCase))
-            {
-                target = Mission.Current.Agents
-                    .Where(GeneralAgentFilter)
-                    .SelectRandom();
-            }
-            else if(string.Equals(config.Target, "EnemyTeam", StringComparison.InvariantCultureIgnoreCase))
-            {
-                target = Mission.Current.Agents
-                    .Where(GeneralAgentFilter)
-                    .Where(a => a.Team?.IsPlayerTeam == false && !a.Team.IsPlayerAlly).SelectRandom();
-            }
-            else if(string.Equals(config.Target, "PlayerTeam", StringComparison.InvariantCultureIgnoreCase))
-            {
-                target = Mission.Current.Agents
-                    .Where(GeneralAgentFilter)
-                    .Where(a => a.Team?.IsPlayerTeam == true).SelectRandom();
-            }
-            else if(string.Equals(config.Target, "AllyTeam", StringComparison.InvariantCultureIgnoreCase))
-            {
-                target = Mission.Current.Agents
-                    .Where(GeneralAgentFilter)
-                    .Where(a => a.Team?.IsPlayerAlly == false).SelectRandom();
-            }
-            else
-            {
-                target = Mission.Current.Agents
-                    .FirstOrDefault(a =>
-                    {
-                        if (a.Character is not CharacterObject charObj) return false;
-                        return charObj.HeroObject != null
-                               && charObj.HeroObject.FirstName.Contains(config.Target)
-                               && charObj.HeroObject.FirstName.ToString() == config.Target;
-                    });
-            }
+                    return charObj.HeroObject != null && charObj.HeroObject.FirstName.Contains(userName) &&
+                           charObj.HeroObject.FirstName.ToString() == userName;
+                }),
+                Target.Any => Mission.Current.Agents.Where(GeneralAgentFilter).SelectRandom(),
+                Target.EnemyTeam => Mission.Current.Agents.Where(GeneralAgentFilter)
+                    .Where(a => a.Team?.IsPlayerTeam == false && !a.Team.IsPlayerAlly)
+                    .SelectRandom(),
+                Target.PlayerTeam => Mission.Current.Agents.Where(GeneralAgentFilter)
+                    .Where(a => a.Team?.IsPlayerTeam == true)
+                    .SelectRandom(),
+                Target.AllyTeam => Mission.Current.Agents.Where(GeneralAgentFilter)
+                    .Where(a => a.Team?.IsPlayerAlly == false)
+                    .SelectRandom(),
+                _ => null
+            };
 
             if (target == null || target.AgentVisuals == null)
             {
@@ -694,32 +716,30 @@ namespace BLTBuffet
             foreach (var pfx in config.ParticleEffects ?? Enumerable.Empty<ParticleEffectDef>())
             {
                 var pfxState = new CharacterEffectState.PfxState();
-                if (pfx.OnWeapon)
+                switch (pfx.AttachPoint)
                 {
-                    pfxState.weaponEffects = CreateWeaponEffects(target, pfx.Name);
-                }
-                else if (pfx.OnHands)
-                {
-                    pfxState.boneAttachments = CreateAgentEffects(target,
-                        pfx.Name,
-                        MatrixFrame.Identity,
-                        Game.Current.HumanMonster.MainHandItemBoneIndex,
-                        Game.Current.HumanMonster.OffHandItemBoneIndex);
-                }
-                else if (pfx.OnHead)
-                {
-                    pfxState.boneAttachments = CreateAgentEffects(target,
-                        pfx.Name,
-                        MatrixFrame.Identity.Strafe(0.1f),
-                        Game.Current.HumanMonster.HeadLookDirectionBoneIndex);
-                }
-                else if(pfx.OnBody)
-                {
-                    pfxState.boneAttachments = CreateAgentEffects(target, pfx.Name, MatrixFrame.Identity.Elevate(0.1f));
-                }
-                else
-                {
-                    Log.Error($"{config.Name}: No location specified for particle Id {pfx.Name} in CharacterEffect");
+                    case ParticleEffectDef.AttachPointEnum.OnWeapon:
+                        pfxState.weaponEffects = CreateWeaponEffects(target, pfx.Name);
+                        break;
+                    case ParticleEffectDef.AttachPointEnum.OnHands:
+                        pfxState.boneAttachments = CreateAgentEffects(target,
+                            pfx.Name,
+                            MatrixFrame.Identity,
+                            Game.Current.HumanMonster.MainHandItemBoneIndex,
+                            Game.Current.HumanMonster.OffHandItemBoneIndex);
+                        break;
+                    case ParticleEffectDef.AttachPointEnum.OnHead:
+                        pfxState.boneAttachments = CreateAgentEffects(target,
+                            pfx.Name,
+                            MatrixFrame.Identity.Strafe(0.1f),
+                            Game.Current.HumanMonster.HeadLookDirectionBoneIndex);
+                        break;
+                    case ParticleEffectDef.AttachPointEnum.OnBody:
+                        pfxState.boneAttachments = CreateAgentEffects(target, pfx.Name, MatrixFrame.Identity.Elevate(0.1f));
+                        break;
+                    default:
+                        Log.Error($"{config.Name}: No location specified for particle Id {pfx.Name} in CharacterEffect");
+                        break;
                 }
                 effectState.state.Add(pfxState);
             }
@@ -732,6 +752,15 @@ namespace BLTBuffet
             if (config.Light != null)
             {
                 effectState.light = CreateLight(target, config.Light.Radius, config.Light.Intensity, config.Light.ColorParsed);
+            }
+
+            if (config.RemoveArmor)
+            {
+                foreach (var (_, index) in target.SpawnEquipment.YieldArmorSlots())
+                {
+                    target.SpawnEquipment[index] = EquipmentElement.Invalid;
+                }
+                target.UpdateSpawnEquipmentAndRefreshVisuals(target.SpawnEquipment);
             }
             
             if (!string.IsNullOrEmpty(config.ActivateParticleEffect))
@@ -752,19 +781,12 @@ namespace BLTBuffet
         {
             foreach (var prop in config.Properties)
             {
-                if (Enum.TryParse(prop.Name, out DrivenProperty drivenProperty))
-                {
-                    float baseValue = target.AgentDrivenProperties.GetStat(drivenProperty);
-                    if (prop.Multiply.HasValue)
-                        baseValue *= prop.Multiply.Value;
-                    if (prop.Add.HasValue)
-                        baseValue += prop.Add.Value;
-                    target.AgentDrivenProperties.SetStat(drivenProperty, baseValue);
-                }
-                else
-                {
-                    Log.Error($"{config.Name}: Property name {prop.Name} not recognized, please consult CharacterEffectProperties.txt for the valid list");
-                }
+                float baseValue = target.AgentDrivenProperties.GetStat(prop.Name);
+                if (prop.Multiply.HasValue)
+                    baseValue *= prop.Multiply.Value;
+                if (prop.Add.HasValue)
+                    baseValue += prop.Add.Value;
+                target.AgentDrivenProperties.SetStat(prop.Name, baseValue);
             }
             // target.UpdateCustomDrivenProperties();
         }

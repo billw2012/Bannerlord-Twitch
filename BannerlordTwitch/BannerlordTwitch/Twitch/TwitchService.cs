@@ -42,30 +42,20 @@ namespace BannerlordTwitch
             try
             {
                 authSettings = AuthSettings.Load();
-                if (authSettings == null)
-                {
-                    InformationManager.ShowInquiry(
-                        new InquiryData(
-                            "Bannerlord Twitch MOD DISABLED",
-                            $"Failed to load auth settings, please check the formatting in Bannerlord-Twitch-Auth.jsonc",
-                            true, false, "Okay", null,
-                            () => {}, () => {}), true);
-                    Log.ScreenCritical($"MOD DISABLED: Failed to load auth settings from the auth file, please check the formatting");
-                    return;
-                }
             }
             catch(Exception e)
             {
-                // Don't show the exception message, it might leak something
+                Log.Error(e.ToString());
+            }
+            if (authSettings == null)
+            {
                 InformationManager.ShowInquiry(
                     new InquiryData(
                         "Bannerlord Twitch MOD DISABLED",
-                        $"Failed to load auth settings, please check the formatting in Bannerlord-Twitch-Auth.jsonc",
+                        $"Failed to load auth settings, enable the BLTConfigure module and authorize the mod via the window",
                         true, false, "Okay", null,
                         () => {}, () => {}), true);
-                Log.ScreenCritical(
-                    $"MOD DISABLED: Failed to load auth settings from the auth file, please check the formatting");
-                Log.Error(e.ToString());
+                Log.ScreenCritical($"Failed to load auth settings, load the BLTConfigure module and authorize the mod via the window");
                 return;
             }
 
@@ -133,31 +123,22 @@ namespace BannerlordTwitch
             try
             {
                 Settings = Settings.Load();
-                if (Settings == null)
-                {
-                    InformationManager.ShowInquiry(
-                        new InquiryData(
-                            "Bannerlord Twitch MOD DISABLED",
-                            $"Failed to load action/command settings, please check the formatting in Bannerlord-Twitch.jsonc",
-                            true, false, "Okay", null,
-                            () => {}, () => {}), true);
-                    Log.ScreenCritical($"MOD DISABLED: Failed to load settings from settings file, please check the formatting");
-                    return false;
-                }
+                return true;
             }
-            catch (Exception e)
+            catch
             {
-                InformationManager.ShowInquiry(
-                    new InquiryData(
-                        "Bannerlord Twitch MOD DISABLED",
-                        $"Failed to load action/command settings, please check the formatting in Bannerlord-Twitch.jsonc\n{e.Message}",
-                        true, false, "Okay", null,
-                        () => {}, () => {}), true);
-                Log.ScreenCritical($"MOD DISABLED: Failed to load settings from settings file, please check the formatting ({e.Message})");
-                return false;
+                // ignored
             }
 
-            return true;
+            InformationManager.ShowInquiry(
+                new InquiryData(
+                    "Bannerlord Twitch MOD DISABLED",
+                    $"Failed to load action/command settings, please enable the BLTConfigure module and use it to configure the mod",
+                    true, false, "Okay", null,
+                    () => {}, () => {}), true);
+            Log.ScreenCritical($"MOD DISABLED: Failed to load settings from settings file, please enable the BLTConfigure module and use it to configure the mod");
+
+            return false;
         }
         
         public void Exit()

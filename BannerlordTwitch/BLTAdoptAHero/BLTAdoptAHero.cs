@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
@@ -15,6 +16,9 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
+using YamlDotNet.Serialization;
 
 #pragma warning disable 649
 
@@ -33,7 +37,7 @@ namespace BLTAdoptAHero
     }
     
     [UsedImplicitly]
-    [Desc("Allows viewer to 'adopt' a hero in game -- the hero name will change to the viewers, and they can control it with further commands")]
+    [Description("Allows viewer to 'adopt' a hero in game -- the hero name will change to the viewers, and they can control it with further commands")]
     public class AdoptAHero : IAction, ICommandHandler
     {
         public static readonly (CharacterAttributesEnum val, string shortName)[] CharAttributes = {
@@ -105,28 +109,39 @@ namespace BLTAdoptAHero
 
         private struct Settings
         {
-            [Desc("Allow noble heroes")]
-            public bool AllowNoble;
-            [Desc("Allow wanderer heroes")]
-            public bool AllowWanderer;
-            [Desc("Allow companions")]
-            public bool AllowPlayerCompanion;
-            [Desc("Only allow same faction heroes")]
-            public bool OnlySameFaction;
-            [Desc("Only viewer to adopt another hero if theirs is dead")]
-            public bool AllowNewAdoptionOnDeath;
-            [Desc("Only subscribers can adopt")]
-            public bool SubscriberOnly;
-            [Desc("Only viewers who have been subscribers for at least this many months can adopt")]
-            public int? MinSubscribedMonths;
-            [Desc("Gold the adopted hero will start with, if you don't specify then they get the heroes existing gold")]
-            public int? StartingGold;
-            [Desc("Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment")]
-            public int? StartingEquipmentTier;
-            [Desc("Whether the hero will start with a horse, only applies if <b>StartingEquipmentTier</b> is specified")]
-            public bool StartWithHorse;
-            [Desc("Whether the hero will start with armor, only applies if <b>StartingEquipmentTier</b> is specified")]
-            public bool StartWithArmor;
+            [Description("Allow noble heroes"), PropertyOrder(1)]
+            public bool AllowNoble { get; set; }
+            [Description("Allow wanderer heroes"), PropertyOrder(2)]
+            public bool AllowWanderer { get; set; }
+            [Description("Allow companions (not tested)"), PropertyOrder(3)]
+            public bool AllowPlayerCompanion { get; set; }
+            [Description("Only allow heroes from same faction as player"), PropertyOrder(4)]
+            public bool OnlySameFaction { get; set; }
+            [Description("Only allow viewer to adopt another hero if theirs is dead"), PropertyOrder(5)]
+            public bool AllowNewAdoptionOnDeath { get; set; }
+            [Description("Only subscribers can adopt"), PropertyOrder(6)]
+            public bool SubscriberOnly { get; set; }
+            [Description("Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified"), DefaultValue(null), PropertyOrder(7)]
+            public int? MinSubscribedMonths { get; set; }
+            [Description("Gold the adopted hero will start with, if you don't specify then they get the heroes existing gold"), DefaultValue(null), PropertyOrder(8)]
+            public int? StartingGold { get; set; }
+            [Description("Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment"), DefaultValue(null), PropertyOrder(9)]
+            public int? StartingEquipmentTier { get; set; }
+            [Description("Whether the hero will start with a horse, only applies if StartingEquipmentTier is specified"), PropertyOrder(10)]
+            public bool StartWithHorse { get; set; }
+            [Description("Whether the hero will start with armor, only applies if StartingEquipmentTier is specified"), PropertyOrder(11)]
+            public bool StartWithArmor { get; set; }
+
+            [Description("Starting equipment definition")]
+            public class StartingEquipmentDef
+            {
+                public int Tier { get; set; }
+                public bool Horse { get; set; }
+                public bool Armor { get; set; }
+            }
+
+            [Description("Starting equipment"), PropertyOrder(12), DefaultValue(null)]
+            public StartingEquipmentDef StartingEquipment { get; set; }
         }
 
         private static IEnumerable<Hero> GetAvailableHeroes(Settings settings)
@@ -243,22 +258,22 @@ namespace BLTAdoptAHero
     }
 
     [UsedImplicitly]
-    [Desc("Will write various hero stats to chat")]
+    [Description("Will write various hero stats to chat")]
     internal class HeroInfoCommand : ICommandHandler
     {
         
         private class Settings
         {
-            [Desc("Show general info: gold, health, location, age")]
-            public bool ShowGeneral;
-            [Desc("Shows skills (and focuse values) above the specified MinSkillToShow value")]
-            public bool ShowTopSkills;
-            [Desc("If ShowTopSkills is specified, this defines what skills are shown")]
-            public int MinSkillToShow;
-            [Desc("Shows all hero attributes")]
-            public bool ShowAttributes;
-            [Desc("Shows the battle and civilian equipment of the hero")]
-            public bool ShowEquipment;
+            [Description("Show general info: gold, health, location, age"), PropertyOrder(1)]
+            public bool ShowGeneral { get; set; }
+            [Description("Shows skills (and focuse values) above the specified MinSkillToShow value"), PropertyOrder(2)]
+            public bool ShowTopSkills { get; set; }
+            [Description("If ShowTopSkills is specified, this defines what skills are shown"), PropertyOrder(3)]
+            public int MinSkillToShow { get; set; }
+            [Description("Shows all hero attributes"), PropertyOrder(4)]
+            public bool ShowAttributes { get; set; }
+            [Description("Shows the battle and civilian equipment of the hero"), PropertyOrder(5)]
+            public bool ShowEquipment { get; set; }
         }
         
         // One Handed, Two Handed, Polearm, Bow, Crossbow, Throwing, Riding, Athletics, Smithing
@@ -340,13 +355,13 @@ namespace BLTAdoptAHero
     // }
     
     [UsedImplicitly]
-    [Desc("Gives gold to the adopted hero")]
+    [Description("Gives gold to the adopted hero")]
     internal class AddGoldToHero : IAction
     {
         private class Settings
         {
-            [Desc("How much gold to give the adopted hero")]
-            public int Amount;
+            [Description("How much gold to give the adopted hero")]
+            public int Amount { get; set; }
         }
 
         Type IAction.ActionConfigType => typeof(Settings);
@@ -369,11 +384,12 @@ namespace BLTAdoptAHero
     {
         protected class SettingsBase
         {
-            [Desc("Lower bound of amount to improve")]
-            public int AmountLow;
-            [Desc("Upper bound of amount to improve")]
-            public int AmountHigh;
-            public int GoldCost;
+            [Description("Lower bound of amount to improve"), PropertyOrder(11)]
+            public int AmountLow { get; set; }
+            [Description("Upper bound of amount to improve"), PropertyOrder(12)]
+            public int AmountHigh { get; set; }
+            [Description("Gold that will be taken from the hero"), PropertyOrder(13)]
+            public int GoldCost { get; set; }
         }
 
         // protected override Type ConfigType => typeof(SettingsBase);
@@ -411,52 +427,113 @@ namespace BLTAdoptAHero
 
         protected abstract (bool success, string description) Improve(string userName, Hero adoptedHero, int amount, SettingsBase settings);
 
-        // One Handed, Two Handed, Polearm, Bow, Crossbow, Throwing, Riding, Athletics, Smithing
-        // Scouting, Tactics, Roguery, Charm, Leadership, Trade, Steward, Medicine, Engineering
-
+        private static string[] EnumFlagsToArray<T>(T flags) =>
+            flags.ToString().Split(',').Select(s => s.Trim()).ToArray();
         private static string[][] SkillGroups =
         {
-            new[] { "One Handed", "Two Handed", "Polearm" }, // melee
-            new[] { "Bow", "Crossbow", "Throwing" }, // ranged
-            new[] { "Smithing", "Scouting", "Trade", "Steward", "Engineering" }, // support
-            new[] { "Riding", "Athletics" }, // movement
-            new[] { "Tactics", "Roguery", "Charm", "Leadership" }, // personal
+            SkillGroup.SkillsToStrings(Skills.Melee),
+            SkillGroup.SkillsToStrings(Skills.Ranged),
+            SkillGroup.SkillsToStrings(Skills.Support),
+            SkillGroup.SkillsToStrings(Skills.Movement),
+            SkillGroup.SkillsToStrings(Skills.Personal),
         };
-        protected static SkillObject GetSkill(Hero hero, string improvement, bool random, bool auto, Func<SkillObject, bool> predicate = null)
+        protected static SkillObject GetSkill(Hero hero, Skills skills, bool random, bool auto, Func<SkillObject, bool> predicate = null)
         {
-            // DOING: fix this so that group is selected last (so if all items in a group fail the predicate that group isn't chosen. Perhaps choose top skill in each group then randomly among those).
-            // We will select automatically which skill from groups
-            var selectedSkills = auto
-                    ? SkillGroups
-                        .Select(g 
-                            => g.Select(sn => DefaultSkills.GetAllSkills().FirstOrDefault(so => string.Equals(so.Name.ToString(), sn, StringComparison.CurrentCultureIgnoreCase)))
-                                .Where(predicate ?? (s => true)))
-                        .Where(g => g.Any())
-                        .SelectRandom()
-                    : improvement
-                        .Split(',')
-                        .Select(s => s.Trim())
-                        .Select(sn => DefaultSkills.GetAllSkills().FirstOrDefault(so => string.Equals(so.Name.ToString(), sn, StringComparison.CurrentCultureIgnoreCase)))
-                        .Where(predicate ?? (s => true))
-                ;
+            IEnumerable<SkillObject> GetSkills(IEnumerable<string> sk) => sk
+                .Select(sn => DefaultSkills.GetAllSkills().FirstOrDefault(so =>
+                    string.Equals(so.StringId, sn, StringComparison.CurrentCultureIgnoreCase)))
+                .Where(predicate ?? (s => true));
+                
+            IEnumerable<SkillObject> selectedSkills;
+            if (auto)
+            {
+                // We will select automatically which skill from groups
+                selectedSkills = SkillGroups
+                    .Select(GetSkills)
+                    .Where(g => g.Any())
+                    .SelectRandom();
+            }
+            else
+            {
+                selectedSkills = GetSkills(SkillGroup.SkillsToStrings(skills));
+            }
+
             return random 
                 ? selectedSkills?.SelectRandom() 
                 : selectedSkills?.OrderByDescending(hero.GetSkillValue).FirstOrDefault();
         }
     }
+
+    [Flags]
+    internal enum Skills
+    {
+        None,
+        Melee,
+        Ranged,
+        Support,
+        Movement,
+        Personal,
+        All,
+        OneHanded,
+        TwoHanded,
+        Polearm,
+        Bow,
+        Throwing,
+        Crossbow,
+        Riding,
+        Athletics,
+        Crafting,
+        Tactics,
+        Scouting,
+        Roguery,
+        Charm,
+        Trade,
+        Steward,
+        Medicine,
+        Engineering,
+        Leadership,
+    }
+
+    internal static class SkillGroup
+    {
+        public static Skills[] ExpandSkills(Skills skills)
+        {
+            switch (skills)
+            {
+                case Skills.Melee: return new[] {Skills.OneHanded, Skills.TwoHanded, Skills.Polearm};
+                case Skills.Ranged: return new[] {Skills.Bow , Skills.Throwing , Skills.Crossbow};
+                case Skills.Support: return new[] {Skills.Crafting , Skills.Scouting , Skills.Trade , Skills.Steward , Skills.Engineering};
+                case Skills.Movement: return new[] {Skills.Riding , Skills.Athletics};
+                case Skills.Personal: return new[] {Skills.Tactics , Skills.Roguery , Skills.Charm , Skills.Leadership};
+                case Skills.All: return new[] {Skills.OneHanded , Skills.TwoHanded , Skills.Polearm , Skills.Bow , Skills.Throwing ,
+                    Skills.Crossbow , Skills.Riding , Skills.Athletics , Skills.Crafting , Skills.Tactics , 
+                    Skills.Scouting , Skills.Roguery , Skills.Charm , Skills.Trade , Skills.Steward ,
+                    Skills.Medicine , Skills.Engineering , Skills.Leadership};
+                case Skills.None: return new Skills[] { };
+                default:
+                    return new[] { skills };
+            }
+        }
+
+        public static string[] SkillsToStrings(Skills skills)
+        {
+            return ExpandSkills(skills).Select(s => s.ToString()).ToArray();
+        }
+    }
     
     [UsedImplicitly]
-    [Desc("Improve adopted heroes skills")]
+    [Description("Improve adopted heroes skills")]
     internal class SkillXP : ImproveAdoptedHero
     {
+        
         protected class SkillXPSettings : SettingsBase
         {
-            [Desc("What to improve, multiple values can be separated by commas. Skills are One Handed, Two Handed, Polearm, Bow, Crossbow, Throwing, Riding, Athletics, Smithing, Scouting, Tactics, Roguery, Charm, Leadership, Trade, Steward, Medicine, Engineering.")]
-            public string Skills;
-            [Desc("Improve a random skill from the Skills specified, rather than the best one")]
-            public bool Random;
-            [Desc("If this is specified then the best skill from a random skill group will be improved, Skills list is ignored. Groups are melee (One Handed, Two Handed, Polearm), ranged (Bow, Crossbow, Throwing), support (Smithing, Scouting, Trade, Steward, Engineering), movement (Riding, Athletics), personal (Tactics, Roguery, Charm, Leadership)")]
-            public bool Auto;
+            [Description("What to improve"), PropertyOrder(1)]
+            public Skills Skills { get; set; }
+            [Description("Improve a random skill from the Skills specified, rather than the best one"), PropertyOrder(2)]
+            public bool Random { get; set; }
+            [Description("If this is specified then the best skill from a random skill group will be improved, Skills list is ignored. Groups are melee (One Handed, Two Handed, Polearm), ranged (Bow, Crossbow, Throwing), support (Smithing, Scouting, Trade, Steward, Engineering), movement (Riding, Athletics), personal (Tactics, Roguery, Charm, Leadership)"), PropertyOrder(3)]
+            public bool Auto { get; set; }
         }
         
         protected override Type ConfigType => typeof(SkillXPSettings);
@@ -484,17 +561,17 @@ namespace BLTAdoptAHero
     }
 
     [UsedImplicitly]
-    [Desc("Add focus points to heroes skills")]
+    [Description("Add focus points to heroes skills")]
     internal class FocusPoints : ImproveAdoptedHero
     {
         protected class FocusPointsSettings : SettingsBase
         {
-            [Desc("What to add focus to, multiple values can be separated by commas. Skills are One Handed, Two Handed, Polearm, Bow, Crossbow, Throwing, Riding, Athletics, Smithing, Scouting, Tactics, Roguery, Charm, Leadership, Trade, Steward, Medicine, Engineering.")]
-            public string Skills;
-            [Desc("Add focus to a random skill <b>from the Skills specified</b>, rather than the best one.")]
-            public bool Random;
-            [Desc("If this is specified then the best skill from a random skill group will have focus added, <code>Skills</code> list is ignored. Groups are melee (One Handed, Two Handed, Polearm), ranged (Bow, Crossbow, Throwing), support (Smithing, Scouting, Trade, Steward, Engineering), movement (Riding, Athletics), personal (Tactics, Roguery, Charm, Leadership)")]
-            public bool Auto;
+            [Description("What skill to add focus to"), PropertyOrder(1)]
+            public Skills Skills { get; set; }
+            [Description("Add focus to a random skill, from the Skills specified, rather than the best one."), PropertyOrder(2)]
+            public bool Random { get; set; }
+            [Description("If this is specified then the best skill from a random skill group will have focus added, <code>Skills</code> list is ignored. Groups are melee (One Handed, Two Handed, Polearm), ranged (Bow, Crossbow, Throwing), support (Smithing, Scouting, Trade, Steward, Engineering), movement (Riding, Athletics), personal (Tactics, Roguery, Charm, Leadership)"), PropertyOrder(3)]
+            public bool Auto { get; set; }
         }
         
         protected override Type ConfigType => typeof(FocusPointsSettings);
@@ -517,20 +594,30 @@ namespace BLTAdoptAHero
             return (true, $"You have gained {amount} focus point{(amount > 1? "s" : "")} in {skill}, you now have {adoptedHero.HeroDeveloper.GetFocus(skill)}!");
         }
     }
+    
+    public enum CharacterAttributes
+    {
+        Vigor = 0,
+        Control = 1,
+        Endurance = 2,
+        Cunning = 3,
+        Social = 4,
+        Intelligence = 5,
+        Random = 6,
+    }
 
     [UsedImplicitly]
-    [Desc("Improve adopted heroes attribute points")]
+    [Description("Improve adopted heroes attribute points")]
     internal class AttributePoints : ImproveAdoptedHero
     {
         protected class AttributePointsSettings : SettingsBase
         {
-            [Desc("Which attribute to improve (specify one only). Possible values are Random (to improve any random attribute) Vigor, Control, Endurance, Cunning, Social, Intelligence.")]
-            public string Attribute;
+            [Description("Which attribute to improve (specify one only)"), PropertyOrder(1)]
+            public CharacterAttributes Attribute { get; set; } = CharacterAttributes.Random;
         }
         
         protected override Type ConfigType => typeof(AttributePointsSettings);
         
-        // Vigor, Control, Endurance, Cunning, Social, Intelligence
         protected override (bool success, string description) Improve(string userName,
             Hero adoptedHero, int amount, SettingsBase baseSettings)
         {
@@ -540,26 +627,19 @@ namespace BLTAdoptAHero
                 .Select(c => c.val)
                 .Where(a => adoptedHero.GetAttributeValue(a) < 10)
                 .ToList();
-
+            
             if (!improvableAttributes.Any())
             {
                 return (false, $"Couldn't improve any attributes, they are all at max level!");
             }
-            CharacterAttributesEnum attribute;
-            if (string.Equals(settings.Attribute, "random", StringComparison.InvariantCultureIgnoreCase))
+            
+            var attribute = settings.Attribute != CharacterAttributes.Random 
+             ? (CharacterAttributesEnum)settings.Attribute
+             : improvableAttributes.SelectRandom();
+
+            if(!improvableAttributes.Contains(attribute))
             {
-                attribute = improvableAttributes.SelectRandom();
-            }
-            else
-            {
-                var matching = improvableAttributes
-                    .Where(a => string.Equals(a.ToString(), settings.Attribute, StringComparison.CurrentCultureIgnoreCase))
-                    .ToList();
-                if (!matching.Any())
-                {
-                    return (false, $"Couldn't improve attribute {settings.Attribute}, its not a valid attribute name!");
-                }
-                attribute = matching.First();
+                return (false, $"Couldn't improve {attribute} attributes, it is already at max level!");
             }
 
             amount = Math.Min(amount, 10 - adoptedHero.GetAttributeValue(attribute));
@@ -569,33 +649,33 @@ namespace BLTAdoptAHero
     }
 
     [UsedImplicitly]
-    [Desc("Spawns the adopted hero into the current active mission")]
+    [Description("Spawns the adopted hero into the current active mission")]
     internal class SummonHero : ActionAndHandlerBase
     {
         private class Settings
         {
-            [Desc("Can summon for normal field battles between parties")]
-            public bool AllowFieldBattle;
-            [Desc("Can summon in village battles")]
-            public bool AllowVillageBattle;
-            [Desc("Can summon in sieges")]
-            public bool AllowSiegeBattle;
-            [Desc("This includes walking about village/town/dungeon/keep")]
-            public bool AllowFriendlyMission;
-            [Desc("Can summon in the practice arena")]
-            public bool AllowArena;
-            [Desc("NOT IMPLEMENTED YET Can summon in tournaments")]
-            public bool AllowTournament;
-            [Desc("Can summon in the hideout missions")]
-            public bool AllowHideOut;
-            [Desc("Whether the hero is on the player or enemy side")]
-            public bool OnPlayerSide;
-            [Desc("Gold cost to summon")]
-            public int GoldCost;
-            [Desc("Gold won if the heroes side wins")]
-            public int WinGold;
-            [Desc("Gold lost if the heroes side loses")]
-            public int LoseGold;
+            [Description("Can summon for normal field battles between parties"), PropertyOrder(1)]
+            public bool AllowFieldBattle { get; set; }
+            [Description("Can summon in village battles"), PropertyOrder(2)]
+            public bool AllowVillageBattle { get; set; }
+            [Description("Can summon in sieges"), PropertyOrder(3)]
+            public bool AllowSiegeBattle { get; set; }
+            [Description("This includes walking about village/town/dungeon/keep"), PropertyOrder(4)]
+            public bool AllowFriendlyMission { get; set; }
+            [Description("Can summon in the practice arena"), PropertyOrder(5)]
+            public bool AllowArena { get; set; }
+            [Description("NOT IMPLEMENTED YET Can summon in tournaments"), PropertyOrder(6)]
+            public bool AllowTournament { get; set; }
+            [Description("Can summon in the hideout missions"), PropertyOrder(7)]
+            public bool AllowHideOut { get; set; }
+            [Description("Whether the hero is on the player or enemy side"), PropertyOrder(8)]
+            public bool OnPlayerSide { get; set; }
+            [Description("Gold cost to summon"), PropertyOrder(9)]
+            public int GoldCost { get; set; }
+            [Description("Gold won if the heroes side wins"), PropertyOrder(10)]
+            public int WinGold { get; set; }
+            [Description("Gold lost if the heroes side loses"), PropertyOrder(11)]
+            public int LoseGold { get; set; }
         }
 
         protected override Type ConfigType => typeof(Settings);
@@ -989,7 +1069,7 @@ namespace BLTAdoptAHero
     }
     
     [UsedImplicitly]
-    [Desc("Improve adopted heroes equipment")]
+    [Description("Improve adopted heroes equipment")]
     internal class EquipHero : ActionAndHandlerBase
     {
         // These must be properties not fields, as these values are dynamic
@@ -1027,26 +1107,26 @@ namespace BLTAdoptAHero
 
         private struct Settings
         {
-            [Desc("Improve armor")]
-            public bool Armor;
-            [Desc("Improve melee weapons (one handled, two handed, polearm). The one the player has the highest skill in will be selected.")]
-            public bool Melee;
-            [Desc("Improve ranged weapons (bow, crossbow, throwing). The one the player has the highest skill in will be selected.")]
-            public bool Ranged;
-            [Desc("Improve the heroes horse (if they can ride a better one).")]
-            public bool Horse;
-            [Desc("Improve the heroes civilian equipment.")]
-            public bool Civilian;
-            [Desc("Allow improvement of adopted heroes who are also companions of the player.")]
-            public bool AllowCompanionUpgrade;
-            [Desc("Tier to upgrade to. Anything better than this tier will be left alone, viewer will be refunded if nothing could be upgraded.")]
-            public int? Tier; // 0 to 5
-            [Desc("Upgrade to the next tier from the current one, viewer will be refunded if nothing could be upgraded.")]
-            public bool Upgrade;
-            [Desc("Gold cost to the adopted hero")]
-            public int GoldCost;
-            [Desc("Whether to multiply the cost by the current tier")]
-            public bool MultiplyCostByCurrentTier;
+            [Description("Improve armor"), PropertyOrder(1)]
+            public bool Armor { get; set; }
+            [Description("Improve melee weapons (one handled, two handed, polearm). The one the player has the highest skill in will be selected."), PropertyOrder(2)]
+            public bool Melee { get; set; }
+            [Description("Improve ranged weapons (bow, crossbow, throwing). The one the player has the highest skill in will be selected."), PropertyOrder(3)]
+            public bool Ranged { get; set; }
+            [Description("Improve the heroes horse (if they can ride a better one)."), PropertyOrder(4)]
+            public bool Horse { get; set; }
+            [Description("Improve the heroes civilian equipment."), PropertyOrder(5)]
+            public bool Civilian { get; set; }
+            [Description("Allow improvement of adopted heroes who are also companions of the player."), PropertyOrder(6)]
+            public bool AllowCompanionUpgrade { get; set; }
+            [Description("Tier to upgrade to (0 to 5). Anything better than this tier will be left alone, viewer will be refunded if nothing could be upgraded. Not compatible with Upgrade."), PropertyOrder(7)]
+            public int? Tier { get; set; } // 0 to 5
+            [Description("Upgrade to the next tier from the current one, viewer will be refunded if nothing could be upgraded. Not compatible with Tier."), PropertyOrder(8)]
+            public bool Upgrade { get; set; }
+            [Description("Gold cost to the adopted hero"), PropertyOrder(9)]
+            public int GoldCost { get; set; }
+            [Description("Whether to multiply the cost by the current tier"), PropertyOrder(10)]
+            public bool MultiplyCostByCurrentTier { get; set; }
         }
 
         protected override Type ConfigType => typeof(Settings);
