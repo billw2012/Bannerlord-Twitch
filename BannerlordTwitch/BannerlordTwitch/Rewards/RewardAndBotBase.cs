@@ -7,22 +7,22 @@ namespace BannerlordTwitch.Rewards
         protected virtual Type ConfigType => null;
 
         Type IAction.ActionConfigType => ConfigType;
-        void IAction.Enqueue(Guid redemptionId, string args, string userName, object config)
+        void IAction.Enqueue(ReplyContext context, object config)
         {
-            ExecuteInternal(userName, args, config, 
-                s => RewardManager.NotifyComplete(redemptionId, s), 
-                s => RewardManager.NotifyCancelled(redemptionId, s));
+            ExecuteInternal(context, config, 
+                s => RewardManager.NotifyComplete(context, s), 
+                s => RewardManager.NotifyCancelled(context, s));
         }
 
         Type ICommandHandler.HandlerConfigType => ConfigType;
-        void ICommandHandler.Execute(string args, CommandMessage message, object config)
+        void ICommandHandler.Execute(ReplyContext context, object config)
         {
-            ExecuteInternal(message.UserName, args, config, 
-                s => RewardManager.SendReply(message.ReplyId, s), 
-                s => RewardManager.SendReply(message.ReplyId, s));
+            ExecuteInternal(context, config, 
+                s => RewardManager.SendReply(context, s), 
+                s => RewardManager.SendReply(context, s));
         }
 
-        protected abstract void ExecuteInternal(string userName, string args, object config,
+        protected abstract void ExecuteInternal(ReplyContext context, object config,
             Action<string> onSuccess,
             Action<string> onFailure);
     }

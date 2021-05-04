@@ -22,7 +22,7 @@ namespace BannerlordTwitch.Util
         public static void Info(string str)
         {
 #if DEBUG
-            Screen(str);
+            LogFeedSystem(str);
 #else
             MainThreadSync.Run(() => LogFilePrint(str));
 #endif
@@ -31,46 +31,39 @@ namespace BannerlordTwitch.Util
         public static void Error(string str)
         {
 #if DEBUG
-            ScreenCritical(str);
+            LogFeedCritical(str);
 #else
             MainThreadSync.Run(() => LogFilePrint("ERROR: " + str));
 #endif
         }
 
-        public static void Screen(string str, Color color = default)
-        {
-            MainThreadSync.Run(() =>
-            {
-                LogFilePrint(str);
-                InformationManager.DisplayMessage(new InformationMessage("BLT: " + str,
-                    color == default
-                        ? new Color(31 / 255f, 195 / 255f, 255 / 255f)
-                        : color
-                    ,
-                    "event:/ui/notification/quest_finished"));
-            });
-        }
+        // public static void Screen(string str, Color color = default)
+        // {
+        //     MainThreadSync.Run(() =>
+        //     {
+        //         LogFilePrint(str);
+        //         InformationManager.DisplayMessage(new InformationMessage("BLT: " + str,
+        //             color == default
+        //                 ? new Color(31 / 255f, 195 / 255f, 255 / 255f)
+        //                 : color
+        //             ,
+        //             "event:/ui/notification/quest_finished"));
+        //     });
+        // }
         
-        public static void ScreenFail(string str)
+        public static void LogFeedFail(string str) => LogFeed("!FAIL!: " + str, new Color(1f, 0.5f, 0f));
+        public static void LogFeedCritical(string str) => LogFeed("!! BLT-CRITICAL !!: " + str, Colors.Red);
+        public static void LogFeedSystem(string str) => LogFeed(str, Colors.Magenta);
+        public static void LogFeedBattle(string str) => LogFeed(str, Colors.White);
+        public static void LogFeedEvent(string str) => LogFeed(str, Colors.Cyan);
+        public static void LogFeedResponse(string str) => LogFeed(str, Colors.Yellow);
+        
+        public static void LogFeed(string str, Color color)
         {
-            MainThreadSync.Run(() =>
-            {
-                LogFilePrint(str);
-                InformationManager.DisplayMessage(new InformationMessage("BLT: " + str, new Color(252 / 255f, 95 / 255f, 43 / 255f),
-                    "event:/ui/notification/quest_fail"));
-            });
+            BLTModule.AddToFeed(str, color);
+            LogFilePrint(str);
         }
 
-        public static void ScreenCritical(string str)
-        {
-            MainThreadSync.Run(() =>
-            {
-                LogFilePrint(str);
-                InformationManager.DisplayMessage(new InformationMessage("!! BLT-CRITICAL !!: " + str, new Color(1, 0, 0),
-                    "event:/ui/notification/quest_fail"));
-            });
-        }
-        
         public static long TimeFunction(Action action)
         {
             var sw = new Stopwatch();

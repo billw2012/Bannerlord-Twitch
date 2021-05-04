@@ -13,11 +13,75 @@ using TwitchLib.Api;
 using TwitchLib.Api.Core.Enums;
 using TwitchLib.Api.Helix.Models.ChannelPoints.GetCustomReward;
 using TwitchLib.Api.Helix.Models.ChannelPoints.UpdateCustomRewardRedemptionStatus;
+using TwitchLib.Client.Events;
+using TwitchLib.Client.Models;
 using TwitchLib.PubSub;
 using TwitchLib.PubSub.Events;
+using UserType = TwitchLib.Client.Enums.UserType;
 
 namespace BannerlordTwitch
 {
+    public class ReplyContext
+    {
+        public string UserName { get; private set; }
+        public string ReplyId { get; private set; }
+        public string Args { get; private set; }
+        public int Bits { get; private set; }
+        public double BitsInDollars { get; private set; }
+        public int SubscribedMonthCount { get; private set; }
+        public bool IsBroadcaster { get; private set; }
+        public bool IsModerator { get; private set; }
+        public bool IsSubscriber { get; private set; }
+        public bool IsVip { get; private set; }
+        //public bool IsWhisper { get; private set; }
+        public Guid RedemptionId { get; private set; }
+        public ResponseBase Source { get; private set; }
+
+        public static ReplyContext FromMessage(ResponseBase source, ChatMessage msg, string args) =>
+            new()
+            {
+                UserName = msg.DisplayName,
+                ReplyId = msg.Id,
+                Args = args,
+                Bits = msg.Bits,
+                BitsInDollars = msg.BitsInDollars,
+                SubscribedMonthCount = msg.SubscribedMonthCount,
+                IsBroadcaster = msg.IsBroadcaster,
+                IsModerator = msg.IsModerator,
+                IsSubscriber = msg.IsSubscriber,
+                IsVip = msg.IsVip,
+                Source = source,
+            };
+        
+        // public static ReplyContext FromWhisper(ResponseBase source, WhisperMessage whisper) =>
+        //     new()
+        //     {
+        //         UserName = whisper.DisplayName,
+        //         ReplyId = whisper.MessageId,
+        //         Args = whisper.Message,
+        //         IsBroadcaster = whisper.UserType == UserType.Broadcaster,
+        //         IsModerator = whisper.UserType == UserType.Moderator,
+        //         IsWhisper = true,
+        //         Source = source,
+        //     };
+        
+        public static ReplyContext FromRedemption(ResponseBase source, OnRewardRedeemedArgs args) =>
+            new()
+            {
+                UserName = args.DisplayName,
+                Args = args.Message,
+                RedemptionId = args.RedemptionId,
+                Source = source,
+            };
+        
+        public static ReplyContext FromUser(ResponseBase source, string userName) =>
+            new()
+            {
+                UserName = userName,
+                Source = source,
+            };
+    }
+    
     // https://twitchtokengenerator.com/
     // https://twitchtokengenerator.com/quick/AAYotwZPvU
     internal partial class TwitchService
@@ -55,7 +119,7 @@ namespace BannerlordTwitch
                         $"Failed to load auth settings, enable the BLTConfigure module and authorize the mod via the window",
                         true, false, "Okay", null,
                         () => {}, () => {}), true);
-                Log.ScreenCritical($"Failed to load auth settings, load the BLTConfigure module and authorize the mod via the window");
+                Log.LogFeedCritical($"Failed to load auth settings, load the BLTConfigure module and authorize the mod via the window");
                 return;
             }
 
@@ -70,7 +134,7 @@ namespace BannerlordTwitch
                 {
                     if (t.IsFaulted)
                     {
-                        Log.ScreenFail($"Service init failed: {t.Exception?.Message}");
+                        Log.LogFeedFail($"Service init failed: {t.Exception?.Message}");
                         return;
                     }
                     
@@ -84,7 +148,7 @@ namespace BannerlordTwitch
 
                     if (string.IsNullOrEmpty(user.BroadcasterType))
                     {
-                        Log.ScreenFail($"Service init failed: you must be a twitch partner or affiliate to use the channel points system. Chat bot and testing are still functioning.");
+                        Log.LogFeedFail($"Service init failed: you must be a twitch partner or affiliate to use the channel points system. Chat bot and testing are still functioning.");
                         return;
                     }
                     
@@ -136,7 +200,7 @@ namespace BannerlordTwitch
                     $"Failed to load action/command settings, please enable the BLTConfigure module and use it to configure the mod",
                     true, false, "Okay", null,
                     () => {}, () => {}), true);
-            Log.ScreenCritical($"MOD DISABLED: Failed to load settings from settings file, please enable the BLTConfigure module and use it to configure the mod");
+            Log.LogFeedCritical($"MOD DISABLED: Failed to load settings from settings file, please enable the BLTConfigure module and use it to configure the mod");
 
             return false;
         }
@@ -161,11 +225,11 @@ namespace BannerlordTwitch
             }
             catch (Exception e)
             {
-                Log.ScreenFail($"ERROR: Couldn't retrieve existing rewards: {e.Message}");
+                Log.LogFeedFail($"ERROR: Couldn't retrieve existing rewards: {e.Message}");
             }
 
             bool anyFailed = false;
-            foreach (var rewardDef in Settings.Rewards.Where(r => existingRewards == null || existingRewards.Data.All(e => e.Title != r.RewardSpec?.Title)))
+            foreach (var rewardDef in Settings.EnabledRewards.Where(r => existingRewards == null || existingRewards.Data.All(e => e.Title != r.RewardSpec?.Title)))
             {
                 try
                 {
@@ -175,7 +239,7 @@ namespace BannerlordTwitch
                 }
                 catch (Exception e)
                 {
-                    Log.ScreenCritical($"Couldn't create reward {rewardDef.RewardSpec.Title}: {e.Message}");
+                    Log.LogFeedCritical($"Couldn't create reward {rewardDef.RewardSpec.Title}: {e.Message}");
                     anyFailed = true;
                 }
             }
@@ -201,7 +265,7 @@ namespace BannerlordTwitch
                                 }
                                 else
                                 {
-                                    Log.ScreenFail($"ERROR: Couldn't find the log file at {logDir}");
+                                    Log.LogFeedFail($"ERROR: Couldn't find the log file at {logDir}");
                                 }
                             }
                             catch
@@ -252,93 +316,117 @@ namespace BannerlordTwitch
                     return;
                 }
 
+                var context = ReplyContext.FromRedemption(reward, redeemedArgs);
                 try
                 {
                     redemptionCache.TryAdd(redeemedArgs.RedemptionId, redeemedArgs);
-                    if (!RewardManager.Enqueue(reward.Action, redeemedArgs.RedemptionId, redeemedArgs.Message, redeemedArgs.DisplayName, reward.ActionConfig))
+                    if (!RewardManager.Enqueue(reward.Action, context, reward.ActionConfig))
                     {
                         Log.Error($"Couldn't enqueue redemption {redeemedArgs.RedemptionId}: RedemptionAction {reward.Action} not found, check you have its Reward extension installed!");
                         // We DO cancel redemptions we know about, where the implementation is missing
-                        RedemptionCancelled(redeemedArgs.RedemptionId, $"Redemption action {reward.Action} wasn't found");
+                        RedemptionCancelled(context, $"Redemption action {reward.Action} wasn't found");
                     }
                     else
                     {
-                        Log.Screen($"Redemption of {redeemedArgs.RewardTitle} from {redeemedArgs.DisplayName} received!");
+                        Log.Info($"Redemption of {redeemedArgs.RewardTitle} from {redeemedArgs.DisplayName} received!");
                     }
                 }
                 catch (Exception e)
                 {
                     Log.Error($"Exception happened while trying to enqueue redemption {redeemedArgs.RedemptionId}: {e.Message}");
-                    RedemptionCancelled(redeemedArgs.RedemptionId, $"Exception occurred: {e.Message}");
+                    RedemptionCancelled(context, $"Exception occurred: {e.Message}");
                 }
             });
         }
 
         public void TestRedeem(string rewardName, string user, string message)
         {
-            var reward = Settings?.Rewards.FirstOrDefault(r => r.RewardSpec.Title == rewardName);
+            var reward = Settings?.EnabledRewards.FirstOrDefault(r => r.RewardSpec.Title == rewardName);
             if (reward == null)
             {
                 Log.Error($"Reward {rewardName} not found!");
                 return;
             }
 
-            var guid = Guid.NewGuid();
-            redemptionCache.TryAdd(guid, new OnRewardRedeemedArgs
+            var redeem = new OnRewardRedeemedArgs
             {
-                RedemptionId = guid,
+                RedemptionId = Guid.NewGuid(),
                 Message = message,
                 DisplayName = user,
                 Login = user,
                 RewardTitle = rewardName,
                 ChannelId = null,
-            });
+            };
+            redemptionCache.TryAdd(redeem.RedemptionId, redeem);
 
-            RewardManager.Enqueue(reward.Action, guid, message, user, reward.ActionConfig);
+            RewardManager.Enqueue(reward.Action, ReplyContext.FromRedemption(reward, redeem), reward.ActionConfig);
         }
 
-        private void ShowMessage(string screenMsg, string botMsg, string userToAt)
+        // private void ShowMessage(string screenMsg, string botMsg, string userToAt)
+        // {
+        //     Log.Screen(screenMsg);
+        //     SendChat($"@{userToAt}: {botMsg}");
+        // }
+        //
+        // private void ShowMessageFail(string screenMsg, string botMsg, string userToAt)
+        // {
+        //     Log.ScreenFail(screenMsg);
+        //     SendChat($"@{userToAt}: {botMsg}");
+        // }
+
+        // public void SendChat(params string[] message)
+        // {
+        //     Log.Trace($"[chat] {string.Join(" - ", message)}");
+        //     bot.SendChat(message);
+        // }
+
+        public void SendReply(ReplyContext context, params string[] messages)
         {
-            Log.Screen(screenMsg);
-            SendChat($"@{userToAt}: {botMsg}");
+            if (context.Source.RespondInOverlay)
+            {
+                Log.LogFeedResponse($"@{context.UserName}: " + string.Join("\n", messages));
+            }
+
+            if (context.Source.RespondInTwitch)
+            {
+                // if (context.IsWhisper)
+                // {
+                //     bot.SendWhisper(context.UserName, messages);
+                //     Log.Trace($"[whisper][{context.UserName}] {string.Join(" - ", messages)}");
+                // }
+                // else 
+                if (context.UserName != null)
+                {
+                    bot.SendChatReply(context.UserName, messages);
+                    Log.Trace($"[reply][{context.UserName}] {string.Join(" - ", messages)}");
+                }
+                else
+                {
+                    bot.SendChat(messages);
+                    Log.Trace($"[chat] {string.Join(" - ", messages)}");
+                }
+            }
         }
 
-        private void ShowMessageFail(string screenMsg, string botMsg, string userToAt)
+        private void ShowCommandHelp()
         {
-            Log.ScreenFail(screenMsg);
-            SendChat($"@{userToAt}: {botMsg}");
-        }
-
-        public void SendChat(params string[] message)
-        {
-            Log.Trace($"[chat] {string.Join(" - ", message)}");
-            bot.SendChat(message);
-        }
-
-        public void SendReply(string replyId, params string[] message)
-        {
-            Log.Trace($"[chat] {replyId}->{string.Join(" - ", message)}");
-            bot.SendReply(replyId, message);
-        }
-
-        private void ShowCommandHelp(string replyId)
-        {
-            bot.SendReply(replyId, "Commands: ".Yield()
-                .Concat(Settings.Commands.Where(c 
+            string[] help = "Commands: ".Yield()
+                .Concat(Settings.EnabledCommands.Where(c
                         => !c.HideHelp && !c.BroadcasterOnly && !c.ModOnly)
                     .Select(c => $"!{c.Name} - {c.Help}")
-                ).ToArray());
+                ).ToArray();
+            bot.SendChat(help);
         }
         
-        public void RedemptionComplete(Guid redemptionId, string info = null)
+        public void RedemptionComplete(ReplyContext context, string info = null)
         {
-            if (!redemptionCache.TryRemove(redemptionId, out var redemption))
+            if (!redemptionCache.TryRemove(context.RedemptionId, out var redemption))
             {
-                Log.Error($"RedemptionComplete failed: redemption {redemptionId} not known!");
+                Log.Error($"RedemptionComplete failed: redemption {context.RedemptionId} not known!");
                 return;
             }
-            ShowMessage($"Redemption of {redemption.RewardTitle} for {redemption.DisplayName} complete" + 
-                        (!string.IsNullOrEmpty(info) ? $": {info}" : ""), info, redemption.Login);
+            Log.Info($"Redemption of {redemption.RewardTitle} for {redemption.DisplayName} complete{(!string.IsNullOrEmpty(info) ? $": {info}" : "")}");
+            RewardManager.SendReply(context, info);
             if (!string.IsNullOrEmpty(redemption.ChannelId))
             {
                 SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.FULFILLED);
@@ -349,15 +437,15 @@ namespace BannerlordTwitch
             }
         }
 
-        public void RedemptionCancelled(Guid redemptionId, string reason = null)
+        public void RedemptionCancelled(ReplyContext context, string reason = null)
         {
-            if (!redemptionCache.TryRemove(redemptionId, out var redemption))
+            if (!redemptionCache.TryRemove(context.RedemptionId, out var redemption))
             {
-                Log.Error($"RedemptionCancelled failed: redemption {redemptionId} not known!");
+                Log.Error($"RedemptionCancelled failed: redemption {context.RedemptionId} not known!");
                 return;
             }
-            ShowMessageFail($"Redemption of {redemption.RewardTitle} for {redemption.DisplayName} cancelled" + 
-                            (!string.IsNullOrEmpty(reason) ? $": {reason}" : ""), reason, redemption.Login);
+            Log.Info($"Redemption of {redemption.RewardTitle} for {redemption.DisplayName} cancelled{(!string.IsNullOrEmpty(reason) ? $": {reason}" : "")}");
+            RewardManager.SendReply(context, reason);
             if (!string.IsNullOrEmpty(redemption.ChannelId))
             {
                 SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.CANCELED);
@@ -389,7 +477,7 @@ namespace BannerlordTwitch
 
         private void OnPubSubServiceConnected(object sender, System.EventArgs e)
         {
-            Log.Screen("PubSub Service connected, now listening for rewards");
+            Log.LogFeedSystem("PubSub Service connected, now listening for rewards");
 
 #pragma warning disable 618
             // Obsolete warning disabled because no new version has yet been written!

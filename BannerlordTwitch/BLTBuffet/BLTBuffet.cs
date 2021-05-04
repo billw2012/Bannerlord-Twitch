@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using HarmonyLib;
@@ -17,6 +18,17 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTBuffet
 {
+    // Avoid depending on AdoptAHero directly
+    internal static class HeroExtensions
+    {
+        internal static bool IsAdopted(this Hero hero) => hero.Name.Contains("[BLT]");
+    }
+    
+    internal static class AgentExtensions
+    {
+        internal static bool IsAdopted(this Agent agent) => (agent.Character as CharacterObject)?.HeroObject?.IsAdopted() ?? false;
+    }
+    
     public class BLTBuffetModule : MBSubModuleBase
     {
         public const string Name = "BLTBuffet";
@@ -42,7 +54,7 @@ namespace BLTBuffet
                 }
                 catch (Exception ex)
                 {
-                    Log.ScreenCritical($"Error applying patches: {ex.Message}");
+                    Log.LogFeedCritical($"Error applying patches: {ex.Message}");
                 }
             }
         }
@@ -52,7 +64,7 @@ namespace BLTBuffet
     public class TestPfx : ICommandHandler
     {
         private BoneAttachments active;
-        public void Execute(string args, CommandMessage message, object config)
+        public void Execute(ReplyContext context, object config)
         {
             if (Agent.Main == null)
             {
@@ -63,9 +75,9 @@ namespace BLTBuffet
                 CharacterEffect.RemoveAgentEffects(active);
                 active = null;
             }
-            if (!string.IsNullOrEmpty(args))
+            if (!string.IsNullOrEmpty(context.Args))
             {
-                active = CharacterEffect.CreateAgentEffects(Agent.Main, args, 
+                active = CharacterEffect.CreateAgentEffects(Agent.Main, context.Args, 
                     MatrixFrame.Identity.Strafe(0.1f),
                     Game.Current.HumanMonster.HeadLookDirectionBoneIndex);
             }
@@ -77,11 +89,11 @@ namespace BLTBuffet
     [UsedImplicitly]
     public class TestSfx : ICommandHandler
     {
-        public void Execute(string args, CommandMessage message, object config)
+        public void Execute(ReplyContext context, object config)
         {
-            if (!string.IsNullOrEmpty(args) && Agent.Main != null)
+            if (!string.IsNullOrEmpty(context.Args) && Agent.Main != null)
             {
-                Mission.Current.MakeSound(SoundEvent.GetEventIdFromString(args), Agent.Main.AgentVisuals.GetGlobalFrame().origin, false, true, Agent.Main.Index, -1);
+                Mission.Current.MakeSound(SoundEvent.GetEventIdFromString(context.Args), Agent.Main.AgentVisuals.GetGlobalFrame().origin, false, true, Agent.Main.Index, -1);
             }
         }
 
@@ -328,15 +340,15 @@ namespace BLTBuffet
             [Description("Creates a light attached to the target"), PropertyOrder(7)]
             public LightDef Light { get; set; }
             [Description("Heal amount per second"), PropertyOrder(8)]
-            public float? HealPerSecond { get; set; }
+            public float HealPerSecond { get; set; }
             [Description("Damage amount per second"), PropertyOrder(9)]
-            public float? DamagePerSecond { get; set; }
-            [Description("Duration the effect will last for, if not specified the effect will last until the end of the mission"), PropertyOrder(10)]
+            public float DamagePerSecond { get; set; }
+            [Description("Duration the effect will last for, if not specified the effect will last until the end of the mission"), PropertyOrder(10), DefaultValue(null)]
             public float? Duration { get; set; }
             [Description("Force agent to drop weapons"), PropertyOrder(11)]
             public bool ForceDropWeapons { get; set; }
-            [Description("Force agent dismount"), PropertyOrder(12)]
-            public bool ForceDismount { get; set; }
+            // [Description("Force agent dismount"), PropertyOrder(12)]
+            // public bool ForceDismount { get; set; }
             [Description("Remove all armor"), PropertyOrder(13)]
             public bool RemoveArmor { get; set; }
             [Description("Raw damage multiplier"), PropertyOrder(14)]
@@ -382,23 +394,23 @@ namespace BLTBuffet
 
             public void Apply(float dt)
             {
-                if (config.HealPerSecond.HasValue)
+                if (config.HealPerSecond != 0)
                 {
-                    agent.Health = Math.Min(agent.HealthLimit, agent.Health + Math.Abs(config.HealPerSecond.Value) * dt);
+                    agent.Health = Math.Min(agent.HealthLimit, agent.Health + Math.Abs(config.HealPerSecond) * dt);
                 }
 
-                if(config.DamagePerSecond.HasValue && !agent.Invulnerable && !Mission.DisableDying)
+                if(config.DamagePerSecond != 0 && !agent.Invulnerable && !Mission.DisableDying)
                 {
                     var blow = new Blow(agent.Index);
                     blow.DamageType = DamageTypes.Blunt;
-                    blow.BlowFlag = BlowFlags.CrushThrough;
-                    blow.BlowFlag |= BlowFlags.KnockDown;
+                    //blow.BlowFlag = BlowFlags.CrushThrough;
+                    //blow.BlowFlag |= BlowFlags.KnockDown;
                     blow.BoneIndex = agent.Monster.HeadLookDirectionBoneIndex;
                     blow.Position = agent.Position;
                     blow.Position.z += agent.GetEyeGlobalHeight();
                     blow.BaseMagnitude = 0f;
                     blow.WeaponRecord.FillAsMeleeBlow(null, null, -1, -1);
-                    blow.InflictedDamage = (int) Math.Abs(config.DamagePerSecond.Value * dt);
+                    blow.InflictedDamage = (int) Math.Abs(config.DamagePerSecond * dt);
                     blow.SwingDirection = agent.LookDirection;
                     blow.SwingDirection.Normalize();
                     blow.Direction = blow.SwingDirection;
@@ -420,10 +432,11 @@ namespace BLTBuffet
                     }
                 }
 
-                if (config.ForceDismount)
-                {
-                    AccessTools.Method(typeof(Agent), "SetMountAgent").Invoke(agent, new object[] { null });
-                }
+                // Doesn't work, doesn't something weird instead
+                // if (config.ForceDismount)
+                // {
+                //     AccessTools.Method(typeof(Agent), "SetMountAgent").Invoke(agent, new object[] { null });
+                // }
 
                 if (config.Properties != null)
                 {
@@ -436,7 +449,7 @@ namespace BLTBuffet
                 if (config.Duration.HasValue 
                     && MBCommon.GetTime(MBCommon.TimeType.Mission) > config.Duration.Value + started)
                 {
-                    Log.Screen($"{config.Name} expired on {agent.Name}!", Colors.Magenta);
+                    Log.LogFeedEvent($"{config.Name} expired on {agent.Name}!");
                     if (!string.IsNullOrEmpty(config.DeactivateParticleEffect))
                     {
                         Mission.Current.Scene.CreateBurstParticle(ParticleSystemManager.GetRuntimeIdByName(config.DeactivateParticleEffect), agent.AgentVisuals.GetGlobalFrame());
@@ -515,45 +528,41 @@ namespace BLTBuffet
                     .ToArray();
                 if (hitDamageMultipliers.Any())
                 {
-                    var forceMag = hitDamageMultipliers.Sum();
+                    float forceMag = hitDamageMultipliers.Sum();
                     attackCollisionData.BaseMagnitude = (int) (attackCollisionData.BaseMagnitude * forceMag);
                     attackCollisionData.InflictedDamage = (int) (attackCollisionData.InflictedDamage * forceMag);
-
-                    var direction = (victimAgent.Frame.origin - attackerAgent.Frame.origin).NormalizedCopy();
-                    var force = direction * forceMag * 100;
-                    victimAgent.AgentVisuals.SetAgentLocalSpeed(force.AsVec2);
                 }
             }
             
-            public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
-            {
-                float[] knockBackForces = agentEffectsActive
-                    .Where(e => ReferenceEquals(e.Key, affectorAgent))
-                    .SelectMany(e => e.Value
-                        .Select(f => f.config.DamageMultiplier ?? 0)
-                        .Where(f => f != 0)
-                    )
-                    .ToArray();
-                if (knockBackForces.Any())
-                {
-                    var direction = (affectedAgent.Frame.origin - affectorAgent.Frame.origin).NormalizedCopy();
-                    var force = knockBackForces.Select(f => direction * f).Aggregate((a, b) => a + b);
-                    affectedAgent.AgentVisuals.SetAgentLocalSpeed(force.AsVec2);
-                    //var entity = affectedAgent.AgentVisuals.GetEntity();
-                    // // entity.ActivateRagdoll();
-                    // entity.AddPhysics(0.1f, Vec3.Zero, null, force * 2000, Vec3.Zero, PhysicsMaterial.GetFromIndex(0), false, 0);
-
-                    // entity.EnableDynamicBody();
-                    // entity.SetPhysicsState(true, true);
-
-                    //entity.ApplyImpulseToDynamicBody(entity.GetGlobalFrame().origin, force);
-                    // foreach (float knockBackForce in knockBackForces)
-                    // {
-                    //     entity.ApplyImpulseToDynamicBody(entity.GetGlobalFrame().origin, direction * knockBackForce);
-                    // }
-                    // Mission.Current.AddTimerToDynamicEntity(entity, 3f + MBRandom.RandomFloat * 2f);
-                }
-            }
+            // public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
+            // {
+            //     float[] knockBackForces = agentEffectsActive
+            //         .Where(e => ReferenceEquals(e.Key, affectorAgent))
+            //         .SelectMany(e => e.Value
+            //             .Select(f => f.config.DamageMultiplier ?? 0)
+            //             .Where(f => f != 0)
+            //         )
+            //         .ToArray();
+            //     if (knockBackForces.Any())
+            //     {
+            //         var direction = (affectedAgent.Frame.origin - affectorAgent.Frame.origin).NormalizedCopy();
+            //         var force = knockBackForces.Select(f => direction * f).Aggregate((a, b) => a + b);
+            //         affectedAgent.AgentVisuals.SetAgentLocalSpeed(force.AsVec2);
+            //         //var entity = affectedAgent.AgentVisuals.GetEntity();
+            //         // // entity.ActivateRagdoll();
+            //         // entity.AddPhysics(0.1f, Vec3.Zero, null, force * 2000, Vec3.Zero, PhysicsMaterial.GetFromIndex(0), false, 0);
+            //
+            //         // entity.EnableDynamicBody();
+            //         // entity.SetPhysicsState(true, true);
+            //
+            //         //entity.ApplyImpulseToDynamicBody(entity.GetGlobalFrame().origin, force);
+            //         // foreach (float knockBackForce in knockBackForces)
+            //         // {
+            //         //     entity.ApplyImpulseToDynamicBody(entity.GetGlobalFrame().origin, direction * knockBackForce);
+            //         // }
+            //         // Mission.Current.AddTimerToDynamicEntity(entity, 3f + MBRandom.RandomFloat * 2f);
+            //     }
+            // }
 
             public override void OnAgentDeleted(Agent affectedAgent)
             {
@@ -645,7 +654,8 @@ namespace BLTBuffet
             public override MissionBehaviourType BehaviourType => MissionBehaviourType.Other;
         }
 
-        protected override void ExecuteInternal(string userName, string args, object baseConfig, Action<string> onSuccess, Action<string> onFailure)
+        protected override void ExecuteInternal(ReplyContext context, object baseConfig,
+            Action<string> onSuccess, Action<string> onFailure)
         {
             // DOING:
             // - search agents for the target to apply to
@@ -671,18 +681,18 @@ namespace BLTBuffet
                 Target.AdoptedHero => Mission.Current.Agents.FirstOrDefault(a =>
                 {
                     if (a.Character is not CharacterObject charObj) return false;
-                    return charObj.HeroObject != null && charObj.HeroObject.FirstName.Contains(userName) &&
-                           charObj.HeroObject.FirstName.ToString() == userName;
+                    return charObj.HeroObject != null && charObj.HeroObject.FirstName.Contains(context.UserName) &&
+                           charObj.HeroObject.FirstName.ToString() == context.UserName;
                 }),
-                Target.Any => Mission.Current.Agents.Where(GeneralAgentFilter).SelectRandom(),
+                Target.Any => Mission.Current.Agents.Where(GeneralAgentFilter).Where(a => !a.IsAdopted()).SelectRandom(),
                 Target.EnemyTeam => Mission.Current.Agents.Where(GeneralAgentFilter)
-                    .Where(a => a.Team?.IsPlayerTeam == false && !a.Team.IsPlayerAlly)
+                    .Where(a => a.Team?.IsPlayerTeam == false && !a.Team.IsPlayerAlly && !a.IsAdopted())
                     .SelectRandom(),
                 Target.PlayerTeam => Mission.Current.Agents.Where(GeneralAgentFilter)
-                    .Where(a => a.Team?.IsPlayerTeam == true)
+                    .Where(a => a.Team?.IsPlayerTeam == true && !a.IsAdopted())
                     .SelectRandom(),
                 Target.AllyTeam => Mission.Current.Agents.Where(GeneralAgentFilter)
-                    .Where(a => a.Team?.IsPlayerAlly == false)
+                    .Where(a => a.Team?.IsPlayerAlly == false && !a.IsAdopted())
                     .SelectRandom(),
                 _ => null
             };
@@ -695,7 +705,7 @@ namespace BLTBuffet
 
             if (string.IsNullOrEmpty(config.Name))
             {
-                onFailure($"Configuration error: Name is missing!");
+                onFailure($"CharacterEffect {context.Source} configuration error: Name is missing!");
                 return;
             }
 
@@ -772,7 +782,7 @@ namespace BLTBuffet
                 Mission.Current.MakeSound(SoundEvent.GetEventIdFromString(config.ActivateSound), target.AgentVisuals.GetGlobalFrame().origin, false, true, target.Index, -1);
             }
 
-            Log.Screen($"{config.Name} is active on {target.Name}!", Colors.Magenta);
+            Log.LogFeedEvent($"{config.Name} is active on {target.Name}!");
 
             onSuccess($"{config.Name} is active on {target.Name}!");
         }

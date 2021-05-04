@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using HarmonyLib;
@@ -10,7 +11,9 @@ using SandBox;
 using SandBox.Source.Missions.Handlers;
 using StoryMode.Missions;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.SandBox;
+using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.Towns;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
@@ -24,6 +27,16 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
+    internal static class HeroExtensions
+    {
+        internal static bool IsAdopted(this Hero hero) => hero.Name.Contains(BLTAdoptAHeroModule.Tag);
+    }
+    
+    internal static class AgentExtensions
+    {
+        internal static bool IsAdopted(this Agent agent) => (agent.Character as CharacterObject)?.HeroObject?.IsAdopted() ?? false;
+    }
+    
     [UsedImplicitly]
     public class BLTAdoptAHeroModule : MBSubModuleBase
     {
@@ -34,8 +47,98 @@ namespace BLTAdoptAHero
         {
             RewardManager.RegisterAll(typeof(BLTAdoptAHeroModule).Assembly);
         }
+
+        protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
+        {
+            static string KillDetailVerb(KillCharacterAction.KillCharacterActionDetail detail)
+            {
+                switch (detail)
+                {
+                    case KillCharacterAction.KillCharacterActionDetail.Murdered:
+                        return "was murdered";
+                    case KillCharacterAction.KillCharacterActionDetail.DiedInLabor:
+                        return "died in labor";
+                    case KillCharacterAction.KillCharacterActionDetail.DiedOfOldAge:
+                        return "died of old age";
+                    case KillCharacterAction.KillCharacterActionDetail.DiedInBattle:
+                        return "died in battle";
+                    case KillCharacterAction.KillCharacterActionDetail.WoundedInBattle:
+                        return "was wounded in battle";
+                    case KillCharacterAction.KillCharacterActionDetail.Executed:
+                        return "was executed";
+                    case KillCharacterAction.KillCharacterActionDetail.Lost:
+                        return "was lost";
+                    default:
+                    case KillCharacterAction.KillCharacterActionDetail.None:
+                        return "was ended";
+                }
+            }
+            base.OnGameStart(game, gameStarterObject);
+            CampaignEvents.HeroKilledEvent.AddNonSerializedListener(this, (victim, killer, detail, _) =>
+            {
+                if ((victim?.IsAdopted() ?? false) || (killer?.IsAdopted() ?? false))
+                {
+                    string verb = KillDetailVerb(detail);
+                    if (killer != null && victim != null)
+                    {
+                        Log.LogFeedEvent($"{victim.Name} {verb} by {killer.Name}!");
+                    }
+                    else if (killer != null)
+                    {
+                        Log.LogFeedEvent($"{killer.Name} {verb}!");
+                    }
+                }
+            });
+            CampaignEvents.HeroLevelledUp.AddNonSerializedListener(this, (hero, _) =>
+            {
+                if (hero.IsAdopted())
+                    Log.LogFeedEvent($"{hero.Name} is now level {hero.Level}!");
+            });
+            CampaignEvents.HeroPrisonerTaken.AddNonSerializedListener(this, (party, hero) =>
+            {
+                if (hero.IsAdopted())
+                {
+                    if(party != null)
+                        Log.LogFeedEvent($"{hero.Name} was taken prisoner by {party.Name}!");
+                    else
+                        Log.LogFeedEvent($"{hero.Name} was taken prisoner!");
+                }
+            });
+            CampaignEvents.HeroPrisonerReleased.AddNonSerializedListener(this, (hero, party, _, _) =>
+            {
+                if (hero.IsAdopted())
+                {
+                    if(party != null)
+                        Log.LogFeedEvent($"{hero.Name} is no longer a prisoner of {party.Name}!");
+                    else
+                        Log.LogFeedEvent($"{hero.Name} is no longer a prisoner!");
+                }
+            });
+            CampaignEvents.OnHeroChangedClanEvent.AddNonSerializedListener(this, (hero, clan) =>
+            {
+                if(hero.IsAdopted())
+                    Log.LogFeedEvent($"{hero.Name} is now a member of {clan?.Name.ToString() ?? "no clan"}!");
+            });
+        }
+
+        // public override void BeginGameStart(Game game)
+        // {
+        //     base.BeginGameStart(game);
+        // }
+        //
+        // public override void OnCampaignStart(Game game, object starterObject)
+        // {
+        //     base.OnCampaignStart(game, starterObject);
+        // }
+
+        public override void OnGameEnd(Game game)
+        {
+            base.OnGameEnd(game);
+        }
+
+        internal const string Tag = "[BLT]";
     }
-    
+
     [UsedImplicitly]
     [Description("Allows viewer to 'adopt' a hero in game -- the hero name will change to the viewers, and they can control it with further commands")]
     public class AdoptAHero : IAction, ICommandHandler
@@ -73,8 +176,7 @@ namespace BLTAdoptAHero
 
         internal const string NoHeroMessage = "Couldn't find your hero, did you adopt one yet?";
         internal const string NotStartedMessage = "The game isn't started yet";
-        internal const string Tag = "[BLT]";
-        
+
         // public class GlobalSettings
         // {
         // }
@@ -146,7 +248,7 @@ namespace BLTAdoptAHero
 
         private static IEnumerable<Hero> GetAvailableHeroes(Settings settings)
         {
-            var tagText = new TextObject(Tag);
+            var tagText = new TextObject(BLTAdoptAHeroModule.Tag);
             return Campaign.Current?.AliveHeroes?.Where(h =>
                 // Not the player of course
                 h != Hero.MainHero
@@ -160,11 +262,11 @@ namespace BLTAdoptAHero
             ).Where(n => !n.Name.Contains(tagText));
         }
 
-        internal static string GetFullName(string name) => $"{name} {AdoptAHero.Tag}";
+        internal static string GetFullName(string name) => $"{name} {BLTAdoptAHeroModule.Tag}";
 
         internal static Hero GetAdoptedHero(string name)
         {
-            var tagObject = new TextObject(AdoptAHero.Tag);
+            var tagObject = new TextObject(BLTAdoptAHeroModule.Tag);
             var nameObject = new TextObject(name);
             return Campaign.Current?
                 .AliveHeroes?
@@ -174,50 +276,50 @@ namespace BLTAdoptAHero
         }
 
         Type IAction.ActionConfigType => typeof(Settings);
-        void IAction.Enqueue(Guid redemptionId, string args, string userName, object config)
+        void IAction.Enqueue(ReplyContext context, object config)
         {
-            var hero = GetAdoptedHero(userName);
+            var hero = GetAdoptedHero(context.UserName);
             if (hero?.IsAlive == true)
             {
-                RewardManager.NotifyCancelled(redemptionId, "You have already adopted a hero!");
+                RewardManager.NotifyCancelled(context, "You have already adopted a hero!");
                 return;
             }
             var settings = (Settings)config;
-            var (success, message) = ExecuteInternal(hero, args, userName, settings);
+            var (success, message) = ExecuteInternal(hero, context.Args, context.UserName, settings);
             if (success)
             {
-                RewardManager.NotifyComplete(redemptionId, message);
+                RewardManager.NotifyComplete(context, message);
             }
             else
             {
-                RewardManager.NotifyCancelled(redemptionId, message);
+                RewardManager.NotifyCancelled(context, message);
             }
         }
         
         Type ICommandHandler.HandlerConfigType => typeof(Settings);
-        void ICommandHandler.Execute(string args, CommandMessage commandMessage, object config)
+        void ICommandHandler.Execute(ReplyContext context, object config)
         {
-            var hero = GetAdoptedHero(commandMessage.UserName);
+            var hero = GetAdoptedHero(context.UserName);
             if (hero?.IsAlive == true)
             {
-                RewardManager.SendReply(commandMessage.ReplyId, "You have already adopted a hero!");
+                RewardManager.SendReply(context, "You have already adopted a hero!");
                 return;
             }
 
             var settings = (Settings)config;
-            if (settings.MinSubscribedMonths > 0 && commandMessage.SubscribedMonthCount < settings.MinSubscribedMonths)
+            if (settings.MinSubscribedMonths > 0 && context.SubscribedMonthCount < settings.MinSubscribedMonths)
             {
-                RewardManager.SendReply(commandMessage.ReplyId, $"You must be subscribed for at least {settings.MinSubscribedMonths} months to adopt a hero with this command!");
+                RewardManager.SendReply(context, $"You must be subscribed for at least {settings.MinSubscribedMonths} months to adopt a hero with this command!");
                 return;
             }
-            if(!commandMessage.IsSubscriber && settings.SubscriberOnly)
+            if(!context.IsSubscriber && settings.SubscriberOnly)
             {
-                RewardManager.SendReply(commandMessage.ReplyId, $"You must be subscribed to adopt a hero with this command!");
+                RewardManager.SendReply(context, $"You must be subscribed to adopt a hero with this command!");
                 return;
             }
                 
-            var (_, message) = ExecuteInternal(hero, args, commandMessage.UserName, settings);
-            RewardManager.SendReply(commandMessage.ReplyId, message);
+            var (_, message) = ExecuteInternal(hero, context.Args, context.UserName, settings);
+            RewardManager.SendReply(context, message);
         }
 
         private static (bool success, string message) ExecuteInternal(Hero hero, string args, string userName, Settings settings)
@@ -261,7 +363,6 @@ namespace BLTAdoptAHero
     [Description("Will write various hero stats to chat")]
     internal class HeroInfoCommand : ICommandHandler
     {
-        
         private class Settings
         {
             [Description("Show general info: gold, health, location, age"), PropertyOrder(1)]
@@ -280,10 +381,10 @@ namespace BLTAdoptAHero
         // Scouting, Tactics, Roguery, Charm, Leadership, Trade, Steward, Medicine, Engineering
 
         Type ICommandHandler.HandlerConfigType => typeof(Settings);
-        void ICommandHandler.Execute(string args, CommandMessage commandMessage, object config)
+        void ICommandHandler.Execute(ReplyContext context, object config)
         {
             var settings = config as Settings ?? new Settings();
-            var adoptedHero = AdoptAHero.GetAdoptedHero(commandMessage.UserName);
+            var adoptedHero = AdoptAHero.GetAdoptedHero(context.UserName);
             var infoStrings = new List<string>{};
             if (adoptedHero == null)
             {
@@ -338,7 +439,7 @@ namespace BLTAdoptAHero
                 }
             }
 
-            RewardManager.SendReply(commandMessage.ReplyId, infoStrings.ToArray());
+            RewardManager.SendReply(context, infoStrings.ToArray());
         }
     }
 
@@ -365,18 +466,67 @@ namespace BLTAdoptAHero
         }
 
         Type IAction.ActionConfigType => typeof(Settings);
-        void IAction.Enqueue(Guid redemptionId, string message, string userName, object config)
+        void IAction.Enqueue(ReplyContext context, object config)
         {
             var settings = (Settings)config;
-            var adoptedHero = AdoptAHero.GetAdoptedHero(userName);
+            var adoptedHero = AdoptAHero.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
-                RewardManager.NotifyCancelled(redemptionId, Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
+                RewardManager.NotifyCancelled(context, Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
                 return;
             }
 
             adoptedHero.Gold += settings.Amount;
-            RewardManager.NotifyComplete(redemptionId, $"+{settings.Amount} gold, you now have {adoptedHero.Gold}!");
+            RewardManager.NotifyComplete(context, $"+{settings.Amount} gold, you now have {adoptedHero.Gold}!");
+        }
+    }
+
+    [Flags]
+    internal enum Skills
+    {
+        None,
+        All,
+        
+        Melee,
+        OneHanded, TwoHanded, Polearm,
+        
+        Ranged,
+        Bow, Throwing, Crossbow,
+        
+        Movement,
+        Riding, Athletics,
+        
+        Support,
+        Scouting, Trade, Steward, Medicine, Engineering,
+        
+        Personal,
+        Crafting, Tactics, Roguery, Charm, Leadership,
+    }
+
+    internal static class SkillGroup
+    {
+        public static Skills[] ExpandSkills(Skills skills)
+        {
+            switch (skills)
+            {
+                case Skills.Melee: return new[] { Skills.OneHanded, Skills.TwoHanded, Skills.Polearm };
+                case Skills.Ranged: return new[] { Skills.Bow , Skills.Throwing , Skills.Crossbow };
+                case Skills.Movement: return new[] { Skills.Riding , Skills.Athletics };
+                case Skills.Support: return new[] { Skills.Scouting , Skills.Trade , Skills.Steward , Skills.Medicine , Skills.Engineering };
+                case Skills.Personal: return new[] { Skills.Crafting ,Skills.Tactics , Skills.Roguery , Skills.Charm ,  Skills.Leadership };
+                case Skills.All: return new[] {Skills.OneHanded , Skills.TwoHanded , Skills.Polearm , Skills.Bow , Skills.Throwing ,
+                    Skills.Crossbow , Skills.Riding , Skills.Athletics , Skills.Crafting , Skills.Tactics , 
+                    Skills.Scouting , Skills.Roguery , Skills.Charm , Skills.Trade , Skills.Steward ,
+                    Skills.Medicine , Skills.Engineering , Skills.Leadership};
+                case Skills.None: return new Skills[] { };
+                default:
+                    return new[] { skills };
+            }
+        }
+
+        public static string[] SkillsToStrings(Skills skills)
+        {
+            return ExpandSkills(skills).Select(s => s.ToString()).ToArray();
         }
     }
 
@@ -394,12 +544,12 @@ namespace BLTAdoptAHero
 
         // protected override Type ConfigType => typeof(SettingsBase);
 
-        protected override void ExecuteInternal(string userName, string args, object config,
+        protected override void ExecuteInternal(ReplyContext context, object config,
             Action<string> onSuccess,
             Action<string> onFailure) 
         {
             var settings = (SettingsBase)config;
-            var adoptedHero = AdoptAHero.GetAdoptedHero(userName);
+            var adoptedHero = AdoptAHero.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
                 onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
@@ -413,7 +563,7 @@ namespace BLTAdoptAHero
             }
             
             var amount = MBRandom.RandomInt(settings.AmountLow, settings.AmountHigh);
-            var (success, description) = Improve(userName, adoptedHero, amount, settings);
+            var (success, description) = Improve(context.UserName, adoptedHero, amount, settings);
             if (success)
             {
                 onSuccess(description);
@@ -437,6 +587,7 @@ namespace BLTAdoptAHero
             SkillGroup.SkillsToStrings(Skills.Movement),
             SkillGroup.SkillsToStrings(Skills.Personal),
         };
+        
         protected static SkillObject GetSkill(Hero hero, Skills skills, bool random, bool auto, Func<SkillObject, bool> predicate = null)
         {
             IEnumerable<SkillObject> GetSkills(IEnumerable<string> sk) => sk
@@ -464,68 +615,10 @@ namespace BLTAdoptAHero
         }
     }
 
-    [Flags]
-    internal enum Skills
-    {
-        None,
-        Melee,
-        Ranged,
-        Support,
-        Movement,
-        Personal,
-        All,
-        OneHanded,
-        TwoHanded,
-        Polearm,
-        Bow,
-        Throwing,
-        Crossbow,
-        Riding,
-        Athletics,
-        Crafting,
-        Tactics,
-        Scouting,
-        Roguery,
-        Charm,
-        Trade,
-        Steward,
-        Medicine,
-        Engineering,
-        Leadership,
-    }
-
-    internal static class SkillGroup
-    {
-        public static Skills[] ExpandSkills(Skills skills)
-        {
-            switch (skills)
-            {
-                case Skills.Melee: return new[] {Skills.OneHanded, Skills.TwoHanded, Skills.Polearm};
-                case Skills.Ranged: return new[] {Skills.Bow , Skills.Throwing , Skills.Crossbow};
-                case Skills.Support: return new[] {Skills.Crafting , Skills.Scouting , Skills.Trade , Skills.Steward , Skills.Engineering};
-                case Skills.Movement: return new[] {Skills.Riding , Skills.Athletics};
-                case Skills.Personal: return new[] {Skills.Tactics , Skills.Roguery , Skills.Charm , Skills.Leadership};
-                case Skills.All: return new[] {Skills.OneHanded , Skills.TwoHanded , Skills.Polearm , Skills.Bow , Skills.Throwing ,
-                    Skills.Crossbow , Skills.Riding , Skills.Athletics , Skills.Crafting , Skills.Tactics , 
-                    Skills.Scouting , Skills.Roguery , Skills.Charm , Skills.Trade , Skills.Steward ,
-                    Skills.Medicine , Skills.Engineering , Skills.Leadership};
-                case Skills.None: return new Skills[] { };
-                default:
-                    return new[] { skills };
-            }
-        }
-
-        public static string[] SkillsToStrings(Skills skills)
-        {
-            return ExpandSkills(skills).Select(s => s.ToString()).ToArray();
-        }
-    }
-    
     [UsedImplicitly]
     [Description("Improve adopted heroes skills")]
     internal class SkillXP : ImproveAdoptedHero
     {
-        
         protected class SkillXPSettings : SettingsBase
         {
             [Description("What to improve"), PropertyOrder(1)]
@@ -542,21 +635,27 @@ namespace BLTAdoptAHero
             Hero adoptedHero, int amount, SettingsBase baseSettings)
         {
             var settings = (SkillXPSettings) baseSettings;
-            var skill = GetSkill(adoptedHero, settings.Skills, settings.Random, settings.Auto);
-            if (skill == null) return (false, $"Couldn't improve skill {settings.Skills}: its not a valid skill name!");
-            float prevSkill = adoptedHero.HeroDeveloper.GetPropertyValue(skill);
-            int prevLevel = adoptedHero.GetSkillValue(skill);
-            adoptedHero.HeroDeveloper.AddSkillXp(skill, amount);
-            float realGainedXp = adoptedHero.HeroDeveloper.GetPropertyValue(skill) - prevSkill;
-            int newLevel = adoptedHero.GetSkillValue(skill);
+            return ImproveSkill(adoptedHero, amount, settings.Skills, settings.Random, settings.Auto);
+        }
+
+        public static (bool success, string description) ImproveSkill(Hero hero, int amount, Skills skills, bool random, bool auto)
+        {
+            var skill = GetSkill(hero, skills, random, auto);
+            if (skill == null) return (false, $"{skills} is not a valid skill name");
+            float prevSkill = hero.HeroDeveloper.GetPropertyValue(skill);
+            int prevLevel = hero.GetSkillValue(skill);
+            hero.HeroDeveloper.AddSkillXp(skill, amount);
+            // Force this immediately instead of waiting for the daily campaign tick
+            CharacterDevelopmentCampaignBehaivor.DevelopCharacterStats(hero);
+            float realGainedXp = hero.HeroDeveloper.GetPropertyValue(skill) - prevSkill;
+            int newLevel = hero.GetSkillValue(skill);
             int gainedLevels = newLevel - prevLevel;
             return realGainedXp < 1f
-                ? (false, $"Couldn't improve skill {skill.Name} any further, get more focus points!")
-                : gainedLevels > 1
-                    ? (true, $"You have gained {gainedLevels} levels in {skill.Name}, you are now {newLevel}!")
-                    : gainedLevels == 1
-                        ? (true, $"You have gained a level in {skill.Name}, you are now {newLevel}!")
-                        : (true, $"You have gained {realGainedXp:0}xp (adjusted by focus) in {skill.Name}, you now have {adoptedHero.GetSkillValue(skill)}!");
+                ? (false, $"{skill.Name} capped, get more focus points")
+                : gainedLevels > 0
+                    ? (true, $"+{gainedLevels} lvl in {skill.Name} ({newLevel})")
+                    : (true,
+                        $"+{realGainedXp:0}xp in {skill.Name} ({hero.GetSkillValue(skill)}xp)");
         }
     }
 
@@ -580,18 +679,23 @@ namespace BLTAdoptAHero
             Hero adoptedHero, int amount, SettingsBase baseSettings)
         {
             var settings = (FocusPointsSettings) baseSettings;
-            
-            var skill = GetSkill(adoptedHero, settings.Skills, settings.Random, settings.Auto,
-                s => adoptedHero.HeroDeveloper.GetFocus(s) < 5);
+
+            return FocusSkill(adoptedHero, amount, settings.Skills, settings.Random, settings.Auto);
+        }
+
+        public static (bool success, string description) FocusSkill(Hero adoptedHero, int amount, Skills skills, bool random, bool auto)
+        {
+            var skill = GetSkill(adoptedHero, skills, random, auto, s => adoptedHero.HeroDeveloper.GetFocus(s) < 5);
 
             if (skill == null)
             {
                 return (false, $"Couldn't find a valid skill to add focus points to!");
             }
-            
+
             amount = Math.Min(amount, 5 - adoptedHero.HeroDeveloper.GetFocus(skill));
             adoptedHero.HeroDeveloper.AddFocus(skill, amount, checkUnspentFocusPoints: false);
-            return (true, $"You have gained {amount} focus point{(amount > 1? "s" : "")} in {skill}, you now have {adoptedHero.HeroDeveloper.GetFocus(skill)}!");
+            return (true,
+                $"You have gained {amount} focus point{(amount > 1 ? "s" : "")} in {skill}, you now have {adoptedHero.HeroDeveloper.GetFocus(skill)}!");
         }
     }
     
@@ -622,29 +726,35 @@ namespace BLTAdoptAHero
             Hero adoptedHero, int amount, SettingsBase baseSettings)
         {
             var settings = (AttributePointsSettings) baseSettings;
+
+            return IncreaseAttribute(adoptedHero, amount, settings.Attribute);
+        }
+
+        private static (bool success, string description) IncreaseAttribute(Hero adoptedHero, int amount, CharacterAttributes attribToIncrease)
+        {
             // Get attributes that can be buffed
             var improvableAttributes = AdoptAHero.CharAttributes
                 .Select(c => c.val)
                 .Where(a => adoptedHero.GetAttributeValue(a) < 10)
                 .ToList();
-            
+
             if (!improvableAttributes.Any())
             {
                 return (false, $"Couldn't improve any attributes, they are all at max level!");
             }
-            
-            var attribute = settings.Attribute != CharacterAttributes.Random 
-             ? (CharacterAttributesEnum)settings.Attribute
-             : improvableAttributes.SelectRandom();
 
-            if(!improvableAttributes.Contains(attribute))
+            var attribute = attribToIncrease != CharacterAttributes.Random
+                ? (CharacterAttributesEnum) attribToIncrease
+                : improvableAttributes.SelectRandom();
+
+            if (!improvableAttributes.Contains(attribute))
             {
                 return (false, $"Couldn't improve {attribute} attributes, it is already at max level!");
             }
 
             amount = Math.Min(amount, 10 - adoptedHero.GetAttributeValue(attribute));
             adoptedHero.HeroDeveloper.AddAttribute(attribute, amount, checkUnspentPoints: false);
-            return (true, $"You have gained {amount} point{(amount > 1? "s" : "")} in {attribute}, you now have {adoptedHero.GetAttributeValue(attribute)}!");
+            return (true, $"You have gained {amount} point{(amount > 1 ? "s" : "")} in {attribute}, you now have {adoptedHero.GetAttributeValue(attribute)}!");
         }
     }
 
@@ -652,30 +762,49 @@ namespace BLTAdoptAHero
     [Description("Spawns the adopted hero into the current active mission")]
     internal class SummonHero : ActionAndHandlerBase
     {
+        [CategoryOrder("Allowed Missions", 0)]
+        [CategoryOrder("General", 1)]
+        [CategoryOrder("Effects", 2)]
         private class Settings
         {
-            [Description("Can summon for normal field battles between parties"), PropertyOrder(1)]
+            [Category("Allowed Missions"), Description("Can summon for normal field battles between parties"), PropertyOrder(1)]
             public bool AllowFieldBattle { get; set; }
-            [Description("Can summon in village battles"), PropertyOrder(2)]
+            [Category("Allowed Missions"), Description("Can summon in village battles"), PropertyOrder(2)]
             public bool AllowVillageBattle { get; set; }
-            [Description("Can summon in sieges"), PropertyOrder(3)]
+            [Category("Allowed Missions"), Description("Can summon in sieges"), PropertyOrder(3)]
             public bool AllowSiegeBattle { get; set; }
-            [Description("This includes walking about village/town/dungeon/keep"), PropertyOrder(4)]
+            [Category("Allowed Missions"), Description("This includes walking about village/town/dungeon/keep"), PropertyOrder(4)]
             public bool AllowFriendlyMission { get; set; }
-            [Description("Can summon in the practice arena"), PropertyOrder(5)]
+            [Category("Allowed Missions"), Description("Can summon in the practice arena"), PropertyOrder(5)]
             public bool AllowArena { get; set; }
-            [Description("NOT IMPLEMENTED YET Can summon in tournaments"), PropertyOrder(6)]
+            [Category("Allowed Missions"), Description("NOT IMPLEMENTED YET Can summon in tournaments"), PropertyOrder(6)]
             public bool AllowTournament { get; set; }
-            [Description("Can summon in the hideout missions"), PropertyOrder(7)]
+            [Category("Allowed Missions"), Description("Can summon in the hideout missions"), PropertyOrder(7)]
             public bool AllowHideOut { get; set; }
-            [Description("Whether the hero is on the player or enemy side"), PropertyOrder(8)]
+            [Category("General"), Description("Whether the hero is on the player or enemy side"), PropertyOrder(1)]
             public bool OnPlayerSide { get; set; }
-            [Description("Gold cost to summon"), PropertyOrder(9)]
+            [Category("General"), Description("Maximum number of summons that can be active at the same time (i.e. max alive adopted heroes that can be in the mission)"), PropertyOrder(2)]
+            public int? MaxSimultaneousSummons { get; set; }
+            [Category("General"), Description("Whether the summoned hero is allowed to die"), PropertyOrder(3)]
+            public bool AllowDeath { get; set; }
+            [Category("General"), Description("Whether the summoned hero will always start with full health"), PropertyOrder(3)]
+            public bool StartWithFullHealth { get; set; }
+            [Category("General"), Description("Gold cost to summon"), PropertyOrder(1)]
             public int GoldCost { get; set; }
-            [Description("Gold won if the heroes side wins"), PropertyOrder(10)]
+            [Category("Effects"), Description("Gold won if the heroes side wins"), PropertyOrder(2)]
             public int WinGold { get; set; }
-            [Description("Gold lost if the heroes side loses"), PropertyOrder(11)]
+            [Category("Effects"), Description("Gold lost if the heroes side loses"), PropertyOrder(3)]
             public int LoseGold { get; set; }
+            [Category("Effects"), Description("Gold the hero gets for every kill"), PropertyOrder(4)]
+            public int GoldPerKill { get; set; }
+            [Category("Effects"), Description("XP the hero gets for every kill. It will be distributed using the Auto behavior of the SkillXP action: randomly between the top skills from each skill group (melee, ranged, movement, support, personal)."), PropertyOrder(5)]
+            public int XPPerKill { get; set; }
+            [Category("Effects"), Description("HP the hero gets for every kill"), PropertyOrder(6)]
+            public int HealPerKill { get; set; }
+            [Category("Effects"), Description("HP the hero gets every second they are alive in the mission"), PropertyOrder(7)]
+            public float HealPerSecond { get; set; }
+            [Category("Effects"), Description("Multiplier applied to (positive) effects for subscribers"), PropertyOrder(8)]
+            public float SubBoost { get; set; } = 1;
         }
 
         protected override Type ConfigType => typeof(Settings);
@@ -693,45 +822,88 @@ namespace BLTAdoptAHero
                     new[] {typeof(LocationCharacter), typeof(MatrixFrame), typeof(bool), typeof(bool)})
                 .CreateDelegate(typeof(SpawnWanderingAgentDelegate));
 
-        private class BLTMissionResultListener : MissionBehaviour
+        private class BLTMissionBehavior : AutoMissionBehavior<BLTMissionBehavior>
         {
-            public override MissionBehaviourType BehaviourType => MissionBehaviourType.Other;
-
-            public delegate void MissionOverDelegate(Hero hero);
-            public delegate void MissionModeChangeDelegate(Hero hero, MissionMode oldMode, MissionMode newMode, bool atStart);
-            public delegate void MissionResetDelegate(Hero hero);
-
-            private struct Listeners
+            public delegate void MissionOverDelegate();
+            public delegate void MissionModeChangeDelegate(MissionMode oldMode, MissionMode newMode, bool atStart);
+            public delegate void MissionResetDelegate();
+            public delegate void GotAKillDelegate(Agent killed, AgentState agentState);
+            public delegate void GotKilledDelegate(Agent killer, AgentState agentState);
+            public delegate void MissionTickDelegate(float dt);
+            
+            public class Listeners
             {
+                public Hero hero;
+                public Agent agent;
                 public MissionOverDelegate onMissionOver;
                 public MissionModeChangeDelegate onModeChange;
                 public MissionResetDelegate onMissionReset;
+                public GotAKillDelegate onGotAKill;
+                public GotKilledDelegate onGotKilled;
+                public MissionTickDelegate onMissionTick;
+                public MissionTickDelegate onSlowTick;
             }
 
-            private readonly Dictionary<Hero, Listeners> listeners = new();
+            private readonly List<Listeners> listeners = new();
 
-            public void AddListeners(Hero hero, MissionOverDelegate onMissionOver = null, MissionModeChangeDelegate onModeChange = null, MissionResetDelegate onMissionReset = null)
+            public void AddListeners(Hero hero, Agent agent,
+                    MissionOverDelegate onMissionOver = null,
+                    MissionModeChangeDelegate onModeChange = null,
+                    MissionResetDelegate onMissionReset = null,
+                    GotAKillDelegate onGotAKill = null,
+                    GotKilledDelegate onGotKilled = null,
+                    MissionTickDelegate onMissionTick = null,
+                    MissionTickDelegate onSlowTick = null
+                )
             {
-                listeners[hero] = new()
+                RemoveListeners(hero);
+                listeners.Add(new Listeners
                 {
+                    hero = hero,
+                    agent = agent,
                     onMissionOver = onMissionOver,
                     onModeChange = onModeChange,
                     onMissionReset = onMissionReset,
-                };
+                    onGotAKill = onGotAKill,
+                    onGotKilled = onGotKilled,
+                    onMissionTick = onMissionTick,
+                    onSlowTick = onSlowTick,
+                });
             }
 
             public void RemoveListeners(Hero hero)
             {
-                listeners.Remove(hero);
+                listeners.RemoveAll(l => l.hero == hero);
+            }
+
+            public override void OnAgentRemoved(Agent killedAgent, Agent killerAgent, AgentState agentState, KillingBlow blow)
+            {
+                ForAgent(killedAgent, l => l.onGotKilled?.Invoke(killerAgent, agentState));
+                ForAgent(killerAgent, l => l.onGotAKill?.Invoke(killedAgent, agentState));
+                base.OnAgentRemoved(killedAgent, killerAgent, agentState, blow);
             }
 
             protected override void OnEndMission()
             {
-                foreach (var (hero, ev) in listeners.Select(kv => (hero: kv.Key, ev: kv.Value)).ToArray())
-                {
-                    ev.onMissionOver?.Invoke(hero);
-                }
+                ForAll(listeners => listeners.onMissionOver?.Invoke());
+                base.OnEndMission();
             }
+
+            private const float SlowTickDuration = 2;
+            private float slowTick = 0;
+            
+            public override void OnMissionTick(float dt)
+            {
+                slowTick += dt;
+                if (slowTick > 2)
+                {
+                    slowTick -= 2;
+                    ForAll(listeners => listeners.onSlowTick?.Invoke(2));
+                }
+                ForAll(listeners => listeners.onMissionTick?.Invoke(dt));
+                base.OnMissionTick(dt);
+            }
+
 
             // public override void OnMissionActivate()
             // {
@@ -750,44 +922,47 @@ namespace BLTAdoptAHero
 
             public override void OnMissionModeChange(MissionMode oldMissionMode, bool atStart)
             {
-                foreach (var (hero, ev) in listeners.Select(kv => (hero: kv.Key, ev: kv.Value)).ToArray())
+                ForAll(l => l.onModeChange?.Invoke(oldMissionMode, Mission.Current.Mode, atStart));
+                base.OnMissionModeChange(oldMissionMode, atStart);
+            }
+
+            private Hero FindHero(Agent agent) => listeners.FirstOrDefault(l => l.agent == agent)?.hero;
+            
+            private void ForAll(Action<Listeners> action)
+            {
+                foreach (var listener in listeners)
                 {
-                    ev.onModeChange?.Invoke(hero, oldMissionMode, Mission.Current.Mode, atStart);
+                    action(listener);
                 }
             }
-            
-            public static BLTMissionResultListener Get()
+
+            private void ForAgent(Agent agent, Action<Listeners> action)
             {
-                var beh = Mission.Current.GetMissionBehaviour<BLTMissionResultListener>();
-                if (beh == null)
+                foreach (var listener in listeners.Where(l => l.agent == agent))
                 {
-                    beh = new BLTMissionResultListener();
-                    Mission.Current.AddMissionBehaviour(beh);
+                    action(listener);
                 }
-                return beh;
             }
         }
 
-        private class RemoveAgentsBehavior : MissionBehaviour
+        private class BLTRemoveAgentsBehavior : AutoMissionBehavior<BLTRemoveAgentsBehavior>
         {
-            private List<Hero> herosAdded = new();
-            
-            public override MissionBehaviourType BehaviourType => MissionBehaviourType.Other;
-
+            private readonly List<Hero> heroesAdded = new();
+ 
             public void Add(Hero hero)
             {
-                herosAdded.Add(hero);
+                heroesAdded.Add(hero);
             }
 
             private void RemoveHeroes()
             {
-                foreach (var hero in herosAdded)
+                foreach (var hero in heroesAdded)
                 {
                     LocationComplex.Current?.RemoveCharacterIfExists(hero);
                     if(CampaignMission.Current?.Location?.ContainsCharacter(hero) ?? false)
                         CampaignMission.Current.Location.RemoveCharacter(hero);
                 }
-                herosAdded.Clear();
+                heroesAdded.Clear();
             }
             
             public override void HandleOnCloseMission()
@@ -813,26 +988,25 @@ namespace BLTAdoptAHero
                 base.OnMissionRestart();
                 RemoveHeroes();
             }
-
-            public static RemoveAgentsBehavior Get()
-            {
-                var beh = Mission.Current.GetMissionBehaviour<RemoveAgentsBehavior>();
-                if (beh == null)
-                {
-                    beh = new RemoveAgentsBehavior();
-                    Mission.Current.AddMissionBehaviour(beh);
-                }
-                return beh;
-            }
         }
 
-        protected override void ExecuteInternal(string userName, string args, object config,
+        protected override void ExecuteInternal(ReplyContext context, object config,
             Action<string> onSuccess,
             Action<string> onFailure)
         {
+            static string KillStateVerb(AgentState state) =>
+                state switch
+                {
+                    AgentState.Routed => "routed",
+                    AgentState.Unconscious => "knocked out",
+                    AgentState.Killed => "killed",
+                    AgentState.Deleted => "deleted",
+                    _ => "fondled"
+                };
+
             var settings = (Settings) config;
 
-            var adoptedHero = AdoptAHero.GetAdoptedHero(userName);
+            var adoptedHero = AdoptAHero.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
                 onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
@@ -890,7 +1064,8 @@ namespace BLTAdoptAHero
                 return;
             }
 
-
+            Agent agent;
+            
             if (CampaignMission.Current.Location != null)
             {
                 var locationCharacter = LocationCharacter.CreateBodyguardHero(adoptedHero,
@@ -902,7 +1077,7 @@ namespace BLTAdoptAHero
                 worldFrame.Origin.SetVec2(worldFrame.Origin.AsVec2 + (worldFrame.Rotation.f * 10f + worldFrame.Rotation.s).AsVec2);
                 
                 CampaignMission.Current.Location.AddCharacter(locationCharacter);
-                var agent = SpawnWanderingAgent(missionAgentHandler, locationCharacter, worldFrame.ToGroundMatrixFrame(), false, true); 
+                agent = SpawnWanderingAgent(missionAgentHandler, locationCharacter, worldFrame.ToGroundMatrixFrame(), false, true); 
 
                 agent.SetTeam(settings.OnPlayerSide 
                     ? missionAgentHandler.Mission.PlayerTeam
@@ -936,15 +1111,13 @@ namespace BLTAdoptAHero
                                     Hero.MainHero.ChangeHeroGold(-settings.WinGold);
                                     // User gets their gold back also
                                     adoptedHero.ChangeHeroGold(settings.WinGold + settings.GoldCost);
-                                    RewardManager.SendChat(
-                                        $@"{userName} Victory! You won {settings.WinGold} gold, you now have {adoptedHero.Gold}!");
+                                    RewardManager.SendReply(context, $@"You won {settings.WinGold} gold!");
                                 }
                                 else if(settings.LoseGold > 0)
                                 {
                                     Hero.MainHero.ChangeHeroGold(settings.LoseGold);
                                     adoptedHero.ChangeHeroGold(-settings.LoseGold);
-                                    RewardManager.SendChat(
-                                        $@"{userName} Defeat! You lost {settings.LoseGold + settings.GoldCost} gold, you now have {adoptedHero.Gold}!");
+                                    RewardManager.SendReply(context, $@"You lost {settings.LoseGold + settings.GoldCost} gold!");
                                 }
                             }
                         },
@@ -964,7 +1137,7 @@ namespace BLTAdoptAHero
                     behaviorGroup.SetScriptedBehavior<FollowAgentBehavior>();
                 }
                 
-                RemoveAgentsBehavior.Get().Add(adoptedHero);
+                BLTRemoveAgentsBehavior.Current.Add(adoptedHero);
                 // missionAgentHandler.SimulateAgent(agent);
             }
             else
@@ -986,27 +1159,9 @@ namespace BLTAdoptAHero
                     onFailure($"Could not find a party for you to join!");
                     return;
                 }
-                
-                BLTMissionResultListener.Get().AddListeners(adoptedHero, onMissionOver: _ =>
-                {
-                    if (Mission.Current.MissionResult != null)
-                    {
-                        if (settings.OnPlayerSide == Mission.Current.MissionResult.PlayerVictory)
-                        {
-                            // User gets their gold back also
-                            adoptedHero.ChangeHeroGold(settings.WinGold + settings.GoldCost);
-                            RewardManager.SendChat($@"{userName} Victory! You won {settings.WinGold} gold, you now have {adoptedHero.Gold}!");
-                        }
-                        else if(settings.LoseGold > 0)
-                        {
-                            adoptedHero.ChangeHeroGold(-settings.LoseGold);
-                            RewardManager.SendChat($@"{userName} Defeat! You lost {settings.LoseGold + settings.GoldCost} gold, you now have {adoptedHero.Gold}!");
-                        }
-                    }
-                });
 
-                Mission.Current.SpawnTroop(
-                    new PartyAgentOrigin(party, adoptedHero.CharacterObject),
+                agent = Mission.Current.SpawnTroop(
+                    new PartyAgentOrigin(party, adoptedHero.CharacterObject, alwaysWounded: !settings.AllowDeath),
                     isPlayerSide: settings.OnPlayerSide,
                     hasFormation: true,
                     spawnWithHorse: adoptedHero.CharacterObject.HasMount() && Mission.Current.Mode != MissionMode.Stealth,
@@ -1016,6 +1171,77 @@ namespace BLTAdoptAHero
                     formationTroopIndex: 8,
                     isAlarmed: true,
                     wieldInitialWeapons: true);
+
+
+                float actualBoost = context.IsSubscriber ? settings.SubBoost : 1;
+                BLTMissionBehavior.Current.AddListeners(adoptedHero, agent, 
+                    onSlowTick: dt =>
+                    {
+                        if (settings.HealPerSecond != 0)
+                        {
+                            agent.Health = Math.Min(agent.HealthLimit, agent.Health + settings.HealPerSecond * dt * actualBoost);
+                        }
+                    },
+                    onMissionOver: () => 
+                    {
+                        if (Mission.Current.MissionResult != null)
+                        {
+                            if (settings.OnPlayerSide == Mission.Current.MissionResult.PlayerVictory)
+                            {
+                                // User gets their gold back also
+                                adoptedHero.ChangeHeroGold((int) (settings.WinGold * actualBoost + settings.GoldCost));
+                                RewardManager.SendReply(context, $@"You won {settings.WinGold} gold!");
+                            }
+                            else if(settings.LoseGold > 0)
+                            {
+                                adoptedHero.ChangeHeroGold(-settings.LoseGold);
+                                RewardManager.SendReply(context, $@"You lost {settings.LoseGold + settings.GoldCost} gold!");
+                            }
+                        }
+                    },
+                    onGotAKill: (killed, state) =>
+                    {
+                        if (settings.GoldPerKill != 0)
+                        {
+                            int gold = (int) (settings.GoldPerKill * actualBoost);
+                            adoptedHero.ChangeHeroGold(gold);
+                            Log.LogFeedBattle($"{adoptedHero.FirstName}: +{gold} gold");
+                        }
+
+                        if (settings.HealPerKill != 0)
+                        {
+                            float prevHealth = agent.Health;
+                            agent.Health = Math.Min(agent.HealthLimit, agent.Health + settings.HealPerKill * actualBoost);
+                            float healthDiff = agent.Health - prevHealth;
+                            if(healthDiff > 0)
+                                Log.LogFeedBattle($"{adoptedHero.FirstName}: +{healthDiff}hp");
+                        }
+
+                        if (settings.XPPerKill != 0)
+                        {
+                            int xp = (int) (settings.XPPerKill * actualBoost);
+                            (bool success, string description) = SkillXP.ImproveSkill(adoptedHero, xp, Skills.All, random: false, auto: true);
+                            if(success)
+                                Log.LogFeedBattle($"{adoptedHero.FirstName}: {description}");
+                        }
+
+                        if (killed != null)
+                        {
+                            Log.LogFeedBattle($"{adoptedHero.FirstName} {KillStateVerb(state)} {killed.Name}");
+                        }
+                    },
+                    onGotKilled: (killer, state) =>
+                    {
+                        Log.LogFeedBattle(killer != null
+                            ? $"{adoptedHero.FirstName} was {KillStateVerb(state)} by {killer.Name}"
+                            : $"{adoptedHero.FirstName} was {KillStateVerb(state)}");
+                    }
+                    );
+            }
+            
+            if (settings.StartWithFullHealth)
+            {
+                agent.Health = agent.HealthLimit;
             }
 
             var messages = settings.OnPlayerSide
@@ -1034,11 +1260,11 @@ namespace BLTAdoptAHero
                     "Time for you to die!",
                     "You killed my father, prepare to die!",
                     "En garde!",
-                    "Its stabbing time!",
+                    "It's stabbing time! For you.",
                     "It's nothing personal!",
                 };
             if (InSiegeMission() && settings.OnPlayerSide) messages.Add($"Don't send me up the siege tower, its confusing!");
-            InformationManager.AddQuickInformation(new TextObject(!string.IsNullOrEmpty(args) ? args : messages.SelectRandom()), 1000,
+            InformationManager.AddQuickInformation(new TextObject(!string.IsNullOrEmpty(context.Args) ? context.Args : messages.SelectRandom()), 1000,
                 adoptedHero.CharacterObject, "event:/ui/mission/horns/attack");
 
             adoptedHero.Gold -= settings.GoldCost;
@@ -1142,12 +1368,12 @@ namespace BLTAdoptAHero
                 .First()
                 .Key;
 
-        protected override void ExecuteInternal(string userName, string args, object config,
+        protected override void ExecuteInternal(ReplyContext context, object config,
             Action<string> onSuccess,
             Action<string> onFailure)
         {
             var settings = (Settings)config;
-            var adoptedHero = AdoptAHero.GetAdoptedHero(userName);
+            var adoptedHero = AdoptAHero.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
                 onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
@@ -1197,10 +1423,11 @@ namespace BLTAdoptAHero
                 return;
             }
             
-            string itemsStr = string.Join(", ", itemsPurchased.Select(i => i.Name.ToString()));
+            //string itemsStr = string.Join(", ", itemsPurchased.Select(i => i.Name.ToString()));
+            // $"You purchased these items: {itemsStr}!"
             
             adoptedHero.Gold -= cost;
-            onSuccess($"You purchased these items: {itemsStr}!");
+            onSuccess($"Equip Tier {targetTier}");
         }
 
         internal static void RemoveAllEquipment(Hero adoptedHero)
@@ -1450,11 +1677,20 @@ namespace BLTAdoptAHero
             if (upgradeHorse)
             {
                 var newHorse = UpgradeItemInSlot(EquipmentIndex.Horse, ItemObject.ItemTypeEnum.Horse, targetTier,
-                    adoptedHero.BattleEquipment, adoptedHero);
+                    adoptedHero.BattleEquipment, adoptedHero, h => h.HorseComponent?.IsMount ?? false );
                 if (newHorse != null) itemsPurchased.Add(newHorse);
-                var newHarness = UpgradeItemInSlot(EquipmentIndex.HorseHarness, ItemObject.ItemTypeEnum.HorseHarness,
-                    targetTier, adoptedHero.BattleEquipment, adoptedHero);
-                if (newHarness != null) itemsPurchased.Add(newHarness);
+                
+                var horse = adoptedHero.BattleEquipment[EquipmentIndex.Horse];
+                if (!horse.IsEmpty)
+                {
+                    // ItemObject.All.Where(i => (i.HorseComponent?.IsMount ?? false) && i.StringId.Contains("camel")).ToArray()
+                    bool isCamel = horse.Item.StringId.Contains("camel");
+                    var newHarness = UpgradeItemInSlot(EquipmentIndex.HorseHarness,
+                        ItemObject.ItemTypeEnum.HorseHarness,
+                        targetTier, adoptedHero.BattleEquipment, adoptedHero,
+                        h => isCamel && h.StringId.Contains("camel") || !isCamel && !h.StringId.Contains("camel"));
+                    if (newHarness != null) itemsPurchased.Add(newHarness);
+                }
             }
 
             if (upgradeCivilian)

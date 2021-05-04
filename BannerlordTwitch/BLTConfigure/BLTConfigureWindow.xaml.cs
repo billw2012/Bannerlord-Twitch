@@ -13,47 +13,67 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Navigation;
+using AdonisUI.Controls;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using Xceed.Wpf.Toolkit.PropertyGrid;
+using MessageBox = System.Windows.MessageBox;
 
 namespace BLTConfigure
 {
+    public class NewViewModel
+    {
+        public string Module => NewType.Assembly.GetName().Name;
+        public string Name => NewType.Name;
+        public string Description => NewType.GetCustomAttribute<DescriptionAttribute>()?.Description;
+
+        public ICommand Command { get; }
+        public Type NewType { get; }
+
+        public NewViewModel(Action<object> cmd, Type newType)
+        {
+            NewType = newType;
+            Command = new RelayCommand(cmd);
+        }
+    }
     public partial class BLTConfigureWindow
     {
-        public class ActionViewModel
-        {
-            public string Module => Action.GetType().Assembly.GetName().Name;
-            public string Name => Action.GetType().Name;
-            public string Description => Action.GetType().GetCustomAttribute<DescriptionAttribute>()?.Description;
 
-            public IAction Action { get; }
-
-            public ActionViewModel(IAction action)
-            {
-                this.Action = action;
-            }
-        }
-        public class CommandHandlerViewModel
-        {
-            public string Module => CommandHandler.GetType().Assembly.GetName().Name;
-            public string Name => CommandHandler.GetType().Name;
-            public string Description => CommandHandler.GetType().GetCustomAttribute<DescriptionAttribute>()?.Description;
-
-            public ICommandHandler CommandHandler { get; }
-
-            public CommandHandlerViewModel(ICommandHandler commandHandler)
-            {
-                this.CommandHandler = commandHandler;
-            }
-        }
         
-        public static IEnumerable<ActionViewModel> ActionsViewModel => RewardManager.Actions.Select(a => new ActionViewModel(a));
+        // public class ActionViewModel
+        // {
+        //     public string Module => Action.GetType().Assembly.GetName().Name;
+        //     public string Name => Action.GetType().Name;
+        //     public string Description => Action.GetType().GetCustomAttribute<DescriptionAttribute>()?.Description;
+        //
+        //     public IAction Action { get; }
+        //
+        //     public ActionViewModel(IAction action)
+        //     {
+        //         this.Action = action;
+        //     }
+        // }
+        // public class CommandHandlerViewModel
+        // {
+        //     public string Module => CommandHandler.GetType().Assembly.GetName().Name;
+        //     public string Name => CommandHandler.GetType().Name;
+        //     public string Description => CommandHandler.GetType().GetCustomAttribute<DescriptionAttribute>()?.Description;
+        //
+        //     public ICommandHandler CommandHandler { get; }
+        //
+        //     public CommandHandlerViewModel(ICommandHandler commandHandler)
+        //     {
+        //         this.CommandHandler = commandHandler;
+        //     }
+        // }
+        
+        public IEnumerable<NewViewModel> ActionsViewModel => RewardManager.Actions.Select(a => new NewViewModel(_ => this.NewReward(a), a.GetType()));
         public static IEnumerable<string> ActionNames => RewardManager.ActionNames;
         public static IEnumerable<IAction> Actions => RewardManager.Actions;
         
-        public static IEnumerable<CommandHandlerViewModel> CommandHandlersViewModel => RewardManager.Handlers.Select(h => new CommandHandlerViewModel(h));
+        public IEnumerable<NewViewModel> CommandHandlersViewModel => RewardManager.Handlers.Select(h => new NewViewModel(_ => this.NewCommand(h), h.GetType()));
         public static IEnumerable<string> CommandHandlerNames => RewardManager.HandlerNames;
         public static IEnumerable<ICommandHandler> CommandHandlers => RewardManager.Handlers;
 
@@ -80,9 +100,9 @@ namespace BLTConfigure
             {
                 EditedSettings = Settings.Load();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                MessageBox.Show($"Either the settings file didn't exist, or it was corrupted.\nLoaded default settings.\nIf you want to keep your broken settings file then go and copy it somewhere now, as it will be overwritten on exit.", "Failed to Load Settings!");
+                MessageBox.Show($"Either the settings file didn't exist, or it was corrupted.\nLoaded default settings.\nIf you want to keep your broken settings file then go and copy it somewhere now, as it will be overwritten on exit.\nError: {e.Message}", "Failed to Load Settings!");
             }
 
             EditedSettings ??= new Settings();
@@ -130,40 +150,41 @@ namespace BLTConfigure
             }
         }
 
-        private void NewReward_OnClick(object sender, RoutedEventArgs e)
+        private void NewReward(IAction action)
         {
-            NewActionDropDownButton.IsOpen = false;
-            var action = (sender as Button)?.DataContext as ActionViewModel;
+            // NewActionDropDownButton.IsOpen = false;
+            // var action = (sender as Button)?.DataContext as ActionViewModel;
             var newReward = new Reward
             {
-                Action = action.Name,
+                Action = action.GetType().Name,
                 RewardSpec = new RewardSpec { Title = "New Reward" },
             };
-            var settingsType = action.Action.ActionConfigType;
+            var settingsType = action.ActionConfigType;
             if (settingsType != null)
             {
                 newReward.ActionConfig = Activator.CreateInstance(settingsType);
             }
             EditedSettings.Rewards.Add(newReward);
             RewardsListBox.Items.Refresh();
+            RewardsListBox.SelectedItem = newReward;
         }
 
-        private void NewCommand_OnClick(object sender, RoutedEventArgs e)
+        private void NewCommand(ICommandHandler handler)
         {
-            NewCommandDropDownButton.IsOpen = false;
-            var commandHandler = (sender as Button)?.DataContext as CommandHandlerViewModel;
+            //NewCommandDropDownButton.IsOpen = false;
             var newCommand = new Command
             {
-                Handler = commandHandler.Name,
+                Handler = handler.GetType().Name,
                 Name = "New Command",
             };
-            var settingsType = commandHandler.CommandHandler.HandlerConfigType;
+            var settingsType = handler.HandlerConfigType;
             if (settingsType != null)
             {
                 newCommand.HandlerConfig = Activator.CreateInstance(settingsType);
             }
             EditedSettings.Commands.Add(newCommand);
             CommandsListBox.Items.Refresh();
+            CommandsListBox.SelectedItem = newCommand;
         }
 
         private void DeleteReward_OnClick(object sender, RoutedEventArgs e)
@@ -184,10 +205,13 @@ namespace BLTConfigure
         {
             RewardsListBox.Items.Refresh();
             CommandsListBox.Items.Refresh();
+            SaveSettings();
         }
 
         private void SaveSettings()
         {
+            if (EditedSettings == null)
+                return;
             try
             {
                 Settings.Save(EditedSettings);
@@ -200,6 +224,8 @@ namespace BLTConfigure
 
         private void SaveAuth()
         {
+            if (EditedAuthSettings == null)
+                return;
             try
             {
                 AuthSettings.Save(EditedAuthSettings);
@@ -240,6 +266,7 @@ namespace BLTConfigure
                     throw new AuthenticationException($"Didn't get token");
                 }
                 UpdateToken(token);
+                SaveAuth();
             }
             catch (Exception ex)
             {
@@ -269,6 +296,7 @@ namespace BLTConfigure
 
         private static readonly string[] BotScopes =
         {
+            "user:read:email",
             "chat:edit",
             "chat:read",
             "whispers:edit",
@@ -287,6 +315,7 @@ namespace BLTConfigure
                     throw new AuthenticationException($"Didn't get token");
                 }
                 UpdateBotToken(token);
+                SaveAuth();
             }
             catch (Exception ex)
             {
@@ -363,6 +392,21 @@ namespace BLTConfigure
                     prop.IsExpandable = false;
                 }
             }
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MaximizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = this.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+        }
+
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
     

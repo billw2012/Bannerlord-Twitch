@@ -37,6 +37,14 @@
             <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\Bannerlord.Harmony\bin\Win64_Shipping_Client\0Harmony.dll</HintPath>
             <Private>False</Private>
         </Reference>
+        <Reference Include="AdonisUI, Version=1.17.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\packages\AdonisUI.1.17.0\lib\net45\AdonisUI.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="AdonisUI.ClassicTheme, Version=1.17.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\packages\AdonisUI.ClassicTheme.1.17.0\lib\net45\AdonisUI.ClassicTheme.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
         <Reference Include="BannerlordTwitch, Version=0.2.1.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\BannerlordTwitch\bin\Win64_Shipping_Client\BannerlordTwitch.dll</HintPath>
             <Private>False</Private>
@@ -153,6 +161,7 @@
           <DependentUpon>BLTConfigureWindow.xaml</DependentUpon>
         </Compile>
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="RelayCommand.cs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config" />
@@ -160,9 +169,7 @@
     </ItemGroup>
     <ItemGroup>
       <Page Include="BLTConfigureWindow.xaml" />
-    </ItemGroup>
-    <ItemGroup>
-      <Content Include="FodyWeavers.xml" />
+      <Page Include="ResourceDictionary.xaml" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Target Name="AfterBuild">

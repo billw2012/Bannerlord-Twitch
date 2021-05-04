@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using BannerlordTwitch.Rewards;
@@ -44,17 +45,29 @@ namespace BannerlordTwitch
             return items;
         }
     }
+
+    [CategoryOrder("General", 0)]
+    [CategoryOrder("Behavior", 2)]
+    public abstract class ResponseBase
+    {
+        [Category("General"), Description("Whether this is enabled or not"), PropertyOrder(-100)]
+        public bool Enabled { get; set; }
+        [Category("Behavior"), Description("Show response in the twitch chat")]
+        public bool RespondInTwitch { get; set; }
+        [Category("Behavior"), Description("Show response in the overlay window feed")]
+        public bool RespondInOverlay { get; set; }
+    }
     
     [Description("Channel points reward definition")]
-    public class Reward
+    public class Reward : ResponseBase
     {
-        [Description("Twitch channel points reward definition"), ExpandableObject, ReadOnly(true), PropertyOrder(1)]
+        [Category("General"), Description("Twitch channel points reward definition"), ExpandableObject, ReadOnly(true), PropertyOrder(1)]
         public RewardSpec RewardSpec { get; set; }
 
-        [Description("Name of the BLT action"), ItemsSource(typeof(ActionItemsSource)), ReadOnly(true), PropertyOrder(2)]
+        [Category("Behavior"), Description("Name of the BLT action"), ItemsSource(typeof(ActionItemsSource)), ReadOnly(true), PropertyOrder(1)]
         public string Action { get; set; }
 
-        [Description("Custom config for the BLT action"), ExpandableObject, ReadOnly(true), PropertyOrder(3)]
+        [Category("Behavior"), Description("Custom config for the BLT action"), ExpandableObject, ReadOnly(true), PropertyOrder(2)]
         public object ActionConfig { get; set; }
 
         public override string ToString() => $"{RewardSpec.Title} ({Action})";
@@ -75,7 +88,7 @@ namespace BannerlordTwitch
         [Description("Is the reward currently enabled, if false the reward won’t show up to viewers."), PropertyOrder(4)]
         public bool IsEnabled { get; set; } = true;
 
-        public string BackgroundColorText;
+        public string BackgroundColorText { get; set; }
         [Description("Custom background color for the reward"), PropertyOrder(5)]
         [YamlIgnore]
         public Color BackgroundColor
@@ -87,12 +100,12 @@ namespace BannerlordTwitch
         [Description("Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown."), PropertyOrder(6)]
         public bool IsUserInputRequired { get; set; }
 
-        [Description("The maximum number per stream, defaults to unlimited"), DefaultValue(null), PropertyOrder(7)]
+        [Category("Limits"), Description("The maximum number per stream, defaults to unlimited"), DefaultValue(null), PropertyOrder(7)]
         public int? MaxPerStream { get; set; }
 
-        [Description("The maximum number per user per stream, defaults to unlimited"), DefaultValue(null), PropertyOrder(8)]
+        [Category("Limits"), Description("The maximum number per user per stream, defaults to unlimited"), DefaultValue(null), PropertyOrder(8)]
         public int? MaxPerUserPerStream { get; set; }
-        [Description("The cooldown in seconds, defaults to unlimited"), DefaultValue(null), PropertyOrder(9)]
+        [Category("Limits"), Description("The cooldown in seconds, defaults to unlimited"), DefaultValue(null), PropertyOrder(9)]
         public int? GlobalCooldownSeconds { get; set; }
 
         private static string WebColor(System.Windows.Media.Color color) => $"#{color.R:X2}{color.G:X2}{color.B:X2}";
@@ -119,23 +132,23 @@ namespace BannerlordTwitch
     }
     
     [Description("Bot command definition")]
-    public class Command
+    public class Command : ResponseBase
     {
-        [Description("The command itself, not including the !"), PropertyOrder(1)]
+        [Category("General"), Description("The command itself, not including the !"), PropertyOrder(1)]
         public string Name { get; set; }
-        [Description("Hides the command from the !help action"), PropertyOrder(2)]
+        [Category("General"), Description("Hides the command from the !help action"), PropertyOrder(2)]
         public bool HideHelp { get; set; }
-        [Description("What to show in the !help command"), PropertyOrder(3)]
+        [Category("General"), Description("What to show in the !help command"), PropertyOrder(3)]
         public string Help { get; set; }
-        [Description("Only allows the broadcaster to use this command, and hides it from !help"), PropertyOrder(4)]
+        [Category("General"), Description("Only allows the broadcaster to use this command, and hides it from !help"), PropertyOrder(4)]
         public bool BroadcasterOnly { get; set; }
-        [Description("Only allows the mods or broadcaster to use this command, and hides it from !help"), PropertyOrder(5)]
+        [Category("General"), Description("Only allows the mods or broadcaster to use this command, and hides it from !help"), PropertyOrder(5)]
         public bool ModOnly { get; set; }
 
-        [Description("The name of the BLT command handler"), ItemsSource(typeof(HandlerItemsSource)), ReadOnly(true), PropertyOrder(6)]
+        [Category("Behavior"), Description("The name of the BLT command handler"), ItemsSource(typeof(HandlerItemsSource)), ReadOnly(true), PropertyOrder(1)]
         public string Handler { get; set; }
 
-        [Description("The custom config for the command handler"), ExpandableObject, ReadOnly(true), PropertyOrder(7)]
+        [Category("Behavior"), Description("The custom config for the command handler"), ExpandableObject, ReadOnly(true), PropertyOrder(2)]
         public object HandlerConfig { get; set; }
         
         public override string ToString() => $"{Name} ({Handler})";
@@ -154,7 +167,6 @@ namespace BannerlordTwitch
         public string Type { get; set; }
         public string Id { get; set; }
         public string Args { get; set; }
-        public CommandMessage command { get; set; }
     }
     
     [UsedImplicitly]
@@ -234,7 +246,11 @@ namespace BannerlordTwitch
     {
         public bool DeleteRewardsOnExit { get; set; }
         public List<Reward> Rewards { get; set; } = new ();
+        [YamlIgnore]
+        public IEnumerable<Reward> EnabledRewards => Rewards.Where(r => r.Enabled);
         public List<Command> Commands { get; set; } = new ();
+        [YamlIgnore]
+        public IEnumerable<Command> EnabledCommands => Commands.Where(r => r.Enabled);
         public List<GlobalConfig> GlobalConfigs { get; set; } = new ();
         public SimTestingConfig SimTesting { get; set; }
 

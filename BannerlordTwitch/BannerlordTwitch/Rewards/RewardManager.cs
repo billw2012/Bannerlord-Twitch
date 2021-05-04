@@ -7,6 +7,7 @@ using System.Reflection;
 using BannerlordTwitch.Util;
 using TaleWorlds.Library;
 using YamlDotNet.Serialization;
+using Color = System.Windows.Media.Color;
 
 namespace BannerlordTwitch.Rewards
 {
@@ -115,7 +116,7 @@ namespace BannerlordTwitch.Rewards
                 new SerializerBuilder().Build().Serialize(obj),
                 type);
 
-        internal static void Command(string id, string args, CommandMessage commandMessage, object config)
+        internal static void Command(string id, ReplyContext context, object config)
         {
             if (commands.TryGetValue(id, out var cmdHandler))
             {
@@ -126,21 +127,21 @@ namespace BannerlordTwitch.Rewards
                         config = ConvertObject(config, cmdHandler.HandlerConfigType);
                     }
 
-                    cmdHandler.Execute(args, commandMessage, config);
+                    cmdHandler.Execute(context, config);
                 }
                 catch (Exception e)
                 {
-                    Log.ScreenCritical($"Command {id} failed with exception {e.Message}, game might be unstable now!");
+                    Log.LogFeedCritical($"Command {id} failed with exception {e.Message}, game might be unstable now!");
                     Log.Error(e.ToString());
                 }
             }
             else
             {
-                Log.ScreenFail($"Command with id {id} couldn't be found, check Commands config");
+                // Log.ScreenFail($"Command with id {id} couldn't be found, check Commands config");
             }
         }
 
-        internal static bool Enqueue(string actionId, Guid redemptionId, string message, string userName, object config)
+        internal static bool Enqueue(string actionId, ReplyContext context, object config)
         {
             if (!actions.TryGetValue(actionId, out var action))
             {
@@ -157,13 +158,13 @@ namespace BannerlordTwitch.Rewards
                     config = ConvertObject(config, action.ActionConfigType);
                 }
                 
-                action.Enqueue(redemptionId, message, userName, config);
+                action.Enqueue(context, config);
             }
             catch (Exception e)
             {
-                Log.ScreenCritical($"Action {actionId} failed with exception {e.Message}, game might be unstable now!");
+                Log.LogFeedCritical($"Action {actionId} failed with exception {e.Message}, game might be unstable now!");
                 Log.Error(e.ToString());
-                NotifyCancelled(redemptionId, $"Error occurred while trying to process the redemption");
+                NotifyCancelled(context, $"Error occurred while trying to process the redemption");
             }
 
             if (st.ElapsedMilliseconds > 5)
@@ -174,24 +175,24 @@ namespace BannerlordTwitch.Rewards
             return true;
         }
 
-        public static void NotifyComplete(Guid id, string status = null)
+        public static void NotifyComplete(ReplyContext context, string status = null)
         {
-            BLTModule.TwitchService.RedemptionComplete(id, status);
+            BLTModule.TwitchService.RedemptionComplete(context, status);
         }
         
-        public static void NotifyCancelled(Guid id, string reason = null)
+        public static void NotifyCancelled(ReplyContext context, string reason = null)
         {
-            BLTModule.TwitchService.RedemptionCancelled(id, reason);
+            BLTModule.TwitchService.RedemptionCancelled(context, reason);
         }
 
-        public static void SendChat(params string[] messages)
-        {
-            BLTModule.TwitchService.SendChat(messages);
-        }
+        // public static void SendChat(params string[] messages)
+        // {
+        //     BLTModule.TwitchService.SendChat(messages);
+        // }
         
-        public static void SendReply(string replyId, params string[] messages)
+        public static void SendReply(ReplyContext context, params string[] messages)
         {
-            BLTModule.TwitchService.SendReply(replyId, messages);
+            BLTModule.TwitchService.SendReply(context, messages);
         }
     }
 }
