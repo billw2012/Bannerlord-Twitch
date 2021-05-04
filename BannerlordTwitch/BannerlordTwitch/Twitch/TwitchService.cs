@@ -35,9 +35,9 @@ namespace BannerlordTwitch
         public bool IsVip { get; private set; }
         //public bool IsWhisper { get; private set; }
         public Guid RedemptionId { get; private set; }
-        public ResponseBase Source { get; private set; }
+        public ActionBase Source { get; private set; }
 
-        public static ReplyContext FromMessage(ResponseBase source, ChatMessage msg, string args) =>
+        public static ReplyContext FromMessage(ActionBase source, ChatMessage msg, string args) =>
             new()
             {
                 UserName = msg.DisplayName,
@@ -65,7 +65,7 @@ namespace BannerlordTwitch
         //         Source = source,
         //     };
         
-        public static ReplyContext FromRedemption(ResponseBase source, OnRewardRedeemedArgs args) =>
+        public static ReplyContext FromRedemption(ActionBase source, OnRewardRedeemedArgs args) =>
             new()
             {
                 UserName = args.DisplayName,
@@ -74,7 +74,7 @@ namespace BannerlordTwitch
                 Source = source,
             };
         
-        public static ReplyContext FromUser(ResponseBase source, string userName) =>
+        public static ReplyContext FromUser(ActionBase source, string userName) =>
             new()
             {
                 UserName = userName,
@@ -320,11 +320,11 @@ namespace BannerlordTwitch
                 try
                 {
                     redemptionCache.TryAdd(redeemedArgs.RedemptionId, redeemedArgs);
-                    if (!RewardManager.Enqueue(reward.Action, context, reward.ActionConfig))
+                    if (!ActionManager.HandleReward(reward.Handler, context, reward.HandlerConfig))
                     {
-                        Log.Error($"Couldn't enqueue redemption {redeemedArgs.RedemptionId}: RedemptionAction {reward.Action} not found, check you have its Reward extension installed!");
+                        Log.Error($"Couldn't enqueue redemption {redeemedArgs.RedemptionId}: RedemptionAction {reward.Handler} not found, check you have its Reward extension installed!");
                         // We DO cancel redemptions we know about, where the implementation is missing
-                        RedemptionCancelled(context, $"Redemption action {reward.Action} wasn't found");
+                        RedemptionCancelled(context, $"Redemption action {reward.Handler} wasn't found");
                     }
                     else
                     {
@@ -359,7 +359,7 @@ namespace BannerlordTwitch
             };
             redemptionCache.TryAdd(redeem.RedemptionId, redeem);
 
-            RewardManager.Enqueue(reward.Action, ReplyContext.FromRedemption(reward, redeem), reward.ActionConfig);
+            ActionManager.HandleReward(reward.Handler, ReplyContext.FromRedemption(reward, redeem), reward.HandlerConfig);
         }
 
         // private void ShowMessage(string screenMsg, string botMsg, string userToAt)
@@ -426,7 +426,7 @@ namespace BannerlordTwitch
                 return;
             }
             Log.Info($"Redemption of {redemption.RewardTitle} for {redemption.DisplayName} complete{(!string.IsNullOrEmpty(info) ? $": {info}" : "")}");
-            RewardManager.SendReply(context, info);
+            ActionManager.SendReply(context, info);
             if (!string.IsNullOrEmpty(redemption.ChannelId))
             {
                 SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.FULFILLED);
@@ -445,7 +445,7 @@ namespace BannerlordTwitch
                 return;
             }
             Log.Info($"Redemption of {redemption.RewardTitle} for {redemption.DisplayName} cancelled{(!string.IsNullOrEmpty(reason) ? $": {reason}" : "")}");
-            RewardManager.SendReply(context, reason);
+            ActionManager.SendReply(context, reason);
             if (!string.IsNullOrEmpty(redemption.ChannelId))
             {
                 SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.CANCELED);

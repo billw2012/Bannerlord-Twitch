@@ -86,8 +86,8 @@ Rewards:
     ParticleEffects:
     - Name: psys_bug_fly_1
       AttachPoint: OnBody
-    HealPerSecond: 3
-    Duration: 15
+    HealPerSecond: 1
+    Duration: 30
   Enabled: true
   RespondInOverlay: true
 - RewardSpec:
@@ -98,7 +98,7 @@ Rewards:
   ActionConfig:
     Name: Giant
     Target: AdoptedHero
-    Scale: 2
+    Scale: 1.5
     ParticleEffects: []
     Properties:
     - Name: ArmorHead
@@ -109,6 +109,12 @@ Rewards:
       Add: 50
     - Name: ArmorArms
       Add: 50
+    - Name: SwingSpeedMultiplier
+      Multiply: 0.5
+    - Name: MaxSpeedMultiplier
+      Multiply: 0.75
+    RemoveArmor: true
+    DamageMultiplier: 2
     ActivateParticleEffect: psys_burning_projectile_default_coll
     DeactivateParticleEffect: psys_burning_projectile_default_coll
   Enabled: true
@@ -121,7 +127,7 @@ Rewards:
   ActionConfig:
     Name: Baby
     Target: AdoptedHero
-    Scale: 0.5
+    Scale: 0.75
     ParticleEffects: []
     Properties:
     - Name: ArmorHead
@@ -133,8 +139,10 @@ Rewards:
     - Name: ArmorArms
       Multiply: 0.5
     - Name: MaxSpeedMultiplier
-      Multiply: 2
+      Multiply: 1.5
     RemoveArmor: true
+    ActivateParticleEffect: psys_burning_projectile_default_coll_small
+    DeactivateParticleEffect: psys_burning_projectile_default_coll_small
   Enabled: true
   RespondInOverlay: true
 - RewardSpec:

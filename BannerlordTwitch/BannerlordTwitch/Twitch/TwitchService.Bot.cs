@@ -272,7 +272,7 @@ namespace BannerlordTwitch
                             && (!cmd.BroadcasterOnly || context.IsBroadcaster)
                             )
                         {
-                            RewardManager.Command(cmd.Handler, context, cmd.HandlerConfig);
+                            ActionManager.HandleCommand(cmd.Handler, context, cmd.HandlerConfig);
                         }
                     }
                 });

@@ -11,29 +11,29 @@ using Color = System.Windows.Media.Color;
 
 namespace BannerlordTwitch.Rewards
 {
-    public static partial class RewardManager
+    public static partial class ActionManager
     {
-        private static readonly Dictionary<string, IAction> actions = new();
+        private static readonly Dictionary<string, IRewardHandler> actions = new();
         private static readonly Dictionary<string, ICommandHandler> commands = new();
 
         public static IEnumerable<string> ActionNames => actions.Keys;
-        public static IEnumerable<IAction> Actions => actions.Values;
+        public static IEnumerable<IRewardHandler> Actions => actions.Values;
         public static IEnumerable<string> HandlerNames => commands.Keys;
         public static IEnumerable<ICommandHandler> Handlers => commands.Values;
 
         public static void Init()
         {
-            RegisterAll(typeof(RewardManager).Assembly);
+            RegisterAll(typeof(ActionManager).Assembly);
         }
 
         public static void RegisterAll(Assembly assembly)
         {
             var redemptionActionTypes = assembly
                 .GetTypes()
-                .Where(t => typeof(IAction).IsAssignableFrom(t) && !t.IsAbstract);
+                .Where(t => typeof(IRewardHandler).IsAssignableFrom(t) && !t.IsAbstract);
             foreach (var redemptionActionType in redemptionActionTypes)
             {
-                RegisterAction((IAction) Activator.CreateInstance(redemptionActionType));
+                RegisterAction((IRewardHandler) Activator.CreateInstance(redemptionActionType));
             }
 
             var botCommands = assembly
@@ -45,7 +45,7 @@ namespace BannerlordTwitch.Rewards
             }
         }
 
-        public static bool RegisterAction(IAction action)
+        public static bool RegisterAction(IRewardHandler action)
         {
             var id = action.GetType().Name;
             if (actions.ContainsKey(id))
@@ -81,12 +81,12 @@ namespace BannerlordTwitch.Rewards
                 {
                     try
                     {
-                        rewardDef.ActionConfig = ConvertObject(rewardDef.ActionConfig, action.ActionConfigType);
+                        rewardDef.ActionConfig = ConvertObject(rewardDef.ActionConfig, action.RewardConfigType);
                     }
                     catch (Exception)
                     {
                         Log.Error($"{rewardDef} had invalid config, resetting it to default");
-                        rewardDef.ActionConfig = Activator.CreateInstance(action.ActionConfigType);
+                        rewardDef.ActionConfig = Activator.CreateInstance(action.RewardConfigType);
                     }
                 }
             }
@@ -96,7 +96,7 @@ namespace BannerlordTwitch.Rewards
         {
             foreach (var commandDef in commands.Where(c => c.HandlerConfig != null))
             {
-                if (RewardManager.commands.TryGetValue(commandDef.Handler, out var command))
+                if (ActionManager.commands.TryGetValue(commandDef.Handler, out var command))
                 {
                     try
                     {
@@ -153,9 +153,9 @@ namespace BannerlordTwitch.Rewards
             st.Start();
             try
             {
-                if (action.ActionConfigType != null)
+                if (action.RewardConfigType != null)
                 {
-                    config = ConvertObject(config, action.ActionConfigType);
+                    config = ConvertObject(config, action.RewardConfigType);
                 }
                 
                 action.Enqueue(context, config);

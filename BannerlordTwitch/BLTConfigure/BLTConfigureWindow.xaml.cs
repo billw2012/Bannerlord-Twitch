@@ -23,7 +23,7 @@ using MessageBox = System.Windows.MessageBox;
 
 namespace BLTConfigure
 {
-    public class NewViewModel
+    public class NewActionViewModel
     {
         public string Module => NewType.Assembly.GetName().Name;
         public string Name => NewType.Name;
@@ -32,7 +32,7 @@ namespace BLTConfigure
         public ICommand Command { get; }
         public Type NewType { get; }
 
-        public NewViewModel(Action<object> cmd, Type newType)
+        public NewActionViewModel(Action<object> cmd, Type newType)
         {
             NewType = newType;
             Command = new RelayCommand(cmd);
@@ -69,13 +69,13 @@ namespace BLTConfigure
         //     }
         // }
         
-        public IEnumerable<NewViewModel> ActionsViewModel => RewardManager.Actions.Select(a => new NewViewModel(_ => this.NewReward(a), a.GetType()));
-        public static IEnumerable<string> ActionNames => RewardManager.ActionNames;
-        public static IEnumerable<IAction> Actions => RewardManager.Actions;
+        public IEnumerable<NewActionViewModel> RewardHandlersViewModel => ActionManager.RewardHandlers.Select(a => new NewActionViewModel(_ => this.NewReward(a), a.GetType()));
+        public static IEnumerable<string> RewardHandlerNames => ActionManager.RewardHandlerNames;
+        public static IEnumerable<IRewardHandler> RewardHandlers => ActionManager.RewardHandlers;
         
-        public IEnumerable<NewViewModel> CommandHandlersViewModel => RewardManager.Handlers.Select(h => new NewViewModel(_ => this.NewCommand(h), h.GetType()));
-        public static IEnumerable<string> CommandHandlerNames => RewardManager.HandlerNames;
-        public static IEnumerable<ICommandHandler> CommandHandlers => RewardManager.Handlers;
+        public IEnumerable<NewActionViewModel> CommandHandlersViewModel => ActionManager.CommandHandlers.Select(h => new NewActionViewModel(_ => this.NewCommand(h), h.GetType()));
+        public static IEnumerable<string> CommandHandlerNames => ActionManager.CommandHandlerNames;
+        public static IEnumerable<ICommandHandler> CommandHandlers => ActionManager.CommandHandlers;
 
         public Settings EditedSettings  { get; set; }
         public AuthSettings EditedAuthSettings  { get; set; }
@@ -107,8 +107,8 @@ namespace BLTConfigure
 
             EditedSettings ??= new Settings();
 
-            RewardManager.ConvertSettings(EditedSettings.Commands);
-            RewardManager.ConvertSettings(EditedSettings.Rewards);
+            ActionManager.ConvertSettings(EditedSettings.Commands);
+            ActionManager.ConvertSettings(EditedSettings.Rewards);
             CommandsListBox.ItemsSource = EditedSettings.Commands;
             RewardsListBox.ItemsSource = EditedSettings.Rewards;
             PropertyGrid.SelectedObject = null;
@@ -150,19 +150,19 @@ namespace BLTConfigure
             }
         }
 
-        private void NewReward(IAction action)
+        private void NewReward(IRewardHandler action)
         {
             // NewActionDropDownButton.IsOpen = false;
             // var action = (sender as Button)?.DataContext as ActionViewModel;
             var newReward = new Reward
             {
-                Action = action.GetType().Name,
+                Handler = action.GetType().Name,
                 RewardSpec = new RewardSpec { Title = "New Reward" },
             };
-            var settingsType = action.ActionConfigType;
+            var settingsType = action.RewardConfigType;
             if (settingsType != null)
             {
-                newReward.ActionConfig = Activator.CreateInstance(settingsType);
+                newReward.HandlerConfig = Activator.CreateInstance(settingsType);
             }
             EditedSettings.Rewards.Add(newReward);
             RewardsListBox.Items.Refresh();

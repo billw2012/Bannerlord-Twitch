@@ -2,7 +2,7 @@
 
 namespace BannerlordTwitch.Rewards
 {
-    public interface IAction
+    public interface IRewardHandler
     {
         void Enqueue(ReplyContext context, object config);
         Type ActionConfigType { get; }

@@ -53,18 +53,18 @@
                 "Cost"
               ]
             },
-            "Action": {
+            "Handler": {
               "type": "string",
-              "description": "Name of the BLT action"
+              "description": "Name of the handler"
             },
-            "ActionConfig": {
+            "HandlerConfig": {
               "type": "object",
-              "description": "Custom config for the BLT action"
+              "description": "Custom config for the handler"
             }
           },
           "required": [
             "RewardSpec",
-            "Action"
+            "Handler"
           ]
         }
       ]

@@ -347,7 +347,7 @@ namespace BannerlordTwitch.Testing
                 var cmd = settings.EnabledCommands.FirstOrDefault(c => c.Name == item.Id);
                 if (cmd != null)
                 {
-                    RewardManager.Command(cmd.Handler, ReplyContext.FromUser(cmd, user.name), cmd.HandlerConfig);
+                    ActionManager.HandleCommand(cmd.Handler, ReplyContext.FromUser(cmd, user.name), cmd.HandlerConfig);
                 }
             }
         }

@@ -13,7 +13,6 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TwitchLib.Api.Helix.Models.ChannelPoints.CreateCustomReward;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
-using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 using YamlDotNet.Serialization;
 using Color = System.Windows.Media.Color;
 using Colors = System.Windows.Media.Colors;
@@ -24,23 +23,23 @@ using Path = System.IO.Path;
 
 namespace BannerlordTwitch
 {
-    public class ActionItemsSource : IItemsSource
+    public class RewardHandlerItemsSource : IItemsSource
     {
         public ItemCollection GetValues()
         {
             var items = new ItemCollection();
-            foreach (string action in RewardManager.ActionNames)
+            foreach (string action in ActionManager.RewardHandlerNames)
                 items.Add(action);
             return items;
         }
     }
     
-    public class HandlerItemsSource : IItemsSource
+    public class CommandHandlerItemsSource : IItemsSource
     {
         public ItemCollection GetValues()
         {
             var items = new ItemCollection();
-            foreach (string cmd in RewardManager.HandlerNames)
+            foreach (string cmd in ActionManager.CommandHandlerNames)
                 items.Add(cmd);
             return items;
         }
@@ -48,7 +47,7 @@ namespace BannerlordTwitch
 
     [CategoryOrder("General", 0)]
     [CategoryOrder("Behavior", 2)]
-    public abstract class ResponseBase
+    public abstract class ActionBase
     {
         [Category("General"), Description("Whether this is enabled or not"), PropertyOrder(-100)]
         public bool Enabled { get; set; }
@@ -56,21 +55,24 @@ namespace BannerlordTwitch
         public bool RespondInTwitch { get; set; }
         [Category("Behavior"), Description("Show response in the overlay window feed")]
         public bool RespondInOverlay { get; set; }
+        
+        [Category("Behavior"), Description("Name of the handler"), ReadOnly(true), PropertyOrder(1)]
+        public abstract string Handler { get; set; }
+
+        [Category("Behavior"), Description("Custom config for the handler"), ExpandableObject, ReadOnly(true), PropertyOrder(2)]
+        public object HandlerConfig { get; set; }
     }
     
     [Description("Channel points reward definition")]
-    public class Reward : ResponseBase
+    public class Reward : ActionBase
     {
         [Category("General"), Description("Twitch channel points reward definition"), ExpandableObject, ReadOnly(true), PropertyOrder(1)]
         public RewardSpec RewardSpec { get; set; }
 
-        [Category("Behavior"), Description("Name of the BLT action"), ItemsSource(typeof(ActionItemsSource)), ReadOnly(true), PropertyOrder(1)]
-        public string Action { get; set; }
-
-        [Category("Behavior"), Description("Custom config for the BLT action"), ExpandableObject, ReadOnly(true), PropertyOrder(2)]
-        public object ActionConfig { get; set; }
-
-        public override string ToString() => $"{RewardSpec.Title} ({Action})";
+        public override string ToString() => $"{RewardSpec.Title} ({Handler})";
+        
+        [ItemsSource(typeof(RewardHandlerItemsSource))]
+        public override string Handler { get; set; }
     }
     
     // Docs here https://dev.twitch.tv/docs/api/reference#create-custom-rewards
@@ -132,7 +134,7 @@ namespace BannerlordTwitch
     }
     
     [Description("Bot command definition")]
-    public class Command : ResponseBase
+    public class Command : ActionBase
     {
         [Category("General"), Description("The command itself, not including the !"), PropertyOrder(1)]
         public string Name { get; set; }
@@ -144,12 +146,9 @@ namespace BannerlordTwitch
         public bool BroadcasterOnly { get; set; }
         [Category("General"), Description("Only allows the mods or broadcaster to use this command, and hides it from !help"), PropertyOrder(5)]
         public bool ModOnly { get; set; }
-
-        [Category("Behavior"), Description("The name of the BLT command handler"), ItemsSource(typeof(HandlerItemsSource)), ReadOnly(true), PropertyOrder(1)]
-        public string Handler { get; set; }
-
-        [Category("Behavior"), Description("The custom config for the command handler"), ExpandableObject, ReadOnly(true), PropertyOrder(2)]
-        public object HandlerConfig { get; set; }
+        
+        [ItemsSource(typeof(CommandHandlerItemsSource))]
+        public override string Handler { get; set; }
         
         public override string ToString() => $"{Name} ({Handler})";
     }
@@ -291,9 +290,9 @@ namespace BannerlordTwitch
                 {
                     throw new FormatException($"A reward is missing a RewardSpec");
                 }
-                if (reward.Action == null)
+                if (reward.Handler == null)
                 {
-                    throw new FormatException($"A reward is missing an ActionId");
+                    throw new FormatException($"A reward is missing an Handler");
                 }
             }
             

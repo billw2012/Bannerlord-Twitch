@@ -71,7 +71,7 @@
                                     <Setter Property="DropDownContentBackground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
                                     
                                 </Style>
-                                <DataTemplate x:Key="NewItemHDT" DataType="{x:Type local:NewViewModel}">
+                                <DataTemplate x:Key="NewItemHDT" DataType="{x:Type local:NewActionViewModel}">
                                     <Button Command="{Binding Command}" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Padding="4" Margin="4">
                                         <Grid HorizontalAlignment="Stretch">
                                             <Grid.RowDefinitions>
@@ -103,7 +103,7 @@
                             <DockPanel Grid.Row="2">
                                 <xctk:DropDownButton Content="Add" HorizontalAlignment="Left" DockPanel.Dock="Left">
                                     <xctk:DropDownButton.DropDownContent>
-                                        <ItemsControl ItemsSource="{Binding ActionsViewModel}"
+                                        <ItemsControl ItemsSource="{Binding RewardHandlers}"
                                                      MaxWidth="300"
                                                      ItemTemplate="{StaticResource NewItemHDT}"
                                                      Background="Transparent"
@@ -122,7 +122,7 @@
                             <DockPanel Grid.Row="6">
                                 <xctk:DropDownButton Content="Add" HorizontalAlignment="Left" DockPanel.Dock="Left">
                                     <xctk:DropDownButton.DropDownContent>
-                                        <ItemsControl ItemsSource="{Binding CommandHandlersViewModel}"
+                                        <ItemsControl ItemsSource="{Binding CommandHandlers}"
                                                       MaxWidth="300"
                                                       ItemTemplate="{StaticResource NewItemHDT}"
                                                       Background="Transparent"/>

@@ -10,7 +10,7 @@ using YamlDotNet.Serialization;
 
 namespace BannerlordTwitch.Rewards
 {
-    public static partial class RewardManager
+    public static partial class ActionManager
     {
         internal static void GenerateDocumentation()
         {
@@ -53,7 +53,7 @@ namespace BannerlordTwitch.Rewards
             foreach (var action in actions.Values)
             {
                 docs.Add($"<h2>{MakeAnchor(action.GetType().Name, "Action")} Action Settings</h2>");
-                DocumentActionOrCommand(docs, action.GetType(), action.ActionConfigType, documentedTypes);
+                DocumentActionOrCommand(docs, action.GetType(), action.RewardConfigType, documentedTypes);
             }
 
             foreach (var command in commands.Values)
@@ -147,7 +147,7 @@ namespace BannerlordTwitch.Rewards
             var documentedFieldTypes = settingsDefaults.GetType()
                 .GetFields()
                 .Select(fi => fi.FieldType.IsArray ? fi.FieldType.GetElementType() : fi.FieldType)
-                .Where(fi => fi?.GetCustomAttributes(typeof(DescriptionAttribute)).Any() ?? false);
+                .Where(fi => fi?.GetCustomAttributes(typeof(DescriptionAttribute)).Any() == true);
 
             HtmlTable(docs, new[]
                 {

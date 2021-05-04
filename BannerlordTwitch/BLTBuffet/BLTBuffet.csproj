@@ -118,10 +118,18 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="BLTBoneAttachmentsUpdateBehaviour.cs" />
+        <Compile Include="CharacterEffect.BLTEffectsBehaviour.cs" />
+        <Compile Include="CharacterEffect.Config.cs" />
+        <Compile Include="CharacterEffect.cs" />
+        <Compile Include="Extensions.cs" />
         <Compile Include="ParticleEffectItemSource.cs" />
         <Compile Include="BLTBuffet.cs" />
+        <Compile Include="Patches.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="SoundEffectItemSource.cs" />
+        <Compile Include="TestPfx.cs" />
+        <Compile Include="TestSfx.cs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config" />

@@ -2,12 +2,12 @@
 
 namespace BannerlordTwitch.Rewards
 {
-    public abstract class ActionAndHandlerBase : IAction, ICommandHandler
+    public abstract class ActionHandlerBase : IRewardHandler, ICommandHandler
     {
         protected virtual Type ConfigType => null;
 
-        Type IAction.ActionConfigType => ConfigType;
-        void IAction.Enqueue(ReplyContext context, object config)
+        Type IRewardHandler.RewardConfigType => ConfigType;
+        void IRewardHandler.Enqueue(ReplyContext context, object config)
         {
             ExecuteInternal(context, config, 
                 s => RewardManager.NotifyComplete(context, s), 

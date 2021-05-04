@@ -63,7 +63,7 @@ namespace BannerlordTwitch
 			{
 				wnd.Close();
 			});
-			RewardManager.GenerateDocumentation();
+			ActionManager.GenerateDocumentation();
 			TwitchService?.Exit();
 			base.OnSubModuleUnloaded();
 		}
@@ -81,7 +81,7 @@ namespace BannerlordTwitch
 					TwitchService = new TwitchService();
 					Log.LogFeedSystem("API initialized");
 
-					RewardManager.Init();
+					ActionManager.Init();
 					Log.LogFeedSystem("Reward Manager initialized");
 				}
 				catch (Exception ex)

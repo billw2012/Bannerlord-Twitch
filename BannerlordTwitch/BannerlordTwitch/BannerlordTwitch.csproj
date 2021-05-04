@@ -233,11 +233,11 @@
     <Compile Include="Overlay\OverlayWindow.xaml.cs">
       <DependentUpon>OverlayWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Rewards\IHandler.cs" />
-    <Compile Include="Rewards\IAction.cs" />
-    <Compile Include="Rewards\RewardAndBotBase.cs" />
-    <Compile Include="Rewards\RewardManager.cs" />
-    <Compile Include="Rewards\RewardManager.Documentation.cs" />
+    <Compile Include="Rewards\ICommandHandler.cs" />
+    <Compile Include="Rewards\IRewardHandler.cs" />
+    <Compile Include="Rewards\ActionHandlerBase.cs" />
+    <Compile Include="Rewards\ActionManager.cs" />
+    <Compile Include="Rewards\ActionManager.Documentation.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="BLTModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
