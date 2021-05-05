@@ -312,7 +312,7 @@ namespace BannerlordTwitch.Testing
                     while (users.Count < simSettings.UserCount)
                     {
                         string name = randomNames[userId % randomNames.Length];
-                        if (MBRandom.Random.NextDouble() < 0.5f) name = name.ToLower();
+                        if (rnd.NextDouble() < 0.5f) name = name.ToLower();
                         
                         var newUser = new User {name = $"{name}{++userId}", leaveTime = DateTime.Now + TimeSpan.FromSeconds(rnd.Next((int) (simSettings.UserStayTime * 0.75f), (int) (simSettings.UserStayTime * 1.25f)))};
                         users.Add(newUser);

@@ -18,7 +18,7 @@
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
         <Optimize>false</Optimize>
-        <OutputPath>build\bin\Win64_Shipping_Client\</OutputPath>
+        <OutputPath>build\$(Configuration)\bin\Win64_Shipping_Client\</OutputPath>
         <DefineConstants>DEBUG;TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
@@ -27,7 +27,7 @@
         <PlatformTarget>x64</PlatformTarget>
         <DebugType>full</DebugType>
         <Optimize>true</Optimize>
-        <OutputPath>build\bin\Win64_Shipping_Client\</OutputPath>
+        <OutputPath>build\$(Configuration)\bin\Win64_Shipping_Client\</OutputPath>
         <DefineConstants>TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
@@ -38,8 +38,8 @@
             <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\Bannerlord.Harmony\bin\Win64_Shipping_Client\0Harmony.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="BannerlordTwitch, Version=0.2.1.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\BannerlordTwitch\build\bin\Win64_Shipping_Client\BannerlordTwitch.dll</HintPath>
+        <Reference Include="BannerlordTwitch, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\BannerlordTwitch\build\$(Configuration)\bin\Win64_Shipping_Client\BannerlordTwitch.dll</HintPath>
           <Private>False</Private>
         </Reference>
         <Reference Include="System" />

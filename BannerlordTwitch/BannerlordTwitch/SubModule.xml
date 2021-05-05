@@ -2,7 +2,7 @@
 <Module>
 	<Name value = "BannerlordTwitch"/>
 	<Id value = "BannerlordTwitch"/>
-	<Version value = "v0.2.1"/>
+	<Version value = "v1.0.0"/>
 	<DefaultModule value="true"/>
 	<SingleplayerModule value="true"/>
 	<Official value="false" />

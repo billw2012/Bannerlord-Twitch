@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -24,17 +25,19 @@ namespace BannerlordTwitch.Overlay
             public FeedItem(string text, Color color)
             {
                 Text = text;
-                Color = new SolidColorBrush(color);
+                this.Color = new SolidColorBrush(color);
             }
+
             public string Text { get; }
-            public Brush Color { get; }
+            public Brush Color { get; set; }
         }
 
         public void AddToFeed(string text, Color color)
         {
             void AddToFeedInternal()
             {
-                FeedItems.Add(new FeedItem(text, color));
+                var item = new FeedItem(text, color);
+                FeedItems.Add(item);
                 while (FeedItems.Count > 50)
                 {
                     FeedItems.RemoveAt(0);

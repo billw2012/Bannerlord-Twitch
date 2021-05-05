@@ -187,7 +187,7 @@ namespace BannerlordTwitch
         public string ClientID { get; set; }
         public string BotAccessToken { get; set; }
         public string BotMessagePrefix { get; set; }
-        public object Test { get; set; }
+        public bool DebugSpoofAffiliate { get; set; }
         
         private static PlatformFilePath AuthFilePath => new (EngineFilePaths.ConfigsPath, "Bannerlord-Twitch-Auth.yaml");
 
@@ -202,7 +202,7 @@ namespace BannerlordTwitch
                         true, false, "Okay", null,
                         () => { 
                         }, () => {}), true);
-                return new AuthSettings();
+                return null;
             }
             return new DeserializerBuilder().Build().Deserialize<AuthSettings>(Common.PlatformFileHelper.GetFileContentString(AuthFilePath));
         }
@@ -237,7 +237,6 @@ namespace BannerlordTwitch
     
     public class Settings
     {
-        public bool DeleteRewardsOnExit { get; set; }
         public List<Reward> Rewards { get; set; } = new ();
         [YamlIgnore]
         public IEnumerable<Reward> EnabledRewards => Rewards.Where(r => r.Enabled);
@@ -250,17 +249,44 @@ namespace BannerlordTwitch
         #if DEBUG
         private static string ProjectRootDir([CallerFilePath]string file = "") => Path.GetDirectoryName(file);
         private static string SaveFilePath => Path.Combine(ProjectRootDir(), "Bannerlord-Twitch.yaml");
+        public static Settings Load()
+        {
+            var settings = new DeserializerBuilder().Build().Deserialize<Settings>(File.ReadAllText(SaveFilePath));
+            if (settings == null)
+                return null;
+            foreach (var reward in settings.Rewards)
+            {
+                if (reward.RewardSpec == null)
+                {
+                    throw new FormatException($"A reward is missing a RewardSpec");
+                }
+                if (reward.Handler == null)
+                {
+                    throw new FormatException($"A reward is missing an Handler");
+                }
+            }
+            return settings;
+        }
+
+        public static void Save(Settings settings)
+        {
+            string settingsStr = new SerializerBuilder()
+                .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
+                .Build()
+                .Serialize(settings);
+            File.WriteAllText(SaveFilePath, settingsStr);
+        }
         #else
-        private static string SaveFilePath => Path.Combine(Paths.ConfigPath, "Bannerlord-Twitch.yaml");
-        #endif
+        private static PlatformFilePath SaveFilePath => new (EngineFilePaths.ConfigsPath, "Bannerlord-Twitch.yaml");
         
         public static Settings Load()
         {
-            if (!File.Exists(SaveFilePath))
+            if (!Common.PlatformFileHelper.FileExists(SaveFilePath))
             {
                 string templateFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
-                    Path.GetFileName(SaveFilePath));
-                File.Copy(templateFileName, SaveFilePath, overwrite: true);
+                    "Bannerlord-Twitch.yaml");
+                string cfg = File.ReadAllText(templateFileName);
+                Common.PlatformFileHelper.SaveFileString(SaveFilePath, cfg);
                 InformationManager.ShowInquiry(
                     new InquiryData(
                         "Bannerlord Twitch",
@@ -268,15 +294,11 @@ namespace BannerlordTwitch
                         true, false, "Okay", null,
                     () => {}, () => {}), true);
             }
-            var settings = new DeserializerBuilder().Build().Deserialize<Settings>(File.ReadAllText(SaveFilePath));
+            var settings = new DeserializerBuilder().Build().Deserialize<Settings>(
+                Common.PlatformFileHelper.GetFileContentString(SaveFilePath)
+                );
             if (settings == null)
                 return null;
-            
-            // Fix up the settings to avoid NullReferences etc
-            // settings.Rewards ??= new List<Reward>();
-            // settings.Commands ??= new List<Command>();
-            // settings.GlobalConfigs ??= new List<GlobalConfig>();
-
             foreach (var reward in settings.Rewards)
             {
                 if (reward.RewardSpec == null)
@@ -294,10 +316,11 @@ namespace BannerlordTwitch
 
         public static void Save(Settings settings)
         {
-            File.WriteAllText(SaveFilePath, new SerializerBuilder()
+            Common.PlatformFileHelper.SaveFileString(SaveFilePath, new SerializerBuilder()
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
                 .Build()
                 .Serialize(settings));
         }
+        #endif
     }
 }

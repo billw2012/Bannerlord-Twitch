@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BannerlordTwitch.Overlay"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="BLT Overlay Window" Height="400" Width="400" d:DataContext="{d:DesignInstance local:OverlayWindow}"
+        Title="BLT Overlay Window" Height="600" Width="250" d:DataContext="{d:DesignInstance local:OverlayWindow}"
         SourceInitialized="OverlayWindow_OnSourceInitialized"
         Closing="OverlayWindow_OnClosing"
         x:ClassModifier="internal">

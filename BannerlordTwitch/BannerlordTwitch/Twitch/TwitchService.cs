@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using BannerlordTwitch.Dummy;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Testing;
 using BannerlordTwitch.Util;
@@ -17,6 +18,7 @@ using TwitchLib.Client.Events;
 using TwitchLib.Client.Models;
 using TwitchLib.PubSub;
 using TwitchLib.PubSub.Events;
+using static System.String;
 using UserType = TwitchLib.Client.Enums.UserType;
 
 namespace BannerlordTwitch
@@ -123,7 +125,17 @@ namespace BannerlordTwitch
                 return;
             }
 
-            api = new TwitchAPI();
+            if (authSettings.DebugSpoofAffiliate)
+            {
+                affiliateSpoofing = new Dummy.AffiliateSpoofingHttpCallHandler();
+                api = new TwitchAPI(http: affiliateSpoofing);
+                affiliateSpoofing.OnRewardRedeemed += OnRewardRedeemed;
+            }
+            else
+            {
+                api = new TwitchAPI();
+            }
+
             //api.Settings.Secret = SECRET;
             api.Settings.ClientId = authSettings.ClientID;
             api.Settings.AccessToken = authSettings.AccessToken;
@@ -146,7 +158,7 @@ namespace BannerlordTwitch
                     // Connect the chatbot
                     bot = new Bot(user.Login, authSettings, this);
 
-                    if (string.IsNullOrEmpty(user.BroadcasterType))
+                    if (IsNullOrEmpty(user.BroadcasterType))
                     {
                         Log.LogFeedFail($"Service init failed: you must be a twitch partner or affiliate to use the channel points system. Chat bot and testing are still functioning.");
                         return;
@@ -207,10 +219,7 @@ namespace BannerlordTwitch
         
         public void Exit()
         {
-            if (Settings.DeleteRewardsOnExit)
-            {
-                RemoveRewards();
-            }
+            RemoveRewards();
             Log.Info($"Exiting");
         }
         
@@ -342,25 +351,25 @@ namespace BannerlordTwitch
 
         public void TestRedeem(string rewardName, string user, string message)
         {
-            var reward = Settings?.EnabledRewards.FirstOrDefault(r => r.RewardSpec.Title == rewardName);
+            var reward = Settings?.EnabledRewards.FirstOrDefault(r => string.Equals(r.RewardSpec.Title, rewardName, StringComparison.CurrentCultureIgnoreCase));
             if (reward == null)
             {
                 Log.Error($"Reward {rewardName} not found!");
                 return;
             }
-
-            var redeem = new OnRewardRedeemedArgs
-            {
-                RedemptionId = Guid.NewGuid(),
-                Message = message,
-                DisplayName = user,
-                Login = user,
-                RewardTitle = rewardName,
-                ChannelId = null,
-            };
-            redemptionCache.TryAdd(redeem.RedemptionId, redeem);
-
-            ActionManager.HandleReward(reward.Handler, ReplyContext.FromRedemption(reward, redeem), reward.HandlerConfig);
+            affiliateSpoofing?.FakeRedeem(reward.RewardSpec.Title, user, message);
+            // var redeem = new OnRewardRedeemedArgs
+            // {
+            //     RedemptionId = Guid.NewGuid(),
+            //     Message = message,
+            //     DisplayName = user,
+            //     Login = user,
+            //     RewardTitle = rewardName,
+            //     ChannelId = null,
+            // };
+            // redemptionCache.TryAdd(redeem.RedemptionId, redeem);
+            //
+            // ActionManager.HandleReward(reward.Handler, ReplyContext.FromRedemption(reward, redeem), reward.HandlerConfig);
         }
 
         // private void ShowMessage(string screenMsg, string botMsg, string userToAt)
@@ -385,7 +394,7 @@ namespace BannerlordTwitch
         {
             if (context.Source.RespondInOverlay)
             {
-                Log.LogFeedResponse($"@{context.UserName}: " + string.Join("\n", messages));
+                Log.LogFeedResponse($"@{context.UserName}: " + Join("\n", messages));
             }
 
             if (context.Source.RespondInTwitch)
@@ -399,12 +408,12 @@ namespace BannerlordTwitch
                 if (context.UserName != null)
                 {
                     bot.SendChatReply(context.UserName, messages);
-                    Log.Trace($"[reply][{context.UserName}] {string.Join(" - ", messages)}");
+                    Log.Trace($"[reply][{context.UserName}] {Join(" - ", messages)}");
                 }
                 else
                 {
                     bot.SendChat(messages);
-                    Log.Trace($"[chat] {string.Join(" - ", messages)}");
+                    Log.Trace($"[chat] {Join(" - ", messages)}");
                 }
             }
         }
@@ -426,9 +435,9 @@ namespace BannerlordTwitch
                 Log.Error($"RedemptionComplete failed: redemption {context.RedemptionId} not known!");
                 return;
             }
-            Log.Info($"Redemption of {redemption.RewardTitle} for {redemption.DisplayName} complete{(!string.IsNullOrEmpty(info) ? $": {info}" : "")}");
+            Log.Info($"Redemption of {redemption.RewardTitle} for {redemption.DisplayName} complete{(!IsNullOrEmpty(info) ? $": {info}" : "")}");
             ActionManager.SendReply(context, info);
-            if (!string.IsNullOrEmpty(redemption.ChannelId))
+            if (!IsNullOrEmpty(redemption.ChannelId))
             {
                 SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.FULFILLED);
             }
@@ -445,9 +454,9 @@ namespace BannerlordTwitch
                 Log.Error($"RedemptionCancelled failed: redemption {context.RedemptionId} not known!");
                 return;
             }
-            Log.Info($"Redemption of {redemption.RewardTitle} for {redemption.DisplayName} cancelled{(!string.IsNullOrEmpty(reason) ? $": {reason}" : "")}");
+            Log.Info($"Redemption of {redemption.RewardTitle} for {redemption.DisplayName} cancelled{(!IsNullOrEmpty(reason) ? $": {reason}" : "")}");
             ActionManager.SendReply(context, reason);
-            if (!string.IsNullOrEmpty(redemption.ChannelId))
+            if (!IsNullOrEmpty(redemption.ChannelId))
             {
                 SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.CANCELED);
             }
@@ -496,7 +505,8 @@ namespace BannerlordTwitch
         public object FindGlobalConfig(string id) => Settings?.GlobalConfigs?.FirstOrDefault(c => c.Id == id)?.Config;
 
         private static SimulationTest simTest;
-        
+        private readonly AffiliateSpoofingHttpCallHandler affiliateSpoofing;
+
         public void StartSim()
         {
             StopSim();

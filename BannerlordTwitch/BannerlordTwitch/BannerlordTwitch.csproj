@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>build\bin\Win64_Shipping_Client\</OutputPath>
+    <OutputPath>build\$(Configuration)\bin\Win64_Shipping_Client\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -28,7 +28,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>build\bin\Win64_Shipping_Client\</OutputPath>
+    <OutputPath>build\$(Configuration)\bin\Win64_Shipping_Client\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -92,6 +92,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="TaleWorlds.CampaignSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -242,6 +243,8 @@
     <Compile Include="BLTModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Testing\SimulationTest.cs" />
+    <Compile Include="Twitch\Dummy\AffiliateSpoofingHttpCallHandler.cs" />
+    <Compile Include="Twitch\Dummy\TwitchRedirectingHttpCallHandler.cs" />
     <Compile Include="Twitch\TwitchService.Bot.cs" />
     <Compile Include="Twitch\TwitchService.cs" />
     <Compile Include="Util\Assembly.cs" />
@@ -261,11 +264,6 @@
     <Content Include="Bannerlord-Twitch-Documentation.css" />
     <Content Include="Bannerlord-Twitch.schema.json" />
     <Content Include="Bannerlord-Twitch.yaml" />
-    <Content Include="ExampleConfigs\Config-For-Dev.yaml" />
-    <Content Include="ExampleConfigs\SimTesting.yaml" />
-    <Content Include="ExampleConfigs\Config-Simple-Chat.yaml" />
-    <Content Include="ExampleConfigs\Config-Simple-Rewards.yaml" />
-    <Content Include="ExampleConfigs\Config-Simple-Reward-Chat.yaml" />
     <None Include="SubModule.xml" />
   </ItemGroup>
   <ItemGroup>
