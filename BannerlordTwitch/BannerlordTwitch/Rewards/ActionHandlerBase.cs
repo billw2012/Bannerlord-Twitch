@@ -10,16 +10,16 @@ namespace BannerlordTwitch.Rewards
         void IRewardHandler.Enqueue(ReplyContext context, object config)
         {
             ExecuteInternal(context, config, 
-                s => RewardManager.NotifyComplete(context, s), 
-                s => RewardManager.NotifyCancelled(context, s));
+                s => ActionManager.NotifyComplete(context, s), 
+                s => ActionManager.NotifyCancelled(context, s));
         }
 
         Type ICommandHandler.HandlerConfigType => ConfigType;
         void ICommandHandler.Execute(ReplyContext context, object config)
         {
             ExecuteInternal(context, config, 
-                s => RewardManager.SendReply(context, s), 
-                s => RewardManager.SendReply(context, s));
+                s => ActionManager.SendReply(context, s), 
+                s => ActionManager.SendReply(context, s));
         }
 
         protected abstract void ExecuteInternal(ReplyContext context, object config,

@@ -4,40 +4,42 @@ Rewards:
     Title: Adopt a Hero
     Cost: 1000
     IsEnabled: true
-  Action: AdoptAHero
-  ActionConfig:
+  Handler: AdoptAHero
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
+  HandlerConfig:
     AllowNoble: true
     AllowWanderer: true
     AllowNewAdoptionOnDeath: true
     StartingGold: 50000
     StartingEquipmentTier: 0
-  Enabled: true
-  RespondInTwitch: true
-  RespondInOverlay: true
 - RewardSpec:
     Title: 10k gold
     Cost: 100
     IsEnabled: true
-  Action: AddGoldToHero
-  ActionConfig:
-    Amount: 10000
+  Handler: AddGoldToHero
   Enabled: true
   RespondInTwitch: true
+  HandlerConfig:
+    Amount: 10000
 - RewardSpec:
     Title: 100k gold
     Cost: 1000
     IsEnabled: true
-  Action: AddGoldToHero
-  ActionConfig:
-    Amount: 100000
+  Handler: AddGoldToHero
   Enabled: true
   RespondInTwitch: true
+  HandlerConfig:
+    Amount: 100000
 - RewardSpec:
     Title: Summon
     Cost: 200
     IsEnabled: true
-  Action: SummonHero
-  ActionConfig:
+  Handler: SummonHero
+  Enabled: true
+  RespondInOverlay: true
+  HandlerConfig:
     AllowFieldBattle: true
     AllowVillageBattle: true
     AllowSiegeBattle: true
@@ -53,14 +55,14 @@ Rewards:
     HealPerKill: 20
     HealPerSecond: 0.100000001
     SubBoost: 2
-  Enabled: true
-  RespondInOverlay: true
 - RewardSpec:
     Title: Attack
     Cost: 100
     IsEnabled: true
-  Action: SummonHero
-  ActionConfig:
+  Handler: SummonHero
+  Enabled: true
+  RespondInOverlay: true
+  HandlerConfig:
     AllowFieldBattle: true
     AllowVillageBattle: true
     AllowSiegeBattle: true
@@ -74,28 +76,28 @@ Rewards:
     HealPerKill: 20
     HealPerSecond: 0.100000001
     SubBoost: 2
-  Enabled: true
-  RespondInOverlay: true
 - RewardSpec:
     Title: Heal Player
     Cost: 300
     IsEnabled: true
-  Action: CharacterEffect
-  ActionConfig:
+  Handler: CharacterEffect
+  Enabled: true
+  RespondInOverlay: true
+  HandlerConfig:
     Name: Heal Player
     ParticleEffects:
     - Name: psys_bug_fly_1
       AttachPoint: OnBody
     HealPerSecond: 1
     Duration: 30
-  Enabled: true
-  RespondInOverlay: true
 - RewardSpec:
     Title: Giant Hero
     Cost: 500
     IsEnabled: true
-  Action: CharacterEffect
-  ActionConfig:
+  Handler: CharacterEffect
+  Enabled: true
+  RespondInOverlay: true
+  HandlerConfig:
     Name: Giant
     Target: AdoptedHero
     Scale: 1.5
@@ -113,18 +115,17 @@ Rewards:
       Multiply: 0.5
     - Name: MaxSpeedMultiplier
       Multiply: 0.75
-    RemoveArmor: true
     DamageMultiplier: 2
     ActivateParticleEffect: psys_burning_projectile_default_coll
     DeactivateParticleEffect: psys_burning_projectile_default_coll
-  Enabled: true
-  RespondInOverlay: true
 - RewardSpec:
     Title: Baby Hero
     Cost: 100
     IsEnabled: true
-  Action: CharacterEffect
-  ActionConfig:
+  Handler: CharacterEffect
+  Enabled: true
+  RespondInOverlay: true
+  HandlerConfig:
     Name: Baby
     Target: AdoptedHero
     Scale: 0.75
@@ -140,17 +141,15 @@ Rewards:
       Multiply: 0.5
     - Name: MaxSpeedMultiplier
       Multiply: 1.5
-    RemoveArmor: true
     ActivateParticleEffect: psys_burning_projectile_default_coll_small
     DeactivateParticleEffect: psys_burning_projectile_default_coll_small
-  Enabled: true
-  RespondInOverlay: true
 - RewardSpec:
     Title: Attack on Titan
     Cost: 2000
     IsEnabled: true
-  Action: CharacterEffect
-  ActionConfig:
+  Handler: CharacterEffect
+  RespondInOverlay: true
+  HandlerConfig:
     Name: Titan
     Target: EnemyTeam
     TargetOnFootOnly: true
@@ -186,28 +185,44 @@ Rewards:
     DamageMultiplier: 10
     ActivateParticleEffect: psys_burning_projectile_default_coll
     DeactivateParticleEffect: psys_burning_projectile_default_coll
+- RewardSpec:
+    Title: Tournament
+    Cost: 100
+    IsEnabled: true
+  Handler: JoinTournament
+  Enabled: true
+  RespondInTwitch: true
   RespondInOverlay: true
+  HandlerConfig:
+    WinGold: 30000
+    WinXP: 30000
+    GoldPerKill: 5000
+    XPPerKill: 5000
+    SubBoost: 2
 Commands:
 - Name: stats
   Help: Hero stats
   Handler: HeroInfoCommand
+  Enabled: true
+  RespondInTwitch: true
   HandlerConfig:
     ShowGeneral: true
     ShowTopSkills: true
     MinSkillToShow: 100
     ShowAttributes: true
-  Enabled: true
-  RespondInTwitch: true
 - Name: inv
   Help: Hero equipment
   Handler: HeroInfoCommand
-  HandlerConfig:
-    ShowEquipment: true
   Enabled: true
   RespondInTwitch: true
+  HandlerConfig:
+    ShowEquipment: true
 - Name: adopt
   Help: Adopt a Hero (subs only)
   Handler: AdoptAHero
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig:
     AllowNoble: true
     AllowWanderer: true
@@ -215,12 +230,11 @@ Commands:
     SubscriberOnly: true
     StartingGold: 50000
     StartingEquipmentTier: 0
-  Enabled: true
-  RespondInTwitch: true
-  RespondInOverlay: true
 - Name: equip
   Help: Improve Equip (10k gold x Tier)
   Handler: EquipHero
+  Enabled: true
+  RespondInTwitch: true
   HandlerConfig:
     Armor: true
     Melee: true
@@ -231,8 +245,6 @@ Commands:
     Upgrade: true
     GoldCost: 10000
     MultiplyCostByCurrentTier: true
-  Enabled: true
-  RespondInTwitch: true
 - Name: pfx
   BroadcasterOnly: true
   Handler: TestPfx
@@ -263,7 +275,7 @@ SimTesting:
   - Type: Reward
     Id: Baby Hero
   - Type: Reward
-    Id: Attack on Titan
+    Id: Tournament
   - Type: Command
     Id: stats
   - Type: Command

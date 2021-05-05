@@ -5,8 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using BannerlordTwitch.Util;
+using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using YamlDotNet.Serialization;
+using Path = System.IO.Path;
 
 namespace BannerlordTwitch.Rewards
 {
@@ -32,7 +34,7 @@ namespace BannerlordTwitch.Rewards
             docs.Add($"<h3>Reward Actions (each is documented fully further down)</h3>");
             HtmlTable(docs,
                 new[] {"Name", "Description"},
-                actions.Values.Select(v => new[]
+                rewardHandlers.Values.Select(v => new[]
                 {
                     LinkToAnchor(v.GetType().Name, "Action"),
                     DocStr(v.GetType()) ?? "(none)"
@@ -43,20 +45,20 @@ namespace BannerlordTwitch.Rewards
             docs.Add($"<h3>Command Handlers (each is documented fully further down)</h3>");
             HtmlTable(docs,
                 new[] {"Name", "Description"},
-                commands.Values
+                commandHandlers.Values
                     .Select(v => new[]
                     {
                         LinkToAnchor(v.GetType().Name, "Command"),
                         DocStr(v.GetType()) ?? "(none)"
                     }), "aclist");
 
-            foreach (var action in actions.Values)
+            foreach (var action in rewardHandlers.Values)
             {
                 docs.Add($"<h2>{MakeAnchor(action.GetType().Name, "Action")} Action Settings</h2>");
                 DocumentActionOrCommand(docs, action.GetType(), action.RewardConfigType, documentedTypes);
             }
 
-            foreach (var command in commands.Values)
+            foreach (var command in commandHandlers.Values)
             {
                 docs.Add($"<h2>{MakeAnchor(command.GetType().Name, "Command")} Command Handler Settings</h2>");
                 DocumentActionOrCommand(docs, command.GetType(), command.HandlerConfigType, documentedTypes);
@@ -67,12 +69,10 @@ namespace BannerlordTwitch.Rewards
             {
                 string cssFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
                     "Bannerlord-Twitch-Documentation.css");
-                File.Copy(cssFileName, Path.Combine(Common.PlatformFileHelper.DocumentsPath,
-                        "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch-Documentation.css"),
-                    overwrite: true);
-                File.WriteAllLines(Path.Combine(Common.PlatformFileHelper.DocumentsPath,
-                        "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch-Documentation.html"),
-                    docs.Select(s => s + "  "));
+                string css = File.ReadAllText(cssFileName);
+                Common.PlatformFileHelper.SaveFileString(new (EngineFilePaths.ConfigsPath, "Bannerlord-Twitch-Documentation.css"), css);
+                Common.PlatformFileHelper.SaveFileString(new (EngineFilePaths.ConfigsPath, "Bannerlord-Twitch-Documentation.html"),
+                    string.Join("\n", docs.Select(s => s + "  ")));
             }
             catch (Exception e)
             {

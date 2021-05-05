@@ -10,15 +10,30 @@ namespace BannerlordTwitch.Util
         {
             get
             {
-                var current = Mission.Current.GetMissionBehaviour<T>();
+                var current = MissionState.Current.CurrentMission.GetMissionBehaviour<T>();
                 if (current == null)
                 {
                     current = new T();
-                    Mission.Current.AddMissionBehaviour(current);
+                    MissionState.Current.CurrentMission.AddMissionBehaviour(current);
                 }
 
                 return current;
             }
         }
+        
+        // public static T CurrentState
+        // {
+        //     get
+        //     {
+        //         var current = MissionState.Current.CurrentMission.GetMissionBehaviour<T>();
+        //         if (current == null)
+        //         {
+        //             current = new T();
+        //             MissionState.Current.CurrentMission.AddMissionBehaviour(current);
+        //         }
+        //
+        //         return current;
+        //     }
+        // }
     }
 }

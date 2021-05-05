@@ -250,28 +250,29 @@ namespace BannerlordTwitch
                     new InquiryData(
                         "Bannerlord Twitch",
                         $"Failed to create some of the channel rewards, please check the logs for details!",
-                        true, true, "View Log", "Ignore",
+                        true, false, "Okay", null,
                         () =>
                         {
-                            string logDir = Path.Combine(Common.PlatformFileHelper.DocumentsPath, "Mount and Blade II Bannerlord", "logs");
-                            try
-                            {
-                                string logFile = Directory.GetFiles(logDir, "rgl_log_*.txt")
-                                    .FirstOrDefault(f => !f.Contains("errors"));
-                                if (logFile != null)
-                                {
-                                    // open with default editor
-                                    Process.Start(logFile);
-                                }
-                                else
-                                {
-                                    Log.LogFeedFail($"ERROR: Couldn't find the log file at {logDir}");
-                                }
-                            }
-                            catch
-                            {
-                                // ignored
-                            }
+                            // Can't get the file path directly since 1.5.10 ...
+                            // string logDir = Path.Combine(Paths.ConfigPath, "..", "logs");
+                            // try
+                            // {
+                            //     string logFile = Directory.GetFiles(logDir, "rgl_log_*.txt")
+                            //         .FirstOrDefault(f => !f.Contains("errors"));
+                            //     if (logFile != null)
+                            //     {
+                            //         // open with default editor
+                            //         Process.Start(logFile);
+                            //     }
+                            //     else
+                            //     {
+                            //         Log.LogFeedFail($"ERROR: Couldn't find the log file at {logDir}");
+                            //     }
+                            // }
+                            // catch
+                            // {
+                            //     // ignored
+                            // }
                         }, () => {}), true);
             }
             

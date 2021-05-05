@@ -101,129 +101,6 @@ namespace BLTAdoptAHero
             AccessTools.Method(typeof(ArenaPracticeFightMissionController), "GetSpawnFrame", new[] {typeof(bool), typeof(bool)})
                 .CreateDelegate(typeof(ArenaPracticeFightMissionController_GetSpawnFrameDelegate));
 
-        private class BLTMissionBehavior : AutoMissionBehavior<BLTMissionBehavior>
-        {
-            public delegate void MissionOverDelegate();
-            public delegate void MissionModeChangeDelegate(MissionMode oldMode, MissionMode newMode, bool atStart);
-            public delegate void MissionResetDelegate();
-            public delegate void GotAKillDelegate(Agent killed, AgentState agentState);
-            public delegate void GotKilledDelegate(Agent killer, AgentState agentState);
-            public delegate void MissionTickDelegate(float dt);
-            
-            public class Listeners
-            {
-                public Hero hero;
-                public Agent agent;
-                public MissionOverDelegate onMissionOver;
-                public MissionModeChangeDelegate onModeChange;
-                public MissionResetDelegate onMissionReset;
-                public GotAKillDelegate onGotAKill;
-                public GotKilledDelegate onGotKilled;
-                public MissionTickDelegate onMissionTick;
-                public MissionTickDelegate onSlowTick;
-            }
-
-            private readonly List<Listeners> listeners = new();
-
-            public void AddListeners(Hero hero, Agent agent,
-                MissionOverDelegate onMissionOver = null,
-                MissionModeChangeDelegate onModeChange = null,
-                MissionResetDelegate onMissionReset = null,
-                GotAKillDelegate onGotAKill = null,
-                GotKilledDelegate onGotKilled = null,
-                MissionTickDelegate onMissionTick = null,
-                MissionTickDelegate onSlowTick = null
-            )
-            {
-                RemoveListeners(hero);
-                listeners.Add(new Listeners
-                {
-                    hero = hero,
-                    agent = agent,
-                    onMissionOver = onMissionOver,
-                    onModeChange = onModeChange,
-                    onMissionReset = onMissionReset,
-                    onGotAKill = onGotAKill,
-                    onGotKilled = onGotKilled,
-                    onMissionTick = onMissionTick,
-                    onSlowTick = onSlowTick,
-                });
-            }
-
-            public void RemoveListeners(Hero hero)
-            {
-                listeners.RemoveAll(l => l.hero == hero);
-            }
-
-            public override void OnAgentRemoved(Agent killedAgent, Agent killerAgent, AgentState agentState, KillingBlow blow)
-            {
-                ForAgent(killedAgent, l => l.onGotKilled?.Invoke(killerAgent, agentState));
-                ForAgent(killerAgent, l => l.onGotAKill?.Invoke(killedAgent, agentState));
-                base.OnAgentRemoved(killedAgent, killerAgent, agentState, blow);
-            }
-
-            protected override void OnEndMission()
-            {
-                ForAll(listeners => listeners.onMissionOver?.Invoke());
-                base.OnEndMission();
-            }
-
-            private const float SlowTickDuration = 2;
-            private float slowTick = 0;
-            
-            public override void OnMissionTick(float dt)
-            {
-                slowTick += dt;
-                if (slowTick > 2)
-                {
-                    slowTick -= 2;
-                    ForAll(listeners => listeners.onSlowTick?.Invoke(2));
-                }
-                ForAll(listeners => listeners.onMissionTick?.Invoke(dt));
-                base.OnMissionTick(dt);
-            }
-
-
-            // public override void OnMissionActivate()
-            // {
-            //     base.OnMissionActivate();
-            // }
-            //
-            // public override void OnMissionDeactivate()
-            // {
-            //     base.OnMissionDeactivate();
-            // }
-            //
-            // public override void OnMissionRestart()
-            // {
-            //     base.OnMissionRestart();
-            // }
-
-            public override void OnMissionModeChange(MissionMode oldMissionMode, bool atStart)
-            {
-                ForAll(l => l.onModeChange?.Invoke(oldMissionMode, Mission.Current.Mode, atStart));
-                base.OnMissionModeChange(oldMissionMode, atStart);
-            }
-
-            private Hero FindHero(Agent agent) => listeners.FirstOrDefault(l => l.agent == agent)?.hero;
-            
-            private void ForAll(Action<Listeners> action)
-            {
-                foreach (var listener in listeners)
-                {
-                    action(listener);
-                }
-            }
-
-            private void ForAgent(Agent agent, Action<Listeners> action)
-            {
-                foreach (var listener in listeners.Where(l => l.agent == agent))
-                {
-                    action(listener);
-                }
-            }
-        }
-
         private class BLTRemoveAgentsBehavior : AutoMissionBehavior<BLTRemoveAgentsBehavior>
         {
             private readonly List<Hero> heroesAdded = new();
@@ -273,16 +150,6 @@ namespace BLTAdoptAHero
             Action<string> onSuccess,
             Action<string> onFailure)
         {
-            static string KillStateVerb(AgentState state) =>
-                state switch
-                {
-                    AgentState.Routed => "routed",
-                    AgentState.Unconscious => "knocked out",
-                    AgentState.Killed => "killed",
-                    AgentState.Deleted => "deleted",
-                    _ => "fondled"
-                };
-
             var settings = (Settings) config;
 
             var adoptedHero = AdoptAHero.GetAdoptedHero(context.UserName);
@@ -387,7 +254,7 @@ namespace BLTAdoptAHero
                         behaviorGroup.AddBehavior<FightBehavior>();
                         behaviorGroup.SetScriptedBehavior<FightBehavior>();
                     }
-                    agent.SetWatchState(AgentAIStateFlagComponent.WatchState.Alarmed);
+                    agent.SetWatchState(Agent.WatchState.Alarmed);
                 }
                 // For other player hostile situations we setup a 1v1 fight
                 else if (!settings.OnPlayerSide)
@@ -467,7 +334,7 @@ namespace BLTAdoptAHero
 
 
                 float actualBoost = context.IsSubscriber ? settings.SubBoost : 1;
-                BLTMissionBehavior.Current.AddListeners(adoptedHero, agent, 
+                BLTMissionBehavior.Current.AddListeners(adoptedHero,
                     onSlowTick: dt =>
                     {
                         if (settings.HealPerSecond != 0)
@@ -492,11 +359,11 @@ namespace BLTAdoptAHero
                             }
                         }
                     },
-                    onGotAKill: (killed, state) =>
+                    onGotAKill: (_, killed, state) =>
                     {
                         if (killed != null)
                         {
-                            Log.LogFeedBattle($"{adoptedHero.FirstName} {KillStateVerb(state)} {killed.Name}");
+                            Log.LogFeedBattle($"{adoptedHero.FirstName} {BLTMissionBehavior.KillStateVerb(state)} {killed.Name}");
                         }
                         if (settings.GoldPerKill != 0)
                         {
@@ -522,11 +389,11 @@ namespace BLTAdoptAHero
                                 Log.LogFeedBattle($"{adoptedHero.FirstName}: {description}");
                         }
                     },
-                    onGotKilled: (killer, state) =>
+                    onGotKilled: (_, killer, state) =>
                     {
                         Log.LogFeedBattle(killer != null
-                            ? $"{adoptedHero.FirstName} was {KillStateVerb(state)} by {killer.Name}"
-                            : $"{adoptedHero.FirstName} was {KillStateVerb(state)}");
+                            ? $"{adoptedHero.FirstName} was {BLTMissionBehavior.KillStateVerb(state)} by {killer.Name}"
+                            : $"{adoptedHero.FirstName} was {BLTMissionBehavior.KillStateVerb(state)}");
                     }
                 );
             }

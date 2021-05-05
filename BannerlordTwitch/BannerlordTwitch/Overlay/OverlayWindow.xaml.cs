@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using BannerlordTwitch.Util;
+using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using YamlDotNet.Serialization;
 using Color = System.Windows.Media.Color;
@@ -60,6 +61,7 @@ namespace BannerlordTwitch.Overlay
 
         private class OverlaySettings
         {
+            [Browsable(false)]
             public string BackgroundColorText { get; set; }
             [YamlIgnore]
             public Color BackgroundColor
@@ -83,16 +85,15 @@ namespace BannerlordTwitch.Overlay
             public double WindowWidth { get; set; }
             public double WindowHeight { get; set; }
 
-            private static string OverlayFilePath => Path.Combine(Common.PlatformFileHelper.DocumentsPath,
-                "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch-Overlay.yaml");
+            private static PlatformFilePath OverlayFilePath => new (EngineFilePaths.ConfigsPath, "Bannerlord-Twitch-Overlay.yaml");
             
             public static OverlaySettings Load()
             {
                 try
                 {
-                    return !File.Exists(OverlayFilePath) 
+                    return !Common.PlatformFileHelper.FileExists(OverlayFilePath) 
                         ? null 
-                        : new DeserializerBuilder().Build().Deserialize<OverlaySettings>(File.ReadAllText(OverlayFilePath));
+                        : new DeserializerBuilder().Build().Deserialize<OverlaySettings>(Common.PlatformFileHelper.GetFileContentString(OverlayFilePath));
                 }
                 catch (Exception e)
                 {
@@ -105,7 +106,7 @@ namespace BannerlordTwitch.Overlay
             {
                 try
                 {
-                    File.WriteAllText(OverlayFilePath, new SerializerBuilder()
+                    Common.PlatformFileHelper.SaveFileString(OverlayFilePath, new SerializerBuilder()
                         .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
                         .Build()
                         .Serialize(settings));

@@ -40,8 +40,6 @@ namespace BLTConfigure
     }
     public partial class BLTConfigureWindow
     {
-
-        
         // public class ActionViewModel
         // {
         //     public string Module => Action.GetType().Assembly.GetName().Name;

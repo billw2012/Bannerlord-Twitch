@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -188,33 +189,27 @@ namespace BannerlordTwitch
         public string BotMessagePrefix { get; set; }
         public object Test { get; set; }
         
-        private static string AuthFilePath => Path.Combine(Common.PlatformFileHelper.DocumentsPath,
-            "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch-Auth.yaml");
+        private static PlatformFilePath AuthFilePath => new (EngineFilePaths.ConfigsPath, "Bannerlord-Twitch-Auth.yaml");
 
         public static AuthSettings Load()
         {
-            if (!File.Exists(AuthFilePath))
+            if (!Common.PlatformFileHelper.FileExists(AuthFilePath))
             {
-                string templateFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
-                    Path.GetFileName(AuthFilePath));
-                File.Copy(templateFileName, AuthFilePath);
                 InformationManager.ShowInquiry(
                     new InquiryData(
                         "Bannerlord Twitch",
-                        $"Auth settings file created at {AuthFilePath}, you need to edit it to provide authorization. Press Okay to exit now and edit the file.",
+                        $"You need to authorize via the BLTConfigure window, then restart. If the window isn't open then you need to enable the BLTConfigure module.",
                         true, false, "Okay", null,
                         () => { 
-                            Utilities.DoDelayedexit(0);
-                            Process.Start("explorer.exe", $"/select, \"{AuthFilePath}\"");
-                            Process.Start(AuthFilePath);
                         }, () => {}), true);
+                return new AuthSettings();
             }
-            return new DeserializerBuilder().Build().Deserialize<AuthSettings>(File.ReadAllText(AuthFilePath));
+            return new DeserializerBuilder().Build().Deserialize<AuthSettings>(Common.PlatformFileHelper.GetFileContentString(AuthFilePath));
         }
 
         public static void Save(AuthSettings authSettings)
         {
-            File.WriteAllText(AuthFilePath, new SerializerBuilder()
+            Common.PlatformFileHelper.SaveFileString(AuthFilePath, new SerializerBuilder()
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
                 .Build()
                 .Serialize(authSettings));
@@ -228,17 +223,16 @@ namespace BannerlordTwitch
 #pragma warning restore 414
         public List<string> RewardsCreated { get; set; } = new();
         
-        private static string DbFilePath => Path.Combine(Common.PlatformFileHelper.DocumentsPath,
-            "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch-Db.yaml");
+        private static PlatformFilePath DbFilePath => new (EngineFilePaths.ConfigsPath, "Bannerlord-Twitch-Db.yaml");
 
         public static Db Load()
         {
-            return !File.Exists(DbFilePath) 
+            return !Common.PlatformFileHelper.FileExists(DbFilePath) 
                 ? new Db()
-                : new DeserializerBuilder().Build().Deserialize<Db>(File.ReadAllText(DbFilePath));
+                : new DeserializerBuilder().Build().Deserialize<Db>(Common.PlatformFileHelper.GetFileContentString(DbFilePath));
         }
         
-        public static void Save(Db db) => File.WriteAllText(DbFilePath, new SerializerBuilder().Build().Serialize(db));
+        public static void Save(Db db) => Common.PlatformFileHelper.SaveFileString(DbFilePath, new SerializerBuilder().Build().Serialize(db));
     }
     
     public class Settings
@@ -257,8 +251,7 @@ namespace BannerlordTwitch
         private static string ProjectRootDir([CallerFilePath]string file = "") => Path.GetDirectoryName(file);
         private static string SaveFilePath => Path.Combine(ProjectRootDir(), "Bannerlord-Twitch.yaml");
         #else
-        private static string SaveFilePath => Path.Combine(Common.PlatformFileHelper.DocumentsPath,
-            "Mount and Blade II Bannerlord", "Configs", "Bannerlord-Twitch.yaml");
+        private static string SaveFilePath => Path.Combine(Paths.ConfigPath, "Bannerlord-Twitch.yaml");
         #endif
         
         public static Settings Load()

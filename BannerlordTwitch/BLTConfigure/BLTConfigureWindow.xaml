@@ -66,21 +66,34 @@
                         <Grid>
                             <Grid.Resources>
                                 <Style TargetType="xctk:DropDownButton">
-                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
-                                    <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}"/>
-                                    <Setter Property="DropDownContentBackground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
-                                    
+                                    <Setter Property="Foreground" 
+                                            Value="{DynamicResource 
+                                            {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
+                                    <Setter Property="Background" 
+                                            Value="{DynamicResource 
+                                            {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}"/>
+                                    <Setter Property="DropDownContentBackground" 
+                                            Value="{DynamicResource 
+                                            {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
                                 </Style>
                                 <DataTemplate x:Key="NewItemHDT" DataType="{x:Type local:NewActionViewModel}">
-                                    <Button Command="{Binding Command}" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Padding="4" Margin="4">
+                                    <Button Command="{Binding Command}"
+                                            HorizontalContentAlignment="Stretch"
+                                            HorizontalAlignment="Stretch" Padding="4" Margin="4">
                                         <Grid HorizontalAlignment="Stretch">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
                                                 <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
-                                            <TextBlock Grid.Row="0" HorizontalAlignment="Right" Text="{Binding Module}" FontWeight="Bold" FontSize="12" Foreground="DimGray"/>
-                                            <TextBlock Grid.Row="1" HorizontalAlignment="Stretch" Text="{Binding Description}" TextWrapping="Wrap"/>
+                                            <TextBlock Grid.Row="0" HorizontalAlignment="Left" 
+                                                       Text="{Binding Name}" 
+                                                       FontWeight="Bold" FontSize="16"/>
+                                            <TextBlock Grid.Row="0" HorizontalAlignment="Right" 
+                                                       Text="{Binding Module}" 
+                                                       FontWeight="Bold" FontSize="12" Foreground="DimGray"/>
+                                            <TextBlock Grid.Row="1" HorizontalAlignment="Stretch" 
+                                                       Text="{Binding Description}" 
+                                                       TextWrapping="Wrap"/>
                                         </Grid>
                                     </Button>
                                 </DataTemplate>
@@ -96,14 +109,13 @@
                             </Grid.RowDefinitions>
                             <TextBlock FontSize="14" FontWeight="Bold">Rewards</TextBlock>
                             <ListBox Grid.Row="1" 
-                                     ItemsSource="{Binding Rewards, Mode=OneWay}"
                                      SelectionChanged="Rewards_OnSelectionChanged" 
                                      SelectionMode="Single"
                                      Name="RewardsListBox"/>
                             <DockPanel Grid.Row="2">
                                 <xctk:DropDownButton Content="Add" HorizontalAlignment="Left" DockPanel.Dock="Left">
                                     <xctk:DropDownButton.DropDownContent>
-                                        <ItemsControl ItemsSource="{Binding RewardHandlers}"
+                                        <ItemsControl ItemsSource="{Binding RewardHandlersViewModel}"
                                                      MaxWidth="300"
                                                      ItemTemplate="{StaticResource NewItemHDT}"
                                                      Background="Transparent"
@@ -112,17 +124,16 @@
                                 </xctk:DropDownButton>
                                 <Button HorizontalAlignment="Right" DockPanel.Dock="Right" Click="DeleteReward_OnClick">Delete Selected</Button>
                             </DockPanel>
-                            <Separator Grid.Row="3" Padding="10"></Separator>
+                            <Separator Grid.Row="3" Height="20"></Separator>
                             <TextBlock FontSize="14" FontWeight="Bold" Grid.Row="4">Commands</TextBlock>
                             <ListBox Grid.Row="5"
-                                     ItemsSource="{Binding Commands, Mode=OneWay}"
                                      SelectionChanged="Commands_OnSelectionChanged"
                                      SelectionMode="Single"
                                      Name="CommandsListBox"/>
                             <DockPanel Grid.Row="6">
                                 <xctk:DropDownButton Content="Add" HorizontalAlignment="Left" DockPanel.Dock="Left">
                                     <xctk:DropDownButton.DropDownContent>
-                                        <ItemsControl ItemsSource="{Binding CommandHandlers}"
+                                        <ItemsControl ItemsSource="{Binding CommandHandlersViewModel}"
                                                       MaxWidth="300"
                                                       ItemTemplate="{StaticResource NewItemHDT}"
                                                       Background="Transparent"/>

@@ -1,5 +1,7 @@
-﻿using BannerlordTwitch.Rewards;
+﻿using System;
+using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using HarmonyLib;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
@@ -13,12 +15,22 @@ namespace BLTAdoptAHero
     [UsedImplicitly]
     public class BLTAdoptAHeroModule : MBSubModuleBase
     {
+        private Harmony harmony;
         public const string Name = "BLTAdoptAHero";
         public const string Ver = "1.0.1";
 
         public BLTAdoptAHeroModule()
         {
             ActionManager.RegisterAll(typeof(BLTAdoptAHeroModule).Assembly);
+        }
+        
+        protected override void OnBeforeInitialModuleScreenSetAsRoot()
+        {
+            if (harmony == null)
+            {
+                harmony = new Harmony("mod.bannerlord.bltadoptahero");
+                harmony.PatchAll();
+            }
         }
 
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)

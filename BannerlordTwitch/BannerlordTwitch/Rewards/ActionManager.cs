@@ -13,13 +13,13 @@ namespace BannerlordTwitch.Rewards
 {
     public static partial class ActionManager
     {
-        private static readonly Dictionary<string, IRewardHandler> actions = new();
-        private static readonly Dictionary<string, ICommandHandler> commands = new();
+        private static readonly Dictionary<string, IRewardHandler> rewardHandlers = new();
+        private static readonly Dictionary<string, ICommandHandler> commandHandlers = new();
 
-        public static IEnumerable<string> ActionNames => actions.Keys;
-        public static IEnumerable<IRewardHandler> Actions => actions.Values;
-        public static IEnumerable<string> HandlerNames => commands.Keys;
-        public static IEnumerable<ICommandHandler> Handlers => commands.Values;
+        public static IEnumerable<string> RewardHandlerNames => rewardHandlers.Keys;
+        public static IEnumerable<IRewardHandler> RewardHandlers => rewardHandlers.Values;
+        public static IEnumerable<string> CommandHandlerNames => commandHandlers.Keys;
+        public static IEnumerable<ICommandHandler> CommandHandlers => commandHandlers.Values;
 
         public static void Init()
         {
@@ -28,46 +28,46 @@ namespace BannerlordTwitch.Rewards
 
         public static void RegisterAll(Assembly assembly)
         {
-            var redemptionActionTypes = assembly
+            var rewardHandlerTypes = assembly
                 .GetTypes()
                 .Where(t => typeof(IRewardHandler).IsAssignableFrom(t) && !t.IsAbstract);
-            foreach (var redemptionActionType in redemptionActionTypes)
+            foreach (var redemptionActionType in rewardHandlerTypes)
             {
-                RegisterAction((IRewardHandler) Activator.CreateInstance(redemptionActionType));
+                RegisterRewardHandler((IRewardHandler) Activator.CreateInstance(redemptionActionType));
             }
 
-            var botCommands = assembly
+            var commandHandlerTypes = assembly
                 .GetTypes()
                 .Where(t => typeof(ICommandHandler).IsAssignableFrom(t) && !t.IsAbstract);
-            foreach (var botCommandType in botCommands)
+            foreach (var botCommandType in commandHandlerTypes)
             {
-                RegisterCommand((ICommandHandler) Activator.CreateInstance(botCommandType));
+                RegisterCommandHandler((ICommandHandler) Activator.CreateInstance(botCommandType));
             }
         }
 
-        public static bool RegisterAction(IRewardHandler action)
+        public static bool RegisterRewardHandler(IRewardHandler action)
         {
-            var id = action.GetType().Name;
-            if (actions.ContainsKey(id))
+            string id = action.GetType().Name;
+            if (rewardHandlers.ContainsKey(id))
             {
-                Log.Error($"Reward Action {id} already registered, please choose another name");
+                Log.Error($"Reward Handler {id} already registered, please choose another name");
                 return false;
             }
-            Log.Trace($"Registered Reward Action {id}");
-            actions.Add(id, action);
+            Log.Trace($"Registered Reward Handler {id}");
+            rewardHandlers.Add(id, action);
             return true;
         }
         
-        public static bool RegisterCommand(ICommandHandler command)
+        public static bool RegisterCommandHandler(ICommandHandler commandHandler)
         {
-            var id = command.GetType().Name;
-            if (commands.ContainsKey(id))
+            string id = commandHandler.GetType().Name;
+            if (commandHandlers.ContainsKey(id))
             {
-                Log.Error($"Bot Command {id} already registered, please choose another name");
+                Log.Error($"Command Handler {id} already registered, please choose another name");
                 return false;
             }
-            Log.Trace($"Registered Bot Command {id}");
-            commands.Add(id, command);
+            Log.Trace($"Registered Command Handler {id}");
+            commandHandlers.Add(id, commandHandler);
             return true;
         }
 
@@ -75,18 +75,18 @@ namespace BannerlordTwitch.Rewards
 
         public static void ConvertSettings(IEnumerable<Reward> rewards)
         {
-            foreach (var rewardDef in rewards.Where(r => r.ActionConfig != null))
+            foreach (var rewardDef in rewards.Where(r => r.HandlerConfig != null))
             {
-                if (actions.TryGetValue(rewardDef.Action, out var action))
+                if (rewardHandlers.TryGetValue(rewardDef.Handler, out var action))
                 {
                     try
                     {
-                        rewardDef.ActionConfig = ConvertObject(rewardDef.ActionConfig, action.RewardConfigType);
+                        rewardDef.HandlerConfig = ConvertObject(rewardDef.HandlerConfig, action.RewardConfigType);
                     }
                     catch (Exception)
                     {
                         Log.Error($"{rewardDef} had invalid config, resetting it to default");
-                        rewardDef.ActionConfig = Activator.CreateInstance(action.RewardConfigType);
+                        rewardDef.HandlerConfig = Activator.CreateInstance(action.RewardConfigType);
                     }
                 }
             }
@@ -96,7 +96,7 @@ namespace BannerlordTwitch.Rewards
         {
             foreach (var commandDef in commands.Where(c => c.HandlerConfig != null))
             {
-                if (ActionManager.commands.TryGetValue(commandDef.Handler, out var command))
+                if (commandHandlers.TryGetValue(commandDef.Handler, out var command))
                 {
                     try
                     {
@@ -116,9 +116,9 @@ namespace BannerlordTwitch.Rewards
                 new SerializerBuilder().Build().Serialize(obj),
                 type);
 
-        internal static void Command(string id, ReplyContext context, object config)
+        internal static void HandleCommand(string commandId, ReplyContext context, object config)
         {
-            if (commands.TryGetValue(id, out var cmdHandler))
+            if (commandHandlers.TryGetValue(commandId, out var cmdHandler))
             {
                 try
                 {
@@ -131,7 +131,7 @@ namespace BannerlordTwitch.Rewards
                 }
                 catch (Exception e)
                 {
-                    Log.LogFeedCritical($"Command {id} failed with exception {e.Message}, game might be unstable now!");
+                    Log.LogFeedCritical($"Command {commandId} failed with exception {e.Message}, game might be unstable now!");
                     Log.Error(e.ToString());
                 }
             }
@@ -141,11 +141,11 @@ namespace BannerlordTwitch.Rewards
             }
         }
 
-        internal static bool Enqueue(string actionId, ReplyContext context, object config)
+        internal static bool HandleReward(string rewardId, ReplyContext context, object config)
         {
-            if (!actions.TryGetValue(actionId, out var action))
+            if (!rewardHandlers.TryGetValue(rewardId, out var action))
             {
-                Log.Error($"Action with the id {actionId} doesn't exist");
+                Log.Error($"Action with the id {rewardId} doesn't exist");
                 return false;
             }
 
@@ -162,14 +162,14 @@ namespace BannerlordTwitch.Rewards
             }
             catch (Exception e)
             {
-                Log.LogFeedCritical($"Action {actionId} failed with exception {e.Message}, game might be unstable now!");
+                Log.LogFeedCritical($"Reward {rewardId} failed with exception {e.Message}, game might be unstable now!");
                 Log.Error(e.ToString());
                 NotifyCancelled(context, $"Error occurred while trying to process the redemption");
             }
 
             if (st.ElapsedMilliseconds > 5)
             {
-                Log.Info($"Action {actionId} took {st.ElapsedMilliseconds}ms to Enqueue, this is too slow!");
+                Log.Info($"Action {rewardId} took {st.ElapsedMilliseconds}ms to Enqueue, this is too slow!");
             }
 
             return true;
