@@ -261,11 +261,11 @@ namespace BannerlordTwitch
                     string[] parts = msg.TrimStart('!').Split(' ');
                     if (parts[0] == "help")
                     {
-                        BLTModule.TwitchService.ShowCommandHelp();
+                        BLTModule.TwitchService?.ShowCommandHelp();
                     }
                     else
                     {
-                        var cmd = twitchService.Settings.EnabledCommands.FirstOrDefault(c => c.Name == parts[0]);
+                        var cmd = twitchService.settings.EnabledCommands.FirstOrDefault(c => c.Name == parts[0]);
                         var context = ReplyContext.FromMessage(cmd, chatMessage, msg.Substring(parts[0].Length).Trim());
                         if (cmd != null 
                             && (!cmd.ModOnly || context.IsModerator || context.IsBroadcaster)

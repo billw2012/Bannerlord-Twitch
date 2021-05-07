@@ -202,7 +202,6 @@ namespace BLTAdoptAHero
             {
                 return (false, AdoptAHero.NotStartedMessage);
             }
-            // Campaign.Current.EncyclopediaManager.BookmarksTracker.IsBookmarked(this._hero)
             if (hero?.IsAlive == false && !settings.AllowNewAdoptionOnDeath)
             {
                 return (false, $"Your hero died, and you may not adopt another!");
@@ -215,7 +214,8 @@ namespace BLTAdoptAHero
                 hero.FirstName = new TextObject(hero.FirstName + $" ({count})"); 
                 Campaign.Current.EncyclopediaManager.BookmarksTracker.RemoveBookmarkFromItem(hero);
             }
-            
+
+            args = args?.Trim();
             var randomHero = string.IsNullOrEmpty(args)
                 ? GetAvailableHeroes(settings).SelectRandom() 
                 : Campaign.Current.AliveHeroes.FirstOrDefault(h => h.Name.Contains(args) && h.Name.ToString() == args);

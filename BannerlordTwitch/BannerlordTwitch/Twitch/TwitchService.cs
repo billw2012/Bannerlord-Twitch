@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using BannerlordTwitch.Dummy;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Testing;
@@ -86,47 +87,35 @@ namespace BannerlordTwitch
     
     // https://twitchtokengenerator.com/
     // https://twitchtokengenerator.com/quick/AAYotwZPvU
-    internal partial class TwitchService
+    internal partial class TwitchService : IDisposable
     {
         private TwitchPubSub pubSub;
         private readonly TwitchAPI api;
         private string channelId;
         private readonly AuthSettings authSettings;
 
-        private Settings Settings { get; set; }
+        private readonly Settings settings;
 
         private readonly ConcurrentDictionary<Guid, OnRewardRedeemedArgs> redemptionCache = new();
         private Bot bot;
 
         public TwitchService()
         {
-            if (!LoadSettings())
+            settings = Settings.Load();
+            if (settings == null)
             {
-                return;
+                throw new Exception($"Failed to load action/command settings, please use the BLT Configure Window to configure the mod");
             }
 
-            try
-            {
-                authSettings = AuthSettings.Load();
-            }
-            catch(Exception e)
-            {
-                Log.Error(e.ToString());
-            }
+            authSettings = AuthSettings.Load();
             if (authSettings == null)
             {
-                InformationManager.ShowInquiry(
-                    new InquiryData(
-                        "Bannerlord Twitch MOD DISABLED",
-                        $"Failed to load auth settings, enable the BLTConfigure module and authorize the mod via the window",
-                        true, false, "Okay", null,
-                        () => {}, () => {}), true);
-                Log.LogFeedCritical($"Failed to load auth settings, load the BLTConfigure module and authorize the mod via the window");
-                return;
+                throw new Exception($"You need to authorize via the BLT Configure Window, then restart. If the window isn't open then you need to enable the BLTConfigure module.");
             }
 
             if (authSettings.DebugSpoofAffiliate)
             {
+                Log.LogFeedSystem($"Affiliate spoofing enabled");
                 affiliateSpoofing = new Dummy.AffiliateSpoofingHttpCallHandler();
                 api = new TwitchAPI(http: affiliateSpoofing);
                 affiliateSpoofing.OnRewardRedeemed += OnRewardRedeemed;
@@ -168,6 +157,7 @@ namespace BannerlordTwitch
                     pubSub = new TwitchPubSub();
 
                     // Subscribe to Events
+                    // Whisper isn't supported without verified bot
                     //_pubSub.OnWhisper += OnWhisper;
                     pubSub.OnPubSubServiceConnected += OnPubSubServiceConnected;
                     pubSub.OnRewardRedeemed += OnRewardRedeemed;
@@ -185,7 +175,6 @@ namespace BannerlordTwitch
                     };
 
                     // pubSub.OnPubSubServiceClosed += OnOnPubSubServiceClosed;
-
                     RegisterRewardsAsync();
 
                     // Connect
@@ -193,38 +182,11 @@ namespace BannerlordTwitch
                 });
             });
         }
-
-        public bool LoadSettings()
-        {
-            try
-            {
-                Settings = Settings.Load();
-                return true;
-            }
-            catch
-            {
-                // ignored
-            }
-
-            InformationManager.ShowInquiry(
-                new InquiryData(
-                    "Bannerlord Twitch MOD DISABLED",
-                    $"Failed to load action/command settings, please enable the BLTConfigure module and use it to configure the mod",
-                    true, false, "Okay", null,
-                    () => {}, () => {}), true);
-            Log.LogFeedCritical($"MOD DISABLED: Failed to load settings from settings file, please enable the BLTConfigure module and use it to configure the mod");
-
-            return false;
-        }
-        
-        public void Exit()
-        {
-            RemoveRewards();
-            Log.Info($"Exiting");
-        }
         
         private async void RegisterRewardsAsync()
         {
+            Log.Info("Creating rewards");
+
             var db = Db.Load();
             
             GetCustomRewardsResponse existingRewards = null;
@@ -238,7 +200,7 @@ namespace BannerlordTwitch
             }
 
             bool anyFailed = false;
-            foreach (var rewardDef in Settings.EnabledRewards.Where(r => existingRewards == null || existingRewards.Data.All(e => e.Title != r.RewardSpec?.Title)))
+            foreach (var rewardDef in settings.EnabledRewards.Where(r => existingRewards == null || existingRewards.Data.All(e => e.Title != r.RewardSpec?.Title)))
             {
                 try
                 {
@@ -290,6 +252,22 @@ namespace BannerlordTwitch
 
         private void RemoveRewards()
         {
+            Log.Info("Removing rewards");
+
+            // First cancel all pending redemptions
+            foreach (var redemption in redemptionCache.Values)
+            {
+                Log.LogFeedSystem($"Redemption of {redemption.RewardTitle} for {redemption.DisplayName} cancelled (rewards are being removed)");
+                if (!IsNullOrEmpty(redemption.ChannelId))
+                {
+                    SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.CANCELED).Wait();
+                }
+                else
+                {
+                    Log.Trace($"(skipped setting redemption status for test redemption)");
+                }
+            }
+
             var db = Db.Load();
             foreach (string rewardId in db.RewardsCreated.ToList())
             {
@@ -311,7 +289,7 @@ namespace BannerlordTwitch
         {
             MainThreadSync.Run(() =>
             {
-                var reward = Settings.Rewards.FirstOrDefault(r => r.RewardSpec.Title == redeemedArgs.RewardTitle);
+                var reward = settings.Rewards.FirstOrDefault(r => r.RewardSpec.Title == redeemedArgs.RewardTitle);
                 if (reward == null)
                 {
                     Log.Info($"Reward {redeemedArgs.RewardTitle} not owned by this extension, ignoring it");
@@ -349,15 +327,16 @@ namespace BannerlordTwitch
             });
         }
 
-        public void TestRedeem(string rewardName, string user, string message)
+        public bool TestRedeem(string rewardName, string user, string message)
         {
-            var reward = Settings?.EnabledRewards.FirstOrDefault(r => string.Equals(r.RewardSpec.Title, rewardName, StringComparison.CurrentCultureIgnoreCase));
+            var reward = settings?.EnabledRewards.FirstOrDefault(r => string.Equals(r.RewardSpec.Title, rewardName, StringComparison.CurrentCultureIgnoreCase));
             if (reward == null)
             {
                 Log.Error($"Reward {rewardName} not found!");
-                return;
+                return false;
             }
-            affiliateSpoofing?.FakeRedeem(reward.RewardSpec.Title, user, message);
+
+            return affiliateSpoofing?.FakeRedeem(reward.RewardSpec.Title, user, message) == true;
             // var redeem = new OnRewardRedeemedArgs
             // {
             //     RedemptionId = Guid.NewGuid(),
@@ -421,7 +400,7 @@ namespace BannerlordTwitch
         private void ShowCommandHelp()
         {
             string[] help = "Commands: ".Yield()
-                .Concat(Settings.EnabledCommands.Where(c
+                .Concat(settings.EnabledCommands.Where(c
                         => !c.HideHelp && !c.BroadcasterOnly && !c.ModOnly)
                     .Select(c => $"!{c.Name} - {c.Help}")
                 ).ToArray();
@@ -439,7 +418,7 @@ namespace BannerlordTwitch
             ActionManager.SendReply(context, info);
             if (!IsNullOrEmpty(redemption.ChannelId))
             {
-                SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.FULFILLED);
+                _ = SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.FULFILLED);
             }
             else
             {
@@ -458,7 +437,7 @@ namespace BannerlordTwitch
             ActionManager.SendReply(context, reason);
             if (!IsNullOrEmpty(redemption.ChannelId))
             {
-                SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.CANCELED);
+                _ = SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.CANCELED);
             }
             else
             {
@@ -466,7 +445,7 @@ namespace BannerlordTwitch
             }
         }
 
-        private async void SetRedemptionStatusAsync(OnRewardRedeemedArgs redemption, CustomRewardRedemptionStatus status)
+        private async Task SetRedemptionStatusAsync(OnRewardRedeemedArgs redemption, CustomRewardRedemptionStatus status)
         {
             try
             {
@@ -502,21 +481,46 @@ namespace BannerlordTwitch
         //     pubSub.Connect();
         // }
         
-        public object FindGlobalConfig(string id) => Settings?.GlobalConfigs?.FirstOrDefault(c => c.Id == id)?.Config;
+        public object FindGlobalConfig(string id) => settings?.GlobalConfigs?.FirstOrDefault(c => c.Id == id)?.Config;
 
         private static SimulationTest simTest;
         private readonly AffiliateSpoofingHttpCallHandler affiliateSpoofing;
 
-        public void StartSim()
+        public bool StartSim()
         {
             StopSim();
-            simTest = new SimulationTest(Settings);
+            simTest = new SimulationTest(settings);
+            return true;
         }
         
-        public void StopSim()
+        public bool StopSim()
         {
-            simTest?.Stop();
-            simTest = null;
+            if (simTest != null)
+            {
+                simTest.Stop();
+                simTest = null;
+                return true;
+            }
+
+            return false;
+        }
+
+        private void ReleaseUnmanagedResources()
+        {
+            StopSim();
+            RemoveRewards();
+            Log.Info($"Exiting");
+        }
+
+        public void Dispose()
+        {
+            ReleaseUnmanagedResources();
+            GC.SuppressFinalize(this);
+        }
+
+        ~TwitchService()
+        {
+            ReleaseUnmanagedResources();
         }
     }
 }

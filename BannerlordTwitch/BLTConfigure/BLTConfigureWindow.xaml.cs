@@ -353,6 +353,7 @@ namespace BLTConfigure
                 {
                     AuthTokenTestFailure.Visibility = Visibility.Visible;
                     TabControl.SelectedIndex = 1;
+                    this.Activate();
                 }
 
                 AuthTokenTesting.Visibility = Visibility.Collapsed;

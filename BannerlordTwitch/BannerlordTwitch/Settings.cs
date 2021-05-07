@@ -62,6 +62,9 @@ namespace BannerlordTwitch
 
         [Category("Behavior"), Description("Custom config for the handler"), ExpandableObject, ReadOnly(true), PropertyOrder(2)]
         public object HandlerConfig { get; set; }
+
+        [YamlIgnore]
+        public virtual bool IsValid => !Enabled || !string.IsNullOrEmpty(Handler);
     }
     
     [Description("Channel points reward definition")]
@@ -70,7 +73,7 @@ namespace BannerlordTwitch
         [Category("General"), Description("Twitch channel points reward definition"), ExpandableObject, ReadOnly(true), PropertyOrder(1)]
         public RewardSpec RewardSpec { get; set; }
 
-        public override string ToString() => $"{RewardSpec.Title} ({Handler})";
+        public override string ToString() => $"{RewardSpec?.Title ?? "unnamed reward"} ({Handler})";
         
         [ItemsSource(typeof(RewardHandlerItemsSource))]
         public override string Handler { get; set; }
@@ -193,18 +196,9 @@ namespace BannerlordTwitch
 
         public static AuthSettings Load()
         {
-            if (!Common.PlatformFileHelper.FileExists(AuthFilePath))
-            {
-                InformationManager.ShowInquiry(
-                    new InquiryData(
-                        "Bannerlord Twitch",
-                        $"You need to authorize via the BLTConfigure window, then restart. If the window isn't open then you need to enable the BLTConfigure module.",
-                        true, false, "Okay", null,
-                        () => { 
-                        }, () => {}), true);
-                return null;
-            }
-            return new DeserializerBuilder().Build().Deserialize<AuthSettings>(Common.PlatformFileHelper.GetFileContentString(AuthFilePath));
+            return !Common.PlatformFileHelper.FileExists(AuthFilePath) 
+                ? null 
+                : new DeserializerBuilder().Build().Deserialize<AuthSettings>(Common.PlatformFileHelper.GetFileContentString(AuthFilePath));
         }
 
         public static void Save(AuthSettings authSettings)
@@ -245,6 +239,8 @@ namespace BannerlordTwitch
         public IEnumerable<Command> EnabledCommands => Commands.Where(r => r.Enabled);
         public List<GlobalConfig> GlobalConfigs { get; set; } = new ();
         public SimTestingConfig SimTesting { get; set; }
+        [YamlIgnore]
+        public IEnumerable<ActionBase> AllActions => Rewards.Cast<ActionBase>().Concat(Commands);
 
         #if DEBUG
         private static string ProjectRootDir([CallerFilePath]string file = "") => Path.GetDirectoryName(file);
@@ -253,16 +249,13 @@ namespace BannerlordTwitch
         {
             var settings = new DeserializerBuilder().Build().Deserialize<Settings>(File.ReadAllText(SaveFilePath));
             if (settings == null)
-                return null;
-            foreach (var reward in settings.Rewards)
+                throw new Exception($"Couldn't load the mod settings from {SaveFilePath}");
+
+            foreach (var action in settings.AllActions)
             {
-                if (reward.RewardSpec == null)
+                if (!action.IsValid)
                 {
-                    throw new FormatException($"A reward is missing a RewardSpec");
-                }
-                if (reward.Handler == null)
-                {
-                    throw new FormatException($"A reward is missing an Handler");
+                    throw new FormatException($"Action {action} is not valid");
                 }
             }
             return settings;
@@ -283,31 +276,21 @@ namespace BannerlordTwitch
         {
             if (!Common.PlatformFileHelper.FileExists(SaveFilePath))
             {
+                Log.LogFeedSystem($"No settings found, applying defaults");
                 string templateFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
                     "Bannerlord-Twitch.yaml");
                 string cfg = File.ReadAllText(templateFileName);
                 Common.PlatformFileHelper.SaveFileString(SaveFilePath, cfg);
-                InformationManager.ShowInquiry(
-                    new InquiryData(
-                        "Bannerlord Twitch",
-                        $"Default settings file created at {SaveFilePath}",
-                        true, false, "Okay", null,
-                    () => {}, () => {}), true);
             }
-            var settings = new DeserializerBuilder().Build().Deserialize<Settings>(
-                Common.PlatformFileHelper.GetFileContentString(SaveFilePath)
-                );
+            var settings = new DeserializerBuilder().Build().Deserialize<Settings>(Common.PlatformFileHelper.GetFileContentString(SaveFilePath));
             if (settings == null)
-                return null;
-            foreach (var reward in settings.Rewards)
+                throw new Exception($"Couldn't load the mod settings from {SaveFilePath}");
+
+            foreach (var action in settings.AllActions)
             {
-                if (reward.RewardSpec == null)
+                if (!action.IsValid)
                 {
-                    throw new FormatException($"A reward is missing a RewardSpec");
-                }
-                if (reward.Handler == null)
-                {
-                    throw new FormatException($"A reward is missing an Handler");
+                    throw new FormatException($"Action {action} is not valid");
                 }
             }
             

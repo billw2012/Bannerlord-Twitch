@@ -177,12 +177,12 @@ namespace BannerlordTwitch.Rewards
 
         public static void NotifyComplete(ReplyContext context, string status = null)
         {
-            BLTModule.TwitchService.RedemptionComplete(context, status);
+            BLTModule.TwitchService?.RedemptionComplete(context, status);
         }
         
         public static void NotifyCancelled(ReplyContext context, string reason = null)
         {
-            BLTModule.TwitchService.RedemptionCancelled(context, reason);
+            BLTModule.TwitchService?.RedemptionCancelled(context, reason);
         }
 
         // public static void SendChat(params string[] messages)
@@ -192,7 +192,7 @@ namespace BannerlordTwitch.Rewards
         
         public static void SendReply(ReplyContext context, params string[] messages)
         {
-            BLTModule.TwitchService.SendReply(context, messages);
+            BLTModule.TwitchService?.SendReply(context, messages);
         }
     }
 }

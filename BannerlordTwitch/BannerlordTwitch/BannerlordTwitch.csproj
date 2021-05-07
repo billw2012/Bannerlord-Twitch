@@ -234,11 +234,11 @@
     <Compile Include="Overlay\OverlayWindow.xaml.cs">
       <DependentUpon>OverlayWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Rewards\ICommandHandler.cs" />
-    <Compile Include="Rewards\IRewardHandler.cs" />
-    <Compile Include="Rewards\ActionHandlerBase.cs" />
-    <Compile Include="Rewards\ActionManager.cs" />
-    <Compile Include="Rewards\ActionManager.Documentation.cs" />
+    <Compile Include="Actions\ICommandHandler.cs" />
+    <Compile Include="Actions\IRewardHandler.cs" />
+    <Compile Include="Actions\ActionHandlerBase.cs" />
+    <Compile Include="Actions\ActionManager.cs" />
+    <Compile Include="Actions\ActionManager.Documentation.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="BLTModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

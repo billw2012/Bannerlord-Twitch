@@ -52,7 +52,7 @@ namespace BannerlordTwitch.Util
         // }
         
         public static void LogFeedFail(string str) => LogFeed("!FAIL!: " + str, new Color(1f, 0.5f, 0f));
-        public static void LogFeedCritical(string str) => LogFeed("!! BLT-CRITICAL !!: " + str, Colors.Red);
+        public static void LogFeedCritical(string str) => LogFeed("!!CRITICAL!!: " + str, Colors.Red);
         public static void LogFeedSystem(string str) => LogFeed(str, Colors.Magenta);
         public static void LogFeedBattle(string str) => LogFeed(str, Colors.White);
         public static void LogFeedEvent(string str) => LogFeed(str, Colors.Cyan);

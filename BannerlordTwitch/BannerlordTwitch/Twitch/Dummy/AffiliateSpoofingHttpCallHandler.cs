@@ -75,7 +75,7 @@ namespace BannerlordTwitch.Dummy
             AddRedirect(ApiVersion.Helix, "/channel_points/custom_rewards/redemptions", "PATCH", PatchRedemptions);
         }
 
-        public void FakeRedeem(string title, string user, string args)
+        public bool FakeRedeem(string title, string user, string args)
         {
             var reward = customRewards.FirstOrDefault(r => r.Title == title);
             if (reward != null)
@@ -91,7 +91,10 @@ namespace BannerlordTwitch.Dummy
                     Status = "UNFULFILLED",
                     RedemptionId = id,
                     });
+                return true;
             }
+
+            return false;
         }
         
         private KeyValuePair<int, string> GetUsers(string payload, string clientid, string accesstoken, Func<KeyValuePair<int, string>> realcall, Dictionary<string, string[]> urlparams)

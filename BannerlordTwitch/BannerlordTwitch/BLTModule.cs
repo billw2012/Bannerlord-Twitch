@@ -3,10 +3,10 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using System.Windows.Media;
 using BannerlordTwitch.Overlay;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using Color = TaleWorlds.Library.Color;
 
@@ -17,14 +17,14 @@ namespace BannerlordTwitch
 	internal class BLTModule : MBSubModuleBase
 	{
 		public const string Name = "BannerlordTwitch";
-		public const string Ver = "1.0.0";
+		public const string Ver = "1.1.0";
 		
 		private static readonly Thread thread;
 		private static OverlayWindow wnd;
 		
-		private static Harmony harmony = null;
+		private static Harmony harmony;
 
-		public static TwitchService TwitchService;
+		public static TwitchService TwitchService { get; private set; }
 
 		static BLTModule()
 		{
@@ -52,6 +52,27 @@ namespace BannerlordTwitch
 			thread.Start();
 		}
 
+		protected override void OnBeforeInitialModuleScreenSetAsRoot()
+		{
+			if (harmony == null)
+			{
+				try
+				{
+					harmony = new Harmony("mod.bannerlord.bannerlordtwitch");
+					harmony.PatchAll();
+					Log.LogFeedSystem($"Loaded v{Ver}");
+
+					ActionManager.Init();
+					Log.LogFeedSystem("Action Manager initialized");
+				}
+				catch (Exception ex)
+				{
+					Log.LogFeedCritical($"Error Initialising Bannerlord Twitch: {ex.Message}");
+				}
+				// RestartTwitchService();
+			}
+		}
+
 		public static void AddToFeed(string text, Color color)
 		{
 			wnd?.AddToFeed(text, System.Windows.Media.Color.FromScRgb(color.Alpha, color.Red, color.Green, color.Blue));
@@ -64,37 +85,47 @@ namespace BannerlordTwitch
 				wnd.Close();
 			});
 			ActionManager.GenerateDocumentation();
-			TwitchService?.Exit();
 			base.OnSubModuleUnloaded();
 		}
 
-		protected override void OnBeforeInitialModuleScreenSetAsRoot()
+		protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
 		{
-			if (harmony == null)
-			{
-				try
-				{
-					harmony = new Harmony("mod.bannerlord.bannerlordtwitch");
-					harmony.PatchAll();
-					Log.LogFeedSystem($"Loaded v{Ver}");
-					
-					TwitchService = new TwitchService();
-					Log.LogFeedSystem("API initialized");
-
-					ActionManager.Init();
-					Log.LogFeedSystem("Reward Manager initialized");
-				}
-				catch (Exception ex)
-				{
-					Log.LogFeedCritical($"Error Initialising Bannerlord Twitch: {ex.Message}");
-				}
-			}
+			RestartTwitchService();
 		}
 
 		protected override void OnApplicationTick(float dt)
 		{
 			base.OnApplicationTick(dt);
 			MainThreadSync.RunQueued();
+		}
+
+		public override void OnGameEnd(Game game)
+		{
+			TwitchService?.Dispose();
+			TwitchService = null;
+		}
+
+		public static bool RestartTwitchService()
+		{
+			TwitchService?.Dispose();
+			try
+			{
+				TwitchService = new TwitchService();
+				Log.LogFeedSystem("TwitchService initialized");
+				return true;
+			}
+			catch (Exception ex)
+			{
+				InformationManager.ShowInquiry(
+					new InquiryData(
+						"Bannerlord Twitch Mod DISABLED",
+						ex.Message,
+						true, false, "Okay", null,
+						() => {}, () => {}), true);
+				TwitchService = null;
+				Log.LogFeedCritical($"TwitchService could not start: {ex.Message}");
+				return false;
+			}
 		}
 	}
 }

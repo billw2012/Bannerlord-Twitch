@@ -32,11 +32,11 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="0Harmony, Culture=neutral, PublicKeyToken=null">
             <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\Bannerlord.Harmony\bin\Win64_Shipping_Client\0Harmony.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="BannerlordTwitch, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="BannerlordTwitch, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\BannerlordTwitch\build\$(Configuration)\bin\Win64_Shipping_Client\BannerlordTwitch.dll</HintPath>
           <Private>False</Private>
         </Reference>
