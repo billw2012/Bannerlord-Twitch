@@ -77,10 +77,11 @@ namespace BannerlordTwitch
                 Source = source,
             };
         
-        public static ReplyContext FromUser(ActionBase source, string userName) =>
+        public static ReplyContext FromUser(ActionBase source, string userName, string args = null) =>
             new()
             {
                 UserName = userName,
+                Args = args,
                 Source = source,
             };
     }
@@ -310,7 +311,8 @@ namespace BannerlordTwitch
                     redemptionCache.TryAdd(redeemedArgs.RedemptionId, redeemedArgs);
                     if (!ActionManager.HandleReward(reward.Handler, context, reward.HandlerConfig))
                     {
-                        Log.Error($"Couldn't enqueue redemption {redeemedArgs.RedemptionId}: RedemptionAction {reward.Handler} not found, check you have its Reward extension installed!");
+                        Log.Error($"Couldn't enqueue redemption {redeemedArgs.RedemptionId}: " 
+                                  + $"RedemptionAction {reward.Handler} not found, check you have its Reward extension installed!");
                         // We DO cancel redemptions we know about, where the implementation is missing
                         RedemptionCancelled(context, $"Redemption action {reward.Handler} wasn't found");
                     }
@@ -373,7 +375,7 @@ namespace BannerlordTwitch
         {
             if (context.Source.RespondInOverlay)
             {
-                Log.LogFeedResponse($"@{context.UserName}: " + Join("\n", messages));
+                Log.LogFeedResponse($"@{context.UserName}: " + Join(", ", messages));
             }
 
             if (context.Source.RespondInTwitch)
@@ -405,6 +407,28 @@ namespace BannerlordTwitch
                     .Select(c => $"!{c.Name} - {c.Help}")
                 ).ToArray();
             bot.SendChat(help);
+        }
+        
+        public bool ExecuteCommand(string cmdName, ChatMessage chatMessage, string args)
+        {
+            var cmd = this.settings.EnabledCommands.FirstOrDefault(c => c.Name == cmdName);
+            if (cmd == null)
+                return false;
+            var context = ReplyContext.FromMessage(cmd, chatMessage, args);
+            if (cmd.ModOnly && !context.IsModerator && !context.IsBroadcaster || cmd.BroadcasterOnly && !context.IsBroadcaster) 
+                return false;
+            ActionManager.HandleCommand(cmd.Handler, context, cmd.HandlerConfig);
+            return true;
+        }
+
+        public bool TestCommand(string cmdName, string userName, string args)
+        {
+            var cmd = this.settings.EnabledCommands.FirstOrDefault(c => c.Name == cmdName);
+            if (cmd == null)
+                return false;
+            var context = ReplyContext.FromUser(cmd, userName, args);
+            ActionManager.HandleCommand(cmd.Handler, context, cmd.HandlerConfig);
+            return true;
         }
         
         public void RedemptionComplete(ReplyContext context, string info = null)

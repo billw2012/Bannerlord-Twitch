@@ -198,7 +198,7 @@ namespace BannerlordTwitch
         {
             return !Common.PlatformFileHelper.FileExists(AuthFilePath) 
                 ? null 
-                : new DeserializerBuilder().Build().Deserialize<AuthSettings>(Common.PlatformFileHelper.GetFileContentString(AuthFilePath));
+                : new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize<AuthSettings>(Common.PlatformFileHelper.GetFileContentString(AuthFilePath));
         }
 
         public static void Save(AuthSettings authSettings)
@@ -223,7 +223,7 @@ namespace BannerlordTwitch
         {
             return !Common.PlatformFileHelper.FileExists(DbFilePath) 
                 ? new Db()
-                : new DeserializerBuilder().Build().Deserialize<Db>(Common.PlatformFileHelper.GetFileContentString(DbFilePath));
+                : new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize<Db>(Common.PlatformFileHelper.GetFileContentString(DbFilePath));
         }
         
         public static void Save(Db db) => Common.PlatformFileHelper.SaveFileString(DbFilePath, new SerializerBuilder().Build().Serialize(db));
@@ -247,7 +247,7 @@ namespace BannerlordTwitch
         private static string SaveFilePath => Path.Combine(ProjectRootDir(), "Bannerlord-Twitch.yaml");
         public static Settings Load()
         {
-            var settings = new DeserializerBuilder().Build().Deserialize<Settings>(File.ReadAllText(SaveFilePath));
+            var settings = new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize<Settings>(File.ReadAllText(SaveFilePath));
             if (settings == null)
                 throw new Exception($"Couldn't load the mod settings from {SaveFilePath}");
 
@@ -282,7 +282,7 @@ namespace BannerlordTwitch
                 string cfg = File.ReadAllText(templateFileName);
                 Common.PlatformFileHelper.SaveFileString(SaveFilePath, cfg);
             }
-            var settings = new DeserializerBuilder().Build().Deserialize<Settings>(Common.PlatformFileHelper.GetFileContentString(SaveFilePath));
+            var settings = new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize<Settings>(Common.PlatformFileHelper.GetFileContentString(SaveFilePath));
             if (settings == null)
                 throw new Exception($"Couldn't load the mod settings from {SaveFilePath}");
 

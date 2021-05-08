@@ -17,39 +17,6 @@ namespace BLTAdoptAHero
     [Description("Improve adopted heroes equipment")]
     internal class EquipHero : ActionHandlerBase
     {
-        // These must be properties not fields, as these values are dynamic
-        private static SkillObject[] MeleeSkills => new [] {
-            DefaultSkills.OneHanded,
-            DefaultSkills.TwoHanded,
-            DefaultSkills.Polearm,
-        };
-
-        private static ItemObject.ItemTypeEnum[] MeleeItems => new [] {
-            ItemObject.ItemTypeEnum.OneHandedWeapon,
-            ItemObject.ItemTypeEnum.TwoHandedWeapon,
-            ItemObject.ItemTypeEnum.Polearm,
-        };
-
-        private static SkillObject[] RangedSkills => new [] {
-            DefaultSkills.Bow,
-            DefaultSkills.Crossbow,
-            DefaultSkills.Throwing,
-        };
-        
-        private static ItemObject.ItemTypeEnum[] RangedItems => new [] {
-            ItemObject.ItemTypeEnum.Bow,
-            ItemObject.ItemTypeEnum.Crossbow,
-            ItemObject.ItemTypeEnum.Thrown,
-        };
-
-        private static (EquipmentIndex, ItemObject.ItemTypeEnum)[] ArmorIndexType => new[] {
-            (EquipmentIndex.Head, ItemObject.ItemTypeEnum.HeadArmor),
-            (EquipmentIndex.Body, ItemObject.ItemTypeEnum.BodyArmor),
-            (EquipmentIndex.Leg, ItemObject.ItemTypeEnum.LegArmor),
-            (EquipmentIndex.Gloves, ItemObject.ItemTypeEnum.HandArmor),
-            (EquipmentIndex.Cape, ItemObject.ItemTypeEnum.Cape),
-        };
-
         private struct Settings
         {
             [Description("Improve armor"), PropertyOrder(1)]
@@ -146,7 +113,7 @@ namespace BLTAdoptAHero
             // $"You purchased these items: {itemsStr}!"
             
             adoptedHero.Gold -= cost;
-            onSuccess($"Equip Tier {targetTier}");
+            onSuccess($"Equip Tier {targetTier + 1}");
         }
 
         internal static void RemoveAllEquipment(Hero adoptedHero)
@@ -165,154 +132,13 @@ namespace BLTAdoptAHero
         {
             var itemsPurchased = new List<ItemObject>();
 
-            static bool CanUseItem(ItemObject item, Hero hero)
-            {
-                var relevantSkill = item.RelevantSkill;
-                return (relevantSkill == null || hero.GetSkillValue(relevantSkill) >= item.Difficulty)
-                       && (!hero.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByFemale))
-                       && (hero.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByMale));
-            }
-
-            static List<(EquipmentElement element, EquipmentIndex index)> GetMatchingItems(SkillObject skill,
-                Equipment equipment, params ItemObject.ItemTypeEnum[] itemTypeEnums)
-            {
-                return equipment
-                    .YieldWeaponSlots()
-                    .Where(e => !e.element.IsEmpty)
-                    .Where(e => itemTypeEnums.Contains(e.element.Item.Type))
-                    .Where(e => e.element.Item.RelevantSkill == skill)
-                    .ToList();
-            }
-
-            static void RemoveNonBestSkillItems(IEnumerable<SkillObject> skills, SkillObject bestSkill, Equipment equipment,
-                params ItemObject.ItemTypeEnum[] itemTypeEnums)
-            {
-                foreach (var x in equipment
-                    .YieldWeaponSlots()
-                    .Where(e => !e.element.IsEmpty)
-                    // Correct type
-                    .Where(e => itemTypeEnums.Contains(e.element.Item.Type))
-                    .Where(e => skills.Contains(e.element.Item.RelevantSkill)
-                                && e.element.Item.RelevantSkill != bestSkill)
-                    .ToList())
-                {
-                    equipment[x.index] = EquipmentElement.Invalid;
-                }
-            }
-
-            static void RemoveNonBestMatchingWeapons(SkillObject skillObject, Equipment equipment,
-                params ItemObject.ItemTypeEnum[] itemTypeEnums)
-            {
-                foreach (var x in GetMatchingItems(skillObject, equipment, itemTypeEnums)
-                    // Highest tier first
-                    .OrderByDescending(e => e.element.Item.Tier)
-                    .Skip(1)
-                    .ToList())
-                {
-                    equipment[x.index] = EquipmentElement.Invalid;
-                }
-            }
-
-            static List<(EquipmentElement element, EquipmentIndex index)> FindAllEmptyWeaponSlots(Equipment equipment)
-            {
-                return equipment
-                    .YieldWeaponSlots()
-                    .Where(e => e.element.IsEmpty)
-                    .ToList();
-            }
-
-            static (EquipmentElement element, EquipmentIndex index) FindEmptyWeaponSlot(Equipment equipment)
-            {
-                var emptySlots = FindAllEmptyWeaponSlots(equipment);
-                return emptySlots.Any() ? emptySlots.First() : (EquipmentElement.Invalid, EquipmentIndex.None);
-            }
-
-            static ItemObject FindRandomTieredEquipment(SkillObject skill, int tier, Hero hero,
-                Func<ItemObject, bool> filter = null, params ItemObject.ItemTypeEnum[] itemTypeEnums)
-            {
-                var items = ItemObject.All
-                    // Usable
-                    .Where(item => !item.NotMerchandise && CanUseItem(item, hero) && (filter == null || filter(item)))
-                    // Correct type
-                    .Where(item => itemTypeEnums.Contains(item.Type))
-                    // Correct skill
-                    .Where(item => skill == null || item.RelevantSkill == skill)
-                    .ToList();
-
-                // Correct tier
-                var tieredItems = items.Where(item => (int) item.Tier == tier).ToList();
-
-                // We might not find an item at the specified tier, so find the closest tier we can
-                while (!tieredItems.Any() && tier >= 0)
-                {
-                    tier--;
-                    tieredItems = items.Where(item => (int) item.Tier == tier).ToList();
-                }
-
-                return tieredItems.SelectRandom();
-            }
-
-            static ItemObject UpgradeWeapon(SkillObject skill, SkillObject[] skillGroup,
-                ItemObject.ItemTypeEnum[] itemTypeEnums, EquipmentIndex defaultEquipmentIndex, Hero hero, Equipment equipment,
-                int tier, Func<ItemObject, bool> filter = null)
-            {
-                // Remove all non-skill matching weapons
-                RemoveNonBestSkillItems(skillGroup, skill, equipment, itemTypeEnums);
-
-                // Remove all but the *best* matching weapon
-                RemoveNonBestMatchingWeapons(skill, equipment, itemTypeEnums);
-
-                // Get slot of correct skill weapon we can replace  
-                var weaponSlots = GetMatchingItems(skill, equipment, itemTypeEnums);
-
-                // If there isn't one then find an empty slot
-                var (element, index) = !weaponSlots.Any()
-                    ? FindEmptyWeaponSlot(equipment)
-                    : weaponSlots.First();
-
-                if (index == EquipmentIndex.None)
-                {
-                    // We will just replace the first weapon if we can't find any slot (shouldn't happen)
-                    index = defaultEquipmentIndex;
-                }
-
-                if (element.Item == null || element.Item.Tier < (ItemObject.ItemTiers) tier)
-                {
-                    var newWeapon = FindRandomTieredEquipment(skill, tier, hero, filter, itemTypeEnums);
-                    if (newWeapon != null)
-                    {
-                        equipment[index] = new EquipmentElement(newWeapon);
-                        return newWeapon;
-                    }
-                }
-
-                return element.Item;
-            }
-
-            static ItemObject UpgradeItemInSlot(EquipmentIndex equipmentIndex, ItemObject.ItemTypeEnum itemTypeEnum, int tier,
-                Equipment equipment, Hero hero, Func<ItemObject, bool> filter = null)
-            {
-                var slot = equipment[equipmentIndex];
-                if (slot.Item == null || slot.Item.Tier < (ItemObject.ItemTiers) tier)
-                {
-                    var item = FindRandomTieredEquipment(null, tier, hero, filter, itemTypeEnum);
-                    if (item != null && (slot.Item == null || slot.Item.Tier < item.Tier))
-                    {
-                        equipment[equipmentIndex] = new EquipmentElement(item);
-                        return item;
-                    }
-                }
-
-                return null;
-            }
-
             if (upgradeMelee)
             {
                 // We want to be left with only one melee weapon of the appropriate skill, of the highest tier, then we will 
                 // try and upgrade it
-                var highestSkill = MeleeSkills.OrderByDescending(s => adoptedHero.GetSkillValue(s)).First();
+                var highestSkill = SkillGroup.MeleeSkills.OrderByDescending(s => adoptedHero.GetSkillValue(s)).First();
 
-                var newWeapon = UpgradeWeapon(highestSkill, MeleeSkills, MeleeItems, EquipmentIndex.Weapon0, adoptedHero,
+                var newWeapon = UpgradeWeapon(highestSkill, SkillGroup.MeleeSkills, SkillGroup.MeleeItems, EquipmentIndex.Weapon0, adoptedHero,
                     adoptedHero.BattleEquipment, targetTier);
                 if (newWeapon != null)
                 {
@@ -348,9 +174,9 @@ namespace BLTAdoptAHero
             {
                 // We want to be left with only one weapon of the appropriate skill, of the highest tier, then we will 
                 // try and upgrade it
-                var highestSkill = RangedSkills.OrderByDescending(s => adoptedHero.GetSkillValue(s)).First();
+                var highestSkill = SkillGroup.RangedSkills.OrderByDescending(s => adoptedHero.GetSkillValue(s)).First();
 
-                var weapon = UpgradeWeapon(highestSkill, RangedSkills, RangedItems, EquipmentIndex.Weapon3, adoptedHero,
+                var weapon = UpgradeWeapon(highestSkill, SkillGroup.RangedSkills, SkillGroup.RangedItems, EquipmentIndex.Weapon3, adoptedHero,
                     adoptedHero.BattleEquipment, targetTier);
 
                 if (weapon?.Type == ItemObject.ItemTypeEnum.Thrown)
@@ -386,7 +212,7 @@ namespace BLTAdoptAHero
 
             if (upgradeArmor)
             {
-                foreach (var (index, itemType) in ArmorIndexType)
+                foreach (var (index, itemType) in SkillGroup.ArmorIndexType)
                 {
                     var newItem = UpgradeItemInSlot(index, itemType, targetTier, adoptedHero.BattleEquipment, adoptedHero);
                     if (newItem != null) itemsPurchased.Add(newItem);
@@ -413,7 +239,7 @@ namespace BLTAdoptAHero
 
             if (upgradeCivilian)
             {
-                foreach (var (index, itemType) in ArmorIndexType)
+                foreach (var (index, itemType) in SkillGroup.ArmorIndexType)
                 {
                     var newItem = UpgradeItemInSlot(index, itemType, targetTier, adoptedHero.CivilianEquipment, adoptedHero,
                         o => o.IsCivilian);
@@ -429,6 +255,134 @@ namespace BLTAdoptAHero
             }
 
             return itemsPurchased;
+        }
+
+        private static ItemObject UpgradeItemInSlot(EquipmentIndex equipmentIndex, ItemObject.ItemTypeEnum itemTypeEnum, int tier, Equipment equipment, Hero hero, Func<ItemObject, bool> filter = null)
+        {
+            var slot = equipment[equipmentIndex];
+            if (slot.Item == null || slot.Item.Tier < (ItemObject.ItemTiers) tier)
+            {
+                var item = FindRandomTieredEquipment(null, tier, hero, filter, itemTypeEnum);
+                if (item != null && (slot.Item == null || slot.Item.Tier < item.Tier))
+                {
+                    equipment[equipmentIndex] = new EquipmentElement(item);
+                    return item;
+                }
+            }
+
+            return null;
+        }
+
+        private static ItemObject UpgradeWeapon(SkillObject skill, SkillObject[] skillGroup, ItemObject.ItemTypeEnum[] itemTypeEnums, EquipmentIndex defaultEquipmentIndex, Hero hero, Equipment equipment, int tier, Func<ItemObject, bool> filter = null)
+        {
+            // Remove all non-skill matching weapons
+            RemoveNonBestSkillItems(skillGroup, skill, equipment, itemTypeEnums);
+
+            // Remove all but the *best* matching weapon
+            RemoveNonBestMatchingWeapons(skill, equipment, itemTypeEnums);
+
+            // Get slot of correct skill weapon we can replace  
+            var weaponSlots = GetMatchingItems(skill, equipment, itemTypeEnums);
+
+            // If there isn't one then find an empty slot
+            var (element, index) = !weaponSlots.Any()
+                ? FindEmptyWeaponSlot(equipment)
+                : weaponSlots.First();
+
+            if (index == EquipmentIndex.None)
+            {
+                // We will just replace the first weapon if we can't find any slot (shouldn't happen)
+                index = defaultEquipmentIndex;
+            }
+
+            if (element.Item == null || element.Item.Tier < (ItemObject.ItemTiers) tier)
+            {
+                var newWeapon = FindRandomTieredEquipment(skill, tier, hero, filter, itemTypeEnums);
+                if (newWeapon != null)
+                {
+                    equipment[index] = new EquipmentElement(newWeapon);
+                    return newWeapon;
+                }
+            }
+
+            return element.Item;
+        }
+
+        private static ItemObject FindRandomTieredEquipment(SkillObject skill, int tier, Hero hero, Func<ItemObject, bool> filter = null, params ItemObject.ItemTypeEnum[] itemTypeEnums)
+        {
+            var items = ItemObject.All
+                // Usable
+                .Where(item => !item.NotMerchandise && CanUseItem(item, hero) && (filter == null || filter(item)))
+                // Correct type
+                .Where(item => itemTypeEnums.Contains(item.Type))
+                // Correct skill
+                .Where(item => skill == null || item.RelevantSkill == skill)
+                .ToList();
+
+            // Correct tier
+            var tieredItems = items.Where(item => (int) item.Tier == tier).ToList();
+
+            // We might not find an item at the specified tier, so find the closest tier we can
+            while (!tieredItems.Any() && tier >= 0)
+            {
+                tier--;
+                tieredItems = items.Where(item => (int) item.Tier == tier).ToList();
+            }
+
+            return tieredItems.SelectRandom();
+        }
+
+        private static (EquipmentElement element, EquipmentIndex index) FindEmptyWeaponSlot(Equipment equipment)
+        {
+            var emptySlots = FindAllEmptyWeaponSlots(equipment);
+            return emptySlots.Any() ? emptySlots.First() : (EquipmentElement.Invalid, EquipmentIndex.None);
+        }
+
+        private static List<(EquipmentElement element, EquipmentIndex index)> FindAllEmptyWeaponSlots(Equipment equipment)
+        {
+            return equipment.YieldWeaponSlots()
+                .Where(e => e.element.IsEmpty)
+                .ToList();
+        }
+
+        private static void RemoveNonBestMatchingWeapons(SkillObject skillObject, Equipment equipment, params ItemObject.ItemTypeEnum[] itemTypeEnums)
+        {
+            foreach (var x in GetMatchingItems(skillObject, equipment, itemTypeEnums)
+                // Highest tier first
+                .OrderByDescending(e => e.element.Item.Tier)
+                .Skip(1)
+                .ToList())
+            {
+                equipment[x.index] = EquipmentElement.Invalid;
+            }
+        }
+
+        private static void RemoveNonBestSkillItems(IEnumerable<SkillObject> skills, SkillObject bestSkill, Equipment equipment, params ItemObject.ItemTypeEnum[] itemTypeEnums)
+        {
+            foreach (var x in equipment.YieldWeaponSlots()
+                .Where(e => !e.element.IsEmpty)
+                // Correct type
+                .Where(e => itemTypeEnums.Contains(e.element.Item.Type))
+                .Where(e => skills.Contains(e.element.Item.RelevantSkill) && e.element.Item.RelevantSkill != bestSkill)
+                .ToList())
+            {
+                equipment[x.index] = EquipmentElement.Invalid;
+            }
+        }
+
+        private static List<(EquipmentElement element, EquipmentIndex index)> GetMatchingItems(SkillObject skill, Equipment equipment, params ItemObject.ItemTypeEnum[] itemTypeEnums)
+        {
+            return equipment.YieldWeaponSlots()
+                .Where(e => !e.element.IsEmpty)
+                .Where(e => itemTypeEnums.Contains(e.element.Item.Type))
+                .Where(e => e.element.Item.RelevantSkill == skill)
+                .ToList();
+        }
+
+        public static bool CanUseItem(ItemObject item, Hero hero)
+        {
+            var relevantSkill = item.RelevantSkill;
+            return (relevantSkill == null || hero.GetSkillValue(relevantSkill) >= item.Difficulty) && (!hero.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByFemale)) && (hero.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByMale));
         }
     }
 }

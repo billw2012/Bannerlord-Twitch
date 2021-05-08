@@ -265,15 +265,9 @@ namespace BannerlordTwitch
                     }
                     else
                     {
-                        var cmd = twitchService.settings.EnabledCommands.FirstOrDefault(c => c.Name == parts[0]);
-                        var context = ReplyContext.FromMessage(cmd, chatMessage, msg.Substring(parts[0].Length).Trim());
-                        if (cmd != null 
-                            && (!cmd.ModOnly || context.IsModerator || context.IsBroadcaster)
-                            && (!cmd.BroadcasterOnly || context.IsBroadcaster)
-                            )
-                        {
-                            ActionManager.HandleCommand(cmd.Handler, context, cmd.HandlerConfig);
-                        }
+                        string cmdName = parts[0];
+                        string args = msg.Substring(cmdName.Length).Trim();
+                        twitchService.ExecuteCommand(cmdName, chatMessage, args);
                     }
                 });
             }

@@ -132,12 +132,12 @@
         <Compile Include="Actions\Extensions.cs" />
         <Compile Include="Actions\FocusPoints.cs" />
         <Compile Include="Actions\HeroInfoCommand.cs" />
+        <Compile Include="Actions\HeroNameCache.cs" />
         <Compile Include="Actions\ImproveAdoptedHero.cs" />
         <Compile Include="Actions\JoinTournament.cs" />
         <Compile Include="Actions\SkillGroup.cs" />
         <Compile Include="Actions\SkillXP.cs" />
         <Compile Include="Actions\SummonHero.cs" />
-        <Compile Include="Actions\TournamentGamePatches.cs" />
         <Compile Include="BLTAdoptAHero.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
@@ -145,9 +145,13 @@
       <None Include="packages.config" />
       <None Include="SubModule.xml" />
     </ItemGroup>
+    <ItemGroup>
+      <Content Include="std_module_strings_xml.xml" />
+    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Target Name="AfterBuild">
         <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
+        <Copy SourceFiles="std_module_strings_xml.xml" DestinationFolder="$(OutDir)..\..\ModuleData\Languages" />
         <ItemGroup>
             <SomeDir Include="$(OutDir)\..\..\**\*" />
         </ItemGroup>

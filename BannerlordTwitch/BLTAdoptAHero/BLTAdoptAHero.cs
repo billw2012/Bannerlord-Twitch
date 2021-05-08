@@ -5,6 +5,7 @@ using HarmonyLib;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
+using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
@@ -104,22 +105,25 @@ namespace BLTAdoptAHero
                 if(hero.IsAdopted())
                     Log.LogFeedEvent($"{hero.Name} is now a member of {clan?.Name.ToString() ?? "no clan"}!");
             });
+            CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, starter => 
+                JoinTournament.SetupGameMenus(gameStarterObject as CampaignGameStarter));
         }
 
         // public override void BeginGameStart(Game game)
         // {
         //     base.BeginGameStart(game);
         // }
-        //
+        
         // public override void OnCampaignStart(Game game, object starterObject)
         // {
         //     base.OnCampaignStart(game, starterObject);
+        //     // JoinTournament.SetupGameMenus(starterObject as CampaignGameStarter);
         // }
-
-        public override void OnGameEnd(Game game)
-        {
-            base.OnGameEnd(game);
-        }
+        //
+        // public override void OnGameEnd(Game game)
+        // {
+        //     base.OnGameEnd(game);
+        // }
 
         internal const string Tag = "[BLT]";
     }

@@ -25,6 +25,24 @@ namespace BannerlordTwitch.Util
             // Rewards.RewardManager.Enqueue(reward, Guid.Empty, null);
             //Log.Info("--Current FPS: " + Utilities.GetFps(), 0, Debug.DebugColor.White, 17179869184UL);
         }
+        
+        [CommandLineFunctionality.CommandLineArgumentFunction("command", "blt")]
+        [UsedImplicitly]
+        public static string SpoofCommand(List<string> strings)
+        {
+            if (BLTModule.TwitchService == null)
+            { 
+                return "TwitchService is not running";
+            }
+            var parts = string.Join(" ", strings).Split(',').Select(p => p.Trim()).ToList();
+            return BLTModule.TwitchService?.TestCommand(parts[0], parts.Count > 1 ? parts[1] : "Test User",
+                parts.Count > 2 ? parts[2] : null) == true 
+                ? $"Tested redemption of {parts[0]}"
+                : $"Couldn't test redemption of {parts[0]}, either it doesn't exist, or wasn't enabled";
+
+            // Rewards.RewardManager.Enqueue(reward, Guid.Empty, null);
+            //Log.Info("--Current FPS: " + Utilities.GetFps(), 0, Debug.DebugColor.White, 17179869184UL);
+        }
 
         [CommandLineFunctionality.CommandLineArgumentFunction("simteststart", "blt")]
         [UsedImplicitly]

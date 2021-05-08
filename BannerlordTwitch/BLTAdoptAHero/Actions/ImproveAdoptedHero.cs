@@ -70,23 +70,19 @@ namespace BLTAdoptAHero
         
         protected static SkillObject GetSkill(Hero hero, Skills skills, bool random, bool auto, Func<SkillObject, bool> predicate = null)
         {
-            IEnumerable<SkillObject> GetSkills(IEnumerable<string> sk) => sk
-                .Select(sn => DefaultSkills.GetAllSkills().FirstOrDefault(so =>
-                    string.Equals(so.StringId, sn, StringComparison.CurrentCultureIgnoreCase)))
-                .Where(predicate ?? (s => true));
-                
+            predicate ??= s => true;
             IEnumerable<SkillObject> selectedSkills;
             if (auto)
             {
                 // We will select automatically which skill from groups
                 selectedSkills = SkillGroups
-                    .Select(GetSkills)
+                    .Select(g => SkillGroup.GetSkills(g).Where(predicate))
                     .Where(g => g.Any())
                     .SelectRandom();
             }
             else
             {
-                selectedSkills = GetSkills(SkillGroup.SkillsToStrings(skills));
+                selectedSkills = SkillGroup.GetSkills(SkillGroup.SkillsToStrings(skills)).Where(predicate);
             }
 
             return random 

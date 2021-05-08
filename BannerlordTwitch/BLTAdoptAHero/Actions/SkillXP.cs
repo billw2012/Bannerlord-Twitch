@@ -32,8 +32,8 @@ namespace BLTAdoptAHero
 
         public static (bool success, string description) ImproveSkill(Hero hero, int amount, Skills skills, bool random, bool auto)
         {
-            var skill = GetSkill(hero, skills, random, auto);
-            if (skill == null) return (false, $"{skills} is not a valid skill name");
+            var skill = GetSkill(hero, skills, random, auto, so => hero.HeroDeveloper.GetFocusFactor(so) > 0);
+            if (skill == null) return (false, $"Couldn't find a skill to improve");
             float prevSkill = hero.HeroDeveloper.GetPropertyValue(skill);
             int prevLevel = hero.GetSkillValue(skill);
             hero.HeroDeveloper.AddSkillXp(skill, amount);

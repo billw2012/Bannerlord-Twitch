@@ -21,11 +21,11 @@ namespace BannerlordTwitch.Util
         
         public static void Info(string str)
         {
-#if DEBUG
-            LogFeedSystem(str);
-#else
+// #if DEBUG
+//             LogFeedSystem(str);
+// #else
             MainThreadSync.Run(() => LogFilePrint(str));
-#endif
+//#endif
         }
 
         public static void Error(string str)
