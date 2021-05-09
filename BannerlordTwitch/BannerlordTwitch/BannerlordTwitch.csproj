@@ -247,6 +247,7 @@
     <Compile Include="Twitch\Dummy\TwitchRedirectingHttpCallHandler.cs" />
     <Compile Include="Twitch\TwitchService.Bot.cs" />
     <Compile Include="Twitch\TwitchService.cs" />
+    <Compile Include="UI\MultilineTextBoxEditor.cs" />
     <Compile Include="Util\Assembly.cs" />
     <Compile Include="Util\AutoMissionBehavior.cs" />
     <Compile Include="Util\ConsoleCommands.cs" />

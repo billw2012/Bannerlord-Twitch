@@ -94,6 +94,7 @@ namespace BannerlordTwitch
         [Description("Is the reward currently enabled, if false the reward won’t show up to viewers."), PropertyOrder(4)]
         public bool IsEnabled { get; set; } = true;
 
+        [Browsable(false)]
         public string BackgroundColorText { get; set; }
         [Description("Custom background color for the reward"), PropertyOrder(5)]
         [YamlIgnore]

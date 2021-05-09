@@ -127,7 +127,6 @@
         <Compile Include="Actions\AddGoldToHero.cs" />
         <Compile Include="Actions\AdoptAHero.cs" />
         <Compile Include="Actions\AttributePoints.cs" />
-        <Compile Include="Actions\BLTMissionBehavior.cs" />
         <Compile Include="Actions\EquipHero.cs" />
         <Compile Include="Actions\Extensions.cs" />
         <Compile Include="Actions\FocusPoints.cs" />
@@ -135,9 +134,12 @@
         <Compile Include="Actions\HeroNameCache.cs" />
         <Compile Include="Actions\ImproveAdoptedHero.cs" />
         <Compile Include="Actions\JoinTournament.cs" />
+        <Compile Include="Actions\Marry.cs" />
         <Compile Include="Actions\SkillGroup.cs" />
         <Compile Include="Actions\SkillXP.cs" />
         <Compile Include="Actions\SummonHero.cs" />
+        <Compile Include="Actions\Util\BattleEffects.cs" />
+        <Compile Include="Actions\Util\BLTMissionBehavior.cs" />
         <Compile Include="BLTAdoptAHero.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>

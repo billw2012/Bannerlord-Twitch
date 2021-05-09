@@ -143,17 +143,26 @@
                             </DockPanel>
                         </Grid>
                         <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
-                        <xctk:PropertyGrid Grid.Column="2"
-                                           x:Name="PropertyGrid"
-                                           AutoGenerateProperties="True"
-                                           ShowSearchBox="False"
-                                           ShowSortOptions="False"
-                                           ShowAdvancedOptions="False"
-                                           Foreground="Black"
-                                           Background="DarkGray"
-                                           SelectedObjectChanged="PropertyGrid_OnSelectedObjectChanged"
-                                           PropertyChanged="PropertyGrid_OnPropertyChanged"
-                        />
+                        <xctk:PropertyGrid 
+                            Grid.Column="2"
+                            x:Name="PropertyGrid"
+                            AutoGenerateProperties="True"
+                            ShowSearchBox="False"
+                            ShowSortOptions="False"
+                            ShowAdvancedOptions="True"
+                            NameColumnWidth="180"
+                            ShowDescriptionByTooltip="True"
+                            Foreground="Black"
+                            Background="DarkGray"
+                            PreparePropertyItem="PropertyGrid_OnPreparePropertyItem"
+                            SelectedObjectChanged="PropertyGrid_OnSelectedObjectChanged"
+                            PropertyChanged="PropertyGrid_OnPropertyChanged">
+                            <xctk:PropertyGrid.CategoryGroupHeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Foreground="Black"/>
+                                </DataTemplate>
+                            </xctk:PropertyGrid.CategoryGroupHeaderTemplate>
+                        </xctk:PropertyGrid>
                     </Grid>
                 </DockPanel>
             </TabItem>

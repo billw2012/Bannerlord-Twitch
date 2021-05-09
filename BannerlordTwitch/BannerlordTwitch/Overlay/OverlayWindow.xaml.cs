@@ -64,7 +64,6 @@ namespace BannerlordTwitch.Overlay
 
         private class OverlaySettings
         {
-            [Browsable(false)]
             public string BackgroundColorText { get; set; }
             [YamlIgnore]
             public Color BackgroundColor

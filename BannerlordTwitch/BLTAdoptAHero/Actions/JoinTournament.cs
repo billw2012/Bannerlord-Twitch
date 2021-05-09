@@ -26,34 +26,49 @@ namespace BLTAdoptAHero
     internal class JoinTournament : ActionHandlerBase
     {
         [CategoryOrder("General", 1)]
-        [CategoryOrder("Win Effects", 1)]
-        [CategoryOrder("Win Match Effects", 1)]
-        [CategoryOrder("Kill Effects", 1)]
+        [CategoryOrder("Tournament Effects", 2)]
+        [CategoryOrder("Match Effects", 3)]
+        [CategoryOrder("Kill Effects", 4)]
         private class Settings
         {
             [Category("General"), Description("Whether the tournament will include the player or not"), PropertyOrder(1)]
             public bool ViewersOnly { get; set; }
-            [Category("General"), Description("Gold cost to join"), PropertyOrder(2)]
+            
+            [Category("General"), Description("Whether the hero will start the tournament with full HP"), PropertyOrder(2)]
+            public bool StartWithFullHP { get; set; }
+            
+            [Category("General"), Description("Gold cost to join"), PropertyOrder(3)]
             public int GoldCost { get; set; }
-            [Category("General"), Description("Multiplier applied to all effects for subscribers"), PropertyOrder(1)]
+            
+            [Category("General"), Description("Multiplier applied to all effects for subscribers"), PropertyOrder(4)]
             public float SubBoost { get; set; } = 1;
 
-            [Category("Win Effects"), Description("Gold won if the hero win the tournaments"), PropertyOrder(1)]
+            [Category("Tournament Effects"), Description("Gold won if the hero wins the tournaments"), PropertyOrder(1)]
             public int WinGold { get; set; }
-            [Category("Win Effects"), Description("XP given if the hero win the tournaments"), PropertyOrder(2)]
+            [Category("Tournament Effects"), Description("XP given if the hero wins the tournaments"), PropertyOrder(2)]
             public int WinXP { get; set; }
+            [Category("Tournament Effects"), Description("XP given if the hero participates in a tournament"), PropertyOrder(3)]
+            public int ParticipateXP { get; set; }
             
-            [Category("Win Match Effects"), Description("Gold won if the hero wins their match"), PropertyOrder(1)]
+            [Category("Match Effects"), Description("Gold won if the hero wins their match"), PropertyOrder(1)]
             public int WinMatchGold { get; set; }
-            [Category("Win Match Effects"), Description("XP given if the hero wins their match"), PropertyOrder(2)]
+            [Category("Match Effects"), Description("XP given if the hero wins their match"), PropertyOrder(2)]
             public int WinMatchXP { get; set; }
+            [Category("Match Effects"), Description("XP given if the hero participates in a match"), PropertyOrder(3)]
+            public int ParticipateMatchXP { get; set; }
             
             [Category("Kill Effects"), Description("Gold the hero gets for every kill"), PropertyOrder(1)]
             public int GoldPerKill { get; set; }
-            [Category("Kill Effects"), Description("XP the hero gets for every kill. It will be distributed using the Auto behavior of the SkillXP action: randomly between the top skills from each skill group (melee, ranged, movement, support, personal)."), PropertyOrder(2)]
+            [Category("Kill Effects"), Description("XP the hero gets for every kill"), PropertyOrder(2)]
             public int XPPerKill { get; set; }
-            [Category("Kill Effects"), Description("HP the hero gets for every kill"), PropertyOrder(3)]
+            [Category("Kill Effects"), Description("XP the hero gets when killed"), PropertyOrder(3)]
+            public int XPPerKilled { get; set; }
+            [Category("Kill Effects"), Description("HP the hero gets for every kill"), PropertyOrder(4)]
             public int HealPerKill { get; set; }
+            [Category("Kill Effects"), Description("How much to scale the reward by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 20 would give about 2.5 times the normal rewards for gold, xp and health."), PropertyOrder(5)]
+            public float? RelativeLevelScaling { get; set; }
+            [Category("Kill Effects"), Description("Caps the maximum multiplier for the level difference, defaults to 5 if not specified"), PropertyOrder(6)]
+            public float? LevelScalingCap { get; set; }
         }
         
         protected override Type ConfigType => typeof(Settings);
@@ -240,53 +255,61 @@ namespace BLTAdoptAHero
                 tournamentBehaviour.TournamentEnd += () =>
                 {
                     // Win results
-                    var (context, settings, hero) = currentTournament.FirstOrDefault(tuple 
-                        => tournamentBehaviour.Winner.Character?.HeroObject == tuple.hero);
-                    if (hero != null)
+                    foreach (var (context, settings, hero) in currentTournament)
                     {
                         float actualBoost = SettingsSubBoost(context, settings);
-                        
-                        int actualGold = (int) (settings.WinGold * actualBoost + settings.GoldCost);
                         var results = new List<string>();
-                        if (actualGold > 0)
+                        if(tournamentBehaviour.Winner.Character?.HeroObject == hero)
                         {
-                            // User gets their gold back also
-                            hero.ChangeHeroGold(actualGold);
-                            results.Add($"+{actualGold} gold");
-                            //ActionManager.SendReply(context, $@"You won {actualGold} gold!");
-                        }
-
-                        int xp = (int) (settings.WinXP * actualBoost);
-                        if (xp > 0)
-                        {
-                            (bool success, string description) = SkillXP.ImproveSkill(hero, xp, Skills.All,
-                                random: false, auto: true);
-                            if (success)
+                            results.Add("WINNER!");
+                            // Winner gets their gold back also
+                            int actualGold = (int) (settings.WinGold * actualBoost + settings.GoldCost);
+                            if (actualGold > 0)
                             {
-                                results.Add(description);
-                                //Log.LogFeedBattle($"{hero.FirstName}: {description}");
+                                hero.ChangeHeroGold(actualGold);
+                                results.Add($"+{actualGold} gold");
                             }
-                        }
-
-                        var prize = tournamentBehaviour.TournamentGame.Prize;
-                        (bool upgraded, string failReason) = UpgradeToItem(hero, prize);
-                        if(!upgraded)
-                        {
-                            hero.ChangeHeroGold(prize.Value);
-                            results.Add($"sold {prize.Name} for {prize.Value} gold ({failReason})");
-                            // ActionManager.SendReply(context, $"sold {prize.Name} for {prize.Value} gold as {failReason}!");
+                            int xp = (int) (settings.WinXP * actualBoost);
+                            if (xp > 0)
+                            {
+                                (bool success, string description) = SkillXP.ImproveSkill(hero, xp, Skills.All,
+                                    random: false, auto: true);
+                                if (success)
+                                {
+                                    results.Add(description);
+                                }
+                            }
+                            var prize = tournamentBehaviour.TournamentGame.Prize;
+                            (bool upgraded, string failReason) = UpgradeToItem(hero, prize);
+                            if (!upgraded)
+                            {
+                                hero.ChangeHeroGold(prize.Value);
+                                results.Add($"sold {prize.Name} for {prize.Value} gold ({failReason})");
+                            }
+                            else
+                            {
+                                results.Add($"received {prize.Name}");
+                            }
                         }
                         else
                         {
-                            results.Add($"won {prize.Name}");
-                            // ActionManager.SendReply(context, $"You won {prize.Name}!");
+                            int xp = (int) (settings.ParticipateXP * actualBoost);
+                            if (xp > 0)
+                            {
+                                (bool success, string description) =
+                                    SkillXP.ImproveSkill(hero, xp, Skills.All, random: false, auto: true);
+                                if (success)
+                                {
+                                    results.Add(description);
+                                }
+                            }
                         }
-
                         if (results.Any())
                         {
                             ActionManager.SendReply(context, results.ToArray());
                         }
                     }
+
                     doViewerTournament = false;
                 };
 
@@ -298,43 +321,15 @@ namespace BLTAdoptAHero
                     BLTMissionBehavior.Current.AddListeners(hero,
                         onGotAKill: (killer, killed, state) =>
                         {
-                            var results = new List<string>();
-                            
-                            if (killed != null)
-                            {
-                                results.Add($"{BLTMissionBehavior.KillStateVerb(state)} {killed.Name}");
-                                //Log.LogFeedBattle(
-                                    //$"{hero.FirstName} {BLTMissionBehavior.KillStateVerb(state)} {killed.Name}");
-                            }
-
-                            int actualGold = (int) (settings.GoldPerKill * actualBoost);
-                            if (actualGold != 0)
-                            {
-                                hero.ChangeHeroGold(actualGold);
-                                results.Add($"+{actualGold} gold");
-                                //Log.LogFeedBattle($"{hero.FirstName}: +{gold} gold");
-                            }
-
-                            if (settings.HealPerKill != 0)
-                            {
-                                float prevHealth = killer.Health;
-                                killer.Health = Math.Min(killer.HealthLimit,
-                                    killer.Health + settings.HealPerKill * actualBoost);
-                                float healthDiff = killer.Health - prevHealth;
-                                if (healthDiff > 0)
-                                    results.Add($"+{healthDiff}hp");
-                                    //Log.LogFeedBattle($"{hero.FirstName}: +{healthDiff}hp");
-                            }
-
-                            int xp = (int) (settings.XPPerKill * actualBoost);
-                            if (xp != 0)
-                            {
-                                
-                                (bool success, string description) = SkillXP.ImproveSkill(hero, xp, Skills.All, random: false, auto: true);
-                                if (success)
-                                    results.Add(description);
-                                    //Log.LogFeedBattle($"{hero.FirstName}: {description}");
-                            }
+                            var results = BLTMissionBehavior.ApplyKillEffects(
+                                hero, killer, killed, state,
+                                settings.GoldPerKill,
+                                settings.HealPerKill, 
+                                settings.XPPerKill,
+                                actualBoost,
+                                settings.RelativeLevelScaling,
+                                settings.LevelScalingCap
+                                );
                             
                             if (results.Any())
                             {
@@ -343,9 +338,18 @@ namespace BLTAdoptAHero
                         },
                         onGotKilled: (_, killer, state) =>
                         {
-                            Log.LogFeedBattle(killer != null
-                                ? $"{BLTMissionBehavior.KillStateVerb(state)} by {killer.Name}"
-                                : $"{BLTMissionBehavior.KillStateVerb(state)}");
+                            var results = BLTMissionBehavior.ApplyKilledEffects(
+                                hero, killer, state,
+                                settings.XPPerKilled,
+                                actualBoost,
+                                settings.RelativeLevelScaling,
+                                settings.LevelScalingCap
+                            );
+                            
+                            if (results.Any())
+                            {
+                                ActionManager.SendReply(context, results.ToArray());
+                            }
                         }
                     );
                 }
@@ -364,18 +368,16 @@ namespace BLTAdoptAHero
             {
                 float actualBoost = context.IsSubscriber ? settings.SubBoost : 1;
                 
+                var results = new List<string>();
+
                 if(__instance.LastMatch.Winners.Any(w => w.Character?.HeroObject == adoptedHero))
                 {
-                    var results = new List<string>();
-                    
                     int actualGold = (int) (settings.WinMatchGold * actualBoost);
                     if (actualGold > 0)
                     {
                         adoptedHero.ChangeHeroGold(actualGold);
                         results.Add($"+{actualGold} gold");
-                        //ActionManager.SendReply(context, $@"You won {actualGold} gold!");
                     }
-
                     int xp = (int) (settings.WinMatchXP * actualBoost);
                     if (xp > 0)
                     {
@@ -384,14 +386,25 @@ namespace BLTAdoptAHero
                         if (success)
                         {
                             results.Add(description);
-                            //Log.LogFeedBattle($"{adoptedHero.FirstName}: {description}");
                         }
                     }
-
-                    if (results.Any())
+                }
+                else if (__instance.LastMatch.Participants.Any(w => w.Character?.HeroObject == adoptedHero))
+                {
+                    int xp = (int) (settings.ParticipateMatchXP * actualBoost);
+                    if (xp > 0)
                     {
-                        ActionManager.SendReply(context, results.ToArray());
+                        (bool success, string description) =
+                            SkillXP.ImproveSkill(adoptedHero, xp, Skills.All, random: false, auto: true);
+                        if (success)
+                        {
+                            results.Add(description);
+                        }
                     }
+                }
+                if (results.Any())
+                {
+                    ActionManager.SendReply(context, results.ToArray());
                 }
             }
         }

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Threading;
+using System.Windows;
 using TaleWorlds.MountAndBlade;
 
 namespace BLTConfigure
@@ -27,9 +28,16 @@ namespace BLTConfigure
             
             thread = new Thread(() =>
             {
-                wnd = new BLTConfigureWindow();
-                wnd.Show();
-                System.Windows.Threading.Dispatcher.Run();
+                try
+                {
+                    wnd = new BLTConfigureWindow();
+                    wnd.Show();
+                    System.Windows.Threading.Dispatcher.Run();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"Exception occurred (please report this on the discord or nexusmods):\n{e}", "BLT Configure Module Crashed!");
+                }
             });
             thread.SetApartmentState(ApartmentState.STA);
             thread.IsBackground = true;

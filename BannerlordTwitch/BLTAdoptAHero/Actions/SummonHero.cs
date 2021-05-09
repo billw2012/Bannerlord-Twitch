@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -17,6 +18,7 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
@@ -24,11 +26,16 @@ namespace BLTAdoptAHero
     [Description("Spawns the adopted hero into the current active mission")]
     internal class SummonHero : ActionHandlerBase
     {
+        [CategoryOrder("General", -1)]
         [CategoryOrder("Allowed Missions", 0)]
         [CategoryOrder("General", 1)]
         [CategoryOrder("Effects", 2)]
+        [CategoryOrder("End Effects", 3)]
+        [CategoryOrder("Kill Effects", 4)]
         private class Settings
         {
+            [Category("General"), YamlIgnore, ReadOnly(true), PropertyOrder(-100), Editor(typeof(MultilineTextNonEditable), typeof(MultilineTextNonEditable))]
+            public string Help => "This allows viewers to spawn their adopted heroes into your missions/battles. It supports a custom shout: if used as a command then anything the viewer puts after the command will be shouted in game by the player, if used as a reward then just enable the 'IsUserInputRequired' and set the 'Prompt' to something like 'My shout'.";
             [Category("Allowed Missions"), Description("Can summon for normal field battles between parties"), PropertyOrder(1)]
             public bool AllowFieldBattle { get; set; }
             [Category("Allowed Missions"), Description("Can summon in village battles"), PropertyOrder(2)]
@@ -45,7 +52,7 @@ namespace BLTAdoptAHero
             public bool AllowHideOut { get; set; }
             [Category("General"), Description("Whether the hero is on the player or enemy side"), PropertyOrder(1)]
             public bool OnPlayerSide { get; set; }
-            [Category("General"), Description("Maximum number of summons that can be active at the same time (i.e. max alive adopted heroes that can be in the mission)"), PropertyOrder(2)]
+            [Category("General"), Description("Maximum number of summons that can be active at the same time (i.e. max alive adopted heroes that can be in the mission) NOT IMPLEMENTED YET"), PropertyOrder(2)]
             public int? MaxSimultaneousSummons { get; set; }
             [Category("General"), Description("Whether the summoned hero is allowed to die"), PropertyOrder(3)]
             public bool AllowDeath { get; set; }
@@ -53,20 +60,33 @@ namespace BLTAdoptAHero
             public bool StartWithFullHealth { get; set; }
             [Category("General"), Description("Gold cost to summon"), PropertyOrder(1)]
             public int GoldCost { get; set; }
-            [Category("Effects"), Description("Gold won if the heroes side wins"), PropertyOrder(2)]
-            public int WinGold { get; set; }
-            [Category("Effects"), Description("Gold lost if the heroes side loses"), PropertyOrder(3)]
-            public int LoseGold { get; set; }
-            [Category("Effects"), Description("Gold the hero gets for every kill"), PropertyOrder(4)]
-            public int GoldPerKill { get; set; }
-            [Category("Effects"), Description("XP the hero gets for every kill. It will be distributed using the Auto behavior of the SkillXP action: randomly between the top skills from each skill group (melee, ranged, movement, support, personal)."), PropertyOrder(5)]
-            public int XPPerKill { get; set; }
-            [Category("Effects"), Description("HP the hero gets for every kill"), PropertyOrder(6)]
-            public int HealPerKill { get; set; }
-            [Category("Effects"), Description("HP the hero gets every second they are alive in the mission"), PropertyOrder(7)]
-            public float HealPerSecond { get; set; }
-            [Category("Effects"), Description("Multiplier applied to (positive) effects for subscribers"), PropertyOrder(8)]
+
+            [Category("Effects"), Description("Multiplier applied to (positive) effects for subscribers"), PropertyOrder(1)]
             public float SubBoost { get; set; } = 1;
+            [Category("Effects"), Description("HP the hero gets every second they are alive in the mission"), PropertyOrder(2)]
+            public float HealPerSecond { get; set; }
+
+            [Category("End Effects"), Description("Gold won if the heroes side wins"), PropertyOrder(1)]
+            public int WinGold { get; set; }
+            [Category("End Effects"), Description("XP the hero gets if the heroes side wins"), PropertyOrder(2)]
+            public int WinXP { get; set; }
+            [Category("End Effects"), Description("Gold lost if the heroes side loses"), PropertyOrder(3)]
+            public int LoseGold { get; set; }
+            [Category("End Effects"), Description("XP the hero gets if the heroes side loses"), PropertyOrder(4)]
+            public int LoseXP { get; set; }
+
+            [Category("Kill Effects"), Description("Gold the hero gets for every kill"), PropertyOrder(1)]
+            public int GoldPerKill { get; set; }
+            [Category("Kill Effects"), Description("XP the hero gets for every kill"), PropertyOrder(2)]
+            public int XPPerKill { get; set; }
+            [Category("Kill Effects"), Description("XP the hero gets for being killed"), PropertyOrder(3)]
+            public int XPPerKilled { get; set; }
+            [Category("Kill Effects"), Description("HP the hero gets for every kill"), PropertyOrder(4)]
+            public int HealPerKill { get; set; }
+            [Category("Kill Effects"), Description("How much to scale the reward by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 20 would give about 2.5 times the normal rewards for gold, xp and health."), PropertyOrder(5)]
+            public float? RelativeLevelScaling { get; set; }
+            [Category("Kill Effects"), Description("Caps the maximum multiplier for the level difference, defaults to 5 if not specified"), PropertyOrder(6)]
+            public float? LevelScalingCap { get; set; }
         }
 
         protected override Type ConfigType => typeof(Settings);
@@ -237,7 +257,6 @@ namespace BLTAdoptAHero
                 {
                     agent = missionAgentHandler.SpawnLocationCharacter(locationCharacter);
                 }
-                //agent = SpawnWanderingAgent(missionAgentHandler, locationCharacter, worldFrame.ToGroundMatrixFrame(), false, true); 
 
                 agent.SetTeam(settings.OnPlayerSide 
                     ? missionAgentHandler.Mission.PlayerTeam
@@ -313,7 +332,6 @@ namespace BLTAdoptAHero
                         ?.Select(a => a.Origin?.BattleCombatant as PartyBase)
                         .Where(p => p != null).SelectRandom();
                 }
-
                 if (party == null)
                 {
                     onFailure($"Could not find a party for you to join!");
@@ -332,7 +350,6 @@ namespace BLTAdoptAHero
                     isAlarmed: true,
                     wieldInitialWeapons: true);
 
-
                 float actualBoost = context.IsSubscriber ? settings.SubBoost : 1;
                 BLTMissionBehavior.Current.AddListeners(adoptedHero,
                     onSlowTick: dt =>
@@ -346,54 +363,79 @@ namespace BLTAdoptAHero
                     {
                         if (Mission.Current.MissionResult != null)
                         {
+                            var results = new List<string>();
                             if (settings.OnPlayerSide == Mission.Current.MissionResult.PlayerVictory)
                             {
-                                // User gets their gold back also
-                                adoptedHero.ChangeHeroGold((int) (settings.WinGold * actualBoost + settings.GoldCost));
-                                ActionManager.SendReply(context, $@"You won {settings.WinGold} gold!");
+                                int actualGold = (int) (settings.WinGold * actualBoost + settings.GoldCost);
+                                if (actualGold > 0)
+                                {
+                                    adoptedHero.ChangeHeroGold(actualGold);
+                                    results.Add($"+{actualGold} gold");
+                                }
+                                int xp = (int) (settings.WinXP * actualBoost);
+                                if (xp > 0)
+                                {
+                                    (bool success, string description) = SkillXP.ImproveSkill(adoptedHero, xp, Skills.All,
+                                        random: false, auto: true);
+                                    if (success)
+                                    {
+                                        results.Add(description);
+                                    }
+                                }
                             }
-                            else if(settings.LoseGold > 0)
+                            else
                             {
-                                adoptedHero.ChangeHeroGold(-settings.LoseGold);
-                                ActionManager.SendReply(context, $@"You lost {settings.LoseGold + settings.GoldCost} gold!");
+                                if (settings.LoseGold > 0)
+                                {
+                                    adoptedHero.ChangeHeroGold(-settings.LoseGold);
+                                    results.Add($"-{settings.LoseGold} gold");
+                                }
+                                int xp = (int) (settings.LoseXP * actualBoost);
+                                if (xp > 0)
+                                {
+                                    (bool success, string description) = SkillXP.ImproveSkill(adoptedHero, xp, Skills.All,
+                                        random: false, auto: true);
+                                    if (success)
+                                    {
+                                        results.Add(description);
+                                    }
+                                }
+                            }
+                            if (results.Any())
+                            {
+                                ActionManager.SendReply(context, results.ToArray());
                             }
                         }
                     },
-                    onGotAKill: (_, killed, state) =>
+                    onGotAKill: (killer, killed, state) =>
                     {
-                        if (killed != null)
+                        var results = BLTMissionBehavior.ApplyKillEffects(
+                            adoptedHero, killer, killed, state,
+                            settings.GoldPerKill,
+                            settings.HealPerKill, 
+                            settings.XPPerKill,
+                            actualBoost,
+                            settings.RelativeLevelScaling,
+                            settings.LevelScalingCap
+                        );
+                        if (results.Any())
                         {
-                            Log.LogFeedBattle($"{adoptedHero.FirstName} {BLTMissionBehavior.KillStateVerb(state)} {killed.Name}");
-                        }
-                        if (settings.GoldPerKill != 0)
-                        {
-                            int gold = (int) (settings.GoldPerKill * actualBoost);
-                            adoptedHero.ChangeHeroGold(gold);
-                            Log.LogFeedBattle($"{adoptedHero.FirstName}: +{gold} gold");
-                        }
-
-                        if (settings.HealPerKill != 0)
-                        {
-                            float prevHealth = agent.Health;
-                            agent.Health = Math.Min(agent.HealthLimit, agent.Health + settings.HealPerKill * actualBoost);
-                            float healthDiff = agent.Health - prevHealth;
-                            if(healthDiff > 0)
-                                Log.LogFeedBattle($"{adoptedHero.FirstName}: +{healthDiff}hp");
-                        }
-
-                        if (settings.XPPerKill != 0)
-                        {
-                            int xp = (int) (settings.XPPerKill * actualBoost);
-                            (bool success, string description) = SkillXP.ImproveSkill(adoptedHero, xp, Skills.All, random: false, auto: true);
-                            if(success)
-                                Log.LogFeedBattle($"{adoptedHero.FirstName}: {description}");
+                            ActionManager.SendReply(context, results.ToArray());
                         }
                     },
-                    onGotKilled: (_, killer, state) =>
+                    onGotKilled: (killed, killer, state) =>
                     {
-                        Log.LogFeedBattle(killer != null
-                            ? $"{adoptedHero.FirstName} was {BLTMissionBehavior.KillStateVerb(state)} by {killer.Name}"
-                            : $"{adoptedHero.FirstName} was {BLTMissionBehavior.KillStateVerb(state)}");
+                        var results = BLTMissionBehavior.ApplyKilledEffects(
+                            adoptedHero, killer, state,
+                            settings.XPPerKilled,
+                            actualBoost,
+                            settings.RelativeLevelScaling,
+                            settings.LevelScalingCap
+                        );
+                        if (results.Any())
+                        {
+                            ActionManager.SendReply(context, results.ToArray());
+                        }
                     }
                 );
             }
@@ -410,7 +452,6 @@ namespace BLTAdoptAHero
                     "I'm here!",
                     "Which one should I stab?",
                     "Once more unto the breach!",
-                    "It's nothing personal!",
                     "Freeeeeedddooooooommmm!",
                 }
                 : new List<string>

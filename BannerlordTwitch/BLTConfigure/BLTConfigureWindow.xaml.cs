@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -15,7 +16,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
-using AdonisUI.Controls;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using Xceed.Wpf.Toolkit.PropertyGrid;
@@ -104,7 +104,8 @@ namespace BLTConfigure
             }
 
             EditedSettings ??= new Settings();
-
+            
+            // MainThreadSync.Run();
             ActionManager.ConvertSettings(EditedSettings.Commands);
             ActionManager.ConvertSettings(EditedSettings.Rewards);
             CommandsListBox.ItemsSource = EditedSettings.Commands;
@@ -135,7 +136,7 @@ namespace BLTConfigure
             if (RewardsListBox.SelectedItem != null)
             {
                 PropertyGrid.SelectedObject = RewardsListBox.SelectedItem;
-                CommandsListBox.SelectedItem = null;  
+                //CommandsListBox.SelectedItem = null;  
             }
         }
 
@@ -143,7 +144,7 @@ namespace BLTConfigure
         {
             if (CommandsListBox.SelectedItem != null)
             {
-                RewardsListBox.SelectedItem = null;
+                //RewardsListBox.SelectedItem = null;
                 PropertyGrid.SelectedObject = CommandsListBox.SelectedItem;
             }
         }
@@ -380,18 +381,17 @@ namespace BLTConfigure
             Process.Start(e.Uri.ToString());
         }
 
+        private static string SplitCamelCase(string input)
+        {
+            return System.Text.RegularExpressions.Regex.Replace(input, "([A-Z])", " $1", System.Text.RegularExpressions.RegexOptions.Compiled).Trim();
+        }
+
         private void PropertyGrid_OnSelectedObjectChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            var grid = sender as PropertyGrid;
-            foreach (PropertyItem prop in grid.Properties)
-            {
-                if (prop.IsExpandable)
-                {
-                    prop.IsExpanded = true;
-                    prop.IsExpandable = false;
-                }
-            }
+            //var grid = sender as PropertyGrid;
+            //ExpandAndFixNames(grid.Properties);
         }
+        
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
@@ -406,6 +406,19 @@ namespace BLTConfigure
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void PropertyGrid_OnPreparePropertyItem(object sender, PropertyItemEventArgs e)
+        {
+            if (e.PropertyItem.IsExpandable)
+            {
+                e.PropertyItem.IsExpanded = true;
+                // e.PropertyItem.IsExpandable = false;
+                // ExpandAndFixNames(e.PropertyItem.Properties);
+            }
+
+            e.PropertyItem.DisplayName = SplitCamelCase(e.PropertyItem.DisplayName);
+            //throw new NotImplementedException();
         }
     }
     

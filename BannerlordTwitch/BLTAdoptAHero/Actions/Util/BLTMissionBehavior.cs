@@ -4,6 +4,7 @@ using System.Linq;
 using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace BLTAdoptAHero
@@ -149,5 +150,140 @@ namespace BLTAdoptAHero
                 AgentState.Deleted => "deleted",
                 _ => "fondled"
             };
+        
+        public const int MaxLevel = 62;
+        
+        // https://www.desmos.com/calculator/frzo6bkrwv
+        // value returned is 0 < v < 1 if levelB < levelA, v = 1 if they are equal, and 1 < v < max if levelB > levelA
+        public static float RelativeLevelScaling(int levelA, int levelB, float n, float max = float.MaxValue) 
+            => Math.Min(MathF.Pow(1 - Math.Min(MaxLevel - 1, levelB - levelA) / MaxLevel, -10f * MathF.Clamp(n, 0, 1)), max);
+        
+        public static List<string> ApplyKillEffects(Hero hero, Agent heroAgent, Agent killed, AgentState state, int goldPerKill, int healPerKill, int xpPerKill, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
+        {
+            var results = new List<string>();
+
+            
+            if (killed != null)
+            {
+                results.Add($"{KillStateVerb(state)} {killed.Name}");
+            }
+            
+            if (subBoost != 1)
+            {
+                goldPerKill = (int) (goldPerKill * subBoost);
+                healPerKill = (int) (healPerKill * subBoost);
+                xpPerKill = (int) (xpPerKill * subBoost);
+            }
+
+            float levelBoost = 1;
+            if (relativeLevelScaling.HasValue && killed?.Character != null)
+            {
+                // More reward for killing higher level characters
+                levelBoost = RelativeLevelScaling(hero.Level, killed.Character.Level, relativeLevelScaling.Value, levelScalingCap ?? 5);
+
+                if (levelBoost != 1)
+                {
+                    goldPerKill = (int) (goldPerKill * levelBoost);
+                    healPerKill = (int) (healPerKill * levelBoost);
+                    xpPerKill = (int) (xpPerKill * levelBoost);
+                }
+            }
+
+
+            bool showMultiplier = false;
+            if (goldPerKill != 0)
+            {
+                hero.ChangeHeroGold(goldPerKill);
+                results.Add($"+{goldPerKill} gold");
+                showMultiplier = true;
+            }
+            if (healPerKill != 0)
+            {
+                float prevHealth = heroAgent.Health;
+                heroAgent.Health = Math.Min(heroAgent.HealthLimit,
+                    heroAgent.Health + healPerKill);
+                float healthDiff = heroAgent.Health - prevHealth;
+                if (healthDiff > 0)
+                {
+                    results.Add($"+{healthDiff}hp");
+                    showMultiplier = true;
+                }
+            }
+            if (xpPerKill != 0)
+            {
+                (bool success, string description) = SkillXP.ImproveSkill(hero, xpPerKill, Skills.All, random: false, auto: true);
+                if (success)
+                {
+                    results.Add(description);
+                    showMultiplier = true;
+                }
+            }
+
+            if (showMultiplier)
+            {
+                if (subBoost != 1)
+                {
+                    results.Add($"x{subBoost:0.0} (sub)");
+                }
+
+                if (levelBoost != 1 && killed?.Character != null)
+                {
+                    results.Add($"x{levelBoost:0.0} (lvl diff {killed.Character.Level - hero.Level})");
+                }
+            }
+            return results;
+        }
+        
+        public static List<string> ApplyKilledEffects(Hero hero, Agent killer, AgentState state, int xpPerKilled, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
+        {
+            if (subBoost != 1)
+            {
+                xpPerKilled = (int) (xpPerKilled * subBoost);
+            }
+
+            float levelBoost = 1;
+            if (relativeLevelScaling.HasValue && killer?.Character != null)
+            {
+                // More reward for being killed by higher level characters
+                levelBoost = RelativeLevelScaling(hero.Level, killer.Character.Level, relativeLevelScaling.Value, levelScalingCap ?? 5);
+
+                if (levelBoost != 1)
+                {
+                    xpPerKilled = (int) (xpPerKilled * levelBoost);
+                }
+            }
+
+            bool showMultiplier = false;
+            
+            var results = new List<string>();
+            if (killer != null)
+            {
+                results.Add($"{KillStateVerb(state)} by {killer.Name}");
+            }
+            if (xpPerKilled != 0)
+            {
+                (bool success, string description) = SkillXP.ImproveSkill(hero, xpPerKilled, Skills.All, random: false, auto: true);
+                if (success)
+                {
+                    results.Add(description);
+                    showMultiplier = true;
+                }
+            }
+            
+            if (showMultiplier)
+            {
+                if (subBoost != 1)
+                {
+                    results.Add($"x{subBoost:0.0} (sub)");
+                }
+
+                if (levelBoost != 1 && killer?.Character != null)
+                {
+                    results.Add($"x{levelBoost:0.0} (lvl diff {killer.Character.Level - hero.Level})");
+                }
+            }
+            
+            return results;
+        }
     }
 }

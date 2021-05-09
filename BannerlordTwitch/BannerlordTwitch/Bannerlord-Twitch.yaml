@@ -15,14 +15,14 @@ Rewards:
     StartingGold: 10000
     StartingSkills:
     - Skill: Melee
-      MinLevel: 5
-      MaxLevel: 50
+      MinLevel: 100
+      MaxLevel: 125
     - Skill: Ranged
-      MinLevel: 5
-      MaxLevel: 50
+      MinLevel: 100
+      MaxLevel: 125
     - Skill: Movement
-      MinLevel: 5
-      MaxLevel: 50
+      MinLevel: 100
+      MaxLevel: 125
     StartingEquipmentTier: 1
 - RewardSpec:
     Title: 10k gold
@@ -58,13 +58,14 @@ Rewards:
     AllowHideOut: true
     OnPlayerSide: true
     StartWithFullHealth: true
+    SubBoost: 2
+    HealPerSecond: 0.100000001
     WinGold: 5000
     LoseGold: 5000
     GoldPerKill: 1000
     XPPerKill: 5000
     HealPerKill: 20
-    HealPerSecond: 0.100000001
-    SubBoost: 2
+    RelativeLevelScaling: 1
 - RewardSpec:
     Title: Attack
     Cost: 100
@@ -79,13 +80,14 @@ Rewards:
     AllowFriendlyMission: true
     AllowArena: true
     AllowHideOut: true
+    SubBoost: 2
+    HealPerSecond: 0.100000001
     WinGold: 5000
     LoseGold: 5000
     GoldPerKill: 5000
     XPPerKill: 7500
     HealPerKill: 20
-    HealPerSecond: 0.100000001
-    SubBoost: 2
+    RelativeLevelScaling: 1
 - RewardSpec:
     Title: Heal Player
     Cost: 300
@@ -209,6 +211,7 @@ Rewards:
     GoldPerKill: 1000
     XPPerKill: 1000
     HealPerKill: 20
+    RelativeLevelScaling: 1
 Commands:
 - Name: stats
   Help: Hero stats

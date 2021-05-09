@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Threading;
+using System.Windows;
 using BannerlordTwitch.Overlay;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
@@ -43,9 +44,16 @@ namespace BannerlordTwitch
             
 			thread = new Thread(() =>
 			{
-				wnd = new OverlayWindow();
-				wnd.Show();
-				System.Windows.Threading.Dispatcher.Run();
+				try
+				{
+					wnd = new OverlayWindow();
+					wnd.Show();
+					System.Windows.Threading.Dispatcher.Run();
+				}
+				catch (Exception e)
+				{
+					MessageBox.Show($"Exception occurred (please report this on the discord or nexusmods):\n{e}", "BLT Overlay Window Crashed!");
+				}
 			});
 			thread.SetApartmentState(ApartmentState.STA);
 			thread.IsBackground = true;
