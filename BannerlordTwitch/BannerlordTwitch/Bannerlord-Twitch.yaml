@@ -1,7 +1,7 @@
 Rewards:
 - RewardSpec:
     Title: Adopt a Hero
-    Cost: 1000
+    Cost: 300
     IsEnabled: true
   Handler: AdoptAHero
   Enabled: true
@@ -35,7 +35,7 @@ Rewards:
     Amount: 10000
 - RewardSpec:
     Title: 100k gold
-    Cost: 1000
+    Cost: 800
     IsEnabled: true
   Handler: AddGoldToHero
   Enabled: true
@@ -44,7 +44,7 @@ Rewards:
     Amount: 100000
 - RewardSpec:
     Title: Summon
-    Cost: 200
+    Cost: 75
     IsEnabled: true
   Handler: SummonHero
   Enabled: true
@@ -61,14 +61,17 @@ Rewards:
     SubBoost: 2
     HealPerSecond: 0.100000001
     WinGold: 5000
+    WinXP: 5000
     LoseGold: 5000
+    LoseXP: 2500
     GoldPerKill: 1000
     XPPerKill: 5000
+    XPPerKilled: 2500
     HealPerKill: 20
-    RelativeLevelScaling: 1
+    RelativeLevelScaling: 0.5
 - RewardSpec:
     Title: Attack
-    Cost: 100
+    Cost: 50
     IsEnabled: true
   Handler: SummonHero
   Enabled: true
@@ -82,15 +85,18 @@ Rewards:
     AllowHideOut: true
     SubBoost: 2
     HealPerSecond: 0.100000001
-    WinGold: 5000
-    LoseGold: 5000
+    WinGold: 10000
+    WinXP: 10000
+    LoseGold: 2500
+    LoseXP: 5000
     GoldPerKill: 5000
     XPPerKill: 7500
+    XPPerKilled: 2500
     HealPerKill: 20
-    RelativeLevelScaling: 1
+    RelativeLevelScaling: 0.5
 - RewardSpec:
     Title: Heal Player
-    Cost: 300
+    Cost: 50
     IsEnabled: true
   Handler: CharacterEffect
   RespondInOverlay: true
@@ -103,7 +109,7 @@ Rewards:
     Duration: 30
 - RewardSpec:
     Title: Giant Hero
-    Cost: 500
+    Cost: 100
     IsEnabled: true
   Handler: CharacterEffect
   RespondInOverlay: true
@@ -206,12 +212,15 @@ Rewards:
     SubBoost: 2
     WinGold: 50000
     WinXP: 50000
+    ParticipateXP: 5000
     WinMatchGold: 5000
     WinMatchXP: 5000
-    GoldPerKill: 1000
+    ParticipateMatchXP: 2500
+    GoldPerKill: 5000
     XPPerKill: 1000
+    XPPerKilled: 500
     HealPerKill: 20
-    RelativeLevelScaling: 1
+    RelativeLevelScaling: 0.5
 Commands:
 - Name: stats
   Help: Hero stats
@@ -237,12 +246,30 @@ Commands:
   RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig:
+    CreateNew: true
     AllowNoble: true
     AllowWanderer: true
     AllowNewAdoptionOnDeath: true
-    SubscriberOnly: true
     StartingGold: 50000
-    StartingEquipmentTier: 0
+    StartingSkills:
+    - Skill: Melee
+      MinLevel: 150
+      MaxLevel: 200
+    - Skill: Ranged
+      MinLevel: 150
+      MaxLevel: 200
+    - Skill: Movement
+      MinLevel: 150
+      MaxLevel: 200
+    - Skill: Personal
+      MinLevel: 100
+      MaxLevel: 150
+    - Skill: Support
+      MinLevel: 100
+      MaxLevel: 150
+    StartingEquipmentTier: 1
+    StartWithHorse: true
+    StartWithArmor: true
 - Name: equip
   Help: Improve Equip (10k gold x Tier)
   Handler: EquipHero
@@ -265,20 +292,18 @@ Commands:
   RespondInTwitch: true
 GlobalConfigs: []
 SimTesting:
-  UserCount: 10
+  UserCount: 20
   UserStayTime: 600
-  IntervalMinMS: 500
-  IntervalMaxMS: 2500
+  IntervalMinMS: 250
+  IntervalMaxMS: 500
   Init:
   - Type: Reward
     Id: Adopt a Hero
+  - Type: Reward
+    Id: Tournament
   Use:
   - Type: Reward
-    Id: 100k gold
-  - Type: Reward
     Id: Summon
-  - Type: Reward
-    Id: Attack
   - Type: Reward
     Id: Tournament
   - Type: Command

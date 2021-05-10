@@ -61,7 +61,7 @@ namespace BannerlordTwitch.Testing
                         foreach (var initItem in simSettings.Init)
                         {
                             RunItem(settings, initItem, newUser);
-                            Task.Delay(TimeSpan.FromMilliseconds(Math.Max(500, rnd.Next(simSettings.IntervalMinMS, simSettings.IntervalMaxMS))), css.Token).Wait();
+                            Task.Delay(TimeSpan.FromMilliseconds(Math.Max(100, rnd.Next(simSettings.IntervalMinMS, simSettings.IntervalMaxMS))), css.Token).Wait();
                         }
                     }
                     var user = users.SelectRandom();
@@ -73,7 +73,7 @@ namespace BannerlordTwitch.Testing
                             RunItem(settings, item, user);
                         });
                     }
-                    Task.Delay(TimeSpan.FromMilliseconds(Math.Max(500, rnd.Next(simSettings.IntervalMinMS, simSettings.IntervalMaxMS))), css.Token).Wait();
+                    Task.Delay(TimeSpan.FromMilliseconds(Math.Max(100, rnd.Next(simSettings.IntervalMinMS, simSettings.IntervalMaxMS))), css.Token).Wait();
                 }
             }, TaskCreationOptions.LongRunning);
         }

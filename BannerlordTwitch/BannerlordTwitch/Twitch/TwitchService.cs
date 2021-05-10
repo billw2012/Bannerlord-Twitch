@@ -398,7 +398,7 @@ namespace BannerlordTwitch
                 }
             }
         }
-
+        
         private void ShowCommandHelp()
         {
             string[] help = "Commands: ".Yield()

@@ -63,7 +63,7 @@ namespace BannerlordTwitch
         [Category("Behavior"), Description("Custom config for the handler"), ExpandableObject, ReadOnly(true), PropertyOrder(2)]
         public object HandlerConfig { get; set; }
 
-        [YamlIgnore]
+        [YamlIgnore, Browsable(false)]
         public virtual bool IsValid => !Enabled || !string.IsNullOrEmpty(Handler);
     }
     

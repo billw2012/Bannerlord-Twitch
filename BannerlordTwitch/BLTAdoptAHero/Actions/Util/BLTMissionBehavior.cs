@@ -151,12 +151,13 @@ namespace BLTAdoptAHero
                 _ => "fondled"
             };
         
-        public const int MaxLevel = 62;
+        // public const int MaxLevel = 62;
+        public const int MaxLevelInPractice = 32;
         
         // https://www.desmos.com/calculator/frzo6bkrwv
         // value returned is 0 < v < 1 if levelB < levelA, v = 1 if they are equal, and 1 < v < max if levelB > levelA
         public static float RelativeLevelScaling(int levelA, int levelB, float n, float max = float.MaxValue) 
-            => Math.Min(MathF.Pow(1 - Math.Min(MaxLevel - 1, levelB - levelA) / MaxLevel, -10f * MathF.Clamp(n, 0, 1)), max);
+            => Math.Min(MathF.Pow(1f - Math.Min(MaxLevelInPractice - 1, levelB - levelA) / (float)MaxLevelInPractice, -10f * MathF.Clamp(n, 0, 1)), max);
         
         public static List<string> ApplyKillEffects(Hero hero, Agent heroAgent, Agent killed, AgentState state, int goldPerKill, int healPerKill, int xpPerKill, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
         {

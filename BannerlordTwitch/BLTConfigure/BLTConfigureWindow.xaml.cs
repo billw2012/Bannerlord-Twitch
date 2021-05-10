@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -14,6 +15,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using BannerlordTwitch;
@@ -68,12 +70,12 @@ namespace BLTConfigure
         // }
         
         public IEnumerable<NewActionViewModel> RewardHandlersViewModel => ActionManager.RewardHandlers.Select(a => new NewActionViewModel(_ => this.NewReward(a), a.GetType()));
-        public static IEnumerable<string> RewardHandlerNames => ActionManager.RewardHandlerNames;
-        public static IEnumerable<IRewardHandler> RewardHandlers => ActionManager.RewardHandlers;
+        // public static IEnumerable<string> RewardHandlerNames => ActionManager.RewardHandlerNames;
+        // public static IEnumerable<IRewardHandler> RewardHandlers => ActionManager.RewardHandlers;
         
         public IEnumerable<NewActionViewModel> CommandHandlersViewModel => ActionManager.CommandHandlers.Select(h => new NewActionViewModel(_ => this.NewCommand(h), h.GetType()));
-        public static IEnumerable<string> CommandHandlerNames => ActionManager.CommandHandlerNames;
-        public static IEnumerable<ICommandHandler> CommandHandlers => ActionManager.CommandHandlers;
+        // public static IEnumerable<string> CommandHandlerNames => ActionManager.CommandHandlerNames;
+        // public static IEnumerable<ICommandHandler> CommandHandlers => ActionManager.CommandHandlers;
 
         public Settings EditedSettings  { get; set; }
         public AuthSettings EditedAuthSettings  { get; set; }
@@ -92,6 +94,16 @@ namespace BLTConfigure
             SaveAuth();
         }
         
+        public class TypeGroupDescription : GroupDescription
+        {
+            public override object GroupNameFromItem(object item, int level, CultureInfo culture)
+            {
+                if (item == null)
+                    return "";
+                return item.GetType().Name;
+            }
+        }
+        
         private void Reload()
         {
             try
@@ -108,8 +120,11 @@ namespace BLTConfigure
             // MainThreadSync.Run();
             ActionManager.ConvertSettings(EditedSettings.Commands);
             ActionManager.ConvertSettings(EditedSettings.Rewards);
-            CommandsListBox.ItemsSource = EditedSettings.Commands;
-            RewardsListBox.ItemsSource = EditedSettings.Rewards;
+            // CommandsListBox.ItemsSource = EditedSettings.Commands;
+            var actionFilterView = CollectionViewSource.GetDefaultView(EditedSettings.Commands.Concat<ActionBase>(EditedSettings.Rewards));
+            actionFilterView.GroupDescriptions.Add(new TypeGroupDescription());
+            actionFilterView.SortDescriptions.Add(new SortDescription("Branch", ListSortDirection.Descending));
+            ActionsListBox.ItemsSource = actionFilterView;
             PropertyGrid.SelectedObject = null;
 
             try
@@ -131,23 +146,23 @@ namespace BLTConfigure
             UpdateBotToken(EditedAuthSettings.BotAccessToken);
         }
 
-        private void Rewards_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Actions_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (RewardsListBox.SelectedItem != null)
+            if (ActionsListBox.SelectedItem != null)
             {
-                PropertyGrid.SelectedObject = RewardsListBox.SelectedItem;
-                //CommandsListBox.SelectedItem = null;  
+                PropertyGrid.SelectedObject = ActionsListBox.SelectedItem;
+                //CommandsListBox.SelectedItem = null;
             }
         }
 
-        private void Commands_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (CommandsListBox.SelectedItem != null)
-            {
-                //RewardsListBox.SelectedItem = null;
-                PropertyGrid.SelectedObject = CommandsListBox.SelectedItem;
-            }
-        }
+        // private void Commands_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        // {
+        //     if (CommandsListBox.SelectedItem != null)
+        //     {
+        //         //RewardsListBox.SelectedItem = null;
+        //         PropertyGrid.SelectedObject = CommandsListBox.SelectedItem;
+        //     }
+        // }
 
         private void NewReward(IRewardHandler action)
         {
@@ -164,8 +179,8 @@ namespace BLTConfigure
                 newReward.HandlerConfig = Activator.CreateInstance(settingsType);
             }
             EditedSettings.Rewards.Add(newReward);
-            RewardsListBox.Items.Refresh();
-            RewardsListBox.SelectedItem = newReward;
+            ActionsListBox.Items.Refresh();
+            ActionsListBox.SelectedItem = newReward;
         }
 
         private void NewCommand(ICommandHandler handler)
@@ -182,28 +197,35 @@ namespace BLTConfigure
                 newCommand.HandlerConfig = Activator.CreateInstance(settingsType);
             }
             EditedSettings.Commands.Add(newCommand);
-            CommandsListBox.Items.Refresh();
-            CommandsListBox.SelectedItem = newCommand;
+            ActionsListBox.Items.Refresh();
+            ActionsListBox.SelectedItem = newCommand;
         }
 
-        private void DeleteReward_OnClick(object sender, RoutedEventArgs e)
+        private void DeleteAction_OnClick(object sender, RoutedEventArgs e)
         {
-            EditedSettings.Rewards.Remove(RewardsListBox.SelectedItem as Reward);
+            if (ActionsListBox.SelectedItem is Reward reward)
+            {
+                EditedSettings.Rewards.Remove(reward);
+            }
+            else
+            {
+                EditedSettings.Commands.Remove(ActionsListBox.SelectedItem as Command);
+            }
             PropertyGrid.SelectedObject = null;
-            RewardsListBox.Items.Refresh();
+            ActionsListBox.Items.Refresh();
         }
 
-        private void DeleteCommand_OnClick(object sender, RoutedEventArgs e)
-        {
-            EditedSettings.Commands.Remove(CommandsListBox.SelectedItem as Command);
-            PropertyGrid.SelectedObject = null;
-            CommandsListBox.Items.Refresh();
-        }
+        // private void DeleteCommand_OnClick(object sender, RoutedEventArgs e)
+        // {
+        //     EditedSettings.Commands.Remove(CommandsListBox.SelectedItem as Command);
+        //     PropertyGrid.SelectedObject = null;
+        //     CommandsListBox.Items.Refresh();
+        // }
 
         private void PropertyGrid_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            RewardsListBox.Items.Refresh();
-            CommandsListBox.Items.Refresh();
+            ActionsListBox.Items.Refresh();
+            // CommandsListBox.Items.Refresh();
             SaveSettings();
         }
 

@@ -65,7 +65,7 @@ namespace BLTAdoptAHero
             public int XPPerKilled { get; set; }
             [Category("Kill Effects"), Description("HP the hero gets for every kill"), PropertyOrder(4)]
             public int HealPerKill { get; set; }
-            [Category("Kill Effects"), Description("How much to scale the reward by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 20 would give about 2.5 times the normal rewards for gold, xp and health."), PropertyOrder(5)]
+            [Category("Kill Effects"), Description("How much to scale the reward by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."), PropertyOrder(5)]
             public float? RelativeLevelScaling { get; set; }
             [Category("Kill Effects"), Description("Caps the maximum multiplier for the level difference, defaults to 5 if not specified"), PropertyOrder(6)]
             public float? LevelScalingCap { get; set; }
@@ -84,7 +84,7 @@ namespace BLTAdoptAHero
         protected override void ExecuteInternal(ReplyContext context, object config, Action<string> onSuccess, Action<string> onFailure)
         {
             var settings = (Settings) config;
-
+            
             var adoptedHero = AdoptAHero.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
@@ -210,19 +210,20 @@ namespace BLTAdoptAHero
         [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(TournamentGame), nameof(TournamentGame.PrepareForTournamentGame))]
         public static void PrepareForTournamentGamePostfix(TournamentGame __instance, bool isPlayerParticipating)
         {
-            static (bool used, string failReason) UpgradeToItem(Hero hero, ItemObject prize)
+            static (bool used, string failReason) UpgradeToItem(Hero hero, ItemObject item)
             {
-                if (EquipHero.CanUseItem(prize, hero))
+                if (EquipHero.CanUseItem(item, hero))
                 {
                     // Find a slot
                     var slot = hero.BattleEquipment
                         .YieldEquipmentSlots()
+                        .Cast<(EquipmentElement element, EquipmentIndex index)?>()
                         .FirstOrDefault(e
-                            => Equipment.IsItemFitsToSlot(e.index, prize)
-                               && (e.element.IsEmpty || e.element.Item.Type == prize.Type && e.element.Item.Tierf <= prize.Tierf));
-                    if (!slot.Equals(default))
+                            => e.HasValue && Equipment.IsItemFitsToSlot(e.Value.index, item)
+                               && (e.Value.element.IsEmpty || e.Value.element.Item.Type == item.Type && e.Value.element.Item.Tierf <= item.Tierf));
+                    if (slot.HasValue)
                     {
-                        hero.BattleEquipment[slot.index] = new EquipmentElement(prize);
+                        hero.BattleEquipment[slot.Value.index] = new EquipmentElement(item);
                         return (true, null);
                     }
                     else
@@ -279,6 +280,7 @@ namespace BLTAdoptAHero
                                     results.Add(description);
                                 }
                             }
+
                             var prize = tournamentBehaviour.TournamentGame.Prize;
                             (bool upgraded, string failReason) = UpgradeToItem(hero, prize);
                             if (!upgraded)

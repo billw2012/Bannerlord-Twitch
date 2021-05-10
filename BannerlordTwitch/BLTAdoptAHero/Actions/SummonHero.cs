@@ -83,7 +83,7 @@ namespace BLTAdoptAHero
             public int XPPerKilled { get; set; }
             [Category("Kill Effects"), Description("HP the hero gets for every kill"), PropertyOrder(4)]
             public int HealPerKill { get; set; }
-            [Category("Kill Effects"), Description("How much to scale the reward by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 20 would give about 2.5 times the normal rewards for gold, xp and health."), PropertyOrder(5)]
+            [Category("Kill Effects"), Description("How much to scale the reward by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."), PropertyOrder(5)]
             public float? RelativeLevelScaling { get; set; }
             [Category("Kill Effects"), Description("Caps the maximum multiplier for the level difference, defaults to 5 if not specified"), PropertyOrder(6)]
             public float? LevelScalingCap { get; set; }
