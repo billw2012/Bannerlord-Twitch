@@ -39,6 +39,7 @@ namespace BLTAdoptAHero
             hero.HeroDeveloper.AddSkillXp(skill, amount);
             // Force this immediately instead of waiting for the daily campaign tick
             CharacterDevelopmentCampaignBehaivor.DevelopCharacterStats(hero);
+            
             float realGainedXp = hero.HeroDeveloper.GetPropertyValue(skill) - prevSkill;
             int newLevel = hero.GetSkillValue(skill);
             int gainedLevels = newLevel - prevLevel;
@@ -47,7 +48,7 @@ namespace BLTAdoptAHero
                 : gainedLevels > 0
                     ? (true, $"+{gainedLevels} lvl in {skill.Name} ({newLevel})")
                     : (true,
-                        $"+{realGainedXp:0}xp in {skill.Name} ({hero.GetSkillValue(skill)}xp)");
+                        $"+{realGainedXp:0}xp in {skill.Name} ({hero.HeroDeveloper.GetSkillXpProgress(skill)}xp)");
         }
     }
 }

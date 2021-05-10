@@ -85,7 +85,7 @@ namespace BLTAdoptAHero
         {
             var settings = (Settings) config;
             
-            var adoptedHero = AdoptAHero.GetAdoptedHero(context.UserName);
+            var adoptedHero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
                 onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
@@ -106,15 +106,16 @@ namespace BLTAdoptAHero
                     return;
                 }
 
-                if (adoptedHero.Gold < settings.GoldCost)
+                int availableGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
+                if (availableGold < settings.GoldCost)
                 {
-                    onFailure($"You do not have enough gold: you need {settings.GoldCost}, and you only have {adoptedHero.Gold}!");
+                    onFailure($"You do not have enough gold: you need {settings.GoldCost}, and you only have {availableGold}!");
                     return;
                 }
+                
+                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, settings.GoldCost);
 
-                adoptedHero.Gold -= settings.GoldCost;
                 queue.Add((context, settings: settings, hero: adoptedHero));
-
                 if (queue.Count == max)
                 {
                     ActionManager.SendReply(context, $"You are in the {name} queue, no spots remaining");
@@ -267,7 +268,7 @@ namespace BLTAdoptAHero
                             int actualGold = (int) (settings.WinGold * actualBoost + settings.GoldCost);
                             if (actualGold > 0)
                             {
-                                hero.ChangeHeroGold(actualGold);
+                                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(hero, actualGold);
                                 results.Add($"+{actualGold} gold");
                             }
                             int xp = (int) (settings.WinXP * actualBoost);
@@ -285,7 +286,7 @@ namespace BLTAdoptAHero
                             (bool upgraded, string failReason) = UpgradeToItem(hero, prize);
                             if (!upgraded)
                             {
-                                hero.ChangeHeroGold(prize.Value);
+                                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(hero, prize.Value);
                                 results.Add($"sold {prize.Name} for {prize.Value} gold ({failReason})");
                             }
                             else
@@ -377,7 +378,7 @@ namespace BLTAdoptAHero
                     int actualGold = (int) (settings.WinMatchGold * actualBoost);
                     if (actualGold > 0)
                     {
-                        adoptedHero.ChangeHeroGold(actualGold);
+                        BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, actualGold);
                         results.Add($"+{actualGold} gold");
                     }
                     int xp = (int) (settings.WinMatchXP * actualBoost);

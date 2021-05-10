@@ -1,10 +1,7 @@
-﻿using System;
-using BannerlordTwitch.Rewards;
-using BannerlordTwitch.Util;
+﻿using BannerlordTwitch.Rewards;
 using HarmonyLib;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -36,77 +33,12 @@ namespace BLTAdoptAHero
 
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
         {
-            static string KillDetailVerb(KillCharacterAction.KillCharacterActionDetail detail)
-            {
-                switch (detail)
-                {
-                    case KillCharacterAction.KillCharacterActionDetail.Murdered:
-                        return "was murdered";
-                    case KillCharacterAction.KillCharacterActionDetail.DiedInLabor:
-                        return "died in labor";
-                    case KillCharacterAction.KillCharacterActionDetail.DiedOfOldAge:
-                        return "died of old age";
-                    case KillCharacterAction.KillCharacterActionDetail.DiedInBattle:
-                        return "died in battle";
-                    case KillCharacterAction.KillCharacterActionDetail.WoundedInBattle:
-                        return "was wounded in battle";
-                    case KillCharacterAction.KillCharacterActionDetail.Executed:
-                        return "was executed";
-                    case KillCharacterAction.KillCharacterActionDetail.Lost:
-                        return "was lost";
-                    default:
-                    case KillCharacterAction.KillCharacterActionDetail.None:
-                        return "was ended";
-                }
-            }
             base.OnGameStart(game, gameStarterObject);
-            CampaignEvents.HeroKilledEvent.AddNonSerializedListener(this, (victim, killer, detail, _) =>
+            if(game.GameType is Campaign) 
             {
-                if (victim?.IsAdopted() == true || killer?.IsAdopted() == true)
-                {
-                    string verb = KillDetailVerb(detail);
-                    if (killer != null && victim != null)
-                    {
-                        Log.LogFeedEvent($"{victim.Name} {verb} by {killer.Name}!");
-                    }
-                    else if (killer != null)
-                    {
-                        Log.LogFeedEvent($"{killer.Name} {verb}!");
-                    }
-                }
-            });
-            CampaignEvents.HeroLevelledUp.AddNonSerializedListener(this, (hero, _) =>
-            {
-                if (hero.IsAdopted())
-                    Log.LogFeedEvent($"{hero.Name} is now level {hero.Level}!");
-            });
-            CampaignEvents.HeroPrisonerTaken.AddNonSerializedListener(this, (party, hero) =>
-            {
-                if (hero.IsAdopted())
-                {
-                    if(party != null)
-                        Log.LogFeedEvent($"{hero.Name} was taken prisoner by {party.Name}!");
-                    else
-                        Log.LogFeedEvent($"{hero.Name} was taken prisoner!");
-                }
-            });
-            CampaignEvents.HeroPrisonerReleased.AddNonSerializedListener(this, (hero, party, _, _) =>
-            {
-                if (hero.IsAdopted())
-                {
-                    if(party != null)
-                        Log.LogFeedEvent($"{hero.Name} is no longer a prisoner of {party.Name}!");
-                    else
-                        Log.LogFeedEvent($"{hero.Name} is no longer a prisoner!");
-                }
-            });
-            CampaignEvents.OnHeroChangedClanEvent.AddNonSerializedListener(this, (hero, clan) =>
-            {
-                if(hero.IsAdopted())
-                    Log.LogFeedEvent($"{hero.Name} is now a member of {clan?.Name.ToString() ?? "no clan"}!");
-            });
-            CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, starter => 
-                JoinTournament.SetupGameMenus(gameStarterObject as CampaignGameStarter));
+                var campaignStarter = (CampaignGameStarter) gameStarterObject;
+                campaignStarter.AddBehavior(new BLTAdoptAHeroCampaignBehavior());
+            }
         }
 
         // public override void BeginGameStart(Game game)

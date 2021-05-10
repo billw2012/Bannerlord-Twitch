@@ -8,7 +8,6 @@ Rewards:
   RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig:
-    CreateNew: true
     AllowNoble: true
     AllowWanderer: true
     AllowNewAdoptionOnDeath: true
@@ -226,7 +225,7 @@ Commands:
   Help: Hero stats
   Handler: HeroInfoCommand
   Enabled: true
-  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig:
     ShowGeneral: true
     ShowTopSkills: true
@@ -236,7 +235,7 @@ Commands:
   Help: Hero equipment
   Handler: HeroInfoCommand
   Enabled: true
-  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig:
     ShowEquipment: true
 - Name: adopt

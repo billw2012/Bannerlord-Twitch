@@ -106,8 +106,8 @@ namespace BLTAdoptAHero
             public bool SubscriberOnly { get; set; }
             [Category("Limits"), Description("Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified"), DefaultValue(null), PropertyOrder(7)]
             public int? MinSubscribedMonths { get; set; }
-            [Category("Initialization"), Description("Gold the adopted hero will start with, if you don't specify then they get the heroes existing gold"), DefaultValue(null), PropertyOrder(1)]
-            public int? StartingGold { get; set; }
+            [Category("Initialization"), Description("Gold the adopted hero will start with"), DefaultValue(null), PropertyOrder(1)]
+            public int StartingGold { get; set; }
 
             public class SkillDef
             {
@@ -135,39 +135,10 @@ namespace BLTAdoptAHero
             public bool StartWithArmor { get; set; }
         }
 
-        private static IEnumerable<Hero> GetAvailableHeroes(Settings settings)
-        {
-            var tagText = new TextObject(BLTAdoptAHeroModule.Tag);
-            return Campaign.Current?.AliveHeroes?.Where(h =>
-                // Not the player of course
-                h != Hero.MainHero
-                // Don't want notables ever
-                && !h.IsNotable && h.Age >= 18f 
-                && (settings.AllowPlayerCompanion && h.IsPlayerCompanion
-                    || settings.AllowNoble && h.IsNoble
-                    || settings.AllowWanderer && h.IsWanderer)
-                && (!settings.OnlySameFaction 
-                    || Clan.PlayerClan?.MapFaction != null && Clan.PlayerClan?.MapFaction == h.Clan?.MapFaction)
-            ).Where(n => !n.Name.Contains(tagText));
-        }
-
-        private static string GetFullName(string name) => $"{name} {BLTAdoptAHeroModule.Tag}";
-
-        internal static Hero GetAdoptedHero(string name)
-        {
-            var tagObject = new TextObject(BLTAdoptAHeroModule.Tag);
-            var nameObject = new TextObject(name);
-            return Campaign.Current?
-                .AliveHeroes?
-                .FirstOrDefault(h => h.Name?.Contains(tagObject) == true 
-                                     && h.FirstName?.Contains(nameObject) == true 
-                                     && h.FirstName?.ToString() == name);
-        }
-
         Type IRewardHandler.RewardConfigType => typeof(Settings);
         void IRewardHandler.Enqueue(ReplyContext context, object config)
         {
-            var hero = GetAdoptedHero(context.UserName);
+            var hero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
             if (hero?.IsAlive == true)
             {
                 ActionManager.NotifyCancelled(context, "You have already adopted a hero!");
@@ -188,7 +159,7 @@ namespace BLTAdoptAHero
         Type ICommandHandler.HandlerConfigType => typeof(Settings);
         void ICommandHandler.Execute(ReplyContext context, object config)
         {
-            var hero = GetAdoptedHero(context.UserName);
+            var hero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
             if (hero?.IsAlive == true)
             {
                 ActionManager.SendReply(context, "You have already adopted a hero!");
@@ -240,7 +211,14 @@ namespace BLTAdoptAHero
             else
             {
                 newHero = string.IsNullOrEmpty(args)
-                    ? GetAvailableHeroes(settings).SelectRandom()
+                    ? BLTAdoptAHeroCampaignBehavior.GetAvailableHeroes(h =>
+                        (settings.AllowPlayerCompanion && h.IsPlayerCompanion
+                         || settings.AllowNoble && h.IsNoble
+                         || settings.AllowWanderer && h.IsWanderer)
+                        && (!settings.OnlySameFaction 
+                            || Clan.PlayerClan?.MapFaction != null 
+                            && Clan.PlayerClan?.MapFaction == h.Clan?.MapFaction))
+                        .SelectRandom()
                     : Campaign.Current.AliveHeroes.FirstOrDefault(h =>
                         h.Name.Contains(args) && h.Name.ToString() == args);
             }
@@ -279,9 +257,9 @@ namespace BLTAdoptAHero
 
             string oldName = newHero.Name.ToString();
             newHero.FirstName = new TextObject(userName);
-            newHero.Name = new TextObject(GetFullName(userName));
-            if(settings.StartingGold.HasValue)
-                newHero.Gold = settings.StartingGold.Value;
+            newHero.Name = new TextObject(BLTAdoptAHeroCampaignBehavior.GetFullName(userName));
+            
+            BLTAdoptAHeroCampaignBehavior.Get().SetHeroGold(newHero, settings.StartingGold);
 
             if (settings.StartingEquipmentTier.HasValue)
             {
@@ -294,7 +272,7 @@ namespace BLTAdoptAHero
             {
                 Campaign.Current.EncyclopediaManager.BookmarksTracker.AddBookmarkToItem(newHero);
             }
-            return (true, $"{oldName} is now known as {newHero.Name}, they have {newHero.Gold} gold!");
+            return (true, $"{oldName} is now known as {newHero.Name}, they have {settings.StartingGold} gold!");
         }
     }
 }

@@ -59,7 +59,7 @@ namespace BLTAdoptAHero
             Action<string> onFailure)
         {
             var settings = (Settings)config;
-            var adoptedHero = AdoptAHero.GetAdoptedHero(context.UserName);
+            var adoptedHero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
                 onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
@@ -95,9 +95,10 @@ namespace BLTAdoptAHero
                 ? settings.GoldCost * targetTier
                 : settings.GoldCost;
 
-            if (adoptedHero.Gold < cost)
+            int availableGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
+            if (availableGold < cost)
             {
-                onFailure($"You do not have enough gold: you need {cost}, and you only have {adoptedHero.Gold}!");
+                onFailure($"You do not have enough gold: you need {cost}, and you only have {availableGold}!");
                 return;
             }
 
@@ -108,11 +109,9 @@ namespace BLTAdoptAHero
                 onFailure($"Couldn't find any items to upgrade!");
                 return;
             }
-            
+            BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -cost);
             //string itemsStr = string.Join(", ", itemsPurchased.Select(i => i.Name.ToString()));
             // $"You purchased these items: {itemsStr}!"
-            
-            adoptedHero.Gold -= cost;
             onSuccess($"Equip Tier {targetTier + 1}");
         }
 

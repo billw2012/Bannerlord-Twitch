@@ -21,15 +21,15 @@ namespace BLTAdoptAHero
         void IRewardHandler.Enqueue(ReplyContext context, object config)
         {
             var settings = (Settings)config;
-            var adoptedHero = AdoptAHero.GetAdoptedHero(context.UserName);
+            var adoptedHero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
                 ActionManager.NotifyCancelled(context, Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
                 return;
             }
-
-            adoptedHero.Gold += settings.Amount;
-            ActionManager.NotifyComplete(context, $"+{settings.Amount} gold, you now have {adoptedHero.Gold}!");
+            int newGold = BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, settings.Amount);
+            
+            ActionManager.NotifyComplete(context, $"+{settings.Amount} gold, you now have {newGold}!");
         }
     }
 }

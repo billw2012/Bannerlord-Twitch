@@ -141,6 +141,7 @@
         <Compile Include="Actions\Util\BattleEffects.cs" />
         <Compile Include="Actions\Util\BLTMissionBehavior.cs" />
         <Compile Include="BLTAdoptAHero.cs" />
+        <Compile Include="BLTAdoptAHeroCampaignBehavior.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>

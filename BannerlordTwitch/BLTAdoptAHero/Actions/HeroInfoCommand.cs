@@ -36,7 +36,7 @@ namespace BLTAdoptAHero
         void ICommandHandler.Execute(ReplyContext context, object config)
         {
             var settings = config as Settings ?? new Settings();
-            var adoptedHero = AdoptAHero.GetAdoptedHero(context.UserName);
+            var adoptedHero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
             var infoStrings = new List<string>{};
             if (adoptedHero == null)
             {
@@ -51,7 +51,8 @@ namespace BLTAdoptAHero
                         infoStrings.Add($"Clan {adoptedHero.Clan.Name}");
                     }
                     infoStrings.Add($"{adoptedHero.Culture}");
-                    infoStrings.Add($"{adoptedHero.Gold} gold");
+                    int gold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
+                    infoStrings.Add($"{gold} gold");
                     infoStrings.Add($"{adoptedHero.Age:0} yrs");
                     infoStrings.Add($"{adoptedHero.HitPoints} / {adoptedHero.CharacterObject.MaxHitPoints()} HP");
                     if (adoptedHero.LastSeenPlace != null)

@@ -194,7 +194,7 @@ namespace BLTAdoptAHero
             bool showMultiplier = false;
             if (goldPerKill != 0)
             {
-                hero.ChangeHeroGold(goldPerKill);
+                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(hero, goldPerKill);
                 results.Add($"+{goldPerKill} gold");
                 showMultiplier = true;
             }

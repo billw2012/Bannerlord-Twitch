@@ -172,15 +172,16 @@ namespace BLTAdoptAHero
         {
             var settings = (Settings) config;
 
-            var adoptedHero = AdoptAHero.GetAdoptedHero(context.UserName);
+            var adoptedHero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
                 onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
                 return;
             }
-            if (adoptedHero.Gold < settings.GoldCost)
+            int availableGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
+            if (availableGold < settings.GoldCost)
             {
-                onFailure($"You do not have enough gold: you need {settings.GoldCost}, and you only have {adoptedHero.Gold}!");
+                onFailure($"You do not have enough gold: you need {settings.GoldCost}, and you only have {availableGold}!");
                 return;
             }
             if (adoptedHero.IsPlayerCompanion)
@@ -289,13 +290,14 @@ namespace BLTAdoptAHero
                                 {
                                     Hero.MainHero.ChangeHeroGold(-settings.WinGold);
                                     // User gets their gold back also
-                                    adoptedHero.ChangeHeroGold(settings.WinGold + settings.GoldCost);
+                                    BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, settings.WinGold + settings.GoldCost);
+                                    
                                     ActionManager.SendReply(context, $@"You won {settings.WinGold} gold!");
                                 }
                                 else if(settings.LoseGold > 0)
                                 {
                                     Hero.MainHero.ChangeHeroGold(settings.LoseGold);
-                                    adoptedHero.ChangeHeroGold(-settings.LoseGold);
+                                    BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -settings.LoseGold);
                                     ActionManager.SendReply(context, $@"You lost {settings.LoseGold + settings.GoldCost} gold!");
                                 }
                             }
@@ -369,7 +371,7 @@ namespace BLTAdoptAHero
                                 int actualGold = (int) (settings.WinGold * actualBoost + settings.GoldCost);
                                 if (actualGold > 0)
                                 {
-                                    adoptedHero.ChangeHeroGold(actualGold);
+                                    BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, actualGold);
                                     results.Add($"+{actualGold} gold");
                                 }
                                 int xp = (int) (settings.WinXP * actualBoost);
@@ -387,7 +389,7 @@ namespace BLTAdoptAHero
                             {
                                 if (settings.LoseGold > 0)
                                 {
-                                    adoptedHero.ChangeHeroGold(-settings.LoseGold);
+                                    BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -settings.LoseGold);
                                     results.Add($"-{settings.LoseGold} gold");
                                 }
                                 int xp = (int) (settings.LoseXP * actualBoost);
@@ -467,7 +469,8 @@ namespace BLTAdoptAHero
             InformationManager.AddQuickInformation(new TextObject(!string.IsNullOrEmpty(context.Args) ? context.Args : messages.SelectRandom()), 1000,
                 adoptedHero.CharacterObject, "event:/ui/mission/horns/attack");
 
-            adoptedHero.Gold -= settings.GoldCost;
+            BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -settings.GoldCost);
+
             onSuccess($"You have joined the battle!");
         }
 

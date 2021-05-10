@@ -29,25 +29,26 @@ namespace BLTAdoptAHero
             Action<string> onFailure) 
         {
             var settings = (SettingsBase)config;
-            var adoptedHero = AdoptAHero.GetAdoptedHero(context.UserName);
+            var adoptedHero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
                 onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
                 return;
             }
 
-            if (adoptedHero.Gold < settings.GoldCost)
+            int availableGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
+            if (availableGold < settings.GoldCost)
             {
-                onFailure($"You do not have enough gold: you need {settings.GoldCost}, and you only have {adoptedHero.Gold}!");
+                onFailure($"You do not have enough gold: you need {settings.GoldCost}, and you only have {availableGold}!");
                 return;
             }
             
-            var amount = MBRandom.RandomInt(settings.AmountLow, settings.AmountHigh);
-            var (success, description) = Improve(context.UserName, adoptedHero, amount, settings);
+            int amount = MBRandom.RandomInt(settings.AmountLow, settings.AmountHigh);
+            (bool success, string description) = Improve(context.UserName, adoptedHero, amount, settings);
             if (success)
             {
                 onSuccess(description);
-                adoptedHero.Gold -= settings.GoldCost;
+                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -settings.GoldCost);
             }
             else
             {
