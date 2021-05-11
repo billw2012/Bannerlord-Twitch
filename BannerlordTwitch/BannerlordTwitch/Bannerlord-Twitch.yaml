@@ -304,6 +304,18 @@ SimTesting:
   - Type: Reward
     Id: Summon
   - Type: Reward
+    Id: Attack
+  - Type: Reward
+    Id: Heal Player
+  - Type: Reward
+    Id: Giant Hero
+  - Type: Reward
+    Id: Baby Hero
+  - Type: Reward
     Id: Tournament
+  - Type: Reward
+    Id: 10k gold
+  - Type: Reward
+    Id: 100k gold
   - Type: Command
     Id: equip

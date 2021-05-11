@@ -227,7 +227,7 @@ namespace BLTAdoptAHero
                 return (false, $"You can't adopt a hero: no available hero matching the requirements was found!");
             }
 
-            if (settings.StartingSkills.Any())
+            if (settings.StartingSkills?.Any() == true)
             {
                 newHero.HeroDeveloper.ClearHero();
 

@@ -15,7 +15,7 @@ namespace BLTAdoptAHero
     {
         private Harmony harmony;
         public const string Name = "BLTAdoptAHero";
-        public const string Ver = "1.0.2";
+        public const string Ver = "1.1.0";
 
         public BLTAdoptAHeroModule()
         {

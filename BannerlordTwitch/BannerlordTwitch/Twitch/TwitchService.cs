@@ -43,7 +43,7 @@ namespace BannerlordTwitch
         public static ReplyContext FromMessage(ActionBase source, ChatMessage msg, string args) =>
             new()
             {
-                UserName = msg.DisplayName,
+                UserName = msg.Username,
                 ReplyId = msg.Id,
                 Args = args,
                 Bits = msg.Bits,
@@ -71,7 +71,7 @@ namespace BannerlordTwitch
         public static ReplyContext FromRedemption(ActionBase source, OnRewardRedeemedArgs args) =>
             new()
             {
-                UserName = args.DisplayName,
+                UserName = args.Login,
                 Args = args.Message,
                 RedemptionId = args.RedemptionId,
                 Source = source,
@@ -338,7 +338,13 @@ namespace BannerlordTwitch
                 return false;
             }
 
-            return affiliateSpoofing?.FakeRedeem(reward.RewardSpec.Title, user, message) == true;
+            if (affiliateSpoofing == null)
+            {
+                Log.LogFeedFail($"'DebugSpoofAffiliate: true' must be set in Bannerlord-Twitch-Auth.yaml to spoof redemptions (including in sim testing)!");
+                return false;
+            }
+
+            return affiliateSpoofing.FakeRedeem(reward.RewardSpec.Title, user, message) == true;
             // var redeem = new OnRewardRedeemedArgs
             // {
             //     RedemptionId = Guid.NewGuid(),
@@ -442,7 +448,14 @@ namespace BannerlordTwitch
             ActionManager.SendReply(context, info);
             if (!IsNullOrEmpty(redemption.ChannelId))
             {
-                _ = SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.FULFILLED);
+                if ((context.Source as Reward)?.RewardSpec?.DisableAutomaticFulfillment != true)
+                {
+                    _ = SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.FULFILLED);
+                }
+                else
+                {
+                    Log.Info($"Skipped marking {redemption.RewardTitle} for {redemption.DisplayName} as fulfilled as DisableAutomaticFulfillment is set");
+                }
             }
             else
             {
