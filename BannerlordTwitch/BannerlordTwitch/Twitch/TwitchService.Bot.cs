@@ -10,13 +10,14 @@ using TwitchLib.Client;
 using TwitchLib.Client.Events;
 using TwitchLib.Client.Models;
 using TwitchLib.Communication.Clients;
+using TwitchLib.Communication.Events;
 using TwitchLib.Communication.Models;
 
 namespace BannerlordTwitch
 {
     internal partial class TwitchService
     {
-        private class Bot
+        private class Bot : IDisposable
         {
             private readonly string channel;
             private TwitchClient client;
@@ -68,6 +69,7 @@ namespace BannerlordTwitch
                 client.OnJoinedChannel += Client_OnJoinedChannel;
                 client.OnMessageReceived += Client_OnMessageReceived;
                 client.OnConnected += Client_OnConnected;
+                client.OnDisconnected += Client_OnDisconnected;
                 // client.OnWhisperReceived += Client_OnWhisperReceived;
 
                 client.Connect();
@@ -175,71 +177,45 @@ namespace BannerlordTwitch
                 Log.Trace($"{e.DateTime.ToString()}: {e.BotUsername} - {e.Data}");
             }
 
+            private bool autoReconnect = true;
+
             private void Client_OnConnected(object sender, OnConnectedArgs e)
             {
-                Log.LogFeedSystem($"{e.BotUsername} connected");
+                Log.LogFeedSystem($"Bot connected");
 
-                var cts = new CancellationTokenSource();
-
-                Task.Factory.StartNew(() => {
-                    while (!cts.IsCancellationRequested)
-                    {
-                        MainThreadSync.Run(() =>
-                        {
-                            if (!client.IsConnected || client.JoinedChannels.Count == 0)
-                            {
-                                client.Disconnect();
-                                cts.Cancel();
-                                Connect();
-                            }
-                        });
-                        Task.Delay(TimeSpan.FromSeconds(60), cts.Token).Wait();
-                    }
-                }, TaskCreationOptions.LongRunning);
+                // disconnectCts = new CancellationTokenSource();
+                // Task.Factory.StartNew(() => {
+                //     while (!disconnectCts.IsCancellationRequested)
+                //     {
+                //         MainThreadSync.Run(() =>
+                //         {
+                //             if (!client.IsConnected || client.JoinedChannels.Count == 0)
+                //             {
+                //                 client.Disconnect();
+                //                 disconnectCts.Cancel();
+                //                 Connect();
+                //             }
+                //         });
+                //         Task.Delay(TimeSpan.FromSeconds(15), disconnectCts.Token).Wait();
+                //     }
+                // }, TaskCreationOptions.LongRunning);
             }
+            
+            private void Client_OnDisconnected(object sender, OnDisconnectedEventArgs e)
+            {
+                Log.LogFeedSystem($"Bot disconnected");
+                if (autoReconnect)
+                {
+                    Connect();
+                }
+            }
+
 
             private void Client_OnJoinedChannel(object sender, OnJoinedChannelArgs e)
             {
-                Log.LogFeedSystem($"{e.BotUsername} has joined channel {e.Channel}");
+                Log.LogFeedSystem($"@{e.BotUsername} has joined channel {e.Channel}");
                 SendChat("bot reporting for duty!", "Type !help for command list");
             }
-
-            // private static CommandMessage GetCommandMessage(ChatMessage from) =>
-            //     new()
-            //     {
-            //         UserName = from.DisplayName, // DisplayName not UserName, as it has correct capitalization
-            //         ReplyId = from.Id,
-            //         Bits = from.Bits,
-            //         BitsInDollars = from.BitsInDollars,
-            //         SubscribedMonthCount = from.SubscribedMonthCount,
-            //         IsBroadcaster = from.IsBroadcaster,
-            //         IsHighlighted = from.IsHighlighted,
-            //         IsMe = from.IsMe,
-            //         IsModerator = from.IsModerator,
-            //         IsSkippingSubMode = from.IsSkippingSubMode,
-            //         IsSubscriber = from.IsSubscriber,
-            //         IsVip = from.IsVip,
-            //         IsStaff = from.IsStaff,
-            //         IsPartner = from.IsPartner
-            //     };
-            // private static CommandMessage GetCommandMessage(WhisperMessage from) =>
-            //     new()
-            //     {
-            //         UserName = from.DisplayName, // DisplayName not UserName, as it has correct capitalization
-            //         ReplyId = null,
-            //         Bits = from.Bits,
-            //         BitsInDollars = from.BitsInDollars,
-            //         SubscribedMonthCount = from.SubscribedMonthCount,
-            //         IsBroadcaster = from.IsBroadcaster,
-            //         IsHighlighted = from.IsHighlighted,
-            //         IsMe = from.IsMe,
-            //         IsModerator = from.IsModerator,
-            //         IsSkippingSubMode = from.IsSkippingSubMode,
-            //         IsSubscriber = from.IsSubscriber,
-            //         IsVip = from.IsVip,
-            //         IsStaff = from.IsStaff,
-            //         IsPartner = from.IsPartner
-            //     };
 
             private void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)
             {
@@ -270,6 +246,24 @@ namespace BannerlordTwitch
                         twitchService.ExecuteCommand(cmdName, chatMessage, args);
                     }
                 });
+            }
+
+            private void ReleaseUnmanagedResources()
+            {
+                autoReconnect = false;
+                client?.Disconnect();
+                client = null;
+            }
+
+            public void Dispose()
+            {
+                ReleaseUnmanagedResources();
+                GC.SuppressFinalize(this);
+            }
+
+            ~Bot()
+            {
+                ReleaseUnmanagedResources();
             }
         }
     }

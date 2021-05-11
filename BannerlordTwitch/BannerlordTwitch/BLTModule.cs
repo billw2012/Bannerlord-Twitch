@@ -119,7 +119,6 @@ namespace BannerlordTwitch
 			try
 			{
 				TwitchService = new TwitchService();
-				Log.LogFeedSystem("TwitchService initialized");
 				return true;
 			}
 			catch (Exception ex)

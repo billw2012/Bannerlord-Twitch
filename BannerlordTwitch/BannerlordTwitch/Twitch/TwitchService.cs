@@ -284,6 +284,8 @@ namespace BannerlordTwitch
                 }
             }
             Db.Save(db);
+            
+            Log.LogFeedSystem($"Rewards removed");
         }
 
         private void OnRewardRedeemed(object sender, OnRewardRedeemedArgs redeemedArgs)
@@ -503,7 +505,7 @@ namespace BannerlordTwitch
 
         private void OnPubSubServiceConnected(object sender, System.EventArgs e)
         {
-            Log.LogFeedSystem("PubSub Service connected, now listening for rewards");
+            Log.LogFeedSystem("TwitchService connected");
 
 #pragma warning disable 618
             // Obsolete warning disabled because no new version has yet been written!
@@ -534,6 +536,7 @@ namespace BannerlordTwitch
         {
             if (simTest != null)
             {
+                Log.LogFeedSystem($"Sim stopped");
                 simTest.Stop();
                 simTest = null;
                 return true;
@@ -546,7 +549,8 @@ namespace BannerlordTwitch
         {
             StopSim();
             RemoveRewards();
-            Log.Info($"Exiting");
+            bot?.Dispose();
+            Log.LogFeedSystem($"TwitchService stopped");
         }
 
         public void Dispose()
