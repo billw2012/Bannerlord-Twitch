@@ -377,11 +377,13 @@ namespace BLTAdoptAHero
                 .Where(e => e.element.Item.RelevantSkill == skill)
                 .ToList();
         }
-
+        
         public static bool CanUseItem(ItemObject item, Hero hero)
         {
             var relevantSkill = item.RelevantSkill;
-            return (relevantSkill == null || hero.GetSkillValue(relevantSkill) >= item.Difficulty) && (!hero.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByFemale)) && (hero.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByMale));
+            return (relevantSkill == null || hero.GetSkillValue(relevantSkill) >= item.Difficulty) 
+                   && (!hero.CharacterObject.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByFemale)) 
+                   && (hero.CharacterObject.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByMale));
         }
     }
 }

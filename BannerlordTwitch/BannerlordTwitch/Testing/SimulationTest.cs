@@ -82,7 +82,7 @@ namespace BannerlordTwitch.Testing
         {
             if (item.Type == "Reward")
             {
-                BLTModule.TwitchService.TestRedeem(item.Id, user.name, item.Args);
+                BLTModule.TwitchService?.TestRedeem(item.Id, user.name, item.Args);
             }
             else
             {
