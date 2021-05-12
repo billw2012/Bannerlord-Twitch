@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Util;
@@ -38,6 +38,31 @@ namespace BLTAdoptAHero
         
         public override void RegisterEvents()
         {
+            CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, () =>
+            {
+                // Clean up legacy hero names
+                var heroes = GetAllBLTHeroes().GroupBy(h => h.Name.ToLower());
+                foreach (var heroGroup in heroes)
+                {
+                    // hero to keep is living and preferably lowercase
+                    var heroToKeep = heroGroup.FirstOrDefault(h => h.IsAlive && h.FirstName == h.FirstName.ToLower()) 
+                                     ?? heroGroup.FirstOrDefault(h => h.IsAlive);
+
+                    // all other heroes with the same name, living or dead are made lowercase, and have the tags removed
+                    foreach(var otherOnes in heroGroup.Where(h => h != heroToKeep))
+                    {
+                        // Removing the tag and lower casing the name for neatness
+                        otherOnes.FirstName = otherOnes.FirstName.ToLower();
+                        otherOnes.Name = otherOnes.FirstName.ToLower();
+                        Campaign.Current.EncyclopediaManager.BookmarksTracker.RemoveBookmarkFromItem(otherOnes);
+                    }
+                    if (heroToKeep != null)
+                    {
+                        heroToKeep.FirstName = heroToKeep.FirstName.ToLower();
+                        heroToKeep.Name = new TextObject(GetFullName(heroToKeep.FirstName.ToString()));
+                    }
+                }
+            });
             CampaignEvents.HeroKilledEvent.AddNonSerializedListener(this, (victim, killer, detail, _) =>
             {
                 if (victim?.IsAdopted() == true || killer?.IsAdopted() == true)
@@ -130,6 +155,12 @@ namespace BLTAdoptAHero
                 && !h.IsNotable && h.Age >= 18f)
                 .Where(filter ?? (_ => true))
                 .Where(n => !n.Name.Contains(tagText));
+        }
+        
+        public static IEnumerable<Hero> GetAllBLTHeroes()
+        {
+            var tagText = new TextObject(BLTAdoptAHeroModule.Tag);
+            return Hero.All.Where(n => n.Name.Contains(tagText));
         }
 
         public static string GetFullName(string name) => $"{name} {BLTAdoptAHeroModule.Tag}";
