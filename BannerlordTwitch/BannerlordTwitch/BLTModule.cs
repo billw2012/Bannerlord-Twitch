@@ -1,7 +1,9 @@
 using HarmonyLib;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
 using BannerlordTwitch.Overlay;
@@ -27,8 +29,14 @@ namespace BannerlordTwitch
 
 		public static TwitchService TwitchService { get; private set; }
 
+		[DllImport("user32.dll")]
+		static extern int SetWindowText(IntPtr hWnd, string text);
+		
 		static BLTModule()
 		{
+			// Set a consistent Window title so streaming software can find it
+			SetWindowText(Process.GetCurrentProcess().MainWindowHandle, "Bannerlord Game Window");
+
 			MainThreadSync.InitMainThread();
 			AssemblyHelper.Redirect("Newtonsoft.Json", Version.Parse("13.0.0.0"), "30ad4fe6b2a6aeed");
 			AssemblyHelper.Redirect("Microsoft.Extensions.Logging.Abstractions", Version.Parse("3.1.5.0"), "adb9793829ddae60");
