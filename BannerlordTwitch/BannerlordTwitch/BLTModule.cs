@@ -54,7 +54,7 @@ namespace BannerlordTwitch
 			{
 				try
 				{
-					wnd = new OverlayWindow();
+					wnd = new OverlayWindow { ShowActivated = false };
 					wnd.Show();
 					System.Windows.Threading.Dispatcher.Run();
 				}

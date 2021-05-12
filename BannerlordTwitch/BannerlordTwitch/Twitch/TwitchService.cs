@@ -80,7 +80,7 @@ namespace BannerlordTwitch
         public static ReplyContext FromUser(ActionBase source, string userName, string args = null) =>
             new()
             {
-                UserName = userName,
+                UserName = userName.ToLower(),
                 Args = args,
                 Source = source,
             };
@@ -346,7 +346,7 @@ namespace BannerlordTwitch
                 return false;
             }
 
-            return affiliateSpoofing.FakeRedeem(reward.RewardSpec.Title, user, message) == true;
+            return affiliateSpoofing.FakeRedeem(reward.RewardSpec.Title, user.ToLower(), message) == true;
             // var redeem = new OnRewardRedeemedArgs
             // {
             //     RedemptionId = Guid.NewGuid(),

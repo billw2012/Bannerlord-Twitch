@@ -30,7 +30,7 @@ namespace BLTConfigure
             {
                 try
                 {
-                    wnd = new BLTConfigureWindow();
+                    wnd = new BLTConfigureWindow { ShowActivated = false };
                     wnd.Show();
                     System.Windows.Threading.Dispatcher.Run();
                 }

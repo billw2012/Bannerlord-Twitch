@@ -197,7 +197,8 @@ namespace BLTAdoptAHero
             {
                 int count = Campaign.Current.DeadAndDisabledHeroes.Count(h =>
                     h.FirstName.Contains(userName) && h.FirstName.ToString() == userName);
-                existingHero.FirstName = new TextObject(existingHero.FirstName + $" ({count})"); 
+                existingHero.FirstName = new TextObject(existingHero.FirstName + $" ({count})");
+                existingHero.Name = existingHero.FirstName;
                 Campaign.Current.EncyclopediaManager.BookmarksTracker.RemoveBookmarkFromItem(existingHero);
             }
 
