@@ -127,6 +127,7 @@ namespace BannerlordTwitch
             }
 
             //api.Settings.Secret = SECRET;
+            api.Settings.SkipDynamicScopeValidation = true;
             api.Settings.ClientId = authSettings.ClientID;
             api.Settings.AccessToken = authSettings.AccessToken;
 
