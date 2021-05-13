@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using TaleWorlds.Library;
 using TaleWorlds.Core;
+using TaleWorlds.Localization;
 using Debug = TaleWorlds.Library.Debug;
 
 namespace BannerlordTwitch.Util
@@ -62,6 +63,28 @@ namespace BannerlordTwitch.Util
         {
             BLTModule.AddToFeed(str, color);
             LogFilePrint(str);
+        }
+
+        public enum Sound
+        {
+            None,
+            Horns,
+            Horns2,
+            Horns3,
+            Notification1,
+        }
+        public static void ShowInformation(string message, BasicCharacterObject characterObject = null, Sound sound = Sound.None)
+        {
+            string soundStr = sound switch
+            {
+                Sound.None => null,
+                Sound.Horns => "event:/ui/mission/horns/attack",
+                Sound.Horns2 => "event:/ui/mission/horns/move",
+                Sound.Horns3 => "event:/ui/mission/horns/retreat",
+                Sound.Notification1 => "event:/ui/notification/levelup",
+                _ => throw new ArgumentOutOfRangeException(nameof(sound), sound, null)
+            };
+            InformationManager.AddQuickInformation(new TextObject(message), 1000, characterObject, soundStr);
         }
 
         public static long TimeFunction(Action action)

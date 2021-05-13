@@ -11,6 +11,7 @@ namespace BLTAdoptAHero
 {
     internal class BLTMissionBehavior : AutoMissionBehavior<BLTMissionBehavior>
     {
+        public delegate void AgentCreatedDelegate(Agent agent);
         public delegate void MissionOverDelegate();
         public delegate void MissionModeChangeDelegate(MissionMode oldMode, MissionMode newMode, bool atStart);
         public delegate void MissionResetDelegate();
@@ -21,6 +22,7 @@ namespace BLTAdoptAHero
         public class Listeners
         {
             public Hero hero;
+            public AgentCreatedDelegate onAgentCreated;
             public MissionOverDelegate onMissionOver;
             public MissionModeChangeDelegate onModeChange;
             public MissionResetDelegate onMissionReset;
@@ -33,6 +35,7 @@ namespace BLTAdoptAHero
         private readonly List<Listeners> listeners = new();
 
         public void AddListeners(Hero hero, 
+            AgentCreatedDelegate onAgentCreated = null,
             MissionOverDelegate onMissionOver = null,
             MissionModeChangeDelegate onModeChange = null,
             MissionResetDelegate onMissionReset = null,
@@ -46,6 +49,7 @@ namespace BLTAdoptAHero
             listeners.Add(new Listeners
             {
                 hero = hero,
+                onAgentCreated = onAgentCreated, 
                 onMissionOver = onMissionOver,
                 onModeChange = onModeChange,
                 onMissionReset = onMissionReset,
@@ -59,6 +63,12 @@ namespace BLTAdoptAHero
         public void RemoveListeners(Hero hero)
         {
             listeners.RemoveAll(l => l.hero == hero);
+        }
+
+        public override void OnAgentCreated(Agent agent)
+        {
+            base.OnAgentCreated(agent);
+            ForAgent(agent, l => l.onAgentCreated?.Invoke(agent));
         }
 
         public override void OnAgentRemoved(Agent killedAgent, Agent killerAgent, AgentState agentState, KillingBlow blow)

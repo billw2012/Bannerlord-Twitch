@@ -253,39 +253,49 @@ namespace BannerlordTwitch
 
         private void RemoveRewards()
         {
-            Log.Info("Removing rewards");
+            // Log.Info("Removing rewards");
 
-            // First cancel all pending redemptions
-            foreach (var redemption in redemptionCache.Values)
-            {
-                Log.LogFeedSystem($"Redemption of {redemption.RewardTitle} for {redemption.DisplayName} cancelled (rewards are being removed)");
-                if (!IsNullOrEmpty(redemption.ChannelId))
-                {
-                    SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.CANCELED).Wait();
-                }
-                else
-                {
-                    Log.Trace($"(skipped setting redemption status for test redemption)");
-                }
-            }
+            // try
+            // {
+            //     // First cancel all pending redemptions
+            //     Task.WaitAll(redemptionCache.Values.Select(
+            //         redemption => SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.CANCELED)
+            //             .ContinueWith(t => Log.Info(t.IsCompleted
+            //                 ? $"Incomplete redemption of {redemption.RewardTitle} for {redemption.DisplayName} refunded"
+            //                 : $"Couldn't refund redemption of {redemption.RewardTitle} for {redemption.DisplayName}: {t.Exception?.Message}"))).ToArray(),
+            //         TimeSpan.FromSeconds(5));
+            // }
+            // catch (Exception e)
+            // {
+            //     Log.LogFeedSystem($"Failed to cancel redemptions: {e.Message}");
+            // }
 
             var db = Db.Load();
-            foreach (string rewardId in db.RewardsCreated.ToList())
+            var removedRewards = new ConcurrentBag<string>();
+            try
             {
-                try
-                {
-                    api.Helix.ChannelPoints.DeleteCustomReward(channelId, rewardId, accessToken: authSettings.AccessToken).Wait();
-                    Log.Info($"Removed reward {rewardId}");
-                    db.RewardsCreated.Remove(rewardId);
-                }
-                catch (Exception e)
-                {
-                    Log.Info($"Couldn't remove reward {rewardId}: {e.Message}");
-                }
+                Task.WaitAll(db.RewardsCreated.ToList().Select(rewardId => api.Helix.ChannelPoints.DeleteCustomReward(channelId, rewardId, accessToken: authSettings.AccessToken)
+                        .ContinueWith(t =>
+                        {
+                            if (t.IsCompleted)
+                            {
+                                Log.Info($"Removed reward {rewardId}");
+                                removedRewards.Add(rewardId);
+                            }
+                            else
+                            {
+                                Log.Info($"Failed to remove {rewardId}: {t.Exception?.Message}");
+                            }
+                        })).ToArray(), TimeSpan.FromSeconds(5));
+                Log.LogFeedSystem($"All rewards removed");
             }
+            catch (Exception e)
+            {
+                Log.LogFeedSystem($"Failed to remove all rewards: {e.Message}");
+            }
+            db.RewardsCreated.RemoveAll(r => removedRewards.Contains(r));
             Db.Save(db);
             
-            Log.LogFeedSystem($"Rewards removed");
         }
 
         private void OnRewardRedeemed(object sender, OnRewardRedeemedArgs redeemedArgs)

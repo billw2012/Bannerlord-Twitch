@@ -157,7 +157,8 @@
                             Background="DarkGray"
                             PreparePropertyItem="PropertyGrid_OnPreparePropertyItem"
                             SelectedObjectChanged="PropertyGrid_OnSelectedObjectChanged"
-                            PropertyChanged="PropertyGrid_OnPropertyChanged">
+                            PropertyValueChanged="PropertyGrid_OnPropertyValueChanged"
+                            >
                             <xctk:PropertyGrid.CategoryGroupHeaderTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding}" Foreground="Black"/>

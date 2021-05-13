@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using Helpers;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -273,6 +274,9 @@ namespace BLTAdoptAHero
             {
                 Campaign.Current.EncyclopediaManager.BookmarksTracker.AddBookmarkToItem(newHero);
             }
+            
+            Log.ShowInformation($"{oldName} is now known as {newHero.Name}!", newHero.CharacterObject, Log.Sound.Horns2);
+
             return (true, $"{oldName} is now known as {newHero.Name}, they have {settings.StartingGold} gold!");
         }
     }

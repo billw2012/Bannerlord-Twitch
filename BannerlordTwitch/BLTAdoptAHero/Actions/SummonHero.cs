@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -26,6 +27,27 @@ namespace BLTAdoptAHero
     [Description("Spawns the adopted hero into the current active mission")]
     internal class SummonHero : ActionHandlerBase
     {
+        private class FormationItemSource : IItemsSource
+        {
+            public ItemCollection GetValues()
+            {
+                var col = new ItemCollection
+                {
+                    "Unset",
+                    "Infantry",
+                    "Ranged",
+                    "Cavalry",
+                    "HorseArcher",
+                    "Skirmisher",
+                    "HeavyInfantry",
+                    "LightCavalry",
+                    "HeavyCavalry",
+                    "Bodyguard",
+                };
+                return col;
+            }
+        }
+        
         [CategoryOrder("General", -1)]
         [CategoryOrder("Allowed Missions", 0)]
         [CategoryOrder("General", 1)]
@@ -58,8 +80,14 @@ namespace BLTAdoptAHero
             public bool AllowDeath { get; set; }
             [Category("General"), Description("Whether the summoned hero will always start with full health"), PropertyOrder(3)]
             public bool StartWithFullHealth { get; set; }
-            [Category("General"), Description("Gold cost to summon"), PropertyOrder(1)]
+            [Category("General"), Description("Amount to multiply normal starting health by, to give summoned heroes better staying power"), PropertyOrder(4)]
+            public float? StartHealthMultiplier { get; set; }
+            [Category("General"), Description("Gold cost to summon"), PropertyOrder(5)]
             public int GoldCost { get; set; }
+
+            [Category("General"), Description("Which formation to add summoned units to"), PropertyOrder(6),
+             ItemsSource(typeof(FormationItemSource))]
+            public string PreferredFormation { get; set; }
 
             [Category("Effects"), Description("Multiplier applied to (positive) effects for subscribers"), PropertyOrder(1)]
             public float SubBoost { get; set; } = 1;
@@ -324,11 +352,11 @@ namespace BLTAdoptAHero
             else
             {
                 PartyBase party = null;
-                if (settings.OnPlayerSide && Mission.Current?.PlayerTeam != null)
+                if (settings.OnPlayerSide && Mission.Current?.PlayerTeam != null && Mission.Current?.PlayerTeam.ActiveAgents.Any() == true)
                 {
                     party = PartyBase.MainParty;
                 }
-                else if(!settings.OnPlayerSide && Mission.Current?.PlayerEnemyTeam != null)
+                else if(!settings.OnPlayerSide && Mission.Current?.PlayerEnemyTeam != null && Mission.Current?.PlayerEnemyTeam.ActiveAgents.Any() == true)
                 {
                     party = Mission.Current.PlayerEnemyTeam?.TeamAgents
                         ?.Select(a => a.Origin?.BattleCombatant as PartyBase)
@@ -340,15 +368,23 @@ namespace BLTAdoptAHero
                     return;
                 }
 
+                if (!Enum.TryParse(settings.PreferredFormation, out FormationClass formation))
+                {
+                    formation = FormationClass.Bodyguard;
+                }
+                Campaign.Current.SetPlayerFormationPreference(adoptedHero.CharacterObject, formation);
+
                 agent = Mission.Current.SpawnTroop(
                     new PartyAgentOrigin(party, adoptedHero.CharacterObject, alwaysWounded: !settings.AllowDeath),
                     isPlayerSide: settings.OnPlayerSide,
-                    hasFormation: true,
-                    spawnWithHorse: adoptedHero.CharacterObject.HasMount() && Mission.Current.Mode != MissionMode.Stealth,
+                    hasFormation: false,
+                    spawnWithHorse: adoptedHero.CharacterObject.HasMount() 
+                                    && Mission.Current.Mode != MissionMode.Stealth 
+                                    && !InSiegeMission(),
                     isReinforcement: true,
                     enforceSpawningOnInitialPoint: false,
-                    formationTroopCount: 1,
-                    formationTroopIndex: 8,
+                    formationTroopCount: 0,
+                    formationTroopIndex: 0,
                     isAlarmed: true,
                     wieldInitialWeapons: true);
 
@@ -447,6 +483,13 @@ namespace BLTAdoptAHero
                 agent.Health = agent.HealthLimit;
             }
 
+            if (settings.StartHealthMultiplier.HasValue)
+            {
+                agent.BaseHealthLimit *= settings.StartHealthMultiplier.Value;
+                agent.HealthLimit *= settings.StartHealthMultiplier.Value;
+                agent.Health *= settings.StartHealthMultiplier.Value;
+            }
+
             var messages = settings.OnPlayerSide
                 ? new List<string>
                 {
@@ -455,6 +498,17 @@ namespace BLTAdoptAHero
                     "Which one should I stab?",
                     "Once more unto the breach!",
                     "Freeeeeedddooooooommmm!",
+                    "Remember the Alamo!",
+                    "Alala!",
+                    "Eleleu!",
+                    "Deus vult!",
+                    "Banzai!",
+                    "Liberty or Death!",
+                    "Har Har Mahadev!",
+                    "Desperta ferro!",
+                    "Alba gu bràth!",
+                    "Santiago!",
+                    "Huzzah!",
                 }
                 : new List<string>
                 {
@@ -464,10 +518,10 @@ namespace BLTAdoptAHero
                     "En garde!",
                     "It's stabbing time! For you.",
                     "It's nothing personal!",
+                    "Curse my sudden but inevitable betrayal!",
                 };
             if (InSiegeMission() && settings.OnPlayerSide) messages.Add($"Don't send me up the siege tower, its confusing!");
-            InformationManager.AddQuickInformation(new TextObject(!string.IsNullOrEmpty(context.Args) ? context.Args : messages.SelectRandom()), 1000,
-                adoptedHero.CharacterObject, "event:/ui/mission/horns/attack");
+            Log.ShowInformation(!string.IsNullOrEmpty(context.Args) ? context.Args : messages.SelectRandom(), adoptedHero.CharacterObject, Log.Sound.Horns);
 
             BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -settings.GoldCost);
 

@@ -12,6 +12,12 @@ namespace BLTAdoptAHero
     {
         public static BLTAdoptAHeroCampaignBehavior Get() => GetCampaignBehavior<BLTAdoptAHeroCampaignBehavior>();
         
+        //private Dictionary<string, Hero> nameMap = new();
+        //private Dictionary<Hero, string> reverseNameMap = new();
+        
+        //private Dictionary<string, Hero> adoptedHeroes = new();
+        private Dictionary<Hero, int> heroGold = new();
+        
         private static string KillDetailVerb(KillCharacterAction.KillCharacterActionDetail detail)
         {
             switch (detail)
@@ -35,6 +41,11 @@ namespace BLTAdoptAHero
                     return "was ended";
             }
         }
+
+        // public static string GetHeroName(Hero hero)
+        // {
+        //     if(!reverseNameMap.TryGetValue(h))
+        // }
         
         public override void RegisterEvents()
         {
@@ -110,9 +121,6 @@ namespace BLTAdoptAHero
             });
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, JoinTournament.SetupGameMenus);
         }
-
-        //private Dictionary<string, Hero> adoptedHeroes = new();
-        private Dictionary<Hero, int> heroGold = new();
             
         public override void SyncData(IDataStore dataStore)
         {
@@ -144,6 +152,8 @@ namespace BLTAdoptAHero
             heroGold[hero] = newGold;
             return newGold;
         }
+        
+        //private
 
         public static IEnumerable<Hero> GetAvailableHeroes(Func<Hero, bool> filter = null)
         {

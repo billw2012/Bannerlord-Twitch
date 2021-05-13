@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Security.Authentication;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
@@ -40,6 +41,7 @@ namespace BLTConfigure
             Command = new RelayCommand(cmd);
         }
     }
+
     public partial class BLTConfigureWindow
     {
         // public class ActionViewModel
@@ -120,11 +122,7 @@ namespace BLTConfigure
             // MainThreadSync.Run();
             ActionManager.ConvertSettings(EditedSettings.Commands);
             ActionManager.ConvertSettings(EditedSettings.Rewards);
-            // CommandsListBox.ItemsSource = EditedSettings.Commands;
-            var actionFilterView = CollectionViewSource.GetDefaultView(EditedSettings.Commands.Concat<ActionBase>(EditedSettings.Rewards));
-            actionFilterView.GroupDescriptions.Add(new TypeGroupDescription());
-            actionFilterView.SortDescriptions.Add(new SortDescription("Branch", ListSortDirection.Descending));
-            ActionsListBox.ItemsSource = actionFilterView;
+            RefreshActionList();
             PropertyGrid.SelectedObject = null;
 
             try
@@ -146,9 +144,24 @@ namespace BLTConfigure
             UpdateBotToken(EditedAuthSettings.BotAccessToken);
         }
 
+        private void RefreshActionList()
+        {
+            if (EditedSettings != null)
+            {
+                // CommandsListBox.ItemsSource = EditedSettings.Commands;
+                var actionFilterView =
+                    CollectionViewSource.GetDefaultView(
+                        EditedSettings.Commands.Concat<ActionBase>(EditedSettings.Rewards));
+                actionFilterView.GroupDescriptions.Add(new TypeGroupDescription());
+                actionFilterView.SortDescriptions.Add(new SortDescription("Branch", ListSortDirection.Descending));
+                ActionsListBox.ItemsSource = actionFilterView;
+            }
+        }
+
+        private bool suspendSync = false;
         private void Actions_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ActionsListBox.SelectedItem != null)
+            if (!suspendSync && ActionsListBox.SelectedItem != null)
             {
                 PropertyGrid.SelectedObject = ActionsListBox.SelectedItem;
                 //CommandsListBox.SelectedItem = null;
@@ -178,8 +191,10 @@ namespace BLTConfigure
             {
                 newReward.HandlerConfig = Activator.CreateInstance(settingsType);
             }
+            
             EditedSettings.Rewards.Add(newReward);
-            ActionsListBox.Items.Refresh();
+            RefreshActionList();
+            SaveSettings();
             ActionsListBox.SelectedItem = newReward;
         }
 
@@ -197,7 +212,8 @@ namespace BLTConfigure
                 newCommand.HandlerConfig = Activator.CreateInstance(settingsType);
             }
             EditedSettings.Commands.Add(newCommand);
-            ActionsListBox.Items.Refresh();
+            RefreshActionList();
+            SaveSettings();
             ActionsListBox.SelectedItem = newCommand;
         }
 
@@ -211,10 +227,18 @@ namespace BLTConfigure
             {
                 EditedSettings.Commands.Remove(ActionsListBox.SelectedItem as Command);
             }
+            RefreshActionList();
+            SaveSettings();
             PropertyGrid.SelectedObject = null;
-            ActionsListBox.Items.Refresh();
         }
 
+        private async void PropertyGrid_OnPropertyValueChanged(object sender, PropertyValueChangedEventArgs e)
+        {
+            await Task.Delay(TimeSpan.FromMilliseconds(100));
+            RefreshActionList();
+            SaveSettings();
+        }
+        
         // private void DeleteCommand_OnClick(object sender, RoutedEventArgs e)
         // {
         //     EditedSettings.Commands.Remove(CommandsListBox.SelectedItem as Command);
@@ -222,12 +246,35 @@ namespace BLTConfigure
         //     CommandsListBox.Items.Refresh();
         // }
 
-        private void PropertyGrid_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            ActionsListBox.Items.Refresh();
-            // CommandsListBox.Items.Refresh();
-            SaveSettings();
-        }
+        // private async void PropertyGrid_OnLostFocus(object sender, RoutedEventArgs e)
+        // {
+        //     //await Task.Delay(TimeSpan.FromMilliseconds(100));
+        //     //RefreshActionList();
+        //     //SaveSettings();
+        // }
+
+        // private async void PropertyGrid_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        // {
+        //     //     if (suspendSync) return;
+        //     //     suspendSync = true;
+        //     //     //var item = ActionsListBox.SelectedItem;
+        //     //     //ActionsListBox.Items.Refresh();
+        //     //     // CommandsListBox.Items.Refresh();
+        //     //     //ActionsListBox.Items.Remove();
+        //     //     RefreshActionList();
+        //     //     //ActionsListBox.Item
+        //     //     SaveSettings();
+        //     //     // ActionsListBox.SelectedItem = ActionsListBox.SelectedItem;
+        //     //     suspendSync = false;
+        //     if(Dispatcher.Thread != Thread.CurrentThread)
+        //     {
+        //         return;
+        //     }
+        //     await Task.Delay(TimeSpan.FromMilliseconds(100));
+        //     RefreshActionList();
+        //     SaveSettings();
+        // }
+
 
         private void SaveSettings()
         {
@@ -413,7 +460,7 @@ namespace BLTConfigure
             //var grid = sender as PropertyGrid;
             //ExpandAndFixNames(grid.Properties);
         }
-        
+
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {

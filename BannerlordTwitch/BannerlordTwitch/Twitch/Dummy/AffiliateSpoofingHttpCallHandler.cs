@@ -83,6 +83,7 @@ namespace BannerlordTwitch.Dummy
                 var id = Guid.NewGuid();
                 activeRedemptions.Add(new Redemption(id.ToString(), user, args, reward.Id, reward.Title));
                 OnRewardRedeemed?.Invoke(this, new OnRewardRedeemedArgs {
+                    ChannelId = user + "channel",
                     Login = user,
                     DisplayName = user,
                     Message = args,

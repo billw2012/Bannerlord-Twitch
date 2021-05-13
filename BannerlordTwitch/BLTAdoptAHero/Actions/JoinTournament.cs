@@ -33,11 +33,11 @@ namespace BLTAdoptAHero
         {
             [Category("General"), Description("Whether the tournament will include the player or not"), PropertyOrder(1)]
             public bool ViewersOnly { get; set; }
-            
             [Category("General"), Description("Whether the hero will start the tournament with full HP"), PropertyOrder(2)]
             public bool StartWithFullHP { get; set; }
-            
-            [Category("General"), Description("Gold cost to join"), PropertyOrder(3)]
+            [Category("General"), Description("Amount to multiply normal starting health by, to give adopted heroes an advantage against other contenstents, and to make fights last longer"), PropertyOrder(3)]
+            public float? StartHPMultiplier { get; set; }
+            [Category("General"), Description("Gold cost to join"), PropertyOrder(4)]
             public int GoldCost { get; set; }
             
             [Category("General"), Description("Multiplier applied to all effects for subscribers"), PropertyOrder(4)]
@@ -119,8 +119,7 @@ namespace BLTAdoptAHero
                 if (queue.Count == max)
                 {
                     ActionManager.SendReply(context, $"You are in the {name} queue, no spots remaining");
-                    InformationManager.AddQuickInformation(new TextObject($"The {name} is ready! To start it, just {instructions}."),
-                        1000, null, "event:/ui/mission/horns/attack");
+                    Log.ShowInformation($"The {name} is ready! To start it, just {instructions}.", sound: Log.Sound.Horns2);
                 }
                 else
                 {
@@ -318,10 +317,26 @@ namespace BLTAdoptAHero
 
                 foreach (var (context, settings, hero) in currentTournament)
                 {
+                    // Complete redemption
+                    
                     float actualBoost = SettingsSubBoost(context, settings);
 
                     // Kill effects
                     BLTMissionBehavior.Current.AddListeners(hero,
+                        onAgentCreated: agent =>
+                        {
+                            if (settings.StartWithFullHP)
+                            {
+                                agent.Health = agent.HealthLimit;
+                            }
+
+                            if (settings.StartHPMultiplier.HasValue)
+                            {
+                                agent.BaseHealthLimit *= settings.StartHPMultiplier.Value;
+                                agent.HealthLimit *= settings.StartHPMultiplier.Value;
+                                agent.Health *= settings.StartHPMultiplier.Value;
+                            }
+                        },
                         onGotAKill: (killer, killed, state) =>
                         {
                             var results = BLTMissionBehavior.ApplyKillEffects(

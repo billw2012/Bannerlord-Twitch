@@ -57,6 +57,8 @@ Rewards:
     AllowHideOut: true
     OnPlayerSide: true
     StartWithFullHealth: true
+    StartHealthMultiplier: 2
+    PreferredFormation: Unset
     SubBoost: 2
     HealPerSecond: 0.100000001
     WinGold: 5000
@@ -82,6 +84,8 @@ Rewards:
     AllowFriendlyMission: true
     AllowArena: true
     AllowHideOut: true
+    StartWithFullHealth: true
+    StartHealthMultiplier: 2
     SubBoost: 2
     HealPerSecond: 0.100000001
     WinGold: 10000
@@ -98,6 +102,7 @@ Rewards:
     Cost: 50
     IsEnabled: true
   Handler: CharacterEffect
+  Enabled: true
   RespondInOverlay: true
   HandlerConfig:
     Name: Heal Player
@@ -111,6 +116,7 @@ Rewards:
     Cost: 100
     IsEnabled: true
   Handler: CharacterEffect
+  Enabled: true
   RespondInOverlay: true
   HandlerConfig:
     Name: Giant
@@ -138,6 +144,7 @@ Rewards:
     Cost: 100
     IsEnabled: true
   Handler: CharacterEffect
+  Enabled: true
   RespondInOverlay: true
   HandlerConfig:
     Name: Baby
@@ -208,6 +215,8 @@ Rewards:
   RespondInOverlay: true
   HandlerConfig:
     ViewersOnly: true
+    StartWithFullHP: true
+    StartHPMultiplier: 3
     SubBoost: 2
     WinGold: 50000
     WinXP: 50000
