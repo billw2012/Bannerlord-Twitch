@@ -5,13 +5,10 @@ Rewards:
     IsEnabled: true
   Handler: AdoptAHero
   Enabled: true
-  RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig:
     AllowNoble: true
-    AllowWanderer: true
     AllowNewAdoptionOnDeath: true
-    StartingGold: 10000
     StartingSkills:
     - Skill: Melee
       MinLevel: 100
@@ -19,26 +16,31 @@ Rewards:
     - Skill: Ranged
       MinLevel: 100
       MaxLevel: 125
-    - Skill: Movement
+    - Skill: Riding
       MinLevel: 100
       MaxLevel: 125
-    StartingEquipmentTier: 1
+    - Skill: Athletics
+      MinLevel: 100
+      MaxLevel: 125
+    StartingEquipmentTier: 3
+    StartWithMeleeWeapon: true
+    StartWithArmor: true
 - RewardSpec:
     Title: 10k gold
-    Cost: 100
+    Cost: 1000
     IsEnabled: true
   Handler: AddGoldToHero
   Enabled: true
-  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig:
     Amount: 10000
 - RewardSpec:
     Title: 100k gold
-    Cost: 800
+    Cost: 9000
     IsEnabled: true
   Handler: AddGoldToHero
   Enabled: true
-  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig:
     Amount: 100000
 - RewardSpec:
@@ -58,14 +60,14 @@ Rewards:
     OnPlayerSide: true
     StartWithFullHealth: true
     StartHealthMultiplier: 2
-    PreferredFormation: Unset
+    PreferredFormation: LightCavalry
     SubBoost: 2
     HealPerSecond: 0.100000001
     WinGold: 5000
-    WinXP: 5000
-    LoseGold: 5000
-    LoseXP: 2500
-    GoldPerKill: 1000
+    WinXP: 15000
+    LoseGold: 2500
+    LoseXP: 5000
+    GoldPerKill: 2500
     XPPerKill: 5000
     XPPerKilled: 2500
     HealPerKill: 20
@@ -86,10 +88,11 @@ Rewards:
     AllowHideOut: true
     StartWithFullHealth: true
     StartHealthMultiplier: 2
+    PreferredFormation: LightCavalry
     SubBoost: 2
     HealPerSecond: 0.100000001
     WinGold: 10000
-    WinXP: 10000
+    WinXP: 20000
     LoseGold: 2500
     LoseXP: 5000
     GoldPerKill: 5000
@@ -113,7 +116,7 @@ Rewards:
     Duration: 30
 - RewardSpec:
     Title: Giant Hero
-    Cost: 100
+    Cost: 300
     IsEnabled: true
   Handler: CharacterEffect
   Enabled: true
@@ -141,7 +144,7 @@ Rewards:
     DeactivateParticleEffect: psys_burning_projectile_default_coll
 - RewardSpec:
     Title: Baby Hero
-    Cost: 100
+    Cost: 300
     IsEnabled: true
   Handler: CharacterEffect
   Enabled: true
@@ -208,7 +211,7 @@ Rewards:
     DeactivateParticleEffect: psys_burning_projectile_default_coll
 - RewardSpec:
     Title: Tournament
-    Cost: 100
+    Cost: 25
     IsEnabled: true
   Handler: JoinTournament
   Enabled: true
@@ -216,19 +219,34 @@ Rewards:
   HandlerConfig:
     ViewersOnly: true
     StartWithFullHP: true
-    StartHPMultiplier: 3
+    StartHPMultiplier: 2
     SubBoost: 2
     WinGold: 50000
-    WinXP: 50000
-    ParticipateXP: 5000
+    WinXP: 100000
+    ParticipateXP: 10000
     WinMatchGold: 5000
-    WinMatchXP: 5000
+    WinMatchXP: 10000
     ParticipateMatchXP: 2500
     GoldPerKill: 5000
-    XPPerKill: 1000
-    XPPerKilled: 500
+    XPPerKill: 5000
+    XPPerKilled: 2500
     HealPerKill: 20
     RelativeLevelScaling: 0.5
+- RewardSpec:
+    Title: Heal Random
+    Cost: 300
+    IsEnabled: true
+  Handler: CharacterEffect
+  Enabled: true
+  RespondInOverlay: true
+  HandlerConfig:
+    Name: Heal Random
+    Target: Any
+    ParticleEffects:
+    - Name: psys_bug_fly_1
+      AttachPoint: OnBody
+    HealPerSecond: 0.100000001
+    Duration: 15
 Commands:
 - Name: stats
   Help: Hero stats
@@ -251,22 +269,18 @@ Commands:
   Help: Adopt a Hero (subs only)
   Handler: AdoptAHero
   Enabled: true
-  RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig:
     CreateNew: true
     AllowNoble: true
     AllowWanderer: true
     AllowNewAdoptionOnDeath: true
-    StartingGold: 50000
+    SubscriberOnly: true
     StartingSkills:
     - Skill: Melee
       MinLevel: 150
       MaxLevel: 200
     - Skill: Ranged
-      MinLevel: 150
-      MaxLevel: 200
-    - Skill: Movement
       MinLevel: 150
       MaxLevel: 200
     - Skill: Personal
@@ -275,14 +289,22 @@ Commands:
     - Skill: Support
       MinLevel: 100
       MaxLevel: 150
-    StartingEquipmentTier: 1
+    - Skill: Riding
+      MinLevel: 150
+      MaxLevel: 200
+    - Skill: Athletics
+      MinLevel: 150
+      MaxLevel: 200
+    StartingEquipmentTier: 2
+    StartWithMeleeWeapon: true
+    StartWithRangedWeapon: true
     StartWithHorse: true
     StartWithArmor: true
 - Name: equip
   Help: Improve Equip (10k gold x Tier)
   Handler: EquipHero
   Enabled: true
-  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig:
     Armor: true
     Melee: true
@@ -291,24 +313,22 @@ Commands:
     Civilian: true
     AllowCompanionUpgrade: true
     Upgrade: true
-    GoldCost: 10000
+    GoldCost: 50000
     MultiplyCostByCurrentTier: true
 - Name: pfx
   BroadcasterOnly: true
   Handler: TestPfx
   Enabled: true
-  RespondInTwitch: true
+  RespondInOverlay: true
 GlobalConfigs: []
 SimTesting:
-  UserCount: 20
-  UserStayTime: 600
-  IntervalMinMS: 250
-  IntervalMaxMS: 500
+  UserCount: 50
+  UserStayTime: 1200
+  IntervalMinMS: 100
+  IntervalMaxMS: 100
   Init:
   - Type: Reward
     Id: Adopt a Hero
-  - Type: Reward
-    Id: Tournament
   Use:
   - Type: Reward
     Id: Summon
@@ -316,14 +336,6 @@ SimTesting:
     Id: Attack
   - Type: Reward
     Id: Heal Player
-  - Type: Reward
-    Id: Giant Hero
-  - Type: Reward
-    Id: Baby Hero
-  - Type: Reward
-    Id: Tournament
-  - Type: Reward
-    Id: 10k gold
   - Type: Reward
     Id: 100k gold
   - Type: Command

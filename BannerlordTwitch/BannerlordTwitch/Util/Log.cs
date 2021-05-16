@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Diagnostics;
+using System.IO;
 using TaleWorlds.Library;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
@@ -10,8 +11,11 @@ namespace BannerlordTwitch.Util
 {
     public static class Log
     {
+        private static readonly string LogPath = $@"C:\ProgramData\Mount and Blade II Bannerlord\logs\log{DateTime.Now:yyyyMMddHHmmss}.txt";
+
         private static void LogFilePrint(string str)
         {
+            File.AppendAllLines(LogPath, new []{ $"{DateTime.Now:yyyyMMddHHmmss}|{str}"});
             Debug.Print($"[BLT] {str}");
         }
 
@@ -35,6 +39,14 @@ namespace BannerlordTwitch.Util
             LogFeedCritical(str);
 #else
             MainThreadSync.Run(() => LogFilePrint("ERROR: " + str));
+#endif
+        }
+
+        public static void Exception(string context, Exception ex)
+        {
+            Error($"{context}: {ex.GetBaseException()}");
+#if DEBUG
+            throw ex;
 #endif
         }
 
@@ -62,7 +74,7 @@ namespace BannerlordTwitch.Util
         public static void LogFeed(string str, Color color)
         {
             BLTModule.AddToFeed(str, color);
-            LogFilePrint(str);
+            //MainThreadSync.Run(() => LogFilePrint(str));
         }
 
         public enum Sound
@@ -73,6 +85,7 @@ namespace BannerlordTwitch.Util
             Horns3,
             Notification1,
         }
+
         public static void ShowInformation(string message, BasicCharacterObject characterObject = null, Sound sound = Sound.None)
         {
             string soundStr = sound switch
@@ -83,7 +96,7 @@ namespace BannerlordTwitch.Util
                 Sound.Horns3 => "event:/ui/mission/horns/retreat",
                 Sound.Notification1 => "event:/ui/notification/levelup",
                 _ => throw new ArgumentOutOfRangeException(nameof(sound), sound, null)
-            };
+            }; 
             InformationManager.AddQuickInformation(new TextObject(message), 1000, characterObject, soundStr);
         }
 

@@ -126,7 +126,7 @@ namespace BannerlordTwitch.Rewards
                     {
                         config = ConvertObject(config, cmdHandler.HandlerConfigType);
                     }
-
+                    Log.Trace($"[{nameof(ActionManager)}] HandleCommand {commandId} {context.Args} for {context.UserName}");
                     cmdHandler.Execute(context, config);
                 }
                 catch (Exception e)
@@ -157,7 +157,7 @@ namespace BannerlordTwitch.Rewards
                 {
                     config = ConvertObject(config, action.RewardConfigType);
                 }
-                
+                //Log.Trace($"[{nameof(ActionManager)}] HandleReward {action} {context.Args} for {context.UserName}");
                 action.Enqueue(context, config);
             }
             catch (Exception e)

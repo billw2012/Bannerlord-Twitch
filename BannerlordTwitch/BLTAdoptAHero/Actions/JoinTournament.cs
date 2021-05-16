@@ -187,9 +187,10 @@ namespace BLTAdoptAHero
         public static void GetParticipantCharactersPostfix(Settlement settlement,
             int maxParticipantCount, bool includePlayer, List<CharacterObject> __result)
         {
+            currentTournament.Clear();
             if (Settlement.CurrentSettlement == settlement && maxParticipantCount == 16)
             {
-                if (includePlayer)
+                if (includePlayer && tournamentQueue.Any())
                 {
                     //__result.RemoveAll(c => c.HeroObject != Hero.MainHero);
                     __result.Remove(Hero.MainHero.CharacterObject);
@@ -197,11 +198,15 @@ namespace BLTAdoptAHero
 
                     __result.Add(Hero.MainHero.CharacterObject);
                     __result.AddRange(tournamentQueue.Select(q => q.hero.CharacterObject));
+                    
+                    currentTournament.AddRange(tournamentQueue);
                 }
-                else if(doViewerTournament)
+                else if(doViewerTournament && viewerTournamentQueue.Any())
                 {
                     __result.RemoveRange(0, Math.Min(__result.Count, viewerTournamentQueue.Count));
                     __result.AddRange(viewerTournamentQueue.Select(q => q.hero.CharacterObject));
+                    
+                    currentTournament.AddRange(viewerTournamentQueue);
                 }
             }
         }
@@ -237,16 +242,16 @@ namespace BLTAdoptAHero
                 }
             }
 
-            if (isPlayerParticipating || doViewerTournament)
+            if (currentTournament.Any()) //isPlayerParticipating && !doViewerTournament || !isPlayerParticipating && doViewerTournament)
             {
                 var tournamentBehaviour = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>();
                 // var tournamentFightMissionController = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentFightMissionController>();
                 
-                var queue = doViewerTournament ? viewerTournamentQueue : tournamentQueue;
-                
-                currentTournament.Clear();
-                currentTournament.AddRange(queue);
-                queue.Clear();
+                // var queue = doViewerTournament ? viewerTournamentQueue : tournamentQueue;
+                //
+                // currentTournament.Clear();
+                // currentTournament.AddRange(queue);
+                // queue.Clear();
                 
                 float SettingsSubBoost(ReplyContext replyContext, Settings settings)
                 {
@@ -312,7 +317,7 @@ namespace BLTAdoptAHero
                         }
                     }
 
-                    doViewerTournament = false;
+                    currentTournament.Clear(); // = false;
                 };
 
                 foreach (var (context, settings, hero) in currentTournament)

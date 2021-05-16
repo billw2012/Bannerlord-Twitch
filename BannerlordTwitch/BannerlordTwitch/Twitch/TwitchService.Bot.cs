@@ -21,13 +21,11 @@ namespace BannerlordTwitch
         {
             private readonly string channel;
             private TwitchClient client;
-            private readonly TwitchService twitchService;
             private readonly AuthSettings authSettings;
             private string botUserName;
 
-            public Bot(string channel, AuthSettings authSettings, TwitchService twitchService)
+            public Bot(string channel, AuthSettings authSettings)
             {
-                this.twitchService = twitchService;
                 this.authSettings = authSettings;
                 this.channel = channel;
                 
@@ -243,7 +241,7 @@ namespace BannerlordTwitch
                     {
                         string cmdName = parts[0];
                         string args = msg.Substring(cmdName.Length).Trim();
-                        twitchService.ExecuteCommand(cmdName, chatMessage, args);
+                        BLTModule.TwitchService?.ExecuteCommand(cmdName, chatMessage, args);
                     }
                 });
             }

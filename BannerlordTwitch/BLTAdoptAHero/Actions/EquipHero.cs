@@ -51,8 +51,8 @@ namespace BLTAdoptAHero
                 .Select(i => (int)i.Tier)
                 .GroupBy(v => v)
                 .OrderByDescending(g => g.Count())
-                .First()
-                .Key;
+                .FirstOrDefault()?
+                .Key ?? -1;
 
         protected override void ExecuteInternal(ReplyContext context, object config,
             Action<string> onSuccess,
@@ -82,7 +82,7 @@ namespace BLTAdoptAHero
             }
             int targetTier = settings.Upgrade 
                     ? GetHeroEquipmentTier(adoptedHero) + 1 
-                    : settings.Tier.Value
+                    : (settings.Tier ?? 1) - 1
                 ;
             
             if (targetTier > 5)
@@ -92,7 +92,7 @@ namespace BLTAdoptAHero
             }
 
             int cost = settings.MultiplyCostByCurrentTier
-                ? settings.GoldCost * targetTier
+                ? settings.GoldCost * (targetTier + 1)
                 : settings.GoldCost;
 
             int availableGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
@@ -135,10 +135,14 @@ namespace BLTAdoptAHero
             {
                 // We want to be left with only one melee weapon of the appropriate skill, of the highest tier, then we will 
                 // try and upgrade it
-                var highestSkill = SkillGroup.MeleeSkills.OrderByDescending(s => adoptedHero.GetSkillValue(s)).First();
-
-                var newWeapon = UpgradeWeapon(highestSkill, SkillGroup.MeleeSkills, SkillGroup.MeleeItems, EquipmentIndex.Weapon0, adoptedHero,
-                    adoptedHero.BattleEquipment, targetTier);
+                var (highestSkill, newWeapon) = SkillGroup.MeleeSkills
+                    .OrderByDescending(adoptedHero.GetSkillValue)
+                    .Select(skill => (
+                        skill,
+                        weapon: UpgradeWeapon(skill, 
+                            SkillGroup.MeleeSkills, SkillGroup.MeleeItems, EquipmentIndex.Weapon0,
+                            adoptedHero, adoptedHero.BattleEquipment, targetTier)))
+                    .FirstOrDefault(s => s.weapon != null);
                 if (newWeapon != null)
                 {
                     itemsPurchased.Add(newWeapon);

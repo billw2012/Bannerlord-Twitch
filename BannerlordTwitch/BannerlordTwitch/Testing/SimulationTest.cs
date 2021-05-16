@@ -43,7 +43,7 @@ namespace BannerlordTwitch.Testing
                 return;
             }
 
-            string[] randomNames = Names.Shuffle().ToArray();
+            //string[] randomNames = Names.Shuffle().ToArray();
             css = new CancellationTokenSource();
             updateTask = Task.Factory.StartNew(() =>
             {
@@ -53,7 +53,7 @@ namespace BannerlordTwitch.Testing
                     users.RemoveAll(u => DateTime.Now > u.leaveTime);
                     while (users.Count < simSettings.UserCount)
                     {
-                        string name = randomNames[userId % randomNames.Length];
+                        string name = Names[userId % Names.Length];
                         if (rnd.NextDouble() < 0.5f) name = name.ToLower();
                         
                         var newUser = new User {name = $"{name}{++userId}", leaveTime = DateTime.Now + TimeSpan.FromSeconds(rnd.Next((int) (simSettings.UserStayTime * 0.75f), (int) (simSettings.UserStayTime * 1.25f)))};

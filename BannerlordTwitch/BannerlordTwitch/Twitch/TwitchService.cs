@@ -137,7 +137,7 @@ namespace BannerlordTwitch
                 {
                     if (t.IsFaulted)
                     {
-                        Log.LogFeedFail($"Service init failed: {t.Exception?.Message}");
+                        Log.LogFeedFail($"Service init failed: {t.Exception?.GetBaseException().Message}");
                         return;
                     }
                     
@@ -147,7 +147,7 @@ namespace BannerlordTwitch
                     channelId = user.Id;
                     
                     // Connect the chatbot
-                    bot = new Bot(user.Login, authSettings, this);
+                    bot = new Bot(user.Login, authSettings);
 
                     if (IsNullOrEmpty(user.BroadcasterType))
                     {
@@ -331,7 +331,7 @@ namespace BannerlordTwitch
                     }
                     else
                     {
-                        Log.Info($"Redemption of {redeemedArgs.RewardTitle} from {redeemedArgs.DisplayName} received!");
+                        //Log.Info($"Redemption of {redeemedArgs.RewardTitle} from {redeemedArgs.DisplayName} received!");
                     }
                 }
                 catch (Exception e)
@@ -395,6 +395,7 @@ namespace BannerlordTwitch
             if (context.Source.RespondInOverlay)
             {
                 Log.LogFeedResponse($"@{context.UserName}: " + Join(", ", messages));
+                //Log.Trace($"[{nameof(TwitchService)}] Feed Response to {context.UserName}: {Join(", ", messages)}");
             }
 
             if (context.Source.RespondInTwitch)
@@ -408,12 +409,12 @@ namespace BannerlordTwitch
                 if (context.UserName != null)
                 {
                     bot.SendChatReply(context.UserName, messages);
-                    Log.Trace($"[reply][{context.UserName}] {Join(" - ", messages)}");
+                    Log.Trace($"[{nameof(TwitchService)}] Reply to {context.UserName}: {Join(", ", messages)}");
                 }
                 else
                 {
                     bot.SendChat(messages);
-                    Log.Trace($"[chat] {Join(" - ", messages)}");
+                    Log.Trace($"[{nameof(TwitchService)}] Chat: {Join(", ", messages)}");
                 }
             }
         }
@@ -432,10 +433,19 @@ namespace BannerlordTwitch
         {
             var cmd = this.settings.EnabledCommands.FirstOrDefault(c => c.Name == cmdName);
             if (cmd == null)
+            {
+                Log.Trace($"[{nameof(TwitchService)}] Couldn't find command {cmdName}");
                 return false;
+            }
+
             var context = ReplyContext.FromMessage(cmd, chatMessage, args);
-            if (cmd.ModOnly && !context.IsModerator && !context.IsBroadcaster || cmd.BroadcasterOnly && !context.IsBroadcaster) 
+            if (cmd.ModOnly && !context.IsModerator && !context.IsBroadcaster ||
+                cmd.BroadcasterOnly && !context.IsBroadcaster)
+            {
+                Log.Trace($"[{nameof(TwitchService)}] {chatMessage.Username} not allowed to use command {cmdName}");
                 return false;
+            }
+
             ActionManager.HandleCommand(cmd.Handler, context, cmd.HandlerConfig);
             return true;
         }
@@ -457,7 +467,7 @@ namespace BannerlordTwitch
                 Log.Error($"RedemptionComplete failed: redemption {context.RedemptionId} not known!");
                 return;
             }
-            Log.Info($"Redemption of {redemption.RewardTitle} for {redemption.DisplayName} complete{(!IsNullOrEmpty(info) ? $": {info}" : "")}");
+            //Log.Trace($"[{nameof(TwitchService)}] Redemption of {redemption.RewardTitle} for {redemption.DisplayName} complete{(!IsNullOrEmpty(info) ? $": {info}" : "")}");
             ActionManager.SendReply(context, info);
             if (!IsNullOrEmpty(redemption.ChannelId))
             {
@@ -483,7 +493,7 @@ namespace BannerlordTwitch
                 Log.Error($"RedemptionCancelled failed: redemption {context.RedemptionId} not known!");
                 return;
             }
-            Log.Info($"Redemption of {redemption.RewardTitle} for {redemption.DisplayName} cancelled{(!IsNullOrEmpty(reason) ? $": {reason}" : "")}");
+            //Log.Trace($"[{nameof(TwitchService)}] Redemption of {redemption.RewardTitle} for {redemption.DisplayName} cancelled{(!IsNullOrEmpty(reason) ? $": {reason}" : "")}");
             ActionManager.SendReply(context, reason);
             if (!IsNullOrEmpty(redemption.ChannelId))
             {
@@ -506,7 +516,7 @@ namespace BannerlordTwitch
                     new UpdateCustomRewardRedemptionStatusRequest {Status = status},
                     authSettings.AccessToken
                 );
-                Log.Info($"Set redemption status of {redemption.RedemptionId} ({redemption.RewardTitle} for {redemption.DisplayName}) to {status}");
+                //Log.Info($"Set redemption status of {redemption.RedemptionId} ({redemption.RewardTitle} for {redemption.DisplayName}) to {status}");
             }
             catch (Exception e)
             {

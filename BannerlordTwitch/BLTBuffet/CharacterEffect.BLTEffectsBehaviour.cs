@@ -159,18 +159,25 @@ namespace BLTBuffet
             public void ApplyHitDamage(Agent attackerAgent, Agent victimAgent,
                 ref AttackCollisionData attackCollisionData)
             {
-                float[] hitDamageMultipliers = agentEffectsActive
-                    .Where(e => ReferenceEquals(e.Key, attackerAgent))
-                    .SelectMany(e => e.Value
-                        .Select(f => f.config.DamageMultiplier ?? 0)
-                        .Where(f => f != 0)
-                    )
-                    .ToArray();
-                if (hitDamageMultipliers.Any())
+                try
                 {
-                    float forceMag = hitDamageMultipliers.Sum();
-                    attackCollisionData.BaseMagnitude = (int) (attackCollisionData.BaseMagnitude * forceMag);
-                    attackCollisionData.InflictedDamage = (int) (attackCollisionData.InflictedDamage * forceMag);
+                    float[] hitDamageMultipliers = agentEffectsActive
+                        .Where(e => ReferenceEquals(e.Key, attackerAgent))
+                        .SelectMany(e => e.Value
+                            .Select(f => f.config.DamageMultiplier ?? 0)
+                            .Where(f => f != 0)
+                        )
+                        .ToArray();
+                    if (hitDamageMultipliers.Any())
+                    {
+                        float forceMag = hitDamageMultipliers.Sum();
+                        attackCollisionData.BaseMagnitude = (int) (attackCollisionData.BaseMagnitude * forceMag);
+                        attackCollisionData.InflictedDamage = (int) (attackCollisionData.InflictedDamage * forceMag);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.Exception($"BLTEffectsBehaviour.ApplyHitDamage", e);
                 }
             }
 
@@ -206,14 +213,21 @@ namespace BLTBuffet
 
             public override void OnAgentDeleted(Agent affectedAgent)
             {
-                if (agentEffectsActive.TryGetValue(affectedAgent, out var effectStates))
+                try
                 {
-                    foreach (var e in effectStates)
+                    if (agentEffectsActive.TryGetValue(affectedAgent, out var effectStates))
                     {
-                        e.Stop();
-                    }
+                        foreach (var e in effectStates)
+                        {
+                            e.Stop();
+                        }
 
-                    agentEffectsActive.Remove(affectedAgent);
+                        agentEffectsActive.Remove(affectedAgent);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.Exception($"BLTEffectsBehaviour.OnAgentDeleted", e);
                 }
             }
 
@@ -224,74 +238,82 @@ namespace BLTBuffet
             {
                 base.OnMissionTick(dt);
 
-                foreach (var agent in agentEffectsActive
-                    .Where(kv => !kv.Key.IsActive())
-                    .ToArray())
+                try
                 {
-                    foreach (var effect in agent.Value.ToList())
+                    foreach (var agent in agentEffectsActive
+                        .Where(kv => !kv.Key.IsActive())
+                        .ToArray())
                     {
-                        effect.Stop();
+                        // foreach (var effect in agent.Value.ToList())
+                        // {
+                        //     effect.Stop();
+                        // }
+                        agentEffectsActive.Remove(agent.Key);
                     }
 
-                    agentEffectsActive.Remove(agent.Key);
+                    const float Interval = 2;
+                    accumulatedTime += dt;
+                    if (accumulatedTime < Interval)
+                        return;
+
+                    accumulatedTime -= Interval;
+                    foreach (var agentEffects in agentEffectsActive.ToArray())
+                    {
+                        var agent = agentEffects.Key;
+                        // Restore all the properties from the cache to start with
+                        if (!agentDrivenPropertiesCache.TryGetValue(agent, out float[] initialAgentDrivenProperties))
+                        {
+                            initialAgentDrivenProperties = new float[(int) DrivenProperty.Count];
+                            for (int i = 0; i < (int) DrivenProperty.Count; i++)
+                            {
+                                initialAgentDrivenProperties[i] =
+                                    agent.AgentDrivenProperties.GetStat((DrivenProperty) i);
+                            }
+
+                            agentDrivenPropertiesCache.Add(agent, initialAgentDrivenProperties);
+                        }
+                        else
+                        {
+                            for (int i = 0; i < (int) DrivenProperty.Count; i++)
+                            {
+                                agent.AgentDrivenProperties.SetStat((DrivenProperty) i,
+                                    initialAgentDrivenProperties[i]);
+                            }
+                        }
+
+                        if (!agentBaseScaleCache.TryGetValue(agent, out float baseAgentScale))
+                        {
+                            agentBaseScaleCache.Add(agent, agent.AgentScale);
+                            baseAgentScale = agent.AgentScale;
+                        }
+
+                        float newAgentScale = baseAgentScale;
+                        // Now update the dynamic properties
+                        agent.UpdateAgentProperties();
+                        // Then apply our effects as a stack
+                        foreach (var effect in agentEffects.Value.ToList())
+                        {
+                            effect.Apply(Interval);
+                            if (effect.CheckRemove())
+                            {
+                                agentEffects.Value.Remove(effect);
+                            }
+
+                            newAgentScale *= effect.config.Scale ?? 1;
+                        }
+
+                        if (newAgentScale != agent.AgentScale)
+                        {
+                            SetAgentScale(agent, baseAgentScale, newAgentScale);
+                        }
+
+                        // Finally commit our modified values to the engine
+                        agent.UpdateCustomDrivenProperties();
+                    }
                 }
-
-                const float Interval = 2;
-                accumulatedTime += dt;
-                if (accumulatedTime < Interval)
-                    return;
-
-                accumulatedTime -= Interval;
-                foreach (var agentEffects in agentEffectsActive.ToArray())
+                catch (Exception e)
                 {
-                    var agent = agentEffects.Key;
-                    // Restore all the properties from the cache to start with
-                    if (!agentDrivenPropertiesCache.TryGetValue(agent, out float[] initialAgentDrivenProperties))
-                    {
-                        initialAgentDrivenProperties = new float[(int) DrivenProperty.Count];
-                        for (int i = 0; i < (int) DrivenProperty.Count; i++)
-                        {
-                            initialAgentDrivenProperties[i] = agent.AgentDrivenProperties.GetStat((DrivenProperty) i);
-                        }
-
-                        agentDrivenPropertiesCache.Add(agent, initialAgentDrivenProperties);
-                    }
-                    else
-                    {
-                        for (int i = 0; i < (int) DrivenProperty.Count; i++)
-                        {
-                            agent.AgentDrivenProperties.SetStat((DrivenProperty) i, initialAgentDrivenProperties[i]);
-                        }
-                    }
-
-                    if (!agentBaseScaleCache.TryGetValue(agent, out float baseAgentScale))
-                    {
-                        agentBaseScaleCache.Add(agent, agent.AgentScale);
-                        baseAgentScale = agent.AgentScale;
-                    }
-
-                    float newAgentScale = baseAgentScale;
-                    // Now update the dynamic properties
-                    agent.UpdateAgentProperties();
-                    // Then apply our effects as a stack
-                    foreach (var effect in agentEffects.Value.ToList())
-                    {
-                        effect.Apply(Interval);
-                        if (effect.CheckRemove())
-                        {
-                            agentEffects.Value.Remove(effect);
-                        }
-
-                        newAgentScale *= effect.config.Scale ?? 1;
-                    }
-
-                    if (newAgentScale != agent.AgentScale)
-                    {
-                        SetAgentScale(agent, baseAgentScale, newAgentScale);
-                    }
-
-                    // Finally commit our modified values to the engine
-                    agent.UpdateCustomDrivenProperties();
+                    Log.Exception($"BLTEffectsBehaviour.OnMissionTick", e);
                 }
             }
 

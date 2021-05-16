@@ -130,6 +130,10 @@ namespace BLTAdoptAHero
             
             [Category("Initialization"), Description("Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment"), DefaultValue(null), PropertyOrder(2)]
             public int? StartingEquipmentTier { get; set; }
+            [Category("Initialization"), Description("Whether the hero will start with a melee weapon, only applies if StartingEquipmentTier is specified"), PropertyOrder(3)]
+            public bool StartWithMeleeWeapon { get; set; }
+            [Category("Initialization"), Description("Whether the hero will start with a ranged weapon, only applies if StartingEquipmentTier is specified"), PropertyOrder(3)]
+            public bool StartWithRangedWeapon { get; set; }
             [Category("Initialization"), Description("Whether the hero will start with a horse, only applies if StartingEquipmentTier is specified"), PropertyOrder(3)]
             public bool StartWithHorse { get; set; }
             [Category("Initialization"), Description("Whether the hero will start with armor, only applies if StartingEquipmentTier is specified"), PropertyOrder(4)]
@@ -206,24 +210,24 @@ namespace BLTAdoptAHero
             args = args?.Trim();
 
             Hero newHero;
-            if (settings.CreateNew)
+            //if (settings.CreateNew)
             {
                 newHero = HeroCreator.CreateHeroAtOccupation(Occupation.Wanderer);
             }
-            else
-            {
-                newHero = string.IsNullOrEmpty(args)
-                    ? BLTAdoptAHeroCampaignBehavior.GetAvailableHeroes(h =>
-                        (settings.AllowPlayerCompanion && h.IsPlayerCompanion
-                         || settings.AllowNoble && h.IsNoble
-                         || settings.AllowWanderer && h.IsWanderer)
-                        && (!settings.OnlySameFaction 
-                            || Clan.PlayerClan?.MapFaction != null 
-                            && Clan.PlayerClan?.MapFaction == h.Clan?.MapFaction))
-                        .SelectRandom()
-                    : Campaign.Current.AliveHeroes.FirstOrDefault(h =>
-                        h.Name.Contains(args) && h.Name.ToString() == args);
-            }
+            // else
+            // {
+            //     newHero = string.IsNullOrEmpty(args)
+            //         ? BLTAdoptAHeroCampaignBehavior.GetAvailableHeroes(h =>
+            //             (settings.AllowPlayerCompanion && h.IsPlayerCompanion
+            //              || settings.AllowNoble && h.IsNoble
+            //              || settings.AllowWanderer && h.IsWanderer)
+            //             && (!settings.OnlySameFaction 
+            //                 || Clan.PlayerClan?.MapFaction != null 
+            //                 && Clan.PlayerClan?.MapFaction == h.Clan?.MapFaction))
+            //             .SelectRandom(1337)
+            //         : Campaign.Current.AliveHeroes.FirstOrDefault(h =>
+            //             h.Name.Contains(args) && h.Name.ToString() == args);
+            // }
             if (newHero == null)
             {
                 return (false, $"You can't adopt a hero: no available hero matching the requirements was found!");
@@ -266,8 +270,12 @@ namespace BLTAdoptAHero
             if (settings.StartingEquipmentTier.HasValue)
             {
                 EquipHero.RemoveAllEquipment(newHero);
-                EquipHero.UpgradeEquipment(newHero, settings.StartingEquipmentTier.Value, true, true,
-                    settings.StartWithArmor, settings.StartWithHorse, true);
+                if (settings.StartingEquipmentTier.Value > 0)
+                {
+                    EquipHero.UpgradeEquipment(newHero, settings.StartingEquipmentTier.Value - 1, 
+                        settings.StartWithMeleeWeapon, settings.StartWithRangedWeapon, 
+                        settings.StartWithArmor, settings.StartWithHorse, true);
+                }
             }
             
             if(!Campaign.Current.EncyclopediaManager.BookmarksTracker.IsBookmarked(newHero))

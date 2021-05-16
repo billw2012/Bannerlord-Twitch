@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -34,7 +35,7 @@ namespace BLTAdoptAHero
 
         private readonly List<Listeners> listeners = new();
 
-        public void AddListeners(Hero hero, 
+        public bool AddListeners(Hero hero, 
             AgentCreatedDelegate onAgentCreated = null,
             MissionOverDelegate onMissionOver = null,
             MissionModeChangeDelegate onModeChange = null,
@@ -42,9 +43,12 @@ namespace BLTAdoptAHero
             GotAKillDelegate onGotAKill = null,
             GotKilledDelegate onGotKilled = null,
             MissionTickDelegate onMissionTick = null,
-            MissionTickDelegate onSlowTick = null
+            MissionTickDelegate onSlowTick = null,
+            bool replaceExisting = false
         )
         {
+            if (!replaceExisting && HasListeners(hero))
+                return false;
             RemoveListeners(hero);
             listeners.Add(new Listeners
             {
@@ -58,12 +62,12 @@ namespace BLTAdoptAHero
                 onMissionTick = onMissionTick,
                 onSlowTick = onSlowTick,
             });
+            return true;
         }
 
-        public void RemoveListeners(Hero hero)
-        {
-            listeners.RemoveAll(l => l.hero == hero);
-        }
+        public void RemoveListeners(Hero hero) => listeners.RemoveAll(l => l.hero == hero);
+
+        public bool HasListeners(Hero hero) => listeners.Any(l => l.hero == hero);
 
         public override void OnAgentCreated(Agent agent)
         {
@@ -133,21 +137,35 @@ namespace BLTAdoptAHero
             return hero == null ? null : listeners.FirstOrDefault(l => l.hero == hero)?.hero;
         }
 
-        private void ForAll(Action<Listeners> action)
+        private void ForAll(Action<Listeners> action, [CallerMemberName] string callerName = "")
         {
             foreach (var listener in listeners)
             {
-                action(listener);
+                try
+                {
+                    action(listener);
+                }
+                catch (Exception e)
+                {
+                    Log.Exception($"[{nameof(BLTMissionBehavior)}] ForAll", e);
+                }
             }
         }
 
-        private void ForAgent(Agent agent, Action<Listeners> action)
+        private void ForAgent(Agent agent, Action<Listeners> action, [CallerMemberName] string callerName = "")
         {
             var hero = FindHero(agent);
             if (hero == null) return;
             foreach (var listener in listeners.Where(l => l.hero == hero))
             {
-                action(listener);
+                try
+                {
+                    action(listener);
+                }
+                catch (Exception e)
+                {
+                    Log.Exception($"[{nameof(BLTMissionBehavior)}] ForAgent", e);
+                }
             }
         }
 
@@ -172,7 +190,6 @@ namespace BLTAdoptAHero
         public static List<string> ApplyKillEffects(Hero hero, Agent heroAgent, Agent killed, AgentState state, int goldPerKill, int healPerKill, int xpPerKill, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
         {
             var results = new List<string>();
-
             
             if (killed != null)
             {

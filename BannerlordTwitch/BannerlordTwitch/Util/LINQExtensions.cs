@@ -24,9 +24,13 @@ public static class LINQExtensions
         return prob.LastOrDefault().obj;
     }
 
-    public static T SelectRandom<T>(this IEnumerable<T> @this) => @this.Shuffle().FirstOrDefault();
+    public static T SelectRandom<T>(this IEnumerable<T> @this, int seed = -1) => @this.Shuffle(seed).FirstOrDefault();
 
-    public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> @this) => @this.OrderBy(e => Guid.NewGuid());
+    public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> @this, int seed = -1)
+    {
+        var random = seed == -1? new Random((int) (DateTime.Now.Ticks % int.MaxValue)) : new Random(seed);
+        return @this.OrderBy(e => random.Next());
+    }
 
     /// <summary>
     /// Wraps this object instance into an IEnumerable&lt;T&gt;
