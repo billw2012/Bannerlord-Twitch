@@ -11,11 +11,11 @@ namespace BannerlordTwitch.Util
 {
     public static class Log
     {
-        private static readonly string LogPath = $@"C:\ProgramData\Mount and Blade II Bannerlord\logs\log{DateTime.Now:yyyyMMddHHmmss}.txt";
+        //private static readonly string LogPath = $@"C:\ProgramData\Mount and Blade II Bannerlord\logs\log{DateTime.Now:yyyyMMddHHmmss}.txt";
 
         private static void LogFilePrint(string str)
         {
-            File.AppendAllLines(LogPath, new []{ $"{DateTime.Now:yyyyMMddHHmmss}|{str}"});
+            //File.AppendAllLines(LogPath, new []{ $"{DateTime.Now:yyyyMMddHHmmss}|{str}"});
             Debug.Print($"[BLT] {str}");
         }
 

@@ -315,7 +315,11 @@ namespace BLTAdoptAHero
         {
             var items = ItemObject.All
                 // Usable
-                .Where(item => !item.NotMerchandise && CanUseItem(item, hero) && (filter == null || filter(item)))
+                .Where(item => !item.NotMerchandise 
+                               && CanUseItem(item, hero)
+                               && item.PrimaryWeapon is not {ItemUsage: "long_bow"} // avoid long bows as they never allow horseback usage
+                                   // !item.PrimaryWeapon.WeaponFlags.HasFlag(WeaponFlags.CantReloadOnHorseback)&& )
+                               && (filter == null || filter(item)))
                 // Correct type
                 .Where(item => itemTypeEnums.Contains(item.Type))
                 // Correct skill
