@@ -60,13 +60,13 @@ namespace BLTAdoptAHero
 
         private static string[] EnumFlagsToArray<T>(T flags) =>
             flags.ToString().Split(',').Select(s => s.Trim()).ToArray();
-        private static string[][] SkillGroups =
+        private static (string[] skillNames, float weight)[] SkillGroups =
         {
-            SkillGroup.SkillsToStrings(Skills.Melee),
-            SkillGroup.SkillsToStrings(Skills.Ranged),
-            SkillGroup.SkillsToStrings(Skills.Support),
-            SkillGroup.SkillsToStrings(Skills.Movement),
-            SkillGroup.SkillsToStrings(Skills.Personal),
+            (skillNames: SkillGroup.SkillsToStrings(Skills.Melee), weight: 3f),
+            (skillNames: SkillGroup.SkillsToStrings(Skills.Ranged), weight: 2f),
+            (skillNames: SkillGroup.SkillsToStrings(Skills.Support), weight: 1f),
+            (skillNames: SkillGroup.SkillsToStrings(Skills.Movement), weight: 2f),
+            (skillNames: SkillGroup.SkillsToStrings(Skills.Personal), weight: 1f),
         };
         
         protected static SkillObject GetSkill(Hero hero, Skills skills, bool random, bool auto, Func<SkillObject, bool> predicate = null)
@@ -77,9 +77,10 @@ namespace BLTAdoptAHero
             {
                 // We will select automatically which skill from groups
                 selectedSkills = SkillGroups
-                    .Select(g => SkillGroup.GetSkills(g).Where(predicate))
-                    .Where(g => g.Any())
-                    .SelectRandom();
+                    .Select(g => (skillNames: SkillGroup.GetSkills(g.skillNames).Where(predicate), weight: g.weight))
+                    .Where(g => g.skillNames.Any())
+                    .SelectWeighted(MBRandom.RandomFloat, skillsW => skillsW.weight)
+                    .skillNames;
             }
             else
             {
@@ -88,7 +89,7 @@ namespace BLTAdoptAHero
 
             return random 
                 ? selectedSkills?.SelectRandom() 
-                : selectedSkills?.OrderByDescending(hero.GetSkillValue).FirstOrDefault();
+                : selectedSkills?.SelectWeighted(MBRandom.RandomFloat, o => hero.GetSkillValue(o) + 1);
         }
     }
 }

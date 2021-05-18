@@ -22,11 +22,15 @@ namespace BLTAdoptAHero
             [Description("Shows skills (and focuse values) above the specified MinSkillToShow value"), PropertyOrder(2)]
             public bool ShowTopSkills { get; set; }
             [Description("If ShowTopSkills is specified, this defines what skills are shown"), PropertyOrder(3)]
-            public int MinSkillToShow { get; set; }
+            public int MinSkillToShow { get; set; } = 100;
             [Description("Shows all hero attributes"), PropertyOrder(4)]
             public bool ShowAttributes { get; set; }
-            [Description("Shows the battle and civilian equipment of the hero"), PropertyOrder(5)]
+            [Description("Shows the equipment tier of the hero"), PropertyOrder(5)]
             public bool ShowEquipment { get; set; }
+            [Description("Shows the full battle and civilian inventory of the hero"), PropertyOrder(5)]
+            public bool ShowInventory { get; set; }
+            [Description("Shows the retinue of the hero"), PropertyOrder(6)]
+            public bool ShowRetinue { get; set; }
         }
         
         // One Handed, Two Handed, Polearm, Bow, Crossbow, Throwing, Riding, Athletics, Smithing
@@ -62,8 +66,8 @@ namespace BLTAdoptAHero
                 }
                 if (settings.ShowTopSkills)
                 {
-                    infoStrings.Add($"Level {adoptedHero.Level}");
-                    infoStrings.Add("Skills ■ " + string.Join(" ■ ", 
+                    infoStrings.Add($"Lvl {adoptedHero.Level}");
+                    infoStrings.Add("Skills " + string.Join("■", 
                         SkillObject.All
                             .Where(s => adoptedHero.GetSkillValue(s) >= settings.MinSkillToShow)
                             .OrderByDescending(s => adoptedHero.GetSkillValue(s))
@@ -73,25 +77,32 @@ namespace BLTAdoptAHero
                 }
                 if (settings.ShowAttributes)
                 {
-                    infoStrings.Add("Attr ■ " + string.Join(" ■ ", AdoptAHero.CharAttributes
+                    infoStrings.Add("Attr " + string.Join("■", AdoptAHero.CharAttributes
                         .Select(a => $"{a.shortName} {adoptedHero.GetAttributeValue(a.val)}")));
                 }
                 if (settings.ShowEquipment)
                 {
                     infoStrings.Add($"Equip Tier {EquipHero.GetHeroEquipmentTier(adoptedHero) + 1}");
-                    infoStrings.Add("Battle ■ " + string.Join(" ■ ", adoptedHero.BattleEquipment
+                }
+                if(settings.ShowInventory)
+                {
+                    infoStrings.Add("Battle " + string.Join("■", adoptedHero.BattleEquipment
                         .YieldEquipmentSlots()
                         .Where(e => !e.element.IsEmpty)
                         .Select(e => $"{e.element.Item.Name}")
                     ));
-                    infoStrings.Add("Civ ■ " + string.Join(" ■ ", adoptedHero.CivilianEquipment
+                    infoStrings.Add("Civ " + string.Join("■", adoptedHero.CivilianEquipment
                         .YieldEquipmentSlots()
                         .Where(e => !e.element.IsEmpty)
                         .Select(e => $"{e.element.Item.Name}")
                     ));
                 }
+                if (settings.ShowRetinue)
+                {
+                    int retinueStrength = BLTAdoptAHeroCampaignBehavior.Get().GetRetinue(adoptedHero).Sum(r => r.Level);
+                    infoStrings.Add($"Retinue Str {retinueStrength}");
+                }
             }
-
             ActionManager.SendReply(context, infoStrings.ToArray());
         }
     }

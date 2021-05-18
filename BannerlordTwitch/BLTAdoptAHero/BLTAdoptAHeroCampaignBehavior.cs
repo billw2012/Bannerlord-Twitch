@@ -1,22 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using Bannerlord.ButterLib.Common.Extensions;
 using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Localization;
+using TaleWorlds.ObjectSystem;
+using Bannerlord.ButterLib.SaveSystem.Extensions;
+using Newtonsoft.Json;
+using TaleWorlds.Core;
+using TaleWorlds.SaveSystem;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
 {
     public class BLTAdoptAHeroCampaignBehavior : CampaignBehaviorBase
     {
         public static BLTAdoptAHeroCampaignBehavior Get() => GetCampaignBehavior<BLTAdoptAHeroCampaignBehavior>();
+
+        private class HeroData
+        {
+            [SaveableProperty(0)]
+            public int Gold { get; set; }
+
+            public class RetinueData
+            {
+                [SaveableProperty(0)]
+                public CharacterObject TroopType { get; set; }
+            }
+            [SaveableProperty(1)]
+            public List<RetinueData> Retinue { get; set; } = new();
+        }
+        private Dictionary<Hero, HeroData> heroData = new();
         
-        //private Dictionary<string, Hero> nameMap = new();
-        //private Dictionary<Hero, string> reverseNameMap = new();
-        
-        //private Dictionary<string, Hero> adoptedHeroes = new();
-        private Dictionary<Hero, int> heroGold = new();
+        public override void SyncData(IDataStore dataStore)
+        {
+            if (dataStore.IsLoading)
+            {
+                Dictionary<Hero, int> heroGold = null;
+                //dataStore.SyncData("AdoptedHeroes", ref adoptedHeroes);
+                dataStore.SyncData("HeroGold", ref heroGold);
+                dataStore.SyncDataAsJson("HeroData", ref heroData);
+                if (heroGold != null)
+                {
+                    heroData = new Dictionary<Hero, HeroData>();
+
+                    // Upgrade code
+                    foreach ((var hero, int gold) in heroGold)
+                    {
+                        heroData.Add(hero, new HeroData
+                        {
+                            Gold = gold
+                        });
+                    }
+                }
+            }
+            else
+            {
+                dataStore.SyncDataAsJson("HeroData", ref heroData);
+            }
+        }
         
         private static string KillDetailVerb(KillCharacterAction.KillCharacterActionDetail detail)
         {
@@ -46,7 +91,7 @@ namespace BLTAdoptAHero
         // {
         //     if(!reverseNameMap.TryGetValue(h))
         // }
-        
+
         public override void RegisterEvents()
         {
             CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, () =>
@@ -121,39 +166,99 @@ namespace BLTAdoptAHero
             });
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, JoinTournament.SetupGameMenus);
         }
-            
-        public override void SyncData(IDataStore dataStore)
-        {
-            //dataStore.SyncData("AdoptedHeroes", ref adoptedHeroes);
-            dataStore.SyncData("HeroGold", ref heroGold);
-        }
 
+        private HeroData GetHeroData(Hero hero)
+        {
+            // Better create it now if it doesn't exist
+            if (!heroData.TryGetValue(hero, out var hd))
+            {
+                hd = new HeroData { Gold = hero.Gold };
+                heroData.Add(hero, hd);
+            }
+            return hd;
+        }
+        
         public int GetHeroGold(Hero hero)
         {
-            // Better create it now
-            heroGold ??= new Dictionary<Hero, int>();
-            if (!heroGold.TryGetValue(hero, out int gold))
-            {
-                heroGold.Add(hero, hero.Gold);
-                return hero.Gold;
-            }
-
-            return gold;
+            return GetHeroData(hero).Gold;
         }
 
         public void SetHeroGold(Hero hero, int gold)
         {
-            heroGold[hero] = gold;
+            GetHeroData(hero).Gold = gold;
         }
         
         public int ChangeHeroGold(Hero hero, int change)
         {
             int newGold = Math.Max(0, change + GetHeroGold(hero));
-            heroGold[hero] = newGold;
+            GetHeroData(hero).Gold = newGold;
             return newGold;
         }
+
+        public IEnumerable<CharacterObject> GetRetinue(Hero hero) => GetHeroData(hero).Retinue.Select(r => r.TroopType);
+
+        public class RetinueSettings
+        {
+            [Description("Maximum number of units in the retinue"), PropertyOrder(1)]
+            public int MaxRetinueSize { get; set; } = 5;
+            [Description("Cost to buy a new unit, or upgrade one"), PropertyOrder(2)]
+            public int CostPerTier { get; set; } = 50000;
+            [Description("Additional cost per tier multiplier (final cost for an upgrade is Cost Per Tier + Cost Per Tier x Current Tier x Cost Scaling Per Tier"), PropertyOrder(3)]
+            public float CostScalingPerTier { get; set; } = 1.5f;
+            [Description("Whether to use the adopted hero's culture (if not enabled then a random one is used)"), PropertyOrder(4)]
+            public bool UseHeroesCultureUnits { get; set; } = true;
+            [Description("Whether to allow bandit units when UseHeroesCultureUnits is disabled"), PropertyOrder(4)]
+            public bool IncludeBanditUnits { get; set; } = false;
+            [Description("Whether to use elite troops (if not enabled then basic troops are used)"), PropertyOrder(5)]
+            public bool UseEliteTroops { get; set; } = true;
+        }
         
-        //private
+        public (bool success, string status) UpgradeRetinue(Hero hero, RetinueSettings settings)
+        {
+            // Somewhat based on RecruitmentCampaignBehavior.UpdateVolunteersOfNotables
+            
+            var heroRetinue = GetHeroData(hero).Retinue;
+            
+            var culture = settings.UseHeroesCultureUnits
+                ? hero.Culture
+                : MBObjectManager.Instance.GetObjectTypeList<CultureObject>()
+                    .Where(c => settings.IncludeBanditUnits || c.IsMainCulture)
+                    .SelectRandom();
+            var troopType = settings.UseEliteTroops ? culture.EliteBasicTroop : culture.BasicTroop;
+            
+            // first fill in any missing ones
+            if (heroRetinue.Count < settings.MaxRetinueSize)
+            {
+                int heroGold = GetHeroGold(hero);
+                if (GetHeroGold(hero) < settings.CostPerTier)
+                {
+                    return (false, $"You need {settings.CostPerTier} gold, you have {heroGold}");
+                }
+                ChangeHeroGold(hero, -settings.CostPerTier);
+                heroRetinue.Add(new HeroData.RetinueData { TroopType = troopType });
+                return (true, $"{troopType} added to your retinue (-{settings.CostPerTier} gold)");
+            }
+
+            // upgrade the lowest tier unit
+            var retinueToUpgrade = heroRetinue
+                .OrderBy(h => h.TroopType.Tier)
+                .FirstOrDefault(t => t.TroopType.UpgradeTargets?.Any() == true);
+            if (retinueToUpgrade != null)
+            {
+                int upgradeCost = (int) (settings.CostPerTier + settings.CostPerTier * retinueToUpgrade.TroopType.Tier * settings.CostScalingPerTier);
+                int heroGold = GetHeroGold(hero);
+                if (GetHeroGold(hero) < upgradeCost)
+                {
+                    return (false, $"You need {upgradeCost} gold, you have {heroGold}");
+                }
+                ChangeHeroGold(hero, -upgradeCost);
+
+                var oldTroopType = retinueToUpgrade.TroopType;
+                retinueToUpgrade.TroopType = oldTroopType.UpgradeTargets.SelectRandom();
+                return (true, $"{oldTroopType} was upgraded to {retinueToUpgrade.TroopType} (-{upgradeCost} gold)");
+            }
+            return (false, $"Can't upgrade retinue any further!");
+        }
 
         public static IEnumerable<Hero> GetAvailableHeroes(Func<Hero, bool> filter = null)
         {
@@ -177,12 +282,10 @@ namespace BLTAdoptAHero
 
         public static Hero GetAdoptedHero(string name)
         {
-            var tagObject = new TextObject(BLTAdoptAHeroModule.Tag);
-            var nameObject = new TextObject(name);
             return Campaign.Current?
                 .AliveHeroes?
-                .FirstOrDefault(h => h.Name?.Contains(tagObject) == true 
-                                     && h.FirstName?.Contains(nameObject) == true 
+                .FirstOrDefault(h => h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true 
+                                     && h.FirstName?.Contains(name) == true 
                                      && h.FirstName?.ToString() == name);
         }
     }

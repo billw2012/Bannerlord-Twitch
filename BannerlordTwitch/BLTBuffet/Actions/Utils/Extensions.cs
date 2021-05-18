@@ -10,6 +10,6 @@ namespace BLTBuffet
 
     internal static class HeroExtensions
     {
-        internal static bool IsAdopted(this Hero hero) => hero.Name.Contains("[BLT]");
+        internal static bool IsAdopted(this Hero hero) => hero.Name?.Contains("[BLT]") == true;
     }
 }

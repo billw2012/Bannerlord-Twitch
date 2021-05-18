@@ -132,7 +132,7 @@ namespace BannerlordTwitch.Rewards
                 catch (Exception e)
                 {
                     Log.LogFeedCritical($"Command {commandId} failed with exception {e.Message}, game might be unstable now!");
-                    Log.Error(e.ToString());
+                    Log.Exception($"Command {commandId}", e);
                 }
             }
             else
@@ -163,7 +163,7 @@ namespace BannerlordTwitch.Rewards
             catch (Exception e)
             {
                 Log.LogFeedCritical($"Reward {rewardId} failed with exception {e.Message}, game might be unstable now!");
-                Log.Error(e.ToString());
+                Log.Exception($"Reward {rewardId}", e);
                 NotifyCancelled(context, $"Error occurred while trying to process the redemption");
             }
 

@@ -20,9 +20,8 @@ namespace BLTAdoptAHero
         public delegate void GotKilledDelegate(Agent killed, Agent killer, AgentState agentState);
         public delegate void MissionTickDelegate(float dt);
             
-        public class Listeners
+        private class Listeners
         {
-            public Hero hero;
             public AgentCreatedDelegate onAgentCreated;
             public MissionOverDelegate onMissionOver;
             public MissionModeChangeDelegate onModeChange;
@@ -33,7 +32,9 @@ namespace BLTAdoptAHero
             public MissionTickDelegate onSlowTick;
         }
 
-        private readonly List<Listeners> listeners = new();
+        private readonly Dictionary<Hero, Listeners> heroListeners = new();
+        private readonly Dictionary<Agent, Listeners> agentListeners = new();
+        private IEnumerable<Listeners> AllListeners => heroListeners.Values.Concat(agentListeners.Values);
 
         public bool AddListeners(Hero hero, 
             AgentCreatedDelegate onAgentCreated = null,
@@ -50,9 +51,37 @@ namespace BLTAdoptAHero
             if (!replaceExisting && HasListeners(hero))
                 return false;
             RemoveListeners(hero);
-            listeners.Add(new Listeners
+            heroListeners.Add(hero, new Listeners
             {
-                hero = hero,
+                onAgentCreated = onAgentCreated, 
+                onMissionOver = onMissionOver,
+                onModeChange = onModeChange,
+                onMissionReset = onMissionReset,
+                onGotAKill = onGotAKill,
+                onGotKilled = onGotKilled,
+                onMissionTick = onMissionTick,
+                onSlowTick = onSlowTick,
+            });
+            return true;
+        }
+        
+        public bool AddListeners(Agent agent, 
+            AgentCreatedDelegate onAgentCreated = null,
+            MissionOverDelegate onMissionOver = null,
+            MissionModeChangeDelegate onModeChange = null,
+            MissionResetDelegate onMissionReset = null,
+            GotAKillDelegate onGotAKill = null,
+            GotKilledDelegate onGotKilled = null,
+            MissionTickDelegate onMissionTick = null,
+            MissionTickDelegate onSlowTick = null,
+            bool replaceExisting = false
+        )
+        {
+            if (!replaceExisting && HasListeners(agent))
+                return false;
+            RemoveListeners(agent);
+            agentListeners.Add(agent, new Listeners
+            {
                 onAgentCreated = onAgentCreated, 
                 onMissionOver = onMissionOver,
                 onModeChange = onModeChange,
@@ -65,9 +94,11 @@ namespace BLTAdoptAHero
             return true;
         }
 
-        public void RemoveListeners(Hero hero) => listeners.RemoveAll(l => l.hero == hero);
+        public void RemoveListeners(Hero hero) => heroListeners.Remove(hero);
+        public void RemoveListeners(Agent agent) => agentListeners.Remove(agent);
 
-        public bool HasListeners(Hero hero) => listeners.Any(l => l.hero == hero);
+        public bool HasListeners(Hero hero) => heroListeners.ContainsKey(hero);
+        public bool HasListeners(Agent agent) => agentListeners.ContainsKey(agent);
 
         public override void OnAgentCreated(Agent agent)
         {
@@ -82,7 +113,6 @@ namespace BLTAdoptAHero
             {
                 ForAgent(killerAgent, l => l.onGotAKill?.Invoke(killerAgent, killedAgent, agentState));
             }
-
             base.OnAgentRemoved(killedAgent, killerAgent, agentState, blow);
         }
 
@@ -134,12 +164,13 @@ namespace BLTAdoptAHero
         private Hero FindHero(Agent agent)
         {
             var hero = GetHeroFromAgent(agent);
-            return hero == null ? null : listeners.FirstOrDefault(l => l.hero == hero)?.hero;
+            if (hero == null) return null;
+            return heroListeners.ContainsKey(hero) ? hero : null;
         }
 
         private void ForAll(Action<Listeners> action, [CallerMemberName] string callerName = "")
         {
-            foreach (var listener in listeners)
+            foreach (var listener in AllListeners)
             {
                 try
                 {
@@ -156,11 +187,23 @@ namespace BLTAdoptAHero
         {
             var hero = FindHero(agent);
             if (hero == null) return;
-            foreach (var listener in listeners.Where(l => l.hero == hero))
+            if(heroListeners.TryGetValue(hero, out var hl))
             {
                 try
                 {
-                    action(listener);
+                    action(hl);
+                }
+                catch (Exception e)
+                {
+                    Log.Exception($"[{nameof(BLTMissionBehavior)}] ForAgent", e);
+                }
+            }
+
+            if (agentListeners.TryGetValue(agent, out var al))
+            {
+                try
+                {
+                    action(al);
                 }
                 catch (Exception e)
                 {
@@ -187,7 +230,7 @@ namespace BLTAdoptAHero
         public static float RelativeLevelScaling(int levelA, int levelB, float n, float max = float.MaxValue) 
             => Math.Min(MathF.Pow(1f - Math.Min(MaxLevelInPractice - 1, levelB - levelA) / (float)MaxLevelInPractice, -10f * MathF.Clamp(n, 0, 1)), max);
         
-        public static List<string> ApplyKillEffects(Hero hero, Agent heroAgent, Agent killed, AgentState state, int goldPerKill, int healPerKill, int xpPerKill, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
+        public static List<string> ApplyKillEffects(Hero hero, Agent killer, Agent killed, AgentState state, int goldPerKill, int healPerKill, int xpPerKill, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
         {
             var results = new List<string>();
             
@@ -217,7 +260,6 @@ namespace BLTAdoptAHero
                 }
             }
 
-
             bool showMultiplier = false;
             if (goldPerKill != 0)
             {
@@ -227,10 +269,10 @@ namespace BLTAdoptAHero
             }
             if (healPerKill != 0)
             {
-                float prevHealth = heroAgent.Health;
-                heroAgent.Health = Math.Min(heroAgent.HealthLimit,
-                    heroAgent.Health + healPerKill);
-                float healthDiff = heroAgent.Health - prevHealth;
+                float prevHealth = killer.Health;
+                killer.Health = Math.Min(killer.HealthLimit,
+                    killer.Health + healPerKill);
+                float healthDiff = killer.Health - prevHealth;
                 if (healthDiff > 0)
                 {
                     results.Add($"+{healthDiff}hp");

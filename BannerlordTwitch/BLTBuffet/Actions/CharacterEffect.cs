@@ -11,6 +11,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 
 namespace BLTBuffet
@@ -46,9 +47,11 @@ namespace BLTBuffet
                 Target.Player => Agent.Main,
                 Target.AdoptedHero => Mission.Current.Agents.FirstOrDefault(a =>
                 {
+                    //var tagObject = new TextObject(BLTAdoptAHeroModule.Tag);
                     if (a.Character is not CharacterObject charObj) return false;
-                    return charObj.HeroObject?.FirstName?.Contains(context.UserName) == true &&
-                           charObj.HeroObject?.FirstName?.ToString() == context.UserName;
+                    return charObj.HeroObject?.IsAdopted() == true 
+                         && charObj.HeroObject?.FirstName?.Contains(context.UserName) == true
+                         && charObj.HeroObject?.FirstName?.ToString() == context.UserName;
                 }),
                 Target.Any => Mission.Current.Agents.Where(GeneralAgentFilter).Where(a => !a.IsAdopted()).SelectRandom(),
                 Target.EnemyTeam => Mission.Current.Agents.Where(GeneralAgentFilter)

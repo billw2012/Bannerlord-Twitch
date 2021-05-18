@@ -55,14 +55,12 @@ Rewards:
     AllowVillageBattle: true
     AllowSiegeBattle: true
     AllowFriendlyMission: true
-    AllowArena: true
     AllowHideOut: true
     OnPlayerSide: true
     StartWithFullHealth: true
     StartHealthMultiplier: 2
     PreferredFormation: LightCavalry
     SubBoost: 2
-    HealPerSecond: 0.100000001
     WinGold: 5000
     WinXP: 15000
     LoseGold: 2500
@@ -71,10 +69,12 @@ Rewards:
     XPPerKill: 5000
     XPPerKilled: 2500
     HealPerKill: 20
+    RetinueGoldPerKill: 2500
+    RetinueHealPerKill: 20
     RelativeLevelScaling: 0.5
 - RewardSpec:
     Title: Attack
-    Cost: 50
+    Cost: 75
     IsEnabled: true
   Handler: SummonHero
   Enabled: true
@@ -84,13 +84,12 @@ Rewards:
     AllowVillageBattle: true
     AllowSiegeBattle: true
     AllowFriendlyMission: true
-    AllowArena: true
     AllowHideOut: true
+    OnPlayerSide: false
     StartWithFullHealth: true
     StartHealthMultiplier: 2
     PreferredFormation: LightCavalry
     SubBoost: 2
-    HealPerSecond: 0.100000001
     WinGold: 10000
     WinXP: 20000
     LoseGold: 2500
@@ -99,6 +98,8 @@ Rewards:
     XPPerKill: 7500
     XPPerKilled: 2500
     HealPerKill: 20
+    RetinueGoldPerKill: 2500
+    RetinueHealPerKill: 20
     RelativeLevelScaling: 0.5
 - RewardSpec:
     Title: Heal Player
@@ -247,6 +248,15 @@ Rewards:
       AttachPoint: OnBody
     HealPerSecond: 0.100000001
     Duration: 15
+- RewardSpec:
+    Title: Send Message In Game
+    Prompt: Enter Message
+    Cost: 200
+    IsEnabled: true
+    IsUserInputRequired: true
+  Handler: SendMessage
+  Enabled: true
+  RespondInOverlay: true
 Commands:
 - Name: stats
   Help: Hero stats
@@ -256,15 +266,18 @@ Commands:
   HandlerConfig:
     ShowGeneral: true
     ShowTopSkills: true
-    MinSkillToShow: 100
+    MinSkillToShow: 150
     ShowAttributes: true
+    ShowEquipment: true
+    ShowRetinue: true
 - Name: inv
   Help: Hero equipment
   Handler: HeroInfoCommand
   Enabled: true
   RespondInOverlay: true
   HandlerConfig:
-    ShowEquipment: true
+    MinSkillToShow: 100
+    ShowInventory: true
 - Name: adopt
   Help: Adopt a Hero (subs only)
   Handler: AdoptAHero
@@ -320,15 +333,35 @@ Commands:
   Handler: TestPfx
   Enabled: true
   RespondInOverlay: true
+- Name: retinue
+  Help: Upgrade retinue
+  Handler: Retinue
+  Enabled: true
+  RespondInOverlay: true
+  HandlerConfig:
+    Retinue:
+      MaxRetinueSize: 4
+      CostPerTier: 1000
+      CostScalingPerTier: 0.5
+      UseHeroesCultureUnits: true
+      UseEliteTroops: true
 GlobalConfigs: []
 SimTesting:
-  UserCount: 50
-  UserStayTime: 1200
-  IntervalMinMS: 100
-  IntervalMaxMS: 100
+  UserCount: 10
+  UserStayTime: 300
+  IntervalMinMS: 250
+  IntervalMaxMS: 500
   Init:
   - Type: Reward
     Id: Adopt a Hero
+  - Type: Reward
+    Id: 100k gold
+  - Type: Reward
+    Id: 100k gold
+  - Type: Reward
+    Id: 100k gold
+  - Type: Command
+    Id: retinue
   Use:
   - Type: Reward
     Id: Summon
@@ -336,7 +369,12 @@ SimTesting:
     Id: Attack
   - Type: Reward
     Id: Heal Player
+    Weight: 0.200000003
   - Type: Reward
     Id: 100k gold
+    Weight: 0.200000003
   - Type: Command
     Id: equip
+    Weight: 0.200000003
+  - Type: Command
+    Id: retinue

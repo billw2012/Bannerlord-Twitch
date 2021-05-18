@@ -38,9 +38,16 @@
             <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\Bannerlord.Harmony\bin\Win64_Shipping_Client\0Harmony.dll</HintPath>
             <Private>False</Private>
         </Reference>
+        <Reference Include="Bannerlord.ButterLib, Version=1.0.22.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
         <Reference Include="BannerlordTwitch, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\BannerlordTwitch\build\$(Configuration)\bin\Win64_Shipping_Client\BannerlordTwitch.dll</HintPath>
           <Private>False</Private>
+        </Reference>
+        <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+          <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\Newtonsoft.Json.dll</HintPath>
         </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
@@ -114,6 +121,9 @@
             <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\StoryMode\bin\Win64_Shipping_Client\StoryMode.dll</HintPath>
             <Private>False</Private>
         </Reference>
+        <Reference Include="TaleWorlds.SaveSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.SaveSystem.dll</HintPath>
+        </Reference>
         <Reference Include="Xceed.Wpf.Toolkit, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4">
           <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.2\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
           <Private>True</Private>
@@ -131,10 +141,10 @@
         <Compile Include="Actions\Extensions.cs" />
         <Compile Include="Actions\FocusPoints.cs" />
         <Compile Include="Actions\HeroInfoCommand.cs" />
-        <Compile Include="Actions\HeroNameCache.cs" />
         <Compile Include="Actions\ImproveAdoptedHero.cs" />
         <Compile Include="Actions\JoinTournament.cs" />
         <Compile Include="Actions\Marry.cs" />
+        <Compile Include="Actions\Retinue.cs" />
         <Compile Include="Actions\SkillGroup.cs" />
         <Compile Include="Actions\SkillXP.cs" />
         <Compile Include="Actions\SummonHero.cs" />

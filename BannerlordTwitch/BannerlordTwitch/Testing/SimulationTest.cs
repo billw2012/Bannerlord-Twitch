@@ -56,7 +56,13 @@ namespace BannerlordTwitch.Testing
                         string name = Names[userId % Names.Length];
                         if (rnd.NextDouble() < 0.5f) name = name.ToLower();
                         
-                        var newUser = new User {name = $"{name}{++userId}", leaveTime = DateTime.Now + TimeSpan.FromSeconds(rnd.Next((int) (simSettings.UserStayTime * 0.75f), (int) (simSettings.UserStayTime * 1.25f)))};
+                        var newUser = new User
+                        {
+                            name = $"{name}{++userId}",
+                            leaveTime = DateTime.Now +
+                                        TimeSpan.FromSeconds(rnd.Next((int) (simSettings.UserStayTime * 0.75f),
+                                            (int) (simSettings.UserStayTime * 1.25f)))
+                        };
                         users.Add(newUser);
                         foreach (var initItem in simSettings.Init)
                         {
@@ -69,7 +75,7 @@ namespace BannerlordTwitch.Testing
                     {
                         MainThreadSync.Run(() =>
                         {
-                            var item = simSettings.Use.SelectRandom();
+                            var item = simSettings.Use.SelectWeighted((float) rnd.NextDouble(), testingItem => testingItem.Weight <= 0? 1 : testingItem.Weight);
                             RunItem(settings, item, user);
                         });
                     }

@@ -173,6 +173,7 @@ namespace BannerlordTwitch
         public string Type { get; set; }
         public string Id { get; set; }
         public string Args { get; set; }
+        public float Weight { get; set; }
     }
     
     [UsedImplicitly]
