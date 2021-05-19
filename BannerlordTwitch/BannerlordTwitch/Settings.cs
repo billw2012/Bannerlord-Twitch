@@ -296,7 +296,7 @@ namespace BannerlordTwitch
                 {
                     throw new FormatException($"Action {action} is not valid");
                 }
-            }s
+            }
             
             return settings;
         }

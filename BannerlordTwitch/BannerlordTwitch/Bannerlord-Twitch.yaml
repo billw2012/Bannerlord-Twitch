@@ -345,17 +345,6 @@ Commands:
       CostScalingPerTier: 0.5
       UseHeroesCultureUnits: true
       UseEliteTroops: true
-- Name: New Command
-  Handler: Retinue
-  Enabled: true
-  RespondInOverlay: true
-  HandlerConfig:
-    Retinue:
-      MaxRetinueSize: 5
-      CostPerTier: 50000
-      CostScalingPerTier: 1.5
-      UseHeroesCultureUnits: true
-      UseEliteTroops: true
 GlobalConfigs: []
 SimTesting:
   UserCount: 10
