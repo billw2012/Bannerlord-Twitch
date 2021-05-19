@@ -85,7 +85,7 @@ Rewards:
     AllowSiegeBattle: true
     AllowFriendlyMission: true
     AllowHideOut: true
-    OnPlayerSide: false
+    OnPlayerSide: true
     StartWithFullHealth: true
     StartHealthMultiplier: 2
     PreferredFormation: LightCavalry
@@ -340,17 +340,28 @@ Commands:
   RespondInOverlay: true
   HandlerConfig:
     Retinue:
-      MaxRetinueSize: 4
-      CostPerTier: 1000
+      MaxRetinueSize: 5
+      CostPerTier: 50000
       CostScalingPerTier: 0.5
+      UseHeroesCultureUnits: true
+      UseEliteTroops: true
+- Name: New Command
+  Handler: Retinue
+  Enabled: true
+  RespondInOverlay: true
+  HandlerConfig:
+    Retinue:
+      MaxRetinueSize: 5
+      CostPerTier: 50000
+      CostScalingPerTier: 1.5
       UseHeroesCultureUnits: true
       UseEliteTroops: true
 GlobalConfigs: []
 SimTesting:
   UserCount: 10
   UserStayTime: 300
-  IntervalMinMS: 250
-  IntervalMaxMS: 500
+  IntervalMinMS: 100
+  IntervalMaxMS: 200
   Init:
   - Type: Reward
     Id: Adopt a Hero

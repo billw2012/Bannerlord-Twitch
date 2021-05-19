@@ -196,7 +196,7 @@ namespace BannerlordTwitch
         public string BotMessagePrefix { get; set; }
         public bool DebugSpoofAffiliate { get; set; }
         
-        private static PlatformFilePath AuthFilePath => new (EngineFilePaths.ConfigsPath, "Bannerlord-Twitch-Auth.yaml");
+        private static PlatformFilePath AuthFilePath => FileSystem.GetConfigPath("Bannerlord-Twitch-Auth.yaml");
 
         public static AuthSettings Load()
         {
@@ -274,7 +274,7 @@ namespace BannerlordTwitch
             File.WriteAllText(SaveFilePath, settingsStr);
         }
         #else
-        private static PlatformFilePath SaveFilePath => new (EngineFilePaths.ConfigsPath, "Bannerlord-Twitch.yaml");
+        private static PlatformFilePath SaveFilePath => FileSystem.GetConfigPath("Bannerlord-Twitch.yaml");
         
         public static Settings Load()
         {
@@ -296,7 +296,7 @@ namespace BannerlordTwitch
                 {
                     throw new FormatException($"Action {action} is not valid");
                 }
-            }
+            }s
             
             return settings;
         }

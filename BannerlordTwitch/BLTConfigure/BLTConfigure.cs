@@ -50,6 +50,8 @@ namespace BLTConfigure
             {
                 wnd.Close();
             });
+            wnd.Dispatcher.InvokeShutdown();
+            thread.Join(TimeSpan.FromMilliseconds(500));
         }
     }
 }

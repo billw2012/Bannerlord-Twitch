@@ -23,7 +23,7 @@ namespace BannerlordTwitch
 		public const string Ver = "1.2.0";
 		
 		private static readonly Thread thread;
-		private static OverlayWindow wnd;
+		private static OverlayWindow overlayWindow;
 		
 		private static Harmony harmony;
 
@@ -54,8 +54,8 @@ namespace BannerlordTwitch
 			{
 				try
 				{
-					wnd = new OverlayWindow { ShowActivated = false };
-					wnd.Show();
+					overlayWindow = new OverlayWindow { ShowActivated = false };
+					overlayWindow.Show();
 					System.Windows.Threading.Dispatcher.Run();
 				}
 				catch (Exception e)
@@ -91,15 +91,17 @@ namespace BannerlordTwitch
 
 		public static void AddToFeed(string text, Color color)
 		{
-			wnd?.AddToFeed(text, System.Windows.Media.Color.FromScRgb(color.Alpha, color.Red, color.Green, color.Blue));
+			overlayWindow?.AddToFeed(text, System.Windows.Media.Color.FromScRgb(color.Alpha, color.Red, color.Green, color.Blue));
 		}
 
 		protected override void OnSubModuleUnloaded()
 		{
-			wnd.Dispatcher.Invoke(() =>
+			overlayWindow.Dispatcher.Invoke(() =>
 			{
-				wnd.Close();
+				overlayWindow.Close();
 			});
+			overlayWindow.Dispatcher.InvokeShutdown();
+			thread.Join(TimeSpan.FromMilliseconds(500));
 			ActionManager.GenerateDocumentation();
 			base.OnSubModuleUnloaded();
 		}

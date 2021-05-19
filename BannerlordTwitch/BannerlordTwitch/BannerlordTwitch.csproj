@@ -257,6 +257,7 @@
     <Compile Include="Util\AutoMissionBehavior.cs" />
     <Compile Include="Util\ConsoleCommands.cs" />
     <Compile Include="Util\Extensions.cs" />
+    <Compile Include="Util\FileSystem.cs" />
     <Compile Include="Util\LINQExtensions.cs" />
     <Compile Include="Util\Log.cs" />
     <Compile Include="Util\MainThreadSync.cs" />
