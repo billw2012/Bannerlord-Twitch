@@ -186,8 +186,7 @@ namespace BLTAdoptAHero
         private void ForAgent(Agent agent, Action<Listeners> action, [CallerMemberName] string callerName = "")
         {
             var hero = FindHero(agent);
-            if (hero == null) return;
-            if(heroListeners.TryGetValue(hero, out var hl))
+            if (hero != null && heroListeners.TryGetValue(hero, out var hl))
             {
                 try
                 {

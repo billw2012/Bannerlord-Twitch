@@ -666,10 +666,10 @@ namespace BLTAdoptAHero
                     var agent_name = AccessTools.Field(typeof(Agent), "_name");
                     foreach (var retinue in retinueTroops)
                     {
-                        bool hasPrevFormation =
-                            Campaign.Current.PlayerFormationPreferences.TryGetValue(retinue, out var prevFormation);
+                        bool hasPrevFormation = Campaign.Current.PlayerFormationPreferences.TryGetValue(retinue, out var prevFormation);
                         Campaign.Current.SetPlayerFormationPreference(retinue, existingHero.Formation);
 
+                        existingHero.Party.MemberRoster.AddToCounts(retinue, 1);
                         var retinueAgent = Mission.Current.SpawnTroop(
                             new PartyAgentOrigin(existingHero.Party, retinue),
                             isPlayerSide: settings.OnPlayerSide,
@@ -685,6 +685,17 @@ namespace BLTAdoptAHero
                         agent_name.SetValue(retinueAgent, new TextObject($"{retinueAgent.Name} ({context.UserName})"));
 
                         BLTMissionBehavior.Current.AddListeners(retinueAgent,
+                            onMissionOver: () =>
+                            {
+                                if (retinueAgent.State == AgentState.Unconscious)
+                                {
+                                    existingHero.Party.MemberRoster.AddToCounts(retinue, -1, woundedCount: -1);
+                                }
+                                else if (retinueAgent.State != AgentState.Killed)
+                                {
+                                    existingHero.Party.MemberRoster.AddToCounts(retinue, -1);
+                                }
+                            },
                             onGotAKill: (killer, killed, state) =>
                             {
                                 Log.Trace($"[{nameof(SummonHero)}] {retinueAgent.Name} killed {killed?.ToString() ?? "unknown"}");
@@ -699,7 +710,7 @@ namespace BLTAdoptAHero
                                 );
                                 if (results.Any())
                                 {
-                                    ActionManager.SendReply(context, results.ToArray());
+                                    ActionManager.SendReply(context, new[]{ retinueAgent.Name }.Concat(results).ToArray());
                                 }
                             }
                         );

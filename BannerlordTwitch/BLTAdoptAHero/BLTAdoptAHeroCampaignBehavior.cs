@@ -56,6 +56,11 @@ namespace BLTAdoptAHero
                         });
                     }
                 }
+
+                foreach (var h in heroData.Values)
+                {
+                    h.Retinue.RemoveAll(r => r.TroopType == null);
+                }
             }
             else
             {
