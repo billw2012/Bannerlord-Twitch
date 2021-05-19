@@ -371,7 +371,11 @@ namespace BLTAdoptAHero
                         behaviorGroup.AddBehavior<FightBehavior>();
                         behaviorGroup.SetScriptedBehavior<FightBehavior>();
                     }
+                    #if BL_V_1_5_9
+                    agent.SetWatchState(AgentAIStateFlagComponent.WatchState.Alarmed);
+                    #else
                     agent.SetWatchState(Agent.WatchState.Alarmed);
+                    #endif
                 }
                 // For other player hostile situations we setup a 1v1 fight
                 else if (!settings.OnPlayerSide)

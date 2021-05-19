@@ -70,8 +70,8 @@ namespace BannerlordTwitch.Rewards
                 string cssFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
                     "Bannerlord-Twitch-Documentation.css");
                 string css = File.ReadAllText(cssFileName);
-                Common.PlatformFileHelper.SaveFileString(new (EngineFilePaths.ConfigsPath, "Bannerlord-Twitch-Documentation.css"), css);
-                Common.PlatformFileHelper.SaveFileString(new (EngineFilePaths.ConfigsPath, "Bannerlord-Twitch-Documentation.html"),
+                FileSystem.SaveFileString(FileSystem.GetConfigPath("Bannerlord-Twitch-Documentation.css"), css);
+                FileSystem.SaveFileString(FileSystem.GetConfigPath("Bannerlord-Twitch-Documentation.html"),
                     string.Join("\n", docs.Select(s => s + "  ")));
             }
             catch (Exception e)

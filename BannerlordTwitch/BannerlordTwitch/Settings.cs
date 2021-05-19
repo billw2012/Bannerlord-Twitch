@@ -200,14 +200,14 @@ namespace BannerlordTwitch
 
         public static AuthSettings Load()
         {
-            return !Common.PlatformFileHelper.FileExists(AuthFilePath) 
+            return !FileSystem.FileExists(AuthFilePath) 
                 ? null 
-                : new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize<AuthSettings>(Common.PlatformFileHelper.GetFileContentString(AuthFilePath));
+                : new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize<AuthSettings>(FileSystem.GetFileContentString(AuthFilePath));
         }
 
         public static void Save(AuthSettings authSettings)
         {
-            Common.PlatformFileHelper.SaveFileString(AuthFilePath, new SerializerBuilder()
+            FileSystem.SaveFileString(AuthFilePath, new SerializerBuilder()
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
                 .Build()
                 .Serialize(authSettings));
@@ -221,16 +221,16 @@ namespace BannerlordTwitch
 #pragma warning restore 414
         public List<string> RewardsCreated { get; set; } = new();
         
-        private static PlatformFilePath DbFilePath => new (EngineFilePaths.ConfigsPath, "Bannerlord-Twitch-Db.yaml");
+        private static PlatformFilePath DbFilePath => FileSystem.GetConfigPath("Bannerlord-Twitch-Db.yaml");
 
         public static Db Load()
         {
-            return !Common.PlatformFileHelper.FileExists(DbFilePath) 
+            return !FileSystem.FileExists(DbFilePath) 
                 ? new Db()
-                : new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize<Db>(Common.PlatformFileHelper.GetFileContentString(DbFilePath));
+                : new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize<Db>(FileSystem.GetFileContentString(DbFilePath));
         }
         
-        public static void Save(Db db) => Common.PlatformFileHelper.SaveFileString(DbFilePath, new SerializerBuilder().Build().Serialize(db));
+        public static void Save(Db db) => FileSystem.SaveFileString(DbFilePath, new SerializerBuilder().Build().Serialize(db));
     }
     
     public class Settings
@@ -278,15 +278,15 @@ namespace BannerlordTwitch
         
         public static Settings Load()
         {
-            if (!Common.PlatformFileHelper.FileExists(SaveFilePath))
+            if (!FileSystem.FileExists(SaveFilePath))
             {
                 Log.LogFeedSystem($"No settings found, applying defaults");
                 string templateFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
                     "Bannerlord-Twitch.yaml");
                 string cfg = File.ReadAllText(templateFileName);
-                Common.PlatformFileHelper.SaveFileString(SaveFilePath, cfg);
+                FileSystem.SaveFileString(SaveFilePath, cfg);
             }
-            var settings = new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize<Settings>(Common.PlatformFileHelper.GetFileContentString(SaveFilePath));
+            var settings = new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize<Settings>(FileSystem.GetFileContentString(SaveFilePath));
             if (settings == null)
                 throw new Exception($"Couldn't load the mod settings from {SaveFilePath}");
 
@@ -303,7 +303,7 @@ namespace BannerlordTwitch
 
         public static void Save(Settings settings)
         {
-            Common.PlatformFileHelper.SaveFileString(SaveFilePath, new SerializerBuilder()
+            FileSystem.SaveFileString(SaveFilePath, new SerializerBuilder()
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
                 .Build()
                 .Serialize(settings));
