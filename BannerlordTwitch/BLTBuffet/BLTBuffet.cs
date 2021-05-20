@@ -11,7 +11,7 @@ namespace BLTBuffet
     public class BLTBuffetModule : MBSubModuleBase
     {
         public const string Name = "BLTBuffet";
-        public const string Ver = "1.2.0";
+        public const string Ver = "1.2.1";
 
         public BLTBuffetModule()
         {
