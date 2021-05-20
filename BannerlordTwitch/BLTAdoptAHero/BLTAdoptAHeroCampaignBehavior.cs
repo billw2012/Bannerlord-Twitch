@@ -56,11 +56,6 @@ namespace BLTAdoptAHero
                         });
                     }
                 }
-
-                foreach (var h in heroData.Values)
-                {
-                    h.Retinue.RemoveAll(r => r.TroopType == null);
-                }
             }
             else
             {
@@ -123,7 +118,26 @@ namespace BLTAdoptAHero
                         heroToKeep.Name = new TextObject(GetFullName(heroToKeep.FirstName.ToString()));
                     }
                 }
+                
+                // Clean up hero data
+                int randomSeed = Environment.TickCount;
+                foreach (var (hero, data) in heroData)
+                {
+                    // Remove invalid troop types
+                    data.Retinue.RemoveAll(r => r.TroopType == null);
+                    
+                    // Make sure heroes are active, and in real locations
+                    if(hero.HeroState is Hero.CharacterStates.NotSpawned && hero.CurrentSettlement == null)
+                    {
+                        // Activate them and put them in a random town
+                        hero.ChangeState(Hero.CharacterStates.Active);
+                        var targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom(++randomSeed);
+                        EnterSettlementAction.ApplyForCharacterOnly(hero, targetSettlement);
+                        Log.Info($"Placed unspawned hero {hero.Name} at {targetSettlement.Name}");
+                    }                
+                }
             });
+            
             CampaignEvents.HeroKilledEvent.AddNonSerializedListener(this, (victim, killer, detail, _) =>
             {
                 if (victim?.IsAdopted() == true || killer?.IsAdopted() == true)
@@ -139,11 +153,13 @@ namespace BLTAdoptAHero
                     }
                 }
             });
+            
             CampaignEvents.HeroLevelledUp.AddNonSerializedListener(this, (hero, _) =>
             {
                 if (hero.IsAdopted())
                     Log.LogFeedEvent($"{hero.Name} is now level {hero.Level}!");
             });
+            
             CampaignEvents.HeroPrisonerTaken.AddNonSerializedListener(this, (party, hero) =>
             {
                 if (hero.IsAdopted())
@@ -154,6 +170,7 @@ namespace BLTAdoptAHero
                         Log.LogFeedEvent($"{hero.Name} was taken prisoner!");
                 }
             });
+            
             CampaignEvents.HeroPrisonerReleased.AddNonSerializedListener(this, (hero, party, _, _) =>
             {
                 if (hero.IsAdopted())
@@ -164,11 +181,13 @@ namespace BLTAdoptAHero
                         Log.LogFeedEvent($"{hero.Name} is no longer a prisoner!");
                 }
             });
+            
             CampaignEvents.OnHeroChangedClanEvent.AddNonSerializedListener(this, (hero, clan) =>
             {
                 if(hero.IsAdopted())
                     Log.LogFeedEvent($"{hero.Name} is now a member of {clan?.Name.ToString() ?? "no clan"}!");
             });
+            
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, JoinTournament.SetupGameMenus);
         }
 
@@ -183,6 +202,7 @@ namespace BLTAdoptAHero
             return hd;
         }
         
+        #region Gold
         public int GetHeroGold(Hero hero)
         {
             return GetHeroData(hero).Gold;
@@ -199,23 +219,25 @@ namespace BLTAdoptAHero
             GetHeroData(hero).Gold = newGold;
             return newGold;
         }
+        #endregion
 
+        #region Retinue
         public IEnumerable<CharacterObject> GetRetinue(Hero hero) => GetHeroData(hero).Retinue.Select(r => r.TroopType);
 
         public class RetinueSettings
         {
             [Description("Maximum number of units in the retinue"), PropertyOrder(1)]
-            public int MaxRetinueSize { get; set; } = 5;
+            public int MaxRetinueSize { get; set; }
             [Description("Cost to buy a new unit, or upgrade one"), PropertyOrder(2)]
-            public int CostPerTier { get; set; } = 50000;
+            public int CostPerTier { get; set; }
             [Description("Additional cost per tier multiplier (final cost for an upgrade is Cost Per Tier + Cost Per Tier x Current Tier x Cost Scaling Per Tier"), PropertyOrder(3)]
-            public float CostScalingPerTier { get; set; } = 1.5f;
+            public float CostScalingPerTier { get; set; }
             [Description("Whether to use the adopted hero's culture (if not enabled then a random one is used)"), PropertyOrder(4)]
-            public bool UseHeroesCultureUnits { get; set; } = true;
+            public bool UseHeroesCultureUnits { get; set; }
             [Description("Whether to allow bandit units when UseHeroesCultureUnits is disabled"), PropertyOrder(4)]
-            public bool IncludeBanditUnits { get; set; } = false;
+            public bool IncludeBanditUnits { get; set; }
             [Description("Whether to use elite troops (if not enabled then basic troops are used)"), PropertyOrder(5)]
-            public bool UseEliteTroops { get; set; } = true;
+            public bool UseEliteTroops { get; set; }
         }
         
         public (bool success, string status) UpgradeRetinue(Hero hero, RetinueSettings settings)
@@ -250,7 +272,7 @@ namespace BLTAdoptAHero
                 .FirstOrDefault(t => t.TroopType.UpgradeTargets?.Any() == true);
             if (retinueToUpgrade != null)
             {
-                int upgradeCost = (int) (settings.CostPerTier + settings.CostPerTier * retinueToUpgrade.TroopType.Tier * settings.CostScalingPerTier);
+                int upgradeCost = (int) (settings.CostPerTier + settings.CostPerTier * (retinueToUpgrade.TroopType.Tier - troopType.Tier + 1) * settings.CostScalingPerTier);
                 int heroGold = GetHeroGold(hero);
                 if (GetHeroGold(hero) < upgradeCost)
                 {
@@ -264,7 +286,9 @@ namespace BLTAdoptAHero
             }
             return (false, $"Can't upgrade retinue any further!");
         }
+        #endregion
 
+        #region Helper Functions
         public static IEnumerable<Hero> GetAvailableHeroes(Func<Hero, bool> filter = null)
         {
             var tagText = new TextObject(BLTAdoptAHeroModule.Tag);
@@ -293,5 +317,6 @@ namespace BLTAdoptAHero
                                      && h.FirstName?.Contains(name) == true 
                                      && h.FirstName?.ToString() == name);
         }
+        #endregion
     }
 }

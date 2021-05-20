@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,7 +12,6 @@ using SandBox;
 using SandBox.Source.Missions.Handlers;
 using StoryMode.Missions;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.SandBox;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -60,29 +58,29 @@ namespace BLTAdoptAHero
             [Category("General"), YamlIgnore, ReadOnly(true), PropertyOrder(-100), Editor(typeof(MultilineTextNonEditable), typeof(MultilineTextNonEditable))]
             public string Help => "This allows viewers to spawn their adopted heroes into your missions/battles. It supports a custom shout: if used as a command then anything the viewer puts after the command will be shouted in game by the player, if used as a reward then just enable the 'IsUserInputRequired' and set the 'Prompt' to something like 'My shout'.";
             [Category("Allowed Missions"), Description("Can summon for normal field battles between parties"), PropertyOrder(1)]
-            public bool AllowFieldBattle { get; set; } = true;
+            public bool AllowFieldBattle { get; set; }
             [Category("Allowed Missions"), Description("Can summon in village battles"), PropertyOrder(2)]
-            public bool AllowVillageBattle { get; set; } = true;
+            public bool AllowVillageBattle { get; set; }
             [Category("Allowed Missions"), Description("Can summon in sieges"), PropertyOrder(3)]
-            public bool AllowSiegeBattle { get; set; } = true;
+            public bool AllowSiegeBattle { get; set; }
             [Category("Allowed Missions"), Description("This includes walking about village/town/dungeon/keep"), PropertyOrder(4)]
-            public bool AllowFriendlyMission { get; set; } = true;
+            public bool AllowFriendlyMission { get; set; }
             [Category("Allowed Missions"), Description("Can summon in the practice arena"), PropertyOrder(5)]
             public bool AllowArena { get; set; }
             [Category("Allowed Missions"), Description("NOT IMPLEMENTED YET Can summon in tournaments"), PropertyOrder(6)]
             public bool AllowTournament { get; set; }
             [Category("Allowed Missions"), Description("Can summon in the hideout missions"), PropertyOrder(7)]
-            public bool AllowHideOut { get; set; } = true;
+            public bool AllowHideOut { get; set; }
             [Category("General"), Description("Whether the hero is on the player or enemy side"), PropertyOrder(1)]
-            public bool OnPlayerSide { get; set; } = true;
+            public bool OnPlayerSide { get; set; }
             // [Category("General"), Description("Maximum number of summons that can be active at the same time (i.e. max alive adopted heroes that can be in the mission) NOT IMPLEMENTED YET"), PropertyOrder(2)]
             // public int? MaxSimultaneousSummons { get; set; }
             [Category("General"), Description("Whether the summoned hero is allowed to die"), PropertyOrder(3)]
             public bool AllowDeath { get; set; }
             [Category("General"), Description("Whether the summoned hero will always start with full health"), PropertyOrder(3)]
-            public bool StartWithFullHealth { get; set; } = true;
+            public bool StartWithFullHealth { get; set; }
             [Category("General"), Description("Amount to multiply normal starting health by, to give summoned heroes better staying power"), PropertyOrder(4)]
-            public float StartHealthMultiplier { get; set; } = 2;
+            public float? StartHealthMultiplier { get; set; }
             [Category("General"), Description("Gold cost to summon"), PropertyOrder(5)]
             public int GoldCost { get; set; }
 
@@ -91,34 +89,34 @@ namespace BLTAdoptAHero
             public string PreferredFormation { get; set; }
 
             [Category("Effects"), Description("Multiplier applied to (positive) effects for subscribers"), PropertyOrder(1)]
-            public float SubBoost { get; set; } = 2;
+            public float? SubBoost { get; set; }
             [Category("Effects"), Description("HP the hero gets every second they are alive in the mission"), PropertyOrder(2)]
             public float HealPerSecond { get; set; }
 
             [Category("End Effects"), Description("Gold won if the heroes side wins"), PropertyOrder(1)]
-            public int WinGold { get; set; } = 10000;
+            public int WinGold { get; set; }
             [Category("End Effects"), Description("XP the hero gets if the heroes side wins"), PropertyOrder(2)]
-            public int WinXP { get; set; } = 15000;
+            public int WinXP { get; set; }
             [Category("End Effects"), Description("Gold lost if the heroes side loses"), PropertyOrder(3)]
             public int LoseGold { get; set; }
             [Category("End Effects"), Description("XP the hero gets if the heroes side loses"), PropertyOrder(4)]
-            public int LoseXP { get; set; } = 5000;
+            public int LoseXP { get; set; }
 
             [Category("Kill Effects"), Description("Gold the hero gets for every kill"), PropertyOrder(1)]
-            public int GoldPerKill { get; set; } = 5000;
+            public int GoldPerKill { get; set; }
             [Category("Kill Effects"), Description("XP the hero gets for every kill"), PropertyOrder(2)]
-            public int XPPerKill { get; set; } = 5000;
+            public int XPPerKill { get; set; }
             [Category("Kill Effects"), Description("XP the hero gets for being killed"), PropertyOrder(3)]
-            public int XPPerKilled { get; set; } = 2500;
+            public int XPPerKilled { get; set; }
             [Category("Kill Effects"), Description("HP the hero gets for every kill"), PropertyOrder(4)]
-            public int HealPerKill { get; set; } = 20;
+            public int HealPerKill { get; set; }
 
             [Category("Kill Effects"), Description("Gold the hero gets for every kill their retinue gets"),
              PropertyOrder(5)]
-            public int RetinueGoldPerKill { get; set; } = 5000;
+            public int RetinueGoldPerKill { get; set; }
             [Category("Kill Effects"), Description("HP the hero's retinue gets for every kill"), PropertyOrder(6)]
 
-            public int RetinueHealPerKill { get; set; } = 20;
+            public int RetinueHealPerKill { get; set; }
             [Category("Kill Effects"), Description("How much to scale the reward by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."), PropertyOrder(7)]
             public float? RelativeLevelScaling { get; set; }
             [Category("Kill Effects"), Description("Caps the maximum multiplier for the level difference, defaults to 5 if not specified"), PropertyOrder(8)]
@@ -301,7 +299,8 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            if (!Mission.Current.IsLoadingFinished)
+            if (!Mission.Current.IsLoadingFinished 
+                || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null && Mission.Current.Mode != MissionMode.Battle)
             {
                 onFailure($"You cannot be summoned now, the mission has not started yet!");
                 return;
@@ -324,9 +323,9 @@ namespace BLTAdoptAHero
                 {
                     agent.Health = agent.HealthLimit;
                 }
-                agent.BaseHealthLimit *= Math.Max(1, settings.StartHealthMultiplier);
-                agent.HealthLimit *= Math.Max(1, settings.StartHealthMultiplier);
-                agent.Health *= Math.Max(1, settings.StartHealthMultiplier);
+                agent.BaseHealthLimit *= Math.Max(1, settings.StartHealthMultiplier ?? 2);
+                agent.HealthLimit *= Math.Max(1, settings.StartHealthMultiplier ?? 2);
+                agent.Health *= Math.Max(1, settings.StartHealthMultiplier ?? 2);
             }
             
             if (CampaignMission.Current.Location != null)
@@ -371,7 +370,11 @@ namespace BLTAdoptAHero
                         behaviorGroup.AddBehavior<FightBehavior>();
                         behaviorGroup.SetScriptedBehavior<FightBehavior>();
                     }
+                    #if BL_V_1_5_9
+                    agent.SetWatchState(AgentAIStateFlagComponent.WatchState.Alarmed);
+                    #else
                     agent.SetWatchState(Agent.WatchState.Alarmed);
+                    #endif
                 }
                 // For other player hostile situations we setup a 1v1 fight
                 else if (!settings.OnPlayerSide)
@@ -433,7 +436,16 @@ namespace BLTAdoptAHero
                         return;
                     }
 
-                    float actualBoost = context.IsSubscriber ? settings.SubBoost : 1;
+                    if (existingHero != null
+                        && settings.AllowDeath
+                        && Mission.Current?.AllAgents?.FirstOrDefault(a => a.Character == adoptedHero.CharacterObject)
+                            ?.State == AgentState.Killed)
+                    {
+                        onFailure($"You cannot summon, you DIED!");
+                        return;
+                    }
+
+                    float actualBoost = context.IsSubscriber ? (settings.SubBoost ?? 1) : 1;
 
                     bool firstSummon = existingHero == null; 
                     if (firstSummon)
@@ -477,9 +489,9 @@ namespace BLTAdoptAHero
 
                         // We don't support Unset, or General formations, and implement custom behaviour for Bodyguard
                         if (!Enum.TryParse(settings.PreferredFormation, out FormationClass formationClass)
-                            || formationClass is not (FormationClass.Ranged or FormationClass.Cavalry or FormationClass.HorseArcher
-                                or FormationClass.Skirmisher or FormationClass.HeavyInfantry or FormationClass.LightCavalry
-                                or FormationClass.HeavyCavalry or FormationClass.Bodyguard))
+                                 || formationClass is not (FormationClass.Ranged or FormationClass.Cavalry or FormationClass.HorseArcher
+                                     or FormationClass.Skirmisher or FormationClass.HeavyInfantry or FormationClass.LightCavalry
+                                     or FormationClass.HeavyCavalry or FormationClass.Bodyguard))
                         {
                             formationClass = FormationClass.Bodyguard;
                         }
@@ -640,11 +652,16 @@ namespace BLTAdoptAHero
                     int formationTroopIdx = 0;
 
                     int totalTroopsCount = 1 + retinueTroops.Count;
-                    Campaign.Current.SetPlayerFormationPreference(adoptedHero.CharacterObject, existingHero.Formation);
+                    if (settings.OnPlayerSide)
+                    {
+                        Campaign.Current.SetPlayerFormationPreference(adoptedHero.CharacterObject,
+                            existingHero.Formation);
+                    }
+
                     var adoptedAgent = Mission.Current.SpawnTroop(
                         troopOrigin,
                         isPlayerSide: settings.OnPlayerSide,
-                        hasFormation: existingHero.Formation != FormationClass.Bodyguard,
+                        hasFormation: !settings.OnPlayerSide || existingHero.Formation != FormationClass.Bodyguard,
                         spawnWithHorse: adoptedHero.CharacterObject.IsMounted && isMounted,
                         isReinforcement: true,
                         enforceSpawningOnInitialPoint: false,
@@ -664,17 +681,23 @@ namespace BLTAdoptAHero
                     }
 
                     var agent_name = AccessTools.Field(typeof(Agent), "_name");
-                    foreach (var retinue in retinueTroops)
+                    foreach (var retinueTroop in retinueTroops)
                     {
-                        bool hasPrevFormation = Campaign.Current.PlayerFormationPreferences.TryGetValue(retinue, out var prevFormation);
-                        Campaign.Current.SetPlayerFormationPreference(retinue, existingHero.Formation);
+                        // Don't modify formation for non-player side spawn as we don't really care
+                        bool hasPrevFormation = Campaign.Current.PlayerFormationPreferences
+                                                    .TryGetValue(retinueTroop, out var prevFormation) 
+                                                && settings.OnPlayerSide;
+                        if (settings.OnPlayerSide)
+                        {
+                            Campaign.Current.SetPlayerFormationPreference(retinueTroop, existingHero.Formation);
+                        }
 
-                        existingHero.Party.MemberRoster.AddToCounts(retinue, 1);
+                        existingHero.Party.MemberRoster.AddToCounts(retinueTroop, 1);
                         var retinueAgent = Mission.Current.SpawnTroop(
-                            new PartyAgentOrigin(existingHero.Party, retinue),
+                            new PartyAgentOrigin(existingHero.Party, retinueTroop),
                             isPlayerSide: settings.OnPlayerSide,
-                            hasFormation: existingHero.Formation != FormationClass.Bodyguard,
-                            spawnWithHorse: retinue.IsMounted && isMounted,
+                            hasFormation: settings.OnPlayerSide || existingHero.Formation != FormationClass.Bodyguard,
+                            spawnWithHorse: retinueTroop.IsMounted && isMounted,
                             isReinforcement: true,
                             enforceSpawningOnInitialPoint: false,
                             formationTroopCount: totalTroopsCount,
@@ -689,11 +712,11 @@ namespace BLTAdoptAHero
                             {
                                 if (retinueAgent.State == AgentState.Unconscious)
                                 {
-                                    existingHero.Party.MemberRoster.AddToCounts(retinue, -1, woundedCount: -1);
+                                    existingHero.Party.MemberRoster.AddToCounts(retinueTroop, -1, woundedCount: -1);
                                 }
                                 else if (retinueAgent.State != AgentState.Killed)
                                 {
-                                    existingHero.Party.MemberRoster.AddToCounts(retinue, -1);
+                                    existingHero.Party.MemberRoster.AddToCounts(retinueTroop, -1);
                                 }
                             },
                             onGotAKill: (killer, killed, state) =>
@@ -724,7 +747,7 @@ namespace BLTAdoptAHero
 
                         if (hasPrevFormation)
                         {
-                            Campaign.Current.SetPlayerFormationPreference(retinue, prevFormation);
+                            Campaign.Current.SetPlayerFormationPreference(retinueTroop, prevFormation);
                         }
                     }
 

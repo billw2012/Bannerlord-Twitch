@@ -8,21 +8,22 @@ Rewards:
   RespondInOverlay: true
   HandlerConfig:
     AllowNoble: true
+    AllowWanderer: true
     AllowNewAdoptionOnDeath: true
     StartingSkills:
     - Skill: Melee
-      MinLevel: 100
+      MinLevel: 50
       MaxLevel: 125
     - Skill: Ranged
-      MinLevel: 100
+      MinLevel: 50
       MaxLevel: 125
     - Skill: Riding
-      MinLevel: 100
-      MaxLevel: 125
+      MinLevel: 25
+      MaxLevel: 75
     - Skill: Athletics
-      MinLevel: 100
-      MaxLevel: 125
-    StartingEquipmentTier: 3
+      MinLevel: 25
+      MaxLevel: 75
+    StartingEquipmentTier: 0
     StartWithMeleeWeapon: true
     StartWithArmor: true
 - RewardSpec:
@@ -85,7 +86,6 @@ Rewards:
     AllowSiegeBattle: true
     AllowFriendlyMission: true
     AllowHideOut: true
-    OnPlayerSide: true
     StartWithFullHealth: true
     StartHealthMultiplier: 2
     PreferredFormation: LightCavalry
@@ -120,7 +120,6 @@ Rewards:
     Cost: 300
     IsEnabled: true
   Handler: CharacterEffect
-  Enabled: true
   RespondInOverlay: true
   HandlerConfig:
     Name: Giant
@@ -148,7 +147,6 @@ Rewards:
     Cost: 300
     IsEnabled: true
   Handler: CharacterEffect
-  Enabled: true
   RespondInOverlay: true
   HandlerConfig:
     Name: Baby
@@ -234,24 +232,9 @@ Rewards:
     HealPerKill: 20
     RelativeLevelScaling: 0.5
 - RewardSpec:
-    Title: Heal Random
-    Cost: 300
-    IsEnabled: true
-  Handler: CharacterEffect
-  Enabled: true
-  RespondInOverlay: true
-  HandlerConfig:
-    Name: Heal Random
-    Target: Any
-    ParticleEffects:
-    - Name: psys_bug_fly_1
-      AttachPoint: OnBody
-    HealPerSecond: 0.100000001
-    Duration: 15
-- RewardSpec:
     Title: Send Message In Game
     Prompt: Enter Message
-    Cost: 200
+    Cost: 500
     IsEnabled: true
     IsUserInputRequired: true
   Handler: SendMessage
@@ -284,18 +267,17 @@ Commands:
   Enabled: true
   RespondInOverlay: true
   HandlerConfig:
-    CreateNew: true
     AllowNoble: true
     AllowWanderer: true
     AllowNewAdoptionOnDeath: true
     SubscriberOnly: true
     StartingSkills:
     - Skill: Melee
-      MinLevel: 150
-      MaxLevel: 200
+      MinLevel: 50
+      MaxLevel: 150
     - Skill: Ranged
-      MinLevel: 150
-      MaxLevel: 200
+      MinLevel: 50
+      MaxLevel: 150
     - Skill: Personal
       MinLevel: 100
       MaxLevel: 150
@@ -303,12 +285,12 @@ Commands:
       MinLevel: 100
       MaxLevel: 150
     - Skill: Riding
-      MinLevel: 150
-      MaxLevel: 200
+      MinLevel: 50
+      MaxLevel: 100
     - Skill: Athletics
-      MinLevel: 150
-      MaxLevel: 200
-    StartingEquipmentTier: 2
+      MinLevel: 50
+      MaxLevel: 100
+    StartingEquipmentTier: 1
     StartWithMeleeWeapon: true
     StartWithRangedWeapon: true
     StartWithHorse: true
@@ -331,7 +313,6 @@ Commands:
 - Name: pfx
   BroadcasterOnly: true
   Handler: TestPfx
-  Enabled: true
   RespondInOverlay: true
 - Name: retinue
   Help: Upgrade retinue
@@ -342,7 +323,7 @@ Commands:
     Retinue:
       MaxRetinueSize: 5
       CostPerTier: 50000
-      CostScalingPerTier: 0.5
+      CostScalingPerTier: 1
       UseHeroesCultureUnits: true
       UseEliteTroops: true
 GlobalConfigs: []
@@ -356,17 +337,11 @@ SimTesting:
     Id: Adopt a Hero
   - Type: Reward
     Id: 100k gold
-  - Type: Reward
-    Id: 100k gold
-  - Type: Reward
-    Id: 100k gold
-  - Type: Command
-    Id: retinue
   Use:
   - Type: Reward
-    Id: Summon
-  - Type: Reward
     Id: Attack
+  - Type: Reward
+    Id: Summon
   - Type: Reward
     Id: Heal Player
     Weight: 0.200000003
@@ -378,3 +353,5 @@ SimTesting:
     Weight: 0.200000003
   - Type: Command
     Id: retinue
+  - Type: Reward
+    Id: Tournament

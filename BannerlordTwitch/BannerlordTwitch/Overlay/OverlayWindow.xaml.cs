@@ -87,15 +87,15 @@ namespace BannerlordTwitch.Overlay
             public double WindowWidth { get; set; }
             public double WindowHeight { get; set; }
 
-            private static PlatformFilePath OverlayFilePath => new (EngineFilePaths.ConfigsPath, "Bannerlord-Twitch-Overlay.yaml");
+            private static PlatformFilePath OverlayFilePath => FileSystem.GetConfigPath("Bannerlord-Twitch-Overlay.yaml");
             
             public static OverlaySettings Load()
             {
                 try
                 {
-                    return !Common.PlatformFileHelper.FileExists(OverlayFilePath) 
+                    return !FileSystem.FileExists(OverlayFilePath) 
                         ? null 
-                        : new DeserializerBuilder().Build().Deserialize<OverlaySettings>(Common.PlatformFileHelper.GetFileContentString(OverlayFilePath));
+                        : new DeserializerBuilder().Build().Deserialize<OverlaySettings>(FileSystem.GetFileContentString(OverlayFilePath));
                 }
                 catch (Exception e)
                 {
@@ -108,7 +108,7 @@ namespace BannerlordTwitch.Overlay
             {
                 try
                 {
-                    Common.PlatformFileHelper.SaveFileString(OverlayFilePath, new SerializerBuilder()
+                    FileSystem.SaveFileString(OverlayFilePath, new SerializerBuilder()
                         .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
                         .Build()
                         .Serialize(settings));

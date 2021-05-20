@@ -41,7 +41,7 @@ namespace BLTAdoptAHero
             public int GoldCost { get; set; }
             
             [Category("General"), Description("Multiplier applied to all effects for subscribers"), PropertyOrder(4)]
-            public float SubBoost { get; set; } = 1;
+            public float? SubBoost { get; set; }
 
             [Category("Tournament Effects"), Description("Gold won if the hero wins the tournaments"), PropertyOrder(1)]
             public int WinGold { get; set; }
@@ -73,13 +73,6 @@ namespace BLTAdoptAHero
         
         protected override Type ConfigType => typeof(Settings);
 
-        private static readonly List<(ReplyContext context, Settings settings, Hero hero)> tournamentQueue = new();
-        private static readonly List<(ReplyContext context, Settings settings, Hero hero)> viewerTournamentQueue = new();
-        private static readonly List<(ReplyContext context, Settings settings, Hero hero)> currentTournament = new();
-
-        private static readonly List<(Hero adoptedHero, Hero targetHero, int bet)> placedBets = new();
-
-        private static bool doViewerTournament = false;
 
         protected override void ExecuteInternal(ReplyContext context, object config, Action<string> onSuccess, Action<string> onFailure)
         {
@@ -126,14 +119,14 @@ namespace BLTAdoptAHero
                     ActionManager.SendReply(context, $"You are in the {name} queue, {max - queue.Count} spots remaining");
                 }
             }
-
+            
             if (settings.ViewersOnly)
             {
-                AddToQueue(viewerTournamentQueue, 16, "viewer tournament", "go to the nearest arena");
+                AddToQueue(BLTTournamentQueueBehavior.Get().viewerTournamentQueue, 16, "viewer tournament", "go to the nearest arena");
             }
             else
             {
-                AddToQueue(tournamentQueue, 15, "tournament", "join the nearest active tournament");
+                AddToQueue(BLTTournamentQueueBehavior.Get().tournamentQueue, 15, "tournament", "join the nearest active tournament");
             }
         }
 
@@ -144,41 +137,38 @@ namespace BLTAdoptAHero
                 args =>
                 {
                     args.optionLeaveType = GameMenuOption.LeaveType.HostileAction;
-                    return viewerTournamentQueue.Any();
+                    return BLTTournamentQueueBehavior.Get().viewerTournamentQueue.Any();
                 },
                 JoinViewerTournament, 
                 index: 2);
         }
 
-        private static ItemObject FindRandomTieredEquipment(int tier, params ItemObject.ItemTypeEnum[] itemTypeEnums)
-        {
-            var items = ItemObject.All
-                // Usable
-                .Where(item => !item.NotMerchandise)
-                // Correct type
-                .Where(item => itemTypeEnums.Contains(item.Type))
-                .ToList();
-
-            // Correct tier
-            var tieredItems = items.Where(item => (int) item.Tier == tier).ToList();
-
-            // We might not find an item at the specified tier, so find the closest tier we can
-            while (!tieredItems.Any() && tier >= 0)
-            {
-                tier--;
-                tieredItems = items.Where(item => (int) item.Tier == tier).ToList();
-            }
-
-            return tieredItems.SelectRandom();
-        }
+        // private static ItemObject FindRandomTieredEquipment(int tier, params ItemObject.ItemTypeEnum[] itemTypeEnums)
+        // {
+        //     var items = ItemObject.All
+        //         // Usable
+        //         .Where(item => !item.NotMerchandise)
+        //         // Correct type
+        //         .Where(item => itemTypeEnums.Contains(item.Type))
+        //         .ToList();
+        //
+        //     // Correct tier
+        //     var tieredItems = items.Where(item => (int) item.Tier == tier).ToList();
+        //
+        //     // We might not find an item at the specified tier, so find the closest tier we can
+        //     while (!tieredItems.Any() && tier >= 0)
+        //     {
+        //         tier--;
+        //         tieredItems = items.Where(item => (int) item.Tier == tier).ToList();
+        //     }
+        //
+        //     return tieredItems.SelectRandom();
+        // }
         
         private static void JoinViewerTournament(MenuCallbackArgs args)
         {
-            doViewerTournament = true;
-            var tournamentGame = Campaign.Current.Models.TournamentModel.CreateTournament(Settlement.CurrentSettlement.Town);
-            // AccessTools.Property(typeof(TournamentGame), "Prize").SetValue(tournamentGame, DefaultItems.Charcoal);
+            BLTTournamentQueueBehavior.Get().JoinViewerTournament();
             GameMenu.SwitchToMenu("town");
-            tournamentGame.PrepareForTournamentGame(false);
         }
 
         // MissionState.Current.CurrentMission doesn't have any behaviours added during this function, so we split the initialization that requires access
@@ -187,363 +177,293 @@ namespace BLTAdoptAHero
         public static void GetParticipantCharactersPostfix(Settlement settlement,
             int maxParticipantCount, bool includePlayer, List<CharacterObject> __result)
         {
-            currentTournament.Clear();
-            if (Settlement.CurrentSettlement == settlement && maxParticipantCount == 16)
-            {
-                if (includePlayer && tournamentQueue.Any())
-                {
-                    //__result.RemoveAll(c => c.HeroObject != Hero.MainHero);
-                    __result.Remove(Hero.MainHero.CharacterObject);
-                    __result.RemoveRange(0, Math.Min(__result.Count, tournamentQueue.Count));
-
-                    __result.Add(Hero.MainHero.CharacterObject);
-                    __result.AddRange(tournamentQueue.Select(q => q.hero.CharacterObject));
-                    
-                    currentTournament.AddRange(tournamentQueue);
-                }
-                else if(doViewerTournament && viewerTournamentQueue.Any())
-                {
-                    __result.RemoveRange(0, Math.Min(__result.Count, viewerTournamentQueue.Count));
-                    __result.AddRange(viewerTournamentQueue.Select(q => q.hero.CharacterObject));
-                    
-                    currentTournament.AddRange(viewerTournamentQueue);
-                }
-            }
+            BLTTournamentQueueBehavior.Get().GetParticipantCharacters(settlement, maxParticipantCount, includePlayer, __result);
         }
-        
+
         // After PrepareForTournamentGame the MissionState.Current.CurrentMission contains the behaviors
         [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(TournamentGame), nameof(TournamentGame.PrepareForTournamentGame))]
         public static void PrepareForTournamentGamePostfix(TournamentGame __instance, bool isPlayerParticipating)
         {
-            static (bool used, string failReason) UpgradeToItem(Hero hero, ItemObject item)
-            {
-                if (EquipHero.CanUseItem(item, hero))
-                {
-                    // Find a slot
-                    var slot = hero.BattleEquipment
-                        .YieldEquipmentSlots()
-                        .Cast<(EquipmentElement element, EquipmentIndex index)?>()
-                        .FirstOrDefault(e
-                            => e.HasValue && Equipment.IsItemFitsToSlot(e.Value.index, item)
-                               && (e.Value.element.IsEmpty || e.Value.element.Item.Type == item.Type && e.Value.element.Item.Tierf <= item.Tierf));
-                    if (slot.HasValue)
-                    {
-                        hero.BattleEquipment[slot.Value.index] = new EquipmentElement(item);
-                        return (true, null);
-                    }
-                    else
-                    {
-                        return (false, "your existing equipment is better");
-                    }
-                }
-                else
-                {
-                    return (false, "you can't use this item");
-                }
-            }
-
-            if (currentTournament.Any()) //isPlayerParticipating && !doViewerTournament || !isPlayerParticipating && doViewerTournament)
-            {
-                var tournamentBehaviour = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>();
-                // var tournamentFightMissionController = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentFightMissionController>();
-                
-                // var queue = doViewerTournament ? viewerTournamentQueue : tournamentQueue;
-                //
-                // currentTournament.Clear();
-                // currentTournament.AddRange(queue);
-                // queue.Clear();
-                
-                float SettingsSubBoost(ReplyContext replyContext, Settings settings)
-                {
-                    return replyContext.IsSubscriber ? settings.SubBoost : 1;
-                }
-
-                tournamentBehaviour.TournamentEnd += () =>
-                {
-                    // Win results
-                    foreach (var (context, settings, hero) in currentTournament)
-                    {
-                        float actualBoost = SettingsSubBoost(context, settings);
-                        var results = new List<string>();
-                        if(tournamentBehaviour.Winner.Character?.HeroObject == hero)
-                        {
-                            results.Add("WINNER!");
-                            // Winner gets their gold back also
-                            int actualGold = (int) (settings.WinGold * actualBoost + settings.GoldCost);
-                            if (actualGold > 0)
-                            {
-                                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(hero, actualGold);
-                                results.Add($"+{actualGold} gold");
-                            }
-                            int xp = (int) (settings.WinXP * actualBoost);
-                            if (xp > 0)
-                            {
-                                (bool success, string description) = SkillXP.ImproveSkill(hero, xp, Skills.All,
-                                    random: false, auto: true);
-                                if (success)
-                                {
-                                    results.Add(description);
-                                }
-                            }
-
-                            var prize = tournamentBehaviour.TournamentGame.Prize;
-                            (bool upgraded, string failReason) = UpgradeToItem(hero, prize);
-                            if (!upgraded)
-                            {
-                                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(hero, prize.Value);
-                                results.Add($"sold {prize.Name} for {prize.Value} gold ({failReason})");
-                            }
-                            else
-                            {
-                                results.Add($"received {prize.Name}");
-                            }
-                        }
-                        else
-                        {
-                            int xp = (int) (settings.ParticipateXP * actualBoost);
-                            if (xp > 0)
-                            {
-                                (bool success, string description) =
-                                    SkillXP.ImproveSkill(hero, xp, Skills.All, random: false, auto: true);
-                                if (success)
-                                {
-                                    results.Add(description);
-                                }
-                            }
-                        }
-                        if (results.Any())
-                        {
-                            ActionManager.SendReply(context, results.ToArray());
-                        }
-                    }
-
-                    currentTournament.Clear(); // = false;
-                };
-
-                foreach (var (context, settings, hero) in currentTournament)
-                {
-                    // Complete redemption
-                    
-                    float actualBoost = SettingsSubBoost(context, settings);
-
-                    // Kill effects
-                    BLTMissionBehavior.Current.AddListeners(hero,
-                        onAgentCreated: agent =>
-                        {
-                            if (settings.StartWithFullHP)
-                            {
-                                agent.Health = agent.HealthLimit;
-                            }
-
-                            if (settings.StartHPMultiplier.HasValue)
-                            {
-                                agent.BaseHealthLimit *= settings.StartHPMultiplier.Value;
-                                agent.HealthLimit *= settings.StartHPMultiplier.Value;
-                                agent.Health *= settings.StartHPMultiplier.Value;
-                            }
-                        },
-                        onGotAKill: (killer, killed, state) =>
-                        {
-                            var results = BLTMissionBehavior.ApplyKillEffects(
-                                hero, killer, killed, state,
-                                settings.GoldPerKill,
-                                settings.HealPerKill, 
-                                settings.XPPerKill,
-                                actualBoost,
-                                settings.RelativeLevelScaling,
-                                settings.LevelScalingCap
-                                );
-                            
-                            if (results.Any())
-                            {
-                                ActionManager.SendReply(context, results.ToArray());
-                            }
-                        },
-                        onGotKilled: (_, killer, state) =>
-                        {
-                            var results = BLTMissionBehavior.ApplyKilledEffects(
-                                hero, killer, state,
-                                settings.XPPerKilled,
-                                actualBoost,
-                                settings.RelativeLevelScaling,
-                                settings.LevelScalingCap
-                            );
-                            
-                            if (results.Any())
-                            {
-                                ActionManager.SendReply(context, results.ToArray());
-                            }
-                        }
-                    );
-                }
-            }
+            BLTTournamentQueueBehavior.Get().PrepareForTournamentGame();
         }
 
         [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(TournamentBehavior), "EndCurrentMatch")]
         public static void EndCurrentMatchPrefix(TournamentBehavior __instance)
         {
-            // If the tournament is over
-            if (__instance.CurrentRoundIndex == 4 || __instance.LastMatch == null)
-                return;
-
-            // End round effects (as there is no event handler for it :/)
-            foreach (var (context, settings, adoptedHero) in currentTournament)
-            {
-                float actualBoost = context.IsSubscriber ? settings.SubBoost : 1;
-                
-                var results = new List<string>();
-
-                if(__instance.LastMatch.Winners.Any(w => w.Character?.HeroObject == adoptedHero))
-                {
-                    int actualGold = (int) (settings.WinMatchGold * actualBoost);
-                    if (actualGold > 0)
-                    {
-                        BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, actualGold);
-                        results.Add($"+{actualGold} gold");
-                    }
-                    int xp = (int) (settings.WinMatchXP * actualBoost);
-                    if (xp > 0)
-                    {
-                        (bool success, string description) =
-                            SkillXP.ImproveSkill(adoptedHero, xp, Skills.All, random: false, auto: true);
-                        if (success)
-                        {
-                            results.Add(description);
-                        }
-                    }
-                }
-                else if (__instance.LastMatch.Participants.Any(w => w.Character?.HeroObject == adoptedHero))
-                {
-                    int xp = (int) (settings.ParticipateMatchXP * actualBoost);
-                    if (xp > 0)
-                    {
-                        (bool success, string description) =
-                            SkillXP.ImproveSkill(adoptedHero, xp, Skills.All, random: false, auto: true);
-                        if (success)
-                        {
-                            results.Add(description);
-                        }
-                    }
-                }
-                if (results.Any())
-                {
-                    ActionManager.SendReply(context, results.ToArray());
-                }
-            }
+            BLTTournamentQueueBehavior.Get().EndCurrentMatch(__instance);
         }
 
-        #if false
-        private static float Odds(Hero forHero)
+        private class BLTTournamentQueueBehavior : CampaignBehaviorBase
         {
-            List<KeyValuePair<Hero, int>> leaderboard = Campaign.Current.TournamentManager.GetLeaderboard();
-			int forHeroRank = 0;
-			int maxHeroRank = 0;
-			for (int i = 0; i < leaderboard.Count; i++)
-			{
-				if (leaderboard[i].Key == forHero)
-				{
-					forHeroRank = leaderboard[i].Value;
-				}
-				if (leaderboard[i].Value > maxHeroRank)
-				{
-					maxHeroRank = leaderboard[i].Value;
-				}
-			}
-			float num3 = 30f + (float)forHero.Level + (float)Math.Max(0, forHeroRank * 12 - maxHeroRank * 2);
-			float num4 = 0f;
-			float num5 = 0f;
-			float num6 = 0f;
-			foreach (TournamentMatch tournamentMatch in this.CurrentRound.Matches)
-			{
-				foreach (TournamentTeam tournamentTeam in tournamentMatch.Teams)
-				{
-					float num7 = 0f;
-					foreach (TournamentParticipant tournamentParticipant in tournamentTeam.Participants)
-					{
-						if (tournamentParticipant.Character != CharacterObject.PlayerCharacter)
-						{
-							int num8 = 0;
-							if (tournamentParticipant.Character.IsHero)
-							{
-								for (int k = 0; k < leaderboard.Count; k++)
-								{
-									if (leaderboard[k].Key == tournamentParticipant.Character.HeroObject)
-									{
-										num8 = leaderboard[k].Value;
-									}
-								}
-							}
-							num7 += (float)(tournamentParticipant.Character.Level + Math.Max(0, num8 * 8 - maxHeroRank * 2));
-						}
-					}
-					if (tournamentTeam.Participants.Any((TournamentParticipant x) => x.Character == CharacterObject.PlayerCharacter))
-					{
-						num5 = num7;
-						foreach (TournamentTeam tournamentTeam2 in tournamentMatch.Teams)
-						{
-							if (tournamentTeam != tournamentTeam2)
-							{
-								foreach (TournamentParticipant tournamentParticipant2 in tournamentTeam2.Participants)
-								{
-									int num9 = 0;
-									if (tournamentParticipant2.Character.IsHero)
-									{
-										for (int l = 0; l < leaderboard.Count; l++)
-										{
-											if (leaderboard[l].Key == tournamentParticipant2.Character.HeroObject)
-											{
-												num9 = leaderboard[l].Value;
-											}
-										}
-									}
-									num6 += (float)(tournamentParticipant2.Character.Level + Math.Max(0, num9 * 8 - maxHeroRank * 2));
-								}
-							}
-						}
-					}
-					num4 += num7;
-				}
-			}
-			float num10 = (num5 + num3) / (num6 + num5 + num3);
-			float num11 = num3 / (num5 + num3 + 0.5f * (num4 - (num5 + num6)));
-			float num12 = num10 * num11;
-			float num13 = MathF.Clamp((float)Math.Pow((double)(1f / num12), 0.75), 1.1f, 4f);
-			return (float)((int)(num13 * 10f)) / 10f;
-        }
-        public static void PlaceBet(ReplyContext context, object config, Action<string> onSuccess, Action<string> onFailure)
-        {
-            var adoptedHero = AdoptAHero.GetAdoptedHero(context.UserName);
-            if (adoptedHero == null)
-            {
-                onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
-                return;
-            }
-            if (context.Args == null || !string.IsNullOrEmpty(context.Args?.Trim()))
-            {
-                onFailure("Arguments are missing: (gold) (name)");
-                return;
-            }
-            string[] parts = context.Args.Trim().Split(' ');
-            if (!int.TryParse(parts[0], out int betAmount))
-            {
-                onFailure("Arguments are incorrect: (gold) (name)");
-                return;
-            }
+            public static BLTTournamentQueueBehavior Get() => GetCampaignBehavior<BLTTournamentQueueBehavior>();
+            
+            public override void RegisterEvents() { }
 
-            string name = string.Join(" ", parts.Skip(1));
-            var targetHero = Hero.All.FirstOrDefault(h 
-                => h.FirstName.ToLower().Contains(name.ToLower()) 
-                   && string.Equals(h.FirstName.ToString(), name, StringComparison.CurrentCultureIgnoreCase));
-            if (targetHero == null)
+            public override void SyncData(IDataStore dataStore) { }
+            
+            public readonly List<(ReplyContext context, Settings settings, Hero hero)> tournamentQueue = new();
+            public readonly List<(ReplyContext context, Settings settings, Hero hero)> viewerTournamentQueue = new();
+            public readonly List<(ReplyContext context, Settings settings, Hero hero)> currentTournament = new();
+
+            public bool doViewerTournament = false;
+
+            public void JoinViewerTournament()
             {
-                onFailure($"Couldn't find any hero called {name}");
-                return;
+                doViewerTournament = true;
+                var tournamentGame = Campaign.Current.Models.TournamentModel.CreateTournament(Settlement.CurrentSettlement.Town);
+                tournamentGame.PrepareForTournamentGame(false);
             }
             
-            placedBets.Add((adoptedHero, targetHero, betAmount));
-            //onSuccess.
+            public void GetParticipantCharacters(Settlement settlement, int maxParticipantCount, bool includePlayer,
+                List<CharacterObject> __result)
+            {
+                currentTournament.Clear();
+                if (Settlement.CurrentSettlement == settlement && maxParticipantCount == 16)
+                {
+                    if (includePlayer && tournamentQueue.Any())
+                    {
+                        //__result.RemoveAll(c => c.HeroObject != Hero.MainHero);
+                        __result.Remove(Hero.MainHero.CharacterObject);
+                        __result.RemoveRange(0, Math.Min(__result.Count, tournamentQueue.Count));
+
+                        __result.Add(Hero.MainHero.CharacterObject);
+                        __result.AddRange(tournamentQueue.Select(q => q.hero.CharacterObject));
+
+                        currentTournament.AddRange(tournamentQueue);
+
+                        tournamentQueue.Clear();
+                    }
+                    else if (doViewerTournament && viewerTournamentQueue.Any())
+                    {
+                        __result.RemoveRange(0, Math.Min(__result.Count, viewerTournamentQueue.Count));
+                        __result.AddRange(viewerTournamentQueue.Select(q => q.hero.CharacterObject));
+
+                        currentTournament.AddRange(viewerTournamentQueue);
+
+                        viewerTournamentQueue.Clear();
+
+                        doViewerTournament = false;
+                    }
+                }
+            }
+            
+            public void PrepareForTournamentGame()
+            {
+                static (bool used, string failReason) UpgradeToItem(Hero hero, ItemObject item)
+                {
+                    if (EquipHero.CanUseItem(item, hero))
+                    {
+                        // Find a slot
+                        var slot = hero.BattleEquipment
+                            .YieldEquipmentSlots()
+                            .Cast<(EquipmentElement element, EquipmentIndex index)?>()
+                            .FirstOrDefault(e
+                                => e.HasValue && Equipment.IsItemFitsToSlot(e.Value.index, item)
+                                              && (e.Value.element.IsEmpty || e.Value.element.Item.Type == item.Type &&
+                                                  e.Value.element.Item.Tierf <= item.Tierf));
+                        if (slot.HasValue)
+                        {
+                            hero.BattleEquipment[slot.Value.index] = new EquipmentElement(item);
+                            return (true, null);
+                        }
+                        else
+                        {
+                            return (false, "your existing equipment is better");
+                        }
+                    }
+                    else
+                    {
+                        return (false, "you can't use this item");
+                    }
+                }
+
+                if (currentTournament.Any())
+                {
+                    var tournamentBehaviour = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>();
+
+                    float SettingsSubBoost(ReplyContext replyContext, Settings settings)
+                    {
+                        return replyContext.IsSubscriber ? (settings.SubBoost ?? 1) : 1;
+                    }
+
+                    tournamentBehaviour.TournamentEnd += () =>
+                    {
+                        // Win results
+                        foreach (var (context, settings, hero) in currentTournament)
+                        {
+                            float actualBoost = SettingsSubBoost(context, settings);
+                            var results = new List<string>();
+                            if (tournamentBehaviour.Winner.Character?.HeroObject == hero)
+                            {
+                                results.Add("WINNER!");
+                                // Winner gets their gold back also
+                                int actualGold = (int) (settings.WinGold * actualBoost + settings.GoldCost);
+                                if (actualGold > 0)
+                                {
+                                    BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(hero, actualGold);
+                                    results.Add($"+{actualGold} gold");
+                                }
+
+                                int xp = (int) (settings.WinXP * actualBoost);
+                                if (xp > 0)
+                                {
+                                    (bool success, string description) = SkillXP.ImproveSkill(hero, xp, Skills.All,
+                                        random: false, auto: true);
+                                    if (success)
+                                    {
+                                        results.Add(description);
+                                    }
+                                }
+
+                                var prize = tournamentBehaviour.TournamentGame.Prize;
+                                (bool upgraded, string failReason) = UpgradeToItem(hero, prize);
+                                if (!upgraded)
+                                {
+                                    BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(hero, prize.Value);
+                                    results.Add($"sold {prize.Name} for {prize.Value} gold ({failReason})");
+                                }
+                                else
+                                {
+                                    results.Add($"received {prize.Name}");
+                                }
+                            }
+                            else
+                            {
+                                int xp = (int) (settings.ParticipateXP * actualBoost);
+                                if (xp > 0)
+                                {
+                                    (bool success, string description) =
+                                        SkillXP.ImproveSkill(hero, xp, Skills.All, random: false, auto: true);
+                                    if (success)
+                                    {
+                                        results.Add(description);
+                                    }
+                                }
+                            }
+
+                            if (results.Any())
+                            {
+                                ActionManager.SendReply(context, results.ToArray());
+                            }
+                        }
+
+                        currentTournament.Clear(); // = false;
+                    };
+
+                    foreach (var (context, settings, hero) in currentTournament)
+                    {
+                        float actualBoost = SettingsSubBoost(context, settings);
+
+                        // Kill effects
+                        BLTMissionBehavior.Current.AddListeners(hero,
+                            onAgentCreated: agent =>
+                            {
+                                if (settings.StartWithFullHP)
+                                {
+                                    agent.Health = agent.HealthLimit;
+                                }
+
+                                if (settings.StartHPMultiplier.HasValue)
+                                {
+                                    agent.BaseHealthLimit *= settings.StartHPMultiplier.Value;
+                                    agent.HealthLimit *= settings.StartHPMultiplier.Value;
+                                    agent.Health *= settings.StartHPMultiplier.Value;
+                                }
+                            },
+                            onGotAKill: (killer, killed, state) =>
+                            {
+                                var results = BLTMissionBehavior.ApplyKillEffects(
+                                    hero, killer, killed, state,
+                                    settings.GoldPerKill,
+                                    settings.HealPerKill,
+                                    settings.XPPerKill,
+                                    actualBoost,
+                                    settings.RelativeLevelScaling,
+                                    settings.LevelScalingCap
+                                );
+
+                                if (results.Any())
+                                {
+                                    ActionManager.SendReply(context, results.ToArray());
+                                }
+                            },
+                            onGotKilled: (_, killer, state) =>
+                            {
+                                var results = BLTMissionBehavior.ApplyKilledEffects(
+                                    hero, killer, state,
+                                    settings.XPPerKilled,
+                                    actualBoost,
+                                    settings.RelativeLevelScaling,
+                                    settings.LevelScalingCap
+                                );
+
+                                if (results.Any())
+                                {
+                                    ActionManager.SendReply(context, results.ToArray());
+                                }
+                            }
+                        );
+                    }
+                }
+            }
+            
+            public void EndCurrentMatch(TournamentBehavior tournamentBehavior)
+            {
+                // If the tournament is over
+                if (tournamentBehavior.CurrentRoundIndex == 4 || tournamentBehavior.LastMatch == null)
+                    return;
+
+                // End round effects (as there is no event handler for it :/)
+                foreach (var (context, settings, adoptedHero) in currentTournament)
+                {
+                    float actualBoost = context.IsSubscriber ? (settings.SubBoost ?? 1) : 1;
+                    
+                    var results = new List<string>();
+
+                    if(tournamentBehavior.LastMatch.Winners.Any(w => w.Character?.HeroObject == adoptedHero))
+                    {
+                        int actualGold = (int) (settings.WinMatchGold * actualBoost);
+                        if (actualGold > 0)
+                        {
+                            BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, actualGold);
+                            results.Add($"+{actualGold} gold");
+                        }
+                        int xp = (int) (settings.WinMatchXP * actualBoost);
+                        if (xp > 0)
+                        {
+                            (bool success, string description) =
+                                SkillXP.ImproveSkill(adoptedHero, xp, Skills.All, random: false, auto: true);
+                            if (success)
+                            {
+                                results.Add(description);
+                            }
+                        }
+                    }
+                    else if (tournamentBehavior.LastMatch.Participants.Any(w => w.Character?.HeroObject == adoptedHero))
+                    {
+                        int xp = (int) (settings.ParticipateMatchXP * actualBoost);
+                        if (xp > 0)
+                        {
+                            (bool success, string description) =
+                                SkillXP.ImproveSkill(adoptedHero, xp, Skills.All, random: false, auto: true);
+                            if (success)
+                            {
+                                results.Add(description);
+                            }
+                        }
+                    }
+                    if (results.Any())
+                    {
+                        ActionManager.SendReply(context, results.ToArray());
+                    }
+                }
+            }
         }
-        #endif
+        
+        public static void AddBehaviors(CampaignGameStarter campaignStarter)
+        {
+            campaignStarter.AddBehavior(new BLTTournamentQueueBehavior());
+        }
     }
 
     #if false

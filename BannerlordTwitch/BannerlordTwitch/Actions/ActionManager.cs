@@ -112,7 +112,7 @@ namespace BannerlordTwitch.Rewards
         }
         
         internal static object ConvertObject(object obj, Type type) =>
-            new DeserializerBuilder().Build().Deserialize(
+            new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize(
                 new SerializerBuilder().Build().Serialize(obj),
                 type);
 
