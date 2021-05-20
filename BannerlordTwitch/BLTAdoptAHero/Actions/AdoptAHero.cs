@@ -8,6 +8,7 @@ using BannerlordTwitch.Util;
 using Helpers;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.Towns;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -91,7 +92,7 @@ namespace BLTAdoptAHero
         [CategoryOrder("Initialization", 1)]
         private class Settings
         {
-            [Category("General"), Description("Create a new hero instead of adopting an existing one"), PropertyOrder(0)]
+            [Category("General"), Description("Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern)"), PropertyOrder(1)]
             public bool CreateNew { get; set; }
             [Category("Limits"), Description("Allow noble heroes (if CreateNew is false)"), PropertyOrder(1)]
             public bool AllowNoble { get; set; }
@@ -179,7 +180,7 @@ namespace BLTAdoptAHero
             }
             if(!context.IsSubscriber && settings.SubscriberOnly)
             {
-                ActionManager.SendReply(context, $"You must be subscribed to adopt a hero with this command!");
+                ActionManager.SendReply(context, "You must be subscribed to adopt a hero with this command!");
                 return;
             }
                 
@@ -191,11 +192,11 @@ namespace BLTAdoptAHero
         {
             if (Campaign.Current == null)
             {
-                return (false, AdoptAHero.NotStartedMessage);
+                return (false, NotStartedMessage);
             }
             if (existingHero?.IsAlive == false && !settings.AllowNewAdoptionOnDeath)
             {
-                return (false, $"Your hero died, and you may not adopt another!");
+                return (false, "Your hero died, and you may not adopt another!");
             }
 
             if (existingHero?.IsAlive == false)
@@ -209,28 +210,38 @@ namespace BLTAdoptAHero
 
             args = args?.Trim();
 
-            Hero newHero;
-            //if (settings.CreateNew)
+            Hero newHero = null;
+            if (settings.CreateNew)
             {
-                newHero = HeroCreator.CreateHeroAtOccupation(Occupation.Wanderer);
+                var character = CharacterObject.Templates
+                    .Where(x => x.Occupation == Occupation.Wanderer)
+                    .SelectRandom();
+                if (character != null)
+                {
+                    newHero = HeroCreator.CreateSpecialHero(character);
+                    newHero.ChangeState(Hero.CharacterStates.Active);
+                    var targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom();
+                    EnterSettlementAction.ApplyForCharacterOnly(newHero, targetSettlement);
+                    Log.Info($"Placed new hero {newHero.Name} at {targetSettlement.Name}");
+                }
             }
-            // else
-            // {
-            //     newHero = string.IsNullOrEmpty(args)
-            //         ? BLTAdoptAHeroCampaignBehavior.GetAvailableHeroes(h =>
-            //             (settings.AllowPlayerCompanion && h.IsPlayerCompanion
-            //              || settings.AllowNoble && h.IsNoble
-            //              || settings.AllowWanderer && h.IsWanderer)
-            //             && (!settings.OnlySameFaction 
-            //                 || Clan.PlayerClan?.MapFaction != null 
-            //                 && Clan.PlayerClan?.MapFaction == h.Clan?.MapFaction))
-            //             .SelectRandom(1337)
-            //         : Campaign.Current.AliveHeroes.FirstOrDefault(h =>
-            //             h.Name.Contains(args) && h.Name.ToString() == args);
-            // }
+            else
+            {
+                newHero = string.IsNullOrEmpty(args)
+                    ? BLTAdoptAHeroCampaignBehavior.GetAvailableHeroes(h =>
+                        (settings.AllowPlayerCompanion && h.IsPlayerCompanion
+                         || settings.AllowNoble && h.IsNoble
+                         || settings.AllowWanderer && h.IsWanderer)
+                        && (!settings.OnlySameFaction 
+                            || Clan.PlayerClan?.MapFaction != null 
+                            && Clan.PlayerClan?.MapFaction == h.Clan?.MapFaction))
+                        .SelectRandom()
+                    : Campaign.Current.AliveHeroes.FirstOrDefault(h =>
+                        h.Name.Contains(args) && h.Name.ToString() == args);
+            }
             if (newHero == null)
             {
-                return (false, $"You can't adopt a hero: no available hero matching the requirements was found!");
+                return (false, "You can't adopt a hero: no available hero matching the requirements was found!");
             }
 
             if (settings.StartingSkills?.Any() == true)
