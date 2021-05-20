@@ -28,7 +28,7 @@ public static class LINQExtensions
 
     public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> @this, int seed = -1)
     {
-        var random = seed == -1? new Random((int) (DateTime.Now.Ticks % int.MaxValue)) : new Random(seed);
+        var random = seed == -1? new Random() : new Random(seed);
         return @this.OrderBy(e => random.Next());
     }
 

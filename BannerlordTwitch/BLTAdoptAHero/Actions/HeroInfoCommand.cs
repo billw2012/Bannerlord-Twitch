@@ -22,7 +22,7 @@ namespace BLTAdoptAHero
             [Description("Shows skills (and focuse values) above the specified MinSkillToShow value"), PropertyOrder(2)]
             public bool ShowTopSkills { get; set; }
             [Description("If ShowTopSkills is specified, this defines what skills are shown"), PropertyOrder(3)]
-            public int MinSkillToShow { get; set; } = 100;
+            public int MinSkillToShow { get; set; }
             [Description("Shows all hero attributes"), PropertyOrder(4)]
             public bool ShowAttributes { get; set; }
             [Description("Shows the equipment tier of the hero"), PropertyOrder(5)]
