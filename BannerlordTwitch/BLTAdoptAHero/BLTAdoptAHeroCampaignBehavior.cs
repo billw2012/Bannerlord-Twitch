@@ -29,18 +29,22 @@ namespace BLTAdoptAHero
             {
                 [SaveableProperty(0)]
                 public CharacterObject TroopType { get; set; }
+
+                public override string ToString() => TroopType?.Name.ToString() ?? "NULL";
             }
             [SaveableProperty(1)]
             public List<RetinueData> Retinue { get; set; } = new();
+
+            public override string ToString() => $"{nameof(Gold)}: {Gold}, {nameof(Retinue)}: {string.Join(";", Retinue.Select(r => r.ToString()))}";
         }
-        private Dictionary<Hero, HeroData> heroData = new();
         
+        private Dictionary<Hero, HeroData> heroData = new();
+
         public override void SyncData(IDataStore dataStore)
         {
             if (dataStore.IsLoading)
             {
                 Dictionary<Hero, int> heroGold = null;
-                //dataStore.SyncData("AdoptedHeroes", ref adoptedHeroes);
                 dataStore.SyncData("HeroGold", ref heroGold);
                 dataStore.SyncDataAsJson("HeroData", ref heroData);
                 if (heroGold != null)
@@ -56,9 +60,30 @@ namespace BLTAdoptAHero
                         });
                     }
                 }
+
+                foreach (var (hero, data) in heroData)
+                {
+                    // Try and find an appropriate character to replace the missing retinue with
+                    foreach (var r in data.Retinue.Where(r => r.TroopType == null))
+                    {
+                        r.TroopType = hero.Culture.EliteBasicTroop?.UpgradeTargets?.SelectRandom()?.UpgradeTargets?.SelectRandom();
+                    }
+
+                    // Remove any we couldn't replace
+                    int count = data.Retinue.RemoveAll(r => r.TroopType == null);
+                    // Compensate with gold for each one lost
+                    data.Gold += count * 50000;
+                }
             }
             else
             {
+                // Need to explicitly write out the CharacterObjects so that they are referenced at least once in the primary object index
+                var usedCharList = heroData.Values.SelectMany(h => h.Retinue.Select(r => r.TroopType)).Distinct().ToList();
+                dataStore.SyncData("UsedCharacterObjectList", ref usedCharList);
+                // Do the same for heroes, just in case! Shouldn't be necessary as Heroes MUST exist elsewhere in the save or they wouldn't load...
+                var usedHeroList = heroData.Keys.ToList();
+                dataStore.SyncData("UsedHeroObjectList", ref usedHeroList);
+                
                 dataStore.SyncDataAsJson("HeroData", ref heroData);
             }
         }
