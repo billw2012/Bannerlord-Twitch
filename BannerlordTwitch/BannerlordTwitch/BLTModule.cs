@@ -20,7 +20,7 @@ namespace BannerlordTwitch
 	internal class BLTModule : MBSubModuleBase
 	{
 		public const string Name = "BannerlordTwitch";
-		public const string Ver = "1.2.1";
+		public const string Ver = "1.2.2";
 		
 		private static readonly Thread thread;
 		private static OverlayWindow overlayWindow;

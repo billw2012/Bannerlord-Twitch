@@ -15,7 +15,7 @@ namespace BLTAdoptAHero
     {
         private Harmony harmony;
         public const string Name = "BLTAdoptAHero";
-        public const string Ver = "1.2.1";
+        public const string Ver = "1.2.2";
 
         public BLTAdoptAHeroModule()
         {
@@ -42,21 +42,17 @@ namespace BLTAdoptAHero
             }
         }
 
-        // public override void BeginGameStart(Game game)
-        // {
-        //     base.BeginGameStart(game);
-        // }
+        public override void BeginGameStart(Game game)
+        {
+        }
         
-        // public override void OnCampaignStart(Game game, object starterObject)
-        // {
-        //     base.OnCampaignStart(game, starterObject);
-        //     // JoinTournament.SetupGameMenus(starterObject as CampaignGameStarter);
-        // }
-        //
-        // public override void OnGameEnd(Game game)
-        // {
-        //     base.OnGameEnd(game);
-        // }
+        public override void OnCampaignStart(Game game, object starterObject)
+        {
+        }
+        
+        public override void OnGameEnd(Game game)
+        {
+        }
 
         internal const string Tag = "[BLT]";
     }
