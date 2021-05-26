@@ -184,9 +184,6 @@ namespace BLTAdoptAHero
 
         public override void OnAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)
         {
-            if (!affectorAgent.IsHuman)
-                return;
-            
             var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
             if (affectedHero != null)
             {
@@ -208,12 +205,13 @@ namespace BLTAdoptAHero
             var affectorHero = GetAdoptedHeroFromAgent(affectorAgent);
             if (affectorHero != null)
             {
+                float horseFactor = !affectedAgent.IsHuman ? 0.25f : 1;
                 Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectorHero} killed {affectedAgent?.ToString() ?? "unknown"}");
                 var results = BLTAdoptAHeroCustomMissionBehavior.ApplyKillEffects(
                     affectorHero, affectorAgent, affectedAgent, agentState,
-                    BLTAdoptAHeroModule.CommonConfig.GoldPerKill,
-                    BLTAdoptAHeroModule.CommonConfig.HealPerKill,
-                    BLTAdoptAHeroModule.CommonConfig.XPPerKill,
+                    (int) (BLTAdoptAHeroModule.CommonConfig.GoldPerKill * horseFactor),
+                    (int) (BLTAdoptAHeroModule.CommonConfig.HealPerKill * horseFactor),
+                    (int) (BLTAdoptAHeroModule.CommonConfig.XPPerKill * horseFactor),
                     Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),
                     BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,
                     BLTAdoptAHeroModule.CommonConfig.LevelScalingCap

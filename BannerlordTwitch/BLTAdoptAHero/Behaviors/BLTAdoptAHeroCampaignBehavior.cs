@@ -45,13 +45,11 @@ namespace BLTAdoptAHero
         
         public override void SyncData(IDataStore dataStore)
         {
-            dataStore.SyncDataAsJson("HeroData", ref heroData);
-
             if (dataStore.IsLoading)
             {
                 Dictionary<Hero, int> heroGold = null;
-                //dataStore.SyncData("AdoptedHeroes", ref adoptedHeroes);
                 dataStore.SyncData("HeroGold", ref heroGold);
+                dataStore.SyncDataAsJson("HeroData", ref heroData);
                 if (heroGold != null)
                 {
                     heroData = new Dictionary<Hero, HeroData>();
@@ -65,6 +63,31 @@ namespace BLTAdoptAHero
                         });
                     }
                 }
+
+                foreach (var (hero, data) in heroData)
+                {
+                    // Try and find an appropriate character to replace the missing retinue with
+                    foreach (var r in data.Retinue.Where(r => r.TroopType == null))
+                    {
+                        r.TroopType = hero.Culture.EliteBasicTroop?.UpgradeTargets?.SelectRandom()?.UpgradeTargets?.SelectRandom();
+                    }
+
+                    // Remove any we couldn't replace
+                    int count = data.Retinue.RemoveAll(r => r.TroopType == null);
+                    // Compensate with gold for each one lost
+                    data.Gold += count * 50000;
+                }
+            }
+            else
+            {
+                // Need to explicitly write out the CharacterObjects so that they are referenced at least once in the primary object index
+                var usedCharList = heroData.Values.SelectMany(h => h.Retinue.Select(r => r.TroopType)).Distinct().ToList();
+                dataStore.SyncData("UsedCharacterObjectList", ref usedCharList);
+                // Do the same for heroes, just in case! Shouldn't be necessary as Heroes MUST exist elsewhere in the save or they wouldn't load...
+                var usedHeroList = heroData.Keys.ToList();
+                dataStore.SyncData("UsedHeroObjectList", ref usedHeroList);
+                
+                dataStore.SyncDataAsJson("HeroData", ref heroData);
             }
         }
         
@@ -230,15 +253,37 @@ namespace BLTAdoptAHero
             });
         }
 
-        public static void RetireHero(Hero deadHero)
+        public static string ToRoman(int number)
+        {
+            return number switch
+            {
+                < 0 => throw new ArgumentOutOfRangeException("insert value betwheen 1 and 3999"),
+                > 3999 => throw new ArgumentOutOfRangeException("insert value betwheen 1 and 3999"),
+                < 1 => string.Empty,
+                >= 1000 => "M" + ToRoman(number - 1000),
+                >= 900 => "CM" + ToRoman(number - 900),
+                >= 500 => "D" + ToRoman(number - 500),
+                >= 400 => "CD" + ToRoman(number - 400),
+                >= 100 => "C" + ToRoman(number - 100),
+                >= 90 => "XC" + ToRoman(number - 90),
+                >= 50 => "L" + ToRoman(number - 50),
+                >= 40 => "XL" + ToRoman(number - 40),
+                >= 10 => "X" + ToRoman(number - 10),
+                >= 9 => "IX" + ToRoman(number - 9),
+                >= 5 => "V" + ToRoman(number - 5),
+                >= 4 => "IV" + ToRoman(number - 4),
+                >= 1 => "I" + ToRoman(number - 1)
+            };
+        }
+        
+        public static void RetireHero(Hero hero)
         {
             // Retired heroes
-            int count = Campaign.Current.Heroes.Count(h
-                => h.FirstName.Contains(deadHero.FirstName) && h.FirstName == deadHero.FirstName && !h.Name.Contains(BLTAdoptAHeroModule.Tag));
-            deadHero.Name = new TextObject(deadHero.FirstName + $" ({count})");
-            var oldName = deadHero.Name;
-            Campaign.Current.EncyclopediaManager.BookmarksTracker.RemoveBookmarkFromItem(deadHero);
-            Log.Info($"Dead or retired hero {oldName} renamed to {deadHero.Name}");
+            int count = Campaign.Current.Heroes.Count(h => h.FirstName?.Contains(hero.FirstName) == true && h.FirstName.ToString() == hero.FirstName.ToString() && h.Name?.Contains(BLTAdoptAHeroModule.Tag) == false);
+            hero.Name = new TextObject(hero.FirstName + $" {ToRoman(count + 1)} ({(hero.IsDead ? "deceased" : "retired")})");
+            var oldName = hero.Name;
+            Campaign.Current.EncyclopediaManager.BookmarksTracker.RemoveBookmarkFromItem(hero);
+            Log.Info($"Dead or retired hero {oldName} renamed to {hero.Name}");
         }
 
         private HeroData GetHeroData(Hero hero)
@@ -271,7 +316,7 @@ namespace BLTAdoptAHero
 
         public int InheritGold(Hero inheritor, float amount)
         {
-            var ancestors = heroData.Where(h => h.Key != inheritor && h.Key.FirstName.Contains(inheritor.FirstName) && h.Key.FirstName == inheritor.FirstName).ToList();
+            var ancestors = heroData.Where(h => h.Key != inheritor && h.Key.FirstName.Contains(inheritor.FirstName) &&  h.Key.FirstName.ToString() == inheritor.FirstName.ToString()).ToList();
             int inheritance = (int) (ancestors.Sum(a => a.Value.SpentGold + a.Value.Gold) * amount);
             ChangeHeroGold(inheritor, inheritance);
             foreach (var (key, value) in ancestors)

@@ -103,6 +103,7 @@ Rewards:
     OnPlayerSide: true
     GoldCost: 0
     PreferredFormation: LightCavalry
+    AlertSound: None
     SubBoost: 2
     HealPerSecond: 0
 - RewardSpec:
@@ -131,6 +132,7 @@ Rewards:
     OnPlayerSide: false
     GoldCost: 0
     PreferredFormation: LightCavalry
+    AlertSound: None
     SubBoost: 2
     HealPerSecond: 0
 - RewardSpec:
@@ -361,7 +363,7 @@ Rewards:
 - RewardSpec:
     Title: Retire My Hero
     DisableAutomaticFulfillment: false
-    Prompt: 'Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel:'
+    Prompt: Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel
     Cost: 2500
     IsEnabled: true
     BackgroundColorText: 
@@ -537,3 +539,7 @@ SimTesting:
     Id: Tournament
     Args: 
     Weight: 0
+  - Type: Reward
+    Id: Retire My Hero
+    Args: yes
+    Weight: 0.00999999978
