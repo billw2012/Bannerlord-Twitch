@@ -17,28 +17,30 @@ namespace BLTAdoptAHero
     [Description("Improve adopted heroes equipment")]
     internal class EquipHero : ActionHandlerBase
     {
-        private struct Settings
+        private class Settings
         {
             [Description("Improve armor"), PropertyOrder(1)]
-            public bool Armor { get; set; }
+            public bool Armor { get; set; } = true;
             [Description("Improve melee weapons (one handled, two handed, polearm). The one the player has the highest skill in will be selected."), PropertyOrder(2)]
-            public bool Melee { get; set; }
+            public bool Melee { get; set; } = true;
             [Description("Improve ranged weapons (bow, crossbow, throwing). The one the player has the highest skill in will be selected."), PropertyOrder(3)]
-            public bool Ranged { get; set; }
+            public bool Ranged { get; set; } = true;
             [Description("Improve the heroes horse (if they can ride a better one)."), PropertyOrder(4)]
-            public bool Horse { get; set; }
+            public bool Horse { get; set; } = true;
             [Description("Improve the heroes civilian equipment."), PropertyOrder(5)]
-            public bool Civilian { get; set; }
+            public bool Civilian { get; set; } = true;
             [Description("Allow improvement of adopted heroes who are also companions of the player."), PropertyOrder(6)]
-            public bool AllowCompanionUpgrade { get; set; }
+            public bool AllowCompanionUpgrade { get; set; } = true;
             [Description("Tier to upgrade to (0 to 5). Anything better than this tier will be left alone, viewer will be refunded if nothing could be upgraded. Not compatible with Upgrade."), PropertyOrder(7)]
             public int? Tier { get; set; } // 0 to 5
             [Description("Upgrade to the next tier from the current one, viewer will be refunded if nothing could be upgraded. Not compatible with Tier."), PropertyOrder(8)]
-            public bool Upgrade { get; set; }
+            public bool Upgrade { get; set; } = true;
+
             [Description("Gold cost to the adopted hero"), PropertyOrder(9)]
-            public int GoldCost { get; set; }
+            public int GoldCost { get; set; } = 50000;
+
             [Description("Whether to multiply the cost by the current tier"), PropertyOrder(10)]
-            public bool MultiplyCostByCurrentTier { get; set; }
+            public bool MultiplyCostByCurrentTier { get; set; } = true;
         }
 
         protected override Type ConfigType => typeof(Settings);
@@ -109,7 +111,7 @@ namespace BLTAdoptAHero
                 onFailure($"Couldn't find any items to upgrade!");
                 return;
             }
-            BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -cost);
+            BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -cost, isSpending: true);
             //string itemsStr = string.Join(", ", itemsPurchased.Select(i => i.Name.ToString()));
             // $"You purchased these items: {itemsStr}!"
             onSuccess($"Equip Tier {targetTier + 1}");
@@ -389,7 +391,7 @@ namespace BLTAdoptAHero
         public static bool CanUseItem(ItemObject item, Hero hero)
         {
             var relevantSkill = item.RelevantSkill;
-            return (relevantSkill == null || hero.GetSkillValue(relevantSkill) >= item.Difficulty) 
+            return    (relevantSkill == null || hero.GetSkillValue(relevantSkill) >= item.Difficulty) 
                    && (!hero.CharacterObject.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByFemale)) 
                    && (hero.CharacterObject.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByMale));
         }

@@ -394,7 +394,7 @@ namespace BannerlordTwitch
         {
             if (context.Source.RespondInOverlay)
             {
-                Log.LogFeedResponse($"@{context.UserName}: " + Join(", ", messages));
+                Log.LogFeedResponse(context.UserName, messages);
                 //Log.Trace($"[{nameof(TwitchService)}] Feed Response to {context.UserName}: {Join(", ", messages)}");
             }
 
@@ -421,12 +421,18 @@ namespace BannerlordTwitch
         
         private void ShowCommandHelp()
         {
-            string[] help = "Commands: ".Yield()
+            var help = "Commands: ".Yield()
                 .Concat(settings.EnabledCommands.Where(c
                         => !c.HideHelp && !c.BroadcasterOnly && !c.ModOnly)
                     .Select(c => $"!{c.Name} - {c.Help}")
-                ).ToArray();
-            bot.SendChat(help);
+                )
+                .ToList();
+            if (settings.EnabledRewards.Any())
+            {
+                help.Add($"Rewards: ");
+                help.AddRange(settings.EnabledRewards.Select(r => r.RewardSpec.Title));
+            }
+            bot.SendChat(help.ToArray());
         }
         
         public bool ExecuteCommand(string cmdName, ChatMessage chatMessage, string args)

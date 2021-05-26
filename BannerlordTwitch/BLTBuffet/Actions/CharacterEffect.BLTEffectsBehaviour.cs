@@ -22,7 +22,6 @@ namespace BLTBuffet
                 public BoneAttachments boneAttachments;
             }
             public readonly List<PfxState> state = new();
-            public Light light;
 
             public CharacterEffectState(Agent agent, Config config)
             {
@@ -110,11 +109,6 @@ namespace BLTBuffet
                     if(s.boneAttachments != null) RemoveAgentEffects(s.boneAttachments);
                 }
 
-                if (light != null)
-                {
-                    RemoveLight(agent, light);
-                }
-                
                 agent.UpdateAgentProperties();
             }
         }

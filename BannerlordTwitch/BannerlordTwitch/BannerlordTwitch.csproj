@@ -168,6 +168,9 @@
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\StoryMode\bin\Win64_Shipping_Client\StoryMode.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="TaleWorlds.SaveSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.SaveSystem.dll</HintPath>
+    </Reference>
     <Reference Include="TwitchLib.Api, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\TwitchLib.Api.3.2.0\lib\netstandard2.0\TwitchLib.Api.dll</HintPath>
       <Private>True</Private>

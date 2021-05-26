@@ -126,8 +126,6 @@
         <Compile Include="Actions\TestSfx.cs" />
         <Compile Include="Actions\Utils\BLTBoneAttachmentsUpdateBehaviour.cs" />
         <Compile Include="Actions\Utils\Extensions.cs" />
-        <Compile Include="Actions\Utils\ParticleEffectItemSource.cs" />
-        <Compile Include="Actions\Utils\SoundEffectItemSource.cs" />
         <Compile Include="BLTBuffet.cs" />
         <Compile Include="Patches.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

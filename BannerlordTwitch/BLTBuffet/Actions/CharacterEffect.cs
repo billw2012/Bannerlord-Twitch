@@ -128,10 +128,10 @@ namespace BLTBuffet
             //     ApplyPropertyModifiers(target, config);
             // }
 
-            if (config.Light != null)
-            {
-                effectState.light = CreateLight(target, config.Light.Radius, config.Light.Intensity, config.Light.ColorParsed);
-            }
+            // if (config.Light != null)
+            // {
+            //     effectState.light = CreateLight(target, config.Light.Radius, config.Light.Intensity, config.Light.ColorParsed);
+            // }
 
             if (config.RemoveArmor)
             {

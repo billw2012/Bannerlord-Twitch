@@ -13,11 +13,18 @@ namespace BLTAdoptAHero
         protected class FocusPointsSettings : SettingsBase
         {
             [Description("What skill to add focus to"), PropertyOrder(1)]
-            public Skills Skills { get; set; }
-            [Description("Add focus to a random skill, from the Skills specified, rather than the best one."), PropertyOrder(2)]
+            public Skills Skills { get; set; } = Skills.None;
+
+            [Description("Add focus to a random skill, from the Skills specified, rather than the best one."),
+             PropertyOrder(2)]
             public bool Random { get; set; }
-            [Description("If this is specified then the best skill from a random skill group will have focus added, <code>Skills</code> list is ignored. Groups are melee (One Handed, Two Handed, Polearm), ranged (Bow, Crossbow, Throwing), support (Smithing, Scouting, Trade, Steward, Engineering), movement (Riding, Athletics), personal (Tactics, Roguery, Charm, Leadership)"), PropertyOrder(3)]
-            public bool Auto { get; set; }
+
+            [Description("If this is specified then the best skill from a random skill group will have focus added, " +
+                         "<code>Skills</code> list is ignored. Groups are melee (One Handed, Two Handed, Polearm), " +
+                         "ranged (Bow, Crossbow, Throwing), support (Smithing, Scouting, Trade, Steward, Engineering), " +
+                         "movement (Riding, Athletics), personal (Tactics, Roguery, Charm, Leadership)"),
+             PropertyOrder(3)]
+            public bool Auto { get; set; } = true;
         }
         
         protected override Type ConfigType => typeof(FocusPointsSettings);

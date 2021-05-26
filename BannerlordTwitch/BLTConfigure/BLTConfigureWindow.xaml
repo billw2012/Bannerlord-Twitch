@@ -6,42 +6,43 @@
               xmlns:local="clr-namespace:BLTConfigure"
               xmlns:fa="http://schemas.fontawesome.io/icons/"
               xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+              xmlns:bannerlordTwitch="clr-namespace:BannerlordTwitch;assembly=BannerlordTwitch"
               mc:Ignorable="d"
               ResizeMode="CanResize"
-              Title="BLT Configure Window" Height="750" Width="650" d:DataContext="{d:DesignInstance local:BLTConfigureWindow}">
+              Title="BLT Configure Window" Height="850" Width="850" d:DataContext="{d:DesignInstance local:BLTConfigureWindow}">
     <Window.Resources>
     </Window.Resources>
     <Window.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
     </Window.Style>
     <DockPanel LastChildFill="True">
-        <!-- <DockPanel.Resources> -->
-        <!--     <Style TargetType="TextBlock"> -->
-        <!--         <Setter Property="Margin" Value="2" /> -->
-        <!--         <Setter Property="Padding" Value="2" /> -->
-        <!--         <Setter Property="FontSize" Value="14" /> -->
-        <!--         <Setter Property="TextWrapping" Value="Wrap"/> -->
-        <!--     </Style> -->
-        <!--     <Style TargetType="Button"> -->
-        <!--         <Setter Property="Margin" Value="5" /> -->
-        <!--         <Setter Property="Padding" Value="20 5" /> -->
-        <!--         <Setter Property="FontSize" Value="14" /> -->
-        <!--     </Style> -->
-        <!--     <Style TargetType="xctk:DropDownButton"> -->
-        <!--         <Setter Property="Margin" Value="5" /> -->
-        <!--         <Setter Property="Padding" Value="20 5" /> -->
-        <!--         <Setter Property="FontSize" Value="14" /> -->
-        <!--     </Style> -->
-        <!--     <Style TargetType="ListBox"> -->
-        <!--         <Setter Property="Margin" Value="5" /> -->
-        <!--         <Setter Property="Padding" Value="5" /> -->
-        <!--     </Style> -->
-        <!--     <Style TargetType="TabItem"> -->
-        <!--         <Setter Property="FontSize" Value="15" /> -->
-        <!--         <Setter Property="Padding" Value="5" /> -->
-        <!--     </Style> -->
-        <!-- </DockPanel.Resources> -->
-        <TextBlock DockPanel.Dock="Bottom" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold" Grid.Row="1">Restart the game to apply changes</TextBlock>
+        <DockPanel.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="Padding" Value="2" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextWrapping" Value="Wrap"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="6 4" />
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+            <Style TargetType="xctk:DropDownButton">
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="6 4" />
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+            <Style TargetType="ListBox">
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="5" />
+            </Style>
+            <Style TargetType="TabItem">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="Padding" Value="5" />
+            </Style>
+        </DockPanel.Resources>
+        <TextBlock DockPanel.Dock="Bottom" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold">Reload saved game to apply changes</TextBlock>
         <TabControl Name="TabControl" SelectedIndex="0">
             <TabItem>
                 <TabItem.Header>
@@ -85,6 +86,8 @@
                             <ListBox Grid.Row="0" 
                                      SelectionChanged="Actions_OnSelectionChanged" 
                                      SelectionMode="Single"
+                                     HorizontalContentAlignment="Stretch"
+                                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                      Name="ActionsListBox">
                                 <ListBox.GroupStyle>
                                     <GroupStyle>
@@ -101,9 +104,67 @@
                                         </GroupStyle.HeaderTemplate>
                                     </GroupStyle>
                                 </ListBox.GroupStyle>
+                                <ListBox.Resources>
+                                    <local:BoolToVisibilityConverter
+                                        x:Key="BoolToHiddenConverter"
+                                        TrueValue="Visible" FalseValue="Hidden" />
+                                    <local:BoolToVisibilityConverter
+                                        x:Key="BoolToCollapsedConverter"
+                                        TrueValue="Visible" FalseValue="Collapsed" />
+                                    <local:BoolToVisibilityConverter
+                                        x:Key="BoolToCollapsedConverterInverted"
+                                        TrueValue="Collapsed" FalseValue="Visible" />
+                                    <DataTemplate DataType="{x:Type bannerlordTwitch:GlobalConfig}">
+                                        <TextBlock Text="{Binding}"/>
+                                    </DataTemplate>
+                                    <DataTemplate DataType="{x:Type bannerlordTwitch:ActionBase}">
+                                        <DockPanel LastChildFill="True" HorizontalAlignment="Stretch">
+                                            <fa:ImageAwesome Icon="Check" 
+                                                             Visibility="{Binding Enabled,
+                                                                Converter={StaticResource BoolToHiddenConverter}}"
+                                                             VerticalAlignment="Center"
+                                                             ToolTip="Enabled"
+                                                             Width="16"
+                                                             Height="16"
+                                                             Margin="4"
+                                                             DockPanel.Dock="Left"/>
+                                            <fa:ImageAwesome Icon="WindowMaximize"
+                                                             Visibility="{Binding RespondInOverlay, 
+                                                                Converter={StaticResource BoolToHiddenConverter}}"
+                                                             VerticalAlignment="Center"
+                                                             ToolTip="Responds in BLT Overlay"
+                                                             Width="16"
+                                                             Height="16"
+                                                             Margin="4"
+                                                             DockPanel.Dock="Right"/>
+                                            <fa:ImageAwesome Icon="Twitch" 
+                                                             Visibility="{Binding RespondInTwitch,
+                                                                Converter={StaticResource BoolToHiddenConverter}}"
+                                                             VerticalAlignment="Center"
+                                                             ToolTip="Responds in Twitch Chat"
+                                                             Width="16"
+                                                             Height="16"
+                                                             Margin="4"
+                                                             DockPanel.Dock="Right"/>
+                                            <TextBlock Text="{Binding}" 
+                                                       Visibility="{Binding Enabled, 
+                                                        Converter={StaticResource BoolToCollapsedConverter}}"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Stretch"
+                                                       TextTrimming="CharacterEllipsis"/>
+                                            <TextBlock Text="{Binding}"
+                                                       Foreground="Gray"
+                                                       Visibility="{Binding Enabled, 
+                                                        Converter={StaticResource BoolToCollapsedConverterInverted}}"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Stretch"/>
+                                        </DockPanel>
+                                    </DataTemplate>
+                                </ListBox.Resources>
                             </ListBox>
                             <DockPanel Grid.Row="1">
-                                <xctk:DropDownButton Content="Command" HorizontalAlignment="Left" DockPanel.Dock="Left" Padding="8 0">
+                                <Button HorizontalAlignment="Right" DockPanel.Dock="Top" Click="DeleteAction_OnClick" Content="Delete Selected"/>
+                                <xctk:DropDownButton Name="NewCommandDropDown" Content="New Command" HorizontalAlignment="Left" DockPanel.Dock="Left">
                                     <xctk:DropDownButton.DropDownContent>
                                         <ItemsControl ItemsSource="{Binding CommandHandlersViewModel}"
                                                       MaxWidth="300"
@@ -111,7 +172,7 @@
                                                       Background="Transparent"/>
                                     </xctk:DropDownButton.DropDownContent>
                                 </xctk:DropDownButton>
-                                <xctk:DropDownButton Content="Reward" HorizontalAlignment="Left" DockPanel.Dock="Left" Padding="8 0" Margin="4 0">
+                                <xctk:DropDownButton Name="NewRewardDropDown" Content="New Reward" HorizontalAlignment="Left" DockPanel.Dock="Left">
                                     <xctk:DropDownButton.DropDownContent>
                                         <ItemsControl ItemsSource="{Binding RewardHandlersViewModel}"
                                                       MaxWidth="300"
@@ -120,7 +181,6 @@
                                         />
                                     </xctk:DropDownButton.DropDownContent>
                                 </xctk:DropDownButton>
-                                <Button HorizontalAlignment="Right" DockPanel.Dock="Right" Click="DeleteAction_OnClick">Delete</Button>
                             </DockPanel>
                         </Grid>
                         <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
@@ -130,8 +190,8 @@
                             AutoGenerateProperties="True"
                             ShowSearchBox="False"
                             ShowSortOptions="False"
-                            ShowAdvancedOptions="True"
-                            NameColumnWidth="180"
+                            ShowAdvancedOptions="False"
+                            NameColumnWidth="220"
                             ShowDescriptionByTooltip="True"
                             Foreground="Black"
                             Background="DarkGray"
