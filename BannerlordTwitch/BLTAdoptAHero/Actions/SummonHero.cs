@@ -470,7 +470,7 @@ namespace BLTAdoptAHero
                         }
                         PartyBase party = null;
                         if (settings.OnPlayerSide && Mission.Current?.PlayerTeam != null &&
-                            Mission.Current?.PlayerTeam.ActiveAgents.Any() == true)
+                            Mission.Current?.PlayerTeam?.ActiveAgents.Any() == true)
                         {
                             party = PartyBase.MainParty;
                         }

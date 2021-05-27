@@ -1,10 +1,18 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using BannerlordTwitch.Rewards;
 using HarmonyLib;
 using JetBrains.Annotations;
+using SandBox;
+using SandBox.GauntletUI;
+using SandBox.View;
+using SandBox.View.Missions;
+using SandBox.ViewModelCollection;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.Core;
+using TaleWorlds.Engine;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
@@ -13,6 +21,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 namespace BLTAdoptAHero
 {
     [UsedImplicitly]
+    [HarmonyPatch]
     public class BLTAdoptAHeroModule : MBSubModuleBase
     {
         private Harmony harmony;
@@ -28,7 +37,38 @@ namespace BLTAdoptAHero
             GlobalCommonConfig.Register();
             GlobalTournamentConfig.Register();
         }
+
+        public override void OnMissionBehaviourInitialize(Mission mission)
+        {
+            if(mission.GetMissionBehaviour<MissionNameMarkerUIHandler>() == null &&
+               (MissionHelpers.InSiegeMission() || MissionHelpers.InFieldBattleMission() || MissionHelpers.InHideOutMission() || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null))
+            {
+                mission.AddMissionBehaviour(SandBoxViewCreator.CreateMissionNameMarkerUIHandler(mission));
+            }
+        }
         
+        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(MissionNameMarkerTargetVM), MethodType.Constructor, typeof(Agent))]
+        public static void MissionNameMarkerTargetVMConstructorPostfix(MissionNameMarkerTargetVM __instance, Agent agent)
+        {
+            if (MissionHelpers.InSiegeMission() || MissionHelpers.InFieldBattleMission() || MissionHelpers.InHideOutMission())
+            {
+                if (Agent.Main != null && agent.IsEnemyOf(Agent.Main))
+                {
+                    __instance.MarkerType = 2;
+                }
+                else if (Agent.Main != null && agent.IsFriendOf(Agent.Main))
+                {
+                    __instance.MarkerType = 0;
+                }
+            }
+        }
+
+        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(MissionNameMarkerVM), MethodType.Constructor, typeof(Mission), typeof(Camera))]
+        public static void MissionNameMarkerVMConstructorPostfix(MissionNameMarkerVM __instance, Mission mission, ref Vec3 ____heightOffset)
+        {
+            ____heightOffset = new Vec3(0, 0, 4, -1);
+        }
+
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
             if (harmony == null)
