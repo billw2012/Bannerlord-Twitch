@@ -41,7 +41,7 @@ namespace BLTAdoptAHero
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
             if(mission.GetMissionBehaviour<MissionNameMarkerUIHandler>() == null &&
-               (MissionHelpers.InSiegeMission() || MissionHelpers.InFieldBattleMission() || MissionHelpers.InHideOutMission() || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null))
+               (MissionHelpers.InSiegeMission() || MissionHelpers.InFieldBattleMission() || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null))
             {
                 mission.AddMissionBehaviour(SandBoxViewCreator.CreateMissionNameMarkerUIHandler(mission));
             }
