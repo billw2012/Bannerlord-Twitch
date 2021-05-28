@@ -398,6 +398,46 @@ Rewards:
     AmountLow: 50000
     AmountHigh: 50000
     GoldCost: 0
+- RewardSpec:
+    Title: Burn Player
+    DisableAutomaticFulfillment: false
+    Prompt: 
+    Cost: 5000
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 1
+    GlobalCooldownSeconds: 300
+  Handler: CharacterEffect
+  Enabled: false
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    Name: 
+    Target: Player
+    TargetOnFootOnly: false
+    Scale: 
+    ParticleEffects:
+    - Name: psys_campfire
+      AttachPoint: OnBody
+    Properties:
+    - Name: MaxSpeedMultiplier
+      Add: 
+      Multiply: 2
+    - Name: SwingSpeedMultiplier
+      Add: 
+      Multiply: 2
+    HealPerSecond: 0
+    DamagePerSecond: 1
+    Duration: 30
+    ForceDropWeapons: false
+    RemoveArmor: false
+    DamageMultiplier: 2
+    ActivateParticleEffect: psys_burning_projectile_default_coll_small
+    ActivateSound: 
+    DeactivateParticleEffect: 
+    DeactivateSound: 
 Commands:
 - Name: stats
   HideHelp: false
@@ -518,32 +558,24 @@ SimTesting:
   - Type: Reward
     Id: Attack
     Args: 
-    Weight: 0
+    Weight: 1
   - Type: Reward
     Id: Summon
     Args: 
-    Weight: 0
-  - Type: Reward
-    Id: Heal Player
-    Args: 
-    Weight: 0.200000003
+    Weight: 1
   - Type: Reward
     Id: 100k gold
     Args: 
-    Weight: 0.200000003
-  - Type: Command
-    Id: equip
-    Args: 
-    Weight: 0.200000003
+    Weight: 1
   - Type: Command
     Id: retinue
     Args: 
-    Weight: 0.5
-  - Type: Reward
-    Id: Tournament
-    Args: 
-    Weight: 0
+    Weight: 1
   - Type: Reward
     Id: Retire My Hero
     Args: yes
-    Weight: 1
+    Weight: 0.00999999978
+  - Type: Reward
+    Id: Adopt a Hero
+    Args: yes
+    Weight: 0.5
