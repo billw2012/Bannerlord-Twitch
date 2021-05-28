@@ -367,17 +367,28 @@ namespace BLTAdoptAHero
             // first fill in any missing ones
             if (heroRetinue.Count < settings.MaxRetinueSize)
             {
-                var culture = settings.UseHeroesCultureUnits
-                    ? hero.Culture
-                    : MBObjectManager.Instance.GetObjectTypeList<CultureObject>()
-                        .Where(c => settings.IncludeBanditUnits || c.IsMainCulture)
-                        .SelectRandom();
+                var troopType = MBObjectManager.Instance.GetObjectTypeList<CultureObject>()
+                    .Where(c => settings.IncludeBanditUnits || c.IsMainCulture)
+                    .SelectMany(c =>
+                    {
+                        var troopTypes = new List<CharacterObject>();
+                        if(settings.UseBasicTroops && c.BasicTroop != null) troopTypes.Add(c.BasicTroop);
+                        if(settings.UseEliteTroops && c.EliteBasicTroop != null) troopTypes.Add(c.EliteBasicTroop);
+                        return troopTypes;
+                    })
+                    // At least 2 upgrade tiers available
+                    .Where(c => c.UpgradeTargets?.FirstOrDefault()?.UpgradeTargets?.Any() == true)
+                    .Shuffle()
+                    // Sort same culture units to the front if required, but still include other units in-case the hero
+                    // culture doesn't contain the requires units
+                    .OrderBy(c => settings.UseHeroesCultureUnits && c.Culture != hero.Culture)
+                    .FirstOrDefault();
 
-                var troopTypes = new List<CharacterObject>();
-                if(settings.UseBasicTroops && culture.BasicTroop != null) troopTypes.Add(culture.BasicTroop);
-                if(settings.UseEliteTroops && culture.EliteBasicTroop != null) troopTypes.Add(culture.EliteBasicTroop);
-                
-                var troopType = troopTypes.SelectRandom();
+                if (troopType == null)
+                {
+                    return (false, $"No valid troop type could be found, please check out settings");
+                }
+
                 int heroGold = GetHeroGold(hero);
                 if (GetHeroGold(hero) < settings.CostPerTier)
                 {
