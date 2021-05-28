@@ -170,7 +170,7 @@ namespace BLTAdoptAHero
         //         // }
         //     }
         // }
-        
+
         [UsedImplicitly, HarmonyPrefix, HarmonyPatch(typeof(Mission), "OnAgentRemoved")]
         public static void OnAgentRemovedPrefix(Mission __instance, Agent affectedAgent, Agent affectorAgent,
             ref AgentState agentState, KillingBlow killingBlow)
@@ -178,7 +178,7 @@ namespace BLTAdoptAHero
             var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
             if (affectedHero != null && BLTAdoptAHeroModule.CommonConfig.AllowDeath == false && affectedAgent.State == AgentState.Killed)
             {
-                affectedAgent.State = AgentState.Unconscious;
+                agentState = affectedAgent.State = AgentState.Unconscious;
             }
         }
 

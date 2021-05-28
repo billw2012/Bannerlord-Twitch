@@ -583,38 +583,6 @@ namespace BLTAdoptAHero
                                     }
                                 }
                             },
-                            // onGotAKill: (killer, killed, state) =>
-                            // {
-                            //     Log.Trace($"[{nameof(SummonHero)}] {adoptedHero} killed {killed?.ToString() ?? "unknown"}");
-                            //     var results = BLTMissionBehavior.ApplyKillEffects(
-                            //         adoptedHero, killer, killed, state,
-                            //         settings.GoldPerKill,
-                            //         settings.HealPerKill,
-                            //         settings.XPPerKill,
-                            //         actualBoost,
-                            //         settings.RelativeLevelScaling,
-                            //         settings.LevelScalingCap
-                            //     );
-                            //     if (results.Any())
-                            //     {
-                            //         Log.LogFeedResponse(context.UserName, results.ToArray());
-                            //     }
-                            // },
-                            // onGotKilled: (killed, killer, state) =>
-                            // {
-                            //     Log.Trace($"[{nameof(SummonHero)}] {adoptedHero} was killed by {killer?.ToString() ?? "unknown"}");
-                            //     var results = BLTMissionBehavior.ApplyKilledEffects(
-                            //         adoptedHero, killer, state,
-                            //         settings.XPPerKilled,
-                            //         actualBoost,
-                            //         settings.RelativeLevelScaling,
-                            //         settings.LevelScalingCap
-                            //     );
-                            //     if (results.Any())
-                            //     {
-                            //         Log.LogFeedResponse(context.UserName, results.ToArray());
-                            //     }
-                            // },
                             replaceExisting: false
                         );
                         
@@ -627,8 +595,7 @@ namespace BLTAdoptAHero
                     //   -  maybe just those??
                     // - Add kill reward handlers to all missions via the campaign events
 
-                    var troopOrigin = new PartyAgentOrigin(existingHero.Party, adoptedHero.CharacterObject,
-                        alwaysWounded: !BLTAdoptAHeroModule.CommonConfig.AllowDeath);
+                    var troopOrigin = new PartyAgentOrigin(existingHero.Party, adoptedHero.CharacterObject);
                     bool isMounted = Mission.Current.Mode != MissionMode.Stealth 
                                      && !MissionHelpers.InSiegeMission() 
                                      && existingHero.Formation is
@@ -729,11 +696,7 @@ namespace BLTAdoptAHero
                         BLTAdoptAHeroCustomMissionBehavior.Current.AddListeners(retinueAgent,
                             onMissionOver: () =>
                             {
-                                if (retinueAgent.State == AgentState.Unconscious)
-                                {
-                                    existingHero.Party.MemberRoster.AddToCounts(retinueTroop, -1, woundedCount: -1);
-                                }
-                                else if (retinueAgent.State != AgentState.Killed)
+                                if (retinueAgent.State != AgentState.Killed)
                                 {
                                     existingHero.Party.MemberRoster.AddToCounts(retinueTroop, -1);
                                 }
@@ -830,8 +793,7 @@ namespace BLTAdoptAHero
         {
             __result = !__instance.Mission.Teams.Where(t => t.Side == side).Any(t => t.ActiveAgents.Any());
         }
-        
-                
+
         [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(DefaultBattleMoraleModel), nameof(DefaultBattleMoraleModel.GetImportance))]
         public static void GetImportancePostfix(DefaultBattleMoraleModel __instance, Agent agent, ref float __result)
         {
