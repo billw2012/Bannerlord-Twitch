@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="BLTAdoptAHero.Behaviors.MissionInfoPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:BLTAdoptAHero.Behaviors"
+             xmlns:overlay="clr-namespace:BannerlordTwitch.Overlay;assembly=BannerlordTwitch"
+             mc:Ignorable="d"
+             Background="Transparent"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <ListBox x:Name="HeroList" Background="Transparent"
+             BorderBrush="Transparent"
+             ScrollViewer.VerticalScrollBarVisibility="Disabled"
+             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ProgressBar
+                        Grid.ColumnSpan="2"
+                        Value="{Binding HP}" Maximum="{Binding MaxHP}"
+                        Background="{Binding ProgressBarBackground}"
+                        Foreground="{Binding ProgressBarForeground}"
+                        BorderBrush="Transparent"
+                        Height="6"
+                        Margin="0"
+                        Padding="0"
+                        VerticalAlignment="Bottom"/>
+                    <overlay:OutlinedTextBlock 
+                        VerticalAlignment="Center"
+                        Margin="0"
+                        Fill="{Binding TextColor}"
+                        Text="{Binding Name}"
+                        FontWeight="Medium"
+                        StrokeThickness="2"
+                        FontSize="13"
+                        TextWrapping="Wrap"/>
+                    <overlay:OutlinedTextBlock 
+                        VerticalAlignment="Center"
+                        Grid.Column="1"
+                        Visibility="{Binding KillsVisibility}"                       
+                        Margin="4 0 0 0"
+                        Fill="White"
+                        Text="{Binding KillsText}"
+                        FontWeight="Bold"
+                        StrokeThickness="7"
+                        FontSize="14"/>
+                    <!-- <Border Grid.Column="1" CornerRadius="12" -->
+                    <!--         Visibility="{Binding KillsVisibility}" -->
+                    <!--         Background="#CC000000"> -->
+                    <!--     <TextBlock HorizontalAlignment="Center" -->
+                    <!--                Foreground="White" -->
+                    <!--                Margin="4 0" -->
+                    <!--                Padding="0" -->
+                    <!--                Text="{Binding Kills}" -->
+                    <!--                VerticalAlignment="Center"/> -->
+                    <!-- </Border> -->
+                </Grid>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+        <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>      
+                <WrapPanel Background="Transparent"/>
+            </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
+    </ListBox>
+</UserControl>

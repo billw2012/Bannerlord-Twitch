@@ -9,6 +9,7 @@ using System.Windows;
 using BannerlordTwitch.Overlay;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using Color = TaleWorlds.Library.Color;
@@ -20,7 +21,7 @@ namespace BannerlordTwitch
 	internal class BLTModule : MBSubModuleBase
 	{
 		public const string Name = "BannerlordTwitch";
-		public const string Ver = "1.2.2";
+		public const string Ver = "1.3";
 		
 		private static readonly Thread thread;
 		private static OverlayWindow overlayWindow;
@@ -85,8 +86,22 @@ namespace BannerlordTwitch
 				{
 					Log.LogFeedCritical($"Error Initialising Bannerlord Twitch: {ex.Message}");
 				}
-				// RestartTwitchService();
 			}
+		}
+
+		public static void AddInfoPanel(Func<UIElement> construct)
+		{
+			overlayWindow?.AddInfoPanel(construct);
+		}
+		
+		public static void RemoveInfoPanel(UIElement element)
+		{
+			overlayWindow?.RemoveInfoPanel(element);
+		}
+
+		public static void RunInfoPanelUpdate(Action action)
+		{
+			overlayWindow?.RunInfoPanelUpdate(action);
 		}
 
 		public static void AddToFeed(string text, Color color)
@@ -104,6 +119,42 @@ namespace BannerlordTwitch
 			thread.Join(TimeSpan.FromMilliseconds(500));
 			ActionManager.GenerateDocumentation();
 			base.OnSubModuleUnloaded();
+		}
+
+		public override void OnGameLoaded(Game game, object initializerObject)
+		{
+			base.OnGameLoaded(game, initializerObject);
+		}
+
+		public override void BeginGameStart(Game game)
+		{
+			base.BeginGameStart(game);
+		}
+
+		public override void OnCampaignStart(Game game, object starterObject)
+		{
+			base.OnCampaignStart(game, starterObject);
+		}
+
+		public override void OnGameInitializationFinished(Game game)
+		{
+			if (
+#if BL_V_1_5_9
+					CampaignOptions.AutoSaveInMinutes
+#else
+				Campaign.Current.SaveHandler.AutoSaveInterval
+#endif
+				<= 0
+			)
+			{
+				InformationManager.ShowInquiry(
+					new InquiryData(
+						"Bannerlord Twitch Mod WARNING",
+						$"You have auto save disabled, crashes could result in lost channel points!\n" +
+						$"Recommended you set it to 15 minutes or less.",
+						true, false, "Okay", null,
+						() => { }, () => { }), true);
+			}
 		}
 
 		protected override void OnGameStart(Game game, IGameStarter gameStarterObject)

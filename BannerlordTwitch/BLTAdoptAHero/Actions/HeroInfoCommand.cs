@@ -18,13 +18,13 @@ namespace BLTAdoptAHero
         private class Settings
         {
             [Description("Show general info: gold, health, location, age"), PropertyOrder(1)]
-            public bool ShowGeneral { get; set; }
+            public bool ShowGeneral { get; set; } = true;
             [Description("Shows skills (and focuse values) above the specified MinSkillToShow value"), PropertyOrder(2)]
-            public bool ShowTopSkills { get; set; }
+            public bool ShowTopSkills { get; set; } = true;
             [Description("If ShowTopSkills is specified, this defines what skills are shown"), PropertyOrder(3)]
-            public int MinSkillToShow { get; set; }
+            public int MinSkillToShow { get; set; } = 100;
             [Description("Shows all hero attributes"), PropertyOrder(4)]
-            public bool ShowAttributes { get; set; }
+            public bool ShowAttributes { get; set; } = true;
             [Description("Shows the equipment tier of the hero"), PropertyOrder(5)]
             public bool ShowEquipment { get; set; }
             [Description("Shows the full battle and civilian inventory of the hero"), PropertyOrder(5)]
@@ -99,8 +99,9 @@ namespace BLTAdoptAHero
                 }
                 if (settings.ShowRetinue)
                 {
-                    int retinueStrength = BLTAdoptAHeroCampaignBehavior.Get().GetRetinue(adoptedHero).Sum(r => r.Level);
-                    infoStrings.Add($"Retinue Str {retinueStrength}");
+                    var retinue = BLTAdoptAHeroCampaignBehavior.Get().GetRetinue(adoptedHero).ToList();
+                    double tier = retinue.Average(r => r.Tier);
+                    infoStrings.Add($"{retinue.Count} retinue (tier {tier:0.#})");
                 }
             }
             ActionManager.SendReply(context, infoStrings.ToArray());

@@ -1,6 +1,6 @@
 ﻿using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
-namespace BLTBuffet
+namespace BannerlordTwitch.Util
 {
     public class SoundEffectItemSource : IItemsSource
     {
@@ -13,6 +13,7 @@ namespace BLTBuffet
         }
         
         private static string[] sfx = {
+            "None",
             "event:/alerts/nods/attack",
             "event:/alerts/nods/formation",
             "event:/alerts/nods/move",

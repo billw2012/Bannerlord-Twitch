@@ -47,20 +47,19 @@ namespace BannerlordTwitch
     }
 
     [CategoryOrder("General", 0)]
-    [CategoryOrder("Behavior", 2)]
     public abstract class ActionBase
     {
         [Category("General"), Description("Whether this is enabled or not"), PropertyOrder(-100)]
         public bool Enabled { get; set; }
-        [Category("Behavior"), Description("Show response in the twitch chat")]
+        [Category("General"), Description("Show response in the twitch chat"), PropertyOrder(-99)]
         public bool RespondInTwitch { get; set; }
-        [Category("Behavior"), Description("Show response in the overlay window feed")]
+        [Category("General"), Description("Show response in the overlay window feed"), PropertyOrder(-98)]
         public bool RespondInOverlay { get; set; }
         
-        [Category("Behavior"), Description("Name of the handler"), ReadOnly(true), PropertyOrder(1)]
+        [Category("General"), Description("Name of the handler"), ReadOnly(true), PropertyOrder(1)]
         public abstract string Handler { get; set; }
 
-        [Category("Behavior"), Description("Custom config for the handler"), ExpandableObject, ReadOnly(true), PropertyOrder(2)]
+        [Category("General"), Description("Custom config for the handler"), ExpandableObject, ReadOnly(true), PropertyOrder(2)]
         public object HandlerConfig { get; set; }
 
         [YamlIgnore, Browsable(false)]
@@ -163,8 +162,12 @@ namespace BannerlordTwitch
     [UsedImplicitly]
     public class GlobalConfig
     {
+        [Browsable(false)]
         public string Id { get; set; }
+        [ExpandableObject, ReadOnly(true)]
         public object Config { get; set; }
+        
+        public override string ToString() => Id;
     }
 
     [UsedImplicitly]
@@ -202,13 +205,16 @@ namespace BannerlordTwitch
         {
             return !FileSystem.FileExists(AuthFilePath) 
                 ? null 
-                : new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize<AuthSettings>(FileSystem.GetFileContentString(AuthFilePath));
+                : new DeserializerBuilder()
+                    .IgnoreUnmatchedProperties()
+                    .Build()
+                    .Deserialize<AuthSettings>(FileSystem.GetFileContentString(AuthFilePath));
         }
 
         public static void Save(AuthSettings authSettings)
         {
             FileSystem.SaveFileString(AuthFilePath, new SerializerBuilder()
-                .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
+                .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
                 .Build()
                 .Serialize(authSettings));
         }
@@ -227,10 +233,17 @@ namespace BannerlordTwitch
         {
             return !FileSystem.FileExists(DbFilePath) 
                 ? new Db()
-                : new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize<Db>(FileSystem.GetFileContentString(DbFilePath));
+                : new DeserializerBuilder()
+                    .IgnoreUnmatchedProperties()
+                    .Build()
+                    .Deserialize<Db>(FileSystem.GetFileContentString(DbFilePath));
         }
         
-        public static void Save(Db db) => FileSystem.SaveFileString(DbFilePath, new SerializerBuilder().Build().Serialize(db));
+        public static void Save(Db db) => FileSystem.SaveFileString(DbFilePath, 
+            new SerializerBuilder()
+                .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
+                .Build()
+                .Serialize(db));
     }
     
     public class Settings
@@ -251,7 +264,10 @@ namespace BannerlordTwitch
         private static string SaveFilePath => Path.Combine(ProjectRootDir(), "Bannerlord-Twitch.yaml");
         public static Settings Load()
         {
-            var settings = new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize<Settings>(File.ReadAllText(SaveFilePath));
+            var settings = new DeserializerBuilder()
+                .IgnoreUnmatchedProperties()
+                .Build()
+                .Deserialize<Settings>(File.ReadAllText(SaveFilePath));
             if (settings == null)
                 throw new Exception($"Couldn't load the mod settings from {SaveFilePath}");
 
@@ -268,7 +284,7 @@ namespace BannerlordTwitch
         public static void Save(Settings settings)
         {
             string settingsStr = new SerializerBuilder()
-                .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
+                .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
                 .Build()
                 .Serialize(settings);
             File.WriteAllText(SaveFilePath, settingsStr);
@@ -286,7 +302,10 @@ namespace BannerlordTwitch
                 string cfg = File.ReadAllText(templateFileName);
                 FileSystem.SaveFileString(SaveFilePath, cfg);
             }
-            var settings = new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize<Settings>(FileSystem.GetFileContentString(SaveFilePath));
+            var settings = new DeserializerBuilder()
+                .IgnoreUnmatchedProperties()
+                .Build()
+                .Deserialize<Settings>(FileSystem.GetFileContentString(SaveFilePath));
             if (settings == null)
                 throw new Exception($"Couldn't load the mod settings from {SaveFilePath}");
 
@@ -304,7 +323,7 @@ namespace BannerlordTwitch
         public static void Save(Settings settings)
         {
             FileSystem.SaveFileString(SaveFilePath, new SerializerBuilder()
-                .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
+                .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
                 .Build()
                 .Serialize(settings));
         }

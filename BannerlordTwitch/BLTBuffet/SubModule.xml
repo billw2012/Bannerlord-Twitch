@@ -2,7 +2,7 @@
 <Module>
 	<Name value = "BLTBuffet"/>
 	<Id value = "BLTBuffet"/>
-	<Version value = "v1.2.2"/>
+	<Version value = "v1.3.0"/>
 	<DefaultModule value="true"/>
 	<SingleplayerModule value="true"/>
 	<Official value="false" />

@@ -26,9 +26,9 @@ namespace BannerlordTwitch.Util
         public static string GetFileContentString(PlatformFilePath path) => File.ReadAllText(path.FilePath);
 #else
         public static PlatformFilePath GetConfigPath(string fileName) => new (EngineFilePaths.ConfigsPath, fileName);
-        private static bool FileExists(PlatformFilePath path) => Common.PlatformFileHelper.FileExists(path);
-        private static void SaveFileString(PlatformFilePath path, string str) => Common.PlatformFileHelper.SaveFileString(path, str);
-        private static string GetFileContentString(PlatformFilePath path) => Common.PlatformFileHelper.GetFileContentString(path);
+        public static bool FileExists(PlatformFilePath path) => Common.PlatformFileHelper.FileExists(path);
+        public static void SaveFileString(PlatformFilePath path, string str) => Common.PlatformFileHelper.SaveFileString(path, str);
+        public static string GetFileContentString(PlatformFilePath path) => Common.PlatformFileHelper.GetFileContentString(path);
 #endif
     }
 }

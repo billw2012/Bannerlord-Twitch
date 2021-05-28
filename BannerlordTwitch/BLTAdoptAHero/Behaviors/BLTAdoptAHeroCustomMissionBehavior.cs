@@ -10,7 +10,7 @@ using TaleWorlds.MountAndBlade;
 
 namespace BLTAdoptAHero
 {
-    internal class BLTMissionBehavior : AutoMissionBehavior<BLTMissionBehavior>
+    internal class BLTAdoptAHeroCustomMissionBehavior : AutoMissionBehavior<BLTAdoptAHeroCustomMissionBehavior>
     {
         public delegate void AgentCreatedDelegate(Agent agent);
         public delegate void MissionOverDelegate();
@@ -178,7 +178,7 @@ namespace BLTAdoptAHero
                 }
                 catch (Exception e)
                 {
-                    Log.Exception($"[{nameof(BLTMissionBehavior)}] ForAll", e);
+                    Log.Exception($"[{nameof(BLTAdoptAHeroCustomMissionBehavior)}] ForAll", e);
                 }
             }
         }
@@ -194,7 +194,7 @@ namespace BLTAdoptAHero
                 }
                 catch (Exception e)
                 {
-                    Log.Exception($"[{nameof(BLTMissionBehavior)}] ForAgent", e);
+                    Log.Exception($"[{nameof(BLTAdoptAHeroCustomMissionBehavior)}] ForAgent", e);
                 }
             }
 
@@ -206,7 +206,7 @@ namespace BLTAdoptAHero
                 }
                 catch (Exception e)
                 {
-                    Log.Exception($"[{nameof(BLTMissionBehavior)}] ForAgent", e);
+                    Log.Exception($"[{nameof(BLTAdoptAHeroCustomMissionBehavior)}] ForAgent", e);
                 }
             }
         }

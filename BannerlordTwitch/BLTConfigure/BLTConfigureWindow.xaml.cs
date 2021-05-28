@@ -21,6 +21,7 @@ using System.Windows.Input;
 using System.Windows.Navigation;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using MessageBox = System.Windows.MessageBox;
 
@@ -44,40 +45,8 @@ namespace BLTConfigure
 
     public partial class BLTConfigureWindow
     {
-        // public class ActionViewModel
-        // {
-        //     public string Module => Action.GetType().Assembly.GetName().Name;
-        //     public string Name => Action.GetType().Name;
-        //     public string Description => Action.GetType().GetCustomAttribute<DescriptionAttribute>()?.Description;
-        //
-        //     public IAction Action { get; }
-        //
-        //     public ActionViewModel(IAction action)
-        //     {
-        //         this.Action = action;
-        //     }
-        // }
-        // public class CommandHandlerViewModel
-        // {
-        //     public string Module => CommandHandler.GetType().Assembly.GetName().Name;
-        //     public string Name => CommandHandler.GetType().Name;
-        //     public string Description => CommandHandler.GetType().GetCustomAttribute<DescriptionAttribute>()?.Description;
-        //
-        //     public ICommandHandler CommandHandler { get; }
-        //
-        //     public CommandHandlerViewModel(ICommandHandler commandHandler)
-        //     {
-        //         this.CommandHandler = commandHandler;
-        //     }
-        // }
-        
         public IEnumerable<NewActionViewModel> RewardHandlersViewModel => ActionManager.RewardHandlers.Select(a => new NewActionViewModel(_ => this.NewReward(a), a.GetType()));
-        // public static IEnumerable<string> RewardHandlerNames => ActionManager.RewardHandlerNames;
-        // public static IEnumerable<IRewardHandler> RewardHandlers => ActionManager.RewardHandlers;
-        
         public IEnumerable<NewActionViewModel> CommandHandlersViewModel => ActionManager.CommandHandlers.Select(h => new NewActionViewModel(_ => this.NewCommand(h), h.GetType()));
-        // public static IEnumerable<string> CommandHandlerNames => ActionManager.CommandHandlerNames;
-        // public static IEnumerable<ICommandHandler> CommandHandlers => ActionManager.CommandHandlers;
 
         public Settings EditedSettings  { get; set; }
         public AuthSettings EditedAuthSettings  { get; set; }
@@ -100,9 +69,14 @@ namespace BLTConfigure
         {
             public override object GroupNameFromItem(object item, int level, CultureInfo culture)
             {
-                if (item == null)
-                    return "";
-                return item.GetType().Name;
+                return item switch
+                {
+                    null => "",
+                    GlobalConfig => "Global Configs",
+                    Reward => "Channel Rewards",
+                    Command => "Chat Commands",
+                    _ => item.GetType().Name
+                };
             }
         }
         
@@ -112,16 +86,18 @@ namespace BLTConfigure
             {
                 EditedSettings = Settings.Load();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Either the settings file didn't exist, or it was corrupted.\nLoaded default settings.\nIf you want to keep your broken settings file then go and copy it somewhere now, as it will be overwritten on exit.\nError: {e.Message}", "Failed to Load Settings!");
+                Log.Exception($"BLTConfigureWindow.Reload", ex);
+                // MessageBox.Show($"Either the settings file didn't exist, or it was corrupted.\nLoaded default settings.\nIf you want to keep your broken settings file then go and copy it somewhere now, as it will be overwritten on exit.\nError: {e}", "Failed to Load Settings!");
             }
 
             EditedSettings ??= new Settings();
             
-            // MainThreadSync.Run();
             ActionManager.ConvertSettings(EditedSettings.Commands);
             ActionManager.ConvertSettings(EditedSettings.Rewards);
+            ActionManager.EnsureGlobalSettings(EditedSettings.GlobalConfigs);
+            
             RefreshActionList();
             PropertyGrid.SelectedObject = null;
 
@@ -129,9 +105,10 @@ namespace BLTConfigure
             {
                 EditedAuthSettings = AuthSettings.Load();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Either the auth settings file didn't exist, or it was corrupted.\nYou need to reauthorize.", "Failed to Load Auth Settings!");
+                Log.Exception($"BLTConfigureWindow.Reload", ex);
+                // MessageBox.Show($"Either the auth settings file didn't exist, or it was corrupted.\nYou need to reauthorize.", "Failed to Load Auth Settings!");
             }
 
             EditedAuthSettings ??= new AuthSettings
@@ -151,9 +128,12 @@ namespace BLTConfigure
                 // CommandsListBox.ItemsSource = EditedSettings.Commands;
                 var actionFilterView =
                     CollectionViewSource.GetDefaultView(
-                        EditedSettings.Commands.Concat<ActionBase>(EditedSettings.Rewards));
+                        EditedSettings.GlobalConfigs.Cast<object>()
+                            .Concat(EditedSettings.Rewards)
+                            .Concat(EditedSettings.Commands)
+                        );
                 actionFilterView.GroupDescriptions.Add(new TypeGroupDescription());
-                actionFilterView.SortDescriptions.Add(new SortDescription("Branch", ListSortDirection.Descending));
+                // actionFilterView.SortDescriptions.Add(new SortDescription("Branch", ListSortDirection.Descending));
                 ActionsListBox.ItemsSource = actionFilterView;
             }
         }
@@ -168,18 +148,9 @@ namespace BLTConfigure
             }
         }
 
-        // private void Commands_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        // {
-        //     if (CommandsListBox.SelectedItem != null)
-        //     {
-        //         //RewardsListBox.SelectedItem = null;
-        //         PropertyGrid.SelectedObject = CommandsListBox.SelectedItem;
-        //     }
-        // }
-
         private void NewReward(IRewardHandler action)
         {
-            // NewActionDropDownButton.IsOpen = false;
+            NewRewardDropDown.IsOpen = false;
             // var action = (sender as Button)?.DataContext as ActionViewModel;
             var newReward = new Reward
             {
@@ -194,13 +165,12 @@ namespace BLTConfigure
             
             EditedSettings.Rewards.Add(newReward);
             RefreshActionList();
-            SaveSettings();
             ActionsListBox.SelectedItem = newReward;
         }
 
         private void NewCommand(ICommandHandler handler)
         {
-            //NewCommandDropDownButton.IsOpen = false;
+            NewCommandDropDown.IsOpen = false;
             var newCommand = new Command
             {
                 Handler = handler.GetType().Name,
@@ -213,7 +183,6 @@ namespace BLTConfigure
             }
             EditedSettings.Commands.Add(newCommand);
             RefreshActionList();
-            SaveSettings();
             ActionsListBox.SelectedItem = newCommand;
         }
 
@@ -286,7 +255,7 @@ namespace BLTConfigure
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), $"Save Failed");
+                Log.Exception($"BLTConfigureWindow.SaveSettings", ex);
             }
         }
 
@@ -300,7 +269,7 @@ namespace BLTConfigure
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), $"Failed to save auth settings!");
+                Log.Exception($"BLTConfigureWindow.SaveAuth", ex);
             }
         }
 

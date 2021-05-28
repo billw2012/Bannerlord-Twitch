@@ -1,24 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 using BannerlordTwitch.Util;
-using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using YamlDotNet.Serialization;
 using Color = System.Windows.Media.Color;
-using Colors = System.Windows.Media.Colors;
 
 namespace BannerlordTwitch.Overlay
 {
     // From https://stackoverflow.com/a/21461482/6402065 and  https://stackoverflow.com/a/6792677/6402065
-    internal partial class OverlayWindow : Window
+    internal partial class OverlayWindow
     {
         public class FeedItem
         {
@@ -53,33 +47,49 @@ namespace BannerlordTwitch.Overlay
                 Dispatcher.BeginInvoke(new Action(AddToFeedInternal));
             }
         }
-        
-        public ObservableCollection<FeedItem> FeedItems { get; set; } = new();
-        
-        public Color BackgroundColor { get => (FeedControl.Background as SolidColorBrush)?.Color ?? Color.FromRgb(0, 0xFF, 0); set => FeedControl.Background = new SolidColorBrush(value); }
 
-        public Color ForegroundColor { get => (FeedControl.Foreground as SolidColorBrush)?.Color ?? Colors.White; set => FeedControl.Foreground = new SolidColorBrush(value); }
-        
+        public void AddInfoPanel(Func<UIElement> construct)
+        {
+            if(Dispatcher.Thread == Thread.CurrentThread)
+            {
+                InfoPanel.Children.Add(construct());
+            }
+            else
+            {
+                Dispatcher.BeginInvoke(new Action(() => InfoPanel.Children.Add(construct())));
+            }
+        }
+
+        public void RemoveInfoPanel(UIElement element)
+        {
+            if(Dispatcher.Thread == Thread.CurrentThread)
+            {
+                InfoPanel.Children.Remove(element);
+            }
+            else
+            {
+                Dispatcher.BeginInvoke(new Action(() => InfoPanel.Children.Remove(element)));
+            }
+        }
+
+        public void RunInfoPanelUpdate(Action action)
+        {
+            if(Dispatcher.Thread == Thread.CurrentThread)
+            {
+                action();
+            }
+            else
+            {
+                Dispatcher.BeginInvoke(action);
+            }
+        }
+
+        public ObservableCollection<FeedItem> FeedItems { get; set; } = new();
+
         public double FeedFontSize { get => FeedControl.FontSize; set => FeedControl.FontSize = value; }
 
         private class OverlaySettings
         {
-            public string BackgroundColorText { get; set; }
-            [YamlIgnore]
-            public Color BackgroundColor
-            {
-                get => (Color) (ColorConverter.ConvertFromString(BackgroundColorText ?? $"#FF000000") ?? Colors.Black);
-                set => BackgroundColorText = $"#{value.A:X2}{value.R:X2}{value.G:X2}{value.B:X2}";
-            }
-
-            public string ForegroundColorText { get; set; }
-            [YamlIgnore]
-            public Color ForegroundColor
-            {
-                get => (Color) (ColorConverter.ConvertFromString(ForegroundColorText ?? $"#FF000000") ?? Colors.Black);
-                set => ForegroundColorText = $"#{value.A:X2}{value.R:X2}{value.G:X2}{value.B:X2}";
-            }
-            
             public double FeedFontSize { get; set; }
 
             public double WindowLeft { get; set; }
@@ -95,7 +105,10 @@ namespace BannerlordTwitch.Overlay
                 {
                     return !FileSystem.FileExists(OverlayFilePath) 
                         ? null 
-                        : new DeserializerBuilder().Build().Deserialize<OverlaySettings>(FileSystem.GetFileContentString(OverlayFilePath));
+                        : new DeserializerBuilder()
+                            .IgnoreUnmatchedProperties()
+                            .Build()
+                            .Deserialize<OverlaySettings>(FileSystem.GetFileContentString(OverlayFilePath));
                 }
                 catch (Exception e)
                 {
@@ -109,7 +122,7 @@ namespace BannerlordTwitch.Overlay
                 try
                 {
                     FileSystem.SaveFileString(OverlayFilePath, new SerializerBuilder()
-                        .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
+                        .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
                         .Build()
                         .Serialize(settings));
                 }
@@ -119,7 +132,7 @@ namespace BannerlordTwitch.Overlay
                 }
             }
         }
-        
+
         public OverlayWindow()
         {
             InitializeComponent();
@@ -129,7 +142,7 @@ namespace BannerlordTwitch.Overlay
             //     AddToFeed($"{i} A long piece of text to test wrapping and what not. Hey how is it going? I'm a long string.");
             // }
         }
-        
+
         private void OverlayWindow_OnSourceInitialized(object sender, EventArgs e)
         {
             var settings = OverlaySettings.Load();
@@ -139,9 +152,7 @@ namespace BannerlordTwitch.Overlay
                 this.Top = settings.WindowTop;
                 this.Width = settings.WindowWidth;
                 this.Height = settings.WindowHeight;
-
-                this.BackgroundColor = settings.BackgroundColor;
-                this.ForegroundColor = settings.ForegroundColor;
+                
                 this.FeedFontSize = settings.FeedFontSize;
             }
         }
@@ -154,9 +165,7 @@ namespace BannerlordTwitch.Overlay
                 WindowTop = this.Top,
                 WindowWidth = this.Width,
                 WindowHeight = this.Height,
-
-                BackgroundColor = this.BackgroundColor,
-                ForegroundColor = this.ForegroundColor,
+                
                 FeedFontSize = this.FeedFontSize,
             };
             OverlaySettings.Save(settings);

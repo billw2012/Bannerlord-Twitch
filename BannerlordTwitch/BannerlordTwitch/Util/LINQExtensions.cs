@@ -44,6 +44,8 @@ public static class LINQExtensions
         yield return item;
     }
     
+    public static IEnumerable<T> Append<T>(this IEnumerable<T> @this, T item) => @this.Concat(item.Yield());
+
     public static IEnumerable<(EquipmentElement element, EquipmentIndex index)> YieldEquipmentSlots(this Equipment equipment)
     {
         for (int i = 0; i < (int) EquipmentIndex.NumEquipmentSetSlots; i++)

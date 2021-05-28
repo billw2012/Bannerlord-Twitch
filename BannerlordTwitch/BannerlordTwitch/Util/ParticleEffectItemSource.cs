@@ -1,7 +1,7 @@
 ﻿using System;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
-namespace BLTBuffet
+namespace BannerlordTwitch.Util
 {
     public class ParticleEffectItemSource : IItemsSource
     {

@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Windows;
 using TaleWorlds.Library;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
@@ -45,9 +46,9 @@ namespace BannerlordTwitch.Util
         public static void Exception(string context, Exception ex)
         {
             Error($"{context}: {ex.GetBaseException()}");
-#if DEBUG
-            throw ex;
-#endif
+// #if DEBUG
+//             throw ex;
+// #endif
         }
 
         // public static void Screen(string str, Color color = default)
@@ -69,12 +70,26 @@ namespace BannerlordTwitch.Util
         public static void LogFeedSystem(string str) => LogFeed(str, Colors.Magenta);
         public static void LogFeedBattle(string str) => LogFeed(str, Colors.White);
         public static void LogFeedEvent(string str) => LogFeed(str, Colors.Cyan);
-        public static void LogFeedResponse(string str) => LogFeed(str, Colors.Yellow);
+        public static void LogFeedResponse(string userName, params string[] messages) => LogFeed($"@{userName}: {string.Join(", ", messages)}", Colors.Yellow);
         
         public static void LogFeed(string str, Color color)
         {
             BLTModule.AddToFeed(str, color);
-            //MainThreadSync.Run(() => LogFilePrint(str));
+        }
+                
+        public static void AddInfoPanel(Func<UIElement> construct)
+        {
+            BLTModule.AddInfoPanel(construct);
+        }
+                
+        public static void RemoveInfoPanel(UIElement element)
+        {
+            BLTModule.RemoveInfoPanel(element);
+        }
+
+        public static void RunInfoPanelUpdate(Action action)
+        {
+            BLTModule.RunInfoPanelUpdate(action);
         }
 
         public enum Sound

@@ -39,48 +39,42 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <TextBlock >Background Color</TextBlock>
-                        <xctk:ColorPicker Grid.Row="0" Grid.Column="1" SelectedColor="{Binding BackgroundColor}" WindowChrome.IsHitTestVisibleInChrome="True" Width="40" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Row="1">Text Color</TextBlock>
-                        <xctk:ColorPicker Grid.Row="1" Grid.Column="1" SelectedColor="{Binding ForegroundColor}" WindowChrome.IsHitTestVisibleInChrome="True" Width="40" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Row="2">Text Size</TextBlock>
-                        <xctk:DoubleUpDown Value="{Binding FeedFontSize}" Minimum="5" Maximum="100" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
+                        <TextBlock>Text Size</TextBlock>
+                        <xctk:DoubleUpDown Value="{Binding FeedFontSize}" Minimum="5" Maximum="100" Grid.Column="1" VerticalAlignment="Center"/>
                     </Grid>
                 </xctk:DropDownButton.DropDownContent>
             </xctk:DropDownButton>
             <TextBlock Margin="10 2" FontSize="14" VerticalAlignment="Center" Text="{Binding Title, Mode=OneWay}"/>
         </DockPanel>
-        <ItemsControl Name="FeedControl" ItemsSource="{Binding FeedItems}" Foreground="White" Background="#00FF00" FontSize="15"
-                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 >
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <!-- <StackPanel VerticalAlignment="Bottom"/> -->
-                    <VirtualizingStackPanel VerticalAlignment="Bottom"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <!-- <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/> -->
-                    <local:OutlinedTextBlock 
-                        Margin="5, 2"
-                        Fill="{Binding Color}" 
-                        Text="{Binding Text}"
-                        FontWeight="Medium"
-                        StrokeThickness="4"
-                        TextWrapping="Wrap">
-                        <!-- <local:OutlinedTextBlock.Effect> -->
-                        <!--     <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="Black"/> -->
-                        <!-- </local:OutlinedTextBlock.Effect> -->
-                    </local:OutlinedTextBlock>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <DockPanel Background="#00FF00">
+            <WrapPanel x:Name="InfoPanel" DockPanel.Dock="Bottom" Background="Transparent"/>
+            
+            <ItemsControl Name="FeedControl" ItemsSource="{Binding FeedItems}" Foreground="White" Background="Transparent" FontSize="15"
+                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <!-- <StackPanel VerticalAlignment="Bottom"/> -->
+                        <VirtualizingStackPanel VerticalAlignment="Bottom"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <!-- <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/> -->
+                        <local:OutlinedTextBlock 
+                            Margin="5, 2"
+                            Fill="{Binding Color}" 
+                            Text="{Binding Text}"
+                            FontWeight="Medium"
+                            StrokeThickness="4"
+                            TextWrapping="Wrap">
+                            <!-- <local:OutlinedTextBlock.Effect> -->
+                            <!--     <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="Black"/> -->
+                            <!-- </local:OutlinedTextBlock.Effect> -->
+                        </local:OutlinedTextBlock>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </DockPanel>
     </DockPanel>
 </Window>

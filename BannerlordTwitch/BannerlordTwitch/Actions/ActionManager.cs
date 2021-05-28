@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Bannerlord.ButterLib.Common.Extensions;
 using BannerlordTwitch.Util;
 using TaleWorlds.Library;
 using YamlDotNet.Serialization;
@@ -15,6 +16,7 @@ namespace BannerlordTwitch.Rewards
     {
         private static readonly Dictionary<string, IRewardHandler> rewardHandlers = new();
         private static readonly Dictionary<string, ICommandHandler> commandHandlers = new();
+        private static readonly Dictionary<string, Type> globalConfigTypes = new();
 
         public static IEnumerable<string> RewardHandlerNames => rewardHandlers.Keys;
         public static IEnumerable<IRewardHandler> RewardHandlers => rewardHandlers.Values;
@@ -71,7 +73,42 @@ namespace BannerlordTwitch.Rewards
             return true;
         }
 
-        public static object FindGlobalConfig(string id) => BLTModule.TwitchService.FindGlobalConfig(id);
+        public static bool RegisterGlobalConfigType(string key, Type settingsType)
+        {
+            if (globalConfigTypes.ContainsKey(key))
+            {
+                Log.Error($"Global Settings with key {key}={settingsType} already registered, please choose another name");
+                return false;
+            }
+            Log.Trace($"Registered Global Settings {key}={settingsType}");
+            globalConfigTypes.Add(key, settingsType);
+            return true;
+        }
+
+        public static T GetGlobalConfig<T>(string id)
+        {
+            if (!globalConfigTypes.TryGetValue(id, out var type))
+            {
+                Log.Error($"Global Settings Id {id} type not registered (use ActionManager.RegisterGlobalSettingsType)");
+                return default;
+            }
+
+            if(type != typeof(T))
+            {
+                Log.Error($"Registered type {type} of Global Settings {id} doesn't match request type {typeof(T)}");
+                return default;
+            }
+            
+            object config = BLTModule.TwitchService.FindGlobalConfig(id);
+            if (config == null)
+            {
+                return (T) Activator.CreateInstance(typeof(T));
+            }
+
+            // It was loaded as an anonymous object, convert it to the correctly typed object now
+            // (via round trip serialization)
+            return (T) ConvertObject(config, typeof(T));
+        }
 
         public static void ConvertSettings(IEnumerable<Reward> rewards)
         {
@@ -110,10 +147,42 @@ namespace BannerlordTwitch.Rewards
                 }
             }
         }
+
+        public static void EnsureGlobalSettings(ICollection<GlobalConfig> globalSettings)
+        {
+            // Make sure all expected global configs exist 
+            foreach ((string id, var configType) in globalConfigTypes)
+            {
+                var existingConfig = globalSettings.FirstOrDefault(g => g.Id == id);
+                if (existingConfig == null)
+                {
+                    // Create new default
+                    globalSettings.Add(new GlobalConfig { Id = id, Config = Activator.CreateInstance(configType)});
+                }
+                else
+                {
+                    // Convert from anonymous to typed object
+                    existingConfig.Config = ConvertObject(existingConfig.Config, configType);
+                }
+            }
+
+            // Remove old settings
+            var toRemove = globalSettings.Where(s => globalConfigTypes.All(t => s.Id != t.Key)).ToList();
+            foreach (var r in toRemove)
+            {
+                globalSettings.Remove(r);
+            }
+        }
         
-        internal static object ConvertObject(object obj, Type type) =>
-            new DeserializerBuilder().IgnoreUnmatchedProperties().Build().Deserialize(
-                new SerializerBuilder().Build().Serialize(obj),
+        public static object ConvertObject(object obj, Type type) =>
+            new DeserializerBuilder()
+                .IgnoreUnmatchedProperties()
+                .Build()
+                .Deserialize(
+                new SerializerBuilder()
+                    .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
+                    .Build()
+                    .Serialize(obj),
                 type);
 
         internal static void HandleCommand(string commandId, ReplyContext context, object config)

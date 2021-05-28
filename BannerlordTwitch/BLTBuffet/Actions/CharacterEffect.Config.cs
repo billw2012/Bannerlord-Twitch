@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using BannerlordTwitch.Util;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -127,8 +128,8 @@ namespace BLTBuffet
             [Description("Properties to change, and how much by"), PropertyOrder(6)]
             public List<PropertyDef> Properties { get; set; }
 
-            [Description("Creates a light attached to the target"), PropertyOrder(7)]
-            public LightDef Light { get; set; }
+            // [Description("Creates a light attached to the target"), PropertyOrder(7)]
+            // public LightDef Light { get; set; }
 
             [Description("Heal amount per second"), PropertyOrder(8)]
             public float HealPerSecond { get; set; }
