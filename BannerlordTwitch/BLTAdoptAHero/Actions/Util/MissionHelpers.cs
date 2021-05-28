@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using SandBox;
+using SandBox.Source.Missions;
 using StoryMode.Missions;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -13,7 +14,8 @@ namespace BLTAdoptAHero
             => //CampaignMission.Current.Location?.ContainsCharacter(hero) == true || 
                 Mission.Current?.Agents.Any(a => a.Character == hero.CharacterObject) == true;
 
-        public static bool InHideOutMission() => Mission.Current?.Mode == MissionMode.Stealth;
+        public static bool InHideOutMission() => Mission.Current?.GetMissionBehaviour<HideoutMissionController>() != null;
+
         public static bool InFieldBattleMission() => Mission.Current?.IsFieldBattle == true;
 
         public static bool InSiegeMission() 
