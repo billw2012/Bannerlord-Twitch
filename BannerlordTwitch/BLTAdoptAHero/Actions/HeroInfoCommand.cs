@@ -99,8 +99,9 @@ namespace BLTAdoptAHero
                 }
                 if (settings.ShowRetinue)
                 {
-                    int retinueStrength = BLTAdoptAHeroCampaignBehavior.Get().GetRetinue(adoptedHero).Sum(r => r.Level);
-                    infoStrings.Add($"Retinue Str {retinueStrength}");
+                    var retinue = BLTAdoptAHeroCampaignBehavior.Get().GetRetinue(adoptedHero).ToList();
+                    double tier = retinue.Average(r => r.Tier);
+                    infoStrings.Add($"{retinue.Count} retinue (tier {tier:0.#})");
                 }
             }
             ActionManager.SendReply(context, infoStrings.ToArray());
