@@ -46,9 +46,9 @@ namespace BannerlordTwitch.Util
         public static void Exception(string context, Exception ex)
         {
             Error($"{context}: {ex.GetBaseException()}");
-#if DEBUG
-            throw ex;
-#endif
+// #if DEBUG
+//             throw ex;
+// #endif
         }
 
         // public static void Screen(string str, Color color = default)
