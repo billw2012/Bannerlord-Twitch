@@ -546,4 +546,4 @@ SimTesting:
   - Type: Reward
     Id: Retire My Hero
     Args: yes
-    Weight: 0.00999999978
+    Weight: 1

@@ -15,7 +15,7 @@ namespace BLTAdoptAHero
     {
         protected override void ExecuteInternal(ReplyContext context, object config, Action<string> onSuccess, Action<string> onFailure)
         {
-            if (context.Args == "yes")
+            if (context.Args != "yes")
             {
                 onFailure($"You must enter 'yes' at the prompt to retire your hero");
                 return;

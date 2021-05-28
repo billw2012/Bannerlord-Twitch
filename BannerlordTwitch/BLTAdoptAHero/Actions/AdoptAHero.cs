@@ -264,8 +264,6 @@ namespace BLTAdoptAHero
             newHero.FirstName = new TextObject(userName);
             newHero.Name = new TextObject(BLTAdoptAHeroCampaignBehavior.GetFullName(userName));
             
-            BLTAdoptAHeroCampaignBehavior.Get().SetHeroGold(newHero, settings.StartingGold);
-
             if (settings.StartingEquipmentTier.HasValue)
             {
                 EquipHero.RemoveAllEquipment(newHero);
@@ -282,14 +280,18 @@ namespace BLTAdoptAHero
                 Campaign.Current.EncyclopediaManager.BookmarksTracker.AddBookmarkToItem(newHero);
             }
             
+            BLTAdoptAHeroCampaignBehavior.Get().SetHeroGold(newHero, settings.StartingGold);
+
+            Log.ShowInformation($"{oldName} is now known as {newHero.Name}!", newHero.CharacterObject, Log.Sound.Horns2);
             if (settings.Inheritance > 0)
             {
-                BLTAdoptAHeroCampaignBehavior.Get().InheritGold(newHero, settings.Inheritance);
+                int inherited = BLTAdoptAHeroCampaignBehavior.Get().InheritGold(newHero, settings.Inheritance);
+                return (true, $"{oldName} is now known as {newHero.Name}, they have {BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(newHero)} gold (inheriting {inherited} gold)!");
             }
-            
-            Log.ShowInformation($"{oldName} is now known as {newHero.Name}!", newHero.CharacterObject, Log.Sound.Horns2);
-
-            return (true, $"{oldName} is now known as {newHero.Name}, they have {BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(newHero)} gold!");
+            else
+            {
+                return (true, $"{oldName} is now known as {newHero.Name}, they have {BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(newHero)} gold!");
+            }
         }
     }
 }
