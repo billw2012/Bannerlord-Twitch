@@ -64,10 +64,6 @@ namespace BLTAdoptAHero
             public bool AllowSiegeBattle { get; set; }
             [Category("Allowed Missions"), Description("This includes walking about village/town/dungeon/keep"), PropertyOrder(4)]
             public bool AllowFriendlyMission { get; set; }
-            [Category("Allowed Missions"), Description("Can summon in the practice arena"), PropertyOrder(5)]
-            public bool AllowArena { get; set; }
-            [Category("Allowed Missions"), Description("NOT IMPLEMENTED YET Can summon in tournaments"), PropertyOrder(6)]
-            public bool AllowTournament { get; set; }
             [Category("Allowed Missions"), Description("Can summon in the hideout missions"), PropertyOrder(7)]
             public bool AllowHideOut { get; set; }
             [Category("General"), Description("Whether the hero is on the player or enemy side"), PropertyOrder(1)]
@@ -299,13 +295,13 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            if(MissionHelpers.InArenaPracticeMission() && (!settings.AllowArena || !settings.OnPlayerSide) 
-               || MissionHelpers.InTournament() && (!settings.AllowTournament)
+            if(MissionHelpers.InArenaPracticeMission() 
+               || MissionHelpers.InTournament()
                || MissionHelpers.InFieldBattleMission() && !settings.AllowFieldBattle
                || MissionHelpers.InVillageEncounter() && !settings.AllowVillageBattle
                || MissionHelpers.InSiegeMission() && !settings.AllowSiegeBattle
                || MissionHelpers.InFriendlyMission() && !settings.AllowFriendlyMission
-               || MissionHelpers.InHideOutMission() && !settings.AllowHideOut
+               || MissionHelpers.InHideOutMission() && (!settings.AllowHideOut || !settings.OnPlayerSide)
                || MissionHelpers.InTrainingFieldMission()
                || MissionHelpers.InArenaPracticeVisitingArea()
             )
@@ -362,26 +358,9 @@ namespace BLTAdoptAHero
                 agent.SetTeam(settings.OnPlayerSide 
                     ? missionAgentHandler.Mission.PlayerTeam
                     : missionAgentHandler.Mission.PlayerEnemyTeam, false);
-
-                // For arena mission we add fight everyone behaviours
-                if (MissionHelpers.InArenaPracticeMission())
-                {
-                    if (agent.GetComponent<CampaignAgentComponent>().AgentNavigator != null)
-                    {
-                        var behaviorGroup = agent.GetComponent<CampaignAgentComponent>().AgentNavigator
-                            .GetBehaviorGroup<AlarmedBehaviorGroup>();
-                        behaviorGroup.DisableCalmDown = true;
-                        behaviorGroup.AddBehavior<FightBehavior>();
-                        behaviorGroup.SetScriptedBehavior<FightBehavior>();
-                    }
-                    #if BL_V_1_5_9
-                    agent.SetWatchState(AgentAIStateFlagComponent.WatchState.Alarmed);
-                    #else
-                    agent.SetWatchState(Agent.WatchState.Alarmed);
-                    #endif
-                }
-                // For other player hostile situations we setup a 1v1 fight
-                else if (!settings.OnPlayerSide)
+                
+                // For player hostile situations we setup a 1v1 fight
+                if (!settings.OnPlayerSide)
                 {
                     Mission.Current.GetMissionBehaviour<MissionFightHandler>().StartCustomFight(
                         new() {Agent.Main},

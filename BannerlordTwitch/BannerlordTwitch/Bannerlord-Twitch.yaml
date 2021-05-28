@@ -568,14 +568,18 @@ SimTesting:
     Args: 
     Weight: 1
   - Type: Command
+    Id: equip
+    Args:
+    Weight: 0.2
+  - Type: Command
     Id: retinue
     Args: 
-    Weight: 1
+    Weight: 0.2
   - Type: Reward
     Id: Retire My Hero
     Args: yes
-    Weight: 0.00999999978
+    Weight: 0.01
   - Type: Reward
     Id: Adopt a Hero
     Args: yes
-    Weight: 0.5
+    Weight: 0.01
