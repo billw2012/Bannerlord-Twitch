@@ -100,8 +100,15 @@ namespace BLTAdoptAHero
                 if (settings.ShowRetinue)
                 {
                     var retinue = BLTAdoptAHeroCampaignBehavior.Get().GetRetinue(adoptedHero).ToList();
-                    double tier = retinue.Average(r => r.Tier);
-                    infoStrings.Add($"{retinue.Count} retinue (tier {tier:0.#})");
+                    if (retinue.Count > 0)
+                    {
+                        double tier = retinue.Average(r => r.Tier);
+                        infoStrings.Add($"{retinue.Count} retinue (tier {tier:0.#})");
+                    }
+                    else
+                    {
+                        infoStrings.Add($"No retinue");
+                    }
                 }
             }
             ActionManager.SendReply(context, infoStrings.ToArray());
