@@ -25,7 +25,7 @@
                         Background="{Binding ProgressBarBackground}"
                         Foreground="{Binding ProgressBarForeground}"
                         BorderBrush="Transparent"
-                        Height="6"
+                        Height="14"
                         Margin="0"
                         Padding="0"
                         VerticalAlignment="Bottom"/>
@@ -36,7 +36,6 @@
                         Text="{Binding Name}"
                         FontWeight="Medium"
                         StrokeThickness="2"
-                        FontSize="13"
                         TextWrapping="Wrap"/>
                     <overlay:OutlinedTextBlock 
                         VerticalAlignment="Center"
@@ -46,8 +45,7 @@
                         Fill="White"
                         Text="{Binding KillsText}"
                         FontWeight="Bold"
-                        StrokeThickness="7"
-                        FontSize="14"/>
+                        StrokeThickness="7"/>
                     <!-- <Border Grid.Column="1" CornerRadius="12" -->
                     <!--         Visibility="{Binding KillsVisibility}" -->
                     <!--         Background="#CC000000"> -->

@@ -17,8 +17,7 @@
             Text="Tournament"
             Fill="White"
             FontWeight="Bold"
-            StrokeThickness="5"
-            FontSize="14"/>
+            StrokeThickness="5"/>
         <ItemsControl x:Name="TournamentList" Background="Transparent"
                  BorderBrush="Transparent"
                  Margin="4"

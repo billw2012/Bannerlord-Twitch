@@ -24,7 +24,7 @@
             <Setter Property="FontSize" Value="12" />
         </Style>
     </Window.Resources>
-    <DockPanel LastChildFill="True">
+    <DockPanel x:Name="RootControl" LastChildFill="True">
         <DockPanel DockPanel.Dock="Top" Height="30" Background="Azure">
             <xctk:DropDownButton DockPanel.Dock="Right" Margin="4" Padding="8 0" Content="Config" WindowChrome.IsHitTestVisibleInChrome="True">
                 <xctk:DropDownButton.DropDownContent>
@@ -40,7 +40,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <TextBlock>Text Size</TextBlock>
-                        <xctk:DoubleUpDown Value="{Binding FeedFontSize}" Minimum="5" Maximum="100" Grid.Column="1" VerticalAlignment="Center"/>
+                        <xctk:DoubleUpDown Value="{Binding OverlayFontSize}" Minimum="5" Maximum="100" Grid.Column="1" VerticalAlignment="Center"/>
                     </Grid>
                 </xctk:DropDownButton.DropDownContent>
             </xctk:DropDownButton>
@@ -49,8 +49,7 @@
         <DockPanel Background="#00FF00">
             <WrapPanel x:Name="InfoPanel" DockPanel.Dock="Bottom" Background="Transparent"/>
             
-            <ItemsControl Name="FeedControl" ItemsSource="{Binding FeedItems}" Foreground="White" Background="Transparent" FontSize="15"
-                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
+            <ItemsControl Name="FeedControl" ItemsSource="{Binding FeedItems}" Foreground="White" Background="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
