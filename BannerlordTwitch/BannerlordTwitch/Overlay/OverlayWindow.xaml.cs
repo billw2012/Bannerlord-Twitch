@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Media;
 using BannerlordTwitch.Util;
 using TaleWorlds.Library;
@@ -86,7 +87,7 @@ namespace BannerlordTwitch.Overlay
 
         public ObservableCollection<FeedItem> FeedItems { get; set; } = new();
 
-        public double FeedFontSize { get => FeedControl.FontSize; set => FeedControl.FontSize = value; }
+        public double OverlayFontSize { get => TextElement.GetFontSize(RootControl); set => TextElement.SetFontSize(RootControl, value); }
 
         private class OverlaySettings
         {
@@ -153,7 +154,7 @@ namespace BannerlordTwitch.Overlay
                 this.Width = settings.WindowWidth;
                 this.Height = settings.WindowHeight;
                 
-                this.FeedFontSize = settings.FeedFontSize;
+                this.OverlayFontSize = settings.FeedFontSize;
             }
         }
 
@@ -166,7 +167,7 @@ namespace BannerlordTwitch.Overlay
                 WindowWidth = this.Width,
                 WindowHeight = this.Height,
                 
-                FeedFontSize = this.FeedFontSize,
+                FeedFontSize = this.OverlayFontSize,
             };
             OverlaySettings.Save(settings);
         }

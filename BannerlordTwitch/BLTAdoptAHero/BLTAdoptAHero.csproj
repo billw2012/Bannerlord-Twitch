@@ -203,6 +203,11 @@
       <Page Include="UI\TournamentQueuePanel.xaml" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <Target Name="AfterClean">
+        <RemoveDir Directories="C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\$(ProjectName)"/>
+        <RemoveDir Directories="$(OutDir)..\..\..\..\build"/>
+        <RemoveDir Directories="$(OutDir)..\..\..\..\obj"/>
+    </Target>
     <Target Name="AfterBuild">
         <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
         <Copy SourceFiles="std_module_strings_xml.xml" DestinationFolder="$(OutDir)..\..\ModuleData\Languages" />

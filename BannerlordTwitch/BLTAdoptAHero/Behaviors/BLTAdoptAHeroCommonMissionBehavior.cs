@@ -46,7 +46,7 @@ namespace BLTAdoptAHero
                 if (ReferenceEquals(null, other)) return 1;
                 int isPlayerSideComparison = -IsPlayerSide.CompareTo(other.IsPlayerSide);
                 if (isPlayerSideComparison != 0) return isPlayerSideComparison;
-                int killsComparison = Kills.CompareTo(other.Kills);
+                int killsComparison = other.Kills.CompareTo(Kills);
                 if (killsComparison != 0) return killsComparison;
                 return string.Compare(Name, other.Name, StringComparison.Ordinal);
             }
@@ -97,13 +97,13 @@ namespace BLTAdoptAHero
             {
                 return;
             }
+            // var allAgents = Mission.Current.AllAgents.Where(a => a.Character == hero.CharacterObject).ToList();
             var heroModel = new HeroViewModel
             {
                 Name = hero.FirstName.ToString(),
                 IsPlayerSide = hero.PartyBelongedTo?.LeaderHero == Hero.MainHero,
                 MaxHP = agent.HealthLimit,
                 HP = agent.Health,
-                Kills = agent.KillCount,
                 IsRouted = agent.State == AgentState.Routed,
                 IsUnconscious = agent.State == AgentState.Unconscious,
                 IsKilled = agent.State == AgentState.Killed,
@@ -124,7 +124,6 @@ namespace BLTAdoptAHero
                         hm.IsPlayerSide = heroModel.IsPlayerSide;
                         hm.MaxHP = heroModel.MaxHP;
                         hm.HP = heroModel.HP;
-                        hm.Kills = heroModel.Kills;
                         hm.IsRouted = heroModel.IsRouted;
                         hm.IsUnconscious = heroModel.IsUnconscious;
                         hm.IsKilled = heroModel.IsKilled;
@@ -135,6 +134,22 @@ namespace BLTAdoptAHero
                     }
                 }
 
+                heroesViewModel.Sort();
+                missionInfoPanel.HeroList.Items.Refresh();
+            });
+        }
+
+        private void AddHeroKill(Hero hero)
+        {
+            string heroName = hero.FirstName?.ToString();
+            Log.RunInfoPanelUpdate(() =>
+            {
+                var hm = heroesViewModel.FirstOrDefault(h => h.Name == heroName);
+                // This is expected to be non-null always
+                if (hm != null)
+                {
+                    hm.Kills++;
+                }
                 heroesViewModel.Sort();
                 missionInfoPanel.HeroList.Items.Refresh();
             });
@@ -220,7 +235,12 @@ namespace BLTAdoptAHero
                 {
                     Log.LogFeedResponse(affectorHero.FirstName.ToString(), results.ToArray());
                 }
+                
                 UpdateHeroVM(affectorAgent);
+                if (affectedAgent.IsHuman && agentState is AgentState.Unconscious or AgentState.Killed)
+                {
+                    AddHeroKill(affectorHero);
+                }                
             }
         }
 

@@ -285,6 +285,11 @@
     <Page Include="Overlay\OverlayWindow.xaml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterClean">
+    <RemoveDir Directories="C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\$(ProjectName)"/>
+    <RemoveDir Directories="$(OutDir)..\..\..\..\build"/>
+    <RemoveDir Directories="$(OutDir)..\..\..\..\obj"/>
+  </Target>
   <Target Name="AfterBuild">
     <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml" DestinationFolder="$(OutDir)..\.." />
     <Copy SourceFiles="Bannerlord-Twitch.yaml" DestinationFolder="$(OutDir)..\.." />

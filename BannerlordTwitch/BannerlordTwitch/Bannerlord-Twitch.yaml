@@ -97,8 +97,6 @@ Rewards:
     AllowVillageBattle: true
     AllowSiegeBattle: true
     AllowFriendlyMission: true
-    AllowArena: false
-    AllowTournament: false
     AllowHideOut: true
     OnPlayerSide: true
     GoldCost: 0
@@ -126,8 +124,6 @@ Rewards:
     AllowVillageBattle: true
     AllowSiegeBattle: true
     AllowFriendlyMission: true
-    AllowArena: false
-    AllowTournament: false
     AllowHideOut: true
     OnPlayerSide: false
     GoldCost: 0
@@ -475,7 +471,7 @@ Commands:
     ShowRetinue: false
 - Name: equip
   HideHelp: false
-  Help: Improve Equip (10k gold x Tier)
+  Help: Improve Equipment
   BroadcasterOnly: false
   ModOnly: false
   Handler: EquipHero
@@ -541,10 +537,10 @@ GlobalConfigs:
     WinMatchXP: 10000
     ParticipateMatchXP: 2500
 SimTesting:
-  UserCount: 20
+  UserCount: 10
   UserStayTime: 300
   IntervalMinMS: 100
-  IntervalMaxMS: 200
+  IntervalMaxMS: 500
   Init:
   - Type: Reward
     Id: Adopt a Hero
@@ -558,28 +554,32 @@ SimTesting:
   - Type: Reward
     Id: Attack
     Args: 
-    Weight: 1
+    Weight: 0.5
   - Type: Reward
     Id: Summon
     Args: 
-    Weight: 1
+    Weight: 2
   - Type: Reward
     Id: 100k gold
     Args: 
-    Weight: 1
+    Weight: 0.5
   - Type: Command
     Id: equip
-    Args:
-    Weight: 0.2
+    Args: 
+    Weight: 0.200000003
   - Type: Command
     Id: retinue
     Args: 
-    Weight: 0.2
+    Weight: 0.200000003
   - Type: Reward
     Id: Retire My Hero
     Args: yes
-    Weight: 0.01
+    Weight: 0.00999999978
   - Type: Reward
     Id: Adopt a Hero
     Args: yes
-    Weight: 0.01
+    Weight: 0.00999999978
+  - Type: Reward
+    Id: Heal Player
+    Args: yes
+    Weight: 0.0500000007
