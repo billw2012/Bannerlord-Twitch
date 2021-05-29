@@ -103,11 +103,11 @@ namespace BLTAdoptAHero
                     if (retinue.Count > 0)
                     {
                         double tier = retinue.Average(r => r.Tier);
-                        infoStrings.Add($"{retinue.Count} retinue (tier {tier:0.#})");
+                        infoStrings.Add($"Retinue {retinue.Count} (avg Tier {tier:0.#})");
                     }
                     else
                     {
-                        infoStrings.Add($"No retinue");
+                        infoStrings.Add($"Retinue None");
                     }
                 }
             }
