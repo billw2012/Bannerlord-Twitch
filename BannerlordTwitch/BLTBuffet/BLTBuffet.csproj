@@ -140,6 +140,11 @@
       <Content Include="Sounds.txt" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <Target Name="AfterClean">
+        <RemoveDir Directories="C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\$(ProjectName)"/>
+        <RemoveDir Directories="$(OutDir)..\..\..\..\build"/>
+        <RemoveDir Directories="$(OutDir)..\..\..\..\obj"/>
+    </Target>
     <Target Name="AfterBuild">
         <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
         <Copy SourceFiles="CharacterEffectProperties.txt" DestinationFolder="$(OutDir)..\.." />
