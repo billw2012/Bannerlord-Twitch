@@ -567,6 +567,10 @@ SimTesting:
     Id: equip
     Args: 
     Weight: 0.200000003
+  - Type: Reward
+    Id: Tournament
+    Args:
+    Weight: 0.100000001
   - Type: Command
     Id: retinue
     Args: 
