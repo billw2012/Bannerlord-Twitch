@@ -126,9 +126,14 @@ namespace BLTAdoptAHero
             {
                 agent.Health = agent.HealthLimit;
             }
-            agent.BaseHealthLimit *= Math.Max(1, BLTAdoptAHeroModule.CommonConfig.StartHealthMultiplier);
-            agent.HealthLimit *= Math.Max(1, BLTAdoptAHeroModule.CommonConfig.StartHealthMultiplier);
-            agent.Health *= Math.Max(1, BLTAdoptAHeroModule.CommonConfig.StartHealthMultiplier);
+
+            float multiplier = MissionHelpers.InTournament()
+                ? BLTAdoptAHeroModule.TournamentConfig.StartHealthMultiplier
+                : BLTAdoptAHeroModule.CommonConfig.StartHealthMultiplier;
+
+            agent.BaseHealthLimit *= Math.Max(1, multiplier);
+            agent.HealthLimit *= Math.Max(1, multiplier);
+            agent.Health *= Math.Max(1, multiplier);
         }
 
         public override void RegisterEvents()

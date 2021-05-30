@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using BannerlordTwitch.Rewards;
 using HarmonyLib;
@@ -211,6 +211,11 @@ namespace BLTAdoptAHero
         internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalTournamentConfig));
         internal static GlobalTournamentConfig Get() => ActionManager.GetGlobalConfig<GlobalTournamentConfig>(ID);
 
+        [Category("General"),
+         Description("Amount to multiply normal starting health by"),
+         PropertyOrder(1)]
+        public float StartHealthMultiplier { get; set; } = 2;
+        
         [Category("Rewards"), Description("Gold won if the hero wins the tournaments"), PropertyOrder(1)]
         public int WinGold { get; set; } = 50000;
 
