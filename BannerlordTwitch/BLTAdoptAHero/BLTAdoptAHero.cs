@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.ComponentModel;
 using BannerlordTwitch.Rewards;
 using HarmonyLib;
@@ -151,6 +151,11 @@ namespace BLTAdoptAHero
          Description("Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost)"),
          PropertyOrder(10)]
         public float SubBoost { get; set; } = 1;
+
+        [Category("General"),
+         Description("Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed. You should consider hiding "),
+         PropertyOrder(11)]
+        public bool UseRawXP { get; set; } = true;
 
         [Category("Kill Rewards"), Description("Gold the hero gets for every kill"), PropertyOrder(1)]
         public int GoldPerKill { get; set; } = 5000;

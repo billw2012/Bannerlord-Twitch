@@ -36,7 +36,7 @@ namespace BLTAdoptAHero
             if (skill == null) return (false, $"Couldn't find a skill to improve");
             float prevSkill = hero.HeroDeveloper.GetPropertyValue(skill);
             int prevLevel = hero.GetSkillValue(skill);
-            hero.HeroDeveloper.AddSkillXp(skill, amount);
+            hero.HeroDeveloper.AddSkillXp(skill, amount, isAffectedByFocusFactor: !BLTAdoptAHeroModule.CommonConfig.UseRawXP);
             // Force this immediately instead of waiting for the daily campaign tick
             CharacterDevelopmentCampaignBehaivor.DevelopCharacterStats(hero);
             
