@@ -24,7 +24,7 @@
             <Setter Property="FontSize" Value="12" />
         </Style>
     </Window.Resources>
-    <DockPanel x:Name="RootControl" LastChildFill="True">
+    <DockPanel LastChildFill="True">
         <DockPanel DockPanel.Dock="Top" Height="30" Background="Azure">
             <xctk:DropDownButton DockPanel.Dock="Right" Margin="4" Padding="8 0" Content="Config" WindowChrome.IsHitTestVisibleInChrome="True">
                 <xctk:DropDownButton.DropDownContent>
@@ -46,7 +46,7 @@
             </xctk:DropDownButton>
             <TextBlock Margin="10 2" FontSize="14" VerticalAlignment="Center" Text="{Binding Title, Mode=OneWay}"/>
         </DockPanel>
-        <DockPanel Background="#00FF00">
+        <DockPanel x:Name="RootControl" Background="#00FF00">
             <WrapPanel x:Name="InfoPanel" DockPanel.Dock="Bottom" Background="Transparent"/>
             
             <ItemsControl Name="FeedControl" ItemsSource="{Binding FeedItems}" Foreground="White" Background="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled"
