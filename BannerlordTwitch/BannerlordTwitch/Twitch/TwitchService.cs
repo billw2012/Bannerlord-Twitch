@@ -574,6 +574,7 @@ namespace BannerlordTwitch
 
         private void ReleaseUnmanagedResources()
         {
+            pubSub?.Disconnect();
             StopSim();
             RemoveRewards();
             bot?.Dispose();
