@@ -89,7 +89,7 @@ namespace BLTAdoptAHero
 
             return random 
                 ? selectedSkills?.SelectRandom() 
-                : selectedSkills?.SelectWeighted(MBRandom.RandomFloat, o => hero.GetSkillValue(o) + 1);
+                : selectedSkills?.SelectWeighted(MBRandom.RandomFloat, o => hero.GetSkillValue(o) + 50);
         }
     }
 }
