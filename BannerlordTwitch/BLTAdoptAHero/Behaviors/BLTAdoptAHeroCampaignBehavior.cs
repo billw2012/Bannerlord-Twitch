@@ -11,6 +11,7 @@ using TaleWorlds.ObjectSystem;
 using Bannerlord.ButterLib.SaveSystem.Extensions;
 using Helpers;
 using Newtonsoft.Json;
+using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.SaveSystem;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -39,6 +40,9 @@ namespace BLTAdoptAHero
 
             [SaveableProperty(2)]
             public int SpentGold { get; set; }
+            
+            [SaveableProperty(3)]
+            public int EquipmentTier { get; set; } = -2;
         }
 
         private Dictionary<Hero, HeroData> heroData = new();
@@ -50,11 +54,13 @@ namespace BLTAdoptAHero
                 Dictionary<Hero, int> heroGold = null;
                 dataStore.SyncData("HeroGold", ref heroGold);
                 dataStore.SyncDataAsJson("HeroData", ref heroData);
+
+                // Upgrade code
                 if (heroGold != null)
                 {
+                    Log.Trace($"Converting HeroGold to HeroData");
                     heroData = new Dictionary<Hero, HeroData>();
 
-                    // Upgrade code
                     foreach ((var hero, int gold) in heroGold)
                     {
                         heroData.Add(hero, new HeroData
@@ -76,6 +82,12 @@ namespace BLTAdoptAHero
                     int count = data.Retinue.RemoveAll(r => r.TroopType == null);
                     // Compensate with gold for each one lost
                     data.Gold += count * 50000;
+
+                    // Update EquipmentTier if it isn't set
+                    if (data.EquipmentTier == -2)
+                    {
+                        data.EquipmentTier = EquipHero.GetHeroEquipmentTier(hero);
+                    }
                 }
             }
             else
@@ -306,6 +318,11 @@ namespace BLTAdoptAHero
         public int GetHeroGold(Hero hero) => GetHeroData(hero).Gold;
 
         public void SetHeroGold(Hero hero, int gold) => GetHeroData(hero).Gold = gold;
+        
+        public int GetEquipmentTier(Hero hero) => GetHeroData(hero).EquipmentTier;
+
+        public void SetEquipmentTier(Hero hero, int tier) => GetHeroData(hero).EquipmentTier = tier;
+        
 
         public int ChangeHeroGold(Hero hero, int change, bool isSpending = false)
         {

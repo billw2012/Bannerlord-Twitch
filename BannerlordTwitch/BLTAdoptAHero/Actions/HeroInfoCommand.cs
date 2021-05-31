@@ -82,7 +82,7 @@ namespace BLTAdoptAHero
                 }
                 if (settings.ShowEquipment)
                 {
-                    infoStrings.Add($"Equip Tier {EquipHero.GetHeroEquipmentTier(adoptedHero) + 1}");
+                    infoStrings.Add($"Equip Tier {BLTAdoptAHeroCampaignBehavior.Get().GetEquipmentTier(adoptedHero) + 1}");
                 }
                 if(settings.ShowInventory)
                 {
