@@ -26,7 +26,28 @@ namespace BLTAdoptAHero
                 return missionInfoPanel;
             });
         }
-        
+
+        public override void OnAgentTeamChanged(Team prevTeam, Team newTeam, Agent agent)
+        {
+            if (newTeam == null ||
+                agent.State is AgentState.Deleted or AgentState.Killed or AgentState.Routed or AgentState.Unconscious)
+            {
+                return;
+            }
+            
+            if (agent == Agent.Main)
+            {
+                foreach (var a in Mission.AllAgents)
+                {
+                    UpdateHeroVM(a);
+                }
+            }
+            else
+            {
+                UpdateHeroVM(agent);
+            }
+        }
+
         protected override void OnEndMission()
         {
             Log.RemoveInfoPanel(missionInfoPanel);
@@ -116,7 +137,7 @@ namespace BLTAdoptAHero
             var heroModel = new HeroViewModel
             {
                 Name = hero.FirstName.ToString(),
-                IsPlayerSide = hero.PartyBelongedTo?.LeaderHero == Hero.MainHero,
+                IsPlayerSide = agent.Team == Mission.Current?.PlayerTeam || agent.Team == Mission.Current?.PlayerAllyTeam,// !agent.IsEnemyOf(Agent.Main), //hero.PartyBelongedTo?.LeaderHero == Hero.MainHero,
                 MaxHP = agent.HealthLimit,
                 HP = agent.Health,
                 IsRouted = agent.State == AgentState.Routed,

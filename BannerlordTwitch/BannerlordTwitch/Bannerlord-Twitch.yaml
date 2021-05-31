@@ -516,6 +516,7 @@ GlobalConfigs:
     StartRetinueHealthMultiplier: 2
     MoraleLossFactor: 0.5
     SubBoost: 1.20000005
+    UseRawXP: true
     GoldPerKill: 5000
     XPPerKill: 5000
     XPPerKilled: 2000
@@ -530,6 +531,7 @@ GlobalConfigs:
     LoseXP: 5000
 - Id: Adopt A Hero - Tournament Config
   Config:
+    StartHealthMultiplier: 2
     WinGold: 50000
     WinXP: 50000
     ParticipateXP: 10000
@@ -569,7 +571,7 @@ SimTesting:
     Weight: 0.200000003
   - Type: Reward
     Id: Tournament
-    Args:
+    Args: 
     Weight: 0.100000001
   - Type: Command
     Id: retinue
