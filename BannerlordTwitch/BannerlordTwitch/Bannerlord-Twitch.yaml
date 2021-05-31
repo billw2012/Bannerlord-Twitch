@@ -540,7 +540,7 @@ SimTesting:
   UserCount: 10
   UserStayTime: 300
   IntervalMinMS: 100
-  IntervalMaxMS: 500
+  IntervalMaxMS: 100
   Init:
   - Type: Reward
     Id: Adopt a Hero
