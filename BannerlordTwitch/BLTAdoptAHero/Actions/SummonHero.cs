@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -661,7 +661,7 @@ namespace BLTAdoptAHero
                             var retinueAgent = Mission.Current.SpawnTroop(
                                 new PartyAgentOrigin(existingHero.Party, retinueTroop),
                                 isPlayerSide: settings.OnPlayerSide,
-                                hasFormation: settings.OnPlayerSide ||
+                                hasFormation: !settings.OnPlayerSide ||
                                               existingHero.Formation != FormationClass.Bodyguard,
                                 spawnWithHorse: retinueTroop.IsMounted && isMounted,
                                 isReinforcement: true,
