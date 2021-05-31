@@ -47,7 +47,7 @@ Rewards:
     Title: 10k gold
     DisableAutomaticFulfillment: false
     Prompt: 
-    Cost: 1000
+    Cost: 500
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: false
@@ -64,7 +64,7 @@ Rewards:
     Title: 100k gold
     DisableAutomaticFulfillment: false
     Prompt: 
-    Cost: 9000
+    Cost: 2500
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: false
@@ -81,7 +81,7 @@ Rewards:
     Title: Summon
     DisableAutomaticFulfillment: false
     Prompt: 
-    Cost: 75
+    Cost: 50
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: false
@@ -108,7 +108,7 @@ Rewards:
     Title: Attack
     DisableAutomaticFulfillment: false
     Prompt: 
-    Cost: 75
+    Cost: 50
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: false
@@ -135,7 +135,7 @@ Rewards:
     Title: Heal Player
     DisableAutomaticFulfillment: false
     Prompt: 
-    Cost: 50
+    Cost: 100
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: false
@@ -344,13 +344,13 @@ Rewards:
     Title: Send Message In Game
     DisableAutomaticFulfillment: false
     Prompt: Enter Message
-    Cost: 500
+    Cost: 250
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: true
     MaxPerStream: 
-    MaxPerUserPerStream: 
-    GlobalCooldownSeconds: 
+    MaxPerUserPerStream: 10
+    GlobalCooldownSeconds: 15
   Handler: SendMessage
   Enabled: true
   RespondInTwitch: false
@@ -365,8 +365,8 @@ Rewards:
     BackgroundColorText: 
     IsUserInputRequired: true
     MaxPerStream: 
-    MaxPerUserPerStream: 
-    GlobalCooldownSeconds: 
+    MaxPerUserPerStream: 3
+    GlobalCooldownSeconds: 60
   Handler: RetireMyHero
   Enabled: true
   RespondInTwitch: true
@@ -437,24 +437,7 @@ Rewards:
 Commands:
 - Name: stats
   HideHelp: false
-  Help: Hero stats
-  BroadcasterOnly: false
-  ModOnly: false
-  Handler: HeroInfoCommand
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    ShowGeneral: true
-    ShowTopSkills: true
-    MinSkillToShow: 150
-    ShowAttributes: true
-    ShowEquipment: true
-    ShowInventory: false
-    ShowRetinue: true
-- Name: inv
-  HideHelp: false
-  Help: Hero equipment
+  Help: Show Stats
   BroadcasterOnly: false
   ModOnly: false
   Handler: HeroInfoCommand
@@ -467,11 +450,28 @@ Commands:
     MinSkillToShow: 100
     ShowAttributes: true
     ShowEquipment: false
+    ShowInventory: false
+    ShowRetinue: true
+- Name: inv
+  HideHelp: false
+  Help: Show Equipment
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: HeroInfoCommand
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    ShowGeneral: false
+    ShowTopSkills: false
+    MinSkillToShow: 100
+    ShowAttributes: false
+    ShowEquipment: true
     ShowInventory: true
     ShowRetinue: false
 - Name: equip
   HideHelp: false
-  Help: Improve Equipment
+  Help: Upgrade Equipment
   BroadcasterOnly: false
   ModOnly: false
   Handler: EquipHero
@@ -491,7 +491,7 @@ Commands:
     MultiplyCostByCurrentTier: true
 - Name: retinue
   HideHelp: false
-  Help: Upgrade retinue
+  Help: Upgrade Retinue
   BroadcasterOnly: false
   ModOnly: false
   Handler: Retinue
