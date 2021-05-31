@@ -75,6 +75,7 @@ namespace BannerlordTwitch.Util
         public static void LogFeed(string str, Color color)
         {
             BLTModule.AddToFeed(str, color);
+            Info(str);
         }
                 
         public static void AddInfoPanel(Func<UIElement> construct)
