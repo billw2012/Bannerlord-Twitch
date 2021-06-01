@@ -130,7 +130,7 @@ namespace BLTAdoptAHero
             int retinue = 0;
             if (retinueAgents.TryGetValue(hero, out var r))
             {
-                retinue = r.Count(ra => ra.State == AgentState.Active);
+                retinue = r.Count;
             }
             
             // var allAgents = Mission.Current.AllAgents.Where(a => a.Character == hero.CharacterObject).ToList();
@@ -180,9 +180,9 @@ namespace BLTAdoptAHero
         private void UpdateHeroRetinueVM(Hero hero)
         {
             int retinue = 0;
-            if (retinueAgents.TryGetValue(hero, out var r))
+            if (retinueAgents.TryGetValue(hero, out var retinueList))
             {
-                retinue = r.Count(ra => ra.State == AgentState.Active);
+                retinue = retinueList.Count;
             }
 
             string name = hero.FirstName.ToString();
@@ -271,7 +271,7 @@ namespace BLTAdoptAHero
             }
             UpdateHeroRetinueVM(owner);
         }
-        
+
         public override void OnAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)
         {
             var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
@@ -323,17 +323,24 @@ namespace BLTAdoptAHero
             {
                 AddHeroRetinueKill(affectorRetinueOwner);
             }
-            if (affectedAgent != null && retinueAgentOwners.TryGetValue(affectedAgent, out var affectedRetinueOwner))
+
+            // Update retinue
+            if (affectedAgent != null)
             {
-                UpdateHeroRetinueVM(affectedRetinueOwner);
+                if(retinueAgentOwners.TryGetValue(affectedAgent, out var affectedRetinueOwner))
+                {
+                    UpdateHeroRetinueVM(affectedRetinueOwner);
+                }
+                
+                // Remove any references to the Agent, as it can become undefined later on (internal agent handle gets reused)
+                foreach (var r in retinueAgents.Values)
+                {
+                    r.Remove(affectedAgent);
+                }
+                retinueAgentOwners.Remove(affectedAgent);
             }
         }
 
-        // public override void OnAgentDeleted(Agent affectedAgent)
-        // {
-        //     
-        // }
-        //
         // public override void OnAgentFleeing(Agent affectedAgent)
         // {
         //     
