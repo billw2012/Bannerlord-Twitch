@@ -102,7 +102,6 @@ namespace BLTAdoptAHero
 
         public override void OnAgentCreated(Agent agent)
         {
-            base.OnAgentCreated(agent);
             ForAgent(agent, l => l.onAgentCreated?.Invoke(agent));
         }
 
@@ -113,13 +112,17 @@ namespace BLTAdoptAHero
             {
                 ForAgent(killerAgent, l => l.onGotAKill?.Invoke(killerAgent, killedAgent, agentState));
             }
-            base.OnAgentRemoved(killedAgent, killerAgent, agentState, blow);
+        }
+
+        public override void OnAgentDeleted(Agent affectedAgent)
+        {
+            // Have to do this, as agent state become undefined after they are deleted 
+            agentListeners.Remove(affectedAgent);
         }
 
         protected override void OnEndMission()
         {
             ForAll(listeners => listeners.onMissionOver?.Invoke());
-            base.OnEndMission();
         }
 
         private const float SlowTickDuration = 2;

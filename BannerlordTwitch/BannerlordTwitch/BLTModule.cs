@@ -21,7 +21,7 @@ namespace BannerlordTwitch
 	internal class BLTModule : MBSubModuleBase
 	{
 		public const string Name = "BannerlordTwitch";
-		public const string Ver = "1.3";
+		public const string Ver = "1.3.3";
 		
 		private static readonly Thread thread;
 		private static OverlayWindow overlayWindow;
@@ -138,22 +138,31 @@ namespace BannerlordTwitch
 
 		public override void OnGameInitializationFinished(Game game)
 		{
-			if (
-#if BL_V_1_5_9
-					CampaignOptions.AutoSaveInMinutes
-#else
-				Campaign.Current.SaveHandler.AutoSaveInterval
-#endif
-				<= 0
-			)
+			if(game.GameType is Campaign)
 			{
-				InformationManager.ShowInquiry(
-					new InquiryData(
-						"Bannerlord Twitch Mod WARNING",
-						$"You have auto save disabled, crashes could result in lost channel points!\n" +
-						$"Recommended you set it to 15 minutes or less.",
-						true, false, "Okay", null,
-						() => { }, () => { }), true);
+				object ownerHandle = new object();
+				CampaignEvents.DailyTickEvent.AddNonSerializedListener(ownerHandle, () =>
+				{
+					if (
+#if BL_V_1_5_9
+						CampaignOptions.AutoSaveInMinutes
+#else
+						Campaign.Current.SaveHandler.AutoSaveInterval
+#endif
+						<= 0
+					)
+					{
+						InformationManager.ShowInquiry(
+							new InquiryData(
+								"Bannerlord Twitch Mod WARNING",
+								$"You have auto save disabled, crashes could result in lost channel points!\n" +
+								$"Recommended you set it to 15 minutes or less.",
+								true, false, "Okay", null,
+								() => { }, () => { }), true);
+					}
+					
+					CampaignEvents.DailyTickEvent.ClearListeners(ownerHandle);
+				});
 			}
 		}
 

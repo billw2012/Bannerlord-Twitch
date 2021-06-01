@@ -1,15 +1,12 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using BannerlordTwitch.Rewards;
 using HarmonyLib;
 using JetBrains.Annotations;
 using SandBox;
-using SandBox.GauntletUI;
 using SandBox.View;
 using SandBox.View.Missions;
 using SandBox.ViewModelCollection;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
@@ -26,7 +23,7 @@ namespace BLTAdoptAHero
     {
         private Harmony harmony;
         public const string Name = "BLTAdoptAHero";
-        public const string Ver = "1.3";
+        public const string Ver = "1.3.3";
 
         internal static GlobalCommonConfig CommonConfig { get; private set; }
         internal static GlobalTournamentConfig TournamentConfig { get; private set; }
@@ -52,11 +49,11 @@ namespace BLTAdoptAHero
         {
             if (MissionHelpers.InSiegeMission() || MissionHelpers.InFieldBattleMission() || MissionHelpers.InHideOutMission())
             {
-                if (Agent.Main != null && agent.IsEnemyOf(Agent.Main))
+                if (Agent.Main != null && agent.IsEnemyOf(Agent.Main) || agent.Team.IsEnemyOf(Mission.Current.PlayerTeam))
                 {
                     __instance.MarkerType = 2;
                 }
-                else if (Agent.Main != null && agent.IsFriendOf(Agent.Main))
+                else if (Agent.Main != null && agent.IsFriendOf(Agent.Main) || agent.Team.IsFriendOf(Mission.Current.PlayerTeam))
                 {
                     __instance.MarkerType = 0;
                 }
@@ -80,7 +77,6 @@ namespace BLTAdoptAHero
 
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
         {
-            base.OnGameStart(game, gameStarterObject);
             if(game.GameType is Campaign) 
             {
                 // Reload settings here so they are fresh
@@ -152,6 +148,11 @@ namespace BLTAdoptAHero
          PropertyOrder(10)]
         public float SubBoost { get; set; } = 1;
 
+        [Category("General"),
+         Description("Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed. You should consider hiding "),
+         PropertyOrder(11)]
+        public bool UseRawXP { get; set; } = true;
+
         [Category("Kill Rewards"), Description("Gold the hero gets for every kill"), PropertyOrder(1)]
         public int GoldPerKill { get; set; } = 5000;
 
@@ -206,6 +207,11 @@ namespace BLTAdoptAHero
         internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalTournamentConfig));
         internal static GlobalTournamentConfig Get() => ActionManager.GetGlobalConfig<GlobalTournamentConfig>(ID);
 
+        [Category("General"),
+         Description("Amount to multiply normal starting health by"),
+         PropertyOrder(1)]
+        public float StartHealthMultiplier { get; set; } = 2;
+        
         [Category("Rewards"), Description("Gold won if the hero wins the tournaments"), PropertyOrder(1)]
         public int WinGold { get; set; } = 50000;
 

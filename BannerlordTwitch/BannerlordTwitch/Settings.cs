@@ -219,33 +219,7 @@ namespace BannerlordTwitch
                 .Serialize(authSettings));
         }
     }
-    
-    public class Db
-    {
-#pragma warning disable 414
-        public int Version = 1;
-#pragma warning restore 414
-        public List<string> RewardsCreated { get; set; } = new();
-        
-        private static PlatformFilePath DbFilePath => FileSystem.GetConfigPath("Bannerlord-Twitch-Db.yaml");
 
-        public static Db Load()
-        {
-            return !FileSystem.FileExists(DbFilePath) 
-                ? new Db()
-                : new DeserializerBuilder()
-                    .IgnoreUnmatchedProperties()
-                    .Build()
-                    .Deserialize<Db>(FileSystem.GetFileContentString(DbFilePath));
-        }
-        
-        public static void Save(Db db) => FileSystem.SaveFileString(DbFilePath, 
-            new SerializerBuilder()
-                .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
-                .Build()
-                .Serialize(db));
-    }
-    
     public class Settings
     {
         public List<Reward> Rewards { get; set; } = new ();

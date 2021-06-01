@@ -187,14 +187,14 @@ namespace BannerlordTwitch
         
         private async void RegisterRewardsAsync()
         {
-            Log.Info("Creating rewards");
+            RemoveRewards();
 
-            var db = Db.Load();
+            Log.Info("Creating rewards");
             
             GetCustomRewardsResponse existingRewards = null;
             try
             {
-                existingRewards = await api.Helix.ChannelPoints.GetCustomReward(channelId, accessToken: authSettings.AccessToken);
+                existingRewards = await api.Helix.ChannelPoints.GetCustomReward(channelId, accessToken: authSettings.AccessToken, onlyManageableRewards: true);
             }
             catch (Exception e)
             {
@@ -208,7 +208,6 @@ namespace BannerlordTwitch
                 {
                     var createdReward = (await api.Helix.ChannelPoints.CreateCustomRewards(channelId, rewardDef.RewardSpec.GetTwitchSpec(), authSettings.AccessToken)).Data.First();
                     Log.Info($"Created reward {createdReward.Title} ({createdReward.Id})");
-                    db.RewardsCreated.Add(createdReward.Id);
                 }
                 catch (Exception e)
                 {
@@ -224,69 +223,26 @@ namespace BannerlordTwitch
                         "Bannerlord Twitch",
                         $"Failed to create some of the channel rewards, please check the logs for details!",
                         true, false, "Okay", null,
-                        () =>
-                        {
-                            // Can't get the file path directly since 1.5.10 ...
-                            // string logDir = Path.Combine(Paths.ConfigPath, "..", "logs");
-                            // try
-                            // {
-                            //     string logFile = Directory.GetFiles(logDir, "rgl_log_*.txt")
-                            //         .FirstOrDefault(f => !f.Contains("errors"));
-                            //     if (logFile != null)
-                            //     {
-                            //         // open with default editor
-                            //         Process.Start(logFile);
-                            //     }
-                            //     else
-                            //     {
-                            //         Log.LogFeedFail($"ERROR: Couldn't find the log file at {logDir}");
-                            //     }
-                            // }
-                            // catch
-                            // {
-                            //     // ignored
-                            // }
-                        }, () => {}), true);
+                        () => {}, () => {}), true);
             }
-            
-            Db.Save(db);
         }
 
         private void RemoveRewards()
         {
-            // Log.Info("Removing rewards");
-
-            // try
-            // {
-            //     // First cancel all pending redemptions
-            //     Task.WaitAll(redemptionCache.Values.Select(
-            //         redemption => SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.CANCELED)
-            //             .ContinueWith(t => Log.Info(t.IsCompleted
-            //                 ? $"Incomplete redemption of {redemption.RewardTitle} for {redemption.DisplayName} refunded"
-            //                 : $"Couldn't refund redemption of {redemption.RewardTitle} for {redemption.DisplayName}: {t.Exception?.Message}"))).ToArray(),
-            //         TimeSpan.FromSeconds(5));
-            // }
-            // catch (Exception e)
-            // {
-            //     Log.LogFeedSystem($"Failed to cancel redemptions: {e.Message}");
-            // }
-
-            var db = Db.Load();
-            var removedRewards = new ConcurrentBag<string>();
+            Log.Info("Removing existing rewards");
             try
             {
-                Task.WaitAll(db.RewardsCreated.ToList().Select(rewardId => api.Helix.ChannelPoints.DeleteCustomReward(channelId, rewardId, accessToken: authSettings.AccessToken)
+                var allRewards = api.Helix.ChannelPoints.GetCustomReward(channelId, accessToken: authSettings.AccessToken, onlyManageableRewards: true).Result;
+                if (allRewards == null)
+                {
+                    throw new Exception($"Couldn't retrieve channel point rewards");
+                }
+                Task.WaitAll(allRewards.Data.Select(r => api.Helix.ChannelPoints.DeleteCustomReward(channelId, r.Id, accessToken: authSettings.AccessToken)
                         .ContinueWith(t =>
                         {
-                            if (t.IsCompleted)
-                            {
-                                Log.Info($"Removed reward {rewardId}");
-                                removedRewards.Add(rewardId);
-                            }
-                            else
-                            {
-                                Log.Info($"Failed to remove {rewardId}: {t.Exception?.Message}");
-                            }
+                            Log.Info(t.IsCompleted
+                                ? $"Removed reward {r.Title}"
+                                : $"Failed to remove {r.Title}: {t.Exception?.Message}");
                         })).ToArray(), TimeSpan.FromSeconds(5));
                 Log.LogFeedSystem($"All rewards removed");
             }
@@ -294,9 +250,6 @@ namespace BannerlordTwitch
             {
                 Log.LogFeedSystem($"Failed to remove all rewards: {e.Message}");
             }
-            db.RewardsCreated.RemoveAll(r => removedRewards.Contains(r));
-            Db.Save(db);
-            
         }
 
         private void OnRewardRedeemed(object sender, OnRewardRedeemedArgs redeemedArgs)
@@ -577,6 +530,7 @@ namespace BannerlordTwitch
             StopSim();
             RemoveRewards();
             bot?.Dispose();
+            pubSub?.Disconnect();
             Log.LogFeedSystem($"TwitchService stopped");
         }
 

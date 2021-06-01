@@ -273,6 +273,11 @@ namespace BLTAdoptAHero
                         settings.StartWithMeleeWeapon, settings.StartWithRangedWeapon, 
                         settings.StartWithArmor, settings.StartWithHorse, true);
                 }
+                BLTAdoptAHeroCampaignBehavior.Get().SetEquipmentTier(newHero, settings.StartingEquipmentTier.Value - 1);
+            }
+            else
+            {
+                BLTAdoptAHeroCampaignBehavior.Get().SetEquipmentTier(newHero, EquipHero.GetHeroEquipmentTier(newHero));
             }
             
             if(!Campaign.Current.EncyclopediaManager.BookmarksTracker.IsBookmarked(newHero))

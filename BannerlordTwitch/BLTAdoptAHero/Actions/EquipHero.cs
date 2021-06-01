@@ -44,17 +44,6 @@ namespace BLTAdoptAHero
         }
 
         protected override Type ConfigType => typeof(Settings);
-        
-        public static int GetHeroEquipmentTier(Hero hero) =>
-            // The Mode of the tiers of the equipment
-            hero.BattleEquipment.YieldEquipmentSlots().Concat(hero.CivilianEquipment.YieldEquipmentSlots())
-                .Where(s => s.index is >= EquipmentIndex.ArmorItemBeginSlot and < EquipmentIndex.ArmorItemEndSlot || s.element.Item != null)
-                .Select(s => s.element.Item)
-                .Select(i => (int) (i?.Tier ?? 0))
-                .GroupBy(v => v)
-                .OrderByDescending(g => g.Count())
-                .FirstOrDefault()?
-                .Key ?? -1;
 
         protected override void ExecuteInternal(ReplyContext context, object config,
             Action<string> onSuccess,
@@ -83,7 +72,7 @@ namespace BLTAdoptAHero
                 return;
             }
             int targetTier = settings.Upgrade 
-                    ? GetHeroEquipmentTier(adoptedHero) + 1 
+                    ? BLTAdoptAHeroCampaignBehavior.Get().GetEquipmentTier(adoptedHero) + 1 
                     : (settings.Tier ?? 1) - 1
                 ;
             
@@ -111,9 +100,10 @@ namespace BLTAdoptAHero
                 onFailure($"Couldn't find any items to upgrade!");
                 return;
             }
+
+            BLTAdoptAHeroCampaignBehavior.Get().SetEquipmentTier(adoptedHero, targetTier);
             BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -cost, isSpending: true);
-            //string itemsStr = string.Join(", ", itemsPurchased.Select(i => i.Name.ToString()));
-            // $"You purchased these items: {itemsStr}!"
+
             onSuccess($"Equip Tier {targetTier + 1}");
         }
 
@@ -128,6 +118,17 @@ namespace BLTAdoptAHero
                 adoptedHero.CivilianEquipment[slot.index] = EquipmentElement.Invalid;
             }
         }
+        
+        public static int GetHeroEquipmentTier(Hero hero) =>
+            // The Mode of the tiers of the equipment
+            hero.BattleEquipment.YieldEquipmentSlots().Concat(hero.CivilianEquipment.YieldEquipmentSlots())
+                .Where(s => s.index is >= EquipmentIndex.ArmorItemBeginSlot and < EquipmentIndex.ArmorItemEndSlot || s.element.Item != null)
+                .Select(s => s.element.Item)
+                .Select(i => i == null ? -1 : (int)i.Tier)
+                .GroupBy(v => v)
+                .OrderByDescending(g => g.Count())
+                .FirstOrDefault()?
+                .Key ?? -1;
         
         internal static List<ItemObject> UpgradeEquipment(Hero adoptedHero, int targetTier, bool upgradeMelee, bool upgradeRanged, bool upgradeArmor, bool upgradeHorse, bool upgradeCivilian)
         {

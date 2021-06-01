@@ -32,11 +32,11 @@ namespace BLTAdoptAHero
 
         public static (bool success, string description) ImproveSkill(Hero hero, int amount, Skills skills, bool random, bool auto)
         {
-            var skill = GetSkill(hero, skills, random, auto, so => hero.HeroDeveloper.GetFocusFactor(so) > 0);
+            var skill = GetSkill(hero, skills, random, auto, so => BLTAdoptAHeroModule.CommonConfig.UseRawXP || hero.HeroDeveloper.GetFocusFactor(so) > 0);
             if (skill == null) return (false, $"Couldn't find a skill to improve");
             float prevSkill = hero.HeroDeveloper.GetPropertyValue(skill);
             int prevLevel = hero.GetSkillValue(skill);
-            hero.HeroDeveloper.AddSkillXp(skill, amount);
+            hero.HeroDeveloper.AddSkillXp(skill, amount, isAffectedByFocusFactor: !BLTAdoptAHeroModule.CommonConfig.UseRawXP);
             // Force this immediately instead of waiting for the daily campaign tick
             CharacterDevelopmentCampaignBehaivor.DevelopCharacterStats(hero);
             

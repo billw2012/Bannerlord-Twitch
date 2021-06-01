@@ -71,7 +71,7 @@ namespace BannerlordTwitch.Testing
                         }
                     }
                     var user = users.SelectRandom();
-                    if (user != null)
+                    if (user != null && simSettings.Use != null)
                     {
                         MainThreadSync.Run(() =>
                         {

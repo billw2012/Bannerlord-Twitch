@@ -26,7 +26,28 @@ namespace BLTAdoptAHero
                 return missionInfoPanel;
             });
         }
-        
+
+        public override void OnAgentTeamChanged(Team prevTeam, Team newTeam, Agent agent)
+        {
+            if (newTeam == null ||
+                agent.State is AgentState.Deleted or AgentState.Killed or AgentState.Routed or AgentState.Unconscious)
+            {
+                return;
+            }
+            
+            if (agent == Agent.Main)
+            {
+                foreach (var a in Mission.AllAgents)
+                {
+                    UpdateHeroVM(a);
+                }
+            }
+            else
+            {
+                UpdateHeroVM(agent);
+            }
+        }
+
         protected override void OnEndMission()
         {
             Log.RemoveInfoPanel(missionInfoPanel);
@@ -37,7 +58,12 @@ namespace BLTAdoptAHero
             var hero = (agent?.Character as CharacterObject)?.HeroObject;
             return hero?.IsAdopted() == true ? hero : null;
         }
-
+        
+        private Hero GetAdoptedHeroFromRetinueAgent(Agent agent)
+        {
+            return agent != null && retinueAgentOwners.TryGetValue(agent, out var hero) ? hero : null;
+        }
+        
         private class HeroViewModel : IComparable<HeroViewModel>, IComparable
         {
             public int CompareTo(HeroViewModel other)
@@ -66,12 +92,15 @@ namespace BLTAdoptAHero
             public float MaxHP { get; set; }
             public float HP { get; set; }
             public int Kills { get; set; }
-
             public string KillsText => Kills == 0 ? string.Empty : Kills.ToString();
-            // public string KillsString => Kills.ToString();
-
             public Visibility KillsVisibility => Kills > 0 ? Visibility.Visible : Visibility.Hidden;
-
+            
+            public int Retinue { get; set; }
+            public List<object> RetinueList => Enumerable.Repeat<object>(null, Retinue).ToList();
+            public int RetinueKills { get; set; }
+            public string RetinueKillsText => RetinueKills == 0 ? string.Empty : $"+{RetinueKills}";
+            public Visibility RetinueKillsVisibility => RetinueKills > 0 ? Visibility.Visible : Visibility.Hidden;
+            
             public Brush TextColor => IsRouted
                 ? Brushes.Yellow
                 : IsKilled
@@ -97,16 +126,24 @@ namespace BLTAdoptAHero
             {
                 return;
             }
+
+            int retinue = 0;
+            if (retinueAgents.TryGetValue(hero, out var r))
+            {
+                retinue = r.Count;
+            }
+            
             // var allAgents = Mission.Current.AllAgents.Where(a => a.Character == hero.CharacterObject).ToList();
             var heroModel = new HeroViewModel
             {
                 Name = hero.FirstName.ToString(),
-                IsPlayerSide = hero.PartyBelongedTo?.LeaderHero == Hero.MainHero,
+                IsPlayerSide = agent.Team == Mission.Current?.PlayerTeam || agent.Team == Mission.Current?.PlayerAllyTeam,// !agent.IsEnemyOf(Agent.Main), //hero.PartyBelongedTo?.LeaderHero == Hero.MainHero,
                 MaxHP = agent.HealthLimit,
                 HP = agent.Health,
                 IsRouted = agent.State == AgentState.Routed,
                 IsUnconscious = agent.State == AgentState.Unconscious,
                 IsKilled = agent.State == AgentState.Killed,
+                Retinue = retinue,
             };
             bool shouldRemove = agent.State is not AgentState.Active && MissionHelpers.InTournament();
             Log.RunInfoPanelUpdate(() =>
@@ -127,6 +164,7 @@ namespace BLTAdoptAHero
                         hm.IsRouted = heroModel.IsRouted;
                         hm.IsUnconscious = heroModel.IsUnconscious;
                         hm.IsKilled = heroModel.IsKilled;
+                        hm.Retinue = heroModel.Retinue;
                     }
                     else
                     {
@@ -134,6 +172,27 @@ namespace BLTAdoptAHero
                     }
                 }
 
+                heroesViewModel.Sort();
+                missionInfoPanel.HeroList.Items.Refresh();
+            });
+        }
+
+        private void UpdateHeroRetinueVM(Hero hero)
+        {
+            int retinue = 0;
+            if (retinueAgents.TryGetValue(hero, out var retinueList))
+            {
+                retinue = retinueList.Count;
+            }
+
+            string name = hero.FirstName.ToString();
+            Log.RunInfoPanelUpdate(() =>
+            {
+                var hm = heroesViewModel.FirstOrDefault(h => h.Name == name);
+                if (hm != null)
+                {
+                    hm.Retinue = retinue;
+                }
                 heroesViewModel.Sort();
                 missionInfoPanel.HeroList.Items.Refresh();
             });
@@ -149,6 +208,22 @@ namespace BLTAdoptAHero
                 if (hm != null)
                 {
                     hm.Kills++;
+                }
+                heroesViewModel.Sort();
+                missionInfoPanel.HeroList.Items.Refresh();
+            });
+        }
+        
+        private void AddHeroRetinueKill(Hero hero)
+        {
+            string heroName = hero.FirstName?.ToString();
+            Log.RunInfoPanelUpdate(() =>
+            {
+                var hm = heroesViewModel.FirstOrDefault(h => h.Name == heroName);
+                // This is expected to be non-null always
+                if (hm != null)
+                {
+                    hm.RetinueKills++;
                 }
                 heroesViewModel.Sort();
                 missionInfoPanel.HeroList.Items.Refresh();
@@ -173,19 +248,6 @@ namespace BLTAdoptAHero
             UpdateHeroVM(affectedAgent);
         }
 
-        // public override void OnEarlyAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)
-        // {
-        //     var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
-        //     if (affectedHero != null)
-        //     {
-        //         affectedAgent.State = AgentState.Killed;
-        //         // if (!globalSettings.AllowDeath && affectedAgent.State == AgentState.Killed)
-        //         // {
-        //         //     affectedAgent.State = AgentState.Unconscious;
-        //         // }
-        //     }
-        // }
-
         [UsedImplicitly, HarmonyPrefix, HarmonyPatch(typeof(Mission), "OnAgentRemoved")]
         public static void OnAgentRemovedPrefix(Mission __instance, Agent affectedAgent, Agent affectorAgent,
             ref AgentState agentState, KillingBlow killingBlow)
@@ -195,6 +257,19 @@ namespace BLTAdoptAHero
             {
                 agentState = affectedAgent.State = AgentState.Unconscious;
             }
+        }
+
+        private Dictionary<Hero, List<Agent>> retinueAgents = new();
+        private Dictionary<Agent, Hero> retinueAgentOwners = new();
+        
+        public void RegisterRetinue(Hero owner, List<Agent> retinue)
+        {
+            retinueAgents[owner] = retinue;
+            foreach (var r in retinue)
+            {
+                retinueAgentOwners.Add(r, owner);
+            }
+            UpdateHeroRetinueVM(owner);
         }
 
         public override void OnAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)
@@ -242,13 +317,30 @@ namespace BLTAdoptAHero
                     AddHeroKill(affectorHero);
                 }                
             }
+
+            var affectorRetinueOwner = GetAdoptedHeroFromRetinueAgent(affectorAgent);
+            if (affectorRetinueOwner != null)
+            {
+                AddHeroRetinueKill(affectorRetinueOwner);
+            }
+
+            // Update retinue
+            if (affectedAgent != null)
+            {
+                if(retinueAgentOwners.TryGetValue(affectedAgent, out var affectedRetinueOwner))
+                {
+                    UpdateHeroRetinueVM(affectedRetinueOwner);
+                }
+                
+                // Remove any references to the Agent, as it can become undefined later on (internal agent handle gets reused)
+                foreach (var r in retinueAgents.Values)
+                {
+                    r.Remove(affectedAgent);
+                }
+                retinueAgentOwners.Remove(affectedAgent);
+            }
         }
 
-        // public override void OnAgentDeleted(Agent affectedAgent)
-        // {
-        //     
-        // }
-        //
         // public override void OnAgentFleeing(Agent affectedAgent)
         // {
         //     
