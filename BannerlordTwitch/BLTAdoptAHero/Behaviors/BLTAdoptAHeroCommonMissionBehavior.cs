@@ -27,14 +27,8 @@ namespace BLTAdoptAHero
             });
         }
 
-        public override void OnAgentTeamChanged(Team prevTeam, Team newTeam, Agent agent)
+        public override void OnAgentBuild(Agent agent, Banner banner)
         {
-            if (newTeam == null ||
-                agent.State is AgentState.Deleted or AgentState.Killed or AgentState.Routed or AgentState.Unconscious)
-            {
-                return;
-            }
-            
             if (agent == Agent.Main)
             {
                 foreach (var a in Mission.AllAgents)
@@ -46,6 +40,11 @@ namespace BLTAdoptAHero
             {
                 UpdateHeroVM(agent);
             }
+        }
+
+        public override void OnMissionTick(float dt)
+        {
+            // TODO: update all a on slow tick
         }
 
         protected override void OnEndMission()
