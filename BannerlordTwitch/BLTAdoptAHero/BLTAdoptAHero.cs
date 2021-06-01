@@ -1,15 +1,12 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using BannerlordTwitch.Rewards;
 using HarmonyLib;
 using JetBrains.Annotations;
 using SandBox;
-using SandBox.GauntletUI;
 using SandBox.View;
 using SandBox.View.Missions;
 using SandBox.ViewModelCollection;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
@@ -26,7 +23,7 @@ namespace BLTAdoptAHero
     {
         private Harmony harmony;
         public const string Name = "BLTAdoptAHero";
-        public const string Ver = "1.3";
+        public const string Ver = "1.3.2";
 
         internal static GlobalCommonConfig CommonConfig { get; private set; }
         internal static GlobalTournamentConfig TournamentConfig { get; private set; }
