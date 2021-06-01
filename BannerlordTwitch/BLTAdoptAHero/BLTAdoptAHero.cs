@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using BannerlordTwitch.Rewards;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -23,7 +23,7 @@ namespace BLTAdoptAHero
     {
         private Harmony harmony;
         public const string Name = "BLTAdoptAHero";
-        public const string Ver = "1.3.2";
+        public const string Ver = "1.3.3";
 
         internal static GlobalCommonConfig CommonConfig { get; private set; }
         internal static GlobalTournamentConfig TournamentConfig { get; private set; }
