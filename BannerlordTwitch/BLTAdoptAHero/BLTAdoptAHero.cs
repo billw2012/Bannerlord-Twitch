@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using BannerlordTwitch.Rewards;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -49,11 +49,11 @@ namespace BLTAdoptAHero
         {
             if (MissionHelpers.InSiegeMission() || MissionHelpers.InFieldBattleMission() || MissionHelpers.InHideOutMission())
             {
-                if (Agent.Main != null && agent.IsEnemyOf(Agent.Main))
+                if (Agent.Main != null && agent.IsEnemyOf(Agent.Main) || agent.Team.IsEnemyOf(Mission.Current.PlayerTeam))
                 {
                     __instance.MarkerType = 2;
                 }
-                else if (Agent.Main != null && agent.IsFriendOf(Agent.Main))
+                else if (Agent.Main != null && agent.IsFriendOf(Agent.Main) || agent.Team.IsFriendOf(Mission.Current.PlayerTeam))
                 {
                     __instance.MarkerType = 0;
                 }
