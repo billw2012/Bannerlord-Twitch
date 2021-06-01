@@ -77,7 +77,6 @@ namespace BLTAdoptAHero
 
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
         {
-            base.OnGameStart(game, gameStarterObject);
             if(game.GameType is Campaign) 
             {
                 // Reload settings here so they are fresh
