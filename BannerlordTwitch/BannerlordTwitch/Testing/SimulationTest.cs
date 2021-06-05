@@ -86,7 +86,7 @@ namespace BannerlordTwitch.Testing
 
         private static void RunItem(Settings settings, SimTestingItem item, User user)
         {
-            if (item.Type == "Reward")
+            if (item.Type == SimActionType.Reward)
             {
                 BLTModule.TwitchService?.TestRedeem(item.Id, user.name, item.Args);
             }
@@ -95,7 +95,7 @@ namespace BannerlordTwitch.Testing
                 var cmd = settings.EnabledCommands.FirstOrDefault(c => c.Name == item.Id);
                 if (cmd != null)
                 {
-                    ActionManager.HandleCommand(cmd.Handler, ReplyContext.FromUser(cmd, user.name), cmd.HandlerConfig);
+                    ActionManager.HandleCommand(cmd.Handler, ReplyContext.FromUser(cmd, user.name, item.Args), cmd.HandlerConfig);
                 }
             }
         }

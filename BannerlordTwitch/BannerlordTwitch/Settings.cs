@@ -170,24 +170,44 @@ namespace BannerlordTwitch
         public override string ToString() => Id;
     }
 
+    public enum SimActionType
+    {
+        Reward,
+        Command
+    }
+
     [UsedImplicitly]
     public class SimTestingItem
     {
-        public string Type { get; set; }
+        [PropertyOrder(1)]
+        public SimActionType Type { get; set; }
+        [PropertyOrder(2)]
         public string Id { get; set; }
+        [PropertyOrder(3)]
         public string Args { get; set; }
-        public float Weight { get; set; }
+        [PropertyOrder(4)]
+        public float Weight { get; set; } = 1f;
+
+        public override string ToString() => $"{Type} {Id} {Args} {Weight}";
     }
     
     [UsedImplicitly]
     public class SimTestingConfig
     {
+        [PropertyOrder(1)]
         public int UserCount { get; set; }
+        [PropertyOrder(2)]
         public int UserStayTime { get; set; }
+        [PropertyOrder(3)]
         public int IntervalMinMS { get; set; }
+        [PropertyOrder(4)]
         public int IntervalMaxMS { get; set; }
+        [PropertyOrder(5)]
         public List<SimTestingItem> Init { get; set; }
+        [PropertyOrder(6)]
         public List<SimTestingItem> Use { get; set; }
+
+        public override string ToString() => "Sim Testing Config";
     }
 
     [UsedImplicitly]
