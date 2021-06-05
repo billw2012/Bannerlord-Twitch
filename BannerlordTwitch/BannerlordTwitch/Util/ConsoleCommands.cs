@@ -6,7 +6,7 @@ using TaleWorlds.Library;
 
 namespace BannerlordTwitch.Util
 {
-    internal class ConsoleCommands
+    internal static class ConsoleCommands
     {
         [CommandLineFunctionality.CommandLineArgumentFunction("reward", "blt")]
         [UsedImplicitly]
@@ -38,7 +38,7 @@ namespace BannerlordTwitch.Util
             return BLTModule.TwitchService?.TestCommand(parts[0], parts.Count > 1 ? parts[1] : "Test User",
                 parts.Count > 2 ? parts[2] : null) == true 
                 ? $"Tested redemption of {parts[0]}"
-                : $"Couldn't test redemption of {parts[0]}, either it doesn't exist, or wasn't enabled";
+                : $"Couldn't test command {parts[0]}, either it doesn't exist, or wasn't enabled";
 
             // Rewards.RewardManager.Enqueue(reward, Guid.Empty, null);
             //Log.Info("--Current FPS: " + Utilities.GetFps(), 0, Debug.DebugColor.White, 17179869184UL);
