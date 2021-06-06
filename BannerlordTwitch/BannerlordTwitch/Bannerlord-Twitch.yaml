@@ -14,6 +14,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
+  RespondInApi: false
   HandlerConfig:
     CreateNew: false
     AllowNoble: true
@@ -58,6 +59,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: false
   HandlerConfig:
     Amount: 10000
 - RewardSpec:
@@ -75,6 +77,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: false
   HandlerConfig:
     Amount: 100000
 - RewardSpec:
@@ -92,6 +95,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: false
   HandlerConfig:
     AllowFieldBattle: true
     AllowVillageBattle: true
@@ -119,6 +123,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: false
   HandlerConfig:
     AllowFieldBattle: true
     AllowVillageBattle: true
@@ -146,6 +151,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: false
   HandlerConfig:
     Name: Heal Player
     Target: Player
@@ -180,6 +186,7 @@ Rewards:
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: false
   HandlerConfig:
     Name: Giant
     Target: AdoptedHero
@@ -230,6 +237,7 @@ Rewards:
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: false
   HandlerConfig:
     Name: Baby
     Target: AdoptedHero
@@ -277,6 +285,7 @@ Rewards:
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: false
   HandlerConfig:
     Name: Titan
     Target: EnemyTeam
@@ -338,6 +347,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: false
   HandlerConfig:
     GoldCost: 0
 - RewardSpec:
@@ -355,6 +365,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: false
+  RespondInApi: false
   HandlerConfig: 
 - RewardSpec:
     Title: Retire My Hero
@@ -371,6 +382,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
+  RespondInApi: false
   HandlerConfig: 
 - RewardSpec:
     Title: 50k XP
@@ -387,6 +399,7 @@ Rewards:
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: false
   HandlerConfig:
     Skills: None
     Random: false
@@ -409,6 +422,7 @@ Rewards:
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: false
   HandlerConfig:
     Name: 
     Target: Player
@@ -444,6 +458,7 @@ Commands:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: true
   HandlerConfig:
     ShowGeneral: true
     ShowTopSkills: true
@@ -461,6 +476,7 @@ Commands:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: true
   HandlerConfig:
     ShowGeneral: false
     ShowTopSkills: false
@@ -478,6 +494,7 @@ Commands:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: true
   HandlerConfig:
     Armor: true
     Melee: true
@@ -498,6 +515,7 @@ Commands:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: true
   HandlerConfig:
     Retinue:
       MaxRetinueSize: 5
@@ -516,6 +534,7 @@ Commands:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInApi: true
   HandlerConfig:
     CreateNew: true
     AllowNoble: false

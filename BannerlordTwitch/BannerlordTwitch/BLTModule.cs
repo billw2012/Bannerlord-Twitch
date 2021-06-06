@@ -31,10 +31,11 @@ namespace BannerlordTwitch
 		private static Harmony harmony;
 
 		public static TwitchService TwitchService { get; private set; }
+		public static BLTApi bltApi;
 
 		[DllImport("user32.dll")]
 		static extern int SetWindowText(IntPtr hWnd, string text);
-		
+
 		static BLTModule()
 		{
 			// Set a consistent Window title so streaming software can find it
@@ -94,7 +95,7 @@ namespace BannerlordTwitch
         protected override void OnSubModuleLoad()
         {
 			base.OnSubModuleLoad();
-			var api = new BLTApi();
+			bltApi = new BLTApi();
 		}
 
         public static void AddInfoPanel(Func<UIElement> construct)

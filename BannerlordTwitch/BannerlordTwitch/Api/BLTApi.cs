@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using BannerlordTwitch;
+using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using Newtonsoft.Json;
 using TwitchLib.Client.Models;
@@ -20,6 +21,9 @@ namespace BannerlordApi
         List<BLTApiUrl> bltApiUrls = new List<BLTApiUrl>();
         public readonly int port = 9000;
         private static HttpListener listener;
+        public dynamic commandCallbackMessage;
+        private readonly Settings settings = Settings.Load();
+
         public BLTApi()
         {
             _ = RunServerAsync();
@@ -128,9 +132,26 @@ namespace BannerlordApi
             {
                 json.actualParams = "cmd=" + cmdName + "&pseudo=" + pseudo + "&args=" + args;
                 json.status = BLTModule.TwitchService?.TestCommand(cmdName, pseudo, args);
+
+                if(json.status == true || json.status == false)
+                {
+                    json.commandCallback = commandCallbackMessage;
+                    commandCallbackMessage = null;
+                }
             }
 
             SendJSON(resp, json);
+        }
+
+        private bool cmdExec(string cmdName, string userName, string args)
+        {
+            var cmd = settings.EnabledCommands.FirstOrDefault(c => c.Name == cmdName);
+            if (cmd == null)
+                return false;
+
+            var context = ReplyContext.FromUser(cmd, userName, args);
+            ActionManager.HandleCommand(cmd.Handler, context, cmd.HandlerConfig);
+            return true;
         }
 
         public void SendJSON(HttpListenerResponse resp, Object obj)
