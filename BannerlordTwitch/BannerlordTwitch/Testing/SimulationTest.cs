@@ -64,18 +64,18 @@ namespace BannerlordTwitch.Testing
                                             (int) (simSettings.UserStayTime * 1.25f)))
                         };
                         users.Add(newUser);
-                        foreach (var initItem in simSettings.Init)
+                        foreach (var initItem in simSettings.InitEnabled)
                         {
                             RunItem(settings, initItem, newUser);
                             Task.Delay(TimeSpan.FromMilliseconds(Math.Max(100, rnd.Next(simSettings.IntervalMinMS, simSettings.IntervalMaxMS))), css.Token).Wait();
                         }
                     }
                     var user = users.SelectRandom();
-                    if (user != null && simSettings.Use != null)
+                    if (user != null && simSettings.UseEnabled.Any())
                     {
                         MainThreadSync.Run(() =>
                         {
-                            var item = simSettings.Use.SelectWeighted((float) rnd.NextDouble(), testingItem => testingItem.Weight <= 0? 1 : testingItem.Weight);
+                            var item = simSettings.UseEnabled.SelectWeighted((float) rnd.NextDouble(), testingItem => testingItem.Weight <= 0? 1 : testingItem.Weight);
                             RunItem(settings, item, user);
                         });
                     }

@@ -179,6 +179,8 @@ namespace BannerlordTwitch
     [UsedImplicitly]
     public class SimTestingItem
     {
+        [PropertyOrder(0)]
+        public bool Enabled { get; set; } = true;
         [PropertyOrder(1)]
         public SimActionType Type { get; set; }
         [PropertyOrder(2)]
@@ -188,7 +190,11 @@ namespace BannerlordTwitch
         [PropertyOrder(4)]
         public float Weight { get; set; } = 1f;
 
-        public override string ToString() => $"{Type} {Id} {Args} {Weight}";
+        public override string ToString()
+        {
+            return $"{(!Enabled ? "(disabled)" : "")} {Id} ({Type}), {nameof(Args)}: {Args}, {nameof(Weight)}: {Weight}";
+        }
+        //public override string ToString() => $"{Type} {Id} {Args} {Weight}";
     }
     
     [UsedImplicitly]
@@ -204,8 +210,15 @@ namespace BannerlordTwitch
         public int IntervalMaxMS { get; set; }
         [PropertyOrder(5)]
         public List<SimTestingItem> Init { get; set; }
+
+        [YamlIgnore, Browsable(false)]
+        public IEnumerable<SimTestingItem> InitEnabled => Init?.Where(i => i.Enabled) ?? Enumerable.Empty<SimTestingItem>();
+        
         [PropertyOrder(6)]
         public List<SimTestingItem> Use { get; set; }
+        
+        [YamlIgnore, Browsable(false)]
+        public IEnumerable<SimTestingItem> UseEnabled => Use?.Where(i => i.Enabled) ?? Enumerable.Empty<SimTestingItem>();
 
         public override string ToString() => "Sim Testing Config";
     }
