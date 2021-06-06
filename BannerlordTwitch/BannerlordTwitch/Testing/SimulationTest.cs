@@ -92,7 +92,7 @@ namespace BannerlordTwitch.Testing
             }
             else
             {
-                var cmd = settings.EnabledCommands.FirstOrDefault(c => c.Name == item.Id);
+                var cmd = settings.GetCommand(item.Id);
                 if (cmd != null)
                 {
                     ActionManager.HandleCommand(cmd.Handler, ReplyContext.FromUser(cmd, user.name, item.Args), cmd.HandlerConfig);

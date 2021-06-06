@@ -269,6 +269,9 @@ namespace BannerlordTwitch
         [YamlIgnore]
         public IEnumerable<ActionBase> AllActions => Rewards.Cast<ActionBase>().Concat(Commands);
 
+        public Command GetCommand(string id) => this.EnabledCommands.FirstOrDefault(c =>
+            string.Equals(c.Name, id, StringComparison.CurrentCultureIgnoreCase));
+
         #if DEBUG
         private static string ProjectRootDir([CallerFilePath]string file = "") => Path.GetDirectoryName(file);
         private static string SaveFilePath => Path.Combine(ProjectRootDir(), "Bannerlord-Twitch.yaml");
