@@ -373,7 +373,7 @@ namespace BannerlordTwitch
                 }
             }
 
-            if (context.Source.RespondInApi)
+            if (context.Source.RespondInExtension)
             {
                 dynamic obj = new ExpandoObject();
                 obj.context = context;

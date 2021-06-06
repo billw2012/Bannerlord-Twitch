@@ -14,7 +14,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
-  RespondInApi: false
+  RespondInExtension: false
   HandlerConfig:
     CreateNew: false
     AllowNoble: true
@@ -59,7 +59,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
-  RespondInApi: false
+  RespondInExtension: false
   HandlerConfig:
     Amount: 10000
 - RewardSpec:
@@ -77,7 +77,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
-  RespondInApi: false
+  RespondInExtension: false
   HandlerConfig:
     Amount: 100000
 - RewardSpec:
@@ -95,7 +95,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
-  RespondInApi: false
+  RespondInExtension: false
   HandlerConfig:
     AllowFieldBattle: true
     AllowVillageBattle: true
@@ -123,7 +123,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
-  RespondInApi: false
+  RespondInExtension: false
   HandlerConfig:
     AllowFieldBattle: true
     AllowVillageBattle: true
@@ -151,7 +151,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
-  RespondInApi: false
+  RespondInExtension: false
   HandlerConfig:
     Name: Heal Player
     Target: Player
@@ -186,7 +186,7 @@ Rewards:
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
-  RespondInApi: false
+  RespondInExtension: false
   HandlerConfig:
     Name: Giant
     Target: AdoptedHero
@@ -237,7 +237,7 @@ Rewards:
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
-  RespondInApi: false
+  RespondInExtension: false
   HandlerConfig:
     Name: Baby
     Target: AdoptedHero
@@ -285,7 +285,7 @@ Rewards:
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
-  RespondInApi: false
+  RespondInExtension: false
   HandlerConfig:
     Name: Titan
     Target: EnemyTeam
@@ -347,7 +347,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
-  RespondInApi: false
+  RespondInExtension: false
   HandlerConfig:
     GoldCost: 0
 - RewardSpec:
@@ -365,7 +365,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: false
-  RespondInApi: false
+  RespondInExtension: false
   HandlerConfig: 
 - RewardSpec:
     Title: Retire My Hero
@@ -382,7 +382,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
-  RespondInApi: false
+  RespondInExtension: false
   HandlerConfig: 
 - RewardSpec:
     Title: 50k XP
@@ -399,7 +399,7 @@ Rewards:
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
-  RespondInApi: false
+  RespondInExtension: false
   HandlerConfig:
     Skills: None
     Random: false
@@ -422,7 +422,7 @@ Rewards:
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
-  RespondInApi: false
+  RespondInExtension: false
   HandlerConfig:
     Name: 
     Target: Player
@@ -456,9 +456,9 @@ Commands:
   ModOnly: false
   Handler: HeroInfoCommand
   Enabled: true
-  RespondInTwitch: false
+  RespondInTwitch: true
   RespondInOverlay: true
-  RespondInApi: true
+  RespondInExtension: true
   HandlerConfig:
     ShowGeneral: true
     ShowTopSkills: true
@@ -474,9 +474,9 @@ Commands:
   ModOnly: false
   Handler: HeroInfoCommand
   Enabled: true
-  RespondInTwitch: false
+  RespondInTwitch: true
   RespondInOverlay: true
-  RespondInApi: true
+  RespondInExtension: true
   HandlerConfig:
     ShowGeneral: false
     ShowTopSkills: false
@@ -492,9 +492,9 @@ Commands:
   ModOnly: false
   Handler: EquipHero
   Enabled: true
-  RespondInTwitch: false
+  RespondInTwitch: true
   RespondInOverlay: true
-  RespondInApi: true
+  RespondInExtension: true
   HandlerConfig:
     Armor: true
     Melee: true
@@ -513,9 +513,9 @@ Commands:
   ModOnly: false
   Handler: Retinue
   Enabled: true
-  RespondInTwitch: false
+  RespondInTwitch: true
   RespondInOverlay: true
-  RespondInApi: true
+  RespondInExtension: true
   HandlerConfig:
     Retinue:
       MaxRetinueSize: 5
@@ -532,9 +532,9 @@ Commands:
   ModOnly: false
   Handler: AdoptAHero
   Enabled: true
-  RespondInTwitch: false
+  RespondInTwitch: true
   RespondInOverlay: true
-  RespondInApi: true
+  RespondInExtension: true
   HandlerConfig:
     CreateNew: true
     AllowNoble: false
