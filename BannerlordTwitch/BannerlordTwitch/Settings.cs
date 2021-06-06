@@ -90,10 +90,10 @@ namespace BannerlordTwitch
         public string Title { get; set; }
         [Description("Whether the reward will automatically be set to fulfilled once completed in game. If you set this to true then the redemptions that successfully complete in game will stay in your redemption queue. This is useful if you are worried about people losing points if the game crashes, or you reload an older save."), PropertyOrder(1)]
         public bool DisableAutomaticFulfillment { get; set; }
-        [Description("The prompt for the viewer when they are redeeming the reward, if IsUserInputRequired is true."), PropertyOrder(2)]
+        [Description("Description / prompt"), PropertyOrder(2)]
         public string Prompt { get; set; }
         [Description("The cost of the reward"), PropertyOrder(3)]
-        public int Cost { get; set; }
+        public int Cost { get; set; } = 100;
 
         [Description("Is the reward currently enabled, if false the reward won’t show up to viewers."), PropertyOrder(4)]
         public bool IsEnabled { get; set; } = true;
