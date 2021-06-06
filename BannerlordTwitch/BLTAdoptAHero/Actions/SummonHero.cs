@@ -23,9 +23,9 @@ using YamlDotNet.Serialization;
 namespace BLTAdoptAHero
 {
     [HarmonyPatch, UsedImplicitly, Description("Spawns the adopted hero into the current active mission")]
-    internal class SummonHero : ActionHandlerBase
+    internal class SummonHero : HeroActionHandlerBase
     {
-        private class FormationItemSource : IItemsSource
+        public class FormationItemSource : IItemsSource
         {
             public ItemCollection GetValues()
             {
@@ -40,7 +40,7 @@ namespace BLTAdoptAHero
                     "HeavyInfantry",
                     "LightCavalry",
                     "HeavyCavalry",
-                    "Bodyguard",
+                    // "Bodyguard",
                 };
                 return col;
             }
@@ -74,9 +74,13 @@ namespace BLTAdoptAHero
             [Category("General"), Description("Gold cost to summon"), PropertyOrder(5)]
             public int GoldCost { get; set; }
 
-            [Category("General"), Description("Which formation to add summoned units to"), PropertyOrder(6),
-             ItemsSource(typeof(SummonHero.FormationItemSource))]
+            [Category("General"), Description("Which formation to add summoned heroes to (only applies to ones " +
+                                              "without a specified class)"), 
+             PropertyOrder(6), ItemsSource(typeof(FormationItemSource))]
             public string PreferredFormation { get; set; }
+
+            [Category("General")]
+            public bool RetinueUseHeroesFormation { get; set; }
 
             [Category("General"), Description("Sound to play when summoned"), PropertyOrder(7)]
             public Log.Sound AlertSound { get; set; }
@@ -88,7 +92,7 @@ namespace BLTAdoptAHero
             public float HealPerSecond { get; set; }
         }
 
-        protected override Type ConfigType => typeof(SummonHero.Settings);
+        protected override Type ConfigType => typeof(Settings);
         
         private delegate Agent MissionAgentHandler_SpawnWanderingAgentDelegate(
             MissionAgentHandler instance,
@@ -120,7 +124,7 @@ namespace BLTAdoptAHero
             AccessTools.Method(typeof(ArenaPracticeFightMissionController), "GetSpawnFrame", new[] {typeof(bool), typeof(bool)})
                 .CreateDelegate(typeof(ArenaPracticeFightMissionController_GetSpawnFrameDelegate));
 
-        private static readonly List<string> FriendlySummonMessages = new List<string>
+        private static readonly List<string> FriendlySummonMessages = new()
         {
             "Don't worry, I've got your back!",
             "I'm here!",
@@ -142,12 +146,10 @@ namespace BLTAdoptAHero
             "Need a hand?",
             "May we live to see the next sunrise!",
             "For glory, charge!",
-            "I'm going to just hide behind the rest of you...",
-            "Why am I here!?",
             "The price has been paid. I am at your service.",
         };
 
-        private static readonly List<string> EnemySummonMessages = new List<string>
+        private static readonly List<string> EnemySummonMessages = new()
         {
             "Defend yourself!",
             "Time for you to die!",
@@ -165,7 +167,7 @@ namespace BLTAdoptAHero
             "I'm sorry, but I must stop you.",
         };
 
-        private class BLTRemoveAgentsBehavior : AutoMissionBehavior<SummonHero.BLTRemoveAgentsBehavior>
+        private class BLTRemoveAgentsBehavior : AutoMissionBehavior<BLTRemoveAgentsBehavior>
         {
             private readonly List<Hero> heroesAdded = new();
  
@@ -215,7 +217,7 @@ namespace BLTAdoptAHero
             }
         }
 
-        internal class BLTSummonBehavior : AutoMissionBehavior<SummonHero.BLTSummonBehavior>
+        internal class BLTSummonBehavior : AutoMissionBehavior<BLTSummonBehavior>
         {
             public class RetinueState
             {
@@ -300,18 +302,11 @@ namespace BLTAdoptAHero
             }
         }
         
-        protected override void ExecuteInternal(ReplyContext context, object config,
+        protected override void ExecuteInternal(Hero adoptedHero, ReplyContext context, object config,
             Action<string> onSuccess,
             Action<string> onFailure)
         {
             var settings = (SummonHero.Settings) config;
-
-            var adoptedHero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
-            if (adoptedHero == null)
-            {
-                onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
-                return;
-            }
             int availableGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
             if (availableGold < settings.GoldCost)
             {
@@ -520,13 +515,13 @@ namespace BLTAdoptAHero
                             party.AddMember(adoptedHero.CharacterObject, 1);
                         }
 
+                        var heroClass = BLTAdoptAHeroCampaignBehavior.Get().GetClass(adoptedHero);
+
                         // We don't support Unset, or General formations, and implement custom behaviour for Bodyguard
-                        if (!Enum.TryParse(settings.PreferredFormation, out FormationClass formationClass)
-                                 || formationClass is not (FormationClass.Ranged or FormationClass.Cavalry or FormationClass.HorseArcher
-                                     or FormationClass.Skirmisher or FormationClass.HeavyInfantry or FormationClass.LightCavalry
-                                     or FormationClass.HeavyCavalry))
+                        if (!Enum.TryParse(heroClass?.Formation ?? settings.PreferredFormation, out FormationClass formationClass)
+                                 || formationClass >= FormationClass.NumberOfRegularFormations)
                         {
-                            formationClass = FormationClass.Bodyguard;
+                            formationClass = FormationClass.Infantry;
                         }
 
                         BLTAdoptAHeroCustomMissionBehavior.Current.AddListeners(adoptedHero,
@@ -571,8 +566,7 @@ namespace BLTAdoptAHero
                                         if (xp > 0)
                                         {
                                             (bool success, string description) = SkillXP.ImproveSkill(adoptedHero, xp,
-                                                Skills.All,
-                                                random: false, auto: true);
+                                                Skills.All, auto: true);
                                             if (success)
                                             {
                                                 results.Add(description);
@@ -592,8 +586,7 @@ namespace BLTAdoptAHero
                                         if (xp > 0)
                                         {
                                             (bool success, string description) = SkillXP.ImproveSkill(adoptedHero, xp,
-                                                Skills.All,
-                                                random: false, auto: true);
+                                                Skills.All, auto: true);
                                             if (success)
                                             {
                                                 results.Add(description);
@@ -667,7 +660,7 @@ namespace BLTAdoptAHero
                     existingHero.CurrentAgent = Mission.Current.SpawnTroop(
                         troopOrigin,
                         isPlayerSide: settings.OnPlayerSide,
-                        hasFormation: !settings.OnPlayerSide || existingHero.Formation != FormationClass.Bodyguard,
+                        hasFormation: true,//!settings.OnPlayerSide || existingHero.Formation != FormationClass.Bodyguard,
                         spawnWithHorse: adoptedHero.CharacterObject.IsMounted && isMounted,
                         isReinforcement: true,
                         enforceSpawningOnInitialPoint: false,
@@ -675,15 +668,16 @@ namespace BLTAdoptAHero
                         formationTroopIndex: formationTroopIdx++,
                         isAlarmed: true,
                         wieldInitialWeapons: true);
+
                     existingHero.State = AgentState.Active;
 
-                    if (settings.OnPlayerSide && existingHero.Formation == FormationClass.Bodyguard)
-                    {
-                        var spawnPos = Vec2.Forward * (3 + MBRandom.RandomFloat * 5);
-                        spawnPos.RotateCCW(MathF.PI * 2 * MBRandom.RandomFloat);
-                        existingHero.CurrentAgent.SetColumnwiseFollowAgent(Agent.Main, ref spawnPos);
-                        // agent.HumanAIComponent.FollowAgent(Agent.Main);
-                    }
+                    // if (settings.OnPlayerSide && existingHero.Formation == FormationClass.Bodyguard)
+                    // {
+                    //     var spawnPos = Vec2.Forward * (3 + MBRandom.RandomFloat * 5);
+                    //     spawnPos.RotateCCW(MathF.PI * 2 * MBRandom.RandomFloat);
+                    //     existingHero.CurrentAgent.SetColumnwiseFollowAgent(Agent.Main, ref spawnPos);
+                    //     // agent.HumanAIComponent.FollowAgent(Agent.Main);
+                    // }
 
                     if (allowRetinue)
                     {
@@ -693,8 +687,10 @@ namespace BLTAdoptAHero
                             // Don't modify formation for non-player side spawn as we don't really care
                             bool hasPrevFormation = Campaign.Current.PlayerFormationPreferences
                                                         .TryGetValue(retinueTroop, out var prevFormation)
-                                                    && settings.OnPlayerSide;
-                            if (settings.OnPlayerSide)
+                                                    && settings.OnPlayerSide
+                                                    && settings.RetinueUseHeroesFormation;
+
+                            if (settings.OnPlayerSide && settings.RetinueUseHeroesFormation)
                             {
                                 Campaign.Current.SetPlayerFormationPreference(retinueTroop, existingHero.Formation);
                             }
@@ -703,8 +699,8 @@ namespace BLTAdoptAHero
                             var retinueAgent = Mission.Current.SpawnTroop(
                                 new PartyAgentOrigin(existingHero.Party, retinueTroop),
                                 isPlayerSide: settings.OnPlayerSide,
-                                hasFormation: !settings.OnPlayerSide ||
-                                              existingHero.Formation != FormationClass.Bodyguard,
+                                hasFormation: true, //!settings.OnPlayerSide ||
+                                              //existingHero.Formation != FormationClass.Bodyguard,
                                 spawnWithHorse: retinueTroop.IsMounted && isMounted,
                                 isReinforcement: true,
                                 enforceSpawningOnInitialPoint: false,
@@ -751,13 +747,13 @@ namespace BLTAdoptAHero
                                     }
                                 }
                             );
-                            if (settings.OnPlayerSide && existingHero.Formation == FormationClass.Bodyguard)
-                            {
-                                var spawnPos = Vec2.Forward * (3 + MBRandom.RandomFloat * 5);
-                                spawnPos.RotateCCW(MathF.PI * 2 * MBRandom.RandomFloat);
-                                retinueAgent.SetColumnwiseFollowAgent(Agent.Main, ref spawnPos);
-                                // agent.HumanAIComponent.FollowAgent(Agent.Main);
-                            }
+                            // if (settings.OnPlayerSide && existingHero.Formation == FormationClass.Bodyguard)
+                            // {
+                            //     var spawnPos = Vec2.Forward * (3 + MBRandom.RandomFloat * 5);
+                            //     spawnPos.RotateCCW(MathF.PI * 2 * MBRandom.RandomFloat);
+                            //     retinueAgent.SetColumnwiseFollowAgent(Agent.Main, ref spawnPos);
+                            //     // agent.HumanAIComponent.FollowAgent(Agent.Main);
+                            // }
 
                             if (hasPrevFormation)
                             {

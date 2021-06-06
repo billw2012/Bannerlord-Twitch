@@ -90,31 +90,10 @@ namespace BLTAdoptAHero
              Description("Gold the adopted hero will start with"), DefaultValue(null), PropertyOrder(1)]
             public int StartingGold { get; set; }
 
-            public class SkillDef
-            {
-                [Description("The skill or skill group"), PropertyOrder(1)]
-                public Skills Skill { get; set; }
-
-                [Description("The min level it should be (actual value will be randomly selected between min and max, " +
-                             "valid values are 0 to 300)"),
-                 PropertyOrder(2)]
-                public int MinLevel { get; set; } = 0;
-
-                [Description("The max level it should be (actual value will be randomly selected between min and max, " +
-                             "valid values are 0 to 300)"),
-                 PropertyOrder(3)]
-                public int MaxLevel { get; set; } = 50;
-
-                public override string ToString()
-                {
-                    return $"{Skill} {MinLevel} - {MaxLevel}";
-                }
-            }
-            
             [Category("Initialization"), 
              Description("Starting skills, if empty then default skills of the adopted hero will be left in tact"),
              DefaultValue(null), PropertyOrder(1)]
-            public List<SkillDef> StartingSkills { get; set; }
+            public List<SkillRangeDef> StartingSkills { get; set; }
             
             [Category("Initialization"), 
              Description("Equipment tier the adopted hero will start with, if you don't specify then they get the " +
@@ -125,12 +104,15 @@ namespace BLTAdoptAHero
              Description("Whether the hero will start with a melee weapon, only applies if StartingEquipmentTier is " +
                          "specified"), PropertyOrder(3)]
             public bool StartWithMeleeWeapon { get; set; } = true;
+            
             [Category("Initialization"),
              Description("Whether the hero will start with a ranged weapon, only applies if StartingEquipmentTier is " +
                          "specified"), PropertyOrder(3)]
             public bool StartWithRangedWeapon { get; set; } = true;
+            
             [Category("Initialization"), Description("Whether the hero will start with a horse, only applies if StartingEquipmentTier is specified"), PropertyOrder(3)]
             public bool StartWithHorse { get; set; } = true;
+            
             [Category("Initialization"), Description("Whether the hero will start with armor, only applies if StartingEquipmentTier is specified"), PropertyOrder(4)]
             public bool StartWithArmor { get; set; } = true;
         }
@@ -269,9 +251,7 @@ namespace BLTAdoptAHero
                 EquipHero.RemoveAllEquipment(newHero);
                 if (settings.StartingEquipmentTier.Value > 0)
                 {
-                    EquipHero.UpgradeEquipment(newHero, settings.StartingEquipmentTier.Value - 1, 
-                        settings.StartWithMeleeWeapon, settings.StartWithRangedWeapon, 
-                        settings.StartWithArmor, settings.StartWithHorse, true);
+                    EquipHero.UpgradeEquipment(newHero, settings.StartingEquipmentTier.Value - 1, null, keepBetter: false);
                 }
                 BLTAdoptAHeroCampaignBehavior.Get().SetEquipmentTier(newHero, settings.StartingEquipmentTier.Value - 1);
             }

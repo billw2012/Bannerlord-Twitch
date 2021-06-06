@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -43,6 +43,12 @@ namespace BLTAdoptAHero
             
             [SaveableProperty(3)]
             public int EquipmentTier { get; set; } = -2;
+        
+            [SaveableProperty(4)]
+            public Guid EquipmentClassID { get; set; }
+
+            [SaveableProperty(5)]
+            public Guid ClassID { get; set; }
         }
 
         private Dictionary<Hero, HeroData> heroData = new();
@@ -153,7 +159,7 @@ namespace BLTAdoptAHero
             CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, () =>
             {
                 // Clean up legacy hero names
-                var heroes = GetAllBLTHeroes().GroupBy(h => h.Name.ToLower());
+                var heroes = GetAllAdoptedHeroes().GroupBy(h => h.Name.ToLower());
                 foreach (var heroGroup in heroes)
                 {
                     // hero to keep is living and preferably lowercase
@@ -319,11 +325,6 @@ namespace BLTAdoptAHero
 
         public void SetHeroGold(Hero hero, int gold) => GetHeroData(hero).Gold = gold;
         
-        public int GetEquipmentTier(Hero hero) => GetHeroData(hero).EquipmentTier;
-
-        public void SetEquipmentTier(Hero hero, int tier) => GetHeroData(hero).EquipmentTier = tier;
-        
-
         public int ChangeHeroGold(Hero hero, int change, bool isSpending = false)
         {
             var hd = GetHeroData(hero);
@@ -350,12 +351,25 @@ namespace BLTAdoptAHero
         }
         #endregion
 
+        #region Equipment
+        public int GetEquipmentTier(Hero hero) => GetHeroData(hero).EquipmentTier;
+        public void SetEquipmentTier(Hero hero, int tier) => GetHeroData(hero).EquipmentTier = tier;
+        public HeroClassDef GetEquipmentClass(Hero hero) => BLTAdoptAHeroModule.HeroClassConfig.GetClass(GetHeroData(hero).EquipmentClassID);
+        public void SetEquipmentClass(Hero hero, HeroClassDef classDef) => GetHeroData(hero).EquipmentClassID = classDef?.ID ?? Guid.Empty;
+        #endregion
+
+        #region Class
+        public HeroClassDef GetClass(Hero hero) => BLTAdoptAHeroModule.HeroClassConfig.GetClass(GetHeroData(hero).ClassID);
+
+        public void SetClass(Hero hero, HeroClassDef classDef) => GetHeroData(hero).ClassID = classDef?.ID ?? Guid.Empty;
+        #endregion
+
         #region Retinue
         public IEnumerable<CharacterObject> GetRetinue(Hero hero) => GetHeroData(hero).Retinue.Select(r => r.TroopType);
 
         public class RetinueSettings
         {
-            [Description("Maximum number of units in the retinue"), PropertyOrder(1)]
+            [Description("Maximum number of units in the retinue. Recommend less than 20, summons to NOT obey the games unit limits."), PropertyOrder(1)]
             public int MaxRetinueSize { get; set; } = 5;
 
             [Description("Cost to buy a new unit, or upgrade one"), PropertyOrder(2)]
@@ -445,43 +459,34 @@ namespace BLTAdoptAHero
         #endregion
 
         #region Helper Functions
-        public static IEnumerable<Hero> GetAvailableHeroes(Func<Hero, bool> filter = null)
-        {
-            var tagText = new TextObject(BLTAdoptAHeroModule.Tag);
-            return Campaign.Current?.AliveHeroes?.Where(h =>
-                // Not the player of course
-                h != Hero.MainHero
-                // Don't want notables ever
-                && !h.IsNotable && h.Age >= 18f)
+        public static IEnumerable<Hero> GetAvailableHeroes(Func<Hero, bool> filter = null) =>
+            Campaign.Current?.AliveHeroes?.Where(h =>
+                    // Not the player of course
+                    h != Hero.MainHero
+                    // Don't want notables ever
+                    && !h.IsNotable && h.Age >= 18f)
                 .Where(filter ?? (_ => true))
-                .Where(n => !n.Name.Contains(tagText));
-        }
-        
-        public static IEnumerable<Hero> GetAllBLTHeroes()
-        {
-            var tagText = new TextObject(BLTAdoptAHeroModule.Tag);
-            return Hero.All.Where(n => n.Name.Contains(tagText));
-        }
+                .Where(n => !n.Name.Contains(BLTAdoptAHeroModule.Tag));
+
+        public static IEnumerable<Hero> GetAllAdoptedHeroes() => Hero.All.Where(n => n.Name.Contains(BLTAdoptAHeroModule.Tag));
 
         public static string GetFullName(string name) => $"{name} {BLTAdoptAHeroModule.Tag}";
 
-        public static Hero GetDeadHero(string name)
-        {
-            return Campaign.Current?
+        public static Hero GetDeadHero(string name) =>
+            Campaign.Current?
                 .DeadAndDisabledHeroes?
-                .FirstOrDefault(h => h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true 
+                .FirstOrDefault(h => h.IsDead 
+                                     && h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true 
                                      && h.FirstName?.Contains(name) == true 
                                      && h.FirstName?.ToString() == name);
-        }
-        
-        public static Hero GetAdoptedHero(string name)
-        {
-            return Campaign.Current?
+
+        public static Hero GetAdoptedHero(string name) =>
+            Campaign.Current?
                 .AliveHeroes?
                 .FirstOrDefault(h => h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true 
                                      && h.FirstName?.Contains(name) == true 
                                      && h.FirstName?.ToString() == name);
-        }
+
         #endregion
     }
 }

@@ -384,12 +384,11 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: SkillXP
-  Enabled: false
+  Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
     Skills: None
-    Random: false
     Auto: true
     AmountLow: 50000
     AmountHigh: 50000
@@ -479,16 +478,10 @@ Commands:
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
-    Armor: true
-    Melee: true
-    Ranged: true
-    Horse: true
-    Civilian: true
-    AllowCompanionUpgrade: true
-    Tier: 
-    Upgrade: true
+    AllowCompanionUpgrade: false
     GoldCost: 50000
     MultiplyCostByCurrentTier: true
+    ReequipInsteadOfUpgrade: false
 - Name: retinue
   HideHelp: false
   Help: Upgrade Retinue
@@ -507,6 +500,32 @@ Commands:
       IncludeBanditUnits: false
       UseBasicTroops: true
       UseEliteTroops: true
+- Name: class
+  HideHelp: false
+  Help: infantry/archer/cavalry/horsearcher/skirmisher
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: SetHeroClass
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    GoldCost: 10
+    UpdateEquipment: false
+- Name: reequip
+  HideHelp: false
+  Help: reroll equipment
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: EquipHero
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    AllowCompanionUpgrade: false
+    GoldCost: 10000
+    MultiplyCostByCurrentTier: true
+    ReequipInsteadOfUpgrade: true
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -538,54 +557,133 @@ GlobalConfigs:
     WinMatchGold: 10000
     WinMatchXP: 10000
     ParticipateMatchXP: 2500
+- Id: Adopt A Hero - Class Config
+  Config:
+    ClassDefs:
+    - ID: 59df8187-01fe-48f2-b551-f9716fc9963c
+      Name: infantry
+      Formation: Infantry
+      MeleeWeapon1: OneHandedWeapon
+      MeleeWeapon2: Invalid
+      RangedWeapon: Invalid
+      Mounted: false
+    - ID: b48cbbd3-d8b3-46b7-942e-c15daeda403d
+      Name: archer
+      Formation: Ranged
+      MeleeWeapon1: OneHandedWeapon
+      MeleeWeapon2: Invalid
+      RangedWeapon: Bow
+      Mounted: false
+    - ID: 3d05f7e7-b189-4844-8631-f141c4c527d3
+      Name: cavalry
+      Formation: Cavalry
+      MeleeWeapon1: Polearm
+      MeleeWeapon2: Invalid
+      RangedWeapon: Invalid
+      Mounted: true
+    - ID: 880cabdd-551e-4f82-aef9-e193b58bd7f3
+      Name: horsearcher
+      Formation: HorseArcher
+      MeleeWeapon1: OneHandedWeapon
+      MeleeWeapon2: Invalid
+      RangedWeapon: Bow
+      Mounted: true
+    - ID: cb0744ae-278b-46a8-8ea7-694c44f1f45b
+      Name: skirmisher
+      Formation: Skirmisher
+      MeleeWeapon1: TwoHandedWeapon
+      MeleeWeapon2: Invalid
+      RangedWeapon: Thrown
+      Mounted: false
 SimTesting:
   UserCount: 10
   UserStayTime: 300
   IntervalMinMS: 100
   IntervalMaxMS: 100
   Init:
-  - Type: Reward
+  - Enabled: true
+    Type: Reward
     Id: Adopt a Hero
     Args: 
     Weight: 0
-  - Type: Reward
+  - Enabled: true
+    Type: Reward
     Id: 100k gold
     Args: 
     Weight: 0
   Use:
-  - Type: Reward
+  - Enabled: false
+    Type: Reward
     Id: Attack
     Args: 
     Weight: 0.5
-  - Type: Reward
+  - Enabled: true
+    Type: Reward
     Id: Summon
     Args: 
     Weight: 2
-  - Type: Reward
+  - Enabled: true
+    Type: Reward
     Id: 100k gold
     Args: 
-    Weight: 0.5
-  - Type: Command
+    Weight: 1
+  - Enabled: true
+    Type: Command
     Id: equip
     Args: 
-    Weight: 0.200000003
-  - Type: Reward
+    Weight: 0.400000006
+  - Enabled: true
+    Type: Command
+    Id: reequip
+    Args: ''
+    Weight: 0.100000001
+  - Enabled: true
+    Type: Reward
     Id: Tournament
     Args: 
     Weight: 0.100000001
-  - Type: Command
+  - Enabled: false
+    Type: Command
     Id: retinue
     Args: 
     Weight: 0.200000003
-  - Type: Reward
+  - Enabled: false
+    Type: Reward
     Id: Retire My Hero
     Args: yes
     Weight: 0.00999999978
-  - Type: Reward
+  - Enabled: false
+    Type: Reward
     Id: Adopt a Hero
     Args: yes
     Weight: 0.00999999978
-  - Type: Reward
+  - Enabled: false
+    Type: Reward
     Id: Heal Player
     Args: yes
     Weight: 0.0500000007
+  - Enabled: false
+    Type: Command
+    Id: class
+    Args: infantry
+    Weight: 0.300000012
+  - Enabled: false
+    Type: Command
+    Id: class
+    Args: archer
+    Weight: 0.300000012
+  - Enabled: false
+    Type: Command
+    Id: class
+    Args: cavalry
+    Weight: 0.300000012
+  - Enabled: false
+    Type: Command
+    Id: class
+    Args: horsearcher
+    Weight: 0.300000012
+  - Enabled: false
+    Type: Command
+    Id: class
+    Args: skirmisher
+    Weight: 0.300000012

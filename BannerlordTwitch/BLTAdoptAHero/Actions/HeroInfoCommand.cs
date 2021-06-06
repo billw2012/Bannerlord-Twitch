@@ -50,6 +50,8 @@ namespace BLTAdoptAHero
             {
                 if (settings.ShowGeneral)
                 {
+                    var cl = BLTAdoptAHeroCampaignBehavior.Get().GetClass(adoptedHero);
+                    infoStrings.Add($"{cl?.Name ?? "No Class"}");
                     if (adoptedHero.Clan != null)
                     {
                         infoStrings.Add($"Clan {adoptedHero.Clan.Name}");
@@ -83,6 +85,8 @@ namespace BLTAdoptAHero
                 if (settings.ShowEquipment)
                 {
                     infoStrings.Add($"Equip Tier {BLTAdoptAHeroCampaignBehavior.Get().GetEquipmentTier(adoptedHero) + 1}");
+                    var cl = BLTAdoptAHeroCampaignBehavior.Get().GetEquipmentClass(adoptedHero);
+                    infoStrings.Add($"{cl?.Name ?? "No Equip Class"}");
                 }
                 if(settings.ShowInventory)
                 {

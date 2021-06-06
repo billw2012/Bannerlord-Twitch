@@ -1,4 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using BannerlordTwitch.Rewards;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -12,6 +15,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 #pragma warning disable 649
 
@@ -27,12 +31,14 @@ namespace BLTAdoptAHero
 
         internal static GlobalCommonConfig CommonConfig { get; private set; }
         internal static GlobalTournamentConfig TournamentConfig { get; private set; }
+        internal static GlobalHeroClassConfig HeroClassConfig { get; private set; }
 
         public BLTAdoptAHeroModule()
         {
             ActionManager.RegisterAll(typeof(BLTAdoptAHeroModule).Assembly);
             GlobalCommonConfig.Register();
             GlobalTournamentConfig.Register();
+            GlobalHeroClassConfig.Register();
         }
 
         public override void OnMissionBehaviourInitialize(Mission mission)
@@ -61,6 +67,7 @@ namespace BLTAdoptAHero
         }
 
         [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(MissionNameMarkerVM), MethodType.Constructor, typeof(Mission), typeof(Camera))]
+        // ReSharper disable once RedundantAssignment
         public static void MissionNameMarkerVMConstructorPostfix(MissionNameMarkerVM __instance, Mission mission, ref Vec3 ____heightOffset)
         {
             ____heightOffset = new Vec3(0, 0, 4, -1);
@@ -82,13 +89,14 @@ namespace BLTAdoptAHero
                 // Reload settings here so they are fresh
                 CommonConfig = GlobalCommonConfig.Get();
                 TournamentConfig = GlobalTournamentConfig.Get();
+                HeroClassConfig = GlobalHeroClassConfig.Get();
 
                 var campaignStarter = (CampaignGameStarter) gameStarterObject;
                 campaignStarter.AddBehavior(new BLTAdoptAHeroCampaignBehavior());
                 JoinTournament.AddBehaviors(campaignStarter);
             }
         }
-
+        
         public override void BeginGameStart(Game game)
         {
         }
@@ -123,7 +131,7 @@ namespace BLTAdoptAHero
 
 
         [Category("General"), Description("Whether the hero is allowed to die"), PropertyOrder(3)]
-        public bool AllowDeath { get; set; }
+        public bool AllowDeath { get; [UsedImplicitly] set; }
 
         [Category("General"), Description("Whether the hero will always start with full health"), PropertyOrder(4)]
         public bool StartWithFullHealth { get; set; } = true;
@@ -231,6 +239,32 @@ namespace BLTAdoptAHero
         public int ParticipateMatchXP { get; set; } = 2500;
     }
 
+    internal class GlobalHeroClassConfig
+    {
+        private const string ID = "Adopt A Hero - Class Config";
+        internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalHeroClassConfig));
+        internal static GlobalHeroClassConfig Get() => ActionManager.GetGlobalConfig<GlobalHeroClassConfig>(ID);
+        
+        [Description("Defined classes")] 
+        public List<HeroClassDef> ClassDefs { get; set; } = new();
+
+        [Browsable(false), YamlIgnore]
+        public IEnumerable<string> ClassNames => ClassDefs.Select(c => c.Name?.ToLower());
+
+        public HeroClassDef GetClass(Guid id) 
+            => ClassDefs.FirstOrDefault(c => c.ID == id);
+
+        public HeroClassDef FindClass(string search) 
+            => ClassDefs.FirstOrDefault(c => c.Name.Equals(search, StringComparison.InvariantCultureIgnoreCase));
+
+        // public HeroClassDef FindClosestClass(Hero hero) =>
+        //     // Find class that has maximum sum of matched skills
+        //     ClassDefs.OrderByDescending(c
+        //             // Sum the heroes skill values for all the class skills
+        //             => c.Skills.Sum(s => hero.GetSkillValue(SkillGroup.GetSkill(s.Skill))))
+        //         .FirstOrDefault();
+    }
+    
     // We could do this, but they could also gain money so...
     // public static class Patches
     // {
