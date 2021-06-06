@@ -1,4 +1,5 @@
-﻿using System;
+﻿#define BL_V_1_5_9
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;

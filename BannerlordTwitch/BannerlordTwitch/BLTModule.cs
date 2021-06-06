@@ -1,3 +1,4 @@
+#define BL_V_1_5_9
 using HarmonyLib;
 using System;
 using System.Diagnostics;
@@ -13,6 +14,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using Color = TaleWorlds.Library.Color;
+using BannerlordApi;
 
 #pragma warning disable IDE0051 // Remove unused private members
 namespace BannerlordTwitch
@@ -89,7 +91,13 @@ namespace BannerlordTwitch
 			}
 		}
 
-		public static void AddInfoPanel(Func<UIElement> construct)
+        protected override void OnSubModuleLoad()
+        {
+			base.OnSubModuleLoad();
+			var api = new BLTApi();
+		}
+
+        public static void AddInfoPanel(Func<UIElement> construct)
 		{
 			overlayWindow?.AddInfoPanel(construct);
 		}
