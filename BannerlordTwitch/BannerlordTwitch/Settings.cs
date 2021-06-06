@@ -49,6 +49,9 @@ namespace BannerlordTwitch
     [CategoryOrder("General", 0)]
     public abstract class ActionBase
     {
+        // Unique ID for this action 
+        [Browsable(false)]
+        public Guid ID { get; set; } = Guid.NewGuid();
         [Category("General"), Description("Whether this is enabled or not"), PropertyOrder(-100)]
         public bool Enabled { get; set; }
         [Category("General"), Description("Show response in the twitch chat"), PropertyOrder(-99)]
@@ -298,24 +301,42 @@ namespace BannerlordTwitch
         }
         #else
         private static PlatformFilePath SaveFilePath => FileSystem.GetConfigPath("Bannerlord-Twitch.yaml");
-        
+        private static string TemplateFileName => Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..", "Bannerlord-Twitch.yaml");
+
         public static Settings Load()
         {
-            if (!FileSystem.FileExists(SaveFilePath))
-            {
-                Log.LogFeedSystem($"No settings found, applying defaults");
-                string templateFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
-                    "Bannerlord-Twitch.yaml");
-                string cfg = File.ReadAllText(templateFileName);
-                FileSystem.SaveFileString(SaveFilePath, cfg);
-            }
-            var settings = new DeserializerBuilder()
+            var templateSettings = new DeserializerBuilder()
                 .IgnoreUnmatchedProperties()
                 .Build()
-                .Deserialize<Settings>(FileSystem.GetFileContentString(SaveFilePath));
+                .Deserialize<Settings>(File.ReadAllText(TemplateFileName));
+            if (templateSettings == null)
+            {
+                throw new Exception($"Couldn't load the mod template settings from {TemplateFileName}");
+            }
+            // if (!FileSystem.FileExists(SaveFilePath))
+            // {
+            //     Log.LogFeedSystem($"No settings found, applying defaults");
+            //     
+            //     string cfg = File.ReadAllText(TemplateFileName);
+            //     FileSystem.SaveFileString(SaveFilePath, cfg);
+            // }
+            var settings = FileSystem.FileExists(SaveFilePath)
+                ? new DeserializerBuilder()
+                .IgnoreUnmatchedProperties()
+                .Build()
+                .Deserialize<Settings>(FileSystem.GetFileContentString(SaveFilePath))
+                : templateSettings
+                ;
+
             if (settings == null)
                 throw new Exception($"Couldn't load the mod settings from {SaveFilePath}");
 
+            // merge missing actions / rewards from template
+            settings.Commands.AddRange(templateSettings.Commands.Where(s => settings.Commands.All(s2 => s2.ID != s.ID)));
+            settings.Commands.Sort((a, b) => string.Compare(a.ToString(), b.ToString(), StringComparison.Ordinal));
+            settings.Rewards.AddRange(templateSettings.Rewards.Where(s => settings.Rewards.All(s2 => s2.ID != s.ID)));
+            settings.Rewards.Sort((a, b) => string.Compare(a.ToString(), b.ToString(), StringComparison.Ordinal));
+            
             foreach (var action in settings.AllActions)
             {
                 if (!action.IsValid)

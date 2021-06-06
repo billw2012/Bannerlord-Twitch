@@ -11,6 +11,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: AdoptAHero
+  ID: e072adb0-83a2-4408-87bb-b2cff3f12ee2
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
@@ -55,6 +56,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: AddGoldToHero
+  ID: 7e0991eb-4304-496d-a9b4-874a1c114bae
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -72,6 +74,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: AddGoldToHero
+  ID: 2ccc7258-ad66-4afa-a45a-93863c1d7f35
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -89,6 +92,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: SummonHero
+  ID: 77c1dbd8-02cb-47d7-9796-7308e989b7f3
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -101,6 +105,7 @@ Rewards:
     OnPlayerSide: true
     GoldCost: 0
     PreferredFormation: LightCavalry
+    RetinueUseHeroesFormation: false
     AlertSound: None
     SubBoost: 2
     HealPerSecond: 0
@@ -116,6 +121,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: SummonHero
+  ID: 422cc8d9-84cb-4cc9-afdf-889e615fdea6
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -128,6 +134,7 @@ Rewards:
     OnPlayerSide: false
     GoldCost: 0
     PreferredFormation: LightCavalry
+    RetinueUseHeroesFormation: false
     AlertSound: None
     SubBoost: 2
     HealPerSecond: 0
@@ -143,6 +150,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: CharacterEffect
+  ID: f0b482c2-e121-4415-a2a6-95e592a4d7a9
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -177,6 +185,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: CharacterEffect
+  ID: 5c5188e9-5635-4fc2-bdb6-1e2be9dd0603
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
@@ -227,6 +236,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: CharacterEffect
+  ID: e3c7dfec-bac5-4294-9825-742e26e7e1df
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
@@ -274,6 +284,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: CharacterEffect
+  ID: 245adcfa-0df2-47d3-bff8-707bd10e6c25
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
@@ -335,6 +346,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: JoinTournament
+  ID: e1d775d0-0d60-4e12-baa7-39f0e791293a
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -352,6 +364,7 @@ Rewards:
     MaxPerUserPerStream: 10
     GlobalCooldownSeconds: 15
   Handler: SendMessage
+  ID: 1b1f00fe-fff8-4f76-8c09-8da0fd18c53b
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: false
@@ -368,6 +381,7 @@ Rewards:
     MaxPerUserPerStream: 3
     GlobalCooldownSeconds: 60
   Handler: RetireMyHero
+  ID: 60d43b2b-d1cb-4411-a126-d5089c264aca
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
@@ -384,6 +398,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: SkillXP
+  ID: fe103fc4-fcaa-4e0d-809d-235d22676b6a
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -405,6 +420,7 @@ Rewards:
     MaxPerUserPerStream: 1
     GlobalCooldownSeconds: 300
   Handler: CharacterEffect
+  ID: 5af6308d-ce73-402d-aa29-2a9e0d9ad7e8
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
@@ -440,6 +456,7 @@ Commands:
   BroadcasterOnly: false
   ModOnly: false
   Handler: HeroInfoCommand
+  ID: 1cf3abfd-3310-4a51-808e-e14d454eed05
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -457,6 +474,7 @@ Commands:
   BroadcasterOnly: false
   ModOnly: false
   Handler: HeroInfoCommand
+  ID: 7b6caafc-0246-47c2-8622-e091b10b8897
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -474,6 +492,7 @@ Commands:
   BroadcasterOnly: false
   ModOnly: false
   Handler: EquipHero
+  ID: 90b571d1-dba8-4006-860c-a0401b6f8fd2
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -488,6 +507,7 @@ Commands:
   BroadcasterOnly: false
   ModOnly: false
   Handler: Retinue
+  ID: 38eed507-87b9-47f4-b235-af921cef00c4
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -506,18 +526,20 @@ Commands:
   BroadcasterOnly: false
   ModOnly: false
   Handler: SetHeroClass
+  ID: da8416ca-e59b-458a-8953-31291d03c835
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
-    GoldCost: 10
-    UpdateEquipment: false
+    GoldCost: 100000
+    UpdateEquipment: true
 - Name: reequip
   HideHelp: false
   Help: reroll equipment
   BroadcasterOnly: false
   ModOnly: false
   Handler: EquipHero
+  ID: d4fb255c-4bb3-454e-9e26-39b4d7a321f0
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -548,6 +570,8 @@ GlobalConfigs:
     WinXP: 10000
     LoseGold: 5000
     LoseXP: 5000
+    Shouts: []
+    IncludeDefaultShouts: true
 - Id: Adopt A Hero - Tournament Config
   Config:
     StartHealthMultiplier: 2
@@ -612,11 +636,11 @@ SimTesting:
     Args: 
     Weight: 0
   Use:
-  - Enabled: false
+  - Enabled: true
     Type: Reward
     Id: Attack
     Args: 
-    Weight: 0.5
+    Weight: 2
   - Enabled: true
     Type: Reward
     Id: Summon
@@ -642,7 +666,7 @@ SimTesting:
     Id: Tournament
     Args: 
     Weight: 0.100000001
-  - Enabled: false
+  - Enabled: true
     Type: Command
     Id: retinue
     Args: 
