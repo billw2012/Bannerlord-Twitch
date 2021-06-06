@@ -1,4 +1,3 @@
-#define BL_V_1_5_9
 using HarmonyLib;
 using System;
 using System.Diagnostics;

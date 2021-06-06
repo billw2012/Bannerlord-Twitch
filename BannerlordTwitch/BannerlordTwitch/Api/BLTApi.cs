@@ -21,7 +21,6 @@ namespace BannerlordApi
         List<BLTApiUrl> bltApiUrls = new List<BLTApiUrl>();
         public readonly int port = 9000;
         private static HttpListener listener;
-        public dynamic commandCallbackMessage;
         private readonly Settings settings = Settings.Load();
 
         public BLTApi()
@@ -33,7 +32,7 @@ namespace BannerlordApi
 
         public async Task RunServerAsync()
         {
-            Trace.WriteLine("Api server starting");
+            Log.Trace("Api server starting");
             bool runServer = true;
             listener = new HttpListener();
             listener.Prefixes.Add("http://localhost:"+port+"/api/");
@@ -41,31 +40,37 @@ namespace BannerlordApi
 
             while (runServer)
             {
-                HttpListenerContext ctx = await listener.GetContextAsync();
+                try
+                {
+                    HttpListenerContext ctx = await listener.GetContextAsync();
 
-                HttpListenerRequest req = ctx.Request;
-                HttpListenerResponse resp = ctx.Response;
+                    HttpListenerRequest req = ctx.Request;
+                    HttpListenerResponse resp = ctx.Response;
 
-                OnUrlRequest(req, resp);
+                    OnUrlRequest(req, resp);
+                }
+                catch (Exception e)
+                {
+                    Log.Exception("Exception handling request",e);
+                }
             }
         }
 
         public void OnUrlRequest(HttpListenerRequest req, HttpListenerResponse resp)
         {
-            Trace.WriteLine("[VISITED]" + req.Url.ToString());
+            Log.Trace("[VISITED]" + req.Url.ToString());
+
             bltApiUrls.ForEach(bltApiUrl =>
             {
-                if (
-                    "http://localhost:"+port+"/api/" + bltApiUrl.url == req.Url.ToString().Split('?')[0] || 
-                    "http://localhost:" + port + "/api/" + bltApiUrl.url + "/" == req.Url.ToString().Split('?')[0] || 
-                    "http://localhost:"+port+ "/api" + bltApiUrl.url == req.Url.ToString().Split('?')[0]
-                )
+                Uri existingUrl =  new Uri("http://localhost:" + port + "/api/" + bltApiUrl.url);
+                
+                if (Uri.Compare(existingUrl, req.Url, UriComponents.Path, UriFormat.Unescaped, StringComparison.OrdinalIgnoreCase) == 0)
                 {
-                    Trace.WriteLine("[EXEC VISITED]" + bltApiUrl.url);
+                    Log.Trace("[EXEC VISITED]" + bltApiUrl.url);
                     try { 
                         bltApiUrl.onVisit.Invoke(req,resp);
                     }catch(Exception e){
-                        Log.LogFeedSystem("Issue on visit api urls from BLTApiUrl : " + bltApiUrl.url);
+                        Log.Exception("Issue on visit api urls from BLTApiUrl : " + bltApiUrl.url,e);
                     }
                 }
             });
@@ -82,55 +87,38 @@ namespace BannerlordApi
         {
             dynamic json = new ExpandoObject();
 
-            string cmdName = "";
-            string userId = "";
-            string args = "";
+            string cmdName;
+            string userId;
+            string args;
 
-            try
+            var splittedUrl = req.Url.ToString().Split('?');
+            if (splittedUrl.Length > 1)
             {
-                var splittedUrl = req.Url.ToString().Split('?');
-                //if url have option
-                var splittedOption = splittedUrl[1].Split('&');
-                //foreach option
-                for (int i = 0; i < splittedOption.Length; i++)
-                {
-                    string[] option = splittedOption[i].Split('=');
-                    //check key & value
-                    if (option[0] != null && option[1] != null)
-                    {
-                        switch (option[0])
-                        {
-                            case "cmd":
-                                cmdName = option[1];
-                                break;
-                            case "userId":
-                                userId = option[1];
-                                break;
-                            case "args":
-                                args = option[1];
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                }
+                var keyValuePairs = HttpUtility.UrlDecode(splittedUrl[1])
+                .Split('&')
+                .Select(kv => kv.Split('='))
+                .ToDictionary(kv => kv[0], kv => kv.Count() > 1 ? kv[1] : null);
+                            keyValuePairs.TryGetValue("cmd", out cmdName);
+                            keyValuePairs.TryGetValue("userId", out userId);
+                            keyValuePairs.TryGetValue("args", out args);
             }
-            catch (Exception e)
+            else
             {
-                json.error = "Missing variables";
-                json.expected = "cmd=string&pseudo:string&args:string";
-                json.actualParams = "cmd=" + cmdName + "&userId=" + userId + "&args=" + args;
+                cmdName = null;
+                userId = null;
+                args = null;
             }
 
-            if (cmdName == "" || userId == "")
+
+            if (cmdName == null || userId == null)
             {
                 json.error = "Missing variables";
-                json.expected = "cmd=string&pseudo:string&args:string";
+                json.expected = "cmd=string&pseudo=string&args=string";
                 json.actualParams = "cmd=" + cmdName + "&userId=" + userId + "&args=" + args;
             }
             else
             {
-                var client = BLTModule.TwitchService?.GetClientFromClientId(Int64.Parse(userId));
+                var client = BLTModule.TwitchService?.GetClientFromClientId(userId);
                 var commandFound = false;
 
                 json.actualParams = "cmd=" + cmdName + "&userId=" + userId + "&args=" + args;
@@ -139,27 +127,24 @@ namespace BannerlordApi
                 if(client == null)
                 {
                     json.error = "Can't find a twitch user with this id OR twitch api isn't started yet.";
+                    SendJSON(resp, json);
                 }
                 else
                 {
                     json.identifiedUser = client;
-                    commandFound = BLTModule.TwitchService?.TestCommand(cmdName, client.display_name.ToString(), args);
-                }
+                    MainThreadSync.Run(() => {
+                        commandFound = (bool)(BLTModule.TwitchService?.TestCommand(cmdName, client.DisplayName, args));
+                        //if command isn't found
+                        if (commandFound == false)
+                        {
+                            json.error = "Can't find a command with this name";
+                        }
 
-                //if command isn't found
-                if (commandFound == false && json.error == null)
-                {
-                    json.error = "Can't find a command with this name";
-                }
-                else
-                {
-                    //if command is fired, commandCallbackMessage will be the command output
-                    json.commandCallback = commandCallbackMessage;
-                    commandCallbackMessage = null;
+                        SendJSON(resp, json);
+                    });
                 }
             }
 
-            SendJSON(resp, json);
         }
 
         private void SendJSON(HttpListenerResponse resp, Object obj)

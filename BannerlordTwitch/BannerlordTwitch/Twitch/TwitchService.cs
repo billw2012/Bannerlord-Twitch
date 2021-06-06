@@ -375,10 +375,10 @@ namespace BannerlordTwitch
 
             if (context.Source.RespondInExtension)
             {
+                //TODO: send the message to extension
                 dynamic obj = new ExpandoObject();
                 obj.context = context;
                 obj.messages = messages;
-                BLTModule.bltApi.commandCallbackMessage = obj;
             }
         }
         

@@ -11,6 +11,7 @@ using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using Newtonsoft.Json;
 using TwitchLib.Api;
+using TwitchLib.Api.Helix.Models.Users.GetUsers;
 using TwitchLib.Client;
 using TwitchLib.Client.Events;
 using TwitchLib.Client.Models;
@@ -22,20 +23,10 @@ namespace BannerlordTwitch
 {
     internal partial class TwitchService
     {
-        public dynamic GetClientFromClientId(Int64 userId)
+        public User GetClientFromClientId(string userId)
         {
-            WebRequest request = WebRequest.Create("https://api.twitch.tv/helix/users?id=" + userId);
-            request.Method = "GET";
-            WebHeaderCollection headers = new WebHeaderCollection();
-            headers.Add(HttpRequestHeader.Authorization, "Bearer " + authSettings.AccessToken);
-            headers.Add("Client-Id", authSettings.ClientID);
-            request.Headers = headers;
-
-            Encoding encode = System.Text.Encoding.GetEncoding("utf-8");
-            WebResponse response = request.GetResponse();
-            Stream stream = response.GetResponseStream();
-            dynamic json = JsonConvert.DeserializeObject(new StreamReader(stream, encode).ReadToEnd());
-            return json.data[0];
+            var User = api.Helix.Users.GetUsersAsync(ids: new List<string> { userId }, accessToken: authSettings.AccessToken).Result.Users.FirstOrDefault();
+            return User;
         }
         private class Bot : IDisposable
         {
@@ -261,7 +252,6 @@ namespace BannerlordTwitch
                     {
                         string cmdName = parts[0];
                         string args = msg.Substring(cmdName.Length).Trim();
-                        Trace.WriteLine(JsonConvert.SerializeObject(chatMessage));
                         BLTModule.TwitchService?.ExecuteCommand(cmdName, chatMessage, args);
                     }
                 });
