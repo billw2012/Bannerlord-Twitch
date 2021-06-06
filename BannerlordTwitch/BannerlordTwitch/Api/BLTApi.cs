@@ -83,7 +83,7 @@ namespace BannerlordApi
             dynamic json = new ExpandoObject();
 
             string cmdName = "";
-            string pseudo = "";
+            string userId = "";
             string args = "";
 
             try
@@ -103,8 +103,8 @@ namespace BannerlordApi
                             case "cmd":
                                 cmdName = option[1];
                                 break;
-                            case "pseudo":
-                                pseudo = option[1];
+                            case "userId":
+                                userId = option[1];
                                 break;
                             case "args":
                                 args = option[1];
@@ -119,22 +119,41 @@ namespace BannerlordApi
             {
                 json.error = "Missing variables";
                 json.expected = "cmd=string&pseudo:string&args:string";
-                json.actualParams = "cmd=" + cmdName + "&pseudo=" + pseudo + "&args=" + args;
+                json.actualParams = "cmd=" + cmdName + "&userId=" + userId + "&args=" + args;
             }
 
-            if (cmdName == "" || pseudo == "" || args == "")
+            if (cmdName == "" || userId == "")
             {
                 json.error = "Missing variables";
                 json.expected = "cmd=string&pseudo:string&args:string";
-                json.actualParams = "cmd=" + cmdName + "&pseudo=" + pseudo + "&args=" + args;
+                json.actualParams = "cmd=" + cmdName + "&userId=" + userId + "&args=" + args;
             }
             else
             {
-                json.actualParams = "cmd=" + cmdName + "&pseudo=" + pseudo + "&args=" + args;
-                json.status = BLTModule.TwitchService?.TestCommand(cmdName, pseudo, args);
+                var client = BLTModule.TwitchService?.GetClientFromClientId(Int64.Parse(userId));
+                var commandFound = false;
 
-                if(json.status == true || json.status == false)
+                json.actualParams = "cmd=" + cmdName + "&userId=" + userId + "&args=" + args;
+
+                //if client isn't found
+                if(client == null)
                 {
+                    json.error = "Can't find a twitch user with this id OR twitch api isn't started yet.";
+                }
+                else
+                {
+                    json.identifiedUser = client;
+                    commandFound = BLTModule.TwitchService?.TestCommand(cmdName, client.display_name.ToString(), args);
+                }
+
+                //if command isn't found
+                if (commandFound == false && json.error == null)
+                {
+                    json.error = "Can't find a command with this name";
+                }
+                else
+                {
+                    //if command is fired, commandCallbackMessage will be the command output
                     json.commandCallback = commandCallbackMessage;
                     commandCallbackMessage = null;
                 }
@@ -143,18 +162,7 @@ namespace BannerlordApi
             SendJSON(resp, json);
         }
 
-        private bool cmdExec(string cmdName, string userName, string args)
-        {
-            var cmd = settings.EnabledCommands.FirstOrDefault(c => c.Name == cmdName);
-            if (cmd == null)
-                return false;
-
-            var context = ReplyContext.FromUser(cmd, userName, args);
-            ActionManager.HandleCommand(cmd.Handler, context, cmd.HandlerConfig);
-            return true;
-        }
-
-        public void SendJSON(HttpListenerResponse resp, Object obj)
+        private void SendJSON(HttpListenerResponse resp, Object obj)
         {
             string jsonString = JsonConvert.SerializeObject(obj);
             byte[] data = Encoding.UTF8.GetBytes(jsonString);

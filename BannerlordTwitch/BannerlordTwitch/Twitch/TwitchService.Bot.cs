@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using BannerlordTwitch.Rewards;
@@ -19,6 +22,21 @@ namespace BannerlordTwitch
 {
     internal partial class TwitchService
     {
+        public dynamic GetClientFromClientId(Int64 userId)
+        {
+            WebRequest request = WebRequest.Create("https://api.twitch.tv/helix/users?id=" + userId);
+            request.Method = "GET";
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers.Add(HttpRequestHeader.Authorization, "Bearer " + authSettings.AccessToken);
+            headers.Add("Client-Id", authSettings.ClientID);
+            request.Headers = headers;
+
+            Encoding encode = System.Text.Encoding.GetEncoding("utf-8");
+            WebResponse response = request.GetResponse();
+            Stream stream = response.GetResponseStream();
+            dynamic json = JsonConvert.DeserializeObject(new StreamReader(stream, encode).ReadToEnd());
+            return json.data[0];
+        }
         private class Bot : IDisposable
         {
             private readonly string channel;
