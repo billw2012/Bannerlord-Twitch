@@ -1,5 +1,4 @@
-﻿#define BL_V_1_5_9
-using System.IO;
+﻿using System.IO;
 using Path = System.IO.Path;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;

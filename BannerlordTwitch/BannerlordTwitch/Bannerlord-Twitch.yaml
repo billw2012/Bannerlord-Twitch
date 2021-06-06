@@ -507,32 +507,6 @@ Commands:
       IncludeBanditUnits: false
       UseBasicTroops: true
       UseEliteTroops: true
-- Name: adopt
-  HideHelp: false
-  Help: 
-  BroadcasterOnly: false
-  ModOnly: false
-  Handler: AdoptAHero
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    CreateNew: true
-    AllowNoble: false
-    AllowWanderer: true
-    AllowPlayerCompanion: false
-    OnlySameFaction: false
-    AllowNewAdoptionOnDeath: true
-    Inheritance: 0.25
-    SubscriberOnly: false
-    MinSubscribedMonths: 
-    StartingGold: 0
-    StartingSkills: []
-    StartingEquipmentTier: 1
-    StartWithMeleeWeapon: true
-    StartWithRangedWeapon: true
-    StartWithHorse: true
-    StartWithArmor: true
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:

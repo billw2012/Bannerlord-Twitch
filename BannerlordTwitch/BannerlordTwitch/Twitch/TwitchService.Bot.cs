@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
-using Newtonsoft.Json;
 using TwitchLib.Api;
 using TwitchLib.Client;
 using TwitchLib.Client.Events;
@@ -243,7 +241,6 @@ namespace BannerlordTwitch
                     {
                         string cmdName = parts[0];
                         string args = msg.Substring(cmdName.Length).Trim();
-                        Trace.WriteLine(JsonConvert.SerializeObject(chatMessage));
                         BLTModule.TwitchService?.ExecuteCommand(cmdName, chatMessage, args);
                     }
                 });
