@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -204,7 +204,7 @@ namespace BLTAdoptAHero
                 
                 // Clean up dead character names
                 foreach (var deadHero in Campaign.Current.DeadAndDisabledHeroes
-                    .Where(h => h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true))
+                    .Where(h => h.IsDead && h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true))
                 {
                     RetireHero(deadHero);
                 }
