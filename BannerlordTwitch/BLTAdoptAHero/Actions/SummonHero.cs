@@ -179,6 +179,7 @@ namespace BLTAdoptAHero
             new Shout("Now for wrath, now for ruin and a red nightfall!") { EnemySide = false, Weight = 0.05f },
             new Shout("Fell deeds awake, fire and slaughter!") { EnemySide = false },
             new Shout("Spooooooooooooooooooon!") { EnemySide = false, Weight = 0.05f },
+            new Shout("Leeeeeeeerooooy Jeeeeenkins") { EnemySide = false, Weight = 0.05f },
 
             new Shout("Defend yourself!") { PlayerSide = false },
             new Shout("Time for you to die!") { PlayerSide = false },
@@ -194,6 +195,7 @@ namespace BLTAdoptAHero
             new Shout("Never should have come here!") { PlayerSide = false },
             new Shout("Your money or life!") { PlayerSide = false },
             new Shout("I'm sorry, but I must stop you.") { PlayerSide = false },
+            new Shout("I have the high ground!") { PlayerSide = false, Weight = 0.05f },
         };
 
         private class BLTRemoveAgentsBehavior : AutoMissionBehavior<BLTRemoveAgentsBehavior>
