@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -122,13 +122,13 @@ namespace BLTAdoptAHero
     [CategoryOrder("General", 1)]
     [CategoryOrder("Kill Rewards", 2)]
     [CategoryOrder("Battle End Rewards", 3)]
+    [CategoryOrder("Shouts", 4)]
     internal class GlobalCommonConfig
     {
         private const string ID = "Adopt A Hero - General Config";
         
         internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalCommonConfig));
         internal static GlobalCommonConfig Get() => ActionManager.GetGlobalConfig<GlobalCommonConfig>(ID);
-
 
         [Category("General"), Description("Whether the hero is allowed to die"), PropertyOrder(3)]
         public bool AllowDeath { get; [UsedImplicitly] set; }
@@ -205,6 +205,12 @@ namespace BLTAdoptAHero
 
         [Category("Battle End Rewards"), Description("XP the hero gets if the heroes side loses"), PropertyOrder(4)]
         public int LoseXP { get; set; } = 5000;
+
+        [Category("Shouts"), Description("Custom shouts"), PropertyOrder(1)]
+        public List<SummonHero.Shout> Shouts { get; set; } = new();
+        
+        [Category("Shouts"), Description("Whether to include default shouts"), PropertyOrder(2)]
+        public bool IncludeDefaultShouts { get; set; } = true;
     }
     
     [CategoryOrder("General", 1)]
