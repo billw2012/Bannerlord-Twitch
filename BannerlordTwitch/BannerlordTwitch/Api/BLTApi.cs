@@ -118,21 +118,21 @@ namespace BannerlordApi
             }
             else
             {
-                var client = BLTModule.TwitchService?.GetClientFromClientId(userId);
-                var commandFound = false;
+                MainThreadSync.Run(() => {
+                    var client = BLTModule.TwitchService?.GetClientFromClientId(userId);
+                    var commandFound = false;
 
-                json.actualParams = "cmd=" + cmdName + "&userId=" + userId + "&args=" + args;
+                    json.actualParams = "cmd=" + cmdName + "&userId=" + userId + "&args=" + args;
 
-                //if client isn't found
-                if(client == null)
-                {
-                    json.error = "Can't find a twitch user with this id OR twitch api isn't started yet.";
-                    SendJSON(resp, json);
-                }
-                else
-                {
-                    json.identifiedUser = client;
-                    MainThreadSync.Run(() => {
+                    //if client isn't found
+                    if(client == null)
+                    {
+                        json.error = "Can't find a twitch user with this id OR twitch api isn't started yet.";
+                        SendJSON(resp, json);
+                    }
+                    else
+                    {
+                        json.identifiedUser = client;
                         commandFound = (bool)(BLTModule.TwitchService?.TestCommand(cmdName, client.DisplayName, args));
                         //if command isn't found
                         if (commandFound == false)
@@ -141,8 +141,8 @@ namespace BannerlordApi
                         }
 
                         SendJSON(resp, json);
-                    });
-                }
+                    }
+                });
             }
 
         }
