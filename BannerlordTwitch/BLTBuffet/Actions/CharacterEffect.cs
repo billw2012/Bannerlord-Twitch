@@ -50,8 +50,7 @@ namespace BLTBuffet
                     //var tagObject = new TextObject(BLTAdoptAHeroModule.Tag);
                     if (a.Character is not CharacterObject charObj) return false;
                     return charObj.HeroObject?.IsAdopted() == true 
-                         && charObj.HeroObject?.FirstName?.Contains(context.UserName) == true
-                         && charObj.HeroObject?.FirstName?.ToString() == context.UserName;
+                         && string.Equals(charObj.HeroObject?.FirstName?.Raw(), context.UserName, StringComparison.CurrentCultureIgnoreCase);
                 }),
                 Target.Any => Mission.Current.Agents.Where(GeneralAgentFilter).Where(a => !a.IsAdopted()).SelectRandom(),
                 Target.EnemyTeam => Mission.Current.Agents.Where(GeneralAgentFilter)

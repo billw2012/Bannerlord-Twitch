@@ -184,10 +184,10 @@ namespace BLTAdoptAHero
                 retinue = retinueList.Count;
             }
 
-            string name = hero.FirstName.ToString();
+            string name = hero.FirstName?.Raw().ToLower();
             Log.RunInfoPanelUpdate(() =>
             {
-                var hm = heroesViewModel.FirstOrDefault(h => h.Name == name);
+                var hm = heroesViewModel.FirstOrDefault(h => h.Name.ToLower() == name);
                 if (hm != null)
                 {
                     hm.Retinue = retinue;
@@ -199,10 +199,10 @@ namespace BLTAdoptAHero
 
         private void AddHeroKill(Hero hero)
         {
-            string heroName = hero.FirstName?.ToString();
+            string name = hero.FirstName?.Raw().ToLower();
             Log.RunInfoPanelUpdate(() =>
             {
-                var hm = heroesViewModel.FirstOrDefault(h => h.Name == heroName);
+                var hm = heroesViewModel.FirstOrDefault(h => h.Name.ToLower() == name);
                 // This is expected to be non-null always
                 if (hm != null)
                 {
@@ -215,10 +215,10 @@ namespace BLTAdoptAHero
         
         private void AddHeroRetinueKill(Hero hero)
         {
-            string heroName = hero.FirstName?.ToString();
+            string name = hero.FirstName?.Raw().ToLower();
             Log.RunInfoPanelUpdate(() =>
             {
-                var hm = heroesViewModel.FirstOrDefault(h => h.Name == heroName);
+                var hm = heroesViewModel.FirstOrDefault(h => h.Name.ToLower() == name);
                 // This is expected to be non-null always
                 if (hm != null)
                 {

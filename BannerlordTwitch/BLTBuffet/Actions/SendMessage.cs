@@ -32,7 +32,7 @@ namespace BLTBuffet
             return Campaign.Current?
                 .AliveHeroes?
                 .FirstOrDefault(h => h.Name?.Contains("[BLT]") == true 
-                                     && h.FirstName?.Raw() == nameToFind);
+                                     && h.FirstName?.Raw().ToLower() == nameToFind);
         }
     }
 }

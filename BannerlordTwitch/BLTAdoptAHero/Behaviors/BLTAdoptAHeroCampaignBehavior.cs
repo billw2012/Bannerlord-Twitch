@@ -319,7 +319,10 @@ namespace BLTAdoptAHero
 
         public int InheritGold(Hero inheritor, float amount)
         {
-            var ancestors = heroData.Where(h => h.Key != inheritor && h.Key.FirstName.Contains(inheritor.FirstName) &&  h.Key.FirstName.ToString() == inheritor.FirstName.ToString()).ToList();
+            string inheritorName = inheritor.FirstName?.Raw();
+            var ancestors = heroData.Where(h => h.Key != inheritor 
+                                                && h.Key.FirstName?.Raw() == inheritorName
+                                                ).ToList();
             int inheritance = (int) (ancestors.Sum(a => a.Value.SpentGold + a.Value.Gold) * amount);
             ChangeHeroGold(inheritor, inheritance);
             foreach (var (key, value) in ancestors)
