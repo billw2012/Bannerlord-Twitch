@@ -158,29 +158,6 @@ namespace BLTAdoptAHero
         {
             CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, () =>
             {
-                // Clean up legacy hero names
-                var heroes = GetAllAdoptedHeroes().GroupBy(h => h.Name.ToLower());
-                foreach (var heroGroup in heroes)
-                {
-                    // hero to keep is living and preferably lowercase
-                    var heroToKeep = heroGroup.FirstOrDefault(h => h.IsAlive && h.FirstName == h.FirstName.ToLower()) 
-                                     ?? heroGroup.FirstOrDefault(h => h.IsAlive);
-
-                    // all other heroes with the same name, living or dead are made lowercase, and have the tags removed
-                    foreach(var otherOnes in heroGroup.Where(h => h != heroToKeep))
-                    {
-                        // Removing the tag and lower casing the name for neatness
-                        otherOnes.FirstName = otherOnes.FirstName.ToLower();
-                        otherOnes.Name = otherOnes.FirstName.ToLower();
-                        Campaign.Current.EncyclopediaManager.BookmarksTracker.RemoveBookmarkFromItem(otherOnes);
-                    }
-                    if (heroToKeep != null)
-                    {
-                        heroToKeep.FirstName = heroToKeep.FirstName.ToLower();
-                        heroToKeep.Name = new TextObject(GetFullName(heroToKeep.FirstName.ToString()));
-                    }
-                }
-                
                 // Clean up hero data
                 int randomSeed = Environment.TickCount;
                 foreach (var (hero, data) in heroData)
@@ -301,10 +278,13 @@ namespace BLTAdoptAHero
         
         public static void RetireHero(Hero hero)
         {
+            string heroName = hero.FirstName?.Raw().ToLower();
             // Retired heroes
-            int count = Campaign.Current.Heroes.Count(h => h.FirstName?.Contains(hero.FirstName) == true && h.FirstName.ToString() == hero.FirstName.ToString() && h.Name?.Contains(BLTAdoptAHeroModule.Tag) == false);
-            hero.Name = new TextObject(hero.FirstName + $" {ToRoman(count + 1)} ({(hero.IsDead ? "deceased" : "retired")})");
+            int count = Campaign.Current.Heroes.Count(h
+                => h.FirstName?.Raw().ToLower() == heroName 
+                   && h.Name?.Contains(BLTAdoptAHeroModule.Tag) == false);
             var oldName = hero.Name;
+            hero.Name = new TextObject(hero.FirstName + $" {ToRoman(count + 1)} ({(hero.IsDead ? "deceased" : "retired")})");
             Campaign.Current.EncyclopediaManager.BookmarksTracker.RemoveBookmarkFromItem(hero);
             Log.Info($"Dead or retired hero {oldName} renamed to {hero.Name}");
         }
@@ -472,20 +452,38 @@ namespace BLTAdoptAHero
 
         public static string GetFullName(string name) => $"{name} {BLTAdoptAHeroModule.Tag}";
 
-        public static Hero GetDeadHero(string name) =>
-            Campaign.Current?
+        public static Hero GetDeadHero(string name)
+        {
+            string nameToFind = name.ToLower();
+            return Campaign.Current?
                 .DeadAndDisabledHeroes?
-                .FirstOrDefault(h => h.IsDead 
-                                     && h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true 
-                                     && h.FirstName?.Contains(name) == true 
-                                     && h.FirstName?.ToString() == name);
+                .FirstOrDefault(h => h.IsDead
+                                     && h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true
+                                     && h.FirstName?.Raw().ToLower() == nameToFind);
+        }
 
-        public static Hero GetAdoptedHero(string name) =>
-            Campaign.Current?
+        public static void SetHeroAdoptedName(Hero hero, string userName)
+        {
+            hero.FirstName = new TextObject(userName);
+            hero.Name = new TextObject(GetFullName(userName));
+        }
+        
+        public static Hero GetAdoptedHero(string name)
+        {
+            string nameToFind = name.ToLower();
+            var foundHero = Campaign.Current?
                 .AliveHeroes?
-                .FirstOrDefault(h => h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true 
-                                     && h.FirstName?.Contains(name) == true 
-                                     && h.FirstName?.ToString() == name);
+                .FirstOrDefault(h => h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true
+                                     && h.FirstName?.Raw().ToLower() == nameToFind);
+
+            // correct the name to match the viewer name casing
+            if (foundHero != null && foundHero.FirstName?.Raw() != name)
+            {
+                SetHeroAdoptedName(foundHero, name);
+            }
+
+            return foundHero;
+        }
 
         #endregion
     }

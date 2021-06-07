@@ -199,22 +199,19 @@ namespace BLTAdoptAHero
             }
             else
             {
-                newHero = string.IsNullOrEmpty(args)
-                    ? BLTAdoptAHeroCampaignBehavior.GetAvailableHeroes(h =>
-                            // Filter by allowed types
-                            (settings.AllowPlayerCompanion && h.IsPlayerCompanion
-                             || settings.AllowNoble && h.IsNoble
-                             || settings.AllowWanderer && h.IsWanderer)
-                            // Select correct clan faction
-                            && (!settings.OnlySameFaction
-                                || Clan.PlayerClan?.MapFaction != null
-                                && Clan.PlayerClan?.MapFaction == h.Clan?.MapFaction)
-                            // Disallow rebel clans as they may get deleted if the rebellion fails
-                            && !h.Clan?.IsRebelClan == true
-                        )
-                        .SelectRandom()
-                    : Campaign.Current.AliveHeroes.FirstOrDefault(h =>
-                        h.Name.Contains(args) && h.Name.ToString() == args);
+                newHero = BLTAdoptAHeroCampaignBehavior.GetAvailableHeroes(h =>
+                        // Filter by allowed types
+                        (settings.AllowPlayerCompanion && h.IsPlayerCompanion
+                         || settings.AllowNoble && h.IsNoble
+                         || settings.AllowWanderer && h.IsWanderer)
+                        // Select correct clan faction
+                        && (!settings.OnlySameFaction
+                            || Clan.PlayerClan?.MapFaction != null
+                            && Clan.PlayerClan?.MapFaction == h.Clan?.MapFaction)
+                        // Disallow rebel clans as they may get deleted if the rebellion fails
+                        && !h.Clan?.IsRebelClan == true
+                    )
+                    .SelectRandom();
             }
             
             if (newHero == null)
@@ -243,8 +240,7 @@ namespace BLTAdoptAHero
             }
 
             string oldName = newHero.Name.ToString();
-            newHero.FirstName = new TextObject(userName);
-            newHero.Name = new TextObject(BLTAdoptAHeroCampaignBehavior.GetFullName(userName));
+            BLTAdoptAHeroCampaignBehavior.SetHeroAdoptedName(newHero, userName);
             
             if (settings.StartingEquipmentTier.HasValue)
             {

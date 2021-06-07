@@ -37,7 +37,7 @@ namespace BannerlordTwitch
         public static ReplyContext FromMessage(ActionBase source, ChatMessage msg, string args) =>
             new()
             {
-                UserName = msg.Username,
+                UserName = msg.DisplayName,
                 ReplyId = msg.Id,
                 Args = args,
                 Bits = msg.Bits,
@@ -65,7 +65,7 @@ namespace BannerlordTwitch
         public static ReplyContext FromRedemption(ActionBase source, OnRewardRedeemedArgs args) =>
             new()
             {
-                UserName = args.Login,
+                UserName = args.DisplayName,
                 Args = args.Message,
                 RedemptionId = args.RedemptionId,
                 Source = source,
@@ -74,7 +74,7 @@ namespace BannerlordTwitch
         public static ReplyContext FromUser(ActionBase source, string userName, string args = null) =>
             new()
             {
-                UserName = userName.ToLower(),
+                UserName = userName,
                 Args = args,
                 Source = source,
             };
@@ -304,7 +304,7 @@ namespace BannerlordTwitch
                 return false;
             }
 
-            return affiliateSpoofing.FakeRedeem(reward.RewardSpec.Title, user.ToLower(), message) == true;
+            return affiliateSpoofing.FakeRedeem(reward.RewardSpec.Title, user, message) == true;
             // var redeem = new OnRewardRedeemedArgs
             // {
             //     RedemptionId = Guid.NewGuid(),
