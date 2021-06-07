@@ -113,26 +113,29 @@ namespace BLTAdoptAHero
             
             [Category("Initialization"), 
              Description("Starting skills, if empty then default skills of the adopted hero will be left in tact"),
-             DefaultValue(null), PropertyOrder(1)]
+             DefaultValue(null), PropertyOrder(2)]
             public List<SkillDef> StartingSkills { get; set; }
             
             [Category("Initialization"), 
              Description("Equipment tier the adopted hero will start with, if you don't specify then they get the " +
-                         "heroes existing equipment"), DefaultValue(null), PropertyOrder(2)]
+                         "heroes existing equipment"), DefaultValue(null), PropertyOrder(3)]
             public int? StartingEquipmentTier { get; set; }
 
             [Category("Initialization"),
              Description("Whether the hero will start with a melee weapon, only applies if StartingEquipmentTier is " +
-                         "specified"), PropertyOrder(3)]
+                         "specified"), PropertyOrder(4)]
             public bool StartWithMeleeWeapon { get; set; } = true;
             [Category("Initialization"),
              Description("Whether the hero will start with a ranged weapon, only applies if StartingEquipmentTier is " +
-                         "specified"), PropertyOrder(3)]
+                         "specified"), PropertyOrder(5)]
             public bool StartWithRangedWeapon { get; set; } = true;
-            [Category("Initialization"), Description("Whether the hero will start with a horse, only applies if StartingEquipmentTier is specified"), PropertyOrder(3)]
+            [Category("Initialization"), Description("Whether the hero will start with a horse, only applies if StartingEquipmentTier is specified"), PropertyOrder(6)]
             public bool StartWithHorse { get; set; } = true;
-            [Category("Initialization"), Description("Whether the hero will start with armor, only applies if StartingEquipmentTier is specified"), PropertyOrder(4)]
+            [Category("Initialization"), Description("Whether the hero will start with armor, only applies if StartingEquipmentTier is specified"), PropertyOrder(7)]
             public bool StartWithArmor { get; set; } = true;
+            [Category("Initialization"), Description("Whether the hero will spawn in hero party"), PropertyOrder(8)]
+            public bool SpawnInParty { get; set; } = true;
+
         }
 
         Type IRewardHandler.RewardConfigType => typeof(Settings);
@@ -199,7 +202,8 @@ namespace BLTAdoptAHero
             }
 
             args = args?.Trim();
-            
+
+            var targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom();
             Hero newHero = null;
             if (settings.CreateNew)
             {
@@ -210,7 +214,7 @@ namespace BLTAdoptAHero
                 {
                     newHero = HeroCreator.CreateSpecialHero(character);
                     newHero.ChangeState(Hero.CharacterStates.Active);
-                    var targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom();
+                    targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom();
                     EnterSettlementAction.ApplyForCharacterOnly(newHero, targetSettlement);
                     Log.Info($"Placed new hero {newHero.Name} at {targetSettlement.Name}");
                 }
@@ -238,6 +242,32 @@ namespace BLTAdoptAHero
             if (newHero == null)
             {
                 return (false, "You can't adopt a hero: no available hero matching the requirements was found!");
+            }
+            
+            if (settings.SpawnInParty)
+            {
+                var mainParty = MobileParty.MainParty;
+                if (mainParty != null && mainParty.Party.NumberOfAllMembers < mainParty.Party.PartySizeLimit)
+                {
+                    AddHeroToPartyAction.Apply(newHero, mainParty);
+                    Log.Info($"Placed new hero {newHero.Name} in hero party");
+                }
+                else
+                {
+                    if(mainParty == null)
+                    {
+                        return (false, "You can't adopt a hero: main hero party don't exist for now!");
+                    }
+                    else
+                    {
+                        return (false, "You can't adopt a hero: main hero party is full!");
+                    }
+                }
+            }
+            else
+            {
+                EnterSettlementAction.ApplyForCharacterOnly(newHero, targetSettlement);
+                Log.Info($"Placed new hero {newHero.Name} at {targetSettlement.Name}");
             }
             
             if (settings.StartingSkills?.Any() == true)
