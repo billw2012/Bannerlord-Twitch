@@ -15,10 +15,11 @@ namespace BLTAdoptAHero
         {
             [Description("What to improve"), PropertyOrder(1)]
             public Skills Skills { get; set; }
-            [Description("Improve a random skill from the Skills specified, rather than the best one"), PropertyOrder(2)]
-            public bool Random { get; set; }
-            [Description("If this is specified then the best skill from a random skill group will be improved, Skills list is ignored. Groups are melee (One Handed, Two Handed, Polearm), ranged (Bow, Crossbow, Throwing), support (Smithing, Scouting, Trade, Steward, Engineering), movement (Riding, Athletics), personal (Tactics, Roguery, Charm, Leadership)"), PropertyOrder(3)]
-            public bool Auto { get; set; }
+            [Description("Chooses a random skill to add XP to, prefering class skills, " +
+                         "then skills for current equipment, then other skills. " +
+                         "Skills setting is ignored when auto is used."),
+             PropertyOrder(2)]
+            public bool Auto { get; set; } = true;
         }
         
         protected override Type ConfigType => typeof(SkillXPSettings);
@@ -27,12 +28,12 @@ namespace BLTAdoptAHero
             Hero adoptedHero, int amount, SettingsBase baseSettings)
         {
             var settings = (SkillXPSettings) baseSettings;
-            return ImproveSkill(adoptedHero, amount, settings.Skills, settings.Random, settings.Auto);
+            return ImproveSkill(adoptedHero, amount, settings.Skills, settings.Auto);
         }
 
-        public static (bool success, string description) ImproveSkill(Hero hero, int amount, Skills skills, bool random, bool auto)
+        public static (bool success, string description) ImproveSkill(Hero hero, int amount, Skills skills, bool auto)
         {
-            var skill = GetSkill(hero, skills, random, auto, so => BLTAdoptAHeroModule.CommonConfig.UseRawXP || hero.HeroDeveloper.GetFocusFactor(so) > 0);
+            var skill = GetSkill(hero, skills, auto, so => BLTAdoptAHeroModule.CommonConfig.UseRawXP || hero.HeroDeveloper.GetFocusFactor(so) > 0);
             if (skill == null) return (false, $"Couldn't find a skill to improve");
             float prevSkill = hero.HeroDeveloper.GetPropertyValue(skill);
             int prevLevel = hero.GetSkillValue(skill);

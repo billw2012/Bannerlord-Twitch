@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BannerlordTwitch.Dummy;
@@ -10,17 +8,13 @@ using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Testing;
 using BannerlordTwitch.Util;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TwitchLib.Api;
 using TwitchLib.Api.Core.Enums;
 using TwitchLib.Api.Helix.Models.ChannelPoints.GetCustomReward;
 using TwitchLib.Api.Helix.Models.ChannelPoints.UpdateCustomRewardRedemptionStatus;
-using TwitchLib.Client.Events;
 using TwitchLib.Client.Models;
 using TwitchLib.PubSub;
 using TwitchLib.PubSub.Events;
-using static System.String;
-using UserType = TwitchLib.Client.Enums.UserType;
 
 namespace BannerlordTwitch
 {
@@ -43,7 +37,7 @@ namespace BannerlordTwitch
         public static ReplyContext FromMessage(ActionBase source, ChatMessage msg, string args) =>
             new()
             {
-                UserName = msg.Username,
+                UserName = msg.DisplayName,
                 ReplyId = msg.Id,
                 Args = args,
                 Bits = msg.Bits,
@@ -71,7 +65,7 @@ namespace BannerlordTwitch
         public static ReplyContext FromRedemption(ActionBase source, OnRewardRedeemedArgs args) =>
             new()
             {
-                UserName = args.Login,
+                UserName = args.DisplayName,
                 Args = args.Message,
                 RedemptionId = args.RedemptionId,
                 Source = source,
@@ -80,7 +74,7 @@ namespace BannerlordTwitch
         public static ReplyContext FromUser(ActionBase source, string userName, string args = null) =>
             new()
             {
-                UserName = userName.ToLower(),
+                UserName = userName,
                 Args = args,
                 Source = source,
             };
@@ -149,7 +143,7 @@ namespace BannerlordTwitch
                     // Connect the chatbot
                     bot = new Bot(user.Login, authSettings);
 
-                    if (IsNullOrEmpty(user.BroadcasterType))
+                    if (string.IsNullOrEmpty(user.BroadcasterType))
                     {
                         Log.LogFeedFail($"Service init failed: you must be a twitch partner or affiliate to use the channel points system. Chat bot and testing are still functioning.");
                         return;
@@ -310,7 +304,7 @@ namespace BannerlordTwitch
                 return false;
             }
 
-            return affiliateSpoofing.FakeRedeem(reward.RewardSpec.Title, user.ToLower(), message) == true;
+            return affiliateSpoofing.FakeRedeem(reward.RewardSpec.Title, user, message) == true;
             // var redeem = new OnRewardRedeemedArgs
             // {
             //     RedemptionId = Guid.NewGuid(),
@@ -362,12 +356,12 @@ namespace BannerlordTwitch
                 if (context.UserName != null)
                 {
                     bot.SendChatReply(context.UserName, messages);
-                    Log.Trace($"[{nameof(TwitchService)}] Reply to {context.UserName}: {Join(", ", messages)}");
+                    Log.Trace($"[{nameof(TwitchService)}] Reply to {context.UserName}: {string.Join(", ", messages)}");
                 }
                 else
                 {
                     bot.SendChat(messages);
-                    Log.Trace($"[{nameof(TwitchService)}] Chat: {Join(", ", messages)}");
+                    Log.Trace($"[{nameof(TwitchService)}] Chat: {string.Join(", ", messages)}");
                 }
             }
         }
@@ -377,7 +371,7 @@ namespace BannerlordTwitch
             var help = "Commands: ".Yield()
                 .Concat(settings.EnabledCommands.Where(c
                         => !c.HideHelp && !c.BroadcasterOnly && !c.ModOnly)
-                    .Select(c => $"!{c.Name} - {c.Help}")
+                    .Select(c => string.IsNullOrEmpty(c.Help) ? c.Name : $"!{c.Name} - {c.Help}")
                 )
                 .ToList();
             if (settings.EnabledRewards.Any())
@@ -390,7 +384,7 @@ namespace BannerlordTwitch
         
         public bool ExecuteCommand(string cmdName, ChatMessage chatMessage, string args)
         {
-            var cmd = this.settings.EnabledCommands.FirstOrDefault(c => c.Name == cmdName);
+            var cmd = this.settings.GetCommand(cmdName);
             if (cmd == null)
             {
                 Log.Trace($"[{nameof(TwitchService)}] Couldn't find command {cmdName}");
@@ -411,7 +405,7 @@ namespace BannerlordTwitch
 
         public bool TestCommand(string cmdName, string userName, string args)
         {
-            var cmd = this.settings.EnabledCommands.FirstOrDefault(c => c.Name == cmdName);
+            var cmd = this.settings.GetCommand(cmdName);
             if (cmd == null)
                 return false;
             var context = ReplyContext.FromUser(cmd, userName, args);
@@ -428,7 +422,7 @@ namespace BannerlordTwitch
             }
             //Log.Trace($"[{nameof(TwitchService)}] Redemption of {redemption.RewardTitle} for {redemption.DisplayName} complete{(!IsNullOrEmpty(info) ? $": {info}" : "")}");
             ActionManager.SendReply(context, info);
-            if (!IsNullOrEmpty(redemption.ChannelId))
+            if (!string.IsNullOrEmpty(redemption.ChannelId))
             {
                 if ((context.Source as Reward)?.RewardSpec?.DisableAutomaticFulfillment != true)
                 {
@@ -454,7 +448,7 @@ namespace BannerlordTwitch
             }
             //Log.Trace($"[{nameof(TwitchService)}] Redemption of {redemption.RewardTitle} for {redemption.DisplayName} cancelled{(!IsNullOrEmpty(reason) ? $": {reason}" : "")}");
             ActionManager.SendReply(context, reason);
-            if (!IsNullOrEmpty(redemption.ChannelId))
+            if (!string.IsNullOrEmpty(redemption.ChannelId))
             {
                 _ = SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.CANCELED);
             }

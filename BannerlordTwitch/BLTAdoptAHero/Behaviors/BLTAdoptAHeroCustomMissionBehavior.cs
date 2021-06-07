@@ -283,7 +283,7 @@ namespace BLTAdoptAHero
             }
             if (xpPerKill != 0)
             {
-                (bool success, string description) = SkillXP.ImproveSkill(hero, xpPerKill, Skills.All, random: false, auto: true);
+                (bool success, string description) = SkillXP.ImproveSkill(hero, xpPerKill, Skills.All, auto: true);
                 if (success)
                 {
                     results.Add(description);
@@ -334,7 +334,7 @@ namespace BLTAdoptAHero
             }
             if (xpPerKilled != 0)
             {
-                (bool success, string description) = SkillXP.ImproveSkill(hero, xpPerKilled, Skills.All, random: false, auto: true);
+                (bool success, string description) = SkillXP.ImproveSkill(hero, xpPerKilled, Skills.All, auto: true);
                 if (success)
                 {
                     results.Add(description);
