@@ -335,9 +335,9 @@ namespace BannerlordTwitch
                 throw new Exception($"Couldn't load the mod settings from {SaveFilePath}");
 
             // merge missing actions / rewards from template
-            settings.Commands.AddRange(templateSettings.Commands.Where(s => settings.Commands.All(s2 => s2.ID != s.ID)));
+            settings.Commands.AddRange(templateSettings.Commands.Where(s => settings.Commands.All(s2 => s2.ID != s.ID && s2.ToString() != s.ToString())));
             settings.Commands.Sort((a, b) => string.Compare(a.ToString(), b.ToString(), StringComparison.Ordinal));
-            settings.Rewards.AddRange(templateSettings.Rewards.Where(s => settings.Rewards.All(s2 => s2.ID != s.ID)));
+            settings.Rewards.AddRange(templateSettings.Rewards.Where(s => settings.Rewards.All(s2 => s2.ID != s.ID && s2.ToString() != s.ToString())));
             settings.Rewards.Sort((a, b) => string.Compare(a.ToString(), b.ToString(), StringComparison.Ordinal));
             
             foreach (var action in settings.AllActions)
