@@ -13,6 +13,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using Color = TaleWorlds.Library.Color;
+using BannerlordApi;
 
 #pragma warning disable IDE0051 // Remove unused private members
 namespace BannerlordTwitch
@@ -29,10 +30,11 @@ namespace BannerlordTwitch
 		private static Harmony harmony;
 
 		public static TwitchService TwitchService { get; private set; }
+		public static BLTApi bltApi;
 
 		[DllImport("user32.dll")]
 		static extern int SetWindowText(IntPtr hWnd, string text);
-		
+
 		static BLTModule()
 		{
 			// Set a consistent Window title so streaming software can find it
@@ -89,7 +91,13 @@ namespace BannerlordTwitch
 			}
 		}
 
-		public static void AddInfoPanel(Func<UIElement> construct)
+        protected override void OnSubModuleLoad()
+        {
+			base.OnSubModuleLoad();
+			bltApi = new BLTApi();
+		}
+
+        public static void AddInfoPanel(Func<UIElement> construct)
 		{
 			overlayWindow?.AddInfoPanel(construct);
 		}

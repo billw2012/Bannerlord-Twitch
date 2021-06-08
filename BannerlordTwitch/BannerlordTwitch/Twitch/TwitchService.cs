@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Dynamic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BannerlordTwitch.Dummy;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Testing;
 using BannerlordTwitch.Util;
+using Newtonsoft.Json;
 using TaleWorlds.Core;
 using TwitchLib.Api;
 using TwitchLib.Api.Core.Enums;
@@ -363,6 +367,14 @@ namespace BannerlordTwitch
                     bot.SendChat(messages);
                     Log.Trace($"[{nameof(TwitchService)}] Chat: {string.Join(", ", messages)}");
                 }
+            }
+
+            if (context.Source.RespondInExtension)
+            {
+                //TODO: send the message to extension
+                dynamic obj = new ExpandoObject();
+                obj.context = context;
+                obj.messages = messages;
             }
         }
         

@@ -15,6 +15,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     CreateNew: false
     AllowNoble: true
@@ -60,6 +61,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     Amount: 10000
 - RewardSpec:
@@ -78,6 +80,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     Amount: 100000
 - RewardSpec:
@@ -96,6 +99,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     AllowFieldBattle: true
     AllowVillageBattle: true
@@ -125,6 +129,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     AllowFieldBattle: true
     AllowVillageBattle: true
@@ -154,6 +159,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     Name: Heal Player
     Target: Player
@@ -189,6 +195,7 @@ Rewards:
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     Name: Giant
     Target: AdoptedHero
@@ -240,6 +247,7 @@ Rewards:
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     Name: Baby
     Target: AdoptedHero
@@ -288,6 +296,7 @@ Rewards:
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     Name: Titan
     Target: EnemyTeam
@@ -350,6 +359,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     GoldCost: 0
 - RewardSpec:
@@ -368,6 +378,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: false
+  RespondInExtension: false
   HandlerConfig: 
 - RewardSpec:
     Title: Retire My Hero
@@ -385,6 +396,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig: 
 - RewardSpec:
     Title: 50k XP
@@ -402,6 +414,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     Skills: None
     Auto: true
@@ -424,6 +437,7 @@ Rewards:
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     Name: 
     Target: Player
@@ -458,8 +472,9 @@ Commands:
   Handler: HeroInfoCommand
   ID: 1cf3abfd-3310-4a51-808e-e14d454eed05
   Enabled: true
-  RespondInTwitch: false
+  RespondInTwitch: true
   RespondInOverlay: true
+  RespondInExtension: true
   HandlerConfig:
     ShowGeneral: true
     ShowTopSkills: true
@@ -476,8 +491,9 @@ Commands:
   Handler: HeroInfoCommand
   ID: 7b6caafc-0246-47c2-8622-e091b10b8897
   Enabled: true
-  RespondInTwitch: false
+  RespondInTwitch: true
   RespondInOverlay: true
+  RespondInExtension: true
   HandlerConfig:
     ShowGeneral: false
     ShowTopSkills: false
@@ -494,8 +510,9 @@ Commands:
   Handler: EquipHero
   ID: 90b571d1-dba8-4006-860c-a0401b6f8fd2
   Enabled: true
-  RespondInTwitch: false
+  RespondInTwitch: true
   RespondInOverlay: true
+  RespondInExtension: true
   HandlerConfig:
     AllowCompanionUpgrade: false
     GoldCost: 50000
@@ -509,8 +526,9 @@ Commands:
   Handler: Retinue
   ID: 38eed507-87b9-47f4-b235-af921cef00c4
   Enabled: true
-  RespondInTwitch: false
+  RespondInTwitch: true
   RespondInOverlay: true
+  RespondInExtension: true
   HandlerConfig:
     Retinue:
       MaxRetinueSize: 5

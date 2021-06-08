@@ -58,7 +58,10 @@ namespace BannerlordTwitch
         public bool RespondInTwitch { get; set; }
         [Category("General"), Description("Show response in the overlay window feed"), PropertyOrder(-98)]
         public bool RespondInOverlay { get; set; }
-        
+
+        [Category("General"), Description("Show response in the extension"), PropertyOrder(-97)]
+        public bool RespondInExtension { get; set; }
+
         [Category("General"), Description("Name of the handler"), ReadOnly(true), PropertyOrder(1)]
         public abstract string Handler { get; set; }
 
