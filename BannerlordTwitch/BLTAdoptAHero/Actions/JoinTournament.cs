@@ -310,8 +310,7 @@ namespace BLTAdoptAHero
                                 int xp = (int) (BLTAdoptAHeroModule.TournamentConfig.WinXP * actualBoost);
                                 if (xp > 0)
                                 {
-                                    (bool success, string description) = SkillXP.ImproveSkill(entry.Hero, xp, Skills.All,
-                                        random: false, auto: true);
+                                    (bool success, string description) = SkillXP.ImproveSkill(entry.Hero, xp, Skills.All, auto: true);
                                     if (success)
                                     {
                                         results.Add(description);
@@ -336,7 +335,7 @@ namespace BLTAdoptAHero
                                 if (xp > 0)
                                 {
                                     (bool success, string description) =
-                                        SkillXP.ImproveSkill(entry.Hero, xp, Skills.All, random: false, auto: true);
+                                        SkillXP.ImproveSkill(entry.Hero, xp, Skills.All, auto: true);
                                     if (success)
                                     {
                                         results.Add(description);
@@ -437,7 +436,7 @@ namespace BLTAdoptAHero
                         if (xp > 0)
                         {
                             (bool success, string description) =
-                                SkillXP.ImproveSkill(entry.Hero, xp, Skills.All, random: false, auto: true);
+                                SkillXP.ImproveSkill(entry.Hero, xp, Skills.All, auto: true);
                             if (success)
                             {
                                 results.Add(description);
@@ -450,7 +449,7 @@ namespace BLTAdoptAHero
                         if (xp > 0)
                         {
                             (bool success, string description) =
-                                SkillXP.ImproveSkill(entry.Hero, xp, Skills.All, random: false, auto: true);
+                                SkillXP.ImproveSkill(entry.Hero, xp, Skills.All, auto: true);
                             if (success)
                             {
                                 results.Add(description);

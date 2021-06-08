@@ -11,6 +11,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: AdoptAHero
+  ID: e072adb0-83a2-4408-87bb-b2cff3f12ee2
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
@@ -56,6 +57,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: AddGoldToHero
+  ID: 7e0991eb-4304-496d-a9b4-874a1c114bae
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -74,6 +76,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: AddGoldToHero
+  ID: 2ccc7258-ad66-4afa-a45a-93863c1d7f35
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -92,6 +95,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: SummonHero
+  ID: 77c1dbd8-02cb-47d7-9796-7308e989b7f3
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -105,6 +109,7 @@ Rewards:
     OnPlayerSide: true
     GoldCost: 0
     PreferredFormation: LightCavalry
+    RetinueUseHeroesFormation: false
     AlertSound: None
     SubBoost: 2
     HealPerSecond: 0
@@ -120,6 +125,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: SummonHero
+  ID: 422cc8d9-84cb-4cc9-afdf-889e615fdea6
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -133,6 +139,7 @@ Rewards:
     OnPlayerSide: false
     GoldCost: 0
     PreferredFormation: LightCavalry
+    RetinueUseHeroesFormation: false
     AlertSound: None
     SubBoost: 2
     HealPerSecond: 0
@@ -148,6 +155,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: CharacterEffect
+  ID: f0b482c2-e121-4415-a2a6-95e592a4d7a9
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -183,6 +191,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: CharacterEffect
+  ID: 5c5188e9-5635-4fc2-bdb6-1e2be9dd0603
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
@@ -234,6 +243,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: CharacterEffect
+  ID: e3c7dfec-bac5-4294-9825-742e26e7e1df
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
@@ -282,6 +292,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: CharacterEffect
+  ID: 245adcfa-0df2-47d3-bff8-707bd10e6c25
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
@@ -344,6 +355,7 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: JoinTournament
+  ID: e1d775d0-0d60-4e12-baa7-39f0e791293a
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -362,6 +374,7 @@ Rewards:
     MaxPerUserPerStream: 10
     GlobalCooldownSeconds: 15
   Handler: SendMessage
+  ID: 1b1f00fe-fff8-4f76-8c09-8da0fd18c53b
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: false
@@ -379,6 +392,7 @@ Rewards:
     MaxPerUserPerStream: 3
     GlobalCooldownSeconds: 60
   Handler: RetireMyHero
+  ID: 60d43b2b-d1cb-4411-a126-d5089c264aca
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
@@ -396,13 +410,13 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: SkillXP
-  Enabled: false
+  ID: fe103fc4-fcaa-4e0d-809d-235d22676b6a
+  Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
   RespondInExtension: false
   HandlerConfig:
     Skills: None
-    Random: false
     Auto: true
     AmountLow: 50000
     AmountHigh: 50000
@@ -419,6 +433,7 @@ Rewards:
     MaxPerUserPerStream: 1
     GlobalCooldownSeconds: 300
   Handler: CharacterEffect
+  ID: 5af6308d-ce73-402d-aa29-2a9e0d9ad7e8
   Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
@@ -455,6 +470,7 @@ Commands:
   BroadcasterOnly: false
   ModOnly: false
   Handler: HeroInfoCommand
+  ID: 1cf3abfd-3310-4a51-808e-e14d454eed05
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
@@ -473,6 +489,7 @@ Commands:
   BroadcasterOnly: false
   ModOnly: false
   Handler: HeroInfoCommand
+  ID: 7b6caafc-0246-47c2-8622-e091b10b8897
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
@@ -491,27 +508,23 @@ Commands:
   BroadcasterOnly: false
   ModOnly: false
   Handler: EquipHero
+  ID: 90b571d1-dba8-4006-860c-a0401b6f8fd2
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
   RespondInExtension: true
   HandlerConfig:
-    Armor: true
-    Melee: true
-    Ranged: true
-    Horse: true
-    Civilian: true
-    AllowCompanionUpgrade: true
-    Tier: 
-    Upgrade: true
+    AllowCompanionUpgrade: false
     GoldCost: 50000
     MultiplyCostByCurrentTier: true
+    ReequipInsteadOfUpgrade: false
 - Name: retinue
   HideHelp: false
   Help: Upgrade Retinue
   BroadcasterOnly: false
   ModOnly: false
   Handler: Retinue
+  ID: 38eed507-87b9-47f4-b235-af921cef00c4
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
@@ -525,33 +538,34 @@ Commands:
       IncludeBanditUnits: false
       UseBasicTroops: true
       UseEliteTroops: true
-- Name: adopt
+- Name: class
   HideHelp: false
-  Help: 
+  Help: infantry/archer/cavalry/horsearcher/skirmisher
   BroadcasterOnly: false
   ModOnly: false
-  Handler: AdoptAHero
+  Handler: SetHeroClass
+  ID: da8416ca-e59b-458a-8953-31291d03c835
   Enabled: true
-  RespondInTwitch: true
+  RespondInTwitch: false
   RespondInOverlay: true
-  RespondInExtension: true
   HandlerConfig:
-    CreateNew: true
-    AllowNoble: false
-    AllowWanderer: true
-    AllowPlayerCompanion: false
-    OnlySameFaction: false
-    AllowNewAdoptionOnDeath: true
-    Inheritance: 0.25
-    SubscriberOnly: false
-    MinSubscribedMonths: 
-    StartingGold: 0
-    StartingSkills: []
-    StartingEquipmentTier: 1
-    StartWithMeleeWeapon: true
-    StartWithRangedWeapon: true
-    StartWithHorse: true
-    StartWithArmor: true
+    GoldCost: 100000
+    UpdateEquipment: true
+- Name: reequip
+  HideHelp: false
+  Help: reroll equipment
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: EquipHero
+  ID: d4fb255c-4bb3-454e-9e26-39b4d7a321f0
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    AllowCompanionUpgrade: false
+    GoldCost: 10000
+    MultiplyCostByCurrentTier: true
+    ReequipInsteadOfUpgrade: true
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -574,6 +588,8 @@ GlobalConfigs:
     WinXP: 10000
     LoseGold: 5000
     LoseXP: 5000
+    Shouts: []
+    IncludeDefaultShouts: true
 - Id: Adopt A Hero - Tournament Config
   Config:
     StartHealthMultiplier: 2
@@ -583,54 +599,133 @@ GlobalConfigs:
     WinMatchGold: 10000
     WinMatchXP: 10000
     ParticipateMatchXP: 2500
+- Id: Adopt A Hero - Class Config
+  Config:
+    ClassDefs:
+    - ID: 59df8187-01fe-48f2-b551-f9716fc9963c
+      Name: infantry
+      Formation: Infantry
+      MeleeWeapon1: OneHandedWeapon
+      MeleeWeapon2: Invalid
+      RangedWeapon: Invalid
+      Mounted: false
+    - ID: b48cbbd3-d8b3-46b7-942e-c15daeda403d
+      Name: archer
+      Formation: Ranged
+      MeleeWeapon1: OneHandedWeapon
+      MeleeWeapon2: Invalid
+      RangedWeapon: Bow
+      Mounted: false
+    - ID: 3d05f7e7-b189-4844-8631-f141c4c527d3
+      Name: cavalry
+      Formation: Cavalry
+      MeleeWeapon1: Polearm
+      MeleeWeapon2: Invalid
+      RangedWeapon: Invalid
+      Mounted: true
+    - ID: 880cabdd-551e-4f82-aef9-e193b58bd7f3
+      Name: horsearcher
+      Formation: HorseArcher
+      MeleeWeapon1: OneHandedWeapon
+      MeleeWeapon2: Invalid
+      RangedWeapon: Bow
+      Mounted: true
+    - ID: cb0744ae-278b-46a8-8ea7-694c44f1f45b
+      Name: skirmisher
+      Formation: Skirmisher
+      MeleeWeapon1: TwoHandedWeapon
+      MeleeWeapon2: Invalid
+      RangedWeapon: Thrown
+      Mounted: false
 SimTesting:
   UserCount: 10
   UserStayTime: 300
   IntervalMinMS: 100
   IntervalMaxMS: 100
   Init:
-  - Type: Reward
+  - Enabled: true
+    Type: Reward
     Id: Adopt a Hero
     Args: 
     Weight: 0
-  - Type: Reward
+  - Enabled: true
+    Type: Reward
     Id: 100k gold
     Args: 
     Weight: 0
   Use:
-  - Type: Reward
+  - Enabled: true
+    Type: Reward
     Id: Attack
     Args: 
-    Weight: 0.5
-  - Type: Reward
+    Weight: 2
+  - Enabled: true
+    Type: Reward
     Id: Summon
     Args: 
     Weight: 2
-  - Type: Reward
+  - Enabled: true
+    Type: Reward
     Id: 100k gold
     Args: 
-    Weight: 0.5
-  - Type: Command
+    Weight: 1
+  - Enabled: true
+    Type: Command
     Id: equip
     Args: 
-    Weight: 0.200000003
-  - Type: Reward
+    Weight: 0.400000006
+  - Enabled: true
+    Type: Command
+    Id: reequip
+    Args: ''
+    Weight: 0.100000001
+  - Enabled: true
+    Type: Reward
     Id: Tournament
     Args: 
     Weight: 0.100000001
-  - Type: Command
+  - Enabled: true
+    Type: Command
     Id: retinue
     Args: 
     Weight: 0.200000003
-  - Type: Reward
+  - Enabled: false
+    Type: Reward
     Id: Retire My Hero
     Args: yes
     Weight: 0.00999999978
-  - Type: Reward
+  - Enabled: false
+    Type: Reward
     Id: Adopt a Hero
     Args: yes
     Weight: 0.00999999978
-  - Type: Reward
+  - Enabled: false
+    Type: Reward
     Id: Heal Player
     Args: yes
     Weight: 0.0500000007
+  - Enabled: false
+    Type: Command
+    Id: class
+    Args: infantry
+    Weight: 0.300000012
+  - Enabled: false
+    Type: Command
+    Id: class
+    Args: archer
+    Weight: 0.300000012
+  - Enabled: false
+    Type: Command
+    Id: class
+    Args: cavalry
+    Weight: 0.300000012
+  - Enabled: false
+    Type: Command
+    Id: class
+    Args: horsearcher
+    Weight: 0.300000012
+  - Enabled: false
+    Type: Command
+    Id: class
+    Args: skirmisher
+    Weight: 0.300000012

@@ -15,15 +15,10 @@ namespace BLTAdoptAHero
             [Description("What skill to add focus to"), PropertyOrder(1)]
             public Skills Skills { get; set; } = Skills.None;
 
-            [Description("Add focus to a random skill, from the Skills specified, rather than the best one."),
+            [Description("Chooses a random skill to add focus to, prefering class skills, " +
+                         "then skills for current equipment, then other skills. " +
+                         "Skills setting is ignored when auto is used."),
              PropertyOrder(2)]
-            public bool Random { get; set; }
-
-            [Description("If this is specified then the best skill from a random skill group will have focus added, " +
-                         "<code>Skills</code> list is ignored. Groups are melee (One Handed, Two Handed, Polearm), " +
-                         "ranged (Bow, Crossbow, Throwing), support (Smithing, Scouting, Trade, Steward, Engineering), " +
-                         "movement (Riding, Athletics), personal (Tactics, Roguery, Charm, Leadership)"),
-             PropertyOrder(3)]
             public bool Auto { get; set; } = true;
         }
         
@@ -34,12 +29,12 @@ namespace BLTAdoptAHero
         {
             var settings = (FocusPointsSettings) baseSettings;
 
-            return FocusSkill(adoptedHero, amount, settings.Skills, settings.Random, settings.Auto);
+            return FocusSkill(adoptedHero, amount, settings.Skills, settings.Auto);
         }
 
-        public static (bool success, string description) FocusSkill(Hero adoptedHero, int amount, Skills skills, bool random, bool auto)
+        public static (bool success, string description) FocusSkill(Hero adoptedHero, int amount, Skills skills, bool auto)
         {
-            var skill = GetSkill(adoptedHero, skills, random, auto, s => adoptedHero.HeroDeveloper.GetFocus(s) < 5);
+            var skill = GetSkill(adoptedHero, skills, auto, s => adoptedHero.HeroDeveloper.GetFocus(s) < 5);
 
             if (skill == null)
             {

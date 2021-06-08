@@ -11,7 +11,7 @@ namespace BLTConfigure
     public class BLTConfigureModule : MBSubModuleBase
     {
         public const string Name = "BLTConfigure";
-        public const string Ver = "1.3.3";
+        public const string Ver = "1.4.0";
 
         private readonly Thread thread;
         private BLTConfigureWindow wnd;

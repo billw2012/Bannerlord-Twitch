@@ -49,6 +49,9 @@ namespace BannerlordTwitch
     [CategoryOrder("General", 0)]
     public abstract class ActionBase
     {
+        // Unique ID for this action 
+        [Browsable(false)]
+        public Guid ID { get; set; } = Guid.NewGuid();
         [Category("General"), Description("Whether this is enabled or not"), PropertyOrder(-100)]
         public bool Enabled { get; set; }
         [Category("General"), Description("Show response in the twitch chat"), PropertyOrder(-99)]
@@ -90,10 +93,10 @@ namespace BannerlordTwitch
         public string Title { get; set; }
         [Description("Whether the reward will automatically be set to fulfilled once completed in game. If you set this to true then the redemptions that successfully complete in game will stay in your redemption queue. This is useful if you are worried about people losing points if the game crashes, or you reload an older save."), PropertyOrder(1)]
         public bool DisableAutomaticFulfillment { get; set; }
-        [Description("The prompt for the viewer when they are redeeming the reward, if IsUserInputRequired is true."), PropertyOrder(2)]
+        [Description("Description / prompt"), PropertyOrder(2)]
         public string Prompt { get; set; }
         [Description("The cost of the reward"), PropertyOrder(3)]
-        public int Cost { get; set; }
+        public int Cost { get; set; } = 100;
 
         [Description("Is the reward currently enabled, if false the reward won’t show up to viewers."), PropertyOrder(4)]
         public bool IsEnabled { get; set; } = true;
@@ -173,24 +176,57 @@ namespace BannerlordTwitch
         public override string ToString() => Id;
     }
 
+    public enum SimActionType
+    {
+        Reward,
+        Command
+    }
+
     [UsedImplicitly]
     public class SimTestingItem
     {
-        public string Type { get; set; }
+        [PropertyOrder(0)]
+        public bool Enabled { get; set; } = true;
+        [PropertyOrder(1)]
+        public SimActionType Type { get; set; }
+        [PropertyOrder(2)]
         public string Id { get; set; }
+        [PropertyOrder(3)]
         public string Args { get; set; }
-        public float Weight { get; set; }
+        [PropertyOrder(4)]
+        public float Weight { get; set; } = 1f;
+
+        public override string ToString()
+        {
+            return $"{(!Enabled ? "(disabled)" : "")} {Id} ({Type}), {nameof(Args)}: {Args}, {nameof(Weight)}: {Weight}";
+        }
+        //public override string ToString() => $"{Type} {Id} {Args} {Weight}";
     }
     
     [UsedImplicitly]
     public class SimTestingConfig
     {
+        [PropertyOrder(1)]
         public int UserCount { get; set; }
+        [PropertyOrder(2)]
         public int UserStayTime { get; set; }
+        [PropertyOrder(3)]
         public int IntervalMinMS { get; set; }
+        [PropertyOrder(4)]
         public int IntervalMaxMS { get; set; }
+        [PropertyOrder(5)]
         public List<SimTestingItem> Init { get; set; }
+
+        [YamlIgnore, Browsable(false)]
+        public IEnumerable<SimTestingItem> InitEnabled => Init?.Where(i => i.Enabled) ?? Enumerable.Empty<SimTestingItem>();
+        
+        [PropertyOrder(6)]
         public List<SimTestingItem> Use { get; set; }
+        
+        [YamlIgnore, Browsable(false)]
+        public IEnumerable<SimTestingItem> UseEnabled => Use?.Where(i => i.Enabled) ?? Enumerable.Empty<SimTestingItem>();
+
+        public override string ToString() => "Sim Testing Config";
     }
 
     [UsedImplicitly]
@@ -236,6 +272,9 @@ namespace BannerlordTwitch
         [YamlIgnore]
         public IEnumerable<ActionBase> AllActions => Rewards.Cast<ActionBase>().Concat(Commands);
 
+        public Command GetCommand(string id) => this.EnabledCommands.FirstOrDefault(c =>
+            string.Equals(c.Name, id, StringComparison.CurrentCultureIgnoreCase));
+
         #if DEBUG
         private static string ProjectRootDir([CallerFilePath]string file = "") => Path.GetDirectoryName(file);
         private static string SaveFilePath => Path.Combine(ProjectRootDir(), "Bannerlord-Twitch.yaml");
@@ -268,24 +307,42 @@ namespace BannerlordTwitch
         }
         #else
         private static PlatformFilePath SaveFilePath => FileSystem.GetConfigPath("Bannerlord-Twitch.yaml");
-        
+        private static string TemplateFileName => Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..", "Bannerlord-Twitch.yaml");
+
         public static Settings Load()
         {
-            if (!FileSystem.FileExists(SaveFilePath))
-            {
-                Log.LogFeedSystem($"No settings found, applying defaults");
-                string templateFileName = Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..",
-                    "Bannerlord-Twitch.yaml");
-                string cfg = File.ReadAllText(templateFileName);
-                FileSystem.SaveFileString(SaveFilePath, cfg);
-            }
-            var settings = new DeserializerBuilder()
+            var templateSettings = new DeserializerBuilder()
                 .IgnoreUnmatchedProperties()
                 .Build()
-                .Deserialize<Settings>(FileSystem.GetFileContentString(SaveFilePath));
+                .Deserialize<Settings>(File.ReadAllText(TemplateFileName));
+            if (templateSettings == null)
+            {
+                throw new Exception($"Couldn't load the mod template settings from {TemplateFileName}");
+            }
+            // if (!FileSystem.FileExists(SaveFilePath))
+            // {
+            //     Log.LogFeedSystem($"No settings found, applying defaults");
+            //     
+            //     string cfg = File.ReadAllText(TemplateFileName);
+            //     FileSystem.SaveFileString(SaveFilePath, cfg);
+            // }
+            var settings = FileSystem.FileExists(SaveFilePath)
+                ? new DeserializerBuilder()
+                .IgnoreUnmatchedProperties()
+                .Build()
+                .Deserialize<Settings>(FileSystem.GetFileContentString(SaveFilePath))
+                : templateSettings
+                ;
+
             if (settings == null)
                 throw new Exception($"Couldn't load the mod settings from {SaveFilePath}");
 
+            // merge missing actions / rewards from template
+            settings.Commands.AddRange(templateSettings.Commands.Where(s => settings.Commands.All(s2 => s2.ID != s.ID && s2.ToString() != s.ToString())));
+            settings.Commands.Sort((a, b) => string.Compare(a.ToString(), b.ToString(), StringComparison.Ordinal));
+            settings.Rewards.AddRange(templateSettings.Rewards.Where(s => settings.Rewards.All(s2 => s2.ID != s.ID && s2.ToString() != s.ToString())));
+            settings.Rewards.Sort((a, b) => string.Compare(a.ToString(), b.ToString(), StringComparison.Ordinal));
+            
             foreach (var action in settings.AllActions)
             {
                 if (!action.IsValid)

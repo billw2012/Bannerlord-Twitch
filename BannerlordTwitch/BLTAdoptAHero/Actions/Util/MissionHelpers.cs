@@ -8,7 +8,7 @@ using TaleWorlds.MountAndBlade;
 
 namespace BLTAdoptAHero
 {
-    internal class MissionHelpers
+    internal static class MissionHelpers
     {
         public static bool HeroIsSpawned(Hero hero) 
             => //CampaignMission.Current.Location?.ContainsCharacter(hero) == true || 

@@ -294,6 +294,10 @@
                             https://www.twitch.tv/settings/connections
                         </Hyperlink>, and disconnect the BannerlordIntegrationMod.
                     </TextBlock>
+                    <Separator Height="20"/>
+                    <CheckBox IsChecked="{Binding AffiliateSpoofing}">
+                        <TextBlock TextWrapping="Wrap">Affiliate Spoofing (this is for debugging and testing purposes, it will stop normal channel point rewards from working!)</TextBlock>
+                    </CheckBox>
                 </StackPanel>
             </TabItem>
         </TabControl>
