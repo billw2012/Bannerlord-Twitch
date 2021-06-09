@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 using BLTAdoptAHero.Annotations;
 
@@ -125,6 +123,7 @@ namespace BLTAdoptAHero.Behaviors
             : new SolidColorBrush(Color.FromArgb(0xFF, 0x40, 0x11, 0x22))
         ;
 
+        [UsedImplicitly]
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

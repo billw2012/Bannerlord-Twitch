@@ -34,6 +34,13 @@ namespace BLTBuffet
                 onFailure($"No mission is active!");
                 return;
             }
+
+            if (BLTBuffetModule.EffectsConfig.DisableEffectsInTournaments
+                && MissionHelpers.InTournament())
+            {
+                onFailure($"Not allowed during tournament!");
+                return;
+            }
             
             var effectsBehaviour = BLTEffectsBehaviour.Get();
 

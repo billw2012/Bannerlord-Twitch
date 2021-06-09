@@ -619,6 +619,9 @@ GlobalConfigs:
       MeleeWeapon2: Invalid
       RangedWeapon: Thrown
       Mounted: false
+- Id: Buffet - Effects Config
+  Config:
+    DisableEffectsInTournaments: true
 SimTesting:
   UserCount: 25
   UserStayTime: 300

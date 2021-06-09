@@ -185,7 +185,6 @@
         <Compile Include="Actions\SummonHero.cs" />
         <Compile Include="Actions\Util\BattleEffects.cs" />
         <Compile Include="Actions\Util\HeroClassDef.cs" />
-        <Compile Include="Actions\Util\MissionHelpers.cs" />
         <Compile Include="Actions\Util\SkillRangeDef.cs" />
         <Compile Include="Actions\Util\SkillGroup.cs" />
         <Compile Include="Behaviors\BLTAdoptAHeroCampaignBehavior.cs" />
