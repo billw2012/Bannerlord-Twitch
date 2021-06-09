@@ -412,7 +412,7 @@ namespace BLTAdoptAHero
 
                 if (levelBoost != 1)
                 {
-                    results.Add($"x{levelBoost:0.0}");
+                    results.Add($"x{levelBoost:0.0} (lvl scaling)");
                 }
             }
             return results;

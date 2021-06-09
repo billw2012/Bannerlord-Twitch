@@ -124,7 +124,7 @@ namespace BLTAdoptAHero
         {
             // declare variable right where it's passed
             KillStreakTracking.TryGetValue(hero, out var value);
-            KillStreakTracking[hero] = value + 1;
+            KillStreakTracking[hero] = ++value;
 
             var currKillStreak = BLTAdoptAHeroModule.CommonConfig.KillStreaks.FirstOrDefault(k => value == k.KillsRequired);
             if (currKillStreak != null)
