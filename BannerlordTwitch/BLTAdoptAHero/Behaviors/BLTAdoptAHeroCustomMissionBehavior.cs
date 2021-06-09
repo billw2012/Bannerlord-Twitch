@@ -357,5 +357,65 @@ namespace BLTAdoptAHero
             
             return results;
         }
+
+        public static List<string> ApplyStreakEffects(Hero hero, int goldStreak, int xpStreak, float subBoost, string killStreakName, float? relativeLevelScaling, float? levelScalingCap, string message)
+        {
+            var results = new List<string>();
+
+            if (hero != null)
+            {
+                results.Add(message);
+            }
+
+            if (subBoost != 1)
+            {
+                goldStreak = (int)(goldStreak * subBoost);
+                xpStreak = (int)(xpStreak * subBoost);
+            }
+
+            float levelBoost = 1;
+            if (relativeLevelScaling.HasValue)
+            {
+                // More reward for killing higher level characters
+                levelBoost = RelativeLevelScaling(hero.Level, BLTAdoptAHeroModule.CommonConfig.ReferenceLevelReward, relativeLevelScaling.Value, levelScalingCap ?? 5);
+
+                if (levelBoost != 1)
+                {
+                    goldStreak = (int)(goldStreak * levelBoost);
+                    xpStreak = (int)(xpStreak * levelBoost);
+                }
+            }
+
+            bool showMultiplier = false;
+            if (goldStreak != 0)
+            {
+                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(hero, goldStreak);
+                results.Add($"+{goldStreak} gold");
+                showMultiplier = true;
+            }
+            if (xpStreak != 0)
+            {
+                (bool success, string description) = SkillXP.ImproveSkill(hero, xpStreak, Skills.All, auto: true);
+                if (success)
+                {
+                    results.Add(description);
+                    showMultiplier = true;
+                }
+            }
+
+            if (showMultiplier)
+            {
+                if (subBoost != 1)
+                {
+                    results.Add($"x{subBoost:0.0} (sub)");
+                }
+
+                if (levelBoost != 1)
+                {
+                    results.Add($"x{levelBoost:0.0} (lvl scaling)");
+                }
+            }
+            return results;
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Behaviors;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -99,7 +100,7 @@ namespace BLTAdoptAHero
             public int RetinueKills { get; set; }
             public string RetinueKillsText => RetinueKills == 0 ? string.Empty : $"+{RetinueKills}";
             public Visibility RetinueKillsVisibility => RetinueKills > 0 ? Visibility.Visible : Visibility.Hidden;
-            
+
             public Brush TextColor => IsRouted
                 ? Brushes.Yellow
                 : IsKilled
@@ -116,6 +117,43 @@ namespace BLTAdoptAHero
                 ? new SolidColorBrush(Color.FromArgb(0xFF, 0x20, 0x20, 0x50))
                 : new SolidColorBrush(Color.FromArgb(0xFF, 0x40, 0x11, 0x22))
                 ;
+        }
+
+        Dictionary<Hero, int> KillStreakTracking = new Dictionary<Hero, int>();
+        private void AddKillStreak(Hero hero)
+        {
+            // declare variable right where it's passed
+            KillStreakTracking.TryGetValue(hero, out var value);
+            KillStreakTracking[hero] = ++value;
+
+            var currKillStreak = BLTAdoptAHeroModule.CommonConfig.KillStreaks.FirstOrDefault(k => value == k.KillsRequired);
+            if (currKillStreak != null)
+            {
+                string message = currKillStreak.NotificationText.Replace("{player}", hero.FirstName.ToString()).Replace("{kills}",currKillStreak.KillsRequired.ToString()).Replace("{name}",currKillStreak.Name);
+                if (BLTAdoptAHeroModule.CommonConfig.UseKillStreakHorn)
+                {
+                    Log.ShowInformation(message, hero.CharacterObject, Log.Sound.Horns2);
+                }
+                var results = BLTAdoptAHeroCustomMissionBehavior.ApplyStreakEffects(hero, currKillStreak.GoldReward, currKillStreak.XPReward,Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),currKillStreak.Name,BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,BLTAdoptAHeroModule.CommonConfig.LevelScalingCap, message);
+                if (results.Any())
+                {
+                    Log.LogFeedResponse(hero.FirstName.ToString(), results.ToArray());
+                }
+            }
+        }
+
+        private void ResetKillStreak(Hero hero)
+        {
+            int value;
+            if (!KillStreakTracking.TryGetValue(hero, out value))
+            {
+                KillStreakTracking.Add(hero, 0);
+            } else
+            {
+
+                KillStreakTracking[hero] = 0;
+            }
+
         }
 
         private void UpdateHeroVM(Agent agent)
@@ -290,6 +328,7 @@ namespace BLTAdoptAHero
                 }
 
                 UpdateHeroVM(affectedAgent);
+                ResetKillStreak(affectedHero);
             }
             var affectorHero = GetAdoptedHeroFromAgent(affectorAgent);
             if (affectorHero != null)
@@ -314,6 +353,7 @@ namespace BLTAdoptAHero
                 if (affectedAgent.IsHuman && agentState is AgentState.Unconscious or AgentState.Killed)
                 {
                     AddHeroKill(affectorHero);
+                    AddKillStreak(affectorHero);
                 }                
             }
 

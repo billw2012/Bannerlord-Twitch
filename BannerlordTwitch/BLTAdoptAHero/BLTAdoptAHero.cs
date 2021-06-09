@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch.Rewards;
+using BLTAdoptAHero.Actions.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
 using SandBox;
@@ -32,7 +33,6 @@ namespace BLTAdoptAHero
         internal static GlobalCommonConfig CommonConfig { get; private set; }
         internal static GlobalTournamentConfig TournamentConfig { get; private set; }
         internal static GlobalHeroClassConfig HeroClassConfig { get; private set; }
-
         public BLTAdoptAHeroModule()
         {
             ActionManager.RegisterAll(typeof(BLTAdoptAHeroModule).Assembly);
@@ -123,10 +123,12 @@ namespace BLTAdoptAHero
     [CategoryOrder("Kill Rewards", 2)]
     [CategoryOrder("Battle End Rewards", 3)]
     [CategoryOrder("Shouts", 4)]
+    [CategoryOrder("Kill Streaks", 5)]
     internal class GlobalCommonConfig
     {
+
         private const string ID = "Adopt A Hero - General Config";
-        
+
         internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalCommonConfig));
         internal static GlobalCommonConfig Get() => ActionManager.GetGlobalConfig<GlobalCommonConfig>(ID);
 
@@ -208,10 +210,20 @@ namespace BLTAdoptAHero
 
         [Category("Shouts"), Description("Custom shouts"), PropertyOrder(1)]
         public List<SummonHero.Shout> Shouts { get; set; } = new();
-        
+
         [Category("Shouts"), Description("Whether to include default shouts"), PropertyOrder(2)]
         public bool IncludeDefaultShouts { get; set; } = true;
-    }
+
+        [Category("Kill Streak Rewards"), Description("Kill Streak Configuration Options"), PropertyOrder(1)]
+        public List<KillStreakRewards> KillStreaks { get; set; } = new();
+        [Category("Kill Streak Rewards"), Description("Use the banner plus horn to announce kill streaks? (Will only print in the overlay instead if disabled)"), PropertyOrder(2)]
+        public bool UseKillStreakHorn { get; set; } = true;
+        [Category("Kill Streak Rewards"), Description("The level at which the rewards normalize and start to reduce (if relative level scaling is enabled)."), PropertyOrder(3)]
+        public int ReferenceLevelReward { get; set; } = 15;
+
+
+
+     }
     
     [CategoryOrder("General", 1)]
     [CategoryOrder("Match Rewards", 2)]
