@@ -17,7 +17,9 @@ namespace BLTAdoptAHero
     {
         private class Settings
         {
-            [Description("Show general info: gold, health, location, age"), PropertyOrder(1)]
+            [Description("Show gold"), PropertyOrder(1)]
+            public bool ShowGold { get; set; } = true;
+            [Description("Show personal info: health, location, age"), PropertyOrder(1)]
             public bool ShowGeneral { get; set; } = true;
             [Description("Shows skills (and focuse values) above the specified MinSkillToShow value"), PropertyOrder(2)]
             public bool ShowTopSkills { get; set; } = true;
@@ -48,6 +50,11 @@ namespace BLTAdoptAHero
             }
             else
             {
+                if (settings.ShowGold)
+                {
+                    int gold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
+                    infoStrings.Add($"{gold} gold");
+                }
                 if (settings.ShowGeneral)
                 {
                     var cl = BLTAdoptAHeroCampaignBehavior.Get().GetClass(adoptedHero);
@@ -57,8 +64,6 @@ namespace BLTAdoptAHero
                         infoStrings.Add($"Clan {adoptedHero.Clan.Name}");
                     }
                     infoStrings.Add($"{adoptedHero.Culture}");
-                    int gold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
-                    infoStrings.Add($"{gold} gold");
                     infoStrings.Add($"{adoptedHero.Age:0} yrs");
                     infoStrings.Add($"{adoptedHero.HitPoints} / {adoptedHero.CharacterObject.MaxHitPoints()} HP");
                     if (adoptedHero.LastSeenPlace != null)

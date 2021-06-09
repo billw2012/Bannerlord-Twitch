@@ -546,6 +546,25 @@ Commands:
     GoldCost: 10000
     MultiplyCostByCurrentTier: true
     ReequipInsteadOfUpgrade: true
+- Name: gold
+  HideHelp: false
+  Help: 
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: HeroInfoCommand
+  ID: 42e45ee9-647f-486f-9764-5e765507a70d
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: false
+  HandlerConfig:
+    ShowGold: true
+    ShowGeneral: false
+    ShowTopSkills: false
+    MinSkillToShow: 100
+    ShowAttributes: false
+    ShowEquipment: false
+    ShowInventory: false
+    ShowRetinue: false
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
