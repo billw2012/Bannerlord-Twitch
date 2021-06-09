@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -75,7 +75,7 @@ namespace BLTAdoptAHero.Util
             AccessTools.Field(typeof(PartyScreenManager), "_currentMode").SetValue(PartyScreenManager.Instance, PartyScreenMode.Normal);
             
             var heroRoster = new TroopRoster(null);
-            foreach (var hero in BLTAdoptAHeroCampaignBehavior.GetAllAdoptedHeroes())
+            foreach (var hero in BLTAdoptAHeroCampaignBehavior.GetAllAdoptedHeroes().OrderBy(h => h.Name.Raw().ToLower()))
             {
                 heroRoster.AddToCounts(hero.CharacterObject, 1);
             }
