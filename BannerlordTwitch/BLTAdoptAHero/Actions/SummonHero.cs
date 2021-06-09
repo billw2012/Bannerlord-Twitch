@@ -177,6 +177,9 @@ namespace BLTAdoptAHero
             new Shout("Fell deeds awake, fire and slaughter!") { EnemySide = false },
             new Shout("Spooooooooooooooooooon!") { EnemySide = false, Weight = 0.05f },
             new Shout("Leeeeeeeerooooy Jeeeeenkins") { EnemySide = false, Weight = 0.05f },
+            new Shout("n") { EnemySide = false, Weight = 0.01f },
+            new Shout("I live, I die, I live again!") { EnemySide = false, Weight = 0.05f },
+            new Shout("Witness me!!") { EnemySide = false, Weight = 0.05f },
 
             new Shout("Defend yourself!") { PlayerSide = false },
             new Shout("Time for you to die!") { PlayerSide = false },
