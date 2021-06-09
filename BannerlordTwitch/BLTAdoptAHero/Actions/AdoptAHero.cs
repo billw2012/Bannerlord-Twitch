@@ -5,11 +5,13 @@ using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using HarmonyLib;
 using Helpers;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.Towns;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
@@ -135,6 +137,10 @@ namespace BLTAdoptAHero
             public bool StartWithArmor { get; set; } = true;
             [Category("Initialization"), Description("Whether the hero will spawn in hero party"), PropertyOrder(8)]
             public bool SpawnInParty { get; set; } = true;
+            [Category("Initialization"), Description("Whether the hero will be in the clan"), PropertyOrder(9)]
+            public bool JoinPlayerClan { get; set; } = true;
+            [Category("Initialization"), Description("Whether the hero will be a companion"), PropertyOrder(9)]
+            public bool JoinPlayerCompanion { get; set; } = true;
 
         }
 
@@ -202,8 +208,8 @@ namespace BLTAdoptAHero
             }
 
             args = args?.Trim();
-
-            var targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom();
+            
+            
             Hero newHero = null;
             if (settings.CreateNew)
             {
@@ -214,9 +220,6 @@ namespace BLTAdoptAHero
                 {
                     newHero = HeroCreator.CreateSpecialHero(character);
                     newHero.ChangeState(Hero.CharacterStates.Active);
-                    targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom();
-                    EnterSettlementAction.ApplyForCharacterOnly(newHero, targetSettlement);
-                    Log.Info($"Placed new hero {newHero.Name} at {targetSettlement.Name}");
                 }
             }
             else
@@ -266,6 +269,7 @@ namespace BLTAdoptAHero
             }
             else
             {
+                var targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom();
                 EnterSettlementAction.ApplyForCharacterOnly(newHero, targetSettlement);
                 Log.Info($"Placed new hero {newHero.Name} at {targetSettlement.Name}");
             }
@@ -288,6 +292,19 @@ namespace BLTAdoptAHero
                 
                 HeroHelper.DetermineInitialLevel(newHero);
                 CharacterDevelopmentCampaignBehaivor.DevelopCharacterStats(newHero);
+            }
+
+            if (settings.JoinPlayerClan)
+            {
+                if (Clan.PlayerClan.CompanionLimit < Clan.PlayerClan.Companions.Count)
+                {
+                    newHero.Clan = Clan.PlayerClan;
+                }
+            }
+
+            if (settings.JoinPlayerCompanion)
+            {
+                AddCompanionAction.Apply(Hero.MainHero.Clan, newHero);
             }
 
             string oldName = newHero.Name.ToString();

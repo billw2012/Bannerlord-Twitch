@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
+using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -7,6 +9,7 @@ using SandBox.View;
 using SandBox.View.Missions;
 using SandBox.ViewModelCollection;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
@@ -64,6 +67,16 @@ namespace BLTAdoptAHero
         public static void MissionNameMarkerVMConstructorPostfix(MissionNameMarkerVM __instance, Mission mission, ref Vec3 ____heightOffset)
         {
             ____heightOffset = new Vec3(0, 0, 4, -1);
+        }
+
+        [UsedImplicitly, HarmonyPatch(typeof(DefaultClanTierModel), nameof(DefaultClanTierModel.GetCompanionLimit))]
+        public static void Postfix(ref int __result)
+        {
+            if (GlobalCommonConfig.Get() != null && GlobalCommonConfig.Get().BreakCompanionLimit)
+            {
+                __result = Clan.PlayerClan.Companions.Count + 1;
+            }
+            return;
         }
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
@@ -152,6 +165,11 @@ namespace BLTAdoptAHero
          Description("Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed. You should consider hiding "),
          PropertyOrder(11)]
         public bool UseRawXP { get; set; } = true;
+
+        [Category("General"),
+        Description("Will disable companion limit. You will be able to"),
+        DefaultValue(false), PropertyOrder(12)]
+        public bool BreakCompanionLimit { get; set; }
 
         [Category("Kill Rewards"), Description("Gold the hero gets for every kill"), PropertyOrder(1)]
         public int GoldPerKill { get; set; } = 5000;
