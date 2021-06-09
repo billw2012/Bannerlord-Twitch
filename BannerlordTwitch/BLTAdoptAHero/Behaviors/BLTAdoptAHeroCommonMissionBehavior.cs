@@ -122,16 +122,9 @@ namespace BLTAdoptAHero
         Dictionary<Hero, int> KillStreakTracking = new Dictionary<Hero, int>();
         private void AddKillStreak(Hero hero)
         {
-            int value;
-            if (!KillStreakTracking.TryGetValue(hero, out value))
-            {
-                KillStreakTracking.Add(hero, 1);
-            }
-            else
-            {
-                value++;
-                KillStreakTracking[hero] = value;
-            }
+            // declare variable right where it's passed
+            KillStreakTracking.TryGetValue(hero, out var value);
+            KillStreakTracking[hero] = value + 1;
 
             var currKillStreak = BLTAdoptAHeroModule.CommonConfig.KillStreaks.FirstOrDefault(k => value == k.KillsRequired);
             if (currKillStreak != null)
