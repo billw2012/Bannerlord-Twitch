@@ -2,7 +2,7 @@ Rewards:
 - RewardSpec:
     Title: Adopt a Hero
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Take control of a hero in game
     Cost: 300
     IsEnabled: true
     BackgroundColorText: 
@@ -47,7 +47,7 @@ Rewards:
 - RewardSpec:
     Title: 10k gold
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Add 10,000 gold to your adopted hero
     Cost: 500
     IsEnabled: true
     BackgroundColorText: 
@@ -65,7 +65,7 @@ Rewards:
 - RewardSpec:
     Title: 100k gold
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Add 100,000 gold to your adopted hero
     Cost: 2500
     IsEnabled: true
     BackgroundColorText: 
@@ -83,7 +83,7 @@ Rewards:
 - RewardSpec:
     Title: Summon
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Your adopted hero joins the players side in battle
     Cost: 50
     IsEnabled: true
     BackgroundColorText: 
@@ -111,7 +111,7 @@ Rewards:
 - RewardSpec:
     Title: Attack
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Your adopted hero joins the enemies side in battle
     Cost: 50
     IsEnabled: true
     BackgroundColorText: 
@@ -139,7 +139,7 @@ Rewards:
 - RewardSpec:
     Title: Heal Player
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Heal the player over time
     Cost: 100
     IsEnabled: true
     BackgroundColorText: 
@@ -335,7 +335,7 @@ Rewards:
 - RewardSpec:
     Title: Tournament
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Join the tournament queue with your adopted hero
     Cost: 25
     IsEnabled: true
     BackgroundColorText: 
@@ -387,7 +387,7 @@ Rewards:
 - RewardSpec:
     Title: 50k XP
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Add 50,000 XP to a random skill of your adopted hero
     Cost: 1000
     IsEnabled: true
     BackgroundColorText: 
@@ -459,6 +459,7 @@ Commands:
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
+    ShowGold: true
     ShowGeneral: true
     ShowTopSkills: true
     MinSkillToShow: 100
@@ -477,6 +478,7 @@ Commands:
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
+    ShowGold: true
     ShowGeneral: false
     ShowTopSkills: false
     MinSkillToShow: 100
