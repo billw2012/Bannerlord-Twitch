@@ -161,6 +161,12 @@ namespace BLTAdoptAHero
          PropertyOrder(11)]
         public bool UseRawXP { get; set; } = true;
 
+        [Category("General"), Description("Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations)"), PropertyOrder(12)]
+        public bool RetinueUseHeroesFormation { get; [UsedImplicitly] set; }
+
+        [Category("General"), Description("Minimum time between summons for a specific hero"), PropertyOrder(13)]
+        public int CooldownInSeconds { get; [UsedImplicitly] set; } = 60;
+
         [Category("Kill Rewards"), Description("Gold the hero gets for every kill"), PropertyOrder(1)]
         public int GoldPerKill { get; set; } = 5000;
 
@@ -205,7 +211,7 @@ namespace BLTAdoptAHero
 
         [Category("Battle End Rewards"), Description("XP the hero gets if the heroes side loses"), PropertyOrder(4)]
         public int LoseXP { get; set; } = 5000;
-
+        
         [Category("Shouts"), Description("Custom shouts"), PropertyOrder(1)]
         public List<SummonHero.Shout> Shouts { get; set; } = new();
         

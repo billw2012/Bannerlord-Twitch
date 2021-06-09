@@ -17,7 +17,7 @@ Rewards:
   RespondInOverlay: true
   HandlerConfig:
     CreateNew: false
-    AllowNoble: true
+    AllowNoble: false
     AllowWanderer: true
     AllowPlayerCompanion: false
     OnlySameFaction: false
@@ -105,7 +105,6 @@ Rewards:
     OnPlayerSide: true
     GoldCost: 0
     PreferredFormation: LightCavalry
-    RetinueUseHeroesFormation: false
     AlertSound: None
     SubBoost: 2
     HealPerSecond: 0
@@ -134,7 +133,6 @@ Rewards:
     OnPlayerSide: false
     GoldCost: 0
     PreferredFormation: LightCavalry
-    RetinueUseHeroesFormation: false
     AlertSound: None
     SubBoost: 2
     HealPerSecond: 0
@@ -558,6 +556,8 @@ GlobalConfigs:
     MoraleLossFactor: 0.5
     SubBoost: 1.20000005
     UseRawXP: true
+    RetinueUseHeroesFormation: false
+    CooldownInSeconds: 60
     GoldPerKill: 5000
     XPPerKill: 5000
     XPPerKilled: 2000
@@ -620,7 +620,7 @@ GlobalConfigs:
       RangedWeapon: Thrown
       Mounted: false
 SimTesting:
-  UserCount: 10
+  UserCount: 25
   UserStayTime: 300
   IntervalMinMS: 100
   IntervalMaxMS: 100

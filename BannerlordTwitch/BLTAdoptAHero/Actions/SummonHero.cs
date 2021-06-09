@@ -79,10 +79,7 @@ namespace BLTAdoptAHero
              PropertyOrder(6), ItemsSource(typeof(FormationItemSource))]
             public string PreferredFormation { get; [UsedImplicitly] set; }
 
-            [Category("General")]
-            public bool RetinueUseHeroesFormation { get; [UsedImplicitly] set; }
-
-            [Category("General"), Description("Sound to play when summoned"), PropertyOrder(7)]
+            [Category("General"), Description("Sound to play when summoned"), PropertyOrder(9)]
             public Log.Sound AlertSound { get; [UsedImplicitly] set; }
 
             [Category("Effects"), Description("Multiplier applied to (positive) effects for subscribers"), PropertyOrder(1)]
@@ -248,91 +245,6 @@ namespace BLTAdoptAHero
             }
         }
 
-        internal class BLTSummonBehavior : AutoMissionBehavior<BLTSummonBehavior>
-        {
-            public class RetinueState
-            {
-                public CharacterObject Troop;
-                public Agent Agent;
-                // We must record this separately, as the Agent.State is undefined once the Agent is deleted (the internal handle gets reused by the engine)
-                public AgentState State;
-            }
-            
-            public class SummonedHero
-            {
-                public Hero Hero;
-                public bool WasPlayerSide;
-                public FormationClass Formation;
-                public PartyBase Party;
-                public AgentState State;
-                public Agent CurrentAgent;
-                public List<RetinueState> Retinue = new();
-            }
-            
-            private readonly List<SummonedHero> summonedHeroes = new();
-            private readonly List<Action> onTickActions = new();
-
-            public SummonedHero GetSummonedHero(Hero hero)
-                => summonedHeroes.FirstOrDefault(h => h.Hero == hero);
-
-            public SummonedHero AddSummonedHero(Hero hero, bool playerSide, FormationClass formationClass, PartyBase party)
-            {
-                var newSummonedHero = new SummonedHero
-                {
-                    Hero = hero,
-                    WasPlayerSide = playerSide,
-                    Formation = formationClass,
-                    Party = party,
-                };
-                summonedHeroes.Add(newSummonedHero);
-                return newSummonedHero;
-            }
-            
-            public override void OnAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)
-            {
-                var hero = summonedHeroes.FirstOrDefault(h => h.CurrentAgent == affectedAgent);
-                if (hero != null)
-                {
-                    hero.State = agentState;
-                }
-
-                // Set the final retinue state
-                var retinue = summonedHeroes.SelectMany(h => h.Retinue).FirstOrDefault(r => r.Agent == affectedAgent);
-                if (retinue != null)
-                {
-                    retinue.State = agentState;
-                }
-            }
-
-            public void DoNextTick(Action action)
-            {
-                onTickActions.Add(action);
-            }
-
-            public override void OnMissionTick(float dt)
-            {
-                base.OnMissionTick(dt);
-                var actionsToDo = onTickActions.ToList();
-                onTickActions.Clear();
-                foreach (var action in actionsToDo)
-                {
-                    action();
-                }
-            }
-
-            protected override void OnEndMission()
-            {
-                // Remove still living retinue troops from their parties
-                foreach(var h in summonedHeroes)
-                {
-                    foreach (var r in h.Retinue.Where(r => r.State != AgentState.Killed))
-                    {
-                        h.Party.MemberRoster.AddToCounts(r.Troop, -1);
-                    }
-                }
-            }
-        }
-        
         protected override void ExecuteInternal(Hero adoptedHero, ReplyContext context, object config,
             Action<string> onSuccess,
             Action<string> onFailure)
@@ -514,6 +426,12 @@ namespace BLTAdoptAHero
                     if (existingHero is {State: AgentState.Active})
                     {
                         onFailure($"You cannot be summoned, you are already here!");
+                        return;
+                    }
+
+                    if (existingHero?.InCooldown == true)
+                    {
+                        onFailure($"{existingHero.CooldownRemaining:0}s cooldown remaining");
                         return;
                     }
 
@@ -713,6 +631,7 @@ namespace BLTAdoptAHero
                         wieldInitialWeapons: true);
 
                     existingHero.State = AgentState.Active;
+                    existingHero.SummonTime = MBCommon.GetTime(MBCommon.TimeType.Mission);
 
                     // if (settings.OnPlayerSide && existingHero.Formation == FormationClass.Bodyguard)
                     // {
@@ -731,9 +650,9 @@ namespace BLTAdoptAHero
                             bool hasPrevFormation = Campaign.Current.PlayerFormationPreferences
                                                         .TryGetValue(retinueTroop, out var prevFormation)
                                                     && settings.OnPlayerSide
-                                                    && settings.RetinueUseHeroesFormation;
+                                                    && BLTAdoptAHeroModule.CommonConfig.RetinueUseHeroesFormation;
 
-                            if (settings.OnPlayerSide && settings.RetinueUseHeroesFormation)
+                            if (settings.OnPlayerSide && BLTAdoptAHeroModule.CommonConfig.RetinueUseHeroesFormation)
                             {
                                 Campaign.Current.SetPlayerFormationPreference(retinueTroop, existingHero.Formation);
                             }
@@ -772,9 +691,8 @@ namespace BLTAdoptAHero
                             BLTAdoptAHeroCustomMissionBehavior.Current.AddListeners(retinueAgent,
                                 onGotAKill: (killer, killed, state) =>
                                 {
-                                    Log.Trace(
-                                        $"[{nameof(SummonHero)}] {retinueAgent.Name} killed {killed?.ToString() ?? "unknown"}");
-                                    var results = BLTAdoptAHeroCustomMissionBehavior.ApplyKillEffects(
+                                    Log.Trace($"[{nameof(SummonHero)}] {retinueAgent.Name} killed {killed?.ToString() ?? "unknown"}");
+                                    BLTAdoptAHeroCommonMissionBehavior.Current.ApplyKillEffects(
                                         adoptedHero, killer, killed, state,
                                         BLTAdoptAHeroModule.CommonConfig.RetinueGoldPerKill,
                                         BLTAdoptAHeroModule.CommonConfig.RetinueHealPerKill,
@@ -783,11 +701,6 @@ namespace BLTAdoptAHero
                                         BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,
                                         BLTAdoptAHeroModule.CommonConfig.LevelScalingCap
                                     );
-                                    if (results.Any())
-                                    {
-                                        ActionManager.SendReply(context,
-                                            new[] {retinueAgent.Name}.Concat(results).ToArray());
-                                    }
                                 }
                             );
                             // if (settings.OnPlayerSide && existingHero.Formation == FormationClass.Bodyguard)
@@ -804,7 +717,7 @@ namespace BLTAdoptAHero
                             }
                         }
 
-                        BLTAdoptAHeroCommonMissionBehavior.Current.RegisterRetinue(adoptedHero, existingHero.Retinue.Select(r => r.Agent).ToList());
+                        // BLTAdoptAHeroCommonMissionBehavior.Current.RegisterRetinue(adoptedHero, existingHero.Retinue.Select(r => r.Agent).ToList());
                     }
 
                     // All the units try to occupy the same exact spot if standard body guard is used

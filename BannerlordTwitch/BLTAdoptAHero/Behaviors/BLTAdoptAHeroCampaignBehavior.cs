@@ -299,7 +299,7 @@ namespace BLTAdoptAHero
             }
             return hd;
         }
-        
+
         #region Gold
         public int GetHeroGold(Hero hero) => GetHeroData(hero).Gold;
 
