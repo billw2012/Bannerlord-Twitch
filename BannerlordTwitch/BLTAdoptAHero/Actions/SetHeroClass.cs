@@ -6,6 +6,7 @@ using BannerlordTwitch.Rewards;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
@@ -42,6 +43,12 @@ namespace BLTAdoptAHero
         protected override void ExecuteInternal(Hero adoptedHero, ReplyContext context, object config, Action<string> onSuccess, Action<string> onFailure)
         {
             var settings = (Settings) config;
+            
+            if (Mission.Current != null)
+            {
+                onFailure($"You cannot change class, as a mission is active!");
+                return;
+            }
             
             var newClass = BLTAdoptAHeroModule.HeroClassConfig.FindClass(context.Args);
             if (newClass == null)
