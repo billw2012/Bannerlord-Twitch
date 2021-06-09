@@ -180,8 +180,6 @@ namespace BLTAdoptAHero
                 BLTAdoptAHeroCampaignBehavior.RetireHero(deadHero);
             }
 
-            args = args?.Trim();
-            
             Hero newHero = null;
             if (settings.CreateNew)
             {
@@ -209,7 +207,7 @@ namespace BLTAdoptAHero
                             || Clan.PlayerClan?.MapFaction != null
                             && Clan.PlayerClan?.MapFaction == h.Clan?.MapFaction)
                         // Disallow rebel clans as they may get deleted if the rebellion fails
-                        && !h.Clan?.IsRebelClan == true
+                        && h.Clan?.IsRebelClan != true
                     )
                     .SelectRandom();
             }
