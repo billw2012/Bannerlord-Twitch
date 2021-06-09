@@ -7,6 +7,7 @@ using BannerlordTwitch.Util;
 using BLTAdoptAHero.Behaviors;
 using HarmonyLib;
 using JetBrains.Annotations;
+using SandBox.Source.Missions;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -14,6 +15,9 @@ using TaleWorlds.MountAndBlade;
 
 namespace BLTAdoptAHero
 {
+    /// <summary>
+    /// Behaviour that is active for all missions
+    /// </summary>
     [HarmonyPatch]
     internal class BLTAdoptAHeroCommonMissionBehavior : AutoMissionBehavior<BLTAdoptAHeroCommonMissionBehavior>
     {
@@ -33,6 +37,7 @@ namespace BLTAdoptAHero
 
         private Dictionary<Hero, HeroMissionState> heroMissionState = new();
         private float slowTickT = 0;
+        private readonly List<Agent> adoptedHeroMounts = new();
 
         public BLTAdoptAHeroCommonMissionBehavior()
         {
@@ -41,6 +46,28 @@ namespace BLTAdoptAHero
                 missionInfoPanel = new MissionInfoPanel {HeroList = {ItemsSource = heroesViewModel}};
                 return missionInfoPanel;
             });
+        }
+        
+        public override void OnAgentBuild(Agent agent, Banner banner)
+        {
+            var hero = GetAdoptedHeroFromAgent(agent);
+            if (hero != null && agent.MountAgent != null)
+            {
+                adoptedHeroMounts.Add(agent.MountAgent);
+            }
+        }
+        
+                
+        public override void OnAgentCreated(Agent agent)
+        {
+            var hero = GetAdoptedHeroFromAgent(agent);
+            if (hero == null)
+            {
+                return;
+            }
+            BLTAdoptAHeroCampaignBehavior.SetAgentStartingHealth(agent);
+            activeHeroes.Add(hero);
+            //UpdateHeroVM(agent);
         }
         
         // public override void OnAgentBuild(Agent agent, Banner banner)
@@ -83,18 +110,7 @@ namespace BLTAdoptAHero
         {
             Log.RemoveInfoPanel(missionInfoPanel);
         }
-        
-        public override void OnAgentCreated(Agent agent)
-        {
-            var hero = GetAdoptedHeroFromAgent(agent);
-            if (hero == null)
-            {
-                return;
-            }
-            BLTAdoptAHeroCampaignBehavior.SetAgentStartingHealth(agent);
-            activeHeroes.Add(hero);
-            //UpdateHeroVM(agent);
-        }
+
 
         // public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
         // {
@@ -105,11 +121,23 @@ namespace BLTAdoptAHero
         public static void OnAgentRemovedPrefix(Mission __instance, Agent affectedAgent, Agent affectorAgent,
             ref AgentState agentState, KillingBlow killingBlow)
         {
-            var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
-            if (affectedHero != null && BLTAdoptAHeroModule.CommonConfig.AllowDeath == false && affectedAgent.State == AgentState.Killed)
+            if (affectedAgent.State == AgentState.Killed)
             {
-                agentState = affectedAgent.State = AgentState.Unconscious;
+                // stop hero from dying if death is disabled
+                var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
+                if (affectedHero != null && BLTAdoptAHeroModule.CommonConfig.AllowDeath == false)
+                {
+                    agentState = affectedAgent.State = AgentState.Unconscious;
+                }
+
+                // stop horse from dying always, as its not easily replaceable
+                if (affectedAgent.IsMount && Current?.adoptedHeroMounts.Contains(affectedAgent) == true)
+                {
+                    agentState = affectedAgent.State = AgentState.Unconscious;
+                }
             }
+            // Remove mount agent from tracking, in-case it is reused
+            Current?.adoptedHeroMounts.Remove(affectedAgent);
         }
 
         public override void OnAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)

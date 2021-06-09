@@ -10,6 +10,9 @@ using TaleWorlds.MountAndBlade;
 
 namespace BLTAdoptAHero
 {
+    /// <summary>
+    /// Customizable mission behaviour
+    /// </summary>
     internal class BLTAdoptAHeroCustomMissionBehavior : AutoMissionBehavior<BLTAdoptAHeroCustomMissionBehavior>
     {
         public delegate void AgentCreatedDelegate(Agent agent);
@@ -131,10 +134,10 @@ namespace BLTAdoptAHero
         public override void OnMissionTick(float dt)
         {
             slowTick += dt;
-            if (slowTick > 2)
+            if (slowTick > SlowTickDuration)
             {
-                slowTick -= 2;
-                ForAll(listeners => listeners.onSlowTick?.Invoke(2));
+                slowTick -= SlowTickDuration;
+                ForAll(listeners => listeners.onSlowTick?.Invoke(SlowTickDuration));
             }
             ForAll(listeners => listeners.onMissionTick?.Invoke(dt));
             base.OnMissionTick(dt);
