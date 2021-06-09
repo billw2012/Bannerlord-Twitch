@@ -12,7 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <LangVersion>9</LangVersion>
-    <ProjectGuid>{A858B7FE-DD3E-4969-9D30-670042C75B16}</ProjectGuid>
+    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_10)</BANNERLORD_GAME_DIR>
+    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</BANNERLORD_GAME_DIR>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -24,6 +25,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_10)</BANNERLORD_GAME_DIR>
+    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</BANNERLORD_GAME_DIR>
+    <StartProgram>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\Bannerlord.exe</StartProgram>
+    <StartWorkingDirectory>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client</StartWorkingDirectory>
+    <StartArguments>/singleplayer _MODULES_%2aBannerlord.Harmony%2aBannerlord.ButterLib%2aNative%2aSandBoxCore%2aCustomBattle%2aSandbox%2aStoryMode%2aBannerlordTwitch%2aBLTAdoptAHero%2aBLTBuffet%2aBLTConfigure%2a_MODULES_</StartArguments>
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+    <NoWarn>MSB3246;MSB3277</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -35,17 +43,50 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-  <PropertyGroup>
+    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_10)</BANNERLORD_GAME_DIR>
     <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</BANNERLORD_GAME_DIR>
+    <NoWarn>MSB3246;MSB3277</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.5.9|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE;BL_V_1_5_9</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <StartAction>Program</StartAction>
+    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_9)</BANNERLORD_GAME_DIR>
+    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.9</BANNERLORD_GAME_DIR>
+    <StartProgram>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\Bannerlord.exe</StartProgram>
+    <StartWorkingDirectory>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client</StartWorkingDirectory>
+    <StartArguments>/singleplayer _MODULES_%2aBannerlord.Harmony%2aBannerlord.ButterLib%2aNative%2aSandBoxCore%2aCustomBattle%2aSandbox%2aStoryMode%2aBannerlordTwitch%2aBLTAdoptAHero%2aBLTBuffet%2aBLTConfigure%2a_MODULES_</StartArguments>
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+    <OutputPath>build\Debug 1.5.9\bin\Win64_Shipping_Client\</OutputPath>
+    <NoWarn>MSB3246;MSB3277</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.5.9|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE;BL_V_1_5_9</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>build\Release 1.5.9\bin\Win64_Shipping_Client\</OutputPath>
+    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_9)</BANNERLORD_GAME_DIR>
+    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.9</BANNERLORD_GAME_DIR>
+    <NoWarn>MSB3246;MSB3277</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Lib.Harmony.2.0.4\lib\net48\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll">
-      <HintPath>%(Identity)</HintPath>
+    <Reference Include="C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.9\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.9\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\TaleWorlds.*.dll">

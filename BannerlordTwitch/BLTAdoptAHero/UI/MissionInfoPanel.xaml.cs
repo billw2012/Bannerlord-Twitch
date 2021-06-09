@@ -122,8 +122,9 @@ namespace BLTAdoptAHero.Behaviors
             ? new SolidColorBrush(Color.FromArgb(0xFF, 0x20, 0x20, 0x50))
             : new SolidColorBrush(Color.FromArgb(0xFF, 0x40, 0x11, 0x22))
         ;
-
+        
         [UsedImplicitly]
+        #pragma warning disable 0067
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }
