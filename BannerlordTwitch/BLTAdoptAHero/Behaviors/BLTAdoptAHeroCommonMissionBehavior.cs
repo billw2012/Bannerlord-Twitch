@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Behaviors;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -57,6 +58,33 @@ namespace BLTAdoptAHero
             }
         }
         
+
+        private void AddKillStreak(Hero hero)
+        {
+            // declare variable right where it's passed
+            var heroState = GetHeroMissionState(hero);
+            heroState.KillStreak++;
+
+            var currKillStreak = BLTAdoptAHeroModule.CommonConfig.KillStreaks?.FirstOrDefault(k => k.Enabled && heroState.KillStreak == k.KillsRequired);
+            if (currKillStreak != null)
+            {
+                string message = currKillStreak.NotificationText.Replace("{player}", hero.FirstName.ToString()).Replace("{kills}",currKillStreak.KillsRequired.ToString()).Replace("{name}",currKillStreak.Name);
+                if (BLTAdoptAHeroModule.CommonConfig.ShowKillStreakPopup)
+                {
+                    Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
+                }
+                var results = BLTAdoptAHeroCustomMissionBehavior.ApplyStreakEffects(hero, currKillStreak.GoldReward, currKillStreak.XPReward,Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),currKillStreak.Name,BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,BLTAdoptAHeroModule.CommonConfig.LevelScalingCap, message);
+                if (results.Any())
+                {
+                    Log.LogFeedResponse(hero.FirstName.ToString(), results.ToArray());
+                }
+            }
+        }
+
+        private void ResetKillStreak(Hero hero)
+        {
+            GetHeroMissionState(hero).KillStreak = 0;
+        }
                 
         public override void OnAgentCreated(Agent agent)
         {
@@ -153,7 +181,7 @@ namespace BLTAdoptAHero
                     BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,
                     BLTAdoptAHeroModule.CommonConfig.LevelScalingCap
                 );
-                //UpdateHeroVM(affectedAgent);
+                ResetKillStreak(affectedHero);
             }
             var affectorHero = GetAdoptedHeroFromAgent(affectorAgent);
             if (affectorHero != null)
@@ -174,6 +202,7 @@ namespace BLTAdoptAHero
                 if (affectedAgent?.IsHuman == true && agentState is AgentState.Unconscious or AgentState.Killed)
                 {
                     GetHeroMissionState(affectorHero).Kills++;
+                    AddKillStreak(affectorHero);
                 }                
             }
 

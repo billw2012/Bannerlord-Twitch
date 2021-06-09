@@ -593,6 +593,10 @@ GlobalConfigs:
     LoseXP: 5000
     Shouts: []
     IncludeDefaultShouts: true
+    KillStreaks: []
+    ShowKillStreakPopup: true
+    KillStreakPopupAlertSound: Notification1
+    ReferenceLevelReward: 15
 - Id: Adopt A Hero - Tournament Config
   Config:
     StartHealthMultiplier: 2

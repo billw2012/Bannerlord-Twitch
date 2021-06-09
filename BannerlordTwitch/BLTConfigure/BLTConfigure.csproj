@@ -127,7 +127,7 @@
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Target Name="AfterClean">
-        <RemoveDir Directories="C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\$(ProjectName)"/>
+        <RemoveDir Directories="$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)"/>
         <RemoveDir Directories="$(OutDir)..\..\..\..\build"/>
         <RemoveDir Directories="$(OutDir)..\..\..\..\obj"/>
     </Target>
@@ -136,6 +136,6 @@
         <ItemGroup>
             <SomeDir Include="$(OutDir)\..\..\**\*" />
         </ItemGroup>
-        <Copy SourceFiles="@(SomeDir)" DestinationFiles="@(SomeDir->'C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+        <Copy SourceFiles="@(SomeDir)" DestinationFiles="@(SomeDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
     </Target>
 </Project>
