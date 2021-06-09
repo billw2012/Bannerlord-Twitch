@@ -35,14 +35,41 @@
         <WarningLevel>4</WarningLevel>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
+    <PropertyGroup>
+        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</BANNERLORD_GAME_DIR>
+    </PropertyGroup>
     <ItemGroup>
-        <Reference Include="0Harmony, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\Bannerlord.Harmony\bin\Win64_Shipping_Client\0Harmony.dll</HintPath>
+        <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\Lib.Harmony.2.0.4\lib\net48\0Harmony.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="Bannerlord.ButterLib, Version=1.0.22.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll</HintPath>
-          <Private>False</Private>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\TaleWorlds.*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\Newtonsoft.Json.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\Native\bin\Win64_Shipping_Client\*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\SandBox\bin\Win64_Shipping_Client\*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\SandBoxCore\bin\Win64_Shipping_Client\*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\StoryMode\bin\Win64_Shipping_Client\*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
         </Reference>
         <Reference Include="BannerlordTwitch, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\BannerlordTwitch\build\$(Configuration)\bin\Win64_Shipping_Client\BannerlordTwitch.dll</HintPath>
@@ -51,9 +78,6 @@
         <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466">
           <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
           <Private>True</Private>
-        </Reference>
-        <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-          <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\Newtonsoft.Json.dll</HintPath>
         </Reference>
         <Reference Include="PresentationCore">
             <Private>False</Private>
@@ -68,10 +92,6 @@
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
-        <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\System.Numerics.Vectors.dll</HintPath>
-          <Private>False</Private>
-        </Reference>
         <Reference Include="System.Xaml">
             <Private>False</Private>
         </Reference>
@@ -84,82 +104,6 @@
         <Reference Include="Xceed.Wpf.Toolkit, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4">
             <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.2\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
             <Private>True</Private>
-        </Reference>
-        <Reference Include="TaleWorlds.TwoDimension, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.TwoDimension.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="TaleWorlds.CampaignSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.CampaignSystem.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="TaleWorlds.CampaignSystem.ViewModelCollection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.CampaignSystem.ViewModelCollection.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="TaleWorlds.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.Core.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="TaleWorlds.Core.ViewModelCollection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.Core.ViewModelCollection.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="TaleWorlds.DotNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.DotNet.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="TaleWorlds.Engine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.Engine.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="TaleWorlds.GauntletUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.GauntletUI.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="TaleWorlds.Library, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.Library.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="TaleWorlds.Localization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.Localization.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="TaleWorlds.MountAndBlade, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="TaleWorlds.MountAndBlade.View, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\Native\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.View.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="TaleWorlds.ObjectSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.ObjectSystem.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="SandBox, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="SandBox.GauntletUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.GauntletUI.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="SandBox.View, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.View.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="SandBox.ViewModelCollection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.ViewModelCollection.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="StoryMode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\StoryMode\bin\Win64_Shipping_Client\StoryMode.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="TaleWorlds.SaveSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.SaveSystem.dll</HintPath>
-            <Private>False</Private>
         </Reference>
         <Reference Include="YamlDotNet, Version=11.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e">
           <HintPath>..\packages\YamlDotNet.11.1.1\lib\net45\YamlDotNet.dll</HintPath>
