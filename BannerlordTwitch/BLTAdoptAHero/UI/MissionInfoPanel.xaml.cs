@@ -4,7 +4,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Threading;
 using BLTAdoptAHero.Annotations;
+using TaleWorlds.Library;
+using Color = System.Windows.Media.Color;
 
 namespace BLTAdoptAHero.Behaviors
 {
@@ -81,11 +84,17 @@ namespace BLTAdoptAHero.Behaviors
         public Visibility RetinueKillsVisibility => RetinueKills > 0 ? Visibility.Visible : Visibility.Hidden;
 
         public float CooldownFractionRemaining { get; set; }
+        public float CooldownSecondsRemaining { get; set; }
 
-        public Visibility CooldownVisibility =>
-            CooldownFractionRemaining > 0 ? Visibility.Visible : Visibility.Collapsed;
+        public Visibility CooldownClockVisibility =>
+            CooldownSecondsRemaining >= 3 ? Visibility.Visible : Visibility.Hidden;
         public float CooldownEndAngle => CooldownFractionRemaining * 360;
 
+        public string CooldownTimeoutText => MathF.Ceiling(CooldownSecondsRemaining).ToString();
+        public Visibility CooldownTextVisibility =>
+            CooldownSecondsRemaining is > 0 and < 3 ? Visibility.Visible : Visibility.Hidden;
+
+        public float CooldownTextScale => 1 + CooldownSecondsRemaining % 1;  
         public int GoldEarned { get; set; }
         public string GoldEarnedText
         {

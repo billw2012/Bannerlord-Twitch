@@ -37,7 +37,6 @@ namespace BLTAdoptAHero
         }
 
         private Dictionary<Hero, HeroMissionState> heroMissionState = new();
-        private float slowTickT = 0;
         private readonly List<Agent> adoptedHeroMounts = new();
 
         public float PlayerSidePower { get; private set; }
@@ -108,7 +107,7 @@ namespace BLTAdoptAHero
                 adoptedHeroMounts.Add(agent.MountAgent);
             }
 
-            if (!agent.IsMount && agent.Team != null && Mission.PlayerTeam != null)
+            if (!agent.IsMount && agent.Team?.IsValid == true && Mission.PlayerTeam?.IsValid == true)
             {
                 if (agent.Team.IsFriendOf(Mission.PlayerTeam))
                 {
@@ -140,20 +139,34 @@ namespace BLTAdoptAHero
         //     // }
         // }
 
+        private float slowTickT = 0;
+        private float fasterTickT = 0;
+
+        
         public override void OnMissionTick(float dt)
         {
             slowTickT += dt;
-            if (slowTickT > 1f)
+            const float TickTime = 2f;
+            if (slowTickT > TickTime)
             {
-                slowTickT -= 1f;
+                slowTickT -= TickTime;
 
-                var sw = new Stopwatch();
-                sw.Start();
                 foreach (var h in activeHeroes)
                 {
                     UpdateHeroVM(h);
                 }
-                sw.Stop();
+            }
+
+            fasterTickT += dt;
+            const float FasterTickTime = 0.05f;
+            if (fasterTickT > FasterTickTime)
+            {
+                fasterTickT -= FasterTickTime;
+
+                foreach (var h in activeHeroes)
+                {
+                    UpdateHeroVMTick(h);
+                }
             }
         }
 
@@ -298,6 +311,35 @@ namespace BLTAdoptAHero
         //     }
         // }
 
+        private void UpdateHeroVMTick(Hero hero)
+        {
+            if (!activeHeroes.Contains(hero))
+            {
+                activeHeroes.Add(hero);
+            }
+
+            var summonState = BLTSummonBehavior.Current.GetSummonedHero(hero);
+
+            var agent = summonState?.CurrentAgent ??
+                        Mission.Current.Agents.FirstOrDefault(a => a.Character == hero.CharacterObject);
+
+            string name = hero.FirstName.Raw();
+            float HP = agent?.Health ?? 0;
+            float CooldownFractionRemaining = 1 - summonState?.CoolDownFraction ?? 0;
+            float CooldownSecondsRemaining = summonState?.CooldownRemaining ?? 0;
+            
+            Log.RunInfoPanelUpdate(() =>
+            {
+                var hm = heroesViewModel.FirstOrDefault(h => h.Name == name);
+                if (hm != null)
+                {
+                    hm.HP = HP;
+                    hm.CooldownFractionRemaining = CooldownFractionRemaining;
+                    hm.CooldownSecondsRemaining = CooldownSecondsRemaining;
+                }
+            });
+        }
+        
         private void UpdateHeroVM(Hero hero)
         {
             var heroState = GetHeroMissionState(hero);
@@ -326,6 +368,7 @@ namespace BLTAdoptAHero
                 GoldEarned = heroState.WonGold,
                 XPEarned = heroState.WonXP,
                 CooldownFractionRemaining = 1 - summonState?.CoolDownFraction ?? 0,
+                CooldownSecondsRemaining = summonState?.CooldownRemaining ?? 0,
                 Kills = heroState.Kills,
                 RetinueKills = heroState.RetinueKills,
             };
@@ -356,6 +399,7 @@ namespace BLTAdoptAHero
                     hm.Kills = heroModel.Kills;
                     hm.RetinueKills = heroModel.RetinueKills;
                     hm.CooldownFractionRemaining = heroModel.CooldownFractionRemaining;
+                    hm.CooldownSecondsRemaining = heroModel.CooldownSecondsRemaining;
                 }
                 else
                 {
@@ -363,7 +407,6 @@ namespace BLTAdoptAHero
                 }
             });
         }
-        
         // public static string KillStateVerb(AgentState state) =>
         //     state switch
         //     {

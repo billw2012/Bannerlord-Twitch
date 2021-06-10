@@ -17,7 +17,7 @@ Rewards:
   RespondInOverlay: true
   HandlerConfig:
     CreateNew: false
-    AllowNoble: false
+    AllowNoble: true
     AllowWanderer: true
     AllowPlayerCompanion: false
     OnlySameFaction: false

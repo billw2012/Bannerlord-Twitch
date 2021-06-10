@@ -61,7 +61,7 @@ namespace BLTAdoptAHero
 
         public static string GetShortSkillName(SkillObject skill)
         {
-            return SkillMapping.TryGetValue(skill.StringId, out string shortSkillName) ? shortSkillName : skill.StringId;
+            return SkillMapping.TryGetValue(skill.StringId, out string shortSkillName) ? shortSkillName : skill.Name.ToString();
         }
 
         private static readonly Dictionary<string, string> SkillMapping = new()

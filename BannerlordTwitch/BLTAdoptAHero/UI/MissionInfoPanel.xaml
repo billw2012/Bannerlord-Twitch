@@ -23,15 +23,25 @@
         <ItemsControl.ItemsSource>
             <x:Array Type="{x:Type local:HeroViewModel}">
                 <local:HeroViewModel Name="Test" IsPlayerSide="true" MaxHP="100" HP="100" Kills="12"
-                                     Retinue="0" RetinueKills="42" CooldownFractionRemaining="0" GoldEarned="0" XPEarned="65000"/>
+                                     Retinue="0" RetinueKills="42" CooldownFractionRemaining="0"
+                                     CooldownSecondsRemaining="2.5"
+                                     GoldEarned="0" XPEarned="65000"/>
                 <local:HeroViewModel Name="ALongViewerName" IsPlayerSide="true" MaxHP="100" HP="75" Kills="0" 
-                                     Retinue="50" RetinueKills="0" CooldownFractionRemaining="0.7" GoldEarned="126" XPEarned="12345"/>
+                                     Retinue="50" RetinueKills="0" CooldownFractionRemaining="0.7"
+                                     CooldownSecondsRemaining="1.1"
+                                     GoldEarned="126" XPEarned="12345"/>
                 <local:HeroViewModel Name="AnotherViewer" IsPlayerSide="true" MaxHP="100" HP="50" Kills="0" 
-                                     Retinue="1" RetinueKills="5" CooldownFractionRemaining="0.2"  GoldEarned="6231"  XPEarned="0"/>
+                                     Retinue="1" RetinueKills="5" CooldownFractionRemaining="0.2"
+                                     CooldownSecondsRemaining="2.9"
+                                     GoldEarned="6231"  XPEarned="0"/>
                 <local:HeroViewModel Name="MyViewerMan" IsPlayerSide="true" MaxHP="100" HP="50" Kills="101" 
-                                     Retinue="1" RetinueKills="42" CooldownFractionRemaining="1"  GoldEarned="1237562" XPEarned="5212"/>
+                                     Retinue="1" RetinueKills="42" CooldownFractionRemaining="1"
+                                     CooldownSecondsRemaining="260"
+                                     GoldEarned="1237562" XPEarned="5212"/>
                 <local:HeroViewModel Name="MyViewerMan" IsPlayerSide="true" MaxHP="100" HP="50" Kills="0" 
-                                     Retinue="0" RetinueKills="0" CooldownFractionRemaining="0"  GoldEarned="0" XPEarned="0"/>
+                                     Retinue="0" RetinueKills="0" CooldownFractionRemaining="0"
+                                     CooldownSecondsRemaining="0"
+                                     GoldEarned="0" XPEarned="0"/>
             </x:Array>
         </ItemsControl.ItemsSource>
         <ItemsControl.ItemTemplate>
@@ -84,57 +94,6 @@
                         </ProgressBar.Style>
                     </ProgressBar>
 
-                    <Grid Margin="5 0 5 3" 
-                          VerticalAlignment="Center"
-                          HorizontalAlignment="Stretch">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <!-- <ui:PieSlice  -->
-                        <!--     Stroke="Black" -->
-                        <!--     Fill="White" -->
-                        <!--     Width="16" -->
-                        <!--     Height="16" -->
-                        <!--     StrokeThickness="1" -->
-                        <!--     Margin="-2 -2 -4 -4" -->
-                        <!--     Visibility="{Binding CooldownVisibility}" -->
-                        <!--     StartAngle="0"  -->
-                        <!--     EndAngle="{Binding CooldownEndAngle, Mode=OneWay}" -->
-                        <!--     HorizontalAlignment="Left"> -->
-                        <!--     <ui:PieSlice.RenderTransform> -->
-                        <!--         <TransformGroup> -->
-                        <!--             <ScaleTransform ScaleX="-1" CenterX="8"/> -->
-                        <!--             <RotateTransform Angle="90" CenterX="8" CenterY="8"/> -->
-                        <!--         </TransformGroup> -->
-                        <!--     </ui:PieSlice.RenderTransform> -->
-                        <!-- </ui:PieSlice> -->
-                        
-                        <!-- Cooldown -->
-                        <fa:FontAwesome Icon="Ban" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
-                                        Margin="0 2 2 0"
-                                        Visibility="{Binding CooldownVisibility}"
-                                        Foreground="Yellow" />
-                        <!-- Name -->
-                        <!-- <TextBlock -->
-                        <!--     Grid.Column="1" -->
-                        <!--     VerticalAlignment="Center" -->
-                        <!--     HorizontalAlignment="Center" -->
-                        <!--     Foreground="{Binding TextColor}" -->
-                        <!--     Text="{Binding Name, Mode=OneWay}" -->
-                        <!--     FontWeight="Medium" -->
-                        <!--     TextTrimming="CharacterEllipsis"/> -->
-                        <overlay:OutlinedTextBlock
-                            Grid.Column="1"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                        
-                            Fill="{Binding TextColor}"
-                            Text="{Binding Name}"
-                            FontWeight="Medium"
-                            StrokeThickness="3"
-                            TextTrimming="CharacterEllipsis"/>
-                    </Grid>
                     <Grid Grid.Row="1" Margin="4 -6 4 3"
                           TextBlock.FontSize="12">
                         <Grid.ColumnDefinitions>
@@ -230,6 +189,79 @@
                         <!--                         ScaleY="1"/> -->
                         <!--     </overlay:OutlinedTextBlock.RenderTransform> -->
                         <!-- </overlay:OutlinedTextBlock> -->
+                    </Grid>
+                    <Grid Margin="5 0 5 3" 
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Cool down clock -->
+                        <ui:PieSlice
+                            Stroke="Black"
+                            Fill="Yellow"
+                            Width="16"
+                            Height="16"
+                            StrokeThickness="1"
+                            Margin="-2 -2 -4 -4"
+                            Visibility="{Binding CooldownClockVisibility}"
+                            StartAngle="0"
+                            EndAngle="{Binding CooldownEndAngle, Mode=OneWay}"
+                            HorizontalAlignment="Left">
+                            <ui:PieSlice.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="-1" CenterX="8"/>
+                                    <RotateTransform Angle="90" CenterX="8" CenterY="8"/>
+                                </TransformGroup>
+                            </ui:PieSlice.RenderTransform>
+                        </ui:PieSlice>
+                        
+                        <!-- ~1~ Cooldown @1@ -->
+                        <!-- <fa:FontAwesome Icon="Ban" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  -->
+                        <!--                 Margin="0 2 2 0" -->
+                        <!--                 Visibility="{Binding CooldownVisibility}" -->
+                        <!--                 Foreground="Yellow" /> -->
+
+                        <!-- Name -->
+                        <!-- <TextBlock -->
+                        <!--     Grid.Column="1" -->
+                        <!--     VerticalAlignment="Center" -->
+                        <!--     HorizontalAlignment="Center" -->
+                        <!--     Foreground="{Binding TextColor}" -->
+                        <!--     Text="{Binding Name, Mode=OneWay}" -->
+                        <!--     FontWeight="Medium" -->
+                        <!--     TextTrimming="CharacterEllipsis"/> -->
+                        <overlay:OutlinedTextBlock
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                        
+                            Fill="{Binding TextColor}"
+                            Text="{Binding Name}"
+                            FontWeight="Medium"
+                            StrokeThickness="3"
+                            TextTrimming="CharacterEllipsis"/>
+
+                        <!-- Cool down 3 2 1 -->
+                        <overlay:OutlinedTextBlock
+                            Margin="-2 -2 -4 -4"
+                            Width="16"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Fill="Yellow"
+                            Text="{Binding CooldownTimeoutText}"
+                            Visibility="{Binding CooldownTextVisibility}"
+                            FontWeight="Medium"
+                            StrokeThickness="3"
+                            FontSize="14"
+                            TextTrimming="CharacterEllipsis">
+                            <overlay:OutlinedTextBlock.RenderTransform>
+                                <ScaleTransform ScaleX="{Binding CooldownTextScale}"
+                                                ScaleY="{Binding CooldownTextScale}"/>
+                            </overlay:OutlinedTextBlock.RenderTransform>
+                        </overlay:OutlinedTextBlock>
                     </Grid>
                     <!-- Retinue pips -->
                     <ItemsControl
