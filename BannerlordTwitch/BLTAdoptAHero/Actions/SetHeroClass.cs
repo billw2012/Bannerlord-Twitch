@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -60,7 +61,7 @@ namespace BLTAdoptAHero
             int heroGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
             if (heroGold < settings.GoldCost)
             {
-                onFailure($"Requires {settings.GoldCost} gold, you only have {heroGold}");
+                onFailure(Naming.NotEnoughGold(settings.GoldCost, heroGold));
                 return;
             }
             

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -53,7 +54,7 @@ namespace BLTAdoptAHero
                 if (settings.ShowGold)
                 {
                     int gold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
-                    infoStrings.Add($"{gold} gold");
+                    infoStrings.Add($"{gold}{Naming.Gold}");
                 }
                 if (settings.ShowGeneral)
                 {
@@ -78,7 +79,7 @@ namespace BLTAdoptAHero
                         SkillObject.All
                             .Where(s => adoptedHero.GetSkillValue(s) >= settings.MinSkillToShow)
                             .OrderByDescending(s => adoptedHero.GetSkillValue(s))
-                            .Select(skill => $"{AdoptAHero.SkillMapping[skill.Name.ToString()]} {adoptedHero.GetSkillValue(skill)} " +
+                            .Select(skill => $"{SkillXP.GetShortSkillName(skill)} {adoptedHero.GetSkillValue(skill)} " +
                                              $"[f{adoptedHero.HeroDeveloper.GetFocus(skill)}]")
                     ));
                 }

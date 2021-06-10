@@ -411,11 +411,11 @@ namespace BLTAdoptAHero
                 int heroGold = GetHeroGold(hero);
                 if (GetHeroGold(hero) < settings.CostPerTier)
                 {
-                    return (false, $"You need {settings.CostPerTier} gold, you have {heroGold}");
+                    return (false, Naming.NotEnoughGold(settings.CostPerTier, heroGold));
                 }
                 ChangeHeroGold(hero, -settings.CostPerTier, isSpending: true);
                 heroRetinue.Add(new HeroData.RetinueData { TroopType = troopType, Level = 1 });
-                return (true, $"{troopType} added to your retinue (-{settings.CostPerTier} gold)");
+                return (true, $"+{troopType} ({Naming.Dec}{settings.CostPerTier}{Naming.Gold})");
             }
 
             // upgrade the lowest tier unit
@@ -428,14 +428,14 @@ namespace BLTAdoptAHero
                 int heroGold = GetHeroGold(hero);
                 if (GetHeroGold(hero) < upgradeCost)
                 {
-                    return (false, $"You need {upgradeCost} gold, you have {heroGold}");
+                    return (false, Naming.NotEnoughGold(upgradeCost, heroGold));
                 }
                 ChangeHeroGold(hero, -upgradeCost, isSpending: true);
 
                 var oldTroopType = retinueToUpgrade.TroopType;
                 retinueToUpgrade.TroopType = oldTroopType.UpgradeTargets.SelectRandom();
                 retinueToUpgrade.Level++;
-                return (true, $"{oldTroopType} was upgraded to {retinueToUpgrade.TroopType} (-{upgradeCost} gold)");
+                return (true, $"{oldTroopType}{Naming.To}{retinueToUpgrade.TroopType} ({Naming.Dec}{upgradeCost}{Naming.Gold})");
             }
             return (false, $"Can't upgrade retinue any further!");
         }

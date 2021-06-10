@@ -249,7 +249,7 @@ namespace BLTAdoptAHero
             if (goldStreak != 0)
             {
                 BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(hero, goldStreak);
-                results.Add($"+{goldStreak} gold");
+                results.Add($"{Naming.Inc}{goldStreak}{Naming.Gold}");
                 showMultiplier = true;
             }
             if (xpStreak != 0)

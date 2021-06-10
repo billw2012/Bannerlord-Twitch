@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 
@@ -29,7 +30,7 @@ namespace BLTAdoptAHero
             }
             int newGold = BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, settings.Amount);
             
-            ActionManager.NotifyComplete(context, $"+{settings.Amount} gold, you now have {newGold}!");
+            ActionManager.NotifyComplete(context, $"{Naming.Inc}{settings.Amount}{Naming.Gold}{Naming.To}{newGold}{Naming.Gold}");
         }
     }
 }

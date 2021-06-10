@@ -45,7 +45,7 @@ namespace BLTAdoptAHero
             int availableGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
             if (availableGold < settings.GoldCost)
             {
-                onFailure($"You do not have enough gold: you need {settings.GoldCost}, and you only have {availableGold}!");
+                onFailure(Naming.NotEnoughGold(settings.GoldCost, availableGold));
                 return;
             }
 
@@ -304,7 +304,7 @@ namespace BLTAdoptAHero
                                 if (actualGold > 0)
                                 {
                                     BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(entry.Hero, actualGold);
-                                    results.Add($"+{actualGold} gold");
+                                    results.Add($"{Naming.Inc}{actualGold}{Naming.Gold}");
                                 }
 
                                 int xp = (int) (BLTAdoptAHeroModule.TournamentConfig.WinXP * actualBoost);
@@ -322,7 +322,7 @@ namespace BLTAdoptAHero
                                 if (!upgraded)
                                 {
                                     BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(entry.Hero, prize.Value);
-                                    results.Add($"sold {prize.Name} for {prize.Value} gold ({failReason})");
+                                    results.Add($"sold {prize.Name} for {prize.Value}{Naming.Gold} ({failReason})");
                                 }
                                 else
                                 {
@@ -430,7 +430,7 @@ namespace BLTAdoptAHero
                         if (actualGold > 0)
                         {
                             BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(entry.Hero, actualGold);
-                            results.Add($"+{actualGold} gold");
+                            results.Add($"{Naming.Inc}{actualGold}{Naming.Gold}");
                         }
                         int xp = (int) (BLTAdoptAHeroModule.TournamentConfig.WinMatchXP * actualBoost);
                         if (xp > 0)
