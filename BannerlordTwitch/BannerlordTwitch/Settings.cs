@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
-using TaleWorlds.Core;
-using TaleWorlds.Engine;
-using TaleWorlds.Library;
 using TwitchLib.Api.Helix.Models.ChannelPoints.CreateCustomReward;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using YamlDotNet.Serialization;

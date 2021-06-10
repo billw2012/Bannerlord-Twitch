@@ -85,8 +85,8 @@
       <HintPath>..\packages\Lib.Harmony.2.0.4\lib\net48\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.9\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.9\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll</HintPath>
+    <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll">
+      <HintPath>%(Identity)</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\TaleWorlds.*.dll">

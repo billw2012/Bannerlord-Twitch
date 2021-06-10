@@ -1,8 +1,4 @@
-﻿using System;
-using BannerlordTwitch;
-using BannerlordTwitch.Rewards;
-
-namespace BLTAdoptAHero
+﻿namespace BLTAdoptAHero
 {
     // WIP
     // public class Marry : ActionHandlerBase

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using TwitchLib.Api;
 using TwitchLib.Client;

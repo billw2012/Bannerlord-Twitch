@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using Bannerlord.ButterLib.Common.Extensions;
 using BannerlordTwitch.Util;
-using TaleWorlds.Library;
 using YamlDotNet.Serialization;
-using Color = System.Windows.Media.Color;
 
 namespace BannerlordTwitch.Rewards
 {

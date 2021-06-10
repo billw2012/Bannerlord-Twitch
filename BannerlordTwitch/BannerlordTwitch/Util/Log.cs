@@ -1,7 +1,6 @@
 ﻿
 using System;
 using System.Diagnostics;
-using System.IO;
 using System.Windows;
 using TaleWorlds.Library;
 using TaleWorlds.Core;

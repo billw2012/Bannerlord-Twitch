@@ -5,7 +5,6 @@ using System.Runtime.CompilerServices;
 using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace BLTAdoptAHero

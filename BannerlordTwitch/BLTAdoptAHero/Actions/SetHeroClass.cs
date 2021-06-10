@@ -1,12 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using BannerlordTwitch;
-using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 

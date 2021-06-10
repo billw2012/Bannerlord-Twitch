@@ -12,7 +12,6 @@ using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.Towns;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
-using TaleWorlds.Localization;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero

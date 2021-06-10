@@ -98,10 +98,6 @@
             <HintPath>%(Identity)</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="BannerlordTwitch, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\BannerlordTwitch\build\$(Configuration)\bin\Win64_Shipping_Client\BannerlordTwitch.dll</HintPath>
-          <Private>False</Private>
-        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
@@ -132,6 +128,13 @@
       <Content Include="CharacterEffectProperties.txt" />
       <Content Include="ParticleEffects.txt" />
       <Content Include="Sounds.txt" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\BannerlordTwitch\BannerlordTwitch.csproj">
+        <Project>{a858b7fe-dd3e-4969-9d30-670042c75b16}</Project>
+        <Name>BannerlordTwitch</Name>
+          <Private>False</Private>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Target Name="AfterClean">

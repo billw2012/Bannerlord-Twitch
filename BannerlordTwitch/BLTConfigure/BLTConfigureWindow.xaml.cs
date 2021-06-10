@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -11,7 +10,6 @@ using System.Net.Http;
 using System.Reflection;
 using System.Security.Authentication;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
@@ -23,7 +21,6 @@ using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using Xceed.Wpf.Toolkit.PropertyGrid;
-using MessageBox = System.Windows.MessageBox;
 
 namespace BLTConfigure
 {
