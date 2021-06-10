@@ -285,6 +285,7 @@ namespace BLTAdoptAHero
             }
 
             if (!Mission.Current.IsLoadingFinished 
+                || Mission.Current.CurrentState != Mission.State.Continuing
                 || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null && Mission.Current.Mode != MissionMode.Battle)
             {
                 onFailure($"You cannot be summoned now, the mission has not started yet!");
@@ -409,6 +410,12 @@ namespace BLTAdoptAHero
                 // crashes seem to happen in the engine...
                 BLTSummonBehavior.Current.DoNextTick(() =>
                 {
+                    if (Mission.Current.CurrentState != Mission.State.Continuing)
+                    {
+                        onFailure($"You cannot be summoned now, the mission has not started yet!");
+                        return;
+                    }
+
                     var existingHero = BLTSummonBehavior.Current.GetSummonedHero(adoptedHero);
                     if (existingHero != null && existingHero.WasPlayerSide != settings.OnPlayerSide)
                     {
@@ -551,7 +558,7 @@ namespace BLTAdoptAHero
                                     {
                                         if (BLTAdoptAHeroModule.CommonConfig.LoseGold > 0)
                                         {
-                                            int newGold = BLTAdoptAHeroCampaignBehavior.Get()
+                                            BLTAdoptAHeroCampaignBehavior.Get()
                                                 .ChangeHeroGold(adoptedHero, -BLTAdoptAHeroModule.CommonConfig.LoseGold);
                                             results.Add($"{Naming.Dec}{BLTAdoptAHeroModule.CommonConfig.LoseGold}{Naming.Gold}");
                                         }
@@ -563,7 +570,9 @@ namespace BLTAdoptAHero
                                                 Skills.All, auto: true);
                                             if (success)
                                             {
-                                                results.Add(description);
+                                                results.Add(finalRewardScaling != 1
+                                                    ? $"{description} (x{finalRewardScaling:0.0})"
+                                                    : description);
                                             }
                                         }
                                     }
@@ -631,10 +640,11 @@ namespace BLTAdoptAHero
                             existingHero.Formation);
                     }
 
+                    bool allowFormation = true; // MissionHelpers.InSiegeMission() || MissionHelpers.InFieldBattleMission();
                     existingHero.CurrentAgent = Mission.Current.SpawnTroop(
                         troopOrigin,
                         isPlayerSide: settings.OnPlayerSide,
-                        hasFormation: true,//!settings.OnPlayerSide || existingHero.Formation != FormationClass.Bodyguard,
+                        hasFormation: allowFormation,
                         spawnWithHorse: adoptedHero.CharacterObject.IsMounted && isMounted,
                         isReinforcement: true,
                         enforceSpawningOnInitialPoint: false,
@@ -674,8 +684,7 @@ namespace BLTAdoptAHero
                             var retinueAgent = Mission.Current.SpawnTroop(
                                 new PartyAgentOrigin(existingHero.Party, retinueTroop),
                                 isPlayerSide: settings.OnPlayerSide,
-                                hasFormation: true, //!settings.OnPlayerSide ||
-                                              //existingHero.Formation != FormationClass.Bodyguard,
+                                hasFormation: allowFormation,
                                 spawnWithHorse: retinueTroop.IsMounted && isMounted,
                                 isReinforcement: true,
                                 enforceSpawningOnInitialPoint: false,
