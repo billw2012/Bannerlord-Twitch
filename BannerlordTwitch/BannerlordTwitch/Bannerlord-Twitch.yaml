@@ -467,6 +467,7 @@ Commands:
     ShowEquipment: false
     ShowInventory: false
     ShowRetinue: true
+    ShowRetinueList: false
 - Name: inv
   HideHelp: false
   Help: Show Equipment
@@ -486,6 +487,7 @@ Commands:
     ShowEquipment: true
     ShowInventory: true
     ShowRetinue: false
+    ShowRetinueList: false
 - Name: equip
   HideHelp: false
   Help: Upgrade Equipment
@@ -567,6 +569,27 @@ Commands:
     ShowEquipment: false
     ShowInventory: false
     ShowRetinue: false
+    ShowRetinueList: false
+- Name: retinuelist
+  HideHelp: false
+  Help: Retinue List
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: HeroInfoCommand
+  ID: afd51f50-caaf-40a8-bf29-d75447e34ef4
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    ShowGold: false
+    ShowGeneral: false
+    ShowTopSkills: false
+    MinSkillToShow: 100
+    ShowAttributes: false
+    ShowEquipment: false
+    ShowInventory: false
+    ShowRetinue: false
+    ShowRetinueList: true
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:

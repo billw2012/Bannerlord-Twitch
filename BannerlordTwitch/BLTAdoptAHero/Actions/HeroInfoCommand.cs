@@ -32,8 +32,10 @@ namespace BLTAdoptAHero
             public bool ShowEquipment { get; set; }
             [Description("Shows the full battle and civilian inventory of the hero"), PropertyOrder(5)]
             public bool ShowInventory { get; set; }
-            [Description("Shows the retinue of the hero"), PropertyOrder(6)]
+            [Description("Shows a summary of the retinue of the hero (count and tier)"), PropertyOrder(6)]
             public bool ShowRetinue { get; set; }
+            [Description("Shows the exact classes and counts of the retinue of the hero"), PropertyOrder(6)]
+            public bool ShowRetinueList { get; set; }
         }
         
         // One Handed, Two Handed, Polearm, Bow, Crossbow, Throwing, Riding, Athletics, Smithing
@@ -118,6 +120,15 @@ namespace BLTAdoptAHero
                     else
                     {
                         infoStrings.Add($"Retinue None");
+                    }
+                }
+
+                if (settings.ShowRetinueList)
+                {
+                    var retinue = BLTAdoptAHeroCampaignBehavior.Get().GetRetinue(adoptedHero).GroupBy(r => r).ToList();
+                    foreach (var r in retinue.OrderBy(r => r.Key.Tier))
+                    {
+                        infoStrings.Add(r.Count() > 1 ? $"{r.Key.Name} x {r.Count()}" : $"{r.Key.Name}");
                     }
                 }
             }
