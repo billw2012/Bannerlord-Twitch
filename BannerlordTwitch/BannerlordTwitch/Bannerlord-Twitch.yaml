@@ -591,6 +591,11 @@ GlobalConfigs:
     WinXP: 10000
     LoseGold: 5000
     LoseXP: 5000
+    DifficultyScalingOnPlayersSide: true
+    DifficultyScalingOnEnemySide: true
+    DifficultyScaling: 1
+    DifficultyScalingMin: 0.200000003
+    DifficultyScalingMax: 3
     Shouts: []
     IncludeDefaultShouts: true
     KillStreaks: []

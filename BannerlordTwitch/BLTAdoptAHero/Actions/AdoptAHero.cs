@@ -29,28 +29,6 @@ namespace BLTAdoptAHero
             (CharacterAttributesEnum.Social, "Soc"),
             (CharacterAttributesEnum.Intelligence, "Int"),
         };
-        
-        public static readonly Dictionary<string, string> SkillMapping = new()
-        {
-            {"One Handed", "1h"},
-            {"Two Handed", "2h"},
-            {"Polearm", "PA"},
-            {"Bow", "Bow"},
-            {"Crossbow", "Xb"},
-            {"Throwing", "Thr"},
-            {"Riding", "Rid"},
-            {"Athletics", "Ath"},
-            {"Smithing", "Smt"},
-            {"Scouting", "Sct"},
-            {"Tactics", "Tac"},
-            {"Roguery", "Rog"},
-            {"Charm", "Cha"},
-            {"Leadership", "Ldr"},
-            {"Trade", "Trd"},
-            {"Steward", "Stw"},
-            {"Medicine", "Med"},
-            {"Engineering", "Eng"},
-        };
 
         internal const string NoHeroMessage = "Couldn't find your hero, did you adopt one yet?";
         internal const string NotStartedMessage = "The game isn't started yet";
@@ -262,15 +240,11 @@ namespace BLTAdoptAHero
             BLTAdoptAHeroCampaignBehavior.Get().SetHeroGold(newHero, settings.StartingGold);
 
             Log.ShowInformation($"{oldName} is now known as {newHero.Name}!", newHero.CharacterObject, Log.Sound.Horns2);
-            if (settings.Inheritance > 0)
-            {
-                int inherited = BLTAdoptAHeroCampaignBehavior.Get().InheritGold(newHero, settings.Inheritance);
-                return (true, $"{oldName} is now known as {newHero.Name}, they have {BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(newHero)} gold (inheriting {inherited} gold)!");
-            }
-            else
-            {
-                return (true, $"{oldName} is now known as {newHero.Name}, they have {BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(newHero)} gold!");
-            }
+            int inherited = BLTAdoptAHeroCampaignBehavior.Get().InheritGold(newHero, settings.Inheritance);
+            int newGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(newHero);
+            return inherited > 0 
+                ? (true, $"{oldName} is now known as {newHero.Name}, they have {newGold}{Naming.Gold} (inheriting {inherited}{Naming.Gold})!") 
+                : (true, $"{oldName} is now known as {newHero.Name}, they have {newGold}{Naming.Gold}!");
         }
     }
 }

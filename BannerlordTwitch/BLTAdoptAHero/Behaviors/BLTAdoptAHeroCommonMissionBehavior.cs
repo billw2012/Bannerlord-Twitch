@@ -22,8 +22,8 @@ namespace BLTAdoptAHero
     [HarmonyPatch]
     internal class BLTAdoptAHeroCommonMissionBehavior : AutoMissionBehavior<BLTAdoptAHeroCommonMissionBehavior>
     {
-        private MissionInfoPanel missionInfoPanel; 
-        
+        private MissionInfoPanel missionInfoPanel;
+
         private ObservableCollection<HeroViewModel> heroesViewModel { get; set; } = new();
         private List<Hero> activeHeroes = new();
 
@@ -40,6 +40,45 @@ namespace BLTAdoptAHero
         private float slowTickT = 0;
         private readonly List<Agent> adoptedHeroMounts = new();
 
+        public float PlayerSidePower { get; private set; }
+        public float EnemySidePower { get; private set; }
+        public float PlayerPowerRatio => PlayerSidePower / Math.Max(1, EnemySidePower);
+        public float EnemyPowerRatio => EnemySidePower / Math.Max(1, PlayerSidePower);
+
+        public float PlayerSideRewardMultiplier
+        {
+            get
+            {
+                if (BLTAdoptAHeroModule.CommonConfig.DifficultyScalingOnPlayersSide)
+                {
+                    return MathF.Clamp(MathF.Pow(EnemyPowerRatio, BLTAdoptAHeroModule.CommonConfig.DifficultyScalingClamped),
+                        BLTAdoptAHeroModule.CommonConfig.DifficultyScalingMinClamped, 
+                        BLTAdoptAHeroModule.CommonConfig.DifficultyScalingMaxClamped);
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
+        
+        public float EnemySideRewardMultiplier
+        {
+            get
+            {
+                if (BLTAdoptAHeroModule.CommonConfig.DifficultyScalingOnEnemySide)
+                {
+                    return MathF.Clamp(MathF.Pow(PlayerPowerRatio, BLTAdoptAHeroModule.CommonConfig.DifficultyScalingClamped),
+                        BLTAdoptAHeroModule.CommonConfig.DifficultyScalingMinClamped, 
+                        BLTAdoptAHeroModule.CommonConfig.DifficultyScalingMaxClamped);
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
+
         public BLTAdoptAHeroCommonMissionBehavior()
         {
             Log.AddInfoPanel(() =>
@@ -49,43 +88,6 @@ namespace BLTAdoptAHero
             });
         }
         
-        public override void OnAgentBuild(Agent agent, Banner banner)
-        {
-            var hero = GetAdoptedHeroFromAgent(agent);
-            if (hero != null && agent.MountAgent != null)
-            {
-                adoptedHeroMounts.Add(agent.MountAgent);
-            }
-        }
-        
-
-        private void AddKillStreak(Hero hero)
-        {
-            // declare variable right where it's passed
-            var heroState = GetHeroMissionState(hero);
-            heroState.KillStreak++;
-
-            var currKillStreak = BLTAdoptAHeroModule.CommonConfig.KillStreaks?.FirstOrDefault(k => k.Enabled && heroState.KillStreak == k.KillsRequired);
-            if (currKillStreak != null)
-            {
-                string message = currKillStreak.NotificationText.Replace("{player}", hero.FirstName.ToString()).Replace("{kills}",currKillStreak.KillsRequired.ToString()).Replace("{name}",currKillStreak.Name);
-                if (BLTAdoptAHeroModule.CommonConfig.ShowKillStreakPopup)
-                {
-                    Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
-                }
-                var results = BLTAdoptAHeroCustomMissionBehavior.ApplyStreakEffects(hero, currKillStreak.GoldReward, currKillStreak.XPReward,Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),currKillStreak.Name,BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,BLTAdoptAHeroModule.CommonConfig.LevelScalingCap, message);
-                if (results.Any())
-                {
-                    Log.LogFeedResponse(hero.FirstName.ToString(), results.ToArray());
-                }
-            }
-        }
-
-        private void ResetKillStreak(Hero hero)
-        {
-            GetHeroMissionState(hero).KillStreak = 0;
-        }
-                
         public override void OnAgentCreated(Agent agent)
         {
             var hero = GetAdoptedHeroFromAgent(agent);
@@ -96,6 +98,27 @@ namespace BLTAdoptAHero
             BLTAdoptAHeroCampaignBehavior.SetAgentStartingHealth(agent);
             activeHeroes.Add(hero);
             //UpdateHeroVM(agent);
+        }
+
+        public override void OnAgentBuild(Agent agent, Banner banner)
+        {
+            var hero = GetAdoptedHeroFromAgent(agent);
+            if (hero != null && agent.MountAgent != null)
+            {
+                adoptedHeroMounts.Add(agent.MountAgent);
+            }
+
+            if (!agent.IsMount && agent.Team != null && Mission.PlayerTeam != null)
+            {
+                if (agent.Team.IsFriendOf(Mission.PlayerTeam))
+                {
+                    PlayerSidePower += agent.Character.GetPower();
+                }
+                else
+                {
+                    EnemySidePower += agent.Character.GetPower();
+                }
+            }
         }
         
         // public override void OnAgentBuild(Agent agent, Banner banner)
@@ -138,7 +161,6 @@ namespace BLTAdoptAHero
         {
             Log.RemoveInfoPanel(missionInfoPanel);
         }
-
 
         // public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
         // {
@@ -222,6 +244,33 @@ namespace BLTAdoptAHero
         // {
         //     
         // }
+        
+        private void AddKillStreak(Hero hero)
+        {
+            // declare variable right where it's passed
+            var heroState = GetHeroMissionState(hero);
+            heroState.KillStreak++;
+
+            var currKillStreak = BLTAdoptAHeroModule.CommonConfig.KillStreaks?.FirstOrDefault(k => k.Enabled && heroState.KillStreak == k.KillsRequired);
+            if (currKillStreak != null)
+            {
+                string message = currKillStreak.NotificationText.Replace("{player}", hero.FirstName.ToString()).Replace("{kills}",currKillStreak.KillsRequired.ToString()).Replace("{name}",currKillStreak.Name);
+                if (BLTAdoptAHeroModule.CommonConfig.ShowKillStreakPopup)
+                {
+                    Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
+                }
+                var results = BLTAdoptAHeroCustomMissionBehavior.ApplyStreakEffects(hero, currKillStreak.GoldReward, currKillStreak.XPReward,Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),currKillStreak.Name,BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,BLTAdoptAHeroModule.CommonConfig.LevelScalingCap, message);
+                if (results.Any())
+                {
+                    Log.LogFeedResponse(hero.FirstName.ToString(), results.ToArray());
+                }
+            }
+        }
+
+        private void ResetKillStreak(Hero hero)
+        {
+            GetHeroMissionState(hero).KillStreak = 0;
+        }
         
         private static Hero GetAdoptedHeroFromAgent(Agent agent)
         {

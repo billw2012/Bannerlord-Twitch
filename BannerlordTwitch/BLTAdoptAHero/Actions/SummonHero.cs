@@ -516,13 +516,22 @@ namespace BLTAdoptAHero
                                 if (Mission.Current?.MissionResult != null)
                                 {
                                     var results = new List<string>();
+                                    float finalRewardScaling =
+                                            actualBoost * 
+                                            (settings.OnPlayerSide 
+                                            ? BLTAdoptAHeroCommonMissionBehavior.Current.PlayerSideRewardMultiplier
+                                            : BLTAdoptAHeroCommonMissionBehavior.Current.EnemySideRewardMultiplier)
+                                        ;
+                                    
                                     if (settings.OnPlayerSide == Mission.Current.MissionResult.PlayerVictory)
                                     {
-                                        int actualGold = (int) (BLTAdoptAHeroModule.CommonConfig.WinGold * actualBoost + settings.GoldCost);
+                                        int actualGold = (int) (finalRewardScaling * BLTAdoptAHeroModule.CommonConfig.WinGold + settings.GoldCost);
                                         if (actualGold > 0)
                                         {
-                                            BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, actualGold);
-                                            results.Add($"+{actualGold} gold");
+                                            int newGold = BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, actualGold);
+                                            results.Add(finalRewardScaling != 1
+                                                ? $"{Naming.Inc}{actualGold}{Naming.Gold} (x{finalRewardScaling:0.0})"
+                                                : $"{Naming.Inc}{actualGold}{Naming.Gold}");
                                         }
 
                                         int xp = (int) (BLTAdoptAHeroModule.CommonConfig.WinXP * actualBoost);
@@ -532,7 +541,9 @@ namespace BLTAdoptAHero
                                                 Skills.All, auto: true);
                                             if (success)
                                             {
-                                                results.Add(description);
+                                                results.Add(finalRewardScaling != 1
+                                                    ? $"{description} (x{finalRewardScaling:0.0})"
+                                                    : description);
                                             }
                                         }
                                     }

@@ -215,6 +215,28 @@ namespace BLTAdoptAHero
         [Category("Battle End Rewards"), Description("XP the hero gets if the heroes side loses"), PropertyOrder(4)]
         public int LoseXP { get; set; } = 5000;
         
+        [Category("Battle End Rewards"), Description("Apply difficulty scaling to players side"), PropertyOrder(5)]
+        public bool DifficultyScalingOnPlayersSide { get; set; } = true;
+        
+        [Category("Battle End Rewards"), Description("Apply difficulty scaling to enemy side"), PropertyOrder(6)]
+        public bool DifficultyScalingOnEnemySide { get; set; } = true;
+        
+        [Category("Battle End Rewards"), Description("End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards"), PropertyOrder(7)]
+        public float DifficultyScaling { get; set; } = 1;
+
+        [YamlIgnore, Browsable(false)]
+        public float DifficultyScalingClamped => MathF.Clamp(DifficultyScaling, 0, 5);
+        
+        [Category("Battle End Rewards"), Description("Min difficulty scaling multiplier"), PropertyOrder(8)]
+        public float DifficultyScalingMin { get; set; } = 0.2f;
+        [YamlIgnore, Browsable(false)]
+        public float DifficultyScalingMinClamped => MathF.Clamp(DifficultyScalingMin, 0, 1);
+
+        [Category("Battle End Rewards"), Description("Max difficulty scaling multiplier"), PropertyOrder(9)]
+        public float DifficultyScalingMax { get; set; } = 3f;
+        [YamlIgnore, Browsable(false)]
+        public float DifficultyScalingMaxClamped => Math.Max(DifficultyScalingMax, 1f);
+        
         [Category("Shouts"), Description("Custom shouts"), PropertyOrder(1)]
         public List<SummonHero.Shout> Shouts { get; set; } = new();
 
