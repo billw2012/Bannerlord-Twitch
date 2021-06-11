@@ -1,8 +1,10 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using HarmonyLib;
+using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
 #pragma warning disable 649
@@ -38,6 +40,15 @@ namespace BLTBuffet
                 {
                     Log.LogFeedCritical($"Error applying patches: {ex.Message}");
                 }
+            }
+        }
+        
+        protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
+        {
+            if(game.GameType is Campaign) 
+            {
+                // Reload settings here so they are fresh
+                EffectsConfig = GlobalEffectsConfig.Get();
             }
         }
         

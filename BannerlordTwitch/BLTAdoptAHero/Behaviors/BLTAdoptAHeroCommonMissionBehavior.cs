@@ -87,90 +87,98 @@ namespace BLTAdoptAHero
         
         public override void OnAgentCreated(Agent agent)
         {
-            var hero = GetAdoptedHeroFromAgent(agent);
-            if (hero == null)
+            try
             {
-                return;
+                var hero = GetAdoptedHeroFromAgent(agent);
+                if (hero == null)
+                {
+                    return;
+                }
+
+                BLTAdoptAHeroCampaignBehavior.SetAgentStartingHealth(agent);
+                activeHeroes.Add(hero);
             }
-            BLTAdoptAHeroCampaignBehavior.SetAgentStartingHealth(agent);
-            activeHeroes.Add(hero);
-            //UpdateHeroVM(agent);
+            catch (Exception ex)
+            {
+                Log.Exception($"{nameof(BLTAdoptAHeroCommonMissionBehavior)}.{nameof(OnAgentCreated)}", ex);
+            }
         }
 
         public override void OnAgentBuild(Agent agent, Banner banner)
         {
-            var hero = GetAdoptedHeroFromAgent(agent);
-            if (hero != null && agent.MountAgent != null)
+            try
             {
-                adoptedHeroMounts.Add(agent.MountAgent);
-            }
+                var hero = GetAdoptedHeroFromAgent(agent);
+                if (hero != null && agent.MountAgent != null)
+                {
+                    adoptedHeroMounts.Add(agent.MountAgent);
+                }
 
-            if (!agent.IsMount && agent.Team?.IsValid == true && Mission.PlayerTeam?.IsValid == true)
+                if (!agent.IsMount && agent.Team?.IsValid == true && Mission.PlayerTeam?.IsValid == true)
+                {
+                    if (agent.Team.IsFriendOf(Mission.PlayerTeam))
+                    {
+                        PlayerSidePower += agent.Character.GetPower();
+                    }
+                    else
+                    {
+                        EnemySidePower += agent.Character.GetPower();
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                if (agent.Team.IsFriendOf(Mission.PlayerTeam))
-                {
-                    PlayerSidePower += agent.Character.GetPower();
-                }
-                else
-                {
-                    EnemySidePower += agent.Character.GetPower();
-                }
+                Log.Exception($"{nameof(BLTAdoptAHeroCommonMissionBehavior)}.{nameof(OnAgentBuild)}", ex);
             }
         }
-        
-        // public override void OnAgentBuild(Agent agent, Banner banner)
-        // {
-        //     // if (agent == Agent.Main)
-        //     // {
-        //     //     foreach (var h in activeHeroes)
-        //     //     {
-        //     //         UpdateHeroVM(h);
-        //     //     }
-        //     //     // foreach (var a in Mission.AllAgents)
-        //     //     // {
-        //     //     //     UpdateHeroVM(a);
-        //     //     // }
-        //     // }
-        //     // else
-        //     // {
-        //     //     UpdateHeroVM(agent);
-        //     // }
-        // }
 
         private float slowTickT = 0;
         private float fasterTickT = 0;
 
-        
         public override void OnMissionTick(float dt)
         {
-            slowTickT += dt;
-            const float TickTime = 2f;
-            if (slowTickT > TickTime)
+            try
             {
-                slowTickT -= TickTime;
-
-                foreach (var h in activeHeroes)
+                slowTickT += dt;
+                const float TickTime = 2f;
+                if (slowTickT > TickTime)
                 {
-                    UpdateHeroVM(h);
+                    slowTickT -= TickTime;
+
+                    foreach (var h in activeHeroes)
+                    {
+                        UpdateHeroVM(h);
+                    }
+                }
+
+                fasterTickT += dt;
+                const float FasterTickTime = 0.05f;
+                if (fasterTickT > FasterTickTime)
+                {
+                    fasterTickT -= FasterTickTime;
+
+                    foreach (var h in activeHeroes)
+                    {
+                        UpdateHeroVMTick(h);
+                    }
                 }
             }
-
-            fasterTickT += dt;
-            const float FasterTickTime = 0.05f;
-            if (fasterTickT > FasterTickTime)
+            catch (Exception ex)
             {
-                fasterTickT -= FasterTickTime;
-
-                foreach (var h in activeHeroes)
-                {
-                    UpdateHeroVMTick(h);
-                }
+                Log.Exception($"{nameof(BLTAdoptAHeroCommonMissionBehavior)}.{nameof(OnMissionTick)}", ex);
             }
         }
 
         protected override void OnEndMission()
         {
-            Log.RemoveInfoPanel(missionInfoPanel);
+            try
+            {
+                Log.RemoveInfoPanel(missionInfoPanel);
+            }
+            catch (Exception ex)
+            {
+                Log.Exception($"{nameof(BLTAdoptAHeroCommonMissionBehavior)}.{nameof(OnEndMission)}", ex);
+            }
         }
 
         // public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
@@ -182,67 +190,83 @@ namespace BLTAdoptAHero
         public static void OnAgentRemovedPrefix(Mission __instance, Agent affectedAgent, Agent affectorAgent,
             ref AgentState agentState, KillingBlow killingBlow)
         {
-            if (affectedAgent.State == AgentState.Killed)
+            try
             {
-                // stop hero from dying if death is disabled
-                var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
-                if (affectedHero != null && BLTAdoptAHeroModule.CommonConfig.AllowDeath == false)
+                if (affectedAgent.State == AgentState.Killed)
                 {
-                    agentState = affectedAgent.State = AgentState.Unconscious;
+                    // stop hero from dying if death is disabled
+                    var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
+                    if (affectedHero != null && BLTAdoptAHeroModule.CommonConfig.AllowDeath == false)
+                    {
+                        agentState = affectedAgent.State = AgentState.Unconscious;
+                    }
+
+                    // stop horse from dying always, as its not easily replaceable
+                    if (affectedAgent.IsMount && Current?.adoptedHeroMounts.Contains(affectedAgent) == true)
+                    {
+                        agentState = affectedAgent.State = AgentState.Unconscious;
+                    }
                 }
 
-                // stop horse from dying always, as its not easily replaceable
-                if (affectedAgent.IsMount && Current?.adoptedHeroMounts.Contains(affectedAgent) == true)
-                {
-                    agentState = affectedAgent.State = AgentState.Unconscious;
-                }
+                // Remove mount agent from tracking, in-case it is reused
+                Current?.adoptedHeroMounts.Remove(affectedAgent);
             }
-            // Remove mount agent from tracking, in-case it is reused
-            Current?.adoptedHeroMounts.Remove(affectedAgent);
+            catch (Exception ex)
+            {
+                Log.Exception($"{nameof(BLTAdoptAHeroCommonMissionBehavior)}.{nameof(OnAgentRemovedPrefix)}", ex);
+            }
         }
 
         public override void OnAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)
         {
-            var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
-            if (affectedHero != null)
+            try
             {
-                Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectedHero} was killed by {affectorAgent?.ToString() ?? "unknown"}");
-                ApplyKilledEffects(
-                    affectedHero, affectorAgent, agentState,
-                    BLTAdoptAHeroModule.CommonConfig.XPPerKilled,
-                    Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),
-                    BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,
-                    BLTAdoptAHeroModule.CommonConfig.LevelScalingCap
-                );
-                ResetKillStreak(affectedHero);
-            }
-            var affectorHero = GetAdoptedHeroFromAgent(affectorAgent);
-            if (affectorHero != null)
-            {
-                float horseFactor = affectedAgent?.IsHuman == false ? 0.25f : 1;
-                Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectorHero} killed {affectedAgent?.ToString() ?? "unknown"}");
-                ApplyKillEffects(
-                    affectorHero, affectorAgent, affectedAgent, agentState,
-                    (int) (BLTAdoptAHeroModule.CommonConfig.GoldPerKill * horseFactor),
-                    (int) (BLTAdoptAHeroModule.CommonConfig.HealPerKill * horseFactor),
-                    (int) (BLTAdoptAHeroModule.CommonConfig.XPPerKill * horseFactor),
-                    Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),
-                    BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,
-                    BLTAdoptAHeroModule.CommonConfig.LevelScalingCap
-                );
-
-                //UpdateHeroVM(affectorAgent);
-                if (affectedAgent?.IsHuman == true && agentState is AgentState.Unconscious or AgentState.Killed)
+                var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
+                if (affectedHero != null)
                 {
-                    GetHeroMissionState(affectorHero).Kills++;
-                    AddKillStreak(affectorHero);
-                }                
-            }
+                    Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectedHero} was killed by {affectorAgent?.ToString() ?? "unknown"}");
+                    ApplyKilledEffects(
+                        affectedHero, affectorAgent, agentState,
+                        BLTAdoptAHeroModule.CommonConfig.XPPerKilled,
+                        Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),
+                        BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,
+                        BLTAdoptAHeroModule.CommonConfig.LevelScalingCap
+                    );
+                    ResetKillStreak(affectedHero);
+                }
 
-            var affectorRetinueOwner = BLTSummonBehavior.Current.GetSummonedHeroForRetinue(affectedAgent);  
-            if (affectorRetinueOwner != null)
+                var affectorHero = GetAdoptedHeroFromAgent(affectorAgent);
+                if (affectorHero != null)
+                {
+                    float horseFactor = affectedAgent?.IsHuman == false ? 0.25f : 1;
+                    Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectorHero} killed {affectedAgent?.ToString() ?? "unknown"}");
+                    ApplyKillEffects(
+                        affectorHero, affectorAgent, affectedAgent, agentState,
+                        (int) (BLTAdoptAHeroModule.CommonConfig.GoldPerKill * horseFactor),
+                        (int) (BLTAdoptAHeroModule.CommonConfig.HealPerKill * horseFactor),
+                        (int) (BLTAdoptAHeroModule.CommonConfig.XPPerKill * horseFactor),
+                        Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),
+                        BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,
+                        BLTAdoptAHeroModule.CommonConfig.LevelScalingCap
+                    );
+
+                    //UpdateHeroVM(affectorAgent);
+                    if (affectedAgent?.IsHuman == true && agentState is AgentState.Unconscious or AgentState.Killed)
+                    {
+                        GetHeroMissionState(affectorHero).Kills++;
+                        AddKillStreak(affectorHero);
+                    }
+                }
+
+                var affectorRetinueOwner = BLTSummonBehavior.Current?.GetSummonedHeroForRetinue(affectedAgent);
+                if (affectorRetinueOwner != null)
+                {
+                    GetHeroMissionState(affectorRetinueOwner.Hero).RetinueKills++;
+                }
+            }
+            catch (Exception ex)
             {
-                GetHeroMissionState(affectorRetinueOwner.Hero).RetinueKills++;
+                Log.Exception($"{nameof(BLTAdoptAHeroCommonMissionBehavior)}.{nameof(OnAgentRemoved)}", ex);
             }
         }
 
@@ -316,7 +340,7 @@ namespace BLTAdoptAHero
                 activeHeroes.Add(hero);
             }
 
-            var summonState = BLTSummonBehavior.Current.GetSummonedHero(hero);
+            var summonState = BLTSummonBehavior.Current?.GetSummonedHero(hero);
 
             var agent = summonState?.CurrentAgent ??
                         Mission.Current.Agents.FirstOrDefault(a => a.Character == hero.CharacterObject);
@@ -347,7 +371,7 @@ namespace BLTAdoptAHero
                 activeHeroes.Add(hero);
             }
 
-            var summonState = BLTSummonBehavior.Current.GetSummonedHero(hero);
+            var summonState = BLTSummonBehavior.Current?.GetSummonedHero(hero);
 
             var agent = summonState?.CurrentAgent ??
                         Mission.Current.Agents.FirstOrDefault(a => a.Character == hero.CharacterObject);
@@ -448,7 +472,7 @@ namespace BLTAdoptAHero
 
             if (goldPerKill != 0)
             {
-                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(hero, goldPerKill);
+                BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, goldPerKill);
                 GetHeroMissionState(hero).WonGold += goldPerKill;
             }
             

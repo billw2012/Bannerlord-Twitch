@@ -37,7 +37,7 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            (bool success, string status) = BLTAdoptAHeroCampaignBehavior.Get().UpgradeRetinue(adoptedHero, settings.Retinue);
+            (bool success, string status) = BLTAdoptAHeroCampaignBehavior.Current.UpgradeRetinue(adoptedHero, settings.Retinue);
             if (success)
             {
                 onSuccess(status);

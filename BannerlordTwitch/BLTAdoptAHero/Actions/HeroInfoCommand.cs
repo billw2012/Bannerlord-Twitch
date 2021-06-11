@@ -55,12 +55,12 @@ namespace BLTAdoptAHero
             {
                 if (settings.ShowGold)
                 {
-                    int gold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
+                    int gold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
                     infoStrings.Add($"{gold}{Naming.Gold}");
                 }
                 if (settings.ShowGeneral)
                 {
-                    var cl = BLTAdoptAHeroCampaignBehavior.Get().GetClass(adoptedHero);
+                    var cl = BLTAdoptAHeroCampaignBehavior.Current.GetClass(adoptedHero);
                     infoStrings.Add($"{cl?.Name ?? "No Class"}");
                     if (adoptedHero.Clan != null)
                     {
@@ -92,8 +92,8 @@ namespace BLTAdoptAHero
                 }
                 if (settings.ShowEquipment)
                 {
-                    infoStrings.Add($"Equip Tier {BLTAdoptAHeroCampaignBehavior.Get().GetEquipmentTier(adoptedHero) + 1}");
-                    var cl = BLTAdoptAHeroCampaignBehavior.Get().GetEquipmentClass(adoptedHero);
+                    infoStrings.Add($"Equip Tier {BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero) + 1}");
+                    var cl = BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentClass(adoptedHero);
                     infoStrings.Add($"{cl?.Name ?? "No Equip Class"}");
                 }
                 if(settings.ShowInventory)
@@ -111,7 +111,7 @@ namespace BLTAdoptAHero
                 }
                 if (settings.ShowRetinue)
                 {
-                    var retinue = BLTAdoptAHeroCampaignBehavior.Get().GetRetinue(adoptedHero).ToList();
+                    var retinue = BLTAdoptAHeroCampaignBehavior.Current.GetRetinue(adoptedHero).ToList();
                     if (retinue.Count > 0)
                     {
                         double tier = retinue.Average(r => r.Tier);
@@ -125,7 +125,7 @@ namespace BLTAdoptAHero
 
                 if (settings.ShowRetinueList)
                 {
-                    var retinue = BLTAdoptAHeroCampaignBehavior.Get().GetRetinue(adoptedHero).GroupBy(r => r).ToList();
+                    var retinue = BLTAdoptAHeroCampaignBehavior.Current.GetRetinue(adoptedHero).GroupBy(r => r).ToList();
                     foreach (var r in retinue.OrderBy(r => r.Key.Tier))
                     {
                         infoStrings.Add(r.Count() > 1 ? $"{r.Key.Name} x {r.Count()}" : $"{r.Key.Name}");

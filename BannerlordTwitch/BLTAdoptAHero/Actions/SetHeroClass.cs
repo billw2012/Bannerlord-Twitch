@@ -55,26 +55,26 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            int heroGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
+            int heroGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
             if (heroGold < settings.GoldCost)
             {
                 onFailure(Naming.NotEnoughGold(settings.GoldCost, heroGold));
                 return;
             }
             
-            BLTAdoptAHeroCampaignBehavior.Get().SetClass(adoptedHero, newClass);
+            BLTAdoptAHeroCampaignBehavior.Current.SetClass(adoptedHero, newClass);
 
             if (settings.GoldCost > 0)
             {
-                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -settings.GoldCost);
+                BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
             }
 
             if (settings.UpdateEquipment)
             {
                 EquipHero.UpgradeEquipment(adoptedHero,
-                    BLTAdoptAHeroCampaignBehavior.Get().GetEquipmentTier(adoptedHero), 
+                    BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero), 
                     newClass, keepBetter: true);
-                BLTAdoptAHeroCampaignBehavior.Get().SetEquipmentClass(adoptedHero, newClass);
+                BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentClass(adoptedHero, newClass);
             }
             onSuccess($"changed class to {newClass.Name}");
         }

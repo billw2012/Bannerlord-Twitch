@@ -60,17 +60,24 @@ namespace BLTAdoptAHero
             
         public override void OnAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)
         {
-            var hero = summonedHeroes.FirstOrDefault(h => h.CurrentAgent == affectedAgent);
-            if (hero != null)
+            try
             {
-                hero.State = agentState;
-            }
+                var hero = summonedHeroes.FirstOrDefault(h => h.CurrentAgent == affectedAgent);
+                if (hero != null)
+                {
+                    hero.State = agentState;
+                }
 
-            // Set the final retinue state
-            var retinue = summonedHeroes.SelectMany(h => h.Retinue).FirstOrDefault(r => r.Agent == affectedAgent);
-            if (retinue != null)
+                // Set the final retinue state
+                var retinue = summonedHeroes.SelectMany(h => h.Retinue).FirstOrDefault(r => r.Agent == affectedAgent);
+                if (retinue != null)
+                {
+                    retinue.State = agentState;
+                }
+            }
+            catch (Exception ex)
             {
-                retinue.State = agentState;
+                Log.Exception($"{nameof(BLTSummonBehavior)}.{nameof(OnAgentRemoved)}", ex);
             }
         }
 
@@ -81,24 +88,37 @@ namespace BLTAdoptAHero
 
         public override void OnMissionTick(float dt)
         {
-            base.OnMissionTick(dt);
-            var actionsToDo = onTickActions.ToList();
-            onTickActions.Clear();
-            foreach (var action in actionsToDo)
+            try
             {
-                action();
+                var actionsToDo = onTickActions.ToList();
+                onTickActions.Clear();
+                foreach (var action in actionsToDo)
+                {
+                    action();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Exception($"{nameof(BLTSummonBehavior)}.{nameof(OnMissionTick)}", ex);
             }
         }
 
         protected override void OnEndMission()
         {
-            // Remove still living retinue troops from their parties
-            foreach(var h in summonedHeroes)
+            try
             {
-                foreach (var r in h.Retinue.Where(r => r.State != AgentState.Killed))
+                // Remove still living retinue troops from their parties
+                foreach (var h in summonedHeroes)
                 {
-                    h.Party.MemberRoster.AddToCounts(r.Troop, -1);
+                    foreach (var r in h.Retinue.Where(r => r.State != AgentState.Killed))
+                    {
+                        h.Party?.MemberRoster?.AddToCounts(r.Troop, -1);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Log.Exception($"{nameof(BLTSummonBehavior)}.{nameof(OnEndMission)}", ex);
             }
         }
     }

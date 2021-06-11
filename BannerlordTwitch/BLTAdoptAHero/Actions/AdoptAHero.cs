@@ -224,11 +224,11 @@ namespace BLTAdoptAHero
                 {
                     EquipHero.UpgradeEquipment(newHero, settings.StartingEquipmentTier.Value - 1, null, keepBetter: false);
                 }
-                BLTAdoptAHeroCampaignBehavior.Get().SetEquipmentTier(newHero, settings.StartingEquipmentTier.Value - 1);
+                BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentTier(newHero, settings.StartingEquipmentTier.Value - 1);
             }
             else
             {
-                BLTAdoptAHeroCampaignBehavior.Get().SetEquipmentTier(newHero, EquipHero.GetHeroEquipmentTier(newHero));
+                BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentTier(newHero, EquipHero.GetHeroEquipmentTier(newHero));
             }
             
             if(!Campaign.Current.EncyclopediaManager.BookmarksTracker.IsBookmarked(newHero))
@@ -236,11 +236,11 @@ namespace BLTAdoptAHero
                 Campaign.Current.EncyclopediaManager.BookmarksTracker.AddBookmarkToItem(newHero);
             }
             
-            BLTAdoptAHeroCampaignBehavior.Get().SetHeroGold(newHero, settings.StartingGold);
+            BLTAdoptAHeroCampaignBehavior.Current.SetHeroGold(newHero, settings.StartingGold);
 
             Log.ShowInformation($"{oldName} is now known as {newHero.Name}!", newHero.CharacterObject, Log.Sound.Horns2);
-            int inherited = BLTAdoptAHeroCampaignBehavior.Get().InheritGold(newHero, settings.Inheritance);
-            int newGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(newHero);
+            int inherited = BLTAdoptAHeroCampaignBehavior.Current.InheritGold(newHero, settings.Inheritance);
+            int newGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(newHero);
             return inherited > 0 
                 ? (true, $"{oldName} is now known as {newHero.Name}, they have {newGold}{Naming.Gold} (inheriting {inherited}{Naming.Gold})!") 
                 : (true, $"{oldName} is now known as {newHero.Name}, they have {newGold}{Naming.Gold}!");

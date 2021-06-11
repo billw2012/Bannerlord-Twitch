@@ -57,7 +57,7 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            int targetTier = BLTAdoptAHeroCampaignBehavior.Get().GetEquipmentTier(adoptedHero) +
+            int targetTier = BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero) +
                              (settings.ReequipInsteadOfUpgrade ? 0 : 1);
 
             if (targetTier > 5)
@@ -70,21 +70,21 @@ namespace BLTAdoptAHero
                 ? settings.GoldCost * (targetTier + 1)
                 : settings.GoldCost;
 
-            int availableGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
+            int availableGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
             if (availableGold < cost)
             {
                 onFailure(Naming.NotEnoughGold(cost, availableGold));
                 return;
             }
 
-            var currentEquipmentClass = BLTAdoptAHeroCampaignBehavior.Get().GetEquipmentClass(adoptedHero);
-            var charClass = BLTAdoptAHeroCampaignBehavior.Get().GetClass(adoptedHero);
+            var currentEquipmentClass = BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentClass(adoptedHero);
+            var charClass = BLTAdoptAHeroCampaignBehavior.Current.GetClass(adoptedHero);
 
             UpgradeEquipment(adoptedHero, targetTier, charClass, !settings.ReequipInsteadOfUpgrade);
 
-            BLTAdoptAHeroCampaignBehavior.Get().SetEquipmentTier(adoptedHero, targetTier);
-            BLTAdoptAHeroCampaignBehavior.Get().SetEquipmentClass(adoptedHero, charClass);
-            BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -cost, isSpending: true);
+            BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentTier(adoptedHero, targetTier);
+            BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentClass(adoptedHero, charClass);
+            BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -cost, isSpending: true);
 
             onSuccess($"Equip Tier {targetTier + 1}");
         }

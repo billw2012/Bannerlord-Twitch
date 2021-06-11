@@ -18,7 +18,7 @@ namespace BLTAdoptAHero
 {
     public class BLTAdoptAHeroCampaignBehavior : CampaignBehaviorBase
     {
-        public static BLTAdoptAHeroCampaignBehavior Get() => GetCampaignBehavior<BLTAdoptAHeroCampaignBehavior>();
+        public static BLTAdoptAHeroCampaignBehavior Current => GetCampaignBehavior<BLTAdoptAHeroCampaignBehavior>();
 
         private class HeroData
         {
@@ -242,13 +242,6 @@ namespace BLTAdoptAHero
             });
             
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, JoinTournament.SetupGameMenus);
-            
-            CampaignEvents.OnMissionStartedEvent.AddNonSerializedListener(this, mission =>
-            {
-                if (mission is not Mission actualMission)
-                    return;
-                actualMission.AddMissionBehaviour(new BLTAdoptAHeroCommonMissionBehavior());
-            });
         }
 
         public static string ToRoman(int number)

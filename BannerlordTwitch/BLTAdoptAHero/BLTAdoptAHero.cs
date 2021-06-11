@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -44,11 +44,18 @@ namespace BLTAdoptAHero
 
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
-            if(mission.GetMissionBehaviour<MissionNameMarkerUIHandler>() == null &&
-               (MissionHelpers.InSiegeMission() || MissionHelpers.InFieldBattleMission() || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null))
+            // Add the marker overlay for appropriate mission types
+            if(mission.GetMissionBehaviour<MissionNameMarkerUIHandler>() == null 
+               && (MissionHelpers.InSiegeMission() 
+                   || MissionHelpers.InFieldBattleMission() 
+                   || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null))
             {
                 mission.AddMissionBehaviour(SandBoxViewCreator.CreateMissionNameMarkerUIHandler(mission));
             }
+            mission.AddMissionBehaviour(new BLTAdoptAHeroCommonMissionBehavior());
+            mission.AddMissionBehaviour(new BLTAdoptAHeroCustomMissionBehavior());
+            mission.AddMissionBehaviour(new BLTSummonBehavior());
+            mission.AddMissionBehaviour(new BLTRemoveAgentsBehavior());
         }
         
         [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(MissionNameMarkerTargetVM), MethodType.Constructor, typeof(Agent))]

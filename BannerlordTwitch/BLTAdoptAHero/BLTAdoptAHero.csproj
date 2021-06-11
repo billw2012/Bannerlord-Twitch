@@ -164,6 +164,7 @@
         <Compile Include="Behaviors\BLTAdoptAHeroCampaignBehavior.cs" />
         <Compile Include="Behaviors\BLTAdoptAHeroCommonMissionBehavior.cs" />
         <Compile Include="Behaviors\BLTAdoptAHeroCustomMissionBehavior.cs" />
+        <Compile Include="Behaviors\BLTRemoveAgentsBehavior.cs" />
         <Compile Include="Behaviors\BLTSummonBehavior.cs" />
         <Compile Include="BLTAdoptAHero.cs" />
         <Compile Include="Properties\Annotations.cs" />

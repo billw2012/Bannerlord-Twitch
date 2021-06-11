@@ -139,7 +139,6 @@ namespace BLTAdoptAHero
                 ForAll(listeners => listeners.onSlowTick?.Invoke(SlowTickDuration));
             }
             ForAll(listeners => listeners.onMissionTick?.Invoke(dt));
-            base.OnMissionTick(dt);
         }
 
 
@@ -161,7 +160,6 @@ namespace BLTAdoptAHero
         public override void OnMissionModeChange(MissionMode oldMissionMode, bool atStart)
         {
             ForAll(l => l.onModeChange?.Invoke(oldMissionMode, Mission.Current.Mode, atStart));
-            base.OnMissionModeChange(oldMissionMode, atStart);
         }
 
         public static Hero GetHeroFromAgent(Agent agent) => (agent?.Character as CharacterObject)?.HeroObject;
@@ -247,7 +245,7 @@ namespace BLTAdoptAHero
             bool showMultiplier = false;
             if (goldStreak != 0)
             {
-                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(hero, goldStreak);
+                BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, goldStreak);
                 results.Add($"{Naming.Inc}{goldStreak}{Naming.Gold}");
                 showMultiplier = true;
             }

@@ -37,7 +37,7 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            int availableGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
+            int availableGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
             if (availableGold < settings.GoldCost)
             {
                 onFailure(Naming.NotEnoughGold(settings.GoldCost, availableGold));
@@ -49,7 +49,7 @@ namespace BLTAdoptAHero
             if (success)
             {
                 onSuccess(description);
-                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -settings.GoldCost);
+                BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
             }
             else
             {
@@ -78,7 +78,7 @@ namespace BLTAdoptAHero
             {
                 // Select skill to improve:
                 // Class skills         weight x 5
-                var heroClass = BLTAdoptAHeroCampaignBehavior.Get().GetClass(hero);
+                var heroClass = BLTAdoptAHeroCampaignBehavior.Current.GetClass(hero);
                 if (heroClass != null)
                 {
                     selectedSkills.AddRange(heroClass.Skills.Select(skill => (skill, weight: 15f)));
