@@ -1,5 +1,4 @@
-﻿using System;
-using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+﻿using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BannerlordTwitch.Util
 {

@@ -11,7 +11,6 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
-using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 
 namespace BLTBuffet
@@ -34,6 +33,13 @@ namespace BLTBuffet
                 onFailure($"No mission is active!");
                 return;
             }
+
+            if (BLTBuffetModule.EffectsConfig.DisableEffectsInTournaments
+                && MissionHelpers.InTournament())
+            {
+                onFailure($"Not allowed during tournament!");
+                return;
+            }
             
             var effectsBehaviour = BLTEffectsBehaviour.Get();
 
@@ -50,8 +56,7 @@ namespace BLTBuffet
                     //var tagObject = new TextObject(BLTAdoptAHeroModule.Tag);
                     if (a.Character is not CharacterObject charObj) return false;
                     return charObj.HeroObject?.IsAdopted() == true 
-                         && charObj.HeroObject?.FirstName?.Contains(context.UserName) == true
-                         && charObj.HeroObject?.FirstName?.ToString() == context.UserName;
+                         && string.Equals(charObj.HeroObject?.FirstName?.Raw(), context.UserName, StringComparison.CurrentCultureIgnoreCase);
                 }),
                 Target.Any => Mission.Current.Agents.Where(GeneralAgentFilter).Where(a => !a.IsAdopted()).SelectRandom(),
                 Target.EnemyTeam => Mission.Current.Agents.Where(GeneralAgentFilter)

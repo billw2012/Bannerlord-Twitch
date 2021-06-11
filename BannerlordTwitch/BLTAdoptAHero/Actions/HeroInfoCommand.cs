@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -17,7 +18,9 @@ namespace BLTAdoptAHero
     {
         private class Settings
         {
-            [Description("Show general info: gold, health, location, age"), PropertyOrder(1)]
+            [Description("Show gold"), PropertyOrder(1)]
+            public bool ShowGold { get; set; } = true;
+            [Description("Show personal info: health, location, age"), PropertyOrder(1)]
             public bool ShowGeneral { get; set; } = true;
             [Description("Shows skills (and focuse values) above the specified MinSkillToShow value"), PropertyOrder(2)]
             public bool ShowTopSkills { get; set; } = true;
@@ -29,8 +32,10 @@ namespace BLTAdoptAHero
             public bool ShowEquipment { get; set; }
             [Description("Shows the full battle and civilian inventory of the hero"), PropertyOrder(5)]
             public bool ShowInventory { get; set; }
-            [Description("Shows the retinue of the hero"), PropertyOrder(6)]
+            [Description("Shows a summary of the retinue of the hero (count and tier)"), PropertyOrder(6)]
             public bool ShowRetinue { get; set; }
+            [Description("Shows the exact classes and counts of the retinue of the hero"), PropertyOrder(6)]
+            public bool ShowRetinueList { get; set; }
         }
         
         // One Handed, Two Handed, Polearm, Bow, Crossbow, Throwing, Riding, Athletics, Smithing
@@ -48,15 +53,20 @@ namespace BLTAdoptAHero
             }
             else
             {
+                if (settings.ShowGold)
+                {
+                    int gold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
+                    infoStrings.Add($"{gold}{Naming.Gold}");
+                }
                 if (settings.ShowGeneral)
                 {
+                    var cl = BLTAdoptAHeroCampaignBehavior.Current.GetClass(adoptedHero);
+                    infoStrings.Add($"{cl?.Name ?? "No Class"}");
                     if (adoptedHero.Clan != null)
                     {
                         infoStrings.Add($"Clan {adoptedHero.Clan.Name}");
                     }
                     infoStrings.Add($"{adoptedHero.Culture}");
-                    int gold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
-                    infoStrings.Add($"{gold} gold");
                     infoStrings.Add($"{adoptedHero.Age:0} yrs");
                     infoStrings.Add($"{adoptedHero.HitPoints} / {adoptedHero.CharacterObject.MaxHitPoints()} HP");
                     if (adoptedHero.LastSeenPlace != null)
@@ -71,7 +81,7 @@ namespace BLTAdoptAHero
                         SkillObject.All
                             .Where(s => adoptedHero.GetSkillValue(s) >= settings.MinSkillToShow)
                             .OrderByDescending(s => adoptedHero.GetSkillValue(s))
-                            .Select(skill => $"{AdoptAHero.SkillMapping[skill.Name.ToString()]} {adoptedHero.GetSkillValue(skill)} " +
+                            .Select(skill => $"{SkillXP.GetShortSkillName(skill)} {adoptedHero.GetSkillValue(skill)} " +
                                              $"[f{adoptedHero.HeroDeveloper.GetFocus(skill)}]")
                     ));
                 }
@@ -82,7 +92,9 @@ namespace BLTAdoptAHero
                 }
                 if (settings.ShowEquipment)
                 {
-                    infoStrings.Add($"Equip Tier {BLTAdoptAHeroCampaignBehavior.Get().GetEquipmentTier(adoptedHero) + 1}");
+                    infoStrings.Add($"Equip Tier {BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero) + 1}");
+                    var cl = BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentClass(adoptedHero);
+                    infoStrings.Add($"{cl?.Name ?? "No Equip Class"}");
                 }
                 if(settings.ShowInventory)
                 {
@@ -99,7 +111,7 @@ namespace BLTAdoptAHero
                 }
                 if (settings.ShowRetinue)
                 {
-                    var retinue = BLTAdoptAHeroCampaignBehavior.Get().GetRetinue(adoptedHero).ToList();
+                    var retinue = BLTAdoptAHeroCampaignBehavior.Current.GetRetinue(adoptedHero).ToList();
                     if (retinue.Count > 0)
                     {
                         double tier = retinue.Average(r => r.Tier);
@@ -108,6 +120,15 @@ namespace BLTAdoptAHero
                     else
                     {
                         infoStrings.Add($"Retinue None");
+                    }
+                }
+
+                if (settings.ShowRetinueList)
+                {
+                    var retinue = BLTAdoptAHeroCampaignBehavior.Current.GetRetinue(adoptedHero).GroupBy(r => r).ToList();
+                    foreach (var r in retinue.OrderBy(r => r.Key.Tier))
+                    {
+                        infoStrings.Add(r.Count() > 1 ? $"{r.Key.Name} x {r.Count()}" : $"{r.Key.Name}");
                     }
                 }
             }

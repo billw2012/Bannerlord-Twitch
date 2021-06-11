@@ -5,8 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using BannerlordTwitch.Util;
-using TaleWorlds.Engine;
-using TaleWorlds.Library;
 using YamlDotNet.Serialization;
 using Path = System.IO.Path;
 

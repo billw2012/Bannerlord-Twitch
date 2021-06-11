@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -36,10 +37,10 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            int availableGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
+            int availableGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
             if (availableGold < settings.GoldCost)
             {
-                onFailure($"You do not have enough gold: you need {settings.GoldCost}, and you only have {availableGold}!");
+                onFailure(Naming.NotEnoughGold(settings.GoldCost, availableGold));
                 return;
             }
             
@@ -48,7 +49,7 @@ namespace BLTAdoptAHero
             if (success)
             {
                 onSuccess(description);
-                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -settings.GoldCost);
+                BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
             }
             else
             {
@@ -69,27 +70,47 @@ namespace BLTAdoptAHero
             (skillNames: SkillGroup.SkillsToStrings(Skills.Personal), weight: 1f),
         };
         
-        protected static SkillObject GetSkill(Hero hero, Skills skills, bool random, bool auto, Func<SkillObject, bool> predicate = null)
+        protected static SkillObject GetSkill(Hero hero, Skills skills, bool auto, Func<SkillObject, bool> predicate = null)
         {
             predicate ??= s => true;
-            IEnumerable<SkillObject> selectedSkills;
+            var selectedSkills = new List<(SkillObject skill, float weight)>();
             if (auto)
             {
-                // We will select automatically which skill from groups
-                selectedSkills = SkillGroups
-                    .Select(g => (skillNames: SkillGroup.GetSkills(g.skillNames).Where(predicate), weight: g.weight))
-                    .Where(g => g.skillNames.Any())
-                    .SelectWeighted(MBRandom.RandomFloat, skillsW => skillsW.weight)
-                    .skillNames;
+                // Select skill to improve:
+                // Class skills         weight x 5
+                var heroClass = BLTAdoptAHeroCampaignBehavior.Current.GetClass(hero);
+                if (heroClass != null)
+                {
+                    selectedSkills.AddRange(heroClass.Skills.Select(skill => (skill, weight: 15f)));
+                }
+                
+                // Equipment skills     weight x 2
+                selectedSkills.AddRange(hero.BattleEquipment
+                    .YieldWeaponSlots()
+                    .Select(w => w.element.Item)
+                    .Where(i => i != null)
+                    .SelectMany(i => i.Weapons?.Select(w => w.RelevantSkill))
+                    .Distinct()
+                    .Where(s => selectedSkills.All(s2 => s2.skill != s))
+                    .Select(skill => (skill, weight: 4f))
+                );
+
+                // Other skills         weight x 1
+                selectedSkills.AddRange(DefaultSkills.GetAllSkills()
+                    .Where(s => selectedSkills.All(s2 => s2.skill != s))
+                    .Select(skill => (skill, weight: 1f))
+                );
             }
             else
             {
-                selectedSkills = SkillGroup.GetSkills(SkillGroup.SkillsToStrings(skills)).Where(predicate);
+                selectedSkills.AddRange(SkillGroup.GetSkills(SkillGroup.SkillsToStrings(skills))
+                    .Select(skill => (skill, weight: 1f)));
             }
 
-            return random 
-                ? selectedSkills?.SelectRandom() 
-                : selectedSkills?.SelectWeighted(MBRandom.RandomFloat, o => hero.GetSkillValue(o) + 50);
+            return selectedSkills
+                .Where(o => predicate(o.skill))
+                .SelectWeighted(MBRandom.RandomFloat, o => o.weight)
+                .skill;
         }
     }
 }
