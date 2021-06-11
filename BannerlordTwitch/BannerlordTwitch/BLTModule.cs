@@ -144,7 +144,7 @@ namespace BannerlordTwitch
 				CampaignEvents.DailyTickEvent.AddNonSerializedListener(ownerHandle, () =>
 				{
 					if (
-#if BL_V_1_5_9
+#if e159
 						CampaignOptions.AutoSaveInMinutes
 #else
 						Campaign.Current.SaveHandler.AutoSaveInterval

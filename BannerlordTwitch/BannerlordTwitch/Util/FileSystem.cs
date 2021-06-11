@@ -4,7 +4,7 @@ using TaleWorlds.Library;
 
 namespace BannerlordTwitch.Util
 {
-#if BL_V_1_5_9
+#if e159
     public struct PlatformFilePath
     {
         public PlatformFilePath(string filePath)
@@ -17,7 +17,7 @@ namespace BannerlordTwitch.Util
     
     public static class FileSystem
     {
-#if BL_V_1_5_9
+#if e159
         public static PlatformFilePath GetConfigPath(string fileName) => new PlatformFilePath(Path.Combine(Common.PlatformFileHelper.DocumentsPath, "Mount and Blade II Bannerlord", "Configs", fileName));
         
         public static bool FileExists(PlatformFilePath path) => File.Exists(path.FilePath);

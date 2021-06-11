@@ -13,10 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLTConfigure", "BLTConfigur
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
 		Debug 1.5.9|Any CPU = Debug 1.5.9|Any CPU
 		Release 1.5.9|Any CPU = Release 1.5.9|Any CPU
+		Debug 1.5.10|Any CPU = Debug 1.5.10|Any CPU
+		Release 1.5.10|Any CPU = Release 1.5.10|Any CPU
+		Debug 1.6.0|Any CPU = Debug 1.6.0|Any CPU
+		Release 1.6.0|Any CPU = Release 1.6.0|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A858B7FE-DD3E-4969-9D30-670042C75B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
