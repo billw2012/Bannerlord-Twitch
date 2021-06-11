@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows.Data;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Behaviors;
 using HarmonyLib;
@@ -23,7 +25,8 @@ namespace BLTAdoptAHero
         private MissionInfoPanel missionInfoPanel;
 
         private ObservableCollection<HeroViewModel> heroesViewModel { get; set; } = new();
-        private List<Hero> activeHeroes = new();
+        private CollectionViewSource heroesSortedView { get; set; }
+        private readonly List<Hero> activeHeroes = new();
 
         private class HeroMissionState
         {
@@ -80,7 +83,11 @@ namespace BLTAdoptAHero
         {
             Log.AddInfoPanel(() =>
             {
-                missionInfoPanel = new MissionInfoPanel {HeroList = {ItemsSource = heroesViewModel}};
+                heroesSortedView = new CollectionViewSource { Source = heroesViewModel };
+                heroesSortedView.SortDescriptions.Add(new SortDescription(nameof(HeroViewModel.GlobalSortKey), ListSortDirection.Descending));
+                heroesSortedView.IsLiveSortingRequested = true;
+                heroesSortedView.LiveSortingProperties.Add(nameof(HeroViewModel.GlobalSortKey));
+                missionInfoPanel = new MissionInfoPanel {HeroList = { ItemsSource = heroesSortedView.View }};
                 return missionInfoPanel;
             });
         }
