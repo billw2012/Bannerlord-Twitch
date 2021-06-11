@@ -187,6 +187,10 @@ namespace BLTAdoptAHero
                         && h.Clan?.IsRebelClan != true
                     )
                     .SelectRandom();
+                if (newHero == null && settings.OnlySameFaction && Clan.PlayerClan?.MapFaction?.StringId == "player_faction")
+                {
+                    return (false, "No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)!");
+                }
             }
             
             if (newHero == null)
