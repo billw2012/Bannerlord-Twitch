@@ -230,6 +230,11 @@ namespace BannerlordTwitch
             {
                 MainThreadSync.Run(() =>
                 {
+                    if (chatMessage.DisplayName.Contains(@"\s"))
+                    {
+                        SendChatReply(chatMessage.Username, "Your display name has a space in it (this is a Twitch bug), you need to remove it for the mod to function correctly!");
+                        return;
+                    }
                     string[] parts = msg.Split(' ');
                     if (parts[0] == "help")
                     {
