@@ -153,7 +153,7 @@ Rewards:
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
-    Name: Heal Player
+    Name: Healing
     Target: Player
     TargetOnFootOnly: false
     Scale: 
@@ -447,6 +447,39 @@ Rewards:
     ActivateSound: 
     DeactivateParticleEffect: 
     DeactivateSound: 
+- RewardSpec:
+    Title: Heal Hero
+    DisableAutomaticFulfillment: false
+    Prompt: 
+    Cost: 100
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    GlobalCooldownSeconds: 
+  Handler: CharacterEffect
+  ID: 6e75b94c-23cf-43cf-a647-2df806460874
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    Name: Healing
+    Target: AdoptedHero
+    TargetOnFootOnly: false
+    Scale: 
+    ParticleEffects: 
+    Properties: 
+    HealPerSecond: 3
+    DamagePerSecond: 0
+    Duration: 10
+    ForceDropWeapons: false
+    RemoveArmor: false
+    DamageMultiplier: 
+    ActivateParticleEffect: 
+    ActivateSound: 
+    DeactivateParticleEffect: 
+    DeactivateSound: 
 Commands:
 - Name: stats
   HideHelp: false
@@ -737,10 +770,10 @@ SimTesting:
     Id: Adopt a Hero
     Args: yes
     Weight: 0.00999999978
-  - Enabled: false
+  - Enabled: true
     Type: Reward
     Id: Heal Player
-    Args: yes
+    Args: ''
     Weight: 0.0500000007
   - Enabled: false
     Type: Command
@@ -767,3 +800,8 @@ SimTesting:
     Id: class
     Args: skirmisher
     Weight: 0.300000012
+  - Enabled: true
+    Type: Reward
+    Id: Heal Hero
+    Args: ''
+    Weight: 0.0500000007
