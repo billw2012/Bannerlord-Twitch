@@ -28,11 +28,11 @@ namespace BLTBuffet
 
         private static Hero GetAdoptedHero(string name)
         {
+            string nameToFind = name.ToLower();
             return Campaign.Current?
                 .AliveHeroes?
                 .FirstOrDefault(h => h.Name?.Contains("[BLT]") == true 
-                                     && h.FirstName?.Contains(name) == true 
-                                     && h.FirstName?.ToString() == name);
+                                     && h.FirstName?.Raw().ToLower() == nameToFind);
         }
     }
 }

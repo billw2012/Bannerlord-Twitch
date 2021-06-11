@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -11,7 +10,6 @@ using System.Net.Http;
 using System.Reflection;
 using System.Security.Authentication;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
@@ -23,7 +21,6 @@ using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using Xceed.Wpf.Toolkit.PropertyGrid;
-using MessageBox = System.Windows.MessageBox;
 
 namespace BLTConfigure
 {
@@ -51,11 +48,28 @@ namespace BLTConfigure
         public Settings EditedSettings  { get; set; }
         public AuthSettings EditedAuthSettings  { get; set; }
         
+        public bool AffiliateSpoofing
+        {
+            get => EditedAuthSettings.DebugSpoofAffiliate;
+            set
+            {
+                EditedAuthSettings.DebugSpoofAffiliate = value;
+                SaveAuth();
+            }
+        }
+        
         public BLTConfigureWindow()
         {
             InitializeComponent();
             this.DataContext = this;
             Reload();
+        }
+
+        protected override void OnDeactivated(EventArgs e)
+        {
+            base.OnDeactivated(e);
+            SaveSettings();
+            SaveAuth();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -75,6 +89,7 @@ namespace BLTConfigure
                     GlobalConfig => "Global Configs",
                     Reward => "Channel Rewards",
                     Command => "Chat Commands",
+                    SimTestingConfig => "Sim Testing Config",
                     _ => item.GetType().Name
                 };
             }
@@ -131,6 +146,7 @@ namespace BLTConfigure
                         EditedSettings.GlobalConfigs.Cast<object>()
                             .Concat(EditedSettings.Rewards)
                             .Concat(EditedSettings.Commands)
+                            .Concat(EditedSettings.SimTesting.Yield())
                         );
                 actionFilterView.GroupDescriptions.Add(new TypeGroupDescription());
                 // actionFilterView.SortDescriptions.Add(new SortDescription("Branch", ListSortDirection.Descending));
@@ -208,43 +224,6 @@ namespace BLTConfigure
             SaveSettings();
         }
         
-        // private void DeleteCommand_OnClick(object sender, RoutedEventArgs e)
-        // {
-        //     EditedSettings.Commands.Remove(CommandsListBox.SelectedItem as Command);
-        //     PropertyGrid.SelectedObject = null;
-        //     CommandsListBox.Items.Refresh();
-        // }
-
-        // private async void PropertyGrid_OnLostFocus(object sender, RoutedEventArgs e)
-        // {
-        //     //await Task.Delay(TimeSpan.FromMilliseconds(100));
-        //     //RefreshActionList();
-        //     //SaveSettings();
-        // }
-
-        // private async void PropertyGrid_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        // {
-        //     //     if (suspendSync) return;
-        //     //     suspendSync = true;
-        //     //     //var item = ActionsListBox.SelectedItem;
-        //     //     //ActionsListBox.Items.Refresh();
-        //     //     // CommandsListBox.Items.Refresh();
-        //     //     //ActionsListBox.Items.Remove();
-        //     //     RefreshActionList();
-        //     //     //ActionsListBox.Item
-        //     //     SaveSettings();
-        //     //     // ActionsListBox.SelectedItem = ActionsListBox.SelectedItem;
-        //     //     suspendSync = false;
-        //     if(Dispatcher.Thread != Thread.CurrentThread)
-        //     {
-        //         return;
-        //     }
-        //     await Task.Delay(TimeSpan.FromMilliseconds(100));
-        //     RefreshActionList();
-        //     SaveSettings();
-        // }
-
-
         private void SaveSettings()
         {
             if (EditedSettings == null)

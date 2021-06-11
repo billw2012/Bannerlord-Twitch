@@ -6,9 +6,9 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
-namespace BLTAdoptAHero
+namespace BannerlordTwitch.Util
 {
-    internal class MissionHelpers
+    public static class MissionHelpers
     {
         public static bool HeroIsSpawned(Hero hero) 
             => //CampaignMission.Current.Location?.ContainsCharacter(hero) == true || 

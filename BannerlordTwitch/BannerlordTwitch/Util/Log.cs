@@ -1,7 +1,9 @@
 ﻿
 using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
+using System.Linq;
 using System.Windows;
 using TaleWorlds.Library;
 using TaleWorlds.Core;
@@ -43,12 +45,22 @@ namespace BannerlordTwitch.Util
 #endif
         }
 
+        private static readonly ConcurrentBag<string> reportedExceptions = new(); 
+            
         public static void Exception(string context, Exception ex)
         {
+            string str = $"{context}: {ex.GetBaseException()}";
+            MainThreadSync.Run(() => LogFilePrint("ERROR: " + str));
             Error($"{context}: {ex.GetBaseException()}");
-// #if DEBUG
-//             throw ex;
-// #endif
+            string expId = context + (ex.GetBaseException().Message ?? "unk");
+            if (!reportedExceptions.Contains(expId))
+            {
+                reportedExceptions.Add(expId);
+                LogFeedCritical(str);
+            }
+#if DEBUG
+            throw ex;
+#endif
         }
 
         // public static void Screen(string str, Color color = default)

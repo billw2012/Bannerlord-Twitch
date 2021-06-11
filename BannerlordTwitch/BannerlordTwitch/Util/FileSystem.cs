@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using Path = System.IO.Path;
-using TaleWorlds.Engine;
 using TaleWorlds.Library;
 
 namespace BannerlordTwitch.Util

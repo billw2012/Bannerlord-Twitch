@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using TwitchLib.Api;
 using TwitchLib.Client;
@@ -220,7 +217,7 @@ namespace BannerlordTwitch
                 string msg = e.ChatMessage.Message;
                 if (msg.StartsWith("!"))
                 {
-                    HandleChatBoxMessage(msg, e.ChatMessage);
+                    HandleChatBoxMessage(msg.TrimStart('!'), e.ChatMessage);
                 }
             }
 
@@ -231,8 +228,9 @@ namespace BannerlordTwitch
 
             private void HandleChatBoxMessage(string msg, ChatMessage chatMessage)
             {
-                MainThreadSync.Run(() => {
-                    string[] parts = msg.TrimStart('!').Split(' ');
+                MainThreadSync.Run(() =>
+                {
+                    string[] parts = msg.Split(' ');
                     if (parts[0] == "help")
                     {
                         BLTModule.TwitchService?.ShowCommandHelp();

@@ -5,11 +5,13 @@ using System.Runtime.CompilerServices;
 using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace BLTAdoptAHero
 {
+    /// <summary>
+    /// Customizable mission behaviour
+    /// </summary>
     internal class BLTAdoptAHeroCustomMissionBehavior : AutoMissionBehavior<BLTAdoptAHeroCustomMissionBehavior>
     {
         public delegate void AgentCreatedDelegate(Agent agent);
@@ -131,13 +133,12 @@ namespace BLTAdoptAHero
         public override void OnMissionTick(float dt)
         {
             slowTick += dt;
-            if (slowTick > 2)
+            if (slowTick > SlowTickDuration)
             {
-                slowTick -= 2;
-                ForAll(listeners => listeners.onSlowTick?.Invoke(2));
+                slowTick -= SlowTickDuration;
+                ForAll(listeners => listeners.onSlowTick?.Invoke(SlowTickDuration));
             }
             ForAll(listeners => listeners.onMissionTick?.Invoke(dt));
-            base.OnMissionTick(dt);
         }
 
 
@@ -159,7 +160,6 @@ namespace BLTAdoptAHero
         public override void OnMissionModeChange(MissionMode oldMissionMode, bool atStart)
         {
             ForAll(l => l.onModeChange?.Invoke(oldMissionMode, Mission.Current.Mode, atStart));
-            base.OnMissionModeChange(oldMissionMode, atStart);
         }
 
         public static Hero GetHeroFromAgent(Agent agent) => (agent?.Character as CharacterObject)?.HeroObject;
@@ -214,76 +214,44 @@ namespace BLTAdoptAHero
             }
         }
 
-        public static string KillStateVerb(AgentState state) =>
-            state switch
-            {
-                AgentState.Routed => "routed",
-                AgentState.Unconscious => "knocked out",
-                AgentState.Killed => "killed",
-                AgentState.Deleted => "deleted",
-                _ => "fondled"
-            };
-        
-        // public const int MaxLevel = 62;
-        public const int MaxLevelInPractice = 32;
-        
-        // https://www.desmos.com/calculator/frzo6bkrwv
-        // value returned is 0 < v < 1 if levelB < levelA, v = 1 if they are equal, and 1 < v < max if levelB > levelA
-        public static float RelativeLevelScaling(int levelA, int levelB, float n, float max = float.MaxValue) 
-            => Math.Min(MathF.Pow(1f - Math.Min(MaxLevelInPractice - 1, levelB - levelA) / (float)MaxLevelInPractice, -10f * MathF.Clamp(n, 0, 1)), max);
-        
-        public static List<string> ApplyKillEffects(Hero hero, Agent killer, Agent killed, AgentState state, int goldPerKill, int healPerKill, int xpPerKill, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
+        public static List<string> ApplyStreakEffects(Hero hero, int goldStreak, int xpStreak, float subBoost, string killStreakName, float? relativeLevelScaling, float? levelScalingCap, string message)
         {
             var results = new List<string>();
-            
-            if (killed != null)
+
+            if (hero != null)
             {
-                results.Add($"{KillStateVerb(state)} {killed.Name}");
+                results.Add(message);
             }
-            
+
             if (subBoost != 1)
             {
-                goldPerKill = (int) (goldPerKill * subBoost);
-                healPerKill = (int) (healPerKill * subBoost);
-                xpPerKill = (int) (xpPerKill * subBoost);
+                goldStreak = (int)(goldStreak * subBoost);
+                xpStreak = (int)(xpStreak * subBoost);
             }
 
             float levelBoost = 1;
-            if (relativeLevelScaling.HasValue && killed?.Character != null)
+            if (relativeLevelScaling.HasValue)
             {
                 // More reward for killing higher level characters
-                levelBoost = RelativeLevelScaling(hero.Level, killed.Character.Level, relativeLevelScaling.Value, levelScalingCap ?? 5);
+                levelBoost = BLTAdoptAHeroCommonMissionBehavior.RelativeLevelScaling(hero.Level, BLTAdoptAHeroModule.CommonConfig.ReferenceLevelReward, relativeLevelScaling.Value, levelScalingCap ?? 5);
 
                 if (levelBoost != 1)
                 {
-                    goldPerKill = (int) (goldPerKill * levelBoost);
-                    healPerKill = (int) (healPerKill * levelBoost);
-                    xpPerKill = (int) (xpPerKill * levelBoost);
+                    goldStreak = (int)(goldStreak * levelBoost);
+                    xpStreak = (int)(xpStreak * levelBoost);
                 }
             }
 
             bool showMultiplier = false;
-            if (goldPerKill != 0)
+            if (goldStreak != 0)
             {
-                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(hero, goldPerKill);
-                results.Add($"+{goldPerKill} gold");
+                BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, goldStreak);
+                results.Add($"{Naming.Inc}{goldStreak}{Naming.Gold}");
                 showMultiplier = true;
             }
-            if (healPerKill != 0)
+            if (xpStreak != 0)
             {
-                float prevHealth = killer.Health;
-                killer.Health = Math.Min(killer.HealthLimit,
-                    killer.Health + healPerKill);
-                float healthDiff = killer.Health - prevHealth;
-                if (healthDiff > 0)
-                {
-                    results.Add($"+{healthDiff}hp");
-                    showMultiplier = true;
-                }
-            }
-            if (xpPerKill != 0)
-            {
-                (bool success, string description) = SkillXP.ImproveSkill(hero, xpPerKill, Skills.All, random: false, auto: true);
+                (bool success, string description) = SkillXP.ImproveSkill(hero, xpStreak, Skills.All, auto: true);
                 if (success)
                 {
                     results.Add(description);
@@ -297,64 +265,12 @@ namespace BLTAdoptAHero
                 {
                     results.Add($"x{subBoost:0.0} (sub)");
                 }
-
-                if (levelBoost != 1 && killed?.Character != null)
-                {
-                    results.Add($"x{levelBoost:0.0} (lvl diff {killed.Character.Level - hero.Level})");
-                }
-            }
-            return results;
-        }
-        
-        public static List<string> ApplyKilledEffects(Hero hero, Agent killer, AgentState state, int xpPerKilled, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
-        {
-            if (subBoost != 1)
-            {
-                xpPerKilled = (int) (xpPerKilled * subBoost);
-            }
-
-            float levelBoost = 1;
-            if (relativeLevelScaling.HasValue && killer?.Character != null)
-            {
-                // More reward for being killed by higher level characters
-                levelBoost = RelativeLevelScaling(hero.Level, killer.Character.Level, relativeLevelScaling.Value, levelScalingCap ?? 5);
 
                 if (levelBoost != 1)
                 {
-                    xpPerKilled = (int) (xpPerKilled * levelBoost);
+                    results.Add($"x{levelBoost:0.0} (lvl scaling)");
                 }
             }
-
-            bool showMultiplier = false;
-            
-            var results = new List<string>();
-            if (killer != null)
-            {
-                results.Add($"{KillStateVerb(state)} by {killer.Name}");
-            }
-            if (xpPerKilled != 0)
-            {
-                (bool success, string description) = SkillXP.ImproveSkill(hero, xpPerKilled, Skills.All, random: false, auto: true);
-                if (success)
-                {
-                    results.Add(description);
-                    showMultiplier = true;
-                }
-            }
-            
-            if (showMultiplier)
-            {
-                if (subBoost != 1)
-                {
-                    results.Add($"x{subBoost:0.0} (sub)");
-                }
-
-                if (levelBoost != 1 && killer?.Character != null)
-                {
-                    results.Add($"x{levelBoost:0.0} (lvl diff {killer.Character.Level - hero.Level})");
-                }
-            }
-            
             return results;
         }
     }
