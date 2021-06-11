@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace BLTAdoptAHero
     {
         private Harmony harmony;
         public const string Name = "BLTAdoptAHero";
-        public const string Ver = "1.4.1";
+        public const string Ver = "1.4.2";
 
         internal static GlobalCommonConfig CommonConfig { get; private set; }
         internal static GlobalTournamentConfig TournamentConfig { get; private set; }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
@@ -12,7 +12,7 @@ namespace BLTBuffet
     public class BLTBuffetModule : MBSubModuleBase
     {
         public const string Name = "BLTBuffet";
-        public const string Ver = "1.4.1";
+        public const string Ver = "1.4.2";
 
         internal static GlobalEffectsConfig EffectsConfig { get; private set; }
 
