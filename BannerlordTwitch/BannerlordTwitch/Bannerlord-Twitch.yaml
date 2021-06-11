@@ -14,7 +14,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
-  RespondInExtension: false
+  RespondInExtension: true
   HandlerConfig:
     CreateNew: false
     AllowNoble: true
@@ -44,6 +44,9 @@ Rewards:
     StartWithRangedWeapon: true
     StartWithHorse: true
     StartWithArmor: true
+    SpawnInParty: true
+    JoinPlayerClan: true
+    JoinPlayerCompanion: true
 - RewardSpec:
     Title: 10k gold
     DisableAutomaticFulfillment: false
@@ -537,21 +540,27 @@ Commands:
   RespondInExtension: true
   HandlerConfig:
     CreateNew: true
-    AllowNoble: false
+    AllowNoble: true
     AllowWanderer: true
-    AllowPlayerCompanion: false
+    AllowPlayerCompanion: true
     OnlySameFaction: false
     AllowNewAdoptionOnDeath: true
     Inheritance: 0.25
     SubscriberOnly: false
     MinSubscribedMonths: 
     StartingGold: 0
-    StartingSkills: []
+    StartingSkills:
+    - Skill: All
+      MinLevel: 80
+      MaxLevel: 180
     StartingEquipmentTier: 1
     StartWithMeleeWeapon: true
     StartWithRangedWeapon: true
     StartWithHorse: true
     StartWithArmor: true
+    SpawnInParty: true
+    JoinPlayerClan: true
+    JoinPlayerCompanion: true
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -562,6 +571,7 @@ GlobalConfigs:
     MoraleLossFactor: 0.5
     SubBoost: 1.20000005
     UseRawXP: true
+    BreakCompanionLimit: false
     GoldPerKill: 5000
     XPPerKill: 5000
     XPPerKilled: 2000
