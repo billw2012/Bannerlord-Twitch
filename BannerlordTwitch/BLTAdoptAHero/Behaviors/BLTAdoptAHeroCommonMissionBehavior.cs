@@ -265,7 +265,7 @@ namespace BLTAdoptAHero
                     }
                 }
 
-                var affectorRetinueOwner = BLTSummonBehavior.Current?.GetSummonedHeroForRetinue(affectedAgent);
+                var affectorRetinueOwner = BLTSummonBehavior.Current?.GetSummonedHeroForRetinue(affectorAgent);
                 if (affectorRetinueOwner != null)
                 {
                     GetHeroMissionState(affectorRetinueOwner.Hero).RetinueKills++;
