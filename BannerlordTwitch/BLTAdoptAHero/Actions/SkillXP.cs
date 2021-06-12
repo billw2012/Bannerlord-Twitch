@@ -58,9 +58,9 @@ namespace BLTAdoptAHero
             return realGainedXp < 1f
                 ? (false, $"{skill.Name} capped, get more focus points")
                 : gainedLevels > 0
-                    ? (true, $"{Naming.Inc}{gainedLevels}lvl {GetShortSkillName(skill)}")
+                    ? (true, $"{Naming.Inc}{gainedLevels} lvl {GetShortSkillName(skill)}{Naming.To}{newLevel}")
                     : (true,
-                        $"{Naming.Inc}{realGainedXp:0}xp {GetShortSkillName(skill)}");
+                        $"{Naming.Inc}{realGainedXp:0} xp {GetShortSkillName(skill)}{Naming.To}{newXp}");
         }
 
         public static string GetShortSkillName(SkillObject skill)
