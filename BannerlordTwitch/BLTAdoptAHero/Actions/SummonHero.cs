@@ -131,11 +131,13 @@ namespace BLTAdoptAHero
             public bool PlayerSide { get; [UsedImplicitly] set; } = true;
             [PropertyOrder(4), Description("Can be used when summoning on enemy side")]
             public bool EnemySide { get; [UsedImplicitly] set; } = true;
-            [PropertyOrder(5), Description("Can be used when in a field battle")]
+            [PropertyOrder(5), Description("Can be used in situations other than battle/siege")]
+            public bool General { get; [UsedImplicitly] set; } = true;
+            [PropertyOrder(6), Description("Can be used when in a field battle")]
             public bool FieldBattle { get; [UsedImplicitly] set; } = true;
-            [PropertyOrder(6), Description("Can be used when on siege defender side")]
+            [PropertyOrder(7), Description("Can be used when on siege defender side")]
             public bool SiegeDefend { get; [UsedImplicitly] set; } = true;
-            [PropertyOrder(7), Description("Can be used when on siege attacker side")]
+            [PropertyOrder(8), Description("Can be used when on siege attacker side")]
             public bool SiegeAttack { get; [UsedImplicitly] set; } = true;
 
             public Shout() { }
@@ -149,38 +151,48 @@ namespace BLTAdoptAHero
         
         private static readonly List<Shout> DefaultShouts = new()
         {
+            //  Player side
+            //      General
             new Shout("Don't worry, I've got your back!") { EnemySide = false },
             new Shout("I'm here!") { EnemySide = false },
             new Shout("Which one should I stab?") { EnemySide = false },
-            new Shout("Once more unto the breach!") { EnemySide = false },
-            new Shout("Freeeeeedddooooooommmm!") { EnemySide = false },
-            new Shout("Remember the Alamo!") { EnemySide = false },
-            new Shout("Alala!") { EnemySide = false },
-            new Shout("Eleleu!") { EnemySide = false },
-            new Shout("Deus vult!") { EnemySide = false },
-            new Shout("Banzai!") { EnemySide = false },
-            new Shout("Liberty or Death!") { EnemySide = false },
-            new Shout("Har Har Mahadev!") { EnemySide = false },
-            new Shout("Desperta ferro!") { EnemySide = false },
-            new Shout("Alba gu bràth!") { EnemySide = false },
-            new Shout("Santiago!") { EnemySide = false },
-            new Shout("Huzzah!") { EnemySide = false },
-            new Shout("War... war never changes...") { EnemySide = false },
             new Shout("Need a hand?") { EnemySide = false },
-            new Shout("May we live to see the next sunrise!") { EnemySide = false },
-            new Shout("For glory, charge!") { EnemySide = false },
             new Shout("The price has been paid. I am at your service.") { EnemySide = false },
-            new Shout("Give them nothing, but take from them everything!") { EnemySide = false },
-            new Shout("Those are brave men knocking at our door, let's go kill them!") { EnemySide = false, SiegeAttack = false, FieldBattle = false },
-            new Shout("Lets take this city!") { EnemySide = false, SiegeDefend = false, FieldBattle = false },
-            new Shout("Now for wrath, now for ruin and a red nightfall!") { EnemySide = false, Weight = 0.05f },
+
+            //      Battle / siege
+            new Shout("Once more unto the breach!") { EnemySide = false, General = false },
+            new Shout("Freeeeeedddooooooommmm!") { EnemySide = false, General = false },
+            new Shout("Remember the Alamo!") { EnemySide = false, General = false },
+            new Shout("Alala!") { EnemySide = false, General = false },
+            new Shout("Eleleu!") { EnemySide = false, General = false },
+            new Shout("Deus vult!") { EnemySide = false, General = false },
+            new Shout("Banzai!") { EnemySide = false, General = false },
+            new Shout("Liberty or Death!") { EnemySide = false, General = false },
+            new Shout("Har Har Mahadev!") { EnemySide = false, General = false },
+            new Shout("Desperta ferro!") { EnemySide = false, General = false },
+            new Shout("Alba gu bràth!") { EnemySide = false, General = false },
+            new Shout("Santiago!") { EnemySide = false, General = false },
+            new Shout("Huzzah!") { EnemySide = false, General = false },
+            new Shout("War... war never changes...") { EnemySide = false, General = false },
+            new Shout("May we live to see the next sunrise!") { EnemySide = false, General = false },
+            new Shout("For glory, charge!") { EnemySide = false, General = false },
+            new Shout("Give them nothing, but take from them everything!") { EnemySide = false, General = false },
             new Shout("Fell deeds awake, fire and slaughter!") { EnemySide = false },
+            //          Rare
             new Shout("Spooooooooooooooooooon!") { EnemySide = false, Weight = 0.05f },
             new Shout("Leeeeeeeerooooy Jeeeeenkins") { EnemySide = false, Weight = 0.05f },
-            new Shout("n") { EnemySide = false, Weight = 0.01f },
             new Shout("I live, I die, I live again!") { EnemySide = false, Weight = 0.05f },
             new Shout("Witness me!!") { EnemySide = false, Weight = 0.05f },
+            new Shout("Now for wrath, now for ruin and a red nightfall!") { EnemySide = false, Weight = 0.05f },
+            //          Very rare
+            new Shout("n") { EnemySide = false, Weight = 0.01f },
+            
+            //      Siege Attack
+            new Shout("Those are brave men knocking at our door, let's go kill them!") { EnemySide = false, General = false, SiegeAttack = false, FieldBattle = false },
+            new Shout("Lets take this city!") { EnemySide = false, General = false, SiegeDefend = false, FieldBattle = false },
 
+            //  Enemy side
+            //      General
             new Shout("Defend yourself!") { PlayerSide = false },
             new Shout("Time for you to die!") { PlayerSide = false },
             new Shout("You killed my father, prepare to die!") { PlayerSide = false },
@@ -195,6 +207,8 @@ namespace BLTAdoptAHero
             new Shout("Never should have come here!") { PlayerSide = false },
             new Shout("Your money or life!") { PlayerSide = false },
             new Shout("I'm sorry, but I must stop you.") { PlayerSide = false },
+            
+            //          Rare
             new Shout("I have the high ground!") { PlayerSide = false, Weight = 0.05f },
         };
 
@@ -259,20 +273,19 @@ namespace BLTAdoptAHero
                 ;
             bool doingSiegeAttack = MissionHelpers.InSiegeMission() && onAttackingSide;
             bool doingSiegeDefend = MissionHelpers.InSiegeMission() && !onAttackingSide;
+            bool doingFieldBattle = MissionHelpers.InFieldBattleMission();
+            bool doingGeneral = !doingSiegeAttack && !doingSiegeDefend && !doingFieldBattle;
             var messages = (BLTAdoptAHeroModule.CommonConfig.IncludeDefaultShouts
                     ? DefaultShouts
                     : Enumerable.Empty<Shout>())
                 .Concat(BLTAdoptAHeroModule.CommonConfig.Shouts)
                 .Where(s =>
                     (s.EnemySide && !settings.OnPlayerSide || s.PlayerSide && settings.OnPlayerSide)
-                    && (s.FieldBattle || !MissionHelpers.InFieldBattleMission())
+                    && (s.General || !doingGeneral)
+                    && (s.FieldBattle || !doingFieldBattle)
                     && (s.SiegeAttack || !doingSiegeAttack)
                     && (s.SiegeDefend || !doingSiegeDefend)
                 );
-                
-            // settings.OnPlayerSide
-            //     ? FriendlySummonMessages
-            //     : EnemySummonMessages;
 
             if (CampaignMission.Current.Location != null)
             {
