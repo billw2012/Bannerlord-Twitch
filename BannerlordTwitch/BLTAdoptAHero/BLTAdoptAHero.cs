@@ -16,6 +16,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.TwoDimension;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using YamlDotNet.Serialization;
 
@@ -175,7 +176,14 @@ namespace BLTAdoptAHero
         public bool RetinueUseHeroesFormation { get; [UsedImplicitly] set; }
 
         [Category("General"), Description("Minimum time between summons for a specific hero"), PropertyOrder(13)]
-        public int CooldownInSeconds { get; [UsedImplicitly] set; } = 60;
+        public int SummonCooldownInSeconds { get; [UsedImplicitly] set; } = 20;
+        [Browsable(false), YamlIgnore]
+        public bool CooldownEnabled => SummonCooldownInSeconds > 0;
+
+        [Category("General"), Description("How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this."), PropertyOrder(14)]
+        public float SummonCooldownUseMultiplier { get; [UsedImplicitly] set; } = 1.1f;
+
+        public float GetCooldownTime(int summoned) => (float) (Math.Pow(SummonCooldownUseMultiplier, Mathf.Max(1, summoned)) * SummonCooldownInSeconds);
 
         [Category("Kill Rewards"), Description("Gold the hero gets for every kill"), PropertyOrder(1)]
         public int GoldPerKill { get; set; } = 5000;

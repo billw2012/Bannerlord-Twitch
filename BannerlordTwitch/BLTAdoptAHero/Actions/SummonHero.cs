@@ -617,6 +617,7 @@ namespace BLTAdoptAHero
                         wieldInitialWeapons: true);
 
                     existingHero.State = AgentState.Active;
+                    existingHero.TimesSummoned++;
                     existingHero.SummonTime = MBCommon.GetTime(MBCommon.TimeType.Mission);
 
                     // if (settings.OnPlayerSide && existingHero.Formation == FormationClass.Bodyguard)

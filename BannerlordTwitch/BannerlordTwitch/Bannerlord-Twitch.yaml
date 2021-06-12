@@ -634,7 +634,8 @@ GlobalConfigs:
     SubBoost: 1.20000005
     UseRawXP: true
     RetinueUseHeroesFormation: false
-    CooldownInSeconds: 60
+    SummonCooldownInSeconds: 20
+    SummonCooldownUseMultiplier: 1.5
     GoldPerKill: 5000
     XPPerKill: 5000
     XPPerKilled: 2000
