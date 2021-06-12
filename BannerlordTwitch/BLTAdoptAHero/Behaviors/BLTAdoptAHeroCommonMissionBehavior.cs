@@ -231,7 +231,7 @@ namespace BLTAdoptAHero
                 var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
                 if (affectedHero != null)
                 {
-                    Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectedHero} was killed by {affectorAgent?.ToString() ?? "unknown"}");
+                    Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectedHero} was made {agentState} by {affectorAgent?.Name ?? "unknown"}");
                     ApplyKilledEffects(
                         affectedHero, affectorAgent, agentState,
                         BLTAdoptAHeroModule.CommonConfig.XPPerKilled,
@@ -246,7 +246,7 @@ namespace BLTAdoptAHero
                 if (affectorHero != null)
                 {
                     float horseFactor = affectedAgent?.IsHuman == false ? 0.25f : 1;
-                    Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectorHero} killed {affectedAgent?.ToString() ?? "unknown"}");
+                    Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectorHero} made {affectedAgent?.Name ?? "unknown"} {agentState}");
                     ApplyKillEffects(
                         affectorHero, affectorAgent, affectedAgent, agentState,
                         (int) (BLTAdoptAHeroModule.CommonConfig.GoldPerKill * horseFactor),
