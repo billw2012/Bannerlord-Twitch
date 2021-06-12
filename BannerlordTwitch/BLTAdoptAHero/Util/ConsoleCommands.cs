@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BannerlordTwitch.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
 using SandBox.View.Map;
@@ -29,7 +30,15 @@ namespace BLTAdoptAHero.Util
                 return $"Couldn't find hero {strings[0]}";
             }
             
+            if (!PartyScreenAllowed)
+                return $"Can't open inventory now";
+            
+            if (ScreenManager.TopScreen is not MapScreen)
+            {
+                Game.Current.GameStateManager.PopState();
+            }
             InventoryManager.OpenScreenAsInventoryOf(MobileParty.MainParty, character);
+
             return $"Opened inventory of {strings[0]}";
         }
         
@@ -75,7 +84,7 @@ namespace BLTAdoptAHero.Util
             AccessTools.Field(typeof(PartyScreenManager), "_currentMode").SetValue(PartyScreenManager.Instance, PartyScreenMode.Normal);
             
             var heroRoster = new TroopRoster(null);
-            foreach (var hero in BLTAdoptAHeroCampaignBehavior.GetAllAdoptedHeroes())
+            foreach (var hero in BLTAdoptAHeroCampaignBehavior.GetAllAdoptedHeroes().OrderBy(h => h.Name.Raw().ToLower()))
             {
                 heroRoster.AddToCounts(hero.CharacterObject, 1);
             }

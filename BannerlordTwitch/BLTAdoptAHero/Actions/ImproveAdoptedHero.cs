@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -36,10 +37,10 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            int availableGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
+            int availableGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
             if (availableGold < settings.GoldCost)
             {
-                onFailure($"You do not have enough gold: you need {settings.GoldCost}, and you only have {availableGold}!");
+                onFailure(Naming.NotEnoughGold(settings.GoldCost, availableGold));
                 return;
             }
             
@@ -48,7 +49,7 @@ namespace BLTAdoptAHero
             if (success)
             {
                 onSuccess(description);
-                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -settings.GoldCost);
+                BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
             }
             else
             {
@@ -77,7 +78,7 @@ namespace BLTAdoptAHero
             {
                 // Select skill to improve:
                 // Class skills         weight x 5
-                var heroClass = BLTAdoptAHeroCampaignBehavior.Get().GetClass(hero);
+                var heroClass = BLTAdoptAHeroCampaignBehavior.Current.GetClass(hero);
                 if (heroClass != null)
                 {
                     selectedSkills.AddRange(heroClass.Skills.Select(skill => (skill, weight: 15f)));

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using BannerlordTwitch;
-using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.Core;
+using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
@@ -43,6 +42,12 @@ namespace BLTAdoptAHero
         {
             var settings = (Settings) config;
             
+            if (Mission.Current != null)
+            {
+                onFailure($"You cannot change class, as a mission is active!");
+                return;
+            }
+            
             var newClass = BLTAdoptAHeroModule.HeroClassConfig.FindClass(context.Args);
             if (newClass == null)
             {
@@ -50,26 +55,26 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            int heroGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
+            int heroGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
             if (heroGold < settings.GoldCost)
             {
-                onFailure($"Requires {settings.GoldCost} gold, you only have {heroGold}");
+                onFailure(Naming.NotEnoughGold(settings.GoldCost, heroGold));
                 return;
             }
             
-            BLTAdoptAHeroCampaignBehavior.Get().SetClass(adoptedHero, newClass);
+            BLTAdoptAHeroCampaignBehavior.Current.SetClass(adoptedHero, newClass);
 
             if (settings.GoldCost > 0)
             {
-                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -settings.GoldCost);
+                BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
             }
 
             if (settings.UpdateEquipment)
             {
                 EquipHero.UpgradeEquipment(adoptedHero,
-                    BLTAdoptAHeroCampaignBehavior.Get().GetEquipmentTier(adoptedHero), 
+                    BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero), 
                     newClass, keepBetter: true);
-                BLTAdoptAHeroCampaignBehavior.Get().SetEquipmentClass(adoptedHero, newClass);
+                BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentClass(adoptedHero, newClass);
             }
             onSuccess($"changed class to {newClass.Name}");
         }

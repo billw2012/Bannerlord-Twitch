@@ -1,6 +1,4 @@
-﻿using TaleWorlds.Engine;
-
-namespace BannerlordTwitch.Util
+﻿namespace BannerlordTwitch.Util
 {
     public static class Paths
     {

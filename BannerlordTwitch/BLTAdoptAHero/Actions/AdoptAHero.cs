@@ -12,7 +12,6 @@ using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.Towns;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
-using TaleWorlds.Localization;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
@@ -28,28 +27,6 @@ namespace BLTAdoptAHero
             (CharacterAttributesEnum.Cunning, "Cun"),
             (CharacterAttributesEnum.Social, "Soc"),
             (CharacterAttributesEnum.Intelligence, "Int"),
-        };
-        
-        public static readonly Dictionary<string, string> SkillMapping = new()
-        {
-            {"One Handed", "1h"},
-            {"Two Handed", "2h"},
-            {"Polearm", "PA"},
-            {"Bow", "Bow"},
-            {"Crossbow", "Xb"},
-            {"Throwing", "Thr"},
-            {"Riding", "Rid"},
-            {"Athletics", "Ath"},
-            {"Smithing", "Smt"},
-            {"Scouting", "Sct"},
-            {"Tactics", "Tac"},
-            {"Roguery", "Rog"},
-            {"Charm", "Cha"},
-            {"Leadership", "Ldr"},
-            {"Trade", "Trd"},
-            {"Steward", "Stw"},
-            {"Medicine", "Med"},
-            {"Engineering", "Eng"},
         };
 
         internal const string NoHeroMessage = "Couldn't find your hero, did you adopt one yet?";
@@ -180,8 +157,6 @@ namespace BLTAdoptAHero
                 BLTAdoptAHeroCampaignBehavior.RetireHero(deadHero);
             }
 
-            args = args?.Trim();
-            
             Hero newHero = null;
             if (settings.CreateNew)
             {
@@ -209,7 +184,7 @@ namespace BLTAdoptAHero
                             || Clan.PlayerClan?.MapFaction != null
                             && Clan.PlayerClan?.MapFaction == h.Clan?.MapFaction)
                         // Disallow rebel clans as they may get deleted if the rebellion fails
-                        && !h.Clan?.IsRebelClan == true
+                        && h.Clan?.IsRebelClan != true
                     )
                     .SelectRandom();
             }
@@ -249,11 +224,11 @@ namespace BLTAdoptAHero
                 {
                     EquipHero.UpgradeEquipment(newHero, settings.StartingEquipmentTier.Value - 1, null, keepBetter: false);
                 }
-                BLTAdoptAHeroCampaignBehavior.Get().SetEquipmentTier(newHero, settings.StartingEquipmentTier.Value - 1);
+                BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentTier(newHero, settings.StartingEquipmentTier.Value - 1);
             }
             else
             {
-                BLTAdoptAHeroCampaignBehavior.Get().SetEquipmentTier(newHero, EquipHero.GetHeroEquipmentTier(newHero));
+                BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentTier(newHero, EquipHero.GetHeroEquipmentTier(newHero));
             }
             
             if(!Campaign.Current.EncyclopediaManager.BookmarksTracker.IsBookmarked(newHero))
@@ -261,18 +236,14 @@ namespace BLTAdoptAHero
                 Campaign.Current.EncyclopediaManager.BookmarksTracker.AddBookmarkToItem(newHero);
             }
             
-            BLTAdoptAHeroCampaignBehavior.Get().SetHeroGold(newHero, settings.StartingGold);
+            BLTAdoptAHeroCampaignBehavior.Current.SetHeroGold(newHero, settings.StartingGold);
 
             Log.ShowInformation($"{oldName} is now known as {newHero.Name}!", newHero.CharacterObject, Log.Sound.Horns2);
-            if (settings.Inheritance > 0)
-            {
-                int inherited = BLTAdoptAHeroCampaignBehavior.Get().InheritGold(newHero, settings.Inheritance);
-                return (true, $"{oldName} is now known as {newHero.Name}, they have {BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(newHero)} gold (inheriting {inherited} gold)!");
-            }
-            else
-            {
-                return (true, $"{oldName} is now known as {newHero.Name}, they have {BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(newHero)} gold!");
-            }
+            int inherited = BLTAdoptAHeroCampaignBehavior.Current.InheritGold(newHero, settings.Inheritance);
+            int newGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(newHero);
+            return inherited > 0 
+                ? (true, $"{oldName} is now known as {newHero.Name}, they have {newGold}{Naming.Gold} (inheriting {inherited}{Naming.Gold})!") 
+                : (true, $"{oldName} is now known as {newHero.Name}, they have {newGold}{Naming.Gold}!");
         }
     }
 }

@@ -2,7 +2,7 @@ Rewards:
 - RewardSpec:
     Title: Adopt a Hero
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Take control of a hero in game
     Cost: 300
     IsEnabled: true
     BackgroundColorText: 
@@ -51,7 +51,7 @@ Rewards:
 - RewardSpec:
     Title: 10k gold
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Add 10,000 gold to your adopted hero
     Cost: 500
     IsEnabled: true
     BackgroundColorText: 
@@ -70,7 +70,7 @@ Rewards:
 - RewardSpec:
     Title: 100k gold
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Add 100,000 gold to your adopted hero
     Cost: 2500
     IsEnabled: true
     BackgroundColorText: 
@@ -89,7 +89,7 @@ Rewards:
 - RewardSpec:
     Title: Summon
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Your adopted hero joins the players side in battle
     Cost: 50
     IsEnabled: true
     BackgroundColorText: 
@@ -112,14 +112,13 @@ Rewards:
     OnPlayerSide: true
     GoldCost: 0
     PreferredFormation: LightCavalry
-    RetinueUseHeroesFormation: false
     AlertSound: None
     SubBoost: 2
     HealPerSecond: 0
 - RewardSpec:
     Title: Attack
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Your adopted hero joins the enemies side in battle
     Cost: 50
     IsEnabled: true
     BackgroundColorText: 
@@ -142,14 +141,13 @@ Rewards:
     OnPlayerSide: false
     GoldCost: 0
     PreferredFormation: LightCavalry
-    RetinueUseHeroesFormation: false
     AlertSound: None
     SubBoost: 2
     HealPerSecond: 0
 - RewardSpec:
     Title: Heal Player
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Heal the player over time
     Cost: 100
     IsEnabled: true
     BackgroundColorText: 
@@ -164,7 +162,7 @@ Rewards:
   RespondInOverlay: true
   RespondInExtension: false
   HandlerConfig:
-    Name: Heal Player
+    Name: Healing
     Target: Player
     TargetOnFootOnly: false
     Scale: 
@@ -349,7 +347,7 @@ Rewards:
 - RewardSpec:
     Title: Tournament
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Join the tournament queue with your adopted hero
     Cost: 25
     IsEnabled: true
     BackgroundColorText: 
@@ -404,7 +402,7 @@ Rewards:
 - RewardSpec:
     Title: 50k XP
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Add 50,000 XP to a random skill of your adopted hero
     Cost: 1000
     IsEnabled: true
     BackgroundColorText: 
@@ -466,6 +464,39 @@ Rewards:
     ActivateSound: 
     DeactivateParticleEffect: 
     DeactivateSound: 
+- RewardSpec:
+    Title: Heal Hero
+    DisableAutomaticFulfillment: false
+    Prompt: 
+    Cost: 100
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    GlobalCooldownSeconds: 
+  Handler: CharacterEffect
+  ID: 6e75b94c-23cf-43cf-a647-2df806460874
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    Name: Healing
+    Target: AdoptedHero
+    TargetOnFootOnly: false
+    Scale: 
+    ParticleEffects: 
+    Properties: 
+    HealPerSecond: 3
+    DamagePerSecond: 0
+    Duration: 10
+    ForceDropWeapons: false
+    RemoveArmor: false
+    DamageMultiplier: 
+    ActivateParticleEffect: 
+    ActivateSound: 
+    DeactivateParticleEffect: 
+    DeactivateSound: 
 Commands:
 - Name: stats
   HideHelp: false
@@ -479,6 +510,7 @@ Commands:
   RespondInOverlay: true
   RespondInExtension: true
   HandlerConfig:
+    ShowGold: true
     ShowGeneral: true
     ShowTopSkills: true
     MinSkillToShow: 100
@@ -486,6 +518,7 @@ Commands:
     ShowEquipment: false
     ShowInventory: false
     ShowRetinue: true
+    ShowRetinueList: false
 - Name: inv
   HideHelp: false
   Help: Show Equipment
@@ -498,6 +531,7 @@ Commands:
   RespondInOverlay: true
   RespondInExtension: true
   HandlerConfig:
+    ShowGold: true
     ShowGeneral: false
     ShowTopSkills: false
     MinSkillToShow: 100
@@ -505,6 +539,7 @@ Commands:
     ShowEquipment: true
     ShowInventory: true
     ShowRetinue: false
+    ShowRetinueList: false
 - Name: equip
   HideHelp: false
   Help: Upgrade Equipment
@@ -552,28 +587,63 @@ Commands:
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
-    CreateNew: true
-    AllowNoble: true
-    AllowWanderer: true
-    AllowPlayerCompanion: true
-    OnlySameFaction: false
-    AllowNewAdoptionOnDeath: true
-    Inheritance: 0.25
-    SubscriberOnly: false
-    MinSubscribedMonths: 
-    StartingGold: 0
-    StartingSkills:
-    - Skill: All
-      MinLevel: 80
-      MaxLevel: 180
-    StartingEquipmentTier: 1
-    StartWithMeleeWeapon: true
-    StartWithRangedWeapon: true
-    StartWithHorse: true
-    StartWithArmor: true
-    SpawnInParty: true
-    JoinPlayerClan: true
-    JoinPlayerCompanion: true
+    GoldCost: 100000
+    UpdateEquipment: true
+- Name: reequip
+  HideHelp: false
+  Help: reroll equipment
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: EquipHero
+  ID: d4fb255c-4bb3-454e-9e26-39b4d7a321f0
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    AllowCompanionUpgrade: false
+    GoldCost: 10000
+    MultiplyCostByCurrentTier: true
+    ReequipInsteadOfUpgrade: true
+- Name: gold
+  HideHelp: false
+  Help: 
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: HeroInfoCommand
+  ID: 42e45ee9-647f-486f-9764-5e765507a70d
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: false
+  HandlerConfig:
+    ShowGold: true
+    ShowGeneral: false
+    ShowTopSkills: false
+    MinSkillToShow: 100
+    ShowAttributes: false
+    ShowEquipment: false
+    ShowInventory: false
+    ShowRetinue: false
+    ShowRetinueList: false
+- Name: retinuelist
+  HideHelp: false
+  Help: Retinue List
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: HeroInfoCommand
+  ID: afd51f50-caaf-40a8-bf29-d75447e34ef4
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    ShowGold: false
+    ShowGeneral: false
+    ShowTopSkills: false
+    MinSkillToShow: 100
+    ShowAttributes: false
+    ShowEquipment: false
+    ShowInventory: false
+    ShowRetinue: false
+    ShowRetinueList: true
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -584,7 +654,8 @@ GlobalConfigs:
     MoraleLossFactor: 0.5
     SubBoost: 1.20000005
     UseRawXP: true
-    BreakCompanionLimit: false
+    RetinueUseHeroesFormation: false
+    CooldownInSeconds: 60
     GoldPerKill: 5000
     XPPerKill: 5000
     XPPerKilled: 2000
@@ -597,8 +668,17 @@ GlobalConfigs:
     WinXP: 10000
     LoseGold: 5000
     LoseXP: 5000
+    DifficultyScalingOnPlayersSide: true
+    DifficultyScalingOnEnemySide: true
+    DifficultyScaling: 1
+    DifficultyScalingMin: 0.200000003
+    DifficultyScalingMax: 3
     Shouts: []
     IncludeDefaultShouts: true
+    KillStreaks: []
+    ShowKillStreakPopup: true
+    KillStreakPopupAlertSound: Notification1
+    ReferenceLevelReward: 15
 - Id: Adopt A Hero - Tournament Config
   Config:
     StartHealthMultiplier: 2
@@ -646,8 +726,11 @@ GlobalConfigs:
       MeleeWeapon2: Invalid
       RangedWeapon: Thrown
       Mounted: false
+- Id: Buffet - Effects Config
+  Config:
+    DisableEffectsInTournaments: true
 SimTesting:
-  UserCount: 10
+  UserCount: 25
   UserStayTime: 300
   IntervalMinMS: 100
   IntervalMaxMS: 100
@@ -708,10 +791,10 @@ SimTesting:
     Id: Adopt a Hero
     Args: yes
     Weight: 0.00999999978
-  - Enabled: false
+  - Enabled: true
     Type: Reward
     Id: Heal Player
-    Args: yes
+    Args: ''
     Weight: 0.0500000007
   - Enabled: false
     Type: Command
@@ -738,3 +821,8 @@ SimTesting:
     Id: class
     Args: skirmisher
     Weight: 0.300000012
+  - Enabled: true
+    Type: Reward
+    Id: Heal Hero
+    Args: ''
+    Weight: 0.0500000007

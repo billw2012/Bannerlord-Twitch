@@ -13,7 +13,6 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using Color = TaleWorlds.Library.Color;
-using BannerlordApi;
 
 #pragma warning disable IDE0051 // Remove unused private members
 namespace BannerlordTwitch
@@ -22,7 +21,7 @@ namespace BannerlordTwitch
 	internal class BLTModule : MBSubModuleBase
 	{
 		public const string Name = "BannerlordTwitch";
-		public const string Ver = "1.4.0";
+		public const string Ver = "1.4.2";
 		
 		private static readonly Thread thread;
 		private static OverlayWindow overlayWindow;

@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Bannerlord.ButterLib.Common.Extensions;
-using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
 using Bannerlord.ButterLib.SaveSystem.Extensions;
+using BannerlordTwitch.Util;
 using Helpers;
-using Newtonsoft.Json;
-using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.SaveSystem;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -20,7 +18,7 @@ namespace BLTAdoptAHero
 {
     public class BLTAdoptAHeroCampaignBehavior : CampaignBehaviorBase
     {
-        public static BLTAdoptAHeroCampaignBehavior Get() => GetCampaignBehavior<BLTAdoptAHeroCampaignBehavior>();
+        public static BLTAdoptAHeroCampaignBehavior Current => GetCampaignBehavior<BLTAdoptAHeroCampaignBehavior>();
 
         private class HeroData
         {
@@ -244,13 +242,6 @@ namespace BLTAdoptAHero
             });
             
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, JoinTournament.SetupGameMenus);
-            
-            CampaignEvents.OnMissionStartedEvent.AddNonSerializedListener(this, mission =>
-            {
-                if (mission is not Mission actualMission)
-                    return;
-                actualMission.AddMissionBehaviour(new BLTAdoptAHeroCommonMissionBehavior());
-            });
         }
 
         public static string ToRoman(int number)
@@ -299,7 +290,7 @@ namespace BLTAdoptAHero
             }
             return hd;
         }
-        
+
         #region Gold
         public int GetHeroGold(Hero hero) => GetHeroData(hero).Gold;
 
@@ -319,7 +310,10 @@ namespace BLTAdoptAHero
 
         public int InheritGold(Hero inheritor, float amount)
         {
-            var ancestors = heroData.Where(h => h.Key != inheritor && h.Key.FirstName.Contains(inheritor.FirstName) &&  h.Key.FirstName.ToString() == inheritor.FirstName.ToString()).ToList();
+            string inheritorName = inheritor.FirstName?.Raw();
+            var ancestors = heroData.Where(h => h.Key != inheritor 
+                                                && h.Key.FirstName?.Raw() == inheritorName
+                                                ).ToList();
             int inheritance = (int) (ancestors.Sum(a => a.Value.SpentGold + a.Value.Gold) * amount);
             ChangeHeroGold(inheritor, inheritance);
             foreach (var (key, value) in ancestors)
@@ -408,11 +402,11 @@ namespace BLTAdoptAHero
                 int heroGold = GetHeroGold(hero);
                 if (GetHeroGold(hero) < settings.CostPerTier)
                 {
-                    return (false, $"You need {settings.CostPerTier} gold, you have {heroGold}");
+                    return (false, Naming.NotEnoughGold(settings.CostPerTier, heroGold));
                 }
                 ChangeHeroGold(hero, -settings.CostPerTier, isSpending: true);
                 heroRetinue.Add(new HeroData.RetinueData { TroopType = troopType, Level = 1 });
-                return (true, $"{troopType} added to your retinue (-{settings.CostPerTier} gold)");
+                return (true, $"+{troopType} ({Naming.Dec}{settings.CostPerTier}{Naming.Gold})");
             }
 
             // upgrade the lowest tier unit
@@ -425,14 +419,14 @@ namespace BLTAdoptAHero
                 int heroGold = GetHeroGold(hero);
                 if (GetHeroGold(hero) < upgradeCost)
                 {
-                    return (false, $"You need {upgradeCost} gold, you have {heroGold}");
+                    return (false, Naming.NotEnoughGold(upgradeCost, heroGold));
                 }
                 ChangeHeroGold(hero, -upgradeCost, isSpending: true);
 
                 var oldTroopType = retinueToUpgrade.TroopType;
                 retinueToUpgrade.TroopType = oldTroopType.UpgradeTargets.SelectRandom();
                 retinueToUpgrade.Level++;
-                return (true, $"{oldTroopType} was upgraded to {retinueToUpgrade.TroopType} (-{upgradeCost} gold)");
+                return (true, $"{oldTroopType}{Naming.To}{retinueToUpgrade.TroopType} ({Naming.Dec}{upgradeCost}{Naming.Gold})");
             }
             return (false, $"Can't upgrade retinue any further!");
         }

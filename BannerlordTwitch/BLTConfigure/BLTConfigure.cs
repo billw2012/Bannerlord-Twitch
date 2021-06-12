@@ -1,5 +1,4 @@
-﻿#define BL_V_1_5_9
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using System.Threading;
@@ -11,7 +10,7 @@ namespace BLTConfigure
     public class BLTConfigureModule : MBSubModuleBase
     {
         public const string Name = "BLTConfigure";
-        public const string Ver = "1.4.0";
+        public const string Ver = "1.4.2";
 
         private readonly Thread thread;
         private BLTConfigureWindow wnd;

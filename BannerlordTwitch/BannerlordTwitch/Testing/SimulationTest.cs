@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
-using TaleWorlds.Core;
 
 namespace BannerlordTwitch.Testing
 {

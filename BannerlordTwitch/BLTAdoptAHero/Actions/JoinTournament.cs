@@ -42,10 +42,10 @@ namespace BLTAdoptAHero
                 return;
             }
             
-            int availableGold = BLTAdoptAHeroCampaignBehavior.Get().GetHeroGold(adoptedHero);
+            int availableGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
             if (availableGold < settings.GoldCost)
             {
-                onFailure($"You do not have enough gold: you need {settings.GoldCost}, and you only have {availableGold}!");
+                onFailure(Naming.NotEnoughGold(settings.GoldCost, availableGold));
                 return;
             }
 
@@ -56,7 +56,7 @@ namespace BLTAdoptAHero
             }
             else
             {
-                BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(adoptedHero, -settings.GoldCost);
+                BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
                 onSuccess(reply);
             }
         }
@@ -303,8 +303,8 @@ namespace BLTAdoptAHero
                                 int actualGold = (int) (BLTAdoptAHeroModule.TournamentConfig.WinGold * actualBoost + entry.EntryFee);
                                 if (actualGold > 0)
                                 {
-                                    BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(entry.Hero, actualGold);
-                                    results.Add($"+{actualGold} gold");
+                                    BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(entry.Hero, actualGold);
+                                    results.Add($"{Naming.Inc}{actualGold}{Naming.Gold}");
                                 }
 
                                 int xp = (int) (BLTAdoptAHeroModule.TournamentConfig.WinXP * actualBoost);
@@ -321,8 +321,8 @@ namespace BLTAdoptAHero
                                 (bool upgraded, string failReason) = UpgradeToItem(entry.Hero, prize);
                                 if (!upgraded)
                                 {
-                                    BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(entry.Hero, prize.Value);
-                                    results.Add($"sold {prize.Name} for {prize.Value} gold ({failReason})");
+                                    BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(entry.Hero, prize.Value);
+                                    results.Add($"sold {prize.Name} for {prize.Value}{Naming.Gold} ({failReason})");
                                 }
                                 else
                                 {
@@ -429,8 +429,8 @@ namespace BLTAdoptAHero
                         int actualGold = (int) (BLTAdoptAHeroModule.TournamentConfig.WinMatchGold * actualBoost);
                         if (actualGold > 0)
                         {
-                            BLTAdoptAHeroCampaignBehavior.Get().ChangeHeroGold(entry.Hero, actualGold);
-                            results.Add($"+{actualGold} gold");
+                            BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(entry.Hero, actualGold);
+                            results.Add($"{Naming.Inc}{actualGold}{Naming.Gold}");
                         }
                         int xp = (int) (BLTAdoptAHeroModule.TournamentConfig.WinMatchXP * actualBoost);
                         if (xp > 0)

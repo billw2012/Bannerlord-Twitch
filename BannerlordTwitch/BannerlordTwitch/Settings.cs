@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -9,9 +8,6 @@ using System.Windows.Media;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
-using TaleWorlds.Core;
-using TaleWorlds.Engine;
-using TaleWorlds.Library;
 using TwitchLib.Api.Helix.Models.ChannelPoints.CreateCustomReward;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using YamlDotNet.Serialization;
@@ -342,6 +338,8 @@ namespace BannerlordTwitch
             settings.Commands.Sort((a, b) => string.Compare(a.ToString(), b.ToString(), StringComparison.Ordinal));
             settings.Rewards.AddRange(templateSettings.Rewards.Where(s => settings.Rewards.All(s2 => s2.ID != s.ID && s2.ToString() != s.ToString())));
             settings.Rewards.Sort((a, b) => string.Compare(a.ToString(), b.ToString(), StringComparison.Ordinal));
+            settings.GlobalConfigs.AddRange(templateSettings.GlobalConfigs.Where(s => settings.GlobalConfigs.All(s2 => s2.Id != s.Id)));
+            settings.GlobalConfigs.Sort((a, b) => string.Compare(a.ToString(), b.ToString(), StringComparison.Ordinal));
             
             foreach (var action in settings.AllActions)
             {
