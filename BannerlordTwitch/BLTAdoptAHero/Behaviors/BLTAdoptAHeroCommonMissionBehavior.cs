@@ -491,7 +491,7 @@ namespace BLTAdoptAHero
 
             if (xpPerKill != 0)
             {
-                SkillXP.ImproveSkill(hero, xpPerKill, Skills.All, auto: true);
+                SkillXP.ImproveSkill(hero, xpPerKill, SkillsEnum.All, auto: true);
                 GetHeroMissionState(hero).WonXP += xpPerKill;
             }
         }
@@ -516,7 +516,7 @@ namespace BLTAdoptAHero
 
             if (xpPerKilled != 0)
             {
-                SkillXP.ImproveSkill(hero, xpPerKilled, Skills.All, auto: true);
+                SkillXP.ImproveSkill(hero, xpPerKilled, SkillsEnum.All, auto: true);
                 GetHeroMissionState(hero).WonXP += xpPerKilled;
             }
         }

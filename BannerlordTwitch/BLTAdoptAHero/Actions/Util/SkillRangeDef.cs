@@ -6,7 +6,7 @@ namespace BLTAdoptAHero
     public class SkillRangeDef
     {
         [Description("The skill or skill group"), PropertyOrder(1)]
-        public Skills Skill { get; set; }
+        public SkillsEnum Skill { get; set; }
 
         [Description("The min level it should be (actual value will be randomly selected between min and max, " +
                      "valid values are 0 to 300)"),

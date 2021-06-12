@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
 using BannerlordTwitch.Util;
+using TaleWorlds.Library;
 using YamlDotNet.Serialization;
 using Color = System.Windows.Media.Color;
 

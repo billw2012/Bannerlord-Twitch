@@ -251,7 +251,7 @@ namespace BLTAdoptAHero
             }
             if (xpStreak != 0)
             {
-                (bool success, string description) = SkillXP.ImproveSkill(hero, xpStreak, Skills.All, auto: true);
+                (bool success, string description) = SkillXP.ImproveSkill(hero, xpStreak, SkillsEnum.All, auto: true);
                 if (success)
                 {
                     results.Add(description);

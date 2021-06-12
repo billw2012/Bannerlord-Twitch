@@ -495,7 +495,7 @@ namespace BLTAdoptAHero
                                         if (xp > 0)
                                         {
                                             (bool success, string description) = SkillXP.ImproveSkill(adoptedHero, xp,
-                                                Skills.All, auto: true);
+                                                SkillsEnum.All, auto: true);
                                             if (success)
                                             {
                                                 results.Add(finalRewardScaling != 1
@@ -517,7 +517,7 @@ namespace BLTAdoptAHero
                                         if (xp > 0)
                                         {
                                             (bool success, string description) = SkillXP.ImproveSkill(adoptedHero, xp,
-                                                Skills.All, auto: true);
+                                                SkillsEnum.All, auto: true);
                                             if (success)
                                             {
                                                 results.Add(finalRewardScaling != 1
