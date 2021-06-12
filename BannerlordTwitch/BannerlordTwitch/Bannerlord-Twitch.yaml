@@ -635,7 +635,7 @@ GlobalConfigs:
     UseRawXP: true
     RetinueUseHeroesFormation: false
     SummonCooldownInSeconds: 20
-    SummonCooldownUseMultiplier: 1.5
+    SummonCooldownUseMultiplier: 1.10000002
     GoldPerKill: 5000
     XPPerKill: 5000
     XPPerKilled: 2000
