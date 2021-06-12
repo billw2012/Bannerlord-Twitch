@@ -47,7 +47,7 @@ namespace BannerlordTwitch
 		{
 			if (!GameVersion.IsVersion(ExpectedVersion))
 			{
-				MessageBox.Show($"This build of the mod is for game version {ExpectedVersion}.x. You are running game version {GameVersion.GameVersionString}. Exiting now.", "Bannerlord Twitch ERROR");
+				MessageBox.Show($"This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion.GameVersionString}. Exiting now.", "Bannerlord Twitch ERROR");
 				Application.Current.Shutdown(1);
 			}
 			

@@ -760,12 +760,12 @@ SimTesting:
     Id: retinue
     Args: 
     Weight: 0.200000003
-  - Enabled: false
+  - Enabled: true
     Type: Reward
     Id: Retire My Hero
     Args: yes
     Weight: 0.00999999978
-  - Enabled: false
+  - Enabled: true
     Type: Reward
     Id: Adopt a Hero
     Args: yes
@@ -775,31 +775,31 @@ SimTesting:
     Id: Heal Player
     Args: ''
     Weight: 0.0500000007
-  - Enabled: false
+  - Enabled: true
     Type: Command
     Id: class
     Args: infantry
-    Weight: 0.300000012
-  - Enabled: false
+    Weight: 0.00999999978
+  - Enabled: true
     Type: Command
     Id: class
     Args: archer
-    Weight: 0.300000012
-  - Enabled: false
+    Weight: 0.00999999978
+  - Enabled: true
     Type: Command
     Id: class
     Args: cavalry
-    Weight: 0.300000012
-  - Enabled: false
+    Weight: 0.00999999978
+  - Enabled: true
     Type: Command
     Id: class
     Args: horsearcher
-    Weight: 0.300000012
-  - Enabled: false
+    Weight: 0.00999999978
+  - Enabled: true
     Type: Command
     Id: class
     Args: skirmisher
-    Weight: 0.300000012
+    Weight: 0.00999999978
   - Enabled: true
     Type: Reward
     Id: Heal Hero
