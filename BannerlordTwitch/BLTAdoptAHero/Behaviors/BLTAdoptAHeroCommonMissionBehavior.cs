@@ -387,7 +387,7 @@ namespace BLTAdoptAHero
             var heroModel = new HeroViewModel
             {
                 Name = hero.FirstName.Raw(),
-                IsPlayerSide = summonState?.CurrentAgent?.Team == Mission.Current?.PlayerTeam || summonState?.CurrentAgent?.Team == Mission.Current?.PlayerAllyTeam,
+                IsPlayerSide = summonState?.WasPlayerSide ?? true,
                 MaxHP = agent?.HealthLimit ?? 100,
                 HP = agent?.Health ?? 0,
                 IsRouted = state is AgentState.Routed,
