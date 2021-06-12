@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -85,7 +85,7 @@ namespace BLTAdoptAHero
         [UsedImplicitly, HarmonyPatch(typeof(DefaultClanTierModel), nameof(DefaultClanTierModel.GetCompanionLimit))]
         public static void Postfix(ref int __result)
         {
-            if (GlobalCommonConfig.Get() != null && GlobalCommonConfig.Get().BreakCompanionLimit)
+            if (CommonConfig != null && CommonConfig.BreakCompanionLimit)
             {
                 __result = Clan.PlayerClan.Companions.Count + 1;
             }
@@ -187,6 +187,9 @@ namespace BLTAdoptAHero
 
         [Category("General"), Description("Minimum time between summons for a specific hero"), PropertyOrder(13)]
         public int CooldownInSeconds { get; [UsedImplicitly] set; } = 60;
+
+        [Category("General"), Description("Will disable companion limit. You will be able to have infinite number of companion"), PropertyOrder(13)]
+        public bool BreakCompanionLimit { get; set; } = false;
 
         [Category("Kill Rewards"), Description("Gold the hero gets for every kill"), PropertyOrder(1)]
         public int GoldPerKill { get; set; } = 5000;

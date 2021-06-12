@@ -44,6 +44,9 @@ Rewards:
     StartWithRangedWeapon: true
     StartWithHorse: true
     StartWithArmor: true
+    SpawnInParty: true
+    JoinPlayerClan: true
+    JoinPlayerCompanion: true
 - RewardSpec:
     Title: 10k gold
     DisableAutomaticFulfillment: false
@@ -623,6 +626,36 @@ Commands:
     ShowInventory: false
     ShowRetinue: false
     ShowRetinueList: true
+- Name: adopt
+  HideHelp: false
+  Help: 
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: AdoptAHero
+  ID: e317c63a-5a1f-455c-b953-6dcb92dc9424
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    CreateNew: true
+    AllowNoble: true
+    AllowWanderer: true
+    AllowPlayerCompanion: false
+    OnlySameFaction: false
+    AllowNewAdoptionOnDeath: true
+    Inheritance: 0.25
+    SubscriberOnly: false
+    MinSubscribedMonths: 
+    StartingGold: 0
+    StartingSkills: 
+    StartingEquipmentTier: 
+    StartWithMeleeWeapon: true
+    StartWithRangedWeapon: true
+    StartWithHorse: true
+    StartWithArmor: true
+    SpawnInParty: true
+    JoinPlayerClan: true
+    JoinPlayerCompanion: false
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -635,6 +668,7 @@ GlobalConfigs:
     UseRawXP: true
     RetinueUseHeroesFormation: false
     CooldownInSeconds: 60
+    BreakCompanionLimit: true
     GoldPerKill: 5000
     XPPerKill: 5000
     XPPerKilled: 2000
