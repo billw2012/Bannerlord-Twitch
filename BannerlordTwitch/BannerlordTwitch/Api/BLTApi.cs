@@ -16,6 +16,7 @@ using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using Newtonsoft.Json;
 using SuperSocket.SocketBase;
+using SuperSocket.SocketBase.Config;
 using SuperWebSocket;
 using TwitchLib.Client.Models;
 using TwitchLib.Client.Models.Internal;
@@ -24,18 +25,15 @@ namespace BannerlordApi
 {
     public class BLTApi
     {
-        List<BLTApiUrl> bltApiUrls = new List<BLTApiUrl>();
         private static HttpListener listener;
         private readonly Settings settings = Settings.Load();
         private static WebSocketServer wsServer;
 
+        public List<Tuple<string, WebSocketSession>> commandAwaitingResponse = new List<Tuple<string, WebSocketSession>>();
+
         public BLTApi()
         {
             _ = RunServerAsync();
-            bltApiUrls.Add(new BLTApiUrl("GET", "", "Show all registered api path", OnApiVisit));
-            bltApiUrls.Add(new BLTApiUrl("GET", "commands", "Used to get all commands available", OnCommands));
-            bltApiUrls.Add(new BLTApiUrl("GET", "ngrok", "Used to set the ngrok url", OnNgrok));
-            bltApiUrls.Add(new BLTApiUrl("GET", "ngrok", "Used to set the ngrok url", OnNgrok));
         }
 
         public async Task RunServerAsync()
@@ -43,36 +41,32 @@ namespace BannerlordApi
             Log.Trace("Api server starting");
 
             //SOCKET (Used when we have callback to do)
+            //wss websocket work in local by creating a self signed certificate & do websocket request on wss://localhost:443. But if you try by ngrok, it's fail
             wsServer = new WebSocketServer();
-            int port = 9100;
-            wsServer.Setup(port);
+
+            var m_Config = new ServerConfig
+            {
+                Port = 443,
+                Ip = "Any",
+                MaxConnectionNumber = 1000,
+                Mode = SocketMode.Tcp,
+                Name = "CustomProtocolServer",
+                Certificate = new CertificateConfig
+                {
+                    FilePath = @"C:\certificates\certificate.pfx",
+                    Password = ""
+                },
+                Security = "tls"
+            };
+
+            wsServer.Setup(m_Config);
             wsServer.NewSessionConnected += OnSessionOpen;
             wsServer.NewMessageReceived += OnMessage;
             wsServer.NewDataReceived += OnData;
             wsServer.SessionClosed += OnSessionClose;
+            
             wsServer.Start();
-
-            //HTTP (Used when callbeck isn't usefull)
-            listener = new HttpListener();
-            StartNgrok();
-            listener.Prefixes.Add("http://localhost:9000/api/");
-            listener.Start();
-            while (true)
-            {
-                try
-                {
-                    HttpListenerContext ctx = await listener.GetContextAsync();
-
-                    HttpListenerRequest req = ctx.Request;
-                    HttpListenerResponse resp = ctx.Response;
-
-                    OnUrlRequest(req, resp);
-                }
-                catch (Exception e)
-                {
-                    Log.Exception("Exception handling request", e);
-                }
-            }
+            //StartNgrok(443);
         }
 
         private void OnSessionClose(WebSocketSession session, CloseReason value)
@@ -87,6 +81,7 @@ namespace BannerlordApi
 
         private void OnMessage(WebSocketSession session, string value)
         {
+            Trace.WriteLine("OnMessage: " + value);
             dynamic json = new ExpandoObject();
             try
             {
@@ -95,6 +90,9 @@ namespace BannerlordApi
                 {
                     case (Int64)SocketMessageType.command:
                         OnCommand(session, socketmessage.message);
+                        break;
+                    case (Int64)SocketMessageType.ngrok:
+                        OnNgrok(session, socketmessage.message);
                         break;
                     default:
                         json.error = "The socket message type isn't handled";
@@ -115,32 +113,7 @@ namespace BannerlordApi
             Trace.WriteLine("OnSessionOpen: " + session);
         }
 
-        public void OnUrlRequest(HttpListenerRequest req, HttpListenerResponse resp)
-        {
-            Log.Trace("[VISITED]" + req.Url.ToString());
-
-            bltApiUrls.ForEach(bltApiUrl =>
-            {
-                Uri existingUrl =  new Uri("http://localhost:9000/api/" + bltApiUrl.url);
-                
-                if (Uri.Compare(existingUrl, req.Url, UriComponents.Path, UriFormat.Unescaped, StringComparison.OrdinalIgnoreCase) == 0)
-                {
-                    Log.Trace("[EXEC VISITED]" + bltApiUrl.url);
-                    try { 
-                        bltApiUrl.onVisit.Invoke(req,resp);
-                    }catch(Exception e){
-                        Log.Exception("Issue on visit api urls from BLTApiUrl : " + bltApiUrl.url,e);
-                    }
-                }
-            });
-        }
-
-        public void OnApiVisit(HttpListenerRequest req, HttpListenerResponse resp)
-        {
-            SendJSON(resp, bltApiUrls);
-        }
-
-        private void OnNgrok(HttpListenerRequest req, HttpListenerResponse resp)
+        private void OnNgrok(WebSocketSession session, dynamic message)
         {
             dynamic json = new ExpandoObject();
             try
@@ -148,13 +121,13 @@ namespace BannerlordApi
                 dynamic ngrokObj = JsonConvert.DeserializeObject(GetNgrokUrl());
                 json.status = "Success";
                 json.ngrok = ngrokObj?.tunnels[0]?.public_url;
-                SendJSON(resp, json);
+                session.Send(JsonConvert.SerializeObject(json));
             }
             catch(Exception e)
             {
                 json.status = "Fail";
                 json.error = e;
-                SendJSON(resp, json);
+                session.Send(JsonConvert.SerializeObject(json));
             }
         }
 
@@ -204,12 +177,8 @@ namespace BannerlordApi
                     else
                     {
                         json.identifiedUser = client;
+                        commandAwaitingResponse.Add(Tuple.Create(client.DisplayName, session));
                         commandFound = (bool)(BLTModule.TwitchService?.TestCommand(cmdName, client.DisplayName, args));
-                        //if command isn't found
-                        if (commandFound == false)
-                        {
-                            json.error = "Can't find this command";
-                        }
                     }
                 });
             }
@@ -217,28 +186,16 @@ namespace BannerlordApi
             session.Send(JsonConvert.SerializeObject(json));
         }
 
-        public void OnCommands(HttpListenerRequest req, HttpListenerResponse resp)
+        public void OnCommands(WebSocketSession session, dynamic message)
         {
-            SendJSON(resp, settings.EnabledCommands.ToArray());
+            session.Send(JsonConvert.SerializeObject(settings.EnabledCommands.ToArray()));
         }
 
-        private void SendJSON(HttpListenerResponse resp, Object obj)
-        {
-            string jsonString = JsonConvert.SerializeObject(obj);
-            byte[] data = Encoding.UTF8.GetBytes(jsonString);
-            resp.ContentType = "text/json";
-            resp.ContentEncoding = Encoding.UTF8;
-            resp.ContentLength64 = data.LongLength;
-
-            resp.OutputStream.Write(data, 0, data.Length);
-            resp.Close();
-        }
-
-        public void StartNgrok()
+        public void StartNgrok(int port)
         {
             Process proc = new Process();
             proc.StartInfo.FileName = "./../../Modules/BannerlordTwitch/bin/Win64_Shipping_Client/api/ngrok.exe";
-            proc.StartInfo.Arguments = "http 9000 -host-header=\"localhost:9000\"";
+            proc.StartInfo.Arguments = "tcp " + port;
             proc.StartInfo.UseShellExecute = false;
             proc.StartInfo.CreateNoWindow = true;
             proc.Start();
@@ -254,6 +211,16 @@ namespace BannerlordApi
 
             StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
             return readStream.ReadToEnd();
+        }
+        public WebSocketSession GetSocketAwaitingResponseFor(string displayName)
+        {
+            var tuple = commandAwaitingResponse.Find(tuple => tuple.Item1 == displayName);
+            if (tuple != null)
+            {
+                commandAwaitingResponse.Remove(tuple);
+                return tuple.Item2;
+            }
+            return null;
         }
     }
 }

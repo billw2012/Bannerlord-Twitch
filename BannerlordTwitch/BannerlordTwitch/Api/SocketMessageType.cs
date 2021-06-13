@@ -8,6 +8,7 @@ namespace BannerlordTwitch.Api
 {
     enum SocketMessageType
     {
-        command = 0
+        command = 0,
+        ngrok = 1
     }
 }

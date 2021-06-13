@@ -375,6 +375,12 @@ namespace BannerlordTwitch
                 dynamic obj = new ExpandoObject();
                 obj.context = context;
                 obj.messages = messages;
+
+                var socket = BLTModule.bltApi.GetSocketAwaitingResponseFor(context.UserName);
+                if(socket != null)
+                {
+                    socket.Send(JsonConvert.SerializeObject(obj));
+                }
             }
         }
         

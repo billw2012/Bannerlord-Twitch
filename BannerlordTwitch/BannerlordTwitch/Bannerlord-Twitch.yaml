@@ -480,6 +480,7 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     Name: Healing
     Target: AdoptedHero
@@ -586,6 +587,7 @@ Commands:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     GoldCost: 100000
     UpdateEquipment: true
@@ -599,6 +601,7 @@ Commands:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     AllowCompanionUpgrade: false
     GoldCost: 10000
@@ -614,6 +617,7 @@ Commands:
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: false
+  RespondInExtension: false
   HandlerConfig:
     ShowGold: true
     ShowGeneral: false
@@ -634,6 +638,7 @@ Commands:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
+  RespondInExtension: false
   HandlerConfig:
     ShowGold: false
     ShowGeneral: false
@@ -644,6 +649,37 @@ Commands:
     ShowInventory: false
     ShowRetinue: false
     ShowRetinueList: true
+- Name: adopt
+  HideHelp: false
+  Help: 
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: AdoptAHero
+  ID: d1bff47d-3c09-45c8-a58b-ec6a6417c4bc
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
+  RespondInExtension: true
+  HandlerConfig:
+    CreateNew: false
+    AllowNoble: true
+    AllowWanderer: true
+    AllowPlayerCompanion: false
+    OnlySameFaction: false
+    AllowNewAdoptionOnDeath: true
+    Inheritance: 0.25
+    SubscriberOnly: false
+    MinSubscribedMonths: 
+    StartingGold: 0
+    StartingSkills: 
+    StartingEquipmentTier: 
+    StartWithMeleeWeapon: true
+    StartWithRangedWeapon: true
+    StartWithHorse: true
+    StartWithArmor: true
+    SpawnInParty: true
+    JoinPlayerClan: true
+    JoinPlayerCompanion: true
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -656,6 +692,7 @@ GlobalConfigs:
     UseRawXP: true
     RetinueUseHeroesFormation: false
     CooldownInSeconds: 60
+    BreakCompanionLimit: false
     GoldPerKill: 5000
     XPPerKill: 5000
     XPPerKilled: 2000

@@ -14,6 +14,7 @@
     <LangVersion>9</LangVersion>
     <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_10)</BANNERLORD_GAME_DIR>
     <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</BANNERLORD_GAME_DIR>
+    <ProjectGuid>{A858B7FE-DD3E-4969-9D30-670042C75B16}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -246,6 +247,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\BLTApi.cs" />
     <Compile Include="Api\BLTApiSocketMessage.cs" />
     <Compile Include="Api\SocketMessageType.cs" />
     <Compile Include="Overlay\OutlineTextBlock.cs" />
