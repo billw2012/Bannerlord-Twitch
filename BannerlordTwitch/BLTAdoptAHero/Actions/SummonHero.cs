@@ -603,11 +603,10 @@ namespace BLTAdoptAHero
                             existingHero.Formation);
                     }
 
-                    bool allowFormation = true; // MissionHelpers.InSiegeMission() || MissionHelpers.InFieldBattleMission();
                     existingHero.CurrentAgent = Mission.Current.SpawnTroop(
                         troopOrigin,
                         isPlayerSide: settings.OnPlayerSide,
-                        hasFormation: allowFormation,
+                        hasFormation: true,
                         spawnWithHorse: adoptedHero.CharacterObject.IsMounted && isMounted,
                         isReinforcement: true,
                         enforceSpawningOnInitialPoint: false,
@@ -648,8 +647,9 @@ namespace BLTAdoptAHero
                             var retinueAgent = Mission.Current.SpawnTroop(
                                 new PartyAgentOrigin(existingHero.Party, retinueTroop),
                                 isPlayerSide: settings.OnPlayerSide,
-                                hasFormation: allowFormation,
-                                spawnWithHorse: retinueTroop.IsMounted && isMounted,
+                                hasFormation: true,
+                                spawnWithHorse: retinueTroop.IsMounted 
+                                                && (isMounted || !BLTAdoptAHeroModule.CommonConfig.RetinueUseHeroesFormation),
                                 isReinforcement: true,
                                 enforceSpawningOnInitialPoint: false,
                                 formationTroopCount: totalTroopsCount,
