@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -41,8 +41,6 @@ namespace BLTAdoptAHero
             public bool AllowPlayerCompanion { get; set; }
             [Category("Limits"), Description("Only allow heroes from same faction as player"), PropertyOrder(4)]
             public bool OnlySameFaction { get; set; }
-            [Category("Limits"), Description("Only allow viewer to adopt another hero if theirs is dead"), PropertyOrder(5)]
-            public bool AllowNewAdoptionOnDeath { get; set; } = true;
 
             [Category("Limits"),
              Description("What fraction of assets will be inherited when a new character is " +
@@ -138,16 +136,6 @@ namespace BLTAdoptAHero
             if (Campaign.Current == null)
             {
                 return (false, NotStartedMessage);
-            }
-
-            var deadHero = BLTAdoptAHeroCampaignBehavior.GetDeadHero(userName);
-            if (deadHero != null && !settings.AllowNewAdoptionOnDeath)
-            {
-                return (false, "Your hero died, and you may not adopt another!");
-            }
-            else if(deadHero != null)
-            {
-                BLTAdoptAHeroCampaignBehavior.RetireHero(deadHero);
             }
 
             Hero newHero = null;

@@ -21,7 +21,6 @@ Rewards:
     AllowWanderer: true
     AllowPlayerCompanion: false
     OnlySameFaction: false
-    AllowNewAdoptionOnDeath: true
     Inheritance: 0.25
     SubscriberOnly: false
     MinSubscribedMonths: 
