@@ -23,18 +23,18 @@ namespace BLTAdoptAHero
         {
             [Description("Allow improvement of adopted heroes who are also companions of the player."), PropertyOrder(6)]
             public bool AllowCompanionUpgrade { get; set; } = true;
-            [Description("Gold cost to buy Tier 1 equipment"), PropertyOrder(1), YamlIgnore]
+            [Description("Gold cost for Tier 1 equipment"), PropertyOrder(1), YamlIgnore]
             public int CostTier1 { get => TierCosts[0]; set => TierCosts[0] = value; }
             
-            [Description("Gold cost to buy Tier 2 equipment"), PropertyOrder(1), YamlIgnore]
+            [Description("Gold cost for Tier 2 equipment"), PropertyOrder(1), YamlIgnore]
             public int CostTier2 { get => TierCosts[1]; set => TierCosts[1] = value; } 
-            [Description("Gold cost to buy Tier 3 equipment"), PropertyOrder(1), YamlIgnore]
+            [Description("Gold cost for Tier 3 equipment"), PropertyOrder(1), YamlIgnore]
             public int CostTier3 { get => TierCosts[2]; set => TierCosts[2] = value; }
-            [Description("Gold cost to buy Tier 4 equipment"), PropertyOrder(1), YamlIgnore]
+            [Description("Gold cost for Tier 4 equipment"), PropertyOrder(1), YamlIgnore]
             public int CostTier4 { get => TierCosts[3]; set => TierCosts[3] = value; }
-            [Description("Gold cost to buy Tier 5 equipment"), PropertyOrder(1), YamlIgnore]
+            [Description("Gold cost for Tier 5 equipment"), PropertyOrder(1), YamlIgnore]
             public int CostTier5 { get => TierCosts[4]; set => TierCosts[4] = value; }
-            [Description("Gold cost to buy Tier 6 equipment"), PropertyOrder(1), YamlIgnore]
+            [Description("Gold cost for Tier 6 equipment"), PropertyOrder(1), YamlIgnore]
             public int CostTier6 { get => TierCosts[5]; set => TierCosts[5] = value; }
             // etc..
             [Browsable(false)]
