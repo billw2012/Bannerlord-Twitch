@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using TaleWorlds.Core;
 
 public static class LINQExtensions
@@ -26,9 +27,11 @@ public static class LINQExtensions
 
     public static T SelectRandom<T>(this IEnumerable<T> @this, int seed = -1) => @this.Shuffle(seed).FirstOrDefault();
 
+    private static int defaultSeed = 69420;
+        
     public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> @this, int seed = -1)
     {
-        var random = seed == -1? new Random() : new Random(seed);
+        var random = seed == -1? new Random(Interlocked.Increment(ref defaultSeed)) : new Random(seed);
         return @this.OrderBy(e => random.Next());
     }
 

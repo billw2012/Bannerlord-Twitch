@@ -27,15 +27,19 @@ namespace BLTAdoptAHero
             public AgentState State;
             public Agent CurrentAgent;
             public float SummonTime;
+            public int TimesSummoned = 0;
             public List<RetinueState> Retinue { get; set; } = new();
 
             public int ActiveRetinue => Retinue.Count(r => r.State == AgentState.Active);
-            public bool InCooldown => BLTAdoptAHeroModule.CommonConfig.CooldownInSeconds > 0 && SummonTime + BLTAdoptAHeroModule.CommonConfig.CooldownInSeconds >
-                MBCommon.GetTime(MBCommon.TimeType.Mission);
-            public float CooldownRemaining => BLTAdoptAHeroModule.CommonConfig.CooldownInSeconds <= 0 ? 0 : Math.Max(0, SummonTime + BLTAdoptAHeroModule.CommonConfig.CooldownInSeconds - MBCommon.GetTime(MBCommon.TimeType.Mission));
-            public float CoolDownFraction => BLTAdoptAHeroModule.CommonConfig.CooldownInSeconds <= 0 ? 1 : 1f - CooldownRemaining / BLTAdoptAHeroModule.CommonConfig.CooldownInSeconds;
-        }
+
+            public float CooldownTime => BLTAdoptAHeroModule.CommonConfig.CooldownEnabled
+                ? BLTAdoptAHeroModule.CommonConfig.GetCooldownTime(TimesSummoned) : 0;
             
+            public bool InCooldown => BLTAdoptAHeroModule.CommonConfig.CooldownEnabled && SummonTime + CooldownTime > MBCommon.GetTime(MBCommon.TimeType.Mission);
+            public float CooldownRemaining => !BLTAdoptAHeroModule.CommonConfig.CooldownEnabled ? 0 : Math.Max(0, SummonTime + BLTAdoptAHeroModule.CommonConfig.SummonCooldownInSeconds - MBCommon.GetTime(MBCommon.TimeType.Mission));
+            public float CoolDownFraction => !BLTAdoptAHeroModule.CommonConfig.CooldownEnabled ? 1 : 1f - CooldownRemaining / BLTAdoptAHeroModule.CommonConfig.SummonCooldownInSeconds;
+        }
+
         private readonly List<SummonedHero> summonedHeroes = new();
         private readonly List<Action> onTickActions = new();
 

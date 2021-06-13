@@ -481,7 +481,12 @@ namespace BLTAdoptAHero
 
         private static ItemObject FindRandomTieredEquipment(SkillObject skill, int tier, Hero hero, Func<ItemObject, bool> filter = null, params ItemObject.ItemTypeEnum[] itemTypeEnums)
         {
-            var items = ItemObject.All
+            var items =
+                #if e159 || e1510
+                ItemObject.All
+                #else
+                Items.All
+                #endif
                 // Usable
                 .Where(item => !item.NotMerchandise 
                                && CanUseItem(item, hero)

@@ -5,6 +5,7 @@ using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Actions.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -45,7 +46,7 @@ namespace BLTAdoptAHero
             }
             
             int amount = MBRandom.RandomInt(settings.AmountLow, settings.AmountHigh);
-            (bool success, string description) = Improve(context.UserName, adoptedHero, amount, settings);
+            (bool success, string description) = Improve(context.UserName, adoptedHero, amount, settings, context.Args);
             if (success)
             {
                 onSuccess(description);
@@ -57,20 +58,20 @@ namespace BLTAdoptAHero
             }
         }
 
-        protected abstract (bool success, string description) Improve(string userName, Hero adoptedHero, int amount, SettingsBase settings);
+        protected abstract (bool success, string description) Improve(string userName, Hero adoptedHero, int amount, SettingsBase settings, string args);
 
         private static string[] EnumFlagsToArray<T>(T flags) =>
             flags.ToString().Split(',').Select(s => s.Trim()).ToArray();
         private static (string[] skillNames, float weight)[] SkillGroups =
         {
-            (skillNames: SkillGroup.SkillsToStrings(Skills.Melee), weight: 3f),
-            (skillNames: SkillGroup.SkillsToStrings(Skills.Ranged), weight: 2f),
-            (skillNames: SkillGroup.SkillsToStrings(Skills.Support), weight: 1f),
-            (skillNames: SkillGroup.SkillsToStrings(Skills.Movement), weight: 2f),
-            (skillNames: SkillGroup.SkillsToStrings(Skills.Personal), weight: 1f),
+            (skillNames: SkillGroup.SkillsToStrings(SkillsEnum.Melee), weight: 3f),
+            (skillNames: SkillGroup.SkillsToStrings(SkillsEnum.Ranged), weight: 2f),
+            (skillNames: SkillGroup.SkillsToStrings(SkillsEnum.Support), weight: 1f),
+            (skillNames: SkillGroup.SkillsToStrings(SkillsEnum.Movement), weight: 2f),
+            (skillNames: SkillGroup.SkillsToStrings(SkillsEnum.Personal), weight: 1f),
         };
         
-        protected static SkillObject GetSkill(Hero hero, Skills skills, bool auto, Func<SkillObject, bool> predicate = null)
+        protected static SkillObject GetSkill(Hero hero, SkillsEnum skills, bool auto, Func<SkillObject, bool> predicate = null)
         {
             predicate ??= s => true;
             var selectedSkills = new List<(SkillObject skill, float weight)>();
@@ -96,7 +97,7 @@ namespace BLTAdoptAHero
                 );
 
                 // Other skills         weight x 1
-                selectedSkills.AddRange(DefaultSkills.GetAllSkills()
+                selectedSkills.AddRange(HeroHelpers.AllSkillObjects
                     .Where(s => selectedSkills.All(s2 => s2.skill != s))
                     .Select(skill => (skill, weight: 1f))
                 );

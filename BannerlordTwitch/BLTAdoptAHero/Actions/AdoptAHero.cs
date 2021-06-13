@@ -22,14 +22,7 @@ namespace BLTAdoptAHero
     [Description("Allows viewer to 'adopt' a hero in game -- the hero name will change to the viewers name, and they can control it with further commands")]
     public class AdoptAHero : IRewardHandler, ICommandHandler
     {
-        public static readonly (CharacterAttributesEnum val, string shortName)[] CharAttributes = {
-            (CharacterAttributesEnum.Vigor, "Vig"),
-            (CharacterAttributesEnum.Control, "Con"),
-            (CharacterAttributesEnum.Endurance, "End"),
-            (CharacterAttributesEnum.Cunning, "Cun"),
-            (CharacterAttributesEnum.Social, "Soc"),
-            (CharacterAttributesEnum.Intelligence, "Int"),
-        };
+
 
         internal const string NoHeroMessage = "Couldn't find your hero, did you adopt one yet?";
         internal const string NotStartedMessage = "The game isn't started yet";
@@ -191,6 +184,10 @@ namespace BLTAdoptAHero
                         && h.Clan?.IsRebelClan != true
                     )
                     .SelectRandom();
+                if (newHero == null && settings.OnlySameFaction && Clan.PlayerClan?.MapFaction?.StringId == "player_faction")
+                {
+                    return (false, "No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)!");
+                }
             }
             
             if (newHero == null)
@@ -242,7 +239,11 @@ namespace BLTAdoptAHero
                 }
                 
                 HeroHelper.DetermineInitialLevel(newHero);
+#if e159 || e1510
                 CharacterDevelopmentCampaignBehaivor.DevelopCharacterStats(newHero);
+#else
+                CharacterDevelopmentCampaignBehavior.DevelopCharacterStats(newHero);
+#endif
             }
 
             if (settings.JoinPlayerCompanion)

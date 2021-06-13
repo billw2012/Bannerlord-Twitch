@@ -17,7 +17,7 @@ namespace BLTAdoptAHero
         protected class SkillXPSettings : SettingsBase
         {
             [Description("What to improve"), PropertyOrder(1)]
-            public Skills Skills { get; set; }
+            public SkillsEnum Skills { get; set; }
 
             [Description("Chooses a random skill to add XP to, prefering class skills, " +
                          "then skills for current equipment, then other skills. " +
@@ -29,13 +29,13 @@ namespace BLTAdoptAHero
         protected override Type ConfigType => typeof(SkillXPSettings);
 
         protected override (bool success, string description) Improve(string userName,
-            Hero adoptedHero, int amount, SettingsBase baseSettings)
+            Hero adoptedHero, int amount, SettingsBase baseSettings, string args)
         {
             var settings = (SkillXPSettings) baseSettings;
             return ImproveSkill(adoptedHero, amount, settings.Skills, settings.Auto);
         }
 
-        public static (bool success, string description) ImproveSkill(Hero hero, int amount, Skills skills, bool auto)
+        public static (bool success, string description) ImproveSkill(Hero hero, int amount, SkillsEnum skills, bool auto)
         {
             var skill = GetSkill(hero, skills, auto,
                 so => BLTAdoptAHeroModule.CommonConfig.UseRawXP || hero.HeroDeveloper.GetFocusFactor(so) > 0);
@@ -45,7 +45,11 @@ namespace BLTAdoptAHero
             hero.HeroDeveloper.AddSkillXp(skill, amount,
                 isAffectedByFocusFactor: !BLTAdoptAHeroModule.CommonConfig.UseRawXP);
             // Force this immediately instead of waiting for the daily campaign tick
+            #if e159 || e1510
             CharacterDevelopmentCampaignBehaivor.DevelopCharacterStats(hero);
+            #else
+            CharacterDevelopmentCampaignBehavior.DevelopCharacterStats(hero);
+            #endif
 
             float newXp = hero.HeroDeveloper.GetPropertyValue(skill);
             float realGainedXp = newXp - prevSkill;
@@ -54,9 +58,9 @@ namespace BLTAdoptAHero
             return realGainedXp < 1f
                 ? (false, $"{skill.Name} capped, get more focus points")
                 : gainedLevels > 0
-                    ? (true, $"{Naming.Inc}{gainedLevels}lvl {GetShortSkillName(skill)}")
+                    ? (true, $"{Naming.Inc}{gainedLevels} lvl {GetShortSkillName(skill)}{Naming.To}{newLevel}")
                     : (true,
-                        $"{Naming.Inc}{realGainedXp:0}xp {GetShortSkillName(skill)}");
+                        $"{Naming.Inc}{realGainedXp:0} xp {GetShortSkillName(skill)}{Naming.To}{newXp}");
         }
 
         public static string GetShortSkillName(SkillObject skill)

@@ -9,6 +9,7 @@ using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
 using Bannerlord.ButterLib.SaveSystem.Extensions;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Actions.Util;
 using Helpers;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.SaveSystem;
@@ -184,7 +185,7 @@ namespace BLTAdoptAHero
                 }
                 
                 // Clean up dead character names
-                foreach (var deadHero in Campaign.Current.DeadAndDisabledHeroes
+                foreach (var deadHero in HeroHelpers.DeadOrDisabledHeroes
                     .Where(h => h.IsDead && h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true))
                 {
                     RetireHero(deadHero);
@@ -271,11 +272,11 @@ namespace BLTAdoptAHero
         {
             string heroName = hero.FirstName?.Raw().ToLower();
             // Retired heroes
-            int count = Campaign.Current.Heroes.Count(h
+            int count = HeroHelpers.AliveHeroes.Count(h
                 => h.FirstName?.Raw().ToLower() == heroName 
                    && h.Name?.Contains(BLTAdoptAHeroModule.Tag) == false);
             var oldName = hero.Name;
-            hero.Name = new TextObject(hero.FirstName + $" {ToRoman(count + 1)} ({(hero.IsDead ? "deceased" : "retired")})");
+            HeroHelpers.SetHeroName(hero, new TextObject(hero.FirstName + $" {ToRoman(count + 1)} ({(hero.IsDead ? "deceased" : "retired")})"));
             Campaign.Current.EncyclopediaManager.BookmarksTracker.RemoveBookmarkFromItem(hero);
             Log.Info($"Dead or retired hero {oldName} renamed to {hero.Name}");
         }
@@ -442,15 +443,14 @@ namespace BLTAdoptAHero
                 .Where(filter ?? (_ => true))
                 .Where(n => !n.Name.Contains(BLTAdoptAHeroModule.Tag));
 
-        public static IEnumerable<Hero> GetAllAdoptedHeroes() => Hero.All.Where(n => n.Name.Contains(BLTAdoptAHeroModule.Tag));
+        public static IEnumerable<Hero> GetAllAdoptedHeroes() => HeroHelpers.AliveHeroes.Where(n => n.Name.Contains(BLTAdoptAHeroModule.Tag));
 
         public static string GetFullName(string name) => $"{name} {BLTAdoptAHeroModule.Tag}";
 
         public static Hero GetDeadHero(string name)
         {
             string nameToFind = name.ToLower();
-            return Campaign.Current?
-                .DeadAndDisabledHeroes?
+            return HeroHelpers.DeadOrDisabledHeroes?
                 .FirstOrDefault(h => h.IsDead
                                      && h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true
                                      && h.FirstName?.Raw().ToLower() == nameToFind);
@@ -458,8 +458,7 @@ namespace BLTAdoptAHero
 
         public static void SetHeroAdoptedName(Hero hero, string userName)
         {
-            hero.FirstName = new TextObject(userName);
-            hero.Name = new TextObject(GetFullName(userName));
+            HeroHelpers.SetHeroName(hero, new TextObject(GetFullName(userName)), new TextObject(userName));
         }
         
         public static Hero GetAdoptedHero(string name)

@@ -14,7 +14,7 @@
         <SolidColorBrush x:Key="KillsColor" Color="White"/> 
         <SolidColorBrush x:Key="GoldColor" Color="Gold"/>
         <SolidColorBrush x:Key="RetinueColor" Color="Cyan"/>
-        <SolidColorBrush x:Key="XPColor" Color="Coral"/>
+        <SolidColorBrush x:Key="XPColor" Color="#FFFF7FB0"/>
     </UserControl.Resources>
     <ItemsControl x:Name="HeroList" Background="Transparent"
                   BorderBrush="Transparent"
@@ -27,8 +27,8 @@
                                      CooldownSecondsRemaining="2.5"
                                      GoldEarned="0" XPEarned="65000"/>
                 <local:HeroViewModel Name="ALongViewerName" IsPlayerSide="true" MaxHP="100" HP="75" Kills="0" 
-                                     Retinue="50" RetinueKills="0" CooldownFractionRemaining="0.7"
-                                     CooldownSecondsRemaining="1.1"
+                                     Retinue="50" RetinueKills="0" CooldownFractionRemaining="1"
+                                     CooldownSecondsRemaining="1"
                                      GoldEarned="126" XPEarned="12345"/>
                 <local:HeroViewModel Name="AnotherViewer" IsPlayerSide="true" MaxHP="100" HP="50" Kills="0" 
                                      Retinue="1" RetinueKills="5" CooldownFractionRemaining="0.2"
@@ -46,7 +46,7 @@
         </ItemsControl.ItemsSource>
         <ItemsControl.ItemTemplate>
             <DataTemplate DataType="local:HeroViewModel">
-                <Grid MinWidth="60" MaxWidth="150" Margin="-1" VerticalAlignment="Stretch">
+                <Grid MinWidth="60" Margin="0" VerticalAlignment="Stretch">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
@@ -54,12 +54,13 @@
                     
                     <!-- Health bar -->
                     <ProgressBar
-                        Grid.Row="1"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
                         Value="{Binding HP}" Maximum="{Binding MaxHP}"
                         Background="{Binding ProgressBarBackground}"
                         Foreground="{Binding ProgressBarForeground}"
                         BorderThickness="0"
-                        Margin="2 -4 2 4"
+                        Margin="2 4 2 2"
                         Padding="0"
                         VerticalAlignment="Stretch">
                          <ProgressBar.Style>
@@ -94,8 +95,8 @@
                         </ProgressBar.Style>
                     </ProgressBar>
 
-                    <Grid Grid.Row="1" Margin="4 -6 4 3"
-                          TextBlock.FontSize="12">
+                    <!-- Bottom row : its first to ensure it renders over the name (specifically that the 3/2/1 countdown does) -->
+                    <Grid Grid.Row="1" Margin="4 -4 4 3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
@@ -103,94 +104,88 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <!-- Kills -->
-                        <TextBlock 
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Grid.Column="0"
-                            Visibility="{Binding KillsVisibility}"                       
-                            Margin="2 0 0 0"
-                            Foreground="{StaticResource KillsColor}"
-                            Text="{Binding KillsText, Mode=OneWay}"
-                            FontWeight="Bold"/>
-                        <!-- <overlay:OutlinedTextBlock  -->
+                        <!-- <TextBlock  -->
                         <!--     VerticalAlignment="Center" -->
                         <!--     HorizontalAlignment="Left" -->
                         <!--     Grid.Column="0" -->
                         <!--     Visibility="{Binding KillsVisibility}"                        -->
                         <!--     Margin="2 0 0 0" -->
-                        <!--     Fill="{StaticResource KillsColor}" -->
-                        <!--     Text="{Binding KillsText}" -->
-                        <!--     FontWeight="Bold" -->
-                        <!--     StrokeThickness="3"/> -->
-                        <!-- Retinue kills -->
-                        <TextBlock 
+                        <!--     Foreground="{StaticResource KillsColor}" -->
+                        <!--     Text="{Binding KillsText, Mode=OneWay}" -->
+                        <!--     FontWeight="Bold"/> -->
+                        <overlay:OutlinedTextBlock
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left"
-                            Grid.Column="1"
-                            Visibility="{Binding RetinueKillsVisibility}"                       
-                            Margin="0 0 2 0"
-                            Foreground="{StaticResource RetinueColor}"
-                            Text="{Binding RetinueKillsText, Mode=OneWay}"
-                            FontWeight="Bold"/>
-                        <!-- <overlay:OutlinedTextBlock  -->
+                            Grid.Column="0"
+                            Visibility="{Binding KillsVisibility}"
+                            Margin="2 0 0 0"
+                            Fill="{StaticResource KillsColor}"
+                            Text="{Binding KillsText}"
+                            FontWeight="Bold"
+                            StrokeThickness="3"/>
+                        <!-- Retinue kills -->
+                        <!-- <TextBlock  -->
                         <!--     VerticalAlignment="Center" -->
                         <!--     HorizontalAlignment="Left" -->
                         <!--     Grid.Column="1" -->
                         <!--     Visibility="{Binding RetinueKillsVisibility}"                        -->
                         <!--     Margin="0 0 2 0" -->
-                        <!--     Fill="{StaticResource RetinueColor}" -->
-                        <!--     Text="{Binding RetinueKillsText}" -->
-                        <!--     FontWeight="Bold" -->
-                        <!--     StrokeThickness="3"/> -->
-                        <!-- Gold -->
-                        <TextBlock 
+                        <!--     Foreground="{StaticResource RetinueColor}" -->
+                        <!--     Text="{Binding RetinueKillsText, Mode=OneWay}" -->
+                        <!--     FontWeight="Bold"/> -->
+                        <overlay:OutlinedTextBlock
                             VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Grid.Column="2"
-                            Margin="4 0 2 0"
-                            Foreground="{StaticResource GoldColor}"
-                            Text="{Binding GoldEarnedText, Mode=OneWay}"
-                            FontWeight="Medium"
-                            TextTrimming="CharacterEllipsis"/>
-                        <!-- <overlay:OutlinedTextBlock  -->
+                            HorizontalAlignment="Left"
+                            Grid.Column="1"
+                            Visibility="{Binding RetinueKillsVisibility}"
+                            Margin="0 0 2 0"
+                            Fill="{StaticResource RetinueColor}"
+                            Text="{Binding RetinueKillsText}"
+                            FontWeight="Bold"
+                            StrokeThickness="3"/>
+                        <!-- Gold -->
+                        <!-- <TextBlock  -->
                         <!--     VerticalAlignment="Center" -->
                         <!--     HorizontalAlignment="Center" -->
                         <!--     Grid.Column="2" -->
                         <!--     Margin="4 0 2 0" -->
-                        <!--     Fill="{StaticResource GoldColor}" -->
-                        <!--     Text="{Binding GoldEarnedText}" -->
+                        <!--     Foreground="{StaticResource GoldColor}" -->
+                        <!--     Text="{Binding GoldEarnedText, Mode=OneWay}" -->
                         <!--     FontWeight="Medium" -->
-                        <!--     StrokeThickness="3" -->
-                        <!--     Stroke="#A000" -->
                         <!--     TextTrimming="CharacterEllipsis"/> -->
-                        <!-- XP -->
-                        <TextBlock 
+                        <overlay:OutlinedTextBlock
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
-                            Grid.Column="3"
+                            Grid.Column="2"
                             Margin="4 0 2 0"
-                            Foreground="{StaticResource XPColor}"
-                            Text="{Binding XPEarnedText, Mode=OneWay}"
+                            Fill="{StaticResource GoldColor}"
+                            Text="{Binding GoldEarnedText}"
                             FontWeight="Medium"
+                            StrokeThickness="3"
                             TextTrimming="CharacterEllipsis"/>
-                        <!-- <overlay:OutlinedTextBlock  -->
+                        <!-- XP -->
+                        <!-- <TextBlock  -->
                         <!--     VerticalAlignment="Center" -->
                         <!--     HorizontalAlignment="Center" -->
                         <!--     Grid.Column="3" -->
                         <!--     Margin="4 0 2 0" -->
-                        <!--     Fill="{StaticResource XPColor}" -->
-                        <!--     Text="{Binding XPEarnedText}" -->
+                        <!--     Foreground="{StaticResource XPColor}" -->
+                        <!--     Text="{Binding XPEarnedText, Mode=OneWay}" -->
                         <!--     FontWeight="Medium" -->
-                        <!--     StrokeThickness="3" -->
-                        <!--     Stroke="#A000" -->
-                        <!--     TextTrimming="CharacterEllipsis"> -->
-                        <!--     <overlay:OutlinedTextBlock.RenderTransform> -->
-                        <!--         <ScaleTransform ScaleX="1" -->
-                        <!--                         ScaleY="1"/> -->
-                        <!--     </overlay:OutlinedTextBlock.RenderTransform> -->
-                        <!-- </overlay:OutlinedTextBlock> -->
+                        <!--     TextTrimming="CharacterEllipsis"/> -->
+                        <overlay:OutlinedTextBlock
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Grid.Column="3"
+                            Margin="4 0 2 0"
+                            Fill="{StaticResource XPColor}"
+                            Text="{Binding XPEarnedText}"
+                            FontWeight="Medium"
+                            StrokeThickness="3"
+                            TextTrimming="CharacterEllipsis"/>
                     </Grid>
-                    <Grid Margin="5 0 5 3" 
+                    <!-- Top row -->
+                    <Grid Margin="5 4 5 3" 
                           VerticalAlignment="Center"
                           HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
@@ -205,7 +200,7 @@
                             Width="16"
                             Height="16"
                             StrokeThickness="1"
-                            Margin="-2 -2 -4 -4"
+                            Margin="0 -2 -4 -4"
                             Visibility="{Binding CooldownClockVisibility}"
                             StartAngle="0"
                             EndAngle="{Binding CooldownEndAngle, Mode=OneWay}"
@@ -237,7 +232,7 @@
                             Grid.Column="1"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
-                        
+                            MaxWidth="100" 
                             Fill="{Binding TextColor}"
                             Text="{Binding Name}"
                             FontWeight="Medium"
@@ -246,7 +241,7 @@
 
                         <!-- Cool down 3 2 1 -->
                         <overlay:OutlinedTextBlock
-                            Margin="-2 -2 -4 -4"
+                            Margin="0 -2 -4 -4"
                             Width="16"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
@@ -255,7 +250,6 @@
                             Visibility="{Binding CooldownTextVisibility}"
                             FontWeight="Medium"
                             StrokeThickness="3"
-                            FontSize="14"
                             TextTrimming="CharacterEllipsis">
                             <overlay:OutlinedTextBlock.RenderTransform>
                                 <ScaleTransform ScaleX="{Binding CooldownTextScale}"
@@ -268,7 +262,7 @@
                         MaxWidth="62"
                         Grid.Row="1"
                         ItemsSource="{Binding RetinueList, Mode=OneWay}"
-                        Margin="4 0 4 0"
+                        Margin="4 0 4 -2.5"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom">
                         <ItemsControl.ItemsPanel>
