@@ -586,6 +586,7 @@ namespace BLTAdoptAHero
                     // }
 
                     bool allowRetinue = firstSummon
+                                        && !MissionHelpers.InHideOutMission()
                                         && !MissionHelpers.InArenaPracticeMission()
                                         && !MissionHelpers.InTournament()
                                         && !MissionHelpers.InFriendlyMission();
