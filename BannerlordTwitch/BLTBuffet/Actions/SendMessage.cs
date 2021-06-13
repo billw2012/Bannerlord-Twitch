@@ -4,6 +4,7 @@ using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 
@@ -20,19 +21,10 @@ namespace BLTBuffet
                 return;
             }
             
-            var hero = GetAdoptedHero(context.UserName);
+            var hero = BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(context.UserName);
             Log.ShowInformation((hero == null ? $"{context.UserName}: " : "") + context.Args, hero?.CharacterObject, Log.Sound.Notification1);
 
             onSuccess("Sent");
-        }
-
-        private static Hero GetAdoptedHero(string name)
-        {
-            string nameToFind = name.ToLower();
-            return Campaign.Current?
-                .AliveHeroes?
-                .FirstOrDefault(h => h.Name?.Contains("[BLT]") == true 
-                                     && h.FirstName?.Raw().ToLower() == nameToFind);
         }
     }
 }

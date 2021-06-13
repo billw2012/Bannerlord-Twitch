@@ -24,7 +24,7 @@ namespace BLTAdoptAHero.Util
                 return "Provide the hero name";
             }
             
-            var character = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(strings[0])?.CharacterObject;
+            var character = BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(strings[0])?.CharacterObject;
             if (character == null)
             {
                 return $"Couldn't find hero {strings[0]}";

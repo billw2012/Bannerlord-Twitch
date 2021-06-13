@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -88,7 +88,7 @@ namespace BLTAdoptAHero
         Type IRewardHandler.RewardConfigType => typeof(Settings);
         void IRewardHandler.Enqueue(ReplyContext context, object config)
         {
-            var hero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
+            var hero = BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(context.UserName);
             if (hero?.IsAlive == true)
             {
                 ActionManager.NotifyCancelled(context, "You have already adopted a hero!");
@@ -109,7 +109,7 @@ namespace BLTAdoptAHero
         Type ICommandHandler.HandlerConfigType => typeof(Settings);
         void ICommandHandler.Execute(ReplyContext context, object config)
         {
-            if (BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName) != null)
+            if (BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(context.UserName) != null)
             {
                 ActionManager.SendReply(context, "You have already adopted a hero!");
                 return;

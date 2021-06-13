@@ -15,6 +15,7 @@
 		<DependedModule Id="StoryMode"/>
 		<DependedModule Id="CustomBattle"/>
 		<DependedModule Id="BannerlordTwitch"/>
+		<DependedModule Id="BLTAdoptAHero"/>
 	</DependedModules>
 	<SubModules>
 		<SubModule>

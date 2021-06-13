@@ -5,6 +5,7 @@ using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero;
 using HarmonyLib;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -51,16 +52,10 @@ namespace BLTBuffet
             var target = config.Target switch
             {
                 Target.Player => Agent.Main,
-                Target.AdoptedHero => Mission.Current.Agents.FirstOrDefault(a =>
-                {
-                    //var tagObject = new TextObject(BLTAdoptAHeroModule.Tag);
-                    if (a.Character is not CharacterObject charObj) return false;
-                    return charObj.HeroObject?.IsAdopted() == true 
-                         && string.Equals(charObj.HeroObject?.FirstName?.Raw(), context.UserName, StringComparison.CurrentCultureIgnoreCase);
-                }),
+                Target.AdoptedHero => Mission.Current.Agents.FirstOrDefault(a => a.IsAdoptedBy(context.UserName)),
                 Target.Any => Mission.Current.Agents.Where(GeneralAgentFilter).Where(a => !a.IsAdopted()).SelectRandom(),
                 Target.EnemyTeam => Mission.Current.Agents.Where(GeneralAgentFilter)
-                    .Where(a => a.Team?.IsPlayerTeam == false && !a.Team.IsPlayerAlly && !a.IsAdopted())
+                    .Where(a => a.Team?.IsFriendOf(Mission.Current.PlayerTeam) == false && !a.IsAdopted())
                     .SelectRandom(),
                 Target.PlayerTeam => Mission.Current.Agents.Where(GeneralAgentFilter)
                     .Where(a => a.Team?.IsPlayerTeam == true && !a.IsAdopted())

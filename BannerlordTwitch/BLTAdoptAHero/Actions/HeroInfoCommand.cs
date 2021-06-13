@@ -46,7 +46,7 @@ namespace BLTAdoptAHero
         void ICommandHandler.Execute(ReplyContext context, object config)
         {
             var settings = config as Settings ?? new Settings();
-            var adoptedHero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
+            var adoptedHero = BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(context.UserName);
             var infoStrings = new List<string>{};
             if (adoptedHero == null)
             {

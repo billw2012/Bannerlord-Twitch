@@ -22,7 +22,7 @@ namespace BLTAdoptAHero
         void IRewardHandler.Enqueue(ReplyContext context, object config)
         {
             var settings = (Settings)config;
-            var adoptedHero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
+            var adoptedHero = BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
                 ActionManager.NotifyCancelled(context, Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);

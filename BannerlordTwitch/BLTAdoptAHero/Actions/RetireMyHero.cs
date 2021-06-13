@@ -20,7 +20,7 @@ namespace BLTAdoptAHero
                 onFailure($"You must enter 'yes' at the prompt to retire your hero");
                 return;
             }
-            var adoptedHero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
+            var adoptedHero = BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
                 onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
@@ -32,7 +32,7 @@ namespace BLTAdoptAHero
                 return;
             }
             Log.ShowInformation($"{adoptedHero.Name} has retired!", adoptedHero.CharacterObject, Log.Sound.Horns3);
-            BLTAdoptAHeroCampaignBehavior.RetireHero(adoptedHero);
+            BLTAdoptAHeroCampaignBehavior.Current.RetireHero(adoptedHero);
         }
     }
 }
