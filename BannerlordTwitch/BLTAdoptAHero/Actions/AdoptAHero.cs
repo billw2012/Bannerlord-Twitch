@@ -13,6 +13,7 @@ using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.Towns;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
@@ -58,10 +59,13 @@ namespace BLTAdoptAHero
              Description("Gold the adopted hero will start with"), DefaultValue(null), PropertyOrder(1)]
             public int StartingGold { get; set; }
 
-            [Category("Initialization"), 
+            [Category("Initialization"),
              Description("Starting skills, if empty then default skills of the adopted hero will be left in tact"),
              DefaultValue(null), PropertyOrder(1)]
-            public List<SkillRangeDef> StartingSkills { get; set; }
+            public List<SkillRangeDef> StartingSkills { get; set; } = new();
+
+            [YamlIgnore, Browsable(false)]
+            public IEnumerable<SkillRangeDef> ValidStartingSkills => StartingSkills.Where(s => s.Skill != SkillsEnum.None);
             
             [Category("Initialization"), 
              Description("Equipment tier the adopted hero will start with, if you don't specify then they get the " +
@@ -178,12 +182,12 @@ namespace BLTAdoptAHero
             {
                 return (false, "You can't adopt a hero: no available hero matching the requirements was found!");
             }
-            
-            if (settings.StartingSkills?.Any() == true)
+
+            if (settings.ValidStartingSkills.Any())
             {
                 newHero.HeroDeveloper.ClearHero();
 
-                foreach (var skill in settings.StartingSkills)
+                foreach (var skill in settings.ValidStartingSkills)
                 {
                     var actualSkills = SkillGroup.GetSkills(skill.Skill);
                     newHero.HeroDeveloper.SetInitialSkillLevel(actualSkills.SelectRandom(), 
