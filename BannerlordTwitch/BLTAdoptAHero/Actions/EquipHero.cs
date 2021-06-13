@@ -11,6 +11,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
@@ -22,10 +23,23 @@ namespace BLTAdoptAHero
         {
             [Description("Allow improvement of adopted heroes who are also companions of the player."), PropertyOrder(6)]
             public bool AllowCompanionUpgrade { get; set; } = true;
+            [Description("Gold cost to buy Tier 1 equipment"), PropertyOrder(1), YamlIgnore]
+            public int CostTier1 { get => TierCosts[0]; set => TierCosts[0] = value; }
             
-            [Description("Gold cost to the adopted hero"), PropertyOrder(9)]
-            public int GoldCost { get; set; } = 50000;
-            
+            [Description("Gold cost to buy Tier 2 equipment"), PropertyOrder(1), YamlIgnore]
+            public int CostTier2 { get => TierCosts[1]; set => TierCosts[1] = value; } 
+            [Description("Gold cost to buy Tier 3 equipment"), PropertyOrder(1), YamlIgnore]
+            public int CostTier3 { get => TierCosts[2]; set => TierCosts[2] = value; }
+            [Description("Gold cost to buy Tier 4 equipment"), PropertyOrder(1), YamlIgnore]
+            public int CostTier4 { get => TierCosts[3]; set => TierCosts[3] = value; }
+            [Description("Gold cost to buy Tier 5 equipment"), PropertyOrder(1), YamlIgnore]
+            public int CostTier5 { get => TierCosts[4]; set => TierCosts[4] = value; }
+            [Description("Gold cost to buy Tier 6 equipment"), PropertyOrder(1), YamlIgnore]
+            public int CostTier6 { get => TierCosts[5]; set => TierCosts[5] = value; }
+            // etc..
+            [Browsable(false)]
+            public int[] TierCosts { get; set; } = { 50000, 100000, 150000, 200000, 250000, 300000 };
+
             [Description("Whether to multiply the cost by the current tier"), PropertyOrder(10)]
             public bool MultiplyCostByCurrentTier { get; set; } = true;
             
@@ -66,9 +80,7 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            int cost = settings.MultiplyCostByCurrentTier
-                ? settings.GoldCost * (targetTier + 1)
-                : settings.GoldCost;
+            int cost = settings.TierCosts[targetTier];
 
             int availableGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
             if (availableGold < cost)
