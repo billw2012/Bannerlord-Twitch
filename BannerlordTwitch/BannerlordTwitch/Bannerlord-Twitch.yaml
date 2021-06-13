@@ -479,6 +479,26 @@ Rewards:
     ActivateSound: 
     DeactivateParticleEffect: 
     DeactivateSound: 
+- RewardSpec:
+    Title: Give Player Gold
+    DisableAutomaticFulfillment: false
+    Prompt: 'Give the player some of your gold. Enter gift message:'
+    Cost: 100
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    GlobalCooldownSeconds: 
+  Handler: AddGoldToPlayer
+  ID: 4ff890a2-ff83-41fa-9441-156f32abd9e8
+  Enabled: false
+  RespondInTwitch: false
+  RespondInOverlay: false
+  HandlerConfig:
+    GoldAmountToGive: 10000
+    FromAdoptedHero: false
+    AlertSound: Notification1
 Commands:
 - Name: stats
   HideHelp: false
