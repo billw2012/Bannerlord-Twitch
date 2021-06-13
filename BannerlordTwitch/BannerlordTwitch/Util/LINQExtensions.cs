@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using BannerlordTwitch.Util;
 using TaleWorlds.Core;
 
 public static class LINQExtensions
@@ -25,14 +26,11 @@ public static class LINQExtensions
         return prob.LastOrDefault().obj;
     }
 
-    public static T SelectRandom<T>(this IEnumerable<T> @this, int seed = -1) => @this.Shuffle(seed).FirstOrDefault();
+    public static T SelectRandom<T>(this IEnumerable<T> @this) => @this.Shuffle().FirstOrDefault();
 
-    private static int defaultSeed = 69420;
-        
-    public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> @this, int seed = -1)
+    public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> @this)
     {
-        var random = seed == -1? new Random(Interlocked.Increment(ref defaultSeed)) : new Random(seed);
-        return @this.OrderBy(e => random.Next());
+        return @this.OrderBy(e => StaticRandom.Next());
     }
 
     /// <summary>

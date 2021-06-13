@@ -247,6 +247,7 @@
     <Compile Include="Util\ParticleEffectItemSource.cs" />
     <Compile Include="Util\Paths.cs" />
     <Compile Include="Util\SoundEffectItemSource.cs" />
+    <Compile Include="Util\StaticRandom.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\README.md">
