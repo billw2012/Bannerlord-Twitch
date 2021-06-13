@@ -31,10 +31,26 @@ namespace BannerlordTwitch
 		public static TwitchService TwitchService { get; private set; }
 
 		[DllImport("user32.dll")]
-		static extern int SetWindowText(IntPtr hWnd, string text);
-		
+		private static extern int SetWindowText(IntPtr hWnd, string text);
+
+		private const string ExpectedVersion =
+#if e159
+				"e1.5.9"
+#elif e1510
+				"e1.5.10"
+#elif e160
+				"e1.6.0"
+#endif
+			;
+
 		static BLTModule()
 		{
+			if (!GameVersion.IsVersion(ExpectedVersion))
+			{
+				MessageBox.Show($"This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion.GameVersionString}. Exiting now.", "Bannerlord Twitch ERROR");
+				Application.Current.Shutdown(1);
+			}
+			
 			// Set a consistent Window title so streaming software can find it
 			SetWindowText(Process.GetCurrentProcess().MainWindowHandle, "Bannerlord Game Window");
 
@@ -144,7 +160,7 @@ namespace BannerlordTwitch
 				CampaignEvents.DailyTickEvent.AddNonSerializedListener(ownerHandle, () =>
 				{
 					if (
-#if BL_V_1_5_9
+#if e159
 						CampaignOptions.AutoSaveInMinutes
 #else
 						Campaign.Current.SaveHandler.AutoSaveInterval

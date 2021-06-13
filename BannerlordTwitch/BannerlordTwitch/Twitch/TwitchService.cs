@@ -34,10 +34,11 @@ namespace BannerlordTwitch
         public Guid RedemptionId { get; private set; }
         public ActionBase Source { get; private set; }
 
+        private static string CleanDisplayName(string str) => str.Replace(" ", "").Replace(@"\s", "");
         public static ReplyContext FromMessage(ActionBase source, ChatMessage msg, string args) =>
             new()
             {
-                UserName = msg.DisplayName,
+                UserName = CleanDisplayName(msg.DisplayName),
                 ReplyId = msg.Id,
                 Args = args,
                 Bits = msg.Bits,
@@ -65,7 +66,7 @@ namespace BannerlordTwitch
         public static ReplyContext FromRedemption(ActionBase source, OnRewardRedeemedArgs args) =>
             new()
             {
-                UserName = args.DisplayName,
+                UserName = CleanDisplayName(args.DisplayName),
                 Args = args.Message,
                 RedemptionId = args.RedemptionId,
                 Source = source,
@@ -74,7 +75,7 @@ namespace BannerlordTwitch
         public static ReplyContext FromUser(ActionBase source, string userName, string args = null) =>
             new()
             {
-                UserName = userName,
+                UserName = CleanDisplayName(userName),
                 Args = args,
                 Source = source,
             };

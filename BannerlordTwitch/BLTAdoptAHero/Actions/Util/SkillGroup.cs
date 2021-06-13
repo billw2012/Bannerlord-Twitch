@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BLTAdoptAHero.Actions.Util;
 using TaleWorlds.Core;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
@@ -8,7 +9,7 @@ namespace BLTAdoptAHero
 {
     
     [Flags]
-    public enum Skills
+    public enum SkillsEnum
     {
         None,
         All,
@@ -32,60 +33,60 @@ namespace BLTAdoptAHero
     public class SingleSkillsItemSource : IItemsSource
     {
         public ItemCollection GetValues() => new() {
-                Skills.OneHanded, Skills.TwoHanded, Skills.Polearm,
-                Skills.Bow, Skills.Throwing, Skills.Crossbow,
-                Skills.Riding, Skills.Athletics,
-                Skills.Scouting, Skills.Trade, Skills.Steward, Skills.Medicine, Skills.Engineering,
-                Skills.Crafting, Skills.Tactics, Skills.Roguery, Skills.Charm, Skills.Leadership,
+                SkillsEnum.OneHanded, SkillsEnum.TwoHanded, SkillsEnum.Polearm,
+                SkillsEnum.Bow, SkillsEnum.Throwing, SkillsEnum.Crossbow,
+                SkillsEnum.Riding, SkillsEnum.Athletics,
+                SkillsEnum.Scouting, SkillsEnum.Trade, SkillsEnum.Steward, SkillsEnum.Medicine, SkillsEnum.Engineering,
+                SkillsEnum.Crafting, SkillsEnum.Tactics, SkillsEnum.Roguery, SkillsEnum.Charm, SkillsEnum.Leadership,
             };
     }
     
     internal static class SkillGroup
     {
-        public static Skills[] ExpandSkills(Skills skills)
+        public static SkillsEnum[] ExpandSkills(SkillsEnum skills)
         {
             switch (skills)
             {
-                case Skills.Melee: return new[] { Skills.OneHanded, Skills.TwoHanded, Skills.Polearm };
-                case Skills.Ranged: return new[] { Skills.Bow , Skills.Throwing , Skills.Crossbow };
-                case Skills.Movement: return new[] { Skills.Riding , Skills.Athletics };
-                case Skills.Support: return new[] { Skills.Scouting , Skills.Trade , Skills.Steward , Skills.Medicine , Skills.Engineering };
-                case Skills.Personal: return new[] { Skills.Crafting ,Skills.Tactics , Skills.Roguery , Skills.Charm ,  Skills.Leadership };
-                case Skills.All: return new[] {Skills.OneHanded , Skills.TwoHanded , Skills.Polearm , Skills.Bow , Skills.Throwing ,
-                    Skills.Crossbow , Skills.Riding , Skills.Athletics , Skills.Crafting , Skills.Tactics , 
-                    Skills.Scouting , Skills.Roguery , Skills.Charm , Skills.Trade , Skills.Steward ,
-                    Skills.Medicine , Skills.Engineering , Skills.Leadership};
-                case Skills.None: return new Skills[] { };
+                case SkillsEnum.Melee: return new[] { SkillsEnum.OneHanded, SkillsEnum.TwoHanded, SkillsEnum.Polearm };
+                case SkillsEnum.Ranged: return new[] { SkillsEnum.Bow , SkillsEnum.Throwing , SkillsEnum.Crossbow };
+                case SkillsEnum.Movement: return new[] { SkillsEnum.Riding , SkillsEnum.Athletics };
+                case SkillsEnum.Support: return new[] { SkillsEnum.Scouting , SkillsEnum.Trade , SkillsEnum.Steward , SkillsEnum.Medicine , SkillsEnum.Engineering };
+                case SkillsEnum.Personal: return new[] { SkillsEnum.Crafting ,SkillsEnum.Tactics , SkillsEnum.Roguery , SkillsEnum.Charm ,  SkillsEnum.Leadership };
+                case SkillsEnum.All: return new[] {SkillsEnum.OneHanded , SkillsEnum.TwoHanded , SkillsEnum.Polearm , SkillsEnum.Bow , SkillsEnum.Throwing ,
+                    SkillsEnum.Crossbow , SkillsEnum.Riding , SkillsEnum.Athletics , SkillsEnum.Crafting , SkillsEnum.Tactics , 
+                    SkillsEnum.Scouting , SkillsEnum.Roguery , SkillsEnum.Charm , SkillsEnum.Trade , SkillsEnum.Steward ,
+                    SkillsEnum.Medicine , SkillsEnum.Engineering , SkillsEnum.Leadership};
+                case SkillsEnum.None: return new SkillsEnum[] { };
                 default:
                     return new[] {skills};
             }
         }
 
-        public static SkillObject GetSkill(Skills skill) =>
+        public static SkillObject GetSkill(SkillsEnum skill) =>
             skill switch
             {
-                Skills.OneHanded => DefaultSkills.OneHanded,
-                Skills.TwoHanded => DefaultSkills.TwoHanded,
-                Skills.Polearm => DefaultSkills.Polearm,
-                Skills.Bow => DefaultSkills.Bow,
-                Skills.Throwing => DefaultSkills.Throwing,
-                Skills.Crossbow => DefaultSkills.Crossbow,
-                Skills.Riding => DefaultSkills.Riding,
-                Skills.Athletics => DefaultSkills.Athletics,
-                Skills.Scouting => DefaultSkills.Scouting,
-                Skills.Trade => DefaultSkills.Trade,
-                Skills.Steward => DefaultSkills.Steward,
-                Skills.Medicine => DefaultSkills.Medicine,
-                Skills.Engineering => DefaultSkills.Engineering,
-                Skills.Crafting => DefaultSkills.Crafting,
-                Skills.Tactics => DefaultSkills.Tactics,
-                Skills.Roguery => DefaultSkills.Roguery,
-                Skills.Charm => DefaultSkills.Charm,
-                Skills.Leadership => DefaultSkills.Leadership,
+                SkillsEnum.OneHanded => DefaultSkills.OneHanded,
+                SkillsEnum.TwoHanded => DefaultSkills.TwoHanded,
+                SkillsEnum.Polearm => DefaultSkills.Polearm,
+                SkillsEnum.Bow => DefaultSkills.Bow,
+                SkillsEnum.Throwing => DefaultSkills.Throwing,
+                SkillsEnum.Crossbow => DefaultSkills.Crossbow,
+                SkillsEnum.Riding => DefaultSkills.Riding,
+                SkillsEnum.Athletics => DefaultSkills.Athletics,
+                SkillsEnum.Scouting => DefaultSkills.Scouting,
+                SkillsEnum.Trade => DefaultSkills.Trade,
+                SkillsEnum.Steward => DefaultSkills.Steward,
+                SkillsEnum.Medicine => DefaultSkills.Medicine,
+                SkillsEnum.Engineering => DefaultSkills.Engineering,
+                SkillsEnum.Crafting => DefaultSkills.Crafting,
+                SkillsEnum.Tactics => DefaultSkills.Tactics,
+                SkillsEnum.Roguery => DefaultSkills.Roguery,
+                SkillsEnum.Charm => DefaultSkills.Charm,
+                SkillsEnum.Leadership => DefaultSkills.Leadership,
                 _ => throw new ArgumentOutOfRangeException(nameof(skill), skill, "Only single skill values are valid")
             };
 
-        public static string[] SkillsToStrings(Skills skills)
+        public static string[] SkillsToStrings(SkillsEnum skills)
         {
             return ExpandSkills(skills).Select(s => s.ToString()).ToArray();
         }
@@ -151,74 +152,74 @@ namespace BLTAdoptAHero
             (EquipmentIndex.Cape, ItemObject.ItemTypeEnum.Cape),
         };
 
-        public static IEnumerable<SkillObject> GetSkills(params Skills[] sk)
-            => GetSkills((IEnumerable<Skills>)sk);
+        public static IEnumerable<SkillObject> GetSkills(params SkillsEnum[] sk)
+            => GetSkills((IEnumerable<SkillsEnum>)sk);
 
-        public static IEnumerable<SkillObject> GetSkills(IEnumerable<Skills> sk)
+        public static IEnumerable<SkillObject> GetSkills(IEnumerable<SkillsEnum> sk)
             => sk.SelectMany(ExpandSkills).Distinct().Select(GetSkill);
         
         public static IEnumerable<SkillObject> GetSkills(IEnumerable<string> sk) 
             => sk.Select(sn 
-                => DefaultSkills.GetAllSkills().FirstOrDefault(so 
+                => HeroHelpers.AllSkillObjects.FirstOrDefault(so 
                     => string.Equals(so.StringId, sn, StringComparison.CurrentCultureIgnoreCase)));
         
-        public static IEnumerable<ItemObject.ItemTypeEnum> GetItemsForSkills(params Skills[] sk)
-            => GetItemsForSkills((IEnumerable<Skills>)sk);
+        public static IEnumerable<ItemObject.ItemTypeEnum> GetItemsForSkills(params SkillsEnum[] sk)
+            => GetItemsForSkills((IEnumerable<SkillsEnum>)sk);
 
-        public static IEnumerable<ItemObject.ItemTypeEnum> GetItemsForSkills(IEnumerable<Skills> sk)
+        public static IEnumerable<ItemObject.ItemTypeEnum> GetItemsForSkills(IEnumerable<SkillsEnum> sk)
         {
             foreach (var s in sk)
             {
                 switch (s)
                 {
-                    case Skills.OneHanded:
+                    case SkillsEnum.OneHanded:
                         yield return ItemObject.ItemTypeEnum.OneHandedWeapon;
                         break;
-                    case Skills.TwoHanded:
+                    case SkillsEnum.TwoHanded:
                         yield return ItemObject.ItemTypeEnum.TwoHandedWeapon;
                         break;
-                    case Skills.Polearm:
+                    case SkillsEnum.Polearm:
                         yield return ItemObject.ItemTypeEnum.Polearm;
                         break;
-                    case Skills.Bow:
+                    case SkillsEnum.Bow:
                         yield return ItemObject.ItemTypeEnum.Bow;
                         break;
-                    case Skills.Throwing:
+                    case SkillsEnum.Throwing:
                         yield return ItemObject.ItemTypeEnum.Thrown;
                         break;
-                    case Skills.Crossbow:
+                    case SkillsEnum.Crossbow:
                         yield return ItemObject.ItemTypeEnum.Crossbow;
                         break;
                 }
             }
         }
 
-        public static IEnumerable<Skills> GetSkillsForItem(params ItemObject.ItemTypeEnum[] items)
+        public static IEnumerable<SkillsEnum> GetSkillsForItem(params ItemObject.ItemTypeEnum[] items)
             => GetSkillsForItem((IEnumerable<ItemObject.ItemTypeEnum>)items);
         
-        public static IEnumerable<Skills> GetSkillsForItem(IEnumerable<ItemObject.ItemTypeEnum> items)
+        public static IEnumerable<SkillsEnum> GetSkillsForItem(IEnumerable<ItemObject.ItemTypeEnum> items)
         {
             foreach (var i in items)
             {
                 switch (i)
                 {
                     case ItemObject.ItemTypeEnum.OneHandedWeapon:
-                        yield return Skills.OneHanded;
+                        yield return SkillsEnum.OneHanded;
                         break;
                     case ItemObject.ItemTypeEnum.TwoHandedWeapon:
-                        yield return Skills.TwoHanded;
+                        yield return SkillsEnum.TwoHanded;
                         break;
                     case ItemObject.ItemTypeEnum.Polearm:
-                        yield return Skills.Polearm;
+                        yield return SkillsEnum.Polearm;
                         break;
                     case ItemObject.ItemTypeEnum.Bow:
-                        yield return Skills.Bow;
+                        yield return SkillsEnum.Bow;
                         break;
                     case ItemObject.ItemTypeEnum.Thrown:
-                        yield return Skills.Throwing;
+                        yield return SkillsEnum.Throwing;
                         break;
                     case ItemObject.ItemTypeEnum.Crossbow:
-                        yield return Skills.Crossbow;
+                        yield return SkillsEnum.Crossbow;
                         break;
                 }
             }

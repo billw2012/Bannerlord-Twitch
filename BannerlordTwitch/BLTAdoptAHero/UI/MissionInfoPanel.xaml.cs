@@ -70,6 +70,8 @@ namespace BLTAdoptAHero.Behaviors
 
         public int Kills { get; set; }
 
+        public int GlobalSortKey => (IsPlayerSide ? 10000 : 0) + Kills;
+
         public string KillsText => Kills == 0 ? string.Empty : Kills.ToString();
         public Visibility KillsVisibility => Kills > 0 ? Visibility.Visible : Visibility.Hidden;
 

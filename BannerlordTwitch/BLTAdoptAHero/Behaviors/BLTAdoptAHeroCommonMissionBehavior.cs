@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows.Data;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Behaviors;
 using HarmonyLib;
@@ -23,7 +25,8 @@ namespace BLTAdoptAHero
         private MissionInfoPanel missionInfoPanel;
 
         private ObservableCollection<HeroViewModel> heroesViewModel { get; set; } = new();
-        private List<Hero> activeHeroes = new();
+        private CollectionViewSource heroesSortedView { get; set; }
+        private readonly List<Hero> activeHeroes = new();
 
         private class HeroMissionState
         {
@@ -80,7 +83,11 @@ namespace BLTAdoptAHero
         {
             Log.AddInfoPanel(() =>
             {
-                missionInfoPanel = new MissionInfoPanel {HeroList = {ItemsSource = heroesViewModel}};
+                heroesSortedView = new CollectionViewSource { Source = heroesViewModel };
+                heroesSortedView.SortDescriptions.Add(new SortDescription(nameof(HeroViewModel.GlobalSortKey), ListSortDirection.Descending));
+                heroesSortedView.IsLiveSortingRequested = true;
+                heroesSortedView.LiveSortingProperties.Add(nameof(HeroViewModel.GlobalSortKey));
+                missionInfoPanel = new MissionInfoPanel {HeroList = { ItemsSource = heroesSortedView.View }};
                 return missionInfoPanel;
             });
         }
@@ -224,7 +231,7 @@ namespace BLTAdoptAHero
                 var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
                 if (affectedHero != null)
                 {
-                    Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectedHero} was killed by {affectorAgent?.ToString() ?? "unknown"}");
+                    Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectedHero} was made {agentState} by {affectorAgent?.Name ?? "unknown"}");
                     ApplyKilledEffects(
                         affectedHero, affectorAgent, agentState,
                         BLTAdoptAHeroModule.CommonConfig.XPPerKilled,
@@ -239,7 +246,7 @@ namespace BLTAdoptAHero
                 if (affectorHero != null)
                 {
                     float horseFactor = affectedAgent?.IsHuman == false ? 0.25f : 1;
-                    Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectorHero} killed {affectedAgent?.ToString() ?? "unknown"}");
+                    Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectorHero} made {affectedAgent?.Name ?? "unknown"} {agentState}");
                     ApplyKillEffects(
                         affectorHero, affectorAgent, affectedAgent, agentState,
                         (int) (BLTAdoptAHeroModule.CommonConfig.GoldPerKill * horseFactor),
@@ -258,7 +265,7 @@ namespace BLTAdoptAHero
                     }
                 }
 
-                var affectorRetinueOwner = BLTSummonBehavior.Current?.GetSummonedHeroForRetinue(affectedAgent);
+                var affectorRetinueOwner = BLTSummonBehavior.Current?.GetSummonedHeroForRetinue(affectorAgent);
                 if (affectorRetinueOwner != null)
                 {
                     GetHeroMissionState(affectorRetinueOwner.Hero).RetinueKills++;
@@ -380,7 +387,7 @@ namespace BLTAdoptAHero
             var heroModel = new HeroViewModel
             {
                 Name = hero.FirstName.Raw(),
-                IsPlayerSide = summonState?.CurrentAgent?.Team == Mission.Current?.PlayerTeam || summonState?.CurrentAgent?.Team == Mission.Current?.PlayerAllyTeam,
+                IsPlayerSide = summonState?.WasPlayerSide ?? true,
                 MaxHP = agent?.HealthLimit ?? 100,
                 HP = agent?.Health ?? 0,
                 IsRouted = state is AgentState.Routed,
@@ -484,7 +491,7 @@ namespace BLTAdoptAHero
 
             if (xpPerKill != 0)
             {
-                SkillXP.ImproveSkill(hero, xpPerKill, Skills.All, auto: true);
+                SkillXP.ImproveSkill(hero, xpPerKill, SkillsEnum.All, auto: true);
                 GetHeroMissionState(hero).WonXP += xpPerKill;
             }
         }
@@ -509,7 +516,7 @@ namespace BLTAdoptAHero
 
             if (xpPerKilled != 0)
             {
-                SkillXP.ImproveSkill(hero, xpPerKilled, Skills.All, auto: true);
+                SkillXP.ImproveSkill(hero, xpPerKilled, SkillsEnum.All, auto: true);
                 GetHeroMissionState(hero).WonXP += xpPerKilled;
             }
         }

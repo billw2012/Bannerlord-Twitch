@@ -5,6 +5,7 @@ using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Actions.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -78,7 +79,7 @@ namespace BLTAdoptAHero
                 {
                     infoStrings.Add($"Lvl {adoptedHero.Level}");
                     infoStrings.Add("Skills " + string.Join("■", 
-                        SkillObject.All
+                        HeroHelpers.AllSkillObjects
                             .Where(s => adoptedHero.GetSkillValue(s) >= settings.MinSkillToShow)
                             .OrderByDescending(s => adoptedHero.GetSkillValue(s))
                             .Select(skill => $"{SkillXP.GetShortSkillName(skill)} {adoptedHero.GetSkillValue(skill)} " +
@@ -87,8 +88,8 @@ namespace BLTAdoptAHero
                 }
                 if (settings.ShowAttributes)
                 {
-                    infoStrings.Add("Attr " + string.Join("■", AdoptAHero.CharAttributes
-                        .Select(a => $"{a.shortName} {adoptedHero.GetAttributeValue(a.val)}")));
+                    infoStrings.Add("Attr " + string.Join("■", HeroHelpers.AllAttributes
+                        .Select(a => $"{HeroHelpers.GetShortAttributeName(a)} {adoptedHero.GetAttributeValue(a)}")));
                 }
                 if (settings.ShowEquipment)
                 {

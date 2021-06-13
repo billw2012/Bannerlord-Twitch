@@ -13,7 +13,7 @@ namespace BLTAdoptAHero
         protected class FocusPointsSettings : SettingsBase
         {
             [Description("What skill to add focus to"), PropertyOrder(1)]
-            public Skills Skills { get; set; } = Skills.None;
+            public SkillsEnum Skills { get; set; } = SkillsEnum.None;
 
             [Description("Chooses a random skill to add focus to, prefering class skills, " +
                          "then skills for current equipment, then other skills. " +
@@ -25,14 +25,14 @@ namespace BLTAdoptAHero
         protected override Type ConfigType => typeof(FocusPointsSettings);
         
         protected override (bool success, string description) Improve(string userName,
-            Hero adoptedHero, int amount, SettingsBase baseSettings)
+            Hero adoptedHero, int amount, SettingsBase baseSettings, string args)
         {
             var settings = (FocusPointsSettings) baseSettings;
 
             return FocusSkill(adoptedHero, amount, settings.Skills, settings.Auto);
         }
 
-        public static (bool success, string description) FocusSkill(Hero adoptedHero, int amount, Skills skills, bool auto)
+        public static (bool success, string description) FocusSkill(Hero adoptedHero, int amount, SkillsEnum skills, bool auto)
         {
             var skill = GetSkill(adoptedHero, skills, auto, s => adoptedHero.HeroDeveloper.GetFocus(s) < 5);
 
