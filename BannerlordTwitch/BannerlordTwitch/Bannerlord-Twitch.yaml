@@ -518,6 +518,7 @@ Commands:
     ShowAttributes: true
     ShowEquipment: false
     ShowInventory: false
+    ShowCivilianInventory: false
     ShowRetinue: true
     ShowRetinueList: false
 - Name: inv
@@ -538,6 +539,7 @@ Commands:
     ShowAttributes: false
     ShowEquipment: true
     ShowInventory: true
+    ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: false
 - Name: equip
@@ -620,6 +622,7 @@ Commands:
     ShowAttributes: false
     ShowEquipment: false
     ShowInventory: false
+    ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: false
 - Name: retinuelist
@@ -640,6 +643,7 @@ Commands:
     ShowAttributes: false
     ShowEquipment: false
     ShowInventory: false
+    ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: true
 GlobalConfigs:
@@ -825,3 +829,4 @@ SimTesting:
     Id: Heal Hero
     Args: ''
     Weight: 0.0500000007
+DisableAutomaticFulfillment: false
