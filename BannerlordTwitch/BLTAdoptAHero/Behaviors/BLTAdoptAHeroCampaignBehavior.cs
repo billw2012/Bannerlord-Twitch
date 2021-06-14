@@ -227,9 +227,9 @@ namespace BLTAdoptAHero
                 }
 
                 // Retire up any dead heroes
-                foreach (var deadHero in heroData.Keys.Where(h => h.IsDead))
+                foreach (var (hero, data) in heroData.Where(h => h.Key.IsDead && !h.Value.IsRetiredOrDead))
                 {
-                    RetireHero(deadHero);
+                    RetireHero(hero);
                 }
             });
             
