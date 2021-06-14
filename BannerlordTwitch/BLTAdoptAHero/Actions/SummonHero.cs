@@ -630,6 +630,9 @@ namespace BLTAdoptAHero
 
                     if (allowRetinue)
                     {
+                        bool retinueMounted = Mission.Current.Mode != MissionMode.Stealth 
+                                              && !MissionHelpers.InSiegeMission() 
+                                              && (isMounted || !BLTAdoptAHeroModule.CommonConfig.RetinueUseHeroesFormation);
                         var agent_name = AccessTools.Field(typeof(Agent), "_name");
                         foreach (var retinueTroop in retinueTroops)
                         {
@@ -649,8 +652,7 @@ namespace BLTAdoptAHero
                                 new PartyAgentOrigin(existingHero.Party, retinueTroop),
                                 isPlayerSide: settings.OnPlayerSide,
                                 hasFormation: true,
-                                spawnWithHorse: retinueTroop.IsMounted 
-                                                && (isMounted || !BLTAdoptAHeroModule.CommonConfig.RetinueUseHeroesFormation),
+                                spawnWithHorse: retinueTroop.IsMounted && retinueMounted,
                                 isReinforcement: true,
                                 enforceSpawningOnInitialPoint: false,
                                 formationTroopCount: totalTroopsCount,
