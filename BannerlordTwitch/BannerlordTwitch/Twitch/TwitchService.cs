@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -377,8 +377,7 @@ namespace BannerlordTwitch
                 .ToList();
             if (settings.EnabledRewards.Any())
             {
-                help.Add($"Rewards: ");
-                help.AddRange(settings.EnabledRewards.Select(r => r.RewardSpec.Title));
+                help.Add($"Also see Channel Point Rewards");
             }
             bot.SendChat(help.ToArray());
         }
