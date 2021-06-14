@@ -29,6 +29,8 @@ namespace BLTAdoptAHero
                 public CharacterObject TroopType { get; set; }
                 [SaveableProperty(1)]
                 public int Level { get; set; }
+                [SaveableProperty(2)]
+                public int SavedTroopIndex { get; set; }
             }
             
             [SaveableProperty(0)]
@@ -67,7 +69,30 @@ namespace BLTAdoptAHero
 
             if (dataStore.IsLoading)
             {
-                // Cleanup
+                Dictionary<Hero, HeroData> oldHeroData = null;
+                dataStore.SyncDataAsJson("HeroData", ref oldHeroData);
+
+                List<Hero> usedHeroList = null;
+                dataStore.SyncData("UsedHeroObjectList", ref usedHeroList);
+
+                List<CharacterObject> usedCharList = null;
+                dataStore.SyncData("UsedCharacterObjectList", ref usedCharList);
+
+                Dictionary<int, HeroData> heroData2 = null;
+                dataStore.SyncDataAsJson("HeroData2", ref heroData2);
+                if (heroData2 == null && oldHeroData != null)
+                {
+                    heroData = oldHeroData;
+                }
+                else if (heroData2 != null)
+                {
+                    heroData = heroData2.ToDictionary(kv => usedHeroList[kv.Key], kv => kv.Value);
+                    foreach (var r in heroData.Values.SelectMany(h => h.Retinue))
+                    {
+                        r.TroopType = usedCharList[r.SavedTroopIndex];
+                    }
+                }
+
                 foreach (var (hero, data) in heroData)
                 {
                     // Try and find an appropriate character to replace the missing retinue with
@@ -103,12 +128,20 @@ namespace BLTAdoptAHero
             }
             else
             {
-                // Need to explicitly write out the CharacterObjects so that they are referenced at least once in the primary object index
+                // Need to explicitly write out the Heroes and CharacterObjects so we can look them up by index in the HeroData
                 var usedCharList = heroData.Values.SelectMany(h => h.Retinue.Select(r => r.TroopType)).Distinct().ToList();
                 dataStore.SyncData("UsedCharacterObjectList", ref usedCharList);
-                // Do the same for heroes, just in case! Shouldn't be necessary as Heroes MUST exist elsewhere in the save or they wouldn't load...
+                
                 var usedHeroList = heroData.Keys.ToList();
                 dataStore.SyncData("UsedHeroObjectList", ref usedHeroList);
+
+                foreach (var r in heroData.Values.SelectMany(h => h.Retinue))
+                {
+                    r.SavedTroopIndex = usedCharList.IndexOf(r.TroopType);
+                }
+
+                var heroDataSavable = heroData.ToDictionary(kv => usedHeroList.IndexOf(kv.Key), kv => kv.Value);
+                dataStore.SyncDataAsJson("HeroData2", ref heroDataSavable);
             }
         }
         
