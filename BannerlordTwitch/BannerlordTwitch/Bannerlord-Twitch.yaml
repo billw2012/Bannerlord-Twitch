@@ -482,22 +482,22 @@ Rewards:
 - RewardSpec:
     Title: Give Player Gold
     DisableAutomaticFulfillment: false
-    Prompt: 'Give the player some of your gold. Enter gift message:'
+    Prompt: 'Transfer 10k gold to the player from your hero. Enter gift message:'
     Cost: 100
     IsEnabled: true
     BackgroundColorText: 
-    IsUserInputRequired: false
+    IsUserInputRequired: true
     MaxPerStream: 
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: AddGoldToPlayer
   ID: 4ff890a2-ff83-41fa-9441-156f32abd9e8
-  Enabled: false
-  RespondInTwitch: false
-  RespondInOverlay: false
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig:
     GoldAmountToGive: 10000
-    FromAdoptedHero: false
+    FromAdoptedHero: true
     AlertSound: Notification1
 Commands:
 - Name: stats

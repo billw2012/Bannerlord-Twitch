@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
@@ -46,18 +46,14 @@ namespace BLTBuffet
                     onFailure(Naming.NotEnoughGold(settings.GoldAmountToGive, availableGold));
                     return;
                 }
-                
-                Log.ShowInformation($"Gives you {settings.GoldAmountToGive}{Naming.Gold}" +
-                                    (string.IsNullOrEmpty(context.Args) ? "" : $": '{context.Args}'"), 
-                    adoptedHero.CharacterObject, settings.AlertSound);
+                BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldAmountToGive);
             }
-            else
-            {
-                Log.ShowInformation($"${context.UserName} gives you {settings.GoldAmountToGive}{Naming.Gold}" +
-                                    (string.IsNullOrEmpty(context.Args) ? "" : $": '{context.Args}'"), null, settings.AlertSound);
-            }
+            Log.ShowInformation($"{context.UserName} gives you {settings.GoldAmountToGive} gold" +
+                                (string.IsNullOrEmpty(context.Args) ? "" : $": \"{context.Args}\""), adoptedHero?.CharacterObject, settings.AlertSound);
+            
+            Hero.MainHero.ChangeHeroGold(settings.GoldAmountToGive);
 
-            onSuccess("Sent");
+            onSuccess($"Sent {settings.GoldAmountToGive}{Naming.Gold} to {Hero.MainHero.Name}");
         }
     }
 }
