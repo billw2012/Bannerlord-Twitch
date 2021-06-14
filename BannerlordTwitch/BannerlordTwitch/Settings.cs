@@ -266,6 +266,8 @@ namespace BannerlordTwitch
         [YamlIgnore]
         public IEnumerable<ActionBase> AllActions => Rewards.Cast<ActionBase>().Concat(Commands);
 
+        public bool DisableAutomaticFulfillment { get; set; }
+        
         public Command GetCommand(string id) => this.EnabledCommands.FirstOrDefault(c =>
             string.Equals(c.Name, id, StringComparison.CurrentCultureIgnoreCase));
 

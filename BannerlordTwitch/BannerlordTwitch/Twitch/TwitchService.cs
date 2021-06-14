@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -424,7 +424,7 @@ namespace BannerlordTwitch
             ActionManager.SendReply(context, info);
             if (!string.IsNullOrEmpty(redemption.ChannelId))
             {
-                if ((context.Source as Reward)?.RewardSpec?.DisableAutomaticFulfillment != true)
+                if (!settings.DisableAutomaticFulfillment && (context.Source as Reward)?.RewardSpec?.DisableAutomaticFulfillment != true)
                 {
                     _ = SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.FULFILLED);
                 }

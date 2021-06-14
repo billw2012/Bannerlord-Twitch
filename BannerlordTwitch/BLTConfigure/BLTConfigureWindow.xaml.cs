@@ -57,6 +57,16 @@ namespace BLTConfigure
                 SaveAuth();
             }
         }
+
+        public bool DisableAutomaticFulfillment
+        {
+            get => EditedSettings.DisableAutomaticFulfillment;
+            set
+            {
+                EditedSettings.DisableAutomaticFulfillment = value;
+                SaveSettings();
+            }
+        }
         
         public BLTConfigureWindow()
         {
