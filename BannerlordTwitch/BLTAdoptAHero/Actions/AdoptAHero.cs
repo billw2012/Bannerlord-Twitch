@@ -23,8 +23,8 @@ namespace BLTAdoptAHero
     {
 
 
-        internal const string NoHeroMessage = "Couldn't find your hero, did you adopt one yet?";
-        internal const string NotStartedMessage = "The game isn't started yet";
+        public const string NoHeroMessage = "Couldn't find your hero, did you adopt one yet?";
+        public const string NotStartedMessage = "The game isn't started yet";
 
         [CategoryOrder("General", 0)]
         [CategoryOrder("Limits", 1)]
