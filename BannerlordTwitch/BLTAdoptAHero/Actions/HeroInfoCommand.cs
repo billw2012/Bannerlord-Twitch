@@ -52,7 +52,7 @@ namespace BLTAdoptAHero
             var infoStrings = new List<string>{};
             if (adoptedHero == null)
             {
-                infoStrings.Add(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
+                infoStrings.Add(AdoptAHero.NoHeroMessage);
             }
             else
             {

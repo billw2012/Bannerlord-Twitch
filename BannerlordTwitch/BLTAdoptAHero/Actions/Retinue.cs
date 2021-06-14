@@ -27,7 +27,7 @@ namespace BLTAdoptAHero
             var adoptedHero = BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
-                onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
+                onFailure(AdoptAHero.NoHeroMessage);
                 return;
             }
             

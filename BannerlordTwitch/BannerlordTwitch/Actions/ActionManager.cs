@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Bannerlord.ButterLib.Common.Extensions;
 using BannerlordTwitch.Util;
+using TaleWorlds.CampaignSystem;
 using YamlDotNet.Serialization;
 
 namespace BannerlordTwitch.Rewards
@@ -184,6 +185,12 @@ namespace BannerlordTwitch.Rewards
 
         internal static void HandleCommand(string commandId, ReplyContext context, object config)
         {
+            if (Campaign.Current == null)
+            {
+                SendReply(context, NotStartedMessage);
+                return;
+            }
+
             if (commandHandlers.TryGetValue(commandId, out var cmdHandler))
             {
                 try
@@ -207,8 +214,16 @@ namespace BannerlordTwitch.Rewards
             }
         }
 
+        public const string NotStartedMessage = "The game isn't started yet";
+
         internal static bool HandleReward(string rewardId, ReplyContext context, object config)
         {
+            if (Campaign.Current == null)
+            {
+                NotifyCancelled(context, NotStartedMessage);
+                return false;
+            }
+            
             if (!rewardHandlers.TryGetValue(rewardId, out var action))
             {
                 Log.Error($"Action with the id {rewardId} doesn't exist");

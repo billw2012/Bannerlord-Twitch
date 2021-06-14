@@ -21,10 +21,7 @@ namespace BLTAdoptAHero
     [Description("Allows viewer to 'adopt' a hero in game -- the hero name will change to the viewers name, and they can control it with further commands")]
     public class AdoptAHero : IRewardHandler, ICommandHandler
     {
-
-
         public const string NoHeroMessage = "Couldn't find your hero, did you adopt one yet?";
-        public const string NotStartedMessage = "The game isn't started yet";
 
         [CategoryOrder("General", 0)]
         [CategoryOrder("Limits", 1)]
@@ -137,11 +134,6 @@ namespace BLTAdoptAHero
 
         private static (bool success, string message) ExecuteInternal(string args, string userName, Settings settings)
         {
-            if (Campaign.Current == null)
-            {
-                return (false, NotStartedMessage);
-            }
-
             Hero newHero = null;
             if (settings.CreateNew)
             {

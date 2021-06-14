@@ -25,7 +25,7 @@ namespace BLTAdoptAHero
             var adoptedHero = BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
-                ActionManager.NotifyCancelled(context, Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
+                ActionManager.NotifyCancelled(context, AdoptAHero.NoHeroMessage);
                 return;
             }
             int newGold = BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, settings.Amount);

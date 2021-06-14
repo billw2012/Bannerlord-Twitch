@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
@@ -36,7 +36,7 @@ namespace BLTBuffet
             {
                 if (adoptedHero == null)
                 {
-                    onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
+                    onFailure(AdoptAHero.NoHeroMessage);
                     return;
                 }
 
