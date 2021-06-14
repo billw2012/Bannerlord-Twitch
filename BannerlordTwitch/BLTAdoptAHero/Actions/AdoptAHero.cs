@@ -207,8 +207,9 @@ namespace BLTAdoptAHero
 #endif
             }
 
+            // Setup skills first, THEN name, as skill changes can generate feed messages for adopted characters
             string oldName = newHero.Name.ToString();
-            BLTAdoptAHeroCampaignBehavior.SetHeroAdoptedName(newHero, userName);
+            BLTAdoptAHeroCampaignBehavior.Current.InitAdoptedHero(newHero, userName);
             
             if (settings.StartingEquipmentTier.HasValue)
             {
@@ -219,11 +220,7 @@ namespace BLTAdoptAHero
                 }
                 BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentTier(newHero, settings.StartingEquipmentTier.Value - 1);
             }
-            else
-            {
-                BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentTier(newHero, EquipHero.GetHeroEquipmentTier(newHero));
-            }
-            
+
             if(!Campaign.Current.EncyclopediaManager.BookmarksTracker.IsBookmarked(newHero))
             {
                 Campaign.Current.EncyclopediaManager.BookmarksTracker.AddBookmarkToItem(newHero);

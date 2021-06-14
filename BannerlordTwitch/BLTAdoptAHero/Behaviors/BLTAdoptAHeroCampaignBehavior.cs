@@ -110,7 +110,7 @@ namespace BLTAdoptAHero
                     // Update EquipmentTier if it isn't set
                     if (data.EquipmentTier == -2)
                     {
-                        data.EquipmentTier = EquipHero.GetHeroEquipmentTier(hero);
+                        data.EquipmentTier = EquipHero.CalculateHeroEquipmentTier(hero);
                     }
 
                     // Set owner name from the hero name
@@ -331,7 +331,11 @@ namespace BLTAdoptAHero
             // Better create it now if it doesn't exist
             if (!heroData.TryGetValue(hero, out var hd))
             {
-                hd = new HeroData { Gold = hero.Gold, EquipmentTier = -1 };
+                hd = new HeroData
+                {
+                    Gold = hero.Gold,
+                    EquipmentTier = EquipHero.CalculateHeroEquipmentTier(hero),
+                };
                 heroData.Add(hero, hd);
             }
 
@@ -501,6 +505,12 @@ namespace BLTAdoptAHero
         public static void SetHeroAdoptedName(Hero hero, string userName)
         {
             HeroHelpers.SetHeroName(hero, new TextObject(GetFullName(userName)), new TextObject(userName));
+        }
+
+        public void InitAdoptedHero(Hero newHero, string userName)
+        {
+            GetHeroData(newHero);
+            SetHeroAdoptedName(newHero, userName);
         }
         
         public Hero GetAdoptedHero(string name)

@@ -101,9 +101,9 @@ namespace BLTAdoptAHero
             }
         }
         
-        public static int GetHeroEquipmentTier(Hero hero) =>
+        public static int CalculateHeroEquipmentTier(Hero hero) =>
             // The Mode of the tiers of the equipment
-            hero.BattleEquipment.YieldEquipmentSlots().Concat(hero.CivilianEquipment.YieldEquipmentSlots())
+            hero.BattleEquipment.YieldEquipmentSlots()
                 .Where(s => s.index is >= EquipmentIndex.ArmorItemBeginSlot and < EquipmentIndex.ArmorItemEndSlot || s.element.Item != null)
                 .Select(s => s.element.Item)
                 .Select(i => i == null ? -1 : (int)i.Tier)
