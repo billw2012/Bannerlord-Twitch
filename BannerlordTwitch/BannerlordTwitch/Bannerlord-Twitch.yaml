@@ -365,7 +365,8 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: false
-  HandlerConfig: 
+  HandlerConfig:
+    AlertSound: Notification1
 - RewardSpec:
     Title: Retire My Hero
     DisableAutomaticFulfillment: false

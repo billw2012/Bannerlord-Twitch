@@ -283,6 +283,10 @@ namespace BannerlordTwitch
             if (settings == null)
                 throw new Exception($"Couldn't load the mod settings from {SaveFilePath}");
 
+            ActionManager.ConvertSettings(settings.Commands);
+            ActionManager.ConvertSettings(settings.Rewards);
+            ActionManager.EnsureGlobalSettings(settings.GlobalConfigs);
+            
             foreach (var action in settings.AllActions)
             {
                 if (!action.IsValid)
@@ -340,7 +344,11 @@ namespace BannerlordTwitch
             settings.Rewards.Sort((a, b) => string.Compare(a.ToString(), b.ToString(), StringComparison.Ordinal));
             settings.GlobalConfigs.AddRange(templateSettings.GlobalConfigs.Where(s => settings.GlobalConfigs.All(s2 => s2.Id != s.Id)));
             settings.GlobalConfigs.Sort((a, b) => string.Compare(a.ToString(), b.ToString(), StringComparison.Ordinal));
-            
+
+            ActionManager.ConvertSettings(settings.Commands);
+            ActionManager.ConvertSettings(settings.Rewards);
+            ActionManager.EnsureGlobalSettings(settings.GlobalConfigs);
+
             foreach (var action in settings.AllActions)
             {
                 if (!action.IsValid)

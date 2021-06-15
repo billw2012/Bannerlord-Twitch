@@ -118,11 +118,7 @@ namespace BLTConfigure
             }
 
             EditedSettings ??= new Settings();
-            
-            ActionManager.ConvertSettings(EditedSettings.Commands);
-            ActionManager.ConvertSettings(EditedSettings.Rewards);
-            ActionManager.EnsureGlobalSettings(EditedSettings.GlobalConfigs);
-            
+
             RefreshActionList();
             PropertyGrid.SelectedObject = null;
 

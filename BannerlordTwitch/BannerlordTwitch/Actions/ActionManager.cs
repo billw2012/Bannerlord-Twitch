@@ -110,18 +110,31 @@ namespace BannerlordTwitch.Rewards
 
         public static void ConvertSettings(IEnumerable<Reward> rewards)
         {
-            foreach (var rewardDef in rewards.Where(r => r.HandlerConfig != null))
+            foreach (var rewardDef in rewards)
             {
                 if (rewardHandlers.TryGetValue(rewardDef.Handler, out var action))
                 {
-                    try
+                    if (rewardDef.HandlerConfig == null && action.RewardConfigType != null)
                     {
-                        rewardDef.HandlerConfig = ConvertObject(rewardDef.HandlerConfig, action.RewardConfigType);
-                    }
-                    catch (Exception)
-                    {
-                        Log.Error($"{rewardDef} had invalid config, resetting it to default");
                         rewardDef.HandlerConfig = Activator.CreateInstance(action.RewardConfigType);
+                    }
+                    else if (rewardDef.HandlerConfig != null && action.RewardConfigType == null)
+                    {
+                        rewardDef.HandlerConfig = null;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            rewardDef.HandlerConfig = action.RewardConfigType != null
+                                ? ConvertObject(rewardDef.HandlerConfig, action.RewardConfigType)
+                                : null;
+                        }
+                        catch (Exception)
+                        {
+                            Log.Error($"{rewardDef} had invalid config, resetting it to default");
+                            rewardDef.HandlerConfig = Activator.CreateInstance(action.RewardConfigType);
+                        }
                     }
                 }
             }
@@ -129,18 +142,31 @@ namespace BannerlordTwitch.Rewards
         
         public static void ConvertSettings(IEnumerable<Command> commands)
         {
-            foreach (var commandDef in commands.Where(c => c.HandlerConfig != null))
+            foreach (var commandDef in commands)
             {
                 if (commandHandlers.TryGetValue(commandDef.Handler, out var command))
                 {
-                    try
+                    if (commandDef.HandlerConfig == null && command.HandlerConfigType != null)
                     {
-                        commandDef.HandlerConfig = ConvertObject(commandDef.HandlerConfig, command.HandlerConfigType);
-                    }
-                    catch (Exception)
-                    {
-                        Log.Error($"{commandDef} had invalid config, resetting it to default");
                         commandDef.HandlerConfig = Activator.CreateInstance(command.HandlerConfigType);
+                    }
+                    else if (commandDef.HandlerConfig != null && command.HandlerConfigType == null)
+                    {
+                        commandDef.HandlerConfig = null;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            commandDef.HandlerConfig = command.HandlerConfigType != null
+                                ? ConvertObject(commandDef.HandlerConfig, command.HandlerConfigType)
+                                : null;
+                        }
+                        catch (Exception)
+                        {
+                            Log.Error($"{commandDef} had invalid config, resetting it to default");
+                            commandDef.HandlerConfig = Activator.CreateInstance(command.HandlerConfigType);
+                        }
                     }
                 }
             }
