@@ -368,7 +368,12 @@ namespace BLTAdoptAHero
                 }
             });
         }
-        
+
+        private static bool IsHeroOnPlayerSide(Hero hero) =>
+            MobileParty.MainParty?.MapEvent?
+                .PartiesOnSide(MobileParty.MainParty.MapEvent.PlayerSide)
+                .Any(p => p.Party == hero.PartyBelongedTo?.Party) ?? true;
+
         private void UpdateHeroVM(Hero hero)
         {
             var heroState = GetHeroMissionState(hero);
@@ -387,7 +392,7 @@ namespace BLTAdoptAHero
             var heroModel = new HeroViewModel
             {
                 Name = hero.FirstName.Raw(),
-                IsPlayerSide = summonState?.WasPlayerSide ?? true,
+                IsPlayerSide = summonState?.WasPlayerSide ?? IsHeroOnPlayerSide(hero),
                 MaxHP = agent?.HealthLimit ?? 100,
                 HP = agent?.Health ?? 0,
                 IsRouted = state is AgentState.Routed,
