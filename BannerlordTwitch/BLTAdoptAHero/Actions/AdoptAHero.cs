@@ -62,7 +62,7 @@ namespace BLTAdoptAHero
             public List<SkillRangeDef> StartingSkills { get; set; } = new();
 
             [YamlIgnore, Browsable(false)]
-            public IEnumerable<SkillRangeDef> ValidStartingSkills => StartingSkills.Where(s => s.Skill != SkillsEnum.None);
+            public IEnumerable<SkillRangeDef> ValidStartingSkills => StartingSkills?.Where(s => s.Skill != SkillsEnum.None);
             
             [Category("Initialization"), 
              Description("Equipment tier the adopted hero will start with, if you don't specify then they get the " +
@@ -175,7 +175,7 @@ namespace BLTAdoptAHero
                 return (false, "You can't adopt a hero: no available hero matching the requirements was found!");
             }
 
-            if (settings.ValidStartingSkills.Any())
+            if (settings.ValidStartingSkills?.Any() == true)
             {
                 newHero.HeroDeveloper.ClearHero();
 

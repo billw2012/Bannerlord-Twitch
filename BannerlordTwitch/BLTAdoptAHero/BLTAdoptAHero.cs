@@ -314,13 +314,13 @@ namespace BLTAdoptAHero
         public List<HeroClassDef> ClassDefs { get; set; } = new();
 
         [Browsable(false), YamlIgnore]
-        public IEnumerable<string> ClassNames => ClassDefs.Select(c => c.Name?.ToLower());
+        public IEnumerable<string> ClassNames => ClassDefs?.Select(c => c.Name?.ToLower()) ?? Enumerable.Empty<string>();
 
         public HeroClassDef GetClass(Guid id) 
-            => ClassDefs.FirstOrDefault(c => c.ID == id);
+            => ClassDefs?.FirstOrDefault(c => c.ID == id);
 
         public HeroClassDef FindClass(string search) 
-            => ClassDefs.FirstOrDefault(c => c.Name.Equals(search, StringComparison.InvariantCultureIgnoreCase));
+            => ClassDefs?.FirstOrDefault(c => c.Name.Equals(search, StringComparison.InvariantCultureIgnoreCase));
 
         // public HeroClassDef FindClosestClass(Hero hero) =>
         //     // Find class that has maximum sum of matched skills

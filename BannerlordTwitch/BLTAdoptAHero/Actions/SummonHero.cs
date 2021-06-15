@@ -278,7 +278,7 @@ namespace BLTAdoptAHero
             var messages = (BLTAdoptAHeroModule.CommonConfig.IncludeDefaultShouts
                     ? DefaultShouts
                     : Enumerable.Empty<Shout>())
-                .Concat(BLTAdoptAHeroModule.CommonConfig.Shouts)
+                .Concat(BLTAdoptAHeroModule.CommonConfig.Shouts ?? Enumerable.Empty<Shout>())
                 .Where(s =>
                     (s.EnemySide && !settings.OnPlayerSide || s.PlayerSide && settings.OnPlayerSide)
                     && (s.General || !doingGeneral)

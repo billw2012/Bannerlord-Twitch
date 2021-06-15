@@ -283,6 +283,11 @@ namespace BannerlordTwitch
             if (settings == null)
                 throw new Exception($"Couldn't load the mod settings from {SaveFilePath}");
 
+            settings.Commands ??= new();
+            settings.Rewards ??= new();
+            settings.GlobalConfigs ??= new();
+            settings.SimTesting ??= new();
+
             ActionManager.ConvertSettings(settings.Commands);
             ActionManager.ConvertSettings(settings.Rewards);
             ActionManager.EnsureGlobalSettings(settings.GlobalConfigs);
