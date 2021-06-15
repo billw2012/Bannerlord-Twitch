@@ -77,7 +77,6 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            var currentEquipmentClass = BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentClass(adoptedHero);
             var charClass = BLTAdoptAHeroCampaignBehavior.Current.GetClass(adoptedHero);
 
             UpgradeEquipment(adoptedHero, targetTier, charClass, !settings.ReequipInsteadOfUpgrade);
@@ -86,7 +85,9 @@ namespace BLTAdoptAHero
             BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentClass(adoptedHero, charClass);
             BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -cost, isSpending: true);
 
-            onSuccess($"Equip Tier {targetTier + 1}");
+            onSuccess(settings.ReequipInsteadOfUpgrade
+                ? $"Re-equipped Tier {targetTier + 1} ({charClass?.Name ?? "No Class"})"
+                : $"Equipped Tier {targetTier + 1} ({charClass?.Name ?? "No Class"})");
         }
 
         internal static void RemoveAllEquipment(Hero adoptedHero)
