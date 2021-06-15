@@ -1,26 +1,52 @@
 Rewards:
 - RewardSpec:
-    Title: 100k gold
+    Title: Adopt a Hero
     DisableAutomaticFulfillment: false
-    Prompt: 
-    Cost: 1000
+    Prompt: Take control of a hero in game
+    Cost: 300
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: false
     MaxPerStream: 
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
-  Handler: AddGoldToHero
-  ID: 3243fa75-2ce6-4f0b-94c5-6aee5eea8fdc
+  Handler: AdoptAHero
+  ID: e072adb0-83a2-4408-87bb-b2cff3f12ee2
   Enabled: true
-  RespondInTwitch: false
+  RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig:
-    Amount: 100000
+    CreateNew: false
+    AllowNoble: true
+    AllowWanderer: true
+    AllowPlayerCompanion: false
+    OnlySameFaction: false
+    Inheritance: 0.25
+    SubscriberOnly: false
+    MinSubscribedMonths: 
+    StartingGold: 0
+    StartingSkills:
+    - Skill: Melee
+      MinLevel: 50
+      MaxLevel: 125
+    - Skill: Ranged
+      MinLevel: 50
+      MaxLevel: 125
+    - Skill: Riding
+      MinLevel: 25
+      MaxLevel: 75
+    - Skill: Athletics
+      MinLevel: 25
+      MaxLevel: 75
+    StartingEquipmentTier: 0
+    StartWithMeleeWeapon: true
+    StartWithRangedWeapon: true
+    StartWithHorse: true
+    StartWithArmor: true
 - RewardSpec:
     Title: 10k gold
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Add 10,000 gold to your adopted hero
     Cost: 500
     IsEnabled: true
     BackgroundColorText: 
@@ -29,71 +55,35 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: AddGoldToHero
-  ID: 6c2418eb-5610-44d2-8513-e19f860e758e
+  ID: 7e0991eb-4304-496d-a9b4-874a1c114bae
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
     Amount: 10000
 - RewardSpec:
-    Title: 50k XP
+    Title: 100k gold
     DisableAutomaticFulfillment: false
-    Prompt: Add 50,000 XP to a random skill of your adopted hero
-    Cost: 1000
+    Prompt: Add 100,000 gold to your adopted hero
+    Cost: 2500
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: false
     MaxPerStream: 
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
-  Handler: SkillXP
-  ID: fe103fc4-fcaa-4e0d-809d-235d22676b6a
+  Handler: AddGoldToHero
+  ID: 2ccc7258-ad66-4afa-a45a-93863c1d7f35
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
-    Skills: None
-    Auto: true
-    AmountLow: 50000
-    AmountHigh: 50000
-    GoldCost: 0
+    Amount: 100000
 - RewardSpec:
-    Title: Adopt a Hero
-    DisableAutomaticFulfillment: true
-    Prompt: 
-    Cost: 150
-    IsEnabled: true
-    BackgroundColorText: 
-    IsUserInputRequired: false
-    MaxPerStream: 
-    MaxPerUserPerStream: 
-    GlobalCooldownSeconds: 
-  Handler: AdoptAHero
-  ID: 58c62fda-565e-4d7d-b7a8-d2fdf1f59aea
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    CreateNew: false
-    AllowNoble: true
-    AllowWanderer: true
-    AllowPlayerCompanion: true
-    OnlySameFaction: false
-    Inheritance: 0.25
-    SubscriberOnly: false
-    MinSubscribedMonths: 
-    StartingGold: 50000
-    StartingSkills: 
-    StartingEquipmentTier: 0
-    StartWithMeleeWeapon: true
-    StartWithRangedWeapon: true
-    StartWithHorse: true
-    StartWithArmor: true
-- RewardSpec:
-    Title: Attack
+    Title: Summon
     DisableAutomaticFulfillment: false
-    Prompt: 
-    Cost: 25
+    Prompt: Your adopted hero joins the players side in battle
+    Cost: 50
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: false
@@ -101,7 +91,35 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: SummonHero
-  ID: 8cc79471-c74c-428b-8580-475621e60b37
+  ID: 77c1dbd8-02cb-47d7-9796-7308e989b7f3
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    AllowFieldBattle: true
+    AllowVillageBattle: true
+    AllowSiegeBattle: true
+    AllowFriendlyMission: true
+    AllowHideOut: true
+    OnPlayerSide: true
+    GoldCost: 0
+    PreferredFormation: LightCavalry
+    AlertSound: None
+    SubBoost: 2
+    HealPerSecond: 0
+- RewardSpec:
+    Title: Attack
+    DisableAutomaticFulfillment: false
+    Prompt: Your adopted hero joins the enemies side in battle
+    Cost: 50
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    GlobalCooldownSeconds: 
+  Handler: SummonHero
+  ID: 422cc8d9-84cb-4cc9-afdf-889e615fdea6
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
@@ -113,15 +131,15 @@ Rewards:
     AllowHideOut: true
     OnPlayerSide: false
     GoldCost: 0
-    PreferredFormation: 
-    AlertSound: Horns2
-    SubBoost: 0
-    HealPerSecond: 0.100000001
+    PreferredFormation: LightCavalry
+    AlertSound: None
+    SubBoost: 2
+    HealPerSecond: 0
 - RewardSpec:
-    Title: Attack on Titan
+    Title: Heal Player
     DisableAutomaticFulfillment: false
-    Prompt: 
-    Cost: 5000
+    Prompt: Heal the player over time
+    Cost: 100
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: false
@@ -129,8 +147,142 @@ Rewards:
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
   Handler: CharacterEffect
-  ID: 0eceecd7-9f79-49b4-bbbe-a5900c88b1e1
+  ID: f0b482c2-e121-4415-a2a6-95e592a4d7a9
   Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    Name: Healing
+    Target: Player
+    TargetOnFootOnly: false
+    Scale: 
+    ParticleEffects:
+    - Name: psys_bug_fly_1
+      AttachPoint: OnBody
+    Properties: 
+    HealPerSecond: 1
+    DamagePerSecond: 0
+    Duration: 30
+    ForceDropWeapons: false
+    RemoveArmor: false
+    DamageMultiplier: 
+    ActivateParticleEffect: 
+    ActivateSound: 
+    DeactivateParticleEffect: 
+    DeactivateSound: 
+- RewardSpec:
+    Title: Giant Hero
+    DisableAutomaticFulfillment: false
+    Prompt: 
+    Cost: 300
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    GlobalCooldownSeconds: 
+  Handler: CharacterEffect
+  ID: 5c5188e9-5635-4fc2-bdb6-1e2be9dd0603
+  Enabled: false
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    Name: Giant
+    Target: AdoptedHero
+    TargetOnFootOnly: false
+    Scale: 1.75
+    ParticleEffects: []
+    Properties:
+    - Name: ArmorHead
+      Add: 50
+      Multiply: 
+    - Name: ArmorTorso
+      Add: 50
+      Multiply: 
+    - Name: ArmorLegs
+      Add: 50
+      Multiply: 
+    - Name: ArmorArms
+      Add: 50
+      Multiply: 
+    - Name: SwingSpeedMultiplier
+      Add: 
+      Multiply: 0.5
+    - Name: MaxSpeedMultiplier
+      Add: 
+      Multiply: 0.75
+    HealPerSecond: 0
+    DamagePerSecond: 0
+    Duration: 
+    ForceDropWeapons: false
+    RemoveArmor: false
+    DamageMultiplier: 2
+    ActivateParticleEffect: psys_burning_projectile_default_coll
+    ActivateSound: 
+    DeactivateParticleEffect: psys_burning_projectile_default_coll
+    DeactivateSound: 
+- RewardSpec:
+    Title: Baby Hero
+    DisableAutomaticFulfillment: false
+    Prompt: 
+    Cost: 300
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    GlobalCooldownSeconds: 
+  Handler: CharacterEffect
+  ID: e3c7dfec-bac5-4294-9825-742e26e7e1df
+  Enabled: false
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    Name: Baby
+    Target: AdoptedHero
+    TargetOnFootOnly: false
+    Scale: 0.660000026
+    ParticleEffects: []
+    Properties:
+    - Name: ArmorHead
+      Add: 
+      Multiply: 0.5
+    - Name: ArmorTorso
+      Add: 
+      Multiply: 0.5
+    - Name: ArmorLegs
+      Add: 
+      Multiply: 0.5
+    - Name: ArmorArms
+      Add: 
+      Multiply: 0.5
+    - Name: MaxSpeedMultiplier
+      Add: 
+      Multiply: 1.60000002
+    HealPerSecond: 0
+    DamagePerSecond: 0
+    Duration: 
+    ForceDropWeapons: false
+    RemoveArmor: false
+    DamageMultiplier: 
+    ActivateParticleEffect: psys_burning_projectile_default_coll_small
+    ActivateSound: 
+    DeactivateParticleEffect: psys_burning_projectile_default_coll_small
+    DeactivateSound: 
+- RewardSpec:
+    Title: Attack on Titan
+    DisableAutomaticFulfillment: false
+    Prompt: 
+    Cost: 2000
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    GlobalCooldownSeconds: 
+  Handler: CharacterEffect
+  ID: 245adcfa-0df2-47d3-bff8-707bd10e6c25
+  Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
@@ -180,9 +332,62 @@ Rewards:
     DeactivateParticleEffect: psys_burning_projectile_default_coll
     DeactivateSound: 
 - RewardSpec:
-    Title: Baby Hero
+    Title: Tournament
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Join the tournament queue with your adopted hero
+    Cost: 25
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    GlobalCooldownSeconds: 
+  Handler: JoinTournament
+  ID: e1d775d0-0d60-4e12-baa7-39f0e791293a
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    GoldCost: 0
+- RewardSpec:
+    Title: Send Message In Game
+    DisableAutomaticFulfillment: false
+    Prompt: Enter Message
+    Cost: 250
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: true
+    MaxPerStream: 
+    MaxPerUserPerStream: 10
+    GlobalCooldownSeconds: 15
+  Handler: SendMessage
+  ID: 1b1f00fe-fff8-4f76-8c09-8da0fd18c53b
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: false
+  HandlerConfig:
+    AlertSound: Notification1
+- RewardSpec:
+    Title: Retire My Hero
+    DisableAutomaticFulfillment: false
+    Prompt: Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel
+    Cost: 2500
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: true
+    MaxPerStream: 
+    MaxPerUserPerStream: 3
+    GlobalCooldownSeconds: 60
+  Handler: RetireMyHero
+  ID: 60d43b2b-d1cb-4411-a126-d5089c264aca
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
+  HandlerConfig: 
+- RewardSpec:
+    Title: 50k XP
+    DisableAutomaticFulfillment: false
+    Prompt: Add 50,000 XP to a random skill of your adopted hero
     Cost: 1000
     IsEnabled: true
     BackgroundColorText: 
@@ -190,43 +395,17 @@ Rewards:
     MaxPerStream: 
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
-  Handler: CharacterEffect
-  ID: 8a43279c-700a-442c-861f-c6c8779c1e2a
+  Handler: SkillXP
+  ID: fe103fc4-fcaa-4e0d-809d-235d22676b6a
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
-    Name: Baby
-    Target: Player
-    TargetOnFootOnly: false
-    Scale: 0.660000026
-    ParticleEffects: []
-    Properties:
-    - Name: ArmorHead
-      Add: 
-      Multiply: 0.5
-    - Name: ArmorTorso
-      Add: 
-      Multiply: 0.5
-    - Name: ArmorLegs
-      Add: 
-      Multiply: 0.5
-    - Name: ArmorArms
-      Add: 
-      Multiply: 0.5
-    - Name: MaxSpeedMultiplier
-      Add: 
-      Multiply: 1.60000002
-    HealPerSecond: 0
-    DamagePerSecond: 0
-    Duration: 
-    ForceDropWeapons: false
-    RemoveArmor: false
-    DamageMultiplier: 
-    ActivateParticleEffect: psys_burning_projectile_default_coll_small
-    ActivateSound: 
-    DeactivateParticleEffect: psys_burning_projectile_default_coll_small
-    DeactivateSound: 
+    Skills: None
+    Auto: true
+    AmountLow: 50000
+    AmountHigh: 50000
+    GoldCost: 0
 - RewardSpec:
     Title: Burn Player
     DisableAutomaticFulfillment: false
@@ -269,77 +448,6 @@ Rewards:
     DeactivateParticleEffect: 
     DeactivateSound: 
 - RewardSpec:
-    Title: Giant Hero
-    DisableAutomaticFulfillment: false
-    Prompt: 
-    Cost: 200
-    IsEnabled: true
-    BackgroundColorText: 
-    IsUserInputRequired: false
-    MaxPerStream: 
-    MaxPerUserPerStream: 
-    GlobalCooldownSeconds: 
-  Handler: CharacterEffect
-  ID: 18b8d116-3aef-41a5-a513-f46bef568f4b
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    Name: Giant
-    Target: AdoptedHero
-    TargetOnFootOnly: false
-    Scale: 1.75
-    ParticleEffects: []
-    Properties:
-    - Name: ArmorHead
-      Add: 50
-      Multiply: 
-    - Name: ArmorTorso
-      Add: 50
-      Multiply: 
-    - Name: ArmorLegs
-      Add: 50
-      Multiply: 
-    - Name: ArmorArms
-      Add: 50
-      Multiply: 
-    - Name: SwingSpeedMultiplier
-      Add: 
-      Multiply: 0.5
-    - Name: MaxSpeedMultiplier
-      Add: 
-      Multiply: 0.75
-    HealPerSecond: 0
-    DamagePerSecond: 0
-    Duration: 
-    ForceDropWeapons: false
-    RemoveArmor: false
-    DamageMultiplier: 2
-    ActivateParticleEffect: psys_burning_projectile_default_coll
-    ActivateSound: 
-    DeactivateParticleEffect: psys_burning_projectile_default_coll
-    DeactivateSound: 
-- RewardSpec:
-    Title: Give Player Gold
-    DisableAutomaticFulfillment: false
-    Prompt: 'Transfer 10k gold to the player from your hero. Enter gift message:'
-    Cost: 1000
-    IsEnabled: true
-    BackgroundColorText: 
-    IsUserInputRequired: true
-    MaxPerStream: 
-    MaxPerUserPerStream: 
-    GlobalCooldownSeconds: 
-  Handler: AddGoldToPlayer
-  ID: 4ff890a2-ff83-41fa-9441-156f32abd9e8
-  Enabled: true
-  RespondInTwitch: true
-  RespondInOverlay: true
-  HandlerConfig:
-    GoldAmountToGive: 10000
-    FromAdoptedHero: true
-    AlertSound: Notification1
-- RewardSpec:
     Title: Heal Hero
     DisableAutomaticFulfillment: false
     Prompt: 
@@ -373,167 +481,102 @@ Rewards:
     DeactivateParticleEffect: 
     DeactivateSound: 
 - RewardSpec:
-    Title: Heal Player
+    Title: Give Player Gold
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: 'Transfer 10k gold to the player from your hero. Enter gift message:'
     Cost: 100
     IsEnabled: true
     BackgroundColorText: 
-    IsUserInputRequired: false
+    IsUserInputRequired: true
     MaxPerStream: 
     MaxPerUserPerStream: 
     GlobalCooldownSeconds: 
-  Handler: CharacterEffect
-  ID: 7a02925b-fb04-4a12-9de3-839f999e63f0
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    Name: Heal Player
-    Target: Player
-    TargetOnFootOnly: false
-    Scale: 
-    ParticleEffects:
-    - Name: psys_bug_fly_1
-      AttachPoint: OnBody
-    Properties: 
-    HealPerSecond: 1
-    DamagePerSecond: 0
-    Duration: 30
-    ForceDropWeapons: false
-    RemoveArmor: false
-    DamageMultiplier: 
-    ActivateParticleEffect: 
-    ActivateSound: 
-    DeactivateParticleEffect: 
-    DeactivateSound: 
-- RewardSpec:
-    Title: Retire My Hero
-    DisableAutomaticFulfillment: false
-    Prompt: Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel
-    Cost: 250
-    IsEnabled: true
-    BackgroundColorText: 
-    IsUserInputRequired: true
-    MaxPerStream: 
-    MaxPerUserPerStream: 3
-    GlobalCooldownSeconds: 60
-  Handler: RetireMyHero
-  ID: 60d43b2b-d1cb-4411-a126-d5089c264aca
+  Handler: AddGoldToPlayer
+  ID: 4ff890a2-ff83-41fa-9441-156f32abd9e8
   Enabled: true
   RespondInTwitch: true
-  RespondInOverlay: false
-  HandlerConfig: 
-- RewardSpec:
-    Title: Send Message In Game
-    DisableAutomaticFulfillment: false
-    Prompt: Enter Message
-    Cost: 250
-    IsEnabled: true
-    BackgroundColorText: 
-    IsUserInputRequired: true
-    MaxPerStream: 
-    MaxPerUserPerStream: 10
-    GlobalCooldownSeconds: 15
-  Handler: SendMessage
-  ID: 1b1f00fe-fff8-4f76-8c09-8da0fd18c53b
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: false
+  RespondInOverlay: true
   HandlerConfig:
+    GoldAmountToGive: 10000
+    FromAdoptedHero: true
     AlertSound: Notification1
-- RewardSpec:
-    Title: Summon
-    DisableAutomaticFulfillment: false
-    Prompt: 
-    Cost: 25
-    IsEnabled: true
-    BackgroundColorText: 
-    IsUserInputRequired: false
-    MaxPerStream: 
-    MaxPerUserPerStream: 
-    GlobalCooldownSeconds: 
-  Handler: SummonHero
-  ID: 4ae4740f-7f6f-45fa-9730-91cd15a70513
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    AllowFieldBattle: true
-    AllowVillageBattle: true
-    AllowSiegeBattle: true
-    AllowFriendlyMission: true
-    AllowHideOut: true
-    OnPlayerSide: true
-    GoldCost: 0
-    PreferredFormation: LightCavalry
-    AlertSound: None
-    SubBoost: 0
-    HealPerSecond: 0.100000001
-- RewardSpec:
-    Title: Tournament
-    DisableAutomaticFulfillment: false
-    Prompt: 
-    Cost: 50
-    IsEnabled: true
-    BackgroundColorText: 
-    IsUserInputRequired: false
-    MaxPerStream: 
-    MaxPerUserPerStream: 
-    GlobalCooldownSeconds: 
-  Handler: JoinTournament
-  ID: 94e9790f-7866-4632-996c-21deb201b856
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    GoldCost: 0
 Commands:
-- Name: Retinue
+- Name: stats
   HideHelp: false
-  Help: 
+  Help: Show Stats
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: HeroInfoCommand
+  ID: 1cf3abfd-3310-4a51-808e-e14d454eed05
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    ShowGold: true
+    ShowGeneral: true
+    ShowTopSkills: true
+    MinSkillToShow: 100
+    ShowAttributes: true
+    ShowEquipment: false
+    ShowInventory: false
+    ShowCivilianInventory: false
+    ShowRetinue: true
+    ShowRetinueList: false
+- Name: inv
+  HideHelp: false
+  Help: Show Equipment
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: HeroInfoCommand
+  ID: 7b6caafc-0246-47c2-8622-e091b10b8897
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    ShowGold: true
+    ShowGeneral: false
+    ShowTopSkills: false
+    MinSkillToShow: 100
+    ShowAttributes: false
+    ShowEquipment: true
+    ShowInventory: true
+    ShowCivilianInventory: false
+    ShowRetinue: false
+    ShowRetinueList: false
+- Name: equip
+  HideHelp: false
+  Help: Upgrade Equipment
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: EquipHero
+  ID: 90b571d1-dba8-4006-860c-a0401b6f8fd2
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    AllowCompanionUpgrade: false
+    GoldCost: 50000
+    MultiplyCostByCurrentTier: true
+    ReequipInsteadOfUpgrade: false
+- Name: retinue
+  HideHelp: false
+  Help: Upgrade Retinue
   BroadcasterOnly: false
   ModOnly: false
   Handler: Retinue
-  ID: 3d94282e-40fd-4348-be3c-39f954a2ef9c
+  ID: 38eed507-87b9-47f4-b235-af921cef00c4
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
     Retinue:
-      MaxRetinueSize: 10
-      CostPerTier: 500
+      MaxRetinueSize: 5
+      CostPerTier: 50000
       CostScalingPerTier: 1
       UseHeroesCultureUnits: true
       IncludeBanditUnits: false
       UseBasicTroops: true
       UseEliteTroops: true
-- Name: adopt
-  HideHelp: false
-  Help: Adopt a Hero (subs only)
-  BroadcasterOnly: false
-  ModOnly: false
-  Handler: AdoptAHero
-  ID: 88a1d084-259f-4b96-a07c-91dcb8617402
-  Enabled: false
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    CreateNew: false
-    AllowNoble: true
-    AllowWanderer: true
-    AllowPlayerCompanion: true
-    OnlySameFaction: false
-    Inheritance: 0.25
-    SubscriberOnly: false
-    MinSubscribedMonths: 
-    StartingGold: 50000
-    StartingSkills: 
-    StartingEquipmentTier: 0
-    StartWithMeleeWeapon: true
-    StartWithRangedWeapon: true
-    StartWithHorse: true
-    StartWithArmor: true
 - Name: class
   HideHelp: false
   Help: infantry/archer/cavalry/horsearcher/skirmisher
@@ -547,21 +590,21 @@ Commands:
   HandlerConfig:
     GoldCost: 100000
     UpdateEquipment: true
-- Name: equip
+- Name: reequip
   HideHelp: false
-  Help: Improve Equip (10k gold x Tier)
+  Help: reroll equipment
   BroadcasterOnly: false
   ModOnly: false
   Handler: EquipHero
-  ID: 0442db5e-53fa-4b61-9de3-5b3f0ef9af77
+  ID: d4fb255c-4bb3-454e-9e26-39b4d7a321f0
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
-    AllowCompanionUpgrade: true
+    AllowCompanionUpgrade: false
     GoldCost: 10000
     MultiplyCostByCurrentTier: true
-    ReequipInsteadOfUpgrade: false
+    ReequipInsteadOfUpgrade: true
 - Name: gold
   HideHelp: false
   Help: 
@@ -583,72 +626,6 @@ Commands:
     ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: false
-- Name: inv
-  HideHelp: false
-  Help: Hero equipment
-  BroadcasterOnly: false
-  ModOnly: false
-  Handler: HeroInfoCommand
-  ID: f05a2a59-67e5-4494-8845-87205f3bb9d0
-  Enabled: false
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    ShowGold: true
-    ShowGeneral: true
-    ShowTopSkills: true
-    MinSkillToShow: 100
-    ShowAttributes: true
-    ShowEquipment: true
-    ShowInventory: false
-    ShowCivilianInventory: false
-    ShowRetinue: false
-    ShowRetinueList: false
-- Name: pfx
-  HideHelp: false
-  Help: 
-  BroadcasterOnly: true
-  ModOnly: false
-  Handler: TestPfx
-  ID: 02affe3d-67f1-4a6b-a7cc-66c997b6e994
-  Enabled: false
-  RespondInTwitch: true
-  RespondInOverlay: false
-  HandlerConfig: 
-- Name: reequip
-  HideHelp: false
-  Help: reroll equipment
-  BroadcasterOnly: false
-  ModOnly: false
-  Handler: EquipHero
-  ID: d4fb255c-4bb3-454e-9e26-39b4d7a321f0
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    AllowCompanionUpgrade: false
-    GoldCost: 10000
-    MultiplyCostByCurrentTier: true
-    ReequipInsteadOfUpgrade: true
-- Name: retinue
-  HideHelp: false
-  Help: Upgrade Retinue
-  BroadcasterOnly: false
-  ModOnly: false
-  Handler: Retinue
-  ID: 38eed507-87b9-47f4-b235-af921cef00c4
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    Retinue:
-      MaxRetinueSize: 5
-      CostPerTier: 50000
-      CostScalingPerTier: 1
-      UseHeroesCultureUnits: true
-      IncludeBanditUnits: false
-      UseBasicTroops: true
-      UseEliteTroops: true
 - Name: retinuelist
   HideHelp: false
   Help: Retinue List
@@ -670,28 +647,51 @@ Commands:
     ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: true
-- Name: stats
-  HideHelp: false
-  Help: Hero stats
-  BroadcasterOnly: false
-  ModOnly: false
-  Handler: HeroInfoCommand
-  ID: ce2d12f8-7097-4d90-af8c-5601fd130ec3
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    ShowGold: true
-    ShowGeneral: true
-    ShowTopSkills: true
-    MinSkillToShow: 100
-    ShowAttributes: true
-    ShowEquipment: false
-    ShowInventory: false
-    ShowCivilianInventory: false
-    ShowRetinue: true
-    ShowRetinueList: false
 GlobalConfigs:
+- Id: Adopt A Hero - General Config
+  Config:
+    AllowDeath: false
+    StartWithFullHealth: true
+    StartHealthMultiplier: 2
+    StartRetinueHealthMultiplier: 2
+    MoraleLossFactor: 0.5
+    SubBoost: 1.20000005
+    UseRawXP: true
+    RetinueUseHeroesFormation: false
+    SummonCooldownInSeconds: 20
+    SummonCooldownUseMultiplier: 1.10000002
+    GoldPerKill: 5000
+    XPPerKill: 5000
+    XPPerKilled: 2000
+    HealPerKill: 20
+    RetinueGoldPerKill: 2500
+    RetinueHealPerKill: 50
+    RelativeLevelScaling: 0.5
+    LevelScalingCap: 5
+    WinGold: 10000
+    WinXP: 10000
+    LoseGold: 5000
+    LoseXP: 5000
+    DifficultyScalingOnPlayersSide: true
+    DifficultyScalingOnEnemySide: true
+    DifficultyScaling: 1
+    DifficultyScalingMin: 0.200000003
+    DifficultyScalingMax: 3
+    Shouts: []
+    IncludeDefaultShouts: true
+    KillStreaks: []
+    ShowKillStreakPopup: true
+    KillStreakPopupAlertSound: Notification1
+    ReferenceLevelReward: 15
+- Id: Adopt A Hero - Tournament Config
+  Config:
+    StartHealthMultiplier: 2
+    WinGold: 50000
+    WinXP: 50000
+    ParticipateXP: 10000
+    WinMatchGold: 10000
+    WinMatchXP: 10000
+    ParticipateMatchXP: 2500
 - Id: Adopt A Hero - Class Config
   Config:
     ClassDefs:
@@ -730,68 +730,18 @@ GlobalConfigs:
       MeleeWeapon2: Invalid
       RangedWeapon: Thrown
       Mounted: false
-- Id: Adopt A Hero - General Config
-  Config:
-    AllowDeath: false
-    StartWithFullHealth: true
-    StartHealthMultiplier: 2
-    StartRetinueHealthMultiplier: 2
-    MoraleLossFactor: 0.5
-    SubBoost: 1
-    UseRawXP: true
-    RetinueUseHeroesFormation: false
-    SummonCooldownInSeconds: 20
-    SummonCooldownUseMultiplier: 1.10000002
-    GoldPerKill: 5000
-    XPPerKill: 5000
-    XPPerKilled: 2000
-    HealPerKill: 20
-    RetinueGoldPerKill: 2500
-    RetinueHealPerKill: 50
-    RelativeLevelScaling: 0.5
-    LevelScalingCap: 5
-    WinGold: 10000
-    WinXP: 10000
-    LoseGold: 5000
-    LoseXP: 5000
-    DifficultyScalingOnPlayersSide: true
-    DifficultyScalingOnEnemySide: true
-    DifficultyScaling: 1
-    DifficultyScalingMin: 0.200000003
-    DifficultyScalingMax: 3
-    Shouts: []
-    IncludeDefaultShouts: true
-    KillStreaks: []
-    ShowKillStreakPopup: true
-    KillStreakPopupAlertSound: Horns2
-    ReferenceLevelReward: 15
-- Id: Adopt A Hero - Tournament Config
-  Config:
-    StartHealthMultiplier: 2
-    WinGold: 50000
-    WinXP: 50000
-    ParticipateXP: 10000
-    WinMatchGold: 10000
-    WinMatchXP: 10000
-    ParticipateMatchXP: 2500
 - Id: Buffet - Effects Config
   Config:
     DisableEffectsInTournaments: true
 SimTesting:
-  UserCount: 10
+  UserCount: 25
   UserStayTime: 300
-  IntervalMinMS: 500
-  IntervalMaxMS: 2500
+  IntervalMinMS: 100
+  IntervalMaxMS: 100
   Init:
   - Enabled: true
     Type: Reward
     Id: Adopt a Hero
-    Args: 
-    Weight: 0
-  Use:
-  - Enabled: true
-    Type: Reward
-    Id: 10k gold
     Args: 
     Weight: 0
   - Enabled: true
@@ -799,54 +749,85 @@ SimTesting:
     Id: 100k gold
     Args: 
     Weight: 0
-  - Enabled: true
-    Type: Reward
-    Id: Summon
-    Args: 
-    Weight: 0
+  Use:
   - Enabled: true
     Type: Reward
     Id: Attack
     Args: 
-    Weight: 0
+    Weight: 2
   - Enabled: true
     Type: Reward
-    Id: Heal Player
+    Id: Summon
     Args: 
-    Weight: 0
+    Weight: 2
   - Enabled: true
     Type: Reward
-    Id: Giant Hero
+    Id: 100k gold
     Args: 
-    Weight: 0
-  - Enabled: true
-    Type: Reward
-    Id: Baby Hero
-    Args: 
-    Weight: 0
-  - Enabled: true
-    Type: Reward
-    Id: Tournament
-    Args: 
-    Weight: 0
-  - Enabled: true
-    Type: Command
-    Id: stats
-    Args: 
-    Weight: 0
-  - Enabled: true
-    Type: Command
-    Id: inv
-    Args: 
-    Weight: 0
-  - Enabled: true
-    Type: Command
-    Id: adopt
-    Args: 
-    Weight: 0
+    Weight: 1
   - Enabled: true
     Type: Command
     Id: equip
     Args: 
-    Weight: 0
+    Weight: 0.400000006
+  - Enabled: true
+    Type: Command
+    Id: reequip
+    Args: ''
+    Weight: 0.100000001
+  - Enabled: true
+    Type: Reward
+    Id: Tournament
+    Args: 
+    Weight: 0.100000001
+  - Enabled: true
+    Type: Command
+    Id: retinue
+    Args: 
+    Weight: 0.200000003
+  - Enabled: true
+    Type: Reward
+    Id: Retire My Hero
+    Args: yes
+    Weight: 0.00999999978
+  - Enabled: true
+    Type: Reward
+    Id: Adopt a Hero
+    Args: yes
+    Weight: 0.00999999978
+  - Enabled: true
+    Type: Reward
+    Id: Heal Player
+    Args: ''
+    Weight: 0.0500000007
+  - Enabled: true
+    Type: Command
+    Id: class
+    Args: infantry
+    Weight: 0.00999999978
+  - Enabled: true
+    Type: Command
+    Id: class
+    Args: archer
+    Weight: 0.00999999978
+  - Enabled: true
+    Type: Command
+    Id: class
+    Args: cavalry
+    Weight: 0.00999999978
+  - Enabled: true
+    Type: Command
+    Id: class
+    Args: horsearcher
+    Weight: 0.00999999978
+  - Enabled: true
+    Type: Command
+    Id: class
+    Args: skirmisher
+    Weight: 0.00999999978
+  - Enabled: true
+    Type: Reward
+    Id: Heal Hero
+    Args: ''
+    Weight: 0.0500000007
 DisableAutomaticFulfillment: false
