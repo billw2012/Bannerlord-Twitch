@@ -1,6 +1,9 @@
-﻿using System.IO;
-using TaleWorlds.Engine;
+﻿#if e159
+using System.IO;
 using Path = System.IO.Path;
+#endif
+
+using TaleWorlds.Engine;
 using TaleWorlds.Library;
 
 namespace BannerlordTwitch.Util

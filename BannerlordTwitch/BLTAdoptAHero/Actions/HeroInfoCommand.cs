@@ -7,8 +7,6 @@ using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
 using JetBrains.Annotations;
-using TaleWorlds.CampaignSystem;
-using TaleWorlds.Core;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
