@@ -369,10 +369,7 @@ namespace BLTAdoptAHero
             });
         }
 
-        private static bool IsHeroOnPlayerSide(Hero hero) =>
-            MobileParty.MainParty?.MapEvent?
-                .PartiesOnSide(MobileParty.MainParty.MapEvent.PlayerSide)
-                .Any(p => p.Party == hero.PartyBelongedTo?.Party) ?? true;
+        private static bool IsHeroOnPlayerSide(Hero hero) => hero.PartyBelongedTo?.MapEventSide?.MissionSide == PlayerEncounter.Current?.PlayerSide;
 
         private void UpdateHeroVM(Hero hero)
         {
