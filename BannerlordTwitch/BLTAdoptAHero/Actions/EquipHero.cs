@@ -5,6 +5,8 @@ using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Actions.Util;
+using Helpers;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -145,7 +147,13 @@ namespace BLTAdoptAHero
         //     return itemsPurchased;
         // }
         
-        internal static void UpgradeEquipment(Hero adoptedHero, int targetTier, HeroClassDef classDef, bool keepBetter)
+        public static bool PrimaryWeaponFilter(ItemObject o, HeroClassDef classDef) =>
+            o.Type is ItemObject.ItemTypeEnum.OneHandedWeapon or ItemObject.ItemTypeEnum.TwoHandedWeapon or ItemObject.ItemTypeEnum.Polearm or
+                ItemObject.ItemTypeEnum.Bow or ItemObject.ItemTypeEnum.Crossbow or ItemObject.ItemTypeEnum.Thrown 
+            && (classDef?.Mounted != true || o.PrimaryWeapon == null || !MBItem.GetItemUsageSetFlags(o.PrimaryWeapon.ItemUsage).HasFlag(ItemObject.ItemUsageSetFlags.RequiresNoMount))
+        ;
+        
+        public static void UpgradeEquipment(Hero adoptedHero, int targetTier, HeroClassDef classDef, bool keepBetter)
         {
             var oldItems = adoptedHero.BattleEquipment.YieldEquipmentSlots()
                 .Select(e => e.element.Item).Where(i => i != null).ToList();
@@ -177,14 +185,9 @@ namespace BLTAdoptAHero
                 : SkillGroup.SkillItemPairs.OrderByDescending(s => adoptedHero.GetSkillValue(s.skill)).Take(1).ToList()
                 ;
 
-            bool PrimaryWeaponFilter(ItemObject o) =>
-                    o.Type is ItemObject.ItemTypeEnum.OneHandedWeapon or ItemObject.ItemTypeEnum.TwoHandedWeapon or ItemObject.ItemTypeEnum.Polearm or
-                        ItemObject.ItemTypeEnum.Bow or ItemObject.ItemTypeEnum.Crossbow or ItemObject.ItemTypeEnum.Thrown 
-                        && (classDef?.Mounted != true || o.PrimaryWeapon == null || !MBItem.GetItemUsageSetFlags(o.PrimaryWeapon.ItemUsage).HasFlag(ItemObject.ItemUsageSetFlags.RequiresNoMount))
-                        ;
 
             foreach (var weapon in weaponSkills
-                .Select(s => FindNewEquipmentBySkill(s.skill, PrimaryWeaponFilter))
+                .Select(s => FindNewEquipmentBySkill(s.skill, e => PrimaryWeaponFilter(e, classDef)))
                 .Where(e => e != null)
             )
             {
@@ -230,7 +233,10 @@ namespace BLTAdoptAHero
             {
                 var weapon = SkillGroup.MeleeSkillItemPairs
                     .OrderByDescending(s => adoptedHero.GetSkillValue(s.skill))
-                    .Select(s => FindNewEquipmentBySkill(s.skill, o => PrimaryWeaponFilter(o) && WeaponIsSwingable(o)))
+                    .Select(s => 
+                        FindNewEquipmentBySkill(
+                            s.skill, 
+                            o => PrimaryWeaponFilter(o, classDef) && WeaponIsSwingable(o)))
                     .FirstOrDefault(w => w != null);
                     ;
                 if (weapon != null)
@@ -480,14 +486,10 @@ namespace BLTAdoptAHero
         //     return element.Item;
         // }
 
-        private static ItemObject FindRandomTieredEquipment(SkillObject skill, int tier, Hero hero, Func<ItemObject, bool> filter = null, params ItemObject.ItemTypeEnum[] itemTypeEnums)
+        public static ItemObject FindRandomTieredEquipment(SkillObject skill, int tier, Hero hero, Func<ItemObject, bool> filter = null, params ItemObject.ItemTypeEnum[] itemTypeEnums)
         {
             var items =
-                #if e159 || e1510
-                ItemObject.All
-                #else
-                Items.All
-                #endif
+                HeroHelpers.AllItems
                 // Usable
                 .Where(item => !item.NotMerchandise 
                                && CanUseItem(item, hero)

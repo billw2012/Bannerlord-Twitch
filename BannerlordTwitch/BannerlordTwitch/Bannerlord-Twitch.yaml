@@ -692,6 +692,17 @@ GlobalConfigs:
     WinMatchGold: 10000
     WinMatchXP: 10000
     ParticipateMatchXP: 2500
+    UseCustomPrizes: true
+    PrizeTier1Weight: 0
+    PrizeTier2Weight: 0
+    PrizeTier3Weight: 0
+    PrizeTier4Weight: 16
+    PrizeTier5Weight: 8
+    PrizeTier6Weight: 4
+    PrizeCustomWeight: 1
+    PrizeWeaponWeight: 1
+    PrizeArmorWeight: 1
+    PrizeMountWeight: 0.100000001
 - Id: Adopt A Hero - Class Config
   Config:
     ClassDefs:
@@ -747,6 +758,11 @@ SimTesting:
   - Enabled: true
     Type: Reward
     Id: 100k gold
+    Args: 
+    Weight: 0
+  - Enabled: true
+    Type: Reward
+    Id: Tournament
     Args: 
     Weight: 0
   Use:

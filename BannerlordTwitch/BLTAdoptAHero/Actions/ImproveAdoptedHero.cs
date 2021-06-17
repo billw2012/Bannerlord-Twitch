@@ -110,7 +110,7 @@ namespace BLTAdoptAHero
 
             return selectedSkills
                 .Where(o => predicate(o.skill))
-                .SelectWeighted(MBRandom.RandomFloat, o => o.weight)
+                .SelectRandomWeighted(o => o.weight)
                 .skill;
         }
     }

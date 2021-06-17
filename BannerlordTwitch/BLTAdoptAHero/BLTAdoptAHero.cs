@@ -271,7 +271,7 @@ namespace BLTAdoptAHero
         [Category("Kill Streak Rewards"), Description("The level at which the rewards normalize and start to reduce (if relative level scaling is enabled)."), PropertyOrder(4)]
         public int ReferenceLevelReward { get; set; } = 15;
      }
-    
+
     [CategoryOrder("General", 1)]
     [CategoryOrder("Match Rewards", 2)]
     internal class GlobalTournamentConfig
@@ -284,7 +284,7 @@ namespace BLTAdoptAHero
          Description("Amount to multiply normal starting health by"),
          PropertyOrder(1)]
         public float StartHealthMultiplier { get; set; } = 2;
-        
+
         [Category("Rewards"), Description("Gold won if the hero wins the tournaments"), PropertyOrder(1)]
         public int WinGold { get; set; } = 50000;
 
@@ -302,6 +302,77 @@ namespace BLTAdoptAHero
 
         [Category("Match Rewards"), Description("XP given if the hero participates in a match"), PropertyOrder(3)]
         public int ParticipateMatchXP { get; set; } = 2500;
+
+        [Category("Prize"),
+         Description("Use custom tournament rewards, generated or selected especially for the winner"),
+         PropertyOrder(1)]
+        public bool UseCustomPrizes { get; set; } = true;
+
+        // Prizes:
+        // Random vanilla equipment, chance for each tier
+        // Generated vanilla equip,ent
+
+        [Category("Prize"), Description("Tier 1 Prize weighting"), PropertyOrder(1)]
+        public float PrizeTier1Weight { get; set; } = 0f;
+
+        [Category("Prize"), Description("Tier 2 Prize weighting"), PropertyOrder(2)]
+        public float PrizeTier2Weight { get; set; } = 0f;
+
+        [Category("Prize"), Description("Tier 3 Prize weighting"), PropertyOrder(3)]
+        public float PrizeTier3Weight { get; set; } = 0f;
+
+        [Category("Prize"), Description("Tier 4 Prize weighting"), PropertyOrder(4)]
+        public float PrizeTier4Weight { get; set; } = 16f;
+
+        [Category("Prize"), Description("Tier 5 Prize weighting"), PropertyOrder(5)]
+        public float PrizeTier5Weight { get; set; } = 8f;
+
+        [Category("Prize"), Description("Tier 6 Prize weighting"), PropertyOrder(6)]
+        public float PrizeTier6Weight { get; set; } = 4f;
+
+        [Category("Prize"), Description("Custom (Tier 7+) Prize weighting"), PropertyOrder(7)]
+        public float PrizeCustomWeight { get; set; } = 1f;
+
+        [Category("Prize"), Description("Weapon prize weight"), PropertyOrder(8)]
+        public float PrizeWeaponWeight { get; set; } = 1f;
+
+        [Category("Prize"), Description("Armor prize weight"), PropertyOrder(9)]
+        public float PrizeArmorWeight { get; set; } = 1f;
+
+        [Category("Prize"), Description("Mount prize weight"), PropertyOrder(10)]
+        public float PrizeMountWeight { get; set; } = 0.1f;
+
+        [Browsable(false), YamlIgnore]
+        public IEnumerable<(int tier, float weight)> PrizeTierWeights
+        {
+            get
+            {
+                yield return (tier: 0, weight: PrizeTier1Weight);
+                yield return (tier: 1, weight: PrizeTier2Weight);
+                yield return (tier: 2, weight: PrizeTier3Weight);
+                yield return (tier: 3, weight: PrizeTier4Weight);
+                yield return (tier: 4, weight: PrizeTier5Weight);
+                yield return (tier: 5, weight: PrizeTier6Weight);
+                yield return (tier: 6, weight: PrizeCustomWeight);
+            }
+        }
+
+        public enum PrizeType
+        {
+            Weapon,
+            Armor,
+            Mount
+        }
+
+        [Browsable(false), YamlIgnore]
+        public IEnumerable<(PrizeType type, float weight)> PrizeTypeWeights {
+            get
+            {
+                yield return (type: PrizeType.Weapon, weight: PrizeWeaponWeight);
+                yield return (type: PrizeType.Armor, weight: PrizeArmorWeight);
+                yield return (type: PrizeType.Mount, weight: PrizeMountWeight);
+            }
+        }
     }
 
     internal class GlobalHeroClassConfig

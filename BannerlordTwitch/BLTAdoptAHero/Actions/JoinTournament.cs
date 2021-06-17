@@ -6,12 +6,14 @@ using Bannerlord.ButterLib.SaveSystem.Extensions;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.UI;
 using HarmonyLib;
 using JetBrains.Annotations;
 using SandBox.TournamentMissions.Missions;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
+using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -256,16 +258,18 @@ namespace BLTAdoptAHero
             {
                 mode = TournamentMode.Join;
                 var tournamentGame = Campaign.Current.Models.TournamentModel.CreateTournament(Settlement.CurrentSettlement.Town);
+                SetPlaceholderPrize(tournamentGame);
                 tournamentGame.PrepareForTournamentGame(true);
             }
-            
+
             public void WatchViewerTournament()
             {
                 mode = TournamentMode.Watch;
                 var tournamentGame = Campaign.Current.Models.TournamentModel.CreateTournament(Settlement.CurrentSettlement.Town);
+                SetPlaceholderPrize(tournamentGame);
                 tournamentGame.PrepareForTournamentGame(false);
             }
-            
+
             public void GetParticipantCharacters(Settlement settlement, List<CharacterObject> __result)
             {
                 activeTournament.Clear();
@@ -288,7 +292,7 @@ namespace BLTAdoptAHero
                     mode = TournamentMode.None;
                 }
             }
-            
+
             public void PrepareForTournamentGame()
             {
                 static (bool used, string failReason) UpgradeToItem(Hero hero, ItemObject item)
@@ -352,11 +356,13 @@ namespace BLTAdoptAHero
                                     }
                                 }
 
-                                var prize = tournamentBehaviour.TournamentGame.Prize;
+                                var prize = BLTAdoptAHeroModule.TournamentConfig.UseCustomPrizes 
+                                    ? GeneratePrize(entry.Hero)
+                                    : tournamentBehaviour.TournamentGame.Prize;
                                 (bool upgraded, string failReason) = UpgradeToItem(entry.Hero, prize);
                                 if (!upgraded)
                                 {
-                                    BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(entry.Hero, prize.Value);
+                                    BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(entry.Hero, prize.Value * 3);
                                     results.Add($"sold {prize.Name} for {prize.Value}{Naming.Gold} ({failReason})");
                                 }
                                 else
@@ -446,6 +452,52 @@ namespace BLTAdoptAHero
                 }
             }
             
+            private static ItemObject GeneratePrizeType(GlobalTournamentConfig.PrizeType prizeType, int tier, Hero hero, HeroClassDef heroClass)
+            {
+                // TODO: other prize types
+                //if (prizeType == GlobalTournamentConfig.PrizeType.Weapon)
+                {
+                    var weaponSkills = heroClass != null
+                            ? SkillGroup.SkillItemPairs.Where(s => heroClass.Weapons.Any(sk => sk == s.itemType))
+                            // Without class we just take the top skill only
+                            : SkillGroup.SkillItemPairs.OrderByDescending(s => hero.GetSkillValue(s.skill)).Take(1)
+                        ;
+
+                    // Custom crafted item
+                    if (tier > 5)
+                    {
+                        var weaponClass = SkillGroup.SkillWeaponClassPairs
+                            .Where(s => weaponSkills.Any(s2 => s2.skill == s.skill))
+                            .SelectMany(s => s.weaponClasses)
+                            .SelectRandom();
+                        return CustomItems.CreateWeapon(hero, weaponClass, 5);
+                    }
+                    else
+                    {
+                        return weaponSkills
+                                .Select(sk =>
+                                    EquipHero.FindRandomTieredEquipment(null, 5, hero, null,
+                                        sk.itemType))
+                                .FirstOrDefault(w => w != null)
+                            ;
+                    }
+                }
+                // TODO other types
+                // return null;
+            }
+
+            private ItemObject GeneratePrize(Hero hero)
+            {
+                var heroClass = BLTAdoptAHeroCampaignBehavior.Current.GetClass(hero);
+
+                int tier = BLTAdoptAHeroModule.TournamentConfig.PrizeTierWeights.SelectRandomWeighted(t => t.weight).tier;
+                return BLTAdoptAHeroModule.TournamentConfig.PrizeTypeWeights
+                        .OrderRandomWeighted(t => t.weight)
+                        .Select(t => GeneratePrizeType(t.type, tier, hero, heroClass))
+                        .FirstOrDefault(i => i != null)
+                    ;
+            }
+
             public void EndCurrentMatch(TournamentBehavior tournamentBehavior)
             {
                 // If the tournament is over
@@ -495,6 +547,15 @@ namespace BLTAdoptAHero
                     {
                         Log.LogFeedResponse(entry.Hero.FirstName.ToString(), results.ToArray());
                     }
+                }
+            }
+
+            private static void SetPlaceholderPrize(TournamentGame tournamentGame)
+            {
+                if (BLTAdoptAHeroModule.TournamentConfig.UseCustomPrizes)
+                {
+                    AccessTools.Property(typeof(TournamentGame), nameof(TournamentGame.Prize))
+                        .SetValue(tournamentGame, DefaultItems.Charcoal);
                 }
             }
 

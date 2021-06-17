@@ -360,7 +360,7 @@ namespace BLTAdoptAHero
 
                 Log.ShowInformation(!string.IsNullOrEmpty(context.Args) 
                         ? context.Args 
-                        : messages.SelectWeighted(MBRandom.RandomFloat, shout => shout.Weight)?.Text ?? "...",
+                        : messages.SelectRandomWeighted(shout => shout.Weight)?.Text ?? "...",
                     adoptedHero.CharacterObject, settings.AlertSound);
 
                 BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
@@ -730,7 +730,7 @@ namespace BLTAdoptAHero
                     
                     Log.ShowInformation(!string.IsNullOrEmpty(context.Args) 
                         ? context.Args 
-                        : (messages.SelectWeighted(MBRandom.RandomFloat, shout => shout.Weight)?.Text ?? "..."),
+                        : (messages.SelectRandomWeighted(shout => shout.Weight)?.Text ?? "..."),
                         adoptedHero.CharacterObject, settings.AlertSound);
 
                     BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
