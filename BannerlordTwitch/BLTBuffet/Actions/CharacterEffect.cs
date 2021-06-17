@@ -47,7 +47,7 @@ namespace BLTBuffet
             var config = (Config) baseConfig;
 
             bool GeneralAgentFilter(Agent agent) 
-                => !config.TargetOnFootOnly || agent.HasMount == false && !effectsBehaviour.Contains(agent, config);
+                => agent.IsHuman && (!config.TargetOnFootOnly || agent.HasMount == false) && !effectsBehaviour.Contains(agent, config);
 
             var target = config.Target switch
             {
