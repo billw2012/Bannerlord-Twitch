@@ -219,20 +219,12 @@ namespace BannerlordTwitch.Rewards
 
             if (commandHandlers.TryGetValue(commandId, out var cmdHandler))
             {
-                try
+                if (cmdHandler.HandlerConfigType != null)
                 {
-                    if (cmdHandler.HandlerConfigType != null)
-                    {
-                        config = ConvertObject(config, cmdHandler.HandlerConfigType);
-                    }
-                    Log.Trace($"[{nameof(ActionManager)}] HandleCommand {commandId} {context.Args} for {context.UserName}");
-                    cmdHandler.Execute(context, config);
+                    config = ConvertObject(config, cmdHandler.HandlerConfigType);
                 }
-                catch (Exception e)
-                {
-                    Log.LogFeedCritical($"Command {commandId} failed with exception {e.Message}, game might be unstable now!");
-                    Log.Exception($"Command {commandId}", e);
-                }
+                Log.Trace($"[{nameof(ActionManager)}] HandleCommand {commandId} {context.Args} for {context.UserName}");
+                cmdHandler.Execute(context, config);
             }
             else
             {
@@ -252,27 +244,19 @@ namespace BannerlordTwitch.Rewards
             
             if (!rewardHandlers.TryGetValue(rewardId, out var action))
             {
-                Log.Error($"Action with the id {rewardId} doesn't exist");
+                NotifyCancelled(context, $"Action with the id {rewardId} doesn't exist");
                 return false;
             }
 
             var st = new Stopwatch();
             st.Start();
-            try
+
+            if (action.RewardConfigType != null)
             {
-                if (action.RewardConfigType != null)
-                {
-                    config = ConvertObject(config, action.RewardConfigType);
-                }
-                //Log.Trace($"[{nameof(ActionManager)}] HandleReward {action} {context.Args} for {context.UserName}");
-                action.Enqueue(context, config);
+                config = ConvertObject(config, action.RewardConfigType);
             }
-            catch (Exception e)
-            {
-                Log.LogFeedCritical($"Reward {rewardId} failed with exception {e.Message}, game might be unstable now!");
-                Log.Exception($"Reward {rewardId}", e);
-                NotifyCancelled(context, $"Error occurred while trying to process the redemption");
-            }
+            //Log.Trace($"[{nameof(ActionManager)}] HandleReward {action} {context.Args} for {context.UserName}");
+            action.Enqueue(context, config);
 
             if (st.ElapsedMilliseconds > 5)
             {
