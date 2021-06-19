@@ -103,6 +103,8 @@ namespace BLTAdoptAHero
                 var campaignStarter = (CampaignGameStarter) gameStarterObject;
                 campaignStarter.AddBehavior(new BLTAdoptAHeroCampaignBehavior());
                 JoinTournament.AddBehaviors(campaignStarter);
+                
+                campaignStarter.AddBehavior(new BLTCustomItemsCampaignBehavior());
             }
         }
         

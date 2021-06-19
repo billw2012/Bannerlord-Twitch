@@ -416,13 +416,8 @@ namespace BLTAdoptAHero
                         // TODO: let them summon their retinue anyway
                         var existingParty = (PartyBase.MainParty.MapEvent?.InvolvedParties ?? PartyBase.MainParty.SiegeEvent?.Parties)?
                             .FirstOrDefault(p => p.MemberRoster.GetTroopCount(adoptedHero.CharacterObject) != 0);
-                        if(existingParty != null)
-                        {
-                            onFailure($"You cannot be summoned, your party is already here!");
-                            return;
-                        }
 
-                        var party = settings.OnPlayerSide switch
+                        var party = existingParty ?? settings.OnPlayerSide switch
                         {
                             true when Mission.Current?.PlayerTeam != null &&
                                       Mission.Current?.PlayerTeam?.ActiveAgents.Any() == true => PartyBase.MainParty,
