@@ -39,8 +39,13 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock>Text Size</TextBlock>
-                        <xctk:DoubleUpDown Value="{Binding OverlayFontSize}" Minimum="5" Maximum="100" Grid.Column="1" VerticalAlignment="Center"/>
+                        <TextBlock>Overlay Scale %</TextBlock>
+                        <StackPanel Orientation="Vertical" Grid.Column="1">
+                            <xctk:DoubleUpDown Value="{Binding OverlayScalePercent}"
+                                               Minimum="50" Maximum="400" VerticalAlignment="Center"/>
+                            <Slider Minimum="50" Maximum="400" IsSnapToTickEnabled="True" TickFrequency="1"
+                                    MinWidth="120" Value="{Binding OverlayScalePercent}"/>
+                        </StackPanel>
                     </Grid>
                 </xctk:DropDownButton.DropDownContent>
             </xctk:DropDownButton>
