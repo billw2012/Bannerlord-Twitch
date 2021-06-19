@@ -10,6 +10,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.TwoDimension;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using YamlDotNet.Serialization;
 
@@ -23,22 +24,39 @@ namespace BLTAdoptAHero
         {
             [Description("Allow improvement of adopted heroes who are also companions of the player."), PropertyOrder(6)]
             public bool AllowCompanionUpgrade { get; set; } = true;
-            [Description("Gold cost for Tier 1 equipment"), PropertyOrder(1), YamlIgnore]
-            public int CostTier1 { get => TierCosts[0]; set => TierCosts[0] = value; }
+            [Description("Gold cost for Tier 1 equipment"), PropertyOrder(1)]
+            public int CostTier1 { get; set; } = 25000;
+
+            [Description("Gold cost for Tier 2 equipment"), PropertyOrder(2)]
+            public int CostTier2 { get; set; } = 50000;
+
+            [Description("Gold cost for Tier 3 equipment"), PropertyOrder(3)]
+            public int CostTier3 { get; set; } = 100000;
+
+            [Description("Gold cost for Tier 4 equipment"), PropertyOrder(4)]
+            public int CostTier4 { get; set; } = 175000;
+
+            [Description("Gold cost for Tier 5 equipment"), PropertyOrder(5)]
+            public int CostTier5 { get; set; } = 275000;
+
+            [Description("Gold cost for Tier 6 equipment"), PropertyOrder(6)]
+            public int CostTier6 { get; set; } = 400000;
             
-            [Description("Gold cost for Tier 2 equipment"), PropertyOrder(1), YamlIgnore]
-            public int CostTier2 { get => TierCosts[1]; set => TierCosts[1] = value; } 
-            [Description("Gold cost for Tier 3 equipment"), PropertyOrder(1), YamlIgnore]
-            public int CostTier3 { get => TierCosts[2]; set => TierCosts[2] = value; }
-            [Description("Gold cost for Tier 4 equipment"), PropertyOrder(1), YamlIgnore]
-            public int CostTier4 { get => TierCosts[3]; set => TierCosts[3] = value; }
-            [Description("Gold cost for Tier 5 equipment"), PropertyOrder(1), YamlIgnore]
-            public int CostTier5 { get => TierCosts[4]; set => TierCosts[4] = value; }
-            [Description("Gold cost for Tier 6 equipment"), PropertyOrder(1), YamlIgnore]
-            public int CostTier6 { get => TierCosts[5]; set => TierCosts[5] = value; }
             // etc..
-            [Browsable(false)]
-            public int[] TierCosts { get; set; } = { 50000, 100000, 150000, 200000, 250000, 300000 };
+            
+            public int GetTierCost(int tier)
+            {
+                return tier switch
+                {
+                    0 => CostTier1,
+                    1 => CostTier2,
+                    2 => CostTier3,
+                    3 => CostTier4,
+                    4 => CostTier5,
+                    5 => CostTier6,
+                    _ => 0
+                };
+            }
 
             [Description("Whether to multiply the cost by the current tier"), PropertyOrder(10)]
             public bool MultiplyCostByCurrentTier { get; set; } = true;
@@ -71,16 +89,16 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            int targetTier = BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero) +
-                             (settings.ReequipInsteadOfUpgrade ? 0 : 1);
-
+            int targetTier = Math.Max(0, BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero) +
+                             (settings.ReequipInsteadOfUpgrade ? 0 : 1));
+            
             if (targetTier > 5)
             {
                 onFailure($"You cannot upgrade any further!");
                 return;
             }
-
-            int cost = settings.TierCosts[targetTier];
+            
+            int cost = settings.GetTierCost(targetTier);
 
             int availableGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
             if (availableGold < cost)

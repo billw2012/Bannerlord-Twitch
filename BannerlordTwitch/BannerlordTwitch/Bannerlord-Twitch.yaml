@@ -555,7 +555,12 @@ Commands:
   RespondInOverlay: true
   HandlerConfig:
     AllowCompanionUpgrade: false
-    GoldCost: 50000
+    CostTier1: 25000
+    CostTier2: 50000
+    CostTier3: 100000
+    CostTier4: 175000
+    CostTier5: 275000
+    CostTier6: 400000
     MultiplyCostByCurrentTier: true
     ReequipInsteadOfUpgrade: false
 - Name: retinue
@@ -602,7 +607,12 @@ Commands:
   RespondInOverlay: true
   HandlerConfig:
     AllowCompanionUpgrade: false
-    GoldCost: 10000
+    CostTier1: 25000
+    CostTier2: 50000
+    CostTier3: 100000
+    CostTier4: 175000
+    CostTier5: 275000
+    CostTier6: 400000
     MultiplyCostByCurrentTier: true
     ReequipInsteadOfUpgrade: true
 - Name: gold
