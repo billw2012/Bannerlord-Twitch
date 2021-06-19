@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
+using BannerlordTwitch.Annotations;
 using BannerlordTwitch.Util;
 using TaleWorlds.Library;
 using YamlDotNet.Serialization;
@@ -12,8 +14,8 @@ using Color = System.Windows.Media.Color;
 
 namespace BannerlordTwitch.Overlay
 {
-    // From https://stackoverflow.com/a/21461482/6402065 and  https://stackoverflow.com/a/6792677/6402065
-    internal partial class OverlayWindow
+    // From https://stackoverflow.com/a/21461482/6402065 and https://stackoverflow.com/a/6792677/6402065
+    internal partial class OverlayWindow : INotifyPropertyChanged
     {
         public class FeedItem
         {
@@ -87,16 +89,32 @@ namespace BannerlordTwitch.Overlay
 
         public ObservableCollection<FeedItem> FeedItems { get; set; } = new();
 
-        public double OverlayFontSize { get => TextElement.GetFontSize(RootControl); set => TextElement.SetFontSize(RootControl, value); }
+        public int OverlayScalePercent
+        {
+            get
+            {
+                if (RootControl.LayoutTransform is ScaleTransform scale)
+                {
+                    return (int) (scale.ScaleX * 100);
+                }
+
+                return 100;
+            }
+            set
+            {
+                RootControl.LayoutTransform = new ScaleTransform(value / 100f, value / 100f);
+                OnPropertyChanged();
+            }
+        }
 
         private class OverlaySettings
         {
-            public double FeedFontSize { get; set; }
+            public int OverlayScalePercent { get; set; } = 100;
 
-            public double WindowLeft { get; set; }
-            public double WindowTop { get; set; }
-            public double WindowWidth { get; set; }
-            public double WindowHeight { get; set; }
+            public int WindowLeft { get; set; } = 20;
+            public int WindowTop { get; set; } = 20;
+            public int WindowWidth { get; set; } = 250;
+            public int WindowHeight { get; set; } = 600;
 
             private static PlatformFilePath OverlayFilePath => FileSystem.GetConfigPath("Bannerlord-Twitch-Overlay.yaml");
             
@@ -154,7 +172,7 @@ namespace BannerlordTwitch.Overlay
                 this.Width = settings.WindowWidth;
                 this.Height = settings.WindowHeight;
                 
-                this.OverlayFontSize = settings.FeedFontSize;
+                this.OverlayScalePercent = settings.OverlayScalePercent;
             }
         }
 
@@ -162,14 +180,22 @@ namespace BannerlordTwitch.Overlay
         {
             var settings = new OverlaySettings
             {
-                WindowLeft = this.Left,
-                WindowTop = this.Top,
-                WindowWidth = this.Width,
-                WindowHeight = this.Height,
+                WindowLeft = (int) this.Left,
+                WindowTop = (int) this.Top,
+                WindowWidth = (int) this.Width,
+                WindowHeight = (int) this.Height,
                 
-                FeedFontSize = this.OverlayFontSize,
+                OverlayScalePercent = this.OverlayScalePercent,
             };
             OverlaySettings.Save(settings);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

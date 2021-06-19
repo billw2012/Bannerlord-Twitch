@@ -224,6 +224,7 @@
     <Compile Include="Actions\ActionHandlerBase.cs" />
     <Compile Include="Actions\ActionManager.cs" />
     <Compile Include="Actions\ActionManager.Documentation.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="BLTModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
