@@ -106,6 +106,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Actions\AddGoldToPlayer.cs" />
         <Compile Include="Actions\CharacterEffect.BLTEffectsBehaviour.cs" />
         <Compile Include="Actions\CharacterEffect.Config.cs" />
         <Compile Include="Actions\CharacterEffect.cs" />
@@ -113,7 +114,6 @@
         <Compile Include="Actions\TestPfx.cs" />
         <Compile Include="Actions\TestSfx.cs" />
         <Compile Include="Actions\Utils\BLTBoneAttachmentsUpdateBehaviour.cs" />
-        <Compile Include="Actions\Utils\Extensions.cs" />
         <Compile Include="BLTBuffet.cs" />
         <Compile Include="Patches.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,6 +131,11 @@
       <ProjectReference Include="..\BannerlordTwitch\BannerlordTwitch.csproj">
         <Project>{a858b7fe-dd3e-4969-9d30-670042c75b16}</Project>
         <Name>BannerlordTwitch</Name>
+          <Private>False</Private>
+      </ProjectReference>
+      <ProjectReference Include="..\BLTAdoptAHero\BLTAdoptAHero.csproj">
+        <Project>{e475eb9d-3c49-461b-88f7-9d88b746a3aa}</Project>
+        <Name>BLTAdoptAHero</Name>
           <Private>False</Private>
       </ProjectReference>
     </ItemGroup>

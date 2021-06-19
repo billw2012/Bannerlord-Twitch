@@ -13,6 +13,7 @@ using SandBox.TournamentMissions.Missions;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.SaveSystem;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -35,10 +36,10 @@ namespace BLTAdoptAHero
         {
             var settings = (Settings) config;
             
-            var adoptedHero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
+            var adoptedHero = BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(context.UserName);
             if (adoptedHero == null)
             {
-                onFailure(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
+                onFailure(AdoptAHero.NoHeroMessage);
                 return;
             }
             
@@ -160,7 +161,34 @@ namespace BLTAdoptAHero
 
             public override void SyncData(IDataStore dataStore)
             {
-                dataStore.SyncDataAsJson("Queue", ref tournamentQueue);
+                if (dataStore.IsSaving)
+                {
+                    var usedHeroList = tournamentQueue.Select(t => t.Hero).ToList();
+                    dataStore.SyncData("UsedHeroObjectList", ref usedHeroList);
+                    var queue = tournamentQueue.Select(e => new TournamentQueueEntrySavable
+                    {
+                        HeroIndex = usedHeroList.IndexOf(e.Hero),
+                        IsSub = e.IsSub,
+                        EntryFee = e.EntryFee,
+                    }).ToList();
+                    dataStore.SyncDataAsJson("Queue2", ref queue);
+                }
+                else
+                {
+                    List<Hero> usedHeroList = null;
+                    dataStore.SyncData("UsedHeroObjectList", ref usedHeroList);
+                    List<TournamentQueueEntrySavable> queue = null;
+                    dataStore.SyncDataAsJson("Queue2", ref queue);
+                    if (usedHeroList != null && queue != null)
+                    {
+                        tournamentQueue = queue.Select(e => new TournamentQueueEntry
+                        {
+                            Hero = usedHeroList[e.HeroIndex],
+                            IsSub = e.IsSub,
+                            EntryFee = e.EntryFee,
+                        }).ToList();
+                    }
+                }
                 tournamentQueue ??= new();
                 tournamentQueue.RemoveAll(e => e.Hero == null || e.Hero.IsDead);
                 UpdatePanel();
@@ -177,11 +205,8 @@ namespace BLTAdoptAHero
 
             private class TournamentQueueEntry
             {
-                [SaveableProperty(0)]
                 public Hero Hero { get; set; }
-                [SaveableProperty(1)]
                 public bool IsSub { get; set; }
-                [SaveableProperty(2)]
                 public int EntryFee { get; set; }
 
                 public TournamentQueueEntry(Hero hero = null, bool isSub = false, int entryFee = 0)
@@ -190,6 +215,16 @@ namespace BLTAdoptAHero
                     IsSub = isSub;
                     EntryFee = entryFee;
                 }
+            }
+
+            private class TournamentQueueEntrySavable
+            {
+                [SaveableProperty(0)]
+                public int HeroIndex { get; set; }
+                [SaveableProperty(1)]
+                public bool IsSub { get; set; }
+                [SaveableProperty(2)]
+                public int EntryFee { get; set; }
             }
             
             private List<TournamentQueueEntry> tournamentQueue = new();

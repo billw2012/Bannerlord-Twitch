@@ -64,7 +64,7 @@ namespace BannerlordTwitch.Util
         {
             if (Campaign.Current == null)
             {
-                return "Start a game before trying to reload";
+                return "You don't need to reload before the game has started.";
             }
             return BLTModule.RestartTwitchService()
                 ? "Success"

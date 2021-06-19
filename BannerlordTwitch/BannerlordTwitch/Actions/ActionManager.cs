@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Bannerlord.ButterLib.Common.Extensions;
 using BannerlordTwitch.Util;
+using TaleWorlds.CampaignSystem;
 using YamlDotNet.Serialization;
 
 namespace BannerlordTwitch.Rewards
@@ -109,18 +110,31 @@ namespace BannerlordTwitch.Rewards
 
         public static void ConvertSettings(IEnumerable<Reward> rewards)
         {
-            foreach (var rewardDef in rewards.Where(r => r.HandlerConfig != null))
+            foreach (var rewardDef in rewards)
             {
                 if (rewardHandlers.TryGetValue(rewardDef.Handler, out var action))
                 {
-                    try
+                    if (rewardDef.HandlerConfig == null && action.RewardConfigType != null)
                     {
-                        rewardDef.HandlerConfig = ConvertObject(rewardDef.HandlerConfig, action.RewardConfigType);
-                    }
-                    catch (Exception)
-                    {
-                        Log.Error($"{rewardDef} had invalid config, resetting it to default");
                         rewardDef.HandlerConfig = Activator.CreateInstance(action.RewardConfigType);
+                    }
+                    else if (rewardDef.HandlerConfig != null && action.RewardConfigType == null)
+                    {
+                        rewardDef.HandlerConfig = null;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            rewardDef.HandlerConfig = action.RewardConfigType != null
+                                ? ConvertObject(rewardDef.HandlerConfig, action.RewardConfigType)
+                                : null;
+                        }
+                        catch (Exception)
+                        {
+                            Log.Error($"{rewardDef} had invalid config, resetting it to default");
+                            rewardDef.HandlerConfig = Activator.CreateInstance(action.RewardConfigType);
+                        }
                     }
                 }
             }
@@ -128,18 +142,31 @@ namespace BannerlordTwitch.Rewards
         
         public static void ConvertSettings(IEnumerable<Command> commands)
         {
-            foreach (var commandDef in commands.Where(c => c.HandlerConfig != null))
+            foreach (var commandDef in commands)
             {
                 if (commandHandlers.TryGetValue(commandDef.Handler, out var command))
                 {
-                    try
+                    if (commandDef.HandlerConfig == null && command.HandlerConfigType != null)
                     {
-                        commandDef.HandlerConfig = ConvertObject(commandDef.HandlerConfig, command.HandlerConfigType);
-                    }
-                    catch (Exception)
-                    {
-                        Log.Error($"{commandDef} had invalid config, resetting it to default");
                         commandDef.HandlerConfig = Activator.CreateInstance(command.HandlerConfigType);
+                    }
+                    else if (commandDef.HandlerConfig != null && command.HandlerConfigType == null)
+                    {
+                        commandDef.HandlerConfig = null;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            commandDef.HandlerConfig = command.HandlerConfigType != null
+                                ? ConvertObject(commandDef.HandlerConfig, command.HandlerConfigType)
+                                : null;
+                        }
+                        catch (Exception)
+                        {
+                            Log.Error($"{commandDef} had invalid config, resetting it to default");
+                            commandDef.HandlerConfig = Activator.CreateInstance(command.HandlerConfigType);
+                        }
                     }
                 }
             }
@@ -184,22 +211,20 @@ namespace BannerlordTwitch.Rewards
 
         internal static void HandleCommand(string commandId, ReplyContext context, object config)
         {
+            if (Campaign.Current == null)
+            {
+                SendReply(context, NotStartedMessage);
+                return;
+            }
+
             if (commandHandlers.TryGetValue(commandId, out var cmdHandler))
             {
-                try
+                if (cmdHandler.HandlerConfigType != null)
                 {
-                    if (cmdHandler.HandlerConfigType != null)
-                    {
-                        config = ConvertObject(config, cmdHandler.HandlerConfigType);
-                    }
-                    Log.Trace($"[{nameof(ActionManager)}] HandleCommand {commandId} {context.Args} for {context.UserName}");
-                    cmdHandler.Execute(context, config);
+                    config = ConvertObject(config, cmdHandler.HandlerConfigType);
                 }
-                catch (Exception e)
-                {
-                    Log.LogFeedCritical($"Command {commandId} failed with exception {e.Message}, game might be unstable now!");
-                    Log.Exception($"Command {commandId}", e);
-                }
+                Log.Trace($"[{nameof(ActionManager)}] HandleCommand {commandId} {context.Args} for {context.UserName}");
+                cmdHandler.Execute(context, config);
             }
             else
             {
@@ -207,31 +232,31 @@ namespace BannerlordTwitch.Rewards
             }
         }
 
+        public const string NotStartedMessage = "The game isn't started yet";
+
         internal static bool HandleReward(string rewardId, ReplyContext context, object config)
         {
+            if (Campaign.Current == null)
+            {
+                NotifyCancelled(context, NotStartedMessage);
+                return false;
+            }
+            
             if (!rewardHandlers.TryGetValue(rewardId, out var action))
             {
-                Log.Error($"Action with the id {rewardId} doesn't exist");
+                NotifyCancelled(context, $"Action with the id {rewardId} doesn't exist");
                 return false;
             }
 
             var st = new Stopwatch();
             st.Start();
-            try
+
+            if (action.RewardConfigType != null)
             {
-                if (action.RewardConfigType != null)
-                {
-                    config = ConvertObject(config, action.RewardConfigType);
-                }
-                //Log.Trace($"[{nameof(ActionManager)}] HandleReward {action} {context.Args} for {context.UserName}");
-                action.Enqueue(context, config);
+                config = ConvertObject(config, action.RewardConfigType);
             }
-            catch (Exception e)
-            {
-                Log.LogFeedCritical($"Reward {rewardId} failed with exception {e.Message}, game might be unstable now!");
-                Log.Exception($"Reward {rewardId}", e);
-                NotifyCancelled(context, $"Error occurred while trying to process the redemption");
-            }
+            //Log.Trace($"[{nameof(ActionManager)}] HandleReward {action} {context.Args} for {context.UserName}");
+            action.Enqueue(context, config);
 
             if (st.ElapsedMilliseconds > 5)
             {

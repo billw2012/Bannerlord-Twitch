@@ -21,7 +21,6 @@ Rewards:
     AllowWanderer: true
     AllowPlayerCompanion: false
     OnlySameFaction: false
-    AllowNewAdoptionOnDeath: true
     Inheritance: 0.25
     SubscriberOnly: false
     MinSubscribedMonths: 
@@ -369,7 +368,8 @@ Rewards:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: false
-  HandlerConfig: 
+  HandlerConfig:
+    AlertSound: Notification1
 - RewardSpec:
     Title: Retire My Hero
     DisableAutomaticFulfillment: false
@@ -483,6 +483,26 @@ Rewards:
     ActivateSound: 
     DeactivateParticleEffect: 
     DeactivateSound: 
+- RewardSpec:
+    Title: Give Player Gold
+    DisableAutomaticFulfillment: false
+    Prompt: 'Transfer 10k gold to the player from your hero. Enter gift message:'
+    Cost: 100
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: true
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    GlobalCooldownSeconds: 
+  Handler: AddGoldToPlayer
+  ID: 4ff890a2-ff83-41fa-9441-156f32abd9e8
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
+  HandlerConfig:
+    GoldAmountToGive: 10000
+    FromAdoptedHero: true
+    AlertSound: Notification1
 Commands:
 - Name: stats
   HideHelp: false
@@ -502,6 +522,7 @@ Commands:
     ShowAttributes: true
     ShowEquipment: false
     ShowInventory: false
+    ShowCivilianInventory: false
     ShowRetinue: true
     ShowRetinueList: false
 - Name: inv
@@ -522,6 +543,7 @@ Commands:
     ShowAttributes: false
     ShowEquipment: true
     ShowInventory: true
+    ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: false
 - Name: equip
@@ -604,6 +626,7 @@ Commands:
     ShowAttributes: false
     ShowEquipment: false
     ShowInventory: false
+    ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: false
 - Name: retinuelist
@@ -624,6 +647,7 @@ Commands:
     ShowAttributes: false
     ShowEquipment: false
     ShowInventory: false
+    ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: true
 - Name: adopt
@@ -839,3 +863,4 @@ SimTesting:
     Id: Heal Hero
     Args: ''
     Weight: 0.0500000007
+DisableAutomaticFulfillment: false

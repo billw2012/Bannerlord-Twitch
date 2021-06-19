@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -29,6 +29,8 @@ namespace BLTAdoptAHero
                 public CharacterObject TroopType { get; set; }
                 [SaveableProperty(1)]
                 public int Level { get; set; }
+                [SaveableProperty(2)]
+                public int SavedTroopIndex { get; set; }
             }
             
             [SaveableProperty(0)]
@@ -48,30 +50,46 @@ namespace BLTAdoptAHero
 
             [SaveableProperty(5)]
             public Guid ClassID { get; set; }
+            
+            [SaveableProperty(6)]
+            public string Owner { get; set; }
+            
+            [SaveableProperty(7)]
+            public bool IsRetiredOrDead { get; set; }
+            
+            // [SaveableProperty(7)]
+            // public string OriginalName { get; set; }
         }
 
         private Dictionary<Hero, HeroData> heroData = new();
         
         public override void SyncData(IDataStore dataStore)
         {
+            dataStore.SyncDataAsJson("HeroData", ref heroData);
+
             if (dataStore.IsLoading)
             {
-                Dictionary<Hero, int> heroGold = null;
-                dataStore.SyncData("HeroGold", ref heroGold);
-                dataStore.SyncDataAsJson("HeroData", ref heroData);
+                Dictionary<Hero, HeroData> oldHeroData = null;
+                dataStore.SyncDataAsJson("HeroData", ref oldHeroData);
 
-                // Upgrade code
-                if (heroGold != null)
+                List<Hero> usedHeroList = null;
+                dataStore.SyncData("UsedHeroObjectList", ref usedHeroList);
+
+                List<CharacterObject> usedCharList = null;
+                dataStore.SyncData("UsedCharacterObjectList", ref usedCharList);
+
+                Dictionary<int, HeroData> heroData2 = null;
+                dataStore.SyncDataAsJson("HeroData2", ref heroData2);
+                if (heroData2 == null && oldHeroData != null)
                 {
-                    Log.Trace($"Converting HeroGold to HeroData");
-                    heroData = new Dictionary<Hero, HeroData>();
-
-                    foreach ((var hero, int gold) in heroGold)
+                    heroData = oldHeroData;
+                }
+                else if (heroData2 != null)
+                {
+                    heroData = heroData2.ToDictionary(kv => usedHeroList[kv.Key], kv => kv.Value);
+                    foreach (var r in heroData.Values.SelectMany(h => h.Retinue))
                     {
-                        heroData.Add(hero, new HeroData
-                        {
-                            Gold = gold
-                        });
+                        r.TroopType = usedCharList[r.SavedTroopIndex];
                     }
                 }
 
@@ -80,31 +98,50 @@ namespace BLTAdoptAHero
                     // Try and find an appropriate character to replace the missing retinue with
                     foreach (var r in data.Retinue.Where(r => r.TroopType == null))
                     {
-                        r.TroopType = hero.Culture.EliteBasicTroop?.UpgradeTargets?.SelectRandom()?.UpgradeTargets?.SelectRandom();
+                        r.TroopType = hero.Culture?.EliteBasicTroop?.UpgradeTargets?.SelectRandom()?.UpgradeTargets?.SelectRandom();
                     }
 
                     // Remove any we couldn't replace
                     int count = data.Retinue.RemoveAll(r => r.TroopType == null);
+
                     // Compensate with gold for each one lost
                     data.Gold += count * 50000;
 
                     // Update EquipmentTier if it isn't set
                     if (data.EquipmentTier == -2)
                     {
-                        data.EquipmentTier = EquipHero.GetHeroEquipmentTier(hero);
+                        data.EquipmentTier = EquipHero.CalculateHeroEquipmentTier(hero);
                     }
+
+                    // Set owner name from the hero name
+                    data.Owner ??= hero.FirstName.ToString();
+
+                    data.IsRetiredOrDead = !hero.IsAdopted();
                 }
+                
+                // // Move heroes already marked as dead or retired (no BLT tag) into the dead/retired list
+                // foreach (var (hero, data) in heroData.Where(h => !h.Key.IsAdopted()).ToList())
+                // {
+                //     heroData.Remove(hero);
+                //     retiredOrDeadHeroData.Add(hero, data);
+                // }
             }
             else
             {
-                // Need to explicitly write out the CharacterObjects so that they are referenced at least once in the primary object index
+                // Need to explicitly write out the Heroes and CharacterObjects so we can look them up by index in the HeroData
                 var usedCharList = heroData.Values.SelectMany(h => h.Retinue.Select(r => r.TroopType)).Distinct().ToList();
                 dataStore.SyncData("UsedCharacterObjectList", ref usedCharList);
-                // Do the same for heroes, just in case! Shouldn't be necessary as Heroes MUST exist elsewhere in the save or they wouldn't load...
+                
                 var usedHeroList = heroData.Keys.ToList();
                 dataStore.SyncData("UsedHeroObjectList", ref usedHeroList);
-                
-                dataStore.SyncDataAsJson("HeroData", ref heroData);
+
+                foreach (var r in heroData.Values.SelectMany(h => h.Retinue))
+                {
+                    r.SavedTroopIndex = usedCharList.IndexOf(r.TroopType);
+                }
+
+                var heroDataSavable = heroData.ToDictionary(kv => usedHeroList.IndexOf(kv.Key), kv => kv.Value);
+                dataStore.SyncDataAsJson("HeroData2", ref heroDataSavable);
             }
         }
         
@@ -157,8 +194,13 @@ namespace BLTAdoptAHero
         {
             CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, () =>
             {
+                // Ensure all existing heroes are registered
+                foreach (var hero in HeroHelpers.AllHeroes.Where(h => h.IsAdopted()))
+                {
+                    GetHeroData(hero);
+                }
+                
                 // Clean up hero data
-                int randomSeed = Environment.TickCount;
                 foreach (var (hero, data) in heroData)
                 {
                     // Remove invalid troop types
@@ -178,17 +220,16 @@ namespace BLTAdoptAHero
                     {
                         // Activate them and put them in a random town
                         hero.ChangeState(Hero.CharacterStates.Active);
-                        var targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom(++randomSeed);
+                        var targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom();
                         EnterSettlementAction.ApplyForCharacterOnly(hero, targetSettlement);
                         Log.Info($"Placed unspawned hero {hero.Name} at {targetSettlement.Name}");
                     }                
                 }
-                
-                // Clean up dead character names
-                foreach (var deadHero in HeroHelpers.DeadOrDisabledHeroes
-                    .Where(h => h.IsDead && h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true))
+
+                // Retire up any dead heroes
+                foreach (var (hero, data) in heroData.Where(h => h.Key.IsDead && !h.Value.IsRetiredOrDead))
                 {
-                    RetireHero(deadHero);
+                    RetireHero(hero);
                 }
             });
             
@@ -268,27 +309,41 @@ namespace BLTAdoptAHero
             };
         }
         
-        public static void RetireHero(Hero hero)
+        public void RetireHero(Hero hero)
         {
             string heroName = hero.FirstName?.Raw().ToLower();
-            // Retired heroes
-            int count = HeroHelpers.AliveHeroes.Count(h
-                => h.FirstName?.Raw().ToLower() == heroName 
-                   && h.Name?.Contains(BLTAdoptAHeroModule.Tag) == false);
+            int count = heroData.Count(h => h.Value.IsRetiredOrDead && h.Key.FirstName?.Raw().ToLower() == heroName);
+
+            string desc = hero.IsDead ? "deceased" : "retired";
             var oldName = hero.Name;
-            HeroHelpers.SetHeroName(hero, new TextObject(hero.FirstName + $" {ToRoman(count + 1)} ({(hero.IsDead ? "deceased" : "retired")})"));
+            HeroHelpers.SetHeroName(hero, new TextObject(hero.FirstName + $" {ToRoman(count + 1)} ({desc})"));
             Campaign.Current.EncyclopediaManager.BookmarksTracker.RemoveBookmarkFromItem(hero);
+            
+            Log.LogFeedEvent($"{hero.Name} is {desc}!");
             Log.Info($"Dead or retired hero {oldName} renamed to {hero.Name}");
+
+            var data = GetHeroData(hero, suppressAutoRetire: true);
+            data.IsRetiredOrDead = true;
         }
 
-        private HeroData GetHeroData(Hero hero)
+        private HeroData GetHeroData(Hero hero, bool suppressAutoRetire = false)
         {
             // Better create it now if it doesn't exist
             if (!heroData.TryGetValue(hero, out var hd))
             {
-                hd = new HeroData { Gold = hero.Gold };
+                hd = new HeroData
+                {
+                    Gold = hero.Gold,
+                    EquipmentTier = EquipHero.CalculateHeroEquipmentTier(hero),
+                };
                 heroData.Add(hero, hd);
             }
+
+            if (!suppressAutoRetire && hero.IsDead)
+            {
+                RetireHero(hero);
+            }
+
             return hd;
         }
 
@@ -447,32 +502,34 @@ namespace BLTAdoptAHero
 
         public static string GetFullName(string name) => $"{name} {BLTAdoptAHeroModule.Tag}";
 
-        public static Hero GetDeadHero(string name)
-        {
-            string nameToFind = name.ToLower();
-            return HeroHelpers.DeadOrDisabledHeroes?
-                .FirstOrDefault(h => h.IsDead
-                                     && h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true
-                                     && h.FirstName?.Raw().ToLower() == nameToFind);
-        }
-
         public static void SetHeroAdoptedName(Hero hero, string userName)
         {
             HeroHelpers.SetHeroName(hero, new TextObject(GetFullName(userName)), new TextObject(userName));
         }
+
+        public void InitAdoptedHero(Hero newHero, string userName)
+        {
+            GetHeroData(newHero);
+            SetHeroAdoptedName(newHero, userName);
+        }
         
-        public static Hero GetAdoptedHero(string name)
+        public Hero GetAdoptedHero(string name)
         {
             string nameToFind = name.ToLower();
-            var foundHero = Campaign.Current?
-                .AliveHeroes?
-                .FirstOrDefault(h => h.Name?.Contains(BLTAdoptAHeroModule.Tag) == true
-                                     && h.FirstName?.Raw().ToLower() == nameToFind);
+
+            var foundHero = heroData.FirstOrDefault(h 
+                => !h.Value.IsRetiredOrDead && h.Key.FirstName?.Raw().ToLower() == nameToFind).Key;
 
             // correct the name to match the viewer name casing
             if (foundHero != null && foundHero.FirstName?.Raw() != name)
             {
                 SetHeroAdoptedName(foundHero, name);
+            }
+
+            if (foundHero?.IsDead == true)
+            {
+                RetireHero(foundHero);
+                return null;
             }
 
             return foundHero;

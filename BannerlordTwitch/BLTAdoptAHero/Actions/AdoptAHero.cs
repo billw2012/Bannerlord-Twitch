@@ -15,6 +15,7 @@ using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
@@ -22,10 +23,7 @@ namespace BLTAdoptAHero
     [Description("Allows viewer to 'adopt' a hero in game -- the hero name will change to the viewers name, and they can control it with further commands")]
     public class AdoptAHero : IRewardHandler, ICommandHandler
     {
-
-
-        internal const string NoHeroMessage = "Couldn't find your hero, did you adopt one yet?";
-        internal const string NotStartedMessage = "The game isn't started yet";
+        public const string NoHeroMessage = "Couldn't find your hero, did you adopt one yet?";
 
         [CategoryOrder("General", 0)]
         [CategoryOrder("Limits", 1)]
@@ -43,8 +41,6 @@ namespace BLTAdoptAHero
             public bool AllowPlayerCompanion { get; set; }
             [Category("Limits"), Description("Only allow heroes from same faction as player"), PropertyOrder(4)]
             public bool OnlySameFaction { get; set; }
-            [Category("Limits"), Description("Only allow viewer to adopt another hero if theirs is dead"), PropertyOrder(5)]
-            public bool AllowNewAdoptionOnDeath { get; set; } = true;
 
             [Category("Limits"),
              Description("What fraction of assets will be inherited when a new character is " +
@@ -62,10 +58,13 @@ namespace BLTAdoptAHero
              Description("Gold the adopted hero will start with"), DefaultValue(null), PropertyOrder(1)]
             public int StartingGold { get; set; }
 
-            [Category("Initialization"), 
+            [Category("Initialization"),
              Description("Starting skills, if empty then default skills of the adopted hero will be left in tact"),
              DefaultValue(null), PropertyOrder(1)]
-            public List<SkillRangeDef> StartingSkills { get; set; }
+            public List<SkillRangeDef> StartingSkills { get; set; } = new();
+
+            [YamlIgnore, Browsable(false)]
+            public IEnumerable<SkillRangeDef> ValidStartingSkills => StartingSkills?.Where(s => s.Skill != SkillsEnum.None);
             
             [Category("Initialization"), 
              Description("Equipment tier the adopted hero will start with, if you don't specify then they get the " +
@@ -97,7 +96,7 @@ namespace BLTAdoptAHero
         Type IRewardHandler.RewardConfigType => typeof(Settings);
         void IRewardHandler.Enqueue(ReplyContext context, object config)
         {
-            var hero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
+            var hero = BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(context.UserName);
             if (hero?.IsAlive == true)
             {
                 ActionManager.NotifyCancelled(context, "You have already adopted a hero!");
@@ -118,7 +117,7 @@ namespace BLTAdoptAHero
         Type ICommandHandler.HandlerConfigType => typeof(Settings);
         void ICommandHandler.Execute(ReplyContext context, object config)
         {
-            if (BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName) != null)
+            if (BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(context.UserName) != null)
             {
                 ActionManager.SendReply(context, "You have already adopted a hero!");
                 return;
@@ -142,21 +141,6 @@ namespace BLTAdoptAHero
 
         private static (bool success, string message) ExecuteInternal(string args, string userName, Settings settings)
         {
-            if (Campaign.Current == null)
-            {
-                return (false, NotStartedMessage);
-            }
-
-            var deadHero = BLTAdoptAHeroCampaignBehavior.GetDeadHero(userName);
-            if (deadHero != null && !settings.AllowNewAdoptionOnDeath)
-            {
-                return (false, "Your hero died, and you may not adopt another!");
-            }
-            else if(deadHero != null)
-            {
-                BLTAdoptAHeroCampaignBehavior.RetireHero(deadHero);
-            }
-
             Hero newHero = null;
             if (settings.CreateNew)
             {
@@ -222,11 +206,11 @@ namespace BLTAdoptAHero
                 Log.Info($"Placed new hero {newHero.Name} at {targetSettlement.Name}");
             }
 
-            if (settings.StartingSkills?.Any() == true)
+            if (settings.ValidStartingSkills?.Any() == true)
             {
                 newHero.HeroDeveloper.ClearHero();
 
-                foreach (var skill in settings.StartingSkills)
+                foreach (var skill in settings.ValidStartingSkills)
                 {
                     var actualSkills = SkillGroup.GetSkills(skill.Skill);
                     newHero.HeroDeveloper.SetInitialSkillLevel(actualSkills.SelectRandom(), 
@@ -251,8 +235,9 @@ namespace BLTAdoptAHero
                 AddCompanionAction.Apply(Hero.MainHero.Clan, newHero);
             }
 
+            // Setup skills first, THEN name, as skill changes can generate feed messages for adopted characters
             string oldName = newHero.Name.ToString();
-            BLTAdoptAHeroCampaignBehavior.SetHeroAdoptedName(newHero, userName);
+            BLTAdoptAHeroCampaignBehavior.Current.InitAdoptedHero(newHero, userName);
             
             if (settings.StartingEquipmentTier.HasValue)
             {
@@ -263,11 +248,7 @@ namespace BLTAdoptAHero
                 }
                 BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentTier(newHero, settings.StartingEquipmentTier.Value - 1);
             }
-            else
-            {
-                BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentTier(newHero, EquipHero.GetHeroEquipmentTier(newHero));
-            }
-            
+
             if(!Campaign.Current.EncyclopediaManager.BookmarksTracker.IsBookmarked(newHero))
             {
                 Campaign.Current.EncyclopediaManager.BookmarksTracker.AddBookmarkToItem(newHero);

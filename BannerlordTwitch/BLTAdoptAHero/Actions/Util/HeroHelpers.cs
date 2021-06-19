@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
@@ -64,5 +65,7 @@ namespace BLTAdoptAHero.Actions.Util
             hero.SetName(name, firstName);
         }
 #endif
+
+        public static IEnumerable<Hero> AllHeroes => AliveHeroes.Concat(DeadOrDisabledHeroes).Distinct();
     }
 }

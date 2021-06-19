@@ -7,8 +7,6 @@ using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
 using JetBrains.Annotations;
-using TaleWorlds.CampaignSystem;
-using TaleWorlds.Core;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
@@ -31,8 +29,10 @@ namespace BLTAdoptAHero
             public bool ShowAttributes { get; set; } = true;
             [Description("Shows the equipment tier of the hero"), PropertyOrder(5)]
             public bool ShowEquipment { get; set; }
-            [Description("Shows the full battle and civilian inventory of the hero"), PropertyOrder(5)]
+            [Description("Shows the full battle inventory of the hero"), PropertyOrder(5)]
             public bool ShowInventory { get; set; }
+            [Description("Shows the full civilian inventory of the hero"), PropertyOrder(5)]
+            public bool ShowCivilianInventory { get; set; }
             [Description("Shows a summary of the retinue of the hero (count and tier)"), PropertyOrder(6)]
             public bool ShowRetinue { get; set; }
             [Description("Shows the exact classes and counts of the retinue of the hero"), PropertyOrder(6)]
@@ -46,11 +46,11 @@ namespace BLTAdoptAHero
         void ICommandHandler.Execute(ReplyContext context, object config)
         {
             var settings = config as Settings ?? new Settings();
-            var adoptedHero = BLTAdoptAHeroCampaignBehavior.GetAdoptedHero(context.UserName);
+            var adoptedHero = BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(context.UserName);
             var infoStrings = new List<string>{};
             if (adoptedHero == null)
             {
-                infoStrings.Add(Campaign.Current == null ? AdoptAHero.NotStartedMessage : AdoptAHero.NoHeroMessage);
+                infoStrings.Add(AdoptAHero.NoHeroMessage);
             }
             else
             {
@@ -59,6 +59,7 @@ namespace BLTAdoptAHero
                     int gold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
                     infoStrings.Add($"{gold}{Naming.Gold}");
                 }
+                
                 if (settings.ShowGeneral)
                 {
                     var cl = BLTAdoptAHeroCampaignBehavior.Current.GetClass(adoptedHero);
@@ -75,6 +76,7 @@ namespace BLTAdoptAHero
                         infoStrings.Add($"Last seen near {adoptedHero.LastSeenPlace.Name}");
                     }
                 }
+                
                 if (settings.ShowTopSkills)
                 {
                     infoStrings.Add($"Lvl {adoptedHero.Level}");
@@ -86,30 +88,38 @@ namespace BLTAdoptAHero
                                              $"[f{adoptedHero.HeroDeveloper.GetFocus(skill)}]")
                     ));
                 }
+                
                 if (settings.ShowAttributes)
                 {
                     infoStrings.Add("Attr " + string.Join("■", HeroHelpers.AllAttributes
                         .Select(a => $"{HeroHelpers.GetShortAttributeName(a)} {adoptedHero.GetAttributeValue(a)}")));
                 }
+                
                 if (settings.ShowEquipment)
                 {
                     infoStrings.Add($"Equip Tier {BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero) + 1}");
                     var cl = BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentClass(adoptedHero);
                     infoStrings.Add($"{cl?.Name ?? "No Equip Class"}");
                 }
-                if(settings.ShowInventory)
+
+                if (settings.ShowInventory)
                 {
                     infoStrings.Add("Battle " + string.Join("■", adoptedHero.BattleEquipment
                         .YieldEquipmentSlots()
                         .Where(e => !e.element.IsEmpty)
                         .Select(e => $"{e.element.Item.Name}")
                     ));
+                }
+                
+                if(settings.ShowCivilianInventory)
+                {
                     infoStrings.Add("Civ " + string.Join("■", adoptedHero.CivilianEquipment
                         .YieldEquipmentSlots()
                         .Where(e => !e.element.IsEmpty)
                         .Select(e => $"{e.element.Item.Name}")
                     ));
                 }
+                
                 if (settings.ShowRetinue)
                 {
                     var retinue = BLTAdoptAHeroCampaignBehavior.Current.GetRetinue(adoptedHero).ToList();

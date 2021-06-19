@@ -57,6 +57,16 @@ namespace BLTConfigure
                 SaveAuth();
             }
         }
+
+        public bool DisableAutomaticFulfillment
+        {
+            get => EditedSettings.DisableAutomaticFulfillment;
+            set
+            {
+                EditedSettings.DisableAutomaticFulfillment = value;
+                SaveSettings();
+            }
+        }
         
         public BLTConfigureWindow()
         {
@@ -108,11 +118,7 @@ namespace BLTConfigure
             }
 
             EditedSettings ??= new Settings();
-            
-            ActionManager.ConvertSettings(EditedSettings.Commands);
-            ActionManager.ConvertSettings(EditedSettings.Rewards);
-            ActionManager.EnsureGlobalSettings(EditedSettings.GlobalConfigs);
-            
+
             RefreshActionList();
             PropertyGrid.SelectedObject = null;
 

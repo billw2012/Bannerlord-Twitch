@@ -295,8 +295,12 @@
                         </Hyperlink>, and disconnect the BannerlordIntegrationMod.
                     </TextBlock>
                     <Separator Height="20"/>
-                    <CheckBox IsChecked="{Binding AffiliateSpoofing}">
+                    <TextBlock TextWrapping="Wrap" FontSize="20">Miscellaneous Settings</TextBlock>
+                    <CheckBox Margin="8 2" IsChecked="{Binding AffiliateSpoofing}" VerticalContentAlignment="Center">
                         <TextBlock TextWrapping="Wrap">Affiliate Spoofing (this is for debugging and testing purposes, it will stop normal channel point rewards from working!)</TextBlock>
+                    </CheckBox>
+                    <CheckBox Margin="8 2" IsChecked="{Binding DisableAutomaticFulfillment}" VerticalContentAlignment="Center">
+                        <TextBlock TextWrapping="Wrap">Disable automatic Channel Point Rewards completion (redemptions will remain in the queue to be refunded or completed at the streamers discretion)</TextBlock>
                     </CheckBox>
                 </StackPanel>
             </TabItem>

@@ -266,27 +266,23 @@ namespace BannerlordTwitch
                     return;
                 }
 
+                Log.Info($"Redemption of {redeemedArgs.RewardTitle} from {redeemedArgs.DisplayName} received!");
+
                 var context = ReplyContext.FromRedemption(reward, redeemedArgs);
+#if !DEBUG
                 try
                 {
+#endif
                     redemptionCache.TryAdd(redeemedArgs.RedemptionId, redeemedArgs);
-                    if (!ActionManager.HandleReward(reward.Handler, context, reward.HandlerConfig))
-                    {
-                        Log.Error($"Couldn't enqueue redemption {redeemedArgs.RedemptionId}: " 
-                                  + $"RedemptionAction {reward.Handler} not found, check you have its Reward extension installed!");
-                        // We DO cancel redemptions we know about, where the implementation is missing
-                        RedemptionCancelled(context, $"Redemption action {reward.Handler} wasn't found");
-                    }
-                    else
-                    {
-                        //Log.Info($"Redemption of {redeemedArgs.RewardTitle} from {redeemedArgs.DisplayName} received!");
-                    }
+                    ActionManager.HandleReward(reward.Handler, context, reward.HandlerConfig);
+#if !DEBUG
                 }
                 catch (Exception e)
                 {
                     Log.Error($"Exception happened while trying to enqueue redemption {redeemedArgs.RedemptionId}: {e.Message}");
                     RedemptionCancelled(context, $"Exception occurred: {e.Message}");
                 }
+#endif
             });
         }
 
@@ -377,8 +373,7 @@ namespace BannerlordTwitch
                 .ToList();
             if (settings.EnabledRewards.Any())
             {
-                help.Add($"Rewards: ");
-                help.AddRange(settings.EnabledRewards.Select(r => r.RewardSpec.Title));
+                help.Add($"Also see Channel Point Rewards");
             }
             bot.SendChat(help.ToArray());
         }
@@ -400,7 +395,20 @@ namespace BannerlordTwitch
                 return false;
             }
 
-            ActionManager.HandleCommand(cmd.Handler, context, cmd.HandlerConfig);
+#if !DEBUG
+            try
+            {
+#endif
+                ActionManager.HandleCommand(cmd.Handler, context, cmd.HandlerConfig);
+#if !DEBUG
+            }
+            catch (Exception e)
+            {
+                Log.LogFeedCritical($"Command {cmdName} failed with exception {e.Message}, game might be unstable now!");
+                Log.Exception($"Command {cmdName}", e);
+            }
+#endif
+
             return true;
         }
 
@@ -425,7 +433,7 @@ namespace BannerlordTwitch
             ActionManager.SendReply(context, info);
             if (!string.IsNullOrEmpty(redemption.ChannelId))
             {
-                if ((context.Source as Reward)?.RewardSpec?.DisableAutomaticFulfillment != true)
+                if (!settings.DisableAutomaticFulfillment && (context.Source as Reward)?.RewardSpec?.DisableAutomaticFulfillment != true)
                 {
                     _ = SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.FULFILLED);
                 }

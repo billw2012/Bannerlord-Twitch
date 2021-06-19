@@ -17,7 +17,7 @@ namespace BLTAdoptAHero
             // We must record this separately, as the Agent.State is undefined once the Agent is deleted (the internal handle gets reused by the engine)
             public AgentState State;
         }
-            
+
         public class SummonedHero
         {
             public Hero Hero;
@@ -32,12 +32,12 @@ namespace BLTAdoptAHero
 
             public int ActiveRetinue => Retinue.Count(r => r.State == AgentState.Active);
 
-            public float CooldownTime => BLTAdoptAHeroModule.CommonConfig.CooldownEnabled
+            private float CooldownTime => BLTAdoptAHeroModule.CommonConfig.CooldownEnabled
                 ? BLTAdoptAHeroModule.CommonConfig.GetCooldownTime(TimesSummoned) : 0;
-            
+
             public bool InCooldown => BLTAdoptAHeroModule.CommonConfig.CooldownEnabled && SummonTime + CooldownTime > MBCommon.GetTime(MBCommon.TimeType.Mission);
-            public float CooldownRemaining => !BLTAdoptAHeroModule.CommonConfig.CooldownEnabled ? 0 : Math.Max(0, SummonTime + BLTAdoptAHeroModule.CommonConfig.SummonCooldownInSeconds - MBCommon.GetTime(MBCommon.TimeType.Mission));
-            public float CoolDownFraction => !BLTAdoptAHeroModule.CommonConfig.CooldownEnabled ? 1 : 1f - CooldownRemaining / BLTAdoptAHeroModule.CommonConfig.SummonCooldownInSeconds;
+            public float CooldownRemaining => !BLTAdoptAHeroModule.CommonConfig.CooldownEnabled ? 0 : Math.Max(0, SummonTime + CooldownTime - MBCommon.GetTime(MBCommon.TimeType.Mission));
+            public float CoolDownFraction => !BLTAdoptAHeroModule.CommonConfig.CooldownEnabled ? 1 : 1f - CooldownRemaining / CooldownTime;
         }
 
         private readonly List<SummonedHero> summonedHeroes = new();
