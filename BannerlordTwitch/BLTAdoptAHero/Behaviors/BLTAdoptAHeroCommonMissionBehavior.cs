@@ -201,14 +201,14 @@ namespace BLTAdoptAHero
             {
                 if (affectedAgent.State == AgentState.Killed)
                 {
-                    // stop hero from dying if death is disabled
+                    // Stop hero from dying if death is disabled
                     var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
                     if (affectedHero != null && BLTAdoptAHeroModule.CommonConfig.AllowDeath == false)
                     {
                         agentState = affectedAgent.State = AgentState.Unconscious;
                     }
 
-                    // stop horse from dying always, as its not easily replaceable
+                    // Stop horse from dying always, as its not easily replaceable
                     if (affectedAgent.IsMount && Current?.adoptedHeroMounts.Contains(affectedAgent) == true)
                     {
                         agentState = affectedAgent.State = AgentState.Unconscious;
@@ -300,7 +300,10 @@ namespace BLTAdoptAHero
             var currKillStreak = BLTAdoptAHeroModule.CommonConfig.KillStreaks?.FirstOrDefault(k => k.Enabled && heroState.KillStreak == k.KillsRequired);
             if (currKillStreak != null)
             {
-                string message = currKillStreak.NotificationText.Replace("{player}", hero.FirstName.ToString()).Replace("{kills}",currKillStreak.KillsRequired.ToString()).Replace("{name}",currKillStreak.Name);
+                string message = currKillStreak.NotificationText
+                    .Replace("{player}", hero.FirstName.ToString())
+                    .Replace("{kills}",currKillStreak.KillsRequired.ToString())
+                    .Replace("{name}",currKillStreak.Name);
                 if (BLTAdoptAHeroModule.CommonConfig.ShowKillStreakPopup && currKillStreak.ShowNotification)
                 {
                     Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
@@ -354,8 +357,8 @@ namespace BLTAdoptAHero
 
             string name = hero.FirstName.Raw();
             float HP = agent?.Health ?? 0;
-            float CooldownFractionRemaining = 1 - summonState?.CoolDownFraction ?? 0;
-            float CooldownSecondsRemaining = summonState?.CooldownRemaining ?? 0;
+            float cooldownFractionRemaining = 1 - summonState?.CoolDownFraction ?? 0;
+            float cooldownSecondsRemaining = summonState?.CooldownRemaining ?? 0;
             
             Log.RunInfoPanelUpdate(() =>
             {
@@ -363,8 +366,8 @@ namespace BLTAdoptAHero
                 if (hm != null)
                 {
                     hm.HP = HP;
-                    hm.CooldownFractionRemaining = CooldownFractionRemaining;
-                    hm.CooldownSecondsRemaining = CooldownSecondsRemaining;
+                    hm.CooldownFractionRemaining = cooldownFractionRemaining;
+                    hm.CooldownSecondsRemaining = cooldownSecondsRemaining;
                 }
             });
         }
@@ -455,27 +458,19 @@ namespace BLTAdoptAHero
         // value returned is 0 < v < 1 if levelB < levelA, v = 1 if they are equal, and 1 < v < max if levelB > levelA
         public static float RelativeLevelScaling(int levelA, int levelB, float n, float max = float.MaxValue) 
             => Math.Min(MathF.Pow(1f - Math.Min(MaxLevelInPractice - 1, levelB - levelA) / (float)MaxLevelInPractice, -10f * MathF.Clamp(n, 0, 1)), max);
-
-
+        
         public void ApplyStreakEffects(Hero hero, int goldStreak, int xpStreak, float subBoost, string killStreakName, float? relativeLevelScaling, float? levelScalingCap, string message)
         {
-            if (subBoost != 1)
-            {
-                goldStreak = (int)(goldStreak * subBoost);
-                xpStreak = (int)(xpStreak * subBoost);
-            }
+            goldStreak = (int)(goldStreak * subBoost);
+            xpStreak = (int)(xpStreak * subBoost);
 
-            float levelBoost = 1;
             if (relativeLevelScaling.HasValue)
             {
                 // More reward for killing higher level characters
-                levelBoost = BLTAdoptAHeroCommonMissionBehavior.RelativeLevelScaling(hero.Level, BLTAdoptAHeroModule.CommonConfig.ReferenceLevelReward, relativeLevelScaling.Value, levelScalingCap ?? 5);
+                float levelBoost = RelativeLevelScaling(hero.Level, BLTAdoptAHeroModule.CommonConfig.ReferenceLevelReward, relativeLevelScaling.Value, levelScalingCap ?? 5);
 
-                if (levelBoost != 1)
-                {
-                    goldStreak = (int)(goldStreak * levelBoost);
-                    xpStreak = (int)(xpStreak * levelBoost);
-                }
+                goldStreak = (int)(goldStreak * levelBoost);
+                xpStreak = (int)(xpStreak * levelBoost);
             }
 
             if (goldStreak != 0)
@@ -483,6 +478,7 @@ namespace BLTAdoptAHero
                 BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, goldStreak);
                 GetHeroMissionState(hero).WonGold += goldStreak;
             }
+
             if (xpStreak != 0)
             {
                 (bool success, string description) = SkillXP.ImproveSkill(hero, xpStreak, SkillsEnum.All, auto: true);
@@ -495,25 +491,18 @@ namespace BLTAdoptAHero
 
         public void ApplyKillEffects(Hero hero, Agent killer, Agent killed, AgentState state, int goldPerKill, int healPerKill, int xpPerKill, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
         {
-            if (subBoost != 1)
-            {
-                goldPerKill = (int) (goldPerKill * subBoost);
-                healPerKill = (int) (healPerKill * subBoost);
-                xpPerKill = (int) (xpPerKill * subBoost);
-            }
+            goldPerKill = (int) (goldPerKill * subBoost);
+            healPerKill = (int) (healPerKill * subBoost);
+            xpPerKill = (int) (xpPerKill * subBoost);
 
-            float levelBoost = 1;
             if (relativeLevelScaling.HasValue && killed?.Character != null)
             {
                 // More reward for killing higher level characters
-                levelBoost = RelativeLevelScaling(hero.Level, killed.Character.Level, relativeLevelScaling.Value, levelScalingCap ?? 5);
+                float levelBoost = RelativeLevelScaling(hero.Level, killed.Character.Level, relativeLevelScaling.Value, levelScalingCap ?? 5);
 
-                if (levelBoost != 1)
-                {
-                    goldPerKill = (int) (goldPerKill * levelBoost);
-                    healPerKill = (int) (healPerKill * levelBoost);
-                    xpPerKill = (int) (xpPerKill * levelBoost);
-                }
+                goldPerKill = (int) (goldPerKill * levelBoost);
+                healPerKill = (int) (healPerKill * levelBoost);
+                xpPerKill = (int) (xpPerKill * levelBoost);
             }
 
             if (goldPerKill != 0)
@@ -524,8 +513,7 @@ namespace BLTAdoptAHero
             
             if (healPerKill != 0)
             {
-                killer.Health = Math.Min(killer.HealthLimit,
-                    killer.Health + healPerKill);
+                killer.Health = Math.Min(killer.HealthLimit, killer.Health + healPerKill);
             }
 
             if (xpPerKill != 0)
@@ -537,20 +525,14 @@ namespace BLTAdoptAHero
         
         public void ApplyKilledEffects(Hero hero, Agent killer, AgentState state, int xpPerKilled, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
         {
-            if (subBoost != 1)
-            {
-                xpPerKilled = (int) (xpPerKilled * subBoost);
-            }
+            xpPerKilled = (int) (xpPerKilled * subBoost);
 
             if (relativeLevelScaling.HasValue && killer?.Character != null)
             {
                 // More reward for being killed by higher level characters
                 float levelBoost = RelativeLevelScaling(hero.Level, killer.Character.Level, relativeLevelScaling.Value, levelScalingCap ?? 5);
 
-                if (levelBoost != 1)
-                {
-                    xpPerKilled = (int) (xpPerKilled * levelBoost);
-                }
+                xpPerKilled = (int) (xpPerKilled * levelBoost);
             }
 
             if (xpPerKilled != 0)
