@@ -213,6 +213,7 @@ namespace BLTAdoptAHero
                     {
                         agentState = affectedAgent.State = AgentState.Unconscious;
                     }
+                    
                 }
 
                 // Remove mount agent from tracking, in-case it is reused
@@ -240,6 +241,7 @@ namespace BLTAdoptAHero
                         BLTAdoptAHeroModule.CommonConfig.LevelScalingCap
                     );
                     ResetKillStreak(affectedHero);
+                    BLTAdoptAHeroCampaignBehavior.Current.IncreaseHeroDeaths(affectedHero);
                 }
 
                 var affectorHero = GetAdoptedHeroFromAgent(affectorAgent);
@@ -262,6 +264,7 @@ namespace BLTAdoptAHero
                     {
                         GetHeroMissionState(affectorHero).Kills++;
                         AddKillStreak(affectorHero);
+                        BLTAdoptAHeroCampaignBehavior.Current.IncreaseHeroKills(affectorHero, affectedAgent);
                     }
                 }
 
@@ -270,6 +273,7 @@ namespace BLTAdoptAHero
                 {
                     GetHeroMissionState(affectorRetinueOwner.Hero).RetinueKills++;
                 }
+                
             }
             catch (Exception ex)
             {
@@ -297,15 +301,11 @@ namespace BLTAdoptAHero
             if (currKillStreak != null)
             {
                 string message = currKillStreak.NotificationText.Replace("{player}", hero.FirstName.ToString()).Replace("{kills}",currKillStreak.KillsRequired.ToString()).Replace("{name}",currKillStreak.Name);
-                if (BLTAdoptAHeroModule.CommonConfig.ShowKillStreakPopup)
+                if (BLTAdoptAHeroModule.CommonConfig.ShowKillStreakPopup && currKillStreak.ShowNotification)
                 {
                     Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
                 }
-                var results = BLTAdoptAHeroCustomMissionBehavior.ApplyStreakEffects(hero, currKillStreak.GoldReward, currKillStreak.XPReward,Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),currKillStreak.Name,BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,BLTAdoptAHeroModule.CommonConfig.LevelScalingCap, message);
-                if (results.Any())
-                {
-                    Log.LogFeedResponse(hero.FirstName.ToString(), results.ToArray());
-                }
+                ApplyStreakEffects(hero, currKillStreak.GoldReward, currKillStreak.XPReward,Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),currKillStreak.Name,BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,BLTAdoptAHeroModule.CommonConfig.LevelScalingCap, message);
             }
         }
 
@@ -455,7 +455,44 @@ namespace BLTAdoptAHero
         // value returned is 0 < v < 1 if levelB < levelA, v = 1 if they are equal, and 1 < v < max if levelB > levelA
         public static float RelativeLevelScaling(int levelA, int levelB, float n, float max = float.MaxValue) 
             => Math.Min(MathF.Pow(1f - Math.Min(MaxLevelInPractice - 1, levelB - levelA) / (float)MaxLevelInPractice, -10f * MathF.Clamp(n, 0, 1)), max);
-        
+
+
+        public void ApplyStreakEffects(Hero hero, int goldStreak, int xpStreak, float subBoost, string killStreakName, float? relativeLevelScaling, float? levelScalingCap, string message)
+        {
+            if (subBoost != 1)
+            {
+                goldStreak = (int)(goldStreak * subBoost);
+                xpStreak = (int)(xpStreak * subBoost);
+            }
+
+            float levelBoost = 1;
+            if (relativeLevelScaling.HasValue)
+            {
+                // More reward for killing higher level characters
+                levelBoost = BLTAdoptAHeroCommonMissionBehavior.RelativeLevelScaling(hero.Level, BLTAdoptAHeroModule.CommonConfig.ReferenceLevelReward, relativeLevelScaling.Value, levelScalingCap ?? 5);
+
+                if (levelBoost != 1)
+                {
+                    goldStreak = (int)(goldStreak * levelBoost);
+                    xpStreak = (int)(xpStreak * levelBoost);
+                }
+            }
+
+            if (goldStreak != 0)
+            {
+                BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, goldStreak);
+                GetHeroMissionState(hero).WonGold += goldStreak;
+            }
+            if (xpStreak != 0)
+            {
+                (bool success, string description) = SkillXP.ImproveSkill(hero, xpStreak, SkillsEnum.All, auto: true);
+                if (success)
+                {
+                    GetHeroMissionState(hero).WonXP += xpStreak;
+                }
+            }
+        }
+
         public void ApplyKillEffects(Hero hero, Agent killer, Agent killed, AgentState state, int goldPerKill, int healPerKill, int xpPerKill, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
         {
             if (subBoost != 1)
@@ -521,6 +558,15 @@ namespace BLTAdoptAHero
                 SkillXP.ImproveSkill(hero, xpPerKilled, SkillsEnum.All, auto: true);
                 GetHeroMissionState(hero).WonXP += xpPerKilled;
             }
+        }
+
+        public void ApplyAchievementRewards(Hero hero, int goldGained, int xpGained)
+        {
+            BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, goldGained);
+            GetHeroMissionState(hero).WonGold += goldGained;
+
+            SkillXP.ImproveSkill(hero, xpGained, SkillsEnum.All, auto: true);
+            GetHeroMissionState(hero).WonXP += xpGained;
         }
     }
 }

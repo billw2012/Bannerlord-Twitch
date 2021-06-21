@@ -548,8 +548,8 @@ namespace BLTAdoptAHero
                             },
                             replaceExisting: false
                         );
-                        
                         existingHero = BLTSummonBehavior.Current.AddSummonedHero(adoptedHero, settings.OnPlayerSide, formationClass, party);
+                        BLTAdoptAHeroCampaignBehavior.Current.IncreaseParticipationCount(adoptedHero, settings.OnPlayerSide);
                     }
                     
                     // DOING:

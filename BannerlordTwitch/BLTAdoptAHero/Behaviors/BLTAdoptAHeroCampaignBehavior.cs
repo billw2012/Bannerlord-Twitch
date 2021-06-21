@@ -480,16 +480,14 @@ namespace BLTAdoptAHero
             if (AchievementCheck != null && !hd.Achievements.Contains(AchievementCheck.ID))
             {
                 string message = AchievementCheck.NotificationText.Replace("{player}", hero.FirstName.ToString()).Replace("{name}", AchievementCheck.Name);
-                if (BLTAdoptAHeroModule.CommonConfig.ShowKillStreakPopup)
-                {
-                    Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
-                    hd.Achievements.Add(AchievementCheck.ID);
+                Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
+                hd.Achievements.Add(AchievementCheck.ID);
 
-                    int gainedGold = AchievementCheck.GoldGain;
-                    int gainedEXP = AchievementCheck.XPGain;
+                int gainedGold = AchievementCheck.GoldGain;
+                int gainedEXP = AchievementCheck.XPGain;
 
-                    BLTAdoptAHeroCommonMissionBehavior.Current.ApplyAchievementRewards(hero, gainedGold, gainedEXP);
-                }
+                BLTAdoptAHeroCommonMissionBehavior.Current.ApplyAchievementRewards(hero, gainedGold, gainedEXP);
+                
 
             }
         }
