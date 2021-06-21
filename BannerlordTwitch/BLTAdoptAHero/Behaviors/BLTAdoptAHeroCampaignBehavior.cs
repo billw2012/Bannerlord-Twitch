@@ -32,31 +32,52 @@ namespace BLTAdoptAHero
                 [SaveableProperty(2)]
                 public int SavedTroopIndex { get; set; }
             }
-            
+
+            public class AchievementData
+            {
+                [SaveableProperty(0)]
+                public int TotalKills { get; set; }
+                [SaveableProperty(1)]
+                public int TotalDeaths { get; set; }
+                [SaveableProperty(2)]
+                public int TotalSummons { get; set; }
+                [SaveableProperty(3)]
+                public int TotalAttacks { get; set; }
+                [SaveableProperty(4)]
+                public int TotalMainKills { get; set; }
+                [SaveableProperty(5)]
+                public int TotalBLTKills { get; set; }
+                [SaveableProperty(6)]
+                public List<Guid> Achievements { get; set; } = new();
+            }
+
             [SaveableProperty(0)]
             public int Gold { get; set; }
-            
+
             [SaveableProperty(1)]
             public List<RetinueData> Retinue { get; set; } = new();
 
             [SaveableProperty(2)]
             public int SpentGold { get; set; }
-            
+
             [SaveableProperty(3)]
             public int EquipmentTier { get; set; } = -2;
-        
+
             [SaveableProperty(4)]
             public Guid EquipmentClassID { get; set; }
 
             [SaveableProperty(5)]
             public Guid ClassID { get; set; }
-            
+
             [SaveableProperty(6)]
             public string Owner { get; set; }
-            
+
             [SaveableProperty(7)]
             public bool IsRetiredOrDead { get; set; }
-            
+
+            [SaveableProperty(8)]
+            public AchievementData AchievementInfo { get; set; } = new();
+
             // [SaveableProperty(7)]
             // public string OriginalName { get; set; }
         }
@@ -378,6 +399,97 @@ namespace BLTAdoptAHero
                 value.Gold = 0;
             }
             return inheritance;
+        }
+
+        public void IncreaseHeroKills(Hero killer, Agent deadguy)
+        {
+            var hd = GetHeroData(killer).AchievementInfo;
+
+            var deadHero = (deadguy?.Character as CharacterObject)?.HeroObject;
+
+            if (deadguy?.IsAdopted() == true)
+            {
+                hd.TotalBLTKills++;
+                CheckForAchievement(killer, AchievementSystem.AchievementTypes.TotalBLTKills);
+            }
+            bool isMainCharacter = deadHero == Hero.MainHero;
+            if (isMainCharacter)
+            {
+                hd.TotalMainKills++;
+                CheckForAchievement(killer, AchievementSystem.AchievementTypes.TotalMainKills);
+            }
+
+            hd.TotalKills++;
+
+            CheckForAchievement(killer, AchievementSystem.AchievementTypes.TotalKills);
+        }
+
+        public void IncreaseParticipationCount(Hero hero, bool PlayerSide)
+        {
+            var hd = GetHeroData(hero).AchievementInfo;
+
+            if(PlayerSide)
+            {
+                hd.TotalSummons++;
+                CheckForAchievement(hero, AchievementSystem.AchievementTypes.Summons);
+            }
+            else
+            {
+                hd.TotalAttacks++;
+                CheckForAchievement(hero, AchievementSystem.AchievementTypes.Attacks);
+            }
+            
+        }
+
+        public void IncreaseHeroDeaths(Hero hero)
+        {
+            var hd = GetHeroData(hero).AchievementInfo;
+            hd.TotalDeaths++;
+            CheckForAchievement(hero, AchievementSystem.AchievementTypes.Deaths);
+        }
+
+        public void CheckForAchievement(Hero hero, AchievementSystem.AchievementTypes Check)
+        {
+            var hd = GetHeroData(hero).AchievementInfo;
+            int Value;
+            switch (Check) 
+            {
+                case AchievementSystem.AchievementTypes.Summons:
+                    Value = hd.TotalSummons;
+                    break;
+                case AchievementSystem.AchievementTypes.TotalKills:
+                    Value = hd.TotalKills;
+                    break;
+                case AchievementSystem.AchievementTypes.TotalBLTKills:
+                    Value = hd.TotalBLTKills;
+                    break;
+                case AchievementSystem.AchievementTypes.TotalMainKills:
+                    Value = hd.TotalMainKills;
+                    break;
+                case AchievementSystem.AchievementTypes.Attacks:
+                    Value = hd.TotalAttacks;
+                    break;
+                case AchievementSystem.AchievementTypes.Deaths:
+                    Value = hd.TotalDeaths;
+                    break;
+                default:
+                    return;
+            }
+
+            var AchievementCheck = BLTAdoptAHeroModule.CommonConfig.Achievements?.FirstOrDefault(k => k.Enabled && Check == k.Type && Value == k.Value);
+            if (AchievementCheck != null && !hd.Achievements.Contains(AchievementCheck.ID))
+            {
+                string message = AchievementCheck.NotificationText.Replace("{player}", hero.FirstName.ToString()).Replace("{name}", AchievementCheck.Name);
+                Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
+                hd.Achievements.Add(AchievementCheck.ID);
+
+                int gainedGold = AchievementCheck.GoldGain;
+                int gainedEXP = AchievementCheck.XPGain;
+
+                BLTAdoptAHeroCommonMissionBehavior.Current.ApplyAchievementRewards(hero, gainedGold, gainedEXP);
+                
+
+            }
         }
         #endregion
 

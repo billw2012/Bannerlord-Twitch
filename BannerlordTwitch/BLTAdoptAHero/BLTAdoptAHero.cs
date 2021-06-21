@@ -272,7 +272,10 @@ namespace BLTAdoptAHero
         
         [Category("Kill Streak Rewards"), Description("The level at which the rewards normalize and start to reduce (if relative level scaling is enabled)."), PropertyOrder(4)]
         public int ReferenceLevelReward { get; set; } = 15;
-     }
+
+        [Category("General"), Description("Achievements"), PropertyOrder(15)]
+        public List<AchievementSystem> Achievements { get; set; } = new();
+    }
 
     [CategoryOrder("General", 1)]
     [CategoryOrder("Match Rewards", 2)]

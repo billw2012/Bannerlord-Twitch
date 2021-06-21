@@ -422,7 +422,7 @@ namespace BLTAdoptAHero
                             onFailure($"You cannot be summoned, your party is already here!");
                             return;
                         }
-
+                        
                         var party = settings.OnPlayerSide switch
                         {
                             true when Mission.Current?.PlayerTeam != null &&
@@ -549,8 +549,8 @@ namespace BLTAdoptAHero
                             },
                             replaceExisting: false
                         );
-                        
                         existingHero = BLTSummonBehavior.Current.AddSummonedHero(adoptedHero, settings.OnPlayerSide, formationClass, party);
+                        BLTAdoptAHeroCampaignBehavior.Current.IncreaseParticipationCount(adoptedHero, settings.OnPlayerSide);
                     }
                     
                     var troopOrigin = new PartyAgentOrigin(existingHero.Party, adoptedHero.CharacterObject);
