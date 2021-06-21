@@ -5,6 +5,7 @@ using HarmonyLib;
 using JetBrains.Annotations;
 using SandBox.View.Map;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Core;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.Library;
@@ -37,6 +38,7 @@ namespace BLTAdoptAHero.Util
             {
                 Game.Current.GameStateManager.PopState();
             }
+
             InventoryManager.OpenScreenAsInventoryOf(hero.PartyBelongedTo ?? MobileParty.MainParty, hero.CharacterObject);
 
             return $"Opened inventory of {strings[0]}";

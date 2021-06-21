@@ -276,6 +276,9 @@ namespace BLTAdoptAHero
 
     [CategoryOrder("General", 1)]
     [CategoryOrder("Match Rewards", 2)]
+    [CategoryOrder("Prize", 3)]
+    [CategoryOrder("Prize Tier", 4)]
+    [CategoryOrder("Custom Prize", 5)]
     internal class GlobalTournamentConfig
     {
         private const string ID = "Adopt A Hero - Tournament Config";
@@ -307,42 +310,42 @@ namespace BLTAdoptAHero
 
         [Category("Prize"),
          Description("Use custom tournament rewards, generated or selected especially for the winner"),
-         PropertyOrder(1)]
+         PropertyOrder(0)]
         public bool UseCustomPrizes { get; set; } = true;
 
+        [Category("Prize"), Description("Relative proportion of prizes that will be weapons. This includes all one handed, two handed, ranged and ammo."), PropertyOrder(1)]
+        public float PrizeWeaponWeight { get; set; } = 1f;
+
+        [Category("Prize"), Description("Relative proportion of prizes that will be armor"), PropertyOrder(2)]
+        public float PrizeArmorWeight { get; set; } = 1f;
+
+        [Category("Prize"), Description("Relative proportion of prizes that will be mounts"), PropertyOrder(3)]
+        public float PrizeMountWeight { get; set; } = 0.1f;
+        
         // Prizes:
         // Random vanilla equipment, chance for each tier
         // Generated vanilla equip,ent
 
-        [Category("Prize"), Description("Tier 1 Prize weighting"), PropertyOrder(1)]
+        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 1"), PropertyOrder(1)]
         public float PrizeTier1Weight { get; set; } = 0f;
 
-        [Category("Prize"), Description("Tier 2 Prize weighting"), PropertyOrder(2)]
+        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 2"), PropertyOrder(2)]
         public float PrizeTier2Weight { get; set; } = 0f;
 
-        [Category("Prize"), Description("Tier 3 Prize weighting"), PropertyOrder(3)]
+        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 3"), PropertyOrder(3)]
         public float PrizeTier3Weight { get; set; } = 0f;
 
-        [Category("Prize"), Description("Tier 4 Prize weighting"), PropertyOrder(4)]
-        public float PrizeTier4Weight { get; set; } = 16f;
+        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 4"), PropertyOrder(4)]
+        public float PrizeTier4Weight { get; set; } = 0f;
 
-        [Category("Prize"), Description("Tier 5 Prize weighting"), PropertyOrder(5)]
-        public float PrizeTier5Weight { get; set; } = 8f;
+        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 5"), PropertyOrder(5)]
+        public float PrizeTier5Weight { get; set; } = 3f;
 
-        [Category("Prize"), Description("Tier 6 Prize weighting"), PropertyOrder(6)]
-        public float PrizeTier6Weight { get; set; } = 4f;
+        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 6"), PropertyOrder(6)]
+        public float PrizeTier6Weight { get; set; } = 2f;
 
-        [Category("Prize"), Description("Custom (Tier 7+) Prize weighting"), PropertyOrder(7)]
+        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Custom (Tier 6 with modifiers as per the Custom Prize settings below)"), PropertyOrder(7)]
         public float PrizeCustomWeight { get; set; } = 1f;
-
-        [Category("Prize"), Description("Weapon prize weight"), PropertyOrder(8)]
-        public float PrizeWeaponWeight { get; set; } = 1f;
-
-        [Category("Prize"), Description("Armor prize weight"), PropertyOrder(9)]
-        public float PrizeArmorWeight { get; set; } = 1f;
-
-        [Category("Prize"), Description("Mount prize weight"), PropertyOrder(10)]
-        public float PrizeMountWeight { get; set; } = 0.1f;
 
         [Browsable(false), YamlIgnore]
         public IEnumerable<(int tier, float weight)> PrizeTierWeights
@@ -359,6 +362,64 @@ namespace BLTAdoptAHero
             }
         }
 
+        [Category("Custom Prize"), Description("Custom prize power, a global multiplier for the values below"), PropertyOrder(1)]
+        public float CustomPrizePower { get; set; } = 1f;
+
+        [Category("Custom Prize"), Description("Minimum damage modifier for custom weapon prize"), PropertyOrder(2)]
+        public int CustomPrizeWeaponDamageMin { get; set; } = 25;
+        [Category("Custom Prize"), Description("Maximum damage modifier for custom weapon prize"), PropertyOrder(3)]
+        public int CustomPrizeWeaponDamageMax { get; set; } = 50;
+        
+        [Category("Custom Prize"), Description("Minimum speed modifier for custom weapon prize"), PropertyOrder(4)]
+        public int CustomPrizeWeaponSpeedMin { get; set; } = 25;
+        [Category("Custom Prize"), Description("Maximum speed modifier for custom weapon prize"), PropertyOrder(5)]
+        public int CustomPrizeWeaponSpeedMax { get; set; } = 50;
+        
+        [Category("Custom Prize"), Description("Minimum missile speed modifier for custom weapon prize"), PropertyOrder(6)]
+        public int CustomPrizeWeaponMissileSpeedMin { get; set; } = 25;
+        [Category("Custom Prize"), Description("Maximum missile speed modifier for custom weapon prize"), PropertyOrder(7)]
+        public int CustomPrizeWeaponMissileSpeedMax { get; set; } = 50;
+        
+        [Category("Custom Prize"), Description("Minimum ammo damage modifier for custom ammo prize"), PropertyOrder(8)]
+        public int CustomPrizeAmmoDamageMin { get; set; } = 10;
+        [Category("Custom Prize"), Description("Maximum ammo damage modifier for custom ammo prize"), PropertyOrder(9)]
+        public int CustomPrizeAmmoDamageMax { get; set; } = 30;        
+          
+        [Category("Custom Prize"), Description("Minimum arrow stack size modifier for custom arrow prize"), PropertyOrder(10)]
+        public int CustomPrizeArrowStackMin { get; set; } = 25;
+        [Category("Custom Prize"), Description("Maximum arrow stack size modifier for custom arrow prize"), PropertyOrder(11)]
+        public int CustomPrizeArrowStackMax { get; set; } = 50;
+          
+        [Category("Custom Prize"), Description("Minimum throwing stack size modifier for custom throwing prize"), PropertyOrder(12)]
+        public int CustomPrizeThrowingStackMin { get; set; } = 2;
+        [Category("Custom Prize"), Description("Maximum throwing stack size modifier for custom throwing prize"), PropertyOrder(13)]
+        public int CustomPrizeThrowingStackMax { get; set; } = 6;
+        
+        [Category("Custom Prize"), Description("Minimum armor modifier for custom armor prize"), PropertyOrder(14)]
+        public int CustomPrizeArmorMin { get; set; } = 10;
+        [Category("Custom Prize"), Description("Maximum armor modifier for custom armor prize"), PropertyOrder(15)]
+        public int CustomPrizeArmorMax { get; set; } = 20;
+        
+        [Category("Custom Prize"), Description("Minimum maneuver multiplier for custom mount prize"), PropertyOrder(16)]
+        public float CustomPrizeMountManeuverMin { get; set; } = 1.25f;
+        [Category("Custom Prize"), Description("Maximum maneuver multiplier for custom mount prize"), PropertyOrder(17)]
+        public float CustomPrizeMountManeuverMax { get; set; } = 2f;
+        
+        [Category("Custom Prize"), Description("Minimum speed multiplier for custom mount prize"), PropertyOrder(18)]
+        public float CustomPrizeMountSpeedMin { get; set; } = 1.25f;
+        [Category("Custom Prize"), Description("Maximum speed multiplier for custom mount prize"), PropertyOrder(19)]
+        public float CustomPrizeMountSpeedMax { get; set; } = 2f;
+          
+        [Category("Custom Prize"), Description("Minimum charge damage multiplier for custom mount prize"), PropertyOrder(20)]
+        public float CustomPrizeMountChargeDamageMin { get; set; } = 1.25f;
+        [Category("Custom Prize"), Description("Maximum charge damage multiplier for custom mount prize"), PropertyOrder(21)]
+        public float CustomPrizeMountChargeDamageMax { get; set; } = 2f;
+
+        [Category("Custom Prize"), Description("Minimum hitpoints multiplier for custom mount prize"), PropertyOrder(22)]
+        public float CustomPrizeMountHitPointsMin { get; set; } = 1.25f;
+        [Category("Custom Prize"), Description("Maximum hitpoints multiplier for custom mount prize"), PropertyOrder(23)]
+        public float CustomPrizeMountHitPointsMax { get; set; } = 2f;
+        
         public enum PrizeType
         {
             Weapon,

@@ -24,11 +24,6 @@ namespace BLTBuffet
         protected override void ExecuteInternal(ReplyContext context, object baseConfig,
             Action<string> onSuccess, Action<string> onFailure)
         {
-            // DOING:
-            // - search agents for the target to apply to
-            // - keep list of agents already with active effects so we can avoid adding more than one effect per agent
-            // - clean agent lists and reset stats on missing state change / after some timeout
-
             if (Mission.Current == null)
             {
                 onFailure($"No mission is active!");

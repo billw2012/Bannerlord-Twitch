@@ -16,14 +16,13 @@ namespace BLTAdoptAHero.Actions.Util
 {
     public static class CustomItems
     {
-        
         [CommandLineFunctionality.CommandLineArgumentFunction("testcraft", "blt")]
         [UsedImplicitly]
         public static string TestCraft(List<string> strings)
         {
             try
             {
-                var item = CreateWeapon(Hero.MainHero, (WeaponClass) Enum.Parse(typeof(WeaponClass), strings[0]), int.Parse(strings[1]));
+                var item = CreateCraftedWeapon(Hero.MainHero, new [] {(WeaponClass) Enum.Parse(typeof(WeaponClass), strings[0])}, int.Parse(strings[1]));
 
                 if (item != null)
                 {
@@ -50,7 +49,7 @@ namespace BLTAdoptAHero.Actions.Util
             var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.BodyArmor)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
-                .SelectRandom();
+                .FirstOrDefault();
             var modifier = BLTCustomItemsCampaignBehavior.Current.CreateArmorModifier("Test {ITEMNAME}", 100);
             var slotItem = new EquipmentElement(item, modifier);
             Hero.MainHero.BattleEquipment[EquipmentIndex.Body] = slotItem;
@@ -64,8 +63,8 @@ namespace BLTAdoptAHero.Actions.Util
             var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.TwoHandedWeapon)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
-                .SelectRandom();
-            var modifier = BLTCustomItemsCampaignBehavior.Current.CreateWeaponModifier("Test {ITEMNAME}", 200, 200, 200);
+                .FirstOrDefault();
+            var modifier = BLTCustomItemsCampaignBehavior.Current.CreateWeaponModifier("Test {ITEMNAME}", 200, 200, 200, 200);
             var slotItem = new EquipmentElement(item, modifier);
             Hero.MainHero.BattleEquipment[EquipmentIndex.Weapon0] = slotItem;
             return $"Assigned {slotItem.GetModifiedItemName()} to {Hero.MainHero.Name}";
@@ -78,8 +77,8 @@ namespace BLTAdoptAHero.Actions.Util
             var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Bow)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
-                .SelectRandom();
-            var modifier = BLTCustomItemsCampaignBehavior.Current.CreateWeaponModifier("Test {ITEMNAME}", 200, 200, 200);
+                .FirstOrDefault();
+            var modifier = BLTCustomItemsCampaignBehavior.Current.CreateWeaponModifier("Test {ITEMNAME}", 200, 200, 200, 200);
             var slotItem = new EquipmentElement(item, modifier);
             Hero.MainHero.BattleEquipment[EquipmentIndex.Weapon1] = slotItem;
             return $"Assigned {slotItem.GetModifiedItemName()} to {Hero.MainHero.Name}";
@@ -92,7 +91,7 @@ namespace BLTAdoptAHero.Actions.Util
             var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Arrows)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
-                .SelectRandom();
+                .FirstOrDefault();
             var modifier = BLTCustomItemsCampaignBehavior.Current.CreateAmmoModifier("Test {ITEMNAME}", 100, 100);
             var slotItem = new EquipmentElement(item, modifier);
             Hero.MainHero.BattleEquipment[EquipmentIndex.Weapon2] = slotItem;
@@ -106,7 +105,7 @@ namespace BLTAdoptAHero.Actions.Util
             var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Horse)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
-                .SelectRandom();
+                .FirstOrDefault();
             var modifier = BLTCustomItemsCampaignBehavior.Current.CreateMountModifier("Test {ITEMNAME}", 2, 2, 2, 2);
             var slotItem = new EquipmentElement(item, modifier);
             Hero.MainHero.BattleEquipment[EquipmentIndex.Horse] = slotItem;
@@ -130,51 +129,52 @@ namespace BLTAdoptAHero.Actions.Util
             WeaponClass.Javelin,
         };
         
-        public static ItemObject CreateWeapon(Hero hero, WeaponClass weaponClass, int desiredTier)
-        {
-            return CraftableWeaponClasses.Contains(weaponClass)
-                ? CreateCraftedWeapon(hero, weaponClass, desiredTier)
-                : CreateVariationWeapon(hero, weaponClass, desiredTier)
-                ;
-        }
+        // public static ItemObject CreateWeapon(Hero hero, WeaponClass weaponClass, int desiredTier)
+        // {
+        //     return CraftableWeaponClasses.Contains(weaponClass)
+        //         ? CreateCraftedWeapon(hero, weaponClass, desiredTier)
+        //         : CreateVariationWeapon(hero, weaponClass, desiredTier)
+        //         ;
+        // }
 
-        private static ItemObject CreateVariationWeapon(Hero hero, WeaponClass weaponClass, int desiredTier)
-        {
-            var item = HeroHelpers.AllItems
-                .Where(i => i.WeaponComponent?.PrimaryWeapon?.WeaponClass == weaponClass)
-                .Where(i => (int)i.Tier <= desiredTier)
-                .Shuffle()
-                .OrderByDescending(i => i.Tier)
-                .FirstOrDefault()
-                ;
-            if (item == null)
-            {
-                Log.Error($"Failed to create variation Tier {desiredTier + 1} {weaponClass} for {hero.Name}: no valid base items found");
-                return null;
-            }
+        // private static ItemObject CreateVariationWeapon(Hero hero, WeaponClass weaponClass, int desiredTier)
+        // {
+        //     var item = HeroHelpers.AllItems
+        //         .Where(i => i.WeaponComponent?.PrimaryWeapon?.WeaponClass == weaponClass)
+        //         .Where(i => (int)i.Tier <= desiredTier)
+        //         .Shuffle()
+        //         .OrderByDescending(i => i.Tier)
+        //         .FirstOrDefault()
+        //         ;
+        //     if (item == null)
+        //     {
+        //         Log.Error($"Failed to create variation Tier {desiredTier + 1} {weaponClass} for {hero.Name}: no valid base items found");
+        //         return null;
+        //     }
+        //
+        //     var itemCopy = new ItemObject(item);
+        //     SetItemName(itemCopy, new TextObject($"Custom {item.Name} (Tournament Prize of {hero.FirstName})"));
+        //     ItemObject.InitAsPlayerCraftedItem(ref item);
+        //     MBObjectManager.Instance.RegisterObject(item);
+        //     
+        //     return itemCopy;
+        // }
 
-            var itemCopy = new ItemObject(item);
-            SetItemName(itemCopy, new TextObject($"Custom {item.Name} (Tournament Prize of {hero.FirstName})"));
-            ItemObject.InitAsPlayerCraftedItem(ref item);
-            MBObjectManager.Instance.RegisterObject(item);
-            
-            return itemCopy;
-        }
-
-        private static ItemObject CreateCraftedWeapon(Hero hero, WeaponClass weaponClass, int desiredTier)
+        public static ItemObject CreateCraftedWeapon(Hero hero, ICollection<WeaponClass> weaponClasses, int desiredTier)
         {
             var validTemplates = CraftingTemplate.All
-                .Where(t => t.WeaponUsageDatas?.Any(w => w.WeaponClass == weaponClass) == true)
+                .Where(t => t.WeaponUsageDatas?.Any(w => weaponClasses.Contains(w.WeaponClass)) == true)
                 .ToList();
 
+            string weaponClassesStr = string.Join("/", weaponClasses.Select(e => e.ToString()));
             if (!validTemplates.Any())
             {
-                Log.Error($"Failed to create Tier {desiredTier + 1} {weaponClass} for {hero.Name}: no matching templates for {weaponClass}");
+                Log.Error($"Failed to create Tier {desiredTier + 1} {weaponClassesStr} for {hero.Name}: no matching templates for these weapon classes");
                 return null;
             }
 
             int itr = 0;
-            ItemObject generatedItem = null;
+            ItemObject generatedItem;
             do
             {
                 var crafting = new Crafting(validTemplates.SelectRandom(), hero.Culture);
@@ -183,16 +183,19 @@ namespace BLTAdoptAHero.Actions.Util
 
                 generatedItem = (ItemObject)AccessTools.Field(typeof(Crafting), "_craftedItemObject").GetValue(crafting);
 
-                SetItemName(generatedItem, new TextObject($"{crafting.CurrentCraftingTemplate.TemplateName} (Tournament Prize of {hero.FirstName})"));
-            } while ((generatedItem.WeaponComponent?.PrimaryWeapon.WeaponClass != weaponClass || (int)generatedItem.Tier != desiredTier) && ++itr < 1000);
+                // SetItemName(generatedItem, new ($"{crafting.CurrentCraftingTemplate.TemplateName} (Tournament Prize of {hero.FirstName})"));
+            } while (
+                (!weaponClasses.Contains(generatedItem.WeaponComponent?.PrimaryWeapon.WeaponClass ?? WeaponClass.Undefined) 
+                 || (int)generatedItem.Tier != desiredTier) 
+                && ++itr < 1000);
             
             if (itr >= 1000)
             {
-                Log.Error($"Failed to create Tier {desiredTier + 1} {weaponClass} for {hero.Name} in {itr} iterations");
+                Log.Error($"Failed to create Tier {desiredTier + 1} {weaponClassesStr} for {hero.Name} in {itr} iterations");
                 return null;
             }
             
-            Log.Info($"Created {generatedItem.Tier} ({generatedItem.Tierf:0.00}) {weaponClass} {generatedItem.Name} for {hero.Name} in {itr} iterations");
+            Log.Info($"Created {generatedItem.Tier} ({generatedItem.Tierf:0.00}) {generatedItem.WeaponComponent?.PrimaryWeapon.WeaponClass} {generatedItem.Name} for {hero.Name} in {itr} iterations");
             
             generatedItem.StringId = Guid.NewGuid().ToString();
             CompleteCraftedItem(generatedItem);

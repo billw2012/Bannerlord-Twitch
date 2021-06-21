@@ -170,12 +170,12 @@ namespace BLTAdoptAHero
             ItemObject FindNewEquipmentBySkill(SkillObject skill, Func<ItemObject, bool> filter = null) =>
                 oldItems.FirstOrDefault(i => keepBetter && i.RelevantSkill == skill && i.Tier >= (ItemObject.ItemTiers) targetTier &&
                                              (filter == null || filter(i)) )
-                ?? FindRandomTieredEquipment(skill, targetTier, adoptedHero, filter);
+                ?? FindRandomTieredEquipment(skill, targetTier, adoptedHero, FindFlags.None, filter);
 
             ItemObject FindNewEquipmentByType(ItemObject.ItemTypeEnum itemType, Func<ItemObject, bool> filter = null) =>
                 oldItems.FirstOrDefault(i => keepBetter && i.Type == itemType && i.Tier >= (ItemObject.ItemTiers) targetTier &&
                                              (filter == null || filter(i)))
-                ?? FindRandomTieredEquipment(null, targetTier, adoptedHero, filter, itemType);
+                ?? FindRandomTieredEquipment(null, targetTier, adoptedHero, FindFlags.None, filter, itemType);
             
             ItemObject primaryAmmo = null;
             //var combatSkills = new[] { Skills.Polearm, Skills.TwoHanded, Skills.OneHanded, Skills.Bow, Skills.Crossbow, Skills.Throwing };
@@ -221,11 +221,6 @@ namespace BLTAdoptAHero
                 }
             }
 
-            static bool WeaponIsSwingable(ItemObject w) 
-                => w.PrimaryWeapon?.IsMeleeWeapon == true && w.PrimaryWeapon?.SwingDamageType != DamageTypes.Invalid;
-
-            static bool WeaponRequires(ItemObject w, ItemObject.ItemUsageSetFlags flag) 
-                => w.PrimaryWeapon?.ItemUsage != null && MBItem.GetItemUsageSetFlags(w.PrimaryWeapon.ItemUsage).HasFlag(flag);    
             //bool WeaponNotRequires(ItemObject w, ItemObject.ItemUsageSetFlags flag) => w.Weapons.All(c => c.ItemUsage == null || !MBItem.GetItemUsageSetFlags(c.ItemUsage).HasFlag(flag));    
             
             // If we have space left and existing weapons don't support swinging, then add a weapon that does, appropriate to our skills
@@ -269,19 +264,7 @@ namespace BLTAdoptAHero
             // We should assign a horse if using a class definition that specifies riding, OR 
             // if not using class definition and the riding skill is better than athletics, or polearm
             // is the top combat skill
-            if (classDef is {Mounted: true} 
-                || classDef == null
-                    && (
-                        // One of our weapons requires a mount (not sure this is actually a thing)
-                        addedWeapons.Any(s => WeaponRequires(s, ItemObject.ItemUsageSetFlags.RequiresMount))
-                        ||
-                        // Any of our weapons *allows* a mount
-                        !addedWeapons.All(s => WeaponRequires(s, ItemObject.ItemUsageSetFlags.RequiresNoMount))
-                        // Either our riding skill is better than athletics or we have a thrust only polearm
-                        && (adoptedHero.GetSkillValue(DefaultSkills.Riding) > adoptedHero.GetSkillValue(DefaultSkills.Athletics)
-                            || addedWeapons.Any(s => s.Type == ItemObject.ItemTypeEnum.Polearm && !WeaponIsSwingable(s)))
-                        )
-                )
+            if (HeroShouldUseHorse(adoptedHero, classDef))
             {
                 UpgradeHorse(adoptedHero, targetTier, keepBetter);
             }
@@ -293,6 +276,27 @@ namespace BLTAdoptAHero
 
             UpgradeCivilian(adoptedHero, targetTier, keepBetter);
         }
+
+        public static bool HeroShouldUseHorse(Hero adoptedHero, HeroClassDef classDef)
+        {
+            var heroWeapons = adoptedHero.BattleEquipment.YieldFilledWeaponSlots().Select(e => e.Item).ToList();
+            return classDef is {Mounted: true} 
+                   || classDef == null
+                   && (
+                       // One of our weapons requires a mount (not sure this is actually a thing)
+                       heroWeapons.Any(s => WeaponRequires(s, ItemObject.ItemUsageSetFlags.RequiresMount))
+                       ||
+                       // Any of our weapons *allows* a mount
+                       !heroWeapons.All(s => WeaponRequires(s, ItemObject.ItemUsageSetFlags.RequiresNoMount))
+                       // Either our riding skill is better than athletics or we have a thrust only polearm
+                       && (adoptedHero.GetSkillValue(DefaultSkills.Riding) > adoptedHero.GetSkillValue(DefaultSkills.Athletics)
+                           || heroWeapons.Any(s => s.Type == ItemObject.ItemTypeEnum.Polearm && !WeaponIsSwingable(s)))
+                   );
+        }
+
+        public static bool WeaponIsSwingable(ItemObject w) => w.PrimaryWeapon?.IsMeleeWeapon == true && w.PrimaryWeapon?.SwingDamageType != DamageTypes.Invalid;
+
+        public static bool WeaponRequires(ItemObject w, ItemObject.ItemUsageSetFlags flag) => w.PrimaryWeapon?.ItemUsage != null && MBItem.GetItemUsageSetFlags(w.PrimaryWeapon.ItemUsage).HasFlag(flag);
 
         // private static IEnumerable<ItemObject> UpgradeMelee(Hero adoptedHero, int targetTier)
         // {
@@ -440,7 +444,7 @@ namespace BLTAdoptAHero
             var slot = equipment[equipmentIndex];
             if (!keepBetter || slot.Item == null || slot.Item.Tier < (ItemObject.ItemTiers) tier)
             {
-                var item = FindRandomTieredEquipment(null, tier, hero, filter, itemTypeEnum);
+                var item = FindRandomTieredEquipment(null, tier, hero, FindFlags.None, filter, itemTypeEnum);
                 if (item != null && (!keepBetter || slot.Item == null || slot.Item.Tier < item.Tier))
                 {
                     equipment[equipmentIndex] = new EquipmentElement(item);
@@ -486,13 +490,20 @@ namespace BLTAdoptAHero
         //     return element.Item;
         // }
 
-        public static ItemObject FindRandomTieredEquipment(SkillObject skill, int tier, Hero hero, Func<ItemObject, bool> filter = null, params ItemObject.ItemTypeEnum[] itemTypeEnums)
+        [Flags]
+        public enum FindFlags
+        {
+            None = 0,
+            IgnoreAbility = 1 << 0,
+            AllowNonMerchandise = 1 << 1,
+        }
+        public static ItemObject FindRandomTieredEquipment(SkillObject skill, int tier, Hero hero, FindFlags flags = FindFlags.None, Func<ItemObject, bool> filter = null, params ItemObject.ItemTypeEnum[] itemTypeEnums)
         {
             var items =
                 HeroHelpers.AllItems
                 // Usable
-                .Where(item => !item.NotMerchandise 
-                               && CanUseItem(item, hero)
+                .Where(item => (!item.NotMerchandise || flags.HasFlag(FindFlags.AllowNonMerchandise))
+                               && CanUseItem(item, hero, flags.HasFlag(FindFlags.IgnoreAbility))
                                && item.PrimaryWeapon?.WeaponClass != WeaponClass.Dagger
                                //&& (item.PrimaryWeapon == null || !MBItem.GetItemUsageSetFlags(item.PrimaryWeapon.ItemUsage).HasFlag(ItemObject.ItemUsageSetFlags.RequiresNoMount))
                                && (filter == null || filter(item)))
@@ -562,10 +573,10 @@ namespace BLTAdoptAHero
         //         .ToList();
         // }
         
-        public static bool CanUseItem(ItemObject item, Hero hero)
+        public static bool CanUseItem(ItemObject item, Hero hero, bool overrideAbility)
         {
             var relevantSkill = item.RelevantSkill;
-            return    (relevantSkill == null || hero.GetSkillValue(relevantSkill) >= item.Difficulty) 
+            return    (overrideAbility || relevantSkill == null || hero.GetSkillValue(relevantSkill) >= item.Difficulty) 
                    && (!hero.CharacterObject.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByFemale)) 
                    && (hero.CharacterObject.IsFemale || !item.ItemFlags.HasAnyFlag(ItemFlags.NotUsableByMale));
         }

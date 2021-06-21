@@ -108,13 +108,14 @@ namespace BLTAdoptAHero
                 Armor = armorModifier,
             });
         
-        public ItemModifier CreateWeaponModifier(string modifiedName, int damageModifier, int speedModifier, int missileSpeedModifier) =>
+        public ItemModifier CreateWeaponModifier(string modifiedName, int damageModifier, int speedModifier, int missileSpeedModifier, short stackSizeModifier) =>
             RegisterModifier(new ItemModifierData
             {
                 Name = modifiedName,
                 Damage = damageModifier,
                 MissileSpeed = missileSpeedModifier,
                 Speed = speedModifier,
+                StackCount = stackSizeModifier,
             });
         
         public ItemModifier CreateAmmoModifier(string modifiedName, int damageModifier, short stackModifier) =>
@@ -134,6 +135,8 @@ namespace BLTAdoptAHero
                 ChargeDamage = chargeDamageModifier,
                 MountHitPoints = mountHitPointsModifier,
             });
+
+        public bool IsRegistered(ItemModifier modifier) => modifier != null && customItemModifiers.ContainsKey(modifier);
         
         private ItemModifier RegisterModifier(ItemModifierData modifierData)
         {
