@@ -421,7 +421,7 @@ namespace BLTAdoptAHero
                             onFailure($"You cannot be summoned, your party is already here!");
                             return;
                         }
-
+                        
                         var party = settings.OnPlayerSide switch
                         {
                             true when Mission.Current?.PlayerTeam != null &&
