@@ -368,7 +368,7 @@ namespace BannerlordTwitch
             var help = "Commands: ".Yield()
                 .Concat(settings.EnabledCommands.Where(c
                         => !c.HideHelp && !c.BroadcasterOnly && !c.ModOnly)
-                    .Select(c => string.IsNullOrEmpty(c.Help) ? c.Name : $"!{c.Name} - {c.Help}")
+                    .Select(c => string.IsNullOrEmpty(c.Help) ? $"!{c.Name}" : $"!{c.Name} - {c.Help}")
                 )
                 .ToList();
             if (settings.EnabledRewards.Any())

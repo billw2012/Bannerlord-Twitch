@@ -139,6 +139,17 @@ namespace BLTAdoptAHero
             (DefaultSkills.Throwing, ItemObject.ItemTypeEnum.Thrown),
         };
 
+        public static (SkillObject skill, WeaponClass[] weaponClasses)[] SkillWeaponClassPairs => new[]
+        {
+            (DefaultSkills.OneHanded, new [] { WeaponClass.OneHandedSword, WeaponClass.OneHandedAxe, WeaponClass.Mace }),
+            (DefaultSkills.TwoHanded, new [] { WeaponClass.TwoHandedSword, WeaponClass.TwoHandedAxe, WeaponClass.TwoHandedMace }),
+            (DefaultSkills.Polearm, new [] { WeaponClass.OneHandedPolearm, WeaponClass.TwoHandedPolearm }),
+            (DefaultSkills.Bow, new [] { WeaponClass.Bow, WeaponClass.Arrow }),
+            (DefaultSkills.Crossbow, new [] { WeaponClass.Crossbow, WeaponClass.Bolt }),
+            (DefaultSkills.Throwing, new [] { WeaponClass.ThrowingKnife, WeaponClass.ThrowingAxe, WeaponClass.Javelin }),
+        };
+
+
         public static SkillObject[] MovementSkills => new [] {
             DefaultSkills.Riding,
             DefaultSkills.Athletics,

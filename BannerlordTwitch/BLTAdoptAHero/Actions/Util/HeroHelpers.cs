@@ -48,6 +48,8 @@ namespace BLTAdoptAHero.Actions.Util
                 hero.FirstName = firstName;
             }
         }
+        
+        public static IEnumerable<ItemObject> AllItems => ItemObject.All;
 #else
         public static IEnumerable<CharacterAttribute> AllAttributes => Attributes.All;
         public static string GetAttributeName(CharacterAttribute val) => val.Name.ToString();
@@ -64,8 +66,9 @@ namespace BLTAdoptAHero.Actions.Util
         {
             hero.SetName(name, firstName);
         }
+        
+        public static IEnumerable<ItemObject> AllItems => Items.All;
 #endif
-
         public static IEnumerable<Hero> AllHeroes => AliveHeroes.Concat(DeadOrDisabledHeroes).Distinct();
     }
 }

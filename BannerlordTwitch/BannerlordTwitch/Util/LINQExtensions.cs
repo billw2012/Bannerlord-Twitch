@@ -7,14 +7,14 @@ using TaleWorlds.Core;
 
 public static class LINQExtensions
 {
-    public static T SelectWeighted<T>(this IEnumerable<T> @this, float rnd, Func<T, float> weightFn)
+    public static T SelectRandomWeighted<T>(this IEnumerable<T> @this, Func<T, float> weightFn)
     {
-        var prob = @this.Select(o => (obj: o, P: weightFn(o)));
-        float totalProb = prob.Select(o => o.P).Sum();
+        var weighted = @this.Select(o => (item: o, weight: weightFn(o))).ToList();
+        float totalWeight = weighted.Select(o => o.weight).Sum();
 
-        float randomP = rnd * totalProb;
+        float randomP = (float) (StaticRandom.Next() * totalWeight);
         float sum = 0;
-        foreach ((var obj, float p) in prob)
+        foreach ((var obj, float p) in weighted)
         {
             sum += p;
             if (sum >= randomP)
@@ -23,7 +23,12 @@ public static class LINQExtensions
             }
         }
 
-        return prob.LastOrDefault().obj;
+        return weighted.LastOrDefault().item;
+    }
+
+    public static IEnumerable<T> OrderRandomWeighted<T>(this IEnumerable<T> @this, Func<T, float> weightFn)
+    {
+        return @this.OrderByDescending(o => StaticRandom.Next() * weightFn(o));
     }
 
     public static T SelectRandom<T>(this IEnumerable<T> @this) => @this.Shuffle().FirstOrDefault();
@@ -64,7 +69,10 @@ public static class LINQExtensions
             yield return (equipment[i], (EquipmentIndex) i);
         }
     }
-            
+
+    public static IEnumerable<EquipmentElement> YieldFilledWeaponSlots(this Equipment equipment) 
+        => equipment.YieldWeaponSlots().Where(s => !s.element.IsEmpty).Select(s => s.element);
+
     public static IEnumerable<(EquipmentElement element, EquipmentIndex index)> YieldArmorSlots(this Equipment equipment)
     {
         for (int i = (int) EquipmentIndex.ArmorItemBeginSlot; i < (int) EquipmentIndex.ArmorItemEndSlot; i++)
@@ -73,6 +81,9 @@ public static class LINQExtensions
         }
     }
     
+    public static IEnumerable<EquipmentElement> YieldFilledArmorSlots(this Equipment equipment) 
+        => equipment.YieldArmorSlots().Where(s => !s.element.IsEmpty).Select(s => s.element);
+
     // public static SerializableDict<TKey, TElement> ToSerializableDict<TSource, TKey, TElement>(
     //     this IEnumerable<TSource> source,
     //     Func<TSource, TKey> keySelector,

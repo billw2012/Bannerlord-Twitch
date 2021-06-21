@@ -74,7 +74,7 @@ namespace BannerlordTwitch.Testing
                     {
                         MainThreadSync.Run(() =>
                         {
-                            var item = simSettings.UseEnabled.SelectWeighted((float) rnd.NextDouble(), testingItem => testingItem.Weight <= 0? 1 : testingItem.Weight);
+                            var item = simSettings.UseEnabled.SelectRandomWeighted(testingItem => testingItem.Weight <= 0? 1 : testingItem.Weight);
                             RunItem(settings, item, user);
                         });
                     }

@@ -301,7 +301,7 @@ namespace BLTAdoptAHero
             CampaignEvents.OnHeroChangedClanEvent.AddNonSerializedListener(this, (hero, clan) =>
             {
                 if(hero.IsAdopted())
-                    Log.LogFeedEvent($"{hero.Name} is now a member of {clan?.Name.ToString() ?? "no clan"}!");
+                    Log.LogFeedEvent($"{hero.Name} moved from {clan?.Name.ToString() ?? "no clan"} to {hero.Clan?.Name.ToString() ?? "no clan"}!");
             });
             
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, JoinTournament.SetupGameMenus);
