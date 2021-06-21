@@ -417,7 +417,13 @@ namespace BLTAdoptAHero
                         var existingParty = (PartyBase.MainParty.MapEvent?.InvolvedParties ?? PartyBase.MainParty.SiegeEvent?.Parties)?
                             .FirstOrDefault(p => p.MemberRoster.GetTroopCount(adoptedHero.CharacterObject) != 0);
 
-                        var party = existingParty ?? settings.OnPlayerSide switch
+                        if(existingParty != null)
+                        {
+                            onFailure($"You cannot be summoned, your party is already here!");
+                            return;
+                        }
+
+                        var party = settings.OnPlayerSide switch
                         {
                             true when Mission.Current?.PlayerTeam != null &&
                                       Mission.Current?.PlayerTeam?.ActiveAgents.Any() == true => PartyBase.MainParty,
