@@ -91,12 +91,12 @@ namespace BannerlordTwitch.Overlay
 
         private class OverlaySettings
         {
-            public double FeedFontSize { get; set; }
+            public double FeedFontSize { get; set; } = 14;
 
-            public double WindowLeft { get; set; }
-            public double WindowTop { get; set; }
-            public double WindowWidth { get; set; }
-            public double WindowHeight { get; set; }
+            public double WindowLeft { get; set; } = 20;
+            public double WindowTop { get; set; } = 20;
+            public double WindowWidth { get; set; } = 250;
+            public double WindowHeight { get; set; } = 600;
 
             private static PlatformFilePath OverlayFilePath => FileSystem.GetConfigPath("Bannerlord-Twitch-Overlay.yaml");
             
