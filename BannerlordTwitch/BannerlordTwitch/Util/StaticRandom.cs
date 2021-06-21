@@ -10,9 +10,9 @@ namespace BannerlordTwitch.Util
         private static readonly ThreadLocal<Random> random =
             new ThreadLocal<Random>(() => new Random(Interlocked.Increment(ref seed)));
 
-        public static int Next()
+        public static double Next()
         {
-            return random.Value.Next();
+            return random.Value.NextDouble();
         }
     }
 }

@@ -152,14 +152,17 @@
         <Compile Include="Actions\SkillXP.cs" />
         <Compile Include="Actions\SummonHero.cs" />
         <Compile Include="Actions\Util\BattleEffects.cs" />
+        <Compile Include="Actions\Util\CustomItems.cs" />
         <Compile Include="Actions\Util\HeroClassDef.cs" />
         <Compile Include="Actions\Util\HeroHelpers.cs" />
+        <Compile Include="Actions\Util\ItemModifierAccess.cs" />
         <Compile Include="Actions\Util\KillStreaks.cs" />
         <Compile Include="Actions\Util\SkillRangeDef.cs" />
         <Compile Include="Actions\Util\SkillGroup.cs" />
         <Compile Include="Behaviors\BLTAdoptAHeroCampaignBehavior.cs" />
         <Compile Include="Behaviors\BLTAdoptAHeroCommonMissionBehavior.cs" />
         <Compile Include="Behaviors\BLTAdoptAHeroCustomMissionBehavior.cs" />
+        <Compile Include="Behaviors\BLTCustomItemsCampaignBehavior.cs" />
         <Compile Include="Behaviors\BLTRemoveAgentsBehavior.cs" />
         <Compile Include="Behaviors\BLTSummonBehavior.cs" />
         <Compile Include="BLTAdoptAHero.cs" />

@@ -5,6 +5,7 @@ using HarmonyLib;
 using JetBrains.Annotations;
 using SandBox.View.Map;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Core;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.Library;
@@ -24,8 +25,8 @@ namespace BLTAdoptAHero.Util
                 return "Provide the hero name";
             }
             
-            var character = BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(strings[0])?.CharacterObject;
-            if (character == null)
+            var hero = BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(strings[0]);
+            if (hero == null)
             {
                 return $"Couldn't find hero {strings[0]}";
             }
@@ -37,7 +38,8 @@ namespace BLTAdoptAHero.Util
             {
                 Game.Current.GameStateManager.PopState();
             }
-            InventoryManager.OpenScreenAsInventoryOf(MobileParty.MainParty, character);
+
+            InventoryManager.OpenScreenAsInventoryOf(hero.PartyBelongedTo ?? MobileParty.MainParty, hero.CharacterObject);
 
             return $"Opened inventory of {strings[0]}";
         }

@@ -153,63 +153,63 @@ namespace BLTAdoptAHero
         {
             //  Player side
             //      General
-            new Shout("Don't worry, I've got your back!") { EnemySide = false },
-            new Shout("I'm here!") { EnemySide = false },
-            new Shout("Which one should I stab?") { EnemySide = false },
-            new Shout("Need a hand?") { EnemySide = false },
-            new Shout("The price has been paid. I am at your service.") { EnemySide = false },
+            new("Don't worry, I've got your back!") { EnemySide = false },
+            new("I'm here!") { EnemySide = false },
+            new("Which one should I stab?") { EnemySide = false },
+            new("Need a hand?") { EnemySide = false },
+            new("The price has been paid. I am at your service.") { EnemySide = false },
 
             //      Battle / siege
-            new Shout("Once more unto the breach!") { EnemySide = false, General = false },
-            new Shout("Freeeeeedddooooooommmm!") { EnemySide = false, General = false },
-            new Shout("Remember the Alamo!") { EnemySide = false, General = false },
-            new Shout("Alala!") { EnemySide = false, General = false },
-            new Shout("Eleleu!") { EnemySide = false, General = false },
-            new Shout("Deus vult!") { EnemySide = false, General = false },
-            new Shout("Banzai!") { EnemySide = false, General = false },
-            new Shout("Liberty or Death!") { EnemySide = false, General = false },
-            new Shout("Har Har Mahadev!") { EnemySide = false, General = false },
-            new Shout("Desperta ferro!") { EnemySide = false, General = false },
-            new Shout("Alba gu bràth!") { EnemySide = false, General = false },
-            new Shout("Santiago!") { EnemySide = false, General = false },
-            new Shout("Huzzah!") { EnemySide = false, General = false },
-            new Shout("War... war never changes...") { EnemySide = false, General = false },
-            new Shout("May we live to see the next sunrise!") { EnemySide = false, General = false },
-            new Shout("For glory, charge!") { EnemySide = false, General = false },
-            new Shout("Give them nothing, but take from them everything!") { EnemySide = false, General = false },
-            new Shout("Fell deeds awake, fire and slaughter!") { EnemySide = false },
+            new("Once more unto the breach!") { EnemySide = false, General = false },
+            new("Freeeeeedddooooooommmm!") { EnemySide = false, General = false },
+            new("Remember the Alamo!") { EnemySide = false, General = false },
+            new("Alala!") { EnemySide = false, General = false },
+            new("Eleleu!") { EnemySide = false, General = false },
+            new("Deus vult!") { EnemySide = false, General = false },
+            new("Banzai!") { EnemySide = false, General = false },
+            new("Liberty or Death!") { EnemySide = false, General = false },
+            new("Har Har Mahadev!") { EnemySide = false, General = false },
+            new("Desperta ferro!") { EnemySide = false, General = false },
+            new("Alba gu bràth!") { EnemySide = false, General = false },
+            new("Santiago!") { EnemySide = false, General = false },
+            new("Huzzah!") { EnemySide = false, General = false },
+            new("War... war never changes...") { EnemySide = false, General = false },
+            new("May we live to see the next sunrise!") { EnemySide = false, General = false },
+            new("For glory, charge!") { EnemySide = false, General = false },
+            new("Give them nothing, but take from them everything!") { EnemySide = false, General = false },
+            new("Fell deeds awake, fire and slaughter!") { EnemySide = false },
             //          Rare
-            new Shout("Spooooooooooooooooooon!") { EnemySide = false, Weight = 0.05f },
-            new Shout("Leeeeeeeerooooy Jeeeeenkins") { EnemySide = false, Weight = 0.05f },
-            new Shout("I live, I die, I live again!") { EnemySide = false, Weight = 0.05f },
-            new Shout("Witness me!!") { EnemySide = false, Weight = 0.05f },
-            new Shout("Now for wrath, now for ruin and a red nightfall!") { EnemySide = false, Weight = 0.05f },
+            new("Spooooooooooooooooooon!") { EnemySide = false, Weight = 0.05f },
+            new("Leeeeeeeerooooy Jeeeeenkins") { EnemySide = false, Weight = 0.05f },
+            new("I live, I die, I live again!") { EnemySide = false, Weight = 0.05f },
+            new("Witness me!!") { EnemySide = false, Weight = 0.05f },
+            new("Now for wrath, now for ruin and a red nightfall!") { EnemySide = false, Weight = 0.05f },
             //          Very rare
-            new Shout("n") { EnemySide = false, Weight = 0.01f },
+            new("n") { EnemySide = false, Weight = 0.01f },
             
             //      Siege Attack
-            new Shout("Those are brave men knocking at our door, let's go kill them!") { EnemySide = false, General = false, SiegeAttack = false, FieldBattle = false },
-            new Shout("Lets take this city!") { EnemySide = false, General = false, SiegeDefend = false, FieldBattle = false },
+            new("Those are brave men knocking at our door, let's go kill them!") { EnemySide = false, General = false, SiegeAttack = false, FieldBattle = false },
+            new("Lets take this city!") { EnemySide = false, General = false, SiegeDefend = false, FieldBattle = false },
 
             //  Enemy side
             //      General
-            new Shout("Defend yourself!") { PlayerSide = false },
-            new Shout("Time for you to die!") { PlayerSide = false },
-            new Shout("You killed my father, prepare to die!") { PlayerSide = false },
-            new Shout("En garde!") { PlayerSide = false },
-            new Shout("It's stabbing time! For you.") { PlayerSide = false },
-            new Shout("It's nothing personal!") { PlayerSide = false },
-            new Shout("Curse my sudden but inevitable betrayal!") { PlayerSide = false },
-            new Shout("I just don't like you!") { PlayerSide = false },
-            new Shout("I'm gonna put some dirt in your eye!") { PlayerSide = false },
-            new Shout("I'll mount your head on a pike!") { PlayerSide = false },
-            new Shout("Don't hate me, it's just business...") { PlayerSide = false },
-            new Shout("Never should have come here!") { PlayerSide = false },
-            new Shout("Your money or life!") { PlayerSide = false },
-            new Shout("I'm sorry, but I must stop you.") { PlayerSide = false },
+            new("Defend yourself!") { PlayerSide = false },
+            new("Time for you to die!") { PlayerSide = false },
+            new("You killed my father, prepare to die!") { PlayerSide = false },
+            new("En garde!") { PlayerSide = false },
+            new("It's stabbing time! For you.") { PlayerSide = false },
+            new("It's nothing personal!") { PlayerSide = false },
+            new("Curse my sudden but inevitable betrayal!") { PlayerSide = false },
+            new("I just don't like you!") { PlayerSide = false },
+            new("I'm gonna put some dirt in your eye!") { PlayerSide = false },
+            new("I'll mount your head on a pike!") { PlayerSide = false },
+            new("Don't hate me, it's just business...") { PlayerSide = false },
+            new("Never should have come here!") { PlayerSide = false },
+            new("Your money or your life!") { PlayerSide = false },
+            new("I'm sorry, but I must stop you.") { PlayerSide = false },
             
             //          Rare
-            new Shout("I have the high ground!") { PlayerSide = false, Weight = 0.05f },
+            new("I have the high ground!") { PlayerSide = false, Weight = 0.05f },
         };
 
         protected override void ExecuteInternal(Hero adoptedHero, ReplyContext context, object config,
@@ -360,7 +360,7 @@ namespace BLTAdoptAHero
 
                 Log.ShowInformation(!string.IsNullOrEmpty(context.Args) 
                         ? context.Args 
-                        : messages.SelectWeighted(MBRandom.RandomFloat, shout => shout.Weight)?.Text ?? "...",
+                        : messages.SelectRandomWeighted(shout => shout.Weight)?.Text ?? "...",
                     adoptedHero.CharacterObject, settings.AlertSound);
 
                 BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
@@ -416,13 +416,8 @@ namespace BLTAdoptAHero
                         // TODO: let them summon their retinue anyway
                         var existingParty = (PartyBase.MainParty.MapEvent?.InvolvedParties ?? PartyBase.MainParty.SiegeEvent?.Parties)?
                             .FirstOrDefault(p => p.MemberRoster.GetTroopCount(adoptedHero.CharacterObject) != 0);
-                        if(existingParty != null)
-                        {
-                            onFailure($"You cannot be summoned, your party is already here!");
-                            return;
-                        }
 
-                        var party = settings.OnPlayerSide switch
+                        var party = existingParty ?? settings.OnPlayerSide switch
                         {
                             true when Mission.Current?.PlayerTeam != null &&
                                       Mission.Current?.PlayerTeam?.ActiveAgents.Any() == true => PartyBase.MainParty,
@@ -552,12 +547,6 @@ namespace BLTAdoptAHero
                         existingHero = BLTSummonBehavior.Current.AddSummonedHero(adoptedHero, settings.OnPlayerSide, formationClass, party);
                     }
                     
-                    // DOING:
-                    // - Add general, common, settings for modules, expose on UI:
-                    //   - general kill rewards, battle rewards 
-                    //   -  maybe just those??
-                    // - Add kill reward handlers to all missions via the campaign events
-
                     var troopOrigin = new PartyAgentOrigin(existingHero.Party, adoptedHero.CharacterObject);
                     bool isMounted = Mission.Current.Mode != MissionMode.Stealth 
                                      && !MissionHelpers.InSiegeMission() 
@@ -660,7 +649,7 @@ namespace BLTAdoptAHero
                                 isAlarmed: true,
                                 wieldInitialWeapons: true);
 
-                            existingHero.Retinue.Add(new BLTSummonBehavior.RetinueState
+                            existingHero.Retinue.Add(new()
                             {
                                 Troop = retinueTroop,
                                 Agent = retinueAgent,
@@ -730,7 +719,7 @@ namespace BLTAdoptAHero
                     
                     Log.ShowInformation(!string.IsNullOrEmpty(context.Args) 
                         ? context.Args 
-                        : (messages.SelectWeighted(MBRandom.RandomFloat, shout => shout.Weight)?.Text ?? "..."),
+                        : (messages.SelectRandomWeighted(shout => shout.Weight)?.Text ?? "..."),
                         adoptedHero.CharacterObject, settings.AlertSound);
 
                     BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);

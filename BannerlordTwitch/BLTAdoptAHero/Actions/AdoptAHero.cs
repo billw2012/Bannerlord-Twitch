@@ -68,22 +68,6 @@ namespace BLTAdoptAHero
              Description("Equipment tier the adopted hero will start with, if you don't specify then they get the " +
                          "heroes existing equipment"), DefaultValue(null), PropertyOrder(2)]
             public int? StartingEquipmentTier { get; set; }
-
-            [Category("Initialization"),
-             Description("Whether the hero will start with a melee weapon, only applies if StartingEquipmentTier is " +
-                         "specified"), PropertyOrder(3)]
-            public bool StartWithMeleeWeapon { get; set; } = true;
-            
-            [Category("Initialization"),
-             Description("Whether the hero will start with a ranged weapon, only applies if StartingEquipmentTier is " +
-                         "specified"), PropertyOrder(3)]
-            public bool StartWithRangedWeapon { get; set; } = true;
-            
-            [Category("Initialization"), Description("Whether the hero will start with a horse, only applies if StartingEquipmentTier is specified"), PropertyOrder(3)]
-            public bool StartWithHorse { get; set; } = true;
-            
-            [Category("Initialization"), Description("Whether the hero will start with armor, only applies if StartingEquipmentTier is specified"), PropertyOrder(4)]
-            public bool StartWithArmor { get; set; } = true;
         }
 
         Type IRewardHandler.RewardConfigType => typeof(Settings);
