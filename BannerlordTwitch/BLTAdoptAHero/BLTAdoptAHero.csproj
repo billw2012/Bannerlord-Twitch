@@ -151,6 +151,7 @@
         <Compile Include="Actions\SetHeroClass.cs" />
         <Compile Include="Actions\SkillXP.cs" />
         <Compile Include="Actions\SummonHero.cs" />
+        <Compile Include="Actions\Util\AchievementSystem.cs" />
         <Compile Include="Actions\Util\BattleEffects.cs" />
         <Compile Include="Actions\Util\CustomItems.cs" />
         <Compile Include="Actions\Util\HeroClassDef.cs" />

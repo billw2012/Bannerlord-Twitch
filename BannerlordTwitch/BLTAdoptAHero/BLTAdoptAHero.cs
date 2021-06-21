@@ -249,7 +249,7 @@ namespace BLTAdoptAHero
         [YamlIgnore, Browsable(false)]
         public float DifficultyScalingMinClamped => MathF.Clamp(DifficultyScalingMin, 0, 1);
 
-        [Category("Battle End Rewards"), Description("Max difficulty scaling multiplier"), PropertyOrder(9)]
+        [Category("Battle End Rewards"), Description("Max difficulty scaling multiplier"), PropertyOrder(9), UsedImplicitly]
         public float DifficultyScalingMax { get; set; } = 3f;
         [YamlIgnore, Browsable(false)]
         public float DifficultyScalingMaxClamped => Math.Max(DifficultyScalingMax, 1f);
@@ -260,7 +260,7 @@ namespace BLTAdoptAHero
         [Category("Shouts"), Description("Whether to include default shouts"), PropertyOrder(2)]
         public bool IncludeDefaultShouts { get; set; } = true;
 
-        [Category("Kill Streak Rewards"), Description("Kill Streaks"), PropertyOrder(1)]
+        [Category("Kill Streak Rewards"), Description("Kill Streaks"), PropertyOrder(1), UsedImplicitly]
         public List<KillStreakRewards> KillStreaks { get; set; } = new();
 
         [Category("Kill Streak Rewards"), Description("Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled."), PropertyOrder(2)]
@@ -273,7 +273,7 @@ namespace BLTAdoptAHero
         [Category("Kill Streak Rewards"), Description("The level at which the rewards normalize and start to reduce (if relative level scaling is enabled)."), PropertyOrder(4)]
         public int ReferenceLevelReward { get; set; } = 15;
 
-        [Category("General"), Description("Achievements"), PropertyOrder(15)]
+        [Category("General"), Description("Achievements"), PropertyOrder(15), UsedImplicitly]
         public List<AchievementSystem> Achievements { get; set; } = new();
     }
 
