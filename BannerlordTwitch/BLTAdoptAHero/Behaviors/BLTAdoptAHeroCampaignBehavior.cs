@@ -504,12 +504,14 @@ namespace BLTAdoptAHero
 
         public static void SetHeroAdoptedName(Hero hero, string userName)
         {
-            HeroHelpers.SetHeroName(hero, new TextObject(GetFullName(userName)), new TextObject(userName));
+            HeroHelpers.SetHeroName(hero, new (GetFullName(userName)), new (userName));
         }
 
         public void InitAdoptedHero(Hero newHero, string userName)
         {
-            GetHeroData(newHero);
+            var hd = GetHeroData(newHero);
+            hd.Owner = userName;
+            hd.IsRetiredOrDead = false;
             SetHeroAdoptedName(newHero, userName);
         }
         
