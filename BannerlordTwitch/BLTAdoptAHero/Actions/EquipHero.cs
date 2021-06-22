@@ -177,16 +177,24 @@ namespace BLTAdoptAHero
         //     return itemsPurchased;
         // }
         
-        public static bool PrimaryWeaponFilter(ItemObject o, HeroClassDef classDef) =>
-            o.Type is ItemObject.ItemTypeEnum.OneHandedWeapon or ItemObject.ItemTypeEnum.TwoHandedWeapon or ItemObject.ItemTypeEnum.Polearm or
-                ItemObject.ItemTypeEnum.Bow or ItemObject.ItemTypeEnum.Crossbow or ItemObject.ItemTypeEnum.Thrown 
-            && (classDef?.Mounted != true || o.PrimaryWeapon == null || !MBItem.GetItemUsageSetFlags(o.PrimaryWeapon.ItemUsage).HasFlag(ItemObject.ItemUsageSetFlags.RequiresNoMount))
-        ;
+        public static bool PrimaryWeaponFilter(ItemObject o, HeroClassDef heroClass) =>
+            o.Type is ItemObject.ItemTypeEnum.OneHandedWeapon 
+                or ItemObject.ItemTypeEnum.TwoHandedWeapon 
+                or ItemObject.ItemTypeEnum.Polearm 
+                or ItemObject.ItemTypeEnum.Bow
+                or ItemObject.ItemTypeEnum.Crossbow 
+                or ItemObject.ItemTypeEnum.Thrown 
+            && UsableWeaponFilter(o, heroClass);
+
+        public static bool UsableWeaponFilter(ItemObject o, HeroClassDef heroClass) =>
+            heroClass?.Mounted != true 
+            || o.PrimaryWeapon == null 
+            || !MBItem.GetItemUsageSetFlags(o.PrimaryWeapon.ItemUsage).HasFlag(ItemObject.ItemUsageSetFlags.RequiresNoMount);
         
         public static void UpgradeEquipment(Hero adoptedHero, int targetTier, HeroClassDef classDef, bool keepBetter)
         {
             var oldItems = adoptedHero.BattleEquipment.YieldEquipmentSlots()
-                .Select(e => e.element.Item).Where(i => i != null).ToList();
+                .Select(e => e.element).Where(i => !i.IsEmpty).ToList();
 
             foreach (var x in adoptedHero.BattleEquipment.YieldWeaponSlots())
             {
@@ -195,39 +203,58 @@ namespace BLTAdoptAHero
 
             var currSlot = EquipmentIndex.WeaponItemBeginSlot;
 
-            var addedWeapons = new List<ItemObject>();
+            var addedWeapons = new List<EquipmentElement>();
 
-            ItemObject FindNewEquipmentBySkill(SkillObject skill, Func<ItemObject, bool> filter = null) =>
-                oldItems.FirstOrDefault(i => keepBetter && i.RelevantSkill == skill && i.Tier >= (ItemObject.ItemTiers) targetTier &&
-                                             (filter == null || filter(i)) )
-                ?? FindRandomTieredEquipment(skill, targetTier, adoptedHero, FindFlags.None, filter);
+            EquipmentElement FindNewEquipmentBySkill(SkillObject skill, Func<ItemObject, bool> filter = null)
+            {
+                var foundEquipment = oldItems.FirstOrDefault(i =>
+                        i.Item.RelevantSkill == skill
+                        && (keepBetter && i.Item.Tier >= (ItemObject.ItemTiers) targetTier 
+                            || BLTCustomItemsCampaignBehavior.Current.IsRegistered(i.ItemModifier))
+                        && filter?.Invoke(i.Item) != false);
+                if (!foundEquipment.IsEmpty)
+                    return foundEquipment;
+                var foundItem = FindRandomTieredEquipment(skill, targetTier, adoptedHero, FindFlags.None, filter); 
+                if (foundItem == null)
+                    return default;
+                return new(foundItem);
+            }
 
-            ItemObject FindNewEquipmentByType(ItemObject.ItemTypeEnum itemType, Func<ItemObject, bool> filter = null) =>
-                oldItems.FirstOrDefault(i => keepBetter && i.Type == itemType && i.Tier >= (ItemObject.ItemTiers) targetTier &&
-                                             (filter == null || filter(i)))
-                ?? FindRandomTieredEquipment(null, targetTier, adoptedHero, FindFlags.None, filter, itemType);
-            
-            ItemObject primaryAmmo = null;
+            EquipmentElement FindNewEquipmentByType(ItemObject.ItemTypeEnum itemType, Func<ItemObject, bool> filter = null)
+            {
+                var foundEquipment = oldItems.FirstOrDefault(i =>
+                        i.Item.Type == itemType
+                        && (keepBetter && i.Item.Tier >= (ItemObject.ItemTiers) targetTier ||
+                            BLTCustomItemsCampaignBehavior.Current.IsRegistered(i.ItemModifier))
+                        && filter?.Invoke(i.Item) != false);
+                if (!foundEquipment.IsEmpty)
+                    return foundEquipment;
+                var foundItem = FindRandomTieredEquipment(null, targetTier, adoptedHero, FindFlags.None, filter, itemType);
+                if (foundItem == null)
+                    return default;
+                return new(foundItem);
+            }
+
             //var combatSkills = new[] { Skills.Polearm, Skills.TwoHanded, Skills.OneHanded, Skills.Bow, Skills.Crossbow, Skills.Throwing };
             var weaponSkills = classDef != null
                 ? SkillGroup.SkillItemPairs.Where(s => classDef.Weapons.Any(sk => sk == s.itemType)).ToList()
                 // Without class we just take the top skill only
                 : SkillGroup.SkillItemPairs.OrderByDescending(s => adoptedHero.GetSkillValue(s.skill)).Take(1).ToList()
                 ;
-
-
+            
+            EquipmentElement primaryAmmo = default;
             foreach (var weapon in weaponSkills
                 .Select(s => FindNewEquipmentBySkill(s.skill, e => PrimaryWeaponFilter(e, classDef)))
-                .Where(e => e != null)
+                .Where(e => !e.IsEmpty)
             )
             {
-                var ammoType = ItemObject.GetAmmoTypeForItemType(weapon.Type);
+                var ammoType = ItemObject.GetAmmoTypeForItemType(weapon.Item.Type);
 
                 // We need at least 2 slots if the weapon requires ammo, so just skip if we don't have 2 left
-                if (ammoType != weapon.Type && ammoType != ItemObject.ItemTypeEnum.Invalid && currSlot >= EquipmentIndex.Weapon3)
+                if (ammoType != weapon.Item.Type && ammoType != ItemObject.ItemTypeEnum.Invalid && currSlot >= EquipmentIndex.Weapon3)
                     continue;
                 
-                adoptedHero.BattleEquipment[currSlot++] = new EquipmentElement(weapon);
+                adoptedHero.BattleEquipment[currSlot++] = weapon;
                 addedWeapons.Add(weapon);
                 
                 // Exit once we run out of weapon slots
@@ -235,17 +262,17 @@ namespace BLTAdoptAHero
                     break;
                 
                 // Add one ammo if we need it
-                if (ammoType != weapon.Type && ammoType != ItemObject.ItemTypeEnum.Invalid)
+                if (ammoType != weapon.Item.Type && ammoType != ItemObject.ItemTypeEnum.Invalid)
                 {
                     primaryAmmo = FindNewEquipmentByType(ammoType);
-                    if (primaryAmmo != null)
+                    if (!primaryAmmo.IsEmpty)
                     {
-                        adoptedHero.BattleEquipment[currSlot++] = new EquipmentElement(primaryAmmo);
+                        adoptedHero.BattleEquipment[currSlot++] = primaryAmmo;
                         if (currSlot > EquipmentIndex.Weapon3)
                             break;
                     }
                 }
-                else if (ammoType == weapon.Type)
+                else if (ammoType == weapon.Item.Type)
                 {
                     primaryAmmo = weapon;
                 }
@@ -254,7 +281,7 @@ namespace BLTAdoptAHero
             //bool WeaponNotRequires(ItemObject w, ItemObject.ItemUsageSetFlags flag) => w.Weapons.All(c => c.ItemUsage == null || !MBItem.GetItemUsageSetFlags(c.ItemUsage).HasFlag(flag));    
             
             // If we have space left and existing weapons don't support swinging, then add a weapon that does, appropriate to our skills
-            if (currSlot <= EquipmentIndex.Weapon3 && !addedWeapons.Any(WeaponIsSwingable))
+            if (currSlot <= EquipmentIndex.Weapon3 && !addedWeapons.Any(e => WeaponIsSwingable(e.Item)))
             {
                 var weapon = SkillGroup.MeleeSkillItemPairs
                     .OrderByDescending(s => adoptedHero.GetSkillValue(s.skill))
@@ -262,27 +289,27 @@ namespace BLTAdoptAHero
                         FindNewEquipmentBySkill(
                             s.skill, 
                             o => PrimaryWeaponFilter(o, classDef) && WeaponIsSwingable(o)))
-                    .FirstOrDefault(w => w != null);
+                    .FirstOrDefault(w => !w.IsEmpty);
                     ;
-                if (weapon != null)
+                if (!weapon.IsEmpty)
                 {
-                    adoptedHero.BattleEquipment[currSlot++] = new EquipmentElement(weapon);
+                    adoptedHero.BattleEquipment[currSlot++] = weapon;
                     addedWeapons.Add(weapon);
                 }
             }
             
             // Add one more primary ammo
-            if(currSlot <= EquipmentIndex.Weapon3 && primaryAmmo != null)
+            if(currSlot <= EquipmentIndex.Weapon3 && !primaryAmmo.IsEmpty)
             {
-                adoptedHero.BattleEquipment[currSlot++] = new EquipmentElement(primaryAmmo);
+                adoptedHero.BattleEquipment[currSlot++] = primaryAmmo;
             }
             
             // If we have space left then add a shield if we have a 1H weapon that allows shield
             if (currSlot <= EquipmentIndex.Weapon3 
-                && addedWeapons.Any(w => !WeaponRequires(w, ItemObject.ItemUsageSetFlags.RequiresNoShield)))
+                && addedWeapons.Any(w => !WeaponRequires(w.Item, ItemObject.ItemUsageSetFlags.RequiresNoShield)))
             {
                 var shield = FindNewEquipmentByType(ItemObject.ItemTypeEnum.Shield);
-                if (shield != null)
+                if (!shield.IsEmpty)
                 {
                     adoptedHero.BattleEquipment[currSlot++] = new EquipmentElement(shield);
                 }   
@@ -472,12 +499,13 @@ namespace BLTAdoptAHero
         private static ItemObject UpgradeItemInSlot(EquipmentIndex equipmentIndex, ItemObject.ItemTypeEnum itemTypeEnum, int tier, bool keepBetter, Equipment equipment, Hero hero, Func<ItemObject, bool> filter = null)
         {
             var slot = equipment[equipmentIndex];
-            if (!keepBetter || slot.Item == null || slot.Item.Tier < (ItemObject.ItemTiers) tier)
+            if ((slot.ItemModifier == null || !BLTCustomItemsCampaignBehavior.Current.IsRegistered(slot.ItemModifier))
+                && (!keepBetter || slot.Item == null || slot.Item.Tier < (ItemObject.ItemTiers) tier))
             {
                 var item = FindRandomTieredEquipment(null, tier, hero, FindFlags.None, filter, itemTypeEnum);
                 if (item != null && (!keepBetter || slot.Item == null || slot.Item.Tier < item.Tier))
                 {
-                    equipment[equipmentIndex] = new EquipmentElement(item);
+                    equipment[equipmentIndex] = new (item);
                     return item;
                 }
             }

@@ -226,7 +226,12 @@ namespace BLTAdoptAHero.Actions.Util
         {
             ItemObject.InitAsPlayerCraftedItem(ref item);
             MBObjectManager.Instance.RegisterObject(item);
+            #if e159 || e1510
+            AccessTools.Method(typeof(CampaignEventDispatcher), "OnNewItemCrafted")
+                .Invoke(CampaignEventDispatcher.Instance, new object[] { item, overrideData });
+            #else
             CampaignEventDispatcher.Instance.OnNewItemCrafted(item, overrideData, false);
+            #endif
         }
         
         

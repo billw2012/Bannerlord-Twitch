@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using BLTAdoptAHero.Annotations;
 using TaleWorlds.Core;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using YamlDotNet.Serialization;
@@ -10,7 +11,7 @@ namespace BLTAdoptAHero
 {
     public class HeroClassDef
     {
-        [Description("Unique ID of the class, so you can change the Name without breaking units using that class"), PropertyOrder(1), ReadOnly(true)]
+        [Browsable(false), UsedImplicitly]
         public Guid ID { get; set; } = Guid.NewGuid();
 
         [Description("Name of the class that shall be passed to SetHeroClass actions"), PropertyOrder(1)]
@@ -29,13 +30,13 @@ namespace BLTAdoptAHero
             };
         }
         
-        [Description("First melee weapon to use"), ItemsSource(typeof(MeleeWeaponItemSource)), PropertyOrder(3)]
+        [Description("First melee weapon to use"), ItemsSource(typeof(MeleeWeaponItemSource)), PropertyOrder(3), UsedImplicitly]
         public ItemObject.ItemTypeEnum MeleeWeapon1 { get; set; }
         
-        [Description("Second melee weapon to use"), ItemsSource(typeof(MeleeWeaponItemSource)), PropertyOrder(4)]
+        [Description("Second melee weapon to use"), ItemsSource(typeof(MeleeWeaponItemSource)), PropertyOrder(4), UsedImplicitly]
         public ItemObject.ItemTypeEnum MeleeWeapon2 { get; set; }
-        
-        public class RangedWeaponItemSource : IItemsSource
+
+        private class RangedWeaponItemSource : IItemsSource
         {
             public ItemCollection GetValues() => new() {
                 ItemObject.ItemTypeEnum.Invalid, 
@@ -44,10 +45,10 @@ namespace BLTAdoptAHero
                 ItemObject.ItemTypeEnum.Thrown,
             };
         }
-        [Description("Ranged weapon to use"), ItemsSource(typeof(RangedWeaponItemSource)), PropertyOrder(5)]
+        [Description("Ranged weapon to use"), ItemsSource(typeof(RangedWeaponItemSource)), PropertyOrder(5), UsedImplicitly]
         public ItemObject.ItemTypeEnum RangedWeapon { get; set; }
 
-        [Description("Whether to use a horse or not"), PropertyOrder(6)]
+        [Description("Whether to use a horse or not"), PropertyOrder(6), UsedImplicitly]
         public bool Mounted { get; set; }
 
         [YamlIgnore, Browsable(false)]

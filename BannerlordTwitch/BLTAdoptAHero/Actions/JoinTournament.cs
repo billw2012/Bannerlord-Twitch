@@ -464,7 +464,7 @@ namespace BLTAdoptAHero
                 }
             }
 
-            private static ItemObject CreateCustomWeapon(Hero hero, IEnumerable<WeaponClass> weaponClasses)
+            private static ItemObject CreateCustomWeapon(Hero hero, HeroClassDef heroClass, IEnumerable<WeaponClass> weaponClasses)
             {
                 // Randomly choose where to make a craftable weapon or choose a pre-existing one, weighted by the number of 
                 // each weapon class in those categories
@@ -477,11 +477,8 @@ namespace BLTAdoptAHero
                     // Get the highest tier we can for the weapon type
                     var itemType = craftingGroup.SelectRandom(); 
                     return EquipHero.FindRandomTieredEquipment(null, 5, hero, EquipHero.FindFlags.IgnoreAbility,
-                        o => o.WeaponComponent?.PrimaryWeapon?.WeaponClass == itemType);
-                    // return HeroHelpers.AllItems.Where(i => i.WeaponComponent?.PrimaryWeapon?.WeaponClass == weaponClass)
-                    //     .Shuffle()
-                    //     .OrderByDescending(i => i.Tier)
-                    //     .SelectRandom();
+                        o => o.WeaponComponent?.PrimaryWeapon?.WeaponClass == itemType
+                        && EquipHero.UsableWeaponFilter(o, heroClass));
                 }
                 else
                 {
@@ -694,7 +691,7 @@ namespace BLTAdoptAHero
                             {
                                 return default;
                             }
-                            var weapon = CreateCustomWeapon(hero, weaponClasses.Select(w => w.weapoonClass));
+                            var weapon = CreateCustomWeapon(hero,  heroClass, weaponClasses.Select(w => w.weapoonClass));
                             return weapon == null ? default : (weapon, GenerateItemModifier(weapon));
                         }
                         else
