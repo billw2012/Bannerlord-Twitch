@@ -1,17 +1,18 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using System;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Actions.Util
 {
     public class AchievementSystem
     {
+        [Browsable(false), UsedImplicitly]
+        public Guid ID { get; set; } = Guid.NewGuid();
+
         [PropertyOrder(1)]
         public bool Enabled { get; [UsedImplicitly] set; }
-
-        [Description("Unique ID of the achievement, so you can change the Name without clearing player progress"), PropertyOrder(2), ReadOnly(true)]
-        public Guid ID { get; set; } = Guid.NewGuid();
 
         [PropertyOrder(3)]
         public string Name { get; [UsedImplicitly] set; }

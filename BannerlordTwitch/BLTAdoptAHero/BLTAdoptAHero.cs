@@ -135,7 +135,7 @@ namespace BLTAdoptAHero
     [CategoryOrder("Battle End Rewards", 3)]
     [CategoryOrder("Shouts", 4)]
     [CategoryOrder("Kill Streaks", 5)]
-    internal class GlobalCommonConfig
+    internal class GlobalCommonConfig : IConfig
     {
 
         private const string ID = "Adopt A Hero - General Config";
@@ -275,6 +275,28 @@ namespace BLTAdoptAHero
 
         [Category("General"), Description("Achievements"), PropertyOrder(15), UsedImplicitly]
         public List<AchievementSystem> Achievements { get; set; } = new();
+
+        // This is just a copy of the achievements that existed on loading, so we can assign unique IDs to any new ones when
+        // we save
+        private List<AchievementSystem> loadedAchievements;
+        public void OnLoaded()
+        {
+            foreach (var a in Achievements
+                .GroupBy(a => a.ID)
+                .SelectMany(g => g.Skip(1)))
+            {
+                a.ID = Guid.NewGuid();
+            }
+            loadedAchievements = Achievements.ToList();
+        }
+
+        public void OnSaving()
+        {
+            foreach (var achievement in Achievements.Except(loadedAchievements))
+            {
+                achievement.ID = Guid.NewGuid();
+            }
+        }
     }
 
     [CategoryOrder("General", 1)]
@@ -441,13 +463,13 @@ namespace BLTAdoptAHero
         }
     }
 
-    internal class GlobalHeroClassConfig
+    internal class GlobalHeroClassConfig : IConfig
     {
         private const string ID = "Adopt A Hero - Class Config";
         internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalHeroClassConfig));
         internal static GlobalHeroClassConfig Get() => ActionManager.GetGlobalConfig<GlobalHeroClassConfig>(ID);
         
-        [Description("Defined classes")] 
+        [Description("Defined classes"), UsedImplicitly] 
         public List<HeroClassDef> ClassDefs { get; set; } = new();
 
         [Browsable(false), YamlIgnore]
@@ -465,6 +487,29 @@ namespace BLTAdoptAHero
         //             // Sum the heroes skill values for all the class skills
         //             => c.Skills.Sum(s => hero.GetSkillValue(SkillGroup.GetSkill(s.Skill))))
         //         .FirstOrDefault();
+
+        // This is just a copy of the classes that existed on loading, so we can assign unique IDs to any new ones when
+        // we save
+        private List<HeroClassDef> classesOnLoad;
+        public void OnLoaded()
+        {
+            foreach (var c in ClassDefs
+                .GroupBy(c => c.ID)
+                .SelectMany(g => g.Skip(1)))
+            {
+                c.ID = Guid.NewGuid();
+            }
+            classesOnLoad = ClassDefs.ToList();
+        }
+
+        public void OnSaving()
+        {
+            // Assign unique IDs to new class definitions
+            foreach (var classDef in ClassDefs.Except(classesOnLoad))
+            {
+                classDef.ID = Guid.NewGuid();
+            }
+        }
     }
     
     // We could do this, but they could also gain money so...

@@ -47,8 +47,9 @@ namespace BannerlordTwitch
     public abstract class ActionBase
     {
         // Unique ID for this action 
-        [Browsable(false)]
+        [Browsable(false), UsedImplicitly]
         public Guid ID { get; set; } = Guid.NewGuid();
+
         [Category("General"), Description("Whether this is enabled or not"), PropertyOrder(-100)]
         public bool Enabled { get; set; }
         [Category("General"), Description("Show response in the twitch chat"), PropertyOrder(-99)]
@@ -291,6 +292,14 @@ namespace BannerlordTwitch
             ActionManager.ConvertSettings(settings.Commands);
             ActionManager.ConvertSettings(settings.Rewards);
             ActionManager.EnsureGlobalSettings(settings.GlobalConfigs);
+
+            foreach (var config in settings.AllActions
+                .Select(c => c.HandlerConfig)
+                .Concat(settings.GlobalConfigs.Select(g => g.Config))
+                .OfType<IConfig>())
+            {
+                config.OnLoaded();
+            }
             
             foreach (var action in settings.AllActions)
             {
@@ -304,6 +313,14 @@ namespace BannerlordTwitch
 
         public static void Save(Settings settings)
         {
+            foreach (var config in settings.AllActions
+                .Select(c => c.HandlerConfig)
+                .Concat(settings.GlobalConfigs.Select(g => g.Config))
+                .OfType<IConfig>())
+            {
+                config.OnSaving();
+            }
+            
             string settingsStr = new SerializerBuilder()
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
                 .Build()

@@ -185,8 +185,17 @@ namespace BannerlordTwitch.Rewards
                 }
                 else
                 {
-                    // Convert from anonymous to typed object
-                    existingConfig.Config = ConvertObject(existingConfig.Config, configType);
+                    try
+                    {
+                        // Convert from anonymous to typed object
+                        existingConfig.Config = ConvertObject(existingConfig.Config, configType);
+                    }
+                    catch (Exception)
+                    {
+                        Log.Error($"{existingConfig} had invalid config, resetting it to default");
+                        existingConfig.Config = Activator.CreateInstance(configType);
+                    }
+                    
                 }
             }
 

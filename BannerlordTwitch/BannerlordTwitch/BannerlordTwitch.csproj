@@ -215,6 +215,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\IConfig.cs" />
     <Compile Include="Overlay\OutlineTextBlock.cs" />
     <Compile Include="Overlay\OverlayWindow.xaml.cs">
       <DependentUpon>OverlayWindow.xaml</DependentUpon>
