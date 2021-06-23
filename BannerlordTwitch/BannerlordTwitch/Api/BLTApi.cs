@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,10 +15,10 @@ using BannerlordTwitch;
 using BannerlordTwitch.Api;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using Fleck;
 using Newtonsoft.Json;
 using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
-using SuperWebSocket;
 using TwitchLib.Client.Models;
 using TwitchLib.Client.Models.Internal;
 
@@ -27,9 +28,9 @@ namespace BannerlordApi
     {
         private static HttpListener listener;
         private readonly Settings settings = Settings.Load();
-        private static WebSocketServer wsServer;
-
-        public List<Tuple<string, WebSocketSession>> commandAwaitingResponse = new List<Tuple<string, WebSocketSession>>();
+        private static WebSocketServer wsServer; 
+        
+        public List<Tuple<string, IWebSocketConnection>> commandAwaitingResponse = new List<Tuple<string, IWebSocketConnection>>();
 
         public BLTApi()
         {
@@ -40,46 +41,25 @@ namespace BannerlordApi
         {
             Log.Trace("Api server starting");
 
-            //SOCKET (Used when we have callback to do)
-            //wss websocket work in local by creating a self signed certificate & do websocket request on wss://localhost:443. But if you try by ngrok, it's fail
-            wsServer = new WebSocketServer();
-
-            var m_Config = new ServerConfig
+            var server = new WebSocketServer("ws://0.0.0.0:8431");
+            server.Certificate = new X509Certificate2("./../../Modules/BannerlordTwitch/bin/Win64_Shipping_Client/api/certificate.pfx");
+            server.Start(socket =>
             {
-                Port = 443,
-                Ip = "Any",
-                MaxConnectionNumber = 1000,
-                Mode = SocketMode.Tcp,
-                Name = "CustomProtocolServer",
-                Certificate = new CertificateConfig
-                {
-                    FilePath = @"C:\certificates\certificate.pfx",
-                    Password = ""
-                },
-                Security = "tls"
-            };
+                socket.OnOpen = () => Trace.WriteLine("Open a socket");
+                socket.OnClose = () => Trace.WriteLine("Close a socket");
+                socket.OnMessage = message => OnMessage(socket, message);
+            });
 
-            wsServer.Setup(m_Config);
-            wsServer.NewSessionConnected += OnSessionOpen;
-            wsServer.NewMessageReceived += OnMessage;
-            wsServer.NewDataReceived += OnData;
-            wsServer.SessionClosed += OnSessionClose;
-            
-            wsServer.Start();
+            //for now it's better to run it manually. TODO: add connection window to connect account to ngrok
             //StartNgrok(443);
         }
 
-        private void OnSessionClose(WebSocketSession session, CloseReason value)
+        private void OnSessionClose(IWebSocketConnection socket, CloseReason value)
         {
             Trace.WriteLine("OnSessionClose: " + value);
         }
 
-        private void OnData(WebSocketSession session, byte[] value)
-        {
-            Trace.WriteLine("OnData: " + value);
-        }
-
-        private void OnMessage(WebSocketSession session, string value)
+        private void OnMessage(IWebSocketConnection socket, string value)
         {
             Trace.WriteLine("OnMessage: " + value);
             dynamic json = new ExpandoObject();
@@ -89,14 +69,17 @@ namespace BannerlordApi
                 switch (socketmessage.messageType)
                 {
                     case (Int64)SocketMessageType.command:
-                        OnCommand(session, socketmessage.message);
+                        OnCommand(socket, socketmessage.message);
+                        break;
+                    case (Int64)SocketMessageType.commands:
+                        OnCommands(socket, socketmessage.message);
                         break;
                     case (Int64)SocketMessageType.ngrok:
-                        OnNgrok(session, socketmessage.message);
+                        OnNgrok(socket, socketmessage.message);
                         break;
                     default:
                         json.error = "The socket message type isn't handled";
-                        session.Send(JsonConvert.SerializeObject(json));
+                        socket.Send(JsonConvert.SerializeObject(json));
                         break;
                 }
             }
@@ -104,16 +87,16 @@ namespace BannerlordApi
             {
                 json.error = "Error on socket message parsing. Your socket message shouldn't be in the right format";
                 json.e = e;
-                session.Send(JsonConvert.SerializeObject(json));
+                socket.Send(JsonConvert.SerializeObject(json));
             }
         }
 
-        private void OnSessionOpen(WebSocketSession session)
+        private void OnSessionOpen(IWebSocketConnection session)
         {
             Trace.WriteLine("OnSessionOpen: " + session);
         }
 
-        private void OnNgrok(WebSocketSession session, dynamic message)
+        private void OnNgrok(IWebSocketConnection session, dynamic message)
         {
             dynamic json = new ExpandoObject();
             try
@@ -131,12 +114,15 @@ namespace BannerlordApi
             }
         }
 
-        public void OnCommand(WebSocketSession session, dynamic message)
+        public void OnCommand(IWebSocketConnection session, dynamic message)
         {
             dynamic json = new ExpandoObject();
             json.expected = new ExpandoObject();
             json.actualParams = new ExpandoObject();
             json.identifiedUser = new ExpandoObject();
+            json.expected.cmd = "string";
+            json.expected.userId = "string";
+            json.expected.args = "string";
 
             string cmdName = null;
             string userId = null;
@@ -155,9 +141,7 @@ namespace BannerlordApi
             if (cmdName == null || userId == null)
             {
                 json.error = "Missing variables";
-                json.expected.cmd = "string";
-                json.expected.userId = "string";
-                json.expected.args = "string";
+                //session.Send(JsonConvert.SerializeObject(json));
             }
             else
             {
@@ -180,13 +164,13 @@ namespace BannerlordApi
                         commandAwaitingResponse.Add(Tuple.Create(client.DisplayName, session));
                         commandFound = (bool)(BLTModule.TwitchService?.TestCommand(cmdName, client.DisplayName, args));
                     }
+
+                    //session.Send(JsonConvert.SerializeObject(json));
                 });
             }
-
-            session.Send(JsonConvert.SerializeObject(json));
         }
 
-        public void OnCommands(WebSocketSession session, dynamic message)
+        public void OnCommands(IWebSocketConnection session, dynamic message)
         {
             session.Send(JsonConvert.SerializeObject(settings.EnabledCommands.ToArray()));
         }
@@ -195,7 +179,7 @@ namespace BannerlordApi
         {
             Process proc = new Process();
             proc.StartInfo.FileName = "./../../Modules/BannerlordTwitch/bin/Win64_Shipping_Client/api/ngrok.exe";
-            proc.StartInfo.Arguments = "tcp " + port;
+            proc.StartInfo.Arguments = "http " + port;
             proc.StartInfo.UseShellExecute = false;
             proc.StartInfo.CreateNoWindow = true;
             proc.Start();
@@ -212,7 +196,7 @@ namespace BannerlordApi
             StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
             return readStream.ReadToEnd();
         }
-        public WebSocketSession GetSocketAwaitingResponseFor(string displayName)
+        public IWebSocketConnection GetSocketAwaitingResponseFor(string displayName)
         {
             var tuple = commandAwaitingResponse.Find(tuple => tuple.Item1 == displayName);
             if (tuple != null)

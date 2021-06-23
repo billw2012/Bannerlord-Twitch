@@ -45,9 +45,6 @@ Rewards:
     StartWithRangedWeapon: true
     StartWithHorse: true
     StartWithArmor: true
-    SpawnInParty: true
-    JoinPlayerClan: true
-    JoinPlayerCompanion: true
 - RewardSpec:
     Title: 10k gold
     DisableAutomaticFulfillment: false
@@ -587,7 +584,7 @@ Commands:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
-  RespondInExtension: false
+  RespondInExtension: true
   HandlerConfig:
     GoldCost: 100000
     UpdateEquipment: true
@@ -601,7 +598,7 @@ Commands:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
-  RespondInExtension: false
+  RespondInExtension: true
   HandlerConfig:
     AllowCompanionUpgrade: false
     GoldCost: 10000
@@ -616,8 +613,8 @@ Commands:
   ID: 42e45ee9-647f-486f-9764-5e765507a70d
   Enabled: true
   RespondInTwitch: true
-  RespondInOverlay: false
-  RespondInExtension: false
+  RespondInOverlay: true
+  RespondInExtension: true
   HandlerConfig:
     ShowGold: true
     ShowGeneral: false
@@ -638,7 +635,7 @@ Commands:
   Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
-  RespondInExtension: false
+  RespondInExtension: true
   HandlerConfig:
     ShowGold: false
     ShowGeneral: false
@@ -677,9 +674,6 @@ Commands:
     StartWithRangedWeapon: true
     StartWithHorse: true
     StartWithArmor: true
-    SpawnInParty: true
-    JoinPlayerClan: true
-    JoinPlayerCompanion: true
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -692,7 +686,6 @@ GlobalConfigs:
     UseRawXP: true
     RetinueUseHeroesFormation: false
     CooldownInSeconds: 60
-    BreakCompanionLimit: false
     GoldPerKill: 5000
     XPPerKill: 5000
     XPPerKilled: 2000
