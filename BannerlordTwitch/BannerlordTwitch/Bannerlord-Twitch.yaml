@@ -39,10 +39,6 @@ Rewards:
       MinLevel: 25
       MaxLevel: 75
     StartingEquipmentTier: 0
-    StartWithMeleeWeapon: true
-    StartWithRangedWeapon: true
-    StartWithHorse: true
-    StartWithArmor: true
 - RewardSpec:
     Title: 10k gold
     DisableAutomaticFulfillment: false
@@ -657,6 +653,17 @@ Commands:
     ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: true
+- Name: nameitem
+  HideHelp: false
+  Help: Rename a reward item
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: NameItem
+  ID: aef1ded6-f8dd-4b9a-9d70-96e96d17cb12
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig: 
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -693,6 +700,7 @@ GlobalConfigs:
     ShowKillStreakPopup: true
     KillStreakPopupAlertSound: Notification1
     ReferenceLevelReward: 15
+    Achievements: []
 - Id: Adopt A Hero - Tournament Config
   Config:
     StartHealthMultiplier: 2
@@ -703,16 +711,39 @@ GlobalConfigs:
     WinMatchXP: 10000
     ParticipateMatchXP: 2500
     UseCustomPrizes: true
-    PrizeTier1Weight: 0
-    PrizeTier2Weight: 0
-    PrizeTier3Weight: 0
-    PrizeTier4Weight: 16
-    PrizeTier5Weight: 8
-    PrizeTier6Weight: 4
-    PrizeCustomWeight: 1
     PrizeWeaponWeight: 1
     PrizeArmorWeight: 1
     PrizeMountWeight: 0.100000001
+    PrizeTier1Weight: 0
+    PrizeTier2Weight: 0
+    PrizeTier3Weight: 0
+    PrizeTier4Weight: 0
+    PrizeTier5Weight: 0
+    PrizeTier6Weight: 0
+    PrizeCustomWeight: 1
+    CustomPrizePower: 1
+    CustomPrizeWeaponDamageMin: 25
+    CustomPrizeWeaponDamageMax: 50
+    CustomPrizeWeaponSpeedMin: 25
+    CustomPrizeWeaponSpeedMax: 50
+    CustomPrizeWeaponMissileSpeedMin: 25
+    CustomPrizeWeaponMissileSpeedMax: 50
+    CustomPrizeAmmoDamageMin: 10
+    CustomPrizeAmmoDamageMax: 30
+    CustomPrizeArrowStackMin: 25
+    CustomPrizeArrowStackMax: 50
+    CustomPrizeThrowingStackMin: 2
+    CustomPrizeThrowingStackMax: 6
+    CustomPrizeArmorMin: 10
+    CustomPrizeArmorMax: 20
+    CustomPrizeMountManeuverMin: 1.25
+    CustomPrizeMountManeuverMax: 2
+    CustomPrizeMountSpeedMin: 1.25
+    CustomPrizeMountSpeedMax: 2
+    CustomPrizeMountChargeDamageMin: 1.25
+    CustomPrizeMountChargeDamageMax: 2
+    CustomPrizeMountHitPointsMin: 1.25
+    CustomPrizeMountHitPointsMax: 2
 - Id: Adopt A Hero - Class Config
   Config:
     ClassDefs:

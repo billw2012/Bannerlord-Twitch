@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Bannerlord.ButterLib.Common.Extensions;
 using Bannerlord.ButterLib.SaveSystem.Extensions;
+using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -43,10 +44,13 @@ namespace BLTAdoptAHero
             public float ChargeDamage { get; set; }
             [SaveableProperty(11)]
             public float MountHitPoints { get; set; }
-
+            
+            [SaveableProperty(12)]
+            public string CustomName { get; set; }
+            
             public void Apply(ItemModifier toModifier)
             {
-                toModifier.SetName(new (Name));
+                toModifier.SetName(new (CustomName ?? Name));
                 toModifier.StringId = StringId;
                 toModifier.SetDamageModifier(Damage);
                 toModifier.SetSpeedModifier(Speed);
@@ -102,14 +106,14 @@ namespace BLTAdoptAHero
         }
 
         public ItemModifier CreateArmorModifier(string modifiedName, int armorModifier) =>
-            RegisterModifier(new ItemModifierData
+            RegisterModifier(new()
             {
                 Name = modifiedName,
                 Armor = armorModifier,
             });
         
         public ItemModifier CreateWeaponModifier(string modifiedName, int damageModifier, int speedModifier, int missileSpeedModifier, short stackSizeModifier) =>
-            RegisterModifier(new ItemModifierData
+            RegisterModifier(new()
             {
                 Name = modifiedName,
                 Damage = damageModifier,
@@ -119,7 +123,7 @@ namespace BLTAdoptAHero
             });
         
         public ItemModifier CreateAmmoModifier(string modifiedName, int damageModifier, short stackModifier) =>
-            RegisterModifier(new ItemModifierData
+            RegisterModifier(new()
             {
                 Name = modifiedName,
                 Damage = damageModifier,
@@ -127,7 +131,7 @@ namespace BLTAdoptAHero
             });
         
         public ItemModifier CreateMountModifier(string modifiedName, float maneuverModifier, float mountSpeedModifier, float chargeDamageModifier, float mountHitPointsModifier) =>
-            RegisterModifier(new ItemModifierData
+            RegisterModifier(new()
             {
                 Name = modifiedName,
                 Maneuver = maneuverModifier,
@@ -138,6 +142,18 @@ namespace BLTAdoptAHero
 
         public bool IsRegistered(ItemModifier modifier) => modifier != null && customItemModifiers.ContainsKey(modifier);
         
+        public bool ItemCanBeNamed(ItemModifier itemModifier) 
+            => itemModifier != null && customItemModifiers.TryGetValue(itemModifier, out var modifierData) && modifierData.CustomName == null;
+
+        public void NameItem(ItemModifier itemModifier, string name)
+        {
+            if (customItemModifiers.TryGetValue(itemModifier, out var modifierData))
+            {
+                itemModifier.SetName(new (name));
+                modifierData.CustomName = name;
+            }
+        }
+
         private ItemModifier RegisterModifier(ItemModifierData modifierData)
         {
             modifierData.StringId = Guid.NewGuid().ToString();

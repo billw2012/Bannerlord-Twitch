@@ -59,6 +59,10 @@ public static class LINQExtensions
             yield return (equipment[i], (EquipmentIndex) i);
         }
     }
+    
+    public static IEnumerable<EquipmentElement> YieldFilledEquipmentSlots(this Equipment equipment) 
+        => equipment.YieldEquipmentSlots().Where(s => !s.element.IsEmpty).Select(s => s.element);
+
         
     public static IEnumerable<(EquipmentElement element, EquipmentIndex index)> YieldWeaponSlots(this Equipment equipment)
     {

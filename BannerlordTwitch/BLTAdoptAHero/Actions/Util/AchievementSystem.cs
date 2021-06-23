@@ -2,7 +2,6 @@
 using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using System;
-using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Actions.Util
 {

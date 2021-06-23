@@ -146,6 +146,7 @@
         <Compile Include="Actions\ImproveAdoptedHero.cs" />
         <Compile Include="Actions\JoinTournament.cs" />
         <Compile Include="Actions\Marry.cs" />
+        <Compile Include="Actions\NameItem.cs" />
         <Compile Include="Actions\Retinue.cs" />
         <Compile Include="Actions\RetireMyHero.cs" />
         <Compile Include="Actions\SetHeroClass.cs" />
