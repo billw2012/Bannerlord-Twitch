@@ -586,8 +586,8 @@ Commands:
   Handler: SetHeroClass
   ID: da8416ca-e59b-458a-8953-31291d03c835
   Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
+  RespondInTwitch: true
+  RespondInOverlay: false
   HandlerConfig:
     GoldCost: 100000
     UpdateEquipment: true
@@ -599,8 +599,8 @@ Commands:
   Handler: EquipHero
   ID: d4fb255c-4bb3-454e-9e26-39b4d7a321f0
   Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
+  RespondInTwitch: true
+  RespondInOverlay: false
   HandlerConfig:
     AllowCompanionUpgrade: false
     CostTier1: 25000
@@ -655,14 +655,14 @@ Commands:
     ShowRetinueList: true
 - Name: nameitem
   HideHelp: false
-  Help: Rename a reward item
+  Help: Name a reward item
   BroadcasterOnly: false
   ModOnly: false
   Handler: NameItem
   ID: aef1ded6-f8dd-4b9a-9d70-96e96d17cb12
   Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
+  RespondInTwitch: true
+  RespondInOverlay: false
   HandlerConfig: 
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
@@ -836,7 +836,7 @@ SimTesting:
     Type: Reward
     Id: Tournament
     Args: 
-    Weight: 0.100000001
+    Weight: 0.200000003
   - Enabled: true
     Type: Command
     Id: retinue
@@ -887,4 +887,29 @@ SimTesting:
     Id: Heal Hero
     Args: ''
     Weight: 0.0500000007
+  - Enabled: true
+    Type: Command
+    Id: nameitem
+    Args: 
+    Weight: 0.00999999978
+  - Enabled: true
+    Type: Command
+    Id: nameitem
+    Args: Random Name 1
+    Weight: 0.00999999978
+  - Enabled: true
+    Type: Command
+    Id: nameitem
+    Args: Random Name 2
+    Weight: 0.00999999978
+  - Enabled: true
+    Type: Command
+    Id: nameitem
+    Args: Random Name 3
+    Weight: 0.00999999978
+  - Enabled: true
+    Type: Command
+    Id: nameitem
+    Args: Random Name 4
+    Weight: 0.00999999978
 DisableAutomaticFulfillment: false
