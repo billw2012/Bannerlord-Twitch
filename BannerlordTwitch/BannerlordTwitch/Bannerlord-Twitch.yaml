@@ -721,29 +721,41 @@ GlobalConfigs:
     PrizeTier5Weight: 0
     PrizeTier6Weight: 0
     PrizeCustomWeight: 1
-    CustomPrizePower: 1
-    CustomPrizeWeaponDamageMin: 25
-    CustomPrizeWeaponDamageMax: 50
-    CustomPrizeWeaponSpeedMin: 25
-    CustomPrizeWeaponSpeedMax: 50
-    CustomPrizeWeaponMissileSpeedMin: 25
-    CustomPrizeWeaponMissileSpeedMax: 50
-    CustomPrizeAmmoDamageMin: 10
-    CustomPrizeAmmoDamageMax: 30
-    CustomPrizeArrowStackMin: 25
-    CustomPrizeArrowStackMax: 50
-    CustomPrizeThrowingStackMin: 2
-    CustomPrizeThrowingStackMax: 6
-    CustomPrizeArmorMin: 10
-    CustomPrizeArmorMax: 20
-    CustomPrizeMountManeuverMin: 1.25
-    CustomPrizeMountManeuverMax: 2
-    CustomPrizeMountSpeedMin: 1.25
-    CustomPrizeMountSpeedMax: 2
-    CustomPrizeMountChargeDamageMin: 1.25
-    CustomPrizeMountChargeDamageMax: 2
-    CustomPrizeMountHitPointsMin: 1.25
-    CustomPrizeMountHitPointsMax: 2
+    CustomPrize:
+      Power: 1
+      WeaponDamage:
+        Min: 25
+        Max: 50
+      WeaponSpeed:
+        Min: 25
+        Max: 50
+      WeaponMissileSpeed:
+        Min: 25
+        Max: 50
+      AmmoDamage:
+        Min: 10
+        Max: 30
+      ArrowStack:
+        Min: 25
+        Max: 50
+      ThrowingStack:
+        Min: 2
+        Max: 6
+      Armor:
+        Min: 10
+        Max: 20
+      MountManeuver:
+        Min: 1.25
+        Max: 2
+      MountSpeed:
+        Min: 1.25
+        Max: 2
+      MountChargeDamage:
+        Min: 1.25
+        Max: 2
+      MountHitPoints:
+        Min: 1.25
+        Max: 2
 - Id: Adopt A Hero - Class Config
   Config:
     ClassDefs:

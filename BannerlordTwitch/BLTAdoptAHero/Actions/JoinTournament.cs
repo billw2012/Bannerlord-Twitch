@@ -366,7 +366,7 @@ namespace BLTAdoptAHero
                                 }
                             }
 
-                            if (results.Any())
+                            if (results.Any() && entry.Hero != null)
                             {
                                 Log.LogFeedResponse(entry.Hero.FirstName.ToString(), results.ToArray());
                             }
@@ -489,7 +489,7 @@ namespace BLTAdoptAHero
             private static ItemModifier GenerateItemModifier(ItemObject item, string modifierName)
             {
                 string modifiedName = $"{modifierName} {{ITEMNAME}}";
-                float modifierPower = BLTAdoptAHeroModule.TournamentConfig.CustomPrizePower;
+                float modifierPower = BLTAdoptAHeroModule.TournamentConfig.CustomPrize.Power;
                 if (item.WeaponComponent?.PrimaryWeapon?.IsMeleeWeapon == true
                     || item.WeaponComponent?.PrimaryWeapon?.IsPolearm == true
                     || item.WeaponComponent?.PrimaryWeapon?.IsRangedWeapon == true
@@ -498,17 +498,17 @@ namespace BLTAdoptAHero
                     return BLTCustomItemsCampaignBehavior.Current.CreateWeaponModifier(
                         modifiedName,
                         (int) Mathf.Ceil(MBRandom.RandomInt(
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeWeaponDamageMin, 
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeWeaponDamageMax) * modifierPower),
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.WeaponDamage.Min, 
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.WeaponDamage.Max) * modifierPower),
                         (int) Mathf.Ceil(MBRandom.RandomInt(
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeWeaponSpeedMin, 
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeWeaponSpeedMax) * modifierPower),
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.WeaponSpeed.Min, 
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.WeaponSpeed.Max) * modifierPower),
                         (int) Mathf.Ceil(MBRandom.RandomInt(
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeWeaponMissileSpeedMin, 
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeWeaponMissileSpeedMax) * modifierPower),
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.WeaponMissileSpeed.Min, 
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.WeaponMissileSpeed.Max) * modifierPower),
                         (short) Mathf.Ceil(MBRandom.RandomInt(
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeThrowingStackMin, 
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeThrowingStackMax) * modifierPower)
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.ThrowingStack.Min, 
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.ThrowingStack.Max) * modifierPower)
                     );
                 }
                 else if (item.WeaponComponent?.PrimaryWeapon?.IsAmmo == true)
@@ -516,11 +516,11 @@ namespace BLTAdoptAHero
                     return BLTCustomItemsCampaignBehavior.Current.CreateAmmoModifier(
                         modifiedName,
                         (int) Mathf.Ceil(MBRandom.RandomInt(
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeAmmoDamageMin, 
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeAmmoDamageMax) * modifierPower),
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.AmmoDamage.Min, 
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.AmmoDamage.Max) * modifierPower),
                         (short) Mathf.Ceil(MBRandom.RandomInt(
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeArrowStackMin, 
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeArrowStackMax) * modifierPower)
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.ArrowStack.Min, 
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.ArrowStack.Max) * modifierPower)
                     );
                 }
                 else if (item.HasArmorComponent)
@@ -528,8 +528,8 @@ namespace BLTAdoptAHero
                     return BLTCustomItemsCampaignBehavior.Current.CreateArmorModifier(
                         modifiedName,
                         (int) Mathf.Ceil(MBRandom.RandomInt(
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeArmorMin, 
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeArmorMax) * modifierPower)
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.Armor.Min, 
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.Armor.Max) * modifierPower)
                     );
                 }
                 else if (item.IsMountable)
@@ -537,17 +537,17 @@ namespace BLTAdoptAHero
                     return BLTCustomItemsCampaignBehavior.Current.CreateMountModifier(
                         modifiedName,
                         MBRandom.RandomFloatRanged(
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeMountManeuverMin, 
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeMountManeuverMax) * modifierPower,
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.MountManeuver.Min, 
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.MountManeuver.Max) * modifierPower,
                         MBRandom.RandomFloatRanged(
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeMountSpeedMin, 
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeMountSpeedMax) * modifierPower,
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.MountSpeed.Min, 
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.MountSpeed.Max) * modifierPower,
                         MBRandom.RandomFloatRanged(
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeMountChargeDamageMin, 
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeMountChargeDamageMax) * modifierPower,
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.MountChargeDamage.Min, 
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.MountChargeDamage.Max) * modifierPower,
                         MBRandom.RandomFloatRanged(
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeMountHitPointsMin, 
-                            BLTAdoptAHeroModule.TournamentConfig.CustomPrizeMountHitPointsMax) * modifierPower
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.MountHitPoints.Min, 
+                            BLTAdoptAHeroModule.TournamentConfig.CustomPrize.MountHitPoints.Max) * modifierPower
                     );
                 }
                 else
