@@ -16,6 +16,7 @@ namespace BLTAdoptAHero.Actions.Util
 {
     public static class CustomItems
     {
+#if DEBUG
         [CommandLineFunctionality.CommandLineArgumentFunction("testcraft", "blt")]
         [UsedImplicitly]
         public static string TestCraft(List<string> strings)
@@ -111,6 +112,7 @@ namespace BLTAdoptAHero.Actions.Util
             Hero.MainHero.BattleEquipment[EquipmentIndex.Horse] = slotItem;
             return $"Assigned {slotItem.GetModifiedItemName()} to {Hero.MainHero.Name}";
         }
+#endif
 
         public static WeaponClass[] CraftableWeaponClasses { get; set; } = {
             WeaponClass.Dagger,
@@ -128,37 +130,6 @@ namespace BLTAdoptAHero.Actions.Util
             WeaponClass.ThrowingKnife,
             WeaponClass.Javelin,
         };
-        
-        // public static ItemObject CreateWeapon(Hero hero, WeaponClass weaponClass, int desiredTier)
-        // {
-        //     return CraftableWeaponClasses.Contains(weaponClass)
-        //         ? CreateCraftedWeapon(hero, weaponClass, desiredTier)
-        //         : CreateVariationWeapon(hero, weaponClass, desiredTier)
-        //         ;
-        // }
-
-        // private static ItemObject CreateVariationWeapon(Hero hero, WeaponClass weaponClass, int desiredTier)
-        // {
-        //     var item = HeroHelpers.AllItems
-        //         .Where(i => i.WeaponComponent?.PrimaryWeapon?.WeaponClass == weaponClass)
-        //         .Where(i => (int)i.Tier <= desiredTier)
-        //         .Shuffle()
-        //         .OrderByDescending(i => i.Tier)
-        //         .FirstOrDefault()
-        //         ;
-        //     if (item == null)
-        //     {
-        //         Log.Error($"Failed to create variation Tier {desiredTier + 1} {weaponClass} for {hero.Name}: no valid base items found");
-        //         return null;
-        //     }
-        //
-        //     var itemCopy = new ItemObject(item);
-        //     SetItemName(itemCopy, new TextObject($"Custom {item.Name} (Tournament Prize of {hero.FirstName})"));
-        //     ItemObject.InitAsPlayerCraftedItem(ref item);
-        //     MBObjectManager.Instance.RegisterObject(item);
-        //     
-        //     return itemCopy;
-        // }
 
         public static ItemObject CreateCraftedWeapon(Hero hero, ICollection<WeaponClass> weaponClasses, int desiredTier)
         {
@@ -203,24 +174,6 @@ namespace BLTAdoptAHero.Actions.Util
         }
 
         private static void SetItemName(ItemObject item, TextObject name) => AccessTools.Property(typeof(ItemObject), nameof(ItemObject.Name)).SetValue(item, name);
-        
-
-        // public static ItemObject CreateRandomCraftedItem(BasicCultureObject culture)
-        // {
-        //     var item = Crafting.CreateRandomCraftedItem(culture);
-        //     CompleteCraftedItem(item, null);
-        //     return item;
-        // }
-        //
-        // public static ItemObject CreateRandomCraftedWeapon(Hero hero, WeaponDesign weaponDesign, int modifierTier,
-        //     Crafting.OverrideData overrideData, string itemName, BasicCultureObject culture,
-        //     ItemModifierGroup itemModifiers)
-        // {
-        //     ItemObject item = null;
-        //     Crafting.GenerateItem(weaponDesign, itemName, culture, itemModifiers, ref item, overrideData);
-        //     CompleteCraftedItem(item, overrideData);
-        //     return item;
-        // }
 
         private static void CompleteCraftedItem(ItemObject item, Crafting.OverrideData overrideData = null)
         {
@@ -234,6 +187,7 @@ namespace BLTAdoptAHero.Actions.Util
             #endif
         }
         
+        // The vanilla tier calculation for weapons:
         
         // private static float CalculateTierMeleeWeapon(WeaponComponent weaponComponent)
         // {

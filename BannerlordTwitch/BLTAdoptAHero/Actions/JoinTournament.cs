@@ -488,6 +488,7 @@ namespace BLTAdoptAHero
             
             private static ItemModifier GenerateItemModifier(ItemObject item, string modifierName)
             {
+                string modifiedName = $"{modifierName} {{ITEMNAME}}";
                 float modifierPower = BLTAdoptAHeroModule.TournamentConfig.CustomPrizePower;
                 if (item.WeaponComponent?.PrimaryWeapon?.IsMeleeWeapon == true
                     || item.WeaponComponent?.PrimaryWeapon?.IsPolearm == true
@@ -495,7 +496,7 @@ namespace BLTAdoptAHero
                     )
                 {
                     return BLTCustomItemsCampaignBehavior.Current.CreateWeaponModifier(
-                        $"{modifierName} {{ITEMNAME}}",
+                        modifiedName,
                         (int) Mathf.Ceil(MBRandom.RandomInt(
                             BLTAdoptAHeroModule.TournamentConfig.CustomPrizeWeaponDamageMin, 
                             BLTAdoptAHeroModule.TournamentConfig.CustomPrizeWeaponDamageMax) * modifierPower),
@@ -513,7 +514,7 @@ namespace BLTAdoptAHero
                 else if (item.WeaponComponent?.PrimaryWeapon?.IsAmmo == true)
                 {
                     return BLTCustomItemsCampaignBehavior.Current.CreateAmmoModifier(
-                        "Modified {ITEMNAME}",
+                        modifiedName,
                         (int) Mathf.Ceil(MBRandom.RandomInt(
                             BLTAdoptAHeroModule.TournamentConfig.CustomPrizeAmmoDamageMin, 
                             BLTAdoptAHeroModule.TournamentConfig.CustomPrizeAmmoDamageMax) * modifierPower),
@@ -525,7 +526,7 @@ namespace BLTAdoptAHero
                 else if (item.HasArmorComponent)
                 {
                     return BLTCustomItemsCampaignBehavior.Current.CreateArmorModifier(
-                        "Modified {ITEMNAME}",
+                        modifiedName,
                         (int) Mathf.Ceil(MBRandom.RandomInt(
                             BLTAdoptAHeroModule.TournamentConfig.CustomPrizeArmorMin, 
                             BLTAdoptAHeroModule.TournamentConfig.CustomPrizeArmorMax) * modifierPower)
@@ -534,7 +535,7 @@ namespace BLTAdoptAHero
                 else if (item.IsMountable)
                 {
                     return BLTCustomItemsCampaignBehavior.Current.CreateMountModifier(
-                        "Modified {ITEMNAME}",
+                        modifiedName,
                         MBRandom.RandomFloatRanged(
                             BLTAdoptAHeroModule.TournamentConfig.CustomPrizeMountManeuverMin, 
                             BLTAdoptAHeroModule.TournamentConfig.CustomPrizeMountManeuverMax) * modifierPower,
