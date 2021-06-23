@@ -338,17 +338,17 @@ namespace BLTAdoptAHero
                                 }
                                 else
                                 {
-                                    (bool upgraded, string failReason) = UpgradeToItem(entry.Hero, item, itemModifier,
-                                        itemModifier != null);
+                                    var element = new EquipmentElement(item, itemModifier);
+                                    (bool upgraded, string failReason) = UpgradeToItem(entry.Hero, element, itemModifier != null);
                                     if (!upgraded)
                                     {
                                         BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(entry.Hero,
                                             item.Value * 3);
-                                        results.Add($"sold {item.Name} for {item.Value}{Naming.Gold} ({failReason})");
+                                        results.Add($"sold {element.GetModifiedItemName()} for {item.Value}{Naming.Gold} ({failReason})");
                                     }
                                     else
                                     {
-                                        results.Add($"received {item.Name}");
+                                        results.Add($"received {element.GetModifiedItemName()}");
                                     }
                                 }
                             }
@@ -434,23 +434,23 @@ namespace BLTAdoptAHero
                 }
             }
 
-            private static (bool used, string failReason) UpgradeToItem(Hero hero, ItemObject item, ItemModifier modifier,  bool force)
+            private static (bool used, string failReason) UpgradeToItem(Hero hero, EquipmentElement element,  bool force)
             {
-                if (EquipHero.CanUseItem(item, hero, force))
+                if (EquipHero.CanUseItem(element.Item, hero, force))
                 {
                     // Find a slot
                     var slot = hero.BattleEquipment.YieldEquipmentSlots()
                         .Cast<(EquipmentElement element, EquipmentIndex index)?>()
                         .FirstOrDefault(e => 
                             e.HasValue 
-                            && Equipment.IsItemFitsToSlot(e.Value.index, item) 
-                            && (e.Value.element.IsEmpty || e.Value.element.Item.Type == item.Type 
-                                && (force || e.Value.element.Item.Tierf <= item.Tierf)
+                            && Equipment.IsItemFitsToSlot(e.Value.index, element.Item) 
+                            && (e.Value.element.IsEmpty || e.Value.element.Item.Type == element.Item.Type 
+                                && (force || e.Value.element.Item.Tierf <= element.Item.Tierf)
                                 )
                             );
                     if (slot.HasValue)
                     {
-                        hero.BattleEquipment[slot.Value.index] = new(item, modifier);
+                        hero.BattleEquipment[slot.Value.index] = element;
                         return (true, null);
                     }
                     else
@@ -486,7 +486,7 @@ namespace BLTAdoptAHero
                 }
             }
             
-            private static ItemModifier GenerateItemModifier(ItemObject item)
+            private static ItemModifier GenerateItemModifier(ItemObject item, string modifierName)
             {
                 float modifierPower = BLTAdoptAHeroModule.TournamentConfig.CustomPrizePower;
                 if (item.WeaponComponent?.PrimaryWeapon?.IsMeleeWeapon == true
@@ -495,7 +495,7 @@ namespace BLTAdoptAHero
                     )
                 {
                     return BLTCustomItemsCampaignBehavior.Current.CreateWeaponModifier(
-                        "Modified {ITEMNAME}",
+                        $"{modifierName} {{ITEMNAME}}",
                         (int) Mathf.Ceil(MBRandom.RandomInt(
                             BLTAdoptAHeroModule.TournamentConfig.CustomPrizeWeaponDamageMin, 
                             BLTAdoptAHeroModule.TournamentConfig.CustomPrizeWeaponDamageMax) * modifierPower),
@@ -556,16 +556,13 @@ namespace BLTAdoptAHero
                 }
             }
             
+#if DEBUG
             [CommandLineFunctionality.CommandLineArgumentFunction("testprize", "blt")]
             [UsedImplicitly]
             public static string TestTournamentCustomPrize(List<string> strings)
             {
                 if (strings.Count == 1)
                 {
-#if !DEBUG
-                    try
-                    {
-#endif
                     int count = int.Parse(strings[0]);
                     for (int i = 0; i < count; i++)
                     {
@@ -578,20 +575,9 @@ namespace BLTAdoptAHero
                         Hero.MainHero.PartyBelongedTo.ItemRoster.AddToCounts(equipment, 1);
                     }
                     return $"Added {count} items to {Hero.MainHero.Name}";
-#if !DEBUG
-                    }
-                    catch (Exception ex)
-                    {
-                        return ex.Message;
-                    }
-#endif  
                 }
                 else if (strings.Count == 3)
                 {
-#if !DEBUG
-                    try
-                    {
-#endif
                     int count = int.Parse(strings[2]);
                     var prizeType = (GlobalTournamentConfig.PrizeType) Enum.Parse(typeof(GlobalTournamentConfig.PrizeType), strings[0]);
                     var classDef = BLTAdoptAHeroModule.HeroClassConfig.FindClass(strings[1]);
@@ -611,13 +597,6 @@ namespace BLTAdoptAHero
                     }
 
                     return $"Added {count} items to {Hero.MainHero.Name}";
-#if !DEBUG
-                    }
-                    catch (Exception ex)
-                    {
-                        return ex.Message;
-                    }
-#endif
                 }
                 else
                 {
@@ -629,18 +608,12 @@ namespace BLTAdoptAHero
             [UsedImplicitly]
             public static string TestTournamentCustomPrize2(List<string> strings)
             {
-                var heroes = BLTAdoptAHeroCampaignBehavior.GetAllAdoptedHeroes();
-                var sorted = heroes.Select(h => (
-                    hero: h,
-                    classDef: BLTAdoptAHeroCampaignBehavior.Current.GetClass(h),
-                    riding: h.GetSkillValue(DefaultSkills.Riding),
-                    athletics: h.GetSkillValue(DefaultSkills.Athletics))).ToList();
-                foreach (var h in heroes)
+                foreach (var h in BLTAdoptAHeroCampaignBehavior.GetAllAdoptedHeroes())
                 {
                     var (item, itemModifier) = GeneratePrize(h);
                     if (item != null)
                     {
-                        (bool upgraded, string failReason) = UpgradeToItem(h, item, itemModifier, itemModifier != null);
+                        (bool upgraded, string failReason) = UpgradeToItem(h, new(item, itemModifier), itemModifier != null);
                         if (!upgraded)
                         {
                             Log.Error($"Failed to upgrade {item.Name} for {h.Name}: {failReason}");
@@ -654,7 +627,8 @@ namespace BLTAdoptAHero
 
                 return "done";
             }
-            
+#endif  
+
             private static (ItemObject item, ItemModifier modifier) GeneratePrizeType(GlobalTournamentConfig.PrizeType prizeType, int tier, Hero hero, HeroClassDef heroClass)
             {
                 switch (prizeType)
@@ -692,7 +666,7 @@ namespace BLTAdoptAHero
                                 return default;
                             }
                             var weapon = CreateCustomWeapon(hero,  heroClass, weaponClasses.Select(w => w.weapoonClass));
-                            return weapon == null ? default : (weapon, GenerateItemModifier(weapon));
+                            return weapon == null ? default : (weapon, GenerateItemModifier(weapon, "Prize"));
                         }
                         else
                         {
@@ -731,7 +705,7 @@ namespace BLTAdoptAHero
                         if (tier > 5)
                         {
                             var armor = EquipHero.FindRandomTieredEquipment(null, 5, hero, EquipHero.FindFlags.IgnoreAbility, null, armorPart);
-                            return armor == null ? default : (armor, GenerateItemModifier(armor));
+                            return armor == null ? default : (armor, GenerateItemModifier(armor, "Prize"));
                         }
                         else
                         {
@@ -759,7 +733,7 @@ namespace BLTAdoptAHero
                         {
                             return default;
                         }
-                        var modifier = GenerateItemModifier(mount);
+                        var modifier = GenerateItemModifier(mount, "Prize");
                         return (mount, modifier);
                     }
                     default:
