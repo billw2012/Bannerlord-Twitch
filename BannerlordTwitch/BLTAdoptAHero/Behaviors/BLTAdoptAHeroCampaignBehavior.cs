@@ -396,7 +396,13 @@ namespace BLTAdoptAHero
         }
 
         #region Gold
-        public int GetHeroGold(Hero hero) => GetHeroData(hero).Gold;
+        public int GetHeroGold(Hero hero) =>
+            #if DEBUG
+            1000000000
+            #else
+            GetHeroData(hero).Gold
+            #endif
+        ;
 
         public void SetHeroGold(Hero hero, int gold) => GetHeroData(hero).Gold = gold;
         
