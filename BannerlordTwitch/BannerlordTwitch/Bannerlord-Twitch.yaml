@@ -762,38 +762,75 @@ GlobalConfigs:
     - ID: 59df8187-01fe-48f2-b551-f9716fc9963c
       Name: infantry
       Formation: Infantry
-      MeleeWeapon1: OneHandedWeapon
-      MeleeWeapon2: Invalid
-      RangedWeapon: Invalid
-      Mounted: false
+      Slot1: OneHandedSword
+      Slot2: Shield
+      Slot3: None
+      Slot4: None
+      UseHorse: false
+      UseCamel: false
     - ID: b48cbbd3-d8b3-46b7-942e-c15daeda403d
       Name: archer
       Formation: Ranged
-      MeleeWeapon1: OneHandedWeapon
-      MeleeWeapon2: Invalid
-      RangedWeapon: Bow
-      Mounted: false
+      Slot1: Bow
+      Slot2: Arrows
+      Slot3: Arrows
+      Slot4: OneHandedAxe
+      UseHorse: false
+      UseCamel: false
+    - ID: 119f3d69-5fc3-4162-870b-2431a8b58e9b
+      Name: crossbow
+      Formation: Ranged
+      Slot1: Crossbow
+      Slot2: Bolts
+      Slot3: Bolts
+      Slot4: OneHandedSword
+      UseHorse: false
+      UseCamel: false
     - ID: 3d05f7e7-b189-4844-8631-f141c4c527d3
       Name: cavalry
       Formation: Cavalry
-      MeleeWeapon1: Polearm
-      MeleeWeapon2: Invalid
-      RangedWeapon: Invalid
-      Mounted: true
+      Slot1: OneHandedLance
+      Slot2: Shield
+      Slot3: OneHandedSword
+      Slot4: None
+      UseHorse: true
+      UseCamel: false
     - ID: 880cabdd-551e-4f82-aef9-e193b58bd7f3
       Name: horsearcher
       Formation: HorseArcher
-      MeleeWeapon1: OneHandedWeapon
-      MeleeWeapon2: Invalid
-      RangedWeapon: Bow
-      Mounted: true
+      Slot1: Bow
+      Slot2: Arrows
+      Slot3: Arrows
+      Slot4: OneHandedSword
+      UseHorse: true
+      UseCamel: false
+    - ID: 98efa33c-46c1-4040-ab65-ab260a0bb172
+      Name: camelarcher
+      Formation: HorseArcher
+      Slot1: Bow
+      Slot2: Arrows
+      Slot3: Arrows
+      Slot4: TwoHandedGlaive
+      UseHorse: false
+      UseCamel: true
     - ID: cb0744ae-278b-46a8-8ea7-694c44f1f45b
       Name: skirmisher
       Formation: Skirmisher
-      MeleeWeapon1: TwoHandedWeapon
-      MeleeWeapon2: Invalid
-      RangedWeapon: Thrown
-      Mounted: false
+      Slot1: TwoHandedSword
+      Slot2: ThrowingJavelins
+      Slot3: ThrowingJavelins
+      Slot4: None
+      UseHorse: false
+      UseCamel: false
+    - ID: 43c1d185-4d9b-4f0b-abdb-089c7faadb13
+      Name: berserker
+      Formation: Skirmisher
+      Slot1: TwoHandedAxe
+      Slot2: None
+      Slot3: None
+      Slot4: None
+      UseHorse: false
+      UseCamel: false
 - Id: Buffet - Effects Config
   Config:
     DisableEffectsInTournaments: true

@@ -464,20 +464,20 @@ namespace BLTAdoptAHero
                 }
             }
 
-            private static ItemObject CreateCustomWeapon(Hero hero, HeroClassDef heroClass, IEnumerable<WeaponClass> weaponClasses)
+            private static ItemObject CreateCustomWeapon(Hero hero, HeroClassDef heroClass, IEnumerable<EquipmentType> weaponType)
             {
                 // Randomly choose where to make a craftable weapon or choose a pre-existing one, weighted by the number of 
                 // each weapon class in those categories
-                var craftingGroup = weaponClasses
-                    .GroupBy(c => CustomItems.CraftableWeaponClasses.Contains(c))
+                var craftingGroup = weaponType
+                    .GroupBy(c => CustomItems.CraftableEquipmentTypes.Contains(c))
                     .SelectRandomWeighted(g => g.Count());
 
                 if (!craftingGroup.Key)
                 {
                     // Get the highest tier we can for the weapon type
                     var itemType = craftingGroup.SelectRandom(); 
-                    return EquipHero.FindRandomTieredEquipment(null, 5, hero, EquipHero.FindFlags.IgnoreAbility,
-                        o => o.WeaponComponent?.PrimaryWeapon?.WeaponClass == itemType
+                    return EquipHero.FindRandomTieredEquipment(5, hero, EquipHero.FindFlags.IgnoreAbility,
+                        o => o.IsEquipmentType(itemType)
                         && EquipHero.UsableWeaponFilter(o, heroClass));
                 }
                 else
@@ -636,47 +636,53 @@ namespace BLTAdoptAHero
                 {
                     case GlobalTournamentConfig.PrizeType.Weapon:
                     {
-                        var weaponSkills = heroClass != null
-                                ? SkillGroup.SkillItemPairs.Where(s => heroClass.Weapons.Any(sk => sk == s.itemType))
-                                // Without class we just take the top skill only (if we take multiple skills then we end up carrying a weapon of every skill type)
-                                : SkillGroup.SkillItemPairs.OrderByDescending(s => hero.GetSkillValue(s.skill)).Take(1)
-                            ;
+                        // var weaponSkills = heroClass != null
+                        //         ? SkillGroup.SkillItemPairs.Where(s => heroClass.Weapons.Any(sk => sk == s.itemType))
+                        //         // Without class we just take the top skill only (if we take multiple skills then we end up carrying a weapon of every skill type)
+                        //         : SkillGroup.SkillItemPairs.OrderByDescending(s => hero.GetSkillValue(s.skill)).Take(1)
+                        //     ;
+
+                        // Determine the heroes preferred skill by its rating (used if class isn't specified), default to one handed if the hero has no skills
+                        var bestWeaponSkill = SkillGroup.SkillItemPairs.OrderByDescending(s => hero.GetSkillValue(s.skill)).FirstOrDefault().skill
+                            ?? DefaultSkills.OneHanded;
+                        
                         // List of heroes current weapons
                         var heroWeapons = hero.BattleEquipment.YieldFilledWeaponSlots().ToList();
+
                         // List of heroes custom weapons, so we can avoid giving duplicates
                         var heroCustomWeapons = heroWeapons.Where(w => BLTCustomItemsCampaignBehavior.Current.IsRegistered(w.ItemModifier)).ToList();
-                        // Custom "modified" item
+
+                        // Heroes preferred weapon classes, either by class or best skill, with some heuristics to avoid some edge cases, and getting duplicates
+                        var weaponClasses =
+                            (heroClass?.Weapons ?? SkillGroup.GetEquipmentTypeForSkills(bestWeaponSkill))
+                            // don't want items we can't use, e.g. bolts if we don't have crossbow, and vice versa
+                            .Where(s => 
+                                // Exclude bolts if hero doesn't have a crossbow already
+                                (s != EquipmentType.Bolts || heroWeapons.Any(i => i.Item.WeaponComponent?.PrimaryWeapon?.AmmoClass == WeaponClass.Bolt))
+                                // Exclude arrows if hero doesn't have a bow
+                                && (s != EquipmentType.Arrows || heroWeapons.Any(i => i.Item.WeaponComponent?.PrimaryWeapon?.AmmoClass == WeaponClass.Arrow))
+                                // Exclude any weapons we already have enough custom versions of (if we have class then we can match the class count, otherwise we just limit it to 1)
+                                && heroCustomWeapons.Count(i => i.Item.IsEquipmentType(s)) > (heroClass?.Weapons.Count(w => w == s) ?? 1))
+                            .Shuffle()
+                            .ToList();
+
+                        if (!weaponClasses.Any())
+                        {
+                            return default;
+                        }
+
+                        // Tier > 5 indicates custom weapons with modifiers
                         if (tier > 5)
                         {
-                            // Find appropriate weapon classes for the weapon skills the hero prefers
-                            var weaponClasses = SkillGroup.SkillWeaponClassPairs
-                                .Where(s => weaponSkills.Any(s2 => s2.skill == s.skill))
-                                .SelectMany(s => s.weaponClasses.Select(s2 => (skill: s.skill, weapoonClass: s2)))
-                                // don't want items we can't use, e.g. bolts if we don't have crossbow, and vice versa
-                                .Where(s => 
-                                    // Exclude bolts if hero doesn't have a crossbow already
-                                    (s.weapoonClass != WeaponClass.Bolt || heroWeapons.Any(i => i.Item.WeaponComponent?.PrimaryWeapon?.AmmoClass == WeaponClass.Bolt))
-                                    // Exclude arrows if hero doesn't have a bow
-                                    && (s.weapoonClass != WeaponClass.Arrow || heroWeapons.Any(i => i.Item.WeaponComponent?.PrimaryWeapon?.AmmoClass == WeaponClass.Arrow))
-                                    // Exclude any weapons we already have a custom version of, by skill (this isn't perfect as we will only ever get one custom ammo, but its okay)
-                                    && heroCustomWeapons.All(i => s.skill != i.Item.RelevantSkill))
-                                .Shuffle()
-                                .ToList();
-                            if (!weaponClasses.Any())
-                            {
-                                return default;
-                            }
-                            var weapon = CreateCustomWeapon(hero,  heroClass, weaponClasses.Select(w => w.weapoonClass));
+                            // Custom "modified" item
+                            var weapon = CreateCustomWeapon(hero,  heroClass, weaponClasses);
                             return weapon == null ? default : (weapon, GenerateItemModifier(weapon, "Prize"));
                         }
                         else
                         {
-                            var weapon = weaponSkills
-                                .Shuffle()
-                                .Select(sk => EquipHero.FindRandomTieredEquipment(null, 5, hero, EquipHero.FindFlags.IgnoreAbility,
-                                    // Exclude any weapons we already have a custom version of (this isn't perfect as we will only ever get one custom ammo, but its okay)
-                                    i => heroCustomWeapons.All(i2 => i2.Item.ItemType != i.ItemType), 
-                                    sk.itemType))
+                            // Find a random item fitting the weapon class requirements
+                            var weapon = weaponClasses
+                                .Select(sk => EquipHero.FindRandomTieredEquipment(5, hero, EquipHero.FindFlags.IgnoreAbility, i => i.IsEquipmentType(sk)))
                                 .FirstOrDefault(w => w != null);
                             return (weapon, null);
                         }
@@ -705,12 +711,12 @@ namespace BLTAdoptAHero
                         // Custom "modified" item
                         if (tier > 5)
                         {
-                            var armor = EquipHero.FindRandomTieredEquipment(null, 5, hero, EquipHero.FindFlags.IgnoreAbility, null, armorPart);
+                            var armor = EquipHero.FindRandomTieredEquipment(5, hero, EquipHero.FindFlags.IgnoreAbility, o => o.ItemType == armorPart);
                             return armor == null ? default : (armor, GenerateItemModifier(armor, "Prize"));
                         }
                         else
                         {
-                            return (EquipHero.FindRandomTieredEquipment(null, tier, hero, EquipHero.FindFlags.IgnoreAbility, null, armorPart), null);
+                            return (EquipHero.FindRandomTieredEquipment(tier, hero, EquipHero.FindFlags.IgnoreAbility, o => o.ItemType == armorPart), null);
                         }
                     }
                     case GlobalTournamentConfig.PrizeType.Mount:

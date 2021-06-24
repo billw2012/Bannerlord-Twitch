@@ -23,7 +23,7 @@ namespace BLTAdoptAHero.Actions.Util
         {
             try
             {
-                var item = CreateCraftedWeapon(Hero.MainHero, new [] {(WeaponClass) Enum.Parse(typeof(WeaponClass), strings[0])}, int.Parse(strings[1]));
+                var item = CreateCraftedWeapon(Hero.MainHero, new [] {(EquipmentType) Enum.Parse(typeof(EquipmentType), strings[0])}, int.Parse(strings[1]));
 
                 if (item != null)
                 {
@@ -114,30 +114,33 @@ namespace BLTAdoptAHero.Actions.Util
         }
 #endif
 
-        public static WeaponClass[] CraftableWeaponClasses { get; set; } = {
-            WeaponClass.Dagger,
-            WeaponClass.OneHandedSword,
-            WeaponClass.TwoHandedSword,
-            WeaponClass.OneHandedAxe,
-            WeaponClass.TwoHandedAxe,
-            WeaponClass.Mace,
-            WeaponClass.Pick,
-            WeaponClass.TwoHandedMace,
-            WeaponClass.OneHandedPolearm,
-            WeaponClass.TwoHandedPolearm,
-            WeaponClass.LowGripPolearm,
-            WeaponClass.ThrowingAxe,
-            WeaponClass.ThrowingKnife,
-            WeaponClass.Javelin,
+        public static EquipmentType[] CraftableEquipmentTypes { get; set; } = {
+            EquipmentType.Dagger,
+            EquipmentType.OneHandedSword,
+            EquipmentType.TwoHandedSword,
+            EquipmentType.OneHandedAxe,
+            EquipmentType.TwoHandedAxe,
+            EquipmentType.OneHandedMace,
+            EquipmentType.TwoHandedMace,
+            EquipmentType.OneHandedLance,
+            EquipmentType.TwoHandedLance,
+            EquipmentType.OneHandedGlaive,
+            EquipmentType.TwoHandedGlaive,
+            EquipmentType.ThrowingKnives,
+            EquipmentType.ThrowingAxes,
+            EquipmentType.ThrowingJavelins,
         };
 
-        public static ItemObject CreateCraftedWeapon(Hero hero, ICollection<WeaponClass> weaponClasses, int desiredTier)
+        public static ItemObject CreateCraftedWeapon(Hero hero, IEnumerable<EquipmentType> weaponTypes, int desiredTier)
         {
+            var equipmentTypes = weaponTypes.ToList();
+            var equipmentWeaponClasses = equipmentTypes.Select(EquipmentTypeHelpers.GetWeaponClass).ToHashSet();
             var validTemplates = CraftingTemplate.All
-                .Where(t => t.WeaponUsageDatas?.Any(w => weaponClasses.Contains(w.WeaponClass)) == true)
+                .Where(t => t.WeaponUsageDatas?
+                    .Any(w => equipmentWeaponClasses.Contains(w.WeaponClass)) == true)
                 .ToList();
 
-            string weaponClassesStr = string.Join("/", weaponClasses.Select(e => e.ToString()));
+            string weaponClassesStr = string.Join("/", equipmentTypes.Select(e => e.ToString()));
             if (!validTemplates.Any())
             {
                 Log.Error($"Failed to create Tier {desiredTier + 1} {weaponClassesStr} for {hero.Name}: no matching templates for these weapon classes");
@@ -156,8 +159,7 @@ namespace BLTAdoptAHero.Actions.Util
 
                 // SetItemName(generatedItem, new ($"{crafting.CurrentCraftingTemplate.TemplateName} (Tournament Prize of {hero.FirstName})"));
             } while (
-                (!weaponClasses.Contains(generatedItem.WeaponComponent?.PrimaryWeapon.WeaponClass ?? WeaponClass.Undefined) 
-                 || (int)generatedItem.Tier != desiredTier) 
+                (!equipmentTypes.Any(w => generatedItem.IsEquipmentType(w)) || (int)generatedItem.Tier != desiredTier) 
                 && ++itr < 1000);
             
             if (itr >= 1000)

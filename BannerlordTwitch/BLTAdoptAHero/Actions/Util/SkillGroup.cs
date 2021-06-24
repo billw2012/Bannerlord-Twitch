@@ -155,7 +155,7 @@ namespace BLTAdoptAHero
             DefaultSkills.Athletics,
         };
 
-        public static (EquipmentIndex, ItemObject.ItemTypeEnum)[] ArmorIndexType => new[] {
+        public static readonly (EquipmentIndex, ItemObject.ItemTypeEnum)[] ArmorIndexType = new[] {
             (EquipmentIndex.Head, ItemObject.ItemTypeEnum.HeadArmor),
             (EquipmentIndex.Body, ItemObject.ItemTypeEnum.BodyArmor),
             (EquipmentIndex.Leg, ItemObject.ItemTypeEnum.LegArmor),
@@ -232,6 +232,98 @@ namespace BLTAdoptAHero
                     case ItemObject.ItemTypeEnum.Crossbow:
                         yield return SkillsEnum.Crossbow;
                         break;
+                }
+            }
+        }
+        
+        public static IEnumerable<SkillsEnum> GetSkillsForEquipmentType(params EquipmentType[] equipTypes)
+            => GetSkillsForEquipmentType((IEnumerable<EquipmentType>)equipTypes);
+        
+        public static IEnumerable<SkillsEnum> GetSkillsForEquipmentType(IEnumerable<EquipmentType> equipTypes)
+        {
+            foreach (var i in equipTypes)
+            {
+                switch (i)
+                {
+                    case EquipmentType.Dagger:
+                    case EquipmentType.OneHandedSword:
+                    case EquipmentType.OneHandedAxe:
+                    case EquipmentType.OneHandedMace:
+                        yield return SkillsEnum.OneHanded;
+                        break;
+                    case EquipmentType.TwoHandedSword:
+                    case EquipmentType.TwoHandedAxe:
+                    case EquipmentType.TwoHandedMace:
+                        yield return SkillsEnum.TwoHanded;
+                        break;
+                    case EquipmentType.OneHandedLance:
+                    case EquipmentType.TwoHandedLance:
+                    case EquipmentType.OneHandedGlaive:
+                    case EquipmentType.TwoHandedGlaive:
+                        yield return SkillsEnum.Polearm;
+                        break;
+                    case EquipmentType.Bow:
+                    case EquipmentType.Arrows:
+                        yield return SkillsEnum.Bow;
+                        break;
+                    case EquipmentType.Crossbow:
+                    case EquipmentType.Bolts:
+                        yield return SkillsEnum.Crossbow;
+                        break;
+                    case EquipmentType.ThrowingKnives:
+                    case EquipmentType.ThrowingAxes:
+                    case EquipmentType.ThrowingJavelins:
+                        yield return SkillsEnum.Throwing;
+                        break;
+                    // case EquipmentType.Shield:
+                    default:
+                        yield return SkillsEnum.None;
+                        break;
+                }
+            }
+        }
+        
+        public static IEnumerable<EquipmentType> GetEquipmentTypeForSkills(params SkillObject[] skills)
+            => GetEquipmentTypeForSkills((IEnumerable<SkillObject>)skills);
+        
+        public static IEnumerable<EquipmentType> GetEquipmentTypeForSkills(IEnumerable<SkillObject> skills)
+        {
+            foreach (var i in skills)
+            {
+                if (i == DefaultSkills.OneHanded)
+                {
+                    yield return EquipmentType.OneHandedSword;
+                    yield return EquipmentType.OneHandedAxe;
+                    yield return EquipmentType.OneHandedMace;
+                }
+                else if(i == DefaultSkills.TwoHanded)
+                {
+                    yield return EquipmentType.TwoHandedSword;
+                    yield return EquipmentType.TwoHandedAxe;
+                    yield return EquipmentType.TwoHandedMace;
+                }
+                else if(i == DefaultSkills.Polearm)
+                {
+                    yield return EquipmentType.OneHandedLance;
+                    yield return EquipmentType.TwoHandedLance;
+                    yield return EquipmentType.OneHandedGlaive;
+                    yield return EquipmentType.TwoHandedGlaive;
+                }
+                else if(i == DefaultSkills.Bow)
+                {
+                    yield return EquipmentType.Bow;
+                    yield return EquipmentType.Arrows;
+                }
+                else if(i == DefaultSkills.Crossbow)
+                {
+                    yield return EquipmentType.Crossbow;
+                    yield return EquipmentType.Bolts;
+                }
+                else if(i == DefaultSkills.Throwing)
+                {
+                    yield return EquipmentType.ThrowingKnives;
+                    yield return EquipmentType.ThrowingAxes;
+                    yield return EquipmentType.ThrowingJavelins;
                 }
             }
         }
