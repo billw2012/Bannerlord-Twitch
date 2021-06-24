@@ -39,7 +39,6 @@ namespace BLTAdoptAHero.Actions.Util
         public static IEnumerable<SkillObject> AllSkillObjects => SkillObject.All;
         
         public static IEnumerable<Hero> DeadOrDisabledHeroes => Campaign.Current.DeadAndDisabledHeroes;
-        public static IEnumerable<Hero> AliveHeroes => Campaign.Current.Heroes;
         public static void SetHeroName(Hero hero, TextObject name, TextObject firstName = null)
         {
             hero.Name = name;
@@ -61,7 +60,6 @@ namespace BLTAdoptAHero.Actions.Util
         public static IEnumerable<SkillObject> AllSkillObjects => Skills.All;
         
         public static IEnumerable<Hero> DeadOrDisabledHeroes => Campaign.Current.DeadOrDisabledHeroes;
-        public static IEnumerable<Hero> AliveHeroes => Campaign.Current.AliveHeroes;
         public static void SetHeroName(Hero hero, TextObject name, TextObject firstName = null)
         {
             hero.SetName(name, firstName);
@@ -69,6 +67,7 @@ namespace BLTAdoptAHero.Actions.Util
         
         public static IEnumerable<ItemObject> AllItems => Items.All;
 #endif
+        public static IEnumerable<Hero> AliveHeroes => Campaign.Current.AliveHeroes;
         public static IEnumerable<Hero> AllHeroes => AliveHeroes.Concat(DeadOrDisabledHeroes).Distinct();
     }
 }

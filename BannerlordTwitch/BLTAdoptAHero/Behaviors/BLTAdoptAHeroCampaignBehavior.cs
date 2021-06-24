@@ -580,7 +580,9 @@ namespace BLTAdoptAHero
 
         #region Helper Functions
         public static IEnumerable<Hero> GetAvailableHeroes(Func<Hero, bool> filter = null) =>
-            Campaign.Current?.AliveHeroes?.Where(h =>
+            HeroHelpers.AliveHeroes.Where(h =>
+                    // Some buggy mods can result in null heroes
+                    h != null &&
                     // Not the player of course
                     h != Hero.MainHero
                     // Don't want notables ever
