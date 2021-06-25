@@ -215,6 +215,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\IConfig.cs" />
     <Compile Include="Overlay\OutlineTextBlock.cs" />
     <Compile Include="Overlay\OverlayWindow.xaml.cs">
       <DependentUpon>OverlayWindow.xaml</DependentUpon>
@@ -224,6 +225,7 @@
     <Compile Include="Actions\ActionHandlerBase.cs" />
     <Compile Include="Actions\ActionManager.cs" />
     <Compile Include="Actions\ActionManager.Documentation.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="BLTModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -246,6 +248,8 @@
     <Compile Include="Util\Naming.cs" />
     <Compile Include="Util\ParticleEffectItemSource.cs" />
     <Compile Include="Util\Paths.cs" />
+    <Compile Include="Util\RangeFloat.cs" />
+    <Compile Include="Util\RangeInt.cs" />
     <Compile Include="Util\SoundEffectItemSource.cs" />
     <Compile Include="Util\StaticRandom.cs" />
   </ItemGroup>

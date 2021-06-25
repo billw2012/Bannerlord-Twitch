@@ -21,17 +21,18 @@
         <ItemsControl x:Name="TournamentList" Background="Transparent"
                  BorderBrush="Transparent"
                  Margin="4"
+                 VerticalAlignment="Center"
                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <fa:ImageAwesome Width="14" Height="14" Margin="0"
+                        <fa:ImageAwesome Width="12" Height="12" Margin="0.25"
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
                                          Icon="Circle"
                                          Foreground="Black"/>
-                        <fa:ImageAwesome Width="8" Height="8" Margin="0"
+                        <fa:ImageAwesome Width="6" Height="6" Margin="0.25"
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
                                          Foreground="{Binding Color}">

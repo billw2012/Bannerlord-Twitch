@@ -90,7 +90,6 @@ namespace BLTAdoptAHero
             public bool SpawnInParty { get; set; } = true;
             [Category("Initialization"), Description("Whether the hero will be a companion"), PropertyOrder(9)]
             public bool JoinPlayerCompanion { get; set; } = true;
-
         }
 
         Type IRewardHandler.RewardConfigType => typeof(Settings);

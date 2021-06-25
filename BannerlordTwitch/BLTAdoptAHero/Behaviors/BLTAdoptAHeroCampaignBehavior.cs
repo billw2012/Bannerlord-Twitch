@@ -32,31 +32,79 @@ namespace BLTAdoptAHero
                 [SaveableProperty(2)]
                 public int SavedTroopIndex { get; set; }
             }
-            
+
+            public class AchievementData
+            {
+                [SaveableProperty(0)]
+                public int TotalKills { get; set; }
+                [SaveableProperty(1)]
+                public int TotalDeaths { get; set; }
+                [SaveableProperty(2)]
+                public int TotalSummons { get; set; }
+                [SaveableProperty(3)]
+                public int TotalAttacks { get; set; }
+                [SaveableProperty(4)]
+                public int TotalMainKills { get; set; }
+                [SaveableProperty(5)]
+                public int TotalBLTKills { get; set; }
+                [SaveableProperty(6)]
+                public List<Guid> Achievements { get; set; } = new();
+
+                public int ModifyValue(AchievementSystem.AchievementTypes type, int amount)
+                {
+                    return type switch
+                    {
+                        AchievementSystem.AchievementTypes.Summons => TotalSummons += amount,
+                        AchievementSystem.AchievementTypes.TotalKills => TotalKills += amount,
+                        AchievementSystem.AchievementTypes.TotalBLTKills => TotalBLTKills += amount,
+                        AchievementSystem.AchievementTypes.TotalMainKills => TotalMainKills += amount,
+                        AchievementSystem.AchievementTypes.Attacks => TotalAttacks += amount,
+                        AchievementSystem.AchievementTypes.Deaths => TotalDeaths += amount,
+                        _ => throw new ArgumentOutOfRangeException(nameof(type), type,
+                            "Invalid AchievementType, probably settings are corrupt?")
+                    };
+                }
+
+                public int GetValue(AchievementSystem.AchievementTypes type) =>
+                    type switch 
+                    {
+                        AchievementSystem.AchievementTypes.Summons => TotalSummons,
+                        AchievementSystem.AchievementTypes.TotalKills => TotalKills,
+                        AchievementSystem.AchievementTypes.TotalBLTKills => TotalBLTKills,
+                        AchievementSystem.AchievementTypes.TotalMainKills => TotalMainKills,
+                        AchievementSystem.AchievementTypes.Attacks => TotalAttacks,
+                        AchievementSystem.AchievementTypes.Deaths => TotalDeaths,
+                        _ => throw new ArgumentOutOfRangeException(nameof(type), type, "Invalid AchievementType, probably settings are corrupt?")
+                    };
+            }
+
             [SaveableProperty(0)]
             public int Gold { get; set; }
-            
+
             [SaveableProperty(1)]
             public List<RetinueData> Retinue { get; set; } = new();
 
             [SaveableProperty(2)]
             public int SpentGold { get; set; }
-            
+
             [SaveableProperty(3)]
             public int EquipmentTier { get; set; } = -2;
-        
+
             [SaveableProperty(4)]
             public Guid EquipmentClassID { get; set; }
 
             [SaveableProperty(5)]
             public Guid ClassID { get; set; }
-            
+
             [SaveableProperty(6)]
             public string Owner { get; set; }
-            
+
             [SaveableProperty(7)]
             public bool IsRetiredOrDead { get; set; }
-            
+
+            [SaveableProperty(8)]
+            public AchievementData AchievementInfo { get; set; } = new();
+
             // [SaveableProperty(7)]
             // public string OriginalName { get; set; }
         }
@@ -280,13 +328,13 @@ namespace BLTAdoptAHero
             CampaignEvents.OnHeroChangedClanEvent.AddNonSerializedListener(this, (hero, clan) =>
             {
                 if(hero.IsAdopted())
-                    Log.LogFeedEvent($"{hero.Name} is now a member of {clan?.Name.ToString() ?? "no clan"}!");
+                    Log.LogFeedEvent($"{hero.Name} moved from {clan?.Name.ToString() ?? "no clan"} to {hero.Clan?.Name.ToString() ?? "no clan"}!");
             });
             
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, JoinTournament.SetupGameMenus);
         }
 
-        public static string ToRoman(int number)
+        private static string ToRoman(int number)
         {
             return number switch
             {
@@ -348,7 +396,13 @@ namespace BLTAdoptAHero
         }
 
         #region Gold
-        public int GetHeroGold(Hero hero) => GetHeroData(hero).Gold;
+        public int GetHeroGold(Hero hero) =>
+            #if DEBUG
+            1000000000
+            #else
+            GetHeroData(hero).Gold
+            #endif
+        ;
 
         public void SetHeroGold(Hero hero, int gold) => GetHeroData(hero).Gold = gold;
         
@@ -378,6 +432,48 @@ namespace BLTAdoptAHero
                 value.Gold = 0;
             }
             return inheritance;
+        }
+        #endregion
+
+        #region Stats and achievements
+        public void IncreaseHeroKills(Hero killer, Agent killed)
+        {
+            if (killed?.IsAdopted() == true)
+            {
+                UpdateAchievement(killer, AchievementSystem.AchievementTypes.TotalBLTKills, 1);
+            }
+            
+            bool isMainCharacter = (killed?.Character as CharacterObject)?.HeroObject == Hero.MainHero;
+            if (isMainCharacter)
+            {
+                UpdateAchievement(killer, AchievementSystem.AchievementTypes.TotalMainKills, 1);
+            }
+
+            UpdateAchievement(killer, AchievementSystem.AchievementTypes.TotalKills, 1);
+        }
+
+        public void IncreaseParticipationCount(Hero hero, bool playerSide) => UpdateAchievement(hero, playerSide ? AchievementSystem.AchievementTypes.Summons : AchievementSystem.AchievementTypes.Attacks, 1);
+
+        public void IncreaseHeroDeaths(Hero hero) => UpdateAchievement(hero, AchievementSystem.AchievementTypes.Deaths, 1);
+
+        private void UpdateAchievement(Hero hero, AchievementSystem.AchievementTypes achievementType, int amount)
+        {
+            var achievementData = GetHeroData(hero).AchievementInfo;
+
+            int value = achievementData.ModifyValue(achievementType, amount);
+            var achievement = BLTAdoptAHeroModule.CommonConfig.Achievements?.FirstOrDefault(k => k.Enabled && achievementType == k.Type && value == k.Value);
+            if (achievement != null && !achievementData.Achievements.Contains(achievement.ID))
+            {
+                string message = achievement.NotificationText
+                    .Replace("{player}", hero.FirstName.ToString())
+                    .Replace("{name}", achievement.Name);
+
+                Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
+
+                achievementData.Achievements.Add(achievement.ID);
+
+                BLTAdoptAHeroCommonMissionBehavior.Current.ApplyAchievementRewards(hero, achievement.GoldGain, achievement.XPGain);
+            }
         }
         #endregion
 
@@ -490,7 +586,9 @@ namespace BLTAdoptAHero
 
         #region Helper Functions
         public static IEnumerable<Hero> GetAvailableHeroes(Func<Hero, bool> filter = null) =>
-            Campaign.Current?.AliveHeroes?.Where(h =>
+            HeroHelpers.AliveHeroes.Where(h =>
+                    // Some buggy mods can result in null heroes
+                    h != null &&
                     // Not the player of course
                     h != Hero.MainHero
                     // Don't want notables ever
@@ -504,12 +602,14 @@ namespace BLTAdoptAHero
 
         public static void SetHeroAdoptedName(Hero hero, string userName)
         {
-            HeroHelpers.SetHeroName(hero, new TextObject(GetFullName(userName)), new TextObject(userName));
+            HeroHelpers.SetHeroName(hero, new (GetFullName(userName)), new (userName));
         }
 
         public void InitAdoptedHero(Hero newHero, string userName)
         {
-            GetHeroData(newHero);
+            var hd = GetHeroData(newHero);
+            hd.Owner = userName;
+            hd.IsRetiredOrDead = false;
             SetHeroAdoptedName(newHero, userName);
         }
         

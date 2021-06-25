@@ -177,16 +177,25 @@ namespace BannerlordTwitch.Rewards
             // Make sure all expected global configs exist 
             foreach ((string id, var configType) in globalConfigTypes)
             {
-                var existingConfig = globalSettings.FirstOrDefault(g => g.Id == id);
-                if (existingConfig == null)
+                var globalConfig = globalSettings.FirstOrDefault(g => g.Id == id);
+                if (globalConfig == null)
                 {
                     // Create new default
                     globalSettings.Add(new GlobalConfig { Id = id, Config = Activator.CreateInstance(configType)});
                 }
                 else
                 {
-                    // Convert from anonymous to typed object
-                    existingConfig.Config = ConvertObject(existingConfig.Config, configType);
+                    try
+                    {
+                        // Convert from anonymous to typed object
+                        globalConfig.Config = ConvertObject(globalConfig.Config, configType);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error($"{globalConfig} had invalid config ({ex.Message}), resetting it to default");
+                        globalConfig.Config = Activator.CreateInstance(configType);
+                    }
+                    
                 }
             }
 
