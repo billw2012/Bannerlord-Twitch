@@ -144,6 +144,7 @@ namespace BLTAdoptAHero
         private static (bool success, string message) ExecuteInternal(string _, string userName, Settings settings)
         {
             Hero newHero = null;
+            // Create or find a hero for adopting
             if (settings.CreateNew)
             {
                 var character = CharacterObject.Templates
@@ -170,6 +171,7 @@ namespace BLTAdoptAHero
                         && h.Clan?.IsRebelClan != true
                     )
                     .SelectRandom();
+
                 if (newHero == null && settings.OnlySameFaction && Clan.PlayerClan?.MapFaction?.StringId == "player_faction")
                 {
                     return (false, "No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)!");
@@ -181,6 +183,7 @@ namespace BLTAdoptAHero
                 return (false, "You can't adopt a hero: no available hero matching the requirements was found!");
             }
             
+            // Place hero where we want them
             if (settings.JoinPlayerCompanion && settings.SpawnInParty)
             {
                 var mainParty = MobileParty.MainParty;
@@ -201,7 +204,7 @@ namespace BLTAdoptAHero
                     }
                 }
             }
-            else
+            else if(settings.CreateNew)
             {
                 var targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom();
                 EnterSettlementAction.ApplyForCharacterOnly(newHero, targetSettlement);
