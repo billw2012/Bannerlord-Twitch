@@ -59,12 +59,6 @@ namespace BLTAdoptAHero
             
             [Category("Limits"), Description("Only subscribers can adopt"), PropertyOrder(7), UsedImplicitly]
             public bool SubscriberOnly { get; set; }
-
-            [Category("Limits"),
-             Description("Only viewers who have been subscribers for at least this many months can adopt, " +
-                         "ignored if not specified"),
-             PropertyOrder(8), UsedImplicitly]
-            public int? MinSubscribedMonths { get; set; }
             [Category("Initialization"), 
              Description("Gold the adopted hero will start with"), PropertyOrder(1), UsedImplicitly, 
              Document]
@@ -212,17 +206,12 @@ namespace BLTAdoptAHero
             }
             
             var settings = (Settings)config;
-            if (settings.MinSubscribedMonths > 0 && context.SubscribedMonthCount < settings.MinSubscribedMonths)
-            {
-                ActionManager.SendReply(context, $"You must be subscribed for at least {settings.MinSubscribedMonths} months to adopt a hero with this command!");
-                return;
-            }
             if(!context.IsSubscriber && settings.SubscriberOnly)
             {
                 ActionManager.SendReply(context, "You must be subscribed to adopt a hero with this command!");
                 return;
             }
-                
+            
             (_, string message) = ExecuteInternal(context.Args, context.UserName, settings);
             ActionManager.SendReply(context, message);
         }

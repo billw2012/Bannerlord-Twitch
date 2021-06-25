@@ -13,6 +13,7 @@ using TwitchLib.Api;
 using TwitchLib.Api.Core.Enums;
 using TwitchLib.Api.Helix.Models.ChannelPoints.GetCustomReward;
 using TwitchLib.Api.Helix.Models.ChannelPoints.UpdateCustomRewardRedemptionStatus;
+using TwitchLib.Api.Helix.Models.Subscriptions;
 using TwitchLib.Client.Models;
 using TwitchLib.PubSub;
 using TwitchLib.PubSub.Events;
@@ -44,11 +45,7 @@ namespace BannerlordTwitch
                 Args = args,
                 Bits = msg.Bits,
                 BitsInDollars = msg.BitsInDollars,
-                SubscribedMonthCount = msg.SubscribedMonthCount,
-                IsBroadcaster = msg.IsBroadcaster,
-                IsModerator = msg.IsModerator,
                 IsSubscriber = msg.IsSubscriber,
-                IsVip = msg.IsVip,
                 Source = source,
             };
         
@@ -64,13 +61,14 @@ namespace BannerlordTwitch
         //         Source = source,
         //     };
         
-        public static ReplyContext FromRedemption(ActionBase source, OnRewardRedeemedArgs args) =>
+        public static ReplyContext FromRedemption(ActionBase source, OnRewardRedeemedArgs args, bool userIsSubbed) =>
             new()
             {
                 UserName = CleanDisplayName(args.DisplayName),
                 Args = args.Message,
                 RedemptionId = args.RedemptionId,
                 Source = source,
+                IsSubscriber = userIsSubbed,
             };
         
         public static ReplyContext FromUser(ActionBase source, string userName, string args = null) =>
@@ -175,7 +173,7 @@ namespace BannerlordTwitch
                     // pubSub.OnPubSubServiceClosed += OnOnPubSubServiceClosed;
                     RegisterRewardsAsync();
 
-                    // Connect
+                    // Connect to PubSub
                     pubSub.Connect();
                 });
             });
@@ -256,7 +254,7 @@ namespace BannerlordTwitch
 
         private void OnRewardRedeemed(object sender, OnRewardRedeemedArgs redeemedArgs)
         {
-            MainThreadSync.Run(() =>
+            UserIsSubbed(redeemedArgs.Login).ContinueWith(t => MainThreadSync.Run(() =>
             {
                 var reward = settings.Rewards.FirstOrDefault(r => r.RewardSpec.Title == redeemedArgs.RewardTitle);
                 if (reward == null)
@@ -275,7 +273,7 @@ namespace BannerlordTwitch
 
                 Log.Info($"Redemption of {redeemedArgs.RewardTitle} from {redeemedArgs.DisplayName} received!");
 
-                var context = ReplyContext.FromRedemption(reward, redeemedArgs);
+                var context = ReplyContext.FromRedemption(reward, redeemedArgs, t.Result);
 #if !DEBUG
                 try
                 {
@@ -290,7 +288,22 @@ namespace BannerlordTwitch
                     RedemptionCancelled(context, $"Exception occurred: {e.Message}");
                 }
 #endif
-            });
+            }));
+        }
+
+        private async Task<bool> UserIsSubbed(string userLogin)
+        {
+            var users = await api.Helix.Users.GetUsersAsync(logins: new() {userLogin});
+            var user = users?.Users?.FirstOrDefault();
+
+            bool userIsSubbed = false;
+            if (user != null)
+            {
+                var sub = await api.Helix.Subscriptions.GetUserSubscriptionsAsync(broadcasterId: channelId, new() {user.Id});
+                userIsSubbed = sub.Data?.Any() == true;
+            }
+
+            return userIsSubbed;
         }
 
         public bool TestRedeem(string rewardName, string user, string message)

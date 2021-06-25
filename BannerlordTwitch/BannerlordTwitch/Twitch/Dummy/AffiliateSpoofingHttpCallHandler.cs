@@ -9,6 +9,7 @@ using TwitchLib.Api.Core.HttpCallHandlers;
 using TwitchLib.Api.Core.Interfaces;
 using TwitchLib.Api.Helix.Models.ChannelPoints;
 using TwitchLib.Api.Helix.Models.ChannelPoints.CreateCustomReward;
+using TwitchLib.Api.Helix.Models.Subscriptions;
 using TwitchLib.PubSub.Events;
 
 namespace BannerlordTwitch.Dummy
@@ -143,13 +144,26 @@ namespace BannerlordTwitch.Dummy
             var rewards = customRewards.Where(c => id == null || c.Id == id).ToArray();
             if (rewards.Length == 0)
             {
-                return new KeyValuePair<int, string>(404, "");
+                return new(404, "");
             }
-            return new KeyValuePair<int, string>(
+            return new(
                 200,
                 JsonConvert.SerializeObject(new
                 {
                     data = rewards
+                }, deserializerSettings));
+        }
+        
+        private KeyValuePair<int, string> GetSubscriptions(string payload, string clientid, string accesstoken, Func<KeyValuePair<int, string>> realcall, Dictionary<string, string[]> urlparams)
+        {
+            //urlparams.TryGetValue("broadcaster_id", out string[] broadcaster_id);
+            //urlparams.TryGetValue("user_id", out string[] user_id);
+            
+            return new(
+                200,
+                JsonConvert.SerializeObject(new
+                {
+                    data = new Subscription[]{}
                 }, deserializerSettings));
         }
 
