@@ -4,5 +4,6 @@
     {
         void OnLoaded();
         void OnSaving();
+        void OnEditing();
     }
 }

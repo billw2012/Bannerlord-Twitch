@@ -6,8 +6,8 @@ using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using HarmonyLib;
+using BLTAdoptAHero.Annotations;
 using Helpers;
-using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.Towns;
@@ -19,7 +19,7 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
-    [UsedImplicitly]
+    [JetBrains.Annotations.UsedImplicitly]
     [Description("Allows viewer to 'adopt' a hero in game -- the hero name will change to the viewers name, and they can control it with further commands")]
     public class AdoptAHero : IRewardHandler, ICommandHandler
     {
@@ -30,16 +30,16 @@ namespace BLTAdoptAHero
         [CategoryOrder("Initialization", 1)]
         private class Settings
         {
-            [Category("General"), Description("Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern)"), PropertyOrder(1)]
+            [Category("General"), Description("Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern)"), PropertyOrder(1), UsedImplicitly]
             public bool CreateNew { get; set; }
 
             [Category("Limits"), Description("Allow noble heroes (if CreateNew is false)"), PropertyOrder(1)]
             public bool AllowNoble { get; set; } = true;
             [Category("Limits"), Description("Allow wanderer heroes (if CreateNew is false)"), PropertyOrder(2)]
             public bool AllowWanderer { get; set; } = true;
-            [Category("Limits"), Description("Allow companions (not tested, if CreateNew is false)"), PropertyOrder(3)]
+            [Category("Limits"), Description("Allow companions (not tested, if CreateNew is false)"), PropertyOrder(3), UsedImplicitly]
             public bool AllowPlayerCompanion { get; set; }
-            [Category("Limits"), Description("Only allow heroes from same faction as player"), PropertyOrder(4)]
+            [Category("Limits"), Description("Only allow heroes from same faction as player"), PropertyOrder(4), UsedImplicitly]
             public bool OnlySameFaction { get; set; }
 
             [Category("Limits"),
@@ -47,20 +47,20 @@ namespace BLTAdoptAHero
                          "adopted after an old one died (0 to 1)"),
              PropertyOrder(6)]
             public float Inheritance { get; set; } = 0.25f;
-            [Category("Limits"), Description("Only subscribers can adopt"), PropertyOrder(7)]
+            [Category("Limits"), Description("Only subscribers can adopt"), PropertyOrder(7), UsedImplicitly]
             public bool SubscriberOnly { get; set; }
             [Category("Limits"),
              Description("Only viewers who have been subscribers for at least this many months can adopt, " +
                          "ignored if not specified"),
-             DefaultValue(null), PropertyOrder(8)]
+             DefaultValue(null), PropertyOrder(8), UsedImplicitly]
             public int? MinSubscribedMonths { get; set; }
             [Category("Initialization"), 
-             Description("Gold the adopted hero will start with"), DefaultValue(null), PropertyOrder(1)]
+             Description("Gold the adopted hero will start with"), DefaultValue(null), PropertyOrder(1), UsedImplicitly]
             public int StartingGold { get; set; }
 
             [Category("Initialization"),
              Description("Starting skills, if empty then default skills of the adopted hero will be left in tact"),
-             DefaultValue(null), PropertyOrder(1)]
+             DefaultValue(null), PropertyOrder(1), UsedImplicitly]
             public List<SkillRangeDef> StartingSkills { get; set; } = new();
 
             [YamlIgnore, Browsable(false)]
@@ -68,8 +68,11 @@ namespace BLTAdoptAHero
             
             [Category("Initialization"), 
              Description("Equipment tier the adopted hero will start with, if you don't specify then they get the " +
-                         "heroes existing equipment"), DefaultValue(null), PropertyOrder(3)]
+                         "heroes existing equipment"), DefaultValue(null), PropertyOrder(2), UsedImplicitly]
             public int? StartingEquipmentTier { get; set; }
+            
+            [Category("Initialization"), Description("Starting class of the hero"), PropertyOrder(3), ItemsSource(typeof(HeroClassDef.ItemSource)), UsedImplicitly]
+            public Guid StartingClass { get; set; }
 
             [Category("Initialization"),
              Description("Whether the hero will start with a melee weapon, only applies if StartingEquipmentTier is " +
@@ -138,7 +141,7 @@ namespace BLTAdoptAHero
             ActionManager.SendReply(context, message);
         }
 
-        private static (bool success, string message) ExecuteInternal(string args, string userName, Settings settings)
+        private static (bool success, string message) ExecuteInternal(string _, string userName, Settings settings)
         {
             Hero newHero = null;
             if (settings.CreateNew)
@@ -234,6 +237,19 @@ namespace BLTAdoptAHero
                 AddCompanionAction.Apply(Hero.MainHero.Clan, newHero);
             }
 
+            if (settings.StartingClass != default)
+            {
+                var classDef = BLTAdoptAHeroModule.HeroClassConfig.GetClass(settings.StartingClass);
+                if (classDef == null)
+                {
+                    Log.Error($"AdoptAHero: StartingClass not found, please re-select it in settings");
+                }
+                else
+                {
+                    BLTAdoptAHeroCampaignBehavior.Current.SetClass(newHero, classDef);
+                }
+            }
+
             // Setup skills first, THEN name, as skill changes can generate feed messages for adopted characters
             string oldName = newHero.Name.ToString();
             BLTAdoptAHeroCampaignBehavior.Current.InitAdoptedHero(newHero, userName);
@@ -243,7 +259,8 @@ namespace BLTAdoptAHero
                 EquipHero.RemoveAllEquipment(newHero);
                 if (settings.StartingEquipmentTier.Value > 0)
                 {
-                    EquipHero.UpgradeEquipment(newHero, settings.StartingEquipmentTier.Value - 1, null, keepBetter: false);
+                    EquipHero.UpgradeEquipment(newHero, settings.StartingEquipmentTier.Value - 1, 
+                        BLTAdoptAHeroCampaignBehavior.Current.GetClass(newHero), keepBetter: false);
                 }
                 BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentTier(newHero, settings.StartingEquipmentTier.Value - 1);
             }

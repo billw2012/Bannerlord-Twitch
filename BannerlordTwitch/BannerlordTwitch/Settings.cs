@@ -272,6 +272,12 @@ namespace BannerlordTwitch
         public Command GetCommand(string id) => this.EnabledCommands.FirstOrDefault(c =>
             string.Equals(c.Name, id, StringComparison.CurrentCultureIgnoreCase));
 
+        [YamlIgnore]
+        public IEnumerable<IConfig> ConfigInterfaces => AllActions
+            .Select(c => c.HandlerConfig)
+            .Concat(GlobalConfigs.Select(g => g.Config))
+            .OfType<IConfig>();
+
         #if DEBUG
         private static string ProjectRootDir([CallerFilePath]string file = "") => Path.GetDirectoryName(file);
         private static string SaveFilePath => Path.Combine(ProjectRootDir(), "Bannerlord-Twitch.yaml");
@@ -289,37 +295,14 @@ namespace BannerlordTwitch
             settings.GlobalConfigs ??= new();
             settings.SimTesting ??= new();
 
-            ActionManager.ConvertSettings(settings.Commands);
-            ActionManager.ConvertSettings(settings.Rewards);
-            ActionManager.EnsureGlobalSettings(settings.GlobalConfigs);
+            SettingsPostLoad(settings);
 
-            foreach (var config in settings.AllActions
-                .Select(c => c.HandlerConfig)
-                .Concat(settings.GlobalConfigs.Select(g => g.Config))
-                .OfType<IConfig>())
-            {
-                config.OnLoaded();
-            }
-            
-            foreach (var action in settings.AllActions)
-            {
-                if (!action.IsValid)
-                {
-                    throw new FormatException($"Action {action} is not valid");
-                }
-            }
             return settings;
         }
 
         public static void Save(Settings settings)
         {
-            foreach (var config in settings.AllActions
-                .Select(c => c.HandlerConfig)
-                .Concat(settings.GlobalConfigs.Select(g => g.Config))
-                .OfType<IConfig>())
-            {
-                config.OnSaving();
-            }
+            SettingsPreSave(settings);
             
             string settingsStr = new SerializerBuilder()
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
@@ -327,7 +310,8 @@ namespace BannerlordTwitch
                 .Serialize(settings);
             File.WriteAllText(SaveFilePath, settingsStr);
         }
-        #else
+
+#else
         private static PlatformFilePath SaveFilePath => FileSystem.GetConfigPath("Bannerlord-Twitch.yaml");
         private static string TemplateFileName => Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..", "Bannerlord-Twitch.yaml");
 
@@ -341,18 +325,12 @@ namespace BannerlordTwitch
             {
                 throw new Exception($"Couldn't load the mod template settings from {TemplateFileName}");
             }
-            // if (!FileSystem.FileExists(SaveFilePath))
-            // {
-            //     Log.LogFeedSystem($"No settings found, applying defaults");
-            //     
-            //     string cfg = File.ReadAllText(TemplateFileName);
-            //     FileSystem.SaveFileString(SaveFilePath, cfg);
-            // }
+
             var settings = FileSystem.FileExists(SaveFilePath)
                 ? new DeserializerBuilder()
-                .IgnoreUnmatchedProperties()
-                .Build()
-                .Deserialize<Settings>(FileSystem.GetFileContentString(SaveFilePath))
+                    .IgnoreUnmatchedProperties()
+                    .Build()
+                    .Deserialize<Settings>(FileSystem.GetFileContentString(SaveFilePath))
                 : templateSettings
                 ;
 
@@ -367,9 +345,32 @@ namespace BannerlordTwitch
             settings.GlobalConfigs.AddRange(templateSettings.GlobalConfigs.Where(s => settings.GlobalConfigs.All(s2 => s2.Id != s.Id)));
             settings.GlobalConfigs.Sort((a, b) => string.Compare(a.ToString(), b.ToString(), StringComparison.Ordinal));
 
+            SettingsPostLoad(settings);
+            
+            return settings;
+        }
+
+        public static void Save(Settings settings)
+        {
+            SettingsPreSave(settings);
+
+            FileSystem.SaveFileString(SaveFilePath, new SerializerBuilder()
+                .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
+                .Build()
+                .Serialize(settings));
+        }
+        #endif
+
+        private static void SettingsPostLoad(Settings settings)
+        {
             ActionManager.ConvertSettings(settings.Commands);
             ActionManager.ConvertSettings(settings.Rewards);
             ActionManager.EnsureGlobalSettings(settings.GlobalConfigs);
+
+            foreach (var config in settings.ConfigInterfaces)
+            {
+                config.OnLoaded();
+            }
 
             foreach (var action in settings.AllActions)
             {
@@ -378,17 +379,14 @@ namespace BannerlordTwitch
                     throw new FormatException($"Action {action} is not valid");
                 }
             }
-            
-            return settings;
         }
 
-        public static void Save(Settings settings)
+        private static void SettingsPreSave(Settings settings)
         {
-            FileSystem.SaveFileString(SaveFilePath, new SerializerBuilder()
-                .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
-                .Build()
-                .Serialize(settings));
+            foreach (var config in settings.ConfigInterfaces)
+            {
+                config.OnSaving();
+            }
         }
-        #endif
     }
 }

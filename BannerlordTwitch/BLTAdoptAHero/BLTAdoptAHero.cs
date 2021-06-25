@@ -311,6 +311,8 @@ namespace BLTAdoptAHero
                 achievement.ID = Guid.NewGuid();
             }
         }
+
+        public void OnEditing() { }
     }
 
     [CategoryOrder("General", 1)]
@@ -507,6 +509,11 @@ namespace BLTAdoptAHero
             {
                 classDef.ID = Guid.NewGuid();
             }
+        }
+
+        public void OnEditing()
+        {
+            HeroClassDef.ItemSource.ActiveList = this.ClassDefs;
         }
     }
     

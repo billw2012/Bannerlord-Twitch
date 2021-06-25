@@ -26,10 +26,10 @@ namespace BLTAdoptAHero
 
         private class Settings
         {
-            [Category("General"), Description("Gold cost to change class"), PropertyOrder(1)]
+            [Category("General"), Description("Gold cost to change class"), PropertyOrder(1), UsedImplicitly]
             public int GoldCost { get; set; }
             
-            [Category("General"), Description("Whether to immediately update equipment after changing class"), PropertyOrder(2)]
+            [Category("General"), Description("Whether to immediately update equipment after changing class"), PropertyOrder(2), UsedImplicitly]
             public bool UpdateEquipment { get; set; }
             
             // [Category("General"), Description("Whether to immediately re-distribute focus points after changing class"), PropertyOrder(3)]

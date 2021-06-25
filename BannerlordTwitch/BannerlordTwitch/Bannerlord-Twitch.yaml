@@ -38,7 +38,8 @@ Rewards:
     - Skill: Athletics
       MinLevel: 25
       MaxLevel: 75
-    StartingEquipmentTier: 0
+    StartingEquipmentTier: 1
+    StartingClass: 00000000-0000-0000-0000-000000000000
 - RewardSpec:
     Title: 10k gold
     DisableAutomaticFulfillment: false
@@ -782,7 +783,7 @@ GlobalConfigs:
 - Id: Adopt A Hero - Class Config
   Config:
     ClassDefs:
-    - ID: 59df8187-01fe-48f2-b551-f9716fc9963c
+    - ID: 3f7f2889-1c64-41bc-b3b3-701fb563bd5e
       Name: infantry
       Formation: Infantry
       Slot1: OneHandedSword
@@ -791,7 +792,7 @@ GlobalConfigs:
       Slot4: None
       UseHorse: false
       UseCamel: false
-    - ID: b48cbbd3-d8b3-46b7-942e-c15daeda403d
+    - ID: d9f4346f-13b9-4cfd-93b7-9f1f2dffe6f3
       Name: archer
       Formation: Ranged
       Slot1: Bow
@@ -800,7 +801,7 @@ GlobalConfigs:
       Slot4: OneHandedAxe
       UseHorse: false
       UseCamel: false
-    - ID: 119f3d69-5fc3-4162-870b-2431a8b58e9b
+    - ID: 6322fbe1-bf63-4490-828c-7b5892360ccc
       Name: crossbow
       Formation: Ranged
       Slot1: Crossbow
@@ -809,7 +810,7 @@ GlobalConfigs:
       Slot4: OneHandedSword
       UseHorse: false
       UseCamel: false
-    - ID: 3d05f7e7-b189-4844-8631-f141c4c527d3
+    - ID: b3a108a8-4112-4b47-8b4d-095b1213a248
       Name: cavalry
       Formation: Cavalry
       Slot1: OneHandedLance
@@ -818,7 +819,7 @@ GlobalConfigs:
       Slot4: None
       UseHorse: true
       UseCamel: false
-    - ID: 880cabdd-551e-4f82-aef9-e193b58bd7f3
+    - ID: 5b8a0505-5565-4e9f-9153-f61f9a4770ad
       Name: horsearcher
       Formation: HorseArcher
       Slot1: Bow
@@ -827,7 +828,7 @@ GlobalConfigs:
       Slot4: OneHandedSword
       UseHorse: true
       UseCamel: false
-    - ID: 98efa33c-46c1-4040-ab65-ab260a0bb172
+    - ID: 19ed162d-2562-43a4-adcd-b8c03724f7dd
       Name: camelarcher
       Formation: HorseArcher
       Slot1: Bow
@@ -836,7 +837,7 @@ GlobalConfigs:
       Slot4: TwoHandedGlaive
       UseHorse: false
       UseCamel: true
-    - ID: cb0744ae-278b-46a8-8ea7-694c44f1f45b
+    - ID: ca45888d-57b6-49ee-81b7-1668d51694b0
       Name: skirmisher
       Formation: Skirmisher
       Slot1: TwoHandedSword
@@ -845,7 +846,7 @@ GlobalConfigs:
       Slot4: None
       UseHorse: false
       UseCamel: false
-    - ID: 43c1d185-4d9b-4f0b-abdb-089c7faadb13
+    - ID: 25f722de-6e0c-42e8-a635-58361a8b6519
       Name: berserker
       Formation: Skirmisher
       Slot1: TwoHandedAxe

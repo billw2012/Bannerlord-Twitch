@@ -118,7 +118,11 @@ namespace BLTConfigure
             }
 
             EditedSettings ??= new Settings();
-
+            foreach (var config in EditedSettings.ConfigInterfaces)
+            {
+                config.OnEditing();
+            }
+            
             RefreshActionList();
             PropertyGrid.SelectedObject = null;
 

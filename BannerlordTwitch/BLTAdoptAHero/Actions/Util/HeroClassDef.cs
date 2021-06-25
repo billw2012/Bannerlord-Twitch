@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -76,5 +76,26 @@ namespace BLTAdoptAHero
         public override string ToString() => $"{Name} : {string.Join(", ", SlotItems.Select(s => s.ToString()))}" 
                                              + (UseHorse ? " (Use Horse)" : "")
                                              + (UseCamel ? " (Use Camel)" : "");
+        
+        public class ItemSource : IItemsSource
+        {
+            public static IEnumerable<HeroClassDef> ActiveList { get; set; }
+
+            public ItemCollection GetValues()
+            {
+                var col = new ItemCollection();
+                col.Add(Guid.Empty, "(none)");
+
+                if (ActiveList != null)
+                {
+                    foreach (var item in ActiveList)
+                    {
+                        col.Add(item.ID, item.Name);
+                    }
+                }
+
+                return col;
+            }
+        }
     }
 }
