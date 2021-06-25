@@ -155,6 +155,7 @@
         <Compile Include="Actions\Util\AchievementSystem.cs" />
         <Compile Include="Actions\Util\BattleEffects.cs" />
         <Compile Include="Actions\Util\CustomItems.cs" />
+        <Compile Include="Actions\Util\EquipmentType.cs" />
         <Compile Include="Actions\Util\HeroClassDef.cs" />
         <Compile Include="Actions\Util\HeroHelpers.cs" />
         <Compile Include="Actions\Util\ItemModifierAccess.cs" />
