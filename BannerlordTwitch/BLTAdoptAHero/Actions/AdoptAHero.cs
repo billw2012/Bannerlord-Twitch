@@ -5,11 +5,13 @@ using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using HarmonyLib;
 using Helpers;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.Towns;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -66,8 +68,28 @@ namespace BLTAdoptAHero
             
             [Category("Initialization"), 
              Description("Equipment tier the adopted hero will start with, if you don't specify then they get the " +
-                         "heroes existing equipment"), DefaultValue(null), PropertyOrder(2)]
+                         "heroes existing equipment"), DefaultValue(null), PropertyOrder(3)]
             public int? StartingEquipmentTier { get; set; }
+
+            [Category("Initialization"),
+             Description("Whether the hero will start with a melee weapon, only applies if StartingEquipmentTier is " +
+                         "specified"), PropertyOrder(4)]
+            public bool StartWithMeleeWeapon { get; set; } = true;
+            
+            [Category("Initialization"),
+             Description("Whether the hero will start with a ranged weapon, only applies if StartingEquipmentTier is " +
+                         "specified"), PropertyOrder(5)]
+            public bool StartWithRangedWeapon { get; set; } = true;
+            
+            [Category("Initialization"), Description("Whether the hero will start with a horse, only applies if StartingEquipmentTier is specified"), PropertyOrder(3)]
+            public bool StartWithHorse { get; set; } = true;
+            
+            [Category("Initialization"), Description("Whether the hero will start with armor, only applies if StartingEquipmentTier is specified"), PropertyOrder(4)]
+            public bool StartWithArmor { get; set; } = true;
+            [Category("Initialization"), Description("Whether the hero will spawn in hero party (Only work with Join Player Companion activated)"), PropertyOrder(8)]
+            public bool SpawnInParty { get; set; } = true;
+            [Category("Initialization"), Description("Whether the hero will be a companion"), PropertyOrder(9)]
+            public bool JoinPlayerCompanion { get; set; } = true;
         }
 
         Type IRewardHandler.RewardConfigType => typeof(Settings);
@@ -128,9 +150,6 @@ namespace BLTAdoptAHero
                 {
                     newHero = HeroCreator.CreateSpecialHero(character);
                     newHero.ChangeState(Hero.CharacterStates.Active);
-                    var targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom();
-                    EnterSettlementAction.ApplyForCharacterOnly(newHero, targetSettlement);
-                    Log.Info($"Placed new hero {newHero.Name} at {targetSettlement.Name}");
                 }
             }
             else
@@ -158,6 +177,33 @@ namespace BLTAdoptAHero
             {
                 return (false, "You can't adopt a hero: no available hero matching the requirements was found!");
             }
+            
+            if (settings.JoinPlayerCompanion && settings.SpawnInParty)
+            {
+                var mainParty = MobileParty.MainParty;
+                if (mainParty != null && mainParty.Party.NumberOfAllMembers < mainParty.Party.PartySizeLimit)
+                {
+                    AddHeroToPartyAction.Apply(newHero, mainParty);
+                    Log.Info($"Placed new hero {newHero.Name} in hero party");
+                }
+                else
+                {
+                    if(mainParty == null)
+                    {
+                        return (false, "You can't adopt a hero: main hero party don't exist for now!");
+                    }
+                    else
+                    {
+                        return (false, "You can't adopt a hero: main hero party is full!");
+                    }
+                }
+            }
+            else
+            {
+                var targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom();
+                EnterSettlementAction.ApplyForCharacterOnly(newHero, targetSettlement);
+                Log.Info($"Placed new hero {newHero.Name} at {targetSettlement.Name}");
+            }
 
             if (settings.ValidStartingSkills?.Any() == true)
             {
@@ -181,6 +227,11 @@ namespace BLTAdoptAHero
 #else
                 CharacterDevelopmentCampaignBehavior.DevelopCharacterStats(newHero);
 #endif
+            }
+
+            if (settings.JoinPlayerCompanion)
+            {
+                AddCompanionAction.Apply(Hero.MainHero.Clan, newHero);
             }
 
             // Setup skills first, THEN name, as skill changes can generate feed messages for adopted characters

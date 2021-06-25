@@ -12,6 +12,7 @@ using SandBox.View;
 using SandBox.View.Missions;
 using SandBox.ViewModelCollection;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
@@ -80,6 +81,16 @@ namespace BLTAdoptAHero
         public static void MissionNameMarkerVMConstructorPostfix(MissionNameMarkerVM __instance, Mission mission, ref Vec3 ____heightOffset)
         {
             ____heightOffset = new Vec3(0, 0, 4, -1);
+        }
+
+        [UsedImplicitly, HarmonyPatch(typeof(DefaultClanTierModel), nameof(DefaultClanTierModel.GetCompanionLimit))]
+        public static void Postfix(ref int __result)
+        {
+            if (CommonConfig != null && CommonConfig.BreakCompanionLimit)
+            {
+                __result = Clan.PlayerClan.Companions.Count + 1;
+            }
+            return;
         }
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
@@ -186,6 +197,9 @@ namespace BLTAdoptAHero
         public float SummonCooldownUseMultiplier { get; [UsedImplicitly] set; } = 1.1f;
 
         public float GetCooldownTime(int summoned) => (float) (Math.Pow(SummonCooldownUseMultiplier, Mathf.Max(1, summoned)) * SummonCooldownInSeconds);
+
+        [Category("General"), Description("Will disable companion limit. You will be able to have infinite number of companion"), PropertyOrder(13)]
+        public bool BreakCompanionLimit { get; set; } = false;
 
         [Category("Kill Rewards"), Description("Gold the hero gets for every kill"), PropertyOrder(1)]
         public int GoldPerKill { get; set; } = 5000;

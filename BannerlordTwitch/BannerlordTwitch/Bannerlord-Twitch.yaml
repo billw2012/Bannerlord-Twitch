@@ -653,6 +653,29 @@ Commands:
     ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: true
+- Name: adopt
+  HideHelp: false
+  Help: 
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: AdoptAHero
+  ID: e317c63a-5a1f-455c-b953-6dcb92dc9424
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    CreateNew: true
+    AllowNoble: true
+    AllowWanderer: true
+    AllowPlayerCompanion: false
+    OnlySameFaction: false
+    AllowNewAdoptionOnDeath: true
+    Inheritance: 0.25
+    SubscriberOnly: false
+    MinSubscribedMonths: 
+    StartingGold: 0
+    StartingSkills: 
+    StartingEquipmentTier: 
 - Name: nameitem
   HideHelp: false
   Help: Name a reward item
