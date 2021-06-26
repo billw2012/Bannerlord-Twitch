@@ -326,10 +326,14 @@ namespace BLTAdoptAHero
         internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalTournamentConfig));
         internal static GlobalTournamentConfig Get() => ActionManager.GetGlobalConfig<GlobalTournamentConfig>(ID);
 
-        [Category("General"),
-         Description("Amount to multiply normal starting health by"),
-         PropertyOrder(1)]
+        [Category("General"), Description("Amount to multiply normal starting health by"), PropertyOrder(1)]
         public float StartHealthMultiplier { get; set; } = 2;
+
+        [Category("General"), Description("Remove horses completely from the BLT tournaments (the horse AI is terrible)"), PropertyOrder(2)]
+        public bool NoHorses { get; set; } = true;
+        
+        [Category("General"), Description("Replaces all lances and spears with swords, because lance and spear combat is terrible"), PropertyOrder(3)]
+        public bool NoSpears { get; set; } = true;
 
         [Category("Rewards"), Description("Gold won if the hero wins the tournaments"), PropertyOrder(1)]
         public int WinGold { get; set; } = 50000;
