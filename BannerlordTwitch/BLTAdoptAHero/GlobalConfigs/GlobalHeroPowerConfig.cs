@@ -46,7 +46,7 @@ namespace BLTAdoptAHero
         public void OnLoaded()
         {
             PowerDefs = SavedPowerDefs
-                .Select(o => YamlHelpers.ConvertObject<HeroPowerDefBase>(o)?.ConvertToProperType())
+                .Select(o => YamlHelpers.ConvertObject<HeroPowerDefBase>(o)?.ConvertToProperType(o))
                 .Where(p => p != null)
                 .ToList();
             

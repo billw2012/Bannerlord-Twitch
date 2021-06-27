@@ -97,15 +97,7 @@ namespace BannerlordTwitch.Rewards
                 return default;
             }
             
-            object config = BLTModule.TwitchService.FindGlobalConfig(id);
-            if (config == null)
-            {
-                return (T) Activator.CreateInstance(typeof(T));
-            }
-
-            // It was loaded as an anonymous object, convert it to the correctly typed object now
-            // (via round trip serialization)
-            return (T) YamlHelpers.ConvertObject(config, typeof(T));
+            return (T) BLTModule.TwitchService.FindGlobalConfig(id);
         }
 
         public static void ConvertSettings(IEnumerable<Reward> rewards)

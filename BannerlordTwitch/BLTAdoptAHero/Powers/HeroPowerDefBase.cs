@@ -48,14 +48,14 @@ namespace BLTAdoptAHero.Powers
 
         internal static IEnumerable<Type> RegisteredPowerDefTypes => registeredPowers.Values;
 
-        public HeroPowerDefBase ConvertToProperType()
+        public HeroPowerDefBase ConvertToProperType(object o)
         {
             if (!registeredPowers.TryGetValue(Type, out var type))
             {
                 Log.Error($"HeroPowerDef {Type} ({Name}) was not found");
                 return null;
             }
-            return (HeroPowerDefBase) YamlHelpers.ConvertObject(this, type);
+            return (HeroPowerDefBase) YamlHelpers.ConvertObject(o, type);
         }
             
         [Browsable(false)]

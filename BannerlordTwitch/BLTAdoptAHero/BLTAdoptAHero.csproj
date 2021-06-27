@@ -176,7 +176,7 @@
         <Compile Include="Powers\AbsorbHealthPower.cs" />
         <Compile Include="Powers\AddDamagePower.cs" />
         <Compile Include="Powers\AddHealthPower.cs" />
-        <Compile Include="Powers\HeroPowerDef.cs" />
+        <Compile Include="Powers\HeroPowerDefBase.cs" />
         <Compile Include="Powers\ReflectDamgePower.cs" />
         <Compile Include="Powers\Utils\HeroPowerCollectionEditor.cs" />
         <Compile Include="Properties\Annotations.cs" />
