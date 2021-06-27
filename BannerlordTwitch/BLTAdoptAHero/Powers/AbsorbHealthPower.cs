@@ -10,7 +10,7 @@ namespace BLTAdoptAHero.Powers
     [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
     public class AbsorbHealthPower : HeroPowerDefBase, IHeroPowerPassive
     {
-        [Category("Power Config"), Description("What fraction of damage done to absorb as health"), PropertyOrder(1)]
+        [Category("Power Config"), Description("What fraction of damage done to absorb as health"), PropertyOrder(1), UsedImplicitly]
         public float FractionOfDamageToAbsorb { get; set; } = 0.1f;
         
         public AbsorbHealthPower()

@@ -10,10 +10,11 @@ namespace BLTAdoptAHero.Powers
     [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
     public class AddDamagePower : HeroPowerDefBase, IHeroPowerPassive
     {
-        [Category("Power Config"), Description("How much damage to add"), PropertyOrder(1), UsedImplicitly]
-        public int? DamageToAdd { get; set; }
-        [Category("Power Config"), Description("How much to multiply base damage by"), PropertyOrder(2), UsedImplicitly]
-        public float? DamageToMultiply { get; set; }
+        [Category("Power Config"), Description("How much to multiply base damage by"), PropertyOrder(1), UsedImplicitly]
+        public float DamageToMultiply { get; set; } = 1f;
+
+        [Category("Power Config"), Description("How much damage to add"), PropertyOrder(2), UsedImplicitly]
+        public int DamageToAdd { get; set; } = 0;
 
         [Category("Power Config"), Description("Whether to apply this bonus damage against normal troops"), PropertyOrder(3), UsedImplicitly]
         public bool ApplyAgainstNonHeroes { get; set; } = true;
@@ -45,16 +46,10 @@ namespace BLTAdoptAHero.Powers
             {
                 return;
             }
-            if (DamageToMultiply.HasValue && DamageToMultiply.Value != 1f)
-            {
-                //attackCollisionData.BaseMagnitude = (int) (attackCollisionData.BaseMagnitude * DamageToMultiply.Value);
-                attackCollisionData.InflictedDamage = (int) (attackCollisionData.InflictedDamage * DamageToMultiply.Value);
-            }
-            if (DamageToAdd.HasValue && DamageToAdd.Value != 0f)
-            {
-                //attackCollisionData.BaseMagnitude += DamageToAdd.Value;
-                attackCollisionData.InflictedDamage += DamageToAdd.Value;
-            }        
+            //attackCollisionData.BaseMagnitude = (int) (attackCollisionData.BaseMagnitude * DamageToMultiply);
+            attackCollisionData.InflictedDamage = (int) (attackCollisionData.InflictedDamage * DamageToMultiply);
+            //attackCollisionData.BaseMagnitude += DamageToAdd;
+            attackCollisionData.InflictedDamage += DamageToAdd;
         }
         public void OnTakeDamage(Hero hero, Agent agent, Hero attackerHero, Agent attackerAgent,
             ref AttackCollisionData attackCollisionData) { }
@@ -62,13 +57,13 @@ namespace BLTAdoptAHero.Powers
         public override string ToString()
         {
             var parts = new List<string>();
-            if (DamageToMultiply.HasValue && DamageToMultiply.Value != 1)
+            if (DamageToMultiply != 1)
             {
-                parts.Add($"x{DamageToMultiply.Value:0.0} ({DamageToMultiply.Value * 100:0.0}%) health");
+                parts.Add($"x{DamageToMultiply:0.0} ({DamageToMultiply * 100:0.0}%) health");
             }
-            if (DamageToAdd.HasValue && DamageToAdd.Value != 0)
+            if (DamageToAdd != 0)
             {
-                parts.Add(DamageToAdd > 0 ? $"+{DamageToAdd.Value} damage" : $"{DamageToAdd.Value} damage");
+                parts.Add(DamageToAdd > 0 ? $"+{DamageToAdd} damage" : $"{DamageToAdd} damage");
             }
             if (ApplyAgainstNonHeroes) parts.Add("Non-heroes");
             if (ApplyAgainstHeroes) parts.Add("Heroes");

@@ -113,6 +113,7 @@ namespace BLTAdoptAHero
                 CommonConfig = GlobalCommonConfig.Get();
                 TournamentConfig = GlobalTournamentConfig.Get();
                 HeroClassConfig = GlobalHeroClassConfig.Get();
+                HeroPowerConfig = GlobalHeroPowerConfig.Get();
 
                 var campaignStarter = (CampaignGameStarter) gameStarterObject;
                 campaignStarter.AddBehavior(new BLTAdoptAHeroCampaignBehavior());

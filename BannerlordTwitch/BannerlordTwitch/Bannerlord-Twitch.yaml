@@ -795,7 +795,7 @@ GlobalConfigs:
 - Id: Adopt A Hero - Class Config
   Config:
     ClassDefs:
-    - ID: 3f7f2889-1c64-41bc-b3b3-701fb563bd5e
+    - ID: 439180a8-a5b1-4fdf-b045-9ceb080730dc
       Name: infantry
       Formation: Infantry
       Slot1: OneHandedSword
@@ -810,7 +810,7 @@ GlobalConfigs:
       ActivePower1: 00000000-0000-0000-0000-000000000000
       ActivePower2: 00000000-0000-0000-0000-000000000000
       ActivePower3: 00000000-0000-0000-0000-000000000000
-    - ID: d9f4346f-13b9-4cfd-93b7-9f1f2dffe6f3
+    - ID: d763dc71-2f61-49df-a1c9-789edc17eeff
       Name: archer
       Formation: Ranged
       Slot1: Bow
@@ -825,7 +825,7 @@ GlobalConfigs:
       ActivePower1: 00000000-0000-0000-0000-000000000000
       ActivePower2: 00000000-0000-0000-0000-000000000000
       ActivePower3: 00000000-0000-0000-0000-000000000000
-    - ID: 6322fbe1-bf63-4490-828c-7b5892360ccc
+    - ID: 06e833c1-ce6c-43a6-9040-dd171010786b
       Name: crossbow
       Formation: Ranged
       Slot1: Crossbow
@@ -840,7 +840,7 @@ GlobalConfigs:
       ActivePower1: 00000000-0000-0000-0000-000000000000
       ActivePower2: 00000000-0000-0000-0000-000000000000
       ActivePower3: 00000000-0000-0000-0000-000000000000
-    - ID: b3a108a8-4112-4b47-8b4d-095b1213a248
+    - ID: 91df4c23-ee21-48aa-8985-2a34842e80ca
       Name: cavalry
       Formation: Cavalry
       Slot1: OneHandedLance
@@ -855,7 +855,7 @@ GlobalConfigs:
       ActivePower1: 00000000-0000-0000-0000-000000000000
       ActivePower2: 00000000-0000-0000-0000-000000000000
       ActivePower3: 00000000-0000-0000-0000-000000000000
-    - ID: 5b8a0505-5565-4e9f-9153-f61f9a4770ad
+    - ID: 19fce979-8967-4d69-9dcd-2af766eeb4cd
       Name: horsearcher
       Formation: HorseArcher
       Slot1: Bow
@@ -870,7 +870,7 @@ GlobalConfigs:
       ActivePower1: 00000000-0000-0000-0000-000000000000
       ActivePower2: 00000000-0000-0000-0000-000000000000
       ActivePower3: 00000000-0000-0000-0000-000000000000
-    - ID: 19ed162d-2562-43a4-adcd-b8c03724f7dd
+    - ID: 933b206a-75b9-4d4e-a6bc-230fcc369faf
       Name: camelarcher
       Formation: HorseArcher
       Slot1: Bow
@@ -885,7 +885,7 @@ GlobalConfigs:
       ActivePower1: 00000000-0000-0000-0000-000000000000
       ActivePower2: 00000000-0000-0000-0000-000000000000
       ActivePower3: 00000000-0000-0000-0000-000000000000
-    - ID: ca45888d-57b6-49ee-81b7-1668d51694b0
+    - ID: 57fe5039-682c-4cab-9882-32424ee07f2c
       Name: skirmisher
       Formation: Skirmisher
       Slot1: TwoHandedSword
@@ -900,7 +900,7 @@ GlobalConfigs:
       ActivePower1: 00000000-0000-0000-0000-000000000000
       ActivePower2: 00000000-0000-0000-0000-000000000000
       ActivePower3: 00000000-0000-0000-0000-000000000000
-    - ID: 25f722de-6e0c-42e8-a635-58361a8b6519
+    - ID: 82768369-0282-4ae7-a7b2-2141d2420eb6
       Name: berserker
       Formation: Skirmisher
       Slot1: TwoHandedAxe
@@ -909,8 +909,8 @@ GlobalConfigs:
       Slot4: None
       UseHorse: false
       UseCamel: false
-      PassivePower1: be004748-841b-46e2-bc60-4b18f1dee94e
-      PassivePower2: 19214476-0164-493c-bd8d-47efbb04cb9e
+      PassivePower1: 6dcfcb53-6285-4ec1-a05b-9793bee0b64f
+      PassivePower2: cf459a15-4d8d-4900-abe6-d016013866d9
       PassivePower3: 00000000-0000-0000-0000-000000000000
       ActivePower1: 00000000-0000-0000-0000-000000000000
       ActivePower2: 00000000-0000-0000-0000-000000000000
@@ -922,32 +922,32 @@ GlobalConfigs:
   Config:
     DisablePowersInTournaments: true
     SavedPowerDefs:
-    - HealthToAdd: 
-      HealthToMultiply: 1.5
+    - HealthToMultiply: 2
+      HealthToAdd: 0
       Type: c4213666-2176-42b4-8dbb-bfe0182bcce1
-      ID: e6eda394-549f-46f0-a6d6-7af03d09a46b
+      ID: d2bef7bc-9979-4848-ac41-95b877e92f5f
       Name: Healthy
-    - HealthToAdd: 
-      HealthToMultiply: 0.5
+    - HealthToMultiply: 0.5
+      HealthToAdd: 0
       Type: c4213666-2176-42b4-8dbb-bfe0182bcce1
-      ID: be004748-841b-46e2-bc60-4b18f1dee94e
+      ID: 6dcfcb53-6285-4ec1-a05b-9793bee0b64f
       Name: Fragile
     - FractionOfDamageToAbsorb: 0.100000001
       Type: e0a274df-adbb-4725-9eae-59806bf9b5dc
-      ID: 19214476-0164-493c-bd8d-47efbb04cb9e
+      ID: d7f20928-381d-43ac-911e-b1272e8f8c97
       Name: Vampiric
-    - DamageToAdd: 
-      DamageToMultiply: 2
+    - DamageToMultiply: 2
+      DamageToAdd: 0
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
       ApplyAgainstPlayer: true
       Type: 378648b6-5586-4812-ad08-22da6374440c
-      ID: fcc6a363-f710-4a8e-a161-5b58c4c98ec1
+      ID: cf459a15-4d8d-4900-abe6-d016013866d9
       Name: Heavy Hitting
     - FractionOfDamageToReflect: 0.100000001
       Type: ffe07da3-e977-42d8-80ca-5dfff66123eb
-      ID: cd28ad51-d95f-46b7-90b7-efcd9692fbc2
+      ID: 1390e614-adf0-4fda-93cd-e88b799077e0
       Name: Retribution
 SimTesting:
   UserCount: 25

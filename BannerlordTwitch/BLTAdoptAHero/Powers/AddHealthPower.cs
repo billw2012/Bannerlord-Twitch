@@ -11,11 +11,12 @@ namespace BLTAdoptAHero.Powers
     [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
     public class AddHealthPower : HeroPowerDefBase, IHeroPowerPassive
     {
-        [Category("Power Config"), Description("How much HP to add"), PropertyOrder(1)]
-        public float? HealthToAdd { get; set; }
-        [Category("Power Config"), Description("How much to multiply base HP by"), PropertyOrder(1)]
-        public float? HealthToMultiply { get; set; }
-        
+        [Category("Power Config"), Description("How much to multiply base HP by"), PropertyOrder(1), UsedImplicitly]
+        public float HealthToMultiply { get; set; } = 1f;
+
+        [Category("Power Config"), Description("How much HP to add"), PropertyOrder(2), UsedImplicitly]
+        public float HealthToAdd { get; set; }
+
         public AddHealthPower()
         {
             Type = new ("C4213666-2176-42B4-8DBB-BFE0182BCCE1");
@@ -29,19 +30,13 @@ namespace BLTAdoptAHero.Powers
 
         public void OnAgentBuild(Hero hero, Agent agent)
         {
-            if (HealthToMultiply.HasValue)
-            {
-                agent.BaseHealthLimit *= HealthToMultiply.Value;
-                agent.HealthLimit *= HealthToMultiply.Value;
-                agent.Health *= HealthToMultiply.Value;
-            }
+            agent.BaseHealthLimit *= HealthToMultiply;
+            agent.HealthLimit *= HealthToMultiply;
+            agent.Health *= HealthToMultiply;
 
-            if (HealthToAdd.HasValue)
-            {
-                agent.BaseHealthLimit += HealthToAdd.Value;
-                agent.HealthLimit += HealthToAdd.Value;
-                agent.Health += HealthToAdd.Value;
-            }
+            agent.BaseHealthLimit += HealthToAdd;
+            agent.HealthLimit += HealthToAdd;
+            agent.Health += HealthToAdd;
         }
         
         public void OnAgentKilled(Hero hero, Agent agent, Hero killerHero, Agent killerAgent) {}
@@ -51,13 +46,13 @@ namespace BLTAdoptAHero.Powers
         public override string ToString()
         {
             var parts = new List<string>();
-            if (HealthToMultiply.HasValue && HealthToMultiply.Value != 1)
+            if (HealthToMultiply != 1)
             {
-                parts.Add($"x{HealthToMultiply.Value:0.0} ({HealthToMultiply.Value * 100:0.0}%) health");
+                parts.Add($"x{HealthToMultiply:0.0} ({HealthToMultiply * 100:0.0}%) health");
             }
-            if (HealthToAdd.HasValue && HealthToAdd.Value != 0)
+            if (HealthToAdd != 0)
             {
-                parts.Add(HealthToAdd > 0 ? $"+{HealthToAdd.Value:0.0} health" : $"{HealthToAdd.Value:0.0} health");
+                parts.Add(HealthToAdd > 0 ? $"+{HealthToAdd:0.0} health" : $"{HealthToAdd:0.0} health");
             }
             return $"{Name}: {string.Join(", ", parts)}";
         }
