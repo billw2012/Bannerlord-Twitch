@@ -24,7 +24,7 @@ namespace BLTBuffet
             GlobalEffectsConfig.Register();
         }
         
-        private static Harmony harmony = null;
+        private static Harmony harmony;
 
         protected override void OnSubModuleLoad()
         {
@@ -58,7 +58,7 @@ namespace BLTBuffet
             internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalEffectsConfig));
             internal static GlobalEffectsConfig Get() => ActionManager.GetGlobalConfig<GlobalEffectsConfig>(ID);
         
-            [Description("Whether effects are disabled when a tournament is active (to stop 'cheating')")] 
+            [Description("Whether effects are disabled in a tournament")] 
             public bool DisableEffectsInTournaments { get; set; } = true;
         }
     }

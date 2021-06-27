@@ -380,17 +380,18 @@ namespace BLTAdoptAHero
             }
         }
 
-        public static void SetAgentStartingHealth(Agent agent)
+        public static void SetAgentStartingHealth(Hero hero, Agent agent)
         {
             if (BLTAdoptAHeroModule.CommonConfig.StartWithFullHealth)
             {
                 agent.Health = agent.HealthLimit;
             }
 
-            float multiplier = MissionHelpers.InTournament()
+            bool inTournament = MissionHelpers.InTournament();
+            float multiplier = inTournament
                 ? BLTAdoptAHeroModule.TournamentConfig.StartHealthMultiplier
                 : BLTAdoptAHeroModule.CommonConfig.StartHealthMultiplier;
-
+            
             agent.BaseHealthLimit *= Math.Max(1, multiplier);
             agent.HealthLimit *= Math.Max(1, multiplier);
             agent.Health *= Math.Max(1, multiplier);
@@ -588,17 +589,14 @@ namespace BLTAdoptAHero
         #endregion
 
         #region Class
-
         public HeroClassDef GetClass(Hero hero) 
             => BLTAdoptAHeroModule.HeroClassConfig.GetClass(GetHeroData(hero).ClassID);
 
         public void SetClass(Hero hero, HeroClassDef classDef) 
             => GetHeroData(hero).ClassID = classDef?.ID ?? Guid.Empty;
-
         #endregion
 
         #region Retinue
-
         public IEnumerable<CharacterObject> GetRetinue(Hero hero) 
             => GetHeroData(hero).Retinue.Select(r => r.TroopType);
 

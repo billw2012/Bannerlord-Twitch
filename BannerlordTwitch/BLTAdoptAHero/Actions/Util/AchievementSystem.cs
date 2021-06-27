@@ -2,13 +2,14 @@
 using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using System;
+using BannerlordTwitch.Util;
 
 namespace BLTAdoptAHero.Actions.Util
 {
     public class AchievementSystem
     {
-        [Browsable(false), UsedImplicitly]
-        public Guid ID { get; set; } = Guid.NewGuid();
+        [ReadOnly(true), UsedImplicitly]
+        public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
 
         [PropertyOrder(1)]
         public bool Enabled { get; [UsedImplicitly] set; }

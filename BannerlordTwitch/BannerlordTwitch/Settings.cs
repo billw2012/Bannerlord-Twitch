@@ -47,8 +47,8 @@ namespace BannerlordTwitch
     public abstract class ActionBase
     {
         // Unique ID for this action 
-        [Browsable(false), UsedImplicitly]
-        public Guid ID { get; set; } = Guid.NewGuid();
+        [ReadOnly(true), UsedImplicitly]
+        public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
 
         [Category("General"), Description("Whether this is enabled or not"), PropertyOrder(-100)]
         public bool Enabled { get; set; }

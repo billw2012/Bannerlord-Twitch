@@ -22,6 +22,7 @@ Rewards:
     AllowPlayerCompanion: false
     OnlySameFaction: false
     Inheritance: 0.25
+    MaxInheritedCustomItems: 2
     SubscriberOnly: false
     MinSubscribedMonths: 
     StartingGold: 0
@@ -40,6 +41,8 @@ Rewards:
       MaxLevel: 75
     StartingEquipmentTier: 1
     StartingClass: 00000000-0000-0000-0000-000000000000
+    SpawnInParty: false
+    JoinPlayerCompanion: false
 - RewardSpec:
     Title: 10k gold
     DisableAutomaticFulfillment: false
@@ -516,6 +519,7 @@ Commands:
     ShowAttributes: true
     ShowEquipment: false
     ShowInventory: false
+    ShowStorage: false
     ShowCivilianInventory: false
     ShowRetinue: true
     ShowRetinueList: false
@@ -537,6 +541,7 @@ Commands:
     ShowAttributes: false
     ShowEquipment: true
     ShowInventory: true
+    ShowStorage: false
     ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: false
@@ -630,6 +635,7 @@ Commands:
     ShowAttributes: false
     ShowEquipment: false
     ShowInventory: false
+    ShowStorage: false
     ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: false
@@ -651,6 +657,7 @@ Commands:
     ShowAttributes: false
     ShowEquipment: false
     ShowInventory: false
+    ShowStorage: false
     ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: true
@@ -670,13 +677,16 @@ Commands:
     AllowWanderer: true
     AllowPlayerCompanion: false
     OnlySameFaction: false
-    AllowNewAdoptionOnDeath: true
     Inheritance: 0.25
+    MaxInheritedCustomItems: 2
     SubscriberOnly: false
     MinSubscribedMonths: 
     StartingGold: 0
     StartingSkills: 
     StartingEquipmentTier: 
+    StartingClass: 00000000-0000-0000-0000-000000000000
+    SpawnInParty: false
+    JoinPlayerCompanion: false
 - Name: nameitem
   HideHelp: false
   Help: Name a reward item
@@ -701,6 +711,7 @@ GlobalConfigs:
     RetinueUseHeroesFormation: false
     SummonCooldownInSeconds: 20
     SummonCooldownUseMultiplier: 1.10000002
+    BreakCompanionLimit: false
     GoldPerKill: 5000
     XPPerKill: 5000
     XPPerKilled: 2000
@@ -728,13 +739,14 @@ GlobalConfigs:
 - Id: Adopt A Hero - Tournament Config
   Config:
     StartHealthMultiplier: 2
+    NoHorses: true
+    NoSpears: true
     WinGold: 50000
     WinXP: 50000
     ParticipateXP: 10000
     WinMatchGold: 10000
     WinMatchXP: 10000
     ParticipateMatchXP: 2500
-    UseCustomPrizes: true
     PrizeWeaponWeight: 1
     PrizeArmorWeight: 1
     PrizeMountWeight: 0.100000001
@@ -792,6 +804,12 @@ GlobalConfigs:
       Slot4: None
       UseHorse: false
       UseCamel: false
+      PassivePower1: 00000000-0000-0000-0000-000000000000
+      PassivePower2: 00000000-0000-0000-0000-000000000000
+      PassivePower3: 00000000-0000-0000-0000-000000000000
+      ActivePower1: 00000000-0000-0000-0000-000000000000
+      ActivePower2: 00000000-0000-0000-0000-000000000000
+      ActivePower3: 00000000-0000-0000-0000-000000000000
     - ID: d9f4346f-13b9-4cfd-93b7-9f1f2dffe6f3
       Name: archer
       Formation: Ranged
@@ -801,6 +819,12 @@ GlobalConfigs:
       Slot4: OneHandedAxe
       UseHorse: false
       UseCamel: false
+      PassivePower1: 00000000-0000-0000-0000-000000000000
+      PassivePower2: 00000000-0000-0000-0000-000000000000
+      PassivePower3: 00000000-0000-0000-0000-000000000000
+      ActivePower1: 00000000-0000-0000-0000-000000000000
+      ActivePower2: 00000000-0000-0000-0000-000000000000
+      ActivePower3: 00000000-0000-0000-0000-000000000000
     - ID: 6322fbe1-bf63-4490-828c-7b5892360ccc
       Name: crossbow
       Formation: Ranged
@@ -810,6 +834,12 @@ GlobalConfigs:
       Slot4: OneHandedSword
       UseHorse: false
       UseCamel: false
+      PassivePower1: 00000000-0000-0000-0000-000000000000
+      PassivePower2: 00000000-0000-0000-0000-000000000000
+      PassivePower3: 00000000-0000-0000-0000-000000000000
+      ActivePower1: 00000000-0000-0000-0000-000000000000
+      ActivePower2: 00000000-0000-0000-0000-000000000000
+      ActivePower3: 00000000-0000-0000-0000-000000000000
     - ID: b3a108a8-4112-4b47-8b4d-095b1213a248
       Name: cavalry
       Formation: Cavalry
@@ -819,6 +849,12 @@ GlobalConfigs:
       Slot4: None
       UseHorse: true
       UseCamel: false
+      PassivePower1: 00000000-0000-0000-0000-000000000000
+      PassivePower2: 00000000-0000-0000-0000-000000000000
+      PassivePower3: 00000000-0000-0000-0000-000000000000
+      ActivePower1: 00000000-0000-0000-0000-000000000000
+      ActivePower2: 00000000-0000-0000-0000-000000000000
+      ActivePower3: 00000000-0000-0000-0000-000000000000
     - ID: 5b8a0505-5565-4e9f-9153-f61f9a4770ad
       Name: horsearcher
       Formation: HorseArcher
@@ -828,6 +864,12 @@ GlobalConfigs:
       Slot4: OneHandedSword
       UseHorse: true
       UseCamel: false
+      PassivePower1: 00000000-0000-0000-0000-000000000000
+      PassivePower2: 00000000-0000-0000-0000-000000000000
+      PassivePower3: 00000000-0000-0000-0000-000000000000
+      ActivePower1: 00000000-0000-0000-0000-000000000000
+      ActivePower2: 00000000-0000-0000-0000-000000000000
+      ActivePower3: 00000000-0000-0000-0000-000000000000
     - ID: 19ed162d-2562-43a4-adcd-b8c03724f7dd
       Name: camelarcher
       Formation: HorseArcher
@@ -837,6 +879,12 @@ GlobalConfigs:
       Slot4: TwoHandedGlaive
       UseHorse: false
       UseCamel: true
+      PassivePower1: 00000000-0000-0000-0000-000000000000
+      PassivePower2: 00000000-0000-0000-0000-000000000000
+      PassivePower3: 00000000-0000-0000-0000-000000000000
+      ActivePower1: 00000000-0000-0000-0000-000000000000
+      ActivePower2: 00000000-0000-0000-0000-000000000000
+      ActivePower3: 00000000-0000-0000-0000-000000000000
     - ID: ca45888d-57b6-49ee-81b7-1668d51694b0
       Name: skirmisher
       Formation: Skirmisher
@@ -846,6 +894,12 @@ GlobalConfigs:
       Slot4: None
       UseHorse: false
       UseCamel: false
+      PassivePower1: 00000000-0000-0000-0000-000000000000
+      PassivePower2: 00000000-0000-0000-0000-000000000000
+      PassivePower3: 00000000-0000-0000-0000-000000000000
+      ActivePower1: 00000000-0000-0000-0000-000000000000
+      ActivePower2: 00000000-0000-0000-0000-000000000000
+      ActivePower3: 00000000-0000-0000-0000-000000000000
     - ID: 25f722de-6e0c-42e8-a635-58361a8b6519
       Name: berserker
       Formation: Skirmisher
@@ -855,9 +909,46 @@ GlobalConfigs:
       Slot4: None
       UseHorse: false
       UseCamel: false
+      PassivePower1: be004748-841b-46e2-bc60-4b18f1dee94e
+      PassivePower2: 19214476-0164-493c-bd8d-47efbb04cb9e
+      PassivePower3: 00000000-0000-0000-0000-000000000000
+      ActivePower1: 00000000-0000-0000-0000-000000000000
+      ActivePower2: 00000000-0000-0000-0000-000000000000
+      ActivePower3: 00000000-0000-0000-0000-000000000000
 - Id: Buffet - Effects Config
   Config:
     DisableEffectsInTournaments: true
+- Id: Adopt A Hero - Power Config
+  Config:
+    DisablePowersInTournaments: true
+    SavedPowerDefs:
+    - HealthToAdd: 
+      HealthToMultiply: 1.5
+      Type: c4213666-2176-42b4-8dbb-bfe0182bcce1
+      ID: e6eda394-549f-46f0-a6d6-7af03d09a46b
+      Name: Healthy
+    - HealthToAdd: 
+      HealthToMultiply: 0.5
+      Type: c4213666-2176-42b4-8dbb-bfe0182bcce1
+      ID: be004748-841b-46e2-bc60-4b18f1dee94e
+      Name: Fragile
+    - FractionOfDamageToAbsorb: 0.100000001
+      Type: e0a274df-adbb-4725-9eae-59806bf9b5dc
+      ID: 19214476-0164-493c-bd8d-47efbb04cb9e
+      Name: Vampiric
+    - DamageToAdd: 
+      DamageToMultiply: 2
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Type: 378648b6-5586-4812-ad08-22da6374440c
+      ID: fcc6a363-f710-4a8e-a161-5b58c4c98ec1
+      Name: Heavy Hitting
+    - FractionOfDamageToReflect: 0.100000001
+      Type: ffe07da3-e977-42d8-80ca-5dfff66123eb
+      ID: cd28ad51-d95f-46b7-90b7-efcd9692fbc2
+      Name: Retribution
 SimTesting:
   UserCount: 25
   UserStayTime: 300

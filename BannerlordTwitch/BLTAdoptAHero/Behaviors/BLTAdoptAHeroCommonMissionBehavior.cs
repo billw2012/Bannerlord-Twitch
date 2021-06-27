@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows.Data;
 using BannerlordTwitch.Util;
@@ -96,13 +95,13 @@ namespace BLTAdoptAHero
         {
             try
             {
-                var hero = GetAdoptedHeroFromAgent(agent);
+                var hero = agent.GetAdoptedHero();
                 if (hero == null)
                 {
                     return;
                 }
 
-                BLTAdoptAHeroCampaignBehavior.SetAgentStartingHealth(agent);
+                BLTAdoptAHeroCampaignBehavior.SetAgentStartingHealth(hero, agent);
                 activeHeroes.Add(hero);
             }
             catch (Exception ex)
@@ -115,7 +114,7 @@ namespace BLTAdoptAHero
         {
             try
             {
-                var hero = GetAdoptedHeroFromAgent(agent);
+                var hero = agent.GetAdoptedHero();
                 if (hero != null && agent.MountAgent != null)
                 {
                     adoptedHeroMounts.Add(agent.MountAgent);
@@ -139,8 +138,8 @@ namespace BLTAdoptAHero
             }
         }
 
-        private float slowTickT = 0;
-        private float fasterTickT = 0;
+        private float slowTickT;
+        private float fasterTickT;
 
         public override void OnMissionTick(float dt)
         {
@@ -233,7 +232,7 @@ namespace BLTAdoptAHero
         {
             try
             {
-                var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
+                var affectedHero = affectedAgent.GetAdoptedHero();
                 if (affectedHero != null)
                 {
                     Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectedHero} was made {agentState} by {affectorAgent?.Name ?? "unknown"}");
@@ -248,7 +247,7 @@ namespace BLTAdoptAHero
                     BLTAdoptAHeroCampaignBehavior.Current.IncreaseHeroDeaths(affectedHero);
                 }
 
-                var affectorHero = GetAdoptedHeroFromAgent(affectorAgent);
+                var affectorHero = affectorAgent.GetAdoptedHero();
                 if (affectorHero != null)
                 {
                     float horseFactor = affectedAgent?.IsHuman == false ? 0.25f : 1;
@@ -320,12 +319,6 @@ namespace BLTAdoptAHero
         {
             GetHeroMissionState(hero).KillStreak = 0;
         }
-        
-        private static Hero GetAdoptedHeroFromAgent(Agent agent)
-        {
-            var hero = (agent?.Character as CharacterObject)?.HeroObject;
-            return hero?.IsAdopted() == true ? hero : null;
-        }
 
         private HeroMissionState GetHeroMissionState(Hero hero)
         {
@@ -340,7 +333,7 @@ namespace BLTAdoptAHero
 
         // private void UpdateHeroVM(Agent agent)
         // {
-        //     var hero = GetAdoptedHeroFromAgent(agent);
+        //     var hero = agent.GetAdoptedHero();
         //     if (hero != null)
         //     {
         //         UpdateHeroVM(hero, agent);
@@ -485,7 +478,7 @@ namespace BLTAdoptAHero
 
             if (xpStreak != 0)
             {
-                (bool success, string description) = SkillXP.ImproveSkill(hero, xpStreak, SkillsEnum.All, auto: true);
+                (bool success, string _) = SkillXP.ImproveSkill(hero, xpStreak, SkillsEnum.All, auto: true);
                 if (success)
                 {
                     GetHeroMissionState(hero).WonXP += xpStreak;

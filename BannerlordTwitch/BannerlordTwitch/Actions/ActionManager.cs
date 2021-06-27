@@ -105,7 +105,7 @@ namespace BannerlordTwitch.Rewards
 
             // It was loaded as an anonymous object, convert it to the correctly typed object now
             // (via round trip serialization)
-            return (T) ConvertObject(config, typeof(T));
+            return (T) YamlHelpers.ConvertObject(config, typeof(T));
         }
 
         public static void ConvertSettings(IEnumerable<Reward> rewards)
@@ -127,7 +127,7 @@ namespace BannerlordTwitch.Rewards
                         try
                         {
                             rewardDef.HandlerConfig = action.RewardConfigType != null
-                                ? ConvertObject(rewardDef.HandlerConfig, action.RewardConfigType)
+                                ? YamlHelpers.ConvertObject(rewardDef.HandlerConfig, action.RewardConfigType)
                                 : null;
                         }
                         catch (Exception)
@@ -159,7 +159,7 @@ namespace BannerlordTwitch.Rewards
                         try
                         {
                             commandDef.HandlerConfig = command.HandlerConfigType != null
-                                ? ConvertObject(commandDef.HandlerConfig, command.HandlerConfigType)
+                                ? YamlHelpers.ConvertObject(commandDef.HandlerConfig, command.HandlerConfigType)
                                 : null;
                         }
                         catch (Exception)
@@ -188,7 +188,7 @@ namespace BannerlordTwitch.Rewards
                     try
                     {
                         // Convert from anonymous to typed object
-                        globalConfig.Config = ConvertObject(globalConfig.Config, configType);
+                        globalConfig.Config = YamlHelpers.ConvertObject(globalConfig.Config, configType);
                     }
                     catch (Exception ex)
                     {
@@ -206,17 +206,6 @@ namespace BannerlordTwitch.Rewards
                 globalSettings.Remove(r);
             }
         }
-        
-        public static object ConvertObject(object obj, Type type) =>
-            new DeserializerBuilder()
-                .IgnoreUnmatchedProperties()
-                .Build()
-                .Deserialize(
-                new SerializerBuilder()
-                    .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
-                    .Build()
-                    .Serialize(obj),
-                type);
 
         internal static void HandleCommand(string commandId, ReplyContext context, object config)
         {
@@ -230,7 +219,7 @@ namespace BannerlordTwitch.Rewards
             {
                 if (cmdHandler.HandlerConfigType != null)
                 {
-                    config = ConvertObject(config, cmdHandler.HandlerConfigType);
+                    config = YamlHelpers.ConvertObject(config, cmdHandler.HandlerConfigType);
                 }
                 Log.Trace($"[{nameof(ActionManager)}] HandleCommand {commandId} {context.Args} for {context.UserName}");
                 cmdHandler.Execute(context, config);
@@ -262,7 +251,7 @@ namespace BannerlordTwitch.Rewards
 
             if (action.RewardConfigType != null)
             {
-                config = ConvertObject(config, action.RewardConfigType);
+                config = YamlHelpers.ConvertObject(config, action.RewardConfigType);
             }
             //Log.Trace($"[{nameof(ActionManager)}] HandleReward {action} {context.Args} for {context.UserName}");
             action.Enqueue(context, config);

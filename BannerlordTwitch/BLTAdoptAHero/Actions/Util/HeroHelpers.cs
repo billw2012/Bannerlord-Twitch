@@ -67,6 +67,7 @@ namespace BLTAdoptAHero.Actions.Util
         
         public static IEnumerable<ItemObject> AllItems => Items.All;
 #endif
+
         public static IEnumerable<Hero> AliveHeroes => Campaign.Current.AliveHeroes;
         public static IEnumerable<Hero> AllHeroes => AliveHeroes.Concat(DeadOrDisabledHeroes).Distinct();
     }
