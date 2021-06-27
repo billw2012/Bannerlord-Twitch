@@ -21,8 +21,7 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            var nameableItems = adoptedHero.BattleEquipment
-                .YieldFilledEquipmentSlots()
+            var nameableItems = BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero)
                 .Where(e => BLTCustomItemsCampaignBehavior.Current.ItemCanBeNamed(e.ItemModifier))
                 .ToList()
                 ;

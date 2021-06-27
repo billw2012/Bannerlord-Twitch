@@ -342,7 +342,7 @@ namespace BLTAdoptAHero
                     {
                         float actualBoost = entry.IsSub ? Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1) : 1;
                         var results = new List<string>();
-                        if (entry.Hero == tournamentBehaviour.Winner.Character?.HeroObject)
+                        if (entry.Hero != null && entry.Hero == tournamentBehaviour.Winner.Character?.HeroObject)
                         {
                             results.Add("WINNER!");
 
@@ -364,9 +364,7 @@ namespace BLTAdoptAHero
                                 }
                             }
 
-                            var (item, itemModifier) = BLTAdoptAHeroModule.TournamentConfig.UseCustomPrizes 
-                                ? GeneratePrize(entry.Hero)
-                                : (tournamentBehaviour.TournamentGame.Prize, null);
+                            var (item, itemModifier, slot) = GeneratePrize(entry.Hero);
                             if (item == null)
                             {
                                 results.Add($"no prize available for you!");
@@ -375,23 +373,27 @@ namespace BLTAdoptAHero
                             {
                                 var element = new EquipmentElement(item, itemModifier);
                                 bool isCustom = BLTCustomItemsCampaignBehavior.Current.IsRegistered(itemModifier);
+
+                                // We always put our custom items into the heroes storage, even if we won't use them right now
                                 if (isCustom)
                                 {
                                     BLTAdoptAHeroCampaignBehavior.Current.AddCustomItem(entry.Hero, element);
                                 }
-                                (bool upgraded, string failReason) = UpgradeToItem(entry.Hero, element, itemModifier != null);
-                                if (upgraded)
+                                
+                                if (slot != EquipmentIndex.None)
                                 {
+                                    entry.Hero.BattleEquipment[slot] = element;
                                     results.Add($"received {element.GetModifiedItemName()}");
                                 }
                                 else if (!isCustom)
                                 {
+                                    // Sell non-custom items
                                     BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(entry.Hero, item.Value * 5);
-                                    results.Add($"sold {element.GetModifiedItemName()} for {item.Value}{Naming.Gold} ({failReason})");
+                                    results.Add($"sold {element.GetModifiedItemName()} for {item.Value}{Naming.Gold} (not needed)");
                                 }
                                 else
                                 {
-                                    // should never happen really, as custom items are only created when  
+                                    // should never happen really, as custom items are only created when they can be equipped 
                                     results.Add($"received {element.GetModifiedItemName()} (put in storage)");
                                 }
                             }
@@ -420,55 +422,18 @@ namespace BLTAdoptAHero
                 };
             }
 
-            private static (bool used, string failReason) UpgradeToItem(Hero hero, EquipmentElement element,  bool force)
+            private static ItemObject CreateCustomWeapon(Hero hero, HeroClassDef heroClass, EquipmentType weaponType)
             {
-                if (EquipHero.CanUseItem(element.Item, hero, force))
-                {
-                    // Find a slot
-                    var slot = hero.BattleEquipment.YieldEquipmentSlots()
-                        .Cast<(EquipmentElement element, EquipmentIndex index)?>()
-                        .FirstOrDefault(e => 
-                            e.HasValue 
-                            && Equipment.IsItemFitsToSlot(e.Value.index, element.Item) 
-                            && (e.Value.element.IsEmpty || e.Value.element.Item.Type == element.Item.Type 
-                                && (force || e.Value.element.Item.Tierf <= element.Item.Tierf)
-                                )
-                            );
-                    if (slot.HasValue)
-                    {
-                        hero.BattleEquipment[slot.Value.index] = element;
-                        return (true, null);
-                    }
-                    else
-                    {
-                        return (false, "your existing equipment is better");
-                    }
-                }
-                else
-                {
-                    return (false, "you can't use this item");
-                }
-            }
-
-            private static ItemObject CreateCustomWeapon(Hero hero, HeroClassDef heroClass, IEnumerable<EquipmentType> weaponType)
-            {
-                // Randomly choose where to make a craftable weapon or choose a pre-existing one, weighted by the number of 
-                // each weapon class in those categories
-                var craftingGroup = weaponType
-                    .GroupBy(c => CustomItems.CraftableEquipmentTypes.Contains(c))
-                    .SelectRandomWeighted(g => g.Count());
-
-                if (!craftingGroup.Key)
+                if (!CustomItems.CraftableEquipmentTypes.Contains(weaponType))
                 {
                     // Get the highest tier we can for the weapon type
-                    var itemType = craftingGroup.SelectRandom(); 
-                    return EquipHero.FindRandomTieredEquipment(5, hero, EquipHero.FindFlags.IgnoreAbility,
-                        o => o.IsEquipmentType(itemType)
-                        && EquipHero.UsableWeaponFilter(o, heroClass));
+                    var item = EquipHero.FindRandomTieredEquipment(5, hero, EquipHero.FindFlags.IgnoreAbility,
+                        o => o.IsEquipmentType(weaponType) && EquipHero.UsableWeaponFilter(o, heroClass));
+                    return item;
                 }
                 else
                 {
-                    return CustomItems.CreateCraftedWeapon(hero, craftingGroup.ToList(), 5);
+                    return CustomItems.CreateCraftedWeapon(hero, weaponType, 5);
                 }
             }
             
@@ -553,7 +518,7 @@ namespace BLTAdoptAHero
                     int count = int.Parse(strings[0]);
                     for (int i = 0; i < count; i++)
                     {
-                        var (item, modifier) = GeneratePrize(Hero.MainHero);
+                        var (item, modifier, _) = GeneratePrize(Hero.MainHero);
                         if (item == null)
                         {
                             return $"Couldn't generate a matching item";
@@ -571,7 +536,7 @@ namespace BLTAdoptAHero
 
                     for (int i = 0; i < count; i++)
                     {
-                        var (item, modifier) = GeneratePrizeType(prizeType, 6, Hero.MainHero, classDef);
+                        var (item, modifier, _) = GeneratePrizeType(prizeType, 6, Hero.MainHero, classDef);
                 
                         if (item == null)
                         {
@@ -597,14 +562,20 @@ namespace BLTAdoptAHero
             {
                 foreach (var h in BLTAdoptAHeroCampaignBehavior.GetAllAdoptedHeroes())
                 {
-                    var (item, itemModifier) = GeneratePrize(h);
+                    var (item, itemModifier, slot) = GeneratePrize(h);
                     if (item != null)
                     {
-                        (bool upgraded, string failReason) = UpgradeToItem(h, new(item, itemModifier), itemModifier != null);
-                        if (!upgraded)
+                        var element = new EquipmentElement(item, itemModifier);
+                        BLTAdoptAHeroCampaignBehavior.Current.AddCustomItem(h, element);
+                        if (slot != EquipmentIndex.None)
                         {
-                            Log.Error($"Failed to upgrade {item.Name} for {h.Name}: {failReason}");
+                            h.BattleEquipment[slot] = element;
                         }
+                        //(bool upgraded, string failReason) = UpgradeToItem(h, new(item, itemModifier), itemModifier != null);
+                        // if (!upgraded)
+                        // {
+                        //     Log.Error($"Failed to upgrade {item.Name} for {h.Name}: {failReason}");
+                        // }
                     }
                     else
                     {
@@ -612,49 +583,57 @@ namespace BLTAdoptAHero
                     }
                 }
 
+                if (GameStateManager.Current.ActiveState is InventoryState inventoryState)
+                {
+                    inventoryState.InventoryLogic?.Reset();
+                }
+
                 return "done";
             }
-#endif  
+#endif
 
-            private static (ItemObject item, ItemModifier modifier) GeneratePrizeType(GlobalTournamentConfig.PrizeType prizeType, int tier, Hero hero, HeroClassDef heroClass)
+            private static (ItemObject item, ItemModifier modifier, EquipmentIndex slot) GeneratePrizeType(GlobalTournamentConfig.PrizeType prizeType, int tier, Hero hero, HeroClassDef heroClass)
             {
                 return prizeType switch
                 {
                     GlobalTournamentConfig.PrizeType.Weapon => GeneratePrizeTypeWeapon(tier, hero, heroClass),
                     GlobalTournamentConfig.PrizeType.Armor => GeneratePrizeTypeArmor(tier, hero),
-                    GlobalTournamentConfig.PrizeType.Mount => GeneratePrizeTypeMount(hero),
+                    GlobalTournamentConfig.PrizeType.Mount => GeneratePrizeTypeMount(tier, hero, heroClass),
                     _ => throw new ArgumentOutOfRangeException(nameof(prizeType), prizeType, null)
                 };
             }
 
-            private static (ItemObject item, ItemModifier modifier) GeneratePrizeTypeWeapon(int tier, Hero hero,
-                HeroClassDef heroClass)
+            private static (ItemObject item, ItemModifier modifier, EquipmentIndex slot) GeneratePrizeTypeWeapon(
+                int tier, Hero hero, HeroClassDef heroClass)
             {
-                // Determine the heroes preferred skill by its rating (used if class isn't specified), default to one handed if the hero has no skills
-                var bestWeaponSkill = SkillGroup.SkillItemPairs.OrderByDescending(s => hero.GetSkillValue(s.skill)).FirstOrDefault()
-                                          .skill
-                                      ?? DefaultSkills.OneHanded;
+                // List of heroes custom items, so we can avoid giving duplicates (it will include what they are carrying, as all custom items are registered)
+                var heroCustomWeapons = BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(hero);
 
                 // List of heroes current weapons
                 var heroWeapons = hero.BattleEquipment.YieldFilledWeaponSlots().ToList();
 
-                // List of heroes custom weapons, so we can avoid giving duplicates
-                var heroCustomWeapons = heroWeapons.Where(w => BLTCustomItemsCampaignBehavior.Current.IsRegistered(w.ItemModifier))
-                    .ToList();
+                var replaceableHeroWeapons = heroWeapons
+                    .Where(w =>
+                        // Must be lower than the desired tier
+                        (int)w.element.Item.Tier < tier 
+                        // Must not be a custom item
+                        && !BLTCustomItemsCampaignBehavior.Current.IsRegistered(w.element.ItemModifier))
+                    .Select(w => (w.index, w.element.Item.GetEquipmentType()));
 
-                // Heroes preferred weapon classes, either by class or best skill, with some heuristics to avoid some edge cases, and getting duplicates
-                var weaponClasses =
-                    (heroClass?.Weapons ?? SkillGroup.GetEquipmentTypeForSkills(bestWeaponSkill))
-                    // don't want items we can't use, e.g. bolts if we don't have crossbow, and vice versa
+
+                // Weapon classes we can generate a prize for, with some heuristics to avoid some edge cases, and getting duplicates
+                var weaponClasses = 
+                    (heroClass?.IndexedWeapons ?? replaceableHeroWeapons)
                     .Where(s =>
+                        // No shields, they aren't cool rewards and don't support any modifiers
+                        s.type != EquipmentType.Shield
                         // Exclude bolts if hero doesn't have a crossbow already
-                        (s != EquipmentType.Bolts ||
-                         heroWeapons.Any(i => i.Item.WeaponComponent?.PrimaryWeapon?.AmmoClass == WeaponClass.Bolt))
+                        && (s.type != EquipmentType.Bolts || heroWeapons.Any(i => i.element.Item.WeaponComponent?.PrimaryWeapon?.AmmoClass == WeaponClass.Bolt))
                         // Exclude arrows if hero doesn't have a bow
-                        && (s != EquipmentType.Arrows ||
-                            heroWeapons.Any(i => i.Item.WeaponComponent?.PrimaryWeapon?.AmmoClass == WeaponClass.Arrow))
+                        && (s.type != EquipmentType.Arrows || heroWeapons.Any(i => i.element.Item.WeaponComponent?.PrimaryWeapon?.AmmoClass == WeaponClass.Arrow))
                         // Exclude any weapons we already have enough custom versions of (if we have class then we can match the class count, otherwise we just limit it to 1)
-                        && heroCustomWeapons.Count(i => i.Item.IsEquipmentType(s)) > (heroClass?.Weapons.Count(w => w == s) ?? 1))
+                        && heroCustomWeapons.Count(i => i.Item.IsEquipmentType(s.type)) < (heroClass?.Weapons.Count(w => w == s.type) ?? 1)
+                        )
                     .Shuffle()
                     .ToList();
 
@@ -667,95 +646,135 @@ namespace BLTAdoptAHero
                 if (tier > 5)
                 {
                     // Custom "modified" item
-                    var weapon = CreateCustomWeapon(hero, heroClass, weaponClasses);
-                    return weapon == null ? default : (weapon, GenerateItemModifier(weapon, "Prize"));
+                    var (item, index) = weaponClasses
+                        .Select(c => (
+                            item: CreateCustomWeapon(hero, heroClass, c.type),
+                            index: c.index))
+                        .FirstOrDefault(w => w.item != null);
+                    return item == null 
+                        ? default 
+                        : (item, GenerateItemModifier(item, "Prize"), index)
+                        ;
                 }
                 else
                 {
                     // Find a random item fitting the weapon class requirements
-                    var weapon = weaponClasses
-                        .Select(sk =>
-                            EquipHero.FindRandomTieredEquipment(5, hero, EquipHero.FindFlags.IgnoreAbility,
-                                i => i.IsEquipmentType(sk)))
-                        .FirstOrDefault(w => w != null);
-                    return (weapon, null);
+                    var (item, index) = weaponClasses
+                        .Select(c => (
+                            item: EquipHero.FindRandomTieredEquipment(tier, hero, EquipHero.FindFlags.IgnoreAbility | EquipHero.FindFlags.RequireExactTier, 
+                                i => i.IsEquipmentType(c.type)),
+                            index: c.index))
+                        .FirstOrDefault(w => w.item != null);
+                    return item == null || hero.BattleEquipment[index].Item?.Tier >= item.Tier
+                        ? default 
+                        : (item, null, index);
                 }
             }
 
-            private static (ItemObject item, ItemModifier modifier) GeneratePrizeTypeArmor(int tier, Hero hero)
+            private static (ItemObject item, ItemModifier modifier, EquipmentIndex slot) GeneratePrizeTypeArmor(int tier, Hero hero)
             {
-                // List of custom armors the hero already has, so we can ensure we don't get duplicates 
-                var heroCustomArmors = hero.BattleEquipment
-                    .YieldFilledArmorSlots()
-                    .Where(w => BLTCustomItemsCampaignBehavior.Current.IsRegistered(w.ItemModifier))
-                    .ToList();
+                // List of custom items the hero already has, and armor they are wearing that is as good or better than the tier we want 
+                var heroBetterArmor = BLTAdoptAHeroCampaignBehavior.Current
+                    .GetCustomItems(hero)
+                    .Concat(hero.BattleEquipment.YieldFilledArmorSlots().Where(e => (int)e.Item.Tier >= tier));
 
-                // Select randomly from the various armor types we can choose between, notice that ChestArmor is NOT here, its not currently used by the game, 
-                // and including it will result in a failure to find any matching items
-                var armorPart = new[]
-                    {
-                        ItemObject.ItemTypeEnum.BodyArmor,
-                        ItemObject.ItemTypeEnum.Cape,
-                        ItemObject.ItemTypeEnum.HandArmor,
-                        ItemObject.ItemTypeEnum.HeadArmor,
-                        ItemObject.ItemTypeEnum.LegArmor,
-                    }
-                    // Exclude any armors we already have a custom version of
-                    .Where(i => heroCustomArmors.All(i2 => i2.Item.ItemType != i))
+                // Select randomly from the various armor types we can choose between
+                var (index, itemType) = SkillGroup.ArmorIndexType
+                    // Exclude any armors we already have an equal or better version of
+                    .Where(i => heroBetterArmor.All(i2 => i2.Item.ItemType != i.itemType))
                     .SelectRandom();
 
+                if (index == default)
+                {
+                    return default;
+                }
+                
                 // Custom "modified" item
                 if (tier > 5)
                 {
-                    var armor = EquipHero.FindRandomTieredEquipment(5, hero, EquipHero.FindFlags.IgnoreAbility,
-                        o => o.ItemType == armorPart);
-                    return armor == null ? default : (armor, GenerateItemModifier(armor, "Prize"));
+                    var armor = EquipHero.FindRandomTieredEquipment(5, hero, 
+                        EquipHero.FindFlags.IgnoreAbility,
+                        o => o.ItemType == itemType);
+                    return armor == null ? default : (armor, GenerateItemModifier(armor, "Prize"), index);
                 }
                 else
                 {
-                    return (
-                        EquipHero.FindRandomTieredEquipment(tier, hero, EquipHero.FindFlags.IgnoreAbility,
-                            o => o.ItemType == armorPart), null);
+                    var armor = EquipHero.FindRandomTieredEquipment(tier, hero, 
+                        EquipHero.FindFlags.IgnoreAbility | EquipHero.FindFlags.RequireExactTier,
+                        o => o.ItemType == itemType);
+                    // if no armor was found, or its the same tier as what we have then return null
+                    return armor == null || hero.BattleEquipment.YieldFilledArmorSlots().Any(i2 => i2.Item.Type == armor.Type && i2.Item.Tier >= armor.Tier) 
+                        ? default 
+                        : (armor, null, index);
                 }
             }
 
-            private static (ItemObject item, ItemModifier modifier) GeneratePrizeTypeMount(Hero hero)
+            private static (ItemObject item, ItemModifier modifier, EquipmentIndex slot) GeneratePrizeTypeMount(
+                int tier, Hero hero, HeroClassDef heroClass)
             {
-                // If they already have a prize horse then don't get another one
-                var horseSlot = hero.BattleEquipment[EquipmentIndex.Horse];
-                if (BLTCustomItemsCampaignBehavior.Current.IsRegistered(horseSlot.ItemModifier))
+                var currentMount = hero.BattleEquipment.Horse;
+                // If we are generating is non custom prize, and the hero has a non custom mount already,
+                // of equal or better tier, we don't replace it
+                if (tier <= 5 && !currentMount.IsEmpty && (int) currentMount.Item.Tier >= tier)
                 {
                     return default;
                 }
 
-                // DOING: test consecutive tournament prize generation blt.testprize2. confirm it avoid duplicates, doesn't crash, etc.
-                // if an item can't be found then just the winner a bunch of gold? or nothing? make a setting for it.
-                // investigate viewing the new item
-                // add command for naming the new item (record the items in the HeroData, so they can be named)
-
+                // If the hero has a custom mount already, then we don't give them another, or any non custom one
+                if (BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(hero).Any(i => i.Item.ItemType == ItemObject.ItemTypeEnum.Horse))
+                {
+                    return default;
+                }
+                
+                bool IsCorrectMountFamily(ItemObject item)
+                {  
+                    // Must match hero class requirements
+                    return (heroClass == null
+                            || heroClass.UseHorse && item.HorseComponent.Monster.FamilyType is (int) EquipHero.MountFamilyType.horse 
+                            || heroClass.UseCamel && item.HorseComponent.Monster.FamilyType is (int) EquipHero.MountFamilyType.camel)
+                           // Must also not differ from current mount family type (or saddle can get messed up)
+                           && (currentMount.IsEmpty 
+                            || currentMount.Item.HorseComponent.Monster.FamilyType == item.HorseComponent.Monster.FamilyType
+                           );
+                }
+                
+                // Find mounts of the correct family type and tier
                 var mount = HeroHelpers.AllItems
-                    .Where(item => item.IsMountable && item.Tier >= ItemObject.ItemTiers.Tier3)
+                    .Where(item =>
+                        item.IsMountable
+                        // If we are making a custom mount then use any mount over Tier 2, otherwise match the tier exactly 
+                        && (tier > 5 && (int)item.Tier >= 2 || (int)item.Tier == tier)  
+                        && IsCorrectMountFamily(item)
+                        )
                     .SelectRandom();
+
                 if (mount == null)
                 {
                     return default;
                 }
 
-                var modifier = GenerateItemModifier(mount, "Prize");
-                return (mount, modifier);
+                var modifier = tier > 5 
+                    ? GenerateItemModifier(mount, "Prize") 
+                    : null;
+                return (mount, modifier, EquipmentIndex.Horse);
             }
 
-            private static (ItemObject item, ItemModifier modifier) GeneratePrize(Hero hero)
+            private static (ItemObject item, ItemModifier modifier, EquipmentIndex slot) GeneratePrize(Hero hero)
             {
                 var heroClass = BLTAdoptAHeroCampaignBehavior.Current.GetClass(hero);
 
-                int tier = BLTAdoptAHeroModule.TournamentConfig.PrizeTierWeights.SelectRandomWeighted(t => t.weight).tier;
+                // Randomize the reward tier order, by random weighting
+                var tiers = BLTAdoptAHeroModule.TournamentConfig.PrizeTierWeights
+                    .OrderRandomWeighted(tier => tier.weight).ToList();
+                //int tier = BLTAdoptAHeroModule.TournamentConfig.PrizeTierWeights.SelectRandomWeighted(t => t.weight).tier;
                 bool shouldUseHorse = EquipHero.HeroShouldUseHorse(hero, heroClass);
                 return BLTAdoptAHeroModule.TournamentConfig.PrizeTypeWeights
                         // Exclude mount when it shouldn't be used by the hero or they already have a tournament reward horse
                         .Where(p => shouldUseHorse || p.type != GlobalTournamentConfig.PrizeType.Mount)
-                        .OrderRandomWeighted(t => t.weight)
-                        .Select(t => GeneratePrizeType(t.type, tier, hero, heroClass))
+                        // Randomize the reward type order, by random weighting
+                        .OrderRandomWeighted(type => type.weight)
+                        .SelectMany(type => 
+                            tiers.Select(tier => GeneratePrizeType(type.type, tier.tier, hero, heroClass)))
                         .FirstOrDefault(i => i != default)
                     ;
             }
@@ -814,11 +833,8 @@ namespace BLTAdoptAHero
 
             private static void SetPlaceholderPrize(TournamentGame tournamentGame)
             {
-                if (BLTAdoptAHeroModule.TournamentConfig.UseCustomPrizes)
-                {
-                    AccessTools.Property(typeof(TournamentGame), nameof(TournamentGame.Prize))
-                        .SetValue(tournamentGame, DefaultItems.Charcoal);
-                }
+                AccessTools.Property(typeof(TournamentGame), nameof(TournamentGame.Prize))
+                    .SetValue(tournamentGame, DefaultItems.Charcoal);
             }
 
             private void ReleaseUnmanagedResources()

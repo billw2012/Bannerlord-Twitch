@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Bannerlord.ButterLib.Common.Extensions;
 using Bannerlord.ButterLib.SaveSystem.Extensions;
-using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
+using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
-using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.SaveSystem;
 
@@ -19,33 +17,33 @@ namespace BLTAdoptAHero
         
         private class ItemModifierData
         {
-            [SaveableProperty(0)]
+            [SaveableProperty(0), UsedImplicitly]
             public string Name { get; set; }
-            [SaveableProperty(1)]
+            [SaveableProperty(1), UsedImplicitly]
             public string StringId { get; set; }
             
-            [SaveableProperty(2)]
+            [SaveableProperty(2), UsedImplicitly]
             public int Damage { get; set; }
-            [SaveableProperty(3)]
+            [SaveableProperty(3), UsedImplicitly]
             public int Speed { get; set; }
-            [SaveableProperty(4)]
+            [SaveableProperty(4), UsedImplicitly]
             public int MissileSpeed { get; set; }
-            [SaveableProperty(5)]
+            [SaveableProperty(5), UsedImplicitly]
             public int Armor { get; set; }
-            [SaveableProperty(6)]
+            [SaveableProperty(6), UsedImplicitly]
             public short HitPoints { get; set; }
-            [SaveableProperty(7)]
+            [SaveableProperty(7), UsedImplicitly]
             public short StackCount { get; set; }
-            [SaveableProperty(8)]
+            [SaveableProperty(8), UsedImplicitly]
             public float MountSpeed { get; set; }
-            [SaveableProperty(9)]
+            [SaveableProperty(9), UsedImplicitly]
             public float Maneuver { get; set; }
-            [SaveableProperty(10)]
+            [SaveableProperty(10), UsedImplicitly]
             public float ChargeDamage { get; set; }
-            [SaveableProperty(11)]
+            [SaveableProperty(11), UsedImplicitly]
             public float MountHitPoints { get; set; }
             
-            [SaveableProperty(12)]
+            [SaveableProperty(12), UsedImplicitly]
             public string CustomName { get; set; }
             
             public void Apply(ItemModifier toModifier)
@@ -64,13 +62,6 @@ namespace BLTAdoptAHero
                 toModifier.SetMountHitPointsModifier(MountHitPoints);
             }
         }
-        
-        // private class CustomItemInitializationData
-        // {
-        //     public ItemObject BaseItem { get; set; }
-        //     public string ItemName { get; set; }
-        //     public ItemModifierData Modifiers { get; set; }
-        // }
 
         private Dictionary<ItemModifier, ItemModifierData> customItemModifiers = new();
         

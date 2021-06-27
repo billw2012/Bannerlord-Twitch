@@ -353,11 +353,6 @@ namespace BLTAdoptAHero
         [Category("Match Rewards"), Description("XP given if the hero participates in a match"), PropertyOrder(3)]
         public int ParticipateMatchXP { get; set; } = 2500;
 
-        [Category("Prize"),
-         Description("Use custom tournament rewards, generated or selected especially for the winner"),
-         PropertyOrder(0)]
-        public bool UseCustomPrizes { get; set; } = true;
-
         [Category("Prize"), Description("Relative proportion of prizes that will be weapons. This includes all one handed, two handed, ranged and ammo."), PropertyOrder(1)]
         public float PrizeWeaponWeight { get; set; } = 1f;
 

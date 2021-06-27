@@ -42,11 +42,13 @@ namespace BLTAdoptAHero
             [Category("Limits"), Description("Only allow heroes from same faction as player"), PropertyOrder(4), UsedImplicitly]
             public bool OnlySameFaction { get; set; }
 
-            [Category("Limits"),
-             Description("What fraction of assets will be inherited when a new character is " +
-                         "adopted after an old one died (0 to 1)"),
-             PropertyOrder(6)]
+            [Category("Limits"), Description("What fraction of assets will be inherited when a new character is " +
+                                             "adopted after an old one died (0 to 1)"), PropertyOrder(6)]
             public float Inheritance { get; set; } = 0.25f;
+            
+            [Category("Limits"), Description("How many custom items can be inherited"), PropertyOrder(7)]
+            public int MaxInheritedCustomItems { get; set; } = 2;
+            
             [Category("Limits"), Description("Only subscribers can adopt"), PropertyOrder(7), UsedImplicitly]
             public bool SubscriberOnly { get; set; }
             [Category("Limits"),
@@ -74,25 +76,11 @@ namespace BLTAdoptAHero
             [Category("Initialization"), Description("Starting class of the hero"), PropertyOrder(3), ItemsSource(typeof(HeroClassDef.ItemSource)), UsedImplicitly]
             public Guid StartingClass { get; set; }
 
-            [Category("Initialization"),
-             Description("Whether the hero will start with a melee weapon, only applies if StartingEquipmentTier is " +
-                         "specified"), PropertyOrder(4)]
-            public bool StartWithMeleeWeapon { get; set; } = true;
+            [Category("Initialization"), Description("Whether the hero will spawn in hero party (Only work with Join Player Companion activated)"), PropertyOrder(8), UsedImplicitly]
+            public bool SpawnInParty { get; set; }
             
-            [Category("Initialization"),
-             Description("Whether the hero will start with a ranged weapon, only applies if StartingEquipmentTier is " +
-                         "specified"), PropertyOrder(5)]
-            public bool StartWithRangedWeapon { get; set; } = true;
-            
-            [Category("Initialization"), Description("Whether the hero will start with a horse, only applies if StartingEquipmentTier is specified"), PropertyOrder(3)]
-            public bool StartWithHorse { get; set; } = true;
-            
-            [Category("Initialization"), Description("Whether the hero will start with armor, only applies if StartingEquipmentTier is specified"), PropertyOrder(4)]
-            public bool StartWithArmor { get; set; } = true;
-            [Category("Initialization"), Description("Whether the hero will spawn in hero party (Only work with Join Player Companion activated)"), PropertyOrder(8)]
-            public bool SpawnInParty { get; set; } = true;
-            [Category("Initialization"), Description("Whether the hero will be a companion"), PropertyOrder(9)]
-            public bool JoinPlayerCompanion { get; set; } = true;
+            [Category("Initialization"), Description("Whether the hero will be a companion"), PropertyOrder(9), UsedImplicitly]
+            public bool JoinPlayerCompanion { get; set; }
         }
 
         Type IRewardHandler.RewardConfigType => typeof(Settings);
@@ -257,6 +245,8 @@ namespace BLTAdoptAHero
             string oldName = newHero.Name.ToString();
             BLTAdoptAHeroCampaignBehavior.Current.InitAdoptedHero(newHero, userName);
             
+            // Inherit items before equipping, so we can use them DURING equipping
+            var inheritedItems = BLTAdoptAHeroCampaignBehavior.Current.InheritCustomItems(newHero, settings.MaxInheritedCustomItems);
             if (settings.StartingEquipmentTier.HasValue)
             {
                 EquipHero.RemoveAllEquipment(newHero);
@@ -275,11 +265,19 @@ namespace BLTAdoptAHero
             
             BLTAdoptAHeroCampaignBehavior.Current.SetHeroGold(newHero, settings.StartingGold);
 
-            Log.ShowInformation($"{oldName} is now known as {newHero.Name}!", newHero.CharacterObject, Log.Sound.Horns2);
-            int inherited = BLTAdoptAHeroCampaignBehavior.Current.InheritGold(newHero, settings.Inheritance);
+            int inheritedGold = BLTAdoptAHeroCampaignBehavior.Current.InheritGold(newHero, settings.Inheritance);
             int newGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(newHero);
-            return inherited > 0 
-                ? (true, $"{oldName} is now known as {newHero.Name}, they have {newGold}{Naming.Gold} (inheriting {inherited}{Naming.Gold})!") 
+
+            var inherited = inheritedItems.Select(i => i.GetModifiedItemName().ToString()).ToList();
+            if (inheritedGold != 0)
+            {
+                inherited.Add($"{inheritedGold}{Naming.Gold}");
+            }
+
+            Log.ShowInformation($"{oldName} is now known as {newHero.Name}!", newHero.CharacterObject, Log.Sound.Horns2);
+
+            return inherited.Any() 
+                ? (true, $"{oldName} is now known as {newHero.Name}, they have {newGold}{Naming.Gold} (inheriting {string.Join(", ", inherited)})!") 
                 : (true, $"{oldName} is now known as {newHero.Name}, they have {newGold}{Naming.Gold}!");
         }
     }

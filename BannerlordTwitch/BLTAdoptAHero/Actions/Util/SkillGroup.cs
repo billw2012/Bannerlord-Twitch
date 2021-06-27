@@ -148,14 +148,15 @@ namespace BLTAdoptAHero
             (DefaultSkills.Crossbow, new [] { WeaponClass.Crossbow, WeaponClass.Bolt }),
             (DefaultSkills.Throwing, new [] { WeaponClass.ThrowingKnife, WeaponClass.ThrowingAxe, WeaponClass.Javelin }),
         };
-
-
+        
         public static SkillObject[] MovementSkills => new [] {
             DefaultSkills.Riding,
             DefaultSkills.Athletics,
         };
 
-        public static readonly (EquipmentIndex, ItemObject.ItemTypeEnum)[] ArmorIndexType = new[] {
+        // notice that ChestArmor is NOT here, its not currently used by the game, 
+        // and including it will result in a failure to find any matching items
+        public static readonly (EquipmentIndex slot, ItemObject.ItemTypeEnum itemType)[] ArmorIndexType = {
             (EquipmentIndex.Head, ItemObject.ItemTypeEnum.HeadArmor),
             (EquipmentIndex.Body, ItemObject.ItemTypeEnum.BodyArmor),
             (EquipmentIndex.Leg, ItemObject.ItemTypeEnum.LegArmor),

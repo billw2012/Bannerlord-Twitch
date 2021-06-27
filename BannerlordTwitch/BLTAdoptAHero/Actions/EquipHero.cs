@@ -193,19 +193,21 @@ namespace BLTAdoptAHero
         
         public static void UpgradeEquipment(Hero adoptedHero, int targetTier, HeroClassDef classDef, bool keepBetter)
         {
-            // Backup the existing equipment so we can select from it if we want to
-            var oldItems = adoptedHero.BattleEquipment.YieldEquipmentSlots()
-                .Select(e => e.element).Where(i => !i.IsEmpty).ToList();
+            // Take existing equipment and the heroes custom items, so we can (re)use them if appropriate
+            var availableItems = adoptedHero.BattleEquipment.YieldEquipmentSlots()
+                .Select(e => e.element).Where(i => !i.IsEmpty)
+                .Concat(BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero))
+                .ToList();
 
             // Clear the weapon slots
-            foreach (var x in adoptedHero.BattleEquipment.YieldWeaponSlots())
+            foreach (var x in adoptedHero.BattleEquipment.YieldEquipmentSlots())
             {
                 adoptedHero.BattleEquipment[x.index] = EquipmentElement.Invalid;
             }
 
             EquipmentElement FindNewEquipment(Func<ItemObject, bool> filter = null)
             {
-                var oldEquipment = oldItems.FirstOrDefault(i =>
+                var oldEquipment = availableItems.FirstOrDefault(i =>
                     (keepBetter && i.Item.Tier >= (ItemObject.ItemTiers) targetTier 
                         || BLTCustomItemsCampaignBehavior.Current.IsRegistered(i.ItemModifier))
                     && filter?.Invoke(i.Item) != false);
@@ -288,10 +290,9 @@ namespace BLTAdoptAHero
                 {
                     var weapon = SkillGroup.MeleeSkillItemPairs
                         .OrderByDescending(s => adoptedHero.GetSkillValue(s.skill))
-                        .Select(s =>
-                            FindNewEquipmentBySkill(
-                                s.skill,
-                                o => PrimaryWeaponFilter(o, classDef) && WeaponIsSwingable(o)))
+                        .Select(s => FindNewEquipmentBySkill(
+                            s.skill, 
+                            o => PrimaryWeaponFilter(o) && WeaponIsSwingable(o)))
                         .FirstOrDefault(w => !w.IsEmpty);
                     ;
                     if (!weapon.IsEmpty)
@@ -320,19 +321,33 @@ namespace BLTAdoptAHero
             }
 
             // Always want armor obviously
-            UpgradeArmor(adoptedHero, targetTier, keepBetter);
-
+            foreach (var (index, itemType) in SkillGroup.ArmorIndexType)
+            {
+                adoptedHero.BattleEquipment[index] = FindNewEquipmentByType(itemType);
+            }
+            
             // We should assign a horse if using a class definition that specifies riding, OR 
             // if not using class definition and the riding skill is better than athletics, or polearm
             // is the top combat skill
             if (HeroShouldUseHorse(adoptedHero, classDef))
             {
-                UpgradeHorse(adoptedHero, targetTier, keepBetter, classDef);
-            }
-            else
-            {
-                adoptedHero.BattleEquipment[EquipmentIndex.Horse] = EquipmentElement.Invalid;
-                adoptedHero.BattleEquipment[EquipmentIndex.HorseHarness] = EquipmentElement.Invalid;
+                var horse = FindNewEquipmentByType(
+                    ItemObject.ItemTypeEnum.Horse,
+                    h => 
+                        h.HorseComponent?.IsMount == true
+                        && (classDef == null
+                            || classDef.UseHorse && h.HorseComponent.Monster.FamilyType == (int) MountFamilyType.horse
+                            || classDef.UseCamel && h.HorseComponent.Monster.FamilyType == (int) MountFamilyType.camel
+                        ));
+                if (!horse.IsEmpty)
+                {
+                    adoptedHero.BattleEquipment[EquipmentIndex.Horse] = horse;
+
+                    int horseType = horse.Item.HorseComponent.Monster.FamilyType;
+                    adoptedHero.BattleEquipment[EquipmentIndex.HorseHarness] = FindNewEquipmentByType(
+                        ItemObject.ItemTypeEnum.HorseHarness, h => horseType == h.ArmorComponent?.FamilyType
+                        );
+                }
             }
 
             UpgradeCivilian(adoptedHero, targetTier, keepBetter);
@@ -340,7 +355,7 @@ namespace BLTAdoptAHero
 
         public static bool HeroShouldUseHorse(Hero adoptedHero, HeroClassDef classDef)
         {
-            var heroWeapons = adoptedHero.BattleEquipment.YieldFilledWeaponSlots().Select(e => e.Item).ToList();
+            var heroWeapons = adoptedHero.BattleEquipment.YieldFilledWeaponSlots().Select(e => e.element.Item).ToList();
             return classDef is {Mounted: true} 
                    || classDef == null
                    && (
@@ -451,57 +466,12 @@ namespace BLTAdoptAHero
         //     return itemsPurchased;
         // }
 
-        private static IEnumerable<ItemObject> UpgradeArmor(Hero adoptedHero, int targetTier, bool keepBetter)
+        private static void UpgradeCivilian(Hero adoptedHero, int targetTier, bool keepBetter)
         {
-            var itemsPurchased = new List<ItemObject>();
-            foreach (var (index, itemType) in SkillGroup.ArmorIndexType)
-            {
-                var newItem = UpgradeItemInSlot(index, itemType, targetTier, keepBetter, adoptedHero.BattleEquipment, adoptedHero);
-                if (newItem != null) itemsPurchased.Add(newItem);
-            }
-
-            return itemsPurchased;
-        }
-
-        private static void UpgradeHorse(Hero adoptedHero, int targetTier, bool keepBetter, HeroClassDef heroClassDef)
-        {
-            // <!-- family_type:
-            // 0 for human
-            // 1 for horse
-            // 2 for camel
-            // 3 for cow
-            // 4 for goose
-            // 5 for hog
-            // 6 for sheep
-            // 7 for hare
-            // -->
-            UpgradeItemInSlot(EquipmentIndex.Horse, ItemObject.ItemTypeEnum.Horse, targetTier, keepBetter,
-                adoptedHero.BattleEquipment, adoptedHero, h => 
-                    h.HorseComponent?.IsMount == true
-                    && (heroClassDef == null
-                        || heroClassDef.UseHorse && h.HorseComponent.Monster.FamilyType == 1
-                        || heroClassDef.UseCamel && h.HorseComponent.Monster.FamilyType == 2
-                        )
-                    );
-            var horse = adoptedHero.BattleEquipment[EquipmentIndex.Horse];
-            if (!horse.IsEmpty)
-            {
-                int horseType = horse.Item.HorseComponent.Monster.FamilyType;
-                UpgradeItemInSlot(EquipmentIndex.HorseHarness,
-                    ItemObject.ItemTypeEnum.HorseHarness,
-                    targetTier, keepBetter, adoptedHero.BattleEquipment, adoptedHero,
-                    h => horseType == h.ArmorComponent?.FamilyType);
-            }
-        }
-
-        private static IEnumerable<ItemObject> UpgradeCivilian(Hero adoptedHero, int targetTier, bool keepBetter)
-        {
-            var itemsPurchased = new List<ItemObject>();
             foreach (var (index, itemType) in SkillGroup.ArmorIndexType)
             {
                 var newItem = UpgradeItemInSlot(index, itemType, targetTier, keepBetter, adoptedHero.CivilianEquipment, adoptedHero,
                     o => o.IsCivilian);
-                if (newItem != null) itemsPurchased.Add(newItem);
             }
 
             // Clear weapon slots beyond 0
@@ -512,11 +482,22 @@ namespace BLTAdoptAHero
             
             UpgradeItemInSlot(EquipmentIndex.Weapon0, ItemObject.ItemTypeEnum.OneHandedWeapon, targetTier, keepBetter,
                 adoptedHero.CivilianEquipment, adoptedHero);
-
-            return itemsPurchased;
         }
 
-        private static ItemObject UpgradeItemInSlot(EquipmentIndex equipmentIndex, ItemObject.ItemTypeEnum itemType, int tier, bool keepBetter, Equipment equipment, Hero hero, Func<ItemObject, bool> filter = null)
+        public enum MountFamilyType
+        {
+            human,
+            horse,
+            camel,
+            cow,
+            goose,
+            hog,
+            sheep,
+            hare,
+        }
+
+        private static ItemObject UpgradeItemInSlot(EquipmentIndex equipmentIndex, ItemObject.ItemTypeEnum itemType, 
+            int tier, bool keepBetter, Equipment equipment, Hero hero, Func<ItemObject, bool> filter = null)
         {
             var slot = equipment[equipmentIndex];
             if ((slot.ItemModifier == null || !BLTCustomItemsCampaignBehavior.Current.IsRegistered(slot.ItemModifier))
@@ -574,6 +555,7 @@ namespace BLTAdoptAHero
             None = 0,
             IgnoreAbility = 1 << 0,
             AllowNonMerchandise = 1 << 1,
+            RequireExactTier = 1 << 2,
         }
         
         public static ItemObject FindRandomTieredEquipment(int tier, Hero hero, FindFlags flags = FindFlags.None, Func<ItemObject, bool> filter = null)
@@ -589,14 +571,24 @@ namespace BLTAdoptAHero
                     )
                 .ToList();
 
-            // This should order the tier groups to be
-            // (closest tier below the desired one), (closest tier above the desired one), etc...
-            var tieredItems = items.GroupBy(item => (int)item.Tier)
+            if (flags.HasFlag(FindFlags.RequireExactTier))
+            {
+                return items
+                    .Where(item => (int) item.Tier == tier)
+                    .SelectRandom();
+            }
+            else
+            {
+                // This should order the tier groups to be
+                // (closest tier below the desired one), (closest tier above the desired one), etc...
+                var tieredItems = items.GroupBy(item => (int) item.Tier)
+                    .OrderBy(t => 100 * Math.Abs(tier - t.Key) + t.Key)
+                    .ToList();
 
-                .OrderBy(t => 100 * Math.Abs(tier - t.Key) + t.Key)
-                .ToList();
-
-            return tieredItems.FirstOrDefault()?.SelectRandom();
+                return tieredItems
+                    .FirstOrDefault()?
+                    .SelectRandom();
+            }
         }
 
         // private static (EquipmentElement element, EquipmentIndex index) FindEmptyWeaponSlot(Equipment equipment)

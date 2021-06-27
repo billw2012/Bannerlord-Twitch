@@ -31,11 +31,13 @@ namespace BLTAdoptAHero
             public bool ShowEquipment { get; set; }
             [Description("Shows the full battle inventory of the hero"), PropertyOrder(5)]
             public bool ShowInventory { get; set; }
-            [Description("Shows the full civilian inventory of the hero"), PropertyOrder(5)]
+            [Description("Shows the heroes storage (all their custom items)"), PropertyOrder(6)]
+            public bool ShowStorage { get; set; }
+            [Description("Shows the full civilian inventory of the hero"), PropertyOrder(7)]
             public bool ShowCivilianInventory { get; set; }
-            [Description("Shows a summary of the retinue of the hero (count and tier)"), PropertyOrder(6)]
+            [Description("Shows a summary of the retinue of the hero (count and tier)"), PropertyOrder(8)]
             public bool ShowRetinue { get; set; }
-            [Description("Shows the exact classes and counts of the retinue of the hero"), PropertyOrder(6)]
+            [Description("Shows the exact classes and counts of the retinue of the hero"), PropertyOrder(9)]
             public bool ShowRetinueList { get; set; }
         }
         
@@ -105,21 +107,27 @@ namespace BLTAdoptAHero
                 if (settings.ShowInventory)
                 {
                     infoStrings.Add("Battle " + string.Join("■", adoptedHero.BattleEquipment
-                        .YieldEquipmentSlots()
-                        .Where(e => !e.element.IsEmpty)
-                        .Select(e => $"{e.element.Item.Name}")
+                        .YieldFilledEquipmentSlots()
+                        .Select(e => $"{e.GetModifiedItemName()}")
                     ));
                 }
-                
+
                 if(settings.ShowCivilianInventory)
                 {
                     infoStrings.Add("Civ " + string.Join("■", adoptedHero.CivilianEquipment
-                        .YieldEquipmentSlots()
-                        .Where(e => !e.element.IsEmpty)
-                        .Select(e => $"{e.element.Item.Name}")
+                        .YieldFilledEquipmentSlots()
+                        .Select(e => $"{e.GetModifiedItemName()}")
                     ));
                 }
                 
+                if (settings.ShowStorage)
+                {
+                    var customItems = BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero);
+                    infoStrings.Add("Stored " + string.Join("■", customItems
+                        .Select(e => e.GetModifiedItemName())
+                    ));
+                }
+
                 if (settings.ShowRetinue)
                 {
                     var retinue = BLTAdoptAHeroCampaignBehavior.Current.GetRetinue(adoptedHero).ToList();

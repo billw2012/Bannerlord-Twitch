@@ -26,6 +26,7 @@ namespace BLTAdoptAHero
         ThrowingAxes,
         ThrowingJavelins,
         Shield,
+        Num,
     }
 
     public static class EquipmentTypeHelpers
@@ -53,17 +54,17 @@ namespace BLTAdoptAHero
             return equipmentType switch
             {
                 EquipmentType.None => false,
-                EquipmentType.Dagger => item.PrimaryWeaponClass(WeaponClass.Dagger),
-                EquipmentType.OneHandedSword => item.PrimaryWeaponClass(WeaponClass.OneHandedSword),
-                EquipmentType.TwoHandedSword => item.PrimaryWeaponClass(WeaponClass.TwoHandedSword),
-                EquipmentType.OneHandedAxe => item.PrimaryWeaponClass(WeaponClass.OneHandedAxe),
-                EquipmentType.TwoHandedAxe => item.PrimaryWeaponClass(WeaponClass.TwoHandedAxe),
-                EquipmentType.OneHandedMace => item.PrimaryWeaponClass(WeaponClass.Mace),
-                EquipmentType.TwoHandedMace => item.PrimaryWeaponClass(WeaponClass.TwoHandedMace),
-                EquipmentType.OneHandedLance => item.PrimaryWeaponClass(WeaponClass.OneHandedPolearm) && !item.IsSwingable() && !item.IsRanged(),
-                EquipmentType.TwoHandedLance => item.PrimaryWeaponClass(WeaponClass.TwoHandedPolearm) && !item.IsSwingable() && !item.IsRanged(),
-                EquipmentType.OneHandedGlaive => item.PrimaryWeaponClass(WeaponClass.OneHandedPolearm) && item.IsSwingable() && !item.IsRanged(),
-                EquipmentType.TwoHandedGlaive => item.PrimaryWeaponClass(WeaponClass.TwoHandedPolearm) && item.IsSwingable() && !item.IsRanged(),
+                EquipmentType.Dagger => item.HasWeaponClass(WeaponClass.Dagger) && !item.IsRanged(),
+                EquipmentType.OneHandedSword => item.HasWeaponClass(WeaponClass.OneHandedSword) && !item.IsRanged(),
+                EquipmentType.TwoHandedSword => item.HasWeaponClass(WeaponClass.TwoHandedSword) && !item.IsRanged(),
+                EquipmentType.OneHandedAxe => item.HasWeaponClass(WeaponClass.OneHandedAxe) && !item.IsRanged(),
+                EquipmentType.TwoHandedAxe => item.HasWeaponClass(WeaponClass.TwoHandedAxe) && !item.IsRanged(),
+                EquipmentType.OneHandedMace => item.HasWeaponClass(WeaponClass.Mace) && !item.IsRanged(),
+                EquipmentType.TwoHandedMace => item.HasWeaponClass(WeaponClass.TwoHandedMace) && !item.IsRanged(),
+                EquipmentType.OneHandedLance => item.HasWeaponClass(WeaponClass.OneHandedPolearm) && !item.IsSwingable() && !item.IsRanged(),
+                EquipmentType.TwoHandedLance => item.HasWeaponClass(WeaponClass.TwoHandedPolearm) && !item.IsSwingable() && !item.IsRanged(),
+                EquipmentType.OneHandedGlaive => item.HasWeaponClass(WeaponClass.OneHandedPolearm) && item.IsSwingable() && !item.IsRanged(),
+                EquipmentType.TwoHandedGlaive => item.HasWeaponClass(WeaponClass.TwoHandedPolearm) && item.IsSwingable() && !item.IsRanged(),
                 EquipmentType.Bow => item.ItemType == ItemObject.ItemTypeEnum.Bow,
                 EquipmentType.Crossbow => item.ItemType == ItemObject.ItemTypeEnum.Crossbow,
                 EquipmentType.Arrows => item.ItemType == ItemObject.ItemTypeEnum.Arrows,
@@ -74,6 +75,16 @@ namespace BLTAdoptAHero
                 EquipmentType.Shield => item.ItemType == ItemObject.ItemTypeEnum.Shield,
                 _ => throw new ArgumentOutOfRangeException(nameof(equipmentType), equipmentType, null)
             };
+        }
+
+        public static EquipmentType GetEquipmentType(this ItemObject item)
+        {
+            for (var i = EquipmentType.None; i < EquipmentType.Num; i++)
+            {
+                if (item.IsEquipmentType(i))
+                    return i;
+            }
+            return EquipmentType.None;
         }
         
         public static WeaponClass GetWeaponClass(EquipmentType equipmentType) =>

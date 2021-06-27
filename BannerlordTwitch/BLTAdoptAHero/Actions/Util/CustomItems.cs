@@ -23,7 +23,7 @@ namespace BLTAdoptAHero.Actions.Util
         {
             try
             {
-                var item = CreateCraftedWeapon(Hero.MainHero, new [] {(EquipmentType) Enum.Parse(typeof(EquipmentType), strings[0])}, int.Parse(strings[1]));
+                var item = CreateCraftedWeapon(Hero.MainHero, (EquipmentType) Enum.Parse(typeof(EquipmentType), strings[0]), int.Parse(strings[1]));
 
                 if (item != null)
                 {
@@ -131,48 +131,55 @@ namespace BLTAdoptAHero.Actions.Util
             EquipmentType.ThrowingJavelins,
         };
 
-        public static ItemObject CreateCraftedWeapon(Hero hero, IEnumerable<EquipmentType> weaponTypes, int desiredTier)
+        public static ItemObject CreateCraftedWeapon(Hero hero, EquipmentType weaponType, int desiredTier)
         {
-            var equipmentTypes = weaponTypes.ToList();
-            var equipmentWeaponClasses = equipmentTypes.Select(EquipmentTypeHelpers.GetWeaponClass).ToHashSet();
+            // var equipmentTypes = weaponTypes.ToList();
+            var equipmentWeaponClass = EquipmentTypeHelpers.GetWeaponClass(weaponType);
             var validTemplates = CraftingTemplate.All
-                .Where(t => t.WeaponUsageDatas?
-                    .Any(w => equipmentWeaponClasses.Contains(w.WeaponClass)) == true)
+                .Where(t => t.WeaponUsageDatas?.Any(w => w.WeaponClass == equipmentWeaponClass) == true)
                 .ToList();
 
-            string weaponClassesStr = string.Join("/", equipmentTypes.Select(e => e.ToString()));
             if (!validTemplates.Any())
             {
-                Log.Error($"Failed to create Tier {desiredTier + 1} {weaponClassesStr} for {hero.Name}: no matching templates for these weapon classes");
+                // Log.Error($"Failed to create Tier {desiredTier + 1} {weaponType} for {hero.Name}: no matching templates for these weapon classes");
                 return null;
             }
 
             int itr = 0;
-            ItemObject generatedItem;
+            var itemsOfCorrectType = new List<ItemObject>();
             do
             {
                 var crafting = new Crafting(validTemplates.SelectRandom(), hero.Culture);
                 crafting.Init();
                 crafting.Randomize();
 
-                generatedItem = (ItemObject)AccessTools.Field(typeof(Crafting), "_craftedItemObject").GetValue(crafting);
+                var generatedItem = (ItemObject)AccessTools.Field(typeof(Crafting), "_craftedItemObject").GetValue(crafting);
+                if (generatedItem.IsEquipmentType(weaponType))
+                {
+                    itemsOfCorrectType.Add(generatedItem);
 
+                    // We can stop immediately if we found one of the best tier
+                    if (generatedItem.Tier == ItemObject.ItemTiers.Tier6)
+                    {
+                        break;
+                    }
+                }
                 // SetItemName(generatedItem, new ($"{crafting.CurrentCraftingTemplate.TemplateName} (Tournament Prize of {hero.FirstName})"));
-            } while (
-                (!equipmentTypes.Any(w => generatedItem.IsEquipmentType(w)) || (int)generatedItem.Tier != desiredTier) 
-                && ++itr < 1000);
+            } while (++itr < 500);
             
-            if (itr >= 1000)
+            if (!itemsOfCorrectType.Any() && itr >= 500)
             {
-                Log.Error($"Failed to create Tier {desiredTier + 1} {weaponClassesStr} for {hero.Name} in {itr} iterations");
+                Log.Error($"Failed to create crafted {weaponType} for {hero.Name} in {itr} iterations");
                 return null;
             }
+
+            var bestItem = itemsOfCorrectType.OrderByDescending(item => item.Tier).First();
             
-            Log.Info($"Created {generatedItem.Tier} ({generatedItem.Tierf:0.00}) {generatedItem.WeaponComponent?.PrimaryWeapon.WeaponClass} {generatedItem.Name} for {hero.Name} in {itr} iterations");
+            Log.Info($"Created {bestItem.Tier} ({bestItem.Tierf:0.00}) {bestItem.WeaponComponent?.PrimaryWeapon.WeaponClass} {bestItem.Name} for {hero.Name} in {itr} iterations");
             
-            generatedItem.StringId = Guid.NewGuid().ToString();
-            CompleteCraftedItem(generatedItem);
-            return MBObjectManager.Instance.RegisterObject(generatedItem);
+            bestItem.StringId = Guid.NewGuid().ToString();
+            CompleteCraftedItem(bestItem);
+            return MBObjectManager.Instance.RegisterObject(bestItem);
         }
 
         private static void SetItemName(ItemObject item, TextObject name) => AccessTools.Property(typeof(ItemObject), nameof(ItemObject.Name)).SetValue(item, name);
