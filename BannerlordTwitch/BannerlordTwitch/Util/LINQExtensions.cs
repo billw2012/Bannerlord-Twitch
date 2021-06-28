@@ -12,7 +12,7 @@ public static class LINQExtensions
         var prob = @this.Select(o => (obj: o, P: weightFn(o)));
         float totalProb = prob.Select(o => o.P).Sum();
 
-        float randomP = rnd * totalProb;
+        float randomP = (float) (StaticRandom.Next() * totalWeight);
         float sum = 0;
         foreach ((var obj, float p) in prob)
         {
@@ -64,7 +64,10 @@ public static class LINQExtensions
             yield return (equipment[i], (EquipmentIndex) i);
         }
     }
-            
+
+    public static IEnumerable<EquipmentElement> YieldFilledWeaponSlots(this Equipment equipment) 
+        => equipment.YieldWeaponSlots().Where(s => !s.element.IsEmpty).Select(s => s.element);
+
     public static IEnumerable<(EquipmentElement element, EquipmentIndex index)> YieldArmorSlots(this Equipment equipment)
     {
         for (int i = (int) EquipmentIndex.ArmorItemBeginSlot; i < (int) EquipmentIndex.ArmorItemEndSlot; i++)
@@ -73,6 +76,9 @@ public static class LINQExtensions
         }
     }
     
+    public static IEnumerable<EquipmentElement> YieldFilledArmorSlots(this Equipment equipment) 
+        => equipment.YieldArmorSlots().Where(s => !s.element.IsEmpty).Select(s => s.element);
+
     // public static SerializableDict<TKey, TElement> ToSerializableDict<TSource, TKey, TElement>(
     //     this IEnumerable<TSource> source,
     //     Func<TSource, TKey> keySelector,
