@@ -102,7 +102,8 @@ namespace BannerlordTwitch.Overlay
             }
             set
             {
-                RootControl.LayoutTransform = new ScaleTransform(value / 100f, value / 100f);
+                float clampedValue = MathF.Clamp(value, 25f, 400f);
+                RootControl.LayoutTransform = new ScaleTransform(clampedValue / 100f, clampedValue / 100f);
                 OnPropertyChanged();
             }
         }
