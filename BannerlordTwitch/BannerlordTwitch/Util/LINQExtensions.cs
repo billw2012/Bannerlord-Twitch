@@ -9,12 +9,12 @@ public static class LINQExtensions
 {
     public static T SelectWeighted<T>(this IEnumerable<T> @this, float rnd, Func<T, float> weightFn)
     {
-        var prob = @this.Select(o => (obj: o, P: weightFn(o)));
-        float totalProb = prob.Select(o => o.P).Sum();
+        var weighted = @this.Select(o => (item: o, weight: weightFn(o))).ToList();
+        float totalWeight = weighted.Select(o => o.weight).Sum();
 
         float randomP = (float) (StaticRandom.Next() * totalWeight);
         float sum = 0;
-        foreach ((var obj, float p) in prob)
+        foreach ((var obj, float p) in weighted)
         {
             sum += p;
             if (sum >= randomP)
@@ -23,7 +23,7 @@ public static class LINQExtensions
             }
         }
 
-        return prob.LastOrDefault().obj;
+        return weighted.LastOrDefault().item;
     }
 
     public static T SelectRandom<T>(this IEnumerable<T> @this) => @this.Shuffle().FirstOrDefault();
