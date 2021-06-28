@@ -39,7 +39,36 @@ namespace BLTAdoptAHero.Util
             }
             InventoryManager.OpenScreenAsInventoryOf(MobileParty.MainParty, character);
 
+            OpenScreenAsInventoryOf(hero.CharacterObject);
+
             return $"Opened inventory of {strings[0]}";
+        }
+        
+        private class FakeMarketData : IMarketData
+        {
+            public int GetPrice(ItemObject item, MobileParty tradingParty, bool isSelling, PartyBase merchantParty)
+            {
+                return item.Value;
+            }
+
+            public int GetPrice(EquipmentElement itemRosterElement, MobileParty tradingParty, bool isSelling, PartyBase merchantParty)
+            {
+                return itemRosterElement.ItemValue;
+            }
+        }
+        
+        private static void OpenScreenAsInventoryOf(CharacterObject character)
+        {
+            var inventoryLogicFieldInfo = AccessTools.Field(typeof(InventoryManager), "_inventoryLogic");
+            
+            var inventoryLogic = new InventoryLogic(Campaign.Current, null);
+            inventoryLogicFieldInfo.SetValue(InventoryManager.Instance, inventoryLogic);
+            var memberRoster = new TroopRoster(null);
+            memberRoster.AddToCounts(character, 1);
+            inventoryLogic.Initialize(new(), new(), memberRoster, false, true, character, InventoryManager.InventoryCategoryType.None, new FakeMarketData(), false);
+            var state = Game.Current.GameStateManager.CreateState<InventoryState>();
+            state.InitializeLogic(inventoryLogic);
+            Game.Current.GameStateManager.PushState(state);
         }
         
         [CommandLineFunctionality.CommandLineArgumentFunction("showheroes", "blt")]
@@ -89,7 +118,7 @@ namespace BLTAdoptAHero.Util
                 heroRoster.AddToCounts(hero.CharacterObject, 1);
             }
             
-            _partyScreenLogic.Initialize(heroRoster, new TroopRoster(null), MobileParty.MainParty, false, new TextObject("Viewers"), 0, (_, _, _, _, _, _, _, _, _) => true, new TextObject("BLT Viewer Heroes"), false);
+            _partyScreenLogic.Initialize(heroRoster, new(null), MobileParty.MainParty, false, new("Viewers"), 0, (_, _, _, _, _, _, _, _, _) => true, new("BLT Viewer Heroes"), false);
             _partyScreenLogic.InitializeTrade(PartyScreenLogic.TransferState.NotTransferable, PartyScreenLogic.TransferState.NotTransferable, PartyScreenLogic.TransferState.NotTransferable);
             _partyScreenLogic.SetTroopTransferableDelegate((_, _, _, _) => false);
             var partyState = Game.Current.GameStateManager.CreateState<PartyState>();
