@@ -143,23 +143,26 @@ namespace BLTAdoptAHero
 
         [Category("General"), Description("Whether the hero is allowed to die"), PropertyOrder(3)]
         public bool AllowDeath { get; [UsedImplicitly] set; }
+        
+        [Category("General"), Description("Chance (from 0 to 1) of killing blow not being reduced to a knock out blow (when Allow Death is enabled above). Remember the death chance for non companion heroes is 10% in vanilla, and this chance is applied as well as that. So if you set death chance to 0.5 (50%), then final death chance is 50% of 10%, which is 5%. Setting this to > 1 will NOT increase final death chance beyond 10%."), PropertyOrder(4)]
+        public float DeathChance { get; [UsedImplicitly] set; } = 0.2f;
 
-        [Category("General"), Description("Whether the hero will always start with full health"), PropertyOrder(4)]
+        [Category("General"), Description("Whether the hero will always start with full health"), PropertyOrder(5)]
         public bool StartWithFullHealth { get; set; } = true;
 
         [Category("General"),
          Description("Amount to multiply normal starting health by, to give heroes better staying power vs others"),
-         PropertyOrder(5)]
+         PropertyOrder(6)]
         public float StartHealthMultiplier { get; set; } = 2;
 
         [Category("General"),
          Description("Amount to multiply normal retinue starting health by, to give retinue better staying power vs others"),
-         PropertyOrder(6)]
+         PropertyOrder(7)]
         public float StartRetinueHealthMultiplier { get; set; } = 2;
 
         [Category("General"),
          Description("Reduces morale loss when summoned heroes die"),
-         PropertyOrder(7)]
+         PropertyOrder(8)]
         public float MoraleLossFactor { get; set; } = 0.5f;
 
         [Category("General"),

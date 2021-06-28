@@ -37,9 +37,8 @@ namespace BLTAdoptAHero.Util
             {
                 Game.Current.GameStateManager.PopState();
             }
-            InventoryManager.OpenScreenAsInventoryOf(MobileParty.MainParty, character);
 
-            OpenScreenAsInventoryOf(hero.CharacterObject);
+            OpenScreenAsInventoryOf(character);
 
             return $"Opened inventory of {strings[0]}";
         }

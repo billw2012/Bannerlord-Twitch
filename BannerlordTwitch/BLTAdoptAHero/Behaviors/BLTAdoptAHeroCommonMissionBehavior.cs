@@ -203,7 +203,11 @@ namespace BLTAdoptAHero
                 {
                     // stop hero from dying if death is disabled
                     var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
-                    if (affectedHero != null && BLTAdoptAHeroModule.CommonConfig.AllowDeath == false)
+                    if (affectedHero != null 
+                        && (BLTAdoptAHeroModule.CommonConfig.AllowDeath == false 
+                            || StaticRandom.Next() > BLTAdoptAHeroModule.CommonConfig.DeathChance
+                            )
+                        )
                     {
                         agentState = affectedAgent.State = AgentState.Unconscious;
                     }
