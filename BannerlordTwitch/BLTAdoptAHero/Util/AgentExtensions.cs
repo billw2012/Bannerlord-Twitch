@@ -17,10 +17,15 @@ namespace BLTAdoptAHero
                    && string.Equals(user, charObj.HeroObject?.FirstName?.Raw(), StringComparison.CurrentCultureIgnoreCase);
         }
 
+        public static Hero GetHero(this Agent agent)
+        {
+            return (agent?.Character as CharacterObject)?.HeroObject;
+        }
+        
         public static Hero GetAdoptedHero(this Agent agent)
         {
-            var hero = (agent?.Character as CharacterObject)?.HeroObject;
-                        return hero?.IsAdopted() == true ? hero : null;
+            var hero = agent.GetHero();
+            return hero?.IsAdopted() == true ? hero : null;
         }
     }
 }

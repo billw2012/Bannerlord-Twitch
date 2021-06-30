@@ -16,9 +16,10 @@ namespace BannerlordTwitch.Util
 
         public static Guid Get(object obj)
         {
-            return registry.TryGetValue(obj, out var id) 
-                ? id 
-                : Set(obj, Guid.NewGuid());
+            if (registry.TryGetValue(obj, out var id))
+                return id;
+            else
+                return Set(obj, Guid.NewGuid());
         }
     }
 }

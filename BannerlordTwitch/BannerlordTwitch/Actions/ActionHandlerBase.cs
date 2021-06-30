@@ -18,8 +18,14 @@ namespace BannerlordTwitch.Rewards
         void ICommandHandler.Execute(ReplyContext context, object config)
         {
             ExecuteInternal(context, config, 
-                s => ActionManager.SendReply(context, s), 
-                s => ActionManager.SendReply(context, s));
+                s =>
+                {
+                    if(!string.IsNullOrEmpty(s)) ActionManager.SendReply(context, s);
+                }, 
+                s =>
+                {
+                    if(!string.IsNullOrEmpty(s)) ActionManager.SendReply(context, s);
+                });
         }
 
         protected abstract void ExecuteInternal(ReplyContext context, object config,

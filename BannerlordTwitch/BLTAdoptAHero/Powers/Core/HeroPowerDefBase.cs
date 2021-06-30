@@ -2,48 +2,70 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero.Powers
 {
-    public interface IHeroPowerPassive
+    /*
+     * How powers will work:
+     * Passive:
+     * - Effect some thing related to the hero for as long as the hero has the power, e.g. max retinue, costs or whatever.
+     *   - Implementation with depend on the thing that is changed
+     * - Effect battle events, either for the heroes agent, agents they hit, or the heroes retinue agents.
+     *   - Implementation can be by listeners attached when the battle starts to any heroes in the involved parties,
+     *   or when the hero is summoned
+     *
+     * Active:
+     * - Immediate effect on arbitrary thing, e.g. break city wall in siege
+     *   - Implementation would be bespoke, in the Activate function
+     * - Effect on an arbitrary thing over time, e.g. increase player party speed for 30 seconds
+     *   - Implementation would be bespoke, in the Activate function, adding OnTick handler of some kind (siege, campaign?)
+     * - Effect over time on battle events
+     *   - Implementation can be by listeners attached when the effect is activated, and removed then it expires
+     *
+     * Any 
+     */
+    public interface IHeroPowerPassive 
     {
-        void OnAdded(Hero hero);
-        void OnRemoved(Hero hero);
-
-        void OnBattleStart(Hero hero);
-        void OnBattleTick(Hero hero, Agent agent);
-        void OnBattleEnd(Hero hero);
-        void OnAgentBuild(Hero hero, Agent agent);
-        void OnAgentKilled(Hero hero, Agent agent, Hero killerHero, Agent killerAgent);
-        void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, ref AttackCollisionData attackCollisionData);
-        void OnTakeDamage(Hero hero, Agent agent, Hero attackerHero, Agent attackerAgent, ref AttackCollisionData attackCollisionData);
+        // void OnAdded(Hero hero);
+        // void OnRemoved(Hero hero);
+        void OnHeroJoinedBattle(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers);
     }
 
     public interface IHeroPowerActive
     {
-        bool CanActivate();
-        
-        void Activate();
-        
-        void OnBattleTick();
-        void OnCampaignTick();
+        (bool canActivate, string failReason) CanActivate(Hero hero);
+        bool IsActive(Hero hero);
+        void Activate(Hero hero, Action expiryCallback);
+        float DurationFractionRemaining(Hero hero);
     }
-    
+
     public class HeroPowerDefBase
     {
         private static readonly Dictionary<Guid, Type> registeredPowers = new();
 
-        public static void RegisterPowerType<T>()
+        public static void RegisterPowerType<T>() => RegisterPowerType(typeof(T));
+
+        public static void RegisterPowerType(Type type)
         {
-            var type = typeof(T);
             var instance = (HeroPowerDefBase)Activator.CreateInstance(type);
             registeredPowers.Add(instance.Type, type);
+        }
+
+        public static void RegisterAll(Assembly assembly)
+        {
+            var powerTypes = assembly
+                .GetTypes()
+                .Where(t => typeof(HeroPowerDefBase).IsAssignableFrom(t) && !t.IsAbstract);
+            foreach (var powerType in powerTypes)
+            {
+                RegisterPowerType(powerType);
+            }
         }
 
         internal static IEnumerable<Type> RegisteredPowerDefTypes => registeredPowers.Values;
@@ -62,7 +84,7 @@ namespace BLTAdoptAHero.Powers
         public Guid Type { get; set; }
         
         [ReadOnly(true), UsedImplicitly]
-        public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
+        public Guid ID { get; set; } //{ get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
 
         [Description("Name of the power that will be shown in game"), PropertyOrder(1)]
         public string Name { get; set; } = "Enter Name Here";

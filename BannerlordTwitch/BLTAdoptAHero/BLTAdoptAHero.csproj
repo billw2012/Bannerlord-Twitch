@@ -151,6 +151,7 @@
         <Compile Include="Actions\SetHeroClass.cs" />
         <Compile Include="Actions\SkillXP.cs" />
         <Compile Include="Actions\SummonHero.cs" />
+        <Compile Include="Actions\UsePower.cs" />
         <Compile Include="Actions\Util\AchievementSystem.cs" />
         <Compile Include="Actions\Util\BattleEffects.cs" />
         <Compile Include="Actions\Util\CustomItems.cs" />
@@ -176,9 +177,10 @@
         <Compile Include="Powers\AbsorbHealthPower.cs" />
         <Compile Include="Powers\AddDamagePower.cs" />
         <Compile Include="Powers\AddHealthPower.cs" />
-        <Compile Include="Powers\HeroPowerDefBase.cs" />
+        <Compile Include="Powers\Core\DurationMissionHeroPowerDefBase.cs" />
+        <Compile Include="Powers\Core\HeroPowerDefBase.cs" />
         <Compile Include="Powers\ReflectDamgePower.cs" />
-        <Compile Include="Powers\Utils\HeroPowerCollectionEditor.cs" />
+        <Compile Include="Powers\Core\HeroPowerCollectionEditor.cs" />
         <Compile Include="Properties\Annotations.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="UI\MissionInfoPanel.xaml.cs">

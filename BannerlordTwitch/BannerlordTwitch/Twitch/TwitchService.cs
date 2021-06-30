@@ -430,7 +430,11 @@ namespace BannerlordTwitch
                 return;
             }
             //Log.Trace($"[{nameof(TwitchService)}] Redemption of {redemption.RewardTitle} for {redemption.DisplayName} complete{(!IsNullOrEmpty(info) ? $": {info}" : "")}");
-            ActionManager.SendReply(context, info);
+            if(!string.IsNullOrEmpty(info))
+            {
+                ActionManager.SendReply(context, info);
+            }
+
             if (!string.IsNullOrEmpty(redemption.ChannelId))
             {
                 if (!settings.DisableAutomaticFulfillment && (context.Source as Reward)?.RewardSpec?.DisableAutomaticFulfillment != true)
@@ -456,7 +460,11 @@ namespace BannerlordTwitch
                 return;
             }
             //Log.Trace($"[{nameof(TwitchService)}] Redemption of {redemption.RewardTitle} for {redemption.DisplayName} cancelled{(!IsNullOrEmpty(reason) ? $": {reason}" : "")}");
-            ActionManager.SendReply(context, reason);
+            if(!string.IsNullOrEmpty(reason))
+            {
+                ActionManager.SendReply(context, reason);
+            }
+
             if (!string.IsNullOrEmpty(redemption.ChannelId))
             {
                 _ = SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.CANCELED);

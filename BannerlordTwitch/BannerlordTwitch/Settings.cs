@@ -48,7 +48,7 @@ namespace BannerlordTwitch
     {
         // Unique ID for this action 
         [ReadOnly(true), UsedImplicitly]
-        public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
+        public Guid ID { get; set; } //{ get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
 
         [Category("General"), Description("Whether this is enabled or not"), PropertyOrder(-100)]
         public bool Enabled { get; set; }
@@ -264,7 +264,7 @@ namespace BannerlordTwitch
         public IEnumerable<Command> EnabledCommands => Commands.Where(r => r.Enabled);
         public List<GlobalConfig> GlobalConfigs { get; set; } = new ();
         public SimTestingConfig SimTesting { get; set; }
-        [YamlIgnore]
+        [YamlIgnore, Browsable(false)]
         public IEnumerable<ActionBase> AllActions => Rewards.Cast<ActionBase>().Concat(Commands);
 
         public bool DisableAutomaticFulfillment { get; set; }

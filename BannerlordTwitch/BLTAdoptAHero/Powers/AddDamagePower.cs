@@ -8,7 +8,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 namespace BLTAdoptAHero.Powers
 {
     [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
-    public class AddDamagePower : HeroPowerDefBase, IHeroPowerPassive
+    public class AddDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive
     {
         [Category("Power Config"), Description("How much to multiply base damage by"), PropertyOrder(1), UsedImplicitly]
         public float DamageToMultiply { get; set; } = 1f;
@@ -30,14 +30,18 @@ namespace BLTAdoptAHero.Powers
             Type = new ("378648B6-5586-4812-AD08-22DA6374440C");
         }
 
-        public void OnAdded(Hero hero) {}
-        public void OnRemoved(Hero hero) {}
-        public void OnBattleStart(Hero hero) {}
-        public void OnBattleTick(Hero hero, Agent agent) {}
-        public void OnBattleEnd(Hero hero) {}
-        public void OnAgentBuild(Hero hero, Agent agent) {}
-        public void OnAgentKilled(Hero hero, Agent agent, Hero killerHero, Agent killerAgent) {}
-        public void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, ref AttackCollisionData attackCollisionData)
+        void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers1)
+        {
+            BLTHeroPowersMissionBehavior.Current
+                .ConfigureHandlers(hero, this, handlers => handlers.OnDoDamage += OnDoDamage);
+        }
+        
+        protected override void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers)
+        {
+            handlers.OnDoDamage += OnDoDamage;
+        }
+        
+        public void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, AttackCollisionDataRef attackCollisionData)
         {
             if (!ApplyAgainstAdoptedHeroes && victimHero != null
                 || !ApplyAgainstHeroes && victimAgent.IsHero
@@ -47,12 +51,10 @@ namespace BLTAdoptAHero.Powers
                 return;
             }
             //attackCollisionData.BaseMagnitude = (int) (attackCollisionData.BaseMagnitude * DamageToMultiply);
-            attackCollisionData.InflictedDamage = (int) (attackCollisionData.InflictedDamage * DamageToMultiply);
+            attackCollisionData.Data.InflictedDamage = (int) (attackCollisionData.Data.InflictedDamage * DamageToMultiply);
             //attackCollisionData.BaseMagnitude += DamageToAdd;
-            attackCollisionData.InflictedDamage += DamageToAdd;
+            attackCollisionData.Data.InflictedDamage += DamageToAdd;
         }
-        public void OnTakeDamage(Hero hero, Agent agent, Hero attackerHero, Agent attackerAgent,
-            ref AttackCollisionData attackCollisionData) { }
 
         public override string ToString()
         {

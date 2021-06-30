@@ -6,7 +6,7 @@ namespace BannerlordTwitch.Util
     {
         public override MissionBehaviourType BehaviourType => MissionBehaviourType.Other;
 
-        public static T Current => MissionState.Current.CurrentMission.GetMissionBehaviour<T>();
+        public static T Current => MissionState.Current?.CurrentMission?.GetMissionBehaviour<T>();
         
         // public static T CurrentState
         // {

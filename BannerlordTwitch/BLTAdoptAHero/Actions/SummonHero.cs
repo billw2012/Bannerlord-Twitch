@@ -210,6 +210,9 @@ namespace BLTAdoptAHero
             
             //          Rare
             new("I have the high ground!") { PlayerSide = false, Weight = 0.05f },
+            
+            //          Ultra rare
+            new("DAMN IT DAVE!") { PlayerSide = false, Weight = 0.01f },
         };
 
         protected override void ExecuteInternal(Hero adoptedHero, ReplyContext context, object config,

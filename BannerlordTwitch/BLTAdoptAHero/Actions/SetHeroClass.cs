@@ -13,17 +13,6 @@ namespace BLTAdoptAHero
     [Description("Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied")]
     internal class SetHeroClass : HeroActionHandlerBase
     {
-        // Hero class is custom defined by the set of skills they favour.
-        
-        // These skills then drive the allocation of XP, focus, attributes, and equipment.
-        
-        // The HeroData should contain a deep copy of the class definition in-case settings are changed later.
-        
-        // !class can optionally automatically re-roll equipment if the class changes.
-        
-        // Also add re-roll flag to EquipHero that will only re-roll the current equipment,
-        // then create !reequip command / reward with it.
-
         private class Settings
         {
             [Category("General"), Description("Gold cost to change class"), PropertyOrder(1), UsedImplicitly]

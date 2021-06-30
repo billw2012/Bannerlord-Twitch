@@ -22,13 +22,10 @@ namespace BLTAdoptAHero.Powers
             Type = new ("C4213666-2176-42B4-8DBB-BFE0182BCCE1");
         }
 
-        public void OnAdded(Hero hero) {}
-        public void OnRemoved(Hero hero) {}
-        public void OnBattleStart(Hero hero) {}
-        public void OnBattleTick(Hero hero, Agent agent) {}
-        public void OnBattleEnd(Hero hero) {}
+        void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers)
+            => handlers.OnAgentBuild += OnAgentBuild;
 
-        public void OnAgentBuild(Hero hero, Agent agent)
+        private void OnAgentBuild(Hero hero, Agent agent)
         {
             agent.BaseHealthLimit *= HealthToMultiply;
             agent.HealthLimit *= HealthToMultiply;
@@ -38,11 +35,7 @@ namespace BLTAdoptAHero.Powers
             agent.HealthLimit += HealthToAdd;
             agent.Health += HealthToAdd;
         }
-        
-        public void OnAgentKilled(Hero hero, Agent agent, Hero killerHero, Agent killerAgent) {}
-        public void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, ref AttackCollisionData attackCollisionData) {}
-        public void OnTakeDamage(Hero hero, Agent agent, Hero attackerHero, Agent attackerAgent, ref AttackCollisionData attackCollisionData) {}
-        
+
         public override string ToString()
         {
             var parts = new List<string>();

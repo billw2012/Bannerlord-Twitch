@@ -500,6 +500,40 @@ Rewards:
     GoldAmountToGive: 10000
     FromAdoptedHero: true
     AlertSound: Notification1
+- RewardSpec:
+    Title: Use Class Power
+    DisableAutomaticFulfillment: false
+    Prompt: 
+    Cost: 100
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    GlobalCooldownSeconds: 
+  Handler: UsePower
+  ID: 6f53994c-4513-4b81-95a3-21493d35b25d
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig: 
+- RewardSpec:
+    Title: New Reward
+    DisableAutomaticFulfillment: false
+    Prompt: 
+    Cost: 100
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    GlobalCooldownSeconds: 
+  Handler: UsePower
+  ID: 2add4aaa-2c1d-4f13-8387-694543fb7652
+  Enabled: false
+  RespondInTwitch: false
+  RespondInOverlay: false
+  HandlerConfig: 
 Commands:
 - Name: stats
   HideHelp: false
@@ -702,6 +736,7 @@ GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
     AllowDeath: false
+    DeathChance: 0.200000003
     StartWithFullHealth: true
     StartHealthMultiplier: 2
     StartRetinueHealthMultiplier: 2
@@ -795,7 +830,7 @@ GlobalConfigs:
 - Id: Adopt A Hero - Class Config
   Config:
     ClassDefs:
-    - ID: 439180a8-a5b1-4fdf-b045-9ceb080730dc
+    - ID: e1c984e6-2852-442d-a35e-26f26095f706
       Name: infantry
       Formation: Infantry
       Slot1: OneHandedSword
@@ -804,13 +839,17 @@ GlobalConfigs:
       Slot4: None
       UseHorse: false
       UseCamel: false
-      PassivePower1: 00000000-0000-0000-0000-000000000000
-      PassivePower2: 00000000-0000-0000-0000-000000000000
-      PassivePower3: 00000000-0000-0000-0000-000000000000
-      ActivePower1: 00000000-0000-0000-0000-000000000000
-      ActivePower2: 00000000-0000-0000-0000-000000000000
-      ActivePower3: 00000000-0000-0000-0000-000000000000
-    - ID: d763dc71-2f61-49df-a1c9-789edc17eeff
+      PassivePower:
+        Name: Passive Power
+        Power1: 00000000-0000-0000-0000-000000000000
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+      ActivePower:
+        Name: Active Power
+        Power1: b3e5da20-1b82-4820-a373-ff9a8190dd98
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+    - ID: 8f6fd6b5-b8c2-4196-a668-57efbb6a0e06
       Name: archer
       Formation: Ranged
       Slot1: Bow
@@ -819,13 +858,17 @@ GlobalConfigs:
       Slot4: OneHandedAxe
       UseHorse: false
       UseCamel: false
-      PassivePower1: 00000000-0000-0000-0000-000000000000
-      PassivePower2: 00000000-0000-0000-0000-000000000000
-      PassivePower3: 00000000-0000-0000-0000-000000000000
-      ActivePower1: 00000000-0000-0000-0000-000000000000
-      ActivePower2: 00000000-0000-0000-0000-000000000000
-      ActivePower3: 00000000-0000-0000-0000-000000000000
-    - ID: 06e833c1-ce6c-43a6-9040-dd171010786b
+      PassivePower:
+        Name: Passive Power
+        Power1: 00000000-0000-0000-0000-000000000000
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+      ActivePower:
+        Name: Active Power
+        Power1: 00000000-0000-0000-0000-000000000000
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+    - ID: 753efcc7-05d8-418b-974d-3d3e68961796
       Name: crossbow
       Formation: Ranged
       Slot1: Crossbow
@@ -834,13 +877,17 @@ GlobalConfigs:
       Slot4: OneHandedSword
       UseHorse: false
       UseCamel: false
-      PassivePower1: 00000000-0000-0000-0000-000000000000
-      PassivePower2: 00000000-0000-0000-0000-000000000000
-      PassivePower3: 00000000-0000-0000-0000-000000000000
-      ActivePower1: 00000000-0000-0000-0000-000000000000
-      ActivePower2: 00000000-0000-0000-0000-000000000000
-      ActivePower3: 00000000-0000-0000-0000-000000000000
-    - ID: 91df4c23-ee21-48aa-8985-2a34842e80ca
+      PassivePower:
+        Name: Passive Power
+        Power1: 00000000-0000-0000-0000-000000000000
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+      ActivePower:
+        Name: Active Power
+        Power1: 00000000-0000-0000-0000-000000000000
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+    - ID: 7d1fc135-d779-4d67-8fce-052fdebc9fbc
       Name: cavalry
       Formation: Cavalry
       Slot1: OneHandedLance
@@ -849,13 +896,17 @@ GlobalConfigs:
       Slot4: None
       UseHorse: true
       UseCamel: false
-      PassivePower1: 00000000-0000-0000-0000-000000000000
-      PassivePower2: 00000000-0000-0000-0000-000000000000
-      PassivePower3: 00000000-0000-0000-0000-000000000000
-      ActivePower1: 00000000-0000-0000-0000-000000000000
-      ActivePower2: 00000000-0000-0000-0000-000000000000
-      ActivePower3: 00000000-0000-0000-0000-000000000000
-    - ID: 19fce979-8967-4d69-9dcd-2af766eeb4cd
+      PassivePower:
+        Name: Passive Power
+        Power1: 00000000-0000-0000-0000-000000000000
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+      ActivePower:
+        Name: Active Power
+        Power1: 00000000-0000-0000-0000-000000000000
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+    - ID: 97d1a157-5b62-41dd-84b5-99f8dc8d290d
       Name: horsearcher
       Formation: HorseArcher
       Slot1: Bow
@@ -864,13 +915,17 @@ GlobalConfigs:
       Slot4: OneHandedSword
       UseHorse: true
       UseCamel: false
-      PassivePower1: 00000000-0000-0000-0000-000000000000
-      PassivePower2: 00000000-0000-0000-0000-000000000000
-      PassivePower3: 00000000-0000-0000-0000-000000000000
-      ActivePower1: 00000000-0000-0000-0000-000000000000
-      ActivePower2: 00000000-0000-0000-0000-000000000000
-      ActivePower3: 00000000-0000-0000-0000-000000000000
-    - ID: 933b206a-75b9-4d4e-a6bc-230fcc369faf
+      PassivePower:
+        Name: Passive Power
+        Power1: 00000000-0000-0000-0000-000000000000
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+      ActivePower:
+        Name: Active Power
+        Power1: 00000000-0000-0000-0000-000000000000
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+    - ID: 1cab344a-1f59-45c2-98d3-7d4325a4284f
       Name: camelarcher
       Formation: HorseArcher
       Slot1: Bow
@@ -879,13 +934,17 @@ GlobalConfigs:
       Slot4: TwoHandedGlaive
       UseHorse: false
       UseCamel: true
-      PassivePower1: 00000000-0000-0000-0000-000000000000
-      PassivePower2: 00000000-0000-0000-0000-000000000000
-      PassivePower3: 00000000-0000-0000-0000-000000000000
-      ActivePower1: 00000000-0000-0000-0000-000000000000
-      ActivePower2: 00000000-0000-0000-0000-000000000000
-      ActivePower3: 00000000-0000-0000-0000-000000000000
-    - ID: 57fe5039-682c-4cab-9882-32424ee07f2c
+      PassivePower:
+        Name: Passive Power
+        Power1: 00000000-0000-0000-0000-000000000000
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+      ActivePower:
+        Name: Active Power
+        Power1: 00000000-0000-0000-0000-000000000000
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+    - ID: d1222414-bf31-4207-b0c9-1616ba805ce5
       Name: skirmisher
       Formation: Skirmisher
       Slot1: TwoHandedSword
@@ -894,13 +953,17 @@ GlobalConfigs:
       Slot4: None
       UseHorse: false
       UseCamel: false
-      PassivePower1: 00000000-0000-0000-0000-000000000000
-      PassivePower2: 00000000-0000-0000-0000-000000000000
-      PassivePower3: 00000000-0000-0000-0000-000000000000
-      ActivePower1: 00000000-0000-0000-0000-000000000000
-      ActivePower2: 00000000-0000-0000-0000-000000000000
-      ActivePower3: 00000000-0000-0000-0000-000000000000
-    - ID: 82768369-0282-4ae7-a7b2-2141d2420eb6
+      PassivePower:
+        Name: Passive Power
+        Power1: 00000000-0000-0000-0000-000000000000
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+      ActivePower:
+        Name: Active Power
+        Power1: 00000000-0000-0000-0000-000000000000
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+    - ID: 19eb82e6-c11b-4366-8f03-c18f3c5e25b5
       Name: berserker
       Formation: Skirmisher
       Slot1: TwoHandedAxe
@@ -909,12 +972,16 @@ GlobalConfigs:
       Slot4: None
       UseHorse: false
       UseCamel: false
-      PassivePower1: 6dcfcb53-6285-4ec1-a05b-9793bee0b64f
-      PassivePower2: cf459a15-4d8d-4900-abe6-d016013866d9
-      PassivePower3: 00000000-0000-0000-0000-000000000000
-      ActivePower1: 00000000-0000-0000-0000-000000000000
-      ActivePower2: 00000000-0000-0000-0000-000000000000
-      ActivePower3: 00000000-0000-0000-0000-000000000000
+      PassivePower:
+        Name: Passive Power
+        Power1: 00000000-0000-0000-0000-000000000000
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
+      ActivePower:
+        Name: Berserker Rage
+        Power1: b3e5da20-1b82-4820-a373-ff9a8190dd98
+        Power2: 6a36fedb-0b2d-459c-b06b-c4230327589b
+        Power3: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
 - Id: Buffet - Effects Config
   Config:
     DisableEffectsInTournaments: true
@@ -925,29 +992,32 @@ GlobalConfigs:
     - HealthToMultiply: 2
       HealthToAdd: 0
       Type: c4213666-2176-42b4-8dbb-bfe0182bcce1
-      ID: d2bef7bc-9979-4848-ac41-95b877e92f5f
+      ID: 22ad10d6-34df-4d41-afec-7e98a56f8954
       Name: Healthy
     - HealthToMultiply: 0.5
       HealthToAdd: 0
       Type: c4213666-2176-42b4-8dbb-bfe0182bcce1
-      ID: 6dcfcb53-6285-4ec1-a05b-9793bee0b64f
+      ID: b99d374b-84d0-495e-a430-1811ad6e712b
       Name: Fragile
-    - FractionOfDamageToAbsorb: 0.100000001
+    - FractionOfDamageToAbsorb: 1
+      PowerDurationSeconds: 30
       Type: e0a274df-adbb-4725-9eae-59806bf9b5dc
-      ID: d7f20928-381d-43ac-911e-b1272e8f8c97
+      ID: b3e5da20-1b82-4820-a373-ff9a8190dd98
       Name: Vampiric
-    - DamageToMultiply: 2
+    - DamageToMultiply: 3
       DamageToAdd: 0
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
       ApplyAgainstPlayer: true
+      PowerDurationSeconds: 30
       Type: 378648b6-5586-4812-ad08-22da6374440c
-      ID: cf459a15-4d8d-4900-abe6-d016013866d9
+      ID: 6a36fedb-0b2d-459c-b06b-c4230327589b
       Name: Heavy Hitting
-    - FractionOfDamageToReflect: 0.100000001
+    - FractionOfDamageToReflect: 0.899999976
+      PowerDurationSeconds: 30
       Type: ffe07da3-e977-42d8-80ca-5dfff66123eb
-      ID: 1390e614-adf0-4fda-93cd-e88b799077e0
+      ID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
       Name: Retribution
 SimTesting:
   UserCount: 25

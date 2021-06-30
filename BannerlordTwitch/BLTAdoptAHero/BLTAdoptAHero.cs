@@ -40,10 +40,7 @@ namespace BLTAdoptAHero
             GlobalHeroClassConfig.Register();
             GlobalHeroPowerConfig.Register();
 
-            HeroPowerDefBase.RegisterPowerType<AbsorbHealthPower>();
-            HeroPowerDefBase.RegisterPowerType<AddDamagePower>();
-            HeroPowerDefBase.RegisterPowerType<AddHealthPower>();
-            HeroPowerDefBase.RegisterPowerType<ReflectDamagePower>();
+            HeroPowerDefBase.RegisterAll(typeof(BLTAdoptAHeroModule).Assembly);
         }
 
         public override void OnMissionBehaviourInitialize(Mission mission)

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using BannerlordTwitch;
+using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
 using BLTAdoptAHero.Powers;
@@ -13,10 +15,10 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
-    public class HeroClassDef : IHeroPowerPassive
+    public class HeroClassDef
     {
         [ReadOnly(true), UsedImplicitly]
-        public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
+        public Guid ID { get; set; } //{ get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
 
         #region User Editable Properties
         [Description("Name of the class that shall be passed to SetHeroClass actions"), PropertyOrder(1)]
@@ -44,51 +46,17 @@ namespace BLTAdoptAHero
         public bool UseCamel { get; set; }
         
         [Description("Passive hero power: this will always apply to the hero (i.e. a permanent buff)"), 
-         ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(9), UsedImplicitly]
-        public Guid PassivePower1 { get; set; }
-
-        [Description("Passive hero power: this will always apply to the hero (i.e. a permanent buff)"), 
-         ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(10), UsedImplicitly]
-        public Guid PassivePower2 { get; set; }
-        
-        [Description("Passive hero power: this will always apply to the hero (i.e. a permanent buff)"), 
-         ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(11), UsedImplicitly]
-        public Guid PassivePower3 { get; set; }
-        
-        [Browsable(false), YamlIgnore, UsedImplicitly]
-        public IEnumerable<IHeroPowerPassive> PassivePowers 
-            => new []
-            {
-                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(PassivePower1) as IHeroPowerPassive, 
-                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(PassivePower2) as IHeroPowerPassive, 
-                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(PassivePower3) as IHeroPowerPassive
-            }.Where(p => p != null);
+         PropertyOrder(9), ExpandableObject]
+        public PassivePowerGroup PassivePower { get; set; } = new();
 
         [Description("Active hero power: this power will be triggered only when the UseHeroPower action is used by " +
-                     "the viewer, via reward or command (i.e. a temporary buff)"), 
-         ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(12), UsedImplicitly]
-        public Guid ActivePower1 { get; set; }
-        [Description("Active hero power: this power will be triggered only when the UseHeroPower action is used by " +
-                     "the viewer, via reward or command (i.e. a temporary buff)"), 
-         ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(13), UsedImplicitly]
-        public Guid ActivePower2 { get; set; }
-        [Description("Active hero power: this power will be triggered only when the UseHeroPower action is used by " +
-                     "the viewer, via reward or command (i.e. a temporary buff)"), 
-         ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(14), UsedImplicitly]
-        public Guid ActivePower3 { get; set; }
-        
-        [Browsable(false), YamlIgnore]
-        public IEnumerable<IHeroPowerActive> ActivePowers 
-            => new []
-            {
-                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(ActivePower1) as IHeroPowerActive, 
-                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(ActivePower2) as IHeroPowerActive, 
-                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(ActivePower3) as IHeroPowerActive
-            }.Where(p => p != null);
+                     "the viewer, via reward or command (i.e. a temporary buff)"), PropertyOrder(10), ExpandableObject]
+        public ActivePowerGroup ActivePower { get; set; } = new();
         #endregion
 
         [YamlIgnore, Browsable(false)]
-        public IEnumerable<EquipmentType> Slots { get { yield return Slot1; yield return Slot2; yield return Slot3; yield return Slot4; } }
+        public IEnumerable<EquipmentType> Slots 
+        { get { yield return Slot1; yield return Slot2; yield return Slot3; yield return Slot4; } }
         
         [YamlIgnore, Browsable(false)]
         public IEnumerable<(EquipmentIndex index, EquipmentType type)> IndexedSlots 
@@ -141,10 +109,120 @@ namespace BLTAdoptAHero
             }
         }
 
-        public override string ToString() => $"{Name} : {string.Join(", ", SlotItems.Select(s => s.ToString()))}" 
-                                             + (UseHorse ? " (Use Horse)" : "")
-                                             + (UseCamel ? " (Use Camel)" : "");
-        
+        public override string ToString() => 
+            $"{Name} : {string.Join(", ", SlotItems.Select(s => s.ToString()))}"
+            + (UseHorse ? " (Use Horse)" : "")
+            + (UseCamel ? " (Use Camel)" : "");
+
+        public class PassivePowerGroup
+        {
+            [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), UsedImplicitly]
+            public string Name { get; set; } = "Passive Power";
+
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(1), UsedImplicitly]
+            public Guid Power1 { get; set; }
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(2), UsedImplicitly]
+            public Guid Power2 { get; set; }
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(3), UsedImplicitly]
+            public Guid Power3 { get; set; }
+
+            [Browsable(false), YamlIgnore]
+            private IEnumerable<IHeroPowerPassive> Powers 
+            => new []
+            {
+                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(Power1) as IHeroPowerPassive, 
+                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(Power2) as IHeroPowerPassive, 
+                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(Power3) as IHeroPowerPassive,
+            }.Where(p => p != null);
+            
+            public void OnHeroJoinedBattle(Hero hero)
+            {
+                if (BLTAdoptAHeroModule.HeroPowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
+                {
+                    return;
+                }
+                foreach(var power in Powers)
+                {
+                    BLTHeroPowersMissionBehavior.Current.ConfigureHandlers(
+                        hero, power as HeroPowerDefBase, handlers => power.OnHeroJoinedBattle(hero, handlers));
+                }
+            }
+        }
+
+        public class ActivePowerGroup
+        {
+            [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1),
+             UsedImplicitly]
+            public string Name { get; set; } = "Active Power";
+
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(1), UsedImplicitly]
+            public Guid Power1 { get; set; }
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(2), UsedImplicitly]
+            public Guid Power2 { get; set; }
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(3), UsedImplicitly]
+            public Guid Power3 { get; set; }
+
+            [Browsable(false), YamlIgnore]
+            private IEnumerable<IHeroPowerActive> Powers 
+            => new []
+            {
+                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(Power1) as IHeroPowerActive, 
+                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(Power2) as IHeroPowerActive, 
+                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(Power3) as IHeroPowerActive
+            }.Where(p => p != null);
+            
+            public bool IsActive(Hero hero) => Powers.Any(power => power.IsActive(hero));
+
+            public (bool canActivate, string failReason) CanActivate(Hero hero)
+            {
+                if (BLTAdoptAHeroModule.HeroPowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
+                {
+                    return (false, "Not allowed in tournaments!");
+                }
+
+                var activePowers = Powers.ToList();
+
+                if (!activePowers.Any())
+                {
+                    return (false, "You have no powers!");
+                }
+
+                (bool _, string failReason) = activePowers
+                    .Select(power => power.CanActivate(hero))
+                    .FirstOrDefault(r => !r.canActivate);
+                return failReason != null 
+                    ? (false, failReason)
+                    : (true, null);
+            }
+
+            public (bool allowed, string message) Activate(Hero hero, ReplyContext context)
+            {
+                if (BLTAdoptAHeroModule.HeroPowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
+                {
+                    return (false, $"Powers not allowed in tournaments!");
+                }
+                foreach(var power in Powers)
+                {
+                    power.Activate(hero, () =>
+                    {
+                        if (Powers.All(p => !p.IsActive(hero)))
+                        {
+                            ActionManager.SendReply(context, $"{Name} expired!");
+                        }
+                    });
+                }
+                return (true, $"{Name} activated!");
+            }
+
+            public float DurationFractionRemaining(Hero hero)
+            {
+                if (!Powers.Any()) 
+                    return 0;
+                return Powers.Max(active => active.DurationFractionRemaining(hero));
+            }
+        }
+
+        #region ItemSource
         public class ItemSource : IItemsSource
         {
             public static IEnumerable<HeroClassDef> All { get; set; }
@@ -165,56 +243,6 @@ namespace BLTAdoptAHero
                 return col;
             }
         }
-
-        #region IHeroPowerPassive
-        private void ApplyPassivePower(Action<IHeroPowerPassive> fn)
-        {
-            if (BLTAdoptAHeroModule.HeroPowerConfig.DisablePowersInTournaments
-                && MissionHelpers.InTournament())
-            {
-                return;
-            }
-            foreach(var power in PassivePowers)
-            {
-                fn(power);
-            }
-        }
-       
-        void IHeroPowerPassive.OnAdded(Hero hero) => ApplyPassivePower(power => power.OnAdded(hero));
-        void IHeroPowerPassive.OnRemoved(Hero hero) => ApplyPassivePower(power => power.OnRemoved(hero));
-
-        void IHeroPowerPassive.OnBattleStart(Hero hero) => ApplyPassivePower(power => power.OnBattleStart(hero));
-        void IHeroPowerPassive.OnBattleTick(Hero hero, Agent agent) => ApplyPassivePower(power => power.OnBattleTick(hero, agent));
-        void IHeroPowerPassive.OnBattleEnd(Hero hero) => ApplyPassivePower(power => power.OnBattleEnd(hero));
-        void IHeroPowerPassive.OnAgentBuild(Hero hero, Agent agent) => ApplyPassivePower(power => power.OnAgentBuild(hero, agent));
-        void IHeroPowerPassive.OnAgentKilled(Hero hero, Agent agent, Hero killerHero, Agent killerAgent) => ApplyPassivePower(power => power.OnAgentKilled(hero, agent, killerHero, killerAgent));
-        void IHeroPowerPassive.OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, ref AttackCollisionData attackCollisionData) 
-        {
-            if (BLTAdoptAHeroModule.HeroPowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
-            {
-                return;
-            }
-
-            // Can't use ref parameter in a lambda so have to do the apply loop directly
-            foreach(var power in PassivePowers)
-            {
-                power.OnDoDamage(hero, agent, victimHero, victimAgent, ref attackCollisionData);
-            }
-        }
-        void IHeroPowerPassive.OnTakeDamage(Hero hero, Agent agent, Hero attackerHero, Agent attackerAgent, ref AttackCollisionData attackCollisionData) 
-        {
-            if (BLTAdoptAHeroModule.HeroPowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
-            {
-                return;
-            }
-
-            // Can't use ref parameter in a lambda so have to do the apply loop directly
-            foreach(var power in PassivePowers)
-            {
-                power.OnTakeDamage(hero, agent, attackerHero, attackerAgent, ref attackCollisionData);
-            }
-        }
-
         #endregion
     }
 }

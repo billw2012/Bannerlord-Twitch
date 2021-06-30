@@ -26,8 +26,6 @@ namespace BLTAdoptAHero
         {
             public AgentCreatedDelegate onAgentCreated;
             public MissionOverDelegate onMissionOver;
-            public MissionModeChangeDelegate onModeChange;
-            public MissionResetDelegate onMissionReset;
             public GotAKillDelegate onGotAKill;
             public GotKilledDelegate onGotKilled;
             public MissionTickDelegate onMissionTick;
@@ -41,8 +39,6 @@ namespace BLTAdoptAHero
         public bool AddListeners(Hero hero, 
             AgentCreatedDelegate onAgentCreated = null,
             MissionOverDelegate onMissionOver = null,
-            MissionModeChangeDelegate onModeChange = null,
-            MissionResetDelegate onMissionReset = null,
             GotAKillDelegate onGotAKill = null,
             GotKilledDelegate onGotKilled = null,
             MissionTickDelegate onMissionTick = null,
@@ -57,8 +53,6 @@ namespace BLTAdoptAHero
             {
                 onAgentCreated = onAgentCreated, 
                 onMissionOver = onMissionOver,
-                onModeChange = onModeChange,
-                onMissionReset = onMissionReset,
                 onGotAKill = onGotAKill,
                 onGotKilled = onGotKilled,
                 onMissionTick = onMissionTick,
@@ -82,12 +76,10 @@ namespace BLTAdoptAHero
             if (!replaceExisting && HasListeners(agent))
                 return false;
             RemoveListeners(agent);
-            agentListeners.Add(agent, new Listeners
+            agentListeners.Add(agent, new()
             {
                 onAgentCreated = onAgentCreated, 
                 onMissionOver = onMissionOver,
-                onModeChange = onModeChange,
-                onMissionReset = onMissionReset,
                 onGotAKill = onGotAKill,
                 onGotKilled = onGotKilled,
                 onMissionTick = onMissionTick,
@@ -156,17 +148,10 @@ namespace BLTAdoptAHero
         // {
         //     base.OnMissionRestart();
         // }
-
-        public override void OnMissionModeChange(MissionMode oldMissionMode, bool atStart)
-        {
-            ForAll(l => l.onModeChange?.Invoke(oldMissionMode, Mission.Current.Mode, atStart));
-        }
-
-        public static Hero GetHeroFromAgent(Agent agent) => (agent?.Character as CharacterObject)?.HeroObject;
         
         private Hero FindHero(Agent agent)
         {
-            var hero = GetHeroFromAgent(agent);
+            var hero = agent.GetAdoptedHero();
             if (hero == null) return null;
             return heroListeners.ContainsKey(hero) ? hero : null;
         }
