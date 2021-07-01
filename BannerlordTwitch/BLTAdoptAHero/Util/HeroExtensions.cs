@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.MountAndBlade;
 
 namespace BLTAdoptAHero
 {
@@ -13,5 +15,8 @@ namespace BLTAdoptAHero
 
         public static HeroClassDef GetClass(this Hero hero) 
             => BLTAdoptAHeroCampaignBehavior.Current.GetClass(hero);
+        
+        public static Agent GetAgent(this Hero hero)
+            => Mission.Current?.Agents?.FirstOrDefault(a => a.Character == hero.CharacterObject);
     }
 }

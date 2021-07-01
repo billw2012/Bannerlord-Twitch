@@ -29,7 +29,7 @@ namespace BLTAdoptAHero
             (bool canActivate, string failReason) = heroClass.ActivePower.CanActivate(adoptedHero);
             if (!canActivate)
             {
-                onFailure($"You cannot active your powers now: {failReason}!");
+                onFailure($"You cannot activate your powers now: {failReason}!");
                 return;
             }
             

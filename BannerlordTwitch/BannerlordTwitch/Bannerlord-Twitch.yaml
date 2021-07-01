@@ -735,7 +735,7 @@ Commands:
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
-    AllowDeath: false
+    AllowDeath: true
     DeathChance: 0.200000003
     StartWithFullHealth: true
     StartHealthMultiplier: 2
@@ -830,7 +830,7 @@ GlobalConfigs:
 - Id: Adopt A Hero - Class Config
   Config:
     ClassDefs:
-    - ID: e1c984e6-2852-442d-a35e-26f26095f706
+    - ID: 9fa426af-af3e-41f6-9b48-0ffef6dc3553
       Name: infantry
       Formation: Infantry
       Slot1: OneHandedSword
@@ -841,15 +841,21 @@ GlobalConfigs:
       UseCamel: false
       PassivePower:
         Name: Passive Power
-        Power1: 00000000-0000-0000-0000-000000000000
+        Power1: 22ad10d6-34df-4d41-afec-7e98a56f8954
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
       ActivePower:
         Name: Active Power
-        Power1: 00000000-0000-0000-0000-000000000000
+        Power1: 60582ddc-3b22-4052-9437-cd43882bf5f9
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
-    - ID: 8f6fd6b5-b8c2-4196-a668-57efbb6a0e06
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll_small
+          Sound: 
+    - ID: 492c4b3a-d73e-4fe9-be31-f937d6461f93
       Name: archer
       Formation: Ranged
       Slot1: Bow
@@ -860,15 +866,21 @@ GlobalConfigs:
       UseCamel: false
       PassivePower:
         Name: Passive Power
-        Power1: 00000000-0000-0000-0000-000000000000
+        Power1: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
       ActivePower:
         Name: Active Power
-        Power1: 00000000-0000-0000-0000-000000000000
+        Power1: 60582ddc-3b22-4052-9437-cd43882bf5f9
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
-    - ID: 753efcc7-05d8-418b-974d-3d3e68961796
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_wood_coll
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_wood_coll_small
+          Sound: 
+    - ID: eed616b6-bb68-48aa-8f92-87ab3d744458
       Name: crossbow
       Formation: Ranged
       Slot1: Crossbow
@@ -879,7 +891,7 @@ GlobalConfigs:
       UseCamel: false
       PassivePower:
         Name: Passive Power
-        Power1: 00000000-0000-0000-0000-000000000000
+        Power1: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
       ActivePower:
@@ -887,7 +899,13 @@ GlobalConfigs:
         Power1: 00000000-0000-0000-0000-000000000000
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
-    - ID: 7d1fc135-d779-4d67-8fce-052fdebc9fbc
+        ActivateEffect:
+          ParticleEffect: 
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: 
+          Sound: 
+    - ID: d1006ce9-cac9-4416-b8f9-efe55e9eb878
       Name: cavalry
       Formation: Cavalry
       Slot1: OneHandedLance
@@ -898,7 +916,7 @@ GlobalConfigs:
       UseCamel: false
       PassivePower:
         Name: Passive Power
-        Power1: 00000000-0000-0000-0000-000000000000
+        Power1: 20f6817e-8f45-4dc3-a513-77707fb9c96d
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
       ActivePower:
@@ -906,7 +924,13 @@ GlobalConfigs:
         Power1: 00000000-0000-0000-0000-000000000000
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
-    - ID: 97d1a157-5b62-41dd-84b5-99f8dc8d290d
+        ActivateEffect:
+          ParticleEffect: 
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: 
+          Sound: 
+    - ID: 2942cdb2-30ec-400a-ba8e-ed9bb3b47f48
       Name: horsearcher
       Formation: HorseArcher
       Slot1: Bow
@@ -925,7 +949,13 @@ GlobalConfigs:
         Power1: 00000000-0000-0000-0000-000000000000
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
-    - ID: 1cab344a-1f59-45c2-98d3-7d4325a4284f
+        ActivateEffect:
+          ParticleEffect: 
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: 
+          Sound: 
+    - ID: df54336d-52df-4d4b-a9c6-c1fe91cdc70f
       Name: camelarcher
       Formation: HorseArcher
       Slot1: Bow
@@ -944,7 +974,13 @@ GlobalConfigs:
         Power1: 00000000-0000-0000-0000-000000000000
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
-    - ID: d1222414-bf31-4207-b0c9-1616ba805ce5
+        ActivateEffect:
+          ParticleEffect: 
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: 
+          Sound: 
+    - ID: 3d5b962a-f6ee-409e-940b-c2f2b8d4cf98
       Name: skirmisher
       Formation: Skirmisher
       Slot1: TwoHandedSword
@@ -955,15 +991,21 @@ GlobalConfigs:
       UseCamel: false
       PassivePower:
         Name: Passive Power
-        Power1: 00000000-0000-0000-0000-000000000000
+        Power1: 22ad10d6-34df-4d41-afec-7e98a56f8954
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
       ActivePower:
         Name: Active Power
-        Power1: 00000000-0000-0000-0000-000000000000
+        Power1: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
-    - ID: 19eb82e6-c11b-4366-8f03-c18f3c5e25b5
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_stone_coll
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_stone_coll_small
+          Sound: 
+    - ID: f04e7a10-950b-48a4-bed3-7aa2091aa268
       Name: berserker
       Formation: Skirmisher
       Slot1: TwoHandedAxe
@@ -979,9 +1021,15 @@ GlobalConfigs:
         Power3: 00000000-0000-0000-0000-000000000000
       ActivePower:
         Name: Berserker Rage
-        Power1: 6a36fedb-0b2d-459c-b06b-c4230327589b
+        Power1: b3e5da20-1b82-4820-a373-ff9a8190dd98
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_default_coll
+          Sound: None
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_default_coll_small
+          Sound: None
 - Id: Buffet - Effects Config
   Config:
     DisableEffectsInTournaments: true
@@ -989,36 +1037,95 @@ GlobalConfigs:
   Config:
     DisablePowersInTournaments: true
     SavedPowerDefs:
-    - HealthToMultiply: 2
+    - HealthToMultiply: 1.5
       HealthToAdd: 0
       Type: c4213666-2176-42b4-8dbb-bfe0182bcce1
       ID: 22ad10d6-34df-4d41-afec-7e98a56f8954
       Name: Healthy
-    - HealthToMultiply: 0.5
+    - HealthToMultiply: 0.600000024
       HealthToAdd: 0
       Type: c4213666-2176-42b4-8dbb-bfe0182bcce1
       ID: b99d374b-84d0-495e-a430-1811ad6e712b
       Name: Fragile
-    - FractionOfDamageToAbsorb: 0.100000001
+    - FractionOfDamageToAbsorb: 0.5
       PowerDurationSeconds: 30
+      Pfx:
+      - Name: psys_cooking_smoke
+        AttachPoint: OnWeapon
       Type: e0a274df-adbb-4725-9eae-59806bf9b5dc
       ID: b3e5da20-1b82-4820-a373-ff9a8190dd98
       Name: Vampiric
-    - DamageToMultiply: 1.5
+    - DamageToMultiply: 1.25
       DamageToAdd: 0
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
       ApplyAgainstPlayer: true
       PowerDurationSeconds: 30
+      Pfx:
+      - Name: psys_campfire_sparks
+        AttachPoint: OnHands
       Type: 378648b6-5586-4812-ad08-22da6374440c
       ID: 6a36fedb-0b2d-459c-b06b-c4230327589b
       Name: Heavy Hitting
     - FractionOfDamageToReflect: 0.150000006
       PowerDurationSeconds: 30
+      Pfx:
+      - Name: psys_game_campfire
+        AttachPoint: OnHead
       Type: ffe07da3-e977-42d8-80ca-5dfff66123eb
       ID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
       Name: Retribution
+    - Modifiers:
+        Scale: 
+        Properties:
+        - Name: MaxSpeedMultiplier
+          Add: 
+          Multiply: 1.5
+      PowerDurationSeconds: 30
+      Pfx:
+      - Name: psys_missile_flame
+        AttachPoint: OnHead
+      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
+      ID: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
+      Name: Fleet Footed
+    - Modifiers:
+        Scale: 
+        Properties:
+        - Name: MountChargeDamage
+          Add: 
+          Multiply: 3
+        - Name: MountSpeed
+          Add: 
+          Multiply: 2
+      PowerDurationSeconds: 30
+      Pfx:
+      - Name: psys_blaze_1_light
+        AttachPoint: OnBody
+      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
+      ID: 20f6817e-8f45-4dc3-a513-77707fb9c96d
+      Name: Charge
+    - Modifiers:
+        Scale: 
+        Properties:
+        - Name: SwingSpeedMultiplier
+          Add: 
+          Multiply: 1.5
+      PowerDurationSeconds: 30
+      Pfx:
+      - Name: psys_campfire
+        AttachPoint: OnWeapon
+      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
+      ID: 80e8009c-2a09-476a-bd71-0aedc6b14011
+      Name: Fireblade
+    - Modifiers:
+        Scale: 1.25
+        Properties: []
+      PowerDurationSeconds: 30
+      Pfx: []
+      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
+      ID: 60582ddc-3b22-4052-9437-cd43882bf5f9
+      Name: Imposing
 SimTesting:
   UserCount: 25
   UserStayTime: 300
@@ -1040,6 +1147,11 @@ SimTesting:
     Id: Tournament
     Args: 
     Weight: 0
+  - Enabled: true
+    Type: Command
+    Id: class
+    Args: infantry
+    Weight: 1
   Use:
   - Enabled: true
     Type: Reward
@@ -1061,32 +1173,32 @@ SimTesting:
     Id: equip
     Args: 
     Weight: 0.400000006
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: reequip
     Args: ''
     Weight: 0.100000001
-  - Enabled: true
+  - Enabled: false
     Type: Reward
     Id: Tournament
     Args: 
     Weight: 0.200000003
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: retinue
     Args: 
     Weight: 0.200000003
-  - Enabled: true
+  - Enabled: false
     Type: Reward
     Id: Retire My Hero
     Args: yes
     Weight: 0.00999999978
-  - Enabled: true
+  - Enabled: false
     Type: Reward
     Id: Adopt a Hero
     Args: yes
     Weight: 0.00999999978
-  - Enabled: true
+  - Enabled: false
     Type: Reward
     Id: Heal Player
     Args: ''
@@ -1095,55 +1207,65 @@ SimTesting:
     Type: Command
     Id: class
     Args: infantry
-    Weight: 0.00999999978
+    Weight: 0.100000001
   - Enabled: true
     Type: Command
     Id: class
     Args: archer
-    Weight: 0.00999999978
+    Weight: 0.100000001
   - Enabled: true
     Type: Command
     Id: class
     Args: cavalry
-    Weight: 0.00999999978
+    Weight: 0.100000001
   - Enabled: true
     Type: Command
     Id: class
     Args: horsearcher
-    Weight: 0.00999999978
+    Weight: 0.100000001
   - Enabled: true
     Type: Command
     Id: class
     Args: skirmisher
-    Weight: 0.00999999978
+    Weight: 0.100000001
   - Enabled: true
+    Type: Command
+    Id: class
+    Args: berserker
+    Weight: 0.100000001
+  - Enabled: false
     Type: Reward
     Id: Heal Hero
     Args: ''
     Weight: 0.0500000007
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: nameitem
     Args: 
     Weight: 0.00999999978
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: nameitem
     Args: Random Name 1
     Weight: 0.00999999978
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: nameitem
     Args: Random Name 2
     Weight: 0.00999999978
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: nameitem
     Args: Random Name 3
     Weight: 0.00999999978
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: nameitem
     Args: Random Name 4
     Weight: 0.00999999978
+  - Enabled: true
+    Type: Reward
+    Id: Use Class Power
+    Args: 
+    Weight: 1
 DisableAutomaticFulfillment: false

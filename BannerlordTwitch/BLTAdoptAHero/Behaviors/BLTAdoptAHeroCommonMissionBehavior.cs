@@ -203,10 +203,8 @@ namespace BLTAdoptAHero
                     // Stop hero from dying if death is disabled
                     var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
                     if (affectedHero != null 
-                        && (BLTAdoptAHeroModule.CommonConfig.AllowDeath == false 
-                            || StaticRandom.Next() > BLTAdoptAHeroModule.CommonConfig.DeathChance
-                            )
-                        )
+                        && (BLTAdoptAHeroModule.CommonConfig.AllowDeath == false
+                            || StaticRandom.Next() > BLTAdoptAHeroModule.CommonConfig.DeathChance))
                     {
                         agentState = affectedAgent.State = AgentState.Unconscious;
                     }
@@ -216,7 +214,6 @@ namespace BLTAdoptAHero
                     {
                         agentState = affectedAgent.State = AgentState.Unconscious;
                     }
-                    
                 }
 
                 // Remove mount agent from tracking, in-case it is reused
@@ -382,8 +379,7 @@ namespace BLTAdoptAHero
 
             var summonState = BLTSummonBehavior.Current?.GetSummonedHero(hero);
 
-            var agent = summonState?.CurrentAgent ??
-                        Mission.Current.Agents.FirstOrDefault(a => a.Character == hero.CharacterObject);
+            var agent = summonState?.CurrentAgent ?? hero.GetAgent();
 
             var state = summonState?.State ?? agent?.State ?? AgentState.None;
             var heroModel = new HeroViewModel

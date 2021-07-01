@@ -47,6 +47,8 @@ namespace BLTAdoptAHero.Powers
             => $"{Name}: reflect x{FractionOfDamageToReflect:0.0} ({FractionOfDamageToReflect * 100:0.0}%) of damage dealt";
 
         void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers) => OnActivation(hero, handlers);
-        protected override void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers) => handlers.OnTakeDamage += OnTakeDamage;
+        protected override void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers,
+            Agent agent = null, DeactivationHandler deactivationHandler = null)
+            => handlers.OnTakeDamage += OnTakeDamage;
     }
 }

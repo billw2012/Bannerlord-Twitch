@@ -36,11 +36,10 @@ namespace BLTAdoptAHero.Powers
                 .ConfigureHandlers(hero, this, handlers => handlers.OnDoDamage += OnDoDamage);
         }
         
-        protected override void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers)
-        {
-            handlers.OnDoDamage += OnDoDamage;
-        }
-        
+        protected override void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers,
+            Agent agent = null, DeactivationHandler deactivationHandler = null) 
+            => handlers.OnDoDamage += OnDoDamage;
+
         public void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, AttackCollisionDataRef attackCollisionData)
         {
             if (!ApplyAgainstAdoptedHeroes && victimHero != null

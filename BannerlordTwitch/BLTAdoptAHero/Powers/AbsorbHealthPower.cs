@@ -29,7 +29,8 @@ namespace BLTAdoptAHero.Powers
         void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers) 
             => OnActivation(hero, handlers);
 
-        protected override void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers) 
+        protected override void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers,
+            Agent agent = null, DeactivationHandler deactivationHandler = null) 
             => handlers.OnDoDamage += OnDoDamage;
 
         private void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, 

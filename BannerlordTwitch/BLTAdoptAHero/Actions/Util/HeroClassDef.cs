@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
+using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
-using BLTAdoptAHero.Annotations;
 using BLTAdoptAHero.Powers;
+using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
-using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using YamlDotNet.Serialization;
 
@@ -17,7 +17,7 @@ namespace BLTAdoptAHero
 {
     public class HeroClassDef
     {
-        [ReadOnly(true), UsedImplicitly]
+        [ReadOnly(true), Annotations.UsedImplicitly]
         public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
 
         #region User Editable Properties
@@ -27,22 +27,22 @@ namespace BLTAdoptAHero
         [Description("Which formation to add summoned units to"), PropertyOrder(2), ItemsSource(typeof(SummonHero.FormationItemSource))]
         public string Formation { get; set; } = "LightCavalry";
         
-        [Description("Item type to put in slot 1"), PropertyOrder(3), UsedImplicitly]
+        [Description("Item type to put in slot 1"), PropertyOrder(3), Annotations.UsedImplicitly]
         public EquipmentType Slot1 { get; set; }
         
-        [Description("Item type to put in slot 2"), PropertyOrder(4), UsedImplicitly]
+        [Description("Item type to put in slot 2"), PropertyOrder(4), Annotations.UsedImplicitly]
         public EquipmentType Slot2 { get; set; }
         
-        [Description("Item type to put in slot 3"), PropertyOrder(5), UsedImplicitly]
+        [Description("Item type to put in slot 3"), PropertyOrder(5), Annotations.UsedImplicitly]
         public EquipmentType Slot3 { get; set; }
         
-        [Description("Item type to put in slot 4"), PropertyOrder(6), UsedImplicitly]
+        [Description("Item type to put in slot 4"), PropertyOrder(6), Annotations.UsedImplicitly]
         public EquipmentType Slot4 { get; set; }
         
-        [Description("Whether to allow horse (can be combined with Use Camel)"), PropertyOrder(7), UsedImplicitly]
+        [Description("Whether to allow horse (can be combined with Use Camel)"), PropertyOrder(7), Annotations.UsedImplicitly]
         public bool UseHorse { get; set; }
         
-        [Description("Whether to allow camel (can be combined with Use Horse"), PropertyOrder(8), UsedImplicitly]
+        [Description("Whether to allow camel (can be combined with Use Horse"), PropertyOrder(8), Annotations.UsedImplicitly]
         public bool UseCamel { get; set; }
         
         [Description("Passive hero power: this will always apply to the hero (i.e. a permanent buff)"), 
@@ -116,14 +116,14 @@ namespace BLTAdoptAHero
 
         public class PassivePowerGroup
         {
-            [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), UsedImplicitly]
+            [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), Annotations.UsedImplicitly]
             public string Name { get; set; } = "Passive Power";
 
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(1), UsedImplicitly]
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(1), Annotations.UsedImplicitly]
             public Guid Power1 { get; set; }
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(2), UsedImplicitly]
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(2), Annotations.UsedImplicitly]
             public Guid Power2 { get; set; }
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(3), UsedImplicitly]
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(3), Annotations.UsedImplicitly]
             public Guid Power3 { get; set; }
 
             [Browsable(false), YamlIgnore]
@@ -151,17 +151,22 @@ namespace BLTAdoptAHero
 
         public class ActivePowerGroup
         {
-            [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1),
-             UsedImplicitly]
+            [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), Annotations.UsedImplicitly]
             public string Name { get; set; } = "Active Power";
 
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(1), UsedImplicitly]
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(1), Annotations.UsedImplicitly]
             public Guid Power1 { get; set; }
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(2), UsedImplicitly]
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(2), Annotations.UsedImplicitly]
             public Guid Power2 { get; set; }
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(3), UsedImplicitly]
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(3), Annotations.UsedImplicitly]
             public Guid Power3 { get; set; }
+            
+            [Description("Particles/sound effects to play when this power group is activated"), PropertyOrder(4), ExpandableObject, UsedImplicitly]
+            public OneShotEffect ActivateEffect { get; set; } = new();
 
+            [Description("Particles/sound effects to play when this power group is deactivated"), PropertyOrder(5), ExpandableObject, UsedImplicitly]
+            public OneShotEffect DeactivateEffect { get; set; } = new();
+            
             [Browsable(false), YamlIgnore]
             private IEnumerable<IHeroPowerActive> Powers 
             => new []
@@ -184,7 +189,7 @@ namespace BLTAdoptAHero
 
                 if (!activePowers.Any())
                 {
-                    return (false, "You have no powers!");
+                    return (false, "No powers!");
                 }
 
                 (bool _, string failReason) = activePowers
@@ -201,6 +206,7 @@ namespace BLTAdoptAHero
                 {
                     return (false, $"Powers not allowed in tournaments!");
                 }
+                
                 foreach(var power in Powers)
                 {
                     power.Activate(hero, () =>
@@ -208,9 +214,11 @@ namespace BLTAdoptAHero
                         if (Powers.All(p => !p.IsActive(hero)))
                         {
                             ActionManager.SendReply(context, $"{Name} expired!");
+                            DeactivateEffect.Trigger(hero);
                         }
                     });
                 }
+                ActivateEffect.Trigger(hero);
                 return (true, $"{Name} activated!");
             }
 

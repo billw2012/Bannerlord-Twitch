@@ -198,6 +198,12 @@ namespace BannerlordTwitch
 			TwitchService?.Dispose();
 			TwitchService = null;
 		}
+		
+		public override void OnMissionBehaviourInitialize(Mission mission)
+		{
+			mission.AddMissionBehaviour(new BLTAgentModifierBehavior());
+			mission.AddMissionBehaviour(new BLTAgentPfxBehaviour());
+		}
 
 		public static bool RestartTwitchService()
 		{
