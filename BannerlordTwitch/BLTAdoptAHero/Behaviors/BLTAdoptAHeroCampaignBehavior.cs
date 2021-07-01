@@ -52,11 +52,11 @@ namespace BLTAdoptAHero
                 [SaveableProperty(6)]
                 public List<Guid> Achievements { get; set; } = new();
                 [SaveableProperty(7)]
-                public int TotalTournamentLosses { get; set; } = new();
+                public int TotalTournamentLosses { get; set; }
                 [SaveableProperty(8)]
-                public int TotalTournamentWins { get; set; } = new();
+                public int TotalTournamentWins { get; set; }
                 [SaveableProperty(9)]
-                public int TotalTournamentChampionships { get; set; } = new();
+                public int TotalTournamentChampionships { get; set; }
 
                 public int ModifyValue(AchievementSystem.AchievementTypes type, int amount)
                 {
