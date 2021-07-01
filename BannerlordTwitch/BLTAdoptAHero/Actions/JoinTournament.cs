@@ -367,10 +367,6 @@ namespace BLTAdoptAHero
 
                 tournamentBehaviour.TournamentEnd += () =>
                 {
-					foreach (TournamentQueueEntry finalentry in activeTournament)
-                    {
-                        
-                    }
                     // Win results
                     foreach (var entry in activeTournament)
                     {
