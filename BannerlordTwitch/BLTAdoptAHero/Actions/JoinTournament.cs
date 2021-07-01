@@ -332,11 +332,44 @@ namespace BLTAdoptAHero
                 {
                     return;
                 }
+				
+				if (BLTAdoptAHeroModule.TournamentConfig.NormalizeArmor)
+                {
+                    var culture = Settlement.CurrentSettlement.Culture;
 
+                    var replacementLeg = HeroHelpers.AllItems.FirstOrDefault(i => i.Culture == culture && i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.LegArmor) ?? HeroHelpers.AllItems.FirstOrDefault(i => i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.LegArmor);
+                    var replacementBody = HeroHelpers.AllItems.FirstOrDefault(i => i.Culture == culture && i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.BodyArmor) ?? HeroHelpers.AllItems.FirstOrDefault(i => i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.BodyArmor);
+                    var replacementHelmet = HeroHelpers.AllItems.FirstOrDefault(i => i.Culture == culture && i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.HeadArmor) ?? HeroHelpers.AllItems.FirstOrDefault(i => i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.HeadArmor);
+                    var replacementHand = HeroHelpers.AllItems.FirstOrDefault(i => i.Culture == culture && i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.HandArmor) ?? HeroHelpers.AllItems.FirstOrDefault(i => i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.HandArmor);
+
+                    foreach (TournamentQueueEntry entry in activeTournament)
+                    {
+                        BLTAdoptAHeroCampaignBehavior.Current.SaveEquipment(entry.Hero);
+                        entry.Hero.BattleEquipment[EquipmentIndex.Leg] = new(replacementLeg);
+                        entry.Hero.BattleEquipment[EquipmentIndex.Body] = new(replacementBody);
+                        entry.Hero.BattleEquipment[EquipmentIndex.Head] = new(replacementHelmet);
+                        entry.Hero.BattleEquipment[EquipmentIndex.Gloves] = new(replacementHand);
+                        entry.Hero.BattleEquipment[EquipmentIndex.Cape] = EquipmentElement.Invalid;
+                    }
+                }
+				
                 var tournamentBehaviour = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>();
 
                 tournamentBehaviour.TournamentEnd += () =>
                 {
+					foreach (TournamentQueueEntry finalentry in activeTournament)
+                    {
+                        if (finalentry.Hero != null)
+                        {
+                            var equip = BLTAdoptAHeroCampaignBehavior.Current.LoadEquipment(finalentry.Hero);
+
+                            finalentry.Hero.BattleEquipment[EquipmentIndex.Leg] = equip.Leg;
+                            finalentry.Hero.BattleEquipment[EquipmentIndex.Body] = equip.Body;
+                            finalentry.Hero.BattleEquipment[EquipmentIndex.Head] = equip.Head;
+                            finalentry.Hero.BattleEquipment[EquipmentIndex.Gloves] = equip.Gloves;
+                            finalentry.Hero.BattleEquipment[EquipmentIndex.Cape] = equip.Cape;
+                        }
+                    }
                     // Win results
                     foreach (var entry in activeTournament)
                     {

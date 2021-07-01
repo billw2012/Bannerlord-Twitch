@@ -146,6 +146,18 @@ namespace BLTAdoptAHero
         }
 
         private Dictionary<Hero, HeroData> heroData = new();
+		
+		public class TournamentEquipment
+        {
+            public EquipmentElement Head { get; set; }
+            public EquipmentElement Body { get; set; }
+            public EquipmentElement Leg { get; set; }
+            public EquipmentElement Cape { get; set; }
+            public EquipmentElement Gloves { get; set; }
+        }
+
+        private Dictionary<Hero, TournamentEquipment> TournamentEquip = new();
+
 
         public override void RegisterEvents()
         {
@@ -729,6 +741,28 @@ namespace BLTAdoptAHero
             }
 
             return foundHero;
+        }
+		
+		public void SaveEquipment(Hero hero)
+        {
+            var td = new TournamentEquipment
+            {
+                Head = hero.BattleEquipment[EquipmentIndex.Head],
+                Body = hero.BattleEquipment[EquipmentIndex.Body],
+                Leg = hero.BattleEquipment[EquipmentIndex.Leg],
+                Gloves = hero.BattleEquipment[EquipmentIndex.Gloves],
+                Cape = hero.BattleEquipment[EquipmentIndex.Cape]
+
+            };
+            TournamentEquip.Add(hero, td);
+  
+        }
+
+        public TournamentEquipment LoadEquipment(Hero hero)
+        {
+            TournamentEquip.TryGetValue(hero, out var td);
+            TournamentEquip.Remove(hero);
+            return td;
         }
 
         #endregion
