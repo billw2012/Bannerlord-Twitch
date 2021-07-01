@@ -332,7 +332,37 @@ namespace BLTAdoptAHero
                 {
                     return;
                 }
+                var savedArmor = new Dictionary<Hero, List<(EquipmentIndex slot, EquipmentElement element)>>();
 
+                if (BLTAdoptAHeroModule.TournamentConfig.NormalizeArmor)
+                {
+                    var culture = Settlement.CurrentSettlement.Culture;
+					var replacements = SkillGroup.ArmorIndexType
+						//.Where(slotItemTypePair => slotItemTypePair.slot != EquipmentIndex.Cape)
+						.Select(slotItemTypePair =>
+						(
+							slot: slotItemTypePair.slot, 
+							item: HeroHelpers.AllItems.FirstOrDefault(i => i.Culture == culture 
+																		   && i.Tier == ItemObject.ItemTiers.Tier3 
+																		   && i.ItemType == slotItemTypePair.itemType)
+								  ?? HeroHelpers.AllItems.FirstOrDefault(i => i.Tier == ItemObject.ItemTiers.Tier3 
+																			  && i.ItemType == slotItemTypePair.itemType)
+						)
+					);
+
+					foreach (TournamentQueueEntry entry in activeTournament)
+					{
+                        
+                        savedArmor.Add(entry.Hero, SkillGroup.ArmorIndexType.Select(slotItemTypePair 
+							=> (slotItemTypePair.slot, entry.Hero.BattleEquipment[slotItemTypePair.slot])).ToList());
+
+						foreach (var replacement in replacements)
+						{
+							entry.Hero.BattleEquipment[replacement.slot] = new(replacement.item);
+						}
+					}
+                }
+				
                 var tournamentBehaviour = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>();
 
                 tournamentBehaviour.TournamentEnd += () =>
@@ -340,6 +370,16 @@ namespace BLTAdoptAHero
                     // Win results
                     foreach (var entry in activeTournament)
                     {
+                        if (entry.Hero != null)
+                        {
+                            if (savedArmor.TryGetValue(entry.Hero, out var originalGear))
+                            {
+                                foreach (var savedItem in originalGear)
+                                {
+                                    entry.Hero.BattleEquipment[savedItem.slot] = savedItem.element;
+                                }
+                            }
+                        }
                         float actualBoost = entry.IsSub ? Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1) : 1;
                         var results = new List<string>();
                         if (entry.Hero != null && entry.Hero == tournamentBehaviour.Winner.Character?.HeroObject)

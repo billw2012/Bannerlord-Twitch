@@ -338,6 +338,9 @@ namespace BLTAdoptAHero
         [Category("General"), Description("Replaces all lances and spears with swords, because lance and spear combat is terrible"), PropertyOrder(3)]
         public bool NoSpears { get; set; } = true;
 
+        [Category("General"), Description("Replaces all armor with Tier 3 Armor (Based on Culture if possible)"), PropertyOrder(4)]
+        public bool NormalizeArmor { get; set; } = true;
+
         [Category("Rewards"), Description("Gold won if the hero wins the tournaments"), PropertyOrder(1)]
         public int WinGold { get; set; } = 50000;
 
