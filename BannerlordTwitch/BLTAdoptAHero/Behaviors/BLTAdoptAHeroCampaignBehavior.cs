@@ -51,6 +51,12 @@ namespace BLTAdoptAHero
                 public int TotalBLTKills { get; set; }
                 [SaveableProperty(6)]
                 public List<Guid> Achievements { get; set; } = new();
+                [SaveableProperty(7)]
+                public int TotalTournamentLosses { get; set; } = new();
+                [SaveableProperty(8)]
+                public int TotalTournamentWins { get; set; } = new();
+                [SaveableProperty(9)]
+                public int TotalTournamentChampionships { get; set; } = new();
 
                 public int ModifyValue(AchievementSystem.AchievementTypes type, int amount)
                 {
@@ -62,6 +68,9 @@ namespace BLTAdoptAHero
                         AchievementSystem.AchievementTypes.TotalMainKills => TotalMainKills += amount,
                         AchievementSystem.AchievementTypes.Attacks => TotalAttacks += amount,
                         AchievementSystem.AchievementTypes.Deaths => TotalDeaths += amount,
+                        AchievementSystem.AchievementTypes.TotalTournamentLosses => TotalTournamentLosses += amount,
+                        AchievementSystem.AchievementTypes.TotalTournamentWins => TotalTournamentWins += amount,
+                        AchievementSystem.AchievementTypes.TotalTournamentChampionships => TotalTournamentChampionships += amount,
                         _ => throw new ArgumentOutOfRangeException(nameof(type), type,
                             "Invalid AchievementType, probably settings are corrupt?")
                     };
@@ -76,6 +85,9 @@ namespace BLTAdoptAHero
                         AchievementSystem.AchievementTypes.TotalMainKills => TotalMainKills,
                         AchievementSystem.AchievementTypes.Attacks => TotalAttacks,
                         AchievementSystem.AchievementTypes.Deaths => TotalDeaths,
+                        AchievementSystem.AchievementTypes.TotalTournamentLosses => TotalTournamentLosses,
+                        AchievementSystem.AchievementTypes.TotalTournamentWins => TotalTournamentWins,
+                        AchievementSystem.AchievementTypes.TotalTournamentChampionships => TotalTournamentChampionships,
                         _ => throw new ArgumentOutOfRangeException(nameof(type), type, "Invalid AchievementType, probably settings are corrupt?")
                     };
             }
@@ -506,6 +518,11 @@ namespace BLTAdoptAHero
 
         public void IncreaseHeroDeaths(Hero hero) => UpdateAchievement(hero, AchievementSystem.AchievementTypes.Deaths, 1);
 
+        public void IncreaseTournamentLosses(Hero hero) => UpdateAchievement(hero, AchievementSystem.AchievementTypes.TotalTournamentLosses, 1);
+
+        public void IncreaseTournamentWins(Hero hero) => UpdateAchievement(hero, AchievementSystem.AchievementTypes.TotalTournamentWins, 1);
+
+        public void IncreaseTournamentChampionships(Hero hero) => UpdateAchievement(hero, AchievementSystem.AchievementTypes.TotalTournamentChampionships, 1);
         private void UpdateAchievement(Hero hero, AchievementSystem.AchievementTypes achievementType, int amount)
         {
             var achievementData = GetHeroData(hero).AchievementInfo;

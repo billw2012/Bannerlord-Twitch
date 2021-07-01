@@ -386,6 +386,7 @@ namespace BLTAdoptAHero
                         {
                             results.Add("WINNER!");
 
+                            BLTAdoptAHeroCampaignBehavior.Current.IncreaseTournamentChampionships(entry.Hero);
                             // Winner gets their gold back also
                             int actualGold = (int) (BLTAdoptAHeroModule.TournamentConfig.WinGold * actualBoost + entry.EntryFee);
                             if (actualGold > 0)
@@ -850,6 +851,7 @@ namespace BLTAdoptAHero
                                 results.Add(description);
                             }
                         }
+                        BLTAdoptAHeroCampaignBehavior.Current.IncreaseTournamentWins(entry.Hero);
                     }
                     else if (tournamentBehavior.LastMatch.Participants.Any(w => w.Character?.HeroObject == entry.Hero))
                     {
@@ -863,6 +865,7 @@ namespace BLTAdoptAHero
                                 results.Add(description);
                             }
                         }
+                        BLTAdoptAHeroCampaignBehavior.Current.IncreaseTournamentLosses(entry.Hero);
                     }
                     if (results.Any())
                     {

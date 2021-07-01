@@ -24,7 +24,10 @@ namespace BLTAdoptAHero.Actions.Util
             TotalMainKills,
             Summons,
             Attacks,
-            Deaths
+            Deaths,
+            TotalTournamentWins,
+            TotalTournamentLosses,
+            TotalTournamentChampionships
         };
 
         [PropertyOrder(4), Description("Type of achievement this will be.")]
