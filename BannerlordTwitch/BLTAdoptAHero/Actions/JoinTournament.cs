@@ -332,25 +332,35 @@ namespace BLTAdoptAHero
                 {
                     return;
                 }
-				
-				if (BLTAdoptAHeroModule.TournamentConfig.NormalizeArmor)
+                var savedArmor = new Dictionary<Hero, List<(EquipmentIndex slot, EquipmentElement element)>>();
+
+                if (BLTAdoptAHeroModule.TournamentConfig.NormalizeArmor)
                 {
                     var culture = Settlement.CurrentSettlement.Culture;
+					var replacements = SkillGroup.ArmorIndexType
+						//.Where(slotItemTypePair => slotItemTypePair.slot != EquipmentIndex.Cape)
+						.Select(slotItemTypePair =>
+						(
+							slot: slotItemTypePair.slot, 
+							item: HeroHelpers.AllItems.FirstOrDefault(i => i.Culture == culture 
+																		   && i.Tier == ItemObject.ItemTiers.Tier3 
+																		   && i.ItemType == slotItemTypePair.itemType)
+								  ?? HeroHelpers.AllItems.FirstOrDefault(i => i.Tier == ItemObject.ItemTiers.Tier3 
+																			  && i.ItemType == slotItemTypePair.itemType)
+						)
+					);
 
-                    var replacementLeg = HeroHelpers.AllItems.FirstOrDefault(i => i.Culture == culture && i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.LegArmor) ?? HeroHelpers.AllItems.FirstOrDefault(i => i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.LegArmor);
-                    var replacementBody = HeroHelpers.AllItems.FirstOrDefault(i => i.Culture == culture && i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.BodyArmor) ?? HeroHelpers.AllItems.FirstOrDefault(i => i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.BodyArmor);
-                    var replacementHelmet = HeroHelpers.AllItems.FirstOrDefault(i => i.Culture == culture && i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.HeadArmor) ?? HeroHelpers.AllItems.FirstOrDefault(i => i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.HeadArmor);
-                    var replacementHand = HeroHelpers.AllItems.FirstOrDefault(i => i.Culture == culture && i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.HandArmor) ?? HeroHelpers.AllItems.FirstOrDefault(i => i.Tier == ItemObject.ItemTiers.Tier3 && i.ItemType == ItemObject.ItemTypeEnum.HandArmor);
+					foreach (TournamentQueueEntry entry in activeTournament)
+					{
+                        
+                        savedArmor.Add(entry.Hero, SkillGroup.ArmorIndexType.Select(slotItemTypePair 
+							=> (slotItemTypePair.slot, entry.Hero.BattleEquipment[slotItemTypePair.slot])).ToList());
 
-                    foreach (TournamentQueueEntry entry in activeTournament)
-                    {
-                        BLTAdoptAHeroCampaignBehavior.Current.SaveEquipment(entry.Hero);
-                        entry.Hero.BattleEquipment[EquipmentIndex.Leg] = new(replacementLeg);
-                        entry.Hero.BattleEquipment[EquipmentIndex.Body] = new(replacementBody);
-                        entry.Hero.BattleEquipment[EquipmentIndex.Head] = new(replacementHelmet);
-                        entry.Hero.BattleEquipment[EquipmentIndex.Gloves] = new(replacementHand);
-                        entry.Hero.BattleEquipment[EquipmentIndex.Cape] = EquipmentElement.Invalid;
-                    }
+						foreach (var replacement in replacements)
+						{
+							entry.Hero.BattleEquipment[replacement.slot] = new(replacement.item);
+						}
+					}
                 }
 				
                 var tournamentBehaviour = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>();
@@ -359,20 +369,23 @@ namespace BLTAdoptAHero
                 {
 					foreach (TournamentQueueEntry finalentry in activeTournament)
                     {
-                        if (finalentry.Hero != null)
-                        {
-                            var equip = BLTAdoptAHeroCampaignBehavior.Current.LoadEquipment(finalentry.Hero);
-
-                            finalentry.Hero.BattleEquipment[EquipmentIndex.Leg] = equip.Leg;
-                            finalentry.Hero.BattleEquipment[EquipmentIndex.Body] = equip.Body;
-                            finalentry.Hero.BattleEquipment[EquipmentIndex.Head] = equip.Head;
-                            finalentry.Hero.BattleEquipment[EquipmentIndex.Gloves] = equip.Gloves;
-                            finalentry.Hero.BattleEquipment[EquipmentIndex.Cape] = equip.Cape;
-                        }
+                        
                     }
                     // Win results
                     foreach (var entry in activeTournament)
                     {
+                        if (entry.Hero != null)
+                        {
+                            var findArmor = savedArmor.TryGetValue(entry.Hero, out var originalGear);
+
+                            if (findArmor)
+                            {
+                                foreach (var savedItem in originalGear)
+                                {
+                                    entry.Hero.BattleEquipment[savedItem.slot] = savedItem.element;
+                                }
+                            }
+                        }
                         float actualBoost = entry.IsSub ? Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1) : 1;
                         var results = new List<string>();
                         if (entry.Hero != null && entry.Hero == tournamentBehaviour.Winner.Character?.HeroObject)
