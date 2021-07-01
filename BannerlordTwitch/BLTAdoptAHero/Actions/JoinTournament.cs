@@ -376,9 +376,7 @@ namespace BLTAdoptAHero
                     {
                         if (entry.Hero != null)
                         {
-                            var findArmor = savedArmor.TryGetValue(entry.Hero, out var originalGear);
-
-                            if (findArmor)
+                            if (savedArmor.TryGetValue(entry.Hero, out var originalGear))
                             {
                                 foreach (var savedItem in originalGear)
                                 {
