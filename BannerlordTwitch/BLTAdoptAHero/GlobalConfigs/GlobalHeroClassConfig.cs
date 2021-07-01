@@ -47,6 +47,7 @@ namespace BLTAdoptAHero
             {
                 classDef.ID = Guid.NewGuid();
             }
+            classesOnLoad = ClassDefs.ToList();
         }
 
         public void OnEditing()

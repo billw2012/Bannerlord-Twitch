@@ -9,7 +9,7 @@ namespace BLTAdoptAHero.Actions.Util
     public class AchievementSystem
     {
         [ReadOnly(true), UsedImplicitly]
-        public Guid ID { get; set; } //{ get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
+        public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
 
         [PropertyOrder(1)]
         public bool Enabled { get; [UsedImplicitly] set; }

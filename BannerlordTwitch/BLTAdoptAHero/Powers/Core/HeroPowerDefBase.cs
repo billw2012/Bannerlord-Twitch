@@ -84,7 +84,7 @@ namespace BLTAdoptAHero.Powers
         public Guid Type { get; set; }
         
         [ReadOnly(true), UsedImplicitly]
-        public Guid ID { get; set; } //{ get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
+        public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
 
         [Description("Name of the power that will be shown in game"), PropertyOrder(1)]
         public string Name { get; set; } = "Enter Name Here";
@@ -93,7 +93,8 @@ namespace BLTAdoptAHero.Powers
 
         public class ItemSource
         {
-            public static IEnumerable<HeroPowerDefBase> All { get; set; }
+            //public static IEnumerable<HeroPowerDefBase> All { get; set; }
+            public static GlobalHeroPowerConfig Source { get; set; }
         }
         
         public class ItemSourcePassive : ItemSource, IItemsSource
@@ -103,9 +104,9 @@ namespace BLTAdoptAHero.Powers
                 var col = new ItemCollection();
                 col.Add(Guid.Empty, "(none)");
 
-                if (All != null)
+                if (Source != null)
                 {
-                    foreach (var item in All.Where(i => i is IHeroPowerPassive))
+                    foreach (var item in Source.PowerDefs.Where(i => i is IHeroPowerPassive))
                     {
                         col.Add(item.ID, item.ToString());
                     }
@@ -122,9 +123,9 @@ namespace BLTAdoptAHero.Powers
                 var col = new ItemCollection();
                 col.Add(Guid.Empty, "(none)");
 
-                if (All != null)
+                if (Source != null)
                 {
-                    foreach (var item in All.Where(i => i is IHeroPowerActive))
+                    foreach (var item in Source.PowerDefs.Where(i => i is IHeroPowerActive))
                     {
                         col.Add(item.ID, item.ToString());
                     }

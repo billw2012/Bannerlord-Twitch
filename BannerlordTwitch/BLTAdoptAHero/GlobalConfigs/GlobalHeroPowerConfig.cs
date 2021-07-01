@@ -9,7 +9,7 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
-    internal class GlobalHeroPowerConfig : IConfig
+    public class GlobalHeroPowerConfig : IConfig
     {
         private const string ID = "Adopt A Hero - Power Config";
         internal static void Register()
@@ -66,13 +66,13 @@ namespace BLTAdoptAHero
             {
                 classDef.ID = Guid.NewGuid();
             }
-            
+            powersOnLoad = PowerDefs.ToList();
             SavedPowerDefs = PowerDefs.Cast<object>().ToList();
         }
 
         public void OnEditing()
         {
-            HeroPowerDefBase.ItemSource.All = PowerDefs;
+            HeroPowerDefBase.ItemSource.Source = this;
         }
     }
 }

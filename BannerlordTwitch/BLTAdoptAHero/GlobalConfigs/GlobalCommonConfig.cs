@@ -182,6 +182,7 @@ namespace BLTAdoptAHero
             {
                 achievement.ID = Guid.NewGuid();
             }
+            loadedAchievements = Achievements.ToList();
         }
 
         public void OnEditing() { }

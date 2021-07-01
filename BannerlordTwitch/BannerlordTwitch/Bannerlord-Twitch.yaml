@@ -846,7 +846,7 @@ GlobalConfigs:
         Power3: 00000000-0000-0000-0000-000000000000
       ActivePower:
         Name: Active Power
-        Power1: b3e5da20-1b82-4820-a373-ff9a8190dd98
+        Power1: 00000000-0000-0000-0000-000000000000
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
     - ID: 8f6fd6b5-b8c2-4196-a668-57efbb6a0e06
@@ -974,14 +974,14 @@ GlobalConfigs:
       UseCamel: false
       PassivePower:
         Name: Passive Power
-        Power1: 00000000-0000-0000-0000-000000000000
+        Power1: b99d374b-84d0-495e-a430-1811ad6e712b
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
       ActivePower:
         Name: Berserker Rage
-        Power1: b3e5da20-1b82-4820-a373-ff9a8190dd98
-        Power2: 6a36fedb-0b2d-459c-b06b-c4230327589b
-        Power3: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
+        Power1: 6a36fedb-0b2d-459c-b06b-c4230327589b
+        Power2: 00000000-0000-0000-0000-000000000000
+        Power3: 00000000-0000-0000-0000-000000000000
 - Id: Buffet - Effects Config
   Config:
     DisableEffectsInTournaments: true
@@ -999,12 +999,12 @@ GlobalConfigs:
       Type: c4213666-2176-42b4-8dbb-bfe0182bcce1
       ID: b99d374b-84d0-495e-a430-1811ad6e712b
       Name: Fragile
-    - FractionOfDamageToAbsorb: 1
+    - FractionOfDamageToAbsorb: 0.100000001
       PowerDurationSeconds: 30
       Type: e0a274df-adbb-4725-9eae-59806bf9b5dc
       ID: b3e5da20-1b82-4820-a373-ff9a8190dd98
       Name: Vampiric
-    - DamageToMultiply: 3
+    - DamageToMultiply: 1.5
       DamageToAdd: 0
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
@@ -1014,7 +1014,7 @@ GlobalConfigs:
       Type: 378648b6-5586-4812-ad08-22da6374440c
       ID: 6a36fedb-0b2d-459c-b06b-c4230327589b
       Name: Heavy Hitting
-    - FractionOfDamageToReflect: 0.899999976
+    - FractionOfDamageToReflect: 0.150000006
       PowerDurationSeconds: 30
       Type: ffe07da3-e977-42d8-80ca-5dfff66123eb
       ID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4

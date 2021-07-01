@@ -18,7 +18,7 @@ namespace BLTAdoptAHero
     public class HeroClassDef
     {
         [ReadOnly(true), UsedImplicitly]
-        public Guid ID { get; set; } //{ get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
+        public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
 
         #region User Editable Properties
         [Description("Name of the class that shall be passed to SetHeroClass actions"), PropertyOrder(1)]
