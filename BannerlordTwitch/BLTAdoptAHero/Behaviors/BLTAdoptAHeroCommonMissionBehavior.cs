@@ -201,7 +201,7 @@ namespace BLTAdoptAHero
                 if (affectedAgent.State == AgentState.Killed)
                 {
                     // Stop hero from dying if death is disabled
-                    var affectedHero = GetAdoptedHeroFromAgent(affectedAgent);
+                    var affectedHero = affectedAgent.GetAdoptedHero();
                     if (affectedHero != null 
                         && (BLTAdoptAHeroModule.CommonConfig.AllowDeath == false
                             || StaticRandom.Next() > BLTAdoptAHeroModule.CommonConfig.DeathChance))

@@ -776,6 +776,8 @@ GlobalConfigs:
     StartHealthMultiplier: 2
     NoHorses: true
     NoSpears: true
+    NormalizeArmor: true
+    NormalizeArmorTier: 1
     WinGold: 50000
     WinXP: 50000
     ParticipateXP: 10000
@@ -846,7 +848,7 @@ GlobalConfigs:
         Power3: 00000000-0000-0000-0000-000000000000
       ActivePower:
         Name: Active Power
-        Power1: 60582ddc-3b22-4052-9437-cd43882bf5f9
+        Power1: 00000000-0000-0000-0000-000000000000
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
         ActivateEffect:
@@ -871,7 +873,7 @@ GlobalConfigs:
         Power3: 00000000-0000-0000-0000-000000000000
       ActivePower:
         Name: Active Power
-        Power1: 60582ddc-3b22-4052-9437-cd43882bf5f9
+        Power1: 00000000-0000-0000-0000-000000000000
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
         ActivateEffect:
@@ -1151,6 +1153,31 @@ SimTesting:
     Type: Command
     Id: class
     Args: infantry
+    Weight: 1
+  - Enabled: true
+    Type: Command
+    Id: equip
+    Args: 
+    Weight: 1
+  - Enabled: true
+    Type: Command
+    Id: equip
+    Args: 
+    Weight: 1
+  - Enabled: true
+    Type: Command
+    Id: equip
+    Args: 
+    Weight: 1
+  - Enabled: true
+    Type: Command
+    Id: equip
+    Args: 
+    Weight: 1
+  - Enabled: true
+    Type: Command
+    Id: equip
+    Args: 
     Weight: 1
   Use:
   - Enabled: true

@@ -332,33 +332,30 @@ namespace BLTAdoptAHero
                 {
                     return;
                 }
-                var savedArmor = new Dictionary<Hero, List<(EquipmentIndex slot, EquipmentElement element)>>();
 
+                var savedArmor = new Dictionary<Hero, List<(EquipmentIndex slot, EquipmentElement element)>>();
                 if (BLTAdoptAHeroModule.TournamentConfig.NormalizeArmor)
                 {
+                    var tier = (ItemObject.ItemTiers)Math.Max(0, Math.Min(5, BLTAdoptAHeroModule.TournamentConfig.NormalizeArmorTier - 1));
                     var culture = Settlement.CurrentSettlement.Culture;
 					var replacements = SkillGroup.ArmorIndexType
-						//.Where(slotItemTypePair => slotItemTypePair.slot != EquipmentIndex.Cape)
 						.Select(slotItemTypePair =>
 						(
 							slot: slotItemTypePair.slot, 
-							item: HeroHelpers.AllItems.FirstOrDefault(i => i.Culture == culture 
-																		   && i.Tier == ItemObject.ItemTiers.Tier3 
-																		   && i.ItemType == slotItemTypePair.itemType)
-								  ?? HeroHelpers.AllItems.FirstOrDefault(i => i.Tier == ItemObject.ItemTiers.Tier3 
-																			  && i.ItemType == slotItemTypePair.itemType)
-						)
-					);
+							item: HeroHelpers.AllItems.FirstOrDefault(i 
+                                      => i.Culture == culture && i.Tier == tier && i.ItemType == slotItemTypePair.itemType)
+								  ?? HeroHelpers.AllItems.FirstOrDefault(i 
+                                      => i.Tier == tier && i.ItemType == slotItemTypePair.itemType)
+						)).ToList();
 
-					foreach (TournamentQueueEntry entry in activeTournament)
+					foreach (var entry in activeTournament)
 					{
-                        
                         savedArmor.Add(entry.Hero, SkillGroup.ArmorIndexType.Select(slotItemTypePair 
 							=> (slotItemTypePair.slot, entry.Hero.BattleEquipment[slotItemTypePair.slot])).ToList());
 
-						foreach (var replacement in replacements)
+						foreach (var (slot, item) in replacements)
 						{
-							entry.Hero.BattleEquipment[replacement.slot] = new(replacement.item);
+							entry.Hero.BattleEquipment[slot] = new(item);
 						}
 					}
                 }
@@ -370,16 +367,14 @@ namespace BLTAdoptAHero
                     // Win results
                     foreach (var entry in activeTournament)
                     {
-                        if (entry.Hero != null)
+                        if (entry.Hero != null && savedArmor.TryGetValue(entry.Hero, out var originalGear))
                         {
-                            if (savedArmor.TryGetValue(entry.Hero, out var originalGear))
+                            foreach (var (slot, element) in originalGear)
                             {
-                                foreach (var savedItem in originalGear)
-                                {
-                                    entry.Hero.BattleEquipment[savedItem.slot] = savedItem.element;
-                                }
+                                entry.Hero.BattleEquipment[slot] = element;
                             }
                         }
+                        
                         float actualBoost = entry.IsSub ? Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1) : 1;
                         var results = new List<string>();
                         if (entry.Hero != null && entry.Hero == tournamentBehaviour.Winner.Character?.HeroObject)
