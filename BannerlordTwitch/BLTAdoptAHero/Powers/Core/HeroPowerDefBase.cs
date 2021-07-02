@@ -6,54 +6,23 @@ using System.Reflection;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
-using TaleWorlds.CampaignSystem;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero.Powers
 {
-    /*
-     * How powers will work:
-     * Passive:
-     * - Effect some thing related to the hero for as long as the hero has the power, e.g. max retinue, costs or whatever.
-     *   - Implementation with depend on the thing that is changed
-     * - Effect battle events, either for the heroes agent, agents they hit, or the heroes retinue agents.
-     *   - Implementation can be by listeners attached when the battle starts to any heroes in the involved parties,
-     *   or when the hero is summoned
-     *
-     * Active:
-     * - Immediate effect on arbitrary thing, e.g. break city wall in siege
-     *   - Implementation would be bespoke, in the Activate function
-     * - Effect on an arbitrary thing over time, e.g. increase player party speed for 30 seconds
-     *   - Implementation would be bespoke, in the Activate function, adding OnTick handler of some kind (siege, campaign?)
-     * - Effect over time on battle events
-     *   - Implementation can be by listeners attached when the effect is activated, and removed then it expires
-     *
-     * Any 
-     */
-    public interface IHeroPowerPassive 
-    {
-        // void OnAdded(Hero hero);
-        // void OnRemoved(Hero hero);
-        void OnHeroJoinedBattle(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers);
-    }
-
-    public interface IHeroPowerActive
-    {
-        (bool canActivate, string failReason) CanActivate(Hero hero);
-        bool IsActive(Hero hero);
-        void Activate(Hero hero, Action expiryCallback);
-        float DurationFractionRemaining(Hero hero);
-    }
-
+    /// <summary>
+    /// Base class for Hero Power definitions
+    /// </summary>
     public class HeroPowerDefBase
     {
-        private static readonly Dictionary<Guid, Type> registeredPowers = new();
+        #region Static Management Functions
 
+        private static readonly Dictionary<Guid, Type> registeredPowers = new();
         public static void RegisterPowerType<T>() => RegisterPowerType(typeof(T));
 
         public static void RegisterPowerType(Type type)
         {
-            var instance = (HeroPowerDefBase)Activator.CreateInstance(type);
+            var instance = (HeroPowerDefBase) Activator.CreateInstance(type);
             registeredPowers.Add(instance.Type, type);
         }
 
@@ -70,6 +39,35 @@ namespace BLTAdoptAHero.Powers
 
         internal static IEnumerable<Type> RegisteredPowerDefTypes => registeredPowers.Values;
 
+        #endregion
+
+        #region Saved Properties
+
+        /// <summary>
+        /// This should be set by derived classes to a unique guid (if your IDE doesn't generate them for you then
+        /// use https://www.guidgenerator.com/online-guid-generator.aspx)
+        /// </summary>
+        [Browsable(false), UsedImplicitly] 
+        public Guid Type { get; set; }
+
+        /// <summary>
+        /// This is automatically generated when the object is created, it should never be changed in code.
+        /// </summary>
+        [ReadOnly(true), UsedImplicitly]
+        public Guid ID
+        {
+            get => ObjectIDRegistry.Get(this);
+            set => ObjectIDRegistry.Set(this, value);
+        }
+
+        [Description("Name of the power that will be shown in game"), PropertyOrder(1), UsedImplicitly]
+        public string Name { get; set; } = "Enter Name Here";
+
+        #endregion
+
+        // Power is loaded as an object to ensure all properties are kept in tact (actually its a dictionary under the hood),
+        // and then we convert it to a HeroPowerDefBase to get the Type Guid property, then finally we convert it to the 
+        // actual target Type after looking it up.
         public HeroPowerDefBase ConvertToProperType(object o)
         {
             if (!registeredPowers.TryGetValue(Type, out var type))
@@ -77,26 +75,23 @@ namespace BLTAdoptAHero.Powers
                 Log.Error($"HeroPowerDef {Type} ({Name}) was not found");
                 return null;
             }
+
             return (HeroPowerDefBase) YamlHelpers.ConvertObject(o, type);
         }
-            
-        [Browsable(false)]
-        public Guid Type { get; set; }
-        
-        [ReadOnly(true), UsedImplicitly]
-        public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
 
-        [Description("Name of the power that will be shown in game"), PropertyOrder(1)]
-        public string Name { get; set; } = "Enter Name Here";
-
+        /// <summary>
+        /// Override this to give more useful string explanations
+        /// </summary>
+        /// <returns></returns>
         public override string ToString() => $"{Name}";
+
+        #region Item Source
 
         public class ItemSource
         {
-            //public static IEnumerable<HeroPowerDefBase> All { get; set; }
             public static GlobalHeroPowerConfig Source { get; set; }
         }
-        
+
         public class ItemSourcePassive : ItemSource, IItemsSource
         {
             public ItemCollection GetValues()
@@ -115,7 +110,7 @@ namespace BLTAdoptAHero.Powers
                 return col;
             }
         }
-        
+
         public class ItemSourceActive : ItemSource, IItemsSource
         {
             public ItemCollection GetValues()
@@ -134,5 +129,7 @@ namespace BLTAdoptAHero.Powers
                 return col;
             }
         }
+
+        #endregion
     }
 }

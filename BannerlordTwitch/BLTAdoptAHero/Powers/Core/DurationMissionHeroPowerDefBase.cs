@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using BannerlordTwitch.Helpers;
 using BLTAdoptAHero.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -10,6 +9,10 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero.Powers
 {
+    /// <summary>
+    /// Derive from this to implement Active Hero powers that work in missions, with a fixed duration. You can still
+    /// also implement the passive power when you derive from this class.
+    /// </summary>
     public abstract class DurationMissionHeroPowerDefBase : HeroPowerDefBase, IHeroPowerActive
     {
         [Category("Power Config"), Description("Duration the power will last for (when used as an active power), in seconds"), PropertyOrder(0), UsedImplicitly]
@@ -82,14 +85,15 @@ namespace BLTAdoptAHero.Powers
             });
         }
 
-        float IHeroPowerActive.DurationFractionRemaining(Hero hero)
+        (float duration, float remaining) IHeroPowerActive.DurationRemaining(Hero hero)
         {
             if (!expiry.TryGetValue(hero, out float expiryVal))
             {
-                return 0;
+                return (0, 0);
             }
 
-            return Math.Max(0, expiryVal - MBCommon.GetTime(MBCommon.TimeType.Mission)) / PowerDurationSeconds;
+            return (PowerDurationSeconds, 
+                Math.Max(0, Math.Min(PowerDurationSeconds, expiryVal - MBCommon.GetTime(MBCommon.TimeType.Mission))));
         }
 
         protected abstract void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers,

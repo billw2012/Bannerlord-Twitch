@@ -222,11 +222,17 @@ namespace BLTAdoptAHero
                 return (true, $"{Name} activated!");
             }
 
-            public float DurationFractionRemaining(Hero hero)
+            public (float duration, float remaining) DurationRemaining(Hero hero)
             {
                 if (!Powers.Any()) 
-                    return 0;
-                return Powers.Max(active => active.DurationFractionRemaining(hero));
+                    return (1, 0);
+                var remaining = Powers
+                    .Select(active => active.DurationRemaining(hero))
+                    .ToList();
+                return (
+                    duration: remaining.Max(r => r.duration),
+                    remaining: remaining.Max(r => r.remaining)
+                    );
             }
         }
 

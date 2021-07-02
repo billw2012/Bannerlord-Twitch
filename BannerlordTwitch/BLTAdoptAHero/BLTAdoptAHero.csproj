@@ -179,6 +179,8 @@
         <Compile Include="Powers\AddHealthPower.cs" />
         <Compile Include="Powers\Core\DurationMissionHeroPowerDefBase.cs" />
         <Compile Include="Powers\Core\HeroPowerDefBase.cs" />
+        <Compile Include="Powers\Core\IHeroPowerActive.cs" />
+        <Compile Include="Powers\Core\IHeroPowerPassive.cs" />
         <Compile Include="Powers\StatModifyPower.cs" />
         <Compile Include="Powers\ReflectDamgePower.cs" />
         <Compile Include="Powers\Core\HeroPowerCollectionEditor.cs" />
