@@ -754,6 +754,7 @@ GlobalConfigs:
     MoraleLossFactor: 0.5
     SubBoost: 1.20000005
     UseRawXP: true
+    RawXPSkillCap: 330
     RetinueUseHeroesFormation: false
     SummonCooldownInSeconds: 20
     SummonCooldownUseMultiplier: 1.10000002

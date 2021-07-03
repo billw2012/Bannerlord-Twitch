@@ -40,33 +40,17 @@ namespace BLTAdoptAHero
         public HeroPowerDefBase FindPower(string search) 
             => PowerDefs?.FirstOrDefault(c => c.Name.Equals(search, StringComparison.InvariantCultureIgnoreCase));
 
-        // This is just a copy of the classes that existed on loading, so we can assign unique IDs to any new ones when
-        // we save
-        private List<HeroPowerDefBase> powersOnLoad;
         public void OnLoaded()
         {
+            // We need to convert our generic loaded powers into their concrete types
             PowerDefs = SavedPowerDefs
                 .Select(o => YamlHelpers.ConvertObject<HeroPowerDefBase>(o)?.ConvertToProperType(o))
                 .Where(p => p != null)
                 .ToList();
-            
-            foreach (var c in PowerDefs
-                .GroupBy(c => c.ID)
-                .SelectMany(g => g.Skip(1)))
-            {
-                c.ID = Guid.NewGuid();
-            }
-            powersOnLoad = PowerDefs.ToList();
         }
 
         public void OnSaving()
         {
-            // Assign unique IDs to new class definitions
-            foreach (var classDef in PowerDefs.Except(powersOnLoad))
-            {
-                classDef.ID = Guid.NewGuid();
-            }
-            powersOnLoad = PowerDefs.ToList();
             SavedPowerDefs = PowerDefs.Cast<object>().ToList();
         }
 

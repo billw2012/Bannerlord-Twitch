@@ -37,8 +37,9 @@ namespace BLTAdoptAHero
 
         public static (bool success, string description) ImproveSkill(Hero hero, int amount, SkillsEnum skills, bool auto)
         {
-            var skill = GetSkill(hero, skills, auto,
-                so => BLTAdoptAHeroModule.CommonConfig.UseRawXP || hero.HeroDeveloper.GetFocusFactor(so) > 0);
+            var skill = GetSkill(hero, skills, auto, so 
+                => BLTAdoptAHeroModule.CommonConfig.UseRawXP && hero.GetSkillValue(so) < BLTAdoptAHeroModule.CommonConfig.RawXPSkillCap
+                   || hero.HeroDeveloper.GetFocusFactor(so) > 0);
             if (skill == null) return (false, $"Couldn't find a skill to improve");
             float prevSkill = hero.HeroDeveloper.GetPropertyValue(skill);
             int prevLevel = hero.GetSkillValue(skill);

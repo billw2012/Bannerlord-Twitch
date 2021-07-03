@@ -14,11 +14,13 @@ using YamlDotNet.Serialization;
 namespace BLTAdoptAHero
 {
     [CategoryOrder("General", 1)]
-    [CategoryOrder("Kill Rewards", 2)]
-    [CategoryOrder("Battle End Rewards", 3)]
-    [CategoryOrder("Shouts", 4)]
-    [CategoryOrder("Kill Streaks", 5)]
-    internal class GlobalCommonConfig : IConfig
+    [CategoryOrder("XP", 2)]
+    [CategoryOrder("Kill Rewards", 3)]
+    [CategoryOrder("Battle End Rewards", 4)]
+    [CategoryOrder("Shouts", 5)]
+    [CategoryOrder("Kill Streaks", 6)]
+    [CategoryOrder("Achievements", 7)]
+    internal class GlobalCommonConfig
     {
 
         private const string ID = "Adopt A Hero - General Config";
@@ -26,8 +28,9 @@ namespace BLTAdoptAHero
         internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalCommonConfig));
         internal static GlobalCommonConfig Get() => ActionManager.GetGlobalConfig<GlobalCommonConfig>(ID);
 
-        [Category("General"), Description("Whether the hero is allowed to die"), PropertyOrder(3)]
-        public bool AllowDeath { get; [UsedImplicitly] set; }
+        #region General
+        [Category("General"), Description("Whether the hero is allowed to die"), PropertyOrder(3), UsedImplicitly]
+        public bool AllowDeath { get; set; }
         
         [Category("General"), 
          Description("Chance (from 0 to 1) of killing blow not being reduced to a knock out blow (when Allow Death " +
@@ -61,19 +64,25 @@ namespace BLTAdoptAHero
          PropertyOrder(10), UsedImplicitly]
         public float SubBoost { get; set; } = 1;
 
-        [Category("General"),
+        [Category("XP"),
          Description("Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. " +
-                     "This avoids characters getting stuck when focus and attributes are not well distributed. " +
-                     "You should consider hiding "),
-         PropertyOrder(11), UsedImplicitly]
+                     "This avoids characters getting stuck when focus and attributes are not well distributed. "),
+         PropertyOrder(1), UsedImplicitly]
         public bool UseRawXP { get; set; } = true;
+        
+        [Category("XP"),
+         Description("Skill cap when using Raw XP. Skills will not go above this value. " +
+                     "330 is the vanilla XP skill cap."),
+         PropertyOrder(2), UsedImplicitly]
+        public int RawXPSkillCap { get; set; } = 330;
 
         [Category("General"),
          Description("Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise " +
-                     "they will go into default formations)"), PropertyOrder(12), UsedImplicitly]
+                     "they will go into default formations)"), PropertyOrder(13), UsedImplicitly]
         public bool RetinueUseHeroesFormation { get; [UsedImplicitly] set; }
 
-        [Category("General"), Description("Minimum time between summons for a specific hero"), PropertyOrder(13)]
+        [Category("General"), Description("Minimum time between summons for a specific hero"), 
+         PropertyOrder(14), UsedImplicitly]
         public int SummonCooldownInSeconds { get; [UsedImplicitly] set; } = 20;
         [Browsable(false), YamlIgnore]
         public bool CooldownEnabled => SummonCooldownInSeconds > 0;
@@ -83,16 +92,16 @@ namespace BLTAdoptAHero
                      "seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 " +
                      "seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. " +
                      "See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this."), 
-         PropertyOrder(14), UsedImplicitly]
+         PropertyOrder(15), UsedImplicitly]
         public float SummonCooldownUseMultiplier { get; set; } = 1.1f;
-
-        public float GetCooldownTime(int summoned) => (float) (Math.Pow(SummonCooldownUseMultiplier, Mathf.Max(1, summoned)) * SummonCooldownInSeconds);
 
         [Category("General"), 
          Description("Will disable companion limit. You will be able to have infinite number of companion"), 
-         PropertyOrder(13), UsedImplicitly]
-        public bool BreakCompanionLimit { get; set; } = false;
+         PropertyOrder(16), UsedImplicitly]
+        public bool BreakCompanionLimit { get; set; }
+        #endregion
 
+        #region Kill Rewards
         [Category("Kill Rewards"), Description("Gold the hero gets for every kill"), PropertyOrder(1), UsedImplicitly]
         public int GoldPerKill { get; set; } = 5000;
 
@@ -126,53 +135,66 @@ namespace BLTAdoptAHero
          Description("Caps the maximum multiplier for the level difference, defaults to 5 if not specified"),
          PropertyOrder(8), UsedImplicitly]
         public float LevelScalingCap { get; set; } = 5;
+        #endregion
 
-        [Category("Battle End Rewards"), Description("Gold won if the heroes side wins"), PropertyOrder(1), UsedImplicitly]
+        #region Battle End Rewards
+        [Category("Battle End Rewards"), Description("Gold won if the heroes side wins"), 
+         PropertyOrder(1), UsedImplicitly]
         public int WinGold { get; set; } = 10000;
 
-        [Category("Battle End Rewards"), Description("XP the hero gets if the heroes side wins"), PropertyOrder(2), UsedImplicitly]
+        [Category("Battle End Rewards"), Description("XP the hero gets if the heroes side wins"), 
+         PropertyOrder(2), UsedImplicitly]
         public int WinXP { get; set; } = 10000;
 
-        [Category("Battle End Rewards"), Description("Gold lost if the heroes side loses"), PropertyOrder(3), UsedImplicitly]
+        [Category("Battle End Rewards"), Description("Gold lost if the heroes side loses"), 
+         PropertyOrder(3), UsedImplicitly]
         public int LoseGold { get; set; } = 5000;
 
-        [Category("Battle End Rewards"), Description("XP the hero gets if the heroes side loses"), PropertyOrder(4), UsedImplicitly]
+        [Category("Battle End Rewards"), Description("XP the hero gets if the heroes side loses"), 
+         PropertyOrder(4), UsedImplicitly]
         public int LoseXP { get; set; } = 5000;
         
-        [Category("Battle End Rewards"), Description("Apply difficulty scaling to players side"), PropertyOrder(5), UsedImplicitly]
+        [Category("Battle End Rewards"), Description("Apply difficulty scaling to players side"), 
+         PropertyOrder(5), UsedImplicitly]
         public bool DifficultyScalingOnPlayersSide { get; set; } = true;
         
-        [Category("Battle End Rewards"), Description("Apply difficulty scaling to enemy side"), PropertyOrder(6), UsedImplicitly]
+        [Category("Battle End Rewards"), Description("Apply difficulty scaling to enemy side"), 
+         PropertyOrder(6), UsedImplicitly]
         public bool DifficultyScalingOnEnemySide { get; set; } = true;
         
         [Category("Battle End Rewards"), 
          Description("End reward difficulty scaling: determines the extent to which higher difficulty battles " +
                      "increase the above rewards"), PropertyOrder(7), UsedImplicitly]
         public float DifficultyScaling { get; set; } = 1;
-
-        [YamlIgnore, Browsable(false)]
-        public float DifficultyScalingClamped => MathF.Clamp(DifficultyScaling, 0, 5);
         
-        [Category("Battle End Rewards"), Description("Min difficulty scaling multiplier"), PropertyOrder(8), UsedImplicitly]
+        [Category("Battle End Rewards"), Description("Min difficulty scaling multiplier"), 
+         PropertyOrder(8), UsedImplicitly]
         public float DifficultyScalingMin { get; set; } = 0.2f;
         [YamlIgnore, Browsable(false)]
         public float DifficultyScalingMinClamped => MathF.Clamp(DifficultyScalingMin, 0, 1);
 
-        [Category("Battle End Rewards"), Description("Max difficulty scaling multiplier"), PropertyOrder(9), UsedImplicitly]
+        [Category("Battle End Rewards"), Description("Max difficulty scaling multiplier"), 
+         PropertyOrder(9), UsedImplicitly]
         public float DifficultyScalingMax { get; set; } = 3f;
         [YamlIgnore, Browsable(false)]
         public float DifficultyScalingMaxClamped => Math.Max(DifficultyScalingMax, 1f);
-        
+        #endregion
+
+        #region Shouts
         [Category("Shouts"), Description("Custom shouts"), PropertyOrder(1), UsedImplicitly]
         public List<SummonHero.Shout> Shouts { get; set; } = new();
 
         [Category("Shouts"), Description("Whether to include default shouts"), PropertyOrder(2)]
         public bool IncludeDefaultShouts { get; set; } = true;
+        #endregion
 
+        #region Kill Streak Rewards
         [Category("Kill Streak Rewards"), Description("Kill Streaks"), PropertyOrder(1), UsedImplicitly]
         public List<KillStreakRewards> KillStreaks { get; set; } = new();
 
-        [Category("Kill Streak Rewards"), Description("Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled."), PropertyOrder(2)]
+        [Category("Kill Streak Rewards"), 
+         Description("Whether to use the popup banner to announce kill streaks. Will only print in the overlay " +
+                     "instead if disabled."), PropertyOrder(2), UsedImplicitly]
         public bool ShowKillStreakPopup { get; set; } = true;
 
         [Category("Kill Streak Rewards"), Description("Sound to play when killstreak popup is disabled."),
@@ -180,36 +202,20 @@ namespace BLTAdoptAHero
         public Log.Sound KillStreakPopupAlertSound { get; [UsedImplicitly] set; } = Log.Sound.Horns2;
         
         [Category("Kill Streak Rewards"), 
-         Description("The level at which the rewards normalize and start to reduce (if relative level scaling is enabled)."), 
-         PropertyOrder(4), UsedImplicitly]
+         Description("The level at which the rewards normalize and start to reduce " +
+                     "(if relative level scaling is enabled)."), PropertyOrder(4), UsedImplicitly]
         public int ReferenceLevelReward { get; set; } = 15;
+        #endregion
 
-        [Category("General"), Description("Achievements"), PropertyOrder(15), UsedImplicitly]
+        #region Achievements
+        [Category("Achievements"), Description("Achievements"), PropertyOrder(1), UsedImplicitly]
         public List<AchievementSystem> Achievements { get; set; } = new();
+        #endregion
 
-        // This is just a copy of the achievements that existed on loading, so we can assign unique IDs to any new ones when
-        // we save
-        private List<AchievementSystem> loadedAchievements;
-        public void OnLoaded()
-        {
-            foreach (var a in Achievements
-                .GroupBy(a => a.ID)
-                .SelectMany(g => g.Skip(1)))
-            {
-                a.ID = Guid.NewGuid();
-            }
-            loadedAchievements = Achievements.ToList();
-        }
+        [YamlIgnore, Browsable(false)]
+        public float DifficultyScalingClamped => MathF.Clamp(DifficultyScaling, 0, 5);
 
-        public void OnSaving()
-        {
-            foreach (var achievement in Achievements.Except(loadedAchievements))
-            {
-                achievement.ID = Guid.NewGuid();
-            }
-            loadedAchievements = Achievements.ToList();
-        }
-
-        public void OnEditing() { }
+        public float GetCooldownTime(int summoned) 
+         => (float) (Math.Pow(SummonCooldownUseMultiplier, Mathf.Max(1, summoned)) * SummonCooldownInSeconds);
     }
 }
