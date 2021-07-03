@@ -8,86 +8,117 @@ using YamlDotNet.Serialization;
 namespace BLTAdoptAHero
 {
     [CategoryOrder("General", 1)]
-    [CategoryOrder("Match Rewards", 2)]
-    [CategoryOrder("Prize", 3)]
-    [CategoryOrder("Prize Tier", 4)]
-    [CategoryOrder("Custom Prize", 5)]
+    [CategoryOrder("Equipment", 2)]
+    [CategoryOrder("Betting", 3)]
+    [CategoryOrder("Match Rewards", 4)]
+    [CategoryOrder("Prize", 5)]
+    [CategoryOrder("Prize Tier", 6)]
+    [CategoryOrder("Custom Prize", 7)]
     internal class GlobalTournamentConfig
     {
         private const string ID = "Adopt A Hero - Tournament Config";
         internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalTournamentConfig));
         internal static GlobalTournamentConfig Get() => ActionManager.GetGlobalConfig<GlobalTournamentConfig>(ID);
 
-        [Category("General"), Description("Amount to multiply normal starting health by"), PropertyOrder(1)]
+        [Category("General"), 
+         Description("Amount to multiply normal starting health by"), PropertyOrder(1), UsedImplicitly]
         public float StartHealthMultiplier { get; set; } = 2;
 
-        [Category("General"), Description("Remove horses completely from the BLT tournaments (the horse AI is terrible)"), PropertyOrder(2)]
+        [Category("Equipment"), 
+         Description("Remove horses completely from the BLT tournaments (the horse AI is terrible)"), 
+         PropertyOrder(2), UsedImplicitly]
         public bool NoHorses { get; set; } = true;
         
-        [Category("General"), Description("Replaces all lances and spears with swords, because lance and spear combat is terrible"), PropertyOrder(3)]
+        [Category("Equipment"), 
+         Description("Replaces all lances and spears with swords, because lance and spear combat is terrible"), 
+         PropertyOrder(3), UsedImplicitly]
         public bool NoSpears { get; set; } = true;
         
-        [Category("General"), 
+        [Category("Equipment"), 
          Description("Replaces all armor with fixed tier armor, based on Culture if possible " +
                      "(tier specified by Normalized Armor Tier below)"), 
          PropertyOrder(4), UsedImplicitly]
         public bool NormalizeArmor { get; set; }
 
-        [Category("General"),
+        [Category("Equipment"),
          Description("Armor tier to set all contenstants to (1 to 6), if Normalize Armor is enabled"),
          PropertyOrder(5), UsedImplicitly]
         public int NormalizeArmorTier { get; set; } = 3;
+        
+        [Category("Betting"), Description("Enable betting"), PropertyOrder(1), UsedImplicitly]
+        public bool EnableBetting { get; set; } = true;
 
-        [Category("Rewards"), Description("Gold won if the hero wins the tournaments"), PropertyOrder(1)]
+        [Category("Betting"), Description("Only allow betting on the final betting"), PropertyOrder(2), UsedImplicitly]
+        public bool BettingOnFinalOnly { get; set; } = false;
+
+        [Category("Rewards"), Description("Gold won if the hero wins the tournaments"), 
+         PropertyOrder(1), UsedImplicitly]
         public int WinGold { get; set; } = 50000;
 
-        [Category("Rewards"), Description("XP given if the hero wins the tournaments"), PropertyOrder(2)]
+        [Category("Rewards"), Description("XP given if the hero wins the tournaments"), 
+         PropertyOrder(2), UsedImplicitly]
         public int WinXP { get; set; } = 50000;
 
-        [Category("Rewards"), Description("XP given if the hero participates in a tournament"), PropertyOrder(3)]
+        [Category("Rewards"), Description("XP given if the hero participates in a tournament"), 
+         PropertyOrder(3), UsedImplicitly]
         public int ParticipateXP { get; set; } = 10000;
 
-        [Category("Match Rewards"), Description("Gold won if the hero wins their match"), PropertyOrder(1)]
+        [Category("Match Rewards"), Description("Gold won if the hero wins their match"), 
+         PropertyOrder(1), UsedImplicitly]
         public int WinMatchGold { get; set; } = 10000;
 
-        [Category("Match Rewards"), Description("XP given if the hero wins their match"), PropertyOrder(2)]
+        [Category("Match Rewards"), Description("XP given if the hero wins their match"), 
+         PropertyOrder(2), UsedImplicitly]
         public int WinMatchXP { get; set; } = 10000;
 
-        [Category("Match Rewards"), Description("XP given if the hero participates in a match"), PropertyOrder(3)]
+        [Category("Match Rewards"), Description("XP given if the hero participates in a match"), 
+         PropertyOrder(3), UsedImplicitly]
         public int ParticipateMatchXP { get; set; } = 2500;
 
-        [Category("Prize"), Description("Relative proportion of prizes that will be weapons. This includes all one handed, two handed, ranged and ammo."), PropertyOrder(1)]
+        [Category("Prize"), 
+         Description("Relative proportion of prizes that will be weapons. " +
+                     "This includes all one handed, two handed, ranged and ammo."), PropertyOrder(1), UsedImplicitly]
         public float PrizeWeaponWeight { get; set; } = 1f;
 
-        [Category("Prize"), Description("Relative proportion of prizes that will be armor"), PropertyOrder(2)]
+        [Category("Prize"), Description("Relative proportion of prizes that will be armor"), 
+         PropertyOrder(2), UsedImplicitly]
         public float PrizeArmorWeight { get; set; } = 1f;
 
-        [Category("Prize"), Description("Relative proportion of prizes that will be mounts"), PropertyOrder(3)]
+        [Category("Prize"), Description("Relative proportion of prizes that will be mounts"), 
+         PropertyOrder(3), UsedImplicitly]
         public float PrizeMountWeight { get; set; } = 0.1f;
         
         // Prizes:
         // Random vanilla equipment, chance for each tier
         // Generated vanilla equip,ent
 
-        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 1"), PropertyOrder(1)]
+        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 1"), 
+         PropertyOrder(1), UsedImplicitly]
         public float PrizeTier1Weight { get; set; } = 0f;
 
-        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 2"), PropertyOrder(2)]
+        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 2"), 
+         PropertyOrder(2), UsedImplicitly]
         public float PrizeTier2Weight { get; set; } = 0f;
 
-        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 3"), PropertyOrder(3)]
+        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 3"), 
+         PropertyOrder(3), UsedImplicitly]
         public float PrizeTier3Weight { get; set; } = 0f;
 
-        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 4"), PropertyOrder(4)]
+        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 4"), 
+         PropertyOrder(4), UsedImplicitly]
         public float PrizeTier4Weight { get; set; } = 0f;
 
-        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 5"), PropertyOrder(5)]
+        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 5"), 
+         PropertyOrder(5), UsedImplicitly]
         public float PrizeTier5Weight { get; set; } = 3f;
 
-        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 6"), PropertyOrder(6)]
+        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Tier 6"), 
+         PropertyOrder(6), UsedImplicitly]
         public float PrizeTier6Weight { get; set; } = 2f;
 
-        [Category("Prize Tier"), Description("Relative proportion of prizes that will be Custom (Tier 6 with modifiers as per the Custom Prize settings below)"), PropertyOrder(7)]
+        [Category("Prize Tier"), 
+         Description("Relative proportion of prizes that will be Custom (Tier 6 with modifiers as per the Custom " +
+                     "Prize settings below)"), PropertyOrder(7), UsedImplicitly]
         public float PrizeCustomWeight { get; set; } = 1f;
 
         [Browsable(false), YamlIgnore]
@@ -107,7 +138,7 @@ namespace BLTAdoptAHero
 
         public class CustomPrizeConfig
         {
-            [Description("Custom prize power, a global multiplier for the values below"), PropertyOrder(1)]
+            [Description("Custom prize power, a global multiplier for the values below"), PropertyOrder(1), UsedImplicitly]
             public float Power { get; set; } = 1f;
 
             [Description("Weapon damage modifier for custom weapon prize"), PropertyOrder(2), UsedImplicitly, ExpandableObject]
@@ -144,7 +175,7 @@ namespace BLTAdoptAHero
             public RangeFloat MountHitPoints { get; set; } = new(1.25f, 2f);
         }
 
-        [Category("Custom Prize"), Description("Custom prize configuration"), PropertyOrder(1), ExpandableObject, UsedImplicitly]
+        [Category("Custom Prize"), Description("Custom prize configuration"), PropertyOrder(1), UsedImplicitly, ExpandableObject]
         public CustomPrizeConfig CustomPrize { get; set; } = new();
 
         public enum PrizeType

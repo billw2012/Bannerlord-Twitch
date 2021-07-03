@@ -266,10 +266,10 @@ namespace BannerlordTwitch.Rewards
             BLTModule.TwitchService?.RedemptionCancelled(context, reason);
         }
 
-        // public static void SendChat(params string[] messages)
-        // {
-        //     BLTModule.TwitchService.SendChat(messages);
-        // }
+        public static void SendChat(params string[] messages)
+        {
+            BLTModule.TwitchService?.SendChat(messages);
+        }
         
         public static void SendReply(ReplyContext context, params string[] messages)
         {

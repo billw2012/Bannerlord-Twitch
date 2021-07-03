@@ -732,6 +732,17 @@ Commands:
   RespondInTwitch: true
   RespondInOverlay: false
   HandlerConfig: 
+- Name: bltbet
+  HideHelp: false
+  Help: 
+  BroadcasterOnly: false
+  ModOnly: false
+  Handler: TournamentBet
+  ID: 7cbdbc43-660c-4500-9029-d06e81c89f04
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
+  HandlerConfig: 
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -778,6 +789,8 @@ GlobalConfigs:
     NoSpears: true
     NormalizeArmor: true
     NormalizeArmorTier: 1
+    EnableBetting: true
+    BettingOnFinalOnly: false
     WinGold: 50000
     WinXP: 50000
     ParticipateXP: 10000

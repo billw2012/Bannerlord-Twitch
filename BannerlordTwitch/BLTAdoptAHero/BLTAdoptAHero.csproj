@@ -151,6 +151,7 @@
         <Compile Include="Actions\SetHeroClass.cs" />
         <Compile Include="Actions\SkillXP.cs" />
         <Compile Include="Actions\SummonHero.cs" />
+        <Compile Include="Actions\TournamentBet.cs" />
         <Compile Include="Actions\UsePower.cs" />
         <Compile Include="Actions\Util\AchievementSystem.cs" />
         <Compile Include="Actions\Util\BattleEffects.cs" />
@@ -169,6 +170,7 @@
         <Compile Include="Behaviors\BLTHeroPowersMissionBehavior.cs" />
         <Compile Include="Behaviors\BLTRemoveAgentsBehavior.cs" />
         <Compile Include="Behaviors\BLTSummonBehavior.cs" />
+        <Compile Include="Behaviors\BLTTournamentQueueBehavior.cs" />
         <Compile Include="BLTAdoptAHero.cs" />
         <Compile Include="GlobalConfigs\GlobalCommonConfig.cs" />
         <Compile Include="GlobalConfigs\GlobalHeroClassConfig.cs" />

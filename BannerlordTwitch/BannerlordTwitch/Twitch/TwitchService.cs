@@ -363,6 +363,12 @@ namespace BannerlordTwitch
             }
         }
         
+        public void SendChat(params string[] messages)
+        {
+            bot.SendChat(messages);
+            Log.Trace($"[{nameof(TwitchService)}] Chat: {string.Join(", ", messages)}");
+        }
+
         private void ShowCommandHelp()
         {
             var help = "Commands: ".Yield()
