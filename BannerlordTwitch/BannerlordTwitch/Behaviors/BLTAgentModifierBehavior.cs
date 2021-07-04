@@ -47,166 +47,55 @@ namespace BannerlordTwitch
         [Description("Scaling of the target"), PropertyOrder(1), UsedImplicitly]
         public float? Scale { get; set; }
 
-        [Description("Properties to change, and how much by"), PropertyOrder(2), UsedImplicitly]
+        [Description("Apply to the mount of the target, instead of the target themselves"), PropertyOrder(2), UsedImplicitly]
+        public bool ApplyToMount { get; set; }
+
+        [Description("Properties to change, and how much by"), PropertyOrder(3), UsedImplicitly]
         public List<PropertyDef> Properties { get; set; } = new();
 
         public override string ToString()
         {
             string result = Scale.HasValue && Scale.Value != 1 ? $"Scale {Scale.Value} " : "";
-            return result + string.Join(" ", Properties.Select(p => p.ToString()));
+            return result + string.Join(" ", Properties.Select(p => p.ToString())) + (ApplyToMount? " (on mount)" : "");
         }
     }
     
-    public class AgentModifierState
-    {
-        public Agent Agent { get; }
-        public AgentModifierConfig Config { get; }
-
-        internal AgentModifierState(Agent agent, AgentModifierConfig config)
-        {
-            Agent = agent;
-            Config = config;
-        }
-
-        internal void Stop()
-        {
-            Agent.UpdateAgentProperties();
-        }
-
-        internal void Apply()
-        {
-            if (Config.Properties != null)
-            {
-                ApplyPropertyModifiers(Agent, Config);
-            }
-        }
-
-        private static void ApplyPropertyModifiers(Agent target, AgentModifierConfig config)
-        {
-            foreach (var prop in config.Properties)
-            {
-                float baseValue = target.AgentDrivenProperties.GetStat(prop.Name);
-                if (prop.Multiply.HasValue)
-                    baseValue *= prop.Multiply.Value;
-                if (prop.Add.HasValue)
-                    baseValue += prop.Add.Value;
-                target.AgentDrivenProperties.SetStat(prop.Name, baseValue);
-            }
-            // target.UpdateCustomDrivenProperties();
-        }
-    }
-
     public class BLTAgentModifierBehavior : AutoMissionBehavior<BLTAgentModifierBehavior>
     {
-        private readonly Dictionary<Agent, List<AgentModifierState>> agentModifiersActive = new();
-
+        private readonly Dictionary<Agent, List<AgentModifierConfig>> agentModifiersActive = new();
         private float accumulatedTime;
 
-        // public bool Contains(Agent agent, AgentEffectConfig config)
-        // {
-        //     return agentEffectsActive.TryGetValue(agent, out var effects)
-        //            && effects.Any(e => e.Config.Name == config.Name);
-        // }
-
-        public AgentModifierState Add(Agent agent, AgentModifierConfig config)
+        public void Add(Agent agent, AgentModifierConfig config)
         {
             if (!agentModifiersActive.TryGetValue(agent, out var effects))
             {
                 effects = new();
                 agentModifiersActive.Add(agent, effects);
             }
-
-            var state = new AgentModifierState(agent, config);
-            effects.Add(state);
-            return state;
+            effects.Add(config);
         }
 
-        public void Remove(AgentModifierState effectState)
+        public void Remove(Agent agent, AgentModifierConfig config)
         {
-            if (agentModifiersActive.TryGetValue(effectState.Agent, out var effects))
+            if (agentModifiersActive.TryGetValue(agent, out var effects))
             {
-                effectState.Stop();
-                effects.Remove(effectState);
-            }
-        }
-
-        // public void ApplyHitDamage(Agent attackerAgent, Agent victimAgent,
-        //     ref AttackCollisionData attackCollisionData)
-        // {
-        //     try
-        //     {
-        //         float[] hitDamageMultipliers = agentEffectsActive
-        //             .Where(e => ReferenceEquals(e.Key, attackerAgent))
-        //             .SelectMany(e => e.Value
-        //                 .Select(f => f.Config.DamageMultiplier ?? 0)
-        //                 .Where(f => f != 0)
-        //             )
-        //             .ToArray();
-        //         if (hitDamageMultipliers.Any())
-        //         {
-        //             float forceMag = hitDamageMultipliers.Sum();
-        //             attackCollisionData.BaseMagnitude = (int) (attackCollisionData.BaseMagnitude * forceMag);
-        //             attackCollisionData.InflictedDamage = (int) (attackCollisionData.InflictedDamage * forceMag);
-        //         }
-        //     }
-        //     catch (Exception e)
-        //     {
-        //         Log.Exception($"BLTEffectsBehaviour.ApplyHitDamage", e);
-        //     }
-        // }
-
-        // public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
-        // {
-        //     float[] knockBackForces = agentEffectsActive
-        //         .Where(e => ReferenceEquals(e.Key, affectorAgent))
-        //         .SelectMany(e => e.Value
-        //             .Select(f => f.config.DamageMultiplier ?? 0)
-        //             .Where(f => f != 0)
-        //         )
-        //         .ToArray();
-        //     if (knockBackForces.Any())
-        //     {
-        //         var direction = (affectedAgent.Frame.origin - affectorAgent.Frame.origin).NormalizedCopy();
-        //         var force = knockBackForces.Select(f => direction * f).Aggregate((a, b) => a + b);
-        //         affectedAgent.AgentVisuals.SetAgentLocalSpeed(force.AsVec2);
-        //         //var entity = affectedAgent.AgentVisuals.GetEntity();
-        //         // // entity.ActivateRagdoll();
-        //         // entity.AddPhysics(0.1f, Vec3.Zero, null, force * 2000, Vec3.Zero, PhysicsMaterial.GetFromIndex(0), false, 0);
-        //
-        //         // entity.EnableDynamicBody();
-        //         // entity.SetPhysicsState(true, true);
-        //
-        //         //entity.ApplyImpulseToDynamicBody(entity.GetGlobalFrame().origin, force);
-        //         // foreach (float knockBackForce in knockBackForces)
-        //         // {
-        //         //     entity.ApplyImpulseToDynamicBody(entity.GetGlobalFrame().origin, direction * knockBackForce);
-        //         // }
-        //         // Mission.Current.AddTimerToDynamicEntity(entity, 3f + MBRandom.RandomFloat * 2f);
-        //     }
-        // }
-
-        public override void OnAgentDeleted(Agent affectedAgent)
-        {
-            try
-            {
-                if (agentModifiersActive.TryGetValue(affectedAgent, out var effectStates))
+                effects.Remove(config);
+                if (effects.Count == 0)
                 {
-                    foreach (var e in effectStates)
-                    {
-                        e.Stop();
-                    }
-
-                    agentModifiersActive.Remove(affectedAgent);
+                    agentModifiersActive.Remove(agent);
                 }
             }
-            catch (Exception e)
-            {
-                Log.Exception($"BLTEffectsBehaviour.OnAgentDeleted", e);
-            }
+        }
+        
+        public override void OnAgentDeleted(Agent affectedAgent)
+        {
+            agentModifiersActive.Remove(affectedAgent);
+            effectedAgents.Remove(affectedAgent);
         }
 
         private readonly Dictionary<Agent, float[]> agentDrivenPropertiesCache = new();
         private readonly Dictionary<Agent, float> agentBaseScaleCache = new();
+        private readonly HashSet<Agent> effectedAgents = new();
 
         public override void OnMissionTick(float dt)
         {
@@ -214,27 +103,52 @@ namespace BannerlordTwitch
 
             try
             {
-                foreach (var agent in agentModifiersActive
-                    .Where(kv => !kv.Key.IsActive())
-                    .ToArray())
-                {
-                    // foreach (var effect in agent.Value.ToList())
-                    // {
-                    //     effect.Stop();
-                    // }
-                    agentModifiersActive.Remove(agent.Key);
-                }
-
                 const float Interval = 2;
                 accumulatedTime += dt;
                 if (accumulatedTime < Interval)
                     return;
 
                 accumulatedTime -= Interval;
-                foreach (var agentEffects in agentModifiersActive.ToArray())
+                
+                // We can remove inactive agents from further processing
+                foreach (var agent in agentModifiersActive
+                    .Where(kv => !kv.Key.IsActive())
+                    .ToArray())
                 {
-                    var agent = agentEffects.Key;
-                    // Restore all the properties from the cache to start with
+                    agentModifiersActive.Remove(agent.Key);
+                }
+                effectedAgents.RemoveWhere(a => !a.IsActive());
+                
+                // Agents that need update is all agents with current modifications applied + all ones that have new
+                // modifiers to apply
+
+                // Group all effects by the final target agent
+                var realTargetsAndModifiers = agentModifiersActive
+                    .SelectMany(kv
+                        => kv.Value.Select(m => (
+                            agent: m.ApplyToMount ? kv.Key.MountAgent : kv.Key,
+                            modifier: m
+                            )))
+                    .Where(x => x.agent != null)
+                    .GroupBy(x => x.agent)
+                    .ToDictionary(
+                        x => x.Key, 
+                        x => x.Select(m => m.modifier).ToList()
+                        );
+                
+                // Make sure all previously and newly affected agents are in the list
+                foreach (var r in realTargetsAndModifiers)
+                {
+                    effectedAgents.Add(r.Key);
+                }
+
+                // Apply / update all agents (copy the agent list, so we can remove ones from the original list as we 
+                // get to them)
+                foreach (var agent in effectedAgents.ToList())
+                {
+                    realTargetsAndModifiers.TryGetValue(agent, out var modifiers);
+                    
+                    // Restore all the base properties from the cache to start with
                     if (!agentDrivenPropertiesCache.TryGetValue(agent, out float[] initialAgentDrivenProperties))
                     {
                         initialAgentDrivenProperties = new float[(int) DrivenProperty.Count];
@@ -250,8 +164,7 @@ namespace BannerlordTwitch
                     {
                         for (int i = 0; i < (int) DrivenProperty.Count; i++)
                         {
-                            agent.AgentDrivenProperties.SetStat((DrivenProperty) i,
-                                initialAgentDrivenProperties[i]);
+                            agent.AgentDrivenProperties.SetStat((DrivenProperty) i, initialAgentDrivenProperties[i]);
                         }
                     }
 
@@ -262,18 +175,23 @@ namespace BannerlordTwitch
                     }
 
                     float newAgentScale = baseAgentScale;
+
                     // Now update the dynamic properties
                     agent.UpdateAgentProperties();
-                    // Then apply our effects as a stack
-                    foreach (var effect in agentEffects.Value.ToList())
-                    {
-                        effect.Apply();
-                        // if (effect.CheckRemove())
-                        // {
-                        //     agentEffects.Value.Remove(effect);
-                        // }
 
-                        newAgentScale *= effect.Config.Scale ?? 1;
+                    // Apply modifier stack if we have one
+                    if (modifiers != null)
+                    {
+                        foreach (var effect in modifiers)
+                        {
+                            ApplyPropertyModifiers(agent, effect);
+                            newAgentScale *= effect.Scale ?? 1;
+                        }
+                    }
+                    else
+                    {
+                        // If we don't have a modifer stack then we can remove this agent from future processing
+                        effectedAgents.Remove(agent);
                     }
 
                     if (newAgentScale != agent.AgentScale)
@@ -294,13 +212,29 @@ namespace BannerlordTwitch
         private static void SetAgentScale(Agent agent, float baseScale, float scale)
         {
             AccessTools.Method(typeof(Agent), "SetInitialAgentScale").Invoke(agent, new []{ (object) scale });
-            // Doesn't have any affect...
-            //AgentVisualsNativeData agentVisualsNativeData = agent.Monster.FillAgentVisualsNativeData();
-            //AnimationSystemData animationSystemData = agent.Monster.FillAnimationSystemData(agent.Character.GetStepSize() * scale / baseScale , false);
-            // animationSystemData.WalkingSpeedLimit *= scale;
-            // animationSystemData.CrouchWalkingSpeedLimit *= scale;
-            //animationSystemData.NumPaces = 10;
-            //agent.SetActionSet(ref agentVisualsNativeData, ref animationSystemData);
+            // // Doesn't have any affect...
+            // AgentVisualsNativeData agentVisualsNativeData = agent.Monster.FillAgentVisualsNativeData();
+            // AnimationSystemData animationSystemData = agent.Monster.FillAnimationSystemData(agent.Character.GetStepSize() * scale / baseScale , false);
+            //  animationSystemData.WalkingSpeedLimit *= scale;
+            //  animationSystemData.CrouchWalkingSpeedLimit *= scale;
+            // animationSystemData.NumPaces = 10;
+            // agent.SetActionSet(ref agentVisualsNativeData, ref animationSystemData);
+        }
+        
+        private static void ApplyPropertyModifiers(Agent target, AgentModifierConfig config)
+        {
+            if (config.Properties == null)
+                return;
+
+            foreach (var prop in config.Properties)
+            {
+                float baseValue = target.AgentDrivenProperties.GetStat(prop.Name);
+                if (prop.Multiply.HasValue)
+                    baseValue *= prop.Multiply.Value;
+                if (prop.Add.HasValue)
+                    baseValue += prop.Add.Value;
+                target.AgentDrivenProperties.SetStat(prop.Name, baseValue);
+            }
         }
     }
 }

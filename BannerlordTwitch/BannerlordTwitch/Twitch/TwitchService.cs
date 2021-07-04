@@ -334,15 +334,17 @@ namespace BannerlordTwitch
         //     bot.SendChat(message);
         // }
 
+        public bool IsSimTesting => simTest != null;
+        
         public void SendReply(ReplyContext context, params string[] messages)
         {
-            if (context.Source.RespondInOverlay)
+            if (context.Source.RespondInOverlay || IsSimTesting)
             {
                 Log.LogFeedResponse(context.UserName, messages);
                 //Log.Trace($"[{nameof(TwitchService)}] Feed Response to {context.UserName}: {Join(", ", messages)}");
             }
 
-            if (context.Source.RespondInTwitch)
+            if (context.Source.RespondInTwitch && !IsSimTesting)
             {
                 // if (context.IsWhisper)
                 // {
@@ -365,7 +367,15 @@ namespace BannerlordTwitch
         
         public void SendChat(params string[] messages)
         {
-            bot.SendChat(messages);
+            if (!IsSimTesting)
+            {
+                bot.SendChat(messages);
+            }
+            else
+            {
+                Log.LogFeedResponse("[CHAT]".Yield().Concat(messages).ToArray());
+            }
+
             Log.Trace($"[{nameof(TwitchService)}] Chat: {string.Join(", ", messages)}");
         }
 
@@ -525,7 +535,7 @@ namespace BannerlordTwitch
         public bool StartSim()
         {
             StopSim();
-            simTest = new SimulationTest(settings);
+            simTest = new (settings);
             return true;
         }
         

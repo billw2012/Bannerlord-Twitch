@@ -36,10 +36,10 @@ namespace BLTAdoptAHero.Powers
         protected override void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers,
             Agent agent = null, DeactivationHandler deactivationHandler = null)
         {
-            var modifierState = BLTAgentModifierBehavior.Current.Add(agent, Modifiers);
+            BLTAgentModifierBehavior.Current.Add(agent, Modifiers);
             if (deactivationHandler != null)
             {
-                deactivationHandler.OnDeactivate += _ => BLTAgentModifierBehavior.Current.Remove(modifierState);
+                deactivationHandler.OnDeactivate += _ => BLTAgentModifierBehavior.Current.Remove(agent, Modifiers);
             }
         }
     }

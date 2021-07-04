@@ -83,6 +83,7 @@ namespace BannerlordTwitch.Util
         public static void LogFeedBattle(string str) => LogFeed(str, Colors.White);
         public static void LogFeedEvent(string str) => LogFeed(str, Colors.Cyan);
         public static void LogFeedResponse(string userName, params string[] messages) => LogFeed($"@{userName}: {string.Join(", ", messages)}", Colors.Yellow);
+        public static void LogFeedResponse(params string[] messages) => LogFeed(string.Join(", ", messages), Colors.Yellow);
         
         public static void LogFeed(string str, Color color)
         {

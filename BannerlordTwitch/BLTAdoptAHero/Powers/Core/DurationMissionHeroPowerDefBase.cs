@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using BannerlordTwitch.Helpers;
 using BLTAdoptAHero.Annotations;
+using SandBox;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
@@ -26,6 +28,14 @@ namespace BLTAdoptAHero.Powers
             if (Mission.Current == null)
             {
                 return (false, "No mission is active!");
+            }
+
+            if (!Mission.Current.IsLoadingFinished
+                || Mission.Current.CurrentState != Mission.State.Continuing
+                || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null &&
+                Mission.Current.Mode != MissionMode.Battle)
+            {
+                return (false, "Mission has not started yet!");
             }
 
             if (RequiresHeroAgent && hero.GetAgent() == null)

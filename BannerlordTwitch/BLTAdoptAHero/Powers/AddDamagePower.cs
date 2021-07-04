@@ -1,7 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
+using TaleWorlds.Engine;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
@@ -24,6 +31,21 @@ namespace BLTAdoptAHero.Powers
         public bool ApplyAgainstAdoptedHeroes { get; set; } = true;
         [Category("Power Config"), Description("Whether to apply this bonus damage against the player"), PropertyOrder(6), UsedImplicitly]
         public bool ApplyAgainstPlayer { get; set; } = true;
+
+        [Category("Power Config"), Description("Whether to apply this bonus damage when using ranged weapons"), PropertyOrder(7), UsedImplicitly]
+        public bool Ranged { get; set; } = true;
+        
+        [Category("Power Config"), Description("Whether to apply this bonus damage when using melee weapons"), PropertyOrder(8), UsedImplicitly]
+        public bool Melee { get; set; } = true;
+        
+        [Category("Power Config"), Description("Whether to apply this bonus damage from charge damage"), PropertyOrder(9), UsedImplicitly]
+        public bool Charge { get; set; } = true;
+        
+        [Category("Power Config"), Description("Whether to apply this bonus damage against the player"), PropertyOrder(10), UsedImplicitly]
+        public float AreaOfEffect { get; set; }
+
+        [Description("Effect to play on hit (intended mainly for AoE effects)"), PropertyOrder(10), ExpandableObject, UsedImplicitly]
+        public OneShotEffect HitEffect { get; set; } = new();
         
         public AddDamagePower()
         {
@@ -45,7 +67,11 @@ namespace BLTAdoptAHero.Powers
             if (!ApplyAgainstAdoptedHeroes && victimHero != null
                 || !ApplyAgainstHeroes && victimAgent.IsHero
                 || !ApplyAgainstNonHeroes && !victimAgent.IsHero
-                || !ApplyAgainstPlayer && victimAgent == Agent.Main)
+                || !ApplyAgainstPlayer && victimAgent == Agent.Main
+                || !Ranged && attackCollisionData.Data.IsMissile
+                || !Melee && !(attackCollisionData.Data.IsMissile || attackCollisionData.Data.IsFallDamage || attackCollisionData.Data.IsHorseCharge)
+                || !Charge && attackCollisionData.Data.IsHorseCharge
+                )
             {
                 return;
             }
@@ -53,6 +79,46 @@ namespace BLTAdoptAHero.Powers
             attackCollisionData.Data.InflictedDamage = (int) (attackCollisionData.Data.InflictedDamage * DamageToMultiply);
             //attackCollisionData.BaseMagnitude += DamageToAdd;
             attackCollisionData.Data.InflictedDamage += DamageToAdd;
+            
+            HitEffect.Trigger(victimAgent);
+
+            if (AreaOfEffect > 0 && agent != null)
+            {
+	            DoAoEDamage(agent, new() { agent, victimAgent }, attackCollisionData.Data.InflictedDamage, AreaOfEffect, ref attackCollisionData.Data);
+            }
+        }
+
+        public static void DoAgentDamage(Agent from, Agent agent, int damage, Vec3 direction, ref AttackCollisionData data)
+        {
+	        var blow = new Blow(from.Index)
+	        {
+		        DamageType = (DamageTypes) data.DamageType,
+		        BoneIndex = agent.Monster.HeadLookDirectionBoneIndex,
+		        Position = agent.Position,
+		        BaseMagnitude = data.BaseMagnitude,
+		        InflictedDamage = damage,
+		        SwingDirection = direction,
+		        Direction = direction,
+		        DamageCalculated = true,
+		        VictimBodyPart = BoneBodyPartType.Chest,
+	        };
+
+	        agent.RegisterBlow(blow);
+        }
+        
+        public static void DoAoEDamage(Agent from, List<Agent> ignoreAgents, float maxDamage, float range, ref AttackCollisionData data)
+        {
+	        foreach (var agent in Mission.Current
+		        .GetAgentsInRange(data.CollisionGlobalPosition.AsVec2, range, true)
+		        .Where(a => a.State == AgentState.Active 
+		                    && !ignoreAgents.Contains(a))
+		        .ToList() // ToList is required due to potential collection change exception when agents are killed below
+	        )
+	        {
+		        float distance = agent.Position.Distance(data.CollisionGlobalPosition);
+		        int damage = (int) (maxDamage / Math.Pow(distance / range + 1f, 2f));
+		        DoAgentDamage(from, agent, damage, (agent.Position - data.CollisionGlobalPosition).NormalizedCopy(), ref data);
+	        }
         }
 
         public override string ToString()
@@ -70,6 +136,10 @@ namespace BLTAdoptAHero.Powers
             if (ApplyAgainstHeroes) parts.Add("Heroes");
             if (ApplyAgainstAdoptedHeroes) parts.Add("Adopted");
             if (ApplyAgainstPlayer) parts.Add("Player");
+            if (Ranged) parts.Add("Ranged");
+            if (Melee) parts.Add("Melee");
+            if (Charge) parts.Add("Charge");
+            if (AreaOfEffect != 0) parts.Add($"AoE {AreaOfEffect}");
             return $"{Name}: {string.Join(", ", parts)}";
         }
     }

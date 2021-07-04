@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch.Util;
+using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
@@ -11,10 +12,12 @@ namespace BannerlordTwitch.Helpers
 {
     public class OneShotEffect
     {
-        [Description("Particle Effect to play"), ItemsSource(typeof(ParticleEffectItemSource)), PropertyOrder(1)]
+        [Description("Particle Effect to play"), ItemsSource(typeof(ParticleEffectItemSource)), 
+         PropertyOrder(1), UsedImplicitly]
         public string ParticleEffect { get; set; }
 
-        [Description("Sound to play"), ItemsSource(typeof(SoundEffectItemSource)), PropertyOrder(2)]
+        [Description("Sound to play"), ItemsSource(typeof(SoundEffectItemSource)), 
+         PropertyOrder(2), UsedImplicitly]
         public string Sound { get; set; }
 
         public void Trigger(Hero hero)
