@@ -80,7 +80,7 @@ namespace BLTAdoptAHero.Powers
             //attackCollisionData.BaseMagnitude += DamageToAdd;
             attackCollisionData.Data.InflictedDamage += DamageToAdd;
             
-            HitEffect.Trigger(victimAgent);
+            HitEffect.Trigger(new MatrixFrame(Mat3.Identity, attackCollisionData.Data.CollisionGlobalPosition));
 
             if (AreaOfEffect > 0 && agent != null)
             {
@@ -95,7 +95,7 @@ namespace BLTAdoptAHero.Powers
 		        DamageType = (DamageTypes) data.DamageType,
 		        BoneIndex = agent.Monster.HeadLookDirectionBoneIndex,
 		        Position = agent.Position,
-		        BaseMagnitude = data.BaseMagnitude,
+		        BaseMagnitude = damage,
 		        InflictedDamage = damage,
 		        SwingDirection = direction,
 		        Direction = direction,
@@ -109,15 +109,18 @@ namespace BLTAdoptAHero.Powers
         public static void DoAoEDamage(Agent from, List<Agent> ignoreAgents, float maxDamage, float range, ref AttackCollisionData data)
         {
 	        foreach (var agent in Mission.Current
-		        .GetAgentsInRange(data.CollisionGlobalPosition.AsVec2, range, true)
-		        .Where(a => a.State == AgentState.Active 
-		                    && !ignoreAgents.Contains(a))
-		        .ToList() // ToList is required due to potential collection change exception when agents are killed below
+		        .GetAgentsInRange(data.CollisionGlobalPosition.AsVec2, range * 1, true)
+		        .Where(a => 
+			        a.State == AgentState.Active	// alive only
+			        && !ignoreAgents.Contains(a)	// not in the ignore list
+			        && a.IsEnemyOf(from)			// enemies only
+			        ).ToList() // ToList is required due to potential collection change exception when agents are killed below
 	        )
 	        {
 		        float distance = agent.Position.Distance(data.CollisionGlobalPosition);
 		        int damage = (int) (maxDamage / Math.Pow(distance / range + 1f, 2f));
-		        DoAgentDamage(from, agent, damage, (agent.Position - data.CollisionGlobalPosition).NormalizedCopy(), ref data);
+		        DoAgentDamage(from, agent, damage, (agent.Position - data.CollisionGlobalPosition).NormalizedCopy(),
+			        ref data);
 	        }
         }
 

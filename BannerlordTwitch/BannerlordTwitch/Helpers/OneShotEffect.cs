@@ -22,14 +22,15 @@ namespace BannerlordTwitch.Helpers
 
         public void Trigger(Hero hero)
         {
-            var agent = Mission.Current?.Agents?.FirstOrDefault(a => a.GetHero() == hero);
-            if (agent == null) return;
-            Trigger(agent.AgentVisuals.GetGlobalFrame(), agent.Index);
+            Trigger(Mission.Current?.Agents?.FirstOrDefault(a => a.GetHero() == hero));
         }
-                
+        
         public void Trigger(Agent agent)
         {
-            Trigger(agent.AgentVisuals.GetGlobalFrame(), agent.Index);
+            if (agent?.AgentVisuals != null)
+            {
+                Trigger(agent.AgentVisuals.GetGlobalFrame(), agent.Index);
+            }
         }
 
         public void Trigger(MatrixFrame location, int relatedAgentIndex = -1)

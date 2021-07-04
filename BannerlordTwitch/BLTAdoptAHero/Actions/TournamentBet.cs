@@ -25,14 +25,14 @@ namespace BLTAdoptAHero
             string[] parts = context.Args?.Split(' ');
             if (parts?.Length != 2)
             {
-                ActionManager.SendReply(context, $"Arguments: team-color gold");
+                ActionManager.SendReply(context, $"Arguments: team gold");
                 return;
             }
 
             string team = parts[0].ToLower();
             if (team == "")
             {
-                ActionManager.SendReply(context, $"Invalid team color");
+                ActionManager.SendReply(context, $"Invalid team name");
                 return;
             }
 
