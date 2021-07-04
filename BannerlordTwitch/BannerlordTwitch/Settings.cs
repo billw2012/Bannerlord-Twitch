@@ -282,7 +282,7 @@ namespace BannerlordTwitch
 
         #if DEBUG
         private static string ProjectRootDir([CallerFilePath]string file = "") => Path.GetDirectoryName(file);
-        private static string SaveFilePath => Path.Combine(ProjectRootDir(), "Bannerlord-Twitch.yaml");
+        private static string SaveFilePath => Path.Combine(ProjectRootDir(), "Bannerlord-Twitch-v2.yaml");
         public static Settings Load()
         {
             var settings = new DeserializerBuilder()
@@ -314,8 +314,8 @@ namespace BannerlordTwitch
         }
 
         #else
-        private static PlatformFilePath SaveFilePath => FileSystem.GetConfigPath("Bannerlord-Twitch.yaml");
-        private static string TemplateFileName => Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..", "Bannerlord-Twitch.yaml");
+        private static PlatformFilePath SaveFilePath => FileSystem.GetConfigPath("Bannerlord-Twitch-v2.yaml");
+        private static string TemplateFileName => Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..", "Bannerlord-Twitch-v2.yaml");
 
         public static Settings Load()
         {

@@ -777,7 +777,7 @@ GlobalConfigs:
     NormalizeArmor: true
     NormalizeArmorTier: 4
     EnableBetting: true
-    BettingOnFinalOnly: false
+    BettingOnFinalOnly: true
     WinGold: 50000
     WinXP: 50000
     ParticipateXP: 10000
@@ -829,6 +829,169 @@ GlobalConfigs:
       MountHitPoints:
         Min: 1.25
         Max: 2
+- Id: Adopt A Hero - Power Config
+  Config:
+    DisablePowersInTournaments: true
+    SavedPowerDefs:
+    - HealthToMultiply: 1.5
+      HealthToAdd: 0
+      Type: c4213666-2176-42b4-8dbb-bfe0182bcce1
+      ID: 22ad10d6-34df-4d41-afec-7e98a56f8954
+      Name: Healthy
+    - HealthToMultiply: 0.600000024
+      HealthToAdd: 0
+      Type: c4213666-2176-42b4-8dbb-bfe0182bcce1
+      ID: b99d374b-84d0-495e-a430-1811ad6e712b
+      Name: Fragile
+    - FractionOfDamageToAbsorb: 0.5
+      PowerDurationSeconds: 30
+      Pfx: []
+      Type: e0a274df-adbb-4725-9eae-59806bf9b5dc
+      ID: b3e5da20-1b82-4820-a373-ff9a8190dd98
+      Name: Vampiric
+    - DamageToMultiply: 1.25
+      DamageToAdd: 0
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      AreaOfEffect: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 30
+      Pfx: []
+      Type: 378648b6-5586-4812-ad08-22da6374440c
+      ID: 6a36fedb-0b2d-459c-b06b-c4230327589b
+      Name: Heavy Hitting
+    - FractionOfDamageToReflect: 0.150000006
+      PowerDurationSeconds: 30
+      Pfx: []
+      Type: ffe07da3-e977-42d8-80ca-5dfff66123eb
+      ID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
+      Name: Retribution
+    - Modifiers:
+        Scale: 
+        ApplyToMount: false
+        Properties:
+        - Name: MaxSpeedMultiplier
+          Add: 
+          Multiply: 1.5
+      PowerDurationSeconds: 30
+      Pfx: []
+      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
+      ID: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
+      Name: Fleet Footed
+    - Modifiers:
+        Scale: 1
+        ApplyToMount: true
+        Properties:
+        - Name: MountChargeDamage
+          Add: 
+          Multiply: 5
+        - Name: MountManeuver
+          Add: 
+          Multiply: 2
+      PowerDurationSeconds: 30
+      Pfx: []
+      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
+      ID: 20f6817e-8f45-4dc3-a513-77707fb9c96d
+      Name: Charge
+    - Modifiers:
+        Scale: 1
+        ApplyToMount: true
+        Properties:
+        - Name: MountSpeed
+          Add: 
+          Multiply: 1.5
+        - Name: TopSpeedReachDuration
+          Add: 
+          Multiply: 0.5
+        - Name: ArmorTorso
+          Add: 40
+          Multiply: 
+      PowerDurationSeconds: 30
+      Pfx: []
+      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
+      ID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
+      Name: Better Mount
+    - Modifiers:
+        Scale: 
+        ApplyToMount: false
+        Properties:
+        - Name: SwingSpeedMultiplier
+          Add: 
+          Multiply: 1.5
+      PowerDurationSeconds: 30
+      Pfx:
+      - Name: psys_campfire
+        AttachPoint: OnWeapon
+      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
+      ID: 80e8009c-2a09-476a-bd71-0aedc6b14011
+      Name: Fireblade
+    - Modifiers:
+        Scale: 1.25
+        ApplyToMount: false
+        Properties: []
+      PowerDurationSeconds: 30
+      Pfx: []
+      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
+      ID: 60582ddc-3b22-4052-9437-cd43882bf5f9
+      Name: Imposing
+    - DamageToMultiply: 2
+      DamageToAdd: 0
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: false
+      Charge: false
+      AreaOfEffect: 5
+      HitEffect:
+        ParticleEffect: psys_burning_projectile_default_coll
+        Sound: 
+      PowerDurationSeconds: 30
+      Pfx: []
+      Type: 378648b6-5586-4812-ad08-22da6374440c
+      ID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
+      Name: Explosive Arrows
+    - Modifiers:
+        Scale: 
+        ApplyToMount: false
+        Properties:
+        - Name: WeaponWorstMobileAccuracyPenalty
+          Add: 
+          Multiply: 0.25
+        - Name: WeaponWorstUnsteadyAccuracyPenalty
+          Add: 
+          Multiply: 0.25
+        - Name: AiRangerLeadErrorMin
+          Add: 
+          Multiply: 0.25
+        - Name: AiRangerLeadErrorMax
+          Add: 
+          Multiply: 0.25
+        - Name: AiRangerVerticalErrorMultiplier
+          Add: 
+          Multiply: 0.25
+        - Name: AiRangerHorizontalErrorMultiplier
+          Add: 
+          Multiply: 0.25
+        - Name: ThrustOrRangedReadySpeedMultiplier
+          Add: 
+          Multiply: 1.25
+        - Name: WeaponBestAccuracyWaitTime
+          Add: 
+          Multiply: 0.5
+      PowerDurationSeconds: 30
+      Pfx: []
+      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
+      ID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
+      Name: Ranger
 - Id: Adopt A Hero - Class Config
   Config:
     ClassDefs:
@@ -1035,169 +1198,6 @@ GlobalConfigs:
 - Id: Buffet - Effects Config
   Config:
     DisableEffectsInTournaments: true
-- Id: Adopt A Hero - Power Config
-  Config:
-    DisablePowersInTournaments: true
-    SavedPowerDefs:
-    - HealthToMultiply: 1.5
-      HealthToAdd: 0
-      Type: c4213666-2176-42b4-8dbb-bfe0182bcce1
-      ID: 22ad10d6-34df-4d41-afec-7e98a56f8954
-      Name: Healthy
-    - HealthToMultiply: 0.600000024
-      HealthToAdd: 0
-      Type: c4213666-2176-42b4-8dbb-bfe0182bcce1
-      ID: b99d374b-84d0-495e-a430-1811ad6e712b
-      Name: Fragile
-    - FractionOfDamageToAbsorb: 0.5
-      PowerDurationSeconds: 30
-      Pfx: []
-      Type: e0a274df-adbb-4725-9eae-59806bf9b5dc
-      ID: b3e5da20-1b82-4820-a373-ff9a8190dd98
-      Name: Vampiric
-    - DamageToMultiply: 1.25
-      DamageToAdd: 0
-      ApplyAgainstNonHeroes: true
-      ApplyAgainstHeroes: true
-      ApplyAgainstAdoptedHeroes: true
-      ApplyAgainstPlayer: true
-      Ranged: true
-      Melee: true
-      Charge: true
-      AreaOfEffect: 0
-      HitEffect:
-        ParticleEffect: 
-        Sound: 
-      PowerDurationSeconds: 30
-      Pfx: []
-      Type: 378648b6-5586-4812-ad08-22da6374440c
-      ID: 6a36fedb-0b2d-459c-b06b-c4230327589b
-      Name: Heavy Hitting
-    - FractionOfDamageToReflect: 0.150000006
-      PowerDurationSeconds: 30
-      Pfx: []
-      Type: ffe07da3-e977-42d8-80ca-5dfff66123eb
-      ID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
-      Name: Retribution
-    - Modifiers:
-        Scale: 
-        ApplyToMount: false
-        Properties:
-        - Name: MaxSpeedMultiplier
-          Add: 
-          Multiply: 1.5
-      PowerDurationSeconds: 30
-      Pfx: []
-      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
-      ID: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
-      Name: Fleet Footed
-    - Modifiers:
-        Scale: 1
-        ApplyToMount: true
-        Properties:
-        - Name: MountChargeDamage
-          Add: 
-          Multiply: 5
-        - Name: MountManeuver
-          Add: 
-          Multiply: 2
-      PowerDurationSeconds: 30
-      Pfx: []
-      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
-      ID: 20f6817e-8f45-4dc3-a513-77707fb9c96d
-      Name: Charge
-    - Modifiers:
-        Scale: 1
-        ApplyToMount: true
-        Properties:
-        - Name: MountSpeed
-          Add: 
-          Multiply: 1.5
-        - Name: TopSpeedReachDuration
-          Add: 
-          Multiply: 0.5
-        - Name: ArmorTorso
-          Add: 40
-          Multiply: 
-      PowerDurationSeconds: 30
-      Pfx: []
-      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
-      ID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
-      Name: Better Mount
-    - Modifiers:
-        Scale: 
-        ApplyToMount: false
-        Properties:
-        - Name: SwingSpeedMultiplier
-          Add: 
-          Multiply: 1.5
-      PowerDurationSeconds: 30
-      Pfx:
-      - Name: psys_campfire
-        AttachPoint: OnWeapon
-      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
-      ID: 80e8009c-2a09-476a-bd71-0aedc6b14011
-      Name: Fireblade
-    - Modifiers:
-        Scale: 1.25
-        ApplyToMount: false
-        Properties: []
-      PowerDurationSeconds: 30
-      Pfx: []
-      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
-      ID: 60582ddc-3b22-4052-9437-cd43882bf5f9
-      Name: Imposing
-    - DamageToMultiply: 2
-      DamageToAdd: 0
-      ApplyAgainstNonHeroes: true
-      ApplyAgainstHeroes: true
-      ApplyAgainstAdoptedHeroes: true
-      ApplyAgainstPlayer: true
-      Ranged: true
-      Melee: false
-      Charge: false
-      AreaOfEffect: 5
-      HitEffect:
-        ParticleEffect: psys_burning_projectile_default_coll
-        Sound: 
-      PowerDurationSeconds: 30
-      Pfx: []
-      Type: 378648b6-5586-4812-ad08-22da6374440c
-      ID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
-      Name: Explosive Arrows
-    - Modifiers:
-        Scale: 
-        ApplyToMount: false
-        Properties:
-        - Name: WeaponWorstMobileAccuracyPenalty
-          Add: 
-          Multiply: 0.25
-        - Name: WeaponWorstUnsteadyAccuracyPenalty
-          Add: 
-          Multiply: 0.25
-        - Name: AiRangerLeadErrorMin
-          Add: 
-          Multiply: 0.25
-        - Name: AiRangerLeadErrorMax
-          Add: 
-          Multiply: 0.25
-        - Name: AiRangerVerticalErrorMultiplier
-          Add: 
-          Multiply: 0.25
-        - Name: AiRangerHorizontalErrorMultiplier
-          Add: 
-          Multiply: 0.25
-        - Name: ThrustOrRangedReadySpeedMultiplier
-          Add: 
-          Multiply: 1.25
-        - Name: WeaponBestAccuracyWaitTime
-          Add: 
-          Multiply: 0.5
-      PowerDurationSeconds: 30
-      Pfx: []
-      Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
-      ID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
-      Name: Ranger
 SimTesting:
   UserCount: 25
   UserStayTime: 300
@@ -1225,52 +1225,52 @@ SimTesting:
     Args: archer
     Weight: 1
   Use:
-  - Enabled: false
+  - Enabled: true
     Type: Reward
     Id: Attack
     Args: 
-    Weight: 2
+    Weight: 0.25
   - Enabled: true
     Type: Reward
     Id: Summon
     Args: 
     Weight: 1
-  - Enabled: false
+  - Enabled: true
     Type: Reward
     Id: 100k gold
     Args: 
     Weight: 1
-  - Enabled: false
+  - Enabled: true
     Type: Command
     Id: equip
     Args: 
     Weight: 0.400000006
-  - Enabled: false
+  - Enabled: true
     Type: Command
     Id: reequip
     Args: ''
     Weight: 0.100000001
-  - Enabled: false
+  - Enabled: true
     Type: Reward
     Id: Tournament
     Args: 
     Weight: 0.200000003
-  - Enabled: false
+  - Enabled: true
     Type: Command
     Id: retinue
     Args: 
     Weight: 0.200000003
-  - Enabled: false
+  - Enabled: true
     Type: Reward
     Id: Retire My Hero
     Args: yes
     Weight: 0.00999999978
-  - Enabled: false
+  - Enabled: true
     Type: Reward
     Id: Adopt a Hero
     Args: yes
     Weight: 0.00999999978
-  - Enabled: false
+  - Enabled: true
     Type: Reward
     Id: Heal Player
     Args: ''
@@ -1305,22 +1305,22 @@ SimTesting:
     Id: class
     Args: berserker
     Weight: 0.100000001
-  - Enabled: false
+  - Enabled: true
     Type: Reward
     Id: Heal Hero
     Args: ''
     Weight: 0.0500000007
-  - Enabled: false
+  - Enabled: true
     Type: Command
     Id: nameitem
     Args: 
     Weight: 0.00999999978
-  - Enabled: false
+  - Enabled: true
     Type: Command
     Id: nameitem
     Args: Random Name 1
     Weight: 0.00999999978
-  - Enabled: false
+  - Enabled: true
     Type: Command
     Id: nameitem
     Args: Random Name 2
@@ -1340,4 +1340,44 @@ SimTesting:
     Id: Use Class Power
     Args: 
     Weight: 0.200000003
+  - Enabled: true
+    Type: Command
+    Id: bltbet
+    Args: blue 1000
+    Weight: 0.0500000007
+  - Enabled: true
+    Type: Command
+    Id: bltbet
+    Args: red 500
+    Weight: 0.0500000007
+  - Enabled: true
+    Type: Command
+    Id: bltbet
+    Args: yellow 100
+    Weight: 0.0500000007
+  - Enabled: true
+    Type: Command
+    Id: bltbet
+    Args: green 10
+    Weight: 0.0500000007
+  - Enabled: true
+    Type: Command
+    Id: bltbet
+    Args: blah
+    Weight: 0.0500000007
+  - Enabled: true
+    Type: Command
+    Id: bltbet
+    Args: ''
+    Weight: 0.0500000007
+  - Enabled: true
+    Type: Command
+    Id: bltbet
+    Args: blah blah blah
+    Weight: 0.0500000007
+  - Enabled: true
+    Type: Command
+    Id: bltbet
+    Args: blah blah
+    Weight: 0.0500000007
 DisableAutomaticFulfillment: false

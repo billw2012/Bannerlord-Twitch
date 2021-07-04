@@ -269,7 +269,7 @@
     <Content Include="Bannerlord-Twitch-Auth.yaml" />
     <Content Include="Bannerlord-Twitch-Documentation.css" />
     <Content Include="Bannerlord-Twitch.schema.json" />
-    <Content Include="Bannerlord-Twitch.yaml" />
+    <Content Include="Bannerlord-Twitch-v2.yaml" />
     <None Include="SubModule.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -286,7 +286,7 @@
   </Target>
   <Target Name="AfterBuild">
     <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml" DestinationFolder="$(OutDir)..\.." />
-    <Copy SourceFiles="Bannerlord-Twitch.yaml" DestinationFolder="$(OutDir)..\.." />
+    <Copy SourceFiles="Bannerlord-Twitch-v2.yaml" DestinationFolder="$(OutDir)..\.." />
     <Copy SourceFiles="Bannerlord-Twitch-Documentation.css" DestinationFolder="$(OutDir)..\.." />
     <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
     <Copy SourceFiles="..\..\README.md" DestinationFolder="$(OutDir)..\.." />
