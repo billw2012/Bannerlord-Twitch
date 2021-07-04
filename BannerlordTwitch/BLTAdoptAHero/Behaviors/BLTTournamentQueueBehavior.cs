@@ -690,6 +690,7 @@ namespace BLTAdoptAHero
                 ;
         }
 
+        private bool bettingOpen;
         private Dictionary<Hero, (int team, int bet)> activeBets;
 
         private static readonly string[] TeamNames = { "blue", "red", "green", "yellow" };
@@ -706,10 +707,7 @@ namespace BLTAdoptAHero
                 ActionManager.SendChat($"Betting is now OPEN for {round} match: {string.Join(" vs ", teams)}!");
                 activeBets = new();
             }
-            else
-            {
-                activeBets = null;
-            }
+            bettingOpen = true;
         }
         
         public (bool success, string failReason) PlaceBet(Hero hero, string team, int bet)
@@ -717,22 +715,32 @@ namespace BLTAdoptAHero
             var tournamentBehavior = Mission.Current?.GetMissionBehaviour<TournamentBehavior>();
             if (tournamentBehavior == null)
             {
-                return (false, "Tournament is not active!");
+                return (false, "Tournament is not active");
             }
 
             if (!BLTAdoptAHeroModule.TournamentConfig.EnableBetting)
             {
                 return (false, "Betting is disabled");
             }
-
+            
+            if (!bettingOpen)
+            {
+                return (false, "Betting is closed");
+            }
+            
             if (tournamentBehavior.CurrentRoundIndex != 3 && BLTAdoptAHeroModule.TournamentConfig.BettingOnFinalOnly)
             {
-                return (false, "Betting is only allowed on the final!");
+                return (false, "Betting is only allowed on the final");
+            }
+
+            if (activeBets == null)
+            {
+                return (false, "Betting is disabled");
             }
 
             if (activeBets.ContainsKey(hero))
             {
-                return (false, "You already placed a bet!");
+                return (false, "You already placed a bet");
             }
 
             int teamsCount = tournamentBehavior.CurrentMatch.Teams.Count();
@@ -773,6 +781,8 @@ namespace BLTAdoptAHero
                     : $"Betting is now CLOSED: no bets placed"
                 );
             }
+            
+            bettingOpen = false;
         }
 
         public void EndCurrentMatch(TournamentBehavior tournamentBehavior)
