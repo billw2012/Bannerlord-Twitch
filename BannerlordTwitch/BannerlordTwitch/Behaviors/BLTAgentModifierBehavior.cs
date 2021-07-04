@@ -89,8 +89,11 @@ namespace BannerlordTwitch
         
         public override void OnAgentDeleted(Agent affectedAgent)
         {
-            agentModifiersActive.Remove(affectedAgent);
-            effectedAgents.Remove(affectedAgent);
+            SafeCall(() =>
+            {
+                agentModifiersActive.Remove(affectedAgent);
+                effectedAgents.Remove(affectedAgent);
+            });
         }
 
         private readonly Dictionary<Agent, float[]> agentDrivenPropertiesCache = new();
@@ -99,9 +102,7 @@ namespace BannerlordTwitch
 
         public override void OnMissionTick(float dt)
         {
-            base.OnMissionTick(dt);
-
-            try
+            SafeCall(() =>
             {
                 const float Interval = 2;
                 accumulatedTime += dt;
@@ -109,103 +110,105 @@ namespace BannerlordTwitch
                     return;
 
                 accumulatedTime -= Interval;
-                
-                // We can remove inactive agents from further processing
-                foreach (var agent in agentModifiersActive
-                    .Where(kv => !kv.Key.IsActive())
-                    .ToArray())
-                {
-                    agentModifiersActive.Remove(agent.Key);
-                }
-                effectedAgents.RemoveWhere(a => !a.IsActive());
-                
-                // Agents that need update is all agents with current modifications applied + all ones that have new
-                // modifiers to apply
 
-                // Group all effects by the final target agent
-                var realTargetsAndModifiers = agentModifiersActive
-                    .SelectMany(kv
-                        => kv.Value.Select(m => (
-                            agent: m.ApplyToMount ? kv.Key.MountAgent : kv.Key,
-                            modifier: m
-                            )))
-                    .Where(x => x.agent != null)
-                    .GroupBy(x => x.agent)
-                    .ToDictionary(
-                        x => x.Key, 
-                        x => x.Select(m => m.modifier).ToList()
-                        );
-                
-                // Make sure all previously and newly affected agents are in the list
-                foreach (var r in realTargetsAndModifiers)
-                {
-                    effectedAgents.Add(r.Key);
-                }
+                UpdateAgents();
+            });
+        }
 
-                // Apply / update all agents (copy the agent list, so we can remove ones from the original list as we 
-                // get to them)
-                foreach (var agent in effectedAgents.ToList())
-                {
-                    realTargetsAndModifiers.TryGetValue(agent, out var modifiers);
-                    
-                    // Restore all the base properties from the cache to start with
-                    if (!agentDrivenPropertiesCache.TryGetValue(agent, out float[] initialAgentDrivenProperties))
-                    {
-                        initialAgentDrivenProperties = new float[(int) DrivenProperty.Count];
-                        for (int i = 0; i < (int) DrivenProperty.Count; i++)
-                        {
-                            initialAgentDrivenProperties[i] =
-                                agent.AgentDrivenProperties.GetStat((DrivenProperty) i);
-                        }
-
-                        agentDrivenPropertiesCache.Add(agent, initialAgentDrivenProperties);
-                    }
-                    else
-                    {
-                        for (int i = 0; i < (int) DrivenProperty.Count; i++)
-                        {
-                            agent.AgentDrivenProperties.SetStat((DrivenProperty) i, initialAgentDrivenProperties[i]);
-                        }
-                    }
-
-                    if (!agentBaseScaleCache.TryGetValue(agent, out float baseAgentScale))
-                    {
-                        agentBaseScaleCache.Add(agent, agent.AgentScale);
-                        baseAgentScale = agent.AgentScale;
-                    }
-
-                    float newAgentScale = baseAgentScale;
-
-                    // Now update the dynamic properties
-                    agent.UpdateAgentProperties();
-
-                    // Apply modifier stack if we have one
-                    if (modifiers != null)
-                    {
-                        foreach (var effect in modifiers)
-                        {
-                            ApplyPropertyModifiers(agent, effect);
-                            newAgentScale *= effect.Scale ?? 1;
-                        }
-                    }
-                    else
-                    {
-                        // If we don't have a modifer stack then we can remove this agent from future processing
-                        effectedAgents.Remove(agent);
-                    }
-
-                    if (newAgentScale != agent.AgentScale)
-                    {
-                        SetAgentScale(agent, baseAgentScale, newAgentScale);
-                    }
-
-                    // Finally commit our modified values to the engine
-                    agent.UpdateCustomDrivenProperties();
-                }
-            }
-            catch (Exception e)
+        private void UpdateAgents()
+        {
+            // We can remove inactive agents from further processing
+            foreach (var agent in agentModifiersActive
+                .Where(kv => !kv.Key.IsActive())
+                .ToArray())
             {
-                Log.Exception($"BLTEffectsBehaviour.OnMissionTick", e);
+                agentModifiersActive.Remove(agent.Key);
+            }
+
+            effectedAgents.RemoveWhere(a => !a.IsActive());
+
+            // Agents that need update is all agents with current modifications applied + all ones that have new
+            // modifiers to apply
+
+            // Group all effects by the final target agent
+            var realTargetsAndModifiers = agentModifiersActive
+                .SelectMany(kv
+                    => kv.Value.Select(m => (
+                        agent: m.ApplyToMount ? kv.Key.MountAgent : kv.Key,
+                        modifier: m
+                    )))
+                .Where(x => x.agent != null)
+                .GroupBy(x => x.agent)
+                .ToDictionary(
+                    x => x.Key,
+                    x => x.Select(m => m.modifier).ToList()
+                );
+
+            // Make sure all previously and newly affected agents are in the list
+            foreach (var r in realTargetsAndModifiers)
+            {
+                effectedAgents.Add(r.Key);
+            }
+
+            // Apply / update all agents (copy the agent list, so we can remove ones from the original list as we 
+            // get to them)
+            foreach (var agent in effectedAgents.ToList())
+            {
+                realTargetsAndModifiers.TryGetValue(agent, out var modifiers);
+
+                // Restore all the base properties from the cache to start with
+                if (!agentDrivenPropertiesCache.TryGetValue(agent, out float[] initialAgentDrivenProperties))
+                {
+                    initialAgentDrivenProperties = new float[(int) DrivenProperty.Count];
+                    for (int i = 0; i < (int) DrivenProperty.Count; i++)
+                    {
+                        initialAgentDrivenProperties[i] =
+                            agent.AgentDrivenProperties.GetStat((DrivenProperty) i);
+                    }
+
+                    agentDrivenPropertiesCache.Add(agent, initialAgentDrivenProperties);
+                }
+                else
+                {
+                    for (int i = 0; i < (int) DrivenProperty.Count; i++)
+                    {
+                        agent.AgentDrivenProperties.SetStat((DrivenProperty) i, initialAgentDrivenProperties[i]);
+                    }
+                }
+
+                if (!agentBaseScaleCache.TryGetValue(agent, out float baseAgentScale))
+                {
+                    agentBaseScaleCache.Add(agent, agent.AgentScale);
+                    baseAgentScale = agent.AgentScale;
+                }
+
+                float newAgentScale = baseAgentScale;
+
+                // Now update the dynamic properties
+                agent.UpdateAgentProperties();
+
+                // Apply modifier stack if we have one
+                if (modifiers != null)
+                {
+                    foreach (var effect in modifiers)
+                    {
+                        ApplyPropertyModifiers(agent, effect);
+                        newAgentScale *= effect.Scale ?? 1;
+                    }
+                }
+                else
+                {
+                    // If we don't have a modifer stack then we can remove this agent from future processing
+                    effectedAgents.Remove(agent);
+                }
+
+                if (newAgentScale != agent.AgentScale)
+                {
+                    SetAgentScale(agent, baseAgentScale, newAgentScale);
+                }
+
+                // Finally commit our modified values to the engine
+                agent.UpdateCustomDrivenProperties();
             }
         }
 

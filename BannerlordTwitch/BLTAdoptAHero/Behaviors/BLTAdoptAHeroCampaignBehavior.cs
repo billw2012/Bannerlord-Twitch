@@ -603,17 +603,43 @@ namespace BLTAdoptAHero
         public class RetinueSettings
         {
             [Description("Maximum number of units in the retinue. " +
-                         "Recommend less than 20, summons to NOT obey the games unit limits."), PropertyOrder(1)]
+                         "Recommend less than 20, summons to NOT obey the games unit limits."), 
+             PropertyOrder(1), UsedImplicitly]
             public int MaxRetinueSize { get; set; } = 5;
 
-            [Description("Cost to buy a new unit, or upgrade one"), PropertyOrder(2)]
-            public int CostPerTier { get; set; } = 50000;
+            [Description("Gold cost for Tier 1 retinue"), PropertyOrder(1), UsedImplicitly]
+            public int CostTier1 { get; set; } = 25000;
 
-            [Description(
-                 "Additional cost per tier multiplier (final cost for an upgrade is Cost Per Tier + Cost Per Tier x " +
-                 "Current Tier x Cost Scaling Per Tier"),
-             PropertyOrder(3)]
-            public float CostScalingPerTier { get; set; } = 1f;
+            [Description("Gold cost for Tier 2 retinue"), PropertyOrder(2), UsedImplicitly]
+            public int CostTier2 { get; set; } = 50000;
+
+            [Description("Gold cost for Tier 3 retinue"), PropertyOrder(3), UsedImplicitly]
+            public int CostTier3 { get; set; } = 100000;
+
+            [Description("Gold cost for Tier 4 retinue"), PropertyOrder(4), UsedImplicitly]
+            public int CostTier4 { get; set; } = 175000;
+
+            [Description("Gold cost for Tier 5 retinue"), PropertyOrder(5), UsedImplicitly]
+            public int CostTier5 { get; set; } = 275000;
+
+            [Description("Gold cost for Tier 6 retinue"), PropertyOrder(6), UsedImplicitly]
+            public int CostTier6 { get; set; } = 400000;
+            
+            // etc..
+            
+            public int GetTierCost(int tier)
+            {
+                return tier switch
+                {
+                    0 => CostTier1,
+                    1 => CostTier2,
+                    2 => CostTier3,
+                    3 => CostTier4,
+                    4 => CostTier5,
+                    5 => CostTier6,
+                    _ => CostTier6
+                };
+            }
 
             [Description("Whether to use the adopted hero's culture (if not enabled then a random one is used)"),
              PropertyOrder(4)]
@@ -660,14 +686,15 @@ namespace BLTAdoptAHero
                     return (false, $"No valid troop type could be found, please check out settings");
                 }
 
+                int cost = settings.GetTierCost(0);
                 int heroGold = GetHeroGold(hero);
-                if (GetHeroGold(hero) < settings.CostPerTier)
+                if (GetHeroGold(hero) < cost)
                 {
-                    return (false, Naming.NotEnoughGold(settings.CostPerTier, heroGold));
+                    return (false, Naming.NotEnoughGold(cost, heroGold));
                 }
-                ChangeHeroGold(hero, -settings.CostPerTier, isSpending: true);
-                heroRetinue.Add(new HeroData.RetinueData { TroopType = troopType, Level = 1 });
-                return (true, $"+{troopType} ({Naming.Dec}{settings.CostPerTier}{Naming.Gold})");
+                ChangeHeroGold(hero, -cost, isSpending: true);
+                heroRetinue.Add(new() { TroopType = troopType, Level = 1 });
+                return (true, $"+{troopType} ({Naming.Dec}{cost}{Naming.Gold})");
             }
 
             // upgrade the lowest tier unit
@@ -676,7 +703,7 @@ namespace BLTAdoptAHero
                 .FirstOrDefault(t => t.TroopType.UpgradeTargets?.Any() == true);
             if (retinueToUpgrade != null)
             {
-                int upgradeCost = (int) (settings.CostPerTier + settings.CostPerTier * retinueToUpgrade.Level * settings.CostScalingPerTier);
+                int upgradeCost = settings.GetTierCost(retinueToUpgrade.Level);
                 int heroGold = GetHeroGold(hero);
                 if (GetHeroGold(hero) < upgradeCost)
                 {

@@ -103,16 +103,14 @@ namespace BLTAdoptAHero
 
         private void CallHandlersForAgent(Agent agent, Action<Hero, Handlers> call, [CallerMemberName] string callerName = "")
         {
-            var hero = agent.GetAdoptedHero();
+            var hero = agent?.GetAdoptedHero();
             if (hero == null) return;
             CallHandlersForHero(hero, handlers => call(hero, handlers), callerName);
         }
 
         private void CallHandlersForHero(Hero hero, Action<Handlers> call, [CallerMemberName] string callerName = "")
         {
-#if !DEBUG
-            try
-#endif
+            SafeCall(() =>
             {
                 if (heroPowerHandlers.TryGetValue(hero, out var powerHandlers))
                 {
@@ -121,35 +119,21 @@ namespace BLTAdoptAHero
                         call(handlers);
                     }
                 }
-            }
-#if !DEBUG
-            catch (Exception ex)
-            {
-                Log.Exception($"{nameof(BLTHeroPowersMissionBehavior)}.{callerName}", ex);
-            }
-#endif
+            }, callerName);
         }
         
         private void CallHandlersForAll(Action<Hero, Handlers> call, [CallerMemberName] string callerName = "")
         {
-#if !DEBUG
-            try
-#endif
+            SafeCall(() =>
             {
-                foreach(var (hero, handlersMap) in heroPowerHandlers.ToList())
+                foreach (var (hero, handlersMap) in heroPowerHandlers.ToList())
                 {
                     foreach (var handlers in handlersMap.ToList())
                     {
                         call(hero, handlers.Value);
                     }
                 }
-            }
-#if !DEBUG
-            catch (Exception ex)
-            {
-                Log.Exception($"{nameof(BLTHeroPowersMissionBehavior)}.{callerName}", ex);
-            }
-#endif
+            }, callerName);
         }
         #endregion
 
@@ -158,15 +142,20 @@ namespace BLTAdoptAHero
         private readonly HashSet<Hero> activeHeroes = new();
         public override void OnAgentCreated(Agent agent)
         {
-            var hero = agent.GetAdoptedHero();
-            var heroClass = hero?.GetClass();
-            if (hero != null && heroClass != null && activeHeroes.Add(hero))
+            SafeCall(() =>
             {
-                heroClass.PassivePower.OnHeroJoinedBattle(hero);
-            }
+                var hero = agent.GetAdoptedHero();
+                var heroClass = hero?.GetClass();
+                // If the hero has a class (thus can have passive powers), and isn't already
+                // known, then call the init method for the passive powers
+                if (hero != null && heroClass != null && activeHeroes.Add(hero))
+                {
+                    heroClass.PassivePower?.OnHeroJoinedBattle(hero);
+                }
+            });
         }
 
-        public override void OnAgentBuild(Agent agent, Banner banner)
+        public override void OnAgentBuild(Agent agent, Banner banner) 
             => CallHandlersForAgent(agent, (hero, handlers) => handlers.AgentBuild(hero, agent)); 
 
         public void ApplyHitDamage(Agent attackerAgent, Agent victimAgent, ref AttackCollisionData attackCollisionData)
@@ -178,27 +167,18 @@ namespace BLTAdoptAHero
                 return;
 
             var acdRef = new AttackCollisionDataRef {Data = attackCollisionData};
-#if !DEBUG
-            try
-#endif
+
+            if (attackerHero != null)
             {
-                if (attackerHero != null)
-                {
-                    CallHandlersForHero(attackerHero, handlers 
-                        => handlers.DoDamage(attackerHero, attackerAgent, victimHero, victimAgent, acdRef));
-                }
-                if (victimHero != null)
-                {
-                    CallHandlersForHero(victimHero, handlers 
-                        => handlers.TakeDamage(victimHero, victimAgent, attackerHero, attackerAgent, acdRef));
-                }
+                CallHandlersForHero(attackerHero, handlers
+                    => handlers.DoDamage(attackerHero, attackerAgent, victimHero, victimAgent, acdRef));
             }
-#if !DEBUG
-            catch (Exception ex)
+
+            if (victimHero != null)
             {
-                Log.Exception($"{nameof(BLTHeroPowersMissionBehavior)}.{nameof(ApplyHitDamage)}", ex);
+                CallHandlersForHero(victimHero, handlers
+                    => handlers.TakeDamage(victimHero, victimAgent, attackerHero, attackerAgent, acdRef));
             }
-#endif
 
             attackCollisionData = acdRef.Data;
         }
@@ -207,27 +187,18 @@ namespace BLTAdoptAHero
         {
             var killerHero = killerAgent?.GetAdoptedHero();
             var killedHero = killedAgent?.GetAdoptedHero();
-#if !DEBUG
-            try
-#endif
+
+            if (killerHero != null)
             {
-                if (killerHero != null)
-                {
-                    CallHandlersForHero(killerHero, handlers 
-                        => handlers.GotAKill(killerHero, killerAgent, killedHero, killedAgent, agentState, blow));
-                }
-                if (killedHero != null)
-                {
-                    CallHandlersForHero(killedHero, handlers 
-                        => handlers.GotKilled(killedHero, killedAgent, killerHero, killerAgent, agentState, blow));
-                }
+                CallHandlersForHero(killerHero, handlers
+                    => handlers.GotAKill(killerHero, killerAgent, killedHero, killedAgent, agentState, blow));
             }
-#if !DEBUG
-            catch (Exception ex)
+
+            if (killedHero != null)
             {
-                Log.Exception($"{nameof(BLTHeroPowersMissionBehavior)}.{nameof(ApplyHitDamage)}", ex);
+                CallHandlersForHero(killedHero, handlers
+                    => handlers.GotKilled(killedHero, killedAgent, killerHero, killerAgent, agentState, blow));
             }
-#endif
         }
 
         protected override void OnEndMission()

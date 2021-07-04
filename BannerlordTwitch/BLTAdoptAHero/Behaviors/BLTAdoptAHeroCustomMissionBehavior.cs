@@ -160,14 +160,7 @@ namespace BLTAdoptAHero
         {
             foreach (var listener in AllListeners)
             {
-                try
-                {
-                    action(listener);
-                }
-                catch (Exception e)
-                {
-                    Log.Exception($"[{nameof(BLTAdoptAHeroCustomMissionBehavior)}] ForAll", e);
-                }
+                SafeCall(() => action(listener));
             }
         }
 
@@ -176,28 +169,13 @@ namespace BLTAdoptAHero
             var hero = FindHero(agent);
             if (hero != null && heroListeners.TryGetValue(hero, out var hl))
             {
-                try
-                {
-                    action(hl);
-                }
-                catch (Exception e)
-                {
-                    Log.Exception($"[{nameof(BLTAdoptAHeroCustomMissionBehavior)}] ForAgent", e);
-                }
+                SafeCall(() => action(hl));
             }
 
             if (agentListeners.TryGetValue(agent, out var al))
             {
-                try
-                {
-                    action(al);
-                }
-                catch (Exception e)
-                {
-                    Log.Exception($"[{nameof(BLTAdoptAHeroCustomMissionBehavior)}] ForAgent", e);
-                }
+                SafeCall(() => action(al));
             }
         }
-
     }
 }

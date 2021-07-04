@@ -64,7 +64,7 @@ namespace BLTAdoptAHero
             
         public override void OnAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)
         {
-            try
+            SafeCall(() =>
             {
                 var hero = summonedHeroes.FirstOrDefault(h => h.CurrentAgent == affectedAgent);
                 if (hero != null)
@@ -78,11 +78,7 @@ namespace BLTAdoptAHero
                 {
                     retinue.State = agentState;
                 }
-            }
-            catch (Exception ex)
-            {
-                Log.Exception($"{nameof(BLTSummonBehavior)}.{nameof(OnAgentRemoved)}", ex);
-            }
+            });
         }
 
         public void DoNextTick(Action action)
@@ -92,7 +88,7 @@ namespace BLTAdoptAHero
 
         public override void OnMissionTick(float dt)
         {
-            try
+            SafeCall(() =>
             {
                 var actionsToDo = onTickActions.ToList();
                 onTickActions.Clear();
@@ -100,16 +96,12 @@ namespace BLTAdoptAHero
                 {
                     action();
                 }
-            }
-            catch (Exception ex)
-            {
-                Log.Exception($"{nameof(BLTSummonBehavior)}.{nameof(OnMissionTick)}", ex);
-            }
+            });
         }
 
         protected override void OnEndMission()
         {
-            try
+            SafeCall(() =>
             {
                 // Remove still living retinue troops from their parties
                 foreach (var h in summonedHeroes)
@@ -119,11 +111,7 @@ namespace BLTAdoptAHero
                         h.Party?.MemberRoster?.AddToCounts(r.Troop, -1);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Log.Exception($"{nameof(BLTSummonBehavior)}.{nameof(OnEndMission)}", ex);
-            }
+            });
         }
     }
 }

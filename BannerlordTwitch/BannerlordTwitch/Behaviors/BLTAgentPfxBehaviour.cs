@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Util;
 using TaleWorlds.Engine;
@@ -63,30 +64,34 @@ namespace BannerlordTwitch
 
         public override void OnAgentDeleted(Agent affectedAgent)
         {
-            base.OnAgentDeleted(affectedAgent);
-            var attachmentsToDelete = attachmentsList
-                .Where(a => a.agent == affectedAgent)
-                .ToList();
-            foreach (var a in attachmentsToDelete)
+            SafeCall(() =>
             {
-                RemoveAttachments(a);
-            }
+                var attachmentsToDelete = attachmentsList
+                    .Where(a => a.agent == affectedAgent)
+                    .ToList();
+                foreach (var a in attachmentsToDelete)
+                {
+                    RemoveAttachments(a);
+                }
+            });
         }
 
         public override void OnPreDisplayMissionTick(float dt)
         {
-            base.OnPreDisplayMissionTick(dt);
-            foreach (var a in attachmentsList.ToList())
+            SafeCall(() =>
             {
-                if (!a.agent.IsActive())
+                foreach (var a in attachmentsList.ToList())
                 {
-                    RemoveAttachments(a);
+                    if (!a.agent.IsActive())
+                    {
+                        RemoveAttachments(a);
+                    }
+                    else
+                    {
+                        a.Update();
+                    }
                 }
-                else
-                {
-                    a.Update();
-                }
-            }
+            });
         }
     }
 }

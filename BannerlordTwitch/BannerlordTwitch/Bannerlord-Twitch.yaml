@@ -580,7 +580,6 @@ Commands:
     CostTier4: 175000
     CostTier5: 275000
     CostTier6: 400000
-    MultiplyCostByCurrentTier: true
     ReequipInsteadOfUpgrade: false
 - Name: retinue
   HideHelp: false
@@ -595,8 +594,12 @@ Commands:
   HandlerConfig:
     Retinue:
       MaxRetinueSize: 5
-      CostPerTier: 50000
-      CostScalingPerTier: 1
+      CostTier1: 25000
+      CostTier2: 50000
+      CostTier3: 100000
+      CostTier4: 175000
+      CostTier5: 275000
+      CostTier6: 400000
       UseHeroesCultureUnits: true
       IncludeBanditUnits: false
       UseBasicTroops: true
@@ -632,7 +635,6 @@ Commands:
     CostTier4: 175000
     CostTier5: 275000
     CostTier6: 400000
-    MultiplyCostByCurrentTier: true
     ReequipInsteadOfUpgrade: true
 - Name: gold
   HideHelp: false
@@ -731,6 +733,7 @@ GlobalConfigs:
   Config:
     AllowDeath: true
     DeathChance: 0.200000003
+    ApplyDeathChanceToAllHeroes: true
     StartWithFullHealth: true
     StartHealthMultiplier: 2
     StartRetinueHealthMultiplier: 2
@@ -866,7 +869,7 @@ GlobalConfigs:
       PassivePower:
         Name: Fleet Footed
         Power1: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
-        Power2: 00000000-0000-0000-0000-000000000000
+        Power2: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
         Power3: 00000000-0000-0000-0000-000000000000
       ActivePower:
         Name: Explosive Arrows
@@ -941,7 +944,7 @@ GlobalConfigs:
       PassivePower:
         Name: A Good Horse
         Power1: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
-        Power2: 00000000-0000-0000-0000-000000000000
+        Power2: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
         Power3: 00000000-0000-0000-0000-000000000000
       ActivePower:
         Name: Explosive Arrows
@@ -966,7 +969,7 @@ GlobalConfigs:
       PassivePower:
         Name: A Good Camel
         Power1: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
-        Power2: 00000000-0000-0000-0000-000000000000
+        Power2: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
         Power3: 00000000-0000-0000-0000-000000000000
       ActivePower:
         Name: Explosive Arrows
@@ -1216,38 +1219,13 @@ SimTesting:
     Id: Tournament
     Args: 
     Weight: 0
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: class
-    Args: infantry
-    Weight: 1
-  - Enabled: true
-    Type: Command
-    Id: equip
-    Args: 
-    Weight: 1
-  - Enabled: true
-    Type: Command
-    Id: equip
-    Args: 
-    Weight: 1
-  - Enabled: true
-    Type: Command
-    Id: equip
-    Args: 
-    Weight: 1
-  - Enabled: true
-    Type: Command
-    Id: equip
-    Args: 
-    Weight: 1
-  - Enabled: true
-    Type: Command
-    Id: equip
-    Args: 
+    Args: archer
     Weight: 1
   Use:
-  - Enabled: true
+  - Enabled: false
     Type: Reward
     Id: Attack
     Args: 
@@ -1256,13 +1234,13 @@ SimTesting:
     Type: Reward
     Id: Summon
     Args: 
-    Weight: 2
-  - Enabled: true
+    Weight: 1
+  - Enabled: false
     Type: Reward
     Id: 100k gold
     Args: 
     Weight: 1
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: equip
     Args: 
@@ -1361,5 +1339,5 @@ SimTesting:
     Type: Reward
     Id: Use Class Power
     Args: 
-    Weight: 1
+    Weight: 0.200000003
 DisableAutomaticFulfillment: false

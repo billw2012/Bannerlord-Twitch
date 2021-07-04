@@ -15,7 +15,7 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
-    public class HeroClassDef
+    public class HeroClassDef : IConfig
     {
         [ReadOnly(true), Annotations.UsedImplicitly]
         public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
@@ -114,7 +114,7 @@ namespace BLTAdoptAHero
             + (UseHorse ? " (Use Horse)" : "")
             + (UseCamel ? " (Use Camel)" : "");
 
-        public class PassivePowerGroup
+        public class PassivePowerGroup : IConfig
         {
             [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), Annotations.UsedImplicitly]
             public string Name { get; set; } = "Passive Power";
@@ -126,18 +126,21 @@ namespace BLTAdoptAHero
             [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(3), Annotations.UsedImplicitly]
             public Guid Power3 { get; set; }
 
+            [YamlIgnore, Browsable(false)]
+            private GlobalHeroPowerConfig PowerConfig { get; set; }
+            
             [Browsable(false), YamlIgnore]
             private IEnumerable<IHeroPowerPassive> Powers 
             => new []
             {
-                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(Power1) as IHeroPowerPassive, 
-                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(Power2) as IHeroPowerPassive, 
-                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(Power3) as IHeroPowerPassive,
+                PowerConfig.GetPower(Power1) as IHeroPowerPassive, 
+                PowerConfig.GetPower(Power2) as IHeroPowerPassive, 
+                PowerConfig.GetPower(Power3) as IHeroPowerPassive,
             }.Where(p => p != null);
             
             public void OnHeroJoinedBattle(Hero hero)
             {
-                if (BLTAdoptAHeroModule.HeroPowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
+                if (PowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
                 {
                     return;
                 }
@@ -147,9 +150,20 @@ namespace BLTAdoptAHero
                         hero, power as HeroPowerDefBase, handlers => power.OnHeroJoinedBattle(hero, handlers));
                 }
             }
+            
+            public override string ToString() => $"{Name} {string.Join(" ", Powers.Select(p => p.ToString()))}";
+            
+            #region IConfig
+            public void OnLoaded(Settings settings)
+            {
+                PowerConfig = GlobalHeroPowerConfig.Get(settings);   
+            }
+            public void OnSaving() { }
+            public void OnEditing() { }
+            #endregion
         }
 
-        public class ActivePowerGroup
+        public class ActivePowerGroup : IConfig
         {
             [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), Annotations.UsedImplicitly]
             public string Name { get; set; } = "Active Power";
@@ -166,21 +180,25 @@ namespace BLTAdoptAHero
 
             [Description("Particles/sound effects to play when this power group is deactivated"), PropertyOrder(5), ExpandableObject, UsedImplicitly]
             public OneShotEffect DeactivateEffect { get; set; } = new();
+
+
+            [YamlIgnore, Browsable(false)]
+            private GlobalHeroPowerConfig PowerConfig { get; set; }
             
             [Browsable(false), YamlIgnore]
             private IEnumerable<IHeroPowerActive> Powers 
             => new []
             {
-                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(Power1) as IHeroPowerActive, 
-                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(Power2) as IHeroPowerActive, 
-                BLTAdoptAHeroModule.HeroPowerConfig.GetPower(Power3) as IHeroPowerActive
+                PowerConfig.GetPower(Power1) as IHeroPowerActive, 
+                PowerConfig.GetPower(Power2) as IHeroPowerActive, 
+                PowerConfig.GetPower(Power3) as IHeroPowerActive
             }.Where(p => p != null);
             
             public bool IsActive(Hero hero) => Powers.Any(power => power.IsActive(hero));
 
             public (bool canActivate, string failReason) CanActivate(Hero hero)
             {
-                if (BLTAdoptAHeroModule.HeroPowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
+                if (PowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
                 {
                     return (false, "Not allowed in tournaments!");
                 }
@@ -202,7 +220,7 @@ namespace BLTAdoptAHero
 
             public (bool allowed, string message) Activate(Hero hero, ReplyContext context)
             {
-                if (BLTAdoptAHeroModule.HeroPowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
+                if (PowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
                 {
                     return (false, $"Powers not allowed in tournaments!");
                 }
@@ -234,6 +252,17 @@ namespace BLTAdoptAHero
                     remaining: remaining.Max(r => r.remaining)
                     );
             }
+
+            public override string ToString() => $"{Name} {string.Join(" ", Powers.Select(p => p.ToString()))}";
+            
+            #region IConfig
+            public void OnLoaded(Settings settings)
+            {
+                PowerConfig = GlobalHeroPowerConfig.Get(settings);   
+            }
+            public void OnSaving() { }
+            public void OnEditing() { }
+            #endregion
         }
 
         #region ItemSource
@@ -256,6 +285,26 @@ namespace BLTAdoptAHero
 
                 return col;
             }
+        }
+        #endregion
+
+        #region IConfig
+        public void OnLoaded(Settings settings)
+        {
+            PassivePower?.OnLoaded(settings);
+            ActivePower?.OnLoaded(settings);
+        }
+
+        public void OnSaving()
+        {
+            PassivePower?.OnSaving();
+            ActivePower?.OnSaving();
+        }
+
+        public void OnEditing()
+        {
+            PassivePower?.OnEditing();
+            ActivePower?.OnEditing();
         }
         #endregion
     }

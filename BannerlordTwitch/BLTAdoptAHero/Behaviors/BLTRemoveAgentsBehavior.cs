@@ -29,38 +29,17 @@ namespace BLTAdoptAHero
 
         protected override void OnEndMission()
         {
-            try
-            {
-                RemoveHeroes();
-            }
-            catch (Exception ex)
-            {
-                Log.Exception($"{nameof(BLTRemoveAgentsBehavior)}.{nameof(OnEndMission)}", ex);
-            }
+            SafeCall(RemoveHeroes);
         }
 
         public override void OnMissionDeactivate()
         {
-            try
-            {
-                RemoveHeroes();
-            }
-            catch (Exception ex)
-            {
-                Log.Exception($"{nameof(BLTRemoveAgentsBehavior)}.{nameof(OnMissionDeactivate)}", ex);
-            }
+            SafeCall(RemoveHeroes);
         }
 
         public override void OnMissionRestart()
         {
-            try
-            {
-                RemoveHeroes();
-            }
-            catch (Exception ex)
-            {
-                Log.Exception($"{nameof(BLTRemoveAgentsBehavior)}.{nameof(OnMissionRestart)}", ex);
-            }
+            SafeCall(RemoveHeroes);
         }
     }
 }

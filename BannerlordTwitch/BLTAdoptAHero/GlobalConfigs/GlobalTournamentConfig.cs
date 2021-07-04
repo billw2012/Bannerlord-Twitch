@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -19,6 +20,7 @@ namespace BLTAdoptAHero
         private const string ID = "Adopt A Hero - Tournament Config";
         internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalTournamentConfig));
         internal static GlobalTournamentConfig Get() => ActionManager.GetGlobalConfig<GlobalTournamentConfig>(ID);
+        internal static GlobalTournamentConfig Get(Settings fromSettings) => fromSettings.GetGlobalConfig<GlobalTournamentConfig>(ID);
 
         [Category("General"), 
          Description("Amount to multiply normal starting health by"), PropertyOrder(1), UsedImplicitly]

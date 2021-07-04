@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
@@ -27,9 +28,10 @@ namespace BLTAdoptAHero
 
         internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalCommonConfig));
         internal static GlobalCommonConfig Get() => ActionManager.GetGlobalConfig<GlobalCommonConfig>(ID);
+        internal static GlobalCommonConfig Get(Settings fromSettings) => fromSettings.GetGlobalConfig<GlobalCommonConfig>(ID);
 
         #region General
-        [Category("General"), Description("Whether the hero is allowed to die"), PropertyOrder(3), UsedImplicitly]
+        [Category("General"), Description("Whether an adopted hero is allowed to die"), PropertyOrder(3), UsedImplicitly]
         public bool AllowDeath { get; set; }
         
         [Category("General"), 
@@ -39,24 +41,29 @@ namespace BLTAdoptAHero
                      "death chance is 50% of 10%, which is 5%. Setting this to > 1 will NOT increase final death " +
                      "chance beyond 10%."), PropertyOrder(4), UsedImplicitly]
         public float DeathChance { get; set; } = 0.2f;
+        
+        [Category("General"), 
+         Description("Whether to apply the Death Chance changes to all heroes, not just adopted ones"), 
+         PropertyOrder(5), UsedImplicitly]
+        public bool ApplyDeathChanceToAllHeroes { get; set; } = true;
 
         [Category("General"), Description("Whether the hero will always start with full health"), 
-         PropertyOrder(5), UsedImplicitly]
+         PropertyOrder(6), UsedImplicitly]
         public bool StartWithFullHealth { get; set; } = true;
 
         [Category("General"),
          Description("Amount to multiply normal starting health by, to give heroes better staying power vs others"),
-         PropertyOrder(6), UsedImplicitly]
+         PropertyOrder(7), UsedImplicitly]
         public float StartHealthMultiplier { get; set; } = 2;
 
         [Category("General"),
          Description("Amount to multiply normal retinue starting health by, to give retinue better staying power vs others"),
-         PropertyOrder(7), UsedImplicitly]
+         PropertyOrder(8), UsedImplicitly]
         public float StartRetinueHealthMultiplier { get; set; } = 2;
 
         [Category("General"),
          Description("Reduces morale loss when summoned heroes die"),
-         PropertyOrder(8), UsedImplicitly]
+         PropertyOrder(9), UsedImplicitly]
         public float MoraleLossFactor { get; set; } = 0.5f;
 
         [Category("General"),

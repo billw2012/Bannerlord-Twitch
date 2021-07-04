@@ -278,6 +278,8 @@ namespace BannerlordTwitch
             .Concat(GlobalConfigs.Select(g => g.Config))
             .OfType<IConfig>();
 
+        public T GetGlobalConfig<T>(string id) => (T)GlobalConfigs.First(c => c.Id == id)?.Config;
+
         #if DEBUG
         private static string ProjectRootDir([CallerFilePath]string file = "") => Path.GetDirectoryName(file);
         private static string SaveFilePath => Path.Combine(ProjectRootDir(), "Bannerlord-Twitch.yaml");
@@ -311,7 +313,7 @@ namespace BannerlordTwitch
             File.WriteAllText(SaveFilePath, settingsStr);
         }
 
-#else
+        #else
         private static PlatformFilePath SaveFilePath => FileSystem.GetConfigPath("Bannerlord-Twitch.yaml");
         private static string TemplateFileName => Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location), "..", "..", "Bannerlord-Twitch.yaml");
 
@@ -369,7 +371,7 @@ namespace BannerlordTwitch
 
             foreach (var config in settings.ConfigInterfaces)
             {
-                config.OnLoaded();
+                config.OnLoaded(settings);
             }
 
             foreach (var action in settings.AllActions)

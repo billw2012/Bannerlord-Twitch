@@ -2,7 +2,7 @@
 {
     public interface IConfig
     {
-        void OnLoaded();
+        void OnLoaded(Settings settings);
         void OnSaving();
         void OnEditing();
     }

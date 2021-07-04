@@ -93,7 +93,7 @@ namespace BLTAdoptAHero
         
         public override void OnAgentCreated(Agent agent)
         {
-            try
+            SafeCall(() =>
             {
                 var hero = agent.GetAdoptedHero();
                 if (hero == null)
@@ -103,16 +103,12 @@ namespace BLTAdoptAHero
 
                 BLTAdoptAHeroCampaignBehavior.SetAgentStartingHealth(hero, agent);
                 activeHeroes.Add(hero);
-            }
-            catch (Exception ex)
-            {
-                Log.Exception($"{nameof(BLTAdoptAHeroCommonMissionBehavior)}.{nameof(OnAgentCreated)}", ex);
-            }
+            });
         }
 
         public override void OnAgentBuild(Agent agent, Banner banner)
         {
-            try
+            SafeCall(() =>
             {
                 var hero = agent.GetAdoptedHero();
                 if (hero != null && agent.MountAgent != null)
@@ -131,11 +127,7 @@ namespace BLTAdoptAHero
                         EnemySidePower += agent.Character.GetPower();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Log.Exception($"{nameof(BLTAdoptAHeroCommonMissionBehavior)}.{nameof(OnAgentBuild)}", ex);
-            }
+            });
         }
 
         private float slowTickT;
@@ -143,7 +135,7 @@ namespace BLTAdoptAHero
 
         public override void OnMissionTick(float dt)
         {
-            try
+            SafeCall(() =>
             {
                 slowTickT += dt;
                 const float TickTime = 2f;
@@ -168,23 +160,15 @@ namespace BLTAdoptAHero
                         UpdateHeroVMTick(h);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Log.Exception($"{nameof(BLTAdoptAHeroCommonMissionBehavior)}.{nameof(OnMissionTick)}", ex);
-            }
+            });
         }
 
         protected override void OnEndMission()
         {
-            try
+            SafeCall(() =>
             {
                 Log.RemoveInfoPanel(missionInfoPanel);
-            }
-            catch (Exception ex)
-            {
-                Log.Exception($"{nameof(BLTAdoptAHeroCommonMissionBehavior)}.{nameof(OnEndMission)}", ex);
-            }
+            });
         }
 
         // public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
@@ -196,21 +180,33 @@ namespace BLTAdoptAHero
         public static void OnAgentRemovedPrefix(Mission __instance, Agent affectedAgent, Agent affectorAgent,
             ref AgentState agentState, KillingBlow killingBlow)
         {
+            #if !DEBUG
             try
+            #endif
             {
                 if (affectedAgent.State == AgentState.Killed)
                 {
-                    // Stop hero from dying if death is disabled
-                    var affectedHero = affectedAgent.GetAdoptedHero();
-                    if (affectedHero != null 
-                        && (BLTAdoptAHeroModule.CommonConfig.AllowDeath == false
-                            || StaticRandom.Next() > BLTAdoptAHeroModule.CommonConfig.DeathChance))
+                    if (affectedAgent.IsHuman)
                     {
-                        agentState = affectedAgent.State = AgentState.Unconscious;
+                        // Stop adopted hero from dying if death is disabled or death chance roll fails
+                        if (affectedAgent.IsAdopted())
+                        {
+                            if (!BLTAdoptAHeroModule.CommonConfig.AllowDeath
+                                || StaticRandom.Next() > BLTAdoptAHeroModule.CommonConfig.DeathChance)
+                            {
+                                agentState = affectedAgent.State = AgentState.Unconscious;
+                            }
+                        }
+                        // Stop non-adopted hero from dying if enabled, and death chance roll fails
+                        else if (affectedAgent.IsHero
+                                 && BLTAdoptAHeroModule.CommonConfig.ApplyDeathChanceToAllHeroes
+                                 && StaticRandom.Next() > BLTAdoptAHeroModule.CommonConfig.DeathChance)
+                        {
+                            agentState = affectedAgent.State = AgentState.Unconscious;
+                        }
                     }
-
-                    // Stop horse from dying always, as its not easily replaceable
-                    if (affectedAgent.IsMount && Current?.adoptedHeroMounts.Contains(affectedAgent) == true)
+                    // Stop adopted heroes horses from dying, as they are not easily replaceable
+                    else if (affectedAgent.IsMount && Current?.adoptedHeroMounts.Contains(affectedAgent) == true)
                     {
                         agentState = affectedAgent.State = AgentState.Unconscious;
                     }
@@ -219,15 +215,17 @@ namespace BLTAdoptAHero
                 // Remove mount agent from tracking, in-case it is reused
                 Current?.adoptedHeroMounts.Remove(affectedAgent);
             }
+            #if !DEBUG
             catch (Exception ex)
             {
                 Log.Exception($"{nameof(BLTAdoptAHeroCommonMissionBehavior)}.{nameof(OnAgentRemovedPrefix)}", ex);
             }
+            #endif
         }
 
         public override void OnAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)
         {
-            try
+            SafeCall(() =>
             {
                 var affectedHero = affectedAgent.GetAdoptedHero();
                 if (affectedHero != null)
@@ -273,12 +271,7 @@ namespace BLTAdoptAHero
                 {
                     GetHeroMissionState(affectorRetinueOwner.Hero).RetinueKills++;
                 }
-                
-            }
-            catch (Exception ex)
-            {
-                Log.Exception($"{nameof(BLTAdoptAHeroCommonMissionBehavior)}.{nameof(OnAgentRemoved)}", ex);
-            }
+            });
         }
 
         // public override void OnAgentFleeing(Agent affectedAgent)
