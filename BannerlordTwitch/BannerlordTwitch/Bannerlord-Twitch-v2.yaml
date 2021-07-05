@@ -558,7 +558,7 @@ Commands:
     ShowAttributes: false
     ShowEquipment: true
     ShowInventory: true
-    ShowStorage: false
+    ShowStorage: true
     ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: false
@@ -792,19 +792,19 @@ GlobalConfigs:
     PrizeTier3Weight: 0
     PrizeTier4Weight: 0
     PrizeTier5Weight: 0
-    PrizeTier6Weight: 0
+    PrizeTier6Weight: 1
     PrizeCustomWeight: 1
     CustomPrize:
       Power: 1
       WeaponDamage:
-        Min: 25
-        Max: 40
+        Min: 15
+        Max: 25
       WeaponSpeed:
-        Min: 25
-        Max: 40
+        Min: 15
+        Max: 25
       WeaponMissileSpeed:
-        Min: 25
-        Max: 40
+        Min: 15
+        Max: 25
       AmmoDamage:
         Min: 10
         Max: 30
@@ -844,7 +844,7 @@ GlobalConfigs:
       ID: b99d374b-84d0-495e-a430-1811ad6e712b
       Name: Fragile
     - FractionOfDamageToAbsorb: 0.5
-      PowerDurationSeconds: 30
+      PowerDurationSeconds: 120
       Pfx: []
       Type: e0a274df-adbb-4725-9eae-59806bf9b5dc
       ID: b3e5da20-1b82-4820-a373-ff9a8190dd98
@@ -858,17 +858,22 @@ GlobalConfigs:
       Ranged: true
       Melee: true
       Charge: true
+      AreaOfEffectOnlyOnHit: false
       AreaOfEffect: 0
+      AreaOfEffectDamage: 30
+      AreaOfEffectMaxAgents: 5
+      AreaOfEffectDamageType: Blunt
+      MissileTrailParticleEffect: 
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 30
+      PowerDurationSeconds: 120
       Pfx: []
       Type: 378648b6-5586-4812-ad08-22da6374440c
       ID: 6a36fedb-0b2d-459c-b06b-c4230327589b
       Name: Heavy Hitting
     - FractionOfDamageToReflect: 0.150000006
-      PowerDurationSeconds: 30
+      PowerDurationSeconds: 120
       Pfx: []
       Type: ffe07da3-e977-42d8-80ca-5dfff66123eb
       ID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
@@ -880,7 +885,7 @@ GlobalConfigs:
         - Name: MaxSpeedMultiplier
           Add: 
           Multiply: 1.5
-      PowerDurationSeconds: 30
+      PowerDurationSeconds: 120
       Pfx: []
       Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
       ID: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
@@ -895,7 +900,7 @@ GlobalConfigs:
         - Name: MountManeuver
           Add: 
           Multiply: 2
-      PowerDurationSeconds: 30
+      PowerDurationSeconds: 120
       Pfx: []
       Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
       ID: 20f6817e-8f45-4dc3-a513-77707fb9c96d
@@ -913,7 +918,7 @@ GlobalConfigs:
         - Name: ArmorTorso
           Add: 40
           Multiply: 
-      PowerDurationSeconds: 30
+      PowerDurationSeconds: 120
       Pfx: []
       Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
       ID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
@@ -925,7 +930,7 @@ GlobalConfigs:
         - Name: SwingSpeedMultiplier
           Add: 
           Multiply: 1.5
-      PowerDurationSeconds: 30
+      PowerDurationSeconds: 120
       Pfx:
       - Name: psys_campfire
         AttachPoint: OnWeapon
@@ -936,12 +941,12 @@ GlobalConfigs:
         Scale: 1.25
         ApplyToMount: false
         Properties: []
-      PowerDurationSeconds: 30
+      PowerDurationSeconds: 120
       Pfx: []
       Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
       ID: 60582ddc-3b22-4052-9437-cd43882bf5f9
       Name: Imposing
-    - DamageToMultiply: 2
+    - DamageToMultiply: 1
       DamageToAdd: 0
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
@@ -950,11 +955,16 @@ GlobalConfigs:
       Ranged: true
       Melee: false
       Charge: false
-      AreaOfEffect: 5
+      AreaOfEffectOnlyOnHit: false
+      AreaOfEffect: 3
+      AreaOfEffectDamage: 70
+      AreaOfEffectMaxAgents: 5
+      AreaOfEffectDamageType: Blunt
+      MissileTrailParticleEffect: psys_game_burning_agent
       HitEffect:
         ParticleEffect: psys_burning_projectile_default_coll
         Sound: 
-      PowerDurationSeconds: 30
+      PowerDurationSeconds: 120
       Pfx: []
       Type: 378648b6-5586-4812-ad08-22da6374440c
       ID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
@@ -987,7 +997,7 @@ GlobalConfigs:
         - Name: WeaponBestAccuracyWaitTime
           Add: 
           Multiply: 0.5
-      PowerDurationSeconds: 30
+      PowerDurationSeconds: 120
       Pfx: []
       Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
       ID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
@@ -1209,23 +1219,23 @@ SimTesting:
     Id: Adopt a Hero
     Args: 
     Weight: 0
-  - Enabled: true
+  - Enabled: false
     Type: Reward
     Id: 100k gold
     Args: 
     Weight: 0
-  - Enabled: true
+  - Enabled: false
     Type: Reward
     Id: Tournament
     Args: 
     Weight: 0
-  - Enabled: false
+  - Enabled: true
     Type: Command
     Id: class
     Args: archer
     Weight: 1
   Use:
-  - Enabled: true
+  - Enabled: false
     Type: Reward
     Id: Attack
     Args: 
@@ -1235,149 +1245,84 @@ SimTesting:
     Id: Summon
     Args: 
     Weight: 1
-  - Enabled: true
+  - Enabled: false
     Type: Reward
     Id: 100k gold
     Args: 
     Weight: 1
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: equip
     Args: 
     Weight: 0.400000006
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: reequip
     Args: ''
     Weight: 0.100000001
-  - Enabled: true
+  - Enabled: false
     Type: Reward
     Id: Tournament
     Args: 
     Weight: 0.200000003
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: retinue
     Args: 
     Weight: 0.200000003
-  - Enabled: true
+  - Enabled: false
     Type: Reward
     Id: Retire My Hero
     Args: yes
     Weight: 0.00999999978
-  - Enabled: true
+  - Enabled: false
     Type: Reward
     Id: Adopt a Hero
     Args: yes
     Weight: 0.00999999978
-  - Enabled: true
+  - Enabled: false
     Type: Reward
     Id: Heal Player
     Args: ''
     Weight: 0.0500000007
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: class
     Args: infantry
     Weight: 0.100000001
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: class
     Args: archer
     Weight: 0.100000001
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: class
     Args: cavalry
     Weight: 0.100000001
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: class
     Args: horsearcher
     Weight: 0.100000001
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: class
     Args: skirmisher
     Weight: 0.100000001
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: class
     Args: berserker
     Weight: 0.100000001
-  - Enabled: true
+  - Enabled: false
     Type: Reward
     Id: Heal Hero
     Args: ''
     Weight: 0.0500000007
   - Enabled: true
-    Type: Command
-    Id: nameitem
-    Args: 
-    Weight: 0.00999999978
-  - Enabled: true
-    Type: Command
-    Id: nameitem
-    Args: Random Name 1
-    Weight: 0.00999999978
-  - Enabled: true
-    Type: Command
-    Id: nameitem
-    Args: Random Name 2
-    Weight: 0.00999999978
-  - Enabled: false
-    Type: Command
-    Id: nameitem
-    Args: Random Name 3
-    Weight: 0.00999999978
-  - Enabled: false
-    Type: Command
-    Id: nameitem
-    Args: Random Name 4
-    Weight: 0.00999999978
-  - Enabled: true
     Type: Reward
     Id: Use Class Power
     Args: 
     Weight: 0.200000003
-  - Enabled: true
-    Type: Command
-    Id: bltbet
-    Args: blue 1000
-    Weight: 0.0500000007
-  - Enabled: true
-    Type: Command
-    Id: bltbet
-    Args: red 500
-    Weight: 0.0500000007
-  - Enabled: true
-    Type: Command
-    Id: bltbet
-    Args: yellow 100
-    Weight: 0.0500000007
-  - Enabled: true
-    Type: Command
-    Id: bltbet
-    Args: green 10
-    Weight: 0.0500000007
-  - Enabled: true
-    Type: Command
-    Id: bltbet
-    Args: blah
-    Weight: 0.0500000007
-  - Enabled: true
-    Type: Command
-    Id: bltbet
-    Args: ''
-    Weight: 0.0500000007
-  - Enabled: true
-    Type: Command
-    Id: bltbet
-    Args: blah blah blah
-    Weight: 0.0500000007
-  - Enabled: true
-    Type: Command
-    Id: bltbet
-    Args: blah blah
-    Weight: 0.0500000007
 DisableAutomaticFulfillment: false
