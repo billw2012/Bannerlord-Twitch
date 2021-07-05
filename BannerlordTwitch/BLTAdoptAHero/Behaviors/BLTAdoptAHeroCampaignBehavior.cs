@@ -158,7 +158,7 @@ namespace BLTAdoptAHero
         }
 
         private Dictionary<Hero, HeroData> heroData = new();
-		
+
         public override void RegisterEvents()
         {
             // We put all initialization that relies on loading being complete into this listener
@@ -287,7 +287,8 @@ namespace BLTAdoptAHero
                 }
                 else if (heroData2 != null)
                 {
-                    heroData = heroData2.ToDictionary(kv => usedHeroList[kv.Key], kv => kv.Value);
+                    heroData = heroData2.ToDictionary(kv
+                        => usedHeroList[kv.Key], kv => kv.Value);
                     foreach (var r in heroData.Values.SelectMany(h => h.Retinue))
                     {
                         r.TroopType = usedCharList[r.SavedTroopIndex];
@@ -304,7 +305,9 @@ namespace BLTAdoptAHero
                     // Try and find an appropriate character to replace the missing retinue with
                     foreach (var r in data.Retinue.Where(r => r.TroopType == null))
                     {
-                        r.TroopType = hero.Culture?.EliteBasicTroop?.UpgradeTargets?.SelectRandom()?.UpgradeTargets?.SelectRandom();
+                        r.TroopType = hero.Culture?.EliteBasicTroop
+                            ?.UpgradeTargets?.SelectRandom()
+                            ?.UpgradeTargets?.SelectRandom();
                     }
 
                     // Remove any we couldn't replace
@@ -335,7 +338,8 @@ namespace BLTAdoptAHero
             else
             {
                 // Need to explicitly write out the Heroes and CharacterObjects so we can look them up by index in the HeroData
-                var usedCharList = heroData.Values.SelectMany(h => h.Retinue.Select(r => r.TroopType)).Distinct().ToList();
+                var usedCharList = heroData.Values
+                    .SelectMany(h => h.Retinue.Select(r => r.TroopType)).Distinct().ToList();
                 dataStore.SyncData("UsedCharacterObjectList", ref usedCharList);
 
                 var usedHeroList = heroData.Keys.ToList();
@@ -351,7 +355,8 @@ namespace BLTAdoptAHero
                     h.PreSave();
                 }
 
-                var heroDataSavable = heroData.ToDictionary(kv => usedHeroList.IndexOf(kv.Key), kv => kv.Value);
+                var heroDataSavable = heroData.ToDictionary(kv 
+                    => usedHeroList.IndexOf(kv.Key), kv => kv.Value);
                 dataStore.SyncDataAsJson("HeroData2", ref heroDataSavable);
             }
         }
@@ -419,11 +424,12 @@ namespace BLTAdoptAHero
                 >= 1 => "I" + ToRoman(number - 1)
             };
         }
-        
+
         public void RetireHero(Hero hero)
         {
             string heroName = hero.FirstName?.Raw().ToLower();
-            int count = heroData.Count(h => h.Value.IsRetiredOrDead && h.Key.FirstName?.Raw().ToLower() == heroName);
+            int count = heroData.Count(h 
+                => h.Value.IsRetiredOrDead && h.Key.FirstName?.Raw().ToLower() == heroName);
 
             string desc = hero.IsDead ? "deceased" : "retired";
             var oldName = hero.Name;
@@ -515,21 +521,29 @@ namespace BLTAdoptAHero
             UpdateAchievement(killer, AchievementSystem.AchievementTypes.TotalKills, 1);
         }
 
-        public void IncreaseParticipationCount(Hero hero, bool playerSide) => UpdateAchievement(hero, playerSide ? AchievementSystem.AchievementTypes.Summons : AchievementSystem.AchievementTypes.Attacks, 1);
+        public void IncreaseParticipationCount(Hero hero, bool playerSide) 
+            => UpdateAchievement(hero, playerSide 
+                    ? AchievementSystem.AchievementTypes.Summons 
+                    : AchievementSystem.AchievementTypes.Attacks, 1);
 
-        public void IncreaseHeroDeaths(Hero hero) => UpdateAchievement(hero, AchievementSystem.AchievementTypes.Deaths, 1);
+        public void IncreaseHeroDeaths(Hero hero) 
+            => UpdateAchievement(hero, AchievementSystem.AchievementTypes.Deaths, 1);
 
-        public void IncreaseTournamentLosses(Hero hero) => UpdateAchievement(hero, AchievementSystem.AchievementTypes.TotalTournamentLosses, 1);
+        public void IncreaseTournamentLosses(Hero hero) 
+            => UpdateAchievement(hero, AchievementSystem.AchievementTypes.TotalTournamentLosses, 1);
 
-        public void IncreaseTournamentWins(Hero hero) => UpdateAchievement(hero, AchievementSystem.AchievementTypes.TotalTournamentWins, 1);
+        public void IncreaseTournamentWins(Hero hero) 
+            => UpdateAchievement(hero, AchievementSystem.AchievementTypes.TotalTournamentWins, 1);
 
-        public void IncreaseTournamentChampionships(Hero hero) => UpdateAchievement(hero, AchievementSystem.AchievementTypes.TotalTournamentChampionships, 1);
+        public void IncreaseTournamentChampionships(Hero hero) 
+            => UpdateAchievement(hero, AchievementSystem.AchievementTypes.TotalTournamentChampionships, 1);
         private void UpdateAchievement(Hero hero, AchievementSystem.AchievementTypes achievementType, int amount)
         {
             var achievementData = GetHeroData(hero).AchievementInfo;
 
             int value = achievementData.ModifyValue(achievementType, amount);
-            var achievement = BLTAdoptAHeroModule.CommonConfig.Achievements?.FirstOrDefault(k => k.Enabled && achievementType == k.Type && value == k.Value);
+            var achievement = BLTAdoptAHeroModule.CommonConfig.Achievements?
+                .FirstOrDefault(k => k.Enabled && achievementType == k.Type && value == k.Value);
             if (achievement != null && !achievementData.Achievements.Contains(achievement.ID))
             {
                 string message = achievement.NotificationText
@@ -600,33 +614,35 @@ namespace BLTAdoptAHero
         public IEnumerable<CharacterObject> GetRetinue(Hero hero) 
             => GetHeroData(hero).Retinue.Select(r => r.TroopType);
 
+        [CategoryOrder("Limits", 1)]
+        [CategoryOrder("Costs", 2)]
+        [CategoryOrder("Troop Types", 3)]
         public class RetinueSettings
         {
-            [Description("Maximum number of units in the retinue. " +
-                         "Recommend less than 20, summons to NOT obey the games unit limits."), 
+            [Category("Limits"), Description("Maximum number of units in the retinue. " +
+                                            "Recommend less than 20, summons to NOT obey the games unit limits."), 
              PropertyOrder(1), UsedImplicitly]
             public int MaxRetinueSize { get; set; } = 5;
 
-            [Description("Gold cost for Tier 1 retinue"), PropertyOrder(1), UsedImplicitly]
+            [Category("Costs"), Description("Gold cost for Tier 1 retinue"), PropertyOrder(1), UsedImplicitly]
             public int CostTier1 { get; set; } = 25000;
 
-            [Description("Gold cost for Tier 2 retinue"), PropertyOrder(2), UsedImplicitly]
+            [Category("Costs"), Description("Gold cost for Tier 2 retinue"), PropertyOrder(2), UsedImplicitly]
             public int CostTier2 { get; set; } = 50000;
 
-            [Description("Gold cost for Tier 3 retinue"), PropertyOrder(3), UsedImplicitly]
+            [Category("Costs"), Description("Gold cost for Tier 3 retinue"), PropertyOrder(3), UsedImplicitly]
             public int CostTier3 { get; set; } = 100000;
 
-            [Description("Gold cost for Tier 4 retinue"), PropertyOrder(4), UsedImplicitly]
+            [Category("Costs"), Description("Gold cost for Tier 4 retinue"), PropertyOrder(4), UsedImplicitly]
             public int CostTier4 { get; set; } = 175000;
 
-            [Description("Gold cost for Tier 5 retinue"), PropertyOrder(5), UsedImplicitly]
+            [Category("Costs"), Description("Gold cost for Tier 5 retinue"), PropertyOrder(5), UsedImplicitly]
             public int CostTier5 { get; set; } = 275000;
 
-            [Description("Gold cost for Tier 6 retinue"), PropertyOrder(6), UsedImplicitly]
+            [Category("Costs"), Description("Gold cost for Tier 6 retinue"), PropertyOrder(6), UsedImplicitly]
             public int CostTier6 { get; set; } = 400000;
-            
+
             // etc..
-            
             public int GetTierCost(int tier)
             {
                 return tier switch
@@ -641,24 +657,26 @@ namespace BLTAdoptAHero
                 };
             }
 
-            [Description("Whether to use the adopted hero's culture (if not enabled then a random one is used)"),
-             PropertyOrder(4)]
+            [Category("Troop Types"), 
+             Description("Whether to use the adopted hero's culture (if not enabled then a random one is used)"),
+             PropertyOrder(1), UsedImplicitly]
             public bool UseHeroesCultureUnits { get; set; } = true;
 
-            [Description("Whether to allow bandit units when UseHeroesCultureUnits is disabled"), PropertyOrder(4)]
+            [Category("Troop Types"), 
+             Description("Whether to allow bandit units when UseHeroesCultureUnits is disabled"), 
+             PropertyOrder(2), UsedImplicitly]
             public bool IncludeBanditUnits { get; set; } = false;
 
-            [Description("Whether to allow basic troops"), PropertyOrder(5)]
+            [Category("Troop Types"), Description("Whether to allow basic troops"), PropertyOrder(3), UsedImplicitly]
             public bool UseBasicTroops { get; set; } = true;
-            
-            [Description("Whether to allow elite troops"), PropertyOrder(5)]
+
+            [Category("Troop Types"), Description("Whether to allow elite troops"), PropertyOrder(4), UsedImplicitly]
             public bool UseEliteTroops { get; set; } = true;
         }
 
         public (bool success, string status) UpgradeRetinue(Hero hero, RetinueSettings settings)
         {
             // Somewhat based on RecruitmentCampaignBehavior.UpdateVolunteersOfNotables
-            
             var heroRetinue = GetHeroData(hero).Retinue;
             
             // first fill in any missing ones
@@ -718,7 +736,6 @@ namespace BLTAdoptAHero
             }
             return (false, $"Can't upgrade retinue any further!");
         }
-
         #endregion
 
         #region Helper Functions
