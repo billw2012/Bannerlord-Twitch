@@ -10,11 +10,12 @@ namespace BLTAdoptAHero
 {
     [CategoryOrder("General", 1)]
     [CategoryOrder("Equipment", 2)]
-    [CategoryOrder("Betting", 3)]
-    [CategoryOrder("Match Rewards", 4)]
-    [CategoryOrder("Prize", 5)]
-    [CategoryOrder("Prize Tier", 6)]
-    [CategoryOrder("Custom Prize", 7)]
+    [CategoryOrder("Match Rewards", 3)]
+    [CategoryOrder("Rewards", 4)]
+    [CategoryOrder("Betting", 5)]
+    [CategoryOrder("Prize", 6)]
+    [CategoryOrder("Prize Tier", 7)]
+    [CategoryOrder("Custom Prize", 8)]
     internal class GlobalTournamentConfig
     {
         private const string ID = "Adopt A Hero - Tournament Config";
