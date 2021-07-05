@@ -27,7 +27,6 @@ namespace BLTBuffet
         public static void GetAttackCollisionResultsPostfix(Mission __instance, Agent attackerAgent, Agent victimAgent, ref AttackCollisionData attackCollisionData)
         {
             CharacterEffect.BLTEffectsBehaviour.Get().ApplyHitDamage(attackerAgent, victimAgent, ref attackCollisionData);
-            BLTHeroPowersMissionBehavior.Current?.ApplyHitDamage(attackerAgent, victimAgent, ref attackCollisionData);
         }
 
         // [UsedImplicitly]
