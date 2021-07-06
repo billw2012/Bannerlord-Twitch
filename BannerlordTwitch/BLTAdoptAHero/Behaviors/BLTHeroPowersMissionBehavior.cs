@@ -213,6 +213,9 @@ namespace BLTAdoptAHero
 
         private void ApplyHitDamage(Agent attackerAgent, Agent victimAgent, ref AttackCollisionData attackCollisionData)
         {
+            if (attackerAgent?.IsMount == true)
+                attackerAgent = attackerAgent.RiderAgent;
+
             var attackerHero = attackerAgent?.GetAdoptedHero();
             var victimHero = victimAgent?.GetAdoptedHero();
 

@@ -905,6 +905,29 @@ GlobalConfigs:
       Type: 6df1d8d6-02c6-4d30-8d12-cce24077a4aa
       ID: 20f6817e-8f45-4dc3-a513-77707fb9c96d
       Name: Charge
+    - DamageToMultiply: 1
+      DamageToAdd: 0
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: false
+      Melee: false
+      Charge: true
+      AreaOfEffectOnlyOnHit: true
+      AreaOfEffect: 2
+      AreaOfEffectDamage: 25
+      AreaOfEffectMaxAgents: 4
+      AreaOfEffectDamageType: Blunt
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      Type: 378648b6-5586-4812-ad08-22da6374440c
+      ID: 6ad716bb-76e1-4cb1-9601-85f81f5d5425
+      Name: Charge AoE
     - Modifiers:
         Scale: 1
         ApplyToMount: true
@@ -1097,7 +1120,7 @@ GlobalConfigs:
       ActivePower:
         Name: Trample
         Power1: 20f6817e-8f45-4dc3-a513-77707fb9c96d
-        Power2: 00000000-0000-0000-0000-000000000000
+        Power2: 6ad716bb-76e1-4cb1-9601-85f81f5d5425
         Power3: 00000000-0000-0000-0000-000000000000
         ActivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll
