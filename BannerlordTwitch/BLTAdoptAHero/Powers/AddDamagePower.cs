@@ -179,7 +179,7 @@ namespace BLTAdoptAHero.Powers
             var parts = new List<string>();
             if (DamageToMultiply != 1)
             {
-                parts.Add($"x{DamageToMultiply:0.0} ({DamageToMultiply * 100:0.0}%) health");
+                parts.Add($"x{DamageToMultiply:0.00} ({DamageToMultiply * 100:0.0}%) health");
             }
             if (DamageToAdd != 0)
             {

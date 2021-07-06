@@ -504,7 +504,7 @@ namespace BLTAdoptAHero
                                         {
                                             int newGold = BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, actualGold);
                                             results.Add(finalRewardScaling != 1
-                                                ? $"{Naming.Inc}{actualGold}{Naming.Gold} (x{finalRewardScaling:0.0})"
+                                                ? $"{Naming.Inc}{actualGold}{Naming.Gold} (x{finalRewardScaling:0.00})"
                                                 : $"{Naming.Inc}{actualGold}{Naming.Gold}");
                                         }
 
@@ -516,7 +516,7 @@ namespace BLTAdoptAHero
                                             if (success)
                                             {
                                                 results.Add(finalRewardScaling != 1
-                                                    ? $"{description} (x{finalRewardScaling:0.0})"
+                                                    ? $"{description} (x{finalRewardScaling:0.00})"
                                                     : description);
                                             }
                                         }
@@ -538,7 +538,7 @@ namespace BLTAdoptAHero
                                             if (success)
                                             {
                                                 results.Add(finalRewardScaling != 1
-                                                    ? $"{description} (x{finalRewardScaling:0.0})"
+                                                    ? $"{description} (x{finalRewardScaling:0.00})"
                                                     : description);
                                             }
                                         }

@@ -23,7 +23,7 @@ namespace BLTAdoptAHero.Powers
             AttackCollisionDataRef attackCollisionData)
         {
             int damage = (int) (attackCollisionData.Data.InflictedDamage * FractionOfDamageToReflect);
-            if (damage > 0)
+            if (damage > 0 && attackerAgent != null && attackerAgent != agent)
             {
                 var blow = new Blow(agent.Index)
                 {
@@ -39,12 +39,12 @@ namespace BLTAdoptAHero.Powers
                 blow.SwingDirection.Normalize();
                 blow.Direction = blow.SwingDirection;
                 blow.DamageCalculated = true;
-                agent.RegisterBlow(blow);
+                attackerAgent.RegisterBlow(blow);
             }
         }
 
         public override string ToString() 
-            => $"{Name}: reflect x{FractionOfDamageToReflect:0.0} ({FractionOfDamageToReflect * 100:0.0}%) of damage dealt";
+            => $"{Name}: reflect x{FractionOfDamageToReflect:0.00} ({FractionOfDamageToReflect * 100:0.0}%) of damage dealt";
 
         void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers) => OnActivation(hero, handlers);
         protected override void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers,

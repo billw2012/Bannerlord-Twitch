@@ -41,6 +41,6 @@ namespace BLTAdoptAHero.Powers
         }
 
         public override string ToString() 
-            => $"{Name}: absorb x{FractionOfDamageToAbsorb:0.0} ({FractionOfDamageToAbsorb * 100:0.0}%) damage dealt as HP";
+            => $"{Name}: absorb x{FractionOfDamageToAbsorb:0.00} ({FractionOfDamageToAbsorb * 100:0.0}%) damage dealt as HP";
     }
 }

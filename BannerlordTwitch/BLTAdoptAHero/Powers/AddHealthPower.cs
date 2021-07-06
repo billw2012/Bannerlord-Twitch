@@ -41,7 +41,7 @@ namespace BLTAdoptAHero.Powers
             var parts = new List<string>();
             if (HealthToMultiply != 1)
             {
-                parts.Add($"x{HealthToMultiply:0.0} ({HealthToMultiply * 100:0.0}%) health");
+                parts.Add($"x{HealthToMultiply:0.00} ({HealthToMultiply * 100:0.0}%) health");
             }
             if (HealthToAdd != 0)
             {

@@ -872,7 +872,7 @@ GlobalConfigs:
       Type: 378648b6-5586-4812-ad08-22da6374440c
       ID: 6a36fedb-0b2d-459c-b06b-c4230327589b
       Name: Heavy Hitting
-    - FractionOfDamageToReflect: 0.150000006
+    - FractionOfDamageToReflect: 0.25
       PowerDurationSeconds: 120
       Pfx: []
       Type: ffe07da3-e977-42d8-80ca-5dfff66123eb
