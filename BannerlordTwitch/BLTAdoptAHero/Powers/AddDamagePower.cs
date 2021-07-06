@@ -120,18 +120,20 @@ namespace BLTAdoptAHero.Powers
         {
 	        if (Ranged && !AreaOfEffectOnlyOnHit)
 	        {
-		        DoAoE(attackerAgent, attachedAgent, attachLocalFrame);
+		        DoAoE(attackerAgent, attachedAgent, 
+			        attachedAgent?.Frame.TransformToParent(attachLocalFrame) ?? attachLocalFrame);
 	        }
         }
 
-        private void DoAoE(Agent attackerAgent, Agent attackedAgent, MatrixFrame hitLocalFrame)
+        private void DoAoE(Agent attackerAgent, Agent attackedAgent, MatrixFrame globalFrame)
         {
-	        HitEffect.Trigger(hitLocalFrame);
+	        HitEffect.Trigger(globalFrame);
 
 	        if (AreaOfEffect > 0 && AreaOfEffectDamage > 0)
 	        {
-		        DoAoEDamage(attackerAgent, new() {attackerAgent, attackedAgent}, AreaOfEffectMaxAgents, AreaOfEffectDamage, AreaOfEffect,
-			        hitLocalFrame.origin, AreaOfEffectDamageType);
+		        DoAoEDamage(attackerAgent, new() {attackerAgent, attackedAgent}, 
+			        AreaOfEffectMaxAgents, AreaOfEffectDamage, AreaOfEffect, 
+			        globalFrame.origin, AreaOfEffectDamageType);
 	        }
         }
 
