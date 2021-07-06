@@ -6,6 +6,7 @@ using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.UI;
+using BLTAdoptAHero.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
 using SandBox.TournamentMissions.Missions;
@@ -339,7 +340,7 @@ namespace BLTAdoptAHero
             {
                 // Get the highest tier we can for the weapon type
                 var item = EquipHero.FindRandomTieredEquipment(5, hero, EquipHero.FindFlags.IgnoreAbility,
-                    o => o.IsEquipmentType(weaponType) && EquipHero.UsableWeaponFilter(o, heroClass));
+                    o => o.IsEquipmentType(weaponType) && EquipHero.IsWeaponUsableByHeroAndClass(hero, o, heroClass));
                 return item;
             }
             else
@@ -493,11 +494,13 @@ namespace BLTAdoptAHero
                     Log.Error($"Failed to generate prize for {h.Name}");
                 }
             }
+            
+            GameStateManager.Current?.UpdateInventoryUI();
 
-            if (GameStateManager.Current.ActiveState is InventoryState inventoryState)
-            {
-                inventoryState.InventoryLogic?.Reset();
-            }
+            // if (GameStateManager.Current.ActiveState is InventoryState inventoryState)
+            // {
+            //     inventoryState.InventoryLogic?.Reset();
+            // }
 
             return "done";
         }

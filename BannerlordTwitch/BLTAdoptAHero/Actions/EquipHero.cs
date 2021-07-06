@@ -7,6 +7,7 @@ using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Annotations;
+using BLTAdoptAHero.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -113,6 +114,9 @@ namespace BLTAdoptAHero
             BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentClass(adoptedHero, charClass);
             BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -cost, isSpending: true);
 
+            // Need to ensure this will not reset the players interactions
+            // GameStateManager.Current?.UpdateInventoryUI(adoptedHero);
+            
             onSuccess(settings.ReequipInsteadOfUpgrade
                 ? $"Re-equipped Tier {targetTier + 1} ({charClass?.Name ?? "No Class"})"
                 : $"Equipped Tier {targetTier + 1} ({charClass?.Name ?? "No Class"})");
@@ -129,7 +133,7 @@ namespace BLTAdoptAHero
                 adoptedHero.CivilianEquipment[slot.index] = EquipmentElement.Invalid;
             }
         }
-        
+
         public static int CalculateHeroEquipmentTier(Hero hero) =>
             // The Mode of the tiers of the equipment
             hero.BattleEquipment.YieldEquipmentSlots()
@@ -140,27 +144,22 @@ namespace BLTAdoptAHero
                 .OrderByDescending(g => g.Count())
                 .FirstOrDefault()?
                 .Key ?? -1;
-        
-        public static bool PrimaryWeaponFilter(ItemObject o, HeroClassDef heroClass = null) =>
-            o.Type is ItemObject.ItemTypeEnum.OneHandedWeapon 
-                or ItemObject.ItemTypeEnum.TwoHandedWeapon 
-                or ItemObject.ItemTypeEnum.Polearm 
-                or ItemObject.ItemTypeEnum.Bow
-                or ItemObject.ItemTypeEnum.Crossbow 
-                or ItemObject.ItemTypeEnum.Thrown 
-            && UsableWeaponFilter(o, heroClass);
 
-        public static bool UsableWeaponFilter(ItemObject o, HeroClassDef heroClass = null) =>
-            heroClass?.Mounted != true 
-            || o.PrimaryWeapon == null 
-            || !MBItem.GetItemUsageSetFlags(o.PrimaryWeapon.ItemUsage).HasFlag(ItemObject.ItemUsageSetFlags.RequiresNoMount);
-        
+        public static bool IsWeaponUsableByHeroAndClass(Hero hero, ItemObject o, HeroClassDef heroClass) =>
+            heroClass?.Mounted != true
+            || o.PrimaryWeapon == null
+            || !MBItem.GetItemUsageSetFlags(o.PrimaryWeapon.ItemUsage).HasFlag(ItemObject.ItemUsageSetFlags.RequiresNoMount)
+            || o.Type == ItemObject.ItemTypeEnum.Bow && hero?.CharacterObject?.GetPerkValue(DefaultPerks.Bow.HorseMaster) == true
+            || o.Type == ItemObject.ItemTypeEnum.Crossbow && hero?.CharacterObject?.GetPerkValue(DefaultPerks.Crossbow.MountedCrossbowman) == true
+            ;
+
         public static void UpgradeEquipment(Hero adoptedHero, int targetTier, HeroClassDef classDef, bool keepBetter)
         {
             // Take existing equipment and the heroes custom items, so we can (re)use them if appropriate
             var availableItems = adoptedHero.BattleEquipment.YieldEquipmentSlots()
                 .Select(e => e.element).Where(i => !i.IsEmpty)
                 .Concat(BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero))
+                .Where(e => IsWeaponUsableByHeroAndClass(adoptedHero, e.Item, classDef))
                 .ToList();
 
             // Clear the weapon slots
@@ -174,10 +173,12 @@ namespace BLTAdoptAHero
                 var oldEquipment = availableItems.FirstOrDefault(i =>
                     (keepBetter && i.Item.Tier >= (ItemObject.ItemTiers) targetTier 
                         || BLTCustomItemsCampaignBehavior.Current.IsRegistered(i.ItemModifier))
-                    && filter?.Invoke(i.Item) != false);
+                    && filter?.Invoke(i.Item) != false
+                    );
                 if (!oldEquipment.IsEmpty)
                     return oldEquipment;
-                var foundItem = FindRandomTieredEquipment(targetTier, adoptedHero, FindFlags.None, filter); 
+                var foundItem = FindRandomTieredEquipment(targetTier, adoptedHero, FindFlags.None, 
+                    o => filter?.Invoke(o) != false && IsWeaponUsableByHeroAndClass(adoptedHero, o, classDef)); 
                 if (foundItem == null)
                     return default;
                 return new(foundItem);
@@ -202,6 +203,14 @@ namespace BLTAdoptAHero
             }
             else
             {
+                static bool IsPrimaryWeaponItemType(ItemObject o) =>
+                    o.Type is ItemObject.ItemTypeEnum.OneHandedWeapon 
+                        or ItemObject.ItemTypeEnum.TwoHandedWeapon 
+                        or ItemObject.ItemTypeEnum.Polearm 
+                        or ItemObject.ItemTypeEnum.Bow
+                        or ItemObject.ItemTypeEnum.Crossbow 
+                        or ItemObject.ItemTypeEnum.Thrown;
+                
                 // Without class specified, we instead use some heuristics based on the heroes top weapon skills
                 var addedWeapons = new List<EquipmentElement>();
                 var currSlot = EquipmentIndex.WeaponItemBeginSlot;
@@ -213,7 +222,7 @@ namespace BLTAdoptAHero
 
                 EquipmentElement primaryAmmo = default;
                 foreach (var weapon in weaponSkills
-                    .Select(s => FindNewEquipmentBySkill(s.skill, e => PrimaryWeaponFilter(e)))
+                    .Select(s => FindNewEquipmentBySkill(s.skill, IsPrimaryWeaponItemType))
                     .Where(e => !e.IsEmpty)
                 )
                 {
@@ -255,7 +264,7 @@ namespace BLTAdoptAHero
                         .OrderByDescending(s => adoptedHero.GetSkillValue(s.skill))
                         .Select(s => FindNewEquipmentBySkill(
                             s.skill, 
-                            o => PrimaryWeaponFilter(o) && WeaponIsSwingable(o)))
+                            o => IsPrimaryWeaponItemType(o) && WeaponIsSwingable(o)))
                         .FirstOrDefault(w => !w.IsEmpty);
                     
                     if (!weapon.IsEmpty)

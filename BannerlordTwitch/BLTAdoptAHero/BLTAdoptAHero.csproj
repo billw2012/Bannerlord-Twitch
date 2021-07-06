@@ -198,6 +198,7 @@
         <Compile Include="Util\AgentExtensions.cs" />
         <Compile Include="Util\ConsoleCommands.cs" />
         <Compile Include="Util\HeroExtensions.cs" />
+        <Compile Include="Util\UIExtensions.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
