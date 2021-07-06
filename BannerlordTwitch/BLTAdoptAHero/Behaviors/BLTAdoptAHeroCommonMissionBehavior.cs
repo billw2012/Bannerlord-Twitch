@@ -342,11 +342,13 @@ namespace BLTAdoptAHero
             var agent = summonState?.CurrentAgent ??
                         Mission.Current.Agents.FirstOrDefault(a => a.Character == hero.CharacterObject);
 
+            var state = summonState?.State ?? agent?.State ?? AgentState.Killed;
             string name = hero.FirstName.Raw();
-            float HP = agent?.Health ?? 0;
+            float HP = agent != null && state == AgentState.Active? agent.Health : 0;
             float cooldownFractionRemaining = 1 - summonState?.CoolDownFraction ?? 0;
             float cooldownSecondsRemaining = summonState?.CooldownRemaining ?? 0;
-            
+            float activePowerFractionRemaining = state is AgentState.Active ? ActivePowerFractionRemaining(hero) : 0;
+
             Log.RunInfoPanelUpdate(() =>
             {
                 var hm = heroesViewModel.FirstOrDefault(h => h.Name == name);
@@ -355,11 +357,13 @@ namespace BLTAdoptAHero
                     hm.HP = HP;
                     hm.CooldownFractionRemaining = cooldownFractionRemaining;
                     hm.CooldownSecondsRemaining = cooldownSecondsRemaining;
+                    hm.ActivePowerFractionRemaining = activePowerFractionRemaining;
                 }
             });
         }
 
-        private static bool IsHeroOnPlayerSide(Hero hero) => hero.PartyBelongedTo?.MapEventSide?.MissionSide == PlayerEncounter.Current?.PlayerSide;
+        private static bool IsHeroOnPlayerSide(Hero hero) 
+            => hero.PartyBelongedTo?.MapEventSide?.MissionSide == PlayerEncounter.Current?.PlayerSide;
 
         private void UpdateHeroVM(Hero hero)
         {
@@ -374,13 +378,13 @@ namespace BLTAdoptAHero
 
             var agent = summonState?.CurrentAgent ?? hero.GetAgent();
 
-            var state = summonState?.State ?? agent?.State ?? AgentState.None;
+            var state = summonState?.State ?? agent?.State ?? AgentState.Killed;
             var heroModel = new HeroViewModel
             {
                 Name = hero.FirstName.Raw(),
                 IsPlayerSide = summonState?.WasPlayerSide ?? IsHeroOnPlayerSide(hero),
                 MaxHP = agent?.HealthLimit ?? 100,
-                HP = agent?.Health ?? 0,
+                HP = agent != null && state == AgentState.Active? agent.Health : 0,
                 IsRouted = state is AgentState.Routed,
                 IsUnconscious = state is AgentState.Unconscious,
                 IsKilled = state is AgentState.Killed,
@@ -391,6 +395,7 @@ namespace BLTAdoptAHero
                 CooldownSecondsRemaining = summonState?.CooldownRemaining ?? 0,
                 Kills = heroState.Kills,
                 RetinueKills = heroState.RetinueKills,
+                ActivePowerFractionRemaining = state is AgentState.Active ? ActivePowerFractionRemaining(hero) : 0,
             };
             
             bool shouldRemove = agent?.State is not AgentState.Active && MissionHelpers.InTournament();
@@ -426,6 +431,13 @@ namespace BLTAdoptAHero
                     heroesViewModel.Add(heroModel);
                 }
             });
+        }
+
+        private static float ActivePowerFractionRemaining(Hero hero)
+        {
+            var classDef = BLTAdoptAHeroCampaignBehavior.Current?.GetClass(hero);
+            (float duration, float remaining) = classDef?.ActivePower?.DurationRemaining(hero) ?? (1, 0);
+            return duration == 0 ? 0 : remaining / duration;
         }
         // public static string KillStateVerb(AgentState state) =>
         //     state switch

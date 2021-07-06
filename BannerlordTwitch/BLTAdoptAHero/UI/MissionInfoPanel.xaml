@@ -25,22 +25,27 @@
                 <local:HeroViewModel Name="Test" IsPlayerSide="true" MaxHP="100" HP="100" Kills="12"
                                      Retinue="0" RetinueKills="42" CooldownFractionRemaining="0"
                                      CooldownSecondsRemaining="2.5"
+                                     ActivePowerFractionRemaining="0.1"
                                      GoldEarned="0" XPEarned="65000"/>
                 <local:HeroViewModel Name="ALongViewerName" IsPlayerSide="true" MaxHP="100" HP="75" Kills="0" 
                                      Retinue="50" RetinueKills="0" CooldownFractionRemaining="1"
                                      CooldownSecondsRemaining="1"
+                                     ActivePowerFractionRemaining="0"
                                      GoldEarned="126" XPEarned="12345"/>
                 <local:HeroViewModel Name="AnotherViewer" IsPlayerSide="true" MaxHP="100" HP="50" Kills="0" 
                                      Retinue="1" RetinueKills="5" CooldownFractionRemaining="0.2"
                                      CooldownSecondsRemaining="2.9"
+                                     ActivePowerFractionRemaining="1"
                                      GoldEarned="6231"  XPEarned="0"/>
                 <local:HeroViewModel Name="MyViewerMan" IsPlayerSide="true" MaxHP="100" HP="50" Kills="101" 
                                      Retinue="1" RetinueKills="42" CooldownFractionRemaining="1"
                                      CooldownSecondsRemaining="260"
+                                     ActivePowerFractionRemaining="0.5"
                                      GoldEarned="1237562" XPEarned="5212"/>
                 <local:HeroViewModel Name="MyViewerMan" IsPlayerSide="true" MaxHP="100" HP="50" Kills="0" 
                                      Retinue="0" RetinueKills="0" CooldownFractionRemaining="0"
                                      CooldownSecondsRemaining="0"
+                                     ActivePowerFractionRemaining="0.75"
                                      GoldEarned="0" XPEarned="0"/>
             </x:Array>
         </ItemsControl.ItemsSource>
@@ -51,50 +56,36 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
                     <!-- Health bar -->
-                    <ProgressBar
-                        Grid.Row="0"
-                        Grid.RowSpan="2"
-                        Value="{Binding HP}" Maximum="{Binding MaxHP}"
-                        Background="{Binding ProgressBarBackground}"
-                        Foreground="{Binding ProgressBarForeground}"
-                        BorderThickness="0"
-                        Margin="2 4 2 2"
-                        Padding="0"
-                        VerticalAlignment="Stretch">
-                         <ProgressBar.Style>
-                            <Style TargetType="{x:Type ProgressBar}">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type ProgressBar}">
-                                            <Grid x:Name="TemplateRoot">
-                                                <Border x:Name="OuterBorder" 
-                                                        BorderBrush="{TemplateBinding BorderBrush}" 
-                                                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
-                                                    <Grid>
-                                                        <Border x:Name="MaskBorder" Background="{TemplateBinding Background}" CornerRadius="4.5" />
-                                                        <Grid x:Name="MainGrid">
-                                                            <Grid.OpacityMask>
-                                                                <VisualBrush Visual="{Binding ElementName=MaskBorder}" />
-                                                            </Grid.OpacityMask>
-                                                            <Rectangle x:Name="PART_Track" Fill="{TemplateBinding Background}" />
-                                                            <Border x:Name="PART_Indicator" HorizontalAlignment="Left">                                 
-                                                                <Grid x:Name="Foreground">
-                                                                    <Rectangle x:Name="Indicator" Fill="{TemplateBinding Foreground}" />
-                                                                </Grid>
-                                                            </Border>                                                                   
-                                                        </Grid>                                                                                                            
-                                                    </Grid>                         
-                                                </Border>                       
-                                            </Grid> 
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </ProgressBar.Style>
-                    </ProgressBar>
-
+                    <Border BorderBrush="Transparent" Grid.Row="0" Grid.RowSpan="2" Margin="2 4 2 2">
+                        <Grid>
+                            <Border x:Name="MaskBorder" Background="{Binding ProgressBarBackground}"
+                                    CornerRadius="4.5" BorderThickness="0"/>
+                            <Grid>
+                                <Grid.OpacityMask>
+                                    <VisualBrush Visual="{Binding ElementName=MaskBorder}" />
+                                </Grid.OpacityMask>
+                                <ProgressBar
+                                    Value="{Binding HP}" Maximum="{Binding MaxHP}"
+                                    Background="{Binding ProgressBarBackground}"
+                                    Foreground="{Binding ProgressBarForeground}"
+                                    BorderThickness="0"
+                                    
+                                    Padding="0"
+                                    VerticalAlignment="Stretch"/>
+                                <ProgressBar
+                                    HorizontalAlignment="Right"
+                                    Width="6"
+                                    Orientation="Vertical"
+                                    Value="{Binding ActivePowerFractionRemaining}" Maximum="1"
+                                    Background="Transparent"
+                                    Foreground="Orange"
+                                    BorderThickness="0"
+                                    Padding="0"
+                                    VerticalAlignment="Stretch"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
                     <!-- Bottom row : its first to ensure it renders over the name (specifically that the 3/2/1 countdown does) -->
                     <Grid Grid.Row="1" Margin="4 -4 4 3">
                         <Grid.ColumnDefinitions>

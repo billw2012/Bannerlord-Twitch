@@ -117,7 +117,7 @@ namespace BLTAdoptAHero.Behaviors
         }
 
         public Brush TextColor => IsRouted
-            ? Brushes.Yellow
+            ? Brushes.Gold
             : IsKilled
                 ? Brushes.Crimson
                 : IsUnconscious
@@ -132,6 +132,8 @@ namespace BLTAdoptAHero.Behaviors
             ? new SolidColorBrush(Color.FromArgb(0xFF, 0x20, 0x20, 0x50))
             : new SolidColorBrush(Color.FromArgb(0xFF, 0x40, 0x11, 0x22))
         ;
+        
+        public float ActivePowerFractionRemaining { get; set; }
         
         [UsedImplicitly]
         #pragma warning disable 0067
