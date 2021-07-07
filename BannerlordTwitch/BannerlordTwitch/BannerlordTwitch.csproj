@@ -231,7 +231,6 @@
     <Compile Include="Actions\IRewardHandler.cs" />
     <Compile Include="Actions\ActionHandlerBase.cs" />
     <Compile Include="Actions\ActionManager.cs" />
-    <Compile Include="Actions\ActionManager.Documentation.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="BLTModule.cs" />
@@ -242,6 +241,7 @@
     <Compile Include="Twitch\TwitchService.Bot.cs" />
     <Compile Include="Twitch\TwitchService.cs" />
     <Compile Include="UI\MultilineTextBoxEditor.cs" />
+    <Compile Include="Util\DocumentationGenerator.cs" />
     <Compile Include="Util\GameVersion.cs" />
     <Compile Include="Util\Assembly.cs" />
     <Compile Include="Util\AutoMissionBehavior.cs" />
@@ -260,6 +260,7 @@
     <Compile Include="Util\RangeInt.cs" />
     <Compile Include="Util\SoundEffectItemSource.cs" />
     <Compile Include="Util\StaticRandom.cs" />
+    <Compile Include="Util\StringHelpers.cs" />
     <Compile Include="Util\YamlHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -270,6 +271,7 @@
     <Content Include="Bannerlord-Twitch-Documentation.css" />
     <Content Include="Bannerlord-Twitch.schema.json" />
     <Content Include="Bannerlord-Twitch-v2.yaml" />
+    <Content Include="ClassExportExample.html" />
     <None Include="SubModule.xml" />
   </ItemGroup>
   <ItemGroup>

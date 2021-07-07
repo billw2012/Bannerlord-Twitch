@@ -10,7 +10,7 @@ using YamlDotNet.Serialization;
 
 namespace BannerlordTwitch.Rewards
 {
-    public static partial class ActionManager
+    public static class ActionManager
     {
         private static readonly Dictionary<string, IRewardHandler> rewardHandlers = new();
         private static readonly Dictionary<string, ICommandHandler> commandHandlers = new();

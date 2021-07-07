@@ -254,7 +254,7 @@ namespace BannerlordTwitch
         }
     }
 
-    public class Settings
+    public class Settings : IDocumentable
     {
         public List<Reward> Rewards { get; set; } = new ();
         [YamlIgnore]
@@ -389,6 +389,41 @@ namespace BannerlordTwitch
             {
                 config.OnSaving();
             }
+        }
+
+        public void GenerateDocumentation(IDocumentationGenerator generator)
+        {
+            generator.Div("commands", () =>
+            {
+                generator.H1("Commands");
+                generator.Table(() => {
+                    generator.TR(() => generator.TH("Command").TH("Description"));
+                    foreach (var d in this.Commands)
+                    {
+                        generator.TR(() => generator.TD(d.Name).TD(d.Help));
+                    }
+                });
+            });
+            generator.Br();
+            generator.Div("rewards", () =>
+            {
+                generator.H1("Channel Point Rewards");
+                generator.Table(() => {
+                    generator.TR(() => generator.TH("Command").TH("Description"));
+                    foreach (var r in this.Rewards)
+                    {
+                        generator.TR(() => generator.TD(r.RewardSpec.Title).TD(r.RewardSpec.Prompt));
+                    }
+                });
+            });
+            generator.Br();
+            generator.Div("global-configs", () =>
+            {
+                foreach (var g in this.GlobalConfigs.Select(c => c.Config).OfType<IDocumentable>())
+                {
+                    g.GenerateDocumentation(generator);
+                }
+            });
         }
     }
 }

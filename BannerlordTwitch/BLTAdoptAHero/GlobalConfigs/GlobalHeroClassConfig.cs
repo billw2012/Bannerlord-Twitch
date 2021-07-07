@@ -9,7 +9,7 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
-    internal class GlobalHeroClassConfig : IConfig
+    internal class GlobalHeroClassConfig : IConfig, IDocumentable
     {
         private const string ID = "Adopt A Hero - Class Config";
         internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalHeroClassConfig));
@@ -52,6 +52,20 @@ namespace BLTAdoptAHero
             {
                 c.OnEditing();
             }
+        }
+        #endregion
+
+        #region IDocumentationGenerator
+        public void GenerateDocumentation(IDocumentationGenerator generator)
+        {
+            generator.Div("class-config", () =>
+            {
+                generator.H1("Classes");
+                foreach (var cl in ClassDefs)
+                {
+                    cl.GenerateDocumentation(generator);
+                }
+            });
         }
         #endregion
     }

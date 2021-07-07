@@ -15,7 +15,7 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
-    public class HeroClassDef : IConfig
+    public class HeroClassDef : IConfig, IDocumentable
     {
         [ReadOnly(true), Annotations.UsedImplicitly]
         public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
@@ -114,7 +114,7 @@ namespace BLTAdoptAHero
             + (UseHorse ? " (Use Horse)" : "")
             + (UseCamel ? " (Use Camel)" : "");
 
-        public class PassivePowerGroup : IConfig
+        public class PassivePowerGroup : IConfig, IDocumentable
         {
             [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), Annotations.UsedImplicitly]
             public string Name { get; set; } = "Passive Power";
@@ -152,7 +152,7 @@ namespace BLTAdoptAHero
             }
             
             public override string ToString() => $"{Name} {string.Join(" ", Powers.Select(p => p.ToString()))}";
-            
+
             #region IConfig
             public void OnLoaded(Settings settings)
             {
@@ -161,9 +161,23 @@ namespace BLTAdoptAHero
             public void OnSaving() { }
             public void OnEditing() { }
             #endregion
+
+            #region IDocumentable
+            public void GenerateDocumentation(IDocumentationGenerator generator)
+            {
+                generator.Table("power", () =>
+                {
+                    generator.TR(() => generator.TD("Name").TD(Name));
+                    foreach ((var power, int i) in Powers.Select((power, i) => (power, i)))
+                    {
+                        generator.TR(() => generator.TD($"Effect {i + 1}").TD(power.ToString().SplitCamelCase()));
+                    }
+                });
+            }
+            #endregion
         }
 
-        public class ActivePowerGroup : IConfig
+        public class ActivePowerGroup : IConfig, IDocumentable
         {
             [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), Annotations.UsedImplicitly]
             public string Name { get; set; } = "Active Power";
@@ -263,6 +277,20 @@ namespace BLTAdoptAHero
             public void OnSaving() { }
             public void OnEditing() { }
             #endregion
+            
+            #region IDocumentable
+            public void GenerateDocumentation(IDocumentationGenerator generator)
+            {
+                generator.Table("power", () =>
+                {
+                    generator.TR(() => generator.TD("Name").TD(Name));
+                    foreach ((var power, int i) in Powers.Select((power, i) => (power, i)))
+                    {
+                        generator.TR(() => generator.TD($"Effect {i + 1}").TD(power.ToString().SplitCamelCase()));
+                    }
+                });
+            }
+            #endregion
         }
 
         #region ItemSource
@@ -305,6 +333,36 @@ namespace BLTAdoptAHero
         {
             PassivePower?.OnEditing();
             ActivePower?.OnEditing();
+        }
+        #endregion
+
+        #region IDocumentable
+        public void GenerateDocumentation(IDocumentationGenerator generator)
+        {
+            generator.H3(Name);
+            generator.Table("hero-class", () =>
+            {
+                generator.TR(() => generator.TD("Formation").TD(Formation));
+                foreach ((var type, int i) in Weapons.Select((type, i) => (type, i)))
+                {
+                    generator.TR(() => generator.TD($"Slot {i + 1}").TD(type.ToString().SplitCamelCase()));
+                }
+
+                if (Mounted)
+                {
+                    generator.TR(() =>
+                    {
+                        var types = new List<string>();
+                        if (UseHorse) types.Add("Horse");
+                        if (UseCamel) types.Add("Camel");
+                        generator.TD("Mount Type").TD(string.Join(", ", types));
+                    });
+                }
+                generator.TR(() 
+                    => generator.TD("Passive Power").TD(() => PassivePower.GenerateDocumentation(generator)));
+                generator.TR(() 
+                    => generator.TD("Active Power").TD(() => ActivePower.GenerateDocumentation(generator)));
+            });
         }
         #endregion
     }

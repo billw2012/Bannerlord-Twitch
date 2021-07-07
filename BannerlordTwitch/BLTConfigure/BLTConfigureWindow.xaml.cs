@@ -408,18 +408,12 @@ namespace BLTConfigure
             Process.Start(e.Uri.ToString());
         }
 
-        private static string SplitCamelCase(string input)
-        {
-            return System.Text.RegularExpressions.Regex.Replace(input, "([A-Z])", " $1", System.Text.RegularExpressions.RegexOptions.Compiled).Trim();
-        }
-
         private void PropertyGrid_OnSelectedObjectChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             //var grid = sender as PropertyGrid;
             //ExpandAndFixNames(grid.Properties);
         }
-
-
+        
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -444,8 +438,25 @@ namespace BLTConfigure
                 // ExpandAndFixNames(e.PropertyItem.Properties);
             }
 
-            e.PropertyItem.DisplayName = SplitCamelCase(e.PropertyItem.DisplayName);
+            e.PropertyItem.DisplayName = e.PropertyItem.DisplayName.SplitCamelCase();
             //throw new NotImplementedException();
+        }
+
+        private const string DocumentationFile = "Bannerlord-Twitch-Documentation.html";
+        
+        private void GenerateDocumentationButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var docs = new DocumentationGenerator();
+            docs.Document(EditedSettings);
+            docs.Save();
+        }
+
+        private void OpenGeneratedDocumentationButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if(File.Exists(DocumentationGenerator.DocumentationPath))
+            {
+                Process.Start(DocumentationGenerator.DocumentationPath);
+            }
         }
     }
     

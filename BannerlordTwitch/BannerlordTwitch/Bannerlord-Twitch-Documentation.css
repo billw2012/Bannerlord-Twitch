@@ -1,8 +1,8 @@
-﻿table {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
+﻿/*table {*/
+/*    width: 90%;*/
+/*    margin-left: 5%;*/
+/*    margin-right: 5%;*/
+/*}*/
 table, th, td {
     /*border: 0px solid black;*/
     border-collapse: collapse;
@@ -12,37 +12,61 @@ th, td {
     padding: 4px 10px;
     text-align: left;
 }
-table td:nth-child(1) {
-    width: 20%;
-}
-table td:nth-child(2) {
-    width: 10%;
-}
-table td:nth-child(3) {
-    width: 15%;
-}
-table td:nth-child(4) {
-    width: 40%;
-}
-.aclist td:nth-child(1) {
-    width: 30%;
-}
-.aclist td:nth-child(2) {
-    width: 70%;
-}
+/*table td:nth-child(1) {*/
+/*    width: 10em;*/
+/*}*/
+/*table td:nth-child(2) {*/
+/*    width: 10%;*/
+/*}*/
+/*table td:nth-child(3) {*/
+/*    width: 15%;*/
+/*}*/
+/*table td:nth-child(4) {*/
+/*    width: 40%;*/
+/*}*/
+/*.aclist td:nth-child(1) {*/
+/*    width: 30%;*/
+/*}*/
+/*.aclist td:nth-child(2) {*/
+/*    width: 70%;*/
+/*}*/
+/*table th:nth-child(even) {*/
+/*    background-color: #2a2a2a;*/
+/*}*/
+/*table th:nth-child(odd) {*/
+/*    background-color: #181818;*/
+/*}*/
+
 table tr:nth-child(even) {
-    background-color: #2a2a2a;
+    background-color: #262626;
 }
+
 table tr:nth-child(odd) {
-    background-color: #181818;
+    background-color: #222;
 }
+
 table th {
     background-color: #959595;
     color: #282828;
 }
+
+.rewards td:nth-child(1), .commands td:nth-child(1), .hero-class td:nth-child(1) {
+    width: 10em;
+    font-weight: bold;
+    color: cornflowerblue;
+}
+
+.power td:nth-child(1) {
+    width: 6em;
+    font-weight: normal;
+    color: #22863a;
+}
+
+
 h1, h2, h3, p {
     font-family: verdana, sans-serif;
 }
+
 a:link {
     color: aquamarine;
     text-decoration: none;

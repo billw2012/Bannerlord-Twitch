@@ -210,6 +210,15 @@
             </TabItem>
             <TabItem>
                 <TabItem.Header>
+                    <TextBlock Margin="10 2">Documentation</TextBlock>
+                </TabItem.Header>
+                <StackPanel>
+                    <Button Click="GenerateDocumentationButton_OnClick">Generate Documentation</Button>
+                    <Button Click="OpenGeneratedDocumentationButton_OnClick">Open Generated Documentation</Button>
+                </StackPanel>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
                     <TextBlock Margin="10 2">Authorize</TextBlock>
                 </TabItem.Header>
                 <StackPanel TextBlock.FontSize="15">

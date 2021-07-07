@@ -133,7 +133,6 @@ namespace BannerlordTwitch
 			});
 			overlayWindow.Dispatcher.InvokeShutdown();
 			thread.Join(TimeSpan.FromMilliseconds(500));
-			ActionManager.GenerateDocumentation();
 			base.OnSubModuleUnloaded();
 		}
 
