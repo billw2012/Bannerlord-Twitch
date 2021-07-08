@@ -3,6 +3,12 @@
 /*    margin-left: 5%;*/
 /*    margin-right: 5%;*/
 /*}*/
+
+table {
+    border: 1px solid black;
+    margin: 0.2em;
+}
+
 table, th, td {
     /*border: 0px solid black;*/
     border-collapse: collapse;
@@ -56,15 +62,28 @@ table th {
     color: cornflowerblue;
 }
 
+.equip-img {
+    width: 150px;
+    border-radius: 8px;
+}
+
 .power td:nth-child(1) {
     width: 6em;
     font-weight: normal;
     color: #22863a;
 }
 
-
-h1, h2, h3, p {
+p {
     font-family: verdana, sans-serif;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+h1, h2, h3 {
+    font-family: verdana, sans-serif;
+    text-transform: uppercase;
+    margin-top: 0.4em;
+    margin-bottom: 0.3em;
 }
 
 a:link {

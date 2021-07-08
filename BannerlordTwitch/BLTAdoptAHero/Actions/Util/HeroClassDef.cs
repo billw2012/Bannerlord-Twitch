@@ -6,10 +6,12 @@ using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Powers;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using TaleWorlds.MountAndBlade.View;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using YamlDotNet.Serialization;
 
@@ -165,14 +167,27 @@ namespace BLTAdoptAHero
             #region IDocumentable
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
-                generator.Table("power", () =>
+                generator.H3(Name);
+                foreach (var power in Powers)
                 {
-                    generator.TR(() => generator.TD("Name").TD(Name));
-                    foreach ((var power, int i) in Powers.Select((power, i) => (power, i)))
+                    if (power is IDocumentable docPower)
                     {
-                        generator.TR(() => generator.TD($"Effect {i + 1}").TD(power.ToString().SplitCamelCase()));
+                        docPower.GenerateDocumentation(generator);
                     }
-                });
+                    else
+                    {
+                        generator.P(power.ToString());
+                    }
+                }
+                
+                // generator.Table("power", () =>
+                // {
+                //     generator.TR(() => generator.TD("Name").TD(Name));
+                //     foreach ((var power, int i) in Powers.Select((power, i) => (power, i)))
+                //     {
+                //         generator.TR(() => generator.TD($"Effect {i + 1}").TD(power.ToString().SplitCamelCase()));
+                //     }
+                // });
             }
             #endregion
         }
@@ -281,14 +296,18 @@ namespace BLTAdoptAHero
             #region IDocumentable
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
-                generator.Table("power", () =>
+                generator.H3(Name);
+                foreach (var power in Powers)
                 {
-                    generator.TR(() => generator.TD("Name").TD(Name));
-                    foreach ((var power, int i) in Powers.Select((power, i) => (power, i)))
+                    if (power is IDocumentable docPower)
                     {
-                        generator.TR(() => generator.TD($"Effect {i + 1}").TD(power.ToString().SplitCamelCase()));
+                        docPower.GenerateDocumentation(generator);
                     }
-                });
+                    else
+                    {
+                        generator.P(power.ToString());
+                    }
+                }
             }
             #endregion
         }
@@ -340,24 +359,69 @@ namespace BLTAdoptAHero
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
             generator.H3(Name);
+
             generator.Table("hero-class", () =>
             {
                 generator.TR(() => generator.TD("Formation").TD(Formation));
-                foreach ((var type, int i) in Weapons.Select((type, i) => (type, i)))
-                {
-                    generator.TR(() => generator.TD($"Slot {i + 1}").TD(type.ToString().SplitCamelCase()));
-                }
+            });
 
-                if (Mounted)
+            generator.Table("hero-class", () =>
+            {
+                generator.TR(() =>
+                {
+                    generator.TD("Equipment");
+                    foreach ((var type, int i) in Weapons.Select((type, i) => (type, i)))
+                    {
+                        generator.TD(() =>
+                        {
+                            generator.P(type.ToString().SplitCamelCase());
+                            var exampleItem = HeroHelpers.AllItems.FirstOrDefault(item => item.IsEquipmentType(type));
+                            if (exampleItem != null)
+                                generator.Img("equip-img", exampleItem);
+                        });
+                    }
+                });
+            });
+
+            if (Mounted)
+            {
+                generator.Table("hero-class", () =>
                 {
                     generator.TR(() =>
                     {
-                        var types = new List<string>();
-                        if (UseHorse) types.Add("Horse");
-                        if (UseCamel) types.Add("Camel");
-                        generator.TD("Mount Type").TD(string.Join(", ", types));
+                        generator.TD("Equipment");
+                        if (UseHorse)
+                        {
+                            generator.TD(() =>
+                            {
+                                generator.P("Horse");
+                                var exampleItem = HeroHelpers.AllItems
+                                    .FirstOrDefault(item 
+                                        => item.Type == ItemObject.ItemTypeEnum.Horse
+                                           && item.HorseComponent.Monster.FamilyType == (int) EquipHero.MountFamilyType.horse);
+                                if (exampleItem != null)
+                                    generator.Img("equip-img", exampleItem);
+                            });
+                        }
+                        if (UseCamel)
+                        {
+                            generator.TD(() =>
+                            {
+                                generator.P("Camel");
+                                var exampleItem = HeroHelpers.AllItems
+                                    .FirstOrDefault(item 
+                                        => item.Type == ItemObject.ItemTypeEnum.Horse
+                                           && item.HorseComponent.Monster.FamilyType == (int) EquipHero.MountFamilyType.camel);
+                                if (exampleItem != null)
+                                    generator.Img("equip-img", exampleItem);
+                            });
+                        }
                     });
-                }
+                });
+            }
+
+            generator.Table("hero-class", () =>
+            {
                 generator.TR(() 
                     => generator.TD("Passive Power").TD(() => PassivePower.GenerateDocumentation(generator)));
                 generator.TR(() 

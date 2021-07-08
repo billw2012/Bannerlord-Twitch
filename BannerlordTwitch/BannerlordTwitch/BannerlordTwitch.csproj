@@ -258,6 +258,7 @@
     <Compile Include="Util\Paths.cs" />
     <Compile Include="Util\RangeFloat.cs" />
     <Compile Include="Util\RangeInt.cs" />
+    <Compile Include="Util\RenderExport.cs" />
     <Compile Include="Util\SoundEffectItemSource.cs" />
     <Compile Include="Util\StaticRandom.cs" />
     <Compile Include="Util\StringHelpers.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using BannerlordTwitch;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.MountAndBlade;
@@ -14,8 +15,8 @@ namespace BLTAdoptAHero.Powers
     // Passive Power has Battle life time
     // The specific implementation can define the lifetime though, using events/callbacks/however its going to be implemented
     
-    [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
-    public class AbsorbHealthPower : DurationMissionHeroPowerDefBase, IHeroPowerPassive
+    [Description("Absorbs a fraction of damage you do to enemies as health"), UsedImplicitly]
+    public class AbsorbHealthPower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         [Category("Power Config"),
          Description("What fraction of damage done to absorb as health"), PropertyOrder(1), UsedImplicitly]
@@ -40,7 +41,11 @@ namespace BLTAdoptAHero.Powers
                 agent.Health + attackCollisionData.Data.InflictedDamage * FractionOfDamageToAbsorb);
         }
 
-        public override string ToString() 
-            => $"{Name}: absorb x{FractionOfDamageToAbsorb:0.00} ({FractionOfDamageToAbsorb * 100:0.0}%) damage dealt as HP";
+        public override string ToString() => $"{Name}: {ToStringInternal()}";
+
+        private string ToStringInternal()
+            => $"Absorb {FractionOfDamageToAbsorb * 100:0.0}% of damage dealt as HP";
+
+        public void GenerateDocumentation(IDocumentationGenerator generator) => generator.P(ToStringInternal());
     }
 }

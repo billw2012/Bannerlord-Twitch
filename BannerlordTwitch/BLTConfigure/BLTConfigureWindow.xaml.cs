@@ -20,6 +20,7 @@ using System.Windows.Navigation;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using TaleWorlds.CampaignSystem;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace BLTConfigure
@@ -446,6 +447,11 @@ namespace BLTConfigure
         
         private void GenerateDocumentationButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (Campaign.Current?.GameStarted == false)
+            {
+                return;
+            }
+            
             var docs = new DocumentationGenerator();
             docs.Document(EditedSettings);
             docs.Save();

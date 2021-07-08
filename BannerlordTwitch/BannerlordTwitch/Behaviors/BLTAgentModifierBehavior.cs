@@ -27,22 +27,22 @@ namespace BannerlordTwitch
 
         public override string ToString()
         {
-            var parts = new List<string> {Name.ToString()};
+            var parts = new List<string> {Name.ToString().SplitCamelCase()};
             if (Multiply.HasValue && Multiply.Value != 0)
             {
-                parts.Add($"* {Multiply}");
+                parts.Add($"{Multiply * 100:0}%");
             }
 
             if (Add.HasValue && Add.Value != 0)
             {
-                parts.Add(Add > 0 ? $"+ {Add}" : $"{Add}");
+                parts.Add(Add > 0 ? $"+{Add}" : $"{Add}");
             }
 
             return string.Join(" ", parts);
         }
     }
     
-    public class AgentModifierConfig
+    public class AgentModifierConfig : IDocumentable
     {
         [Description("Scaling of the target"), PropertyOrder(1), UsedImplicitly]
         public float? Scale { get; set; }
@@ -57,6 +57,19 @@ namespace BannerlordTwitch
         {
             string result = Scale.HasValue && Scale.Value != 1 ? $"Scale {Scale.Value} " : "";
             return result + string.Join(" ", Properties.Select(p => p.ToString())) + (ApplyToMount? " (on mount)" : "");
+        }
+
+        public void GenerateDocumentation(IDocumentationGenerator generator)
+        {
+            string mountStr = ApplyToMount ? "Mount " : "";
+            if(Scale.HasValue && Scale.Value != 1)
+                generator.P($"{mountStr}{Scale.Value*100:0}% normal size");
+            if(Scale.HasValue && Scale.Value != 1)
+                generator.P($"{mountStr}{Scale.Value*100:0}% normal size");
+            foreach (var p in Properties)
+            {
+                generator.P(p.ToString());
+            }
         }
     }
     

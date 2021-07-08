@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
-using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -15,7 +15,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 namespace BLTAdoptAHero.Powers
 {
     [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
-    public class AddDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive
+    public class AddDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         [Category("Power Config"), Description("How much to multiply base damage by"), PropertyOrder(1), UsedImplicitly]
         public float DamageToMultiply { get; set; } = 1f;
@@ -174,26 +174,30 @@ namespace BLTAdoptAHero.Powers
 	        }
         }
 
-        public override string ToString()
+        public override string ToString() => $"{Name}: {ToStringInternal()}";
+        
+        private string ToStringInternal()
         {
-            var parts = new List<string>();
-            if (DamageToMultiply != 1)
-            {
-                parts.Add($"x{DamageToMultiply:0.00} ({DamageToMultiply * 100:0.0}%) health");
-            }
-            if (DamageToAdd != 0)
-            {
-                parts.Add(DamageToAdd > 0 ? $"+{DamageToAdd} damage" : $"{DamageToAdd} damage");
-            }
-            if (ApplyAgainstNonHeroes) parts.Add("Non-heroes");
-            if (ApplyAgainstHeroes) parts.Add("Heroes");
-            if (ApplyAgainstAdoptedHeroes) parts.Add("Adopted");
-            if (ApplyAgainstPlayer) parts.Add("Player");
-            if (Ranged) parts.Add("Ranged");
-            if (Melee) parts.Add("Melee");
-            if (Charge) parts.Add("Charge");
-            if (AreaOfEffect != 0) parts.Add($"AoE {AreaOfEffect}");
-            return $"{Name}: {string.Join(", ", parts)}";
+	        var appliesToList = new List<string>();
+            if (ApplyAgainstNonHeroes) appliesToList.Add("Non-heroes");
+            if (ApplyAgainstHeroes) appliesToList.Add("Heroes");
+            if (ApplyAgainstAdoptedHeroes) appliesToList.Add("Adopted");
+            if (ApplyAgainstPlayer) appliesToList.Add("Player");
+
+            var appliesFromList = new List<string>();
+            if (Ranged) appliesFromList.Add("Ranged");
+            if (Melee) appliesFromList.Add("Melee");
+            if (Charge) appliesFromList.Add("Charge");
+
+            var modifiers = new List<string>();
+            
+            if (DamageToMultiply != 1) modifiers.Add($"+{DamageToMultiply * 100:0.0}%");
+            if (DamageToAdd != 0) modifiers.Add($"+{DamageToAdd}");
+            if (AreaOfEffect != 0) appliesFromList.Add($"{AreaOfEffectDamage} AoE ({AreaOfEffect}m)");
+
+            return $"{string.Join(" / ", modifiers)} {string.Join("/", appliesFromList)} dmg to {string.Join(", ", appliesToList)}";
         }
+
+        public void GenerateDocumentation(IDocumentationGenerator generator) => generator.P(ToStringInternal());
     }
 }

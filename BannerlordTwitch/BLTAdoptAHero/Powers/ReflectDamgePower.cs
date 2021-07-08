@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.IO;
+using BannerlordTwitch;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -9,7 +10,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 namespace BLTAdoptAHero.Powers
 {
     [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
-    public class ReflectDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive
+    public class ReflectDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         [Category("Power Config"), Description("What fraction of damage to reflect back to attacker"), PropertyOrder(1), UsedImplicitly]
         public float FractionOfDamageToReflect { get; set; } = 0.1f;
@@ -43,9 +44,13 @@ namespace BLTAdoptAHero.Powers
             }
         }
 
-        public override string ToString() 
-            => $"{Name}: reflect x{FractionOfDamageToReflect:0.00} ({FractionOfDamageToReflect * 100:0.0}%) of damage dealt";
+        public override string ToString() => $"{Name}: {ToStringInternal()}";
+        
+        private string ToStringInternal()
+            => $"Reflect {FractionOfDamageToReflect * 100:0.0}% of damage received";
 
+        public void GenerateDocumentation(IDocumentationGenerator generator) => generator.P(ToStringInternal());
+        
         void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers) => OnActivation(hero, handlers);
         protected override void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers,
             Agent agent = null, DeactivationHandler deactivationHandler = null)
