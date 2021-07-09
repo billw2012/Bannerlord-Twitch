@@ -11,7 +11,6 @@ using BLTAdoptAHero.Powers;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
-using TaleWorlds.MountAndBlade.View;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using YamlDotNet.Serialization;
 
@@ -19,40 +18,44 @@ namespace BLTAdoptAHero
 {
     public class HeroClassDef : IConfig, IDocumentable
     {
-        [ReadOnly(true), Annotations.UsedImplicitly]
+        [ReadOnly(true), UsedImplicitly]
         public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
 
         #region User Editable Properties
-        [Description("Name of the class that shall be passed to SetHeroClass actions"), PropertyOrder(1)]
+        [Description("Name of the class that shall be passed to SetHeroClass actions"), PropertyOrder(1), UsedImplicitly]
         public string Name { get; set; } = "Enter Name Here";
+        
+        [Description("Description of the class (used in documentation)"), PropertyOrder(1), UsedImplicitly]
+        public string Description { get; set; } = "";
 
-        [Description("Which formation to add summoned units to"), PropertyOrder(2), ItemsSource(typeof(SummonHero.FormationItemSource))]
+        [Description("Which formation to add summoned units to"), PropertyOrder(2), ItemsSource(typeof(SummonHero.FormationItemSource)), UsedImplicitly]
         public string Formation { get; set; } = "LightCavalry";
         
-        [Description("Item type to put in slot 1"), PropertyOrder(3), Annotations.UsedImplicitly]
+        [Description("Item type to put in slot 1"), PropertyOrder(3), UsedImplicitly]
         public EquipmentType Slot1 { get; set; }
         
-        [Description("Item type to put in slot 2"), PropertyOrder(4), Annotations.UsedImplicitly]
+        [Description("Item type to put in slot 2"), PropertyOrder(4), UsedImplicitly]
         public EquipmentType Slot2 { get; set; }
         
-        [Description("Item type to put in slot 3"), PropertyOrder(5), Annotations.UsedImplicitly]
+        [Description("Item type to put in slot 3"), PropertyOrder(5), UsedImplicitly]
         public EquipmentType Slot3 { get; set; }
         
-        [Description("Item type to put in slot 4"), PropertyOrder(6), Annotations.UsedImplicitly]
+        [Description("Item type to put in slot 4"), PropertyOrder(6), UsedImplicitly]
         public EquipmentType Slot4 { get; set; }
         
-        [Description("Whether to allow horse (can be combined with Use Camel)"), PropertyOrder(7), Annotations.UsedImplicitly]
+        [Description("Whether to allow horse (can be combined with Use Camel)"), PropertyOrder(7), UsedImplicitly]
         public bool UseHorse { get; set; }
         
-        [Description("Whether to allow camel (can be combined with Use Horse"), PropertyOrder(8), Annotations.UsedImplicitly]
+        [Description("Whether to allow camel (can be combined with Use Horse"), PropertyOrder(8), UsedImplicitly]
         public bool UseCamel { get; set; }
         
         [Description("Passive hero power: this will always apply to the hero (i.e. a permanent buff)"), 
-         PropertyOrder(9), ExpandableObject]
+         PropertyOrder(9), ExpandableObject, UsedImplicitly]
         public PassivePowerGroup PassivePower { get; set; } = new();
 
         [Description("Active hero power: this power will be triggered only when the UseHeroPower action is used by " +
-                     "the viewer, via reward or command (i.e. a temporary buff)"), PropertyOrder(10), ExpandableObject]
+                     "the viewer, via reward or command (i.e. a temporary buff)"), 
+         PropertyOrder(10), ExpandableObject, UsedImplicitly]
         public ActivePowerGroup ActivePower { get; set; } = new();
         #endregion
 
@@ -118,14 +121,14 @@ namespace BLTAdoptAHero
 
         public class PassivePowerGroup : IConfig, IDocumentable
         {
-            [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), Annotations.UsedImplicitly]
+            [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), UsedImplicitly]
             public string Name { get; set; } = "Passive Power";
 
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(1), Annotations.UsedImplicitly]
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(1), UsedImplicitly]
             public Guid Power1 { get; set; }
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(2), Annotations.UsedImplicitly]
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(2), UsedImplicitly]
             public Guid Power2 { get; set; }
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(3), Annotations.UsedImplicitly]
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(3), UsedImplicitly]
             public Guid Power3 { get; set; }
 
             [YamlIgnore, Browsable(false)]
@@ -194,14 +197,14 @@ namespace BLTAdoptAHero
 
         public class ActivePowerGroup : IConfig, IDocumentable
         {
-            [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), Annotations.UsedImplicitly]
+            [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), UsedImplicitly]
             public string Name { get; set; } = "Active Power";
 
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(1), Annotations.UsedImplicitly]
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(1), UsedImplicitly]
             public Guid Power1 { get; set; }
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(2), Annotations.UsedImplicitly]
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(2), UsedImplicitly]
             public Guid Power2 { get; set; }
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(3), Annotations.UsedImplicitly]
+            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(3), UsedImplicitly]
             public Guid Power3 { get; set; }
             
             [Description("Particles/sound effects to play when this power group is activated"), PropertyOrder(4), ExpandableObject, UsedImplicitly]
@@ -360,6 +363,31 @@ namespace BLTAdoptAHero
         {
             generator.H3(Name);
 
+            if (!string.IsNullOrEmpty(Description))
+            {
+                generator.P(Description);
+            }
+
+            generator.Table("hero-class", () =>
+            {
+                generator.TR(() => { 
+                    for (int i = 1; i <= 6; i++)
+                    {
+                        generator.TH($"Tier {i}");
+                    }
+                });
+                generator.TR(() => { 
+                    for (int i = 1; i <= 6; i++)
+                    {
+                        EquipHero.UpgradeEquipment(Hero.MainHero, i, this, false);
+                        generator.TD(() =>
+                            generator.Img(CharacterCode.CreateFrom(Hero.MainHero.CharacterObject),
+                                $"{Name} Tier {i} Example")
+                        );
+                    }
+                });
+            });
+
             generator.Table("hero-class", () =>
             {
                 generator.TR(() => generator.TD("Formation").TD(Formation));
@@ -370,7 +398,7 @@ namespace BLTAdoptAHero
                 generator.TR(() =>
                 {
                     generator.TD("Equipment");
-                    foreach ((var type, int i) in Weapons.Select((type, i) => (type, i)))
+                    foreach (var type in Weapons)
                     {
                         generator.TD(() =>
                         {
@@ -389,7 +417,7 @@ namespace BLTAdoptAHero
                 {
                     generator.TR(() =>
                     {
-                        generator.TD("Equipment");
+                        generator.TD("Mount");
                         if (UseHorse)
                         {
                             generator.TD(() =>

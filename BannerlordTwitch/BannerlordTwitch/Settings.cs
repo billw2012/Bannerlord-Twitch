@@ -50,20 +50,23 @@ namespace BannerlordTwitch
         [ReadOnly(true), UsedImplicitly]
         public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
 
-        [Category("General"), Description("Whether this is enabled or not"), PropertyOrder(-100)]
+        [Category("General"), Description("Whether this is enabled or not"), PropertyOrder(-100), UsedImplicitly]
         public bool Enabled { get; set; }
-        [Category("General"), Description("Show response in the twitch chat"), PropertyOrder(-99)]
+        [Category("General"), Description("Show response in the twitch chat"), PropertyOrder(-99), UsedImplicitly]
         public bool RespondInTwitch { get; set; }
-        [Category("General"), Description("Show response in the overlay window feed"), PropertyOrder(-98)]
+        [Category("General"), Description("Show response in the overlay window feed"), PropertyOrder(-98), UsedImplicitly]
         public bool RespondInOverlay { get; set; }
         
-        [Category("General"), Description("Name of the handler"), ReadOnly(true), PropertyOrder(1)]
+        [Category("General"), Description("Name of the handler"), ReadOnly(true), PropertyOrder(1), UsedImplicitly]
         public abstract string Handler { get; set; }
 
-        [Category("General"), Description("Custom config for the handler"), ExpandableObject, ReadOnly(true), PropertyOrder(2)]
+        [Category("General"), Description("Custom config for the handler"), ExpandableObject, ReadOnly(true), PropertyOrder(2), UsedImplicitly]
         public object HandlerConfig { get; set; }
+        
+        [Category("General"), Description("What to show in the generated documentation"), PropertyOrder(3), UsedImplicitly]
+        public string Documentation { get; set; }
 
-        [YamlIgnore, Browsable(false)]
+        [YamlIgnore, Browsable(false), UsedImplicitly]
         public virtual bool IsValid => !Enabled || !string.IsNullOrEmpty(Handler);
     }
     
@@ -84,21 +87,21 @@ namespace BannerlordTwitch
     [UsedImplicitly]
     public class RewardSpec
     {
-        [Description("The title of the reward"), PropertyOrder(1)]
+        [Description("The title of the reward"), PropertyOrder(1), UsedImplicitly]
         public string Title { get; set; }
-        [Description("Whether the reward will automatically be set to fulfilled once completed in game. If you set this to true then the redemptions that successfully complete in game will stay in your redemption queue. This is useful if you are worried about people losing points if the game crashes, or you reload an older save."), PropertyOrder(1)]
+        [Description("Whether the reward will automatically be set to fulfilled once completed in game. If you set this to true then the redemptions that successfully complete in game will stay in your redemption queue. This is useful if you are worried about people losing points if the game crashes, or you reload an older save."), PropertyOrder(1), UsedImplicitly]
         public bool DisableAutomaticFulfillment { get; set; }
-        [Description("Description / prompt"), PropertyOrder(2)]
+        [Description("Description / prompt"), PropertyOrder(2), UsedImplicitly]
         public string Prompt { get; set; }
-        [Description("The cost of the reward"), PropertyOrder(3)]
+        [Description("The cost of the reward"), PropertyOrder(3), UsedImplicitly]
         public int Cost { get; set; } = 100;
 
-        [Description("Is the reward currently enabled, if false the reward won’t show up to viewers."), PropertyOrder(4)]
+        [Description("Is the reward currently enabled, if false the reward won’t show up to viewers."), PropertyOrder(4), UsedImplicitly]
         public bool IsEnabled { get; set; } = true;
 
         [Browsable(false)]
         public string BackgroundColorText { get; set; }
-        [Description("Custom background color for the reward"), PropertyOrder(5)]
+        [Description("Custom background color for the reward"), PropertyOrder(5), UsedImplicitly]
         [YamlIgnore]
         public Color BackgroundColor
         {
@@ -106,18 +109,18 @@ namespace BannerlordTwitch
             set => BackgroundColorText = $"#{value.A:X2}{value.R:X2}{value.G:X2}{value.B:X2}";
         }
 
-        [Description("Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown."), PropertyOrder(6)]
+        [Description("Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown."), PropertyOrder(6), UsedImplicitly]
         public bool IsUserInputRequired { get; set; }
 
-        [Category("Limits"), Description("The maximum number per stream, defaults to unlimited"), DefaultValue(null), PropertyOrder(7)]
+        [Category("Limits"), Description("The maximum number per stream, defaults to unlimited"), DefaultValue(null), PropertyOrder(7), UsedImplicitly]
         public int? MaxPerStream { get; set; }
 
-        [Category("Limits"), Description("The maximum number per user per stream, defaults to unlimited"), DefaultValue(null), PropertyOrder(8)]
+        [Category("Limits"), Description("The maximum number per user per stream, defaults to unlimited"), DefaultValue(null), PropertyOrder(8), UsedImplicitly]
         public int? MaxPerUserPerStream { get; set; }
-        [Category("Limits"), Description("The cooldown in seconds, defaults to unlimited"), DefaultValue(null), PropertyOrder(9)]
+        [Category("Limits"), Description("The cooldown in seconds, defaults to unlimited"), DefaultValue(null), PropertyOrder(9), UsedImplicitly]
         public int? GlobalCooldownSeconds { get; set; }
 
-        private static string WebColor(System.Windows.Media.Color color) => $"#{color.R:X2}{color.G:X2}{color.B:X2}";
+        private static string WebColor(Color color) => $"#{color.R:X2}{color.G:X2}{color.B:X2}";
         public CreateCustomRewardsRequest GetTwitchSpec() =>
             new()
             {
@@ -143,15 +146,15 @@ namespace BannerlordTwitch
     [Description("Bot command definition")]
     public class Command : ActionBase
     {
-        [Category("General"), Description("The command itself, not including the !"), PropertyOrder(1)]
+        [Category("General"), Description("The command itself, not including the !"), PropertyOrder(1), UsedImplicitly]
         public string Name { get; set; }
-        [Category("General"), Description("Hides the command from the !help action"), PropertyOrder(2)]
+        [Category("General"), Description("Hides the command from the !help action"), PropertyOrder(2), UsedImplicitly]
         public bool HideHelp { get; set; }
-        [Category("General"), Description("What to show in the !help command"), PropertyOrder(3)]
+        [Category("General"), Description("What to show in the !help command"), PropertyOrder(3), UsedImplicitly]
         public string Help { get; set; }
-        [Category("General"), Description("Only allows the broadcaster to use this command, and hides it from !help"), PropertyOrder(4)]
+        [Category("General"), Description("Only allows the broadcaster to use this command, and hides it from !help"), PropertyOrder(4), UsedImplicitly]
         public bool BroadcasterOnly { get; set; }
-        [Category("General"), Description("Only allows the mods or broadcaster to use this command, and hides it from !help"), PropertyOrder(5)]
+        [Category("General"), Description("Only allows the mods or broadcaster to use this command, and hides it from !help"), PropertyOrder(5), UsedImplicitly]
         public bool ModOnly { get; set; }
         
         [ItemsSource(typeof(CommandHandlerItemsSource))]
@@ -180,15 +183,15 @@ namespace BannerlordTwitch
     [UsedImplicitly]
     public class SimTestingItem
     {
-        [PropertyOrder(0)]
+        [PropertyOrder(0), UsedImplicitly]
         public bool Enabled { get; set; } = true;
-        [PropertyOrder(1)]
+        [PropertyOrder(1), UsedImplicitly]
         public SimActionType Type { get; set; }
-        [PropertyOrder(2)]
+        [PropertyOrder(2), UsedImplicitly]
         public string Id { get; set; }
-        [PropertyOrder(3)]
+        [PropertyOrder(3), UsedImplicitly]
         public string Args { get; set; }
-        [PropertyOrder(4)]
+        [PropertyOrder(4), UsedImplicitly]
         public float Weight { get; set; } = 1f;
 
         public override string ToString()
@@ -201,21 +204,21 @@ namespace BannerlordTwitch
     [UsedImplicitly]
     public class SimTestingConfig
     {
-        [PropertyOrder(1)]
+        [PropertyOrder(1), UsedImplicitly]
         public int UserCount { get; set; }
-        [PropertyOrder(2)]
+        [PropertyOrder(2), UsedImplicitly]
         public int UserStayTime { get; set; }
-        [PropertyOrder(3)]
+        [PropertyOrder(3), UsedImplicitly]
         public int IntervalMinMS { get; set; }
-        [PropertyOrder(4)]
+        [PropertyOrder(4), UsedImplicitly]
         public int IntervalMaxMS { get; set; }
-        [PropertyOrder(5)]
+        [PropertyOrder(5), UsedImplicitly]
         public List<SimTestingItem> Init { get; set; }
 
         [YamlIgnore, Browsable(false)]
         public IEnumerable<SimTestingItem> InitEnabled => Init?.Where(i => i.Enabled) ?? Enumerable.Empty<SimTestingItem>();
         
-        [PropertyOrder(6)]
+        [PropertyOrder(6), UsedImplicitly]
         public List<SimTestingItem> Use { get; set; }
         
         [YamlIgnore, Browsable(false)]
@@ -269,7 +272,7 @@ namespace BannerlordTwitch
 
         public bool DisableAutomaticFulfillment { get; set; }
         
-        public Command GetCommand(string id) => this.EnabledCommands.FirstOrDefault(c =>
+        public Command GetCommand(string id) => EnabledCommands.FirstOrDefault(c =>
             string.Equals(c.Name, id, StringComparison.CurrentCultureIgnoreCase));
 
         [YamlIgnore]
@@ -278,7 +281,7 @@ namespace BannerlordTwitch
             .Concat(GlobalConfigs.Select(g => g.Config))
             .OfType<IConfig>();
 
-        public T GetGlobalConfig<T>(string id) => (T)GlobalConfigs.First(c => c.Id == id)?.Config;
+        public T GetGlobalConfig<T>(string id) => (T)GlobalConfigs.First(c => c.Id == id).Config;
 
         #if DEBUG
         private static string ProjectRootDir([CallerFilePath]string file = "") => Path.GetDirectoryName(file);
@@ -398,9 +401,9 @@ namespace BannerlordTwitch
                 generator.H1("Commands");
                 generator.Table(() => {
                     generator.TR(() => generator.TH("Command").TH("Description"));
-                    foreach (var d in this.Commands)
+                    foreach (var d in Commands.Where(c => c.Enabled))
                     {
-                        generator.TR(() => generator.TD(d.Name).TD(d.Help));
+                        generator.TR(() => generator.TD(d.Name).TD(string.IsNullOrEmpty(d.Documentation) ? d.Help : d.Documentation));
                     }
                 });
             });
@@ -410,16 +413,16 @@ namespace BannerlordTwitch
                 generator.H1("Channel Point Rewards");
                 generator.Table(() => {
                     generator.TR(() => generator.TH("Command").TH("Description"));
-                    foreach (var r in this.Rewards)
+                    foreach (var r in Rewards.Where(r => r.Enabled))
                     {
-                        generator.TR(() => generator.TD(r.RewardSpec.Title).TD(r.RewardSpec.Prompt));
+                        generator.TR(() => generator.TD(r.RewardSpec.Title).TD(string.IsNullOrEmpty(r.Documentation) ? r.RewardSpec.Prompt : r.Documentation));
                     }
                 });
             });
             generator.Br();
             generator.Div("global-configs", () =>
             {
-                foreach (var g in this.GlobalConfigs.Select(c => c.Config).OfType<IDocumentable>())
+                foreach (var g in GlobalConfigs.Select(c => c.Config).OfType<IDocumentable>())
                 {
                     g.GenerateDocumentation(generator);
                 }

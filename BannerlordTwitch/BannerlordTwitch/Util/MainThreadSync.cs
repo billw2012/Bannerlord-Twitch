@@ -19,7 +19,7 @@ namespace BannerlordTwitch.Util
         {
             var st = new Stopwatch();
             st.Start();
-            while (actions.TryDequeue(out var action) && st.ElapsedMilliseconds < 2)
+            while (st.ElapsedMilliseconds < 2 && actions.TryDequeue(out var action))
             {
                 action();
             }

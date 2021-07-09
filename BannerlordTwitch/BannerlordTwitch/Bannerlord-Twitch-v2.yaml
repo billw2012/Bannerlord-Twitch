@@ -2,7 +2,7 @@ Rewards:
 - RewardSpec:
     Title: Adopt a Hero
     DisableAutomaticFulfillment: false
-    Prompt: Take control of a hero in game
+    Prompt: Get a hero in game. Almost all other actions require an adopted hero.
     Cost: 100
     IsEnabled: true
     BackgroundColorText: 
@@ -43,6 +43,7 @@ Rewards:
     StartingClass: 00000000-0000-0000-0000-000000000000
     SpawnInParty: false
     JoinPlayerCompanion: false
+  Documentation: Get a hero in game. Almost all other actions require an adopted hero.
 - RewardSpec:
     Title: 10k gold
     DisableAutomaticFulfillment: false
@@ -61,6 +62,7 @@ Rewards:
   RespondInOverlay: true
   HandlerConfig:
     Amount: 10000
+  Documentation: 
 - RewardSpec:
     Title: 100k gold
     DisableAutomaticFulfillment: false
@@ -79,6 +81,7 @@ Rewards:
   RespondInOverlay: true
   HandlerConfig:
     Amount: 100000
+  Documentation: 
 - RewardSpec:
     Title: Summon
     DisableAutomaticFulfillment: false
@@ -107,6 +110,7 @@ Rewards:
     AlertSound: None
     SubBoost: 1
     HealPerSecond: 0
+  Documentation: Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue).
 - RewardSpec:
     Title: Attack
     DisableAutomaticFulfillment: false
@@ -135,10 +139,11 @@ Rewards:
     AlertSound: None
     SubBoost: 1
     HealPerSecond: 0
+  Documentation: Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue).
 - RewardSpec:
-    Title: Heal Player
+    Title: Heal Streamer
     DisableAutomaticFulfillment: false
-    Prompt: Heal the player over time
+    Prompt: Heal the streamer over time
     Cost: 100
     IsEnabled: true
     BackgroundColorText: 
@@ -170,6 +175,7 @@ Rewards:
     ActivateSound: 
     DeactivateParticleEffect: 
     DeactivateSound: 
+  Documentation: Heals the streamers character in battle. Doesn't work on the campaign map.
 - RewardSpec:
     Title: Giant Hero
     DisableAutomaticFulfillment: false
@@ -221,6 +227,7 @@ Rewards:
     ActivateSound: 
     DeactivateParticleEffect: psys_burning_projectile_default_coll
     DeactivateSound: 
+  Documentation: 
 - RewardSpec:
     Title: Baby Hero
     DisableAutomaticFulfillment: false
@@ -269,6 +276,7 @@ Rewards:
     ActivateSound: 
     DeactivateParticleEffect: psys_burning_projectile_default_coll_small
     DeactivateSound: 
+  Documentation: 
 - RewardSpec:
     Title: Attack on Titan
     DisableAutomaticFulfillment: false
@@ -331,6 +339,7 @@ Rewards:
     ActivateSound: 
     DeactivateParticleEffect: psys_burning_projectile_default_coll
     DeactivateSound: 
+  Documentation: 
 - RewardSpec:
     Title: Tournament
     DisableAutomaticFulfillment: false
@@ -349,6 +358,7 @@ Rewards:
   RespondInOverlay: true
   HandlerConfig:
     GoldCost: 0
+  Documentation: Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament.
 - RewardSpec:
     Title: Send Message In Game
     DisableAutomaticFulfillment: false
@@ -367,6 +377,7 @@ Rewards:
   RespondInOverlay: false
   HandlerConfig:
     AlertSound: Notification1
+  Documentation: Sends a message in the game. If you have a hero then it will also show them next to the message.
 - RewardSpec:
     Title: Retire My Hero
     DisableAutomaticFulfillment: false
@@ -384,6 +395,7 @@ Rewards:
   RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig: 
+  Documentation: Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritence rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete.
 - RewardSpec:
     Title: 50k XP
     DisableAutomaticFulfillment: false
@@ -406,6 +418,7 @@ Rewards:
     AmountLow: 50000
     AmountHigh: 50000
     GoldCost: 0
+  Documentation: Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly choosen, but influenced by your class and existing skills and equipment.
 - RewardSpec:
     Title: Burn Player
     DisableAutomaticFulfillment: false
@@ -447,6 +460,7 @@ Rewards:
     ActivateSound: 
     DeactivateParticleEffect: 
     DeactivateSound: 
+  Documentation: 
 - RewardSpec:
     Title: Heal Hero
     DisableAutomaticFulfillment: false
@@ -480,10 +494,11 @@ Rewards:
     ActivateSound: 
     DeactivateParticleEffect: 
     DeactivateSound: 
+  Documentation: Heals your hero over time. Only works in battle, when your hero is summoned.
 - RewardSpec:
     Title: Give Player Gold
     DisableAutomaticFulfillment: false
-    Prompt: 'Transfer 10k gold to the player from your hero. Enter gift message:'
+    Prompt: 'Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:'
     Cost: 100
     IsEnabled: true
     BackgroundColorText: 
@@ -500,10 +515,11 @@ Rewards:
     GoldAmountToGive: 10000
     FromAdoptedHero: true
     AlertSound: Notification1
+  Documentation: Transfer 10,000 gold to the streamers character, from your hero.
 - RewardSpec:
     Title: Use Class Power
     DisableAutomaticFulfillment: false
-    Prompt: 
+    Prompt: Activate your class power on your hero, if you have one.
     Cost: 250
     IsEnabled: true
     BackgroundColorText: 
@@ -517,10 +533,11 @@ Rewards:
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig: 
+  Documentation: Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay.
 Commands:
 - Name: stats
   HideHelp: false
-  Help: Show Stats
+  Help: show stats
   BroadcasterOnly: false
   ModOnly: false
   Handler: HeroInfoCommand
@@ -540,9 +557,10 @@ Commands:
     ShowCivilianInventory: false
     ShowRetinue: true
     ShowRetinueList: false
+  Documentation: 
 - Name: inv
   HideHelp: false
-  Help: Show Equipment
+  Help: show equipment
   BroadcasterOnly: false
   ModOnly: false
   Handler: HeroInfoCommand
@@ -562,9 +580,10 @@ Commands:
     ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: false
+  Documentation: 
 - Name: equip
   HideHelp: false
-  Help: Upgrade Equipment
+  Help: upgrade equipment
   BroadcasterOnly: false
   ModOnly: false
   Handler: EquipHero
@@ -581,9 +600,10 @@ Commands:
     CostTier5: 275000
     CostTier6: 400000
     ReequipInsteadOfUpgrade: false
+  Documentation: 
 - Name: retinue
   HideHelp: false
-  Help: Upgrade Retinue
+  Help: upgrade retinue
   BroadcasterOnly: false
   ModOnly: false
   Handler: Retinue
@@ -604,9 +624,10 @@ Commands:
       IncludeBanditUnits: false
       UseBasicTroops: true
       UseEliteTroops: true
+  Documentation: 
 - Name: class
   HideHelp: false
-  Help: infantry/archer/cavalry/horsearcher/skirmisher
+  Help: select new class
   BroadcasterOnly: false
   ModOnly: false
   Handler: SetHeroClass
@@ -617,6 +638,7 @@ Commands:
   HandlerConfig:
     GoldCost: 100000
     UpdateEquipment: true
+  Documentation: 
 - Name: reequip
   HideHelp: false
   Help: reroll equipment
@@ -636,9 +658,10 @@ Commands:
     CostTier5: 275000
     CostTier6: 400000
     ReequipInsteadOfUpgrade: true
+  Documentation: 
 - Name: gold
   HideHelp: false
-  Help: 
+  Help: show gold
   BroadcasterOnly: false
   ModOnly: false
   Handler: HeroInfoCommand
@@ -658,9 +681,10 @@ Commands:
     ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: false
+  Documentation: ''
 - Name: retinuelist
   HideHelp: false
-  Help: Retinue List
+  Help: retinue list
   BroadcasterOnly: false
   ModOnly: false
   Handler: HeroInfoCommand
@@ -680,18 +704,19 @@ Commands:
     ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: true
+  Documentation: 
 - Name: adopt
   HideHelp: false
-  Help: 
+  Help: ''
   BroadcasterOnly: false
   ModOnly: false
   Handler: AdoptAHero
   ID: e317c63a-5a1f-455c-b953-6dcb92dc9424
-  Enabled: true
+  Enabled: false
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
-    CreateNew: true
+    CreateNew: false
     AllowNoble: true
     AllowWanderer: true
     AllowPlayerCompanion: false
@@ -701,14 +726,27 @@ Commands:
     SubscriberOnly: false
     MinSubscribedMonths: 
     StartingGold: 0
-    StartingSkills: 
-    StartingEquipmentTier: 
+    StartingSkills:
+    - Skill: Melee
+      MinLevel: 50
+      MaxLevel: 125
+    - Skill: Ranged
+      MinLevel: 50
+      MaxLevel: 125
+    - Skill: Riding
+      MinLevel: 25
+      MaxLevel: 75
+    - Skill: Athletics
+      MinLevel: 25
+      MaxLevel: 75
+    StartingEquipmentTier: 1
     StartingClass: 00000000-0000-0000-0000-000000000000
     SpawnInParty: false
     JoinPlayerCompanion: false
+  Documentation: Get a hero in game. Almost all other actions require an adopted hero.
 - Name: nameitem
   HideHelp: false
-  Help: Name a reward item
+  Help: name a reward item
   BroadcasterOnly: false
   ModOnly: false
   Handler: NameItem
@@ -717,9 +755,10 @@ Commands:
   RespondInTwitch: true
   RespondInOverlay: false
   HandlerConfig: 
+  Documentation: 
 - Name: bltbet
   HideHelp: false
-  Help: 
+  Help: bet on tournament
   BroadcasterOnly: false
   ModOnly: false
   Handler: TournamentBet
@@ -728,6 +767,7 @@ Commands:
   RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig: 
+  Documentation: ''
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -1030,6 +1070,7 @@ GlobalConfigs:
     ClassDefs:
     - ID: 9fa426af-af3e-41f6-9b48-0ffef6dc3553
       Name: infantry
+      Description: Basic foot soldier, the core around which every army is built.
       Formation: Infantry
       Slot1: OneHandedSword
       Slot2: Shield
@@ -1055,6 +1096,7 @@ GlobalConfigs:
           Sound: 
     - ID: 492c4b3a-d73e-4fe9-be31-f937d6461f93
       Name: archer
+      Description: Ranged troop, quick on their feet, can use explosive arrows.
       Formation: Ranged
       Slot1: Bow
       Slot2: Arrows
@@ -1080,6 +1122,7 @@ GlobalConfigs:
           Sound: 
     - ID: eed616b6-bb68-48aa-8f92-87ab3d744458
       Name: crossbow
+      Description: Ranged troop that specializes in crossbow, tougher but slower than the archer. Can use exposive bolts
       Formation: Ranged
       Slot1: Crossbow
       Slot2: Bolts
@@ -1105,6 +1148,7 @@ GlobalConfigs:
           Sound: 
     - ID: d1006ce9-cac9-4416-b8f9-efe55e9eb878
       Name: cavalry
+      Description: Mounted troop with a strong horse, capable of doing extra charge damage.
       Formation: Cavalry
       Slot1: OneHandedLance
       Slot2: Shield
@@ -1130,6 +1174,7 @@ GlobalConfigs:
           Sound: 
     - ID: 2942cdb2-30ec-400a-ba8e-ed9bb3b47f48
       Name: horsearcher
+      Description: Mounted ranged unit, with a good horse, that can use exposive arrows.
       Formation: HorseArcher
       Slot1: Bow
       Slot2: Arrows
@@ -1138,7 +1183,7 @@ GlobalConfigs:
       UseHorse: true
       UseCamel: false
       PassivePower:
-        Name: A Good Horse
+        Name: Mounted Archery
         Power1: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
         Power2: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
         Power3: 00000000-0000-0000-0000-000000000000
@@ -1155,6 +1200,7 @@ GlobalConfigs:
           Sound: 
     - ID: df54336d-52df-4d4b-a9c6-c1fe91cdc70f
       Name: camelarcher
+      Description: Mounted ranged unit on a good camel, wielding a glaive. Can use exposive arrows.
       Formation: HorseArcher
       Slot1: Bow
       Slot2: Arrows
@@ -1163,7 +1209,7 @@ GlobalConfigs:
       UseHorse: false
       UseCamel: true
       PassivePower:
-        Name: A Good Camel
+        Name: Mounted Archery
         Power1: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
         Power2: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
         Power3: 00000000-0000-0000-0000-000000000000
@@ -1180,6 +1226,7 @@ GlobalConfigs:
           Sound: 
     - ID: 3d5b962a-f6ee-409e-940b-c2f2b8d4cf98
       Name: skirmisher
+      Description: Foot soldier that can engage at range using javelins. Able to reflect a portion of incoming damage.
       Formation: Skirmisher
       Slot1: TwoHandedSword
       Slot2: ThrowingJavelins
@@ -1205,6 +1252,7 @@ GlobalConfigs:
           Sound: 
     - ID: f04e7a10-950b-48a4-bed3-7aa2091aa268
       Name: berserker
+      Description: Foot soldier with lower health, that can gain health by doing damage.
       Formation: Skirmisher
       Slot1: TwoHandedAxe
       Slot2: None
