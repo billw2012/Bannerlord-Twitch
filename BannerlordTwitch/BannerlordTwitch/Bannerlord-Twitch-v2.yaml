@@ -520,7 +520,7 @@ Rewards:
     Title: Use Class Power
     DisableAutomaticFulfillment: false
     Prompt: Activate your class power on your hero, if you have one.
-    Cost: 250
+    Cost: 75
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: false
@@ -538,8 +538,6 @@ Commands:
 - Name: stats
   HideHelp: false
   Help: show stats
-  BroadcasterOnly: false
-  ModOnly: false
   Handler: HeroInfoCommand
   ID: 1cf3abfd-3310-4a51-808e-e14d454eed05
   Enabled: true
@@ -561,8 +559,6 @@ Commands:
 - Name: inv
   HideHelp: false
   Help: show equipment
-  BroadcasterOnly: false
-  ModOnly: false
   Handler: HeroInfoCommand
   ID: 7b6caafc-0246-47c2-8622-e091b10b8897
   Enabled: true
@@ -584,8 +580,6 @@ Commands:
 - Name: equip
   HideHelp: false
   Help: upgrade equipment
-  BroadcasterOnly: false
-  ModOnly: false
   Handler: EquipHero
   ID: 90b571d1-dba8-4006-860c-a0401b6f8fd2
   Enabled: true
@@ -604,8 +598,6 @@ Commands:
 - Name: retinue
   HideHelp: false
   Help: upgrade retinue
-  BroadcasterOnly: false
-  ModOnly: false
   Handler: Retinue
   ID: 38eed507-87b9-47f4-b235-af921cef00c4
   Enabled: true
@@ -628,8 +620,6 @@ Commands:
 - Name: class
   HideHelp: false
   Help: select new class
-  BroadcasterOnly: false
-  ModOnly: false
   Handler: SetHeroClass
   ID: da8416ca-e59b-458a-8953-31291d03c835
   Enabled: true
@@ -642,8 +632,6 @@ Commands:
 - Name: reequip
   HideHelp: false
   Help: reroll equipment
-  BroadcasterOnly: false
-  ModOnly: false
   Handler: EquipHero
   ID: d4fb255c-4bb3-454e-9e26-39b4d7a321f0
   Enabled: true
@@ -662,8 +650,6 @@ Commands:
 - Name: gold
   HideHelp: false
   Help: show gold
-  BroadcasterOnly: false
-  ModOnly: false
   Handler: HeroInfoCommand
   ID: 42e45ee9-647f-486f-9764-5e765507a70d
   Enabled: true
@@ -685,8 +671,6 @@ Commands:
 - Name: retinuelist
   HideHelp: false
   Help: retinue list
-  BroadcasterOnly: false
-  ModOnly: false
   Handler: HeroInfoCommand
   ID: afd51f50-caaf-40a8-bf29-d75447e34ef4
   Enabled: true
@@ -708,8 +692,6 @@ Commands:
 - Name: adopt
   HideHelp: false
   Help: ''
-  BroadcasterOnly: false
-  ModOnly: false
   Handler: AdoptAHero
   ID: e317c63a-5a1f-455c-b953-6dcb92dc9424
   Enabled: false
@@ -747,8 +729,6 @@ Commands:
 - Name: nameitem
   HideHelp: false
   Help: name a reward item
-  BroadcasterOnly: false
-  ModOnly: false
   Handler: NameItem
   ID: aef1ded6-f8dd-4b9a-9d70-96e96d17cb12
   Enabled: true
@@ -759,8 +739,6 @@ Commands:
 - Name: bltbet
   HideHelp: false
   Help: bet on tournament
-  BroadcasterOnly: false
-  ModOnly: false
   Handler: TournamentBet
   ID: 7cbdbc43-660c-4500-9029-d06e81c89f04
   Enabled: true
@@ -804,11 +782,65 @@ GlobalConfigs:
     DifficultyScalingMax: 3
     Shouts: []
     IncludeDefaultShouts: true
-    KillStreaks: []
+    KillStreaks:
+    - Enabled: false
+      ShowNotification: false
+      Name: First Five
+      NotificationText: 
+      KillsRequired: 5
+      GoldReward: 0
+      XPReward: 5000
+    - Enabled: false
+      ShowNotification: false
+      Name: First Fifty
+      NotificationText: 
+      KillsRequired: 50
+      GoldReward: 50000
+      XPReward: 50000
     ShowKillStreakPopup: true
     KillStreakPopupAlertSound: Notification1
     ReferenceLevelReward: 15
-    Achievements: []
+    Achievements:
+    - ID: 8ed02960-abf8-4fd9-a78c-2f26a68cb700
+      Enabled: false
+      Name: First Kill
+      Type: TotalKills
+      NotificationText: aight
+      Value: 1
+      GoldGain: 0
+      XPGain: 10000
+    - ID: 489cc6a8-cd48-4aed-a782-0ae81156d072
+      Enabled: false
+      Name: First BLT Kill
+      Type: TotalBLTKills
+      NotificationText: aight
+      Value: 1
+      GoldGain: 0
+      XPGain: 10000
+    - ID: 5e35e791-564d-4066-9d26-22870e357034
+      Enabled: false
+      Name: First Streamer Kill
+      Type: TotalMainKills
+      NotificationText: aight
+      Value: 1
+      GoldGain: 0
+      XPGain: 10000
+    - ID: a6e9d301-a027-4dcf-b52b-bcc65c1b42b1
+      Enabled: false
+      Name: First Tournament Win
+      Type: TotalTournamentWins
+      NotificationText: aight
+      Value: 1
+      GoldGain: 10000
+      XPGain: 10000
+    - ID: b9b225cc-5d65-437a-8734-3b3937c14ab7
+      Enabled: false
+      Name: First Tournament Loss
+      Type: TotalTournamentLosses
+      NotificationText: aight
+      Value: 1
+      GoldGain: 10000
+      XPGain: 10000
 - Id: Adopt A Hero - Tournament Config
   Config:
     StartHealthMultiplier: 2
