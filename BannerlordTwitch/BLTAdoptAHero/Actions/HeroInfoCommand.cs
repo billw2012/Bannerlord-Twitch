@@ -15,30 +15,46 @@ namespace BLTAdoptAHero
     [Description("Will write various hero stats to chat")]
     internal class HeroInfoCommand : ICommandHandler
     {
-        private class Settings
+        private class Settings : IDocumentable
         {
-            [Description("Show gold"), PropertyOrder(1)]
+            [Description("Show gold"), PropertyOrder(1), UsedImplicitly]
             public bool ShowGold { get; set; } = true;
-            [Description("Show personal info: health, location, age"), PropertyOrder(1)]
+            [Description("Show personal info: health, location, age"), PropertyOrder(1), UsedImplicitly]
             public bool ShowGeneral { get; set; } = true;
-            [Description("Shows skills (and focuse values) above the specified MinSkillToShow value"), PropertyOrder(2)]
+            [Description("Shows skills (and focuse values) above the specified MinSkillToShow value"), PropertyOrder(2), UsedImplicitly]
             public bool ShowTopSkills { get; set; } = true;
-            [Description("If ShowTopSkills is specified, this defines what skills are shown"), PropertyOrder(3)]
+            [Description("If ShowTopSkills is specified, this defines what skills are shown"), PropertyOrder(3), UsedImplicitly]
             public int MinSkillToShow { get; set; } = 100;
-            [Description("Shows all hero attributes"), PropertyOrder(4)]
+            [Description("Shows all hero attributes"), PropertyOrder(4), UsedImplicitly]
             public bool ShowAttributes { get; set; } = true;
-            [Description("Shows the equipment tier of the hero"), PropertyOrder(5)]
+            [Description("Shows the equipment tier of the hero"), PropertyOrder(5), UsedImplicitly]
             public bool ShowEquipment { get; set; }
-            [Description("Shows the full battle inventory of the hero"), PropertyOrder(5)]
+            [Description("Shows the full battle inventory of the hero"), PropertyOrder(5), UsedImplicitly]
             public bool ShowInventory { get; set; }
-            [Description("Shows the heroes storage (all their custom items)"), PropertyOrder(6)]
+            [Description("Shows the heroes storage (all their custom items)"), PropertyOrder(6), UsedImplicitly]
             public bool ShowStorage { get; set; }
-            [Description("Shows the full civilian inventory of the hero"), PropertyOrder(7)]
+            [Description("Shows the full civilian inventory of the hero"), PropertyOrder(7), UsedImplicitly]
             public bool ShowCivilianInventory { get; set; }
-            [Description("Shows a summary of the retinue of the hero (count and tier)"), PropertyOrder(8)]
+            [Description("Shows a summary of the retinue of the hero (count and tier)"), PropertyOrder(8), UsedImplicitly]
             public bool ShowRetinue { get; set; }
-            [Description("Shows the exact classes and counts of the retinue of the hero"), PropertyOrder(9)]
+            [Description("Shows the exact classes and counts of the retinue of the hero"), PropertyOrder(9), UsedImplicitly]
             public bool ShowRetinueList { get; set; }
+            
+            public void GenerateDocumentation(IDocumentationGenerator generator)
+            {
+                var shows = new List<string>();
+                if(ShowGold) shows.Add($"Gold");
+                if(ShowGeneral) shows.Add($"Age, Clan, Culture, Health");
+                if(ShowTopSkills) shows.Add($"Skills greater than {MinSkillToShow}");
+                if(ShowAttributes) shows.Add($"Attributes");
+                if(ShowEquipment) shows.Add($"Equipment tier");
+                if(ShowInventory) shows.Add($"Battle equipment inventory");
+                if(ShowCivilianInventory) shows.Add($"Civilian equipment inventory");
+                if(ShowStorage) shows.Add($"Custom item storage");
+                if(ShowRetinue) shows.Add($"Retinue count and average tier");
+                if(ShowRetinueList) shows.Add($"Retinue unit list");
+                generator.P($"Shows: {string.Join(", ", shows)}");
+            }
         }
         
         // One Handed, Two Handed, Polearm, Bow, Crossbow, Throwing, Riding, Athletics, Smithing

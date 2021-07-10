@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using BannerlordTwitch;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -14,16 +15,26 @@ namespace BLTAdoptAHero
     [Description("Improve adopted heroes skills")]
     internal class SkillXP : ImproveAdoptedHero
     {
-        protected class SkillXPSettings : SettingsBase
+        protected class SkillXPSettings : SettingsBase, IDocumentable
         {
-            [Description("What to improve"), PropertyOrder(1)]
+            [Description("What to improve"), PropertyOrder(1), UsedImplicitly]
             public SkillsEnum Skills { get; set; }
 
             [Description("Chooses a random skill to add XP to, prefering class skills, " +
                          "then skills for current equipment, then other skills. " +
                          "Skills setting is ignored when auto is used."),
-             PropertyOrder(2)]
+             PropertyOrder(2), UsedImplicitly]
             public bool Auto { get; set; } = true;
+            
+            public void GenerateDocumentation(IDocumentationGenerator generator)
+            {
+                generator.P($"Skills: {(Auto ? "Automatic, based on class, equipment, and existing skills" : Skills)}");
+                generator.P($"XP: {AmountLow}" + (AmountLow == AmountHigh ? $"" : $" to {AmountHigh}"));
+                if (GoldCost != 0)
+                {
+                    generator.P($"Costs {GoldCost}{Naming.Gold}");
+                }
+            }
         }
 
         protected override Type ConfigType => typeof(SkillXPSettings);

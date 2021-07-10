@@ -13,7 +13,7 @@ namespace BLTAdoptAHero
     [Description("Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied")]
     internal class SetHeroClass : HeroActionHandlerBase
     {
-        private class Settings
+        private class Settings : IDocumentable
         {
             [Category("General"), Description("Gold cost to change class"), PropertyOrder(1), UsedImplicitly]
             public int GoldCost { get; set; }
@@ -23,6 +23,15 @@ namespace BLTAdoptAHero
             
             // [Category("General"), Description("Whether to immediately re-distribute focus points after changing class"), PropertyOrder(3)]
             // public bool RedistributeFocusPoints { get; set; }
+            
+            public void GenerateDocumentation(IDocumentationGenerator generator)
+            {
+                generator.P($"Costs {GoldCost}{Naming.Gold}");
+                if (UpdateEquipment)
+                {
+                    generator.P($"Updates equipment to match new class");
+                }
+            }
         }
 
         protected override Type ConfigType => typeof(Settings);

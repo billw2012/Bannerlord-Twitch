@@ -12,10 +12,15 @@ namespace BLTAdoptAHero
     [Description("Gives gold to the adopted hero")]
     internal class AddGoldToHero : IRewardHandler
     {
-        private class Settings
+        private class Settings : IDocumentable
         {
-            [Description("How much gold to give the adopted hero")]
+            [Description("How much gold to give the adopted hero"), UsedImplicitly, Document]
             public int Amount { get; set; }
+
+            public void GenerateDocumentation(IDocumentationGenerator generator)
+            {
+                generator.P($"Amount: {Amount}{Naming.Gold}");
+            }
         }
 
         Type IRewardHandler.RewardConfigType => typeof(Settings);
@@ -32,5 +37,6 @@ namespace BLTAdoptAHero
             
             ActionManager.NotifyComplete(context, $"{Naming.Inc}{settings.Amount}{Naming.Gold}{Naming.To}{newGold}{Naming.Gold}");
         }
+
     }
 }

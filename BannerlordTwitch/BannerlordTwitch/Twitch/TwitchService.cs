@@ -7,6 +7,7 @@ using BannerlordTwitch.Dummy;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Testing;
 using BannerlordTwitch.Util;
+using JetBrains.Annotations;
 using TaleWorlds.Core;
 using TwitchLib.Api;
 using TwitchLib.Api.Core.Enums;
@@ -20,19 +21,19 @@ namespace BannerlordTwitch
 {
     public class ReplyContext
     {
-        public string UserName { get; private set; }
-        public string ReplyId { get; private set; }
-        public string Args { get; private set; }
-        public int Bits { get; private set; }
-        public double BitsInDollars { get; private set; }
-        public int SubscribedMonthCount { get; private set; }
-        public bool IsBroadcaster { get; private set; }
-        public bool IsModerator { get; private set; }
-        public bool IsSubscriber { get; private set; }
-        public bool IsVip { get; private set; }
+        [UsedImplicitly] public string UserName { get; private set; }
+        [UsedImplicitly] public string ReplyId { get; private set; }
+        [UsedImplicitly] public string Args { get; private set; }
+        [UsedImplicitly] public int Bits { get; private set; }
+        [UsedImplicitly] public double BitsInDollars { get; private set; }
+        [UsedImplicitly] public int SubscribedMonthCount { get; private set; }
+        [UsedImplicitly] public bool IsBroadcaster { get; private set; }
+        [UsedImplicitly] public bool IsModerator { get; private set; }
+        [UsedImplicitly] public bool IsSubscriber { get; private set; }
+        [UsedImplicitly] public bool IsVip { get; private set; }
         //public bool IsWhisper { get; private set; }
-        public Guid RedemptionId { get; private set; }
-        public ActionBase Source { get; private set; }
+        [UsedImplicitly] public Guid RedemptionId { get; private set; }
+        [UsedImplicitly] public ActionBase Source { get; private set; }
 
         private static string CleanDisplayName(string str) => str.Replace(" ", "").Replace(@"\s", "");
         public static ReplyContext FromMessage(ActionBase source, ChatMessage msg, string args) =>
@@ -158,7 +159,7 @@ namespace BannerlordTwitch
                     //_pubSub.OnWhisper += OnWhisper;
                     pubSub.OnPubSubServiceConnected += OnPubSubServiceConnected;
                     pubSub.OnRewardRedeemed += OnRewardRedeemed;
-                    pubSub.OnLog += (sender, args) =>
+                    pubSub.OnLog += (_, args) =>
                     {
                         if (args.Data.Contains("PONG")) return;
                         try
@@ -301,7 +302,7 @@ namespace BannerlordTwitch
                 return false;
             }
 
-            return affiliateSpoofing.FakeRedeem(reward.RewardSpec.Title, user, message) == true;
+            return affiliateSpoofing.FakeRedeem(reward.RewardSpec.Title, user, message);
             // var redeem = new OnRewardRedeemedArgs
             // {
             //     RedemptionId = Guid.NewGuid(),
@@ -382,8 +383,7 @@ namespace BannerlordTwitch
         private void ShowCommandHelp()
         {
             var help = "Commands: ".Yield()
-                .Concat(settings.EnabledCommands.Where(c
-                        => !c.HideHelp && !c.BroadcasterOnly && !c.ModOnly)
+                .Concat(settings.EnabledCommands.Where(c => !c.HideHelp)
                     .Select(c => string.IsNullOrEmpty(c.Help) ? $"!{c.Name}" : $"!{c.Name} - {c.Help}")
                 )
                 .ToList();
@@ -404,12 +404,6 @@ namespace BannerlordTwitch
             }
 
             var context = ReplyContext.FromMessage(cmd, chatMessage, args);
-            if (cmd.ModOnly && !context.IsModerator && !context.IsBroadcaster ||
-                cmd.BroadcasterOnly && !context.IsBroadcaster)
-            {
-                Log.Trace($"[{nameof(TwitchService)}] {chatMessage.Username} not allowed to use command {cmdName}");
-                return false;
-            }
 
 #if !DEBUG
             try
@@ -510,7 +504,7 @@ namespace BannerlordTwitch
             }
         }
 
-        private void OnPubSubServiceConnected(object sender, System.EventArgs e)
+        private void OnPubSubServiceConnected(object sender, EventArgs e)
         {
             Log.LogFeedSystem("TwitchService connected");
 

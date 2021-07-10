@@ -61,9 +61,15 @@ namespace BLTAdoptAHero
             generator.Div("class-config", () =>
             {
                 generator.H1("Classes");
+                // foreach (var cl in ClassDefs)
+                // {
+                //     generator.LinkToAnchor(cl.Name, () => generator.H2(cl.Name));
+                // }
                 foreach (var cl in ClassDefs)
                 {
+                    generator.H2(cl.Name);
                     cl.GenerateDocumentation(generator);
+                    generator.Br();
                 }
             });
         }

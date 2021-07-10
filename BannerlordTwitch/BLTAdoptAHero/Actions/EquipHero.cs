@@ -20,11 +20,12 @@ namespace BLTAdoptAHero
     [Description("Improve adopted heroes equipment")]
     internal class EquipHero : ActionHandlerBase
     {
-        private class Settings
+        private class Settings : IDocumentable
         {
             [Description("Allow improvement of adopted heroes who are also companions of the player."), 
              PropertyOrder(0), UsedImplicitly]
             public bool AllowCompanionUpgrade { get; set; } = true;
+
             [Description("Gold cost for Tier 1 equipment"), PropertyOrder(1), UsedImplicitly]
             public int CostTier1 { get; set; } = 25000;
 
@@ -62,6 +63,21 @@ namespace BLTAdoptAHero
             [Description("Whether to re-equip the equipment INSTEAD of upgrading it (you should make TWO commands, " +
                          "one to upgrade and one to reequip)"), PropertyOrder(11), UsedImplicitly]
             public bool ReequipInsteadOfUpgrade { get; set; }
+
+            public void GenerateDocumentation(IDocumentationGenerator generator)
+            {
+                if (ReequipInsteadOfUpgrade)
+                {
+                    generator.P("Re-rolls your equipment at your current tier");
+                }
+                
+                generator.P($"Tier costs: 1={CostTier1}{Naming.Gold}, 2={CostTier2}{Naming.Gold}, 3={CostTier3}{Naming.Gold}, 4={CostTier4}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 6={CostTier6}{Naming.Gold}");
+                
+                if (!AllowCompanionUpgrade)
+                {
+                    generator.P($"Disallowed for player companions");
+                }
+            }
         }
 
         protected override Type ConfigType => typeof(Settings);

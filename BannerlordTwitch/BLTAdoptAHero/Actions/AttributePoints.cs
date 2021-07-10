@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using BannerlordTwitch;
+using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -13,10 +15,20 @@ namespace BLTAdoptAHero
     [Description("Improve adopted heroes attribute points")]
     internal class AttributePoints : ImproveAdoptedHero
     {
-        protected class AttributePointsSettings : SettingsBase
+        protected class AttributePointsSettings : SettingsBase, IDocumentable
         {
-            [Description("If set a random attribute is improved, otherwise the viewer should provide part of the name of the attribute to improve (this works best as a chat command)"), PropertyOrder(1)]
+            [Description("If set a random attribute is improved, otherwise the viewer should provide part of the name of the attribute to improve (this works best as a chat command)"), PropertyOrder(1), UsedImplicitly]
             public bool Random { get; set; } = true;
+
+            public void GenerateDocumentation(IDocumentationGenerator generator)
+            {
+                generator.P(Random ? "Random attribute" : "Provide the attribute name (or part of it) when calling this");
+                generator.P($"Amount: {AmountLow}" + (AmountLow == AmountHigh ? $"" : $" to {AmountHigh}"));
+                if (GoldCost != 0)
+                {
+                    generator.P($"Costs {GoldCost}{Naming.Gold}");
+                }
+            }
         }
         
         protected override Type ConfigType => typeof(AttributePointsSettings);

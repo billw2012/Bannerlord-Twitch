@@ -237,6 +237,11 @@
     <Compile Include="Actions\IConfig.cs" />
     <Compile Include="Behaviors\BLTAgentModifierBehavior.cs" />
     <Compile Include="Behaviors\BLTAgentPfxBehaviour.cs" />
+    <Compile Include="Documentation\DocumentationGenerator.cs" />
+    <Compile Include="Documentation\DocumentationHelpers.cs" />
+    <Compile Include="Documentation\DocumentAttribute.cs" />
+    <Compile Include="Documentation\IDocumentable.cs" />
+    <Compile Include="Documentation\IDocumentationGenerator.cs" />
     <Compile Include="Helpers\AgentExtensions.cs" />
     <Compile Include="Helpers\AgentHelpers.cs" />
     <Compile Include="Helpers\AgentPfx.cs" />
@@ -259,7 +264,6 @@
     <Compile Include="Twitch\TwitchService.Bot.cs" />
     <Compile Include="Twitch\TwitchService.cs" />
     <Compile Include="UI\MultilineTextBoxEditor.cs" />
-    <Compile Include="Util\DocumentationGenerator.cs" />
     <Compile Include="Util\GameVersion.cs" />
     <Compile Include="Util\Assembly.cs" />
     <Compile Include="Util\AutoMissionBehavior.cs" />

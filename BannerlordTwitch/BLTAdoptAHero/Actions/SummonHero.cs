@@ -51,7 +51,7 @@ namespace BLTAdoptAHero
         [CategoryOrder("Effects", 2)]
         [CategoryOrder("End Effects", 3)]
         [CategoryOrder("Kill Effects", 4)]
-        private class Settings
+        private class Settings : IDocumentable
         {
             [Category("General"), YamlIgnore, ReadOnly(true), PropertyOrder(-100),
              Editor(typeof(MultilineTextNonEditable), typeof(MultilineTextNonEditable)), UsedImplicitly]
@@ -87,6 +87,28 @@ namespace BLTAdoptAHero
             
             [Category("Effects"), Description("HP the hero gets every second they are alive in the mission"), PropertyOrder(2)]
             public float HealPerSecond { get; [UsedImplicitly] set; }
+
+            public void GenerateDocumentation(IDocumentationGenerator generator)
+            {
+                generator.P(OnPlayerSide ? $"On streamers side" : "On enemy side");
+                if (HealPerSecond > 0)
+                {
+                    generator.P($"Heals {HealPerSecond:0.0}HP per second while summoned");
+                }
+                if (GoldCost > 0)
+                {
+                    generator.P($"Costs {GoldCost}{Naming.Gold}");
+                }
+
+                var allowed = new List<string>();
+                if(AllowFieldBattle) allowed.Add("Field battle");
+                if(AllowVillageBattle) allowed.Add("Village battle");
+                if(AllowSiegeBattle) allowed.Add("Siege battle");
+                if(AllowFriendlyMission) allowed.Add("Friendly mission");
+                if(AllowHideOut) allowed.Add("Hide-out");
+                
+                generator.P($"Allowed in {string.Join(", ", allowed)}");
+            }
         }
 
         protected override Type ConfigType => typeof(Settings);

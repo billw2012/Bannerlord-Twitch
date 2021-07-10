@@ -8,6 +8,7 @@ using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
 using Bannerlord.ButterLib.SaveSystem.Extensions;
+using BannerlordTwitch;
 using BannerlordTwitch.Annotations;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
@@ -617,7 +618,7 @@ namespace BLTAdoptAHero
         [CategoryOrder("Limits", 1)]
         [CategoryOrder("Costs", 2)]
         [CategoryOrder("Troop Types", 3)]
-        public class RetinueSettings
+        public class RetinueSettings : IDocumentable
         {
             [Category("Limits"), Description("Maximum number of units in the retinue. " +
                                             "Recommend less than 20, summons to NOT obey the games unit limits."), 
@@ -665,13 +666,25 @@ namespace BLTAdoptAHero
             [Category("Troop Types"), 
              Description("Whether to allow bandit units when UseHeroesCultureUnits is disabled"), 
              PropertyOrder(2), UsedImplicitly]
-            public bool IncludeBanditUnits { get; set; } = false;
+            public bool IncludeBanditUnits { get; set; }
 
             [Category("Troop Types"), Description("Whether to allow basic troops"), PropertyOrder(3), UsedImplicitly]
             public bool UseBasicTroops { get; set; } = true;
 
             [Category("Troop Types"), Description("Whether to allow elite troops"), PropertyOrder(4), UsedImplicitly]
             public bool UseEliteTroops { get; set; } = true;
+
+            public void GenerateDocumentation(IDocumentationGenerator generator)
+            {
+                generator.P($"Max retinue: {MaxRetinueSize}");
+                generator.P($"Tier costs: 1={CostTier1}{Naming.Gold}, 2={CostTier2}{Naming.Gold}, 3={CostTier3}{Naming.Gold}, 4={CostTier4}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 6={CostTier6}{Naming.Gold}");
+                var allowed = new List<string>();
+                if(UseHeroesCultureUnits) allowed.Add($"Same culture only");
+                if(IncludeBanditUnits) allowed.Add($"Bandits");
+                if(UseBasicTroops) allowed.Add($"Basic troops");
+                if(UseEliteTroops) allowed.Add($"Elite troops");
+                generator.P($"Allowed: {string.Join(", ", allowed)}");
+            }
         }
 
         public (bool success, string status) UpgradeRetinue(Hero hero, RetinueSettings settings)

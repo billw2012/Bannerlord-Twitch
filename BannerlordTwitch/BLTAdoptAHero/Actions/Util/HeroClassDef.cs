@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -171,7 +171,7 @@ namespace BLTAdoptAHero
             #region IDocumentable
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
-                generator.H3(Name);
+                generator.P("power-title", Name);
                 foreach (var power in Powers)
                 {
                     if (power is IDocumentable docPower)
@@ -301,7 +301,7 @@ namespace BLTAdoptAHero
             #region IDocumentable
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
-                generator.H3(Name);
+                generator.P("power-title", Name);
                 foreach (var power in Powers)
                 {
                     if (power is IDocumentable docPower)
@@ -363,22 +363,19 @@ namespace BLTAdoptAHero
         #region IDocumentable
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
-            generator.H3(Name);
+            generator.P(!string.IsNullOrEmpty(Description) ? Description : "Details");
 
-            if (!string.IsNullOrEmpty(Description))
+            generator.Table("hero-class-tiers", () =>
             {
-                generator.P(Description);
-            }
-
-            generator.Table("hero-class", () =>
-            {
-                generator.TR(() => { 
+                generator.TR(() =>
+                {
                     for (int i = 1; i <= 6; i++)
                     {
                         generator.TH($"Tier {i}");
                     }
                 });
-                generator.TR(() => { 
+                generator.TR(() =>
+                {
                     for (int i = 1; i <= 6; i++)
                     {
                         EquipHero.UpgradeEquipment(Hero.MainHero, i, this, false);

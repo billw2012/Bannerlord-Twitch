@@ -20,10 +20,15 @@ namespace BLTAdoptAHero
     internal class JoinTournament : ActionHandlerBase
     {
         [CategoryOrder("General", 1)]
-        private class Settings
+        private class Settings : IDocumentable
         {
             [Category("General"), Description("Gold cost to join"), PropertyOrder(4)]
             public int GoldCost { get; [UsedImplicitly] set; }
+
+            public void GenerateDocumentation(IDocumentationGenerator generator)
+            {
+                if (GoldCost != 0) generator.P($"Costs {GoldCost}{Naming.Gold}");
+            }
         }
         
         protected override Type ConfigType => typeof(Settings);

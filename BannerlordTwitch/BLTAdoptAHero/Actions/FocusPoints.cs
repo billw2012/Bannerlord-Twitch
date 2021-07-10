@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using BannerlordTwitch;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -10,16 +12,26 @@ namespace BLTAdoptAHero
     [Description("Add focus points to heroes skills")]
     internal class FocusPoints : ImproveAdoptedHero
     {
-        protected class FocusPointsSettings : SettingsBase
+        protected class FocusPointsSettings : SettingsBase, IDocumentable
         {
-            [Description("What skill to add focus to"), PropertyOrder(1)]
+            [Description("What skill to add focus to"), PropertyOrder(10), UsedImplicitly]
             public SkillsEnum Skills { get; set; } = SkillsEnum.None;
 
             [Description("Chooses a random skill to add focus to, prefering class skills, " +
                          "then skills for current equipment, then other skills. " +
                          "Skills setting is ignored when auto is used."),
-             PropertyOrder(2)]
+             PropertyOrder(12), UsedImplicitly]
             public bool Auto { get; set; } = true;
+            
+            public void GenerateDocumentation(IDocumentationGenerator generator)
+            {
+                generator.P($"Skills: {(Auto ? "Automatic, based on class, equipment, and existing skills" : Skills)}");
+                generator.P($"Focus points: {AmountLow}" + (AmountLow == AmountHigh ? $"" : $" to {AmountHigh}"));
+                if (GoldCost != 0)
+                {
+                    generator.P($"Costs {GoldCost}{Naming.Gold}");
+                }
+            }
         }
         
         protected override Type ConfigType => typeof(FocusPointsSettings);

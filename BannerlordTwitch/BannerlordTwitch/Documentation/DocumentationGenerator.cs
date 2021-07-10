@@ -20,71 +20,15 @@ using Path = System.IO.Path;
 
 namespace BannerlordTwitch
 {
-    public interface IDocumentable
-    {
-        void GenerateDocumentation(IDocumentationGenerator generator);
-    }
-    
-    public interface IDocumentationGenerator
-    {
-        IDocumentationGenerator Div(string css, Action content);
-        IDocumentationGenerator Div(Action content);
-        IDocumentationGenerator H1(string css, string content);
-        IDocumentationGenerator H1(string content);
-        IDocumentationGenerator H2(string css, string content);
-        IDocumentationGenerator H2(string content);
-        IDocumentationGenerator H3(string css, string content);
-        IDocumentationGenerator H3(string content);
-        IDocumentationGenerator Table(string css, Action content);
-        IDocumentationGenerator Table(Action content);
-        
-        IDocumentationGenerator TR(string css, Action content);
-        IDocumentationGenerator TR(Action content);
-        IDocumentationGenerator TR(string css, string content);
-        IDocumentationGenerator TR(string content);
-        
-        IDocumentationGenerator TH(string css, Action content);
-        IDocumentationGenerator TH(Action content);
-        IDocumentationGenerator TH(string css, string content);
-        IDocumentationGenerator TH(string content);
-        
-        IDocumentationGenerator TD(string css, Action content);
-        IDocumentationGenerator TD(Action content);
-        IDocumentationGenerator TD(string css, string content);
-        IDocumentationGenerator TD(string content);
-
-        IDocumentationGenerator P(string css, string content);
-        IDocumentationGenerator P(string content);
-        
-        IDocumentationGenerator Br();
-        IDocumentationGenerator Img(ItemObject item);
-        IDocumentationGenerator Img(string css, ItemObject item);
-        
-        IDocumentationGenerator Img(CharacterCode cc, string altText);
-        IDocumentationGenerator Img(string css, CharacterCode cc, string altText);
-    }
-    
     [HarmonyPatch]
     public class DocumentationGenerator : IDocumentationGenerator
     {
-        private readonly List<string> docs;
+        private int anchor;
+        private readonly List<string> toc = new();
+        private readonly List<string> content = new();
 
         private static string CSSFileName = "Bannerlord-Twitch-Documentation.css";
         private static string CSSFullPath => Path.Combine(Path.GetDirectoryName(typeof(Settings).Assembly.Location) ?? ".", "..", "..", CSSFileName);
-
-        public DocumentationGenerator()
-        {
-            docs = new List<string>
-            {
-                "<!DOCTYPE html><html>",
-                "<head>",
-                $"<link rel=\"stylesheet\" href=\"style.css\">",
-                "</head>",
-                "<body>",
-                "<div class=\"content\">",
-                "<h1>Bannerlord-Twitch Documentation</h1>",
-            };
-        }
 
         public void Document(IDocumentable documentable)
         {
@@ -96,17 +40,41 @@ namespace BannerlordTwitch
             "Configs", "BLT-documentation");
 
         public static string DocumentationPath => Path.Combine(DocumentationRootDir, "index.html");
-
-        public void Save()
+        
+        public void Save(bool addTOC = true)
         {
             MainThreadSync.Run(() => {
                 WaitForPendingImages();
                 
-                docs.Add("</div></html></body>");
+                if (addTOC)
+                {
+                    toc.InsertRange(0, new []
+                    {
+                        "<div class=\"toc-container\">",
+                        "<h2 class=\"toc-title\">Table of Contents</h2>"
+                    });
+                    toc.Add("</div>");
+                    content.InsertRange(0, toc);
+                }
+                
+                content.InsertRange(0, new[]
+                {
+                    "<!DOCTYPE html><html>",
+                    "<head>",
+                    "<meta charset=\"utf-8\"/>",
+                    "<link rel=\"stylesheet\" href=\"style.css\">",
+                    "</head>",
+                    "<body>",
+                    "<div class=\"content\">",
+                    "<h1>Bannerlord-Twitch Documentation</h1>",
+                });
+
+                content.Add("</div></html></body>");
+
                 try
                 {
                     Directory.CreateDirectory(DocumentationRootDir);
-                    File.WriteAllLines(DocumentationPath, docs);
+                    File.WriteAllLines(DocumentationPath, content);
                     string targetCSSFilePath = Path.Combine(DocumentationRootDir, "style.css");
                     if(File.Exists(targetCSSFilePath))
                         File.Delete(targetCSSFilePath);
@@ -153,15 +121,15 @@ namespace BannerlordTwitch
 
         private IDocumentationGenerator ScopedTag(string tag, string css, Action content)
         {
-            docs.Add(css != null ? $"<{tag} class=\"{css}\">" : $"<{tag}>");
+            this.content.Add(css != null ? $"<{tag} class=\"{css}\">" : $"<{tag}>");
             content();
-            docs.Add($"</{tag}>");
+            this.content.Add($"</{tag}>");
             return this;
         }
         
         private IDocumentationGenerator Tag(string tag, string css, string content)
         {
-            docs.Add(
+            this.content.Add(
                 css != null 
                     ? $"<{tag} class={css}>{content}</{tag}>"
                     : $"<{tag}>{content}</{tag}>"
@@ -171,15 +139,46 @@ namespace BannerlordTwitch
         
         public IDocumentationGenerator Div(string css, Action content) => ScopedTag("div", css, content);
         public IDocumentationGenerator Div(Action content) => Div(null, content);
-        public IDocumentationGenerator H1(string css, string content) => Tag("h1", css, content);
+        
+        public IDocumentationGenerator Details(string css, Action content) => ScopedTag("details", css, content);
+        public IDocumentationGenerator Details(Action content) => Details(null, content);
+        
+        public IDocumentationGenerator Summary(string css, Action content) => ScopedTag("summary", css, content);
+        public IDocumentationGenerator Summary(Action content) => Summary(null, content);
+        public IDocumentationGenerator Summary(string css, string content) => Tag("summary", css, content);
+        public IDocumentationGenerator Summary(string content) => Summary(null, content);
+
+        public IDocumentationGenerator H1(string css, string content)
+        {
+            toc.Add($"<a href=\"#{++anchor}\"><h1 class=\"toc-h1\">{content}</h1></a>");
+            MakeAnchor($"{anchor}", "");
+            return Tag("h1", css, content);
+        }
+
         public IDocumentationGenerator H1(string content) => H1(null, content);
-        public IDocumentationGenerator H2(string css, string content) => Tag("h2", css, content);
+        
+        public IDocumentationGenerator H2(string css, string content)
+        {
+            toc.Add($"<a href=\"#{++anchor}\"><h2 class=\"toc-h2\">{content}</h2></a>");
+            MakeAnchor($"{anchor}", "");
+            return Tag("h2", css, content);
+        }
+
         public IDocumentationGenerator H2(string content) => H2(null, content);
-        public IDocumentationGenerator H3(string css, string content) => Tag("h3", css, content);
+        
+        public IDocumentationGenerator H3(string css, string content)
+        {
+            toc.Add($"<a href=\"#{++anchor}\"><h3 class=\"toc-h3\">{content}</h3></a>");
+            MakeAnchor($"{anchor}", "");
+            return Tag("h3", css, content);
+        }
+
         public IDocumentationGenerator H3(string content) => H3(null, content);
+        
 
         public IDocumentationGenerator Table(string css, Action content) => ScopedTag("table", css, content);
         public IDocumentationGenerator Table(Action content) => Table(null, content);
+        
 
         public IDocumentationGenerator TR(string css, Action content) => ScopedTag("tr", css, content);
         public IDocumentationGenerator TR(Action content) => TR(null, content);
@@ -201,7 +200,7 @@ namespace BannerlordTwitch
 
         public IDocumentationGenerator Br()
         {
-            docs.Add("<br>");
+            content.Add("<br>");
             return this;
         }
 
@@ -239,6 +238,34 @@ namespace BannerlordTwitch
             };
             TableauCacheManager.Current.BeginCreateCharacterTexture(cc, 
                 texture => TextureComplete(altText, localPath, texture), true);
+            return this;
+        }
+
+        public IDocumentationGenerator MakeAnchor(string tag, Action content)
+        {
+            this.content.Add($"<a name=\"{tag}\">");
+            content();
+            this.content.Add("</a>");
+            return this;
+        }
+        
+        public IDocumentationGenerator MakeAnchor(string tag, string content)
+        {
+            this.content.Add($"<a name=\"{tag}\">{content}</a>");
+            return this;
+        }
+
+        public IDocumentationGenerator LinkToAnchor(string tag, Action content)
+        {
+            this.content.Add($"<a href=\"#{tag}\">");
+            content();
+            this.content.Add("</a>");
+            return this;
+        }
+        
+        public IDocumentationGenerator LinkToAnchor(string tag, string content)
+        {
+            this.content.Add($"<a href=\"#{tag}\">{content}</a>");
             return this;
         }
         
@@ -300,10 +327,10 @@ namespace BannerlordTwitch
 
         private string AddImage(string css, string name)
         {
-            string localPath = $"blt_img_{++imageId}.png";
+            string localPath = $"blt_img_{++imageId}.jpeg";
             if (File.Exists(localPath))
                 File.Delete(localPath);
-            docs.Add(css == null
+            content.Add(css == null
                 ? $"<img src=\"{localPath}\" alt=\"{name}\">"
                 : $"<img class=\"{css}\" src=\"{localPath}\" alt=\"{name}\">");
             return localPath;

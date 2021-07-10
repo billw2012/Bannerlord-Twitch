@@ -13,10 +13,15 @@ namespace BLTAdoptAHero
     [Description("Add and improve adopted heroes retinue")]
     public class Retinue : ActionHandlerBase
     {
-        private class Settings
+        private class Settings : IDocumentable
         {
-            [Description("Retinue Upgrade Settings"), PropertyOrder(1), ExpandableObject]
+            [Description("Retinue Upgrade Settings"), PropertyOrder(1), ExpandableObject, UsedImplicitly]
             public BLTAdoptAHeroCampaignBehavior.RetinueSettings Retinue { get; set; } = new();
+            
+            public void GenerateDocumentation(IDocumentationGenerator generator)
+            {
+                Retinue.GenerateDocumentation(generator);
+            }
         }
 
         protected override Type ConfigType => typeof(Settings);

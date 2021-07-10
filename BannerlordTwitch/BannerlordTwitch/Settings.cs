@@ -152,10 +152,6 @@ namespace BannerlordTwitch
         public bool HideHelp { get; set; }
         [Category("General"), Description("What to show in the !help command"), PropertyOrder(3), UsedImplicitly]
         public string Help { get; set; }
-        [Category("General"), Description("Only allows the broadcaster to use this command, and hides it from !help"), PropertyOrder(4), UsedImplicitly]
-        public bool BroadcasterOnly { get; set; }
-        [Category("General"), Description("Only allows the mods or broadcaster to use this command, and hides it from !help"), PropertyOrder(5), UsedImplicitly]
-        public bool ModOnly { get; set; }
         
         [ItemsSource(typeof(CommandHandlerItemsSource))]
         public override string Handler { get; set; }
@@ -400,10 +396,25 @@ namespace BannerlordTwitch
             {
                 generator.H1("Commands");
                 generator.Table(() => {
-                    generator.TR(() => generator.TH("Command").TH("Description"));
+                    generator.TR(() => generator.TH("Command").TH("Description").TH("Settings"));
                     foreach (var d in Commands.Where(c => c.Enabled))
                     {
-                        generator.TR(() => generator.TD(d.Name).TD(string.IsNullOrEmpty(d.Documentation) ? d.Help : d.Documentation));
+                        generator.TR(() =>
+                        {
+                            generator.TD(d.Name);
+                            generator.TD(string.IsNullOrEmpty(d.Documentation) ? d.Help : d.Documentation);
+                            generator.TD(() =>
+                            {
+                                if (d.HandlerConfig is IDocumentable doc)
+                                {
+                                    doc.GenerateDocumentation(generator);
+                                }
+                                else if (d.HandlerConfig != null)
+                                {
+                                    DocumentationHelpers.AutoDocument(generator, d.HandlerConfig);
+                                }
+                            });
+                        });
                     }
                 });
             });
@@ -412,10 +423,25 @@ namespace BannerlordTwitch
             {
                 generator.H1("Channel Point Rewards");
                 generator.Table(() => {
-                    generator.TR(() => generator.TH("Command").TH("Description"));
+                    generator.TR(() => generator.TH("Command").TH("Description").TH("Settings"));
                     foreach (var r in Rewards.Where(r => r.Enabled))
                     {
-                        generator.TR(() => generator.TD(r.RewardSpec.Title).TD(string.IsNullOrEmpty(r.Documentation) ? r.RewardSpec.Prompt : r.Documentation));
+                        generator.TR(() =>
+                        {
+                            generator.TD(r.RewardSpec.Title);
+                            generator.TD(string.IsNullOrEmpty(r.Documentation) ? r.RewardSpec.Prompt : r.Documentation);
+                            generator.TD(() =>
+                            {
+                                if (r.HandlerConfig is IDocumentable doc)
+                                {
+                                    doc.GenerateDocumentation(generator);
+                                }
+                                else if (r.HandlerConfig != null)
+                                {
+                                    DocumentationHelpers.AutoDocument(generator, r.HandlerConfig);
+                                }
+                            });
+                        });
                     }
                 });
             });

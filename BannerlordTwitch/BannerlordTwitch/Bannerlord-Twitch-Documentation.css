@@ -5,8 +5,9 @@
 /*}*/
 
 table {
-    border: 1px solid black;
-    margin: 0.2em;
+    border: 2px solid black;
+    margin: 0.5em;
+    width: 90%;
 }
 
 table, th, td {
@@ -14,8 +15,9 @@ table, th, td {
     border-collapse: collapse;
     font-family: verdana, sans-serif;
 }
+
 th, td {
-    padding: 4px 10px;
+    padding: 0.5em 0.5em;
     text-align: left;
 }
 /*table td:nth-child(1) {*/
@@ -54,12 +56,58 @@ table tr:nth-child(odd) {
 table th {
     background-color: #959595;
     color: #282828;
+    border-right: 1px dashed black;
 }
 
-.rewards td:nth-child(1), .commands td:nth-child(1), .hero-class td:nth-child(1) {
-    width: 10em;
-    font-weight: bold;
-    color: cornflowerblue;
+table td {
+    border-bottom: 1px solid black;
+}
+
+.rewards td:nth-child(1),
+.commands td:nth-child(1),
+.hero-class td:nth-child(1),
+.common-config td:nth-child(1),
+.tournament-config td:nth-child(1)
+{
+    width: 12em;
+    color: #9cb5e3;
+    font-size: 100%;
+    margin-right: 1em;
+}
+
+.hero-class td:nth-child(1)
+{
+    width: 8em;
+    background: #282828;
+}
+
+.rewards td:nth-child(2),
+.commands td:nth-child(2)
+{
+    font-size: 80%;
+}
+
+.common-config td:nth-child(2),
+.tournament-config td:nth-child(2)
+{
+    width: 6em;
+    font-size: 80%;
+}
+
+.rewards td:nth-child(3),
+.commands td:nth-child(3),
+.common-config td:nth-child(3),
+.tournament-config td:nth-child(3)
+{
+    color: #9a9a9a;
+    font-size: 80%;
+}
+
+.class-config tr:nth-child(2),
+.class-config td:nth-child(2),
+.class-config th:nth-child(2)
+{
+    width: auto;
 }
 
 .equip-img {
@@ -81,23 +129,71 @@ p {
 
 h1, h2, h3 {
     font-family: verdana, sans-serif;
-    text-transform: uppercase;
-    margin-top: 0.4em;
+    text-transform: capitalize;
+    margin-top: 1em;
     margin-bottom: 0.3em;
 }
 
+.toc-container {
+    background: #171717 none repeat scroll 0 0;
+    border: 1px solid #aaa;
+    display: table;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 20px;
+    width: auto;
+}
+
+.toc-container a:link, .toc-container a:visited
+{
+    color: #6da4c4;
+    text-decoration: none;
+}
+
+.toc-title {
+    font-weight: 700;
+    margin-top: 0.1em;
+    text-align: center;
+}
+
+.toc-h1 {
+    margin-left: 0;
+    margin-top: 0.1em;
+    font-size: medium;
+}
+
+.toc-h2 {
+    margin-left: 1em;
+    margin-top: 0.1em;
+    font-size: medium;
+}
+
+.toc-h3 {
+    margin-left: 2em;
+    margin-top: 0.1em;
+    font-size: medium;
+}
+
+details summary {
+    cursor: pointer;
+}
+
+details summary > * {
+    display: inline;
+}
+
 a:link {
-    color: aquamarine;
+    color: #6da4c4;
     text-decoration: none;
 }
 
 a:visited {
-    color: #ff927f;
+    color: #886ae3;
     text-decoration: none;
 }
 
-a:hover {
-    color: #00ffb2;
+a:hover, .toc-container a:hover {
+    color: #e2e6f1;
     text-decoration: underline;
 }
 
