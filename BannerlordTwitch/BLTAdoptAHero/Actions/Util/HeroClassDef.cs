@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -133,15 +133,16 @@ namespace BLTAdoptAHero
 
             [YamlIgnore, Browsable(false)]
             private GlobalHeroPowerConfig PowerConfig { get; set; }
-            
+
             [Browsable(false), YamlIgnore]
-            private IEnumerable<IHeroPowerPassive> Powers 
-            => new []
-            {
-                PowerConfig.GetPower(Power1) as IHeroPowerPassive, 
-                PowerConfig.GetPower(Power2) as IHeroPowerPassive, 
-                PowerConfig.GetPower(Power3) as IHeroPowerPassive,
-            }.Where(p => p != null);
+            private IEnumerable<IHeroPowerPassive> Powers {
+                get
+                {
+                    if (PowerConfig.GetPower(Power1) is IHeroPowerPassive p1) yield return p1;
+                    if (PowerConfig.GetPower(Power2) is IHeroPowerPassive p2) yield return p2;
+                    if (PowerConfig.GetPower(Power3) is IHeroPowerPassive p3) yield return p3;
+                }
+            }
             
             public void OnHeroJoinedBattle(Hero hero)
             {
@@ -218,14 +219,15 @@ namespace BLTAdoptAHero
             private GlobalHeroPowerConfig PowerConfig { get; set; }
             
             [Browsable(false), YamlIgnore]
-            private IEnumerable<IHeroPowerActive> Powers 
-            => new []
-            {
-                PowerConfig.GetPower(Power1) as IHeroPowerActive, 
-                PowerConfig.GetPower(Power2) as IHeroPowerActive, 
-                PowerConfig.GetPower(Power3) as IHeroPowerActive
-            }.Where(p => p != null);
-            
+            private IEnumerable<IHeroPowerActive> Powers {
+                get
+                {
+                    if (PowerConfig.GetPower(Power1) is IHeroPowerActive p1) yield return p1;
+                    if (PowerConfig.GetPower(Power2) is IHeroPowerActive p2) yield return p2;
+                    if (PowerConfig.GetPower(Power3) is IHeroPowerActive p3) yield return p3;
+                }
+            }
+
             public bool IsActive(Hero hero) => Powers.Any(power => power.IsActive(hero));
 
             public (bool canActivate, string failReason) CanActivate(Hero hero)
