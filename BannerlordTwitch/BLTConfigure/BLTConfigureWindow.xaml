@@ -43,7 +43,7 @@
             </Style>
         </DockPanel.Resources>
         <TextBlock DockPanel.Dock="Bottom" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold">Reload saved game to apply changes</TextBlock>
-        <TabControl Name="TabControl" SelectedIndex="0">
+        <TabControl Name="TabControl" SelectedIndex="1">
             <TabItem>
                 <TabItem.Header>
                     <TextBlock Margin="10 2">Configuration</TextBlock>
@@ -212,42 +212,96 @@
                 <TabItem.Header>
                     <TextBlock Margin="10 2">Documentation</TextBlock>
                 </TabItem.Header>
-                <StackPanel>
-                    <Button Click="GenerateDocumentationButton_OnClick">Generate Documentation</Button>
-                    <Button Click="OpenGeneratedDocumentationButton_OnClick">Open Generated Documentation</Button>
-                </StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" FontSize="16" >
+                        On this tab you can automatically generate documentation for your custom BLT config settings. 
+                        It is generated as a webpage, including a html file, css file, and a set of images.
+                    </TextBlock>
+                    <Separator Grid.Row="1"/>
+                    <TextBlock Grid.Row="2" >
+                        Some useful links: 
+                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://discord.gg/q2p4eHsxFn">Discord</Hyperlink>|
+                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://www.nexusmods.com/mountandblade2bannerlord/mods/2933">NexusMods</Hyperlink>|
+                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/billw2012/Bannerlord-Twitch">GitHub</Hyperlink>
+                    </TextBlock>
+                    <Separator Grid.Row="3"/>
+                    <ScrollViewer Grid.Row="4">
+                        <StackPanel>
+                            <TextBlock>
+                                You have various options for how to distribute it, but the quickest and simplest is to host 
+                                it on <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
+                                                 NavigateUri="http://neocities.org">http://neocities.org</Hyperlink>. 
+                                The whole process shouldn't take more than a couple of minutes:<LineBreak/>
+                                <Bold>1.</Bold> Load into a campaign save (it doesn't matter which one)<LineBreak/>
+                                <Bold>2.</Bold> Click the Generate Documentation Button.<LineBreak/>
+                                <Bold>3.</Bold> Click the Open Generated Documentation Folder Button.<LineBreak/>
+                                <Bold>4.</Bold> Goto 
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
+                                           NavigateUri="http://neocities.org">http://neocities.org</Hyperlink>, sign up. 
+                                It should create a new website for you with a name you specify.<LineBreak/>
+                                <Bold>5.</Bold> Open your new websites dashboard at 
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
+                                           NavigateUri="http://neocities.org/dashboard">https://neocities.org/dashboard
+                                </Hyperlink>.<LineBreak/>
+                                <Bold>6.</Bold> Drag all the files from your BLT-documentation folder into the website files 
+                                area on the dashboard.<LineBreak/>
+                                <Bold>7.</Bold> Once the files finish uploading your documentation website should be available 
+                                (the link is at the top of dashboard page).<LineBreak/>
+                                If you have any problems with this process please request help in the discord.
+                            </TextBlock>
+                            <Separator/>
+                            <TextBlock DockPanel.Dock="Left" FontSize="16">Title</TextBlock>
+                            <TextBox Margin="15 5" Text="{Binding DocsTitle}"/>
+                            <TextBlock DockPanel.Dock="Left" FontSize="16">Introduction</TextBlock>
+                            <TextBox VerticalScrollBarVisibility="Visible" Margin="15 5" MinHeight="60" MaxHeight="120" Text="{Binding DocsIntroduction}" TextWrapping="Wrap" AcceptsReturn="True"/>
+                            <WrapPanel Margin="15" Orientation="Horizontal">
+                                <Button Margin="0 0 15 0" HorizontalAlignment="Left" 
+                                        Click="GenerateDocumentationButton_OnClick">Generate Documentation</Button>
+                                <Button Margin="0 0 15 0" HorizontalAlignment="Left" 
+                                        Click="OpenGeneratedDocumentationButton_OnClick">Open Documentation</Button>
+                                <Button Margin="0 0 15 0" HorizontalAlignment="Left" 
+                                        Click="OpenGeneratedDocumentationFolderButton_OnClick">Open Documentation Folder</Button>
+                            </WrapPanel>
+                            <TextBlock Margin="15 5" Name="GenerateDocumentationResult"/>
+                            <Separator/>
+                            <TextBlock FontSize="16">Advanced</TextBlock>
+                            <TextBlock>
+                                <Run>If you want to automate updating of your Neocities site, this is fairly simple.</Run><LineBreak/> 
+                                <Run>Enter your Neocities.org username and password below (they will be stored securely):</Run>
+                            </TextBlock>
+                            <StackPanel Margin="0 15" Orientation="Horizontal">
+                                <TextBlock Margin="15 0 10 0">Username</TextBlock><TextBox Name="NeocitiesUsername" VerticalAlignment="Center" MinWidth="150"/>
+                                <TextBlock Margin="15 0 10 0">Password</TextBlock><PasswordBox Name="NeocitiesPassword" VerticalAlignment="Center" MinWidth="150"/>
+                            </StackPanel>
+                            <TextBlock>
+                                Now you can click this button to upload the current contents of your documentation folder directly to your site,
+                                replacing whatever is currently there:
+                            </TextBlock>
+                            <Button Margin="15 10" HorizontalAlignment="Left"
+                                    Click="UploadDocumentation_OnClick">Upload Documentation</Button>
+                            <TextBlock Margin="15 5" Name="UploadStatus"/>
+                            <ProgressBar Margin="15 50" Name="UploadProgress" Visibility="Collapsed"></ProgressBar>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
                     <TextBlock Margin="10 2">Authorize</TextBlock>
                 </TabItem.Header>
-                <StackPanel TextBlock.FontSize="15">
-                    <StackPanel.Resources>
-                        <!-- <Style TargetType="TextBlock"> -->
-                        <!--     <Setter Property="FontSize" Value="15"/> -->
-                        <!--     <Setter Property="Margin" Value="10"/> -->
-                        <!-- </Style> -->
-                        <!-- <Style TargetType="Button"> -->
-                        <!--     <Setter Property="HorizontalAlignment" Value="Left"/> -->
-                        <!--     <Setter Property="Margin" Value="20 5"/> -->
-                        <!--     <Setter Property="Padding" Value="10 5"/> -->
-                        <!-- </Style> -->
-                        <!-- <Style TargetType="TextBox"> -->
-                        <!--     <Setter Property="HorizontalAlignment" Value="Stretch"/> -->
-                        <!--     <Setter Property="Margin" Value="20 10"/> -->
-                        <!--     <Setter Property="Padding" Value="20 5"/> -->
-                        <!-- </Style> -->
-                        <!-- <Style TargetType="Expander"> -->
-                        <!--     <Setter Property="HorizontalAlignment" Value="Stretch"/> -->
-                        <!--     <Setter Property="Margin" Value="5"/> -->
-                        <!--     <Setter Property="Padding" Value="5"/> -->
-                        <!-- </Style> -->
-                        <!-- <Style TargetType="fa:ImageAwesome"> -->
-                        <!--     <Setter Property="Margin" Value="10 10"/> -->
-                        <!-- </Style> -->
-                    </StackPanel.Resources>
+                <ScrollViewer>
+                <StackPanel>
                     <TextBlock TextWrapping="Wrap">
-                        When you click the button your web browser will open on a Twitch page that will request authorization for this mod. When you grant it, the page will automatically pass the authorization to the mod, at which point you can close it and return here.
+                        When you click the button your web browser will open on a Twitch page that will request 
+                        authorization for this mod. When you grant it, the page will automatically pass the 
+                        authorization to the mod, at which point you can close it and return here.
                     </TextBlock>
                     <StackPanel Orientation="Horizontal">
                         <Button Content="Authorize" Margin="15" HorizontalAlignment="Left" Click="GenerateToken_OnClick"/>
@@ -258,17 +312,21 @@
                                     <fa:ImageAwesome Icon="Spinner" Spin="True" Height="20" Width="20" />
                                 </StackPanel>
                             </Button>
-                            <TextBlock FontSize="15" VerticalAlignment="Center" FontStyle="Italic" Foreground="Indigo">Switch to your web browser now to grant authorization!</TextBlock>
+                            <TextBlock FontSize="15" VerticalAlignment="Center" FontStyle="Italic" Foreground="Indigo">
+                                Switch to your web browser now to grant authorization!
+                            </TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" MouseUp="TestTokenButton_OnClick">
-                            <fa:ImageAwesome Name="AuthTokenTesting" Icon="Spinner" Spin="True" Height="20" Width="20" Visibility="Collapsed" HorizontalAlignment="Right"/>
+                            <fa:ImageAwesome Name="AuthTokenTesting" Icon="Spinner" Spin="True" 
+                                             Height="20" Width="20" Visibility="Collapsed" HorizontalAlignment="Right"/>
                             <StackPanel Orientation="Horizontal" Name="AuthTokenTestSuccess" Visibility="Collapsed" >
                                 <fa:ImageAwesome Icon="Check" Height="20" Width="20" Foreground="LimeGreen"/>
                                 <TextBlock Margin="0" VerticalAlignment="Center" Foreground="LimeGreen" FontWeight="Bold">Authorized!</TextBlock>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Name="AuthTokenTestFailure" Visibility="Collapsed">
                                 <fa:ImageAwesome Icon="Ban" Height="20" Width="20" Foreground="OrangeRed"/>
-                                <TextBlock Margin="0" VerticalAlignment="Center" Foreground="OrangeRed" FontWeight="Bold">Not Authorized</TextBlock>
+                                <TextBlock Margin="0" VerticalAlignment="Center" Foreground="OrangeRed" 
+                                           FontWeight="Bold">Not Authorized</TextBlock>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -277,10 +335,14 @@
                     </Expander>
                     <Separator Height="20"/>
                     <TextBlock TextWrapping="Wrap">
-                        By default the bot will use your main account. This means it will be your name that appears when the bot says things. If you want to use a different account for the bot then first create a new twitch account with the bot name you want, sign into it on Twitch, then click Authorize Bot Separately
+                        By default the bot will use your main account. This means it will be your name that appears 
+                        when the bot says things. If you want to use a different account for the bot then first 
+                        create a new twitch account with the bot name you want, sign into it on Twitch, then click 
+                        Authorize Bot Separately
                     </TextBlock>
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="Authorize Bot Separately" Margin="15" HorizontalAlignment="Left" Click="GenerateBotToken_OnClick"/>
+                        <Button Content="Authorize Bot Separately" Margin="15" 
+                                HorizontalAlignment="Left" Click="GenerateBotToken_OnClick"/>
                         <StackPanel Orientation="Horizontal" Visibility="Collapsed" Name="GenerateBotTokenCancel">
                             <Button Click="CancelAuth_OnClick" >
                                 <StackPanel Orientation="Horizontal">
@@ -288,7 +350,10 @@
                                     <fa:ImageAwesome Icon="Spinner" Spin="True" Height="20" Width="20" />
                                 </StackPanel>
                             </Button>
-                            <TextBlock FontSize="15" VerticalAlignment="Center" FontStyle="Italic" Foreground="Indigo">Switch to your web browser now to grant authorization!</TextBlock>
+                            <TextBlock FontSize="15" VerticalAlignment="Center" 
+                                       FontStyle="Italic" Foreground="Indigo">
+                                Switch to your web browser now to grant authorization!
+                            </TextBlock>
                         </StackPanel>
                         <Button Name="UseMainAccountForBotButton" Margin="15" Content="Use Main Account for Bot"  HorizontalAlignment="Left" Click="UseMainAccountForBot_OnClick"/>
                     </StackPanel>
@@ -297,21 +362,31 @@
                     </Expander>
                     <Separator Height="20"/>
                     <TextBlock TextWrapping="Wrap">
-                        If you want to revoke access for any reason (for instance you think one of your tokens was compromised), go to <Hyperlink 
-                            NavigateUri="https://www.twitch.tv/settings/connections"
-                            RequestNavigate="Hyperlink_RequestNavigate">
+                        If you want to revoke access for any reason (for instance you think one of your tokens was 
+                        compromised), go to 
+                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
+                                   NavigateUri="https://www.twitch.tv/settings/connections">
                             https://www.twitch.tv/settings/connections
                         </Hyperlink>, and disconnect the BannerlordIntegrationMod.
                     </TextBlock>
                     <Separator Height="20"/>
                     <TextBlock TextWrapping="Wrap" FontSize="20">Miscellaneous Settings</TextBlock>
-                    <CheckBox Margin="8 2" IsChecked="{Binding AffiliateSpoofing}" VerticalContentAlignment="Center">
-                        <TextBlock TextWrapping="Wrap">Affiliate Spoofing (this is for debugging and testing purposes, it will stop normal channel point rewards from working!)</TextBlock>
+                    <CheckBox Margin="8 2" IsChecked="{Binding AffiliateSpoofing}"
+                              VerticalContentAlignment="Center">
+                        <TextBlock TextWrapping="Wrap">
+                            Affiliate Spoofing (this is for debugging and testing purposes, it will stop normal 
+                            channel point rewards from working!)
+                        </TextBlock>
                     </CheckBox>
-                    <CheckBox Margin="8 2" IsChecked="{Binding DisableAutomaticFulfillment}" VerticalContentAlignment="Center">
-                        <TextBlock TextWrapping="Wrap">Disable automatic Channel Point Rewards completion (redemptions will remain in the queue to be refunded or completed at the streamers discretion)</TextBlock>
+                    <CheckBox Margin="8 2" 
+                              IsChecked="{Binding DisableAutomaticFulfillment}" 
+                              VerticalContentAlignment="Center">
+                        <TextBlock TextWrapping="Wrap">Disable automatic Channel Point Rewards completion 
+                            (redemptions will remain in the queue to be refunded or completed at the streamers 
+                            discretion)</TextBlock>
                     </CheckBox>
                 </StackPanel>
+                </ScrollViewer>
             </TabItem>
         </TabControl>
     </DockPanel>

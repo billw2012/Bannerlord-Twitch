@@ -35,13 +35,13 @@ namespace BannerlordTwitch
             MainThreadSync.Run(() => documentable.GenerateDocumentation(this));
         }
 
-        private static string DocumentationRootDir => Path.Combine(
+        public static string DocumentationRootDir => Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Mount and Blade II Bannerlord",
             "Configs", "BLT-documentation");
 
         public static string DocumentationPath => Path.Combine(DocumentationRootDir, "index.html");
         
-        public void Save(bool addTOC = true)
+        public void Save(string title, string introduction, bool addTOC = true)
         {
             MainThreadSync.Run(() => {
                 WaitForPendingImages();
@@ -66,7 +66,8 @@ namespace BannerlordTwitch
                     "</head>",
                     "<body>",
                     "<div class=\"content\">",
-                    "<h1>Bannerlord-Twitch Documentation</h1>",
+                    $"<h1>{title}</h1>",
+                    $"<p>{introduction}</p>"
                 });
 
                 content.Add("</div></html></body>");

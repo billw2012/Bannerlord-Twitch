@@ -8,7 +8,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Security.Authentication;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -16,8 +18,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Navigation;
 using BannerlordTwitch;
+using BannerlordTwitch.Annotations;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
@@ -41,7 +45,7 @@ namespace BLTConfigure
         }
     }
 
-    public partial class BLTConfigureWindow
+    public partial class BLTConfigureWindow : INotifyPropertyChanged
     {
         public IEnumerable<NewActionViewModel> RewardHandlersViewModel => ActionManager.RewardHandlers.Select(a => new NewActionViewModel(_ => this.NewReward(a), a.GetType()));
         public IEnumerable<NewActionViewModel> CommandHandlersViewModel => ActionManager.CommandHandlers.Select(h => new NewActionViewModel(_ => this.NewCommand(h), h.GetType()));
@@ -69,6 +73,27 @@ namespace BLTConfigure
             }
         }
         
+                
+        public string DocsTitle
+        {
+            get => EditedAuthSettings.DocsTitle;
+            set
+            {
+                EditedAuthSettings.DocsTitle = value;
+                SaveAuth();
+            }
+        }          
+        
+        public string DocsIntroduction
+        {
+            get => EditedAuthSettings.DocsIntroduction;
+            set
+            {
+                EditedAuthSettings.DocsIntroduction = value;
+                SaveAuth();
+            }
+        }
+        
         public BLTConfigureWindow()
         {
             InitializeComponent();
@@ -80,6 +105,7 @@ namespace BLTConfigure
         {
             base.OnDeactivated(e);
             SaveSettings();
+            StoreNeocitiesLogin();
             SaveAuth();
         }
 
@@ -87,6 +113,7 @@ namespace BLTConfigure
         {
             base.OnClosing(e);
             SaveSettings();
+            StoreNeocitiesLogin();
             SaveAuth();
         }
         
@@ -145,6 +172,63 @@ namespace BLTConfigure
 
             UpdateToken(EditedAuthSettings.AccessToken);
             UpdateBotToken(EditedAuthSettings.BotAccessToken);
+            
+            NeocitiesUsername.Text = EditedAuthSettings.NeocitiesUsername ?? string.Empty;
+            NeocitiesPassword.Password = !string.IsNullOrEmpty(EditedAuthSettings.NeocitiesPassword) 
+                ? UnprotectString(EditedAuthSettings.NeocitiesPassword) 
+                : string.Empty;
+        }
+        
+        private static int RoundUp(int numToRound, int multiple)
+        {
+            if (multiple == 0)
+                return numToRound;
+
+            int remainder = numToRound % multiple;
+            if (remainder == 0)
+                return numToRound;
+
+            return numToRound + multiple - remainder;
+        }
+
+        private static string ProtectString(string unprotectedString)
+        {
+            byte[] pwBytes = Encoding.ASCII.GetBytes(unprotectedString);
+            var ms = new MemoryStream();
+            var writer = new BinaryWriter(ms);
+            writer.Write(pwBytes.Length);
+            writer.Write(pwBytes);
+            while (ms.Length % 16 != 0)
+            {
+                writer.Write((byte)0);
+            }
+            byte[] packedBytes = ms.GetBuffer();
+            ProtectedMemory.Protect(packedBytes, MemoryProtectionScope.SameLogon);
+            return Convert.ToBase64String(packedBytes);
+        }
+        
+        private static string UnprotectString(string protectedString)
+        {
+            byte[] bytes = Convert.FromBase64String(protectedString);
+            ProtectedMemory.Unprotect(bytes, MemoryProtectionScope.SameLogon);
+            var ms = new MemoryStream(bytes);
+            var reader = new BinaryReader(ms);
+            int len = reader.ReadInt32();
+            byte[] pwBytes = reader.ReadBytes(len);
+            return Encoding.ASCII.GetString(pwBytes);
+        }
+        
+        private void StoreNeocitiesLogin()
+        {
+            EditedAuthSettings.NeocitiesUsername = NeocitiesUsername.Text;
+            if (!string.IsNullOrEmpty(NeocitiesPassword.Password))
+            {
+                EditedAuthSettings.NeocitiesPassword = ProtectString(NeocitiesPassword.Password);
+            }
+            else
+            {
+                EditedAuthSettings.NeocitiesPassword = string.Empty;
+            }
         }
 
         private void RefreshActionList()
@@ -329,6 +413,8 @@ namespace BLTConfigure
             "whispers:edit",
         };
 
+        private static readonly SolidColorBrush ErrorStatusForeground = Brushes.Crimson;
+
         private async void GenerateBotToken_OnClick(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -406,7 +492,7 @@ namespace BLTConfigure
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            Process.Start(e.Uri.ToString());
+            Task.Run(() => Process.Start(e.Uri.ToString()));
         }
 
         private void PropertyGrid_OnSelectedObjectChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -427,7 +513,7 @@ namespace BLTConfigure
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+            WindowState = WindowState.Minimized;
         }
 
         private void PropertyGrid_OnPreparePropertyItem(object sender, PropertyItemEventArgs e)
@@ -435,34 +521,154 @@ namespace BLTConfigure
             if (e.PropertyItem.IsExpandable)
             {
                 e.PropertyItem.IsExpanded = true;
-                // e.PropertyItem.IsExpandable = false;
-                // ExpandAndFixNames(e.PropertyItem.Properties);
             }
 
             e.PropertyItem.DisplayName = e.PropertyItem.DisplayName.SplitCamelCase();
-            //throw new NotImplementedException();
         }
 
-        private const string DocumentationFile = "Bannerlord-Twitch-Documentation.html";
-        
         private void GenerateDocumentationButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (Campaign.Current?.GameStarted == false)
+            if (Campaign.Current?.GameStarted != true)
             {
+                GenerateDocumentationResult.Foreground = ErrorStatusForeground;
+                GenerateDocumentationResult.Text =
+                    $"You need to start the campaign, or load a save before generating documentation!";
                 return;
             }
             
-            var docs = new DocumentationGenerator();
-            docs.Document(EditedSettings);
-            docs.Save();
+            try
+            {
+                GenerateDocumentationResult.Text = "Generating Documentation...";
+                var docs = new DocumentationGenerator();
+                docs.Document(EditedSettings);
+                docs.Save(DocsTitle, DocsIntroduction);
+                GenerateDocumentationResult.Text = "Documentation Generation Complete";
+                GenerateDocumentationResult.Foreground = Brushes.Black;
+            }
+            catch (Exception ex)
+            {
+                GenerateDocumentationResult.Foreground = ErrorStatusForeground;
+                GenerateDocumentationResult.Text =
+                    $"Couldn't generate the documentation: {ex.Message}";
+            }
         }
 
         private void OpenGeneratedDocumentationButton_OnClick(object sender, RoutedEventArgs e)
         {
             if(File.Exists(DocumentationGenerator.DocumentationPath))
             {
-                Process.Start(DocumentationGenerator.DocumentationPath);
+                try
+                {
+                    Process.Start(DocumentationGenerator.DocumentationPath);
+                    GenerateDocumentationResult.Text = string.Empty;
+                }
+                catch (Exception ex)
+                {
+                    GenerateDocumentationResult.Foreground = ErrorStatusForeground;
+                    GenerateDocumentationResult.Text =
+                        $"Couldn't open the documentation: {ex.Message}";
+                }
             }
+            else
+            {
+                GenerateDocumentationResult.Foreground = ErrorStatusForeground;
+                GenerateDocumentationResult.Text =
+                    "Documentation file doesn't exist, did you generate the documentation yet?";
+            }
+        }
+
+        private void OpenGeneratedDocumentationFolderButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if(Directory.Exists(DocumentationGenerator.DocumentationRootDir))
+            {
+                try
+                {
+                    Process.Start(DocumentationGenerator.DocumentationRootDir);
+                    GenerateDocumentationResult.Text = string.Empty;
+                }
+                catch (Exception ex)
+                {
+                    GenerateDocumentationResult.Foreground = ErrorStatusForeground;
+                    GenerateDocumentationResult.Text =
+                        $"Couldn't open the documentation {ex.Message}";
+                }
+            }
+            else
+            {
+                GenerateDocumentationResult.Foreground = ErrorStatusForeground;
+                GenerateDocumentationResult.Text =
+                    "Documentation folder doesn't exist, did you generate the documentation yet?";
+            }
+        }
+
+        private async void UploadDocumentation_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (!Directory.Exists(DocumentationGenerator.DocumentationRootDir))
+            {
+                UploadStatus.Text = "Documentation directory does not exist, did you Generate Documentation yet?";
+                UploadStatus.Foreground = ErrorStatusForeground;
+                return;
+            }
+            string[] files = Directory.GetFiles(DocumentationGenerator.DocumentationRootDir);
+            if (!files.Any())
+            {
+                UploadStatus.Text = "No documentation files found, did you Generate Documentation yet?";
+                UploadStatus.Foreground = ErrorStatusForeground;
+                return;
+            }
+            if (files.All(f => Path.GetFileName(f) != "index.html"))
+            {
+                UploadStatus.Text = "Documentation doesn't contain index.html file, did you Generate Documentation yet?";
+                UploadStatus.Foreground = ErrorStatusForeground;
+                return;
+            }
+
+            try
+            {
+                using var httpClient = new HttpClient();
+                httpClient.DefaultRequestHeaders.Authorization = new("Basic", 
+                    Convert.ToBase64String(
+                        Encoding.ASCII.GetBytes($"{NeocitiesUsername.Text}:{NeocitiesPassword.Password}")));
+
+                UploadProgress.Maximum = files.Length;
+                UploadProgress.Visibility = Visibility.Visible;
+                
+                for (int index = 0; index < files.Length; index++)
+                {
+                    string fileName = Path.GetFileName(files[index]);
+                    UploadStatus.Text = $"Uploading {fileName} ({index + 1} / {files.Length}) ...";
+                    UploadStatus.Foreground = Brushes.Black;
+                    UploadProgress.Value = index + 1;
+
+                    var form = new MultipartFormDataContent();
+                    var streamContent = new StreamContent(File.Open(files[index], FileMode.Open));
+                    streamContent.Headers.Add("Content-Type",MimeMapping.GetMimeMapping(fileName));
+                    streamContent.Headers.Add("Content-Disposition", $"form-data; name=\"{fileName}\"; filename=\"{fileName}\"");
+                    form.Add(streamContent, "file", fileName);
+                    
+                    var response = await httpClient.PostAsync($"https://neocities.org/api/upload", form);
+                    
+                    response.EnsureSuccessStatusCode();
+                    string sd = response.Content.ReadAsStringAsync().Result;
+                }
+
+                UploadStatus.Text = "Upload complete";
+            }
+            catch (Exception ex)
+            {
+                UploadStatus.Text = $"Error uploading: {ex.Message}";
+                UploadStatus.Foreground = ErrorStatusForeground;
+            }
+            
+            UploadProgress.Visibility = Visibility.Collapsed;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
     
