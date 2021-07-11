@@ -43,7 +43,7 @@
             </Style>
         </DockPanel.Resources>
         <TextBlock DockPanel.Dock="Bottom" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold">Reload saved game to apply changes</TextBlock>
-        <TabControl Name="TabControl" SelectedIndex="1">
+        <TabControl Name="TabControl" SelectedIndex="0">
             <TabItem>
                 <TabItem.Header>
                     <TextBlock Margin="10 2">Configuration</TextBlock>
