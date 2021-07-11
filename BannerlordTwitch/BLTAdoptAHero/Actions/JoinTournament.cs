@@ -133,11 +133,17 @@ namespace BLTAdoptAHero
         {
             BLTTournamentQueueBehavior.Current.CloseBetting(__instance);
         }
+         
+        [UsedImplicitly, HarmonyPrefix, HarmonyPatch(typeof(TournamentBehavior), "EndCurrentMatch")]
+        public static void EndCurrentMatchPrefix(TournamentBehavior __instance)
+        {
+            BLTTournamentQueueBehavior.Current.EndCurrentMatchPrefix(__instance);
+        }
         
         [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(TournamentBehavior), "EndCurrentMatch")]
         public static void EndCurrentMatchPostfix(TournamentBehavior __instance)
         {
-            BLTTournamentQueueBehavior.Current.EndCurrentMatch(__instance);
+            BLTTournamentQueueBehavior.Current.EndCurrentMatchPostfix(__instance);
         }
 
         public static void OnGameEnd(Campaign campaign)

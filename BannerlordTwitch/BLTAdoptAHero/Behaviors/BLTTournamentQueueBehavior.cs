@@ -47,9 +47,9 @@ namespace BLTAdoptAHero
         {
             if (dataStore.IsSaving)
             {
-                var usedHeroList = tournamentQueue.Select<TournamentQueueEntry, Hero>(t => t.Hero).ToList();
+                var usedHeroList = tournamentQueue.Select(t => t.Hero).ToList();
                 dataStore.SyncData("UsedHeroObjectList", ref usedHeroList);
-                var queue = tournamentQueue.Select<TournamentQueueEntry, TournamentQueueEntrySavable>(e => new TournamentQueueEntrySavable
+                var queue = tournamentQueue.Select(e => new TournamentQueueEntrySavable
                 {
                     HeroIndex = usedHeroList.IndexOf(e.Hero),
                     IsSub = e.IsSub,
@@ -234,13 +234,13 @@ namespace BLTAdoptAHero
                 }
             }
 				
-            var tournamentBehaviour = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>();
+            var tournamentBehavior = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>();
 
-            tournamentBehaviour.TournamentEnd += () =>
+            tournamentBehavior.TournamentEnd += () =>
             {
                 // Win results, put winner last
                 foreach (var entry in activeTournament
-                    .OrderBy(e => e.Hero == tournamentBehaviour.Winner.Character?.HeroObject)
+                    .OrderBy(e => e.Hero == tournamentBehavior.Winner.Character?.HeroObject)
                 )
                 {
                     if (entry.Hero != null && savedArmor.TryGetValue(entry.Hero, out var originalGear))
@@ -253,7 +253,7 @@ namespace BLTAdoptAHero
                         
                     float actualBoost = entry.IsSub ? Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1) : 1;
                     var results = new List<string>();
-                    if (entry.Hero != null && entry.Hero == tournamentBehaviour.Winner.Character?.HeroObject)
+                    if (entry.Hero != null && entry.Hero == tournamentBehavior.Winner.Character?.HeroObject)
                     {
                         results.Add("WINNER!");
 
@@ -334,6 +334,7 @@ namespace BLTAdoptAHero
             };
         }
 
+        #region Custom Prize Generation
         private static ItemObject CreateCustomWeapon(Hero hero, HeroClassDef heroClass, EquipmentType weaponType)
         {
             if (!CustomItems.CraftableEquipmentTypes.Contains(weaponType))
@@ -505,7 +506,7 @@ namespace BLTAdoptAHero
             return "done";
         }
 #endif
-
+        
         private static (ItemObject item, ItemModifier modifier, EquipmentIndex slot) GeneratePrizeType(GlobalTournamentConfig.PrizeType prizeType, int tier, Hero hero, HeroClassDef heroClass)
         {
             return prizeType switch
@@ -693,6 +694,9 @@ namespace BLTAdoptAHero
                 ;
         }
 
+        #endregion 
+        
+        #region Betting
         private bool bettingOpen;
         private Dictionary<Hero, (int team, int bet)> activeBets;
 
@@ -788,15 +792,54 @@ namespace BLTAdoptAHero
             bettingOpen = false;
         }
 
-        public void EndCurrentMatch(TournamentBehavior tournamentBehavior)
+        private void CompleteBetting(TournamentMatch lastMatch)
         {
-            var lastMatch = tournamentBehavior.LastMatch;
-            CompleteBetting(lastMatch);
+            if (activeBets != null)
+            {
+                double totalBet = activeBets.Values.Sum(v => v.bet);
 
+                var allWonBets = activeBets
+                    .Where(kv => lastMatch.Winners.Contains(lastMatch.Teams.ElementAt(kv.Value.team).Participants.First()))
+                    .Select(kv => (
+                        hero: kv.Key,
+                        bet: kv.Value.bet
+                    ))
+                    .ToList();
+
+                double winningTotalBet = allWonBets.Sum(v => v.bet);
+
+                foreach ((var hero, int bet) in allWonBets.OrderByDescending(b => b.bet))
+                {
+                    int winnings = (int) (totalBet * bet / winningTotalBet);
+                    int newGold = BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, winnings);
+                    Log.LogFeedResponse(hero.FirstName.ToString(),
+                        $"WON BET {Naming.Inc}{winnings}{Naming.Gold}{Naming.To}{newGold}{Naming.Gold}");
+                }
+
+                activeBets = null;
+            }
+        }
+
+        #endregion
+
+        public void EndCurrentMatchPrefix(TournamentBehavior tournamentBehavior)
+        {
             // If the tournament is over
-            if (tournamentBehavior.CurrentRoundIndex == 4 || lastMatch == null)
-                return;
+            if (tournamentBehavior.CurrentRoundIndex == 3)
+            {
+                // Reset the prize if the player won
+                if (originalPrize != null
+                    && tournamentBehavior.LastMatch.Winners.Any(w => w.IsPlayer))
+                {
+                    SetPrize(tournamentBehavior.TournamentGame, originalPrize);
+                }
+            }
+            
+            CompleteBetting(tournamentBehavior.LastMatch);
+        }
 
+        public void EndCurrentMatchPostfix(TournamentBehavior tournamentBehavior)
+        {
             if(tournamentBehavior.CurrentMatch != null)
             {
                 OpenBetting(tournamentBehavior);
@@ -809,7 +852,7 @@ namespace BLTAdoptAHero
                     
                 var results = new List<string>();
 
-                if(lastMatch.Winners.Any(w => w.Character?.HeroObject == entry.Hero))
+                if(tournamentBehavior.LastMatch.Winners.Any(w => w.Character?.HeroObject == entry.Hero))
                 {
                     int actualGold = (int) (BLTAdoptAHeroModule.TournamentConfig.WinMatchGold * actualBoost);
                     if (actualGold > 0)
@@ -829,7 +872,7 @@ namespace BLTAdoptAHero
                     }
                     BLTAdoptAHeroCampaignBehavior.Current.IncreaseTournamentWins(entry.Hero);
                 }
-                else if (lastMatch.Participants.Any(w => w.Character?.HeroObject == entry.Hero))
+                else if (tournamentBehavior.LastMatch.Participants.Any(w => w.Character?.HeroObject == entry.Hero))
                 {
                     int xp = (int) (BLTAdoptAHeroModule.TournamentConfig.ParticipateMatchXP * actualBoost);
                     if (xp > 0)
@@ -850,43 +893,18 @@ namespace BLTAdoptAHero
             }
         }
 
-        private void CompleteBetting(TournamentMatch lastMatch)
+        private ItemObject originalPrize;
+        
+        private void SetPlaceholderPrize(TournamentGame tournamentGame)
         {
-            if (activeBets != null)
-            {
-                double totalBet = activeBets.Values.Sum(v => v.bet);
-                var allBets = activeBets
-                    .Select(kv => (
-                        hero: kv.Key,
-                        bet: kv.Value.bet,
-                        won: lastMatch.Winners.Contains(lastMatch.Teams.ElementAt(kv.Value.team).Participants.First())
-                    ))
-                    .ToList();
-                double winningTotalBet = allBets.Where(w => w.won).Sum(v => v.bet);
-                foreach ((var hero, int bet, bool won) in allBets.OrderByDescending(b => b.bet))
-                {
-                    if (won)
-                    {
-                        int winnings = (int) (totalBet * bet / winningTotalBet);
-                        int newGold = BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, winnings);
-
-                        Log.LogFeedResponse(hero.FirstName.ToString(),
-                            $"WON BET {Naming.Inc}{winnings}{Naming.Gold}{Naming.To}{newGold}{Naming.Gold}");
-                    }
-                    else
-                    {
-                        BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, -bet);
-                    }
-                }
-
-                activeBets = null;
-            }
+            originalPrize = tournamentGame.Prize;
+            SetPrize(tournamentGame, DefaultItems.Charcoal);
         }
 
-        private static void SetPlaceholderPrize(TournamentGame tournamentGame)
+        private static void SetPrize(TournamentGame tournamentGame, ItemObject prize)
         {
             AccessTools.Property(typeof(TournamentGame), nameof(TournamentGame.Prize))
-                .SetValue(tournamentGame, DefaultItems.Charcoal);
+                .SetValue(tournamentGame, prize);
         }
 
         private void ReleaseUnmanagedResources()
