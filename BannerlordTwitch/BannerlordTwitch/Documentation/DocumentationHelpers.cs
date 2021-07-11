@@ -85,5 +85,31 @@ namespace BannerlordTwitch
                 });
             }
         }
+        
+        public static IDocumentationGenerator PropertyValuePair(this IDocumentationGenerator generator, 
+            string property, string value)
+        {
+            return generator.Div("value", () => generator.P($"<strong class=\"value\">{property}</strong>: {value}"));
+        }
+        
+        public static IDocumentationGenerator PropertyValuePair(this IDocumentationGenerator generator, 
+            string property, Action content)
+        {
+            return generator.Div("value", () =>
+            {
+                generator.P($"<strong class=\"value\">{property}</strong>:");
+                content();
+            });
+        }
+        
+        public static IDocumentationGenerator Value(this IDocumentationGenerator generator, string value)
+        {
+            return generator.P("value", value);
+        }        
+        
+        public static IDocumentationGenerator Value(this IDocumentationGenerator generator, Action content)
+        {
+            return generator.Div("value", content);
+        }
     }
 }

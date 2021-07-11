@@ -53,7 +53,7 @@ namespace BLTAdoptAHero
                 if(ShowStorage) shows.Add($"Custom item storage");
                 if(ShowRetinue) shows.Add($"Retinue count and average tier");
                 if(ShowRetinueList) shows.Add($"Retinue unit list");
-                generator.P($"Shows: {string.Join(", ", shows)}");
+                generator.PropertyValuePair("Shows", string.Join(", ", shows));
             }
         }
         

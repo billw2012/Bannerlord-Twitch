@@ -23,7 +23,7 @@ namespace BLTAdoptAHero
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
                 generator.P(Random ? "Random attribute" : "Provide the attribute name (or part of it) when calling this");
-                generator.P($"Amount: {AmountLow}" + (AmountLow == AmountHigh ? $"" : $" to {AmountHigh}"));
+                generator.PropertyValuePair("Amount", $"{AmountLow}" + (AmountLow == AmountHigh ? $"" : $" to {AmountHigh}"));
                 if (GoldCost != 0)
                 {
                     generator.P($"Costs {GoldCost}{Naming.Gold}");

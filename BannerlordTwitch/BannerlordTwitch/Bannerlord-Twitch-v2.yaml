@@ -26,6 +26,10 @@ Rewards:
     SubscriberOnly: false
     MinSubscribedMonths: 
     StartingGold: 0
+    OverrideAge: false
+    StartingAgeRange:
+      Min: 18
+      Max: 35
     StartingSkills:
     - Skill: Melee
       MinLevel: 50
@@ -708,6 +712,10 @@ Commands:
     SubscriberOnly: false
     MinSubscribedMonths: 
     StartingGold: 0
+    OverrideAge: false
+    StartingAgeRange:
+      Min: 18
+      Max: 35
     StartingSkills:
     - Skill: Melee
       MinLevel: 50

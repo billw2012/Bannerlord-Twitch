@@ -26,7 +26,7 @@ namespace BLTAdoptAHero
             
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
-                generator.P($"Costs {GoldCost}{Naming.Gold}");
+                generator.PropertyValuePair("Cost", $"{GoldCost}{Naming.Gold}");
                 if (UpdateEquipment)
                 {
                     generator.P($"Updates equipment to match new class");

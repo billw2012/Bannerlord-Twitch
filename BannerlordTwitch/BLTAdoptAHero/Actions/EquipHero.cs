@@ -71,7 +71,8 @@ namespace BLTAdoptAHero
                     generator.P("Re-rolls your equipment at your current tier");
                 }
                 
-                generator.P($"Tier costs: 1={CostTier1}{Naming.Gold}, 2={CostTier2}{Naming.Gold}, 3={CostTier3}{Naming.Gold}, 4={CostTier4}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 6={CostTier6}{Naming.Gold}");
+                
+                generator.PropertyValuePair("Tier costs", $"1={CostTier1}{Naming.Gold}, 2={CostTier2}{Naming.Gold}, 3={CostTier3}{Naming.Gold}, 4={CostTier4}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 6={CostTier6}{Naming.Gold}");
                 
                 if (!AllowCompanionUpgrade)
                 {
@@ -184,7 +185,7 @@ namespace BLTAdoptAHero
                 adoptedHero.BattleEquipment[x.index] = EquipmentElement.Invalid;
             }
 
-            EquipmentElement FindNewEquipment(Func<ItemObject, bool> filter = null)
+            EquipmentElement FindNewEquipment(Func<ItemObject, bool> filter = null, FindFlags flags = FindFlags.None)
             {
                 var oldEquipment = availableItems.FirstOrDefault(i =>
                     (keepBetter && i.Item.Tier >= (ItemObject.ItemTiers) targetTier 
@@ -193,16 +194,16 @@ namespace BLTAdoptAHero
                     );
                 if (!oldEquipment.IsEmpty)
                     return oldEquipment;
-                var foundItem = FindRandomTieredEquipment(targetTier, adoptedHero, FindFlags.None, 
+                var foundItem = FindRandomTieredEquipment(targetTier, adoptedHero, flags, 
                     o => filter?.Invoke(o) != false && IsWeaponUsableByHeroAndClass(adoptedHero, o, classDef)); 
                 if (foundItem == null)
                     return default;
                 return new(foundItem);
             }
-            EquipmentElement FindNewEquipmentBySkill(SkillObject skill, Func<ItemObject, bool> filter = null)
-                => FindNewEquipment(o => o.RelevantSkill == skill && filter?.Invoke(o) != false);
-            EquipmentElement FindNewEquipmentByType(ItemObject.ItemTypeEnum itemType, Func<ItemObject, bool> filter = null)
-                => FindNewEquipment(o => o.ItemType == itemType && filter?.Invoke(o) != false);
+            EquipmentElement FindNewEquipmentBySkill(SkillObject skill, Func<ItemObject, bool> filter = null, FindFlags flags = FindFlags.None)
+                => FindNewEquipment(o => o.RelevantSkill == skill && filter?.Invoke(o) != false, flags);
+            EquipmentElement FindNewEquipmentByType(ItemObject.ItemTypeEnum itemType, Func<ItemObject, bool> filter = null, FindFlags flags = FindFlags.None)
+                => FindNewEquipment(o => o.ItemType == itemType && filter?.Invoke(o) != false, flags);
 
             if (classDef != null)
             {
@@ -327,7 +328,10 @@ namespace BLTAdoptAHero
                         && (classDef == null
                             || classDef.UseHorse && h.HorseComponent.Monster.FamilyType == (int) MountFamilyType.horse
                             || classDef.UseCamel && h.HorseComponent.Monster.FamilyType == (int) MountFamilyType.camel
-                        ));
+                        ),
+                    // allow non-merchandise mounts, to include the tournament prize ones, and ignore ability to allow camel riders to ride something
+                    FindFlags.IgnoreAbility | FindFlags.AllowNonMerchandise
+                );
                 if (!horse.IsEmpty)
                 {
                     adoptedHero.BattleEquipment[EquipmentIndex.Horse] = horse;

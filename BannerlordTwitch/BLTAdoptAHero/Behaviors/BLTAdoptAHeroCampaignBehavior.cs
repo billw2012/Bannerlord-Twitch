@@ -479,13 +479,12 @@ namespace BLTAdoptAHero
         public int ChangeHeroGold(Hero hero, int change, bool isSpending = false)
         {
             var hd = GetHeroData(hero);
-            int newGold = Math.Max(0, change + hd.Gold);
-            hd.Gold = newGold;
+            hd.Gold = Math.Max(0, change + hd.Gold);
             if (isSpending && change < 0)
             {
                 hd.SpentGold += -change;
             }
-            return newGold;
+            return hd.Gold;
         }
 
         public int InheritGold(Hero inheritor, float amount)
@@ -676,14 +675,14 @@ namespace BLTAdoptAHero
 
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
-                generator.P($"Max retinue: {MaxRetinueSize}");
-                generator.P($"Tier costs: 1={CostTier1}{Naming.Gold}, 2={CostTier2}{Naming.Gold}, 3={CostTier3}{Naming.Gold}, 4={CostTier4}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 6={CostTier6}{Naming.Gold}");
+                generator.PropertyValuePair("Max retinue", $"{MaxRetinueSize}");
+                generator.PropertyValuePair("Tier costs", $"1={CostTier1}{Naming.Gold}, 2={CostTier2}{Naming.Gold}, 3={CostTier3}{Naming.Gold}, 4={CostTier4}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 6={CostTier6}{Naming.Gold}");
                 var allowed = new List<string>();
                 if(UseHeroesCultureUnits) allowed.Add($"Same culture only");
                 if(IncludeBanditUnits) allowed.Add($"Bandits");
                 if(UseBasicTroops) allowed.Add($"Basic troops");
                 if(UseEliteTroops) allowed.Add($"Elite troops");
-                generator.P($"Allowed: {string.Join(", ", allowed)}");
+                generator.PropertyValuePair("Allowed", string.Join(", ", allowed));
             }
         }
 

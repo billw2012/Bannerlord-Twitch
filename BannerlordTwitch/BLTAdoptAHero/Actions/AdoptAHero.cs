@@ -10,6 +10,7 @@ using BLTAdoptAHero.Annotations;
 using Helpers;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
+using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.Towns;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.Core;
@@ -60,19 +61,28 @@ namespace BLTAdoptAHero
             
             [Category("Limits"), Description("Only subscribers can adopt"), PropertyOrder(7), UsedImplicitly, Document]
             public bool SubscriberOnly { get; set; }
+
             [Category("Limits"),
              Description("Only viewers who have been subscribers for at least this many months can adopt, " +
                          "ignored if not specified"),
-             DefaultValue(null), PropertyOrder(8), UsedImplicitly, Document]
+             PropertyOrder(8), UsedImplicitly, Document]
             public int? MinSubscribedMonths { get; set; }
             [Category("Initialization"), 
-             Description("Gold the adopted hero will start with"), DefaultValue(null), PropertyOrder(1), UsedImplicitly, 
+             Description("Gold the adopted hero will start with"), PropertyOrder(1), UsedImplicitly, 
              Document]
             public int StartingGold { get; set; }
 
+            [Category("Initialization"), Description("Override the heroes age"), 
+             PropertyOrder(2), UsedImplicitly, Document]
+            public bool OverrideAge { get; set; }
+            
+            [Category("Initialization"), Description("Random range of age when overriding it"), 
+             PropertyOrder(3), UsedImplicitly, Document]
+            public RangeFloat StartingAgeRange { get; set; } = new(18, 35);
+
             [Category("Initialization"),
              Description("Starting skills, if empty then default skills of the adopted hero will be left in tact"),
-             DefaultValue(null), PropertyOrder(1), UsedImplicitly, Document]
+             PropertyOrder(4), UsedImplicitly, Document]
             public List<SkillRangeDef> StartingSkills { get; set; } = new();
 
             [YamlIgnore, Browsable(false)]
@@ -81,25 +91,95 @@ namespace BLTAdoptAHero
             
             [Category("Initialization"), 
              Description("Equipment tier the adopted hero will start with, if you don't specify then they get the " +
-                         "heroes existing equipment"), DefaultValue(null), PropertyOrder(2), UsedImplicitly, Document]
+                         "heroes existing equipment"), PropertyOrder(5), UsedImplicitly, Document]
             public int? StartingEquipmentTier { get; set; }
             
             [Category("Initialization"), Description("Starting class of the hero"), 
-             PropertyOrder(3), ItemsSource(typeof(HeroClassDef.ItemSource)), UsedImplicitly]
+             PropertyOrder(6), ItemsSource(typeof(HeroClassDef.ItemSource)), UsedImplicitly]
             public Guid StartingClass { get; set; }
 
             [Category("Initialization"), 
              Description("Whether the hero will spawn in hero party (Only work with Join Player Companion activated)"), 
-             PropertyOrder(8), UsedImplicitly, Document]
+             PropertyOrder(7), UsedImplicitly, Document]
             public bool SpawnInParty { get; set; }
             
             [Category("Initialization"), Description("Whether the hero will be a companion"), 
-             PropertyOrder(9), UsedImplicitly, Document]
+             PropertyOrder(8), UsedImplicitly, Document]
             public bool JoinPlayerCompanion { get; set; }
 
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
+                if (SubscriberOnly)
+                {
+                    generator.Value("<strong>Subscriber Only</strong>");
+                }
+                if (CreateNew)
+                {
+                    generator.Value("Newly created wanderer");
+                }
+                else
+                {
+                    var allowed = new List<string>();
+                    if (AllowNoble) allowed.Add("Noble");
+                    if (AllowWanderer) allowed.Add("Wanderer");
+                    if (AllowPlayerCompanion) allowed.Add("Companions");
+                    generator.PropertyValuePair("Allowed", string.Join(", ", allowed));
+                }
+                if (SpawnInParty && JoinPlayerCompanion) generator.Value("Become a new player companion, in streamers party");
+                if (!SpawnInParty && JoinPlayerCompanion) generator.Value("Become a new player companion");
                 
+                if (OnlySameFaction) generator.Value("Same faction only");
+
+                if (OverrideAge)
+                {
+                    generator.PropertyValuePair("Starting Age Range",
+                        StartingAgeRange.IsFixed
+                            ? $"{StartingAgeRange.Min}" 
+                            : $"{StartingAgeRange.Min} to {StartingAgeRange.Max}"
+                        );
+                }                
+                
+                generator.PropertyValuePair("Starting Gold", $"{StartingGold}");
+                generator.PropertyValuePair("Inheritance", 
+                    $"{Inheritance * 100:0.0}% of gold spent on equipment and retinue, " +
+                    (MaxInheritedCustomItems == 0 ? "no" : $"up to {MaxInheritedCustomItems}") +
+                    " custom items");
+
+                if (ValidStartingSkills.Any())
+                {
+                    generator.PropertyValuePair("Starting Skills", () =>
+                        generator.Table("starting-skills", () =>
+                        {
+                            generator.TR(() =>
+                                generator.TH("Skill").TH("Level")
+                            );
+                            foreach (var s in ValidStartingSkills)
+                            {
+                                generator.TR(() =>
+                                {
+                                    generator.TD(s.Skill.ToString().SplitCamelCase());
+                                    generator.TD(s.IsFixed
+                                        ? $"{s.MinLevel}"
+                                        : $"{s.MinLevel} to {s.MaxLevel}");
+                                });
+                            }
+                        }));
+                }
+
+                if (StartingEquipmentTier.HasValue)
+                {
+                    generator.PropertyValuePair("Starting Equipment Tier", $"{StartingEquipmentTier.Value}");
+                }
+
+                if (StartingClass != Guid.Empty)
+                {
+                    var classDef = HeroClassDef.ItemSource.All.FirstOrDefault(h => h.ID == StartingClass);
+                    if (classDef != null)
+                    {
+                        generator.PropertyValuePair("Starting Class", 
+                            () => generator.LinkToAnchor(classDef.Name, classDef.Name));
+                    }
+                }
             }
         }
 
@@ -190,6 +270,11 @@ namespace BLTAdoptAHero
             {
                 return (false, "You can't adopt a hero: no available hero matching the requirements was found!");
             }
+
+            if (settings.OverrideAge)
+            {
+                Hero.MainHero.SetBirthDay(CampaignTime.YearsFromNow(-Math.Max(18, settings.StartingAgeRange.RandomInRange())));
+            }
             
             // Place hero where we want them
             if (settings.JoinPlayerCompanion && settings.SpawnInParty)
@@ -202,14 +287,9 @@ namespace BLTAdoptAHero
                 }
                 else
                 {
-                    if(mainParty == null)
-                    {
-                        return (false, "You can't adopt a hero: main hero party don't exist for now!");
-                    }
-                    else
-                    {
-                        return (false, "You can't adopt a hero: main hero party is full!");
-                    }
+                    return mainParty == null 
+                        ? (false, "You can't adopt a hero: main hero party don't exist yet!") 
+                        : (false, "You can't adopt a hero: main hero party is full!");
                 }
             }
             else if(settings.CreateNew)

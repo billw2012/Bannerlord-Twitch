@@ -19,7 +19,7 @@ namespace BLTAdoptAHero
 
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
-                generator.P($"Amount: {Amount}{Naming.Gold}");
+                generator.PropertyValuePair("Amount", $"{Amount}{Naming.Gold}");
             }
         }
 

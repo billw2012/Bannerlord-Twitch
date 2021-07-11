@@ -1,5 +1,8 @@
-﻿using JetBrains.Annotations;
+﻿using System.ComponentModel;
+using JetBrains.Annotations;
+using TaleWorlds.Core;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
@@ -10,6 +13,9 @@ namespace BLTAdoptAHero
         [PropertyOrder(2), UsedImplicitly]
         public float Max { get; set; }
 
+        [YamlIgnore, Browsable(false)]
+        public bool IsFixed => Min == Max;
+
         public RangeFloat() {}
         
         public RangeFloat(float min, float max)
@@ -17,5 +23,7 @@ namespace BLTAdoptAHero
             Min = min;
             Max = max;
         }
+
+        public float RandomInRange() => IsFixed ? Min : MBRandom.RandomFloatRanged(Min, Max);
     }
 }

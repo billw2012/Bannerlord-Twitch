@@ -90,14 +90,14 @@ namespace BLTAdoptAHero
 
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
-                generator.P(OnPlayerSide ? $"On streamers side" : "On enemy side");
+                generator.PropertyValuePair("Side", OnPlayerSide ? "Streamers side" : "Enemy side");
                 if (HealPerSecond > 0)
                 {
-                    generator.P($"Heals {HealPerSecond:0.0}HP per second while summoned");
+                    generator.PropertyValuePair("Heals", $"{HealPerSecond:0.0}HP per second while summoned");
                 }
                 if (GoldCost > 0)
                 {
-                    generator.P($"Costs {GoldCost}{Naming.Gold}");
+                    generator.PropertyValuePair("Cost", $"{GoldCost}{Naming.Gold}");
                 }
 
                 var allowed = new List<string>();
@@ -107,7 +107,7 @@ namespace BLTAdoptAHero
                 if(AllowFriendlyMission) allowed.Add("Friendly mission");
                 if(AllowHideOut) allowed.Add("Hide-out");
                 
-                generator.P($"Allowed in {string.Join(", ", allowed)}");
+                generator.PropertyValuePair("Allowed in", $"{string.Join(", ", allowed)}");
             }
         }
 

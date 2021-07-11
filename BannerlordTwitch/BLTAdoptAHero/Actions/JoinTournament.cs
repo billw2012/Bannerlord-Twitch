@@ -27,7 +27,7 @@ namespace BLTAdoptAHero
 
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
-                if (GoldCost != 0) generator.P($"Costs {GoldCost}{Naming.Gold}");
+                if (GoldCost != 0) generator.PropertyValuePair("Cost", $"{GoldCost}{Naming.Gold}");
             }
         }
         

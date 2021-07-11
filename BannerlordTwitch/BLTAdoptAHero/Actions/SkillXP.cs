@@ -28,11 +28,11 @@ namespace BLTAdoptAHero
             
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
-                generator.P($"Skills: {(Auto ? "Automatic, based on class, equipment, and existing skills" : Skills)}");
-                generator.P($"XP: {AmountLow}" + (AmountLow == AmountHigh ? $"" : $" to {AmountHigh}"));
+                generator.PropertyValuePair("Skills", $"{(Auto ? "Automatic, based on class, equipment, and existing skills" : Skills)}");
+                generator.PropertyValuePair("XP", $"{AmountLow}" + (AmountLow == AmountHigh ? $"" : $" to {AmountHigh}"));
                 if (GoldCost != 0)
                 {
-                    generator.P($"Costs {GoldCost}{Naming.Gold}");
+                    generator.PropertyValuePair("Costs", $"{GoldCost}{Naming.Gold}");
                 }
             }
         }
