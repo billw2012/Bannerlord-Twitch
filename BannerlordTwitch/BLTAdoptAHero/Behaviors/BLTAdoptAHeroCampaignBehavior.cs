@@ -430,7 +430,8 @@ namespace BLTAdoptAHero
         {
             string heroName = hero.FirstName?.Raw().ToLower();
             int count = heroData.Count(h 
-                => h.Value.IsRetiredOrDead && h.Key.FirstName?.Raw().ToLower() == heroName);
+                => h.Value.IsRetiredOrDead &&
+                   (h.Key.FirstName?.Raw().ToLower() == heroName || h.Value.Owner?.ToLower() == heroName));
 
             string desc = hero.IsDead ? "deceased" : "retired";
             var oldName = hero.Name;
@@ -785,7 +786,9 @@ namespace BLTAdoptAHero
             string nameToFind = name.ToLower();
 
             var foundHero = heroData.FirstOrDefault(h 
-                => !h.Value.IsRetiredOrDead && h.Key.FirstName?.Raw().ToLower() == nameToFind).Key;
+                => !h.Value.IsRetiredOrDead
+                   && (h.Key.FirstName?.Raw().ToLower() == nameToFind || h.Value.Owner?.ToLower() == nameToFind))
+                .Key;
 
             // correct the name to match the viewer name casing
             if (foundHero != null && foundHero.FirstName?.Raw() != name)
