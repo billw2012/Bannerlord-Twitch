@@ -16,7 +16,7 @@ Rewards:
   RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig:
-    CreateNew: false
+    CreateNew: true
     AllowNoble: true
     AllowWanderer: true
     AllowPlayerCompanion: false
@@ -30,20 +30,8 @@ Rewards:
     StartingAgeRange:
       Min: 18
       Max: 35
-    StartingSkills:
-    - Skill: Melee
-      MinLevel: 50
-      MaxLevel: 125
-    - Skill: Ranged
-      MinLevel: 50
-      MaxLevel: 125
-    - Skill: Riding
-      MinLevel: 25
-      MaxLevel: 75
-    - Skill: Athletics
-      MinLevel: 25
-      MaxLevel: 75
-    StartingEquipmentTier: 1
+    StartingSkills: []
+    StartingEquipmentTier: 0
     StartingClass: 00000000-0000-0000-0000-000000000000
     SpawnInParty: false
     JoinPlayerCompanion: false

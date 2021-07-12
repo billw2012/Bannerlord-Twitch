@@ -17,5 +17,7 @@ namespace BLTAdoptAHero
             Min = min;
             Max = max;
         }
+        
+        public override string ToString() => $"{Min} - {Max}";
     }
 }

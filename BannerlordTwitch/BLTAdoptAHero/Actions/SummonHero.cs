@@ -53,40 +53,44 @@ namespace BLTAdoptAHero
         [CategoryOrder("Kill Effects", 4)]
         private class Settings : IDocumentable
         {
-            [Category("General"), YamlIgnore, ReadOnly(true), PropertyOrder(-100),
-             Editor(typeof(MultilineTextNonEditable), typeof(MultilineTextNonEditable)), UsedImplicitly]
-            public string Help => "This allows viewers to spawn their adopted heroes into your missions/battles. It supports a custom shout: if used as a command then anything the viewer puts after the command will be shouted in game by the player, if used as a reward then just enable the 'IsUserInputRequired' and set the 'Prompt' to something like 'My shout'.";
-            [Category("Allowed Missions"), Description("Can summon for normal field battles between parties"), PropertyOrder(1)]
-            public bool AllowFieldBattle { get; [UsedImplicitly] set; }
-            [Category("Allowed Missions"), Description("Can summon in village battles"), PropertyOrder(2)]
-            public bool AllowVillageBattle { get; [UsedImplicitly] set; }
-            [Category("Allowed Missions"), Description("Can summon in sieges"), PropertyOrder(3)]
-            public bool AllowSiegeBattle { get; [UsedImplicitly] set; }
-            [Category("Allowed Missions"), Description("This includes walking about village/town/dungeon/keep"), PropertyOrder(4)]
-            public bool AllowFriendlyMission { get; [UsedImplicitly] set; }
-            [Category("Allowed Missions"), Description("Can summon in the hideout missions"), PropertyOrder(7)]
-            public bool AllowHideOut { get; [UsedImplicitly] set; }
-            [Category("General"), Description("Whether the hero is on the player or enemy side"), PropertyOrder(1)]
-            public bool OnPlayerSide { get; [UsedImplicitly] set; }
-            // [Category("General"), Description("Maximum number of summons that can be active at the same time (i.e. max alive adopted heroes that can be in the mission) NOT IMPLEMENTED YET"), PropertyOrder(2)]
+            [Category("Allowed Missions"), 
+             Description("Can summon for normal field battles between parties"), PropertyOrder(1), UsedImplicitly]
+            public bool AllowFieldBattle { get; set; }
+            [Category("Allowed Missions"), 
+             Description("Can summon in village battles"), PropertyOrder(2), UsedImplicitly]
+            public bool AllowVillageBattle { get; set; }
+            [Category("Allowed Missions"), Description("Can summon in sieges"), PropertyOrder(3), UsedImplicitly]
+            public bool AllowSiegeBattle { get; set; }
+            [Category("Allowed Missions"), 
+             Description("This includes walking about village/town/dungeon/keep"), PropertyOrder(4), UsedImplicitly]
+            public bool AllowFriendlyMission { get; set; }
+            [Category("Allowed Missions"), 
+             Description("Can summon in the hideout missions"), PropertyOrder(7), UsedImplicitly]
+            public bool AllowHideOut { get; set; }
+            [Category("General"), 
+             Description("Whether the hero is on the player or enemy side"), PropertyOrder(1), UsedImplicitly]
+            public bool OnPlayerSide { get; set; }
+            // [Category("General"), Description("Maximum number of summons that can be active at the same time (i.e. max alive adopted heroes that can be in the mission) NOT IMPLEMENTED YET"), PropertyOrder(2), UsedImplicitly]
             // public int? MaxSimultaneousSummons { get; set; }
             
-            [Category("General"), Description("Gold cost to summon"), PropertyOrder(5)]
-            public int GoldCost { get; [UsedImplicitly] set; }
+            [Category("General"), Description("Gold cost to summon"), PropertyOrder(5), UsedImplicitly]
+            public int GoldCost { get; set; }
 
-            [Category("General"), Description("Which formation to add summoned heroes to (only applies to ones " +
-                                              "without a specified class)"), 
-             PropertyOrder(6), ItemsSource(typeof(FormationItemSource))]
-            public string PreferredFormation { get; [UsedImplicitly] set; }
+            [Category("General"), 
+             Description("Which formation to add summoned heroes to (only applies to ones without a specified class)"), 
+             PropertyOrder(6), ItemsSource(typeof(FormationItemSource)), UsedImplicitly]
+            public string PreferredFormation { get; set; }
 
-            [Category("General"), Description("Sound to play when summoned"), PropertyOrder(9)]
-            public Log.Sound AlertSound { get; [UsedImplicitly] set; }
+            [Category("General"), Description("Sound to play when summoned"), PropertyOrder(9), UsedImplicitly]
+            public Log.Sound AlertSound { get; set; }
 
-            [Category("Effects"), Description("Multiplier applied to (positive) effects for subscribers"), PropertyOrder(1)]
-            public float SubBoost { get; [UsedImplicitly] set; }
+            [Category("Effects"), 
+             Description("Multiplier applied to (positive) effects for subscribers"), PropertyOrder(1), UsedImplicitly]
+            public float SubBoost { get; set; }
             
-            [Category("Effects"), Description("HP the hero gets every second they are alive in the mission"), PropertyOrder(2)]
-            public float HealPerSecond { get; [UsedImplicitly] set; }
+            [Category("Effects"), 
+             Description("HP the hero gets every second they are alive in the mission"), PropertyOrder(2), UsedImplicitly]
+            public float HealPerSecond { get; set; }
 
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
@@ -145,22 +149,22 @@ namespace BLTAdoptAHero
 
         public class Shout
         {
-            [PropertyOrder(1)]
-            public string Text { get; [UsedImplicitly] set; } 
-            [PropertyOrder(2), Description("Higher weight means more chance this shout is used")]
-            public float Weight { get; [UsedImplicitly] set; } = 1f;
-            [PropertyOrder(3), Description("Can be used when summoning on player side")]
-            public bool PlayerSide { get; [UsedImplicitly] set; } = true;
-            [PropertyOrder(4), Description("Can be used when summoning on enemy side")]
-            public bool EnemySide { get; [UsedImplicitly] set; } = true;
-            [PropertyOrder(5), Description("Can be used in situations other than battle/siege")]
-            public bool General { get; [UsedImplicitly] set; } = true;
-            [PropertyOrder(6), Description("Can be used when in a field battle")]
-            public bool FieldBattle { get; [UsedImplicitly] set; } = true;
-            [PropertyOrder(7), Description("Can be used when on siege defender side")]
-            public bool SiegeDefend { get; [UsedImplicitly] set; } = true;
-            [PropertyOrder(8), Description("Can be used when on siege attacker side")]
-            public bool SiegeAttack { get; [UsedImplicitly] set; } = true;
+            [PropertyOrder(1), UsedImplicitly]
+            public string Text { get; set; } 
+            [PropertyOrder(2), Description("Higher weight means more chance this shout is used"), UsedImplicitly]
+            public float Weight { get; set; } = 1f;
+            [PropertyOrder(3), Description("Can be used when summoning on player side"), UsedImplicitly]
+            public bool PlayerSide { get; set; } = true;
+            [PropertyOrder(4), Description("Can be used when summoning on enemy side"), UsedImplicitly]
+            public bool EnemySide { get; set; } = true;
+            [PropertyOrder(5), Description("Can be used in situations other than battle/siege"), UsedImplicitly]
+            public bool General { get; set; } = true;
+            [PropertyOrder(6), Description("Can be used when in a field battle"), UsedImplicitly]
+            public bool FieldBattle { get; set; } = true;
+            [PropertyOrder(7), Description("Can be used when on siege defender side"), UsedImplicitly]
+            public bool SiegeDefend { get; set; } = true;
+            [PropertyOrder(8), Description("Can be used when on siege attacker side"), UsedImplicitly]
+            public bool SiegeAttack { get; set; } = true;
 
             public Shout() { }
             public Shout(string text)

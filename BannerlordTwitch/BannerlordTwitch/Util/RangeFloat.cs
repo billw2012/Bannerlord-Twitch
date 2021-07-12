@@ -25,5 +25,7 @@ namespace BLTAdoptAHero
         }
 
         public float RandomInRange() => IsFixed ? Min : MBRandom.RandomFloatRanged(Min, Max);
+
+        public override string ToString() => $"{Min} - {Max}";
     }
 }
