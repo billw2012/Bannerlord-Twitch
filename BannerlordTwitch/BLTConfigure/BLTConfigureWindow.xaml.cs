@@ -625,42 +625,33 @@ namespace BLTConfigure
 
             try
             {
-                using var httpClient = new HttpClient();
+                using var httpClient = new HttpClient(new HttpClientHandler{UseProxy = false});
                 httpClient.DefaultRequestHeaders.Authorization = new("Basic", 
                     Convert.ToBase64String(
                         Encoding.ASCII.GetBytes($"{NeocitiesUsername.Text}:{NeocitiesPassword.Password}")));
 
-                UploadProgress.Maximum = files.Length;
-                UploadProgress.Visibility = Visibility.Visible;
-                
-                for (int index = 0; index < files.Length; index++)
-                {
-                    string fileName = Path.GetFileName(files[index]);
-                    UploadStatus.Text = $"Uploading {fileName} ({index + 1} / {files.Length}) ...";
-                    UploadStatus.Foreground = Brushes.Black;
-                    UploadProgress.Value = index + 1;
+                UploadStatus.Text = "Upload in progress (might take a few seconds or longer)...";
 
-                    var form = new MultipartFormDataContent();
-                    var streamContent = new StreamContent(File.Open(files[index], FileMode.Open));
-                    streamContent.Headers.Add("Content-Type",MimeMapping.GetMimeMapping(fileName));
-                    streamContent.Headers.Add("Content-Disposition", $"form-data; name=\"{fileName}\"; filename=\"{fileName}\"");
+                var form = new MultipartFormDataContent();
+                foreach (string f in files)
+                {
+                    string fileName = Path.GetFileName(f);
+                    var streamContent = new StreamContent(File.Open(f, FileMode.Open));
+                    streamContent.Headers.Add("Content-Type", MimeMapping.GetMimeMapping(fileName));
+                    streamContent.Headers.Add("Content-Disposition",
+                        $"form-data; name=\"{fileName}\"; filename=\"{fileName}\"");
                     form.Add(streamContent, "file", fileName);
-                    
-                    var response = await httpClient.PostAsync($"https://neocities.org/api/upload", form);
-                    
-                    response.EnsureSuccessStatusCode();
-                    string sd = response.Content.ReadAsStringAsync().Result;
                 }
 
-                UploadStatus.Text = "Upload complete";
+                var response = await httpClient.PostAsync($"https://neocities.org/api/upload", form);
+                response.EnsureSuccessStatusCode();
+                UploadStatus.Text = "Upload complete!";
             }
             catch (Exception ex)
             {
                 UploadStatus.Text = $"Error uploading: {ex.Message}";
                 UploadStatus.Foreground = ErrorStatusForeground;
             }
-            
-            UploadProgress.Visibility = Visibility.Collapsed;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

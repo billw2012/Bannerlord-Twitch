@@ -287,7 +287,6 @@
                             <Button Margin="15 10" HorizontalAlignment="Left"
                                     Click="UploadDocumentation_OnClick">Upload Documentation</Button>
                             <TextBlock Margin="15 5" Name="UploadStatus"/>
-                            <ProgressBar Margin="15 50" Name="UploadProgress" Visibility="Collapsed"></ProgressBar>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

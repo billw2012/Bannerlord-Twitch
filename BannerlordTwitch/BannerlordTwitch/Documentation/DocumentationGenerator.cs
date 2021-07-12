@@ -220,8 +220,14 @@ namespace BannerlordTwitch
         public IDocumentationGenerator Img(string css, ItemObject item)
         {
             string localPath = AddImage(css, item.Name.ToString());
-            TableauCacheManager.Current.BeginCreateItemTexture(item, Hero.MainHero.ClanBanner.Serialize(),
+            #if e159 || e1510
+            TableauCacheManager.Current.BeginCreateItemTexture(item, 
                 texture => TextureComplete(item.Name.ToString(), localPath, texture));
+            #else
+            TableauCacheManager.Current.BeginCreateItemTexture(item, 
+                Hero.MainHero.ClanBanner.Serialize(),
+                texture => TextureComplete(item.Name.ToString(), localPath, texture));
+            #endif
             return this;
         }
         

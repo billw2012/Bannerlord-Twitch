@@ -5,6 +5,7 @@ using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Actions.Util;
 using HarmonyLib;
 using BLTAdoptAHero.Annotations;
 using Helpers;
@@ -324,9 +325,9 @@ namespace BLTAdoptAHero
             }
 
             // A wanderer MUST have at least 1 skill point, or they get killed on load 
-            if (newHero.GetSkillValue(Skills.GetSkill(0)) == 0)
+            if (newHero.GetSkillValue(HeroHelpers.AllSkillObjects.First()) == 0)
             {
-                newHero.HeroDeveloper.SetInitialSkillLevel(Skills.GetSkill(0), 1);
+                newHero.HeroDeveloper.SetInitialSkillLevel(HeroHelpers.AllSkillObjects.First(), 1);
             }
 
             if (settings.JoinPlayerCompanion)
