@@ -15,6 +15,7 @@ using TaleWorlds.CampaignSystem.SandBox.Source.TournamentGames;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.ObjectSystem;
 using TaleWorlds.SaveSystem;
 using TaleWorlds.TwoDimension;
 
@@ -158,23 +159,33 @@ namespace BLTAdoptAHero
 
             if (Settlement.CurrentSettlement == settlement && mode != TournamentMode.None)
             {
-                __result.Remove(Hero.MainHero.CharacterObject);
-                    
-                int viewersToAddCount = Math.Min(__result.Count, tournamentQueue.Count);
-                __result.RemoveRange(0, viewersToAddCount);
+                __result.Clear();
                 if(mode == TournamentMode.Join)
                     __result.Add(Hero.MainHero.CharacterObject);
+                
+                int viewersToAddCount = Math.Min(16 - __result.Count, tournamentQueue.Count);
                     
                 var viewersToAdd = tournamentQueue.Take(viewersToAddCount).ToList();
                 __result.AddRange(viewersToAdd.Select(q => q.Hero.CharacterObject));
                 activeTournament.AddRange(viewersToAdd);
                 tournamentQueue.RemoveRange(0, viewersToAddCount);
+                
+                var basicTroops = MBObjectManager.Instance.GetObjectTypeList<CultureObject>()
+                    .SelectMany(c => new[] {c.BasicTroop, c.EliteBasicTroop})
+                    .Where(t => t != null)
+                    .ToList();
+
+                while (__result.Count < 16)
+                {
+                    __result.Add(basicTroops.SelectRandom());
+                }
+                
                 UpdatePanel();
 
                 mode = TournamentMode.None;
             }
         }
-            
+
         public void GetTeamWeaponEquipmentList(List<Equipment> equipments)
         {
             var replacementWeapon =
