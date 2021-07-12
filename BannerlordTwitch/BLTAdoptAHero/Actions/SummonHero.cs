@@ -296,9 +296,10 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            bool onAttackingSide = settings.OnPlayerSide
-                ? Mission.Current.AttackerTeam.IsFriendOf(Mission.Current.PlayerTeam)
-                : !Mission.Current.AttackerTeam.IsFriendOf(Mission.Current.PlayerTeam)
+            bool onAttackingSide = Mission.Current.AttackerTeam.IsValid && 
+                                   (settings.OnPlayerSide
+                                       ? Mission.Current.AttackerTeam.IsFriendOf(Mission.Current.PlayerTeam)
+                                       : !Mission.Current.AttackerTeam.IsFriendOf(Mission.Current.PlayerTeam))
                 ;
             bool doingSiegeAttack = MissionHelpers.InSiegeMission() && onAttackingSide;
             bool doingSiegeDefend = MissionHelpers.InSiegeMission() && !onAttackingSide;
