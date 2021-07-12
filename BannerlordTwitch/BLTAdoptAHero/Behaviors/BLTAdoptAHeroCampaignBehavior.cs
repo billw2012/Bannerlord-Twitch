@@ -434,10 +434,10 @@ namespace BLTAdoptAHero
 
             string desc = hero.IsDead ? "deceased" : "retired";
             var oldName = hero.Name;
-            HeroHelpers.SetHeroName(hero, new TextObject(hero.FirstName + $" {ToRoman(count + 1)} ({desc})"));
+            HeroHelpers.SetHeroName(hero, new (hero.FirstName + $" {ToRoman(count + 1)} ({desc})"));
             Campaign.Current.EncyclopediaManager.BookmarksTracker.RemoveBookmarkFromItem(hero);
             
-            Log.LogFeedEvent($"{hero.Name} is {desc}!");
+            Log.LogFeedEvent($"{oldName} is {desc}!");
             Log.Info($"Dead or retired hero {oldName} renamed to {hero.Name}");
 
             var data = GetHeroData(hero, suppressAutoRetire: true);
