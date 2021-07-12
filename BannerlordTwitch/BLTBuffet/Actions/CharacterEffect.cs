@@ -8,6 +8,7 @@ using BannerlordTwitch.Util;
 using BLTAdoptAHero;
 using HarmonyLib;
 using JetBrains.Annotations;
+using SandBox;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -37,6 +38,20 @@ namespace BLTBuffet
                 return;
             }
             
+            if (!Mission.Current.IsLoadingFinished 
+                || Mission.Current.CurrentState != Mission.State.Continuing
+                || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null && Mission.Current.Mode != MissionMode.Battle)
+            {
+                onFailure($"The mission has not started yet!");
+                return;
+            }
+            
+            if (Mission.Current.IsMissionEnding || Mission.Current.MissionResult?.BattleResolved == true)
+            {
+                onFailure($"The mission is ending!");
+                return;
+            }
+            
             var effectsBehaviour = BLTEffectsBehaviour.Get();
 
             var config = (Config) baseConfig;
@@ -50,7 +65,10 @@ namespace BLTBuffet
                 Target.AdoptedHero => Mission.Current.Agents.FirstOrDefault(a => a.IsAdoptedBy(context.UserName)),
                 Target.Any => Mission.Current.Agents.Where(GeneralAgentFilter).Where(a => !a.IsAdopted()).SelectRandom(),
                 Target.EnemyTeam => Mission.Current.Agents.Where(GeneralAgentFilter)
-                    .Where(a => a.Team?.IsFriendOf(Mission.Current.PlayerTeam) == false && !a.IsAdopted())
+                    .Where(a => a.Team?.IsValid == true 
+                                && Mission.Current.PlayerTeam?.IsValid == true 
+                                && !a.Team.IsFriendOf(Mission.Current.PlayerTeam)
+                                && !a.IsAdopted())
                     .SelectRandom(),
                 Target.PlayerTeam => Mission.Current.Agents.Where(GeneralAgentFilter)
                     .Where(a => a.Team?.IsPlayerTeam == true && !a.IsAdopted())
