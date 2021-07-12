@@ -282,7 +282,7 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: CharacterEffect
   ID: 245adcfa-0df2-47d3-bff8-707bd10e6c25
-  Enabled: false
+  Enabled: true
   RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
@@ -731,7 +731,7 @@ Commands:
   RespondInTwitch: true
   RespondInOverlay: false
   HandlerConfig: 
-  Documentation: 
+  Documentation: You can use this to name your custom items.<br>Usage is <code>!nameitem (name)</code>, for example <code>!nameitem Foehammer</code>.<br>If you call <code>!nameitem</code> on its own it will tell you what item will be named next.
 - Name: bltbet
   HideHelp: false
   Help: bet on tournament
@@ -741,7 +741,17 @@ Commands:
   RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig: 
-  Documentation: ''
+  Documentation: Use this to bet on tournament matches, when available.<br>Usage is <code>!bltbet (team) (gold)</code>, for example <code>bltbet red 10000</code> to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.
+- Name: power
+  HideHelp: false
+  Help: 
+  Handler: UsePower
+  ID: 4aa62cc4-9ac2-4920-b921-c641f6ad0e24
+  Enabled: false
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig: 
+  Documentation: 
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -1422,6 +1432,11 @@ SimTesting:
   - Enabled: true
     Type: Reward
     Id: Use Class Power
+    Args: 
+    Weight: 0.200000003
+  - Enabled: true
+    Type: Reward
+    Id: Attack on Titan
     Args: 
     Weight: 0.200000003
 DisableAutomaticFulfillment: false

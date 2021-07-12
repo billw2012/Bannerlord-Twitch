@@ -239,7 +239,7 @@ namespace BannerlordTwitch
         public string DocsTitle { get; set; } = "Bannerlord Twitch Viewer Guide";
         
         public string DocsIntroduction { get; set; } 
-            = "Bannerlord Twitch (BLT) is a Twitch Integration mod for Bannerlord: Mount & Blade II.<br>" +
+            = "Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount & Blade II: Bannerlord.<br>" +
               "As a viewer you can use channel point rewards (if available), and chat commands to interact with the " +
               "game while the streamer is playing.<br>The primary feature of BLT is allowing you to 'adopt' a hero " +
               "in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be " +
