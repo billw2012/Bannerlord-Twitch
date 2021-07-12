@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -34,38 +34,38 @@ namespace BLTAdoptAHero
             [Category("General"), 
              Description("Create a new hero instead of adopting an existing one (they will be a wanderer at a " +
                          "random tavern)"), 
-             PropertyOrder(1), UsedImplicitly, Document]
+             PropertyOrder(1), UsedImplicitly]
             public bool CreateNew { get; set; }
 
             [Category("Limits"), Description("Allow noble heroes (if CreateNew is false)"), 
-             PropertyOrder(1), UsedImplicitly, Document]
+             PropertyOrder(1), UsedImplicitly]
             public bool AllowNoble { get; set; } = true;
             [Category("Limits"), Description("Allow wanderer heroes (if CreateNew is false)"), 
-             PropertyOrder(2), UsedImplicitly, Document]
+             PropertyOrder(2), UsedImplicitly]
             public bool AllowWanderer { get; set; } = true;
             [Category("Limits"), Description("Allow companions (not tested, if CreateNew is false)"), 
-             PropertyOrder(3), UsedImplicitly, Document]
+             PropertyOrder(3), UsedImplicitly]
             public bool AllowPlayerCompanion { get; set; }
             [Category("Limits"), Description("Only allow heroes from same faction as player"), 
-             PropertyOrder(4), UsedImplicitly, Document]
+             PropertyOrder(4), UsedImplicitly]
             public bool OnlySameFaction { get; set; }
 
             [Category("Limits"), 
              Description("What fraction of assets will be inherited when a new character is adopted after an old one " +
-                         "died (0 to 1)"), PropertyOrder(6), UsedImplicitly, Document]
+                         "died (0 to 1)"), PropertyOrder(6), UsedImplicitly]
             public float Inheritance { get; set; } = 0.25f;
             
             [Category("Limits"), Description("How many custom items can be inherited"), 
-             PropertyOrder(7), UsedImplicitly, Document]
+             PropertyOrder(7), UsedImplicitly]
             public int MaxInheritedCustomItems { get; set; } = 2;
             
-            [Category("Limits"), Description("Only subscribers can adopt"), PropertyOrder(7), UsedImplicitly, Document]
+            [Category("Limits"), Description("Only subscribers can adopt"), PropertyOrder(7), UsedImplicitly]
             public bool SubscriberOnly { get; set; }
 
             [Category("Limits"),
              Description("Only viewers who have been subscribers for at least this many months can adopt, " +
                          "ignored if not specified"),
-             PropertyOrder(8), UsedImplicitly, Document]
+             PropertyOrder(8), UsedImplicitly]
             public int? MinSubscribedMonths { get; set; }
             [Category("Initialization"), 
              Description("Gold the adopted hero will start with"), PropertyOrder(1), UsedImplicitly, 
@@ -73,16 +73,16 @@ namespace BLTAdoptAHero
             public int StartingGold { get; set; }
 
             [Category("Initialization"), Description("Override the heroes age"), 
-             PropertyOrder(2), UsedImplicitly, Document]
+             PropertyOrder(2), UsedImplicitly]
             public bool OverrideAge { get; set; }
             
             [Category("Initialization"), Description("Random range of age when overriding it"), 
-             PropertyOrder(3), UsedImplicitly, Document]
+             PropertyOrder(3), ExpandableObject, UsedImplicitly]
             public RangeFloat StartingAgeRange { get; set; } = new(18, 35);
 
             [Category("Initialization"),
              Description("Starting skills, if empty then default skills of the adopted hero will be left in tact"),
-             PropertyOrder(4), UsedImplicitly, Document]
+             PropertyOrder(4), UsedImplicitly]
             public List<SkillRangeDef> StartingSkills { get; set; } = new();
 
             [YamlIgnore, Browsable(false)]
@@ -91,7 +91,7 @@ namespace BLTAdoptAHero
             
             [Category("Initialization"), 
              Description("Equipment tier the adopted hero will start with, if you don't specify then they get the " +
-                         "heroes existing equipment"), PropertyOrder(5), UsedImplicitly, Document]
+                         "heroes existing equipment"), PropertyOrder(5), UsedImplicitly]
             public int? StartingEquipmentTier { get; set; }
             
             [Category("Initialization"), Description("Starting class of the hero"), 
@@ -100,11 +100,11 @@ namespace BLTAdoptAHero
 
             [Category("Initialization"), 
              Description("Whether the hero will spawn in hero party (Only work with Join Player Companion activated)"), 
-             PropertyOrder(7), UsedImplicitly, Document]
+             PropertyOrder(7), UsedImplicitly]
             public bool SpawnInParty { get; set; }
             
             [Category("Initialization"), Description("Whether the hero will be a companion"), 
-             PropertyOrder(8), UsedImplicitly, Document]
+             PropertyOrder(8), UsedImplicitly]
             public bool JoinPlayerCompanion { get; set; }
 
             public void GenerateDocumentation(IDocumentationGenerator generator)
@@ -314,13 +314,19 @@ namespace BLTAdoptAHero
                                 ), 0, 300)
                         );
                 }
-                
+
                 HeroHelper.DetermineInitialLevel(newHero);
 #if e159 || e1510
                 CharacterDevelopmentCampaignBehaivor.DevelopCharacterStats(newHero);
 #else
                 CharacterDevelopmentCampaignBehavior.DevelopCharacterStats(newHero);
 #endif
+            }
+
+            // A wanderer MUST have at least 1 skill point, or they get killed on load 
+            if (newHero.GetSkillValue(Skills.GetSkill(0)) == 0)
+            {
+                newHero.HeroDeveloper.SetInitialSkillLevel(Skills.GetSkill(0), 1);
             }
 
             if (settings.JoinPlayerCompanion)
