@@ -29,7 +29,7 @@ namespace BLTAdoptAHero.Powers
                 var blow = new Blow(agent.Index)
                 {
                     DamageType = (DamageTypes) attackCollisionData.Data.DamageType,
-                    BoneIndex = attackCollisionData.Data.AttackBoneIndex,
+                    BoneIndex = agent.Monster.HeadLookDirectionBoneIndex,
                     Position = agent.Position
                 };
                 blow.Position.z += agent.GetEyeGlobalHeight();
