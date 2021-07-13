@@ -274,7 +274,7 @@ namespace BLTAdoptAHero
 
             if (settings.OverrideAge)
             {
-                Hero.MainHero.SetBirthDay(CampaignTime.YearsFromNow(-Math.Max(18, settings.StartingAgeRange.RandomInRange())));
+                newHero.SetBirthDay(CampaignTime.YearsFromNow(-Math.Max(Campaign.Current.Models.AgeModel.HeroComesOfAge, settings.StartingAgeRange.RandomInRange())));
             }
             
             // Place hero where we want them
