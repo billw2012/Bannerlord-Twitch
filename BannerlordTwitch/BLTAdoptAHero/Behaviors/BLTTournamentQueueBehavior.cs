@@ -835,22 +835,23 @@ namespace BLTAdoptAHero
 
         public void EndCurrentMatchPrefix(TournamentBehavior tournamentBehavior)
         {
-            // If the tournament is over
+            // If the tournament is over we need to make sure player gets the real prize. 
+            // Need to do this before EndCurrentMatch, as the player gets the prize in this function.
             if (tournamentBehavior.CurrentRoundIndex == 3)
             {
                 // Reset the prize if the player won
                 if (originalPrize != null
-                    && tournamentBehavior.LastMatch.Winners.Any(w => w.IsPlayer))
+                    && tournamentBehavior.CurrentMatch.IsPlayerWinner())
                 {
                     SetPrize(tournamentBehavior.TournamentGame, originalPrize);
                 }
             }
-            
-            CompleteBetting(tournamentBehavior.LastMatch);
         }
 
         public void EndCurrentMatchPostfix(TournamentBehavior tournamentBehavior)
         {
+            CompleteBetting(tournamentBehavior.LastMatch);
+
             if(tournamentBehavior.CurrentMatch != null)
             {
                 OpenBetting(tournamentBehavior);
