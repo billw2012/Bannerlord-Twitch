@@ -8,7 +8,7 @@ namespace BLTAdoptAHero
 {
     public static class HeroExtensions
     {
-        public static bool IsAdopted(this Hero hero) => hero.Name.Contains(BLTAdoptAHeroModule.Tag);
+        public static bool IsAdopted(this Hero hero) => hero.Name?.Contains(BLTAdoptAHeroModule.Tag) == true;
         public static bool IsAdoptedBy(this Hero hero, string user) 
             => hero.IsAdopted()
             && string.Equals(hero.FirstName?.Raw(), user, StringComparison.CurrentCultureIgnoreCase);

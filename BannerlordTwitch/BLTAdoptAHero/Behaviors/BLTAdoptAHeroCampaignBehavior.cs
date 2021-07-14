@@ -757,6 +757,8 @@ namespace BLTAdoptAHero
             HeroHelpers.AliveHeroes.Where(h =>
                     // Some buggy mods can result in null heroes
                     h != null &&
+                    // Some buggy mods can result in heroes with out valid names
+                    h.Name != null &&
                     // Not the player of course
                     h != Hero.MainHero
                     // Don't want notables ever
@@ -764,7 +766,7 @@ namespace BLTAdoptAHero
                 .Where(filter ?? (_ => true))
                 .Where(n => !n.Name.Contains(BLTAdoptAHeroModule.Tag));
 
-        public static IEnumerable<Hero> GetAllAdoptedHeroes() => HeroHelpers.AliveHeroes.Where(n => n.Name.Contains(BLTAdoptAHeroModule.Tag));
+        public static IEnumerable<Hero> GetAllAdoptedHeroes() => HeroHelpers.AliveHeroes.Where(n => n.Name?.Contains(BLTAdoptAHeroModule.Tag) == true);
 
         public static string GetFullName(string name) => $"{name} {BLTAdoptAHeroModule.Tag}";
 
