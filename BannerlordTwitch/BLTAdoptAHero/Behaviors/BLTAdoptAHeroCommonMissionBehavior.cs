@@ -212,7 +212,7 @@ namespace BLTAdoptAHero
                     }
                 }
 
-                // Remove mount agent from tracking, in-case it is reused
+                // Remove agent from mount tracking (if its not a mount or isn't tracked then this line doesn't do anything)
                 Current?.adoptedHeroMounts.Remove(affectedAgent);
             }
             #if !DEBUG
@@ -378,7 +378,7 @@ namespace BLTAdoptAHero
 
             var agent = summonState?.CurrentAgent ?? hero.GetAgent();
 
-            var state = summonState?.State ?? agent?.State ?? AgentState.Killed;
+            var state = summonState?.State ?? agent?.State ?? AgentState.Unconscious;
             var heroModel = new HeroViewModel
             {
                 Name = hero.FirstName.Raw(),
