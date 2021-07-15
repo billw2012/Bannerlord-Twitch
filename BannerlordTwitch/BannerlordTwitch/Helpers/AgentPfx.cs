@@ -169,7 +169,7 @@ namespace BannerlordTwitch.Helpers
         {
             foreach (var effect in effects)
             {
-                effect.GetEntity().Skeleton.RemoveComponent(effect);
+                effect.GetEntity()?.Skeleton?.RemoveComponent(effect);
             }
         }
         #endregion
