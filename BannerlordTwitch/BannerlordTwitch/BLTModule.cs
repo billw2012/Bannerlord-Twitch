@@ -9,6 +9,7 @@ using System.Windows;
 using BannerlordTwitch.Overlay;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using BLTOverlay;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -83,7 +84,7 @@ namespace BannerlordTwitch
 			thread.SetApartmentState(ApartmentState.STA);
 			thread.IsBackground = true;
 			thread.Start();
-		}
+        }
 
 		protected override void OnBeforeInitialModuleScreenSetAsRoot()
 		{
@@ -102,7 +103,11 @@ namespace BannerlordTwitch
 				{
 					Log.LogFeedCritical($"Error Initialising Bannerlord Twitch: {ex.Message}");
 				}
-			}
+
+                ConsoleFeedOverlayControl.Register();
+                
+                BLTOverlay.BLTOverlay.Start();
+            }
 		}
 
 		public static void AddInfoPanel(Func<UIElement> construct)
@@ -123,6 +128,7 @@ namespace BannerlordTwitch
 		public static void AddToFeed(string text, Color color)
 		{
 			overlayWindow?.AddToFeed(text, System.Windows.Media.Color.FromScRgb(color.Alpha, color.Red, color.Green, color.Blue));
+            ConsoleFeedHub.SendMessage(text);
 		}
 
 		protected override void OnSubModuleUnloaded()

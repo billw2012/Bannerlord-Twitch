@@ -1,0 +1,25 @@
+﻿body {
+    margin: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+* {
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+}
+
+#root {
+    height: 100%;
+    overflow: clip;
+}
+
+#scaleroot {
+    position: relative;
+    height: 100%;
+    overflow: clip;
+    margin: 0;
+}
