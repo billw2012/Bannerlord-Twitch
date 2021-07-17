@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BLT Overlay</title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8"/>
+    <style type="text/css">
+        #bltconsole-container {
+        }
+        #bltconsole-items {
+        }
+        .bltconsole-text {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<script src="Scripts/jquery-1.6.4.js"></script>
+<script src="Scripts/jquery.signalR-2.4.2.js"></script>
+<script src="Scripts/vue.js"></script>
+
+<script src="http://Omega1:8087/signalr/hubs"></script>
+<div id="root">
+
+    <div id="bltconsole-container" class="drop-shadow">
+        <div id="bltconsole-items">
+            <div class="bltconsole-entry" v-for="item in items">
+                <p class="bltconsole-text">{{item.message}}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id='tournament-container' class='drop-shadow'>
+        <div id='tournament-label'>
+            Tournament
+        </div>
+        <div id='tournament-items'>
+            <div v-for='index in range(0, tournamentSize - 1)' class='tournament-range'>
+                <div v-if='index < entrants' class='tournament-entry tournament-in-next'></div>
+                <div v-else class='tournament-entry tournament-empty'></div>
+            </div>
+            <div v-if='entrants >= tournamentSize' class='tournament-range'>
+                <div class='tournament-entry tournament-last-slot'></div>
+            </div>
+            <div v-else class='tournament-range'>
+                <div class='tournament-entry tournament-empty'></div>
+            </div>
+            <div v-for='index in range(tournamentSize, entrants)' class="tournament-range">
+                <div class="tournament-entry tournament-overflow"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    <!-- Console -->
+    $(function () {
+        const bltConsole = new Vue({
+            el: '#bltconsole-container',
+            data: {
+                items: [
+                    { message: "Lorem ipsum dolor sit amet" },
+                    { message: "consectetur adipiscing elit" },
+                    { message: "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua" },
+                    { message: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat" },
+                    { message: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur" },
+                    { message: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" },
+                    { message: "Lorem ipsum dolor sit amet" },
+                    { message: "consectetur adipiscing elit" },
+                    { message: "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua" },
+                    { message: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat" },
+                    { message: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur" },
+                    { message: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" },
+                    { message: "Lorem ipsum dolor sit amet" },
+                    { message: "consectetur adipiscing elit" },
+                    { message: "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua" },
+                    { message: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat" },
+                    { message: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur" },
+                    { message: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" },
+                    { message: "Lorem ipsum dolor sit amet" },
+                    { message: "consectetur adipiscing elit" },
+                    { message: "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua" },
+                    { message: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat" },
+                    { message: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur" },
+                    { message: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" },
+                ]
+            }
+        });
+
+        $.connection.hub.url = "http://Omega1:8087/signalr";
+        const consoleFeedHub = $.connection.consoleFeedHub;
+        consoleFeedHub.client.addMessage = function (message) {
+            bltConsole.items.push(message);
+            console.log(message);
+        };
+        $.connection.hub.start().done(function () {
+            console.log('BLT Console Hub started');
+        });
+    });
+</script>
+<script type="text/javascript">
+    <!-- Tournament -->
+    $(function () {
+        const tournament = new Vue({
+            el: '#tournament-container',
+            data: {
+                entrants: 0,
+                tournamentSize: 16
+            },
+            methods:{
+                range : function (start, end) {
+                    if(end <= start)
+                    {
+                        return [];
+                    }
+                    return Array(end - start).fill(0).map((_, idx) => start + idx)
+                }
+            }
+        });
+
+        $.connection.hub.url = '$url_root$/signalr';
+        const tournamentHub = $.connection.tournamentHub;
+        tournamentHub.client.update = function (entrants, tournamentSize) {
+            tournament.entrants = entrants;
+            tournament.tournamentSize = tournamentSize;
+            console.log('BLT Tournament entrants set to ' + entrants + '/' + tournamentSize);
+        };
+        $.connection.hub.start().done(function () {
+            console.log('BLT Tournament Hub started');
+        });
+    });
+</script>
+
+</body>
+</html>

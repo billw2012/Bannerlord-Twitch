@@ -41,6 +41,8 @@ namespace BLTAdoptAHero
             GlobalHeroPowerConfig.Register();
 
             HeroPowerDefBase.RegisterAll(typeof(BLTAdoptAHeroModule).Assembly);
+            
+            TournamentHub.Register();
         }
 
         public override void OnMissionBehaviourInitialize(Mission mission)

@@ -10,62 +10,6 @@ using JetBrains.Annotations;
 
 namespace BLTOverlay
 {
-    public static class ConsoleFeedOverlayControl
-    {
-        public static void Register()
-        {
-            BLTOverlay.Register("console", 0, @"
-#bltconsole-container {
-    position: absolute;
-    left: 10px;
-    bottom: 20px;
-}
-
-#bltconsole {
-    list-style: none;
-    padding: 0;
-}
-
-.bltconsole-text {
-    filter: drop-shadow(0px 0px 2px black) drop-shadow(0px 0px 5px black);
-    margin: 0;
-}
-
-", @"
-<div id=""bltconsole-container"">
-<ul id=""bltconsole"">
-    <li class=""bltconsole-entry"" v-for=""item in items"" :key=""item.id"">
-        <p class=""bltconsole-text"">{{item.message}}</p>
-    </li>
-</ul>
-</div> 
-", @"
-$(function () {
-    var bltconsole = new Vue({
-        el: '#bltconsole',
-        data: {items: []}
-    });
-
-    //Set the hubs URL for the connection
-    $.connection.hub.url = ""$url_root$/signalr"";
-
-    // Declare a proxy to reference the hub.
-    const consoleFeedHub = $.connection.consoleFeedHub;
-
-    // Create a function that the hub can call to broadcast messages.
-    consoleFeedHub.client.addMessage = function (message) {
-        bltconsole.items.push(message);
-        console.log(message);
-    };
-    // Start the connection.
-    $.connection.hub.start().done(function () {
-        console.log('BLT Console Hub started');
-    });
-});
-");
-        }
-    }
-
     public class ConsoleFeedHub : Hub
     {
         private static int Id = 0;
@@ -105,6 +49,47 @@ $(function () {
 
             GlobalHost.ConnectionManager.GetHubContext<ConsoleFeedHub>()
                 .Clients.All.addMessage(newMsg);
+        }
+        
+        public static void Register()
+        {
+            BLTOverlay.Register("console", 0, @"
+#bltconsole-container {
+}
+#bltconsole-items {
+}
+.bltconsole-text {
+    margin: 0;
+}
+
+", @"
+<div id='bltconsole-container' class='drop-shadow'>
+    <div id='bltconsole-items'>
+        <div class='bltconsole-entry' v-for='item in items'>
+            <p class='bltconsole-text'>{{item.message}}</p>
+        </div>
+    </div>
+</div> 
+", @"
+$(function () {
+    const bltConsole = new Vue({
+        el: '#bltconsole-container',
+        data: { items: [] }
+    });
+    $.connection.hub.url = '$url_root$/signalr';
+    $.connection.hub.logging = true;
+    const consoleFeedHub = $.connection.consoleFeedHub;
+    consoleFeedHub.client.addMessage = function (message) {
+        bltConsole.items.push(message);
+        console.log(message);
+    };
+    $.connection.hub.start().done(function () {
+        console.log('BLT Console Hub started');
+    }).fail(function(){ 
+        console.log('BLT Console Hub started could not Connect!'); 
+    });
+});
+");
         }
     }
 }

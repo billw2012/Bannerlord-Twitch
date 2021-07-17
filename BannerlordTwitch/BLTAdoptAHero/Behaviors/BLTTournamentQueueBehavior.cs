@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Bannerlord.ButterLib.SaveSystem.Extensions;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
@@ -9,6 +10,7 @@ using BLTAdoptAHero.UI;
 using BLTAdoptAHero.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
+using Microsoft.AspNet.SignalR;
 using SandBox.TournamentMissions.Missions;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.Source.TournamentGames;
@@ -21,10 +23,140 @@ using TaleWorlds.TwoDimension;
 
 namespace BLTAdoptAHero
 {
+    public class TournamentHub : Hub
+    {
+        public static void Register()
+        {
+            BLTOverlay.BLTOverlay.Register("tournament", 100, @"
+#tournament-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+}
+
+#tournament-label {
+    font-weight: bold;
+    margin-right: 0.6em;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.1em;
+}
+
+#tournament-items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.tournament-range {
+    display: flex;
+    align-items: center;
+}
+
+.tournament-entry {
+    height: 0.5em;
+    width: 0.5em;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0.1em;
+}
+
+.tournament-empty {
+    background-color: transparent;
+    border: 0.1em solid #ffffff;
+}
+
+.tournament-in-next {
+    background-color: #ffffff;
+}
+
+.tournament-last-slot {
+    background-color: #ff813f;
+}
+
+.tournament-overflow {
+    background-color: #29ba7f;
+}
+", @"
+<div id='tournament-container' class='drop-shadow'>
+    <div id='tournament-label'>
+        Tournament
+    </div>
+    <div id='tournament-items'>
+        <div v-for='index in range(0, tournamentSize - 1)' class='tournament-range'>
+            <div v-if='index < entrants' class='tournament-entry tournament-in-next'></div>
+            <div v-else class='tournament-entry tournament-empty'></div>
+        </div>
+        <div v-if='entrants >= tournamentSize' class='tournament-range'>
+            <div class='tournament-entry tournament-last-slot'></div>
+        </div>
+        <div v-else class='tournament-range'>
+            <div class='tournament-entry tournament-empty'></div>
+        </div>
+        <div v-for='index in range(tournamentSize, entrants)' class='tournament-range'>
+            <div class='tournament-entry tournament-overflow'></div>
+        </div>
+    </div>
+</div>
+", @"
+<!-- Tournament -->
+$(function () {
+    const tournament = new Vue({
+        el: '#tournament-container',
+        data: {
+            entrants: 0,
+            tournamentSize: 16
+        },
+        methods:{
+            range : function (start, end) {
+                if(end <= start)
+                {
+                    return [];
+                }
+                return Array(end - start).fill(0).map((_, idx) => start + idx)
+            }
+        }
+    });
+
+    $.connection.hub.url = '$url_root$/signalr';
+    const tournamentHub = $.connection.tournamentHub;
+    tournamentHub.client.update = function (entrants, tournamentSize) {
+        tournament.entrants = entrants;
+        tournament.tournamentSize = tournamentSize;
+        console.log('BLT Tournament entrants set to ' + entrants + '/' + tournamentSize);
+    };
+    $.connection.hub.start().done(function () {
+        console.log('BLT Tournament Hub started');
+    });
+});
+");
+        }
+        
+        public override Task OnConnected()
+        {
+            Refresh();
+            return base.OnConnected();
+        }
+
+        [UsedImplicitly]
+        public void Refresh()
+        {
+            (int entrants, int tournamentSize) = BLTTournamentQueueBehavior.Current?.GetTournamentQueueSize() ?? (0, 16);
+            Clients.Caller.update(entrants, tournamentSize);
+        }
+        
+        public static void Refresh(int entrants, int tournamentSize)
+        {
+            GlobalHost.ConnectionManager.GetHubContext<TournamentHub>()
+                .Clients.All.update(entrants, tournamentSize);
+        }
+    }
+    
     public class BLTTournamentQueueBehavior : CampaignBehaviorBase, IDisposable
     {
-        public static BLTTournamentQueueBehavior Current => GetCampaignBehavior<BLTTournamentQueueBehavior>();
-            
+        public static BLTTournamentQueueBehavior Current => Campaign.Current?.GetCampaignBehavior<BLTTournamentQueueBehavior>();
+
         private TournamentQueuePanel tournamentQueuePanel;
 
         public BLTTournamentQueueBehavior()
@@ -79,13 +211,19 @@ namespace BLTAdoptAHero
             UpdatePanel();
         }
 
+        public (int entrants, int tournamentSize) GetTournamentQueueSize()
+        {
+            return (tournamentQueue.Count, 16);
+        }
+        
         private void UpdatePanel()
         {
-            int queueLength = tournamentQueue.Count;
+            (int entrants, int tournamentSize) = GetTournamentQueueSize();
             Log.RunInfoPanelUpdate(() =>
             {
-                tournamentQueuePanel.UpdateTournamentQueue(queueLength);
+                tournamentQueuePanel.UpdateTournamentQueue(entrants);
             });
+            TournamentHub.Refresh(entrants, tournamentSize);
         }
 
         private class TournamentQueueEntry

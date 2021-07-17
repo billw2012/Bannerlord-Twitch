@@ -13,7 +13,7 @@ namespace BLTAdoptAHero
 {
     public class BLTCustomItemsCampaignBehavior : CampaignBehaviorBase
     {
-        public static BLTCustomItemsCampaignBehavior Current => GetCampaignBehavior<BLTCustomItemsCampaignBehavior>();
+        public static BLTCustomItemsCampaignBehavior Current => Campaign.Current?.GetCampaignBehavior<BLTCustomItemsCampaignBehavior>();
         
         private class ItemModifierData
         {

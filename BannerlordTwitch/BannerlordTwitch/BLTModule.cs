@@ -104,7 +104,7 @@ namespace BannerlordTwitch
 					Log.LogFeedCritical($"Error Initialising Bannerlord Twitch: {ex.Message}");
 				}
 
-                ConsoleFeedOverlayControl.Register();
+                ConsoleFeedHub.Register();
                 
                 BLTOverlay.BLTOverlay.Start();
             }

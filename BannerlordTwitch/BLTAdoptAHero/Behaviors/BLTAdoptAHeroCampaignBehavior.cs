@@ -22,7 +22,7 @@ namespace BLTAdoptAHero
 {
     public class BLTAdoptAHeroCampaignBehavior : CampaignBehaviorBase
     {
-        public static BLTAdoptAHeroCampaignBehavior Current => GetCampaignBehavior<BLTAdoptAHeroCampaignBehavior>();
+        public static BLTAdoptAHeroCampaignBehavior Current => Campaign.Current?.GetCampaignBehavior<BLTAdoptAHeroCampaignBehavior>();
 
         private class HeroData
         {
