@@ -20,6 +20,8 @@ namespace BLTOverlay
             public int id = ++Id;
             [UsedImplicitly]
             public string message;
+            [UsedImplicitly] 
+            public string style;
         }
 
         private static readonly List<Message> messages = new();
@@ -42,9 +44,9 @@ namespace BLTOverlay
             }
         }
         
-        public static void SendMessage(string message)
+        public static void SendMessage(string message, string style)
         {
-            var newMsg = new Message {message = message};
+            var newMsg = new Message { message = message, style = style };
             lock(messages)
             {
                 messages.Add(newMsg);
@@ -63,18 +65,65 @@ namespace BLTOverlay
             BLTOverlay.Register("console", 0, @"
 #bltconsole-container {
 }
+
 #bltconsole-items {
 }
+
 .bltconsole-text {
     margin: 0;
+}
+
+.bltconsole-items-t-enter, .bltconsole-items-t-leave-to {
+    opacity: 0;
+    background: #7000;
+    transform: translateY(50px);
+}
+
+.bltconsole-items-t-leave-active {
+    position: absolute;
+}
+
+.bltconsole-entry {
+    transition: all 0.2s;
+}
+
+.bltconsole-text-style-general {
+    color: white;
+}
+
+.bltconsole-text-style-response {
+    color: white;
+}
+
+.bltconsole-text-style-system {
+    color: cyan;
+}
+
+.bltconsole-text-style-battle {
+    color: yellow;
+}
+
+.bltconsole-text-style-event {
+    color: white;
+}
+
+.bltconsole-text-style-fail {
+    color: red;
+    font-weight: bold;
+}
+
+.bltconsole-text-style-critical {
+    color: red;
 }
 
 ", @"
 <div id='bltconsole-container' class='drop-shadow'>
     <div id='bltconsole-items'>
-        <div class='bltconsole-entry' v-for='item in items'>
-            <p class='bltconsole-text'>{{item.message}}</p>
-        </div>
+        <transition-group name='bltconsole-items-t' tag='div'>
+            <div class='bltconsole-entry' v-for='item in items' v-bind:key='item.id'>
+                <div class='bltconsole-text' v-bind:class=""'bltconsole-text-style-' + item.style"">{{item.message}}</div>
+            </div>
+        </transition-group>
     </div>
 </div> 
 ", @"

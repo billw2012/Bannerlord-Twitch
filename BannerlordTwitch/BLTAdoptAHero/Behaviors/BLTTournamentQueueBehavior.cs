@@ -78,24 +78,46 @@ namespace BLTAdoptAHero
 .tournament-overflow {
     background-color: #29ba7f;
 }
+
+.tournament-entry-t-enter-active {
+    animation: bounce-in 0.6s;
+}
+
+/*.tournament-entry-t-leave-active {*/
+/*    animation: bounce-in 0.1s reverse;*/
+/*}*/
+
+@keyframes bounce-in {
+    0% {
+        transform: scale(1);
+        opacity: 0;
+    }
+    25% {
+        transform: scale(4);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
 ", @"
 <div id='tournament-container' class='drop-shadow'>
     <div id='tournament-label'>
         Tournament
     </div>
     <div id='tournament-items'>
-        <div v-for='index in range(0, tournamentSize - 1)' class='tournament-range'>
-            <div v-if='index < entrants' class='tournament-entry tournament-in-next'></div>
-            <div v-else class='tournament-entry tournament-empty'></div>
-        </div>
-        <div v-if='entrants >= tournamentSize' class='tournament-range'>
-            <div class='tournament-entry tournament-last-slot'></div>
-        </div>
-        <div v-else class='tournament-range'>
-            <div class='tournament-entry tournament-empty'></div>
-        </div>
-        <div v-for='index in range(tournamentSize, entrants)' class='tournament-range'>
-            <div class='tournament-entry tournament-overflow'></div>
+        <div v-for='index in range(0, Math.max(tournamentSize, entrants))' class='tournament-range'>
+            <transition name='tournament-entry-t' tag='div' mode='out-in' appear>
+                <div v-if='index < entrants && index < tournamentSize - 1' 
+                     class='tournament-entry tournament-in-next' v-bind:key=""index + 'in-next'""></div>
+                <div v-else-if='index < entrants && index === tournamentSize - 1' 
+                     class='tournament-entry tournament-last-slot' v-bind:key=""index + 'last-slot'""></div>
+                <div v-else-if='index > tournamentSize - 1' 
+                     class='tournament-entry tournament-overflow' v-bind:key=""index + 'overflow'""></div>
+                <div v-else 
+                     class='tournament-entry tournament-empty' v-bind:key=""index + 'empty'""></div>
+            </transition>
         </div>
     </div>
 </div>
@@ -1059,6 +1081,7 @@ $(function () {
 
         private void ReleaseUnmanagedResources()
         {
+            TournamentHub.Refresh(0, 0);
             Log.RemoveInfoPanel(tournamentQueuePanel);
         }
 

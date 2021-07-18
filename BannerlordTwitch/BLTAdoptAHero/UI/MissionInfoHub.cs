@@ -135,15 +135,22 @@ namespace BLTAdoptAHero.UI
     flex-wrap: wrap;
     align-items: stretch;
 }
+.mission-heroes-t-move {
+    transition: transform 0.5s;
+}
 .mission-hero {
+    min-width: 6em;
+    max-width: 10em;
+    margin: 0.3em;
+    flex-grow: 1;
+}
+.mission-hero-inner {
     display: flex;
     flex-direction: column;
     position: relative;
     border-radius: 0.3em;
     overflow: hidden;
-    min-width: 6em;
-    max-width: 10em;
-    margin: 0.3em;
+    height: 100%;
 }
 .mission-hero div {
     z-index: 1;
@@ -179,7 +186,7 @@ namespace BLTAdoptAHero.UI
 .mission-hero-name-row {
     display: flex;
     flex-direction: row;
-    margin: 0 0.2em -0.1em 0.2em;
+    margin: 0 0.2em 0.3em 0.2em;
 }
 
 .mission-hero-summon-cooldown {
@@ -203,13 +210,21 @@ namespace BLTAdoptAHero.UI
 .mission-hero-score-row {
     display: flex;
     flex-direction: row;
-    margin-left: 0.2em;
-    margin-right: 0.2em;
-    margin-bottom: 0.2em;
+    margin-top: -0.1em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+    margin-bottom: 0;
 }
 
 .mission-hero-kills {
-    
+    font-size: 115%;
+    margin-top: -0.1em;
+    transition: 0.3s;
+}
+
+.mission-hero-kills-t-active {
+    opacity: 0;
+    transform: scale(3);
 }
 
 .mission-hero-retinue-kills {
@@ -225,7 +240,8 @@ namespace BLTAdoptAHero.UI
 
 .mission-hero-gold {
     color: gold;
-    margin-right: 0.2em;
+    margin-left: 0.5em;
+    margin-right: 0.3em;
 }
 
 .mission-hero-xp {
@@ -236,12 +252,8 @@ namespace BLTAdoptAHero.UI
     display: flex;
     flex-direction: row;
     max-height: 0;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: -1;
-    position: absolute;
-    bottom: 0.1em;
-    align-self: center;
+    position: relative;
+    justify-content: center;
 }
 
 .hero-retinue-list-item {
@@ -255,28 +267,34 @@ namespace BLTAdoptAHero.UI
 }
 ", @"
 <div id='mission-container' class='drop-shadow'>
-        <div id='mission-heroes'>
-            <div class='mission-hero' v-for='hero in sortedHeroes'
-                 v-bind:key='hero.Name'
-                 v-bind:class=""hero.IsPlayerSide ? 'mission-hero-player-side' : 'mission-hero-other-side'"">
+    <transition-group name='mission-heroes-t' tag='div' id='mission-heroes'>
+        <div class='mission-hero' v-for='hero in sortedHeroes'
+             v-bind:key='hero.Name'>
+            <div class='mission-hero-inner' 
+                        v-bind:class=""hero.IsPlayerSide ? 'mission-hero-player-side' : 'mission-hero-other-side'"">
                 <div class='mission-hero-health' 
                      v-bind:style=""{ width: (hero.FastTickState.HP * 100 / hero.MaxHP) + '%' }""></div>
-                <div v-show=""hero.FastTickState.ActivePowerFractionRemaining > 0"" 
+                <div v-show='hero.FastTickState.ActivePowerFractionRemaining > 0' 
                      class='mission-hero-active-power-remaining' 
                      v-bind:style=""{ height: hero.FastTickState.ActivePowerFractionRemaining * 100 + '%' }""></div>
                 <div class='mission-hero-name-row'>
                     <div class='mission-hero-summon-cooldown outline'>
-                        <progress-ring :radius=""10"" 
-                                       color=""yellow""
-                                       :progress=""hero.FastTickState.CooldownFractionRemaining * 100"" 
-                                       :stroke=""10""></progress-ring>
+                        <progress-ring :radius='10' 
+                                       color='yellow'
+                                       :progress='hero.FastTickState.CooldownFractionRemaining * 100' 
+                                       :stroke='10'></progress-ring>
                     </div>
                     <div class='mission-hero-name drop-shadow-2'>{{hero.Name}}</div>
                 </div>
                 <div class='mission-hero-score-row drop-shadow-2'>
-                    <div v-show=""hero.Kills > 0"" class='mission-hero-kills'>
-                        {{hero.Kills}}</div>
-                    <div v-show=""hero.RetinueKills > 0"" class='mission-hero-retinue-kills'>
+                    <div v-show='hero.Kills > 0' class='mission-hero-kills'>
+                        <transition name='mission-hero-kills-t'>
+                            <div :key='hero.Kills'>
+                                {{hero.Kills}}
+                            </div>
+                        </transition>
+                    </div>
+                    <div v-show='hero.RetinueKills > 0' class='mission-hero-retinue-kills'>
                         +{{hero.RetinueKills}}</div>
                     <div class='mission-hero-gold-xp'>
                         <div v-show='hero.GoldEarned > 0' class='mission-hero-gold'>
@@ -285,12 +303,13 @@ namespace BLTAdoptAHero.UI
                             {{Math.round(hero.XPEarned / 1000)}}k</div>
                     </div>
                 </div>
-                <div class='hero-retinue-list drop-shadow-2'>
-                    <div v-for='index in Math.min(hero.Retinue, 5)' class='hero-retinue-list-item'></div>
-                </div>
+            </div>
+            <div class='hero-retinue-list drop-shadow-2'>
+                <div v-for='index in Math.min(hero.Retinue, 5)' class='hero-retinue-list-item'></div>
             </div>
         </div>
-    </div>
+    </transition-group>
+</div>
 ", @"
 <!-- Mission Info -->
 $(function () {
@@ -305,8 +324,8 @@ $(function () {
         computed: {
             sortedHeroes: function () {
                 function compare(a, b) {
-                    if(a.IsPlayerSide && !b.IsPlayerSide) return 1;
-                    if(!a.IsPlayerSide && b.IsPlayerSide) return -1;
+                    if(!a.IsPlayerSide && b.IsPlayerSide) return 1;
+                    if(a.IsPlayerSide && !b.IsPlayerSide) return -1;
                     if(a.Kills < b.Kills) return 1;
                     if(a.Kills > b.Kills) return -1;
                     if(a.RetinueKills < b.RetinueKills) return 1;

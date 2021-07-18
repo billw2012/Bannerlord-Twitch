@@ -143,12 +143,4 @@ namespace BLTOverlay
             });
         }
     }
-    
-    // public class MyHub : Hub
-    // {
-    //     public void Send(string message)
-    //     {
-    //         Clients.All.addMessage(name, message);
-    //     }
-    // }
 }

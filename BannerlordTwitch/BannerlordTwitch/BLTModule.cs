@@ -12,6 +12,7 @@ using BannerlordTwitch.Util;
 using BLTOverlay;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using Color = TaleWorlds.Library.Color;
 
@@ -125,10 +126,26 @@ namespace BannerlordTwitch
 			overlayWindow?.RunInfoPanelUpdate(action);
 		}
 
-		public static void AddToFeed(string text, Color color)
-		{
+        private static Color ColorFromStyle(string style)
+        {
+            return style switch
+            {
+                "fail" => new (1f, 0.5f, 0f),
+                "critical" => Colors.Red,
+                "system" => Colors.Magenta,
+                "battle" => Colors.Yellow,
+                "event" => Colors.Cyan,
+                // "general" => Colors.White,
+                // "response" => Colors.White,
+                _ => Colors.White
+            };
+        }
+
+		public static void AddToFeed(string text, string style)
+        {
+            var color = ColorFromStyle(style);
 			overlayWindow?.AddToFeed(text, System.Windows.Media.Color.FromScRgb(color.Alpha, color.Red, color.Green, color.Blue));
-            ConsoleFeedHub.SendMessage(text);
+            ConsoleFeedHub.SendMessage(text, style);
 		}
 
 		protected override void OnSubModuleUnloaded()

@@ -1320,8 +1320,8 @@ GlobalConfigs:
 SimTesting:
   UserCount: 25
   UserStayTime: 300
-  IntervalMinMS: 100
-  IntervalMaxMS: 100
+  IntervalMinMS: 200
+  IntervalMaxMS: 300
   Init:
   - Enabled: true
     Type: Reward
@@ -1333,7 +1333,7 @@ SimTesting:
     Id: 100k gold
     Args: 
     Weight: 0
-  - Enabled: false
+  - Enabled: true
     Type: Reward
     Id: Tournament
     Args: 

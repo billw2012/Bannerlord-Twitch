@@ -77,17 +77,28 @@ namespace BannerlordTwitch.Util
         //     });
         // }
         
-        public static void LogFeedFail(string str) => LogFeed("!FAIL!: " + str, new Color(1f, 0.5f, 0f));
-        public static void LogFeedCritical(string str) => LogFeed("!!CRITICAL!!: " + str, Colors.Red);
-        public static void LogFeedSystem(string str) => LogFeed(str, Colors.Magenta);
-        public static void LogFeedBattle(string str) => LogFeed(str, Colors.White);
-        public static void LogFeedEvent(string str) => LogFeed(str, Colors.Cyan);
-        public static void LogFeedResponse(string userName, params string[] messages) => LogFeed($"@{userName}: {string.Join(", ", messages)}", Colors.Yellow);
-        public static void LogFeedResponse(params string[] messages) => LogFeed(string.Join(", ", messages), Colors.Yellow);
-        
-        public static void LogFeed(string str, Color color)
+        public static void LogFeedFail(string str) => LogFeed("!FAIL!: " + str, LogStyle.Fail);
+        public static void LogFeedCritical(string str) => LogFeed("!!CRITICAL!!: " + str, LogStyle.Critical);
+        public static void LogFeedSystem(string str) => LogFeed(str, LogStyle.System);
+        public static void LogFeedBattle(string str) => LogFeed(str, LogStyle.Battle);
+        public static void LogFeedEvent(string str) => LogFeed(str, LogStyle.Event);
+        public static void LogFeedResponse(string userName, params string[] messages) => LogFeed($"@{userName}: {string.Join(", ", messages)}", LogStyle.Response);
+        public static void LogFeedResponse(params string[] messages) => LogFeed(string.Join(", ", messages), LogStyle.Response);
+
+        public enum LogStyle
         {
-            BLTModule.AddToFeed(str, color);
+            General,
+            Fail,
+            Critical,
+            System,
+            Battle,
+            Event,
+            Response,
+        }
+        
+        public static void LogFeed(string str, LogStyle style)
+        {
+            BLTModule.AddToFeed(str, style.ToString().ToLower());
             Info(str);
         }
                 

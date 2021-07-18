@@ -131,39 +131,28 @@ namespace BLTAdoptAHero
             });
         }
 
-        private float slowTickT;
-        private float fasterTickT;
+        private float lastTickT;
 
         public override void OnMissionTick(float dt)
         {
             SafeCall(() =>
             {
-                slowTickT += dt;
-                const float TickTime = 2f;
-                if (slowTickT > TickTime)
+                if (lastTickT == 0)
                 {
-                    slowTickT -= TickTime;
+                    lastTickT = MBCommon.GetTime(MBCommon.TimeType.Application);
+                    return;
+                }
+
+                const float TickTime = 1f;
+                if (MBCommon.GetTime(MBCommon.TimeType.Application) - lastTickT > TickTime)
+                {
+                    lastTickT = MBCommon.GetTime(MBCommon.TimeType.Application);
 
                     foreach (var h in activeHeroes)
                     {
                         UpdateHeroVM(h);
                     }
-                    
                     MissionInfoHub.TickSlow();
-                }
-
-                fasterTickT += dt;
-                const float FasterTickTime = 0.05f;
-                if (fasterTickT > FasterTickTime)
-                {
-                    fasterTickT -= FasterTickTime;
-
-                    foreach (var h in activeHeroes)
-                    {
-                        UpdateHeroVMTick(h);
-                    }
-                    
-                    MissionInfoHub.TickFast();
                 }
             });
         }
