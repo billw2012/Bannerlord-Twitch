@@ -5,12 +5,195 @@
     <link rel="stylesheet" href="style.css">
     <meta charset="utf-8"/>
     <style type="text/css">
+
         #bltconsole-container {
         }
         #bltconsole-items {
         }
         .bltconsole-text {
             margin: 0;
+        }
+
+
+    </style>
+    <style type="text/css">
+
+        #tournament-container {
+            display: flex;
+            flex-direction: row;
+            margin-top: 1em;
+        }
+
+        #tournament-label {
+            font-weight: bold;
+            margin-right: 0.6em;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.1em;
+        }
+
+        #tournament-items {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .tournament-range {
+            display: flex;
+            align-items: center;
+        }
+
+        .tournament-entry {
+            height: 0.5em;
+            width: 0.5em;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            margin: 0.1em;
+        }
+
+        .tournament-empty {
+            background-color: transparent;
+            border: 0.1em solid #ffffff;
+        }
+
+        .tournament-in-next {
+            background-color: #ffffff;
+        }
+
+        .tournament-last-slot {
+            background-color: #ff813f;
+        }
+
+        .tournament-overflow {
+            background-color: #29ba7f;
+        }
+
+    </style>
+    <style type="text/css">
+
+        #mission-container {
+            display: flex;
+            flex-direction: row;
+            margin-top: 1em;
+        }
+        #mission-heroes {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .mission-hero {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            height: 100%;
+            border-radius: 0.5em;
+            overflow: clip;
+            min-width: 6em;
+            max-width: 10em;
+        }
+        .mission-hero div {
+            z-index: 1;
+        }
+        .mission-hero-player-side {
+            background: #202050;
+        }
+        .mission-hero-other-side {
+            background: #401122;
+        }
+        .mission-hero-health {
+            position: absolute;
+            z-index: 0;
+            height: 100%;
+            margin: 0;
+        }
+        .mission-hero-player-side .mission-hero-health {
+            background: #6666CC;
+        }
+        .mission-hero-other-side .mission-hero-health {
+            background: #AA3277;
+        }
+        
+        .mission-hero-active-power-remaining {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0.5em;
+            background: orange;
+            clip: auto;
+        }
+
+        .mission-hero-name-row {
+            display: flex;
+            flex-direction: row;
+            margin: 0 0.2em -0.4em 0.2em;
+        }
+        
+        .mission-hero-summon-cooldown {
+            flex-shrink: 0;
+            flex-basis: 1.25em;
+            margin: 0.2em -0.2em 0 0;
+            align-self: center;
+        }
+        .mission-hero-name {
+            text-align: center;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-left: 0.2em;
+            margin-right: 0.2em;
+            align-self: baseline;
+        }
+        
+        .mission-hero-score-row {
+            display: flex;
+            flex-direction: row;
+            margin-left: 0.2em;
+            margin-right: 0.2em;
+        }
+        
+        .mission-hero-kills {
+            
+        }
+        
+        .mission-hero-retinue-kills {
+            align-self: stretch;
+            color: cyan;
+        }
+        
+        .mission-hero-gold {
+            color: gold;
+            margin-left: auto;
+            margin-right: 0.2em;
+        }
+        
+        .mission-hero-xp {
+            color: #FF7FB0;
+        }
+        
+        .hero-retinue-list {
+            display: flex;
+            flex-direction: row;
+            max-height: 0;
+            margin-left: auto;
+            margin-right: auto;
+            z-index: -1;
+        }
+        
+        .hero-retinue-list-item {
+            height: 0.5em;
+            width: 0.5em;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            background: cyan;
+            margin: -0.15em 0.2em 0.2em 0.2em;
+        }
+
+        .circular-progress-bar {
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
         }
     </style>
 </head>
@@ -19,7 +202,7 @@
 <script src="Scripts/jquery.signalR-2.4.2.js"></script>
 <script src="Scripts/vue.js"></script>
 
-<script src="http://Omega1:8087/signalr/hubs"></script>
+<!--<script src="http://Omega1:8087/signalr/hubs"></script>-->
 <div id="root">
 
     <div id="bltconsole-container" class="drop-shadow">
@@ -47,6 +230,41 @@
             </div>
             <div v-for='index in range(tournamentSize, entrants)' class="tournament-range">
                 <div class="tournament-entry tournament-overflow"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id='mission-container' class='drop-shadow'>
+        <div id='mission-heroes'>
+            <div class='mission-hero' v-for='hero in heroes' 
+                 v-bind:class="hero.IsPlayerSide ? 'mission-hero-player-side' : 'mission-hero-other-side'">
+                <div class='mission-hero-health' 
+                     v-bind:style="{ width: (hero.FastTickState.HP * 100 / hero.MaxHP) + '%' }"></div>
+                <div v-show="hero.FastTickState.ActivePowerFractionRemaining > 0" 
+                     class='mission-hero-active-power-remaining' 
+                     v-bind:style="{ height: hero.FastTickState.ActivePowerFractionRemaining * 100 + '%' }"></div>
+                <div class='mission-hero-name-row'>
+                    <div class='mission-hero-summon-cooldown outline'>
+                        <progress-ring :radius="10" 
+                                       color="yellow"
+                                       :progress="hero.FastTickState.CooldownFractionRemaining * 100" 
+                                       :stroke="10"></progress-ring>
+                    </div>
+                    <div class='mission-hero-name drop-shadow-2'>{{hero.Name}}</div>
+                </div>
+                <div class='mission-hero-score-row drop-shadow-2'>
+                    <div v-show="hero.Kills > 0" class='mission-hero-kills'>
+                        {{hero.Kills}}</div>
+                    <div v-show="hero.RetinueKills > 0" class='mission-hero-retinue-kills'>
+                        +{{hero.RetinueKills}}</div>
+                    <div v-show="hero.GoldEarned > 0" class='mission-hero-gold'>
+                        {{Math.round(hero.GoldEarned / 1000)}}k</div>
+                    <div v-show="hero.XPEarned > 0" class='mission-hero-xp'>
+                        {{Math.round(hero.XPEarned / 1000)}}k</div>
+                </div>
+                <div class='hero-retinue-list drop-shadow-2'>
+                    <div v-for='index in Math.min(hero.Retinue, 5)' class='hero-retinue-list-item'></div>
+                </div>
             </div>
         </div>
     </div>
@@ -87,18 +305,24 @@
             }
         });
 
-        $.connection.hub.url = "http://Omega1:8087/signalr";
-        const consoleFeedHub = $.connection.consoleFeedHub;
-        consoleFeedHub.client.addMessage = function (message) {
-            bltConsole.items.push(message);
-            console.log(message);
-        };
-        $.connection.hub.start().done(function () {
-            console.log('BLT Console Hub started');
-        });
+        // $.connection.hub.url = "http://Omega1:8087/signalr";
+        // const consoleFeedHub = $.connection.consoleFeedHub;
+        // consoleFeedHub.client.addMessage = function (message) {
+        //     bltConsole.items.push(message);
+        //     if(bltConsole.items.length > 100)
+        //     {
+        //         bltConsole.items.shift();
+        //     }
+        //     console.log(message);
+        // };
+        // $.connection.hub.start().done(function () {
+        //     console.log('BLT Console Hub started');
+        // });
     });
 </script>
+
 <script type="text/javascript">
+
     <!-- Tournament -->
     $(function () {
         const tournament = new Vue({
@@ -118,17 +342,117 @@
             }
         });
 
-        $.connection.hub.url = '$url_root$/signalr';
-        const tournamentHub = $.connection.tournamentHub;
-        tournamentHub.client.update = function (entrants, tournamentSize) {
-            tournament.entrants = entrants;
-            tournament.tournamentSize = tournamentSize;
-            console.log('BLT Tournament entrants set to ' + entrants + '/' + tournamentSize);
-        };
-        $.connection.hub.start().done(function () {
-            console.log('BLT Tournament Hub started');
-        });
+        // $.connection.hub.url = 'http://Omega1:8087/signalr';
+        // const tournamentHub = $.connection.tournamentHub;
+        // tournamentHub.client.update = function (entrants, tournamentSize) {
+        //     tournament.entrants = entrants;
+        //     tournament.tournamentSize = tournamentSize;
+        //     console.log('BLT Tournament entrants set to ' + entrants + '/' + tournamentSize);
+        // };
+        // $.connection.hub.start().done(function () {
+        //     console.log('BLT Tournament Hub started');
+        // });
     });
+
+</script>
+
+<script type="text/javascript">
+    const ProgressRing = Vue.component('progress-ring', {
+        props: {
+            radius: Number,
+            progress: Number,
+            stroke: Number,
+            color: String
+        },
+        data() {
+            const normalizedRadius = this.radius - this.stroke * 0.5;
+            const circumference = normalizedRadius * 2 * Math.PI;
+
+            return {
+                normalizedRadius,
+                circumference
+            };
+        },
+        computed: {
+            strokeDashoffset() {
+                return this.circumference - this.progress / 100 * this.circumference;
+            }
+        },
+        template: `
+          <svg :viewBox="'0 0 ' + radius*2 + ' ' + radius*2" width="100%" height="100%">
+              <circle
+                  class="circular-progress-bar"
+                  :stroke="color"
+                  :stroke-dasharray="circumference + ' ' + circumference"
+                  :style="{ strokeDashoffset: strokeDashoffset }"
+                  :stroke-width="stroke"
+                  fill="transparent"
+                  :r="normalizedRadius"
+                  :cx="radius"
+                  :cy="radius"
+              />
+          </svg>`
+    });
+    <!-- Mission Info -->
+    $(function () {
+        const mission = new Vue({
+            el: '#mission-container',
+            components: {
+                'progress-ring': ProgressRing
+            },
+            data: {
+                heroes: [
+                    {
+                        Name: "player with a long name, good test bro!",
+
+                        FastTickState: {
+                            HP: 75,
+
+                            CooldownFractionRemaining: 0.35,
+                            CooldownSecondsRemaining: 12,
+
+                            ActivePowerFractionRemaining: 0.3,
+                        },
+
+                        IsPlayerSide: true,
+
+                        IsRouted: false,
+                        IsUnconscious: false,
+                        IsKilled: false,
+
+                        MaxHP: 112,
+
+                        Kills: 3,
+
+                        Retinue: 50,
+                        RetinueKills: 12,
+
+                        GoldEarned: 12318,
+                        XPEarned: 54765,
+                    }
+                ]
+            }
+        });
+
+        // $.connection.hub.url = 'http://Omega1:8087/signalr';
+        // $.connection.hub.logging = true;
+        //
+        // const missionInfoHub = $.connection.missionInfoHub;
+        // missionInfoHub.client.tickFast = function (heroes) {
+        //     mission.heroes = heroes;
+        //     console.log('BLT Mission Info heroes set to ' + heroes);
+        // };
+        // missionInfoHub.client.tickSlow = function (heroes) {
+        //     mission.heroes = heroes;
+        //     console.log('BLT Mission Info heroes set to ' + heroes);
+        // };
+        // $.connection.hub.start().done(function () {
+        //     console.log('BLT Mission Info Hub started');
+        // }).fail(function () {
+        //     console.log('BLT Mission Info Hub failed to start!');
+        // });
+    });
+
 </script>
 
 </body>

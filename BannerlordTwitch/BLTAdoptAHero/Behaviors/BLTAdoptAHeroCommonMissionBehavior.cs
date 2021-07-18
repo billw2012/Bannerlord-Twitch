@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Data;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Behaviors;
+using BLTAdoptAHero.UI;
 using HarmonyLib;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -147,6 +148,8 @@ namespace BLTAdoptAHero
                     {
                         UpdateHeroVM(h);
                     }
+                    
+                    MissionInfoHub.TickSlow();
                 }
 
                 fasterTickT += dt;
@@ -159,6 +162,8 @@ namespace BLTAdoptAHero
                     {
                         UpdateHeroVMTick(h);
                     }
+                    
+                    MissionInfoHub.TickFast();
                 }
             });
         }
@@ -169,6 +174,8 @@ namespace BLTAdoptAHero
             {
                 Log.RemoveInfoPanel(missionInfoPanel);
             });
+            
+            MissionInfoHub.Clear();
         }
 
         // public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
@@ -360,6 +367,14 @@ namespace BLTAdoptAHero
                     hm.ActivePowerFractionRemaining = activePowerFractionRemaining;
                 }
             });
+            
+            MissionInfoHub.UpdateHeroFastTickState(name, new()
+            {
+                HP = HP,
+                CooldownFractionRemaining = cooldownFractionRemaining,
+                CooldownSecondsRemaining = cooldownSecondsRemaining,
+                ActivePowerFractionRemaining = activePowerFractionRemaining
+            });
         }
 
         private static bool IsHeroOnPlayerSide(Hero hero) 
@@ -430,6 +445,28 @@ namespace BLTAdoptAHero
                 {
                     heroesViewModel.Add(heroModel);
                 }
+            });
+            
+            MissionInfoHub.UpdateHero(new()
+            {
+                Name = hero.FirstName.Raw(),
+                IsPlayerSide = summonState?.WasPlayerSide ?? IsHeroOnPlayerSide(hero),
+                MaxHP = agent?.HealthLimit ?? 100,
+                FastTickState = new()
+                {
+                    HP = agent != null && state == AgentState.Active? agent.Health : 0,
+                    CooldownFractionRemaining = 1 - summonState?.CoolDownFraction ?? 0,
+                    CooldownSecondsRemaining = summonState?.CooldownRemaining ?? 0,
+                    ActivePowerFractionRemaining = state is AgentState.Active ? ActivePowerFractionRemaining(hero) : 0,
+                },
+                IsRouted = state is AgentState.Routed,
+                IsUnconscious = state is AgentState.Unconscious,
+                IsKilled = state is AgentState.Killed,
+                Retinue = summonState?.ActiveRetinue ?? 0,
+                GoldEarned = heroState.WonGold,
+                XPEarned = heroState.WonXP,
+                Kills = heroState.Kills,
+                RetinueKills = heroState.RetinueKills,
             });
         }
 

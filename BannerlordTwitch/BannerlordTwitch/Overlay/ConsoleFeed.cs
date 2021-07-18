@@ -45,7 +45,14 @@ namespace BLTOverlay
         public static void SendMessage(string message)
         {
             var newMsg = new Message {message = message};
-            lock(messages) messages.Add(newMsg);
+            lock(messages)
+            {
+                messages.Add(newMsg);
+                if (messages.Count > 100)
+                {
+                    messages.RemoveAt(0);
+                }
+            }
 
             GlobalHost.ConnectionManager.GetHubContext<ConsoleFeedHub>()
                 .Clients.All.addMessage(newMsg);
@@ -77,10 +84,13 @@ $(function () {
         data: { items: [] }
     });
     $.connection.hub.url = '$url_root$/signalr';
-    $.connection.hub.logging = true;
     const consoleFeedHub = $.connection.consoleFeedHub;
     consoleFeedHub.client.addMessage = function (message) {
         bltConsole.items.push(message);
+        if(bltConsole.items.length > 100)
+        {
+            bltConsole.items.shift();
+        }
         console.log(message);
     };
     $.connection.hub.start().done(function () {

@@ -1,6 +1,7 @@
 ﻿using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Powers;
+using BLTAdoptAHero.UI;
 using HarmonyLib;
 using JetBrains.Annotations;
 using SandBox;
@@ -43,6 +44,7 @@ namespace BLTAdoptAHero
             HeroPowerDefBase.RegisterAll(typeof(BLTAdoptAHeroModule).Assembly);
             
             TournamentHub.Register();
+            MissionInfoHub.Register();
         }
 
         public override void OnMissionBehaviourInitialize(Mission mission)

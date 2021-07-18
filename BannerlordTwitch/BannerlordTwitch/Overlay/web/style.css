@@ -4,6 +4,13 @@
 * {
     font-family: "Segoe UI", sans-serif;
     color: white;
+    font-size: 100%;
+    font-weight: 550;
+}
+
+.circular-progress-bar {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
 }
 
 .drop-shadow {
@@ -30,6 +37,46 @@
             drop-shadow(0       +0.05em    0 #0006)
             drop-shadow(+0.05em    +0.05em    0 #0006)
             drop-shadow(0 0 0.25em #000A)
+;
+}
+
+.drop-shadow-2 {
+    filter:
+            drop-shadow(-0.05em    -0.05em    0 #0006)
+            drop-shadow(0       -0.05em    0 #0006)
+            drop-shadow(+0.05em    -0.05em    0 #0006)
+            drop-shadow(-0.05em    0       0 #0006)
+            drop-shadow(+0.05em    0       0 #0006)
+            drop-shadow(-0.05em    +0.05em    0 #0006)
+            drop-shadow(0       +0.05em    0 #0006)
+            drop-shadow(+0.05em    +0.05em    0 #0006)
+    ;
+}
+
+
+.glow {
+    filter:
+            drop-shadow(-0.05em    -0.05em    0 #FFF6)
+            drop-shadow(0       -0.05em    0 #FFF6)
+            drop-shadow(+0.05em    -0.05em    0 #FFF6)
+            drop-shadow(-0.05em    0       0 #FFF6)
+            drop-shadow(+0.05em    0       0 #FFF6)
+            drop-shadow(-0.05em    +0.05em    0 #FFF6)
+            drop-shadow(0       +0.05em    0 #FFF6)
+            drop-shadow(+0.05em    +0.05em    0 #FFF6)
+;
+}
+
+.outline {
+    filter:
+            drop-shadow(-0.005em    -0.005em    0 #000)
+            drop-shadow(0       -0.005em    0 #000)
+            drop-shadow(+0.005em    -0.005em    0 #000)
+            drop-shadow(-0.005em    0       0 #000)
+            drop-shadow(+0.005em    0       0 #000)
+            drop-shadow(-0.005em    +0.005em    0 #000)
+            drop-shadow(0       +0.005em    0 #000)
+            drop-shadow(+0.005em    +0.005em    0 #000)
 ;
 }
 
