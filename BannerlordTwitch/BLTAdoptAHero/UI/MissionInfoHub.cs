@@ -168,6 +168,9 @@ namespace BLTAdoptAHero.UI
     width: 0.5em;
     background: orange;
     clip: auto;
+    filter: drop-shadow(0 0 0.05em orange)
+            drop-shadow(0 0 0.05em orange)
+            drop-shadow(0 0 0.3em orange);
 }
 
 .mission-hero-name-row {
@@ -183,6 +186,9 @@ namespace BLTAdoptAHero.UI
     flex-basis: 1.25em;
     margin: -0.1em -0.3em 0 0.1em;
     align-self: center;
+    filter: drop-shadow(0           0         0.03em    #FF0F)
+            drop-shadow(0           0         0.03em    #FF0F)
+            drop-shadow(0           0         0.2em     #FF0F);
 }
 .mission-hero-name {
     text-align: center;
@@ -278,7 +284,7 @@ namespace BLTAdoptAHero.UI
                      class='mission-hero-active-power-remaining' 
                      v-bind:style=""{ height: hero.ActivePowerFractionRemaining * 100 + '%' }""></div>
                 <div class='mission-hero-name-row'>
-                    <div class='mission-hero-summon-cooldown outline'>
+                    <div class='mission-hero-summon-cooldown'>
                         <progress-ring :radius='10' 
                                        color='yellow'
                                        :progress='hero.CooldownFractionRemaining * 100' 

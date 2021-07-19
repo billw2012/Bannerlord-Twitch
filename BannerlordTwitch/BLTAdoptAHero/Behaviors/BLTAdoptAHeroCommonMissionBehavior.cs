@@ -129,7 +129,7 @@ namespace BLTAdoptAHero
                     return;
                 }
 
-                const float TickTime = 1f;
+                const float TickTime = 0.25f;
                 if (MBCommon.GetTime(MBCommon.TimeType.Application) - lastTickT > TickTime)
                 {
                     lastTickT = MBCommon.GetTime(MBCommon.TimeType.Application);

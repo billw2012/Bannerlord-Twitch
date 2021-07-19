@@ -101,11 +101,11 @@ namespace BLTAdoptAHero
     }
 }
 ", @"
-<div id='tournament-container' class='drop-shadow'>
-    <div id='tournament-label'>
+<div id='tournament-container' class='drop-shadow-highlight'>
+    <div id='tournament-label' class='drop-shadow'>
         Tournament
     </div>
-    <div id='tournament-items'>
+    <div id='tournament-items' class='drop-shadow'>
         <div v-for='index in range(0, Math.max(tournamentSize, entrants))' class='tournament-range'>
             <transition name='tournament-entry-t' tag='div' mode='out-in' appear>
                 <div v-if='index < entrants && index < tournamentSize - 1' 

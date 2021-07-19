@@ -93,7 +93,9 @@ namespace BLTConfigure
                 SaveAuth();
             }
         }
-        
+
+        public object OverlayUrl => BLTOverlay.BLTOverlay.UrlRoot;
+
         public BLTConfigureWindow()
         {
             InitializeComponent();

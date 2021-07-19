@@ -1,10 +1,10 @@
 ﻿body {
+    font-size: 115%;
 }
 
 * {
     font-family: "Segoe UI", sans-serif;
     color: white;
-    font-size: 100%;
     font-weight: 550;
 }
 
@@ -14,43 +14,36 @@
 }
 
 .drop-shadow {
-    /*filter: drop-shadow(0px 0px 1px black) drop-shadow(0px 0px 5px black) drop-shadow(0px 0px 10px black);*/
-    /*-webkit-text-stroke: 0.04em black;*/
-    /*filter: drop-shadow(0px 0px 3px black);*/
-    /*color: white;*/
-    /*text-shadow:*/
-    /*    -1px    -1px    2px #000,*/
-    /*    0       -1px    2px #000,*/
-    /*    +1px    -1px    2px #000,*/
-    /*    -1px    0       2px #000,*/
-    /*    +1px    0       2px #000,*/
-    /*    -1px    +1px    2px #000,*/
-    /*    0       +1px    2px #000,*/
-    /*    +1px    +1px    2px #000;*/
     filter:
-            drop-shadow(-0.05em    -0.05em    0 #0006)
-            drop-shadow(0       -0.05em    0 #0006)
-            drop-shadow(+0.05em    -0.05em    0 #0006)
-            drop-shadow(-0.05em    0       0 #0006)
-            drop-shadow(+0.05em    0       0 #0006)
-            drop-shadow(-0.05em    +0.05em    0 #0006)
-            drop-shadow(0       +0.05em    0 #0006)
-            drop-shadow(+0.05em    +0.05em    0 #0006)
-            drop-shadow(0 0 0.25em #000A)
+            drop-shadow(-0.05em    +0.08em    0         #0006)      /* BL */
+            drop-shadow(-0.05em     0         0         #0006)      /* CL */
+            drop-shadow(-0.05em    -0.05em    0         #0006)      /* TL */
+            drop-shadow(0          -0.05em    0         #0006)      /* TC */
+            drop-shadow(+0.08em    -0.05em    0         #0006)      /* TR */
+            drop-shadow(+0.08em     0         0         #0006)      /* CR */
+            drop-shadow(+0.08em    +0.08em    0         #0006)      /* BR */
+            drop-shadow(0          +0.08em    0         #0006)      /* BC */
+    /*drop-shadow(-0.05em    -0.05em    0.1em     #0006)*/
+    /*drop-shadow(+0.08em    +0.08em    0.1em     #00F3)*/
 ;
 }
 
 .drop-shadow-2 {
     filter:
-            drop-shadow(-0.05em    -0.05em    0 #0006)
-            drop-shadow(0       -0.05em    0 #0006)
-            drop-shadow(+0.05em    -0.05em    0 #0006)
-            drop-shadow(-0.05em    0       0 #0006)
-            drop-shadow(+0.05em    0       0 #0006)
-            drop-shadow(-0.05em    +0.05em    0 #0006)
-            drop-shadow(0       +0.05em    0 #0006)
-            drop-shadow(+0.05em    +0.05em    0 #0006)
-    ;
+            drop-shadow(0           0         0.06em    #000F)
+            drop-shadow(0           0         0.06em    #000F)
+            drop-shadow(0           0         0.1em     #000F)
+;
+}
+
+.drop-shadow-highlight {
+    filter:
+            drop-shadow(0           0         0.1em     #000F)
+            drop-shadow(-0.1em    -0.1em    0.4em       #F003)
+            drop-shadow(-0.1em    -0.1em    0.4em       #F003)
+            drop-shadow(+0.16em    +0.16em    0.4em     #00F3)
+            drop-shadow(+0.16em    +0.16em    0.4em     #00F3)
+;
 }
 
 
@@ -69,15 +62,30 @@
 
 .outline {
     filter:
-            drop-shadow(-0.005em    -0.005em    0 #000)
-            drop-shadow(0       -0.005em    0 #000)
-            drop-shadow(+0.005em    -0.005em    0 #000)
-            drop-shadow(-0.005em    0       0 #000)
-            drop-shadow(+0.005em    0       0 #000)
-            drop-shadow(-0.005em    +0.005em    0 #000)
-            drop-shadow(0       +0.005em    0 #000)
-            drop-shadow(+0.005em    +0.005em    0 #000)
+            drop-shadow(0           0         0.06em    #FF0F)
+            drop-shadow(0           0         0.06em    #FF0F)
+            drop-shadow(0           0         0.3em     #FF0F)
+    /*drop-shadow(-0.001em    -0.008em    0 #000)*/
+    /*drop-shadow(0           -0.008em    0 #000)*/
+    /*drop-shadow(+0.008em    -0.008em    0 #000)*/
+    /*drop-shadow(-0.001em     0          0 #000)*/
+    /*drop-shadow(+0.008em     0          0 #000)*/
+    /*drop-shadow(-0.001em    +0.005em    0 #000)*/
+    /*drop-shadow(0           +0.005em    0 #000)*/
+    /*drop-shadow(+0.008em    +0.005em    0 #000)*/
 ;
+}
+
+.version-text {
+    filter: drop-shadow(0 0 0.1em #FFFF);
+    font-weight: 700;
+    align-self: flex-end;
+    font-size: 75%;
+    padding: 0;
+    margin: 0;
+    line-height: 0.8em;
+    color: #000F;
+    /*background: white;*/
 }
 
 #root {

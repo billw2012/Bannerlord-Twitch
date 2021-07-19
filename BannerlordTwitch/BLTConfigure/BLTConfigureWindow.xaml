@@ -49,6 +49,11 @@
                     <TextBlock Margin="10 2">Configuration</TextBlock>
                 </TabItem.Header>
                 <DockPanel LastChildFill="True">
+                    <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center">
+                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://discord.gg/q2p4eHsxFn">Discord</Hyperlink> // 
+                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://www.nexusmods.com/mountandblade2bannerlord/mods/2933">NexusMods</Hyperlink> //  
+                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/billw2012/Bannerlord-Twitch">GitHub</Hyperlink>
+                    </TextBlock>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -224,44 +229,37 @@
                         On this tab you can automatically generate documentation for your custom BLT config settings. 
                         It is generated as a webpage, including a html file, css file, and a set of images.
                     </TextBlock>
-                    <Separator Grid.Row="1"/>
-                    <TextBlock Grid.Row="2" >
-                        Some useful links: 
-                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://discord.gg/q2p4eHsxFn">Discord</Hyperlink>|
-                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://www.nexusmods.com/mountandblade2bannerlord/mods/2933">NexusMods</Hyperlink>|
-                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/billw2012/Bannerlord-Twitch">GitHub</Hyperlink>
-                    </TextBlock>
-                    <Separator Grid.Row="3"/>
+                    <Separator Grid.Row="1" Height="20"/>
                     <ScrollViewer Grid.Row="4">
                         <StackPanel>
                             <TextBlock>
                                 You have various options for how to distribute it, but the quickest and simplest is to host 
                                 it on <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
                                                  NavigateUri="http://neocities.org">http://neocities.org</Hyperlink>. 
-                                The whole process shouldn't take more than a couple of minutes:<LineBreak/>
-                                <Bold>1.</Bold> Load into a campaign save (it doesn't matter which one)<LineBreak/>
-                                <Bold>2.</Bold> Click the Generate Documentation Button.<LineBreak/>
-                                <Bold>3.</Bold> Click the Open Generated Documentation Folder Button.<LineBreak/>
-                                <Bold>4.</Bold> Goto 
+                                The whole process shouldn't take more than a couple of minutes:<LineBreak/><LineBreak/>
+                                <Bold>1.</Bold> Goto 
                                 <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
-                                           NavigateUri="http://neocities.org">http://neocities.org</Hyperlink>, sign up. 
+                                           NavigateUri="http://neocities.org">http://neocities.org</Hyperlink> and sign up. 
                                 It should create a new website for you with a name you specify.<LineBreak/>
-                                <Bold>5.</Bold> Open your new websites dashboard at 
+                                <Bold>2.</Bold> Enter your neocities credentials below<LineBreak/>
+                                <Bold>3.</Bold> Load into a campaign save (it doesn't matter which one)<LineBreak/>
+                                <Bold>4.</Bold> Click the Generate Documentation Button<LineBreak/>
+                                <Bold>5.</Bold> Click the Upload Documentation Button<LineBreak/><LineBreak/>
+                                Once the files have finished uploading your documentation website should be available. <LineBreak/>
+                                The link is at the top of dashboard page: 
                                 <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
                                            NavigateUri="http://neocities.org/dashboard">https://neocities.org/dashboard
                                 </Hyperlink>.<LineBreak/>
-                                <Bold>6.</Bold> Drag all the files from your BLT-documentation folder into the website files 
-                                area on the dashboard.<LineBreak/>
-                                <Bold>7.</Bold> Once the files finish uploading your documentation website should be available 
-                                (the link is at the top of dashboard page).<LineBreak/>
+                                When you change your settings, and want to update the documentation, repeat steps 3 to 5.
+                                <LineBreak/><LineBreak/>
                                 If you have any problems with this process please request help in the discord.
                             </TextBlock>
-                            <Separator/>
+                            <Separator Height="20"/>
                             <TextBlock DockPanel.Dock="Left" FontSize="16">Title</TextBlock>
                             <TextBox Margin="15 5" Text="{Binding DocsTitle}"/>
                             <TextBlock DockPanel.Dock="Left" FontSize="16">Introduction</TextBlock>
                             <TextBox VerticalScrollBarVisibility="Visible" Margin="15 5" MinHeight="60" MaxHeight="120" Text="{Binding DocsIntroduction}" TextWrapping="Wrap" AcceptsReturn="True"/>
-                            <WrapPanel Margin="15" Orientation="Horizontal">
+                            <WrapPanel Margin="15 5" Orientation="Horizontal">
                                 <Button Margin="0 0 15 0" HorizontalAlignment="Left" 
                                         Click="GenerateDocumentationButton_OnClick">Generate Documentation</Button>
                                 <Button Margin="0 0 15 0" HorizontalAlignment="Left" 
@@ -270,13 +268,11 @@
                                         Click="OpenGeneratedDocumentationFolderButton_OnClick">Open Documentation Folder</Button>
                             </WrapPanel>
                             <TextBlock Margin="15 5" Name="GenerateDocumentationResult"/>
-                            <Separator/>
-                            <TextBlock FontSize="16">Advanced</TextBlock>
+                            <Separator Height="20"/>
                             <TextBlock>
-                                <Run>If you want to automate updating of your Neocities site, this is fairly simple.</Run><LineBreak/> 
                                 <Run>Enter your Neocities.org username and password below (they will be stored securely):</Run>
                             </TextBlock>
-                            <StackPanel Margin="0 15" Orientation="Horizontal">
+                            <StackPanel Margin="0 10" Orientation="Horizontal">
                                 <TextBlock Margin="15 0 10 0">Username</TextBlock><TextBox Name="NeocitiesUsername" VerticalAlignment="Center" MinWidth="150"/>
                                 <TextBlock Margin="15 0 10 0">Password</TextBlock><PasswordBox Name="NeocitiesPassword" VerticalAlignment="Center" MinWidth="150"/>
                             </StackPanel>
@@ -384,6 +380,28 @@
                             (redemptions will remain in the queue to be refunded or completed at the streamers 
                             discretion)</TextBlock>
                     </CheckBox>
+                    <Separator Height="20"/>
+                    <TextBlock TextWrapping="Wrap" FontSize="20">
+                        Overlay Link<LineBreak/>
+                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
+                                   NavigateUri="{Binding OverlayUrl, Mode=OneWay}">
+                            <Run Text="{Binding OverlayUrl, Mode=OneWay}"/>
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap">
+                       To use this overlay: <LineBreak/>
+                       <Bold>1.</Bold> Add a Browser Source in OBS <LineBreak/>
+                       <Bold>2.</Bold> Enter the URL <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
+                                                                NavigateUri="{Binding OverlayUrl, Mode=OneWay}">
+                           <Run Text="{Binding OverlayUrl, Mode=OneWay}"/>
+                       </Hyperlink><LineBreak/>
+                       <Bold>3.</Bold> Ensure that Custom CSS section has <Bold>background-color: rgba(0, 0, 0, 0)</Bold><LineBreak/>
+                       <Bold>4.</Bold> Check <Bold>Refresh browser when scene becomes active</Bold><LineBreak/>
+                       When you launch the game you should toggle to another scene and back to force the source 
+                       to refresh.<LineBreak/>
+                       The overlay should work from any computer on your network, as well as the one the game
+                       is running on.
+                    </TextBlock>
                 </StackPanel>
                 </ScrollViewer>
             </TabItem>

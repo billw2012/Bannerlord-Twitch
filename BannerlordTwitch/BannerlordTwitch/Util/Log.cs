@@ -44,7 +44,7 @@ namespace BannerlordTwitch.Util
 
         private static readonly ConcurrentBag<string> reportedExceptions = new(); 
             
-        public static void Exception(string context, Exception ex)
+        public static void Exception(string context, Exception ex, bool noRethrow = false)
         {
             string str = $"{context}: {ex.GetBaseException()}";
             MainThreadSync.Run(() => LogFilePrint("ERROR: " + str));
@@ -56,7 +56,7 @@ namespace BannerlordTwitch.Util
                 LogFeedCritical(str);
             }
 #if DEBUG
-            throw ex;
+            if(!noRethrow) throw ex;
 #endif
         }
 
