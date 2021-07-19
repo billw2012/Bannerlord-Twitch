@@ -6,12 +6,14 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Windows;
+using BannerlordTwitch.Util;
 using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.Hosting;
 using Microsoft.Owin.StaticFiles;
 using Owin;
+using TaleWorlds.Core;
 
 namespace BLTOverlay
 {
@@ -23,7 +25,7 @@ namespace BLTOverlay
 
         private const int Port = 8087;
 
-        private static string UrlRoot => $"http://{Dns.GetHostName()}:{Port}";
+        public static string UrlRoot => $"http://{Dns.GetHostName()}:{Port}";
         private static string UrlBinding => $"http://*:{Port}/";
 
         private const string JSExtension =
@@ -68,6 +70,7 @@ namespace BLTOverlay
             catch (HttpListenerException)
             {
                 OpenPort();
+                return;
             }
                 
             WebApp.Start(UrlBinding, app =>
@@ -85,39 +88,52 @@ namespace BLTOverlay
                 app.UseFileServer(options);
             });
             
-            Process.Start(UrlRoot);
+            // Process.Start(UrlRoot);
         }
         
         private static void OpenPort()
         {
-            MessageBox.Show($"For the BLT Overlay browser source to work it needs to reserve " +
-                            $"port {Port}.\nThis requires administrator privileges, " +
-                            $"so they will be requested after you press Ok.\nIf successful, " +
-                            $"this will only appear once.", "BLT Overlay");
-            
-            string netsh = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.System),
-                "netsh.exe");
+            InformationManager.ShowInquiry(
+                new ("BLT Overlay",
+                    $"For the BLT Overlay Browser Source to work it needs to reserve " +
+                    $"port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, " +
+                    $"which will be requested after you press Ok.\nIf successful, you won't see this popup again.",
+                    true, false, "Okay", null,
+                    () =>
+                    {
+                        // To remove them again:
+                        
+                        // netsh http delete urlacl url={UrlBinding}
+                        // netsh advfirewall firewall delete rule name=BLTOverlay
+                        
+                        // netsh http delete urlacl url=http://*:8087/ & netsh advfirewall firewall delete rule name=BLTOverlay
 
-            var startInfo = new ProcessStartInfo(netsh)
-            {
-                Arguments = $"http add urlacl url={UrlBinding} user=everyone",
-                UseShellExecute = true,
-                Verb = "runas"
-            };
-
-            try
-            {
-                Process.Start(startInfo)?.WaitForExit(5000);
-            }
-            catch(FileNotFoundException)
-            {
-                // netsh.exe was missing?
-            }
-            catch(Win32Exception)
-            {
-                // user may have aborted the action, or doesn't have access
-            }
+                        try
+                        {
+                            var proc = Process.Start(new ProcessStartInfo("cmd.exe")
+                            {
+                                Arguments =
+                                    $"/c netsh http add urlacl url={UrlBinding} user=everyone & netsh advfirewall firewall add rule name=BLTOverlay dir=in action=allow protocol=TCP localport={Port}",
+                                UseShellExecute = true,
+                                Verb = "runas"
+                            });
+                            proc?.WaitForExit(5000);
+                            InformationManager.ShowInquiry(
+                                new ("BLT Overlay",
+                                    $"Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window.",
+                                    true, false, "Okay", null,
+                                    Start, () => {}), true);
+                        }
+                        catch(Exception e)
+                        {
+                            InformationManager.ShowInquiry(
+                                new ("BLT Overlay",
+                                    $"Configuration FAILED:\n  \"{e.Message}\"\nYou may not be able to access the overlay.\nReport this problem in the discord.",
+                                    true, false, "Okay", null,
+                                    () => {}, () => {}), true);
+                            Log.Exception($"{nameof(BLTOverlay)}.{nameof(OpenPort)}", e, noRethrow: true);
+                        }
+                    }, () => {}), true);
         }
 
         private class OverlayProvider
