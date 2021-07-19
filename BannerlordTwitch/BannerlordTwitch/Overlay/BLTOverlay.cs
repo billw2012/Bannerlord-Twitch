@@ -73,6 +73,9 @@ namespace BLTOverlay
                 return;
             }
                 
+            GlobalHost.Configuration.ConnectionTimeout = TimeSpan.FromDays(1);
+            GlobalHost.Configuration.DisconnectTimeout = TimeSpan.FromDays(1);
+
             WebApp.Start(UrlBinding, app =>
             {
                 app.UseCors(CorsOptions.AllowAll);
