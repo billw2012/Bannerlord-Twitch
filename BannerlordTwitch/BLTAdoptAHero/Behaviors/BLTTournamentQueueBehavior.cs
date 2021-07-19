@@ -6,7 +6,6 @@ using Bannerlord.ButterLib.SaveSystem.Extensions;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
-using BLTAdoptAHero.UI;
 using BLTAdoptAHero.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -179,17 +178,6 @@ $(function () {
     {
         public static BLTTournamentQueueBehavior Current => Campaign.Current?.GetCampaignBehavior<BLTTournamentQueueBehavior>();
 
-        private TournamentQueuePanel tournamentQueuePanel;
-
-        public BLTTournamentQueueBehavior()
-        {
-            Log.AddInfoPanel(construct: () =>
-            {
-                tournamentQueuePanel = new TournamentQueuePanel();
-                return tournamentQueuePanel;
-            });
-        }
-
         public override void RegisterEvents()
         {
             CampaignEvents.HeroKilledEvent.AddNonSerializedListener(this, (_, _, _, _) =>
@@ -241,17 +229,16 @@ $(function () {
         private void UpdatePanel()
         {
             (int entrants, int tournamentSize) = GetTournamentQueueSize();
-            Log.RunInfoPanelUpdate(() =>
-            {
-                tournamentQueuePanel.UpdateTournamentQueue(entrants);
-            });
             TournamentHub.Refresh(entrants, tournamentSize);
         }
 
         private class TournamentQueueEntry
         {
+            [UsedImplicitly] 
             public Hero Hero { get; set; }
+            [UsedImplicitly] 
             public bool IsSub { get; set; }
+            [UsedImplicitly] 
             public int EntryFee { get; set; }
 
             public TournamentQueueEntry(Hero hero = null, bool isSub = false, int entryFee = 0)
@@ -871,14 +858,13 @@ $(function () {
         private bool bettingOpen;
         private Dictionary<Hero, (int team, int bet)> activeBets;
 
-        private static readonly string[] TeamNames = { "blue", "red", "green", "yellow" };
         public void OpenBetting(TournamentBehavior tournamentBehavior)
         {
             if (BLTAdoptAHeroModule.TournamentConfig.EnableBetting 
                 && tournamentBehavior.CurrentMatch != null
                 && (tournamentBehavior.CurrentRoundIndex == 3 || !BLTAdoptAHeroModule.TournamentConfig.BettingOnFinalOnly))
             {
-                var teams = TeamNames.Take(tournamentBehavior.CurrentMatch.Teams.Count());
+                var teams = TournamentHelpers.TeamNames.Take(tournamentBehavior.CurrentMatch.Teams.Count());
                 string round = tournamentBehavior.CurrentRoundIndex < 3
                     ? $"round {tournamentBehavior.CurrentRoundIndex + 1}"
                     : "final";
@@ -922,7 +908,7 @@ $(function () {
             }
 
             int teamsCount = tournamentBehavior.CurrentMatch.Teams.Count();
-            var activeTeams = TeamNames.Take(teamsCount).ToArray();
+            var activeTeams = TournamentHelpers.TeamNames.Take(teamsCount).ToArray();
             int teamIdx = activeTeams.IndexOf(team.ToLower());
             if (teamIdx == -1)
             {
@@ -949,7 +935,7 @@ $(function () {
             if (activeBets != null)
             {
                 var betTotals = activeBets.Values
-                    .Select(b => (name: TeamNames[b.team], b.bet))
+                    .Select(b => (name: TournamentHelpers.TeamNames[b.team], b.bet))
                     .GroupBy(b => b.name)
                     .Select(g => $"{g.Key} {g.Select(x => x.bet).Sum()}{Naming.Gold}")
                     .ToList()
@@ -1082,7 +1068,6 @@ $(function () {
         private void ReleaseUnmanagedResources()
         {
             TournamentHub.Refresh(0, 0);
-            Log.RemoveInfoPanel(tournamentQueuePanel);
         }
 
         public void Dispose()

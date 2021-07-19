@@ -1,94 +1,68 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BLTAdoptAHero.Annotations;
-using BLTOverlay;
 using Microsoft.AspNet.SignalR;
-using TaleWorlds.CampaignSystem;
 
 namespace BLTAdoptAHero.UI
 {
+    [UsedImplicitly]
     public class MissionInfoHub : Hub
     {
-        // Hero state that changes quickly
-        public class HeroFastTickState
-        {
-            public float HP;
-            
-            public float CooldownFractionRemaining;
-            public float CooldownSecondsRemaining;
-            
-            public float ActivePowerFractionRemaining;
-        }
-
-        // Full hero state
+        [UsedImplicitly]
         public class HeroState
         {
             public string Name;
             
-            public HeroFastTickState FastTickState = new();
+            [UsedImplicitly] public float HP;
             
-            public bool IsPlayerSide;
+            [UsedImplicitly] public float CooldownFractionRemaining;
+            [UsedImplicitly] public float CooldownSecondsRemaining;
             
-            public bool IsRouted;
-            public bool IsUnconscious;
-            public bool IsKilled;
+            [UsedImplicitly] public float ActivePowerFractionRemaining;
             
-            public float MaxHP;
+            [UsedImplicitly] public bool IsPlayerSide;
             
-            public int Kills;
+            [UsedImplicitly] public int TournamentTeam;
             
-            public int Retinue;
-            public int RetinueKills;
+            [UsedImplicitly] public string State;
             
-            public int GoldEarned;
-            public int XPEarned;
+            [UsedImplicitly] public float MaxHP;
+            
+            [UsedImplicitly] public int Kills;
+            
+            [UsedImplicitly] public int Retinue;
+            [UsedImplicitly] public int RetinueKills;
+            
+            [UsedImplicitly] public int GoldEarned;
+            [UsedImplicitly] public int XPEarned;
         }
 
         private static readonly List<HeroState> heroState = new();
 
-        // private void Refresh()
-        // {
-        //     lock (heroState)
-        //     {
-        //         foreach (var hero in heroState)
-        //         {
-        //             Clients.All.updateHero(hero);
-        //         }
-        //     }
-        // }
-
         public override Task OnConnected()
         {
-            TickSlow();
+            Update();
             return base.OnConnected();
         }
 
-        public static void TickSlow()
+        public static void Update()
         {
             lock (heroState)
             {
                 GlobalHost.ConnectionManager.GetHubContext<MissionInfoHub>()
-                    .Clients.All.tickSlow(heroState);
-            }
-        }
-
-        public static void TickFast()
-        {
-            lock (heroState)
-            {
-                GlobalHost.ConnectionManager.GetHubContext<MissionInfoHub>()
-                    .Clients.All.tickFast(heroState);
+                    .Clients.All.update(heroState);
             }
         }
         
-        // public static void RemoveHero(string name)
-        // {
-        //     lock (heroState)
-        //     {
-        //         heroState.RemoveAll(h => h.Name == name);
-        //     }
-        // }
+        public static void Remove(string name)
+        {
+            lock (heroState)
+            {
+                heroState.RemoveAll(h 
+                    => string.Equals(h.Name, name, StringComparison.CurrentCultureIgnoreCase));
+            }
+        }
                 
         public static void Clear()
         {
@@ -97,30 +71,19 @@ namespace BLTAdoptAHero.UI
                 heroState.Clear();
             }
 
-            TickSlow();
+            // Update immediately as Clear probably means the mission is over
+            Update();
         }
             
         public static void UpdateHero(HeroState state)
         {
             lock (heroState)
             {
-                heroState.RemoveAll(h => h.Name == state.Name);
+                heroState.RemoveAll(h 
+                    => string.Equals(h.Name, state.Name, StringComparison.CurrentCultureIgnoreCase));
                 heroState.Add(state);
             }
         }
-
-        public static void UpdateHeroFastTickState(string name, HeroFastTickState TickState)
-        {
-            lock (heroState)
-            {
-                var state = heroState.FirstOrDefault(h => h.Name == name);
-                if (state != null)
-                {
-                    state.FastTickState = TickState;
-                }
-            }
-        }
-
         public static void Register()
         {
             BLTOverlay.BLTOverlay.Register("mission", 200, @"
@@ -134,9 +97,6 @@ namespace BLTAdoptAHero.UI
     flex-direction: row;
     flex-wrap: wrap;
     align-items: stretch;
-}
-.mission-heroes-t-move {
-    transition: transform 0.5s;
 }
 .mission-hero {
     min-width: 6em;
@@ -155,23 +115,50 @@ namespace BLTAdoptAHero.UI
 .mission-hero div {
     z-index: 1;
 }
-.mission-hero-player-side {
-    background: #202050;
-}
-.mission-hero-other-side {
-    background: #401122;
-}
+
 .mission-hero-health {
     position: absolute;
     z-index: 0;
     height: 100%;
     margin: 0;
 }
+
+.mission-hero-player-side {
+    background: #202050;
+}
+.mission-hero-other-side {
+    background: #401122;
+}
 .mission-hero-player-side .mission-hero-health {
     background: #6666CC;
 }
 .mission-hero-other-side .mission-hero-health {
     background: #AA3277;
+}
+
+.mission-hero-tournament-side-0 {
+    background: #181858;
+}
+.mission-hero-tournament-side-0 .mission-hero-health {
+    background: #5e5ef5;
+}
+.mission-hero-tournament-side-1 {
+    background: #3e1010;
+}
+.mission-hero-tournament-side-1 .mission-hero-health {
+    background: #a13b3b;
+}
+.mission-hero-tournament-side-2 {
+    background: #10390c;
+}
+.mission-hero-tournament-side-2 .mission-hero-health {
+    background: #2e901f;
+}
+.mission-hero-tournament-side-3 {
+    background: #454512;
+}
+.mission-hero-tournament-side-3 .mission-hero-health {
+    background: #939300;
 }
 
 .mission-hero-active-power-remaining {
@@ -205,6 +192,19 @@ namespace BLTAdoptAHero.UI
     margin-left: 0.2em;
     margin-right: 0.2em;
     align-self: baseline;
+    color: white;
+}
+
+.mission-hero-state-routed {
+    color: #ffc100;
+}
+
+.mission-hero-state-unconscious {
+    color: #ee8300;
+}
+
+.mission-hero-state-killed {
+    color: #ff0000;
 }
 
 .mission-hero-score-row {
@@ -271,20 +271,21 @@ namespace BLTAdoptAHero.UI
         <div class='mission-hero' v-for='hero in sortedHeroes'
              v-bind:key='hero.Name'>
             <div class='mission-hero-inner' 
-                        v-bind:class=""hero.IsPlayerSide ? 'mission-hero-player-side' : 'mission-hero-other-side'"">
+                v-bind:class=""[hero.IsPlayerSide ? 'mission-hero-player-side' : 'mission-hero-other-side', 'mission-hero-tournament-side-' + hero.TournamentTeam]"">
                 <div class='mission-hero-health' 
-                     v-bind:style=""{ width: (hero.FastTickState.HP * 100 / hero.MaxHP) + '%' }""></div>
-                <div v-show='hero.FastTickState.ActivePowerFractionRemaining > 0' 
+                     v-bind:style=""{ width: (hero.HP * 100 / hero.MaxHP) + '%' }""></div>
+                <div v-show='hero.ActivePowerFractionRemaining > 0' 
                      class='mission-hero-active-power-remaining' 
-                     v-bind:style=""{ height: hero.FastTickState.ActivePowerFractionRemaining * 100 + '%' }""></div>
+                     v-bind:style=""{ height: hero.ActivePowerFractionRemaining * 100 + '%' }""></div>
                 <div class='mission-hero-name-row'>
                     <div class='mission-hero-summon-cooldown outline'>
                         <progress-ring :radius='10' 
                                        color='yellow'
-                                       :progress='hero.FastTickState.CooldownFractionRemaining * 100' 
+                                       :progress='hero.CooldownFractionRemaining * 100' 
                                        :stroke='10'></progress-ring>
                     </div>
-                    <div class='mission-hero-name drop-shadow-2'>{{hero.Name}}</div>
+                    <div class='mission-hero-name drop-shadow-2'
+                         v-bind:class=""'mission-hero-state-' + hero.State"">{{hero.Name}}</div>
                 </div>
                 <div class='mission-hero-score-row drop-shadow-2'>
                     <div v-show='hero.Kills > 0' class='mission-hero-kills'>
@@ -326,6 +327,8 @@ $(function () {
                 function compare(a, b) {
                     if(!a.IsPlayerSide && b.IsPlayerSide) return 1;
                     if(a.IsPlayerSide && !b.IsPlayerSide) return -1;
+                    if(a.TournamentTeam < b.TournamentTeam) return -1;
+                    if(a.TournamentTeam > !b.TournamentTeam) return 1;
                     if(a.Kills < b.Kills) return 1;
                     if(a.Kills > b.Kills) return -1;
                     if(a.RetinueKills < b.RetinueKills) return 1;
@@ -343,14 +346,10 @@ $(function () {
     $.connection.hub.logging = true;
 
     const missionInfoHub = $.connection.missionInfoHub;
-    missionInfoHub.client.tickFast = function (heroes) {
+    missionInfoHub.client.update = function (heroes) {
         mission.heroes = heroes;
-        console.log('BLT Mission Info heroes set to ' + heroes);
     };
-    missionInfoHub.client.tickSlow = function (heroes) {
-        mission.heroes = heroes;
-        console.log('BLT Mission Info heroes set to ' + heroes);
-    };
+
     $.connection.hub.start().done(function () {
         console.log('BLT Mission Info Hub started');
     }).fail(function () {

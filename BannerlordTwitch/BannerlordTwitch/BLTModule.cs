@@ -4,17 +4,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows;
-using BannerlordTwitch.Overlay;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTOverlay;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using Color = TaleWorlds.Library.Color;
 
 #pragma warning disable IDE0051 // Remove unused private members
 namespace BannerlordTwitch
@@ -24,11 +20,8 @@ namespace BannerlordTwitch
 	{
 		public const string Name = "BannerlordTwitch";
 		public const string Ver = "2.0.4";
-		
-		private static readonly Thread thread;
-		private static OverlayWindow overlayWindow;
-		
-		private static Harmony harmony;
+
+        private static Harmony harmony;
 
 		public static TwitchService TwitchService { get; private set; }
 
@@ -63,28 +56,11 @@ namespace BannerlordTwitch
 			AppDomain.CurrentDomain.AssemblyResolve += (_, args) =>
 			{
 				string folderPath = Path.GetDirectoryName(typeof(BLTModule).Assembly.Location);
-				string assemblyPath = Path.Combine(folderPath, new AssemblyName(args.Name).Name + ".dll");
+				string assemblyPath = Path.Combine(folderPath ?? string.Empty, new AssemblyName(args.Name).Name + ".dll");
 				if (!File.Exists(assemblyPath)) return null;
 				var assembly = Assembly.LoadFrom(assemblyPath);
 				return assembly;
 			};
-            
-			thread = new Thread(() =>
-			{
-				try
-				{
-					overlayWindow = new OverlayWindow { ShowActivated = false };
-					overlayWindow.Show();
-					System.Windows.Threading.Dispatcher.Run();
-				}
-				catch (Exception e)
-				{
-					MessageBox.Show($"Exception occurred (please report this on the discord or nexusmods):\n{e}", "BLT Overlay Window Crashed!");
-				}
-			});
-			thread.SetApartmentState(ApartmentState.STA);
-			thread.IsBackground = true;
-			thread.Start();
         }
 
 		protected override void OnBeforeInitialModuleScreenSetAsRoot()
@@ -111,67 +87,9 @@ namespace BannerlordTwitch
             }
 		}
 
-		public static void AddInfoPanel(Func<UIElement> construct)
-		{
-			overlayWindow?.AddInfoPanel(construct);
-		}
-		
-		public static void RemoveInfoPanel(UIElement element)
-		{
-			overlayWindow?.RemoveInfoPanel(element);
-		}
-
-		public static void RunInfoPanelUpdate(Action action)
-		{
-			overlayWindow?.RunInfoPanelUpdate(action);
-		}
-
-        private static Color ColorFromStyle(string style)
-        {
-            return style switch
-            {
-                "fail" => new (1f, 0.5f, 0f),
-                "critical" => Colors.Red,
-                "system" => Colors.Magenta,
-                "battle" => Colors.Yellow,
-                "event" => Colors.Cyan,
-                // "general" => Colors.White,
-                // "response" => Colors.White,
-                _ => Colors.White
-            };
-        }
-
 		public static void AddToFeed(string text, string style)
         {
-            var color = ColorFromStyle(style);
-			overlayWindow?.AddToFeed(text, System.Windows.Media.Color.FromScRgb(color.Alpha, color.Red, color.Green, color.Blue));
             ConsoleFeedHub.SendMessage(text, style);
-		}
-
-		protected override void OnSubModuleUnloaded()
-		{
-			overlayWindow.Dispatcher.Invoke(() =>
-			{
-				overlayWindow.Close();
-			});
-			overlayWindow.Dispatcher.InvokeShutdown();
-			thread.Join(TimeSpan.FromMilliseconds(500));
-			base.OnSubModuleUnloaded();
-		}
-
-		public override void OnGameLoaded(Game game, object initializerObject)
-		{
-			base.OnGameLoaded(game, initializerObject);
-		}
-
-		public override void BeginGameStart(Game game)
-		{
-			base.BeginGameStart(game);
-		}
-
-		public override void OnCampaignStart(Game game, object starterObject)
-		{
-			base.OnCampaignStart(game, starterObject);
 		}
 
 		public override void OnGameInitializationFinished(Game game)

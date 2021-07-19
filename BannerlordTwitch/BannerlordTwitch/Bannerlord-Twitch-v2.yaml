@@ -1321,7 +1321,7 @@ SimTesting:
   UserCount: 25
   UserStayTime: 300
   IntervalMinMS: 200
-  IntervalMaxMS: 300
+  IntervalMaxMS: 200
   Init:
   - Enabled: true
     Type: Reward

@@ -296,10 +296,6 @@
     <Compile Include="Helpers\OneShotEffect.cs" />
     <Compile Include="Overlay\BLTOverlay.cs" />
     <Compile Include="Overlay\ConsoleFeed.cs" />
-    <Compile Include="Overlay\OutlineTextBlock.cs" />
-    <Compile Include="Overlay\OverlayWindow.xaml.cs">
-      <DependentUpon>OverlayWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Actions\ICommandHandler.cs" />
     <Compile Include="Actions\IRewardHandler.cs" />
     <Compile Include="Actions\ActionHandlerBase.cs" />
@@ -376,12 +372,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Overlay\OverlayWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterClean">

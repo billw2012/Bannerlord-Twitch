@@ -1,11 +1,8 @@
 ﻿
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Windows;
-using TaleWorlds.Library;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using Debug = TaleWorlds.Library.Debug;
@@ -100,21 +97,6 @@ namespace BannerlordTwitch.Util
         {
             BLTModule.AddToFeed(str, style.ToString().ToLower());
             Info(str);
-        }
-                
-        public static void AddInfoPanel(Func<UIElement> construct)
-        {
-            BLTModule.AddInfoPanel(construct);
-        }
-                
-        public static void RemoveInfoPanel(UIElement element)
-        {
-            BLTModule.RemoveInfoPanel(element);
-        }
-
-        public static void RunInfoPanelUpdate(Action action)
-        {
-            BLTModule.RunInfoPanelUpdate(action);
         }
 
         public enum Sound

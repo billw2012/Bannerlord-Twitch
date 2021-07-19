@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Windows.Data;
 using BannerlordTwitch.Util;
-using BLTAdoptAHero.Behaviors;
 using BLTAdoptAHero.UI;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -22,14 +18,12 @@ namespace BLTAdoptAHero
     [HarmonyPatch]
     internal class BLTAdoptAHeroCommonMissionBehavior : AutoMissionBehavior<BLTAdoptAHeroCommonMissionBehavior>
     {
-        private MissionInfoPanel missionInfoPanel;
-
-        private ObservableCollection<HeroViewModel> heroesViewModel { get; set; } = new();
-        private CollectionViewSource heroesSortedView { get; set; }
         private readonly List<Hero> activeHeroes = new();
 
         private class HeroMissionState
         {
+            public AgentState LastAgentState { get; set; } = AgentState.Active;
+            public int LastTeamIndex { get; set; }
             public int WonGold { get; set; }
             public int WonXP { get; set; }
             public int Kills { get; set; }
@@ -79,19 +73,6 @@ namespace BLTAdoptAHero
             }
         }
 
-        public BLTAdoptAHeroCommonMissionBehavior()
-        {
-            Log.AddInfoPanel(() =>
-            {
-                heroesSortedView = new CollectionViewSource { Source = heroesViewModel };
-                heroesSortedView.SortDescriptions.Add(new SortDescription(nameof(HeroViewModel.GlobalSortKey), ListSortDirection.Descending));
-                heroesSortedView.IsLiveSortingRequested = true;
-                heroesSortedView.LiveSortingProperties.Add(nameof(HeroViewModel.GlobalSortKey));
-                missionInfoPanel = new MissionInfoPanel {HeroList = { ItemsSource = heroesSortedView.View }};
-                return missionInfoPanel;
-            });
-        }
-        
         public override void OnAgentCreated(Agent agent)
         {
             SafeCall(() =>
@@ -112,9 +93,14 @@ namespace BLTAdoptAHero
             SafeCall(() =>
             {
                 var hero = agent.GetAdoptedHero();
-                if (hero != null && agent.MountAgent != null)
+                if (hero != null)
                 {
-                    adoptedHeroMounts.Add(agent.MountAgent);
+                    GetHeroMissionState(hero).LastAgentState = AgentState.Active;
+
+                    if (agent.MountAgent != null)
+                    {
+                        adoptedHeroMounts.Add(agent.MountAgent);
+                    }
                 }
 
                 if (!agent.IsMount && agent.Team?.IsValid == true && Mission.PlayerTeam?.IsValid == true)
@@ -152,25 +138,15 @@ namespace BLTAdoptAHero
                     {
                         UpdateHeroVM(h);
                     }
-                    MissionInfoHub.TickSlow();
+                    MissionInfoHub.Update();
                 }
             });
         }
 
         protected override void OnEndMission()
         {
-            SafeCall(() =>
-            {
-                Log.RemoveInfoPanel(missionInfoPanel);
-            });
-            
             MissionInfoHub.Clear();
         }
-
-        // public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon)
-        // {
-        //     UpdateHeroVM(affectedAgent);
-        // }
 
         [UsedImplicitly, HarmonyPrefix, HarmonyPatch(typeof(Mission), "OnAgentRemoved")]
         public static void OnAgentRemovedPrefix(Mission __instance, Agent affectedAgent, Agent affectorAgent,
@@ -236,6 +212,7 @@ namespace BLTAdoptAHero
                     );
                     ResetKillStreak(affectedHero);
                     BLTAdoptAHeroCampaignBehavior.Current.IncreaseHeroDeaths(affectedHero);
+                    GetHeroMissionState(affectedHero).LastAgentState = agentState;
                 }
 
                 var affectorHero = affectorAgent.GetAdoptedHero();
@@ -316,56 +293,7 @@ namespace BLTAdoptAHero
 
             return state;
         }
-
-        // private void UpdateHeroVM(Agent agent)
-        // {
-        //     var hero = agent.GetAdoptedHero();
-        //     if (hero != null)
-        //     {
-        //         UpdateHeroVM(hero, agent);
-        //     }
-        // }
-
-        private void UpdateHeroVMTick(Hero hero)
-        {
-            if (!activeHeroes.Contains(hero))
-            {
-                activeHeroes.Add(hero);
-            }
-
-            var summonState = BLTSummonBehavior.Current?.GetSummonedHero(hero);
-
-            var agent = summonState?.CurrentAgent ??
-                        Mission.Current.Agents.FirstOrDefault(a => a.Character == hero.CharacterObject);
-
-            var state = summonState?.State ?? agent?.State ?? AgentState.Killed;
-            string name = hero.FirstName.Raw();
-            float HP = agent != null && state == AgentState.Active? agent.Health : 0;
-            float cooldownFractionRemaining = 1 - summonState?.CoolDownFraction ?? 0;
-            float cooldownSecondsRemaining = summonState?.CooldownRemaining ?? 0;
-            float activePowerFractionRemaining = state is AgentState.Active ? ActivePowerFractionRemaining(hero) : 0;
-
-            Log.RunInfoPanelUpdate(() =>
-            {
-                var hm = heroesViewModel.FirstOrDefault(h => h.Name == name);
-                if (hm != null)
-                {
-                    hm.HP = HP;
-                    hm.CooldownFractionRemaining = cooldownFractionRemaining;
-                    hm.CooldownSecondsRemaining = cooldownSecondsRemaining;
-                    hm.ActivePowerFractionRemaining = activePowerFractionRemaining;
-                }
-            });
-            
-            MissionInfoHub.UpdateHeroFastTickState(name, new()
-            {
-                HP = HP,
-                CooldownFractionRemaining = cooldownFractionRemaining,
-                CooldownSecondsRemaining = cooldownSecondsRemaining,
-                ActivePowerFractionRemaining = activePowerFractionRemaining
-            });
-        }
-
+        
         private static bool IsHeroOnPlayerSide(Hero hero) 
             => hero.PartyBelongedTo?.MapEventSide?.MissionSide == PlayerEncounter.Current?.PlayerSide;
 
@@ -379,84 +307,43 @@ namespace BLTAdoptAHero
             }
 
             var summonState = BLTSummonBehavior.Current?.GetSummonedHero(hero);
-
+            
             var agent = summonState?.CurrentAgent ?? hero.GetAgent();
 
-            var state = summonState?.State ?? agent?.State ?? AgentState.Unconscious;
-            var heroModel = new HeroViewModel
-            {
-                Name = hero.FirstName.Raw(),
-                IsPlayerSide = summonState?.WasPlayerSide ?? IsHeroOnPlayerSide(hero),
-                MaxHP = agent?.HealthLimit ?? 100,
-                HP = agent != null && state == AgentState.Active? agent.Health : 0,
-                IsRouted = state is AgentState.Routed,
-                IsUnconscious = state is AgentState.Unconscious,
-                IsKilled = state is AgentState.Killed,
-                Retinue = summonState?.ActiveRetinue ?? 0,
-                GoldEarned = heroState.WonGold,
-                XPEarned = heroState.WonXP,
-                CooldownFractionRemaining = 1 - summonState?.CoolDownFraction ?? 0,
-                CooldownSecondsRemaining = summonState?.CooldownRemaining ?? 0,
-                Kills = heroState.Kills,
-                RetinueKills = heroState.RetinueKills,
-                ActivePowerFractionRemaining = state is AgentState.Active ? ActivePowerFractionRemaining(hero) : 0,
-            };
+            var state = summonState?.State ?? agent?.State ?? heroState.LastAgentState;
             
+            // So that heroes are cleaned up at the end of rounds in tournament 
             bool shouldRemove = agent?.State is not AgentState.Active && MissionHelpers.InTournament();
-            Log.RunInfoPanelUpdate(() =>
+
+            if (shouldRemove)
             {
-                var hm = heroesViewModel.FirstOrDefault(h => h.Name == heroModel.Name);
-                if (shouldRemove)
-                {
-                    if (hm != null)
-                    {
-                        heroesViewModel.Remove(hm);
-                    }
-                }
-                else if (hm != null)
-                {
-                    hm.Name = heroModel.Name;
-                    hm.IsPlayerSide = heroModel.IsPlayerSide;
-                    hm.MaxHP = heroModel.MaxHP;
-                    hm.HP = heroModel.HP;
-                    hm.IsRouted = heroModel.IsRouted;
-                    hm.IsUnconscious = heroModel.IsUnconscious;
-                    hm.IsKilled = heroModel.IsKilled;
-                    hm.Retinue = heroModel.Retinue;
-                    hm.GoldEarned = heroModel.GoldEarned;
-                    hm.XPEarned = heroModel.XPEarned;
-                    hm.Kills = heroModel.Kills;
-                    hm.RetinueKills = heroModel.RetinueKills;
-                    hm.CooldownFractionRemaining = heroModel.CooldownFractionRemaining;
-                    hm.CooldownSecondsRemaining = heroModel.CooldownSecondsRemaining;
-                }
-                else
-                {
-                    heroesViewModel.Add(heroModel);
-                }
-            });
-            
-            MissionInfoHub.UpdateHero(new()
+                MissionInfoHub.Remove(hero.FirstName.Raw());
+            }
+            else
             {
-                Name = hero.FirstName.Raw(),
-                IsPlayerSide = summonState?.WasPlayerSide ?? IsHeroOnPlayerSide(hero),
-                MaxHP = agent?.HealthLimit ?? 100,
-                FastTickState = new()
+                if (agent?.Team != null && agent.State == AgentState.Active)
                 {
-                    HP = agent != null && state == AgentState.Active? agent.Health : 0,
+                    heroState.LastTeamIndex = agent.Team.TeamIndex;
+                }
+
+                MissionInfoHub.UpdateHero(new()
+                {
+                    Name = hero.FirstName.Raw(),
+                    IsPlayerSide = summonState?.WasPlayerSide ?? IsHeroOnPlayerSide(hero),
+                    TournamentTeam = MissionHelpers.InTournament() ? heroState.LastTeamIndex : -1,
+                    MaxHP = agent?.HealthLimit ?? 100,
+                    HP = agent != null && state == AgentState.Active ? agent.Health : 0,
                     CooldownFractionRemaining = 1 - summonState?.CoolDownFraction ?? 0,
                     CooldownSecondsRemaining = summonState?.CooldownRemaining ?? 0,
                     ActivePowerFractionRemaining = state is AgentState.Active ? ActivePowerFractionRemaining(hero) : 0,
-                },
-                IsRouted = state is AgentState.Routed,
-                IsUnconscious = state is AgentState.Unconscious,
-                IsKilled = state is AgentState.Killed,
-                Retinue = summonState?.ActiveRetinue ?? 0,
-                GoldEarned = heroState.WonGold,
-                XPEarned = heroState.WonXP,
-                Kills = heroState.Kills,
-                RetinueKills = heroState.RetinueKills,
-            });
+                    State = state.ToString().ToLower(),
+                    Retinue = summonState?.ActiveRetinue ?? 0,
+                    GoldEarned = heroState.WonGold,
+                    XPEarned = heroState.WonXP,
+                    Kills = heroState.Kills,
+                    RetinueKills = heroState.RetinueKills,
+                });
+            }
         }
 
         private static float ActivePowerFractionRemaining(Hero hero)
@@ -465,6 +352,7 @@ namespace BLTAdoptAHero
             (float duration, float remaining) = classDef?.ActivePower?.DurationRemaining(hero) ?? (1, 0);
             return duration == 0 ? 0 : remaining / duration;
         }
+
         // public static string KillStateVerb(AgentState state) =>
         //     state switch
         //     {
