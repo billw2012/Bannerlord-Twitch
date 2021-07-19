@@ -165,8 +165,8 @@ namespace BLTAdoptAHero.UI
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 0.5em;
-    background: orange;
+    width: 0.4em;
+    background-image: linear-gradient(to right, orange, yellow, white);
     clip: auto;
     filter: drop-shadow(0 0 0.05em orange)
             drop-shadow(0 0 0.05em orange)
@@ -216,16 +216,14 @@ namespace BLTAdoptAHero.UI
 .mission-hero-score-row {
     display: flex;
     flex-direction: row;
-    margin-top: -0.1em;
-    margin-left: 0.3em;
-    margin-right: 0.3em;
-    margin-bottom: 0;
+    margin: -0.1em 0.3em 0;
 }
 
 .mission-hero-kills {
     font-size: 115%;
     margin-top: -0.1em;
     transition: 0.3s;
+    filter:  drop-shadow(0 0 0.5em white);
 }
 
 .mission-hero-kills-t-active {
@@ -263,8 +261,8 @@ namespace BLTAdoptAHero.UI
 }
 
 .hero-retinue-list-item {
-    height: 0.4em;
-    width: 0.4em;
+    height: 0.35em;
+    width: 0.35em;
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
@@ -349,7 +347,9 @@ $(function () {
     });
 
     $.connection.hub.url = '$url_root$/signalr';
-    $.connection.hub.logging = true;
+    $.connection.hub.reconnecting(function () {
+        mission.heroes = [];
+    });
 
     const missionInfoHub = $.connection.missionInfoHub;
     missionInfoHub.client.update = function (heroes) {

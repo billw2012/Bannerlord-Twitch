@@ -27,7 +27,7 @@ namespace BLTAdoptAHero
         public static void Register()
         {
             BLTOverlay.BLTOverlay.Register("tournament", 100, @"
-#tournament-container {
+.tournament-container-inner {
     display: flex;
     flex-direction: row;
     margin-top: 1em;
@@ -102,21 +102,23 @@ namespace BLTAdoptAHero
 }
 ", @"
 <div id='tournament-container' class='drop-shadow-highlight'>
-    <div id='tournament-label' class='drop-shadow'>
-        Tournament
-    </div>
-    <div id='tournament-items' class='drop-shadow'>
-        <div v-for='index in range(0, Math.max(tournamentSize, entrants))' class='tournament-range'>
-            <transition name='tournament-entry-t' tag='div' mode='out-in' appear>
-                <div v-if='index < entrants && index < tournamentSize - 1' 
-                     class='tournament-entry tournament-in-next' v-bind:key=""index + 'in-next'""></div>
-                <div v-else-if='index < entrants && index === tournamentSize - 1' 
-                     class='tournament-entry tournament-last-slot' v-bind:key=""index + 'last-slot'""></div>
-                <div v-else-if='index > tournamentSize - 1' 
-                     class='tournament-entry tournament-overflow' v-bind:key=""index + 'overflow'""></div>
-                <div v-else 
-                     class='tournament-entry tournament-empty' v-bind:key=""index + 'empty'""></div>
-            </transition>
+    <div v-if='tournamentSize > 0' class='tournament-container-inner'>
+        <div id='tournament-label' class='drop-shadow'>
+            Tournament
+        </div>
+        <div id='tournament-items' class='drop-shadow'>
+            <div v-for='index in range(0, Math.max(tournamentSize, entrants))' class='tournament-range'>
+                <transition name='tournament-entry-t' tag='div' mode='out-in' appear>
+                    <div v-if='index < entrants && index < tournamentSize - 1' 
+                         class='tournament-entry tournament-in-next' v-bind:key=""index + 'in-next'""></div>
+                    <div v-else-if='index < entrants && index === tournamentSize - 1' 
+                         class='tournament-entry tournament-last-slot' v-bind:key=""index + 'last-slot'""></div>
+                    <div v-else-if='index > tournamentSize - 1' 
+                         class='tournament-entry tournament-overflow' v-bind:key=""index + 'overflow'""></div>
+                    <div v-else 
+                         class='tournament-entry tournament-empty' v-bind:key=""index + 'empty'""></div>
+                </transition>
+            </div>
         </div>
     </div>
 </div>
@@ -127,7 +129,7 @@ $(function () {
         el: '#tournament-container',
         data: {
             entrants: 0,
-            tournamentSize: 16
+            tournamentSize: 0
         },
         methods:{
             range : function (start, end) {
@@ -141,6 +143,9 @@ $(function () {
     });
 
     $.connection.hub.url = '$url_root$/signalr';
+    $.connection.hub.reconnecting(function () {
+        tournament.tournamentSize = 0;
+    });
     const tournamentHub = $.connection.tournamentHub;
     tournamentHub.client.update = function (entrants, tournamentSize) {
         tournament.entrants = entrants;
@@ -163,7 +168,7 @@ $(function () {
         [UsedImplicitly]
         public void Refresh()
         {
-            (int entrants, int tournamentSize) = BLTTournamentQueueBehavior.Current?.GetTournamentQueueSize() ?? (0, 16);
+            (int entrants, int tournamentSize) = BLTTournamentQueueBehavior.Current?.GetTournamentQueueSize() ?? (0, 0);
             Clients.Caller.update(entrants, tournamentSize);
         }
         
