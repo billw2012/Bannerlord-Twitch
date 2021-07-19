@@ -65,7 +65,7 @@ namespace BannerlordTwitch.Testing
                         users.Add(newUser);
                         foreach (var initItem in simSettings.InitEnabled)
                         {
-                            RunItem(settings, initItem, newUser);
+                            MainThreadSync.Run(() => RunItem(settings, initItem, newUser));
                             Task.Delay(TimeSpan.FromMilliseconds(Math.Max(100, rnd.Next(simSettings.IntervalMinMS, simSettings.IntervalMaxMS))), css.Token).Wait();
                         }
                     }
