@@ -382,44 +382,49 @@ namespace BannerlordTwitch
 
         private void ShowCommandHelp()
         {
-            var help = "Commands: ".Yield()
-                .Concat(settings.EnabledCommands.Where(c => !c.HideHelp)
-                    .Select(c => string.IsNullOrEmpty(c.Help) ? $"!{c.Name}" : $"!{c.Name} - {c.Help}")
-                )
-                .ToList();
-            if (settings.EnabledRewards.Any())
+            MainThreadSync.Run(() =>
             {
-                help.Add($"Also see Channel Point Rewards");
-            }
-            bot.SendChat(help.ToArray());
+                var help = "Commands: ".Yield()
+                    .Concat(settings.EnabledCommands.Where(c => !c.HideHelp)
+                        .Select(c => string.IsNullOrEmpty(c.Help) ? $"!{c.Name}" : $"!{c.Name} - {c.Help}")
+                    )
+                    .ToList();
+                if (settings.EnabledRewards.Any())
+                {
+                    help.Add($"Also see Channel Point Rewards");
+                }
+
+                bot.SendChat(help.ToArray());
+            });
         }
         
-        public bool ExecuteCommand(string cmdName, ChatMessage chatMessage, string args)
+        public void ExecuteCommand(string cmdName, ChatMessage chatMessage, string args)
         {
-            var cmd = this.settings.GetCommand(cmdName);
-            if (cmd == null)
+            MainThreadSync.Run(() =>
             {
-                Log.Trace($"[{nameof(TwitchService)}] Couldn't find command {cmdName}");
-                return false;
-            }
+                var cmd = this.settings.GetCommand(cmdName);
+                if (cmd == null)
+                {
+                    Log.Trace($"[{nameof(TwitchService)}] Couldn't find command {cmdName}");
+                    return;
+                }
 
-            var context = ReplyContext.FromMessage(cmd, chatMessage, args);
+                var context = ReplyContext.FromMessage(cmd, chatMessage, args);
 
 #if !DEBUG
-            try
-            {
+                try
+                {
 #endif
-                ActionManager.HandleCommand(cmd.Handler, context, cmd.HandlerConfig);
+                    ActionManager.HandleCommand(cmd.Handler, context, cmd.HandlerConfig);
 #if !DEBUG
-            }
-            catch (Exception e)
-            {
-                Log.LogFeedCritical($"Command {cmdName} failed with exception {e.Message}, game might be unstable now!");
-                Log.Exception($"Command {cmdName}", e);
-            }
+                }
+                catch (Exception e)
+                {
+                    Log.LogFeedCritical($"Command {cmdName} failed with exception {e.Message}, game might be unstable now!");
+                    Log.Exception($"Command {cmdName}", e);
+                }
 #endif
-
-            return true;
+            });
         }
 
         public bool TestCommand(string cmdName, string userName, string args)

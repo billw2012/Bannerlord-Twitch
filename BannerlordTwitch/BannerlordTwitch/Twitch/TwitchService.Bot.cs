@@ -228,20 +228,17 @@ namespace BannerlordTwitch
 
             private void HandleChatBoxMessage(string msg, ChatMessage chatMessage)
             {
-                MainThreadSync.Run(() =>
+                string[] parts = msg.Split(' ');
+                if (parts[0] == "help")
                 {
-                    string[] parts = msg.Split(' ');
-                    if (parts[0] == "help")
-                    {
-                        BLTModule.TwitchService?.ShowCommandHelp();
-                    }
-                    else
-                    {
-                        string cmdName = parts[0];
-                        string args = msg.Substring(cmdName.Length).Trim();
-                        BLTModule.TwitchService?.ExecuteCommand(cmdName, chatMessage, args);
-                    }
-                });
+                    BLTModule.TwitchService?.ShowCommandHelp();
+                }
+                else
+                {
+                    string cmdName = parts[0];
+                    string args = msg.Substring(cmdName.Length).Trim();
+                    BLTModule.TwitchService?.ExecuteCommand(cmdName, chatMessage, args);
+                }
             }
 
             private void ReleaseUnmanagedResources()
