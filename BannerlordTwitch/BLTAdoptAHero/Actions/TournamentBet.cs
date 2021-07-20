@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Windows.Input;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
@@ -29,20 +27,25 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            string team = parts[0].ToLower();
-            if (team == "")
+            int gold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
+            int nameIdx = -1;
+            if (parts[0].ToLower() == "all" || int.TryParse(parts[0], out gold))
             {
-                ActionManager.SendReply(context, $"Invalid team name");
-                return;
+                nameIdx = 1;
             }
-
-            if (!int.TryParse(parts[1], out int gold) || gold < 1)
+            else if(parts[1].ToLower() == "all" || int.TryParse(parts[1], out gold))
+            {
+                nameIdx = 0;
+            }
+            if(gold == 0 || nameIdx == -1)
             {
                 ActionManager.SendReply(context, $"Invalid gold argument");
                 return;
             }
-
-            (bool success, string failReason) = BLTTournamentQueueBehavior.Current.PlaceBet(adoptedHero, team, gold);
+            
+            string team = parts[nameIdx].ToLower();
+            (bool success, string failReason) = BLTBetMissionBehavior.Current?.PlaceBet(adoptedHero, team, gold) 
+                                                ?? (false, "Betting not active");
             if (!success)
             {
                 ActionManager.SendReply(context, failReason);
