@@ -122,7 +122,7 @@ namespace BLTAdoptAHero
 
                 if (settings.ShowInventory)
                 {
-                    infoStrings.Add("Battle " + string.Join("■", adoptedHero.BattleEquipment
+                    infoStrings.Add("[BATTLE] " + string.Join("■", adoptedHero.BattleEquipment
                         .YieldFilledEquipmentSlots()
                         .Select(e => $"{e.GetModifiedItemName()}")
                     ));
@@ -130,7 +130,7 @@ namespace BLTAdoptAHero
 
                 if(settings.ShowCivilianInventory)
                 {
-                    infoStrings.Add("Civ " + string.Join("■", adoptedHero.CivilianEquipment
+                    infoStrings.Add("[CIV] " + string.Join("■", adoptedHero.CivilianEquipment
                         .YieldFilledEquipmentSlots()
                         .Select(e => $"{e.GetModifiedItemName()}")
                     ));
@@ -139,7 +139,7 @@ namespace BLTAdoptAHero
                 if (settings.ShowStorage)
                 {
                     var customItems = BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero);
-                    infoStrings.Add("Stored " + string.Join("■", customItems
+                    infoStrings.Add("[STORED] " + string.Join("■", customItems
                         .Select(e => e.GetModifiedItemName())
                     ));
                 }

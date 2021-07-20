@@ -374,7 +374,7 @@ namespace BannerlordTwitch
             }
             else
             {
-                Log.LogFeedResponse("[CHAT]".Yield().Concat(messages).ToArray());
+                Log.LogFeedMessage("[CHAT]".Yield().Concat(messages).ToArray());
             }
 
             Log.Trace($"[{nameof(TwitchService)}] Chat: {string.Join(", ", messages)}");

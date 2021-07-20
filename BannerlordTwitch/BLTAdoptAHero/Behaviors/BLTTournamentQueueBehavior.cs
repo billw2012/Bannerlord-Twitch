@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Bannerlord.ButterLib.Common.Extensions;
 using Bannerlord.ButterLib.SaveSystem.Extensions;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
@@ -100,28 +101,87 @@ namespace BLTAdoptAHero
         opacity: 1;
     }
 }
+
+
+.tournament-bets-items {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.3em;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.tournament-bets-label {
+    font-weight: bold;
+    margin-right: 0.6em;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.1em;
+}
+
+.tournament-bet {
+    margin: 0.2em;
+    display: flex;
+    border-radius: 0.5em;
+    padding: 0.1em 0.5em 0.1em;
+    min-width: 3em;
+    justify-content: center;
+    border: gold solid 0.1em;
+}
+
+.tournament-bet-text {
+    font-weight: 600;
+    font-size: 120%;
+}
+
+.tournament-bet-side-0 {
+    background: #5e5ef5;
+}
+.tournament-bet-side-1 {
+    background: #a13b3b;
+}
+.tournament-bet-side-2 {
+    background: #2e901f;
+}
+.tournament-bet-side-3 {
+    background: #939300;
+}
 ", @"
 <div id='tournament-container' class='drop-shadow-highlight'>
-    <div v-if='tournamentSize > 0' class='tournament-container-inner'>
-        <div id='tournament-label' class='drop-shadow'>
-            Tournament
+        <div v-if='tournamentSize > 0' class='tournament-container-inner'>
+            <div id='tournament-label' class='drop-shadow'>
+                Tournament
+            </div>
+            <div id='tournament-items' class='drop-shadow'>
+                <div v-for='index in range(0, Math.max(tournamentSize, entrants))' class='tournament-range'>
+                    <transition name='tournament-entry-t' tag='div' mode='out-in' appear>
+                        <div v-if='index < entrants && index < tournamentSize - 1'
+                             class='tournament-entry tournament-in-next' v-bind:key=""index + 'in-next'""></div>
+                        <div v-else-if='index < entrants && index === tournamentSize - 1'
+                             class='tournament-entry tournament-last-slot' v-bind:key=""index + 'last-slot'""></div>
+                        <div v-else-if='index > tournamentSize - 1'
+                             class='tournament-entry tournament-overflow' v-bind:key=""index + 'overflow'""></div>
+                        <div v-else
+                             class='tournament-entry tournament-empty' v-bind:key=""index + 'empty'""></div>
+                    </transition>
+                </div>
+            </div>
         </div>
-        <div id='tournament-items' class='drop-shadow'>
-            <div v-for='index in range(0, Math.max(tournamentSize, entrants))' class='tournament-range'>
-                <transition name='tournament-entry-t' tag='div' mode='out-in' appear>
-                    <div v-if='index < entrants && index < tournamentSize - 1' 
-                         class='tournament-entry tournament-in-next' v-bind:key=""index + 'in-next'""></div>
-                    <div v-else-if='index < entrants && index === tournamentSize - 1' 
-                         class='tournament-entry tournament-last-slot' v-bind:key=""index + 'last-slot'""></div>
-                    <div v-else-if='index > tournamentSize - 1' 
-                         class='tournament-entry tournament-overflow' v-bind:key=""index + 'overflow'""></div>
-                    <div v-else 
-                         class='tournament-entry tournament-empty' v-bind:key=""index + 'empty'""></div>
-                </transition>
+        <div v-if=""bettingState === 'open'"" class='tournament-bets-label drop-shadow'>
+            Betting is&nbsp;<span style='color: green'>OPEN</span>
+        </div>
+        <div v-else-if=""bettingState === 'closed'"" class='tournament-bets-label drop-shadow'>
+            Betting is&nbsp;<span style='color: red'>CLOSED</span>
+        </div>
+        <div v-else-if=""bettingState === 'disabled'"" class='tournament-bets-label drop-shadow'>
+            <span style='color: gray'>Not taking bets</span>
+        </div>
+        <div v-if=""bettingState === 'open' || bettingState === 'closed'"" class='drop-shadow tournament-bets-items'>
+            <div v-for='(bet, index) in bets' class='tournament-bet'
+                 v-bind:class=""'tournament-bet-side-' + index"">
+                <div class='tournament-bet-text gold-text-style'>{{bet}}⦷</div>
             </div>
         </div>
     </div>
-</div>
 ", @"
 <!-- Tournament -->
 $(function () {
@@ -129,7 +189,15 @@ $(function () {
         el: '#tournament-container',
         data: {
             entrants: 0,
-            tournamentSize: 0
+            tournamentSize: 0,
+            bettingState: 'none',
+            bets: []
+        },
+        computed: {
+            anyBets: function () {
+                const nonzero = (b) => b > 0;
+                return this.bets.some(nonzero);
+            }
         },
         methods:{
             range : function (start, end) {
@@ -144,13 +212,27 @@ $(function () {
 
     $.connection.hub.url = '$url_root$/signalr';
     $.connection.hub.reconnecting(function () {
+        tournament.entrants = 0;
         tournament.tournamentSize = 0;
+        tournament.bets = [];
+        tournament.bettingState = 'none';
     });
     const tournamentHub = $.connection.tournamentHub;
-    tournamentHub.client.update = function (entrants, tournamentSize) {
+    tournamentHub.client.updateEntrants = function (entrants, tournamentSize) {
         tournament.entrants = entrants;
         tournament.tournamentSize = tournamentSize;
-        console.log('BLT Tournament entrants set to ' + entrants + '/' + tournamentSize);
+    };
+    tournamentHub.client.reset = function () {
+        tournament.entrants = 0;
+        tournament.tournamentSize = 0;
+        tournament.bets = [];
+        tournament.bettingState = 'none';
+    };
+    tournamentHub.client.updateBets = function (bets) {
+        tournament.bets = bets;
+    };
+    tournamentHub.client.updateBettingState = function (bettingState) {
+        tournament.bettingState = bettingState;
     };
     $.connection.hub.start().done(function () {
         console.log('BLT Tournament Hub started');
@@ -164,18 +246,34 @@ $(function () {
             Refresh();
             return base.OnConnected();
         }
-
-        [UsedImplicitly]
+        
         public void Refresh()
         {
             (int entrants, int tournamentSize) = BLTTournamentQueueBehavior.Current?.GetTournamentQueueSize() ?? (0, 0);
-            Clients.Caller.update(entrants, tournamentSize);
+            Clients.Caller.updateEntrants(entrants, tournamentSize);
+            Clients.Caller.updateBets(BLTBetMissionBehavior.Current?.GetTotalBets() ?? new List<int>());
+            Clients.Caller.UpdateBettingState(BLTBetMissionBehavior.Current?.GetBettingState().ToString() ?? string.Empty);
         }
         
-        public static void Refresh(int entrants, int tournamentSize)
+        public static void Reset()
         {
             GlobalHost.ConnectionManager.GetHubContext<TournamentHub>()
-                .Clients.All.update(entrants, tournamentSize);
+                .Clients.All.reset();
+        }
+        
+        public static void UpdateEntrants()
+        {
+            (int entrants, int tournamentSize) = BLTTournamentQueueBehavior.Current?.GetTournamentQueueSize() ?? (0, 0);
+            GlobalHost.ConnectionManager.GetHubContext<TournamentHub>()
+                .Clients.All.updateEntrants(entrants, tournamentSize);
+        }
+        
+        public static void UpdateBets()
+        {
+            GlobalHost.ConnectionManager.GetHubContext<TournamentHub>()
+                .Clients.All.updateBets(BLTBetMissionBehavior.Current?.GetTotalBets() ?? new List<int>());
+            GlobalHost.ConnectionManager.GetHubContext<TournamentHub>()
+                .Clients.All.updateBettingState(BLTBetMissionBehavior.Current?.GetBettingState().ToString() ?? "none");
         }
     }
     
@@ -223,7 +321,7 @@ $(function () {
             }
             tournamentQueue ??= new();
             tournamentQueue.RemoveAll(e => e.Hero == null || e.Hero.IsDead);
-            UpdatePanel();
+            TournamentHub.UpdateEntrants();
         }
 
         public (int entrants, int tournamentSize) GetTournamentQueueSize()
@@ -231,11 +329,11 @@ $(function () {
             return (tournamentQueue.Count, 16);
         }
         
-        private void UpdatePanel()
-        {
-            (int entrants, int tournamentSize) = GetTournamentQueueSize();
-            TournamentHub.Refresh(entrants, tournamentSize);
-        }
+        // private void UpdatePanel()
+        // {
+        //     (int entrants, int tournamentSize) = GetTournamentQueueSize();
+        //     TournamentHub.Refresh(entrants, tournamentSize, GetTotalBets());
+        // }
 
         private class TournamentQueueEntry
         {
@@ -285,7 +383,7 @@ $(function () {
             }
 
             tournamentQueue.Add(new TournamentQueueEntry(hero, isSub, entryFree));
-            UpdatePanel();
+            TournamentHub.UpdateEntrants();
             return (true, $"You are position {tournamentQueue.Count} in the tournament queue!");
         }
             
@@ -332,7 +430,7 @@ $(function () {
                     __result.Add(basicTroops.SelectRandom());
                 }
                 
-                UpdatePanel();
+                TournamentHub.UpdateEntrants();
 
                 mode = TournamentMode.None;
             }
@@ -363,6 +461,10 @@ $(function () {
             }
         }
             
+        #region BLTBetMissionBehavior
+
+        #endregion
+        
         public void PrepareForTournamentGame()
         {
             if (!activeTournament.Any())
@@ -399,6 +501,8 @@ $(function () {
 				
             var tournamentBehavior = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>();
 
+            MissionState.Current.CurrentMission.AddMissionBehaviour(new BLTBetMissionBehavior());
+            
             tournamentBehavior.TournamentEnd += () =>
             {
                 // Win results, put winner last
@@ -859,131 +963,6 @@ $(function () {
 
         #endregion 
         
-        #region Betting
-        private bool bettingOpen;
-        private Dictionary<Hero, (int team, int bet)> activeBets;
-
-        public void OpenBetting(TournamentBehavior tournamentBehavior)
-        {
-            if (BLTAdoptAHeroModule.TournamentConfig.EnableBetting 
-                && tournamentBehavior.CurrentMatch != null
-                && (tournamentBehavior.CurrentRoundIndex == 3 || !BLTAdoptAHeroModule.TournamentConfig.BettingOnFinalOnly))
-            {
-                var teams = TournamentHelpers.TeamNames.Take(tournamentBehavior.CurrentMatch.Teams.Count());
-                string round = tournamentBehavior.CurrentRoundIndex < 3
-                    ? $"round {tournamentBehavior.CurrentRoundIndex + 1}"
-                    : "final";
-                ActionManager.SendChat($"Betting is now OPEN for {round} match: {string.Join(" vs ", teams)}!");
-                activeBets = new();
-            }
-            bettingOpen = true;
-        }
-        
-        public (bool success, string failReason) PlaceBet(Hero hero, string team, int bet)
-        {
-            var tournamentBehavior = Mission.Current?.GetMissionBehaviour<TournamentBehavior>();
-            if (tournamentBehavior == null)
-            {
-                return (false, "Tournament is not active");
-            }
-
-            if (!BLTAdoptAHeroModule.TournamentConfig.EnableBetting)
-            {
-                return (false, "Betting is disabled");
-            }
-            
-            if (!bettingOpen)
-            {
-                return (false, "Betting is closed");
-            }
-            
-            if (tournamentBehavior.CurrentRoundIndex != 3 && BLTAdoptAHeroModule.TournamentConfig.BettingOnFinalOnly)
-            {
-                return (false, "Betting is only allowed on the final");
-            }
-
-            if (activeBets == null)
-            {
-                return (false, "Betting is disabled");
-            }
-
-            if (activeBets.ContainsKey(hero))
-            {
-                return (false, "You already placed a bet");
-            }
-
-            int teamsCount = tournamentBehavior.CurrentMatch.Teams.Count();
-            var activeTeams = TournamentHelpers.TeamNames.Take(teamsCount).ToArray();
-            int teamIdx = activeTeams.IndexOf(team.ToLower());
-            if (teamIdx == -1)
-            {
-                return (false, $"Team name must be one of {string.Join(", ", activeTeams)}");
-            }
-            
-            int heroGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(hero);
-            if (heroGold < bet)
-            {
-                return (false, Naming.NotEnoughGold(bet, heroGold));
-            }
-            
-            activeBets.Add(hero, (teamIdx, bet));
-            
-            // Take the actual money
-            BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, -bet);
-
-            return (true, null);
-        }
-
-        public void CloseBetting(TournamentBehavior tournamentBehavior)
-        {
-            // We use this being non-null as an indicator that betting was active
-            if (activeBets != null)
-            {
-                var betTotals = activeBets.Values
-                    .Select(b => (name: TournamentHelpers.TeamNames[b.team], b.bet))
-                    .GroupBy(b => b.name)
-                    .Select(g => $"{g.Key} {g.Select(x => x.bet).Sum()}{Naming.Gold}")
-                    .ToList()
-                    ;
-                ActionManager.SendChat(betTotals.Any()
-                    ? $"Betting is now CLOSED: {string.Join(", ", betTotals)}"
-                    : $"Betting is now CLOSED: no bets placed"
-                );
-            }
-            
-            bettingOpen = false;
-        }
-
-        private void CompleteBetting(TournamentMatch lastMatch)
-        {
-            if (activeBets != null)
-            {
-                double totalBet = activeBets.Values.Sum(v => v.bet);
-
-                var allWonBets = activeBets
-                    .Where(kv => lastMatch.Winners.Contains(lastMatch.Teams.ElementAt(kv.Value.team).Participants.First()))
-                    .Select(kv => (
-                        hero: kv.Key,
-                        bet: kv.Value.bet
-                    ))
-                    .ToList();
-
-                double winningTotalBet = allWonBets.Sum(v => v.bet);
-
-                foreach ((var hero, int bet) in allWonBets.OrderByDescending(b => b.bet))
-                {
-                    int winnings = (int) (totalBet * bet / winningTotalBet);
-                    int newGold = BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, winnings);
-                    Log.LogFeedResponse(hero.FirstName.ToString(),
-                        $"WON BET {Naming.Inc}{winnings}{Naming.Gold}{Naming.To}{newGold}{Naming.Gold}");
-                }
-
-                activeBets = null;
-            }
-        }
-
-        #endregion
-
         public void EndCurrentMatchPrefix(TournamentBehavior tournamentBehavior)
         {
             // If the tournament is over we need to make sure player gets the real prize. 
@@ -1001,12 +980,12 @@ $(function () {
 
         public void EndCurrentMatchPostfix(TournamentBehavior tournamentBehavior)
         {
-            CompleteBetting(tournamentBehavior.LastMatch);
+            BLTBetMissionBehavior.Current?.CompleteBetting(tournamentBehavior.LastMatch);
 
             if(tournamentBehavior.CurrentMatch != null)
             {
-                OpenBetting(tournamentBehavior);
-            }   
+                BLTBetMissionBehavior.Current?.OpenBetting(tournamentBehavior);
+            }
             
             // End round effects (as there is no event handler for it :/)
             foreach (var entry in activeTournament)
@@ -1072,7 +1051,7 @@ $(function () {
 
         private void ReleaseUnmanagedResources()
         {
-            TournamentHub.Refresh(0, 0);
+            TournamentHub.Reset();
         }
 
         public void Dispose()
@@ -1085,5 +1064,242 @@ $(function () {
         {
             ReleaseUnmanagedResources();
         }
+    }
+
+    public class BLTBetMissionBehavior : AutoMissionBehavior<BLTBetMissionBehavior>
+    {
+        protected override void OnEndMission()
+        {
+            // Ensure the betting is closed
+            RefundBets();
+            bettingState = BettingState.none;
+            activeBets = null;
+            TournamentHub.UpdateBets();
+        }
+            
+        public List<int> GetTotalBets()
+        {
+            var tournamentBehavior = MissionState.Current?.CurrentMission?.GetMissionBehaviour<TournamentBehavior>();
+            if (tournamentBehavior != null && activeBets != null)
+            {
+                int teamsCount = tournamentBehavior.CurrentMatch.Teams.Count();
+                return Enumerable.Range(0, teamsCount).Select(idx =>  
+                        activeBets.Values
+                            .Where(b => b.team == idx)
+                            .Sum(b => b.bet))
+                    .ToList();
+            }
+            return new();
+        }
+
+        public enum BettingState
+        {
+            none,
+            open,
+            closed,
+            disabled,
+        }
+
+        private BettingState bettingState;
+        
+        public BettingState GetBettingState()
+        {
+            return bettingState;
+        }
+            
+        private bool bettingOpen;
+
+        private class TeamBet
+        {
+            public int team;
+            public int bet;
+        }
+            
+        private Dictionary<Hero, TeamBet> activeBets;
+
+        public void OpenBetting(TournamentBehavior tournamentBehavior)
+        {
+            if (BLTAdoptAHeroModule.TournamentConfig.EnableBetting 
+                && tournamentBehavior.CurrentMatch != null
+                && (tournamentBehavior.CurrentRoundIndex == 3 || !BLTAdoptAHeroModule.TournamentConfig.BettingOnFinalOnly))
+            {
+                var teams = TournamentHelpers.TeamNames.Take(tournamentBehavior.CurrentMatch.Teams.Count());
+                string round = tournamentBehavior.CurrentRoundIndex < 3
+                    ? $"round {tournamentBehavior.CurrentRoundIndex + 1}"
+                    : "final";
+                string msg = $"Betting is now OPEN for {round} match: {string.Join(" vs ", teams)}!";
+                Log.LogFeedMessage(msg);
+                ActionManager.SendChat(msg);
+                activeBets = new();
+                bettingState = BettingState.open;
+            }
+            else
+            {
+                bettingState = BettingState.disabled;
+            }
+            bettingOpen = true;
+            TournamentHub.UpdateBets();
+        }
+            
+        public (bool success, string failReason) PlaceBet(Hero hero, string team, int bet)
+        {
+            var tournamentBehavior = Mission.Current?.GetMissionBehaviour<TournamentBehavior>();
+            if (tournamentBehavior == null)
+            {
+                return (false, "Tournament is not active");
+            }
+
+            if (!BLTAdoptAHeroModule.TournamentConfig.EnableBetting)
+            {
+                return (false, "Betting is disabled");
+            }
+                
+            if (!bettingOpen)
+            {
+                return (false, "Betting is closed");
+            }
+                
+            if (tournamentBehavior.CurrentRoundIndex != 3 && BLTAdoptAHeroModule.TournamentConfig.BettingOnFinalOnly)
+            {
+                return (false, "Betting is only allowed on the final");
+            }
+
+            if (activeBets == null)
+            {
+                return (false, "Betting is disabled");
+            }
+
+            int teamsCount = tournamentBehavior.CurrentMatch.Teams.Count();
+            string[] activeTeams = TournamentHelpers.TeamNames.Take(teamsCount).ToArray();
+            int teamIdx = activeTeams.IndexOf(team.ToLower());
+            if (teamIdx == -1)
+            {
+                return (false, $"Team name must be one of {string.Join(", ", activeTeams)}");
+            }
+                
+            if (activeBets.TryGetValue(hero, out var existingBet))
+            {
+                if (existingBet.team != teamIdx)
+                {
+                    return (false, "You can only bet on one team");
+                }
+            }
+                
+            int heroGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(hero);
+            if (heroGold < bet)
+            {
+                return (false, Naming.NotEnoughGold(bet, heroGold));
+            }
+
+            if (existingBet != null)
+            {
+                existingBet.bet += bet;
+            }
+            else
+            {
+                activeBets.Add(hero, new() {team = teamIdx, bet = bet});
+            }
+                
+            // Take the actual money
+            BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, -bet);
+
+            TournamentHub.UpdateBets();
+                
+            return (true, null);
+        }
+
+        public void CloseBetting(TournamentBehavior tournamentBehavior)
+        {
+            // We use this being non-null as an indicator that betting was active
+            if (activeBets != null)
+            {
+                var groupedBets = activeBets.Values
+                    .Select(b => (name: TournamentHelpers.TeamNames[b.team], b.bet))
+                    .GroupBy(b => b.name)
+                    .ToList();
+
+                if (groupedBets.Count == 1)
+                {
+                    // refund bets if only one team was bet on
+                    RefundBets();
+                    activeBets = null;
+                    bettingState = BettingState.disabled;
+                    Log.LogFeedMessage($"Betting is now CLOSED: only one team bet on, bets refunded");
+                    ActionManager.SendChat($"Betting is now CLOSED: only one team bet on, bets refunded");
+                }
+                else if (!groupedBets.Any())
+                {
+                    activeBets = null;
+                    bettingState = BettingState.disabled;
+                    Log.LogFeedMessage($"Betting is now CLOSED: no bets placed");
+                    ActionManager.SendChat($"Betting is now CLOSED: no bets placed");
+                }
+                else 
+                {
+                    bettingState = BettingState.closed;
+                    var betTotals = activeBets.Values
+                            .Select(b => (name: TournamentHelpers.TeamNames[b.team], b.bet))
+                            .GroupBy(b => b.name)
+                            .Select(g => $"{g.Key} {g.Select(x => x.bet).Sum()}{Naming.Gold}")
+                            .ToList()
+                        ;
+                    string msg = $"Betting is now CLOSED: {string.Join(", ", betTotals)}";
+                    Log.LogFeedMessage(msg);
+                    ActionManager.SendChat(msg);
+                }
+            }
+            else
+            {
+                bettingState = BettingState.disabled;
+            }
+                
+            bettingOpen = false;
+            TournamentHub.UpdateBets();
+        }
+
+        private void RefundBets()
+        {
+            if (activeBets != null)
+            {
+                foreach (var (hero, bet) in activeBets)
+                {
+                    Log.LogFeedResponse(hero.FirstName.ToString(), $"REFUNDED {bet.bet}{Naming.Gold} bet");
+                    BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, bet.bet);
+                }
+
+                activeBets.Clear();
+            }
+        }
+
+        public void CompleteBetting(TournamentMatch lastMatch)
+        {
+            if (activeBets != null)
+            {
+                double totalBet = activeBets.Values.Sum(v => v.bet);
+
+                var allWonBets = activeBets
+                    .Where(kv => lastMatch.Winners.Contains(lastMatch.Teams.ElementAt(kv.Value.team).Participants.First()))
+                    .Select(kv => (
+                        hero: kv.Key,
+                        bet: kv.Value.bet
+                    ))
+                    .ToList();
+
+                double winningTotalBet = allWonBets.Sum(v => v.bet);
+
+                foreach ((var hero, int bet) in allWonBets.OrderByDescending(b => b.bet))
+                {
+                    int winnings = (int) (totalBet * bet / winningTotalBet);
+                    int newGold = BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, winnings);
+                    Log.LogFeedResponse(hero.FirstName.ToString(),
+                        $"WON BET {Naming.Inc}{winnings}{Naming.Gold}{Naming.To}{newGold}{Naming.Gold}");
+                }
+
+                activeBets = null;
+            }
+                
+            TournamentHub.UpdateBets();
+        }
+
     }
 }

@@ -76,6 +76,24 @@
 ;
 }
 
+.username-text-style {
+    color: #c7d8ff;
+}
+
+.gold-text-style {
+    color: white;
+    font-weight: 100;
+    font-size: 100%;
+    filter:
+            drop-shadow(0 0 0.04em gold)
+            drop-shadow(0 0 0.02em gold)
+            drop-shadow(0           0         0.06em    #000)
+;
+}
+
+.default-text-style {
+}
+
 .version-text {
     filter: drop-shadow(0 0 0.1em #FFFF);
     font-weight: 700;

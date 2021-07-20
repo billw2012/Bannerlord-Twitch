@@ -143,7 +143,7 @@ namespace BLTAdoptAHero
             try
             {
                 // Only called at the start of the tournament
-                BLTTournamentQueueBehavior.Current.OpenBetting(__instance);
+                BLTBetMissionBehavior.Current?.OpenBetting(__instance);
             }
             catch (Exception e)
             {
@@ -156,7 +156,7 @@ namespace BLTAdoptAHero
         {
             try
             {
-                BLTTournamentQueueBehavior.Current.CloseBetting(__instance);
+                BLTBetMissionBehavior.Current?.CloseBetting(__instance);
             }
             catch (Exception e)
             {
@@ -169,7 +169,7 @@ namespace BLTAdoptAHero
         {
             try
             {
-                BLTTournamentQueueBehavior.Current.CloseBetting(__instance);
+                BLTBetMissionBehavior.Current?.CloseBetting(__instance);
             }
             catch (Exception e)
             {
@@ -182,7 +182,7 @@ namespace BLTAdoptAHero
         {
             try
             {
-                BLTTournamentQueueBehavior.Current.EndCurrentMatchPrefix(__instance);
+                BLTTournamentQueueBehavior.Current?.EndCurrentMatchPrefix(__instance);
             }
             catch (Exception e)
             {
@@ -195,7 +195,7 @@ namespace BLTAdoptAHero
         {
             try
             {
-                BLTTournamentQueueBehavior.Current.EndCurrentMatchPostfix(__instance);
+                BLTTournamentQueueBehavior.Current?.EndCurrentMatchPostfix(__instance);
             }
             catch (Exception e)
             {

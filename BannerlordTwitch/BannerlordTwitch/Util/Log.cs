@@ -80,7 +80,7 @@ namespace BannerlordTwitch.Util
         public static void LogFeedBattle(string str) => LogFeed(str, LogStyle.Battle);
         public static void LogFeedEvent(string str) => LogFeed(str, LogStyle.Event);
         public static void LogFeedResponse(string userName, params string[] messages) => LogFeed($"@{userName}: {string.Join(", ", messages)}", LogStyle.Response);
-        public static void LogFeedResponse(params string[] messages) => LogFeed(string.Join(", ", messages), LogStyle.Response);
+        public static void LogFeedMessage(params string[] messages) => LogFeed(string.Join(", ", messages), LogStyle.General);
 
         public enum LogStyle
         {

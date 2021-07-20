@@ -63,7 +63,7 @@
     </style>
     <style type="text/css">
 
-        #tournament-container {
+        .tournament-container-inner {
             display: flex;
             flex-direction: row;
             margin-top: 1em;
@@ -135,6 +135,51 @@
                 transform: scale(1);
                 opacity: 1;
             }
+        }
+
+        .tournament-bets-container-inner {
+            display: flex;
+            flex-direction: row;
+            margin-top: 1em;
+        }
+
+        #tournament-bets-label {
+            font-weight: bold;
+            margin-right: 0.6em;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.1em;
+        }
+
+        #tournament-bets-items {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .tournament-bet {
+            margin: 0.2em;
+            display: flex;
+            border-radius: 0.5em;
+            padding: 0.1em 0.5em 0.1em;
+            min-width: 2.2em;
+            color: white;
+            justify-content: center;
+            border: gold solid 0.1em;
+        }
+
+        .tournament-bet-side-0 {
+            background: #5e5ef5;
+        }
+        .tournament-bet-side-1 {
+            background: #a13b3b;
+        }
+        .tournament-bet-side-2 {
+            background: #2e901f;
+        }
+        .tournament-bet-side-3 {
+            background: #939300;
         }
 
     </style>
@@ -213,6 +258,7 @@
         .mission-hero-tournament-side-3 .mission-hero-health {
             background: #939300;
         }
+
 
         .mission-hero-active-power-remaining {
             position: absolute;
@@ -340,22 +386,35 @@
     </div>
 
 
-    <div id='tournament-container' class='drop-shadow'>
-        <div id='tournament-label'>
-            Tournament
+    <div id='tournament-container' class='drop-shadow-highlight'>
+        <div v-if='tournamentSize > 0' class='tournament-container-inner'>
+            <div id='tournament-label' class='drop-shadow'>
+                Tournament
+            </div>
+            <div id='tournament-items' class='drop-shadow'>
+                <div v-for='index in range(0, Math.max(tournamentSize, entrants))' class='tournament-range'>
+                    <transition name='tournament-entry-t' tag='div' mode='out-in' appear>
+                        <div v-if='index < entrants && index < tournamentSize - 1'
+                             class='tournament-entry tournament-in-next' v-bind:key="index + 'in-next'"></div>
+                        <div v-else-if='index < entrants && index === tournamentSize - 1'
+                             class='tournament-entry tournament-last-slot' v-bind:key="index + 'last-slot'"></div>
+                        <div v-else-if='index > tournamentSize - 1'
+                             class='tournament-entry tournament-overflow' v-bind:key="index + 'overflow'"></div>
+                        <div v-else
+                             class='tournament-entry tournament-empty' v-bind:key="index + 'empty'"></div>
+                    </transition>
+                </div>
+            </div>
         </div>
-        <div id='tournament-items'>
-            <div v-for='index in range(0, Math.max(tournamentSize, entrants))' class='tournament-range'>
-                <transition name='tournament-entry-t' tag='div' mode='out-in' appear>
-                    <div v-if='index < entrants && index < tournamentSize - 1'
-                         class='tournament-entry tournament-in-next' v-bind:key="index + 'in-next'"></div>
-                    <div v-else-if='index < entrants && index === tournamentSize - 1'
-                         class='tournament-entry tournament-last-slot' v-bind:key="index + 'last-slot'"></div>
-                    <div v-else-if='index > tournamentSize - 1'
-                         class='tournament-entry tournament-overflow' v-bind:key="index + 'overflow'"></div>
-                    <div v-else
-                         class='tournament-entry tournament-empty' v-bind:key="index + 'empty'"></div>
-                </transition>
+        <div v-if='anyBets' class='tournament-bets-container-inner'>
+            <div id='tournament-bets-label' class='drop-shadow'>
+                Bets
+            </div>
+            <div id='tournament-bets-items' class='drop-shadow'>
+                <div v-for='(bet, index) in bets' v-if='bet > 0' class='tournament-bet'
+                     v-bind:class="'tournament-bet-side-' + index">
+                    {{bet}}
+                </div>
             </div>
         </div>
     </div>
@@ -484,7 +543,14 @@
             el: '#tournament-container',
             data: {
                 entrants: 0,
-                tournamentSize: 16
+                tournamentSize: 16,
+                bets: [12312, 0, 400, 1]
+            },
+            computed: {
+                anyBets: function () {
+                    const nonzero = (b) => b > 0;
+                    return this.bets.some(nonzero);
+                }
             },
             methods:{
                 range : function (start, end) {

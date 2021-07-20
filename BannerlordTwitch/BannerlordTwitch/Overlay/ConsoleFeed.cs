@@ -88,7 +88,7 @@ namespace BLTOverlay
 }
 
 .bltconsole-text-style-general {
-    color: white;
+    color: #ddd;
 }
 
 .bltconsole-text-style-response {
@@ -100,8 +100,8 @@ namespace BLTOverlay
 }
 
 .bltconsole-text-style-internal {
-    color: gray;
-    font-size: 80%;
+    color: #bbb;
+    font-size: 85%;
 }
 
 .bltconsole-text-style-battle {
@@ -126,7 +126,7 @@ namespace BLTOverlay
     <div id='bltconsole-items'>
         <transition-group name='bltconsole-items-t' tag='div'>
             <div class='bltconsole-entry' v-for='item in items' v-bind:key='item.id'>
-                <div class='bltconsole-text' v-bind:class=""'bltconsole-text-style-' + item.style"">{{item.message}}</div>
+                <div class='bltconsole-text' v-bind:class=""'bltconsole-text-style-' + item.style"" v-html='item.message'></div>
             </div>
         </transition-group>
     </div>
@@ -135,46 +135,79 @@ namespace BLTOverlay
 $(function () {
     const bltConsole = new Vue({
         el: '#bltconsole-container',
-        data: { items: [] }
+        data: { 
+            items: [],
+            internalId: -1,
+        }
     });
     $.connection.hub.url = '$url_root$/signalr';
     $.connection.hub.error(function (error) {
         console.log('Overlay error: ' + error);
-        // bltConsole.items.push({ id: -1, message: 'Overlay error: ' + error, style: 'fail' });
+        // bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay error: ' + error, style: 'fail' });
     });
     $.connection.hub.starting(function () {
         console.log('Overlay starting');
-        bltConsole.items.push({ id: -1, message: 'Overlay starting', style: 'internal' });
+        bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay starting...', style: 'internal' });
     });
     $.connection.hub.connectionSlow(function () {
         console.log('Overlay connectionSlow');
-        bltConsole.items.push({ id: -1, message: 'Overlay connectionSlow', style: 'internal' });
+        bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay connection slow', style: 'internal' });
     });
     $.connection.hub.reconnecting(function () {
         console.log('Overlay reconnecting');
-        bltConsole.items.push({ id: -1, message: 'Overlay reconnecting', style: 'internal' });
+        bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay reconnecting...', style: 'internal' });
     });
     $.connection.hub.reconnected(function () {
         console.log('Overlay reconnected');
-        bltConsole.items.push({ id: -1, message: 'Overlay reconnected', style: 'internal' });
+        bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay reconnected', style: 'internal' });
     });
     $.connection.hub.disconnected(function () {
         console.log('Overlay disconnected');
-        bltConsole.items.push({ id: -1, message: 'Overlay disconnected', style: 'internal' });
+        bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay disconnected', style: 'internal' });
     });
     const consoleFeedHub = $.connection.consoleFeedHub;
+
+    function stringToHslColor(str, s, l) {
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        const h = hash % 360;
+        return 'hsl('+h+', '+s+'%, '+l+'%)';
+    }
+
     consoleFeedHub.client.addMessage = function (message) {
-        bltConsole.items.push(message);
+        const goldRegex = /(\d*⦷)/g;
+        const userNameRegex = /(@[a-zA-Z0-9]*:)/g;
+        const splitMessage = message.message
+            .split(goldRegex)
+            .map(s => s.split(userNameRegex))
+            .reduce((a, b) => a.concat(b))
+            .map(s => {
+                if(s.match(goldRegex)) 
+                    return ""<span class='drop-shadow gold-text-style'>"" + s + ""</span>"";
+                else if(s.match(userNameRegex)) {
+                    const nameColor = stringToHslColor(s, 80, 75);
+                    return ""<span class='drop-shadow username-text-style' style='color: "" + nameColor + ""'>"" + s + ""</span><span class='default-text-style drop-shadow'></span>"";
+                }
+                return ""<span class='default-text-style drop-shadow'>"" + s + ""</span>"";
+            });
+        const processedMessage = {
+            id: message.id,
+            message: splitMessage.join(''),
+            style: message.style
+        };
+        bltConsole.items.push(processedMessage);
         if(bltConsole.items.length > 100)
         {
             bltConsole.items.shift();
         }
-        console.log(message);
+        //console.log(processedMessage);
     };
     $.connection.hub.start().done(function () {
         console.log('BLT Console Hub connected');
     }).fail(function(){ 
-        bltConsole.items.push({ id: -1, message: 'BLT Console Hub started could not connect', style: 'fail' });
+        bltConsole.items.push({ id: bltConsole.internalId--, message: 'BLT Console Hub started could not connect', style: 'fail' });
         console.log('BLT Console Hub started could not connect'); 
     });
 });
