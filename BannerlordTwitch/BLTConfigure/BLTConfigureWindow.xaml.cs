@@ -24,6 +24,8 @@ using BannerlordTwitch;
 using BannerlordTwitch.Annotations;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using TaleWorlds.CampaignSystem;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 
@@ -528,7 +530,7 @@ namespace BLTConfigure
             e.PropertyItem.DisplayName = e.PropertyItem.DisplayName.SplitCamelCase();
         }
 
-        private void GenerateDocumentationButton_OnClick(object sender, RoutedEventArgs e)
+        private async void GenerateDocumentationButton_OnClick(object sender, RoutedEventArgs e)
         {
             if (Campaign.Current?.GameStarted != true)
             {
@@ -540,10 +542,11 @@ namespace BLTConfigure
             
             try
             {
+                GenerateDocumentationButton.IsEnabled = false;
                 GenerateDocumentationResult.Text = "Generating Documentation...";
                 var docs = new DocumentationGenerator();
-                docs.Document(EditedSettings);
-                docs.Save(DocsTitle, DocsIntroduction);
+                await docs.Document(EditedSettings);
+                await docs.SaveAsync(DocsTitle, DocsIntroduction);
                 GenerateDocumentationResult.Text = "Documentation Generation Complete";
                 GenerateDocumentationResult.Foreground = Brushes.Black;
             }
@@ -553,6 +556,8 @@ namespace BLTConfigure
                 GenerateDocumentationResult.Text =
                     $"Couldn't generate the documentation: {ex.Message}";
             }
+
+            GenerateDocumentationButton.IsEnabled = true;
         }
 
         private void OpenGeneratedDocumentationButton_OnClick(object sender, RoutedEventArgs e)
@@ -603,6 +608,20 @@ namespace BLTConfigure
             }
         }
 
+        private class ResponseFile
+        {
+            [UsedImplicitly]
+            public string path;
+        }
+        
+        private class ResponseFiles
+        {
+            [UsedImplicitly]
+            public string result;
+            [UsedImplicitly]
+            public ResponseFile[] files;
+        }
+        
         private async void UploadDocumentation_OnClick(object sender, RoutedEventArgs e)
         {
             if (!Directory.Exists(DocumentationGenerator.DocumentationRootDir))
@@ -625,6 +644,8 @@ namespace BLTConfigure
                 return;
             }
 
+            UploadDocumentationButton.IsEnabled = false;
+
             try
             {
                 using var httpClient = new HttpClient(new HttpClientHandler{UseProxy = false});
@@ -632,21 +653,50 @@ namespace BLTConfigure
                     Convert.ToBase64String(
                         Encoding.ASCII.GetBytes($"{NeocitiesUsername.Text}:{NeocitiesPassword.Password}")));
 
-                UploadStatus.Text = "Upload in progress (might take a few seconds or longer)...";
+                UploadStatus.Text = "Checking for existing files on the site...";
 
-                var form = new MultipartFormDataContent();
-                foreach (string f in files)
+                var filesResponse = await httpClient.GetAsync($"https://neocities.org/api/list");
+                filesResponse.EnsureSuccessStatusCode();
+
+                var result = JsonConvert.DeserializeObject<ResponseFiles>(await filesResponse.Content.ReadAsStringAsync());
+                var deleteList = result.files
+                    .Select(f => f.path)
+                    .Where(f => f.ToLower() != "index.html")
+                    .Select(f => new KeyValuePair<string, string>("filenames[]", f))
+                    .ToList();
+                if (deleteList.Any())
                 {
-                    string fileName = Path.GetFileName(f);
-                    var streamContent = new StreamContent(File.Open(f, FileMode.Open));
-                    streamContent.Headers.Add("Content-Type", MimeMapping.GetMimeMapping(fileName));
-                    streamContent.Headers.Add("Content-Disposition",
-                        $"form-data; name=\"{fileName}\"; filename=\"{fileName}\"");
-                    form.Add(streamContent, "file", fileName);
+                    UploadStatus.Text = "Deleting existing files from the site...";
+                    var deleteResponse = await httpClient.PostAsync($"https://neocities.org/api/delete",
+                        new FormUrlEncodedContent(deleteList));
+                    deleteResponse.EnsureSuccessStatusCode();
                 }
 
-                var response = await httpClient.PostAsync($"https://neocities.org/api/upload", form);
-                response.EnsureSuccessStatusCode();
+                UploadStatus.Text = "Upload in progress (might take a few seconds or longer)...";
+
+                const int chunkSize = 20;
+                int filesDone = 0;
+                while (filesDone < files.Length)
+                {
+                    UploadStatus.Text = $"Uploading {filesDone} / {files.Length}...";
+                    var chunk = files.Skip(filesDone).Take(chunkSize);
+                    filesDone += chunkSize;
+
+                    var form = new MultipartFormDataContent();
+                    foreach (string f in chunk)
+                    {
+                        string fileName = Path.GetFileName(f);
+                        var streamContent = new StreamContent(File.Open(f, FileMode.Open));
+                        streamContent.Headers.Add("Content-Type", MimeMapping.GetMimeMapping(fileName));
+                        streamContent.Headers.Add("Content-Disposition",
+                            $"form-data; name=\"{fileName}\"; filename=\"{fileName}\"");
+                        form.Add(streamContent, "file", fileName);
+                    }
+
+                    var response = await httpClient.PostAsync($"https://neocities.org/api/upload", form);
+                    response.EnsureSuccessStatusCode();
+                }
+
                 UploadStatus.Text = "Upload complete!";
             }
             catch (Exception ex)
@@ -654,6 +704,8 @@ namespace BLTConfigure
                 UploadStatus.Text = $"Error uploading: {ex.Message}";
                 UploadStatus.Foreground = ErrorStatusForeground;
             }
+
+            UploadDocumentationButton.IsEnabled = true;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

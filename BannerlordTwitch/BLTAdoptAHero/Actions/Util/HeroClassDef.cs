@@ -397,7 +397,7 @@ namespace BLTAdoptAHero
                 generator.TR(() =>
                 {
                     generator.TD("Equipment");
-                    foreach (var type in Weapons)
+                    foreach (var type in SlotItems)
                     {
                         generator.TD(() =>
                         {

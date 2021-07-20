@@ -260,7 +260,7 @@
                             <TextBlock DockPanel.Dock="Left" FontSize="16">Introduction</TextBlock>
                             <TextBox VerticalScrollBarVisibility="Visible" Margin="15 5" MinHeight="60" MaxHeight="120" Text="{Binding DocsIntroduction}" TextWrapping="Wrap" AcceptsReturn="True"/>
                             <WrapPanel Margin="15 5" Orientation="Horizontal">
-                                <Button Margin="0 0 15 0" HorizontalAlignment="Left" 
+                                <Button Name="GenerateDocumentationButton" Margin="0 0 15 0" HorizontalAlignment="Left" 
                                         Click="GenerateDocumentationButton_OnClick">Generate Documentation</Button>
                                 <Button Margin="0 0 15 0" HorizontalAlignment="Left" 
                                         Click="OpenGeneratedDocumentationButton_OnClick">Open Documentation</Button>
@@ -280,7 +280,7 @@
                                 Now you can click this button to upload the current contents of your documentation folder directly to your site,
                                 replacing whatever is currently there:
                             </TextBlock>
-                            <Button Margin="15 10" HorizontalAlignment="Left"
+                            <Button Name="UploadDocumentationButton" Margin="15 10" HorizontalAlignment="Left"
                                     Click="UploadDocumentation_OnClick">Upload Documentation</Button>
                             <TextBlock Margin="15 5" Name="UploadStatus"/>
                         </StackPanel>

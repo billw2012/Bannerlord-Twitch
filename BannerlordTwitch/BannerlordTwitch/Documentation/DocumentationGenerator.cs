@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -30,9 +31,11 @@ namespace BannerlordTwitch
         private static string CSSFileName = "Bannerlord-Twitch-Documentation.css";
         private static string CSSFullPath => Path.Combine(Path.GetDirectoryName(typeof(DocumentationGenerator).Assembly.Location) ?? ".", "..", "..", CSSFileName);
 
-        public void Document(IDocumentable documentable)
+        public async Task Document(IDocumentable documentable)
         {
-            MainThreadSync.Run(() => documentable.GenerateDocumentation(this));
+            // Make sure previous image writes are all complete or aborted
+            await WaitForPendingImagesAsync();
+            await MainThreadSync.RunWaitAsync(() => documentable.GenerateDocumentation(this));
         }
 
         public static string DocumentationRootDir => Path.Combine(
@@ -41,11 +44,12 @@ namespace BannerlordTwitch
 
         public static string DocumentationPath => Path.Combine(DocumentationRootDir, "index.html");
         
-        public void Save(string title, string introduction, bool addTOC = true)
+        public async Task SaveAsync(string title, string introduction, bool addTOC = true)
         {
-            MainThreadSync.Run(() => {
-                WaitForPendingImages();
-                
+            // Wait for image writes first
+            await WaitForPendingImagesAsync();
+
+            await MainThreadSync.RunWaitAsync(() => {
                 if (addTOC)
                 {
                     toc.InsertRange(0, new []
@@ -206,20 +210,33 @@ namespace BannerlordTwitch
         }
 
         private int imageId;
-        private readonly List<string> pendingImages = new();
+        private readonly ConcurrentDictionary<string, object> pendingImages = new();
 
-        private void WaitForPendingImages()
+        private async Task WaitForPendingImagesAsync()
         {
-            for (int i = 0; i < 100 && !pendingImages.All(File.Exists); i++)
+            for (int i = 0; i < 100 && !pendingImages.IsEmpty; i++)
             {
-                Thread.Sleep(100);
+                await Task.Delay(100);
             }
+            
+            pendingImages.Clear();
         }
 
         public IDocumentationGenerator Img(ItemObject item) => Img(null, item);
         public IDocumentationGenerator Img(string css, ItemObject item)
         {
             string localPath = AddImage(css, item.Name.ToString());
+            try
+            {
+                if (File.Exists(localPath))
+                    File.Delete(localPath);
+            }
+            catch
+            {
+                // ignored
+            }
+            pendingImages.TryAdd(localPath, null);
+
             #if e159 || e1510
             TableauCacheManager.Current.BeginCreateItemTexture(item, 
                 texture => TextureComplete(item.Name.ToString(), localPath, texture));
@@ -235,6 +252,17 @@ namespace BannerlordTwitch
         public IDocumentationGenerator Img(string css, CharacterCode cc, string altText)
         {
             string localPath = AddImage(css, altText);
+            try
+            {
+                if (File.Exists(localPath))
+                    File.Delete(localPath);
+            }
+            catch
+            {
+                // ignored
+            }
+            pendingImages.TryAdd(localPath, null);
+
             overrideRenderSettings = camera =>
             {
                 //camera.SetViewVolume(false, -500, 500, 0, 1000, -500, 500);
@@ -302,8 +330,6 @@ namespace BannerlordTwitch
             try
             {
                 string path = Path.Combine(DocumentationRootDir, localPath);
-
-                pendingImages.Add(localPath);
                 texture.TransformRenderTargetToResource(localPath);
                 texture.SaveToFile(localPath);
                 for (int i = 0; i < 100 && !File.Exists(localPath); i++)
@@ -318,8 +344,15 @@ namespace BannerlordTwitch
                     {
                         File.Delete(path);
                     }
-                    var corrected = SwapRedAndBlueChannels(new Bitmap(Path.GetFileName(path)));
-                    corrected.Save(path);
+
+                    // Scoped to make sure it gets closed and disposed
+                    using (var bitmap = new Bitmap(localPath))
+                    {
+                        var corrected = SwapRedAndBlueChannels(bitmap);
+                        corrected.Save(path);
+                    }
+
+                    File.Delete(localPath);
                 }
                 else
                 {
@@ -330,11 +363,13 @@ namespace BannerlordTwitch
             {
                 Log.Exception("Img", e);
             }
+
+            pendingImages.TryRemove(localPath, out _);
         }
 
         private string AddImage(string css, string name)
         {
-            string localPath = $"blt_img_{++imageId}.jpeg";
+            string localPath = $"blt_img_{++imageId}.png";
             if (File.Exists(localPath))
                 File.Delete(localPath);
             content.Add(css == null
