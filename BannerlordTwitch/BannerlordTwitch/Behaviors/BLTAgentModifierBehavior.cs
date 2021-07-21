@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Util;
 using dnlib.DotNet;
 using HarmonyLib;
@@ -215,7 +216,7 @@ namespace BannerlordTwitch
                     effectedAgents.Remove(agent);
                 }
 
-                if (newAgentScale != agent.AgentScale)
+                if (Math.Abs(newAgentScale - agent.AgentScale) > 1E-05)
                 {
                     SetAgentScale(agent, baseAgentScale, newAgentScale);
                 }
@@ -227,7 +228,9 @@ namespace BannerlordTwitch
 
         private static void SetAgentScale(Agent agent, float baseScale, float scale)
         {
-            AccessTools.Method(typeof(Agent), "SetInitialAgentScale").Invoke(agent, new []{ (object) scale });
+            AgentHelpers.SetAgentScale(agent, baseScale, scale);
+            
+            // AccessTools.Method(typeof(Agent), "SetInitialAgentScale").Invoke(agent, new []{ (object) scale });
             // // Doesn't have any affect...
             // AgentVisualsNativeData agentVisualsNativeData = agent.Monster.FillAgentVisualsNativeData();
             // AnimationSystemData animationSystemData = agent.Monster.FillAnimationSystemData(agent.Character.GetStepSize() * scale / baseScale , false);
