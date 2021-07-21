@@ -103,7 +103,7 @@ namespace BLTAdoptAHero.Powers
                 {
                     foreach (var item in Source.PowerDefs.Where(i => i is IHeroPowerPassive))
                     {
-                        col.Add(item.ID, item.ToString());
+                        col.Add(item.ID, item.ToString().Truncate(120));
                     }
                 }
 
@@ -122,7 +122,7 @@ namespace BLTAdoptAHero.Powers
                 {
                     foreach (var item in Source.PowerDefs.Where(i => i is IHeroPowerActive))
                     {
-                        col.Add(item.ID, item.ToString());
+                        col.Add(item.ID, item.ToString().Truncate(120));
                     }
                 }
 
