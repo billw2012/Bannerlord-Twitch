@@ -226,7 +226,6 @@ namespace BLTBuffet
             }
 
             private readonly Dictionary<Agent, float[]> agentDrivenPropertiesCache = new();
-            private readonly Dictionary<Agent, float> agentBaseScaleCache = new();
 
             public override void OnMissionTick(float dt)
             {
@@ -275,13 +274,6 @@ namespace BLTBuffet
                             }
                         }
 
-                        if (!agentBaseScaleCache.TryGetValue(agent, out float baseAgentScale))
-                        {
-                            agentBaseScaleCache.Add(agent, agent.AgentScale);
-                            baseAgentScale = agent.AgentScale;
-                        }
-
-                        float newAgentScale = baseAgentScale;
                         // Now update the dynamic properties
                         agent.UpdateAgentProperties();
                         // Then apply our effects as a stack
@@ -292,13 +284,6 @@ namespace BLTBuffet
                             {
                                 agentEffects.Value.Remove(effect);
                             }
-
-                            newAgentScale *= effect.config.Scale ?? 1;
-                        }
-
-                        if (newAgentScale != agent.AgentScale)
-                        {
-                            SetAgentScale(agent, baseAgentScale, newAgentScale);
                         }
 
                         // Finally commit our modified values to the engine

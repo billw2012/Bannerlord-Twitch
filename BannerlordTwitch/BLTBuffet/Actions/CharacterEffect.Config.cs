@@ -119,9 +119,6 @@ namespace BLTBuffet
             [Description("Will target unmounted soldiers only"), PropertyOrder(3)]
             public bool TargetOnFootOnly { get; set; }
 
-            [Description("Scaling of the target"), PropertyOrder(4)]
-            public float? Scale { get; set; }
-
             [Description("Particle effects to apply"), PropertyOrder(5)]
             public List<ParticleEffectDef> ParticleEffects { get; set; }
 
