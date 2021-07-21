@@ -24,7 +24,7 @@ namespace BannerlordTwitch.Util
             if (registry.TryGetValue(objHandle, out var id))
                 return id;
             else
-                return Set(objHandle, Guid.NewGuid());
+                return Set(obj, Guid.NewGuid());
         }
     }
 }
