@@ -75,7 +75,7 @@ public static class LINQExtensions
     }
 
     public static IEnumerable<(EquipmentElement element, EquipmentIndex index)> YieldFilledWeaponSlots(this Equipment equipment) 
-        => equipment.YieldWeaponSlots().Where(s => !s.element.IsEmpty).Select(s => s);
+        => equipment.YieldWeaponSlots().Where(s => !s.element.IsEmpty);
 
     public static IEnumerable<(EquipmentElement element, EquipmentIndex index)> YieldArmorSlots(this Equipment equipment)
     {

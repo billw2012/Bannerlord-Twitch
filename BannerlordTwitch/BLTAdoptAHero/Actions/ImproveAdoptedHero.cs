@@ -88,18 +88,16 @@ namespace BLTAdoptAHero
                 
                 // Equipment skills     weight x 2
                 selectedSkills.AddRange(hero.BattleEquipment
-                    .YieldWeaponSlots()
-                    .Select(w => w.element.Item)
-                    .Where(i => i != null)
-                    .SelectMany(i => i.Weapons?.Select(w => w.RelevantSkill))
+                    .YieldFilledWeaponSlots()
+                    .SelectMany(s => s.element.Item.Weapons?.Select(w => w.RelevantSkill) ?? Enumerable.Empty<SkillObject>())
                     .Distinct()
-                    .Where(s => selectedSkills.All(s2 => s2.skill != s))
+                    .Except(selectedSkills.Select(s => s.skill))
                     .Select(skill => (skill, weight: 4f))
                 );
 
                 // Other skills         weight x 1
                 selectedSkills.AddRange(HeroHelpers.AllSkillObjects
-                    .Where(s => selectedSkills.All(s2 => s2.skill != s))
+                    .Except(selectedSkills.Select(s => s.skill))
                     .Select(skill => (skill, weight: 1f))
                 );
             }

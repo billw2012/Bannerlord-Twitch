@@ -111,10 +111,9 @@ namespace BLTAdoptAHero
                 {
                     yield return DefaultSkills.Riding;
                 }
-                else
-                {
-                    yield return DefaultSkills.Athletics;
-                }
+
+                // Everyone gets athletics
+                yield return DefaultSkills.Athletics;
             }
         }
 
