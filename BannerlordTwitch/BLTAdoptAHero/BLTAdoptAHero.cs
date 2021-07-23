@@ -1,4 +1,5 @@
-﻿using BannerlordTwitch.Rewards;
+﻿using System.Linq;
+using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Powers;
 using BLTAdoptAHero.UI;
@@ -84,7 +85,7 @@ namespace BLTAdoptAHero
         // ReSharper disable once RedundantAssignment
         public static void MissionNameMarkerVMConstructorPostfix(MissionNameMarkerVM __instance, Mission mission, ref Vec3 ____heightOffset)
         {
-            ____heightOffset = new Vec3(0, 0, 4, -1);
+            ____heightOffset = new (0, 0, 4);
         }
 
         [UsedImplicitly, HarmonyPatch(typeof(DefaultClanTierModel), nameof(DefaultClanTierModel.GetCompanionLimit))]
@@ -94,7 +95,6 @@ namespace BLTAdoptAHero
             {
                 __result = Clan.PlayerClan.Companions.Count + 1;
             }
-            return;
         }
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
@@ -120,6 +120,8 @@ namespace BLTAdoptAHero
                 campaignStarter.AddBehavior(new BLTAdoptAHeroCampaignBehavior());
                 campaignStarter.AddBehavior(new BLTTournamentQueueBehavior());
                 campaignStarter.AddBehavior(new BLTCustomItemsCampaignBehavior());
+                
+                gameStarterObject.AddModel(new BLTAgentStatCalculateModel(gameStarterObject.Models.OfType<AgentStatCalculateModel>().FirstOrDefault()));
             }
         }
         
@@ -143,5 +145,80 @@ namespace BLTAdoptAHero
         }
 
         internal const string Tag = "[BLT]";
+    }
+
+    public class BLTAgentStatCalculateModel : SandboxAgentStatCalculateModel
+    {
+        private readonly AgentStatCalculateModel previousModel;
+        
+        public BLTAgentStatCalculateModel(AgentStatCalculateModel previousModel)
+        {
+            this.previousModel = previousModel;
+        }
+
+        public override void InitializeAgentStats(Agent agent, Equipment spawnEquipment, AgentDrivenProperties agentDrivenProperties,
+            AgentBuildData agentBuildData)
+        {
+            previousModel.InitializeAgentStats(agent, spawnEquipment, agentDrivenProperties, agentBuildData);
+        }
+
+        public override void InitializeMissionEquipment(Agent agent)
+        {
+            previousModel.InitializeMissionEquipment(agent);
+        }
+
+        public override void UpdateAgentStats(Agent agent, AgentDrivenProperties agentDrivenProperties)
+        {
+            // Our EffectiveSkill override is called from UpdateAgentStats
+            if(IsTournamentHero(agent.Character, out _))
+                base.UpdateAgentStats(agent, agentDrivenProperties);
+            else
+                previousModel.UpdateAgentStats(agent, agentDrivenProperties);
+        }
+
+        public override float GetDifficultyModifier()
+        {
+            return previousModel.GetDifficultyModifier();
+        }
+
+        public override float GetEffectiveMaxHealth(Agent agent)
+        {
+            return previousModel.GetEffectiveMaxHealth(agent);
+        }
+
+        public override float GetWeaponInaccuracy(Agent agent, WeaponComponentData weapon, int weaponSkill)
+        {
+            return previousModel.GetWeaponInaccuracy(agent, weapon, weaponSkill);
+        }
+
+        public override float GetInteractionDistance(Agent agent)
+        {
+            return previousModel.GetInteractionDistance(agent);
+        }
+
+        public override float GetMaxCameraZoom(Agent agent)
+        {
+            return previousModel.GetMaxCameraZoom(agent);
+        }
+
+        public override int GetEffectiveSkill(BasicCharacterObject agentCharacter, IAgentOriginBase agentOrigin, Formation agentFormation,
+            SkillObject skill)
+        {
+            int baseModifiedSkill = previousModel.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill);
+            return IsTournamentHero(agentCharacter, out var co) 
+                ? BLTTournamentSkillAdjustBehavior.GetModifiedSkill(co.HeroObject, skill, baseModifiedSkill) 
+                : baseModifiedSkill;
+        }
+
+        private static bool IsTournamentHero(BasicCharacterObject agentCharacter, out CharacterObject characterObject)
+        {
+            characterObject = agentCharacter as CharacterObject;
+            return MissionHelpers.InTournament() && characterObject?.HeroObject?.IsAdopted() == true;
+        }
+
+        public override string GetMissionDebugInfoForAgent(Agent agent)
+        {
+            return previousModel.GetMissionDebugInfoForAgent(agent);
+        }
     }
 }

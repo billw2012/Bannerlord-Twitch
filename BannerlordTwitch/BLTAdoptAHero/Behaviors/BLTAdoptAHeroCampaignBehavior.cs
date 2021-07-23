@@ -558,6 +558,11 @@ namespace BLTAdoptAHero
                 BLTAdoptAHeroCommonMissionBehavior.Current.ApplyAchievementRewards(hero, achievement.GoldGain, achievement.XPGain);
             }
         }
+
+        public int GetAchievementStat(Hero hero, AchievementSystem.AchievementTypes type)
+        {
+            return GetHeroData(hero)?.AchievementInfo?.GetValue(type) ?? 0;
+        }
         #endregion
 
         #region Equipment
@@ -695,7 +700,7 @@ namespace BLTAdoptAHero
             // first fill in any missing ones
             if (heroRetinue.Count < settings.MaxRetinueSize)
             {
-                var troopType = MBObjectManager.Instance.GetObjectTypeList<CultureObject>()
+                var troopType = HeroHelpers.AllCultures
                     .Where(c => settings.IncludeBanditUnits || c.IsMainCulture)
                     .SelectMany(c =>
                     {

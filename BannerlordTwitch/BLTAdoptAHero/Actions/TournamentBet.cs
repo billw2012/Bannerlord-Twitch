@@ -44,7 +44,7 @@ namespace BLTAdoptAHero
             }
             
             string team = parts[nameIdx].ToLower();
-            (bool success, string failReason) = BLTBetMissionBehavior.Current?.PlaceBet(adoptedHero, team, gold) 
+            (bool success, string failReason) = BLTTournamentBetMissionBehavior.Current?.PlaceBet(adoptedHero, team, gold) 
                                                 ?? (false, "Betting not active");
             if (!success)
             {

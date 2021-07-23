@@ -4,6 +4,7 @@ using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
+using TaleWorlds.ObjectSystem;
 
 namespace BLTAdoptAHero.Actions.Util
 {
@@ -70,5 +71,7 @@ namespace BLTAdoptAHero.Actions.Util
 
         public static IEnumerable<Hero> AliveHeroes => Campaign.Current.AliveHeroes;
         public static IEnumerable<Hero> AllHeroes => AliveHeroes.Concat(DeadOrDisabledHeroes).Distinct();
+
+        public static IEnumerable<CultureObject> AllCultures => MBObjectManager.Instance.GetObjectTypeList<CultureObject>();
     }
 }

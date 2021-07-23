@@ -451,16 +451,21 @@ namespace BLTAdoptAHero
             }
             else
             {
-                // This should order the tier groups to be
-                // (closest tier below the desired one), (closest tier above the desired one), etc...
-                var tieredItems = items.GroupBy(item => (int) item.Tier)
-                    .OrderBy(t => 100 * Math.Abs(tier - t.Key) + t.Key)
-                    .ToList();
-
-                return tieredItems
-                    .FirstOrDefault()?
-                    .SelectRandom();
+                return FindRandomItemNearestTier(items, tier);
             }
+        }
+
+        public static ItemObject FindRandomItemNearestTier(IEnumerable<ItemObject> items, int tier)
+        {
+            // This should order the tier groups to be
+            // (closest tier below the desired one), (closest tier above the desired one), etc...
+            var tieredItems = items.GroupBy(item => (int) item.Tier)
+                .OrderBy(t => 100 * Math.Abs(tier - t.Key) + t.Key)
+                .ToList();
+
+            return tieredItems
+                .FirstOrDefault()?
+                .SelectRandom();
         }
 
         public static bool CanUseItem(ItemObject item, Hero hero, bool overrideAbility)

@@ -202,36 +202,55 @@ namespace BLTAdoptAHero
                 var affectedHero = affectedAgent.GetAdoptedHero();
                 if (affectedHero != null)
                 {
-                    Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectedHero} was made {agentState} by {affectorAgent?.Name ?? "unknown"}");
-                    ApplyKilledEffects(
-                        affectedHero, affectorAgent, agentState,
-                        BLTAdoptAHeroModule.CommonConfig.XPPerKilled,
-                        Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),
-                        BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,
-                        BLTAdoptAHeroModule.CommonConfig.LevelScalingCap
-                    );
-                    ResetKillStreak(affectedHero);
-                    BLTAdoptAHeroCampaignBehavior.Current.IncreaseHeroDeaths(affectedHero);
+                    Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectedHero} was made " +
+                              $"{agentState} by {affectorAgent?.Name ?? "unknown"}");
+
+                    if (!BLTAdoptAHeroModule.TournamentConfig.DisableKillRewardsInTournament ||
+                        !MissionHelpers.InTournament())
+                    {
+                        ApplyKilledEffects(
+                            affectedHero, affectorAgent, agentState,
+                            BLTAdoptAHeroModule.CommonConfig.XPPerKilled,
+                            Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),
+                            BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,
+                            BLTAdoptAHeroModule.CommonConfig.LevelScalingCap
+                        );
+                    }
+
+                    if (!BLTAdoptAHeroModule.TournamentConfig.DisableTrackingKillsTournament ||
+                        !MissionHelpers.InTournament())
+                    {
+                        ResetKillStreak(affectedHero);
+                        BLTAdoptAHeroCampaignBehavior.Current.IncreaseHeroDeaths(affectedHero);
+                    }
+
                     GetHeroMissionState(affectedHero).LastAgentState = agentState;
                 }
 
                 var affectorHero = affectorAgent.GetAdoptedHero();
                 if (affectorHero != null)
                 {
-                    float horseFactor = affectedAgent?.IsHuman == false ? 0.25f : 1;
-                    Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectorHero} made {affectedAgent?.Name ?? "unknown"} {agentState}");
-                    ApplyKillEffects(
-                        affectorHero, affectorAgent, affectedAgent, agentState,
-                        (int) (BLTAdoptAHeroModule.CommonConfig.GoldPerKill * horseFactor),
-                        (int) (BLTAdoptAHeroModule.CommonConfig.HealPerKill * horseFactor),
-                        (int) (BLTAdoptAHeroModule.CommonConfig.XPPerKill * horseFactor),
-                        Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),
-                        BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,
-                        BLTAdoptAHeroModule.CommonConfig.LevelScalingCap
-                    );
+                    Log.Trace($"[{nameof(BLTAdoptAHeroCommonMissionBehavior)}] {affectorHero} made " +
+                              $"{affectedAgent?.Name ?? "unknown"} {agentState}");
 
-                    //UpdateHeroVM(affectorAgent);
-                    if (affectedAgent?.IsHuman == true && agentState is AgentState.Unconscious or AgentState.Killed)
+                    if (!BLTAdoptAHeroModule.TournamentConfig.DisableKillRewardsInTournament ||
+                        !MissionHelpers.InTournament())
+                    {
+                        float horseFactor = affectedAgent?.IsHuman == false ? 0.25f : 1;
+                        ApplyKillEffects(
+                            affectorHero, affectorAgent, affectedAgent, agentState,
+                            (int) (BLTAdoptAHeroModule.CommonConfig.GoldPerKill * horseFactor),
+                            (int) (BLTAdoptAHeroModule.CommonConfig.HealPerKill * horseFactor),
+                            (int) (BLTAdoptAHeroModule.CommonConfig.XPPerKill * horseFactor),
+                            Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),
+                            BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,
+                            BLTAdoptAHeroModule.CommonConfig.LevelScalingCap
+                        );
+                    }
+
+                    if (affectedAgent?.IsHuman == true && agentState is AgentState.Unconscious or AgentState.Killed 
+                        && (!BLTAdoptAHeroModule.TournamentConfig.DisableTrackingKillsTournament 
+                            || !MissionHelpers.InTournament()))
                     {
                         GetHeroMissionState(affectorHero).Kills++;
                         AddKillStreak(affectorHero);
@@ -434,8 +453,8 @@ namespace BLTAdoptAHero
                 GetHeroMissionState(hero).WonXP += xpPerKill;
             }
         }
-        
-        public void ApplyKilledEffects(Hero hero, Agent killer, AgentState state, int xpPerKilled, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
+
+        private void ApplyKilledEffects(Hero hero, Agent killer, AgentState state, int xpPerKilled, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
         {
             xpPerKilled = (int) (xpPerKilled * subBoost);
 

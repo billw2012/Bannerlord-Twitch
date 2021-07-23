@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using System;
 using BannerlordTwitch.Util;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Actions.Util
 {

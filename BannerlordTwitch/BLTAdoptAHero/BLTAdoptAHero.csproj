@@ -188,11 +188,14 @@
     <Compile Include="Behaviors\BLTAdoptAHeroCampaignBehavior.cs" />
     <Compile Include="Behaviors\BLTAdoptAHeroCommonMissionBehavior.cs" />
     <Compile Include="Behaviors\BLTAdoptAHeroCustomMissionBehavior.cs" />
+    <Compile Include="Behaviors\BLTTournamentBetMissionBehavior.cs" />
     <Compile Include="Behaviors\BLTCustomItemsCampaignBehavior.cs" />
     <Compile Include="Behaviors\BLTHeroPowersMissionBehavior.cs" />
     <Compile Include="Behaviors\BLTRemoveAgentsBehavior.cs" />
     <Compile Include="Behaviors\BLTSummonBehavior.cs" />
+    <Compile Include="Behaviors\BLTTournamentMissionBehavior.cs" />
     <Compile Include="Behaviors\BLTTournamentQueueBehavior.cs" />
+    <Compile Include="Behaviors\BLTTournamentSkillAdjustBehavior.cs" />
     <Compile Include="BLTAdoptAHero.cs" />
     <Compile Include="GlobalConfigs\GlobalCommonConfig.cs" />
     <Compile Include="GlobalConfigs\GlobalHeroClassConfig.cs" />
@@ -211,6 +214,7 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\MissionInfoHub.cs" />
+    <Compile Include="UI\TournamentHub.cs" />
     <Compile Include="Util\AgentExtensions.cs" />
     <Compile Include="Util\ConsoleCommands.cs" />
     <Compile Include="Util\HeroExtensions.cs" />

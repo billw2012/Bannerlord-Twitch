@@ -4,7 +4,7 @@ using TaleWorlds.MountAndBlade;
 
 namespace BannerlordTwitch.Util
 {
-    public abstract class AutoMissionBehavior<T> : MissionBehaviour where T : MissionBehaviour, new()
+    public abstract class AutoMissionBehavior<T> : MissionBehaviour where T : MissionBehaviour
     {
         public override MissionBehaviourType BehaviourType => MissionBehaviourType.Other;
 
@@ -26,18 +26,35 @@ namespace BannerlordTwitch.Util
 #endif
         }
         
-        protected static void StaticSafeCall(Type callerType, Action a, [CallerMemberName]string fnName = "")
+        protected static void SafeCallStatic(Action a, [CallerMemberName]string fnName = "")
         {
 #if !DEBUG
             try
             {
 #endif
-                a();
+            a();
 #if !DEBUG
             }
             catch (Exception e)
             {
-                Log.Exception($"{callerType.Name}.{fnName}", e);
+                Log.Exception($"{typeof(T).Name}.{fnName}", e);
+            }
+#endif
+        }
+        
+        protected static U SafeCallStatic<U>(Func<U> a, bool def, [CallerMemberName]string fnName = "")
+        {
+#if !DEBUG
+            try
+            {
+#endif
+            return a();
+#if !DEBUG
+            }
+            catch (Exception e)
+            {
+                Log.Exception($"{typeof(T).Name}.{fnName}", e);
+                return def;
             }
 #endif
         }

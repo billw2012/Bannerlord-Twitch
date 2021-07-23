@@ -91,14 +91,18 @@ namespace BLTAdoptAHero
         public bool Mounted => UseHorse || UseCamel;
         
         [YamlIgnore, Browsable(false)]
+        public IEnumerable<SkillObject> WeaponSkills =>
+            SkillGroup.GetSkillsForEquipmentType(SlotItems)
+                .Where(s => s != SkillsEnum.None)
+                .Select(SkillGroup.GetSkill)
+                .Distinct();
+
+        [YamlIgnore, Browsable(false)]
         public IEnumerable<SkillObject> Skills
         {
             get
             {
-                foreach (var skill in SkillGroup.GetSkillsForEquipmentType(SlotItems)
-                    .Where(s => s != SkillsEnum.None)
-                    .Select(SkillGroup.GetSkill)
-                    .Distinct())
+                foreach (var skill in WeaponSkills)
                 {
                     yield return skill;
                 }
