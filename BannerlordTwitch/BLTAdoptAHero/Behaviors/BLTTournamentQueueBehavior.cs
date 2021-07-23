@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Bannerlord.ButterLib.SaveSystem.Extensions;
+using BannerlordTwitch.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -181,7 +182,7 @@ namespace BLTAdoptAHero
             }
             catch (Exception e)
             {
-                Log.Exception($"{typeof(BLTTournamentQueueBehavior).Name}.{fnName}", e);
+                Log.Exception($"{nameof(BLTTournamentQueueBehavior)}.{fnName}", e);
             }
 #endif
         }

@@ -241,6 +241,7 @@ namespace BLTAdoptAHero
          ExpandableObject,UsedImplicitly, Document]
         public RoundRewardsDef Round4Rewards { get; set; } = new() { WinGold = 0, WinXP = 0, LoseXP = 0 };
 
+        [YamlIgnore, Browsable(false)]
         public RoundRewardsDef[] RoundRewards => new[] { Round1Rewards, Round2Rewards, Round3Rewards, Round4Rewards };
         #endregion
 

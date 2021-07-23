@@ -42,7 +42,7 @@ namespace BannerlordTwitch.Util
 #endif
         }
         
-        protected static U SafeCallStatic<U>(Func<U> a, bool def, [CallerMemberName]string fnName = "")
+        protected static U SafeCallStatic<U>(Func<U> a, U def, [CallerMemberName]string fnName = "")
         {
 #if !DEBUG
             try

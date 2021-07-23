@@ -152,7 +152,6 @@ Rewards:
     Name: Healing
     Target: Player
     TargetOnFootOnly: false
-    Scale: 
     ParticleEffects:
     - Name: psys_bug_fly_1
       AttachPoint: OnBody
@@ -188,7 +187,6 @@ Rewards:
     Name: Giant
     Target: AdoptedHero
     TargetOnFootOnly: false
-    Scale: 1.75
     ParticleEffects: []
     Properties:
     - Name: ArmorHead
@@ -240,7 +238,6 @@ Rewards:
     Name: Baby
     Target: AdoptedHero
     TargetOnFootOnly: false
-    Scale: 0.660000026
     ParticleEffects: []
     Properties:
     - Name: ArmorHead
@@ -289,7 +286,6 @@ Rewards:
     Name: Titan
     Target: EnemyTeam
     TargetOnFootOnly: true
-    Scale: 2.5
     ParticleEffects:
     - Name: psys_campfire
       AttachPoint: OnBody
@@ -431,7 +427,6 @@ Rewards:
     Name: 
     Target: Player
     TargetOnFootOnly: false
-    Scale: 
     ParticleEffects:
     - Name: psys_campfire
       AttachPoint: OnBody
@@ -473,7 +468,6 @@ Rewards:
     Name: Healing
     Target: AdoptedHero
     TargetOnFootOnly: false
-    Scale: 
     ParticleEffects: 
     Properties: 
     HealPerSecond: 3
@@ -547,6 +541,8 @@ Commands:
     ShowCivilianInventory: false
     ShowRetinue: true
     ShowRetinueList: false
+    ShowAchievements: false
+    ShowTrackedStats: false
   Documentation: 
 - Name: inv
   HideHelp: false
@@ -568,6 +564,8 @@ Commands:
     ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: false
+    ShowAchievements: false
+    ShowTrackedStats: false
   Documentation: 
 - Name: equip
   HideHelp: false
@@ -659,6 +657,8 @@ Commands:
     ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: false
+    ShowAchievements: false
+    ShowTrackedStats: false
   Documentation: ''
 - Name: retinuelist
   HideHelp: false
@@ -680,6 +680,8 @@ Commands:
     ShowCivilianInventory: false
     ShowRetinue: false
     ShowRetinueList: true
+    ShowAchievements: false
+    ShowTrackedStats: false
   Documentation: 
 - Name: adopt
   HideHelp: false
@@ -752,6 +754,29 @@ Commands:
   RespondInOverlay: true
   HandlerConfig: 
   Documentation: 
+- Name: ach
+  HideHelp: false
+  Help: achievements
+  Handler: HeroInfoCommand
+  ID: 6b05f682-afe1-45e2-ba68-e6ee086ee412
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
+  HandlerConfig:
+    ShowGold: false
+    ShowGeneral: false
+    ShowTopSkills: false
+    MinSkillToShow: 100
+    ShowAttributes: false
+    ShowEquipment: false
+    ShowInventory: false
+    ShowStorage: false
+    ShowCivilianInventory: false
+    ShowRetinue: false
+    ShowRetinueList: false
+    ShowAchievements: true
+    ShowTrackedStats: true
+  Documentation: Show the heroes achievements and tracked stats
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -850,21 +875,61 @@ GlobalConfigs:
 - Id: Adopt A Hero - Tournament Config
   Config:
     StartHealthMultiplier: 2
+    DisableKillRewardsInTournament: true
+    DisableTrackingKillsTournament: true
     NoHorses: true
     NoSpears: true
     NormalizeArmor: true
-    NormalizeArmorTier: 4
-    EnableBetting: true
-    BettingOnFinalOnly: true
+    NormalizeArmorTier: 6
+    RandomizeWeaponTypes: true
+    PreviousWinnerDebuffs:
+    - Skill: All
+      SkillReductionPercentPerWin: 3.20000005
+      FloorPercent: 65
+    Round1Type:
+      EnableVanilla: true
+      Enable1Match4Teams: false
+      Enable2Match2Teams: false
+      Enable2Match4Teams: false
+      Enable4Match2Teams: false
+      Enable4Match4Teams: false
+      Enable8Match2Teams: false
+    Round2Type:
+      EnableVanilla: true
+      Enable1Match2Teams: false
+      Enable1Match4Teams: false
+      Enable2Match2Teams: false
+      Enable2Match4Teams: false
+      Enable4Match2Teams: false
+    Round3Type:
+      EnableVanilla: true
+      Enable1Match2Teams: false
+      Enable1Match4Teams: false
+      Enable2Match2Teams: false
+    Round1Rewards:
+      WinGold: 5000
+      WinXP: 5000
+      LoseXP: 5000
+    Round2Rewards:
+      WinGold: 7500
+      WinXP: 7500
+      LoseXP: 7500
+    Round3Rewards:
+      WinGold: 10000
+      WinXP: 10000
+      LoseXP: 10000
+    Round4Rewards:
+      WinGold: 0
+      WinXP: 0
+      LoseXP: 0
     WinGold: 50000
     WinXP: 50000
     ParticipateXP: 10000
-    WinMatchGold: 10000
-    WinMatchXP: 10000
-    ParticipateMatchXP: 2500
+    EnableBetting: true
+    BettingOnFinalOnly: true
     PrizeWeaponWeight: 1
     PrizeArmorWeight: 1
-    PrizeMountWeight: 0.200000003
+    PrizeMountWeight: 0.5
     PrizeTier1Weight: 0
     PrizeTier2Weight: 0
     PrizeTier3Weight: 0
