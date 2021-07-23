@@ -39,6 +39,10 @@ namespace BLTAdoptAHero
             public bool ShowRetinue { get; set; }
             [Description("Shows the exact classes and counts of the retinue of the hero"), PropertyOrder(9), UsedImplicitly]
             public bool ShowRetinueList { get; set; }
+            [Description("Shows all hero achievements"), PropertyOrder(10), UsedImplicitly]
+            public bool ShowAchievements { get; set; }
+            [Description("Shows all hero tracked stats (kills, deaths, summons, attacks, tournament wins etc.)"), PropertyOrder(11), UsedImplicitly]
+            public bool ShowTrackedStats { get; set; }
             
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
@@ -53,6 +57,8 @@ namespace BLTAdoptAHero
                 if(ShowStorage) shows.Add($"Custom item storage");
                 if(ShowRetinue) shows.Add($"Retinue count and average tier");
                 if(ShowRetinueList) shows.Add($"Retinue unit list");
+                if(ShowAchievements) shows.Add($"Achievements");
+                if(ShowTrackedStats) shows.Add($"Tracked stats");
                 generator.PropertyValuePair("Shows", string.Join(", ", shows));
             }
         }
@@ -97,8 +103,8 @@ namespace BLTAdoptAHero
                 
                 if (settings.ShowTopSkills)
                 {
-                    infoStrings.Add($"Lvl {adoptedHero.Level}");
-                    infoStrings.Add("Skills " + string.Join("■", 
+                    infoStrings.Add($"[LVL] {adoptedHero.Level}");
+                    infoStrings.Add("[SKILLS] " + string.Join("■", 
                         HeroHelpers.AllSkillObjects
                             .Where(s => adoptedHero.GetSkillValue(s) >= settings.MinSkillToShow)
                             .OrderByDescending(s => adoptedHero.GetSkillValue(s))
@@ -109,13 +115,13 @@ namespace BLTAdoptAHero
                 
                 if (settings.ShowAttributes)
                 {
-                    infoStrings.Add("Attr " + string.Join("■", HeroHelpers.AllAttributes
+                    infoStrings.Add("[ATTR] " + string.Join("■", HeroHelpers.AllAttributes
                         .Select(a => $"{HeroHelpers.GetShortAttributeName(a)} {adoptedHero.GetAttributeValue(a)}")));
                 }
                 
                 if (settings.ShowEquipment)
                 {
-                    infoStrings.Add($"Equip Tier {BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero) + 1}");
+                    infoStrings.Add($"[TIER] {BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero) + 1}");
                     var cl = BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentClass(adoptedHero);
                     infoStrings.Add($"{cl?.Name ?? "No Equip Class"}");
                 }
@@ -150,21 +156,60 @@ namespace BLTAdoptAHero
                     if (retinue.Count > 0)
                     {
                         double tier = retinue.Average(r => r.Tier);
-                        infoStrings.Add($"Retinue {retinue.Count} (avg Tier {tier:0.#})");
+                        infoStrings.Add($"[RETINUE] {retinue.Count} (avg Tier {tier:0.#})");
                     }
                     else
                     {
-                        infoStrings.Add($"Retinue None");
+                        infoStrings.Add($"[RETINUE] None");
                     }
                 }
 
                 if (settings.ShowRetinueList)
                 {
-                    var retinue = BLTAdoptAHeroCampaignBehavior.Current.GetRetinue(adoptedHero).GroupBy(r => r).ToList();
-                    foreach (var r in retinue.OrderBy(r => r.Key.Tier))
+                    var retinue = BLTAdoptAHeroCampaignBehavior.Current
+                        .GetRetinue(adoptedHero)
+                        .GroupBy(r => r)
+                        .OrderBy(r => r.Key.Tier)
+                        .ToList();
+                    foreach (var r in retinue)
                     {
                         infoStrings.Add(r.Count() > 1 ? $"{r.Key.Name} x {r.Count()}" : $"{r.Key.Name}");
                     }
+                }
+                
+                if (settings.ShowAchievements)
+                {
+                    var achievements = BLTAdoptAHeroCampaignBehavior.Current
+                        .GetAchievements(adoptedHero)
+                        .ToList();
+                    if (achievements.Any())
+                    {
+                        infoStrings.Add($"[ACHIEV] " + string.Join("■", achievements
+                            .Select(e => e.Name)));
+                    }
+                    else
+                    {
+                        infoStrings.Add($"[ACHIEV] None");
+                    }
+                }
+
+                if (settings.ShowTrackedStats)
+                {
+                    var achievementList = new List<(string shortName, AchievementSystem.AchievementTypes id)>
+                    {
+                        ("K", AchievementSystem.AchievementTypes.TotalKills),
+                        ("D", AchievementSystem.AchievementTypes.Deaths),
+                        ("K Vwr", AchievementSystem.AchievementTypes.TotalBLTKills),
+                        ("K Strmr", AchievementSystem.AchievementTypes.TotalMainKills),
+                        ("Sums", AchievementSystem.AchievementTypes.Summons),
+                        ("Atks", AchievementSystem.AchievementTypes.Attacks),
+                        ("Tour L", AchievementSystem.AchievementTypes.TotalTournamentLosses),
+                        ("Tour Rnd W", AchievementSystem.AchievementTypes.TotalTournamentWins),
+                        ("Tour W", AchievementSystem.AchievementTypes.TotalTournamentChampionships),
+                    };
+                    infoStrings.Add($"[STATS] " + string.Join("■", achievementList.Select(a =>
+                        $"{a.shortName}: {BLTAdoptAHeroCampaignBehavior.Current.GetAchievementStat(adoptedHero, a.id)}"
+                        )));
                 }
             }
             ActionManager.SendReply(context, infoStrings.ToArray());

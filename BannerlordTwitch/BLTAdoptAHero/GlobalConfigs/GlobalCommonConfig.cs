@@ -217,6 +217,8 @@ namespace BLTAdoptAHero
         #region Achievements
         [Category("Achievements"), Description("Achievements"), PropertyOrder(1), UsedImplicitly]
         public List<AchievementSystem> Achievements { get; set; } = new();
+
+        public AchievementSystem GetAchievement(Guid id) => Achievements?.FirstOrDefault(a => a.ID == id) ?? null;
         #endregion
 
         [YamlIgnore, Browsable(false)]

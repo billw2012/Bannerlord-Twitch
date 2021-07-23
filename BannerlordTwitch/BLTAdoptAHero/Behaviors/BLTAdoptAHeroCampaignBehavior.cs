@@ -13,6 +13,7 @@ using BannerlordTwitch.Annotations;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
 using Helpers;
+using TaleWorlds.AchievementSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.SaveSystem;
@@ -559,10 +560,15 @@ namespace BLTAdoptAHero
             }
         }
 
-        public int GetAchievementStat(Hero hero, AchievementSystem.AchievementTypes type)
-        {
-            return GetHeroData(hero)?.AchievementInfo?.GetValue(type) ?? 0;
-        }
+        public int GetAchievementStat(Hero hero, AchievementSystem.AchievementTypes type) 
+            => GetHeroData(hero)?.AchievementInfo?.GetValue(type) ?? 0;
+
+        public IEnumerable<AchievementSystem> GetAchievements(Hero hero) =>
+            GetHeroData(hero)?.AchievementInfo?.Achievements?
+                .Select(a => BLTAdoptAHeroModule.CommonConfig.GetAchievement(a))
+                .Where(a => a != null) 
+            ?? Enumerable.Empty<AchievementSystem>();
+
         #endregion
 
         #region Equipment
