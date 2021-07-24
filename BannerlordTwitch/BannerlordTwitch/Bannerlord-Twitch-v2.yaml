@@ -777,6 +777,28 @@ Commands:
     ShowAchievements: true
     ShowTrackedStats: true
   Documentation: Show the heroes achievements and tracked stats
+- Name: auction
+  HideHelp: false
+  Help: 
+  Handler: AuctionItem
+  ID: 303342d6-c3c3-4f58-8d0d-0daee20677f8
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
+  HandlerConfig:
+    AuctionDurationInSeconds: 30
+    AuctionReminderIntervalInSeconds: 5
+  Documentation: 
+- Name: bid
+  HideHelp: false
+  Help: 
+  Handler: BidOnItem
+  ID: 95bcd31c-154b-4d70-a3e6-cb247efe9fb4
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
+  HandlerConfig: 
+  Documentation: 
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
