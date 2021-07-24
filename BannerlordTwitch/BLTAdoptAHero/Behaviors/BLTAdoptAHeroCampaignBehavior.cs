@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Bannerlord.ButterLib.Common.Extensions;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
@@ -25,6 +26,7 @@ namespace BLTAdoptAHero
     {
         public static BLTAdoptAHeroCampaignBehavior Current => Campaign.Current?.GetCampaignBehavior<BLTAdoptAHeroCampaignBehavior>();
 
+        #region HeroData
         private class HeroData
         {
             public class RetinueData
@@ -160,7 +162,9 @@ namespace BLTAdoptAHero
         }
 
         private Dictionary<Hero, HeroData> heroData = new();
+        #endregion
 
+        #region CampaignBehaviorBase overrides
         public override void RegisterEvents()
         {
             // We put all initialization that relies on loading being complete into this listener
@@ -362,71 +366,41 @@ namespace BLTAdoptAHero
                 dataStore.SyncDataAsJson("HeroData2", ref heroDataSavable);
             }
         }
-
-        private static string KillDetailVerb(KillCharacterAction.KillCharacterActionDetail detail)
+        #endregion
+        
+        #region Adoption
+        public void InitAdoptedHero(Hero newHero, string userName)
         {
-            switch (detail)
-            {
-                case KillCharacterAction.KillCharacterActionDetail.Murdered:
-                    return "was murdered";
-                case KillCharacterAction.KillCharacterActionDetail.DiedInLabor:
-                    return "died in labor";
-                case KillCharacterAction.KillCharacterActionDetail.DiedOfOldAge:
-                    return "died of old age";
-                case KillCharacterAction.KillCharacterActionDetail.DiedInBattle:
-                    return "died in battle";
-                case KillCharacterAction.KillCharacterActionDetail.WoundedInBattle:
-                    return "was wounded in battle";
-                case KillCharacterAction.KillCharacterActionDetail.Executed:
-                    return "was executed";
-                case KillCharacterAction.KillCharacterActionDetail.Lost:
-                    return "was lost";
-                default:
-                case KillCharacterAction.KillCharacterActionDetail.None:
-                    return "was ended";
-            }
+            var hd = GetHeroData(newHero);
+            hd.Owner = userName;
+            hd.IsRetiredOrDead = false;
+            SetHeroAdoptedName(newHero, userName);
         }
 
-        public static void SetAgentStartingHealth(Hero hero, Agent agent)
+        public Hero GetAdoptedHero(string name)
         {
-            if (BLTAdoptAHeroModule.CommonConfig.StartWithFullHealth)
+            string nameToFind = name.ToLower();
+
+            var foundHero = heroData.FirstOrDefault(h 
+                    => !h.Value.IsRetiredOrDead
+                       && (h.Key.FirstName?.Raw().ToLower() == nameToFind || h.Value.Owner?.ToLower() == nameToFind))
+                .Key;
+
+            // correct the name to match the viewer name casing
+            if (foundHero != null && foundHero.FirstName?.Raw() != name)
             {
-                agent.Health = agent.HealthLimit;
+                SetHeroAdoptedName(foundHero, name);
             }
 
-            bool inTournament = MissionHelpers.InTournament();
-            float multiplier = inTournament
-                ? BLTAdoptAHeroModule.TournamentConfig.StartHealthMultiplier
-                : BLTAdoptAHeroModule.CommonConfig.StartHealthMultiplier;
-            
-            agent.BaseHealthLimit *= Math.Max(1, multiplier);
-            agent.HealthLimit *= Math.Max(1, multiplier);
-            agent.Health *= Math.Max(1, multiplier);
-        }
-
-        private static string ToRoman(int number)
-        {
-            return number switch
+            if (foundHero?.IsDead == true)
             {
-                < 0 => throw new ArgumentOutOfRangeException(nameof(number), "must be between 1 and 3999"),
-                > 3999 => throw new ArgumentOutOfRangeException(nameof(number), "must be between 1 and 3999"),
-                < 1 => string.Empty,
-                >= 1000 => "M" + ToRoman(number - 1000),
-                >= 900 => "CM" + ToRoman(number - 900),
-                >= 500 => "D" + ToRoman(number - 500),
-                >= 400 => "CD" + ToRoman(number - 400),
-                >= 100 => "C" + ToRoman(number - 100),
-                >= 90 => "XC" + ToRoman(number - 90),
-                >= 50 => "L" + ToRoman(number - 50),
-                >= 40 => "XL" + ToRoman(number - 40),
-                >= 10 => "X" + ToRoman(number - 10),
-                >= 9 => "IX" + ToRoman(number - 9),
-                >= 5 => "V" + ToRoman(number - 5),
-                >= 4 => "IV" + ToRoman(number - 4),
-                >= 1 => "I" + ToRoman(number - 1)
-            };
-        }
+                RetireHero(foundHero);
+                return null;
+            }
 
+            return foundHero;
+        }
+        
         public void RetireHero(Hero hero)
         {
             string heroName = hero.FirstName?.Raw().ToLower();
@@ -445,35 +419,15 @@ namespace BLTAdoptAHero
             var data = GetHeroData(hero, suppressAutoRetire: true);
             data.IsRetiredOrDead = true;
         }
-
-        private HeroData GetHeroData(Hero hero, bool suppressAutoRetire = false)
-        {
-            // Better create it now if it doesn't exist
-            if (!heroData.TryGetValue(hero, out var hd))
-            {
-                hd = new HeroData
-                {
-                    Gold = hero.Gold,
-                    EquipmentTier = EquipHero.CalculateHeroEquipmentTier(hero),
-                };
-                heroData.Add(hero, hd);
-            }
-
-            if (!suppressAutoRetire && hero.IsDead)
-            {
-                RetireHero(hero);
-            }
-
-            return hd;
-        }
-
+        #endregion
+        
         #region Gold
         public int GetHeroGold(Hero hero) =>
-            #if DEBUG
-            1000000000
-            #else
+            // #if DEBUG
+            // 1000000000
+            // #else
             GetHeroData(hero).Gold
-            #endif
+            // #endif
         ;
 
         public void SetHeroGold(Hero hero, int gold) => GetHeroData(hero).Gold = gold;
@@ -497,7 +451,7 @@ namespace BLTAdoptAHero
                                                 ).ToList();
             int inheritance = (int) (ancestors.Sum(a => a.Value.SpentGold + a.Value.Gold) * amount);
             ChangeHeroGold(inheritor, inheritance);
-            foreach (var (key, value) in ancestors)
+            foreach (var (_, value) in ancestors)
             {
                 value.SpentGold = 0;
                 value.Gold = 0;
@@ -578,9 +532,14 @@ namespace BLTAdoptAHero
             => BLTAdoptAHeroModule.HeroClassConfig.GetClass(GetHeroData(hero).EquipmentClassID);
         public void SetEquipmentClass(Hero hero, HeroClassDef classDef) 
             => GetHeroData(hero).EquipmentClassID = classDef?.ID ?? Guid.Empty;
+        #endregion
+
+        #region Custom Items
         public EquipmentElement FindCustomItem(Hero hero, Func<EquipmentElement, bool> predicate)
             => GetHeroData(hero).CustomItems.Where(predicate).SelectRandom();
+        
         public List<EquipmentElement> GetCustomItems(Hero hero) => GetHeroData(hero).CustomItems;
+        
         public void AddCustomItem(Hero hero, EquipmentElement element)
         {
             if (!BLTCustomItemsCampaignBehavior.Current.IsRegistered(element.ItemModifier))
@@ -589,10 +548,31 @@ namespace BLTAdoptAHero
                 return;
             }
             var data = GetHeroData(hero);
-            if (!data.CustomItems.Any(i => i.Item == element.Item && i.ItemModifier == element.ItemModifier))
+            if (!data.CustomItems.Any(i => i.IsEqualTo(element)))
             {
                 data.CustomItems.Add(element);
                 Log.Info($"Item {element.GetModifiedItemName()} added to storage of {hero.Name}");
+            }
+        }
+
+        public void RemoveCustomItem(Hero hero, EquipmentElement element)
+        {
+            var data = GetHeroData(hero);
+            
+            data.CustomItems.RemoveAll(i => i.IsEqualTo(element));
+            
+            foreach (var slot in hero.BattleEquipment
+                .YieldEquipmentSlots()
+                .Where(i => i.element.IsEqualTo(element)))
+            {
+                hero.BattleEquipment[slot.index] = EquipmentElement.Invalid;
+            }
+            
+            foreach (var slot in hero.CivilianEquipment
+                .YieldEquipmentSlots()
+                .Where(i => i.element.IsEqualTo(element)))
+            {
+                hero.CivilianEquipment[slot.index] = EquipmentElement.Invalid;
             }
         }
 
@@ -605,13 +585,160 @@ namespace BLTAdoptAHero
             {
                 AddCustomItem(inheritor, item);
             }
-            foreach (var (key, value) in ancestors)
+            foreach (var (_, value) in ancestors)
             {
                 value.CustomItems.Clear();
             }
             return items;
         }
 
+        private class Auction
+        {
+            public EquipmentElement item;
+            public Hero itemOwner;
+            public int reservePrice;
+            private readonly Dictionary<Hero, int> bids = new();
+
+            public Auction(EquipmentElement item, Hero itemOwner, int reservePrice)
+            {
+                this.item = item;
+                this.itemOwner = itemOwner;
+                this.reservePrice = reservePrice;
+            }
+
+            public (bool success, string description) Bid(Hero bidder, int bid)
+            {
+                if (itemOwner == bidder)
+                {
+                    return (false, $"You can't bid on your own item");
+                }
+                
+                if (bid < reservePrice)
+                {
+                    return (false, $"Bid of {bid}{Naming.Gold} does not meet reserve price of {reservePrice}{Naming.Gold}");
+                }
+
+                if (bids.Values.Any(v => v == bid))
+                {
+                    return (false, $"Another bid at {bid}{Naming.Gold} already exists");
+                }
+                
+                if (bids.TryGetValue(bidder, out int currBid) && currBid >= bid)
+                {
+                    return (false, $"You already bid more ({currBid}{Naming.Gold}), you can only raise your bid");
+                }
+
+                int bidderGold = Current.GetHeroGold(bidder);
+                if (bidderGold < bid)
+                {
+                    return (false, $"You cannot cover a bid of {bid}{Naming.Gold}, you only have {bidderGold}{Naming.Gold}");
+                }
+
+                bids[bidder] = bid;
+
+                return (true, $"Bid of {bid}{Naming.Gold} placed!");
+            }
+
+            public (Hero hero, int bid) GetHighestValidBid() => bids
+                .Select(x => (hero: x.Key, bid: x.Value))
+                .Where(x => x.hero.IsAdopted() && !x.hero.IsDead && Current.GetHeroGold(x.hero) >= x.bid)
+                .OrderByDescending(x => x.bid)
+                .FirstOrDefault();
+        }
+
+        private Auction currentAuction;
+
+        public bool AuctionInProgress => currentAuction != null;
+        
+        public async void StartItemAuction(EquipmentElement item, Hero itemOwner, 
+            int reservePrice, int durationInSeconds, int reminderInterval, Action<string> output)
+        {
+            if (AuctionInProgress)
+                return;
+
+            currentAuction = new (item, itemOwner, reservePrice);
+
+            // Count down in chunks with reminder of the auction status
+            while (durationInSeconds > reminderInterval)
+            {
+                await Task.Delay(TimeSpan.FromSeconds(reminderInterval));
+                durationInSeconds -= reminderInterval;
+                int seconds = durationInSeconds;
+                MainThreadSync.Run(() =>
+                {
+                    var highestBid = currentAuction.GetHighestValidBid();
+                    if (highestBid != default)
+                    {
+                        output($"{seconds} seconds left in auction of \"{item.GetModifiedItemName()}\", " +
+                               $"high bid is {highestBid.bid}{Naming.Gold} (@{highestBid.hero.FirstName})");
+                    }
+                    else
+                    {
+                        output($"{seconds} seconds left in auction of {item.GetModifiedItemName()}, no bids placed");
+                    }
+                });
+            }
+            
+            await Task.Delay(TimeSpan.FromSeconds(durationInSeconds));
+
+            MainThreadSync.Run(() =>
+            {
+                try
+                {
+                    var highestBid = currentAuction.GetHighestValidBid();
+                    if (highestBid == default)
+                    {
+                        output($"Auction for {currentAuction.item.GetModifiedItemName()} is FINISHED! The item " +
+                               $"will remain with @{currentAuction.itemOwner.FirstName}, as no bid met the reserve " +
+                               $"price of {currentAuction.reservePrice}{Naming.Gold}.");
+                        return;
+                    }
+
+                    if (!currentAuction.itemOwner.IsAdopted() || currentAuction.itemOwner.IsDead)
+                    {
+                        output($"Auction for {currentAuction.item.GetModifiedItemName()} is CANCELLED! " +
+                               $"@{currentAuction.itemOwner.FirstName} retired or died.");
+                        return;
+                    }
+
+                    if (!GetCustomItems(currentAuction.itemOwner).Any(i => i.IsEqualTo(currentAuction.item)))
+                    {
+                        output($"Auction for {currentAuction.item.GetModifiedItemName()} is CANCELLED! " +
+                               $"@{currentAuction.itemOwner.FirstName} is no longer in possession of the item.");
+                        return;
+                    }
+
+                    output($"Auction for {currentAuction.item.GetModifiedItemName()} is FINISHED! The item will " +
+                           $"go to @{highestBid.hero.FirstName} for {highestBid.bid}{Naming.Gold}.");
+
+                    TransferCustomItem(currentAuction.itemOwner, highestBid.hero, 
+                        currentAuction.item, highestBid.bid);
+                }
+                finally
+                {
+                    currentAuction = null;
+                }
+            });
+        }
+
+        private void TransferCustomItem(Hero oldOwner, Hero newOwner, EquipmentElement item, int transferFee)
+        {
+            ChangeHeroGold(newOwner, -transferFee, isSpending: true);
+            ChangeHeroGold(oldOwner, transferFee);
+            RemoveCustomItem(oldOwner, item);
+            AddCustomItem(newOwner, item);
+            // Update the equipment of both, this should only modify the slots related to the custom item
+            // (the gap in the previous owners equipment and optionally equipping the new item)
+            EquipHero.UpgradeEquipment(oldOwner, GetEquipmentTier(oldOwner), oldOwner.GetClass(), replaceSameTier: false);
+            EquipHero.UpgradeEquipment(newOwner, GetEquipmentTier(newOwner), newOwner.GetClass(), replaceSameTier: false);
+        }
+
+        public (bool success, string description) AuctionBid(Hero bidder, int bid)
+        {
+            return currentAuction?.Bid(bidder, bid) 
+                   ?? (false, $"No auction in progress");
+        }
+        
         #endregion
 
         #region Class
@@ -764,6 +891,23 @@ namespace BLTAdoptAHero
 
         #region Helper Functions
 
+        public static void SetAgentStartingHealth(Hero hero, Agent agent)
+        {
+            if (BLTAdoptAHeroModule.CommonConfig.StartWithFullHealth)
+            {
+                agent.Health = agent.HealthLimit;
+            }
+
+            bool inTournament = MissionHelpers.InTournament();
+            float multiplier = inTournament
+                ? BLTAdoptAHeroModule.TournamentConfig.StartHealthMultiplier
+                : BLTAdoptAHeroModule.CommonConfig.StartHealthMultiplier;
+            
+            agent.BaseHealthLimit *= Math.Max(1, multiplier);
+            agent.HealthLimit *= Math.Max(1, multiplier);
+            agent.Health *= Math.Max(1, multiplier);
+        }
+        
         public static IEnumerable<Hero> GetAvailableHeroes(Func<Hero, bool> filter = null) =>
             HeroHelpers.AliveHeroes.Where(h =>
                     // Some buggy mods can result in null heroes
@@ -786,36 +930,72 @@ namespace BLTAdoptAHero
             HeroHelpers.SetHeroName(hero, new (GetFullName(userName)), new (userName));
         }
 
-        public void InitAdoptedHero(Hero newHero, string userName)
+        private HeroData GetHeroData(Hero hero, bool suppressAutoRetire = false)
         {
-            var hd = GetHeroData(newHero);
-            hd.Owner = userName;
-            hd.IsRetiredOrDead = false;
-            SetHeroAdoptedName(newHero, userName);
+            // Better create it now if it doesn't exist
+            if (!heroData.TryGetValue(hero, out var hd))
+            {
+                hd = new HeroData
+                {
+                    Gold = hero.Gold,
+                    EquipmentTier = EquipHero.CalculateHeroEquipmentTier(hero),
+                };
+                heroData.Add(hero, hd);
+            }
+
+            if (!suppressAutoRetire && hero.IsDead)
+            {
+                RetireHero(hero);
+            }
+
+            return hd;
         }
 
-        public Hero GetAdoptedHero(string name)
+        private static string KillDetailVerb(KillCharacterAction.KillCharacterActionDetail detail)
         {
-            string nameToFind = name.ToLower();
-
-            var foundHero = heroData.FirstOrDefault(h 
-                => !h.Value.IsRetiredOrDead
-                   && (h.Key.FirstName?.Raw().ToLower() == nameToFind || h.Value.Owner?.ToLower() == nameToFind))
-                .Key;
-
-            // correct the name to match the viewer name casing
-            if (foundHero != null && foundHero.FirstName?.Raw() != name)
+            switch (detail)
             {
-                SetHeroAdoptedName(foundHero, name);
+                case KillCharacterAction.KillCharacterActionDetail.Murdered:
+                    return "was murdered";
+                case KillCharacterAction.KillCharacterActionDetail.DiedInLabor:
+                    return "died in labor";
+                case KillCharacterAction.KillCharacterActionDetail.DiedOfOldAge:
+                    return "died of old age";
+                case KillCharacterAction.KillCharacterActionDetail.DiedInBattle:
+                    return "died in battle";
+                case KillCharacterAction.KillCharacterActionDetail.WoundedInBattle:
+                    return "was wounded in battle";
+                case KillCharacterAction.KillCharacterActionDetail.Executed:
+                    return "was executed";
+                case KillCharacterAction.KillCharacterActionDetail.Lost:
+                    return "was lost";
+                default:
+                case KillCharacterAction.KillCharacterActionDetail.None:
+                    return "was ended";
             }
+        }
 
-            if (foundHero?.IsDead == true)
+        private static string ToRoman(int number)
+        {
+            return number switch
             {
-                RetireHero(foundHero);
-                return null;
-            }
-
-            return foundHero;
+                < 0 => throw new ArgumentOutOfRangeException(nameof(number), "must be between 1 and 3999"),
+                > 3999 => throw new ArgumentOutOfRangeException(nameof(number), "must be between 1 and 3999"),
+                < 1 => string.Empty,
+                >= 1000 => "M" + ToRoman(number - 1000),
+                >= 900 => "CM" + ToRoman(number - 900),
+                >= 500 => "D" + ToRoman(number - 500),
+                >= 400 => "CD" + ToRoman(number - 400),
+                >= 100 => "C" + ToRoman(number - 100),
+                >= 90 => "XC" + ToRoman(number - 90),
+                >= 50 => "L" + ToRoman(number - 50),
+                >= 40 => "XL" + ToRoman(number - 40),
+                >= 10 => "X" + ToRoman(number - 10),
+                >= 9 => "IX" + ToRoman(number - 9),
+                >= 5 => "V" + ToRoman(number - 5),
+                >= 4 => "IV" + ToRoman(number - 4),
+                >= 1 => "I" + ToRoman(number - 1)
+            };
         }
 
         #endregion

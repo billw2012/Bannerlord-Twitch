@@ -177,10 +177,10 @@ namespace BLTAdoptAHero
                     .Select(slotItemTypePair =>
                     (
                         slot: slotItemTypePair.slot, 
-                        item: EquipHero.FindRandomItemNearestTier(
+                        item: EquipHero.SelectRandomItemNearestTier(
                                   HeroHelpers.AllItems.Where(i 
                                       => i.Culture == culture && i.ItemType == slotItemTypePair.itemType), (int)tier)
-                              ?? EquipHero.FindRandomItemNearestTier(HeroHelpers.AllItems.Where(i => i.ItemType == slotItemTypePair.itemType), (int)tier)
+                              ?? EquipHero.SelectRandomItemNearestTier(HeroHelpers.AllItems.Where(i => i.ItemType == slotItemTypePair.itemType), (int)tier)
                     )).ToList();
                     
                 foreach (var (slot, item) in replacements)
@@ -298,8 +298,10 @@ namespace BLTAdoptAHero
             if (!CustomItems.CraftableEquipmentTypes.Contains(weaponType))
             {
                 // Get the highest tier we can for the weapon type
-                var item = EquipHero.FindRandomTieredEquipment(5, hero, EquipHero.FindFlags.IgnoreAbility,
-                    o => o.IsEquipmentType(weaponType) && EquipHero.IsWeaponUsableByHeroAndClass(hero, o, heroClass));
+                var item = EquipHero.FindRandomTieredEquipment(5, hero, 
+                    heroClass?.Mounted == true || !hero.BattleEquipment.Horse.IsEmpty, 
+                    EquipHero.FindFlags.IgnoreAbility,
+                    o => o.IsEquipmentType(weaponType));
                 return item;
             }
             else
@@ -470,7 +472,7 @@ namespace BLTAdoptAHero
             return prizeType switch
             {
                 GlobalTournamentConfig.PrizeType.Weapon => GeneratePrizeTypeWeapon(tier, hero, heroClass),
-                GlobalTournamentConfig.PrizeType.Armor => GeneratePrizeTypeArmor(tier, hero),
+                GlobalTournamentConfig.PrizeType.Armor => GeneratePrizeTypeArmor(tier, hero, heroClass),
                 GlobalTournamentConfig.PrizeType.Mount => GeneratePrizeTypeMount(tier, hero, heroClass),
                 _ => throw new ArgumentOutOfRangeException(nameof(prizeType), prizeType, null)
             };
@@ -534,7 +536,9 @@ namespace BLTAdoptAHero
                 // Find a random item fitting the weapon class requirements
                 var (item, index) = weaponClasses
                     .Select(c => (
-                        item: EquipHero.FindRandomTieredEquipment(tier, hero, EquipHero.FindFlags.IgnoreAbility | EquipHero.FindFlags.RequireExactTier, 
+                        item: EquipHero.FindRandomTieredEquipment(tier, hero, 
+                            heroClass?.Mounted == true || !hero.BattleEquipment.Horse.IsEmpty, 
+                            EquipHero.FindFlags.IgnoreAbility | EquipHero.FindFlags.RequireExactTier, 
                             i => i.IsEquipmentType(c.type)),
                         index: c.index))
                     .FirstOrDefault(w => w.item != null);
@@ -544,7 +548,8 @@ namespace BLTAdoptAHero
             }
         }
 
-        private static (ItemObject item, ItemModifier modifier, EquipmentIndex slot) GeneratePrizeTypeArmor(int tier, Hero hero)
+        private static (ItemObject item, ItemModifier modifier, EquipmentIndex slot) GeneratePrizeTypeArmor(int tier,
+            Hero hero, HeroClassDef heroClass)
         {
             // List of custom items the hero already has, and armor they are wearing that is as good or better than the tier we want 
             var heroBetterArmor = BLTAdoptAHeroCampaignBehavior.Current
@@ -566,6 +571,7 @@ namespace BLTAdoptAHero
             if (tier > 5)
             {
                 var armor = EquipHero.FindRandomTieredEquipment(5, hero, 
+                    heroClass?.Mounted == true || !hero.BattleEquipment.Horse.IsEmpty, 
                     EquipHero.FindFlags.IgnoreAbility,
                     o => o.ItemType == itemType);
                 return armor == null ? default : (armor, GenerateItemModifier(armor, "Prize"), index);
@@ -573,6 +579,7 @@ namespace BLTAdoptAHero
             else
             {
                 var armor = EquipHero.FindRandomTieredEquipment(tier, hero, 
+                    heroClass?.Mounted == true || !hero.BattleEquipment.Horse.IsEmpty, 
                     EquipHero.FindFlags.IgnoreAbility | EquipHero.FindFlags.RequireExactTier,
                     o => o.ItemType == itemType);
                 // if no armor was found, or its the same tier as what we have then return null

@@ -71,7 +71,7 @@ namespace BLTAdoptAHero
             {
                 EquipHero.UpgradeEquipment(adoptedHero,
                     BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero), 
-                    newClass, keepBetter: true);
+                    newClass, replaceSameTier: false);
                 BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentClass(adoptedHero, newClass);
             }
             onSuccess($"changed class to {newClass.Name}");

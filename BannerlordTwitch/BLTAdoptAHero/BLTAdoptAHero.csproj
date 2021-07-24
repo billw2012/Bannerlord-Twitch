@@ -163,6 +163,7 @@
     <Compile Include="Actions\EquipHero.cs" />
     <Compile Include="Actions\FocusPoints.cs" />
     <Compile Include="Actions\HeroActionHandlerBase.cs" />
+    <Compile Include="Actions\HeroCommandHandlerBase.cs" />
     <Compile Include="Actions\HeroInfoCommand.cs" />
     <Compile Include="Actions\ImproveAdoptedHero.cs" />
     <Compile Include="Actions\JoinTournament.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Actions\NameItem.cs" />
     <Compile Include="Actions\Retinue.cs" />
     <Compile Include="Actions\RetireMyHero.cs" />
+    <Compile Include="Actions\AuctionItem.cs" />
     <Compile Include="Actions\SetHeroClass.cs" />
     <Compile Include="Actions\SkillXP.cs" />
     <Compile Include="Actions\SummonHero.cs" />

@@ -365,6 +365,18 @@ namespace BannerlordTwitch
                 }
             }
         }
+
+        public void SendNonReply(ReplyContext context, params string[] messages)
+        {
+            if (context.Source.RespondInOverlay || IsSimTesting)
+            {
+                Log.LogFeedMessage(messages);
+            }
+            if (context.Source.RespondInTwitch && !IsSimTesting)
+            {
+                bot.SendChat(messages);
+            }
+        }
         
         public void SendChat(params string[] messages)
         {

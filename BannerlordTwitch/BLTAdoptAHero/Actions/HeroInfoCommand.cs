@@ -145,9 +145,8 @@ namespace BLTAdoptAHero
                 if (settings.ShowStorage)
                 {
                     var customItems = BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero);
-                    infoStrings.Add("[STORED] " + string.Join("■", customItems
-                        .Select(e => e.GetModifiedItemName())
-                    ));
+                    infoStrings.Add("[STORED] " + (customItems.Any() ? string.Join("■", customItems
+                        .Select(e => e.GetModifiedItemName())) : "(nothing)"));
                 }
 
                 if (settings.ShowRetinue)

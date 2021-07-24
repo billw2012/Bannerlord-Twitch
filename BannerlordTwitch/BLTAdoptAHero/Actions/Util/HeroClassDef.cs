@@ -381,7 +381,7 @@ namespace BLTAdoptAHero
                 {
                     for (int i = 1; i <= 6; i++)
                     {
-                        EquipHero.UpgradeEquipment(Hero.MainHero, i, this, false);
+                        EquipHero.UpgradeEquipment(Hero.MainHero, i, this, replaceSameTier: false);
                         generator.TD(() =>
                             generator.Img(CharacterCode.CreateFrom(Hero.MainHero.CharacterObject),
                                 $"{Name} Tier {i} Example")

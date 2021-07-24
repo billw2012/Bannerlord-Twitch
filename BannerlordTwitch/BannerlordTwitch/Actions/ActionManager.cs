@@ -275,5 +275,10 @@ namespace BannerlordTwitch.Rewards
         {
             BLTModule.TwitchService?.SendReply(context, messages);
         }
+                
+        public static void SendNonReply(ReplyContext context, params string[] messages)
+        {
+            BLTModule.TwitchService?.SendNonReply(context, messages);
+        }
     }
 }

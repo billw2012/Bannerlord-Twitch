@@ -360,7 +360,7 @@ namespace BLTAdoptAHero
                 if (settings.StartingEquipmentTier.Value > 0)
                 {
                     EquipHero.UpgradeEquipment(newHero, settings.StartingEquipmentTier.Value - 1, 
-                        BLTAdoptAHeroCampaignBehavior.Current.GetClass(newHero), keepBetter: false);
+                        BLTAdoptAHeroCampaignBehavior.Current.GetClass(newHero), replaceSameTier: false);
                 }
                 BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentTier(newHero, settings.StartingEquipmentTier.Value - 1);
             }

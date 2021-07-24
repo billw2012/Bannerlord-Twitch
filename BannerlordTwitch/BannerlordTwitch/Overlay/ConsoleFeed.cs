@@ -88,7 +88,11 @@ namespace BLTOverlay
 }
 
 .bltconsole-text-style-general {
-    color: #ddd;
+    color: #ebc8ff;
+    margin-left: 1.25em;
+    display: list-item;       
+    list-style-type: disc;  
+    list-style-position: outside; 
 }
 
 .bltconsole-text-style-response {
@@ -96,7 +100,7 @@ namespace BLTOverlay
 }
 
 .bltconsole-text-style-system {
-    color: cyan;
+    color: #5fffff;
 }
 
 .bltconsole-text-style-internal {
@@ -105,7 +109,7 @@ namespace BLTOverlay
 }
 
 .bltconsole-text-style-battle {
-    color: yellow;
+    color: #ffff4e;
 }
 
 .bltconsole-text-style-event {
@@ -113,12 +117,12 @@ namespace BLTOverlay
 }
 
 .bltconsole-text-style-fail {
-    color: red;
+    color: #ff4e4e;
     font-weight: bold;
 }
 
 .bltconsole-text-style-critical {
-    color: red;
+    color: #ff1717;
 }
 
 ", @"
