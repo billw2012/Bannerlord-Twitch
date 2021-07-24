@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Windows;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Powers;
@@ -50,19 +52,27 @@ namespace BLTAdoptAHero
 
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
-            // Add the marker overlay for appropriate mission types
-            if(mission.GetMissionBehaviour<MissionNameMarkerUIHandler>() == null 
-               && (MissionHelpers.InSiegeMission() 
-                   || MissionHelpers.InFieldBattleMission() 
-                   || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null))
+            try
             {
-                mission.AddMissionBehaviour(SandBoxViewCreator.CreateMissionNameMarkerUIHandler(mission));
+                // Add the marker overlay for appropriate mission types
+                if (mission.GetMissionBehaviour<MissionNameMarkerUIHandler>() == null
+                    && (MissionHelpers.InSiegeMission()
+                        || MissionHelpers.InFieldBattleMission()
+                        || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null))
+                {
+                    mission.AddMissionBehaviour(SandBoxViewCreator.CreateMissionNameMarkerUIHandler(mission));
+                }
+
+                mission.AddMissionBehaviour(new BLTAdoptAHeroCommonMissionBehavior());
+                mission.AddMissionBehaviour(new BLTAdoptAHeroCustomMissionBehavior());
+                mission.AddMissionBehaviour(new BLTSummonBehavior());
+                mission.AddMissionBehaviour(new BLTRemoveAgentsBehavior());
+                mission.AddMissionBehaviour(new BLTHeroPowersMissionBehavior());
             }
-            mission.AddMissionBehaviour(new BLTAdoptAHeroCommonMissionBehavior());
-            mission.AddMissionBehaviour(new BLTAdoptAHeroCustomMissionBehavior());
-            mission.AddMissionBehaviour(new BLTSummonBehavior());
-            mission.AddMissionBehaviour(new BLTRemoveAgentsBehavior());
-            mission.AddMissionBehaviour(new BLTHeroPowersMissionBehavior());
+            catch (Exception e)
+            {
+                Log.Exception(nameof(OnMissionBehaviourInitialize), e);
+            }
         }
         
         [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(MissionNameMarkerTargetVM), MethodType.Constructor, typeof(Agent))]
@@ -108,20 +118,29 @@ namespace BLTAdoptAHero
 
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
         {
-            if(game.GameType is Campaign) 
+            try
             {
-                // Reload settings here so they are fresh
-                CommonConfig = GlobalCommonConfig.Get();
-                TournamentConfig = GlobalTournamentConfig.Get();
-                HeroClassConfig = GlobalHeroClassConfig.Get();
-                HeroPowerConfig = GlobalHeroPowerConfig.Get();
+                if (game.GameType is Campaign)
+                {
+                    // Reload settings here so they are fresh
+                    CommonConfig = GlobalCommonConfig.Get();
+                    TournamentConfig = GlobalTournamentConfig.Get();
+                    HeroClassConfig = GlobalHeroClassConfig.Get();
+                    HeroPowerConfig = GlobalHeroPowerConfig.Get();
 
-                var campaignStarter = (CampaignGameStarter) gameStarterObject;
-                campaignStarter.AddBehavior(new BLTAdoptAHeroCampaignBehavior());
-                campaignStarter.AddBehavior(new BLTTournamentQueueBehavior());
-                campaignStarter.AddBehavior(new BLTCustomItemsCampaignBehavior());
-                
-                gameStarterObject.AddModel(new BLTAgentStatCalculateModel(gameStarterObject.Models.OfType<AgentStatCalculateModel>().FirstOrDefault()));
+                    var campaignStarter = (CampaignGameStarter) gameStarterObject;
+                    campaignStarter.AddBehavior(new BLTAdoptAHeroCampaignBehavior());
+                    campaignStarter.AddBehavior(new BLTTournamentQueueBehavior());
+                    campaignStarter.AddBehavior(new BLTCustomItemsCampaignBehavior());
+
+                    gameStarterObject.AddModel(new BLTAgentStatCalculateModel(gameStarterObject.Models
+                        .OfType<AgentStatCalculateModel>().FirstOrDefault()));
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Exception(nameof(OnGameStart), e);
+                MessageBox.Show($"Error in {nameof(OnGameStart)}, please report this on the discord: {e}", "Bannerlord Twitch Mod STARTUP ERROR");
             }
         }
         

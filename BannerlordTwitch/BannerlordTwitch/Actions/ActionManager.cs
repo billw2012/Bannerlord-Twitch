@@ -97,7 +97,7 @@ namespace BannerlordTwitch.Rewards
                 return default;
             }
             
-            return (T) BLTModule.TwitchService.FindGlobalConfig(id);
+            return (T) BLTModule.TwitchService?.FindGlobalConfig(id);
         }
 
         public static void ConvertSettings(IEnumerable<Reward> rewards)
