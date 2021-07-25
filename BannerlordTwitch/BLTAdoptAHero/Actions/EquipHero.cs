@@ -168,8 +168,10 @@ namespace BLTAdoptAHero
             || o.Type == ItemObject.ItemTypeEnum.Crossbow && hero?.CharacterObject?.GetPerkValue(DefaultPerks.Crossbow.MountedCrossbowman) == true
             ;
 
-        public static void UpgradeEquipment(Hero adoptedHero, int targetTier, HeroClassDef classDef, bool replaceSameTier)
+        public static void UpgradeEquipment(Hero adoptedHero, int targetTier, HeroClassDef classDef, bool replaceSameTier, Func<EquipmentElement, bool> customKeepFilter = null)
         {
+            customKeepFilter ??= _ => true;
+            
             // Take existing equipment and the heroes custom items, so we can (re)use them if appropriate
             var availableItems =
                 BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero).Concat(
@@ -178,6 +180,7 @@ namespace BLTAdoptAHero
                     .Where(e => (int)e.Item.Tier > targetTier || !replaceSameTier && (int)e.Item.Tier == targetTier)
                     // Can always use custom items
                     .Where(e => classDef?.Mounted != true || IsItemUsableMounted(adoptedHero, e.Item)))
+                    .Where(customKeepFilter)
                 .ToList();
             
             // These functions select new equipment, preferring to use the availableItems list above, then
