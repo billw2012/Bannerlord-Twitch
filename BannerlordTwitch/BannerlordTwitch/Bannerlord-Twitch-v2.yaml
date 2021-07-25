@@ -16,7 +16,7 @@ Rewards:
   RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig:
-    CreateNew: true
+    CreateNew: false
     AllowNoble: true
     AllowWanderer: true
     AllowPlayerCompanion: false
@@ -54,7 +54,7 @@ Rewards:
   RespondInOverlay: true
   HandlerConfig:
     Amount: 10000
-  Documentation: 
+  Documentation: Adds 10,000 gold to your adopted hero.
 - RewardSpec:
     Title: 100k gold
     DisableAutomaticFulfillment: false
@@ -73,12 +73,12 @@ Rewards:
   RespondInOverlay: true
   HandlerConfig:
     Amount: 100000
-  Documentation: 
+  Documentation: Adds 100,000 gold to your adopted hero.
 - RewardSpec:
     Title: Summon
     DisableAutomaticFulfillment: false
     Prompt: Your adopted hero joins the players side in battle
-    Cost: 50
+    Cost: 24
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: false
@@ -107,7 +107,7 @@ Rewards:
     Title: Attack
     DisableAutomaticFulfillment: false
     Prompt: Your adopted hero joins the enemies side in battle
-    Cost: 50
+    Cost: 25
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: false
@@ -166,12 +166,12 @@ Rewards:
     ActivateSound: 
     DeactivateParticleEffect: 
     DeactivateSound: 
-  Documentation: Heals the streamers character in battle. Doesn't work on the campaign map.
+  Documentation: Heals the streamers character in battle, over time. Doesn't work on the campaign map.
 - RewardSpec:
     Title: Tournament
     DisableAutomaticFulfillment: false
     Prompt: Join the tournament queue with your adopted hero
-    Cost: 25
+    Cost: 26
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: false
@@ -190,7 +190,7 @@ Rewards:
     Title: Send Message In Game
     DisableAutomaticFulfillment: false
     Prompt: Enter Message
-    Cost: 250
+    Cost: 100
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: true
@@ -209,7 +209,7 @@ Rewards:
     Title: Retire My Hero
     DisableAutomaticFulfillment: false
     Prompt: Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel
-    Cost: 2500
+    Cost: 500
     IsEnabled: true
     BackgroundColorText: 
     IsUserInputRequired: true
@@ -382,7 +382,7 @@ Commands:
     ShowRetinueList: false
     ShowAchievements: false
     ShowTrackedStats: false
-  Documentation: 
+  Documentation: Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue.
 - Name: inv
   HideHelp: false
   Help: show equipment
@@ -405,7 +405,7 @@ Commands:
     ShowRetinueList: false
     ShowAchievements: false
     ShowTrackedStats: false
-  Documentation: 
+  Documentation: Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage.
 - Name: equip
   HideHelp: false
   Help: upgrade equipment
@@ -423,7 +423,7 @@ Commands:
     CostTier5: 275000
     CostTier6: 400000
     ReequipInsteadOfUpgrade: false
-  Documentation: 
+  Documentation: Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to.
 - Name: retinue
   HideHelp: false
   Help: upgrade retinue
@@ -445,7 +445,7 @@ Commands:
       IncludeBanditUnits: false
       UseBasicTroops: true
       UseEliteTroops: true
-  Documentation: 
+  Documentation: Purchases a new tier 1 troop for your retinue, or upgrades an existing one to the next tier if you have no space left. Retinue will appear with you in battle when you summon, earning you money when they make kills.
 - Name: class
   HideHelp: false
   Help: select new class
@@ -455,27 +455,27 @@ Commands:
   RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig:
-    GoldCost: 100000
+    GoldCost: 50000
     UpdateEquipment: true
-  Documentation: 
+  Documentation: 'Selects a new class for your hero, updating your existing equipment to match the class requirements.<br>Usage is <code>!class (new class name)</code>, e.g. <code>!class archer</code>. '
 - Name: reequip
   HideHelp: false
   Help: reroll equipment
   Handler: EquipHero
   ID: d4fb255c-4bb3-454e-9e26-39b4d7a321f0
   Enabled: true
-  RespondInTwitch: true
+  RespondInTwitch: false
   RespondInOverlay: true
   HandlerConfig:
     AllowCompanionUpgrade: false
-    CostTier1: 25000
-    CostTier2: 50000
-    CostTier3: 100000
-    CostTier4: 175000
-    CostTier5: 275000
-    CostTier6: 400000
+    CostTier1: 10000
+    CostTier2: 20000
+    CostTier3: 40000
+    CostTier4: 70000
+    CostTier5: 110000
+    CostTier6: 160000
     ReequipInsteadOfUpgrade: true
-  Documentation: 
+  Documentation: Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier.
 - Name: gold
   HideHelp: false
   Help: show gold
@@ -498,7 +498,7 @@ Commands:
     ShowRetinueList: false
     ShowAchievements: false
     ShowTrackedStats: false
-  Documentation: ''
+  Documentation: Show your heroes current gold.
 - Name: retinuelist
   HideHelp: false
   Help: retinue list
@@ -521,7 +521,7 @@ Commands:
     ShowRetinueList: true
     ShowAchievements: false
     ShowTrackedStats: false
-  Documentation: 
+  Documentation: Shows your current retinue troops.
 - Name: adopt
   HideHelp: false
   Help: ''
@@ -582,7 +582,7 @@ Commands:
   RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig: 
-  Documentation: Use this to bet on tournament matches, when available.<br>Usage is <code>!bltbet (team) (gold)</code>, for example <code>bltbet red 10000</code> to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.
+  Documentation: Use this to bet on tournament matches, when available.<br>Usage is <code>!bltbet (team) (gold)</code>, for example <code>!bltbet red 10000</code> to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.<br>If only one team is bet upon, the bets will be refunded.
 - Name: power
   HideHelp: false
   Help: 
@@ -615,7 +615,7 @@ Commands:
     ShowRetinueList: false
     ShowAchievements: true
     ShowTrackedStats: true
-  Documentation: Show the heroes achievements and tracked stats
+  Documentation: Show the heroes achievements and tracked stats.
 - Name: auction
   HideHelp: false
   Help: 
@@ -627,7 +627,7 @@ Commands:
   HandlerConfig:
     AuctionDurationInSeconds: 120
     AuctionReminderIntervalInSeconds: 30
-  Documentation: 
+  Documentation: Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.<br>Usage is <code>!auction (reserve price) (part of the item name)</code>, e.g. <code>!auction 50000 Boots</code> would start a new auction for your custom item with the word "Boots" in it, with a reserve of 50000. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.
 - Name: bid
   HideHelp: false
   Help: 
@@ -637,7 +637,7 @@ Commands:
   RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig: 
-  Documentation: 
+  Documentation: Place a bid on the current auction, if one is active.<br>Usage is <code>!bid (gold amount)</code>, e.g. <code>!bid 100000</code>. If there is no auction, or the bid doesn't exceed the reserve price, it will be rejected.
 - Name: discarditem
   HideHelp: false
   Help: ''
@@ -647,7 +647,7 @@ Commands:
   RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig: 
-  Documentation: ''
+  Documentation: Throw away one of your custom items.<br>Usage is <code>!discarditem (part of the item name)</code>, e.g. <code>!discarditem Boots</code> would discard your custom item with the word "Boots" in it. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.
 - Name: giveitem
   HideHelp: false
   Help: 
@@ -657,7 +657,7 @@ Commands:
   RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig: 
-  Documentation: 
+  Documentation: Give one of your custom items to another viewer.<br>Usage is <code>!giveitem (viewer) (part of the item name)</code>, e.g. <code>!giveitem C4alad0g Boots</code> would give your custom item with the word "Boots" in it to the viewer called C4lad0g. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -694,65 +694,11 @@ GlobalConfigs:
     DifficultyScalingMax: 3
     Shouts: []
     IncludeDefaultShouts: true
-    KillStreaks:
-    - Enabled: false
-      ShowNotification: false
-      Name: First Five
-      NotificationText: 
-      KillsRequired: 5
-      GoldReward: 0
-      XPReward: 5000
-    - Enabled: false
-      ShowNotification: false
-      Name: First Fifty
-      NotificationText: 
-      KillsRequired: 50
-      GoldReward: 50000
-      XPReward: 50000
+    KillStreaks: []
     ShowKillStreakPopup: true
     KillStreakPopupAlertSound: Notification1
     ReferenceLevelReward: 15
-    Achievements:
-    - ID: 8ed02960-abf8-4fd9-a78c-2f26a68cb700
-      Enabled: false
-      Name: First Kill
-      Type: TotalKills
-      NotificationText: aight
-      Value: 1
-      GoldGain: 0
-      XPGain: 10000
-    - ID: 489cc6a8-cd48-4aed-a782-0ae81156d072
-      Enabled: false
-      Name: First BLT Kill
-      Type: TotalBLTKills
-      NotificationText: aight
-      Value: 1
-      GoldGain: 0
-      XPGain: 10000
-    - ID: 5e35e791-564d-4066-9d26-22870e357034
-      Enabled: false
-      Name: First Streamer Kill
-      Type: TotalMainKills
-      NotificationText: aight
-      Value: 1
-      GoldGain: 0
-      XPGain: 10000
-    - ID: a6e9d301-a027-4dcf-b52b-bcc65c1b42b1
-      Enabled: false
-      Name: First Tournament Win
-      Type: TotalTournamentWins
-      NotificationText: aight
-      Value: 1
-      GoldGain: 10000
-      XPGain: 10000
-    - ID: b9b225cc-5d65-437a-8734-3b3937c14ab7
-      Enabled: false
-      Name: First Tournament Loss
-      Type: TotalTournamentLosses
-      NotificationText: aight
-      Value: 1
-      GoldGain: 10000
-      XPGain: 10000
+    Achievements: []
 - Id: Adopt A Hero - Tournament Config
   Config:
     StartHealthMultiplier: 2
@@ -761,7 +707,7 @@ GlobalConfigs:
     NoHorses: true
     NoSpears: true
     NormalizeArmor: true
-    NormalizeArmorTier: 6
+    NormalizeArmorTier: 4
     RandomizeWeaponTypes: true
     PreviousWinnerDebuffs:
     - Skill: All
@@ -790,15 +736,15 @@ GlobalConfigs:
     Round1Rewards:
       WinGold: 5000
       WinXP: 5000
-      LoseXP: 5000
+      LoseXP: 20000
     Round2Rewards:
       WinGold: 7500
       WinXP: 7500
-      LoseXP: 7500
+      LoseXP: 10000
     Round3Rewards:
       WinGold: 10000
       WinXP: 10000
-      LoseXP: 10000
+      LoseXP: 5000
     Round4Rewards:
       WinGold: 0
       WinXP: 0
@@ -1088,12 +1034,12 @@ GlobalConfigs:
       Slot4: OneHandedAxe
       UseHorse: false
       UseCamel: false
-      PassivePower:
+      PassivePower: &o0
         Name: Fleet Footed
         Power1: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
         Power2: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
         Power3: 00000000-0000-0000-0000-000000000000
-      ActivePower:
+      ActivePower: &o1
         Name: Explosive Arrows
         Power1: bd57817e-6bb4-4412-ac8d-36d6ced6193a
         Power2: 00000000-0000-0000-0000-000000000000
@@ -1104,6 +1050,18 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
+    - ID: bf9dd845-0ed3-4da0-bce7-f718ac52fad7
+      Name: heavyarcher
+      Description: Ranged troop, quick on their feet, can use explosive arrows.
+      Formation: Ranged
+      Slot1: Bow
+      Slot2: Arrows
+      Slot3: Arrows
+      Slot4: TwoHandedAxe
+      UseHorse: false
+      UseCamel: false
+      PassivePower: *o0
+      ActivePower: *o1
     - ID: eed616b6-bb68-48aa-8f92-87ab3d744458
       Name: crossbow
       Description: Ranged troop that specializes in crossbow, tougher but slower than the archer. Can use exposive bolts
@@ -1114,12 +1072,12 @@ GlobalConfigs:
       Slot4: OneHandedSword
       UseHorse: false
       UseCamel: false
-      PassivePower:
+      PassivePower: &o2
         Name: Healthy
         Power1: 22ad10d6-34df-4d41-afec-7e98a56f8954
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
-      ActivePower:
+      ActivePower: &o3
         Name: Explosive Bolts
         Power1: bd57817e-6bb4-4412-ac8d-36d6ced6193a
         Power2: 00000000-0000-0000-0000-000000000000
@@ -1130,6 +1088,18 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
+    - ID: b7ff2652-db31-43bf-a75c-6fa906298da4
+      Name: heavycrossbow
+      Description: Ranged troop that specializes in crossbow, tougher but slower than the archer. Can use exposive bolts
+      Formation: Ranged
+      Slot1: Crossbow
+      Slot2: Bolts
+      Slot3: Bolts
+      Slot4: TwoHandedSword
+      UseHorse: false
+      UseCamel: false
+      PassivePower: *o2
+      ActivePower: *o3
     - ID: d1006ce9-cac9-4416-b8f9-efe55e9eb878
       Name: cavalry
       Description: Mounted troop with a strong horse, capable of doing extra charge damage.
@@ -1140,12 +1110,12 @@ GlobalConfigs:
       Slot4: None
       UseHorse: true
       UseCamel: false
-      PassivePower:
+      PassivePower: &o4
         Name: A Good Horse
         Power1: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
         Power2: 00000000-0000-0000-0000-000000000000
         Power3: 00000000-0000-0000-0000-000000000000
-      ActivePower:
+      ActivePower: &o5
         Name: Trample
         Power1: 20f6817e-8f45-4dc3-a513-77707fb9c96d
         Power2: 6ad716bb-76e1-4cb1-9601-85f81f5d5425
@@ -1156,6 +1126,18 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
+    - ID: 14f908f8-4983-479f-89f7-1dac81f7d0f9
+      Name: camelry
+      Description: Mounted troop with a strong horse, capable of doing extra charge damage.
+      Formation: Cavalry
+      Slot1: OneHandedLance
+      Slot2: Shield
+      Slot3: OneHandedMace
+      Slot4: None
+      UseHorse: false
+      UseCamel: true
+      PassivePower: *o4
+      ActivePower: *o5
     - ID: 2942cdb2-30ec-400a-ba8e-ed9bb3b47f48
       Name: horsearcher
       Description: Mounted ranged unit, with a good horse, that can use exposive arrows.
@@ -1274,7 +1256,12 @@ SimTesting:
     Id: Adopt a Hero
     Args: 
     Weight: 0
-  - Enabled: false
+  - Enabled: true
+    Type: Reward
+    Id: 100k gold
+    Args: 
+    Weight: 0
+  - Enabled: true
     Type: Reward
     Id: 100k gold
     Args: 
@@ -1284,7 +1271,7 @@ SimTesting:
     Id: Tournament
     Args: 
     Weight: 0
-  - Enabled: true
+  - Enabled: false
     Type: Command
     Id: class
     Args: archer
@@ -1379,5 +1366,5 @@ SimTesting:
     Type: Reward
     Id: Use Class Power
     Args: 
-    Weight: 0.200000003
+    Weight: 0.5
 DisableAutomaticFulfillment: false
