@@ -87,17 +87,30 @@ namespace BLTAdoptAHero.UI
         public static void Register()
         {
             BLTOverlay.BLTOverlay.Register("mission", 200, @"
+
 #mission-container {
-    display: flex;
-    flex-direction: row;
     margin-top: 1em;
 }
+
 #mission-heroes {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: stretch;
 }
+
+#mission-key {
+    margin: 0.1em auto;
+    font-size: 85%;
+    display: flex;
+    justify-content: center;
+}
+
+.mission-key-label {
+    margin-right: 0.5em;
+    color: greenyellow;
+}
+
 .mission-hero {
     min-width: 6em;
     max-width: 10em;
@@ -184,11 +197,12 @@ namespace BLTAdoptAHero.UI
     height: 1.25em;
     flex-shrink: 0;
     flex-basis: 1.25em;
-    margin: -0.1em -0.3em 0 0.1em;
+    margin: 0.1em -0.3em 0 -0.1em;
     align-self: center;
-    filter: drop-shadow(0           0         0.03em    #FF0F)
-            drop-shadow(0           0         0.03em    #FF0F)
-            drop-shadow(0           0         0.2em     #FF0F);
+    filter: drop-shadow(0           0         0.03em    yellow)
+            drop-shadow(0           0         0.07em    yellow)
+            drop-shadow(0           0         0.2em     orange)
+;
 }
 .mission-hero-name {
     text-align: center;
@@ -202,15 +216,33 @@ namespace BLTAdoptAHero.UI
 }
 
 .mission-hero-state-routed {
-    color: #ffc100;
+    filter:
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.5em yellow)
+            drop-shadow(0 0 0.25em yellow)
+;
 }
 
 .mission-hero-state-unconscious {
-    color: #ee8300;
+    filter:
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.5em orange)
+            drop-shadow(0 0 0.25em orange)
+    ;
 }
 
 .mission-hero-state-killed {
-    color: #ff0000;
+    filter:
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.5em red)
+            drop-shadow(0 0 0.25em red)
+    ;
 }
 
 .mission-hero-score-row {
@@ -219,16 +251,16 @@ namespace BLTAdoptAHero.UI
     margin: -0.1em 0.3em 0;
 }
 
+.mission-hero-kills-layer {
+    filter: 
+        drop-shadow(0 0 1em white)
+        drop-shadow(0 0 1em white)
+    ;
+}
+
 .mission-hero-kills {
     font-size: 115%;
     margin-top: -0.1em;
-    transition: 0.3s;
-    filter:  drop-shadow(0 0 0.5em white);
-}
-
-.mission-hero-kills-t-active {
-    opacity: 0;
-    transform: scale(3);
 }
 
 .mission-hero-retinue-kills {
@@ -270,8 +302,8 @@ namespace BLTAdoptAHero.UI
     margin: -0.15em 0.2em 0.2em 0.2em;
 }
 ", @"
-<div id='mission-container' class='drop-shadow'>
-    <transition-group name='mission-heroes-t' tag='div' id='mission-heroes'>
+<div id='mission-container'>
+    <div id='mission-heroes' class='drop-shadow'>
         <div class='mission-hero' v-for='hero in sortedHeroes'
              v-bind:key='hero.Name'>
             <div class='mission-hero-inner' 
@@ -284,27 +316,26 @@ namespace BLTAdoptAHero.UI
                 <div class='mission-hero-name-row'>
                     <div class='mission-hero-summon-cooldown'>
                         <progress-ring :radius='10' 
-                                       color='yellow'
+                                       color='white'
                                        :progress='hero.CooldownFractionRemaining * 100' 
-                                       :stroke='10'></progress-ring>
+                                       :stroke='4'></progress-ring>
                     </div>
                     <div class='mission-hero-name drop-shadow-2'
                          v-bind:class=""'mission-hero-state-' + hero.State"">{{hero.Name}}</div>
                 </div>
-                <div class='mission-hero-score-row drop-shadow-2'>
-                    <div v-show='hero.Kills > 0' class='mission-hero-kills'>
-                        <transition name='mission-hero-kills-t'>
-                            <div :key='hero.Kills'>
-                                {{hero.Kills}}
-                            </div>
-                        </transition>
+                <div class='mission-hero-score-row'>
+                    <div v-show='hero.Kills > 0' class='mission-hero-kills-layer'>
+
+                        <div class='mission-hero-kills drop-shadow-2'>
+                            {{hero.Kills}}
+                        </div>
                     </div>
-                    <div v-show='hero.RetinueKills > 0' class='mission-hero-retinue-kills'>
+                    <div v-show='hero.RetinueKills > 0' class='mission-hero-retinue-kills drop-shadow-2'>
                         +{{hero.RetinueKills}}</div>
                     <div class='mission-hero-gold-xp'>
-                        <div v-show='hero.GoldEarned > 0' class='mission-hero-gold'>
+                        <div v-show='hero.GoldEarned > 0' class='mission-hero-gold drop-shadow-2'>
                             {{Math.round(hero.GoldEarned / 1000)}}k</div>
-                        <div v-show='hero.XPEarned > 0' class='mission-hero-xp'>
+                        <div v-show='hero.XPEarned > 0' class='mission-hero-xp drop-shadow-2'>
                             {{Math.round(hero.XPEarned / 1000)}}k</div>
                     </div>
                 </div>
@@ -313,7 +344,15 @@ namespace BLTAdoptAHero.UI
                 <div v-for='index in Math.min(hero.Retinue, 5)' class='hero-retinue-list-item'></div>
             </div>
         </div>
-    </transition-group>
+    </div>
+    <div id='mission-key' v-if='sortedHeroes.length > 0'>
+        <div class='mission-hero-score-row drop-shadow'>
+            <div class='mission-hero-kills'>Kills</div>
+            <div class='mission-hero-retinue-kills'>+Retinue Kills</div>
+            <div class='mission-hero-gold'>Gold</div>
+            <div class='mission-hero-xp'>XP</div>
+        </div>
+    </div>
 </div>
 ", @"
 <!-- Mission Info -->
