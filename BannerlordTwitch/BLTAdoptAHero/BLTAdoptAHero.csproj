@@ -160,8 +160,10 @@
     <Compile Include="Actions\AddGoldToHero.cs" />
     <Compile Include="Actions\AdoptAHero.cs" />
     <Compile Include="Actions\AttributePoints.cs" />
+    <Compile Include="Actions\DiscardItem.cs" />
     <Compile Include="Actions\EquipHero.cs" />
     <Compile Include="Actions\FocusPoints.cs" />
+    <Compile Include="Actions\GiveItem.cs" />
     <Compile Include="Actions\HeroActionHandlerBase.cs" />
     <Compile Include="Actions\HeroCommandHandlerBase.cs" />
     <Compile Include="Actions\HeroInfoCommand.cs" />

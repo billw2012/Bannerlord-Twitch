@@ -721,16 +721,29 @@ namespace BLTAdoptAHero
             });
         }
 
-        private void TransferCustomItem(Hero oldOwner, Hero newOwner, EquipmentElement item, int transferFee)
+        public void TransferCustomItem(Hero oldOwner, Hero newOwner, EquipmentElement item, int transferFee)
         {
-            ChangeHeroGold(newOwner, -transferFee, isSpending: true);
-            ChangeHeroGold(oldOwner, transferFee);
+            if (transferFee != 0)
+            {
+                ChangeHeroGold(newOwner, -transferFee, isSpending: true);
+                ChangeHeroGold(oldOwner, transferFee);
+            }
+
             RemoveCustomItem(oldOwner, item);
             AddCustomItem(newOwner, item);
+
             // Update the equipment of both, this should only modify the slots related to the custom item
             // (the gap in the previous owners equipment and optionally equipping the new item)
             EquipHero.UpgradeEquipment(oldOwner, GetEquipmentTier(oldOwner), oldOwner.GetClass(), replaceSameTier: false);
             EquipHero.UpgradeEquipment(newOwner, GetEquipmentTier(newOwner), newOwner.GetClass(), replaceSameTier: false);
+        }
+        
+        public void DiscardCustomItem(Hero owner, EquipmentElement item)
+        {
+            RemoveCustomItem(owner, item);
+
+            // Update equipment, this should only modify the slots related to the custom item
+            EquipHero.UpgradeEquipment(owner, GetEquipmentTier(owner), owner.GetClass(), replaceSameTier: false);
         }
 
         public (bool success, string description) AuctionBid(Hero bidder, int bid)

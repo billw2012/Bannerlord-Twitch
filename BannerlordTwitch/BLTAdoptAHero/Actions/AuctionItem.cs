@@ -13,7 +13,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
 {
-    [UsedImplicitly]
+    [UsedImplicitly, Description("Allows viewers to auction custom items, for other viewers to bid on (make sure to add a bid command also)")]
     public class AuctionItem : HeroCommandHandlerBase
     {
         private class Settings
@@ -52,7 +52,7 @@ namespace BLTAdoptAHero
             if (string.IsNullOrWhiteSpace(context.Args))
             {
                 ActionManager.SendReply(context, 
-                    $"Usage: !{((Command)context.Source).Name} (reserve price) (item name)");
+                    $"Usage: !{((Command)context.Source).Name} (reserve price) (partial item name)");
                 return;
             }
 
@@ -60,7 +60,7 @@ namespace BLTAdoptAHero
             if (argParts.Count == 1)
             {
                 ActionManager.SendReply(context, 
-                    $"Usage: !{((Command)context.Source).Name} (reserve price) (item name)");
+                    $"Usage: !{((Command)context.Source).Name} (reserve price) (partial item name)");
                 return;
             }
 
@@ -85,18 +85,19 @@ namespace BLTAdoptAHero
                 ActionManager.SendReply(context, $"{matchingItems.Count} items found matching \"{itemName}\", be more specific");
                 return; 
             }
-            
-            BLTAdoptAHeroCampaignBehavior.Current.StartItemAuction(matchingItems.First(), adoptedHero, reservePrice,
+
+            var item = matchingItems.First();
+            BLTAdoptAHeroCampaignBehavior.Current.StartItemAuction(item, adoptedHero, reservePrice,
                 settings.AuctionDurationInSeconds, settings.AuctionReminderIntervalInSeconds,
                 s => ActionManager.SendNonReply(context, s));
             
             ActionManager.SendNonReply(context, 
-                $"Auction of \"{itemName}\" is OPEN! Reserve price is {reservePrice}{Naming.Gold}, " +
+                $"Auction of \"{item.GetModifiedItemName()}\" is OPEN! Reserve price is {reservePrice}{Naming.Gold}, " +
                 $"bidding closes in {settings.AuctionDurationInSeconds} seconds.");
         }
     }
     
-    [UsedImplicitly]
+    [UsedImplicitly, Description("Allows viewers bid on an active custom item auction (make sure to add an auction command also)")]
     public class BidOnItem : HeroCommandHandlerBase
     {
         protected override void ExecuteInternal(Hero adoptedHero, ReplyContext context, object config, 

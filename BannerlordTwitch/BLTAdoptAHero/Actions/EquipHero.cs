@@ -99,11 +99,11 @@ namespace BLTAdoptAHero
                 onFailure($"You are a player companion, you cannot change your own equipment!");
                 return;
             }
-            if (Mission.Current != null)
-            {
-                onFailure($"You cannot upgrade equipment, as a mission is active!");
-                return;
-            }
+            // if (Mission.Current != null)
+            // {
+            //     onFailure($"You cannot upgrade equipment, as a mission is active!");
+            //     return;
+            // }
 
             int targetTier = Math.Max(0, BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero) +
                              (settings.ReequipInsteadOfUpgrade ? 0 : 1));
@@ -172,12 +172,13 @@ namespace BLTAdoptAHero
         public static void UpgradeEquipment(Hero adoptedHero, int targetTier, HeroClassDef classDef, bool replaceSameTier)
         {
             // Take existing equipment and the heroes custom items, so we can (re)use them if appropriate
-            var availableItems = adoptedHero.BattleEquipment.YieldFilledEquipmentSlots()
-                // Never replace stuff that is higher tier (in practice it can only be tournament prize)
-                .Where(e => (int)e.Item.Tier > targetTier || !replaceSameTier && (int)e.Item.Tier == targetTier)
-                // Can always use custom items
-                .Concat(BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero))
-                .Where(e => classDef?.Mounted != true || IsItemUsableMounted(adoptedHero, e.Item))
+            var availableItems =
+                BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero).Concat(
+                    adoptedHero.BattleEquipment.YieldFilledEquipmentSlots()
+                    // Never replace stuff that is higher tier (in practice it can only be tournament prize)
+                    .Where(e => (int)e.Item.Tier > targetTier || !replaceSameTier && (int)e.Item.Tier == targetTier)
+                    // Can always use custom items
+                    .Where(e => classDef?.Mounted != true || IsItemUsableMounted(adoptedHero, e.Item)))
                 .ToList();
             
             // These functions select new equipment, preferring to use the availableItems list above, then

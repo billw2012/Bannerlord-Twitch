@@ -168,167 +168,6 @@ Rewards:
     DeactivateSound: 
   Documentation: Heals the streamers character in battle. Doesn't work on the campaign map.
 - RewardSpec:
-    Title: Giant Hero
-    DisableAutomaticFulfillment: false
-    Prompt: 
-    Cost: 300
-    IsEnabled: true
-    BackgroundColorText: 
-    IsUserInputRequired: false
-    MaxPerStream: 
-    MaxPerUserPerStream: 
-    GlobalCooldownSeconds: 
-  Handler: CharacterEffect
-  ID: 5c5188e9-5635-4fc2-bdb6-1e2be9dd0603
-  Enabled: false
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    Name: Giant
-    Target: AdoptedHero
-    TargetOnFootOnly: false
-    ParticleEffects: []
-    Properties:
-    - Name: ArmorHead
-      Add: 50
-      Multiply: 
-    - Name: ArmorTorso
-      Add: 50
-      Multiply: 
-    - Name: ArmorLegs
-      Add: 50
-      Multiply: 
-    - Name: ArmorArms
-      Add: 50
-      Multiply: 
-    - Name: SwingSpeedMultiplier
-      Add: 
-      Multiply: 0.5
-    - Name: MaxSpeedMultiplier
-      Add: 
-      Multiply: 0.75
-    HealPerSecond: 0
-    DamagePerSecond: 0
-    Duration: 
-    ForceDropWeapons: false
-    RemoveArmor: false
-    DamageMultiplier: 2
-    ActivateParticleEffect: psys_burning_projectile_default_coll
-    ActivateSound: 
-    DeactivateParticleEffect: psys_burning_projectile_default_coll
-    DeactivateSound: 
-  Documentation: 
-- RewardSpec:
-    Title: Baby Hero
-    DisableAutomaticFulfillment: false
-    Prompt: 
-    Cost: 300
-    IsEnabled: true
-    BackgroundColorText: 
-    IsUserInputRequired: false
-    MaxPerStream: 
-    MaxPerUserPerStream: 
-    GlobalCooldownSeconds: 
-  Handler: CharacterEffect
-  ID: e3c7dfec-bac5-4294-9825-742e26e7e1df
-  Enabled: false
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    Name: Baby
-    Target: AdoptedHero
-    TargetOnFootOnly: false
-    ParticleEffects: []
-    Properties:
-    - Name: ArmorHead
-      Add: 
-      Multiply: 0.5
-    - Name: ArmorTorso
-      Add: 
-      Multiply: 0.5
-    - Name: ArmorLegs
-      Add: 
-      Multiply: 0.5
-    - Name: ArmorArms
-      Add: 
-      Multiply: 0.5
-    - Name: MaxSpeedMultiplier
-      Add: 
-      Multiply: 1.60000002
-    HealPerSecond: 0
-    DamagePerSecond: 0
-    Duration: 
-    ForceDropWeapons: false
-    RemoveArmor: false
-    DamageMultiplier: 
-    ActivateParticleEffect: psys_burning_projectile_default_coll_small
-    ActivateSound: 
-    DeactivateParticleEffect: psys_burning_projectile_default_coll_small
-    DeactivateSound: 
-  Documentation: 
-- RewardSpec:
-    Title: Attack on Titan
-    DisableAutomaticFulfillment: false
-    Prompt: 
-    Cost: 2000
-    IsEnabled: true
-    BackgroundColorText: 
-    IsUserInputRequired: false
-    MaxPerStream: 
-    MaxPerUserPerStream: 
-    GlobalCooldownSeconds: 
-  Handler: CharacterEffect
-  ID: 245adcfa-0df2-47d3-bff8-707bd10e6c25
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
-  HandlerConfig:
-    Name: Titan
-    Target: EnemyTeam
-    TargetOnFootOnly: true
-    ParticleEffects:
-    - Name: psys_campfire
-      AttachPoint: OnBody
-    - Name: psys_battleground_env_fire
-      AttachPoint: OnHead
-    - Name: psys_cooking_smoke
-      AttachPoint: OnHands
-    - Name: psys_cooking_smoke
-      AttachPoint: OnHead
-    Properties:
-    - Name: ArmorArms
-      Add: 400
-      Multiply: 
-    - Name: ArmorHead
-      Add: 400
-      Multiply: 
-    - Name: ArmorEncumbrance
-      Add: 100
-      Multiply: 
-    - Name: ArmorLegs
-      Add: 400
-      Multiply: 
-    - Name: ArmorTorso
-      Add: 400
-      Multiply: 
-    - Name: MaxSpeedMultiplier
-      Add: 
-      Multiply: 2.5
-    - Name: SwingSpeedMultiplier
-      Add: 
-      Multiply: 0.5
-    HealPerSecond: 0
-    DamagePerSecond: 1
-    Duration: 300
-    ForceDropWeapons: true
-    RemoveArmor: true
-    DamageMultiplier: 10
-    ActivateParticleEffect: psys_burning_projectile_default_coll
-    ActivateSound: 
-    DeactivateParticleEffect: psys_burning_projectile_default_coll
-    DeactivateSound: 
-  Documentation: 
-- RewardSpec:
     Title: Tournament
     DisableAutomaticFulfillment: false
     Prompt: Join the tournament queue with your adopted hero
@@ -614,7 +453,7 @@ Commands:
   ID: da8416ca-e59b-458a-8953-31291d03c835
   Enabled: true
   RespondInTwitch: true
-  RespondInOverlay: false
+  RespondInOverlay: true
   HandlerConfig:
     GoldCost: 100000
     UpdateEquipment: true
@@ -626,7 +465,7 @@ Commands:
   ID: d4fb255c-4bb3-454e-9e26-39b4d7a321f0
   Enabled: true
   RespondInTwitch: true
-  RespondInOverlay: false
+  RespondInOverlay: true
   HandlerConfig:
     AllowCompanionUpgrade: false
     CostTier1: 25000
@@ -644,7 +483,7 @@ Commands:
   ID: 42e45ee9-647f-486f-9764-5e765507a70d
   Enabled: true
   RespondInTwitch: true
-  RespondInOverlay: false
+  RespondInOverlay: true
   HandlerConfig:
     ShowGold: true
     ShowGeneral: false
@@ -731,7 +570,7 @@ Commands:
   ID: aef1ded6-f8dd-4b9a-9d70-96e96d17cb12
   Enabled: true
   RespondInTwitch: true
-  RespondInOverlay: false
+  RespondInOverlay: true
   HandlerConfig: 
   Documentation: You can use this to name your custom items.<br>Usage is <code>!nameitem (name)</code>, for example <code>!nameitem Foehammer</code>.<br>If you call <code>!nameitem</code> on its own it will tell you what item will be named next.
 - Name: bltbet
@@ -786,14 +625,34 @@ Commands:
   RespondInTwitch: true
   RespondInOverlay: true
   HandlerConfig:
-    AuctionDurationInSeconds: 30
-    AuctionReminderIntervalInSeconds: 5
+    AuctionDurationInSeconds: 120
+    AuctionReminderIntervalInSeconds: 30
   Documentation: 
 - Name: bid
   HideHelp: false
   Help: 
   Handler: BidOnItem
   ID: 95bcd31c-154b-4d70-a3e6-cb247efe9fb4
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
+  HandlerConfig: 
+  Documentation: 
+- Name: discarditem
+  HideHelp: false
+  Help: ''
+  Handler: DiscardItem
+  ID: 752eb016-7df1-465c-83c7-80cc88f8c02d
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
+  HandlerConfig: 
+  Documentation: ''
+- Name: giveitem
+  HideHelp: false
+  Help: 
+  Handler: GiveItem
+  ID: 0e255e77-4c17-44ad-aeb8-ff01bbbe0bee
   Enabled: true
   RespondInTwitch: true
   RespondInOverlay: true
@@ -1478,7 +1337,7 @@ SimTesting:
     Weight: 0.00999999978
   - Enabled: true
     Type: Reward
-    Id: Heal Player
+    Id: Heal Streamer
     Args: ''
     Weight: 0.0500000007
   - Enabled: true
@@ -1519,11 +1378,6 @@ SimTesting:
   - Enabled: true
     Type: Reward
     Id: Use Class Power
-    Args: 
-    Weight: 0.200000003
-  - Enabled: true
-    Type: Reward
-    Id: Attack on Titan
     Args: 
     Weight: 0.200000003
 DisableAutomaticFulfillment: false
