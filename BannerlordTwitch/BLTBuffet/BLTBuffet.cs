@@ -14,7 +14,7 @@ namespace BLTBuffet
     public class BLTBuffetModule : MBSubModuleBase
     {
         public const string Name = "BLTBuffet";
-        public const string Ver = "2.0.4";
+        public const string Ver = "2.1.0";
 
         internal static GlobalEffectsConfig EffectsConfig { get; private set; }
 
