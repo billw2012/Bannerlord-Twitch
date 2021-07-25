@@ -7,7 +7,6 @@ using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Annotations;
-using BLTAdoptAHero.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -99,11 +98,11 @@ namespace BLTAdoptAHero
                 onFailure($"You are a player companion, you cannot change your own equipment!");
                 return;
             }
-            // if (Mission.Current != null)
-            // {
-            //     onFailure($"You cannot upgrade equipment, as a mission is active!");
-            //     return;
-            // }
+            if (Mission.Current != null)
+            {
+                onFailure($"You cannot upgrade equipment, as a mission is active!");
+                return;
+            }
 
             int targetTier = Math.Max(0, BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero) +
                              (settings.ReequipInsteadOfUpgrade ? 0 : 1));

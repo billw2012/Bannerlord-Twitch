@@ -674,7 +674,7 @@ namespace BLTAdoptAHero
                     }
                     else
                     {
-                        output($"{seconds} seconds left in auction of {item.GetModifiedItemName()}, no bids placed");
+                        output($"{seconds} seconds left in auction of \"{item.GetModifiedItemName()}\", no bids placed");
                     }
                 });
             }
