@@ -96,7 +96,7 @@ namespace BLTConfigure
             }
         }
 
-        public object OverlayUrl => BLTOverlay.BLTOverlay.UrlRoot;
+        public string OverlayUrl => BLTOverlay.BLTOverlay.UrlRoot;
 
         public BLTConfigureWindow()
         {
@@ -714,6 +714,11 @@ namespace BLTConfigure
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void CopyOverlayUrlButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(OverlayUrl);
         }
     }
     

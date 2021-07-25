@@ -12,16 +12,9 @@
 
 .drop-shadow {
     filter:
-            drop-shadow(-0.05em    +0.08em    0         #0006)      /* BL */
-            drop-shadow(-0.05em     0         0         #0006)      /* CL */
-            drop-shadow(-0.05em    -0.05em    0         #0006)      /* TL */
-            drop-shadow(0          -0.05em    0         #0006)      /* TC */
-            drop-shadow(+0.08em    -0.05em    0         #0006)      /* TR */
-            drop-shadow(+0.08em     0         0         #0006)      /* CR */
-            drop-shadow(+0.08em    +0.08em    0         #0006)      /* BR */
-            drop-shadow(0          +0.08em    0         #0006)      /* BC */
-    /*drop-shadow(-0.05em    -0.05em    0.1em     #0006)*/
-    /*drop-shadow(+0.08em    +0.08em    0.1em     #00F3)*/
+            drop-shadow(0          0    0.1em         #000F)
+            drop-shadow(0          0    0.05em         #000F)
+            drop-shadow(0          0    0.05em         #000F)
 ;
 }
 

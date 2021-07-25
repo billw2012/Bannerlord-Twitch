@@ -100,7 +100,8 @@ namespace BLTOverlay
 }
 
 .bltconsole-text-style-system {
-    color: #5fffff;
+    color: #bbb;
+    font-size: 85%;
 }
 
 .bltconsole-text-style-internal {
@@ -182,19 +183,19 @@ $(function () {
 
     consoleFeedHub.client.addMessage = function (message) {
         const goldRegex = /(\d*⦷)/g;
-        const userNameRegex = /(@[a-zA-Z0-9]*:)/g;
+        const userNameRegex = /(@[a-zA-Z0-9]*)/g;
         const splitMessage = message.message
             .split(goldRegex)
             .map(s => s.split(userNameRegex))
             .reduce((a, b) => a.concat(b))
             .map(s => {
                 if(s.match(goldRegex)) 
-                    return ""<span class='drop-shadow gold-text-style'>"" + s + ""</span>"";
+                    return ""<span class='gold-text-style'>"" + s + ""</span>"";
                 else if(s.match(userNameRegex)) {
                     const nameColor = stringToHslColor(s, 80, 75);
-                    return ""<span class='drop-shadow username-text-style' style='color: "" + nameColor + ""'>"" + s + ""</span><span class='default-text-style drop-shadow'></span>"";
+                    return ""<span class='username-text-style' style='color: "" + nameColor + ""'>"" + s + ""</span><span class='default-text-style'></span>"";
                 }
-                return ""<span class='default-text-style drop-shadow'>"" + s + ""</span>"";
+                return ""<span class='default-text-style'>"" + s + ""</span>"";
             });
         const processedMessage = {
             id: message.id,

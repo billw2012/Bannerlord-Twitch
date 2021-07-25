@@ -215,6 +215,65 @@
             </TabItem>
             <TabItem>
                 <TabItem.Header>
+                    <TextBlock Margin="10 2">Overlay</TextBlock>
+                </TabItem.Header>
+                <StackPanel>
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Margin" Value="15 5"></Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    <TextBlock TextWrapping="Wrap" FontSize="20">
+                        The BLT Overlay is now provided as a browser source. When you run the game for the first time
+                        it should request authorization to reserve the port required, after which you can use the overlay. 
+                    </TextBlock>
+                    <Separator Height="20"></Separator>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock TextWrapping="Wrap" FontSize="20">
+                            Overlay Url: 
+                            <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
+                                       NavigateUri="{Binding OverlayUrl, Mode=OneWay}">
+                                <Run Text="{Binding OverlayUrl, Mode=OneWay}"/>
+                            </Hyperlink>
+                        </TextBlock>
+                        <Button Click="CopyOverlayUrlButton_OnClick" Margin="20 0" VerticalAlignment="Center">Copy to clipboard</Button>
+                    </StackPanel>
+                    <Separator Height="20"></Separator>
+                    <TextBlock TextWrapping="Wrap">
+                        <Bold>How to use the overlay:</Bold> <LineBreak/>
+                        <Bold>1.</Bold> Add a Browser Source in OBS (other streaming software should have a similar thing) <LineBreak/>
+                        <Bold>2.</Bold> Copy the Url from above and enter it where indicated<LineBreak/>
+                        <Bold>3.</Bold> Check <Italic>Refresh browser when scene becomes active</Italic><LineBreak/>
+                        <Bold>4.</Bold> A size of something like 400 width and 800 height is appropriate. 
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap">
+                        You should try to avoid stretching the overlay if you can help it, as it will look blurry. You
+                        can reset it to its true size by right clicking the source, going to <Italic>Transform</Italic> and then 
+                        <Italic>Reset Transform</Italic> (shortcut is Ctrl+R in OBS)
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap">
+                        If you want to make it appear larger or smaller you should add 
+                        <Run FontFamily="Courier New">font-size: 170%</Run> (or whatever % you require, the default is 150%) to the Custom CSS, 
+                        so it will look something like:
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" FontFamily="Courier New" Margin="20 0" FontSize="14">
+                        body { background-color: rgba(0, 0, 0, 0); overflow: hidden; font-size: 170% }
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap">
+                        <Run FontFamily="Courier New">font-size</Run> will actually apply scaling to everything in the overlay, not just the font.
+                    </TextBlock>
+                    <Separator Height="20"></Separator>
+                    <TextBlock TextWrapping="Wrap">
+                        The overlay will attempt to reconnect if you close and restart the game within a short period of time (6 hours). If you start OBS before you run the game, then you will need to refresh the browser source once you do run the game (there is a button for it in OBS, when you have the browser source selected). Alternatively you can switch scenes to refresh it.
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap">
+                        The overlay should work from any computer on your network, as well as the one the game
+                        is running on.
+                    </TextBlock>
+                </StackPanel>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
                     <TextBlock Margin="10 2">Documentation</TextBlock>
                 </TabItem.Header>
                 <Grid>
@@ -380,31 +439,10 @@
                             (redemptions will remain in the queue to be refunded or completed at the streamers 
                             discretion)</TextBlock>
                     </CheckBox>
-                    <Separator Height="20"/>
-                    <TextBlock TextWrapping="Wrap" FontSize="20">
-                        Overlay Link<LineBreak/>
-                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
-                                   NavigateUri="{Binding OverlayUrl, Mode=OneWay}">
-                            <Run Text="{Binding OverlayUrl, Mode=OneWay}"/>
-                        </Hyperlink>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap">
-                       To use this overlay: <LineBreak/>
-                       <Bold>1.</Bold> Add a Browser Source in OBS <LineBreak/>
-                       <Bold>2.</Bold> Enter the URL <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
-                                                                NavigateUri="{Binding OverlayUrl, Mode=OneWay}">
-                           <Run Text="{Binding OverlayUrl, Mode=OneWay}"/>
-                       </Hyperlink><LineBreak/>
-                       <Bold>3.</Bold> Ensure that Custom CSS section has <Bold>background-color: rgba(0, 0, 0, 0)</Bold><LineBreak/>
-                       <Bold>4.</Bold> Check <Bold>Refresh browser when scene becomes active</Bold><LineBreak/>
-                       When you launch the game you should toggle to another scene and back to force the source 
-                       to refresh.<LineBreak/>
-                       The overlay should work from any computer on your network, as well as the one the game
-                       is running on.
-                    </TextBlock>
                 </StackPanel>
                 </ScrollViewer>
             </TabItem>
+
         </TabControl>
     </DockPanel>
 </Window>
