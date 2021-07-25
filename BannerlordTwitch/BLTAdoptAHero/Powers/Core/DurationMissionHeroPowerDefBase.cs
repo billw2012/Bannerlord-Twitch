@@ -91,6 +91,11 @@ namespace BLTAdoptAHero.Powers
                     expiryCallback();
                     deactivationHandler.Deactivate(hero);
                 };
+                handlers.OnMissionOver += _ =>
+                {
+                    // It will be called multiple times, but its not costly
+                    expiry.Clear();
+                };
                 OnActivation(hero, handlers, agent, deactivationHandler);
             });
         }
