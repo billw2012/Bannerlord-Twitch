@@ -197,9 +197,15 @@ namespace BannerlordTwitch
                 Log.LogFeedFail($"ERROR: Couldn't retrieve existing rewards: {e.Message}");
             }
 
-            bool anyFailed = false;
+            var failures = new List<string>();
             foreach (var rewardDef in settings.EnabledRewards.Where(r => existingRewards == null || existingRewards.Data.All(e => e.Title != r.RewardSpec?.Title)))
             {
+                if (rewardDef.RewardSpec.Cost <= 0)
+                {
+                    Log.LogFeedCritical($"Skipping creating reward {rewardDef.RewardSpec.Title}: you must give it a cost greater than 0");
+                    failures.Add($"{rewardDef.RewardSpec.Title}: you must give it a cost greater than 0");
+                    continue;
+                }
                 try
                 {
                     var createdReward = (await api.Helix.ChannelPoints.CreateCustomRewards(channelId, rewardDef.RewardSpec.GetTwitchSpec(), authSettings.AccessToken)).Data.First();
@@ -208,16 +214,16 @@ namespace BannerlordTwitch
                 catch (Exception e)
                 {
                     Log.LogFeedCritical($"Couldn't create reward {rewardDef.RewardSpec.Title}: {e.Message}");
-                    anyFailed = true;
+                    failures.Add($"{rewardDef.RewardSpec.Title}: {e.Message}");
                 }
             }
 
-            if (anyFailed)
+            if (failures.Any())
             {
                 InformationManager.ShowInquiry(
                     new InquiryData(
                         "Bannerlord Twitch",
-                        $"Failed to create some of the channel rewards, please check the logs for details!",
+                        $"Failed to create some of the channel rewards:\n" + string.Join("\n", failures),
                         true, false, "Okay", null,
                         () => {}, () => {}), true);
             }
