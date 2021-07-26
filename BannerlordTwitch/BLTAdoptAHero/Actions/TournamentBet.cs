@@ -37,7 +37,7 @@ namespace BLTAdoptAHero
             {
                 nameIdx = 0;
             }
-            if(gold == 0 || nameIdx == -1)
+            if(gold <= 0 || nameIdx == -1)
             {
                 ActionManager.SendReply(context, $"Invalid gold argument");
                 return;
