@@ -367,7 +367,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Overlay\web\index-template.html" />
-    <Content Include="Overlay\web\index-test.html" />
     <Content Include="Overlay\web\Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Overlay\web\Scripts\jquery-1.6.4.js" />
     <Content Include="Overlay\web\Scripts\jquery-1.6.4.min.js" />

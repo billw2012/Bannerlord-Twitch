@@ -6,33 +6,7 @@
             internalId: -1,
         }
     });
-    $.connection.hub.url = '$url_root$/signalr';
-    $.connection.hub.error(function (error) {
-        console.log('Overlay error: ' + error);
-        // bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay error: ' + error, style: 'fail' });
-    });
-    $.connection.hub.starting(function () {
-        console.log('Overlay starting');
-        bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay starting...', style: 'internal' });
-    });
-    $.connection.hub.connectionSlow(function () {
-        console.log('Overlay connectionSlow');
-        bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay connection slow', style: 'internal' });
-    });
-    $.connection.hub.reconnecting(function () {
-        console.log('Overlay reconnecting');
-        bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay reconnecting...', style: 'internal' });
-    });
-    $.connection.hub.reconnected(function () {
-        console.log('Overlay reconnected');
-        bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay reconnected', style: 'internal' });
-    });
-    $.connection.hub.disconnected(function () {
-        console.log('Overlay disconnected');
-        bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay disconnected', style: 'internal' });
-    });
-    const consoleFeedHub = $.connection.consoleFeedHub;
-
+    
     function stringToHslColor(str, s, l) {
         let hash = 0;
         for (let i = 0; i < str.length; i++) {
@@ -41,8 +15,8 @@
         const h = hash % 360;
         return 'hsl('+h+', '+s+'%, '+l+'%)';
     }
-
-    consoleFeedHub.client.addMessage = function (message) {
+    
+    function addMessage(message) {
         const goldRegex = /(\d*⦷)/g;
         const userNameRegex = /(@[a-zA-Z0-9]*)/g;
         const splitMessage = message.message
@@ -70,12 +44,49 @@
             bltConsole.items.shift();
         }
         //console.log(processedMessage);
-    };
-    $.connection.hub.start().done(function () {
-        console.log('BLT Console Hub connected');
-    }).fail(function(){
-        bltConsole.items.push({ id: bltConsole.internalId--, message: 'BLT Console Hub started could not connect',
-            style: 'fail' });
-        console.log('BLT Console Hub started could not connect');
-    });
+    }
+
+    if(typeof $.connection.consoleFeedHub !== 'undefined') {
+        $.connection.hub.url = '$url_root$/signalr';
+        $.connection.hub.error(function (error) {
+            console.log('Overlay error: ' + error);
+            // bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay error: ' + error, style: 'fail' });
+        });
+        $.connection.hub.starting(function () {
+            console.log('Overlay starting');
+            bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay starting...', style: 'internal' });
+        });
+        $.connection.hub.connectionSlow(function () {
+            console.log('Overlay connectionSlow');
+            bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay connection slow', style: 'internal' });
+        });
+        $.connection.hub.reconnecting(function () {
+            console.log('Overlay reconnecting');
+            bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay reconnecting...', style: 'internal' });
+        });
+        $.connection.hub.reconnected(function () {
+            console.log('Overlay reconnected');
+            bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay reconnected', style: 'internal' });
+        });
+        $.connection.hub.disconnected(function () {
+            console.log('Overlay disconnected');
+            bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay disconnected', style: 'internal' });
+        });
+        const consoleFeedHub = $.connection.consoleFeedHub;
+        
+        consoleFeedHub.client.addMessage = addMessage;
+        $.connection.hub.start().done(function () {
+            console.log('BLT Console Hub connected');
+        }).fail(function () {
+            bltConsole.items.push({
+                id: bltConsole.internalId--, message: 'BLT Console Hub started could not connect',
+                style: 'fail'
+            });
+            console.log('BLT Console Hub started could not connect');
+        });
+    } else {
+        addMessage({ id: 0, message: "TESTING MODE", style: "system" });
+        addMessage({ id: 1, message: "Version x.y.z", style: "system" });
+        addMessage({ id: 2, message: "@testName: some message!", style: "response" });
+    }
 });
