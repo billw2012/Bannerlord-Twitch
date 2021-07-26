@@ -197,29 +197,46 @@ namespace BLTConfigure
 
         private static string ProtectString(string unprotectedString)
         {
-            byte[] pwBytes = Encoding.ASCII.GetBytes(unprotectedString);
-            var ms = new MemoryStream();
-            var writer = new BinaryWriter(ms);
-            writer.Write(pwBytes.Length);
-            writer.Write(pwBytes);
-            while (ms.Length % 16 != 0)
+            try
             {
-                writer.Write((byte)0);
+                byte[] pwBytes = Encoding.ASCII.GetBytes(unprotectedString);
+                var ms = new MemoryStream();
+                var writer = new BinaryWriter(ms);
+                writer.Write(pwBytes.Length);
+                writer.Write(pwBytes);
+                while (ms.Length % 16 != 0)
+                {
+                    writer.Write((byte) 0);
+                }
+
+                byte[] packedBytes = ms.GetBuffer();
+                ProtectedMemory.Protect(packedBytes, MemoryProtectionScope.SameLogon);
+                return Convert.ToBase64String(packedBytes);
             }
-            byte[] packedBytes = ms.GetBuffer();
-            ProtectedMemory.Protect(packedBytes, MemoryProtectionScope.SameLogon);
-            return Convert.ToBase64String(packedBytes);
+            catch (Exception ex)
+            {
+                Log.Error($"Couldn't encrypt string: {ex.Message}");
+                return string.Empty;
+            }
         }
         
         private static string UnprotectString(string protectedString)
         {
-            byte[] bytes = Convert.FromBase64String(protectedString);
-            ProtectedMemory.Unprotect(bytes, MemoryProtectionScope.SameLogon);
-            var ms = new MemoryStream(bytes);
-            var reader = new BinaryReader(ms);
-            int len = reader.ReadInt32();
-            byte[] pwBytes = reader.ReadBytes(len);
-            return Encoding.ASCII.GetString(pwBytes);
+            try
+            {
+                byte[] bytes = Convert.FromBase64String(protectedString);
+                ProtectedMemory.Unprotect(bytes, MemoryProtectionScope.SameLogon);
+                var ms = new MemoryStream(bytes);
+                var reader = new BinaryReader(ms);
+                int len = reader.ReadInt32();
+                byte[] pwBytes = reader.ReadBytes(len);
+                return Encoding.ASCII.GetString(pwBytes);
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Couldn't un-encrypt string: {ex.Message}");
+                return string.Empty;
+            }
         }
         
         private void StoreNeocitiesLogin()
