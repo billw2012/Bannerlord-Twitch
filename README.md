@@ -40,7 +40,7 @@ Possible changes:
 
 ### [Installation Guide Video](https://youtu.be/ATf5zilwNWk)
 
-1. Install [Bannerlord Harmony](https://www.nexusmods.com/mountandblade2bannerlord/mods/2006?tab=files).
+1. Install [Bannerlord Harmony](https://www.nexusmods.com/mountandblade2bannerlord/mods/2006?tab=files) and [ButterLib](https://www.nexusmods.com/mountandblade2bannerlord/mods/2018?tab=files).
    
 2. Unzip to the Bannerlords Modules directory (by default at `C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules`).
    It should create the `BannerlordTwitch` directory, and the `BannerlordTwitch.dll` should be at `Modules\BannerlordTwitch\bin\Win64_Shipping_Client\BannerlordTwitch.dll`
