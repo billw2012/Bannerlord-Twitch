@@ -1,0 +1,36 @@
+﻿<div id='tournament-container' class='drop-shadow-highlight'>
+    <div v-if='tournamentSize > 0' class='tournament-container-inner'>
+        <div id='tournament-label' class='drop-shadow'>
+            Tournament
+        </div>
+        <div id='tournament-items' class='drop-shadow'>
+            <div v-for='index in range(0, Math.max(tournamentSize, entrants))' class='tournament-range'>
+                <transition name='tournament-entry-t' tag='div' mode='out-in' appear>
+                    <div v-if='index < entrants && index < tournamentSize - 1'
+                         class='tournament-entry tournament-in-next' v-bind:key="index + 'in-next'"></div>
+                    <div v-else-if='index < entrants && index === tournamentSize - 1'
+                         class='tournament-entry tournament-last-slot' v-bind:key="index + 'last-slot'"></div>
+                    <div v-else-if='index > tournamentSize - 1'
+                         class='tournament-entry tournament-overflow' v-bind:key="index + 'overflow'"></div>
+                    <div v-else
+                         class='tournament-entry tournament-empty' v-bind:key="index + 'empty'"></div>
+                </transition>
+            </div>
+        </div>
+    </div>
+    <div v-if="bettingState === 'open'" class='tournament-bets-label drop-shadow'>
+        Betting is&nbsp;<span style='color: green'>OPEN</span>
+    </div>
+    <div v-else-if="bettingState === 'closed'" class='tournament-bets-label drop-shadow'>
+        Betting is&nbsp;<span style='color: red'>CLOSED</span>
+    </div>
+    <div v-else-if="bettingState === 'disabled'" class='tournament-bets-label drop-shadow'>
+        <span style='color: gray'>Not taking bets</span>
+    </div>
+    <div v-if="bettingState === 'open' || bettingState === 'closed'" class='drop-shadow tournament-bets-items'>
+        <div v-for='(bet, index) in bets' class='tournament-bet'
+             v-bind:class="'tournament-bet-side-' + index">
+            <div class='tournament-bet-text gold-text-style'>{{bet}}⦷</div>
+        </div>
+    </div>
+</div>

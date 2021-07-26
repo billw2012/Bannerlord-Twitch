@@ -31,7 +31,11 @@
         }
 
         .bltconsole-text-style-general {
-            color: white;
+            color: #ebc8ff;
+            margin-left: 1.25em;
+            display: list-item;
+            list-style-type: disc;
+            list-style-position: outside;
         }
 
         .bltconsole-text-style-response {
@@ -39,11 +43,17 @@
         }
 
         .bltconsole-text-style-system {
-            color: cyan;
+            color: #bbb;
+            font-size: 85%;
+        }
+
+        .bltconsole-text-style-internal {
+            color: #bbb;
+            font-size: 85%;
         }
 
         .bltconsole-text-style-battle {
-            color: yellow;
+            color: #ffff4e;
         }
 
         .bltconsole-text-style-event {
@@ -51,12 +61,12 @@
         }
 
         .bltconsole-text-style-fail {
-            color: red;
+            color: #ff4e4e;
             font-weight: bold;
         }
 
         .bltconsole-text-style-critical {
-            color: red;
+            color: #ff1717;
         }
 
 
@@ -137,13 +147,15 @@
             }
         }
 
-        .tournament-bets-container-inner {
+
+        .tournament-bets-items {
             display: flex;
             flex-direction: row;
-            margin-top: 1em;
+            margin-top: 0.3em;
+            flex-wrap: wrap;
+            align-items: center;
         }
-
-        #tournament-bets-label {
+        .tournament-bets-label {
             font-weight: bold;
             margin-right: 0.6em;
             display: flex;
@@ -151,22 +163,19 @@
             margin-bottom: 0.1em;
         }
 
-        #tournament-bets-items {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        
         .tournament-bet {
             margin: 0.2em;
             display: flex;
             border-radius: 0.5em;
             padding: 0.1em 0.5em 0.1em;
-            min-width: 2.2em;
-            color: white;
+            min-width: 3em;
             justify-content: center;
             border: gold solid 0.1em;
+        }
+
+        .tournament-bet-text {
+            font-weight: 600;
+            font-size: 120%;
         }
 
         .tournament-bet-side-0 {
@@ -185,17 +194,30 @@
     </style>
     <style type="text/css">
 
+
         #mission-container {
-            display: flex;
-            flex-direction: row;
             margin-top: 1em;
         }
+
         #mission-heroes {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             align-items: stretch;
         }
+
+        #mission-key {
+            margin: 0.1em auto;
+            font-size: 85%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mission-key-label {
+            margin-right: 0.5em;
+            color: greenyellow;
+        }
+
         .mission-hero {
             min-width: 6em;
             max-width: 10em;
@@ -259,14 +281,16 @@
             background: #939300;
         }
 
-
         .mission-hero-active-power-remaining {
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 0.5em;
-            background: orange;
+            width: 0.4em;
+            background-image: linear-gradient(to right, orange, yellow, white);
             clip: auto;
+            filter: drop-shadow(0 0 0.05em orange)
+            drop-shadow(0 0 0.05em orange)
+            drop-shadow(0 0 0.3em orange);
         }
 
         .mission-hero-name-row {
@@ -280,8 +304,12 @@
             height: 1.25em;
             flex-shrink: 0;
             flex-basis: 1.25em;
-            margin: -0.1em -0.3em 0 0.1em;
+            margin: 0.1em -0.3em 0 -0.1em;
             align-self: center;
+            filter: drop-shadow(0           0         0.03em    yellow)
+            drop-shadow(0           0         0.07em    yellow)
+            drop-shadow(0           0         0.2em     orange)
+        ;
         }
         .mission-hero-name {
             text-align: center;
@@ -295,35 +323,51 @@
         }
 
         .mission-hero-state-routed {
-            color: #ffc100;
+            filter:
+                    drop-shadow(0 0 0.1em black)
+                    drop-shadow(0 0 0.1em black)
+                    drop-shadow(0 0 0.1em black)
+                    drop-shadow(0 0 0.5em yellow)
+                    drop-shadow(0 0 0.25em yellow)
+        ;
         }
 
         .mission-hero-state-unconscious {
-            color: #ee8300;
+            filter:
+                    drop-shadow(0 0 0.1em black)
+                    drop-shadow(0 0 0.1em black)
+                    drop-shadow(0 0 0.1em black)
+                    drop-shadow(0 0 0.5em orange)
+                    drop-shadow(0 0 0.25em orange)
+        ;
         }
 
         .mission-hero-state-killed {
-            color: #ff0000;
+            filter:
+                    drop-shadow(0 0 0.1em black)
+                    drop-shadow(0 0 0.1em black)
+                    drop-shadow(0 0 0.1em black)
+                    drop-shadow(0 0 0.5em red)
+                    drop-shadow(0 0 0.25em red)
+        ;
         }
 
         .mission-hero-score-row {
             display: flex;
             flex-direction: row;
-            margin-top: -0.1em;
-            margin-left: 0.3em;
-            margin-right: 0.3em;
-            margin-bottom: 0;
+            margin: -0.1em 0.3em 0;
+        }
+
+        .mission-hero-kills-layer {
+            filter:
+                    drop-shadow(0 0 1em white)
+                    drop-shadow(0 0 1em white)
+        ;
         }
 
         .mission-hero-kills {
             font-size: 115%;
             margin-top: -0.1em;
-            transition: 0.3s;
-        }
-
-        .mission-hero-kills-t-active {
-            opacity: 0;
-            transform: scale(3);
         }
 
         .mission-hero-retinue-kills {
@@ -356,8 +400,8 @@
         }
 
         .hero-retinue-list-item {
-            height: 0.4em;
-            width: 0.4em;
+            height: 0.35em;
+            width: 0.35em;
             border-radius: 50%;
             display: inline-block;
             box-sizing: border-box;
@@ -379,7 +423,7 @@
         <div id='bltconsole-items'>
             <transition-group name='bltconsole-items-t' tag='div'>
                 <div class='bltconsole-entry' v-for='item in items' v-bind:key='item.id'>
-                    <div class='bltconsole-text' v-bind:class="'bltconsole-text-style-' + item.style">{{item.message}}</div>
+                    <div class='bltconsole-text' v-bind:class="'bltconsole-text-style-' + item.style" v-html='item.message'></div>
                 </div>
             </transition-group>
         </div>
@@ -406,22 +450,26 @@
                 </div>
             </div>
         </div>
-        <div v-if='anyBets' class='tournament-bets-container-inner'>
-            <div id='tournament-bets-label' class='drop-shadow'>
-                Bets
-            </div>
-            <div id='tournament-bets-items' class='drop-shadow'>
-                <div v-for='(bet, index) in bets' v-if='bet > 0' class='tournament-bet'
-                     v-bind:class="'tournament-bet-side-' + index">
-                    {{bet}}
-                </div>
+        <div v-if="bettingState === 'open'" class='tournament-bets-label drop-shadow'>
+            Betting is&nbsp;<span style='color: green'>OPEN</span>
+        </div>
+        <div v-else-if="bettingState === 'closed'" class='tournament-bets-label drop-shadow'>
+            Betting is&nbsp;<span style='color: red'>CLOSED</span>
+        </div>
+        <div v-else-if="bettingState === 'disabled'" class='tournament-bets-label drop-shadow'>
+            <span style='color: gray'>Not taking bets</span>
+        </div>
+        <div v-if="bettingState === 'open' || bettingState === 'closed'" class='drop-shadow tournament-bets-items'>
+            <div v-for='(bet, index) in bets' class='tournament-bet'
+                 v-bind:class="'tournament-bet-side-' + index">
+                <div class='tournament-bet-text gold-text-style'>{{bet}}⦷</div>
             </div>
         </div>
     </div>
 
 
-    <div id='mission-container' class='drop-shadow'>
-        <transition-group name='mission-heroes-t' tag='div' id='mission-heroes'>
+    <div id='mission-container'>
+        <div id='mission-heroes' class='drop-shadow'>
             <div class='mission-hero' v-for='hero in sortedHeroes'
                  v-bind:key='hero.Name'>
                 <div class='mission-hero-inner'
@@ -432,29 +480,28 @@
                          class='mission-hero-active-power-remaining'
                          v-bind:style="{ height: hero.ActivePowerFractionRemaining * 100 + '%' }"></div>
                     <div class='mission-hero-name-row'>
-                        <div class='mission-hero-summon-cooldown outline'>
+                        <div class='mission-hero-summon-cooldown'>
                             <progress-ring :radius='10'
-                                           color='yellow'
+                                           color='white'
                                            :progress='hero.CooldownFractionRemaining * 100'
-                                           :stroke='10'></progress-ring>
+                                           :stroke='4'></progress-ring>
                         </div>
                         <div class='mission-hero-name drop-shadow-2'
                              v-bind:class="'mission-hero-state-' + hero.State">{{hero.Name}}</div>
                     </div>
-                    <div class='mission-hero-score-row drop-shadow-2'>
-                        <div v-show='hero.Kills > 0' class='mission-hero-kills'>
-                            <transition name='mission-hero-kills-t'>
-                                <div :key='hero.Kills'>
-                                    {{hero.Kills}}
-                                </div>
-                            </transition>
+                    <div class='mission-hero-score-row'>
+                        <div v-show='hero.Kills > 0' class='mission-hero-kills-layer'>
+
+                            <div class='mission-hero-kills drop-shadow-2'>
+                                {{hero.Kills}}
+                            </div>
                         </div>
-                        <div v-show='hero.RetinueKills > 0' class='mission-hero-retinue-kills'>
+                        <div v-show='hero.RetinueKills > 0' class='mission-hero-retinue-kills drop-shadow-2'>
                             +{{hero.RetinueKills}}</div>
                         <div class='mission-hero-gold-xp'>
-                            <div v-show='hero.GoldEarned > 0' class='mission-hero-gold'>
+                            <div v-show='hero.GoldEarned > 0' class='mission-hero-gold drop-shadow-2'>
                                 {{Math.round(hero.GoldEarned / 1000)}}k</div>
-                            <div v-show='hero.XPEarned > 0' class='mission-hero-xp'>
+                            <div v-show='hero.XPEarned > 0' class='mission-hero-xp drop-shadow-2'>
                                 {{Math.round(hero.XPEarned / 1000)}}k</div>
                         </div>
                     </div>
@@ -463,9 +510,20 @@
                     <div v-for='index in Math.min(hero.Retinue, 5)' class='hero-retinue-list-item'></div>
                 </div>
             </div>
-        </transition-group>
+        </div>
+        <div id='mission-key' v-if='sortedHeroes.length > 0'>
+            <div class='mission-hero-score-row drop-shadow'>
+                <div class='mission-hero-kills'>Kills</div>
+                <div class='mission-hero-retinue-kills'>+Retinue Kills</div>
+                <div class='mission-hero-gold'>Gold</div>
+                <div class='mission-hero-xp'>XP</div>
+            </div>
+        </div>
     </div>
 
+    <div class='version-text'>
+        BLTv2.1.0
+    </div>
 </div>
 <script type="text/javascript">
     // A circular progress bar 
@@ -492,17 +550,17 @@
         },
         template: `
           <svg :viewBox="'0 0 ' + radius*2 + ' ' + radius*2" width="100%" height="100%">
-              <circle
-                  class="circular-progress-bar"
-                  :stroke="color"
-                  :stroke-dasharray="circumference + ' ' + circumference"
-                  :style="{ strokeDashoffset: strokeDashoffset }"
-                  :stroke-width="stroke"
-                  fill="transparent"
-                  :r="normalizedRadius"
-                  :cx="radius"
-                  :cy="radius"
-              />
+          <circle
+              class="circular-progress-bar"
+              :stroke="color"
+              :stroke-dasharray="circumference + ' ' + circumference"
+              :style="{ strokeDashoffset: strokeDashoffset }"
+              :stroke-width="stroke"
+              fill="transparent"
+              :r="normalizedRadius"
+              :cx="radius"
+              :cy="radius"
+          />
           </svg>`
     });
 </script>

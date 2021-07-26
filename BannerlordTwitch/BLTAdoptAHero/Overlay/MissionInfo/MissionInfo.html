@@ -1,0 +1,51 @@
+﻿<div id='mission-container'>
+    <div id='mission-heroes' class='drop-shadow'>
+        <div class='mission-hero' v-for='hero in sortedHeroes' v-bind:key='hero.Name'>
+            <div class='mission-hero-inner'
+                 v-bind:class="[hero.IsPlayerSide ? 'mission-hero-player-side' : 'mission-hero-other-side', 'mission-hero-tournament-side-' + hero.TournamentTeam]">
+                <div class='mission-hero-health'
+                     v-bind:style="{ width: (hero.HP * 100 / hero.MaxHP) + '%' }"></div>
+                <div v-show='hero.ActivePowerFractionRemaining > 0'
+                     class='mission-hero-active-power-remaining'
+                     v-bind:style="{ height: hero.ActivePowerFractionRemaining * 100 + '%' }"></div>
+                <div class='mission-hero-name-row'>
+                    <div class='mission-hero-summon-cooldown'>
+                        <progress-ring :radius='10'
+                                       color='white'
+                                       :progress='hero.CooldownFractionRemaining * 100'
+                                       :stroke='4'></progress-ring>
+                    </div>
+                    <div class='mission-hero-name drop-shadow-2'
+                         v-bind:class="'mission-hero-state-' + hero.State">{{hero.Name}}</div>
+                </div>
+                <div class='mission-hero-score-row'>
+                    <div v-show='hero.Kills > 0' class='mission-hero-kills-layer'>
+
+                        <div class='mission-hero-kills drop-shadow-2'>
+                            {{hero.Kills}}
+                        </div>
+                    </div>
+                    <div v-show='hero.RetinueKills > 0' class='mission-hero-retinue-kills drop-shadow-2'>
+                        +{{hero.RetinueKills}}</div>
+                    <div class='mission-hero-gold-xp'>
+                        <div v-show='hero.GoldEarned > 0' class='mission-hero-gold drop-shadow-2'>
+                            {{Math.round(hero.GoldEarned / 1000)}}k</div>
+                        <div v-show='hero.XPEarned > 0' class='mission-hero-xp drop-shadow-2'>
+                            {{Math.round(hero.XPEarned / 1000)}}k</div>
+                    </div>
+                </div>
+            </div>
+            <div class='hero-retinue-list drop-shadow-2'>
+                <div v-for='index in Math.min(hero.Retinue, 5)' class='hero-retinue-list-item'></div>
+            </div>
+        </div>
+    </div>
+    <div id='mission-key' v-if='sortedHeroes.length > 0'>
+        <div class='mission-hero-score-row drop-shadow'>
+            <div class='mission-hero-kills'>Kills</div>
+            <div class='mission-hero-retinue-kills'>+Retinue Kills</div>
+            <div class='mission-hero-gold'>Gold</div>
+            <div class='mission-hero-xp'>XP</div>
+        </div>
+    </div>
+</div>

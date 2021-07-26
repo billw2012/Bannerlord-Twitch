@@ -1,0 +1,214 @@
+﻿
+#mission-container {
+    margin-top: 1em;
+}
+
+#mission-heroes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+#mission-key {
+    margin: 0.1em auto;
+    font-size: 85%;
+    display: flex;
+    justify-content: center;
+}
+
+.mission-key-label {
+    margin-right: 0.5em;
+    color: greenyellow;
+}
+
+.mission-hero {
+    min-width: 6em;
+    max-width: 10em;
+    margin: 0.3em;
+    flex-grow: 1;
+}
+.mission-hero-inner {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 0.3em;
+    overflow: hidden;
+    height: 100%;
+}
+.mission-hero div {
+    z-index: 1;
+}
+
+.mission-hero-health {
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    margin: 0;
+}
+
+.mission-hero-player-side {
+    background: #202050;
+}
+.mission-hero-other-side {
+    background: #401122;
+}
+.mission-hero-player-side .mission-hero-health {
+    background: #6666CC;
+}
+.mission-hero-other-side .mission-hero-health {
+    background: #AA3277;
+}
+
+.mission-hero-tournament-side-0 {
+    background: #181858;
+}
+.mission-hero-tournament-side-0 .mission-hero-health {
+    background: #5e5ef5;
+}
+.mission-hero-tournament-side-1 {
+    background: #3e1010;
+}
+.mission-hero-tournament-side-1 .mission-hero-health {
+    background: #a13b3b;
+}
+.mission-hero-tournament-side-2 {
+    background: #10390c;
+}
+.mission-hero-tournament-side-2 .mission-hero-health {
+    background: #2e901f;
+}
+.mission-hero-tournament-side-3 {
+    background: #454512;
+}
+.mission-hero-tournament-side-3 .mission-hero-health {
+    background: #939300;
+}
+
+.mission-hero-active-power-remaining {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0.4em;
+    background-image: linear-gradient(to right, orange, yellow, white);
+    clip: auto;
+    filter: drop-shadow(0 0 0.05em orange)
+    drop-shadow(0 0 0.05em orange)
+    drop-shadow(0 0 0.3em orange);
+}
+
+.mission-hero-name-row {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0.2em 0.3em 0.2em;
+}
+
+.mission-hero-summon-cooldown {
+    width: 1.25em;
+    height: 1.25em;
+    flex-shrink: 0;
+    flex-basis: 1.25em;
+    margin: 0.1em -0.3em 0 -0.1em;
+    align-self: center;
+    filter: drop-shadow(0           0         0.03em    yellow)
+    drop-shadow(0           0         0.07em    yellow)
+    drop-shadow(0           0         0.2em     orange)
+;
+}
+.mission-hero-name {
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    align-self: baseline;
+    color: white;
+}
+
+.mission-hero-state-routed {
+    filter:
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.5em yellow)
+            drop-shadow(0 0 0.25em yellow)
+;
+}
+
+.mission-hero-state-unconscious {
+    filter:
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.5em orange)
+            drop-shadow(0 0 0.25em orange)
+;
+}
+
+.mission-hero-state-killed {
+    filter:
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.1em black)
+            drop-shadow(0 0 0.5em red)
+            drop-shadow(0 0 0.25em red)
+;
+}
+
+.mission-hero-score-row {
+    display: flex;
+    flex-direction: row;
+    margin: -0.1em 0.3em 0;
+}
+
+.mission-hero-kills-layer {
+    filter:
+            drop-shadow(0 0 1em white)
+            drop-shadow(0 0 1em white)
+;
+}
+
+.mission-hero-kills {
+    font-size: 115%;
+    margin-top: -0.1em;
+}
+
+.mission-hero-retinue-kills {
+    align-self: stretch;
+    color: cyan;
+}
+
+.mission-hero-gold-xp {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+}
+
+.mission-hero-gold {
+    color: gold;
+    margin-left: 0.5em;
+    margin-right: 0.3em;
+}
+
+.mission-hero-xp {
+    color: #FF7FB0;
+}
+
+.hero-retinue-list {
+    display: flex;
+    flex-direction: row;
+    max-height: 0;
+    position: relative;
+    justify-content: center;
+}
+
+.hero-retinue-list-item {
+    height: 0.35em;
+    width: 0.35em;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    background: cyan;
+    margin: -0.15em 0.2em 0.2em 0.2em;
+}

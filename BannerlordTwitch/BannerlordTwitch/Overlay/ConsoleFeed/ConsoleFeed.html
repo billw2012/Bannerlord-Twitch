@@ -1,0 +1,10 @@
+﻿<div id='bltconsole-container' class='drop-shadow'>
+    <div id='bltconsole-items'>
+        <transition-group name='bltconsole-items-t' tag='div'>
+            <div class='bltconsole-entry' v-for='item in items' v-bind:key='item.id'>
+                <div class='bltconsole-text' 
+                     v-bind:class="'bltconsole-text-style-' + item.style" v-html='item.message'></div>
+            </div>
+        </transition-group>
+    </div>
+</div>

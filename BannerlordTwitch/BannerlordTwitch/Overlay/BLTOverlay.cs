@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Principal;
 using System.Windows;
 using BannerlordTwitch.Util;
 using Microsoft.AspNet.SignalR;
@@ -113,10 +114,15 @@ namespace BLTOverlay
 
                         try
                         {
+                            // Get the translated version of the "everyone" user account
+                            var sid = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
+                            var account = (NTAccount) sid?.Translate(typeof(NTAccount)); 
+                            
                             var proc = Process.Start(new ProcessStartInfo("cmd.exe")
                             {
                                 Arguments =
-                                    $"/c netsh http add urlacl url={UrlBinding} user=everyone & netsh advfirewall firewall add rule name=BLTOverlay dir=in action=allow protocol=TCP localport={Port}",
+                                    $"/c netsh http add urlacl url={UrlBinding} user={account?.Value ?? "everyone"} " +
+                                    $"& netsh advfirewall firewall add rule name=BLTOverlay dir=in action=allow protocol=TCP localport={Port}",
                                 UseShellExecute = true,
                                 Verb = "runas"
                             });

@@ -1,0 +1,117 @@
+﻿.tournament-container-inner {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+}
+
+#tournament-label {
+    font-weight: bold;
+    margin-right: 0.6em;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.1em;
+}
+
+#tournament-items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.tournament-range {
+    display: flex;
+    align-items: center;
+}
+
+.tournament-entry {
+    height: 0.5em;
+    width: 0.5em;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0.1em;
+}
+
+.tournament-empty {
+    background-color: transparent;
+    border: 0.1em solid #ffffff;
+}
+
+.tournament-in-next {
+    background-color: #ffffff;
+}
+
+.tournament-last-slot {
+    background-color: #ff813f;
+}
+
+.tournament-overflow {
+    background-color: #29ba7f;
+}
+
+.tournament-entry-t-enter-active {
+    animation: bounce-in 0.6s;
+}
+
+/*.tournament-entry-t-leave-active {*/
+/*    animation: bounce-in 0.1s reverse;*/
+/*}*/
+
+@keyframes bounce-in {
+    0% {
+        transform: scale(1);
+        opacity: 0;
+    }
+    25% {
+        transform: scale(4);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+.tournament-bets-items {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.3em;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.tournament-bets-label {
+    font-weight: bold;
+    margin-right: 0.6em;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.1em;
+}
+
+.tournament-bet {
+    margin: 0.2em;
+    display: flex;
+    border-radius: 0.5em;
+    padding: 0.1em 0.5em 0.1em;
+    min-width: 3em;
+    justify-content: center;
+    border: gold solid 0.1em;
+}
+
+.tournament-bet-text {
+    font-weight: 600;
+    font-size: 120%;
+}
+
+.tournament-bet-side-0 {
+    background: #5e5ef5;
+}
+.tournament-bet-side-1 {
+    background: #a13b3b;
+}
+.tournament-bet-side-2 {
+    background: #2e901f;
+}
+.tournament-bet-side-3 {
+    background: #939300;
+}

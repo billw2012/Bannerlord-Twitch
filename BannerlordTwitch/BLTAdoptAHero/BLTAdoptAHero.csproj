@@ -204,6 +204,8 @@
     <Compile Include="GlobalConfigs\GlobalHeroClassConfig.cs" />
     <Compile Include="GlobalConfigs\GlobalHeroPowerConfig.cs" />
     <Compile Include="GlobalConfigs\GlobalTournamentConfig.cs" />
+    <Compile Include="Overlay\MissionInfo\MissionInfo.cs" />
+    <Compile Include="Overlay\Tournament\Tournament.cs" />
     <Compile Include="Powers\AbsorbHealthPower.cs" />
     <Compile Include="Powers\AddDamagePower.cs" />
     <Compile Include="Powers\AddHealthPower.cs" />
@@ -216,8 +218,6 @@
     <Compile Include="Powers\Core\HeroPowerCollectionEditor.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\MissionInfoHub.cs" />
-    <Compile Include="UI\TournamentHub.cs" />
     <Compile Include="Util\AgentExtensions.cs" />
     <Compile Include="Util\ConsoleCommands.cs" />
     <Compile Include="Util\HeroExtensions.cs" />
@@ -231,6 +231,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
+    <Content Include="Overlay\MissionInfo\MissionInfo.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Overlay\MissionInfo\MissionInfo.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Overlay\MissionInfo\MissionInfo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Overlay\Tournament\Tournament.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Overlay\Tournament\Tournament.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Overlay\Tournament\Tournament.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="std_module_strings_xml.xml" />
   </ItemGroup>
   <ItemGroup>

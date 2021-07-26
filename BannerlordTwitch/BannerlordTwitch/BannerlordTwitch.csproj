@@ -310,11 +310,11 @@
     <Compile Include="Helpers\AgentPfx.cs" />
     <Compile Include="Helpers\OneShotEffect.cs" />
     <Compile Include="Overlay\BLTOverlay.cs" />
-    <Compile Include="Overlay\ConsoleFeed.cs" />
     <Compile Include="Actions\ICommandHandler.cs" />
     <Compile Include="Actions\IRewardHandler.cs" />
     <Compile Include="Actions\ActionHandlerBase.cs" />
     <Compile Include="Actions\ActionManager.cs" />
+    <Compile Include="Overlay\ConsoleFeed\ConsoleFeed.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="BLTModule.cs" />
@@ -357,6 +357,15 @@
     <Content Include="Bannerlord-Twitch.schema.json" />
     <Content Include="Bannerlord-Twitch-v2.yaml" />
     <Content Include="ClassExportExample.html" />
+    <Content Include="Overlay\ConsoleFeed\ConsoleFeed.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Overlay\ConsoleFeed\ConsoleFeed.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Overlay\ConsoleFeed\ConsoleFeed.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Overlay\web\index-template.html" />
     <Content Include="Overlay\web\index-test.html" />
     <Content Include="Overlay\web\Scripts\jquery-1.6.4-vsdoc.js" />
@@ -372,6 +381,7 @@
     <Content Include="Overlay\web\Scripts\jquery.signalR-2.2.2.min.js" />
     <Content Include="Overlay\web\Scripts\jquery.signalR-2.4.2.js" />
     <Content Include="Overlay\web\Scripts\jquery.signalR-2.4.2.min.js" />
+    <Content Include="Overlay\web\Scripts\progress-ring.js" />
     <Content Include="Overlay\web\Scripts\vue.js" />
     <Content Include="Overlay\web\Scripts\vue.min.js" />
     <Content Include="Overlay\web\style.css" />
