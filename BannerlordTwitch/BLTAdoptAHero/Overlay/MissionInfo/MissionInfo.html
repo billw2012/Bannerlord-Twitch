@@ -16,7 +16,8 @@
                                        :stroke='4'></progress-ring>
                     </div>
                     <div class='mission-hero-name drop-shadow-2'
-                         v-bind:class="'mission-hero-state-' + hero.State">{{hero.Name}}</div>
+                         v-bind:class="'mission-hero-state-' + hero.State" 
+                         v-bind:style="'color:' + getUserColor(hero.Name)">{{hero.Name}}</div>
                 </div>
                 <div class='mission-hero-score-row'>
                     <div v-show='hero.Kills > 0' class='mission-hero-kills-layer'>

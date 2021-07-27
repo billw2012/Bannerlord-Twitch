@@ -1,5 +1,5 @@
 ﻿<!-- Mission Info -->
-$(function () {
+$(document).ready(function () {
     const mission = new Vue({
         el: '#mission-container',
         components: {
@@ -11,10 +11,10 @@ $(function () {
         computed: {
             sortedHeroes: function () {
                 function compare(a, b) {
-                    if(!a.IsPlayerSide && b.IsPlayerSide) return 1;
-                    if(a.IsPlayerSide && !b.IsPlayerSide) return -1;
                     if(a.TournamentTeam < b.TournamentTeam) return -1;
                     if(a.TournamentTeam > !b.TournamentTeam) return 1;
+                    if(!a.IsPlayerSide && b.IsPlayerSide) return 1;
+                    if(a.IsPlayerSide && !b.IsPlayerSide) return -1;
                     if(a.Kills < b.Kills) return 1;
                     if(a.Kills > b.Kills) return -1;
                     if(a.RetinueKills < b.RetinueKills) return 1;
@@ -24,6 +24,11 @@ $(function () {
                     return 0;
                 }
                 return this.heroes.sort(compare);
+            }             
+        },
+        methods: {
+            getUserColor: function(userName) {
+                return twitch.getUserColor(userName);
             }
         }
     });

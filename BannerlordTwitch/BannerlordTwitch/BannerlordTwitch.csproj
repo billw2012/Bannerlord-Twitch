@@ -315,6 +315,7 @@
     <Compile Include="Actions\ActionHandlerBase.cs" />
     <Compile Include="Actions\ActionManager.cs" />
     <Compile Include="Overlay\ConsoleFeed\ConsoleFeed.cs" />
+    <Compile Include="Overlay\TwitchHub.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="BLTModule.cs" />
@@ -381,6 +382,7 @@
     <Content Include="Overlay\web\Scripts\jquery.signalR-2.4.2.js" />
     <Content Include="Overlay\web\Scripts\jquery.signalR-2.4.2.min.js" />
     <Content Include="Overlay\web\Scripts\progress-ring.js" />
+    <Content Include="Overlay\web\Scripts\twitch.js" />
     <Content Include="Overlay\web\Scripts\vue.js" />
     <Content Include="Overlay\web\Scripts\vue.min.js" />
     <Content Include="Overlay\web\style.css" />

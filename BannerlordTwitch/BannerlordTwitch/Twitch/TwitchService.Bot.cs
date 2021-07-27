@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Util;
+using BLTOverlay;
 using TwitchLib.Api;
 using TwitchLib.Client;
 using TwitchLib.Client.Events;
@@ -214,6 +215,10 @@ namespace BannerlordTwitch
 
             private void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)
             {
+                // Register the user info always and before doing anything else, so it is appropriately up to date in
+                // case a bot command is being issued
+                TwitchHub.AddUser(e.ChatMessage.DisplayName, e.ChatMessage.ColorHex);
+                
                 string msg = e.ChatMessage.Message;
                 if (msg.StartsWith("!"))
                 {

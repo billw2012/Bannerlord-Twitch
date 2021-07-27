@@ -1,4 +1,5 @@
-﻿$(function () {
+﻿<!-- Console Feed -->
+$(document).ready(function () {
     const bltConsole = new Vue({
         el: '#bltconsole-container',
         data: {
@@ -7,18 +8,9 @@
         }
     });
     
-    function stringToHslColor(str, s, l) {
-        let hash = 0;
-        for (let i = 0; i < str.length; i++) {
-            hash = str.charCodeAt(i) + ((hash << 5) - hash);
-        }
-        const h = hash % 360;
-        return 'hsl('+h+', '+s+'%, '+l+'%)';
-    }
-    
     function addMessage(message) {
         const goldRegex = /(\d*⦷)/g;
-        const userNameRegex = /(@[a-zA-Z0-9]*)/g;
+        const userNameRegex = /(@[a-zA-Z0-9_]*)/g;
         const splitMessage = message.message
             .split(goldRegex)
             .map(s => s.split(userNameRegex))
@@ -27,7 +19,7 @@
                 if(s.match(goldRegex))
                     return "<span class='gold-text-style'>" + s + "</span>";
                 else if(s.match(userNameRegex)) {
-                    const nameColor = stringToHslColor(s, 80, 75);
+                    const nameColor = twitch.getUserColor(s.substr(1));
                     return "<span class='username-text-style' style='color: " + nameColor
                         + "'>" + s + "</span><span class='default-text-style'></span>";
                 }
@@ -45,6 +37,7 @@
         }
         //console.log(processedMessage);
     }
+
 
     if(typeof $.connection.consoleFeedHub !== 'undefined') {
         $.connection.hub.url = '$url_root$/signalr';
@@ -72,17 +65,18 @@
             console.log('Overlay disconnected');
             bltConsole.items.push({ id: bltConsole.internalId--, message: 'Overlay disconnected', style: 'internal' });
         });
-        const consoleFeedHub = $.connection.consoleFeedHub;
         
+        const consoleFeedHub = $.connection.consoleFeedHub;
         consoleFeedHub.client.addMessage = addMessage;
+
         $.connection.hub.start().done(function () {
             console.log('BLT Console Hub connected');
         }).fail(function () {
             bltConsole.items.push({
-                id: bltConsole.internalId--, message: 'BLT Console Hub started could not connect',
+                id: bltConsole.internalId--, message: 'BLT Console Hub could not connect',
                 style: 'fail'
             });
-            console.log('BLT Console Hub started could not connect');
+            console.log('BLT Console Hub could not connect');
         });
     } else {
         addMessage({ id: 0, message: "TESTING MODE", style: "system" });

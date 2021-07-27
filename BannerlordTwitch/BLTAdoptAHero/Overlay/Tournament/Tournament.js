@@ -1,5 +1,5 @@
 ﻿<!-- Tournament -->
-$(function () {
+$(document).ready(function () {
     const tournament = new Vue({
         el: '#tournament-container',
         data: {
