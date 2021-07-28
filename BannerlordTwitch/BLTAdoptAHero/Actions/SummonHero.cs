@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
-using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -17,7 +16,6 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
-using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {

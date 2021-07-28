@@ -11,8 +11,10 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BannerlordTwitch.Helpers
 {
-    public class ParticleEffectDef
+    public class ParticleEffectDef : ICloneable
     {
+        // private int Id { get; set; }
+        
         [Description("Particle effect system name, see ParticleEffects.txt for the full vanilla list"),
          ItemsSource(typeof(ParticleEffectItemSource)), PropertyOrder(1), UsedImplicitly]
         public string Name { get; set; }
@@ -29,6 +31,11 @@ namespace BannerlordTwitch.Helpers
         public AttachPointEnum AttachPoint { get; set; }
 
         public override string ToString() => $"{Name} {AttachPoint}";
+        public object Clone()
+        {
+            var copy = CloneHelpers.CloneFields(this);
+            return copy;
+        }
     }
     
     public class AgentPfx

@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.IO;
 using BannerlordTwitch;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;

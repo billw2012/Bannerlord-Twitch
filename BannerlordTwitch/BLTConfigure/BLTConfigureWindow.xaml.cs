@@ -25,7 +25,6 @@ using BannerlordTwitch.Annotations;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using TaleWorlds.CampaignSystem;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 
@@ -150,10 +149,7 @@ namespace BLTConfigure
             }
 
             EditedSettings ??= new Settings();
-            foreach (var config in EditedSettings.ConfigInterfaces)
-            {
-                config.OnEditing();
-            }
+            ConfigureContext.CurrentlyEditedSettings = EditedSettings; 
             
             RefreshActionList();
             PropertyGrid.SelectedObject = null;

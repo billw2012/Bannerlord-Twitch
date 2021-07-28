@@ -3,14 +3,13 @@ using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using System;
 using BannerlordTwitch.Util;
-using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Actions.Util
 {
-    public class AchievementSystem
+    public sealed class AchievementSystem : ICloneable
     {
         [ReadOnly(true), UsedImplicitly]
-        public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
+        public Guid ID { get; set; } = Guid.NewGuid();
 
         [PropertyOrder(1)]
         public bool Enabled { get; [UsedImplicitly] set; }
@@ -48,5 +47,12 @@ namespace BLTAdoptAHero.Actions.Util
         public int XPGain { get; [UsedImplicitly] set; }
 
         public override string ToString() => Name;
+        
+        public object Clone()
+        {
+            var newObj = (AchievementSystem)MemberwiseClone();
+            newObj.ID = Guid.NewGuid();
+            return newObj;
+        }
     }
 }

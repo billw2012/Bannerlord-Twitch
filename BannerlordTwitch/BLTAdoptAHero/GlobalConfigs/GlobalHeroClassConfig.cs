@@ -44,15 +44,6 @@ namespace BLTAdoptAHero
                 c.OnSaving();
             }
         }
-
-        public void OnEditing()
-        {
-            HeroClassDef.ItemSource.All = ClassDefs;
-            foreach (var c in ClassDefs.OfType<IConfig>())
-            {
-                c.OnEditing();
-            }
-        }
         #endregion
 
         #region IDocumentationGenerator

@@ -6,7 +6,6 @@ using System.Reflection;
 using Bannerlord.ButterLib.Common.Extensions;
 using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
-using YamlDotNet.Serialization;
 
 namespace BannerlordTwitch.Rewards
 {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -16,10 +16,10 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
-    public class HeroClassDef : IConfig, IDocumentable
+    public sealed class HeroClassDef : IConfig, IDocumentable, ICloneable
     {
         [ReadOnly(true), UsedImplicitly]
-        public Guid ID { get => ObjectIDRegistry.Get(this); set => ObjectIDRegistry.Set(this, value); }
+        public Guid ID { get; set; } = Guid.NewGuid();
 
         #region User Editable Properties
         [Description("Name of the class that shall be passed to SetHeroClass actions"), PropertyOrder(1), UsedImplicitly]
@@ -121,11 +121,19 @@ namespace BLTAdoptAHero
             $"{Name} : {string.Join(", ", SlotItems.Select(s => s.ToString()))}"
             + (UseHorse ? " (Use Horse)" : "")
             + (UseCamel ? " (Use Camel)" : "");
+        
+        public object Clone()
+        {
+            var newObj = CloneHelpers.CloneFields(this);
+            newObj.ID = Guid.NewGuid();
+            return newObj;
+        }
 
-        public class PassivePowerGroup : IConfig, IDocumentable
+        
+        public class PassivePowerGroup : IConfig, IDocumentable, ICloneable
         {
             [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), UsedImplicitly]
-            public string Name { get; set; } = "Passive Power";
+            public string Name { get; set; } = "Enter Name Here";
 
             [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(1), UsedImplicitly]
             public Guid Power1 { get; set; }
@@ -146,7 +154,14 @@ namespace BLTAdoptAHero
                     if (PowerConfig.GetPower(Power3) is IHeroPowerPassive p3) yield return p3;
                 }
             }
-            
+
+            public PassivePowerGroup()
+            {
+                // For when these are created via the configure tool
+                PowerConfig = ConfigureContext.CurrentlyEditedSettings == null 
+                    ? null : GlobalHeroPowerConfig.Get(ConfigureContext.CurrentlyEditedSettings);
+            }
+                
             public void OnHeroJoinedBattle(Hero hero)
             {
                 if (PowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
@@ -159,8 +174,12 @@ namespace BLTAdoptAHero
                         hero, power as HeroPowerDefBase, handlers => power.OnHeroJoinedBattle(hero, handlers));
                 }
             }
-            
+                
             public override string ToString() => $"{Name} {string.Join(" ", Powers.Select(p => p.ToString()))}";
+            public object Clone()
+            {
+                return CloneHelpers.CloneFields(this);
+            }
 
             #region IConfig
             public void OnLoaded(Settings settings)
@@ -168,7 +187,6 @@ namespace BLTAdoptAHero
                 PowerConfig = GlobalHeroPowerConfig.Get(settings);   
             }
             public void OnSaving() { }
-            public void OnEditing() { }
             #endregion
 
             #region IDocumentable
@@ -186,7 +204,7 @@ namespace BLTAdoptAHero
                         generator.P(power.ToString());
                     }
                 }
-                
+                    
                 // generator.Table("power", () =>
                 // {
                 //     generator.TR(() => generator.TD("Name").TD(Name));
@@ -198,11 +216,12 @@ namespace BLTAdoptAHero
             }
             #endregion
         }
-
-        public class ActivePowerGroup : IConfig, IDocumentable
+        
+        public class ActivePowerGroup : IConfig, IDocumentable, ICloneable
         {
-            [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), UsedImplicitly]
-            public string Name { get; set; } = "Active Power";
+            [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1),
+             UsedImplicitly]
+            public string Name { get; set; } = "Enter Name Here";
 
             [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(1), UsedImplicitly]
             public Guid Power1 { get; set; }
@@ -212,12 +231,11 @@ namespace BLTAdoptAHero
             public Guid Power3 { get; set; }
             
             [Description("Particles/sound effects to play when this power group is activated"), PropertyOrder(4), ExpandableObject, UsedImplicitly]
-            public OneShotEffect ActivateEffect { get; set; } = new();
+            public OneShotEffect ActivateEffect { get; set; }
 
             [Description("Particles/sound effects to play when this power group is deactivated"), PropertyOrder(5), ExpandableObject, UsedImplicitly]
-            public OneShotEffect DeactivateEffect { get; set; } = new();
-
-
+            public OneShotEffect DeactivateEffect { get; set; }
+            
             [YamlIgnore, Browsable(false)]
             private GlobalHeroPowerConfig PowerConfig { get; set; }
             
@@ -229,6 +247,13 @@ namespace BLTAdoptAHero
                     if (PowerConfig.GetPower(Power2) is IHeroPowerActive p2) yield return p2;
                     if (PowerConfig.GetPower(Power3) is IHeroPowerActive p3) yield return p3;
                 }
+            }
+
+            public ActivePowerGroup()
+            {
+                // For when these are created via the configure tool
+                PowerConfig = ConfigureContext.CurrentlyEditedSettings == null 
+                    ? null : GlobalHeroPowerConfig.Get(ConfigureContext.CurrentlyEditedSettings);
             }
 
             public bool IsActive(Hero hero) => Powers.Any(power => power.IsActive(hero));
@@ -291,14 +316,17 @@ namespace BLTAdoptAHero
             }
 
             public override string ToString() => $"{Name} {string.Join(" ", Powers.Select(p => p.ToString()))}";
-            
+            public object Clone()
+            {
+                return CloneHelpers.CloneFields(this);
+            }
+
             #region IConfig
             public void OnLoaded(Settings settings)
             {
                 PowerConfig = GlobalHeroPowerConfig.Get(settings);   
             }
             public void OnSaving() { }
-            public void OnEditing() { }
             #endregion
             
             #region IDocumentable
@@ -323,16 +351,15 @@ namespace BLTAdoptAHero
         #region ItemSource
         public class ItemSource : IItemsSource
         {
-            public static IEnumerable<HeroClassDef> All { get; set; }
-
             public ItemCollection GetValues()
             {
                 var col = new ItemCollection();
                 col.Add(Guid.Empty, "(none)");
 
-                if (All != null)
+                var source = GlobalHeroClassConfig.Get(ConfigureContext.CurrentlyEditedSettings);
+                if (source != null)
                 {
-                    foreach (var item in All)
+                    foreach (var item in source.ClassDefs)
                     {
                         col.Add(item.ID, item.Name);
                     }
@@ -354,12 +381,6 @@ namespace BLTAdoptAHero
         {
             PassivePower?.OnSaving();
             ActivePower?.OnSaving();
-        }
-
-        public void OnEditing()
-        {
-            PassivePower?.OnEditing();
-            ActivePower?.OnEditing();
         }
         #endregion
 
@@ -460,4 +481,5 @@ namespace BLTAdoptAHero
         }
         #endregion
     }
+
 }

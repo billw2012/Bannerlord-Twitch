@@ -1,9 +1,5 @@
 ﻿using System.IO;
-using System.Reflection;
-using System.Runtime.Serialization;
 using System.Xml;
-using MonoMod.Utils;
-using TaleWorlds.DotNet;
 using TaleWorlds.Library;
 
 namespace BannerlordTwitch.Util

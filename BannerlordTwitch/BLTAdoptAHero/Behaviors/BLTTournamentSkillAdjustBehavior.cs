@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using Bannerlord.ButterLib.Common.Extensions;
-using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Annotations;
-using BLTAdoptAHero.Util;
 using HarmonyLib;
-using SandBox.TournamentMissions.Missions;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.SandBox.Source.TournamentGames;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.TwoDimension;
 
 namespace BLTAdoptAHero
 {
@@ -61,11 +53,6 @@ namespace BLTAdoptAHero
 
         public static int GetModifiedSkill(Hero hero, SkillObject skill, int baseModifiedSkill)
         {
-            static float SkillModifier(float floor, float modifier, int wins)
-            {
-                return (float) (floor + (100 - floor) * Math.Pow(1f - modifier / 100f, wins * wins)) / 100f;
-            }
-
             if (baseModifiedSkill == 0) return 0;
             
             var debuff = BLTAdoptAHeroModule.TournamentConfig.PreviousWinnerDebuffs
@@ -76,7 +63,7 @@ namespace BLTAdoptAHero
                     AchievementSystem.AchievementTypes.TotalTournamentChampionships);
                 if (tournamentWins > 0)
                 {
-                    return (int) (baseModifiedSkill * SkillModifier(debuff.FloorPercent, debuff.SkillReductionPercentPerWin, tournamentWins));
+                    return (int) (baseModifiedSkill * debuff.SkillModifier(tournamentWins));
                 }
             }
 

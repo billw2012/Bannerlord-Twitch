@@ -62,16 +62,6 @@ namespace BLTAdoptAHero
 
             SavedPowerDefs = PowerDefs.Cast<object>().ToList();
         }
-
-        public void OnEditing()
-        {
-            HeroPowerDefBase.ItemSource.Source = this;
-            
-            foreach (var c in PowerDefs.OfType<IConfig>())
-            {
-                c.OnEditing();
-            }
-        }
         #endregion
     }
 }

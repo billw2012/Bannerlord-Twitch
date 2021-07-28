@@ -10,7 +10,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BannerlordTwitch.Helpers
 {
-    public class OneShotEffect
+    public struct OneShotEffect
     {
         [Description("Particle Effect to play"), ItemsSource(typeof(ParticleEffectItemSource)), 
          PropertyOrder(1), UsedImplicitly]

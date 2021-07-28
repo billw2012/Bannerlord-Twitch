@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using BannerlordTwitch.Util;
 using HarmonyLib;
@@ -14,9 +12,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
-using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View;
-using TaleWorlds.ObjectSystem;
 using Path = System.IO.Path;
 
 namespace BannerlordTwitch

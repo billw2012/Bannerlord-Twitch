@@ -4,7 +4,6 @@ using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
-using TaleWorlds.CampaignSystem;
 using TaleWorlds.MountAndBlade;
 
 namespace BLTAdoptAHero

@@ -61,7 +61,7 @@ namespace BLTAdoptAHero.Powers
         public string MissileTrailParticleEffect { get; set; }
         
         [Description("Effect to play on hit (intended mainly for AoE effects)"), PropertyOrder(16), ExpandableObject, UsedImplicitly]
-        public OneShotEffect HitEffect { get; set; } = new();
+        public OneShotEffect HitEffect { get; set; }
         
         public AddDamagePower()
         {

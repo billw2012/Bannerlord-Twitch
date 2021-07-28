@@ -8,7 +8,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -287,9 +286,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
-    <Reference Include="Xceed.Wpf.Toolkit, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.2\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4">
+      <HintPath>..\lib\Xceed.Wpf.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="YamlDotNet, Version=11.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e">
       <HintPath>..\packages\YamlDotNet.11.1.1\lib\net45\YamlDotNet.dll</HintPath>
@@ -325,7 +323,8 @@
     <Compile Include="Twitch\Dummy\TwitchRedirectingHttpCallHandler.cs" />
     <Compile Include="Twitch\TwitchService.Bot.cs" />
     <Compile Include="Twitch\TwitchService.cs" />
-    <Compile Include="UI\MultilineTextBoxEditor.cs" />
+    <Compile Include="Util\CloneHelpers.cs" />
+    <Compile Include="Util\ConfigureContext.cs" />
     <Compile Include="Util\GameVersion.cs" />
     <Compile Include="Util\Assembly.cs" />
     <Compile Include="Util\AutoMissionBehavior.cs" />
@@ -338,7 +337,6 @@
     <Compile Include="Util\MiscExtensions.cs" />
     <Compile Include="Util\MissionHelpers.cs" />
     <Compile Include="Util\Naming.cs" />
-    <Compile Include="Util\ObjectIDRegistry.cs" />
     <Compile Include="Util\ParticleEffectItemSource.cs" />
     <Compile Include="Util\Paths.cs" />
     <Compile Include="Util\RangeFloat.cs" />

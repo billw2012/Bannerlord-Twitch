@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
@@ -72,8 +73,10 @@ namespace BLTAdoptAHero
         
         #region Balancing
 
-        public class SkillModifierDef
+        public class SkillModifierDef : INotifyPropertyChanged
         {
+            public event PropertyChangedEventHandler PropertyChanged;
+
             [Description("Skill or skill group to modifer (all skills in a group will be modified)"),
              PropertyOrder(1), UsedImplicitly, Document]
             public SkillsEnum Skill { get; set; } = SkillsEnum.All;
@@ -86,6 +89,22 @@ namespace BLTAdoptAHero
             [Description("The lower limit (in %) that the skill(s) can be reduced to."),
              PropertyOrder(2), UsedImplicitly, Document]
             public float FloorPercent { get; set; } = 65f;
+
+            [YamlIgnore, ReadOnly(true), Description("Shows the % reduction of the skill over 20 tournaments"),
+             PropertyOrder(3), UsedImplicitly] 
+            public string Example => string.Join(", ", 
+                Enumerable.Range(0, 20)
+                    .Select(i => $"{i}: {100 * SkillModifier(i):0}%"));
+            
+            public float SkillModifier(int wins)
+            {
+                return (float) (FloorPercent + (100 - FloorPercent) * Math.Pow(1f - SkillReductionPercentPerWin / 100f, wins * wins)) / 100f;
+            }
+            
+            public override string ToString()
+            {
+                return $"{nameof(Skill)}: {Skill}, Skill Reduction Per Win: {SkillReductionPercentPerWin}%, Floor: {FloorPercent}%";
+            }
         }
 
         [Category("Balancing"),

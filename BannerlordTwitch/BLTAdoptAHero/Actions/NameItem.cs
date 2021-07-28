@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Windows.Input;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using JetBrains.Annotations;

@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel;
-using System.IO;
 using BannerlordTwitch;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
@@ -15,6 +14,7 @@ namespace BLTAdoptAHero.Powers
         [Category("Power Config"), Description("What hero stat to modify"), PropertyOrder(1), ExpandableObject, UsedImplicitly]
         public AgentModifierConfig Modifiers { get; set; } = new();
 
+        [YamlIgnore, Browsable(false)]
         protected override bool RequiresHeroAgent => true;
         
         public StatModifyPower()

@@ -2,13 +2,8 @@
 using System;
 using System.ComponentModel;
 using BannerlordTwitch;
-using BannerlordTwitch.Rewards;
-using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
-using BLTAdoptAHero.Powers;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.MountAndBlade;
-using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
 {

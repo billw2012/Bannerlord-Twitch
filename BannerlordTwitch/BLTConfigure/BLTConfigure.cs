@@ -28,16 +28,21 @@ namespace BLTConfigure
             
             thread = new Thread(() =>
             {
+                #if !DEBUG
                 try
+                #endif
                 {
                     wnd = new BLTConfigureWindow { ShowActivated = false };
                     wnd.Show();
                     System.Windows.Threading.Dispatcher.Run();
                 }
+                #if !DEBUG
                 catch (Exception e)
                 {
-                    MessageBox.Show($"Exception occurred (please report this on the discord or nexusmods):\n{e}", "BLT Configure Module Crashed!");
+                    MessageBox.Show($"Exception occurred (please report this on the discord or nexusmods):\n{e}",
+                        "BLT Configure Module Crashed!");
                 }
+                #endif
             });
             thread.SetApartmentState(ApartmentState.STA);
             thread.IsBackground = true;
@@ -46,11 +51,11 @@ namespace BLTConfigure
 
         protected override void OnSubModuleUnloaded()
         {
-            wnd.Dispatcher.Invoke(() =>
+            wnd?.Dispatcher.Invoke(() =>
             {
                 wnd.Close();
             });
-            wnd.Dispatcher.InvokeShutdown();
+            wnd?.Dispatcher.InvokeShutdown();
             thread.Join(TimeSpan.FromMilliseconds(500));
         }
     }

@@ -4,18 +4,14 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Util;
-using dnlib.DotNet;
-using HarmonyLib;
 using JetBrains.Annotations;
 using TaleWorlds.Core;
-using TaleWorlds.Engine;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BannerlordTwitch
 {
-    public class PropertyDef
+    public class PropertyDef : ICloneable
     {
         [Description("The property to modify"), PropertyOrder(1), UsedImplicitly]
         public DrivenProperty Name { get; set; }
@@ -41,9 +37,11 @@ namespace BannerlordTwitch
 
             return string.Join(" ", parts);
         }
+
+        public object Clone() => CloneHelpers.CloneFields(this);
     }
     
-    public class AgentModifierConfig : IDocumentable
+    public sealed class AgentModifierConfig : IDocumentable, ICloneable
     {
         [Description("Scaling of the target"), PropertyOrder(1), UsedImplicitly]
         public float? Scale { get; set; }
@@ -58,6 +56,16 @@ namespace BannerlordTwitch
         {
             string result = Scale.HasValue && Scale.Value != 1 ? $"Scale {Scale.Value} " : "";
             return result + string.Join(" ", Properties.Select(p => p.ToString())) + (ApplyToMount? " (on mount)" : "");
+        }
+
+        public object Clone()
+        {
+            return new AgentModifierConfig
+            {
+                Scale = Scale,
+                ApplyToMount = ApplyToMount,
+                Properties = Properties.Select(p => (PropertyDef)p.Clone()).ToList(),
+            };
         }
 
         public void GenerateDocumentation(IDocumentationGenerator generator)

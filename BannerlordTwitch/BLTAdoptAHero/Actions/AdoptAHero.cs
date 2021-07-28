@@ -6,14 +6,11 @@ using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
-using HarmonyLib;
 using BLTAdoptAHero.Annotations;
 using Helpers;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
-using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.Towns;
-using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -174,7 +171,7 @@ namespace BLTAdoptAHero
 
                 if (StartingClass != Guid.Empty)
                 {
-                    var classDef = HeroClassDef.ItemSource.All.FirstOrDefault(h => h.ID == StartingClass);
+                    var classDef = BLTAdoptAHeroModule.HeroClassConfig.GetClass(StartingClass);
                     if (classDef != null)
                     {
                         generator.PropertyValuePair("Starting Class", 

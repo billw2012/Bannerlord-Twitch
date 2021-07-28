@@ -13,10 +13,9 @@ namespace BLTAdoptAHero.Powers
     /// <summary>
     /// Base class for Hero Power definitions
     /// </summary>
-    public class HeroPowerDefBase
+    public class HeroPowerDefBase : ICloneable
     {
         #region Static Management Functions
-
         private static readonly Dictionary<Guid, Type> registeredPowers = new();
         public static void RegisterPowerType<T>() => RegisterPowerType(typeof(T));
 
@@ -38,11 +37,9 @@ namespace BLTAdoptAHero.Powers
         }
 
         internal static IEnumerable<Type> RegisteredPowerDefTypes => registeredPowers.Values;
-
         #endregion
 
         #region Saved Properties
-
         /// <summary>
         /// This should be set by derived classes to a unique guid (if your IDE doesn't generate them for you then
         /// use https://www.guidgenerator.com/online-guid-generator.aspx)
@@ -54,17 +51,13 @@ namespace BLTAdoptAHero.Powers
         /// This is automatically generated when the object is created, it should never be changed in code.
         /// </summary>
         [ReadOnly(true), UsedImplicitly]
-        public Guid ID
-        {
-            get => ObjectIDRegistry.Get(this);
-            set => ObjectIDRegistry.Set(this, value);
-        }
+        public Guid ID { get; set; } = Guid.NewGuid();
 
         [Description("Name of the power that will be shown in game"), PropertyOrder(1), UsedImplicitly]
         public string Name { get; set; } = "Enter Name Here";
-
         #endregion
 
+        #region Implementation Details
         // Power is loaded as an object to ensure all properties are kept in tact (actually its a dictionary under the hood),
         // and then we convert it to a HeroPowerDefBase to get the Type Guid property, then finally we convert it to the 
         // actual target Type after looking it up.
@@ -75,7 +68,6 @@ namespace BLTAdoptAHero.Powers
                 Log.Error($"HeroPowerDef {Type} ({Name}) was not found");
                 return null;
             }
-
             return (HeroPowerDefBase) YamlHelpers.ConvertObject(o, type);
         }
 
@@ -85,23 +77,26 @@ namespace BLTAdoptAHero.Powers
         /// <returns></returns>
         public override string ToString() => $"{Name}";
 
+        public virtual object Clone()
+        {
+            var newObj = (HeroPowerDefBase)CloneHelpers.CloneFields(this);
+            newObj.ID = Guid.NewGuid();
+            return newObj;
+        }
+        #endregion
+        
         #region Item Source
-
-        public class ItemSource
-        {
-            public static GlobalHeroPowerConfig Source { get; set; }
-        }
-
-        public class ItemSourcePassive : ItemSource, IItemsSource
+        public class ItemSourcePassive : IItemsSource
         {
             public ItemCollection GetValues()
             {
                 var col = new ItemCollection();
                 col.Add(Guid.Empty, "(none)");
 
-                if (Source != null)
+                var source = GlobalHeroPowerConfig.Get(ConfigureContext.CurrentlyEditedSettings);
+                if (source != null)
                 {
-                    foreach (var item in Source.PowerDefs.Where(i => i is IHeroPowerPassive))
+                    foreach (var item in source.PowerDefs.Where(i => i is IHeroPowerPassive))
                     {
                         col.Add(item.ID, item.ToString().Truncate(120));
                     }
@@ -111,16 +106,17 @@ namespace BLTAdoptAHero.Powers
             }
         }
 
-        public class ItemSourceActive : ItemSource, IItemsSource
+        public class ItemSourceActive : IItemsSource
         {
             public ItemCollection GetValues()
             {
                 var col = new ItemCollection();
                 col.Add(Guid.Empty, "(none)");
 
-                if (Source != null)
+                var source = GlobalHeroPowerConfig.Get(ConfigureContext.CurrentlyEditedSettings);
+                if (source != null)
                 {
-                    foreach (var item in Source.PowerDefs.Where(i => i is IHeroPowerActive))
+                    foreach (var item in source.PowerDefs.Where(i => i is IHeroPowerActive))
                     {
                         col.Add(item.ID, item.ToString().Truncate(120));
                     }
@@ -129,7 +125,6 @@ namespace BLTAdoptAHero.Powers
                 return col;
             }
         }
-
         #endregion
     }
 }

@@ -1,5 +1,4 @@
-﻿using BLTAdoptAHero;
-using HarmonyLib;
+﻿using HarmonyLib;
 using JetBrains.Annotations;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;

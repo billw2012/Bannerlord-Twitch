@@ -4,6 +4,5 @@
     {
         void OnLoaded(Settings settings);
         void OnSaving();
-        void OnEditing();
     }
 }

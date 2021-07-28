@@ -1,12 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero;
 using JetBrains.Annotations;
-using TaleWorlds.CampaignSystem;
 
 namespace BLTBuffet
 {

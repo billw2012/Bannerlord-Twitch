@@ -5,11 +5,9 @@ using HarmonyLib;
 using JetBrains.Annotations;
 using SandBox.View.Map;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Core;
 using TaleWorlds.Engine.Screens;
 using TaleWorlds.Library;
-using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 
 namespace BLTAdoptAHero.Util

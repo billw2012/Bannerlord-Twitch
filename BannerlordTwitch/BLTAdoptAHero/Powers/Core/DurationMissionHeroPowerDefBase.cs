@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using BannerlordTwitch.Helpers;
 using BLTAdoptAHero.Annotations;
 using SandBox;
@@ -8,6 +9,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
@@ -50,7 +52,7 @@ namespace BLTAdoptAHero.Powers
         bool IHeroPowerActive.IsActive(Hero hero) 
             => BLTHeroPowersMissionBehavior.Current?.HasHandlers(hero, this) == true;
 
-        private readonly Dictionary<Hero, float> expiry = new();
+        private Dictionary<Hero, float> expiry = new();
 
         protected class DeactivationHandler
         {
@@ -114,6 +116,15 @@ namespace BLTAdoptAHero.Powers
         protected abstract void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers,
             Agent agent = null, DeactivationHandler deactivationHandler = null);
 
+        [YamlIgnore, Browsable(false)]
         protected virtual bool RequiresHeroAgent => false;
+
+        public override object Clone()
+        {
+            var newObj = (DurationMissionHeroPowerDefBase)base.Clone();
+            newObj.Pfx = Pfx.Select(pfx => (ParticleEffectDef)pfx.Clone()).ToList();
+            newObj.expiry = new();
+            return newObj;
+        }
     }
 }
