@@ -67,11 +67,10 @@ namespace BLTAdoptAHero
                 BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
             }
 
-            if (settings.UpdateEquipment)
+            int equipmentTier = BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero);
+            if (settings.UpdateEquipment && equipmentTier >= 0)
             {
-                EquipHero.UpgradeEquipment(adoptedHero,
-                    BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero), 
-                    newClass, replaceSameTier: false);
+                EquipHero.UpgradeEquipment(adoptedHero, equipmentTier, newClass, replaceSameTier: false);
                 BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentClass(adoptedHero, newClass);
             }
             onSuccess($"changed class to {newClass.Name}");
