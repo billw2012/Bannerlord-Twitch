@@ -73,7 +73,7 @@ namespace BLTAdoptAHero
         
         #region Balancing
 
-        public class SkillModifierDef : INotifyPropertyChanged
+        public class SkillDebuffDef : INotifyPropertyChanged
         {
             public event PropertyChangedEventHandler PropertyChanged;
 
@@ -110,7 +110,7 @@ namespace BLTAdoptAHero
         [Category("Balancing"),
          Description("Applies skill debuffers to previous tournament winners"),
          PropertyOrder(1), UsedImplicitly, Document]
-        public List<SkillModifierDef> PreviousWinnerDebuffs { get; set; } = new() { new() };
+        public List<SkillDebuffDef> PreviousWinnerDebuffs { get; set; } = new() { new() };
         
         #endregion
         

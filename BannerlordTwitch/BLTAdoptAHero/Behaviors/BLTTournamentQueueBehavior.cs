@@ -173,18 +173,14 @@ namespace BLTAdoptAHero
 
         private static void SafeCallStatic(Action a, [CallerMemberName]string fnName = "")
         {
-#if !DEBUG
             try
             {
-#endif
-            a();
-#if !DEBUG
+                a();
             }
             catch (Exception e)
             {
                 Log.Exception($"{nameof(BLTTournamentQueueBehavior)}.{fnName}", e);
             }
-#endif
         }
         
         // MissionState.Current.CurrentMission doesn't have any behaviours yet added during this function,

@@ -11,56 +11,160 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
+	[CategoryOrder("Effect", 11)]
+	[CategoryOrder("Targets", 12)]
+	[CategoryOrder("Appearance", 13)]
     [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
     public class AddDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
-        [Category("Power Config"), Description("How much to multiply base damage by"), PropertyOrder(1), UsedImplicitly]
+        [Category("Effect"), Description("How much to multiply base damage by"), PropertyOrder(1), UsedImplicitly]
         public float DamageToMultiply { get; set; } = 1f;
 
-        [Category("Power Config"), Description("How much damage to add"), PropertyOrder(2), UsedImplicitly]
+        [Category("Effect"), Description("How much damage to add"), PropertyOrder(2), UsedImplicitly]
         public int DamageToAdd { get; set; }
+        
+        [Category("Effect"), 
+         Description("Behaviors to add to the damage"), PropertyOrder(4), ExpandableObject, UsedImplicitly]
+        public HitBehavior AddHitBehavior { get; set; }
 
-        [Category("Power Config"), Description("Whether to apply this bonus damage against normal troops"), PropertyOrder(3), UsedImplicitly]
+        [Category("Effect"),
+         Description("Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always " +
+                     "stunned when hit)"), PropertyOrder(5), ExpandableObject, UsedImplicitly]
+        public HitBehavior RemoveHitBehavior { get; set; }
+
+        [Category("Effect"), Description("What fraction (0 to 1) of armor to ignore when applying damage"), 
+         PropertyOrder(6), UsedImplicitly]
+        public float ArmorToIgnore { get; set; }
+        
+        [Category("Effect"), 
+         Description("Chance (0 to 1) that the hit will be unblockable"), PropertyOrder(7), UsedImplicitly]
+        public float UnblockableChance { get; set; }
+        
+        [Category("Effect"), 
+         Description("Chance (0 to 1) that the hit will shatter shield if it is blocked"), 
+         PropertyOrder(8), UsedImplicitly]
+        public float ShatterShieldChance { get; set; }
+        
+        [Category("Effect"), 
+         Description("Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each " +
+                     "collision, so a cut through chance of 1 will result in cutting through everyone with every hit)"), 
+         PropertyOrder(9), UsedImplicitly]
+        public float CutThroughChance { get; set; }
+        
+        [Category("Effect"), 
+         Description("Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR " +
+                     "stagger, it can't do both, cut through chance is evaluated before this one)"), 
+         PropertyOrder(10), UsedImplicitly]
+        public float StaggerChance { get; set; }
+
+        public class AreaOfEffectDef : ICloneable, INotifyPropertyChanged
+        {
+	        public event PropertyChangedEventHandler PropertyChanged;
+
+	        [Description("The radius to apply the damage in"), PropertyOrder(1), UsedImplicitly]
+	        public float Range { get; set; }
+	        
+	        [Description("Only apply the damage if the attack hits an agent (as opposed to the ground, " +
+	                     "e.g. for arrows)"), PropertyOrder(2), UsedImplicitly]
+	        public bool OnlyOnHit { get; set; }
+
+	        [Description("Damage at distance 0 from the hit"), PropertyOrder(3), UsedImplicitly]
+	        public float DamageAtCenter { get; set; } = 50;
+
+	        [Description("Maximum number of agents that can be affected"), PropertyOrder(4), UsedImplicitly]
+	        public int MaxAgentsToDamage { get; set; } = 4;
+
+	        [Description("Damage type"), PropertyOrder(5), UsedImplicitly]
+	        public DamageTypes DamageType { get; set; } = DamageTypes.Blunt;
+        
+	        [Description("Flags to apply to the damage"), PropertyOrder(6), ExpandableObject, UsedImplicitly]
+	        public HitBehavior HitBehavior { get; set; }
+
+	        [YamlIgnore, ReadOnly(true)]
+	        public bool IsEnabled => Range > 0;
+	        
+	        [YamlIgnore, ReadOnly(true)]
+	        public string Example =>
+		        string.Join(", ",
+			        Enumerable.Range(0, (int) Math.Min(Range, 20))
+				        .Select(i => $"{i}m: {CalculateDamage(i)}dmg"));
+
+	        public override string ToString()
+	        {
+		        return $"{DamageAtCenter} AoE ({Range}m)";
+	        }
+
+	        public object Clone() => CloneHelpers.CloneFields(this);
+
+	        public void Apply(Agent from, List<Agent> ignoreAgents, Vec3 position)
+	        {
+		        foreach ((var agent, float distance) in Mission.Current
+				        .GetAgentsInRange(position.AsVec2, Range * 1, true)
+				        .Where(a => 
+						        a.State == AgentState.Active	// alive only
+						        && !ignoreAgents.Contains(a)	// not in the ignore list
+						        && a.IsEnemyOf(from)			// enemies only
+				        )
+				        .Select(a => (agent: a, distance: a.Position.Distance(position)))
+				        .OrderByDescending(a => a.distance)
+				        // ToList is required due to potential collection change exception when agents are killed below
+				        .Take(MaxAgentsToDamage).ToList() 
+		        )
+		        {
+			        int damage = CalculateDamage(distance); 
+			        DoAgentDamage(@from, agent, damage, (agent.Position - position).NormalizedCopy(), 
+				        DamageType, HitBehavior);
+		        }
+	        }
+
+	        private int CalculateDamage(float distance)
+	        {
+		        return (int) (DamageAtCenter / Math.Pow(distance / Range + 1f, 2f));
+	        }
+        }
+
+        [Category("Effect"), 
+         Description("Area of Effect damage to apply"), PropertyOrder(20), UsedImplicitly, ExpandableObject]
+        public AreaOfEffectDef AoE { get; set; } = new();
+        
+        [Category("Targets"), 
+         Description("Whether to apply this bonus damage against normal troops"), PropertyOrder(13), UsedImplicitly]
         public bool ApplyAgainstNonHeroes { get; set; } = true;
-        [Category("Power Config"), Description("Whether to apply this bonus damage against heroes"), PropertyOrder(4), UsedImplicitly]
+        [Category("Targets"), 
+         Description("Whether to apply this bonus damage against heroes"), PropertyOrder(14), UsedImplicitly]
         public bool ApplyAgainstHeroes { get; set; } = true;
-        [Category("Power Config"), Description("Whether to apply this bonus damage against adopted heroes"), PropertyOrder(5), UsedImplicitly]
+        [Category("Targets"), 
+         Description("Whether to apply this bonus damage against adopted heroes"), PropertyOrder(15), UsedImplicitly]
         public bool ApplyAgainstAdoptedHeroes { get; set; } = true;
-        [Category("Power Config"), Description("Whether to apply this bonus damage against the player"), PropertyOrder(6), UsedImplicitly]
+        [Category("Targets"), 
+         Description("Whether to apply this bonus damage against the player"), PropertyOrder(16), UsedImplicitly]
         public bool ApplyAgainstPlayer { get; set; } = true;
 
-        [Category("Power Config"), Description("Whether to apply this bonus damage when using ranged weapons"), PropertyOrder(7), UsedImplicitly]
+        [Category("Targets"), 
+         Description("Whether to apply this bonus damage when using ranged weapons"), PropertyOrder(17), UsedImplicitly]
         public bool Ranged { get; set; } = true;
         
-        [Category("Power Config"), Description("Whether to apply this bonus damage when using melee weapons"), PropertyOrder(8), UsedImplicitly]
+        [Category("Targets"), 
+         Description("Whether to apply this bonus damage when using melee weapons"), PropertyOrder(18), UsedImplicitly]
         public bool Melee { get; set; } = true;
         
-        [Category("Power Config"), Description("Whether to apply this bonus damage from charge damage"), PropertyOrder(9), UsedImplicitly]
+        [Category("Targets"), 
+         Description("Whether to apply this bonus damage from charge damage"), PropertyOrder(19), UsedImplicitly]
         public bool Charge { get; set; } = true;
-        
-        [Category("Power Config"), Description("Only apply the AoE damage if the attack hits an agent (as opposed to the ground, e.g. for arrows)"), PropertyOrder(10), UsedImplicitly]
-        public bool AreaOfEffectOnlyOnHit { get; set; }
 
-        [Category("Power Config"), Description("Whether to apply this bonus damage against the player"), PropertyOrder(11), UsedImplicitly]
-        public float AreaOfEffect { get; set; }
-
-        [Category("Power Config"), Description("Damage the AoE causes at distance 0 from the hit"), PropertyOrder(12), UsedImplicitly]
-        public float AreaOfEffectDamage { get; set; } = 30;
-        
-        [Category("Power Config"), Description("Maximum number of agents that can be affected by the AoE"), PropertyOrder(13), UsedImplicitly]
-        public int AreaOfEffectMaxAgents { get; set; } = 5;
-
-        [Category("Power Config"), Description("Damage type the AoE causes"), PropertyOrder(14), UsedImplicitly]
-        public DamageTypes AreaOfEffectDamageType { get; set; } = DamageTypes.Blunt;
-        
-        [Category("Power Config"), Description("Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing fire/smoke effect)"), 
-         ItemsSource(typeof(ParticleEffectItemSource)), PropertyOrder(15), UsedImplicitly]
+        [Category("Appearance"), 
+         Description("Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing " +
+                     "fire/smoke effect)"), 
+         ItemsSource(typeof(ParticleEffectItemSource)), PropertyOrder(21), UsedImplicitly]
         public string MissileTrailParticleEffect { get; set; }
         
-        [Description("Effect to play on hit (intended mainly for AoE effects)"), PropertyOrder(16), ExpandableObject, UsedImplicitly]
+        [Category("Appearance"),
+         Description("Effect to play on hit (intended mainly for AoE effects)"), 
+         PropertyOrder(22), ExpandableObject, UsedImplicitly]
         public OneShotEffect HitEffect { get; set; }
         
         public AddDamagePower()
@@ -68,19 +172,114 @@ namespace BLTAdoptAHero.Powers
             Type = new ("378648B6-5586-4812-AD08-22DA6374440C");
         }
 
-        void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers1) 
-	        => BLTHeroPowersMissionBehavior.Current
-		        .ConfigureHandlers(hero, this, handlers => OnActivation(hero, handlers));
+        void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers) 
+	        => BLTHeroPowersMissionBehavior.PowerHandler
+		        .ConfigureHandlers(hero, this, handlers2 => OnActivation(hero, handlers2));
 
-        protected override void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers,
+        protected override void OnActivation(Hero hero, PowerHandler.Handlers handlers,
             Agent agent = null, DeactivationHandler deactivationHandler = null)
         {
+	        handlers.OnDoMeleeHit += OnDoMeleeHit;
+	        handlers.OnDecideCrushedThrough += OnDecideCrushedThroughDelegate;
+	        handlers.OnDecideMissileWeaponFlags += OnDecideMissileWeaponFlags;
+	        handlers.OnDoMissileHit += OnDoMissileHit;
+	        handlers.OnDecideWeaponCollisionReaction += OnDecideWeaponCollisionReaction;
 	        handlers.OnDoDamage += OnDoDamage;
 	        handlers.OnMissileCollision += OnMissileCollisionReaction;
 	        handlers.OnAddMissile += OnAddMissile;
+	        handlers.OnPostDoMeleeHit += OnPostDoMeleeHit;
         }
 
-        private void OnAddMissile(Hero shooterHero, Agent shooterAgent, WeaponDataRef weaponData, WeaponStatsData[] weaponStatsData)
+        private void OnDecideMissileWeaponFlags(Hero attackerHero, Agent attackerAgent, 
+	        BLTAgentApplyDamageModel.DecideMissileWeaponFlagsParams args)
+        {
+	        if (MBRandom.RandomFloat < CutThroughChance)
+	        {
+		        args.missileWeaponFlags |= WeaponFlags.CanPenetrateShield;
+		        args.missileWeaponFlags |= WeaponFlags.MultiplePenetration;
+	        }
+        }
+
+        private void OnDecideCrushedThroughDelegate(Hero attackerHero, Agent attackerAgent, Hero victimHero, 
+	        Agent victimAgent, BLTAgentApplyDamageModel.DecideCrushedThroughParams meleeHitParams)
+        {
+	        if (UnblockableChance != 0 && MBRandom.RandomFloat < UnblockableChance)
+	        {
+		        meleeHitParams.crushThrough = true;
+	        }
+        }
+
+        private void OnDoMissileHit(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, 
+	        BLTHeroPowersMissionBehavior.MissileHitParams missileHitParams)
+        {
+	        if (IgnoreDamageType(victimHero, victimAgent, missileHitParams.collisionData))
+	        {
+		        return;
+	        }
+
+	        // We remove the shield when its a missile hit, as it won't be checked for removal
+	        ApplyShatterShieldChance(victimAgent, ref missileHitParams.collisionData, removeShield: true);
+	        
+	        if (UnblockableChance != 0 && MBRandom.RandomFloat < UnblockableChance)
+	        {
+		        AttackCollisionData.UpdateDataForShieldPenetration(ref missileHitParams.collisionData);
+	        }
+        }
+
+        private void OnDoMeleeHit(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, 
+	        BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams)
+        {
+	        if (IgnoreDamageType(victimHero, victimAgent, meleeHitParams.collisionData))
+	        {
+		        return;
+	        }
+
+	        // We don't remove the shield for melee hit, as it will crash if we do
+	        ApplyShatterShieldChance(victimAgent, ref meleeHitParams.collisionData, removeShield: false);
+        }
+        
+        private void OnPostDoMeleeHit(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, 
+	        BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams)
+        {
+	        if (IgnoreDamageType(victimHero, victimAgent, meleeHitParams.collisionData))
+	        {
+		        return;
+	        }
+
+	        if (UnblockableChance != 0 && MBRandom.RandomFloat < UnblockableChance)
+	        {
+		        meleeHitParams.inOutMomentumRemaining = 1;
+	        }
+        }
+
+        private void ApplyShatterShieldChance(Agent victimAgent, ref AttackCollisionData collisionData, bool removeShield)
+        {
+	        if (collisionData.AttackBlockedWithShield && MBRandom.RandomFloat < ShatterShieldChance)
+	        {
+		        // just makes sure any missile that hit the shield disappears
+		        collisionData.IsShieldBroken = true;
+
+		        AttackCollisionData.UpdateDataForShieldPenetration(ref collisionData);
+
+		        var (element, slotIndex) = victimAgent.Equipment
+			        .YieldFilledSlots()
+			        .FirstOrDefault(s => s.element.IsShield());
+		        if (!element.IsEmpty)
+		        {
+			        OneShotEffect.Trigger("psys_game_shield_break", "event:/mission/combat/shield/broken",
+				        victimAgent.AgentVisuals.GetGlobalFrame()
+				        * victimAgent.AgentVisuals.GetSkeleton()
+					        .GetBoneEntitialFrame(Game.Current.HumanMonster.OffHandItemBoneIndex)
+			        );
+
+			        victimAgent.ChangeWeaponHitPoints(slotIndex, 0);
+			        if(removeShield) victimAgent.RemoveEquippedWeapon(slotIndex);
+		        }
+	        }
+        }
+
+        private void OnAddMissile(Hero shooterHero, Agent shooterAgent, RefHandle<WeaponData> weaponData, 
+	        WeaponStatsData[] weaponStatsData)
         {
 	        if (!string.IsNullOrEmpty(MissileTrailParticleEffect))
 	        {
@@ -92,33 +291,64 @@ namespace BLTAdoptAHero.Powers
 	        }
         }
 
-        private void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, AttackCollisionDataRef attackCollisionData)
+
+        private bool IgnoreDamageType(Hero victimHero, Agent victimAgent, AttackCollisionData attackCollisionData) =>
+	        attackCollisionData.IsFallDamage
+	        || !ApplyAgainstAdoptedHeroes && victimHero != null
+	        || !ApplyAgainstHeroes && victimAgent.IsHero
+	        || !ApplyAgainstNonHeroes && !victimAgent.IsHero
+	        || !ApplyAgainstPlayer && victimAgent == Agent.Main
+	        || !Melee && !(attackCollisionData.IsMissile || attackCollisionData.IsHorseCharge)
+	        || !Ranged && attackCollisionData.IsMissile
+	        || !Charge && attackCollisionData.IsHorseCharge;
+
+        // NEED TO OVERRIDE MissileHitCallback to change blocking behavior for missiles
+
+        private void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, 
+            BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams)
         {
-            if (attackCollisionData.Data.IsFallDamage
-                || !ApplyAgainstAdoptedHeroes && victimHero != null
-                || !ApplyAgainstHeroes && victimAgent.IsHero
-                || !ApplyAgainstNonHeroes && !victimAgent.IsHero
-                || !ApplyAgainstPlayer && victimAgent == Agent.Main
-                || !Melee && !(attackCollisionData.Data.IsMissile || attackCollisionData.Data.IsHorseCharge)
-                || !Ranged && attackCollisionData.Data.IsMissile
-                || !Charge && attackCollisionData.Data.IsHorseCharge
-                )
+            if (IgnoreDamageType(victimHero, victimAgent, blowParams.collisionData))
             {
                 return;
             }
 
-            attackCollisionData.Data.InflictedDamage = (int) (attackCollisionData.Data.InflictedDamage * DamageToMultiply + DamageToAdd);
+            blowParams.collisionData.AbsorbedByArmor = (int) (blowParams.blow.AbsorbedByArmor *= 1 - ArmorToIgnore);
+            blowParams.collisionData.BaseMagnitude = blowParams.blow.BaseMagnitude 
+                = (int) (blowParams.blow.BaseMagnitude * DamageToMultiply + DamageToAdd);
+            blowParams.collisionData.InflictedDamage = blowParams.blow.InflictedDamage
+                = (int) (blowParams.blow.BaseMagnitude - blowParams.blow.AbsorbedByArmor);
+            
+            blowParams.blow.BlowFlag |= AddHitBehavior.Generate(victimAgent);
+            blowParams.blow.BlowFlag &= ~RemoveHitBehavior.Generate(victimAgent);
 
-            // If attack type is a missile and AoE is not set to only on hit, then we will be applying this in the OnMissileCollisionReaction below
-            if (!attackCollisionData.Data.IsMissile || AreaOfEffectOnlyOnHit)
+            // If attack type is a missile and AoE is not set to only on hit, then we will be applying this in the
+            // OnMissileCollisionReaction below
+            if (!blowParams.collisionData.IsMissile || AoE.OnlyOnHit)
             {
-	            DoAoE(agent, victimAgent, new MatrixFrame(Mat3.Identity, attackCollisionData.Data.CollisionGlobalPosition));
+	            DoAoE(agent, victimAgent, 
+		            new MatrixFrame(Mat3.Identity, blowParams.collisionData.CollisionGlobalPosition));
             }
         }
 
-        private void OnMissileCollisionReaction(Mission.MissileCollisionReaction collisionReaction, Hero attackerHero, Agent attackerAgent, Agent attachedAgent, sbyte attachedBoneIndex, bool attachedToShield, MatrixFrame attachLocalFrame, Mission.Missile missile)
+        private void OnDecideWeaponCollisionReaction(Hero attackerHero, Agent attackerAgent, Hero victimHero, 
+	        Agent victimAgent, 
+	        BLTHeroPowersMissionBehavior.DecideWeaponCollisionReactionParams decideWeaponCollisionReactionParams)
         {
-	        if (Ranged && !AreaOfEffectOnlyOnHit)
+	        if (MBRandom.RandomFloat < CutThroughChance)
+	        {
+		        decideWeaponCollisionReactionParams.colReaction = MeleeCollisionReaction.SlicedThrough;
+	        }
+	        else if (MBRandom.RandomFloat < StaggerChance)
+	        {
+		        decideWeaponCollisionReactionParams.colReaction = MeleeCollisionReaction.Staggered;
+	        }
+        }
+
+        private void OnMissileCollisionReaction(Mission.MissileCollisionReaction collisionReaction, Hero attackerHero,
+	        Agent attackerAgent, Agent attachedAgent, sbyte attachedBoneIndex, bool attachedToShield, 
+	        MatrixFrame attachLocalFrame, Mission.Missile missile)
+        {
+	        if (Ranged && !AoE.OnlyOnHit)
 	        {
 		        DoAoE(attackerAgent, attachedAgent, 
 			        attachedAgent?.Frame.TransformToParent(attachLocalFrame) ?? attachLocalFrame);
@@ -129,15 +359,14 @@ namespace BLTAdoptAHero.Powers
         {
 	        HitEffect.Trigger(globalFrame);
 
-	        if (AreaOfEffect > 0 && AreaOfEffectDamage > 0)
+	        if (AoE.IsEnabled)
 	        {
-		        DoAoEDamage(attackerAgent, new() {attackerAgent, attackedAgent}, 
-			        AreaOfEffectMaxAgents, AreaOfEffectDamage, AreaOfEffect, 
-			        globalFrame.origin, AreaOfEffectDamageType);
+		        AoE.Apply(attackerAgent, new() {attackerAgent, attackedAgent}, globalFrame.origin);
 	        }
         }
 
-        private static void DoAgentDamage(Agent from, Agent agent, int damage, Vec3 direction, DamageTypes damageType)
+        private static void DoAgentDamage(Agent from, Agent agent, int damage, Vec3 direction, 
+	        DamageTypes damageType, HitBehavior hitBehavior)
         {
 	        var blow = new Blow(from.Index)
 	        {
@@ -150,28 +379,10 @@ namespace BLTAdoptAHero.Powers
 		        Direction = direction,
 		        DamageCalculated = true,
 		        VictimBodyPart = BoneBodyPartType.Chest,
+		        BlowFlag = hitBehavior.Generate(agent),
 	        };
 
 	        agent.RegisterBlow(blow);
-        }
-        
-        private static void DoAoEDamage(Agent from, List<Agent> ignoreAgents, int maxAgent, float maxDamage, float range, Vec3 position, DamageTypes damageType)
-        {
-	        foreach ((var agent, float distance) in Mission.Current
-		        .GetAgentsInRange(position.AsVec2, range * 1, true)
-		        .Where(a => 
-			        a.State == AgentState.Active	// alive only
-			        && !ignoreAgents.Contains(a)	// not in the ignore list
-			        && a.IsEnemyOf(from)			// enemies only
-			        )
-		        .Select(a => (agent: a, distance: a.Position.Distance(position)))
-		        .OrderByDescending(a => a.distance)
-		        .Take(maxAgent).ToList() // ToList is required due to potential collection change exception when agents are killed below
-	        )
-	        {
-		        int damage = (int) (maxDamage / Math.Pow(distance / range + 1f, 2f)); 
-		        DoAgentDamage(from, agent, damage, (agent.Position - position).NormalizedCopy(), damageType);
-	        }
         }
 
         public override string ToString() => $"{Name}: {ToStringInternal()}";
@@ -193,9 +404,10 @@ namespace BLTAdoptAHero.Powers
             
             if (DamageToMultiply != 1) modifiers.Add($"+{DamageToMultiply * 100:0.0}%");
             if (DamageToAdd != 0) modifiers.Add($"+{DamageToAdd}");
-            if (AreaOfEffect != 0) appliesFromList.Add($"{AreaOfEffectDamage} AoE ({AreaOfEffect}m)");
+            if (AoE.Range != 0) appliesFromList.Add(AoE.ToString());
 
-            return $"{string.Join(" / ", modifiers)} {string.Join("/", appliesFromList)} dmg to {string.Join(", ", appliesToList)}";
+            return $"{string.Join(" / ", modifiers)} " +
+                   $"{string.Join("/", appliesFromList)} dmg to {string.Join(", ", appliesToList)}";
         }
 
         public void GenerateDocumentation(IDocumentationGenerator generator) => generator.P(ToStringInternal());

@@ -27,18 +27,17 @@ namespace BLTAdoptAHero.Powers
             Type = new ("E0A274DF-ADBB-4725-9EAE-59806BF9B5DC");
         }
 
-        void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers) 
+        void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers) 
             => OnActivation(hero, handlers);
 
-        protected override void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers,
+        protected override void OnActivation(Hero hero, PowerHandler.Handlers handlers,
             Agent agent = null, DeactivationHandler deactivationHandler = null) 
             => handlers.OnDoDamage += OnDoDamage;
 
-        private void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, 
-            AttackCollisionDataRef attackCollisionData)
+        private void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams)
         {
             agent.Health = Math.Min(agent.HealthLimit, 
-                agent.Health + attackCollisionData.Data.InflictedDamage * FractionOfDamageToAbsorb);
+                agent.Health + blowParams.blow.InflictedDamage * FractionOfDamageToAbsorb);
         }
 
         public override string ToString() => $"{Name}: {ToStringInternal()}";

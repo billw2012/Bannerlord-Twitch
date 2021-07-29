@@ -14,6 +14,6 @@ namespace BLTAdoptAHero.Powers
         /// </summary>
         /// <param name="hero"></param>
         /// <param name="handlers"></param>
-        void OnHeroJoinedBattle(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers);
+        void OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers);
     }
 }

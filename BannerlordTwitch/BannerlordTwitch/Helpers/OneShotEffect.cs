@@ -35,16 +35,21 @@ namespace BannerlordTwitch.Helpers
 
         public void Trigger(MatrixFrame location, int relatedAgentIndex = -1)
         {
-            if (!string.IsNullOrEmpty(ParticleEffect))
+            Trigger(ParticleEffect, Sound, location, relatedAgentIndex);
+        }
+        
+        public static void Trigger(string particleEffect, string sound, MatrixFrame location, int relatedAgentIndex = -1)
+        {
+            if (!string.IsNullOrEmpty(particleEffect))
             {
                 Mission.Current.Scene.CreateBurstParticle(
-                    ParticleSystemManager.GetRuntimeIdByName(ParticleEffect),
+                    ParticleSystemManager.GetRuntimeIdByName(particleEffect),
                     location);
             }
 
-            if (!string.IsNullOrEmpty(Sound))
+            if (!string.IsNullOrEmpty(sound))
             {
-                Mission.Current.MakeSound(SoundEvent.GetEventIdFromString(Sound),
+                Mission.Current.MakeSound(SoundEvent.GetEventIdFromString(sound),
                     location.origin, false, true, relatedAgentIndex, -1);
             }
         }

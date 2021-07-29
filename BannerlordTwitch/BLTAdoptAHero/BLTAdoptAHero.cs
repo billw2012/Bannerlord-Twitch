@@ -17,6 +17,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.ComponentInterfaces;
 
 #pragma warning disable 649
 
@@ -135,6 +136,8 @@ namespace BLTAdoptAHero
 
                     gameStarterObject.AddModel(new BLTAgentStatCalculateModel(gameStarterObject.Models
                         .OfType<AgentStatCalculateModel>().FirstOrDefault()));
+                    gameStarterObject.AddModel(new BLTAgentApplyDamageModel(gameStarterObject.Models
+                        .OfType<AgentApplyDamageModel>().FirstOrDefault()));
                 }
             }
             catch (Exception e)
@@ -238,6 +241,134 @@ namespace BLTAdoptAHero
         public override string GetMissionDebugInfoForAgent(Agent agent)
         {
             return previousModel.GetMissionDebugInfoForAgent(agent);
+        }
+    }
+
+    public class BLTAgentApplyDamageModel : AgentApplyDamageModel
+    {
+        private readonly AgentApplyDamageModel previousModel;
+
+        public BLTAgentApplyDamageModel(AgentApplyDamageModel previousModel)
+        {
+            this.previousModel = previousModel;
+        }
+        
+        public override float CalculateDamage(ref AttackInformation attackInformation, ref AttackCollisionData collisionData,
+            in MissionWeapon weapon, float baseDamage)
+        {
+            return previousModel.CalculateDamage(ref attackInformation, ref collisionData, in weapon, baseDamage);
+        }
+    
+        public override float CalculateEffectiveMissileSpeed(Agent attackerAgent, WeaponComponentData missileWeapon,
+            ref Vec3 missileStartDirection, float missileStartSpeed)
+        {
+            return previousModel.CalculateEffectiveMissileSpeed(attackerAgent, missileWeapon, ref missileStartDirection, missileStartSpeed);
+        }
+    
+        public override float CalculateDismountChanceBonus(Agent attackerAgent, WeaponComponentData weapon)
+        {
+            return previousModel.CalculateDismountChanceBonus(attackerAgent, weapon);
+        }
+    
+        public override float CalculateKnockBackChanceBonus(Agent attackerAgent, WeaponComponentData weapon)
+        {
+            return previousModel.CalculateKnockBackChanceBonus(attackerAgent, weapon);
+        }
+    
+        public override float CalculateKnockDownChanceBonus(Agent attackerAgent, WeaponComponentData weapon)
+        {
+            return previousModel.CalculateKnockDownChanceBonus(attackerAgent, weapon);
+        }
+    
+        public class DecideMissileWeaponFlagsParams
+        {
+            public MissionWeapon missileWeapon;
+            public WeaponFlags missileWeaponFlags;
+        }
+        
+        public override void DecideMissileWeaponFlags(Agent attackerAgent, MissionWeapon missileWeapon, ref WeaponFlags missileWeaponFlags)
+        {
+            previousModel.DecideMissileWeaponFlags(attackerAgent, missileWeapon, ref missileWeaponFlags);
+            
+            var args = new DecideMissileWeaponFlagsParams
+            {
+                missileWeapon = missileWeapon,
+                missileWeaponFlags = missileWeaponFlags,
+            };
+
+            if (BLTHeroPowersMissionBehavior.PowerHandler?.CallHandlersForAgent(attackerAgent,
+                (attackerHero, handlers) => handlers.DecideMissileWeaponFlags(attackerHero, attackerAgent, args)
+                ) == true)
+            {
+                missileWeaponFlags = args.missileWeaponFlags;
+            }
+        }
+    
+        public override void CalculateCollisionStunMultipliers(Agent attackerAgent, Agent defenderAgent, bool isAlternativeAttack,
+            CombatCollisionResult collisionResult, WeaponComponentData attackerWeapon, WeaponComponentData defenderWeapon,
+            out float attackerStunMultiplier, out float defenderStunMultiplier)
+        {
+            previousModel.CalculateCollisionStunMultipliers(attackerAgent, defenderAgent, isAlternativeAttack, collisionResult, attackerWeapon, defenderWeapon, out attackerStunMultiplier, out defenderStunMultiplier);
+        }
+    
+        public override float CalculateStaggerThresholdMultiplier(Agent defenderAgent)
+        {
+            return previousModel.CalculateStaggerThresholdMultiplier(defenderAgent);
+        }
+    
+        public override float CalculatePassiveAttackDamage(BasicCharacterObject attackerCharacter, ref AttackCollisionData collisionData,
+            float baseDamage)
+        {
+            return previousModel.CalculatePassiveAttackDamage(attackerCharacter, ref collisionData, baseDamage);
+        }
+    
+        public override MeleeCollisionReaction DecidePassiveAttackCollisionReaction(Agent attacker, Agent defender, bool isFatalHit)
+        {
+            return previousModel.DecidePassiveAttackCollisionReaction(attacker, defender, isFatalHit);
+        }
+    
+        public override float CalculateShieldDamage(float baseDamage)
+        {
+            return previousModel.CalculateShieldDamage(baseDamage);
+        }
+    
+        public override float GetDamageMultiplierForBodyPart(BoneBodyPartType bodyPart, DamageTypes type, bool isHuman)
+        {
+            return previousModel.GetDamageMultiplierForBodyPart(bodyPart, type, isHuman);
+        }
+        
+        public class DecideCrushedThroughParams
+        {
+            public float totalAttackEnergy;
+            public Agent.UsageDirection attackDirection;
+            public StrikeType strikeType;
+            public WeaponComponentData defendItem;
+            public bool isPassiveUsageHit;
+            public bool crushThrough; // set this to override the behaviour
+        }
+        
+        public override bool DecideCrushedThrough(Agent attackerAgent, Agent defenderAgent, float totalAttackEnergy,
+            Agent.UsageDirection attackDirection, StrikeType strikeType, WeaponComponentData defendItem, bool isPassiveUsageHit)
+        {
+            bool originalResult = previousModel.DecideCrushedThrough(attackerAgent, defenderAgent, totalAttackEnergy, attackDirection, strikeType, defendItem, isPassiveUsageHit);
+            var args = new DecideCrushedThroughParams
+            {
+                totalAttackEnergy = totalAttackEnergy,
+                attackDirection = attackDirection,
+                strikeType = strikeType,
+                defendItem = defendItem,
+                isPassiveUsageHit = isPassiveUsageHit,
+                crushThrough = originalResult,
+            };
+
+            BLTHeroPowersMissionBehavior.PowerHandler?.CallHandlersForAgentPair(attackerAgent, defenderAgent,
+                (handlers, attackerHero, defenderHero) =>
+                {
+                    handlers.DecideCrushedThrough(attackerHero, attackerAgent, defenderHero, defenderAgent, args);
+                }, 
+                (_, _, _) => { });
+
+            return args.crushThrough;
         }
     }
 }

@@ -42,9 +42,10 @@ namespace BLTBuffet
                     blow.DamageType = DamageTypes.Blunt;
                     //blow.BlowFlag = BlowFlags.CrushThrough;
                     //blow.BlowFlag |= BlowFlags.KnockDown;
-                    blow.BoneIndex = agent.Monster.HeadLookDirectionBoneIndex;
+                    blow.BlowFlag |= BlowFlags.ShrugOff;
+                    blow.BoneIndex = agent.Monster.ThoraxLookDirectionBoneIndex;
                     blow.Position = agent.Position;
-                    blow.Position.z += agent.GetEyeGlobalHeight();
+                    // blow.Position.z += agent.GetEyeGlobalHeight();
                     blow.BaseMagnitude = 0f;
                     blow.WeaponRecord.FillAsMeleeBlow(null, null, -1, -1);
                     blow.InflictedDamage = (int) Math.Abs(config.DamagePerSecond * dt);

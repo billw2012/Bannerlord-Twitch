@@ -50,7 +50,7 @@ namespace BLTAdoptAHero.Powers
         }
 
         bool IHeroPowerActive.IsActive(Hero hero) 
-            => BLTHeroPowersMissionBehavior.Current?.HasHandlers(hero, this) == true;
+            => BLTHeroPowersMissionBehavior.PowerHandler?.HasHandlers(hero, this) == true;
 
         private Dictionary<Hero, float> expiry = new();
 
@@ -71,14 +71,14 @@ namespace BLTAdoptAHero.Powers
             var pfx = agent == null ? null : new AgentPfx(agent, Pfx);
             
             pfx?.Start();
-            BLTHeroPowersMissionBehavior.Current.ConfigureHandlers(hero, this, handlers =>
+            BLTHeroPowersMissionBehavior.PowerHandler.ConfigureHandlers(hero, this, handlers =>
             {
                 var deactivationHandler = new DeactivationHandler();
                 handlers.OnSlowTick += (_, _) =>
                 {
                     if (MBCommon.GetTime(MBCommon.TimeType.Mission) > expiry[hero])
                     {
-                        BLTHeroPowersMissionBehavior.Current.ClearHandlers(hero, this);
+                        BLTHeroPowersMissionBehavior.PowerHandler.ClearHandlers(hero, this);
                         pfx?.Stop();
                         expiryCallback();
                         deactivationHandler.Deactivate(hero);
@@ -87,7 +87,7 @@ namespace BLTAdoptAHero.Powers
                 handlers.OnGotKilled += (_, _, _, _, _, _) =>
                 {
                     // Expire immediately
-                    BLTHeroPowersMissionBehavior.Current.ClearHandlers(hero, this);
+                    BLTHeroPowersMissionBehavior.PowerHandler.ClearHandlers(hero, this);
                     expiry[hero] = 0;
                     pfx?.Stop();
                     expiryCallback();
@@ -113,7 +113,7 @@ namespace BLTAdoptAHero.Powers
                 Math.Max(0, Math.Min(PowerDurationSeconds, expiryVal - MBCommon.GetTime(MBCommon.TimeType.Mission))));
         }
 
-        protected abstract void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers,
+        protected abstract void OnActivation(Hero hero, PowerHandler.Handlers handlers,
             Agent agent = null, DeactivationHandler deactivationHandler = null);
 
         [YamlIgnore, Browsable(false)]

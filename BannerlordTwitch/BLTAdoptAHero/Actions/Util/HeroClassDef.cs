@@ -51,12 +51,12 @@ namespace BLTAdoptAHero
         
         [Description("Passive hero power: this will always apply to the hero (i.e. a permanent buff)"), 
          PropertyOrder(9), ExpandableObject, UsedImplicitly]
-        public PassivePowerGroup PassivePower { get; set; } = new();
+        public PassivePowerGroup PassivePower { get; set; } = new() { Name = "Passive Power" };
 
         [Description("Active hero power: this power will be triggered only when the UseHeroPower action is used by " +
                      "the viewer, via reward or command (i.e. a temporary buff)"), 
          PropertyOrder(10), ExpandableObject, UsedImplicitly]
-        public ActivePowerGroup ActivePower { get; set; } = new();
+        public ActivePowerGroup ActivePower { get; set; } = new() { Name = "Active Power" };
         #endregion
 
         [YamlIgnore, Browsable(false)]
@@ -169,7 +169,7 @@ namespace BLTAdoptAHero
                 }
                 foreach(var power in Powers)
                 {
-                    BLTHeroPowersMissionBehavior.Current.ConfigureHandlers(
+                    BLTHeroPowersMissionBehavior.PowerHandler.ConfigureHandlers(
                         hero, power as HeroPowerDefBase, handlers => power.OnHeroJoinedBattle(hero, handlers));
                 }
             }

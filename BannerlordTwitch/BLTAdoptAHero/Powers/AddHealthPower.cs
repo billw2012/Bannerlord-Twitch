@@ -22,7 +22,7 @@ namespace BLTAdoptAHero.Powers
             Type = new ("C4213666-2176-42B4-8DBB-BFE0182BCCE1");
         }
 
-        void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers)
+        void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers)
             => handlers.OnAgentBuild += OnAgentBuild;
 
         private void OnAgentBuild(Hero hero, Agent agent)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Util;
 using TaleWorlds.Core;
+using TaleWorlds.MountAndBlade;
 
 public static class LINQExtensions
 {
@@ -87,6 +88,19 @@ public static class LINQExtensions
     public static IEnumerable<EquipmentElement> YieldFilledArmorSlots(this Equipment equipment) 
         => equipment.YieldArmorSlots().Where(s => !s.element.IsEmpty).Select(s => s.element);
 
+    public static IEnumerable<(MissionWeapon element, EquipmentIndex index)> YieldSlots(this MissionEquipment equipment)
+    {
+        for (int i = (int) EquipmentIndex.WeaponItemBeginSlot;
+            i < (int) EquipmentIndex.ExtraWeaponSlot; 
+            i++)
+        {
+            yield return (equipment[i], (EquipmentIndex) i);
+        }
+    }
+
+    public static IEnumerable<(MissionWeapon element, EquipmentIndex index)> YieldFilledSlots(this MissionEquipment equipment) 
+        => equipment.YieldSlots().Where(s => !s.element.IsEmpty);
+    
     // public static SerializableDict<TKey, TElement> ToSerializableDict<TSource, TKey, TElement>(
     //     this IEnumerable<TSource> source,
     //     Func<TSource, TKey> keySelector,

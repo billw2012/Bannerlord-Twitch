@@ -31,7 +31,7 @@ namespace BLTAdoptAHero.Powers
         }
         #endregion
 
-        void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers)
+        void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers)
         {
             handlers.OnAgentBuild += (_, agent) =>
             {
@@ -39,7 +39,7 @@ namespace BLTAdoptAHero.Powers
             };
         }
 
-        protected override void OnActivation(Hero hero, BLTHeroPowersMissionBehavior.Handlers handlers,
+        protected override void OnActivation(Hero hero, PowerHandler.Handlers handlers,
             Agent agent = null, DeactivationHandler deactivationHandler = null)
         {
             BLTAgentModifierBehavior.Current.Add(agent, Modifiers);

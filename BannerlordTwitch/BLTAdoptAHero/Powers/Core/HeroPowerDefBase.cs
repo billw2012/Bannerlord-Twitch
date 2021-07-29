@@ -79,7 +79,7 @@ namespace BLTAdoptAHero.Powers
 
         public virtual object Clone()
         {
-            var newObj = (HeroPowerDefBase)CloneHelpers.CloneFields(this);
+            var newObj = CloneHelpers.CloneFields(this);
             newObj.ID = Guid.NewGuid();
             return newObj;
         }
