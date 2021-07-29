@@ -332,9 +332,10 @@ namespace BLTAdoptAHero
                 AddCompanionAction.Apply(Hero.MainHero.Clan, newHero);
             }
 
+            HeroClassDef classDef = null;
             if (settings.StartingClass != default)
             {
-                var classDef = BLTAdoptAHeroModule.HeroClassConfig.GetClass(settings.StartingClass);
+                classDef = BLTAdoptAHeroModule.HeroClassConfig.GetClass(settings.StartingClass);
                 if (classDef == null)
                 {
                     Log.Error($"AdoptAHero: StartingClass not found, please re-select it in settings");
@@ -357,9 +358,10 @@ namespace BLTAdoptAHero
                 if (settings.StartingEquipmentTier.Value > 0)
                 {
                     EquipHero.UpgradeEquipment(newHero, settings.StartingEquipmentTier.Value - 1, 
-                        BLTAdoptAHeroCampaignBehavior.Current.GetClass(newHero), replaceSameTier: false);
+                        classDef, replaceSameTier: false);
                 }
                 BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentTier(newHero, settings.StartingEquipmentTier.Value - 1);
+                BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentClass(newHero, classDef);
             }
 
             if(!Campaign.Current.EncyclopediaManager.BookmarksTracker.IsBookmarked(newHero))
