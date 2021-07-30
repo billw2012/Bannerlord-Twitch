@@ -131,7 +131,7 @@
     <Reference Include="WindowsBase">
       <Private>False</Private>
     </Reference>
-    <Reference Include="Xceed.Wpf.Toolkit, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4">
+    <Reference Include="Xceed.Wpf.Toolkit">
       <HintPath>..\lib\Xceed.Wpf.Toolkit.dll</HintPath>
     </Reference>
   </ItemGroup>

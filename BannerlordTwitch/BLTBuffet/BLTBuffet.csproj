@@ -101,7 +101,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xceed.Wpf.Toolkit, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4">
+    <Reference Include="Xceed.Wpf.Toolkit">
       <HintPath>..\lib\Xceed.Wpf.Toolkit.dll</HintPath>
     </Reference>
   </ItemGroup>
