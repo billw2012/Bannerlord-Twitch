@@ -97,11 +97,29 @@ namespace BLTConfigure
 
         public string OverlayUrl => BLTOverlay.BLTOverlay.UrlRoot;
 
+        private DateTime lastSaved = DateTime.MinValue;
+        public string LastSavedMessage => lastSaved == DateTime.MinValue || DateTime.Now - lastSaved > TimeSpan.FromSeconds(5)
+            ? string.Empty
+            : $"Saved {(DateTime.Now - lastSaved).TotalSeconds:0} seconds ago. " +
+              $"Reload save to apply changes.";
+
+        
         public BLTConfigureWindow()
         {
+            Loaded += (_, _) => UpdateLastSavedLoop();
+
             InitializeComponent();
             this.DataContext = this;
             Reload();
+        }
+
+        private async void UpdateLastSavedLoop()
+        {
+            while (this.IsLoaded)
+            {
+                await Task.Delay(TimeSpan.FromSeconds(1));
+                PropertyChanged?.Invoke(this, new (nameof(LastSavedMessage)));
+            }
         }
 
         protected override void OnDeactivated(EventArgs e)
@@ -343,6 +361,7 @@ namespace BLTConfigure
             try
             {
                 Settings.Save(EditedSettings);
+                lastSaved = DateTime.Now;
             }
             catch (Exception ex)
             {
@@ -732,6 +751,12 @@ namespace BLTConfigure
         private void CopyOverlayUrlButton_OnClick(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(OverlayUrl);
+        }
+
+        private void SaveButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            SaveSettings();
+            SaveAuth();
         }
     }
     

@@ -129,7 +129,6 @@ namespace BLTAdoptAHero
             return newObj;
         }
 
-        
         public class PassivePowerGroup : IConfig, IDocumentable, ICloneable
         {
             [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), UsedImplicitly]

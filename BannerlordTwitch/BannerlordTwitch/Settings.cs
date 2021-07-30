@@ -263,10 +263,7 @@ namespace BannerlordTwitch
 
         public static void Save(AuthSettings authSettings)
         {
-            FileSystem.SaveFileString(AuthFilePath, new SerializerBuilder()
-                .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
-                .Build()
-                .Serialize(authSettings));
+            FileSystem.SaveFileString(AuthFilePath, YamlHelpers.Serialize(authSettings));
         }
     }
 
@@ -321,12 +318,7 @@ namespace BannerlordTwitch
         public static void Save(Settings settings)
         {
             SettingsPreSave(settings);
-            
-            string settingsStr = new SerializerBuilder()
-                .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
-                .Build()
-                .Serialize(settings);
-            File.WriteAllText(SaveFilePath, settingsStr);
+            File.WriteAllText(SaveFilePath, YamlHelpers.Serialize(settings));
         }
 
         #else
@@ -371,11 +363,7 @@ namespace BannerlordTwitch
         public static void Save(Settings settings)
         {
             SettingsPreSave(settings);
-
-            FileSystem.SaveFileString(SaveFilePath, new SerializerBuilder()
-                .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
-                .Build()
-                .Serialize(settings));
+            FileSystem.SaveFileString(SaveFilePath, YamlHelpers.Serialize(settings));
         }
         #endif
 
