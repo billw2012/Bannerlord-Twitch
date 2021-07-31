@@ -11,7 +11,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BannerlordTwitch
 {
-    public class PropertyDef : ICloneable
+    public class PropertyDef : ICloneable, INotifyPropertyChanged
     {
         [Description("The property to modify"), PropertyOrder(1), UsedImplicitly]
         public DrivenProperty Name { get; set; }
@@ -39,6 +39,7 @@ namespace BannerlordTwitch
         }
 
         public object Clone() => CloneHelpers.CloneFields(this);
+        public event PropertyChangedEventHandler PropertyChanged;
     }
     
     public sealed class AgentModifierConfig : IDocumentable, ICloneable

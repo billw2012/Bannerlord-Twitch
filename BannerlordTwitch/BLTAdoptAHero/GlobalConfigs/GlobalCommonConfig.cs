@@ -189,7 +189,7 @@ namespace BLTAdoptAHero
 
         #region Shouts
         [Category("Shouts"), Description("Custom shouts"), PropertyOrder(1), UsedImplicitly]
-        public List<SummonHero.Shout> Shouts { get; set; } = new();
+        public List<Shout> Shouts { get; set; } = new();
 
         [Category("Shouts"), Description("Whether to include default shouts"), PropertyOrder(2)]
         public bool IncludeDefaultShouts { get; set; } = true;

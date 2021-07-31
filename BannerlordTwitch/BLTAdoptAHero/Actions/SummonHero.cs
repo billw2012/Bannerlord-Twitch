@@ -145,34 +145,6 @@ namespace BLTAdoptAHero
             AccessTools.Method(typeof(ArenaPracticeFightMissionController), "GetSpawnFrame", new[] {typeof(bool), typeof(bool)})
                 .CreateDelegate(typeof(ArenaPracticeFightMissionController_GetSpawnFrameDelegate));
 
-        public class Shout
-        {
-            [PropertyOrder(1), UsedImplicitly]
-            public string Text { get; set; } 
-            [PropertyOrder(2), Description("Higher weight means more chance this shout is used"), UsedImplicitly]
-            public float Weight { get; set; } = 1f;
-            [PropertyOrder(3), Description("Can be used when summoning on player side"), UsedImplicitly]
-            public bool PlayerSide { get; set; } = true;
-            [PropertyOrder(4), Description("Can be used when summoning on enemy side"), UsedImplicitly]
-            public bool EnemySide { get; set; } = true;
-            [PropertyOrder(5), Description("Can be used in situations other than battle/siege"), UsedImplicitly]
-            public bool General { get; set; } = true;
-            [PropertyOrder(6), Description("Can be used when in a field battle"), UsedImplicitly]
-            public bool FieldBattle { get; set; } = true;
-            [PropertyOrder(7), Description("Can be used when on siege defender side"), UsedImplicitly]
-            public bool SiegeDefend { get; set; } = true;
-            [PropertyOrder(8), Description("Can be used when on siege attacker side"), UsedImplicitly]
-            public bool SiegeAttack { get; set; } = true;
-
-            public Shout() { }
-            public Shout(string text)
-            {
-                Text = text;
-            }
-
-            public override string ToString() => Text;
-        }
-        
         private static readonly List<Shout> DefaultShouts = new()
         {
             //  Player side
@@ -801,5 +773,33 @@ namespace BLTAdoptAHero
                 __result *= BLTAdoptAHeroModule.CommonConfig.MoraleLossFactor;
             }
         }
+    }
+
+    public class Shout
+    {
+        [PropertyOrder(1), UsedImplicitly]
+        public string Text { get; set; } 
+        [PropertyOrder(2), Description("Higher weight means more chance this shout is used"), UsedImplicitly]
+        public float Weight { get; set; } = 1f;
+        [PropertyOrder(3), Description("Can be used when summoning on player side"), UsedImplicitly]
+        public bool PlayerSide { get; set; } = true;
+        [PropertyOrder(4), Description("Can be used when summoning on enemy side"), UsedImplicitly]
+        public bool EnemySide { get; set; } = true;
+        [PropertyOrder(5), Description("Can be used in situations other than battle/siege"), UsedImplicitly]
+        public bool General { get; set; } = true;
+        [PropertyOrder(6), Description("Can be used when in a field battle"), UsedImplicitly]
+        public bool FieldBattle { get; set; } = true;
+        [PropertyOrder(7), Description("Can be used when on siege defender side"), UsedImplicitly]
+        public bool SiegeDefend { get; set; } = true;
+        [PropertyOrder(8), Description("Can be used when on siege attacker side"), UsedImplicitly]
+        public bool SiegeAttack { get; set; } = true;
+
+        public Shout() { }
+        public Shout(string text)
+        {
+            Text = text;
+        }
+
+        public override string ToString() => Text;
     }
 }

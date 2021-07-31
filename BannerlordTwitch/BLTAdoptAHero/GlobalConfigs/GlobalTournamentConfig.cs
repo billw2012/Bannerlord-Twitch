@@ -73,40 +73,6 @@ namespace BLTAdoptAHero
         
         #region Balancing
 
-        public class SkillDebuffDef : INotifyPropertyChanged
-        {
-            public event PropertyChangedEventHandler PropertyChanged;
-
-            [Description("Skill or skill group to modifer (all skills in a group will be modified)"),
-             PropertyOrder(1), UsedImplicitly, Document]
-            public SkillsEnum Skill { get; set; } = SkillsEnum.All;
-
-            [Description("Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer " +
-                         "for visualization of how skill will be modified."),
-             PropertyOrder(2), UsedImplicitly, Document]
-            public float SkillReductionPercentPerWin { get; set; } = 3.2f;
-            
-            [Description("The lower limit (in %) that the skill(s) can be reduced to."),
-             PropertyOrder(2), UsedImplicitly, Document]
-            public float FloorPercent { get; set; } = 65f;
-
-            [YamlIgnore, ReadOnly(true), Description("Shows the % reduction of the skill over 20 tournaments"),
-             PropertyOrder(3), UsedImplicitly] 
-            public string Example => string.Join(", ", 
-                Enumerable.Range(0, 20)
-                    .Select(i => $"{i}: {100 * SkillModifier(i):0}%"));
-            
-            public float SkillModifier(int wins)
-            {
-                return (float) (FloorPercent + (100 - FloorPercent) * Math.Pow(1f - SkillReductionPercentPerWin / 100f, wins * wins)) / 100f;
-            }
-            
-            public override string ToString()
-            {
-                return $"{nameof(Skill)}: {Skill}, Skill Reduction Per Win: {SkillReductionPercentPerWin}%, Floor: {FloorPercent}%";
-            }
-        }
-
         [Category("Balancing"),
          Description("Applies skill debuffers to previous tournament winners"),
          PropertyOrder(1), UsedImplicitly, Document]
@@ -425,5 +391,39 @@ namespace BLTAdoptAHero
             });
         }
         #endregion
+    }
+
+    public class SkillDebuffDef : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [Description("Skill or skill group to modifer (all skills in a group will be modified)"),
+         PropertyOrder(1), UsedImplicitly, Document]
+        public SkillsEnum Skill { get; set; } = SkillsEnum.All;
+
+        [Description("Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer " +
+                     "for visualization of how skill will be modified."),
+         PropertyOrder(2), UsedImplicitly, Document]
+        public float SkillReductionPercentPerWin { get; set; } = 3.2f;
+            
+        [Description("The lower limit (in %) that the skill(s) can be reduced to."),
+         PropertyOrder(2), UsedImplicitly, Document]
+        public float FloorPercent { get; set; } = 65f;
+
+        [YamlIgnore, ReadOnly(true), Description("Shows the % reduction of the skill over 20 tournaments"),
+         PropertyOrder(3), UsedImplicitly] 
+        public string Example => string.Join(", ", 
+            Enumerable.Range(0, 20)
+                .Select(i => $"{i}: {100 * SkillModifier(i):0}%"));
+            
+        public float SkillModifier(int wins)
+        {
+            return (float) (FloorPercent + (100 - FloorPercent) * Math.Pow(1f - SkillReductionPercentPerWin / 100f, wins * wins)) / 100f;
+        }
+            
+        public override string ToString()
+        {
+            return $"{nameof(Skill)}: {Skill}, Skill Reduction Per Win: {SkillReductionPercentPerWin}%, Floor: {FloorPercent}%";
+        }
     }
 }

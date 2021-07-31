@@ -2,11 +2,10 @@
 using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using System;
-using BannerlordTwitch.Util;
 
 namespace BLTAdoptAHero.Actions.Util
 {
-    public sealed class AchievementSystem : ICloneable
+    public sealed class AchievementSystem : ICloneable, INotifyPropertyChanged
     {
         [ReadOnly(true), UsedImplicitly]
         public Guid ID { get; set; } = Guid.NewGuid();
@@ -14,8 +13,7 @@ namespace BLTAdoptAHero.Actions.Util
         [PropertyOrder(1)]
         public bool Enabled { get; [UsedImplicitly] set; }
 
-        [PropertyOrder(2)]
-        public string Name { get; [UsedImplicitly] set; }
+        [PropertyOrder(2)] public string Name { get; [UsedImplicitly] set; } = "New Achievement";
 
         public enum AchievementTypes
         {
@@ -54,5 +52,7 @@ namespace BLTAdoptAHero.Actions.Util
             newObj.ID = Guid.NewGuid();
             return newObj;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

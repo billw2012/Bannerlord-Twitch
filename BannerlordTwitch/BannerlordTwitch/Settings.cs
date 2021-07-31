@@ -44,7 +44,7 @@ namespace BannerlordTwitch
     }
 
     [CategoryOrder("General", 0)]
-    public abstract class ActionBase
+    public abstract class ActionBase : INotifyPropertyChanged
     {
         // Unique ID for this action 
         [ReadOnly(true), UsedImplicitly]
@@ -68,6 +68,8 @@ namespace BannerlordTwitch
 
         [YamlIgnore, Browsable(false), UsedImplicitly]
         public virtual bool IsValid => !Enabled || !string.IsNullOrEmpty(Handler);
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
     
     [Description("Channel points reward definition")]
@@ -177,7 +179,7 @@ namespace BannerlordTwitch
     }
 
     [UsedImplicitly]
-    public class SimTestingItem
+    public class SimTestingItem : INotifyPropertyChanged
     {
         [PropertyOrder(0), UsedImplicitly]
         public bool Enabled { get; set; } = true;
@@ -189,12 +191,21 @@ namespace BannerlordTwitch
         public string Args { get; set; }
         [PropertyOrder(4), UsedImplicitly]
         public float Weight { get; set; } = 1f;
-
+        
         public override string ToString()
         {
-            return $"{(!Enabled ? "(disabled)" : "")} {Id} ({Type}), {nameof(Args)}: {Args}, {nameof(Weight)}: {Weight}";
+            if (!string.IsNullOrEmpty(Args))
+            {
+                return $"{Id} ({Type}), {nameof(Args)}: {Args}, {nameof(Weight)}: {Weight}";
+            }
+            else
+            {
+                return $"{Id} ({Type}), {nameof(Weight)}: {Weight}";
+            }
         }
         //public override string ToString() => $"{Type} {Id} {Args} {Weight}";
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
     
     [UsedImplicitly]
