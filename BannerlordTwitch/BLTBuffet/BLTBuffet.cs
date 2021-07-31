@@ -38,7 +38,7 @@ namespace BLTBuffet
                 }
                 catch (Exception ex)
                 {
-                    Log.LogFeedCritical($"Error applying patches: {ex.Message}");
+                    Log.Exception($"Error applying patches: {ex.Message}", ex);
                 }
             }
         }

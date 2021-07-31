@@ -78,7 +78,7 @@ namespace BannerlordTwitch
 				}
 				catch (Exception ex)
 				{
-					Log.LogFeedCritical($"Error Initialising Bannerlord Twitch: {ex.Message}");
+					Log.Exception($"Error Initialising Bannerlord Twitch: {ex.Message}", ex);
 				}
 
                 ConsoleFeedHub.Register();
@@ -162,7 +162,7 @@ namespace BannerlordTwitch
 						true, false, "Okay", null,
 						() => {}, () => {}), true);
 				TwitchService = null;
-				Log.LogFeedCritical($"TwitchService could not start: {ex.Message}");
+				Log.Exception($"TwitchService could not start: {ex.Message}", ex);
 				return false;
 			}
 		}

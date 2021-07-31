@@ -38,7 +38,7 @@ namespace BannerlordTwitch.Testing
             var simSettings = settings.SimTesting;
             if (simSettings == null)
             {
-                Log.LogFeedCritical($"Can't run sim, settings need to be specified in the config");
+                Log.Fatal($"Can't run sim, settings need to be specified in the config");
                 return;
             }
 
