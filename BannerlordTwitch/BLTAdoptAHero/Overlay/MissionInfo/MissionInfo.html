@@ -18,7 +18,7 @@
                     <div class='mission-hero-name drop-shadow-2'
                          v-bind:class="'mission-hero-state-' + hero.State">{{hero.Name}}</div>
                 </div>
-                <div class='mission-hero-score-row'>
+                <div class='mission-hero-score-row' v-show='hero.Kills > 0 || hero.RetinueKills > 0 || hero.GoldEarned > 0 || hero.XPEarned > 0'>
                     <div v-show='hero.Kills > 0' class='mission-hero-kills-layer'>
 
                         <div class='mission-hero-kills drop-shadow-2'>
