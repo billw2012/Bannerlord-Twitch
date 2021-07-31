@@ -8,6 +8,7 @@ using System.Windows.Media;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
+using PropertyChanged;
 using TaleWorlds.Library;
 using TwitchLib.Api.Helix.Models.ChannelPoints.CreateCustomReward;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -57,7 +58,7 @@ namespace BannerlordTwitch
         [Category("General"), Description("Show response in the overlay window feed"), PropertyOrder(-98), UsedImplicitly]
         public bool RespondInOverlay { get; set; }
         
-        [Category("General"), Description("Name of the handler"), ReadOnly(true), PropertyOrder(1), UsedImplicitly]
+        [Category("General"), Description("Name of the handler"), ReadOnly(true), PropertyOrder(1), UsedImplicitly, SuppressPropertyChangedWarnings]
         public abstract string Handler { get; set; }
 
         [Category("General"), Description("Custom config for the handler"), ExpandableObject, ReadOnly(true), PropertyOrder(2), UsedImplicitly]

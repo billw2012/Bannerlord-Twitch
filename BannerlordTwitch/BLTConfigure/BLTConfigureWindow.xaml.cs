@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
@@ -46,6 +47,19 @@ namespace BLTConfigure
         }
     }
 
+    public class LogMessage
+    {
+        public Log.Level Level { get; set; }
+        public Brush LevelColor => Level switch
+        {
+            Log.Level.Critical or Log.Level.Error => Brushes.Red,
+            Log.Level.Warning => Brushes.Yellow,
+            Log.Level.Trace => Brushes.Gray,
+            _ => Brushes.Black,
+        };
+        public string Message { get; set; }
+    }
+    
     public partial class BLTConfigureWindow : INotifyPropertyChanged
     {
         public IEnumerable<NewActionViewModel> RewardHandlersViewModel => ActionManager.RewardHandlers.Select(a => new NewActionViewModel(_ => this.NewReward(a), a.GetType()));
@@ -102,7 +116,8 @@ namespace BLTConfigure
             ? string.Empty
             : $"Saved {(DateTime.Now - lastSaved).TotalSeconds:0} seconds ago. " +
               $"Reload save to apply changes.";
-
+        
+        public ObservableCollection<LogMessage> LogEntries { get; } = new();
         
         public BLTConfigureWindow()
         {
@@ -111,6 +126,21 @@ namespace BLTConfigure
             InitializeComponent();
             this.DataContext = this;
             Reload();
+
+            Log.OnLog += (level, msg) =>
+            {
+                this.Dispatcher.InvokeAsync(() =>
+                {
+                    LogEntries.Add(new () { Level = level, Message = msg });
+                    if (LogEntries.Count > 500)
+                    {
+                        for (int i = 0; i < 100; i++)
+                        {
+                            LogEntries.RemoveAt(0);
+                        }
+                    }
+                });
+            };
         }
 
         private async void UpdateLastSavedLoop()

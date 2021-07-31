@@ -133,7 +133,7 @@ namespace BannerlordTwitch
                 {
                     if (t.IsFaulted)
                     {
-                        Log.LogFeedFail($"Service init failed: {t.Exception?.GetBaseException().Message}");
+                        Log.Fatal($"Service init failed: {t.Exception?.GetBaseException().Message}");
                         return;
                     }
                     
@@ -147,7 +147,7 @@ namespace BannerlordTwitch
 
                     if (string.IsNullOrEmpty(user.BroadcasterType))
                     {
-                        Log.LogFeedFail($"Service init failed: you must be a twitch partner or affiliate to use the channel points system. Chat bot and testing are still functioning.");
+                        Log.Error($"You must be a Twitch Partner or Affiliate to use the channel points system. You can still use the chat commands (you may need to add some in the configure window to get full functionality).");
                         return;
                     }
                     
@@ -194,7 +194,7 @@ namespace BannerlordTwitch
             }
             catch (Exception e)
             {
-                Log.LogFeedFail($"ERROR: Couldn't retrieve existing rewards: {e.Message}");
+                Log.Error($"ERROR: Couldn't retrieve existing rewards: {e.Message}");
             }
 
             var failures = new List<string>();
@@ -202,7 +202,7 @@ namespace BannerlordTwitch
             {
                 if (rewardDef.RewardSpec.Cost <= 0)
                 {
-                    Log.LogFeedCritical($"Skipping creating reward {rewardDef.RewardSpec.Title}: you must give it a cost greater than 0");
+                    Log.Error($"Skipping creating reward {rewardDef.RewardSpec.Title}: you must give it a cost greater than 0");
                     failures.Add($"{rewardDef.RewardSpec.Title}: you must give it a cost greater than 0");
                     continue;
                 }
@@ -213,7 +213,7 @@ namespace BannerlordTwitch
                 }
                 catch (Exception e)
                 {
-                    Log.LogFeedCritical($"Couldn't create reward {rewardDef.RewardSpec.Title}: {e.Message}");
+                    Log.Error($"Couldn't create reward {rewardDef.RewardSpec.Title}: {e.Message}");
                     failures.Add($"{rewardDef.RewardSpec.Title}: {e.Message}");
                 }
             }
@@ -304,7 +304,7 @@ namespace BannerlordTwitch
 
             if (affiliateSpoofing == null)
             {
-                Log.LogFeedFail($"'DebugSpoofAffiliate: true' must be set in Bannerlord-Twitch-Auth.yaml to spoof redemptions (including in sim testing)!");
+                Log.Error($"You must enable Affiliate Spoofing on the Auth tab in the configure window to test redemption or perform sim testing!");
                 return false;
             }
 

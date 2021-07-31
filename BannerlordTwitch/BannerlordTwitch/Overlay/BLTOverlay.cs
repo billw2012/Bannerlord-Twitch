@@ -10,6 +10,7 @@ using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.Hosting;
+using Microsoft.Owin.Logging;
 using Microsoft.Owin.StaticFiles;
 using Owin;
 using TaleWorlds.Core;
@@ -77,6 +78,7 @@ namespace BLTOverlay
 
             WebApp.Start(UrlBinding, app =>
             {
+                app.SetLoggerFactory(new LoggerFactory());
                 app.UseCors(CorsOptions.AllowAll);
                 app.MapSignalR();
                 var physicalFileSystem = new PhysicalFileSystem(WebRoot);

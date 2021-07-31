@@ -7,6 +7,7 @@
               xmlns:fa="http://schemas.fontawesome.io/icons/"
               xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
               xmlns:bannerlordTwitch="clr-namespace:BannerlordTwitch;assembly=BannerlordTwitch"
+              xmlns:utils="clr-namespace:BLTConfigure.Utils"
               mc:Ignorable="d"
               ResizeMode="CanResize"
               Title="BLT Configure Window" Height="850" Width="850" 
@@ -48,17 +49,17 @@
                 <Setter Property="Padding" Value="5" />
             </Style>
         </DockPanel.Resources>
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
-            <Button Click="SaveButton_OnClick" FontWeight="DemiBold" FontSize="16" Padding="15 0">Save</Button>
-            <TextBlock Text="{Binding LastSavedMessage}" FontSize="16" 
-                       VerticalAlignment="Center"/>
-        </StackPanel>
         <TabControl Name="TabControl" SelectedIndex="0">
             <TabItem>
                 <TabItem.Header>
                     <TextBlock Margin="10 2">Configuration</TextBlock>
                 </TabItem.Header>
                 <DockPanel LastChildFill="True">
+                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                        <Button Click="SaveButton_OnClick" FontWeight="DemiBold" FontSize="16" Padding="15 0">Save</Button>
+                        <TextBlock Text="{Binding LastSavedMessage}" FontSize="16" 
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
                     <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center">
                         <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
                                    NavigateUri="https://discord.gg/q2p4eHsxFn">Discord</Hyperlink> |  
@@ -457,7 +458,39 @@
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Margin="10 2">Log</TextBlock>
+                </TabItem.Header>
+                <ListBox ItemsSource="{Binding LogEntries}" 
+                         utils:ListBoxExtenders.AutoScrollToEnd="True"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Level}" 
+                                           Foreground="{Binding LevelColor}" 
+                                           TextAlignment="Right"
+                                           FontWeight="DemiBold"
+                                           Padding="4 0"
+                                           FontFamily="Consolas"
+                                           HorizontalAlignment="Stretch"
+                                           Background="LightGray"/>
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding Message, Mode=OneWay}"
+                                           Padding="4 0"
+                                           FontFamily="Consolas"
+                                           TextWrapping="Wrap" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
         </TabControl>
     </DockPanel>
 </Window>

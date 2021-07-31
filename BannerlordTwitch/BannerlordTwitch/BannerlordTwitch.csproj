@@ -81,7 +81,7 @@
     <StartWorkingDirectory>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client</StartWorkingDirectory>
     <StartArguments>/singleplayer _MODULES_%2aBannerlord.Harmony%2aBannerlord.ButterLib%2aNative%2aSandBoxCore%2aCustomBattle%2aSandbox%2aStoryMode%2aBannerlordTwitch%2aBLTAdoptAHero%2aBLTBuffet%2aBLTConfigure%2a_MODULES_</StartArguments>
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-    <NoWarn>MSB3246;MSB3247;MSB3277</NoWarn>
+    <NoWarn>MSB3246;MSB3247;MSB3277;CS0067</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null">
@@ -318,6 +318,7 @@
     <Compile Include="Actions\ActionHandlerBase.cs" />
     <Compile Include="Actions\ActionManager.cs" />
     <Compile Include="Overlay\ConsoleFeed\ConsoleFeed.cs" />
+    <Compile Include="Overlay\Logger.cs" />
     <Compile Include="Overlay\TwitchHub.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Settings.cs" />
