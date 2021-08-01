@@ -490,8 +490,8 @@ namespace BLTAdoptAHero
                 Log.ShowInformation(message, hero.CharacterObject,
                     BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
                 achievementData.Achievements.Add(achievement.ID);
-                BLTAdoptAHeroCommonMissionBehavior.Current
-                    .ApplyAchievementRewards(hero, achievement.GoldGain, achievement.XPGain);
+
+                achievement.Apply(hero);
             }
         }
 

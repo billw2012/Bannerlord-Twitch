@@ -6,7 +6,7 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
-    public class RangeFloat
+    public struct RangeFloat
     {
         [PropertyOrder(1), UsedImplicitly]
         public float Min { get; set; }
@@ -16,8 +16,6 @@ namespace BLTAdoptAHero
         [YamlIgnore, Browsable(false)]
         public bool IsFixed => Min == Max;
 
-        public RangeFloat() {}
-        
         public RangeFloat(float min, float max)
         {
             Min = min;

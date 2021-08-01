@@ -4,12 +4,8 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BannerlordTwitch;
-using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
-using YamlDotNet.Core.Tokens;
-using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Achievements
 {
@@ -33,27 +29,10 @@ namespace BLTAdoptAHero.Achievements
                      "achievement."), UsedImplicitly]
         public string NotificationText { get; set; }
 
-        [Category("Requirements"), PropertyOrder(1), 
+        [Category("Requirements"), PropertyOrder(1), UsedImplicitly, 
          Editor(typeof(DerivedClassCollectionEditor<IAchievementRequirement>), 
              typeof(DerivedClassCollectionEditor<IAchievementRequirement>))]
         public List<IAchievementRequirement> Requirements { get; set; } = new();
-        // [Category("Requirements"), PropertyOrder(1), 
-        //  Description("The statistic this achievement relates to."), UsedImplicitly]
-        // public AchievementStatsData.Statistic Type { get; set; }
-        //
-        // [Category("Requirements"), PropertyOrder(2), 
-        //  Description("Value needed to obtain the achievement."), UsedImplicitly]
-        // public int Value { get; set; }
-        //
-        // [Category("Requirements"), PropertyOrder(3), 
-        //  Description("Whether this achievement only applies to the Required Class."), UsedImplicitly]
-        // public bool ClassSpecific { get; set; }
-        //
-        // [Category("Requirements"), 
-        //  Description("Class required to get this achievement (if Class Specific is enabled). If (none) is specified " +
-        //              "then the achievement will apply ONLY when the hero doesn't have a class set."), 
-        //  PropertyOrder(4), ItemsSource(typeof(HeroClassDef.ItemSource)), UsedImplicitly]
-        // public Guid RequiredClass { get; set; }
 
         [Category("Reward"), PropertyOrder(1), 
          Description("Gold awarded for gaining this achievement."), UsedImplicitly]
@@ -63,13 +42,22 @@ namespace BLTAdoptAHero.Achievements
          Description("Experience awarded for gaining this achievement."), UsedImplicitly]
         public int XPGain { get; set; }
 
-        public bool IsAchieved(Hero hero) => Requirements.All(r => r.IsMet(hero));
+        [Category("Reward"), PropertyOrder(3), 
+         Description("Whether to give a custom item as reward (defined below)"), UsedImplicitly]
+        public bool GiveItemReward { get; set; }
         
-        public override string ToString() 
-            => $"{Name}" + //: {Value} {Type} " +
-               //$"{(ClassSpecific ? "as " + (ClassConfig.GetClass(RequiredClass)?.Name ?? "no class") : "")} " +
-               $"{(GoldGain > 0 ? GoldGain + Naming.Gold : "")} " +
-               $"{(XPGain > 0 ? XPGain + Naming.XP : "")}";
+        [Category("Reward"), PropertyOrder(4), 
+         Description("Specifications of the custom item reward, if enabled"), UsedImplicitly]
+        public GeneratedRewardDef ItemReward { get; set; } = new();
+
+        public bool IsAchieved(Hero hero) => Requirements.All(r => r.IsMet(hero));
+
+        public override string ToString()
+            => $"{Name} " +
+               string.Join("+", $"{Requirements.Select(r => r.ToString())}") +
+               $" {(GoldGain > 0 ? GoldGain + Naming.Gold : "")} " +
+               $"{(XPGain > 0 ? XPGain + Naming.XP : "")} " +
+               $"{(GiveItemReward ? "Item" : "")}";
         
         public object Clone()
         {
@@ -79,11 +67,35 @@ namespace BLTAdoptAHero.Achievements
             return newObj;
         }
 
-        // DOING: Add consecutive summon and consecutive attack to stats
+        // DOING: 
         // Refactor tournament rewards to be usable for achievements
         // Refactor hero powers to a list instead of fixed set
         // Add unlock criteria to hero powers (stats)
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public void Apply(Hero hero)
+        {
+            if (GoldGain > 0)
+            {
+                BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, GoldGain);
+                BLTAdoptAHeroCommonMissionBehavior.Current?.RecordGoldGain(hero, GoldGain);
+            }
+
+            if (XPGain > 0)
+            {
+                SkillXP.ImproveSkill(hero, XPGain, SkillsEnum.All, auto: true);
+                BLTAdoptAHeroCommonMissionBehavior.Current?.RecordXPGain(hero, XPGain);
+            }
+
+            if (GiveItemReward)
+            {
+                var (item, modifier, slot) = ItemReward.Generate(hero);
+                if (item != null)
+                {
+                    RewardHelpers.AssignCustomReward(hero, item, modifier, slot);
+                }
+            }
+        }
     }
 }

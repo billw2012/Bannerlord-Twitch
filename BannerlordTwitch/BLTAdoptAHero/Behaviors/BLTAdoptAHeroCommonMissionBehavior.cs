@@ -473,13 +473,14 @@ namespace BLTAdoptAHero
             }
         }
 
-        public void ApplyAchievementRewards(Hero hero, int goldGained, int xpGained)
+        public void RecordGoldGain(Hero hero, int gold)
         {
-            BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, goldGained);
-            GetHeroMissionState(hero).WonGold += goldGained;
-
-            SkillXP.ImproveSkill(hero, xpGained, SkillsEnum.All, auto: true);
-            GetHeroMissionState(hero).WonXP += xpGained;
+            GetHeroMissionState(hero).WonGold += gold;
+        }
+        
+        public void RecordXPGain(Hero hero, int xp)
+        {
+            GetHeroMissionState(hero).WonXP += xp;
         }
     }
 }

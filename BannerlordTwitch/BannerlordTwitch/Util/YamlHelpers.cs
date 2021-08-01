@@ -9,6 +9,7 @@ using YamlDotNet.Serialization;
 
 namespace BannerlordTwitch.Util
 {
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Struct)]
     public sealed class YamlTagged : Attribute { }
 
     public static class YamlHelpers
