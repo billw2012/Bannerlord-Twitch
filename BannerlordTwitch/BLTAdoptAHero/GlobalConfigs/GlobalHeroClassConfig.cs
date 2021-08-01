@@ -9,16 +9,21 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
-    internal class GlobalHeroClassConfig : IConfig, IDocumentable
+    internal class GlobalHeroClassConfig : IUpdateFromDefault, IDocumentable
     {
+        #region Static
         private const string ID = "Adopt A Hero - Class Config";
         internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalHeroClassConfig));
         internal static GlobalHeroClassConfig Get() => ActionManager.GetGlobalConfig<GlobalHeroClassConfig>(ID);
         internal static GlobalHeroClassConfig Get(Settings fromSettings) => fromSettings.GetGlobalConfig<GlobalHeroClassConfig>(ID);
+        #endregion
         
+        #region User Editable
         [Description("Defined classes"), UsedImplicitly] 
         public List<HeroClassDef> ClassDefs { get; set; } = new();
+        #endregion
 
+        #region Public Interface
         [Browsable(false), YamlIgnore]
         public IEnumerable<string> ClassNames => ClassDefs?.Select(c => c.Name?.ToLower()) ?? Enumerable.Empty<string>();
 
@@ -27,26 +32,20 @@ namespace BLTAdoptAHero
 
         public HeroClassDef FindClass(string search) 
             => ClassDefs?.FirstOrDefault(c => c.Name.Equals(search, StringComparison.InvariantCultureIgnoreCase));
-
-        #region IConfig
-        public void OnLoaded(Settings settings)
-        {
-            foreach (var c in ClassDefs.OfType<IConfig>())
-            {
-                c.OnLoaded(settings);
-            }
-        }
-
-        public void OnSaving()
-        {
-            foreach (var c in ClassDefs.OfType<IConfig>())
-            {
-                c.OnSaving();
-            }
-        }
         #endregion
 
-        #region IDocumentationGenerator
+        #region IUpdateFromDefault
+        public void OnUpdateFromDefault(Settings defaultSettings)
+        {
+            SettingsHelpers.MergeCollections(
+                ClassDefs, 
+                Get(defaultSettings).ClassDefs,
+                (a, b) => a.ID == b.ID || a.Name == b.Name
+            );
+        }
+        #endregion
+        
+        #region IDocumentable
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
             generator.Div("class-config", () =>

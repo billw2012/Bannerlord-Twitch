@@ -16,7 +16,7 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
-    public sealed class HeroClassDef : IConfig, IDocumentable, ICloneable
+    public sealed class HeroClassDef : IDocumentable, ICloneable
     {
         [ReadOnly(true), UsedImplicitly]
         public Guid ID { get; set; } = Guid.NewGuid();
@@ -129,7 +129,7 @@ namespace BLTAdoptAHero
             return newObj;
         }
 
-        public class PassivePowerGroup : IConfig, IDocumentable, ICloneable
+        public class PassivePowerGroup : ILoaded, IDocumentable, ICloneable
         {
             [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), UsedImplicitly]
             public string Name { get; set; } = "Enter Name Here";
@@ -180,12 +180,11 @@ namespace BLTAdoptAHero
                 return CloneHelpers.CloneFields(this);
             }
 
-            #region IConfig
+            #region ILoaded
             public void OnLoaded(Settings settings)
             {
                 PowerConfig = GlobalHeroPowerConfig.Get(settings);   
             }
-            public void OnSaving() { }
             #endregion
 
             #region IDocumentable
@@ -216,7 +215,7 @@ namespace BLTAdoptAHero
             #endregion
         }
         
-        public class ActivePowerGroup : IConfig, IDocumentable, ICloneable
+        public class ActivePowerGroup : ILoaded, IDocumentable, ICloneable
         {
             [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1),
              UsedImplicitly]
@@ -320,12 +319,11 @@ namespace BLTAdoptAHero
                 return CloneHelpers.CloneFields(this);
             }
 
-            #region IConfig
+            #region ILoaded
             public void OnLoaded(Settings settings)
             {
                 PowerConfig = GlobalHeroPowerConfig.Get(settings);   
             }
-            public void OnSaving() { }
             #endregion
             
             #region IDocumentable
@@ -352,8 +350,7 @@ namespace BLTAdoptAHero
         {
             public ItemCollection GetValues()
             {
-                var col = new ItemCollection();
-                col.Add(Guid.Empty, "(none)");
+                var col = new ItemCollection {{Guid.Empty, "(none)"}};
 
                 var source = GlobalHeroClassConfig.Get(ConfigureContext.CurrentlyEditedSettings);
                 if (source != null)
@@ -366,20 +363,6 @@ namespace BLTAdoptAHero
 
                 return col;
             }
-        }
-        #endregion
-
-        #region IConfig
-        public void OnLoaded(Settings settings)
-        {
-            PassivePower?.OnLoaded(settings);
-            ActivePower?.OnLoaded(settings);
-        }
-
-        public void OnSaving()
-        {
-            PassivePower?.OnSaving();
-            ActivePower?.OnSaving();
         }
         #endregion
 

@@ -25,11 +25,6 @@ namespace BLTAdoptAHero.Powers
          PropertyOrder(3), UsedImplicitly, ExpandableObject]
         public HitBehavior HitBehavior { get; set; }
 
-        public ReflectDamagePower()
-        {
-            Type = new ("FFE07DA3-E977-42D8-80CA-5DFFF66123EB");
-        }
-
         private void OnTakeDamage(Hero hero, Agent agent, Hero attackerHero, Agent attackerAgent, BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams) 
         {
             int damage = (int) (blowParams.blow.InflictedDamage * FractionOfDamageToReflect);

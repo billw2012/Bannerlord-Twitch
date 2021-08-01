@@ -754,7 +754,7 @@ namespace BLTAdoptAHero
                             results.Add(description);
                         }
                     }
-                    BLTAdoptAHeroCampaignBehavior.Current.IncreaseTournamentWins(entry.Hero);
+                    BLTAdoptAHeroCampaignBehavior.Current.IncreaseTournamentRoundWins(entry.Hero);
                 }
                 else if (tournamentBehavior.LastMatch.Participants.Any(w => w.Character?.HeroObject == entry.Hero))
                 {
@@ -768,7 +768,7 @@ namespace BLTAdoptAHero
                             results.Add(description);
                         }
                     }
-                    BLTAdoptAHeroCampaignBehavior.Current.IncreaseTournamentLosses(entry.Hero);
+                    BLTAdoptAHeroCampaignBehavior.Current.IncreaseTournamentRoundLosses(entry.Hero);
                 }
                 if (results.Any())
                 {

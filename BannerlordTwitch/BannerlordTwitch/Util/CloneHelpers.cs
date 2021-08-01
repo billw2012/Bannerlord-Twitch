@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace BannerlordTwitch.Util
@@ -35,5 +37,20 @@ namespace BannerlordTwitch.Util
                 type = type.BaseType;
             }
         }
+        
+        public static IEnumerable<T> CloneCollection<T>(IEnumerable<T> from) =>
+            @from.Select(o =>
+            {
+                if(o is ICloneable c)
+                {
+                    return (T)c.Clone();
+                }
+                else
+                {
+                    var copy = (T)Activator.CreateInstance(o.GetType());
+                    CloneFields(o, copy);
+                    return copy;
+                }
+            });
     }
 }

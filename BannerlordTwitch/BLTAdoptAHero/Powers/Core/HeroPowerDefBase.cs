@@ -13,40 +13,10 @@ namespace BLTAdoptAHero.Powers
     /// <summary>
     /// Base class for Hero Power definitions
     /// </summary>
-    public class HeroPowerDefBase : ICloneable
+    [YamlTagged]
+    public abstract class HeroPowerDefBase : ICloneable
     {
-        #region Static Management Functions
-        private static readonly Dictionary<Guid, Type> registeredPowers = new();
-        public static void RegisterPowerType<T>() => RegisterPowerType(typeof(T));
-
-        public static void RegisterPowerType(Type type)
-        {
-            var instance = (HeroPowerDefBase) Activator.CreateInstance(type);
-            registeredPowers.Add(instance.Type, type);
-        }
-
-        public static void RegisterAll(Assembly assembly)
-        {
-            var powerTypes = assembly
-                .GetTypes()
-                .Where(t => typeof(HeroPowerDefBase).IsAssignableFrom(t) && !t.IsAbstract);
-            foreach (var powerType in powerTypes)
-            {
-                RegisterPowerType(powerType);
-            }
-        }
-
-        internal static IEnumerable<Type> RegisteredPowerDefTypes => registeredPowers.Values;
-        #endregion
-
         #region Saved Properties
-        /// <summary>
-        /// This should be set by derived classes to a unique guid (if your IDE doesn't generate them for you then
-        /// use https://www.guidgenerator.com/online-guid-generator.aspx)
-        /// </summary>
-        [Browsable(false), UsedImplicitly] 
-        public Guid Type { get; set; }
-
         /// <summary>
         /// This is automatically generated when the object is created, it should never be changed in code.
         /// </summary>
@@ -58,19 +28,6 @@ namespace BLTAdoptAHero.Powers
         #endregion
 
         #region Implementation Details
-        // Power is loaded as an object to ensure all properties are kept in tact (actually its a dictionary under the hood),
-        // and then we convert it to a HeroPowerDefBase to get the Type Guid property, then finally we convert it to the 
-        // actual target Type after looking it up.
-        public HeroPowerDefBase ConvertToProperType(object o)
-        {
-            if (!registeredPowers.TryGetValue(Type, out var type))
-            {
-                Log.Error($"HeroPowerDef {Type} ({Name}) was not found");
-                return null;
-            }
-            return (HeroPowerDefBase) YamlHelpers.ConvertObject(o, type);
-        }
-
         /// <summary>
         /// Override this to give more useful string explanations
         /// </summary>
@@ -90,8 +47,7 @@ namespace BLTAdoptAHero.Powers
         {
             public ItemCollection GetValues()
             {
-                var col = new ItemCollection();
-                col.Add(Guid.Empty, "(none)");
+                var col = new ItemCollection {{Guid.Empty, "(none)"}};
 
                 var source = GlobalHeroPowerConfig.Get(ConfigureContext.CurrentlyEditedSettings);
                 if (source != null)
@@ -101,7 +57,6 @@ namespace BLTAdoptAHero.Powers
                         col.Add(item.ID, item.ToString().Truncate(120));
                     }
                 }
-
                 return col;
             }
         }
@@ -110,8 +65,7 @@ namespace BLTAdoptAHero.Powers
         {
             public ItemCollection GetValues()
             {
-                var col = new ItemCollection();
-                col.Add(Guid.Empty, "(none)");
+                var col = new ItemCollection {{Guid.Empty, "(none)"}};
 
                 var source = GlobalHeroPowerConfig.Get(ConfigureContext.CurrentlyEditedSettings);
                 if (source != null)

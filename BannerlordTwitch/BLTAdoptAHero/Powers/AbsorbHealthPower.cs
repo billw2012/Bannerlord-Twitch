@@ -21,12 +21,7 @@ namespace BLTAdoptAHero.Powers
         [Category("Power Config"),
          Description("What fraction of damage done to absorb as health"), PropertyOrder(1), UsedImplicitly]
         public float FractionOfDamageToAbsorb { get; set; } = 0.1f;
-
-        public AbsorbHealthPower()
-        {
-            Type = new ("E0A274DF-ADBB-4725-9EAE-59806BF9B5DC");
-        }
-
+        
         void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers) 
             => OnActivation(hero, handlers);
 

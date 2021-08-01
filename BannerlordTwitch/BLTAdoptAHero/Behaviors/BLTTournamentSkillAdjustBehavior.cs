@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Achievements;
 using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Annotations;
 using HarmonyLib;
@@ -59,8 +60,8 @@ namespace BLTAdoptAHero
                 .FirstOrDefault(d => SkillGroup.GetSkills(d.Skill).Contains(skill));
             if (debuff != null)
             {
-                int tournamentWins = BLTAdoptAHeroCampaignBehavior.Current.GetAchievementStat(hero,
-                    AchievementSystem.AchievementTypes.TotalTournamentChampionships);
+                int tournamentWins = BLTAdoptAHeroCampaignBehavior.Current.GetAchievementTotalStat(hero,
+                    AchievementStatsData.Statistic.TotalTournamentFinalWins);
                 if (tournamentWins > 0)
                 {
                     return (int) (baseModifiedSkill * debuff.SkillModifier(tournamentWins));

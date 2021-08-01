@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Util;
@@ -50,6 +51,9 @@ public static class LINQExtensions
         yield return item;
     }
     
+    public static IEnumerable ExceptNull(this IEnumerable @this) => @this.Cast<object>().Where(o => o != null);
+
+
     public static IEnumerable<T> Append<T>(this IEnumerable<T> @this, T item) => @this.Concat(item.Yield());
 
     public static IEnumerable<(EquipmentElement element, EquipmentIndex index)> YieldEquipmentSlots(this Equipment equipment)

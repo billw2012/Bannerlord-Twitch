@@ -4,63 +4,81 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using BLTAdoptAHero.Powers;
 using JetBrains.Annotations;
 using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
-    public class GlobalHeroPowerConfig : IConfig
+    public class GlobalHeroPowerConfig : IUpdateFromDefault, ILoaded
     {
+        #region Static
         private const string ID = "Adopt A Hero - Power Config";
         internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalHeroPowerConfig));
         internal static GlobalHeroPowerConfig Get() => ActionManager.GetGlobalConfig<GlobalHeroPowerConfig>(ID);
         internal static GlobalHeroPowerConfig Get(Settings fromSettings) => fromSettings.GetGlobalConfig<GlobalHeroPowerConfig>(ID);
-
-        #region User Editable
-        [Description("Defined powers"), UsedImplicitly, YamlIgnore, 
-         Editor(typeof(HeroPowerCollectionEditor), typeof(HeroPowerCollectionEditor))] 
-        public List<HeroPowerDefBase> PowerDefs { get; set; } = new();
-        
-        [Description("Whether powers are disabled in a tournament")] 
-        public bool DisablePowersInTournaments { get; set; } = true;
         #endregion
 
-        [Browsable(false)]
-        public List<object> SavedPowerDefs { get; set; } = new();
+        #region User Editable
+        [Description("Defined powers"), UsedImplicitly,  
+         Editor(typeof(DerivedClassCollectionEditor<HeroPowerDefBase>), typeof(DerivedClassCollectionEditor<HeroPowerDefBase>))] 
+        public List<HeroPowerDefBase> PowerDefs { get; set; } = new();
+        
+        [Description("Whether powers are disabled in a tournament"), UsedImplicitly] 
+        public bool DisablePowersInTournaments { get; set; } = true;
+        
+        #region Deprecated
+        [Browsable(false), UsedImplicitly]
+        public List<Dictionary<object, object>> SavedPowerDefs { get; set; }
+        #endregion
+        #endregion
 
-        [Browsable(false), YamlIgnore]
-        public IEnumerable<string> PowerNames => PowerDefs?.Select(c => c.Name?.ToLower()) ?? Enumerable.Empty<string>();
-
+        #region Public Interface
         public HeroPowerDefBase GetPower(Guid id)
             => PowerDefs?.FirstOrDefault(c => c.ID == id);
-
-        public HeroPowerDefBase FindPower(string search) 
-            => PowerDefs?.FirstOrDefault(c => c.Name.Equals(search, StringComparison.InvariantCultureIgnoreCase));
-
-        #region IConfig
+        #endregion
+        
+        #region IUpdateFromDefault
+        public void OnUpdateFromDefault(Settings defaultSettings)
+        {
+            SettingsHelpers.MergeCollections(
+                PowerDefs, 
+                Get(defaultSettings).PowerDefs,
+                (a, b) => a.ID == b.ID || a.Name == b.Name
+            );
+        }
+        #endregion
+        
+        #region ILoaded
         public void OnLoaded(Settings settings)
         {
-            // We need to convert our generic loaded powers into their concrete types
-            PowerDefs = SavedPowerDefs
-                .Select(o => YamlHelpers.ConvertObject<HeroPowerDefBase>(o)?.ConvertToProperType(o))
-                .Where(p => p != null)
-                .ToList();
-            
-            foreach (var c in PowerDefs.OfType<IConfig>())
+            // Upgrade path
+            if (SavedPowerDefs != null)
             {
-                c.OnLoaded(settings);
-            }
-        }
+                PowerDefs = SavedPowerDefs
+                    .Select(d =>
+                    {
+                        if (d.TryGetValue("Type", out object o) && o is string id)
+                        {
+                            var t = id.ToUpper() switch
+                            {
+                                "E0A274DF-ADBB-4725-9EAE-59806BF9B5DC" => typeof(AbsorbHealthPower),
+                                "378648B6-5586-4812-AD08-22DA6374440C" => typeof(AddDamagePower),
+                                "C4213666-2176-42B4-8DBB-BFE0182BCCE1" => typeof(AddHealthPower),
+                                "FFE07DA3-E977-42D8-80CA-5DFFF66123EB" => typeof(ReflectDamagePower),
+                                "6DF1D8D6-02C6-4D30-8D12-CCE24077A4AA" => typeof(StatModifyPower),
+                                _ => throw new Exception($"Power type id {id} not found")
+                            };
+                            
+                            return (HeroPowerDefBase)YamlHelpers.ConvertObjectUntagged(d, t);
+                        }
 
-        public void OnSaving()
-        {
-            foreach (var c in PowerDefs.OfType<IConfig>())
-            {
-                c.OnSaving();
+                        throw new Exception($"Invalid power found during load");
+                    })
+                    .ToList();
+                SavedPowerDefs = null;
             }
-
-            SavedPowerDefs = PowerDefs.Cast<object>().ToList();
         }
         #endregion
     }

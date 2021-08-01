@@ -9,9 +9,12 @@ using TaleWorlds.ObjectSystem;
 using BannerlordTwitch;
 using BannerlordTwitch.Annotations;
 using BannerlordTwitch.SaveSystem;
+using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Achievements;
 using BLTAdoptAHero.Actions.Util;
 using Helpers;
+using Newtonsoft.Json;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.SaveSystem;
@@ -34,63 +37,6 @@ namespace BLTAdoptAHero
                 public int Level { get; set; }
                 [SaveableProperty(2)]
                 public int SavedTroopIndex { get; set; }
-            }
-
-            public class AchievementData
-            {
-                [SaveableProperty(0)]
-                public int TotalKills { get; set; }
-                [SaveableProperty(1)]
-                public int TotalDeaths { get; set; }
-                [SaveableProperty(2)]
-                public int TotalSummons { get; set; }
-                [SaveableProperty(3)]
-                public int TotalAttacks { get; set; }
-                [SaveableProperty(4)]
-                public int TotalMainKills { get; set; }
-                [SaveableProperty(5)]
-                public int TotalBLTKills { get; set; }
-                [SaveableProperty(6)]
-                public List<Guid> Achievements { get; set; } = new();
-                [SaveableProperty(7)]
-                public int TotalTournamentLosses { get; set; }
-                [SaveableProperty(8)]
-                public int TotalTournamentWins { get; set; }
-                [SaveableProperty(9)]
-                public int TotalTournamentChampionships { get; set; }
-
-                public int ModifyValue(AchievementSystem.AchievementTypes type, int amount)
-                {
-                    return type switch
-                    {
-                        AchievementSystem.AchievementTypes.Summons => TotalSummons += amount,
-                        AchievementSystem.AchievementTypes.TotalKills => TotalKills += amount,
-                        AchievementSystem.AchievementTypes.TotalBLTKills => TotalBLTKills += amount,
-                        AchievementSystem.AchievementTypes.TotalMainKills => TotalMainKills += amount,
-                        AchievementSystem.AchievementTypes.Attacks => TotalAttacks += amount,
-                        AchievementSystem.AchievementTypes.Deaths => TotalDeaths += amount,
-                        AchievementSystem.AchievementTypes.TotalTournamentLosses => TotalTournamentLosses += amount,
-                        AchievementSystem.AchievementTypes.TotalTournamentWins => TotalTournamentWins += amount,
-                        AchievementSystem.AchievementTypes.TotalTournamentChampionships => TotalTournamentChampionships += amount,
-                        _ => throw new ArgumentOutOfRangeException(nameof(type), type,
-                            "Invalid AchievementType, probably settings are corrupt?")
-                    };
-                }
-
-                public int GetValue(AchievementSystem.AchievementTypes type) =>
-                    type switch 
-                    {
-                        AchievementSystem.AchievementTypes.Summons => TotalSummons,
-                        AchievementSystem.AchievementTypes.TotalKills => TotalKills,
-                        AchievementSystem.AchievementTypes.TotalBLTKills => TotalBLTKills,
-                        AchievementSystem.AchievementTypes.TotalMainKills => TotalMainKills,
-                        AchievementSystem.AchievementTypes.Attacks => TotalAttacks,
-                        AchievementSystem.AchievementTypes.Deaths => TotalDeaths,
-                        AchievementSystem.AchievementTypes.TotalTournamentLosses => TotalTournamentLosses,
-                        AchievementSystem.AchievementTypes.TotalTournamentWins => TotalTournamentWins,
-                        AchievementSystem.AchievementTypes.TotalTournamentChampionships => TotalTournamentChampionships,
-                        _ => throw new ArgumentOutOfRangeException(nameof(type), type, "Invalid AchievementType, probably settings are corrupt?")
-                    };
             }
 
             [SaveableProperty(0)]
@@ -118,7 +64,7 @@ namespace BLTAdoptAHero
             public bool IsRetiredOrDead { get; set; }
 
             [SaveableProperty(8)]
-            public AchievementData AchievementInfo { get; set; } = new();
+            public AchievementStatsData AchievementStats { get; set; } = new();
             
             public class SavedEquipment
             {
@@ -460,67 +406,109 @@ namespace BLTAdoptAHero
         #endregion
 
         #region Stats and achievements
-        public void IncreaseHeroKills(Hero killer, Agent killed)
+        public void IncreaseKills(Hero hero, Agent killed)
         {
             if (killed?.IsAdopted() == true)
             {
-                UpdateAchievement(killer, AchievementSystem.AchievementTypes.TotalBLTKills, 1);
+                IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalViewerKills, 1);
             }
-            
-            bool isMainCharacter = (killed?.Character as CharacterObject)?.HeroObject == Hero.MainHero;
-            if (isMainCharacter)
+            else if(killed?.GetHero() == Hero.MainHero)
             {
-                UpdateAchievement(killer, AchievementSystem.AchievementTypes.TotalMainKills, 1);
+                IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalStreamerKills, 1);
             }
-
-            UpdateAchievement(killer, AchievementSystem.AchievementTypes.TotalKills, 1);
+            else if (killed?.IsHero == true)
+            {
+                IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalHeroKills, 1);
+            }
+            else if (killed?.IsMount == true)
+            {
+                IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalMountKills, 1);
+            }
+            IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalKills, 1);
         }
 
-        public void IncreaseParticipationCount(Hero hero, bool playerSide) 
-            => UpdateAchievement(hero, playerSide 
-                    ? AchievementSystem.AchievementTypes.Summons 
-                    : AchievementSystem.AchievementTypes.Attacks, 1);
+        public void IncreaseParticipationCount(Hero hero, bool playerSide)
+        {
+            IncreaseStatistic(hero, playerSide
+                ? AchievementStatsData.Statistic.Summons
+                : AchievementStatsData.Statistic.Attacks, 1);
+        }
 
-        public void IncreaseHeroDeaths(Hero hero) 
-            => UpdateAchievement(hero, AchievementSystem.AchievementTypes.Deaths, 1);
+        public void IncreaseHeroDeaths(Hero hero, Agent killer)
+        {
+            if (killer?.IsAdopted() == true)
+            {
+                IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalViewerDeaths, 1);
+            }
+            else if(killer?.GetHero() == Hero.MainHero)
+            {
+                IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalStreamerDeaths, 1);
+            }
+            else if (killer?.IsHero == true)
+            {
+                IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalHeroDeaths, 1);
+            }
+            else if (killer?.IsMount == true)
+            {
+                IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalMountDeaths, 1);
+            }
+            IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalDeaths, 1);
+        }
 
-        public void IncreaseTournamentLosses(Hero hero) 
-            => UpdateAchievement(hero, AchievementSystem.AchievementTypes.TotalTournamentLosses, 1);
+        public void IncreaseTournamentRoundLosses(Hero hero) 
+            => IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalTournamentRoundLosses, 1);
 
-        public void IncreaseTournamentWins(Hero hero) 
-            => UpdateAchievement(hero, AchievementSystem.AchievementTypes.TotalTournamentWins, 1);
+        public void IncreaseTournamentRoundWins(Hero hero) 
+            => IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalTournamentRoundWins, 1);
 
         public void IncreaseTournamentChampionships(Hero hero) 
-            => UpdateAchievement(hero, AchievementSystem.AchievementTypes.TotalTournamentChampionships, 1);
-        private void UpdateAchievement(Hero hero, AchievementSystem.AchievementTypes achievementType, int amount)
-        {
-            var achievementData = GetHeroData(hero).AchievementInfo;
+            => IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalTournamentFinalWins, 1);
 
-            int value = achievementData.ModifyValue(achievementType, amount);
-            var achievement = BLTAdoptAHeroModule.CommonConfig.Achievements?
-                .FirstOrDefault(k => k.Enabled && achievementType == k.Type && value == k.Value);
-            if (achievement != null && !achievementData.Achievements.Contains(achievement.ID))
+        private void IncreaseStatistic(Hero hero, AchievementStatsData.Statistic statistic, int amount)
+        {
+            var achievementStatsData = GetHeroData(hero).AchievementStats;
+            
+            achievementStatsData.UpdateValue(statistic, hero.GetClass()?.ID ?? default, amount);
+           
+            CheckForAchievements(hero);
+        }
+
+        private void CheckForAchievements(Hero hero)
+        {
+            var achievementData = GetHeroData(hero).AchievementStats;
+            
+            var newAchievements = BLTAdoptAHeroModule.CommonConfig.Achievements?
+                .Where(a => a.IsAchieved(hero))
+                .Where(a
+                    => !achievementData.Achievements.Contains(a.ID)) ?? Enumerable.Empty<AchievementDef>();
+
+            foreach (var achievement in newAchievements)
             {
                 string message = achievement.NotificationText
                     .Replace("{player}", hero.FirstName.ToString())
                     .Replace("{name}", achievement.Name);
-
-                Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
-
+                Log.ShowInformation(message, hero.CharacterObject,
+                    BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
                 achievementData.Achievements.Add(achievement.ID);
-
-                BLTAdoptAHeroCommonMissionBehavior.Current.ApplyAchievementRewards(hero, achievement.GoldGain, achievement.XPGain);
+                BLTAdoptAHeroCommonMissionBehavior.Current
+                    .ApplyAchievementRewards(hero, achievement.GoldGain, achievement.XPGain);
             }
         }
 
-        public int GetAchievementStat(Hero hero, AchievementSystem.AchievementTypes type) 
-            => GetHeroData(hero)?.AchievementInfo?.GetValue(type) ?? 0;
+        public int GetAchievementTotalStat(Hero hero, AchievementStatsData.Statistic type) 
+            => GetHeroData(hero)?.AchievementStats?.GetTotalValue(type) ?? 0;
 
-        public IEnumerable<AchievementSystem> GetAchievements(Hero hero) =>
-            GetHeroData(hero)?.AchievementInfo?.Achievements?
+        public int GetAchievementClassStat(Hero hero, AchievementStatsData.Statistic type) 
+            => GetHeroData(hero)?.AchievementStats?.GetClassValue(type, hero.GetClass()?.ID ?? Guid.Empty) ?? 0;
+
+        public int GetAchievementClassStat(Hero hero, Guid classGuid, AchievementStatsData.Statistic type) 
+            => GetHeroData(hero)?.AchievementStats?.GetClassValue(type, classGuid) ?? 0;
+
+        public IEnumerable<AchievementDef> GetAchievements(Hero hero) =>
+            GetHeroData(hero)?.AchievementStats?.Achievements?
                 .Select(a => BLTAdoptAHeroModule.CommonConfig.GetAchievement(a))
                 .Where(a => a != null) 
-            ?? Enumerable.Empty<AchievementSystem>();
+            ?? Enumerable.Empty<AchievementDef>();
 
         #endregion
 

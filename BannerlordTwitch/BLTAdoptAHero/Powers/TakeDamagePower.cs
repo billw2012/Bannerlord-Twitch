@@ -27,11 +27,6 @@ namespace BLTAdoptAHero.Powers
                      "stunned when hit)"), PropertyOrder(3), ExpandableObject, UsedImplicitly]
         public HitBehavior RemoveHitBehavior { get; set; }
 
-        public TakeDamagePower()
-        {
-            Type = new ("366C25BD-5B20-4EB1-98F5-04B5FDDD6285");
-        }
-
         private void OnTakeDamage(Hero hero, Agent agent, Hero attackerHero, Agent attackerAgent,
             BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams)
         {

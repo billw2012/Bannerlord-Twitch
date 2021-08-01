@@ -21,7 +21,8 @@
                     xmlns:fa="http://schemas.fontawesome.io/icons/"
                     xmlns:bannerlordTwitch="clr-namespace:BannerlordTwitch;assembly=BannerlordTwitch"
                     xmlns:adoptAHero="clr-namespace:BLTAdoptAHero;assembly=BLTAdoptAHero"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:achievements="clr-namespace:BLTAdoptAHero.Achievements;assembly=BLTAdoptAHero">
 
     <xctk:InverseBoolConverter x:Key="InverseBoolConverter" />
     <xctk:ObjectTypeToNameConverter x:Key="ObjectTypeToNameConverter" />
@@ -38,7 +39,7 @@
     </DataTemplate>
     
     <!-- AchievementSystem -->
-    <DataTemplate DataType="{x:Type adoptAHero:Actions.Util.AchievementSystem}">
+    <DataTemplate DataType="{x:Type achievements:AchievementDef}">
         <StackPanel Orientation="Horizontal">
             <CheckBox IsChecked="{Binding Enabled}" Margin="2 2 5 2"/>
             <TextBlock Text="{Binding}" TextWrapping="Wrap"/>

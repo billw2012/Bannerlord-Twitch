@@ -16,11 +16,6 @@ namespace BLTAdoptAHero.Powers
 
         [YamlIgnore, Browsable(false)]
         protected override bool RequiresHeroAgent => true;
-        
-        public StatModifyPower()
-        {
-            Type = new ("6DF1D8D6-02C6-4D30-8D12-CCE24077A4AA");
-        }
 
         public override string ToString() => $"{Name}: {Modifiers}";
 

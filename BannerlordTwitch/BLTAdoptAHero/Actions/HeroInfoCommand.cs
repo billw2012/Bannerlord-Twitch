@@ -5,6 +5,7 @@ using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Achievements;
 using BLTAdoptAHero.Actions.Util;
 using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -194,20 +195,23 @@ namespace BLTAdoptAHero
 
                 if (settings.ShowTrackedStats)
                 {
-                    var achievementList = new List<(string shortName, AchievementSystem.AchievementTypes id)>
+                    var achievementList = new List<(string shortName, AchievementStatsData.Statistic id)>
                     {
-                        ("K", AchievementSystem.AchievementTypes.TotalKills),
-                        ("D", AchievementSystem.AchievementTypes.Deaths),
-                        ("K Vwr", AchievementSystem.AchievementTypes.TotalBLTKills),
-                        ("K Strmr", AchievementSystem.AchievementTypes.TotalMainKills),
-                        ("Sums", AchievementSystem.AchievementTypes.Summons),
-                        ("Atks", AchievementSystem.AchievementTypes.Attacks),
-                        ("Tour L", AchievementSystem.AchievementTypes.TotalTournamentLosses),
-                        ("Tour Rnd W", AchievementSystem.AchievementTypes.TotalTournamentWins),
-                        ("Tour W", AchievementSystem.AchievementTypes.TotalTournamentChampionships),
+                        ("K", AchievementStatsData.Statistic.TotalKills),
+                        ("D", AchievementStatsData.Statistic.TotalDeaths),
+                        ("KVwr", AchievementStatsData.Statistic.TotalViewerKills),
+                        ("KStrmr", AchievementStatsData.Statistic.TotalStreamerKills),
+                        ("Sums", AchievementStatsData.Statistic.Summons),
+                        ("CSums", AchievementStatsData.Statistic.ConsecutiveSummons),
+                        ("Atks", AchievementStatsData.Statistic.Attacks),
+                        ("CAtks", AchievementStatsData.Statistic.ConsecutiveAttacks),
+                        ("TourRndW", AchievementStatsData.Statistic.TotalTournamentRoundWins),
+                        ("TourRndL", AchievementStatsData.Statistic.TotalTournamentRoundLosses),
+                        ("TourW", AchievementStatsData.Statistic.TotalTournamentFinalWins),
                     };
                     infoStrings.Add($"[STATS] " + string.Join("■", achievementList.Select(a =>
-                        $"{a.shortName}: {BLTAdoptAHeroCampaignBehavior.Current.GetAchievementStat(adoptedHero, a.id)}"
+                        $"{a.shortName}:{BLTAdoptAHeroCampaignBehavior.Current.GetAchievementTotalStat(adoptedHero, a.id)}" +
+                        $"({BLTAdoptAHeroCampaignBehavior.Current.GetAchievementClassStat(adoptedHero, a.id)})"
                         )));
                 }
             }

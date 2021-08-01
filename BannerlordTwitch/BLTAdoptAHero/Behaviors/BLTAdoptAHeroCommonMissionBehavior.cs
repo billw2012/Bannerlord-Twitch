@@ -221,7 +221,7 @@ namespace BLTAdoptAHero
                         !MissionHelpers.InTournament())
                     {
                         ResetKillStreak(affectedHero);
-                        BLTAdoptAHeroCampaignBehavior.Current.IncreaseHeroDeaths(affectedHero);
+                        BLTAdoptAHeroCampaignBehavior.Current.IncreaseHeroDeaths(affectedHero, affectorAgent);
                     }
 
                     GetHeroMissionState(affectedHero).LastAgentState = agentState;
@@ -254,7 +254,7 @@ namespace BLTAdoptAHero
                     {
                         GetHeroMissionState(affectorHero).Kills++;
                         AddKillStreak(affectorHero);
-                        BLTAdoptAHeroCampaignBehavior.Current.IncreaseHeroKills(affectorHero, affectedAgent);
+                        BLTAdoptAHeroCampaignBehavior.Current.IncreaseKills(affectorHero, affectedAgent);
                     }
                 }
 

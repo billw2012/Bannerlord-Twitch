@@ -44,8 +44,6 @@ namespace BLTAdoptAHero
             GlobalTournamentConfig.Register();
             GlobalHeroClassConfig.Register();
             GlobalHeroPowerConfig.Register();
-
-            HeroPowerDefBase.RegisterAll(typeof(BLTAdoptAHeroModule).Assembly);
             
             TournamentHub.Register();
             MissionInfoHub.Register();

@@ -5,6 +5,7 @@ using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Achievements;
 using BLTAdoptAHero.Actions.Util;
 using JetBrains.Annotations;
 using TaleWorlds.Library;
@@ -21,15 +22,17 @@ namespace BLTAdoptAHero
     [CategoryOrder("Shouts", 5)]
     [CategoryOrder("Kill Streaks", 6)]
     [CategoryOrder("Achievements", 7)]
-    internal class GlobalCommonConfig : IDocumentable
+    internal class GlobalCommonConfig : IUpdateFromDefault, IDocumentable
     {
-
+        #region Static
         private const string ID = "Adopt A Hero - General Config";
 
         internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalCommonConfig));
         internal static GlobalCommonConfig Get() => ActionManager.GetGlobalConfig<GlobalCommonConfig>(ID);
         internal static GlobalCommonConfig Get(Settings fromSettings) => fromSettings.GetGlobalConfig<GlobalCommonConfig>(ID);
+        #endregion
 
+        #region User Editable
         #region General
         [Category("General"), Description("Whether an adopted hero is allowed to die"), PropertyOrder(3), Document, UsedImplicitly]
         public bool AllowDeath { get; set; }
@@ -191,7 +194,7 @@ namespace BLTAdoptAHero
         [Category("Shouts"), Description("Custom shouts"), PropertyOrder(1), UsedImplicitly]
         public List<Shout> Shouts { get; set; } = new();
 
-        [Category("Shouts"), Description("Whether to include default shouts"), PropertyOrder(2)]
+        [Category("Shouts"), Description("Whether to include default shouts"), PropertyOrder(2), UsedImplicitly]
         public bool IncludeDefaultShouts { get; set; } = true;
         #endregion
 
@@ -216,17 +219,37 @@ namespace BLTAdoptAHero
 
         #region Achievements
         [Category("Achievements"), Description("Achievements"), PropertyOrder(1), UsedImplicitly]
-        public List<AchievementSystem> Achievements { get; set; } = new();
+        public List<AchievementDef> Achievements { get; set; } = new();
 
-        public AchievementSystem GetAchievement(Guid id) => Achievements?.FirstOrDefault(a => a.ID == id) ?? null;
+        public AchievementDef GetAchievement(Guid id) => Achievements?.FirstOrDefault(a => a.ID == id) ?? null;
+        #endregion
         #endregion
 
+        #region Public Interface
         [YamlIgnore, Browsable(false)]
         public float DifficultyScalingClamped => MathF.Clamp(DifficultyScaling, 0, 5);
 
         public float GetCooldownTime(int summoned) 
            => (float) (Math.Pow(SummonCooldownUseMultiplier, Mathf.Max(1, summoned)) * SummonCooldownInSeconds);
+        #endregion
 
+        #region IUpdateFromDefault
+        public void OnUpdateFromDefault(Settings defaultSettings)
+        {
+            SettingsHelpers.MergeCollectionsSorted(
+                KillStreaks, 
+                Get(defaultSettings).KillStreaks,
+                (a, b) => a.Name == b.Name,
+                (a, b) => a.KillsRequired.CompareTo(b.KillsRequired)
+            );
+            SettingsHelpers.MergeCollections(
+                Achievements, 
+                Get(defaultSettings).Achievements,
+                (a, b) => a.ID == b.ID
+            );
+        }
+        #endregion
+        
         #region IDocumentable
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
@@ -262,21 +285,22 @@ namespace BLTAdoptAHero
                     generator.Table("achievements", () =>
                     {
                         generator.TR(() => generator.TH("Name").TH("Requirement").TH("Reward"));
-                        foreach (var a in achievements
-                            .OrderBy(a => a.Value)
-                            .GroupBy(a => a.Type)
-                            .SelectMany(a => a))
-                        {
-                            generator.TR(() =>
-                                generator.TD(a.Name)
-                                    .TD($"{a.Value} {a.Type.ToString().SplitCamelCase()}")
-                                    .TD(() =>
-                                    {
-                                        if (a.GoldGain > 0) generator.P($"{a.GoldGain}{Naming.Gold}");
-                                        if (a.XPGain > 0) generator.P($"{a.XPGain} XP");
-                                    })
-                                );
-                        }
+                        // TODO: fix
+                        // foreach (var a in achievements
+                        //     .OrderBy(a => a.Value)
+                        //     .GroupBy(a => a.Type)
+                        //     .SelectMany(a => a))
+                        // {
+                        //     generator.TR(() =>
+                        //         generator.TD(a.Name)
+                        //             .TD($"{a.Value} {a.Type.ToString().SplitCamelCase()}")
+                        //             .TD(() =>
+                        //             {
+                        //                 if (a.GoldGain > 0) generator.P($"{a.GoldGain}{Naming.Gold}");
+                        //                 if (a.XPGain > 0) generator.P($"{a.XPGain} XP");
+                        //             })
+                        //         );
+                        // }
                     });
                 }
             });

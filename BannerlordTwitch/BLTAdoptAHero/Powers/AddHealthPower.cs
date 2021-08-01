@@ -17,11 +17,6 @@ namespace BLTAdoptAHero.Powers
         [Category("Power Config"), Description("How much HP to add"), PropertyOrder(2), UsedImplicitly]
         public float HealthToAdd { get; set; }
 
-        public AddHealthPower()
-        {
-            Type = new ("C4213666-2176-42B4-8DBB-BFE0182BCCE1");
-        }
-
         void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers)
             => handlers.OnAgentBuild += OnAgentBuild;
 

@@ -63,8 +63,6 @@ namespace BLTAdoptAHero.Powers
 
         public class AreaOfEffectDef : ICloneable, INotifyPropertyChanged
         {
-	        public event PropertyChangedEventHandler PropertyChanged;
-
 	        [Description("The radius to apply the damage in"), PropertyOrder(1), UsedImplicitly]
 	        public float Range { get; set; }
 	        
@@ -125,6 +123,8 @@ namespace BLTAdoptAHero.Powers
 	        {
 		        return (int) (DamageAtCenter / Math.Pow(distance / Range + 1f, 2f));
 	        }
+            
+            public event PropertyChangedEventHandler PropertyChanged;
         }
 
         [Category("Effect"), 
@@ -166,11 +166,6 @@ namespace BLTAdoptAHero.Powers
          Description("Effect to play on hit (intended mainly for AoE effects)"), 
          PropertyOrder(22), ExpandableObject, UsedImplicitly]
         public OneShotEffect HitEffect { get; set; }
-        
-        public AddDamagePower()
-        {
-            Type = new ("378648B6-5586-4812-AD08-22DA6374440C");
-        }
 
         void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers) 
 	        => BLTHeroPowersMissionBehavior.PowerHandler
