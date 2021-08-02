@@ -438,8 +438,7 @@ namespace BannerlordTwitch
                 }
                 catch (Exception e)
                 {
-                    Log.LogFeedCritical($"Command {cmdName} failed with exception {e.Message}, game might be unstable now!");
-                    Log.Exception($"Command {cmdName}", e);
+                    Log.Exception($"Command {cmdName} failed with exception {e.Message}, game might be unstable now!", e);
                 }
 #endif
             });
