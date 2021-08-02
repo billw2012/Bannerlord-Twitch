@@ -220,10 +220,13 @@ namespace BLTAdoptAHero.Powers
 	        // We remove the shield when its a missile hit, as it won't be checked for removal
 	        ApplyShatterShieldChance(victimAgent, ref missileHitParams.collisionData, removeShield: true);
 	        
-	        if (UnblockableChance != 0 && MBRandom.RandomFloat < UnblockableChance)
-	        {
-		        AttackCollisionData.UpdateDataForShieldPenetration(ref missileHitParams.collisionData);
-	        }
+            // Disabling unblockable for missiles for now as it is quite complicated
+    	    // if (UnblockableChance != 0 && MBRandom.RandomFloat < UnblockableChance)
+            // {
+            //     #if e159 || e1510 || e160
+    		//     AttackCollisionData.UpdateDataForShieldPenetration(ref missileHitParams.collisionData);
+            //     #endif
+            // }
         }
 
         private void OnDoMeleeHit(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, 
@@ -258,8 +261,11 @@ namespace BLTAdoptAHero.Powers
 	        {
 		        // just makes sure any missile that hit the shield disappears
 		        collisionData.IsShieldBroken = true;
-
+                
+                // Hopefully this isn't needed in 161
+                #if e159 || e1510 || e160
 		        AttackCollisionData.UpdateDataForShieldPenetration(ref collisionData);
+                #endif
 
 		        var (element, slotIndex) = victimAgent.Equipment
 			        .YieldFilledSlots()

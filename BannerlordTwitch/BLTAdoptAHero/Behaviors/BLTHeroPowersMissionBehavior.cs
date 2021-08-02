@@ -428,8 +428,9 @@ namespace BLTAdoptAHero
             ref AttackCollisionData collisionData,
             //Vec3 missileStartingPosition, Vec3 missilePosition, Vec3 missileAngularVelocity, Vec3 movementVelocity,
             //MatrixFrame attachGlobalFrame, MatrixFrame affectedShieldGlobalFrame, int numDamagedAgents, 
-            Agent attacker, Agent victim
+            Agent attacker, Agent victim,
             //, GameEntity hitEntity
+            bool __result
             )
         {
             Current?.MissileHitCallback(ref collisionData, attacker, victim);

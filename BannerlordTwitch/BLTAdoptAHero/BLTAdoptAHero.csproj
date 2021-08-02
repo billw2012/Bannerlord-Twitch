@@ -1,285 +1,250 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E475EB9D-3C49-461B-88F7-9D88B746A3AA}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BLTAdoptAHero</RootNamespace>
-    <AssemblyName>BLTAdoptAHero</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <LangVersion>9</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.5.9|AnyCPU' ">
-    <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;TRACE;e159</DefineConstants>
-    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_9)</BANNERLORD_GAME_DIR>
-    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.9</BANNERLORD_GAME_DIR>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.5.9|AnyCPU' ">
-    <Optimize>true</Optimize>
-    <DefineConstants>TRACE;e159</DefineConstants>
-    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_9)</BANNERLORD_GAME_DIR>
-    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.9</BANNERLORD_GAME_DIR>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.5.10|AnyCPU' ">
-    <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;TRACE;e1510</DefineConstants>
-    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_10)</BANNERLORD_GAME_DIR>
-    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.10</BANNERLORD_GAME_DIR>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.5.10|AnyCPU' ">
-    <Optimize>true</Optimize>
-    <DefineConstants>TRACE;e1510</DefineConstants>
-    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_10)</BANNERLORD_GAME_DIR>
-    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.10</BANNERLORD_GAME_DIR>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.6.0|AnyCPU' ">
-    <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;TRACE;e160</DefineConstants>
-    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_6_0)</BANNERLORD_GAME_DIR>
-    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.6.0</BANNERLORD_GAME_DIR>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.6.0|AnyCPU' ">
-    <Optimize>true</Optimize>
-    <DefineConstants>TRACE;e160</DefineConstants>
-    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_6_0)</BANNERLORD_GAME_DIR>
-    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.6.0</BANNERLORD_GAME_DIR>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>build\$(Configuration)\bin\Win64_Shipping_Client\</OutputPath>
-    <StartAction>Program</StartAction>
-    <StartProgram>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\Bannerlord.exe</StartProgram>
-    <StartWorkingDirectory>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client</StartWorkingDirectory>
-    <StartArguments>/singleplayer _MODULES_%2aBannerlord.Harmony%2aBannerlord.ButterLib%2aNative%2aSandBoxCore%2aCustomBattle%2aSandbox%2aStoryMode%2aBannerlordTwitch%2aBLTAdoptAHero%2aBLTBuffet%2aBLTConfigure%2a_MODULES_</StartArguments>
-    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-    <NoWarn>MSB3246;MSB3247;MSB3277;CS0067</NoWarn>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Lib.Harmony.2.0.4\lib\net48\0Harmony.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll">
-      <HintPath>%(Identity)</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\TaleWorlds.*.dll">
-      <HintPath>%(Identity)</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\Newtonsoft.Json.dll">
-      <HintPath>%(Identity)</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\Native\bin\Win64_Shipping_Client\*.dll">
-      <HintPath>%(Identity)</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\SandBox\bin\Win64_Shipping_Client\*.dll">
-      <HintPath>%(Identity)</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\SandBoxCore\bin\Win64_Shipping_Client\*.dll">
-      <HintPath>%(Identity)</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\StoryMode\bin\Win64_Shipping_Client\*.dll">
-      <HintPath>%(Identity)</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466">
-      <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5">
-      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PresentationCore">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="PresentationFramework">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="PropertyChanged, Version=3.4.0.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd">
-      <HintPath>..\packages\PropertyChanged.Fody.3.4.0\lib\net40\PropertyChanged.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.Xaml">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="WindowsBase">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Xceed.Wpf.Toolkit">
-      <HintPath>..\lib\Xceed.Wpf.Toolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="YamlDotNet, Version=11.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e">
-      <HintPath>..\packages\YamlDotNet.11.1.1\lib\net45\YamlDotNet.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Actions\AddGoldToHero.cs" />
-    <Compile Include="Actions\AdoptAHero.cs" />
-    <Compile Include="Actions\AttributePoints.cs" />
-    <Compile Include="Actions\DiscardItem.cs" />
-    <Compile Include="Actions\EquipHero.cs" />
-    <Compile Include="Actions\FocusPoints.cs" />
-    <Compile Include="Actions\GiveItem.cs" />
-    <Compile Include="Actions\HeroActionHandlerBase.cs" />
-    <Compile Include="Actions\HeroCommandHandlerBase.cs" />
-    <Compile Include="Actions\HeroInfoCommand.cs" />
-    <Compile Include="Actions\ImproveAdoptedHero.cs" />
-    <Compile Include="Actions\JoinTournament.cs" />
-    <Compile Include="Actions\Marry.cs" />
-    <Compile Include="Actions\NameItem.cs" />
-    <Compile Include="Actions\Retinue.cs" />
-    <Compile Include="Actions\RetireMyHero.cs" />
-    <Compile Include="Actions\AuctionItem.cs" />
-    <Compile Include="Actions\SetHeroClass.cs" />
-    <Compile Include="Actions\SkillXP.cs" />
-    <Compile Include="Actions\SummonHero.cs" />
-    <Compile Include="Actions\TournamentBet.cs" />
-    <Compile Include="Actions\UsePower.cs" />
-    <Compile Include="Actions\Util\AchievementSystem.cs" />
-    <Compile Include="Actions\Util\BattleEffects.cs" />
-    <Compile Include="Actions\Util\CustomItems.cs" />
-    <Compile Include="Actions\Util\EquipmentType.cs" />
-    <Compile Include="Actions\Util\HeroClassDef.cs" />
-    <Compile Include="Actions\Util\HeroHelpers.cs" />
-    <Compile Include="Actions\Util\ItemModifierAccess.cs" />
-    <Compile Include="Actions\Util\KillStreaks.cs" />
-    <Compile Include="Actions\Util\SkillRangeDef.cs" />
-    <Compile Include="Actions\Util\SkillGroup.cs" />
-    <Compile Include="Behaviors\BLTAdoptAHeroCampaignBehavior.cs" />
-    <Compile Include="Behaviors\BLTAdoptAHeroCommonMissionBehavior.cs" />
-    <Compile Include="Behaviors\BLTAdoptAHeroCustomMissionBehavior.cs" />
-    <Compile Include="Behaviors\BLTTournamentBetMissionBehavior.cs" />
-    <Compile Include="Behaviors\BLTCustomItemsCampaignBehavior.cs" />
-    <Compile Include="Behaviors\BLTHeroPowersMissionBehavior.cs" />
-    <Compile Include="Behaviors\BLTRemoveAgentsBehavior.cs" />
-    <Compile Include="Behaviors\BLTSummonBehavior.cs" />
-    <Compile Include="Behaviors\BLTTournamentMissionBehavior.cs" />
-    <Compile Include="Behaviors\BLTTournamentQueueBehavior.cs" />
-    <Compile Include="Behaviors\BLTTournamentSkillAdjustBehavior.cs" />
-    <Compile Include="Behaviors\PowerHandler.cs" />
-    <Compile Include="BLTAdoptAHero.cs" />
-    <Compile Include="GlobalConfigs\GlobalCommonConfig.cs" />
-    <Compile Include="GlobalConfigs\GlobalHeroClassConfig.cs" />
-    <Compile Include="GlobalConfigs\GlobalHeroPowerConfig.cs" />
-    <Compile Include="GlobalConfigs\GlobalTournamentConfig.cs" />
-    <Compile Include="Overlay\MissionInfo\MissionInfo.cs" />
-    <Compile Include="Overlay\Tournament\Tournament.cs" />
-    <Compile Include="Powers\AbsorbHealthPower.cs" />
-    <Compile Include="Powers\AddDamagePower.cs" />
-    <Compile Include="Powers\AddHealthPower.cs" />
-    <Compile Include="Powers\Core\DurationMissionHeroPowerDefBase.cs" />
-    <Compile Include="Powers\Core\HeroPowerDefBase.cs" />
-    <Compile Include="Powers\Core\HitBehavior.cs" />
-    <Compile Include="Powers\Core\IHeroPowerActive.cs" />
-    <Compile Include="Powers\Core\IHeroPowerPassive.cs" />
-    <Compile Include="Powers\StatModifyPower.cs" />
-    <Compile Include="Powers\ReflectDamgePower.cs" />
-    <Compile Include="Powers\Core\HeroPowerCollectionEditor.cs" />
-    <Compile Include="Powers\TakeDamagePower.cs" />
-    <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\AgentExtensions.cs" />
-    <Compile Include="Util\ConsoleCommands.cs" />
-    <Compile Include="Util\HeroExtensions.cs" />
-    <Compile Include="Util\TournamentHelpers.cs" />
-    <Compile Include="Util\UIExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-    <None Include="SubModule.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="FodyWeavers.xml" />
-    <Content Include="Overlay\MissionInfo\MissionInfo.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Overlay\MissionInfo\MissionInfo.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Overlay\MissionInfo\MissionInfo.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Overlay\Tournament\Tournament.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Overlay\Tournament\Tournament.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Overlay\Tournament\Tournament.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="std_module_strings_xml.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BannerlordTwitch\BannerlordTwitch.csproj">
-      <Project>{a858b7fe-dd3e-4969-9d30-670042c75b16}</Project>
-      <Name>BannerlordTwitch</Name>
-      <Private>False</Private>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="AfterClean">
-    <RemoveDir Directories="$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)" />
-    <RemoveDir Directories="$(OutDir)..\..\..\..\build" />
-    <RemoveDir Directories="$(OutDir)..\..\..\..\obj" />
-  </Target>
-  <Target Name="AfterBuild">
-    <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
-    <Copy SourceFiles="std_module_strings_xml.xml" DestinationFolder="$(OutDir)..\..\ModuleData\Languages" />
-    <ItemGroup>
-      <SomeDir Include="$(OutDir)\..\..\**\*" />
-    </ItemGroup>
-    <Copy SourceFiles="@(SomeDir)" DestinationFiles="@(SomeDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
-  </Target>
-  <Import Project="..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.1\build\Fody.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <Import Project="..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" />
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{E475EB9D-3C49-461B-88F7-9D88B746A3AA}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>BLTAdoptAHero</RootNamespace>
+        <AssemblyName>BLTAdoptAHero</AssemblyName>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <LangVersion>9</LangVersion>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Fody.6.5.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.5.1\build\Fody.targets'))" />
-    <Error Condition="!Exists('..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props'))" />
-  </Target>
+    <Import Project="$(SolutionDir)BLTProperties.targets"/>
+    <PropertyGroup>
+        <DebugType>full</DebugType>
+        <PlatformTarget>x64</PlatformTarget>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <DebugSymbols>true</DebugSymbols>
+        <OutputPath>build\$(Configuration)\bin\Win64_Shipping_Client\</OutputPath>
+        <StartAction>Program</StartAction>
+        <StartProgram>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\Bannerlord.exe</StartProgram>
+        <StartWorkingDirectory>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client</StartWorkingDirectory>
+        <StartArguments>/singleplayer _MODULES_%2aBannerlord.Harmony%2aBannerlord.ButterLib%2aNative%2aSandBoxCore%2aCustomBattle%2aSandbox%2aStoryMode%2aBannerlordTwitch%2aBLTAdoptAHero%2aBLTBuffet%2aBLTConfigure%2a_MODULES_</StartArguments>
+        <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+        <NoWarn>MSB3246;MSB3247;MSB3277;CS0067</NoWarn>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\Lib.Harmony.2.0.4\lib\net48\0Harmony.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\TaleWorlds.*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\Newtonsoft.Json.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\Native\bin\Win64_Shipping_Client\*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\SandBox\bin\Win64_Shipping_Client\*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\SandBoxCore\bin\Win64_Shipping_Client\*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\StoryMode\bin\Win64_Shipping_Client\*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466">
+            <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.CSharp" />
+        <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+            <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5">
+            <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="PresentationCore">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="PresentationFramework">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="PropertyChanged, Version=3.4.0.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd">
+            <HintPath>..\packages\PropertyChanged.Fody.3.4.0\lib\net40\PropertyChanged.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Security" />
+        <Reference Include="System.Xaml">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="System.Xml">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="WindowsBase">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="Xceed.Wpf.Toolkit">
+            <HintPath>..\lib\Xceed.Wpf.Toolkit.dll</HintPath>
+        </Reference>
+        <Reference Include="YamlDotNet, Version=11.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e">
+            <HintPath>..\packages\YamlDotNet.11.1.1\lib\net45\YamlDotNet.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Actions\AddGoldToHero.cs" />
+        <Compile Include="Actions\AdoptAHero.cs" />
+        <Compile Include="Actions\AttributePoints.cs" />
+        <Compile Include="Actions\DiscardItem.cs" />
+        <Compile Include="Actions\EquipHero.cs" />
+        <Compile Include="Actions\FocusPoints.cs" />
+        <Compile Include="Actions\GiveItem.cs" />
+        <Compile Include="Actions\HeroActionHandlerBase.cs" />
+        <Compile Include="Actions\HeroCommandHandlerBase.cs" />
+        <Compile Include="Actions\HeroInfoCommand.cs" />
+        <Compile Include="Actions\ImproveAdoptedHero.cs" />
+        <Compile Include="Actions\JoinTournament.cs" />
+        <Compile Include="Actions\Marry.cs" />
+        <Compile Include="Actions\NameItem.cs" />
+        <Compile Include="Actions\Retinue.cs" />
+        <Compile Include="Actions\RetireMyHero.cs" />
+        <Compile Include="Actions\AuctionItem.cs" />
+        <Compile Include="Actions\SetHeroClass.cs" />
+        <Compile Include="Actions\SkillXP.cs" />
+        <Compile Include="Actions\SummonHero.cs" />
+        <Compile Include="Actions\TournamentBet.cs" />
+        <Compile Include="Actions\UsePower.cs" />
+        <Compile Include="Actions\Util\AchievementSystem.cs" />
+        <Compile Include="Actions\Util\BattleEffects.cs" />
+        <Compile Include="Actions\Util\CustomItems.cs" />
+        <Compile Include="Actions\Util\EquipmentType.cs" />
+        <Compile Include="Actions\Util\HeroClassDef.cs" />
+        <Compile Include="Actions\Util\HeroHelpers.cs" />
+        <Compile Include="Actions\Util\ItemModifierAccess.cs" />
+        <Compile Include="Actions\Util\KillStreaks.cs" />
+        <Compile Include="Actions\Util\SkillRangeDef.cs" />
+        <Compile Include="Actions\Util\SkillGroup.cs" />
+        <Compile Include="Behaviors\BLTAdoptAHeroCampaignBehavior.cs" />
+        <Compile Include="Behaviors\BLTAdoptAHeroCommonMissionBehavior.cs" />
+        <Compile Include="Behaviors\BLTAdoptAHeroCustomMissionBehavior.cs" />
+        <Compile Include="Behaviors\BLTTournamentBetMissionBehavior.cs" />
+        <Compile Include="Behaviors\BLTCustomItemsCampaignBehavior.cs" />
+        <Compile Include="Behaviors\BLTHeroPowersMissionBehavior.cs" />
+        <Compile Include="Behaviors\BLTRemoveAgentsBehavior.cs" />
+        <Compile Include="Behaviors\BLTSummonBehavior.cs" />
+        <Compile Include="Behaviors\BLTTournamentMissionBehavior.cs" />
+        <Compile Include="Behaviors\BLTTournamentQueueBehavior.cs" />
+        <Compile Include="Behaviors\BLTTournamentSkillAdjustBehavior.cs" />
+        <Compile Include="Behaviors\PowerHandler.cs" />
+        <Compile Include="BLTAdoptAHero.cs" />
+        <Compile Include="GlobalConfigs\GlobalCommonConfig.cs" />
+        <Compile Include="GlobalConfigs\GlobalHeroClassConfig.cs" />
+        <Compile Include="GlobalConfigs\GlobalHeroPowerConfig.cs" />
+        <Compile Include="GlobalConfigs\GlobalTournamentConfig.cs" />
+        <Compile Include="Overlay\MissionInfo\MissionInfo.cs" />
+        <Compile Include="Overlay\Tournament\Tournament.cs" />
+        <Compile Include="Powers\AbsorbHealthPower.cs" />
+        <Compile Include="Powers\AddDamagePower.cs" />
+        <Compile Include="Powers\AddHealthPower.cs" />
+        <Compile Include="Powers\Core\DurationMissionHeroPowerDefBase.cs" />
+        <Compile Include="Powers\Core\HeroPowerDefBase.cs" />
+        <Compile Include="Powers\Core\HitBehavior.cs" />
+        <Compile Include="Powers\Core\IHeroPowerActive.cs" />
+        <Compile Include="Powers\Core\IHeroPowerPassive.cs" />
+        <Compile Include="Powers\StatModifyPower.cs" />
+        <Compile Include="Powers\ReflectDamgePower.cs" />
+        <Compile Include="Powers\Core\HeroPowerCollectionEditor.cs" />
+        <Compile Include="Powers\TakeDamagePower.cs" />
+        <Compile Include="Properties\Annotations.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Util\AgentExtensions.cs" />
+        <Compile Include="Util\ConsoleCommands.cs" />
+        <Compile Include="Util\HeroExtensions.cs" />
+        <Compile Include="Util\TournamentHelpers.cs" />
+        <Compile Include="Util\UIExtensions.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="app.config" />
+        <None Include="packages.config" />
+        <None Include="SubModule.xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="FodyWeavers.xml" />
+        <Content Include="Overlay\MissionInfo\MissionInfo.css">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="Overlay\MissionInfo\MissionInfo.html">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="Overlay\MissionInfo\MissionInfo.js">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="Overlay\Tournament\Tournament.css">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="Overlay\Tournament\Tournament.html">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="Overlay\Tournament\Tournament.js">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="std_module_strings_xml.xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\BannerlordTwitch\BannerlordTwitch.csproj">
+            <Project>{a858b7fe-dd3e-4969-9d30-670042c75b16}</Project>
+            <Name>BannerlordTwitch</Name>
+            <Private>False</Private>
+        </ProjectReference>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <Target Name="AfterClean">
+        <RemoveDir Directories="$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)" />
+        <RemoveDir Directories="$(OutDir)..\..\..\..\build" />
+        <RemoveDir Directories="$(OutDir)..\..\..\..\obj" />
+    </Target>
+    <Target Name="AfterBuild">
+        <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
+        <Copy SourceFiles="std_module_strings_xml.xml" DestinationFolder="$(OutDir)..\..\ModuleData\Languages" />
+        <ItemGroup>
+            <SomeDir Include="$(OutDir)\..\..\**\*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(SomeDir)" DestinationFiles="@(SomeDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+    </Target>
+    <Import Project="..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.1\build\Fody.targets')" />
+    <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+        <PropertyGroup>
+            <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+        </PropertyGroup>
+        <Error Condition="!Exists('..\packages\Fody.6.5.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.5.1\build\Fody.targets'))" />
+        <Error Condition="!Exists('..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props'))" />
+    </Target>
 </Project>

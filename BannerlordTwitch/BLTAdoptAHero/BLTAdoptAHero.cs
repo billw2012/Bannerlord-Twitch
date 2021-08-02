@@ -370,5 +370,12 @@ namespace BLTAdoptAHero
 
             return args.crushThrough;
         }
+        
+        #if !e159 && !e1510 && !e160
+        public override bool CanWeaponIgnoreFriendlyFireChecks(WeaponComponentData weapon)
+        {
+            return previousModel.CanWeaponIgnoreFriendlyFireChecks(weapon);
+        }
+        #endif
     }
 }

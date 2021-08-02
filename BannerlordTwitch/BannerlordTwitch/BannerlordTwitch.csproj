@@ -1,441 +1,400 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BannerlordTwitch</RootNamespace>
-    <AssemblyName>BannerlordTwitch</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <LangVersion>9</LangVersion>
-    <ProjectGuid>{A858B7FE-DD3E-4969-9D30-670042C75B16}</ProjectGuid>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>4.0</OldToolsVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.5.9|AnyCPU' ">
-    <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;TRACE;e159</DefineConstants>
-    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_9)</BANNERLORD_GAME_DIR>
-    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.9</BANNERLORD_GAME_DIR>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.5.9|AnyCPU' ">
-    <Optimize>true</Optimize>
-    <DefineConstants>TRACE;e159</DefineConstants>
-    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_9)</BANNERLORD_GAME_DIR>
-    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.9</BANNERLORD_GAME_DIR>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.5.10|AnyCPU' ">
-    <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;TRACE;e1510</DefineConstants>
-    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_10)</BANNERLORD_GAME_DIR>
-    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.10</BANNERLORD_GAME_DIR>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.5.10|AnyCPU' ">
-    <Optimize>true</Optimize>
-    <DefineConstants>TRACE;e1510</DefineConstants>
-    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_10)</BANNERLORD_GAME_DIR>
-    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.10</BANNERLORD_GAME_DIR>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.6.0|AnyCPU' ">
-    <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;TRACE;e160</DefineConstants>
-    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_6_0)</BANNERLORD_GAME_DIR>
-    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.6.0</BANNERLORD_GAME_DIR>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.6.0|AnyCPU' ">
-    <Optimize>true</Optimize>
-    <DefineConstants>TRACE;e160</DefineConstants>
-    <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_6_0)</BANNERLORD_GAME_DIR>
-    <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.6.0</BANNERLORD_GAME_DIR>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>build\$(Configuration)\bin\Win64_Shipping_Client\</OutputPath>
-    <StartAction>Program</StartAction>
-    <StartProgram>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\Bannerlord.exe</StartProgram>
-    <StartWorkingDirectory>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client</StartWorkingDirectory>
-    <StartArguments>/singleplayer _MODULES_%2aBannerlord.Harmony%2aBannerlord.ButterLib%2aNative%2aSandBoxCore%2aCustomBattle%2aSandbox%2aStoryMode%2aBannerlordTwitch%2aBLTAdoptAHero%2aBLTBuffet%2aBLTConfigure%2a_MODULES_</StartArguments>
-    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-    <NoWarn>MSB3246;MSB3247;MSB3277;CS0067</NoWarn>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Lib.Harmony.2.0.4\lib\net48\0Harmony.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll">
-      <HintPath>%(Identity)</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\TaleWorlds.*.dll">
-      <HintPath>%(Identity)</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\Native\bin\Win64_Shipping_Client\*.dll">
-      <HintPath>%(Identity)</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\SandBox\bin\Win64_Shipping_Client\*.dll">
-      <HintPath>%(Identity)</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\SandBoxCore\bin\Win64_Shipping_Client\*.dll">
-      <HintPath>%(Identity)</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\StoryMode\bin\Win64_Shipping_Client\*.dll">
-      <HintPath>%(Identity)</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="dnlib, Version=3.3.2.0, Culture=neutral, PublicKeyToken=50e96378b6e77999">
-      <HintPath>..\packages\dnlib.3.3.2\lib\net45\dnlib.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="HtmlRenderer.PdfSharp, Version=1.5.0.6, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\HtmlRenderer.PdfSharp.1.5.0.6\lib\net45\HtmlRenderer.PdfSharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.5\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Owin, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.Owin.4.2.0\lib\net45\Microsoft.Owin.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Cors, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.Owin.Cors.4.2.0\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Diagnostics, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.Owin.Diagnostics.2.1.0\lib\net40\Microsoft.Owin.Diagnostics.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Owin.FileSystems, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.Owin.FileSystems.4.2.0\lib\net45\Microsoft.Owin.FileSystems.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Host.HttpListener, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.2.1.0\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Hosting, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.Owin.Hosting.2.1.0\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Owin.StaticFiles, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.Owin.StaticFiles.4.2.0\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="mscorlib" />
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5">
-      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb">
-      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb">
-      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="PropertyChanged, Version=3.4.0.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd">
-      <HintPath>..\packages\PropertyChanged.Fody.3.4.0\lib\net40\PropertyChanged.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml" />
-    <Reference Include="TwitchLib.Api, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\TwitchLib.Api.3.2.0\lib\netstandard2.0\TwitchLib.Api.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TwitchLib.Api.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\TwitchLib.Api.Core.3.2.0\lib\netstandard2.0\TwitchLib.Api.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TwitchLib.Api.Core.Enums, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\TwitchLib.Api.Core.Enums.3.2.0\lib\netstandard2.0\TwitchLib.Api.Core.Enums.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TwitchLib.Api.Core.Interfaces, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\TwitchLib.Api.Core.Interfaces.3.2.0\lib\netstandard2.0\TwitchLib.Api.Core.Interfaces.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TwitchLib.Api.Core.Models, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\TwitchLib.Api.Core.Models.3.2.0\lib\netstandard2.0\TwitchLib.Api.Core.Models.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TwitchLib.Api.Helix, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\TwitchLib.Api.Helix.3.2.0\lib\netstandard2.0\TwitchLib.Api.Helix.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TwitchLib.Api.Helix.Models, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\TwitchLib.Api.Helix.Models.3.2.0\lib\netstandard2.0\TwitchLib.Api.Helix.Models.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TwitchLib.Api.V5, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\TwitchLib.Api.V5.3.2.0\lib\netstandard2.0\TwitchLib.Api.V5.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TwitchLib.Api.V5.Models, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\TwitchLib.Api.V5.Models.3.2.0\lib\netstandard2.0\TwitchLib.Api.V5.Models.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TwitchLib.Client, Version=3.2.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\TwitchLib.Client.3.2.2-preview-fad69ab15afcde6e74c178736b666a6cad9381d3\lib\netstandard2.0\TwitchLib.Client.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TwitchLib.Client.Enums, Version=3.2.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\TwitchLib.Client.Enums.3.2.2-preview-fad69ab15afcde6e74c178736b666a6cad9381d3\lib\netstandard2.0\TwitchLib.Client.Enums.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TwitchLib.Client.Models, Version=3.2.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\TwitchLib.Client.Models.3.2.2-preview-fad69ab15afcde6e74c178736b666a6cad9381d3\lib\netstandard2.0\TwitchLib.Client.Models.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TwitchLib.Communication, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\TwitchLib.Communication.1.0.3\lib\netstandard2.0\TwitchLib.Communication.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TwitchLib.PubSub, Version=3.2.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\TwitchLib.PubSub.3.2.2-preview-f81ffdb933a8372061655ebf96ba45439c6443ab\lib\netstandard2.0\TwitchLib.PubSub.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="Xceed.Wpf.Toolkit">
-      <HintPath>..\lib\Xceed.Wpf.Toolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="YamlDotNet, Version=11.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e">
-      <HintPath>..\packages\YamlDotNet.11.1.1\lib\net45\YamlDotNet.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Actions\IConfig.cs" />
-    <Compile Include="Behaviors\BLTAgentModifierBehavior.cs" />
-    <Compile Include="Behaviors\BLTAgentPfxBehaviour.cs" />
-    <Compile Include="Documentation\DocumentationGenerator.cs" />
-    <Compile Include="Documentation\DocumentationHelpers.cs" />
-    <Compile Include="Documentation\DocumentAttribute.cs" />
-    <Compile Include="Documentation\IDocumentable.cs" />
-    <Compile Include="Documentation\IDocumentationGenerator.cs" />
-    <Compile Include="Helpers\AgentExtensions.cs" />
-    <Compile Include="Helpers\AgentHelpers.cs" />
-    <Compile Include="Helpers\AgentPfx.cs" />
-    <Compile Include="Helpers\OneShotEffect.cs" />
-    <Compile Include="Overlay\BLTOverlay.cs" />
-    <Compile Include="Actions\ICommandHandler.cs" />
-    <Compile Include="Actions\IRewardHandler.cs" />
-    <Compile Include="Actions\ActionHandlerBase.cs" />
-    <Compile Include="Actions\ActionManager.cs" />
-    <Compile Include="Overlay\ConsoleFeed\ConsoleFeed.cs" />
-    <Compile Include="Overlay\Logger.cs" />
-    <Compile Include="Overlay\PhysicalFileSystemEx.cs" />
-    <Compile Include="Overlay\TwitchHub.cs" />
-    <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="BLTModule.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Testing\SimulationTest.cs" />
-    <Compile Include="Twitch\Dummy\AffiliateSpoofingHttpCallHandler.cs" />
-    <Compile Include="Twitch\Dummy\TwitchRedirectingHttpCallHandler.cs" />
-    <Compile Include="Twitch\TwitchService.Bot.cs" />
-    <Compile Include="Twitch\TwitchService.cs" />
-    <Compile Include="Util\CloneHelpers.cs" />
-    <Compile Include="Util\ConfigureContext.cs" />
-    <Compile Include="Util\GameVersion.cs" />
-    <Compile Include="Util\Assembly.cs" />
-    <Compile Include="Util\AutoMissionBehavior.cs" />
-    <Compile Include="Util\ConsoleCommands.cs" />
-    <Compile Include="Util\Extensions.cs" />
-    <Compile Include="Util\FileSystem.cs" />
-    <Compile Include="Util\LINQExtensions.cs" />
-    <Compile Include="Util\Log.cs" />
-    <Compile Include="Util\MainThreadSync.cs" />
-    <Compile Include="Util\MiscExtensions.cs" />
-    <Compile Include="Util\MissionHelpers.cs" />
-    <Compile Include="Util\Naming.cs" />
-    <Compile Include="Util\ParticleEffectItemSource.cs" />
-    <Compile Include="Util\Paths.cs" />
-    <Compile Include="Util\RangeFloat.cs" />
-    <Compile Include="Util\RangeInt.cs" />
-    <Compile Include="Util\RenderExport.cs" />
-    <Compile Include="Util\SoundEffectItemSource.cs" />
-    <Compile Include="Util\StaticRandom.cs" />
-    <Compile Include="Util\StringHelpers.cs" />
-    <Compile Include="Util\YamlHelpers.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\README.md">
-      <Link>README.md</Link>
-    </Content>
-    <Content Include="Bannerlord-Twitch-Auth.yaml" />
-    <Content Include="Bannerlord-Twitch-Documentation.css" />
-    <Content Include="Bannerlord-Twitch.schema.json" />
-    <Content Include="Bannerlord-Twitch-v2.yaml" />
-    <Content Include="ClassExportExample.html" />
-    <Content Include="delete-acl.bat" />
-    <Content Include="Overlay\ConsoleFeed\ConsoleFeed.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Overlay\ConsoleFeed\ConsoleFeed.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Overlay\ConsoleFeed\ConsoleFeed.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Overlay\web\index-template.html" />
-    <Content Include="Overlay\web\Scripts\jquery-1.6.4-vsdoc.js" />
-    <Content Include="Overlay\web\Scripts\jquery-1.6.4.js" />
-    <Content Include="Overlay\web\Scripts\jquery-1.6.4.min.js" />
-    <Content Include="Overlay\web\Scripts\jquery-3.4.1.js" />
-    <Content Include="Overlay\web\Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Overlay\web\Scripts\jquery-3.4.1.min.map" />
-    <Content Include="Overlay\web\Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Overlay\web\Scripts\jquery-3.4.1.slim.min.js" />
-    <Content Include="Overlay\web\Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Overlay\web\Scripts\jquery.signalR-2.2.2.js" />
-    <Content Include="Overlay\web\Scripts\jquery.signalR-2.2.2.min.js" />
-    <Content Include="Overlay\web\Scripts\jquery.signalR-2.4.2.js" />
-    <Content Include="Overlay\web\Scripts\jquery.signalR-2.4.2.min.js" />
-    <Content Include="Overlay\web\Scripts\progress-ring.js" />
-    <Content Include="Overlay\web\Scripts\twitch.js" />
-    <Content Include="Overlay\web\Scripts\vue.js" />
-    <Content Include="Overlay\web\Scripts\vue.min.js" />
-    <Content Include="Overlay\web\style.css" />
-    <Content Include="Web.config" />
-    <None Include="app.config" />
-    <None Include="Overlay\web\Scripts\jquery-3.4.1.intellisense.js" />
-    <None Include="SubModule.xml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="AfterClean">
-    <RemoveDir Directories="$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)" />
-    <RemoveDir Directories="$(OutDir)..\..\..\..\build" />
-    <RemoveDir Directories="$(OutDir)..\..\..\..\obj" />
-  </Target>
-  <Target Name="AfterBuild">
-    <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml" DestinationFolder="$(OutDir)..\.." />
-    <Copy SourceFiles="Bannerlord-Twitch-v2.yaml" DestinationFolder="$(OutDir)..\.." />
-    <Copy SourceFiles="Bannerlord-Twitch-Documentation.css" DestinationFolder="$(OutDir)..\.." />
-    <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
-    <Copy SourceFiles="..\..\README.md" DestinationFolder="$(OutDir)..\.." />
-    <!--    <Copy SourceFiles="Overlay\web" DestinationFolder="$(OutDir)..\..\web" />-->
-    <ItemGroup>
-      <OverlayContent Include="Overlay\web\**\*" />
-    </ItemGroup>
-    <Copy SourceFiles="@(OverlayContent)" DestinationFiles="@(OverlayContent->'$(OutDir)..\..\web\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
-    <ItemGroup>
-      <SomeDir Include="$(OutDir)\..\..\**\*" />
-    </ItemGroup>
-    <Copy SourceFiles="@(SomeDir)" DestinationFiles="@(SomeDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
-  </Target>
-  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
-  <Import Project="..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.1\build\Fody.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <Import Project="..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" />
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+        <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+        <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Fody.6.5.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.5.1\build\Fody.targets'))" />
-    <Error Condition="!Exists('..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props'))" />
-  </Target>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+        <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>BannerlordTwitch</RootNamespace>
+        <AssemblyName>BannerlordTwitch</AssemblyName>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <LangVersion>9</LangVersion>
+        <ProjectGuid>{A858B7FE-DD3E-4969-9D30-670042C75B16}</ProjectGuid>
+        <FileUpgradeFlags>
+        </FileUpgradeFlags>
+        <UpgradeBackupLocation>
+        </UpgradeBackupLocation>
+        <OldToolsVersion>4.0</OldToolsVersion>
+    </PropertyGroup>
+    <Import Project="$(SolutionDir)BLTProperties.targets"/>
+    <PropertyGroup>
+        <DebugType>full</DebugType>
+        <PlatformTarget>x64</PlatformTarget>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <DebugSymbols>true</DebugSymbols>
+        <OutputPath>build\$(Configuration)\bin\Win64_Shipping_Client\</OutputPath>
+        <StartAction>Program</StartAction>
+        <StartProgram>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\Bannerlord.exe</StartProgram>
+        <StartWorkingDirectory>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client</StartWorkingDirectory>
+        <StartArguments>/singleplayer _MODULES_%2aBannerlord.Harmony%2aBannerlord.ButterLib%2aNative%2aSandBoxCore%2aCustomBattle%2aSandbox%2aStoryMode%2aBannerlordTwitch%2aBLTAdoptAHero%2aBLTBuffet%2aBLTConfigure%2a_MODULES_</StartArguments>
+        <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+        <NoWarn>MSB3246;MSB3247;MSB3277;CS0067</NoWarn>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\Lib.Harmony.2.0.4\lib\net48\0Harmony.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\TaleWorlds.*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\Native\bin\Win64_Shipping_Client\*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\SandBox\bin\Win64_Shipping_Client\*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\SandBoxCore\bin\Win64_Shipping_Client\*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\StoryMode\bin\Win64_Shipping_Client\*.dll">
+            <HintPath>%(Identity)</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="dnlib, Version=3.3.2.0, Culture=neutral, PublicKeyToken=50e96378b6e77999">
+            <HintPath>..\packages\dnlib.3.3.2\lib\net45\dnlib.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="HtmlRenderer.PdfSharp, Version=1.5.0.6, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\HtmlRenderer.PdfSharp.1.5.0.6\lib\net45\HtmlRenderer.PdfSharp.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.CSharp" />
+        <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+            <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.5\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.Owin, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.Owin.4.2.0\lib\net45\Microsoft.Owin.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.Owin.Cors, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.Owin.Cors.4.2.0\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.Owin.Diagnostics, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.Owin.Diagnostics.2.1.0\lib\net40\Microsoft.Owin.Diagnostics.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.Owin.FileSystems, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.Owin.FileSystems.4.2.0\lib\net45\Microsoft.Owin.FileSystems.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.Owin.Host.HttpListener, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.2.1.0\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.Owin.Hosting, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.Owin.Hosting.2.1.0\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.Owin.StaticFiles, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.Owin.StaticFiles.4.2.0\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="mscorlib" />
+        <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+            <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5">
+            <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb">
+            <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb">
+            <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="PresentationCore" />
+        <Reference Include="PresentationFramework" />
+        <Reference Include="PropertyChanged, Version=3.4.0.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd">
+            <HintPath>..\packages\PropertyChanged.Fody.3.4.0\lib\net40\PropertyChanged.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="System" />
+        <Reference Include="System.ComponentModel.Composition" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+            <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+            <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+            <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+            <Private>True</Private>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
+        <Reference Include="System.Security" />
+        <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+            <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+            <Private>True</Private>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+            <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+            <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+            <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+            <Private>True</Private>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="System.Web" />
+        <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="System.Windows.Forms" />
+        <Reference Include="System.Xaml" />
+        <Reference Include="System.Xml" />
+        <Reference Include="TwitchLib.Api, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\TwitchLib.Api.3.2.0\lib\netstandard2.0\TwitchLib.Api.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="TwitchLib.Api.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\TwitchLib.Api.Core.3.2.0\lib\netstandard2.0\TwitchLib.Api.Core.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="TwitchLib.Api.Core.Enums, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\TwitchLib.Api.Core.Enums.3.2.0\lib\netstandard2.0\TwitchLib.Api.Core.Enums.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="TwitchLib.Api.Core.Interfaces, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\TwitchLib.Api.Core.Interfaces.3.2.0\lib\netstandard2.0\TwitchLib.Api.Core.Interfaces.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="TwitchLib.Api.Core.Models, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\TwitchLib.Api.Core.Models.3.2.0\lib\netstandard2.0\TwitchLib.Api.Core.Models.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="TwitchLib.Api.Helix, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\TwitchLib.Api.Helix.3.2.0\lib\netstandard2.0\TwitchLib.Api.Helix.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="TwitchLib.Api.Helix.Models, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\TwitchLib.Api.Helix.Models.3.2.0\lib\netstandard2.0\TwitchLib.Api.Helix.Models.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="TwitchLib.Api.V5, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\TwitchLib.Api.V5.3.2.0\lib\netstandard2.0\TwitchLib.Api.V5.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="TwitchLib.Api.V5.Models, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\TwitchLib.Api.V5.Models.3.2.0\lib\netstandard2.0\TwitchLib.Api.V5.Models.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="TwitchLib.Client, Version=3.2.2.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\TwitchLib.Client.3.2.2-preview-fad69ab15afcde6e74c178736b666a6cad9381d3\lib\netstandard2.0\TwitchLib.Client.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="TwitchLib.Client.Enums, Version=3.2.2.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\TwitchLib.Client.Enums.3.2.2-preview-fad69ab15afcde6e74c178736b666a6cad9381d3\lib\netstandard2.0\TwitchLib.Client.Enums.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="TwitchLib.Client.Models, Version=3.2.2.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\TwitchLib.Client.Models.3.2.2-preview-fad69ab15afcde6e74c178736b666a6cad9381d3\lib\netstandard2.0\TwitchLib.Client.Models.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="TwitchLib.Communication, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\TwitchLib.Communication.1.0.3\lib\netstandard2.0\TwitchLib.Communication.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="TwitchLib.PubSub, Version=3.2.2.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\packages\TwitchLib.PubSub.3.2.2-preview-f81ffdb933a8372061655ebf96ba45439c6443ab\lib\netstandard2.0\TwitchLib.PubSub.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="WindowsBase" />
+        <Reference Include="Xceed.Wpf.Toolkit">
+            <HintPath>..\lib\Xceed.Wpf.Toolkit.dll</HintPath>
+        </Reference>
+        <Reference Include="YamlDotNet, Version=11.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e">
+            <HintPath>..\packages\YamlDotNet.11.1.1\lib\net45\YamlDotNet.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Actions\IConfig.cs" />
+        <Compile Include="Behaviors\BLTAgentModifierBehavior.cs" />
+        <Compile Include="Behaviors\BLTAgentPfxBehaviour.cs" />
+        <Compile Include="Documentation\DocumentationGenerator.cs" />
+        <Compile Include="Documentation\DocumentationHelpers.cs" />
+        <Compile Include="Documentation\DocumentAttribute.cs" />
+        <Compile Include="Documentation\IDocumentable.cs" />
+        <Compile Include="Documentation\IDocumentationGenerator.cs" />
+        <Compile Include="Helpers\AgentExtensions.cs" />
+        <Compile Include="Helpers\AgentHelpers.cs" />
+        <Compile Include="Helpers\AgentPfx.cs" />
+        <Compile Include="Helpers\OneShotEffect.cs" />
+        <Compile Include="Overlay\BLTOverlay.cs" />
+        <Compile Include="Actions\ICommandHandler.cs" />
+        <Compile Include="Actions\IRewardHandler.cs" />
+        <Compile Include="Actions\ActionHandlerBase.cs" />
+        <Compile Include="Actions\ActionManager.cs" />
+        <Compile Include="Overlay\ConsoleFeed\ConsoleFeed.cs" />
+        <Compile Include="Overlay\Logger.cs" />
+        <Compile Include="Overlay\PhysicalFileSystemEx.cs" />
+        <Compile Include="Overlay\TwitchHub.cs" />
+        <Compile Include="Properties\Annotations.cs" />
+        <Compile Include="Settings.cs" />
+        <Compile Include="BLTModule.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Testing\SimulationTest.cs" />
+        <Compile Include="Twitch\Dummy\AffiliateSpoofingHttpCallHandler.cs" />
+        <Compile Include="Twitch\Dummy\TwitchRedirectingHttpCallHandler.cs" />
+        <Compile Include="Twitch\TwitchService.Bot.cs" />
+        <Compile Include="Twitch\TwitchService.cs" />
+        <Compile Include="Util\CloneHelpers.cs" />
+        <Compile Include="Util\ConfigureContext.cs" />
+        <Compile Include="Util\GameVersion.cs" />
+        <Compile Include="Util\Assembly.cs" />
+        <Compile Include="Util\AutoMissionBehavior.cs" />
+        <Compile Include="Util\ConsoleCommands.cs" />
+        <Compile Include="Util\Extensions.cs" />
+        <Compile Include="Util\FileSystem.cs" />
+        <Compile Include="Util\LINQExtensions.cs" />
+        <Compile Include="Util\Log.cs" />
+        <Compile Include="Util\MainThreadSync.cs" />
+        <Compile Include="Util\MiscExtensions.cs" />
+        <Compile Include="Util\MissionHelpers.cs" />
+        <Compile Include="Util\Naming.cs" />
+        <Compile Include="Util\ParticleEffectItemSource.cs" />
+        <Compile Include="Util\Paths.cs" />
+        <Compile Include="Util\RangeFloat.cs" />
+        <Compile Include="Util\RangeInt.cs" />
+        <Compile Include="Util\RenderExport.cs" />
+        <Compile Include="Util\SoundEffectItemSource.cs" />
+        <Compile Include="Util\StaticRandom.cs" />
+        <Compile Include="Util\StringHelpers.cs" />
+        <Compile Include="Util\YamlHelpers.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="..\..\README.md">
+            <Link>README.md</Link>
+        </Content>
+        <Content Include="Bannerlord-Twitch-Auth.yaml" />
+        <Content Include="Bannerlord-Twitch-Documentation.css" />
+        <Content Include="Bannerlord-Twitch.schema.json" />
+        <Content Include="Bannerlord-Twitch-v2.yaml" />
+        <Content Include="ClassExportExample.html" />
+        <Content Include="delete-acl.bat" />
+        <Content Include="Overlay\ConsoleFeed\ConsoleFeed.css">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="Overlay\ConsoleFeed\ConsoleFeed.html">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="Overlay\ConsoleFeed\ConsoleFeed.js">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="Overlay\web\index-template.html" />
+        <Content Include="Overlay\web\Scripts\jquery-1.6.4-vsdoc.js" />
+        <Content Include="Overlay\web\Scripts\jquery-1.6.4.js" />
+        <Content Include="Overlay\web\Scripts\jquery-1.6.4.min.js" />
+        <Content Include="Overlay\web\Scripts\jquery-3.4.1.js" />
+        <Content Include="Overlay\web\Scripts\jquery-3.4.1.min.js" />
+        <Content Include="Overlay\web\Scripts\jquery-3.4.1.min.map" />
+        <Content Include="Overlay\web\Scripts\jquery-3.4.1.slim.js" />
+        <Content Include="Overlay\web\Scripts\jquery-3.4.1.slim.min.js" />
+        <Content Include="Overlay\web\Scripts\jquery-3.4.1.slim.min.map" />
+        <Content Include="Overlay\web\Scripts\jquery.signalR-2.2.2.js" />
+        <Content Include="Overlay\web\Scripts\jquery.signalR-2.2.2.min.js" />
+        <Content Include="Overlay\web\Scripts\jquery.signalR-2.4.2.js" />
+        <Content Include="Overlay\web\Scripts\jquery.signalR-2.4.2.min.js" />
+        <Content Include="Overlay\web\Scripts\progress-ring.js" />
+        <Content Include="Overlay\web\Scripts\twitch.js" />
+        <Content Include="Overlay\web\Scripts\vue.js" />
+        <Content Include="Overlay\web\Scripts\vue.min.js" />
+        <Content Include="Overlay\web\style.css" />
+        <Content Include="Web.config" />
+        <None Include="app.config" />
+        <None Include="Overlay\web\Scripts\jquery-3.4.1.intellisense.js" />
+        <None Include="SubModule.xml" />
+        <None Include="Web.Debug.config">
+            <DependentUpon>Web.config</DependentUpon>
+        </None>
+        <None Include="Web.Release.config">
+            <DependentUpon>Web.config</DependentUpon>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="packages.config" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <Target Name="AfterClean">
+        <RemoveDir Directories="$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)" />
+        <RemoveDir Directories="$(OutDir)..\..\..\..\build" />
+        <RemoveDir Directories="$(OutDir)..\..\..\..\obj" />
+    </Target>
+    <Target Name="AfterBuild">
+        <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml" DestinationFolder="$(OutDir)..\.." />
+        <Copy SourceFiles="Bannerlord-Twitch-v2.yaml" DestinationFolder="$(OutDir)..\.." />
+        <Copy SourceFiles="Bannerlord-Twitch-Documentation.css" DestinationFolder="$(OutDir)..\.." />
+        <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
+        <Copy SourceFiles="..\..\README.md" DestinationFolder="$(OutDir)..\.." />
+        <!--    <Copy SourceFiles="Overlay\web" DestinationFolder="$(OutDir)..\..\web" />-->
+        <ItemGroup>
+            <OverlayContent Include="Overlay\web\**\*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(OverlayContent)" DestinationFiles="@(OverlayContent->'$(OutDir)..\..\web\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+        <ItemGroup>
+            <SomeDir Include="$(OutDir)\..\..\**\*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(SomeDir)" DestinationFiles="@(SomeDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+    </Target>
+    <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+    <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+    <Import Project="..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.1\build\Fody.targets')" />
+    <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+        <PropertyGroup>
+            <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+        </PropertyGroup>
+        <Error Condition="!Exists('..\packages\Fody.6.5.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.5.1\build\Fody.targets'))" />
+        <Error Condition="!Exists('..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props'))" />
+    </Target>
 </Project>

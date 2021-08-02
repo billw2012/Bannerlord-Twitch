@@ -821,6 +821,35 @@ GlobalConfigs:
       Name: Vampiric
     - DamageToMultiply: 1.25
       DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChance: 0
+        KnockDownChance: 0
+        ShrugOffChance: 0
+        MakesRearChance: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChance: 0
+        KnockDownChance: 0
+        ShrugOffChance: 0
+        MakesRearChance: 0
+        DismountChance: 0
+      ArmorToIgnore: 0
+      UnblockableChance: 0
+      ShatterShieldChance: 0
+      CutThroughChance: 0
+      StaggerChance: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChance: 0
+          KnockDownChance: 0
+          ShrugOffChance: 0
+          MakesRearChance: 0
+          DismountChance: 0
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
@@ -828,11 +857,6 @@ GlobalConfigs:
       Ranged: true
       Melee: true
       Charge: true
-      AreaOfEffectOnlyOnHit: false
-      AreaOfEffect: 0
-      AreaOfEffectDamage: 30
-      AreaOfEffectMaxAgents: 5
-      AreaOfEffectDamageType: Blunt
       MissileTrailParticleEffect: 
       HitEffect:
         ParticleEffect: 
@@ -843,6 +867,13 @@ GlobalConfigs:
       ID: 6a36fedb-0b2d-459c-b06b-c4230327589b
       Name: Heavy Hitting
     - FractionOfDamageToReflect: 0.25
+      ReflectedDamageIsSubtracted: true
+      HitBehavior:
+        KnockBackChance: 0
+        KnockDownChance: 0
+        ShrugOffChance: 0
+        MakesRearChance: 0
+        DismountChance: 0
       PowerDurationSeconds: 120
       Pfx: []
       Type: ffe07da3-e977-42d8-80ca-5dfff66123eb
@@ -877,6 +908,35 @@ GlobalConfigs:
       Name: Charge
     - DamageToMultiply: 1
       DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChance: 0
+        KnockDownChance: 0
+        ShrugOffChance: 0
+        MakesRearChance: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChance: 0
+        KnockDownChance: 0
+        ShrugOffChance: 0
+        MakesRearChance: 0
+        DismountChance: 0
+      ArmorToIgnore: 0
+      UnblockableChance: 0
+      ShatterShieldChance: 0
+      CutThroughChance: 0
+      StaggerChance: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChance: 0
+          KnockDownChance: 0
+          ShrugOffChance: 0
+          MakesRearChance: 0
+          DismountChance: 0
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
@@ -884,11 +944,6 @@ GlobalConfigs:
       Ranged: false
       Melee: false
       Charge: true
-      AreaOfEffectOnlyOnHit: true
-      AreaOfEffect: 2
-      AreaOfEffectDamage: 25
-      AreaOfEffectMaxAgents: 4
-      AreaOfEffectDamageType: Blunt
       MissileTrailParticleEffect: 
       HitEffect:
         ParticleEffect: 
@@ -941,6 +996,35 @@ GlobalConfigs:
       Name: Imposing
     - DamageToMultiply: 1
       DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChance: 0
+        KnockDownChance: 0
+        ShrugOffChance: 0
+        MakesRearChance: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChance: 0
+        KnockDownChance: 0
+        ShrugOffChance: 0
+        MakesRearChance: 0
+        DismountChance: 0
+      ArmorToIgnore: 0
+      UnblockableChance: 0
+      ShatterShieldChance: 0
+      CutThroughChance: 0
+      StaggerChance: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChance: 0
+          KnockDownChance: 0
+          ShrugOffChance: 0
+          MakesRearChance: 0
+          DismountChance: 0
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
@@ -948,11 +1032,6 @@ GlobalConfigs:
       Ranged: true
       Melee: false
       Charge: false
-      AreaOfEffectOnlyOnHit: false
-      AreaOfEffect: 3
-      AreaOfEffectDamage: 70
-      AreaOfEffectMaxAgents: 5
-      AreaOfEffectDamageType: Blunt
       MissileTrailParticleEffect: psys_game_burning_agent
       HitEffect:
         ParticleEffect: psys_burning_projectile_default_coll
