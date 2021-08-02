@@ -317,7 +317,7 @@ namespace BLTAdoptAHero
 #if e159 || e1510
                 CharacterDevelopmentCampaignBehaivor.DevelopCharacterStats(newHero);
 #else
-                CharacterDevelopmentCampaignBehavior.DevelopCharacterStats(newHero);
+                Campaign.Current?.GetCampaignBehavior<CharacterDevelopmentCampaignBehavior>()?.DevelopCharacterStats(newHero);
 #endif
             }
 
