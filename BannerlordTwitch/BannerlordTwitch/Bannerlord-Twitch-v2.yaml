@@ -662,7 +662,7 @@ GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
     AllowDeath: true
-    DeathChance: 0.200000003
+    DeathChance: 0.100000001
     ApplyDeathChanceToAllHeroes: true
     StartWithFullHealth: true
     StartHealthMultiplier: 2
@@ -711,7 +711,7 @@ GlobalConfigs:
     RandomizeWeaponTypes: true
     PreviousWinnerDebuffs:
     - Skill: All
-      SkillReductionPercentPerWin: 3.20000005
+      SkillReductionPercentPerWin: 10
       FloorPercent: 65
     Round1Type:
       EnableVanilla: true
