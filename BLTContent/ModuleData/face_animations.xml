@@ -1,0 +1,5 @@
+<!--You can add new or override old face animations by adding nodes to this xml. For examples please refer to: Native/ModuleData/voices.xml.-->
+<face_animation_records>
+	<replace_this_with_actual_nodes/>
+</face_animation_records>
+

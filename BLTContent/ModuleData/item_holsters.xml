@@ -1,0 +1,6 @@
+<!--Item holsters define the position of not-used weapons on agents. You can add new or override old item holster parameters by adding nodes to this xml.
+For examples please refer to: Native/ModuleData/item_holsters.xml.-->
+<item_holsters>
+	<replace_this_with_actual_nodes/>
+</item_holsters>
+

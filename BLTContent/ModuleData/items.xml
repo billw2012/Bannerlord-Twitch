@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--You can add new or override old items(weapons and armors) by adding nodes to this xml.
+For examples please refer to: SandBoxCore/ModuleData/spitems/arm_armors.xml.-->
+<Items/>
+

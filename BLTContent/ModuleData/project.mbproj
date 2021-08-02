@@ -1,0 +1,12 @@
+<base type="solution">
+	<Module id="soln_physics_materials" name="ModuleData/physics_materials.xml" type="physics_material"/>
+	<Module id="soln_collision_infos" name="ModuleData/collision_infos.xml" type="collision_infos"/>
+	<Module id="soln_face_animation_records" name="ModuleData/face_animations.xml" type="face_animation_record"/>
+	<Module id="soln_action_sets" name="ModuleData/action_sets.xml" type="action_set"/>
+	<Module id="soln_action_sets" name="ModuleData/action_types.xml" type="action_type"/>
+	<Module id="soln_combat_system" name="ModuleData/combat_parameters.xml" type="animation_combat_parameters"/>
+	<Module id="soln_combat_system" name="ModuleData/native_parameters.xml" type="native_parameters"/>
+	<Module id="soln_item_holsters" name="ModuleData/item_holsters.xml" type="item_holsters"/>
+	<Module id="soln_skins" name="ModuleData/skins.xml" type="skin"/>
+</base>
+

@@ -1,0 +1,5 @@
+<!--You can add new or override old action types by adding nodes to this xml. For examples please refer to: Native/ModuleData/action_types.xml.-->
+<action_types>
+	<replace_this_with_actual_nodes/>
+</action_types>
+

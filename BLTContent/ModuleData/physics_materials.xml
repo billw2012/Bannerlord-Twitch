@@ -1,0 +1,5 @@
+<!--You can add new or override old physics materials by adding nodes to this xml. For examples please refer to: Native/ModuleData/physics_materials.xml.-->
+<physics_materials>
+	<replace_this_with_actual_nodes/>
+</physics_materials>
+

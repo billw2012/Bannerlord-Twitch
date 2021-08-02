@@ -1,0 +1,5 @@
+<!--You can add new or override old native combat parameters by adding nodes to this xml. For examples please refer to: Native/ModuleData/native_parameters.xml.-->
+<native_parameters>
+	<replace_this_with_actual_nodes/>
+</native_parameters>
+

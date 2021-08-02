@@ -1,0 +1,6 @@
+<!--Collision infos defined particles & sound effects for combat collisions. You can add new or override old collision data by adding nodes to this xml.
+For examples please refer to: Native/ModuleData/collision_infos.xml.-->
+<collision_infos>
+	<replace_this_with_actual_nodes/>
+</collision_infos>
+

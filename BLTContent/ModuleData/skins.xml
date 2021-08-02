@@ -1,0 +1,6 @@
+<!--This xml defines the body parameters for the agents like head morphs, voice types, beard, hair, eye, teeth meshes, eye colors etc.
+You can add new or override old skin types by adding nodes to this xml. For examples please refer to: Native/ModuleData/skins.xml.-->
+<skins>
+	<replace_this_with_actual_nodes/>
+</skins>
+

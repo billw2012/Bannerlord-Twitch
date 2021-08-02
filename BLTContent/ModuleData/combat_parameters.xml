@@ -1,0 +1,5 @@
+<!--You can add new or override old animation based combat parameters by adding nodes to this xml. For examples please refer to: Native/ModuleData/combat_parameters.xml.-->
+<definitions>
+	<replace_this_with_actual_nodes/>
+</definitions>
+
