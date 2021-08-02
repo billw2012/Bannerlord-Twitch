@@ -10,18 +10,9 @@ using TaleWorlds.MountAndBlade;
 
 namespace BLTAdoptAHero
 {
-    // DOING:
-    // Active Powers when activated should create a new ActivePowerInstance binding required info etc.
-    // They should be strictly divided between Mission and Campaign map powers, with no overlap. 
-    // Mission ones implement the mission events interface and are managed by BLTHeroPowersMissionBehavior.
-    // Campaign ones implement the campaign interface and are managed by a campaign behaviour (needs to be made).
-    // These will give correct lifetime management to the active instances, ensuring e.g. Agent handles don't escape 
-    // from the Mission lifetime.
-    
     // Just because its impossible to use ref parameters in a lambda.
     // Instead, to allow events to modify the attack data, it is wrapped in this class,
     // then copied back once all the handlers are complete
-
     public class RefHandle<T>
     {
         public RefHandle() {}

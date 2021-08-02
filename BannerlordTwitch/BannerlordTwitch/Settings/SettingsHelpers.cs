@@ -23,13 +23,11 @@ namespace BannerlordTwitch
 
                 if (item is T tItem)
                 {
-                    Log.Trace($"{route} Calling {typeof(T).Name} action");
                     call(tItem);
                 }
                 
                 if (item is IDictionary dItem)
                 {
-                    Log.Trace($"{route} Expanding dictionary");
                     foreach (object key in dItem.Keys.ExceptNull()) // probably doesn't make sense in most cases
                     {
                         if(visited.Add(key))
@@ -43,16 +41,11 @@ namespace BannerlordTwitch
                 }
                 else if (item is ICollection eItem)
                 {
-                    Log.Trace($"{route} Expanding collection");
                     foreach (object i in eItem.ExceptNull())
                     {
                         if(visited.Add(i))
                             stack.Add((route + "[*]", i));
                     }
-                }
-                else
-                {
-                    Log.Trace($"{route} Ignored");
                 }
                 
                 foreach((string r, object o) in item.GetType()

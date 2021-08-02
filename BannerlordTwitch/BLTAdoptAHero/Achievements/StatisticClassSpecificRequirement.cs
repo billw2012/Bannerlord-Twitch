@@ -9,11 +9,16 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Achievements
 {
+    [YamlTagged]
     public class StatisticClassSpecificRequirement : StatisticRequirement, ILoaded
     {
+        [Description("Requirement uses current class, useful for class power unlocks so you don't have to specify" +
+                     "the class explicitly"), PropertyOrder(5), UsedImplicitly]
+        public bool CurrentClass { get; set; }
+        
         [Description("Class required to get this achievement. If (none) is specified " +
                      "then the achievement will apply ONLY when the hero doesn't have a class set."), 
-         PropertyOrder(5), ItemsSource(typeof(HeroClassDef.ItemSource)), UsedImplicitly]
+         PropertyOrder(6), ItemsSource(typeof(HeroClassDef.ItemSource)), UsedImplicitly]
         public Guid RequiredClass { get; set; }
         
         [YamlIgnore, Browsable(false)]
@@ -42,7 +47,7 @@ namespace BLTAdoptAHero.Achievements
         }
         #endregion
 
-        public override string ToString() 
-            => $"{base.ToString()} [{ClassConfig.GetClass(RequiredClass)?.Name ?? "(none)"}]";
+        public override string ToString()
+            => $"{base.ToString()} [{(CurrentClass ? "(current)" : ClassConfig.GetClass(RequiredClass)?.Name ?? "(none)")}]";
     }
 }

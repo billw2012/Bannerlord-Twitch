@@ -118,7 +118,7 @@ namespace BLTAdoptAHero
                     .FirstOrDefault(w => w.item != null);
                 return item == null 
                         ? default 
-                        : (item, modifierDef.Generate(item, "Reward"), index)
+                        : (item, modifierDef.Generate(item), index)
                     ;
             }
             else
@@ -167,7 +167,7 @@ namespace BLTAdoptAHero
                     heroClass?.Mounted == true || !hero.BattleEquipment.Horse.IsEmpty, 
                     EquipHero.FindFlags.IgnoreAbility,
                     o => o.ItemType == itemType);
-                return armor == null ? default : (armor, modifierDef.Generate(armor, modifierDef.Name), index);
+                return armor == null ? default : (armor, modifierDef.Generate(armor), index);
             }
             else
             {
@@ -234,7 +234,7 @@ namespace BLTAdoptAHero
             }
 
             var modifier = tier > 5 
-                ? modifierDef.Generate(mount, modifierDef.Name) 
+                ? modifierDef.Generate(mount) 
                 : null;
             return (mount, modifier, EquipmentIndex.Horse);
         }

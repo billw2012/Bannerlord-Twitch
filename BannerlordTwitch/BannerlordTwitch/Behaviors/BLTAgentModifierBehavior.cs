@@ -38,7 +38,7 @@ namespace BannerlordTwitch
             return string.Join(" ", parts);
         }
 
-        public object Clone() => CloneHelpers.CloneFields(this);
+        public object Clone() => CloneHelpers.CloneProperties(this);
         public event PropertyChangedEventHandler PropertyChanged;
     }
     

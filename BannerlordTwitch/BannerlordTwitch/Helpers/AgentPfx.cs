@@ -31,13 +31,14 @@ namespace BannerlordTwitch.Helpers
         public AttachPointEnum AttachPoint { get; set; }
 
         public override string ToString() => $"{Name} {AttachPoint}";
-        public object Clone()
-        {
-            var copy = CloneHelpers.CloneFields(this);
-            return copy;
-        }
+        
+        #region ICloneable
+        public object Clone() => CloneHelpers.CloneProperties(this);
+        #endregion
 
+        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
     }
     
     public class AgentPfx

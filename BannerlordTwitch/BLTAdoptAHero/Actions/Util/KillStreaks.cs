@@ -31,7 +31,9 @@ namespace BLTAdoptAHero.Actions.Util
         [PropertyOrder(7), Description("Experience granted when the kill streak is achieved."), UsedImplicitly]
         public int XPReward { get; set; }
 
-        public override string ToString() => Name;
+        public override string ToString() => $"{Name} {KillsRequired} kills " +
+                                             (GoldReward > 0 ? $"{GoldReward}{Naming.Gold} " : "") +
+                                             (XPReward > 0 ? $"{XPReward}{Naming.XP} " : "");
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

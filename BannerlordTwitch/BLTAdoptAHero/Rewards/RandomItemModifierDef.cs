@@ -10,9 +10,9 @@ namespace BLTAdoptAHero
 {
     public class RandomItemModifierDef : ICloneable
     {
-        [Description("Prefix applied to items that use this modifier"),
+        [Description("Name format for modified items, {ITEMNAME} is the placeholder for the base item name."),
          PropertyOrder(0), UsedImplicitly]
-        public string Name { get; set; } = "Modified";
+        public string Name { get; set; } = "Modified {ITEMNAME}";
         
         [Description("Custom prize power, a global multiplier for the values below"),
          PropertyOrder(1), UsedImplicitly]
@@ -62,9 +62,8 @@ namespace BLTAdoptAHero
          UsedImplicitly, ExpandableObject]
         public RangeFloat MountHitPoints { get; set; } = new(1.25f, 2f);
 
-        public ItemModifier Generate(ItemObject item, string modifierName)
+        public ItemModifier Generate(ItemObject item)
         {
-            string modifiedName = $"{modifierName} {{ITEMNAME}}";
             float modifierPower = Power;
             if (item.WeaponComponent?.PrimaryWeapon?.IsMeleeWeapon == true
                 || item.WeaponComponent?.PrimaryWeapon?.IsPolearm == true
@@ -72,7 +71,7 @@ namespace BLTAdoptAHero
             )
             {
                 return BLTCustomItemsCampaignBehavior.Current.CreateWeaponModifier(
-                    modifiedName,
+                    Name,
                     (int) Mathf.Ceil(WeaponDamage.RandomInRange() * modifierPower),
                     (int) Mathf.Ceil(WeaponSpeed.RandomInRange() * modifierPower),
                     (int) Mathf.Ceil(WeaponMissileSpeed.RandomInRange() * modifierPower),
@@ -82,7 +81,7 @@ namespace BLTAdoptAHero
             else if (item.WeaponComponent?.PrimaryWeapon?.IsAmmo == true)
             {
                 return BLTCustomItemsCampaignBehavior.Current.CreateAmmoModifier(
-                    modifiedName,
+                    Name,
                     (int) Mathf.Ceil(AmmoDamage.RandomInRange() * modifierPower),
                     (short) Mathf.Ceil(ArrowStack.RandomInRange() * modifierPower)
                 );
@@ -90,14 +89,14 @@ namespace BLTAdoptAHero
             else if (item.HasArmorComponent)
             {
                 return BLTCustomItemsCampaignBehavior.Current.CreateArmorModifier(
-                    modifiedName,
+                    Name,
                     (int) Mathf.Ceil(Armor.RandomInRange() * modifierPower)
                 );
             }
             else if (item.IsMountable)
             {
                 return BLTCustomItemsCampaignBehavior.Current.CreateMountModifier(
-                    modifiedName,
+                    Name,
                     MountManeuver.RandomInRange() * modifierPower,
                     MountSpeed.RandomInRange() * modifierPower,
                     MountChargeDamage.RandomInRange() * modifierPower,
@@ -111,6 +110,6 @@ namespace BLTAdoptAHero
             }
         }
         
-        public object Clone() => CloneHelpers.CloneFields(this);
+        public object Clone() => CloneHelpers.CloneProperties(this);
     }
 }

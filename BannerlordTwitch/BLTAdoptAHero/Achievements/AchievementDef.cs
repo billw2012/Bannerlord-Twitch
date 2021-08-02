@@ -47,28 +47,28 @@ namespace BLTAdoptAHero.Achievements
         public bool GiveItemReward { get; set; }
         
         [Category("Reward"), PropertyOrder(4), 
-         Description("Specifications of the custom item reward, if enabled"), UsedImplicitly]
+         Description("Specifications of the custom item reward, if enabled"), ExpandableObject, UsedImplicitly]
         public GeneratedRewardDef ItemReward { get; set; } = new();
 
         public bool IsAchieved(Hero hero) => Requirements.All(r => r.IsMet(hero));
 
         public override string ToString()
             => $"{Name} " +
-               string.Join("+", $"{Requirements.Select(r => r.ToString())}") +
-               $" {(GoldGain > 0 ? GoldGain + Naming.Gold : "")} " +
-               $"{(XPGain > 0 ? XPGain + Naming.XP : "")} " +
-               $"{(GiveItemReward ? "Item" : "")}";
+               string.Join("+", Requirements.Select(r => r.ToString())) +
+               " Reward: " +
+               (GoldGain > 0 ? $"{GoldGain}{Naming.Gold} " : "") +
+               (XPGain > 0 ? $"{XPGain}{Naming.XP} " : "") +
+               (GiveItemReward ? "Item" : "");
         
         public object Clone()
         {
-            var newObj = CloneHelpers.CloneFields(this);
-            newObj.ID = Guid.NewGuid();
-            newObj.Requirements = CloneHelpers.CloneCollection(Requirements).ToList();
-            return newObj;
+            var clone = CloneHelpers.CloneProperties(this);
+            clone.ID = Guid.NewGuid();
+            clone.Requirements = CloneHelpers.CloneCollection(Requirements).ToList();
+            return clone;
         }
 
         // DOING: 
-        // Refactor tournament rewards to be usable for achievements
         // Refactor hero powers to a list instead of fixed set
         // Add unlock criteria to hero powers (stats)
 
@@ -76,15 +76,21 @@ namespace BLTAdoptAHero.Achievements
 
         public void Apply(Hero hero)
         {
+            var results = new List<string>{ $"Unlocked {Name}" };
             if (GoldGain > 0)
             {
                 BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, GoldGain);
                 BLTAdoptAHeroCommonMissionBehavior.Current?.RecordGoldGain(hero, GoldGain);
+                results.Add($"{Naming.Inc}{GoldGain}{Naming.Gold}");
             }
 
             if (XPGain > 0)
             {
-                SkillXP.ImproveSkill(hero, XPGain, SkillsEnum.All, auto: true);
+                (bool success, string description) = SkillXP.ImproveSkill(hero, XPGain, SkillsEnum.All, auto: true);
+                if (success)
+                {
+                    results.Add(description);
+                }
                 BLTAdoptAHeroCommonMissionBehavior.Current?.RecordXPGain(hero, XPGain);
             }
 
@@ -93,8 +99,13 @@ namespace BLTAdoptAHero.Achievements
                 var (item, modifier, slot) = ItemReward.Generate(hero);
                 if (item != null)
                 {
-                    RewardHelpers.AssignCustomReward(hero, item, modifier, slot);
+                    results.Add(RewardHelpers.AssignCustomReward(hero, item, modifier, slot));
                 }
+            }
+            
+            if (results.Any())
+            {
+                Log.LogFeedResponse(hero.FirstName.ToString(), results.ToArray());
             }
         }
     }

@@ -234,12 +234,15 @@ namespace BannerlordTwitch
             Log.Info("Removing existing rewards");
             try
             {
-                var allRewards = api.Helix.ChannelPoints.GetCustomReward(channelId, accessToken: authSettings.AccessToken, onlyManageableRewards: true).Result;
+                var allRewards = api.Helix.ChannelPoints.GetCustomReward(
+                    channelId, accessToken: authSettings.AccessToken, onlyManageableRewards: true).Result;
                 if (allRewards == null)
                 {
                     throw new Exception($"Couldn't retrieve channel point rewards");
                 }
-                Task.WaitAll(allRewards.Data.Select(r => api.Helix.ChannelPoints.DeleteCustomReward(channelId, r.Id, accessToken: authSettings.AccessToken)
+                Task.WaitAll(allRewards.Data.Select(r
+                    => api.Helix.ChannelPoints.DeleteCustomReward(
+                            channelId, r.Id, accessToken: authSettings.AccessToken)
                         .ContinueWith(t =>
                         {
                             Log.Info(t.IsCompleted
@@ -269,7 +272,8 @@ namespace BannerlordTwitch
 
                 if (redeemedArgs.Status != "UNFULFILLED")
                 {
-                    Log.Info($"Reward {redeemedArgs.RewardTitle} status {redeemedArgs.Status} is not interesting, ignoring it");
+                    Log.Info($"Reward {redeemedArgs.RewardTitle} status {redeemedArgs.Status} is not interesting, " +
+                             $"ignoring it");
                     return;
                 }
 

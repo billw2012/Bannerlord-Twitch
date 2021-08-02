@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
-using BannerlordTwitch.Helpers;
-using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Powers;
@@ -59,6 +57,7 @@ namespace BLTAdoptAHero
         public ActivePowerGroup ActivePower { get; set; } = new() { Name = "Active Power" };
         #endregion
 
+        #region Public Interface
         [YamlIgnore, Browsable(false)]
         public IEnumerable<EquipmentType> Slots 
         { get { yield return Slot1; yield return Slot2; yield return Slot3; yield return Slot4; } }
@@ -122,228 +121,16 @@ namespace BLTAdoptAHero
             + (UseHorse ? " (Use Horse)" : "")
             + (UseCamel ? " (Use Camel)" : "");
         
+        #endregion
+        
+        #region ICloneable
         public object Clone()
         {
-            var newObj = CloneHelpers.CloneFields(this);
+            var newObj = CloneHelpers.CloneProperties(this);
             newObj.ID = Guid.NewGuid();
             return newObj;
         }
-
-        public class PassivePowerGroup : ILoaded, IDocumentable, ICloneable
-        {
-            [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1), UsedImplicitly]
-            public string Name { get; set; } = "Enter Name Here";
-
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(1), UsedImplicitly]
-            public Guid Power1 { get; set; }
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(2), UsedImplicitly]
-            public Guid Power2 { get; set; }
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(3), UsedImplicitly]
-            public Guid Power3 { get; set; }
-
-            [YamlIgnore, Browsable(false)]
-            private GlobalHeroPowerConfig PowerConfig { get; set; }
-
-            [Browsable(false), YamlIgnore]
-            private IEnumerable<IHeroPowerPassive> Powers {
-                get
-                {
-                    if (PowerConfig.GetPower(Power1) is IHeroPowerPassive p1) yield return p1;
-                    if (PowerConfig.GetPower(Power2) is IHeroPowerPassive p2) yield return p2;
-                    if (PowerConfig.GetPower(Power3) is IHeroPowerPassive p3) yield return p3;
-                }
-            }
-
-            public PassivePowerGroup()
-            {
-                // For when these are created via the configure tool
-                PowerConfig = ConfigureContext.CurrentlyEditedSettings == null 
-                    ? null : GlobalHeroPowerConfig.Get(ConfigureContext.CurrentlyEditedSettings);
-            }
-                
-            public void OnHeroJoinedBattle(Hero hero)
-            {
-                if (PowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
-                {
-                    return;
-                }
-                foreach(var power in Powers)
-                {
-                    BLTHeroPowersMissionBehavior.PowerHandler.ConfigureHandlers(
-                        hero, power as HeroPowerDefBase, handlers => power.OnHeroJoinedBattle(hero, handlers));
-                }
-            }
-                
-            public override string ToString() => $"{Name} {string.Join(" ", Powers.Select(p => p.ToString()))}";
-            public object Clone()
-            {
-                return CloneHelpers.CloneFields(this);
-            }
-
-            #region ILoaded
-            public void OnLoaded(Settings settings)
-            {
-                PowerConfig = GlobalHeroPowerConfig.Get(settings);   
-            }
-            #endregion
-
-            #region IDocumentable
-            public void GenerateDocumentation(IDocumentationGenerator generator)
-            {
-                generator.P("power-title", Name);
-                foreach (var power in Powers)
-                {
-                    if (power is IDocumentable docPower)
-                    {
-                        docPower.GenerateDocumentation(generator);
-                    }
-                    else
-                    {
-                        generator.P(power.ToString());
-                    }
-                }
-                    
-                // generator.Table("power", () =>
-                // {
-                //     generator.TR(() => generator.TD("Name").TD(Name));
-                //     foreach ((var power, int i) in Powers.Select((power, i) => (power, i)))
-                //     {
-                //         generator.TR(() => generator.TD($"Effect {i + 1}").TD(power.ToString().SplitCamelCase()));
-                //     }
-                // });
-            }
-            #endregion
-        }
-        
-        public class ActivePowerGroup : ILoaded, IDocumentable, ICloneable
-        {
-            [Description("The name of the power: how the power will be described in messages"), PropertyOrder(1),
-             UsedImplicitly]
-            public string Name { get; set; } = "Enter Name Here";
-
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(1), UsedImplicitly]
-            public Guid Power1 { get; set; }
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(2), UsedImplicitly]
-            public Guid Power2 { get; set; }
-            [ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(3), UsedImplicitly]
-            public Guid Power3 { get; set; }
-            
-            [Description("Particles/sound effects to play when this power group is activated"), PropertyOrder(4), ExpandableObject, UsedImplicitly]
-            public OneShotEffect ActivateEffect { get; set; }
-
-            [Description("Particles/sound effects to play when this power group is deactivated"), PropertyOrder(5), ExpandableObject, UsedImplicitly]
-            public OneShotEffect DeactivateEffect { get; set; }
-            
-            [YamlIgnore, Browsable(false)]
-            private GlobalHeroPowerConfig PowerConfig { get; set; }
-            
-            [Browsable(false), YamlIgnore]
-            private IEnumerable<IHeroPowerActive> Powers {
-                get
-                {
-                    if (PowerConfig.GetPower(Power1) is IHeroPowerActive p1) yield return p1;
-                    if (PowerConfig.GetPower(Power2) is IHeroPowerActive p2) yield return p2;
-                    if (PowerConfig.GetPower(Power3) is IHeroPowerActive p3) yield return p3;
-                }
-            }
-
-            public ActivePowerGroup()
-            {
-                // For when these are created via the configure tool
-                PowerConfig = ConfigureContext.CurrentlyEditedSettings == null 
-                    ? null : GlobalHeroPowerConfig.Get(ConfigureContext.CurrentlyEditedSettings);
-            }
-
-            public bool IsActive(Hero hero) => Powers.Any(power => power.IsActive(hero));
-
-            public (bool canActivate, string failReason) CanActivate(Hero hero)
-            {
-                if (PowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
-                {
-                    return (false, "Not allowed in tournaments!");
-                }
-
-                var activePowers = Powers.ToList();
-
-                if (!activePowers.Any())
-                {
-                    return (false, "No powers!");
-                }
-
-                (bool _, string failReason) = activePowers
-                    .Select(power => power.CanActivate(hero))
-                    .FirstOrDefault(r => !r.canActivate);
-                return failReason != null 
-                    ? (false, failReason)
-                    : (true, null);
-            }
-
-            public (bool allowed, string message) Activate(Hero hero, ReplyContext context)
-            {
-                if (PowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
-                {
-                    return (false, $"Powers not allowed in tournaments!");
-                }
-                
-                foreach(var power in Powers)
-                {
-                    power.Activate(hero, () =>
-                    {
-                        if (Powers.All(p => !p.IsActive(hero)))
-                        {
-                            ActionManager.SendReply(context, $"{Name} expired!");
-                            DeactivateEffect.Trigger(hero);
-                        }
-                    });
-                }
-                ActivateEffect.Trigger(hero);
-                return (true, $"{Name} activated!");
-            }
-
-            public (float duration, float remaining) DurationRemaining(Hero hero)
-            {
-                if (!Powers.Any()) 
-                    return (1, 0);
-                var remaining = Powers
-                    .Select(active => active.DurationRemaining(hero))
-                    .ToList();
-                return (
-                    duration: remaining.Max(r => r.duration),
-                    remaining: remaining.Max(r => r.remaining)
-                    );
-            }
-
-            public override string ToString() => $"{Name} {string.Join(" ", Powers.Select(p => p.ToString()))}";
-            public object Clone()
-            {
-                return CloneHelpers.CloneFields(this);
-            }
-
-            #region ILoaded
-            public void OnLoaded(Settings settings)
-            {
-                PowerConfig = GlobalHeroPowerConfig.Get(settings);   
-            }
-            #endregion
-            
-            #region IDocumentable
-            public void GenerateDocumentation(IDocumentationGenerator generator)
-            {
-                generator.P("power-title", Name);
-                foreach (var power in Powers)
-                {
-                    if (power is IDocumentable docPower)
-                    {
-                        docPower.GenerateDocumentation(generator);
-                    }
-                    else
-                    {
-                        generator.P(power.ToString());
-                    }
-                }
-            }
-            #endregion
-        }
+        #endregion
 
         #region ItemSource
         public class ItemSource : IItemsSource
@@ -463,5 +250,4 @@ namespace BLTAdoptAHero
         }
         #endregion
     }
-
 }

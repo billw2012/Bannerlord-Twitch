@@ -139,7 +139,7 @@ namespace BLTAdoptAHero
         #endregion
         
         #region IClonable
-        public object Clone() => CloneHelpers.CloneFields(this);
+        public object Clone() => CloneHelpers.CloneProperties(this);
         #endregion
         
         #region INotifyPropertyChanged

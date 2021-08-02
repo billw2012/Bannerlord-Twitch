@@ -96,7 +96,7 @@ namespace BLTAdoptAHero.Powers
 		        return $"{DamageAtCenter} AoE ({Range}m)";
 	        }
 
-	        public object Clone() => CloneHelpers.CloneFields(this);
+	        public object Clone() => CloneHelpers.CloneProperties(this);
 
 	        public void Apply(Agent from, List<Agent> ignoreAgents, Vec3 position)
 	        {

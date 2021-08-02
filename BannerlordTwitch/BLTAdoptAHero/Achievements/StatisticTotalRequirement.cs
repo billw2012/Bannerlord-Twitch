@@ -1,11 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
+using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
 using TaleWorlds.CampaignSystem;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero.Achievements
 {
+    [YamlTagged]
     public class StatisticRequirement : IAchievementRequirement
     {
         [PropertyOrder(1), Description("The statistic this achievement relates to."), UsedImplicitly]
@@ -62,9 +64,9 @@ namespace BLTAdoptAHero.Achievements
                 Operator.LessOrEqual => "<=",
                 _ => throw new ArgumentOutOfRangeException()
             };
-            return $"{Statistic} " +
+            return $"({Statistic} " +
                    $"{comparisonText} " +
-                   $"{(OtherStatistic == AchievementStatsData.Statistic.None ? Value : OtherStatistic)}";
+                   $"{(OtherStatistic == AchievementStatsData.Statistic.None ? Value : OtherStatistic)})";
         }
     }
 }
