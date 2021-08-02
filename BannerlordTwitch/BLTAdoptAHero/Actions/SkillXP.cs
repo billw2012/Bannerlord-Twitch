@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using BannerlordTwitch;
@@ -60,7 +60,7 @@ namespace BLTAdoptAHero
             #if e159 || e1510
             CharacterDevelopmentCampaignBehaivor.DevelopCharacterStats(hero);
             #else
-            CharacterDevelopmentCampaignBehavior.DevelopCharacterStats(hero);
+            Campaign.Current?.GetCampaignBehavior<CharacterDevelopmentCampaignBehavior>()?.DevelopCharacterStats(hero);
             #endif
 
             float newXp = hero.HeroDeveloper.GetPropertyValue(skill);
