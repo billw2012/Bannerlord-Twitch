@@ -81,7 +81,7 @@ namespace BLTOverlay
                 app.SetLoggerFactory(new LoggerFactory());
                 app.UseCors(CorsOptions.AllowAll);
                 app.MapSignalR();
-                var physicalFileSystem = new PhysicalFileSystem(WebRoot);
+                var physicalFileSystem = new PhysicalFileSystemEx(WebRoot);
                 var options = new FileServerOptions
                 {
                     EnableDefaultFiles = true,
@@ -89,6 +89,7 @@ namespace BLTOverlay
                     StaticFileOptions = {FileSystem = physicalFileSystem, ServeUnknownFileTypes = true},
                     DefaultFilesOptions = {DefaultFileNames = new[] {"index.html"}}
                 };
+                app.UseStaticFiles();
                 app.UseFileServer(options);
             });
             

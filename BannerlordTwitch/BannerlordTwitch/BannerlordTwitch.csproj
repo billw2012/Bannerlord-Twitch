@@ -319,6 +319,7 @@
     <Compile Include="Actions\ActionManager.cs" />
     <Compile Include="Overlay\ConsoleFeed\ConsoleFeed.cs" />
     <Compile Include="Overlay\Logger.cs" />
+    <Compile Include="Overlay\PhysicalFileSystemEx.cs" />
     <Compile Include="Overlay\TwitchHub.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Settings.cs" />
