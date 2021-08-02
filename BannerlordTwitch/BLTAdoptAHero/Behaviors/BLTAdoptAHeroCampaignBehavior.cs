@@ -107,7 +107,7 @@ namespace BLTAdoptAHero
         private Dictionary<Hero, HeroData> heroData = new();
         #endregion
 
-        #region CampaignBehaviorBase overrides
+        #region CampaignBehaviorBase
         public override void RegisterEvents()
         {
             // We put all initialization that relies on loading being complete into this listener

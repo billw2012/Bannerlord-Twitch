@@ -112,6 +112,11 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Achievements\AchievementDef.cs" />
+        <Compile Include="Achievements\AchievementStatsData.cs" />
+        <Compile Include="Achievements\IAchievementRequirement.cs" />
+        <Compile Include="Achievements\StatisticClassSpecificRequirement.cs" />
+        <Compile Include="Achievements\StatisticTotalRequirement.cs" />
         <Compile Include="Actions\AddGoldToHero.cs" />
         <Compile Include="Actions\AdoptAHero.cs" />
         <Compile Include="Actions\AttributePoints.cs" />
@@ -134,7 +139,6 @@
         <Compile Include="Actions\SummonHero.cs" />
         <Compile Include="Actions\TournamentBet.cs" />
         <Compile Include="Actions\UsePower.cs" />
-        <Compile Include="Actions\Util\AchievementSystem.cs" />
         <Compile Include="Actions\Util\BattleEffects.cs" />
         <Compile Include="Actions\Util\CustomItems.cs" />
         <Compile Include="Actions\Util\EquipmentType.cs" />
@@ -166,17 +170,22 @@
         <Compile Include="Powers\AbsorbHealthPower.cs" />
         <Compile Include="Powers\AddDamagePower.cs" />
         <Compile Include="Powers\AddHealthPower.cs" />
+        <Compile Include="Powers\Core\ActivePowerGroup.cs" />
         <Compile Include="Powers\Core\DurationMissionHeroPowerDefBase.cs" />
         <Compile Include="Powers\Core\HeroPowerDefBase.cs" />
         <Compile Include="Powers\Core\HitBehavior.cs" />
         <Compile Include="Powers\Core\IHeroPowerActive.cs" />
         <Compile Include="Powers\Core\IHeroPowerPassive.cs" />
+        <Compile Include="Powers\Core\PassivePowerGroup.cs" />
+        <Compile Include="Powers\Core\PowerGroupItemBase.cs" />
         <Compile Include="Powers\StatModifyPower.cs" />
         <Compile Include="Powers\ReflectDamgePower.cs" />
-        <Compile Include="Powers\Core\HeroPowerCollectionEditor.cs" />
         <Compile Include="Powers\TakeDamagePower.cs" />
         <Compile Include="Properties\Annotations.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Rewards\GeneratedRewardDef.cs" />
+        <Compile Include="Rewards\RandomItemModifierDef.cs" />
+        <Compile Include="Rewards\RewardHelpers.cs" />
         <Compile Include="Util\AgentExtensions.cs" />
         <Compile Include="Util\ConsoleCommands.cs" />
         <Compile Include="Util\HeroExtensions.cs" />
