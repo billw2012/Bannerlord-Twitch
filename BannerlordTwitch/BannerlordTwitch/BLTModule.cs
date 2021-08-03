@@ -19,7 +19,7 @@ namespace BannerlordTwitch
 	internal class BLTModule : MBSubModuleBase
 	{
 		public const string Name = "BannerlordTwitch";
-		public const string Ver = "2.1.2";
+		public const string Ver = "2.1.3";
 
         private static Harmony harmony;
 

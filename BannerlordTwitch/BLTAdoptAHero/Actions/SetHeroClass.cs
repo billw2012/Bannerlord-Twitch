@@ -49,7 +49,7 @@ namespace BLTAdoptAHero
             var newClass = BLTAdoptAHeroModule.HeroClassConfig.FindClass(context.Args);
             if (newClass == null)
             {
-                onFailure($"Provide class name {string.Join("/", BLTAdoptAHeroModule.HeroClassConfig.ClassNames)}");
+                onFailure($"Provide class name {string.Join(" / ", BLTAdoptAHeroModule.HeroClassConfig.ClassNames)}");
                 return;
             }
 

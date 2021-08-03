@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Bannerlord.ButterLib.SaveSystem.Extensions;
+using BannerlordTwitch.SaveSystem;
 using BannerlordTwitch.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -25,8 +25,17 @@ namespace BLTAdoptAHero
             });
         }
 
+        // public class SavableTypes : SaveableTypeDefiner
+        // {
+        //     public SavableTypes(int saveBaseId) : base(saveBaseId)
+        //     {
+        //         
+        //     }
+        // }
+
         public override void SyncData(IDataStore dataStore)
         {
+            using var scopedJsonSync = new ScopedJsonSync(dataStore, nameof(BLTTournamentQueueBehavior));
             if (dataStore.IsSaving)
             {
                 var usedHeroList = TournamentQueue.Select(t => t.Hero).ToList();
@@ -37,14 +46,14 @@ namespace BLTAdoptAHero
                     IsSub = e.IsSub,
                     EntryFee = e.EntryFee,
                 }).ToList();
-                dataStore.SyncDataAsJson("Queue2", ref queue);
+                scopedJsonSync.SyncDataAsJson("Queue2", ref queue);
             }
             else
             {
                 List<Hero> usedHeroList = null;
                 dataStore.SyncData("UsedHeroObjectList", ref usedHeroList);
                 List<TournamentQueueEntrySavable> queue = null;
-                dataStore.SyncDataAsJson("Queue2", ref queue);
+                scopedJsonSync.SyncDataAsJson("Queue2", ref queue);
                 if (usedHeroList != null && queue != null)
                 {
                     TournamentQueue = queue.Select(e => new TournamentQueueEntry

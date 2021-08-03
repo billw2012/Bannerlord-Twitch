@@ -23,7 +23,7 @@ namespace BLTAdoptAHero
             string[] parts = context.Args?.Split(' ');
             if (parts?.Length != 2)
             {
-                ActionManager.SendReply(context, $"Arguments: team gold");
+                ActionManager.SendReply(context, $"Usage: !{((Command)context.Source).Name} team gold");
                 return;
             }
 

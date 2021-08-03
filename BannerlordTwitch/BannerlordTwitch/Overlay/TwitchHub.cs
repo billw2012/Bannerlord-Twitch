@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Bannerlord.ButterLib.Common.Extensions;
 using BannerlordTwitch.Annotations;
 using Microsoft.AspNet.SignalR;
+using BannerlordTwitch.Util;
 
 namespace BLTOverlay
 {

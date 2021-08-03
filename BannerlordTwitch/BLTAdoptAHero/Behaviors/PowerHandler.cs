@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Bannerlord.ButterLib.Common.Extensions;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Powers;
 using TaleWorlds.CampaignSystem;

@@ -26,7 +26,7 @@
         </UpgradeBackupLocation>
         <OldToolsVersion>4.0</OldToolsVersion>
     </PropertyGroup>
-    <Import Project="$(SolutionDir)BLTProperties.targets"/>
+    <Import Project="$(SolutionDir)BLTProperties.targets" />
     <PropertyGroup>
         <DebugType>full</DebugType>
         <PlatformTarget>x64</PlatformTarget>
@@ -38,17 +38,13 @@
         <StartAction>Program</StartAction>
         <StartProgram>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\Bannerlord.exe</StartProgram>
         <StartWorkingDirectory>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client</StartWorkingDirectory>
-        <StartArguments>/singleplayer _MODULES_%2aBannerlord.Harmony%2aBannerlord.ButterLib%2aNative%2aSandBoxCore%2aCustomBattle%2aSandbox%2aStoryMode%2aBannerlordTwitch%2aBLTAdoptAHero%2aBLTBuffet%2aBLTConfigure%2a_MODULES_</StartArguments>
+        <StartArguments>/singleplayer _MODULES_%2aBannerlord.Harmony%2aNative%2aSandBoxCore%2aCustomBattle%2aSandbox%2aStoryMode%2aBannerlordTwitch%2aBLTAdoptAHero%2aBLTBuffet%2aBLTConfigure%2a_MODULES_</StartArguments>
         <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
         <NoWarn>MSB3246;MSB3247;MSB3277;CS0067</NoWarn>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>..\packages\Lib.Harmony.2.0.4\lib\net48\0Harmony.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="$(BANNERLORD_GAME_DIR)\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll">
-            <HintPath>%(Identity)</HintPath>
             <Private>False</Private>
         </Reference>
         <Reference Include="$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\TaleWorlds.*.dll">
@@ -281,6 +277,13 @@
         <Compile Include="Overlay\PhysicalFileSystemEx.cs" />
         <Compile Include="Overlay\TwitchHub.cs" />
         <Compile Include="Properties\Annotations.cs" />
+        <Compile Include="SaveSystem\DictionaryToArrayConverter.cs" />
+        <Compile Include="SaveSystem\MBGUIDConverter.cs" />
+        <Compile Include="SaveSystem\MBObjectBaseConverter.cs" />
+        <Compile Include="SaveSystem\ScopedJsonSync.cs" />
+        <Compile Include="SaveSystem\TaleWorldsContractResolver.cs" />
+        <Compile Include="SaveSystem\TaleWorldsContractResolver2.cs" />
+        <Compile Include="SaveSystem\TaleWorldsContractResolverBase.cs" />
         <Compile Include="Settings.cs" />
         <Compile Include="BLTModule.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
@@ -319,10 +322,11 @@
         </Content>
         <Content Include="Bannerlord-Twitch-Auth.yaml" />
         <Content Include="Bannerlord-Twitch-Documentation.css" />
-        <Content Include="Bannerlord-Twitch.schema.json" />
         <Content Include="Bannerlord-Twitch-v2.yaml" />
         <Content Include="ClassExportExample.html" />
         <Content Include="delete-acl.bat" />
+        <Content Include="FodyWeavers.xml" />
+        <Content Include="FodyWeavers.xsd" />
         <Content Include="Overlay\ConsoleFeed\ConsoleFeed.css">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
@@ -351,6 +355,8 @@
         <Content Include="Overlay\web\Scripts\vue.js" />
         <Content Include="Overlay\web\Scripts\vue.min.js" />
         <Content Include="Overlay\web\style.css" />
+        <Content Include="README.md" />
+        <Content Include="SaveSystem\ButterLibLicense.txt" />
         <Content Include="Web.config" />
         <None Include="app.config" />
         <None Include="Overlay\web\Scripts\jquery-3.4.1.intellisense.js" />
@@ -381,15 +387,21 @@
         <ItemGroup>
             <OverlayContent Include="Overlay\web\**\*" />
         </ItemGroup>
-        <Copy SourceFiles="@(OverlayContent)" DestinationFiles="@(OverlayContent->'$(OutDir)..\..\web\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+        <Copy SourceFiles="@(OverlayContent)" 
+              DestinationFiles="@(OverlayContent->'$(OutDir)..\..\web\%(RecursiveDir)%(Filename)%(Extension)')" 
+              SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
         <ItemGroup>
             <SomeDir Include="$(OutDir)\..\..\**\*" />
         </ItemGroup>
-        <Copy SourceFiles="@(SomeDir)" DestinationFiles="@(SomeDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+        <Copy SourceFiles="@(SomeDir)" 
+              DestinationFiles="@(SomeDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" 
+              SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
     </Target>
     <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
-    <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
-    <Import Project="..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.1\build\Fody.targets')" />
+    <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" 
+            Condition="false" />
+    <Import Project="..\packages\Fody.6.5.1\build\Fody.targets" 
+            Condition="Exists('..\packages\Fody.6.5.1\build\Fody.targets')" />
     <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
         <PropertyGroup>
             <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>

@@ -29,7 +29,7 @@ namespace BLTAdoptAHero
     {
         private Harmony harmony;
         public const string Name = "BLTAdoptAHero";
-        public const string Ver = "2.1.2";
+        public const string Ver = "2.1.3";
 
         internal static GlobalCommonConfig CommonConfig { get; private set; }
         internal static GlobalTournamentConfig TournamentConfig { get; private set; }
@@ -331,11 +331,18 @@ namespace BLTAdoptAHero
         {
             return previousModel.CalculateShieldDamage(baseDamage);
         }
-    
+
+        #if e159
+        public override float GetDamageMultiplierForBodyPart(BoneBodyPartType bodyPart, DamageTypes type)
+        {
+            throw new NotImplementedException();
+        }
+        #else //if e1510 || e160
         public override float GetDamageMultiplierForBodyPart(BoneBodyPartType bodyPart, DamageTypes type, bool isHuman)
         {
             return previousModel.GetDamageMultiplierForBodyPart(bodyPart, type, isHuman);
         }
+        #endif
         
         public class DecideCrushedThroughParams
         {

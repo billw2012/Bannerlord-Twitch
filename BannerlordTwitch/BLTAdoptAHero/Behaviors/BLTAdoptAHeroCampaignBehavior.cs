@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Bannerlord.ButterLib.Common.Extensions;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.ObjectSystem;
-using Bannerlord.ButterLib.SaveSystem.Extensions;
 using BannerlordTwitch;
 using BannerlordTwitch.Annotations;
+using BannerlordTwitch.SaveSystem;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
 using Helpers;
@@ -270,12 +269,14 @@ namespace BLTAdoptAHero
 
         public override void SyncData(IDataStore dataStore)
         {
-            dataStore.SyncDataAsJson("HeroData", ref heroData);
+            using var scopedJsonSync = new ScopedJsonSync(dataStore, nameof(BLTAdoptAHeroCampaignBehavior));
+            
+            scopedJsonSync.SyncDataAsJson("HeroData", ref heroData);
             
             if (dataStore.IsLoading)
             {
                 Dictionary<Hero, HeroData> oldHeroData = null;
-                dataStore.SyncDataAsJson("HeroData", ref oldHeroData);
+                scopedJsonSync.SyncDataAsJson("HeroData", ref oldHeroData);
 
                 List<Hero> usedHeroList = null;
                 dataStore.SyncData("UsedHeroObjectList", ref usedHeroList);
@@ -284,7 +285,7 @@ namespace BLTAdoptAHero
                 dataStore.SyncData("UsedCharacterObjectList", ref usedCharList);
 
                 Dictionary<int, HeroData> heroData2 = null;
-                dataStore.SyncDataAsJson("HeroData2", ref heroData2);
+                scopedJsonSync.SyncDataAsJson("HeroData2", ref heroData2);
                 if (heroData2 == null && oldHeroData != null)
                 {
                     heroData = oldHeroData;
@@ -361,7 +362,7 @@ namespace BLTAdoptAHero
 
                 var heroDataSavable = heroData.ToDictionary(kv 
                     => usedHeroList.IndexOf(kv.Key), kv => kv.Value);
-                dataStore.SyncDataAsJson("HeroData2", ref heroDataSavable);
+                scopedJsonSync.SyncDataAsJson("HeroData2", ref heroDataSavable);
             }
         }
         #endregion

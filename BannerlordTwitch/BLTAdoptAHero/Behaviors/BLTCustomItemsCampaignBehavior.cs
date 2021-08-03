@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Bannerlord.ButterLib.SaveSystem.Extensions;
+using BannerlordTwitch.SaveSystem;
 using BLTAdoptAHero.Actions.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -69,12 +69,13 @@ namespace BLTAdoptAHero
 
         public override void SyncData(IDataStore dataStore)
         {
+            using var scopedJsonSync = new ScopedJsonSync(dataStore, nameof(BLTCustomItemsCampaignBehavior));
             if (dataStore.IsLoading)
             {
                 var savedModiferList = new List<ItemModifier>();
                 dataStore.SyncData("ModifierList", ref savedModiferList);
                 var savedModiferDataList = new List<ItemModifierData>();
-                dataStore.SyncDataAsJson("ModifierData", ref savedModiferDataList);
+                scopedJsonSync.SyncDataAsJson("ModifierData", ref savedModiferDataList);
 
                 // ItemModifier is hashed by string id, so we need to initialize them BEFORE putting them into the dictionary
                 customItemModifiers = new();
@@ -92,7 +93,7 @@ namespace BLTAdoptAHero
                 var savedModiferList = customItemModifiers.Keys.ToList();
                 dataStore.SyncData("ModifierList", ref savedModiferList);
                 var savedModiferDataList = customItemModifiers.Values.ToList();
-                dataStore.SyncDataAsJson("ModifierData", ref savedModiferDataList);
+                scopedJsonSync.SyncDataAsJson("ModifierData", ref savedModiferDataList);
             }
         }
 
