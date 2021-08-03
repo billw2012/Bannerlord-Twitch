@@ -38,15 +38,15 @@ namespace BLTAdoptAHero.Powers
         #endregion
         
         #region Implementation Detail
-        private IEnumerable<PassivePowerGroupItem> ValidPowers => Powers.Where(p => p.Power != null);
-        private IEnumerable<IHeroPowerPassive> GetUnlockedPowers(Hero hero) 
-            => ValidPowers.Where(p => p.IsUnlocked(hero)).Select(p => p.Power);
-        
         [YamlIgnore, Browsable(false)] 
         private GlobalHeroPowerConfig PowerConfig { get; set; }
         #endregion
 
         #region Public Interface
+        public IEnumerable<PassivePowerGroupItem> ValidPowers => Powers.Where(p => p.Power != null);
+        public IEnumerable<IHeroPowerPassive> GetUnlockedPowers(Hero hero) 
+            => ValidPowers.Where(p => p.IsUnlocked(hero)).Select(p => p.Power);
+
         public PassivePowerGroup()
         {
             // For when these are created via the configure tool

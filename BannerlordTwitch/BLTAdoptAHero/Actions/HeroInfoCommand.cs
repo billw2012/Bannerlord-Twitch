@@ -7,6 +7,7 @@ using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Achievements;
 using BLTAdoptAHero.Actions.Util;
+using BLTAdoptAHero.Powers;
 using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
@@ -22,9 +23,11 @@ namespace BLTAdoptAHero
             public bool ShowGold { get; set; } = true;
             [Description("Show personal info: health, location, age"), PropertyOrder(1), UsedImplicitly]
             public bool ShowGeneral { get; set; } = true;
-            [Description("Shows skills (and focuse values) above the specified MinSkillToShow value"), PropertyOrder(2), UsedImplicitly]
+            [Description("Shows skills (and focuse values) above the specified MinSkillToShow value"), 
+             PropertyOrder(2), UsedImplicitly]
             public bool ShowTopSkills { get; set; } = true;
-            [Description("If ShowTopSkills is specified, this defines what skills are shown"), PropertyOrder(3), UsedImplicitly]
+            [Description("If ShowTopSkills is specified, this defines what skills are shown"), 
+             PropertyOrder(3), UsedImplicitly]
             public int MinSkillToShow { get; set; } = 100;
             [Description("Shows all hero attributes"), PropertyOrder(4), UsedImplicitly]
             public bool ShowAttributes { get; set; } = true;
@@ -36,15 +39,21 @@ namespace BLTAdoptAHero
             public bool ShowStorage { get; set; }
             [Description("Shows the full civilian inventory of the hero"), PropertyOrder(7), UsedImplicitly]
             public bool ShowCivilianInventory { get; set; }
-            [Description("Shows a summary of the retinue of the hero (count and tier)"), PropertyOrder(8), UsedImplicitly]
+            [Description("Shows a summary of the retinue of the hero (count and tier)"), 
+             PropertyOrder(8), UsedImplicitly]
             public bool ShowRetinue { get; set; }
-            [Description("Shows the exact classes and counts of the retinue of the hero"), PropertyOrder(9), UsedImplicitly]
+            [Description("Shows the exact classes and counts of the retinue of the hero"), 
+             PropertyOrder(9), UsedImplicitly]
             public bool ShowRetinueList { get; set; }
             [Description("Shows all hero achievements"), PropertyOrder(10), UsedImplicitly]
             public bool ShowAchievements { get; set; }
-            [Description("Shows all hero tracked stats (kills, deaths, summons, attacks, tournament wins etc.)"), PropertyOrder(11), UsedImplicitly]
+            [Description("Shows all hero tracked stats (kills, deaths, summons, attacks, tournament wins etc.)"), 
+             PropertyOrder(11), UsedImplicitly]
             public bool ShowTrackedStats { get; set; }
-            
+            [Description("Shows the heroes unlocked powers"), 
+             PropertyOrder(12), UsedImplicitly]
+            public bool ShowPowers { get; set; }
+
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
                 var shows = new List<string>();
@@ -60,6 +69,7 @@ namespace BLTAdoptAHero
                 if(ShowRetinueList) shows.Add($"Retinue unit list");
                 if(ShowAchievements) shows.Add($"Achievements");
                 if(ShowTrackedStats) shows.Add($"Tracked stats");
+                if(ShowPowers) shows.Add($"Powers");
                 generator.PropertyValuePair("Shows", string.Join(", ", shows));
             }
         }
@@ -72,7 +82,7 @@ namespace BLTAdoptAHero
         {
             var settings = config as Settings ?? new Settings();
             var adoptedHero = BLTAdoptAHeroCampaignBehavior.Current.GetAdoptedHero(context.UserName);
-            var infoStrings = new List<string>{};
+            var infoStrings = new List<string>();
             if (adoptedHero == null)
             {
                 infoStrings.Add(AdoptAHero.NoHeroMessage);
@@ -117,12 +127,14 @@ namespace BLTAdoptAHero
                 if (settings.ShowAttributes)
                 {
                     infoStrings.Add("[ATTR] " + string.Join("■", HeroHelpers.AllAttributes
-                        .Select(a => $"{HeroHelpers.GetShortAttributeName(a)} {adoptedHero.GetAttributeValue(a)}")));
+                        .Select(a 
+                            => $"{HeroHelpers.GetShortAttributeName(a)} {adoptedHero.GetAttributeValue(a)}")));
                 }
                 
                 if (settings.ShowEquipment)
                 {
-                    infoStrings.Add($"[TIER] {BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero) + 1}");
+                    infoStrings.Add(
+                        $"[TIER] {BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero) + 1}");
                     var cl = BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentClass(adoptedHero);
                     infoStrings.Add($"{cl?.Name ?? "No Equip Class"}");
                 }
@@ -145,14 +157,16 @@ namespace BLTAdoptAHero
                 
                 if (settings.ShowStorage)
                 {
-                    var customItems = BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero);
+                    var customItems 
+                        = BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero);
                     infoStrings.Add("[STORED] " + (customItems.Any() ? string.Join("■", customItems
                         .Select(e => e.GetModifiedItemName())) : "(nothing)"));
                 }
 
                 if (settings.ShowRetinue)
                 {
-                    var retinue = BLTAdoptAHeroCampaignBehavior.Current.GetRetinue(adoptedHero).ToList();
+                    var retinue
+                        = BLTAdoptAHeroCampaignBehavior.Current.GetRetinue(adoptedHero).ToList();
                     if (retinue.Count > 0)
                     {
                         double tier = retinue.Average(r => r.Tier);
@@ -209,10 +223,29 @@ namespace BLTAdoptAHero
                         ("TourRndL", AchievementStatsData.Statistic.TotalTournamentRoundLosses),
                         ("TourW", AchievementStatsData.Statistic.TotalTournamentFinalWins),
                     };
-                    infoStrings.Add($"[STATS] " + string.Join("■", achievementList.Select(a =>
-                        $"{a.shortName}:{BLTAdoptAHeroCampaignBehavior.Current.GetAchievementTotalStat(adoptedHero, a.id)}" +
+                    infoStrings.Add($"[STATS] " + string.Join("■", 
+                        achievementList.Select(a =>
+                        $"{a.shortName}:" +
+                        $"{BLTAdoptAHeroCampaignBehavior.Current.GetAchievementTotalStat(adoptedHero, a.id)}" +
                         $"({BLTAdoptAHeroCampaignBehavior.Current.GetAchievementClassStat(adoptedHero, a.id)})"
                         )));
+                }
+
+                if (settings.ShowPowers)
+                {
+                    var heroClass = adoptedHero.GetClass();
+                    if(heroClass != null)
+                    {
+                        var activePowers 
+                            = heroClass.ActivePower.GetUnlockedPowers(adoptedHero).OfType<HeroPowerDefBase>();
+                        infoStrings.Add("[ACTIVE] " + 
+                                        string.Join("■", activePowers.Select(p => p.Name)));
+                        
+                        var passivePowers 
+                            = heroClass.PassivePower.GetUnlockedPowers(adoptedHero).OfType<HeroPowerDefBase>();
+                        infoStrings.Add("[PASSIVE] " + 
+                                        string.Join("■", passivePowers.Select(p => p.Name)));
+                    }
                 }
             }
             ActionManager.SendReply(context, infoStrings.ToArray());

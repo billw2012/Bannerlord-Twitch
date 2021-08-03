@@ -36,7 +36,7 @@ namespace BLTAdoptAHero.Powers
          Description("The various effects in the power. These can also have customized unlock requirements, so you " +
                      "can have classes that get stronger (or weaker!) over time (or by any other measure)."), 
           UsedImplicitly]
-        public List<ActivePowerGroupItem> Powers { get; set; } = new(); 
+        public List<ActivePowerGroupItem> Powers { get; set; } = new();
 
         [PropertyOrder(3), Description("Particles/sound effects to play when this power group is activated"),
          ExpandableObject, UsedImplicitly]
@@ -48,15 +48,15 @@ namespace BLTAdoptAHero.Powers
         #endregion
         
         #region Implementation Detail
-        private IEnumerable<ActivePowerGroupItem> ValidPowers => Powers.Where(p => p.Power != null);
-        private IEnumerable<IHeroPowerActive> GetUnlockedPowers(Hero hero) 
-            => ValidPowers.Where(p => p.IsUnlocked(hero)).Select(p => p.Power);
-        
         [YamlIgnore, Browsable(false)] 
         private GlobalHeroPowerConfig PowerConfig { get; set; }
         #endregion
         
         #region Public Interface
+        public IEnumerable<ActivePowerGroupItem> ValidPowers => Powers.Where(p => p.Power != null);
+        public IEnumerable<IHeroPowerActive> GetUnlockedPowers(Hero hero) 
+            => ValidPowers.Where(p => p.IsUnlocked(hero)).Select(p => p.Power);
+        
         public bool IsActive(Hero hero) => Powers.Any(power => power.Power.IsActive(hero));
 
         public (bool canActivate, string failReason) CanActivate(Hero hero)

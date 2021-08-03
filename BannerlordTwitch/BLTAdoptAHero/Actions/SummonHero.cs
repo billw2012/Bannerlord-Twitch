@@ -70,7 +70,7 @@ namespace BLTAdoptAHero
             public bool OnPlayerSide { get; set; }
             // [Category("General"), Description("Maximum number of summons that can be active at the same time (i.e. max alive adopted heroes that can be in the mission) NOT IMPLEMENTED YET"), PropertyOrder(2), UsedImplicitly]
             // public int? MaxSimultaneousSummons { get; set; }
-            
+
             [Category("General"), Description("Gold cost to summon"), PropertyOrder(5), UsedImplicitly]
             public int GoldCost { get; set; }
 
@@ -85,7 +85,7 @@ namespace BLTAdoptAHero
             [Category("Effects"), 
              Description("Multiplier applied to (positive) effects for subscribers"), PropertyOrder(1), UsedImplicitly]
             public float SubBoost { get; set; }
-            
+
             [Category("Effects"), 
              Description("HP the hero gets every second they are alive in the mission"), PropertyOrder(2), UsedImplicitly]
             public float HealPerSecond { get; set; }

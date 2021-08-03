@@ -43,8 +43,6 @@ namespace BLTAdoptAHero
             [Description("Gold cost for Tier 6 equipment"), PropertyOrder(6), UsedImplicitly]
             public int CostTier6 { get; set; } = 400000;
             
-            // etc..
-            
             public int GetTierCost(int tier)
             {
                 return tier switch
@@ -69,8 +67,7 @@ namespace BLTAdoptAHero
                 {
                     generator.P("Re-rolls your equipment at your current tier");
                 }
-                
-                
+
                 generator.PropertyValuePair("Tier costs", $"1={CostTier1}{Naming.Gold}, 2={CostTier2}{Naming.Gold}, 3={CostTier3}{Naming.Gold}, 4={CostTier4}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 6={CostTier6}{Naming.Gold}");
                 
                 if (!AllowCompanionUpgrade)
