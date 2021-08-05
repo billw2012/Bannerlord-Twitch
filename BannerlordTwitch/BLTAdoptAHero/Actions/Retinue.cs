@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -14,7 +15,7 @@ namespace BLTAdoptAHero
     {
         private class Settings : IDocumentable
         {
-            [Description("Retinue Upgrade Settings"), PropertyOrder(1), ExpandableObject, UsedImplicitly]
+            [Description("Retinue Upgrade Settings"), PropertyOrder(1), ExpandableObject, Expand, UsedImplicitly]
             public BLTAdoptAHeroCampaignBehavior.RetinueSettings Retinue { get; set; } = new();
             
             public void GenerateDocumentation(IDocumentationGenerator generator)

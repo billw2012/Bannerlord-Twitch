@@ -48,12 +48,12 @@ namespace BLTAdoptAHero
         public bool UseCamel { get; set; }
         
         [Description("Passive hero power: this will always apply to the hero (i.e. a permanent buff)"), 
-         PropertyOrder(9), ExpandableObject, UsedImplicitly]
+         PropertyOrder(9), ExpandableObject, Expand, UsedImplicitly]
         public PassivePowerGroup PassivePower { get; set; } = new() { Name = "Passive Power" };
 
         [Description("Active hero power: this power will be triggered only when the UseHeroPower action is used by " +
                      "the viewer, via reward or command (i.e. a temporary buff)"), 
-         PropertyOrder(10), ExpandableObject, UsedImplicitly]
+         PropertyOrder(10), ExpandableObject, Expand, UsedImplicitly]
         public ActivePowerGroup ActivePower { get; set; } = new() { Name = "Active Power" };
         #endregion
 

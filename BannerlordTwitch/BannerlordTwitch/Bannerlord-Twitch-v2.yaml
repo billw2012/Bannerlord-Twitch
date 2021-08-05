@@ -1,5 +1,8 @@
 Rewards:
-- RewardSpec:
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: true
+  RewardSpec:
     Title: Adopt a Hero
     DisableAutomaticFulfillment: false
     Prompt: Get a hero in game. Almost all other actions require an adopted hero.
@@ -12,9 +15,6 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: AdoptAHero
   ID: e072adb0-83a2-4408-87bb-b2cff3f12ee2
-  Enabled: true
-  RespondInTwitch: true
-  RespondInOverlay: true
   HandlerConfig:
     CreateNew: false
     AllowNoble: true
@@ -30,13 +30,28 @@ Rewards:
     StartingAgeRange:
       Min: 18
       Max: 35
-    StartingSkills: []
+    StartingSkills:
+    - Skill: Melee
+      MinLevel: 25
+      MaxLevel: 50
+    - Skill: Ranged
+      MinLevel: 25
+      MaxLevel: 50
+    - Skill: Athletics
+      MinLevel: 25
+      MaxLevel: 50
+    - Skill: Riding
+      MinLevel: 25
+      MaxLevel: 50
     StartingEquipmentTier: 1
     StartingClass: 00000000-0000-0000-0000-000000000000
     SpawnInParty: false
     JoinPlayerCompanion: false
   Documentation: Get a hero in game. Almost all other actions require an adopted hero.
-- RewardSpec:
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
     Title: 10k gold
     DisableAutomaticFulfillment: false
     Prompt: Add 10,000 gold to your adopted hero
@@ -49,13 +64,13 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: AddGoldToHero
   ID: 7e0991eb-4304-496d-a9b4-874a1c114bae
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     Amount: 10000
   Documentation: Adds 10,000 gold to your adopted hero.
-- RewardSpec:
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
     Title: 100k gold
     DisableAutomaticFulfillment: false
     Prompt: Add 100,000 gold to your adopted hero
@@ -68,13 +83,13 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: AddGoldToHero
   ID: 2ccc7258-ad66-4afa-a45a-93863c1d7f35
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     Amount: 100000
   Documentation: Adds 100,000 gold to your adopted hero.
-- RewardSpec:
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
     Title: Summon
     DisableAutomaticFulfillment: false
     Prompt: Your adopted hero joins the players side in battle
@@ -87,9 +102,6 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: SummonHero
   ID: 77c1dbd8-02cb-47d7-9796-7308e989b7f3
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     AllowFieldBattle: true
     AllowVillageBattle: true
@@ -103,7 +115,10 @@ Rewards:
     SubBoost: 1
     HealPerSecond: 0
   Documentation: Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue).
-- RewardSpec:
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
     Title: Attack
     DisableAutomaticFulfillment: false
     Prompt: Your adopted hero joins the enemies side in battle
@@ -116,9 +131,6 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: SummonHero
   ID: 422cc8d9-84cb-4cc9-afdf-889e615fdea6
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     AllowFieldBattle: true
     AllowVillageBattle: true
@@ -132,7 +144,10 @@ Rewards:
     SubBoost: 1
     HealPerSecond: 0
   Documentation: Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue).
-- RewardSpec:
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
     Title: Heal Streamer
     DisableAutomaticFulfillment: false
     Prompt: Heal the streamer over time
@@ -145,9 +160,6 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: CharacterEffect
   ID: f0b482c2-e121-4415-a2a6-95e592a4d7a9
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     Name: Healing
     Target: Player
@@ -167,7 +179,10 @@ Rewards:
     DeactivateParticleEffect: 
     DeactivateSound: 
   Documentation: Heals the streamers character in battle, over time. Doesn't work on the campaign map.
-- RewardSpec:
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
     Title: Tournament
     DisableAutomaticFulfillment: false
     Prompt: Join the tournament queue with your adopted hero
@@ -180,13 +195,13 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: JoinTournament
   ID: e1d775d0-0d60-4e12-baa7-39f0e791293a
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     GoldCost: 0
   Documentation: Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament.
-- RewardSpec:
+- Enabled: true
+  RespondInOverlay: false
+  RespondInTwitch: false
+  RewardSpec:
     Title: Send Message In Game
     DisableAutomaticFulfillment: false
     Prompt: Enter Message
@@ -199,13 +214,13 @@ Rewards:
     GlobalCooldownSeconds: 15
   Handler: SendMessage
   ID: 1b1f00fe-fff8-4f76-8c09-8da0fd18c53b
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: false
   HandlerConfig:
     AlertSound: Notification1
   Documentation: Sends a message in the game. If you have a hero then it will also show them next to the message.
-- RewardSpec:
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: true
+  RewardSpec:
     Title: Retire My Hero
     DisableAutomaticFulfillment: false
     Prompt: Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel
@@ -218,12 +233,12 @@ Rewards:
     GlobalCooldownSeconds: 60
   Handler: RetireMyHero
   ID: 60d43b2b-d1cb-4411-a126-d5089c264aca
-  Enabled: true
-  RespondInTwitch: true
-  RespondInOverlay: true
   HandlerConfig: 
   Documentation: Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritence rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete.
-- RewardSpec:
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
     Title: 50k XP
     DisableAutomaticFulfillment: false
     Prompt: Add 50,000 XP to a random skill of your adopted hero
@@ -236,9 +251,6 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: SkillXP
   ID: fe103fc4-fcaa-4e0d-809d-235d22676b6a
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     Skills: None
     Auto: true
@@ -246,7 +258,10 @@ Rewards:
     AmountHigh: 50000
     GoldCost: 0
   Documentation: Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly choosen, but influenced by your class and existing skills and equipment.
-- RewardSpec:
+- Enabled: false
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
     Title: Burn Player
     DisableAutomaticFulfillment: false
     Prompt: 
@@ -259,9 +274,6 @@ Rewards:
     GlobalCooldownSeconds: 300
   Handler: CharacterEffect
   ID: 5af6308d-ce73-402d-aa29-2a9e0d9ad7e8
-  Enabled: false
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     Name: 
     Target: Player
@@ -287,7 +299,10 @@ Rewards:
     DeactivateParticleEffect: 
     DeactivateSound: 
   Documentation: 
-- RewardSpec:
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
     Title: Heal Hero
     DisableAutomaticFulfillment: false
     Prompt: 
@@ -300,9 +315,6 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: CharacterEffect
   ID: 6e75b94c-23cf-43cf-a647-2df806460874
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     Name: Healing
     Target: AdoptedHero
@@ -320,7 +332,10 @@ Rewards:
     DeactivateParticleEffect: 
     DeactivateSound: 
   Documentation: Heals your hero over time. Only works in battle, when your hero is summoned.
-- RewardSpec:
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: true
+  RewardSpec:
     Title: Give Player Gold
     DisableAutomaticFulfillment: false
     Prompt: 'Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:'
@@ -333,15 +348,15 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: AddGoldToPlayer
   ID: 4ff890a2-ff83-41fa-9441-156f32abd9e8
-  Enabled: true
-  RespondInTwitch: true
-  RespondInOverlay: true
   HandlerConfig:
     GoldAmountToGive: 10000
     FromAdoptedHero: true
     AlertSound: Notification1
   Documentation: Transfer 10,000 gold to the streamers character, from your hero.
-- RewardSpec:
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
     Title: Use Class Power
     DisableAutomaticFulfillment: false
     Prompt: Activate your class power on your hero, if you have one.
@@ -354,20 +369,17 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: UsePower
   ID: 6f53994c-4513-4b81-95a3-21493d35b25d
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig: 
   Documentation: Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay.
 Commands:
-- Name: stats
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  Name: stats
   HideHelp: false
   Help: show stats
   Handler: HeroInfoCommand
   ID: 1cf3abfd-3310-4a51-808e-e14d454eed05
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     ShowGold: true
     ShowGeneral: true
@@ -382,15 +394,16 @@ Commands:
     ShowRetinueList: false
     ShowAchievements: false
     ShowTrackedStats: false
+    ShowPowers: false
   Documentation: Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue.
-- Name: inv
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  Name: inv
   HideHelp: false
   Help: show equipment
   Handler: HeroInfoCommand
   ID: 7b6caafc-0246-47c2-8622-e091b10b8897
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     ShowGold: true
     ShowGeneral: false
@@ -405,15 +418,16 @@ Commands:
     ShowRetinueList: false
     ShowAchievements: false
     ShowTrackedStats: false
+    ShowPowers: false
   Documentation: Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage.
-- Name: equip
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  Name: equip
   HideHelp: false
   Help: upgrade equipment
   Handler: EquipHero
   ID: 90b571d1-dba8-4006-860c-a0401b6f8fd2
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     AllowCompanionUpgrade: false
     CostTier1: 25000
@@ -424,14 +438,14 @@ Commands:
     CostTier6: 400000
     ReequipInsteadOfUpgrade: false
   Documentation: Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to.
-- Name: retinue
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  Name: retinue
   HideHelp: false
   Help: upgrade retinue
   Handler: Retinue
   ID: 38eed507-87b9-47f4-b235-af921cef00c4
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     Retinue:
       MaxRetinueSize: 5
@@ -446,26 +460,32 @@ Commands:
       UseBasicTroops: true
       UseEliteTroops: true
   Documentation: Purchases a new tier 1 troop for your retinue, or upgrades an existing one to the next tier if you have no space left. Retinue will appear with you in battle when you summon, earning you money when they make kills.
-- Name: class
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: true
+  Name: class
   HideHelp: false
   Help: select new class
   Handler: SetHeroClass
   ID: da8416ca-e59b-458a-8953-31291d03c835
-  Enabled: true
-  RespondInTwitch: true
-  RespondInOverlay: true
   HandlerConfig:
-    GoldCost: 50000
+    FirstEquipIsFree: true
+    CostTier1: 5000
+    CostTier2: 10000
+    CostTier3: 20000
+    CostTier4: 40000
+    CostTier5: 80000
+    CostTier6: 160000
     UpdateEquipment: true
   Documentation: 'Selects a new class for your hero, updating your existing equipment to match the class requirements.<br>Usage is <code>!class (new class name)</code>, e.g. <code>!class archer</code>. '
-- Name: reequip
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  Name: reequip
   HideHelp: false
   Help: reroll equipment
   Handler: EquipHero
   ID: d4fb255c-4bb3-454e-9e26-39b4d7a321f0
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     AllowCompanionUpgrade: false
     CostTier1: 10000
@@ -476,14 +496,14 @@ Commands:
     CostTier6: 160000
     ReequipInsteadOfUpgrade: true
   Documentation: Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier.
-- Name: gold
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: true
+  Name: gold
   HideHelp: false
   Help: show gold
   Handler: HeroInfoCommand
   ID: 42e45ee9-647f-486f-9764-5e765507a70d
-  Enabled: true
-  RespondInTwitch: true
-  RespondInOverlay: true
   HandlerConfig:
     ShowGold: true
     ShowGeneral: false
@@ -498,15 +518,16 @@ Commands:
     ShowRetinueList: false
     ShowAchievements: false
     ShowTrackedStats: false
+    ShowPowers: false
   Documentation: Show your heroes current gold.
-- Name: retinuelist
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  Name: retinuelist
   HideHelp: false
   Help: retinue list
   Handler: HeroInfoCommand
   ID: afd51f50-caaf-40a8-bf29-d75447e34ef4
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     ShowGold: false
     ShowGeneral: false
@@ -521,15 +542,16 @@ Commands:
     ShowRetinueList: true
     ShowAchievements: false
     ShowTrackedStats: false
+    ShowPowers: false
   Documentation: Shows your current retinue troops.
-- Name: adopt
+- Enabled: false
+  RespondInOverlay: true
+  RespondInTwitch: false
+  Name: adopt
   HideHelp: false
   Help: ''
   Handler: AdoptAHero
   ID: e317c63a-5a1f-455c-b953-6dcb92dc9424
-  Enabled: false
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     CreateNew: false
     AllowNoble: true
@@ -563,44 +585,44 @@ Commands:
     SpawnInParty: false
     JoinPlayerCompanion: false
   Documentation: Get a hero in game. Almost all other actions require an adopted hero.
-- Name: nameitem
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: true
+  Name: nameitem
   HideHelp: false
   Help: name a reward item
   Handler: NameItem
   ID: aef1ded6-f8dd-4b9a-9d70-96e96d17cb12
-  Enabled: true
-  RespondInTwitch: true
-  RespondInOverlay: true
   HandlerConfig: 
   Documentation: You can use this to name your custom items.<br>Usage is <code>!nameitem (name)</code>, for example <code>!nameitem Foehammer</code>.<br>If you call <code>!nameitem</code> on its own it will tell you what item will be named next.
-- Name: bltbet
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: true
+  Name: bltbet
   HideHelp: false
   Help: bet on tournament
   Handler: TournamentBet
   ID: 7cbdbc43-660c-4500-9029-d06e81c89f04
-  Enabled: true
-  RespondInTwitch: true
-  RespondInOverlay: true
   HandlerConfig: 
   Documentation: Use this to bet on tournament matches, when available.<br>Usage is <code>!bltbet (team) (gold)</code>, for example <code>!bltbet red 10000</code> to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.<br>If only one team is bet upon, the bets will be refunded.
-- Name: power
+- Enabled: false
+  RespondInOverlay: true
+  RespondInTwitch: false
+  Name: power
   HideHelp: false
   Help: 
   Handler: UsePower
   ID: 4aa62cc4-9ac2-4920-b921-c641f6ad0e24
-  Enabled: false
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig: 
   Documentation: 
-- Name: ach
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: false
+  Name: ach
   HideHelp: false
   Help: achievements
   Handler: HeroInfoCommand
   ID: 6b05f682-afe1-45e2-ba68-e6ee086ee412
-  Enabled: true
-  RespondInTwitch: false
-  RespondInOverlay: true
   HandlerConfig:
     ShowGold: false
     ShowGeneral: false
@@ -615,66 +637,102 @@ Commands:
     ShowRetinueList: false
     ShowAchievements: true
     ShowTrackedStats: true
+    ShowPowers: false
   Documentation: Show the heroes achievements and tracked stats.
-- Name: auction
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: true
+  Name: auction
   HideHelp: false
   Help: 
   Handler: AuctionItem
   ID: 303342d6-c3c3-4f58-8d0d-0daee20677f8
-  Enabled: true
-  RespondInTwitch: true
-  RespondInOverlay: true
   HandlerConfig:
     AuctionDurationInSeconds: 120
     AuctionReminderIntervalInSeconds: 30
   Documentation: Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.<br>Usage is <code>!auction (reserve price) (part of the item name)</code>, e.g. <code>!auction 50000 Boots</code> would start a new auction for your custom item with the word "Boots" in it, with a reserve of 50000. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.
-- Name: bid
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: true
+  Name: bid
   HideHelp: false
   Help: 
   Handler: BidOnItem
   ID: 95bcd31c-154b-4d70-a3e6-cb247efe9fb4
-  Enabled: true
-  RespondInTwitch: true
-  RespondInOverlay: true
   HandlerConfig: 
   Documentation: Place a bid on the current auction, if one is active.<br>Usage is <code>!bid (gold amount)</code>, e.g. <code>!bid 100000</code>. If there is no auction, or the bid doesn't exceed the reserve price, it will be rejected.
-- Name: discarditem
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: true
+  Name: discarditem
   HideHelp: false
   Help: ''
   Handler: DiscardItem
   ID: 752eb016-7df1-465c-83c7-80cc88f8c02d
-  Enabled: true
-  RespondInTwitch: true
-  RespondInOverlay: true
   HandlerConfig: 
   Documentation: Throw away one of your custom items.<br>Usage is <code>!discarditem (part of the item name)</code>, e.g. <code>!discarditem Boots</code> would discard your custom item with the word "Boots" in it. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.
-- Name: giveitem
+- Enabled: true
+  RespondInOverlay: true
+  RespondInTwitch: true
+  Name: giveitem
   HideHelp: false
   Help: 
   Handler: GiveItem
   ID: 0e255e77-4c17-44ad-aeb8-ff01bbbe0bee
-  Enabled: true
-  RespondInTwitch: true
-  RespondInOverlay: true
   HandlerConfig: 
   Documentation: Give one of your custom items to another viewer.<br>Usage is <code>!giveitem (viewer) (part of the item name)</code>, e.g. <code>!giveitem C4alad0g Boots</code> would give your custom item with the word "Boots" in it to the viewer called C4lad0g. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
-    AllowDeath: true
-    DeathChance: 0.100000001
-    ApplyDeathChanceToAllHeroes: true
+    SubBoost: 1
+    BreakCompanionLimit: false
+    CustomRewardModifiers:
+      Power: 1
+      WeaponDamage:
+        Min: 5
+        Max: 20
+      WeaponSpeed:
+        Min: 5
+        Max: 20
+      WeaponMissileSpeed:
+        Min: 5
+        Max: 20
+      AmmoDamage:
+        Min: 5
+        Max: 20
+      ArrowStack:
+        Min: 5
+        Max: 20
+      ThrowingStack:
+        Min: 2
+        Max: 6
+      Armor:
+        Min: 5
+        Max: 15
+      MountManeuver:
+        Min: 1.10000002
+        Max: 1.5
+      MountSpeed:
+        Min: 1.10000002
+        Max: 1.5
+      MountChargeDamage:
+        Min: 2
+        Max: 5
+      MountHitPoints:
+        Min: 1.25
+        Max: 2
     StartWithFullHealth: true
     StartHealthMultiplier: 2
     StartRetinueHealthMultiplier: 2
     MoraleLossFactor: 0.5
-    SubBoost: 1
+    RetinueUseHeroesFormation: false
+    SummonCooldownInSeconds: 60
+    SummonCooldownUseMultiplier: 1.5
+    AllowDeath: true
+    DeathChance: 0.0500000007
+    ApplyDeathChanceToAllHeroes: true
     UseRawXP: true
     RawXPSkillCap: 330
-    RetinueUseHeroesFormation: false
-    SummonCooldownInSeconds: 20
-    SummonCooldownUseMultiplier: 1.10000002
-    BreakCompanionLimit: false
     GoldPerKill: 5000
     XPPerKill: 5000
     XPPerKilled: 2000
@@ -692,207 +750,13 @@ GlobalConfigs:
     DifficultyScaling: 1
     DifficultyScalingMin: 0.200000003
     DifficultyScalingMax: 3
-    Shouts: []
-    IncludeDefaultShouts: true
-    KillStreaks:
-    - Enabled: true
-      ShowNotification: true
-      Name: 2k
-      NotificationText: '{player} got 2k'
-      KillsRequired: 2
-      GoldReward: 0
-      XPReward: 5000
+    KillStreaks: []
     ShowKillStreakPopup: true
     KillStreakPopupAlertSound: Horns2
     ReferenceLevelReward: 15
-    Achievements:
-    - ID: 374a9cbb-8bea-4370-ad0c-ffddb2ba7f0c
-      Enabled: true
-      Name: Murder!
-      NotificationText: '{player} got {name}'
-      Requirements:
-      - !StatisticRequirement
-        Statistic: TotalKills
-        Comparison: GreaterOrEqual
-        Value: 1
-        OtherStatistic: None
-      GoldGain: 0
-      XPGain: 0
-      GiveItemReward: true
-      ItemReward:
-        WeaponWeight: 1
-        ArmorWeight: 0
-        MountWeight: 0
-        Tier1Weight: 0
-        Tier2Weight: 0
-        Tier3Weight: 0
-        Tier4Weight: 0
-        Tier5Weight: 0
-        Tier6Weight: 0
-        CustomWeight: 1
-        CustomRewardModifiers:
-          Name: Murder {ITEMNAME}
-          Power: 0.5
-          WeaponDamage:
-            Min: 25
-            Max: 50
-          WeaponSpeed:
-            Min: 25
-            Max: 50
-          WeaponMissileSpeed:
-            Min: 25
-            Max: 50
-          AmmoDamage:
-            Min: 10
-            Max: 30
-          ArrowStack:
-            Min: 25
-            Max: 50
-          ThrowingStack:
-            Min: 2
-            Max: 6
-          Armor:
-            Min: 10
-            Max: 20
-          MountManeuver:
-            Min: 1.25
-            Max: 2
-          MountSpeed:
-            Min: 1.25
-            Max: 2
-          MountChargeDamage:
-            Min: 1.25
-            Max: 2
-          MountHitPoints:
-            Min: 1.25
-            Max: 2
-    - ID: 2d65c6c1-4fb2-4309-8461-708cbc70354a
-      Enabled: true
-      Name: Double Murder!
-      NotificationText: '{player} got {name}!'
-      Requirements:
-      - !StatisticRequirement
-        Statistic: TotalKills
-        Comparison: GreaterOrEqual
-        Value: 2
-        OtherStatistic: None
-      - !StatisticRequirement
-        Statistic: Summons
-        Comparison: Less
-        Value: 3
-        OtherStatistic: None
-      GoldGain: 0
-      XPGain: 0
-      GiveItemReward: true
-      ItemReward:
-        WeaponWeight: 1
-        ArmorWeight: 0
-        MountWeight: 0
-        Tier1Weight: 0
-        Tier2Weight: 0
-        Tier3Weight: 0
-        Tier4Weight: 0
-        Tier5Weight: 0
-        Tier6Weight: 0
-        CustomWeight: 1
-        CustomRewardModifiers:
-          Name: '{ITEMNAME} of Murder!!'
-          Power: 2
-          WeaponDamage:
-            Min: 25
-            Max: 50
-          WeaponSpeed:
-            Min: 25
-            Max: 50
-          WeaponMissileSpeed:
-            Min: 25
-            Max: 50
-          AmmoDamage:
-            Min: 10
-            Max: 30
-          ArrowStack:
-            Min: 25
-            Max: 50
-          ThrowingStack:
-            Min: 2
-            Max: 6
-          Armor:
-            Min: 10
-            Max: 20
-          MountManeuver:
-            Min: 1.25
-            Max: 2
-          MountSpeed:
-            Min: 1.25
-            Max: 2
-          MountChargeDamage:
-            Min: 1.25
-            Max: 2
-          MountHitPoints:
-            Min: 1.25
-            Max: 2
-    - ID: 86838f4c-ed34-4734-9bbe-c44c01b29210
-      Enabled: true
-      Name: Infantry Murder!
-      NotificationText: '{player} got {name}'
-      Requirements:
-      - !StatisticClassSpecificRequirement
-        CurrentClass: false
-        RequiredClass: 9fa426af-af3e-41f6-9b48-0ffef6dc3553
-        Statistic: TotalKills
-        Comparison: GreaterOrEqual
-        Value: 1
-        OtherStatistic: None
-      GoldGain: 0
-      XPGain: 0
-      GiveItemReward: true
-      ItemReward:
-        WeaponWeight: 1
-        ArmorWeight: 0
-        MountWeight: 0
-        Tier1Weight: 0
-        Tier2Weight: 0
-        Tier3Weight: 0
-        Tier4Weight: 0
-        Tier5Weight: 0
-        Tier6Weight: 0
-        CustomWeight: 1
-        CustomRewardModifiers:
-          Name: Murder {ITEMNAME}
-          Power: 0.5
-          WeaponDamage:
-            Min: 25
-            Max: 50
-          WeaponSpeed:
-            Min: 25
-            Max: 50
-          WeaponMissileSpeed:
-            Min: 25
-            Max: 50
-          AmmoDamage:
-            Min: 10
-            Max: 30
-          ArrowStack:
-            Min: 25
-            Max: 50
-          ThrowingStack:
-            Min: 2
-            Max: 6
-          Armor:
-            Min: 10
-            Max: 20
-          MountManeuver:
-            Min: 1.25
-            Max: 2
-          MountSpeed:
-            Min: 1.25
-            Max: 2
-          MountChargeDamage:
-            Min: 1.25
-            Max: 2
-          MountHitPoints:
-            Min: 1.25
-            Max: 2
+    Achievements: []
+    Shouts: []
+    IncludeDefaultShouts: true
 - Id: Adopt A Hero - Tournament Config
   Config:
     StartHealthMultiplier: 2
@@ -954,45 +818,11 @@ GlobalConfigs:
       Tier2Weight: 0
       Tier3Weight: 0
       Tier4Weight: 0
-      Tier5Weight: 3
-      Tier6Weight: 2
+      Tier5Weight: 2
+      Tier6Weight: 1.5
       CustomWeight: 1
-      CustomRewardModifiers:
-        Name: Modified
-        Power: 1
-        WeaponDamage:
-          Min: 25
-          Max: 50
-        WeaponSpeed:
-          Min: 25
-          Max: 50
-        WeaponMissileSpeed:
-          Min: 25
-          Max: 50
-        AmmoDamage:
-          Min: 10
-          Max: 30
-        ArrowStack:
-          Min: 25
-          Max: 50
-        ThrowingStack:
-          Min: 2
-          Max: 6
-        Armor:
-          Min: 10
-          Max: 20
-        MountManeuver:
-          Min: 1.25
-          Max: 2
-        MountSpeed:
-          Min: 1.25
-          Max: 2
-        MountChargeDamage:
-          Min: 1.25
-          Max: 2
-        MountHitPoints:
-          Min: 1.25
-          Max: 2
+      CustomItemName: Reward {ITEMNAME}
+      CustomItemPower: 1
     EnableBetting: true
     BettingOnFinalOnly: true
 - Id: Adopt A Hero - Power Config
@@ -1286,34 +1116,7 @@ GlobalConfigs:
       UseCamel: false
       PassivePower:
         Name: Healthy
-        Powers:
-        - PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
-          Requirements:
-          - !StatisticClassSpecificRequirement
-            CurrentClass: true
-            RequiredClass: 00000000-0000-0000-0000-000000000000
-            Statistic: Summons
-            Comparison: GreaterOrEqual
-            Value: 10
-            OtherStatistic: None
-        - PowerID: b3e5da20-1b82-4820-a373-ff9a8190dd98
-          Requirements:
-          - !StatisticClassSpecificRequirement
-            CurrentClass: true
-            RequiredClass: 00000000-0000-0000-0000-000000000000
-            Statistic: Summons
-            Comparison: GreaterOrEqual
-            Value: 30
-            OtherStatistic: None
-        - PowerID: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
-          Requirements:
-          - !StatisticClassSpecificRequirement
-            CurrentClass: true
-            RequiredClass: 00000000-0000-0000-0000-000000000000
-            Statistic: Summons
-            Comparison: GreaterOrEqual
-            Value: 40
-            OtherStatistic: None
+        Powers: []
       ActivePower:
         Name: Fireblade
         Powers: []
@@ -1552,55 +1355,6 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_default_coll_small
           Sound: None
-    - ID: 5a25ea10-a03b-4551-9685-3b1300b139e0
-      Name: infantry
-      Description: Basic foot soldier, the core around which every army is built.
-      Formation: Ranged
-      Slot1: OneHandedSword
-      Slot2: Shield
-      Slot3: None
-      Slot4: None
-      UseHorse: false
-      UseCamel: false
-      PassivePower:
-        Name: Healthy
-        Powers:
-        - PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
-          Requirements:
-          - !StatisticClassSpecificRequirement
-            CurrentClass: true
-            RequiredClass: 00000000-0000-0000-0000-000000000000
-            Statistic: Summons
-            Comparison: GreaterOrEqual
-            Value: 10
-            OtherStatistic: None
-        - PowerID: b3e5da20-1b82-4820-a373-ff9a8190dd98
-          Requirements:
-          - !StatisticClassSpecificRequirement
-            CurrentClass: true
-            RequiredClass: 00000000-0000-0000-0000-000000000000
-            Statistic: Summons
-            Comparison: GreaterOrEqual
-            Value: 30
-            OtherStatistic: None
-        - PowerID: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
-          Requirements:
-          - !StatisticClassSpecificRequirement
-            CurrentClass: true
-            RequiredClass: 00000000-0000-0000-0000-000000000000
-            Statistic: Summons
-            Comparison: GreaterOrEqual
-            Value: 50
-            OtherStatistic: None
-      ActivePower:
-        Name: Fireblade
-        Powers: []
-        ActivateEffect:
-          ParticleEffect: psys_burning_projectile_water_coll
-          Sound: 
-        DeactivateEffect:
-          ParticleEffect: psys_burning_projectile_water_coll_small
-          Sound: 
 - Id: Buffet - Effects Config
   Config:
     DisableEffectsInTournaments: true
