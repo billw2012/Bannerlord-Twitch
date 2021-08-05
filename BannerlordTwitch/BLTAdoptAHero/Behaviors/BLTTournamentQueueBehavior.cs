@@ -25,14 +25,6 @@ namespace BLTAdoptAHero
             });
         }
 
-        // public class SavableTypes : SaveableTypeDefiner
-        // {
-        //     public SavableTypes(int saveBaseId) : base(saveBaseId)
-        //     {
-        //         
-        //     }
-        // }
-
         public override void SyncData(IDataStore dataStore)
         {
             using var scopedJsonSync = new ScopedJsonSync(dataStore, nameof(BLTTournamentQueueBehavior));

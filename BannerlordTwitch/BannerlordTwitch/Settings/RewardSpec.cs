@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
 using JetBrains.Annotations;
 using TwitchLib.Api.Helix.Models.ChannelPoints.CreateCustomReward;
@@ -13,14 +14,19 @@ namespace BannerlordTwitch
     {
         [Description("The title of the reward"), PropertyOrder(1), UsedImplicitly]
         public string Title { get; set; }
+        
         [Description("Whether the reward will automatically be set to fulfilled once completed in game. If you set " +
                      "this to true then the redemptions that successfully complete in game will stay in your " +
                      "redemption queue. This is useful if you are worried about people losing points if the game " +
                      "crashes, or you reload an older save."), PropertyOrder(1), UsedImplicitly]
         public bool DisableAutomaticFulfillment { get; set; }
+        
         [Description("Description / prompt"), PropertyOrder(2), UsedImplicitly]
         public string Prompt { get; set; }
-        [Description("The cost of the reward"), PropertyOrder(3), UsedImplicitly]
+        
+        [Description("The cost of the reward"),
+         Range(1, int.MaxValue),
+         PropertyOrder(3), UsedImplicitly]
         public int Cost { get; set; } = 100;
 
         [Description("Is the reward currently enabled, if false the reward won’t show up to viewers."), 
@@ -29,6 +35,7 @@ namespace BannerlordTwitch
 
         [Browsable(false)]
         public string BackgroundColorText { get; set; }
+        
         [Description("Custom background color for the reward"), PropertyOrder(5), UsedImplicitly]
         [YamlIgnore]
         public Color BackgroundColor

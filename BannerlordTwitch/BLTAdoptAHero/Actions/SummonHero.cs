@@ -777,8 +777,8 @@ namespace BLTAdoptAHero
 
     public class Shout
     {
-        [PropertyOrder(1), UsedImplicitly]
-        public string Text { get; set; } 
+        [PropertyOrder(1), UsedImplicitly] 
+        public string Text { get; set; } = "Enter shout text here";
         [PropertyOrder(2), Description("Higher weight means more chance this shout is used"), UsedImplicitly]
         public float Weight { get; set; } = 1f;
         [PropertyOrder(3), Description("Can be used when summoning on player side"), UsedImplicitly]

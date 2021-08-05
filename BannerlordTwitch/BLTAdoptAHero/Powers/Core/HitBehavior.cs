@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using BannerlordTwitch;
+using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.Core;
@@ -11,18 +13,28 @@ namespace BLTAdoptAHero.Powers
 {
     public struct HitBehavior : IDocumentable
     {
-        [Description("Chance (0 to 1) for target to get knocked back"), PropertyOrder(1), UsedImplicitly]
+        [Description("Chance (0 to 1) for target to get knocked back"), PropertyOrder(1),
+         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly]
         public float KnockBackChance { get; set; }
-        [Description("Chance (0 to 1) for target to get knocked down"), PropertyOrder(2), UsedImplicitly]
+        [Description("Chance (0 to 1) for target to get knocked down"), PropertyOrder(2),
+         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly]
         public float KnockDownChance { get; set; }
         // [Description("Chance (0 to 1) for hit to crush through targets block"), PropertyOrder(3), UsedImplicitly]
         // public float CrushThroughChance { get; set; }
         [Description("Chance (0 to 1) for target to shrug off blow (not visably reacting to it, " +
-                     "damage will still apply)"), PropertyOrder(4), UsedImplicitly]
+                     "damage will still apply)"), PropertyOrder(4),
+         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly]
         public float ShrugOffChance { get; set; }
-        [Description("Chance (0 to 1) for target to rear (if it is a mount)"), PropertyOrder(5), UsedImplicitly]
+        [Description("Chance (0 to 1) for target to rear (if it is a mount)"), PropertyOrder(5),
+         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly]
         public float MakesRearChance { get; set; }
-        [Description("Chance (0 to 1) for target to be dismounted"), PropertyOrder(6), UsedImplicitly]
+        [Description("Chance (0 to 1) for target to be dismounted"), PropertyOrder(6),
+         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly]
         public float DismountChance { get; set; }
 
         public BlowFlags Generate(Agent agent)

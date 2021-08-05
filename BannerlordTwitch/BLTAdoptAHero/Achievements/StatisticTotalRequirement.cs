@@ -10,6 +10,7 @@ namespace BLTAdoptAHero.Achievements
     [YamlTagged]
     public class StatisticRequirement : IAchievementRequirement
     {
+        #region User Editable
         [PropertyOrder(1), Description("The statistic this achievement relates to."), UsedImplicitly]
         public AchievementStatsData.Statistic Statistic { get; set; }
 
@@ -32,7 +33,11 @@ namespace BLTAdoptAHero.Achievements
         
         [PropertyOrder(4), Description("Other statistic to compare against (this overrides Value if specified)."), UsedImplicitly]
         public AchievementStatsData.Statistic OtherStatistic { get; set; }
+        #endregion
 
+        #region Public Interface
+
+        #region IAchievementRequirement
         public virtual bool IsMet(Hero hero)
         {
             int stat = BLTAdoptAHeroCampaignBehavior.Current.GetAchievementTotalStat(hero, Statistic);
@@ -41,7 +46,26 @@ namespace BLTAdoptAHero.Achievements
                 : BLTAdoptAHeroCampaignBehavior.Current.GetAchievementTotalStat(hero, OtherStatistic);
             return IsMet(stat, Comparison, val);
         }
+        #endregion
+        
+        private string ComparisonText => Comparison switch
+        {
+            Operator.Greater => ">",
+            Operator.GreaterOrEqual => ">=",
+            Operator.Less => "<",
+            Operator.LessOrEqual => "<=",
+            _ => throw new ArgumentOutOfRangeException()
+        };
+        
+        public override string ToString()
+        {
+            return $"({Statistic.ToString().SplitCamelCase()} " +
+                   $"{ComparisonText} " +
+                   $"{(OtherStatistic == AchievementStatsData.Statistic.None ? Value : OtherStatistic.ToString().SplitCamelCase())})";
+        }
+        #endregion
 
+        #region Implementation Details
         protected static bool IsMet(int stat, Operator comparison, int val)
         {
             return comparison switch
@@ -53,20 +77,6 @@ namespace BLTAdoptAHero.Achievements
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
-
-        public override string ToString()
-        {
-            string comparisonText = Comparison switch
-            {
-                Operator.Greater => ">",
-                Operator.GreaterOrEqual => ">=",
-                Operator.Less => "<",
-                Operator.LessOrEqual => "<=",
-                _ => throw new ArgumentOutOfRangeException()
-            };
-            return $"({Statistic} " +
-                   $"{comparisonText} " +
-                   $"{(OtherStatistic == AchievementStatsData.Statistic.None ? Value : OtherStatistic)})";
-        }
+        #endregion
     }
 }

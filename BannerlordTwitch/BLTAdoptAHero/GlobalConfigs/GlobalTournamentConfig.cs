@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.UI;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.Source.TournamentGames;
@@ -34,7 +37,11 @@ namespace BLTAdoptAHero
         #region User Editable
         #region General
         [Category("General"), 
-         Description("Amount to multiply normal starting health by"), PropertyOrder(1), UsedImplicitly, Document]
+         Description("Amount to multiply normal starting health by"),
+         PropertyOrder(1),
+         Range(0.5, 10),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly, Document]
         public float StartHealthMultiplier { get; set; } = 2;
         [Category("General"),
          Description("Heroes won't get any kill rewards in tournaments"),
@@ -65,7 +72,9 @@ namespace BLTAdoptAHero
 
         [Category("Equipment"),
          Description("Armor tier to set all contenstants to (1 to 6), if Normalize Armor is enabled"),
-         PropertyOrder(5), UsedImplicitly, Document]
+         PropertyOrder(5),
+         Range(1, 6),
+         UsedImplicitly, Document]
         public int NormalizeArmorTier { get; set; } = 3;
 
         [Category("Equipment"),
@@ -98,6 +107,19 @@ namespace BLTAdoptAHero
             public bool Enable4Match4Teams { get; set; }
             [Description("Allow 8 matches with 2 teams of 1"), PropertyOrder(8), UsedImplicitly, Document]
             public bool Enable8Match2Teams { get; set; }
+
+            public override string ToString()
+            {
+                var enabled = new List<string>();
+                if(EnableVanilla) enabled.Add("Vanilla");
+                if(Enable1Match4Teams) enabled.Add("1 Match 4 Teams");
+                if(Enable2Match2Teams) enabled.Add("2 Match 2 Teams"); 
+                if(Enable2Match4Teams) enabled.Add("2 Match 4 Teams");
+                if(Enable4Match2Teams) enabled.Add("4 Match 2 Teams");
+                if(Enable4Match4Teams) enabled.Add("4 Match 4 Teams");
+                if(Enable8Match2Teams) enabled.Add("8 Match 2 Teams");
+                return string.Join(", ", enabled);
+            }
 
             public const int ParticipantCount = 16;
             public const int WinnerCount = ParticipantCount / 2;
@@ -137,6 +159,18 @@ namespace BLTAdoptAHero
             public bool Enable2Match4Teams { get; set; }
             [Description("Allow 4 matches with 2 teams of 1"), PropertyOrder(6), UsedImplicitly, Document]
             public bool Enable4Match2Teams { get; set; }
+            
+            public override string ToString()
+            {
+                var enabled = new List<string>();
+                if(EnableVanilla) enabled.Add("Vanilla");
+                if(Enable1Match2Teams) enabled.Add("1 Match 2 Teams");
+                if(Enable1Match4Teams) enabled.Add("1 Match 4 Teams");
+                if(Enable2Match2Teams) enabled.Add("2 Match 2 Teams"); 
+                if(Enable2Match4Teams) enabled.Add("2 Match 4 Teams");
+                if(Enable4Match2Teams) enabled.Add("4 Match 2 Teams");
+                return string.Join(", ", enabled);
+            }
 
             public const int ParticipantCount = 8;
             public const int WinnerCount = ParticipantCount / 2;
@@ -170,6 +204,16 @@ namespace BLTAdoptAHero
             public bool Enable1Match4Teams { get; set; }
             [Description("Allow 2 matches with 2 teams of 1"), PropertyOrder(4), UsedImplicitly, Document]
             public bool Enable2Match2Teams { get; set; } 
+            
+            public override string ToString()
+            {
+                var enabled = new List<string>();
+                if(EnableVanilla) enabled.Add("Vanilla");
+                if(Enable1Match2Teams) enabled.Add("1 Match 2 Teams");
+                if(Enable1Match4Teams) enabled.Add("1 Match 4 Teams");
+                if(Enable2Match2Teams) enabled.Add("2 Match 2 Teams"); 
+                return string.Join(", ", enabled);
+            }
 
             public const int ParticipantCount = 4;
             public const int WinnerCount = ParticipantCount / 2;
@@ -245,8 +289,23 @@ namespace BLTAdoptAHero
         public int ParticipateXP { get; set; } = 10000;
 
         [Category("Rewards"),
-         Description("Winners prize"), PropertyOrder(4), UsedImplicitly, Document]
-        public GeneratedRewardDef Prize { get; set; } = new();
+         Description("Winners prize"), 
+         PropertyOrder(4), ExpandableObject, Expand, UsedImplicitly, Document]
+        public GeneratedRewardDef Prize { get; set; } = new()
+        {
+            ArmorWeight = 0.3f,
+            WeaponWeight = 1f,
+            MountWeight = 0.1f,
+            Tier1Weight = 0,
+            Tier2Weight = 0,
+            Tier3Weight = 0,
+            Tier4Weight = 0,
+            Tier5Weight = 0,
+            Tier6Weight = 1,
+            CustomWeight = 1,
+            CustomItemName = "Prize {ITEMNAME}",
+            CustomItemPower = 1,
+        };
         #endregion
 
         #region Betting
@@ -281,11 +340,17 @@ namespace BLTAdoptAHero
 
         [Description("Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer " +
                      "for visualization of how skill will be modified."),
-         PropertyOrder(2), UsedImplicitly, Document]
+         PropertyOrder(2),
+         Range(0, 50),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly, Document]
         public float SkillReductionPercentPerWin { get; set; } = 3.2f;
             
         [Description("The lower limit (in %) that the skill(s) can be reduced to."),
-         PropertyOrder(2), UsedImplicitly, Document]
+         PropertyOrder(2),
+         Range(0, 100),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly, Document]
         public float FloorPercent { get; set; } = 65f;
 
         [YamlIgnore, ReadOnly(true), Description("Shows the % reduction of the skill over 20 tournaments"),

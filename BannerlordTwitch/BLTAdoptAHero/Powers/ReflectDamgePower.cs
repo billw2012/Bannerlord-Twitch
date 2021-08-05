@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using BannerlordTwitch;
+using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -12,7 +14,9 @@ namespace BLTAdoptAHero.Powers
     public class ReflectDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         [Category("Power Config"), 
-         Description("What fraction of damage to reflect back to attacker"), PropertyOrder(1), UsedImplicitly]
+         Description("What fraction of damage to reflect back to attacker"), PropertyOrder(1),
+         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly]
         public float FractionOfDamageToReflect { get; set; } = 0.1f;
 
         [Category("Power Config"), 

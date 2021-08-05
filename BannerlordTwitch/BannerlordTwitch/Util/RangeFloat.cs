@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel;
+using BannerlordTwitch.UI;
 using JetBrains.Annotations;
 using TaleWorlds.Core;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using YamlDotNet.Serialization;
 
-namespace BLTAdoptAHero
+namespace BannerlordTwitch.Util
 {
+    [Editor(typeof(RangeFloatEditor), typeof(RangeFloatEditor))]
     public struct RangeFloat
     {
         [PropertyOrder(1), UsedImplicitly]

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -21,7 +23,8 @@ namespace BLTAdoptAHero.Powers
     [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
     public class AddDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
-        [Category("Effect"), Description("How much to multiply base damage by"), PropertyOrder(1), UsedImplicitly]
+        [Category("Effect"), Description("How much to multiply base damage by"), PropertyOrder(1),
+         UsedImplicitly]
         public float DamageToMultiply { get; set; } = 1f;
 
         [Category("Effect"), Description("How much damage to add"), PropertyOrder(2), UsedImplicitly]
@@ -37,43 +40,59 @@ namespace BLTAdoptAHero.Powers
         public HitBehavior RemoveHitBehavior { get; set; }
 
         [Category("Effect"), Description("What fraction (0 to 1) of armor to ignore when applying damage"), 
-         PropertyOrder(6), UsedImplicitly]
+         PropertyOrder(6),
+         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly]
         public float ArmorToIgnore { get; set; }
         
         [Category("Effect"), 
-         Description("Chance (0 to 1) that the hit will be unblockable"), PropertyOrder(7), UsedImplicitly]
+         Description("Chance (0 to 1) that the hit will be unblockable"), PropertyOrder(7),
+         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly]
         public float UnblockableChance { get; set; }
         
         [Category("Effect"), 
          Description("Chance (0 to 1) that the hit will shatter shield if it is blocked"), 
-         PropertyOrder(8), UsedImplicitly]
+         PropertyOrder(8),
+         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly]
         public float ShatterShieldChance { get; set; }
         
         [Category("Effect"), 
          Description("Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each " +
                      "collision, so a cut through chance of 1 will result in cutting through everyone with every hit)"), 
-         PropertyOrder(9), UsedImplicitly]
+         PropertyOrder(9),
+         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly]
         public float CutThroughChance { get; set; }
         
         [Category("Effect"), 
          Description("Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR " +
                      "stagger, it can't do both, cut through chance is evaluated before this one)"), 
-         PropertyOrder(10), UsedImplicitly]
+         PropertyOrder(10),
+         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly]
         public float StaggerChance { get; set; }
 
         public class AreaOfEffectDef : ICloneable, INotifyPropertyChanged
         {
-	        [Description("The radius to apply the damage in"), PropertyOrder(1), UsedImplicitly]
+	        [Description("The radius to apply the damage in"), PropertyOrder(1),
+             Range(0, 20), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+             UsedImplicitly]
 	        public float Range { get; set; }
 	        
 	        [Description("Only apply the damage if the attack hits an agent (as opposed to the ground, " +
 	                     "e.g. for arrows)"), PropertyOrder(2), UsedImplicitly]
 	        public bool OnlyOnHit { get; set; }
 
-	        [Description("Damage at distance 0 from the hit"), PropertyOrder(3), UsedImplicitly]
+	        [Description("Damage at distance 0 from the hit"), PropertyOrder(3),
+             Range(0, 500), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+             UsedImplicitly]
 	        public float DamageAtCenter { get; set; } = 50;
 
-	        [Description("Maximum number of agents that can be affected"), PropertyOrder(4), UsedImplicitly]
+	        [Description("Maximum number of agents that can be affected"), PropertyOrder(4),
+             Range(0, int.MaxValue),
+             UsedImplicitly]
 	        public int MaxAgentsToDamage { get; set; } = 4;
 
 	        [Description("Damage type"), PropertyOrder(5), UsedImplicitly]

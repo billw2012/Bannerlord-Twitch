@@ -43,6 +43,7 @@ namespace BLTAdoptAHero.Powers
         #endregion
 
         #region Public Interface
+        [YamlIgnore, Browsable(false)]
         public IEnumerable<PassivePowerGroupItem> ValidPowers => Powers.Where(p => p.Power != null);
         public IEnumerable<IHeroPowerPassive> GetUnlockedPowers(Hero hero) 
             => ValidPowers.Where(p => p.IsUnlocked(hero)).Select(p => p.Power);

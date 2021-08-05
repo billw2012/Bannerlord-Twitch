@@ -8,6 +8,9 @@ namespace BLTAdoptAHero.Actions.Util
 { 
     public class KillStreakRewards : INotifyPropertyChanged
     {
+        [UsedImplicitly, ReadOnly(true)]
+        public Guid ID { get; set; } = Guid.NewGuid();
+        
         [PropertyOrder(0), UsedImplicitly]
         public bool Enabled { get; set; }
         

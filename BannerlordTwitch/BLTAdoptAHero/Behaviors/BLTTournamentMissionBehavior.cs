@@ -414,7 +414,11 @@ namespace BLTAdoptAHero
 
                 for (int i = 0; i < count; i++)
                 {
-                    var (item, modifier, _) = RewardHelpers.GenerateRewardType(rewardType, 6, Hero.MainHero, classDef, allowDuplicates: true, BLTAdoptAHeroModule.TournamentConfig.Prize.CustomRewardModifiers);
+                    var (item, modifier, _) = RewardHelpers.GenerateRewardType(rewardType, 6, 
+                        Hero.MainHero, classDef, allowDuplicates: true,
+                        BLTAdoptAHeroModule.CommonConfig.CustomRewardModifiers,
+                        BLTAdoptAHeroModule.TournamentConfig.Prize.CustomItemName, 
+                        BLTAdoptAHeroModule.TournamentConfig.Prize.CustomItemPower);
                     
                     if (item == null)
                     {

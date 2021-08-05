@@ -12,6 +12,7 @@ namespace BLTAdoptAHero.Achievements
     [YamlTagged]
     public class StatisticClassSpecificRequirement : StatisticRequirement, ILoaded
     {
+        #region User Editable
         [Description("Requirement uses current class, useful for class power unlocks so you don't have to specify" +
                      "the class explicitly"), PropertyOrder(5), UsedImplicitly]
         public bool CurrentClass { get; set; }
@@ -20,10 +21,9 @@ namespace BLTAdoptAHero.Achievements
                      "then the achievement will apply ONLY when the hero doesn't have a class set."), 
          PropertyOrder(6), ItemsSource(typeof(HeroClassDef.ItemSource)), UsedImplicitly]
         public Guid RequiredClass { get; set; }
+        #endregion
         
-        [YamlIgnore, Browsable(false)]
-        private GlobalHeroClassConfig ClassConfig { get; set; }
-        
+        #region Public Interface
         public override bool IsMet(Hero hero)
         {
             int stat = BLTAdoptAHeroCampaignBehavior.Current.GetAchievementClassStat(hero, RequiredClass, Statistic);
@@ -39,15 +39,21 @@ namespace BLTAdoptAHero.Achievements
             ClassConfig = ConfigureContext.CurrentlyEditedSettings == null 
                 ? null : GlobalHeroClassConfig.Get(ConfigureContext.CurrentlyEditedSettings);
         }
-
+        
+        public override string ToString()
+            => $"{base.ToString()} [class: {(CurrentClass ? "(current)" : ClassConfig.GetClass(RequiredClass)?.Name ?? "(none)")}]";
+        #endregion
+        
+        #region Implementation Details
+        [YamlIgnore, Browsable(false)]
+        private GlobalHeroClassConfig ClassConfig { get; set; }
+        #endregion
+        
         #region ILoaded
         public void OnLoaded(Settings settings)
         {
             ClassConfig = GlobalHeroClassConfig.Get(settings);
         }
         #endregion
-
-        public override string ToString()
-            => $"{base.ToString()} [{(CurrentClass ? "(current)" : ClassConfig.GetClass(RequiredClass)?.Name ?? "(none)")}]";
     }
 }

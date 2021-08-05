@@ -141,6 +141,12 @@ namespace BLTConfigure
                     }
                 });
             };
+
+            // PropertyGrid.EditorDefinitions.Add(
+            //     new EditorTemplateDefinition
+            //     {
+            //         TargetProperties = {typeof(RangeInt)}
+            //     });
         }
 
         private async void UpdateLastSavedLoop()
@@ -377,11 +383,25 @@ namespace BLTConfigure
             PropertyGrid.SelectedObject = null;
         }
 
+        private DateTime saveIn;
         private async void PropertyGrid_OnPropertyValueChanged(object sender, PropertyValueChangedEventArgs e)
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(100));
+            bool newSave = saveIn == default;
+            saveIn = DateTime.Now + TimeSpan.FromSeconds(5);
+            if (!newSave)
+            {
+                return;
+            }
+            
+            while (DateTime.Now < saveIn)
+            {
+                await Task.Delay(TimeSpan.FromMilliseconds(100));
+            }
+
             RefreshActionList();
             SaveSettings();
+
+            saveIn = default;
         }
         
         private void SaveSettings()
@@ -584,7 +604,8 @@ namespace BLTConfigure
 
         private void PropertyGrid_OnPreparePropertyItem(object sender, PropertyItemEventArgs e)
         {
-            if (e.PropertyItem.IsExpandable)
+            if (e.PropertyItem.IsExpandable 
+                && e.PropertyItem is PropertyItem p && p.PropertyDescriptor.Attributes.Contains(new ExpandAttribute()))
             {
                 e.PropertyItem.IsExpanded = true;
             }

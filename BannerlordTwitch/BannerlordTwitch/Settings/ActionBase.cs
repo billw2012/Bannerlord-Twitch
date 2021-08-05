@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using PropertyChanged;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -28,7 +29,8 @@ namespace BannerlordTwitch
         public abstract string Handler { get; set; }
 
         [Category("General"), 
-         Description("Custom config for the handler"), ExpandableObject, ReadOnly(true), 
+         Description("Custom config for the handler"),
+         ExpandableObject, Expand, ReadOnly(true), 
          PropertyOrder(2), UsedImplicitly]
         public object HandlerConfig { get; set; }
         

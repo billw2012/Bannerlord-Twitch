@@ -22,13 +22,13 @@ namespace BLTAdoptAHero
             
         public static (ItemObject item, ItemModifier modifier, EquipmentIndex slot) GenerateRewardType(
             RewardType rewardType, int tier, Hero hero, HeroClassDef heroClass, 
-            bool allowDuplicates, RandomItemModifierDef modifierDef)
+            bool allowDuplicates, RandomItemModifierDef modifierDef, string customItemName, float customItemPower)
         {
             return rewardType switch
             {
-                RewardType.Weapon => GenerateRewardTypeWeapon(tier, hero, heroClass, allowDuplicates, modifierDef),
-                RewardType.Armor => GenerateRewardTypeArmor(tier, hero, heroClass, allowDuplicates, modifierDef),
-                RewardType.Mount => GenerateRewardTypeMount(tier, hero, heroClass, allowDuplicates, modifierDef),
+                RewardType.Weapon => GenerateRewardTypeWeapon(tier, hero, heroClass, allowDuplicates, modifierDef, customItemName, customItemPower),
+                RewardType.Armor => GenerateRewardTypeArmor(tier, hero, heroClass, allowDuplicates, modifierDef, customItemName, customItemPower),
+                RewardType.Mount => GenerateRewardTypeMount(tier, hero, heroClass, allowDuplicates, modifierDef, customItemName, customItemPower),
                 _ => throw new ArgumentOutOfRangeException(nameof(rewardType), rewardType, null)
             };
         }
@@ -62,7 +62,8 @@ namespace BLTAdoptAHero
         }
 
         private static (ItemObject item, ItemModifier modifier, EquipmentIndex slot) GenerateRewardTypeWeapon(
-            int tier, Hero hero, HeroClassDef heroClass, bool allowDuplicateTypes, RandomItemModifierDef modifierDef)
+            int tier, Hero hero, HeroClassDef heroClass, bool allowDuplicateTypes, RandomItemModifierDef modifierDef,
+            string customItemName, float customItemPower)
         {
             // List of heroes custom items, so we can avoid giving duplicates (it will include what they are carrying,
             // as all custom items are registered)
@@ -118,7 +119,7 @@ namespace BLTAdoptAHero
                     .FirstOrDefault(w => w.item != null);
                 return item == null 
                         ? default 
-                        : (item, modifierDef.Generate(item), index)
+                        : (item, modifierDef.Generate(item, customItemName, customItemPower), index)
                     ;
             }
             else
@@ -139,7 +140,8 @@ namespace BLTAdoptAHero
         }
 
         private static (ItemObject item, ItemModifier modifier, EquipmentIndex slot) GenerateRewardTypeArmor(int tier,
-            Hero hero, HeroClassDef heroClass, bool allowDuplicateTypes, RandomItemModifierDef modifierDef)
+            Hero hero, HeroClassDef heroClass, bool allowDuplicateTypes, RandomItemModifierDef modifierDef, 
+            string customItemName, float customItemPower)
         {
             // List of custom items the hero already has, and armor they are wearing that is as good or better than
             // the tier we want 
@@ -167,7 +169,7 @@ namespace BLTAdoptAHero
                     heroClass?.Mounted == true || !hero.BattleEquipment.Horse.IsEmpty, 
                     EquipHero.FindFlags.IgnoreAbility,
                     o => o.ItemType == itemType);
-                return armor == null ? default : (armor, modifierDef.Generate(armor), index);
+                return armor == null ? default : (armor, modifierDef.Generate(armor, customItemName, customItemPower), index);
             }
             else
             {
@@ -184,7 +186,8 @@ namespace BLTAdoptAHero
         }
 
         private static (ItemObject item, ItemModifier modifier, EquipmentIndex slot) GenerateRewardTypeMount(
-            int tier, Hero hero, HeroClassDef heroClass, bool allowDuplicates, RandomItemModifierDef modifierDef)
+            int tier, Hero hero, HeroClassDef heroClass, bool allowDuplicates, RandomItemModifierDef modifierDef, 
+            string customItemName, float customItemPower)
         {
             var currentMount = hero.BattleEquipment.Horse;
             // If we are generating is non custom reward, and the hero has a non custom mount already,
@@ -234,7 +237,7 @@ namespace BLTAdoptAHero
             }
 
             var modifier = tier > 5 
-                ? modifierDef.Generate(mount) 
+                ? modifierDef.Generate(mount, customItemName, customItemPower) 
                 : null;
             return (mount, modifier, EquipmentIndex.Horse);
         }

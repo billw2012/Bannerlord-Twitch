@@ -278,76 +278,88 @@
            BasedOn="{StaticResource PrimitiveTypeCollectionControl}" />
 
     
-    <!-- <Style x:Key="CollectionControlButton" -->
-    <!--        TargetType="{x:Type xctk:CollectionControlButton}"> -->
-    <!--     <Setter Property="Background" -->
-    <!--             Value="White" /> -->
-    <!--     <Setter Property="BorderThickness" -->
-    <!--             Value="0" /> -->
-    <!--     <Setter Property="Padding" -->
-    <!--             Value="2,0,0,0" /> -->
-    <!--     <Setter Property="HorizontalContentAlignment" -->
-    <!--             Value="Left" /> -->
-    <!--     <Setter Property="VerticalContentAlignment" -->
-    <!--             Value="Center" /> -->
-    <!--     <Setter Property="Content" -->
-    <!--             Value="(Collection)" /> -->
-    <!--     <Setter Property="SnapsToDevicePixels" -->
-    <!--             Value="True" /> -->
-    <!--     <Setter Property="MinHeight" -->
-    <!--             Value="22" /> -->
-    <!--     <Setter Property="IsTabStop" -->
-    <!--             Value="True" /> -->
-    <!--     <Setter Property="Template"> -->
-    <!--         <Setter.Value> -->
-    <!--             <ControlTemplate TargetType="Button"> -->
-    <!--                 <Grid SnapsToDevicePixels="True"> -->
-    <!--                     <Grid> -->
-    <!--                         <Grid.ColumnDefinitions> -->
-    <!--                             <ColumnDefinition Width="*" /> -->
-    <!--                             <ColumnDefinition Width="Auto" /> -->
-    <!--                         </Grid.ColumnDefinitions> -->
-    <!-- -->
-    <!--                         <Border Background="{TemplateBinding Background}" -->
-    <!--                                 BorderBrush="{TemplateBinding BorderBrush}" -->
-    <!--                                 BorderThickness="{TemplateBinding BorderThickness}" -->
-    <!--                                 Padding="{TemplateBinding Padding}" -->
-    <!--                                 SnapsToDevicePixels="True"> -->
-    <!--                             <ContentPresenter Content="{TemplateBinding Content}" -->
-    <!--                                               ContentTemplate="{TemplateBinding ContentTemplate}" -->
-    <!--                                               ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" -->
-    <!--                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}" -->
-    <!--                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" /> -->
-    <!--                         </Border> -->
-    <!-- -->
-    <!--                         <xctk:ButtonChrome x:Name="ToggleButtonChrome" -->
-    <!--                                            Grid.Column="1" -->
-    <!--                                            CornerRadius="0,2.75,2.75,0" -->
-    <!--                                            RenderEnabled="{Binding IsEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:CollectionControlButton}}" -->
-    <!--                                            RenderMouseOver="{TemplateBinding IsMouseOver}"> -->
-    <!--                             <Grid x:Name="arrowGlyph" -->
-    <!--                                   IsHitTestVisible="False" -->
-    <!--                                   Margin="5"> -->
-    <!--                                 <fa:ImageAwesome Icon="Edit" Margin="1" Height="16" Width="16" /> -->
-    <!--                             </Grid> -->
-    <!--                         </xctk:ButtonChrome> -->
-    <!--                     </Grid> -->
-    <!-- -->
-    <!--                 </Grid> -->
-    <!--                 <ControlTemplate.Triggers> -->
-    <!--                     <Trigger Property="IsEnabled" -->
-    <!--                              Value="False"> -->
-    <!--                         <Setter Property="Foreground" -->
-    <!--                                 Value="Gray" /> -->
-    <!--                     </Trigger> -->
-    <!--                 </ControlTemplate.Triggers> -->
-    <!--             </ControlTemplate> -->
-    <!--         </Setter.Value> -->
-    <!--     </Setter> -->
+    <Style x:Key="CollectionControlButton"
+           TargetType="{x:Type xctk:CollectionControlButton}">
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Padding"
+                Value="2,0,0,0" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="MinHeight"
+                Value="22" />
+        <Setter Property="IsTabStop"
+                Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid SnapsToDevicePixels="True">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+    
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Padding="{TemplateBinding Padding}"
+                                    SnapsToDevicePixels="True">
+                                <ItemsControl ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:CollectionControlButton}}"
+                                              IsEnabled="False"
+                                              ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                              MaxHeight="240"/>
+                                <!-- <ContentPresenter Content="{TemplateBinding Content}" -->
+                                <!--                   ContentTemplate="{TemplateBinding ContentTemplate}" -->
+                                <!--                   ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" -->
+                                <!--                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}" -->
+                                <!--                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" /> -->
+                            </Border>
+    
+                            <xctk:ButtonChrome x:Name="ToggleButtonChrome"
+                                               Grid.Column="1"
+                                               CornerRadius="0,2.75,2.75,0"
+                                               RenderEnabled="{Binding IsEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:CollectionControlButton}}"
+                                               RenderMouseOver="{TemplateBinding IsMouseOver}">
+                                <Grid x:Name="arrowGlyph"
+                                      IsHitTestVisible="False"
+                                      Margin="5">
+                                    <fa:ImageAwesome Icon="Edit" Margin="1" Height="16" Width="16" />
+                                </Grid>
+                            </xctk:ButtonChrome>
+                        </Grid>
+    
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter Property="Foreground"
+                                    Value="Gray" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="{x:Type xctk:CollectionControlButton}"
+           BasedOn="{StaticResource CollectionControlButton}" />
+
+
+    <!-- PropertyGrid CollectionControl Editors -->
+    <Style TargetType="{x:Type xctk:PropertyGridEditorCollectionControl}"
+           BasedOn="{StaticResource CollectionControlButton}">
+    </Style>
+    
+    <!-- ~1~ PropertyGrid PrimitiveTypeCollectionControl Editors @1@ -->
+    <!-- <Style TargetType="{x:Type xctk:PropertyGridEditorPrimitiveTypeCollectionControl}" -->
+    <!--        BasedOn="{StaticResource PrimitiveTypeCollectionControl}"> -->
     <!-- </Style> -->
-    <!-- -->
-    <!-- <Style TargetType="{x:Type xctk:CollectionControlButton}" -->
-    <!--        BasedOn="{StaticResource CollectionControlButton}" /> -->
-
-
+    
 </ResourceDictionary>

@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Annotations;
@@ -50,10 +52,13 @@ namespace BLTAdoptAHero
 
             [Category("Limits"), 
              Description("What fraction of assets will be inherited when a new character is adopted after an old one " +
-                         "died (0 to 1)"), PropertyOrder(6), UsedImplicitly]
+                         "died (0 to 1)"),
+             Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+             PropertyOrder(6), UsedImplicitly]
             public float Inheritance { get; set; } = 0.25f;
             
             [Category("Limits"), Description("How many custom items can be inherited"), 
+             Range(0, Int32.MaxValue),
              PropertyOrder(7), UsedImplicitly]
             public int MaxInheritedCustomItems { get; set; } = 2;
             
@@ -65,6 +70,7 @@ namespace BLTAdoptAHero
                          "ignored if not specified"),
              PropertyOrder(8), UsedImplicitly]
             public int? MinSubscribedMonths { get; set; }
+
             [Category("Initialization"), 
              Description("Gold the adopted hero will start with"), PropertyOrder(1), UsedImplicitly, 
              Document]
@@ -75,7 +81,7 @@ namespace BLTAdoptAHero
             public bool OverrideAge { get; set; }
             
             [Category("Initialization"), Description("Random range of age when overriding it"), 
-             PropertyOrder(3), ExpandableObject, UsedImplicitly]
+             PropertyOrder(3), UsedImplicitly]
             public RangeFloat StartingAgeRange { get; set; } = new(18, 35);
 
             [Category("Initialization"),
@@ -89,7 +95,9 @@ namespace BLTAdoptAHero
             
             [Category("Initialization"), 
              Description("Equipment tier the adopted hero will start with, if you don't specify then they get the " +
-                         "heroes existing equipment"), PropertyOrder(5), UsedImplicitly]
+                         "heroes existing equipment"),
+             Range(0, 6),
+             PropertyOrder(5), UsedImplicitly]
             public int? StartingEquipmentTier { get; set; }
             
             [Category("Initialization"), Description("Starting class of the hero"), 
