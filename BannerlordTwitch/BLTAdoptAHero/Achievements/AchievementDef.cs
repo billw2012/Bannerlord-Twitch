@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
@@ -32,7 +33,7 @@ namespace BLTAdoptAHero.Achievements
         [Category("Requirements"), PropertyOrder(1), UsedImplicitly, 
          Editor(typeof(DerivedClassCollectionEditor<IAchievementRequirement>), 
              typeof(DerivedClassCollectionEditor<IAchievementRequirement>))]
-        public List<IAchievementRequirement> Requirements { get; set; } = new();
+        public ObservableCollection<IAchievementRequirement> Requirements { get; set; } = new();
 
         [Category("Reward"), PropertyOrder(1), 
          Description("Gold awarded for gaining this achievement."), UsedImplicitly]
@@ -64,7 +65,7 @@ namespace BLTAdoptAHero.Achievements
         {
             var clone = CloneHelpers.CloneProperties(this);
             clone.ID = Guid.NewGuid();
-            clone.Requirements = CloneHelpers.CloneCollection(Requirements).ToList();
+            clone.Requirements = new(CloneHelpers.CloneCollection(Requirements).ToList());
             return clone;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using BannerlordTwitch;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.MountAndBlade;
@@ -11,7 +12,8 @@ namespace BLTAdoptAHero.Powers
     [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
     public class StatModifyPower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
-        [Category("Power Config"), Description("What hero stat to modify"), PropertyOrder(1), ExpandableObject, UsedImplicitly]
+        [Category("Power Config"), Description("What hero stat to modify"), 
+         PropertyOrder(1), ExpandableObject, Expand, UsedImplicitly]
         public AgentModifierConfig Modifiers { get; set; } = new();
 
         [YamlIgnore, Browsable(false)]

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using BannerlordTwitch.Annotations;
 using BannerlordTwitch.Util;
 using TaleWorlds.Core;
@@ -54,10 +55,10 @@ namespace BannerlordTwitch.Helpers
         private readonly List<ParticleEffectDef> particleEffects;
         private List<PfxState> pfxStates;
 
-        public AgentPfx(Agent agent, List<ParticleEffectDef> particleEffects)
+        public AgentPfx(Agent agent, IEnumerable<ParticleEffectDef> particleEffects)
         {
             Agent = agent;
-            this.particleEffects = particleEffects;
+            this.particleEffects = particleEffects.ToList();
         }
 
         public void Start()

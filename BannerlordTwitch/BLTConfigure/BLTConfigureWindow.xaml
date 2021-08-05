@@ -10,7 +10,7 @@
               xmlns:utils="clr-namespace:BLTConfigure.Utils"
               mc:Ignorable="d"
               ResizeMode="CanResize"
-              Title="BLT Configure Window" Height="850" Width="850" 
+              Title="BLT Configure Window" Width="1250" Height="1000" 
               d:DataContext="{d:DesignInstance local:BLTConfigureWindow}">
     <Window.Resources>
         <ResourceDictionary>
@@ -74,7 +74,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="5" />
-                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <Grid>
                             <Grid.Resources>

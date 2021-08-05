@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
@@ -36,7 +37,7 @@ namespace BLTAdoptAHero.Powers
          Description("The various effects in the power. These can also have customized unlock requirements, so you " +
                      "can have classes that get stronger (or weaker!) over time (or by any other measure)."), 
           UsedImplicitly]
-        public List<ActivePowerGroupItem> Powers { get; set; } = new();
+        public ObservableCollection<ActivePowerGroupItem> Powers { get; set; } = new();
 
         [PropertyOrder(3), Description("Particles/sound effects to play when this power group is activated"),
          ExpandableObject, UsedImplicitly]
@@ -125,7 +126,7 @@ namespace BLTAdoptAHero.Powers
         public object Clone()
         {
             var clone = CloneHelpers.CloneProperties(this);
-            clone.Powers = CloneHelpers.CloneCollection(Powers).ToList();
+            clone.Powers = new(CloneHelpers.CloneCollection(Powers));
             clone.PowerConfig = PowerConfig;
             return clone;
         }

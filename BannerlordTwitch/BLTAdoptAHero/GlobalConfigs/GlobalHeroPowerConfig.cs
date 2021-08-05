@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
@@ -23,7 +24,7 @@ namespace BLTAdoptAHero
         #region User Editable
         [Description("Defined powers"), UsedImplicitly,  
          Editor(typeof(DerivedClassCollectionEditor<HeroPowerDefBase>), typeof(DerivedClassCollectionEditor<HeroPowerDefBase>))] 
-        public List<HeroPowerDefBase> PowerDefs { get; set; } = new();
+        public ObservableCollection<HeroPowerDefBase> PowerDefs { get; set; } = new();
         
         [Description("Whether powers are disabled in a tournament"), UsedImplicitly] 
         public bool DisablePowersInTournaments { get; set; } = true;
@@ -56,7 +57,7 @@ namespace BLTAdoptAHero
             // Upgrade path
             if (SavedPowerDefs != null)
             {
-                PowerDefs = SavedPowerDefs
+                PowerDefs = new(SavedPowerDefs
                     .Select(d =>
                     {
                         if (d.TryGetValue("Type", out object o) && o is string id)
@@ -75,8 +76,7 @@ namespace BLTAdoptAHero
                         }
 
                         throw new Exception($"Invalid power found during load");
-                    })
-                    .ToList();
+                    }));
                 SavedPowerDefs = null;
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch.Helpers;
@@ -51,7 +52,7 @@ namespace BannerlordTwitch
         public bool ApplyToMount { get; set; }
 
         [Description("Properties to change, and how much by"), PropertyOrder(3), UsedImplicitly]
-        public List<PropertyDef> Properties { get; set; } = new();
+        public ObservableCollection<PropertyDef> Properties { get; set; } = new();
 
         public override string ToString()
         {
@@ -65,7 +66,7 @@ namespace BannerlordTwitch
             {
                 Scale = Scale,
                 ApplyToMount = ApplyToMount,
-                Properties = Properties.Select(p => (PropertyDef)p.Clone()).ToList(),
+                Properties = new(Properties.Select(p => (PropertyDef)p.Clone())),
             };
         }
 

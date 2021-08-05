@@ -2,11 +2,11 @@
 
 namespace BannerlordTwitch.UI
 {
-    public class IntegerRangeEditor : TypeEditor<RangeIntControl>
+    public class RangeIntEditor : TypeEditor<RangeIntControl>
     {
         protected override void SetValueDependencyProperty()
         {
-            
+            ValueProperty = RangeIntControl.RangeIntProperty;
         }
     }
 }

@@ -1,35 +1,26 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using BannerlordTwitch.Util;
 
 namespace BannerlordTwitch.UI
 {
-    public partial class RangeIntControl : UserControl, INotifyPropertyChanged
+    public partial class SliderFloatControl : UserControl, INotifyPropertyChanged
     {
-        public static readonly DependencyProperty RangeIntProperty = DependencyProperty.Register(
-            "Value", typeof(RangeInt), typeof(RangeIntControl), 
-            new PropertyMetadata(default(RangeInt)));
+        public static readonly DependencyProperty SliderFloatProperty = DependencyProperty.Register(
+            "Value", typeof(float), typeof(SliderFloatControl), 
+            new PropertyMetadata(default(float)));
 
-        public RangeInt Value
+        public float Value
         {
-            get => (RangeInt) GetValue(RangeIntProperty);
-            set => SetValue(RangeIntProperty, value);
+            get => (float) GetValue(SliderFloatProperty);
+            set => SetValue(SliderFloatProperty, value);
         }
         
-        public int Min
-        {
-            get => Value.Min;
-            set => Value = new RangeInt(value, Max);
-        }
+        public float Minimum { get; set; }
         
-        public int Max
-        {
-            get => Value.Max;
-            set => Value = new RangeInt(Min, value);
-        }
+        public float Maximum { get; set; }
         
-        public RangeIntControl()
+        public SliderFloatControl()
         {
             InitializeComponent();
             DataContext = this;

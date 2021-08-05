@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -20,13 +21,13 @@ namespace BannerlordTwitch
 
     public class Settings : IDocumentable, IUpdateFromDefault
     {
-        public List<Reward> Rewards { get; set; } = new ();
+        public ObservableCollection<Reward> Rewards { get; set; } = new ();
         [YamlIgnore]
         public IEnumerable<Reward> EnabledRewards => Rewards.Where(r => r.Enabled);
-        public List<Command> Commands { get; set; } = new ();
+        public ObservableCollection<Command> Commands { get; set; } = new ();
         [YamlIgnore]
         public IEnumerable<Command> EnabledCommands => Commands.Where(r => r.Enabled);
-        public List<GlobalConfig> GlobalConfigs { get; set; } = new ();
+        public ObservableCollection<GlobalConfig> GlobalConfigs { get; set; } = new ();
         public SimTestingConfig SimTesting { get; set; }
         [YamlIgnore, Browsable(false)]
         public IEnumerable<ActionBase> AllActions => Rewards.Cast<ActionBase>().Concat(Commands);

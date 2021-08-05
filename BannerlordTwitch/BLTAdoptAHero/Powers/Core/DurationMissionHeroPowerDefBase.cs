@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch.Helpers;
@@ -23,7 +24,7 @@ namespace BLTAdoptAHero.Powers
         public float PowerDurationSeconds { get; set; } = 30f;
 
         [Category("Power Config"), Description("Effects to apply to the agent while the power is active"), PropertyOrder(1), UsedImplicitly]
-        public List<ParticleEffectDef> Pfx { get; set; } = new();
+        public ObservableCollection<ParticleEffectDef> Pfx { get; set; } = new();
         
         (bool canActivate, string failReason) IHeroPowerActive.CanActivate(Hero hero)
         {
@@ -122,7 +123,7 @@ namespace BLTAdoptAHero.Powers
         public override object Clone()
         {
             var newObj = (DurationMissionHeroPowerDefBase)base.Clone();
-            newObj.Pfx = Pfx.Select(pfx => (ParticleEffectDef)pfx.Clone()).ToList();
+            newObj.Pfx = new(Pfx.Select(pfx => (ParticleEffectDef)pfx.Clone()));
             newObj.expiry = new();
             return newObj;
         }

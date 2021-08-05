@@ -5,31 +5,31 @@ using BannerlordTwitch.Util;
 
 namespace BannerlordTwitch.UI
 {
-    public partial class RangeIntControl : UserControl, INotifyPropertyChanged
+    public partial class RangeFloatControl : UserControl, INotifyPropertyChanged
     {
-        public static readonly DependencyProperty RangeIntProperty = DependencyProperty.Register(
-            "Value", typeof(RangeInt), typeof(RangeIntControl), 
-            new PropertyMetadata(default(RangeInt)));
+        public static readonly DependencyProperty RangeFloatProperty = DependencyProperty.Register(
+            "Value", typeof(RangeFloat), typeof(RangeFloatControl), 
+            new PropertyMetadata(default(RangeFloat)));
 
-        public RangeInt Value
+        public RangeFloat Value
         {
-            get => (RangeInt) GetValue(RangeIntProperty);
-            set => SetValue(RangeIntProperty, value);
+            get => (RangeFloat) GetValue(RangeFloatProperty);
+            set => SetValue(RangeFloatProperty, value);
         }
         
-        public int Min
+        public float Min
         {
             get => Value.Min;
-            set => Value = new RangeInt(value, Max);
+            set => Value = new RangeFloat(value, Max);
         }
         
-        public int Max
+        public float Max
         {
             get => Value.Max;
-            set => Value = new RangeInt(Min, value);
+            set => Value = new RangeFloat(Min, value);
         }
         
-        public RangeIntControl()
+        public RangeFloatControl()
         {
             InitializeComponent();
             DataContext = this;

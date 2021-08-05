@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -87,7 +88,7 @@ namespace BLTAdoptAHero
             [Category("Initialization"),
              Description("Starting skills, if empty then default skills of the adopted hero will be left in tact"),
              PropertyOrder(4), UsedImplicitly]
-            public List<SkillRangeDef> StartingSkills { get; set; } = new();
+            public ObservableCollection<SkillRangeDef> StartingSkills { get; set; } = new();
 
             [YamlIgnore, Browsable(false)]
             public IEnumerable<SkillRangeDef> ValidStartingSkills 

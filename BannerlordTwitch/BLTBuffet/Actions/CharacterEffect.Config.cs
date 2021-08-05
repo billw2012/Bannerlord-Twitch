@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using BannerlordTwitch.Util;
 using TaleWorlds.Core;
@@ -120,10 +121,10 @@ namespace BLTBuffet
             public bool TargetOnFootOnly { get; set; }
 
             [Description("Particle effects to apply"), PropertyOrder(5)]
-            public List<ParticleEffectDef> ParticleEffects { get; set; }
+            public ObservableCollection<ParticleEffectDef> ParticleEffects { get; set; }
 
             [Description("Properties to change, and how much by"), PropertyOrder(6)]
-            public List<PropertyDef> Properties { get; set; }
+            public ObservableCollection<PropertyDef> Properties { get; set; }
 
             // [Description("Creates a light attached to the target"), PropertyOrder(7)]
             // public LightDef Light { get; set; }

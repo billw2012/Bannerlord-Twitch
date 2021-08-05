@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -87,7 +88,7 @@ namespace BLTAdoptAHero
         [Category("Balancing"),
          Description("Applies skill debuffers to previous tournament winners"),
          PropertyOrder(1), UsedImplicitly, Document]
-        public List<SkillDebuffDef> PreviousWinnerDebuffs { get; set; } = new() { new() };
+        public ObservableCollection<SkillDebuffDef> PreviousWinnerDebuffs { get; set; } = new() { new() };
         #endregion
         
         #region Round Types

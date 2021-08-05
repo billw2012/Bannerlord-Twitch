@@ -30,56 +30,114 @@
     
     <!-- Data templates for CollectionControl customization -->
     
+    <Style x:Key="ItemBackground" TargetType="Border">
+        <Setter Property="Background" Value="Beige"/>
+        <Setter Property="Margin" Value="2"/>
+    </Style>
     <!-- SimTestingItem -->
     <DataTemplate DataType="{x:Type bannerlordTwitch:SimTestingItem}">
-        <StackPanel Orientation="Horizontal">
-            <CheckBox IsChecked="{Binding Enabled}" Margin="2 2 5 2"/>
-            <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
-        </StackPanel>
+        <Border Style="{StaticResource ItemBackground}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <CheckBox IsChecked="{Binding Enabled}" Margin="2 2 5 2"/>
+                <TextBlock Grid.Column="1" Text="{Binding}" TextWrapping="Wrap"/>
+            </Grid>
+        </Border>
     </DataTemplate>
     
     <!-- AchievementSystem -->
     <DataTemplate DataType="{x:Type achievements:AchievementDef}">
-        <StackPanel Orientation="Horizontal">
-            <CheckBox IsChecked="{Binding Enabled}" Margin="2 2 5 2"/>
-            <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
-        </StackPanel>
+        <Border Style="{StaticResource ItemBackground}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <CheckBox IsChecked="{Binding Enabled}" Margin="2 2 5 2"/>
+                <TextBlock Grid.Column="1" Text="{Binding}" TextWrapping="Wrap"/>
+            </Grid>
+        </Border>
     </DataTemplate>   
     
     <!-- KillStreakRewards -->
     <DataTemplate DataType="{x:Type adoptAHero:Actions.Util.KillStreakRewards}">
-        <StackPanel Orientation="Horizontal">
-            <CheckBox IsChecked="{Binding Enabled}" Margin="2 2 5 2"/>
-            <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
-        </StackPanel>
+        <Border Style="{StaticResource ItemBackground}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <CheckBox IsChecked="{Binding Enabled}" Margin="2 2 5 2"/>
+                <TextBlock Grid.Column="1" Text="{Binding}" TextWrapping="Wrap"/>
+            </Grid>
+        </Border>
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type adoptAHero:Shout}">
-        <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+        <Border Style="{StaticResource ItemBackground}">
+            <Grid>
+                <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+            </Grid>
+        </Border>
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type adoptAHero:SkillDebuffDef}">
-        <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+        <Border Style="{StaticResource ItemBackground}">
+            <Grid>
+                <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+            </Grid>
+        </Border>
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type adoptAHero:Powers.HeroPowerDefBase}">
-        <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
-    </DataTemplate>    
-    
-    <DataTemplate DataType="{x:Type adoptAHero:HeroClassDef}">
-        <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+        <Border Style="{StaticResource ItemBackground}">
+            <Grid>
+                <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+            </Grid>
+        </Border>
     </DataTemplate>
-    
+
+    <DataTemplate DataType="{x:Type adoptAHero:HeroClassDef}">
+        <Border Style="{StaticResource ItemBackground}">
+            <Grid>
+                <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+            </Grid>
+        </Border>
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type adoptAHero:SkillRangeDef}">
-        <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+        <Border Style="{StaticResource ItemBackground}">
+            <Grid>
+                <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+            </Grid>
+        </Border>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type bannerlordTwitch:Helpers.ParticleEffectDef}">
-        <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+        <Border Style="{StaticResource ItemBackground}">
+            <Grid>
+                <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+            </Grid>
+        </Border>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type bannerlordTwitch:PropertyDef}">
-        <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+        <Border Style="{StaticResource ItemBackground}">
+            <Grid>
+                <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+            </Grid>
+        </Border>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type adoptAHero:Achievements.StatisticRequirement}">
+        <Border Style="{StaticResource ItemBackground}">
+            <Grid>
+                <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+            </Grid>
+        </Border>
     </DataTemplate>
 
     <!-- CollectionControl styling -->
@@ -311,10 +369,9 @@
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     Padding="{TemplateBinding Padding}"
                                     SnapsToDevicePixels="True">
-                                <ItemsControl ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:CollectionControlButton}}"
-                                              IsEnabled="False"
-                                              ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                              MaxHeight="240"/>
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" MaxHeight="250">
+                                    <ItemsControl ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:CollectionControlButton}}" IsEnabled="False"/>
+                                </ScrollViewer>
                                 <!-- <ContentPresenter Content="{TemplateBinding Content}" -->
                                 <!--                   ContentTemplate="{TemplateBinding ContentTemplate}" -->
                                 <!--                   ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" -->

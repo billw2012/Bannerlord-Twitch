@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
@@ -20,7 +21,7 @@ namespace BLTAdoptAHero
         
         #region User Editable
         [Description("Defined classes"), UsedImplicitly] 
-        public List<HeroClassDef> ClassDefs { get; set; } = new();
+        public ObservableCollection<HeroClassDef> ClassDefs { get; set; } = new();
         #endregion
 
         #region Public Interface

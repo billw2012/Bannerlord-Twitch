@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -251,7 +252,7 @@ namespace BLTAdoptAHero
 
         #region Kill Streak Rewards
         [Category("Kill Streak Rewards"), Description("Kill Streaks"), PropertyOrder(1), UsedImplicitly]
-        public List<KillStreakRewards> KillStreaks { get; set; } = new();
+        public ObservableCollection<KillStreakRewards> KillStreaks { get; set; } = new();
 
         [Category("Kill Streak Rewards"), 
          Description("Whether to use the popup banner to announce kill streaks. Will only print in the overlay " +
@@ -270,14 +271,14 @@ namespace BLTAdoptAHero
 
         #region Achievements
         [Category("Achievements"), Description("Achievements"), PropertyOrder(1), UsedImplicitly]
-        public List<AchievementDef> Achievements { get; set; } = new();
+        public ObservableCollection<AchievementDef> Achievements { get; set; } = new();
 
         public AchievementDef GetAchievement(Guid id) => Achievements?.FirstOrDefault(a => a.ID == id);
         #endregion
 
         #region Shouts
         [Category("Shouts"), Description("Custom shouts"), PropertyOrder(1), UsedImplicitly]
-        public List<Shout> Shouts { get; set; } = new();
+        public ObservableCollection<Shout> Shouts { get; set; } = new();
 
         [Category("Shouts"), Description("Whether to include default shouts"), PropertyOrder(2), UsedImplicitly]
         public bool IncludeDefaultShouts { get; set; } = true;

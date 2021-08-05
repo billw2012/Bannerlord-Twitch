@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using JetBrains.Annotations;
@@ -19,14 +20,14 @@ namespace BannerlordTwitch
         [PropertyOrder(4), UsedImplicitly]
         public int IntervalMaxMS { get; set; }
         [PropertyOrder(5), UsedImplicitly]
-        public List<SimTestingItem> Init { get; set; }
+        public ObservableCollection<SimTestingItem> Init { get; set; }
 
         [YamlIgnore, Browsable(false)]
         public IEnumerable<SimTestingItem> InitEnabled 
             => Init?.Where(i => i.Enabled) ?? Enumerable.Empty<SimTestingItem>();
         
         [PropertyOrder(6), UsedImplicitly]
-        public List<SimTestingItem> Use { get; set; }
+        public ObservableCollection<SimTestingItem> Use { get; set; }
         
         [YamlIgnore, Browsable(false)]
         public IEnumerable<SimTestingItem> UseEnabled 

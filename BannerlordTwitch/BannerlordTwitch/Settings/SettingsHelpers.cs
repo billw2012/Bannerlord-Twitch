@@ -77,7 +77,7 @@ namespace BannerlordTwitch
         }
         
         public static void MergeCollectionsSorted<T>(
-            List<T> target, 
+            ICollection<T> target, 
             IEnumerable<T> source,
             Func<T, T, bool> matchFn,
             Comparison<T> compareFn
@@ -87,7 +87,15 @@ namespace BannerlordTwitch
             {
                 target.Add(item);
             }
-            target.Sort(compareFn);
+
+            var list = target.ToList();
+            list.Sort(compareFn);
+            target.Clear();
+            
+            foreach (var item in list)
+            {
+                target.Add(item);
+            }
         }
     }
 }

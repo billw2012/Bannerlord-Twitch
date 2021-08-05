@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
@@ -18,7 +19,7 @@ namespace BLTAdoptAHero.Powers
          Description("Optional unlock criteria"),
          Editor(typeof(DerivedClassCollectionEditor<IAchievementRequirement>), 
              typeof(DerivedClassCollectionEditor<IAchievementRequirement>)), UsedImplicitly]
-        public List<IAchievementRequirement> Requirements { get; set; } = new();
+        public ObservableCollection<IAchievementRequirement> Requirements { get; set; } = new();
 
         public PowerGroupItemBase()
         {
@@ -41,7 +42,7 @@ namespace BLTAdoptAHero.Powers
         public object Clone()
         {
             var clone = CloneHelpers.CloneProperties(this);
-            clone.Requirements = CloneHelpers.CloneCollection(Requirements).ToList();
+            clone.Requirements = new(CloneHelpers.CloneCollection(Requirements));
             clone.PowerConfig = PowerConfig;
             return clone;
         }
