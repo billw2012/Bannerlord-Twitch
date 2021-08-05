@@ -3,15 +3,14 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
+using JetBrains.Annotations;
 using TaleWorlds.MountAndBlade;
 
 namespace BLTConfigure
 {
+    [UsedImplicitly]
     public class BLTConfigureModule : MBSubModuleBase
     {
-        public const string Name = "BLTConfigure";
-        public const string Ver = "2.1.3";
-
         private readonly Thread thread;
         private BLTConfigureWindow wnd;
 

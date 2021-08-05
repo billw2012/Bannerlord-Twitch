@@ -2,6 +2,8 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <Import Project="..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" />
     <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+
+    
     <PropertyGroup>
         <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
         <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -410,21 +412,34 @@
         <RemoveDir Directories="$(OutDir)..\..\..\..\build" />
         <RemoveDir Directories="$(OutDir)..\..\..\..\obj" />
     </Target>
+
     <Target Name="AfterBuild">
-        <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml" DestinationFolder="$(OutDir)..\.." />
+        <Message Importance="High" Text="Copying content files..."/>
+        <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml" DestinationFolder="$(OutDir)..\.." DestinationFiles="" />
         <Copy SourceFiles="Bannerlord-Twitch-v2.yaml" DestinationFolder="$(OutDir)..\.." />
         <Copy SourceFiles="Bannerlord-Twitch-Documentation.css" DestinationFolder="$(OutDir)..\.." />
         <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
+
+        <Message Importance="High" Text="Setting module version..."/>
+        <ReplaceFileText File="$(OutDir)..\..\SubModule.xml" Regex="%(SubModuleOverrides.Regex)" 
+                         ReplacementText="%(SubModuleOverrides.Replacement)" />
+        
         <Copy SourceFiles="..\..\README.md" DestinationFolder="$(OutDir)..\.." />
         <!--    <Copy SourceFiles="Overlay\web" DestinationFolder="$(OutDir)..\..\web" />-->
+
+        <Message Importance="High" Text="Copying overlay web..."/>
         <ItemGroup>
             <OverlayContent Include="Overlay\web\**\*" />
         </ItemGroup>
-        <Copy SourceFiles="@(OverlayContent)" DestinationFiles="@(OverlayContent->'$(OutDir)..\..\web\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+        <Copy SourceFiles="@(OverlayContent)" 
+              DestinationFiles="@(OverlayContent->'$(OutDir)..\..\web\%(RecursiveDir)%(Filename)%(Extension)')" 
+              SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+
+        <Message Importance="High" Text="Copying staged files to game directory..."/>
         <ItemGroup>
-            <SomeDir Include="$(OutDir)\..\..\**\*" />
+            <StagingDir Include="$(OutDir)\..\..\**\*" />
         </ItemGroup>
-        <Copy SourceFiles="@(SomeDir)" DestinationFiles="@(SomeDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+        <Copy SourceFiles="@(StagingDir)" DestinationFiles="@(StagingDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
     </Target>
     <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
     <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />

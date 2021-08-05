@@ -389,3 +389,11 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+BannerlordTwitch/BLTAdoptAHero/Properties/AssemblyInfo.cs
+
+BannerlordTwitch/BannerlordTwitch/Properties/AssemblyInfo.cs
+
+BannerlordTwitch/BLTBuffet/Properties/AssemblyInfo.cs
+
+BannerlordTwitch/BLTConfigure/Properties/AssemblyInfo.cs

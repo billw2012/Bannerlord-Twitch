@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Security.Principal;
 using BannerlordTwitch.Util;
 using Microsoft.AspNet.SignalR;
@@ -57,6 +58,7 @@ namespace BLTOverlay
 
             indexTemplate = indexTemplate.Replace("$url_root$", UrlRoot);
             indexTemplate = indexTemplate.Replace("$min_js$", JSExtension);
+            indexTemplate = indexTemplate.Replace("$version$", Assembly.GetExecutingAssembly().GetName().Version.ToString(3)); 
 
             File.WriteAllText(Path.Combine(WebRoot, "index.html"), indexTemplate);
 

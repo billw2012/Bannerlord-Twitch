@@ -2,7 +2,7 @@
 <Module>
 	<Name value = "BLTAdoptAHero"/>
 	<Id value = "BLTAdoptAHero"/>
-	<Version value = "v2.1.3"/>
+	<Version value = "v$version$"/>
 	<DefaultModule value="true"/>
 	<SingleplayerModule value="true"/>
 	<Official value="false" />

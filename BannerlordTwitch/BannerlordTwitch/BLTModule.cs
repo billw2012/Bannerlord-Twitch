@@ -18,9 +18,6 @@ namespace BannerlordTwitch
 	// ReSharper disable once ClassNeverInstantiated.Global
 	internal class BLTModule : MBSubModuleBase
 	{
-		public const string Name = "BannerlordTwitch";
-		public const string Ver = "2.1.3";
-
         private static Harmony harmony;
 
 		public static TwitchService TwitchService { get; private set; }
@@ -73,7 +70,7 @@ namespace BannerlordTwitch
 				{
 					harmony = new Harmony("mod.bannerlord.bannerlordtwitch");
 					harmony.PatchAll();
-					Log.LogFeedSystem($"Loaded v{Ver}");
+					Log.LogFeedSystem($"Loaded v{Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}");
 
 					ActionManager.Init();
 					Log.LogFeedSystem("Action Manager initialized");

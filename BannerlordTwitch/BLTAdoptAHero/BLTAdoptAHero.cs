@@ -28,8 +28,6 @@ namespace BLTAdoptAHero
     public class BLTAdoptAHeroModule : MBSubModuleBase
     {
         private Harmony harmony;
-        public const string Name = "BLTAdoptAHero";
-        public const string Ver = "2.1.3";
 
         internal static GlobalCommonConfig CommonConfig { get; private set; }
         internal static GlobalTournamentConfig TournamentConfig { get; private set; }

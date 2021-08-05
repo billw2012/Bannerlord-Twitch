@@ -138,10 +138,11 @@
     </Target>
     <Target Name="AfterBuild">
         <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
+        <ReplaceFileText File="$(OutDir)..\..\SubModule.xml" Regex="%(SubModuleOverrides.Regex)" ReplacementText="%(SubModuleOverrides.Replacement)" />
         <ItemGroup>
-            <SomeDir Include="$(OutDir)\..\..\**\*" />
+            <StagingDir Include="$(OutDir)\..\..\**\*" />
         </ItemGroup>
-        <Copy SourceFiles="@(SomeDir)" DestinationFiles="@(SomeDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+        <Copy SourceFiles="@(StagingDir)" DestinationFiles="@(StagingDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
     </Target>
     <Import Project="..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.1\build\Fody.targets')" />
     <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
