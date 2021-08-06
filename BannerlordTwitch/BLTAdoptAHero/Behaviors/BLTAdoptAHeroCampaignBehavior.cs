@@ -127,6 +127,8 @@ namespace BLTAdoptAHero
                 public ItemObject Item { get; set; }
                 [SaveableProperty(2), UsedImplicitly]
                 public string ItemModifierId { get; set; }
+                [SaveableProperty(3), UsedImplicitly]
+                public int ItemSaveIndex { get; set; }
                 
                 public SavedEquipment() {}
             
@@ -189,22 +191,41 @@ namespace BLTAdoptAHero
                             : 1;
                     }
 
-                    // Make sure heroes are active, and in real locations (delayed to make sure all locations are loaded)
+                    // Make sure heroes are active, and in real locations
+                    // (delayed to make sure all locations are loaded)
                     if(hero.HeroState is Hero.CharacterStates.NotSpawned && hero.CurrentSettlement == null)
                     {
                         // Activate them and put them in a random town
                         hero.ChangeState(Hero.CharacterStates.Active);
                         var targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom();
                         EnterSettlementAction.ApplyForCharacterOnly(hero, targetSettlement);
-                        Log.Info($"Placed unspawned hero {hero.Name} at {targetSettlement.Name}");
-                    }  
-                    
-                    // Make sure all custom items are in the heroes storage (delayed to ensure BLTCustomItemsCampaignBehavior is loaded)
-                    foreach (var s in hero.BattleEquipment
-                        .YieldFilledEquipmentSlots()
-                        .Where(i => BLTCustomItemsCampaignBehavior.Current.IsRegistered(i.ItemModifier)))
+                        Log.Info($"Placed un-spawned hero {hero.Name} at {targetSettlement.Name}");
+                    }
+
+                    if (!data.IsRetiredOrDead)
                     {
-                        AddCustomItem(hero, s);
+                        // Make sure all custom items are in the heroes storage
+                        // (delayed to ensure BLTCustomItemsCampaignBehavior is loaded)
+                        foreach (var s in hero.BattleEquipment
+                            .YieldFilledEquipmentSlots()
+                            .Where(i => BLTCustomItemsCampaignBehavior.Current.IsRegistered(i.ItemModifier)))
+                        {
+                            AddCustomItem(hero, s);
+                        }
+                    }
+
+                    // Remove invalid custom items
+                    int removedCustomItems = data.CustomItems.RemoveAll(
+                        i => i.Item == null || i.Item.Type == ItemObject.ItemTypeEnum.Invalid);
+
+                    if (removedCustomItems > 0)
+                    {
+                        // Compensate with gold for each one lost
+                        data.Gold += removedCustomItems * 50000;
+                        
+                        Log.LogFeedSystem(
+                            $"Compensated @{hero.Name} with {removedCustomItems * 50000}{Naming.Gold} for " +
+                            $"{removedCustomItems} invalid custom items");
                     }
                 }
 
@@ -298,9 +319,18 @@ namespace BLTAdoptAHero
                         r.TroopType = usedCharList[r.SavedTroopIndex];
                     }
                 }
-
+                
+                List<ItemObject> saveItemList = null;
+                dataStore.SyncData("SavedItems", ref saveItemList);
                 foreach (var h in heroData.Values)
                 {
+                    if (saveItemList != null)
+                    {
+                        foreach (var i in h.SavedCustomItems)
+                        {
+                            i.Item = saveItemList[i.ItemSaveIndex];
+                        }
+                    }
                     h.PostLoad();
                 }
                 
@@ -315,10 +345,10 @@ namespace BLTAdoptAHero
                     }
 
                     // Remove any we couldn't replace
-                    int count = data.Retinue.RemoveAll(r => r.TroopType == null);
+                    int removedRetinue = data.Retinue.RemoveAll(r => r.TroopType == null);
 
                     // Compensate with gold for each one lost
-                    data.Gold += count * 50000;
+                    data.Gold += removedRetinue * 50000;
 
                     // Update EquipmentTier if it isn't set
                     if (data.EquipmentTier == -2)
@@ -348,16 +378,27 @@ namespace BLTAdoptAHero
 
                 var usedHeroList = heroData.Keys.ToList();
                 dataStore.SyncData("UsedHeroObjectList", ref usedHeroList);
+                
+                // var heroImtes = heroData.Values.SelectMany(h => h.)
 
                 foreach (var r in heroData.Values.SelectMany(h => h.Retinue))
                 {
                     r.SavedTroopIndex = usedCharList.IndexOf(r.TroopType);
                 }
 
+                var saveItemList = new List<ItemObject>();
                 foreach (var h in heroData.Values)
                 {
+                    // PreSave first to update SavedCustomItems
                     h.PreSave();
+                    foreach (var i in h.SavedCustomItems)
+                    {
+                        i.ItemSaveIndex = saveItemList.Count;
+                        saveItemList.Add(i.Item);
+                    }
                 }
+
+                dataStore.SyncData("SavedItems", ref saveItemList);
 
                 var heroDataSavable = heroData.ToDictionary(kv 
                     => usedHeroList.IndexOf(kv.Key), kv => kv.Value);
@@ -401,6 +442,9 @@ namespace BLTAdoptAHero
         
         public void RetireHero(Hero hero)
         {
+            var data = GetHeroData(hero, suppressAutoRetire: true);
+            if (data.IsRetiredOrDead) return;
+            
             string heroName = hero.FirstName?.Raw().ToLower();
             int count = heroData.Count(h 
                 => h.Value.IsRetiredOrDead &&
@@ -414,7 +458,6 @@ namespace BLTAdoptAHero
             Log.LogFeedEvent($"{oldName} is {desc}!");
             Log.Info($"Dead or retired hero {oldName} renamed to {hero.Name}");
 
-            var data = GetHeroData(hero, suppressAutoRetire: true);
             data.IsRetiredOrDead = true;
         }
         #endregion
@@ -954,7 +997,7 @@ namespace BLTAdoptAHero
                 heroData.Add(hero, hd);
             }
 
-            if (!suppressAutoRetire && hero.IsDead)
+            if (!suppressAutoRetire && hero.IsDead && !hd.IsRetiredOrDead)
             {
                 RetireHero(hero);
             }

@@ -78,7 +78,8 @@ namespace BLTAdoptAHero
 
                 // ItemModifier is hashed by string id, so we need to initialize them BEFORE putting them into the dictionary
                 customItemModifiers = new();
-                foreach (var (modifier, data) in savedModiferList.Zip(savedModiferDataList, (modifier, data) => (modifier, data)))
+                foreach (var (modifier, data) in savedModiferList
+                    .Zip(savedModiferDataList, (modifier, data) => (modifier, data)))
                 {
                     modifier.StringId = data.StringId;
                     var registeredModifier = MBObjectManager.Instance.RegisterObject(modifier);
