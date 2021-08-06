@@ -371,6 +371,29 @@ Rewards:
   ID: 6f53994c-4513-4b81-95a3-21493d35b25d
   HandlerConfig: 
   Documentation: Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay.
+- Enabled: false
+  RespondInOverlay: false
+  RespondInTwitch: false
+  RewardSpec:
+    Title: New Reward qwdsqw dq
+    DisableAutomaticFulfillment: false
+    Prompt: 
+    Cost: 100
+    IsEnabled: true
+    BackgroundColorText: 
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    GlobalCooldownSeconds: 
+  Handler: FocusPoints
+  ID: 7dfb4cdf-7267-41f0-aea2-3fbd30d3fee1
+  HandlerConfig:
+    Skills: None
+    Auto: true
+    AmountLow: 0
+    AmountHigh: 0
+    GoldCost: 0
+  Documentation: 
 Commands:
 - Enabled: true
   RespondInOverlay: true
@@ -681,6 +704,24 @@ Commands:
   ID: 0e255e77-4c17-44ad-aeb8-ff01bbbe0bee
   HandlerConfig: 
   Documentation: Give one of your custom items to another viewer.<br>Usage is <code>!giveitem (viewer) (part of the item name)</code>, e.g. <code>!giveitem C4alad0g Boots</code> would give your custom item with the word "Boots" in it to the viewer called C4lad0g. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.
+- Enabled: false
+  RespondInOverlay: false
+  RespondInTwitch: false
+  Name: New Command qwd qwd q12e1
+  HideHelp: false
+  Help: 
+  Handler: EquipHero
+  ID: 96b24d2d-b45f-429a-9193-63a00e346ff8
+  HandlerConfig:
+    AllowCompanionUpgrade: true
+    CostTier1: 25000
+    CostTier2: 50000
+    CostTier3: 100000
+    CostTier4: 175000
+    CostTier5: 275000
+    CostTier6: 400000
+    ReequipInsteadOfUpgrade: false
+  Documentation: 
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -750,11 +791,201 @@ GlobalConfigs:
     DifficultyScaling: 1
     DifficultyScalingMin: 0.200000003
     DifficultyScalingMax: 3
-    KillStreaks: []
+    KillStreaks:
+    - ID: 45d75aa1-9d90-407f-a333-4aef16aef3a3
+      Enabled: true
+      ShowNotification: false
+      Name: Killing Spree
+      NotificationText: '{viewer} is on a {name}: {kills} kills!'
+      KillsRequired: 5
+      GoldReward: 5000
+      XPReward: 0
     ShowKillStreakPopup: true
     KillStreakPopupAlertSound: Horns2
     ReferenceLevelReward: 15
-    Achievements: []
+    Achievements:
+    - ID: 596fd61e-757e-46cc-99f4-b4f459018838
+      Enabled: true
+      Name: Reliable
+      NotificationText: '{viewer} is {name}!'
+      Requirements:
+      - !StatisticRequirement
+        Statistic: ConsecutiveSummons
+        Comparison: GreaterOrEqual
+        Value: 5
+        OtherStatistic: None
+      GoldGain: 20000
+      XPGain: 0
+      GiveItemReward: true
+      ItemReward:
+        WeaponWeight: 0
+        ArmorWeight: 1
+        MountWeight: 0
+        Tier1Weight: 0
+        Tier2Weight: 0.649999976
+        Tier3Weight: 0.649999976
+        Tier4Weight: 0.649999976
+        Tier5Weight: 0
+        Tier6Weight: 0
+        CustomWeight: 0
+        CustomItemName: Reward {ITEMNAME}
+        CustomItemPower: 1
+    - ID: a98f179e-6a8f-457d-b422-472bb13ad582
+      Enabled: true
+      Name: Trusted
+      NotificationText: '{viewer} is {name}!'
+      Requirements:
+      - !StatisticRequirement
+        Statistic: ConsecutiveSummons
+        Comparison: GreaterOrEqual
+        Value: 20
+        OtherStatistic: None
+      GoldGain: 50000
+      XPGain: 0
+      GiveItemReward: true
+      ItemReward:
+        WeaponWeight: 0
+        ArmorWeight: 1
+        MountWeight: 0
+        Tier1Weight: 0
+        Tier2Weight: 0
+        Tier3Weight: 0
+        Tier4Weight: 0.649999976
+        Tier5Weight: 0.649999976
+        Tier6Weight: 0.649999976
+        CustomWeight: 0
+        CustomItemName: Reward {ITEMNAME}
+        CustomItemPower: 1
+    - ID: 96225687-88cc-4d79-b986-0d1778397d61
+      Enabled: true
+      Name: Loyal
+      NotificationText: '{viewer} is {name}!'
+      Requirements:
+      - !StatisticRequirement
+        Statistic: ConsecutiveSummons
+        Comparison: GreaterOrEqual
+        Value: 50
+        OtherStatistic: None
+      GoldGain: 250000
+      XPGain: 50000
+      GiveItemReward: true
+      ItemReward:
+        WeaponWeight: 1
+        ArmorWeight: 0
+        MountWeight: 0
+        Tier1Weight: 0
+        Tier2Weight: 0
+        Tier3Weight: 0
+        Tier4Weight: 0
+        Tier5Weight: 0
+        Tier6Weight: 0
+        CustomWeight: 0.550000012
+        CustomItemName: '{ITEMNAME} of Fealty'
+        CustomItemPower: 1
+    - ID: d2968aea-79f5-44fd-b297-b30a141ef498
+      Enabled: true
+      Name: Rebellious
+      NotificationText: '{viewer} is {name}!'
+      Requirements:
+      - !StatisticRequirement
+        Statistic: ConsecutiveAttacks
+        Comparison: GreaterOrEqual
+        Value: 5
+        OtherStatistic: None
+      GoldGain: 20000
+      XPGain: 0
+      GiveItemReward: true
+      ItemReward:
+        WeaponWeight: 0
+        ArmorWeight: 1
+        MountWeight: 0
+        Tier1Weight: 0
+        Tier2Weight: 0.649999976
+        Tier3Weight: 0.649999976
+        Tier4Weight: 0.649999976
+        Tier5Weight: 0
+        Tier6Weight: 0
+        CustomWeight: 0
+        CustomItemName: Reward {ITEMNAME}
+        CustomItemPower: 1
+    - ID: c3cd4e46-e0f0-4405-8739-446b9a9c097f
+      Enabled: true
+      Name: Traitorous
+      NotificationText: '{viewer} is {name}!'
+      Requirements:
+      - !StatisticRequirement
+        Statistic: ConsecutiveAttacks
+        Comparison: GreaterOrEqual
+        Value: 20
+        OtherStatistic: None
+      GoldGain: 50000
+      XPGain: 0
+      GiveItemReward: true
+      ItemReward:
+        WeaponWeight: 0
+        ArmorWeight: 1
+        MountWeight: 0
+        Tier1Weight: 0
+        Tier2Weight: 0
+        Tier3Weight: 0
+        Tier4Weight: 0.649999976
+        Tier5Weight: 0.649999976
+        Tier6Weight: 0.649999976
+        CustomWeight: 0
+        CustomItemName: Reward {ITEMNAME}
+        CustomItemPower: 1
+    - ID: a640c816-93a7-41fa-9d1b-1e74491fece4
+      Enabled: true
+      Name: Renegade
+      NotificationText: '{viewer} is a {name}!'
+      Requirements:
+      - !StatisticRequirement
+        Statistic: ConsecutiveAttacks
+        Comparison: GreaterOrEqual
+        Value: 50
+        OtherStatistic: None
+      GoldGain: 250000
+      XPGain: 50000
+      GiveItemReward: true
+      ItemReward:
+        WeaponWeight: 1
+        ArmorWeight: 0
+        MountWeight: 0
+        Tier1Weight: 0
+        Tier2Weight: 0
+        Tier3Weight: 0
+        Tier4Weight: 0
+        Tier5Weight: 0
+        Tier6Weight: 0
+        CustomWeight: 0.550000012
+        CustomItemName: Renegades {ITEMNAME}
+        CustomItemPower: 1
+    - ID: 267a6e67-c39c-4f75-8251-38392adeeaf7
+      Enabled: true
+      Name: Stream Sniper
+      NotificationText: '{viewer} is a {name}: they killed {streamer} 5 times!'
+      Requirements:
+      - !StatisticRequirement
+        Statistic: TotalStreamerKills
+        Comparison: GreaterOrEqual
+        Value: 5
+        OtherStatistic: None
+      GoldGain: 0
+      XPGain: 0
+      GiveItemReward: false
+      ItemReward:
+        WeaponWeight: 1
+        ArmorWeight: 0
+        MountWeight: 0
+        Tier1Weight: 0
+        Tier2Weight: 0
+        Tier3Weight: 0
+        Tier4Weight: 0
+        Tier5Weight: 0
+        Tier6Weight: 0
+        CustomWeight: 1
+        CustomItemName: Stream Sniper {ITEMNAME}
+        CustomItemPower: 1
     Shouts: []
     IncludeDefaultShouts: true
 - Id: Adopt A Hero - Tournament Config
@@ -1099,6 +1330,15 @@ GlobalConfigs:
       Pfx: []
       ID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
       Name: Ranger
+    - !StatModifyPower
+      Modifiers:
+        Scale: 1.25
+        ApplyToMount: true
+        Properties: []
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 2d18201b-1bad-477d-bd09-d857da76faad
+      Name: Imposing Mount
     DisablePowersInTournaments: true
     SavedPowerDefs: 
 - Id: Adopt A Hero - Class Config
@@ -1355,6 +1595,28 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_default_coll_small
           Sound: None
+    - ID: 91e77af4-4d1a-4186-a6db-f20fcdce892e
+      Name: b0rserker
+      Description: Foot soldier with lower health, that can gain health by doing damage.
+      Formation: Skirmisher
+      Slot1: TwoHandedAxe
+      Slot2: None
+      Slot3: None
+      Slot4: None
+      UseHorse: false
+      UseCamel: false
+      PassivePower:
+        Name: Glass Cannon
+        Powers: []
+      ActivePower:
+        Name: Berserker Rage
+        Powers: []
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_default_coll
+          Sound: None
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_default_coll_small
+          Sound: None
 - Id: Buffet - Effects Config
   Config:
     DisableEffectsInTournaments: true
@@ -1369,115 +1631,138 @@ SimTesting:
     Id: Adopt a Hero
     Args: 
     Weight: 0
+    ID: b50d0749-add5-458c-b3d4-c957f4bb85f3
   - Enabled: true
     Type: Reward
     Id: 100k gold
     Args: 
     Weight: 0
+    ID: 7698ddba-b00b-4243-bd54-3dc97a4e73cf
   - Enabled: true
     Type: Reward
     Id: 100k gold
     Args: 
     Weight: 0
+    ID: a9933fab-58d4-492a-93fb-34c0d6606c09
   - Enabled: true
     Type: Reward
     Id: Tournament
     Args: 
     Weight: 0
+    ID: ca586ddf-b9b0-4c59-954c-d166f5c9b644
   - Enabled: false
     Type: Command
     Id: class
     Args: archer
     Weight: 1
+    ID: 0c4706d4-882f-40ba-b2ec-6077a957fc78
   Use:
   - Enabled: true
     Type: Reward
     Id: Attack
     Args: 
     Weight: 1
+    ID: 0711448a-2d82-42f2-b0e9-3e22faef2850
   - Enabled: true
     Type: Reward
     Id: Summon
     Args: 
     Weight: 1
+    ID: 8e98ab07-c93a-42a2-8a58-278028b48565
   - Enabled: true
     Type: Reward
     Id: 100k gold
     Args: 
     Weight: 1
+    ID: 7dc0e816-b2ec-42a4-ab70-b4e00c8501ba
   - Enabled: true
     Type: Command
     Id: equip
     Args: 
     Weight: 0.400000006
+    ID: 06539d16-25cb-4314-8cdd-4aada76b27bc
   - Enabled: true
     Type: Command
     Id: reequip
     Args: ''
     Weight: 0.100000001
+    ID: 76efdf69-6fc5-4163-8271-4540402f28b3
   - Enabled: true
     Type: Reward
     Id: Tournament
     Args: 
     Weight: 0.200000003
+    ID: 4e066d86-ecac-48c2-9406-0ed931f14756
   - Enabled: true
     Type: Command
     Id: retinue
     Args: 
     Weight: 0.200000003
+    ID: 9513732e-6522-429c-ab92-e1eab16518ef
   - Enabled: false
     Type: Reward
     Id: Retire My Hero
     Args: yes
     Weight: 0.00999999978
+    ID: 4e5da88a-b670-4d59-9c89-820e24fb0ab1
   - Enabled: true
     Type: Reward
     Id: Adopt a Hero
     Args: yes
     Weight: 0.00999999978
+    ID: df2ee94a-7262-47d5-a97c-f09034d36240
   - Enabled: true
     Type: Reward
     Id: Heal Streamer
     Args: ''
     Weight: 0.0500000007
+    ID: f1f5a043-fdf6-43e5-9fe5-e70009c56bf5
   - Enabled: true
     Type: Command
     Id: class
     Args: infantry
     Weight: 0.100000001
+    ID: a67ca1e9-d434-4af1-a3b6-69979b72d804
   - Enabled: true
     Type: Command
     Id: class
     Args: archer
     Weight: 0.100000001
+    ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
   - Enabled: true
     Type: Command
     Id: class
     Args: cavalry
     Weight: 0.100000001
+    ID: 6162aec8-8ffd-4d65-bcdd-0529081528ee
   - Enabled: true
     Type: Command
     Id: class
     Args: horsearcher
     Weight: 0.100000001
+    ID: 2e320a55-f238-4d01-86de-c734d29bf7a5
   - Enabled: true
     Type: Command
     Id: class
     Args: skirmisher
     Weight: 0.100000001
+    ID: 7032b576-86b5-4540-b0b8-5d933f0fd87a
   - Enabled: true
     Type: Command
     Id: class
     Args: berserker
     Weight: 0.100000001
+    ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
   - Enabled: true
     Type: Reward
     Id: Heal Hero
     Args: ''
     Weight: 0.0500000007
+    ID: 584c161e-da84-46af-8fa4-3aeb3768663b
   - Enabled: true
     Type: Reward
     Id: Use Class Power
     Args: 
     Weight: 0.5
+    ID: d701da05-a87d-4f81-a94c-07aadb937636
 DisableAutomaticFulfillment: false
