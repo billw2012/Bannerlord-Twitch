@@ -23,7 +23,14 @@ namespace BannerlordTwitch
 
                 if (item is T tItem)
                 {
-                    call(tItem);
+                    try
+                    {
+                        call(tItem);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Exception($"Call of {typeof(T).Name} failed at {route}, on {item.GetType().Name}", ex);
+                    }
                 }
                 
                 if (item is IDictionary dItem)

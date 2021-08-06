@@ -121,12 +121,6 @@ namespace BLTConfigure
         
         public BLTConfigureWindow()
         {
-            Loaded += (_, _) => UpdateLastSavedLoop();
-
-            InitializeComponent();
-            this.DataContext = this;
-            Reload();
-
             Log.OnLog += (level, msg) =>
             {
                 this.Dispatcher.InvokeAsync(() =>
@@ -141,7 +135,13 @@ namespace BLTConfigure
                     }
                 });
             };
+            
+            Loaded += (_, _) => UpdateLastSavedLoop();
 
+            InitializeComponent();
+            this.DataContext = this;
+            
+            Reload();
             // PropertyGrid.EditorDefinitions.Add(
             //     new EditorTemplateDefinition
             //     {
@@ -553,7 +553,7 @@ namespace BLTConfigure
                 else
                 {
                     AuthTokenTestFailure.Visibility = Visibility.Visible;
-                    TabControl.SelectedIndex = 1;
+                    TabControl.SelectedIndex = 3;
                     this.Activate();
                 }
 

@@ -152,9 +152,9 @@ namespace BannerlordTwitch.Rewards
                                 ? YamlHelpers.ConvertObject(commandDef.HandlerConfig, command.HandlerConfigType)
                                 : null;
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-                            Log.Error($"{commandDef} had invalid config, resetting it to default");
+                            Log.Exception($"{commandDef} had invalid config, resetting it to default", ex);
                             commandDef.HandlerConfig = Activator.CreateInstance(command.HandlerConfigType);
                         }
                     }
@@ -182,7 +182,7 @@ namespace BannerlordTwitch.Rewards
                     }
                     catch (Exception ex)
                     {
-                        Log.Error($"{globalConfig} had invalid config ({ex.Message}), resetting it to default");
+                        Log.Exception($"{globalConfig} had invalid config ({ex.Message}), resetting it to default", ex);
                         globalConfig.Config = Activator.CreateInstance(configType);
                     }
                     

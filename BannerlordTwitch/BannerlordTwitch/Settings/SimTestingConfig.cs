@@ -9,8 +9,9 @@ using YamlDotNet.Serialization;
 namespace BannerlordTwitch
 {
     [UsedImplicitly]
-    public class SimTestingConfig
+    public class SimTestingConfig : IUpdateFromDefault
     {
+        #region User Editable
         [PropertyOrder(1), UsedImplicitly]
         public int UserCount { get; set; }
         [PropertyOrder(2), UsedImplicitly]
@@ -20,19 +21,40 @@ namespace BannerlordTwitch
         [PropertyOrder(4), UsedImplicitly]
         public int IntervalMaxMS { get; set; }
         [PropertyOrder(5), UsedImplicitly]
-        public ObservableCollection<SimTestingItem> Init { get; set; }
+        public ObservableCollection<SimTestingItem> Init { get; set; } = new();
+        [PropertyOrder(6), UsedImplicitly]
+        public ObservableCollection<SimTestingItem> Use { get; set; } = new();
+        #endregion
 
+        #region Public Interface
         [YamlIgnore, Browsable(false)]
         public IEnumerable<SimTestingItem> InitEnabled 
             => Init?.Where(i => i.Enabled) ?? Enumerable.Empty<SimTestingItem>();
-        
-        [PropertyOrder(6), UsedImplicitly]
-        public ObservableCollection<SimTestingItem> Use { get; set; }
         
         [YamlIgnore, Browsable(false)]
         public IEnumerable<SimTestingItem> UseEnabled 
             => Use?.Where(i => i.Enabled) ?? Enumerable.Empty<SimTestingItem>();
 
         public override string ToString() => "Sim Testing Config";
+        #endregion
+        
+        #region IUpdateFromDefault
+        public void OnUpdateFromDefault(Settings defaultSettings)
+        {
+            Init ??= new();
+            Use ??= new();
+
+            SettingsHelpers.MergeCollections(
+                Init, 
+                defaultSettings.SimTesting.Init,
+                (a, b) => a.ID == b.ID
+            );
+            SettingsHelpers.MergeCollections(
+                Use, 
+                defaultSettings.SimTesting.Use,
+                (a, b) => a.ID == b.ID
+            );
+        }
+        #endregion
     }
 }

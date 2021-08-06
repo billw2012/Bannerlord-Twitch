@@ -37,12 +37,6 @@ namespace BannerlordTwitch
         public Command GetCommand(string id) => EnabledCommands.FirstOrDefault(c =>
             string.Equals(c.Name, id, StringComparison.CurrentCultureIgnoreCase));
 
-        [YamlIgnore]
-        public IEnumerable<ILoaded> ConfigInterfaces => AllActions
-            .Select(c => c.HandlerConfig)
-            .Concat(GlobalConfigs.Select(g => g.Config))
-            .OfType<ILoaded>();
-
         public T GetGlobalConfig<T>(string id) => (T)GlobalConfigs.First(c => c.Id == id).Config;
 
         private static string DefaultSettingsFileName 
@@ -63,7 +57,7 @@ namespace BannerlordTwitch
                 throw new Exception($"Couldn't load the mod settings from {SaveFilePath}");
 
             SettingsPostLoad(settings);
-
+            
             return settings;
         }
 
@@ -80,19 +74,60 @@ namespace BannerlordTwitch
         {
             LoadDefaultSettings();
 
-            var settings = FileSystem.FileExists(SaveFilePath)
-                ? YamlHelpers.Deserialize<Settings>(FileSystem.GetFileContentString(SaveFilePath))
-                : YamlHelpers.Deserialize<Settings>(File.ReadAllText(DefaultSettingsFileName))
-                ;
+            // If the proper save file exists load it, otherwise load defaults
+            Settings settings = null;
+            
+            if(FileSystem.FileExists(SaveFilePath))
+            {
+                try
+                {
+                    settings = YamlHelpers.Deserialize<Settings>(FileSystem.GetFileContentString(SaveFilePath));
+                }
+                catch (Exception ex)
+                {
+                    Log.Exception($"Exception loading settings from {SaveFilePath.FilePath}: {ex.Message}", ex);
+                }
 
+                // if we failed to load from proper settings file then try and load from backup
+                if (settings == null)
+                {
+                    var backup = GetLastBackup();
+                    if (backup.HasValue)
+                    {
+                        Log.Error($"Failed to load previous settings from {SaveFilePath.FilePath}, " +
+                                  $"loading from backup file {backup.Value.FilePath}");
+                        settings = YamlHelpers.Deserialize<Settings>(FileSystem.GetFileContentString(backup.Value));
+                    }
+                    else
+                    {
+                        Log.Error($"Failed to load previous settings from {SaveFilePath.FilePath}, " +
+                                  $"no backups found!");
+                    }
+                }
+            }
+
+            // if we failed to load anything then load defaults
             if (settings == null)
-                throw new Exception($"Couldn't load the mod settings from {SaveFilePath}");
+            {
+                Log.Info($"Couldn't file existing settings, loading defaults from {DefaultSettingsFileName}.");
+                settings = YamlHelpers.Deserialize<Settings>(File.ReadAllText(DefaultSettingsFileName));
+            }
+
+            // If we STILL haven't loaded anything, then the mod install must be broken
+            if (settings == null)
+            {
+                throw new Exception($"Couldn't load the settings, check the mod is installed correctly!");
+            }
 
             SettingsPostLoad(settings);
 
             SettingsHelpers.CallInDepth<IUpdateFromDefault>(settings, 
                 config => config.OnUpdateFromDefault(DefaultSettings));
 
+            SaveSettingsBackup(settings);
+
+            Log.Info($"Settings loaded from {SaveFilePath.FilePath}");
+            
             return settings;
         }
 
@@ -101,7 +136,7 @@ namespace BannerlordTwitch
             SettingsPreSave(settings);
             FileSystem.SaveFileString(SaveFilePath, YamlHelpers.Serialize(settings));
         }
-        #endif
+#endif
 
         private static void LoadDefaultSettings()
         {
@@ -115,6 +150,48 @@ namespace BannerlordTwitch
                 SettingsPostLoad(DefaultSettings);
             }
         }
+        
+        public static void SaveSettingsBackup(Settings settings)
+        {
+            SettingsPreSave(settings);
+            try
+            {
+                string configStr = YamlHelpers.Serialize(settings);
+                var backup = GetLastBackup();
+                if (backup.HasValue)
+                {
+                    string prevBackupStr = FileSystem.GetFileContentString(backup.Value);
+                    if (configStr == prevBackupStr)
+                    {
+                        Log.Info($"Skipping settings backup, as settings haven't changed since last backup");
+                        return;
+                    }
+                }
+
+                var newBackupPath = FileSystem.GetConfigPath($"Bannerlord-Twitch-v2-Backup-{DateTime.Now:yyyy-dd-M--HH-mm-ss}.yaml");
+                FileSystem.SaveFileString(newBackupPath, configStr);
+                Log.Info($"Backed up settings to {newBackupPath.FilePath}");
+                
+                // Delete old config backups
+                foreach (var o in GetBackupConfigPaths().OrderByDescending(f => f.FilePath).Skip(5))
+                {
+                    FileSystem.DeleteFile(o);
+                    Log.Info($"Deleted old settings backup {o.FilePath}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Exception($"Settings backup failed: {ex.Message}", ex);
+            }
+        }
+
+        private static IEnumerable<PlatformFilePath> GetBackupConfigPaths() =>
+            FileSystem.GetFiles(FileSystem.GetConfigDir(), "Bannerlord-Twitch-v2-Backup-*.yaml");
+        
+        private static PlatformFilePath? GetLastBackup() =>
+            GetBackupConfigPaths().OrderByDescending(f => f.FilePath)
+                .Cast<PlatformFilePath?>()
+                .FirstOrDefault();
         
         private static void SettingsPostLoad(Settings settings)
         {

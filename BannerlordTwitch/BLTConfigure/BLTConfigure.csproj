@@ -15,7 +15,7 @@
         <LangVersion>9</LangVersion>
         <ProjectGuid>{BAD5698D-09BD-4C2F-8C93-1DF19BBE29CC}</ProjectGuid>
     </PropertyGroup>
-    <Import Project="$(SolutionDir)BLTProperties.targets"/>
+    <Import Project="$(SolutionDir)BLTProperties.targets" />
     <PropertyGroup>
         <DebugType>full</DebugType>
         <PlatformTarget>x64</PlatformTarget>
