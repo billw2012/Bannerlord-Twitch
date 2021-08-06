@@ -105,15 +105,6 @@ namespace BLTAdoptAHero
              PropertyOrder(6), ItemsSource(typeof(HeroClassDef.ItemSource)), UsedImplicitly]
             public Guid StartingClass { get; set; }
 
-            [Category("Initialization"), 
-             Description("Whether the hero will spawn in hero party (Only work with Join Player Companion activated)"), 
-             PropertyOrder(7), UsedImplicitly]
-            public bool SpawnInParty { get; set; }
-            
-            [Category("Initialization"), Description("Whether the hero will be a companion"), 
-             PropertyOrder(8), UsedImplicitly]
-            public bool JoinPlayerCompanion { get; set; }
-
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
                 if (SubscriberOnly)
@@ -132,9 +123,7 @@ namespace BLTAdoptAHero
                     if (AllowPlayerCompanion) allowed.Add("Companions");
                     generator.PropertyValuePair("Allowed", string.Join(", ", allowed));
                 }
-                if (SpawnInParty && JoinPlayerCompanion) generator.Value("Become a new player companion, in streamers party");
-                if (!SpawnInParty && JoinPlayerCompanion) generator.Value("Become a new player companion");
-                
+
                 if (OnlySameFaction) generator.Value("Same faction only");
 
                 if (OverrideAge)
@@ -200,7 +189,7 @@ namespace BLTAdoptAHero
                 return;
             }
             var settings = (Settings)config;
-            (bool success, string message) = ExecuteInternal(context.Args, context.UserName, settings);
+            (bool success, string message) = ExecuteInternal(context.UserName, settings);
             if (success)
             {
                 ActionManager.NotifyComplete(context, message);
@@ -232,11 +221,11 @@ namespace BLTAdoptAHero
                 return;
             }
                 
-            (_, string message) = ExecuteInternal(context.Args, context.UserName, settings);
+            (_, string message) = ExecuteInternal(context.UserName, settings);
             ActionManager.SendReply(context, message);
         }
 
-        private static (bool success, string message) ExecuteInternal(string _, string userName, Settings settings)
+        private static (bool success, string message) ExecuteInternal(string userName, Settings settings)
         {
             Hero newHero = null;
             // Create or find a hero for adopting
@@ -284,22 +273,7 @@ namespace BLTAdoptAHero
             }
             
             // Place hero where we want them
-            if (settings.JoinPlayerCompanion && settings.SpawnInParty)
-            {
-                var mainParty = MobileParty.MainParty;
-                if (mainParty != null && mainParty.Party.NumberOfAllMembers < mainParty.Party.PartySizeLimit)
-                {
-                    AddHeroToPartyAction.Apply(newHero, mainParty);
-                    Log.Info($"Placed new hero {newHero.Name} in hero party");
-                }
-                else
-                {
-                    return mainParty == null 
-                        ? (false, "You can't adopt a hero: main hero party don't exist yet!") 
-                        : (false, "You can't adopt a hero: main hero party is full!");
-                }
-            }
-            else if(settings.CreateNew)
+            if(settings.CreateNew)
             {
                 var targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom();
                 EnterSettlementAction.ApplyForCharacterOnly(newHero, targetSettlement);
@@ -336,11 +310,6 @@ namespace BLTAdoptAHero
                 newHero.HeroDeveloper.SetInitialSkillLevel(HeroHelpers.AllSkillObjects.First(), 1);
             }
 
-            if (settings.JoinPlayerCompanion)
-            {
-                AddCompanionAction.Apply(Hero.MainHero.Clan, newHero);
-            }
-
             HeroClassDef classDef = null;
             if (settings.StartingClass != default)
             {
@@ -373,7 +342,7 @@ namespace BLTAdoptAHero
                 BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentClass(newHero, classDef);
             }
 
-            if(!Campaign.Current.EncyclopediaManager.BookmarksTracker.IsBookmarked(newHero))
+            if(Campaign.Current != null && !Campaign.Current.EncyclopediaManager.BookmarksTracker.IsBookmarked(newHero))
             {
                 Campaign.Current.EncyclopediaManager.BookmarksTracker.AddBookmarkToItem(newHero);
             }

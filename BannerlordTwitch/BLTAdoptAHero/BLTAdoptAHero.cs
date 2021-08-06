@@ -95,15 +95,6 @@ namespace BLTAdoptAHero
             ____heightOffset = new (0, 0, 4);
         }
 
-        [UsedImplicitly, HarmonyPatch(typeof(DefaultClanTierModel), nameof(DefaultClanTierModel.GetCompanionLimit))]
-        public static void Postfix(ref int __result)
-        {
-            if (CommonConfig != null && CommonConfig.BreakCompanionLimit)
-            {
-                __result = Clan.PlayerClan.Companions.Count + 1;
-            }
-        }
-
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
             if (harmony == null)
