@@ -127,7 +127,7 @@ namespace BLTAdoptAHero.Powers
 						        && a.IsEnemyOf(from)			// enemies only
 				        )
 				        .Select(a => (agent: a, distance: a.Position.Distance(position)))
-				        .OrderByDescending(a => a.distance)
+				        .OrderBy(a => a.distance)
 				        // ToList is required due to potential collection change exception when agents are killed below
 				        .Take(MaxAgentsToDamage).ToList() 
 		        )

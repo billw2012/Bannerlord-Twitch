@@ -252,14 +252,14 @@ namespace BLTAdoptAHero
             weaponData = wdRef.Data;
         }
 
-        public override void OnAgentRemoved(Agent killedAgent, Agent killerAgent, AgentState agentState, 
+        public override void OnAgentRemoved(Agent victimAgent, Agent attackerAgent, AgentState agentState, 
             KillingBlow blow)
         {
-            powerHandler.CallHandlersForAgentPair(killedAgent, killerAgent,
-                (handlers, killerHero, killedHero)
-                    => handlers.GotAKill(killerHero, killerAgent, killedHero, killedAgent, agentState, blow),
-                (handlers, killedHero, killerHero)
-                    => handlers.GotKilled(killedHero, killedAgent, killerHero, killerAgent, agentState, blow));
+            powerHandler.CallHandlersForAgentPair(attackerAgent, victimAgent,
+                (handlers, attackerHero, victimHero)
+                    => handlers.GotAKill(attackerHero, attackerAgent, victimHero, victimAgent, agentState, blow),
+                (handlers, attackerHero, victimHero)
+                    => handlers.GotKilled(victimHero, victimAgent, attackerHero, attackerAgent, agentState, blow));
         }
 
         protected override void OnEndMission()
