@@ -175,7 +175,7 @@ namespace BLTAdoptAHero
             // Take existing equipment and the heroes custom items, so we can (re)use them if appropriate
             var availableItems =
                 BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero).Concat(
-                    adoptedHero.BattleEquipment.YieldFilledEquipmentSlots()
+                    adoptedHero.BattleEquipment.YieldFilledEquipmentSlots().Select(e => e.element)
                     // Never replace stuff that is higher tier (in practice it can only be tournament prize)
                     .Where(e => (int)e.Item.Tier > targetTier || !replaceSameTier && (int)e.Item.Tier == targetTier)
                     // Can always use custom items
