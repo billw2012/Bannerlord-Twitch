@@ -108,6 +108,7 @@
 <!--                <_Parameter1>$(ProjectGuid)</_Parameter1>-->
 <!--            </AssemblyAttributes>-->
         </ItemGroup>
+        <MakeDir Directories="Properties"/>
         <WriteCodeFragment Language="C#" OutputFile="Properties/AssemblyInfo.cs" AssemblyAttributes="@(AssemblyAttributes)" />
     </Target>
 

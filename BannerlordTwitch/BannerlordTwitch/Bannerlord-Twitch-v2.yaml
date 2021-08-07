@@ -45,8 +45,6 @@ Rewards:
       MaxLevel: 50
     StartingEquipmentTier: 1
     StartingClass: 00000000-0000-0000-0000-000000000000
-    SpawnInParty: false
-    JoinPlayerCompanion: false
   Documentation: Get a hero in game. Almost all other actions require an adopted hero.
 - Enabled: true
   RespondInOverlay: true
@@ -605,8 +603,6 @@ Commands:
       MaxLevel: 75
     StartingEquipmentTier: 1
     StartingClass: 00000000-0000-0000-0000-000000000000
-    SpawnInParty: false
-    JoinPlayerCompanion: false
   Documentation: Get a hero in game. Almost all other actions require an adopted hero.
 - Enabled: true
   RespondInOverlay: true
@@ -1345,6 +1341,7 @@ GlobalConfigs:
   Config:
     ClassDefs:
     - ID: 9fa426af-af3e-41f6-9b48-0ffef6dc3553
+      Enabled: true
       Name: infantry
       Description: Basic foot soldier, the core around which every army is built.
       Formation: Ranged
@@ -1367,6 +1364,7 @@ GlobalConfigs:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
     - ID: 492c4b3a-d73e-4fe9-be31-f937d6461f93
+      Enabled: true
       Name: archer
       Description: Ranged troop, quick on their feet, can use explosive arrows.
       Formation: Ranged
@@ -1389,6 +1387,7 @@ GlobalConfigs:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
     - ID: bf9dd845-0ed3-4da0-bce7-f718ac52fad7
+      Enabled: true
       Name: heavyarcher
       Description: Ranged troop, quick on their feet, can use explosive arrows.
       Formation: Ranged
@@ -1411,6 +1410,7 @@ GlobalConfigs:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
     - ID: eed616b6-bb68-48aa-8f92-87ab3d744458
+      Enabled: true
       Name: crossbow
       Description: Ranged troop that specializes in crossbow, tougher but slower than the archer. Can use exposive bolts
       Formation: Ranged
@@ -1433,6 +1433,7 @@ GlobalConfigs:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
     - ID: b7ff2652-db31-43bf-a75c-6fa906298da4
+      Enabled: true
       Name: heavycrossbow
       Description: Ranged troop that specializes in crossbow, tougher but slower than the archer. Can use exposive bolts
       Formation: Ranged
@@ -1455,6 +1456,7 @@ GlobalConfigs:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
     - ID: d1006ce9-cac9-4416-b8f9-efe55e9eb878
+      Enabled: true
       Name: cavalry
       Description: Mounted troop with a strong horse, capable of doing extra charge damage.
       Formation: Cavalry
@@ -1486,6 +1488,7 @@ GlobalConfigs:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
     - ID: 14f908f8-4983-479f-89f7-1dac81f7d0f9
+      Enabled: true
       Name: camelry
       Description: Mounted troop with a strong horse, capable of doing extra charge damage.
       Formation: Cavalry
@@ -1508,6 +1511,7 @@ GlobalConfigs:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
     - ID: 2942cdb2-30ec-400a-ba8e-ed9bb3b47f48
+      Enabled: true
       Name: horsearcher
       Description: Mounted ranged unit, with a good horse, that can use exposive arrows.
       Formation: HorseArcher
@@ -1530,6 +1534,7 @@ GlobalConfigs:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
     - ID: df54336d-52df-4d4b-a9c6-c1fe91cdc70f
+      Enabled: true
       Name: camelarcher
       Description: Mounted ranged unit on a good camel, wielding a glaive. Can use exposive arrows.
       Formation: HorseArcher
@@ -1552,6 +1557,7 @@ GlobalConfigs:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
     - ID: 3d5b962a-f6ee-409e-940b-c2f2b8d4cf98
+      Enabled: true
       Name: skirmisher
       Description: Foot soldier that can engage at range using javelins. Able to reflect a portion of incoming damage.
       Formation: Skirmisher
@@ -1574,6 +1580,7 @@ GlobalConfigs:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
     - ID: f04e7a10-950b-48a4-bed3-7aa2091aa268
+      Enabled: true
       Name: berserker
       Description: Foot soldier with lower health, that can gain health by doing damage.
       Formation: Skirmisher
@@ -1596,6 +1603,7 @@ GlobalConfigs:
           ParticleEffect: psys_burning_projectile_default_coll_small
           Sound: None
     - ID: 91e77af4-4d1a-4186-a6db-f20fcdce892e
+      Enabled: true
       Name: b0rserker
       Description: Foot soldier with lower health, that can gain health by doing damage.
       Formation: Skirmisher

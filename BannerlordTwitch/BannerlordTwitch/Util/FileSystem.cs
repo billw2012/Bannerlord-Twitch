@@ -16,6 +16,8 @@ namespace BannerlordTwitch.Util
             Path = path;
         }
         public string Path;
+
+        public override string ToString() => Path
     }
 
     public struct PlatformFilePath
@@ -30,6 +32,8 @@ namespace BannerlordTwitch.Util
         
         private readonly string partialPath;
         public string FilePath => Path.Combine(dir.Path, partialPath);
+
+        public override string ToString() => FilePath;
     }
 #endif
     

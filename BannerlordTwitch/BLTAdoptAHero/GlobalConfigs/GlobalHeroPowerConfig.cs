@@ -46,7 +46,7 @@ namespace BLTAdoptAHero
             SettingsHelpers.MergeCollections(
                 PowerDefs, 
                 Get(defaultSettings).PowerDefs,
-                (a, b) => a.ID == b.ID || a.Name == b.Name
+                (a, b) => a.ID == b.ID
             );
         }
         #endregion

@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using TaleWorlds.Library;
 using YamlDotNet.Serialization;
+
+#if DEBUG
+using System.Runtime.CompilerServices;
+#endif
 
 // ReSharper disable MemberCanBePrivate.Global
 #pragma warning disable 649
@@ -85,7 +86,7 @@ namespace BannerlordTwitch
                 }
                 catch (Exception ex)
                 {
-                    Log.Exception($"Exception loading settings from {SaveFilePath.FilePath}: {ex.Message}", ex);
+                    Log.Exception($"Exception loading settings from {SaveFilePath}: {ex.Message}", ex);
                 }
 
                 // if we failed to load from proper settings file then try and load from backup
@@ -94,13 +95,13 @@ namespace BannerlordTwitch
                     var backup = GetLastBackup();
                     if (backup.HasValue)
                     {
-                        Log.Error($"Failed to load previous settings from {SaveFilePath.FilePath}, " +
-                                  $"loading from backup file {backup.Value.FilePath}");
+                        Log.Error($"Failed to load previous settings from {SaveFilePath}, " +
+                                  $"loading from backup file {backup.Value}");
                         settings = YamlHelpers.Deserialize<Settings>(FileSystem.GetFileContentString(backup.Value));
                     }
                     else
                     {
-                        Log.Error($"Failed to load previous settings from {SaveFilePath.FilePath}, " +
+                        Log.Error($"Failed to load previous settings from {SaveFilePath}, " +
                                   $"no backups found!");
                     }
                 }
@@ -126,7 +127,7 @@ namespace BannerlordTwitch
 
             SaveSettingsBackup(settings);
 
-            Log.Info($"Settings loaded from {SaveFilePath.FilePath}");
+            Log.Info($"Settings loaded from {SaveFilePath}");
             
             return settings;
         }
@@ -170,13 +171,13 @@ namespace BannerlordTwitch
 
                 var newBackupPath = FileSystem.GetConfigPath($"Bannerlord-Twitch-v2-Backup-{DateTime.Now:yyyy-dd-M--HH-mm-ss}.yaml");
                 FileSystem.SaveFileString(newBackupPath, configStr);
-                Log.Info($"Backed up settings to {newBackupPath.FilePath}");
+                Log.Info($"Backed up settings to {newBackupPath.FileName}");
                 
                 // Delete old config backups
-                foreach (var o in GetBackupConfigPaths().OrderByDescending(f => f.FilePath).Skip(5))
+                foreach (var o in GetBackupConfigPaths().OrderByDescending(f => f.FileName).Skip(5))
                 {
                     FileSystem.DeleteFile(o);
-                    Log.Info($"Deleted old settings backup {o.FilePath}");
+                    Log.Info($"Deleted old settings backup {o.FileName}");
                 }
             }
             catch (Exception ex)
@@ -189,7 +190,7 @@ namespace BannerlordTwitch
             FileSystem.GetFiles(FileSystem.GetConfigDir(), "Bannerlord-Twitch-v2-Backup-*.yaml");
         
         private static PlatformFilePath? GetLastBackup() =>
-            GetBackupConfigPaths().OrderByDescending(f => f.FilePath)
+            GetBackupConfigPaths().OrderByDescending(f => f.FileName)
                 .Cast<PlatformFilePath?>()
                 .FirstOrDefault();
         

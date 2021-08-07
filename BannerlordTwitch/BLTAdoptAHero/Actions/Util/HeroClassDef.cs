@@ -20,6 +20,9 @@ namespace BLTAdoptAHero
         public Guid ID { get; set; } = Guid.NewGuid();
 
         #region User Editable Properties
+        [Description("Whether this class is enabled for use in the game or not"), PropertyOrder(0), UsedImplicitly]
+        public bool Enabled { get; set; } = true;
+        
         [Description("Name of the class that shall be passed to SetHeroClass actions"), PropertyOrder(1), UsedImplicitly]
         public string Name { get; set; } = "Enter Name Here";
         

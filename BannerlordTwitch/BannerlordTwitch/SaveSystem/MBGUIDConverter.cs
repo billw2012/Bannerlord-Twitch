@@ -12,21 +12,15 @@ namespace BannerlordTwitch.SaveSystem
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (value is MBGUID mbguid)
+            if (value is MBGUID)
             {
-                serializer.Serialize(writer, mbguid.InternalValue);
-                return;
+                throw new Exception($"MBGUIDs should not be saved, they are not stable references to objects");
             }
-
             serializer.Serialize(writer, null);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if (serializer.Deserialize<uint?>(reader) is { } id)
-            {
-                return new MBGUID(id);
-            }
             return null;
         }
     }

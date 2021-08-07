@@ -18,10 +18,10 @@ namespace BannerlordTwitch.SaveSystem
         public ScopedJsonSync(IDataStore dataStore, string key)
         {
             this.dataStore = dataStore;
-            mboReferences = new(key);
+            mboReferences = new MBObjectBaseConverter(dataStore, key);
             settings = new()
             {
-                ContractResolver = new TaleWorldsContractResolver(),
+                //ContractResolver = new TaleWorldsContractResolver(),
                 Converters = { new DictionaryToArrayConverter(), new MBGUIDConverter(), mboReferences },
                 TypeNameHandling = TypeNameHandling.Auto,
                 //ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
@@ -118,7 +118,7 @@ namespace BannerlordTwitch.SaveSystem
         {
             if (dataStore.IsSaving)
             {
-                mboReferences.Save(dataStore);
+                mboReferences.Save();
             }
         }
 

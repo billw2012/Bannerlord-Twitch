@@ -25,14 +25,18 @@ namespace BLTAdoptAHero
         #endregion
 
         #region Public Interface
+        
         [Browsable(false), YamlIgnore]
-        public IEnumerable<string> ClassNames => ClassDefs?.Select(c => c.Name?.ToLower()) ?? Enumerable.Empty<string>();
+        public IEnumerable<HeroClassDef> ValidClasses => ClassDefs.Where(c => c.Enabled);
+        
+        [Browsable(false), YamlIgnore]
+        public IEnumerable<string> ClassNames => ValidClasses.Select(c => c.Name?.ToLower());
 
         public HeroClassDef GetClass(Guid id) 
-            => ClassDefs?.FirstOrDefault(c => c.ID == id);
+            => ValidClasses.FirstOrDefault(c => c.ID == id);
 
         public HeroClassDef FindClass(string search) 
-            => ClassDefs?.FirstOrDefault(c => c.Name.Equals(search, StringComparison.InvariantCultureIgnoreCase));
+            => ValidClasses.FirstOrDefault(c => c.Name.Equals(search, StringComparison.InvariantCultureIgnoreCase));
         #endregion
 
         #region IUpdateFromDefault
@@ -41,7 +45,7 @@ namespace BLTAdoptAHero
             SettingsHelpers.MergeCollections(
                 ClassDefs, 
                 Get(defaultSettings).ClassDefs,
-                (a, b) => a.ID == b.ID || a.Name == b.Name
+                (a, b) => a.ID == b.ID
             );
         }
         #endregion
@@ -56,7 +60,7 @@ namespace BLTAdoptAHero
                 // {
                 //     generator.LinkToAnchor(cl.Name, () => generator.H2(cl.Name));
                 // }
-                foreach (var cl in ClassDefs)
+                foreach (var cl in ValidClasses)
                 {
                     generator.MakeAnchor(cl.Name, () => generator.H2(cl.Name));
                     cl.GenerateDocumentation(generator);

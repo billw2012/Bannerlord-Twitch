@@ -8,7 +8,6 @@
 	<Official value="false" />
 	<DependedModules>
 		<DependedModule Id="Bannerlord.Harmony"/>
-		<DependedModule Id="Bannerlord.ButterLib"/>
 		<DependedModule Id="Native"/>
 		<DependedModule Id="SandBoxCore"/>
 		<DependedModule Id="Sandbox"/>
@@ -30,7 +29,6 @@
 		<!-- version: [ "e1.0.0.0", "e1.*", "e1.0.*", "e1.0.0.*" ] -->
 		<!-- incompatible: [ "true", "false" ] -->
 		<DependedModuleMetadata id="Bannerlord.Harmony" order="LoadBeforeThis" />
-		<DependedModuleMetadata id="Bannerlord.ButterLib" order="LoadBeforeThis" />
 		<DependedModuleMetadata id="Native" order="LoadBeforeThis" />
 		<DependedModuleMetadata id="SandBoxCore" order="LoadBeforeThis" />
 		<DependedModuleMetadata id="Sandbox" order="LoadBeforeThis" />
