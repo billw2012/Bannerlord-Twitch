@@ -126,43 +126,10 @@ namespace BLTAdoptAHero
                 {
                     // Remove invalid troop types (delayed to ensure all troop types are loaded)
                     data.Retinue.RemoveAll(r => r.TroopType == null);
-                    
-                    // Ensure Level is set (delayed to ensure all troop trees are loaded)
-                    foreach (var r in data.Retinue.Where(r => r.Level == 0))
-                    {
-                        var rootUnit = CharacterHelper.FindUpgradeRootOf(r.TroopType);
-                        r.Level = rootUnit != null 
-                            ? r.TroopType.Tier - rootUnit.Tier + 1 
-                            : 1;
-                    }
-
-                    // Make sure heroes are active, and in real locations
-                    // (delayed to make sure all locations are loaded)
-                    if(hero.HeroState is Hero.CharacterStates.NotSpawned && hero.CurrentSettlement == null)
-                    {
-                        // Activate them and put them in a random town
-                        hero.ChangeState(Hero.CharacterStates.Active);
-                        var targetSettlement = Settlement.All.Where(s => s.IsTown).SelectRandom();
-                        EnterSettlementAction.ApplyForCharacterOnly(hero, targetSettlement);
-                        Log.Info($"Placed un-spawned hero {hero.Name} at {targetSettlement.Name}");
-                    }
-
-                    if (!data.IsRetiredOrDead)
-                    {
-                        // Make sure all custom items are in the heroes storage
-                        // (delayed to ensure BLTCustomItemsCampaignBehavior is loaded)
-                        foreach (var s in hero.BattleEquipment
-                            .YieldFilledEquipmentSlots()
-                            .Where(i => BLTCustomItemsCampaignBehavior.Current.IsRegistered(i.ItemModifier)))
-                        {
-                            AddCustomItem(hero, s);
-                        }
-                    }
 
                     // Remove invalid custom items
                     int removedCustomItems = data.CustomItems.RemoveAll(
                         i => i.Item == null || i.Item.Type == ItemObject.ItemTypeEnum.Invalid);
-
                     if (removedCustomItems > 0)
                     {
                         // Compensate with gold for each one lost
@@ -171,6 +138,14 @@ namespace BLTAdoptAHero
                         Log.LogFeedSystem(
                             $"Compensated @{hero.Name} with {removedCustomItems * 50000}{Naming.Gold} for " +
                             $"{removedCustomItems} invalid custom items");
+                    }
+
+                    // Also remove them from the equipment
+                    foreach (var s in hero.BattleEquipment
+                        .YieldFilledEquipmentSlots()
+                        .Where(i => i.element.Item.Type == ItemObject.ItemTypeEnum.Invalid))
+                    {
+                        hero.BattleEquipment[s.index] = EquipmentElement.Invalid;
                     }
                 }
 
