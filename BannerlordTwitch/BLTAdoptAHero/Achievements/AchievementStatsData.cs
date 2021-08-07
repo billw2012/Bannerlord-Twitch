@@ -22,6 +22,7 @@ namespace BLTAdoptAHero.Achievements
             TotalMountDeaths,
             Summons,
             Attacks,
+            Battles,
             ConsecutiveSummons,
             ConsecutiveAttacks,
             TotalTournamentRoundWins,
@@ -44,7 +45,7 @@ namespace BLTAdoptAHero.Achievements
             TotalStats.AddInt(type, amount);
             ClassStats.AddInt((classId, type), amount);
 
-            if (type == Statistic.Summons)
+            if (type is Statistic.Summons)
             {
                 TotalStats.AddInt(Statistic.ConsecutiveSummons, amount);
                 ClassStats.AddInt((classId, Statistic.ConsecutiveSummons), amount);
@@ -52,13 +53,18 @@ namespace BLTAdoptAHero.Achievements
                 TotalStats[Statistic.ConsecutiveAttacks] = 0;
                 ClassStats[(classId, Statistic.ConsecutiveAttacks)] = 0;
             }
-            else if (type == Statistic.Attacks)
+            else if (type is Statistic.Attacks)
             {
                 TotalStats.AddInt(Statistic.ConsecutiveAttacks, amount);
                 ClassStats.AddInt((classId, Statistic.ConsecutiveAttacks), amount);
                 // Reset consecutive summons, now that hero attacked
                 TotalStats[Statistic.ConsecutiveSummons] = 0;
                 ClassStats[(classId, Statistic.ConsecutiveSummons)] = 0;
+            }
+            if (type is Statistic.Summons or Statistic.Attacks)
+            {
+                TotalStats.AddInt(Statistic.Battles, amount);
+                ClassStats.AddInt((classId, Statistic.Battles), amount);
             }
         }
 
