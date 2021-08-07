@@ -19,6 +19,8 @@ namespace BannerlordTwitch.UI
         public float Minimum { get; set; }
         
         public float Maximum { get; set; }
+
+        public float Interval { get; set; } = 0.05f;
         
         public SliderFloatControl()
         {

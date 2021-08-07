@@ -18,12 +18,24 @@ namespace BannerlordTwitch.UI
             base.SetControlProperties(propertyItem);
 
             var rangeAttribute = propertyItem.PropertyDescriptor?.Attributes
-                .OfType<RangeAttribute>().FirstOrDefault();
+                .OfType<UIRangeAttribute>().FirstOrDefault();
             if( rangeAttribute != null )
             {
                 var converter = TypeDescriptor.GetConverter(typeof(float));
-                Editor.Maximum = (float)converter.ConvertFrom( rangeAttribute.Maximum.ToString());
                 Editor.Minimum = (float)converter.ConvertFrom( rangeAttribute.Minimum.ToString());
+                Editor.Maximum = (float)converter.ConvertFrom( rangeAttribute.Maximum.ToString());
+                Editor.Interval = (float)converter.ConvertFrom( rangeAttribute.Interval.ToString());
+            }
+            else
+            {
+                var range2Attribute = propertyItem.PropertyDescriptor?.Attributes
+                    .OfType<RangeAttribute>().FirstOrDefault();
+                if( range2Attribute != null )
+                {
+                    var converter = TypeDescriptor.GetConverter(typeof(float));
+                    Editor.Minimum = (float)converter.ConvertFrom( range2Attribute.Minimum.ToString());
+                    Editor.Maximum = (float)converter.ConvertFrom( range2Attribute.Maximum.ToString());
+                }
             }
         }
     }

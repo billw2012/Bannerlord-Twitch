@@ -14,7 +14,8 @@ namespace BLTAdoptAHero.Powers
     /// Base class for Hero Power definitions
     /// </summary>
     [YamlTagged]
-    public abstract class HeroPowerDefBase : ICloneable
+    [CategoryOrder("General", 1)]
+    public abstract class HeroPowerDefBase : ICloneable, INotifyPropertyChanged
     {
         #region Saved Properties
         /// <summary>
@@ -23,7 +24,7 @@ namespace BLTAdoptAHero.Powers
         [ReadOnly(true), UsedImplicitly]
         public Guid ID { get; set; } = Guid.NewGuid();
 
-        [Description("Name of the power that will be shown in game"), PropertyOrder(1), UsedImplicitly]
+        [Category("General"), Description("Name of the power that will be shown in game"), PropertyOrder(1), UsedImplicitly]
         public string Name { get; set; } = "Enter Name Here";
         #endregion
 
@@ -80,5 +81,7 @@ namespace BLTAdoptAHero.Powers
             }
         }
         #endregion
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

@@ -54,7 +54,8 @@ namespace BLTAdoptAHero
             [Category("Limits"), 
              Description("What fraction of assets will be inherited when a new character is adopted after an old one " +
                          "died (0 to 1)"),
-             Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+             UIRangeAttribute(0, 1, 0.05f),
+             Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
              PropertyOrder(6), UsedImplicitly]
             public float Inheritance { get; set; } = 0.25f;
             

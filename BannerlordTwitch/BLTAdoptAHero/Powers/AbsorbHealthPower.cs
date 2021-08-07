@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using BannerlordTwitch;
+using BannerlordTwitch.UI;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.MountAndBlade;
@@ -19,7 +21,9 @@ namespace BLTAdoptAHero.Powers
     public class AbsorbHealthPower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         [Category("Power Config"),
-         Description("What fraction of damage done to absorb as health"), PropertyOrder(1), UsedImplicitly]
+         Description("What fraction of damage done to absorb as health"),
+         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         PropertyOrder(1), UsedImplicitly]
         public float FractionOfDamageToAbsorb { get; set; } = 0.1f;
         
         void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers) 

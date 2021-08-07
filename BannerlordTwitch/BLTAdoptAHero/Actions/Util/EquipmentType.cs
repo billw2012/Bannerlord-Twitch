@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using BannerlordTwitch.Util;
 using TaleWorlds.Core;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
 {
@@ -27,6 +29,19 @@ namespace BLTAdoptAHero
         ThrowingJavelins,
         Shield,
         Num,
+    }
+    
+    public class EquipmentTypeItemSource : IItemsSource
+    {
+        public ItemCollection GetValues()
+        {
+            var col = new ItemCollection();
+            for (EquipmentType i = 0; i < EquipmentType.Num; i++)
+            {
+                col.Add(i, i.ToString().SplitCamelCase());
+            }
+            return col;
+        }
     }
 
     public static class EquipmentTypeHelpers

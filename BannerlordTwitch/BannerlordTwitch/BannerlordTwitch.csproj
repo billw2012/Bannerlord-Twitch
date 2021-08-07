@@ -323,6 +323,7 @@
           <DependentUpon>SliderFloatControl.xaml</DependentUpon>
         </Compile>
         <Compile Include="UI\SliderFloatEditor.cs" />
+        <Compile Include="UI\UIRangeAttribute.cs" />
         <Compile Include="Util\CloneHelpers.cs" />
         <Compile Include="Util\ConfigureContext.cs" />
         <Compile Include="Util\GameVersion.cs" />
@@ -414,28 +415,25 @@
     </Target>
 
     <Target Name="AfterBuild">
-        <Message Importance="High" Text="Copying content files..."/>
+        <Message Importance="High" Text="Copying content files..." />
         <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml" DestinationFolder="$(OutDir)..\.." DestinationFiles="" />
         <Copy SourceFiles="Bannerlord-Twitch-v2.yaml" DestinationFolder="$(OutDir)..\.." />
         <Copy SourceFiles="Bannerlord-Twitch-Documentation.css" DestinationFolder="$(OutDir)..\.." />
         <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
 
-        <Message Importance="High" Text="Setting module version..."/>
-        <ReplaceFileText File="$(OutDir)..\..\SubModule.xml" Regex="%(SubModuleOverrides.Regex)" 
-                         ReplacementText="%(SubModuleOverrides.Replacement)" />
+        <Message Importance="High" Text="Setting module version..." />
+        <ReplaceFileText File="$(OutDir)..\..\SubModule.xml" Regex="%(SubModuleOverrides.Regex)" ReplacementText="%(SubModuleOverrides.Replacement)" />
         
         <Copy SourceFiles="..\..\README.md" DestinationFolder="$(OutDir)..\.." />
         <!--    <Copy SourceFiles="Overlay\web" DestinationFolder="$(OutDir)..\..\web" />-->
 
-        <Message Importance="High" Text="Copying overlay web..."/>
+        <Message Importance="High" Text="Copying overlay web..." />
         <ItemGroup>
             <OverlayContent Include="Overlay\web\**\*" />
         </ItemGroup>
-        <Copy SourceFiles="@(OverlayContent)" 
-              DestinationFiles="@(OverlayContent->'$(OutDir)..\..\web\%(RecursiveDir)%(Filename)%(Extension)')" 
-              SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+        <Copy SourceFiles="@(OverlayContent)" DestinationFiles="@(OverlayContent->'$(OutDir)..\..\web\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
 
-        <Message Importance="High" Text="Copying staged files to game directory..."/>
+        <Message Importance="High" Text="Copying staged files to game directory..." />
         <ItemGroup>
             <StagingDir Include="$(OutDir)\..\..\**\*" />
         </ItemGroup>

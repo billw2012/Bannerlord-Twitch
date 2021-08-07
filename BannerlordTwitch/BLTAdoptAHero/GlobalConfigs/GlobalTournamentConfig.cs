@@ -342,14 +342,14 @@ namespace BLTAdoptAHero
         [Description("Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer " +
                      "for visualization of how skill will be modified."),
          PropertyOrder(2),
-         Range(0, 50),
+         UIRangeAttribute(0, 50, 0.5f),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          UsedImplicitly, Document]
         public float SkillReductionPercentPerWin { get; set; } = 3.2f;
             
         [Description("The lower limit (in %) that the skill(s) can be reduced to."),
          PropertyOrder(2),
-         Range(0, 100),
+         UIRangeAttribute(0, 100, 0.5f),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          UsedImplicitly, Document]
         public float FloorPercent { get; set; } = 65f;

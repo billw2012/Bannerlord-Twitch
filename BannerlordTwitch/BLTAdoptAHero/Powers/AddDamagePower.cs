@@ -17,14 +17,17 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
-	[CategoryOrder("Effect", 11)]
-	[CategoryOrder("Targets", 12)]
-	[CategoryOrder("Appearance", 13)]
+	[CategoryOrder("Effect", 3)]
+	[CategoryOrder("Targets", 4)]
+	[CategoryOrder("Appearance", 5)]
     [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
     public class AddDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
-        [Category("Effect"), Description("How much to multiply base damage by"), PropertyOrder(1),
-         UsedImplicitly]
+        #region User Editable
+        [Category("Effect"), Description("How much to multiply base damage by"),
+         UIRangeAttribute(0, 10, 0.05f),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         PropertyOrder(1), UsedImplicitly]
         public float DamageToMultiply { get; set; } = 1f;
 
         [Category("Effect"), Description("How much damage to add"), PropertyOrder(2), UsedImplicitly]
@@ -74,10 +77,11 @@ namespace BLTAdoptAHero.Powers
          UsedImplicitly]
         public float StaggerChance { get; set; }
 
+        #region AreaOfEffectDef
         public class AreaOfEffectDef : ICloneable, INotifyPropertyChanged
         {
 	        [Description("The radius to apply the damage in"), PropertyOrder(1),
-             Range(0, 20), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+             UIRangeAttribute(0, 20, 0.5f), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
              UsedImplicitly]
 	        public float Range { get; set; }
 	        
@@ -86,7 +90,7 @@ namespace BLTAdoptAHero.Powers
 	        public bool OnlyOnHit { get; set; }
 
 	        [Description("Damage at distance 0 from the hit"), PropertyOrder(3),
-             Range(0, 500), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+             UIRangeAttribute(0, 500, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
              UsedImplicitly]
 	        public float DamageAtCenter { get; set; } = 50;
 
@@ -145,6 +149,7 @@ namespace BLTAdoptAHero.Powers
             
             public event PropertyChangedEventHandler PropertyChanged;
         }
+        #endregion
 
         [Category("Effect"), 
          Description("Area of Effect damage to apply"), PropertyOrder(20), UsedImplicitly, ExpandableObject]
@@ -185,11 +190,15 @@ namespace BLTAdoptAHero.Powers
          Description("Effect to play on hit (intended mainly for AoE effects)"), 
          PropertyOrder(22), ExpandableObject, UsedImplicitly]
         public OneShotEffect HitEffect { get; set; }
+        #endregion
 
+        #region IHeroPowerPassive
         void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers) 
 	        => BLTHeroPowersMissionBehavior.PowerHandler
 		        .ConfigureHandlers(hero, this, handlers2 => OnActivation(hero, handlers2));
+        #endregion
 
+        #region Base Class Overrides 
         protected override void OnActivation(Hero hero, PowerHandler.Handlers handlers,
             Agent agent = null, DeactivationHandler deactivationHandler = null)
         {
@@ -203,7 +212,9 @@ namespace BLTAdoptAHero.Powers
 	        handlers.OnAddMissile += OnAddMissile;
 	        handlers.OnPostDoMeleeHit += OnPostDoMeleeHit;
         }
+        #endregion
 
+        #region Implementation Details
         private void OnDecideMissileWeaponFlags(Hero attackerHero, Agent attackerAgent, 
 	        BLTAgentApplyDamageModel.DecideMissileWeaponFlagsParams args)
         {
@@ -312,17 +323,17 @@ namespace BLTAdoptAHero.Powers
         }
 
 
-        private bool IgnoreDamageType(Hero victimHero, Agent victimAgent, AttackCollisionData attackCollisionData) =>
-	        attackCollisionData.IsFallDamage
-	        || !ApplyAgainstAdoptedHeroes && victimHero != null
-	        || !ApplyAgainstHeroes && victimAgent.IsHero
-	        || !ApplyAgainstNonHeroes && !victimAgent.IsHero
-	        || !ApplyAgainstPlayer && victimAgent == Agent.Main
-	        || !Melee && !(attackCollisionData.IsMissile || attackCollisionData.IsHorseCharge)
-	        || !Ranged && attackCollisionData.IsMissile
-	        || !Charge && attackCollisionData.IsHorseCharge;
-
-        // NEED TO OVERRIDE MissileHitCallback to change blocking behavior for missiles
+        private bool IgnoreDamageType(Hero victimHero, Agent victimAgent, AttackCollisionData attackCollisionData)
+        {
+            return attackCollisionData.IsFallDamage
+                   || !ApplyAgainstAdoptedHeroes && victimHero != null
+                   || !ApplyAgainstHeroes && victimAgent.IsHero
+                   || !ApplyAgainstNonHeroes && !victimAgent.IsHero
+                   || !ApplyAgainstPlayer && victimAgent == Agent.Main
+                   || !Melee && !(attackCollisionData.IsMissile || attackCollisionData.IsHorseCharge)
+                   || !Ranged && attackCollisionData.IsMissile
+                   || !Charge && attackCollisionData.IsHorseCharge;
+        }
 
         private void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, 
             BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams)
@@ -405,11 +416,9 @@ namespace BLTAdoptAHero.Powers
 	        agent.RegisterBlow(blow);
         }
 
-        public override string ToString() => $"{Name}: {ToStringInternal()}";
-        
         private string ToStringInternal()
         {
-	        var appliesToList = new List<string>();
+            var appliesToList = new List<string>();
             if (ApplyAgainstNonHeroes) appliesToList.Add("Non-heroes");
             if (ApplyAgainstHeroes) appliesToList.Add("Heroes");
             if (ApplyAgainstAdoptedHeroes) appliesToList.Add("Adopted");
@@ -429,7 +438,16 @@ namespace BLTAdoptAHero.Powers
             return $"{string.Join(" / ", modifiers)} " +
                    $"{string.Join("/", appliesFromList)} dmg to {string.Join(", ", appliesToList)}";
         }
+        #endregion
 
+        #region Public Interface
+
+        public override string ToString() => $"{Name}: {ToStringInternal()}";
+
+        #endregion
+
+        #region IDocumentable
         public void GenerateDocumentation(IDocumentationGenerator generator) => generator.P(ToStringInternal());
+        #endregion
     }
 }

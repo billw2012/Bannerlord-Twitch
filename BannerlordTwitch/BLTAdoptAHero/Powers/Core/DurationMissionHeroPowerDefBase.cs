@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.UI;
 using BLTAdoptAHero.Annotations;
 using SandBox;
 using TaleWorlds.CampaignSystem;
@@ -18,14 +20,23 @@ namespace BLTAdoptAHero.Powers
     /// Derive from this to implement Active Hero powers that work in missions, with a fixed duration. You can still
     /// also implement the passive power when you derive from this class.
     /// </summary>
+    [CategoryOrder("Power Config", 2)]
     public abstract class DurationMissionHeroPowerDefBase : HeroPowerDefBase, IHeroPowerActive
     {
-        [Category("Power Config"), Description("Duration the power will last for (when used as an active power), in seconds"), PropertyOrder(0), UsedImplicitly]
+        #region User Editable
+        [Category("Power Config"), 
+         Description("Duration the power will last for (when used as an active power), in seconds"), 
+         UIRangeAttribute(0, 300, 1),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         PropertyOrder(0), UsedImplicitly]
         public float PowerDurationSeconds { get; set; } = 30f;
 
-        [Category("Power Config"), Description("Effects to apply to the agent while the power is active"), PropertyOrder(1), UsedImplicitly]
+        [Category("Power Config"), Description("Effects to apply to the agent while the power is active"), 
+         PropertyOrder(1), UsedImplicitly]
         public ObservableCollection<ParticleEffectDef> Pfx { get; set; } = new();
+        #endregion
         
+        #region IHeroPowerActive
         (bool canActivate, string failReason) IHeroPowerActive.CanActivate(Hero hero)
         {
             if (Mission.Current == null)
@@ -52,17 +63,6 @@ namespace BLTAdoptAHero.Powers
 
         bool IHeroPowerActive.IsActive(Hero hero) 
             => BLTHeroPowersMissionBehavior.PowerHandler?.HasHandlers(hero, this) == true;
-
-        private Dictionary<Hero, float> expiry = new();
-
-        protected class DeactivationHandler
-        {
-            public event Action<Hero> OnDeactivate;
-            public void Deactivate(Hero hero)
-            {
-                OnDeactivate?.Invoke(hero);
-            }
-        }
 
         void IHeroPowerActive.Activate(Hero hero, Action expiryCallback)
         {
@@ -114,12 +114,30 @@ namespace BLTAdoptAHero.Powers
                 Math.Max(0, Math.Min(PowerDurationSeconds, expiryVal - MBCommon.GetTime(MBCommon.TimeType.Mission))));
         }
 
-        protected abstract void OnActivation(Hero hero, PowerHandler.Handlers handlers,
-            Agent agent = null, DeactivationHandler deactivationHandler = null);
+        #endregion
+
+        #region Implementation Details
+        private Dictionary<Hero, float> expiry = new();
+
+        protected class DeactivationHandler
+        {
+            public event Action<Hero> OnDeactivate;
+            public void Deactivate(Hero hero)
+            {
+                OnDeactivate?.Invoke(hero);
+            }
+        }
 
         [YamlIgnore, Browsable(false)]
         protected virtual bool RequiresHeroAgent => false;
+        #endregion
 
+        #region Abstract        
+        protected abstract void OnActivation(Hero hero, PowerHandler.Handlers handlers,
+            Agent agent = null, DeactivationHandler deactivationHandler = null);
+        #endregion
+
+        #region IClonable
         public override object Clone()
         {
             var newObj = (DurationMissionHeroPowerDefBase)base.Clone();
@@ -127,5 +145,6 @@ namespace BLTAdoptAHero.Powers
             newObj.expiry = new();
             return newObj;
         }
+        #endregion
     }
 }

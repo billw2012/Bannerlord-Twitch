@@ -17,7 +17,7 @@
                 Minimum="{Binding Minimum}" 
                 Maximum="{Binding Maximum}"
                 IsSnapToTickEnabled="True"
-                TickFrequency="0.05"
+                TickFrequency="{Binding Interval}"
                 Margin="4 0"
                 VerticalAlignment="Center"/>
     </Grid>
