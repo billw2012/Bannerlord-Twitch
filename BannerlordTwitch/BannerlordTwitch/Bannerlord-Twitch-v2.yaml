@@ -788,8 +788,8 @@ GlobalConfigs:
     DifficultyScalingMin: 0.200000003
     DifficultyScalingMax: 3
     KillStreaks:
-    - ID: 45d75aa1-9d90-407f-a333-4aef16aef3a3
-      Enabled: true
+    - Enabled: true
+      ID: 45d75aa1-9d90-407f-a333-4aef16aef3a3
       ShowNotification: false
       Name: Killing Spree
       NotificationText: '{viewer} is on a {name}: {kills} kills!'
@@ -800,8 +800,8 @@ GlobalConfigs:
     KillStreakPopupAlertSound: Horns2
     ReferenceLevelReward: 15
     Achievements:
-    - ID: 596fd61e-757e-46cc-99f4-b4f459018838
-      Enabled: true
+    - Enabled: true
+      ID: 596fd61e-757e-46cc-99f4-b4f459018838
       Name: Reliable
       NotificationText: '{viewer} is {name}!'
       Requirements:
@@ -826,8 +826,8 @@ GlobalConfigs:
         CustomWeight: 0
         CustomItemName: Reward {ITEMNAME}
         CustomItemPower: 1
-    - ID: a98f179e-6a8f-457d-b422-472bb13ad582
-      Enabled: true
+    - Enabled: true
+      ID: a98f179e-6a8f-457d-b422-472bb13ad582
       Name: Trusted
       NotificationText: '{viewer} is {name}!'
       Requirements:
@@ -852,8 +852,8 @@ GlobalConfigs:
         CustomWeight: 0
         CustomItemName: Reward {ITEMNAME}
         CustomItemPower: 1
-    - ID: 96225687-88cc-4d79-b986-0d1778397d61
-      Enabled: true
+    - Enabled: true
+      ID: 96225687-88cc-4d79-b986-0d1778397d61
       Name: Loyal
       NotificationText: '{viewer} is {name}!'
       Requirements:
@@ -878,8 +878,8 @@ GlobalConfigs:
         CustomWeight: 0.550000012
         CustomItemName: '{ITEMNAME} of Fealty'
         CustomItemPower: 1
-    - ID: d2968aea-79f5-44fd-b297-b30a141ef498
-      Enabled: true
+    - Enabled: true
+      ID: d2968aea-79f5-44fd-b297-b30a141ef498
       Name: Rebellious
       NotificationText: '{viewer} is {name}!'
       Requirements:
@@ -904,8 +904,8 @@ GlobalConfigs:
         CustomWeight: 0
         CustomItemName: Reward {ITEMNAME}
         CustomItemPower: 1
-    - ID: c3cd4e46-e0f0-4405-8739-446b9a9c097f
-      Enabled: true
+    - Enabled: true
+      ID: c3cd4e46-e0f0-4405-8739-446b9a9c097f
       Name: Traitorous
       NotificationText: '{viewer} is {name}!'
       Requirements:
@@ -930,8 +930,8 @@ GlobalConfigs:
         CustomWeight: 0
         CustomItemName: Reward {ITEMNAME}
         CustomItemPower: 1
-    - ID: a640c816-93a7-41fa-9d1b-1e74491fece4
-      Enabled: true
+    - Enabled: true
+      ID: a640c816-93a7-41fa-9d1b-1e74491fece4
       Name: Renegade
       NotificationText: '{viewer} is a {name}!'
       Requirements:
@@ -956,8 +956,8 @@ GlobalConfigs:
         CustomWeight: 0.550000012
         CustomItemName: Renegades {ITEMNAME}
         CustomItemPower: 1
-    - ID: 267a6e67-c39c-4f75-8251-38392adeeaf7
-      Enabled: true
+    - Enabled: true
+      ID: 267a6e67-c39c-4f75-8251-38392adeeaf7
       Name: Stream Sniper
       NotificationText: '{viewer} is a {name}: they killed {streamer} 5 times!'
       Requirements:
@@ -1056,21 +1056,53 @@ GlobalConfigs:
   Config:
     PowerDefs:
     - !AddHealthPower
-      HealthToMultiply: 1.5
+      HealthToMultiply: 1.25
       HealthToAdd: 0
       ID: 22ad10d6-34df-4d41-afec-7e98a56f8954
-      Name: Healthy
+      Name: Healthy I
     - !AddHealthPower
-      HealthToMultiply: 0.600000024
+      HealthToMultiply: 1.5
+      HealthToAdd: 0
+      ID: c6356c32-c1e6-4e2a-ad09-e0f054eec108
+      Name: Healthy II
+    - !AddHealthPower
+      HealthToMultiply: 2
+      HealthToAdd: 0
+      ID: a3b16d6d-5a2f-416c-9098-55f13f626f34
+      Name: Healthy III
+    - !AddHealthPower
+      HealthToMultiply: 0.25
       HealthToAdd: 0
       ID: b99d374b-84d0-495e-a430-1811ad6e712b
-      Name: Fragile
+      Name: Fragile I
+    - !AddHealthPower
+      HealthToMultiply: 0.5
+      HealthToAdd: 0
+      ID: 9cf5d507-92ea-4068-85e6-3938db7170e1
+      Name: Fragile II
+    - !AddHealthPower
+      HealthToMultiply: 0.75
+      HealthToAdd: 0
+      ID: 3d71f948-c58b-402f-a134-dfbcef1e28be
+      Name: Fragile III
+    - !AbsorbHealthPower
+      FractionOfDamageToAbsorb: 0.100000001
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 4a60ed27-334e-446e-8e75-9804b1980c8b
+      Name: Vampiric I
+    - !AbsorbHealthPower
+      FractionOfDamageToAbsorb: 0.200000003
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: b3e5da20-1b82-4820-a373-ff9a8190dd98
+      Name: Vampiric II
     - !AbsorbHealthPower
       FractionOfDamageToAbsorb: 0.5
       PowerDurationSeconds: 120
       Pfx: []
-      ID: b3e5da20-1b82-4820-a373-ff9a8190dd98
-      Name: Vampiric
+      ID: 936524f5-7bde-4793-828a-1e0cf4a8a6ba
+      Name: Vampiric III
     - !AddDamagePower
       DamageToMultiply: 1.25
       DamageToAdd: 0
@@ -1117,10 +1149,104 @@ GlobalConfigs:
       PowerDurationSeconds: 120
       Pfx: []
       ID: 6a36fedb-0b2d-459c-b06b-c4230327589b
-      Name: Heavy Hitting
+      Name: Heavy Hitting I
+    - !AddDamagePower
+      DamageToMultiply: 1.5
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChance: 0
+        KnockDownChance: 0
+        ShrugOffChance: 0
+        MakesRearChance: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChance: 0
+        KnockDownChance: 0
+        ShrugOffChance: 0
+        MakesRearChance: 0
+        DismountChance: 0
+      ArmorToIgnore: 0
+      UnblockableChance: 0
+      ShatterShieldChance: 0
+      CutThroughChance: 0
+      StaggerChance: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChance: 0
+          KnockDownChance: 0
+          ShrugOffChance: 0
+          MakesRearChance: 0
+          DismountChance: 0
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: a3e50729-68f2-4a25-ac3f-e5c3738965cf
+      Name: Heavy Hitting II
+    - !AddDamagePower
+      DamageToMultiply: 2
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChance: 0
+        KnockDownChance: 0
+        ShrugOffChance: 0
+        MakesRearChance: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChance: 0
+        KnockDownChance: 0
+        ShrugOffChance: 0
+        MakesRearChance: 0
+        DismountChance: 0
+      ArmorToIgnore: 0
+      UnblockableChance: 0
+      ShatterShieldChance: 0
+      CutThroughChance: 0
+      StaggerChance: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChance: 0
+          KnockDownChance: 0
+          ShrugOffChance: 0
+          MakesRearChance: 0
+          DismountChance: 0
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 2355a51d-d813-48b3-9987-d997099d51ed
+      Name: Heavy Hitting III
     - !ReflectDamagePower
       FractionOfDamageToReflect: 0.25
-      ReflectedDamageIsSubtracted: true
+      ReflectedDamageIsSubtracted: false
       HitBehavior:
         KnockBackChance: 0
         KnockDownChance: 0
@@ -1130,7 +1256,57 @@ GlobalConfigs:
       PowerDurationSeconds: 120
       Pfx: []
       ID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
-      Name: Retribution
+      Name: Retribution I
+    - !ReflectDamagePower
+      FractionOfDamageToReflect: 0.5
+      ReflectedDamageIsSubtracted: false
+      HitBehavior:
+        KnockBackChance: 0
+        KnockDownChance: 0
+        ShrugOffChance: 0
+        MakesRearChance: 0
+        DismountChance: 0
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 347cec61-aa6d-4002-87de-47d298ca3161
+      Name: Retribution II
+    - !ReflectDamagePower
+      FractionOfDamageToReflect: 0.800000012
+      ReflectedDamageIsSubtracted: false
+      HitBehavior:
+        KnockBackChance: 0
+        KnockDownChance: 0
+        ShrugOffChance: 0
+        MakesRearChance: 0
+        DismountChance: 0
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 4341afec-1b6e-4ee9-8a70-c83a8d1c56c6
+      Name: Retribution III
+    - !StatModifyPower
+      Modifiers:
+        Scale: 
+        ApplyToMount: false
+        Properties:
+        - Name: MaxSpeedMultiplier
+          Add: 
+          Multiply: 1.10000002
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
+      Name: Fleet Footed I
+    - !StatModifyPower
+      Modifiers:
+        Scale: 
+        ApplyToMount: false
+        Properties:
+        - Name: MaxSpeedMultiplier
+          Add: 
+          Multiply: 1.20000005
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 79a9ca29-9a39-4cb3-b536-944d44bb92fd
+      Name: Fleet Footed II
     - !StatModifyPower
       Modifiers:
         Scale: 
@@ -1141,8 +1317,38 @@ GlobalConfigs:
           Multiply: 1.5
       PowerDurationSeconds: 120
       Pfx: []
-      ID: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
-      Name: Fleet Footed
+      ID: 0d6daf6f-cc83-4508-9833-2c212fcfd4eb
+      Name: Fleet Footed III
+    - !StatModifyPower
+      Modifiers:
+        Scale: 1
+        ApplyToMount: true
+        Properties:
+        - Name: MountChargeDamage
+          Add: 
+          Multiply: 2
+        - Name: MountManeuver
+          Add: 
+          Multiply: 1.20000005
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 20f6817e-8f45-4dc3-a513-77707fb9c96d
+      Name: Charge I
+    - !StatModifyPower
+      Modifiers:
+        Scale: 1
+        ApplyToMount: true
+        Properties:
+        - Name: MountChargeDamage
+          Add: 
+          Multiply: 3
+        - Name: MountManeuver
+          Add: 
+          Multiply: 1.39999998
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 6cca75ef-a900-4593-8ea8-cf96163003c0
+      Name: Charge II
     - !StatModifyPower
       Modifiers:
         Scale: 1
@@ -1156,8 +1362,8 @@ GlobalConfigs:
           Multiply: 2
       PowerDurationSeconds: 120
       Pfx: []
-      ID: 20f6817e-8f45-4dc3-a513-77707fb9c96d
-      Name: Charge
+      ID: 64e3832f-9f08-40dd-b1ab-0be6a26ed091
+      Name: Charge III
     - !AddDamagePower
       DamageToMultiply: 1
       DamageToAdd: 0
@@ -1353,7 +1559,34 @@ GlobalConfigs:
       UseCamel: false
       PassivePower:
         Name: Healthy
-        Powers: []
+        Powers:
+        - PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
+          Requirements:
+          - !StatisticClassSpecificRequirement
+            CurrentClass: true
+            RequiredClass: 00000000-0000-0000-0000-000000000000
+            Statistic: Battles
+            Comparison: GreaterOrEqual
+            Value: 5
+            OtherStatistic: None
+        - PowerID: c6356c32-c1e6-4e2a-ad09-e0f054eec108
+          Requirements:
+          - !StatisticClassSpecificRequirement
+            CurrentClass: true
+            RequiredClass: 00000000-0000-0000-0000-000000000000
+            Statistic: Battles
+            Comparison: GreaterOrEqual
+            Value: 20
+            OtherStatistic: None
+        - PowerID: a3b16d6d-5a2f-416c-9098-55f13f626f34
+          Requirements:
+          - !StatisticClassSpecificRequirement
+            CurrentClass: true
+            RequiredClass: 00000000-0000-0000-0000-000000000000
+            Statistic: Battles
+            Comparison: GreaterOrEqual
+            Value: 50
+            OtherStatistic: None
       ActivePower:
         Name: Fireblade
         Powers: []
@@ -1582,29 +1815,6 @@ GlobalConfigs:
     - ID: f04e7a10-950b-48a4-bed3-7aa2091aa268
       Enabled: true
       Name: berserker
-      Description: Foot soldier with lower health, that can gain health by doing damage.
-      Formation: Skirmisher
-      Slot1: TwoHandedAxe
-      Slot2: None
-      Slot3: None
-      Slot4: None
-      UseHorse: false
-      UseCamel: false
-      PassivePower:
-        Name: Glass Cannon
-        Powers: []
-      ActivePower:
-        Name: Berserker Rage
-        Powers: []
-        ActivateEffect:
-          ParticleEffect: psys_burning_projectile_default_coll
-          Sound: None
-        DeactivateEffect:
-          ParticleEffect: psys_burning_projectile_default_coll_small
-          Sound: None
-    - ID: 91e77af4-4d1a-4186-a6db-f20fcdce892e
-      Enabled: true
-      Name: b0rserker
       Description: Foot soldier with lower health, that can gain health by doing damage.
       Formation: Skirmisher
       Slot1: TwoHandedAxe
