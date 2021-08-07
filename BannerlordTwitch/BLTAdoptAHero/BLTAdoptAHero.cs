@@ -319,17 +319,17 @@ namespace BLTAdoptAHero
             return previousModel.CalculateShieldDamage(baseDamage);
         }
 
-        #if e159
+#if e159
         public override float GetDamageMultiplierForBodyPart(BoneBodyPartType bodyPart, DamageTypes type)
         {
-            throw new NotImplementedException();
+            return previousModel.GetDamageMultiplierForBodyPart(bodyPart, type);
         }
-        #else //if e1510 || e160
+#else
         public override float GetDamageMultiplierForBodyPart(BoneBodyPartType bodyPart, DamageTypes type, bool isHuman)
         {
             return previousModel.GetDamageMultiplierForBodyPart(bodyPart, type, isHuman);
         }
-        #endif
+#endif
         
         public class DecideCrushedThroughParams
         {
