@@ -17,7 +17,7 @@ namespace BannerlordTwitch.Helpers
         // private int Id { get; set; }
         
         [Description("Particle effect system name, see ParticleEffects.txt for the full vanilla list"),
-         ItemsSource(typeof(ParticleEffectItemSource)), PropertyOrder(1), UsedImplicitly]
+         ItemsSource(typeof(LoopingParticleEffectItemSource)), PropertyOrder(1), UsedImplicitly]
         public string Name { get; set; }
 
         public enum AttachPointEnum

@@ -53,7 +53,7 @@ namespace BLTBuffet
         internal class ParticleEffectDef
         {
             [Description("Particle effect system name, see ParticleEffects.txt for the full vanilla list"),
-             ItemsSource(typeof(ParticleEffectItemSource)), PropertyOrder(1)]
+             ItemsSource(typeof(LoopingParticleEffectItemSource)), PropertyOrder(1)]
             public string Name { get; set; }
 
             public enum AttachPointEnum
@@ -152,7 +152,7 @@ namespace BLTBuffet
             public float? DamageMultiplier { get; set; }
 
             [Description("One shot vfx to apply when the effect is activated"),
-             ItemsSource(typeof(ParticleEffectItemSource)), PropertyOrder(15)]
+             ItemsSource(typeof(OneShotParticleEffectItemSource)), PropertyOrder(15)]
             public string ActivateParticleEffect { get; set; }
 
             [Description("Sound to play when effect is activated, see Sounds.txt for the full vanilla list"),
@@ -161,7 +161,7 @@ namespace BLTBuffet
 
             [Description(
                  "One shot vfx to apply when the effect is deactivated, see ParticleEffects.txt for the full vanilla list"),
-             ItemsSource(typeof(ParticleEffectItemSource)), PropertyOrder(17)]
+             ItemsSource(typeof(OneShotParticleEffectItemSource)), PropertyOrder(17)]
             public string DeactivateParticleEffect { get; set; }
 
             [Description("Sound to play when effect is deactivated, see Sounds.txt for the full vanilla list"),

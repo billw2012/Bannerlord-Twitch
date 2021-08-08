@@ -183,7 +183,7 @@ namespace BLTAdoptAHero.Powers
         [Category("Appearance"), 
          Description("Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing " +
                      "fire/smoke effect)"), 
-         ItemsSource(typeof(ParticleEffectItemSource)), PropertyOrder(21), UsedImplicitly]
+         ItemsSource(typeof(LoopingParticleEffectItemSource)), PropertyOrder(21), UsedImplicitly]
         public string MissileTrailParticleEffect { get; set; }
         
         [Category("Appearance"),

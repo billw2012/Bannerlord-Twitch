@@ -9,7 +9,7 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
-    [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
+    [Description("Applies modifiers to various character stats"), UsedImplicitly]
     public class StatModifyPower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         [Category("Power Config"), Description("What hero stat to modify"), 

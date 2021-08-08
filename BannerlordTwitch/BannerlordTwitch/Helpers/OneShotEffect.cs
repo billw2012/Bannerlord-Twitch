@@ -12,7 +12,7 @@ namespace BannerlordTwitch.Helpers
 {
     public struct OneShotEffect
     {
-        [Description("Particle Effect to play"), ItemsSource(typeof(ParticleEffectItemSource)), 
+        [Description("Particle Effect to play"), ItemsSource(typeof(OneShotParticleEffectItemSource)), 
          PropertyOrder(1), UsedImplicitly]
         public string ParticleEffect { get; set; }
 
