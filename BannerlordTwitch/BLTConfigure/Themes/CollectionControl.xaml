@@ -23,7 +23,16 @@
                     xmlns:adoptAHero="clr-namespace:BLTAdoptAHero;assembly=BLTAdoptAHero"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:achievements="clr-namespace:BLTAdoptAHero.Achievements;assembly=BLTAdoptAHero"
-                    xmlns:helpers="clr-namespace:BannerlordTwitch.Helpers;assembly=BannerlordTwitch">
+                    xmlns:helpers="clr-namespace:BannerlordTwitch.Helpers;assembly=BannerlordTwitch"
+                    xmlns:bltConfigure="clr-namespace:BLTConfigure"
+                    xmlns:powers="clr-namespace:BLTAdoptAHero.Powers;assembly=BLTAdoptAHero">
+
+        
+    <bltConfigure:BoolToVisibilityConverter x:Key="BoolToHiddenConverter" TrueValue="Visible" FalseValue="Hidden" />
+    <bltConfigure:BoolToVisibilityConverter x:Key="BoolToCollapsedConverter" TrueValue="Visible" FalseValue="Collapsed" />
+    <bltConfigure:BoolToVisibilityConverter x:Key="BoolToCollapsedConverterInverted" TrueValue="Collapsed" FalseValue="Visible" />
+    <bltConfigure:NonDefaultVisibilityConverter x:Key="HiddenPercentDefaultConverter" Default="100" 
+                                                DefaultVisibility="Collapsed" NonDefaultVisibility="Visible"/>
 
     <xctk:InverseBoolConverter x:Key="InverseBoolConverter" />
     <xctk:ObjectTypeToNameConverter x:Key="ObjectTypeToNameConverter" />
@@ -49,33 +58,74 @@
         </Border>
     </DataTemplate>
     
-    <!-- AchievementSystem -->
-    <DataTemplate DataType="{x:Type achievements:AchievementDef}">
+    <!-- IAchievementRequirement -->
+    <DataTemplate DataType="{x:Type achievements:IAchievementRequirement}">
         <Border Style="{StaticResource ItemBackground}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <CheckBox IsChecked="{Binding Enabled}" Margin="2 2 5 2"/>
-                <TextBlock Grid.Column="1" Text="{Binding}" TextWrapping="Wrap"/>
-            </Grid>
-        </Border>
-    </DataTemplate>   
-    
-    <!-- KillStreakRewards -->
-    <DataTemplate DataType="{x:Type adoptAHero:Actions.Util.KillStreakRewards}">
-        <Border Style="{StaticResource ItemBackground}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <CheckBox IsChecked="{Binding Enabled}" Margin="2 2 5 2"/>
-                <TextBlock Grid.Column="1" Text="{Binding}" TextWrapping="Wrap"/>
+                <TextBlock Text="{Binding Description, Mode=OneTime}" TextWrapping="Wrap"/>
             </Grid>
         </Border>
     </DataTemplate>
+    
+    <!-- AchievementDef -->
+    <DataTemplate DataType="{x:Type achievements:AchievementDef}">
+        <Border Style="{StaticResource ItemBackground}" HorizontalAlignment="Stretch">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <CheckBox IsChecked="{Binding Enabled}"
+                          VerticalAlignment="Center" Margin="2 2 5 2"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" 
+                           Text="{Binding Name, Mode=OneTime}" 
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center" Margin="4 0"/>
+                <ItemsControl Grid.Row="1" Grid.Column="0" 
+                              Grid.ColumnSpan="2"
+                              ItemsSource="{Binding Requirements, Mode=OneTime}" 
+                              VerticalAlignment="Center" Margin="4 0" HorizontalAlignment="Stretch"/>
+				<TextBlock Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
+                           Text="{Binding RewardsDescription, Mode=OneTime}" 
+                           VerticalAlignment="Center"
+                           Margin="4 0" TextWrapping="Wrap"/>
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <!-- KillStreakRewards -->
+	<DataTemplate DataType="{x:Type adoptAHero:Actions.Util.KillStreakDef}">
+		<Border Style="{StaticResource ItemBackground}" HorizontalAlignment="Stretch">
+			<Grid HorizontalAlignment="Stretch">
+				<Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+				</Grid.ColumnDefinitions>
+				<CheckBox IsChecked="{Binding Enabled}"
+                          VerticalAlignment="Center" Margin="2 2 5 2"/>
+				<TextBlock Grid.Column="1" FontWeight="Bold" 
+                           Text="{Binding Name, Mode=OneTime}" 
+                           VerticalAlignment="Center" Margin="4 0"/>
+				<TextBlock Grid.Column="2" 
+                           Text="{Binding KillsRequired, StringFormat={}{0} kills, Mode=OneTime}" 
+                           VerticalAlignment="Center" Margin="4 0" HorizontalAlignment="Stretch"/>
+				<TextBlock Grid.Column="3" 
+                           Text="{Binding RewardsDescription, Mode=OneTime}" 
+						   VerticalAlignment="Center" Margin="4 0" TextWrapping="Wrap"/>
+			</Grid>
+		</Border>
+	</DataTemplate>
 
     <!-- Shout -->
     <DataTemplate DataType="{x:Type adoptAHero:Shout}">
@@ -97,18 +147,208 @@
 
     <!-- HeroPowerDefBase -->
     <DataTemplate DataType="{x:Type adoptAHero:Powers.HeroPowerDefBase}">
-        <Border Style="{StaticResource ItemBackground}">
-            <Grid>
-                <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+        <Border Style="{StaticResource ItemBackground}" HorizontalAlignment="Stretch">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" FontWeight="Bold" 
+                           Text="{Binding Name, Mode=OneTime}" 
+                           VerticalAlignment="Center" Margin="4 0"/>
+                <TextBlock Grid.Row="1" Grid.Column="0"
+                           Text="Passive" 
+                           VerticalAlignment="Center" Margin="4 0"/>
+                <TextBlock Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"
+                           Text="{Binding Description, Mode=OneTime}" 
+                           TextWrapping="Wrap"
+                           VerticalAlignment="Center" Margin="4 0"/>
             </Grid>
         </Border>
     </DataTemplate>
-
-    <!-- HeroClassDef -->
-    <DataTemplate DataType="{x:Type adoptAHero:HeroClassDef}">
+    
+    <!-- DurationMissionHeroPowerDefBase -->
+    <DataTemplate DataType="{x:Type adoptAHero:Powers.DurationMissionHeroPowerDefBase}">
+        <Border Style="{StaticResource ItemBackground}" HorizontalAlignment="Stretch">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" FontWeight="Bold" 
+                           Text="{Binding Name, Mode=OneTime}" 
+                           VerticalAlignment="Center" Margin="4 0"/>
+                <TextBlock Grid.Row="1" Grid.Column="0"
+                           Text="{Binding PowerDurationSeconds, 
+                                StringFormat={}{0}s, Mode=OneTime}" 
+                                       VerticalAlignment="Center" Margin="4 0"/>
+                <TextBlock Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"
+                           Text="{Binding Description, Mode=OneTime}" 
+                           TextWrapping="Wrap"
+                           VerticalAlignment="Center" Margin="4 0"/>
+            </Grid>
+        </Border>
+    </DataTemplate>
+    
+    <!-- StatModifyPower -->
+    <DataTemplate DataType="{x:Type adoptAHero:Powers.StatModifyPower}">
+        <Border Style="{StaticResource ItemBackground}" HorizontalAlignment="Stretch">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" FontWeight="Bold" 
+                           Text="{Binding Name, Mode=OneTime}" 
+                           VerticalAlignment="Top" Margin="4 0"/>
+                <TextBlock Grid.Row="1" Grid.Column="0"
+                           Text="{Binding PowerDurationSeconds, 
+                                StringFormat={}{0}s, Mode=OneTime}"
+                           VerticalAlignment="Top" Margin="4 0"/>
+                <ContentControl Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"
+                                Content="{Binding Modifiers, Mode=OneTime}"
+                                VerticalAlignment="Top" Margin="4 0"/>
+            </Grid>
+        </Border>
+    </DataTemplate>
+        
+    <!-- AgentModifierConfig -->
+    <DataTemplate DataType="{x:Type bannerlordTwitch:AgentModifierConfig}">
+        <Border Style="{StaticResource ItemBackground}" HorizontalAlignment="Stretch">
+            <StackPanel HorizontalAlignment="Stretch">
+                <TextBlock Visibility="{Binding ApplyToMount, 
+                                Converter={StaticResource BoolToCollapsedConverter}}"
+                           Text="Applies to mount" 
+                           Margin="4 0"/>
+                <TextBlock FontWeight="Bold" 
+                           Visibility="{Binding ScalePercent, 
+                                Converter={StaticResource HiddenPercentDefaultConverter}}"
+                           Text="{Binding ScalePercent, 
+                                StringFormat=Scale: {0}%, Mode=OneTime}" 
+                           Margin="4 0"/>
+                <ItemsControl ItemsSource="{Binding Properties, Mode=OneTime}" 
+                              Margin="4 0" HorizontalAlignment="Stretch"/>
+                <ItemsControl ItemsSource="{Binding Skills, Mode=OneTime}" 
+                              Margin="4 0" HorizontalAlignment="Stretch"/>
+            </StackPanel>
+        </Border>
+    </DataTemplate>
+    
+    <!-- PassivePowerGroupItem -->
+    <DataTemplate DataType="{x:Type powers:PassivePowerGroupItem}">
         <Border Style="{StaticResource ItemBackground}">
             <Grid>
-                <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Power.Description}" 
+                           Margin="4 0" TextWrapping="Wrap"/>
+                <ItemsControl Grid.Row="1" 
+                              ItemsSource="{Binding Requirements, Mode=OneTime}" 
+                              Margin="4 0" HorizontalAlignment="Stretch"/>
+            </Grid>
+        </Border>
+    </DataTemplate>
+    
+    <!-- PassivePowerGroup -->
+    <DataTemplate DataType="{x:Type powers:PassivePowerGroup}">
+        <Border Style="{StaticResource ItemBackground}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock FontWeight="DemiBold" Text="{Binding Name}" 
+                           TextWrapping="Wrap" />
+                <ItemsControl Grid.Row="1" 
+                              ItemsSource="{Binding Powers, Mode=OneTime}" 
+                              VerticalAlignment="Center" Margin="4 0" HorizontalAlignment="Stretch"/>
+            </Grid>
+        </Border>
+    </DataTemplate>
+    
+    <!-- ActivePowerGroupItem -->
+    <DataTemplate DataType="{x:Type powers:ActivePowerGroupItem}">
+        <Border Style="{StaticResource ItemBackground}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Power.Description}" Margin="4 0" TextWrapping="Wrap"/>
+                <ItemsControl Grid.Row="1" 
+                              ItemsSource="{Binding Requirements, Mode=OneTime}" 
+                              Margin="4 0" HorizontalAlignment="Stretch"/>
+            </Grid>
+        </Border>
+    </DataTemplate>
+    
+    <!-- ActivePowerGroup -->
+    <DataTemplate DataType="{x:Type powers:ActivePowerGroup}">
+        <Border Style="{StaticResource ItemBackground}">
+            <StackPanel>
+                <TextBlock FontWeight="DemiBold" Text="{Binding Name}" TextWrapping="Wrap" />
+                <ItemsControl ItemsSource="{Binding Powers, Mode=OneTime}" 
+                              VerticalAlignment="Center" Margin="4 0" HorizontalAlignment="Stretch"/>
+            </StackPanel>
+        </Border>
+    </DataTemplate>
+    
+    <!-- HeroClassDef -->
+    <DataTemplate DataType="{x:Type adoptAHero:HeroClassDef}">
+        <Border Style="{StaticResource ItemBackground}" HorizontalAlignment="Stretch">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Grid.Row="0" Grid.ColumnSpan="4" Fill="Bisque"/>
+                <StackPanel Grid.Row="0" Grid.Column="0"  Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding Enabled}"
+                              VerticalAlignment="Top" Margin="2 2 5 2"/>
+                    <TextBlock FontWeight="Bold" 
+                               Text="{Binding Name, Mode=OneTime}" 
+                               VerticalAlignment="Top" Margin="4 0"/>
+                </StackPanel>
+                <Grid VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ItemsControl ItemsSource="{Binding SlotItemNames, Mode=OneTime}" 
+                                  VerticalAlignment="Center" Margin="4 0" HorizontalAlignment="Stretch"/>
+                    <TextBlock Grid.Row="1" Text="{Binding MountDescription, Mode=OneTime}" 
+                               VerticalAlignment="Center"
+                               Margin="4 0" TextWrapping="Wrap"/>
+                </Grid>
+                <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" 
+                           Text="Passive Power" VerticalAlignment="Top" Margin="4 0"/>
+                <ContentControl Grid.Row="1" Grid.Column="1" 
+                                Content="{Binding PassivePower}" 
+                                HorizontalAlignment="Stretch"/>
+                <TextBlock Grid.Row="0" Grid.Column="2" FontWeight="Bold" 
+                           Text="Active Power" VerticalAlignment="Top" Margin="4 0"/>
+                <ContentControl Grid.Row="1" Grid.Column="2" 
+                                Content="{Binding ActivePower}"
+                                HorizontalAlignment="Stretch"/>
             </Grid>
         </Border>
     </DataTemplate>
@@ -134,18 +374,31 @@
     <!-- PropertyModifierDef -->
     <DataTemplate DataType="{x:Type helpers:PropertyModifierDef}">
         <Border Style="{StaticResource ItemBackground}">
-            <Grid>
-                <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock FontWeight="DemiBold" Text="{Binding PropertyUIName}"
+                           TextWrapping="Wrap" />
+                <TextBlock Grid.Column="1" Text="{Binding ModifiersDescription}" 
+                           TextWrapping="Wrap" />
             </Grid>
         </Border>
     </DataTemplate>
     
-    
     <!-- SkillModifierDef -->
     <DataTemplate DataType="{x:Type helpers:SkillModifierDef}">
         <Border Style="{StaticResource ItemBackground}">
-            <Grid>
-                <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock FontWeight="DemiBold" Text="{Binding SkillUIName}"
+                           TextWrapping="Wrap" />
+                <TextBlock Grid.Column="1" Text="{Binding ModifiersDescription}" 
+                           TextWrapping="Wrap" />
             </Grid>
         </Border>
     </DataTemplate>

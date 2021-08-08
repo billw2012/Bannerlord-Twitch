@@ -31,18 +31,27 @@ namespace BannerlordTwitch.Helpers
         public float Add { get; set; }
         
         public float Apply(float property) => property * ModifierPercent / 100f + Add;
+
+        [YamlIgnore, Browsable(false)]
+        public string PropertyUIName => DrivenPropertyItemSource.GetFriendlyName(Name);
         
-        public override string ToString()
+        [YamlIgnore, Browsable(false)]
+        public string ModifiersDescription
         {
-            string result = $"{DrivenPropertyItemSource.GetFriendlyName(Name)}: ";
-            if (ModifierPercent != 100) result += $"{ModifierPercent}% ";
-            if (Add != 0) result += Add > 0 ? $"+{Add}" : $"{Add}";
-            if (ModifierPercent == 100 && Add == 0)
+            get
             {
-                result += $"(no change)";
+                string result = string.Empty;
+                if (ModifierPercent != 100) result += $"{ModifierPercent}% ";
+                if (Add != 0) result += Add > 0 ? $"+{Add}" : $"{Add}";
+                if (ModifierPercent == 100 && Add == 0)
+                {
+                    result += "(no change)";
+                }
+                return result;
             }
-            return result;
         }
+
+        public override string ToString() => $"{PropertyUIName}: {ModifiersDescription}";
 
         public object Clone() => CloneHelpers.CloneProperties(this);
         

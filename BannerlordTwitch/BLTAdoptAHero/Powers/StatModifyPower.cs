@@ -39,10 +39,7 @@ namespace BLTAdoptAHero.Powers
         #endregion
 
         #region Public Interface
-        public override string ToString() => $"{base.ToString()}: {Description}";
-
-        [YamlIgnore]
-        public string Description => $"{Modifiers}";
+        public override string Description => $"{Modifiers}";
         #endregion
 
         #region IDocumentable

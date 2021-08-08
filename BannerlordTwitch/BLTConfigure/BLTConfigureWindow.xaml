@@ -27,18 +27,18 @@
             <Style TargetType="TextBlock">
                 <Setter Property="Margin" Value="2" />
                 <Setter Property="Padding" Value="2" />
-                <Setter Property="FontSize" Value="14" />
+                <!-- <Setter Property="FontSize" Value="14" /> -->
                 <Setter Property="TextWrapping" Value="Wrap"/>
             </Style>
             <Style TargetType="Button">
                 <Setter Property="Margin" Value="5" />
                 <Setter Property="Padding" Value="6 4" />
-                <Setter Property="FontSize" Value="14" />
+                <!-- <Setter Property="FontSize" Value="14" /> -->
             </Style>
             <Style TargetType="xctk:DropDownButton">
                 <Setter Property="Margin" Value="5" />
                 <Setter Property="Padding" Value="6 4" />
-                <Setter Property="FontSize" Value="14" />
+                <!-- <Setter Property="FontSize" Value="14" /> -->
             </Style>
             <Style TargetType="ListBox">
                 <Setter Property="Margin" Value="5" />

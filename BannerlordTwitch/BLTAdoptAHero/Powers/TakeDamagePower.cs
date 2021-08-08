@@ -15,14 +15,13 @@ namespace BLTAdoptAHero.Powers
     public class TakeDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         #region User Editable
-        [Browsable(false)]
-        public float DamageMultiplier { get; set; } = 1f;
-        
+
         [Category("Power Config"),
-         Description("Damage modifier (set less than 100% to reduce incoming damage, set greater than 100% to increase it)"),
-         UIRange(0, 1000, 10), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         YamlIgnore, PropertyOrder(1), UsedImplicitly]
-        public float DamageModifierPercent { get => DamageMultiplier * 100; set => DamageMultiplier = value / 100f; }
+         Description(
+             "Damage modifier (set less than 100% to reduce incoming damage, set greater than 100% to increase it)"),
+         UIRange(0, 200, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         PropertyOrder(1), UsedImplicitly]
+        public float DamageModifierPercent { get; set; } = 100f;
 
         [Category("Power Config"),
          Description("Behaviors to add to the damage (e.g. add Shrug Off to ensure the hero is never " +
@@ -46,10 +45,10 @@ namespace BLTAdoptAHero.Powers
             blowParams.blow.BlowFlag |= AddHitBehavior.Generate(agent);
             blowParams.blow.BlowFlag &= ~RemoveHitBehavior.Generate(agent);
 
-            if (DamageMultiplier != 1)
+            if (DamageModifierPercent != 100)
             {
                 blowParams.collisionData.BaseMagnitude = blowParams.blow.BaseMagnitude 
-                    = (int) (blowParams.blow.BaseMagnitude * DamageMultiplier);
+                    = (int) (blowParams.blow.BaseMagnitude * DamageModifierPercent / 100f);
                 blowParams.collisionData.InflictedDamage = blowParams.blow.InflictedDamage
                     = (int) (blowParams.blow.BaseMagnitude - blowParams.blow.AbsorbedByArmor);
             }
@@ -57,29 +56,17 @@ namespace BLTAdoptAHero.Powers
         #endregion
 
         #region Public Interface
-        public override string ToString() => $"{base.ToString()}: {Description}";
-
-        [YamlIgnore]
-        public string Description
+        [YamlIgnore, Browsable(false)]
+        public bool IsEnabled => DamageModifierPercent != 100;
+        public override string Description
         {
             get 
             {
+                if (!IsEnabled) return "(disabled)";
                 var parts = new List<string>();
-                if (DamageModifierPercent != 100)
-                {
-                    parts.Add($"{DamageModifierPercent:0}% damage");
-                }
-
-                string addHit = AddHitBehavior.ToString();
-                if (!string.IsNullOrEmpty(addHit))
-                {
-                    parts.Add(addHit);
-                }
-                string removeHit = RemoveHitBehavior.ToString();
-                if (!string.IsNullOrEmpty(removeHit))
-                {
-                    parts.Add(removeHit);
-                }
+                if (DamageModifierPercent != 100) parts.Add($"{DamageModifierPercent:0}% damage");
+                if (AddHitBehavior.IsEnabled) parts.Add(AddHitBehavior.ToString());
+                if (RemoveHitBehavior.IsEnabled) parts.Add(RemoveHitBehavior.ToString());
                 return string.Join(", ", parts);
             }
         }
@@ -92,9 +79,7 @@ namespace BLTAdoptAHero.Powers
         #region IDocumentable
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
-            generator.PropertyValuePair(
-                nameof(DamageMultiplier).SplitCamelCase(), 
-                $"{DamageMultiplier * 100:0}%");
+            generator.PropertyValuePair("Damage", $"{DamageModifierPercent:0}%");
             generator.PropertyValuePair(nameof(AddHitBehavior).SplitCamelCase(), () => AddHitBehavior.GenerateDocumentation(generator));
             generator.PropertyValuePair(nameof(RemoveHitBehavior).SplitCamelCase(), () => RemoveHitBehavior.GenerateDocumentation(generator));
         }

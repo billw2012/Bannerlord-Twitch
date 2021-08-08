@@ -15,14 +15,11 @@ namespace BLTAdoptAHero.Powers
     public class ReflectDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         #region User Editable
-        [Browsable(false)]
-        public float FractionOfDamageToReflect { get; set; } = 0.1f;
-
         [Category("Power Config"), 
          Description("What percent of damage to reflect back to attacker"),
          Range(0, 200), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         YamlIgnore, PropertyOrder(1), UsedImplicitly]
-        public float ReflectPercent { get => FractionOfDamageToReflect * 100; set => FractionOfDamageToReflect = value / 100f; }
+         PropertyOrder(1), UsedImplicitly]
+        public float ReflectPercent { get; set; }
         
         [Category("Power Config"), 
          Description("Whether the damage that is reflected is also subtracted from the damage the hero takes " +
@@ -42,7 +39,7 @@ namespace BLTAdoptAHero.Powers
         
         private void OnTakeDamage(Hero hero, Agent agent, Hero attackerHero, Agent attackerAgent, BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams) 
         {
-            int damage = (int) (blowParams.blow.InflictedDamage * FractionOfDamageToReflect);
+            int damage = (int) (blowParams.blow.InflictedDamage * ReflectPercent / 100f);
             if (damage > 0 && attackerAgent != null && attackerAgent != agent)
             {
                 var blow = new Blow(agent.Index)
@@ -68,19 +65,15 @@ namespace BLTAdoptAHero.Powers
         #endregion
 
         #region Public Interface
-        public override string ToString() => $"{base.ToString()}: {Description}";
-
-        [YamlIgnore]
-        public string Description
-            => $"Reflect {ReflectPercent:0}% of damage received, {HitBehavior}";
+        [YamlIgnore, Browsable(false)] 
+        public bool IsEnabled => ReflectPercent != 0;
+        public override string Description => !IsEnabled ? "(disabled)" : $"Reflect {ReflectPercent:0}% damage, {HitBehavior}";
         #endregion
 
         #region IDocumentable
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
-            generator.PropertyValuePair(
-                nameof(FractionOfDamageToReflect).SplitCamelCase(), 
-                $"{FractionOfDamageToReflect * 100:0}%");
+            generator.PropertyValuePair("Reflect", $"{ReflectPercent:0}%");
             if (ReflectedDamageIsSubtracted)
             {
                 generator.Value($"Reflected damage is subtracted from incoming damage");

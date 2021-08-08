@@ -33,7 +33,6 @@ namespace BannerlordTwitch
         [Description("Skills to change, and how much by (these aren't compatible with Apply To Mount)"), 
          PropertyOrder(3), UsedImplicitly]
         public ObservableCollection<SkillModifierDef> Skills { get; set; } = new();
-
         
         public override string ToString()
         {

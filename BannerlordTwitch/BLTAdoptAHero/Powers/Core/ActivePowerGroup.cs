@@ -20,7 +20,7 @@ namespace BLTAdoptAHero.Powers
          ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(1), UsedImplicitly]
         public Guid PowerID { get; set; }
 
-        [ReadOnly(true), YamlIgnore]
+        [Browsable(false), YamlIgnore]
         public IHeroPowerActive Power => PowerConfig?.GetPower(PowerID) as IHeroPowerActive;
         
         public override string ToString() => $"[{Power?.ToString() ?? "(no power)"}] {base.ToString()}";

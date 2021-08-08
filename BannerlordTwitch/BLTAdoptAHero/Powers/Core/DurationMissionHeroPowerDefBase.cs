@@ -116,17 +116,7 @@ namespace BLTAdoptAHero.Powers
 
         #endregion
 
-        #region Public Interface
-
-        public override string ToString()
-        {
-            return $"{base.ToString()} ({PowerDurationSeconds}s)";
-        }
-
-        #endregion
-
         #region Implementation Details
-
         private Dictionary<Hero, float> expiry = new();
 
         protected class DeactivationHandler

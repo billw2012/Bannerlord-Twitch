@@ -4,6 +4,7 @@ using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BannerlordTwitch.Helpers
 {
@@ -28,18 +29,27 @@ namespace BannerlordTwitch.Helpers
         
         public float Apply(float skill) => skill * ModifierPercent / 100f + Add;
 
-        public override string ToString()
+        [YamlIgnore, Browsable(false)]
+        public string SkillUIName => Skill.ToString().SplitCamelCase();
+        
+        [YamlIgnore, Browsable(false)]
+        public string ModifiersDescription
         {
-            string result = $"{Skill.ToString().SplitCamelCase()}: ";
-            if (ModifierPercent != 100) result += $"{ModifierPercent}% ";
-            if (Add != 0) result += Add > 0 ? $"+{Add}" : $"{Add}";
-            if (ModifierPercent == 100 && Add == 0)
+            get
             {
-                result += $"(no change)";
+                string result = string.Empty;
+                if (ModifierPercent != 100) result += $"{ModifierPercent}% ";
+                if (Add != 0) result += Add > 0 ? $"+{Add}" : $"{Add}";
+                if (ModifierPercent == 100 && Add == 0)
+                {
+                    result += "(no change)";
+                }
+                return result;
             }
-            return result;
         }
         
+        public override string ToString() => $"{SkillUIName}: {ModifiersDescription}";
+
         public object Clone() => CloneHelpers.CloneProperties(this);
         
         public event PropertyChangedEventHandler PropertyChanged;

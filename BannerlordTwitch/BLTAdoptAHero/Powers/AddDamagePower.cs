@@ -24,15 +24,12 @@ namespace BLTAdoptAHero.Powers
     public class AddDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         #region User Editable
-        [Browsable(false)]
-        public float DamageToMultiply { get; set; } = 1f;
-        
-        [Category("Effect"), 
+        [Category("Effect"),
          Description("Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it)"),
-         UIRangeAttribute(0, 10, 0.05f),
+         UIRangeAttribute(0, 500, 5f),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         YamlIgnore, PropertyOrder(1), UsedImplicitly]
-        public float DamageModifierPercent { get => DamageToMultiply * 100; set => DamageToMultiply = value / 100f; }
+         PropertyOrder(1), UsedImplicitly]
+        public float DamageModifierPercent { get; set; } = 100f;
 
         [Category("Effect"), Description("How much damage to add"), PropertyOrder(2), UsedImplicitly]
         public int DamageToAdd { get; set; }
@@ -48,121 +45,43 @@ namespace BLTAdoptAHero.Powers
 
         [Category("Effect"), Description("What fraction (0 to 1) of armor to ignore when applying damage"), 
          PropertyOrder(6),
-         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UIRangeAttribute(0, 100, 1f),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          UsedImplicitly]
-        public float ArmorToIgnore { get; set; }
+        public float ArmorToIgnorePercent { get; set; }
         
         [Category("Effect"), 
          Description("Chance (0 to 1) that the hit will be unblockable"), PropertyOrder(7),
-         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UIRangeAttribute(0, 100, 1f),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          UsedImplicitly]
-        public float UnblockableChance { get; set; }
+        public float UnblockableChancePercent { get; set; }
         
         [Category("Effect"), 
          Description("Chance (0 to 1) that the hit will shatter shield if it is blocked"), 
          PropertyOrder(8),
-         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UIRangeAttribute(0, 100, 1f),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          UsedImplicitly]
-        public float ShatterShieldChance { get; set; }
+        public float ShatterShieldChancePercent { get; set; }
         
         [Category("Effect"), 
          Description("Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each " +
                      "collision, so a cut through chance of 1 will result in cutting through everyone with every hit)"), 
          PropertyOrder(9),
-         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UIRangeAttribute(0, 100, 1f),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          UsedImplicitly]
-        public float CutThroughChance { get; set; }
+        public float CutThroughChancePercent { get; set; }
         
         [Category("Effect"), 
          Description("Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR " +
                      "stagger, it can't do both, cut through chance is evaluated before this one)"), 
          PropertyOrder(10),
-         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UIRangeAttribute(0, 100, 1f),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          UsedImplicitly]
-        public float StaggerChance { get; set; }
-
-        #region AreaOfEffectDef
-        public class AreaOfEffectDef : ICloneable, INotifyPropertyChanged
-        {
-	        [Description("The radius to apply the damage in"), PropertyOrder(1),
-             UIRangeAttribute(0, 20, 0.5f), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-             UsedImplicitly]
-	        public float Range { get; set; }
-	        
-	        [Description("Only apply the damage if the attack hits an agent (as opposed to the ground, " +
-	                     "e.g. for arrows)"), PropertyOrder(2), UsedImplicitly]
-	        public bool OnlyOnHit { get; set; }
-
-	        [Description("Damage at distance 0 from the hit"), PropertyOrder(3),
-             UIRangeAttribute(0, 500, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-             UsedImplicitly]
-	        public float DamageAtCenter { get; set; } = 50;
-
-	        [Description("Maximum number of agents that can be affected"), PropertyOrder(4),
-             Range(0, int.MaxValue),
-             UsedImplicitly]
-	        public int MaxAgentsToDamage { get; set; } = 4;
-
-	        [Description("Damage type"), PropertyOrder(5), UsedImplicitly]
-	        public DamageTypes DamageType { get; set; } = DamageTypes.Blunt;
-        
-	        [Description("Flags to apply to the damage"), PropertyOrder(6), ExpandableObject, UsedImplicitly]
-	        public HitBehavior HitBehavior { get; set; }
-
-	        [YamlIgnore, ReadOnly(true)]
-	        public bool IsEnabled => Range > 0;
-	        
-	        [YamlIgnore, ReadOnly(true)]
-	        public string Example =>
-		        string.Join(", ",
-			        Enumerable.Range(0, (int) Math.Min(Range, 20))
-				        .Select(i => $"{i}m: {CalculateDamage(i)}dmg"));
-
-            public override string ToString() => Description;
-
-            [YamlIgnore, Browsable(false)]
-            public string Description
-            {
-                get
-                {
-                    if (!IsEnabled) return "(disabled)";
-                    string desc = $"{DamageAtCenter}dmg in {Range}m";
-                    if (HitBehavior.IsEnabled) desc += $" with {HitBehavior}";
-                    return desc;
-                }
-            }
-
-            public object Clone() => CloneHelpers.CloneProperties(this);
-
-	        public void Apply(Agent from, List<Agent> ignoreAgents, Vec3 position)
-	        {
-		        foreach ((var agent, float distance) in Mission.Current
-				        .GetAgentsInRange(position.AsVec2, Range * 1, true)
-				        .Where(a => 
-						        a.State == AgentState.Active	// alive only
-						        && !ignoreAgents.Contains(a)	// not in the ignore list
-						        && a.IsEnemyOf(from)			// enemies only
-				        )
-				        .Select(a => (agent: a, distance: a.Position.Distance(position)))
-				        .OrderBy(a => a.distance)
-				        // ToList is required due to potential collection change exception when agents are killed below
-				        .Take(MaxAgentsToDamage).ToList() 
-		        )
-		        {
-			        int damage = CalculateDamage(distance); 
-			        DoAgentDamage(@from, agent, damage, (agent.Position - position).NormalizedCopy(), 
-				        DamageType, HitBehavior);
-		        }
-	        }
-
-	        private int CalculateDamage(float distance)
-	        {
-		        return (int) (DamageAtCenter / Math.Pow(distance / Range + 1f, 2f));
-	        }
-            
-            public event PropertyChangedEventHandler PropertyChanged;
-        }
-        #endregion
+        public float StaggerChancePercent { get; set; }
 
         [Category("Effect"), 
          Description("Area of Effect damage to apply"), PropertyOrder(20), UsedImplicitly, ExpandableObject]
@@ -229,7 +148,7 @@ namespace BLTAdoptAHero.Powers
         private void OnDecideMissileWeaponFlags(Hero attackerHero, Agent attackerAgent, 
 	        BLTAgentApplyDamageModel.DecideMissileWeaponFlagsParams args)
         {
-	        if (MBRandom.RandomFloat < CutThroughChance)
+	        if (CutThroughChancePercent != 0 && MBRandom.RandomFloat * 100f < CutThroughChancePercent)
 	        {
 		        args.missileWeaponFlags |= WeaponFlags.CanPenetrateShield;
 		        args.missileWeaponFlags |= WeaponFlags.MultiplePenetration;
@@ -239,7 +158,7 @@ namespace BLTAdoptAHero.Powers
         private void OnDecideCrushedThroughDelegate(Hero attackerHero, Agent attackerAgent, Hero victimHero, 
 	        Agent victimAgent, BLTAgentApplyDamageModel.DecideCrushedThroughParams meleeHitParams)
         {
-	        if (UnblockableChance != 0 && MBRandom.RandomFloat < UnblockableChance)
+	        if (CutThroughChancePercent != 0 && MBRandom.RandomFloat * 100f < UnblockableChancePercent)
 	        {
 		        meleeHitParams.crushThrough = true;
 	        }
@@ -285,7 +204,7 @@ namespace BLTAdoptAHero.Powers
 		        return;
 	        }
 
-	        if (UnblockableChance != 0 && MBRandom.RandomFloat < UnblockableChance)
+	        if (UnblockableChancePercent != 0 && MBRandom.RandomFloat * 100f < UnblockableChancePercent)
 	        {
 		        meleeHitParams.inOutMomentumRemaining = 1;
 	        }
@@ -293,7 +212,9 @@ namespace BLTAdoptAHero.Powers
 
         private void ApplyShatterShieldChance(Agent victimAgent, ref AttackCollisionData collisionData, bool removeShield)
         {
-	        if (collisionData.AttackBlockedWithShield && MBRandom.RandomFloat < ShatterShieldChance)
+	        if (collisionData.AttackBlockedWithShield 
+                && ShatterShieldChancePercent != 0 
+                && MBRandom.RandomFloat * 100f < ShatterShieldChancePercent)
 	        {
 		        // just makes sure any missile that hit the shield disappears
 		        collisionData.IsShieldBroken = true;
@@ -354,9 +275,9 @@ namespace BLTAdoptAHero.Powers
                 return;
             }
 
-            blowParams.collisionData.AbsorbedByArmor = (int) (blowParams.blow.AbsorbedByArmor *= 1 - ArmorToIgnore);
+            blowParams.collisionData.AbsorbedByArmor = (int) (blowParams.blow.AbsorbedByArmor *= 1 - ArmorToIgnorePercent / 100f);
             blowParams.collisionData.BaseMagnitude = blowParams.blow.BaseMagnitude 
-                = (int) (blowParams.blow.BaseMagnitude * DamageToMultiply + DamageToAdd);
+                = (int) (blowParams.blow.BaseMagnitude * DamageModifierPercent / 100f + DamageToAdd);
             blowParams.collisionData.InflictedDamage = blowParams.blow.InflictedDamage
                 = (int) (blowParams.blow.BaseMagnitude - blowParams.blow.AbsorbedByArmor);
             
@@ -376,11 +297,11 @@ namespace BLTAdoptAHero.Powers
 	        Agent victimAgent, 
 	        BLTHeroPowersMissionBehavior.DecideWeaponCollisionReactionParams decideWeaponCollisionReactionParams)
         {
-	        if (MBRandom.RandomFloat < CutThroughChance)
+	        if (MBRandom.RandomFloat * 100f < CutThroughChancePercent)
 	        {
 		        decideWeaponCollisionReactionParams.colReaction = MeleeCollisionReaction.SlicedThrough;
 	        }
-	        else if (MBRandom.RandomFloat < StaggerChance)
+	        else if (MBRandom.RandomFloat * 100f < StaggerChancePercent)
 	        {
 		        decideWeaponCollisionReactionParams.colReaction = MeleeCollisionReaction.Staggered;
 	        }
@@ -407,7 +328,7 @@ namespace BLTAdoptAHero.Powers
 	        }
         }
 
-        private static void DoAgentDamage(Agent from, Agent agent, int damage, Vec3 direction, 
+        public static void DoAgentDamage(Agent from, Agent agent, int damage, Vec3 direction, 
 	        DamageTypes damageType, HitBehavior hitBehavior)
         {
 	        var blow = new Blow(from.Index)
@@ -429,35 +350,44 @@ namespace BLTAdoptAHero.Powers
         #endregion
 
         #region Public Interface
-        public override string ToString() => $"{base.ToString()}: {Description}";
-
-        [YamlIgnore]
-        public string Description
+        public override string Description
         {
             get
             {
                 var appliesToList = new List<string>();
-                if (ApplyAgainstNonHeroes) appliesToList.Add("Non-heroes");
-                if (ApplyAgainstHeroes) appliesToList.Add("Heroes");
-                if (ApplyAgainstAdoptedHeroes) appliesToList.Add("Adopted");
-                if (ApplyAgainstPlayer) appliesToList.Add("Player");
+                if (!ApplyAgainstNonHeroes || !ApplyAgainstHeroes || !ApplyAgainstAdoptedHeroes || !ApplyAgainstPlayer)
+                {
+                    if (ApplyAgainstNonHeroes) appliesToList.Add("Non-heroes");
+                    if (ApplyAgainstHeroes) appliesToList.Add("Heroes");
+                    if (ApplyAgainstAdoptedHeroes) appliesToList.Add("Adopted");
+                    if (ApplyAgainstPlayer) appliesToList.Add("Player");
+                }
 
                 var appliesFromList = new List<string>();
-                if (Ranged) appliesFromList.Add("Ranged");
-                if (Melee) appliesFromList.Add("Melee");
-                if (Charge) appliesFromList.Add("Charge");
-
+                if (!Ranged || !Melee || !Charge)
+                {
+                    if (Ranged) appliesFromList.Add("Ranged");
+                    if (Melee) appliesFromList.Add("Melee");
+                    if (Charge) appliesFromList.Add("Charge");
+                }
+                
                 var modifiers = new List<string>();
-            
-                if (DamageModifierPercent != 100) modifiers.Add($"+{DamageModifierPercent:0.0}%");
+                
+                if (DamageModifierPercent != 100) modifiers.Add($"{DamageModifierPercent:0.0}% dmg");
+                if (DamageToAdd != 0) modifiers.Add($"{(DamageToAdd > 0 ? "+" : "")}{DamageToAdd} dmg");
                 if (AddHitBehavior.IsEnabled) modifiers.Add($"Add: {AddHitBehavior}");
                 if (RemoveHitBehavior.IsEnabled) modifiers.Add($"Remove: {RemoveHitBehavior}");
-                if (DamageToAdd != 0) modifiers.Add($"+{DamageToAdd}");
+                if (ArmorToIgnorePercent != 0) modifiers.Add($"ignore {ArmorToIgnorePercent}% armor");
+                if (UnblockableChancePercent != 0) modifiers.Add($"{UnblockableChancePercent}% unblockable");
+                if (ShatterShieldChancePercent != 0) modifiers.Add($"{ShatterShieldChancePercent}% shatter shield");
+                if (CutThroughChancePercent != 0) modifiers.Add($"{CutThroughChancePercent}% cut through");
+                if (StaggerChancePercent != 0) modifiers.Add($"{StaggerChancePercent}% stagger");
+                
                 if (AoE.IsEnabled) appliesFromList.Add(AoE.Description);
 
-                return $"{string.Join(" / ", modifiers)} " +
-                       $"{string.Join(" / ", appliesFromList)} dmg to {string.Join(", ", appliesToList)}"
-                       ;
+                return $"{string.Join(", ", modifiers)} " +
+                       (appliesFromList.Any() ? $"against {string.Join(" / ", appliesFromList)} " : "") + 
+                       (appliesToList.Any() ? $"from {string.Join(", ", appliesToList)}" : "");
             }
         }
         #endregion
@@ -465,5 +395,85 @@ namespace BLTAdoptAHero.Powers
         #region IDocumentable
         public void GenerateDocumentation(IDocumentationGenerator generator) => generator.P(Description);
         #endregion
+    }
+
+    public class AreaOfEffectDef : ICloneable, INotifyPropertyChanged
+    {
+        [Description("The radius to apply the damage in"), PropertyOrder(1),
+         UIRange(0, 20, 0.5f), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly]
+        public float Range { get; set; }
+	        
+        [Description("Only apply the damage if the attack hits an agent (as opposed to the ground, " +
+                     "e.g. for arrows)"), PropertyOrder(2), UsedImplicitly]
+        public bool OnlyOnHit { get; set; }
+
+        [Description("Damage at distance 0 from the hit"), PropertyOrder(3),
+         UIRange(0, 500, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UsedImplicitly]
+        public float DamageAtCenter { get; set; } = 50;
+
+        [Description("Maximum number of agents that can be affected"), PropertyOrder(4),
+         Range(0, int.MaxValue),
+         UsedImplicitly]
+        public int MaxAgentsToDamage { get; set; } = 4;
+
+        [Description("Damage type"), PropertyOrder(5), UsedImplicitly]
+        public DamageTypes DamageType { get; set; } = DamageTypes.Blunt;
+        
+        [Description("Flags to apply to the damage"), PropertyOrder(6), ExpandableObject, UsedImplicitly]
+        public HitBehavior HitBehavior { get; set; }
+
+        [YamlIgnore, ReadOnly(true)]
+        public bool IsEnabled => Range > 0;
+	        
+        [YamlIgnore, ReadOnly(true)]
+        public string Example =>
+            string.Join(", ",
+                Enumerable.Range(0, (int) Math.Min(Range, 20))
+                    .Select(i => $"{i}m: {CalculateDamage(i)}dmg"));
+
+        public override string ToString() => Description;
+        
+        public string Description
+        {
+            get
+            {
+                if (!IsEnabled) return "(disabled)";
+                string desc = $"{DamageAtCenter}dmg in {Range}m";
+                if (HitBehavior.IsEnabled) desc += $" with {HitBehavior}";
+                return desc;
+            }
+        }
+
+        public object Clone() => CloneHelpers.CloneProperties(this);
+
+        public void Apply(Agent from, List<Agent> ignoreAgents, Vec3 position)
+        {
+            foreach ((var agent, float distance) in Mission.Current
+                .GetAgentsInRange(position.AsVec2, Range * 1, true)
+                .Where(a => 
+                        a.State == AgentState.Active	// alive only
+                        && !ignoreAgents.Contains(a)	// not in the ignore list
+                        && a.IsEnemyOf(@from)			// enemies only
+                )
+                .Select(a => (agent: a, distance: a.Position.Distance(position)))
+                .OrderBy(a => a.distance)
+                // ToList is required due to potential collection change exception when agents are killed below
+                .Take(MaxAgentsToDamage).ToList() 
+            )
+            {
+                int damage = CalculateDamage(distance); 
+                AddDamagePower.DoAgentDamage(@from, agent, damage, (agent.Position - position).NormalizedCopy(), 
+                    DamageType, HitBehavior);
+            }
+        }
+
+        private int CalculateDamage(float distance)
+        {
+            return (int) (DamageAtCenter / Math.Pow(distance / Range + 1f, 2f));
+        }
+            
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

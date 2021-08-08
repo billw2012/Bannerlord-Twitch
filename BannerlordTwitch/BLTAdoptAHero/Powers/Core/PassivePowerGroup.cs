@@ -19,10 +19,10 @@ namespace BLTAdoptAHero.Powers
          ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(1), UsedImplicitly]
         public Guid PowerID { get; set; }
 
-        [ReadOnly(true), YamlIgnore]
+        [Browsable(false), YamlIgnore]
         public IHeroPowerPassive Power => PowerConfig?.GetPower(PowerID) as IHeroPowerPassive;
 
-        public override string ToString() => $"[{Power?.ToString() ?? "(no power)"}] {base.ToString()}";
+        public override string ToString() => $"{Power?.ToString() ?? "(no power)"}: {base.ToString()}";
     }
     
     public class PassivePowerGroup : ILoaded, IDocumentable, ICloneable

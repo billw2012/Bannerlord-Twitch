@@ -22,15 +22,11 @@ namespace BLTAdoptAHero.Powers
     public class AbsorbHealthPower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         #region User Editable
-        
-        [Browsable(false)]
-        public float FractionOfDamageToAbsorb { get; set; } = 0.1f;
-        
         [Category("Power Config"),
          Description("What percentage of damage done to absorb as health"),
          UIRange(0, 100, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         YamlIgnore, PropertyOrder(1), UsedImplicitly]
-        public float DamageToAbsorbPercent { get => FractionOfDamageToAbsorb * 100; set => FractionOfDamageToAbsorb = value / 100f; }
+         PropertyOrder(1), UsedImplicitly]
+        public float DamageToAbsorbPercent { get; set; }
         #endregion
         
         #region IHeroPowerPassive
@@ -43,19 +39,20 @@ namespace BLTAdoptAHero.Powers
             Agent agent = null, DeactivationHandler deactivationHandler = null) 
             => handlers.OnDoDamage += OnDoDamage;
 
-        private void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams)
+        private void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, 
+            BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams)
         {
             agent.Health = Math.Min(agent.HealthLimit, 
-                agent.Health + blowParams.blow.InflictedDamage * FractionOfDamageToAbsorb);
+                agent.Health + blowParams.blow.InflictedDamage * DamageToAbsorbPercent / 100f);
         }
         #endregion
 
         #region Public Interface
-        public override string ToString() => $"{base.ToString()}: {Description}";
-
+        [YamlIgnore, Browsable(false)]
+        public bool IsEnabled => DamageToAbsorbPercent != 0;
+        
         [YamlIgnore]
-        public string Description
-            => $"Absorb {FractionOfDamageToAbsorb * 100:0.0}% of damage dealt as HP";
+        public override string Description => !IsEnabled ? "(disabled)" : $"Absorb {DamageToAbsorbPercent:0}% of damage dealt as HP";
         #endregion
 
         #region IDocumentable

@@ -6,7 +6,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero.Actions.Util
 { 
-    public class KillStreakRewards : INotifyPropertyChanged
+    public class KillStreakDef : INotifyPropertyChanged
     {
         [UsedImplicitly, ReadOnly(true)]
         public Guid ID { get; set; } = Guid.NewGuid();
@@ -34,9 +34,9 @@ namespace BLTAdoptAHero.Actions.Util
         [PropertyOrder(7), Description("Experience granted when the kill streak is achieved."), UsedImplicitly]
         public int XPReward { get; set; }
 
-        public override string ToString() => $"{Name} {KillsRequired} kills " +
-                                             (GoldReward > 0 ? $"{GoldReward}{Naming.Gold} " : "") +
-                                             (XPReward > 0 ? $"{XPReward}{Naming.XP} " : "");
+        public string RewardsDescription => (GoldReward > 0 ? $"{GoldReward}{Naming.Gold} " : "") + (XPReward > 0 ? $"{XPReward}{Naming.XP} " : "");
+
+        public override string ToString() => $"{Name} {KillsRequired} kills " + RewardsDescription;
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

@@ -87,6 +87,18 @@ namespace BLTAdoptAHero
         public IEnumerable<EquipmentType> SlotItems 
             => Slots.Where(s => s is not EquipmentType.None);
         
+        // For UI
+        [YamlIgnore, Browsable(false)]
+        public IEnumerable<string> SlotItemNames 
+            => SlotItems.Select(s => s.ToString().SplitCamelCase());
+        // For UI
+        [YamlIgnore, Browsable(false)]
+        public string MountDescription 
+            => UseHorse && UseCamel 
+                ? "Horse/Camel" : UseHorse 
+                    ? "Horse" : UseCamel 
+                        ? "Camel" : "";
+
         [YamlIgnore, Browsable(false)]
         public IEnumerable<EquipmentType> Weapons 
             => Slots.Where(s => s is not (EquipmentType.None or EquipmentType.Shield));

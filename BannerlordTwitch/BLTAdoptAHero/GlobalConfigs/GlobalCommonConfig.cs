@@ -252,7 +252,7 @@ namespace BLTAdoptAHero
 
         #region Kill Streak Rewards
         [Category("Kill Streak Rewards"), Description("Kill Streaks"), PropertyOrder(1), UsedImplicitly]
-        public ObservableCollection<KillStreakRewards> KillStreaks { get; set; } = new();
+        public ObservableCollection<KillStreakDef> KillStreaks { get; set; } = new();
 
         [Category("Kill Streak Rewards"), 
          Description("Whether to use the popup banner to announce kill streaks. Will only print in the overlay " +

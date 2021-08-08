@@ -39,9 +39,8 @@ namespace BLTAdoptAHero.Achievements
             ClassConfig = ConfigureContext.CurrentlyEditedSettings == null 
                 ? null : GlobalHeroClassConfig.Get(ConfigureContext.CurrentlyEditedSettings);
         }
-        
-        public override string ToString()
-            => $"{base.ToString()} [class: {(CurrentClass ? "(current)" : ClassConfig.GetClass(RequiredClass)?.Name ?? "(none)")}]";
+
+        public override string Description => $"{base.Description} [class: {(CurrentClass ? "(current)" : ClassConfig.GetClass(RequiredClass)?.Name ?? "(none)")}]";
         #endregion
         
         #region Implementation Details

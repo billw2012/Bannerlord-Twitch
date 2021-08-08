@@ -8,6 +8,7 @@ using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
 using PropertyChanged;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
@@ -31,7 +32,9 @@ namespace BLTAdoptAHero.Powers
         #endregion
         
         #region Implementation Details
-        public override string ToString() => $"{Name}";
+        public override string ToString() => $"{Name}: {Description}";
+        [YamlIgnore, Browsable(false)]
+        public abstract string Description { get; }  
         #endregion
 
         #region ICloneable

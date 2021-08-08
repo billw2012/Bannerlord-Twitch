@@ -46,6 +46,12 @@ namespace BLTAdoptAHero.Achievements
                 : BLTAdoptAHeroCampaignBehavior.Current.GetAchievementTotalStat(hero, OtherStatistic);
             return IsMet(stat, Comparison, val);
         }
+
+        public virtual string Description =>
+            $"{Statistic.ToString().SplitCamelCase()} " +
+            $"{ComparisonText} " +
+            $"{(OtherStatistic == AchievementStatsData.Statistic.None ? Value : OtherStatistic.ToString().SplitCamelCase())}";
+
         #endregion
         
         private string ComparisonText => Comparison switch
@@ -56,13 +62,8 @@ namespace BLTAdoptAHero.Achievements
             Operator.LessOrEqual => "<=",
             _ => throw new ArgumentOutOfRangeException()
         };
-        
-        public override string ToString()
-        {
-            return $"({Statistic.ToString().SplitCamelCase()} " +
-                   $"{ComparisonText} " +
-                   $"{(OtherStatistic == AchievementStatsData.Statistic.None ? Value : OtherStatistic.ToString().SplitCamelCase())})";
-        }
+
+        public override string ToString() => Description;
         #endregion
 
         #region Implementation Details

@@ -54,13 +54,14 @@ namespace BLTAdoptAHero.Achievements
 
         public bool IsAchieved(Hero hero) => Requirements.All(r => r.IsMet(hero));
 
+        // For UI use
+        public string RewardsDescription => (GoldGain > 0 ? $"{GoldGain}{Naming.Gold}\n" : "") +
+                                            (XPGain > 0 ? $"{XPGain}{Naming.XP}\n" : "") +
+                                            (GiveItemReward ? "Item" : "");
         public override string ToString()
             => $"{Name} " +
                string.Join("+", Requirements.Select(r => r.ToString())) +
-               " Reward: " +
-               (GoldGain > 0 ? $"{GoldGain}{Naming.Gold} " : "") +
-               (XPGain > 0 ? $"{XPGain}{Naming.XP} " : "") +
-               (GiveItemReward ? "Item" : "");
+               $" Reward: {RewardsDescription}";
         
         public object Clone()
         {
