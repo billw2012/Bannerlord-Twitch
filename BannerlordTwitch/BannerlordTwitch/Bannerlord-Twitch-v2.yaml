@@ -1107,16 +1107,16 @@ GlobalConfigs:
       DamageToMultiply: 1.25
       DamageToAdd: 0
       AddHitBehavior:
-        KnockBackChance: 0
-        KnockDownChance: 0
-        ShrugOffChance: 0
-        MakesRearChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
         DismountChance: 0
       RemoveHitBehavior:
-        KnockBackChance: 0
-        KnockDownChance: 0
-        ShrugOffChance: 0
-        MakesRearChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
         DismountChance: 0
       ArmorToIgnore: 0
       UnblockableChance: 0
@@ -1130,10 +1130,10 @@ GlobalConfigs:
         MaxAgentsToDamage: 4
         DamageType: Blunt
         HitBehavior:
-          KnockBackChance: 0
-          KnockDownChance: 0
-          ShrugOffChance: 0
-          MakesRearChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
           DismountChance: 0
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
@@ -1154,16 +1154,16 @@ GlobalConfigs:
       DamageToMultiply: 1.5
       DamageToAdd: 0
       AddHitBehavior:
-        KnockBackChance: 0
-        KnockDownChance: 0
-        ShrugOffChance: 0
-        MakesRearChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
         DismountChance: 0
       RemoveHitBehavior:
-        KnockBackChance: 0
-        KnockDownChance: 0
-        ShrugOffChance: 0
-        MakesRearChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
         DismountChance: 0
       ArmorToIgnore: 0
       UnblockableChance: 0
@@ -1177,10 +1177,10 @@ GlobalConfigs:
         MaxAgentsToDamage: 4
         DamageType: Blunt
         HitBehavior:
-          KnockBackChance: 0
-          KnockDownChance: 0
-          ShrugOffChance: 0
-          MakesRearChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
           DismountChance: 0
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
@@ -1201,16 +1201,16 @@ GlobalConfigs:
       DamageToMultiply: 2
       DamageToAdd: 0
       AddHitBehavior:
-        KnockBackChance: 0
-        KnockDownChance: 0
-        ShrugOffChance: 0
-        MakesRearChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
         DismountChance: 0
       RemoveHitBehavior:
-        KnockBackChance: 0
-        KnockDownChance: 0
-        ShrugOffChance: 0
-        MakesRearChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
         DismountChance: 0
       ArmorToIgnore: 0
       UnblockableChance: 0
@@ -1224,10 +1224,10 @@ GlobalConfigs:
         MaxAgentsToDamage: 4
         DamageType: Blunt
         HitBehavior:
-          KnockBackChance: 0
-          KnockDownChance: 0
-          ShrugOffChance: 0
-          MakesRearChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
           DismountChance: 0
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
@@ -1248,10 +1248,10 @@ GlobalConfigs:
       FractionOfDamageToReflect: 0.25
       ReflectedDamageIsSubtracted: false
       HitBehavior:
-        KnockBackChance: 0
-        KnockDownChance: 0
-        ShrugOffChance: 0
-        MakesRearChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
         DismountChance: 0
       PowerDurationSeconds: 120
       Pfx: []
@@ -1261,10 +1261,10 @@ GlobalConfigs:
       FractionOfDamageToReflect: 0.5
       ReflectedDamageIsSubtracted: false
       HitBehavior:
-        KnockBackChance: 0
-        KnockDownChance: 0
-        ShrugOffChance: 0
-        MakesRearChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
         DismountChance: 0
       PowerDurationSeconds: 120
       Pfx: []
@@ -1274,10 +1274,10 @@ GlobalConfigs:
       FractionOfDamageToReflect: 0.800000012
       ReflectedDamageIsSubtracted: false
       HitBehavior:
-        KnockBackChance: 0
-        KnockDownChance: 0
-        ShrugOffChance: 0
-        MakesRearChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
         DismountChance: 0
       PowerDurationSeconds: 120
       Pfx: []
@@ -1285,81 +1285,87 @@ GlobalConfigs:
       Name: Retribution III
     - !StatModifyPower
       Modifiers:
-        Scale: 
+        ScalePercent: 100
         ApplyToMount: false
         Properties:
         - Name: MaxSpeedMultiplier
-          Add: 
-          Multiply: 1.10000002
+          ModifierPercent: 100
+          Add: 0
+        Skills: []
       PowerDurationSeconds: 120
       Pfx: []
       ID: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
       Name: Fleet Footed I
     - !StatModifyPower
       Modifiers:
-        Scale: 
+        ScalePercent: 100
         ApplyToMount: false
         Properties:
         - Name: MaxSpeedMultiplier
-          Add: 
-          Multiply: 1.20000005
+          ModifierPercent: 100
+          Add: 0
+        Skills: []
       PowerDurationSeconds: 120
       Pfx: []
       ID: 79a9ca29-9a39-4cb3-b536-944d44bb92fd
       Name: Fleet Footed II
     - !StatModifyPower
       Modifiers:
-        Scale: 
+        ScalePercent: 100
         ApplyToMount: false
         Properties:
         - Name: MaxSpeedMultiplier
-          Add: 
-          Multiply: 1.5
+          ModifierPercent: 100
+          Add: 0
+        Skills: []
       PowerDurationSeconds: 120
       Pfx: []
       ID: 0d6daf6f-cc83-4508-9833-2c212fcfd4eb
       Name: Fleet Footed III
     - !StatModifyPower
       Modifiers:
-        Scale: 1
+        ScalePercent: 100
         ApplyToMount: true
         Properties:
         - Name: MountChargeDamage
-          Add: 
-          Multiply: 2
+          ModifierPercent: 150
+          Add: 0
         - Name: MountManeuver
-          Add: 
-          Multiply: 1.20000005
+          ModifierPercent: 125
+          Add: 0
+        Skills: []
       PowerDurationSeconds: 120
       Pfx: []
       ID: 20f6817e-8f45-4dc3-a513-77707fb9c96d
       Name: Charge I
     - !StatModifyPower
       Modifiers:
-        Scale: 1
+        ScalePercent: 100
         ApplyToMount: true
         Properties:
         - Name: MountChargeDamage
-          Add: 
-          Multiply: 3
+          ModifierPercent: 200
+          Add: 0
         - Name: MountManeuver
-          Add: 
-          Multiply: 1.39999998
+          ModifierPercent: 150
+          Add: 0
+        Skills: []
       PowerDurationSeconds: 120
       Pfx: []
       ID: 6cca75ef-a900-4593-8ea8-cf96163003c0
       Name: Charge II
     - !StatModifyPower
       Modifiers:
-        Scale: 1
+        ScalePercent: 100
         ApplyToMount: true
         Properties:
         - Name: MountChargeDamage
-          Add: 
-          Multiply: 5
+          ModifierPercent: 300
+          Add: 0
         - Name: MountManeuver
-          Add: 
-          Multiply: 2
+          ModifierPercent: 200
+          Add: 0
+        Skills: []
       PowerDurationSeconds: 120
       Pfx: []
       ID: 64e3832f-9f08-40dd-b1ab-0be6a26ed091
@@ -1368,16 +1374,16 @@ GlobalConfigs:
       DamageToMultiply: 1
       DamageToAdd: 0
       AddHitBehavior:
-        KnockBackChance: 0
-        KnockDownChance: 0
-        ShrugOffChance: 0
-        MakesRearChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
         DismountChance: 0
       RemoveHitBehavior:
-        KnockBackChance: 0
-        KnockDownChance: 0
-        ShrugOffChance: 0
-        MakesRearChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
         DismountChance: 0
       ArmorToIgnore: 0
       UnblockableChance: 0
@@ -1385,16 +1391,16 @@ GlobalConfigs:
       CutThroughChance: 0
       StaggerChance: 0
       AoE:
-        Range: 0
+        Range: 2
         OnlyOnHit: false
-        DamageAtCenter: 50
+        DamageAtCenter: 25
         MaxAgentsToDamage: 4
         DamageType: Blunt
         HitBehavior:
-          KnockBackChance: 0
-          KnockDownChance: 0
-          ShrugOffChance: 0
-          MakesRearChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
           DismountChance: 0
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
@@ -1410,62 +1416,21 @@ GlobalConfigs:
       PowerDurationSeconds: 120
       Pfx: []
       ID: 6ad716bb-76e1-4cb1-9601-85f81f5d5425
-      Name: Charge AoE
-    - !StatModifyPower
-      Modifiers:
-        Scale: 1
-        ApplyToMount: true
-        Properties:
-        - Name: MountSpeed
-          Add: 
-          Multiply: 1.5
-        - Name: TopSpeedReachDuration
-          Add: 
-          Multiply: 0.5
-        - Name: ArmorTorso
-          Add: 40
-          Multiply: 
-      PowerDurationSeconds: 120
-      Pfx: []
-      ID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
-      Name: Better Mount
-    - !StatModifyPower
-      Modifiers:
-        Scale: 
-        ApplyToMount: false
-        Properties:
-        - Name: SwingSpeedMultiplier
-          Add: 
-          Multiply: 1.5
-      PowerDurationSeconds: 120
-      Pfx:
-      - Name: psys_campfire
-        AttachPoint: OnWeapon
-      ID: 80e8009c-2a09-476a-bd71-0aedc6b14011
-      Name: Fireblade
-    - !StatModifyPower
-      Modifiers:
-        Scale: 1.25
-        ApplyToMount: false
-        Properties: []
-      PowerDurationSeconds: 120
-      Pfx: []
-      ID: 60582ddc-3b22-4052-9437-cd43882bf5f9
-      Name: Imposing
+      Name: Charge AoE I
     - !AddDamagePower
       DamageToMultiply: 1
       DamageToAdd: 0
       AddHitBehavior:
-        KnockBackChance: 0
-        KnockDownChance: 0
-        ShrugOffChance: 0
-        MakesRearChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
         DismountChance: 0
       RemoveHitBehavior:
-        KnockBackChance: 0
-        KnockDownChance: 0
-        ShrugOffChance: 0
-        MakesRearChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
         DismountChance: 0
       ArmorToIgnore: 0
       UnblockableChance: 0
@@ -1473,16 +1438,269 @@ GlobalConfigs:
       CutThroughChance: 0
       StaggerChance: 0
       AoE:
-        Range: 0
+        Range: 2
         OnlyOnHit: false
         DamageAtCenter: 50
         MaxAgentsToDamage: 4
         DamageType: Blunt
         HitBehavior:
-          KnockBackChance: 0
-          KnockDownChance: 0
-          ShrugOffChance: 0
-          MakesRearChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: false
+      Melee: false
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 0c2ecb3e-a4e6-4e54-b87d-b860cc486613
+      Name: Charge AoE II
+    - !AddDamagePower
+      DamageToMultiply: 1
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnore: 0
+      UnblockableChance: 0
+      ShatterShieldChance: 0
+      CutThroughChance: 0
+      StaggerChance: 0
+      AoE:
+        Range: 2
+        OnlyOnHit: false
+        DamageAtCenter: 100
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: false
+      Melee: false
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: b2da61f2-a12e-4834-9f41-a79040e90ec4
+      Name: Charge AoE III
+    - !StatModifyPower
+      Modifiers:
+        ScalePercent: 100
+        ApplyToMount: true
+        Properties:
+        - Name: MountSpeed
+          ModifierPercent: 110
+          Add: 0
+        - Name: TopSpeedReachDuration
+          ModifierPercent: 90
+          Add: 0
+        - Name: ArmorTorso
+          ModifierPercent: 100
+          Add: 20
+        Skills: []
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
+      Name: Better Mount I
+    - !StatModifyPower
+      Modifiers:
+        ScalePercent: 100
+        ApplyToMount: true
+        Properties:
+        - Name: MountSpeed
+          ModifierPercent: 125
+          Add: 0
+        - Name: TopSpeedReachDuration
+          ModifierPercent: 75
+          Add: 0
+        - Name: ArmorTorso
+          ModifierPercent: 100
+          Add: 40
+        Skills: []
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 46a9624a-2560-4e97-9627-3c13be41f947
+      Name: Better Mount II
+    - !StatModifyPower
+      Modifiers:
+        ScalePercent: 100
+        ApplyToMount: true
+        Properties:
+        - Name: MountSpeed
+          ModifierPercent: 150
+          Add: 0
+        - Name: TopSpeedReachDuration
+          ModifierPercent: 50
+          Add: 0
+        - Name: ArmorTorso
+          ModifierPercent: 100
+          Add: 80
+        Skills: []
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: ce6f6302-4db2-4a34-bffb-530f0ceac9c1
+      Name: Better Mount III
+    - !StatModifyPower
+      Modifiers:
+        ScalePercent: 100
+        ApplyToMount: false
+        Properties: []
+        Skills:
+        - Skill: Melee
+          ModifierPercent: 100
+          Add: 25
+      PowerDurationSeconds: 120
+      Pfx:
+      - Name: psys_campfire
+        AttachPoint: OnWeapon
+      ID: 80e8009c-2a09-476a-bd71-0aedc6b14011
+      Name: Fireblade I
+    - !StatModifyPower
+      Modifiers:
+        ScalePercent: 100
+        ApplyToMount: false
+        Properties: []
+        Skills:
+        - Skill: Melee
+          ModifierPercent: 100
+          Add: 50
+      PowerDurationSeconds: 120
+      Pfx:
+      - Name: psys_campfire
+        AttachPoint: OnWeapon
+      ID: 66fe10bd-f8ff-4c36-9f4d-ef7b6e8fe12a
+      Name: Fireblade II
+    - !StatModifyPower
+      Modifiers:
+        ScalePercent: 100
+        ApplyToMount: false
+        Properties: []
+        Skills:
+        - Skill: Melee
+          ModifierPercent: 100
+          Add: 100
+      PowerDurationSeconds: 120
+      Pfx:
+      - Name: psys_campfire
+        AttachPoint: OnWeapon
+      ID: d83a689d-7e52-40a3-b1fe-8897fdd789d5
+      Name: Fireblade III
+    - !StatModifyPower
+      Modifiers:
+        ScalePercent: 100
+        ApplyToMount: false
+        Properties:
+        - Name: AiShootFreq
+          ModifierPercent: 200
+          Add: 0
+        - Name: AiWaitBeforeShootFactor
+          ModifierPercent: 50
+          Add: 0
+        Skills:
+        - Skill: Ranged
+          ModifierPercent: 125
+          Add: 0
+      PowerDurationSeconds: 125
+      Pfx: []
+      ID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
+      Name: Ranger I
+    - !StatModifyPower
+      Modifiers:
+        ScalePercent: 100
+        ApplyToMount: false
+        Properties:
+        - Name: AiShootFreq
+          ModifierPercent: 200
+          Add: 0
+        - Name: AiWaitBeforeShootFactor
+          ModifierPercent: 50
+          Add: 0
+        Skills:
+        - Skill: Ranged
+          ModifierPercent: 150
+          Add: 0
+      PowerDurationSeconds: 125
+      Pfx: []
+      ID: 8dbbbf13-ceca-46d9-bc20-f3f2bc167094
+      Name: Ranger II
+    - !StatModifyPower
+      Modifiers:
+        ScalePercent: 100
+        ApplyToMount: false
+        Properties:
+        - Name: AiShootFreq
+          ModifierPercent: 200
+          Add: 0
+        - Name: AiWaitBeforeShootFactor
+          ModifierPercent: 50
+          Add: 0
+        Skills:
+        - Skill: Ranged
+          ModifierPercent: 200
+          Add: 0
+      PowerDurationSeconds: 125
+      Pfx: []
+      ID: ec81e3ce-7510-4934-93b7-c1220d4ecfe3
+      Name: Ranger III
+    - !AddDamagePower
+      DamageToMultiply: 1
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnore: 0
+      UnblockableChance: 0
+      ShatterShieldChance: 0
+      CutThroughChance: 0
+      StaggerChance: 0
+      AoE:
+        Range: 4
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 3
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
           DismountChance: 0
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
@@ -1498,49 +1716,121 @@ GlobalConfigs:
       PowerDurationSeconds: 120
       Pfx: []
       ID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
-      Name: Explosive Arrows
-    - !StatModifyPower
-      Modifiers:
-        Scale: 
-        ApplyToMount: false
-        Properties:
-        - Name: WeaponWorstMobileAccuracyPenalty
-          Add: 
-          Multiply: 0.25
-        - Name: WeaponWorstUnsteadyAccuracyPenalty
-          Add: 
-          Multiply: 0.25
-        - Name: AiRangerLeadErrorMin
-          Add: 
-          Multiply: 0.25
-        - Name: AiRangerLeadErrorMax
-          Add: 
-          Multiply: 0.25
-        - Name: AiRangerVerticalErrorMultiplier
-          Add: 
-          Multiply: 0.25
-        - Name: AiRangerHorizontalErrorMultiplier
-          Add: 
-          Multiply: 0.25
-        - Name: ThrustOrRangedReadySpeedMultiplier
-          Add: 
-          Multiply: 1.25
-        - Name: WeaponBestAccuracyWaitTime
-          Add: 
-          Multiply: 0.5
+      Name: Explosive Arrows I
+    - !AddDamagePower
+      DamageToMultiply: 1
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnore: 0
+      UnblockableChance: 0
+      ShatterShieldChance: 0
+      CutThroughChance: 0
+      StaggerChance: 0
+      AoE:
+        Range: 4
+        OnlyOnHit: false
+        DamageAtCenter: 75
+        MaxAgentsToDamage: 5
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0.100000001
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: false
+      Charge: false
+      MissileTrailParticleEffect: psys_game_burning_agent
+      HitEffect:
+        ParticleEffect: psys_burning_projectile_default_coll
+        Sound: 
       PowerDurationSeconds: 120
       Pfx: []
-      ID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
-      Name: Ranger
+      ID: 52e0f85f-c29a-413a-883c-0de4c7f12ead
+      Name: Explosive Arrows II
+    - !AddDamagePower
+      DamageToMultiply: 1
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnore: 0
+      UnblockableChance: 0
+      ShatterShieldChance: 0
+      CutThroughChance: 0
+      StaggerChance: 0
+      AoE:
+        Range: 4
+        OnlyOnHit: false
+        DamageAtCenter: 100
+        MaxAgentsToDamage: 7
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0.5
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: false
+      Charge: false
+      MissileTrailParticleEffect: psys_game_burning_agent
+      HitEffect:
+        ParticleEffect: psys_burning_projectile_default_coll
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 88aaee42-f3ef-4fff-8320-cc06ceb3d9b5
+      Name: Explosive Arrows III
     - !StatModifyPower
       Modifiers:
-        Scale: 1.25
+        ScalePercent: 125
         ApplyToMount: true
         Properties: []
+        Skills: []
       PowerDurationSeconds: 120
       Pfx: []
       ID: 2d18201b-1bad-477d-bd09-d857da76faad
       Name: Imposing Mount
+    - !StatModifyPower
+      Modifiers:
+        ScalePercent: 120
+        ApplyToMount: false
+        Properties: []
+        Skills: []
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 60582ddc-3b22-4052-9437-cd43882bf5f9
+      Name: Imposing
     DisablePowersInTournaments: true
     SavedPowerDefs: 
 - Id: Adopt A Hero - Class Config
