@@ -26,7 +26,7 @@ namespace BLTAdoptAHero.Powers
         #region User Editable
         [Category("Power Config"), 
          Description("Duration the power will last for (when used as an active power), in seconds"), 
-         UIRangeAttribute(0, 300, 1),
+         UIRangeAttribute(0, 300, 5),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          PropertyOrder(0), UsedImplicitly]
         public float PowerDurationSeconds { get; set; } = 30f;
@@ -116,7 +116,17 @@ namespace BLTAdoptAHero.Powers
 
         #endregion
 
+        #region Public Interface
+
+        public override string ToString()
+        {
+            return $"{base.ToString()} ({PowerDurationSeconds}s)";
+        }
+
+        #endregion
+
         #region Implementation Details
+
         private Dictionary<Hero, float> expiry = new();
 
         protected class DeactivationHandler
@@ -130,14 +140,12 @@ namespace BLTAdoptAHero.Powers
 
         [YamlIgnore, Browsable(false)]
         protected virtual bool RequiresHeroAgent => false;
-        #endregion
-
-        #region Abstract        
+      
         protected abstract void OnActivation(Hero hero, PowerHandler.Handlers handlers,
             Agent agent = null, DeactivationHandler deactivationHandler = null);
         #endregion
 
-        #region IClonable
+        #region ICloneable
         public override object Clone()
         {
             var newObj = (DurationMissionHeroPowerDefBase)base.Clone();

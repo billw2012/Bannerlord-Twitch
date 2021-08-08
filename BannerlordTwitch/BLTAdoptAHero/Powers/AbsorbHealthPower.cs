@@ -7,6 +7,7 @@ using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
@@ -20,15 +21,24 @@ namespace BLTAdoptAHero.Powers
     [Description("Absorbs a fraction of damage you do to enemies as health"), UsedImplicitly]
     public class AbsorbHealthPower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
-        [Category("Power Config"),
-         Description("What fraction of damage done to absorb as health"),
-         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         PropertyOrder(1), UsedImplicitly]
+        #region User Editable
+        
+        [Browsable(false)]
         public float FractionOfDamageToAbsorb { get; set; } = 0.1f;
         
+        [Category("Power Config"),
+         Description("What percentage of damage done to absorb as health"),
+         UIRange(0, 100, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         YamlIgnore, PropertyOrder(1), UsedImplicitly]
+        public float DamageToAbsorbPercent { get => FractionOfDamageToAbsorb * 100; set => FractionOfDamageToAbsorb = value / 100f; }
+        #endregion
+        
+        #region IHeroPowerPassive
         void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers) 
             => OnActivation(hero, handlers);
+        #endregion
 
+        #region Implementation Details
         protected override void OnActivation(Hero hero, PowerHandler.Handlers handlers,
             Agent agent = null, DeactivationHandler deactivationHandler = null) 
             => handlers.OnDoDamage += OnDoDamage;
@@ -38,12 +48,18 @@ namespace BLTAdoptAHero.Powers
             agent.Health = Math.Min(agent.HealthLimit, 
                 agent.Health + blowParams.blow.InflictedDamage * FractionOfDamageToAbsorb);
         }
+        #endregion
 
-        public override string ToString() => $"{Name}: {ToStringInternal()}";
+        #region Public Interface
+        public override string ToString() => $"{base.ToString()}: {Description}";
 
-        private string ToStringInternal()
+        [YamlIgnore]
+        public string Description
             => $"Absorb {FractionOfDamageToAbsorb * 100:0.0}% of damage dealt as HP";
+        #endregion
 
-        public void GenerateDocumentation(IDocumentationGenerator generator) => generator.P(ToStringInternal());
+        #region IDocumentable
+        public void GenerateDocumentation(IDocumentationGenerator generator) => generator.P(Description);
+        #endregion
     }
 }

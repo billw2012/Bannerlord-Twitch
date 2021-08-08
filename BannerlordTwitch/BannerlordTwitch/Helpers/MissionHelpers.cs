@@ -6,7 +6,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
-namespace BannerlordTwitch.Util
+namespace BannerlordTwitch.Helpers
 {
     public static class MissionHelpers
     {

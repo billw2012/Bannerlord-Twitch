@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using TaleWorlds.MountAndBlade;
 
-namespace BannerlordTwitch.Util
+namespace BannerlordTwitch.Helpers
 {
     public abstract class AutoMissionBehavior<T> : MissionBehaviour where T : MissionBehaviour
     {

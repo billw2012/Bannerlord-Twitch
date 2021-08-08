@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using BannerlordTwitch;
+using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
@@ -363,6 +364,15 @@ namespace BLTAdoptAHero
         public float SkillModifier(int wins)
         {
             return (float) (FloorPercent + (100 - FloorPercent) * Math.Pow(1f - SkillReductionPercentPerWin / 100f, wins * wins)) / 100f;
+        }
+
+        public SkillModifierDef ToModifier(int wins)
+        {
+            return new SkillModifierDef
+            {
+                Skill = Skill,
+                ModifierPercent = SkillModifier(wins) * 100,
+            };
         }
             
         public override string ToString()

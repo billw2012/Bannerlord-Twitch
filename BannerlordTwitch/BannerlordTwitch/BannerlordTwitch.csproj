@@ -269,7 +269,16 @@
         <Compile Include="Helpers\AgentExtensions.cs" />
         <Compile Include="Helpers\AgentHelpers.cs" />
         <Compile Include="Helpers\AgentPfx.cs" />
+        <Compile Include="Helpers\AutoMissionBehavior.cs" />
+        <Compile Include="Helpers\DrivenPropertyItemSource.cs" />
+        <Compile Include="Helpers\EquipmentType.cs" />
+        <Compile Include="Helpers\HeroHelpers.cs" />
+        <Compile Include="Helpers\MissionHelpers.cs" />
         <Compile Include="Helpers\OneShotEffect.cs" />
+        <Compile Include="Helpers\PropertyModifierDef.cs" />
+        <Compile Include="Helpers\SkillGroup.cs" />
+        <Compile Include="Helpers\SkillModifierDef.cs" />
+        <Compile Include="Models\BLTAgentStatCalculateModel.cs" />
         <Compile Include="Overlay\BLTOverlay.cs" />
         <Compile Include="Actions\ICommandHandler.cs" />
         <Compile Include="Actions\IRewardHandler.cs" />
@@ -311,6 +320,7 @@
         <Compile Include="Twitch\TwitchService.cs" />
         <Compile Include="UI\DerivedClassCollectionEditor.cs" />
         <Compile Include="UI\ExpandAttribute.cs" />
+        <Compile Include="UI\ParticleEffectItemSource.cs" />
         <Compile Include="UI\RangeFloatControl.xaml.cs">
           <DependentUpon>RangeFloatControl.xaml</DependentUpon>
         </Compile>
@@ -323,12 +333,12 @@
           <DependentUpon>SliderFloatControl.xaml</DependentUpon>
         </Compile>
         <Compile Include="UI\SliderFloatEditor.cs" />
+        <Compile Include="UI\SoundEffectItemSource.cs" />
         <Compile Include="UI\UIRangeAttribute.cs" />
         <Compile Include="Util\CloneHelpers.cs" />
         <Compile Include="Util\ConfigureContext.cs" />
         <Compile Include="Util\GameVersion.cs" />
         <Compile Include="Util\Assembly.cs" />
-        <Compile Include="Util\AutoMissionBehavior.cs" />
         <Compile Include="Util\ConsoleCommands.cs" />
         <Compile Include="Util\Extensions.cs" />
         <Compile Include="Util\FileSystem.cs" />
@@ -336,14 +346,11 @@
         <Compile Include="Util\Log.cs" />
         <Compile Include="Util\MainThreadSync.cs" />
         <Compile Include="Util\MiscExtensions.cs" />
-        <Compile Include="Util\MissionHelpers.cs" />
         <Compile Include="Util\Naming.cs" />
-        <Compile Include="Util\ParticleEffectItemSource.cs" />
         <Compile Include="Util\Paths.cs" />
         <Compile Include="Util\RangeFloat.cs" />
         <Compile Include="Util\RangeInt.cs" />
         <Compile Include="Util\RenderExport.cs" />
-        <Compile Include="Util\SoundEffectItemSource.cs" />
         <Compile Include="Util\StaticRandom.cs" />
         <Compile Include="Util\StringHelpers.cs" />
         <Compile Include="Util\YamlHelpers.cs" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
+using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Powers;
@@ -29,19 +30,24 @@ namespace BLTAdoptAHero
         [Description("Description of the class (used in documentation)"), PropertyOrder(1), UsedImplicitly]
         public string Description { get; set; } = "";
 
-        [Description("Which formation to add summoned units to"), PropertyOrder(2), ItemsSource(typeof(SummonHero.FormationItemSource)), UsedImplicitly]
+        [Description("Which formation to add summoned units to"), PropertyOrder(2), 
+         ItemsSource(typeof(SummonHero.FormationItemSource)), UsedImplicitly]
         public string Formation { get; set; } = "LightCavalry";
         
-        [Description("Item type to put in slot 1"), PropertyOrder(3), UsedImplicitly]
+        [Description("Item type to put in slot 1"), ItemsSource(typeof(EquipmentTypeItemSource)),
+         PropertyOrder(3), UsedImplicitly]
         public EquipmentType Slot1 { get; set; }
         
-        [Description("Item type to put in slot 2"), PropertyOrder(4), UsedImplicitly]
+        [Description("Item type to put in slot 2"), ItemsSource(typeof(EquipmentTypeItemSource)),
+         PropertyOrder(4), UsedImplicitly]
         public EquipmentType Slot2 { get; set; }
         
-        [Description("Item type to put in slot 3"), PropertyOrder(5), UsedImplicitly]
+        [Description("Item type to put in slot 3"), ItemsSource(typeof(EquipmentTypeItemSource)),
+         PropertyOrder(5), UsedImplicitly]
         public EquipmentType Slot3 { get; set; }
         
-        [Description("Item type to put in slot 4"), PropertyOrder(6), UsedImplicitly]
+        [Description("Item type to put in slot 4"), ItemsSource(typeof(EquipmentTypeItemSource)),
+         PropertyOrder(6), UsedImplicitly]
         public EquipmentType Slot4 { get; set; }
         
         [Description("Whether to allow horse (can be combined with Use Camel)"), PropertyOrder(7), UsedImplicitly]

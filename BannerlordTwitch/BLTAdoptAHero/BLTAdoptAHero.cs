@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Powers;
@@ -121,8 +123,6 @@ namespace BLTAdoptAHero
                     campaignStarter.AddBehavior(new BLTTournamentQueueBehavior());
                     campaignStarter.AddBehavior(new BLTCustomItemsCampaignBehavior());
 
-                    gameStarterObject.AddModel(new BLTAgentStatCalculateModel(gameStarterObject.Models
-                        .OfType<AgentStatCalculateModel>().FirstOrDefault()));
                     gameStarterObject.AddModel(new BLTAgentApplyDamageModel(gameStarterObject.Models
                         .OfType<AgentApplyDamageModel>().FirstOrDefault()));
                 }
@@ -154,81 +154,6 @@ namespace BLTAdoptAHero
         }
 
         internal const string Tag = "[BLT]";
-    }
-
-    public class BLTAgentStatCalculateModel : SandboxAgentStatCalculateModel
-    {
-        private readonly AgentStatCalculateModel previousModel;
-        
-        public BLTAgentStatCalculateModel(AgentStatCalculateModel previousModel)
-        {
-            this.previousModel = previousModel;
-        }
-
-        public override void InitializeAgentStats(Agent agent, Equipment spawnEquipment, AgentDrivenProperties agentDrivenProperties,
-            AgentBuildData agentBuildData)
-        {
-            previousModel.InitializeAgentStats(agent, spawnEquipment, agentDrivenProperties, agentBuildData);
-        }
-
-        public override void InitializeMissionEquipment(Agent agent)
-        {
-            previousModel.InitializeMissionEquipment(agent);
-        }
-
-        public override void UpdateAgentStats(Agent agent, AgentDrivenProperties agentDrivenProperties)
-        {
-            // Our EffectiveSkill override is called from UpdateAgentStats
-            if(IsTournamentHero(agent.Character, out _))
-                base.UpdateAgentStats(agent, agentDrivenProperties);
-            else
-                previousModel.UpdateAgentStats(agent, agentDrivenProperties);
-        }
-
-        public override float GetDifficultyModifier()
-        {
-            return previousModel.GetDifficultyModifier();
-        }
-
-        public override float GetEffectiveMaxHealth(Agent agent)
-        {
-            return previousModel.GetEffectiveMaxHealth(agent);
-        }
-
-        public override float GetWeaponInaccuracy(Agent agent, WeaponComponentData weapon, int weaponSkill)
-        {
-            return previousModel.GetWeaponInaccuracy(agent, weapon, weaponSkill);
-        }
-
-        public override float GetInteractionDistance(Agent agent)
-        {
-            return previousModel.GetInteractionDistance(agent);
-        }
-
-        public override float GetMaxCameraZoom(Agent agent)
-        {
-            return previousModel.GetMaxCameraZoom(agent);
-        }
-
-        public override int GetEffectiveSkill(BasicCharacterObject agentCharacter, IAgentOriginBase agentOrigin, Formation agentFormation,
-            SkillObject skill)
-        {
-            int baseModifiedSkill = previousModel.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill);
-            return IsTournamentHero(agentCharacter, out var co) 
-                ? BLTTournamentSkillAdjustBehavior.GetModifiedSkill(co.HeroObject, skill, baseModifiedSkill) 
-                : baseModifiedSkill;
-        }
-
-        private static bool IsTournamentHero(BasicCharacterObject agentCharacter, out CharacterObject characterObject)
-        {
-            characterObject = agentCharacter as CharacterObject;
-            return MissionHelpers.InTournament() && characterObject?.HeroObject?.IsAdopted() == true;
-        }
-
-        public override string GetMissionDebugInfoForAgent(Agent agent)
-        {
-            return previousModel.GetMissionDebugInfoForAgent(agent);
-        }
     }
 
     public class BLTAgentApplyDamageModel : AgentApplyDamageModel

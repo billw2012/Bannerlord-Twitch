@@ -22,18 +22,19 @@
                     xmlns:bannerlordTwitch="clr-namespace:BannerlordTwitch;assembly=BannerlordTwitch"
                     xmlns:adoptAHero="clr-namespace:BLTAdoptAHero;assembly=BLTAdoptAHero"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:achievements="clr-namespace:BLTAdoptAHero.Achievements;assembly=BLTAdoptAHero">
+                    xmlns:achievements="clr-namespace:BLTAdoptAHero.Achievements;assembly=BLTAdoptAHero"
+                    xmlns:helpers="clr-namespace:BannerlordTwitch.Helpers;assembly=BannerlordTwitch">
 
     <xctk:InverseBoolConverter x:Key="InverseBoolConverter" />
     <xctk:ObjectTypeToNameConverter x:Key="ObjectTypeToNameConverter" />
     <xctk:NewItemTypesComboBoxConverter x:Key="NewItemTypesComboBoxConverter" />
     
     <!-- Data templates for CollectionControl customization -->
-    
     <Style x:Key="ItemBackground" TargetType="Border">
         <Setter Property="Background" Value="Beige"/>
         <Setter Property="Margin" Value="2"/>
     </Style>
+    
     <!-- SimTestingItem -->
     <DataTemplate DataType="{x:Type bannerlordTwitch:SimTestingItem}">
         <Border Style="{StaticResource ItemBackground}">
@@ -76,6 +77,7 @@
         </Border>
     </DataTemplate>
 
+    <!-- Shout -->
     <DataTemplate DataType="{x:Type adoptAHero:Shout}">
         <Border Style="{StaticResource ItemBackground}">
             <Grid>
@@ -84,6 +86,7 @@
         </Border>
     </DataTemplate>
 
+    <!-- SkillDebuffDef -->
     <DataTemplate DataType="{x:Type adoptAHero:SkillDebuffDef}">
         <Border Style="{StaticResource ItemBackground}">
             <Grid>
@@ -92,6 +95,7 @@
         </Border>
     </DataTemplate>
 
+    <!-- HeroPowerDefBase -->
     <DataTemplate DataType="{x:Type adoptAHero:Powers.HeroPowerDefBase}">
         <Border Style="{StaticResource ItemBackground}">
             <Grid>
@@ -100,6 +104,7 @@
         </Border>
     </DataTemplate>
 
+    <!-- HeroClassDef -->
     <DataTemplate DataType="{x:Type adoptAHero:HeroClassDef}">
         <Border Style="{StaticResource ItemBackground}">
             <Grid>
@@ -108,6 +113,7 @@
         </Border>
     </DataTemplate>
 
+    <!-- SkillRangeDef -->
     <DataTemplate DataType="{x:Type adoptAHero:SkillRangeDef}">
         <Border Style="{StaticResource ItemBackground}">
             <Grid>
@@ -116,6 +122,7 @@
         </Border>
     </DataTemplate>
 
+    <!-- ParticleEffectDef -->
     <DataTemplate DataType="{x:Type bannerlordTwitch:Helpers.ParticleEffectDef}">
         <Border Style="{StaticResource ItemBackground}">
             <Grid>
@@ -124,7 +131,8 @@
         </Border>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type bannerlordTwitch:PropertyDef}">
+    <!-- PropertyModifierDef -->
+    <DataTemplate DataType="{x:Type helpers:PropertyModifierDef}">
         <Border Style="{StaticResource ItemBackground}">
             <Grid>
                 <TextBlock Text="{Binding}" TextWrapping="Wrap" />
@@ -132,6 +140,17 @@
         </Border>
     </DataTemplate>
     
+    
+    <!-- SkillModifierDef -->
+    <DataTemplate DataType="{x:Type helpers:SkillModifierDef}">
+        <Border Style="{StaticResource ItemBackground}">
+            <Grid>
+                <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+            </Grid>
+        </Border>
+    </DataTemplate>
+    
+    <!-- StatisticRequirement -->
     <DataTemplate DataType="{x:Type adoptAHero:Achievements.StatisticRequirement}">
         <Border Style="{StaticResource ItemBackground}">
             <Grid>
@@ -220,6 +239,7 @@
                                          Grid.ColumnSpan="2" Grid.Column="0"
                                          ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}}"
                                          SelectedItem="{Binding SelectedItem, RelativeSource={RelativeSource TemplatedParent}}"
+                                         HorizontalContentAlignment="Stretch"
                                          SelectedIndex="0"
                                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
                                 <StackPanel Margin="7,2,0,0"

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Models;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Achievements;
 using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Util;
 using HarmonyLib;
@@ -57,7 +60,41 @@ namespace BLTAdoptAHero
             
             TournamentHub.UpdateEntrants();
 
+            foreach (var hero in viewersToAdd.Select(v => v.Hero))
+            {
+                int tournamentWins = BLTAdoptAHeroCampaignBehavior.Current.GetAchievementTotalStat(hero,
+                    AchievementStatsData.Statistic.TotalTournamentFinalWins);
+                if (tournamentWins > 0)
+                {
+                    var debuffs = BLTAdoptAHeroModule.TournamentConfig.PreviousWinnerDebuffs
+                        .Select(d => d.ToModifier(tournamentWins)).ToList();
+                    if (debuffs.Any())
+                    {
+                        BLTAgentStatCalculateModel.Current.AddModifiers(hero, debuffs);
+                    }
+                }
+            }
+
             return participants;
+        }
+        
+        private static int GetModifiedSkill(Hero hero, SkillObject skill, int baseModifiedSkill)
+        {
+            if (baseModifiedSkill == 0) return 0;
+            
+            var debuff = BLTAdoptAHeroModule.TournamentConfig.PreviousWinnerDebuffs
+                .FirstOrDefault(d => SkillGroup.GetSkills(d.Skill).Contains(skill));
+            if (debuff != null)
+            {
+                int tournamentWins = BLTAdoptAHeroCampaignBehavior.Current.GetAchievementTotalStat(hero,
+                    AchievementStatsData.Statistic.TotalTournamentFinalWins);
+                if (tournamentWins > 0)
+                {
+                    return (int) (baseModifiedSkill * debuff.SkillModifier(tournamentWins));
+                }
+            }
+
+            return baseModifiedSkill;
         }
             
         private static IEnumerable<(Equipment equipment, IEnumerable<EquipmentType> types)> GetAllTournamentEquipment()

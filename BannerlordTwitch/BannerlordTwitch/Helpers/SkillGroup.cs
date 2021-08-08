@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using BLTAdoptAHero.Actions.Util;
 using TaleWorlds.Core;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
-namespace BLTAdoptAHero
+namespace BannerlordTwitch.Helpers
 {
-    
     [Flags]
     public enum SkillsEnum
     {
@@ -29,19 +27,19 @@ namespace BLTAdoptAHero
         Personal,
         Crafting, Tactics, Roguery, Charm, Leadership,
     }
-    
+
     public class SingleSkillsItemSource : IItemsSource
     {
         public ItemCollection GetValues() => new() {
-                SkillsEnum.OneHanded, SkillsEnum.TwoHanded, SkillsEnum.Polearm,
-                SkillsEnum.Bow, SkillsEnum.Throwing, SkillsEnum.Crossbow,
-                SkillsEnum.Riding, SkillsEnum.Athletics,
-                SkillsEnum.Scouting, SkillsEnum.Trade, SkillsEnum.Steward, SkillsEnum.Medicine, SkillsEnum.Engineering,
-                SkillsEnum.Crafting, SkillsEnum.Tactics, SkillsEnum.Roguery, SkillsEnum.Charm, SkillsEnum.Leadership,
-            };
+            SkillsEnum.OneHanded, SkillsEnum.TwoHanded, SkillsEnum.Polearm,
+            SkillsEnum.Bow, SkillsEnum.Throwing, SkillsEnum.Crossbow,
+            SkillsEnum.Riding, SkillsEnum.Athletics,
+            SkillsEnum.Scouting, SkillsEnum.Trade, SkillsEnum.Steward, SkillsEnum.Medicine, SkillsEnum.Engineering,
+            SkillsEnum.Crafting, SkillsEnum.Tactics, SkillsEnum.Roguery, SkillsEnum.Charm, SkillsEnum.Leadership,
+        };
     }
-    
-    internal static class SkillGroup
+
+    public static class SkillGroup
     {
         public static SkillsEnum[] ExpandSkills(SkillsEnum skills)
         {

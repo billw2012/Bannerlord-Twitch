@@ -6,7 +6,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
 
-namespace BLTAdoptAHero.Actions.Util
+namespace BannerlordTwitch.Helpers
 {
     public class HeroHelpers
     {

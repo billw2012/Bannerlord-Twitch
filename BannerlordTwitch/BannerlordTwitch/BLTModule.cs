@@ -2,9 +2,11 @@ using HarmonyLib;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
+using BannerlordTwitch.Models;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTOverlay;
@@ -124,6 +126,20 @@ namespace BannerlordTwitch
 		protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
 		{
 			RestartTwitchService();
+            
+            try
+            {
+                if (game.GameType is Campaign)
+                {
+                    gameStarterObject.AddModel(new BLTAgentStatCalculateModel(gameStarterObject.Models
+                        .OfType<AgentStatCalculateModel>().FirstOrDefault()));
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Exception(nameof(OnGameStart), e);
+                MessageBox.Show($"Error in BannerlordTwitch.{nameof(OnGameStart)}, please report this on the discord: {e}", "Bannerlord Twitch Mod STARTUP ERROR");
+            }
 		}
 
 		protected override void OnApplicationTick(float dt)

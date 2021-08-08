@@ -6,6 +6,7 @@ using System.Reflection;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
+using PropertyChanged;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero.Powers
@@ -15,6 +16,7 @@ namespace BLTAdoptAHero.Powers
     /// </summary>
     [YamlTagged]
     [CategoryOrder("General", 1)]
+    [AddINotifyPropertyChangedInterface]
     public abstract class HeroPowerDefBase : ICloneable, INotifyPropertyChanged
     {
         #region Saved Properties
@@ -27,14 +29,12 @@ namespace BLTAdoptAHero.Powers
         [Category("General"), Description("Name of the power that will be shown in game"), PropertyOrder(1), UsedImplicitly]
         public string Name { get; set; } = "Enter Name Here";
         #endregion
-
+        
         #region Implementation Details
-        /// <summary>
-        /// Override this to give more useful string explanations
-        /// </summary>
-        /// <returns></returns>
         public override string ToString() => $"{Name}";
+        #endregion
 
+        #region ICloneable
         public virtual object Clone()
         {
             var newObj = CloneHelpers.CloneProperties(this);
@@ -82,6 +82,8 @@ namespace BLTAdoptAHero.Powers
         }
         #endregion
 
+        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
     }
 }

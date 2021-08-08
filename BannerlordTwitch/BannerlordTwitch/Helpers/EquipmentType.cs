@@ -4,7 +4,7 @@ using BannerlordTwitch.Util;
 using TaleWorlds.Core;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
-namespace BLTAdoptAHero
+namespace BannerlordTwitch.Helpers
 {
     public enum EquipmentType
     {
@@ -28,9 +28,10 @@ namespace BLTAdoptAHero
         ThrowingAxes,
         ThrowingJavelins,
         Shield,
+        Stone,
         Num,
     }
-    
+
     public class EquipmentTypeItemSource : IItemsSource
     {
         public ItemCollection GetValues()
@@ -88,6 +89,7 @@ namespace BLTAdoptAHero
                 EquipmentType.ThrowingAxes => item.PrimaryWeaponClass(WeaponClass.ThrowingAxe),
                 EquipmentType.ThrowingJavelins => item.PrimaryWeaponClass(WeaponClass.Javelin),
                 EquipmentType.Shield => item.ItemType == ItemObject.ItemTypeEnum.Shield,
+                EquipmentType.Stone => item.HasWeaponClass(WeaponClass.Stone) ,
                 _ => throw new ArgumentOutOfRangeException(nameof(equipmentType), equipmentType, null)
             };
         }
@@ -123,6 +125,7 @@ namespace BLTAdoptAHero
                 EquipmentType.ThrowingKnives => WeaponClass.ThrowingKnife,
                 EquipmentType.ThrowingAxes => WeaponClass.ThrowingAxe,
                 EquipmentType.ThrowingJavelins => WeaponClass.Javelin,
+                EquipmentType.Stone => WeaponClass.Stone,
                 _ => throw new ArgumentOutOfRangeException(nameof(equipmentType), equipmentType, null)
             };
     }

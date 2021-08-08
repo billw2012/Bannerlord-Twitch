@@ -4,184 +4,61 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch.Helpers;
-using BannerlordTwitch.Util;
+using BannerlordTwitch.UI;
 using JetBrains.Annotations;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BannerlordTwitch
 {
-    public class PropertyDef : ICloneable, INotifyPropertyChanged
-    {
-        public class DrivenPropertyItemSource : IItemsSource
-        {
-            public ItemCollection GetValues() => new() {
-                { DrivenProperty.ArmorHead, "Armor Head" }, 
-                { DrivenProperty.ArmorTorso, "Armor Torso" }, 
-                { DrivenProperty.ArmorLegs, "Armor Legs" }, 
-                { DrivenProperty.ArmorArms, "Armor Arms" },
-
-                { DrivenProperty.ArmorEncumbrance, "Armor Encumbrance" },
-                { DrivenProperty.WeaponsEncumbrance, "Weapons Encumbrance" }, 
-
-                { DrivenProperty.TopSpeedReachDuration, "Top Speed Reach Duration" },
-                { DrivenProperty.MaxSpeedMultiplier, "Max Speed Multiplier" }, 
-                { DrivenProperty.CombatMaxSpeedMultiplier, "Combat Max Speed Multiplier" },
-
-                { DrivenProperty.MountChargeDamage, "Mount Charge Damage" }, 
-                { DrivenProperty.MountDifficulty, "Mount Difficulty" }, 
-                { DrivenProperty.MountManeuver, "Mount Maneuver" }, 
-                { DrivenProperty.MountSpeed, "Mount Speed" }, 
-                { DrivenProperty.AttributeHorseArchery, "Horse Archery Skills" }, 
-                
-                { DrivenProperty.AttributeRiding, "Riding Skills" }, 
-                { DrivenProperty.AttributeShield, "Shield Skills" }, 
-                { DrivenProperty.HandlingMultiplier, "Handling Multiplier" }, 
-                { DrivenProperty.WeaponInaccuracy, "Weapon Inaccuracy" }, 
-                
-                { DrivenProperty.SwingSpeedMultiplier, "Swing Speed Multiplier" },
-                { DrivenProperty.ReloadSpeed, "Reload Speed" },
-                { DrivenProperty.ReloadMovementPenaltyFactor, "Reload Movement Penalty" },
-                
-                { DrivenProperty.AttributeCourage, "Courage" }, 
-
-                { DrivenProperty.AttributeShieldMissileCollisionBodySizeAdder, "Shield Missile Collision Body Size Adder" }, 
-                
-                { DrivenProperty.ThrustOrRangedReadySpeedMultiplier, "Thrust Or Ranged Ready Speed Multiplier" },
-
-                { DrivenProperty.AiShootFreq, "AI Shoot Frequency" },
-                { DrivenProperty.AiWaitBeforeShootFactor, "AI Wait Before Shoot Factor" },
-                { DrivenProperty.AIBlockOnDecideAbility, "AI Block Chance" },
-                { DrivenProperty.AIAttackOnDecideChance, "AI Attack Chance" },
-                { DrivenProperty.AiKick, "AI Kick" }, 
-                
-                { DrivenProperty.UseRealisticBlocking, "UseRealisticBlocking" },
-                { DrivenProperty.WeaponWorstMobileAccuracyPenalty, "WeaponWorstMobileAccuracyPenalty" }, 
-                { DrivenProperty.WeaponWorstUnsteadyAccuracyPenalty, "WeaponWorstUnsteadyAccuracyPenalty" }, 
-                { DrivenProperty.WeaponBestAccuracyWaitTime, "WeaponBestAccuracyWaitTime" }, 
-                { DrivenProperty.WeaponUnsteadyBeginTime, "WeaponUnsteadyBeginTime" }, 
-                { DrivenProperty.WeaponUnsteadyEndTime, "WeaponUnsteadyEndTime" }, 
-                { DrivenProperty.WeaponRotationalAccuracyPenaltyInRadians, "WeaponRotationalAccuracyPenaltyInRadians" }, 
-                { DrivenProperty.LongestRangedWeaponSlotIndex, "LongestRangedWeaponSlotIndex" }, 
-                { DrivenProperty.LongestRangedWeaponInaccuracy, "LongestRangedWeaponInaccuracy" }, 
-                { DrivenProperty.ShieldBashStunDurationMultiplier, "ShieldBashStunDurationMultiplier" }, 
-                { DrivenProperty.KickStunDurationMultiplier, "KickStunDurationMultiplier" }, 
-                { DrivenProperty.BipedalRangedReadySpeedMultiplier, "BipedalRangedReadySpeedMultiplier" }, 
-                { DrivenProperty.BipedalRangedReloadSpeedMultiplier, "BipedalRangedReloadSpeedMultiplier" }, 
-
-                { DrivenProperty.AiRangedHorsebackMissileRange, "AiRangedHorsebackMissileRange" }, 
-                { DrivenProperty.AiFacingMissileWatch, "AiFacingMissileWatch" }, 
-                { DrivenProperty.AiFlyingMissileCheckRadius, "AiFlyingMissileCheckRadius" }, 
-                { DrivenProperty.AIParryOnDecideAbility, "AIParryOnDecideAbility" }, 
-                { DrivenProperty.AiTryChamberAttackOnDecide, "AiTryChamberAttackOnDecide" }, 
-                { DrivenProperty.AIAttackOnParryChance, "AIAttackOnParryChance" }, 
-                { DrivenProperty.AiAttackOnParryTiming, "AiAttackOnParryTiming" }, 
-                { DrivenProperty.AIDecideOnAttackChance, "AIDecideOnAttackChance" }, 
-                { DrivenProperty.AIParryOnAttackAbility, "AIParryOnAttackAbility" }, 
-                { DrivenProperty.AiAttackCalculationMaxTimeFactor, "AiAttackCalculationMaxTimeFactor" }, 
-                { DrivenProperty.AiDecideOnAttackWhenReceiveHitTiming, "AiDecideOnAttackWhenReceiveHitTiming" }, 
-                { DrivenProperty.AiDecideOnAttackContinueAction, "AiDecideOnAttackContinueAction" }, 
-                { DrivenProperty.AiDecideOnAttackingContinue, "AiDecideOnAttackingContinue" }, 
-                { DrivenProperty.AIParryOnAttackingContinueAbility, "AIParryOnAttackingContinueAbility" }, 
-                { DrivenProperty.AIDecideOnRealizeEnemyBlockingAttackAbility, "AIDecideOnRealizeEnemyBlockingAttackAbility" }, 
-                { DrivenProperty.AIRealizeBlockingFromIncorrectSideAbility, "AIRealizeBlockingFromIncorrectSideAbility" }, 
-                { DrivenProperty.AiAttackingShieldDefenseChance, "AiAttackingShieldDefenseChance" }, 
-                { DrivenProperty.AiAttackingShieldDefenseTimer, "AiAttackingShieldDefenseTimer" }, 
-                { DrivenProperty.AiCheckMovementIntervalFactor, "AiCheckMovementIntervalFactor" }, 
-                { DrivenProperty.AiMovemetDelayFactor, "AiMovemetDelayFactor" }, 
-                { DrivenProperty.AiParryDecisionChangeValue, "AiParryDecisionChangeValue" }, 
-                { DrivenProperty.AiDefendWithShieldDecisionChanceValue, "AiDefendWithShieldDecisionChanceValue" }, 
-                { DrivenProperty.AiMoveEnemySideTimeValue, "AiMoveEnemySideTimeValue" }, 
-                { DrivenProperty.AiMinimumDistanceToContinueFactor, "AiMinimumDistanceToContinueFactor" }, 
-                { DrivenProperty.AiStandGroundTimerValue, "AiStandGroundTimerValue" }, 
-                { DrivenProperty.AiStandGroundTimerMoveAlongValue, "AiStandGroundTimerMoveAlongValue" }, 
-                { DrivenProperty.AiHearingDistanceFactor, "AiHearingDistanceFactor" }, 
-                { DrivenProperty.AiChargeHorsebackTargetDistFactor, "AiChargeHorsebackTargetDistFactor" }, 
-                { DrivenProperty.AiRangerLeadErrorMin, "AiRangerLeadErrorMin" }, 
-                { DrivenProperty.AiRangerLeadErrorMax, "AiRangerLeadErrorMax" }, 
-                { DrivenProperty.AiRangerVerticalErrorMultiplier, "AiRangerVerticalErrorMultiplier" }, 
-                { DrivenProperty.AiRangerHorizontalErrorMultiplier, "AiRangerHorizontalErrorMultiplier" }, 
-                { DrivenProperty.AiRaiseShieldDelayTimeBase, "AiRaiseShieldDelayTimeBase" }, 
-                { DrivenProperty.AiUseShieldAgainstEnemyMissileProbability, "AiUseShieldAgainstEnemyMissileProbability" }, 
-                { DrivenProperty.AiSpeciesIndex, "AiSpeciesIndex" }, 
-                { DrivenProperty.AiRandomizedDefendDirectionChance, "AiRandomizedDefendDirectionChance" }, 
-                { DrivenProperty.AiShooterError, "AiShooterError" }, 
-                { DrivenProperty.AISetNoAttackTimerAfterBeingHitAbility, "AISetNoAttackTimerAfterBeingHitAbility" }, 
-                { DrivenProperty.AISetNoAttackTimerAfterBeingParriedAbility, "AISetNoAttackTimerAfterBeingParriedAbility" }, 
-                { DrivenProperty.AISetNoDefendTimerAfterHittingAbility, "AISetNoDefendTimerAfterHittingAbility" }, 
-                { DrivenProperty.AISetNoDefendTimerAfterParryingAbility, "AISetNoDefendTimerAfterParryingAbility" }, 
-                { DrivenProperty.AIEstimateStunDurationPrecision, "AIEstimateStunDurationPrecision" }, 
-                { DrivenProperty.AIHoldingReadyMaxDuration, "AIHoldingReadyMaxDuration" }, 
-                { DrivenProperty.AIHoldingReadyVariationPercentage, "AIHoldingReadyVariationPercentage" }, 
-            };
-        }
-        
-        [Description("The property to modify"),
-         ItemsSource(typeof(DrivenPropertyItemSource)),
-         PropertyOrder(1), UsedImplicitly]
-        public DrivenProperty Name { get; set; }
-
-        [Description("Add to the property value"), PropertyOrder(2), UsedImplicitly]
-        public float? Add { get; set; }
-
-        [Description("Multiply the property value"), PropertyOrder(3), UsedImplicitly]
-        public float? Multiply { get; set; }
-
-        public override string ToString()
-        {
-            var parts = new List<string> {Name.ToString().SplitCamelCase()};
-            if (Multiply.HasValue && Multiply.Value != 0)
-            {
-                parts.Add($"{Multiply * 100:0}%");
-            }
-
-            if (Add.HasValue && Add.Value != 0)
-            {
-                parts.Add(Add > 0 ? $"+{Add}" : $"{Add}");
-            }
-
-            return string.Join(" ", parts);
-        }
-
-        public object Clone() => CloneHelpers.CloneProperties(this);
-        public event PropertyChangedEventHandler PropertyChanged;
-    }
-    
     public sealed class AgentModifierConfig : IDocumentable, ICloneable
     {
-        [Description("Scaling of the target"), PropertyOrder(1), UsedImplicitly]
-        public float? Scale { get; set; }
-
-        [Description("Apply to the mount of the target, instead of the target themselves"), PropertyOrder(2), UsedImplicitly]
+        [Description("Changes the size of the target"),
+         UIRange(50, 150, 5),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         PropertyOrder(1), UsedImplicitly]
+        public float ScalePercent { get; set; } = 100f;
+        
+        [Description("Apply to the mount of the target, instead of the target themselves " +
+                     "(only some properties are valid on mounts)"), 
+         PropertyOrder(2), UsedImplicitly]
         public bool ApplyToMount { get; set; }
 
-        [Description("Properties to change, and how much by"), PropertyOrder(3), UsedImplicitly]
-        public ObservableCollection<PropertyDef> Properties { get; set; } = new();
+        [Description("Properties to change, and how much by"), 
+         PropertyOrder(3), UsedImplicitly]
+        public ObservableCollection<PropertyModifierDef> Properties { get; set; } = new();
+        
+        [Description("Skills to change, and how much by (these aren't compatible with Apply To Mount)"), 
+         PropertyOrder(3), UsedImplicitly]
+        public ObservableCollection<SkillModifierDef> Skills { get; set; } = new();
 
+        
         public override string ToString()
         {
-            string result = Scale.HasValue && Scale.Value != 1 ? $"Scale {Scale.Value} " : "";
-            return result + string.Join(" ", Properties.Select(p => p.ToString())) + (ApplyToMount? " (on mount)" : "");
+            return (ScalePercent != 100 ? $"Scale {ScalePercent}% " : "")
+                   + string.Join(" ", Properties.Select(p => p.ToString()))
+                   + string.Join(" ", Skills.Select(p => p.ToString()))
+                   + (ApplyToMount? " (on mount)" : "");
         }
 
         public object Clone()
         {
             return new AgentModifierConfig
             {
-                Scale = Scale,
+                ScalePercent = ScalePercent,
                 ApplyToMount = ApplyToMount,
-                Properties = new(Properties.Select(p => (PropertyDef)p.Clone())),
+                Properties = new(Properties.Select(p => (PropertyModifierDef)p.Clone())),
+                Skills = new(Skills.Select(p => (SkillModifierDef)p.Clone())),
             };
         }
 
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
             string mountStr = ApplyToMount ? "Mount " : "";
-            if(Scale.HasValue && Scale.Value != 1)
-                generator.P($"{mountStr}{Scale.Value*100:0}% normal size");
-            if(Scale.HasValue && Scale.Value != 1)
-                generator.P($"{mountStr}{Scale.Value*100:0}% normal size");
+            if(ScalePercent != 100)
+                generator.P($"{mountStr}{ScalePercent:0}% normal size");
             foreach (var p in Properties)
             {
                 generator.P(p.ToString());
@@ -322,7 +199,7 @@ namespace BannerlordTwitch
                     foreach (var effect in modifiers)
                     {
                         ApplyPropertyModifiers(agent, effect);
-                        newAgentScale *= effect.Scale ?? 1;
+                        newAgentScale *= effect.ScalePercent / 100f;
                     }
                 }
                 else
@@ -362,12 +239,8 @@ namespace BannerlordTwitch
 
             foreach (var prop in config.Properties)
             {
-                float baseValue = target.AgentDrivenProperties.GetStat(prop.Name);
-                if (prop.Multiply.HasValue)
-                    baseValue *= prop.Multiply.Value;
-                if (prop.Add.HasValue)
-                    baseValue += prop.Add.Value;
-                target.AgentDrivenProperties.SetStat(prop.Name, baseValue);
+                target.AgentDrivenProperties.SetStat(prop.Name, 
+                    prop.Apply(target.AgentDrivenProperties.GetStat(prop.Name)));
             }
         }
     }

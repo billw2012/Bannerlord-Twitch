@@ -8,67 +8,70 @@ using JetBrains.Annotations;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
     public struct HitBehavior : IDocumentable
     {
-        [Description("Chance (0 to 1) for target to get knocked back"), PropertyOrder(1),
-         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+        [Description("Percent chance (0 to 100) for target to get knocked back"), PropertyOrder(1),
+         UIRange(0, 100, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          UsedImplicitly]
-        public float KnockBackChance { get; set; }
-        [Description("Chance (0 to 1) for target to get knocked down"), PropertyOrder(2),
-         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+        public float KnockBackChancePercent { get; set; }
+        [Description("Percent chance (0 to 100) for target to get knocked down"), PropertyOrder(2),
+         UIRange(0, 100, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          UsedImplicitly]
-        public float KnockDownChance { get; set; }
-        // [Description("Chance (0 to 1) for hit to crush through targets block"), PropertyOrder(3), UsedImplicitly]
-        // public float CrushThroughChance { get; set; }
-        [Description("Chance (0 to 1) for target to shrug off blow (not visably reacting to it, " +
+        public float KnockDownChancePercent { get; set; }
+        [Description("Percent chance (0 to 100) for target to shrug off blow (not visably reacting to it, " +
                      "damage will still apply)"), PropertyOrder(4),
-         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UIRange(0, 100, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          UsedImplicitly]
-        public float ShrugOffChance { get; set; }
-        [Description("Chance (0 to 1) for target to rear (if it is a mount)"), PropertyOrder(5),
-         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+        public float ShrugOffChancePercent { get; set; }
+        [Description("Percent chance (0 to 100) for target to rear (if it is a mount)"), PropertyOrder(5),
+         UIRange(0, 100, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          UsedImplicitly]
-        public float MakesRearChance { get; set; }
-        [Description("Chance (0 to 1) for target to be dismounted"), PropertyOrder(6),
-         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+        public float MakesRearChancePercent { get; set; }
+        [Description("Percent chance (0 to 100) for target to be dismounted"), PropertyOrder(6),
+         UIRange(0, 100, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          UsedImplicitly]
         public float DismountChance { get; set; }
+
+        [YamlIgnore]
+        public bool IsEnabled => KnockBackChancePercent > 0 ||
+                                 KnockDownChancePercent > 0 ||
+                                 ShrugOffChancePercent > 0 ||
+                                 MakesRearChancePercent > 0 ||
+                                 DismountChance > 0;
 
         public BlowFlags Generate(Agent agent)
         {
             var flags = BlowFlags.None;
-            if(MBRandom.RandomFloat < KnockBackChance && !agent.IsMount) flags |= BlowFlags.KnockBack;
-            if(MBRandom.RandomFloat < KnockDownChance && !agent.IsMount) flags |= BlowFlags.KnockDown;
-            //if(MBRandom.RandomFloat < CrushThroughChance) flags |= BlowFlags.CrushThrough;
-            if(MBRandom.RandomFloat < ShrugOffChance && !agent.IsMount) flags |= BlowFlags.ShrugOff;
-            if(MBRandom.RandomFloat < MakesRearChance && agent.IsMount) flags |= BlowFlags.MakesRear;
-            if(MBRandom.RandomFloat < DismountChance && agent.HasMount) flags |= BlowFlags.CanDismount;
+            if(MBRandom.RandomFloat * 100f < KnockBackChancePercent && !agent.IsMount) flags |= BlowFlags.KnockBack;
+            if(MBRandom.RandomFloat * 100f < KnockDownChancePercent && !agent.IsMount) flags |= BlowFlags.KnockDown;
+            if(MBRandom.RandomFloat * 100f < ShrugOffChancePercent && !agent.IsMount) flags |= BlowFlags.ShrugOff;
+            if(MBRandom.RandomFloat * 100f < MakesRearChancePercent && agent.IsMount) flags |= BlowFlags.MakesRear;
+            if(MBRandom.RandomFloat * 100f < DismountChance && agent.HasMount) flags |= BlowFlags.CanDismount;
             return flags;
         }
 
         public override string ToString()
         {
             var flags = new List<string>();
-            if(KnockBackChance > 0) flags.Add($"{KnockBackChance*100:0}% {nameof(BlowFlags.KnockBack).SplitCamelCase()}");
-            if(KnockDownChance > 0) flags.Add($"{KnockDownChance*100:0}% {nameof(BlowFlags.KnockDown).SplitCamelCase()}");
-            //if(CrushThroughChance > 0) flags.Add($"{CrushThroughChance*100:0}% {nameof(BlowFlags.CrushThrough).SplitCamelCase()}");
-            if(ShrugOffChance > 0) flags.Add($"{ShrugOffChance*100:0}% {nameof(BlowFlags.ShrugOff).SplitCamelCase()}");
-            if(MakesRearChance > 0) flags.Add($"{MakesRearChance*100:0}% {nameof(BlowFlags.MakesRear).SplitCamelCase()}");
-            if(DismountChance > 0) flags.Add($"{DismountChance*100:0}% {nameof(BlowFlags.CanDismount).SplitCamelCase()}");
+            if(KnockBackChancePercent > 0) flags.Add($"{KnockBackChancePercent:0}% {nameof(BlowFlags.KnockBack).SplitCamelCase()}");
+            if(KnockDownChancePercent > 0) flags.Add($"{KnockDownChancePercent:0}% {nameof(BlowFlags.KnockDown).SplitCamelCase()}");
+            if(ShrugOffChancePercent > 0) flags.Add($"{ShrugOffChancePercent:0}% {nameof(BlowFlags.ShrugOff).SplitCamelCase()}");
+            if(MakesRearChancePercent > 0) flags.Add($"{MakesRearChancePercent:0}% {nameof(BlowFlags.MakesRear).SplitCamelCase()}");
+            if(DismountChance > 0) flags.Add($"{DismountChance:0}% {nameof(BlowFlags.CanDismount).SplitCamelCase()}");
             return string.Join(", ", flags);
         }
 
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
-            if(KnockBackChance > 0) generator.PropertyValuePair(nameof(KnockBackChance).SplitCamelCase(), $"{KnockBackChance * 100:0}%");
-            if(KnockDownChance > 0) generator.PropertyValuePair(nameof(KnockDownChance).SplitCamelCase(), $"{KnockDownChance * 100:0}%");
-            //if(CrushThroughChance > 0) generator.PropertyValuePair(nameof(CrushThroughChance).SplitCamelCase(), $"{CrushThroughChance * 100:0}%");
-            if(ShrugOffChance > 0) generator.PropertyValuePair(nameof(ShrugOffChance).SplitCamelCase(), $"{ShrugOffChance * 100:0}%");
-            if(MakesRearChance > 0) generator.PropertyValuePair(nameof(MakesRearChance).SplitCamelCase(), $"{MakesRearChance * 100:0}%");
-            if(DismountChance > 0) generator.PropertyValuePair(nameof(DismountChance).SplitCamelCase(), $"{DismountChance * 100:0}%");
+            if(KnockBackChancePercent > 0) generator.PropertyValuePair(nameof(KnockBackChancePercent).SplitCamelCase(), $"{KnockBackChancePercent:0}%");
+            if(KnockDownChancePercent > 0) generator.PropertyValuePair(nameof(KnockDownChancePercent).SplitCamelCase(), $"{KnockDownChancePercent:0}%");
+            if(ShrugOffChancePercent > 0) generator.PropertyValuePair(nameof(ShrugOffChancePercent).SplitCamelCase(), $"{ShrugOffChancePercent:0}%");
+            if(MakesRearChancePercent > 0) generator.PropertyValuePair(nameof(MakesRearChancePercent).SplitCamelCase(), $"{MakesRearChancePercent:0}%");
+            if(DismountChance > 0) generator.PropertyValuePair(nameof(DismountChance).SplitCamelCase(), $"{DismountChance:0}%");
         }
     }
 }

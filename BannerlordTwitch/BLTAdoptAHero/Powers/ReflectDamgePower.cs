@@ -7,18 +7,23 @@ using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
     [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
     public class ReflectDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
-        [Category("Power Config"), 
-         Description("What fraction of damage to reflect back to attacker"), PropertyOrder(1),
-         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+        #region User Editable
+        [Browsable(false)]
         public float FractionOfDamageToReflect { get; set; } = 0.1f;
 
+        [Category("Power Config"), 
+         Description("What percent of damage to reflect back to attacker"),
+         Range(0, 200), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         YamlIgnore, PropertyOrder(1), UsedImplicitly]
+        public float ReflectPercent { get => FractionOfDamageToReflect * 100; set => FractionOfDamageToReflect = value / 100f; }
+        
         [Category("Power Config"), 
          Description("Whether the damage that is reflected is also subtracted from the damage the hero takes " +
                      "(this is 'classic' damage reflection)"), PropertyOrder(2), UsedImplicitly]
@@ -28,7 +33,13 @@ namespace BLTAdoptAHero.Powers
          Description("Hit behavior for the reflected damage"),
          PropertyOrder(3), UsedImplicitly, ExpandableObject]
         public HitBehavior HitBehavior { get; set; }
+        #endregion
 
+        #region Implementation Details
+        protected override void OnActivation(Hero hero, PowerHandler.Handlers handlers,
+            Agent agent = null, DeactivationHandler deactivationHandler = null)
+            => handlers.OnTakeDamage += OnTakeDamage;
+        
         private void OnTakeDamage(Hero hero, Agent agent, Hero attackerHero, Agent attackerAgent, BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams) 
         {
             int damage = (int) (blowParams.blow.InflictedDamage * FractionOfDamageToReflect);
@@ -54,12 +65,17 @@ namespace BLTAdoptAHero.Powers
                 }
             }
         }
+        #endregion
 
-        public override string ToString() => $"{Name}: {ToStringInternal()}";
-        
-        private string ToStringInternal()
-            => $"Reflect {FractionOfDamageToReflect * 100:0}% of damage received, {HitBehavior}";
+        #region Public Interface
+        public override string ToString() => $"{base.ToString()}: {Description}";
 
+        [YamlIgnore]
+        public string Description
+            => $"Reflect {ReflectPercent:0}% of damage received, {HitBehavior}";
+        #endregion
+
+        #region IDocumentable
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
             generator.PropertyValuePair(
@@ -71,10 +87,10 @@ namespace BLTAdoptAHero.Powers
             }
             generator.PropertyValuePair(nameof(HitBehavior).SplitCamelCase(), HitBehavior.ToString());
         }
+        #endregion
 
+        #region IHeroPowerPassive
         void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers) => OnActivation(hero, handlers);
-        protected override void OnActivation(Hero hero, PowerHandler.Handlers handlers,
-            Agent agent = null, DeactivationHandler deactivationHandler = null)
-            => handlers.OnTakeDamage += OnTakeDamage;
+        #endregion
     }
 }

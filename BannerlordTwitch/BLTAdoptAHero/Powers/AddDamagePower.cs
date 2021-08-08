@@ -24,11 +24,15 @@ namespace BLTAdoptAHero.Powers
     public class AddDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         #region User Editable
-        [Category("Effect"), Description("How much to multiply base damage by"),
+        [Browsable(false)]
+        public float DamageToMultiply { get; set; } = 1f;
+        
+        [Category("Effect"), 
+         Description("Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it)"),
          UIRangeAttribute(0, 10, 0.05f),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         PropertyOrder(1), UsedImplicitly]
-        public float DamageToMultiply { get; set; } = 1f;
+         YamlIgnore, PropertyOrder(1), UsedImplicitly]
+        public float DamageModifierPercent { get => DamageToMultiply * 100; set => DamageToMultiply = value / 100f; }
 
         [Category("Effect"), Description("How much damage to add"), PropertyOrder(2), UsedImplicitly]
         public int DamageToAdd { get; set; }
@@ -114,12 +118,21 @@ namespace BLTAdoptAHero.Powers
 			        Enumerable.Range(0, (int) Math.Min(Range, 20))
 				        .Select(i => $"{i}m: {CalculateDamage(i)}dmg"));
 
-	        public override string ToString()
-	        {
-		        return $"{DamageAtCenter} AoE ({Range}m)";
-	        }
+            public override string ToString() => Description;
 
-	        public object Clone() => CloneHelpers.CloneProperties(this);
+            [YamlIgnore, Browsable(false)]
+            public string Description
+            {
+                get
+                {
+                    if (!IsEnabled) return "(disabled)";
+                    string desc = $"{DamageAtCenter}dmg in {Range}m";
+                    if (HitBehavior.IsEnabled) desc += $" with {HitBehavior}";
+                    return desc;
+                }
+            }
+
+            public object Clone() => CloneHelpers.CloneProperties(this);
 
 	        public void Apply(Agent from, List<Agent> ignoreAgents, Vec3 position)
 	        {
@@ -198,23 +211,21 @@ namespace BLTAdoptAHero.Powers
 		        .ConfigureHandlers(hero, this, handlers2 => OnActivation(hero, handlers2));
         #endregion
 
-        #region Base Class Overrides 
+        #region Implementation Details
         protected override void OnActivation(Hero hero, PowerHandler.Handlers handlers,
             Agent agent = null, DeactivationHandler deactivationHandler = null)
         {
-	        handlers.OnDoMeleeHit += OnDoMeleeHit;
-	        handlers.OnDecideCrushedThrough += OnDecideCrushedThroughDelegate;
-	        handlers.OnDecideMissileWeaponFlags += OnDecideMissileWeaponFlags;
-	        handlers.OnDoMissileHit += OnDoMissileHit;
-	        handlers.OnDecideWeaponCollisionReaction += OnDecideWeaponCollisionReaction;
-	        handlers.OnDoDamage += OnDoDamage;
-	        handlers.OnMissileCollision += OnMissileCollisionReaction;
-	        handlers.OnAddMissile += OnAddMissile;
-	        handlers.OnPostDoMeleeHit += OnPostDoMeleeHit;
+            handlers.OnDoMeleeHit += OnDoMeleeHit;
+            handlers.OnDecideCrushedThrough += OnDecideCrushedThroughDelegate;
+            handlers.OnDecideMissileWeaponFlags += OnDecideMissileWeaponFlags;
+            handlers.OnDoMissileHit += OnDoMissileHit;
+            handlers.OnDecideWeaponCollisionReaction += OnDecideWeaponCollisionReaction;
+            handlers.OnDoDamage += OnDoDamage;
+            handlers.OnMissileCollision += OnMissileCollisionReaction;
+            handlers.OnAddMissile += OnAddMissile;
+            handlers.OnPostDoMeleeHit += OnPostDoMeleeHit;
         }
-        #endregion
 
-        #region Implementation Details
         private void OnDecideMissileWeaponFlags(Hero attackerHero, Agent attackerAgent, 
 	        BLTAgentApplyDamageModel.DecideMissileWeaponFlagsParams args)
         {
@@ -415,39 +426,44 @@ namespace BLTAdoptAHero.Powers
 
 	        agent.RegisterBlow(blow);
         }
-
-        private string ToStringInternal()
-        {
-            var appliesToList = new List<string>();
-            if (ApplyAgainstNonHeroes) appliesToList.Add("Non-heroes");
-            if (ApplyAgainstHeroes) appliesToList.Add("Heroes");
-            if (ApplyAgainstAdoptedHeroes) appliesToList.Add("Adopted");
-            if (ApplyAgainstPlayer) appliesToList.Add("Player");
-
-            var appliesFromList = new List<string>();
-            if (Ranged) appliesFromList.Add("Ranged");
-            if (Melee) appliesFromList.Add("Melee");
-            if (Charge) appliesFromList.Add("Charge");
-
-            var modifiers = new List<string>();
-            
-            if (DamageToMultiply != 1) modifiers.Add($"+{DamageToMultiply * 100:0.0}%");
-            if (DamageToAdd != 0) modifiers.Add($"+{DamageToAdd}");
-            if (AoE.Range != 0) appliesFromList.Add(AoE.ToString());
-
-            return $"{string.Join(" / ", modifiers)} " +
-                   $"{string.Join("/", appliesFromList)} dmg to {string.Join(", ", appliesToList)}";
-        }
         #endregion
 
         #region Public Interface
+        public override string ToString() => $"{base.ToString()}: {Description}";
 
-        public override string ToString() => $"{Name}: {ToStringInternal()}";
+        [YamlIgnore]
+        public string Description
+        {
+            get
+            {
+                var appliesToList = new List<string>();
+                if (ApplyAgainstNonHeroes) appliesToList.Add("Non-heroes");
+                if (ApplyAgainstHeroes) appliesToList.Add("Heroes");
+                if (ApplyAgainstAdoptedHeroes) appliesToList.Add("Adopted");
+                if (ApplyAgainstPlayer) appliesToList.Add("Player");
 
+                var appliesFromList = new List<string>();
+                if (Ranged) appliesFromList.Add("Ranged");
+                if (Melee) appliesFromList.Add("Melee");
+                if (Charge) appliesFromList.Add("Charge");
+
+                var modifiers = new List<string>();
+            
+                if (DamageModifierPercent != 100) modifiers.Add($"+{DamageModifierPercent:0.0}%");
+                if (AddHitBehavior.IsEnabled) modifiers.Add($"Add: {AddHitBehavior}");
+                if (RemoveHitBehavior.IsEnabled) modifiers.Add($"Remove: {RemoveHitBehavior}");
+                if (DamageToAdd != 0) modifiers.Add($"+{DamageToAdd}");
+                if (AoE.IsEnabled) appliesFromList.Add(AoE.Description);
+
+                return $"{string.Join(" / ", modifiers)} " +
+                       $"{string.Join(" / ", appliesFromList)} dmg to {string.Join(", ", appliesToList)}"
+                       ;
+            }
+        }
         #endregion
 
         #region IDocumentable
-        public void GenerateDocumentation(IDocumentationGenerator generator) => generator.P(ToStringInternal());
+        public void GenerateDocumentation(IDocumentationGenerator generator) => generator.P(Description);
         #endregion
     }
 }

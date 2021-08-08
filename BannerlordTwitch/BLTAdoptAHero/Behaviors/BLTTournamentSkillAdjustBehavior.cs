@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
+using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Achievements;
 using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Annotations;
 using HarmonyLib;
+using SandBox.TournamentMissions.Missions;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -15,18 +17,6 @@ namespace BLTAdoptAHero
     [HarmonyPatch]
     public class BLTTournamentSkillAdjustBehavior : AutoMissionBehavior<BLTTournamentSkillAdjustBehavior>
     {
-        public override void OnAgentBuild(Agent agent, Banner banner)
-        {
-            // Can modify skills here for the tournament
-            
-            // if (agent.IsHuman && UnarmedRound)
-            // {
-            //     agent.AgentDrivenProperties.SetStat(DrivenProperty,
-            //         agent.AgentDrivenProperties.SetStat(DrivenProperty.SwingSpeedMultiplier) * 10
-            //         );
-            // }
-        }
-        
         public bool UnarmedRound { get; set; }
 
         public override void OnRegisterBlow(Agent attacker, Agent victim, GameEntity realHitEntity, Blow b,
