@@ -257,7 +257,8 @@ namespace BLTAdoptAHero.Powers
 
         private bool IgnoreDamageType(Hero victimHero, Agent victimAgent, AttackCollisionData attackCollisionData)
         {
-            return attackCollisionData.IsFallDamage
+            return victimAgent == null 
+                   || attackCollisionData.IsFallDamage
                    || !ApplyAgainstAdoptedHeroes && victimHero != null
                    || !ApplyAgainstHeroes && victimAgent.IsHero
                    || !ApplyAgainstNonHeroes && !victimAgent.IsHero

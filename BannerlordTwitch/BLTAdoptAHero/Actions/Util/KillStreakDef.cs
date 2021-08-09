@@ -21,8 +21,9 @@ namespace BLTAdoptAHero.Actions.Util
         public string Name { get; set; } = "New Kill Streak";
         
         [PropertyOrder(4), 
-         Description("Text that displays when the kill streak is achieved, replacable values include: {name} for the " +
-                     "Kill Streak name, {player} and {kills}."), UsedImplicitly]
+         Description("Text that displays when the kill streak is achieved. " +
+                     "Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} " +
+                     "for the Kills Required."), UsedImplicitly]
         public string NotificationText { get; set; }
         
         [PropertyOrder(5), Description("Kills required to achieve the kill streak."), UsedImplicitly]

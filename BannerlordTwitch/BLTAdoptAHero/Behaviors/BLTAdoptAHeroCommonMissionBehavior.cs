@@ -287,6 +287,7 @@ namespace BLTAdoptAHero
             if (currKillStreak != null)
             {
                 string message = currKillStreak.NotificationText
+                    .Replace("{viewer}", hero.FirstName.ToString())
                     .Replace("{player}", hero.FirstName.ToString())
                     .Replace("{kills}",currKillStreak.KillsRequired.ToString())
                     .Replace("{name}",currKillStreak.Name);

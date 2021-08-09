@@ -27,7 +27,7 @@ namespace BLTAdoptAHero.Achievements
 
         [Category("General"), PropertyOrder(3), 
          Description("Text that will display when the achievement is gained and when the player lists their " +
-                     "achievements.  Can use {player} for the viewers name and {name} for the name of the " +
+                     "achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the " +
                      "achievement."), UsedImplicitly]
         public string NotificationText { get; set; }
 
