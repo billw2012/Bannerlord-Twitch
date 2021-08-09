@@ -5,7 +5,11 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
+using BLTAdoptAHero.Achievements;
 using JetBrains.Annotations;
+using TaleWorlds.CampaignSystem;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
@@ -20,12 +24,14 @@ namespace BLTAdoptAHero
         #endregion
         
         #region User Editable
-        [Description("Defined classes"), UsedImplicitly] 
+        [Description("Defined classes"), PropertyOrder(1), UsedImplicitly] 
         public ObservableCollection<HeroClassDef> ClassDefs { get; set; } = new();
+
+        [Description("Requirements for class levels"), PropertyOrder(2), UsedImplicitly]
+        public ObservableCollection<ClassLevelRequirementsDef> ClassLevelRequirements { get; set; }
         #endregion
 
         #region Public Interface
-        
         [Browsable(false), YamlIgnore]
         public IEnumerable<HeroClassDef> ValidClasses => ClassDefs.Where(c => c.Enabled);
         
@@ -37,6 +43,17 @@ namespace BLTAdoptAHero
 
         public HeroClassDef FindClass(string search) 
             => ValidClasses.FirstOrDefault(c => c.Name.Equals(search, StringComparison.InvariantCultureIgnoreCase));
+
+        public int GetHeroClassLevel(Hero hero)
+        {
+            int level = 0;
+            foreach (var requirements in ClassLevelRequirements)
+            {
+                if (!requirements.IsMet(hero)) return level;
+                ++level;
+            }
+            return level;
+        }
         #endregion
 
         #region IUpdateFromDefault
@@ -69,5 +86,51 @@ namespace BLTAdoptAHero
             });
         }
         #endregion
+    }
+
+    public class ClassLevelRequirementsDef : INotifyPropertyChanged, ILoaded, ICloneable
+    {
+        [Description("Requirements for this class level"), PropertyOrder(1), UsedImplicitly, 
+         Editor(typeof(DerivedClassCollectionEditor<IAchievementRequirement>), 
+             typeof(DerivedClassCollectionEditor<IAchievementRequirement>))]
+        public ObservableCollection<IAchievementRequirement> Requirements { get; set; } = new();
+
+        [YamlIgnore, Browsable(false)]
+        public int ClassLevel => ClassConfig.ClassLevelRequirements.IndexOf(this) + 1;
+        
+        public ClassLevelRequirementsDef()
+        {
+            // For when these are created via the configure tool
+            ClassConfig = ConfigureContext.CurrentlyEditedSettings == null 
+                ? null : GlobalHeroClassConfig.Get(ConfigureContext.CurrentlyEditedSettings);
+        }
+        
+        public override string ToString() 
+            => $"{ClassConfig.ClassLevelRequirements.IndexOf(this) + 1}: "
+                + (!Requirements.Any() 
+                ? "(none)" 
+                : string.Join(" + ", Requirements.Select(r => r.ToString())));
+
+        public object Clone() =>
+            new ClassLevelRequirementsDef
+            {
+                Requirements = new(CloneHelpers.CloneCollection(Requirements)),
+            };
+
+        public bool IsMet(Hero hero) => Requirements.All(r => r.IsMet(hero));
+            
+        #region Implementation Details
+        [YamlIgnore, Browsable(false)]
+        private GlobalHeroClassConfig ClassConfig { get; set; }
+        #endregion
+                
+        #region ILoaded
+        public void OnLoaded(Settings settings)
+        {
+            ClassConfig = GlobalHeroClassConfig.Get(settings);
+        }
+        #endregion
+        
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

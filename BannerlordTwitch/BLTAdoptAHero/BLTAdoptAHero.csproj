@@ -115,6 +115,7 @@
     <ItemGroup>
         <Compile Include="Achievements\AchievementDef.cs" />
         <Compile Include="Achievements\AchievementStatsData.cs" />
+        <Compile Include="Achievements\ClassLevelRequirement.cs" />
         <Compile Include="Achievements\IAchievementRequirement.cs" />
         <Compile Include="Achievements\StatisticClassSpecificRequirement.cs" />
         <Compile Include="Achievements\StatisticTotalRequirement.cs" />

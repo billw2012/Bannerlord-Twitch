@@ -189,7 +189,7 @@
                 <TextBlock Grid.Row="1" Grid.Column="0"
                            Text="{Binding PowerDurationSeconds, 
                                 StringFormat={}{0}s, Mode=OneTime}" 
-                                       VerticalAlignment="Center" Margin="4 0"/>
+                                       VerticalAlignment="Top" Margin="4 0"/>
                 <TextBlock Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"
                            Text="{Binding Description, Mode=OneTime}" 
                            TextWrapping="Wrap"
@@ -249,16 +249,16 @@
     <!-- PassivePowerGroupItem -->
     <DataTemplate DataType="{x:Type powers:PassivePowerGroupItem}">
         <Border Style="{StaticResource ItemBackground}">
-            <Grid>
+            <Grid Background="Aqua">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="{Binding Power.Description}" 
-                           Margin="4 0" TextWrapping="Wrap"/>
-                <ItemsControl Grid.Row="1" 
+                <ItemsControl Grid.Row="0" 
                               ItemsSource="{Binding Requirements, Mode=OneTime}" 
-                              Margin="4 0" HorizontalAlignment="Stretch"/>
+                              HorizontalAlignment="Stretch"/>
+                <TextBlock Grid.Row="1" Margin="8 0" Text="{Binding Power.Description}" 
+                           TextWrapping="Wrap"/>
             </Grid>
         </Border>
     </DataTemplate>
@@ -271,11 +271,11 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock FontWeight="DemiBold" Text="{Binding Name}" 
+                <TextBlock FontWeight="DemiBold" Margin="4 0" Text="{Binding Name}" 
                            TextWrapping="Wrap" />
                 <ItemsControl Grid.Row="1" 
                               ItemsSource="{Binding Powers, Mode=OneTime}" 
-                              VerticalAlignment="Center" Margin="4 0" HorizontalAlignment="Stretch"/>
+                              VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
             </Grid>
         </Border>
     </DataTemplate>
@@ -283,15 +283,15 @@
     <!-- ActivePowerGroupItem -->
     <DataTemplate DataType="{x:Type powers:ActivePowerGroupItem}">
         <Border Style="{StaticResource ItemBackground}">
-            <Grid>
+            <Grid Background="LawnGreen">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="{Binding Power.Description}" Margin="4 0" TextWrapping="Wrap"/>
-                <ItemsControl Grid.Row="1" 
+                <ItemsControl Grid.Row="0"
                               ItemsSource="{Binding Requirements, Mode=OneTime}" 
-                              Margin="4 0" HorizontalAlignment="Stretch"/>
+                              HorizontalAlignment="Stretch"/>
+                <TextBlock Grid.Row="1" Margin="8 0" Text="{Binding Power.Description}" TextWrapping="Wrap"/>
             </Grid>
         </Border>
     </DataTemplate>
@@ -299,9 +299,26 @@
     <!-- ActivePowerGroup -->
     <DataTemplate DataType="{x:Type powers:ActivePowerGroup}">
         <Border Style="{StaticResource ItemBackground}">
-            <StackPanel>
-                <TextBlock FontWeight="DemiBold" Text="{Binding Name}" TextWrapping="Wrap" />
-                <ItemsControl ItemsSource="{Binding Powers, Mode=OneTime}" 
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock FontWeight="DemiBold" Margin="4 0" Text="{Binding Name}" 
+                           TextWrapping="Wrap" />
+                <ItemsControl Grid.Row="1" 
+                              ItemsSource="{Binding Powers, Mode=OneTime}" 
+                              VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            </Grid>
+        </Border>
+    </DataTemplate>
+    
+    <!-- ClassLevelRequirementsDef -->
+    <DataTemplate DataType="{x:Type adoptAHero:ClassLevelRequirementsDef}">
+        <Border Style="{StaticResource ItemBackground}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding ClassLevel, StringFormat={}{0}: }"/>
+                <ItemsControl ItemsSource="{Binding Requirements, Mode=OneTime}" 
                               VerticalAlignment="Center" Margin="4 0" HorizontalAlignment="Stretch"/>
             </StackPanel>
         </Border>

@@ -26,7 +26,7 @@ namespace BLTAdoptAHero.Powers
         public override string ToString() => $"[{Power?.ToString() ?? "(no power)"}] {base.ToString()}";
     }
     
-    public class ActivePowerGroup : ILoaded, IDocumentable, ICloneable
+    public class ActivePowerGroup : IDocumentable, ICloneable
     {
         #region User Editable
         [PropertyOrder(1), Description("The name of the power: how the power will be described in messages"), 
@@ -61,6 +61,13 @@ namespace BLTAdoptAHero.Powers
         
         public bool IsActive(Hero hero) => Powers.Any(power => power.Power.IsActive(hero));
 
+        public ActivePowerGroup()
+        {
+            // For when these are created via the configure tool
+            PowerConfig = ConfigureContext.CurrentlyEditedSettings == null 
+                ? null : GlobalHeroPowerConfig.Get(ConfigureContext.CurrentlyEditedSettings);
+        }
+        
         public (bool canActivate, string failReason) CanActivate(Hero hero)
         {
             if (PowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
@@ -129,13 +136,6 @@ namespace BLTAdoptAHero.Powers
             clone.Powers = new(CloneHelpers.CloneCollection(Powers));
             clone.PowerConfig = PowerConfig;
             return clone;
-        }
-        #endregion
-        
-        #region ILoaded
-        public void OnLoaded(Settings settings)
-        {
-            PowerConfig = GlobalHeroPowerConfig.Get(settings);   
         }
         #endregion
 

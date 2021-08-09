@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
@@ -36,7 +37,7 @@ namespace BLTAdoptAHero.Powers
          UsedImplicitly]
         public float DismountChance { get; set; }
 
-        [YamlIgnore]
+        [YamlIgnore, Browsable(false)]
         public bool IsEnabled => KnockBackChancePercent > 0 ||
                                  KnockDownChancePercent > 0 ||
                                  ShrugOffChancePercent > 0 ||
@@ -62,7 +63,7 @@ namespace BLTAdoptAHero.Powers
             if(ShrugOffChancePercent > 0) flags.Add($"{ShrugOffChancePercent:0}% {nameof(BlowFlags.ShrugOff).SplitCamelCase()}");
             if(MakesRearChancePercent > 0) flags.Add($"{MakesRearChancePercent:0}% {nameof(BlowFlags.MakesRear).SplitCamelCase()}");
             if(DismountChance > 0) flags.Add($"{DismountChance:0}% {nameof(BlowFlags.CanDismount).SplitCamelCase()}");
-            return string.Join(", ", flags);
+            return !flags.Any() ? "(inactive)" : string.Join(", ", flags);
         }
 
         public void GenerateDocumentation(IDocumentationGenerator generator)

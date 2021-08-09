@@ -377,17 +377,18 @@ namespace BLTAdoptAHero.Powers
                 if (DamageToAdd != 0) modifiers.Add($"{(DamageToAdd > 0 ? "+" : "")}{DamageToAdd} dmg");
                 if (AddHitBehavior.IsEnabled) modifiers.Add($"Add: {AddHitBehavior}");
                 if (RemoveHitBehavior.IsEnabled) modifiers.Add($"Remove: {RemoveHitBehavior}");
-                if (ArmorToIgnorePercent != 0) modifiers.Add($"ignore {ArmorToIgnorePercent}% armor");
-                if (UnblockableChancePercent != 0) modifiers.Add($"{UnblockableChancePercent}% unblockable");
-                if (ShatterShieldChancePercent != 0) modifiers.Add($"{ShatterShieldChancePercent}% shatter shield");
-                if (CutThroughChancePercent != 0) modifiers.Add($"{CutThroughChancePercent}% cut through");
-                if (StaggerChancePercent != 0) modifiers.Add($"{StaggerChancePercent}% stagger");
+                if (ArmorToIgnorePercent != 0) modifiers.Add($"Ignore {ArmorToIgnorePercent}% Armor");
+                if (UnblockableChancePercent != 0) modifiers.Add($"{UnblockableChancePercent}% Unblockable");
+                if (ShatterShieldChancePercent != 0) modifiers.Add($"{ShatterShieldChancePercent}% Shatter Shield");
+                if (CutThroughChancePercent != 0) modifiers.Add($"{CutThroughChancePercent}% Cut Through");
+                if (StaggerChancePercent != 0) modifiers.Add($"{StaggerChancePercent}% Stagger");
                 
-                if (AoE.IsEnabled) appliesFromList.Add(AoE.Description);
+                if (AoE.IsEnabled) modifiers.Add($"AoE: {AoE.Description}");
 
-                return $"{string.Join(", ", modifiers)} " +
-                       (appliesFromList.Any() ? $"against {string.Join(" / ", appliesFromList)} " : "") + 
-                       (appliesToList.Any() ? $"from {string.Join(", ", appliesToList)}" : "");
+                if (!modifiers.Any()) return "(inactive)";
+                return $"{string.Join(" / ", modifiers)} " +
+                       (appliesFromList.Any() ? $"from {string.Join(" / ", appliesFromList)} " : "") + 
+                       (appliesToList.Any() ? $"against {string.Join(" / ", appliesToList)}" : "");
             }
         }
         #endregion
@@ -439,7 +440,7 @@ namespace BLTAdoptAHero.Powers
         {
             get
             {
-                if (!IsEnabled) return "(disabled)";
+                if (!IsEnabled) return "(inactive)";
                 string desc = $"{DamageAtCenter}dmg in {Range}m";
                 if (HitBehavior.IsEnabled) desc += $" with {HitBehavior}";
                 return desc;

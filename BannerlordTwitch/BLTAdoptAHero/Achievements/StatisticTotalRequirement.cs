@@ -8,7 +8,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 namespace BLTAdoptAHero.Achievements
 {
     [YamlTagged]
-    public class StatisticRequirement : IAchievementRequirement
+    public class StatisticRequirement : IAchievementRequirement, ICloneable
     {
         #region User Editable
         [PropertyOrder(1), Description("The statistic this achievement relates to."), UsedImplicitly]
@@ -35,8 +35,6 @@ namespace BLTAdoptAHero.Achievements
         public AchievementStatsData.Statistic OtherStatistic { get; set; }
         #endregion
 
-        #region Public Interface
-
         #region IAchievementRequirement
         public virtual bool IsMet(Hero hero)
         {
@@ -51,9 +49,9 @@ namespace BLTAdoptAHero.Achievements
             $"{Statistic.ToString().SplitCamelCase()} " +
             $"{ComparisonText} " +
             $"{(OtherStatistic == AchievementStatsData.Statistic.None ? Value : OtherStatistic.ToString().SplitCamelCase())}";
-
         #endregion
-        
+
+        #region Public Interface
         private string ComparisonText => Comparison switch
         {
             Operator.Greater => ">",
@@ -64,6 +62,9 @@ namespace BLTAdoptAHero.Achievements
         };
 
         public override string ToString() => Description;
+        
+        public object Clone() => CloneHelpers.CloneProperties(this);
+
         #endregion
 
         #region Implementation Details

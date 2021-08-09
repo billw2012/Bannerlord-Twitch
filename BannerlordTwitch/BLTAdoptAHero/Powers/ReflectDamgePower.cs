@@ -67,7 +67,10 @@ namespace BLTAdoptAHero.Powers
         #region Public Interface
         [YamlIgnore, Browsable(false)] 
         public bool IsEnabled => ReflectPercent != 0;
-        public override string Description => !IsEnabled ? "(disabled)" : $"Reflect {ReflectPercent:0}% damage, {HitBehavior}";
+        public override string Description => !IsEnabled 
+            ? "(disabled)" 
+            : $"Reflect {ReflectPercent:0}% damage "
+              + (HitBehavior.IsEnabled ? HitBehavior.ToString() : "");
         #endregion
 
         #region IDocumentable
