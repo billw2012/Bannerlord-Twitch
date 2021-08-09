@@ -317,7 +317,9 @@
     <DataTemplate DataType="{x:Type adoptAHero:ClassLevelRequirementsDef}">
         <Border Style="{StaticResource ItemBackground}">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding ClassLevel, StringFormat={}{0}: }"/>
+                <CheckBox IsChecked="{Binding Enabled}" 
+                          Margin="2 2 5 2"/>
+                <TextBlock Text="{Binding ClassLevel, StringFormat={}{0}: }" Margin="4 0"/>
                 <ItemsControl ItemsSource="{Binding Requirements, Mode=OneTime}" 
                               VerticalAlignment="Center" Margin="4 0" HorizontalAlignment="Stretch"/>
             </StackPanel>
@@ -429,7 +431,7 @@
         </Border>
     </DataTemplate>
 
-    <!-- CollectionControl styling -->
+    <!-- CollectionControlButtonStyle -->
     <Style x:Key="CollectionControlButtonStyle"
            TargetType="{x:Type Button}">
         <Style.Triggers>
@@ -448,6 +450,8 @@
         <Setter Property="Width"
                 Value="26" />
     </Style>
+    
+    <!-- CollectionControl -->
     <Style TargetType="{x:Type xctk:CollectionControl}">
         <Style.Resources>
             <Style TargetType="ListBox">
@@ -476,6 +480,13 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
+                                <Grid.InputBindings>
+                                    <KeyBinding Command="ComponentCommands.MoveUp" CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}" Modifiers="Control" Key="W" />
+                                    <KeyBinding Command="ComponentCommands.MoveDown" CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}" Modifiers="Control" Key="S" />
+                                    <KeyBinding Command="Delete" CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}" Key="Delete" />
+                                    <KeyBinding Command="Copy" CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}" Modifiers="Control" Key="D" />
+                                </Grid.InputBindings>
+                                
                                 <ContentControl Margin="0,0,0,5"
                                                 Content="{TemplateBinding TypeSelectionLabel}" />
                                 <ComboBox x:Name="PART_NewItemTypesComboBox"
@@ -511,6 +522,7 @@
                                          SelectedItem="{Binding SelectedItem, RelativeSource={RelativeSource TemplatedParent}}"
                                          HorizontalContentAlignment="Stretch"
                                          SelectedIndex="0"
+                                         SelectionMode="Single"
                                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
                                 <StackPanel Margin="7,2,0,0"
                                             VerticalAlignment="Top"
@@ -575,6 +587,7 @@
         </Setter>
     </Style>
 
+    <!-- PrimitiveTypeCollectionControl -->
     <Style x:Key="PrimitiveTypeCollectionControl"
            TargetType="{x:Type xctk:PrimitiveTypeCollectionControl}">
         <Setter Property="BorderBrush">
@@ -622,10 +635,11 @@
         </Setter>
     </Style>
 
+    <!-- PrimitiveTypeCollectionControl -->
     <Style TargetType="{x:Type xctk:PrimitiveTypeCollectionControl}"
            BasedOn="{StaticResource PrimitiveTypeCollectionControl}" />
 
-    
+    <!-- CollectionControlButton -->
     <Style x:Key="CollectionControlButton"
            TargetType="{x:Type xctk:CollectionControlButton}">
         <Setter Property="Background"
@@ -660,7 +674,8 @@
                                     Padding="{TemplateBinding Padding}"
                                     SnapsToDevicePixels="True">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" MaxHeight="250">
-                                    <ItemsControl ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:CollectionControlButton}}" IsEnabled="False"/>
+                                    <ItemsControl ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:CollectionControlButton}}" 
+                                                  IsEnabled="False"/>
                                 </ScrollViewer>
                                 <!-- <ContentPresenter Content="{TemplateBinding Content}" -->
                                 <!--                   ContentTemplate="{TemplateBinding ContentTemplate}" -->
@@ -695,11 +710,11 @@
         </Setter>
     </Style>
     
+    <!-- CollectionControlButton -->
     <Style TargetType="{x:Type xctk:CollectionControlButton}"
            BasedOn="{StaticResource CollectionControlButton}" />
-
-
-    <!-- PropertyGrid CollectionControl Editors -->
+    
+    <!-- PropertyGridEditorCollectionControl -->
     <Style TargetType="{x:Type xctk:PropertyGridEditorCollectionControl}"
            BasedOn="{StaticResource CollectionControlButton}">
     </Style>
