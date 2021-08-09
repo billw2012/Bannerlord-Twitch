@@ -3001,7 +3001,9 @@ GlobalConfigs:
           ParticleEffect: psys_burning_projectile_default_coll_small
           Sound: None
     ClassLevelRequirements:
-    - Requirements:
+    - Enabled: true
+      ClassLevel: 1
+      Requirements:
       - !StatisticClassSpecificRequirement
         CurrentClass: true
         RequiredClass: 00000000-0000-0000-0000-000000000000
@@ -3010,7 +3012,10 @@ GlobalConfigs:
         Comparison: GreaterOrEqual
         Value: 5
         OtherStatistic: None
-    - Requirements:
+      ID: 96288bce-e636-4378-bc99-155fe3c2f8fa
+    - Enabled: true
+      ClassLevel: 2
+      Requirements:
       - !StatisticClassSpecificRequirement
         CurrentClass: true
         RequiredClass: 00000000-0000-0000-0000-000000000000
@@ -3019,7 +3024,10 @@ GlobalConfigs:
         Comparison: GreaterOrEqual
         Value: 20
         OtherStatistic: None
-    - Requirements:
+      ID: f7b334b7-d742-4eba-97b2-c273976d6b42
+    - Enabled: true
+      ClassLevel: 3
+      Requirements:
       - !StatisticClassSpecificRequirement
         CurrentClass: true
         RequiredClass: 00000000-0000-0000-0000-000000000000
@@ -3028,6 +3036,7 @@ GlobalConfigs:
         Comparison: GreaterOrEqual
         Value: 50
         OtherStatistic: None
+      ID: 875963e9-8871-410c-bc51-c15e0accfcd4
 - Id: Buffet - Effects Config
   Config:
     DisableEffectsInTournaments: true
