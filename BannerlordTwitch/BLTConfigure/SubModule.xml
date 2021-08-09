@@ -2,7 +2,7 @@
 <Module>
 	<Name value = "BLTConfigure"/>
 	<Id value = "BLTConfigure"/>
-	<Version value = "v2.1.2"/>
+	<Version value = "v2.1.4"/>
 	<DefaultModule value="true"/>
 	<SingleplayerModule value="true"/>
 	<Official value="false" />
