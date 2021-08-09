@@ -788,20 +788,21 @@ GlobalConfigs:
     DifficultyScalingMin: 0.200000003
     DifficultyScalingMax: 3
     KillStreaks:
-    - Enabled: true
-      ID: 45d75aa1-9d90-407f-a333-4aef16aef3a3
+    - ID: 45d75aa1-9d90-407f-a333-4aef16aef3a3
+      Enabled: true
       ShowNotification: false
       Name: Killing Spree
       NotificationText: '{viewer} is on a {name}: {kills} kills!'
       KillsRequired: 5
       GoldReward: 5000
       XPReward: 0
+      RewardsDescription: '5000⦷ '
     ShowKillStreakPopup: true
     KillStreakPopupAlertSound: Horns2
     ReferenceLevelReward: 15
     Achievements:
-    - Enabled: true
-      ID: 596fd61e-757e-46cc-99f4-b4f459018838
+    - ID: 596fd61e-757e-46cc-99f4-b4f459018838
+      Enabled: true
       Name: Reliable
       NotificationText: '{viewer} is {name}!'
       Requirements:
@@ -810,6 +811,7 @@ GlobalConfigs:
         Comparison: GreaterOrEqual
         Value: 5
         OtherStatistic: None
+        Description: Consecutive Summons >= 5
       GoldGain: 20000
       XPGain: 0
       GiveItemReward: true
@@ -826,8 +828,12 @@ GlobalConfigs:
         CustomWeight: 0
         CustomItemName: Reward {ITEMNAME}
         CustomItemPower: 1
-    - Enabled: true
-      ID: a98f179e-6a8f-457d-b422-472bb13ad582
+      RewardsDescription: >-
+        20000⦷
+
+        Item
+    - ID: a98f179e-6a8f-457d-b422-472bb13ad582
+      Enabled: true
       Name: Trusted
       NotificationText: '{viewer} is {name}!'
       Requirements:
@@ -836,6 +842,7 @@ GlobalConfigs:
         Comparison: GreaterOrEqual
         Value: 20
         OtherStatistic: None
+        Description: Consecutive Summons >= 20
       GoldGain: 50000
       XPGain: 0
       GiveItemReward: true
@@ -852,8 +859,12 @@ GlobalConfigs:
         CustomWeight: 0
         CustomItemName: Reward {ITEMNAME}
         CustomItemPower: 1
-    - Enabled: true
-      ID: 96225687-88cc-4d79-b986-0d1778397d61
+      RewardsDescription: >-
+        50000⦷
+
+        Item
+    - ID: 96225687-88cc-4d79-b986-0d1778397d61
+      Enabled: true
       Name: Loyal
       NotificationText: '{viewer} is {name}!'
       Requirements:
@@ -862,6 +873,7 @@ GlobalConfigs:
         Comparison: GreaterOrEqual
         Value: 50
         OtherStatistic: None
+        Description: Consecutive Summons >= 50
       GoldGain: 250000
       XPGain: 50000
       GiveItemReward: true
@@ -878,8 +890,14 @@ GlobalConfigs:
         CustomWeight: 0.550000012
         CustomItemName: '{ITEMNAME} of Fealty'
         CustomItemPower: 1
-    - Enabled: true
-      ID: d2968aea-79f5-44fd-b297-b30a141ef498
+      RewardsDescription: >-
+        250000⦷
+
+        50000xp
+
+        Item
+    - ID: d2968aea-79f5-44fd-b297-b30a141ef498
+      Enabled: true
       Name: Rebellious
       NotificationText: '{viewer} is {name}!'
       Requirements:
@@ -888,6 +906,7 @@ GlobalConfigs:
         Comparison: GreaterOrEqual
         Value: 5
         OtherStatistic: None
+        Description: Consecutive Attacks >= 5
       GoldGain: 20000
       XPGain: 0
       GiveItemReward: true
@@ -904,8 +923,12 @@ GlobalConfigs:
         CustomWeight: 0
         CustomItemName: Reward {ITEMNAME}
         CustomItemPower: 1
-    - Enabled: true
-      ID: c3cd4e46-e0f0-4405-8739-446b9a9c097f
+      RewardsDescription: >-
+        20000⦷
+
+        Item
+    - ID: c3cd4e46-e0f0-4405-8739-446b9a9c097f
+      Enabled: true
       Name: Traitorous
       NotificationText: '{viewer} is {name}!'
       Requirements:
@@ -914,6 +937,7 @@ GlobalConfigs:
         Comparison: GreaterOrEqual
         Value: 20
         OtherStatistic: None
+        Description: Consecutive Attacks >= 20
       GoldGain: 50000
       XPGain: 0
       GiveItemReward: true
@@ -930,8 +954,12 @@ GlobalConfigs:
         CustomWeight: 0
         CustomItemName: Reward {ITEMNAME}
         CustomItemPower: 1
-    - Enabled: true
-      ID: a640c816-93a7-41fa-9d1b-1e74491fece4
+      RewardsDescription: >-
+        50000⦷
+
+        Item
+    - ID: a640c816-93a7-41fa-9d1b-1e74491fece4
+      Enabled: true
       Name: Renegade
       NotificationText: '{viewer} is a {name}!'
       Requirements:
@@ -940,6 +968,7 @@ GlobalConfigs:
         Comparison: GreaterOrEqual
         Value: 50
         OtherStatistic: None
+        Description: Consecutive Attacks >= 50
       GoldGain: 250000
       XPGain: 50000
       GiveItemReward: true
@@ -956,8 +985,14 @@ GlobalConfigs:
         CustomWeight: 0.550000012
         CustomItemName: Renegades {ITEMNAME}
         CustomItemPower: 1
-    - Enabled: true
-      ID: 267a6e67-c39c-4f75-8251-38392adeeaf7
+      RewardsDescription: >-
+        250000⦷
+
+        50000xp
+
+        Item
+    - ID: 267a6e67-c39c-4f75-8251-38392adeeaf7
+      Enabled: true
       Name: Stream Sniper
       NotificationText: '{viewer} is a {name}: they killed {streamer} 5 times!'
       Requirements:
@@ -966,6 +1001,7 @@ GlobalConfigs:
         Comparison: GreaterOrEqual
         Value: 5
         OtherStatistic: None
+        Description: Total Streamer Kills >= 5
       GoldGain: 0
       XPGain: 0
       GiveItemReward: false
@@ -982,6 +1018,7 @@ GlobalConfigs:
         CustomWeight: 1
         CustomItemName: Stream Sniper {ITEMNAME}
         CustomItemPower: 1
+      RewardsDescription: ''
     Shouts: []
     IncludeDefaultShouts: true
 - Id: Adopt A Hero - Tournament Config
@@ -1056,55 +1093,55 @@ GlobalConfigs:
   Config:
     PowerDefs:
     - !AddHealthPower
-      HealthToMultiply: 1.25
+      HealthModifierPercent: 125
       HealthToAdd: 0
       ID: 22ad10d6-34df-4d41-afec-7e98a56f8954
       Name: Healthy I
     - !AddHealthPower
-      HealthToMultiply: 1.5
+      HealthModifierPercent: 150
       HealthToAdd: 0
       ID: c6356c32-c1e6-4e2a-ad09-e0f054eec108
       Name: Healthy II
     - !AddHealthPower
-      HealthToMultiply: 2
+      HealthModifierPercent: 200
       HealthToAdd: 0
       ID: a3b16d6d-5a2f-416c-9098-55f13f626f34
       Name: Healthy III
     - !AddHealthPower
-      HealthToMultiply: 0.25
+      HealthModifierPercent: 50
       HealthToAdd: 0
       ID: b99d374b-84d0-495e-a430-1811ad6e712b
       Name: Fragile I
     - !AddHealthPower
-      HealthToMultiply: 0.5
+      HealthModifierPercent: 65
       HealthToAdd: 0
       ID: 9cf5d507-92ea-4068-85e6-3938db7170e1
       Name: Fragile II
     - !AddHealthPower
-      HealthToMultiply: 0.75
+      HealthModifierPercent: 90
       HealthToAdd: 0
       ID: 3d71f948-c58b-402f-a134-dfbcef1e28be
       Name: Fragile III
     - !AbsorbHealthPower
-      FractionOfDamageToAbsorb: 0.100000001
+      DamageToAbsorbPercent: 10
       PowerDurationSeconds: 120
       Pfx: []
       ID: 4a60ed27-334e-446e-8e75-9804b1980c8b
       Name: Vampiric I
     - !AbsorbHealthPower
-      FractionOfDamageToAbsorb: 0.200000003
+      DamageToAbsorbPercent: 25
       PowerDurationSeconds: 120
       Pfx: []
       ID: b3e5da20-1b82-4820-a373-ff9a8190dd98
       Name: Vampiric II
     - !AbsorbHealthPower
-      FractionOfDamageToAbsorb: 0.5
+      DamageToAbsorbPercent: 50
       PowerDurationSeconds: 120
       Pfx: []
       ID: 936524f5-7bde-4793-828a-1e0cf4a8a6ba
       Name: Vampiric III
     - !AddDamagePower
-      DamageToMultiply: 1.25
+      DamageModifierPercent: 125
       DamageToAdd: 0
       AddHitBehavior:
         KnockBackChancePercent: 0
@@ -1118,11 +1155,11 @@ GlobalConfigs:
         ShrugOffChancePercent: 0
         MakesRearChancePercent: 0
         DismountChance: 0
-      ArmorToIgnore: 0
-      UnblockableChance: 0
-      ShatterShieldChance: 0
-      CutThroughChance: 0
-      StaggerChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
       AoE:
         Range: 0
         OnlyOnHit: false
@@ -1135,6 +1172,7 @@ GlobalConfigs:
           ShrugOffChancePercent: 0
           MakesRearChancePercent: 0
           DismountChance: 0
+        Description: (inactive)
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
@@ -1151,7 +1189,7 @@ GlobalConfigs:
       ID: 6a36fedb-0b2d-459c-b06b-c4230327589b
       Name: Heavy Hitting I
     - !AddDamagePower
-      DamageToMultiply: 1.5
+      DamageModifierPercent: 150
       DamageToAdd: 0
       AddHitBehavior:
         KnockBackChancePercent: 0
@@ -1165,11 +1203,11 @@ GlobalConfigs:
         ShrugOffChancePercent: 0
         MakesRearChancePercent: 0
         DismountChance: 0
-      ArmorToIgnore: 0
-      UnblockableChance: 0
-      ShatterShieldChance: 0
-      CutThroughChance: 0
-      StaggerChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
       AoE:
         Range: 0
         OnlyOnHit: false
@@ -1182,6 +1220,7 @@ GlobalConfigs:
           ShrugOffChancePercent: 0
           MakesRearChancePercent: 0
           DismountChance: 0
+        Description: (inactive)
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
@@ -1198,7 +1237,7 @@ GlobalConfigs:
       ID: a3e50729-68f2-4a25-ac3f-e5c3738965cf
       Name: Heavy Hitting II
     - !AddDamagePower
-      DamageToMultiply: 2
+      DamageModifierPercent: 200
       DamageToAdd: 0
       AddHitBehavior:
         KnockBackChancePercent: 0
@@ -1212,11 +1251,11 @@ GlobalConfigs:
         ShrugOffChancePercent: 0
         MakesRearChancePercent: 0
         DismountChance: 0
-      ArmorToIgnore: 0
-      UnblockableChance: 0
-      ShatterShieldChance: 0
-      CutThroughChance: 0
-      StaggerChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
       AoE:
         Range: 0
         OnlyOnHit: false
@@ -1229,6 +1268,7 @@ GlobalConfigs:
           ShrugOffChancePercent: 0
           MakesRearChancePercent: 0
           DismountChance: 0
+        Description: (inactive)
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
@@ -1245,7 +1285,7 @@ GlobalConfigs:
       ID: 2355a51d-d813-48b3-9987-d997099d51ed
       Name: Heavy Hitting III
     - !ReflectDamagePower
-      FractionOfDamageToReflect: 0.25
+      ReflectPercent: 10
       ReflectedDamageIsSubtracted: false
       HitBehavior:
         KnockBackChancePercent: 0
@@ -1258,7 +1298,7 @@ GlobalConfigs:
       ID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
       Name: Retribution I
     - !ReflectDamagePower
-      FractionOfDamageToReflect: 0.5
+      ReflectPercent: 25
       ReflectedDamageIsSubtracted: false
       HitBehavior:
         KnockBackChancePercent: 0
@@ -1271,7 +1311,7 @@ GlobalConfigs:
       ID: 347cec61-aa6d-4002-87de-47d298ca3161
       Name: Retribution II
     - !ReflectDamagePower
-      FractionOfDamageToReflect: 0.800000012
+      ReflectPercent: 50
       ReflectedDamageIsSubtracted: false
       HitBehavior:
         KnockBackChancePercent: 0
@@ -1289,7 +1329,7 @@ GlobalConfigs:
         ApplyToMount: false
         Properties:
         - Name: MaxSpeedMultiplier
-          ModifierPercent: 100
+          ModifierPercent: 110
           Add: 0
         Skills: []
       PowerDurationSeconds: 120
@@ -1302,7 +1342,7 @@ GlobalConfigs:
         ApplyToMount: false
         Properties:
         - Name: MaxSpeedMultiplier
-          ModifierPercent: 100
+          ModifierPercent: 125
           Add: 0
         Skills: []
       PowerDurationSeconds: 120
@@ -1315,7 +1355,7 @@ GlobalConfigs:
         ApplyToMount: false
         Properties:
         - Name: MaxSpeedMultiplier
-          ModifierPercent: 100
+          ModifierPercent: 150
           Add: 0
         Skills: []
       PowerDurationSeconds: 120
@@ -1371,7 +1411,7 @@ GlobalConfigs:
       ID: 64e3832f-9f08-40dd-b1ab-0be6a26ed091
       Name: Charge III
     - !AddDamagePower
-      DamageToMultiply: 1
+      DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
         KnockBackChancePercent: 0
@@ -1385,11 +1425,11 @@ GlobalConfigs:
         ShrugOffChancePercent: 0
         MakesRearChancePercent: 0
         DismountChance: 0
-      ArmorToIgnore: 0
-      UnblockableChance: 0
-      ShatterShieldChance: 0
-      CutThroughChance: 0
-      StaggerChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
       AoE:
         Range: 2
         OnlyOnHit: false
@@ -1402,6 +1442,7 @@ GlobalConfigs:
           ShrugOffChancePercent: 0
           MakesRearChancePercent: 0
           DismountChance: 0
+        Description: 25dmg in 2m
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
@@ -1418,7 +1459,7 @@ GlobalConfigs:
       ID: 6ad716bb-76e1-4cb1-9601-85f81f5d5425
       Name: Charge AoE I
     - !AddDamagePower
-      DamageToMultiply: 1
+      DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
         KnockBackChancePercent: 0
@@ -1432,11 +1473,11 @@ GlobalConfigs:
         ShrugOffChancePercent: 0
         MakesRearChancePercent: 0
         DismountChance: 0
-      ArmorToIgnore: 0
-      UnblockableChance: 0
-      ShatterShieldChance: 0
-      CutThroughChance: 0
-      StaggerChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
       AoE:
         Range: 2
         OnlyOnHit: false
@@ -1449,6 +1490,7 @@ GlobalConfigs:
           ShrugOffChancePercent: 0
           MakesRearChancePercent: 0
           DismountChance: 0
+        Description: 50dmg in 2m
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
@@ -1465,7 +1507,7 @@ GlobalConfigs:
       ID: 0c2ecb3e-a4e6-4e54-b87d-b860cc486613
       Name: Charge AoE II
     - !AddDamagePower
-      DamageToMultiply: 1
+      DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
         KnockBackChancePercent: 0
@@ -1479,11 +1521,11 @@ GlobalConfigs:
         ShrugOffChancePercent: 0
         MakesRearChancePercent: 0
         DismountChance: 0
-      ArmorToIgnore: 0
-      UnblockableChance: 0
-      ShatterShieldChance: 0
-      CutThroughChance: 0
-      StaggerChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
       AoE:
         Range: 2
         OnlyOnHit: false
@@ -1496,6 +1538,7 @@ GlobalConfigs:
           ShrugOffChancePercent: 0
           MakesRearChancePercent: 0
           DismountChance: 0
+        Description: 100dmg in 2m
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
@@ -1628,7 +1671,7 @@ GlobalConfigs:
         - Skill: Ranged
           ModifierPercent: 125
           Add: 0
-      PowerDurationSeconds: 125
+      PowerDurationSeconds: 120
       Pfx: []
       ID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
       Name: Ranger I
@@ -1647,7 +1690,7 @@ GlobalConfigs:
         - Skill: Ranged
           ModifierPercent: 150
           Add: 0
-      PowerDurationSeconds: 125
+      PowerDurationSeconds: 120
       Pfx: []
       ID: 8dbbbf13-ceca-46d9-bc20-f3f2bc167094
       Name: Ranger II
@@ -1666,12 +1709,12 @@ GlobalConfigs:
         - Skill: Ranged
           ModifierPercent: 200
           Add: 0
-      PowerDurationSeconds: 125
+      PowerDurationSeconds: 120
       Pfx: []
       ID: ec81e3ce-7510-4934-93b7-c1220d4ecfe3
       Name: Ranger III
     - !AddDamagePower
-      DamageToMultiply: 1
+      DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
         KnockBackChancePercent: 0
@@ -1685,11 +1728,11 @@ GlobalConfigs:
         ShrugOffChancePercent: 0
         MakesRearChancePercent: 0
         DismountChance: 0
-      ArmorToIgnore: 0
-      UnblockableChance: 0
-      ShatterShieldChance: 0
-      CutThroughChance: 0
-      StaggerChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
       AoE:
         Range: 4
         OnlyOnHit: false
@@ -1702,6 +1745,7 @@ GlobalConfigs:
           ShrugOffChancePercent: 0
           MakesRearChancePercent: 0
           DismountChance: 0
+        Description: 50dmg in 4m
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
@@ -1718,7 +1762,7 @@ GlobalConfigs:
       ID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
       Name: Explosive Arrows I
     - !AddDamagePower
-      DamageToMultiply: 1
+      DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
         KnockBackChancePercent: 0
@@ -1732,11 +1776,11 @@ GlobalConfigs:
         ShrugOffChancePercent: 0
         MakesRearChancePercent: 0
         DismountChance: 0
-      ArmorToIgnore: 0
-      UnblockableChance: 0
-      ShatterShieldChance: 0
-      CutThroughChance: 0
-      StaggerChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
       AoE:
         Range: 4
         OnlyOnHit: false
@@ -1748,7 +1792,8 @@ GlobalConfigs:
           KnockDownChancePercent: 0
           ShrugOffChancePercent: 0
           MakesRearChancePercent: 0
-          DismountChance: 0.100000001
+          DismountChance: 20
+        Description: 75dmg in 4m with 20% Can Dismount
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
@@ -1765,7 +1810,7 @@ GlobalConfigs:
       ID: 52e0f85f-c29a-413a-883c-0de4c7f12ead
       Name: Explosive Arrows II
     - !AddDamagePower
-      DamageToMultiply: 1
+      DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
         KnockBackChancePercent: 0
@@ -1779,11 +1824,11 @@ GlobalConfigs:
         ShrugOffChancePercent: 0
         MakesRearChancePercent: 0
         DismountChance: 0
-      ArmorToIgnore: 0
-      UnblockableChance: 0
-      ShatterShieldChance: 0
-      CutThroughChance: 0
-      StaggerChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
       AoE:
         Range: 4
         OnlyOnHit: false
@@ -1795,7 +1840,8 @@ GlobalConfigs:
           KnockDownChancePercent: 0
           ShrugOffChancePercent: 0
           MakesRearChancePercent: 0
-          DismountChance: 0.5
+          DismountChance: 50
+        Description: 100dmg in 4m with 50% Can Dismount
       ApplyAgainstNonHeroes: true
       ApplyAgainstHeroes: true
       ApplyAgainstAdoptedHeroes: true
@@ -1813,7 +1859,7 @@ GlobalConfigs:
       Name: Explosive Arrows III
     - !StatModifyPower
       Modifiers:
-        ScalePercent: 125
+        ScalePercent: 120
         ApplyToMount: true
         Properties: []
         Skills: []
@@ -1831,6 +1877,726 @@ GlobalConfigs:
       Pfx: []
       ID: 60582ddc-3b22-4052-9437-cd43882bf5f9
       Name: Imposing
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 10
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 10
+        DismountChance: 10
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 25
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 25
+      StaggerChancePercent: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: (inactive)
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: false
+      Charge: false
+      MissileTrailParticleEffect: psys_haze_1
+      HitEffect:
+        ParticleEffect: psys_burning_projectile_wood_coll_small
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 2bc4d80a-d945-4fe5-801a-026708d3c660
+      Name: Heavy Bolts I
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 25
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 25
+        DismountChance: 25
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 50
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 50
+      StaggerChancePercent: 0
+      AoE:
+        Range: 1
+        OnlyOnHit: true
+        DamageAtCenter: 25
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 5
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: 25dmg in 1m with 5% Knock Down
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: false
+      Charge: false
+      MissileTrailParticleEffect: psys_haze_1
+      HitEffect:
+        ParticleEffect: psys_burning_projectile_wood_coll_small
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: d7b4d435-a3a1-4fd2-855d-fa3e044128f2
+      Name: Heavy Bolts II
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 50
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 50
+        DismountChance: 50
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 90
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 90
+      StaggerChancePercent: 0
+      AoE:
+        Range: 1.5
+        OnlyOnHit: true
+        DamageAtCenter: 40
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 5
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: 40dmg in 1.5m with 5% Knock Down
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: false
+      Charge: false
+      MissileTrailParticleEffect: psys_haze_1
+      HitEffect:
+        ParticleEffect: psys_burning_projectile_wood_coll_small
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: d157416b-6d38-41b2-9764-5be15823fd62
+      Name: Heavy Bolts III
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 15
+      ShatterShieldChancePercent: 15
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: (inactive)
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: a9d8e86d-4a15-4f35-9ebf-209dc085336f
+      Name: Crush Through I
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 30
+      ShatterShieldChancePercent: 30
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: (inactive)
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: ddff3058-160f-4463-bd66-d72e70336300
+      Name: Crush Through II
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 50
+      ShatterShieldChancePercent: 50
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: (inactive)
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: fe9bdea0-95dd-4f75-9c8a-165b55ca3ea8
+      Name: Crush Through III
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 15
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: (inactive)
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 98d5c8a7-a480-4f20-a219-e3c0af81e73a
+      Name: Knock Down I
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 30
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: (inactive)
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 7ac9dfdb-5744-4dd6-b445-dab123e67e11
+      Name: Knock Down II
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 50
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: (inactive)
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 745a57aa-e674-4cd3-a57c-ee0c39f945f1
+      Name: Knock Down III
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 25
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: (inactive)
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 3f5613bb-9bb6-4436-9cf9-a7927cc75387
+      Name: Cut Through I
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 50
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: (inactive)
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: e514dfef-57e4-44a5-acdb-c1214275e063
+      Name: Cut Through II
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 100
+      ShatterShieldChancePercent: 0
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: (inactive)
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 087ec677-cb5b-4f4c-9773-1df8e8e69a1d
+      Name: Cut Through III
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 15
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: (inactive)
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 584fa61d-7016-43d1-b9c3-b690b5dd18b5
+      Name: Shatter Shield I
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 30
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: (inactive)
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: aa9fdb10-a928-4480-8838-cd3e72774d03
+      Name: Shatter Shield II
+    - !AddDamagePower
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      AddHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      RemoveHitBehavior:
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        ShrugOffChancePercent: 0
+        MakesRearChancePercent: 0
+        DismountChance: 0
+      ArmorToIgnorePercent: 0
+      UnblockableChancePercent: 0
+      ShatterShieldChancePercent: 60
+      CutThroughChancePercent: 0
+      StaggerChancePercent: 0
+      AoE:
+        Range: 0
+        OnlyOnHit: false
+        DamageAtCenter: 50
+        MaxAgentsToDamage: 4
+        DamageType: Blunt
+        HitBehavior:
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          ShrugOffChancePercent: 0
+          MakesRearChancePercent: 0
+          DismountChance: 0
+        Description: (inactive)
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstPlayer: true
+      Ranged: true
+      Melee: true
+      Charge: true
+      MissileTrailParticleEffect: 
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      PowerDurationSeconds: 120
+      Pfx: []
+      ID: 49e6de04-d7d2-4f00-9006-0e9b8d01cec9
+      Name: Shatter Shield III
     DisablePowersInTournaments: true
     SavedPowerDefs: 
 - Id: Adopt A Hero - Class Config
@@ -1850,36 +2616,39 @@ GlobalConfigs:
       PassivePower:
         Name: Healthy
         Powers:
-        - PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
-          Requirements:
-          - !StatisticClassSpecificRequirement
-            CurrentClass: true
-            RequiredClass: 00000000-0000-0000-0000-000000000000
-            Statistic: Battles
-            Comparison: GreaterOrEqual
-            Value: 5
-            OtherStatistic: None
-        - PowerID: c6356c32-c1e6-4e2a-ad09-e0f054eec108
-          Requirements:
-          - !StatisticClassSpecificRequirement
-            CurrentClass: true
-            RequiredClass: 00000000-0000-0000-0000-000000000000
-            Statistic: Battles
-            Comparison: GreaterOrEqual
-            Value: 20
-            OtherStatistic: None
-        - PowerID: a3b16d6d-5a2f-416c-9098-55f13f626f34
-          Requirements:
-          - !StatisticClassSpecificRequirement
-            CurrentClass: true
-            RequiredClass: 00000000-0000-0000-0000-000000000000
-            Statistic: Battles
-            Comparison: GreaterOrEqual
-            Value: 50
-            OtherStatistic: None
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: c6356c32-c1e6-4e2a-ad09-e0f054eec108
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: a3b16d6d-5a2f-416c-9098-55f13f626f34
       ActivePower:
         Name: Fireblade
-        Powers: []
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 80e8009c-2a09-476a-bd71-0aedc6b14011
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 66fe10bd-f8ff-4c36-9f4d-ef7b6e8fe12a
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: d83a689d-7e52-40a3-b1fe-8897fdd789d5
         ActivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll
           Sound: 
@@ -1898,11 +2667,56 @@ GlobalConfigs:
       UseHorse: false
       UseCamel: false
       PassivePower:
-        Name: Fleet Footed
-        Powers: []
+        Name: Archer
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 79a9ca29-9a39-4cb3-b536-944d44bb92fd
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 8dbbbf13-ceca-46d9-bc20-f3f2bc167094
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 0d6daf6f-cc83-4508-9833-2c212fcfd4eb
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: ec81e3ce-7510-4934-93b7-c1220d4ecfe3
       ActivePower:
         Name: Explosive Arrows
-        Powers: []
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 52e0f85f-c29a-413a-883c-0de4c7f12ead
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 88aaee42-f3ef-4fff-8320-cc06ceb3d9b5
         ActivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll
           Sound: 
@@ -1921,11 +2735,41 @@ GlobalConfigs:
       UseHorse: false
       UseCamel: false
       PassivePower:
-        Name: Fleet Footed
-        Powers: []
+        Name: Healthy
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: c6356c32-c1e6-4e2a-ad09-e0f054eec108
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: a3b16d6d-5a2f-416c-9098-55f13f626f34
       ActivePower:
         Name: Explosive Arrows
-        Powers: []
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 52e0f85f-c29a-413a-883c-0de4c7f12ead
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 88aaee42-f3ef-4fff-8320-cc06ceb3d9b5
         ActivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll
           Sound: 
@@ -1945,7 +2789,37 @@ GlobalConfigs:
       UseCamel: false
       PassivePower:
         Name: Healthy
-        Powers: []
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 4a60ed27-334e-446e-8e75-9804b1980c8b
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: b3e5da20-1b82-4820-a373-ff9a8190dd98
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 8dbbbf13-ceca-46d9-bc20-f3f2bc167094
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: b3e5da20-1b82-4820-a373-ff9a8190dd98
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: ec81e3ce-7510-4934-93b7-c1220d4ecfe3
       ActivePower:
         Name: Explosive Bolts
         Powers: []
@@ -1992,15 +2866,16 @@ GlobalConfigs:
       PassivePower:
         Name: A Good Horse
         Powers:
-        - PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
-          Requirements:
+        - Requirements:
           - !StatisticClassSpecificRequirement
             CurrentClass: true
             RequiredClass: 00000000-0000-0000-0000-000000000000
+            Description: 'Summons >= 10 [class: (current)]'
             Statistic: Summons
             Comparison: GreaterOrEqual
             Value: 10
             OtherStatistic: None
+          PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
       ActivePower:
         Name: Trample
         Powers: []
@@ -2125,6 +3000,34 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_default_coll_small
           Sound: None
+    ClassLevelRequirements:
+    - Requirements:
+      - !StatisticClassSpecificRequirement
+        CurrentClass: true
+        RequiredClass: 00000000-0000-0000-0000-000000000000
+        Description: 'Battles >= 5 [class: (current)]'
+        Statistic: Battles
+        Comparison: GreaterOrEqual
+        Value: 5
+        OtherStatistic: None
+    - Requirements:
+      - !StatisticClassSpecificRequirement
+        CurrentClass: true
+        RequiredClass: 00000000-0000-0000-0000-000000000000
+        Description: 'Battles >= 20 [class: (current)]'
+        Statistic: Battles
+        Comparison: GreaterOrEqual
+        Value: 20
+        OtherStatistic: None
+    - Requirements:
+      - !StatisticClassSpecificRequirement
+        CurrentClass: true
+        RequiredClass: 00000000-0000-0000-0000-000000000000
+        Description: 'Battles >= 50 [class: (current)]'
+        Statistic: Battles
+        Comparison: GreaterOrEqual
+        Value: 50
+        OtherStatistic: None
 - Id: Buffet - Effects Config
   Config:
     DisableEffectsInTournaments: true
