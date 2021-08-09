@@ -4,7 +4,7 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
-    public class SkillRangeDef
+    public class SkillRangeDef : INotifyPropertyChanged
     {
         [Description("The skill or skill group"), PropertyOrder(1)]
         public SkillsEnum Skill { get; set; }
@@ -26,5 +26,7 @@ namespace BLTAdoptAHero
         {
             return $"{Skill} {MinLevel} - {MaxLevel}";
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

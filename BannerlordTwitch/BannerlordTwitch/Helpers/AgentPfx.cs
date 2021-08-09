@@ -11,7 +11,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BannerlordTwitch.Helpers
 {
-    public class ParticleEffectDef : ICloneable
+    public class ParticleEffectDef : ICloneable, INotifyPropertyChanged
     {
         // private int Id { get; set; }
         
@@ -36,6 +36,8 @@ namespace BannerlordTwitch.Helpers
             var copy = CloneHelpers.CloneFields(this);
             return copy;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
     
     public class AgentPfx

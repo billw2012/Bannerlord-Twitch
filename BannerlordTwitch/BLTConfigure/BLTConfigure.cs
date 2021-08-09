@@ -28,21 +28,22 @@ namespace BLTConfigure
             
             thread = new Thread(() =>
             {
-                #if !DEBUG
                 try
-                #endif
                 {
+                    var _ = new Application();
+                    Application.Current.Resources.MergedDictionaries.Add(
+                        (ResourceDictionary) Application.LoadComponent(
+                            new Uri("BLTConfigure;component/Themes/CollectionControl.xaml", 
+                                UriKind.Relative)));
                     wnd = new BLTConfigureWindow { ShowActivated = false };
                     wnd.Show();
                     System.Windows.Threading.Dispatcher.Run();
                 }
-                #if !DEBUG
                 catch (Exception e)
                 {
                     MessageBox.Show($"Exception occurred (please report this on the discord or nexusmods):\n{e}",
                         "BLT Configure Module Crashed!");
                 }
-                #endif
             });
             thread.SetApartmentState(ApartmentState.STA);
             thread.IsBackground = true;

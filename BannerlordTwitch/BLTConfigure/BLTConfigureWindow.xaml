@@ -12,6 +12,11 @@
               Title="BLT Configure Window" Height="850" Width="850" 
               d:DataContext="{d:DesignInstance local:BLTConfigureWindow}">
     <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/BLTConfigure;component/Themes/CollectionControl.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     <Window.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
