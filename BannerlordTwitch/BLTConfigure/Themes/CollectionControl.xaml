@@ -481,10 +481,18 @@
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
                                 <Grid.InputBindings>
-                                    <KeyBinding Command="ComponentCommands.MoveUp" CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}" Modifiers="Control" Key="W" />
-                                    <KeyBinding Command="ComponentCommands.MoveDown" CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}" Modifiers="Control" Key="S" />
-                                    <KeyBinding Command="Delete" CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}" Key="Delete" />
-                                    <KeyBinding Command="Copy" CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}" Modifiers="Control" Key="D" />
+                                    <KeyBinding Command="ComponentCommands.MoveUp" 
+                                                CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}" 
+                                                Modifiers="Control" Key="W" />
+                                    <KeyBinding Command="ComponentCommands.MoveDown" 
+                                                CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}" 
+                                                Modifiers="Control" Key="S" />
+                                    <KeyBinding Command="Delete" 
+                                                CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}" 
+                                                Key="Delete" />
+                                    <KeyBinding Command="Copy" 
+                                                CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}" 
+                                                Modifiers="Control" Key="D" />
                                 </Grid.InputBindings>
                                 
                                 <ContentControl Margin="0,0,0,5"
@@ -523,6 +531,7 @@
                                          HorizontalContentAlignment="Stretch"
                                          SelectedIndex="0"
                                          SelectionMode="Single"
+                                         ScrollViewer.CanContentScroll="False"
                                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
                                 <StackPanel Margin="7,2,0,0"
                                             VerticalAlignment="Top"
