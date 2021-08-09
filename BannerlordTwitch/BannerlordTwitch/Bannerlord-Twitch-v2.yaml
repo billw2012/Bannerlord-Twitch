@@ -1285,6 +1285,8 @@ GlobalConfigs:
       ID: 2355a51d-d813-48b3-9987-d997099d51ed
       Name: Heavy Hitting III
     - !ReflectDamagePower
+      Name: Retribution I
+      PowerDurationSeconds: 120
       ReflectPercent: 10
       ReflectedDamageIsSubtracted: false
       HitBehavior:
@@ -1293,11 +1295,11 @@ GlobalConfigs:
         ShrugOffChancePercent: 0
         MakesRearChancePercent: 0
         DismountChance: 0
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
-      Name: Retribution I
     - !ReflectDamagePower
+      Name: Retribution II
+      PowerDurationSeconds: 120
       ReflectPercent: 25
       ReflectedDamageIsSubtracted: false
       HitBehavior:
@@ -1306,11 +1308,11 @@ GlobalConfigs:
         ShrugOffChancePercent: 0
         MakesRearChancePercent: 0
         DismountChance: 0
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 347cec61-aa6d-4002-87de-47d298ca3161
-      Name: Retribution II
     - !ReflectDamagePower
+      Name: Retribution III
+      PowerDurationSeconds: 120
       ReflectPercent: 50
       ReflectedDamageIsSubtracted: false
       HitBehavior:
@@ -1319,10 +1321,8 @@ GlobalConfigs:
         ShrugOffChancePercent: 0
         MakesRearChancePercent: 0
         DismountChance: 0
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 4341afec-1b6e-4ee9-8a70-c83a8d1c56c6
-      Name: Retribution III
     - !StatModifyPower
       Modifiers:
         ScalePercent: 100
@@ -1760,7 +1760,7 @@ GlobalConfigs:
       PowerDurationSeconds: 120
       Pfx: []
       ID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
-      Name: Explosive Arrows I
+      Name: Explosive Projectiles I
     - !AddDamagePower
       DamageModifierPercent: 100
       DamageToAdd: 0
@@ -1808,7 +1808,7 @@ GlobalConfigs:
       PowerDurationSeconds: 120
       Pfx: []
       ID: 52e0f85f-c29a-413a-883c-0de4c7f12ead
-      Name: Explosive Arrows II
+      Name: Explosive Projectiles II
     - !AddDamagePower
       DamageModifierPercent: 100
       DamageToAdd: 0
@@ -1856,7 +1856,7 @@ GlobalConfigs:
       PowerDurationSeconds: 120
       Pfx: []
       ID: 88aaee42-f3ef-4fff-8320-cc06ceb3d9b5
-      Name: Explosive Arrows III
+      Name: Explosive Projectiles III
     - !StatModifyPower
       Modifiers:
         ScalePercent: 120
@@ -1924,7 +1924,7 @@ GlobalConfigs:
       PowerDurationSeconds: 120
       Pfx: []
       ID: 2bc4d80a-d945-4fe5-801a-026708d3c660
-      Name: Heavy Bolts I
+      Name: Heavy Projectiles I
     - !AddDamagePower
       DamageModifierPercent: 100
       DamageToAdd: 0
@@ -1972,7 +1972,7 @@ GlobalConfigs:
       PowerDurationSeconds: 120
       Pfx: []
       ID: d7b4d435-a3a1-4fd2-855d-fa3e044128f2
-      Name: Heavy Bolts II
+      Name: Heavy Projectiles II
     - !AddDamagePower
       DamageModifierPercent: 100
       DamageToAdd: 0
@@ -2020,7 +2020,7 @@ GlobalConfigs:
       PowerDurationSeconds: 120
       Pfx: []
       ID: d157416b-6d38-41b2-9764-5be15823fd62
-      Name: Heavy Bolts III
+      Name: Heavy Projectiles III
     - !AddDamagePower
       DamageModifierPercent: 100
       DamageToAdd: 0
@@ -2667,7 +2667,7 @@ GlobalConfigs:
       UseHorse: false
       UseCamel: false
       PassivePower:
-        Name: Archer
+        Name: Fleet Footed
         Powers:
         - Requirements:
           - !ClassLevelRequirement
@@ -2788,7 +2788,7 @@ GlobalConfigs:
       UseHorse: false
       UseCamel: false
       PassivePower:
-        Name: Healthy
+        Name: Self Healing
         Powers:
         - Requirements:
           - !ClassLevelRequirement
@@ -2821,8 +2821,23 @@ GlobalConfigs:
             MaxLevel: 3
           PowerID: ec81e3ce-7510-4934-93b7-c1220d4ecfe3
       ActivePower:
-        Name: Explosive Bolts
-        Powers: []
+        Name: Heavy Bolts
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 2bc4d80a-d945-4fe5-801a-026708d3c660
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: d7b4d435-a3a1-4fd2-855d-fa3e044128f2
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: d157416b-6d38-41b2-9764-5be15823fd62
         ActivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll
           Sound: 
@@ -2842,10 +2857,40 @@ GlobalConfigs:
       UseCamel: false
       PassivePower:
         Name: Healthy
-        Powers: []
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: c6356c32-c1e6-4e2a-ad09-e0f054eec108
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: a3b16d6d-5a2f-416c-9098-55f13f626f34
       ActivePower:
         Name: Explosive Bolts
-        Powers: []
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 2bc4d80a-d945-4fe5-801a-026708d3c660
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: d7b4d435-a3a1-4fd2-855d-fa3e044128f2
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 2bc4d80a-d945-4fe5-801a-026708d3c660
         ActivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll
           Sound: 
@@ -2867,18 +2912,53 @@ GlobalConfigs:
         Name: A Good Horse
         Powers:
         - Requirements:
-          - !StatisticClassSpecificRequirement
-            CurrentClass: true
-            RequiredClass: 00000000-0000-0000-0000-000000000000
-            Description: 'Summons >= 10 [class: (current)]'
-            Statistic: Summons
-            Comparison: GreaterOrEqual
-            Value: 10
-            OtherStatistic: None
-          PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 20f6817e-8f45-4dc3-a513-77707fb9c96d
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 46a9624a-2560-4e97-9627-3c13be41f947
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 6cca75ef-a900-4593-8ea8-cf96163003c0
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: ce6f6302-4db2-4a34-bffb-530f0ceac9c1
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 64e3832f-9f08-40dd-b1ab-0be6a26ed091
       ActivePower:
         Name: Trample
-        Powers: []
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 6ad716bb-76e1-4cb1-9601-85f81f5d5425
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 0c2ecb3e-a4e6-4e54-b87d-b860cc486613
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: b2da61f2-a12e-4834-9f41-a79040e90ec4
         ActivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll
           Sound: 
@@ -2897,11 +2977,56 @@ GlobalConfigs:
       UseHorse: false
       UseCamel: true
       PassivePower:
-        Name: A Good Horse
-        Powers: []
+        Name: A Good Camel
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 20f6817e-8f45-4dc3-a513-77707fb9c96d
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 46a9624a-2560-4e97-9627-3c13be41f947
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 6cca75ef-a900-4593-8ea8-cf96163003c0
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: ce6f6302-4db2-4a34-bffb-530f0ceac9c1
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 64e3832f-9f08-40dd-b1ab-0be6a26ed091
       ActivePower:
         Name: Trample
-        Powers: []
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 6ad716bb-76e1-4cb1-9601-85f81f5d5425
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 0c2ecb3e-a4e6-4e54-b87d-b860cc486613
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: b2da61f2-a12e-4834-9f41-a79040e90ec4
         ActivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll
           Sound: 
@@ -2921,10 +3046,55 @@ GlobalConfigs:
       UseCamel: false
       PassivePower:
         Name: Mounted Archery
-        Powers: []
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 8dbbbf13-ceca-46d9-bc20-f3f2bc167094
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 46a9624a-2560-4e97-9627-3c13be41f947
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: ec81e3ce-7510-4934-93b7-c1220d4ecfe3
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: ce6f6302-4db2-4a34-bffb-530f0ceac9c1
       ActivePower:
         Name: Explosive Arrows
-        Powers: []
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 52e0f85f-c29a-413a-883c-0de4c7f12ead
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 88aaee42-f3ef-4fff-8320-cc06ceb3d9b5
         ActivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll
           Sound: 
@@ -2944,10 +3114,55 @@ GlobalConfigs:
       UseCamel: true
       PassivePower:
         Name: Mounted Archery
-        Powers: []
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 46a9624a-2560-4e97-9627-3c13be41f947
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 8dbbbf13-ceca-46d9-bc20-f3f2bc167094
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: ce6f6302-4db2-4a34-bffb-530f0ceac9c1
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: ec81e3ce-7510-4934-93b7-c1220d4ecfe3
       ActivePower:
-        Name: Explosive Arrows
-        Powers: []
+        Name: Heavy Arrows
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 2bc4d80a-d945-4fe5-801a-026708d3c660
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: d7b4d435-a3a1-4fd2-855d-fa3e044128f2
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: d157416b-6d38-41b2-9764-5be15823fd62
         ActivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll
           Sound: 
@@ -2966,11 +3181,61 @@ GlobalConfigs:
       UseHorse: false
       UseCamel: false
       PassivePower:
-        Name: Healthy
-        Powers: []
-      ActivePower:
         Name: Retribution
-        Powers: []
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 347cec61-aa6d-4002-87de-47d298ca3161
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 4341afec-1b6e-4ee9-8a70-c83a8d1c56c6
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
+      ActivePower:
+        Name: Disrupt
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 98d5c8a7-a480-4f20-a219-e3c0af81e73a
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 584fa61d-7016-43d1-b9c3-b690b5dd18b5
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 7ac9dfdb-5744-4dd6-b445-dab123e67e11
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: aa9fdb10-a928-4480-8838-cd3e72774d03
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 745a57aa-e674-4cd3-a57c-ee0c39f945f1
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 49e6de04-d7d2-4f00-9006-0e9b8d01cec9
         ActivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll
           Sound: 
@@ -2990,10 +3255,80 @@ GlobalConfigs:
       UseCamel: false
       PassivePower:
         Name: Glass Cannon
-        Powers: []
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: b99d374b-84d0-495e-a430-1811ad6e712b
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 6a36fedb-0b2d-459c-b06b-c4230327589b
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: 9cf5d507-92ea-4068-85e6-3938db7170e1
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: a3e50729-68f2-4a25-ac3f-e5c3738965cf
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 3d71f948-c58b-402f-a134-dfbcef1e28be
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 2355a51d-d813-48b3-9987-d997099d51ed
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 60582ddc-3b22-4052-9437-cd43882bf5f9
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 7ac9dfdb-5744-4dd6-b445-dab123e67e11
       ActivePower:
         Name: Berserker Rage
-        Powers: []
+        Powers:
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 4a60ed27-334e-446e-8e75-9804b1980c8b
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 1
+            MaxLevel: 1
+          PowerID: 3f5613bb-9bb6-4436-9cf9-a7927cc75387
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: b3e5da20-1b82-4820-a373-ff9a8190dd98
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 2
+            MaxLevel: 2
+          PowerID: e514dfef-57e4-44a5-acdb-c1214275e063
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 936524f5-7bde-4793-828a-1e0cf4a8a6ba
+        - Requirements:
+          - !ClassLevelRequirement
+            MinLevel: 3
+            MaxLevel: 3
+          PowerID: 087ec677-cb5b-4f4c-9773-1df8e8e69a1d
         ActivateEffect:
           ParticleEffect: psys_burning_projectile_default_coll
           Sound: None
