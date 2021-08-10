@@ -216,6 +216,7 @@ namespace BLTAdoptAHero
                         ("D", AchievementStatsData.Statistic.TotalDeaths),
                         ("KVwr", AchievementStatsData.Statistic.TotalViewerKills),
                         ("KStrmr", AchievementStatsData.Statistic.TotalStreamerKills),
+                        ("Battles", AchievementStatsData.Statistic.Battles),
                         ("Sums", AchievementStatsData.Statistic.Summons),
                         ("CSums", AchievementStatsData.Statistic.ConsecutiveSummons),
                         ("Atks", AchievementStatsData.Statistic.Attacks),
