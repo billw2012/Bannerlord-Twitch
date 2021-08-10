@@ -26,7 +26,9 @@ namespace BLTAdoptAHero.Achievements
         #region Public Interface
         public override bool IsMet(Hero hero)
         {
-            int stat = BLTAdoptAHeroCampaignBehavior.Current.GetAchievementClassStat(hero, RequiredClass, Statistic);
+            int stat = BLTAdoptAHeroCampaignBehavior.Current.GetAchievementClassStat(hero, 
+                CurrentClass ? (hero.GetClass()?.ID ?? Guid.Empty) : RequiredClass, Statistic
+                );
             int val = OtherStatistic == AchievementStatsData.Statistic.None
                 ? Value
                 : BLTAdoptAHeroCampaignBehavior.Current.GetAchievementClassStat(hero, RequiredClass, OtherStatistic);
