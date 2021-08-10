@@ -282,8 +282,8 @@ namespace BLTAdoptAHero.Powers
             blowParams.collisionData.InflictedDamage = blowParams.blow.InflictedDamage
                 = (int) (blowParams.blow.BaseMagnitude - blowParams.blow.AbsorbedByArmor);
             
-            blowParams.blow.BlowFlag |= AddHitBehavior.Generate(victimAgent);
-            blowParams.blow.BlowFlag &= ~RemoveHitBehavior.Generate(victimAgent);
+            blowParams.blow.BlowFlag = AddHitBehavior.AddFlags(agent, 
+                RemoveHitBehavior.RemoveFlags(agent, blowParams.blow.BlowFlag));
 
             // If attack type is a missile and AoE is not set to only on hit, then we will be applying this in the
             // OnMissileCollisionReaction below
@@ -343,7 +343,7 @@ namespace BLTAdoptAHero.Powers
 		        Direction = direction,
 		        DamageCalculated = true,
 		        VictimBodyPart = BoneBodyPartType.Chest,
-		        BlowFlag = hitBehavior.Generate(agent),
+		        BlowFlag = hitBehavior.AddFlags(agent, BlowFlags.None),
 	        };
 
 	        agent.RegisterBlow(blow);

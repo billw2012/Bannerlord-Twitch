@@ -17,7 +17,7 @@ namespace BLTAdoptAHero.Powers
     public class ActivePowerGroupItem : PowerGroupItemBase
     {
         [PropertyOrder(0),
-         ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), PropertyOrder(1), UsedImplicitly]
+         ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), UsedImplicitly]
         public Guid PowerID { get; set; }
 
         [Browsable(false), YamlIgnore]

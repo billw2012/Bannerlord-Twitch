@@ -47,7 +47,7 @@ namespace BLTAdoptAHero.Powers
                     DamageType = blowParams.blow.DamageType,
                     BoneIndex = agent.Monster.ThoraxLookDirectionBoneIndex,
                     Position = agent.Position,
-                    BlowFlag = HitBehavior.Generate(agent),
+                    BlowFlag = HitBehavior.AddFlags(agent, BlowFlags.None),
                     BaseMagnitude = 0f,
                     InflictedDamage = damage,
                     SwingDirection = agent.LookDirection.NormalizedCopy(),

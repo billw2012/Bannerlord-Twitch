@@ -44,14 +44,26 @@ namespace BLTAdoptAHero.Powers
                                  MakesRearChancePercent > 0 ||
                                  DismountChance > 0;
 
-        public BlowFlags Generate(Agent agent)
+        private const BlowFlags BehaviorFlags = BlowFlags.KnockBack | BlowFlags.KnockDown | BlowFlags.ShrugOff |
+                                                BlowFlags.MakesRear | BlowFlags.CanDismount;
+
+        public BlowFlags AddFlags(Agent agent, BlowFlags flags)
         {
-            var flags = BlowFlags.None;
-            if(MBRandom.RandomFloat * 100f < KnockBackChancePercent && !agent.IsMount) flags |= BlowFlags.KnockBack;
-            if(MBRandom.RandomFloat * 100f < KnockDownChancePercent && !agent.IsMount) flags |= BlowFlags.KnockDown;
-            if(MBRandom.RandomFloat * 100f < ShrugOffChancePercent && !agent.IsMount) flags |= BlowFlags.ShrugOff;
-            if(MBRandom.RandomFloat * 100f < MakesRearChancePercent && agent.IsMount) flags |= BlowFlags.MakesRear;
-            if(MBRandom.RandomFloat * 100f < DismountChance && agent.HasMount) flags |= BlowFlags.CanDismount;
+            if(MBRandom.RandomFloat * 100f < KnockBackChancePercent && !agent.IsMount) flags = flags & ~BehaviorFlags | BlowFlags.KnockBack;
+            else if(MBRandom.RandomFloat * 100f < KnockDownChancePercent && !agent.IsMount) flags = flags & ~BehaviorFlags | BlowFlags.KnockDown;
+            else if(MBRandom.RandomFloat * 100f < ShrugOffChancePercent && !agent.IsMount) flags = flags & ~BehaviorFlags | BlowFlags.ShrugOff;
+            else if(MBRandom.RandomFloat * 100f < MakesRearChancePercent && agent.IsMount) flags = flags & ~BehaviorFlags | BlowFlags.MakesRear;
+            else if(MBRandom.RandomFloat * 100f < DismountChance && agent.HasMount) flags = flags & ~BehaviorFlags | BlowFlags.CanDismount;
+            return flags;
+        }
+        
+        public BlowFlags RemoveFlags(Agent agent, BlowFlags flags)
+        {
+            if(MBRandom.RandomFloat * 100f < KnockBackChancePercent && !agent.IsMount) flags &= ~BlowFlags.KnockBack;
+            if(MBRandom.RandomFloat * 100f < KnockDownChancePercent && !agent.IsMount) flags &= ~BlowFlags.KnockDown;
+            if(MBRandom.RandomFloat * 100f < ShrugOffChancePercent && !agent.IsMount) flags &= ~BlowFlags.ShrugOff;
+            if(MBRandom.RandomFloat * 100f < MakesRearChancePercent && agent.IsMount) flags &= ~BlowFlags.MakesRear;
+            if(MBRandom.RandomFloat * 100f < DismountChance && agent.HasMount) flags &= ~BlowFlags.CanDismount;
             return flags;
         }
 

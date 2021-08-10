@@ -42,8 +42,8 @@ namespace BLTAdoptAHero.Powers
         private void OnTakeDamage(Hero hero, Agent agent, Hero attackerHero, Agent attackerAgent,
             BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams)
         {
-            blowParams.blow.BlowFlag |= AddHitBehavior.Generate(agent);
-            blowParams.blow.BlowFlag &= ~RemoveHitBehavior.Generate(agent);
+            blowParams.blow.BlowFlag = AddHitBehavior.AddFlags(agent, 
+                RemoveHitBehavior.RemoveFlags(agent, blowParams.blow.BlowFlag));
 
             if (DamageModifierPercent != 100)
             {
@@ -57,7 +57,7 @@ namespace BLTAdoptAHero.Powers
 
         #region Public Interface
         [YamlIgnore, Browsable(false)]
-        public bool IsEnabled => DamageModifierPercent != 100;
+        public bool IsEnabled => DamageModifierPercent != 100 || AddHitBehavior.IsEnabled || RemoveHitBehavior.IsEnabled;
         public override string Description
         {
             get 
