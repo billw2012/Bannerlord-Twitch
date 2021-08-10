@@ -495,7 +495,7 @@ namespace BLTAdoptAHero
         {
             var achievementData = GetHeroData(hero).AchievementStats;
             
-            var newAchievements = BLTAdoptAHeroModule.CommonConfig.Achievements?
+            var newAchievements = BLTAdoptAHeroModule.CommonConfig.ValidAchievements?
                 .Where(a => a.IsAchieved(hero))
                 .Where(a
                     => !achievementData.Achievements.Contains(a.ID)) ?? Enumerable.Empty<AchievementDef>();

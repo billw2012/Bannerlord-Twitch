@@ -272,8 +272,6 @@ namespace BLTAdoptAHero
         #region Achievements
         [Category("Achievements"), Description("Achievements"), PropertyOrder(1), UsedImplicitly]
         public ObservableCollection<AchievementDef> Achievements { get; set; } = new();
-
-        public AchievementDef GetAchievement(Guid id) => Achievements?.FirstOrDefault(a => a.ID == id);
         #endregion
 
         #region Shouts
@@ -289,6 +287,11 @@ namespace BLTAdoptAHero
         [YamlIgnore, Browsable(false)]
         public float DifficultyScalingClamped => MathF.Clamp(DifficultyScaling, 0, 5);
 
+        [YamlIgnore, Browsable(false)]
+        public IEnumerable<AchievementDef> ValidAchievements => Achievements.Where(a => a.Enabled);
+
+        public AchievementDef GetAchievement(Guid id) => ValidAchievements?.FirstOrDefault(a => a.ID == id);
+        
         public float GetCooldownTime(int summoned) 
            => (float) (Math.Pow(SummonCooldownUseMultiplier, Mathf.Max(0, summoned - 1)) * SummonCooldownInSeconds);
         #endregion
@@ -338,7 +341,7 @@ namespace BLTAdoptAHero
                     });
                 }
                 
-                var achievements = Achievements.Where(a => a.Enabled).ToList();
+                var achievements = ValidAchievements.Where(a => a.Enabled).ToList();
                 if (achievements.Any())
                 {
                     generator.H2("Achievements");
