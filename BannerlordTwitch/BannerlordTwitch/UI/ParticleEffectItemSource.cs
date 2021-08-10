@@ -8,18 +8,19 @@ namespace BannerlordTwitch.Util
         {
             var items = new ItemCollection
             {
-                {"psys_burning_projectile_default_coll", "Medium size explosion"},
-                {"psys_burning_projectile_default_coll_small", "Small explosion"},
-                {"psys_burning_projectile_stone_coll", "Medium size explosion - stones"},
-                {"psys_burning_projectile_stone_coll_small", "Small explosion - stones"},
-                {"psys_burning_projectile_water_coll", "Medium size explosion - water"},
-                {"psys_burning_projectile_water_coll_small", "Small explosion - water"},
-                {"psys_burning_projectile_wood_coll", "Medium size explosion - wood"},
-                {"psys_burning_projectile_wood_coll_small", "Small explosion - wood"},
-                {"psys_game_missile_default_coll", "Small poof of dust"},
-                {"psys_game_stone_dust_a", "Small poof of dust"},
-                {"psys_game_stone_water_coll", "Some splash like effect"},
-                {"psys_game_water_splash_circular", "Some splash like effect with rings"},
+                { null, "(none)" },
+                { "psys_burning_projectile_default_coll", "Medium size explosion" },
+                { "psys_burning_projectile_default_coll_small", "Small explosion" },
+                { "psys_burning_projectile_stone_coll", "Medium size explosion - stones" },
+                { "psys_burning_projectile_stone_coll_small", "Small explosion - stones" },
+                { "psys_burning_projectile_water_coll", "Medium size explosion - water" },
+                { "psys_burning_projectile_water_coll_small", "Small explosion - water" },
+                { "psys_burning_projectile_wood_coll", "Medium size explosion - wood" },
+                { "psys_burning_projectile_wood_coll_small", "Small explosion - wood" },
+                { "psys_game_missile_default_coll", "Small poof of dust" },
+                { "psys_game_stone_dust_a", "Small poof of dust" },
+                { "psys_game_stone_water_coll", "Some splash like effect" },
+                { "psys_game_water_splash_circular", "Some splash like effect with rings" },
             };
             return items;
         }
@@ -31,6 +32,7 @@ namespace BannerlordTwitch.Util
         {
             var items = new ItemCollection
             {
+                { null, "(none)" },
                 { "psys_torch_fire_moving", "Fire" },
                 { "psys_bug_fly_1", "Yellow particles (healing effect)" },
                 { "psys_campfire", "Stronger fire, not too much smoke" },
