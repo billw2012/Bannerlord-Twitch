@@ -1,8 +1,5 @@
 Rewards:
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: true
-  RewardSpec:
+- RewardSpec:
     Title: Adopt a Hero
     DisableAutomaticFulfillment: false
     Prompt: Get a hero in game. Almost all other actions require an adopted hero.
@@ -15,6 +12,9 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: AdoptAHero
   ID: e072adb0-83a2-4408-87bb-b2cff3f12ee2
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig:
     CreateNew: false
     AllowNoble: true
@@ -46,10 +46,7 @@ Rewards:
     StartingEquipmentTier: 1
     StartingClass: 00000000-0000-0000-0000-000000000000
   Documentation: Get a hero in game. Almost all other actions require an adopted hero.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  RewardSpec:
+- RewardSpec:
     Title: 10k gold
     DisableAutomaticFulfillment: false
     Prompt: Add 10,000 gold to your adopted hero
@@ -62,13 +59,13 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: AddGoldToHero
   ID: 7e0991eb-4304-496d-a9b4-874a1c114bae
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     Amount: 10000
   Documentation: Adds 10,000 gold to your adopted hero.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  RewardSpec:
+- RewardSpec:
     Title: 100k gold
     DisableAutomaticFulfillment: false
     Prompt: Add 100,000 gold to your adopted hero
@@ -81,13 +78,13 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: AddGoldToHero
   ID: 2ccc7258-ad66-4afa-a45a-93863c1d7f35
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     Amount: 100000
   Documentation: Adds 100,000 gold to your adopted hero.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  RewardSpec:
+- RewardSpec:
     Title: Summon
     DisableAutomaticFulfillment: false
     Prompt: Your adopted hero joins the players side in battle
@@ -100,6 +97,9 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: SummonHero
   ID: 77c1dbd8-02cb-47d7-9796-7308e989b7f3
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     AllowFieldBattle: true
     AllowVillageBattle: true
@@ -113,10 +113,7 @@ Rewards:
     SubBoost: 1
     HealPerSecond: 0
   Documentation: Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue).
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  RewardSpec:
+- RewardSpec:
     Title: Attack
     DisableAutomaticFulfillment: false
     Prompt: Your adopted hero joins the enemies side in battle
@@ -129,6 +126,9 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: SummonHero
   ID: 422cc8d9-84cb-4cc9-afdf-889e615fdea6
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     AllowFieldBattle: true
     AllowVillageBattle: true
@@ -142,10 +142,7 @@ Rewards:
     SubBoost: 1
     HealPerSecond: 0
   Documentation: Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue).
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  RewardSpec:
+- RewardSpec:
     Title: Heal Streamer
     DisableAutomaticFulfillment: false
     Prompt: Heal the streamer over time
@@ -158,6 +155,9 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: CharacterEffect
   ID: f0b482c2-e121-4415-a2a6-95e592a4d7a9
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     Name: Healing
     Target: Player
@@ -177,10 +177,7 @@ Rewards:
     DeactivateParticleEffect: 
     DeactivateSound: 
   Documentation: Heals the streamers character in battle, over time. Doesn't work on the campaign map.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  RewardSpec:
+- RewardSpec:
     Title: Tournament
     DisableAutomaticFulfillment: false
     Prompt: Join the tournament queue with your adopted hero
@@ -193,13 +190,13 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: JoinTournament
   ID: e1d775d0-0d60-4e12-baa7-39f0e791293a
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     GoldCost: 0
   Documentation: Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament.
-- Enabled: true
-  RespondInOverlay: false
-  RespondInTwitch: false
-  RewardSpec:
+- RewardSpec:
     Title: Send Message In Game
     DisableAutomaticFulfillment: false
     Prompt: Enter Message
@@ -212,13 +209,13 @@ Rewards:
     GlobalCooldownSeconds: 15
   Handler: SendMessage
   ID: 1b1f00fe-fff8-4f76-8c09-8da0fd18c53b
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: false
   HandlerConfig:
     AlertSound: Notification1
   Documentation: Sends a message in the game. If you have a hero then it will also show them next to the message.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: true
-  RewardSpec:
+- RewardSpec:
     Title: Retire My Hero
     DisableAutomaticFulfillment: false
     Prompt: Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel
@@ -231,12 +228,12 @@ Rewards:
     GlobalCooldownSeconds: 60
   Handler: RetireMyHero
   ID: 60d43b2b-d1cb-4411-a126-d5089c264aca
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig: 
   Documentation: Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritence rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  RewardSpec:
+- RewardSpec:
     Title: 50k XP
     DisableAutomaticFulfillment: false
     Prompt: Add 50,000 XP to a random skill of your adopted hero
@@ -249,6 +246,9 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: SkillXP
   ID: fe103fc4-fcaa-4e0d-809d-235d22676b6a
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     Skills: None
     Auto: true
@@ -256,10 +256,7 @@ Rewards:
     AmountHigh: 50000
     GoldCost: 0
   Documentation: Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly choosen, but influenced by your class and existing skills and equipment.
-- Enabled: false
-  RespondInOverlay: true
-  RespondInTwitch: false
-  RewardSpec:
+- RewardSpec:
     Title: Burn Player
     DisableAutomaticFulfillment: false
     Prompt: 
@@ -272,6 +269,9 @@ Rewards:
     GlobalCooldownSeconds: 300
   Handler: CharacterEffect
   ID: 5af6308d-ce73-402d-aa29-2a9e0d9ad7e8
+  Enabled: false
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     Name: 
     Target: Player
@@ -297,10 +297,7 @@ Rewards:
     DeactivateParticleEffect: 
     DeactivateSound: 
   Documentation: 
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  RewardSpec:
+- RewardSpec:
     Title: Heal Hero
     DisableAutomaticFulfillment: false
     Prompt: 
@@ -313,6 +310,9 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: CharacterEffect
   ID: 6e75b94c-23cf-43cf-a647-2df806460874
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     Name: Healing
     Target: AdoptedHero
@@ -330,10 +330,7 @@ Rewards:
     DeactivateParticleEffect: 
     DeactivateSound: 
   Documentation: Heals your hero over time. Only works in battle, when your hero is summoned.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: true
-  RewardSpec:
+- RewardSpec:
     Title: Give Player Gold
     DisableAutomaticFulfillment: false
     Prompt: 'Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:'
@@ -346,15 +343,15 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: AddGoldToPlayer
   ID: 4ff890a2-ff83-41fa-9441-156f32abd9e8
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig:
     GoldAmountToGive: 10000
     FromAdoptedHero: true
     AlertSound: Notification1
   Documentation: Transfer 10,000 gold to the streamers character, from your hero.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  RewardSpec:
+- RewardSpec:
     Title: Use Class Power
     DisableAutomaticFulfillment: false
     Prompt: Activate your class power on your hero, if you have one.
@@ -367,12 +364,12 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: UsePower
   ID: 6f53994c-4513-4b81-95a3-21493d35b25d
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig: 
   Documentation: Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay.
-- Enabled: false
-  RespondInOverlay: false
-  RespondInTwitch: false
-  RewardSpec:
+- RewardSpec:
     Title: New Reward qwdsqw dq
     DisableAutomaticFulfillment: false
     Prompt: 
@@ -385,6 +382,9 @@ Rewards:
     GlobalCooldownSeconds: 
   Handler: FocusPoints
   ID: 7dfb4cdf-7267-41f0-aea2-3fbd30d3fee1
+  Enabled: false
+  RespondInTwitch: false
+  RespondInOverlay: false
   HandlerConfig:
     Skills: None
     Auto: true
@@ -393,14 +393,14 @@ Rewards:
     GoldCost: 0
   Documentation: 
 Commands:
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  Name: stats
+- Name: stats
   HideHelp: false
   Help: show stats
   Handler: HeroInfoCommand
   ID: 1cf3abfd-3310-4a51-808e-e14d454eed05
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     ShowGold: true
     ShowGeneral: true
@@ -417,14 +417,14 @@ Commands:
     ShowTrackedStats: false
     ShowPowers: false
   Documentation: Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  Name: inv
+- Name: inv
   HideHelp: false
   Help: show equipment
   Handler: HeroInfoCommand
   ID: 7b6caafc-0246-47c2-8622-e091b10b8897
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     ShowGold: true
     ShowGeneral: false
@@ -441,14 +441,14 @@ Commands:
     ShowTrackedStats: false
     ShowPowers: false
   Documentation: Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  Name: equip
+- Name: equip
   HideHelp: false
   Help: upgrade equipment
   Handler: EquipHero
   ID: 90b571d1-dba8-4006-860c-a0401b6f8fd2
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     AllowCompanionUpgrade: false
     CostTier1: 25000
@@ -459,14 +459,14 @@ Commands:
     CostTier6: 400000
     ReequipInsteadOfUpgrade: false
   Documentation: Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  Name: retinue
+- Name: retinue
   HideHelp: false
   Help: upgrade retinue
   Handler: Retinue
   ID: 38eed507-87b9-47f4-b235-af921cef00c4
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     Retinue:
       MaxRetinueSize: 5
@@ -481,14 +481,14 @@ Commands:
       UseBasicTroops: true
       UseEliteTroops: true
   Documentation: Purchases a new tier 1 troop for your retinue, or upgrades an existing one to the next tier if you have no space left. Retinue will appear with you in battle when you summon, earning you money when they make kills.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: true
-  Name: class
+- Name: class
   HideHelp: false
   Help: select new class
   Handler: SetHeroClass
   ID: da8416ca-e59b-458a-8953-31291d03c835
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig:
     FirstEquipIsFree: true
     CostTier1: 5000
@@ -499,14 +499,14 @@ Commands:
     CostTier6: 160000
     UpdateEquipment: true
   Documentation: 'Selects a new class for your hero, updating your existing equipment to match the class requirements.<br>Usage is <code>!class (new class name)</code>, e.g. <code>!class archer</code>. '
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  Name: reequip
+- Name: reequip
   HideHelp: false
   Help: reroll equipment
   Handler: EquipHero
   ID: d4fb255c-4bb3-454e-9e26-39b4d7a321f0
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     AllowCompanionUpgrade: false
     CostTier1: 10000
@@ -517,14 +517,14 @@ Commands:
     CostTier6: 160000
     ReequipInsteadOfUpgrade: true
   Documentation: Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: true
-  Name: gold
+- Name: gold
   HideHelp: false
   Help: show gold
   Handler: HeroInfoCommand
   ID: 42e45ee9-647f-486f-9764-5e765507a70d
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig:
     ShowGold: true
     ShowGeneral: false
@@ -541,14 +541,14 @@ Commands:
     ShowTrackedStats: false
     ShowPowers: false
   Documentation: Show your heroes current gold.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  Name: retinuelist
+- Name: retinuelist
   HideHelp: false
   Help: retinue list
   Handler: HeroInfoCommand
   ID: afd51f50-caaf-40a8-bf29-d75447e34ef4
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     ShowGold: false
     ShowGeneral: false
@@ -565,14 +565,14 @@ Commands:
     ShowTrackedStats: false
     ShowPowers: false
   Documentation: Shows your current retinue troops.
-- Enabled: false
-  RespondInOverlay: true
-  RespondInTwitch: false
-  Name: adopt
+- Name: adopt
   HideHelp: false
   Help: ''
   Handler: AdoptAHero
   ID: e317c63a-5a1f-455c-b953-6dcb92dc9424
+  Enabled: false
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     CreateNew: false
     AllowNoble: true
@@ -604,44 +604,44 @@ Commands:
     StartingEquipmentTier: 1
     StartingClass: 00000000-0000-0000-0000-000000000000
   Documentation: Get a hero in game. Almost all other actions require an adopted hero.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: true
-  Name: nameitem
+- Name: nameitem
   HideHelp: false
   Help: name a reward item
   Handler: NameItem
   ID: aef1ded6-f8dd-4b9a-9d70-96e96d17cb12
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig: 
   Documentation: You can use this to name your custom items.<br>Usage is <code>!nameitem (name)</code>, for example <code>!nameitem Foehammer</code>.<br>If you call <code>!nameitem</code> on its own it will tell you what item will be named next.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: true
-  Name: bltbet
+- Name: bltbet
   HideHelp: false
   Help: bet on tournament
   Handler: TournamentBet
   ID: 7cbdbc43-660c-4500-9029-d06e81c89f04
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig: 
   Documentation: Use this to bet on tournament matches, when available.<br>Usage is <code>!bltbet (team) (gold)</code>, for example <code>!bltbet red 10000</code> to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.<br>If only one team is bet upon, the bets will be refunded.
-- Enabled: false
-  RespondInOverlay: true
-  RespondInTwitch: false
-  Name: power
+- Name: power
   HideHelp: false
   Help: 
   Handler: UsePower
   ID: 4aa62cc4-9ac2-4920-b921-c641f6ad0e24
+  Enabled: false
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig: 
   Documentation: 
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: false
-  Name: ach
+- Name: ach
   HideHelp: false
   Help: achievements
   Handler: HeroInfoCommand
   ID: 6b05f682-afe1-45e2-ba68-e6ee086ee412
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
     ShowGold: false
     ShowGeneral: false
@@ -658,66 +658,72 @@ Commands:
     ShowTrackedStats: true
     ShowPowers: false
   Documentation: Show the heroes achievements and tracked stats.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: true
-  Name: auction
+- Name: auction
   HideHelp: false
   Help: 
   Handler: AuctionItem
   ID: 303342d6-c3c3-4f58-8d0d-0daee20677f8
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig:
     AuctionDurationInSeconds: 120
     AuctionReminderIntervalInSeconds: 30
   Documentation: Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.<br>Usage is <code>!auction (reserve price) (part of the item name)</code>, e.g. <code>!auction 50000 Boots</code> would start a new auction for your custom item with the word "Boots" in it, with a reserve of 50000. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: true
-  Name: bid
+- Name: bid
   HideHelp: false
   Help: 
   Handler: BidOnItem
   ID: 95bcd31c-154b-4d70-a3e6-cb247efe9fb4
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig: 
   Documentation: Place a bid on the current auction, if one is active.<br>Usage is <code>!bid (gold amount)</code>, e.g. <code>!bid 100000</code>. If there is no auction, or the bid doesn't exceed the reserve price, it will be rejected.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: true
-  Name: discarditem
+- Name: discarditem
   HideHelp: false
   Help: ''
   Handler: DiscardItem
   ID: 752eb016-7df1-465c-83c7-80cc88f8c02d
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig: 
   Documentation: Throw away one of your custom items.<br>Usage is <code>!discarditem (part of the item name)</code>, e.g. <code>!discarditem Boots</code> would discard your custom item with the word "Boots" in it. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.
-- Enabled: true
-  RespondInOverlay: true
-  RespondInTwitch: true
-  Name: giveitem
+- Name: giveitem
   HideHelp: false
   Help: 
   Handler: GiveItem
   ID: 0e255e77-4c17-44ad-aeb8-ff01bbbe0bee
+  Enabled: true
+  RespondInTwitch: true
+  RespondInOverlay: true
   HandlerConfig: 
   Documentation: Give one of your custom items to another viewer.<br>Usage is <code>!giveitem (viewer) (part of the item name)</code>, e.g. <code>!giveitem C4alad0g Boots</code> would give your custom item with the word "Boots" in it to the viewer called C4lad0g. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.
-- Enabled: false
-  RespondInOverlay: false
-  RespondInTwitch: false
-  Name: New Command qwd qwd q12e1
+- Name: powers
   HideHelp: false
   Help: 
-  Handler: EquipHero
-  ID: 96b24d2d-b45f-429a-9193-63a00e346ff8
+  Handler: HeroInfoCommand
+  ID: b595b0f2-ad40-409c-a286-c7f58ac87e13
+  Enabled: true
+  RespondInTwitch: false
+  RespondInOverlay: true
   HandlerConfig:
-    AllowCompanionUpgrade: true
-    CostTier1: 25000
-    CostTier2: 50000
-    CostTier3: 100000
-    CostTier4: 175000
-    CostTier5: 275000
-    CostTier6: 400000
-    ReequipInsteadOfUpgrade: false
-  Documentation: 
+    ShowGold: false
+    ShowGeneral: false
+    ShowTopSkills: false
+    MinSkillToShow: 100
+    ShowAttributes: false
+    ShowEquipment: false
+    ShowInventory: false
+    ShowStorage: false
+    ShowCivilianInventory: false
+    ShowRetinue: false
+    ShowRetinueList: false
+    ShowAchievements: false
+    ShowTrackedStats: false
+    ShowPowers: true
+  Documentation: Shows your available powers
 GlobalConfigs:
 - Id: Adopt A Hero - General Config
   Config:
@@ -1093,54 +1099,56 @@ GlobalConfigs:
   Config:
     PowerDefs:
     - !AddHealthPower
+      Name: Healthy I
       HealthModifierPercent: 125
       HealthToAdd: 0
       ID: 22ad10d6-34df-4d41-afec-7e98a56f8954
-      Name: Healthy I
     - !AddHealthPower
+      Name: Healthy II
       HealthModifierPercent: 150
       HealthToAdd: 0
       ID: c6356c32-c1e6-4e2a-ad09-e0f054eec108
-      Name: Healthy II
     - !AddHealthPower
+      Name: Healthy III
       HealthModifierPercent: 200
       HealthToAdd: 0
       ID: a3b16d6d-5a2f-416c-9098-55f13f626f34
-      Name: Healthy III
     - !AddHealthPower
+      Name: Fragile I
       HealthModifierPercent: 50
       HealthToAdd: 0
       ID: b99d374b-84d0-495e-a430-1811ad6e712b
-      Name: Fragile I
     - !AddHealthPower
+      Name: Fragile II
       HealthModifierPercent: 65
       HealthToAdd: 0
       ID: 9cf5d507-92ea-4068-85e6-3938db7170e1
-      Name: Fragile II
     - !AddHealthPower
+      Name: Fragile III
       HealthModifierPercent: 90
       HealthToAdd: 0
       ID: 3d71f948-c58b-402f-a134-dfbcef1e28be
-      Name: Fragile III
     - !AbsorbHealthPower
-      DamageToAbsorbPercent: 10
+      Name: Vampiric I
       PowerDurationSeconds: 120
+      DamageToAbsorbPercent: 10
       Pfx: []
       ID: 4a60ed27-334e-446e-8e75-9804b1980c8b
-      Name: Vampiric I
     - !AbsorbHealthPower
-      DamageToAbsorbPercent: 25
+      Name: Vampiric II
       PowerDurationSeconds: 120
+      DamageToAbsorbPercent: 25
       Pfx: []
       ID: b3e5da20-1b82-4820-a373-ff9a8190dd98
-      Name: Vampiric II
     - !AbsorbHealthPower
-      DamageToAbsorbPercent: 50
+      Name: Vampiric III
       PowerDurationSeconds: 120
+      DamageToAbsorbPercent: 50
       Pfx: []
       ID: 936524f5-7bde-4793-828a-1e0cf4a8a6ba
-      Name: Vampiric III
     - !AddDamagePower
+      Name: Heavy Hitting I
+      PowerDurationSeconds: 120
       DamageModifierPercent: 125
       DamageToAdd: 0
       AddHitBehavior:
@@ -1184,11 +1192,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 6a36fedb-0b2d-459c-b06b-c4230327589b
-      Name: Heavy Hitting I
     - !AddDamagePower
+      Name: Heavy Hitting II
+      PowerDurationSeconds: 120
       DamageModifierPercent: 150
       DamageToAdd: 0
       AddHitBehavior:
@@ -1232,11 +1240,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: a3e50729-68f2-4a25-ac3f-e5c3738965cf
-      Name: Heavy Hitting II
     - !AddDamagePower
+      Name: Heavy Hitting III
+      PowerDurationSeconds: 120
       DamageModifierPercent: 200
       DamageToAdd: 0
       AddHitBehavior:
@@ -1280,10 +1288,8 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 2355a51d-d813-48b3-9987-d997099d51ed
-      Name: Heavy Hitting III
     - !ReflectDamagePower
       Name: Retribution I
       PowerDurationSeconds: 120
@@ -1324,6 +1330,8 @@ GlobalConfigs:
       Pfx: []
       ID: 4341afec-1b6e-4ee9-8a70-c83a8d1c56c6
     - !StatModifyPower
+      Name: Fleet Footed I
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: false
@@ -1332,11 +1340,11 @@ GlobalConfigs:
           ModifierPercent: 110
           Add: 0
         Skills: []
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
-      Name: Fleet Footed I
     - !StatModifyPower
+      Name: Fleet Footed II
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: false
@@ -1345,11 +1353,11 @@ GlobalConfigs:
           ModifierPercent: 125
           Add: 0
         Skills: []
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 79a9ca29-9a39-4cb3-b536-944d44bb92fd
-      Name: Fleet Footed II
     - !StatModifyPower
+      Name: Fleet Footed III
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: false
@@ -1358,11 +1366,11 @@ GlobalConfigs:
           ModifierPercent: 150
           Add: 0
         Skills: []
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 0d6daf6f-cc83-4508-9833-2c212fcfd4eb
-      Name: Fleet Footed III
     - !StatModifyPower
+      Name: Charge I
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: true
@@ -1374,11 +1382,11 @@ GlobalConfigs:
           ModifierPercent: 125
           Add: 0
         Skills: []
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 20f6817e-8f45-4dc3-a513-77707fb9c96d
-      Name: Charge I
     - !StatModifyPower
+      Name: Charge II
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: true
@@ -1390,11 +1398,11 @@ GlobalConfigs:
           ModifierPercent: 150
           Add: 0
         Skills: []
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 6cca75ef-a900-4593-8ea8-cf96163003c0
-      Name: Charge II
     - !StatModifyPower
+      Name: Charge III
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: true
@@ -1406,11 +1414,11 @@ GlobalConfigs:
           ModifierPercent: 200
           Add: 0
         Skills: []
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 64e3832f-9f08-40dd-b1ab-0be6a26ed091
-      Name: Charge III
     - !AddDamagePower
+      Name: Charge AoE I
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -1454,11 +1462,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 6ad716bb-76e1-4cb1-9601-85f81f5d5425
-      Name: Charge AoE I
     - !AddDamagePower
+      Name: Charge AoE II
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -1502,11 +1510,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 0c2ecb3e-a4e6-4e54-b87d-b860cc486613
-      Name: Charge AoE II
     - !AddDamagePower
+      Name: Charge AoE III
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -1550,11 +1558,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: b2da61f2-a12e-4834-9f41-a79040e90ec4
-      Name: Charge AoE III
     - !StatModifyPower
+      Name: Better Mount I
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: true
@@ -1569,11 +1577,11 @@ GlobalConfigs:
           ModifierPercent: 100
           Add: 20
         Skills: []
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
-      Name: Better Mount I
     - !StatModifyPower
+      Name: Better Mount II
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: true
@@ -1588,11 +1596,11 @@ GlobalConfigs:
           ModifierPercent: 100
           Add: 40
         Skills: []
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 46a9624a-2560-4e97-9627-3c13be41f947
-      Name: Better Mount II
     - !StatModifyPower
+      Name: Better Mount III
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: true
@@ -1607,11 +1615,11 @@ GlobalConfigs:
           ModifierPercent: 100
           Add: 80
         Skills: []
-      PowerDurationSeconds: 120
       Pfx: []
       ID: ce6f6302-4db2-4a34-bffb-530f0ceac9c1
-      Name: Better Mount III
     - !StatModifyPower
+      Name: Fireblade I
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: false
@@ -1620,13 +1628,13 @@ GlobalConfigs:
         - Skill: Melee
           ModifierPercent: 100
           Add: 25
-      PowerDurationSeconds: 120
       Pfx:
       - Name: psys_campfire
         AttachPoint: OnWeapon
       ID: 80e8009c-2a09-476a-bd71-0aedc6b14011
-      Name: Fireblade I
     - !StatModifyPower
+      Name: Fireblade II
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: false
@@ -1635,13 +1643,13 @@ GlobalConfigs:
         - Skill: Melee
           ModifierPercent: 100
           Add: 50
-      PowerDurationSeconds: 120
       Pfx:
       - Name: psys_campfire
         AttachPoint: OnWeapon
       ID: 66fe10bd-f8ff-4c36-9f4d-ef7b6e8fe12a
-      Name: Fireblade II
     - !StatModifyPower
+      Name: Fireblade III
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: false
@@ -1650,13 +1658,13 @@ GlobalConfigs:
         - Skill: Melee
           ModifierPercent: 100
           Add: 100
-      PowerDurationSeconds: 120
       Pfx:
       - Name: psys_campfire
         AttachPoint: OnWeapon
       ID: d83a689d-7e52-40a3-b1fe-8897fdd789d5
-      Name: Fireblade III
     - !StatModifyPower
+      Name: Ranger I
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: false
@@ -1671,11 +1679,11 @@ GlobalConfigs:
         - Skill: Ranged
           ModifierPercent: 125
           Add: 0
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
-      Name: Ranger I
     - !StatModifyPower
+      Name: Ranger II
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: false
@@ -1690,11 +1698,11 @@ GlobalConfigs:
         - Skill: Ranged
           ModifierPercent: 150
           Add: 0
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 8dbbbf13-ceca-46d9-bc20-f3f2bc167094
-      Name: Ranger II
     - !StatModifyPower
+      Name: Ranger III
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 100
         ApplyToMount: false
@@ -1709,11 +1717,11 @@ GlobalConfigs:
         - Skill: Ranged
           ModifierPercent: 200
           Add: 0
-      PowerDurationSeconds: 120
       Pfx: []
       ID: ec81e3ce-7510-4934-93b7-c1220d4ecfe3
-      Name: Ranger III
     - !AddDamagePower
+      Name: Explosive Projectiles I
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -1757,11 +1765,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: psys_burning_projectile_default_coll
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
-      Name: Explosive Projectiles I
     - !AddDamagePower
+      Name: Explosive Projectiles II
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -1805,11 +1813,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: psys_burning_projectile_default_coll
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 52e0f85f-c29a-413a-883c-0de4c7f12ead
-      Name: Explosive Projectiles II
     - !AddDamagePower
+      Name: Explosive Projectiles III
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -1853,31 +1861,31 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: psys_burning_projectile_default_coll
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 88aaee42-f3ef-4fff-8320-cc06ceb3d9b5
-      Name: Explosive Projectiles III
     - !StatModifyPower
+      Name: Imposing Mount
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 120
         ApplyToMount: true
         Properties: []
         Skills: []
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 2d18201b-1bad-477d-bd09-d857da76faad
-      Name: Imposing Mount
     - !StatModifyPower
+      Name: Imposing
+      PowerDurationSeconds: 120
       Modifiers:
         ScalePercent: 120
         ApplyToMount: false
         Properties: []
         Skills: []
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 60582ddc-3b22-4052-9437-cd43882bf5f9
-      Name: Imposing
     - !AddDamagePower
+      Name: Heavy Projectiles I
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -1921,11 +1929,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: psys_burning_projectile_wood_coll_small
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 2bc4d80a-d945-4fe5-801a-026708d3c660
-      Name: Heavy Projectiles I
     - !AddDamagePower
+      Name: Heavy Projectiles II
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -1969,11 +1977,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: psys_burning_projectile_wood_coll_small
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: d7b4d435-a3a1-4fd2-855d-fa3e044128f2
-      Name: Heavy Projectiles II
     - !AddDamagePower
+      Name: Heavy Projectiles III
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -2017,11 +2025,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: psys_burning_projectile_wood_coll_small
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: d157416b-6d38-41b2-9764-5be15823fd62
-      Name: Heavy Projectiles III
     - !AddDamagePower
+      Name: Crush Through I
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -2065,11 +2073,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: a9d8e86d-4a15-4f35-9ebf-209dc085336f
-      Name: Crush Through I
     - !AddDamagePower
+      Name: Crush Through II
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -2113,11 +2121,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: ddff3058-160f-4463-bd66-d72e70336300
-      Name: Crush Through II
     - !AddDamagePower
+      Name: Crush Through III
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -2161,11 +2169,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: fe9bdea0-95dd-4f75-9c8a-165b55ca3ea8
-      Name: Crush Through III
     - !AddDamagePower
+      Name: Knock Down I
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -2209,11 +2217,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 98d5c8a7-a480-4f20-a219-e3c0af81e73a
-      Name: Knock Down I
     - !AddDamagePower
+      Name: Knock Down II
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -2257,11 +2265,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 7ac9dfdb-5744-4dd6-b445-dab123e67e11
-      Name: Knock Down II
     - !AddDamagePower
+      Name: Knock Down III
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -2305,11 +2313,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 745a57aa-e674-4cd3-a57c-ee0c39f945f1
-      Name: Knock Down III
     - !AddDamagePower
+      Name: Cut Through I
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -2353,11 +2361,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 3f5613bb-9bb6-4436-9cf9-a7927cc75387
-      Name: Cut Through I
     - !AddDamagePower
+      Name: Cut Through II
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -2401,11 +2409,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: e514dfef-57e4-44a5-acdb-c1214275e063
-      Name: Cut Through II
     - !AddDamagePower
+      Name: Cut Through III
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -2449,11 +2457,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 087ec677-cb5b-4f4c-9773-1df8e8e69a1d
-      Name: Cut Through III
     - !AddDamagePower
+      Name: Shatter Shield I
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -2497,11 +2505,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 584fa61d-7016-43d1-b9c3-b690b5dd18b5
-      Name: Shatter Shield I
     - !AddDamagePower
+      Name: Shatter Shield II
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -2545,11 +2553,11 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: aa9fdb10-a928-4480-8838-cd3e72774d03
-      Name: Shatter Shield II
     - !AddDamagePower
+      Name: Shatter Shield III
+      PowerDurationSeconds: 120
       DamageModifierPercent: 100
       DamageToAdd: 0
       AddHitBehavior:
@@ -2593,10 +2601,8 @@ GlobalConfigs:
       HitEffect:
         ParticleEffect: 
         Sound: 
-      PowerDurationSeconds: 120
       Pfx: []
       ID: 49e6de04-d7d2-4f00-9006-0e9b8d01cec9
-      Name: Shatter Shield III
     DisablePowersInTournaments: true
     SavedPowerDefs: 
 - Id: Adopt A Hero - Class Config
