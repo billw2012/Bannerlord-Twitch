@@ -20,6 +20,7 @@
 
 .bltconsole-entry {
     transition: all 0.2s;
+    word-wrap: break-word;
 }
 
 .bltconsole-text-style-general {
