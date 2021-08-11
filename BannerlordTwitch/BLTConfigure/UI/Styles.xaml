@@ -21,11 +21,11 @@
                     xmlns:fa="http://schemas.fontawesome.io/icons/"
                     xmlns:bannerlordTwitch="clr-namespace:BannerlordTwitch;assembly=BannerlordTwitch"
                     xmlns:adoptAHero="clr-namespace:BLTAdoptAHero;assembly=BLTAdoptAHero"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:achievements="clr-namespace:BLTAdoptAHero.Achievements;assembly=BLTAdoptAHero"
                     xmlns:helpers="clr-namespace:BannerlordTwitch.Helpers;assembly=BannerlordTwitch"
                     xmlns:bltConfigure="clr-namespace:BLTConfigure"
-                    xmlns:powers="clr-namespace:BLTAdoptAHero.Powers;assembly=BLTAdoptAHero">
+                    xmlns:powers="clr-namespace:BLTAdoptAHero.Powers;assembly=BLTAdoptAHero"
+                    x:Class="BLTConfigure.UI.Styles">
 
         
     <bltConfigure:BoolToVisibilityConverter x:Key="BoolToHiddenConverter" TrueValue="Visible" FalseValue="Hidden" />
@@ -34,6 +34,18 @@
     <bltConfigure:NonDefaultVisibilityConverter x:Key="HiddenPercentDefaultConverter" Default="100" 
                                                 DefaultVisibility="Collapsed" NonDefaultVisibility="Visible"/>
 
+    <Style TargetType="{x:Type xctk:PropertyGrid}">
+        <Setter Property="AutoGenerateProperties" Value="True"/>
+        <Setter Property="ShowSearchBox" Value="False"/>
+        <Setter Property="ShowSortOptions" Value="False"/>
+        <Setter Property="ShowAdvancedOptions" Value="False"/>
+        <Setter Property="NameColumnWidth" Value="220"/>
+        <Setter Property="ShowDescriptionByTooltip" Value="True"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="DarkGray"/>
+        <EventSetter Event="PreparePropertyItem" Handler="PropertyGrid_OnPreparePropertyItem"></EventSetter>
+    </Style>
+    
     <xctk:InverseBoolConverter x:Key="InverseBoolConverter" />
     <xctk:ObjectTypeToNameConverter x:Key="ObjectTypeToNameConverter" />
     <xctk:NewItemTypesComboBoxConverter x:Key="NewItemTypesComboBoxConverter" />
@@ -579,7 +591,9 @@
                                                    VerticalAlignment="Stretch"
                                                    SelectedObject="{Binding SelectedItem, RelativeSource={RelativeSource TemplatedParent}}"
                                                    IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}"
-                                                   EditorDefinitions="{Binding EditorDefinitions, RelativeSource={RelativeSource TemplatedParent}}" />
+                                                   EditorDefinitions="{Binding EditorDefinitions, RelativeSource={RelativeSource TemplatedParent}}">
+                                    
+                                </xctk:PropertyGrid>
                             </Grid>
                         </Grid>
                     </Border>

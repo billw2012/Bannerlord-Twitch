@@ -580,12 +580,6 @@ namespace BLTConfigure
             Task.Run(() => Process.Start(e.Uri.ToString()));
         }
 
-        private void PropertyGrid_OnSelectedObjectChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
-            //var grid = sender as PropertyGrid;
-            //ExpandAndFixNames(grid.Properties);
-        }
-        
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -599,17 +593,6 @@ namespace BLTConfigure
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
-        }
-
-        private void PropertyGrid_OnPreparePropertyItem(object sender, PropertyItemEventArgs e)
-        {
-            if (e.PropertyItem.IsExpandable 
-                && e.PropertyItem is PropertyItem p && p.PropertyDescriptor.Attributes.Contains(new ExpandAttribute()))
-            {
-                e.PropertyItem.IsExpanded = true;
-            }
-
-            e.PropertyItem.DisplayName = e.PropertyItem.DisplayName.SplitCamelCase();
         }
 
         private async void GenerateDocumentationButton_OnClick(object sender, RoutedEventArgs e)

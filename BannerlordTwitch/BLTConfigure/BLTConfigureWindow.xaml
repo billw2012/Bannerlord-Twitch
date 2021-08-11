@@ -12,16 +12,6 @@
               ResizeMode="CanResize"
               Title="BLT Configure Window" Width="1250" Height="1000" 
               d:DataContext="{d:DesignInstance local:BLTConfigureWindow}">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/BLTConfigure;component/Themes/CollectionControl.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
-    <Window.Style>
-        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
-    </Window.Style>
     <DockPanel LastChildFill="True">
         <DockPanel.Resources>
             <Style TargetType="TextBlock">
@@ -208,16 +198,6 @@
                         <xctk:PropertyGrid 
                             Grid.Column="2"
                             x:Name="PropertyGrid"
-                            AutoGenerateProperties="True"
-                            ShowSearchBox="False"
-                            ShowSortOptions="False"
-                            ShowAdvancedOptions="False"
-                            NameColumnWidth="220"
-                            ShowDescriptionByTooltip="True"
-                            Foreground="Black"
-                            Background="DarkGray"
-                            PreparePropertyItem="PropertyGrid_OnPreparePropertyItem"
-                            SelectedObjectChanged="PropertyGrid_OnSelectedObjectChanged"
                             PropertyValueChanged="PropertyGrid_OnPropertyValueChanged"
                             >
                             <xctk:PropertyGrid.CategoryGroupHeaderTemplate>

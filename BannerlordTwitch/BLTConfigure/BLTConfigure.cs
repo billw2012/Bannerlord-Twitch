@@ -3,8 +3,10 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.MountAndBlade;
+using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace BLTConfigure
 {
@@ -30,10 +32,13 @@ namespace BLTConfigure
                 try
                 {
                     var _ = new Application();
-                    Application.Current.Resources.MergedDictionaries.Add(
-                        (ResourceDictionary) Application.LoadComponent(
-                            new Uri("BLTConfigure;component/Themes/CollectionControl.xaml", 
-                                UriKind.Relative)));
+                    
+                    // Need to make sure these styles are set globally
+                    var globalStyles = (ResourceDictionary)Application.LoadComponent(
+                        new Uri("BLTConfigure;component/UI/Styles.xaml",
+                            UriKind.Relative));
+                    Application.Current.Resources.MergedDictionaries.Add(globalStyles);
+
                     wnd = new BLTConfigureWindow { ShowActivated = false };
                     wnd.Show();
                     System.Windows.Threading.Dispatcher.Run();
