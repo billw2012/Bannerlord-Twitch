@@ -54,6 +54,6 @@ namespace BannerlordTwitch.Helpers
             }
         }
 
-        public override string ToString() => $"{ParticleEffect} {Sound}";
+        public override string ToString() => $"{OneShotParticleEffectItemSource.GetFriendlyName(ParticleEffect)} {Sound}";
     }
 }

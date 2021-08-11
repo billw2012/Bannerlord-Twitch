@@ -1,54 +1,57 @@
-﻿using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+﻿using System.Linq;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BannerlordTwitch.Util
 {
     public class OneShotParticleEffectItemSource : IItemsSource
     {
-        public ItemCollection GetValues()
+        private static readonly ItemCollection items = new()
         {
-            var items = new ItemCollection
-            {
-                { null, "(none)" },
-                { "psys_burning_projectile_default_coll", "Medium size explosion" },
-                { "psys_burning_projectile_default_coll_small", "Small explosion" },
-                { "psys_burning_projectile_stone_coll", "Medium size explosion - stones" },
-                { "psys_burning_projectile_stone_coll_small", "Small explosion - stones" },
-                { "psys_burning_projectile_water_coll", "Medium size explosion - water" },
-                { "psys_burning_projectile_water_coll_small", "Small explosion - water" },
-                { "psys_burning_projectile_wood_coll", "Medium size explosion - wood" },
-                { "psys_burning_projectile_wood_coll_small", "Small explosion - wood" },
-                { "psys_game_missile_default_coll", "Small poof of dust" },
-                { "psys_game_stone_dust_a", "Small poof of dust" },
-                { "psys_game_stone_water_coll", "Some splash like effect" },
-                { "psys_game_water_splash_circular", "Some splash like effect with rings" },
-            };
-            return items;
-        }
+            { null, "(none)" },
+            { "psys_burning_projectile_default_coll", "Medium size explosion" },
+            { "psys_burning_projectile_default_coll_small", "Small explosion" },
+            { "psys_burning_projectile_stone_coll", "Medium size explosion - stones" },
+            { "psys_burning_projectile_stone_coll_small", "Small explosion - stones" },
+            { "psys_burning_projectile_water_coll", "Medium size explosion - water" },
+            { "psys_burning_projectile_water_coll_small", "Small explosion - water" },
+            { "psys_burning_projectile_wood_coll", "Medium size explosion - wood" },
+            { "psys_burning_projectile_wood_coll_small", "Small explosion - wood" },
+            { "psys_game_missile_default_coll", "Small poof of dust" },
+            { "psys_game_stone_dust_a", "Small poof of dust" },
+            { "psys_game_stone_water_coll", "Some splash like effect" },
+            { "psys_game_water_splash_circular", "Some splash like effect with rings" },
+        };
+
+        public ItemCollection GetValues() => items;
+        
+        public static string GetFriendlyName(string pfx) 
+            => items.FirstOrDefault(p => (string) p.Value == pfx)?.DisplayName ?? "(none)";
     }
 
     public class LoopingParticleEffectItemSource : IItemsSource
     {
-        public ItemCollection GetValues()
+        private static readonly ItemCollection items = new()
         {
-            var items = new ItemCollection
-            {
-                { null, "(none)" },
-                { "psys_torch_fire_moving", "Fire" },
-                { "psys_bug_fly_1", "Yellow particles (healing effect)" },
-                { "psys_campfire", "Stronger fire, not too much smoke" },
-                { "psys_campfire_sparks", "Subtle sparks" },
-                { "psys_game_blacksmith_flame", "Slow medium flames" },
-                { "psys_game_burning_agent", "Effusing smoke and flames when moving" },
-                { "psys_game_rain", "Rain further away" },
-                { "psys_game_rain_close", "Rain on player" },
-                { "psys_game_sparkle_b", "Very subtle small particles" },
-                { "psys_torch_fire_moving", "Some fire" },
-                { "psys_haze_1", "Black spooky smoke" },
-                { "psys_adobe_battlement_destroyed", "Very dense smoke falling down" },
-            };
-            return items;
-        }
+            { null, "(none)" },
+            { "psys_torch_fire_moving", "Fire" },
+            { "psys_bug_fly_1", "Yellow particles (healing effect)" },
+            { "psys_campfire", "Stronger fire, not too much smoke" },
+            { "psys_campfire_sparks", "Subtle sparks" },
+            { "psys_game_blacksmith_flame", "Slow medium flames" },
+            { "psys_game_burning_agent", "Effusing smoke and flames when moving" },
+            { "psys_game_rain", "Rain further away" },
+            { "psys_game_rain_close", "Rain on player" },
+            { "psys_game_sparkle_b", "Very subtle small particles" },
+            { "psys_torch_fire_moving", "Some fire" },
+            { "psys_haze_1", "Black spooky smoke" },
+            { "psys_adobe_battlement_destroyed", "Very dense smoke falling down" },
+        };
+
+        public ItemCollection GetValues() => items;
         
+        public static string GetFriendlyName(string pfx) 
+            => items.FirstOrDefault(p => (string) p.Value == pfx)?.DisplayName ?? "(none)";
+
         private static string[] pfx = {
             "psys_adobe_battlement_destroyed",
             "psys_battleground_env_fire",

@@ -31,7 +31,7 @@ namespace BannerlordTwitch.Helpers
         [Description("Where to attach the particles"), PropertyOrder(2), UsedImplicitly]
         public AttachPointEnum AttachPoint { get; set; }
 
-        public override string ToString() => $"{Name} {AttachPoint}";
+        public override string ToString() => $"{LoopingParticleEffectItemSource.GetFriendlyName(Name)} {AttachPoint}";
         
         #region ICloneable
         public object Clone() => CloneHelpers.CloneProperties(this);
