@@ -26,7 +26,7 @@ namespace BLTAdoptAHero.Powers
         protected override void OnActivation(Hero hero, PowerHandler.Handlers handlers,
             Agent agent = null, DeactivationHandler deactivationHandler = null)
         {
-            BLTAgentModifierBehavior.Current.Add(agent, Modifiers);
+            Activate(hero, agent);
             if (deactivationHandler != null)
             {
                 deactivationHandler.OnDeactivate += _ =>
@@ -36,6 +36,13 @@ namespace BLTAdoptAHero.Powers
                 };
             }
         }
+
+        private void Activate(Hero hero, Agent agent)
+        {
+            BLTAgentModifierBehavior.Current.Add(agent, Modifiers);
+            BLTAgentStatCalculateModel.Current.AddModifiers(hero, Modifiers.Skills);
+        }
+
         #endregion
 
         #region Public Interface
@@ -52,11 +59,7 @@ namespace BLTAdoptAHero.Powers
         #region IHeroPowerPassive
         void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers)
         {
-            handlers.OnAgentBuild += (_, agent) =>
-            {
-                BLTAgentModifierBehavior.Current.Add(agent, Modifiers);
-                BLTAgentStatCalculateModel.Current.AddModifiers(hero, Modifiers.Skills);
-            };
+            handlers.OnAgentBuild += (_, agent) => Activate(hero, agent);
         }
         #endregion
     }

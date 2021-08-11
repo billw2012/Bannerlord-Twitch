@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using BannerlordTwitch;
 using BannerlordTwitch.UI;
@@ -58,7 +59,7 @@ namespace BLTAdoptAHero.Powers
                 attackerAgent.RegisterBlow(blow);
                 if (ReflectedDamageIsSubtracted)
                 {
-                    blowParams.blow.InflictedDamage -= damage;
+                    blowParams.blow.InflictedDamage = Math.Max(0, blowParams.blow.InflictedDamage - damage);
                 }
             }
         }

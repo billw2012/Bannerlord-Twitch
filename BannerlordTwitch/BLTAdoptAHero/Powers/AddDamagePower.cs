@@ -276,14 +276,7 @@ namespace BLTAdoptAHero.Powers
                 return;
             }
 
-            blowParams.collisionData.AbsorbedByArmor = (int) (blowParams.blow.AbsorbedByArmor *= 1 - ArmorToIgnorePercent / 100f);
-            blowParams.collisionData.BaseMagnitude = blowParams.blow.BaseMagnitude 
-                = (int) (blowParams.blow.BaseMagnitude * DamageModifierPercent / 100f + DamageToAdd);
-            blowParams.collisionData.InflictedDamage = blowParams.blow.InflictedDamage
-                = (int) (blowParams.blow.BaseMagnitude - blowParams.blow.AbsorbedByArmor);
-            
-            blowParams.blow.BlowFlag = AddHitBehavior.AddFlags(agent, 
-                RemoveHitBehavior.RemoveFlags(agent, blowParams.blow.BlowFlag));
+            ApplyDamageEffects(agent, blowParams, ArmorToIgnorePercent, DamageModifierPercent, DamageToAdd, AddHitBehavior, RemoveHitBehavior);
 
             // If attack type is a missile and AoE is not set to only on hit, then we will be applying this in the
             // OnMissileCollisionReaction below
@@ -292,6 +285,39 @@ namespace BLTAdoptAHero.Powers
 	            DoAoE(agent, victimAgent, 
 		            new MatrixFrame(Mat3.Identity, blowParams.collisionData.CollisionGlobalPosition));
             }
+        }
+
+        public static void ApplyDamageEffects(Agent agent, BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams, float armorToIgnorePercent, float damageModifierPercent, int damageToAdd, HitBehavior addHitBehavior, HitBehavior removeHitBehavior)
+        {
+            if (armorToIgnorePercent != 0)
+            {
+                float additionalDamage = blowParams.blow.AbsorbedByArmor * armorToIgnorePercent / 100f;
+                blowParams.collisionData.AbsorbedByArmor =
+                    (int)(blowParams.blow.AbsorbedByArmor = blowParams.blow.AbsorbedByArmor - additionalDamage);
+                blowParams.collisionData.BaseMagnitude =
+                    blowParams.blow.BaseMagnitude = blowParams.blow.BaseMagnitude + additionalDamage;
+                blowParams.collisionData.InflictedDamage = 
+                    blowParams.blow.InflictedDamage = blowParams.blow.InflictedDamage + (int)additionalDamage;
+            }
+
+            if (damageModifierPercent != 100)
+            {
+                blowParams.collisionData.BaseMagnitude = blowParams.blow.BaseMagnitude =
+                    blowParams.blow.BaseMagnitude * damageModifierPercent / 100f;
+                blowParams.collisionData.InflictedDamage = blowParams.blow.InflictedDamage =
+                    (int)(blowParams.blow.InflictedDamage * damageModifierPercent / 100f);
+            }
+
+            if (damageToAdd != 0)
+            {
+                blowParams.collisionData.BaseMagnitude =
+                    blowParams.blow.BaseMagnitude = Math.Max(0, blowParams.blow.BaseMagnitude + damageToAdd);
+                blowParams.collisionData.InflictedDamage =
+                    blowParams.blow.InflictedDamage = Math.Max(0, blowParams.blow.InflictedDamage + damageToAdd);
+            }
+
+            blowParams.blow.BlowFlag = addHitBehavior.AddFlags(agent,
+                removeHitBehavior.RemoveFlags(agent, blowParams.blow.BlowFlag));
         }
 
         private void OnDecideWeaponCollisionReaction(Hero attackerHero, Agent attackerAgent, Hero victimHero, 

@@ -16,6 +16,7 @@ using BLTAdoptAHero.Actions.Util;
 using Helpers;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.SaveSystem;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -1017,6 +1018,40 @@ namespace BLTAdoptAHero
             };
         }
 
+        #endregion
+        
+        #region Console Commands
+        [CommandLineFunctionality.CommandLineArgumentFunction("addstat", "blt")]
+        [UsedImplicitly]
+        public static string SetHeroStat(List<string> strings)
+        {
+            var parts = string.Join(" ", strings).Split(',').Select(p => p.Trim()).ToList();
+
+            if (parts.Count != 3)
+            {
+                return "Arguments: hero,stat,amount";
+            }
+            
+            var hero = Current.GetAdoptedHero(parts[0]);
+            if (hero == null)
+            {
+                return $"Couldn't find hero {parts[0]}";
+            }
+
+            if (!Enum.TryParse(parts[1], out AchievementStatsData.Statistic stat))
+            {
+                return $"Couldn't find stat {parts[1]}";
+            }
+
+            if (!int.TryParse(parts[2], out int amount))
+            {
+                return $"Couldn't parse amount {parts[2]}";
+            }
+            
+            Current.GetHeroData(hero).AchievementStats.UpdateValue(stat, hero.GetClass()?.ID ?? Guid.Empty, amount);
+
+            return $"Added {amount} to {stat} stat of {hero.Name}";
+        }
         #endregion
     }
 }
