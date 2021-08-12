@@ -23,7 +23,7 @@ namespace BLTAdoptAHero.Achievements
         [Category("General"), PropertyOrder(1), UsedImplicitly]
         public bool Enabled { get; set; }
 
-        [Category("General"), PropertyOrder(2), UsedImplicitly] 
+        [Category("General"), InstanceName, PropertyOrder(2), UsedImplicitly] 
         public string Name { get; set; } = "New Achievement";
 
         [Category("General"), PropertyOrder(3), 

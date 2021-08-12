@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -17,7 +18,7 @@ namespace BLTAdoptAHero.Actions.Util
         [PropertyOrder(2), UsedImplicitly]
         public bool ShowNotification { get; set; }
         
-        [PropertyOrder(3), UsedImplicitly]
+        [InstanceName, PropertyOrder(3), UsedImplicitly]
         public string Name { get; set; } = "New Kill Streak";
         
         [PropertyOrder(4), 

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
 using PropertyChanged;
@@ -27,7 +28,8 @@ namespace BLTAdoptAHero.Powers
         [ReadOnly(true), UsedImplicitly]
         public Guid ID { get; set; } = Guid.NewGuid();
 
-        [Category("General"), Description("Name of the power that will be shown in game"), PropertyOrder(1), UsedImplicitly]
+        [Category("General"), Description("Name of the power that will be shown in game"), 
+         InstanceName, PropertyOrder(1), UsedImplicitly]
         public string Name { get; set; } = "Enter Name Here";
         #endregion
         

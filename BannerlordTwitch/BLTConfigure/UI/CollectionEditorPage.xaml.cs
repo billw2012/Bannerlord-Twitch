@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using BannerlordTwitch.UI;
@@ -11,14 +12,15 @@ namespace BLTConfigure.UI
 {
     public partial class CollectionEditorPage : Page, INotifyPropertyChanged
     {
-        public string PropertyName { get; set; }
+        public List<string> PropertyPath { get; set; }
+        public string PropertyName => string.Join(" > ", PropertyPath);
         public IEnumerable ItemsSource { get; set; }
         public Type ItemsSourceType { get; set; }
         public IList<Type> NewItemTypes { get; set; }
 
-        public CollectionEditorPage(string propertyName, IEnumerable itemsSource, Type itemsSourceType, IList<Type> newItemTypes = null)
+        public CollectionEditorPage(IEnumerable<string> propertyPath, IEnumerable itemsSource, Type itemsSourceType, IList<Type> newItemTypes = null)
         {
-            PropertyName = propertyName;
+            PropertyPath = propertyPath.ToList();
             ItemsSource = itemsSource;
             ItemsSourceType = itemsSourceType;
             NewItemTypes = newItemTypes;
@@ -39,7 +41,7 @@ namespace BLTConfigure.UI
             CollectionPropertyEditor.OpenCollectionEditorEventArgs e)
         {
             this.NavigationService?.Navigate(new CollectionEditorPage(
-                e.PropertyName, e.ItemsSource, e.ItemsSourceType, e.NewItemTypes
+                PropertyPath.Concat(e.PropertyName.Yield()), e.ItemsSource, e.ItemsSourceType, e.NewItemTypes
             ));
         }
     }

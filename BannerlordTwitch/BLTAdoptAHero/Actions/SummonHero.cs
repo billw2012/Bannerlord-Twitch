@@ -5,6 +5,7 @@ using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -778,7 +779,7 @@ namespace BLTAdoptAHero
 
     public class Shout
     {
-        [PropertyOrder(1), UsedImplicitly] 
+        [InstanceName, PropertyOrder(1), UsedImplicitly] 
         public string Text { get; set; } = "Enter shout text here";
         [PropertyOrder(2), Description("Higher weight means more chance this shout is used"), UsedImplicitly]
         public float Weight { get; set; } = 1f;

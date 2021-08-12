@@ -101,8 +101,7 @@ namespace BLTConfigure
             //         TargetProperties = {typeof(RangeInt)}
             //     });
         }
-
-
+        
         protected override void OnDeactivated(EventArgs e)
         {
             base.OnDeactivated(e);
@@ -113,14 +112,9 @@ namespace BLTConfigure
 
         protected override void OnClosing(CancelEventArgs e)
         {
-            base.OnClosing(e);
-            ConfigurationRoot.SaveSettings();
-            StoreNeocitiesLogin();
-            ConfigurationRoot.SaveAuth();
+            // Don't let user accidentally close this
+            e.Cancel = true;
         }
-        
-        
-
         
         public class TypeGroupDescription : GroupDescription
         {

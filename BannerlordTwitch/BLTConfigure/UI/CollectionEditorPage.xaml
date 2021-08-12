@@ -20,18 +20,22 @@
             <RowDefinition Height="Auto"/>            
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <Button Grid.Row="0" HorizontalAlignment="Left"
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button HorizontalAlignment="Left"
                     Click="BackButton_Click"
                     Margin="0 0 0 8" Width="60">
                 <StackPanel Orientation="Horizontal">
-                <fa:ImageAwesome Icon="ArrowLeft" Margin="1" Height="16" Width="16" />
-                <TextBlock Margin="4" Text="Back"/>
+                    <fa:ImageAwesome Icon="ArrowLeft" Margin="1" Height="16" Width="16" />
+                    <TextBlock Margin="4" Text="Back"/>
                 </StackPanel>
             </Button>
-            <TextBlock Margin="20 0 0 8" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" 
-                       Text="{Binding PropertyName, StringFormat=Collection: {0}}"/>
-        </StackPanel>
+            <TextBlock Grid.Column="1" Margin="20 0 0 8" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" 
+                       Text="{Binding PropertyName}" TextWrapping="Wrap"/>
+        </Grid>
         <xctk:CollectionControl Grid.Row="1"
                                 ItemsSourceType="{Binding ItemsSourceType}"
                                 ItemsSource="{Binding ItemsSource, Mode=TwoWay}"

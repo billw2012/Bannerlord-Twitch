@@ -13,7 +13,6 @@
               mc:Ignorable="d"
               ResizeMode="CanResize"
               Title="BLT Configure Window" Width="1250" Height="1000" 
-              ui1:WindowBehavior.HideCloseButton="True"
               d:DataContext="{d:DesignInstance local:BLTConfigureWindow}">
     <!-- <Window.Resources> -->
     <!--     <Style TargetType="{x:Type ui:CollectionPropertyEditor}"> -->

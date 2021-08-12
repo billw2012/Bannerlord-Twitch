@@ -9,7 +9,18 @@ namespace BannerlordTwitch.UI
 {
     public partial class CollectionPropertyEditor
     {
-        #region ItemsSource Property
+        #region Owner
+        public static readonly DependencyProperty OwnerProperty 
+            = DependencyProperty.Register( "Owner", typeof(string), 
+                typeof( CollectionPropertyEditor ), new UIPropertyMetadata( null ) );
+        public string Owner
+        {
+            get => ( string )GetValue( OwnerProperty );
+            set => SetValue( OwnerProperty, value );
+        }
+        #endregion
+        
+        #region PropertyName
         public static readonly DependencyProperty PropertyNameProperty 
             = DependencyProperty.Register( "PropertyName", typeof(string), 
                 typeof( CollectionPropertyEditor ), new UIPropertyMetadata( null ) );
