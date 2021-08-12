@@ -13,13 +13,13 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <ScrollViewer VerticalScrollBarVisibility="Auto" 
-                      HorizontalScrollBarVisibility="Disabled" MaxHeight="250">
+                      HorizontalScrollBarVisibility="Disabled" MaxHeight="300">
             <ItemsControl ItemsSource="{Binding ItemsSource, 
                     RelativeSource={RelativeSource Mode=FindAncestor, 
                     AncestorType=ui:CollectionPropertyEditor}}"/>
         </ScrollViewer>
-        <Button Grid.Column="1" Click="EditButton_OnClick" Width="24">
-            <fa:ImageAwesome Icon="Edit" Margin="1" Height="16" Width="16" />
+        <Button Grid.Column="1" Click="EditButton_OnClick" Padding="4" VerticalAlignment="Stretch">
+            <fa:ImageAwesome Icon="ArrowRight" Margin="1" Height="16" Width="16" />
         </Button>
     </Grid>
 </UserControl>

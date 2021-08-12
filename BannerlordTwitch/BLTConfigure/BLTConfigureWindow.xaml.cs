@@ -19,6 +19,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using BannerlordTwitch;
 using BannerlordTwitch.Annotations;
@@ -547,5 +548,20 @@ namespace BLTConfigure
         }
         
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private void ConfigurationFrame_OnNavigating(object sender, NavigatingCancelEventArgs e)
+        {
+            var ta = new ThicknessAnimation
+            {
+                Duration = TimeSpan.FromSeconds(0.3),
+                DecelerationRatio = 0.7,
+                To = new Thickness(0 , 0 , 0 , 0),
+            };
+            if (e.NavigationMode == NavigationMode.New)
+                ta.From = new Thickness(500, 0, 0, 0);
+            else if (e.NavigationMode == NavigationMode.Back)
+                ta.From = new Thickness(0, 0, 500, 0);
+            (e.Content as UIElement)?.BeginAnimation(MarginProperty , ta);
+        }
     }
 }

@@ -70,6 +70,7 @@
                     <Frame HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
                            NavigationUIVisibility="Hidden"
+                           Navigating="ConfigurationFrame_OnNavigating"
                            x:Name="ConfigurationFrame"/>
                 </DockPanel>
             </TabItem>
