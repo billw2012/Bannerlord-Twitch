@@ -48,11 +48,6 @@ namespace BLTAdoptAHero
         public float SubBoost { get; set; } = 1;
 
         [Category("General"), 
-         Description("Will disable companion limit. You will be able to have infinite number of companion"), 
-         PropertyOrder(2), Document, UsedImplicitly]
-        public bool BreakCompanionLimit { get; set; }
-
-        [Category("General"), 
          Description("The specification for custom item rewards, applies to tournament prize and achievement rewards"), 
          PropertyOrder(3), ExpandableObject, UsedImplicitly]
         public RandomItemModifierDef CustomRewardModifiers { get; set; } = new();

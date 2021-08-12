@@ -554,7 +554,6 @@ GlobalConfigs:
       XPGain: 0
     AllowDeath: true
     ApplyDeathChanceToAllHeroes: true
-    BreakCompanionLimit: false
     CustomRewardModifiers:
       AmmoDamage:
         Max: 20
