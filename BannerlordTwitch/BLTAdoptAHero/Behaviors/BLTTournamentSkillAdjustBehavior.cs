@@ -26,6 +26,7 @@ namespace BLTAdoptAHero
             {
                 var blow = new Blow(attacker.Index)
                 {
+                    AttackType = attacker.IsMount ? AgentAttackType.Collision : AgentAttackType.Standard,
                     DamageType = DamageTypes.Blunt,
                     BoneIndex = victim.Monster.HeadLookDirectionBoneIndex,
                     Position = victim.Position,
@@ -34,6 +35,7 @@ namespace BLTAdoptAHero
                     Direction = collisionData.WeaponBlowDir,
                     DamageCalculated = true,
                     VictimBodyPart = BoneBodyPartType.Chest,
+                    WeaponRecord = new () { AffectorWeaponSlotOrMissileIndex = -1 },
                 };
 
                 blow.InflictedDamage = (int) blow.BaseMagnitude;

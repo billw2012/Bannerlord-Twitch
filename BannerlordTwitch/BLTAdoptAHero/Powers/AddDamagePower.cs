@@ -276,7 +276,7 @@ namespace BLTAdoptAHero.Powers
                 return;
             }
 
-            ApplyDamageEffects(agent, blowParams, ArmorToIgnorePercent, DamageModifierPercent, DamageToAdd, AddHitBehavior, RemoveHitBehavior);
+            ApplyDamageEffects(victimAgent, blowParams, ArmorToIgnorePercent, DamageModifierPercent, DamageToAdd, AddHitBehavior, RemoveHitBehavior);
 
             // If attack type is a missile and AoE is not set to only on hit, then we will be applying this in the
             // OnMissileCollisionReaction below
@@ -287,7 +287,7 @@ namespace BLTAdoptAHero.Powers
             }
         }
 
-        public static void ApplyDamageEffects(Agent agent, BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams, float armorToIgnorePercent, float damageModifierPercent, int damageToAdd, HitBehavior addHitBehavior, HitBehavior removeHitBehavior)
+        public static void ApplyDamageEffects(Agent victimAgent, BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams, float armorToIgnorePercent, float damageModifierPercent, int damageToAdd, HitBehavior addHitBehavior, HitBehavior removeHitBehavior)
         {
             if (armorToIgnorePercent != 0)
             {
@@ -316,8 +316,8 @@ namespace BLTAdoptAHero.Powers
                     blowParams.blow.InflictedDamage = Math.Max(0, blowParams.blow.InflictedDamage + damageToAdd);
             }
 
-            blowParams.blow.BlowFlag = addHitBehavior.AddFlags(agent,
-                removeHitBehavior.RemoveFlags(agent, blowParams.blow.BlowFlag));
+            blowParams.blow.BlowFlag = addHitBehavior.AddFlags(victimAgent,
+                removeHitBehavior.RemoveFlags(victimAgent, blowParams.blow.BlowFlag));
         }
 
         private void OnDecideWeaponCollisionReaction(Hero attackerHero, Agent attackerAgent, Hero victimHero, 
@@ -341,7 +341,9 @@ namespace BLTAdoptAHero.Powers
 	        if (Ranged && !AoE.OnlyOnHit)
 	        {
 		        DoAoE(attackerAgent, attachedAgent, 
-			        attachedAgent?.Frame.TransformToParent(attachLocalFrame) ?? attachLocalFrame);
+                    collisionReaction == Mission.MissileCollisionReaction.Stick && attachedAgent != null
+                        ? attachedAgent.Frame.TransformToParent(attachLocalFrame) 
+                        : attachLocalFrame);
 	        }
         }
 
@@ -360,7 +362,8 @@ namespace BLTAdoptAHero.Powers
         {
 	        var blow = new Blow(from.Index)
 	        {
-		        DamageType = damageType,
+                AttackType = from.IsMount ? AgentAttackType.Collision : AgentAttackType.Standard,
+		        DamageType = from.IsMount ? DamageTypes.Blunt : damageType,
 		        BoneIndex = agent.Monster.HeadLookDirectionBoneIndex,
 		        Position = agent.Position,
 		        BaseMagnitude = damage,
@@ -370,7 +373,8 @@ namespace BLTAdoptAHero.Powers
 		        DamageCalculated = true,
 		        VictimBodyPart = BoneBodyPartType.Chest,
 		        BlowFlag = hitBehavior.AddFlags(agent, BlowFlags.None),
-	        };
+                WeaponRecord = new () { AffectorWeaponSlotOrMissileIndex = -1 }
+            };
 
 	        agent.RegisterBlow(blow);
         }
@@ -483,7 +487,7 @@ namespace BLTAdoptAHero.Powers
                 .Where(a => 
                         a.State == AgentState.Active	// alive only
                         && !ignoreAgents.Contains(a)	// not in the ignore list
-                        && a.IsEnemyOf(@from)			// enemies only
+                        && a.IsEnemyOf(from)			// enemies only
                 )
                 .Select(a => (agent: a, distance: a.Position.Distance(position)))
                 .OrderBy(a => a.distance)
@@ -492,7 +496,7 @@ namespace BLTAdoptAHero.Powers
             )
             {
                 int damage = CalculateDamage(distance); 
-                AddDamagePower.DoAgentDamage(@from, agent, damage, (agent.Position - position).NormalizedCopy(), 
+                AddDamagePower.DoAgentDamage(from, agent, damage, (agent.Position - position).NormalizedCopy(), 
                     DamageType, HitBehavior);
             }
         }

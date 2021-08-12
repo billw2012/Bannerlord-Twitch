@@ -38,21 +38,22 @@ namespace BLTBuffet
 
                 if(config.DamagePerSecond != 0 && !agent.Invulnerable && !Mission.DisableDying)
                 {
-                    var blow = new Blow(agent.Index);
-                    blow.DamageType = DamageTypes.Blunt;
-                    //blow.BlowFlag = BlowFlags.CrushThrough;
-                    //blow.BlowFlag |= BlowFlags.KnockDown;
-                    blow.BlowFlag |= BlowFlags.ShrugOff;
-                    blow.BoneIndex = agent.Monster.ThoraxLookDirectionBoneIndex;
-                    blow.Position = agent.Position;
-                    // blow.Position.z += agent.GetEyeGlobalHeight();
-                    blow.BaseMagnitude = 0f;
-                    blow.WeaponRecord.FillAsMeleeBlow(null, null, -1, -1);
-                    blow.InflictedDamage = (int) Math.Abs(config.DamagePerSecond * dt);
-                    blow.SwingDirection = agent.LookDirection;
-                    blow.SwingDirection.Normalize();
-                    blow.Direction = blow.SwingDirection;
-                    blow.DamageCalculated = true;
+                    var blow = new Blow(agent.Index)
+                    {
+                        DamageType = DamageTypes.Blunt,
+                        //blow.BlowFlag |= BlowFlags.KnockDown;
+                        //blow.BlowFlag = BlowFlags.CrushThrough;
+                        BlowFlag = BlowFlags.ShrugOff,
+                        BoneIndex = agent.Monster.ThoraxLookDirectionBoneIndex,
+                        Position = agent.Position,
+                        // blow.Position.z += agent.GetEyeGlobalHeight();
+                        BaseMagnitude = 0f,
+                        WeaponRecord = new() { AffectorWeaponSlotOrMissileIndex = -1 },
+                        InflictedDamage = (int) Math.Abs(config.DamagePerSecond * dt),
+                        SwingDirection = agent.LookDirection.NormalizedCopy(),
+                        Direction = agent.LookDirection.NormalizedCopy(),
+                        DamageCalculated = true
+                    };
                     agent.RegisterBlow(blow);
                 }
 

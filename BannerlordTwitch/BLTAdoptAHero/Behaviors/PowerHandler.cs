@@ -180,13 +180,16 @@ namespace BLTAdoptAHero
 
         public bool CallHandlersForAgent(Agent agent, Action<Hero, Handlers> call, [CallerMemberName] string callerName = "")
         {
-            var hero = agent?.GetAdoptedHero();
+            var hero = agent?.IsMount == true 
+                ? agent.RiderAgent?.GetAdoptedHero() 
+                : agent?.GetAdoptedHero();
+            
             if (hero == null) return false;
             CallHandlersForHero(hero, handlers => call(hero, handlers), callerName);
             return true;
         }
 
-        public void CallHandlersForHero(Hero hero, Action<Handlers> call, [CallerMemberName] string callerName = "")
+        private void CallHandlersForHero(Hero hero, Action<Handlers> call, [CallerMemberName] string callerName = "")
         {
             SafeCall(() =>
             {
@@ -218,8 +221,12 @@ namespace BLTAdoptAHero
         public bool CallHandlersForAgentPair(Agent attackerAgent, Agent victimAgent, 
             HeroPairCallbackDelegate attackerCall, HeroPairCallbackDelegate victimCall)
         {
-            var attackerHero = attackerAgent?.GetAdoptedHero();
-            var victimHero = victimAgent?.GetAdoptedHero();
+            var attackerHero = attackerAgent?.IsMount == true 
+                ? attackerAgent.RiderAgent?.GetAdoptedHero() 
+                : attackerAgent?.GetAdoptedHero();
+            var victimHero = victimAgent?.IsMount == true 
+                ? victimAgent.RiderAgent?.GetAdoptedHero() 
+                : victimAgent?.GetAdoptedHero();
 
             if (attackerHero == null && victimHero == null)
                 return false;

@@ -753,9 +753,8 @@ namespace BLTAdoptAHero
                 Direction = agent.LookDirection,
                 DamageCalculated = true,
                 VictimBodyPart = BoneBodyPartType.Head,
+                WeaponRecord = new () { AffectorWeaponSlotOrMissileIndex = -1 }
             };
-            blow.WeaponRecord.FillAsMeleeBlow(Mission.Current.MainAgent?.WieldedWeapon.Item, 
-                Mission.Current.MainAgent?.WieldedWeapon.CurrentUsageItem, -1, -1);
             blow.Position.z += agent.GetEyeGlobalHeight();
             agent.RegisterBlow(blow);
         }

@@ -211,6 +211,8 @@ namespace BLTAdoptAHero
 
         public class RegisterBlowParams
         {
+            public bool AttackerIsMount;
+            public bool VictimIsMount;
             public Blow blow;
             public AttackCollisionData collisionData;
             public MissionWeapon attackerWeapon;
@@ -222,6 +224,8 @@ namespace BLTAdoptAHero
         {
             var param = new RegisterBlowParams
             {
+                AttackerIsMount = attackerAgent.IsMount,
+                VictimIsMount = victimAgent.IsMount,
                 blow = blow,
                 collisionData = collisionData,
                 attackerWeapon = attackerWeapon,
@@ -243,12 +247,8 @@ namespace BLTAdoptAHero
         
         private void AddMissileAux(Agent shooterAgent, ref WeaponData weaponData, WeaponStatsData[] weaponStatsData)
         {
-            var shooterHero = shooterAgent?.GetAdoptedHero();
-            if (shooterHero == null)
-                return;
-            
             var wdRef = new RefHandle<WeaponData>(weaponData);
-            powerHandler.CallHandlersForHero(shooterHero, handlers 
+            powerHandler.CallHandlersForAgent(shooterAgent, (shooterHero, handlers) 
                 => handlers.AddMissile(shooterHero, shooterAgent, wdRef, weaponStatsData));
             weaponData = wdRef.Data;
         }

@@ -6,6 +6,7 @@ using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using YamlDotNet.Serialization;
@@ -43,9 +44,10 @@ namespace BLTAdoptAHero.Powers
             int damage = (int) (blowParams.blow.InflictedDamage * ReflectPercent / 100f);
             if (damage > 0 && attackerAgent != null && attackerAgent != agent)
             {
-                var blow = new Blow(agent.Index)
+                var blow = new Blow(attackerAgent.Index)
                 {
-                    DamageType = blowParams.blow.DamageType,
+                    AttackType = attackerAgent.IsMount ? AgentAttackType.Collision : AgentAttackType.Standard,
+                    DamageType = attackerAgent.IsMount ? DamageTypes.Blunt : blowParams.blow.DamageType,
                     BoneIndex = agent.Monster.ThoraxLookDirectionBoneIndex,
                     Position = agent.Position,
                     BlowFlag = HitBehavior.AddFlags(agent, BlowFlags.None),
@@ -54,8 +56,9 @@ namespace BLTAdoptAHero.Powers
                     SwingDirection = agent.LookDirection.NormalizedCopy(),
                     Direction = agent.LookDirection,
                     DamageCalculated = true,
+                    WeaponRecord = new () { AffectorWeaponSlotOrMissileIndex = -1 },
                 };
-                blow.WeaponRecord.FillAsMeleeBlow(null, null, -1, -1);
+                // blow.WeaponRecord.FillAsMeleeBlow(null, null, -1, -1);
                 attackerAgent.RegisterBlow(blow);
                 if (ReflectedDamageIsSubtracted)
                 {

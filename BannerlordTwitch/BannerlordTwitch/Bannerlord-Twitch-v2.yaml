@@ -996,7 +996,7 @@ GlobalConfigs:
         ApplyToMount: true
         Properties:
         - Add: 0
-          ModifierPercent: 200
+          ModifierPercent: 250
           Name: MountChargeDamage
         - Add: 0
           ModifierPercent: 150
@@ -1012,7 +1012,7 @@ GlobalConfigs:
         ApplyToMount: true
         Properties:
         - Add: 0
-          ModifierPercent: 300
+          ModifierPercent: 500
           Name: MountChargeDamage
         - Add: 0
           ModifierPercent: 200
@@ -1440,11 +1440,11 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 100
         DamageType: Blunt
-        Description: 100dmg in 4m with 50% Can Dismount
+        Description: 100dmg in 4m with 15% Knock Down, 50% Can Dismount
         HitBehavior:
           DismountChance: 50
           KnockBackChancePercent: 0
-          KnockDownChancePercent: 0
+          KnockDownChancePercent: 15
           MakesRearChancePercent: 0
           ShrugOffChancePercent: 0
         MaxAgentsToDamage: 7
@@ -3257,12 +3257,12 @@ GlobalConfigs:
           - !ClassLevelRequirement
             MaxLevel: 1
             MinLevel: 1
-        - PowerID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
+        - PowerID: 347cec61-aa6d-4002-87de-47d298ca3161
           Requirements:
           - !ClassLevelRequirement
             MaxLevel: 2
             MinLevel: 2
-        - PowerID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
+        - PowerID: 4341afec-1b6e-4ee9-8a70-c83a8d1c56c6
           Requirements:
           - !ClassLevelRequirement
             MaxLevel: 3
