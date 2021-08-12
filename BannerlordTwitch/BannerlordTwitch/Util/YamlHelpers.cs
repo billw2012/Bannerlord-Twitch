@@ -5,6 +5,7 @@ using System.Reflection;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.TypeInspectors;
 
 namespace BannerlordTwitch.Util
 {
@@ -13,6 +14,21 @@ namespace BannerlordTwitch.Util
 
     public static class YamlHelpers
     {
+        private class SortedTypeInspector : TypeInspectorSkeleton
+        {
+            private readonly ITypeInspector innerTypeInspector;
+
+            public SortedTypeInspector(ITypeInspector innerTypeInspector)
+            {
+                this.innerTypeInspector = innerTypeInspector;
+            }
+
+            public override IEnumerable<IPropertyDescriptor> GetProperties(Type type, object container)
+            {
+                return innerTypeInspector.GetProperties(type, container).OrderBy(x => x.Name);
+            }
+        }
+        
         public static string Serialize(object obj) => CreateDefaultSerializer().Serialize(obj);
         public static object Deserialize(string str, Type type) => CreateDefaultDeserializer().Deserialize(str, type);
         public static string SerializeUntagged(object obj) => CreateUntaggedSerializer().Serialize(obj);
@@ -28,6 +44,7 @@ namespace BannerlordTwitch.Util
                 builder.WithTagMapping(tag, type);
             }
             return builder.ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
+                .WithTypeInspector(x => new SortedTypeInspector(x))
                 .DisableAliases()
                 .Build();
         }
@@ -41,6 +58,7 @@ namespace BannerlordTwitch.Util
         {
             var builder = new SerializerBuilder();
             return builder.ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
+                .WithTypeInspector(x => new SortedTypeInspector(x))
                 .DisableAliases()
                 .Build();
         }
