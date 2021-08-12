@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -120,10 +121,14 @@ namespace BLTBuffet
             [Description("Will target unmounted soldiers only"), PropertyOrder(3)]
             public bool TargetOnFootOnly { get; set; }
 
-            [Description("Particle effects to apply"), PropertyOrder(5)]
+            [Description("Particle effects to apply"),
+             Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
+             PropertyOrder(5)]
             public ObservableCollection<ParticleEffectDef> ParticleEffects { get; set; }
 
-            [Description("Properties to change, and how much by"), PropertyOrder(6)]
+            [Description("Properties to change, and how much by"),
+             Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
+             PropertyOrder(6)]
             public ObservableCollection<PropertyDef> Properties { get; set; }
 
             // [Description("Creates a light attached to the target"), PropertyOrder(7)]

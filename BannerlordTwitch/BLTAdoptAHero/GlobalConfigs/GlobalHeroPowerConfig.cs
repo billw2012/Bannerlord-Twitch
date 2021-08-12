@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Powers;
 using JetBrains.Annotations;
@@ -23,7 +24,8 @@ namespace BLTAdoptAHero
 
         #region User Editable
         [Description("Defined powers"), UsedImplicitly,  
-         Editor(typeof(DerivedClassCollectionEditor<HeroPowerDefBase>), typeof(DerivedClassCollectionEditor<HeroPowerDefBase>))] 
+         Editor(typeof(DerivedClassCollectionEditor<HeroPowerDefBase>), 
+             typeof(DerivedClassCollectionEditor<HeroPowerDefBase>))] 
         public ObservableCollection<HeroPowerDefBase> PowerDefs { get; set; } = new();
         
         [Description("Whether powers are disabled in a tournament"), UsedImplicitly] 

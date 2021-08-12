@@ -251,7 +251,9 @@ namespace BLTAdoptAHero
         #endregion
 
         #region Kill Streak Rewards
-        [Category("Kill Streak Rewards"), Description("Kill Streaks"), PropertyOrder(1), UsedImplicitly]
+        [Category("Kill Streak Rewards"), Description("Kill Streaks"),
+         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
+         PropertyOrder(1), UsedImplicitly]
         public ObservableCollection<KillStreakDef> KillStreaks { get; set; } = new();
 
         [Category("Kill Streak Rewards"), 
@@ -270,12 +272,16 @@ namespace BLTAdoptAHero
         #endregion
 
         #region Achievements
-        [Category("Achievements"), Description("Achievements"), PropertyOrder(1), UsedImplicitly]
+        [Category("Achievements"), Description("Achievements"),
+         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
+         PropertyOrder(1), UsedImplicitly]
         public ObservableCollection<AchievementDef> Achievements { get; set; } = new();
         #endregion
 
         #region Shouts
-        [Category("Shouts"), Description("Custom shouts"), PropertyOrder(1), UsedImplicitly]
+        [Category("Shouts"), Description("Custom shouts"),
+         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
+         PropertyOrder(1), UsedImplicitly]
         public ObservableCollection<Shout> Shouts { get; set; } = new();
 
         [Category("Shouts"), Description("Whether to include default shouts"), PropertyOrder(2), UsedImplicitly]

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Achievements;
 using JetBrains.Annotations;
@@ -24,10 +25,14 @@ namespace BLTAdoptAHero
         #endregion
         
         #region User Editable
-        [Description("Defined classes"), PropertyOrder(1), UsedImplicitly] 
+        [Description("Defined classes"),
+         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
+         PropertyOrder(1), UsedImplicitly] 
         public ObservableCollection<HeroClassDef> ClassDefs { get; set; } = new();
 
-        [Description("Requirements for class levels"), PropertyOrder(2), UsedImplicitly]
+        [Description("Requirements for class levels"),
+         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
+         PropertyOrder(2), UsedImplicitly]
         public ObservableCollection<ClassLevelRequirementsDef> ClassLevelRequirements { get; set; }
         #endregion
 

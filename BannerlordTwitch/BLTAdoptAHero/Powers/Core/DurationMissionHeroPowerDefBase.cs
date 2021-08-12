@@ -32,6 +32,7 @@ namespace BLTAdoptAHero.Powers
         public float PowerDurationSeconds { get; set; } = 30f;
 
         [Category("Power Config"), Description("Effects to apply to the agent while the power is active"), 
+         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
          PropertyOrder(1), UsedImplicitly]
         public ObservableCollection<ParticleEffectDef> Pfx { get; set; } = new();
         #endregion

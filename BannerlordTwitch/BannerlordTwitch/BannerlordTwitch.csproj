@@ -74,6 +74,9 @@
             <HintPath>..\packages\dnlib.3.3.2\lib\net45\dnlib.dll</HintPath>
             <Private>True</Private>
         </Reference>
+        <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466">
+          <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+        </Reference>
         <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, PublicKeyToken=null">
             <HintPath>..\packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
             <Private>True</Private>
@@ -318,6 +321,10 @@
         <Compile Include="Twitch\Dummy\TwitchRedirectingHttpCallHandler.cs" />
         <Compile Include="Twitch\TwitchService.Bot.cs" />
         <Compile Include="Twitch\TwitchService.cs" />
+        <Compile Include="UI\CollectionPropertyEditor.xaml.cs">
+          <DependentUpon>CollectionPropertyEditor.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="UI\DefaultCollectionEditor.cs" />
         <Compile Include="UI\DerivedClassCollectionEditor.cs" />
         <Compile Include="UI\ExpandAttribute.cs" />
         <Compile Include="UI\ParticleEffectItemSource.cs" />
@@ -410,6 +417,7 @@
         <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
+      <Page Include="UI\CollectionPropertyEditor.xaml" />
       <Page Include="UI\RangeFloatControl.xaml" />
       <Page Include="UI\RangeIntControl.xaml" />
       <Page Include="UI\SliderFloatControl.xaml" />

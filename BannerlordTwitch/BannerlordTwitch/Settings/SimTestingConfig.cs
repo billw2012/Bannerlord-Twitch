@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using BannerlordTwitch.UI;
 using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using YamlDotNet.Serialization;
@@ -20,9 +21,13 @@ namespace BannerlordTwitch
         public int IntervalMinMS { get; set; }
         [PropertyOrder(4), UsedImplicitly]
         public int IntervalMaxMS { get; set; }
-        [PropertyOrder(5), UsedImplicitly]
+        [PropertyOrder(5),
+         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
+         UsedImplicitly]
         public ObservableCollection<SimTestingItem> Init { get; set; } = new();
-        [PropertyOrder(6), UsedImplicitly]
+        [PropertyOrder(6),
+         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
+         UsedImplicitly]
         public ObservableCollection<SimTestingItem> Use { get; set; } = new();
         #endregion
 

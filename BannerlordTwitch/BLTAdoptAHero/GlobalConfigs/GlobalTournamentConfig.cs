@@ -88,6 +88,7 @@ namespace BLTAdoptAHero
         #region Balancing
         [Category("Balancing"),
          Description("Applies skill debuffers to previous tournament winners"),
+         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
          PropertyOrder(1), UsedImplicitly, Document]
         public ObservableCollection<SkillDebuffDef> PreviousWinnerDebuffs { get; set; } = new() { new() };
         #endregion

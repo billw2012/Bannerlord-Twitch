@@ -1,0 +1,171 @@
+﻿<Page x:Class="BLTConfigure.UI.ConfigurationRootPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:bltConfigure="clr-namespace:BLTConfigure"
+      xmlns:bannerlordTwitch="clr-namespace:BannerlordTwitch;assembly=BannerlordTwitch"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:ui="clr-namespace:BLTConfigure.UI"
+      xmlns:ui1="clr-namespace:BannerlordTwitch.UI;assembly=BannerlordTwitch"
+      mc:Ignorable="d"
+      Title="ConfigurationRootPage" MinHeight="400" MinWidth="400"
+      d:DataContext="{d:DesignInstance ui:ConfigurationRootPage}"
+      ShowsNavigationUI="False"
+      >
+    <Page.Resources>
+        <Style TargetType="{x:Type ui1:CollectionPropertyEditor}">
+            <EventSetter Event="OpenCollectionEditor" Handler="CollectionPropertyEditor_OpenCollectionEditor"></EventSetter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.Resources>
+                <DataTemplate x:Key="NewItemHDT" DataType="{x:Type bltConfigure:NewActionViewModel}">
+                    <Button Command="{Binding Command}"
+                            HorizontalContentAlignment="Stretch"
+                            HorizontalAlignment="Stretch" Padding="4" Margin="4">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" HorizontalAlignment="Left"
+                                       Text="{Binding Name}"
+                                       FontWeight="Bold" FontSize="16" />
+                            <TextBlock Grid.Row="0" HorizontalAlignment="Right"
+                                       Text="{Binding Module}"
+                                       FontWeight="Bold" FontSize="12" Foreground="DimGray" />
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Stretch"
+                                       Text="{Binding Description}"
+                                       TextWrapping="Wrap" />
+                        </Grid>
+                    </Button>
+                </DataTemplate>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ListBox Grid.Row="0"
+                     SelectionChanged="Actions_OnSelectionChanged"
+                     SelectionMode="Single"
+                     HorizontalContentAlignment="Stretch"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     x:Name="ActionsListBox"
+                     ItemsSource="{Binding Model.ActionFilterView}">
+                <ListBox.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock FontWeight="Bold"
+                                           FontSize="18"
+                                           Text="{Binding Name}"
+                                           Foreground="Indigo"
+                                           Background="LightGray"
+                                           Margin="0 10 0 0"
+                                           Padding="4 2 2 2" />
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ListBox.GroupStyle>
+                <ListBox.Resources>
+                    <bltConfigure:BoolToVisibilityConverter
+                        x:Key="BoolToHiddenConverter"
+                        TrueValue="Visible" FalseValue="Hidden" />
+                    <bltConfigure:BoolToVisibilityConverter
+                        x:Key="BoolToCollapsedConverter"
+                        TrueValue="Visible" FalseValue="Collapsed" />
+                    <bltConfigure:BoolToVisibilityConverter
+                        x:Key="BoolToCollapsedConverterInverted"
+                        TrueValue="Collapsed" FalseValue="Visible" />
+                    <DataTemplate DataType="{x:Type bannerlordTwitch:GlobalConfig}">
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type bannerlordTwitch:ActionBase}">
+                        <DockPanel LastChildFill="True" HorizontalAlignment="Stretch">
+                            <fa:ImageAwesome Icon="Check"
+                                             Visibility="{Binding Enabled,
+                                            Converter={StaticResource BoolToHiddenConverter}}"
+                                             VerticalAlignment="Center"
+                                             ToolTip="Enabled"
+                                             Width="16"
+                                             Height="16"
+                                             Margin="4"
+                                             DockPanel.Dock="Left" />
+                            <fa:ImageAwesome Icon="WindowMaximize"
+                                             Visibility="{Binding RespondInOverlay, 
+                                            Converter={StaticResource BoolToHiddenConverter}}"
+                                             VerticalAlignment="Center"
+                                             ToolTip="Responds in BLT Overlay"
+                                             Width="16"
+                                             Height="16"
+                                             Margin="4"
+                                             DockPanel.Dock="Right" />
+                            <fa:ImageAwesome Icon="Twitch"
+                                             Visibility="{Binding RespondInTwitch,
+                                            Converter={StaticResource BoolToHiddenConverter}}"
+                                             VerticalAlignment="Center"
+                                             ToolTip="Responds in Twitch Chat"
+                                             Width="16"
+                                             Height="16"
+                                             Margin="4"
+                                             DockPanel.Dock="Right" />
+                            <TextBlock Text="{Binding}"
+                                       Visibility="{Binding Enabled, 
+                                    Converter={StaticResource BoolToCollapsedConverter}}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Stretch"
+                                       TextTrimming="CharacterEllipsis" />
+                            <TextBlock Text="{Binding}"
+                                       Foreground="Gray"
+                                       Visibility="{Binding Enabled, 
+                                    Converter={StaticResource BoolToCollapsedConverterInverted}}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Stretch" />
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.Resources>
+            </ListBox>
+            <DockPanel Grid.Row="1">
+                <Button HorizontalAlignment="Right" DockPanel.Dock="Top" Click="DeleteAction_OnClick"
+                        Content="Delete Selected" />
+                <xctk:DropDownButton Name="NewCommandDropDown" Content="New Command" HorizontalAlignment="Left"
+                                     DockPanel.Dock="Left">
+                    <xctk:DropDownButton.DropDownContent>
+                        <ItemsControl ItemsSource="{Binding CommandHandlersViewModel}"
+                                      MaxWidth="300"
+                                      ItemTemplate="{StaticResource NewItemHDT}"
+                                      Background="Transparent" />
+                    </xctk:DropDownButton.DropDownContent>
+                </xctk:DropDownButton>
+                <xctk:DropDownButton Name="NewRewardDropDown" Content="New Reward" HorizontalAlignment="Left"
+                                     DockPanel.Dock="Left">
+                    <xctk:DropDownButton.DropDownContent>
+                        <ItemsControl ItemsSource="{Binding RewardHandlersViewModel}"
+                                      MaxWidth="300"
+                                      ItemTemplate="{StaticResource NewItemHDT}"
+                                      Background="Transparent" />
+                    </xctk:DropDownButton.DropDownContent>
+                </xctk:DropDownButton>
+            </DockPanel>
+        </Grid>
+        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+        <xctk:PropertyGrid
+            Grid.Column="2"
+            x:Name="PropertyGrid"
+            PropertyValueChanged="PropertyGrid_OnPropertyValueChanged">
+            <xctk:PropertyGrid.CategoryGroupHeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" Foreground="Black" />
+                </DataTemplate>
+            </xctk:PropertyGrid.CategoryGroupHeaderTemplate>
+        </xctk:PropertyGrid>
+    </Grid>
+</Page>

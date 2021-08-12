@@ -25,6 +25,7 @@
                     xmlns:helpers="clr-namespace:BannerlordTwitch.Helpers;assembly=BannerlordTwitch"
                     xmlns:bltConfigure="clr-namespace:BLTConfigure"
                     xmlns:powers="clr-namespace:BLTAdoptAHero.Powers;assembly=BLTAdoptAHero"
+                    xmlns:ui="clr-namespace:BannerlordTwitch.UI;assembly=BannerlordTwitch"
                     x:Class="BLTConfigure.UI.Styles">
 
         

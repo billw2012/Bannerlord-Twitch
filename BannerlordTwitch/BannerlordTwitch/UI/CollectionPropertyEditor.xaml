@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="BannerlordTwitch.UI.CollectionPropertyEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ui="clr-namespace:BannerlordTwitch.UI"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             mc:Ignorable="d"
+             d:DesignHeight="30" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                      HorizontalScrollBarVisibility="Disabled" MaxHeight="250">
+            <ItemsControl ItemsSource="{Binding ItemsSource, 
+                    RelativeSource={RelativeSource Mode=FindAncestor, 
+                    AncestorType=ui:CollectionPropertyEditor}}"/>
+        </ScrollViewer>
+        <Button Grid.Column="1" Click="EditButton_OnClick" Width="24">
+            <fa:ImageAwesome Icon="Edit" Margin="1" Height="16" Width="16" />
+        </Button>
+    </Grid>
+</UserControl>

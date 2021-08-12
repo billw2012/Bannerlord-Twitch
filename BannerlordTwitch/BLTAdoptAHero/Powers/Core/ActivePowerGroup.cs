@@ -6,6 +6,7 @@ using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -36,7 +37,8 @@ namespace BLTAdoptAHero.Powers
         [PropertyOrder(2), 
          Description("The various effects in the power. These can also have customized unlock requirements, so you " +
                      "can have classes that get stronger (or weaker!) over time (or by any other measure)."), 
-          UsedImplicitly]
+         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
+         UsedImplicitly]
         public ObservableCollection<ActivePowerGroupItem> Powers { get; set; } = new();
 
         [PropertyOrder(3), Description("Particles/sound effects to play when this power group is activated"),

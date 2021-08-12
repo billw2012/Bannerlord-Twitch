@@ -27,10 +27,12 @@ namespace BannerlordTwitch
         public bool ApplyToMount { get; set; }
 
         [Description("Properties to change, and how much by"), 
+         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
          PropertyOrder(3), UsedImplicitly]
         public ObservableCollection<PropertyModifierDef> Properties { get; set; } = new();
         
         [Description("Skills to change, and how much by (these aren't compatible with Apply To Mount)"), 
+         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
          PropertyOrder(3), UsedImplicitly]
         public ObservableCollection<SkillModifierDef> Skills { get; set; } = new();
         
