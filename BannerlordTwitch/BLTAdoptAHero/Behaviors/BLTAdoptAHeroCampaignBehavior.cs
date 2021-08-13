@@ -44,6 +44,7 @@ namespace BLTAdoptAHero
             public Guid EquipmentClassID { get; set; }
             public Guid ClassID { get; set; }
             public string Owner { get; set; }
+            public int Iteration { get; set; }
             public bool IsRetiredOrDead { get; set; }
             [UsedImplicitly]
             public AchievementStatsData AchievementStats { get; set; } = new();
@@ -129,7 +130,7 @@ namespace BLTAdoptAHero
                 }
 
                 // Retire up any dead heroes (do this last to ensure all other stuff related to this hero is updated, in-case retirement interferes with it)
-                foreach (var (hero, data) in heroData.Where(h => h.Key.IsDead && !h.Value.IsRetiredOrDead))
+                foreach (var (hero, _) in heroData.Where(h => h.Key.IsDead && !h.Value.IsRetiredOrDead))
                 {
                     RetireHero(hero);
                 }
@@ -314,6 +315,7 @@ namespace BLTAdoptAHero
             var hd = GetHeroData(newHero);
             hd.Owner = userName;
             hd.IsRetiredOrDead = false;
+            hd.Iteration = GetAncestors(userName).Max(a => (int?)a.Iteration) ?? 0;
             SetHeroAdoptedName(newHero, userName);
         }
 
@@ -346,14 +348,9 @@ namespace BLTAdoptAHero
             var data = GetHeroData(hero, suppressAutoRetire: true);
             if (data.IsRetiredOrDead) return;
             
-            string heroName = hero.FirstName?.Raw().ToLower();
-            int count = heroData.Count(h 
-                => h.Value.IsRetiredOrDead &&
-                   (h.Key.FirstName?.Raw().ToLower() == heroName || h.Value.Owner?.ToLower() == heroName));
-
             string desc = hero.IsDead ? "deceased" : "retired";
             var oldName = hero.Name;
-            HeroHelpers.SetHeroName(hero, new (hero.FirstName + $" {ToRoman(count + 1)} ({desc})"));
+            HeroHelpers.SetHeroName(hero, new (hero.FirstName + $" {ToRoman(data.Iteration + 1)} ({desc})"));
             Campaign.Current.EncyclopediaManager.BookmarksTracker.RemoveBookmarkFromItem(hero);
             
             Log.LogFeedEvent($"{oldName} is {desc}!");
@@ -387,19 +384,26 @@ namespace BLTAdoptAHero
 
         public int InheritGold(Hero inheritor, float amount)
         {
-            string inheritorName = inheritor.FirstName?.Raw();
-            var ancestors = heroData.Where(h => h.Key != inheritor 
-                                                && h.Key.FirstName?.Raw() == inheritorName
-                                                ).ToList();
-            int inheritance = (int) (ancestors.Sum(a => a.Value.SpentGold + a.Value.Gold) * amount);
+            var ancestors = GetAncestors(inheritor.FirstName.ToString());
+            int inheritance = (int) (ancestors.Sum(a => a.SpentGold + a.Gold) * amount);
             ChangeHeroGold(inheritor, inheritance);
-            foreach (var (_, value) in ancestors)
+            foreach (var data in ancestors)
             {
-                value.SpentGold = 0;
-                value.Gold = 0;
+                data.SpentGold = 0;
+                data.Gold = 0;
             }
             return inheritance;
         }
+
+        private IEnumerable<HeroData> GetAncestors(string name)
+        {
+            var ancestors = heroData
+                .Where(h => h.Value.IsRetiredOrDead && h.Key.FirstName?.Raw() == name)
+                .Select(kv => kv.Value)
+                .OrderBy(d => d.Iteration);
+            return ancestors;
+        }
+
         #endregion
 
         #region Stats and achievements
