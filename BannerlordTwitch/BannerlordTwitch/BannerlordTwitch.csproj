@@ -296,9 +296,6 @@
         <Compile Include="SaveSystem\MBGUIDConverter.cs" />
         <Compile Include="SaveSystem\MBObjectBaseConverter.cs" />
         <Compile Include="SaveSystem\ScopedJsonSync.cs" />
-        <Compile Include="SaveSystem\TaleWorldsContractResolver.cs" />
-        <Compile Include="SaveSystem\TaleWorldsContractResolver2.cs" />
-        <Compile Include="SaveSystem\TaleWorldsContractResolverBase.cs" />
         <Compile Include="BLTModule.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Settings\ActionBase.cs" />

@@ -91,11 +91,8 @@ namespace BLTAdoptAHero
 
         private class TournamentQueueEntrySavable
         {
-            [SaveableProperty(0)]
             public int HeroIndex { get; set; }
-            [SaveableProperty(1)]
             public bool IsSub { get; set; }
-            [SaveableProperty(2)]
             public int EntryFee { get; set; }
         }
 

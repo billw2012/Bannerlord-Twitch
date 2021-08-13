@@ -35,13 +35,10 @@ namespace BLTAdoptAHero.Achievements
             TotalTournamentFinalWins,
         }
 
-        [SaveableProperty(0)]
         public Dictionary<Statistic, int> TotalStats { get; set; } = new();
 
-        [SaveableProperty(1)]
         public Dictionary<(Guid, Statistic), int> ClassStats { get; set; } = new();
 
-        [SaveableProperty(2)]
         public List<Guid> Achievements { get; set; } = new();
 
         // Update class and total stats together

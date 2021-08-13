@@ -32,50 +32,30 @@ namespace BLTAdoptAHero
         {
             public class RetinueData
             {
-                [SaveableProperty(0)]
                 public CharacterObject TroopType { get; set; }
-                [SaveableProperty(1)]
                 public int Level { get; set; }
-                [SaveableProperty(2)]
                 public int SavedTroopIndex { get; set; }
             }
-
-            [SaveableProperty(0)]
             public int Gold { get; set; }
-
-            [SaveableProperty(1)]
+            [UsedImplicitly]
             public List<RetinueData> Retinue { get; set; } = new();
-
-            [SaveableProperty(2)]
             public int SpentGold { get; set; }
-
-            [SaveableProperty(3)]
             public int EquipmentTier { get; set; } = -2;
-
-            [SaveableProperty(4)]
             public Guid EquipmentClassID { get; set; }
-
-            [SaveableProperty(5)]
             public Guid ClassID { get; set; }
-
-            [SaveableProperty(6)]
             public string Owner { get; set; }
-
-            [SaveableProperty(7)]
             public bool IsRetiredOrDead { get; set; }
-
-            [SaveableProperty(8)]
+            [UsedImplicitly]
             public AchievementStatsData AchievementStats { get; set; } = new();
             
             public class SavedEquipment
             {
-                [SaveableProperty(1), UsedImplicitly]
                 public ItemObject Item { get; set; }
-                [SaveableProperty(2), UsedImplicitly]
+                [UsedImplicitly]
                 public string ItemModifierId { get; set; }
-                [SaveableProperty(3), UsedImplicitly]
                 public int ItemSaveIndex { get; set; }
                 
+                [UsedImplicitly]
                 public SavedEquipment() {}
             
                 public SavedEquipment(EquipmentElement element)
@@ -88,13 +68,11 @@ namespace BLTAdoptAHero
                     => new(m.Item, MBObjectManager.Instance.GetObject<ItemModifier>(m.ItemModifierId));
             }
 
-            [SaveableProperty(9), UsedImplicitly]
+            [UsedImplicitly]
             public List<SavedEquipment> SavedCustomItems { get; set; } = new();
             
+            [JsonIgnore]
             public List<EquipmentElement> CustomItems { get; set; } = new();
-            
-            // [SaveableProperty(7)]
-            // public string OriginalName { get; set; }
 
             public void PreSave()
             {

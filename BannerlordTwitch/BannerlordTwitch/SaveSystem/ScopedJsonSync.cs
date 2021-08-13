@@ -21,11 +21,8 @@ namespace BannerlordTwitch.SaveSystem
             mboReferences = new MBObjectBaseConverter(dataStore, key);
             settings = new()
             {
-                //ContractResolver = new TaleWorldsContractResolver(),
                 Converters = { new DictionaryToArrayConverter(), new MBGUIDConverter(), mboReferences },
                 TypeNameHandling = TypeNameHandling.Auto,
-                //ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
-                //PreserveReferencesHandling = PreserveReferencesHandling.Objects
             };
         }
 

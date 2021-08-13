@@ -17,33 +17,31 @@ namespace BLTAdoptAHero
         
         private class ItemModifierData
         {
-            [SaveableProperty(0), UsedImplicitly]
+            [UsedImplicitly]
             public string Name { get; set; }
-            [SaveableProperty(1), UsedImplicitly]
+            [UsedImplicitly]
             public string StringId { get; set; }
-            
-            [SaveableProperty(2), UsedImplicitly]
+            [UsedImplicitly]
             public int Damage { get; set; }
-            [SaveableProperty(3), UsedImplicitly]
+            [UsedImplicitly]
             public int Speed { get; set; }
-            [SaveableProperty(4), UsedImplicitly]
+            [UsedImplicitly]
             public int MissileSpeed { get; set; }
-            [SaveableProperty(5), UsedImplicitly]
+            [UsedImplicitly]
             public int Armor { get; set; }
-            [SaveableProperty(6), UsedImplicitly]
+            [UsedImplicitly]
             public short HitPoints { get; set; }
-            [SaveableProperty(7), UsedImplicitly]
+            [UsedImplicitly]
             public short StackCount { get; set; }
-            [SaveableProperty(8), UsedImplicitly]
+            [UsedImplicitly]
             public float MountSpeed { get; set; }
-            [SaveableProperty(9), UsedImplicitly]
+            [UsedImplicitly]
             public float Maneuver { get; set; }
-            [SaveableProperty(10), UsedImplicitly]
+            [UsedImplicitly]
             public float ChargeDamage { get; set; }
-            [SaveableProperty(11), UsedImplicitly]
+            [UsedImplicitly]
             public float MountHitPoints { get; set; }
-            
-            [SaveableProperty(12), UsedImplicitly]
+            [UsedImplicitly]
             public string CustomName { get; set; }
             
             public void Apply(ItemModifier toModifier)
