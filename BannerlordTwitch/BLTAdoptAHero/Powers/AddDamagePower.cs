@@ -145,7 +145,7 @@ namespace BLTAdoptAHero.Powers
             handlers.OnPostDoMeleeHit += OnPostDoMeleeHit;
         }
 
-        private void OnDecideMissileWeaponFlags(Hero attackerHero, Agent attackerAgent, 
+        private void OnDecideMissileWeaponFlags(Agent attackerAgent, 
 	        BLTAgentApplyDamageModel.DecideMissileWeaponFlagsParams args)
         {
 	        if (CutThroughChancePercent != 0 && MBRandom.RandomFloat * 100f < CutThroughChancePercent)
@@ -155,7 +155,7 @@ namespace BLTAdoptAHero.Powers
 	        }
         }
 
-        private void OnDecideCrushedThroughDelegate(Hero attackerHero, Agent attackerAgent, Hero victimHero, 
+        private void OnDecideCrushedThroughDelegate(Agent attackerAgent, 
 	        Agent victimAgent, BLTAgentApplyDamageModel.DecideCrushedThroughParams meleeHitParams)
         {
 	        if (CutThroughChancePercent != 0 && MBRandom.RandomFloat * 100f < UnblockableChancePercent)
@@ -164,10 +164,10 @@ namespace BLTAdoptAHero.Powers
 	        }
         }
 
-        private void OnDoMissileHit(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, 
+        private void OnDoMissileHit(Agent attackerAgent, Agent victimAgent, 
 	        BLTHeroPowersMissionBehavior.MissileHitParams missileHitParams)
         {
-	        if (IgnoreDamageType(victimHero, victimAgent, missileHitParams.collisionData))
+	        if (IgnoreDamageType(victimAgent, missileHitParams.collisionData))
 	        {
 		        return;
 	        }
@@ -184,10 +184,10 @@ namespace BLTAdoptAHero.Powers
             // }
         }
 
-        private void OnDoMeleeHit(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, 
+        private void OnDoMeleeHit(Agent attackerAgent, Agent victimAgent, 
 	        BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams)
         {
-	        if (IgnoreDamageType(victimHero, victimAgent, meleeHitParams.collisionData))
+	        if (IgnoreDamageType(victimAgent, meleeHitParams.collisionData))
 	        {
 		        return;
 	        }
@@ -196,10 +196,10 @@ namespace BLTAdoptAHero.Powers
 	        ApplyShatterShieldChance(victimAgent, ref meleeHitParams.collisionData, removeShield: false);
         }
         
-        private void OnPostDoMeleeHit(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, 
+        private void OnPostDoMeleeHit(Agent attackerAgent, Agent victimAgent, 
 	        BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams)
         {
-	        if (IgnoreDamageType(victimHero, victimAgent, meleeHitParams.collisionData))
+	        if (IgnoreDamageType(victimAgent, meleeHitParams.collisionData))
 	        {
 		        return;
 	        }
@@ -241,7 +241,7 @@ namespace BLTAdoptAHero.Powers
 	        }
         }
 
-        private void OnAddMissile(Hero shooterHero, Agent shooterAgent, RefHandle<WeaponData> weaponData, 
+        private void OnAddMissile(Agent shooterAgent, RefHandle<WeaponData> weaponData, 
 	        WeaponStatsData[] weaponStatsData)
         {
 	        if (!string.IsNullOrEmpty(MissileTrailParticleEffect))
@@ -255,11 +255,11 @@ namespace BLTAdoptAHero.Powers
         }
 
 
-        private bool IgnoreDamageType(Hero victimHero, Agent victimAgent, AttackCollisionData attackCollisionData)
+        private bool IgnoreDamageType(Agent victimAgent, AttackCollisionData attackCollisionData)
         {
             return victimAgent == null 
                    || attackCollisionData.IsFallDamage
-                   || !ApplyAgainstAdoptedHeroes && victimHero != null
+                   || !ApplyAgainstAdoptedHeroes && victimAgent.IsAdopted()
                    || !ApplyAgainstHeroes && victimAgent.IsHero
                    || !ApplyAgainstNonHeroes && !victimAgent.IsHero
                    || !ApplyAgainstPlayer && victimAgent == Agent.Main
@@ -268,10 +268,10 @@ namespace BLTAdoptAHero.Powers
                    || !Charge && attackCollisionData.IsHorseCharge;
         }
 
-        private void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, 
+        private void OnDoDamage(Agent agent, Agent victimAgent, 
             BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams)
         {
-            if (IgnoreDamageType(victimHero, victimAgent, blowParams.collisionData))
+            if (IgnoreDamageType(victimAgent, blowParams.collisionData))
             {
                 return;
             }
@@ -320,7 +320,7 @@ namespace BLTAdoptAHero.Powers
                 removeHitBehavior.RemoveFlags(victimAgent, blowParams.blow.BlowFlag));
         }
 
-        private void OnDecideWeaponCollisionReaction(Hero attackerHero, Agent attackerAgent, Hero victimHero, 
+        private void OnDecideWeaponCollisionReaction(Agent attackerAgent, 
 	        Agent victimAgent, 
 	        BLTHeroPowersMissionBehavior.DecideWeaponCollisionReactionParams decideWeaponCollisionReactionParams)
         {
@@ -334,7 +334,7 @@ namespace BLTAdoptAHero.Powers
 	        }
         }
 
-        private void OnMissileCollisionReaction(Mission.MissileCollisionReaction collisionReaction, Hero attackerHero,
+        private void OnMissileCollisionReaction(Mission.MissileCollisionReaction collisionReaction,
 	        Agent attackerAgent, Agent attachedAgent, sbyte attachedBoneIndex, bool attachedToShield, 
 	        MatrixFrame attachLocalFrame, Mission.Missile missile)
         {

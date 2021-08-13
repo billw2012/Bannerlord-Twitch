@@ -51,7 +51,7 @@ namespace BLTAdoptAHero
         }
 
         public override void OnAgentBuild(Agent agent, Banner banner) 
-            => powerHandler.CallHandlersForAgent(agent, (hero, handlers) => handlers.AgentBuild(hero, agent));
+            => powerHandler.CallHandlersForAgent(agent, handlers => handlers.AgentBuild(agent));
 
         // public override void OnMissileHit(Agent attacker, Agent victim, bool isCanceled)
         //     => CallHandlersForAgent(agent, (hero, handlers) => handlers.OnMissileHit(attacker, victim, isCanceled));
@@ -60,13 +60,13 @@ namespace BLTAdoptAHero
             Agent attackerAgent, Agent attachedAgent, sbyte attachedBoneIndex,
             bool attachedToShield,
             MatrixFrame attachLocalFrame, Mission.Missile missile)
-            => powerHandler.CallHandlersForAgent(attackerAgent, (hero, handlers) 
-                => handlers.MissileCollisionReaction(collisionReaction, hero, attackerAgent, attachedAgent, 
+            => powerHandler.CallHandlersForAgent(attackerAgent, handlers
+                => handlers.MissileCollisionReaction(collisionReaction, attackerAgent, attachedAgent, 
                     attachedBoneIndex, attachedToShield, attachLocalFrame, missile));
 
         protected override void OnAgentControllerChanged(Agent agent)
             => powerHandler.CallHandlersForAgent(agent, 
-                (hero, handlers) => handlers.AgentControllerChanged(hero, agent));
+                handlers => handlers.AgentControllerChanged(agent));
 
         public class DecideWeaponCollisionReactionParams
         {
@@ -91,9 +91,7 @@ namespace BLTAdoptAHero
             };
 
             if (!powerHandler.CallHandlersForAgentPair(attackerAgent, victimAgent, 
-                (handlers, attackerHero, victimHero) => handlers.DecideWeaponCollisionReaction(
-                    attackerHero, attackerAgent, victimHero, victimAgent, param),
-                (_, _, _) => { })) 
+                handlers => handlers.DecideWeaponCollisionReaction(attackerAgent, victimAgent, param))) 
                 return;
             
             colReaction = param.colReaction;
@@ -122,10 +120,8 @@ namespace BLTAdoptAHero
             };
 
             if (!powerHandler.CallHandlersForAgentPair(attackerAgent, victimAgent, 
-                (handlers, attackerHero, victimHero) => handlers.DoMeleeHit(
-                    attackerHero, attackerAgent, victimHero, victimAgent, param),
-                (handlers, attackerHero, victimHero) => handlers.TakeMeleeHit(
-                    victimHero, victimAgent, attackerHero, attackerAgent, param))) 
+                handlers => handlers.DoMeleeHit(attackerAgent, victimAgent, param),
+                handlers => handlers.TakeMeleeHit(victimAgent, attackerAgent, param))) 
                 return;
             
             collisionData = param.collisionData;
@@ -149,10 +145,8 @@ namespace BLTAdoptAHero
             };
 
             if (!powerHandler.CallHandlersForAgentPair(attackerAgent, victimAgent, 
-                (handlers, attackerHero, victimHero) => handlers.PostDoMeleeHit(
-                    attackerHero, attackerAgent, victimHero, victimAgent, param),
-                (handlers, attackerHero, victimHero) => handlers.PostTakeMeleeHit(
-                    victimHero, victimAgent, attackerHero, attackerAgent, param))) 
+                handlers => handlers.PostDoMeleeHit(attackerAgent, victimAgent, param),
+                handlers => handlers.PostTakeMeleeHit(victimAgent, attackerAgent, param))) 
                 return;
             
             collisionData = param.collisionData;
@@ -175,10 +169,8 @@ namespace BLTAdoptAHero
                 collisionData = collisionData,
             };
             if (!powerHandler.CallHandlersForAgentPair(attackerAgent, victimAgent, 
-                (handlers, attackerHero, victimHero) => handlers.DoMissileHit(
-                    attackerHero, attackerAgent, victimHero, victimAgent, param),
-                (handlers, attackerHero, victimHero) => handlers.TakeMissileHit(
-                    victimHero, victimAgent, attackerHero, attackerAgent, param))) 
+                handlers => handlers.DoMissileHit(attackerAgent, victimAgent, param),
+                handlers => handlers.TakeMissileHit(victimAgent, attackerAgent, param))) 
                 return;
             
             collisionData = param.collisionData;
@@ -200,9 +192,9 @@ namespace BLTAdoptAHero
         //     var acdRef = new RefHandle<AttackCollisionData>(attackCollisionData);
         //
         //     if (CallHandlersForAgentPair(attackerAgent, victimAgent, 
-        //         (handlers, attackerHero, victimHero) => handlers.DoDamage(attackerHero, attackerAgent, victimHero,
+        //         handlers=> handlers.DoDamage(attackerAgent, victimHero,
         // victimAgent, acdRef),
-        //         (handlers, attackerHero, victimHero) => handlers.TakeDamage(victimHero, victimAgent, attackerHero,
+        //         handlers=> handlers.TakeDamage(victimAgent, attackerHero,
         // attackerAgent, acdRef))) 
         //         return;
         //
@@ -233,10 +225,8 @@ namespace BLTAdoptAHero
             };
 
             if (!powerHandler.CallHandlersForAgentPair(attackerAgent, victimAgent, 
-                (handlers, attackerHero, victimHero) 
-                    => handlers.DoDamage(attackerHero, attackerAgent, victimHero, victimAgent, param),
-                (handlers, attackerHero, victimHero) 
-                    => handlers.TakeDamage(victimHero, victimAgent, attackerHero, attackerAgent, param))) 
+                handlers => handlers.DoDamage(attackerAgent, victimAgent, param),
+                handlers => handlers.TakeDamage(victimAgent, attackerAgent, param))) 
                 return;
 
             blow = param.blow;
@@ -248,8 +238,8 @@ namespace BLTAdoptAHero
         private void AddMissileAux(Agent shooterAgent, ref WeaponData weaponData, WeaponStatsData[] weaponStatsData)
         {
             var wdRef = new RefHandle<WeaponData>(weaponData);
-            powerHandler.CallHandlersForAgent(shooterAgent, (shooterHero, handlers) 
-                => handlers.AddMissile(shooterHero, shooterAgent, wdRef, weaponStatsData));
+            powerHandler.CallHandlersForAgent(shooterAgent, 
+                handlers => handlers.AddMissile(shooterAgent, wdRef, weaponStatsData));
             weaponData = wdRef.Data;
         }
 
@@ -257,15 +247,13 @@ namespace BLTAdoptAHero
             KillingBlow blow)
         {
             powerHandler.CallHandlersForAgentPair(attackerAgent, victimAgent,
-                (handlers, attackerHero, victimHero)
-                    => handlers.GotAKill(attackerHero, attackerAgent, victimHero, victimAgent, agentState, blow),
-                (handlers, attackerHero, victimHero)
-                    => handlers.GotKilled(victimHero, victimAgent, attackerHero, attackerAgent, agentState, blow));
+                handlers => handlers.GotAKill(attackerAgent, victimAgent, agentState, blow),
+                handlers => handlers.GotKilled(victimAgent, attackerAgent, agentState, blow));
         }
 
         protected override void OnEndMission()
         {
-            powerHandler.CallHandlersForAll((hero, handlers) => handlers.MissionOver(hero));
+            powerHandler.CallHandlersForAll(handlers => handlers.MissionOver());
         }
 
         private const float SlowTickDuration = 2;
@@ -277,9 +265,9 @@ namespace BLTAdoptAHero
             if (slowTick > SlowTickDuration)
             {
                 slowTick -= SlowTickDuration;
-                powerHandler.CallHandlersForAll((hero, handlers) => handlers.SlowTick(hero, SlowTickDuration));
+                powerHandler.CallHandlersForAll(handlers => handlers.SlowTick(SlowTickDuration));
             }
-            powerHandler.CallHandlersForAll((hero, handlers) => handlers.MissionTick(hero, dt));
+            powerHandler.CallHandlersForAll(handlers => handlers.MissionTick(dt));
         }
 
         // public override void OnAgentMount(Agent agent)

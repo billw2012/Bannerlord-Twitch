@@ -39,7 +39,7 @@ namespace BLTAdoptAHero.Powers
             Agent agent = null, DeactivationHandler deactivationHandler = null)
             => handlers.OnTakeDamage += OnTakeDamage;
         
-        private void OnTakeDamage(Hero hero, Agent agent, Hero attackerHero, Agent attackerAgent, BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams) 
+        private void OnTakeDamage(Agent agent, Agent attackerAgent, BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams) 
         {
             int damage = (int) (blowParams.blow.InflictedDamage * ReflectPercent / 100f);
             if (damage > 0 && attackerAgent != null && attackerAgent != agent)

@@ -49,11 +49,10 @@ namespace BLTAdoptAHero.Powers
             Agent agent = null, DeactivationHandler deactivationHandler = null)
             => handlers.OnTakeDamage += OnTakeDamage;
         
-        private void OnTakeDamage(Hero hero, Agent agent, Hero attackerHero, Agent attackerAgent,
-            BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams)
+        private void OnTakeDamage(Agent agent, Agent attackerAgent, BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams)
         {
-            AddDamagePower.ApplyDamageEffects(agent, blowParams, ArmorToIgnorePercent, DamageModifierPercent, DamageToAdd, AddHitBehavior,
-                RemoveHitBehavior);
+            AddDamagePower.ApplyDamageEffects(agent, blowParams, ArmorToIgnorePercent, DamageModifierPercent, 
+                DamageToAdd, AddHitBehavior, RemoveHitBehavior);
         }
         #endregion
 

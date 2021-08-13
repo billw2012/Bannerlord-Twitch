@@ -76,7 +76,7 @@ namespace BLTAdoptAHero.Powers
             BLTHeroPowersMissionBehavior.PowerHandler.ConfigureHandlers(hero, this, handlers =>
             {
                 var deactivationHandler = new DeactivationHandler();
-                handlers.OnSlowTick += (_, _) =>
+                handlers.OnSlowTick += _ =>
                 {
                     if (MBCommon.GetTime(MBCommon.TimeType.Mission) > expiry[hero])
                     {
@@ -86,7 +86,7 @@ namespace BLTAdoptAHero.Powers
                         deactivationHandler.Deactivate(hero);
                     }
                 };
-                handlers.OnGotKilled += (_, _, _, _, _, _) =>
+                handlers.OnGotKilled += (_, _, _, _) =>
                 {
                     // Expire immediately
                     BLTHeroPowersMissionBehavior.PowerHandler.ClearHandlers(hero, this);
@@ -95,7 +95,7 @@ namespace BLTAdoptAHero.Powers
                     expiryCallback();
                     deactivationHandler.Deactivate(hero);
                 };
-                handlers.OnMissionOver += _ =>
+                handlers.OnMissionOver += () =>
                 {
                     // It will be called multiple times, but its not costly
                     expiry.Clear();

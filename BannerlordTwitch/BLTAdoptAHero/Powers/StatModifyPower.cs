@@ -59,7 +59,7 @@ namespace BLTAdoptAHero.Powers
         #region IHeroPowerPassive
         void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers)
         {
-            handlers.OnAgentBuild += (_, agent) => Activate(hero, agent);
+            handlers.OnAgentBuild += agent => Activate(hero, agent);
         }
         #endregion
     }

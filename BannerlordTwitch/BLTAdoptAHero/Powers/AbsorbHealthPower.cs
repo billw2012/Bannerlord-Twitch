@@ -39,7 +39,7 @@ namespace BLTAdoptAHero.Powers
             Agent agent = null, DeactivationHandler deactivationHandler = null) 
             => handlers.OnDoDamage += OnDoDamage;
 
-        private void OnDoDamage(Hero hero, Agent agent, Hero victimHero, Agent victimAgent, 
+        private void OnDoDamage(Agent agent, Agent victimAgent, 
             BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams)
         {
             agent.Health = Math.Min(agent.HealthLimit, 

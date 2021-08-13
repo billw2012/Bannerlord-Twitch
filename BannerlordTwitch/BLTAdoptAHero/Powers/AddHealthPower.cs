@@ -30,7 +30,7 @@ namespace BLTAdoptAHero.Powers
         #endregion
 
         #region Private Implementation
-        private void OnAgentBuild(Hero hero, Agent agent)
+        private void OnAgentBuild(Agent agent)
         {
             agent.BaseHealthLimit *= HealthModifierPercent / 100f;
             agent.HealthLimit *= HealthModifierPercent / 100f;

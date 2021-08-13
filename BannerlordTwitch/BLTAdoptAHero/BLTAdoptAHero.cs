@@ -209,7 +209,7 @@ namespace BLTAdoptAHero
             };
 
             if (BLTHeroPowersMissionBehavior.PowerHandler?.CallHandlersForAgent(attackerAgent,
-                (attackerHero, handlers) => handlers.DecideMissileWeaponFlags(attackerHero, attackerAgent, args)
+                handlers => handlers.DecideMissileWeaponFlags(attackerAgent, args)
                 ) == true)
             {
                 missileWeaponFlags = args.missileWeaponFlags;
@@ -281,11 +281,7 @@ namespace BLTAdoptAHero
             };
 
             BLTHeroPowersMissionBehavior.PowerHandler?.CallHandlersForAgentPair(attackerAgent, defenderAgent,
-                (handlers, attackerHero, defenderHero) =>
-                {
-                    handlers.DecideCrushedThrough(attackerHero, attackerAgent, defenderHero, defenderAgent, args);
-                }, 
-                (_, _, _) => { });
+                handlers => handlers.DecideCrushedThrough(attackerAgent, defenderAgent, args));
 
             return args.crushThrough;
         }
