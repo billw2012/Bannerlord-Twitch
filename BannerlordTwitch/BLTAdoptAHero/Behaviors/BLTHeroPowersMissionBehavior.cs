@@ -216,8 +216,8 @@ namespace BLTAdoptAHero
         {
             var param = new RegisterBlowParams
             {
-                AttackerIsMount = attackerAgent.IsMount,
-                VictimIsMount = victimAgent.IsMount,
+                AttackerIsMount = attackerAgent?.IsMount == true,
+                VictimIsMount = victimAgent?.IsMount == true,
                 blow = blow,
                 collisionData = collisionData,
                 attackerWeapon = attackerWeapon,
