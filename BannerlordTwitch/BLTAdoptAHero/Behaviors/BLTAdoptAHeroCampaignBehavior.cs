@@ -827,67 +827,132 @@ namespace BLTAdoptAHero
             }
         }
 
-        public (bool success, string status) UpgradeRetinue(Hero hero, RetinueSettings settings)
+        public (bool success, string status) UpgradeRetinue(Hero hero, RetinueSettings settings, int maxToUpgrade)
         {
-            // Somewhat based on RecruitmentCampaignBehavior.UpdateVolunteersOfNotables
-            var heroRetinue = GetHeroData(hero).Retinue;
+            var availableTroops = HeroHelpers.AllCultures
+                .Where(c => settings.IncludeBanditUnits || c.IsMainCulture)
+                .SelectMany(c =>
+                {
+                    var troopTypes = new List<CharacterObject>();
+                    if (settings.UseBasicTroops && c.BasicTroop != null) troopTypes.Add(c.BasicTroop);
+                    if (settings.UseEliteTroops && c.EliteBasicTroop != null) troopTypes.Add(c.EliteBasicTroop);
+                    return troopTypes;
+                })
+                // At least 2 upgrade tiers available
+                .Where(c => c.UpgradeTargets?.FirstOrDefault()?.UpgradeTargets?.Any() == true)
+                .ToList();
+
+            if (!availableTroops.Any())
+            {
+                return (false, $"No valid troop types could be found, please check out settings");
+            }
             
-            // first fill in any missing ones
-            if (heroRetinue.Count < settings.MaxRetinueSize)
+            var heroRetinue = GetHeroData(hero).Retinue;
+
+            var retinueChanges = new Dictionary<HeroData.RetinueData, (CharacterObject oldTroopType, int totalSpent)>();
+
+            int heroGold = GetHeroGold(hero);
+            int totalCost = 0;
+
+            var results = new List<string>();
+            
+            while (maxToUpgrade-- > 0)
             {
-                var troopType = HeroHelpers.AllCultures
-                    .Where(c => settings.IncludeBanditUnits || c.IsMainCulture)
-                    .SelectMany(c =>
+                // first fill in any missing ones
+                if (heroRetinue.Count < settings.MaxRetinueSize)
+                {
+                    var troopType = availableTroops
+                        .Shuffle()
+                        // Sort same culture units to the front if required, but still include other units in-case the hero
+                        // culture doesn't contain the requires units
+                        .OrderBy(c => settings.UseHeroesCultureUnits && c.Culture != hero.Culture)
+                        .FirstOrDefault();
+                    
+                    int cost = settings.GetTierCost(0);
+                    if (totalCost + cost > heroGold)
                     {
-                        var troopTypes = new List<CharacterObject>();
-                        if(settings.UseBasicTroops && c.BasicTroop != null) troopTypes.Add(c.BasicTroop);
-                        if(settings.UseEliteTroops && c.EliteBasicTroop != null) troopTypes.Add(c.EliteBasicTroop);
-                        return troopTypes;
-                    })
-                    // At least 2 upgrade tiers available
-                    .Where(c => c.UpgradeTargets?.FirstOrDefault()?.UpgradeTargets?.Any() == true)
-                    .Shuffle()
-                    // Sort same culture units to the front if required, but still include other units in-case the hero
-                    // culture doesn't contain the requires units
-                    .OrderBy(c => settings.UseHeroesCultureUnits && c.Culture != hero.Culture)
-                    .FirstOrDefault();
+                        results.Add(retinueChanges.IsEmpty()
+                            ? Naming.NotEnoughGold(cost, heroGold)
+                            : $"Spent {totalCost}{Naming.Gold}, {heroGold - totalCost}{Naming.Gold} remaining");
+                        break;
+                    }
+                    totalCost += cost;
 
-                if (troopType == null)
-                {
-                    return (false, $"No valid troop type could be found, please check out settings");
+                    var retinue = new HeroData.RetinueData { TroopType = troopType, Level = 1 };
+                    heroRetinue.Add(retinue);
+                    retinueChanges.Add(retinue, (null, cost));
                 }
 
-                int cost = settings.GetTierCost(0);
-                int heroGold = GetHeroGold(hero);
-                if (GetHeroGold(hero) < cost)
+                // upgrade the lowest tier unit
+                var retinueToUpgrade = heroRetinue
+                    .OrderBy(h => h.TroopType.Tier)
+                    .FirstOrDefault(t => t.TroopType.UpgradeTargets?.Any() == true);
+
+                if (retinueToUpgrade != null)
                 {
-                    return (false, Naming.NotEnoughGold(cost, heroGold));
+                    int cost = settings.GetTierCost(retinueToUpgrade.Level);
+                    if (totalCost + cost > heroGold)
+                    {
+                        results.Add(retinueChanges.IsEmpty()
+                            ? Naming.NotEnoughGold(cost, heroGold)
+                            : $"Spent {totalCost}{Naming.Gold}, {heroGold - totalCost}{Naming.Gold} remaining");
+                        break;
+                    }
+                    totalCost += cost;
+
+                    var oldTroopType = retinueToUpgrade.TroopType;
+                    retinueToUpgrade.TroopType = oldTroopType.UpgradeTargets.SelectRandom();
+                    retinueToUpgrade.Level++;
+                    if (retinueChanges.TryGetValue(retinueToUpgrade, out var upgradeRecord))
+                    {
+                        retinueChanges[retinueToUpgrade] = (upgradeRecord.oldTroopType, upgradeRecord.totalSpent + cost);
+                    }
+                    else
+                    {
+                        retinueChanges.Add(retinueToUpgrade, (oldTroopType, cost));
+                    }
                 }
-                ChangeHeroGold(hero, -cost, isSpending: true);
-                heroRetinue.Add(new() { TroopType = troopType, Level = 1 });
-                return (true, $"+{troopType} ({Naming.Dec}{cost}{Naming.Gold})");
+                else
+                {
+                    results.Add("Can't upgrade retinue any further!");
+                    break;
+                }
             }
 
-            // upgrade the lowest tier unit
-            var retinueToUpgrade = heroRetinue
-                .OrderBy(h => h.TroopType.Tier)
-                .FirstOrDefault(t => t.TroopType.UpgradeTargets?.Any() == true);
-            if (retinueToUpgrade != null)
+            var troopUpgradeSummary = new List<string>();
+            foreach ((var oldTroopType, var newTroopType, int cost, int num) in retinueChanges
+                .GroupBy(r 
+                    => (r.Value.oldTroopType, newTroopType: r.Key.TroopType))
+                .Select(g => (
+                        g.Key.oldTroopType, 
+                        g.Key.newTroopType, 
+                        cost: g.Sum(f => f.Value.totalSpent), 
+                        num: g.Count()))
+                .OrderBy(g => g.oldTroopType == null)
+                .ThenBy(g => g.num)
+            )
             {
-                int upgradeCost = settings.GetTierCost(retinueToUpgrade.Level);
-                int heroGold = GetHeroGold(hero);
-                if (GetHeroGold(hero) < upgradeCost)
+                if (oldTroopType != null)
                 {
-                    return (false, Naming.NotEnoughGold(upgradeCost, heroGold));
+                    troopUpgradeSummary.Add($"{oldTroopType}{Naming.To}{newTroopType}" +
+                                            (num > 1 ? $" x{num}" : "") +
+                                            $" ({Naming.Dec}{cost}{Naming.Gold})");
                 }
-                ChangeHeroGold(hero, -upgradeCost, isSpending: true);
+                else
+                {
+                    troopUpgradeSummary.Add($"{newTroopType}" +
+                                            (num > 1 ? $" x{num}" : "") +
+                                            $" ({Naming.Dec}{cost}{Naming.Gold})");
 
-                var oldTroopType = retinueToUpgrade.TroopType;
-                retinueToUpgrade.TroopType = oldTroopType.UpgradeTargets.SelectRandom();
-                retinueToUpgrade.Level++;
-                return (true, $"{oldTroopType}{Naming.To}{retinueToUpgrade.TroopType} ({Naming.Dec}{upgradeCost}{Naming.Gold})");
+                }
             }
-            return (false, $"Can't upgrade retinue any further!");
+
+            if (totalCost > 0)
+            {
+                ChangeHeroGold(hero, -totalCost, isSpending: true);
+            }
+            
+            return (retinueChanges.Any(), Naming.JoinList(troopUpgradeSummary.Concat(results)));
         }
         #endregion
 

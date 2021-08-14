@@ -35,6 +35,18 @@ namespace BannerlordTwitch
         [UsedImplicitly] public Guid RedemptionId { get; private set; }
         [UsedImplicitly] public ActionBase Source { get; private set; }
 
+        public string ArgsErrorMessage(string args)
+        {
+            if (Source is Command cmd)
+            {
+                return $"Usage: !{cmd.Name} {args}";
+            }
+            else
+            {
+                return $"Usage: {args}";
+            }
+        }
+
         private static string CleanDisplayName(string str) => str.Replace(" ", "").Replace(@"\s", "");
         public static ReplyContext FromMessage(ActionBase source, ChatMessage msg, string args) =>
             new()

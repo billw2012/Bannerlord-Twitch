@@ -116,7 +116,7 @@ namespace BLTAdoptAHero
                 if (settings.ShowTopSkills)
                 {
                     infoStrings.Add($"[LVL] {adoptedHero.Level}");
-                    infoStrings.Add("[SKILLS] " + string.Join("■", 
+                    infoStrings.Add("[SKILLS] " + string.Join(Naming.Sep, 
                         HeroHelpers.AllSkillObjects
                             .Where(s => adoptedHero.GetSkillValue(s) >= settings.MinSkillToShow)
                             .OrderByDescending(s => adoptedHero.GetSkillValue(s))
@@ -127,7 +127,7 @@ namespace BLTAdoptAHero
                 
                 if (settings.ShowAttributes)
                 {
-                    infoStrings.Add("[ATTR] " + string.Join("■", HeroHelpers.AllAttributes
+                    infoStrings.Add("[ATTR] " + string.Join(Naming.Sep, HeroHelpers.AllAttributes
                         .Select(a 
                             => $"{HeroHelpers.GetShortAttributeName(a)} {adoptedHero.GetAttributeValue(a)}")));
                 }
@@ -142,7 +142,7 @@ namespace BLTAdoptAHero
 
                 if (settings.ShowInventory)
                 {
-                    infoStrings.Add("[BATTLE] " + string.Join("■", adoptedHero.BattleEquipment
+                    infoStrings.Add("[BATTLE] " + string.Join(Naming.Sep, adoptedHero.BattleEquipment
                         .YieldFilledEquipmentSlots().Select(e => e.element)
                         .Select(e => $"{e.GetModifiedItemName()}")
                     ));
@@ -150,7 +150,7 @@ namespace BLTAdoptAHero
 
                 if(settings.ShowCivilianInventory)
                 {
-                    infoStrings.Add("[CIV] " + string.Join("■", adoptedHero.CivilianEquipment
+                    infoStrings.Add("[CIV] " + string.Join(Naming.Sep, adoptedHero.CivilianEquipment
                         .YieldFilledEquipmentSlots().Select(e => e.element)
                         .Select(e => $"{e.GetModifiedItemName()}")
                     ));
@@ -160,7 +160,7 @@ namespace BLTAdoptAHero
                 {
                     var customItems 
                         = BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero);
-                    infoStrings.Add("[STORED] " + (customItems.Any() ? string.Join("■", customItems
+                    infoStrings.Add("[STORED] " + (customItems.Any() ? string.Join(Naming.Sep, customItems
                         .Select(e => e.GetModifiedItemName())) : "(nothing)"));
                 }
 
@@ -199,7 +199,7 @@ namespace BLTAdoptAHero
                         .ToList();
                     if (achievements.Any())
                     {
-                        infoStrings.Add($"[ACHIEV] " + string.Join("■", achievements
+                        infoStrings.Add($"[ACHIEV] " + string.Join(Naming.Sep, achievements
                             .Select(e => e.Name)));
                     }
                     else
@@ -225,7 +225,7 @@ namespace BLTAdoptAHero
                         ("TourRndL", AchievementStatsData.Statistic.TotalTournamentRoundLosses),
                         ("TourW", AchievementStatsData.Statistic.TotalTournamentFinalWins),
                     };
-                    infoStrings.Add($"[STATS] " + string.Join("■", 
+                    infoStrings.Add($"[STATS] " + string.Join(Naming.Sep, 
                         achievementList.Select(a =>
                         $"{a.shortName}:" +
                         $"{BLTAdoptAHeroCampaignBehavior.Current.GetAchievementTotalStat(adoptedHero, a.id)}" +
@@ -241,12 +241,12 @@ namespace BLTAdoptAHero
                         var activePowers 
                             = heroClass.ActivePower.GetUnlockedPowers(adoptedHero).OfType<HeroPowerDefBase>();
                         infoStrings.Add("[ACTIVE] " + 
-                                        string.Join("■", activePowers.Select(p => p.Name)));
+                                        string.Join(Naming.Sep, activePowers.Select(p => p.Name)));
                         
                         var passivePowers 
                             = heroClass.PassivePower.GetUnlockedPowers(adoptedHero).OfType<HeroPowerDefBase>();
                         infoStrings.Add("[PASSIVE] " + 
-                                        string.Join("■", passivePowers.Select(p => p.Name)));
+                                        string.Join(Naming.Sep, passivePowers.Select(p => p.Name)));
                     }
                 }
             }

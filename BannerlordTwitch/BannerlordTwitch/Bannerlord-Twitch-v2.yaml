@@ -65,10 +65,11 @@ Commands:
   Name: equip
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: Purchases a new tier 1 troop for your retinue, or upgrades an existing one to the next tier if you have no space left. Retinue will appear with you in battle when you summon, earning you money when they make kills.
+- Documentation: Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford.
   Enabled: true
   Handler: Retinue
   HandlerConfig:
+    AllByDefault: true
     Retinue:
       CostTier1: 25000
       CostTier2: 50000

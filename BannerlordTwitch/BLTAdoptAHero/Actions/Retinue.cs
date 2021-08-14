@@ -17,6 +17,10 @@ namespace BLTAdoptAHero
         {
             [Description("Retinue Upgrade Settings"), PropertyOrder(1), ExpandableObject, Expand, UsedImplicitly]
             public BLTAdoptAHeroCampaignBehavior.RetinueSettings Retinue { get; set; } = new();
+
+            [Description("Whether this action should attempt to buy/upgrade as many times as possible when called " +
+                         "with no parameter."), PropertyOrder(2), UsedImplicitly]
+            public bool AllByDefault { get; set; } = true;
             
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
@@ -42,7 +46,22 @@ namespace BLTAdoptAHero
                 return;
             }
 
-            (bool success, string status) = BLTAdoptAHeroCampaignBehavior.Current.UpgradeRetinue(adoptedHero, settings.Retinue);
+            int numToUpgrade = settings.AllByDefault ? int.MaxValue : 1;
+            if (!string.IsNullOrEmpty(context.Args))
+            {
+                if (string.Compare(context.Args, "all", StringComparison.CurrentCultureIgnoreCase) == 0)
+                {
+                    numToUpgrade = int.MaxValue;
+                }
+                else if (!int.TryParse(context.Args, out numToUpgrade) || numToUpgrade <= 0)
+                {
+                    onFailure(context.ArgsErrorMessage("(number, or all)"));
+                    return;
+                }
+            }
+
+            (bool success, string status) = BLTAdoptAHeroCampaignBehavior.Current
+                .UpgradeRetinue(adoptedHero, settings.Retinue, numToUpgrade);
             if (success)
             {
                 onSuccess(status);
