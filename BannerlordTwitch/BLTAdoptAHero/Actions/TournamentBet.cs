@@ -23,29 +23,42 @@ namespace BLTAdoptAHero
             string[] parts = context.Args?.Split(' ');
             if (parts?.Length != 2)
             {
-                ActionManager.SendReply(context, $"Usage: !{((Command)context.Source).Name} team gold");
+                ActionManager.SendReply(context, context.ArgsErrorMessage("team gold"));
                 return;
             }
 
-            int gold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
-            int nameIdx = -1;
-            if (parts[0].ToLower() == "all" || int.TryParse(parts[0], out gold))
+            (int? gold, string team) ParseArgs(string[] args)
             {
-                nameIdx = 1;
+                if (args[0].ToLower() == "all")
+                {
+                    return (BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero), args[1]);
+                }
+                else if (args[1].ToLower() == "all")
+                {
+                    return (BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero), args[0]);
+                } 
+                else if (int.TryParse(args[0], out int gold0))
+                {
+                    return (gold0, args[1]);
+                }
+                else if (int.TryParse(args[1], out int gold1))
+                {
+                    return (gold1, args[0]);
+                }
+                return default;
             }
-            else if(parts[1].ToLower() == "all" || int.TryParse(parts[1], out gold))
-            {
-                nameIdx = 0;
-            }
-            if(gold <= 0 || nameIdx == -1)
+
+            (int? gold, string team) = ParseArgs(parts);
+            if(gold is null or <= 0)
             {
                 ActionManager.SendReply(context, $"Invalid gold argument");
                 return;
             }
+
+            (bool success, string failReason) 
+                = BLTTournamentBetMissionBehavior.Current?.PlaceBet(adoptedHero, team, gold.Value) 
+                  ?? (false, "Betting not active");
             
-            string team = parts[nameIdx].ToLower();
-            (bool success, string failReason) = BLTTournamentBetMissionBehavior.Current?.PlaceBet(adoptedHero, team, gold) 
-                                                ?? (false, "Betting not active");
             if (!success)
             {
                 ActionManager.SendReply(context, failReason);
