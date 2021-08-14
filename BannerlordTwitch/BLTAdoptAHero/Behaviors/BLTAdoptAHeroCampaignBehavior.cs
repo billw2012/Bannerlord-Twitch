@@ -143,11 +143,11 @@ namespace BLTAdoptAHero
                     string verb = KillDetailVerb(detail);
                     if (killer != null && victim != null)
                     {
-                        Log.LogFeedEvent($"{victim.Name} {verb} by {killer.Name}!");
+                        Log.LogFeedEvent($"@{victim.Name} {verb} by @{killer.Name}!");
                     }
                     else if (killer != null)
                     {
-                        Log.LogFeedEvent($"{killer.Name} {verb}!");
+                        Log.LogFeedEvent($"@{killer.Name} {verb}!");
                     }
                 }
             });
@@ -155,7 +155,7 @@ namespace BLTAdoptAHero
             CampaignEvents.HeroLevelledUp.AddNonSerializedListener(this, (hero, _) =>
             {
                 if (hero.IsAdopted())
-                    Log.LogFeedEvent($"{hero.Name} is now level {hero.Level}!");
+                    Log.LogFeedEvent($"@{hero.Name} is now level {hero.Level}!");
             });
             
             CampaignEvents.HeroPrisonerTaken.AddNonSerializedListener(this, (party, hero) =>
@@ -163,9 +163,9 @@ namespace BLTAdoptAHero
                 if (hero.IsAdopted())
                 {
                     if(party != null)
-                        Log.LogFeedEvent($"{hero.Name} was taken prisoner by {party.Name}!");
+                        Log.LogFeedEvent($"@{hero.Name} was taken prisoner by {party.Name}!");
                     else
-                        Log.LogFeedEvent($"{hero.Name} was taken prisoner!");
+                        Log.LogFeedEvent($"@{hero.Name} was taken prisoner!");
                 }
             });
             
@@ -174,16 +174,16 @@ namespace BLTAdoptAHero
                 if (hero.IsAdopted())
                 {
                     if(party != null)
-                        Log.LogFeedEvent($"{hero.Name} is no longer a prisoner of {party.Name}!");
+                        Log.LogFeedEvent($"@{hero.Name} is no longer a prisoner of {party.Name}!");
                     else
-                        Log.LogFeedEvent($"{hero.Name} is no longer a prisoner!");
+                        Log.LogFeedEvent($"@{hero.Name} is no longer a prisoner!");
                 }
             });
             
             CampaignEvents.OnHeroChangedClanEvent.AddNonSerializedListener(this, (hero, clan) =>
             {
                 if(hero.IsAdopted())
-                    Log.LogFeedEvent($"{hero.Name} moved from {clan?.Name.ToString() ?? "no clan"} to {hero.Clan?.Name.ToString() ?? "no clan"}!");
+                    Log.LogFeedEvent($"@{hero.Name} moved from {clan?.Name.ToString() ?? "no clan"} to {hero.Clan?.Name.ToString() ?? "no clan"}!");
             });
             
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, JoinTournament.SetupGameMenus);
