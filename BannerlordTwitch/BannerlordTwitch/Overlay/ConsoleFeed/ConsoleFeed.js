@@ -17,7 +17,7 @@ $(document).ready(function () {
             .reduce((a, b) => a.concat(b))
             .map(s => {
                 if(s.match(goldRegex))
-                    return "<span class='gold-text-style'>" + s + "</span>";
+                    return "<span class='gold-text-style'>" + parseInt(s.substring(0, s.length - 1)).toLocaleString() + "⦷</span>";
                 else if(s.match(userNameRegex)) {
                     const nameColor = twitch.getUserColor(s.substr(1));
                     return "<span class='username-text-style' style='color: " + nameColor
