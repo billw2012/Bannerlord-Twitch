@@ -1,5 +1,7 @@
 ﻿<!-- Tournament -->
 $(document).ready(function () {
+    const o = Intl.NumberFormat('en', { notation: 'compact' });
+
     const tournament = new Vue({
         el: '#tournament-container',
         data: {
@@ -10,8 +12,23 @@ $(document).ready(function () {
         },
         computed: {
             anyBets: function () {
-                const nonzero = (b) => b > 0;
-                return this.bets.some(nonzero);
+                return this.bets.some(b => b > 0);
+            },
+            totalBets: function () {
+                return this.bets.reduce((a, b) => a + b, 0);
+            },
+            betRatios: function () {
+                const sum = this.bets.reduce((a, b) => a + b, 0);
+                if(sum === 0)
+                {
+                    const length = this.bets.length;
+                    return this.bets.map(function(_) {
+                        return { bet: 0, ratio: 100 / length };
+                    });
+                }
+                return this.bets.map(function(b) {
+                    return { bet: b, ratio: b * 100 / sum };
+                });
             }
         },
         methods:{
@@ -21,6 +38,9 @@ $(document).ready(function () {
                     return [];
                 }
                 return Array(end - start).fill(0).map((_, idx) => start + idx)
+            },
+            formatBet : function(bet) {
+                return o.format(bet);
             }
         }
     });

@@ -98,9 +98,25 @@
     border: gold solid 0.1em;
 }
 
+.tournament-bet-bar {
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.tournament-bet-bar-item {
+    margin: 0.1em;
+    padding: 0.1em;
+    min-width: auto;
+    min-height: 1em;
+}
+
 .tournament-bet-text {
-    font-weight: 600;
-    font-size: 120%;
+    font-weight: 500;
+    font-size: 100%;
+    text-align: center;
 }
 
 .tournament-bet-side-0 {

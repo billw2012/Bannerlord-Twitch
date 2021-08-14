@@ -27,10 +27,11 @@
     <div v-else-if="bettingState === 'disabled'" class='tournament-bets-label drop-shadow'>
         <span style='color: gray'>Not taking bets</span>
     </div>
-    <div v-if="bettingState === 'open' || bettingState === 'closed'" class='drop-shadow tournament-bets-items'>
-        <div v-for='(bet, index) in bets' class='tournament-bet'
-             v-bind:class="'tournament-bet-side-' + index">
-            <div class='tournament-bet-text gold-text-style'>{{bet}}⦷</div>
+    <div v-if="bettingState === 'open' || bettingState === 'closed'" class='drop-shadow tournament-bet-bar'>
+        <div v-for='(b, index) in betRatios' class='tournament-bet-bar-item'
+             v-bind:class="'tournament-bet-side-' + index"
+             v-bind:style="{ 'flex': b.ratio + ' 0 0' }">
+            <div class='tournament-bet-text gold-text-style'>{{formatBet(b.bet)}}⦷</div>
         </div>
     </div>
 </div>
