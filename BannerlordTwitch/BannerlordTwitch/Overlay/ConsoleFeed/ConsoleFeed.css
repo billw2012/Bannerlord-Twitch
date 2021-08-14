@@ -21,11 +21,20 @@
 .bltconsole-entry {
     transition: all 0.2s;
     word-wrap: break-word;
+    text-indent: -0.5em;
+    margin-left: 0.5em;
+}
+
+:root {
+    --bltconsole-text-style-margin-left: 0.75em;
+    --bltconsole-text-style-padding-left: 0.5em;
 }
 
 .bltconsole-text-style-general {
     color: #ebc8ff;
-    margin-left: 1.25em;
+    
+    margin-left: var(--bltconsole-text-style-margin-left);
+    padding-left: var(--bltconsole-text-style-padding-left);
     display: list-item;
     list-style-type: disc;
     list-style-position: outside;
@@ -38,11 +47,23 @@
 .bltconsole-text-style-system {
     color: #bbb;
     font-size: 85%;
+
+    margin-left: var(--bltconsole-text-style-margin-left);
+    padding-left: var(--bltconsole-text-style-padding-left);
+    display: list-item;
+    list-style-type: disc;
+    list-style-position: outside;
 }
 
 .bltconsole-text-style-internal {
     color: #bbb;
     font-size: 85%;
+
+    margin-left: var(--bltconsole-text-style-margin-left);
+    padding-left: var(--bltconsole-text-style-padding-left);
+    display: list-item;
+    list-style-type: disc;
+    list-style-position: outside;
 }
 
 .bltconsole-text-style-battle {
@@ -51,6 +72,12 @@
 
 .bltconsole-text-style-event {
     color: white;
+
+    margin-left: var(--bltconsole-text-style-margin-left);
+    padding-left: var(--bltconsole-text-style-padding-left);
+    display: list-item;
+    list-style-type: disc;
+    list-style-position: outside;
 }
 
 .bltconsole-text-style-fail {
