@@ -60,9 +60,9 @@ $(document).ready(function () {
         const userData = userDataMap.get(userName.toLowerCase());
         
         if (typeof userData === 'undefined') {
-            return stringToHslColor(userName.toLowerCase(), 80, 80)
+            return stringToHslColor(userName.toLowerCase(), 80, 70)
         }
-        return normalizeHexColorToHsl(userData.color, 80, 80);
+        return normalizeHexColorToHsl(userData.color, 80, 70);
     }
 
     function addUser(userName, userData) {
