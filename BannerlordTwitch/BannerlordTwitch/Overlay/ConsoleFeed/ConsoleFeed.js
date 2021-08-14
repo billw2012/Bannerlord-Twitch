@@ -7,17 +7,30 @@ $(document).ready(function () {
             internalId: -1,
         }
     });
-    
+
+    const o = Intl.NumberFormat('en', { notation: 'compact' });
     function addMessage(message) {
+        const plusRegex = /(\+)/g;
+        const minusRegex = /(−)/g;
         const goldRegex = /(\d*⦷)/g;
         const userNameRegex = /(@[a-zA-Z0-9_]*)/g;
         const splitMessage = message.message
             .split(goldRegex)
-            .map(s => s.split(userNameRegex))
-            .reduce((a, b) => a.concat(b))
+            .map(s => s.split(plusRegex)).reduce((a, b) => a.concat(b))
+            .map(s => s.split(minusRegex)).reduce((a, b) => a.concat(b))
+            .map(s => s.split(userNameRegex)).reduce((a, b) => a.concat(b))
             .map(s => {
-                if(s.match(goldRegex))
-                    return "<span class='gold-text-style'>" + parseInt(s.substring(0, s.length - 1)).toLocaleString() + "⦷</span>";
+                if(s.match(plusRegex)) {
+                    return "<span class='plus-text-style'>+</span>"
+                }
+                else if(s.match(minusRegex)) {
+                    return "<span class='minus-text-style'>−</span>"
+                }
+                else if(s.match(goldRegex)) {
+                    return "<span class='gold-text-style'>"
+                        + (s.length > 1 ? o.format(parseInt(s.substring(0, s.length - 1))) : "")
+                        + "⦷</span>";
+                }
                 else if(s.match(userNameRegex)) {
                     const nameColor = twitch.getUserColor(s.substr(1));
                     return "<span class='username-text-style' style='color: " + nameColor

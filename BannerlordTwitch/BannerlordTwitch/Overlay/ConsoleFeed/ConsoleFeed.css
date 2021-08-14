@@ -21,13 +21,11 @@
 .bltconsole-entry {
     transition: all 0.2s;
     word-wrap: break-word;
-    text-indent: -0.5em;
-    margin-left: 0.5em;
 }
 
 :root {
-    --bltconsole-text-style-margin-left: 0.75em;
-    --bltconsole-text-style-padding-left: 0.5em;
+    --bltconsole-text-style-margin-left: 1.25em;
+    --bltconsole-text-style-padding-left: 0em;
 }
 
 .bltconsole-text-style-general {
@@ -42,6 +40,9 @@
 
 .bltconsole-text-style-response {
     color: white;
+
+    text-indent: -1em;
+    margin-left: 1em;
 }
 
 .bltconsole-text-style-system {

@@ -72,12 +72,31 @@
 
 .gold-text-style {
     color: white;
-    font-weight: 100;
-    font-size: 100%;
+    font-weight: 400;
     filter:
             drop-shadow(0 0 0.04em gold)
             drop-shadow(0 0 0.02em gold)
-            drop-shadow(0           0         0.06em    #000)
+            drop-shadow(0 0 0.06em #000)
+;
+}
+
+.plus-text-style {
+    color: white;
+    font-weight: normal;
+    filter:
+            drop-shadow(0 0 0.04em #00ff00)
+            drop-shadow(0 0 0.02em #00ff00)
+            drop-shadow(0 0 0.06em #00ff00)
+;
+}
+
+.minus-text-style {
+    color: pink;
+    font-weight: bolder;
+    filter:
+            drop-shadow(0 0 0.04em red)
+            drop-shadow(0 0 0.02em red)
+            drop-shadow(0 0 0.06em red)
 ;
 }
 
