@@ -286,16 +286,18 @@ namespace BLTAdoptAHero
             var currKillStreak = BLTAdoptAHeroModule.CommonConfig.KillStreaks?.FirstOrDefault(k => k.Enabled && heroState.KillStreak == k.KillsRequired);
             if (currKillStreak != null)
             {
-                string message = currKillStreak.NotificationText
-                    .Replace("{viewer}", hero.FirstName.ToString())
-                    .Replace("{player}", hero.FirstName.ToString())
-                    .Replace("{kills}",currKillStreak.KillsRequired.ToString())
-                    .Replace("{name}",currKillStreak.Name);
-                if (BLTAdoptAHeroModule.CommonConfig.ShowKillStreakPopup && currKillStreak.ShowNotification)
+                if (BLTAdoptAHeroModule.CommonConfig.ShowKillStreakPopup 
+                    && currKillStreak.ShowNotification 
+                    && !string.IsNullOrEmpty(currKillStreak.NotificationText))
                 {
+                    string message = currKillStreak.NotificationText
+                        .Replace("{viewer}", hero.FirstName.ToString())
+                        .Replace("{player}", hero.FirstName.ToString())
+                        .Replace("{kills}",currKillStreak.KillsRequired.ToString())
+                        .Replace("{name}",currKillStreak.Name);
                     Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
                 }
-                ApplyStreakEffects(hero, currKillStreak.GoldReward, currKillStreak.XPReward,Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),currKillStreak.Name,BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,BLTAdoptAHeroModule.CommonConfig.LevelScalingCap, message);
+                ApplyStreakEffects(hero, currKillStreak.GoldReward, currKillStreak.XPReward,Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,BLTAdoptAHeroModule.CommonConfig.LevelScalingCap);
             }
         }
 
@@ -392,7 +394,7 @@ namespace BLTAdoptAHero
         public static float RelativeLevelScaling(int levelA, int levelB, float n, float max = float.MaxValue) 
             => Math.Min(MathF.Pow(1f - Math.Min(MaxLevelInPractice - 1, levelB - levelA) / (float)MaxLevelInPractice, -10f * MathF.Clamp(n, 0, 1)), max);
         
-        public void ApplyStreakEffects(Hero hero, int goldStreak, int xpStreak, float subBoost, string killStreakName, float? relativeLevelScaling, float? levelScalingCap, string message)
+        public void ApplyStreakEffects(Hero hero, int goldStreak, int xpStreak, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
         {
             goldStreak = (int)(goldStreak * subBoost);
             xpStreak = (int)(xpStreak * subBoost);

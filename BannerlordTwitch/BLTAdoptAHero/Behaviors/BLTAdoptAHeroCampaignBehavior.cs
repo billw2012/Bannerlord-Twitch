@@ -485,12 +485,16 @@ namespace BLTAdoptAHero
 
             foreach (var achievement in newAchievements)
             {
-                string message = achievement.NotificationText
-                    .Replace("{viewer}", hero.FirstName.ToString())
-                    .Replace("{player}", hero.FirstName.ToString())
-                    .Replace("{name}", achievement.Name);
-                Log.ShowInformation(message, hero.CharacterObject,
-                    BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
+                if (!string.IsNullOrEmpty(achievement.NotificationText))
+                {
+                    string message = achievement.NotificationText
+                        .Replace("{viewer}", hero.FirstName.ToString())
+                        .Replace("{player}", hero.FirstName.ToString())
+                        .Replace("{name}", achievement.Name);
+                    Log.ShowInformation(message, hero.CharacterObject,
+                        BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
+                }
+
                 achievementData.Achievements.Add(achievement.ID);
 
                 achievement.Apply(hero);

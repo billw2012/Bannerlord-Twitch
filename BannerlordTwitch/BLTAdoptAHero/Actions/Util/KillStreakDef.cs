@@ -20,12 +20,12 @@ namespace BLTAdoptAHero.Actions.Util
         
         [InstanceName, PropertyOrder(3), UsedImplicitly]
         public string Name { get; set; } = "New Kill Streak";
-        
-        [PropertyOrder(4), 
+
+        [PropertyOrder(4),
          Description("Text that displays when the kill streak is achieved. " +
                      "Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} " +
                      "for the Kills Required."), UsedImplicitly]
-        public string NotificationText { get; set; }
+        public string NotificationText { get; set; } = "{viewer} got {name} ({kills} kills)";
         
         [PropertyOrder(5), Description("Kills required to achieve the kill streak."), UsedImplicitly]
         public int KillsRequired { get; set; }

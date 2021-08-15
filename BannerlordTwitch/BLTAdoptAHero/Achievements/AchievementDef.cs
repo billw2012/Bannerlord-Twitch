@@ -26,11 +26,11 @@ namespace BLTAdoptAHero.Achievements
         [Category("General"), InstanceName, PropertyOrder(2), UsedImplicitly] 
         public string Name { get; set; } = "New Achievement";
 
-        [Category("General"), PropertyOrder(3), 
+        [Category("General"), PropertyOrder(3),
          Description("Text that will display when the achievement is gained and when the player lists their " +
                      "achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the " +
                      "achievement."), UsedImplicitly]
-        public string NotificationText { get; set; }
+        public string NotificationText { get; set; } = "{viewer} got {name}!";
 
         [Category("Requirements"), PropertyOrder(1), UsedImplicitly, 
          Editor(typeof(DerivedClassCollectionEditor<IAchievementRequirement>), 
