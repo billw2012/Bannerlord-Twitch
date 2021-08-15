@@ -3,6 +3,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
@@ -43,8 +44,8 @@ namespace BannerlordTwitch.Util
         
         static Log()
         {
-            System.Diagnostics.Trace.Listeners.Add(new LogTraceListener());
-            System.Diagnostics.Debug.Listeners.Add(new LogTraceListener());
+            //System.Diagnostics.Trace.Listeners.Add(new LogTraceListener());
+            //System.Diagnostics.Debug.Listeners.Add(new LogTraceListener());
         }
         
         public static event Action<Level, string> OnLog;
@@ -72,19 +73,25 @@ namespace BannerlordTwitch.Util
             LogFeedError(str);
         }
 
-        private static readonly ConcurrentBag<string> reportedExceptions = new(); 
-            
+        private static readonly ConcurrentBag<string> reportedExceptions = new();
+
+        private static string GetSolutionRoot([CallerFilePath] string path = null) 
+            => path?.Replace("BannerlordTwitch\\Util\\Log.cs", "") ?? string.Empty;
+
+        private static string GetExceptionStr(Exception ex) 
+            => ex?.GetBaseException().ToString().Replace(GetSolutionRoot(), "") ?? string.Empty;
+
         public static void Exception(string context, Exception ex, bool noRethrow = false)
         {
             string expId = context + (ex.GetBaseException().Message ?? "unknown");
             if (!reportedExceptions.Contains(expId))
             {
-                Fatal($"{context}: {ex.GetBaseException()}");
+                Fatal($"{context}: {GetExceptionStr(ex)}");
                 reportedExceptions.Add(expId);
             }
             else
             {
-                Trace($"(repeat) {context}: {ex.GetBaseException()}");
+                Trace($"(repeat) {context}: {GetExceptionStr(ex)}");
             }
 #if DEBUG
             if(!noRethrow) throw ex;

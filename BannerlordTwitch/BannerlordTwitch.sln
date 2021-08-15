@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLTBuffet", "BLTBuffet\BLTB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLTConfigure", "BLTConfigure\BLTConfigure.csproj", "{BAD5698D-09BD-4C2F-8C93-1DF19BBE29CC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{6416209A-DA92-4E8E-BE64-A677E16FA042}"
+ProjectSection(SolutionItems) = preProject
+	BLTProperties.targets = BLTProperties.targets
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug 1.5.10|Any CPU = Debug 1.5.10|Any CPU
