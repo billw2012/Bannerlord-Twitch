@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using BannerlordTwitch.Localization;
+using TaleWorlds.Localization;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
@@ -14,6 +16,21 @@ namespace BannerlordTwitch.Util
 
     public static class YamlHelpers
     {
+        private class LocStringStringConverter : IYamlTypeConverter
+        {
+            public bool Accepts(Type type) => type == typeof(LocString);
+
+            public object ReadYaml(IParser parser, Type type)
+            {
+                return new LocString(parser.Consume<Scalar>().Value);
+            }
+
+            public void WriteYaml(IEmitter emitter, object value, Type type)
+            {
+                emitter.Emit(new Scalar(((LocString)value).Value));
+            }
+        }
+        
         private class SortedTypeInspector : TypeInspectorSkeleton
         {
             private readonly ITypeInspector innerTypeInspector;
@@ -45,12 +62,14 @@ namespace BannerlordTwitch.Util
             }
             return builder.ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
                 .WithTypeInspector(x => new SortedTypeInspector(x))
+                .WithTypeConverter(new LocStringStringConverter())
                 .DisableAliases()
                 .Build();
         }
 
         public static IDeserializer CreateDefaultDeserializer() => new DeserializerBuilder()
             .WithNodeTypeResolver(nodeTypeResolver.Value)
+            .WithTypeConverter(new LocStringStringConverter())
             .IgnoreUnmatchedProperties()
             .Build();
         
@@ -59,11 +78,13 @@ namespace BannerlordTwitch.Util
             var builder = new SerializerBuilder();
             return builder.ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
                 .WithTypeInspector(x => new SortedTypeInspector(x))
+                .WithTypeConverter(new LocStringStringConverter())
                 .DisableAliases()
                 .Build();
         }
 
         public static IDeserializer CreateUntaggedDeserializer() => new DeserializerBuilder()
+            .WithTypeConverter(new LocStringStringConverter())
             .IgnoreUnmatchedProperties()
             .Build();
         

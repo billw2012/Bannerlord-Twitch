@@ -1,7 +1,7 @@
 ﻿<div id='tournament-container' class='drop-shadow-highlight'>
     <div v-if='tournamentSize > 0' class='tournament-container-inner'>
         <div id='tournament-label' class='drop-shadow'>
-            Tournament
+            {{labels.Tournament}}
         </div>
         <div id='tournament-items' class='drop-shadow'>
             <div v-for='index in range(0, Math.max(tournamentSize, entrants))' class='tournament-range'>
@@ -19,13 +19,13 @@
         </div>
     </div>
     <div v-if="bettingState === 'open'" class='tournament-bets-label drop-shadow'>
-        Betting is&nbsp;<span style='color: green'>OPEN</span>
+        <span style='color: green'>{{labels.BettingIsOpen}}</span>
     </div>
     <div v-else-if="bettingState === 'closed'" class='tournament-bets-label drop-shadow'>
-        Betting is&nbsp;<span style='color: red'>CLOSED</span>
+        <span style='color: #ff4c4c'>{{labels.BettingIsClosed}}</span>
     </div>
     <div v-else-if="bettingState === 'disabled'" class='tournament-bets-label drop-shadow'>
-        <span style='color: gray'>Not taking bets</span>
+        <span style='color: gray'>{{labels.NotTakingBets}}</span>
     </div>
     <div v-if="bettingState === 'open' || bettingState === 'closed'" class='drop-shadow tournament-bet-bar'>
         <div v-for='(b, index) in betRatios' class='tournament-bet-bar-item'

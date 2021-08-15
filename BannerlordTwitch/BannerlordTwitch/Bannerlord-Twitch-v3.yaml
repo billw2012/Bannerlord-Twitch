@@ -1,5 +1,5 @@
 Commands:
-- Documentation: Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue.
+- Documentation: '{=JiMaaypq}Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue.'
   Enabled: true
   Handler: HeroInfoCommand
   HandlerConfig:
@@ -17,13 +17,13 @@ Commands:
     ShowStorage: false
     ShowTopSkills: true
     ShowTrackedStats: false
-  Help: show stats
+  Help: '{=tIVnWwGG}show stats'
   HideHelp: false
   ID: 1cf3abfd-3310-4a51-808e-e14d454eed05
-  Name: stats
+  Name: '{=J2AqvpeF}stats'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage.
+- Documentation: '{=JneYk4pF}Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage.'
   Enabled: true
   Handler: HeroInfoCommand
   HandlerConfig:
@@ -41,13 +41,13 @@ Commands:
     ShowStorage: true
     ShowTopSkills: false
     ShowTrackedStats: false
-  Help: show equipment
+  Help: '{=oVNKTdOy}show equipment'
   HideHelp: false
   ID: 7b6caafc-0246-47c2-8622-e091b10b8897
-  Name: inv
+  Name: '{=UbklIEGh}inv'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to.
+- Documentation: '{EZGcIEgQ}Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to.'
   Enabled: true
   Handler: EquipHero
   HandlerConfig:
@@ -59,13 +59,13 @@ Commands:
     CostTier5: 275000
     CostTier6: 400000
     ReequipInsteadOfUpgrade: false
-  Help: upgrade equipment
+  Help: '{vTo0NowP}upgrade equipment'
   HideHelp: false
   ID: 90b571d1-dba8-4006-860c-a0401b6f8fd2
-  Name: equip
+  Name: '{wHqxd4kb}equip'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford.
+- Documentation: '{zxAVjOW6}Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford.'
   Enabled: true
   Handler: Retinue
   HandlerConfig:
@@ -82,13 +82,13 @@ Commands:
       UseBasicTroops: true
       UseEliteTroops: true
       UseHeroesCultureUnits: true
-  Help: upgrade retinue
+  Help: '{I7sm1ct6}upgrade retinue'
   HideHelp: false
   ID: 38eed507-87b9-47f4-b235-af921cef00c4
-  Name: retinue
+  Name: '{mge9rH9J}retinue'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: 'Selects a new class for your hero, updating your existing equipment to match the class requirements.<br>Usage is <code>!class (new class name)</code>, e.g. <code>!class archer</code>. '
+- Documentation: '{K3297TEM}Selects a new class for your hero, updating your existing equipment to match the class requirements.<br>Usage is <code>!class (new class name)</code>, e.g. <code>!class archer</code>.'
   Enabled: true
   Handler: SetHeroClass
   HandlerConfig:
@@ -100,13 +100,13 @@ Commands:
     CostTier6: 160000
     FirstEquipIsFree: true
     UpdateEquipment: true
-  Help: select new class
+  Help: '{uN82Y7hR}select new class'
   HideHelp: false
   ID: da8416ca-e59b-458a-8953-31291d03c835
-  Name: class
+  Name: '{nV9iIsDC}class'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier.
+- Documentation: "{zBIv0a4I}Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier."
   Enabled: true
   Handler: EquipHero
   HandlerConfig:
@@ -118,13 +118,13 @@ Commands:
     CostTier5: 110000
     CostTier6: 160000
     ReequipInsteadOfUpgrade: true
-  Help: reroll equipment
+  Help: '{3KYGJ0Mu}reroll equipment'
   HideHelp: false
   ID: d4fb255c-4bb3-454e-9e26-39b4d7a321f0
-  Name: reequip
+  Name: '{fGfTaAoD}reequip'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: Show your heroes current gold.
+- Documentation: '{eWI5oDce}Show your heroes current gold.'
   Enabled: true
   Handler: HeroInfoCommand
   HandlerConfig:
@@ -142,13 +142,13 @@ Commands:
     ShowStorage: false
     ShowTopSkills: false
     ShowTrackedStats: false
-  Help: show gold
+  Help: '{eWI5oDce}show gold'
   HideHelp: false
   ID: 42e45ee9-647f-486f-9764-5e765507a70d
-  Name: gold
+  Name: '{eWI5oDce}gold'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: Shows your current retinue troops.
+- Documentation: '{BlBiEmbf}Shows your current retinue troops.'
   Enabled: true
   Handler: HeroInfoCommand
   HandlerConfig:
@@ -166,13 +166,13 @@ Commands:
     ShowStorage: false
     ShowTopSkills: false
     ShowTrackedStats: false
-  Help: retinue list
+  Help: '{ysbFV5uT}retinue list'
   HideHelp: false
   ID: afd51f50-caaf-40a8-bf29-d75447e34ef4
-  Name: retinuelist
+  Name: '{kG6yjBBR}retinuelist'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: Get a hero in game. Almost all other actions require an adopted hero.
+- Documentation: '{MpvqvKef}Get a hero in game. Almost all other actions require an adopted hero.'
   Enabled: false
   Handler: AdoptAHero
   HandlerConfig:
@@ -208,40 +208,40 @@ Commands:
   Help: ''
   HideHelp: false
   ID: e317c63a-5a1f-455c-b953-6dcb92dc9424
-  Name: adopt
+  Name: '{0grO6hB5}adopt'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: You can use this to name your custom items.<br>Usage is <code>!nameitem (name)</code>, for example <code>!nameitem Foehammer</code>.<br>If you call <code>!nameitem</code> on its own it will tell you what item will be named next.
+- Documentation: '{S1FZXQim}You can use this to name your custom items.<br>Usage is <code>!nameitem (name)</code>, for example <code>!nameitem Foehammer</code>.<br>If you call <code>!nameitem</code> on its own it will tell you what item will be named next.'
   Enabled: true
   Handler: NameItem
   HandlerConfig: 
-  Help: name a reward item
+  Help: '{tNVmXpoc}name a reward item'
   HideHelp: false
   ID: aef1ded6-f8dd-4b9a-9d70-96e96d17cb12
-  Name: nameitem
+  Name: '{IFDecKha}nameitem'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: Use this to bet on tournament matches, when available.<br>Usage is <code>!bltbet (team) (gold)</code>, for example <code>!bltbet red 10000</code> to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.<br>If only one team is bet upon, the bets will be refunded.
+- Documentation: '{thajdk5s}Use this to bet on tournament matches, when available.<br>Usage is <code>!bltbet (team) (gold)</code>, for example <code>!bltbet red 10000</code> to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.<br>If only one team is bet upon, the bets will be refunded.'
   Enabled: true
   Handler: TournamentBet
   HandlerConfig: 
-  Help: bet on tournament
+  Help: '{xBgLXaf7}bet on tournament'
   HideHelp: false
   ID: 7cbdbc43-660c-4500-9029-d06e81c89f04
-  Name: bltbet
+  Name: '{haKiwbsR}bltbet'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: 
+- Documentation: ''
   Enabled: false
   Handler: UsePower
   HandlerConfig: 
-  Help: 
+  Help: ''
   HideHelp: false
   ID: 4aa62cc4-9ac2-4920-b921-c641f6ad0e24
-  Name: power
+  Name: '{NUQ5PsjF}power'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: Show the heroes achievements and tracked stats.
+- Documentation: '{ZVxCqyJL}Show the heroes achievements and tracked stats.'
   Enabled: true
   Handler: HeroInfoCommand
   HandlerConfig:
@@ -259,55 +259,55 @@ Commands:
     ShowStorage: false
     ShowTopSkills: false
     ShowTrackedStats: true
-  Help: achievements
+  Help: '{aGPoAaM9}achievements'
   HideHelp: false
   ID: 6b05f682-afe1-45e2-ba68-e6ee086ee412
-  Name: ach
+  Name: '{woTpsqyV}ach'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.<br>Usage is <code>!auction (reserve price) (part of the item name)</code>, e.g. <code>!auction 50000 Boots</code> would start a new auction for your custom item with the word "Boots" in it, with a reserve of 50000. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.
+- Documentation: '{ma27zJHy}Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.<br>Usage is <code>!auction (reserve price) (part of the item name)</code>, e.g. <code>!auction 50000 Boots</code> would start a new auction for your custom item with the word "Boots" in it, with a reserve of 50000. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.'
   Enabled: true
   Handler: AuctionItem
   HandlerConfig:
     AuctionDurationInSeconds: 120
     AuctionReminderIntervalInSeconds: 30
-  Help: 
+  Help: ''
   HideHelp: false
   ID: 303342d6-c3c3-4f58-8d0d-0daee20677f8
-  Name: auction
+  Name: '{QQX2aboq}auction'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: Place a bid on the current auction, if one is active.<br>Usage is <code>!bid (gold amount)</code>, e.g. <code>!bid 100000</code>. If there is no auction, or the bid doesn't exceed the reserve price, it will be rejected.
+- Documentation: "{1TBIIJVZ}Place a bid on the current auction, if one is active.<br>Usage is <code>!bid (gold amount)</code>, e.g. <code>!bid 100000</code>. If there is no auction, or the bid doesn't exceed the reserve price, it will be rejected."
   Enabled: true
   Handler: BidOnItem
   HandlerConfig: 
-  Help: 
+  Help: ''
   HideHelp: false
   ID: 95bcd31c-154b-4d70-a3e6-cb247efe9fb4
-  Name: bid
+  Name: '{taI6SRSG}bid'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: Throw away one of your custom items.<br>Usage is <code>!discarditem (part of the item name)</code>, e.g. <code>!discarditem Boots</code> would discard your custom item with the word "Boots" in it. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.
+- Documentation: '{vwPIXbeh}Throw away one of your custom items.<br>Usage is <code>!discarditem (part of the item name)</code>, e.g. <code>!discarditem Boots</code> would discard your custom item with the word "Boots" in it. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.'
   Enabled: true
   Handler: DiscardItem
   HandlerConfig: 
   Help: ''
   HideHelp: false
   ID: 752eb016-7df1-465c-83c7-80cc88f8c02d
-  Name: discarditem
+  Name: '{Pla3OVS4}discarditem'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: Give one of your custom items to another viewer.<br>Usage is <code>!giveitem (viewer) (part of the item name)</code>, e.g. <code>!giveitem C4alad0g Boots</code> would give your custom item with the word "Boots" in it to the viewer called C4lad0g. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.
+- Documentation: '{RS37T7gG}Give one of your custom items to another viewer.<br>Usage is <code>!giveitem (viewer) (part of the item name)</code>, e.g. <code>!giveitem C4alad0g Boots</code> would give your custom item with the word "Boots" in it to the viewer called C4lad0g. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.'
   Enabled: true
   Handler: GiveItem
   HandlerConfig: 
-  Help: 
+  Help: ''
   HideHelp: false
   ID: 0e255e77-4c17-44ad-aeb8-ff01bbbe0bee
-  Name: giveitem
+  Name: '{osvl34my}giveitem'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: Shows your available powers
+- Documentation: '{GYYbCXmu}Shows your available powers'
   Enabled: true
   Handler: HeroInfoCommand
   HandlerConfig:
@@ -325,10 +325,10 @@ Commands:
     ShowStorage: false
     ShowTopSkills: false
     ShowTrackedStats: false
-  Help: 
+  Help: ''
   HideHelp: false
   ID: b595b0f2-ad40-409c-a286-c7f58ac87e13
-  Name: powers
+  Name: '{GHCxNIaR}powers'
   RespondInOverlay: true
   RespondInTwitch: false
 DisableAutomaticFulfillment: false
@@ -341,7 +341,7 @@ GlobalConfigs:
       ID: 596fd61e-757e-46cc-99f4-b4f459018838
       ItemReward:
         ArmorWeight: 1
-        CustomItemName: Reward {ITEMNAME}
+        CustomItemName: '{=W47g8bCB}Reward {ITEMNAME}'
         CustomItemPower: 1
         CustomWeight: 0
         MountWeight: 0
@@ -352,19 +352,14 @@ GlobalConfigs:
         Tier5Weight: 0
         Tier6Weight: 0
         WeaponWeight: 0
-      Name: Reliable
-      NotificationText: '{viewer} is {name}!'
+      Name: '{=ODWiNBng}Reliable'
+      NotificationText: '{=TAWcPGIc}{viewer} is {name}!'
       Requirements:
       - !StatisticRequirement
         Comparison: GreaterOrEqual
-        Description: Consecutive Summons >= 5
         OtherStatistic: None
         Statistic: ConsecutiveSummons
         Value: 5
-      RewardsDescription: >-
-        20000⦷
-
-        Item
       XPGain: 0
     - Enabled: true
       GiveItemReward: true
@@ -372,7 +367,7 @@ GlobalConfigs:
       ID: a98f179e-6a8f-457d-b422-472bb13ad582
       ItemReward:
         ArmorWeight: 1
-        CustomItemName: Reward {ITEMNAME}
+        CustomItemName: '{=W47g8bCB}Reward {ITEMNAME}'
         CustomItemPower: 1
         CustomWeight: 0
         MountWeight: 0
@@ -383,19 +378,14 @@ GlobalConfigs:
         Tier5Weight: 0.649999976
         Tier6Weight: 0.649999976
         WeaponWeight: 0
-      Name: Trusted
-      NotificationText: '{viewer} is {name}!'
+      Name: '{=fWTqF2sw}Trusted'
+      NotificationText: '{=TAWcPGIc}{viewer} is {name}!'
       Requirements:
       - !StatisticRequirement
         Comparison: GreaterOrEqual
-        Description: Consecutive Summons >= 20
         OtherStatistic: None
         Statistic: ConsecutiveSummons
         Value: 20
-      RewardsDescription: >-
-        50000⦷
-
-        Item
       XPGain: 0
     - Enabled: true
       GiveItemReward: true
@@ -403,7 +393,7 @@ GlobalConfigs:
       ID: 96225687-88cc-4d79-b986-0d1778397d61
       ItemReward:
         ArmorWeight: 0
-        CustomItemName: '{ITEMNAME} of Fealty'
+        CustomItemName: '{=IvV04W31}{ITEMNAME} of Fealty'
         CustomItemPower: 1
         CustomWeight: 0.550000012
         MountWeight: 0
@@ -414,21 +404,14 @@ GlobalConfigs:
         Tier5Weight: 0
         Tier6Weight: 0
         WeaponWeight: 1
-      Name: Loyal
-      NotificationText: '{viewer} is {name}!'
+      Name: '{=fe9J8von}Loyal'
+      NotificationText: '{=TAWcPGIc}{viewer} is {name}!'
       Requirements:
       - !StatisticRequirement
         Comparison: GreaterOrEqual
-        Description: Consecutive Summons >= 50
         OtherStatistic: None
         Statistic: ConsecutiveSummons
         Value: 50
-      RewardsDescription: >-
-        250000⦷
-
-        50000xp
-
-        Item
       XPGain: 50000
     - Enabled: true
       GiveItemReward: true
@@ -436,7 +419,7 @@ GlobalConfigs:
       ID: d2968aea-79f5-44fd-b297-b30a141ef498
       ItemReward:
         ArmorWeight: 1
-        CustomItemName: Reward {ITEMNAME}
+        CustomItemName: '{=W47g8bCB}Reward {ITEMNAME}'
         CustomItemPower: 1
         CustomWeight: 0
         MountWeight: 0
@@ -447,19 +430,14 @@ GlobalConfigs:
         Tier5Weight: 0
         Tier6Weight: 0
         WeaponWeight: 0
-      Name: Rebellious
-      NotificationText: '{viewer} is {name}!'
+      Name: '{=HdYFegeb}Rebellious'
+      NotificationText: '{=TAWcPGIc}{viewer} is {name}!'
       Requirements:
       - !StatisticRequirement
         Comparison: GreaterOrEqual
-        Description: Consecutive Attacks >= 5
         OtherStatistic: None
         Statistic: ConsecutiveAttacks
         Value: 5
-      RewardsDescription: >-
-        20000⦷
-
-        Item
       XPGain: 0
     - Enabled: true
       GiveItemReward: true
@@ -467,7 +445,7 @@ GlobalConfigs:
       ID: c3cd4e46-e0f0-4405-8739-446b9a9c097f
       ItemReward:
         ArmorWeight: 1
-        CustomItemName: Reward {ITEMNAME}
+        CustomItemName: '{=W47g8bCB}Reward {ITEMNAME}'
         CustomItemPower: 1
         CustomWeight: 0
         MountWeight: 0
@@ -478,19 +456,14 @@ GlobalConfigs:
         Tier5Weight: 0.649999976
         Tier6Weight: 0.649999976
         WeaponWeight: 0
-      Name: Traitorous
-      NotificationText: '{viewer} is {name}!'
+      Name: '{=gDHR7f8r}Traitorous'
+      NotificationText: '{=TAWcPGIc}{viewer} is {name}!'
       Requirements:
       - !StatisticRequirement
         Comparison: GreaterOrEqual
-        Description: Consecutive Attacks >= 20
         OtherStatistic: None
         Statistic: ConsecutiveAttacks
         Value: 20
-      RewardsDescription: >-
-        50000⦷
-
-        Item
       XPGain: 0
     - Enabled: true
       GiveItemReward: true
@@ -498,7 +471,7 @@ GlobalConfigs:
       ID: a640c816-93a7-41fa-9d1b-1e74491fece4
       ItemReward:
         ArmorWeight: 0
-        CustomItemName: Renegades {ITEMNAME}
+        CustomItemName: '{=UQtSgnog}Renegades {ITEMNAME}'
         CustomItemPower: 1
         CustomWeight: 0.550000012
         MountWeight: 0
@@ -509,21 +482,14 @@ GlobalConfigs:
         Tier5Weight: 0
         Tier6Weight: 0
         WeaponWeight: 1
-      Name: Renegade
+      Name: '{=VEH582e7}Renegade'
       NotificationText: '{viewer} is a {name}!'
       Requirements:
       - !StatisticRequirement
         Comparison: GreaterOrEqual
-        Description: Consecutive Attacks >= 50
         OtherStatistic: None
         Statistic: ConsecutiveAttacks
         Value: 50
-      RewardsDescription: >-
-        250000⦷
-
-        50000xp
-
-        Item
       XPGain: 50000
     - Enabled: true
       GiveItemReward: false
@@ -531,7 +497,7 @@ GlobalConfigs:
       ID: 267a6e67-c39c-4f75-8251-38392adeeaf7
       ItemReward:
         ArmorWeight: 0
-        CustomItemName: Stream Sniper {ITEMNAME}
+        CustomItemName: '{=xI41h8NA}Stream Sniper {ITEMNAME}'
         CustomItemPower: 1
         CustomWeight: 1
         MountWeight: 0
@@ -542,16 +508,14 @@ GlobalConfigs:
         Tier5Weight: 0
         Tier6Weight: 0
         WeaponWeight: 1
-      Name: Stream Sniper
+      Name: '{=Aj0gXKgZ}Stream Sniper'
       NotificationText: '{viewer} is a {name}: they killed {streamer} 5 times!'
       Requirements:
       - !StatisticRequirement
         Comparison: GreaterOrEqual
-        Description: Total Streamer Kills >= 5
         OtherStatistic: None
         Statistic: TotalStreamerKills
         Value: 5
-      RewardsDescription: ''
       XPGain: 0
     AllowDeath: true
     ApplyDeathChanceToAllHeroes: true
@@ -605,9 +569,8 @@ GlobalConfigs:
       GoldReward: 5000
       ID: 45d75aa1-9d90-407f-a333-4aef16aef3a3
       KillsRequired: 5
-      Name: Killing Spree
+      Name: '{=QNbIUDrh}Killing Spree'
       NotificationText: '{viewer} is on a {name}: {kills} kills!'
-      RewardsDescription: '5000⦷ '
       ShowNotification: false
       XPReward: 0
     LevelScalingCap: 5
@@ -650,7 +613,7 @@ GlobalConfigs:
       SkillReductionPercentPerWin: 10
     Prize:
       ArmorWeight: 1
-      CustomItemName: Reward {ITEMNAME}
+      CustomItemName: '{=W47g8bCB}Reward {ITEMNAME}'
       CustomItemPower: 1
       CustomWeight: 1
       MountWeight: 0.100000001
@@ -709,48 +672,48 @@ GlobalConfigs:
       HealthModifierPercent: 125
       HealthToAdd: 0
       ID: 22ad10d6-34df-4d41-afec-7e98a56f8954
-      Name: Healthy I
+      Name: '{=dlrzqWyB}Healthy I'
     - !AddHealthPower
       HealthModifierPercent: 150
       HealthToAdd: 0
       ID: c6356c32-c1e6-4e2a-ad09-e0f054eec108
-      Name: Healthy II
+      Name: '{=QpSDATVx}Healthy II'
     - !AddHealthPower
       HealthModifierPercent: 200
       HealthToAdd: 0
       ID: a3b16d6d-5a2f-416c-9098-55f13f626f34
-      Name: Healthy III
+      Name: '{=Cqkht54y}Healthy III'
     - !AddHealthPower
       HealthModifierPercent: 50
       HealthToAdd: 0
       ID: b99d374b-84d0-495e-a430-1811ad6e712b
-      Name: Fragile I
+      Name: '{=qA2f6xBp}Fragile I'
     - !AddHealthPower
       HealthModifierPercent: 65
       HealthToAdd: 0
       ID: 9cf5d507-92ea-4068-85e6-3938db7170e1
-      Name: Fragile II
+      Name: '{=Hyuf4TSH}Fragile II'
     - !AddHealthPower
       HealthModifierPercent: 90
       HealthToAdd: 0
       ID: 3d71f948-c58b-402f-a134-dfbcef1e28be
-      Name: Fragile III
+      Name: '{=v0ACBXmv}Fragile III'
     - !AbsorbHealthPower
       DamageToAbsorbPercent: 10
       ID: 4a60ed27-334e-446e-8e75-9804b1980c8b
-      Name: Vampiric I
+      Name: '{=mJQ88gTg}Vampiric I'
       Pfx: []
       PowerDurationSeconds: 120
     - !AbsorbHealthPower
       DamageToAbsorbPercent: 25
       ID: b3e5da20-1b82-4820-a373-ff9a8190dd98
-      Name: Vampiric II
+      Name: '{=EHkU2FPe}Vampiric II'
       Pfx: []
       PowerDurationSeconds: 120
     - !AbsorbHealthPower
       DamageToAbsorbPercent: 50
       ID: 936524f5-7bde-4793-828a-1e0cf4a8a6ba
-      Name: Vampiric III
+      Name: '{=gDsSjnnd}Vampiric III'
       Pfx: []
       PowerDurationSeconds: 120
     - !AddDamagePower
@@ -763,7 +726,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -788,7 +750,7 @@ GlobalConfigs:
       ID: 6a36fedb-0b2d-459c-b06b-c4230327589b
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Heavy Hitting I
+      Name: '{=93p2ZAIG}Heavy Hitting I'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -811,7 +773,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -836,7 +797,7 @@ GlobalConfigs:
       ID: a3e50729-68f2-4a25-ac3f-e5c3738965cf
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Heavy Hitting II
+      Name: '{=Gm7OdO9y}Heavy Hitting II'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -859,7 +820,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -884,7 +844,7 @@ GlobalConfigs:
       ID: 2355a51d-d813-48b3-9987-d997099d51ed
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Heavy Hitting III
+      Name: '{=OzBxlGDu}Heavy Hitting III'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -905,7 +865,7 @@ GlobalConfigs:
         MakesRearChancePercent: 0
         ShrugOffChancePercent: 0
       ID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
-      Name: Retribution I
+      Name: '{=0vLSj7KR}Retribution I'
       Pfx: []
       PowerDurationSeconds: 120
       ReflectedDamageIsSubtracted: false
@@ -918,7 +878,7 @@ GlobalConfigs:
         MakesRearChancePercent: 0
         ShrugOffChancePercent: 0
       ID: 347cec61-aa6d-4002-87de-47d298ca3161
-      Name: Retribution II
+      Name: '{=vC5KggFz}Retribution II'
       Pfx: []
       PowerDurationSeconds: 120
       ReflectedDamageIsSubtracted: false
@@ -931,7 +891,7 @@ GlobalConfigs:
         MakesRearChancePercent: 0
         ShrugOffChancePercent: 0
       ID: 4341afec-1b6e-4ee9-8a70-c83a8d1c56c6
-      Name: Retribution III
+      Name: '{=bS76hE3e}Retribution III'
       Pfx: []
       PowerDurationSeconds: 120
       ReflectedDamageIsSubtracted: false
@@ -946,7 +906,7 @@ GlobalConfigs:
           Name: MaxSpeedMultiplier
         ScalePercent: 100
         Skills: []
-      Name: Fleet Footed I
+      Name: '{=FQKNvxVG}Fleet Footed I'
       Pfx: []
       PowerDurationSeconds: 120
     - !StatModifyPower
@@ -959,7 +919,7 @@ GlobalConfigs:
           Name: MaxSpeedMultiplier
         ScalePercent: 100
         Skills: []
-      Name: Fleet Footed II
+      Name: '{=rgQDzX4f}Fleet Footed II'
       Pfx: []
       PowerDurationSeconds: 120
     - !StatModifyPower
@@ -972,7 +932,7 @@ GlobalConfigs:
           Name: MaxSpeedMultiplier
         ScalePercent: 100
         Skills: []
-      Name: Fleet Footed III
+      Name: '{=f7L0oLCQ}Fleet Footed III'
       Pfx: []
       PowerDurationSeconds: 120
     - !StatModifyPower
@@ -988,7 +948,7 @@ GlobalConfigs:
           Name: MountManeuver
         ScalePercent: 100
         Skills: []
-      Name: Charge I
+      Name: '{=39yFtbp2}Charge I'
       Pfx: []
       PowerDurationSeconds: 120
     - !StatModifyPower
@@ -1004,7 +964,7 @@ GlobalConfigs:
           Name: MountManeuver
         ScalePercent: 100
         Skills: []
-      Name: Charge II
+      Name: '{=6IFhNSH3}Charge II'
       Pfx: []
       PowerDurationSeconds: 120
     - !StatModifyPower
@@ -1020,7 +980,7 @@ GlobalConfigs:
           Name: MountManeuver
         ScalePercent: 100
         Skills: []
-      Name: Charge III
+      Name: '{=l2eB9avA}Charge III'
       Pfx: []
       PowerDurationSeconds: 120
     - !AddDamagePower
@@ -1033,7 +993,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 25
         DamageType: Blunt
-        Description: 25dmg in 2m
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -1058,7 +1017,7 @@ GlobalConfigs:
       ID: 6ad716bb-76e1-4cb1-9601-85f81f5d5425
       Melee: false
       MissileTrailParticleEffect: 
-      Name: Charge AoE I
+      Name: '{=R8u1d7M6}Charge AoE I'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: false
@@ -1081,7 +1040,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: 50dmg in 2m
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -1106,7 +1064,7 @@ GlobalConfigs:
       ID: 0c2ecb3e-a4e6-4e54-b87d-b860cc486613
       Melee: false
       MissileTrailParticleEffect: 
-      Name: Charge AoE II
+      Name: '{=lO56Rq9E}Charge AoE II'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: false
@@ -1129,7 +1087,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 100
         DamageType: Blunt
-        Description: 100dmg in 2m
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -1154,7 +1111,7 @@ GlobalConfigs:
       ID: b2da61f2-a12e-4834-9f41-a79040e90ec4
       Melee: false
       MissileTrailParticleEffect: 
-      Name: Charge AoE III
+      Name: '{=X5LQvC0o}Charge AoE III'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: false
@@ -1183,7 +1140,7 @@ GlobalConfigs:
           Name: ArmorTorso
         ScalePercent: 100
         Skills: []
-      Name: Better Mount I
+      Name: '{=tqmxzUCq}Better Mount I'
       Pfx: []
       PowerDurationSeconds: 120
     - !StatModifyPower
@@ -1202,7 +1159,7 @@ GlobalConfigs:
           Name: ArmorTorso
         ScalePercent: 100
         Skills: []
-      Name: Better Mount II
+      Name: '{=izG39s2J}Better Mount II'
       Pfx: []
       PowerDurationSeconds: 120
     - !StatModifyPower
@@ -1221,7 +1178,7 @@ GlobalConfigs:
           Name: ArmorTorso
         ScalePercent: 100
         Skills: []
-      Name: Better Mount III
+      Name: '{=CVmPJOB4}Better Mount III'
       Pfx: []
       PowerDurationSeconds: 120
     - !StatModifyPower
@@ -1237,7 +1194,7 @@ GlobalConfigs:
         - Add: 25
           ModifierPercent: 100
           Skill: Melee
-      Name: Fireblade I
+      Name: '{=7b7BkwRo}Fireblade I'
       Pfx:
       - AttachPoint: OnWeapon
         Name: psys_campfire
@@ -1255,7 +1212,7 @@ GlobalConfigs:
         - Add: 50
           ModifierPercent: 100
           Skill: Melee
-      Name: Fireblade II
+      Name: '{=d8BUyJ5i}Fireblade II'
       Pfx:
       - AttachPoint: OnWeapon
         Name: psys_campfire
@@ -1273,7 +1230,7 @@ GlobalConfigs:
         - Add: 100
           ModifierPercent: 100
           Skill: Melee
-      Name: Fireblade III
+      Name: '{=VGqA25nN}Fireblade III'
       Pfx:
       - AttachPoint: OnWeapon
         Name: psys_campfire
@@ -1294,7 +1251,7 @@ GlobalConfigs:
         - Add: 0
           ModifierPercent: 125
           Skill: Ranged
-      Name: Ranger I
+      Name: '{=7XNfzok8}Ranger I'
       Pfx: []
       PowerDurationSeconds: 120
     - !StatModifyPower
@@ -1313,7 +1270,7 @@ GlobalConfigs:
         - Add: 0
           ModifierPercent: 150
           Skill: Ranged
-      Name: Ranger II
+      Name: '{=HxpAtast}Ranger II'
       Pfx: []
       PowerDurationSeconds: 120
     - !StatModifyPower
@@ -1332,7 +1289,7 @@ GlobalConfigs:
         - Add: 0
           ModifierPercent: 200
           Skill: Ranged
-      Name: Ranger III
+      Name: '{=7YSCRTCg}Ranger III'
       Pfx: []
       PowerDurationSeconds: 120
     - !AddDamagePower
@@ -1345,7 +1302,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: 50dmg in 4m
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -1370,7 +1326,7 @@ GlobalConfigs:
       ID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
       Melee: false
       MissileTrailParticleEffect: psys_game_burning_agent
-      Name: Explosive Projectiles I
+      Name: '{=CTqMR9lV}Explosive Projectiles I'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -1393,7 +1349,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 75
         DamageType: Blunt
-        Description: 75dmg in 4m with 20% Can Dismount
         HitBehavior:
           DismountChance: 20
           KnockBackChancePercent: 0
@@ -1418,7 +1373,7 @@ GlobalConfigs:
       ID: 52e0f85f-c29a-413a-883c-0de4c7f12ead
       Melee: false
       MissileTrailParticleEffect: psys_game_burning_agent
-      Name: Explosive Projectiles II
+      Name: '{=miUEQpaQ}Explosive Projectiles II'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -1441,7 +1396,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 100
         DamageType: Blunt
-        Description: 100dmg in 4m with 15% Knock Down, 50% Can Dismount
         HitBehavior:
           DismountChance: 50
           KnockBackChancePercent: 0
@@ -1466,7 +1420,7 @@ GlobalConfigs:
       ID: 88aaee42-f3ef-4fff-8320-cc06ceb3d9b5
       Melee: false
       MissileTrailParticleEffect: psys_game_burning_agent
-      Name: Explosive Projectiles III
+      Name: '{=o2XgVhjA}Explosive Projectiles III'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -1486,7 +1440,7 @@ GlobalConfigs:
         Properties: []
         ScalePercent: 120
         Skills: []
-      Name: Imposing Mount
+      Name: '{=tv2vTde5}Imposing Mount'
       Pfx: []
       PowerDurationSeconds: 120
     - !StatModifyPower
@@ -1496,7 +1450,7 @@ GlobalConfigs:
         Properties: []
         ScalePercent: 120
         Skills: []
-      Name: Imposing
+      Name: '{=fFProg8j}Imposing'
       Pfx: []
       PowerDurationSeconds: 120
     - !AddDamagePower
@@ -1509,7 +1463,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -1534,7 +1487,7 @@ GlobalConfigs:
       ID: 2bc4d80a-d945-4fe5-801a-026708d3c660
       Melee: false
       MissileTrailParticleEffect: psys_haze_1
-      Name: Heavy Projectiles I
+      Name: '{=r0Wn7FXu}Heavy Projectiles I'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -1557,7 +1510,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 25
         DamageType: Blunt
-        Description: 25dmg in 1m with 5% Knock Down
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -1582,7 +1534,7 @@ GlobalConfigs:
       ID: d7b4d435-a3a1-4fd2-855d-fa3e044128f2
       Melee: false
       MissileTrailParticleEffect: psys_haze_1
-      Name: Heavy Projectiles II
+      Name: '{=XXL8aXIK}Heavy Projectiles II'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -1605,7 +1557,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 40
         DamageType: Blunt
-        Description: 40dmg in 1.5m with 5% Knock Down
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -1630,7 +1581,7 @@ GlobalConfigs:
       ID: d157416b-6d38-41b2-9764-5be15823fd62
       Melee: false
       MissileTrailParticleEffect: psys_haze_1
-      Name: Heavy Projectiles III
+      Name: '{=H3r0Zh8E}Heavy Projectiles III'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -1653,7 +1604,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -1678,7 +1628,7 @@ GlobalConfigs:
       ID: a9d8e86d-4a15-4f35-9ebf-209dc085336f
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Crush Through I
+      Name: '{=xwlvLfJX}Crush Through I'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -1701,7 +1651,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -1726,7 +1675,7 @@ GlobalConfigs:
       ID: ddff3058-160f-4463-bd66-d72e70336300
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Crush Through II
+      Name: '{=7FJTIVa4}Crush Through II'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -1749,7 +1698,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -1774,7 +1722,7 @@ GlobalConfigs:
       ID: fe9bdea0-95dd-4f75-9c8a-165b55ca3ea8
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Crush Through III
+      Name: '{=dQqwtBEE}Crush Through III'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -1797,7 +1745,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -1822,7 +1769,7 @@ GlobalConfigs:
       ID: 98d5c8a7-a480-4f20-a219-e3c0af81e73a
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Knock Down I
+      Name: '{=MKUCQtsr}Knock Down I'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -1845,7 +1792,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -1870,7 +1816,7 @@ GlobalConfigs:
       ID: 7ac9dfdb-5744-4dd6-b445-dab123e67e11
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Knock Down II
+      Name: '{=KUdqJrOY}Knock Down II'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -1893,7 +1839,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -1918,7 +1863,7 @@ GlobalConfigs:
       ID: 745a57aa-e674-4cd3-a57c-ee0c39f945f1
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Knock Down III
+      Name: '{=Uc4Cai9H}Knock Down III'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -1941,7 +1886,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -1966,7 +1910,7 @@ GlobalConfigs:
       ID: 3f5613bb-9bb6-4436-9cf9-a7927cc75387
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Cut Through I
+      Name: '{=VsZLMOHX}Cut Through I'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -1989,7 +1933,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -2014,7 +1957,7 @@ GlobalConfigs:
       ID: e514dfef-57e4-44a5-acdb-c1214275e063
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Cut Through II
+      Name: '{=yXj1jqxx}Cut Through II'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -2037,7 +1980,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -2062,7 +2004,7 @@ GlobalConfigs:
       ID: 087ec677-cb5b-4f4c-9773-1df8e8e69a1d
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Cut Through III
+      Name: '{=R537vuN0}Cut Through III'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -2085,7 +2027,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -2110,7 +2051,7 @@ GlobalConfigs:
       ID: 584fa61d-7016-43d1-b9c3-b690b5dd18b5
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Shatter Shield I
+      Name: '{=89ezJ7aW}Shatter Shield I'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -2133,7 +2074,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -2158,7 +2098,7 @@ GlobalConfigs:
       ID: aa9fdb10-a928-4480-8838-cd3e72774d03
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Shatter Shield II
+      Name: '{=Dvjkoxi3}Shatter Shield II'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -2181,7 +2121,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -2206,7 +2145,7 @@ GlobalConfigs:
       ID: 49e6de04-d7d2-4f00-9006-0e9b8d01cec9
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Shatter Shield III
+      Name: '{=V6RyPIQg}Shatter Shield III'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -2230,7 +2169,7 @@ GlobalConfigs:
       DamageModifierPercent: 100
       DamageToAdd: 0
       ID: bb45ba09-ffe1-4320-9c7e-248f4ad47045
-      Name: Shrug Off I
+      Name: '{=oyKzNISD}Shrug Off I'
       Pfx: []
       PowerDurationSeconds: 120
       RemoveHitBehavior:
@@ -2250,7 +2189,7 @@ GlobalConfigs:
       DamageModifierPercent: 100
       DamageToAdd: 0
       ID: 4be5a15a-82da-4c66-a5c1-979f30fa9239
-      Name: Shrug Off II
+      Name: '{=zNj3xNd4}Shrug Off II'
       Pfx: []
       PowerDurationSeconds: 120
       RemoveHitBehavior:
@@ -2270,7 +2209,7 @@ GlobalConfigs:
       DamageModifierPercent: 100
       DamageToAdd: 0
       ID: 97970d70-c651-4462-9156-17f666259d1a
-      Name: Shrug Off III
+      Name: '{=5nsSdwel}Shrug Off III'
       Pfx: []
       PowerDurationSeconds: 120
       RemoveHitBehavior:
@@ -2289,7 +2228,7 @@ GlobalConfigs:
         - Add: 25
           ModifierPercent: 100
           Skill: Athletics
-      Name: Athletic I
+      Name: '{=b3DBwSTA}Athletic I'
       Pfx: []
       PowerDurationSeconds: 120
     - !StatModifyPower
@@ -2302,7 +2241,7 @@ GlobalConfigs:
         - Add: 50
           ModifierPercent: 100
           Skill: Athletics
-      Name: Athletic II
+      Name: '{=oeSxcpzi}Athletic II'
       Pfx: []
       PowerDurationSeconds: 120
     - !StatModifyPower
@@ -2315,7 +2254,7 @@ GlobalConfigs:
         - Add: 100
           ModifierPercent: 100
           Skill: Athletics
-      Name: Athletic III
+      Name: '{=dMvjTTZb}Athletic III'
       Pfx: []
       PowerDurationSeconds: 120
     - !AddDamagePower
@@ -2328,7 +2267,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -2353,7 +2291,7 @@ GlobalConfigs:
       ID: 0302cfb6-9d38-468a-9a6d-e53cb1245848
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Ignore Armor I
+      Name: '{=ngiTK9F9}Ignore Armor I'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -2376,7 +2314,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -2401,7 +2338,7 @@ GlobalConfigs:
       ID: 355b4ff7-cfd4-4708-b795-adfec6fe5280
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Ignore Armor II
+      Name: '{=Q7JOJL4l}Ignore Armor II'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -2424,7 +2361,6 @@ GlobalConfigs:
       AoE:
         DamageAtCenter: 50
         DamageType: Blunt
-        Description: (inactive)
         HitBehavior:
           DismountChance: 0
           KnockBackChancePercent: 0
@@ -2449,7 +2385,7 @@ GlobalConfigs:
       ID: 4b5f06fc-4a12-4c0b-9264-4b94e1077dd5
       Melee: true
       MissileTrailParticleEffect: 
-      Name: Ignore Armor III
+      Name: '{=fLsEduav}Ignore Armor III'
       Pfx: []
       PowerDurationSeconds: 120
       Ranged: true
@@ -2473,7 +2409,7 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
-        Name: Fireblade
+        Name: '{=yEtkv5ML}Fireblade'
         Powers:
         - PowerID: 80e8009c-2a09-476a-bd71-0aedc6b14011
           Requirements:
@@ -2514,9 +2450,9 @@ GlobalConfigs:
       Enabled: true
       Formation: Ranged
       ID: 9fa426af-af3e-41f6-9b48-0ffef6dc3553
-      Name: infantry
+      Name: '{=m8bz4drX}infantry'
       PassivePower:
-        Name: Healthy
+        Name: '{=ROXuJJq8}Healthy'
         Powers:
         - PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
           Requirements:
@@ -2566,7 +2502,7 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
-        Name: Explosive Arrows
+        Name: '{=skyn1cL6}Explosive Arrows'
         Powers:
         - PowerID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
           Requirements:
@@ -2587,9 +2523,9 @@ GlobalConfigs:
       Enabled: true
       Formation: Ranged
       ID: 492c4b3a-d73e-4fe9-be31-f937d6461f93
-      Name: archer
+      Name: '{=4tflp34a}archer'
       PassivePower:
-        Name: Fleet Footed
+        Name: '{=NE9Li2Hb}Fleet Footed'
         Powers:
         - PowerID: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
           Requirements:
@@ -2634,7 +2570,7 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
-        Name: Explosive Arrows
+        Name: '{=xgnH5owv}Explosive Arrows'
         Powers:
         - PowerID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
           Requirements:
@@ -2655,9 +2591,9 @@ GlobalConfigs:
       Enabled: true
       Formation: Ranged
       ID: bf9dd845-0ed3-4da0-bce7-f718ac52fad7
-      Name: heavyarcher
+      Name: '{=JncRD8tX}heavyarcher'
       PassivePower:
-        Name: Healthy
+        Name: '{=ZrmsIMPE}Healthy'
         Powers:
         - PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
           Requirements:
@@ -2687,7 +2623,7 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
-        Name: Heavy Bolts
+        Name: '{=QZD9XdpC}Heavy Bolts'
         Powers:
         - PowerID: 2bc4d80a-d945-4fe5-801a-026708d3c660
           Requirements:
@@ -2708,9 +2644,9 @@ GlobalConfigs:
       Enabled: true
       Formation: Ranged
       ID: eed616b6-bb68-48aa-8f92-87ab3d744458
-      Name: crossbow
+      Name: '{=wV6R9Si5}crossbow'
       PassivePower:
-        Name: Self Healing
+        Name: '{=FvNPPHLJ}Self Healing'
         Powers:
         - PowerID: 4a60ed27-334e-446e-8e75-9804b1980c8b
           Requirements:
@@ -2755,7 +2691,7 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
-        Name: Explosive Bolts
+        Name: '{=7GmE3SfQ}Explosive Bolts'
         Powers:
         - PowerID: 2bc4d80a-d945-4fe5-801a-026708d3c660
           Requirements:
@@ -2776,9 +2712,9 @@ GlobalConfigs:
       Enabled: true
       Formation: Ranged
       ID: b7ff2652-db31-43bf-a75c-6fa906298da4
-      Name: heavycrossbow
+      Name: '{=bpzytNbP}heavycrossbow'
       PassivePower:
-        Name: Healthy
+        Name: '{=k7booFb2}Healthy'
         Powers:
         - PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
           Requirements:
@@ -2808,7 +2744,7 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
-        Name: Trample
+        Name: '{=ZEGEpycY}Trample'
         Powers:
         - PowerID: 6ad716bb-76e1-4cb1-9601-85f81f5d5425
           Requirements:
@@ -2829,9 +2765,9 @@ GlobalConfigs:
       Enabled: true
       Formation: Cavalry
       ID: d1006ce9-cac9-4416-b8f9-efe55e9eb878
-      Name: cavalry
+      Name: '{=jNaFWF9t}cavalry'
       PassivePower:
-        Name: A Good Horse
+        Name: '{=YghplAdF}A Good Horse'
         Powers:
         - PowerID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
           Requirements:
@@ -2876,7 +2812,7 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
-        Name: Trample
+        Name: '{=mmeJSrm9}Trample'
         Powers:
         - PowerID: 6ad716bb-76e1-4cb1-9601-85f81f5d5425
           Requirements:
@@ -2897,9 +2833,9 @@ GlobalConfigs:
       Enabled: true
       Formation: Cavalry
       ID: 14f908f8-4983-479f-89f7-1dac81f7d0f9
-      Name: camelry
+      Name: '{=mJ8RVORq}camelry'
       PassivePower:
-        Name: A Good Camel
+        Name: '{=atGMPeNF}A Good Camel'
         Powers:
         - PowerID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
           Requirements:
@@ -2944,7 +2880,7 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
-        Name: Explosive Arrows
+        Name: '{=YpIUHASp}Explosive Arrows'
         Powers:
         - PowerID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
           Requirements:
@@ -2965,9 +2901,9 @@ GlobalConfigs:
       Enabled: true
       Formation: HorseArcher
       ID: 2942cdb2-30ec-400a-ba8e-ed9bb3b47f48
-      Name: horsearcher
+      Name: '{=p5qJfkkp}horsearcher'
       PassivePower:
-        Name: Mounted Archery
+        Name: '{=zxgdfSIS}Mounted Archery'
         Powers:
         - PowerID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
           Requirements:
@@ -3012,7 +2948,7 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
-        Name: Heavy Arrows
+        Name: '{=FrX7AiyI}Heavy Arrows'
         Powers:
         - PowerID: 2bc4d80a-d945-4fe5-801a-026708d3c660
           Requirements:
@@ -3033,9 +2969,9 @@ GlobalConfigs:
       Enabled: true
       Formation: HorseArcher
       ID: df54336d-52df-4d4b-a9c6-c1fe91cdc70f
-      Name: camelarcher
+      Name: '{=HreZWoyd}camelarcher'
       PassivePower:
-        Name: Mounted Archery
+        Name: '{=szdoTAQj}Mounted Archery'
         Powers:
         - PowerID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
           Requirements:
@@ -3080,7 +3016,7 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_water_coll_small
           Sound: 
-        Name: Break Through
+        Name: '{=E3qGC3fs}Break Through'
         Powers:
         - PowerID: 98d5c8a7-a480-4f20-a219-e3c0af81e73a
           Requirements:
@@ -3116,9 +3052,9 @@ GlobalConfigs:
       Enabled: true
       Formation: Skirmisher
       ID: 3d5b962a-f6ee-409e-940b-c2f2b8d4cf98
-      Name: skirmisher
+      Name: '{=9euSgzCd}skirmisher'
       PassivePower:
-        Name: Retribution
+        Name: '{=Lw8xQu1P}Retribution'
         Powers:
         - PowerID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
           Requirements:
@@ -3153,7 +3089,7 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: psys_burning_projectile_default_coll_small
           Sound: None
-        Name: Berserker Rage
+        Name: '{=1DSLInEJ}Berserker Rage'
         Powers:
         - PowerID: bb45ba09-ffe1-4320-9c7e-248f4ad47045
           Requirements:
@@ -3189,9 +3125,9 @@ GlobalConfigs:
       Enabled: true
       Formation: Skirmisher
       ID: f04e7a10-950b-48a4-bed3-7aa2091aa268
-      Name: berserker
+      Name: '{=wVjXAFal}berserker'
       PassivePower:
-        Name: Glass Cannon
+        Name: '{=nB4Qb0mD}Glass Cannon'
         Powers:
         - PowerID: b99d374b-84d0-495e-a430-1811ad6e712b
           Requirements:
@@ -3251,7 +3187,7 @@ GlobalConfigs:
         DeactivateEffect:
           ParticleEffect: 
           Sound: 
-        Name: Retribution
+        Name: '{=rzIl9tm3}Retribution'
         Powers:
         - PowerID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
           Requirements:
@@ -3272,9 +3208,9 @@ GlobalConfigs:
       Enabled: true
       Formation: Skirmisher
       ID: ab0fb1fb-ecd9-4ed0-9822-27b7682d1742
-      Name: looter
+      Name: '{=4JffsJMD}looter'
       PassivePower:
-        Name: Grenades
+        Name: '{=nmjVjakS}Grenades'
         Powers:
         - PowerID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
           Requirements:
@@ -3305,7 +3241,6 @@ GlobalConfigs:
       - !StatisticClassSpecificRequirement
         Comparison: GreaterOrEqual
         CurrentClass: true
-        Description: 'Battles >= 5 [class: (current)]'
         OtherStatistic: None
         RequiredClass: 00000000-0000-0000-0000-000000000000
         Statistic: Battles
@@ -3317,7 +3252,6 @@ GlobalConfigs:
       - !StatisticClassSpecificRequirement
         Comparison: GreaterOrEqual
         CurrentClass: true
-        Description: 'Battles >= 20 [class: (current)]'
         OtherStatistic: None
         RequiredClass: 00000000-0000-0000-0000-000000000000
         Statistic: Battles
@@ -3329,7 +3263,6 @@ GlobalConfigs:
       - !StatisticClassSpecificRequirement
         Comparison: GreaterOrEqual
         CurrentClass: true
-        Description: 'Battles >= 50 [class: (current)]'
         OtherStatistic: None
         RequiredClass: 00000000-0000-0000-0000-000000000000
         Statistic: Battles
@@ -3339,7 +3272,7 @@ GlobalConfigs:
     DisableEffectsInTournaments: true
   Id: Buffet - Effects Config
 Rewards:
-- Documentation: Get a hero in game. Almost all other actions require an adopted hero.
+- Documentation: '{=dirEUQc7}Get a hero in game. Almost all other actions require an adopted hero.'
   Enabled: true
   Handler: AdoptAHero
   HandlerConfig:
@@ -3384,9 +3317,9 @@ Rewards:
     IsUserInputRequired: false
     MaxPerStream: 
     MaxPerUserPerStream: 
-    Prompt: Get a hero in game. Almost all other actions require an adopted hero.
-    Title: Adopt a Hero
-- Documentation: Adds 10,000 gold to your adopted hero.
+    Prompt: '{=kL65xglO}Get a hero in game. Almost all other actions require an adopted hero.'
+    Title: '{=Yc9dn4Sx}Adopt a Hero'
+- Documentation: '{=Y7GzhU5a}Adds 10,000 gold to your adopted hero.'
   Enabled: true
   Handler: AddGoldToHero
   HandlerConfig:
@@ -3403,9 +3336,9 @@ Rewards:
     IsUserInputRequired: false
     MaxPerStream: 
     MaxPerUserPerStream: 
-    Prompt: Add 10,000 gold to your adopted hero
-    Title: 10k gold
-- Documentation: Adds 100,000 gold to your adopted hero.
+    Prompt: '{=xQTiKsVA}Add 10,000 gold to your adopted hero'
+    Title: '{=s0GPjZKG}10k gold'
+- Documentation: '{=Hbk74nei}Adds 100,000 gold to your adopted hero.'
   Enabled: true
   Handler: AddGoldToHero
   HandlerConfig:
@@ -3422,9 +3355,9 @@ Rewards:
     IsUserInputRequired: false
     MaxPerStream: 
     MaxPerUserPerStream: 
-    Prompt: Add 100,000 gold to your adopted hero
-    Title: 100k gold
-- Documentation: Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue).
+    Prompt: '{=xeI0AXUl}Add 100,000 gold to your adopted hero'
+    Title: '{=ndi9p5jn}100k gold'
+- Documentation: '{=nI4dr4uZ}Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue).'
   Enabled: true
   Handler: SummonHero
   HandlerConfig:
@@ -3451,9 +3384,9 @@ Rewards:
     IsUserInputRequired: false
     MaxPerStream: 
     MaxPerUserPerStream: 
-    Prompt: Your adopted hero joins the players side in battle
-    Title: Summon
-- Documentation: Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue).
+    Prompt: '{=zmxI41XP}Your adopted hero joins the players side in battle'
+    Title: '{=dpnWybop}Summon'
+- Documentation: '{=flQofEFu}Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue).'
   Enabled: true
   Handler: SummonHero
   HandlerConfig:
@@ -3480,9 +3413,9 @@ Rewards:
     IsUserInputRequired: false
     MaxPerStream: 
     MaxPerUserPerStream: 
-    Prompt: Your adopted hero joins the enemies side in battle
-    Title: Attack
-- Documentation: Heals the streamers character in battle, over time. Doesn't work on the campaign map.
+    Prompt: '{=ry25StNF}Your adopted hero joins the enemies side in battle'
+    Title: '{=IrF1VaBD}Attack'
+- Documentation: "{=zLxgvsYd}Heals the streamers character in battle, over time. Doesn't work on the campaign map."
   Enabled: true
   Handler: CharacterEffect
   HandlerConfig:
@@ -3515,9 +3448,9 @@ Rewards:
     IsUserInputRequired: false
     MaxPerStream: 
     MaxPerUserPerStream: 
-    Prompt: Heal the streamer over time
-    Title: Heal Streamer
-- Documentation: Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament.
+    Prompt: '{=a8DqM6AY}Heal the streamer over time'
+    Title: '{=MSpPJJhZ}Heal Streamer'
+- Documentation: '{=KaE947T9}Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament.'
   Enabled: true
   Handler: JoinTournament
   HandlerConfig:
@@ -3534,9 +3467,9 @@ Rewards:
     IsUserInputRequired: false
     MaxPerStream: 
     MaxPerUserPerStream: 
-    Prompt: Join the tournament queue with your adopted hero
-    Title: Tournament
-- Documentation: Sends a message in the game. If you have a hero then it will also show them next to the message.
+    Prompt: '{=ODfWfHln}Join the tournament queue with your adopted hero'
+    Title: '{=IBrMU0VF}Tournament'
+- Documentation: '{=5L3LWrUx}Sends a message in the game. If you have a hero then it will also show them next to the message.'
   Enabled: true
   Handler: SendMessage
   HandlerConfig:
@@ -3553,9 +3486,9 @@ Rewards:
     IsUserInputRequired: true
     MaxPerStream: 
     MaxPerUserPerStream: 10
-    Prompt: Enter Message
-    Title: Send Message In Game
-- Documentation: Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritence rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete.
+    Prompt: '{=m9IFHkZh}Enter Message'
+    Title: '{=FFvfbTgo}Send Message In Game'
+- Documentation: '{=SXzjFdG1}Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritence rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete.'
   Enabled: true
   Handler: RetireMyHero
   HandlerConfig: 
@@ -3571,9 +3504,9 @@ Rewards:
     IsUserInputRequired: true
     MaxPerStream: 
     MaxPerUserPerStream: 3
-    Prompt: Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel
-    Title: Retire My Hero
-- Documentation: Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly choosen, but influenced by your class and existing skills and equipment.
+    Prompt: '{=ZNGav9pi}Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel'
+    Title: '{=AZMDg7St}Retire My Hero'
+- Documentation: '{=ZfhTuaRR}Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly choosen, but influenced by your class and existing skills and equipment.'
   Enabled: true
   Handler: SkillXP
   HandlerConfig:
@@ -3594,9 +3527,9 @@ Rewards:
     IsUserInputRequired: false
     MaxPerStream: 
     MaxPerUserPerStream: 
-    Prompt: Add 50,000 XP to a random skill of your adopted hero
-    Title: 50k XP
-- Documentation: 
+    Prompt: '{=UCjOD22c}Add 50,000 XP to a random skill of your adopted hero'
+    Title: '{=uA1yEnyO}50k XP'
+- Documentation: ''
   Enabled: false
   Handler: CharacterEffect
   HandlerConfig:
@@ -3635,9 +3568,9 @@ Rewards:
     IsUserInputRequired: false
     MaxPerStream: 
     MaxPerUserPerStream: 1
-    Prompt: 
-    Title: Burn Player
-- Documentation: Heals your hero over time. Only works in battle, when your hero is summoned.
+    Prompt: ''
+    Title: '{=2ciF79zR}Burn Player'
+- Documentation: '{=pFwSBHnR}Heals your hero over time. Only works in battle, when your hero is summoned.'
   Enabled: true
   Handler: CharacterEffect
   HandlerConfig:
@@ -3668,9 +3601,9 @@ Rewards:
     IsUserInputRequired: false
     MaxPerStream: 
     MaxPerUserPerStream: 
-    Prompt: 
-    Title: Heal Hero
-- Documentation: Transfer 10,000 gold to the streamers character, from your hero.
+    Prompt: ''
+    Title: '{=likTlNpu}Heal Hero'
+- Documentation: '{=CSmE7Y50}Transfer 10,000 gold to the streamers character, from your hero.'
   Enabled: true
   Handler: AddGoldToPlayer
   HandlerConfig:
@@ -3689,9 +3622,9 @@ Rewards:
     IsUserInputRequired: true
     MaxPerStream: 
     MaxPerUserPerStream: 
-    Prompt: 'Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:'
-    Title: Give Player Gold
-- Documentation: Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay.
+    Prompt: '{=1IDV1dAh}Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:'
+    Title: '{=9DoHhKeh}Give Player Gold'
+- Documentation: '{=LO6Q2DCb}Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay.'
   Enabled: true
   Handler: UsePower
   HandlerConfig: 
@@ -3707,8 +3640,8 @@ Rewards:
     IsUserInputRequired: false
     MaxPerStream: 
     MaxPerUserPerStream: 
-    Prompt: Activate your class power on your hero, if you have one.
-    Title: Use Class Power
+    Prompt: '{=x5Agf9Wl}Activate your class power on your hero, if you have one.'
+    Title: '{=yoZSmM0b}Use Class Power'
 SimTesting:
   Init:
   - Args: 

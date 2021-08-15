@@ -2,13 +2,17 @@
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 
 namespace BLTAdoptAHero
 {
-    [UsedImplicitly, Description("Allows viewers to discard one of their own custom items")]
+    [LocDisplayName("{=fmftNyHh}Discard Item"),
+     LocDescription("{=f3LrrLHP}Allows viewers to discard one of their own custom items"), 
+     UsedImplicitly]
     public class DiscardItem : HeroCommandHandlerBase
     {
         protected override void ExecuteInternal(Hero adoptedHero, ReplyContext context, object config, 
@@ -19,14 +23,14 @@ namespace BLTAdoptAHero
 
             if (!customItems.Any())
             {
-                ActionManager.SendReply(context, $"You have no items to discard");
+                ActionManager.SendReply(context, "{=oXQ4En4P}You have no items to discard".Translate());
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(context.Args))
             {
                 ActionManager.SendReply(context, 
-                    $"Usage: !{((Command)context.Source).Name} (partial item name)");
+                    context.ArgsErrorMessage("{=by80aboy}(partial item name)".Translate()));
                 return;
             }
 
@@ -36,18 +40,23 @@ namespace BLTAdoptAHero
 
             if (matchingItems.Count == 0)
             {
-                ActionManager.SendReply(context, $"No items found matching \"{context.Args}\"");
+                ActionManager.SendReply(context,
+                    "{=p0urrIvR}No items found matching '{Args}'".Translate(("Args", context.Args)));
                 return;
             }
             if (matchingItems.Count > 1)
             {
-                ActionManager.SendReply(context, $"{matchingItems.Count} items found matching \"{context.Args}\", be more specific");
-                return; 
+                ActionManager.SendReply(context, 
+                    "{=Pzo2UJrl}{Count} items found matching '{Args}', be more specific"
+                        .Translate(("Count", matchingItems.Count), ("Args", context.Args)));
+                return;
             }
             var item = matchingItems.First();
             BLTAdoptAHeroCampaignBehavior.Current.DiscardCustomItem(adoptedHero, item);
             
-            ActionManager.SendReply(context, $"\"{item.GetModifiedItemName()}\" was discarded");
+            ActionManager.SendReply(context, 
+                "{=bNqd3AzN}'{ItemName}' was discarded"
+                    .Translate(("ItemName", item.GetModifiedItemName())));
         }
     }
 }

@@ -71,6 +71,7 @@ namespace BLTAdoptAHero.Powers
         #region Public Interface
         [YamlIgnore, Browsable(false)] 
         public bool IsEnabled => ReflectPercent != 0;
+        [YamlIgnore, Browsable(false)]
         public override string Description => !IsEnabled 
             ? "(disabled)" 
             : $"Reflect {ReflectPercent:0}% damage "

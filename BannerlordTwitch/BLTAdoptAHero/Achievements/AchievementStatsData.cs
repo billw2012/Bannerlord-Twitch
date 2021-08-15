@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
-using BLTAdoptAHero.Annotations;
-using BLTAdoptAHero.Util;
-using TaleWorlds.Core;
-using TaleWorlds.Library;
-using TaleWorlds.SaveSystem;
 
 namespace BLTAdoptAHero.Achievements
 {
@@ -14,24 +9,43 @@ namespace BLTAdoptAHero.Achievements
     {
         public enum Statistic
         {
+            [LocDisplayName("{=FNK3LD2p}None")]
             None,
+            [LocDisplayName("{=5RXxYH32}Total Kills")]
             TotalKills,
+            [LocDisplayName("{=FqBQumbv}Total Hero Kills")]
             TotalHeroKills,
+            [LocDisplayName("{=WMYfysby}Total Viewer Kills")]
             TotalViewerKills,
+            [LocDisplayName("{=qPjwIfaF}Total Streamer Kills")]
             TotalStreamerKills,
+            [LocDisplayName("{=ZTI6irGZ}Total Mount Kills")]
             TotalMountKills,
+            [LocDisplayName("{=6IHF7HQb}Total Deaths")]
             TotalDeaths,
+            [LocDisplayName("{=UHvCzzit}Total Hero Deaths")]
             TotalHeroDeaths,
+            [LocDisplayName("{=mhcnLFBv}Total Viewer Deaths")]
             TotalViewerDeaths,
+            [LocDisplayName("{=rKVsbROz}Total Streamer Deaths")]
             TotalStreamerDeaths,
+            [LocDisplayName("{=6N8KiovH}Total Mount Deaths")]
             TotalMountDeaths,
+            [LocDisplayName("{=YDiK48rp}Summons")]
             Summons,
+            [LocDisplayName("{=facIgBFe}Attacks")]
             Attacks,
+            [LocDisplayName("{=yTIq9zWS}Battles")]
             Battles,
+            [LocDisplayName("{=VwyXMINi}Consecutive Summons")]
             ConsecutiveSummons,
+            [LocDisplayName("{=Ju3c6Iz4}Consecutive Attacks")]
             ConsecutiveAttacks,
+            [LocDisplayName("{=dRD94FMl}TotalTournament Round Wins")]
             TotalTournamentRoundWins,
+            [LocDisplayName("{=GPMB5BPI}TotalTournament Round Losses")]
             TotalTournamentRoundLosses,
+            [LocDisplayName("{=WdZWU9GV}TotalTournament Final Wins")]
             TotalTournamentFinalWins,
         }
 

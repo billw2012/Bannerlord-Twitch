@@ -44,8 +44,9 @@ namespace BannerlordTwitch.Util
         
         static Log()
         {
-            //System.Diagnostics.Trace.Listeners.Add(new LogTraceListener());
-            //System.Diagnostics.Debug.Listeners.Add(new LogTraceListener());
+            // Useless, just catching broken stuff in other mods:
+            // System.Diagnostics.Trace.Listeners.Add(new LogTraceListener());
+            // System.Diagnostics.Debug.Listeners.Add(new LogTraceListener());
         }
         
         public static event Action<Level, string> OnLog;

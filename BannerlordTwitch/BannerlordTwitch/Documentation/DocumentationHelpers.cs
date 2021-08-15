@@ -14,7 +14,7 @@ namespace BannerlordTwitch
         {
             if (obj is bool b)
             {
-                generator.P(b ? "Enabled" : "Disabled");
+                generator.P(b ? "{=kpv03CqK}Enabled".Translate() : "{=soS8qlsg}Disabled".Translate());
             }
             else if (obj.GetType().IsPrimitive || obj.GetType().IsEnum || obj is string)
             {

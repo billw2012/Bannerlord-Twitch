@@ -45,6 +45,7 @@ namespace BLTAdoptAHero.Powers
         #region Public Interface
         [YamlIgnore, Browsable(false)]
         public bool IsEnabled => HealthModifierPercent != 100 || HealthToAdd != 0;
+        [YamlIgnore, Browsable(false)]
         public override string Description
         {
             get

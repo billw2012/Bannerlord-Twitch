@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
@@ -21,28 +22,32 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
 {
-    [HarmonyPatch, UsedImplicitly, Description("Spawns the adopted hero into the current active mission")]
+    [LocDisplayName("{=6uWk9iMM}Summon Hero"),
+     LocDescription("{=ODnzMmBQ}Spawns the adopted hero into the current active mission"), 
+     HarmonyPatch, UsedImplicitly]
     internal class SummonHero : HeroActionHandlerBase
     {
         public class FormationItemSource : IItemsSource
         {
-            public ItemCollection GetValues()
+            public static string GetFriendlyName(string formation)
             {
-                var col = new ItemCollection
-                {
-                    //"Unset",
-                    "Infantry",
-                    "Ranged",
-                    "Cavalry",
-                    "HorseArcher",
-                    "Skirmisher",
-                    "HeavyInfantry",
-                    "LightCavalry",
-                    "HeavyCavalry",
-                    // "Bodyguard",
-                };
-                return col;
+                return FormationMapping.FirstOrDefault(p => (string)p.Value == formation)?.DisplayName 
+                       ?? formation?.SplitCamelCase() ?? "(invalid)";
             }
+
+            private static readonly ItemCollection FormationMapping = new()
+            {
+                { "Infantry", "{=7gt8mcJc}Infantry".Translate() },
+                { "Ranged", "{=kDo9EtMh}Ranged".Translate() },
+                { "Cavalry", "{=HcfkYEsF}Cavalry".Translate() },
+                { "HorseArcher", "{=Xx9xP7jK}Horse Archer".Translate() },
+                { "Skirmisher", "{=PpZY6dPX}Skirmisher".Translate() },
+                { "HeavyInfantry", "{=VT6VYeVp}Heavy Infantry".Translate() },
+                { "LightCavalry", "{=t5iTNQ5p}Light Cavalry".Translate() },
+                { "HeavyCavalry", "{=vyVSsiBr}Heavy Cavalry".Translate() },
+            };
+
+            public ItemCollection GetValues() => FormationMapping;
         }
         
         [CategoryOrder("General", -1)]
@@ -53,65 +58,99 @@ namespace BLTAdoptAHero
         [CategoryOrder("Kill Effects", 4)]
         private class Settings : IDocumentable
         {
-            [Category("Allowed Missions"), 
-             Description("Can summon for normal field battles between parties"), PropertyOrder(1), UsedImplicitly]
+            [LocDisplayName("{=DkCdNiwF}AllowFieldBattle"),
+             LocCategory("Allowed Missions", "{=i8P1EnE1}Allowed Missions"), 
+             LocDescription("{=ddjUyXpV}Can summon for normal field battles between parties"), 
+             PropertyOrder(1), UsedImplicitly]
             public bool AllowFieldBattle { get; set; }
-            [Category("Allowed Missions"), 
-             Description("Can summon in village battles"), PropertyOrder(2), UsedImplicitly]
+            
+            [LocDisplayName("{=yVz54Nky}AllowVillageBattle"),
+             LocCategory("Allowed Missions", "{=i8P1EnE1}Allowed Missions"), 
+             LocDescription("{=buLH4Spj}Can summon in village battles"), 
+             PropertyOrder(2), UsedImplicitly]
             public bool AllowVillageBattle { get; set; }
-            [Category("Allowed Missions"), Description("Can summon in sieges"), PropertyOrder(3), UsedImplicitly]
+            
+            [LocDisplayName("{=0X8bcuPE}AllowSiegeBattle"),
+             LocCategory("Allowed Missions", "{=i8P1EnE1}Allowed Missions"), 
+             LocDescription("{=uk1kL79V}Can summon in sieges"), 
+             PropertyOrder(3), UsedImplicitly]
             public bool AllowSiegeBattle { get; set; }
-            [Category("Allowed Missions"), 
-             Description("This includes walking about village/town/dungeon/keep"), PropertyOrder(4), UsedImplicitly]
+            
+            [LocDisplayName("{=Sd1jguGc}AllowFriendlyMission"),
+             LocCategory("Allowed Missions", "{=i8P1EnE1}Allowed Missions"), 
+             LocDescription("{=1HaljOia}This includes walking about village/town/dungeon/keep"), 
+             PropertyOrder(4), UsedImplicitly]
             public bool AllowFriendlyMission { get; set; }
-            [Category("Allowed Missions"), 
-             Description("Can summon in the hideout missions"), PropertyOrder(7), UsedImplicitly]
+            
+            [LocDisplayName("{=1xJGhP2D}Allow Hide Out"),
+             LocCategory("Allowed Missions", "{=i8P1EnE1}Allowed Missions"), 
+             LocDescription("{=NZTRYcGV}Can summon in the hideout missions"), 
+             PropertyOrder(7), UsedImplicitly]
             public bool AllowHideOut { get; set; }
-            [Category("General"), 
-             Description("Whether the hero is on the player or enemy side"), PropertyOrder(1), UsedImplicitly]
+            
+            [LocDisplayName("{=i59Fm8zV}On Player Side"),
+             LocCategory("General", "{=C5T5nnix}General"), 
+             LocDescription("{=S86V5s0C}Whether the hero is on the player or enemy side"), 
+             PropertyOrder(1), UsedImplicitly]
             public bool OnPlayerSide { get; set; }
-            // [Category("General"), Description("Maximum number of summons that can be active at the same time (i.e. max alive adopted heroes that can be in the mission) NOT IMPLEMENTED YET"), PropertyOrder(2), UsedImplicitly]
-            // public int? MaxSimultaneousSummons { get; set; }
-
-            [Category("General"), Description("Gold cost to summon"), PropertyOrder(5), UsedImplicitly]
+            
+            [LocDisplayName("{=HOZnxjGb}Gold Cost"),
+             LocCategory("General", "{=C5T5nnix}General"), 
+             LocDescription("{=OQISx7Jz}Gold cost to summon"), 
+             PropertyOrder(5), UsedImplicitly]
             public int GoldCost { get; set; }
 
-            [Category("General"), 
-             Description("Which formation to add summoned heroes to (only applies to ones without a specified class)"), 
+            [LocDisplayName("{=sZRrJfKm}Preferred Formation"),
+             LocCategory("General", "{=C5T5nnix}General"), 
+             LocDescription("{=vkFowOeg}Which formation to add summoned heroes to (only applies to ones without a specified class)"), 
              PropertyOrder(6), ItemsSource(typeof(FormationItemSource)), UsedImplicitly]
             public string PreferredFormation { get; set; }
 
-            [Category("General"), Description("Sound to play when summoned"), PropertyOrder(9), UsedImplicitly]
+            [LocDisplayName("{=74AvYKCg}Alert Sound"),
+             LocCategory("General", "{=C5T5nnix}General"),
+             LocDescription("{=R00Lx6aE}Sound to play when summoned"), 
+             PropertyOrder(9), UsedImplicitly]
             public Log.Sound AlertSound { get; set; }
 
-            [Category("Effects"), 
-             Description("Multiplier applied to (positive) effects for subscribers"), PropertyOrder(1), UsedImplicitly]
+            [LocDisplayName("{=H7B3Yzly}Sub Boost"),
+             LocCategory("Effects", "{=tYGvtYKd}Effects"), 
+             LocDescription("{=lFnV3cR9}Multiplier applied to (positive) effects for subscribers"), 
+             PropertyOrder(1), UsedImplicitly]
             public float SubBoost { get; set; }
 
-            [Category("Effects"), 
-             Description("HP the hero gets every second they are alive in the mission"), PropertyOrder(2), UsedImplicitly]
+            [LocDisplayName("{=cXeUjVur}Heal Per Second"),
+             LocCategory("Effects", "{=tYGvtYKd}Effects"), 
+             LocDescription("{=gnh3KY5a}HP the hero gets every second they are alive in the mission"), 
+             PropertyOrder(2), UsedImplicitly]
             public float HealPerSecond { get; set; }
 
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
-                generator.PropertyValuePair("Side", OnPlayerSide ? "Streamers side" : "Enemy side");
+                generator.PropertyValuePair("{=Uu58rjgC}Side".Translate(), 
+                OnPlayerSide 
+                    ? "{=myKKaEl9}Streamers side".Translate() 
+                    : "{=BTZ84Uww}Enemy side".Translate()
+                );
                 if (HealPerSecond > 0)
                 {
-                    generator.PropertyValuePair("Heals", $"{HealPerSecond:0.0}HP per second while summoned");
+                    generator.PropertyValuePair("{=uHTRhFAh}Heals".Translate(), 
+                    "{=cR84crHC}{HealPerSecond}HP per second while summoned"
+                        .Translate(("HealPerSecond", HealPerSecond.ToString("0.0"))));
                 }
                 if (GoldCost > 0)
                 {
-                    generator.PropertyValuePair("Cost", $"{GoldCost}{Naming.Gold}");
+                    generator.PropertyValuePair("{=hCJhgl1m}Cost".Translate(), 
+                    $"{GoldCost}{Naming.Gold}");
                 }
 
                 var allowed = new List<string>();
-                if(AllowFieldBattle) allowed.Add("Field battle");
-                if(AllowVillageBattle) allowed.Add("Village battle");
-                if(AllowSiegeBattle) allowed.Add("Siege battle");
-                if(AllowFriendlyMission) allowed.Add("Friendly mission");
-                if(AllowHideOut) allowed.Add("Hide-out");
+                if(AllowFieldBattle) allowed.Add("{=SRdB89Ca}Field battle".Translate());
+                if(AllowVillageBattle) allowed.Add("{=M45VqXVa}Village battle".Translate());
+                if(AllowSiegeBattle) allowed.Add("{=hbWdpDwr}Siege battle".Translate());
+                if(AllowFriendlyMission) allowed.Add("{=YIfbDpI9}Friendly mission".Translate());
+                if(AllowHideOut) allowed.Add("{=pZ239vm5}Hide-out".Translate());
                 
-                generator.PropertyValuePair("Allowed in", $"{string.Join(", ", allowed)}");
+                generator.PropertyValuePair("{=zOB6Nadp}Allowed in".Translate(), $"{string.Join(", ", allowed)}");
             }
         }
 
@@ -230,7 +269,7 @@ namespace BLTAdoptAHero
                 || Mission.Current.Mode is MissionMode.Barter or MissionMode.Conversation or MissionMode.Deployment or
                     MissionMode.Duel or MissionMode.Replay or MissionMode.CutScene)
             {
-                onFailure($"You cannot be summoned now!");
+                onFailure("{=TdykIizS}You cannot be summoned now!".Translate());
                 return;
             }
 
@@ -246,7 +285,7 @@ namespace BLTAdoptAHero
                || MissionHelpers.InArenaPracticeVisitingArea()
             )
             {
-                onFailure($"You cannot be summoned now, this mission does not allow it!");
+                onFailure("{=HWnEJg1M}You cannot be summoned now, this mission does not allow it!".Translate());
                 return;
             }
 
@@ -254,18 +293,18 @@ namespace BLTAdoptAHero
                 || Mission.Current.CurrentState != Mission.State.Continuing
                 || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null && Mission.Current.Mode != MissionMode.Battle)
             {
-                onFailure($"You cannot be summoned now, the mission has not started yet!");
+                onFailure("{=v5dO40vi}You cannot be summoned now, the mission has not started yet!".Translate());
                 return;
             }
             if (Mission.Current.IsMissionEnding || Mission.Current.MissionResult?.BattleResolved == true)
             {
-                onFailure($"You cannot be summoned now, the mission is ending!");
+                onFailure("{=mTKKaYIf}You cannot be summoned now, the mission is ending!".Translate());
                 return;
             }
             
             if (MissionHelpers.HeroIsSpawned(adoptedHero))
             {
-                onFailure($"You cannot be summoned, you are already here!");
+                onFailure("{=YTEgKnCW}You cannot be summoned, you are already here!".Translate());
                 return;
             }
 
@@ -336,13 +375,23 @@ namespace BLTAdoptAHero
                                     Hero.MainHero.ChangeHeroGold(-BLTAdoptAHeroModule.CommonConfig.WinGold);
                                     // User gets their gold back also
                                     BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, BLTAdoptAHeroModule.CommonConfig.WinGold + settings.GoldCost);
-                                    ActionManager.SendReply(context, $@"You won {BLTAdoptAHeroModule.CommonConfig.WinGold}{Naming.Gold}!");
+                                    ActionManager.SendReply(context, 
+                                        "{=pmj8vjZj}You won {WonGold}{GoldIcon}!".Translate(
+                                                ("WonGold", BLTAdoptAHeroModule.CommonConfig.WinGold),
+                                                ("GoldIcon", Naming.Gold)
+                                                ));
                                 }
                                 else if(BLTAdoptAHeroModule.CommonConfig.LoseGold > 0)
                                 {
                                     Hero.MainHero.ChangeHeroGold(BLTAdoptAHeroModule.CommonConfig.LoseGold);
                                     BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -BLTAdoptAHeroModule.CommonConfig.LoseGold);
-                                    ActionManager.SendReply(context, $@"You lost {BLTAdoptAHeroModule.CommonConfig.LoseGold + settings.GoldCost}{Naming.Gold}!");
+                                    ActionManager.SendReply(context,
+                                        "{=ajhKKeEo}You lost {LostGold}{GoldIcon}!".Translate(
+                                            ("LostGold", BLTAdoptAHeroModule.CommonConfig.WinGold),
+                                            ("GoldIcon", Naming.Gold)
+                                        ));
+
+                                    //$@"You lost {BLTAdoptAHeroModule.CommonConfig.LoseGold + settings.GoldCost}{Naming.Gold}!");
                                 }
                             }
                         });
@@ -368,7 +417,7 @@ namespace BLTAdoptAHero
 
                 BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
 
-                onSuccess($"You have joined the battle!");
+                onSuccess("{=Ft3cxfIx}You have joined the battle!".Translate());
             }
             else
             {
@@ -378,14 +427,14 @@ namespace BLTAdoptAHero
                 {
                     if (Mission.Current.CurrentState != Mission.State.Continuing)
                     {
-                        onFailure($"You cannot be summoned now, the mission has not started yet!");
+                        onFailure("{=YZ4V5e4V}You cannot be summoned now, the mission has not started yet!".Translate());
                         return;
                     }
 
                     var existingHero = BLTSummonBehavior.Current.GetSummonedHero(adoptedHero);
                     if (existingHero != null && existingHero.WasPlayerSide != settings.OnPlayerSide)
                     {
-                        onFailure($"You cannot switch sides, you traitor!");
+                        onFailure("{=2D2T6xP6}You cannot switch sides, you traitor!".Translate());
                         return;
                     }
 
@@ -393,20 +442,21 @@ namespace BLTAdoptAHero
                         && BLTAdoptAHeroModule.CommonConfig.AllowDeath
                         && existingHero.State == AgentState.Killed)
                     {
-                        onFailure($"You cannot be summoned, you DIED!");
+                        onFailure("{=RBTDviuM}You cannot be summoned, you DIED!".Translate());
                         return;
                     }
                     
                     // Check again, as tick is delayed...
                     if (existingHero is {State: AgentState.Active})
                     {
-                        onFailure($"You cannot be summoned, you are already here!");
+                        onFailure("{=YMiZAluP}You cannot be summoned, you are already here!".Translate());
                         return;
                     }
 
                     if (existingHero?.InCooldown == true)
                     {
-                        onFailure($"{existingHero.CooldownRemaining:0}s cooldown remaining");
+                        onFailure("{=kyUh29ij}{CoolDown}s cooldown remaining"
+                            .Translate(("CoolDown", existingHero.CooldownRemaining.ToString("0"))));
                         return;
                     }
 
@@ -422,7 +472,7 @@ namespace BLTAdoptAHero
 
                         if(existingParty != null)
                         {
-                            onFailure($"You cannot be summoned, your party is already here!");
+                            onFailure("{=93Hrc2EA}You cannot be summoned, your party is already here!".Translate());
                             return;
                         }
                         
@@ -440,7 +490,7 @@ namespace BLTAdoptAHero
 
                         if (party == null)
                         {
-                            onFailure($"Could not find a party for you to join!");
+                            onFailure("{=jtqEqonE}Could not find a party for you to join!".Translate());
                             return;
                         }
 
@@ -728,7 +778,7 @@ namespace BLTAdoptAHero
                     //         agent.SetGuardState(Mission.Current.PlayerEnemyTeam?.GeneralAgent, isGuarding: true);
                     // }
 
-                    var expireFn = AccessTools.Method(typeof(TeamQuerySystem), "Expire");
+                    var expireFn = AccessTools.Method(typeof(TeamQuerySystem), "{=PpB8Ouj4}Expire".Translate());
                     foreach (var team in Mission.Current.Teams)
                     {
                         expireFn.Invoke(team.QuerySystem, new object[] { }); // .Expire();
@@ -745,7 +795,7 @@ namespace BLTAdoptAHero
 
                     BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
 
-                    onSuccess($"You have joined the battle!");
+                    onSuccess("{=TvkEBZeY}You have joined the battle!".Translate());
                 });
             }
         }
@@ -789,23 +839,40 @@ namespace BLTAdoptAHero
         }
     }
 
+    [LocDisplayName("{=CXb5ALls}Shout")]
     public class Shout
     {
-        [InstanceName, PropertyOrder(1), UsedImplicitly] 
+        [LocDisplayName("{=V3STT5Ar}Text"), 
+         LocDescription("{=wsIzPzfG}Text that will be displayed in game"), 
+         PropertyOrder(1), InstanceName, UsedImplicitly] 
         public string Text { get; set; } = "Enter shout text here";
-        [PropertyOrder(2), Description("Higher weight means more chance this shout is used"), UsedImplicitly]
+        [LocDisplayName("{=bCbN9OmH}Weight"), 
+         LocDescription("{=xqfCYYwN}Higher weight means more chance this shout is used"), 
+         PropertyOrder(2), UsedImplicitly]
         public float Weight { get; set; } = 1f;
-        [PropertyOrder(3), Description("Can be used when summoning on player side"), UsedImplicitly]
+        [LocDisplayName("{=xK1fdx7s}Player Side"), 
+         LocDescription("{=BpDPlsfY}Can be used when summoning on player side"), 
+         PropertyOrder(3), UsedImplicitly]
         public bool PlayerSide { get; set; } = true;
-        [PropertyOrder(4), Description("Can be used when summoning on enemy side"), UsedImplicitly]
+        [LocDisplayName("{=srN8yHp8}Enemy Side"), 
+         LocDescription("{=0m4s9zXc}Can be used when summoning on enemy side"), 
+         PropertyOrder(4), UsedImplicitly]
         public bool EnemySide { get; set; } = true;
-        [PropertyOrder(5), Description("Can be used in situations other than battle/siege"), UsedImplicitly]
+        [LocDisplayName("{=MOOBN2Hz}General"), 
+         LocDescription("{=6TWSIu60}Can be used in situations other than battle/siege"), 
+         PropertyOrder(5), UsedImplicitly]
         public bool General { get; set; } = true;
-        [PropertyOrder(6), Description("Can be used when in a field battle"), UsedImplicitly]
+        [LocDisplayName("{=4KdKuusC}Field Battle"), 
+         LocDescription("{=8aLSNsxr}Can be used when in a field battle"), 
+         PropertyOrder(6), UsedImplicitly]
         public bool FieldBattle { get; set; } = true;
-        [PropertyOrder(7), Description("Can be used when on siege defender side"), UsedImplicitly]
+        [LocDisplayName("{=2yevL6dV}Siege Defend"), 
+         LocDescription("{=8HwihUK3}Can be used when on siege defender side"), 
+         PropertyOrder(7), UsedImplicitly]
         public bool SiegeDefend { get; set; } = true;
-        [PropertyOrder(8), Description("Can be used when on siege attacker side"), UsedImplicitly]
+        [LocDisplayName("{=r5tvIQwx}Siege Attack"), 
+         LocDescription("{=mbIwJprm}Can be used when on siege attacker side"), 
+         PropertyOrder(8), UsedImplicitly]
         public bool SiegeAttack { get; set; } = true;
 
         public Shout() { }

@@ -13,7 +13,7 @@ namespace BannerlordTwitch.Util
         }
         
         private static string[] sfx = {
-            "None",
+            "{=a8ibMIfH}(none)".Translate(),
             "event:/alerts/nods/attack",
             "event:/alerts/nods/formation",
             "event:/alerts/nods/move",

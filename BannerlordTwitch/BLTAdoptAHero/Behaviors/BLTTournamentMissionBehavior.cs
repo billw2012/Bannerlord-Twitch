@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Models;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Achievements;
@@ -230,10 +231,6 @@ namespace BLTAdoptAHero
 
             return false;
         }
-                
-        #region BLTBetMissionBehavior
-
-        #endregion
 
         public void PrepareForTournamentGame()
         {
@@ -252,7 +249,7 @@ namespace BLTAdoptAHero
                 var results = new List<string>();
                 if (entry.Hero != null && entry.Hero == tournamentBehavior.Winner.Character?.HeroObject)
                 {
-                    results.Add("WINNER!");
+                    results.Add("{=jb5vaUCD}WINNER!".Translate());
 
                     BLTAdoptAHeroCampaignBehavior.Current.IncreaseTournamentChampionships(entry.Hero);
                     // Winner gets their gold back also
@@ -276,7 +273,7 @@ namespace BLTAdoptAHero
                     var (item, itemModifier, slot) = BLTAdoptAHeroModule.TournamentConfig.Prize.Generate(entry.Hero);
 
                     results.Add(item == null
-                        ? $"no prize available for you!"
+                        ? "{=80PitGR4}no prize available for you!".Translate()
                         : RewardHelpers.AssignCustomReward(entry.Hero, item, itemModifier, slot));
                 }
                 else
@@ -454,7 +451,7 @@ namespace BLTAdoptAHero
                     var (item, modifier, _) = RewardHelpers.GenerateRewardType(rewardType, 6, 
                         Hero.MainHero, classDef, allowDuplicates: true,
                         BLTAdoptAHeroModule.CommonConfig.CustomRewardModifiers,
-                        BLTAdoptAHeroModule.TournamentConfig.Prize.CustomItemName, 
+                        BLTAdoptAHeroModule.TournamentConfig.Prize.CustomItemName.ToString(), 
                         BLTAdoptAHeroModule.TournamentConfig.Prize.CustomItemPower);
                     
                     if (item == null)

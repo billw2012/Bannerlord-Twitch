@@ -101,11 +101,9 @@ namespace BLTOverlay
         private static void OpenPort()
         {
             InformationManager.ShowInquiry(
-                new ("BLT Overlay",
-                    $"For the BLT Overlay Browser Source to work it needs to reserve " +
-                    $"port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, " +
-                    $"which will be requested after you press Ok.\nIf successful, you won't see this popup again.",
-                    true, false, "Okay", null,
+                new ("{=fmjzDasd}BLT Overlay".Translate(),
+                    "{=Kgi2isWy}For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again.".Translate(("Port", Port)),
+                    true, false, "{=yXwMSbr4}Okay".Translate(), null,
                     () =>
                     {
                         // To remove them again:
@@ -131,16 +129,18 @@ namespace BLTOverlay
                             });
                             proc?.WaitForExit(5000);
                             InformationManager.ShowInquiry(
-                                new ("BLT Overlay",
-                                    $"Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window.",
+                                new ("{=fmjzDasd}BLT Overlay".Translate(),
+                                    "{=6ucf05tp}Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."
+                                        .Translate(("UrlRoot", UrlRoot)),
                                     true, false, "Okay", null,
                                     Start, () => {}), true);
                         }
                         catch(Exception e)
                         {
                             InformationManager.ShowInquiry(
-                                new ("BLT Overlay",
-                                    $"Configuration FAILED:\n  \"{e.Message}\"\nYou may not be able to access the overlay.\nReport this problem in the discord.",
+                                new ("{=fmjzDasd}BLT Overlay".Translate(),
+                                    "{=usADfORe}Configuration FAILED:\n  \"{e.Message}\"\nYou may not be able to access the overlay.\nReport this problem in the discord."
+                                        .Translate(("e.Message", e.Message)),
                                     true, false, "Okay", null,
                                     () => {}, () => {}), true);
                             Log.Exception($"{nameof(BLTOverlay)}.{nameof(OpenPort)}", e, noRethrow: true);
@@ -157,7 +157,7 @@ namespace BLTOverlay
             public string script;
         }
 
-        private static List<OverlayProvider> overlayProviders = new();
+        private static readonly List<OverlayProvider> overlayProviders = new();
         
         public static void Register(string id, int order, string css, string body, string script)
         {

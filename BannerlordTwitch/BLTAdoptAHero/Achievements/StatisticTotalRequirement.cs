@@ -1,17 +1,22 @@
 ﻿using System;
 using System.ComponentModel;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
 using TaleWorlds.CampaignSystem;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Achievements
 {
     [YamlTagged]
+    [LocDisplayName("{=CkgaxlDY}Statistic Requirement")]
     public class StatisticRequirement : IAchievementRequirement, ICloneable
     {
         #region User Editable
-        [PropertyOrder(1), Description("The statistic this achievement relates to."), UsedImplicitly]
+        [LocDisplayName("{=ienuHzOP}Statistic"),
+         LocDescription("{=OKuz3zwY}The statistic this achievement relates to."), 
+         PropertyOrder(1), UsedImplicitly]
         public AchievementStatsData.Statistic Statistic { get; set; }
 
         public enum Operator
@@ -22,16 +27,19 @@ namespace BLTAdoptAHero.Achievements
             LessOrEqual
         }
 
-        [PropertyOrder(2), 
-         Description("Whether hero needs more or less than the specifed Value. For instance you can make " +
-                     "requirements for the hero to have less than 10 deaths and more than 100 kills."), 
-         UsedImplicitly]
+        [LocDisplayName("{=dXBsEW65}Comparison"),
+         LocDescription("{=4yoAe9WV}Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills."), 
+         PropertyOrder(2), UsedImplicitly]
         public Operator Comparison { get; set; } = Operator.GreaterOrEqual;
         
-        [PropertyOrder(3), Description("Value needed to obtain the achievement."), UsedImplicitly]
+        [LocDisplayName("{=a8Josr4g}Value"),
+         LocDescription("{=B9LEjEq8}Value needed to obtain the achievement."), 
+         PropertyOrder(3), UsedImplicitly]
         public int Value { get; set; }
         
-        [PropertyOrder(4), Description("Other statistic to compare against (this overrides Value if specified)."), UsedImplicitly]
+        [LocDisplayName("{=nau8vg7o}Other Statistic"),
+         LocDescription("{=A3EKQ7up}Other statistic to compare against (this overrides Value if specified)."), 
+         PropertyOrder(4), UsedImplicitly]
         public AchievementStatsData.Statistic OtherStatistic { get; set; }
         #endregion
 
@@ -45,10 +53,11 @@ namespace BLTAdoptAHero.Achievements
             return IsMet(stat, Comparison, val);
         }
 
+        [YamlIgnore, Browsable(false)]
         public virtual string Description =>
-            $"{Statistic.ToString().SplitCamelCase()} " +
+            $"{Statistic.GetDisplayName()} " +
             $"{ComparisonText} " +
-            $"{(OtherStatistic == AchievementStatsData.Statistic.None ? Value : OtherStatistic.ToString().SplitCamelCase())}";
+            $"{(OtherStatistic == AchievementStatsData.Statistic.None ? Value : OtherStatistic.GetDisplayName())}";
         #endregion
 
         #region Public Interface

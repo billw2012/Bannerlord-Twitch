@@ -1,4 +1,5 @@
 ﻿using System;
+using BannerlordTwitch.Util;
 
 namespace BannerlordTwitch
 {
@@ -10,8 +11,8 @@ namespace BannerlordTwitch
 
         public DocumentAttribute(string name = null, string description = null)
         {
-            Name = name;
-            Description = description;
+            Name = name.Translate();
+            Description = description.Translate();
         }
     }
 }

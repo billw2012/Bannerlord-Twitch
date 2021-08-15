@@ -4,7 +4,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -15,33 +17,38 @@ namespace BannerlordTwitch
 {
     public sealed class AgentModifierConfig : IDocumentable, ICloneable
     {
-        [Description("Changes the size of the target"),
+        [LocDisplayName("{JzII0KRZ}Scale Percent"), 
+         LocDescription("{fc1SmPXH}Changes the size of the target"),
          UIRange(50, 150, 5),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          PropertyOrder(1), UsedImplicitly]
         public float ScalePercent { get; set; } = 100f;
         
-        [Description("Apply to the mount of the target, instead of the target themselves " +
-                     "(only some properties are valid on mounts)"), 
+        [LocDisplayName("{0vqiI434}Apply To Mount"), 
+         LocDescription("{U0wJHDSa}Apply to the mount of the target, instead of the target themselves (only some properties are valid on mounts)"), 
          PropertyOrder(2), UsedImplicitly]
         public bool ApplyToMount { get; set; }
 
-        [Description("Properties to change, and how much by"), 
+        [LocDisplayName("{RdCw0xo9}Properties"), 
+         LocDescription("{ZKN8fZsA}Properties to change, and how much by"), 
          Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
          PropertyOrder(3), UsedImplicitly]
         public ObservableCollection<PropertyModifierDef> Properties { get; set; } = new();
         
-        [Description("Skills to change, and how much by (these aren't compatible with Apply To Mount)"), 
+        [LocDisplayName("{iPI9zoqR}Skills"), 
+         LocDescription("{PanMmDx9}Skills to change, and how much by (these aren't compatible with Apply To Mount)"), 
          Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
          PropertyOrder(3), UsedImplicitly]
         public ObservableCollection<SkillModifierDef> Skills { get; set; } = new();
         
         public override string ToString()
         {
-            return (ScalePercent != 100 ? $"Scale {ScalePercent}% " : "")
+            return (ScalePercent != 100 
+                       ? "{EkKFoK73}Scale {ScalePercent}%".Translate(("ScalePercent", (int)ScalePercent)) + " " 
+                       : "")
                    + string.Join(" ", Properties.Select(p => p.ToString()))
                    + string.Join(" ", Skills.Select(p => p.ToString()))
-                   + (ApplyToMount? " (on mount)" : "");
+                   + (ApplyToMount? " " + "{l7w0bPt0}(on mount)".Translate() : "");
         }
 
         public object Clone()
@@ -57,9 +64,12 @@ namespace BannerlordTwitch
 
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
-            string mountStr = ApplyToMount ? "Mount " : "";
+            string mountStr = ApplyToMount ? "{qhIXgPGK}Mount".Translate() + " " : "";
             if(ScalePercent != 100)
-                generator.P($"{mountStr}{ScalePercent:0}% normal size");
+                generator.P(ApplyToMount 
+                    ? "{qhIXgPGK}Mount {ScalePercent}% normal size".Translate(("ScalePercent", (int)ScalePercent))
+                    : "{yLT1lfRC}{ScalePercent}% normal size".Translate(("ScalePercent", (int)ScalePercent))
+                );
             foreach (var p in Properties)
             {
                 generator.P(p.ToString());

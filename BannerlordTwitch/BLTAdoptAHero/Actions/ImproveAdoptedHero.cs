@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
@@ -18,11 +19,17 @@ namespace BLTAdoptAHero
     {
         protected class SettingsBase
         {
-            [Description("Lower bound of amount to improve"), PropertyOrder(1), UsedImplicitly]
+            [LocDisplayName("{=01yarGvZ}Amount Low"),
+             LocDescription("{=UVKWPBjq}Lower bound of amount to improve"), 
+             PropertyOrder(1), UsedImplicitly]
             public int AmountLow { get; set; }
-            [Description("Upper bound of amount to improve"), PropertyOrder(2), UsedImplicitly]
+            [LocDisplayName("{=qi7FVuQB}Amount High"),
+             LocDescription("{=tU4rSLcx}Upper bound of amount to improve"),
+             PropertyOrder(2), UsedImplicitly]
             public int AmountHigh { get; set; }
-            [Description("Gold that will be taken from the hero"), PropertyOrder(3), UsedImplicitly]
+            [LocDisplayName("{=DlZ7sV1N}Gold Cost"),
+             LocDescription("{=pGwh9edB}Gold that will be taken from the hero"), 
+             PropertyOrder(3), UsedImplicitly]
             public int GoldCost { get; set; }
         }
 

@@ -29,6 +29,9 @@ namespace BannerlordTwitch.UI
             set => Value = new RangeInt(Min, value);
         }
         
+        public string MinLabel => "{=TZN2VR8Q}Min".Translate();
+        public string MaxLabel => "{=bySwFF1n}Max".Translate();
+        
         public RangeIntControl()
         {
             InitializeComponent();

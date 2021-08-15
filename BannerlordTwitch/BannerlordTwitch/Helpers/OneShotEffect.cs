@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Linq;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -12,11 +13,13 @@ namespace BannerlordTwitch.Helpers
 {
     public struct OneShotEffect
     {
-        [Description("Particle Effect to play"), ItemsSource(typeof(OneShotParticleEffectItemSource)), 
+        [LocDisplayName("{cv0hxm25}ParticleEffect"), LocDescription("{N1WsBndO}Particle Effect to play"), 
+         ItemsSource(typeof(OneShotParticleEffectItemSource)), 
          PropertyOrder(1), UsedImplicitly]
         public string ParticleEffect { get; set; }
 
-        [Description("Sound to play"), ItemsSource(typeof(SoundEffectItemSource)), 
+        [LocDisplayName("{FyXztxDH}Sound"), LocDescription("{2KrpVrR8}Sound to play"), 
+         ItemsSource(typeof(SoundEffectItemSource)), 
          PropertyOrder(2), UsedImplicitly]
         public string Sound { get; set; }
 

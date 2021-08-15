@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
@@ -13,6 +14,7 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
+    [LocDisplayName("{=v75UOuDM}Power Config")]
     public class GlobalHeroPowerConfig : IUpdateFromDefault, ILoaded
     {
         #region Static
@@ -23,12 +25,16 @@ namespace BLTAdoptAHero
         #endregion
 
         #region User Editable
-        [Description("Defined powers"), UsedImplicitly,  
+        [LocDisplayName("{=9vUtdRu2}Power Definitions"),
+         LocDescription("{=ymGZUjoU}Defined powers"),
          Editor(typeof(DerivedClassCollectionEditor<HeroPowerDefBase>), 
-             typeof(DerivedClassCollectionEditor<HeroPowerDefBase>))] 
+             typeof(DerivedClassCollectionEditor<HeroPowerDefBase>)),  
+         UsedImplicitly] 
         public ObservableCollection<HeroPowerDefBase> PowerDefs { get; set; } = new();
         
-        [Description("Whether powers are disabled in a tournament"), UsedImplicitly] 
+        [LocDisplayName("{=5CD7bmuC}Disable Powers In Tournaments"),
+         LocDescription("{=K7uKtO90}Whether powers are disabled in a tournament"),
+         UsedImplicitly] 
         public bool DisablePowersInTournaments { get; set; } = true;
         
         #region Deprecated

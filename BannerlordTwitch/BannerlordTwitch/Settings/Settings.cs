@@ -36,7 +36,7 @@ namespace BannerlordTwitch
         public bool DisableAutomaticFulfillment { get; set; }
         
         public Command GetCommand(string id) => EnabledCommands.FirstOrDefault(c =>
-            string.Equals(c.Name, id, StringComparison.CurrentCultureIgnoreCase));
+            string.Equals(c.Name.ToString(), id, StringComparison.CurrentCultureIgnoreCase));
 
         public T GetGlobalConfig<T>(string id) => (T)GlobalConfigs.First(c => c.Id == id).Config;
 
@@ -146,7 +146,7 @@ namespace BannerlordTwitch
                 DefaultSettings = YamlHelpers.Deserialize<Settings>(File.ReadAllText(DefaultSettingsFileName));
                 if (DefaultSettings == null)
                 {
-                    throw new Exception($"Couldn't load the mod default settings from {DefaultSettingsFileName}");
+                    throw new ($"Couldn't load the mod default settings from {DefaultSettingsFileName}");
                 }
                 SettingsPostLoad(DefaultSettings);
             }
@@ -174,7 +174,8 @@ namespace BannerlordTwitch
                 Log.Info($"Backed up settings to {newBackupPath}");
                 
                 // Delete old config backups
-                foreach (var o in GetBackupConfigPaths().OrderByDescending(f => f.FileName).Skip(5))
+                foreach (var o in GetBackupConfigPaths()
+                    .OrderByDescending(f => f.FileName).Skip(5))
                 {
                     FileSystem.DeleteFile(o);
                     Log.Info($"Deleted old settings backup {o}");
@@ -217,15 +218,20 @@ namespace BannerlordTwitch
         {
             generator.Div("commands", () =>
             {
-                generator.H1("Commands");
+                generator.H1("{=JlFpeaxe}Commands".Translate());
                 generator.Table(() => {
-                    generator.TR(() => generator.TH("Command").TH("Description").TH("Settings"));
+                    generator.TR(() => generator
+                        .TH("{=15umM0Xo}Command".Translate())
+                        .TH("{=J6daarYb}Description".Translate())
+                        .TH("{=e2Fu7JYS}Settings".Translate()));
                     foreach (var d in Commands.Where(c => c.Enabled))
                     {
                         generator.TR(() =>
                         {
-                            generator.TD(d.Name);
-                            generator.TD(string.IsNullOrEmpty(d.Documentation) ? d.Help : d.Documentation);
+                            generator.TD(d.Name.ToString());
+                            generator.TD(string.IsNullOrEmpty(d.Documentation.ToString()) 
+                                ? d.Help.ToString()
+                                : d.Documentation.ToString());
                             generator.TD(() =>
                             {
                                 if (d.HandlerConfig is IDocumentable doc)
@@ -244,15 +250,19 @@ namespace BannerlordTwitch
             generator.Br();
             generator.Div("rewards", () =>
             {
-                generator.H1("Channel Point Rewards");
+                generator.H1("{=u6xsREDY}Channel Point Rewards".Translate());
                 generator.Table(() => {
-                    generator.TR(() => generator.TH("Command").TH("Description").TH("Settings"));
+                    generator.TR(() => generator
+                        .TH("{15umM0Xo}Command".Translate())
+                        .TH("{J6daarYb}Description".Translate())
+                        .TH("{e2Fu7JYS}Settings".Translate()));
                     foreach (var r in Rewards.Where(r => r.Enabled))
                     {
                         generator.TR(() =>
                         {
-                            generator.TD(r.RewardSpec.Title);
-                            generator.TD(string.IsNullOrEmpty(r.Documentation) ? r.RewardSpec.Prompt : r.Documentation);
+                            generator.TD(r.RewardSpec.Title.ToString());
+                            generator.TD(string.IsNullOrEmpty(r.Documentation.ToString())
+                                ? r.RewardSpec.Prompt?.ToString() : r.Documentation.ToString());
                             generator.TD(() =>
                             {
                                 if (r.HandlerConfig is IDocumentable doc)

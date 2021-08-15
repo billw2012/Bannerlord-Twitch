@@ -103,6 +103,11 @@
         <RemoveDir Directories="$(OutDir)..\..\..\..\obj" />
     </Target>
     <Target Name="AfterBuild">
+        <ItemGroup>
+            <ModuleDataContent Include="ModuleData\**\*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(ModuleDataContent)" DestinationFiles="@(ModuleDataContent->'$(OutDir)..\..\ModuleData\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+        
         <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
         <ReplaceFileText File="$(OutDir)..\..\SubModule.xml" Regex="%(SubModuleOverrides.Regex)" ReplacementText="%(SubModuleOverrides.Replacement)" />
         <ItemGroup>

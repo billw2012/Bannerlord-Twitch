@@ -141,7 +141,6 @@
         <Compile Include="Actions\SummonHero.cs" />
         <Compile Include="Actions\TournamentBet.cs" />
         <Compile Include="Actions\UsePower.cs" />
-        <Compile Include="Actions\Util\BattleEffects.cs" />
         <Compile Include="Actions\Util\CustomItems.cs" />
         <Compile Include="Actions\Util\HeroClassDef.cs" />
         <Compile Include="Actions\Util\ItemModifierAccess.cs" />
@@ -198,6 +197,7 @@
     </ItemGroup>
     <ItemGroup>
         <Content Include="FodyWeavers.xml" />
+        <Content Include="ModuleData\Languages\strings-misc.xml" />
         <Content Include="Overlay\MissionInfo\MissionInfo.css">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
@@ -234,7 +234,12 @@
     <Target Name="AfterBuild">
         <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
         <ReplaceFileText File="$(OutDir)..\..\SubModule.xml" Regex="%(SubModuleOverrides.Regex)" ReplacementText="%(SubModuleOverrides.Replacement)" />
-        <Copy SourceFiles="std_module_strings_xml.xml" DestinationFolder="$(OutDir)..\..\ModuleData\Languages" />
+        
+        <ItemGroup>
+            <ModuleDataContent Include="ModuleData\**\*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(ModuleDataContent)" DestinationFiles="@(ModuleDataContent->'$(OutDir)..\..\ModuleData\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+        
         <ItemGroup>
             <StagingDir Include="$(OutDir)\..\..\**\*" />
         </ItemGroup>

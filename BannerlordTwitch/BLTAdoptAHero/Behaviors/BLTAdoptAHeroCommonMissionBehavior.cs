@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.UI;
 using HarmonyLib;
@@ -32,7 +33,7 @@ namespace BLTAdoptAHero
             public int KillStreak { get; set; }
         }
 
-        private Dictionary<Hero, HeroMissionState> heroMissionState = new();
+        private readonly Dictionary<Hero, HeroMissionState> heroMissionState = new();
         private readonly List<Agent> adoptedHeroMounts = new();
 
         public float PlayerSidePower { get; private set; }
@@ -288,16 +289,19 @@ namespace BLTAdoptAHero
             {
                 if (BLTAdoptAHeroModule.CommonConfig.ShowKillStreakPopup 
                     && currKillStreak.ShowNotification 
-                    && !string.IsNullOrEmpty(currKillStreak.NotificationText))
+                    && !LocString.IsNullOrEmpty(currKillStreak.NotificationText))
                 {
-                    string message = currKillStreak.NotificationText
-                        .Replace("{viewer}", hero.FirstName.ToString())
-                        .Replace("{player}", hero.FirstName.ToString())
-                        .Replace("{kills}",currKillStreak.KillsRequired.ToString())
-                        .Replace("{name}",currKillStreak.Name);
+                    string message = currKillStreak.NotificationText.ToString(
+                        ("{viewer}", hero.FirstName.ToString()),
+                        ("{player}", hero.FirstName.ToString()),
+                        ("{kills}",currKillStreak.KillsRequired.ToString()),
+                        ("{name}",currKillStreak.Name));
                     Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
                 }
-                ApplyStreakEffects(hero, currKillStreak.GoldReward, currKillStreak.XPReward,Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,BLTAdoptAHeroModule.CommonConfig.LevelScalingCap);
+                ApplyStreakEffects(hero, currKillStreak.GoldReward, currKillStreak.XPReward,
+                    Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),
+                    BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,
+                    BLTAdoptAHeroModule.CommonConfig.LevelScalingCap);
             }
         }
 

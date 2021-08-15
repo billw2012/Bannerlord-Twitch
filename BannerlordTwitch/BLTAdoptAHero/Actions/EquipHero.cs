@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
@@ -16,32 +17,46 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
 {
-    [UsedImplicitly]
-    [Description("Improve adopted heroes equipment")]
+    [LocDisplayName("{=3zBXys4m}Equip Hero"),
+     LocDescription("{=3QfHyF8g}Improve adopted heroes equipment"), 
+     UsedImplicitly]
     internal class EquipHero : ActionHandlerBase
     {
         private class Settings : IDocumentable
         {
-            [Description("Allow improvement of adopted heroes who are also companions of the player."), 
+            [LocDisplayName("{=TGs8URfN}Allow Companion Upgrade"),
+             LocDescription("{=6zMgeovT}Allow improvement of adopted heroes who are also companions of the player."), 
              PropertyOrder(0), UsedImplicitly]
             public bool AllowCompanionUpgrade { get; set; } = true;
 
-            [Description("Gold cost for Tier 1 equipment"), PropertyOrder(1), UsedImplicitly]
+            [LocDisplayName("{=8qUzSxsQ}Cost Tier 1"),
+             LocDescription("{=4ipwvHaR}Gold cost for Tier 1 equipment"), 
+             PropertyOrder(1), UsedImplicitly]
             public int CostTier1 { get; set; } = 25000;
 
-            [Description("Gold cost for Tier 2 equipment"), PropertyOrder(2), UsedImplicitly]
+            [LocDisplayName("{=bjAzHOqD}Cost Tier 2"),
+             LocDescription("{=3uRKzeJv}Gold cost for Tier 2 equipment"), 
+             PropertyOrder(2), UsedImplicitly]
             public int CostTier2 { get; set; } = 50000;
 
-            [Description("Gold cost for Tier 3 equipment"), PropertyOrder(3), UsedImplicitly]
+            [LocDisplayName("{=EUw3jfcC}Cost Tier 3"),
+             LocDescription("{=vRTR2AVO}Gold cost for Tier 3 equipment"), 
+             PropertyOrder(3), UsedImplicitly]
             public int CostTier3 { get; set; } = 100000;
 
-            [Description("Gold cost for Tier 4 equipment"), PropertyOrder(4), UsedImplicitly]
+            [LocDisplayName("{=cvWxBhFl}Cost Tier 4"),
+             LocDescription("{=LeCyJf6T}Gold cost for Tier 4 equipment"), 
+             PropertyOrder(4), UsedImplicitly]
             public int CostTier4 { get; set; } = 175000;
 
-            [Description("Gold cost for Tier 5 equipment"), PropertyOrder(5), UsedImplicitly]
+            [LocDisplayName("{=Im4cXqCx}Cost Tier 5"),
+             LocDescription("{=4a0P89lE}Gold cost for Tier 5 equipment"), 
+             PropertyOrder(5), UsedImplicitly]
             public int CostTier5 { get; set; } = 275000;
 
-            [Description("Gold cost for Tier 6 equipment"), PropertyOrder(6), UsedImplicitly]
+            [LocDisplayName("{=c1CI4H3y}Cost Tier 6"),
+             LocDescription("{=JkrTWsSf}Gold cost for Tier 6 equipment"), 
+             PropertyOrder(6), UsedImplicitly]
             public int CostTier6 { get; set; } = 400000;
             
             public int GetTierCost(int tier)
@@ -58,22 +73,24 @@ namespace BLTAdoptAHero
                 };
             }
             
-            [Description("Whether to re-equip the equipment INSTEAD of upgrading it (you should make TWO commands, " +
-                         "one to upgrade and one to reequip)"), PropertyOrder(11), UsedImplicitly]
+            [LocDisplayName("{=GaTe1vEL}Reequip Instead Of Upgrade"),
+             LocDescription("{=zTiLpc9G}Whether to re-equip the equipment INSTEAD of upgrading it (you should make TWO commands, one to upgrade and one to reequip)"),
+             PropertyOrder(11), UsedImplicitly]
             public bool ReequipInsteadOfUpgrade { get; set; }
 
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
                 if (ReequipInsteadOfUpgrade)
                 {
-                    generator.P("Re-rolls your equipment at your current tier");
+                    generator.P("{=IJtXQh2D}Re-rolls your equipment at your current tier".Translate());
                 }
 
-                generator.PropertyValuePair("Tier costs", $"1={CostTier1}{Naming.Gold}, 2={CostTier2}{Naming.Gold}, 3={CostTier3}{Naming.Gold}, 4={CostTier4}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 6={CostTier6}{Naming.Gold}");
+                generator.PropertyValuePair("{=wORNXOT5}Tier costs".Translate(), 
+                    $"1={CostTier1}{Naming.Gold}, 2={CostTier2}{Naming.Gold}, 3={CostTier3}{Naming.Gold}, 4={CostTier4}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 5={CostTier5}{Naming.Gold}, 6={CostTier6}{Naming.Gold}");
                 
                 if (!AllowCompanionUpgrade)
                 {
-                    generator.P($"Disallowed for player companions");
+                    generator.P("{=02iAT4Y8}Disallowed for player companions".Translate());
                 }
             }
         }
@@ -93,12 +110,12 @@ namespace BLTAdoptAHero
             }
             if (!settings.AllowCompanionUpgrade && adoptedHero.IsPlayerCompanion)
             {
-                onFailure($"You are a player companion, you cannot change your own equipment!");
+                onFailure("{=C9Mhzohr}You are a player companion, you cannot change your own equipment!".Translate());
                 return;
             }
             if (Mission.Current != null)
             {
-                onFailure($"You cannot upgrade equipment, as a mission is active!");
+                onFailure("{=RoIXssEg}You cannot upgrade equipment, as a mission is active!".Translate());
                 return;
             }
 
@@ -107,7 +124,7 @@ namespace BLTAdoptAHero
             
             if (targetTier > 5)
             {
-                onFailure($"You cannot upgrade any further!");
+                onFailure("{=FZh7ZtGp}You cannot upgrade any further!".Translate());
                 return;
             }
             

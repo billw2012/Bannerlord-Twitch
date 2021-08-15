@@ -1,0 +1,961 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="English" />
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- AchievementDef -->
+        <string id="CEZZzIAq" text="Achievement Definition"/>
+        
+        <string id="TFbiD0CZ" text="Requirements"/>
+        <string id="sHWjkhId" text="Reward"/>
+        
+        <string id="nLaRVBVV" text="New Achievement"/>
+
+        <string id="guJFFskH" text="Notification Text"/>
+        <string id="SwIUyQNw" text="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement."/>
+        
+        <string id="TfwiBMGr" text="Requirements"/>
+
+        <string id="NitYwoHr" text="Gold Gain"/>
+        <string id="l0xBVhOe" text="Gold awarded for gaining this achievement."/>
+        
+        <string id="JShqb5Be" text="XP Gain"/>
+        <string id="tx7YV26l" text="Experience awarded for gaining this achievement."/>
+        
+        <string id="OmwtPK7J" text="Give Item Reward"/>
+        <string id="vTb0ysRw" text="Whether to give a custom item as reward (defined below)"/>
+        
+        <string id="ZJikxJYo" text="Item Reward"/>
+        <string id="B4gODHog" text="Specifications of the custom item reward, if enabled"/>
+        
+        <!-- AchievementStatsData.Statistic -->
+        <string id="5RXxYH32" text="Total Kills"/>
+        <string id="FqBQumbv" text="Total Hero Kills"/>
+        <string id="WMYfysby" text="Total Viewer Kills"/>
+        <string id="qPjwIfaF" text="Total Streamer Kills"/>
+        <string id="ZTI6irGZ" text="Total Mount Kills"/>
+        <string id="6IHF7HQb" text="Total Deaths"/>
+        <string id="UHvCzzit" text="Total Hero Deaths"/>
+        <string id="mhcnLFBv" text="Total Viewer Deaths"/>
+        <string id="rKVsbROz" text="Total Streamer Deaths"/>
+        <string id="6N8KiovH" text="Total Mount Deaths"/>
+        <string id="YDiK48rp" text="Summons"/>
+        <string id="facIgBFe" text="Attacks"/>
+        <string id="yTIq9zWS" text="Battles"/>
+        <string id="VwyXMINi" text="Consecutive Summons"/>
+        <string id="Ju3c6Iz4" text="Consecutive Attacks"/>
+        <string id="dRD94FMl" text="TotalTournament Round Wins"/>
+        <string id="GPMB5BPI" text="TotalTournament Round Losses"/>
+        <string id="WdZWU9GV" text="TotalTournament Final Wins"/>
+        
+        <!-- ClassLevelRequirement -->
+        <string id="XLXBwBEj" text="Class Level Requirement"/>
+        <string id="s4N0bhG1" text="Min Level"/>
+        <string id="phf8JXQC" text="Minimum class level allowed"/>
+        <string id="BT59iHQ5" text="Max Level"/>
+        <string id="lk60ZYwc" text="Maximum class level allowed"/>
+        <string id="j3QY6MkC" text="AT LEAST {MinLevel}"/>
+        <string id="puNSSMYD" text="{MinLevel} TO {MaxLevel}"/>
+        <string id="boWoZsH4" text="CLASS LEVEL {Description}"/>
+        
+        <!-- StatisticClassSpecificRequirement -->
+        <string id="ziuB7eSV" text="Statistic Class Specific Requirement"/>
+        <string id="WwKyvotH" text="Current Class"/>
+        <string id="S9kGgf0r" text="Requirement uses current class, useful for class power unlocks so you don't have to specify the class explicitly"/>
+        <string id="5QwSEOc3" text="Required Class"/>
+        <string id="G34P8lCu" text="Class required to get this achievement. If (none) is specified then the achievement will apply ONLY when the hero doesn't have a class set."/>
+        <string id="j3YG9dCh" text="class"/>
+        <string id="RXXuHIdN" text="(current)"/>
+        <string id="dPEnuHsk" text="(none)"/>
+        
+        <!-- StatisticRequirement -->
+        <string id="CkgaxlDY" text="Statistic Requirement"/>
+        <string id="ienuHzOP" text="Statistic"/>
+        <string id="OKuz3zwY" text="The statistic this achievement relates to."/>
+        <string id="dXBsEW65" text="Comparison"/>
+        <string id="4yoAe9WV" text="Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills."/>
+        <string id="a8Josr4g" text="Value"/>
+        <string id="B9LEjEq8" text="Value needed to obtain the achievement."/>
+        <string id="nau8vg7o" text="Other Statistic"/>
+        <string id="A3EKQ7up" text="Other statistic to compare against (this overrides Value if specified)."/>
+        
+        <!-- HeroClassDef -->
+        <string id="ph50k2xB" text="Class Definition"/>
+        <string id="iqYaiOhP" text="Class Definition"/>
+        <string id="XkL6MNLl" text="Whether this class is enabled for use in the game or not"/>
+        <string id="U9PyN7eb" text="Name of the class that shall be passed to SetHeroClass actions"/>
+        <string id="rZRKLuGI" text="Description"/>
+        <string id="yRN3Jfwv" text="Description of the class (used in documentation)"/>
+        <string id="zy3uK94p" text="Formation"/>
+        <string id="1kEMFWLD" text="Which formation to add summoned units to"/>
+        <string id="48tkMBhb" text="Slot 1"/>
+        <string id="kpDE6URE" text="Item type to put in slot 1"/>
+        <string id="vXtJLZlw" text="Slot 2"/>
+        <string id="G5AN3s2D" text="Item type to put in slot 2"/>
+        <string id="B4LLuesN" text="Slot 3"/>
+        <string id="clxxPb9O" text="Item type to put in slot 3"/>
+        <string id="h9PK7GnU" text="Slot 4"/>
+        <string id="EUzbiqh5" text="Item type to put in slot 4"/>
+        <string id="MdYmGuin" text="Use Horse"/>
+        <string id="Q00NX1J9" text="Whether to allow horse (can be combined with Use Camel)"/>
+        <string id="1YsQ2fC3" text="Use Camel"/>
+        <string id="Us7G1v2T" text="Whether to allow camel (can be combined with Use Horse"/>
+        <string id="MvddFKo4" text="Passive Power"/>
+        <string id="F8a2nXYo" text="Passive hero power: this will always apply to the hero (i.e. a permanent buff)"/>
+        <string id="wdCMNOGd" text="Active Power"/>
+        <string id="I4ASwveG" text="Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff)"/>
+        
+        <string id="YzIcRgBV" text="Horse"/>
+        <string id="HMclWXR8" text="Camel"/>
+        <string id="A1G6bq0G" text="Use Horse"/>
+        <string id="FpgyZk0F" text="Use Camel"/>
+        <string id="GFc6JLJ9" text="(none)"/>
+        <string id="A79HrgZ0" text="Details"/>
+        <string id="Rs1XNM9K" text="Tier {TierNumber}"/>
+        <string id="HyXJQJtW" text="Equipment"/>
+
+        <string id="iGdq37PI" text="Mount"/>
+        
+        <!-- KillStreakDef -->
+        <string id="InTnlqz1" text="Kill Streak"/>
+        <string id="poe8m8rn" text="Show Notification"/>
+        <string id="RQh3jIZW" text="Notification Text"/>
+        <string id="04wTH1xo" text="Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required."/>
+        <string id="mG7HzT0z" text="Kills Required"/>
+        <string id="mLElTwb6" text="Kills required to achieve the kill streak."/>
+        <string id="zEqJgISl" text="Gold Reward"/>
+        <string id="CYg79sAT" text="Gold rewarded when the kill streak is achieved."/>
+        <string id="vzCgh9PN" text="XP Reward"/>
+        <string id="Q1TcztBP" text="Experience granted when the kill streak is achieved."/>
+        <string id="KtvBk2nR" text="New Kill Streak"/>
+        <string id="ipowOInD" text="{viewer} got {name} ({kills} kills)"/>
+        <string id="YZJ60Pxb" text="{KillsRequired} kills"/>
+
+        <!-- SummonHero.FormationItemSource -->
+        <string id="7gt8mcJc" text="Infantry"/>
+        <string id="kDo9EtMh" text="Ranged"/>
+        <string id="HcfkYEsF" text="Cavalry"/>
+        <string id="Xx9xP7jK" text="Horse Archer"/>
+        <string id="PpZY6dPX" text="Skirmisher"/>
+        <string id="VT6VYeVp" text="Heavy Infantry"/>
+        <string id="t5iTNQ5p" text="Light Cavalry"/>
+        <string id="vyVSsiBr" text="Heavy Cavalry"/>
+        
+        <!-- SkillRangeDef -->
+        <string id="uUWdyER4" text="Skill Range"/>
+        
+        <string id="WcQpCpdI" text="The skill or skill group"/>
+        <string id="fozHOKis" text="The min level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023)"/>
+        <string id="I6hTb2OY" text="The max level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023)"/>
+        
+        <!-- AddGoldToHero -->
+        <string id="kn4uxAWs" text="Add Gold To Hero"/>
+        <string id="vkgPfcAu" text="Gives gold to the adopted hero"/>
+        
+        <string id="S2CeRdjR" text="How much gold to give the adopted hero"/>
+        
+        <!-- AdoptAHero -->
+        <string id="NkZXnSQI" text="Adopt A Hero"/>
+        <string id="fd7G5N0Q" text="Allows viewer to 'adopt' a hero in game -- the hero name will change to the viewers name, and they can control it with further commands"/>
+
+        <string id="TLrDxhlh" text="Create New"/>
+        <string id="F1KDzuZZ" text="Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern)"/>
+        <string id="nPIcT2s7" text="Allow Noble"/>
+        <string id="XvZN7OOY" text="Allow noble heroes (if CreateNew is false)"/>
+        <string id="VVFsa8LQ" text="Allow Wanderer"/>
+        <string id="9lE2KSvC" text="Allow wanderer heroes (if CreateNew is false)"/>
+        <string id="A8G9ctbn" text="Allow Player Companion"/>
+        <string id="6EjGRMkt" text="Allow companions (not tested, if CreateNew is false)"/>
+        <string id="B2z7T1xQ" text="Only Same Faction"/>
+        <string id="QvQGwFyl" text="Only allow heroes from same faction as player"/>
+        <string id="dvbkxJQz" text="Inheritance"/>
+        <string id="KLJtpEjg" text="What fraction of assets will be inherited when a new character is adopted after an old one died (0 to 1)"/>
+        <string id="Bi19tTPj" text="Maximum Inherited Custom Items"/>
+        <string id="tFolfAOn" text="How many custom items can be inherited"/>
+        <string id="O4DGlP9Z" text="Subscriber Only"/>
+        <string id="TBNkHsLC" text="Only subscribers can adopt"/>
+        <string id="dO41CKIU" text="Minimum Subscribed Months"/>
+        <string id="BVZwDqR0" text="Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified"/>
+        <string id="iOmYBC7I" text="Starting Gold"/>
+        <string id="pZMkJLix" text="Gold the adopted hero will start with"/>
+        <string id="ZXwbvbbq" text="Override Age"/>
+        <string id="gxQgrAey" text="Override the heroes age"/>
+        <string id="NEBQgHiX" text="Starting Age Range"/>
+        <string id="TYqEBuLW" text="Random range of age when overriding it"/>
+        <string id="9IOFHQjS" text="Starting Skills"/>
+        <string id="C4rV4f2F" text="Starting skills, if empty then default skills of the adopted hero will be left in tact"/>
+        <string id="IAKQCRa1" text="Starting Equipment Tier"/>
+        <string id="mQwjHXfC" text="Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment"/>
+        <string id="0vGFJdO1" text="Starting Class"/>
+        <string id="zgjyFL6i" text="Starting class of the hero"/>
+        
+        
+        <string id="4zAUTiSP" text="Subscriber Only"/>
+        <string id="cJQCU33B" text="Newly created wanderer"/>
+        <string id="fP84ES0X" text="Noble"/>
+        <string id="ozRaAx6L" text="Wanderer"/>
+        <string id="YucejFfO" text="Companions"/>
+        <string id="UNtHwNhx" text="Allowed"/>
+        <string id="6W0OJKkA" text="Same faction only"/>
+        <string id="pDP8b5HR" text="Starting Age Range"/>
+        <string id="FvhsCSd3" text="Starting Gold"/>
+        <string id="wP0lfTf3" text="Inheritance"/>
+        <string id="mDK67efh" text="{Inheritance}% of gold spent on equipment and retinue"/>
+        <string id="76NtQIGB" text="no custom items"/>
+        <string id="sEDQrZCp" text="up to {MaxInheritedCustomItems} custom items"/>
+        
+        <string id="mJfD7e2g" text="You have already adopted a hero!"/>
+        <string id="4K7Q7gR0" text="You must be subscribed for at least {MinSubscribedMonths} months to adopt a hero with this command!"/>
+        <string id="0QeQPxYi" text="You must be subscribed to adopt a hero with this command!"/>
+        <string id="XlQUIIsg" text="No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)!"/>
+        <string id="E7wqQ2kg" text="You can't adopt a hero: no available hero matching the requirements was found!"/>
+        <string id="K7nuJVCN" text="{OldName} is now known as {NewName}!"/>
+        <string id="PAc5S0GY" text="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})!"/>
+        <string id="lANBKEFN" text="{OldName} is now known as {NewName}, they have {NewGold}!"/>
+        
+        <!-- AttributePoints -->
+        <string id="TmUJ8VU7" text="Add Attribute Points"/>
+        <string id="YrYFBWaw" text="Improve adopted heroes attribute points"/>
+        <string id="ibuIZ39r" text="Random"/>
+        <string id="2F4MZn5h" text="If set a random attribute is improved, otherwise the viewer should provide part of the name of the attribute to improve (this works best as a chat command)"/>
+        <string id="JQdCfO2H" text="Random attribute"/>
+        <string id="hSPAbHWb" text="Provide the attribute name (or part of it) when calling this"/>
+        
+        <string id="VxproTE2" text="Couldn't improve any attributes, they are all at max level!"/>
+        <string id="i9ziqTXG" text="Provide the attribute name to improve (or part of it)"/>
+        <string id="Sl1bdnfy" text="You have gained {Amount} points in {Attribute}, you now have {NewAmount}!"/>
+        <string id="2vli3BCR" text="You have gained a point in {Attribute}, you now have {NewAmount}!"/>
+        <string id="YawQBjBG" text=""/>
+        
+        <string id="LE3POzUs" text="Couldn't find attribute matching '{Args}'!"/>
+        <string id="R7X1dTqL" text="Couldn't improve {Attribute} attribute, it is already at max level!"/>
+        
+        <!-- AuctionItem -->
+        <string id="Q1QZbwR3" text="Auction Item"/>
+        <string id="024hOo3G" text="Allows viewers to auction custom items, for other viewers to bid on (make sure to add a bid command also)"/>
+        <string id="34GjlaWu" text="Auction Item"/>
+        <string id="zsvhQABf" text="How long the auction should last before the highest bidder wins"/>
+        <string id="ssmJ9c5L" text="Auction Item"/>
+        <string id="ijkjWj5q" text="Interval at which to output a reminder of the auction"/>
+        <string id="T2R35HHV" text="Another auction is already in progress"/>
+        <string id="kYHEtOM7" text="You have no items to auction"/>
+        <string id="lI4WCNeQ" text="(reserve price) (partial item name)"/>
+        <string id="mm1ay4I7" text="Invalid reserve price '{Arg}'"/>
+        <string id="viO1RBr5" text="No items found matching '{ItemName}'"/>
+        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName}', be more specific"/>
+        
+        <string id="BH5rnHNq" text="Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."/>
+        <string id="rBAvqAh7" text="Bid On Item"/>
+        <string id="XuvGyCwD" text="Allows viewers bid on an active custom item auction (make sure to add an auction command also)"/>
+        <string id="ewjqhPqj" text="(bid amount)"/>
+        <string id="dgG5WPrC" text="Invalid bid amount"/>
+        
+        <!-- EquipHero -->
+        <string id="3zBXys4m" text="Equip Hero"/>
+        <string id="3QfHyF8g" text="Improve adopted heroes equipment"/>
+        <string id="TGs8URfN" text="Allow Companion Upgrade"/>
+        <string id="6zMgeovT" text="Allow improvement of adopted heroes who are also companions of the player."/>
+        <string id="8qUzSxsQ" text="Cost Tier 1"/>
+        <string id="4ipwvHaR" text="Gold cost for Tier 1 equipment"/>
+        <string id="bjAzHOqD" text="Cost Tier 2"/>
+        <string id="3uRKzeJv" text="Gold cost for Tier 2 equipment"/>
+        <string id="EUw3jfcC" text="Cost Tier 3"/>
+        <string id="vRTR2AVO" text="Gold cost for Tier 3 equipment"/>
+        <string id="cvWxBhFl" text="Cost Tier 4"/>
+        <string id="LeCyJf6T" text="Gold cost for Tier 4 equipment"/>
+        <string id="Im4cXqCx" text="Cost Tier 5"/>
+        <string id="4a0P89lE" text="Gold cost for Tier 5 equipment"/>
+        <string id="c1CI4H3y" text="Cost Tier 6"/>
+        <string id="JkrTWsSf" text="Gold cost for Tier 6 equipment"/>
+        <string id="GaTe1vEL" text="Reequip Instead Of Upgrade"/>
+        <string id="zTiLpc9G" text="Whether to re-equip the equipment INSTEAD of upgrading it (you should make TWO commands, one to upgrade and one to reequip)"/>
+        <string id="IJtXQh2D" text="Re-rolls your equipment at your current tier"/>
+        <string id="02iAT4Y8" text="Disallowed for player companions"/>
+        <string id="wORNXOT5" text="Tier costs"/>
+        <string id="C9Mhzohr" text="You are a player companion, you cannot change your own equipment!"/>
+        <string id="RoIXssEg" text="You cannot upgrade equipment, as a mission is active!"/>
+        <string id="FZh7ZtGp" text="You cannot upgrade any further!"/>
+        <string id="WihQZ5uq" text="Focus Points"/>
+        <string id="01L8w1ZW" text="Add focus points to heroes skills"/>
+        <string id="QwuyvXBg" text="Skills"/>
+        <string id="w9liWZ9A" text="What skill to add focus to"/>
+        <string id="RiUjwmS5" text="Auto"/>
+        <string id="EA4jsUhm" text="Chooses a random skill to add focus to, prefering class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used."/>
+        <string id="UpHpjzFk" text="Focus points"/>
+        <string id="SIM2l7ta" text="Automatic, based on class, equipment, and existing skills"/>
+        <string id="VXvS5xji" text="Couldn't find a valid skill to add focus points to!"/>
+        <string id="6tcVqRIs" text="You have gained {Amount} focus points in {Skill}, you now have {NewAmount}!"/>
+        <string id="HLFMWOJA" text="You have gained a focus point in {Skill}, you now have {NewAmount}!"/>
+        
+        <!-- DiscardItem -->
+        <string id="fmftNyHh" text="Discard Item"/>
+        <string id="f3LrrLHP" text="Allows viewers to discard one of their own custom items"/>
+        <string id="oXQ4En4P" text="You have no items to discard"/>
+        <string id="by80aboy" text="(partial item name)"/>
+        <string id="p0urrIvR" text="No items found matching '{Args}'"/>
+        <string id="Pzo2UJrl" text="{Count} items found matching '{Args}', be more specific"/>
+        <string id="bNqd3AzN" text="'{ItemName}' was discarded"/>
+        
+        <!-- GiveItem -->
+        <string id="nAPjfF4C" text="Give Item"/>
+        <string id="u9Jx6QUr" text="Allows viewers to give one of their own custom items to another viewer"/>
+        <string id="Tfj1U5BB" text="You have no items to give"/>
+        <string id="BClUoR9H" text="(recipient) (partial item name)"/>
+        <string id="vDsYxMKq" text="Couldn't find recipient '{Name}'"/>
+        <string id="E1o7b5ht" text="'{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
+        
+        <!-- HeroInfoCommand -->
+        <string id="cj68a0l9" text="Show Hero Info"/>
+        <string id="QsTQzceq" text="Will write various hero stats to chat"/>
+        <string id="oWtshHwx" text="Show Gold"/>
+        <string id="O2mUbcue" text="Show gold"/>
+        <string id="VmQECrnc" text="Show General"/>
+        <string id="JWbk5Oko" text="Show personal info: health, location, age"/>
+        <string id="tMKmlYeR" text="Show Top Skills"/>
+        <string id="dayx7JEJ" text="Shows skills (and focuse values) above the specified MinSkillToShow value"/>
+        <string id="5VW8HXxS" text="Min Skill To Show"/>
+        <string id="4819Fxyv" text="If ShowTopSkills is specified, this defines what skills are shown"/>
+        <string id="lSM7JkvB" text="Show Attributes"/>
+        <string id="co5TLkOw" text="Shows all hero attributes"/>
+        <string id="uLUxOyp2" text="Show Equipment"/>
+        <string id="CnTMaEPC" text="Shows the equipment tier of the hero"/>
+        <string id="sp1iuH1y" text="Show Inventory"/>
+        <string id="uhAC3hOZ" text="Shows the full battle inventory of the hero"/>
+        <string id="aRA1V1Jp" text="Show Storage"/>
+        <string id="Wjr33ERJ" text="Shows the heroes storage (all their custom items)"/>
+        <string id="ecvBeN44" text="Show Civilian Inventory"/>
+        <string id="fUggutW6" text="Shows the full civilian inventory of the hero"/>
+        <string id="p0WEhay8" text="Show Retinue"/>
+        <string id="AXnWeTzh" text="Shows a summary of the retinue of the hero (count and tier)"/>
+        <string id="Vyatyyuh" text="Show Retinue List"/>
+        <string id="CSTqzcOi" text="Shows the exact classes and counts of the retinue of the hero"/>
+        <string id="1F3utCWA" text="Show Achievements"/>
+        <string id="CKJd7KC9" text="Shows all hero achievements"/>
+        <string id="LNvYSMZj" text="Show Tracked Stats"/>
+        <string id="FaUbhgTR" text="Shows all hero tracked stats (kills, deaths, summons, attacks, tournament wins etc.)"/>
+        <string id="cHaiwygJ" text="Show Powers"/>
+        <string id="YW8HsNEF" text="Shows the heroes unlocked powers"/>
+        <string id="YVhcZatv" text="Gold"/>
+        <string id="jZigiKXG" text="Age, Clan, Culture, Health"/>
+        <string id="6wVce2iI" text="Skills greater than {MinSkillToShow}"/>
+        <string id="74kcLopo" text="Attributes"/>
+        <string id="PeDxGcu7" text="Equipment tier"/>
+        <string id="EVvlMCru" text="Battle equipment inventory"/>
+        <string id="DeffOla6" text="Civilian equipment inventory"/>
+        <string id="VSDDQdmJ" text="Custom item storage"/>
+        <string id="C0mkGXlK" text="Retinue count and average tier"/>
+        <string id="L4Rh6vFE" text="Retinue unit list"/>
+        <string id="ZW9XlwY7" text="Achievements"/>
+        <string id="Xmo7pOpj" text="Tracked stats"/>
+        <string id="xVDOsWPq" text="Powers"/>
+        <string id="UB1bAtSI" text="Shows"/>
+        <string id="ZI2UKbNp" text="No Class"/>
+        <string id="4TVRrlOw" text="{Age} yrs"/>
+        <string id="jY2QJdA3" text="{HP} / {MaxHP} HP"/>
+        <string id="B2xDasDx" text="Last seen near {Place}"/>
+        <string id="fRwyY6ms" text="[LVL]"/>
+        <string id="rTId8pBy" text="[SKILLS]"/>
+        <string id="RSlhbJzO" text="[ATTR]"/>
+        <string id="64yw2YD0" text="[TIER]"/>
+        <string id="u32KRqz8" text="No Equip Class"/>
+        <string id="YVVlcDSK" text="[BATTLE]"/>
+        <string id="zaVtcDWB" text="[CIV]"/>
+        <string id="U4HnxTCj" text="[STORED]"/>
+        <string id="hMBF1zLr" text="[RETINUE]"/>
+        <string id="4IOefqsW" text="(nothing)"/>
+        <string id="XE2QRhyz" text="{RetinueCount} (avg Tier {Tier})"/>
+        <string id="giS3vq1V" text="[ACHIEV]"/>
+        <string id="ADjhFwlz" text="K"/>
+        <string id="aUj96cVC" text="D"/>
+        <string id="i02EMVP8" text="KVwr"/>
+        <string id="iGXwhVja" text="KStrmr"/>
+        <string id="APUC6wGt" text="Battles"/>
+        <string id="6nwK1UF9" text="Sums"/>
+        <string id="uDFykstd" text="CSums"/>
+        <string id="wtmfNCIj" text="Atks"/>
+        <string id="T29akAtY" text="CAtks"/>
+        <string id="NOkWgftX" text="TourRndW"/>
+        <string id="k5O3x52V" text="TourRndL"/>
+        <string id="J6yoXowD" text="TourW"/>
+        <string id="nL2E16fj" text="[STATS]"/>
+        <string id="gV1s8Ffw" text="[ACTIVE]"/>
+        <string id="z82jxnmF" text="[PASSIVE]"/>
+        <string id="01yarGvZ" text="Amount Low"/>
+        <string id="UVKWPBjq" text="Lower bound of amount to improve"/>
+        <string id="qi7FVuQB" text="Amount High"/>
+        <string id="tU4rSLcx" text="Upper bound of amount to improve"/>
+        <string id="DlZ7sV1N" text="Gold Cost"/>
+        <string id="pGwh9edB" text="Gold that will be taken from the hero"/>
+        
+        <!-- JoinTournament -->
+        <string id="EZPZtyXo" text="Join Tournament"/>
+        <string id="1h8OT5VD" text="Puts adopted heroes in queue for the next tournament"/>
+        <string id="7D2UBlGC" text="Gold Cost"/>
+        <string id="Upuhtmr6" text="Gold cost to join"/>
+        <string id="jUcsHkqk" text="JOIN the viewer tournament"/>
+        <string id="hlVvENgP" text="WATCH the viewer tournament"/>
+        
+        <!-- NameItem -->
+        <string id="0YSdK3zK" text="Name Item"/>
+        <string id="k7vnOEIN" text="Allow viewer to name custom items"/>
+        <string id="rXVOIMri" text="You have no nameable items"/>
+        <string id="Xb3eM5o7" text="You will rename your {Item}"/>
+        <string id="iqNEr6Y7" text="{PreviousName} renamed to {NewName}"/>
+        
+        <string id="tLSFX9Xc" text="Retinue"/>
+        <string id="bhC3VcmU" text="Add and improve adopted heroes retinue"/>
+        <string id="iNoFrKsN" text="Retinue Upgrade Settings"/>
+        <string id="nIsuuFMC" text="All By Default"/>
+        <string id="mJSGvWlR" text="Whether this action should attempt to buy/upgrade as many times as possible when called with no parameter."/>
+        <string id="mCcpMwrN" text="You cannot upgrade retinue, as a mission is active!"/>
+        <string id="NexXxYvj" text="(number, or all)"/>
+        
+        <!-- RetireMyHero -->
+        <string id="sZhEiXyn" text="Retire Hero"/>
+        <string id="Eh0m4R54" text="Retires the hero, allowing the viewer to adopt another (if that is enabled)"/>
+        <string id="xSbB2Zw5" text="yes"/> <!-- Prompt --> 
+        <string id="0qVpLYfb" text="You must enter '{Prompt}' at the prompt to retire your hero"/>
+        <string id="po20lHyz" text="You cannot retire your hero, as a mission is active!"/>
+        <string id="ihG4fs1r" text="{Name} has retired!"/>
+        
+        <!-- SetHeroClass -->
+        <string id="pVblweVj" text="Set Hero Class"/>
+        <string id="7VWKYp1U" text="Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied"/>
+        <string id="iLpDEiTq" text="First Equip Is Free"/>
+        <string id="pRETwmGv" text="If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class)"/>
+        <string id="N2OnDXOs" text="Cost Tier 1"/>
+        <string id="tuhth4ld" text="Gold cost for Tier 1 class change"/>
+        <string id="jIQ5VYSh" text="Cost Tier 2"/>
+        <string id="V5CGr4lf" text="Gold cost for Tier 2 class change"/>
+        <string id="lWOrthSS" text="Cost Tier 3"/>
+        <string id="NlXa6kJS" text="Gold cost for Tier 3 class change"/>
+        <string id="wuKWOAwt" text="Cost Tier 4"/>
+        <string id="0X1TRYbP" text="Gold cost for Tier 4 class change"/>
+        <string id="ZBzqCAyW" text="Cost Tier 5"/>
+        <string id="yelsar2J" text="Gold cost for Tier 5 class change"/>
+        <string id="ZLdpLkbg" text="Cost Tier 6"/>
+        <string id="eYcOsu9h" text="Gold cost for Tier 6 class change"/>
+        <string id="rpkghdTp" text="Update Equipment"/>
+        <string id="cWQKOYEx" text="Whether to immediately update equipment after changing class"/>
+        <string id="2WAi7pZN" text="Tier costs"/>
+        <string id="lW1KcoWD" text="Free if you do not already have a class"/>
+        <string id="qOR4RSqt" text="Updates equipment to match new class"/>
+        <string id="70vJ1jxZ" text="You cannot change class, as a mission is active!"/>
+        <string id="prmHmdGE" text="Provide class name"/>
+        <string id="giUCnkf2" text="changed class to {ClassName}"/>
+        
+        <!-- SkillXP -->
+        <string id="mpdzqyCK" text="Skill XP"/>
+        <string id="Bc2HIByX" text="Improve adopted heroes skills"/>
+        <string id="rAGAEUIH" text="Skills"/>
+        <string id="wo5VSDaj" text="What to improve"/>
+        <string id="LVp7Llay" text="Auto"/>
+        <string id="CTCcqB3Y" text="Chooses a random skill to add XP to, prefering class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used."/>
+
+        <string id="QJ9Cssr7" text="Automatic, based on class, equipment, and existing skills" />
+        <string id="vTkGnRBS" text="{AmountLow} to {AmountHigh}" />
+        <string id="lz87CnyL" text="Costs" />
+        <string id="vK5z2Naq" text="Couldn't find a skill to improve" />
+        <string id="ozkK4mk7" text="{Skill} capped, get more focus points" />
+
+        <string id="Ei8NyJSW" text="1H" />
+        <string id="U38E72Ue" text="2H" />
+        <string id="Cg885bns" text="PA" />
+        <string id="QpWRsKrc" text="Bow" />
+        <string id="71M512iJ" text="Xb" />
+        <string id="jMRloOi0" text="Thr" />
+        <string id="ligWzK3s" text="Rid" />
+        <string id="1MJnisqR" text="Ath" />
+        <string id="VjV54wik" text="Smt" />
+        <string id="6iG2GJW5" text="Tac" />
+        <string id="AgaZsMEb" text="Sct" />
+        <string id="6x33x91Z" text="Rog" />
+        <string id="N9X9VVsM" text="Cha" />
+        <string id="J8ElWB0P" text="Trd" />
+        <string id="BD65Qr83" text="Stw" />
+        <string id="OYJ8tfhY" text="Ldr" />
+        <string id="PmKb4QCv" text="Med" />
+        <string id="wLkMFOky" text="Eng" />
+        
+        <!-- SummonHero -->
+        <string id="6uWk9iMM" text="Summon Hero"/>
+        <string id="ODnzMmBQ" text="Spawns the adopted hero into the current active mission"/>
+        <string id="i8P1EnE1" text="Allowed Missions"/>
+        <string id="tYGvtYKd" text="Effects"/>
+        
+        <string id="DkCdNiwF" text="AllowFieldBattle"/>
+        <string id="yVz54Nky" text="AllowVillageBattle"/>
+        <string id="0X8bcuPE" text="AllowSiegeBattle"/>
+        <string id="Sd1jguGc" text="AllowFriendlyMission"/>
+        <string id="1xJGhP2D" text="Allow Hide Out"/>
+        <string id="i59Fm8zV" text="On Player Side"/>
+        <string id="HOZnxjGb" text="Gold Cost"/>
+        <string id="sZRrJfKm" text="Preferred Formation"/>
+        <string id="74AvYKCg" text="Alert Sound"/>
+        <string id="H7B3Yzly" text="Sub Boost"/>
+        <string id="cXeUjVur" text="Heal Per Second"/>
+        
+        <string id="ddjUyXpV" text="Can summon for normal field battles between parties"/>
+        <string id="buLH4Spj" text="Can summon in village battles"/>
+        <string id="uk1kL79V" text="Can summon in sieges"/>
+        <string id="1HaljOia" text="This includes walking about village/town/dungeon/keep"/>
+        <string id="NZTRYcGV" text="Can summon in the hideout missions"/>
+        <string id="S86V5s0C" text="Whether the hero is on the player or enemy side"/>
+        <string id="OQISx7Jz" text="Gold cost to summon"/>
+        <string id="vkFowOeg" text="Which formation to add summoned heroes to (only applies to ones without a specified class)"/>
+        <string id="R00Lx6aE" text="Sound to play when summoned"/>
+        <string id="lFnV3cR9" text="Multiplier applied to (positive) effects for subscribers"/>
+        <string id="gnh3KY5a" text="HP the hero gets every second they are alive in the mission"/>
+        <string id="Uu58rjgC" text="Side"/>
+        <string id="uHTRhFAh" text="Heals"/>
+        <string id="hCJhgl1m" text="Cost"/>
+        <string id="myKKaEl9" text="Streamers side"/>
+        <string id="BTZ84Uww" text="Enemy side"/>
+        <string id="cR84crHC" text="{HealPerSecond}HP per second while summoned"/>
+        <string id="SRdB89Ca" text="Field battle"/>
+        <string id="M45VqXVa" text="Village battle"/>
+        <string id="hbWdpDwr" text="Siege battle"/>
+        <string id="YIfbDpI9" text="Friendly mission"/>
+        <string id="pZ239vm5" text="Hide-out"/>
+        <string id="zOB6Nadp" text="Allowed in"/>
+        
+        <string id="TdykIizS" text="You cannot be summoned now!"/>
+        <string id="HWnEJg1M" text="You cannot be summoned now, this mission does not allow it!"/>
+        <string id="v5dO40vi" text="You cannot be summoned now, the mission has not started yet!"/>
+        <string id="mTKKaYIf" text="You cannot be summoned now, the mission is ending!"/>
+        <string id="YTEgKnCW" text="You cannot be summoned, you are already here!"/>
+        
+        <string id="pmj8vjZj" text="You won {WonGold}{GoldIcon}!"/>
+        <string id="ajhKKeEo" text="You lost {LostGold}{GoldIcon}!"/>
+        <string id="Ft3cxfIx" text="You have joined the battle!"/>
+        <string id="YZ4V5e4V" text="You cannot be summoned now, the mission has not started yet!"/>
+        <string id="2D2T6xP6" text="You cannot switch sides, you traitor!"/>
+        <string id="RBTDviuM" text="You cannot be summoned, you DIED!"/>
+        <string id="YMiZAluP" text="You cannot be summoned, you are already here!"/>
+        <string id="kyUh29ij" text="{CoolDown}s cooldown remaining"/>
+        <string id="93Hrc2EA" text="You cannot be summoned, your party is already here!"/>
+        <string id="jtqEqonE" text="Could not find a party for you to join!"/>
+        <string id="PpB8Ouj4" text="Expire"/>
+        <string id="TvkEBZeY" text="You have joined the battle!"/>
+        <string id="V3STT5Ar" text="Text"/>
+        <string id="wsIzPzfG" text="Text that will be displayed in game"/>
+        <string id="bCbN9OmH" text="Weight"/>
+        <string id="xqfCYYwN" text="Higher weight means more chance this shout is used"/>
+        <string id="xK1fdx7s" text="Player Side"/>
+        <string id="BpDPlsfY" text="Can be used when summoning on player side"/>
+        <string id="srN8yHp8" text="Enemy Side"/>
+        <string id="0m4s9zXc" text="Can be used when summoning on enemy side"/>
+        <string id="MOOBN2Hz" text="General"/>
+        <string id="6TWSIu60" text="Can be used in situations other than battle/siege"/>
+        <string id="4KdKuusC" text="Field Battle"/>
+        <string id="8aLSNsxr" text="Can be used when in a field battle"/>
+        <string id="2yevL6dV" text="Siege Defend"/>
+        <string id="8HwihUK3" text="Can be used when on siege defender side"/>
+        <string id="r5tvIQwx" text="Siege Attack"/>
+        <string id="mbIwJprm" text="Can be used when on siege attacker side"/>
+        <string id="CXb5ALls" text="Shout"/>
+
+        <!-- TournamentBet -->
+        <string id="GiU7feEu" text="Invalid gold argument"/>
+        <string id="3AQKsF9f" text="Betting not active"/>
+        <string id="9tlhaGyH" text="Bet {GoldAmount}{GoldIcon} on {Team}"/>
+        <string id="8XQwqd4f" text="(team) (gold)"/>
+        
+        <!-- UsePower -->
+        <string id="Wpx7tHFL" text="Use Power"/>
+        <string id="FJwn6kGW" text="Allows activation of the adopted heroes class active powers"/>
+        <string id="85HYGklq" text="You don't have a class, so no powers are available!"/>
+        <string id="nXSUvuyD" text="You cannot activate your powers now: {FailReason}!"/>
+        <string id="o23xAj6M" text="Your powers are already active!"/>
+        
+        <!-- BLTAdoptAHeroCampaignBehavior -->
+        <string id="hoRPbRrb" text="Compensated @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} invalid custom items"/>
+        <string id="PCPU0lPX" text="@{VictimName} {Verb} by @{KillerName}!"/>
+        <string id="Bji2ULge" text="@{KillerName} {Verb}!"/>
+        <string id="8aTmTvl8" text="@{HeroName} is now level {Level}!"/>
+        <string id="4PqVnFWY" text="@{HeroName} was taken prisoner by {PartyName}!"/>
+        <string id="WeRWLpKn" text="@{HeroName} was taken prisoner!"/>
+        <string id="tQANBoTK" text="@{HeroName} is no longer a prisoner of {PartyName}!"/>
+        <string id="MQslOwr0" text="@{HeroName} is no longer a prisoner!"/>
+        <string id="SUdnIyfw" text="@{HeroName} moved from {FromClanName} to {ToClanName}!"/>
+        
+        <string id="ZtZL0lbX" text="deceased"/> <!-- RetireType -->
+        <string id="ISrFBorj" text="retired"/> <!-- RetireType -->
+        <string id="2PHPNmuv" text="{OldName} is {RetireType}!"/>
+        <string id="wzpkEmTL" text="Dead or retired hero {OldName} renamed to {HeroName}"/>
+
+        <string id="2cbVbW91" text="You can't bid on your own item"/>
+        <string id="rbhzuJLm" text="Bid of {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon}"/>
+        <string id="83uZcndH" text="Another bid at {Bid}{GoldIcon} already exists"/>
+        <string id="qeLF80xw" text="You already bid more ({Bid}{GoldIcon}), you can only raise your bid"/>
+        <string id="Cqi0iYNR" text="You cannot cover a bid of {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon}"/>
+        <string id="M2B9yQ4w" text="Bid of {Bid}{GoldIcon} placed!"/>
+        
+        <string id="TeeDJyJ1" text="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})"/>
+        <string id="jNkGaKZw" text="{Time} seconds left in auction of '{ItemName}', no bids placed"/>
+        <string id="d9ooHVPU" text="Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}."/>
+        <string id="SGuTRcui" text="Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died."/>
+        <string id="NRV4IstE" text="Auction for {ItemName} is CANCELLED! @{ItemOwnerName} is no longer in possession of the item."/>
+        <string id="jmbMoHta" text="Auction for {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}."/>
+        
+        <string id="Cy38Ckpk" text="No auction in progress"/>
+        <string id="wAGE7h6U" text="Max Retinue Size"/>
+        <string id="EOGB8EWN" text="Maximum number of units in the retinue. Recommend less than 20, summons to NOT obey the games unit limits."/>
+        <string id="VvdtvdQJ" text="Cost Tier 1"/>
+        <string id="9bvn5R5A" text="Gold cost for Tier 1 retinue"/>
+        <string id="engRDMZx" text="Cost Tier 2"/>
+        <string id="pD2ZvRVH" text="Gold cost for Tier 2 retinue"/>
+        <string id="3jxmITht" text="Cost Tier 3"/>
+        <string id="dyB8loLF" text="Gold cost for Tier 3 retinue"/>
+        <string id="dhwd4ccF" text="Cost Tier 4"/>
+        <string id="aji2HxKa" text="Gold cost for Tier 4 retinue"/>
+        <string id="zJkb4AIh" text="Cost Tier 5"/>
+        <string id="fnEOFst7" text="Gold cost for Tier 5 retinue"/>
+        <string id="1hh3cOJO" text="Cost Tier 6"/>
+        <string id="PieENBSG" text="Gold cost for Tier 6 retinue"/>
+        <string id="qYhM3gcn" text="Troop Types"/>
+        <string id="q1Rkm3Rq" text="Use Heroes Culture Units"/>
+        <string id="9qAD6eZR" text="Whether to use the adopted hero's culture (if not enabled then a random one is used)"/>
+        <string id="dbU7WEKG" text="Include Bandit Units"/>
+        <string id="06KnYhyh" text="Whether to allow bandit units when UseHeroesCultureUnits is disabled"/>
+        <string id="E2RBmb1K" text="Use Basic Troops"/>
+        <string id="uPwaOKdT" text="Whether to allow basic troops"/>
+        <string id="lnz7d1BI" text="Use Elite Troops"/>
+        <string id="EPr2clqT" text="Whether to allow elite troops"/>
+        <string id="UhUpH8C8" text="Max retinue"/>
+        <string id="VBuncBq5" text="Tier costs"/>
+        <string id="R7rU0TbD" text="Same culture only"/>
+        <string id="c2qOsXvs" text="Bandits"/>
+        <string id="RmTwEFzy" text="Basic troops"/>
+        <string id="3gumlthG" text="Elite troops"/>
+        <string id="uL7MfYPc" text="Allowed"/>
+        <string id="bBCyH0vV" text="No valid troop types could be found, please check out settings"/>
+        <string id="zcbOq6Tb" text="Spent {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} remaining"/>
+        <string id="PQRLJ04i" text="Can't upgrade retinue any further!"/>
+        <string id="LhHul2lV" text="was murdered"/>
+        <string id="HwjR45XN" text="died in labor"/>
+        <string id="5GOjfkzW" text="died of old age"/>
+        <string id="ZKrgqWav" text="died in battle"/>
+        <string id="jp4sldTL" text="was wounded in battle"/>
+        <string id="SkFFXsI1" text="was executed"/>
+        <string id="HMHdXDaK" text="was lost"/>
+        <string id="lrOJnThZ" text="was ended"/>
+        
+        <!-- BLTTournamentBetMissionBehavior -->
+        <string id="wgGkXkyh" text="Betting is now OPEN for round {RoundIndex} match: {Teams}!"/>
+        <string id="9BjHfivM" text="Betting is now OPEN for final match: {Teams}!"/>
+        <string id="ixTCiaiv" text="vs"/> <!-- verses -->
+        <string id="HrIifwJy" text="blue"/> <!-- tournament team -->
+        <string id="6ZGgsbe1" text="red"/> <!-- tournament team -->
+        <string id="qQZlsD8r" text="green"/> <!-- tournament team -->
+        <string id="JelyrtLJ" text="yellow"/> <!-- tournament team -->
+        <string id="FEZ1Opj1" text="Tournament is not active"/>
+        <string id="uNUyZhDk" text="Betting is disabled"/>
+        <string id="APTqGlHh" text="Betting is closed"/>
+        <string id="7yFW99H8" text="Betting is only allowed on the final"/>
+        <string id="ATdvJKFI" text="Betting is not open"/>
+        <string id="1rUYWox8" text="Team name must be one of {Teams}"/>
+        <string id="7iveTGQp" text="You can only bet on one team"/>
+        <string id="Nm96SVXt" text="Betting is now CLOSED: only one team bet on, bets refunded"/>
+        <string id="GrI9bFCf" text="Betting is now CLOSED: no bets placed"/>
+        <string id="Hj3oYnE0" text="Betting is now CLOSED: {TotalBets}"/>
+        <string id="u4mPf1p0" text="REFUNDED {Bet}{GoldIcon} bet"/>
+        <string id="majAmqDm" text="WON BET"/>
+        
+        <!-- BLTTournamentMissionBehavior -->
+        <string id="jb5vaUCD" text="WINNER!"/>
+        <string id="80PitGR4" text="no prize available for you!"/>
+        
+        <!-- BLTTournamentQueueBehavior -->
+        <string id="JtZIstbB" text="You are already in the tournament queue!"/>
+        <string id="1duM11Gt" text="You are position {QueuePosition} in the tournament queue!"/>
+        
+        <!-- GlobalCommonConfig -->
+        <string id="vDjnDtoL" text="Common Config"/>
+        <string id="xwcKN7sH" text="Sub Boost"/>
+        <string id="rX68wbfF" text="Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently."/>
+        <string id="O0LU5WBa" text="Custom Reward Modifiers"/>
+        <string id="tp3YdGmo" text="The specification for custom item rewards, applies to tournament prize and achievement rewards"/>
+        <string id="X8r0C5fx" text="Start With Full Health"/>
+        <string id="HbNVrZuv" text="Whether the hero will always start with full health"/>
+        <string id="fxZIKL65" text="Start Health Multiplier"/>
+        <string id="8yNIRS9S" text="Amount to multiply normal starting health by, to give heroes better staying power vs others"/>
+        <string id="HvcTekVk" text="Start Retinue Health Multiplier"/>
+        <string id="G6JJT2ot" text="Amount to multiply normal retinue starting health by, to give retinue better staying power vs others"/>
+        <string id="ZPmBe7XI" text="Morale Loss Factor"/>
+        <string id="tpgJtS5q" text="Reduces morale loss when summoned heroes die"/>
+        <string id="bXdC2trk" text="Retinue Use Heroes Formation"/>
+        <string id="D8uDzXlV" text="Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations)"/>
+        <string id="OlJrCEyE" text="Summon Cooldown In Seconds"/>
+        <string id="DeGB2BGZ" text="Minimum time between summons for a specific hero"/>
+        <string id="f9HVD2cC" text="Summon Cooldown Use Multiplier"/>
+        <string id="4gZlfHzM" text="How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this."/>
+        <string id="ViLoy0k3" text="Summon Cooldown Example"/>
+        <string id="xZoSFrAb" text="Shows the consecutive cooldowns (in seconds) for 10 summons"/>
+        <string id="4sNJRQyw" text="Allow Death"/>
+        <string id="VbBUYOfc" text="Whether an adopted hero is allowed to die"/>
+        <string id="ZEfAPyOm" text="Final Death Chance Percent"/>
+        <string id="xlt1pNuT" text="Final death chance percent (includes vanilla chance)"/>
+        <string id="sbc5Fp4o" text="Apply Death Chance To All Heroes"/>
+        <string id="nbR7NLNz" text="Whether to apply the Death Chance changes to all heroes, not just adopted ones"/>
+        <string id="lwU4dELT" text="Use Raw XP"/>
+        <string id="dICRr4BH" text="Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed. "/>
+        <string id="S5FAna09" text="Raw XP Skill Cap"/>
+        <string id="WUzqXuHN" text="Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap."/>
+        <string id="94Ouh5It" text="Gold Per Kill"/>
+        <string id="iSAMxZ8a" text="Gold the hero gets for every kill"/>
+        <string id="DMGKBoJT" text="XP Per Kill"/>
+        <string id="kwW5pZT9" text="XP the hero gets for every kill"/>
+        <string id="a1zjEuUe" text="XP Per Killed"/>
+        <string id="bW8t2g5N" text="XP the hero gets for being killed"/>
+        <string id="cRV9HDdf" text="Heal Per Kill"/>
+        <string id="7VWAZgfK" text="HP the hero gets for every kill"/>
+        <string id="lIhhHjih" text="Retinue Gold Per Kill"/>
+        <string id="h93j0qw3" text="Gold the hero gets for every kill their retinue gets"/>
+        <string id="KwlWrzDS" text="Retinue Heal Per Kill"/>
+        <string id="Q3UVoHmt" text="HP the hero's retinue gets for every kill"/>
+        <string id="wSzUkbNR" text="Relative Level Scaling"/>
+        <string id="1LTDJZ7Y" text="How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."/>
+        <string id="BDk1G4nc" text="Level Scaling Cap"/>
+        <string id="Vod0pJEN" text="Caps the maximum multiplier for the level difference, defaults to 5 if not specified"/>
+
+        <string id="IQTT5vYE" text="Win Gold"/>
+        <string id="lfCWK7aA" text="Lose Gold"/>
+        <string id="h8I3PWkV" text="Win XP"/>
+        <string id="Vobr36Bl" text="Lose XP"/>
+        
+        <string id="pc3G0W39" text="Gold won if the heroes side wins"/>
+        <string id="F7Tw4D07" text="XP the hero gets if the heroes side wins"/>
+        <string id="E209XRml" text="Gold lost if the heroes side loses"/>
+        <string id="itAfYdmO" text="XP the hero gets if the heroes side loses"/>
+        <string id="ihB1KMOY" text="Difficulty Scaling On Players Side"/>
+        <string id="Bt1PS0aC" text="Apply difficulty scaling to players side"/>
+        <string id="nym7EtAd" text="Difficulty Scaling On Enemy Side"/>
+        <string id="U0hZef9L" text="Apply difficulty scaling to enemy side"/>
+        <string id="CaVuq5tE" text="Difficulty Scaling"/>
+        <string id="IhhfIQ74" text="End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1)"/>
+        <string id="891WqOrJ" text="Difficulty Scaling Min"/>
+        <string id="FPXz7lBi" text="Min difficulty scaling multiplier"/>
+        <string id="Wsho5Yns" text="Difficulty Scaling Max"/>
+        <string id="ZW7O1JTv" text="Max difficulty scaling multiplier"/>
+        <string id="3DZYc6hN" text="Kill Streaks"/>
+        <string id="wQ7lXgLA" text="Show Kill Streak Popup"/>
+        <string id="wDW3143d" text="Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled."/>
+        <string id="rhwujKvf" text="Kill Streak Popup Alert Sound"/>
+        <string id="1GVV1fjY" text="Sound to play when killstreak popup is disabled."/>
+        <string id="dP9AoB9o" text="Reference Level Reward"/>
+        <string id="y7AZjeSK" text="The level at which the rewards normalize and start to reduce (if relative level scaling is enabled)."/>
+        <string id="zTLei6dQ" text="Achievements"/>
+        <string id="HkD6326j" text="Shouts"/>
+        <string id="ufqtH5QV" text="Custom shouts"/>
+        <string id="wehigXCC" text="Include Default Shouts"/>
+        <string id="m6Vv2LBt" text="Whether to include default shouts"/>
+        <string id="F6vM1OJo" text="Common Config"/>
+        
+        <!-- GlobalHeroClassConfig -->
+        <string id="3rL4RHje" text="Class Config"/>
+        <string id="462kHfn2" text="Class Definitions"/>
+        <string id="NFjlVt57" text="Defined classes"/>
+        <string id="Q0yTbTCT" text="Class Level Requirements"/>
+        <string id="y8LLccGK" text="Requirements for class levels"/>
+        <string id="E0CBnj57" text="Classes"/>
+        <string id="7WLbMjpz" text="(no requirements)"/>
+        
+        <!-- ClassLevelRequirementsDef -->
+        <string id="uZUsZLGm" text="Class Level Requirements Definition"/>
+        <string id="0raqv788" text="ClassLevel"/>
+        <string id="el4y84iD" text="Class level"/>
+        <string id="aMGoiH53" text="Requirements"/>
+        <string id="G95DA4OM" text="Requirements for this class level"/>
+        
+        <!-- GlobalHeroPowerConfig -->
+        <string id="v75UOuDM" text="Power Config"/>
+        <string id="9vUtdRu2" text="Power Defs"/>
+        <string id="ymGZUjoU" text="Defined powers"/>
+        <string id="5CD7bmuC" text="Disable Powers In Tournaments"/>
+        <string id="K7uKtO90" text="Whether powers are disabled in a tournament"/>
+        
+        <!-- GlobalTournamentConfig -->
+        <string id="AkDCrLgg" text="Tournament Config"/>
+        <string id="i7ZDVTaw" text="Equipment"/>
+        <string id="Zwh9GYUE" text="Balancing"/>
+        <string id="KOIu6Q7d" text="Round Type"/>
+        <string id="P1ZCMZbp" text="Start Health Multiplier"/>
+        <string id="x3wiU1LY" text="Disable Kill Rewards In Tournament"/>
+        <string id="ksB1FmZV" text="Disable Tracking Kills Tournament"/>
+        <string id="bBipANlh" text="No Horses"/>
+        <string id="CYVy4Hhx" text="No Spears"/>
+        <string id="Ed55OyZ5" text="Normalize Armor"/>
+        <string id="xHJbcOaV" text="Normalize Armor Tier"/>
+        <string id="5Y08IsDl" text="Randomize Weapon Types"/>
+        <string id="UCAbZYqU" text="Previous Winner Debuffs"/>
+        <string id="WUQRg4yA" text="Vanilla"/>
+        <string id="ErBd0iuP" text="1 Match 4 Teams"/>
+        <string id="uuBzCFgM" text="1 Match 2 Teams"/>
+        <string id="SsArdTT9" text="2 Matches 2 Teams"/>
+        <string id="qb1yo7DZ" text="2 Matches 4 Teams"/>
+        <string id="WAzvdvAJ" text="4 Matches 2 Teams"/>
+        <string id="sMCb8Xeu" text="4 Matches 4 Teams"/>
+        <string id="URNM9UqS" text="8 Matches 2 Teams"/>
+        <string id="eivyBgAa" text="Round 1 Type"/>
+        <string id="pefX6BdQ" text="Round 2 Type"/>
+        <string id="GpV7pKPY" text="Round 3 Type"/>
+        <string id="VeSh8k7c" text="Round 1 Rewards"/>
+        <string id="gQ9YX7my" text="Round 2 Rewards"/>
+        <string id="17pTC7NS" text="Round 3 Rewards"/>
+        <string id="pxMWYe5J" text="Round 4 Rewards"/>
+        <string id="5vMTYqdu" text="Participate XP"/>
+        <string id="Xu2KD7Kc" text="Prize"/>
+        <string id="rne7aMUR" text="Enable Betting"/>
+        <string id="njh9b5GB" text="Betting On Final Only"/>
+        <string id="5a40vmYi" text="Skill Reduction Percent Per Win"/>
+        <string id="hMB4oFmk" text="Floor Percent"/>
+        <string id="L7AKFlpb" text="Example"/>
+        <string id="n6Bc5M3s" text="Amount to multiply normal starting health by"/>
+        <string id="j63d8DuH" text="Heroes won't get any kill rewards in tournaments"/>
+        <string id="o5aH9rTO" text="Tournament kills / deaths won't be counted towards achievements or kill streaks"/>
+        <string id="sJ68yZs1" text="Remove horses completely from the BLT tournaments (the horse AI is terrible)"/>
+        <string id="BjMC8Htn" text="Replaces all lances and spears with swords, because lance and spear combat is terrible"/>
+        <string id="kYFdZ8Yx" text="Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below)"/>
+        <string id="HnqCyrDD" text="Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled"/>
+        <string id="oSCPOoqi" text="Randomizes the weapons used in each round, weighted based on the classes of the participants"/>
+        <string id="FrloGGew" text="Applies skill debuffs to previous tournament winners"/>
+        <string id="nfYBftnO" text="Allow the vanilla round setup"/>
+        <string id="t9yLB8gB" text="Allow 1 match with 2 teams of 2"/>
+        <string id="5hLSHeuv" text="Allow 1 match with 2 teams of 4"/>
+        <string id="YfOnzOH6" text="Allow 1 match with 4 teams of 1"/>
+        <string id="CLbRKpZp" text="Allow 1 match with 4 teams of 2"/>
+        <string id="5E1lXDYh" text="Allow 1 match with 4 teams of 4"/>
+        <string id="OrZaS458" text="Allow 2 matches with 2 teams of 1"/>
+        <string id="Dr1Js5fB" text="Allow 2 matches with 2 teams of 2"/>
+        <string id="jEghMKUV" text="Allow 2 matches with 2 teams of 4"/>
+        <string id="nmMzoqeC" text="Allow 2 matches with 4 teams of 1"/>
+        <string id="f8rXSGwN" text="Allow 2 matches with 4 teams of 2"/>
+        <string id="GPCYzshA" text="Allow 4 matches with 2 teams of 2"/>
+        <string id="MjsTFwUv" text="Allow 4 matches with 4 teams of 1"/>
+        <string id="xMaA76xu" text="Allow 4 matches with 2 teams of 1"/>
+        <string id="otwzXPTQ" text="Allow 8 matches with 2 teams of 1"/>
+        <string id="i7Ns7K2i" text="Gold won if the hero wins thier match in the round"/>
+        <string id="b0MeEmOS" text="XP given if the hero wins thier match in the round"/>
+        <string id="Oq7LMvoF" text="XP given if the hero loses thier match in a round"/>
+        <string id="F8g49VCy" text="Gold won if the hero wins the tournaments"/>
+        <string id="3BudXy0O" text="XP given if the hero wins the tournaments"/>
+        <string id="TXqjPXh7" text="XP given if the hero participates in a tournament but doesn't win"/>
+        <string id="wYzmyUCE" text="Winners prize"/>
+        <string id="FOQEPZD5" text="Enable betting"/>
+        <string id="KGcz71VJ" text="Only allow betting on the final betting"/>
+        <string id="twgHWqU6" text="Skill or skill group to modifer (all skills in a group will be modified)"/>
+        <string id="zoMHI9O3" text="Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified."/>
+        <string id="HebJIfaE" text="The lower limit (in %) that the skill(s) can be reduced to."/>
+        <string id="vgXMv8oH" text="Shows the % reduction of the skill over 20 tournaments"/>
+        <string id="hCNpHVJY" text="Prize {ITEMNAME}"/>
+        <string id="g0A4pXY2" text="Round Rewards"/>
+        <string id="FHkvQbcR" text="Rewards"/>
+        <string id="n1Agm9uJ" text="Betting"/>
+        
+        <!-- MissionInfo -->
+        <!-- MissionInfo > Overlay key -->
+        <string id="AM2zlkem" text="Kills"/>
+        <string id="79JXI4JL" text="+Retinue Kills"/>
+        <string id="o0Q8Y1Qg" text="Gold"/>
+        <string id="VtEJiMWy" text="XP"/>
+        
+        <!-- Tournament -->
+        <string id="PI83uB8j" text="Tournament"/>
+        <string id="WPTU6AGn" text="Betting is OPEN"/>
+        <string id="PLRsZCjL" text="Betting is CLOSED"/>
+        <string id="Sv04YKsL" text="Not taking bets"/>
+        
+        <!-- ActivePowerGroupItem -->
+        <string id="4xEkPMIy" text="Active Power Group Item"/>
+        <string id="HGDApoLL" text="Power"/>
+
+        <!-- ActivePowerGroup -->
+        <string id="HvTIrx0b" text="Active Power Group"/>
+        <string id="EvVyh3WM" text="The name of the power: how the power will be described in messages"/>
+        <string id="acLMixuK" text="Powers"/>
+        <string id="6aKmeGgU" text="The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure)."/>
+        <string id="ticZtKY4" text="ActivateEffect"/>
+        <string id="YWHa7H42" text="Particles/sound effects to play when this power group is activated"/>
+        <string id="MXnon4pc" text="DeactivateEffect"/>
+        <string id="V9fqIgvH" text="Particles/sound effects to play when this power group is deactivated"/>
+        <string id="ddNSQjWq" text=""/>
+        <string id="asncu3BX" text=""/>
+        <string id="2NnCGjyI" text=""/>
+        <string id="NMSDeunS" text=""/>
+        <string id="xyvCYxTD" text=""/>
+        <string id="WDfytZ7z" text=""/>
+        <string id="F03TlOOV" text=""/>
+        <string id="VS9ITIST" text=""/>
+        <string id="km0QRxRs" text=""/>
+        <string id="xmz0TzN7" text=""/>
+        <string id="u48yBW5b" text=""/>
+        <string id="EbrlEg5C" text=""/>
+        <string id="SdQsQRB6" text=""/>
+        <string id="C3Ag25zz" text=""/>
+        <string id="lzvJC8bf" text=""/>
+        <string id="aQgYs3mI" text=""/>
+        <string id="mtZMAwbM" text=""/>
+        <string id="wPgAMF92" text=""/>
+        <string id="9dla8vV1" text=""/>
+        <string id="MTqyFfDc" text=""/>
+        <string id="dCRbuRf8" text=""/>
+        <string id="adHeasi7" text=""/>
+        <string id="okiEp8HU" text=""/>
+        <string id="Cp9IZN6J" text=""/>
+        <string id="lVXn7z6U" text=""/>
+        <string id="RrhP0L2t" text=""/>
+        <string id="cM8NOj2B" text=""/>
+        <string id="2UuwaRcc" text=""/>
+        <string id="4iroX5zj" text=""/>
+        <string id="DNqblCEf" text=""/>
+        <string id="F0o4A3mp" text=""/>
+        <string id="bEO48IR4" text=""/>
+        <string id="sURt2dSt" text=""/>
+        <string id="KHoc6FK5" text=""/>
+        <string id="8mrSEyNk" text=""/>
+        <string id="QsdqVpNE" text=""/>
+        <string id="61fc3xTQ" text=""/>
+        <string id="wtD908lt" text=""/>
+        <string id="WLtUn4t7" text=""/>
+        <string id="sl5ZoJdv" text=""/>
+        <string id="hPcS0MIw" text=""/>
+        <string id="HmDfLY2B" text=""/>
+        <string id="ZHdogsAa" text=""/>
+        <string id="8SE2asYO" text=""/>
+        <string id="41sZdkDw" text=""/>
+        <string id="04WkC9p6" text=""/>
+        <string id="umALVhJG" text=""/>
+        <string id="XKDa1WXR" text=""/>
+        <string id="NSUEEK4X" text=""/>
+        <string id="n49rZjJA" text=""/>
+        <string id="JgPVRq5W" text=""/>
+        <string id="RGUwxlOx" text=""/>
+        <string id="0mhPe31m" text=""/>
+        <string id="tXh8oAaE" text=""/>
+        <string id="fPmJAchN" text=""/>
+        <string id="lEbWq1of" text=""/>
+        <string id="RnGUD1jl" text=""/>
+        <string id="bse0NB6Z" text=""/>
+        <string id="shUGx48n" text=""/>
+        <string id="feiVAent" text=""/>
+        <string id="w5j3JYog" text=""/>
+        <string id="Sv4QLgYX" text=""/>
+        <string id="SOJgZOV3" text=""/>
+        <string id="QoYMwBnz" text=""/>
+        <string id="L1ZqypsT" text=""/>
+        <string id="MaDRQPhh" text=""/>
+        <string id="xt70CI4q" text=""/>
+        <string id="uAsNXThU" text=""/>
+        <string id="XxLPeI3i" text=""/>
+        <string id="8N18Zs1O" text=""/>
+        <string id="O4AUEtAO" text=""/>
+        <string id="5ke30xUG" text=""/>
+        <string id="0WAJwEvc" text=""/>
+        <string id="guccTOSR" text=""/>
+        <string id="mMcjJkph" text=""/>
+    </strings>
+</base>

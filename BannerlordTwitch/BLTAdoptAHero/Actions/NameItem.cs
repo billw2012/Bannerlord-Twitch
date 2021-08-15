@@ -1,12 +1,17 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 
 namespace BLTAdoptAHero
 {
-    [UsedImplicitly]
+    [LocDisplayName("{=0YSdK3zK}Name Item"),
+     LocDescription("{=k7vnOEIN}Allow viewer to name custom items"),
+     UsedImplicitly]
     public class NameItem : ICommandHandler
     {
         public Type HandlerConfigType => null;
@@ -27,20 +32,26 @@ namespace BLTAdoptAHero
 
             if (!nameableItems.Any())
             {
-                ActionManager.SendReply(context, $"You have no nameable items");
+                ActionManager.SendReply(context, 
+                    "{=rXVOIMri}You have no nameable items".Translate());
                 return;
             }
 
             if (string.IsNullOrEmpty(context.Args))
             {
-                ActionManager.SendReply(context, $"You will rename your {nameableItems.First().GetModifiedItemName()}");
+                ActionManager.SendReply(context, 
+                    "{=Xb3eM5o7}You will rename your {Item}"
+                        .Translate(("Item", nameableItems.First().GetModifiedItemName())));
                 return;
             }
 
             string previousName = nameableItems.First().GetModifiedItemName().ToString();
 
             BLTCustomItemsCampaignBehavior.Current.NameItem(nameableItems.First().ItemModifier, context.Args);
-            ActionManager.SendReply(context, $"{previousName} renamed to {context.Args}");
+            ActionManager.SendReply(context, 
+                "{=iqNEr6Y7}{PreviousName} renamed to {NewName}"
+                    .Translate(("PreviousName", previousName), ("NewName", context.Args))
+                );
         }
     }
 }

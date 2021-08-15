@@ -46,6 +46,7 @@ namespace BLTAdoptAHero.Powers
         #endregion
 
         #region Public Interface
+        [YamlIgnore, Browsable(false)]
         public override string Description => $"{Modifiers}";
         #endregion
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
@@ -23,17 +24,18 @@ namespace BLTAdoptAHero
             string[] parts = context.Args?.Split(' ');
             if (parts?.Length != 2)
             {
-                ActionManager.SendReply(context, context.ArgsErrorMessage("team gold"));
+                ActionManager.SendReply(context, 
+                    context.ArgsErrorMessage("{=8XQwqd4f}(team) (gold)".Translate()));
                 return;
             }
 
             (int? gold, string team) ParseArgs(string[] args)
             {
-                if (args[0].ToLower() == "all")
+                if (string.Equals(args[0], "{=hHekZwYB}all".Translate(), StringComparison.CurrentCultureIgnoreCase))
                 {
                     return (BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero), args[1]);
                 }
-                else if (args[1].ToLower() == "all")
+                else if (string.Equals(args[1], "{=hHekZwYB}all".Translate(), StringComparison.CurrentCultureIgnoreCase))
                 {
                     return (BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero), args[0]);
                 } 
@@ -51,13 +53,13 @@ namespace BLTAdoptAHero
             (int? gold, string team) = ParseArgs(parts);
             if(gold is null or <= 0)
             {
-                ActionManager.SendReply(context, $"Invalid gold argument");
+                ActionManager.SendReply(context, "{=GiU7feEu}Invalid gold argument".Translate());
                 return;
             }
 
             (bool success, string failReason) 
                 = BLTTournamentBetMissionBehavior.Current?.PlaceBet(adoptedHero, team, gold.Value) 
-                  ?? (false, "Betting not active");
+                  ?? (false, "{=3AQKsF9f}Betting not active".Translate());
             
             if (!success)
             {
@@ -65,7 +67,8 @@ namespace BLTAdoptAHero
             }
             else
             {
-                ActionManager.SendReply(context, $"Bet {gold}{Naming.Gold} on {team}");
+                ActionManager.SendReply(context,  "{=9tlhaGyH}Bet {GoldAmount}{GoldIcon} on {Team}"
+                    .Translate(("GoldAmount", gold), ("GoldIcon", Naming.Gold), ("Team", team)));
             }
         }
     }

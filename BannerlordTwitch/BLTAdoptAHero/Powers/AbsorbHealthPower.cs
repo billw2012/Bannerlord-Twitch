@@ -51,7 +51,7 @@ namespace BLTAdoptAHero.Powers
         [YamlIgnore, Browsable(false)]
         public bool IsEnabled => DamageToAbsorbPercent != 0;
         
-        [YamlIgnore]
+        [YamlIgnore, Browsable(false)]
         public override string Description => !IsEnabled ? "(disabled)" : $"Absorb {DamageToAbsorbPercent:0}% of damage dealt as HP";
         #endregion
 

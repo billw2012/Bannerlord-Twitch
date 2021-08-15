@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
 using Microsoft.AspNet.SignalR;
 
@@ -43,6 +44,13 @@ namespace BLTAdoptAHero.UI
 
         public override Task OnConnected()
         {
+            Clients.Caller.setKeyLabels(new
+            {
+                Kills = "{=AM2zlkem}Kills".Translate(),
+                RetinueKills = "{=79JXI4JL}+Retinue Kills".Translate(),
+                Gold = "{=o0Q8Y1Qg}Gold".Translate(),
+                XP = "{=VtEJiMWy}XP".Translate(),
+            });
             Update();
             return base.OnConnected();
         }

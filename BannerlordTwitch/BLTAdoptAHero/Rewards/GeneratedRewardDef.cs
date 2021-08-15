@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
@@ -150,7 +151,7 @@ namespace BLTAdoptAHero
         [Category("Custom Item"), 
          Description("Name format for custom item, {ITEMNAME} is the placeholder for the base item name."),
          PropertyOrder(1), UsedImplicitly]
-        public string CustomItemName { get; set; } = "Reward {ITEMNAME}";
+        public LocString CustomItemName { get; set; } = "{=W47g8bCB}Reward {ITEMNAME}";
 
         [Category("Custom Item"), 
          Description("Custom item power multipler, applies on top of the global multiplier"),
@@ -203,7 +204,7 @@ namespace BLTAdoptAHero
                         tiers.Select(tier 
                             => RewardHelpers.GenerateRewardType(type.type, tier.tier, hero, heroClass, 
                                 allowDuplicates, BLTAdoptAHeroModule.CommonConfig.CustomRewardModifiers,
-                                CustomItemName, CustomItemPower)))
+                                CustomItemName.ToString(), CustomItemPower)))
                     .FirstOrDefault(i => i != default);
             }
 

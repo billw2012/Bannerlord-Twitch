@@ -124,10 +124,10 @@ namespace BLTConfigure
                 return item switch
                 {
                     null => "",
-                    GlobalConfig => "Global Configs",
-                    Reward => "Channel Rewards",
-                    Command => "Chat Commands",
-                    SimTestingConfig => "Sim Testing Config",
+                    GlobalConfig => "{=S7fvEW5l}Global Configs".Translate(),
+                    Reward => "{=xljCKxH7}Channel Rewards".Translate(),
+                    Command => "{=mHkSZwdI}Chat Commands".Translate(),
+                    SimTestingConfig => "{=c1lGU26j}Sim Testing Config".Translate(),
                     _ => item.GetType().Name
                 };
             }

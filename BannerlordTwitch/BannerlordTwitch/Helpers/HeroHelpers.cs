@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
@@ -25,17 +26,19 @@ namespace BannerlordTwitch.Helpers
         public static string GetAttributeName(CharacterAttributesEnum val) => 
             val switch
             {
-                CharacterAttributesEnum.Vigor => "Vigor",
-                CharacterAttributesEnum.Control => "Control",
-                CharacterAttributesEnum.Endurance => "Endurance",
-                CharacterAttributesEnum.Cunning => "Cunning",
-                CharacterAttributesEnum.Social => "Social",
-                CharacterAttributesEnum.Intelligence => "Intelligence",
+                CharacterAttributesEnum.Vigor => "{=IyK1yg5j}Vigor".Translate(),
+                CharacterAttributesEnum.Control => "{=dHlLNy7j}Control".Translate(),
+                CharacterAttributesEnum.Endurance => "{=qKVblzEJ}Endurance".Translate(),
+                CharacterAttributesEnum.Cunning => "{=bJbFeqMG}Cunning".Translate(),
+                CharacterAttributesEnum.Social => "{=lSrkwcJV}Social".Translate(),
+                CharacterAttributesEnum.Intelligence => "{=qGfZfaai}Intelligence".Translate(),
                 _ => throw new ArgumentOutOfRangeException(nameof(val), val, null)
             };
 
         public static string GetShortAttributeName(CharacterAttributesEnum val) =>
             GetAttributeName(val).Substring(0, 3);
+
+        public const CharacterAttributesEnum DefaultAttribute = default;
         
         public static IEnumerable<SkillObject> AllSkillObjects => SkillObject.All;
         
@@ -58,6 +61,9 @@ namespace BannerlordTwitch.Helpers
             string str = val.Name.ToString();
             return str.Substring(0, Math.Min(3, str.Length));
         }
+
+        public const CharacterAttribute DefaultAttribute = default;
+        
         public static IEnumerable<SkillObject> AllSkillObjects => Skills.All;
         
         public static IEnumerable<Hero> DeadOrDisabledHeroes => Campaign.Current.DeadOrDisabledHeroes;

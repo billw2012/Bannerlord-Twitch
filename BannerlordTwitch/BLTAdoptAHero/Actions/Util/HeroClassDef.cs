@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
@@ -16,56 +17,78 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
+    [LocDisplayName("{=ph50k2xB}Class")]
     public sealed class HeroClassDef : IDocumentable, ICloneable
     {
         [ReadOnly(true), UsedImplicitly]
         public Guid ID { get; set; } = Guid.NewGuid();
 
         #region User Editable Properties
-        [Description("Whether this class is enabled for use in the game or not"), PropertyOrder(0), UsedImplicitly]
+        [LocDisplayName("{=iqYaiOhP}Class Definition"),
+         LocDescription("{=XkL6MNLl}Whether this class is enabled for use in the game or not"), 
+         PropertyOrder(0), UsedImplicitly]
         public bool Enabled { get; set; } = true;
         
-        [Description("Name of the class that shall be passed to SetHeroClass actions"), InstanceName, 
+        [LocDisplayName("{=nfYBftnO}Name"),
+         LocDescription("{=U9PyN7eb}Name of the class that shall be passed to SetHeroClass actions"), 
+         InstanceName, 
          PropertyOrder(1), UsedImplicitly]
-        public string Name { get; set; } = "Enter Name Here";
+        public LocString Name { get; set; } = "Enter Name Here";
         
-        [Description("Description of the class (used in documentation)"), PropertyOrder(1), UsedImplicitly]
-        public string Description { get; set; } = "";
+        [LocDisplayName("{=rZRKLuGI}Description"),
+         LocDescription("{=yRN3Jfwv}Description of the class (used in documentation)"), 
+         PropertyOrder(1), UsedImplicitly]
+        public LocString Description { get; set; } = "";
 
-        [Description("Which formation to add summoned units to"), PropertyOrder(2), 
+        [LocDisplayName("{=zy3uK94p}Formation"),
+         LocDescription("{=1kEMFWLD}Which formation to add summoned units to"), 
+         PropertyOrder(2), 
          ItemsSource(typeof(SummonHero.FormationItemSource)), UsedImplicitly]
         public string Formation { get; set; } = "LightCavalry";
         
-        [Description("Item type to put in slot 1"), ItemsSource(typeof(EquipmentTypeItemSource)),
+        [LocDisplayName("{=48tkMBhb}Slot 1"),
+         LocDescription("{=kpDE6URE}Item type to put in slot 1"), 
+         ItemsSource(typeof(EquipmentTypeItemSource)),
          PropertyOrder(3), UsedImplicitly]
         public EquipmentType Slot1 { get; set; }
         
-        [Description("Item type to put in slot 2"), ItemsSource(typeof(EquipmentTypeItemSource)),
+        [LocDisplayName("{=vXtJLZlw}Slot 2"),
+         LocDescription("{=G5AN3s2D}Item type to put in slot 2"), 
+         ItemsSource(typeof(EquipmentTypeItemSource)),
          PropertyOrder(4), UsedImplicitly]
         public EquipmentType Slot2 { get; set; }
         
-        [Description("Item type to put in slot 3"), ItemsSource(typeof(EquipmentTypeItemSource)),
+        [LocDisplayName("{=B4LLuesN}Slot 3"),
+         LocDescription("{=clxxPb9O}Item type to put in slot 3"), 
+         ItemsSource(typeof(EquipmentTypeItemSource)),
          PropertyOrder(5), UsedImplicitly]
         public EquipmentType Slot3 { get; set; }
         
-        [Description("Item type to put in slot 4"), ItemsSource(typeof(EquipmentTypeItemSource)),
+        [LocDisplayName("{=h9PK7GnU}Slot 4"),
+         LocDescription("{=EUzbiqh5}Item type to put in slot 4"), 
+         ItemsSource(typeof(EquipmentTypeItemSource)),
          PropertyOrder(6), UsedImplicitly]
         public EquipmentType Slot4 { get; set; }
         
-        [Description("Whether to allow horse (can be combined with Use Camel)"), PropertyOrder(7), UsedImplicitly]
+        [LocDisplayName("{=MdYmGuin}Use Horse"),
+         LocDescription("{=Q00NX1J9}Whether to allow horse (can be combined with Use Camel)"), 
+         PropertyOrder(7), UsedImplicitly]
         public bool UseHorse { get; set; }
         
-        [Description("Whether to allow camel (can be combined with Use Horse"), PropertyOrder(8), UsedImplicitly]
+        [LocDisplayName("{=1YsQ2fC3}Use Camel"),
+         LocDescription("{=Us7G1v2T}Whether to allow camel (can be combined with Use Horse"), 
+         PropertyOrder(8), UsedImplicitly]
         public bool UseCamel { get; set; }
         
-        [Description("Passive hero power: this will always apply to the hero (i.e. a permanent buff)"), 
+        [LocDisplayName("{=MvddFKo4}Passive Power"),
+         LocDescription("{=F8a2nXYo}Passive hero power: this will always apply to the hero (i.e. a permanent buff)"), 
          PropertyOrder(9), ExpandableObject, Expand, UsedImplicitly]
-        public PassivePowerGroup PassivePower { get; set; } = new() { Name = "Passive Power" };
+        public PassivePowerGroup PassivePower { get; set; } = new() { Name = "{=MvddFKo4}Passive Power" };
 
-        [Description("Active hero power: this power will be triggered only when the UseHeroPower action is used by " +
-                     "the viewer, via reward or command (i.e. a temporary buff)"), 
+        [LocDisplayName("{=wdCMNOGd}Active Power"),
+         LocDescription("{=I4ASwveG}Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff)"), 
          PropertyOrder(10), ExpandableObject, Expand, UsedImplicitly]
-        public ActivePowerGroup ActivePower { get; set; } = new() { Name = "Active Power" };
+        public ActivePowerGroup ActivePower { get; set; } = new() { Name = "{=wdCMNOGd}Active Power" };
         #endregion
 
         #region Public Interface
@@ -96,10 +119,9 @@ namespace BLTAdoptAHero
         // For UI
         [YamlIgnore, Browsable(false)]
         public string MountDescription 
-            => UseHorse && UseCamel 
-                ? "Horse/Camel" : UseHorse 
-                    ? "Horse" : UseCamel 
-                        ? "Camel" : "";
+            => (UseHorse ? "{=YzIcRgBV}Horse".Translate() : "") +
+               (UseHorse && UseCamel ? "/" : "") +
+               (UseCamel ? "{=HMclWXR8}Camel".Translate() : "");
 
         [YamlIgnore, Browsable(false)]
         public IEnumerable<EquipmentType> Weapons 
@@ -141,8 +163,8 @@ namespace BLTAdoptAHero
 
         public override string ToString() => 
             $"{Name} : {string.Join(", ", SlotItems.Select(s => s.ToString()))}"
-            + (UseHorse ? " (Use Horse)" : "")
-            + (UseCamel ? " (Use Camel)" : "");
+            + (UseHorse ? " (" + "{=A1G6bq0G}Use Horse".Translate() + ")" : "")
+            + (UseCamel ? " (" + "{=FpgyZk0F}Use Camel".Translate() + ")" : "");
         
         #endregion
         
@@ -160,14 +182,14 @@ namespace BLTAdoptAHero
         {
             public ItemCollection GetValues()
             {
-                var col = new ItemCollection {{Guid.Empty, "(none)"}};
+                var col = new ItemCollection {{Guid.Empty, "{=GFc6JLJ9}(none)".Translate()}};
 
                 var source = GlobalHeroClassConfig.Get(ConfigureContext.CurrentlyEditedSettings);
                 if (source != null)
                 {
                     foreach (var item in source.ClassDefs)
                     {
-                        col.Add(item.ID, item.Name);
+                        col.Add(item.ID, item.Name.ToString());
                     }
                 }
 
@@ -179,7 +201,9 @@ namespace BLTAdoptAHero
         #region IDocumentable
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
-            generator.P(!string.IsNullOrEmpty(Description) ? Description : "Details");
+            generator.P(!LocString.IsNullOrEmpty(Description) 
+                ? Description.ToString() 
+                : "{=A79HrgZ0}Details".Translate());
 
             generator.Table("hero-class-tiers", () =>
             {
@@ -187,7 +211,7 @@ namespace BLTAdoptAHero
                 {
                     for (int i = 1; i <= 6; i++)
                     {
-                        generator.TH($"Tier {i}");
+                        generator.TH("{=Rs1XNM9K}Tier {TierNumber}".Translate(("TierNumber", i)));
                     }
                 });
                 generator.TR(() =>
@@ -205,19 +229,21 @@ namespace BLTAdoptAHero
 
             generator.Table("hero-class", () =>
             {
-                generator.TR(() => generator.TD("Formation").TD(Formation));
+                generator.TR(() => generator
+                    .TD("{=zy3uK94p}Formation".Translate())
+                    .TD(SummonHero.FormationItemSource.GetFriendlyName(Formation)));
             });
 
             generator.Table("hero-class", () =>
             {
                 generator.TR(() =>
                 {
-                    generator.TD("Equipment");
+                    generator.TD("{=HyXJQJtW}Equipment".Translate());
                     foreach (var type in SlotItems)
                     {
                         generator.TD(() =>
                         {
-                            generator.P(type.ToString().SplitCamelCase());
+                            generator.P(EquipmentTypeItemSource.GetFriendlyName(type));
                             var exampleItem = HeroHelpers.AllItems.FirstOrDefault(item => item.IsEquipmentType(type));
                             if (exampleItem != null)
                                 generator.Img("equip-img", exampleItem);
@@ -232,12 +258,12 @@ namespace BLTAdoptAHero
                 {
                     generator.TR(() =>
                     {
-                        generator.TD("Mount");
+                        generator.TD("{=iGdq37PI}Mount".Translate());
                         if (UseHorse)
                         {
                             generator.TD(() =>
                             {
-                                generator.P("Horse");
+                                generator.P("{=YzIcRgBV}Horse".Translate());
                                 var exampleItem = HeroHelpers.AllItems
                                     .FirstOrDefault(item 
                                         => item.Type == ItemObject.ItemTypeEnum.Horse
@@ -250,7 +276,7 @@ namespace BLTAdoptAHero
                         {
                             generator.TD(() =>
                             {
-                                generator.P("Camel");
+                                generator.P("{=HMclWXR8}Camel".Translate());
                                 var exampleItem = HeroHelpers.AllItems
                                     .FirstOrDefault(item 
                                         => item.Type == ItemObject.ItemTypeEnum.Horse
@@ -266,9 +292,9 @@ namespace BLTAdoptAHero
             generator.Table("hero-class", () =>
             {
                 generator.TR(() 
-                    => generator.TD("Passive Power").TD(() => PassivePower.GenerateDocumentation(generator)));
+                    => generator.TD("{=MvddFKo4}Passive Power").TD(() => PassivePower.GenerateDocumentation(generator)));
                 generator.TR(() 
-                    => generator.TD("Active Power").TD(() => ActivePower.GenerateDocumentation(generator)));
+                    => generator.TD("{=wdCMNOGd}Active Power").TD(() => ActivePower.GenerateDocumentation(generator)));
             });
         }
         #endregion

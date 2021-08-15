@@ -104,12 +104,13 @@ namespace BLTAdoptAHero
         {
             if (TournamentQueue.Any(sh => sh.Hero == hero))
             {
-                return (false, $"You are already in the tournament queue!");
+                return (false, "{=JtZIstbB}You are already in the tournament queue!".Translate());
             }
 
             TournamentQueue.Add(new TournamentQueueEntry(hero, isSub, entryFree));
             TournamentHub.UpdateEntrants();
-            return (true, $"You are position {TournamentQueue.Count} in the tournament queue!");
+            return (true, "{=1duM11Gt}You are position {QueuePosition} in the tournament queue!"
+                .Translate(("QueuePosition", TournamentQueue.Count)));
         }
         
         public void JoinViewerTournament()

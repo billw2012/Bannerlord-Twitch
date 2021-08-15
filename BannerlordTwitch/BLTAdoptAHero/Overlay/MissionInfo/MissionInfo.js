@@ -1,12 +1,19 @@
 ﻿<!-- Mission Info -->
 $(document).ready(function () {
+    const o = Intl.NumberFormat('en', { notation: 'compact' });
     const mission = new Vue({
         el: '#mission-container',
         components: {
             'progress-ring': ProgressRing
         },
         data: {
-            heroes: []
+            heroes: [],
+            keyLabels: {
+                Kills: '',
+                RetinueKills: '', 
+                Gold: '', 
+                XP: '',
+            }
         },
         computed: {
             sortedHeroes: function () {
@@ -29,6 +36,9 @@ $(document).ready(function () {
         methods: {
             getUserColor: function(userName) {
                 return twitch.getUserColor(userName);
+            },
+            formatNumber: function(number) {
+                return o.format(number);
             }
         }
     });
@@ -42,6 +52,9 @@ $(document).ready(function () {
         const missionInfoHub = $.connection.missionInfoHub;
         missionInfoHub.client.update = function (heroes) {
             mission.heroes = heroes;
+        };
+        missionInfoHub.client.setKeyLabels = function (keyLabels) {
+            mission.keyLabels = keyLabels;
         };
 
         $.connection.hub.start().done(function () {

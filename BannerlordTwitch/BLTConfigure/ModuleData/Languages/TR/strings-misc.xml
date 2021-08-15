@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Türkçe" />
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- TypeGroupDescription -->
+        <string id="S7fvEW5l" text="Genel Yapılandırmalar"/>
+        <string id="xljCKxH7" text="Kanal Ödülleri"/>
+        <string id="mHkSZwdI" text="Sohbet Komutları"/>
+        <string id="c1lGU26j" text="Sim Test Yapılandırması"/>
+        
+        
+        <string id="7W7Em9gs" text=""/>
+        <string id="Dtp6WX8D" text=""/>
+        <string id="ySzZFjRQ" text=""/>
+        <string id="x67w1twe" text=""/>
+        <string id="HePdBLcb" text=""/>
+        <string id="qnpDt4dq" text=""/>
+        <string id="3Yzag3OY" text=""/>
+        <string id="PsFvkYgP" text=""/>
+        <string id="8936eDp1" text=""/>
+        <string id="0pCohVSQ" text=""/>
+        <string id="QB8yVtse" text=""/>
+        <string id="og4PvWWY" text=""/>
+        <string id="6lVj1pEZ" text=""/>
+        <string id="GQ1ZrjKf" text=""/>
+        <string id="TUfG4jgJ" text=""/>
+        <string id="2oY87ZhT" text=""/>
+        <string id="39DQQEIQ" text=""/>
+        <string id="IfWJ8D03" text=""/>
+        <string id="KtRCXuQe" text=""/>
+        <string id="pylfWjgk" text=""/>
+        <string id="H7pX3OIA" text=""/>
+        <string id="cSV87Q5M" text=""/>
+        <string id="YluDgQgj" text=""/>
+        <string id="EDjxl3KL" text=""/>
+        <string id="MFlSLKHC" text=""/>
+        <string id="CmLK8IaY" text=""/>
+        <string id="VGd3ZUxS" text=""/>
+        <string id="qXLzIwD3" text=""/>
+        <string id="HiS9LRnb" text=""/>
+        <string id="D7JD10uL" text=""/>
+        <string id="PMYgFBTd" text=""/>
+        <string id="WRlAI10s" text=""/>
+        <string id="gI5Z53pI" text=""/>
+        <string id="p6UmTsDD" text=""/>
+        <string id="i67WQ1fN" text=""/>
+        <string id="LkBuC06w" text=""/>
+        <string id="OmtCKnLS" text=""/>
+        <string id="awtEqiB8" text=""/>
+        <string id="N0ybqWLp" text=""/>
+        <string id="tdXVk6Dz" text=""/>
+        <string id="GkSnwbsS" text=""/>
+        <string id="cTjpPZPW" text=""/>
+        <string id="EtI7EH3i" text=""/>
+        <string id="KOgKZrfm" text=""/>
+        <string id="lTSiyWJM" text=""/>
+        <string id="SCAEBOQj" text=""/>
+        <string id="uYnUDBA2" text=""/>
+        <string id="UK8nZ9FH" text=""/>
+        <string id="zFY4KBUI" text=""/>
+        <string id="IzsdX9MH" text=""/>
+        <string id="cxxfK2pG" text=""/>
+        <string id="G7iyzjvo" text=""/>
+        <string id="PiTR7Akt" text=""/>
+        <string id="gWtDIgFW" text=""/>
+        <string id="yREEIBBi" text=""/>
+        <string id="C8PUm8tU" text=""/>
+        <string id="GtGA8YRv" text=""/>
+        <string id="lsFhTMq6" text=""/>
+        <string id="i7fWFsVD" text=""/>
+        <string id="kEmFGm7c" text=""/>
+        <string id="0gCTNN4D" text=""/>
+        <string id="gpyEcqqx" text=""/>
+        <string id="mLKwJvVX" text=""/>
+        <string id="PAfnoXYI" text=""/>
+        <string id="QYo1idNV" text=""/>
+        <string id="dyUoeO61" text=""/>
+        <string id="Ygfa1a7G" text=""/>
+        <string id="g0q664Zb" text=""/>
+        <string id="H8m70RFy" text=""/>
+        <string id="HTT5kVvt" text=""/>
+        <string id="vGwUA1di" text=""/>
+        <string id="CTAbKB3o" text=""/>
+        <string id="9x33S5Pi" text=""/>
+        <string id="Wqj6DqX1" text=""/>
+        <string id="UnjhVZ01" text=""/>
+        <string id="iS0iW35t" text=""/>
+        <string id="WP5iq7B9" text=""/>
+        <string id="8wb9bpgy" text=""/>
+        <string id="19zTNb32" text=""/>
+        <string id="8v2gF6zG" text=""/>
+        <string id="rnze7GRL" text=""/>
+        <string id="9JmckbdA" text=""/>
+        <string id="4BaNBp7Q" text=""/>
+        <string id="mOkrwPls" text=""/>
+        <string id="Qg798Wza" text=""/>
+        <string id="KfGBXazD" text=""/>
+        <string id="CjdaM9Sn" text=""/>
+        <string id="fm2d7Lr6" text=""/>
+        <string id="pAG5gVPy" text=""/>
+        <string id="TeE8HqZC" text=""/>
+        <string id="DFvb0pgU" text=""/>
+        <string id="pBCKiIZW" text=""/>
+        <string id="H1sz9H2Z" text=""/>
+        <string id="T7bCTYnO" text=""/>
+        <string id="of5yG8MT" text=""/>
+        <string id="OACLgDfi" text=""/>
+    </strings>
+</base>

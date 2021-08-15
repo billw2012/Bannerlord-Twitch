@@ -381,6 +381,7 @@ namespace BLTAdoptAHero.Powers
         #endregion
 
         #region Public Interface
+        [YamlIgnore, Browsable(false)]
         public override string Description
         {
             get
@@ -467,6 +468,7 @@ namespace BLTAdoptAHero.Powers
 
         public override string ToString() => Description;
         
+        [YamlIgnore, Browsable(false)]
         public string Description
         {
             get

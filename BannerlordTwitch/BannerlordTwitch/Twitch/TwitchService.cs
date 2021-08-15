@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BannerlordTwitch.Dummy;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Testing;
 using BannerlordTwitch.Util;
@@ -39,11 +40,11 @@ namespace BannerlordTwitch
         {
             if (Source is Command cmd)
             {
-                return $"Usage: !{cmd.Name} {args}";
+                return "{=JSW1ryNl}Usage: !{cmd.Name} {args}".Translate(("cmd.Name", cmd.Name), ("args", args));
             }
             else
             {
-                return $"Usage: {args}";
+                return "{=mdhbHYNM}Usage: {args}".Translate(("args", args));
             }
         }
 
@@ -210,7 +211,7 @@ namespace BannerlordTwitch
             }
 
             var failures = new List<string>();
-            foreach (var rewardDef in settings.EnabledRewards.Where(r => existingRewards == null || existingRewards.Data.All(e => e.Title != r.RewardSpec?.Title)))
+            foreach (var rewardDef in settings.EnabledRewards.Where(r => existingRewards == null || existingRewards.Data.All(e => e.Title != r.RewardSpec?.Title.ToString())))
             {
                 if (rewardDef.RewardSpec.Cost <= 0)
                 {
@@ -273,7 +274,7 @@ namespace BannerlordTwitch
         {
             MainThreadSync.Run(() =>
             {
-                var reward = settings.Rewards.FirstOrDefault(r => r.RewardSpec.Title == redeemedArgs.RewardTitle);
+                var reward = settings.Rewards.FirstOrDefault(r => r.RewardSpec.Title.ToString() == redeemedArgs.RewardTitle);
                 if (reward == null)
                 {
                     Log.Info($"Reward {redeemedArgs.RewardTitle} not owned by this extension, ignoring it");
@@ -311,7 +312,7 @@ namespace BannerlordTwitch
 
         public bool TestRedeem(string rewardName, string user, string message)
         {
-            var reward = settings?.EnabledRewards.FirstOrDefault(r => string.Equals(r.RewardSpec.Title, rewardName, StringComparison.CurrentCultureIgnoreCase));
+            var reward = settings?.EnabledRewards.FirstOrDefault(r => string.Equals(r.RewardSpec.Title.ToString(), rewardName, StringComparison.CurrentCultureIgnoreCase));
             if (reward == null)
             {
                 Log.Error($"Reward {rewardName} not found!");
@@ -324,7 +325,7 @@ namespace BannerlordTwitch
                 return false;
             }
 
-            return affiliateSpoofing.FakeRedeem(reward.RewardSpec.Title, user, message);
+            return affiliateSpoofing.FakeRedeem(reward.RewardSpec.Title.ToString(), user, message);
             // var redeem = new OnRewardRedeemedArgs
             // {
             //     RedemptionId = Guid.NewGuid(),
@@ -418,14 +419,14 @@ namespace BannerlordTwitch
         {
             MainThreadSync.Run(() =>
             {
-                var help = "Commands: ".Yield()
+                var help = "{=luOJS8dL}Commands: ".Translate().Yield()
                     .Concat(settings.EnabledCommands.Where(c => !c.HideHelp)
-                        .Select(c => string.IsNullOrEmpty(c.Help) ? $"!{c.Name}" : $"!{c.Name} - {c.Help}")
+                        .Select(c => LocString.IsNullOrEmpty(c.Help) ? $"!{c.Name}" : $"!{c.Name} - {c.Help}")
                     )
                     .ToList();
                 if (settings.EnabledRewards.Any())
                 {
-                    help.Add($"Also see Channel Point Rewards");
+                    help.Add("{=0o3dPQSk}Also see Channel Point Rewards");
                 }
 
                 bot.SendChat(help.ToArray());
@@ -544,7 +545,7 @@ namespace BannerlordTwitch
 
         private void OnPubSubServiceConnected(object sender, EventArgs e)
         {
-            Log.LogFeedSystem("TwitchService connected");
+            Log.LogFeedSystem("{=BiYZ1CbN}TwitchService connected".Translate());
 
 #pragma warning disable 618
             // Obsolete warning disabled because no new version has yet been written!
@@ -590,7 +591,7 @@ namespace BannerlordTwitch
             RemoveRewards();
             bot?.Dispose();
             pubSub?.Disconnect();
-            Log.LogFeedSystem($"TwitchService stopped");
+            Log.LogFeedSystem("{=mEcBdqNC}TwitchService stopped");
         }
 
         public void Dispose()

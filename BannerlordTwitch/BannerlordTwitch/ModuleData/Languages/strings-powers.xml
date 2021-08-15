@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="English" />
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Common -->
+        <string id="W47g8bCB" text="Reward {ITEMNAME}" />
+        <string id="TAWcPGIc" text="{viewer} is {name}!" />
+        
+        
+        <string id="IvV04W31" text="{ITEMNAME} of Fealty"/>
+        <string id="UQtSgnog" text="Renegades {ITEMNAME}"/>
+        <string id="xI41h8NA" text="Stream Sniper {ITEMNAME}"/>
+        
+        <string id="ODWiNBng" text="Reliable"/>
+        <string id="fWTqF2sw" text="Trusted"/>
+        <string id="fe9J8von" text="Loyal"/>
+        <string id="HdYFegeb" text="Rebellious"/>
+        <string id="gDHR7f8r" text="Traitorous"/>
+        <string id="VEH582e7" text="Renegade"/>
+        <string id="Aj0gXKgZ" text="Stream Sniper"/>
+        <string id="QNbIUDrh" text="Killing Spree"/>
+        <string id="dlrzqWyB" text="Healthy I"/>
+        <string id="QpSDATVx" text="Healthy II"/>
+        <string id="Cqkht54y" text="Healthy III"/>
+        <string id="qA2f6xBp" text="Fragile I"/>
+        <string id="Hyuf4TSH" text="Fragile II"/>
+        <string id="v0ACBXmv" text="Fragile III"/>
+        <string id="mJQ88gTg" text="Vampiric I"/>
+        <string id="EHkU2FPe" text="Vampiric II"/>
+        <string id="gDsSjnnd" text="Vampiric III"/>
+        <string id="93p2ZAIG" text="Heavy Hitting I"/>
+        <string id="Gm7OdO9y" text="Heavy Hitting II"/>
+        <string id="OzBxlGDu" text="Heavy Hitting III"/>
+        <string id="0vLSj7KR" text="Retribution I"/>
+        <string id="vC5KggFz" text="Retribution II"/>
+        <string id="bS76hE3e" text="Retribution III"/>
+        
+        <string id="FQKNvxVG" text="Fleet Footed I"/>
+        <string id="rgQDzX4f" text="Fleet Footed II"/>
+        <string id="f7L0oLCQ" text="Fleet Footed III"/>
+        <string id="39yFtbp2" text="Charge I"/>
+        <string id="6IFhNSH3" text="Charge II"/>
+        <string id="l2eB9avA" text="Charge III"/>
+        <string id="tqmxzUCq" text="Better Mount I"/>
+        <string id="izG39s2J" text="Better Mount II"/>
+        <string id="CVmPJOB4" text="Better Mount III"/>
+        <string id="tv2vTde5" text="Imposing Mount"/>
+        <string id="fFProg8j" text="Imposing"/>
+        <string id="CTqMR9lV" text="Explosive Projectiles I"/>
+        <string id="miUEQpaQ" text="Explosive Projectiles II"/>
+        <string id="o2XgVhjA" text="Explosive Projectiles III"/>
+        <string id="7b7BkwRo" text="Fireblade I"/>
+        <string id="d8BUyJ5i" text="Fireblade II"/>
+        <string id="VGqA25nN" text="Fireblade III"/>
+        <string id="R8u1d7M6" text="Charge AoE I"/>
+        <string id="lO56Rq9E" text="Charge AoE II"/>
+        <string id="X5LQvC0o" text="Charge AoE III"/>
+        <string id="7XNfzok8" text="Ranger I"/>
+        <string id="HxpAtast" text="Ranger II"/>
+        <string id="7YSCRTCg" text="Ranger III"/>
+
+        <string id="r0Wn7FXu" text="Heavy Projectiles I"/>
+        <string id="XXL8aXIK" text="Heavy Projectiles II"/>
+        <string id="H3r0Zh8E" text="Heavy Projectiles III"/>
+        <string id="xwlvLfJX" text="Crush Through I"/>
+        <string id="7FJTIVa4" text="Crush Through II"/>
+        <string id="dQqwtBEE" text="Crush Through III"/>
+        <string id="MKUCQtsr" text="Knock Down I"/>
+        <string id="KUdqJrOY" text="Knock Down II"/>
+        <string id="Uc4Cai9H" text="Knock Down III"/>
+        <string id="VsZLMOHX" text="Cut Through I"/>
+        <string id="yXj1jqxx" text="Cut Through II"/>
+        <string id="R537vuN0" text="Cut Through III"/>
+        <string id="89ezJ7aW" text="Shatter Shield I"/>
+        <string id="Dvjkoxi3" text="Shatter Shield II"/>
+        <string id="V6RyPIQg" text="Shatter Shield III"/>
+        <string id="oyKzNISD" text="Shrug Off I"/>
+        <string id="zNj3xNd4" text="Shrug Off II"/>
+        <string id="5nsSdwel" text="Shrug Off III"/>
+        <string id="b3DBwSTA" text="Athletic I"/>
+        <string id="oeSxcpzi" text="Athletic II"/>
+        <string id="dMvjTTZb" text="Athletic III"/>
+        <string id="ngiTK9F9" text="Ignore Armor I"/>
+        <string id="Q7JOJL4l" text="Ignore Armor II"/>
+        <string id="fLsEduav" text="Ignore Armor III"/>
+    </strings>
+</base>

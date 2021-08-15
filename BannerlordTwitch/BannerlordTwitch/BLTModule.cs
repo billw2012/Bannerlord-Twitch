@@ -45,7 +45,11 @@ namespace BannerlordTwitch
 		{
 			if (!GameVersion.IsVersion(ExpectedVersion))
 			{
-				MessageBox.Show($"This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion.GameVersionString}. Exiting now.", "Bannerlord Twitch ERROR");
+				MessageBox.Show("{=IO9rnFpk}This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now."
+                    .Translate(
+                        ("ExpectedVersion", ExpectedVersion),
+                        ("GameVersion", GameVersion.GameVersionString)), 
+                    "{=Oru6b9Cy}Bannerlord Twitch ERROR".Translate());
 				Application.Current.Shutdown(1);
 			}
 			
@@ -74,10 +78,11 @@ namespace BannerlordTwitch
 				{
 					harmony = new Harmony("mod.bannerlord.bannerlordtwitch");
 					harmony.PatchAll();
-					Log.LogFeedSystem($"Loaded v{Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}");
+					Log.LogFeedSystem("{=45Q44kgm}Loaded v{Version}".Translate(
+                        ("Version", Assembly.GetExecutingAssembly().GetName().Version.ToString(3))));
 
 					ActionManager.Init();
-					Log.LogFeedSystem("Action Manager initialized");
+					Log.LogFeedSystem("{=5G73vqNS}Action Manager initialized".Translate());
 				}
 				catch (Exception ex)
 				{
@@ -113,10 +118,9 @@ namespace BannerlordTwitch
 					{
 						InformationManager.ShowInquiry(
 							new InquiryData(
-								"Bannerlord Twitch Mod WARNING",
-								$"You have auto save disabled, crashes could result in lost channel points!\n" +
-								$"Recommended you set it to 15 minutes or less.",
-								true, false, "Okay", null,
+								"{=PhRzCo9t}Bannerlord Twitch Mod WARNING".Translate(),
+								"{=7b4tU6y9}You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less.".Translate(),
+								true, false, "{=hpFXglKx}Okay".Translate(), null,
 								() => { }, () => { }), true);
 					}
 					
@@ -140,7 +144,13 @@ namespace BannerlordTwitch
             catch (Exception e)
             {
                 Log.Exception(nameof(OnGameStart), e);
-                MessageBox.Show($"Error in BannerlordTwitch.{nameof(OnGameStart)}, please report this on the discord: {e}", "Bannerlord Twitch Mod STARTUP ERROR");
+                MessageBox.Show(
+                    "{=C0G8s2Lv}Error in {Location}, please report this on the discord: {Error}"
+                        .Translate(
+                            ("Location", $"BannerlordTwitch.{nameof(OnGameStart)}"),
+                            ("Error", e.ToString())
+                            ), 
+                    "{=cuXwwHRe}Bannerlord Twitch Mod STARTUP ERROR".Translate());
             }
 		}
 
@@ -174,9 +184,9 @@ namespace BannerlordTwitch
 			{
 				InformationManager.ShowInquiry(
 					new InquiryData(
-						"Bannerlord Twitch Mod DISABLED",
+						"{=Sphd7XTS}Bannerlord Twitch Mod DISABLED".Translate(),
 						ex.Message,
-						true, false, "Okay", null,
+						true, false, "{=hpFXglKx}Okay".Translate(), null,
 						() => {}, () => {}), true);
 				TwitchService = null;
 				Log.Exception($"TwitchService could not start: {ex.Message}", ex);

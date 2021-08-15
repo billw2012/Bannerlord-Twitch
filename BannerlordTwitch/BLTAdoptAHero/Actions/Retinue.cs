@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
@@ -9,17 +10,21 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
 {
-    [UsedImplicitly]
-    [Description("Add and improve adopted heroes retinue")]
+    [LocDisplayName("{=tLSFX9Xc}Retinue"),
+     LocDescription("{=bhC3VcmU}Add and improve adopted heroes retinue"), 
+     UsedImplicitly]
     public class Retinue : ActionHandlerBase
     {
         private class Settings : IDocumentable
         {
-            [Description("Retinue Upgrade Settings"), PropertyOrder(1), ExpandableObject, Expand, UsedImplicitly]
+            [LocDisplayName("{=tLSFX9Xc}Retinue"),
+             LocDescription("{=iNoFrKsN}Retinue Upgrade Settings"), 
+             PropertyOrder(1), ExpandableObject, Expand, UsedImplicitly]
             public BLTAdoptAHeroCampaignBehavior.RetinueSettings Retinue { get; set; } = new();
 
-            [Description("Whether this action should attempt to buy/upgrade as many times as possible when called " +
-                         "with no parameter."), PropertyOrder(2), UsedImplicitly]
+            [LocDisplayName("{=nIsuuFMC}All By Default"),
+             LocDescription("{=mJSGvWlR}Whether this action should attempt to buy/upgrade as many times as possible when called with no parameter."), 
+             PropertyOrder(2), UsedImplicitly]
             public bool AllByDefault { get; set; } = true;
             
             public void GenerateDocumentation(IDocumentationGenerator generator)
@@ -42,20 +47,21 @@ namespace BLTAdoptAHero
             
             if (Mission.Current != null)
             {
-                onFailure($"You cannot upgrade retinue, as a mission is active!");
+                onFailure("{=mCcpMwrN}You cannot upgrade retinue, as a mission is active!".Translate());
                 return;
             }
 
             int numToUpgrade = settings.AllByDefault ? int.MaxValue : 1;
             if (!string.IsNullOrEmpty(context.Args))
             {
-                if (string.Compare(context.Args, "all", StringComparison.CurrentCultureIgnoreCase) == 0)
+                if (string.Compare(context.Args, 
+                    "{=hHekZwYB}all".Translate(), StringComparison.CurrentCultureIgnoreCase) == 0)
                 {
                     numToUpgrade = int.MaxValue;
                 }
                 else if (!int.TryParse(context.Args, out numToUpgrade) || numToUpgrade <= 0)
                 {
-                    onFailure(context.ArgsErrorMessage("(number, or all)"));
+                    onFailure(context.ArgsErrorMessage("{=NexXxYvj}(number, or all)".Translate()));
                     return;
                 }
             }

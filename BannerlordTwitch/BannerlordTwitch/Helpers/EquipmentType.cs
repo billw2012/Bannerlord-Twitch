@@ -34,15 +34,35 @@ namespace BannerlordTwitch.Helpers
 
     public class EquipmentTypeItemSource : IItemsSource
     {
-        public ItemCollection GetValues()
+        private static readonly ItemCollection items = new()
         {
-            var col = new ItemCollection();
-            for (EquipmentType i = 0; i < EquipmentType.Num; i++)
-            {
-                col.Add(i, i.ToString().SplitCamelCase());
-            }
-            return col;
-        }
+            { EquipmentType.None, "{=i7XX56i9}None".Translate() },
+            { EquipmentType.Dagger, "{=5HQtHOg4}Dagger".Translate() },
+            { EquipmentType.OneHandedSword, "{=hZU8m8K9}OneHandedSword".Translate() },
+            { EquipmentType.TwoHandedSword, "{=Lc70XOXH}TwoHandedSword".Translate() },
+            { EquipmentType.OneHandedAxe, "{=amKrRDlF}OneHandedAxe".Translate() },
+            { EquipmentType.TwoHandedAxe, "{=QPv8qS6h}TwoHandedAxe".Translate() },
+            { EquipmentType.OneHandedMace, "{=jTI9J3nq}OneHandedMace".Translate() },
+            { EquipmentType.TwoHandedMace, "{=YzVmN0wN}TwoHandedMace".Translate() },
+            { EquipmentType.OneHandedLance, "{=pP2mtmXu}OneHandedLance".Translate() },
+            { EquipmentType.TwoHandedLance, "{=Y6CxpaYL}TwoHandedLance".Translate() },
+            { EquipmentType.OneHandedGlaive, "{=r22oB2bm}OneHandedGlaive".Translate() },
+            { EquipmentType.TwoHandedGlaive, "{=BcmE6Y75}TwoHandedGlaive".Translate() },
+            { EquipmentType.Bow, "{=rroxl8j3}Bow".Translate() },
+            { EquipmentType.Crossbow, "{=CztMY8ZE}Crossbow".Translate() },
+            { EquipmentType.Arrows, "{=DYYyhDUI}Arrows".Translate() },
+            { EquipmentType.Bolts, "{=i281jKBH}Bolts".Translate() },
+            { EquipmentType.ThrowingKnives, "{=C1Qx1ZqP}ThrowingKnives".Translate() },
+            { EquipmentType.ThrowingAxes, "{=S1NUKL4r}ThrowingAxes".Translate() },
+            { EquipmentType.ThrowingJavelins, "{=ND1x0R2V}ThrowingJavelins".Translate() },
+            { EquipmentType.Shield, "{=p4eF4kc6}Shield".Translate() },
+            { EquipmentType.Stone, "{=dYKgMqE8}Stone".Translate() },
+        };
+
+        public ItemCollection GetValues() => items;
+        
+        public static string GetFriendlyName(EquipmentType value) 
+            => items.FirstOrDefault(p => (EquipmentType) p.Value == value)?.DisplayName ?? "(none)";
     }
 
     public static class EquipmentTypeHelpers

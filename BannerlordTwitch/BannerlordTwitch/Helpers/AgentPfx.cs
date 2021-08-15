@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch.Annotations;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -16,19 +17,25 @@ namespace BannerlordTwitch.Helpers
     {
         // private int Id { get; set; }
         
-        [Description("Particle effect system name, see ParticleEffects.txt for the full vanilla list"),
+        [LocDisplayName("{=uUzmy7Lh}Name"), 
+         LocDescription("{=xgnntAyd}Particle effect system name, see ParticleEffects.txt for the full vanilla list"),
          ItemsSource(typeof(LoopingParticleEffectItemSource)), PropertyOrder(1), UsedImplicitly]
         public string Name { get; set; }
 
         public enum AttachPointEnum
         {
+            [LocDisplayName("{=w3eb5kWA}On Weapon")]
             OnWeapon,
+            [LocDisplayName("{=YLmpgn4j}On Hands")]
             OnHands,
+            [LocDisplayName("{=muuJpmaw}On Head")]
             OnHead,
+            [LocDisplayName("{=m9p9nBjM}On Body")]
             OnBody,
         }
 
-        [Description("Where to attach the particles"), PropertyOrder(2), UsedImplicitly]
+        [LocDisplayName("{=GCe3gQcz}Attach Point"), 
+         LocDescription("{=uNOYtEdN}Where to attach the particles"), PropertyOrder(2), UsedImplicitly]
         public AttachPointEnum AttachPoint { get; set; }
 
         public override string ToString() => $"{LoopingParticleEffectItemSource.GetFriendlyName(Name)} {AttachPoint}";

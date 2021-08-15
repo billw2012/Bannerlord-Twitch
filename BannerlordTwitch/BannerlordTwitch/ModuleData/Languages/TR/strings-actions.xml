@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Türkçe" />
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Actions -->
+        
+        <!-- stats -->
+        <string id="JiMaaypq" text="Kahramanlarınızın klan, altın, konum, HP, beceriler, nitelikler ve maiyet dahil olmak üzere genel bilgilerini gösterir."/>
+        <string id="tIVnWwGG" text="istatistikleri göster" />
+        <string id="J2AqvpeF" text="istatistikler" />
+
+        <!-- inv -->
+        <string id="JneYk4pF" text="Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage." />
+        <string id="oVNKTdOy" text="show equipment" />
+        <string id="UbklIEGh" text="inv" />
+
+        <!-- equip -->
+        <string id="EZGcIEgQ" text="Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to." />
+        <string id="vTo0NowP" text="upgrade equipment" />
+        <string id="wHqxd4kb" text="equip" />
+
+        <string id="zxAVjOW6" text="Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford." />
+        <string id="I7sm1ct6" text="upgrade retinue" />
+        <string id="mge9rH9J" text="retinue" />
+
+        <!-- class -->
+        <string id="K3297TEM" text="Selects a new class for your hero, updating your existing equipment to match the class requirements.&lt;br&gt;Usage is &lt;code&gt;!class (new class name)&lt;/code&gt;, e.g. &lt;code&gt;!class archer&lt;/code&gt;." />
+        <string id="uN82Y7hR" text="select new class" />
+        <string id="nV9iIsDC" text="class" />
+
+        <!-- reequip -->
+        <string id="zBIv0a4I" text="Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier." />
+        <string id="3KYGJ0Mu" text="reroll equipment" />
+        <string id="fGfTaAoD" text="reequip" />
+
+        <!-- gold -->
+        <string id="eWI5oDce" text="Show your heroes current gold." />
+        <string id="zdRj4blL" text="show gold" />
+        <string id="W5uX9HCJ" text="gold" />
+
+        <!-- retinuelist -->
+        <string id="BlBiEmbf" text="Shows your current retinue troops." />
+        <string id="ysbFV5uT" text="retinue list" />
+        <string id="kG6yjBBR" text="retinuelist" />
+
+        <!-- adopt -->
+        <string id="MpvqvKef" text="Get a hero in game. Almost all other actions require an adopted hero." />
+        <string id="0grO6hB5" text="adopt" />
+
+        <!-- nameitem -->
+        <string id="S1FZXQim" text="You can use this to name your custom items.&lt;br&gt;Usage is &lt;code&gt;!nameitem (name)&lt;/code&gt;, for example &lt;code&gt;!nameitem Foehammer&lt;/code&gt;.&lt;br&gt;If you call &lt;code&gt;!nameitem&lt;/code&gt; on its own it will tell you what item will be named next." />
+        <string id="tNVmXpoc" text="name a reward item" />
+        <string id="IFDecKha" text="nameitem" />
+
+        <!-- bltbet -->
+        <string id="thajdk5s" text="Use this to bet on tournament matches, when available.&lt;br&gt;Usage is &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt;, for example &lt;code&gt;!bltbet red 10000&lt;/code&gt; to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.&lt;br&gt;If only one team is bet upon, the bets will be refunded." />
+        <string id="xBgLXaf7" text="bet on tournament" />
+        <string id="haKiwbsR" text="bltbet" />
+
+        <!-- power -->
+        <string id="NUQ5PsjF" text="power" />
+        <string id="ZVxCqyJL" text="Show the heroes achievements and tracked stats." />
+
+        <!-- achievements -->
+        <string id="aGPoAaM9" text="achievements" />
+
+        <!-- ach -->
+        <string id="woTpsqyV" text="ach" />
+
+        <!-- auction -->
+        <string id="ma27zJHy" text="Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.&lt;br&gt;Usage is &lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!auction 50000 Boots&lt;/code&gt; would start a new auction for your custom item with the word &quot;Boots&quot; in it, with a reserve of 50000. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item." />
+        <string id="QQX2aboq" text="auction" />
+
+        <!-- bid -->
+        <string id="1TBIIJVZ" text="Place a bid on the current auction, if one is active.&lt;br&gt;Usage is &lt;code&gt;!bid (gold amount)&lt;/code&gt;, e.g. &lt;code&gt;!bid 100000&lt;/code&gt;. If there is no auction, or the bid doesn&apos;t exceed the reserve price, it will be rejected." />
+        <string id="taI6SRSG" text="bid" />
+
+        <!-- discarditem -->
+        <string id="vwPIXbeh" text="Throw away one of your custom items.&lt;br&gt;Usage is &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!discarditem Boots&lt;/code&gt; would discard your custom item with the word &quot;Boots&quot; in it. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item." />
+        <string id="Pla3OVS4" text="discarditem" />
+
+        <!-- giveitem -->
+        <string id="RS37T7gG" text="Give one of your custom items to another viewer.&lt;br&gt;Usage is &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; would give your custom item with the word &quot;Boots&quot; in it to the viewer called C4lad0g. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item." />
+        <string id="osvl34my" text="giveitem" />
+
+        <!-- powers -->
+        <string id="GYYbCXmu" text="Shows your available powers" />
+        <string id="GHCxNIaR" text="powers" />
+    </strings>
+</base>

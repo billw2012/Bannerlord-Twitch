@@ -59,6 +59,7 @@ namespace BLTAdoptAHero.Powers
         #region Public Interface
         [YamlIgnore, Browsable(false)]
         public bool IsEnabled => DamageModifierPercent != 100 || AddHitBehavior.IsEnabled || RemoveHitBehavior.IsEnabled;
+        [YamlIgnore, Browsable(false)]
         public override string Description
         {
             get 

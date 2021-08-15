@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="English" />
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <string id="dirEUQc7" text="Get a hero in game. Almost all other actions require an adopted hero."/>
+        <string id="Y7GzhU5a" text="Adds 10,000 gold to your adopted hero."/>
+        <string id="Hbk74nei" text="Adds 100,000 gold to your adopted hero."/>
+        <string id="nI4dr4uZ" text="Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue)."/>
+        <string id="flQofEFu" text="Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue)."/>
+        <string id="zLxgvsYd" text="Heals the streamers character in battle, over time. Doesn't work on the campaign map."/>
+        <string id="KaE947T9" text="Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament."/>
+        <string id="5L3LWrUx" text="Sends a message in the game. If you have a hero then it will also show them next to the message."/>
+        <string id="SXzjFdG1" text="Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritence rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete."/>
+        <string id="ZfhTuaRR" text="Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly choosen, but influenced by your class and existing skills and equipment."/>
+        <string id="pFwSBHnR" text="Heals your hero over time. Only works in battle, when your hero is summoned."/>
+        <string id="CSmE7Y50" text="Transfer 10,000 gold to the streamers character, from your hero."/>
+        <string id="LO6Q2DCb" text="Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay."/>
+        
+        <string id="kL65xglO" text="Get a hero in game. Almost all other actions require an adopted hero."/>
+        <string id="xQTiKsVA" text="Add 10,000 gold to your adopted hero"/>
+        <string id="xeI0AXUl" text="Add 100,000 gold to your adopted hero"/>
+        <string id="zmxI41XP" text="Your adopted hero joins the players side in battle"/>
+        <string id="ry25StNF" text="Your adopted hero joins the enemies side in battle"/>
+        <string id="a8DqM6AY" text="Heal the streamer over time"/>
+        <string id="ODfWfHln" text="Join the tournament queue with your adopted hero"/>
+        <string id="m9IFHkZh" text="Enter Message"/>
+        <string id="ZNGav9pi" text="Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel"/>
+        <string id="UCjOD22c" text="Add 50,000 XP to a random skill of your adopted hero"/>
+        <string id="1IDV1dAh" text="Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:"/>
+        <string id="x5Agf9Wl" text="Activate your class power on your hero, if you have one."/>
+        <string id="Yc9dn4Sx" text="Adopt a Hero"/>
+        <string id="s0GPjZKG" text="10k gold"/>
+        <string id="ndi9p5jn" text="100k gold"/>
+        <string id="dpnWybop" text="Summon"/>
+        <string id="IrF1VaBD" text="Attack"/>
+        <string id="MSpPJJhZ" text="Heal Streamer"/>
+        <string id="IBrMU0VF" text="Tournament"/>
+        <string id="FFvfbTgo" text="Send Message In Game"/>
+        <string id="AZMDg7St" text="Retire My Hero"/>
+        <string id="uA1yEnyO" text="50k XP"/>
+        <string id="2ciF79zR" text="Burn Player"/>
+        <string id="likTlNpu" text="Heal Hero"/>
+        <string id="9DoHhKeh" text="Give Player Gold"/>
+        <string id="yoZSmM0b" text="Use Class Power"/>
+        
+        <string id="mpc8VmbK" text=""/>
+        <string id="G7ZaVskK" text=""/>
+        <string id="T2abuuV2" text=""/>
+        <string id="z7c3POPe" text=""/>
+        <string id="V3d40hVO" text=""/>
+        <string id="YX6t2wVt" text=""/>
+        <string id="yLk4hSh3" text=""/>
+        <string id="lCgbB5KW" text=""/>
+        <string id="0qAlzBvg" text=""/>
+        <string id="MwmAISnU" text=""/>
+        <string id="AgFPPCfN" text=""/>
+        <string id="mDXEi9TQ" text=""/>
+        <string id="wL4CVz2Y" text=""/>
+        <string id="QrZo2nqp" text=""/>
+        <string id="4VrCJzhZ" text=""/>
+        <string id="4E4DYyKn" text=""/>
+        <string id="2ziLM9KX" text=""/>
+        <string id="QPB9LKhM" text=""/>
+        <string id="iAQJL2IP" text=""/>
+        <string id="CcVNXQpl" text=""/>
+        <string id="nDBP7cEy" text=""/>
+        <string id="3bdM1s90" text=""/>
+        <string id="7Gxbovdr" text=""/>
+        <string id="Kax7kdRr" text=""/>
+        <string id="uzi0wMsp" text=""/>
+        <string id="EuWQJ0EI" text=""/>
+        <string id="a0H9AMwg" text=""/>
+    </strings>
+</base>

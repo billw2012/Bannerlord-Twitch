@@ -8,7 +8,13 @@ $(document).ready(function () {
             entrants: 0,
             tournamentSize: 0,
             bettingState: 'none',
-            bets: []
+            bets: [],
+            labels: {
+                Tournament: '',
+                BettingIsOpen: '',
+                BettingIsClosed: '',
+                NotTakingBets: '',
+            }
         },
         computed: {
             anyBets: function () {
@@ -70,6 +76,10 @@ $(document).ready(function () {
         tournamentHub.client.updateBettingState = function (bettingState) {
             tournament.bettingState = bettingState;
         };
+        tournamentHub.client.setLabels = function (labels) {
+            tournament.labels = labels;
+        };
+        
         $.connection.hub.start().done(function () {
             console.log('BLT Tournament Hub started');
         });
