@@ -33,7 +33,7 @@ namespace BLTAdoptAHero
         [Description("Requirements for class levels"),
          Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
          PropertyOrder(2), UsedImplicitly]
-        public ObservableCollection<ClassLevelRequirementsDef> ClassLevelRequirements { get; set; }
+        public ObservableCollection<ClassLevelRequirementsDef> ClassLevelRequirements { get; set; } = new();
         #endregion
 
         #region Public Interface
@@ -70,6 +70,9 @@ namespace BLTAdoptAHero
         #region IUpdateFromDefault
         public void OnUpdateFromDefault(Settings defaultSettings)
         {
+            ClassDefs ??= new();
+            ClassLevelRequirements ??= new();
+            
             SettingsHelpers.MergeCollections(
                 ClassDefs, 
                 Get(defaultSettings).ClassDefs,

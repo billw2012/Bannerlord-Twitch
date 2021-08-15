@@ -170,7 +170,7 @@ namespace BLTBuffet
 
         private static void ApplyPropertyModifiers(Agent target, Config config)
         {
-            foreach (var prop in config.Properties)
+            foreach (var prop in config.Properties ?? Enumerable.Empty<PropertyDef>())
             {
                 float baseValue = target.AgentDrivenProperties.GetStat(prop.Name);
                 if (prop.Multiply.HasValue)

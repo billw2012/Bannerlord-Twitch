@@ -124,12 +124,12 @@ namespace BLTBuffet
             [Description("Particle effects to apply"),
              Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
              PropertyOrder(5)]
-            public ObservableCollection<ParticleEffectDef> ParticleEffects { get; set; }
+            public ObservableCollection<ParticleEffectDef> ParticleEffects { get; set; } = new();
 
             [Description("Properties to change, and how much by"),
              Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
              PropertyOrder(6)]
-            public ObservableCollection<PropertyDef> Properties { get; set; }
+            public ObservableCollection<PropertyDef> Properties { get; set; } = new();
 
             // [Description("Creates a light attached to the target"), PropertyOrder(7)]
             // public LightDef Light { get; set; }
