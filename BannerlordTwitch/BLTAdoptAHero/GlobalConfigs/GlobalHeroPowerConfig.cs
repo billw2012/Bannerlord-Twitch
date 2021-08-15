@@ -71,6 +71,7 @@ namespace BLTAdoptAHero
                                 "C4213666-2176-42B4-8DBB-BFE0182BCCE1" => typeof(AddHealthPower),
                                 "FFE07DA3-E977-42D8-80CA-5DFFF66123EB" => typeof(ReflectDamagePower),
                                 "6DF1D8D6-02C6-4D30-8D12-CCE24077A4AA" => typeof(StatModifyPower),
+                                "366C25BD-5B20-4EB1-98F5-04B5FDDD6285" => typeof(TakeDamagePower),
                                 _ => throw new Exception($"Power type id {id} not found")
                             };
                             
