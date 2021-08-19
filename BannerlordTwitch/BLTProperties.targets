@@ -1,69 +1,56 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
     <PropertyGroup>
-        <ModuleVersion>3.0.1</ModuleVersion>
+        <ModuleVersion>3.0.2</ModuleVersion>
         <DefineConstants/>
     </PropertyGroup>
+
+    <PropertyGroup Condition="$(Configuration.StartsWith('Debug'))">
+        <Optimize>false</Optimize>
+        <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
+        <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+        <XamlDebuggingInformation>True</XamlDebuggingInformation>
+    </PropertyGroup>
     
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.5.9|AnyCPU' ">
-        <Optimize>false</Optimize>
-        <DefineConstants>$(DefineConstants);DEBUG;TRACE;e159</DefineConstants>
+    <PropertyGroup Condition="$(Configuration.StartsWith('Release'))">
+        <Optimize>true</Optimize>
+        <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+        <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(Configuration.EndsWith(' 1.5.9'))">
+        <GameVersion>1.5.9</GameVersion>
+        <DefineConstants>$(DefineConstants);e159</DefineConstants>
         <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_9)</BANNERLORD_GAME_DIR>
         <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.9</BANNERLORD_GAME_DIR>
-        <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-        <XamlDebuggingInformation>True</XamlDebuggingInformation>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.5.9|AnyCPU' ">
-        <Optimize>true</Optimize>
-        <DefineConstants>$(DefineConstants);TRACE;e159</DefineConstants>
-        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_9)</BANNERLORD_GAME_DIR>
-        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.9</BANNERLORD_GAME_DIR>
-        <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.5.10|AnyCPU' ">
-        <Optimize>false</Optimize>
-        <DefineConstants>$(DefineConstants);DEBUG;TRACE;e1510</DefineConstants>
+
+    <PropertyGroup Condition="$(Configuration.EndsWith(' 1.5.10'))">
+        <GameVersion>1.5.10</GameVersion>
+        <DefineConstants>$(DefineConstants);e1510</DefineConstants>
         <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_10)</BANNERLORD_GAME_DIR>
         <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.10</BANNERLORD_GAME_DIR>
-        <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-        <XamlDebuggingInformation>True</XamlDebuggingInformation>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.5.10|AnyCPU' ">
-        <Optimize>true</Optimize>
-        <DefineConstants>$(DefineConstants);MODULE_VERSION;TRACE;e1510</DefineConstants>
-        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_10)</BANNERLORD_GAME_DIR>
-        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.10</BANNERLORD_GAME_DIR>
-        <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.6.0|AnyCPU' ">
-        <Optimize>false</Optimize>
-        <DefineConstants>$(DefineConstants);DEBUG;TRACE;e160</DefineConstants>
+
+    <PropertyGroup Condition="$(Configuration.EndsWith(' 1.6.0'))">
+        <GameVersion>1.6.0</GameVersion>
+        <DefineConstants>$(DefineConstants);e160</DefineConstants>
         <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_6_0)</BANNERLORD_GAME_DIR>
         <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.6.0</BANNERLORD_GAME_DIR>
-        <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-        <XamlDebuggingInformation>True</XamlDebuggingInformation>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.6.0|AnyCPU' ">
-        <Optimize>true</Optimize>
-        <DefineConstants>$(DefineConstants);TRACE;e160</DefineConstants>
-        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_6_0)</BANNERLORD_GAME_DIR>
-        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.6.0</BANNERLORD_GAME_DIR>
-        <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.6.1|AnyCPU' ">
-        <Optimize>false</Optimize>
-        <DefineConstants>$(DefineConstants);DEBUG;TRACE;e161</DefineConstants>
+
+    <PropertyGroup Condition="$(Configuration.EndsWith(' 1.6.1'))">
+        <GameVersion>1.6.1</GameVersion>
+        <DefineConstants>$(DefineConstants);e161</DefineConstants>
         <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_6_1)</BANNERLORD_GAME_DIR>
-        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</BANNERLORD_GAME_DIR>
-        <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-        <XamlDebuggingInformation>True</XamlDebuggingInformation>
+        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.6.1</BANNERLORD_GAME_DIR>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.6.1|AnyCPU' ">
-        <Optimize>true</Optimize>
-        <DefineConstants>$(DefineConstants);TRACE;e161</DefineConstants>
-        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_6_1)</BANNERLORD_GAME_DIR>
+
+    <PropertyGroup Condition="$(Configuration.EndsWith(' 1.6.2'))">
+        <GameVersion>1.6.2</GameVersion>
+        <DefineConstants>$(DefineConstants);e162</DefineConstants>
+        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_6_2)</BANNERLORD_GAME_DIR>
         <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</BANNERLORD_GAME_DIR>
-        <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
 
     <Target Name="AddGameVersionMetadaAssemblyAttributes" BeforeTargets="CoreGenerateAssemblyInfo">

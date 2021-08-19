@@ -36,6 +36,8 @@ namespace BannerlordTwitch
 				"e1.6.0"
 #elif e161
 				"e1.6.1"
+#elif e162
+				"e1.6.2"
 #endif
 			;
 

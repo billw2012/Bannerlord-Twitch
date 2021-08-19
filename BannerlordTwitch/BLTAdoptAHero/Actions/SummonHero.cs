@@ -602,16 +602,22 @@ namespace BLTAdoptAHero
                     }
 
                     existingHero.CurrentAgent = Mission.Current.SpawnTroop(
-                        troopOrigin,
-                        isPlayerSide: settings.OnPlayerSide,
-                        hasFormation: true,
-                        spawnWithHorse: adoptedHero.CharacterObject.IsMounted && isMounted,
-                        isReinforcement: true,
-                        enforceSpawningOnInitialPoint: false,
-                        formationTroopCount: totalTroopsCount,
-                        formationTroopIndex: formationTroopIdx++,
-                        isAlarmed: true,
-                        wieldInitialWeapons: true);
+                          troopOrigin
+                        , isPlayerSide: settings.OnPlayerSide
+                        , hasFormation: true
+                        , spawnWithHorse: adoptedHero.CharacterObject.IsMounted && isMounted
+                        , isReinforcement: true
+                        , enforceSpawningOnInitialPoint: false
+                        , formationTroopCount: totalTroopsCount
+                        , formationTroopIndex: formationTroopIdx++
+                        , isAlarmed: true
+                        , wieldInitialWeapons: true
+                        #if e162
+                        , forceDismounted: false
+                        , initialPosition: null
+                        , initialDirection: null
+                        #endif
+                        );
 
                     existingHero.State = AgentState.Active;
                     existingHero.TimesSummoned++;
@@ -646,16 +652,22 @@ namespace BLTAdoptAHero
 
                             existingHero.Party.MemberRoster.AddToCounts(retinueTroop, 1);
                             var retinueAgent = Mission.Current.SpawnTroop(
-                                new PartyAgentOrigin(existingHero.Party, retinueTroop),
-                                isPlayerSide: settings.OnPlayerSide,
-                                hasFormation: true,
-                                spawnWithHorse: retinueTroop.IsMounted && retinueMounted,
-                                isReinforcement: true,
-                                enforceSpawningOnInitialPoint: false,
-                                formationTroopCount: totalTroopsCount,
-                                formationTroopIndex: formationTroopIdx++,
-                                isAlarmed: true,
-                                wieldInitialWeapons: true);
+                                  new PartyAgentOrigin(existingHero.Party, retinueTroop)
+                                , isPlayerSide: settings.OnPlayerSide
+                                , hasFormation: true
+                                , spawnWithHorse: retinueTroop.IsMounted && retinueMounted
+                                , isReinforcement: true
+                                , enforceSpawningOnInitialPoint: false
+                                , formationTroopCount: totalTroopsCount
+                                , formationTroopIndex: formationTroopIdx++
+                                , isAlarmed: true
+                                , wieldInitialWeapons: true
+                                #if e162
+                                , forceDismounted: false
+                                , initialPosition: null
+                                , initialDirection: null
+                                #endif
+                                );
 
                             existingHero.Retinue.Add(new()
                             {
