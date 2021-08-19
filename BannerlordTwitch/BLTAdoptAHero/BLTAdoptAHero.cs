@@ -74,7 +74,14 @@ namespace BLTAdoptAHero
             }
         }
         
-        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(MissionNameMarkerTargetVM), MethodType.Constructor, typeof(Agent))]
+        [UsedImplicitly, HarmonyPostfix, 
+         HarmonyPatch(typeof(MissionNameMarkerTargetVM), MethodType.Constructor
+             , typeof(Agent)
+             #if e162
+             , typeof(bool)
+             #endif
+             )
+        ]
         public static void MissionNameMarkerTargetVMConstructorPostfix(MissionNameMarkerTargetVM __instance, Agent agent)
         {
             if (MissionHelpers.InSiegeMission() || MissionHelpers.InFieldBattleMission() || MissionHelpers.InHideOutMission())
@@ -90,7 +97,15 @@ namespace BLTAdoptAHero
             }
         }
 
-        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(MissionNameMarkerVM), MethodType.Constructor, typeof(Mission), typeof(Camera))]
+        [UsedImplicitly, HarmonyPostfix, 
+         HarmonyPatch(typeof(MissionNameMarkerVM), MethodType.Constructor
+             , typeof(Mission)
+             , typeof(Camera)
+             #if e162
+             , typeof(Dictionary<Agent, MissionNameMarkerTargetVM.QuestType>)
+             #endif
+             )
+        ]
         // ReSharper disable once RedundantAssignment
         public static void MissionNameMarkerVMConstructorPostfix(MissionNameMarkerVM __instance, Mission mission, ref Vec3 ____heightOffset)
         {
