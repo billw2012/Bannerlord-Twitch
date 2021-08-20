@@ -365,7 +365,7 @@
         </Content>
         <Content Include="Bannerlord-Twitch-Auth.yaml" />
         <Content Include="Bannerlord-Twitch-Documentation.css" />
-        <Content Include="Bannerlord-Twitch-v2.yaml" />
+        <Content Include="Bannerlord-Twitch-v3.yaml" />
         <Content Include="delete-acl.bat" />
         <Content Include="FodyWeavers.xml" />
         <Content Include="FodyWeavers.xsd" />
@@ -429,7 +429,7 @@
     <Target Name="AfterBuild">
         <Message Importance="High" Text="Copying content files..." />
         <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml" DestinationFolder="$(OutDir)..\.." DestinationFiles="" />
-        <Copy SourceFiles="Bannerlord-Twitch-v2.yaml" DestinationFolder="$(OutDir)..\.." />
+        <Copy SourceFiles="Bannerlord-Twitch-v3.yaml" DestinationFolder="$(OutDir)..\.." />
         <Copy SourceFiles="Bannerlord-Twitch-Documentation.css" DestinationFolder="$(OutDir)..\.." />
         <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
 
