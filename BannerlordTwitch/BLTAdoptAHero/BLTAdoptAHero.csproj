@@ -15,17 +15,6 @@
         <LangVersion>9</LangVersion>
     </PropertyGroup>
     <Import Project="$(SolutionDir)BLTProperties.targets" />
-    <PropertyGroup>
-        <DebugType>full</DebugType>
-        <PlatformTarget>x64</PlatformTarget>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <DebugSymbols>true</DebugSymbols>
-        <OutputPath>build\$(Configuration)\bin\Win64_Shipping_Client\</OutputPath>
-        <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-        <NoWarn>MSB3246;MSB3247;MSB3277;CS0067</NoWarn>
-    </PropertyGroup>
     <ItemGroup>
         <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>..\packages\Lib.Harmony.2.0.4\lib\net48\0Harmony.dll</HintPath>
@@ -193,11 +182,10 @@
     <ItemGroup>
         <None Include="app.config" />
         <None Include="packages.config" />
-        <None Include="SubModule.xml" />
+        <None Include="_Module\SubModule.xml" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="FodyWeavers.xml" />
-        <Content Include="ModuleData\Languages\strings-misc.xml" />
         <Content Include="Overlay\MissionInfo\MissionInfo.css">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
@@ -217,6 +205,7 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
         <Content Include="std_module_strings_xml.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-misc.xml" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\BannerlordTwitch\BannerlordTwitch.csproj">
@@ -225,26 +214,10 @@
             <Private>False</Private>
         </ProjectReference>
     </ItemGroup>
+    
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <Target Name="AfterClean">
-        <RemoveDir Directories="$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)" />
-        <RemoveDir Directories="$(OutDir)..\..\..\..\build" />
-        <RemoveDir Directories="$(OutDir)..\..\..\..\obj" />
-    </Target>
-    <Target Name="AfterBuild">
-        <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
-        <ReplaceFileText File="$(OutDir)..\..\SubModule.xml" Regex="%(SubModuleOverrides.Regex)" ReplacementText="%(SubModuleOverrides.Replacement)" />
-        
-        <ItemGroup>
-            <ModuleDataContent Include="ModuleData\**\*" />
-        </ItemGroup>
-        <Copy SourceFiles="@(ModuleDataContent)" DestinationFiles="@(ModuleDataContent->'$(OutDir)..\..\ModuleData\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
-        
-        <ItemGroup>
-            <StagingDir Include="$(OutDir)\..\..\**\*" />
-        </ItemGroup>
-        <Copy SourceFiles="@(StagingDir)" DestinationFiles="@(StagingDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
-    </Target>
+    <Import Project="$(SolutionDir)BLTBuildTargets.targets" />
+    
     <Import Project="..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.1\build\Fody.targets')" />
     <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
         <PropertyGroup>

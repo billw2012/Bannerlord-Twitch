@@ -3,13 +3,9 @@
     <Import Project="..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" />
     <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
 
-    
     <PropertyGroup>
         <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
         <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-        <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -31,19 +27,10 @@
     </PropertyGroup>
     <Import Project="$(SolutionDir)BLTProperties.targets" />
     <PropertyGroup>
-        <DebugType>full</DebugType>
-        <PlatformTarget>x64</PlatformTarget>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <DebugSymbols>true</DebugSymbols>
-        <OutputPath>build\$(Configuration)\bin\Win64_Shipping_Client\</OutputPath>
         <StartAction>Program</StartAction>
         <StartProgram>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\Bannerlord.exe</StartProgram>
         <StartWorkingDirectory>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client</StartWorkingDirectory>
         <StartArguments>/singleplayer _MODULES_%2aBannerlord.Harmony%2aNative%2aSandBoxCore%2aCustomBattle%2aSandbox%2aStoryMode%2aBannerlordTwitch%2aBLTAdoptAHero%2aBLTBuffet%2aBLTConfigure%2a_MODULES_</StartArguments>
-        <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-        <NoWarn>MSB3246;MSB3247;MSB3277;CS0067</NoWarn>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null">
@@ -75,7 +62,7 @@
             <Private>True</Private>
         </Reference>
         <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466">
-          <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+            <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
         </Reference>
         <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, PublicKeyToken=null">
             <HintPath>..\packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
@@ -324,22 +311,22 @@
         <Compile Include="Twitch\TwitchService.Bot.cs" />
         <Compile Include="Twitch\TwitchService.cs" />
         <Compile Include="UI\CollectionPropertyEditor.xaml.cs">
-          <DependentUpon>CollectionPropertyEditor.xaml</DependentUpon>
+            <DependentUpon>CollectionPropertyEditor.xaml</DependentUpon>
         </Compile>
         <Compile Include="UI\DefaultCollectionEditor.cs" />
         <Compile Include="UI\DerivedClassCollectionEditor.cs" />
         <Compile Include="UI\ExpandAttribute.cs" />
         <Compile Include="UI\ParticleEffectItemSource.cs" />
         <Compile Include="UI\RangeFloatControl.xaml.cs">
-          <DependentUpon>RangeFloatControl.xaml</DependentUpon>
+            <DependentUpon>RangeFloatControl.xaml</DependentUpon>
         </Compile>
         <Compile Include="UI\RangeFloatEditor.cs" />
         <Compile Include="UI\RangeIntControl.xaml.cs">
-          <DependentUpon>RangeIntControl.xaml</DependentUpon>
+            <DependentUpon>RangeIntControl.xaml</DependentUpon>
         </Compile>
         <Compile Include="UI\RangeIntEditor.cs" />
         <Compile Include="UI\SliderFloatControl.xaml.cs">
-          <DependentUpon>SliderFloatControl.xaml</DependentUpon>
+            <DependentUpon>SliderFloatControl.xaml</DependentUpon>
         </Compile>
         <Compile Include="UI\SliderFloatEditor.cs" />
         <Compile Include="UI\SoundEffectItemSource.cs" />
@@ -368,21 +355,9 @@
         <Content Include="..\..\README.md">
             <Link>README.md</Link>
         </Content>
-        <Content Include="Bannerlord-Twitch-Auth.yaml" />
-        <Content Include="Bannerlord-Twitch-Documentation.css" />
-        <Content Include="Bannerlord-Twitch-v3.yaml" />
         <Content Include="delete-acl.bat" />
         <Content Include="FodyWeavers.xml" />
         <Content Include="FodyWeavers.xsd" />
-        <Content Include="ModuleData\Languages\strings-achievements.xml" />
-        <Content Include="ModuleData\Languages\strings-commands.xml" />
-        <Content Include="ModuleData\Languages\strings-classes.xml" />
-        <Content Include="ModuleData\Languages\strings-kill-streaks.xml" />
-        <Content Include="ModuleData\Languages\strings-misc.xml" />
-        <Content Include="ModuleData\Languages\strings-powers.xml" />
-        <Content Include="ModuleData\Languages\strings-rewards.xml" />
-        <Content Include="ModuleData\Languages\TR\strings-actions.xml" />
-        <Content Include="ModuleData\Languages\TR\strings-misc.xml" />
         <Content Include="Overlay\ConsoleFeed\ConsoleFeed.css">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
@@ -392,85 +367,64 @@
         <Content Include="Overlay\ConsoleFeed\ConsoleFeed.js">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-        <Content Include="Overlay\web\index-template.html" />
-        <Content Include="Overlay\web\Scripts\jquery-1.6.4-vsdoc.js" />
-        <Content Include="Overlay\web\Scripts\jquery-1.6.4.js" />
-        <Content Include="Overlay\web\Scripts\jquery-1.6.4.min.js" />
-        <Content Include="Overlay\web\Scripts\jquery-3.4.1.js" />
-        <Content Include="Overlay\web\Scripts\jquery-3.4.1.min.js" />
-        <Content Include="Overlay\web\Scripts\jquery-3.4.1.min.map" />
-        <Content Include="Overlay\web\Scripts\jquery-3.4.1.slim.js" />
-        <Content Include="Overlay\web\Scripts\jquery-3.4.1.slim.min.js" />
-        <Content Include="Overlay\web\Scripts\jquery-3.4.1.slim.min.map" />
-        <Content Include="Overlay\web\Scripts\jquery.signalR-2.2.2.js" />
-        <Content Include="Overlay\web\Scripts\jquery.signalR-2.2.2.min.js" />
-        <Content Include="Overlay\web\Scripts\jquery.signalR-2.4.2.js" />
-        <Content Include="Overlay\web\Scripts\jquery.signalR-2.4.2.min.js" />
-        <Content Include="Overlay\web\Scripts\progress-ring.js" />
-        <Content Include="Overlay\web\Scripts\twitch.js" />
-        <Content Include="Overlay\web\Scripts\vue.js" />
-        <Content Include="Overlay\web\Scripts\vue.min.js" />
-        <Content Include="Overlay\web\style.css" />
         <Content Include="README.md" />
         <Content Include="SaveSystem\ButterLibLicense.txt" />
         <Content Include="Web.config" />
+        <Content Include="_Module\Bannerlord-Twitch-Auth.yaml" />
+        <Content Include="_Module\Bannerlord-Twitch-Documentation.css" />
+        <Content Include="_Module\Bannerlord-Twitch-v3.yaml" />
+        <Content Include="_Module\ModuleData\Languages\strings-achievements.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-classes.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-commands.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-kill-streaks.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-misc.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-powers.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-rewards.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-actions.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-misc.xml" />
+        <Content Include="_Module\web\index-template.html" />
+        <Content Include="_Module\web\Scripts\jquery-1.6.4-vsdoc.js" />
+        <Content Include="_Module\web\Scripts\jquery-1.6.4.js" />
+        <Content Include="_Module\web\Scripts\jquery-1.6.4.min.js" />
+        <Content Include="_Module\web\Scripts\jquery-3.4.1.js" />
+        <Content Include="_Module\web\Scripts\jquery-3.4.1.min.js" />
+        <Content Include="_Module\web\Scripts\jquery-3.4.1.min.map" />
+        <Content Include="_Module\web\Scripts\jquery-3.4.1.slim.js" />
+        <Content Include="_Module\web\Scripts\jquery-3.4.1.slim.min.js" />
+        <Content Include="_Module\web\Scripts\jquery-3.4.1.slim.min.map" />
+        <Content Include="_Module\web\Scripts\jquery.signalR-2.2.2.js" />
+        <Content Include="_Module\web\Scripts\jquery.signalR-2.2.2.min.js" />
+        <Content Include="_Module\web\Scripts\jquery.signalR-2.4.2.js" />
+        <Content Include="_Module\web\Scripts\jquery.signalR-2.4.2.min.js" />
+        <Content Include="_Module\web\Scripts\progress-ring.js" />
+        <Content Include="_Module\web\Scripts\twitch.js" />
+        <Content Include="_Module\web\Scripts\vue.js" />
+        <Content Include="_Module\web\Scripts\vue.min.js" />
+        <Content Include="_Module\web\style.css" />
         <None Include="app.config" />
-        <None Include="Overlay\web\Scripts\jquery-3.4.1.intellisense.js" />
-        <None Include="SubModule.xml" />
         <None Include="Web.Debug.config">
             <DependentUpon>Web.config</DependentUpon>
         </None>
         <None Include="Web.Release.config">
             <DependentUpon>Web.config</DependentUpon>
         </None>
+        <None Include="_Module\SubModule.xml" />
+        <None Include="_Module\web\Scripts\jquery-3.4.1.intellisense.js" />
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
-      <Page Include="UI\CollectionPropertyEditor.xaml" />
-      <Page Include="UI\RangeFloatControl.xaml" />
-      <Page Include="UI\RangeIntControl.xaml" />
-      <Page Include="UI\SliderFloatControl.xaml" />
+        <Page Include="UI\CollectionPropertyEditor.xaml" />
+        <Page Include="UI\RangeFloatControl.xaml" />
+        <Page Include="UI\RangeIntControl.xaml" />
+        <Page Include="UI\SliderFloatControl.xaml" />
     </ItemGroup>
+
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <Target Name="AfterClean">
-        <RemoveDir Directories="$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)" />
-        <RemoveDir Directories="$(OutDir)..\..\..\..\build" />
-        <RemoveDir Directories="$(OutDir)..\..\..\..\obj" />
-    </Target>
-
-    <Target Name="AfterBuild">
-        <Message Importance="High" Text="Copying content files..." />
-        <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml" DestinationFolder="$(OutDir)..\.." DestinationFiles="" />
-        <Copy SourceFiles="Bannerlord-Twitch-v3.yaml" DestinationFolder="$(OutDir)..\.." />
-        <Copy SourceFiles="Bannerlord-Twitch-Documentation.css" DestinationFolder="$(OutDir)..\.." />
-        <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
-
-        <Message Importance="High" Text="Setting module version..." />
-        <ReplaceFileText File="$(OutDir)..\..\SubModule.xml" Regex="%(SubModuleOverrides.Regex)" ReplacementText="%(SubModuleOverrides.Replacement)" />
-
-        <ItemGroup>
-            <ModuleDataContent Include="ModuleData\**\*" />
-        </ItemGroup>
-        <Copy SourceFiles="@(ModuleDataContent)" DestinationFiles="@(ModuleDataContent->'$(OutDir)..\..\ModuleData\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
-        
-        <Copy SourceFiles="..\..\README.md" DestinationFolder="$(OutDir)..\.." />
-        <!--    <Copy SourceFiles="Overlay\web" DestinationFolder="$(OutDir)..\..\web" />-->
-
-        <Message Importance="High" Text="Copying overlay web..." />
-
-        <ItemGroup>
-            <OverlayContent Include="Overlay\web\**\*" />
-        </ItemGroup>
-        <Copy SourceFiles="@(OverlayContent)" DestinationFiles="@(OverlayContent->'$(OutDir)..\..\web\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
-
-        <Message Importance="High" Text="Copying staged files to game directory..." />
-        <ItemGroup>
-            <StagingDir Include="$(OutDir)\..\..\**\*" />
-        </ItemGroup>
-        <Copy SourceFiles="@(StagingDir)" DestinationFiles="@(StagingDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
-    </Target>
+    
+    <Import Project="$(SolutionDir)BLTBuildTargets.targets" />
+    
     <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
     <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
     <Import Project="..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.1\build\Fody.targets')" />

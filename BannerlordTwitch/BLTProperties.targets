@@ -3,9 +3,25 @@
     <PropertyGroup>
         <ModuleVersion>3.0.2</ModuleVersion>
         <DefineConstants/>
+        <OutputBuildRoot>$(SolutionDir)build\</OutputBuildRoot>
+        <OutputConfigRoot>$(OutputBuildRoot)$(Configuration)\</OutputConfigRoot>
+        <OutputModuleRoot>$(OutputConfigRoot)$(AssemblyName)\</OutputModuleRoot>
     </PropertyGroup>
 
+    <!-- Required to trick IDE into setting the configs -->
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.5.10|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.5.9|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.6.0|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.6.1|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.6.2|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.5.10|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.5.9|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.6.0|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.6.1|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.6.2|AnyCPU' "/>
+    
     <PropertyGroup Condition="$(Configuration.StartsWith('Debug'))">
+        <OutputPackageRoot>$(SolutionDir)deploy\debug\</OutputPackageRoot>
         <Optimize>false</Optimize>
         <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
         <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
@@ -13,6 +29,7 @@
     </PropertyGroup>
     
     <PropertyGroup Condition="$(Configuration.StartsWith('Release'))">
+        <OutputPackageRoot>$(SolutionDir)deploy\release\</OutputPackageRoot>
         <Optimize>true</Optimize>
         <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
         <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
@@ -22,28 +39,28 @@
         <GameVersion>1.5.9</GameVersion>
         <DefineConstants>$(DefineConstants);e159</DefineConstants>
         <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_9)</BANNERLORD_GAME_DIR>
-        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.9</BANNERLORD_GAME_DIR>
+        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord $(GameVersion)</BANNERLORD_GAME_DIR>
     </PropertyGroup>
 
     <PropertyGroup Condition="$(Configuration.EndsWith(' 1.5.10'))">
         <GameVersion>1.5.10</GameVersion>
         <DefineConstants>$(DefineConstants);e1510</DefineConstants>
         <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_5_10)</BANNERLORD_GAME_DIR>
-        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.5.10</BANNERLORD_GAME_DIR>
+        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord $(GameVersion)</BANNERLORD_GAME_DIR>
     </PropertyGroup>
 
     <PropertyGroup Condition="$(Configuration.EndsWith(' 1.6.0'))">
         <GameVersion>1.6.0</GameVersion>
         <DefineConstants>$(DefineConstants);e160</DefineConstants>
         <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_6_0)</BANNERLORD_GAME_DIR>
-        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.6.0</BANNERLORD_GAME_DIR>
+        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord $(GameVersion)</BANNERLORD_GAME_DIR>
     </PropertyGroup>
 
     <PropertyGroup Condition="$(Configuration.EndsWith(' 1.6.1'))">
         <GameVersion>1.6.1</GameVersion>
         <DefineConstants>$(DefineConstants);e161</DefineConstants>
         <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_6_1)</BANNERLORD_GAME_DIR>
-        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.6.1</BANNERLORD_GAME_DIR>
+        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord $(GameVersion)</BANNERLORD_GAME_DIR>
     </PropertyGroup>
 
     <PropertyGroup Condition="$(Configuration.EndsWith(' 1.6.2'))">
@@ -53,84 +70,32 @@
         <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</BANNERLORD_GAME_DIR>
     </PropertyGroup>
 
-    <Target Name="AddGameVersionMetadaAssemblyAttributes" BeforeTargets="CoreGenerateAssemblyInfo">
-        <ItemGroup>
-            <AssemblyAttribute Include="AssemblyVersion" Condition="$(ModuleVersion) != ''" >
-                <_Parameter1>$(ModuleVersion)</_Parameter1>
-            </AssemblyAttribute>
-        </ItemGroup>
-    </Target>
+    <PropertyGroup>
+        <DeployDir>$(BANNERLORD_GAME_DIR)\Modules\$(AssemblyName)\</DeployDir>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="$(Configuration.StartsWith('Debug'))">
+        <PackageName>BLT-v$(ModuleVersion)-For-Game-Version-e$(GameVersion)-Debug.7z</PackageName>
+    </PropertyGroup>
 
-    <ItemGroup>
-        <SubModuleOverrides Include="ModuleVersion">
-            <Regex>\$version\$</Regex>
-            <Replacement>$(ModuleVersion)</Replacement>
-        </SubModuleOverrides>
-    </ItemGroup>
+    <PropertyGroup Condition="$(Configuration.StartsWith('Release'))">
+        <PackageName>BLT-v$(ModuleVersion)-For-Game-Version-e$(GameVersion).7z</PackageName>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <PackageFullPath>$(OutputPackageRoot)$(PackageName)</PackageFullPath>
+    </PropertyGroup>
 
-    <Target Name="WriteAssemblyInfo" BeforeTargets="BeforeCompile">
-        <ItemGroup>
-            <AssemblyAttributes Include="AssemblyTitle">
-                <_Parameter1>$(AssemblyName)</_Parameter1>
-            </AssemblyAttributes>
-<!--            <AssemblyAttributes Include="AssemblyDescription">-->
-<!--                <_Parameter1>My Assembly</_Parameter1>-->
-<!--            </AssemblyAttributes>-->
-<!--            <AssemblyAttributes Include="AssemblyCompany">-->
-<!--                <_Parameter1>Assembly Company</_Parameter1>-->
-<!--            </AssemblyAttributes>-->
-<!--            <AssemblyAttributes Include="AssemblyProduct">-->
-<!--                <_Parameter1>My Product</_Parameter1>-->
-<!--            </AssemblyAttributes>-->
-<!--            <AssemblyAttributes Include="AssemblyCopyright">-->
-<!--                <_Parameter1>Copyright © 2020</_Parameter1>-->
-<!--            </AssemblyAttributes>-->
-<!--            <AssemblyAttributes Include="AssemblyCulture">-->
-<!--                <_Parameter1>-->
-<!--                </_Parameter1>-->
-<!--            </AssemblyAttributes>-->
-            <AssemblyAttributes Include="AssemblyVersion">
-                <_Parameter1>$(ModuleVersion)</_Parameter1>
-            </AssemblyAttributes>
-            <AssemblyAttributes Include="AssemblyFileVersion">
-                <_Parameter1>$(ModuleVersion)</_Parameter1>
-            </AssemblyAttributes>
-<!--            <AssemblyAttributes Include="System.Runtime.InteropServices.Guid">-->
-<!--                <_Parameter1>$(ProjectGuid)</_Parameter1>-->
-<!--            </AssemblyAttributes>-->
-        </ItemGroup>
-        <MakeDir Directories="Properties"/>
-        <WriteCodeFragment Language="C#" OutputFile="Properties/AssemblyInfo.cs" AssemblyAttributes="@(AssemblyAttributes)" />
-    </Target>
-
-    <!-- update standard assembly attribute in all projects -->
-<!--    <Target Name="UpdateAssemblyInfo" BeforeTargets="BeforeBuild" >-->
-<!--        <Message Importance="High" Text="Updating AssemblyInfo to Version $(ModuleVersion)"/>-->
-<!--        <Message Importance="High" Text="Writing to AssemblyInfo files in $(SolutionRoot)"/>-->
-<!--        -->
-<!--&lt;!&ndash;        <AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)"&ndash;&gt;-->
-<!--&lt;!&ndash;                      AssemblyCopyright="$(AssemblyCopyright)"&ndash;&gt;-->
-<!--&lt;!&ndash;                      AssemblyVersion="$(ModuleVersion)"&ndash;&gt;-->
-<!--&lt;!&ndash;                      AssemblyFileVersion="$(VersionNumber)"/>&ndash;&gt;-->
-<!--    </Target>-->
-
-    <UsingTask
-            TaskName="ReplaceFileText"
-            TaskFactory="RoslynCodeTaskFactory"
-            AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
-        <ParameterGroup>
-            <File ParameterType="System.String" Required="true" />
-            <Regex ParameterType="System.String" Required="true" />
-            <ReplacementText ParameterType="System.String" Required="true" />
-        </ParameterGroup>
-        <Task>
-            <Code Type="Fragment" Language="cs">
-                <![CDATA[
-          System.IO.File.WriteAllText(
-            File,
-            System.Text.RegularExpressions.Regex.Replace(System.IO.File.ReadAllText(File), Regex, ReplacementText));
-        ]]>
-            </Code>
-        </Task>
-    </UsingTask>
+    <PropertyGroup>
+        <DebugType>full</DebugType>
+        <PlatformTarget>x64</PlatformTarget>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <DebugSymbols>true</DebugSymbols>
+        <OutputPath>$(OutputModuleRoot)bin\Win64_Shipping_Client\</OutputPath>
+        <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+        <NoWarn>MSB3246;MSB3247;MSB3277;CS0649;CS0067</NoWarn>
+        <XamlDebuggingInformation>True</XamlDebuggingInformation>
+    </PropertyGroup>
 </Project>

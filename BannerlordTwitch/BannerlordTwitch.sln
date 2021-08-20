@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{6416209A-DA92-4E8E-BE64-A677E16FA042}"
 ProjectSection(SolutionItems) = preProject
 	BLTProperties.targets = BLTProperties.targets
+	BLTBuildTargets.targets = BLTBuildTargets.targets
 EndProjectSection
 EndProject
 Global
