@@ -171,13 +171,13 @@ namespace BannerlordTwitch
 
                 var newBackupPath = FileSystem.GetConfigPath($"Bannerlord-Twitch-v3-Backup-{DateTime.Now:yyyy-dd-M--HH-mm-ss}.yaml");
                 FileSystem.SaveFileString(newBackupPath, configStr);
-                Log.Info($"Backed up settings to {newBackupPath.FileName}");
+                Log.Info($"Backed up settings to {newBackupPath}");
                 
                 // Delete old config backups
                 foreach (var o in GetBackupConfigPaths().OrderByDescending(f => f.FileName).Skip(5))
                 {
                     FileSystem.DeleteFile(o);
-                    Log.Info($"Deleted old settings backup {o.FileName}");
+                    Log.Info($"Deleted old settings backup {o}");
                 }
             }
             catch (Exception ex)

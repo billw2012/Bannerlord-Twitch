@@ -17,7 +17,7 @@ namespace BannerlordTwitch.Util
         }
         public string Path;
 
-        public override string ToString() => Path
+        public override string ToString() => Path;
     }
 
     public struct PlatformFilePath
@@ -31,9 +31,9 @@ namespace BannerlordTwitch.Util
         }
         
         private readonly string partialPath;
-        public string FilePath => Path.Combine(dir.Path, partialPath);
+        public string FileName => Path.Combine(dir.Path, partialPath);
 
-        public override string ToString() => FilePath;
+        public override string ToString() => FileName;
     }
 #endif
     
@@ -44,12 +44,12 @@ namespace BannerlordTwitch.Util
             => new(Path.Combine(Common.PlatformFileHelper.DocumentsPath, "Mount and Blade II Bannerlord", "Configs"));
         public static PlatformFilePath GetConfigPath(string fileName) => new PlatformFilePath(GetConfigDir(), fileName);
         
-        public static bool FileExists(PlatformFilePath path) => File.Exists(path.FilePath);
-        public static void SaveFileString(PlatformFilePath path, string str) => File.WriteAllText(path.FilePath, str);
-        public static string GetFileContentString(PlatformFilePath path) => File.ReadAllText(path.FilePath);
+        public static bool FileExists(PlatformFilePath path) => File.Exists(path.FileName);
+        public static void SaveFileString(PlatformFilePath path, string str) => File.WriteAllText(path.FileName, str);
+        public static string GetFileContentString(PlatformFilePath path) => File.ReadAllText(path.FileName);
         public static PlatformFilePath[] GetFiles(PlatformDirectoryPath path, string searchPattern) 
             => Directory.GetFiles(path.Path, searchPattern).Select(p => new PlatformFilePath(path, Path.GetFileName(p))).ToArray();
-        public static void DeleteFile(PlatformFilePath path) => File.Delete(path.FilePath);
+        public static void DeleteFile(PlatformFilePath path) => File.Delete(path.FileName);
 #else
         public static PlatformDirectoryPath GetConfigDir() => EngineFilePaths.ConfigsPath;
         public static PlatformFilePath GetConfigPath(string fileName) 

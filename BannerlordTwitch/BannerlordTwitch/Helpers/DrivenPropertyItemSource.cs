@@ -103,7 +103,9 @@ namespace BannerlordTwitch.Helpers
             { DrivenProperty.AiUseShieldAgainstEnemyMissileProbability, "AiUseShieldAgainstEnemyMissileProbability" }, 
             { DrivenProperty.AiSpeciesIndex, "AiSpeciesIndex" }, 
             { DrivenProperty.AiRandomizedDefendDirectionChance, "AiRandomizedDefendDirectionChance" }, 
-            { DrivenProperty.AiShooterError, "AiShooterError" }, 
+#if !e159
+            { DrivenProperty.AiShooterError, "AiShooterError" },
+#endif
             { DrivenProperty.AISetNoAttackTimerAfterBeingHitAbility, "AISetNoAttackTimerAfterBeingHitAbility" }, 
             { DrivenProperty.AISetNoAttackTimerAfterBeingParriedAbility, "AISetNoAttackTimerAfterBeingParriedAbility" }, 
             { DrivenProperty.AISetNoDefendTimerAfterHittingAbility, "AISetNoDefendTimerAfterHittingAbility" }, 
