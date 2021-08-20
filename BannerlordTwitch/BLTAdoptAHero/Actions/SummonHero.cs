@@ -236,6 +236,7 @@ namespace BLTAdoptAHero
 
             if(MissionHelpers.InArenaPracticeMission() 
                || MissionHelpers.InTournament()
+               || MissionHelpers.InConversationMission()
                || MissionHelpers.InFieldBattleMission() && !settings.AllowFieldBattle
                || MissionHelpers.InVillageEncounter() && !settings.AllowVillageBattle
                || MissionHelpers.InSiegeMission() && !settings.AllowSiegeBattle

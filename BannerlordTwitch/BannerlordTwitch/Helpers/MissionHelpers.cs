@@ -38,6 +38,8 @@ namespace BannerlordTwitch.Helpers
             => Mission.Current?.IsFriendlyMission == true && !InArenaPracticeMission();
 
         public static bool InConversation() => Mission.Current?.Mode == MissionMode.Conversation;
+        
+        public static bool InConversationMission() => Mission.Current?.GetMissionBehaviour<ConversationMissionLogic>() != null;
 
         public static bool InTrainingFieldMission()
             => Mission.Current?.GetMissionBehaviour<TrainingFieldMissionController>() != null;
