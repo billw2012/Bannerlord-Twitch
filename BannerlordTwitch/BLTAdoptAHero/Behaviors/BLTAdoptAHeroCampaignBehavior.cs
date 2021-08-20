@@ -315,17 +315,16 @@ namespace BLTAdoptAHero
             var hd = GetHeroData(newHero);
             hd.Owner = userName;
             hd.IsRetiredOrDead = false;
-            hd.Iteration = GetAncestors(userName).Max(a => (int?)a.Iteration) ?? 0;
+            hd.Iteration = GetAncestors(userName).Max(a => (int?)a.Iteration + 1) ?? 0;
             SetHeroAdoptedName(newHero, userName);
         }
 
         public Hero GetAdoptedHero(string name)
         {
-            string nameToFind = name.ToLower();
-
             var foundHero = heroData.FirstOrDefault(h 
                     => !h.Value.IsRetiredOrDead
-                       && (h.Key.FirstName?.Raw().ToLower() == nameToFind || h.Value.Owner?.ToLower() == nameToFind))
+                       && (string.Equals(h.Key.FirstName?.Raw(), name, StringComparison.CurrentCultureIgnoreCase) 
+                           || string.Equals(h.Value.Owner, name, StringComparison.CurrentCultureIgnoreCase)))
                 .Key;
 
             // correct the name to match the viewer name casing
@@ -333,7 +332,7 @@ namespace BLTAdoptAHero
             {
                 SetHeroAdoptedName(foundHero, name);
             }
-
+            
             if (foundHero?.IsDead == true)
             {
                 RetireHero(foundHero);
@@ -398,7 +397,8 @@ namespace BLTAdoptAHero
         private IEnumerable<HeroData> GetAncestors(string name)
         {
             var ancestors = heroData
-                .Where(h => h.Value.IsRetiredOrDead && h.Key.FirstName?.Raw() == name)
+                .Where(h => h.Value.IsRetiredOrDead 
+                            && string.Equals(h.Value.Owner, name, StringComparison.CurrentCultureIgnoreCase))
                 .Select(kv => kv.Value)
                 .OrderBy(d => d.Iteration);
             return ancestors;
