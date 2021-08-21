@@ -27,7 +27,7 @@ namespace BLTAdoptAHero.Powers
         [Browsable(false), YamlIgnore]
         public IHeroPowerActive Power => PowerConfig?.GetPower(PowerID) as IHeroPowerActive;
         
-        public override string ToString() => $"[{Power?.ToString() ?? "(no power)"}] {base.ToString()}";
+        public override string ToString() => $"[{Power?.ToString() ?? "{=ddNSQjWq}(no power)".Translate()}] {base.ToString()}";
     }
     
     [LocDisplayName("{=HvTIrx0b}Active Power Group")]
@@ -80,14 +80,14 @@ namespace BLTAdoptAHero.Powers
         {
             if (PowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
             {
-                return (false, "Not allowed in tournaments!");
+                return (false, "{=2NnCGjyI}Not allowed in tournaments!".Translate());
             }
 
             var unlockedPowers = GetUnlockedPowers(hero).ToList();
 
             if (!unlockedPowers.Any())
             {
-                return (false, "No powers!");
+                return (false, "{=asncu3BX}No powers!".Translate());
             }
 
             (bool _, string failReason) = unlockedPowers
@@ -102,7 +102,7 @@ namespace BLTAdoptAHero.Powers
         {
             if (PowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
             {
-                return (false, $"Powers not allowed in tournaments!");
+                return (false, "{=NMSDeunS}Powers not allowed in tournaments!".Translate());
             }
 
             var activatedPowers = GetUnlockedPowers(hero).ToList();
@@ -112,13 +112,13 @@ namespace BLTAdoptAHero.Powers
                 {
                     if (activatedPowers.All(p => !p.IsActive(hero)))
                     {
-                        ActionManager.SendReply(context, $"{Name} expired!");
+                        ActionManager.SendReply(context, "{=xyvCYxTD}{PowerName} expired!".Translate(("PowerName", Name)));
                         DeactivateEffect.Trigger(hero);
                     }
                 });
             }
             ActivateEffect.Trigger(hero);
-            return (true, $"{Name} activated!");
+            return (true, "{=WDfytZ7z}{PowerName} activated!".Translate(("PowerName", Name)));
         }
 
         public (float duration, float remaining) DurationRemaining(Hero hero)

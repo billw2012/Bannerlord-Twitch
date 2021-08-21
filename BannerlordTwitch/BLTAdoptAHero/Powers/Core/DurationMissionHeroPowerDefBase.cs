@@ -5,7 +5,9 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
+using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
 using SandBox;
 using TaleWorlds.CampaignSystem;
@@ -24,14 +26,17 @@ namespace BLTAdoptAHero.Powers
     public abstract class DurationMissionHeroPowerDefBase : HeroPowerDefBase, IHeroPowerActive
     {
         #region User Editable
-        [Category("Power Config"), 
-         Description("Duration the power will last for (when used as an active power), in seconds"), 
+        [LocDisplayName("{=F03TlOOV}Power Duration Seconds"),
+         LocCategory("Power Config", "{=75UOuDM}Power Config"), 
+         LocDescription("{=km0QRxRs}Duration the power will last for (when used as an active power), in seconds"), 
          UIRangeAttribute(0, 300, 5),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          PropertyOrder(0), UsedImplicitly]
         public float PowerDurationSeconds { get; set; } = 30f;
 
-        [Category("Power Config"), Description("Effects to apply to the agent while the power is active"), 
+        [LocDisplayName("{=VS9ITIST}Pfx"),
+         LocCategory("Power Config", "{=75UOuDM}Power Config"), 
+         LocDescription("{=xmz0TzN7}Effects to apply to the agent while the power is active"), 
          Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
          PropertyOrder(1), UsedImplicitly]
         public ObservableCollection<ParticleEffectDef> Pfx { get; set; } = new();
@@ -42,7 +47,7 @@ namespace BLTAdoptAHero.Powers
         {
             if (Mission.Current == null)
             {
-                return (false, "No mission is active!");
+                return (false, "{=u48yBW5b}No mission is active!".Translate());
             }
 
             if (!Mission.Current.IsLoadingFinished
@@ -50,15 +55,15 @@ namespace BLTAdoptAHero.Powers
                 || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null &&
                 Mission.Current.Mode != MissionMode.Battle)
             {
-                return (false, "Mission has not started yet!");
+                return (false, "{=EbrlEg5C}Mission has not started yet!".Translate());
             }
 
             if (RequiresHeroAgent && hero.GetAgent() == null)
             {
-                return (false, "Your hero is not alive!");
+                return (false, "{=SdQsQRB6}Your hero is not alive!".Translate());
             }
             return ((IHeroPowerActive) this).IsActive(hero) 
-                ? (false, "Already active!") 
+                ? (false, "{=C3Ag25zz}Already active!".Translate()) 
                 : (true, null);
         }
 

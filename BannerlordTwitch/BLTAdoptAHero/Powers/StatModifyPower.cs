@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Models;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
@@ -14,7 +15,7 @@ namespace BLTAdoptAHero.Powers
     public class StatModifyPower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         #region User Editable
-        [Category("Power Config"), Description("What hero stat to modify"), 
+        [LocCategory("Power Config", "{=75UOuDM}Power Config"), Description("What hero stat to modify"), 
          PropertyOrder(1), ExpandableObject, Expand, UsedImplicitly]
         public AgentModifierConfig Modifiers { get; set; } = new();
         #endregion

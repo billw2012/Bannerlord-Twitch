@@ -882,22 +882,27 @@
         <string id="YWHa7H42" text="Particles/sound effects to play when this power group is activated"/>
         <string id="MXnon4pc" text="DeactivateEffect"/>
         <string id="V9fqIgvH" text="Particles/sound effects to play when this power group is deactivated"/>
-        <string id="ddNSQjWq" text=""/>
-        <string id="asncu3BX" text=""/>
-        <string id="2NnCGjyI" text=""/>
-        <string id="NMSDeunS" text=""/>
-        <string id="xyvCYxTD" text=""/>
-        <string id="WDfytZ7z" text=""/>
-        <string id="F03TlOOV" text=""/>
-        <string id="VS9ITIST" text=""/>
-        <string id="km0QRxRs" text=""/>
-        <string id="xmz0TzN7" text=""/>
-        <string id="u48yBW5b" text=""/>
-        <string id="EbrlEg5C" text=""/>
-        <string id="SdQsQRB6" text=""/>
-        <string id="C3Ag25zz" text=""/>
-        <string id="lzvJC8bf" text=""/>
-        <string id="aQgYs3mI" text=""/>
+        <string id="ddNSQjWq" text="(no power)"/>
+        
+        <string id="2NnCGjyI" text="Not allowed in tournaments!"/>
+        <string id="asncu3BX" text="No powers!"/>
+        <string id="NMSDeunS" text="Powers not allowed in tournaments!"/>
+        <string id="xyvCYxTD" text="{PowerName} expired!"/>
+        <string id="WDfytZ7z" text="{PowerName} activated!"/>
+        
+        <!-- DurationMissionHeroPowerDefBase -->
+        <string id="F03TlOOV" text="Power Duration Seconds"/>
+        <string id="VS9ITIST" text="Pfx"/>
+        <string id="km0QRxRs" text="Duration the power will last for (when used as an active power), in seconds"/>
+        <string id="xmz0TzN7" text="Effects to apply to the agent while the power is active"/>
+        <string id="u48yBW5b" text="No mission is active!"/>
+        <string id="EbrlEg5C" text="Mission has not started yet!"/>
+        <string id="SdQsQRB6" text="Your hero is not alive!"/>
+        <string id="C3Ag25zz" text="Already active!"/>
+        
+        <!-- HeroPowerDefBase -->
+        <string id="lzvJC8bf" text="Name of the power that will be shown in game"/>
+        <string id="aQgYs3mI" text="Enter Name Here"/>
         <string id="mtZMAwbM" text=""/>
         <string id="wPgAMF92" text=""/>
         <string id="9dla8vV1" text=""/>

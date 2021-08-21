@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -14,13 +15,13 @@ namespace BLTAdoptAHero.Powers
     public class AddHealthPower : HeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         #region User Editable
-        [Category("Power Config"), Description("Modifier to apply to base HP"),
+        [LocCategory("Power Config", "{=75UOuDM}Power Config"), Description("Modifier to apply to base HP"),
          UIRange(0, 1000, 1f),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          PropertyOrder(1), UsedImplicitly]
         public float HealthModifierPercent { get; set; } = 100f;
 
-        [Category("Power Config"), Description("How much HP to add (applied after Modifier)"), PropertyOrder(2), UsedImplicitly]
+        [LocCategory("Power Config", "{=75UOuDM}Power Config"), Description("How much HP to add (applied after Modifier)"), PropertyOrder(2), UsedImplicitly]
         public float HealthToAdd { get; set; }
         #endregion
 

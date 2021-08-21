@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -22,7 +23,7 @@ namespace BLTAdoptAHero.Powers
     public class AbsorbHealthPower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         #region User Editable
-        [Category("Power Config"),
+        [LocCategory("Power Config", "{=75UOuDM}Power Config"),
          Description("What percentage of damage done to absorb as health"),
          UIRange(0, 100, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          PropertyOrder(1), UsedImplicitly]

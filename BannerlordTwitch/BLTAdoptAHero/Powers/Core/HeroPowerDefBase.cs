@@ -29,9 +29,11 @@ namespace BLTAdoptAHero.Powers
         [ReadOnly(true), UsedImplicitly]
         public Guid ID { get; set; } = Guid.NewGuid();
 
-        [LocCategory("General", "{=C5T5nnix}General"), Description("Name of the power that will be shown in game"), 
+        [LocDisplayName("{=uUzmy7Lh}Name"),
+         LocCategory("General", "{=C5T5nnix}General"),
+         LocDescription("{=lzvJC8bf}Name of the power that will be shown in game"), 
          InstanceName, PropertyOrder(1), UsedImplicitly]
-        public string Name { get; set; } = "Enter Name Here";
+        public LocString Name { get; set; } = "{=aQgYs3mI}Enter Name Here";
         #endregion
         
         #region Implementation Details
@@ -54,7 +56,7 @@ namespace BLTAdoptAHero.Powers
         {
             public ItemCollection GetValues()
             {
-                var col = new ItemCollection {{Guid.Empty, "(none)"}};
+                var col = new ItemCollection {{Guid.Empty, "{=dPEnuHsk}(none)".Translate()}};
 
                 var source = GlobalHeroPowerConfig.Get(ConfigureContext.CurrentlyEditedSettings);
                 if (source != null)
@@ -72,7 +74,7 @@ namespace BLTAdoptAHero.Powers
         {
             public ItemCollection GetValues()
             {
-                var col = new ItemCollection {{Guid.Empty, "(none)"}};
+                var col = new ItemCollection {{Guid.Empty, "{=dPEnuHsk}(none)".Translate()}};
 
                 var source = GlobalHeroPowerConfig.Get(ConfigureContext.CurrentlyEditedSettings);
                 if (source != null)

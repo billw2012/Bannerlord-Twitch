@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
@@ -17,18 +18,18 @@ namespace BLTAdoptAHero.Powers
     public class ReflectDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         #region User Editable
-        [Category("Power Config"), 
+        [LocCategory("Power Config", "{=75UOuDM}Power Config"), 
          Description("What percent of damage to reflect back to attacker"),
          Range(0, 200), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          PropertyOrder(1), UsedImplicitly]
         public float ReflectPercent { get; set; }
         
-        [Category("Power Config"), 
+        [LocCategory("Power Config", "{=75UOuDM}Power Config"), 
          Description("Whether the damage that is reflected is also subtracted from the damage the hero takes " +
                      "(this is 'classic' damage reflection)"), PropertyOrder(2), UsedImplicitly]
         public bool ReflectedDamageIsSubtracted { get; set; } = true;
         
-        [Category("Power Config"),
+        [LocCategory("Power Config", "{=75UOuDM}Power Config"),
          Description("Hit behavior for the reflected damage"),
          PropertyOrder(3), UsedImplicitly, ExpandableObject]
         public HitBehavior HitBehavior { get; set; }
