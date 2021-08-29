@@ -49,17 +49,23 @@ namespace BLTAdoptAHero
             if (slot != EquipmentIndex.None)
             {
                 hero.BattleEquipment[slot] = element;
-                return $"received {element.GetModifiedItemName()}";
+                return "{=RczvXuxP}received {ItemName}"
+                    .Translate(("ItemName", element.GetModifiedItemName()));
             }
             else if (!isCustom)
             {
                 // Sell non-custom items
                 BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, item.Value * 5);
-                return $"sold {element.GetModifiedItemName()} for {item.Value}{Naming.Gold} (not needed)";
+                return "{=bNX0NiQ9}sold {ItemName} for {ItemValue}{GoldIcon} (not needed)"
+                    .Translate(
+                        ("ItemName", element.GetModifiedItemName()),
+                        ("ItemValue", item.Value),
+                        ("GoldIcon", Naming.Gold));
             }
             else
             {
-                return $"received {element.GetModifiedItemName()} (put in storage)";
+                return "{=R7VwlLzg}received {ItemName} (put in storage)"
+                    .Translate(("ItemName", element.GetModifiedItemName()));
             }
         }
 

@@ -16,5 +16,9 @@ namespace BannerlordTwitch.Util
         
         public static string GetDisplayName(this Type type) 
             => type.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName;
+        
+        public static string GetDisplayName(this MemberInfo memberInfo) 
+            => memberInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName
+               ?? memberInfo.Name.SplitCamelCase();
     }
 }

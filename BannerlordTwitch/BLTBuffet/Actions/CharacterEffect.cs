@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero;
@@ -16,7 +17,8 @@ using TaleWorlds.MountAndBlade;
 
 namespace BLTBuffet
 {
-    [Description("Applies effects to a character / the player"), UsedImplicitly]
+    [LocDescription("{=aGfP5X2q}Applies effects to a character / the player"), 
+     UsedImplicitly]
     public partial class CharacterEffect : ActionHandlerBase
     {
         protected override Type ConfigType => typeof(Config);
@@ -26,14 +28,14 @@ namespace BLTBuffet
         {
             if (Mission.Current == null)
             {
-                onFailure($"No mission is active!");
+                onFailure("{=ZXxpMpYi}No mission is active!".Translate());
                 return;
             }
 
             if (BLTBuffetModule.EffectsConfig.DisableEffectsInTournaments
                 && MissionHelpers.InTournament())
             {
-                onFailure($"Not allowed during tournament!");
+                onFailure("{=aK6wEWqw}Not allowed during tournament!".Translate());
                 return;
             }
             
@@ -41,13 +43,13 @@ namespace BLTBuffet
                 || Mission.Current.CurrentState != Mission.State.Continuing
                 || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null && Mission.Current.Mode != MissionMode.Battle)
             {
-                onFailure($"The mission has not started yet!");
+                onFailure("{=0H0dMWam}The mission has not started yet!".Translate());
                 return;
             }
             
             if (Mission.Current.IsMissionEnding || Mission.Current.MissionResult?.BattleResolved == true)
             {
-                onFailure($"The mission is ending!");
+                onFailure("{=f3Cwg2lw}The mission is ending!".Translate());
                 return;
             }
             
@@ -80,25 +82,29 @@ namespace BLTBuffet
 
             if (target == null || target.AgentVisuals == null)
             {
-                onFailure($"Couldn't find the target!");
+                onFailure("{=duuvGgDi}Couldn't find the target!"
+                    .Translate());
                 return;
             }
 
             if (string.IsNullOrEmpty(config.Name))
             {
-                onFailure($"CharacterEffect {context.Source} configuration error: Name is missing!");
+                onFailure("{=hr0ye4gl}CharacterEffect {Source} configuration error: Name is missing!"
+                    .Translate(("Source", context.Source)));
                 return;
             }
 
             if (effectsBehaviour.Contains(target, config))
             {
-                onFailure($"{target.Name} already affected by {config.Name}!");
+                onFailure("{=yZuAmGOU}{Target} already affected by {Config}!"
+                    .Translate(("Target", target.Name), ("Config", config.Name)));
                 return;
             }
             
             if (config.TargetOnFootOnly && target.HasMount)
             {
-                onFailure($"{target.Name} is mounted so cannot be affected by {config.Name}!");
+                onFailure("{=gZtqmx0D}{Target} is mounted so cannot be affected by {Config}!"
+                    .Translate(("Target", target.Name), ("Config", config.Name)));
                 return;
             }
             
@@ -163,9 +169,8 @@ namespace BLTBuffet
                 Mission.Current.MakeSound(SoundEvent.GetEventIdFromString(config.ActivateSound), target.AgentVisuals.GetGlobalFrame().origin, false, true, target.Index, -1);
             }
 
-            Log.LogFeedEvent($"{config.Name} is active on {target.Name}!");
-
-            onSuccess($"{config.Name} is active on {target.Name}!");
+            Log.LogFeedEvent("{Config} is active on {Target}!".Translate(("Config", config.Name), ("Target", target.Name)));
+            onSuccess("{Config} is active on {Target}!".Translate(("Config", config.Name), ("Target", target.Name)));
         }
 
         private static void ApplyPropertyModifiers(Agent target, Config config)

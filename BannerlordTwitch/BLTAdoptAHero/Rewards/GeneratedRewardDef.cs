@@ -16,47 +16,49 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
-    [CategoryOrder("Reward Type", 1)]
-    [CategoryOrder("Reward Tier", 2)]
-    [CategoryOrder("Custom Item", 3)]
+    [CategoryOrder("Reward Type", 1), 
+     CategoryOrder("Reward Tier", 2),
+     CategoryOrder("Custom Item", 3)]
     public class GeneratedRewardDef : INotifyPropertyChanged, ICloneable
     {
         #region User Editable
         #region Reward Type
-        [Category("Reward Type"), 
-         Description("Relative proportion of rewards that will be weapons. " +
-                     "This includes all one handed, two handed, ranged and ammo."), 
-         PropertyOrder(1), 
-         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly, Document]
+        [LocDisplayName("{=7yNTThry}Weapon Weight"),
+         LocCategory("Reward Type", "{=x6pmNHJT}Reward Type"), 
+         LocDescription("{=WTWuy57X}Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo."), 
+         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         Document, PropertyOrder(1), UsedImplicitly]
         public float WeaponWeight { get; set; } = 1f;
 
-        [Category("Reward Type"), Description("Relative proportion of rewards that will be armor"), 
-         PropertyOrder(2),
-         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly, Document]
+        [LocDisplayName("{=Al3Px9lL}Armor Weight"),
+         LocCategory("Reward Type", "{=x6pmNHJT}Reward Type"), 
+         LocDescription("{=WSXhTI0r}Relative proportion of rewards that will be armor"), 
+         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         Document, PropertyOrder(2), UsedImplicitly]
         public float ArmorWeight { get; set; } = 1f;
 
-        [Category("Reward Type"), Description("Relative proportion of rewards that will be mounts"), 
-         PropertyOrder(3),
-         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly, Document]
+        [LocDisplayName("{=S6t7iUki}Mount Weight"),
+         LocCategory("Reward Type", "{=x6pmNHJT}Reward Type"), 
+         LocDescription("{=4L1hJS6v}Relative proportion of rewards that will be mounts"), 
+         Range(0, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         Document, PropertyOrder(3), UsedImplicitly]
         public float MountWeight { get; set; } = 0.1f;
         
-        [Category("Reward Type"),
-         Description("The % chance for each item type"),
-         PropertyOrder(4),
+        [LocDisplayName("{=h4CEbGun}Reward Type Chances"),
+         LocCategory("Reward Type", "{=x6pmNHJT}Reward Type"),
+         LocDescription("{=u9zCErHS}The % chance for each item type"),
          DependsOn(nameof(WeaponWeight), nameof(ArmorWeight), nameof(MountWeight)),
-         YamlIgnore, ReadOnly(true), UsedImplicitly] 
+         YamlIgnore, ReadOnly(true),
+         PropertyOrder(4), UsedImplicitly] 
         public string RewardTypeChances
         {
             get
             {
                 var typeWeights = new[]
                 {
-                    (name: "Weapon", weight: WeaponWeight),
-                    (name: "Armor", weight: ArmorWeight),
-                    (name: "Mount", weight: MountWeight),
+                    (name: "{=hpJN9wNo}Weapon".Translate(), weight: WeaponWeight),
+                    (name: "{=YQdQrFG7}Armor".Translate(), weight: ArmorWeight),
+                    (name: "{=HGZVsIjn}Mount".Translate(), weight: MountWeight),
                 };
                 float totalWeight = typeWeights.Sum(t => t.weight);
                 return string.Join(", ",
@@ -67,57 +69,62 @@ namespace BLTAdoptAHero
         #endregion
 
         #region Reward Tier
-        [Category("Reward Tier"), 
-         Description("Relative proportion of rewards that will be Tier 1"),
-         PropertyOrder(1),
-         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly, Document]
+        [LocDisplayName("{=pqDOv12p}Tier 1 Weight"),
+         LocCategory("Reward Tier", "{=Mmd0UleC}Reward Tier"), 
+         LocDescription("{=aAZvoxk9}Relative proportion of rewards that will be Tier 1"),
+         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         Document, UsedImplicitly, PropertyOrder(1)]
         public float Tier1Weight { get; set; }
 
-        [Category("Reward Tier"), Description("Relative proportion of rewards that will be Tier 2"),
-         PropertyOrder(2),
-         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly, Document]
+        [LocDisplayName("{=ZDgMrJHH}Tier 2 Weight"),
+         LocCategory("Reward Tier", "{=Mmd0UleC}Reward Tier"), 
+         LocDescription("{=rvjbuCH4}Relative proportion of rewards that will be Tier 2"),
+         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         Document, PropertyOrder(2), UsedImplicitly]
         public float Tier2Weight { get; set; }
 
-        [Category("Reward Tier"), Description("Relative proportion of rewards that will be Tier 3"),
-         PropertyOrder(3),
-         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly, Document]
+        [LocDisplayName("{=8UhZyGRj}Tier 3 Weight"),
+         LocCategory("Reward Tier", "{=Mmd0UleC}Reward Tier"), 
+         LocDescription("{=CJwXH8cz}Relative proportion of rewards that will be Tier 3"),
+         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         Document, UsedImplicitly, PropertyOrder(3)]
         public float Tier3Weight { get; set; }
 
-        [Category("Reward Tier"), Description("Relative proportion of rewards that will be Tier 4"),
-         PropertyOrder(4),
-         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly, Document]
+        [LocDisplayName("{=v4wqC1mI}Tier 4 Weight"),
+         LocCategory("Reward Tier", "{=Mmd0UleC}Reward Tier"), 
+         LocDescription("{=NoKi0iIC}Relative proportion of rewards that will be Tier 4"),
+         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         Document, PropertyOrder(4), UsedImplicitly]
         public float Tier4Weight { get; set; }
 
-        [Category("Reward Tier"), Description("Relative proportion of rewards that will be Tier 5"),
-         PropertyOrder(5),
-         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly, Document]
+        [LocDisplayName("{=vXimyLH7}Tier 5 Weight"),
+         LocCategory("Reward Tier", "{=Mmd0UleC}Reward Tier"), 
+         LocDescription("{=rsGLtLyB}Relative proportion of rewards that will be Tier 5"),
+         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         Document, PropertyOrder(5), UsedImplicitly]
         public float Tier5Weight { get; set; } = 3f;
 
-        [Category("Reward Tier"), Description("Relative proportion of rewards that will be Tier 6"),
-         PropertyOrder(6),
-         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly, Document]
+        [LocDisplayName("{=HWHFIsUH}Tier 6 Weight"),
+         LocCategory("Reward Tier", "{=Mmd0UleC}Reward Tier"), 
+         LocDescription("{=991D0fok}Relative proportion of rewards that will be Tier 6"),
+         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         Document, PropertyOrder(6), UsedImplicitly]
         public float Tier6Weight { get; set; } = 2f;
 
-        [Category("Reward Tier"),
-         Description("Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom " +
-                     "Reward settings below)"), 
-         PropertyOrder(7),
-         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly, Document]
+        [LocDisplayName("{=R5TCrBo8}Custom Weight"),
+         LocCategory("Reward Tier", "{=Mmd0UleC}Reward Tier"),
+         LocDescription("{=XL94fx52}Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below)"), 
+         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         Document, PropertyOrder(7), UsedImplicitly]
         public float CustomWeight { get; set; } = 1f;
         
-        [Category("Reward Tier"),
-         Description("The % chance for each reward tier"),
-         PropertyOrder(8),
+        [LocDisplayName("{=zoBVNJBB}Reward Tier Chances"),
+         LocCategory("Reward Tier", "{=Mmd0UleC}Reward Tier"),
+         LocDescription("{=ANPeZyy0}The % chance for each reward tier"),
          DependsOn(nameof(Tier1Weight), nameof(Tier2Weight), nameof(Tier3Weight), 
              nameof(Tier4Weight), nameof(Tier5Weight), nameof(Tier6Weight), nameof(CustomWeight)),
-         YamlIgnore, ReadOnly(true), UsedImplicitly] 
+         YamlIgnore, ReadOnly(true), 
+         PropertyOrder(8), UsedImplicitly] 
         public string RewardTierChances
         {
             get
@@ -126,7 +133,9 @@ namespace BLTAdoptAHero
                 return string.Join(", ",
                     TierWeights.Where(t => t.weight > 0)
                         .Select(t => 
-                            (t.tier == 6 ? "Custom" : $"Tier {t.tier + 1}") 
+                            (t.tier == 6 
+                                ? "{=LKgozyEk}Custom".Translate() 
+                                : "{=JpB20FtS}Tier {Tier}".Translate(("Tier", t.tier + 1))) 
                             + $": {t.weight * 100f / totalWeight:0}%"));
             }
         }
@@ -148,16 +157,17 @@ namespace BLTAdoptAHero
         #endregion
 
         #region Custom Item
-        [Category("Custom Item"), 
-         Description("Name format for custom item, {ITEMNAME} is the placeholder for the base item name."),
+        [LocDisplayName("{=PBWEbYLT}Custom Item Name"),
+         LocCategory("Custom Item", "{=zVqTKyQG}Custom Item"), 
+         LocDescription("{=vqNeCCNy}Name format for custom item, {ITEMNAME} is the placeholder for the base item name."),
          PropertyOrder(1), UsedImplicitly]
         public LocString CustomItemName { get; set; } = "{=W47g8bCB}Reward {ITEMNAME}";
 
-        [Category("Custom Item"), 
-         Description("Custom item power multipler, applies on top of the global multiplier"),
-         PropertyOrder(2),
-         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+        [LocDisplayName("{=THpMPPhd}Custom Item Power"),
+         LocCategory("Custom Item", "{=zVqTKyQG}Custom Item"), 
+         LocDescription("{=anUzQaU7}Custom item power multipler, applies on top of the global multiplier"),
+         Range(0, 5), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         PropertyOrder(2), UsedImplicitly]
         public float CustomItemPower { get; set; } = 1f;
         #endregion
         #endregion

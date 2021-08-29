@@ -12,10 +12,14 @@
         <string id="drHSxMvO" text="−" />
         <string id="BolFnYCO" text="⦷" />
         <string id="JFCeRYdn" text="XP" />
+        <string id="NtqSb7B7" text="HP"/>
         <string id="RQlq59mz" text="lvl" />
         <string id="5rErcMGl" text="Item" />
         <string id="5gVLi7NA" text="Skills" />
         <string id="aG3roJj3" text=" ■" />
+        <string id="3Nk6a7Lo" text=""/>
+        <string id="1UApv3hO" text=""/>
+        
         
         <string id="fuwuk4bR" text="Not enough {Naming.Gold}: need {need}{Naming.Gold}, have {have}{Naming.Gold}!" />
 
@@ -45,8 +49,21 @@
         <string id="lnz7d1BI" text="Kill Streak Rewards"/>
         <string id="EPr2clqT" text="Achievements"/>
         <string id="UhUpH8C8" text="Shouts"/>
-        <string id="VBuncBq5" text=""/>
-        <string id="R7rU0TbD" text=""/>
+        <string id="VBuncBq5" text="Effect"/>
+        <string id="R7rU0TbD" text="Targets"/>
+        <string id="umALVhJG" text="Appearance"/>
+        <string id="XKDa1WXR" text=""/>
+        <string id="NSUEEK4X" text=""/>
+        <string id="n49rZjJA" text=""/>
+        <string id="N9I3mar1" text=""/>
+        <string id="c7otO8rz" text=""/>
+        <string id="FukLuLHm" text=""/>
+        <string id="fdkNaWd3" text=""/>
+        <string id="9uQuZI00" text=""/>
+        <string id="LmiHUxdF" text=""/>
+        <string id="3pBIJkzZ" text=""/>
+        <string id="Ei3ayo2T" text=""/>
+        <string id="R7KB4oDs" text=""/>
         
         <!-- Settings -->
         <string id="JlFpeaxe" text="Commands" />

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
@@ -17,110 +18,137 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
-	[CategoryOrder("Effect", 3)]
-	[CategoryOrder("Targets", 4)]
-	[CategoryOrder("Appearance", 5)]
-    [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
+    [CategoryOrder("Effect", 3), 
+     CategoryOrder("Targets", 4), 
+     CategoryOrder("Appearance", 5),
+     LocDisplayName("{=JgPVRq5W}Add Damage Power"),
+     LocDescription("{=RGUwxlOx}Adds fixed or relative amount of extra HP to the hero when they spawn"), 
+     UsedImplicitly]
     public class AddDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         #region User Editable
-        [Category("Effect"),
-         Description("Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it)"),
+        [LocDisplayName("{=0mhPe31m}Damage Modifier Percent"),
+         LocCategory("Effect", "{=VBuncBq5}Effect"),
+         LocDescription("{=tXh8oAaE}Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it)"),
          UIRangeAttribute(0, 500, 5f),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          PropertyOrder(1), UsedImplicitly]
         public float DamageModifierPercent { get; set; } = 100f;
 
-        [Category("Effect"), Description("How much damage to add"), PropertyOrder(2), UsedImplicitly]
+        [LocDisplayName("{=fPmJAchN}Damage To Add"),
+         LocCategory("Effect", "{=VBuncBq5}Effect"), 
+         LocDescription("{=lEbWq1of}How much damage to add"), 
+         PropertyOrder(2), UsedImplicitly]
         public int DamageToAdd { get; set; }
         
-        [Category("Effect"), 
-         Description("Behaviors to add to the damage"), PropertyOrder(4), ExpandableObject, UsedImplicitly]
+        [LocDisplayName("{=RnGUD1jl}Add Hit Behavior"),
+         LocCategory("Effect", "{=VBuncBq5}Effect"), 
+         LocDescription("{=bse0NB6Z}Behaviors to add to the damage"), 
+         ExpandableObject, PropertyOrder(4), UsedImplicitly]
         public HitBehavior AddHitBehavior { get; set; }
 
-        [Category("Effect"),
-         Description("Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always " +
-                     "stunned when hit)"), PropertyOrder(5), ExpandableObject, UsedImplicitly]
+        [LocDisplayName("{=shUGx48n}Remove Hit Behavior"),
+         LocCategory("Effect", "{=VBuncBq5}Effect"),
+         LocDescription("{=feiVAent}Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always stunned when hit)"), 
+         ExpandableObject, PropertyOrder(5), UsedImplicitly]
         public HitBehavior RemoveHitBehavior { get; set; }
 
-        [Category("Effect"), Description("What fraction (0 to 1) of armor to ignore when applying damage"), 
-         PropertyOrder(6),
+        [LocDisplayName("{=w5j3JYog}Armor To Ignore Percent"),
+         LocCategory("Effect", "{=VBuncBq5}Effect"), 
+         LocDescription("{=Sv4QLgYX}What fraction (0 to 1) of armor to ignore when applying damage"), 
          UIRangeAttribute(0, 100, 1f),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+         PropertyOrder(6), UsedImplicitly]
         public float ArmorToIgnorePercent { get; set; }
         
-        [Category("Effect"), 
-         Description("Chance (0 to 1) that the hit will be unblockable"), PropertyOrder(7),
+        [LocDisplayName("{=SOJgZOV3}Unblockable Chance Percent"),
+         LocCategory("Effect", "{=VBuncBq5}Effect"), 
+         LocDescription("{=QoYMwBnz}Chance (0 to 1) that the hit will be unblockable"), 
          UIRangeAttribute(0, 100, 1f),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+         PropertyOrder(7), UsedImplicitly]
         public float UnblockableChancePercent { get; set; }
         
-        [Category("Effect"), 
-         Description("Chance (0 to 1) that the hit will shatter shield if it is blocked"), 
-         PropertyOrder(8),
+        [LocDisplayName("{=L1ZqypsT}Shatter Shield Chance Percent"),
+         LocCategory("Effect", "{=VBuncBq5}Effect"), 
+         LocDescription("{=MaDRQPhh}Chance (0 to 1) that the hit will shatter shield if it is blocked"), 
          UIRangeAttribute(0, 100, 1f),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+         PropertyOrder(8), UsedImplicitly]
         public float ShatterShieldChancePercent { get; set; }
         
-        [Category("Effect"), 
-         Description("Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each " +
-                     "collision, so a cut through chance of 1 will result in cutting through everyone with every hit)"), 
-         PropertyOrder(9),
+        [LocDisplayName("{=xt70CI4q}Cut Through Chance Percent"),
+         LocCategory("Effect", "{=VBuncBq5}Effect"), 
+         LocDescription("{=uAsNXThU}Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each collision, so a cut through chance of 1 will result in cutting through everyone with every hit)"), 
          UIRangeAttribute(0, 100, 1f),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+         PropertyOrder(9), UsedImplicitly]
         public float CutThroughChancePercent { get; set; }
         
-        [Category("Effect"), 
-         Description("Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR " +
-                     "stagger, it can't do both, cut through chance is evaluated before this one)"), 
-         PropertyOrder(10),
+        [LocDisplayName("{=XxLPeI3i}Stagger Chance Percent"),
+         LocCategory("Effect", "{=VBuncBq5}Effect"), 
+         LocDescription("{=8N18Zs1O}Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR stagger, it can't do both, cut through chance is evaluated before this one)"), 
          UIRangeAttribute(0, 100, 1f),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+         PropertyOrder(10), UsedImplicitly]
         public float StaggerChancePercent { get; set; }
 
-        [Category("Effect"), 
-         Description("Area of Effect damage to apply"), PropertyOrder(20), UsedImplicitly, ExpandableObject]
+        [LocDisplayName("{=O4AUEtAO}AoE"),
+         LocCategory("Effect", "{=VBuncBq5}Effect"), 
+         LocDescription("{=5ke30xUG}Area of Effect damage to apply"),
+         ExpandableObject, PropertyOrder(20), UsedImplicitly]
         public AreaOfEffectDef AoE { get; set; } = new();
         
-        [Category("Targets"), 
-         Description("Whether to apply this bonus damage against normal troops"), PropertyOrder(13), UsedImplicitly]
+        [LocDisplayName("{=0WAJwEvc}Apply Against Non Heroes"),
+         LocCategory("Targets", "{=R7rU0TbD}Targets"), 
+         LocDescription("{=guccTOSR}Whether to apply this bonus damage against normal troops"), 
+         PropertyOrder(13), UsedImplicitly]
         public bool ApplyAgainstNonHeroes { get; set; } = true;
-        [Category("Targets"), 
-         Description("Whether to apply this bonus damage against heroes"), PropertyOrder(14), UsedImplicitly]
+        [LocDisplayName("{=mMcjJkph}Apply Against Heroes"),
+         LocCategory("Targets", "{=R7rU0TbD}Targets"), 
+         LocDescription("{=gYU28V1d}Whether to apply this bonus damage against heroes"), 
+         PropertyOrder(14), UsedImplicitly]
         public bool ApplyAgainstHeroes { get; set; } = true;
-        [Category("Targets"), 
-         Description("Whether to apply this bonus damage against adopted heroes"), PropertyOrder(15), UsedImplicitly]
+        [LocDisplayName("{=En7CxSs6}Apply Against Adopted Heroes"),
+         LocCategory("Targets", "{=R7rU0TbD}Targets"), 
+         LocDescription("{=DcMwYE76}Whether to apply this bonus damage against adopted heroes"), 
+         PropertyOrder(15), UsedImplicitly]
         public bool ApplyAgainstAdoptedHeroes { get; set; } = true;
-        [Category("Targets"), 
-         Description("Whether to apply this bonus damage against the player"), PropertyOrder(16), UsedImplicitly]
+        [LocDisplayName("{=s3sYJipB}Apply Against Player"),
+         LocCategory("Targets", "{=R7rU0TbD}Targets"), 
+         LocDescription("{=1sYObRIg}Whether to apply this bonus damage against the player"), 
+         PropertyOrder(16), UsedImplicitly]
         public bool ApplyAgainstPlayer { get; set; } = true;
 
-        [Category("Targets"), 
-         Description("Whether to apply this bonus damage when using ranged weapons"), PropertyOrder(17), UsedImplicitly]
+        [LocDisplayName("{=ITaXWnRJ}Ranged"),
+         LocCategory("Targets", "{=R7rU0TbD}Targets"), 
+         LocDescription("{=pfagbSNR}Whether to apply this bonus damage when using ranged weapons"), 
+         PropertyOrder(17), UsedImplicitly]
         public bool Ranged { get; set; } = true;
         
-        [Category("Targets"), 
-         Description("Whether to apply this bonus damage when using melee weapons"), PropertyOrder(18), UsedImplicitly]
+        [LocDisplayName("{=6pT4TAXW}Melee"),
+         LocCategory("Targets", "{=R7rU0TbD}Targets"), 
+         LocDescription("{=TiGzhjIl}Whether to apply this bonus damage when using melee weapons"), 
+         PropertyOrder(18), UsedImplicitly]
         public bool Melee { get; set; } = true;
         
-        [Category("Targets"), 
-         Description("Whether to apply this bonus damage from charge damage"), PropertyOrder(19), UsedImplicitly]
+        [LocDisplayName("{=JR0Rdbfj}Charge"),
+         LocCategory("Targets", "{=R7rU0TbD}Targets"), 
+         LocDescription("{=65y7VWcS}Whether to apply this bonus damage from charge damage"), 
+         PropertyOrder(19), UsedImplicitly]
         public bool Charge { get; set; } = true;
 
-        [Category("Appearance"), 
-         Description("Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing " +
-                     "fire/smoke effect)"), 
-         ItemsSource(typeof(LoopingParticleEffectItemSource)), PropertyOrder(21), UsedImplicitly]
+        [LocDisplayName("{=2GaGbTYR}Missile Trail Particle Effect"),
+         LocCategory("Appearance", "{=umALVhJG}Appearance"), 
+         LocDescription("{=UiCylfED}Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing fire/smoke effect)"), 
+         ItemsSource(typeof(LoopingParticleEffectItemSource)),
+         PropertyOrder(21), UsedImplicitly]
         public string MissileTrailParticleEffect { get; set; }
         
-        [Category("Appearance"),
-         Description("Effect to play on hit (intended mainly for AoE effects)"), 
-         PropertyOrder(22), ExpandableObject, UsedImplicitly]
+        [LocDisplayName("{=gEhH84HS}Hit Effect"),
+         LocCategory("Appearance", "{=umALVhJG}Appearance"),
+         LocDescription("{=r6D9pDIA}Effect to play on hit (intended mainly for AoE effects)"), 
+         ExpandableObject, PropertyOrder(22), UsedImplicitly]
         public OneShotEffect HitEffect { get; set; }
         #endregion
 
@@ -382,79 +410,117 @@ namespace BLTAdoptAHero.Powers
 
         #region Public Interface
         [YamlIgnore, Browsable(false)]
-        public override string Description
+        public override LocString Description
         {
             get
             {
                 var appliesToList = new List<string>();
                 if (!ApplyAgainstNonHeroes || !ApplyAgainstHeroes || !ApplyAgainstAdoptedHeroes || !ApplyAgainstPlayer)
                 {
-                    if (ApplyAgainstNonHeroes) appliesToList.Add("Non-heroes");
-                    if (ApplyAgainstHeroes) appliesToList.Add("Heroes");
-                    if (ApplyAgainstAdoptedHeroes) appliesToList.Add("Adopted");
-                    if (ApplyAgainstPlayer) appliesToList.Add("Player");
+                    if (ApplyAgainstNonHeroes) appliesToList.Add("{=RNh2zns4}Non-heroes".Translate());
+                    if (ApplyAgainstHeroes) appliesToList.Add("{=qWIzKnVw}Heroes".Translate());
+                    if (ApplyAgainstAdoptedHeroes) appliesToList.Add("{=djDGvCdQ}Adopted".Translate());
+                    if (ApplyAgainstPlayer) appliesToList.Add("{=8nDvdozx}Player".Translate());
                 }
 
                 var appliesFromList = new List<string>();
                 if (!Ranged || !Melee || !Charge)
                 {
-                    if (Ranged) appliesFromList.Add("Ranged");
-                    if (Melee) appliesFromList.Add("Melee");
-                    if (Charge) appliesFromList.Add("Charge");
+                    if (Ranged) appliesFromList.Add("{=1t1hdpPr}Ranged".Translate());
+                    if (Melee) appliesFromList.Add("{=ibrr3fCK}Melee".Translate());
+                    if (Charge) appliesFromList.Add("{=X8RrfG7V}Charge".Translate());
                 }
                 
                 var modifiers = new List<string>();
                 
-                if (DamageModifierPercent != 100) modifiers.Add($"{DamageModifierPercent:0.0}% dmg");
-                if (DamageToAdd != 0) modifiers.Add($"{(DamageToAdd > 0 ? "+" : "")}{DamageToAdd} dmg");
-                if (AddHitBehavior.IsEnabled) modifiers.Add($"Add: {AddHitBehavior}");
-                if (RemoveHitBehavior.IsEnabled) modifiers.Add($"Remove: {RemoveHitBehavior}");
-                if (ArmorToIgnorePercent != 0) modifiers.Add($"Ignore {ArmorToIgnorePercent}% Armor");
-                if (UnblockableChancePercent != 0) modifiers.Add($"{UnblockableChancePercent}% Unblockable");
-                if (ShatterShieldChancePercent != 0) modifiers.Add($"{ShatterShieldChancePercent}% Shatter Shield");
-                if (CutThroughChancePercent != 0) modifiers.Add($"{CutThroughChancePercent}% Cut Through");
-                if (StaggerChancePercent != 0) modifiers.Add($"{StaggerChancePercent}% Stagger");
+                if (DamageModifierPercent != 100)
+                    modifiers.Add("{=LbHOSj1l}{DamageModifierPercent}% dmg"
+                        .Translate(("DamageModifierPercent", DamageModifierPercent.ToString("0.0"))));
+                if (DamageToAdd != 0)
+                    modifiers.Add("{=mBmFK0OK}{DamageToAdd} dmg"
+                        .Translate(("DamageToAdd", (DamageToAdd > 0 ? "+" : "") + DamageToAdd)));
+                if (AddHitBehavior.IsEnabled)
+                    modifiers.Add("{=ybyWP8jd}Add: {AddHitBehavior}"
+                        .Translate(("AddHitBehavior", AddHitBehavior)));
+                if (RemoveHitBehavior.IsEnabled)
+                    modifiers.Add("{=WJVreCCg}Remove: {RemoveHitBehavior}"
+                        .Translate(("RemoveHitBehavior", RemoveHitBehavior)));
+                if (ArmorToIgnorePercent != 0)
+                    modifiers.Add("{=svDicWAa}Ignore {ArmorToIgnorePercent}% Armor"
+                        .Translate(("ArmorToIgnorePercent", ArmorToIgnorePercent)));
+                if (UnblockableChancePercent != 0)
+                    modifiers.Add("{=TkGVRcl0}{UnblockableChancePercent}% Unblockable"
+                        .Translate(("UnblockableChancePercent", UnblockableChancePercent)));
+                if (ShatterShieldChancePercent != 0)
+                    modifiers.Add("{=xHMYpCMY}{ShatterShieldChancePercent}% Shatter Shield"
+                        .Translate(("ShatterShieldChancePercent", ShatterShieldChancePercent)));
+                if (CutThroughChancePercent != 0)
+                    modifiers.Add("{=I3BiKkXC}{CutThroughChancePercent}% Cut Through"
+                        .Translate(("CutThroughChancePercent", CutThroughChancePercent)));
+                if (StaggerChancePercent != 0)
+                    modifiers.Add("{=NetyrPKo}{StaggerChancePercent}% Stagger"
+                        .Translate(("StaggerChancePercent", StaggerChancePercent)));
                 
-                if (AoE.IsEnabled) modifiers.Add($"AoE: {AoE.Description}");
+                if (AoE.IsEnabled) 
+                    modifiers.Add("{=A6Vulmvy}AoE: {AoEDescription}"
+                        .Translate(("AoEDescription", AoE.Description)));
 
-                if (!modifiers.Any()) return "(inactive)";
-                return $"{string.Join(" / ", modifiers)} " +
-                       (appliesFromList.Any() ? $"from {string.Join(" / ", appliesFromList)} " : "") + 
-                       (appliesToList.Any() ? $"against {string.Join(" / ", appliesToList)}" : "");
+                if (!modifiers.Any()) return "{=cM8NOj2B}(inactive)";
+                return (appliesFromList.Any() && appliesToList.Any()
+                    ? "{=UhEtVOWV}{Modifiers} from {AppliesFrom} against {AppliesAgainst}"
+                    : appliesFromList.Any()
+                        ? "{=GrP7yeqP}{Modifiers} from {AppliesFrom}"
+                        : appliesToList.Any()
+                            ? "{=dAObdN2r}{Modifiers} against {AppliesAgainst}"
+                            : "{=ZXm0fYfO}{Modifiers}")
+                    .Translate(
+                        ("Modifiers", string.Join(" / ", modifiers)),
+                        ("AppliesFrom", string.Join(" / ", appliesFromList)),
+                        ("AppliesAgainst", string.Join(" / ", appliesToList)));
             }
         }
         #endregion
 
         #region IDocumentable
-        public void GenerateDocumentation(IDocumentationGenerator generator) => generator.P(Description);
+        public void GenerateDocumentation(IDocumentationGenerator generator) => generator.P(Description.ToString());
         #endregion
     }
 
     public class AreaOfEffectDef : ICloneable, INotifyPropertyChanged
     {
-        [Description("The radius to apply the damage in"), PropertyOrder(1),
-         UIRange(0, 20, 0.5f), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+        [LocDisplayName("{=DMsD70Yc}Range"),
+         LocDescription("{=yjmcKGuH}The radius to apply the damage in"),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UIRange(0, 20, 0.5f), 
+         PropertyOrder(1), UsedImplicitly]
         public float Range { get; set; }
 	        
-        [Description("Only apply the damage if the attack hits an agent (as opposed to the ground, " +
-                     "e.g. for arrows)"), PropertyOrder(2), UsedImplicitly]
+        [LocDisplayName("{=u1EgbhAw}Only On Hit"),
+         LocDescription("{=uxyVrVjV}Only apply the damage if the attack hits an agent (as opposed to the ground, e.g. for arrows)"),
+         PropertyOrder(2), UsedImplicitly]
         public bool OnlyOnHit { get; set; }
 
-        [Description("Damage at distance 0 from the hit"), PropertyOrder(3),
-         UIRange(0, 500, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+        [LocDisplayName("{=oLCQliJn}Damage At Center"),
+         LocDescription("{=eLcjxP3j}Damage at distance 0 from the hit"), 
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         UIRange(0, 500, 1), 
+         PropertyOrder(3), UsedImplicitly]
         public float DamageAtCenter { get; set; } = 50;
 
-        [Description("Maximum number of agents that can be affected"), PropertyOrder(4),
+        [LocDisplayName("{=GpuS1lb5}Max Agents To Damage"),
+         LocDescription("{=ZFsDLtEj}Maximum number of agents that can be affected"), 
          Range(0, int.MaxValue),
-         UsedImplicitly]
+         PropertyOrder(4), UsedImplicitly]
         public int MaxAgentsToDamage { get; set; } = 4;
 
-        [Description("Damage type"), PropertyOrder(5), UsedImplicitly]
+        [LocDisplayName("{=zfp8aakV}Damage Type"),
+         LocDescription("{=VcfFbhYX}Damage type"),
+         PropertyOrder(5), UsedImplicitly]
         public DamageTypes DamageType { get; set; } = DamageTypes.Blunt;
         
-        [Description("Flags to apply to the damage"), PropertyOrder(6), ExpandableObject, UsedImplicitly]
+        [LocDisplayName("{=MCTf7KFT}Hit Behavior"),
+         LocDescription("{=Ud0EJmY0}Flags to apply to the damage"),
+         ExpandableObject, PropertyOrder(6), UsedImplicitly]
         public HitBehavior HitBehavior { get; set; }
 
         [YamlIgnore, ReadOnly(true)]
@@ -464,7 +530,8 @@ namespace BLTAdoptAHero.Powers
         public string Example =>
             string.Join(", ",
                 Enumerable.Range(0, (int) Math.Min(Range, 20))
-                    .Select(i => $"{i}m: {CalculateDamage(i)}dmg"));
+                    .Select(i => "{=GRtsL26e}{Distance}m: {Damage}dmg"
+                        .Translate(("Distance", i), ("Damage", CalculateDamage(i)))));
 
         public override string ToString() => Description;
         
@@ -473,10 +540,19 @@ namespace BLTAdoptAHero.Powers
         {
             get
             {
-                if (!IsEnabled) return "(inactive)";
-                string desc = $"{DamageAtCenter}dmg in {Range}m";
-                if (HitBehavior.IsEnabled) desc += $" with {HitBehavior}";
-                return desc;
+                if (!IsEnabled) 
+                    return "{=cM8NOj2B}(inactive)".Translate();
+                else if (HitBehavior.IsEnabled)
+                    return "{=S5DNQWpQ}{Damage}dmg in {Distance}m with {HitBehavior}"
+                        .Translate(
+                            ("Damage", DamageAtCenter),
+                            ("Distance", Range),
+                            ("HitBehavior", HitBehavior));
+                else
+                    return "{=MzOdRykr}{Damage}dmg in {Distance}m"
+                        .Translate(
+                            ("Damage", DamageAtCenter), 
+                            ("Distance", Range));
             }
         }
 

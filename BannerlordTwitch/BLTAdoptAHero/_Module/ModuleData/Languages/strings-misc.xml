@@ -903,64 +903,240 @@
         <!-- HeroPowerDefBase -->
         <string id="lzvJC8bf" text="Name of the power that will be shown in game"/>
         <string id="aQgYs3mI" text="Enter Name Here"/>
-        <string id="mtZMAwbM" text=""/>
-        <string id="wPgAMF92" text=""/>
-        <string id="9dla8vV1" text=""/>
-        <string id="MTqyFfDc" text=""/>
-        <string id="dCRbuRf8" text=""/>
-        <string id="adHeasi7" text=""/>
-        <string id="okiEp8HU" text=""/>
-        <string id="Cp9IZN6J" text=""/>
-        <string id="lVXn7z6U" text=""/>
-        <string id="RrhP0L2t" text=""/>
-        <string id="cM8NOj2B" text=""/>
-        <string id="2UuwaRcc" text=""/>
-        <string id="4iroX5zj" text=""/>
-        <string id="DNqblCEf" text=""/>
-        <string id="F0o4A3mp" text=""/>
-        <string id="bEO48IR4" text=""/>
-        <string id="sURt2dSt" text=""/>
-        <string id="KHoc6FK5" text=""/>
-        <string id="8mrSEyNk" text=""/>
-        <string id="QsdqVpNE" text=""/>
-        <string id="61fc3xTQ" text=""/>
-        <string id="wtD908lt" text=""/>
-        <string id="WLtUn4t7" text=""/>
-        <string id="sl5ZoJdv" text=""/>
-        <string id="hPcS0MIw" text=""/>
-        <string id="HmDfLY2B" text=""/>
-        <string id="ZHdogsAa" text=""/>
-        <string id="8SE2asYO" text=""/>
-        <string id="41sZdkDw" text=""/>
-        <string id="04WkC9p6" text=""/>
-        <string id="umALVhJG" text=""/>
-        <string id="XKDa1WXR" text=""/>
-        <string id="NSUEEK4X" text=""/>
-        <string id="n49rZjJA" text=""/>
-        <string id="JgPVRq5W" text=""/>
-        <string id="RGUwxlOx" text=""/>
-        <string id="0mhPe31m" text=""/>
-        <string id="tXh8oAaE" text=""/>
-        <string id="fPmJAchN" text=""/>
-        <string id="lEbWq1of" text=""/>
-        <string id="RnGUD1jl" text=""/>
-        <string id="bse0NB6Z" text=""/>
-        <string id="shUGx48n" text=""/>
-        <string id="feiVAent" text=""/>
-        <string id="w5j3JYog" text=""/>
-        <string id="Sv4QLgYX" text=""/>
-        <string id="SOJgZOV3" text=""/>
-        <string id="QoYMwBnz" text=""/>
-        <string id="L1ZqypsT" text=""/>
-        <string id="MaDRQPhh" text=""/>
-        <string id="xt70CI4q" text=""/>
-        <string id="uAsNXThU" text=""/>
-        <string id="XxLPeI3i" text=""/>
-        <string id="8N18Zs1O" text=""/>
-        <string id="O4AUEtAO" text=""/>
-        <string id="5ke30xUG" text=""/>
-        <string id="0WAJwEvc" text=""/>
-        <string id="guccTOSR" text=""/>
-        <string id="mMcjJkph" text=""/>
+        
+        <!-- HitBehavior -->
+        <string id="mtZMAwbM" text="Knock Back Chance Percent"/>
+        <string id="wPgAMF92" text="Percent chance (0 to 100) for target to get knocked back"/>
+        <string id="9dla8vV1" text="Knock Down Chance Percent"/>
+        <string id="MTqyFfDc" text="Percent chance (0 to 100) for target to get knocked down"/>
+        <string id="dCRbuRf8" text="Shrug Off Chance Percent"/>
+        <string id="adHeasi7" text="Percent chance (0 to 100) for target to shrug off blow (not visably reacting to it, damage will still apply)"/>
+        <string id="okiEp8HU" text="Makes Rear Chance Percent"/>
+        <string id="Cp9IZN6J" text="Percent chance (0 to 100) for target to rear (if it is a mount)"/>
+        <string id="lVXn7z6U" text="Dismount Chance"/>
+        <string id="RrhP0L2t" text="Percent chance (0 to 100) for target to be dismounted"/>
+        <string id="cM8NOj2B" text="(inactive)"/>
+        <string id="2UuwaRcc" text="Knock Back"/>
+        <string id="4iroX5zj" text="Knock Down"/>
+        <string id="DNqblCEf" text="Shrug Off"/>
+        <string id="F0o4A3mp" text="Mount Rear"/>
+        <string id="bEO48IR4" text="Dismount"/>
+        
+        <!-- PassivePowerGroupItem -->
+        <string id="sURt2dSt" text="Passive Power Group Item"/>
+        <string id="KHoc6FK5" text="Power"/>
+        <string id="8mrSEyNk" text="(no power)"/>
+        <string id="QsdqVpNE" text="The name of the power: how the power will be described in messages"/>
+        <string id="61fc3xTQ" text="Powers"/>
+        <string id="wtD908lt" text="The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure)."/>
+        
+        <!-- PowerGroupItemBase -->
+        <string id="WLtUn4t7" text="Requirements"/>
+        <string id="sl5ZoJdv" text="Optional unlock criteria"/>
+        <string id="hPcS0MIw" text="requires {Requirements}"/>
+        
+        <!-- AbsorbHealthPower -->
+        <string id="HmDfLY2B" text="Absorb Health Power"/>
+        <string id="ZHdogsAa" text="Absorbs a fraction of damage you do to enemies as health"/>
+        <string id="8SE2asYO" text="What percentage of damage done to absorb as health"/>
+        <string id="41sZdkDw" text="(disabled)"/>
+        <string id="04WkC9p6" text="Absorb {DamageToAbsorbPercent}% of damage dealt as HP"/>
+        
+        <!-- AddDamagePower -->
+        <string id="JgPVRq5W" text="Add Damage Power"/>
+        <string id="RGUwxlOx" text="Adds fixed or relative amount of extra HP to the hero when they spawn"/>
+        <string id="0mhPe31m" text="Damage Modifier Percent"/>
+        <string id="tXh8oAaE" text="Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it)"/>
+        <string id="fPmJAchN" text="Damage To Add"/>
+        <string id="lEbWq1of" text="How much damage to add"/>
+        <string id="RnGUD1jl" text="Add Hit Behavior"/>
+        <string id="bse0NB6Z" text="Behaviors to add to the damage"/>
+        <string id="shUGx48n" text="Remove Hit Behavior"/>
+        <string id="feiVAent" text="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always stunned when hit)"/>
+        <string id="w5j3JYog" text="Armor To Ignore Percent"/>
+        <string id="Sv4QLgYX" text="What fraction (0 to 1) of armor to ignore when applying damage"/>
+        <string id="SOJgZOV3" text="Unblockable Chance Percent"/>
+        <string id="QoYMwBnz" text="Chance (0 to 1) that the hit will be unblockable"/>
+        <string id="L1ZqypsT" text="Shatter Shield Chance Percent"/>
+        <string id="MaDRQPhh" text="Chance (0 to 1) that the hit will shatter shield if it is blocked"/>
+        <string id="xt70CI4q" text="Cut Through Chance Percent"/>
+        <string id="uAsNXThU" text="Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each collision, so a cut through chance of 1 will result in cutting through everyone with every hit)"/>
+        <string id="XxLPeI3i" text="Stagger Chance Percent"/>
+        <string id="8N18Zs1O" text="Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR stagger, it can't do both, cut through chance is evaluated before this one)"/>
+        <string id="O4AUEtAO" text="AoE"/>
+        <string id="5ke30xUG" text="Area of Effect damage to apply"/>
+        <string id="0WAJwEvc" text="Apply Against Non Heroes"/>
+        <string id="guccTOSR" text="Whether to apply this bonus damage against normal troops"/>
+        <string id="mMcjJkph" text="Apply Against Heroes"/>
+        <string id="gYU28V1d" text="Whether to apply this bonus damage against heroes"/>
+        <string id="En7CxSs6" text="Apply Against Adopted Heroes"/>
+        <string id="DcMwYE76" text="Whether to apply this bonus damage against adopted heroes"/>
+        <string id="s3sYJipB" text="Apply Against Player"/>
+        <string id="1sYObRIg" text="Whether to apply this bonus damage against the player"/>
+        <string id="ITaXWnRJ" text="Ranged"/>
+        <string id="pfagbSNR" text="Whether to apply this bonus damage when using ranged weapons"/>
+        <string id="6pT4TAXW" text="Melee"/>
+        <string id="TiGzhjIl" text="Whether to apply this bonus damage when using melee weapons"/>
+        <string id="JR0Rdbfj" text="Charge"/>
+        <string id="65y7VWcS" text="Whether to apply this bonus damage from charge damage"/>
+        <string id="2GaGbTYR" text="Missile Trail Particle Effect"/>
+        <string id="UiCylfED" text="Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing fire/smoke effect)"/>
+        <string id="gEhH84HS" text="Hit Effect"/>
+        <string id="r6D9pDIA" text="Effect to play on hit (intended mainly for AoE effects)"/>
+        <string id="RNh2zns4" text="Non-heroes"/>
+        <string id="qWIzKnVw" text="Heroes"/>
+        <string id="djDGvCdQ" text="Adopted"/>
+        <string id="8nDvdozx" text="Player"/>
+        <string id="1t1hdpPr" text="Ranged"/>
+        <string id="ibrr3fCK" text="Melee"/>
+        <string id="X8RrfG7V" text="Charge"/>
+
+        <string id="LbHOSj1l" text="{DamageModifierPercent}% dmg"/>
+        <string id="mBmFK0OK" text="{DamageToAdd} dmg"/>
+        <string id="ybyWP8jd" text="Add: {AddHitBehavior}"/>
+        <string id="WJVreCCg" text="Remove: {RemoveHitBehavior}"/>
+        <string id="svDicWAa" text="Ignore {ArmorToIgnorePercent}% Armor"/>
+        <string id="TkGVRcl0" text="{UnblockableChancePercent}% Unblockable"/>
+        <string id="xHMYpCMY" text="{ShatterShieldChancePercent}% Shatter Shield"/>
+        <string id="I3BiKkXC" text="{CutThroughChancePercent}% Cut Through"/>
+        <string id="NetyrPKo" text="{StaggerChancePercent}% Stagger"/>
+        <string id="A6Vulmvy" text="AoE: {AoEDescription}"/>
+        
+        <string id="UhEtVOWV" text="{Modifiers} from {AppliesFrom} against {AppliesAgainst}"/>
+        <string id="GrP7yeqP" text="{Modifiers} from {AppliesFrom}"/>
+        <string id="dAObdN2r" text="{Modifiers} against {AppliesAgainst}"/>
+        <string id="ZXm0fYfO" text="{Modifiers}"/>
+        
+        <!-- AreaOfEffectDef -->
+        <string id="DMsD70Yc" text="Range"/>
+        <string id="yjmcKGuH" text="The radius to apply the damage in"/>
+        <string id="u1EgbhAw" text="Only On Hit"/>
+        <string id="uxyVrVjV" text="Only apply the damage if the attack hits an agent (as opposed to the ground, e.g. for arrows)"/>
+        <string id="oLCQliJn" text="Damage At Center"/>
+        <string id="eLcjxP3j" text="Damage at distance 0 from the hit"/>
+        <string id="GpuS1lb5" text="Max Agents To Damage"/>
+        <string id="ZFsDLtEj" text="Maximum number of agents that can be affected"/>
+        <string id="zfp8aakV" text="Damage Type"/>
+        <string id="VcfFbhYX" text="Damage type"/>
+        <string id="MCTf7KFT" text="Hit Behavior"/>
+        <string id="Ud0EJmY0" text="Flags to apply to the damage"/>
+        
+
+        <string id="GRtsL26e" text="{Distance}m: {Damage}dmg"/>
+        <string id="S5DNQWpQ" text="{Damage}dmg in {Distance}m with {HitBehavior}"/>
+        <string id="MzOdRykr" text="{Damage}dmg in {Distance}m"/>
+        
+        <!-- AddHealthPower -->
+        <string id="ZbxNmvem" text="Add Health Power"/>
+        <string id="NlJXiSkn" text="Adds fixed or relative amount of extra HP to the hero when they spawn"/>
+        <string id="EQ16SH5A" text="Health Modifier Percent"/>
+        <string id="Dr2whvVV" text="Modifier to apply to base HP"/>
+        <string id="pnr7P9sj" text="Health To Add"/>
+        <string id="sprkIlxQ" text="How much HP to add (applied after Modifier)"/>
+
+        <!-- ReflectDamagePower -->
+        <string id="7d0IdABV" text="Reflect Damage Power"/>
+        <string id="jcNZx1M0" text="Adds fixed or relative amount of extra HP to the hero when they spawn"/>
+        <string id="buBZhrP0" text="Reflect Percent"/>
+        <string id="ibxqpdtD" text="What percent of damage to reflect back to attacker"/>
+        <string id="IxiHjT1Z" text="Reflected Damage Is Subtracted"/>
+        <string id="Pdg6mCPA" text="Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection)"/>
+        <string id="WDRb4mQ3" text="Hit Behavior"/>
+        <string id="SHlCPdpp" text="Hit behavior for the reflected damage"/>
+        <string id="vLGJf7ow" text="Reflect {ReflectPercent}% damage with {HitBehavior}"/>
+        <string id="12tMrCY7" text="Reflect {ReflectPercent}% damage"/>
+        <string id="mDczhD1H" text="Reflect"/>
+        <string id="yfmwtdMC" text="Reflected damage is subtracted from incoming damage"/>
+        
+        <!-- StatModifyPower -->
+        <string id="pVdYFJNQ" text="Stat Modify Power"/>
+        <string id="AOaW2ORo" text="Applies modifiers to various character stats"/>
+        <string id="9gTYAifL" text="Modifiers"/>
+        <string id="URinrDNq" text="What hero stat to modify"/>
+        
+        <!-- TakeDamagePower -->
+        <string id="UJHquN95" text="Take Damage Power"/>
+        <string id="F3TxyV4d" text="Changes the effects of incoming damage"/>
+        <string id="jkYLVPpL" text="Damage Modifier Percent"/>
+        <string id="1eJHtO06" text="Damage modifier (set less than 100% to reduce incoming damage, set greater than 100% to increase it)"/>
+        <string id="4XgEPe3Q" text="Damage To Add"/>
+        <string id="wuOM9C4l" text="How much damage to add or subtract"/>
+        <string id="2JFBV975" text="Add Hit Behavior"/>
+        <string id="9t2oXdqy" text="Behaviors to add to the damage (e.g. add Shrug Off to ensure the hero is never stunned when hit)"/>
+        <string id="GLAvDJl5" text="Remove Hit Behavior"/>
+        <string id="oA2TrarN" text="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit)"/>
+        <string id="9Lwkwni0" text="Armor To Ignore Percent"/>
+        <string id="wSkoeVw1" text="What fraction (0 to 1) of armor to ignore when applying damage"/>
+        <string id="stFtZvfp" text="{DamageModifierPercent}% damage"/>
+        <string id="GrBznDeq" text="Damage"/>
+        
+        <!-- GeneratedRewardDef -->
+        <string id="x6pmNHJT" text="Reward Type"/>
+        <string id="Mmd0UleC" text="Reward Tier"/>
+        <string id="zVqTKyQG" text="Custom Item"/>
+        <string id="7yNTThry" text="Weapon Weight"/>
+        <string id="WTWuy57X" text="Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo."/>
+        <string id="Al3Px9lL" text="Armor Weight"/>
+        <string id="WSXhTI0r" text="Relative proportion of rewards that will be armor"/>
+        <string id="S6t7iUki" text="Mount Weight"/>
+        <string id="4L1hJS6v" text="Relative proportion of rewards that will be mounts"/>
+        <string id="h4CEbGun" text="Reward Type Chances"/>
+        <string id="u9zCErHS" text="The % chance for each item type"/>
+        <string id="pqDOv12p" text="Tier 1 Weight"/>
+        <string id="aAZvoxk9" text="Relative proportion of rewards that will be Tier 1"/>
+        <string id="ZDgMrJHH" text="Tier 2 Weight"/>
+        <string id="rvjbuCH4" text="Relative proportion of rewards that will be Tier 2"/>
+        <string id="8UhZyGRj" text="Tier 3 Weight"/>
+        <string id="CJwXH8cz" text="Relative proportion of rewards that will be Tier 3"/>
+        <string id="v4wqC1mI" text="Tier 4 Weight"/>
+        <string id="NoKi0iIC" text="Relative proportion of rewards that will be Tier 4"/>
+        <string id="vXimyLH7" text="Tier 5 Weight"/>
+        <string id="rsGLtLyB" text="Relative proportion of rewards that will be Tier 5"/>
+        <string id="HWHFIsUH" text="Tier 6 Weight"/>
+        <string id="991D0fok" text="Relative proportion of rewards that will be Tier 6"/>
+        <string id="R5TCrBo8" text="Custom Weight"/>
+        <string id="XL94fx52" text="Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below)"/>
+        <string id="zoBVNJBB" text="Reward Tier Chances"/>
+        <string id="ANPeZyy0" text="The % chance for each reward tier"/>
+        <string id="PBWEbYLT" text="Custom Item Name"/>
+        <string id="vqNeCCNy" text="Name format for custom item, {ITEMNAME} is the placeholder for the base item name."/>
+        <string id="THpMPPhd" text="Custom Item Power"/>
+        <string id="anUzQaU7" text="Custom item power multipler, applies on top of the global multiplier"/>
+        <string id="hpJN9wNo" text="Weapon"/>
+        <string id="YQdQrFG7" text="Armor"/>
+        <string id="HGZVsIjn" text="Mount"/>
+        <string id="LKgozyEk" text="Custom"/>
+        <string id="JpB20FtS" text="Tier {Tier}"/>
+        
+        <!-- RandomItemModifierDef -->
+        <string id="1NLO6Gee" text="Power"/>
+        <string id="LXo3mTnr" text="Custom prize power, a global multiplier for the values below"/>
+        <string id="g2DZKK7M" text="Weapon Damage"/>
+        <string id="R9lwIsrX" text="Weapon damage modifier for custom weapon prize"/>
+        <string id="7TgyXbNe" text="Weapon Speed"/>
+        <string id="1ZZDexjJ" text="Speed modifier for custom weapon prize"/>
+        <string id="4zhm204e" text="Weapon Missile Speed"/>
+        <string id="gFO8L8CR" text="Missile speed modifier for custom weapon prize"/>
+        <string id="ny6l1USK" text="Ammo Damage"/>
+        <string id="oTSCOXpf" text="Ammo damage modifier for custom ammo prize"/>
+        <string id="2ehIq5eD" text="Arrow Stack"/>
+        <string id="inawRS8e" text="Arrow stack size modifier for custom arrow prize"/>
+        <string id="JUXQcKMR" text="Throwing Stack"/>
+        <string id="QAUf8zj0" text="Throwing stack size modifier for custom throwing prize"/>
+        <string id="MrOZ69tP" text="Armor"/>
+        <string id="1x2YSVSz" text="Armor modifier for custom armor prize"/>
+        <string id="BYekTOq6" text="Mount Maneuver"/>
+        <string id="7cZ5JfEk" text="Maneuver multiplier for custom mount prize"/>
+        <string id="6yURxqNY" text="Mount Speed"/>
+        <string id="eJZxwZc1" text="Speed multiplier for custom mount prize"/>
+        <string id="ZmiOntW1" text="Mount Charge Damage"/>
+        <string id="MZm0DJcs" text="Charge damage multiplier for custom mount prize"/>
+        <string id="M8drveMF" text="Mount Hit Points"/>
+        <string id="ewC5EV3Q" text="Hitpoints multiplier for custom mount prize"/>
+        
+        <!-- RewardHelpers -->
+        <string id="RczvXuxP" text="received {ItemName}"/>
+        <string id="bNX0NiQ9" text="sold {ItemName} for {ItemValue}{GoldIcon} (not needed)"/>
+        <string id="R7VwlLzg" text="received {ItemName} (put in storage)"/>
     </strings>
 </base>

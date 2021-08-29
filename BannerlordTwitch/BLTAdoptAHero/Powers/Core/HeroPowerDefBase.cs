@@ -39,7 +39,7 @@ namespace BLTAdoptAHero.Powers
         #region Implementation Details
         public override string ToString() => $"{Name}: {Description}";
         [YamlIgnore, Browsable(false)]
-        public abstract string Description { get; }  
+        public abstract LocString Description { get; }  
         #endregion
 
         #region ICloneable

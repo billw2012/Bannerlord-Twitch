@@ -11,11 +11,15 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
-    [Description("Applies modifiers to various character stats"), UsedImplicitly]
+    [LocDisplayName("{=pVdYFJNQ}Stat Modify Power"),
+     LocDescription("{=AOaW2ORo}Applies modifiers to various character stats"), 
+     UsedImplicitly]
     public class StatModifyPower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         #region User Editable
-        [LocCategory("Power Config", "{=75UOuDM}Power Config"), Description("What hero stat to modify"), 
+        [LocDisplayName("{=9gTYAifL}Modifiers"),
+         LocCategory("Power Config", "{=75UOuDM}Power Config"), 
+         LocDescription("{=URinrDNq}What hero stat to modify"), 
          PropertyOrder(1), ExpandableObject, Expand, UsedImplicitly]
         public AgentModifierConfig Modifiers { get; set; } = new();
         #endregion
@@ -48,7 +52,7 @@ namespace BLTAdoptAHero.Powers
 
         #region Public Interface
         [YamlIgnore, Browsable(false)]
-        public override string Description => $"{Modifiers}";
+        public override LocString Description => $"{Modifiers}";
         #endregion
 
         #region IDocumentable

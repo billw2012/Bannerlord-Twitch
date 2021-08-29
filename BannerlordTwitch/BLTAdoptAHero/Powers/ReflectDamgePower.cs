@@ -14,23 +14,28 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
-    [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
+    [LocDisplayName("{=7d0IdABV}Reflect Damage Power"),
+     LocDescription("{=jcNZx1M0}Adds fixed or relative amount of extra HP to the hero when they spawn"),
+     UsedImplicitly]
     public class ReflectDamagePower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         #region User Editable
-        [LocCategory("Power Config", "{=75UOuDM}Power Config"), 
-         Description("What percent of damage to reflect back to attacker"),
+        [LocDisplayName("{=buBZhrP0}Reflect Percent"),
+         LocCategory("Power Config", "{=75UOuDM}Power Config"), 
+         LocDescription("{=ibxqpdtD}What percent of damage to reflect back to attacker"),
          Range(0, 200), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          PropertyOrder(1), UsedImplicitly]
         public float ReflectPercent { get; set; }
         
-        [LocCategory("Power Config", "{=75UOuDM}Power Config"), 
-         Description("Whether the damage that is reflected is also subtracted from the damage the hero takes " +
-                     "(this is 'classic' damage reflection)"), PropertyOrder(2), UsedImplicitly]
+        [LocDisplayName("{=IxiHjT1Z}Reflected Damage Is Subtracted"),
+         LocCategory("Power Config", "{=75UOuDM}Power Config"), 
+         LocDescription("{=Pdg6mCPA}Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection)"), 
+         PropertyOrder(2), UsedImplicitly]
         public bool ReflectedDamageIsSubtracted { get; set; } = true;
         
-        [LocCategory("Power Config", "{=75UOuDM}Power Config"),
-         Description("Hit behavior for the reflected damage"),
+        [LocDisplayName("{=WDRb4mQ3}Hit Behavior"),
+         LocCategory("Power Config", "{=75UOuDM}Power Config"),
+         LocDescription("{=SHlCPdpp}Hit behavior for the reflected damage"),
          PropertyOrder(3), UsedImplicitly, ExpandableObject]
         public HitBehavior HitBehavior { get; set; }
         #endregion
@@ -73,21 +78,24 @@ namespace BLTAdoptAHero.Powers
         [YamlIgnore, Browsable(false)] 
         public bool IsEnabled => ReflectPercent != 0;
         [YamlIgnore, Browsable(false)]
-        public override string Description => !IsEnabled 
-            ? "(disabled)" 
-            : $"Reflect {ReflectPercent:0}% damage "
-              + (HitBehavior.IsEnabled ? HitBehavior.ToString() : "");
+        public override LocString Description => !IsEnabled 
+            ? "{=41sZdkDw}(disabled)" 
+            : HitBehavior.IsEnabled 
+                ? "{=vLGJf7ow}Reflect {ReflectPercent}% damage with {HitBehavior}"
+                    .Translate(("ReflectPercent", ReflectPercent.ToString("0")), ("HitBehavior", HitBehavior))
+                : "{=12tMrCY7}Reflect {ReflectPercent}% damage"
+                    .Translate(("ReflectPercent", ReflectPercent));
         #endregion
 
         #region IDocumentable
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
-            generator.PropertyValuePair("Reflect", $"{ReflectPercent:0}%");
+            generator.PropertyValuePair("{=mDczhD1H}Reflect".Translate(), $"{ReflectPercent:0}%");
             if (ReflectedDamageIsSubtracted)
             {
-                generator.Value($"Reflected damage is subtracted from incoming damage");
+                generator.Value("{=yfmwtdMC}Reflected damage is subtracted from incoming damage".Translate());
             }
-            generator.PropertyValuePair(nameof(HitBehavior).SplitCamelCase(), HitBehavior.ToString());
+            generator.PropertyValuePair(GetType().GetProperty(nameof(HitBehavior)).GetDisplayName(), HitBehavior.ToString());
         }
         #endregion
 

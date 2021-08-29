@@ -88,7 +88,8 @@ namespace BLTBuffet
                 if (config.Duration.HasValue 
                     && MBCommon.GetTime(MBCommon.TimeType.Mission) > config.Duration.Value + started)
                 {
-                    Log.LogFeedEvent($"{config.Name} expired on {agent.Name}!");
+                    Log.LogFeedEvent("{Config} expired on {Target}!"
+                        .Translate(("Config", config.Name), ("Target", agent.Name)));
                     if (!string.IsNullOrEmpty(config.DeactivateParticleEffect))
                     {
                         Mission.Current.Scene.CreateBurstParticle(ParticleSystemManager.GetRuntimeIdByName(config.DeactivateParticleEffect), agent.AgentVisuals.GetGlobalFrame());

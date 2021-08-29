@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
@@ -14,30 +15,32 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
+    [LocDisplayName("{=sURt2dSt}Passive Power Group Item")]
     public class PassivePowerGroupItem : PowerGroupItemBase
     {
-        [PropertyOrder(0),
-         ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)), PropertyOrder(1), UsedImplicitly]
+        [LocDisplayName("{=KHoc6FK5}Power"),
+         ItemsSource(typeof(HeroPowerDefBase.ItemSourcePassive)),
+         PropertyOrder(0), UsedImplicitly]
         public Guid PowerID { get; set; }
 
         [Browsable(false), YamlIgnore]
         public IHeroPowerPassive Power => PowerConfig?.GetPower(PowerID) as IHeroPowerPassive;
 
-        public override string ToString() => $"{Power?.ToString() ?? "(no power)"}: {base.ToString()}";
+        public override string ToString() => Power?.ToString() ?? "{=8mrSEyNk}(no power)".Translate() + ": " + base.ToString();
     }
     
     public class PassivePowerGroup : ILoaded, IDocumentable, ICloneable
     {
         #region User Editable
-        [Description("The name of the power: how the power will be described in messages"), 
+        [LocDisplayName("{=uUzmy7Lh}Name"), 
+         LocDescription("{=QsdqVpNE}The name of the power: how the power will be described in messages"), 
          PropertyOrder(1), UsedImplicitly]
-        public string Name { get; set; } = "Enter Name Here";
+        public LocString Name { get; set; } = "{=aQgYs3mI}Enter Name Here";
         
-        [PropertyOrder(2), 
-         Description("The various effects in the power. These can also have customized unlock requirements, so you " +
-                     "can have classes that get stronger (or weaker!) over time (or by any other measure)."), 
-         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
-         UsedImplicitly]
+        [LocDisplayName("{=61fc3xTQ}Powers"), 
+         LocDescription("{=wtD908lt}The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure)."), 
+         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)), 
+         PropertyOrder(2), UsedImplicitly]
         public ObservableCollection<PassivePowerGroupItem> Powers { get; set; } = new();
         #endregion
         
@@ -97,7 +100,7 @@ namespace BLTAdoptAHero.Powers
         #region IDocumentable
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
-            generator.P("power-title", Name);
+            generator.P("power-title", Name.ToString());
             foreach (var power in Powers)
             {
                 if (power is IDocumentable docPower)

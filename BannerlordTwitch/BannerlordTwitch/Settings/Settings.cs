@@ -48,7 +48,7 @@ namespace BannerlordTwitch
         
         #if DEBUG
         private static string ProjectRootDir([CallerFilePath]string file = "") => Path.Combine(Path.GetDirectoryName(file) ?? ".", "..");
-        private static string SaveFilePath => Path.Combine(ProjectRootDir(), "Bannerlord-Twitch-v3.yaml");
+        private static string SaveFilePath => Path.Combine(ProjectRootDir(), "_Module", "Bannerlord-Twitch-v3.yaml");
         public static Settings Load()
         {
             LoadDefaultSettings();

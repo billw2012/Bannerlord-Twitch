@@ -10,6 +10,7 @@ namespace BannerlordTwitch.Localization
         public static readonly string Dec = "{=drHSxMvO}−".Translate();
         public static readonly string Gold = "{=BolFnYCO}⦷".Translate();
         public static readonly string XP = "{=JFCeRYdn}XP".Translate();
+        public static readonly string HP = "{=NtqSb7B7}HP".Translate();
         public static readonly string Lvl = "{=RQlq59mz}lvl".Translate();
         public static readonly string Item = "{=5rErcMGl}Item".Translate();
         public static readonly string Skills = "{=5gVLi7NA}Skills".Translate();
