@@ -12,7 +12,7 @@ namespace BannerlordTwitch.Helpers
     public class SkillModifierDef : ICloneable, INotifyPropertyChanged
     {
         [LocDisplayName("{=OEMBeawy}Skill"), 
-         LocDescription("{=46oj12tA}Skill or skill group to modifer (all skills in a group will be modified)"),
+         LocDescription("{=46oj12tA}Skill or skill group to modifier (all skills in a group will be modified)"),
          PropertyOrder(1), UsedImplicitly, Document]
         public SkillsEnum Skill { get; set; } = SkillsEnum.All;
 

@@ -205,7 +205,18 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
         <Content Include="std_module_strings_xml.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-actions.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-behaviors.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-default-shouts.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-globalconfigs.xml" />
         <Content Include="_Module\ModuleData\Languages\strings-misc.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-powers.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-actions.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-behaviors.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-default-shouts.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-globalconfigs.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-misc.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-powers.xml" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\BannerlordTwitch\BannerlordTwitch.csproj">

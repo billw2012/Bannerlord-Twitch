@@ -7,85 +7,159 @@
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         
         <!-- Common -->
+        <!-- Reward {ITEMNAME} -->
         <string id="W47g8bCB" text="Reward {ITEMNAME}" />
+        <!-- {viewer} is {name}! -->
         <string id="TAWcPGIc" text="{viewer} is {name}!" />
         
-        
+        <!-- {ITEMNAME} of Fealty -->
         <string id="IvV04W31" text="{ITEMNAME} of Fealty"/>
+        <!-- Renegades {ITEMNAME} -->
         <string id="UQtSgnog" text="Renegades {ITEMNAME}"/>
+        <!-- Stream Sniper {ITEMNAME} -->
         <string id="xI41h8NA" text="Stream Sniper {ITEMNAME}"/>
         
+        <!-- Reliable -->
         <string id="ODWiNBng" text="Reliable"/>
+        <!-- Trusted -->
         <string id="fWTqF2sw" text="Trusted"/>
+        <!-- Loyal -->
         <string id="fe9J8von" text="Loyal"/>
+        <!-- Rebellious -->
         <string id="HdYFegeb" text="Rebellious"/>
+        <!-- Traitorous -->
         <string id="gDHR7f8r" text="Traitorous"/>
+        <!-- Renegade -->
         <string id="VEH582e7" text="Renegade"/>
+        <!-- Stream Sniper -->
         <string id="Aj0gXKgZ" text="Stream Sniper"/>
+        <!-- Killing Spree -->
         <string id="QNbIUDrh" text="Killing Spree"/>
+        <!-- Healthy I -->
         <string id="dlrzqWyB" text="Healthy I"/>
+        <!-- Healthy II -->
         <string id="QpSDATVx" text="Healthy II"/>
+        <!-- Healthy III -->
         <string id="Cqkht54y" text="Healthy III"/>
+        <!-- Fragile I -->
         <string id="qA2f6xBp" text="Fragile I"/>
+        <!-- Fragile II -->
         <string id="Hyuf4TSH" text="Fragile II"/>
+        <!-- Fragile III -->
         <string id="v0ACBXmv" text="Fragile III"/>
+        <!-- Vampiric I -->
         <string id="mJQ88gTg" text="Vampiric I"/>
+        <!-- Vampiric II -->
         <string id="EHkU2FPe" text="Vampiric II"/>
+        <!-- Vampiric III -->
         <string id="gDsSjnnd" text="Vampiric III"/>
+        <!-- Heavy Hitting I -->
         <string id="93p2ZAIG" text="Heavy Hitting I"/>
+        <!-- Heavy Hitting II -->
         <string id="Gm7OdO9y" text="Heavy Hitting II"/>
+        <!-- Heavy Hitting III -->
         <string id="OzBxlGDu" text="Heavy Hitting III"/>
+        <!-- Retribution I -->
         <string id="0vLSj7KR" text="Retribution I"/>
+        <!-- Retribution II -->
         <string id="vC5KggFz" text="Retribution II"/>
+        <!-- Retribution III -->
         <string id="bS76hE3e" text="Retribution III"/>
         
+        <!-- Fleet Footed I -->
         <string id="FQKNvxVG" text="Fleet Footed I"/>
+        <!-- Fleet Footed II -->
         <string id="rgQDzX4f" text="Fleet Footed II"/>
+        <!-- Fleet Footed III -->
         <string id="f7L0oLCQ" text="Fleet Footed III"/>
+        <!-- Charge I -->
         <string id="39yFtbp2" text="Charge I"/>
+        <!-- Charge II -->
         <string id="6IFhNSH3" text="Charge II"/>
+        <!-- Charge III -->
         <string id="l2eB9avA" text="Charge III"/>
+        <!-- Better Mount I -->
         <string id="tqmxzUCq" text="Better Mount I"/>
+        <!-- Better Mount II -->
         <string id="izG39s2J" text="Better Mount II"/>
+        <!-- Better Mount III -->
         <string id="CVmPJOB4" text="Better Mount III"/>
+        <!-- Imposing Mount -->
         <string id="tv2vTde5" text="Imposing Mount"/>
+        <!-- Imposing -->
         <string id="fFProg8j" text="Imposing"/>
+        <!-- Explosive Projectiles I -->
         <string id="CTqMR9lV" text="Explosive Projectiles I"/>
+        <!-- Explosive Projectiles II -->
         <string id="miUEQpaQ" text="Explosive Projectiles II"/>
+        <!-- Explosive Projectiles III -->
         <string id="o2XgVhjA" text="Explosive Projectiles III"/>
+        <!-- Fireblade I -->
         <string id="7b7BkwRo" text="Fireblade I"/>
+        <!-- Fireblade II -->
         <string id="d8BUyJ5i" text="Fireblade II"/>
+        <!-- Fireblade III -->
         <string id="VGqA25nN" text="Fireblade III"/>
+        <!-- Charge AoE I -->
         <string id="R8u1d7M6" text="Charge AoE I"/>
+        <!-- Charge AoE II -->
         <string id="lO56Rq9E" text="Charge AoE II"/>
+        <!-- Charge AoE III -->
         <string id="X5LQvC0o" text="Charge AoE III"/>
+        <!-- Ranger I -->
         <string id="7XNfzok8" text="Ranger I"/>
+        <!-- Ranger II -->
         <string id="HxpAtast" text="Ranger II"/>
+        <!-- Ranger III -->
         <string id="7YSCRTCg" text="Ranger III"/>
 
+        <!-- Heavy Projectiles I -->
         <string id="r0Wn7FXu" text="Heavy Projectiles I"/>
+        <!-- Heavy Projectiles II -->
         <string id="XXL8aXIK" text="Heavy Projectiles II"/>
+        <!-- Heavy Projectiles III -->
         <string id="H3r0Zh8E" text="Heavy Projectiles III"/>
+        <!-- Crush Through I -->
         <string id="xwlvLfJX" text="Crush Through I"/>
+        <!-- Crush Through II -->
         <string id="7FJTIVa4" text="Crush Through II"/>
+        <!-- Crush Through III -->
         <string id="dQqwtBEE" text="Crush Through III"/>
+        <!-- Knock Down I -->
         <string id="MKUCQtsr" text="Knock Down I"/>
+        <!-- Knock Down II -->
         <string id="KUdqJrOY" text="Knock Down II"/>
+        <!-- Knock Down III -->
         <string id="Uc4Cai9H" text="Knock Down III"/>
+        <!-- Cut Through I -->
         <string id="VsZLMOHX" text="Cut Through I"/>
+        <!-- Cut Through II -->
         <string id="yXj1jqxx" text="Cut Through II"/>
+        <!-- Cut Through III -->
         <string id="R537vuN0" text="Cut Through III"/>
+        <!-- Shatter Shield I -->
         <string id="89ezJ7aW" text="Shatter Shield I"/>
+        <!-- Shatter Shield II -->
         <string id="Dvjkoxi3" text="Shatter Shield II"/>
+        <!-- Shatter Shield III -->
         <string id="V6RyPIQg" text="Shatter Shield III"/>
+        <!-- Shrug Off I -->
         <string id="oyKzNISD" text="Shrug Off I"/>
+        <!-- Shrug Off II -->
         <string id="zNj3xNd4" text="Shrug Off II"/>
+        <!-- Shrug Off III -->
         <string id="5nsSdwel" text="Shrug Off III"/>
+        <!-- Athletic I -->
         <string id="b3DBwSTA" text="Athletic I"/>
+        <!-- Athletic II -->
         <string id="oeSxcpzi" text="Athletic II"/>
+        <!-- Athletic III -->
         <string id="dMvjTTZb" text="Athletic III"/>
+        <!-- Ignore Armor I -->
         <string id="ngiTK9F9" text="Ignore Armor I"/>
+        <!-- Ignore Armor II -->
         <string id="Q7JOJL4l" text="Ignore Armor II"/>
+        <!-- Ignore Armor III -->
         <string id="fLsEduav" text="Ignore Armor III"/>
     </strings>
 </base>

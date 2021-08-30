@@ -147,10 +147,16 @@ namespace BLTAdoptAHero
 
             // Need to ensure this will not reset the players interactions
             // GameStateManager.Current?.UpdateInventoryUI(adoptedHero);
-            
-            onSuccess(settings.ReequipInsteadOfUpgrade
-                ? $"Re-equipped Tier {targetTier + 1} ({charClass?.Name ?? "No Class"})"
-                : $"Equipped Tier {targetTier + 1} ({charClass?.Name ?? "No Class"})");
+
+            onSuccess((settings.ReequipInsteadOfUpgrade
+                ? "{=0KHxea5e}Re-equipped Tier {ArmorTier} ({ClassName})"
+                : "{=fYksbZJp}Re-equipped Tier {ArmorTier} ({ClassName})")
+                .Translate(
+                    ("ArmorTier", targetTier + 1),
+                    ("ClassName", (charClass?.Name ?? "{=VlnXNPYS}No Class").ToString())
+                    ));
+            //$"Re-equipped Tier {targetTier + 1} ({charClass?.Name ?? "No Class"})"
+            // $"Equipped Tier {targetTier + 1} ({charClass?.Name ?? "No Class"})");
         }
 
         internal static void RemoveAllEquipment(Hero adoptedHero)

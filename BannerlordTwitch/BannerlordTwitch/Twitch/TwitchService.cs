@@ -591,7 +591,7 @@ namespace BannerlordTwitch
             RemoveRewards();
             bot?.Dispose();
             pubSub?.Disconnect();
-            Log.LogFeedSystem("{=mEcBdqNC}TwitchService stopped");
+            Log.LogFeedSystem("{=mEcBdqNC}TwitchService stopped".Translate());
         }
 
         public void Dispose()

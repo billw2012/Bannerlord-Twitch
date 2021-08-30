@@ -245,8 +245,8 @@ namespace BannerlordTwitch.Rewards
             
             if (!rewardHandlers.TryGetValue(rewardId, out var action))
             {
-                NotifyCancelled(context, "{=B39sGef4}Action with the id {rewardId} doesn't exist"
-                    .Translate(("rewardId", rewardId)));
+                NotifyCancelled(context, "{=B39sGef4}Action with the id {RewardId} doesn't exist"
+                    .Translate(("RewardId", rewardId)));
                 return false;
             }
 
@@ -262,8 +262,8 @@ namespace BannerlordTwitch.Rewards
 
             if (st.ElapsedMilliseconds > 5)
             {
-                Log.Info("{=yo8Yw3Mz}Action {rewardId} took {st.ElapsedMilliseconds}ms to Enqueue, this is too slow!"
-                    .Translate(("rewardId", rewardId), ("st.ElapsedMilliseconds", st.ElapsedMilliseconds)));
+                Log.Info("{=yo8Yw3Mz}Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow!"
+                    .Translate(("RewardId", rewardId), ("TimeInMS", st.ElapsedMilliseconds)));
             }
 
             return true;

@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Türkçe" />
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- GlobalCommonConfig -->
+        <!-- Common Config -->
+        <string id="vDjnDtoL" text="Ortak Yapılandırma"/>
+        <!-- Sub Boost -->
+        <string id="xwcKN7sH" text="Alt Güçlendirme"/>
+        <!-- Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently. -->
+        <string id="rX68wbfF" text="Aboneler için tüm ödüllere uygulanan çarpan (1'den az veya eşit, destek yok anlamına gelir). NOT: Bu yalnızca kısmen uygulanmaktadır, şu anda yalnızca bot komutları için çalışmaktadır."/>
+        <!-- Custom Reward Modifiers -->
+        <string id="O0LU5WBa" text="Özel Ödül Değiştiriciler"/>
+        <!-- The specification for custom item rewards, applies to tournament prize and achievement rewards -->
+        <string id="tp3YdGmo" text="Özel eşya ödülleri spesifikasyonu, turnuva ödülü ve başarı ödülleri için geçerlidir."/>
+        <!-- Start With Full Health -->
+        <string id="X8r0C5fx" text="Tam Sağlıkla Başlayın"/>
+        <!-- Whether the hero will always start with full health -->
+        <string id="HbNVrZuv" text="Kahramanın her zaman tam sağlıkla başlayıp başlamayacağı"/>
+        <!-- Start Health Multiplier -->
+        <string id="fxZIKL65" text="Sağlık Çarpanı Başlat"/>
+        <!-- Amount to multiply normal starting health by, to give heroes better staying power vs others -->
+        <string id="8yNIRS9S" text="Kahramanlara diğerlerine göre daha iyi kalma gücü vermek için normal başlangıç sağlığını bununla çarpacak miktar"/>
+        <!-- Start Retinue Health Multiplier -->
+        <string id="HvcTekVk" text="Retinue Health Multiplier'ı Başlatın"/>
+        <!-- Amount to multiply normal retinue starting health by, to give retinue better staying power vs others -->
+        <string id="G6JJT2ot" text="Diğerlerine göre maiyetine daha iyi kalma gücü vermek için normal maiyetin başlangıç sağlığını bununla çarpacak miktar"/>
+        <!-- Morale Loss Factor -->
+        <string id="ZPmBe7XI" text="Moral Kaybı Faktörü"/>
+        <!-- Reduces morale loss when summoned heroes die -->
+        <string id="tpgJtS5q" text="Çağrılan kahramanlar öldüğünde moral kaybını azaltır"/>
+        <!-- Retinue Use Heroes Formation -->
+        <string id="bXdC2trk" text="Heroes Formasyonunu Kullan"/>
+        <!-- Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations) -->
+        <string id="D8uDzXlV" text="Kabul edilen bir kahraman maiyetinin kahramanla aynı dizilişte ortaya çıkıp çıkmayacağı (aksi takdirde varsayılan dizilişlere girecekler)"/>
+        <!-- Summon Cooldown In Seconds -->
+        <string id="OlJrCEyE" text="Saniyeler İçinde Bekleme Süresini Çağır"/>
+        <!-- Minimum time between summons for a specific hero -->
+        <string id="DeGB2BGZ" text="Belirli bir kahraman için çağrılar arasındaki minimum süre"/>
+        <!-- Summon Cooldown Use Multiplier -->
+        <string id="f9HVD2cC" text="Bekleme Süresi Kullanım Çarpanı Çağır"/>
+        <!-- How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this. -->
+        <string id="4gZlfHzM" text="Her çağrı kullanıldığında bekleme süresinin ne kadar çarpılacağı. Örneğin. Çağrı Bekleme Süresi 20 saniyeyse ve UseMultiplier 1.1 (varsayılan) ise, ilk çağrının bekleme süresi 20 saniyedir ve sonraki 24 saniye, 10. 52 saniye ve 20. 135 saniyedir. Bunun görselleştirilmesi için https://www.desmos.com/calculator/muej1o5eg5 adresine bakın."/>
+        <!-- Summon Cooldown Example -->
+        <string id="ViLoy0k3" text="Bekleme Süresini Çağır Örneği"/>
+        <!-- Shows the consecutive cooldowns (in seconds) for 10 summons -->
+        <string id="xZoSFrAb" text="10 çağrı için ardışık bekleme sürelerini (saniye cinsinden) gösterir"/>
+        <!-- Allow Death -->
+        <string id="4sNJRQyw" text="Ölüme İzin Ver"/>
+        <!-- Whether an adopted hero is allowed to die -->
+        <string id="VbBUYOfc" text="Evlat edinilen bir kahramanın ölmesine izin verilip verilmeyeceği"/>
+        <!-- Final Death Chance Percent -->
+        <string id="ZEfAPyOm" text="Nihai Ölüm Şansı Yüzdesi"/>
+        <!-- Final death chance percent (includes vanilla chance) -->
+        <string id="xlt1pNuT" text="Nihai ölüm şansı yüzdesi (vanilya şansını içerir)"/>
+        <!-- Apply Death Chance To All Heroes -->
+        <string id="sbc5Fp4o" text="Tüm Kahramanlara Ölüm Şansı Uygula"/>
+        <!-- Whether to apply the Death Chance changes to all heroes, not just adopted ones -->
+        <string id="nbR7NLNz" text="Ölüm Şansı değişikliklerinin sadece evlat edinilenlere değil, tüm kahramanlara uygulanıp uygulanmayacağı"/>
+        <!-- Use Raw XP -->
+        <string id="lwU4dELT" text="Ham XP'yi kullan"/>
+        <!-- Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed.  -->
+        <string id="dICRr4BH" text="Odak ve niteliklere göre ayarlamak yerine ham XP değerlerini kullanın, ayrıca beceri sınırını da göz ardı edin. Bu, odak ve nitelikler iyi dağıtılmadığında karakterlerin takılmasını önler."/>
+        <!-- Raw XP Skill Cap -->
+        <string id="S5FAna09" text="Ham XP Beceri Sınırı"/>
+        <!-- Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap. -->
+        <string id="WUzqXuHN" text="Raw XP kullanırken beceri sınırı. Beceriler bu değerin üzerine çıkmayacaktır. 330, vanilya XP yetenek sınırıdır."/>
+        <!-- Gold Per Kill -->
+        <string id="94Ouh5It" text="Öldürme Başına Altın"/>
+        <!-- Gold the hero gets for every kill -->
+        <string id="iSAMxZ8a" text="Kahramanın her öldürme için aldığı altın"/>
+        <!-- XP Per Kill -->
+        <string id="DMGKBoJT" text="Öldürme Başına DP"/>
+        <!-- XP the hero gets for every kill -->
+        <string id="kwW5pZT9" text="Kahramanın her öldürme için aldığı XP"/>
+        <!-- XP Per Killed -->
+        <string id="a1zjEuUe" text="Öldürülen Başına DP"/>
+        <!-- XP the hero gets for being killed -->
+        <string id="bW8t2g5N" text="Kahramanın öldürüldüğü için aldığı XP"/>
+        <!-- Heal Per Kill -->
+        <string id="cRV9HDdf" text="Öldürme Başına İyileştirme"/>
+        <!-- HP the hero gets for every kill -->
+        <string id="7VWAZgfK" text="Kahramanın her öldürme için aldığı HP"/>
+        <!-- Retinue Gold Per Kill -->
+        <string id="lIhhHjih" text="Öldürme Başına Altın"/>
+        <!-- Gold the hero gets for every kill their retinue gets -->
+        <string id="h93j0qw3" text="Kahramanın, maiyetinin aldığı her öldürme için aldığı altın"/>
+        <!-- Retinue Heal Per Kill -->
+        <string id="KwlWrzDS" text="Öldürme Başına Kalan İyileştirme"/>
+        <!-- HP the hero's retinue gets for every kill -->
+        <string id="Q3UVoHmt" text="Kahramanın maiyetinin her öldürme için aldığı HP"/>
+        <!-- Relative Level Scaling -->
+        <string id="wSzUkbNR" text="Göreli Düzey Ölçeklendirme"/>
+        <!-- How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health. -->
+        <string id="1LTDJZ7Y" text="İki karakterin göreli düzeyine bağlı olarak öldürme ödüllerinin ne kadar ölçekleneceği. Bu 0 ise (veya ayarlanmamışsa) ödüller her zaman belirtildiği gibidir, bu 0'dan yüksekse, öldürülen birim kahramandan daha yüksekse ödüller artar ve daha düşükse azalır. 0,5 değerinde (önerilen) 10 seviye farkı altın, xp ve sağlık için normal ödüllerin yaklaşık 2,5 katını verir."/>
+        <!-- Level Scaling Cap -->
+        <string id="BDk1G4nc" text="Seviye Ölçekleme Başlığı"/>
+        <!-- Caps the maximum multiplier for the level difference, defaults to 5 if not specified -->
+        <string id="Vod0pJEN" text="Seviye farkı için maksimum çarpanı sınırlar, belirtilmemişse varsayılan olarak 5'tir"/>
+
+        <!-- Win Gold -->
+        <string id="IQTT5vYE" text="Altın Kazan"/>
+        <!-- Lose Gold -->
+        <string id="lfCWK7aA" text="Altın Kaybet"/>
+        <!-- Win XP -->
+        <string id="h8I3PWkV" text="XP kazan"/>
+        <!-- Lose XP -->
+        <string id="Vobr36Bl" text="XP'yi Kaybet"/>
+        
+        <!-- Gold won if the heroes side wins -->
+        <string id="pc3G0W39" text="Kahramanlar tarafı kazanırsa altın kazandı"/>
+        <!-- XP the hero gets if the heroes side wins -->
+        <string id="F7Tw4D07" text="Kahramanlar tarafı kazanırsa kahramanın aldığı XP"/>
+        <!-- Gold lost if the heroes side loses -->
+        <string id="E209XRml" text="Kahramanlar tarafı kaybederse altın kaybeder"/>
+        <!-- XP the hero gets if the heroes side loses -->
+        <string id="itAfYdmO" text="Kahramanlar tarafı kaybederse kahramanın aldığı XP"/>
+        <!-- Difficulty Scaling On Players Side -->
+        <string id="ihB1KMOY" text="Oyuncu Tarafında Zorluk Ölçeklendirme"/>
+        <!-- Apply difficulty scaling to players side -->
+        <string id="Bt1PS0aC" text="Oyuncu tarafına zorluk ölçeği uygula"/>
+        <!-- Difficulty Scaling On Enemy Side -->
+        <string id="nym7EtAd" text="Düşman Tarafında Zorluk Ölçeklendirme"/>
+        <!-- Apply difficulty scaling to enemy side -->
+        <string id="U0hZef9L" text="Düşman tarafına zorluk ölçeği uygula"/>
+        <!-- Difficulty Scaling -->
+        <string id="CaVuq5tE" text="Zorluk Ölçeklendirme"/>
+        <!-- End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1) -->
+        <string id="IhhfIQ74" text="Ödül zorluk ölçeğini sonlandır: Daha yüksek zorluktaki savaşların yukarıdaki ödülleri ne ölçüde artıracağını belirler (0'dan 1)"/>
+        <!-- Difficulty Scaling Min -->
+        <string id="891WqOrJ" text="Zorluk Ölçeklendirme Min"/>
+        <!-- Min difficulty scaling multiplier -->
+        <string id="FPXz7lBi" text="Minimum zorluk ölçekleme çarpanı"/>
+        <!-- Difficulty Scaling Max -->
+        <string id="Wsho5Yns" text="Zorluk Ölçeklendirme Maks."/>
+        <!-- Max difficulty scaling multiplier -->
+        <string id="ZW7O1JTv" text="Maksimum zorluk ölçekleme çarpanı"/>
+        <!-- Kill Streaks -->
+        <string id="3DZYc6hN" text="Serileri Öldür"/>
+        <!-- Show Kill Streak Popup -->
+        <string id="wQ7lXgLA" text="Öldürme Serisi Açılır Penceresini Göster"/>
+        <!-- Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled. -->
+        <string id="wDW3143d" text="Öldürme serilerini duyurmak için açılır afişin kullanılıp kullanılmayacağı. Devre dışı bırakıldığında bunun yerine yalnızca bindirmede yazdırılır."/>
+        <!-- Kill Streak Popup Alert Sound -->
+        <string id="rhwujKvf" text="Seri Açılan Uyarı Sesini Öldür"/>
+        <!-- Sound to play when killstreak popup is disabled. -->
+        <string id="1GVV1fjY" text="Killstreak açılır penceresi devre dışı bırakıldığında çalınacak ses."/>
+        <!-- Reference Level Reward -->
+        <string id="dP9AoB9o" text="Referans Seviyesi Ödülü"/>
+        <!-- The level at which the rewards normalize and start to reduce (if relative level scaling is enabled). -->
+        <string id="y7AZjeSK" text="Ödüllerin normalleştiği ve azalmaya başladığı seviye (göreceli seviye ölçeklendirme etkinse)."/>
+        <!-- Achievements -->
+        <string id="zTLei6dQ" text="Başarılar"/>
+        <!-- Shouts -->
+        <string id="HkD6326j" text="Çığlıklar"/>
+        <!-- Custom shouts -->
+        <string id="ufqtH5QV" text="Özel haykırışlar"/>
+        <!-- Include Default Shouts -->
+        <string id="wehigXCC" text="Varsayılan Haykırışları Dahil Et"/>
+        <!-- Whether to include default shouts -->
+        <string id="m6Vv2LBt" text="Varsayılan bağırışların dahil edilip edilmeyeceği"/>
+        <!-- Common Config -->
+        <string id="F6vM1OJo" text="Ortak Yapılandırma"/>
+        
+        <!-- GlobalHeroClassConfig -->
+        <!-- Class Config -->
+        <string id="3rL4RHje" text="Sınıf Yapılandırması"/>
+        <!-- Class Definitions -->
+        <string id="462kHfn2" text="Sınıf Tanımları"/>
+        <!-- Defined classes -->
+        <string id="NFjlVt57" text="tanımlı sınıflar"/>
+        <!-- Class Level Requirements -->
+        <string id="Q0yTbTCT" text="Sınıf Seviyesi Gereksinimleri"/>
+        <!-- Requirements for class levels -->
+        <string id="y8LLccGK" text="Sınıf seviyeleri için gereksinimler"/>
+        <!-- Classes -->
+        <string id="E0CBnj57" text="sınıflar"/>
+        <!-- (no requirements) -->
+        <string id="7WLbMjpz" text="(şart yok)"/>
+        
+        <!-- GlobalHeroPowerConfig -->
+        <!-- Power Config -->
+        <string id="v75UOuDM" text="Güç Yapılandırması"/>
+        <!-- Power Defs -->
+        <string id="9vUtdRu2" text="Güç Defansları"/>
+        <!-- Defined powers -->
+        <string id="ymGZUjoU" text="Tanımlanmış yetkiler"/>
+        <!-- Disable Powers In Tournaments -->
+        <string id="5CD7bmuC" text="Turnuvalarda Yetkileri Devre Dışı Bırak"/>
+        <!-- Whether powers are disabled in a tournament -->
+        <string id="K7uKtO90" text="Bir turnuvada yetkilerin devre dışı bırakılıp bırakılmadığı"/>
+        
+        <!-- GlobalTournamentConfig -->
+        <!-- Tournament Config -->
+        <string id="AkDCrLgg" text="Turnuva Yapılandırması"/>
+        <!-- Equipment -->
+        <string id="i7ZDVTaw" text="Teçhizat"/>
+        <!-- Balancing -->
+        <string id="Zwh9GYUE" text="Dengeleme"/>
+        <!-- Round Type -->
+        <string id="KOIu6Q7d" text="Yuvarlak Tip"/>
+        <!-- Start Health Multiplier -->
+        <string id="P1ZCMZbp" text="Sağlık Çarpanı Başlat"/>
+        <!-- Disable Kill Rewards In Tournament -->
+        <string id="x3wiU1LY" text="Turnuvada Öldürme Ödüllerini Devre Dışı Bırak"/>
+        <!-- Disable Tracking Kills Tournament -->
+        <string id="ksB1FmZV" text="Öldürme Turnuvasını İzlemeyi Devre Dışı Bırak"/>
+        <!-- No Horses -->
+        <string id="bBipANlh" text="at yok"/>
+        <!-- No Spears -->
+        <string id="CYVy4Hhx" text="Mızrak yok"/>
+        <!-- Normalize Armor -->
+        <string id="Ed55OyZ5" text="Zırhı Normalleştir"/>
+        <!-- Normalize Armor Tier -->
+        <string id="xHJbcOaV" text="Zırh Seviyesini Normalleştir"/>
+        <!-- Randomize Weapon Types -->
+        <string id="5Y08IsDl" text="Silah Türlerini Rastgele"/>
+        <!-- Previous Winner Debuffs -->
+        <string id="UCAbZYqU" text="Önceki Kazanan Zayıflatıcıları"/>
+        <!-- Vanilla -->
+        <string id="WUQRg4yA" text="Vanilya"/>
+        <!-- 1 Match 4 Teams -->
+        <string id="ErBd0iuP" text="1 Maç 4 Takım"/>
+        <!-- 1 Match 2 Teams -->
+        <string id="uuBzCFgM" text="1 Maç 2 Takım"/>
+        <!-- 2 Matches 2 Teams -->
+        <string id="SsArdTT9" text="2 Maç 2 Takım"/>
+        <!-- 2 Matches 4 Teams -->
+        <string id="qb1yo7DZ" text="2 Maç 4 Takım"/>
+        <!-- 4 Matches 2 Teams -->
+        <string id="WAzvdvAJ" text="4 Maç 2 Takım"/>
+        <!-- 4 Matches 4 Teams -->
+        <string id="sMCb8Xeu" text="4 Maç 4 Takım"/>
+        <!-- 8 Matches 2 Teams -->
+        <string id="URNM9UqS" text="8 Maç 2 Takım"/>
+        <!-- Round 1 Type -->
+        <string id="eivyBgAa" text="1. Tur Tipi"/>
+        <!-- Round 2 Type -->
+        <string id="pefX6BdQ" text="2. Tur Tipi"/>
+        <!-- Round 3 Type -->
+        <string id="GpV7pKPY" text="3. Tur Tipi"/>
+        <!-- Round 1 Rewards -->
+        <string id="VeSh8k7c" text="1. Tur Ödülleri"/>
+        <!-- Round 2 Rewards -->
+        <string id="gQ9YX7my" text="2. Tur Ödülleri"/>
+        <!-- Round 3 Rewards -->
+        <string id="17pTC7NS" text="3. Tur Ödülleri"/>
+        <!-- Round 4 Rewards -->
+        <string id="pxMWYe5J" text="4. Tur Ödülleri"/>
+        <!-- Participate XP -->
+        <string id="5vMTYqdu" text="XP'ye katıl"/>
+        <!-- Prize -->
+        <string id="Xu2KD7Kc" text="Ödül"/>
+        <!-- Enable Betting -->
+        <string id="rne7aMUR" text="Bahsi Etkinleştir"/>
+        <!-- Betting On Final Only -->
+        <string id="njh9b5GB" text="Sadece Final Üzerine Bahis"/>
+        <!-- Skill Reduction Percent Per Win -->
+        <string id="5a40vmYi" text="Kazanma Başına Beceri Azaltma Yüzdesi"/>
+        <!-- Floor Percent -->
+        <string id="hMB4oFmk" text="Kat Yüzdesi"/>
+        <!-- Example -->
+        <string id="L7AKFlpb" text="Örnek"/>
+        <!-- Amount to multiply normal starting health by -->
+        <string id="n6Bc5M3s" text="Normal başlangıç sağlığının çarpılacağı miktar"/>
+        <!-- Heroes won't get any kill rewards in tournaments -->
+        <string id="j63d8DuH" text="Kahramanlar turnuvalarda öldürme ödülü almayacak"/>
+        <!-- Tournament kills / deaths won't be counted towards achievements or kill streaks -->
+        <string id="o5aH9rTO" text="Turnuva öldürmeleri / ölümleri, başarılara veya öldürme serilerine sayılmaz"/>
+        <!-- Remove horses completely from the BLT tournaments (the horse AI is terrible) -->
+        <string id="sJ68yZs1" text="BLT turnuvalarından atları tamamen çıkarın (at AI korkunç)"/>
+        <!-- Replaces all lances and spears with swords, because lance and spear combat is terrible -->
+        <string id="BjMC8Htn" text="Tüm mızrakları ve mızrakları kılıçlarla değiştirir, çünkü mızrak ve mızrak dövüşü korkunçtur"/>
+        <!-- Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below) -->
+        <string id="kYFdZ8Yx" text="Mümkünse Kültüre dayalı olarak tüm zırhları sabit katmanlı zırhla değiştirir (aşağıdaki Normalleştirilmiş Zırh Katmanı tarafından belirtilen katman)"/>
+        <!-- Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled -->
+        <string id="HnqCyrDD" text="Zırhı Normalleştir etkinse, tüm yarışmacıları (1 ila 6) olarak ayarlamak için zırh katmanı"/>
+        <!-- Randomizes the weapons used in each round, weighted based on the classes of the participants -->
+        <string id="oSCPOoqi" text="Katılımcıların sınıflarına göre ağırlıklı olarak her turda kullanılan silahları rastgele ayarlar"/>
+        <!-- Applies skill debuffs to previous tournament winners -->
+        <string id="FrloGGew" text="Önceki turnuva kazananlarına beceri debuff'ları uygular"/>
+        <!-- Allow the vanilla round setup -->
+        <string id="nfYBftnO" text="Vanilya yuvarlak kurulumuna izin ver"/>
+        <!-- Allow 1 match with 2 teams of 2 -->
+        <string id="t9yLB8gB" text="2 kişilik 2 takımla 1 maça izin ver"/>
+        <!-- Allow 1 match with 2 teams of 4 -->
+        <string id="5hLSHeuv" text="4 kişilik 2 takımla 1 maça izin ver"/>
+        <!-- Allow 1 match with 4 teams of 1 -->
+        <string id="YfOnzOH6" text="1'er 4 takımla 1 maça izin ver"/>
+        <!-- Allow 1 match with 4 teams of 2 -->
+        <string id="CLbRKpZp" text="2'şer kişilik 4 takımla 1 maça izin ver"/>
+        <!-- Allow 1 match with 4 teams of 4 -->
+        <string id="5E1lXDYh" text="4'er kişilik 4 takımla 1 maça izin ver"/>
+        <!-- Allow 2 matches with 2 teams of 1 -->
+        <string id="OrZaS458" text="1'er kişilik 2 takımla 2 maça izin ver"/>
+        <!-- Allow 2 matches with 2 teams of 2 -->
+        <string id="Dr1Js5fB" text="2'şer kişilik 2 takımla 2 maça izin ver"/>
+        <!-- Allow 2 matches with 2 teams of 4 -->
+        <string id="jEghMKUV" text="4'er kişilik 2 takımla 2 maça izin ver"/>
+        <!-- Allow 2 matches with 4 teams of 1 -->
+        <string id="nmMzoqeC" text="1'er 4 takımla 2 maça izin ver"/>
+        <!-- Allow 2 matches with 4 teams of 2 -->
+        <string id="f8rXSGwN" text="2'şer kişilik 4 takımla 2 maça izin ver"/>
+        <!-- Allow 4 matches with 2 teams of 2 -->
+        <string id="GPCYzshA" text="2'şer kişilik 2 takımla 4 maça izin ver"/>
+        <!-- Allow 4 matches with 4 teams of 1 -->
+        <string id="MjsTFwUv" text="1'er 4 takımla 4 maça izin ver"/>
+        <!-- Allow 4 matches with 2 teams of 1 -->
+        <string id="xMaA76xu" text="1'er kişilik 2 takımla 4 maça izin ver"/>
+        <!-- Allow 8 matches with 2 teams of 1 -->
+        <string id="otwzXPTQ" text="1'er kişilik 2 takımla 8 maça izin ver"/>
+        <!-- Gold won if the hero wins their match in the round -->
+        <string id="i7Ns7K2i" text="Kahraman rauntta maçı kazanırsa altın kazandı"/>
+        <!-- XP given if the hero wins their match in the round -->
+        <string id="b0MeEmOS" text="Kahraman rauntta maçı kazanırsa verilen XP"/>
+        <!-- XP given if the hero loses their match in a round -->
+        <string id="Oq7LMvoF" text="Kahraman bir turda maçını kaybederse verilen XP"/>
+        <!-- Gold won if the hero wins the tournaments -->
+        <string id="F8g49VCy" text="Kahraman turnuvaları kazanırsa altın kazandı"/>
+        <!-- XP given if the hero wins the tournaments -->
+        <string id="3BudXy0O" text="Kahraman turnuvaları kazanırsa verilen XP"/>
+        <!-- XP given if the hero participates in a tournament but doesn't win -->
+        <string id="TXqjPXh7" text="Kahraman bir turnuvaya katılır ancak kazanmazsa verilen XP"/>
+        <!-- Winners prize -->
+        <string id="wYzmyUCE" text="kazananlar ödülü"/>
+        <!-- Enable betting -->
+        <string id="FOQEPZD5" text="Bahisleri etkinleştir"/>
+        <!-- Only allow betting on the final betting -->
+        <string id="KGcz71VJ" text="Yalnızca son bahiste bahis yapılmasına izin verin"/>
+        <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
+        <string id="twgHWqU6" text="Değiştirilecek beceri veya beceri grubu (bir gruptaki tüm beceriler değiştirilecektir)"/>
+        <!-- Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified. -->
+        <string id="zoMHI9O3" text="Galibiyet başına beceride azalma (% olarak). Becerinin nasıl değiştirileceğini görselleştirmek için https://www.desmos.com/calculator/ajydvitcer adresine bakın."/>
+        <!-- The lower limit (in %) that the skill(s) can be reduced to. -->
+        <string id="HebJIfaE" text="Beceri(ler)in azaltılabileceği alt sınır (% olarak)."/>
+        <!-- Shows the % reduction of the skill over 20 tournaments -->
+        <string id="vgXMv8oH" text="20 turnuva boyunca becerideki azalma yüzdesini gösterir"/>
+        <!-- Prize {ITEMNAME} -->
+        <string id="hCNpHVJY" text="Ödül {ITEMNAME}"/>
+        <!-- Round Rewards -->
+        <string id="g0A4pXY2" text="Yuvarlak Ödüller"/>
+        <!-- Rewards -->
+        <string id="FHkvQbcR" text="Ödüller"/>
+        <!-- Betting -->
+        <string id="n1Agm9uJ" text="bahis"/>
+    </strings>
+</base>

@@ -190,66 +190,66 @@ namespace BLTAdoptAHero
         {
             //  Player side
             //      General
-            new("Don't worry, I've got your back!") { EnemySide = false },
-            new("I'm here!") { EnemySide = false },
-            new("Which one should I stab?") { EnemySide = false },
-            new("Need a hand?") { EnemySide = false },
-            new("The price has been paid. I am at your service.") { EnemySide = false },
+            new("{=DczOKFsA}Don't worry, I've got your back!") { EnemySide = false },
+            new("{=pj9Z0M7G}I'm here!") { EnemySide = false },
+            new("{=y8DOtj2H}Which one should I stab?") { EnemySide = false },
+            new("{=1i1OrZDd}Need a hand?") { EnemySide = false },
+            new("{=rVaJZ5Lo}The price has been paid. I am at your service.") { EnemySide = false },
 
             //      Battle / siege
-            new("Once more unto the breach!") { EnemySide = false, General = false },
-            new("Freeeeeedddooooooommmm!") { EnemySide = false, General = false },
-            new("Remember the Alamo!") { EnemySide = false, General = false },
-            new("Alala!") { EnemySide = false, General = false },
-            new("Eleleu!") { EnemySide = false, General = false },
-            new("Deus vult!") { EnemySide = false, General = false },
-            new("Banzai!") { EnemySide = false, General = false },
-            new("Liberty or Death!") { EnemySide = false, General = false },
-            new("Har Har Mahadev!") { EnemySide = false, General = false },
-            new("Desperta ferro!") { EnemySide = false, General = false },
-            new("Alba gu bràth!") { EnemySide = false, General = false },
-            new("Santiago!") { EnemySide = false, General = false },
-            new("Huzzah!") { EnemySide = false, General = false },
-            new("War... war never changes...") { EnemySide = false, General = false },
-            new("May we live to see the next sunrise!") { EnemySide = false, General = false },
-            new("For glory, charge!") { EnemySide = false, General = false },
-            new("Give them nothing, but take from them everything!") { EnemySide = false, General = false },
-            new("Fell deeds awake, fire and slaughter!") { EnemySide = false },
+            new("{=QEyO8W82}Once more unto the breach!") { EnemySide = false, General = false },
+            new("{=Bo11t6gj}Freeeeeedddooooooommmm!") { EnemySide = false, General = false },
+            new("{=8uO8Isjm}Remember the Alamo!") { EnemySide = false, General = false },
+            new("{=A3KdQJok}Alala!") { EnemySide = false, General = false },
+            new("{=pXVCAwAr}Eleleu!") { EnemySide = false, General = false },
+            new("{=TlZjOFii}Deus vult!") { EnemySide = false, General = false },
+            new("{=xPFIIEzw}Banzai!") { EnemySide = false, General = false },
+            new("{=gmN3YLPw}Liberty or Death!") { EnemySide = false, General = false },
+            new("{=FoDIukJK}Har Har Mahadev!") { EnemySide = false, General = false },
+            new("{=SSqdBzkY}Desperta ferro!") { EnemySide = false, General = false },
+            new("{=UHhpIpDU}Alba gu bràth!") { EnemySide = false, General = false },
+            new("{=lDo1AOCS}Santiago!") { EnemySide = false, General = false },
+            new("{=gT95E89y}Huzzah!") { EnemySide = false, General = false },
+            new("{=fKKpcZGQ}War... war never changes...") { EnemySide = false, General = false },
+            new("{=vZgbxkW9}May we live to see the next sunrise!") { EnemySide = false, General = false },
+            new("{=wn7zIy9f}For glory, charge!") { EnemySide = false, General = false },
+            new("{=KH7Dnbe7}Give them nothing, but take from them everything!") { EnemySide = false, General = false },
+            new("{=FyBFecip}Fell deeds awake, fire and slaughter!") { EnemySide = false },
             //          Rare
-            new("Spooooooooooooooooooon!") { EnemySide = false, Weight = 0.05f },
-            new("Leeeeeeeerooooy Jeeeeenkins") { EnemySide = false, Weight = 0.05f },
-            new("I live, I die, I live again!") { EnemySide = false, Weight = 0.05f },
-            new("Witness me!!") { EnemySide = false, Weight = 0.05f },
-            new("Now for wrath, now for ruin and a red nightfall!") { EnemySide = false, Weight = 0.05f },
+            new("{=H7asM2KG}Spooooooooooooooooooon!") { EnemySide = false, Weight = 0.05f },
+            new("{=ERDmbO2B}Leeeeeeeerooooy Jeeeeenkins") { EnemySide = false, Weight = 0.05f },
+            new("{=hL0vmkUG}I live, I die, I live again!") { EnemySide = false, Weight = 0.05f },
+            new("{=KMTRT2EN}Witness me!!") { EnemySide = false, Weight = 0.05f },
+            new("{=F9WUaqdj}Now for wrath, now for ruin and a red nightfall!") { EnemySide = false, Weight = 0.05f },
             //          Very rare
-            new("n") { EnemySide = false, Weight = 0.01f },
+            new("{=ZQiRFkFU}n") { EnemySide = false, Weight = 0.01f },
             
             //      Siege Attack
-            new("Those are brave men knocking at our door, let's go kill them!") { EnemySide = false, General = false, SiegeAttack = false, FieldBattle = false },
-            new("Lets take this city!") { EnemySide = false, General = false, SiegeDefend = false, FieldBattle = false },
+            new("{=JlZ9pRbq}Those are brave men knocking at our door, let's go kill them!") { EnemySide = false, General = false, SiegeAttack = false, FieldBattle = false },
+            new("{=5gg0BcKk}Lets take this city!") { EnemySide = false, General = false, SiegeDefend = false, FieldBattle = false },
 
             //  Enemy side
             //      General
-            new("Defend yourself!") { PlayerSide = false },
-            new("Time for you to die!") { PlayerSide = false },
-            new("You killed my father, prepare to die!") { PlayerSide = false },
-            new("En garde!") { PlayerSide = false },
-            new("It's stabbing time! For you.") { PlayerSide = false },
-            new("It's nothing personal!") { PlayerSide = false },
-            new("Curse my sudden but inevitable betrayal!") { PlayerSide = false },
-            new("I just don't like you!") { PlayerSide = false },
-            new("I'm gonna put some dirt in your eye!") { PlayerSide = false },
-            new("I'll mount your head on a pike!") { PlayerSide = false },
-            new("Don't hate me, it's just business...") { PlayerSide = false },
-            new("Never should have come here!") { PlayerSide = false },
-            new("Your money or your life!") { PlayerSide = false },
-            new("I'm sorry, but I must stop you.") { PlayerSide = false },
+            new("{=lhWht8Em}Defend yourself!") { PlayerSide = false },
+            new("{=FmlTSg39}Time for you to die!") { PlayerSide = false },
+            new("{=GJpUfALs}You killed my father, prepare to die!") { PlayerSide = false },
+            new("{=IKN2G1wi}En garde!") { PlayerSide = false },
+            new("{=yTHYR4i9}It's stabbing time! For you.") { PlayerSide = false },
+            new("{=4wYLe6f0}It's nothing personal!") { PlayerSide = false },
+            new("{=37bg5QNX}Curse my sudden but inevitable betrayal!") { PlayerSide = false },
+            new("{=AOpbzIUP}I just don't like you!") { PlayerSide = false },
+            new("{=JFCcwLga}I'm gonna put some dirt in your eye!") { PlayerSide = false },
+            new("{=jCrCRbyA}I'll mount your head on a pike!") { PlayerSide = false },
+            new("{=0uiD2HxZ}Don't hate me, it's just business...") { PlayerSide = false },
+            new("{=42Fuy9pm}Never should have come here!") { PlayerSide = false },
+            new("{=dClbnb2q}Your money or your life!") { PlayerSide = false },
+            new("{=uyjy1geA}I'm sorry, but I must stop you.") { PlayerSide = false },
             
             //          Rare
-            new("I have the high ground!") { PlayerSide = false, Weight = 0.05f },
+            new("{=dh0c96lo}I have the high ground!") { PlayerSide = false, Weight = 0.05f },
             
             //          Ultra rare
-            new("DAMN IT DAVE!") { PlayerSide = false, Weight = 0.01f },
+            new("{=EcD5q9th}DAMN IT DAVE!") { PlayerSide = false, Weight = 0.01f },
         };
 
         protected override void ExecuteInternal(Hero adoptedHero, ReplyContext context, object config,
@@ -412,7 +412,7 @@ namespace BLTAdoptAHero
 
                 Log.ShowInformation(!string.IsNullOrEmpty(context.Args) 
                         ? context.Args 
-                        : messages.SelectRandomWeighted(shout => shout.Weight)?.Text ?? "...",
+                        : messages.SelectRandomWeighted(shout => shout.Weight)?.Text?.ToString() ?? "...",
                     adoptedHero.CharacterObject, settings.AlertSound);
 
                 BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
@@ -778,7 +778,7 @@ namespace BLTAdoptAHero
                     //         agent.SetGuardState(Mission.Current.PlayerEnemyTeam?.GeneralAgent, isGuarding: true);
                     // }
 
-                    var expireFn = AccessTools.Method(typeof(TeamQuerySystem), "{=PpB8Ouj4}Expire".Translate());
+                    var expireFn = AccessTools.Method(typeof(TeamQuerySystem), "Expire");
                     foreach (var team in Mission.Current.Teams)
                     {
                         expireFn.Invoke(team.QuerySystem, new object[] { }); // .Expire();
@@ -790,7 +790,7 @@ namespace BLTAdoptAHero
                     
                     Log.ShowInformation(!string.IsNullOrEmpty(context.Args) 
                         ? context.Args 
-                        : (messages.SelectRandomWeighted(shout => shout.Weight)?.Text ?? "..."),
+                        : (messages.SelectRandomWeighted(shout => shout.Weight)?.Text?.ToString() ?? "..."),
                         adoptedHero.CharacterObject, settings.AlertSound);
 
                     BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
@@ -845,7 +845,7 @@ namespace BLTAdoptAHero
         [LocDisplayName("{=V3STT5Ar}Text"), 
          LocDescription("{=wsIzPzfG}Text that will be displayed in game"), 
          PropertyOrder(1), InstanceName, UsedImplicitly] 
-        public string Text { get; set; } = "Enter shout text here";
+        public LocString Text { get; set; } = "{=xf2mTWx8}Enter shout text here";
         [LocDisplayName("{=bCbN9OmH}Weight"), 
          LocDescription("{=xqfCYYwN}Higher weight means more chance this shout is used"), 
          PropertyOrder(2), UsedImplicitly]
@@ -876,11 +876,11 @@ namespace BLTAdoptAHero
         public bool SiegeAttack { get; set; } = true;
 
         public Shout() { }
-        public Shout(string text)
+        public Shout(LocString text)
         {
             Text = text;
         }
 
-        public override string ToString() => Text;
+        public override string ToString() => Text.ToString();
     }
 }

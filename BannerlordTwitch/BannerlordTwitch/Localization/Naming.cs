@@ -17,11 +17,11 @@ namespace BannerlordTwitch.Localization
         public static readonly string Sep = "{=aG3roJj3} ■".Translate();
 
         public static string NotEnoughGold(int need, int have) =>
-            "{=fuwuk4bR}Not enough {Naming.Gold}: need {need}{Naming.Gold}, have {have}{Naming.Gold}!"
+            "{=fuwuk4bR}Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!"
                 .Translate(
-                    ("Naming.Gold", Gold),
-                    ("need", need),
-                    ("have", have)
+                    ("GoldIcon", Gold),
+                    ("NeededGold", need),
+                    ("HaveGold", have)
                     );
 
         public static string JoinList(IEnumerable<string> list) => string.Join(Sep, list);

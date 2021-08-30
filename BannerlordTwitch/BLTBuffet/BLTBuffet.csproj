@@ -103,6 +103,7 @@
         <Content Include="ParticleEffects.txt" />
         <Content Include="Sounds.txt" />
         <Content Include="_Module\ModuleData\Languages\strings-misc.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-misc.xml" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\BannerlordTwitch\BannerlordTwitch.csproj">

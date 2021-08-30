@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Türkçe" />
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Common -->        
+        <!-- Fireblade -->
+        <string id="yEtkv5ML" text="Ateş kılıcı"/>
+        <!-- infantry -->
+        <string id="m8bz4drX" text="piyade"/>
+        <!-- Healthy -->
+        <string id="ROXuJJq8" text="Sağlıklı"/>
+        <!-- Explosive Arrows -->
+        <string id="skyn1cL6" text="Patlayıcı Oklar"/>
+        <!-- archer -->
+        <string id="4tflp34a" text="okçu"/>
+        <!-- Fleet Footed -->
+        <string id="NE9Li2Hb" text="Filo Ayaklı"/>
+        <!-- Explosive Arrows -->
+        <string id="xgnH5owv" text="Patlayıcı Oklar"/>
+        <!-- heavyarcher -->
+        <string id="JncRD8tX" text="ağır okçu"/>
+        <!-- Healthy -->
+        <string id="ZrmsIMPE" text="Sağlıklı"/>
+        <!-- Heavy Bolts -->
+        <string id="QZD9XdpC" text="Ağır Cıvatalar"/>
+        <!-- crossbow -->
+        <string id="wV6R9Si5" text="tatar yayı"/>
+        <!-- Self Healing -->
+        <string id="FvNPPHLJ" text="Kendi Kendini İyileştirme"/>
+        <!-- Explosive Bolts -->
+        <string id="7GmE3SfQ" text="Patlayıcı Cıvatalar"/>
+        <!-- heavycrossbow -->
+        <string id="bpzytNbP" text="ağır tatar yayı"/>
+        <!-- Healthy -->
+        <string id="k7booFb2" text="Sağlıklı"/>
+        <!-- Trample -->
+        <string id="ZEGEpycY" text="ezmek"/>
+        <!-- cavalry -->
+        <string id="jNaFWF9t" text="süvari"/>
+        <!-- A Good Horse -->
+        <string id="YghplAdF" text="İyi Bir At"/>
+        <!-- Trample -->
+        <string id="mmeJSrm9" text="ezmek"/>
+        <!-- camelry -->
+        <string id="mJ8RVORq" text="devecilik"/>
+        <!-- A Good Camel -->
+        <string id="atGMPeNF" text="İyi Bir Deve"/>
+        <!-- Explosive Arrows -->
+        <string id="YpIUHASp" text="Patlayıcı Oklar"/>
+        <!-- horsearcher -->
+        <string id="p5qJfkkp" text="atlı okçu"/>
+        <!-- Mounted Archery -->
+        <string id="zxgdfSIS" text="Atlı Okçuluk"/>
+        <!-- Heavy Arrows -->
+        <string id="FrX7AiyI" text="Ağır Oklar"/>
+        <!-- camelarcher -->
+        <string id="HreZWoyd" text="camgöz"/>
+        <!-- Mounted Archery -->
+        <string id="szdoTAQj" text="Atlı Okçuluk"/>
+        <!-- Break Through -->
+        <string id="E3qGC3fs" text="Geçiş"/>
+        <!-- skirmisher -->
+        <string id="9euSgzCd" text="avcı er"/>
+        <!-- Retribution -->
+        <string id="Lw8xQu1P" text="intikam"/>
+        <!-- Berserker Rage -->
+        <string id="1DSLInEJ" text="çılgın öfke"/>
+        <!-- berserker -->
+        <string id="wVjXAFal" text="çılgın"/>
+        <!-- Glass Cannon -->
+        <string id="nB4Qb0mD" text="Cam Top"/>
+        <!-- Retribution -->
+        <string id="rzIl9tm3" text="intikam"/>
+        <!-- looter -->
+        <string id="4JffsJMD" text="yağmacı"/>
+        <!-- Grenades -->
+        <string id="nmjVjakS" text="el bombaları"/>
+    </strings>
+</base>

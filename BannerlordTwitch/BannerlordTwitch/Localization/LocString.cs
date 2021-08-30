@@ -30,18 +30,16 @@ namespace BannerlordTwitch.Localization
         public static bool IsNullOrEmpty(LocString ls) => ls == null || string.IsNullOrEmpty(ls.Value);
 
         public static string Translate(string str) 
-            => "(Translated)" +
-                (!string.IsNullOrEmpty(str)
+            => !string.IsNullOrEmpty(str)
                 ? new TextObject(str).ToString()
-                : string.Empty);
+                : string.Empty;
 
         public static string Translate(string str, params (string key, object value)[] arg) 
-            => "(Translated)" +
-               (!string.IsNullOrEmpty(str)
-                   ? new TextObject(str, arg.ToDictionary(
-                       kv => kv.key,
-                       kv => kv.value)).ToString()
-                   : string.Empty);
+            => !string.IsNullOrEmpty(str)
+                ? new TextObject(str, arg.ToDictionary(
+                    kv => kv.key,
+                    kv => kv.value)).ToString()
+                : string.Empty;
     }
 
     public class LocStringConverter : TypeConverter

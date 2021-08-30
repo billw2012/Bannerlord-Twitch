@@ -380,8 +380,13 @@
         <Content Include="_Module\ModuleData\Languages\strings-misc.xml" />
         <Content Include="_Module\ModuleData\Languages\strings-powers.xml" />
         <Content Include="_Module\ModuleData\Languages\strings-rewards.xml" />
-        <Content Include="_Module\ModuleData\Languages\TR\strings-actions.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-achievements.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-classes.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-commands.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-kill-streaks.xml" />
         <Content Include="_Module\ModuleData\Languages\TR\strings-misc.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-powers.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-rewards.xml" />
         <Content Include="_Module\web\index-template.html" />
         <Content Include="_Module\web\Scripts\jquery-1.6.4-vsdoc.js" />
         <Content Include="_Module\web\Scripts\jquery-1.6.4.js" />

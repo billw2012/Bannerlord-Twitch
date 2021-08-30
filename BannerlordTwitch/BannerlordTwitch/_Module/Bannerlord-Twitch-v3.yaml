@@ -3644,180 +3644,180 @@ Rewards:
     Title: '{=yoZSmM0b}Use Class Power'
 SimTesting:
   Init:
-  - Args: 
+  - Args: ''
     Enabled: true
-    Id: Adopt a Hero
+    Id: '{=Yc9dn4Sx}Adopt a Hero'
     ID: b50d0749-add5-458c-b3d4-c957f4bb85f3
     Type: Reward
     Weight: 0
-  - Args: 
+  - Args: ''
     Enabled: true
-    Id: 100k gold
+    Id: '{=ndi9p5jn}100k gold'
     ID: 7698ddba-b00b-4243-bd54-3dc97a4e73cf
     Type: Reward
     Weight: 0
-  - Args: 
+  - Args: ''
     Enabled: true
-    Id: 100k gold
+    Id: '{=ndi9p5jn}100k gold'
     ID: a9933fab-58d4-492a-93fb-34c0d6606c09
     Type: Reward
     Weight: 0
-  - Args: 
+  - Args: ''
     Enabled: true
-    Id: Tournament
+    Id: '{=IBrMU0VF}Tournament'
     ID: ca586ddf-b9b0-4c59-954c-d166f5c9b644
     Type: Reward
     Weight: 0
-  - Args: archer
+  - Args: '{=4tflp34a}archer'
     Enabled: false
-    Id: class
+    Id: '{nV9iIsDC}class'
     ID: 0c4706d4-882f-40ba-b2ec-6077a957fc78
     Type: Command
     Weight: 1
   IntervalMaxMS: 200
   IntervalMinMS: 200
   Use:
-  - Args: 
+  - Args: ''
     Enabled: true
-    Id: Attack
+    Id: '{=IrF1VaBD}Attack'
     ID: 0711448a-2d82-42f2-b0e9-3e22faef2850
     Type: Reward
     Weight: 1
-  - Args: 
+  - Args: ''
     Enabled: true
-    Id: Summon
+    Id: '{=dpnWybop}Summon'
     ID: 8e98ab07-c93a-42a2-8a58-278028b48565
     Type: Reward
     Weight: 1
-  - Args: 
+  - Args: ''
     Enabled: true
-    Id: 100k gold
+    Id: '{=ndi9p5jn}100k gold'
     ID: 7dc0e816-b2ec-42a4-ab70-b4e00c8501ba
     Type: Reward
     Weight: 1
-  - Args: 
+  - Args: ''
     Enabled: true
-    Id: equip
+    Id: '{wHqxd4kb}equip'
     ID: 06539d16-25cb-4314-8cdd-4aada76b27bc
     Type: Command
     Weight: 0.400000006
   - Args: ''
     Enabled: true
-    Id: reequip
+    Id: '{fGfTaAoD}reequip'
     ID: 76efdf69-6fc5-4163-8271-4540402f28b3
     Type: Command
     Weight: 0.100000001
-  - Args: 
+  - Args: ''
     Enabled: true
-    Id: Tournament
+    Id: '{=IBrMU0VF}Tournament'
     ID: 4e066d86-ecac-48c2-9406-0ed931f14756
     Type: Reward
     Weight: 0.200000003
-  - Args: 
+  - Args: ''
     Enabled: true
-    Id: retinue
+    Id: '{mge9rH9J}retinue'
     ID: 9513732e-6522-429c-ab92-e1eab16518ef
     Type: Command
     Weight: 0.200000003
-  - Args: yes
+  - Args: '{=xSbB2Zw5}yes'
     Enabled: false
-    Id: Retire My Hero
+    Id: '{=AZMDg7St}Retire My Hero'
     ID: 4e5da88a-b670-4d59-9c89-820e24fb0ab1
     Type: Reward
     Weight: 0.00999999978
-  - Args: yes
+  - Args: ''
     Enabled: true
-    Id: Adopt a Hero
+    Id: '{=Yc9dn4Sx}Adopt a Hero'
     ID: df2ee94a-7262-47d5-a97c-f09034d36240
     Type: Reward
     Weight: 0.00999999978
   - Args: ''
     Enabled: true
-    Id: Heal Streamer
+    Id: '{=MSpPJJhZ}Heal Streamer'
     ID: f1f5a043-fdf6-43e5-9fe5-e70009c56bf5
     Type: Reward
     Weight: 0.0500000007
-  - Args: infantry
+  - Args: '{=m8bz4drX}infantry'
     Enabled: true
-    Id: class
+    Id: '{nV9iIsDC}class'
     ID: a67ca1e9-d434-4af1-a3b6-69979b72d804
     Type: Command
     Weight: 0.100000001
-  - Args: archer
+  - Args: '{=4tflp34a}archer'
     Enabled: true
-    Id: class
+    Id: '{nV9iIsDC}class'
     ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
     Type: Command
     Weight: 0.100000001
-  - Args: heavyarcher
+  - Args: '{=JncRD8tX}heavyarcher'
     Enabled: true
-    Id: class
+    Id: '{nV9iIsDC}class'
     ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
     Type: Command
     Weight: 0.100000001
-  - Args: crossbow
+  - Args: '{=wV6R9Si5}crossbow'
     Enabled: true
-    Id: class
+    Id: '{nV9iIsDC}class'
     ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
     Type: Command
     Weight: 0.100000001
-  - Args: heavycrossbow
+  - Args: '{=bpzytNbP}heavycrossbow'
     Enabled: true
-    Id: class
+    Id: '{nV9iIsDC}class'
     ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
     Type: Command
     Weight: 0.100000001
-  - Args: cavalry
+  - Args: '{=jNaFWF9t}cavalry'
     Enabled: true
-    Id: class
+    Id: '{nV9iIsDC}class'
     ID: 6162aec8-8ffd-4d65-bcdd-0529081528ee
     Type: Command
     Weight: 0.100000001
-  - Args: camelry
+  - Args: '{=mJ8RVORq}camelry'
     Enabled: true
-    Id: class
+    Id: '{nV9iIsDC}class'
     ID: 6162aec8-8ffd-4d65-bcdd-0529081528ee
     Type: Command
     Weight: 0.100000001
-  - Args: horsearcher
+  - Args: '{=p5qJfkkp}horsearcher'
     Enabled: true
-    Id: class
+    Id: '{nV9iIsDC}class'
     ID: 2e320a55-f238-4d01-86de-c734d29bf7a5
     Type: Command
     Weight: 0.100000001
-  - Args: camelarcher
+  - Args: '{=HreZWoyd}camelarcher'
     Enabled: true
-    Id: class
+    Id: '{nV9iIsDC}class'
     ID: 2e320a55-f238-4d01-86de-c734d29bf7a5
     Type: Command
     Weight: 0.100000001
-  - Args: skirmisher
+  - Args: '{=9euSgzCd}skirmisher'
     Enabled: true
-    Id: class
+    Id: '{nV9iIsDC}class'
     ID: 7032b576-86b5-4540-b0b8-5d933f0fd87a
     Type: Command
     Weight: 0.100000001
-  - Args: berserker
+  - Args: '{=wVjXAFal}berserker'
     Enabled: true
-    Id: class
+    Id: '{nV9iIsDC}class'
     ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
     Type: Command
     Weight: 0.100000001
-  - Args: looter
+  - Args: '{=4JffsJMD}looter'
     Enabled: true
-    Id: class
+    Id: '{nV9iIsDC}class'
     ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
     Type: Command
     Weight: 0.100000001
   - Args: ''
     Enabled: true
-    Id: Heal Hero
+    Id: '{=likTlNpu}Heal Hero'
     ID: 584c161e-da84-46af-8fa4-3aeb3768663b
     Type: Reward
     Weight: 0.0500000007
-  - Args: 
+  - Args: ''
     Enabled: true
-    Id: Use Class Power
+    Id: '{=yoZSmM0b}Use Class Power'
     ID: d701da05-a87d-4f81-a94c-07aadb937636
     Type: Reward
     Weight: 0.5
