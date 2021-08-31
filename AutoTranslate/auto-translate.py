@@ -13,15 +13,7 @@ def namespace(element):
     return m.group(1) if m else ''
 
 
-def language_to_code(language):
-    if language == "Türkçe":
-        return "tr"
-    elif language == "Deutsch":
-        return "de"
-    return "en"
-
-
-def translate(source_file, language):
+def translate(source_file, language, language_code):
     translator = Translator()
     tree = etree.parse(source_file)
     root = tree.getroot()
@@ -29,8 +21,6 @@ def translate(source_file, language):
     tags = root.find('tags', ns_map)
     tag = tags.find('tag', ns_map)
     tag.set('language', language)
-
-    language_code = language_to_code(language)
 
     target_file = os.path.join(os.path.dirname(source_file), language_code.upper(), os.path.basename(source_file))
 
@@ -85,6 +75,8 @@ def translate(source_file, language):
         print(f'100%')
     except:
         print('\n  Error occurred while translating, try again: ', sys.exc_info()[0])
+        return
+
     for tag, e, t in zip(tags, string_escapes, translations):
         tag.set('text', unesc(t.text, e))
 
@@ -97,7 +89,9 @@ if __name__ == "__main__":
     parser.add_argument('glob_patterns', metavar='glob', type=str, nargs='+',
                         help='globs (wild card patterns) describing what files to translate, '
                              'output file is determined automatically')
-    parser.add_argument('--lang', dest='lang', action='store', help='specify language (using Bannerlord naming)',
+    parser.add_argument('--lang', dest='lang', action='store', help='Bannerlord language name',
+                        required=True)
+    parser.add_argument('--lang-code', dest='langcode', action='store', help='international language code for translation',
                         required=True)
     args = parser.parse_args()
 
@@ -108,4 +102,4 @@ if __name__ == "__main__":
         print('No files found matching the provided globs!')
     else:
         for f in unique_files:
-            translate(f, args.lang)
+            translate(f, args.lang, args.langcode)
