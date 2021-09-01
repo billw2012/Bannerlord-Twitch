@@ -102,7 +102,17 @@
         <Content Include="CharacterEffectProperties.txt" />
         <Content Include="ParticleEffects.txt" />
         <Content Include="Sounds.txt" />
+        <Content Include="_Module\ModuleData\Languages\BR\strings-misc-BR.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNs\strings-misc-CNs.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNt\strings-misc-CNt.xml" />
+        <Content Include="_Module\ModuleData\Languages\DE\strings-misc-DE.xml" />
+        <Content Include="_Module\ModuleData\Languages\FR\strings-misc-FR.xml" />
+        <Content Include="_Module\ModuleData\Languages\IT\strings-misc-IT.xml" />
+        <Content Include="_Module\ModuleData\Languages\KO\strings-misc-KO.xml" />
+        <Content Include="_Module\ModuleData\Languages\PL\strings-misc-PL.xml" />
+        <Content Include="_Module\ModuleData\Languages\RU\strings-misc-RU.xml" />
         <Content Include="_Module\ModuleData\Languages\strings-misc.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-misc-TR.xml" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\BannerlordTwitch\BannerlordTwitch.csproj">

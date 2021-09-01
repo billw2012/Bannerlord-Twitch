@@ -1,0 +1,805 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Türkçe"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+                
+        <!-- AddGoldToHero -->
+        <!-- Add Gold To Hero -->
+        <string id="kn4uxAWs" text="Kahramana Altın Ekle"/>
+        <!-- Gives gold to the adopted hero -->
+        <string id="vkgPfcAu" text="Evlat edinilen kahramana altın verir"/>
+        
+        <!-- How much gold to give the adopted hero -->
+        <string id="S2CeRdjR" text="Evlat edinilen kahramana ne kadar altın verilecek"/>
+        
+        <!-- AdoptAHero -->
+        <!-- Adopt A Hero -->
+        <string id="NkZXnSQI" text="Bir Kahramanı Kabul Edin"/>
+        <!-- Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands -->
+        <string id="fd7G5N0Q" text="İzleyicinin oyunda bir kahramanı &amp;#39;evlat edinmesine&amp;#39; izin verir - kahraman adı izleyici adına değişir ve izleyiciler onu başka komutlarla kontrol edebilirler."/>
+
+        <!-- Create New -->
+        <string id="TLrDxhlh" text="Yeni oluşturmak"/>
+        <!-- Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern) -->
+        <string id="F1KDzuZZ" text="Mevcut bir kahramanı benimsemek yerine yeni bir kahraman yaratın (rastgele bir meyhanede gezgin olacaklar)"/>
+        <!-- Allow Noble -->
+        <string id="nPIcT2s7" text="Noble&amp;#39;a izin ver"/>
+        <!-- Allow noble heroes (if CreateNew is false) -->
+        <string id="XvZN7OOY" text="Asil kahramanlara izin ver (CreateNew yanlışsa)"/>
+        <!-- Allow Wanderer -->
+        <string id="VVFsa8LQ" text="Wanderer&amp;#39;a izin ver"/>
+        <!-- Allow wanderer heroes (if CreateNew is false) -->
+        <string id="9lE2KSvC" text="Gezgin kahramanlara izin ver (CreateNew yanlışsa)"/>
+        <!-- Allow Player Companion -->
+        <string id="A8G9ctbn" text="Oyuncu Arkadaşına İzin Ver"/>
+        <!-- Allow companions (not tested, if CreateNew is false) -->
+        <string id="6EjGRMkt" text="Tamamlayıcılara izin ver (CreateNew yanlışsa test edilmedi)"/>
+        <!-- Only Same Faction -->
+        <string id="B2z7T1xQ" text="Sadece Aynı Fraksiyon"/>
+        <!-- Only allow heroes from same faction as player -->
+        <string id="QvQGwFyl" text="Sadece oyuncuyla aynı gruptan kahramanlara izin ver"/>
+        <!-- Inheritance -->
+        <string id="dvbkxJQz" text="Miras"/>
+        <!-- What fraction of assets will be inherited when a new character is adopted after an old one died (0 to 1) -->
+        <string id="KLJtpEjg" text="Eski bir karakter öldükten sonra yeni bir karakter benimsendiğinde, varlıkların ne kadarı miras alınacak (0 ila 1)"/>
+        <!-- Maximum Inherited Custom Items -->
+        <string id="Bi19tTPj" text="Maksimum Devralınan Özel Öğeler"/>
+        <!-- How many custom items can be inherited -->
+        <string id="tFolfAOn" text="Kaç özel öğe devralınabilir"/>
+        <!-- Subscriber Only -->
+        <string id="O4DGlP9Z" text="Yalnızca Abone"/>
+        <!-- Only subscribers can adopt -->
+        <string id="TBNkHsLC" text="Yalnızca aboneler benimseyebilir"/>
+        <!-- Minimum Subscribed Months -->
+        <string id="dO41CKIU" text="Minimum Abone Olunan Aylar"/>
+        <!-- Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified -->
+        <string id="BVZwDqR0" text="Yalnızca en az bu kadar aydır abone olan izleyiciler benimseyebilir, belirtilmemişse yoksayılabilir"/>
+        <!-- Starting Gold -->
+        <string id="iOmYBC7I" text="Altın başlangıç"/>
+        <!-- Gold the adopted hero will start with -->
+        <string id="pZMkJLix" text="Evlat edinilen kahramanın altınla başlayacağı"/>
+        <!-- Override Age -->
+        <string id="ZXwbvbbq" text="Yaşı Geçersiz Kıl"/>
+        <!-- Override the heroes age -->
+        <string id="gxQgrAey" text="Kahramanların yaşını geçersiz kıl"/>
+        <!-- Starting Age Range -->
+        <string id="NEBQgHiX" text="Başlangıç Yaş Aralığı"/>
+        <!-- Random range of age when overriding it -->
+        <string id="TYqEBuLW" text="Geçersiz kılınırken rastgele yaş aralığı"/>
+        <!-- Starting Skills -->
+        <string id="9IOFHQjS" text="Başlangıç Becerileri"/>
+        <!-- Starting skills, if empty then default skills of the adopted hero will be left in tact -->
+        <string id="C4rV4f2F" text="Başlangıç becerileri, eğer boşsa, benimsenen kahramanın varsayılan becerileri incelik içinde bırakılacaktır."/>
+        <!-- Starting Equipment Tier -->
+        <string id="IAKQCRa1" text="Başlangıç Ekipmanı Katmanı"/>
+        <!-- Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment -->
+        <string id="mQwjHXfC" text="Evlat edinilen kahramanın başlayacağı ekipman seviyesi, belirtmezseniz kahramanların mevcut ekipmanını alırlar."/>
+        <!-- Starting Class -->
+        <string id="0vGFJdO1" text="Başlangıç Sınıfı"/>
+        <!-- Starting class of the hero -->
+        <string id="zgjyFL6i" text="Kahramanın başlangıç sınıfı"/>
+        
+        
+        <!-- Subscriber Only -->
+        <string id="4zAUTiSP" text="Yalnızca Abone"/>
+        <!-- Newly created wanderer -->
+        <string id="cJQCU33B" text="Yeni oluşturulan gezgin"/>
+        <!-- Noble -->
+        <string id="fP84ES0X" text="Soylu"/>
+        <!-- Wanderer -->
+        <string id="ozRaAx6L" text="Avare"/>
+        <!-- Companions -->
+        <string id="YucejFfO" text="yoldaşlar"/>
+        <!-- Allowed -->
+        <string id="UNtHwNhx" text="İzin verilmiş"/>
+        <!-- Same faction only -->
+        <string id="6W0OJKkA" text="Sadece aynı hizip"/>
+        <!-- Starting Age Range -->
+        <string id="pDP8b5HR" text="Başlangıç Yaş Aralığı"/>
+        <!-- Starting Gold -->
+        <string id="FvhsCSd3" text="Altın başlangıç"/>
+        <!-- Inheritance -->
+        <string id="wP0lfTf3" text="Miras"/>
+        <!-- {Inheritance}% of gold spent on equipment and retinue -->
+        <string id="mDK67efh" text="Ekipman ve maiyet için harcanan altının %{Inheritance}&amp;#39;si"/>
+        <!-- no custom items -->
+        <string id="76NtQIGB" text="özel öğe yok"/>
+        <!-- up to {MaxInheritedCustomItems} custom items -->
+        <string id="sEDQrZCp" text="{MaxInheritedCustomItems} özel öğeye kadar"/>
+        
+        <!-- You have already adopted a hero! -->
+        <string id="mJfD7e2g" text="Zaten bir kahramanı benimsedin!"/>
+        <!-- You must be subscribed for at least {MinSubscribedMonths} months to adopt a hero with this command! -->
+        <string id="4K7Q7gR0" text="Bu komutla bir kahramanı benimsemek için en az {MinSubscribedMonths} aylık abone olmalısınız!"/>
+        <!-- You must be subscribed to adopt a hero with this command! -->
+        <string id="0QeQPxYi" text="Bu komutla bir kahramanı benimsemek için abone olmalısınız!"/>
+        <!-- No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)! -->
+        <string id="XlQUIIsg" text="Kullanılabilir kahraman yok: oyuncu bir ulusta değil (Yalnızca Player Fraction&amp;#39;ı devre dışı bırakın veya bir fraksiyona katılın)!"/>
+        <!-- You can't adopt a hero: no available hero matching the requirements was found! -->
+        <string id="E7wqQ2kg" text="Bir kahramanı sahiplenemezsiniz: Gereksinimleri karşılayan uygun bir kahraman bulunamadı!"/>
+        <!-- {OldName} is now known as {NewName}! -->
+        <string id="K7nuJVCN" text="{OldName} is now known as {NewName}!"/>
+        <!-- {OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})! -->
+        <string id="PAc5S0GY" text="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})!"/>
+        <!-- {OldName} is now known as {NewName}, they have {NewGold}! -->
+        <string id="lANBKEFN" text="{OldName} is now known as {NewName}, they have {NewGold}!"/>
+        
+        <!-- AttributePoints -->
+        <!-- Add Attribute Points -->
+        <string id="TmUJ8VU7" text="Özellik Puanları Ekle"/>
+        <!-- Improve adopted heroes attribute points -->
+        <string id="YrYFBWaw" text="Kabul edilen kahramanların özellik puanlarını iyileştirin"/>
+        <!-- Random -->
+        <string id="ibuIZ39r" text="Rastgele"/>
+        <!-- If set a random attribute is improved, otherwise the viewer should provide part of the name of the attribute to improve (this works best as a chat command) -->
+        <string id="2F4MZn5h" text="Rastgele bir öznitelik ayarlanırsa iyileştirilir, aksi takdirde izleyici, iyileştirilecek özniteliğin adının bir kısmını sağlamalıdır (bu en iyi sohbet komutu olarak işe yarar)"/>
+        <!-- Random attribute -->
+        <string id="JQdCfO2H" text="rastgele öznitelik"/>
+        <!-- Provide the attribute name (or part of it) when calling this -->
+        <string id="hSPAbHWb" text="Bunu çağırırken öznitelik adını (veya bir kısmını) sağlayın"/>
+        
+        <!-- Couldn't improve any attributes, they are all at max level! -->
+        <string id="VxproTE2" text="Hiçbir özellik geliştirilemedi, hepsi maksimum seviyede!"/>
+        <!-- Provide the attribute name to improve (or part of it) -->
+        <string id="i9ziqTXG" text="Geliştirilecek özellik adını (veya bir kısmını) sağlayın"/>
+        <!-- You have gained {Amount} points in {Attribute}, you now have {NewAmount}! -->
+        <string id="Sl1bdnfy" text="{Amount} points in {Attribute}, you now have {NewAmount} kazandınız!"/>
+        <!-- You have gained a point in {Attribute}, you now have {NewAmount}! -->
+        <string id="2vli3BCR" text="{Attribute}, you now have {NewAmount} içinde bir puan kazandınız!"/>
+        <!--  -->
+        <string id="YawQBjBG" text=""/>
+        
+        <!-- Couldn't find attribute matching '{Args}'! -->
+        <string id="LE3POzUs" text="&amp;#39;{Args}&amp;#39; ile eşleşen özellik bulunamadı!"/>
+        <!-- Couldn't improve {Attribute} attribute, it is already at max level! -->
+        <string id="R7X1dTqL" text="{Attribute} özelliği iyileştirilemedi, zaten maksimum seviyede!"/>
+        
+        <!-- AuctionItem -->
+        <!-- Auction Item -->
+        <string id="Q1QZbwR3" text="Açık Artırma Öğesi"/>
+        <!-- Allows viewers to auction custom items, for other viewers to bid on (make sure to add a bid command also) -->
+        <string id="024hOo3G" text="İzleyicilerin, diğer izleyicilerin teklif vermesi için özel öğeleri açık artırmaya çıkarmasına izin verir (ayrıca bir teklif komutu eklediğinizden emin olun)"/>
+        <!-- Auction Item -->
+        <string id="34GjlaWu" text="Açık Artırma Öğesi"/>
+        <!-- How long the auction should last before the highest bidder wins -->
+        <string id="zsvhQABf" text="En yüksek teklifi veren kazanmadan önce açık artırma ne kadar sürmelidir?"/>
+        <!-- Auction Item -->
+        <string id="ssmJ9c5L" text="Açık Artırma Öğesi"/>
+        <!-- Interval at which to output a reminder of the auction -->
+        <string id="ijkjWj5q" text="Açık artırma hatırlatıcısının çıktısının alınacağı aralık"/>
+        <!-- Another auction is already in progress -->
+        <string id="T2R35HHV" text="Başka bir açık artırma devam ediyor"/>
+        <!-- You have no items to auction -->
+        <string id="kYHEtOM7" text="Açık artırmaya çıkacak öğeniz yok"/>
+        <!-- (reserve price) (partial item name) -->
+        <string id="lI4WCNeQ" text="(yedek fiyat) (kısmi ürün adı)"/>
+        <!-- Invalid reserve price '{Arg}' -->
+        <string id="mm1ay4I7" text="Geçersiz rezerv fiyatı &amp;#39;{Arg}&amp;#39;"/>
+        <!-- No items found matching '{ItemName}' -->
+        <string id="viO1RBr5" text="&amp;#39;{ItemName}&amp;#39; ile eşleşen öğe bulunamadı"/>
+        <!-- {ItemCount} items found matching '{ItemName}', be more specific -->
+        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName}&amp;#39;, daha spesifik olun"/>
+        
+        <!-- Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds. -->
+        <string id="BH5rnHNq" text="&amp;#39;{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} saniyelik açık artırma."/>
+        <!-- Bid On Item -->
+        <string id="rBAvqAh7" text="Ürüne Teklif Ver"/>
+        <!-- Allows viewers bid on an active custom item auction (make sure to add an auction command also) -->
+        <string id="XuvGyCwD" text="İzleyicilerin etkin bir özel öğe açık artırmasında teklif vermesini sağlar (ayrıca bir açık artırma komutu eklediğinizden emin olun)"/>
+        <!-- (bid amount) -->
+        <string id="ewjqhPqj" text="(teklif tutarı)"/>
+        <!-- Invalid bid amount -->
+        <string id="dgG5WPrC" text="Geçersiz teklif tutarı"/>
+        
+        <!-- EquipHero -->
+        <!-- Equip Hero -->
+        <string id="3zBXys4m" text="Kahramanı donat"/>
+        <!-- Improve adopted heroes equipment -->
+        <string id="3QfHyF8g" text="Kabul edilen kahramanlar ekipmanını geliştirin"/>
+        <!-- Allow Companion Upgrade -->
+        <string id="TGs8URfN" text="Tamamlayıcı Yükseltmeye İzin Ver"/>
+        <!-- Allow improvement of adopted heroes who are also companions of the player. -->
+        <string id="6zMgeovT" text="Aynı zamanda oyuncunun yoldaşı olan benimsenen kahramanların geliştirilmesine izin verin."/>
+        <!-- Cost Tier 1 -->
+        <string id="8qUzSxsQ" text="Maliyet Katmanı 1"/>
+        <!-- Gold cost for Tier 1 equipment -->
+        <string id="4ipwvHaR" text="Kademe 1 ekipman için altın maliyeti"/>
+        <!-- Cost Tier 2 -->
+        <string id="bjAzHOqD" text="Maliyet Katmanı 2"/>
+        <!-- Gold cost for Tier 2 equipment -->
+        <string id="3uRKzeJv" text="Kademe 2 ekipman için altın maliyeti"/>
+        <!-- Cost Tier 3 -->
+        <string id="EUw3jfcC" text="Maliyet Katmanı 3"/>
+        <!-- Gold cost for Tier 3 equipment -->
+        <string id="vRTR2AVO" text="Kademe 3 ekipman için altın maliyeti"/>
+        <!-- Cost Tier 4 -->
+        <string id="cvWxBhFl" text="Maliyet Katmanı 4"/>
+        <!-- Gold cost for Tier 4 equipment -->
+        <string id="LeCyJf6T" text="Kademe 4 ekipman için altın maliyeti"/>
+        <!-- Cost Tier 5 -->
+        <string id="Im4cXqCx" text="Maliyet Katmanı 5"/>
+        <!-- Gold cost for Tier 5 equipment -->
+        <string id="4a0P89lE" text="Kademe 5 ekipman için altın maliyeti"/>
+        <!-- Cost Tier 6 -->
+        <string id="c1CI4H3y" text="Maliyet Katmanı 6"/>
+        <!-- Gold cost for Tier 6 equipment -->
+        <string id="JkrTWsSf" text="Kademe 6 ekipman için altın maliyeti"/>
+        <!-- Reequip Instead Of Upgrade -->
+        <string id="GaTe1vEL" text="Yükseltme Yerine Yeniden Donatın"/>
+        <!-- Whether to re-equip the equipment INSTEAD of upgrading it (you should make TWO commands, one to upgrade and one to reequip) -->
+        <string id="zTiLpc9G" text="Yükseltmenin YERİNE ekipmanı yeniden donatıp donatmamak (biri yükseltme ve diğeri yeniden donatmak için İKİ komut vermelisiniz)"/>
+        <!-- Re-rolls your equipment at your current tier -->
+        <string id="IJtXQh2D" text="Ekipmanınızı mevcut kademenizde yeniden yuvarlar"/>
+        <!-- Disallowed for player companions -->
+        <string id="02iAT4Y8" text="Oyuncu yoldaşları için izin verilmez"/>
+        <!-- Tier costs -->
+        <string id="wORNXOT5" text="Katman maliyetleri"/>
+        <!-- You are a player companion, you cannot change your own equipment! -->
+        <string id="C9Mhzohr" text="Sen bir oyuncu arkadaşısın, kendi ekipmanını değiştiremezsin!"/>
+        <!-- You cannot upgrade equipment, as a mission is active! -->
+        <string id="RoIXssEg" text="Bir görev aktif olduğu için ekipmanı yükseltemezsiniz!"/>
+        <!-- You cannot upgrade any further! -->
+        <string id="FZh7ZtGp" text="Daha fazla yükseltemezsiniz!"/>
+        <string id="fYksbZJp" text="Donanımlı Katman {ArmorTier} ({ClassName})"/>
+        <string id="0KHxea5e" text="Yeniden Donatılmış Seviye {ArmorTier} ({ClassName})"/>
+        <string id="VlnXNPYS" text="Ders yok"/>
+        <!-- Focus Points -->
+        <string id="WihQZ5uq" text="Odak Noktaları"/>
+        <!-- Add focus points to heroes skills -->
+        <string id="01L8w1ZW" text="Kahraman becerilerine odak noktaları ekleyin"/>
+        <!-- Skills -->
+        <string id="QwuyvXBg" text="Yetenekler"/>
+        <!-- What skill to add focus to -->
+        <string id="w9liWZ9A" text="Odak eklemek için hangi beceri"/>
+        <!-- Auto -->
+        <string id="RiUjwmS5" text="Oto"/>
+        <!-- Chooses a random skill to add focus to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used. -->
+        <string id="EA4jsUhm" text="Odaklanmak için rastgele bir beceri seçer, sınıf becerilerini, ardından mevcut ekipman için becerileri ve ardından diğer becerileri tercih eder. Otomatik kullanıldığında beceriler ayarı yok sayılır."/>
+        <!-- Focus points -->
+        <string id="UpHpjzFk" text="Odak noktaları"/>
+        <!-- Automatic, based on class, equipment, and existing skills -->
+        <string id="SIM2l7ta" text="Sınıf, ekipman ve mevcut becerilere göre otomatik"/>
+        <!-- Couldn't find a valid skill to add focus points to! -->
+        <string id="VXvS5xji" text="Odak noktaları eklemek için geçerli bir beceri bulunamadı!"/>
+        <!-- You have gained {Amount} focus points in {Skill}, you now have {NewAmount}! -->
+        <string id="6tcVqRIs" text="{Amount} focus points in {Skill}, you now have {NewAmount} kazandınız!"/>
+        <!-- You have gained a focus point in {Skill}, you now have {NewAmount}! -->
+        <string id="HLFMWOJA" text="{Skill}, you now have {NewAmount} içinde bir odak noktası kazandınız!"/>
+        
+        <!-- DiscardItem -->
+        <!-- Discard Item -->
+        <string id="fmftNyHh" text="Öğeyi At"/>
+        <!-- Allows viewers to discard one of their own custom items -->
+        <string id="f3LrrLHP" text="İzleyicilerin kendi özel öğelerinden birini atmasına olanak tanır"/>
+        <!-- You have no items to discard -->
+        <string id="oXQ4En4P" text="Atılacak öğeniz yok"/>
+        <!-- (partial item name) -->
+        <string id="by80aboy" text="(kısmi öğe adı)"/>
+        <!-- No items found matching '{Args}' -->
+        <string id="p0urrIvR" text="&amp;#39;{Args}&amp;#39; ile eşleşen öğe bulunamadı"/>
+        <!-- {Count} items found matching '{Args}', be more specific -->
+        <string id="Pzo2UJrl" text="{Count} items found matching '{Args}&amp;#39;, daha spesifik olun"/>
+        <!-- '{ItemName}' was discarded -->
+        <string id="bNqd3AzN" text="&amp;#39;{ItemName}&amp;#39; atıldı"/>
+        
+        <!-- GiveItem -->
+        <!-- Give Item -->
+        <string id="nAPjfF4C" text="Öğe ver"/>
+        <!-- Allows viewers to give one of their own custom items to another viewer -->
+        <string id="u9Jx6QUr" text="İzleyicilerin kendi özel öğelerinden birini başka bir izleyiciye vermelerine olanak tanır"/>
+        <!-- You have no items to give -->
+        <string id="Tfj1U5BB" text="Verecek öğeniz yok"/>
+        <!-- (recipient) (partial item name) -->
+        <string id="BClUoR9H" text="(alıcı) (kısmi öğe adı)"/>
+        <!-- Couldn't find recipient '{Name}' -->
+        <string id="vDsYxMKq" text="&amp;#39;{Name}&amp;#39; alıcısı bulunamadı"/>
+        <!-- '{ItemName}' was transferred from @{FromHero} to @{ToHero} -->
+        <string id="E1o7b5ht" text="&amp;#39;{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
+        
+        <!-- HeroInfoCommand -->
+        <!-- Show Hero Info -->
+        <string id="cj68a0l9" text="Kahraman Bilgilerini Göster"/>
+        <!-- Will write various hero stats to chat -->
+        <string id="QsTQzceq" text="Sohbet etmek için çeşitli kahraman istatistikleri yazacak"/>
+        <!-- Show Gold -->
+        <string id="oWtshHwx" text="Altını Göster"/>
+        <!-- Show gold -->
+        <string id="O2mUbcue" text="Altını göster"/>
+        <!-- Show General -->
+        <string id="VmQECrnc" text="Genel Göster"/>
+        <!-- Show personal info: health, location, age -->
+        <string id="JWbk5Oko" text="Kişisel bilgileri göster: sağlık, konum, yaş"/>
+        <!-- Show Top Skills -->
+        <string id="tMKmlYeR" text="En İyi Becerileri Göster"/>
+        <!-- Shows skills (and focuse values) above the specified MinSkillToShow value -->
+        <string id="dayx7JEJ" text="Belirtilen MinSkillToShow değerinin üzerindeki becerileri (ve odak değerlerini) gösterir"/>
+        <!-- Min Skill To Show -->
+        <string id="5VW8HXxS" text="Gösterilecek Minimum Beceri"/>
+        <!-- If ShowTopSkills is specified, this defines what skills are shown -->
+        <string id="4819Fxyv" text="ShowTopSkills belirtilirse, bu, hangi becerilerin gösterileceğini tanımlar."/>
+        <!-- Show Attributes -->
+        <string id="lSM7JkvB" text="Nitelikleri Göster"/>
+        <!-- Shows all hero attributes -->
+        <string id="co5TLkOw" text="Tüm kahraman özelliklerini gösterir"/>
+        <!-- Show Equipment -->
+        <string id="uLUxOyp2" text="Ekipmanı Göster"/>
+        <!-- Shows the equipment tier of the hero -->
+        <string id="CnTMaEPC" text="Kahramanın ekipman seviyesini gösterir"/>
+        <!-- Show Inventory -->
+        <string id="sp1iuH1y" text="Envanteri Göster"/>
+        <!-- Shows the full battle inventory of the hero -->
+        <string id="uhAC3hOZ" text="Kahramanın tam savaş envanterini gösterir"/>
+        <!-- Show Storage -->
+        <string id="aRA1V1Jp" text="Depolamayı Göster"/>
+        <!-- Shows the heroes storage (all their custom items) -->
+        <string id="Wjr33ERJ" text="Kahramanların deposunu gösterir (tüm özel öğeleri)"/>
+        <!-- Show Civilian Inventory -->
+        <string id="ecvBeN44" text="Sivil Envanterini Göster"/>
+        <!-- Shows the full civilian inventory of the hero -->
+        <string id="fUggutW6" text="Kahramanın tam sivil envanterini gösterir"/>
+        <!-- Show Retinue -->
+        <string id="p0WEhay8" text="Maiyeti Göster"/>
+        <!-- Shows a summary of the retinue of the hero (count and tier) -->
+        <string id="AXnWeTzh" text="Kahramanın maiyetinin bir özetini gösterir (sayı ve kademe)"/>
+        <!-- Show Retinue List -->
+        <string id="Vyatyyuh" text="Emekli Listesini Göster"/>
+        <!-- Shows the exact classes and counts of the retinue of the hero -->
+        <string id="CSTqzcOi" text="Kahramanın maiyetinin tam sınıflarını ve sayılarını gösterir"/>
+        <!-- Show Achievements -->
+        <string id="1F3utCWA" text="Başarıları Göster"/>
+        <!-- Shows all hero achievements -->
+        <string id="CKJd7KC9" text="Tüm kahraman başarılarını gösterir"/>
+        <!-- Show Tracked Stats -->
+        <string id="LNvYSMZj" text="İzlenen İstatistikleri Göster"/>
+        <!-- Shows all hero tracked stats (kills, deaths, summons, attacks, tournament wins etc.) -->
+        <string id="FaUbhgTR" text="İzlenen tüm kahraman istatistiklerini gösterir (öldürmeler, ölümler, çağrılar, saldırılar, turnuva galibiyetleri vb.)"/>
+        <!-- Show Powers -->
+        <string id="cHaiwygJ" text="Güçleri Göster"/>
+        <!-- Shows the heroes unlocked powers -->
+        <string id="YW8HsNEF" text="Kahramanların kilidi açılmış güçlerini gösterir"/>
+        <!-- Gold -->
+        <string id="YVhcZatv" text="Altın"/>
+        <!-- Age, Clan, Culture, Health -->
+        <string id="jZigiKXG" text="Yaş, Klan, Kültür, Sağlık"/>
+        <!-- Skills greater than {MinSkillToShow} -->
+        <string id="6wVce2iI" text="{MinSkillToShow} değerinden büyük beceriler"/>
+        <!-- Attributes -->
+        <string id="74kcLopo" text="Öznitellikler"/>
+        <!-- Equipment tier -->
+        <string id="PeDxGcu7" text="Ekipman katmanı"/>
+        <!-- Battle equipment inventory -->
+        <string id="EVvlMCru" text="Savaş ekipmanı envanteri"/>
+        <!-- Civilian equipment inventory -->
+        <string id="DeffOla6" text="Sivil ekipman envanteri"/>
+        <!-- Custom item storage -->
+        <string id="VSDDQdmJ" text="Özel öğe depolama"/>
+        <!-- Retinue count and average tier -->
+        <string id="C0mkGXlK" text="Emekli sayısı ve ortalama katman"/>
+        <!-- Retinue unit list -->
+        <string id="L4Rh6vFE" text="Geri alma birimi listesi"/>
+        <!-- Achievements -->
+        <string id="ZW9XlwY7" text="Başarılar"/>
+        <!-- Tracked stats -->
+        <string id="Xmo7pOpj" text="izlenen istatistikler"/>
+        <!-- Powers -->
+        <string id="xVDOsWPq" text="güçler"/>
+        <!-- Shows -->
+        <string id="UB1bAtSI" text="Şovlar"/>
+        <!-- No Class -->
+        <string id="ZI2UKbNp" text="Ders yok"/>
+        <!-- {Age} yrs -->
+        <string id="4TVRrlOw" text="{Age} yıl"/>
+        <!-- {HP} / {MaxHP} HP -->
+        <string id="jY2QJdA3" text="{HP} / {MaxHP} HP"/>
+        <!-- Last seen near {Place} -->
+        <string id="B2xDasDx" text="En son {Place} yakınında görüldü"/>
+        <!-- [LVL] -->
+        <string id="fRwyY6ms" text="[LVL]"/>
+        <!-- [SKILLS] -->
+        <string id="rTId8pBy" text="[BECERİLER]"/>
+        <!-- [ATTR] -->
+        <string id="RSlhbJzO" text="[ATTR]"/>
+        <!-- [TIER] -->
+        <string id="64yw2YD0" text="[AŞAMA]"/>
+        <!-- No Equip Class -->
+        <string id="u32KRqz8" text="Donanım Sınıfı Yok"/>
+        <!-- [BATTLE] -->
+        <string id="YVVlcDSK" text="[SAVAŞ]"/>
+        <!-- [CIV] -->
+        <string id="zaVtcDWB" text="[CIV]"/>
+        <!-- [STORED] -->
+        <string id="U4HnxTCj" text="[SAKLANMIŞ]"/>
+        <!-- [RETINUE] -->
+        <string id="hMBF1zLr" text="[GELECEĞİ]"/>
+        <!-- (nothing) -->
+        <string id="4IOefqsW" text="(Hiçbir şey)"/>
+        <!-- {RetinueCount} (avg Tier {Tier}) -->
+        <string id="XE2QRhyz" text="{RetinueCount} (avg Tier {Tier})"/>
+        <!-- [ACHIEV] -->
+        <string id="giS3vq1V" text="[BAŞARI]"/>
+        <!-- K -->
+        <string id="ADjhFwlz" text="K"/>
+        <!-- D -->
+        <string id="aUj96cVC" text="NS"/>
+        <!-- KVwr -->
+        <string id="i02EMVP8" text="KVwr"/>
+        <!-- KStrmr -->
+        <string id="iGXwhVja" text="Kstrmr"/>
+        <!-- Battles -->
+        <string id="APUC6wGt" text="savaşlar"/>
+        <!-- Sums -->
+        <string id="6nwK1UF9" text="toplamlar"/>
+        <!-- CSums -->
+        <string id="uDFykstd" text="CSum&amp;#39;lar"/>
+        <!-- Atks -->
+        <string id="wtmfNCIj" text="atks"/>
+        <!-- CAtks -->
+        <string id="T29akAtY" text="Kediler"/>
+        <!-- TourRndW -->
+        <string id="NOkWgftX" text="TurRndW"/>
+        <!-- TourRndL -->
+        <string id="k5O3x52V" text="TurRndL"/>
+        <!-- TourW -->
+        <string id="J6yoXowD" text="TurW"/>
+        <!-- [STATS] -->
+        <string id="nL2E16fj" text="[STATLER]"/>
+        <!-- [ACTIVE] -->
+        <string id="gV1s8Ffw" text="[AKTİF]"/>
+        <!-- [PASSIVE] -->
+        <string id="z82jxnmF" text="[PASİF]"/>
+        <!-- Amount Low -->
+        <string id="01yarGvZ" text="Miktar Düşük"/>
+        <!-- Lower bound of amount to improve -->
+        <string id="UVKWPBjq" text="İyileştirilecek miktarın alt sınırı"/>
+        <!-- Amount High -->
+        <string id="qi7FVuQB" text="Miktar Yüksek"/>
+        <!-- Upper bound of amount to improve -->
+        <string id="tU4rSLcx" text="İyileştirilecek miktarın üst sınırı"/>
+        <!-- Gold Cost -->
+        <string id="DlZ7sV1N" text="Altın Maliyeti"/>
+        <!-- Gold that will be taken from the hero -->
+        <string id="pGwh9edB" text="Kahramandan alınacak altın"/>
+        
+        <!-- JoinTournament -->
+        <!-- Join Tournament -->
+        <string id="EZPZtyXo" text="Turnuvaya Katılın"/>
+        <!-- Puts adopted heroes in queue for the next tournament -->
+        <string id="1h8OT5VD" text="Kabul edilen kahramanları bir sonraki turnuva için sıraya koyar"/>
+        <!-- Gold Cost -->
+        <string id="7D2UBlGC" text="Altın Maliyeti"/>
+        <!-- Gold cost to join -->
+        <string id="Upuhtmr6" text="Katılmak için altın maliyeti"/>
+        <!-- JOIN the viewer tournament -->
+        <string id="jUcsHkqk" text="izleyici turnuvasına KATILIN"/>
+        <!-- WATCH the viewer tournament -->
+        <string id="hlVvENgP" text="İzleyici turnuvasını İZLEYİN"/>
+        
+        <!-- NameItem -->
+        <!-- Name Item -->
+        <string id="0YSdK3zK" text="İsim Öğe"/>
+        <!-- Allow viewer to name custom items -->
+        <string id="k7vnOEIN" text="İzleyicinin özel öğeleri adlandırmasına izin ver"/>
+        <!-- You have no nameable items -->
+        <string id="rXVOIMri" text="Adlandırılabilir öğeniz yok"/>
+        <!-- You will rename your {Item} -->
+        <string id="Xb3eM5o7" text="{Item} cihazınızı yeniden adlandıracaksınız"/>
+        <!-- {PreviousName} renamed to {NewName} -->
+        <string id="iqNEr6Y7" text="{PreviousName} renamed to {NewName}"/>
+        
+        <!-- Retinue -->
+        <string id="tLSFX9Xc" text="maiyet"/>
+        <!-- Add and improve adopted heroes retinue -->
+        <string id="bhC3VcmU" text="Kabul edilen kahramanların maiyetini ekleyin ve iyileştirin"/>
+        <!-- Retinue Upgrade Settings -->
+        <string id="iNoFrKsN" text="Yükseltme Ayarlarına Devam Et"/>
+        <!-- All By Default -->
+        <string id="nIsuuFMC" text="Tümü Varsayılan Olarak"/>
+        <!-- Whether this action should attempt to buy/upgrade as many times as possible when called with no parameter. -->
+        <string id="mJSGvWlR" text="Bu eylemin, parametresiz çağrıldığında mümkün olduğunca çok kez satın almaya/yükseltmeye çalışıp çalışmaması."/>
+        <!-- You cannot upgrade retinue, as a mission is active! -->
+        <string id="mCcpMwrN" text="Görev aktif olduğu için maiyeti yükseltemezsiniz!"/>
+        <!-- (number, or all) -->
+        <string id="NexXxYvj" text="(sayı veya tümü)"/>
+        
+        <!-- RetireMyHero -->
+        <!-- Retire Hero -->
+        <string id="sZhEiXyn" text="Emekli Kahraman"/>
+        <!-- Retires the hero, allowing the viewer to adopt another (if that is enabled) -->
+        <string id="Eh0m4R54" text="Kahramanı emekliye ayırarak izleyicinin başka birini benimsemesine izin verir (etkinleştirilmişse)"/>
+        <!-- yes -->
+        <string id="xSbB2Zw5" text="Evet"/>
+        <!-- You must enter '{Prompt}' at the prompt to retire your hero -->
+        <string id="0qVpLYfb" text="Kahramanınızı emekliye ayırmak için komut istemine &amp;#39;{Prompt}&amp;#39; girmelisiniz"/>
+        <!-- You cannot retire your hero, as a mission is active! -->
+        <string id="po20lHyz" text="Bir görev aktif olduğu için kahramanınızı emekli edemezsiniz!"/>
+        <!-- {Name} has retired! -->
+        <string id="ihG4fs1r" text="{Name} emekli oldu!"/>
+        
+        <!-- SetHeroClass -->
+        <!-- Set Hero Class -->
+        <string id="pVblweVj" text="Kahraman Sınıfını Ayarla"/>
+        <!-- Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied -->
+        <string id="7VWKYp1U" text="Ekipmanı etkileyen ve XP&amp;#39;nin uygulandığı bir kahramanın &amp;#39;sınıfını&amp;#39; değiştirmeye izin verir"/>
+        <!-- First Equip Is Free -->
+        <string id="iLpDEiTq" text="İlk Teçhizat Ücretsizdir"/>
+        <!-- If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class) -->
+        <string id="pRETwmGv" text="Bu, kahramanın zaten bir sınıfı olmadığında ücretsizse (bu, yalnızca Kabul Et varsayılan bir sınıf belirtmiyorsa olabilir)"/>
+        <!-- Cost Tier 1 -->
+        <string id="N2OnDXOs" text="Maliyet Katmanı 1"/>
+        <!-- Gold cost for Tier 1 class change -->
+        <string id="tuhth4ld" text="1. Kademe sınıf değişikliği için altın maliyeti"/>
+        <!-- Cost Tier 2 -->
+        <string id="jIQ5VYSh" text="Maliyet Katmanı 2"/>
+        <!-- Gold cost for Tier 2 class change -->
+        <string id="V5CGr4lf" text="2. Kademe sınıf değişikliği için altın maliyeti"/>
+        <!-- Cost Tier 3 -->
+        <string id="lWOrthSS" text="Maliyet Katmanı 3"/>
+        <!-- Gold cost for Tier 3 class change -->
+        <string id="NlXa6kJS" text="Kademe 3 sınıf değişikliği için altın maliyeti"/>
+        <!-- Cost Tier 4 -->
+        <string id="wuKWOAwt" text="Maliyet Katmanı 4"/>
+        <!-- Gold cost for Tier 4 class change -->
+        <string id="0X1TRYbP" text="Kademe 4 sınıf değişikliği için altın maliyeti"/>
+        <!-- Cost Tier 5 -->
+        <string id="ZBzqCAyW" text="Maliyet Katmanı 5"/>
+        <!-- Gold cost for Tier 5 class change -->
+        <string id="yelsar2J" text="Kademe 5 sınıf değişikliği için altın maliyeti"/>
+        <!-- Cost Tier 6 -->
+        <string id="ZLdpLkbg" text="Maliyet Katmanı 6"/>
+        <!-- Gold cost for Tier 6 class change -->
+        <string id="eYcOsu9h" text="Kademe 6 sınıf değişikliği için altın maliyeti"/>
+        <!-- Update Equipment -->
+        <string id="rpkghdTp" text="Ekipmanı Güncelle"/>
+        <!-- Whether to immediately update equipment after changing class -->
+        <string id="cWQKOYEx" text="Sınıf değiştirdikten sonra ekipmanın hemen güncellenip güncellenmeyeceği"/>
+        <!-- Tier costs -->
+        <string id="2WAi7pZN" text="Katman maliyetleri"/>
+        <!-- Free if you do not already have a class -->
+        <string id="lW1KcoWD" text="Henüz bir sınıfınız yoksa ücretsiz"/>
+        <!-- Updates equipment to match new class -->
+        <string id="qOR4RSqt" text="Ekipmanı yeni sınıfa uyacak şekilde günceller"/>
+        <!-- You cannot change class, as a mission is active! -->
+        <string id="70vJ1jxZ" text="Görev aktif olduğu için sınıf değiştiremezsiniz!"/>
+        <!-- Provide class name -->
+        <string id="prmHmdGE" text="Sınıf adı sağlayın"/>
+        <!-- changed class to {ClassName} -->
+        <string id="giUCnkf2" text="sınıfı {ClassName} olarak değiştirdi"/>
+        
+        <!-- SkillXP -->
+        <!-- Skill XP -->
+        <string id="mpdzqyCK" text="Beceri XP&amp;#39;si"/>
+        <!-- Improve adopted heroes skills -->
+        <string id="Bc2HIByX" text="Kabul edilen kahramanların becerilerini geliştirin"/>
+        <!-- Skills -->
+        <string id="rAGAEUIH" text="Yetenekler"/>
+        <!-- What to improve -->
+        <string id="wo5VSDaj" text="Ne geliştirmek"/>
+        <!-- Auto -->
+        <string id="LVp7Llay" text="Oto"/>
+        <!-- Chooses a random skill to add XP to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used. -->
+        <string id="CTCcqB3Y" text="XP eklemek için rastgele bir beceri seçer, sınıf becerilerini, ardından mevcut ekipman için becerileri ve ardından diğer becerileri tercih eder. Otomatik kullanıldığında beceriler ayarı yok sayılır."/>
+
+        <!-- Automatic, based on class, equipment, and existing skills -->
+        <string id="QJ9Cssr7" text="Sınıf, ekipman ve mevcut becerilere göre otomatik"/>
+        <!-- {AmountLow} to {AmountHigh} -->
+        <string id="vTkGnRBS" text="{AmountLow} to {AmountHigh}"/>
+        <!-- Costs -->
+        <string id="lz87CnyL" text="Maliyetler"/>
+        <!-- Couldn't find a skill to improve -->
+        <string id="vK5z2Naq" text="Geliştirmek için bir beceri bulamadım"/>
+        <!-- {Skill} capped, get more focus points -->
+        <string id="ozkK4mk7" text="{Skill} sınırlandı, daha fazla odak noktası elde edin"/>
+
+        <!-- 1H -->
+        <string id="Ei8NyJSW" text="1 saat"/>
+        <!-- 2H -->
+        <string id="U38E72Ue" text="2H"/>
+        <!-- PA -->
+        <string id="Cg885bns" text="PA"/>
+        <!-- Bow -->
+        <string id="QpWRsKrc" text="Yay"/>
+        <!-- Xb -->
+        <string id="71M512iJ" text="Xb"/>
+        <!-- Thr -->
+        <string id="jMRloOi0" text="Thr"/>
+        <!-- Rid -->
+        <string id="ligWzK3s" text="kurtulmak"/>
+        <!-- Ath -->
+        <string id="1MJnisqR" text="at"/>
+        <!-- Smt -->
+        <string id="VjV54wik" text="Smt"/>
+        <!-- Tac -->
+        <string id="6iG2GJW5" text="Tak"/>
+        <!-- Sct -->
+        <string id="AgaZsMEb" text="Sct"/>
+        <!-- Rog -->
+        <string id="6x33x91Z" text="Rog"/>
+        <!-- Cha -->
+        <string id="N9X9VVsM" text="Cha"/>
+        <!-- Trd -->
+        <string id="J8ElWB0P" text="tr"/>
+        <!-- Stw -->
+        <string id="BD65Qr83" text="Stw"/>
+        <!-- Ldr -->
+        <string id="OYJ8tfhY" text="Ldr"/>
+        <!-- Med -->
+        <string id="PmKb4QCv" text="Med"/>
+        <!-- Eng -->
+        <string id="wLkMFOky" text="Müh"/>
+        
+        <!-- SummonHero -->
+        <!-- Summon Hero -->
+        <string id="6uWk9iMM" text="Kahraman Çağır"/>
+        <!-- Spawns the adopted hero into the current active mission -->
+        <string id="ODnzMmBQ" text="Kabul edilen kahramanı mevcut aktif göreve sokar"/>
+        <!-- Allowed Missions -->
+        <string id="i8P1EnE1" text="İzin Verilen Görevler"/>
+        <!-- Effects -->
+        <string id="tYGvtYKd" text="Etkileri"/>
+        
+        <!-- AllowFieldBattle -->
+        <string id="DkCdNiwF" text="Saha Savaşına İzin Ver"/>
+        <!-- AllowVillageBattle -->
+        <string id="yVz54Nky" text="Köy Savaşına İzin Ver"/>
+        <!-- AllowSiegeBattle -->
+        <string id="0X8bcuPE" text="Kuşatma Savaşına İzin Ver"/>
+        <!-- AllowFriendlyMission -->
+        <string id="Sd1jguGc" text="Dostça Göreve İzin Ver"/>
+        <!-- Allow Hide Out -->
+        <string id="1xJGhP2D" text="Gizlenmeye İzin Ver"/>
+        <!-- On Player Side -->
+        <string id="i59Fm8zV" text="Oyuncu Tarafında"/>
+        <!-- Gold Cost -->
+        <string id="HOZnxjGb" text="Altın Maliyeti"/>
+        <!-- Preferred Formation -->
+        <string id="sZRrJfKm" text="Tercih Edilen Formasyon"/>
+        <!-- Alert Sound -->
+        <string id="74AvYKCg" text="Uyarı Sesi"/>
+        <!-- Sub Boost -->
+        <string id="H7B3Yzly" text="Alt Güçlendirme"/>
+        <!-- Heal Per Second -->
+        <string id="cXeUjVur" text="Saniyede İyileşme"/>
+        
+        <!-- Can summon for normal field battles between parties -->
+        <string id="ddjUyXpV" text="Taraflar arasında normal saha savaşları için çağrı yapabilir"/>
+        <!-- Can summon in village battles -->
+        <string id="buLH4Spj" text="Köy savaşlarında çağırabilir"/>
+        <!-- Can summon in sieges -->
+        <string id="uk1kL79V" text="Kuşatmalarda çağırabilir"/>
+        <!-- This includes walking about village/town/dungeon/keep -->
+        <string id="1HaljOia" text="Buna köy/kasaba/zindan/koruyucu hakkında yürüyüş de dahildir."/>
+        <!-- Can summon in the hideout missions -->
+        <string id="NZTRYcGV" text="Saklanma görevlerinde çağırabilir"/>
+        <!-- Whether the hero is on the player or enemy side -->
+        <string id="S86V5s0C" text="Kahramanın oyuncu tarafında mı yoksa düşman tarafında mı olduğu"/>
+        <!-- Gold cost to summon -->
+        <string id="OQISx7Jz" text="Çağırmak için altın maliyeti"/>
+        <!-- Which formation to add summoned heroes to (only applies to ones without a specified class) -->
+        <string id="vkFowOeg" text="Çağrılan kahramanların hangi formasyona ekleneceği (yalnızca belirli bir sınıfa sahip olmayanlar için geçerlidir)"/>
+        <!-- Sound to play when summoned -->
+        <string id="R00Lx6aE" text="Çağrıldığında çalınacak ses"/>
+        <!-- Multiplier applied to (positive) effects for subscribers -->
+        <string id="lFnV3cR9" text="Aboneler için (pozitif) etkilere uygulanan çarpan"/>
+        <!-- HP the hero gets every second they are alive in the mission -->
+        <string id="gnh3KY5a" text="Kahraman görevde hayatta olduğu her saniye HP alır"/>
+        <!-- Side -->
+        <string id="Uu58rjgC" text="Yan"/>
+        <!-- Heals -->
+        <string id="uHTRhFAh" text="iyileştirir"/>
+        <!-- Cost -->
+        <string id="hCJhgl1m" text="Maliyet"/>
+        <!-- Streamers side -->
+        <string id="myKKaEl9" text="Yayıncılar tarafı"/>
+        <!-- Enemy side -->
+        <string id="BTZ84Uww" text="düşman tarafı"/>
+        <!-- {HealPerSecond}HP per second while summoned -->
+        <string id="cR84crHC" text="{HealPerSecond}Çağrılıyken saniye başına HP"/>
+        <!-- Field battle -->
+        <string id="SRdB89Ca" text="alan savaşı"/>
+        <!-- Village battle -->
+        <string id="M45VqXVa" text="Köy savaşı"/>
+        <!-- Siege battle -->
+        <string id="hbWdpDwr" text="kuşatma savaşı"/>
+        <!-- Friendly mission -->
+        <string id="YIfbDpI9" text="Dostça görev"/>
+        <!-- Hide-out -->
+        <string id="pZ239vm5" text="saklanma"/>
+        <!-- Allowed in -->
+        <string id="zOB6Nadp" text="Izin verildi"/>
+        
+        <!-- You cannot be summoned now! -->
+        <string id="TdykIizS" text="Şimdi çağırılamazsın!"/>
+        <!-- You cannot be summoned now, this mission does not allow it! -->
+        <string id="HWnEJg1M" text="Şimdi çağırılamazsın, bu görev buna izin vermiyor!"/>
+        <!-- You cannot be summoned now, the mission has not started yet! -->
+        <string id="v5dO40vi" text="Şimdi çağırılamazsın, görev henüz başlamadı!"/>
+        <!-- You cannot be summoned now, the mission is ending! -->
+        <string id="mTKKaYIf" text="Şimdi çağırılamazsın, görev sona eriyor!"/>
+        <!-- You cannot be summoned, you are already here! -->
+        <string id="YTEgKnCW" text="Çağırılamazsın, zaten buradasın!"/>
+        
+        <!-- You won {WonGold}{GoldIcon}! -->
+        <string id="pmj8vjZj" text="{WonGold}{GoldIcon} kazandınız!"/>
+        <!-- You lost {LostGold}{GoldIcon}! -->
+        <string id="ajhKKeEo" text="{LostGold}{GoldIcon} kaybettiniz!"/>
+        <!-- You have joined the battle! -->
+        <string id="Ft3cxfIx" text="Savaşa katıldınız!"/>
+        <!-- You cannot be summoned now, the mission has not started yet! -->
+        <string id="YZ4V5e4V" text="Şimdi çağırılamazsın, görev henüz başlamadı!"/>
+        <!-- You cannot switch sides, you traitor! -->
+        <string id="2D2T6xP6" text="Taraf değiştiremezsin hain!"/>
+        <!-- You cannot be summoned, you DIED! -->
+        <string id="RBTDviuM" text="Çağırılamazsın, ÖLDÜN!"/>
+        <!-- You cannot be summoned, you are already here! -->
+        <string id="YMiZAluP" text="Çağırılamazsın, zaten buradasın!"/>
+        <!-- {CoolDown}s cooldown remaining -->
+        <string id="kyUh29ij" text="{CoolDown}sn bekleme süresi kaldı"/>
+        <!-- You cannot be summoned, your party is already here! -->
+        <string id="93Hrc2EA" text="Çağırılamazsın, partin zaten burada!"/>
+        <!-- Could not find a party for you to join! -->
+        <string id="jtqEqonE" text="Katılabileceğiniz bir parti bulunamadı!"/>
+        <!-- You have joined the battle! -->
+        <string id="TvkEBZeY" text="Savaşa katıldınız!"/>
+        <!-- Text -->
+        <string id="V3STT5Ar" text="Metin"/>
+        <!-- Text that will be displayed in game -->
+        <string id="wsIzPzfG" text="Oyunda görüntülenecek metin"/>
+        <!-- Enter shout text here -->
+        <string id="xf2mTWx8" text="Buraya bağırma metnini girin"/>
+        <!-- Weight -->
+        <string id="bCbN9OmH" text="Ağırlık"/>
+        <!-- Higher weight means more chance this shout is used -->
+        <string id="xqfCYYwN" text="Daha yüksek ağırlık, bu haykırışın kullanılma şansının daha yüksek olduğu anlamına gelir"/>
+        <!-- Player Side -->
+        <string id="xK1fdx7s" text="Oyuncu Tarafı"/>
+        <!-- Can be used when summoning on player side -->
+        <string id="BpDPlsfY" text="Oyuncu tarafında çağırırken kullanılabilir"/>
+        <!-- Enemy Side -->
+        <string id="srN8yHp8" text="düşman tarafı"/>
+        <!-- Can be used when summoning on enemy side -->
+        <string id="0m4s9zXc" text="Düşman tarafında çağırırken kullanılabilir"/>
+        <!-- General -->
+        <string id="MOOBN2Hz" text="Genel"/>
+        <!-- Can be used in situations other than battle/siege -->
+        <string id="6TWSIu60" text="Savaş/kuşatma dışındaki durumlarda kullanılabilir"/>
+        <!-- Field Battle -->
+        <string id="4KdKuusC" text="Saha Savaşı"/>
+        <!-- Can be used when in a field battle -->
+        <string id="8aLSNsxr" text="Bir saha savaşında kullanılabilir"/>
+        <!-- Siege Defend -->
+        <string id="2yevL6dV" text="Kuşatma Savunması"/>
+        <!-- Can be used when on siege defender side -->
+        <string id="8HwihUK3" text="Kuşatma savunucusu tarafındayken kullanılabilir"/>
+        <!-- Siege Attack -->
+        <string id="r5tvIQwx" text="Kuşatma Saldırısı"/>
+        <!-- Can be used when on siege attacker side -->
+        <string id="mbIwJprm" text="Kuşatma saldırganı tarafındayken kullanılabilir"/>
+        <!-- Shout -->
+        <string id="CXb5ALls" text="Bağırmak"/>
+
+        <!-- TournamentBet -->
+        <!-- Invalid gold argument -->
+        <string id="GiU7feEu" text="Geçersiz altın argümanı"/>
+        <!-- Betting not active -->
+        <string id="3AQKsF9f" text="Bahis aktif değil"/>
+        <!-- Bet {GoldAmount}{GoldIcon} on {Team} -->
+        <string id="9tlhaGyH" text="Bahis {GoldAmount}{GoldIcon} on {Team}"/>
+        <!-- (team) (gold) -->
+        <string id="8XQwqd4f" text="(takım) (altın)"/>
+        
+        <!-- UsePower -->
+        <!-- Use Power -->
+        <string id="Wpx7tHFL" text="Gücü Kullan"/>
+        <!-- Allows activation of the adopted heroes class active powers -->
+        <string id="FJwn6kGW" text="Kabul edilen kahramanlar sınıfı aktif güçlerinin etkinleştirilmesine izin verir"/>
+        <!-- You don't have a class, so no powers are available! -->
+        <string id="85HYGklq" text="Bir sınıfınız yok, bu yüzden hiçbir yetkiniz yok!"/>
+        <!-- You cannot activate your powers now: {FailReason}! -->
+        <string id="nXSUvuyD" text="Güçlerinizi şimdi etkinleştiremezsiniz: {FailReason}!"/>
+        <!-- Your powers are already active! -->
+        <string id="o23xAj6M" text="Güçlerin zaten aktif!"/>
+    </strings>
+</base>

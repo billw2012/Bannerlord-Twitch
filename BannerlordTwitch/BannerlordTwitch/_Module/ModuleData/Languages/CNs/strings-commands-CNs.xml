@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="简体中文"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- stats -->
+        <!-- Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue. -->
+        <string id="JiMaaypq" text="显示您的英雄一般信息，包括部落、金币、位置、HP、技能、属性和随从。"/>
+        <!-- show stats -->
+        <string id="tIVnWwGG" text="显示统计数据"/>
+        <!-- stats -->
+        <string id="J2AqvpeF" text="统计数据"/>
+
+        <!-- inv -->
+        <!-- Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage. -->
+        <string id="JneYk4pF" text="显示您的英雄库存，包括装备等级、完整的战斗和民用装备列表以及存储中的所有自定义物品。"/>
+        <!-- show equipment -->
+        <string id="oVNKTdOy" text="展示设备"/>
+        <!-- inv -->
+        <string id="UbklIEGh" text="投资"/>
+
+        <!-- equip -->
+        <!-- Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to. -->
+        <string id="EZGcIEgQ" text="升级你的英雄装备等级，替换任何较低等级的现有装备，自定义物品除外。费用取决于您尝试升级到的层级。"/>
+        <!-- upgrade equipment -->
+        <string id="vTo0NowP" text="升级装备"/>
+        <!-- equip -->
+        <string id="wHqxd4kb" text="装备"/>
+        
+        <!-- Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford. -->
+        <string id="zxAVjOW6" text="购买新的随从部队，或者如果您已达到上限，则将现有的随从部队升级到下一层。当您召唤时，随从会与您一起出现在战斗中，并在他们杀戮时为您赚钱。您可以向命令传递一个数字，以指定您想要购买或升级的部队数量。默认情况下，它会尽可能多地做你能负担得起的事情。"/>
+        <!-- upgrade retinue -->
+        <string id="I7sm1ct6" text="升级随从"/>
+        <!-- retinue -->
+        <string id="mge9rH9J" text="随从"/>
+
+        <!-- class -->        
+        <!-- Selects a new class for your hero, updating your existing equipment to match the class requirements.&lt;br&gt;Usage is &lt;code&gt;!class (new class name)&lt;/code&gt;, e.g. &lt;code&gt;!class archer&lt;/code&gt;. -->
+        <string id="K3297TEM" text="为您的英雄选择一个新职业，更新您现有的装备以满足职业要求。&lt;br&gt;用法是&lt;code&gt;!class (new class name)&lt;/code&gt; ，例如&lt;code&gt;!class archer&lt;/code&gt; 。"/>
+        <!-- select new class -->
+        <string id="uN82Y7hR" text="选择新班级"/>
+        <!-- class -->
+        <string id="nV9iIsDC" text="班级"/>
+
+        <!-- reequip -->
+        <!-- Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier. -->
+        <string id="zBIv0a4I" text="随机化你的装备，在它的当前层。它不会替换高于您当前等级的物品或自定义物品。例如，如果您拥有 3 级装备，但在锦标赛中赢得了 6 级武器，则此命令不会取代该武器。有时，您最终会发现一些物品没有变化，特别是当您当前的等级没有很多该类型的物品可用时。"/>
+        <!-- reroll equipment -->
+        <string id="3KYGJ0Mu" text="重卷设备"/>
+        <!-- reequip -->
+        <string id="fGfTaAoD" text="重新装备"/>
+
+        <!-- gold -->
+        <!-- Show your heroes current gold. -->
+        <string id="eWI5oDce" text="向你的英雄展示当前的金币。"/>
+        <!-- show gold -->
+        <string id="zdRj4blL" text="秀金"/>
+        <!-- gold -->
+        <string id="W5uX9HCJ" text="金子"/>
+
+        <!-- retinuelist -->
+        <!-- Shows your current retinue troops. -->
+        <string id="BlBiEmbf" text="显示您当前的随从部队。"/>
+        <!-- retinue list -->
+        <string id="ysbFV5uT" text="随从名单"/>
+        <!-- retinuelist -->
+        <string id="kG6yjBBR" text="随从"/>
+
+        <!-- adopt -->
+        <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
+        <string id="MpvqvKef" text="在游戏中获得英雄。几乎所有其他行动都需要一个被收养的英雄。"/>
+        <!-- adopt -->
+        <string id="0grO6hB5" text="采纳"/>
+
+        <!-- nameitem -->
+        <!-- You can use this to name your custom items.&lt;br&gt;Usage is &lt;code&gt;!nameitem (name)&lt;/code&gt;, for example &lt;code&gt;!nameitem Foehammer&lt;/code&gt;.&lt;br&gt;If you call &lt;code&gt;!nameitem&lt;/code&gt; on its own it will tell you what item will be named next. -->
+        <string id="S1FZXQim" text="您可以使用它来命名您的自定义项目。&lt;br&gt;用法是&lt;code&gt;!nameitem (name)&lt;/code&gt; ，例如&lt;code&gt;!nameitem Foehammer&lt;/code&gt; 。&lt;br&gt;如果您&lt;code&gt;!nameitem&lt;/code&gt; ，它会告诉您接下来将命名哪个项目。"/>
+        <!-- name a reward item -->
+        <string id="tNVmXpoc" text="命名奖励项目"/>
+        <!-- nameitem -->
+        <string id="IFDecKha" text="名称项"/>
+
+        <!-- bltbet -->
+        <!-- Use this to bet on tournament matches, when available.&lt;br&gt;Usage is &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt;, for example &lt;code&gt;!bltbet red 10000&lt;/code&gt; to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.&lt;br&gt;If only one team is bet upon, the bets will be refunded. -->
+        <string id="thajdk5s" text="如果可用，使用它来投注锦标赛比赛。&lt;br&gt;用法是&lt;code&gt;!bltbet (team) (gold)&lt;/code&gt; ，例如&lt;code&gt;!bltbet red 10000&lt;/code&gt;在红色上下注 10000 金币。根据相对下注大小，从整个底池中分配奖金。&lt;br&gt;如果只投注一支球队，投注将被退还。"/>
+        <!-- bet on tournament -->
+        <string id="xBgLXaf7" text="投注锦标赛"/>
+        <!-- bltbet -->
+        <string id="haKiwbsR" text="打赌"/>
+
+        <!-- power -->
+        <!-- power -->
+        <string id="NUQ5PsjF" text="力量"/>
+        <!-- Show the heroes achievements and tracked stats. -->
+        <string id="ZVxCqyJL" text="显示英雄成就和跟踪统计。"/>
+
+        <!-- achievements -->
+        <!-- achievements -->
+        <string id="aGPoAaM9" text="成就"/>
+
+        <!-- ach -->
+        <!-- ach -->
+        <string id="woTpsqyV" text="啊"/>
+
+        <!-- auction -->
+        <!-- Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.&lt;br&gt;Usage is &lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!auction 50000 Boots&lt;/code&gt; would start a new auction for your custom item with the word &quot;Boots&quot; in it, with a reserve of 50000. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
+        <string id="ma27zJHy" text="以指定的底价开始拍卖您拥有的定制物品。其他观众可以对您的物品出价，出价最高的人将在拍卖结束时收到。&lt;br&gt;用法是&lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt; ，例如&lt;code&gt;!auction 50000 Boots&lt;/code&gt;将为您的自定义物品开始新的拍卖，其中包含“Boots”一词，保留价为 50000。如果不止一件物品里面有“Boots”，命令会被拒绝。部分名称必须与一项完全匹配。"/>
+        <!-- auction -->
+        <string id="QQX2aboq" text="拍卖"/>
+
+        <!-- bid -->
+        <!-- Place a bid on the current auction, if one is active.&lt;br&gt;Usage is &lt;code&gt;!bid (gold amount)&lt;/code&gt;, e.g. &lt;code&gt;!bid 100000&lt;/code&gt;. If there is no auction, or the bid doesn&apos;t exceed the reserve price, it will be rejected. -->
+        <string id="1TBIIJVZ" text="对当前拍卖出价（如果有的话）。&lt;br&gt;用法是&lt;code&gt;!bid (gold amount)&lt;/code&gt; ，例如&lt;code&gt;!bid 100000&lt;/code&gt; 。如果没有拍卖，或者出价没有超过底价，它将被拒绝。"/>
+        <!-- bid -->
+        <string id="taI6SRSG" text="出价"/>
+
+        <!-- discarditem -->
+        <!-- Throw away one of your custom items.&lt;br&gt;Usage is &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!discarditem Boots&lt;/code&gt; would discard your custom item with the word &quot;Boots&quot; in it. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
+        <string id="vwPIXbeh" text="扔掉你的一件定制物品。&lt;br&gt;用法是&lt;code&gt;!discarditem (part of the item name)&lt;/code&gt; ，例如&lt;code&gt;!discarditem Boots&lt;/code&gt;会丢弃您的自定义项目，其中包含“Boots”一词。如果不止一件物品中有“靴子”，则该命令将被拒绝。部分名称必须与一项完全匹配。"/>
+        <!-- discarditem -->
+        <string id="Pla3OVS4" text="丢弃物品"/>
+
+        <!-- giveitem -->
+        <!-- Give one of your custom items to another viewer.&lt;br&gt;Usage is &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; would give your custom item with the word &quot;Boots&quot; in it to the viewer called C4lad0g. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
+        <string id="RS37T7gG" text="将您的自定义项目之一提供给另一个查看器。&lt;br&gt;用法是&lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt; ，例如&lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt;会将带有“Boots”字样的自定义项目提供给名为 C4lad0g 的查看器。如果不止一件物品中有“靴子”，则该命令将被拒绝。部分名称必须与一项完全匹配。"/>
+        <!-- giveitem -->
+        <string id="osvl34my" text="给项目"/>
+
+        <!-- powers -->
+        <!-- Shows your available powers -->
+        <string id="GYYbCXmu" text="显示您可用的权力"/>
+        <!-- powers -->
+        <string id="GHCxNIaR" text="权力"/>
+    </strings>
+</base>

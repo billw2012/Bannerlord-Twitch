@@ -1,0 +1,351 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Pусский"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- GlobalCommonConfig -->
+        <!-- Common Config -->
+        <string id="vDjnDtoL" text="Общая конфигурация"/>
+        <!-- Sub Boost -->
+        <string id="xwcKN7sH" text="Дополнительное усиление"/>
+        <!-- Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently. -->
+        <string id="rX68wbfF" text="Множитель применяется ко всем вознаграждениям для подписчиков (меньше или равно 1 означает отсутствие повышения). ПРИМЕЧАНИЕ. Это реализовано лишь частично, в настоящее время работает только для команд ботов."/>
+        <!-- Custom Reward Modifiers -->
+        <string id="O0LU5WBa" text="Пользовательские модификаторы награды"/>
+        <!-- The specification for custom item rewards, applies to tournament prize and achievement rewards -->
+        <string id="tp3YdGmo" text="Спецификация наград за особые предметы применяется к турнирным призам и наградам за достижения."/>
+        <!-- Start With Full Health -->
+        <string id="X8r0C5fx" text="Начни с полным здоровьем"/>
+        <!-- Whether the hero will always start with full health -->
+        <string id="HbNVrZuv" text="Всегда ли герой будет начинать с полным здоровьем"/>
+        <!-- Start Health Multiplier -->
+        <string id="fxZIKL65" text="Начальный множитель здоровья"/>
+        <!-- Amount to multiply normal starting health by, to give heroes better staying power vs others -->
+        <string id="8yNIRS9S" text="Сумма, на которую умножается нормальное начальное здоровье, чтобы дать героям лучшую выносливость по сравнению с другими."/>
+        <!-- Start Retinue Health Multiplier -->
+        <string id="HvcTekVk" text="Множитель здоровья стартовой свиты"/>
+        <!-- Amount to multiply normal retinue starting health by, to give retinue better staying power vs others -->
+        <string id="G6JJT2ot" text="Сумма, на которую умножается нормальное начальное здоровье свиты, чтобы дать свите лучшую выносливость по сравнению с другими"/>
+        <!-- Morale Loss Factor -->
+        <string id="ZPmBe7XI" text="Фактор потери морального духа"/>
+        <!-- Reduces morale loss when summoned heroes die -->
+        <string id="tpgJtS5q" text="Снижает моральный дух при смерти вызванных героев."/>
+        <!-- Retinue Use Heroes Formation -->
+        <string id="bXdC2trk" text="Формирование свиты героев"/>
+        <!-- Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations) -->
+        <string id="D8uDzXlV" text="Должна ли свита приемных героев появляться в той же формации, что и герой (в противном случае они перейдут в построения по умолчанию)"/>
+        <!-- Summon Cooldown In Seconds -->
+        <string id="OlJrCEyE" text="Перезарядка призыва в секундах"/>
+        <!-- Minimum time between summons for a specific hero -->
+        <string id="DeGB2BGZ" text="Минимальное время между вызовами конкретного героя"/>
+        <!-- Summon Cooldown Use Multiplier -->
+        <string id="f9HVD2cC" text="Множитель использования перезарядки призыва"/>
+        <!-- How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this. -->
+        <string id="4gZlfHzM" text="На сколько умножить время восстановления при каждом использовании призыва. например, если время восстановления призыва составляет 20 секунд, а значение UseMultiplier равно 1,1 (по умолчанию), то время восстановления первого вызова составляет 20 секунд, а следующих 24 секунд, 10-го 52 секунды и 20-го 135 секунд. См. Https://www.desmos.com/calculator/muej1o5eg5 для визуализации этого."/>
+        <!-- Summon Cooldown Example -->
+        <string id="ViLoy0k3" text="Пример перезарядки призыва"/>
+        <!-- Shows the consecutive cooldowns (in seconds) for 10 summons -->
+        <string id="xZoSFrAb" text="Показывает последовательные перезарядки (в секундах) для 10 призывов."/>
+        <!-- Allow Death -->
+        <string id="4sNJRQyw" text="Разрешить смерть"/>
+        <!-- Whether an adopted hero is allowed to die -->
+        <string id="VbBUYOfc" text="Можно ли усыновленному герою умереть"/>
+        <!-- Final Death Chance Percent -->
+        <string id="ZEfAPyOm" text="Окончательный процент шанса смерти"/>
+        <!-- Final death chance percent (includes vanilla chance) -->
+        <string id="xlt1pNuT" text="Процент окончательного шанса смерти (включая ванильный шанс)"/>
+        <!-- Apply Death Chance To All Heroes -->
+        <string id="sbc5Fp4o" text="Применить шанс смерти ко всем героям"/>
+        <!-- Whether to apply the Death Chance changes to all heroes, not just adopted ones -->
+        <string id="nbR7NLNz" text="Применять ли изменения шанса смерти ко всем героям, а не только к приемным."/>
+        <!-- Use Raw XP -->
+        <string id="lwU4dELT" text="Использовать Raw XP"/>
+        <!-- Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed.  -->
+        <string id="dICRr4BH" text="Используйте необработанные значения XP вместо корректировки по фокусу и атрибутам, также игнорируя ограничение навыков. Это позволяет избежать застревания персонажей, когда фокус и атрибуты плохо распределены."/>
+        <!-- Raw XP Skill Cap -->
+        <string id="S5FAna09" text="Ограничение навыка Raw XP"/>
+        <!-- Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap. -->
+        <string id="WUzqXuHN" text="Ограничение навыка при использовании Raw XP. Навыки не будут выше этого значения. 330 - это максимальное количество опыта ванили."/>
+        <!-- Gold Per Kill -->
+        <string id="94Ouh5It" text="Золото за убийство"/>
+        <!-- Gold the hero gets for every kill -->
+        <string id="iSAMxZ8a" text="Золото герой получает за каждое убийство"/>
+        <!-- XP Per Kill -->
+        <string id="DMGKBoJT" text="Опыт за убийство"/>
+        <!-- XP the hero gets for every kill -->
+        <string id="kwW5pZT9" text="Опыт, который герой получает за каждое убийство"/>
+        <!-- XP Per Killed -->
+        <string id="a1zjEuUe" text="Опыт за убитого"/>
+        <!-- XP the hero gets for being killed -->
+        <string id="bW8t2g5N" text="Опыт, который получает герой за убийство"/>
+        <!-- Heal Per Kill -->
+        <string id="cRV9HDdf" text="Лечение за убийство"/>
+        <!-- HP the hero gets for every kill -->
+        <string id="7VWAZgfK" text="HP герой получает за каждое убийство"/>
+        <!-- Retinue Gold Per Kill -->
+        <string id="lIhhHjih" text="Золото свиты за убийство"/>
+        <!-- Gold the hero gets for every kill their retinue gets -->
+        <string id="h93j0qw3" text="Золото герой получает за каждое убийство, которое получает его свита."/>
+        <!-- Retinue Heal Per Kill -->
+        <string id="KwlWrzDS" text="Лечение свиты за убийство"/>
+        <!-- HP the hero's retinue gets for every kill -->
+        <string id="Q3UVoHmt" text="HP получает свита героя за каждое убийство"/>
+        <!-- Relative Level Scaling -->
+        <string id="wSzUkbNR" text="Относительное масштабирование уровня"/>
+        <!-- How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health. -->
+        <string id="1LTDJZ7Y" text="Насколько масштабировать награду за убийство в зависимости от относительного уровня двух персонажей. Если это 0 (или не установлено), то награды всегда соответствуют указанному, если это больше 0, тогда награды увеличиваются, если убитый юнит выше уровня героя, и уменьшается, если он ниже. При значении 0,5 (рекомендуется) при разнице уровней 10 будет примерно в 2,5 раза больше обычных наград в виде золота, опыта и здоровья."/>
+        <!-- Level Scaling Cap -->
+        <string id="BDk1G4nc" text="Ограничение масштабирования уровня"/>
+        <!-- Caps the maximum multiplier for the level difference, defaults to 5 if not specified -->
+        <string id="Vod0pJEN" text="Ограничивает максимальный множитель для разницы уровней, по умолчанию - 5, если не указан"/>
+
+        <!-- Win Gold -->
+        <string id="IQTT5vYE" text="Выиграйте золото"/>
+        <!-- Lose Gold -->
+        <string id="lfCWK7aA" text="Терять золото"/>
+        <!-- Win XP -->
+        <string id="h8I3PWkV" text="Win XP"/>
+        <!-- Lose XP -->
+        <string id="Vobr36Bl" text="Терять опыт"/>
+        
+        <!-- Gold won if the heroes side wins -->
+        <string id="pc3G0W39" text="Золото выиграно, если победит сторона героев"/>
+        <!-- XP the hero gets if the heroes side wins -->
+        <string id="F7Tw4D07" text="Опыт, который получает герой, если сторона героя побеждает"/>
+        <!-- Gold lost if the heroes side loses -->
+        <string id="E209XRml" text="Золото потеряно, если проиграет сторона героев"/>
+        <!-- XP the hero gets if the heroes side loses -->
+        <string id="itAfYdmO" text="Опыт, который получает герой, если сторона героя проигрывает"/>
+        <!-- Difficulty Scaling On Players Side -->
+        <string id="ihB1KMOY" text="Масштабирование сложности на стороне игроков"/>
+        <!-- Apply difficulty scaling to players side -->
+        <string id="Bt1PS0aC" text="Применить масштабирование сложности к игрокам"/>
+        <!-- Difficulty Scaling On Enemy Side -->
+        <string id="nym7EtAd" text="Увеличение сложности на стороне врага"/>
+        <!-- Apply difficulty scaling to enemy side -->
+        <string id="U0hZef9L" text="Применить масштабирование сложности на сторону врага"/>
+        <!-- Difficulty Scaling -->
+        <string id="CaVuq5tE" text="Масштабирование сложности"/>
+        <!-- End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1) -->
+        <string id="IhhfIQ74" text="Масштабирование сложности награды в конце: определяет, насколько битвы с более высокой сложностью увеличивают вышеуказанные награды (от 0 до 1)."/>
+        <!-- Difficulty Scaling Min -->
+        <string id="891WqOrJ" text="Мин. Масштабирования сложности"/>
+        <!-- Min difficulty scaling multiplier -->
+        <string id="FPXz7lBi" text="Коэффициент масштабирования минимальной сложности"/>
+        <!-- Difficulty Scaling Max -->
+        <string id="Wsho5Yns" text="Максимальное масштабирование сложности"/>
+        <!-- Max difficulty scaling multiplier -->
+        <string id="ZW7O1JTv" text="Множитель увеличения максимальной сложности"/>
+        <!-- Kill Streaks -->
+        <string id="3DZYc6hN" text="Серия убийств"/>
+        <!-- Show Kill Streak Popup -->
+        <string id="wQ7lXgLA" text="Показать всплывающее окно серии убийств"/>
+        <!-- Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled. -->
+        <string id="wDW3143d" text="Следует ли использовать всплывающий баннер для объявления серий убийств. Вместо этого будет печататься только в наложении, если он отключен."/>
+        <!-- Kill Streak Popup Alert Sound -->
+        <string id="rhwujKvf" text="Всплывающее звуковое оповещение о серии убийств"/>
+        <!-- Sound to play when killstreak popup is disabled. -->
+        <string id="1GVV1fjY" text="Звук для воспроизведения, когда всплывающее окно killstreak отключено."/>
+        <!-- Reference Level Reward -->
+        <string id="dP9AoB9o" text="Награда за эталонный уровень"/>
+        <!-- The level at which the rewards normalize and start to reduce (if relative level scaling is enabled). -->
+        <string id="y7AZjeSK" text="Уровень, на котором вознаграждения нормализуются и начинают уменьшаться (если включено относительное масштабирование уровня)."/>
+        <!-- Achievements -->
+        <string id="zTLei6dQ" text="Достижения"/>
+        <!-- Shouts -->
+        <string id="HkD6326j" text="Крики"/>
+        <!-- Custom shouts -->
+        <string id="ufqtH5QV" text="Пользовательские крики"/>
+        <!-- Include Default Shouts -->
+        <string id="wehigXCC" text="Включить крики по умолчанию"/>
+        <!-- Whether to include default shouts -->
+        <string id="m6Vv2LBt" text="Следует ли включать крики по умолчанию"/>
+        <!-- Common Config -->
+        <string id="F6vM1OJo" text="Общая конфигурация"/>
+        
+        <!-- GlobalHeroClassConfig -->
+        <!-- Class Config -->
+        <string id="3rL4RHje" text="Конфигурация класса"/>
+        <!-- Class Definitions -->
+        <string id="462kHfn2" text="Определения классов"/>
+        <!-- Defined classes -->
+        <string id="NFjlVt57" text="Определенные классы"/>
+        <!-- Class Level Requirements -->
+        <string id="Q0yTbTCT" text="Требования к уровню класса"/>
+        <!-- Requirements for class levels -->
+        <string id="y8LLccGK" text="Требования к уровням классов"/>
+        <!-- Classes -->
+        <string id="E0CBnj57" text="Классы"/>
+        <!-- (no requirements) -->
+        <string id="7WLbMjpz" text="(требований нет)"/>
+        
+        <!-- GlobalHeroPowerConfig -->
+        <!-- Power Config -->
+        <string id="v75UOuDM" text="Конфигурация питания"/>
+        <!-- Power Defs -->
+        <string id="9vUtdRu2" text="Защита от силы"/>
+        <!-- Defined powers -->
+        <string id="ymGZUjoU" text="Определенные полномочия"/>
+        <!-- Disable Powers In Tournaments -->
+        <string id="5CD7bmuC" text="Отключить полномочия в турнирах"/>
+        <!-- Whether powers are disabled in a tournament -->
+        <string id="K7uKtO90" text="Отключены ли способности в турнире"/>
+        
+        <!-- GlobalTournamentConfig -->
+        <!-- Tournament Config -->
+        <string id="AkDCrLgg" text="Конфигурация турнира"/>
+        <!-- Equipment -->
+        <string id="i7ZDVTaw" text="Оборудование"/>
+        <!-- Balancing -->
+        <string id="Zwh9GYUE" text="Балансировка"/>
+        <!-- Round Type -->
+        <string id="KOIu6Q7d" text="Круглый Тип"/>
+        <!-- Start Health Multiplier -->
+        <string id="P1ZCMZbp" text="Начальный множитель здоровья"/>
+        <!-- Disable Kill Rewards In Tournament -->
+        <string id="x3wiU1LY" text="Отключить награды за убийства в турнире"/>
+        <!-- Disable Tracking Kills Tournament -->
+        <string id="ksB1FmZV" text="Отключить турнир по отслеживанию убийств"/>
+        <!-- No Horses -->
+        <string id="bBipANlh" text="Без лошадей"/>
+        <!-- No Spears -->
+        <string id="CYVy4Hhx" text="Нет копья"/>
+        <!-- Normalize Armor -->
+        <string id="Ed55OyZ5" text="Нормализовать броню"/>
+        <!-- Normalize Armor Tier -->
+        <string id="xHJbcOaV" text="Нормализовать уровень брони"/>
+        <!-- Randomize Weapon Types -->
+        <string id="5Y08IsDl" text="Перемешать типы оружия"/>
+        <!-- Previous Winner Debuffs -->
+        <string id="UCAbZYqU" text="Предыдущие дебаффы победителя"/>
+        <!-- Vanilla -->
+        <string id="WUQRg4yA" text="Ваниль"/>
+        <!-- 1 Match 4 Teams -->
+        <string id="ErBd0iuP" text="1 матч 4 команды"/>
+        <!-- 1 Match 2 Teams -->
+        <string id="uuBzCFgM" text="1 матч 2 команды"/>
+        <!-- 2 Matches 2 Teams -->
+        <string id="SsArdTT9" text="2 матча 2 команды"/>
+        <!-- 2 Matches 4 Teams -->
+        <string id="qb1yo7DZ" text="2 матча 4 команды"/>
+        <!-- 4 Matches 2 Teams -->
+        <string id="WAzvdvAJ" text="4 матча 2 команды"/>
+        <!-- 4 Matches 4 Teams -->
+        <string id="sMCb8Xeu" text="4 матча 4 команды"/>
+        <!-- 8 Matches 2 Teams -->
+        <string id="URNM9UqS" text="8 матчей 2 команды"/>
+        <!-- Round 1 Type -->
+        <string id="eivyBgAa" text="Тип 1 раунда"/>
+        <!-- Round 2 Type -->
+        <string id="pefX6BdQ" text="Тип 2 раунда"/>
+        <!-- Round 3 Type -->
+        <string id="GpV7pKPY" text="Тип 3 раунда"/>
+        <!-- Round 1 Rewards -->
+        <string id="VeSh8k7c" text="Награды за 1 раунд"/>
+        <!-- Round 2 Rewards -->
+        <string id="gQ9YX7my" text="Награды за 2 раунд"/>
+        <!-- Round 3 Rewards -->
+        <string id="17pTC7NS" text="Награды за 3-й раунд"/>
+        <!-- Round 4 Rewards -->
+        <string id="pxMWYe5J" text="Награды за 4-й раунд"/>
+        <!-- Participate XP -->
+        <string id="5vMTYqdu" text="Участвуйте в XP"/>
+        <!-- Prize -->
+        <string id="Xu2KD7Kc" text="Приз"/>
+        <!-- Enable Betting -->
+        <string id="rne7aMUR" text="Включить ставки"/>
+        <!-- Betting On Final Only -->
+        <string id="njh9b5GB" text="Ставки только на финал"/>
+        <!-- Skill Reduction Percent Per Win -->
+        <string id="5a40vmYi" text="Процент снижения навыков за победу"/>
+        <!-- Floor Percent -->
+        <string id="hMB4oFmk" text="Этаж в процентах"/>
+        <!-- Example -->
+        <string id="L7AKFlpb" text="Пример"/>
+        <!-- Amount to multiply normal starting health by -->
+        <string id="n6Bc5M3s" text="Величина умножения нормального начального здоровья на"/>
+        <!-- Heroes won't get any kill rewards in tournaments -->
+        <string id="j63d8DuH" text="Герои не получат награды за убийство в турнирах"/>
+        <!-- Tournament kills / deaths won't be counted towards achievements or kill streaks -->
+        <string id="o5aH9rTO" text="Убийства / смерти в турнирах не засчитываются в счет достижений или серий убийств."/>
+        <!-- Remove horses completely from the BLT tournaments (the horse AI is terrible) -->
+        <string id="sJ68yZs1" text="Полностью удалите лошадей из турниров BLT (ИИ лошади ужасен)"/>
+        <!-- Replaces all lances and spears with swords, because lance and spear combat is terrible -->
+        <string id="BjMC8Htn" text="Заменяет все копья и копья на мечи, потому что бой копья и копья ужасен"/>
+        <!-- Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below) -->
+        <string id="kYFdZ8Yx" text="Заменяет всю броню на броню фиксированного уровня в зависимости от культуры, если это возможно (уровень указан ниже Нормализованным уровнем брони)"/>
+        <!-- Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled -->
+        <string id="HnqCyrDD" text="Уровень брони для всех участников (от 1 до 6), если включена нормализация брони."/>
+        <!-- Randomizes the weapons used in each round, weighted based on the classes of the participants -->
+        <string id="oSCPOoqi" text="Рандомизирует оружие, используемое в каждом раунде, с учетом классов участников."/>
+        <!-- Applies skill debuffs to previous tournament winners -->
+        <string id="FrloGGew" text="Применяет дебаффы навыков к предыдущим победителям турниров"/>
+        <!-- Allow the vanilla round setup -->
+        <string id="nfYBftnO" text="Разрешить ванильную круглую настройку"/>
+        <!-- Allow 1 match with 2 teams of 2 -->
+        <string id="t9yLB8gB" text="Разрешить 1 матч с 2 командами по 2 человека"/>
+        <!-- Allow 1 match with 2 teams of 4 -->
+        <string id="5hLSHeuv" text="Разрешить 1 матч с 2 командами по 4 человека"/>
+        <!-- Allow 1 match with 4 teams of 1 -->
+        <string id="YfOnzOH6" text="Разрешить 1 матч с 4 командами по 1"/>
+        <!-- Allow 1 match with 4 teams of 2 -->
+        <string id="CLbRKpZp" text="Разрешить 1 матч с 4 командами по 2 человека"/>
+        <!-- Allow 1 match with 4 teams of 4 -->
+        <string id="5E1lXDYh" text="Разрешить 1 матч с 4 командами по 4 человека"/>
+        <!-- Allow 2 matches with 2 teams of 1 -->
+        <string id="OrZaS458" text="Разрешить 2 матча с 2 командами по 1"/>
+        <!-- Allow 2 matches with 2 teams of 2 -->
+        <string id="Dr1Js5fB" text="Разрешить 2 матча с 2 командами по 2 человека"/>
+        <!-- Allow 2 matches with 2 teams of 4 -->
+        <string id="jEghMKUV" text="Разрешить 2 матча с 2 командами по 4 человека"/>
+        <!-- Allow 2 matches with 4 teams of 1 -->
+        <string id="nmMzoqeC" text="Разрешить 2 матча с 4 командами по 1"/>
+        <!-- Allow 2 matches with 4 teams of 2 -->
+        <string id="f8rXSGwN" text="Разрешить 2 матча с 4 командами по 2 человека"/>
+        <!-- Allow 4 matches with 2 teams of 2 -->
+        <string id="GPCYzshA" text="Разрешить 4 матча с 2 командами по 2 человека"/>
+        <!-- Allow 4 matches with 4 teams of 1 -->
+        <string id="MjsTFwUv" text="Разрешить 4 матча с 4 командами по 1"/>
+        <!-- Allow 4 matches with 2 teams of 1 -->
+        <string id="xMaA76xu" text="Разрешить 4 матча с 2 командами по 1"/>
+        <!-- Allow 8 matches with 2 teams of 1 -->
+        <string id="otwzXPTQ" text="Разрешить 8 матчей с 2 командами по 1"/>
+        <!-- Gold won if the hero wins their match in the round -->
+        <string id="i7Ns7K2i" text="Золото выиграно, если герой выиграет свой матч в раунде"/>
+        <!-- XP given if the hero wins their match in the round -->
+        <string id="b0MeEmOS" text="Опыт, полученный, если герой выиграет матч в раунде."/>
+        <!-- XP given if the hero loses their match in a round -->
+        <string id="Oq7LMvoF" text="XP даётся, если герой проигрывает матч в раунде"/>
+        <!-- Gold won if the hero wins the tournaments -->
+        <string id="F8g49VCy" text="Золото выиграно, если герой выиграет турниры"/>
+        <!-- XP given if the hero wins the tournaments -->
+        <string id="3BudXy0O" text="XP даётся, если герой выигрывает турниры"/>
+        <!-- XP given if the hero participates in a tournament but doesn't win -->
+        <string id="TXqjPXh7" text="Опыт предоставляется, если герой участвует в турнире, но не выигрывает."/>
+        <!-- Winners prize -->
+        <string id="wYzmyUCE" text="Приз победителей"/>
+        <!-- Enable betting -->
+        <string id="FOQEPZD5" text="Разрешить ставки"/>
+        <!-- Only allow betting on the final betting -->
+        <string id="KGcz71VJ" text="Разрешить делать ставки только на окончательные ставки"/>
+        <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
+        <string id="twgHWqU6" text="Навык или группа навыков для модификатора (все навыки в группе будут изменены)"/>
+        <!-- Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified. -->
+        <string id="zoMHI9O3" text="Снижение навыка за победу (в%). См. Https://www.desmos.com/calculator/ajydvitcer для визуализации того, как будет изменен навык."/>
+        <!-- The lower limit (in %) that the skill(s) can be reduced to. -->
+        <string id="HebJIfaE" text="Нижний предел (в%), до которого могут быть снижены навыки."/>
+        <!-- Shows the % reduction of the skill over 20 tournaments -->
+        <string id="vgXMv8oH" text="Показывает% снижения навыка за 20 турниров"/>
+        <!-- Prize {ITEMNAME} -->
+        <string id="hCNpHVJY" text="Приз {ITEMNAME}"/>
+        <!-- Round Rewards -->
+        <string id="g0A4pXY2" text="Награды за раунд"/>
+        <!-- Rewards -->
+        <string id="FHkvQbcR" text="Награды"/>
+        <!-- Betting -->
+        <string id="n1Agm9uJ" text="Делать ставки"/>
+    </strings>
+</base>

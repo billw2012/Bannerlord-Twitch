@@ -1,0 +1,805 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Pусский"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+                
+        <!-- AddGoldToHero -->
+        <!-- Add Gold To Hero -->
+        <string id="kn4uxAWs" text="Добавить золото герою"/>
+        <!-- Gives gold to the adopted hero -->
+        <string id="vkgPfcAu" text="Дает золото усыновленному герою"/>
+        
+        <!-- How much gold to give the adopted hero -->
+        <string id="S2CeRdjR" text="Сколько золота подарить усыновленному герою"/>
+        
+        <!-- AdoptAHero -->
+        <!-- Adopt A Hero -->
+        <string id="NkZXnSQI" text="Усыновить героя"/>
+        <!-- Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands -->
+        <string id="fd7G5N0Q" text="Позволяет зрителю «усыновить» героя в игре - имя героя изменится на имя зрителя, и они смогут управлять им с помощью дополнительных команд."/>
+
+        <!-- Create New -->
+        <string id="TLrDxhlh" text="Создайте новый"/>
+        <!-- Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern) -->
+        <string id="F1KDzuZZ" text="Создайте нового героя вместо того, чтобы усыновлять существующего (он будет странником в случайной таверне)"/>
+        <!-- Allow Noble -->
+        <string id="nPIcT2s7" text="Разрешить благородный"/>
+        <!-- Allow noble heroes (if CreateNew is false) -->
+        <string id="XvZN7OOY" text="Разрешить благородных героев (если CreateNew - false)"/>
+        <!-- Allow Wanderer -->
+        <string id="VVFsa8LQ" text="Разрешить Страннику"/>
+        <!-- Allow wanderer heroes (if CreateNew is false) -->
+        <string id="9lE2KSvC" text="Разрешить героев-странников (если CreateNew имеет значение false)"/>
+        <!-- Allow Player Companion -->
+        <string id="A8G9ctbn" text="Разрешить спутнику игрока"/>
+        <!-- Allow companions (not tested, if CreateNew is false) -->
+        <string id="6EjGRMkt" text="Разрешить компаньонов (не проверено, если CreateNew - false)"/>
+        <!-- Only Same Faction -->
+        <string id="B2z7T1xQ" text="Только та же фракция"/>
+        <!-- Only allow heroes from same faction as player -->
+        <string id="QvQGwFyl" text="Разрешить только героев из той же фракции, что и игрок"/>
+        <!-- Inheritance -->
+        <string id="dvbkxJQz" text="Наследование"/>
+        <!-- What fraction of assets will be inherited when a new character is adopted after an old one died (0 to 1) -->
+        <string id="KLJtpEjg" text="Какая доля активов будет унаследована, когда новый персонаж будет принят после смерти старого (от 0 до 1)"/>
+        <!-- Maximum Inherited Custom Items -->
+        <string id="Bi19tTPj" text="Максимальное количество унаследованных настраиваемых элементов"/>
+        <!-- How many custom items can be inherited -->
+        <string id="tFolfAOn" text="Сколько настраиваемых элементов можно унаследовать"/>
+        <!-- Subscriber Only -->
+        <string id="O4DGlP9Z" text="Только подписчик"/>
+        <!-- Only subscribers can adopt -->
+        <string id="TBNkHsLC" text="Только подписчики могут принять"/>
+        <!-- Minimum Subscribed Months -->
+        <string id="dO41CKIU" text="Минимальное количество месяцев подписки"/>
+        <!-- Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified -->
+        <string id="BVZwDqR0" text="Только зрители, которые были подписчиками хотя бы столько месяцев, могут принять, игнорируя, если не указано иное"/>
+        <!-- Starting Gold -->
+        <string id="iOmYBC7I" text="Стартовое золото"/>
+        <!-- Gold the adopted hero will start with -->
+        <string id="pZMkJLix" text="Золото, с которым будет начинать приемный герой"/>
+        <!-- Override Age -->
+        <string id="ZXwbvbbq" text="Возраст отмены"/>
+        <!-- Override the heroes age -->
+        <string id="gxQgrAey" text="Отменить возраст героев"/>
+        <!-- Starting Age Range -->
+        <string id="NEBQgHiX" text="Начальный возрастной диапазон"/>
+        <!-- Random range of age when overriding it -->
+        <string id="TYqEBuLW" text="Случайный диапазон возраста при его отмене"/>
+        <!-- Starting Skills -->
+        <string id="9IOFHQjS" text="Стартовые навыки"/>
+        <!-- Starting skills, if empty then default skills of the adopted hero will be left in tact -->
+        <string id="C4rV4f2F" text="Стартовые навыки, если они пусты, стандартные навыки принятого героя останутся в силе."/>
+        <!-- Starting Equipment Tier -->
+        <string id="IAKQCRa1" text="Уровень стартового оборудования"/>
+        <!-- Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment -->
+        <string id="mQwjHXfC" text="Уровень снаряжения, с которого будет принят принятый герой, если вы не укажете, он получит существующее снаряжение героя."/>
+        <!-- Starting Class -->
+        <string id="0vGFJdO1" text="Стартовый класс"/>
+        <!-- Starting class of the hero -->
+        <string id="zgjyFL6i" text="Стартовый класс героя"/>
+        
+        
+        <!-- Subscriber Only -->
+        <string id="4zAUTiSP" text="Только подписчик"/>
+        <!-- Newly created wanderer -->
+        <string id="cJQCU33B" text="Недавно созданный странник"/>
+        <!-- Noble -->
+        <string id="fP84ES0X" text="благородный"/>
+        <!-- Wanderer -->
+        <string id="ozRaAx6L" text="Странник"/>
+        <!-- Companions -->
+        <string id="YucejFfO" text="Товарищи"/>
+        <!-- Allowed -->
+        <string id="UNtHwNhx" text="Разрешается"/>
+        <!-- Same faction only -->
+        <string id="6W0OJKkA" text="Только та же фракция"/>
+        <!-- Starting Age Range -->
+        <string id="pDP8b5HR" text="Начальный возрастной диапазон"/>
+        <!-- Starting Gold -->
+        <string id="FvhsCSd3" text="Стартовое золото"/>
+        <!-- Inheritance -->
+        <string id="wP0lfTf3" text="Наследование"/>
+        <!-- {Inheritance}% of gold spent on equipment and retinue -->
+        <string id="mDK67efh" text="{Inheritance}% золота потрачено на экипировку и свиту"/>
+        <!-- no custom items -->
+        <string id="76NtQIGB" text="нет настраиваемых предметов"/>
+        <!-- up to {MaxInheritedCustomItems} custom items -->
+        <string id="sEDQrZCp" text="до {MaxInheritedCustomItems} пользовательских элементов"/>
+        
+        <!-- You have already adopted a hero! -->
+        <string id="mJfD7e2g" text="Вы уже удочерили героя!"/>
+        <!-- You must be subscribed for at least {MinSubscribedMonths} months to adopt a hero with this command! -->
+        <string id="4K7Q7gR0" text="Чтобы принять героя с помощью этой команды, необходимо оформить подписку не менее {MinSubscribedMonths} месяцев!"/>
+        <!-- You must be subscribed to adopt a hero with this command! -->
+        <string id="0QeQPxYi" text="Вы должны быть подписаны, чтобы усыновить героя с помощью этой команды!"/>
+        <!-- No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)! -->
+        <string id="XlQUIIsg" text="Герой недоступен: игрок не состоит во фракции (отключите режим «Только фракция игрока» или присоединитесь к фракции)!"/>
+        <!-- You can't adopt a hero: no available hero matching the requirements was found! -->
+        <string id="E7wqQ2kg" text="Невозможно усыновить героя: подходящего героя не найдено!"/>
+        <!-- {OldName} is now known as {NewName}! -->
+        <string id="K7nuJVCN" text="{OldName} is now known as {NewName}!"/>
+        <!-- {OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})! -->
+        <string id="PAc5S0GY" text="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})!"/>
+        <!-- {OldName} is now known as {NewName}, they have {NewGold}! -->
+        <string id="lANBKEFN" text="{OldName} is now known as {NewName}, they have {NewGold}!"/>
+        
+        <!-- AttributePoints -->
+        <!-- Add Attribute Points -->
+        <string id="TmUJ8VU7" text="Добавить очки атрибутов"/>
+        <!-- Improve adopted heroes attribute points -->
+        <string id="YrYFBWaw" text="Улучшить очки атрибутов принятых героев"/>
+        <!-- Random -->
+        <string id="ibuIZ39r" text="Случайный"/>
+        <!-- If set a random attribute is improved, otherwise the viewer should provide part of the name of the attribute to improve (this works best as a chat command) -->
+        <string id="2F4MZn5h" text="Если установлен случайный атрибут, улучшается, в противном случае зритель должен предоставить часть имени атрибута для улучшения (это лучше всего работает как команда чата)"/>
+        <!-- Random attribute -->
+        <string id="JQdCfO2H" text="Случайный атрибут"/>
+        <!-- Provide the attribute name (or part of it) when calling this -->
+        <string id="hSPAbHWb" text="Укажите имя атрибута (или его часть) при вызове этого"/>
+        
+        <!-- Couldn't improve any attributes, they are all at max level! -->
+        <string id="VxproTE2" text="Не удалось улучшить какие-либо атрибуты, все они на максимальном уровне!"/>
+        <!-- Provide the attribute name to improve (or part of it) -->
+        <string id="i9ziqTXG" text="Укажите имя атрибута для улучшения (или его часть)"/>
+        <!-- You have gained {Amount} points in {Attribute}, you now have {NewAmount}! -->
+        <string id="Sl1bdnfy" text="Вы получили {Amount} points in {Attribute}, you now have {NewAmount}!"/>
+        <!-- You have gained a point in {Attribute}, you now have {NewAmount}! -->
+        <string id="2vli3BCR" text="Вы набрали очко в {Attribute}, you now have {NewAmount}!"/>
+        <!--  -->
+        <string id="YawQBjBG" text=""/>
+        
+        <!-- Couldn't find attribute matching '{Args}'! -->
+        <string id="LE3POzUs" text="Не удалось найти соответствующий атрибут &amp;quot;{Args}&amp;quot;!"/>
+        <!-- Couldn't improve {Attribute} attribute, it is already at max level! -->
+        <string id="R7X1dTqL" text="Не удалось улучшить атрибут {Attribute}, он уже на максимальном уровне!"/>
+        
+        <!-- AuctionItem -->
+        <!-- Auction Item -->
+        <string id="Q1QZbwR3" text="Предмет аукциона"/>
+        <!-- Allows viewers to auction custom items, for other viewers to bid on (make sure to add a bid command also) -->
+        <string id="024hOo3G" text="Позволяет зрителям выставлять на аукцион персонализированные товары, чтобы другие зрители могли делать ставки (не забудьте также добавить команду ставки)"/>
+        <!-- Auction Item -->
+        <string id="34GjlaWu" text="Предмет аукциона"/>
+        <!-- How long the auction should last before the highest bidder wins -->
+        <string id="zsvhQABf" text="Как долго должен продлиться аукцион, прежде чем выиграет участник, предложивший самую высокую цену"/>
+        <!-- Auction Item -->
+        <string id="ssmJ9c5L" text="Предмет аукциона"/>
+        <!-- Interval at which to output a reminder of the auction -->
+        <string id="ijkjWj5q" text="Интервал, через который выводится напоминание об аукционе"/>
+        <!-- Another auction is already in progress -->
+        <string id="T2R35HHV" text="Другой аукцион уже идет"/>
+        <!-- You have no items to auction -->
+        <string id="kYHEtOM7" text="У вас нет предметов для аукциона"/>
+        <!-- (reserve price) (partial item name) -->
+        <string id="lI4WCNeQ" text="(резервная цена) (частичное название позиции)"/>
+        <!-- Invalid reserve price '{Arg}' -->
+        <string id="mm1ay4I7" text="Недействительная резервная цена &amp;quot;{Arg}&amp;quot;"/>
+        <!-- No items found matching '{ItemName}' -->
+        <string id="viO1RBr5" text="Ничего не найдено по запросу &amp;quot;{ItemName}&amp;quot;"/>
+        <!-- {ItemCount} items found matching '{ItemName}', be more specific -->
+        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName} &amp;#39;, а точнее"/>
+        
+        <!-- Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds. -->
+        <string id="BH5rnHNq" text="Аукцион &amp;#39;{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} секунд."/>
+        <!-- Bid On Item -->
+        <string id="rBAvqAh7" text="Ставка на товар"/>
+        <!-- Allows viewers bid on an active custom item auction (make sure to add an auction command also) -->
+        <string id="XuvGyCwD" text="Позволяет зрителям делать ставки на активном аукционе пользовательских предметов (не забудьте также добавить команду аукциона)"/>
+        <!-- (bid amount) -->
+        <string id="ewjqhPqj" text="(сумма ставки)"/>
+        <!-- Invalid bid amount -->
+        <string id="dgG5WPrC" text="Неверная сумма ставки"/>
+        
+        <!-- EquipHero -->
+        <!-- Equip Hero -->
+        <string id="3zBXys4m" text="Снарядить героя"/>
+        <!-- Improve adopted heroes equipment -->
+        <string id="3QfHyF8g" text="Улучшайте экипировку приемных героев"/>
+        <!-- Allow Companion Upgrade -->
+        <string id="TGs8URfN" text="Разрешить обновление компаньона"/>
+        <!-- Allow improvement of adopted heroes who are also companions of the player. -->
+        <string id="6zMgeovT" text="Позволяют улучшать приемных героев, которые также являются товарищами игрока."/>
+        <!-- Cost Tier 1 -->
+        <string id="8qUzSxsQ" text="Уровень затрат 1"/>
+        <!-- Gold cost for Tier 1 equipment -->
+        <string id="4ipwvHaR" text="Стоимость снаряжения 1-го уровня в золоте"/>
+        <!-- Cost Tier 2 -->
+        <string id="bjAzHOqD" text="Уровень затрат 2"/>
+        <!-- Gold cost for Tier 2 equipment -->
+        <string id="3uRKzeJv" text="Стоимость оборудования 2-го уровня в золоте"/>
+        <!-- Cost Tier 3 -->
+        <string id="EUw3jfcC" text="Уровень затрат 3"/>
+        <!-- Gold cost for Tier 3 equipment -->
+        <string id="vRTR2AVO" text="Стоимость оборудования 3-го уровня в золоте."/>
+        <!-- Cost Tier 4 -->
+        <string id="cvWxBhFl" text="Уровень затрат 4"/>
+        <!-- Gold cost for Tier 4 equipment -->
+        <string id="LeCyJf6T" text="Стоимость оборудования 4-го уровня в золоте."/>
+        <!-- Cost Tier 5 -->
+        <string id="Im4cXqCx" text="Уровень затрат 5"/>
+        <!-- Gold cost for Tier 5 equipment -->
+        <string id="4a0P89lE" text="Стоимость оборудования 5-го уровня в золоте."/>
+        <!-- Cost Tier 6 -->
+        <string id="c1CI4H3y" text="Уровень затрат 6"/>
+        <!-- Gold cost for Tier 6 equipment -->
+        <string id="JkrTWsSf" text="Стоимость оборудования 6 уровня в золоте."/>
+        <!-- Reequip Instead Of Upgrade -->
+        <string id="GaTe1vEL" text="Переоборудование вместо обновления"/>
+        <!-- Whether to re-equip the equipment INSTEAD of upgrading it (you should make TWO commands, one to upgrade and one to reequip) -->
+        <string id="zTiLpc9G" text="Следует ли переоборудовать оборудование ВМЕСТО его обновления (вы должны выполнить ДВЕ команды, одну для обновления и одну для переоборудования)"/>
+        <!-- Re-rolls your equipment at your current tier -->
+        <string id="IJtXQh2D" text="Перебрасывает ваше снаряжение на текущий уровень"/>
+        <!-- Disallowed for player companions -->
+        <string id="02iAT4Y8" text="Запрещено для товарищей по игрокам"/>
+        <!-- Tier costs -->
+        <string id="wORNXOT5" text="Уровневые затраты"/>
+        <!-- You are a player companion, you cannot change your own equipment! -->
+        <string id="C9Mhzohr" text="Вы товарищ игрока, вы не можете поменять собственное снаряжение!"/>
+        <!-- You cannot upgrade equipment, as a mission is active! -->
+        <string id="RoIXssEg" text="Вы не можете улучшать снаряжение, так как миссия активна!"/>
+        <!-- You cannot upgrade any further! -->
+        <string id="FZh7ZtGp" text="Вы не можете дальше обновляться!"/>
+        <string id="fYksbZJp" text="Уровень оснащения {ArmorTier} ({ClassName})"/>
+        <string id="0KHxea5e" text="Переоборудованный уровень {ArmorTier} ({ClassName})"/>
+        <string id="VlnXNPYS" text="Нет класса"/>
+        <!-- Focus Points -->
+        <string id="WihQZ5uq" text="Очки фокусировки"/>
+        <!-- Add focus points to heroes skills -->
+        <string id="01L8w1ZW" text="Добавьте точки фокусировки к навыкам героев"/>
+        <!-- Skills -->
+        <string id="QwuyvXBg" text="Навыки и умения"/>
+        <!-- What skill to add focus to -->
+        <string id="w9liWZ9A" text="Какой навык добавить в фокус"/>
+        <!-- Auto -->
+        <string id="RiUjwmS5" text="Авто"/>
+        <!-- Chooses a random skill to add focus to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used. -->
+        <string id="EA4jsUhm" text="Выбирает случайное умение для добавления фокуса, отдавая предпочтение умениям класса, затем умениям для текущего оборудования, а затем другим умениям. При использовании авто настройки умений игнорируются."/>
+        <!-- Focus points -->
+        <string id="UpHpjzFk" text="Точки фокусировки"/>
+        <!-- Automatic, based on class, equipment, and existing skills -->
+        <string id="SIM2l7ta" text="Автоматически, в зависимости от класса, оборудования и имеющихся навыков."/>
+        <!-- Couldn't find a valid skill to add focus points to! -->
+        <string id="VXvS5xji" text="Не удалось найти подходящий навык для добавления точек фокусировки!"/>
+        <!-- You have gained {Amount} focus points in {Skill}, you now have {NewAmount}! -->
+        <string id="6tcVqRIs" text="Вы получили {Amount} focus points in {Skill}, you now have {NewAmount}!"/>
+        <!-- You have gained a focus point in {Skill}, you now have {NewAmount}! -->
+        <string id="HLFMWOJA" text="Вы получили точку фокусировки в {Skill}, you now have {NewAmount}!"/>
+        
+        <!-- DiscardItem -->
+        <!-- Discard Item -->
+        <string id="fmftNyHh" text="Отменить предмет"/>
+        <!-- Allows viewers to discard one of their own custom items -->
+        <string id="f3LrrLHP" text="Позволяет зрителям отказаться от одного из своих собственных элементов."/>
+        <!-- You have no items to discard -->
+        <string id="oXQ4En4P" text="У вас нет предметов для сброса"/>
+        <!-- (partial item name) -->
+        <string id="by80aboy" text="(частичное название предмета)"/>
+        <!-- No items found matching '{Args}' -->
+        <string id="p0urrIvR" text="Ничего не найдено по запросу &amp;quot;{Args}&amp;quot;"/>
+        <!-- {Count} items found matching '{Args}', be more specific -->
+        <string id="Pzo2UJrl" text="{Count} items found matching '{Args} &amp;#39;, а точнее"/>
+        <!-- '{ItemName}' was discarded -->
+        <string id="bNqd3AzN" text="&amp;#39;{ItemName}&amp;#39; было отброшено"/>
+        
+        <!-- GiveItem -->
+        <!-- Give Item -->
+        <string id="nAPjfF4C" text="Дать предмет"/>
+        <!-- Allows viewers to give one of their own custom items to another viewer -->
+        <string id="u9Jx6QUr" text="Позволяет зрителям передавать один из своих пользовательских элементов другому зрителю."/>
+        <!-- You have no items to give -->
+        <string id="Tfj1U5BB" text="Вам нечего отдавать"/>
+        <!-- (recipient) (partial item name) -->
+        <string id="BClUoR9H" text="(получатель) (частичное название товара)"/>
+        <!-- Couldn't find recipient '{Name}' -->
+        <string id="vDsYxMKq" text="Не удалось найти получателя &amp;#39;{Name}&amp;#39;"/>
+        <!-- '{ItemName}' was transferred from @{FromHero} to @{ToHero} -->
+        <string id="E1o7b5ht" text="&amp;#39;{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
+        
+        <!-- HeroInfoCommand -->
+        <!-- Show Hero Info -->
+        <string id="cj68a0l9" text="Показать информацию о герое"/>
+        <!-- Will write various hero stats to chat -->
+        <string id="QsTQzceq" text="Напишет различную статистику героя в чат"/>
+        <!-- Show Gold -->
+        <string id="oWtshHwx" text="Показать золото"/>
+        <!-- Show gold -->
+        <string id="O2mUbcue" text="Показать золото"/>
+        <!-- Show General -->
+        <string id="VmQECrnc" text="Показать общие"/>
+        <!-- Show personal info: health, location, age -->
+        <string id="JWbk5Oko" text="Показать личную информацию: здоровье, местонахождение, возраст"/>
+        <!-- Show Top Skills -->
+        <string id="tMKmlYeR" text="Показать лучшие навыки"/>
+        <!-- Shows skills (and focuse values) above the specified MinSkillToShow value -->
+        <string id="dayx7JEJ" text="Показывает навыки (и значения фокуса) выше указанного значения MinSkillToShow"/>
+        <!-- Min Skill To Show -->
+        <string id="5VW8HXxS" text="Минимальный навык, чтобы показать"/>
+        <!-- If ShowTopSkills is specified, this defines what skills are shown -->
+        <string id="4819Fxyv" text="Если указан ShowTopSkills, это определяет, какие навыки отображаются"/>
+        <!-- Show Attributes -->
+        <string id="lSM7JkvB" text="Показать атрибуты"/>
+        <!-- Shows all hero attributes -->
+        <string id="co5TLkOw" text="Показывает все атрибуты героя"/>
+        <!-- Show Equipment -->
+        <string id="uLUxOyp2" text="Показать оборудование"/>
+        <!-- Shows the equipment tier of the hero -->
+        <string id="CnTMaEPC" text="Показывает уровень экипировки героя"/>
+        <!-- Show Inventory -->
+        <string id="sp1iuH1y" text="Показать инвентарь"/>
+        <!-- Shows the full battle inventory of the hero -->
+        <string id="uhAC3hOZ" text="Показывает полный боевой инвентарь героя"/>
+        <!-- Show Storage -->
+        <string id="aRA1V1Jp" text="Показать хранилище"/>
+        <!-- Shows the heroes storage (all their custom items) -->
+        <string id="Wjr33ERJ" text="Показывает хранилище героев (все их кастомные предметы)"/>
+        <!-- Show Civilian Inventory -->
+        <string id="ecvBeN44" text="Показать гражданский инвентарь"/>
+        <!-- Shows the full civilian inventory of the hero -->
+        <string id="fUggutW6" text="Показывает полный гражданский инвентарь героя"/>
+        <!-- Show Retinue -->
+        <string id="p0WEhay8" text="Показать свиту"/>
+        <!-- Shows a summary of the retinue of the hero (count and tier) -->
+        <string id="AXnWeTzh" text="Показывает сводку свиты героя (кол-во и ярус)"/>
+        <!-- Show Retinue List -->
+        <string id="Vyatyyuh" text="Показать список свиты"/>
+        <!-- Shows the exact classes and counts of the retinue of the hero -->
+        <string id="CSTqzcOi" text="Показывает точные классы и количество свиты героя"/>
+        <!-- Show Achievements -->
+        <string id="1F3utCWA" text="Показать достижения"/>
+        <!-- Shows all hero achievements -->
+        <string id="CKJd7KC9" text="Показывает все достижения героя"/>
+        <!-- Show Tracked Stats -->
+        <string id="LNvYSMZj" text="Показать отслеживаемую статистику"/>
+        <!-- Shows all hero tracked stats (kills, deaths, summons, attacks, tournament wins etc.) -->
+        <string id="FaUbhgTR" text="Показывает всю отслеживаемую статистику героев (убийства, смерти, вызов, атаки, победы в турнирах и т. Д.)"/>
+        <!-- Show Powers -->
+        <string id="cHaiwygJ" text="Показать силы"/>
+        <!-- Shows the heroes unlocked powers -->
+        <string id="YW8HsNEF" text="Показывает разблокированные способности героев"/>
+        <!-- Gold -->
+        <string id="YVhcZatv" text="Золото"/>
+        <!-- Age, Clan, Culture, Health -->
+        <string id="jZigiKXG" text="Возраст, Клан, Культура, Здоровье"/>
+        <!-- Skills greater than {MinSkillToShow} -->
+        <string id="6wVce2iI" text="Навыки выше {MinSkillToShow}"/>
+        <!-- Attributes -->
+        <string id="74kcLopo" text="Атрибуты"/>
+        <!-- Equipment tier -->
+        <string id="PeDxGcu7" text="Уровень оборудования"/>
+        <!-- Battle equipment inventory -->
+        <string id="EVvlMCru" text="Инвентарь боевого снаряжения"/>
+        <!-- Civilian equipment inventory -->
+        <string id="DeffOla6" text="Инвентаризация гражданского оборудования"/>
+        <!-- Custom item storage -->
+        <string id="VSDDQdmJ" text="Хранение нестандартных предметов"/>
+        <!-- Retinue count and average tier -->
+        <string id="C0mkGXlK" text="Кол-во и средний ранг свиты"/>
+        <!-- Retinue unit list -->
+        <string id="L4Rh6vFE" text="Список отрядов свиты"/>
+        <!-- Achievements -->
+        <string id="ZW9XlwY7" text="Достижения"/>
+        <!-- Tracked stats -->
+        <string id="Xmo7pOpj" text="Отслеживаемая статистика"/>
+        <!-- Powers -->
+        <string id="xVDOsWPq" text="Полномочия"/>
+        <!-- Shows -->
+        <string id="UB1bAtSI" text="Показывает"/>
+        <!-- No Class -->
+        <string id="ZI2UKbNp" text="Нет класса"/>
+        <!-- {Age} yrs -->
+        <string id="4TVRrlOw" text="{Age} лет"/>
+        <!-- {HP} / {MaxHP} HP -->
+        <string id="jY2QJdA3" text="{HP} / {MaxHP} HP"/>
+        <!-- Last seen near {Place} -->
+        <string id="B2xDasDx" text="В последний раз видели около {Place}"/>
+        <!-- [LVL] -->
+        <string id="fRwyY6ms" text="[LVL]"/>
+        <!-- [SKILLS] -->
+        <string id="rTId8pBy" text="[НАВЫКИ И УМЕНИЯ]"/>
+        <!-- [ATTR] -->
+        <string id="RSlhbJzO" text="[ATTR]"/>
+        <!-- [TIER] -->
+        <string id="64yw2YD0" text="[УРОВЕНЬ]"/>
+        <!-- No Equip Class -->
+        <string id="u32KRqz8" text="Нет класса экипировки"/>
+        <!-- [BATTLE] -->
+        <string id="YVVlcDSK" text="[БОЕВОЙ]"/>
+        <!-- [CIV] -->
+        <string id="zaVtcDWB" text="[CIV]"/>
+        <!-- [STORED] -->
+        <string id="U4HnxTCj" text="[СОХРАНЕНО]"/>
+        <!-- [RETINUE] -->
+        <string id="hMBF1zLr" text="[ПРОДОЛЖИТЬ]"/>
+        <!-- (nothing) -->
+        <string id="4IOefqsW" text="(ничего такого)"/>
+        <!-- {RetinueCount} (avg Tier {Tier}) -->
+        <string id="XE2QRhyz" text="{RetinueCount} (avg Tier {Tier})"/>
+        <!-- [ACHIEV] -->
+        <string id="giS3vq1V" text="[АКИЕВ]"/>
+        <!-- K -->
+        <string id="ADjhFwlz" text="K"/>
+        <!-- D -->
+        <string id="aUj96cVC" text="D"/>
+        <!-- KVwr -->
+        <string id="i02EMVP8" text="KVwr"/>
+        <!-- KStrmr -->
+        <string id="iGXwhVja" text="KStrmr"/>
+        <!-- Battles -->
+        <string id="APUC6wGt" text="Битвы"/>
+        <!-- Sums -->
+        <string id="6nwK1UF9" text="Суммы"/>
+        <!-- CSums -->
+        <string id="uDFykstd" text="CSums"/>
+        <!-- Atks -->
+        <string id="wtmfNCIj" text="Аткс"/>
+        <!-- CAtks -->
+        <string id="T29akAtY" text="CAtks"/>
+        <!-- TourRndW -->
+        <string id="NOkWgftX" text="TourRndW"/>
+        <!-- TourRndL -->
+        <string id="k5O3x52V" text="TourRndL"/>
+        <!-- TourW -->
+        <string id="J6yoXowD" text="TourW"/>
+        <!-- [STATS] -->
+        <string id="nL2E16fj" text="[СТАТИСТИКА]"/>
+        <!-- [ACTIVE] -->
+        <string id="gV1s8Ffw" text="[АКТИВНЫЙ]"/>
+        <!-- [PASSIVE] -->
+        <string id="z82jxnmF" text="[ПАССИВНЫЙ]"/>
+        <!-- Amount Low -->
+        <string id="01yarGvZ" text="Сумма низкая"/>
+        <!-- Lower bound of amount to improve -->
+        <string id="UVKWPBjq" text="Нижняя граница суммы для улучшения"/>
+        <!-- Amount High -->
+        <string id="qi7FVuQB" text="Сумма высокая"/>
+        <!-- Upper bound of amount to improve -->
+        <string id="tU4rSLcx" text="Верхняя граница суммы для улучшения"/>
+        <!-- Gold Cost -->
+        <string id="DlZ7sV1N" text="Стоимость в золоте"/>
+        <!-- Gold that will be taken from the hero -->
+        <string id="pGwh9edB" text="Золото, которое заберут у героя"/>
+        
+        <!-- JoinTournament -->
+        <!-- Join Tournament -->
+        <string id="EZPZtyXo" text="Присоединяйтесь к турниру"/>
+        <!-- Puts adopted heroes in queue for the next tournament -->
+        <string id="1h8OT5VD" text="Ставит приемных героев в очередь на следующий турнир"/>
+        <!-- Gold Cost -->
+        <string id="7D2UBlGC" text="Стоимость в золоте"/>
+        <!-- Gold cost to join -->
+        <string id="Upuhtmr6" text="Стоимость участия в золоте"/>
+        <!-- JOIN the viewer tournament -->
+        <string id="jUcsHkqk" text="ПРИСОЕДИНЯЙТЕСЬ к зрительскому турниру"/>
+        <!-- WATCH the viewer tournament -->
+        <string id="hlVvENgP" text="СМОТРЕТЬ зрительский турнир"/>
+        
+        <!-- NameItem -->
+        <!-- Name Item -->
+        <string id="0YSdK3zK" text="Имя Элемент"/>
+        <!-- Allow viewer to name custom items -->
+        <string id="k7vnOEIN" text="Разрешить зрителю называть настраиваемые элементы"/>
+        <!-- You have no nameable items -->
+        <string id="rXVOIMri" text="У вас нет элементов с именами"/>
+        <!-- You will rename your {Item} -->
+        <string id="Xb3eM5o7" text="Вы переименуете свой {Item}"/>
+        <!-- {PreviousName} renamed to {NewName} -->
+        <string id="iqNEr6Y7" text="{PreviousName} renamed to {NewName}"/>
+        
+        <!-- Retinue -->
+        <string id="tLSFX9Xc" text="Свита"/>
+        <!-- Add and improve adopted heroes retinue -->
+        <string id="bhC3VcmU" text="Добавляйте и улучшайте свиту приемных героев"/>
+        <!-- Retinue Upgrade Settings -->
+        <string id="iNoFrKsN" text="Настройки обновления свиты"/>
+        <!-- All By Default -->
+        <string id="nIsuuFMC" text="Все по умолчанию"/>
+        <!-- Whether this action should attempt to buy/upgrade as many times as possible when called with no parameter. -->
+        <string id="mJSGvWlR" text="Должно ли это действие пытаться покупать / обновлять как можно больше раз, когда оно вызывается без параметра."/>
+        <!-- You cannot upgrade retinue, as a mission is active! -->
+        <string id="mCcpMwrN" text="Вы не можете улучшить свиту, так как миссия активна!"/>
+        <!-- (number, or all) -->
+        <string id="NexXxYvj" text="(число или все)"/>
+        
+        <!-- RetireMyHero -->
+        <!-- Retire Hero -->
+        <string id="sZhEiXyn" text="Уйти в отставку героя"/>
+        <!-- Retires the hero, allowing the viewer to adopt another (if that is enabled) -->
+        <string id="Eh0m4R54" text="Удаляет героя, позволяя зрителю принять другого (если он включен)"/>
+        <!-- yes -->
+        <string id="xSbB2Zw5" text="да"/>
+        <!-- You must enter '{Prompt}' at the prompt to retire your hero -->
+        <string id="0qVpLYfb" text="Вы должны ввести &amp;quot;{Prompt}&amp;quot; в приглашении, чтобы отправить своего героя в отставку."/>
+        <!-- You cannot retire your hero, as a mission is active! -->
+        <string id="po20lHyz" text="Вы не можете отправить своего героя в отставку, так как миссия активна!"/>
+        <!-- {Name} has retired! -->
+        <string id="ihG4fs1r" text="{Name} вышел на пенсию!"/>
+        
+        <!-- SetHeroClass -->
+        <!-- Set Hero Class -->
+        <string id="pVblweVj" text="Установить класс героя"/>
+        <!-- Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied -->
+        <string id="7VWKYp1U" text="Позволяет изменить `` класс &amp;#39;&amp;#39; принятого героя, который влияет на экипировку и где применяется XP"/>
+        <!-- First Equip Is Free -->
+        <string id="iLpDEiTq" text="Первое снаряжение бесплатно"/>
+        <!-- If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class) -->
+        <string id="pRETwmGv" text="Если это бесплатно, когда у героя еще нет класса (это может произойти, только если Adopt НЕ указывает класс по умолчанию)"/>
+        <!-- Cost Tier 1 -->
+        <string id="N2OnDXOs" text="Уровень затрат 1"/>
+        <!-- Gold cost for Tier 1 class change -->
+        <string id="tuhth4ld" text="Стоимость смены класса 1 уровня в золоте"/>
+        <!-- Cost Tier 2 -->
+        <string id="jIQ5VYSh" text="Уровень затрат 2"/>
+        <!-- Gold cost for Tier 2 class change -->
+        <string id="V5CGr4lf" text="Стоимость смены класса 2 уровня в золоте"/>
+        <!-- Cost Tier 3 -->
+        <string id="lWOrthSS" text="Уровень затрат 3"/>
+        <!-- Gold cost for Tier 3 class change -->
+        <string id="NlXa6kJS" text="Стоимость смены класса 3 уровня в золоте"/>
+        <!-- Cost Tier 4 -->
+        <string id="wuKWOAwt" text="Уровень затрат 4"/>
+        <!-- Gold cost for Tier 4 class change -->
+        <string id="0X1TRYbP" text="Стоимость смены класса 4 уровня в золоте"/>
+        <!-- Cost Tier 5 -->
+        <string id="ZBzqCAyW" text="Уровень затрат 5"/>
+        <!-- Gold cost for Tier 5 class change -->
+        <string id="yelsar2J" text="Стоимость смены класса 5 уровня в золоте"/>
+        <!-- Cost Tier 6 -->
+        <string id="ZLdpLkbg" text="Уровень затрат 6"/>
+        <!-- Gold cost for Tier 6 class change -->
+        <string id="eYcOsu9h" text="Стоимость смены класса 6 уровня в золоте"/>
+        <!-- Update Equipment -->
+        <string id="rpkghdTp" text="Обновить оборудование"/>
+        <!-- Whether to immediately update equipment after changing class -->
+        <string id="cWQKOYEx" text="Стоит ли сразу обновлять экипировку после смены класса"/>
+        <!-- Tier costs -->
+        <string id="2WAi7pZN" text="Уровневые затраты"/>
+        <!-- Free if you do not already have a class -->
+        <string id="lW1KcoWD" text="Бесплатно, если у вас еще нет занятий"/>
+        <!-- Updates equipment to match new class -->
+        <string id="qOR4RSqt" text="Обновляет снаряжение для соответствия новому классу"/>
+        <!-- You cannot change class, as a mission is active! -->
+        <string id="70vJ1jxZ" text="Вы не можете сменить класс, так как миссия активна!"/>
+        <!-- Provide class name -->
+        <string id="prmHmdGE" text="Укажите название класса"/>
+        <!-- changed class to {ClassName} -->
+        <string id="giUCnkf2" text="изменил курс на {ClassName}"/>
+        
+        <!-- SkillXP -->
+        <!-- Skill XP -->
+        <string id="mpdzqyCK" text="Опыт навыков"/>
+        <!-- Improve adopted heroes skills -->
+        <string id="Bc2HIByX" text="Улучшайте навыки приемных героев"/>
+        <!-- Skills -->
+        <string id="rAGAEUIH" text="Навыки и умения"/>
+        <!-- What to improve -->
+        <string id="wo5VSDaj" text="Что улучшить"/>
+        <!-- Auto -->
+        <string id="LVp7Llay" text="Авто"/>
+        <!-- Chooses a random skill to add XP to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used. -->
+        <string id="CTCcqB3Y" text="Выбирает случайный навык для добавления опыта, предпочитая навыки класса, затем навыки для текущего оборудования, а затем другие навыки. При использовании авто настройки умений игнорируются."/>
+
+        <!-- Automatic, based on class, equipment, and existing skills -->
+        <string id="QJ9Cssr7" text="Автоматически, в зависимости от класса, оборудования и имеющихся навыков."/>
+        <!-- {AmountLow} to {AmountHigh} -->
+        <string id="vTkGnRBS" text="{AmountLow} to {AmountHigh}"/>
+        <!-- Costs -->
+        <string id="lz87CnyL" text="Расходы"/>
+        <!-- Couldn't find a skill to improve -->
+        <string id="vK5z2Naq" text="Не удалось найти навык, который нужно улучшить"/>
+        <!-- {Skill} capped, get more focus points -->
+        <string id="ozkK4mk7" text="{Skill} ограничено, получите больше очков фокусировки"/>
+
+        <!-- 1H -->
+        <string id="Ei8NyJSW" text="1H"/>
+        <!-- 2H -->
+        <string id="U38E72Ue" text="2H"/>
+        <!-- PA -->
+        <string id="Cg885bns" text="PA"/>
+        <!-- Bow -->
+        <string id="QpWRsKrc" text="Поклон"/>
+        <!-- Xb -->
+        <string id="71M512iJ" text="Xb"/>
+        <!-- Thr -->
+        <string id="jMRloOi0" text="Thr"/>
+        <!-- Rid -->
+        <string id="ligWzK3s" text="Избавлять"/>
+        <!-- Ath -->
+        <string id="1MJnisqR" text="Ath"/>
+        <!-- Smt -->
+        <string id="VjV54wik" text="Smt"/>
+        <!-- Tac -->
+        <string id="6iG2GJW5" text="Tac"/>
+        <!-- Sct -->
+        <string id="AgaZsMEb" text="Sct"/>
+        <!-- Rog -->
+        <string id="6x33x91Z" text="Rog"/>
+        <!-- Cha -->
+        <string id="N9X9VVsM" text="Ча"/>
+        <!-- Trd -->
+        <string id="J8ElWB0P" text="Trd"/>
+        <!-- Stw -->
+        <string id="BD65Qr83" text="Stw"/>
+        <!-- Ldr -->
+        <string id="OYJ8tfhY" text="Ldr"/>
+        <!-- Med -->
+        <string id="PmKb4QCv" text="Med"/>
+        <!-- Eng -->
+        <string id="wLkMFOky" text="Англ."/>
+        
+        <!-- SummonHero -->
+        <!-- Summon Hero -->
+        <string id="6uWk9iMM" text="Призвать героя"/>
+        <!-- Spawns the adopted hero into the current active mission -->
+        <string id="ODnzMmBQ" text="Добавляет усыновленного героя в текущую активную миссию."/>
+        <!-- Allowed Missions -->
+        <string id="i8P1EnE1" text="Разрешенные миссии"/>
+        <!-- Effects -->
+        <string id="tYGvtYKd" text="Эффекты"/>
+        
+        <!-- AllowFieldBattle -->
+        <string id="DkCdNiwF" text="Разрешить полевой бой"/>
+        <!-- AllowVillageBattle -->
+        <string id="yVz54Nky" text="Разрешить деревенскую битву"/>
+        <!-- AllowSiegeBattle -->
+        <string id="0X8bcuPE" text="Разрешить осадный бой"/>
+        <!-- AllowFriendlyMission -->
+        <string id="Sd1jguGc" text="Разрешить дружескую миссию"/>
+        <!-- Allow Hide Out -->
+        <string id="1xJGhP2D" text="Разрешить прятаться"/>
+        <!-- On Player Side -->
+        <string id="i59Fm8zV" text="На стороне игрока"/>
+        <!-- Gold Cost -->
+        <string id="HOZnxjGb" text="Стоимость в золоте"/>
+        <!-- Preferred Formation -->
+        <string id="sZRrJfKm" text="Предпочтительная формация"/>
+        <!-- Alert Sound -->
+        <string id="74AvYKCg" text="Звуковой сигнал"/>
+        <!-- Sub Boost -->
+        <string id="H7B3Yzly" text="Дополнительное усиление"/>
+        <!-- Heal Per Second -->
+        <string id="cXeUjVur" text="Лечение в секунду"/>
+        
+        <!-- Can summon for normal field battles between parties -->
+        <string id="ddjUyXpV" text="Может вызывать для обычных полевых сражений между сторонами"/>
+        <!-- Can summon in village battles -->
+        <string id="buLH4Spj" text="Может вызывать в деревенских боях"/>
+        <!-- Can summon in sieges -->
+        <string id="uk1kL79V" text="Может вызывать в осаде"/>
+        <!-- This includes walking about village/town/dungeon/keep -->
+        <string id="1HaljOia" text="Сюда входит прогулка по деревне / городу / подземелью / крепости."/>
+        <!-- Can summon in the hideout missions -->
+        <string id="NZTRYcGV" text="Может вызывать в миссиях укрытия"/>
+        <!-- Whether the hero is on the player or enemy side -->
+        <string id="S86V5s0C" text="Находится ли герой на стороне игрока или врага"/>
+        <!-- Gold cost to summon -->
+        <string id="OQISx7Jz" text="Стоимость призыва в золоте"/>
+        <!-- Which formation to add summoned heroes to (only applies to ones without a specified class) -->
+        <string id="vkFowOeg" text="В какую формацию добавить призванных героев (применимо только к тем, у кого нет указанного класса)"/>
+        <!-- Sound to play when summoned -->
+        <string id="R00Lx6aE" text="Звук для воспроизведения при вызове"/>
+        <!-- Multiplier applied to (positive) effects for subscribers -->
+        <string id="lFnV3cR9" text="Множитель, применяемый к (положительным) эффектам для подписчиков"/>
+        <!-- HP the hero gets every second they are alive in the mission -->
+        <string id="gnh3KY5a" text="HP герой получает каждую секунду его жизни в миссии."/>
+        <!-- Side -->
+        <string id="Uu58rjgC" text="Боковая сторона"/>
+        <!-- Heals -->
+        <string id="uHTRhFAh" text="Лечит"/>
+        <!-- Cost -->
+        <string id="hCJhgl1m" text="Расходы"/>
+        <!-- Streamers side -->
+        <string id="myKKaEl9" text="Сторона стримеров"/>
+        <!-- Enemy side -->
+        <string id="BTZ84Uww" text="Сторона врага"/>
+        <!-- {HealPerSecond}HP per second while summoned -->
+        <string id="cR84crHC" text="{HealPerSecond} HP в секунду при вызове"/>
+        <!-- Field battle -->
+        <string id="SRdB89Ca" text="Полевое сражение"/>
+        <!-- Village battle -->
+        <string id="M45VqXVa" text="Деревенская битва"/>
+        <!-- Siege battle -->
+        <string id="hbWdpDwr" text="Осадный бой"/>
+        <!-- Friendly mission -->
+        <string id="YIfbDpI9" text="Дружеская миссия"/>
+        <!-- Hide-out -->
+        <string id="pZ239vm5" text="Убежище"/>
+        <!-- Allowed in -->
+        <string id="zOB6Nadp" text="Разрешено в"/>
+        
+        <!-- You cannot be summoned now! -->
+        <string id="TdykIizS" text="Вы не можете быть призваны сейчас!"/>
+        <!-- You cannot be summoned now, this mission does not allow it! -->
+        <string id="HWnEJg1M" text="Вы не можете быть призваны сейчас, эта миссия не позволяет этого!"/>
+        <!-- You cannot be summoned now, the mission has not started yet! -->
+        <string id="v5dO40vi" text="Вы не можете быть вызваны сейчас, миссия еще не началась!"/>
+        <!-- You cannot be summoned now, the mission is ending! -->
+        <string id="mTKKaYIf" text="Вы не можете быть вызваны сейчас, миссия заканчивается!"/>
+        <!-- You cannot be summoned, you are already here! -->
+        <string id="YTEgKnCW" text="Тебя нельзя вызвать, ты уже здесь!"/>
+        
+        <!-- You won {WonGold}{GoldIcon}! -->
+        <string id="pmj8vjZj" text="Вы выиграли {WonGold}{GoldIcon}!"/>
+        <!-- You lost {LostGold}{GoldIcon}! -->
+        <string id="ajhKKeEo" text="Вы потеряли {LostGold}{GoldIcon}!"/>
+        <!-- You have joined the battle! -->
+        <string id="Ft3cxfIx" text="Вы вступили в бой!"/>
+        <!-- You cannot be summoned now, the mission has not started yet! -->
+        <string id="YZ4V5e4V" text="Вы не можете быть вызваны сейчас, миссия еще не началась!"/>
+        <!-- You cannot switch sides, you traitor! -->
+        <string id="2D2T6xP6" text="Ты не можешь перейти на другую сторону, предатель!"/>
+        <!-- You cannot be summoned, you DIED! -->
+        <string id="RBTDviuM" text="Тебя нельзя вызвать, ты УМЕР!"/>
+        <!-- You cannot be summoned, you are already here! -->
+        <string id="YMiZAluP" text="Тебя нельзя вызвать, ты уже здесь!"/>
+        <!-- {CoolDown}s cooldown remaining -->
+        <string id="kyUh29ij" text="Осталось перезарядки: {CoolDown}"/>
+        <!-- You cannot be summoned, your party is already here! -->
+        <string id="93Hrc2EA" text="Вы не можете быть вызваны, ваша группа уже здесь!"/>
+        <!-- Could not find a party for you to join! -->
+        <string id="jtqEqonE" text="Не удалось найти вечеринку, к которой вы могли бы присоединиться!"/>
+        <!-- You have joined the battle! -->
+        <string id="TvkEBZeY" text="Вы вступили в бой!"/>
+        <!-- Text -->
+        <string id="V3STT5Ar" text="Текст"/>
+        <!-- Text that will be displayed in game -->
+        <string id="wsIzPzfG" text="Текст, который будет отображаться в игре"/>
+        <!-- Enter shout text here -->
+        <string id="xf2mTWx8" text="Введите здесь текст крика"/>
+        <!-- Weight -->
+        <string id="bCbN9OmH" text="Масса"/>
+        <!-- Higher weight means more chance this shout is used -->
+        <string id="xqfCYYwN" text="Чем больше вес, тем больше шансов использовать этот крик"/>
+        <!-- Player Side -->
+        <string id="xK1fdx7s" text="Сторона игрока"/>
+        <!-- Can be used when summoning on player side -->
+        <string id="BpDPlsfY" text="Может использоваться при вызове на стороне игрока"/>
+        <!-- Enemy Side -->
+        <string id="srN8yHp8" text="Сторона врага"/>
+        <!-- Can be used when summoning on enemy side -->
+        <string id="0m4s9zXc" text="Можно использовать при вызове на стороне врага."/>
+        <!-- General -->
+        <string id="MOOBN2Hz" text="Общий"/>
+        <!-- Can be used in situations other than battle/siege -->
+        <string id="6TWSIu60" text="Может использоваться в любых ситуациях, кроме битвы / осады."/>
+        <!-- Field Battle -->
+        <string id="4KdKuusC" text="Полевая битва"/>
+        <!-- Can be used when in a field battle -->
+        <string id="8aLSNsxr" text="Можно использовать в полевом бою."/>
+        <!-- Siege Defend -->
+        <string id="2yevL6dV" text="Осадная защита"/>
+        <!-- Can be used when on siege defender side -->
+        <string id="8HwihUK3" text="Можно использовать на стороне осадного защитника."/>
+        <!-- Siege Attack -->
+        <string id="r5tvIQwx" text="Осадная атака"/>
+        <!-- Can be used when on siege attacker side -->
+        <string id="mbIwJprm" text="Может использоваться на стороне атакующего."/>
+        <!-- Shout -->
+        <string id="CXb5ALls" text="Кричать"/>
+
+        <!-- TournamentBet -->
+        <!-- Invalid gold argument -->
+        <string id="GiU7feEu" text="Недействительный аргумент золота"/>
+        <!-- Betting not active -->
+        <string id="3AQKsF9f" text="Ставки не активны"/>
+        <!-- Bet {GoldAmount}{GoldIcon} on {Team} -->
+        <string id="9tlhaGyH" text="Ставка {GoldAmount}{GoldIcon} on {Team}"/>
+        <!-- (team) (gold) -->
+        <string id="8XQwqd4f" text="(команда) (золото)"/>
+        
+        <!-- UsePower -->
+        <!-- Use Power -->
+        <string id="Wpx7tHFL" text="Использовать силу"/>
+        <!-- Allows activation of the adopted heroes class active powers -->
+        <string id="FJwn6kGW" text="Позволяет активировать активные способности класса принятых героев"/>
+        <!-- You don't have a class, so no powers are available! -->
+        <string id="85HYGklq" text="У вас нет класса, значит, нет доступных способностей!"/>
+        <!-- You cannot activate your powers now: {FailReason}! -->
+        <string id="nXSUvuyD" text="Вы не можете активировать свои способности сейчас: {FailReason}!"/>
+        <!-- Your powers are already active! -->
+        <string id="o23xAj6M" text="Ваши способности уже активны!"/>
+    </strings>
+</base>

@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Pусский"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- stats -->
+        <!-- Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue. -->
+        <string id="JiMaaypq" text="Показывает общую информацию о ваших героях, включая клан, золото, местоположение, HP, навыки, атрибуты и свиту."/>
+        <!-- show stats -->
+        <string id="tIVnWwGG" text="показать статистику"/>
+        <!-- stats -->
+        <string id="J2AqvpeF" text="статистика"/>
+
+        <!-- inv -->
+        <!-- Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage. -->
+        <string id="JneYk4pF" text="Показывает инвентарь ваших героев, включая уровень снаряжения, полные списки боевого и гражданского снаряжения, а также все нестандартные предметы на складе."/>
+        <!-- show equipment -->
+        <string id="oVNKTdOy" text="показать оборудование"/>
+        <!-- inv -->
+        <string id="UbklIEGh" text="inv"/>
+
+        <!-- equip -->
+        <!-- Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to. -->
+        <string id="EZGcIEgQ" text="Улучшает уровень экипировки ваших героев, заменяя любое существующее оборудование более низкого уровня, за исключением нестандартных предметов. Стоимость зависит от уровня, до которого вы пытаетесь перейти."/>
+        <!-- upgrade equipment -->
+        <string id="vTo0NowP" text="модернизировать оборудование"/>
+        <!-- equip -->
+        <string id="wHqxd4kb" text="оборудовать"/>
+        
+        <!-- Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford. -->
+        <string id="zxAVjOW6" text="Покупает новые войска свиты или обновляет существующие до следующего уровня, если вы достигли предела. Свита появится с вами в битве, когда вы призовете, зарабатывая вам деньги, когда они совершают убийства. Вы можете передать команде число, чтобы указать, сколько войск вы хотите купить или улучшить. По умолчанию он будет делать столько, сколько вы можете себе позволить."/>
+        <!-- upgrade retinue -->
+        <string id="I7sm1ct6" text="обновить свиту"/>
+        <!-- retinue -->
+        <string id="mge9rH9J" text="свита"/>
+
+        <!-- class -->        
+        <!-- Selects a new class for your hero, updating your existing equipment to match the class requirements.&lt;br&gt;Usage is &lt;code&gt;!class (new class name)&lt;/code&gt;, e.g. &lt;code&gt;!class archer&lt;/code&gt;. -->
+        <string id="K3297TEM" text="Выбирает новый класс для вашего героя, обновляя имеющееся у вас снаряжение в соответствии с требованиями класса.&lt;br&gt; Используется &lt;code&gt;!class (new class name)&lt;/code&gt; , например &lt;code&gt;!class archer&lt;/code&gt; ."/>
+        <!-- select new class -->
+        <string id="uN82Y7hR" text="выберите новый класс"/>
+        <!-- class -->
+        <string id="nV9iIsDC" text="класс"/>
+
+        <!-- reequip -->
+        <!-- Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier. -->
+        <string id="zBIv0a4I" text="Выбирает ваше снаряжение в случайном порядке на его текущем уровне. Он не заменит предметы, которые выше вашего текущего уровня, или пользовательские предметы. например, если у вас экипировка 3-го уровня, но у вас также есть оружие 6-го уровня, выигранное в турнире, эта команда не заменит это оружие. Иногда некоторые предметы не меняются, особенно если на вашем текущем уровне не так много предметов этого типа."/>
+        <!-- reroll equipment -->
+        <string id="3KYGJ0Mu" text="перемотка оборудования"/>
+        <!-- reequip -->
+        <string id="fGfTaAoD" text="переоборудовать"/>
+
+        <!-- gold -->
+        <!-- Show your heroes current gold. -->
+        <string id="eWI5oDce" text="Покажите своим героям текущее золото."/>
+        <!-- show gold -->
+        <string id="zdRj4blL" text="показать золото"/>
+        <!-- gold -->
+        <string id="W5uX9HCJ" text="золото"/>
+
+        <!-- retinuelist -->
+        <!-- Shows your current retinue troops. -->
+        <string id="BlBiEmbf" text="Показывает вашу текущую свиту войск."/>
+        <!-- retinue list -->
+        <string id="ysbFV5uT" text="список свиты"/>
+        <!-- retinuelist -->
+        <string id="kG6yjBBR" text="ретинюлист"/>
+
+        <!-- adopt -->
+        <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
+        <string id="MpvqvKef" text="Получите героя в игре. Практически все остальные действия требуют усыновленного героя."/>
+        <!-- adopt -->
+        <string id="0grO6hB5" text="усыновить"/>
+
+        <!-- nameitem -->
+        <!-- You can use this to name your custom items.&lt;br&gt;Usage is &lt;code&gt;!nameitem (name)&lt;/code&gt;, for example &lt;code&gt;!nameitem Foehammer&lt;/code&gt;.&lt;br&gt;If you call &lt;code&gt;!nameitem&lt;/code&gt; on its own it will tell you what item will be named next. -->
+        <string id="S1FZXQim" text="Вы можете использовать это, чтобы назвать свои пользовательские элементы.&lt;br&gt; &lt;code&gt;!nameitem (name)&lt;/code&gt; , например &lt;code&gt;!nameitem Foehammer&lt;/code&gt; .&lt;br&gt; Если вы &lt;code&gt;!nameitem&lt;/code&gt; самостоятельно, он сообщит вам, какой элемент будет назван следующим."/>
+        <!-- name a reward item -->
+        <string id="tNVmXpoc" text="назвать предмет награды"/>
+        <!-- nameitem -->
+        <string id="IFDecKha" text="nameitem"/>
+
+        <!-- bltbet -->
+        <!-- Use this to bet on tournament matches, when available.&lt;br&gt;Usage is &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt;, for example &lt;code&gt;!bltbet red 10000&lt;/code&gt; to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.&lt;br&gt;If only one team is bet upon, the bets will be refunded. -->
+        <string id="thajdk5s" text="Используйте это, чтобы делать ставки на турнирные матчи, если они доступны.&lt;br&gt; &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt; , например &lt;code&gt;!bltbet red 10000&lt;/code&gt; чтобы поставить 10000 золота на красное. Выигрыши делятся из всего банка в зависимости от относительного размера ставки.&lt;br&gt; Если ставка сделана только на одну команду, ставки будут возвращены."/>
+        <!-- bet on tournament -->
+        <string id="xBgLXaf7" text="ставка на турнир"/>
+        <!-- bltbet -->
+        <string id="haKiwbsR" text="bltbet"/>
+
+        <!-- power -->
+        <!-- power -->
+        <string id="NUQ5PsjF" text="власть"/>
+        <!-- Show the heroes achievements and tracked stats. -->
+        <string id="ZVxCqyJL" text="Показывайте достижения героев и отслеживаемую статистику."/>
+
+        <!-- achievements -->
+        <!-- achievements -->
+        <string id="aGPoAaM9" text="достижения"/>
+
+        <!-- ach -->
+        <!-- ach -->
+        <string id="woTpsqyV" text="ах"/>
+
+        <!-- auction -->
+        <!-- Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.&lt;br&gt;Usage is &lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!auction 50000 Boots&lt;/code&gt; would start a new auction for your custom item with the word &quot;Boots&quot; in it, with a reserve of 50000. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
+        <string id="ma27zJHy" text="Начните аукцион по индивидуальному заказу, который у вас есть, с указанной начальной ценой. Другие зрители могут делать ставки на ваш товар, и тот, кто предложит самую высокую цену, получит его в конце аукциона.&lt;br&gt; Использование &lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt; , например &lt;code&gt;!auction 50000 Boots&lt;/code&gt; запустят новый аукцион для вашего нестандартного предмета со словом &amp;quot;Ботинки&amp;quot; в нем с запасом в 50000. Если более одного предмета если в нем есть &amp;quot;Boots&amp;quot;, команда будет отклонена. Частичное имя должно соответствовать ровно одному элементу."/>
+        <!-- auction -->
+        <string id="QQX2aboq" text="аукцион"/>
+
+        <!-- bid -->
+        <!-- Place a bid on the current auction, if one is active.&lt;br&gt;Usage is &lt;code&gt;!bid (gold amount)&lt;/code&gt;, e.g. &lt;code&gt;!bid 100000&lt;/code&gt;. If there is no auction, or the bid doesn&apos;t exceed the reserve price, it will be rejected. -->
+        <string id="1TBIIJVZ" text="Сделайте ставку на текущий аукцион, если он активен.&lt;br&gt; Используется &lt;code&gt;!bid (gold amount)&lt;/code&gt; , например &lt;code&gt;!bid 100000&lt;/code&gt; . Если аукцион не проводится или ставка не превышает резервную цену, она будет отклонена."/>
+        <!-- bid -->
+        <string id="taI6SRSG" text="делать ставку"/>
+
+        <!-- discarditem -->
+        <!-- Throw away one of your custom items.&lt;br&gt;Usage is &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!discarditem Boots&lt;/code&gt; would discard your custom item with the word &quot;Boots&quot; in it. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
+        <string id="vwPIXbeh" text="Выбросьте один из своих предметов.&lt;br&gt; Используется &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt; , например &lt;code&gt;!discarditem Boots&lt;/code&gt; отбросит ваш пользовательский предмет со словом «Boots» в нем. Если более чем в одном элементе указано «Ботинки», команда будет отклонена. Частичное имя должно соответствовать ровно одному элементу."/>
+        <!-- discarditem -->
+        <string id="Pla3OVS4" text="отказаться"/>
+
+        <!-- giveitem -->
+        <!-- Give one of your custom items to another viewer.&lt;br&gt;Usage is &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; would give your custom item with the word &quot;Boots&quot; in it to the viewer called C4lad0g. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
+        <string id="RS37T7gG" text="Передайте один из ваших пользовательских элементов другому зрителю.&lt;br&gt; &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt; , например &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; передаст ваш пользовательский элемент со словом «Boots» в программе просмотра с именем C4lad0g. Если более чем в одном элементе указано «Ботинки», команда будет отклонена. Частичное имя должно соответствовать ровно одному элементу."/>
+        <!-- giveitem -->
+        <string id="osvl34my" text="giveitem"/>
+
+        <!-- powers -->
+        <!-- Shows your available powers -->
+        <string id="GYYbCXmu" text="Показывает ваши доступные способности"/>
+        <!-- powers -->
+        <string id="GHCxNIaR" text="полномочия"/>
+    </strings>
+</base>

@@ -1,0 +1,434 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Türkçe"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- AchievementDef -->
+        <!-- Achievement Definition -->
+        <string id="CEZZzIAq" text="Başarı Tanımı"/>
+        
+        <!-- Requirements -->
+        <string id="TFbiD0CZ" text="Gereksinimler"/>
+        <!-- Reward -->
+        <string id="sHWjkhId" text="Ödül"/>
+        
+        <!-- New Achievement -->
+        <string id="nLaRVBVV" text="Yeni Başarı"/>
+
+        <!-- Notification Text -->
+        <string id="guJFFskH" text="Bildirim Metni"/>
+        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement. -->
+        <string id="SwIUyQNw" text="Başarı kazanıldığında ve oyuncu başarılarını listelediğinde görüntülenecek metin. Yer tutucular: Başarının adı için {viewer} for the viewers name, and {name}."/>
+        
+        <!-- Requirements -->
+        <string id="TfwiBMGr" text="Gereksinimler"/>
+
+        <!-- Gold Gain -->
+        <string id="NitYwoHr" text="Altın Kazancı"/>
+        <!-- Gold awarded for gaining this achievement. -->
+        <string id="l0xBVhOe" text="Bu başarıyı elde etmek için verilen altın."/>
+        
+        <!-- XP Gain -->
+        <string id="JShqb5Be" text="DP Kazancı"/>
+        <!-- Experience awarded for gaining this achievement. -->
+        <string id="tx7YV26l" text="Bu başarıyı elde etmek için verilen deneyim."/>
+        
+        <!-- Give Item Reward -->
+        <string id="OmwtPK7J" text="Öğe Ödülü Ver"/>
+        <!-- Whether to give a custom item as reward (defined below) -->
+        <string id="vTb0ysRw" text="Özel bir öğenin ödül olarak verilip verilmeyeceği (aşağıda tanımlanmıştır)"/>
+        
+        <!-- Item Reward -->
+        <string id="ZJikxJYo" text="Öğe Ödülü"/>
+        <!-- Specifications of the custom item reward, if enabled -->
+        <string id="B4gODHog" text="Etkinleştirilmişse, özel öğe ödülünün özellikleri"/>
+        
+        <!-- AchievementStatsData.Statistic -->
+        <!-- Total Kills -->
+        <string id="5RXxYH32" text="Toplam Öldürme"/>
+        <!-- Total Hero Kills -->
+        <string id="FqBQumbv" text="Toplam Kahraman Öldürme"/>
+        <!-- Total Viewer Kills -->
+        <string id="WMYfysby" text="Toplam İzleyici Öldürme Sayısı"/>
+        <!-- Total Streamer Kills -->
+        <string id="qPjwIfaF" text="Toplam Yayıncı Öldürme Sayısı"/>
+        <!-- Total Mount Kills -->
+        <string id="ZTI6irGZ" text="Toplam Binek Öldürme"/>
+        <!-- Total Deaths -->
+        <string id="6IHF7HQb" text="Toplam Ölüm"/>
+        <!-- Total Hero Deaths -->
+        <string id="UHvCzzit" text="Toplam Kahraman Ölümleri"/>
+        <!-- Total Viewer Deaths -->
+        <string id="mhcnLFBv" text="Toplam İzleyici Ölümleri"/>
+        <!-- Total Streamer Deaths -->
+        <string id="rKVsbROz" text="Toplam Yayıncı Ölümleri"/>
+        <!-- Total Mount Deaths -->
+        <string id="6N8KiovH" text="Toplam Binek Ölümleri"/>
+        <!-- Summons -->
+        <string id="YDiK48rp" text="çağrı"/>
+        <!-- Attacks -->
+        <string id="facIgBFe" text="saldırılar"/>
+        <!-- Battles -->
+        <string id="yTIq9zWS" text="savaşlar"/>
+        <!-- Consecutive Summons -->
+        <string id="VwyXMINi" text="ardışık çağrı"/>
+        <!-- Consecutive Attacks -->
+        <string id="Ju3c6Iz4" text="Ardışık Saldırılar"/>
+        <!-- TotalTournament Round Wins -->
+        <string id="dRD94FMl" text="Toplam Turnuva Turu Galibiyetleri"/>
+        <!-- TotalTournament Round Losses -->
+        <string id="GPMB5BPI" text="Toplam Turnuva Turu Kayıpları"/>
+        <!-- TotalTournament Final Wins -->
+        <string id="WdZWU9GV" text="TotalTurnuva Final Galibiyetleri"/>
+        
+        <!-- ClassLevelRequirement -->
+        <!-- Class Level Requirement -->
+        <string id="XLXBwBEj" text="Sınıf Seviyesi Gereksinimi"/>
+        <!-- Min Level -->
+        <string id="s4N0bhG1" text="Minimum Seviye"/>
+        <!-- Minimum class level allowed -->
+        <string id="phf8JXQC" text="İzin verilen minimum sınıf seviyesi"/>
+        <!-- Max Level -->
+        <string id="BT59iHQ5" text="En üst seviye"/>
+        <!-- Maximum class level allowed -->
+        <string id="lk60ZYwc" text="İzin verilen maksimum sınıf seviyesi"/>
+        <!-- AT LEAST {MinLevel} -->
+        <string id="j3QY6MkC" text="EN AZ {MinLevel}"/>
+        <!-- {MinLevel} TO {MaxLevel} -->
+        <string id="puNSSMYD" text="{MinLevel} TO {MaxLevel}"/>
+        <!-- CLASS LEVEL {Description} -->
+        <string id="boWoZsH4" text="SINIF DÜZEYİ {Description}"/>
+        
+        <!-- StatisticClassSpecificRequirement -->
+        <!-- Statistic Class Specific Requirement -->
+        <string id="ziuB7eSV" text="İstatistik Sınıfına Özgü Gereksinim"/>
+        <!-- Current Class -->
+        <string id="WwKyvotH" text="Mevcut Sınıf"/>
+        <!-- Requirement uses current class, useful for class power unlocks so you don't have to specify the class explicitly -->
+        <string id="S9kGgf0r" text="Gereksinim, mevcut sınıfı kullanır, sınıf güç kilidini açmak için kullanışlıdır, böylece sınıfı açıkça belirtmeniz gerekmez"/>
+        <!-- Required Class -->
+        <string id="5QwSEOc3" text="Zorunlu Sınıf"/>
+        <!-- Class required to get this achievement. If (none) is specified then the achievement will apply ONLY when the hero doesn't have a class set. -->
+        <string id="G34P8lCu" text="Bu başarıyı elde etmek için gerekli sınıf. Eğer (yok) belirtilirse başarı SADECE kahramanın bir sınıf seti olmadığında uygulanacaktır."/>
+        <!-- class -->
+        <string id="j3YG9dCh" text="sınıf"/>
+        <!-- (current) -->
+        <string id="RXXuHIdN" text="(akım)"/>
+        <!-- (none) -->
+        <string id="dPEnuHsk" text="(Yok)"/>
+        
+        <!-- StatisticRequirement -->
+        <!-- Statistic Requirement -->
+        <string id="CkgaxlDY" text="İstatistik Gereksinimi"/>
+        <!-- Statistic -->
+        <string id="ienuHzOP" text="istatistik"/>
+        <!-- The statistic this achievement relates to. -->
+        <string id="OKuz3zwY" text="Bu başarının ilgili olduğu istatistik."/>
+        <!-- Comparison -->
+        <string id="dXBsEW65" text="Karşılaştırmak"/>
+        <!-- Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills. -->
+        <string id="4yoAe9WV" text="Kahramanın belirtilen Değerden daha fazla veya daha azına ihtiyacı olup olmadığı. Örneğin, kahramanın 10&amp;#39;dan az ölüme ve 100&amp;#39;den fazla öldürmeye sahip olmasını talep edebilirsiniz."/>
+        <!-- Value -->
+        <string id="a8Josr4g" text="Değer"/>
+        <!-- Value needed to obtain the achievement. -->
+        <string id="B9LEjEq8" text="Başarıyı elde etmek için gereken değer."/>
+        <!-- Other Statistic -->
+        <string id="nau8vg7o" text="Diğer İstatistik"/>
+        <!-- Other statistic to compare against (this overrides Value if specified). -->
+        <string id="A3EKQ7up" text="Karşılaştırılacak diğer istatistikler (belirtilmişse bu, Değeri geçersiz kılar)."/>
+        
+        <!-- HeroClassDef -->
+        <!-- Class Definition -->
+        <string id="ph50k2xB" text="Sınıf Tanımı"/>
+        <!-- Class Definition -->
+        <string id="iqYaiOhP" text="Sınıf Tanımı"/>
+        <!-- Whether this class is enabled for use in the game or not -->
+        <string id="XkL6MNLl" text="Bu sınıfın oyunda kullanım için etkin olup olmadığı"/>
+        <!-- Name of the class that shall be passed to SetHeroClass actions -->
+        <string id="U9PyN7eb" text="SetHeroClass eylemlerine geçirilecek sınıfın adı"/>
+        <!-- Description -->
+        <string id="rZRKLuGI" text="Açıklama"/>
+        <!-- Description of the class (used in documentation) -->
+        <string id="yRN3Jfwv" text="Sınıfın tanımı (belgelerde kullanılır)"/>
+        <!-- Formation -->
+        <string id="zy3uK94p" text="oluşum"/>
+        <!-- Which formation to add summoned units to -->
+        <string id="1kEMFWLD" text="Çağrılan birimler hangi formasyona eklenecek?"/>
+        <!-- Slot 1 -->
+        <string id="48tkMBhb" text="1. Bölme"/>
+        <!-- Item type to put in slot 1 -->
+        <string id="kpDE6URE" text="1. yuvaya yerleştirilecek öğe türü"/>
+        <!-- Slot 2 -->
+        <string id="vXtJLZlw" text="2. yuva"/>
+        <!-- Item type to put in slot 2 -->
+        <string id="G5AN3s2D" text="2. yuvaya yerleştirilecek öğe türü"/>
+        <!-- Slot 3 -->
+        <string id="B4LLuesN" text="yuva 3"/>
+        <!-- Item type to put in slot 3 -->
+        <string id="clxxPb9O" text="3. yuvaya yerleştirilecek öğe türü"/>
+        <!-- Slot 4 -->
+        <string id="h9PK7GnU" text="yuva 4"/>
+        <!-- Item type to put in slot 4 -->
+        <string id="EUzbiqh5" text="4. yuvaya yerleştirilecek öğe türü"/>
+        <!-- Use Horse -->
+        <string id="MdYmGuin" text="At kullan"/>
+        <!-- Whether to allow horse (can be combined with Use Camel) -->
+        <string id="Q00NX1J9" text="Ata izin verilip verilmeyeceği (Deve Kullan ile birleştirilebilir)"/>
+        <!-- Use Camel -->
+        <string id="1YsQ2fC3" text="Camel kullan"/>
+        <!-- Whether to allow camel (can be combined with Use Horse -->
+        <string id="Us7G1v2T" text="Deveye izin verilip verilmeyeceği (Use Horse ile birleştirilebilir"/>
+        <!-- Passive Power -->
+        <string id="MvddFKo4" text="Pasif Güç"/>
+        <!-- Passive hero power: this will always apply to the hero (i.e. a permanent buff) -->
+        <string id="F8a2nXYo" text="Pasif kahraman gücü: bu her zaman kahraman için geçerli olacaktır (yani kalıcı bir güçlendirme)"/>
+        <!-- Active Power -->
+        <string id="wdCMNOGd" text="Aktif güç"/>
+        <!-- Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff) -->
+        <string id="I4ASwveG" text="Aktif kahraman gücü: bu güç, yalnızca izleyici tarafından UseHeroPower eylemi ödül veya komut yoluyla (yani geçici bir güçlendirme) kullanıldığında tetiklenecektir."/>
+        
+        <!-- Horse -->
+        <string id="YzIcRgBV" text="Atış"/>
+        <!-- Camel -->
+        <string id="HMclWXR8" text="Deve"/>
+        <!-- Use Horse -->
+        <string id="A1G6bq0G" text="At kullan"/>
+        <!-- Use Camel -->
+        <string id="FpgyZk0F" text="Camel kullan"/>
+        <!-- (none) -->
+        <string id="GFc6JLJ9" text="(Yok)"/>
+        <!-- Details -->
+        <string id="A79HrgZ0" text="Detaylar"/>
+        <!-- Tier {TierNumber} -->
+        <string id="Rs1XNM9K" text="Seviye {TierNumber}"/>
+        <!-- Equipment -->
+        <string id="HyXJQJtW" text="Teçhizat"/>
+
+        <!-- Mount -->
+        <string id="iGdq37PI" text="Montaj"/>
+        
+        <!-- KillStreakDef -->
+        <!-- Kill Streak -->
+        <string id="InTnlqz1" text="Seri Öldür"/>
+        <!-- Show Notification -->
+        <string id="poe8m8rn" text="Bildirimleri göster"/>
+        <!-- Notification Text -->
+        <string id="RQh3jIZW" text="Bildirim Metni"/>
+        <!-- Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required. -->
+        <string id="04wTH1xo" text="Öldürme serisine ulaşıldığında görüntülenen metin. Yer tutucular: Gerekli Öldürmeler için {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills}."/>
+        <!-- Kills Required -->
+        <string id="mG7HzT0z" text="Öldürme Gerekli"/>
+        <!-- Kills required to achieve the kill streak. -->
+        <string id="mLElTwb6" text="Öldürme serisine ulaşmak için gerekli öldürmeler."/>
+        <!-- Gold Reward -->
+        <string id="zEqJgISl" text="Altın Ödül"/>
+        <!-- Gold rewarded when the kill streak is achieved. -->
+        <string id="CYg79sAT" text="Öldürme serisine ulaşıldığında altın verilir."/>
+        <!-- XP Reward -->
+        <string id="vzCgh9PN" text="DP Ödülü"/>
+        <!-- Experience granted when the kill streak is achieved. -->
+        <string id="Q1TcztBP" text="Öldürme serisine ulaşıldığında kazanılan deneyim."/>
+        <!-- New Kill Streak -->
+        <string id="KtvBk2nR" text="Yeni Öldürme Serisi"/>
+        <!-- {viewer} got {name} ({kills} kills) -->
+        <string id="ipowOInD" text="{viewer} got {name} ({kills} öldürme)"/>
+        <!-- {KillsRequired} kills -->
+        <string id="YZJ60Pxb" text="{KillsRequired} öldürme"/>
+
+        <!-- SummonHero.FormationItemSource -->
+        <!-- Infantry -->
+        <string id="7gt8mcJc" text="Piyade"/>
+        <!-- Ranged -->
+        <string id="kDo9EtMh" text="menzilli"/>
+        <!-- Cavalry -->
+        <string id="HcfkYEsF" text="Süvari"/>
+        <!-- Horse Archer -->
+        <string id="Xx9xP7jK" text="atlı okçu"/>
+        <!-- Skirmisher -->
+        <string id="PpZY6dPX" text="avcı er"/>
+        <!-- Heavy Infantry -->
+        <string id="VT6VYeVp" text="Ağır Piyade"/>
+        <!-- Light Cavalry -->
+        <string id="t5iTNQ5p" text="Hafif Süvari"/>
+        <!-- Heavy Cavalry -->
+        <string id="vyVSsiBr" text="Ağır Süvari"/>
+        
+        <!-- SkillRangeDef -->
+        <!-- Skill Range -->
+        <string id="uUWdyER4" text="Beceri Aralığı"/>
+        
+        <!-- The skill or skill group -->
+        <string id="WcQpCpdI" text="Beceri veya beceri grubu"/>
+        <!-- The min level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023) -->
+        <string id="fozHOKis" text="Olması gereken minimum seviye (gerçek değer min ve max arasında rastgele seçilecektir, geçerli değerler 0 ile 1023 arasındadır)"/>
+        <!-- The max level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023) -->
+        <string id="I6hTb2OY" text="Olması gereken maksimum seviye (gerçek değer minimum ve maksimum arasında rastgele seçilecektir, geçerli değerler 0 ila 1023 arasındadır)"/>
+        
+        <!-- ClassLevelRequirementsDef -->
+        <!-- Class Level Requirements Definition -->
+        <string id="uZUsZLGm" text="Sınıf Seviyesi Gereksinimleri Tanımı"/>
+        <!-- ClassLevel -->
+        <string id="0raqv788" text="SınıfSeviyesi"/>
+        <!-- Class level -->
+        <string id="el4y84iD" text="sınıf seviyesi"/>
+        <!-- Requirements -->
+        <string id="aMGoiH53" text="Gereksinimler"/>
+        <!-- Requirements for this class level -->
+        <string id="G95DA4OM" text="Bu sınıf seviyesi için gereksinimler"/>
+
+        <!-- MissionInfo -->
+        <!-- Kills -->
+        <string id="AM2zlkem" text="öldürür"/>
+        <!-- +Retinue Kills -->
+        <string id="79JXI4JL" text="+Retinue Kills"/>
+        <!-- Gold -->
+        <string id="o0Q8Y1Qg" text="Altın"/>
+        <!-- XP -->
+        <string id="VtEJiMWy" text="DP"/>
+        
+        <!-- Tournament -->
+        <!-- Tournament -->
+        <string id="PI83uB8j" text="Turnuva"/>
+        <!-- Betting is OPEN -->
+        <string id="WPTU6AGn" text="Bahis AÇIK"/>
+        <!-- Betting is CLOSED -->
+        <string id="PLRsZCjL" text="Bahis KAPALI"/>
+        <!-- Not taking bets -->
+        <string id="Sv04YKsL" text="Bahis almamak"/>
+                
+        <!-- GeneratedRewardDef -->
+        <!-- Reward Type -->
+        <string id="x6pmNHJT" text="Ödül Türü"/>
+        <!-- Reward Tier -->
+        <string id="Mmd0UleC" text="Ödül Katmanı"/>
+        <!-- Custom Item -->
+        <string id="zVqTKyQG" text="Özel Öğe"/>
+        <!-- Weapon Weight -->
+        <string id="7yNTThry" text="Silah Ağırlığı"/>
+        <!-- Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo. -->
+        <string id="WTWuy57X" text="Silah olacak ödüllerin nispi oranı. Bu, tek elle, iki elle, menzilli ve cephaneyi içerir."/>
+        <!-- Armor Weight -->
+        <string id="Al3Px9lL" text="Zırh Ağırlığı"/>
+        <!-- Relative proportion of rewards that will be armor -->
+        <string id="WSXhTI0r" text="Zırh olacak ödüllerin nispi oranı"/>
+        <!-- Mount Weight -->
+        <string id="S6t7iUki" text="Montaj Ağırlığı"/>
+        <!-- Relative proportion of rewards that will be mounts -->
+        <string id="4L1hJS6v" text="Bağlanacak ödüllerin nispi oranı"/>
+        <!-- Reward Type Chances -->
+        <string id="h4CEbGun" text="Ödül Türü Şansı"/>
+        <!-- The % chance for each item type -->
+        <string id="u9zCErHS" text="Her öğe türü için % şans"/>
+        <!-- Tier 1 Weight -->
+        <string id="pqDOv12p" text="Tier 1 Ağırlık"/>
+        <!-- Relative proportion of rewards that will be Tier 1 -->
+        <string id="aAZvoxk9" text="Kademe 1 olacak ödüllerin nispi oranı"/>
+        <!-- Tier 2 Weight -->
+        <string id="ZDgMrJHH" text="2. Kademe Ağırlık"/>
+        <!-- Relative proportion of rewards that will be Tier 2 -->
+        <string id="rvjbuCH4" text="2. Aşama olacak ödüllerin nispi oranı"/>
+        <!-- Tier 3 Weight -->
+        <string id="8UhZyGRj" text="Tier 3 Ağırlık"/>
+        <!-- Relative proportion of rewards that will be Tier 3 -->
+        <string id="CJwXH8cz" text="3. Aşama olacak ödüllerin nispi oranı"/>
+        <!-- Tier 4 Weight -->
+        <string id="v4wqC1mI" text="Tier 4 Ağırlık"/>
+        <!-- Relative proportion of rewards that will be Tier 4 -->
+        <string id="NoKi0iIC" text="4. Aşama olacak ödüllerin nispi oranı"/>
+        <!-- Tier 5 Weight -->
+        <string id="vXimyLH7" text="Tier 5 Ağırlık"/>
+        <!-- Relative proportion of rewards that will be Tier 5 -->
+        <string id="rsGLtLyB" text="Kademe 5 olacak ödüllerin nispi oranı"/>
+        <!-- Tier 6 Weight -->
+        <string id="HWHFIsUH" text="Kademe 6 Ağırlık"/>
+        <!-- Relative proportion of rewards that will be Tier 6 -->
+        <string id="991D0fok" text="Kademe 6 olacak ödüllerin nispi oranı"/>
+        <!-- Custom Weight -->
+        <string id="R5TCrBo8" text="Özel Ağırlık"/>
+        <!-- Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below) -->
+        <string id="XL94fx52" text="Özel olacak ödüllerin nispi oranı (aşağıdaki Özel Ödül ayarlarına göre değiştiricilerle 6. Aşama)"/>
+        <!-- Reward Tier Chances -->
+        <string id="zoBVNJBB" text="Ödül Seviyesi Şansı"/>
+        <!-- The % chance for each reward tier -->
+        <string id="ANPeZyy0" text="Her ödül kademesi için şans yüzdesi"/>
+        <!-- Custom Item Name -->
+        <string id="PBWEbYLT" text="Özel Öğe Adı"/>
+        <!-- Name format for custom item, {ITEMNAME} is the placeholder for the base item name. -->
+        <string id="vqNeCCNy" text="Özel öğe için ad biçimi, {ITEMNAME}, temel öğe adı için yer tutucudur."/>
+        <!-- Custom Item Power -->
+        <string id="THpMPPhd" text="Özel Öğe Gücü"/>
+        <!-- Custom item power multiplier, applies on top of the global multiplier -->
+        <string id="anUzQaU7" text="Özel eşya güç çarpanı, genel çarpanın üzerine uygulanır"/>
+        <!-- Weapon -->
+        <string id="hpJN9wNo" text="silah"/>
+        <!-- Armor -->
+        <string id="YQdQrFG7" text="Zırh"/>
+        <!-- Mount -->
+        <string id="HGZVsIjn" text="Montaj"/>
+        <!-- Custom -->
+        <string id="LKgozyEk" text="Gelenek"/>
+        <!-- Tier {Tier} -->
+        <string id="JpB20FtS" text="Seviye {Tier}"/>
+        
+        <!-- RandomItemModifierDef -->
+        <!-- Power -->
+        <string id="1NLO6Gee" text="Güç"/>
+        <!-- Custom prize power, a global multiplier for the values below -->
+        <string id="LXo3mTnr" text="Özel ödül gücü, aşağıdaki değerler için küresel bir çarpan"/>
+        <!-- Weapon Damage -->
+        <string id="g2DZKK7M" text="Silah Hasarı"/>
+        <!-- Weapon damage modifier for custom weapon prize -->
+        <string id="R9lwIsrX" text="Özel silah ödülü için silah hasarı değiştiricisi"/>
+        <!-- Weapon Speed -->
+        <string id="7TgyXbNe" text="Silah Hızı"/>
+        <!-- Speed modifier for custom weapon prize -->
+        <string id="1ZZDexjJ" text="Özel silah ödülü için hız değiştirici"/>
+        <!-- Weapon Missile Speed -->
+        <string id="4zhm204e" text="Silah Füze Hızı"/>
+        <!-- Missile speed modifier for custom weapon prize -->
+        <string id="gFO8L8CR" text="Özel silah ödülü için füze hızı değiştiricisi"/>
+        <!-- Ammo Damage -->
+        <string id="ny6l1USK" text="Cephane Hasarı"/>
+        <!-- Ammo damage modifier for custom ammo prize -->
+        <string id="oTSCOXpf" text="Özel cephane ödülü için cephane hasarı değiştiricisi"/>
+        <!-- Arrow Stack -->
+        <string id="2ehIq5eD" text="Ok Yığını"/>
+        <!-- Arrow stack size modifier for custom arrow prize -->
+        <string id="inawRS8e" text="Özel ok ödülü için ok yığını boyutu değiştiricisi"/>
+        <!-- Throwing Stack -->
+        <string id="JUXQcKMR" text="Yığın atma"/>
+        <!-- Throwing stack size modifier for custom throwing prize -->
+        <string id="QAUf8zj0" text="Özel fırlatma ödülü için yığın boyutu değiştirici fırlatma"/>
+        <!-- Armor -->
+        <string id="MrOZ69tP" text="Zırh"/>
+        <!-- Armor modifier for custom armor prize -->
+        <string id="1x2YSVSz" text="Özel zırh ödülü için zırh değiştirici"/>
+        <!-- Mount Maneuver -->
+        <string id="BYekTOq6" text="Manevra Dağı"/>
+        <!-- Maneuver multiplier for custom mount prize -->
+        <string id="7cZ5JfEk" text="Özel binek ödülü için manevra çarpanı"/>
+        <!-- Mount Speed -->
+        <string id="6yURxqNY" text="Montaj Hızı"/>
+        <!-- Speed multiplier for custom mount prize -->
+        <string id="eJZxwZc1" text="Özel binek ödülü için hız çarpanı"/>
+        <!-- Mount Charge Damage -->
+        <string id="ZmiOntW1" text="Binek Yükü Hasarı"/>
+        <!-- Charge damage multiplier for custom mount prize -->
+        <string id="MZm0DJcs" text="Özel binek ödülü için şarj hasar çarpanı"/>
+        <!-- Mount Hit Points -->
+        <string id="M8drveMF" text="Binek İsabet Puanı"/>
+        <!-- Hitpoints multiplier for custom mount prize -->
+        <string id="ewC5EV3Q" text="Özel binek ödülü için isabet puanı çarpanı"/>
+        
+        <!-- RewardHelpers -->
+        <!-- received {ItemName} -->
+        <string id="RczvXuxP" text="alınan {ItemName}"/>
+        <!-- sold {ItemName} for {ItemValue}{GoldIcon} (not needed) -->
+        <string id="bNX0NiQ9" text="{ItemName} for {ItemValue}{GoldIcon} satıldı (gerekli değil)"/>
+        <!-- received {ItemName} (put in storage) -->
+        <string id="R7VwlLzg" text="alınan {ItemName} (depoya koy)"/>
+    </strings>
+</base>

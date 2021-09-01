@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Français"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Don't worry, I've got your back! -->
+        <string id="DczOKFsA" text="Ne t&amp;#39;inquiète pas, je te soutiens !"/>
+        <!-- I'm here! -->
+        <string id="pj9Z0M7G" text="Je suis ici!"/>
+        <!-- Which one should I stab? -->
+        <string id="y8DOtj2H" text="Lequel dois-je poignarder ?"/>
+        <!-- Need a hand? -->
+        <string id="1i1OrZDd" text="Besoin d&amp;#39;un coup de main?"/>
+        <!-- The price has been paid. I am at your service. -->
+        <string id="rVaJZ5Lo" text="Le prix a été payé. Je suis à votre service."/>
+        <!-- Once more unto the breach! -->
+        <string id="QEyO8W82" text="Encore une fois à la brèche !"/>
+        <!-- Freeeeeedddooooooommmm! -->
+        <string id="Bo11t6gj" text="Freeeeeedddoooooommmm !"/>
+        <!-- Remember the Alamo! -->
+        <string id="8uO8Isjm" text="Souvenez-vous de l&amp;#39;Alamo !"/>
+        <!-- Alala! -->
+        <string id="A3KdQJok" text="Alala !"/>
+        <!-- Eleleu! -->
+        <string id="pXVCAwAr" text="Eléleu !"/>
+        <!-- Deus vult! -->
+        <string id="TlZjOFii" text="Deus vulte !"/>
+        <!-- Banzai! -->
+        <string id="xPFIIEzw" text="Banzaï !"/>
+        <!-- Liberty or Death! -->
+        <string id="gmN3YLPw" text="La liberté ou la mort!"/>
+        <!-- Har Har Mahadev! -->
+        <string id="FoDIukJK" text="Har Har Mahadev !"/>
+        <!-- Desperta ferro! -->
+        <string id="SSqdBzkY" text="Desperta ferro !"/>
+        <!-- Alba gu bràth! -->
+        <string id="UHhpIpDU" text="Alba gu bràth!"/>
+        <!-- Santiago! -->
+        <string id="lDo1AOCS" text="Santiago !"/>
+        <!-- Huzzah! -->
+        <string id="gT95E89y" text="Huzzah !"/>
+        <!-- War... war never changes... -->
+        <string id="fKKpcZGQ" text="La guerre, la guerre, ça ne change jamais..."/>
+        <!-- May we live to see the next sunrise! -->
+        <string id="vZgbxkW9" text="Puissions-nous vivre pour voir le prochain lever de soleil !"/>
+        <!-- For glory, charge! -->
+        <string id="wn7zIy9f" text="Pour la gloire, chargez !"/>
+        <!-- Give them nothing, but take from them everything! -->
+        <string id="KH7Dnbe7" text="Ne leur donnez rien, mais prenez-leur tout !"/>
+        <!-- Fell deeds awake, fire and slaughter! -->
+        <string id="FyBFecip" text="Fell les actes éveillés, le feu et le massacre !"/>
+        <!-- Spooooooooooooooooooon! -->
+        <string id="H7asM2KG" text="Spooooooooooooooooon !"/>
+        <!-- Leeeeeeeerooooy Jeeeeenkins -->
+        <string id="ERDmbO2B" text="Leeeeeeeerooooy Jeeeeenkins"/>
+        <!-- I live, I die, I live again! -->
+        <string id="hL0vmkUG" text="Je vis, je meurs, je revis !"/>
+        <!-- Witness me!! -->
+        <string id="KMTRT2EN" text="Témoin moi !!"/>
+        <!-- Now for wrath, now for ruin and a red nightfall! -->
+        <string id="F9WUaqdj" text="Maintenant pour la colère, maintenant pour la ruine et une nuit rouge !"/>
+        <!-- n -->
+        <string id="ZQiRFkFU" text="m"/>
+        <!-- Those are brave men knocking at our door, let's go kill them! -->
+        <string id="JlZ9pRbq" text="Ce sont des braves qui frappent à notre porte, allons les tuer !"/>
+        <!-- Lets take this city! -->
+        <string id="5gg0BcKk" text="Prenons cette ville !"/>
+        <!-- Defend yourself! -->
+        <string id="lhWht8Em" text="Défendez-vous !"/>
+        <!-- Time for you to die! -->
+        <string id="FmlTSg39" text="Il est temps que tu meures !"/>
+        <!-- You killed my father, prepare to die! -->
+        <string id="GJpUfALs" text="Tu as tué mon père, prépare toi à mourir!"/>
+        <!-- En garde! -->
+        <string id="IKN2G1wi" text="En garde !"/>
+        <!-- It's stabbing time! For you. -->
+        <string id="yTHYR4i9" text="C&amp;#39;est l&amp;#39;heure du poignard ! Pour vous."/>
+        <!-- It's nothing personal! -->
+        <string id="4wYLe6f0" text="C&amp;#39;est rien de personnel!"/>
+        <!-- Curse my sudden but inevitable betrayal! -->
+        <string id="37bg5QNX" text="Maudit soit ma trahison soudaine mais inévitable !"/>
+        <!-- I just don't like you! -->
+        <string id="AOpbzIUP" text="Je ne t&amp;#39;aime tout simplement pas !"/>
+        <!-- I'm gonna put some dirt in your eye! -->
+        <string id="JFCcwLga" text="Je vais te mettre de la saleté dans les yeux !"/>
+        <!-- I'll mount your head on a pike! -->
+        <string id="jCrCRbyA" text="Je te monterai la tête sur un brochet !"/>
+        <!-- Don't hate me, it's just business... -->
+        <string id="0uiD2HxZ" text="Ne me déteste pas, c&amp;#39;est juste pour les affaires..."/>
+        <!-- Never should have come here! -->
+        <string id="42Fuy9pm" text="Je n&amp;#39;aurais jamais dû venir ici !"/>
+        <!-- Your money or your life! -->
+        <string id="dClbnb2q" text="Ton argent ou ta vie!"/>
+        <!-- I'm sorry, but I must stop you. -->
+        <string id="uyjy1geA" text="Je suis désolé, mais je dois vous arrêter."/>
+        <!-- I have the high ground! -->
+        <string id="dh0c96lo" text="J&amp;#39;ai la hauteur !"/>
+        <!-- DAMN IT DAVE! -->
+        <string id="EcD5q9th" text="MERDE DAVE !"/>
+    </strings>
+</base>

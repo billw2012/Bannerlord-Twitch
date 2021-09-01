@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="简体中文"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- AddGoldToPlayer -->
+        <!-- Add Gold To Player -->
+        <string id="HSuPuNDk" text="为玩家添加金币"/>
+        <!-- Allows viewers to give the player gold, either for channel points and/or from their own hero -->
+        <string id="wqR23RYf" text="允许观众为玩家提供金币，无论是频道点数还是/或来自他们自己的英雄"/>
+        <!-- Gold Amount To Give -->
+        <string id="F51J5Qd5" text="赠送金额"/>
+        <!-- How much gold to give the player -->
+        <string id="Jg6qoYth" text="给玩家多少金币"/>
+        <!-- From Adopted Hero -->
+        <string id="yGnwXshi" text="来自领养的英雄"/>
+        <!-- Whether to take the gold from the viewers adopted hero -->
+        <string id="uL8hjmZ9" text="是否从观众收养的英雄手中夺金"/>
+        <!-- Alert Sound -->
+        <string id="sNkcGnrw" text="警报声"/>
+        <!-- Alert sound to play for the message -->
+        <string id="TSi4MZiT" text="为消息播放提示音"/>
+        <!-- {UserName} gives you {GoldAmountToGive} gold -->
+        <string id="awjXw6yr" text="{UserName} gives you {GoldAmountToGive} 金"/>
+        <!-- {UserName} gives you {GoldAmountToGive} gold: '{Message}' -->
+        <string id="jOqdrS7h" text="{UserName} gives you {GoldAmountToGive} gold: '{Message}&amp;#39;"/>
+        <!-- Sent {GoldAmountToGive}{GoldIcon} to {PlayerName} -->
+        <string id="ziWoNEec" text="已发送 {GoldAmountToGive}{GoldIcon} to {PlayerName}"/>
+        
+        <!-- CharacterEffect -->
+        <!-- Applies effects to a character / the player -->
+        <string id="aGfP5X2q" text="将效果应用于角色/玩家"/>
+        <!-- No mission is active! -->
+        <string id="ZXxpMpYi" text="没有任务处于活动状态！"/>
+        <!-- Not allowed during tournament! -->
+        <string id="aK6wEWqw" text="比赛期间不允许！"/>
+        <!-- The mission has not started yet! -->
+        <string id="0H0dMWam" text="任务还没开始！"/>
+        <!-- The mission is ending! -->
+        <string id="f3Cwg2lw" text="任务结束！"/>
+        <!-- Couldn't find the target! -->
+        <string id="duuvGgDi" text="找不到目标！"/>
+        <!-- CharacterEffect {Source} configuration error: Name is missing! -->
+        <string id="hr0ye4gl" text="CharacterEffect {Source} 配置错误：缺少名称！"/>
+        <!-- {Target} already affected by {Config}! -->
+        <string id="yZuAmGOU" text="{Target} already affected by {Config}！"/>
+        <!-- {Target} is mounted so cannot be affected by {Config}! -->
+        <string id="gZtqmx0D" text="{Target} is mounted so cannot be affected by {Config}！"/>
+        <!-- {Config} is active on {Target}! -->
+        <string id="1S6mDVBM" text="{Config} is active on {Target}！"/>
+        <!-- {Config} is active on {Target}! -->
+        <string id="uV2gZjHI" text="{Config} is active on {Target}！"/>
+        <!-- {Config} expired on {Target}! -->
+        <string id="lpdl3sj9" text="{Config} expired on {Target}！"/>
+
+        <!-- CharacterEffect.Config -->
+        <!-- Player -->
+        <string id="92tZqqRy" text="播放器"/>
+        <!-- AdoptedHero -->
+        <string id="jyNFgLUD" text="领养英雄"/>
+        <!-- Any -->
+        <string id="qVaXXiEf" text="任何"/>
+        <!-- EnemyTeam -->
+        <string id="Dc99H7LD" text="敌队"/>
+        <!-- PlayerTeam -->
+        <string id="mWL1kGwD" text="玩家团队"/>
+        <!-- AllyTeam -->
+        <string id="8rqexAvY" text="盟友团队"/>
+        <!-- Random -->
+        <string id="o3jTIv2S" text="随机的"/>
+        <!-- On Weapon -->
+        <string id="ry3Fo3Ph" text="武器上"/>
+        <!-- On Hands -->
+        <string id="zfQ43utW" text="手上"/>
+        <!-- On Head -->
+        <string id="P9e57ey1" text="在头上"/>
+        <!-- On Body -->
+        <string id="GZC5VUo0" text="在身体上"/>
+        <!-- Particle Effect Definition -->
+        <string id="F9u231DX" text="粒子效果定义"/>
+        <!-- Particle effect system name, see ParticleEffects.txt for the full vanilla list -->
+        <string id="8FGAgHIX" text="粒子效果系统名称，请参阅 ParticleEffects.txt 以获取完整的香草列表"/>
+        <!-- Attach Point -->
+        <string id="7MIO0dPq" text="附着点"/>
+        <!-- Where to attach the particles -->
+        <string id="jEEtBaKs" text="在哪里附着粒子"/>
+        <!-- The property to modify -->
+        <string id="Dx5HUb1Q" text="要修改的属性"/>
+        <!-- Add -->
+        <string id="Qu3sbJvR" text="添加"/>
+        <!-- Add to the property value -->
+        <string id="anOigmfO" text="添加到属性值"/>
+        <!-- Multiply -->
+        <string id="AQ7g1RuJ" text="乘"/>
+        <!-- Multiply the property value -->
+        <string id="35zcHc2g" text="乘以属性值"/>
+        <!-- Name to use when referring to this effect -->
+        <string id="KdxwhYu6" text="提及此效果时使用的名称"/>
+        <!-- Target -->
+        <string id="hCfdaELu" text="目标"/>
+        <!-- Target of the effect -->
+        <string id="5bWknsD5" text="效果目标"/>
+        <!-- Target On Foot Only -->
+        <string id="wbj9ztiI" text="仅步行目标"/>
+        <!-- Will target unmounted soldiers only -->
+        <string id="RptjkipN" text="将仅针对未骑乘的士兵"/>
+        <!-- Particle Effects -->
+        <string id="j7t8cjxA" text="粒子效果"/>
+        <!-- Particle effects to apply -->
+        <string id="YiUto6gZ" text="要应用的粒子效果"/>
+        <!-- Properties -->
+        <string id="CN0a7XhW" text="特性"/>
+        <!-- Properties to change, and how much by -->
+        <string id="JrmttiBW" text="要更改的属性，以及更改多少"/>
+        <!-- Heal Per Second -->
+        <string id="trYxwNFg" text="每秒治疗"/>
+        <!-- Heal amount per second -->
+        <string id="J19JbB4E" text="每秒治疗量"/>
+        <!-- Damage Per Second -->
+        <string id="6Ikuo9Yl" text="每秒伤害输出"/>
+        <!-- Damage amount per second -->
+        <string id="cQBHZWwK" text="每秒伤害量"/>
+        <!-- Duration -->
+        <string id="KxP51isR" text="期间"/>
+        <!-- Duration the effect will last for, if not specified the effect will last until the end of the mission -->
+        <string id="1pG6eydt" text="效果持续时间，如果未指定，效果将持续到任务结束"/>
+        <!-- Force Drop Weapons -->
+        <string id="rFxwAzgd" text="强制掉落武器"/>
+        <!-- Force agent to drop weapons -->
+        <string id="ZW0x13Y8" text="强制特工放下武器"/>
+        <!-- Remove Armor -->
+        <string id="vZIAY076" text="移除护甲"/>
+        <!-- Remove all armor -->
+        <string id="4kiY7cUb" text="移除所有盔甲"/>
+        <!-- Damage Multiplier -->
+        <string id="jJpRuWKR" text="伤害乘数"/>
+        <!-- Raw damage multiplier -->
+        <string id="FlfyDMlc" text="原始伤害乘数"/>
+        <!-- Activate Particle Effect -->
+        <string id="qWGAG5l8" text="激活粒子效果"/>
+        <!-- One shot vfx to apply when the effect is activated -->
+        <string id="6HT3lQbV" text="当效果被激活时应用一杆视觉特效"/>
+        <!-- Activate Sound -->
+        <string id="deboEOcD" text="激活声音"/>
+        <!-- Sound to play when effect is activated, see Sounds.txt for the full vanilla list -->
+        <string id="zZskrilN" text="激活效果时播放的声音，请参阅 Sounds.txt 以获取完整的香草列表"/>
+        <!-- Deactivate Particle Effect -->
+        <string id="FBH0P3a9" text="停用粒子效果"/>
+        <!-- One shot vfx to apply when the effect is deactivated, see ParticleEffects.txt for the full vanilla list -->
+        <string id="u1eFzwLY" text="当效果被停用时应用一杆 vfx，请参阅 ParticleEffects.txt 以获取完整的香草列表"/>
+        <!-- Deactivate Sound -->
+        <string id="zfSYXHms" text="关闭声音"/>
+        <!-- Sound to play when effect is deactivated, see Sounds.txt for the full vanilla list -->
+        <string id="ziMmWmmY" text="停用效果时播放的声音，请参阅 Sounds.txt 以获取完整的香草列表"/>
+        
+        <!-- SendMessage -->
+        <!-- Send Message -->
+        <string id="rXQWpj95" text="发信息"/>
+        <!-- Allows viewers to send a message that will appear in game -->
+        <string id="htpylYKb" text="允许观众发送将出现在游戏中的消息"/>
+        <!-- Alert Sound -->
+        <string id="Anvcnpbh" text="警报声"/>
+        <!-- Alert sound to play for the message -->
+        <string id="V36Hg85n" text="为消息播放提示音"/>
+        <!-- No message provided! -->
+        <string id="cA8NQlDm" text="没有提供消息！"/>
+        <!-- Sent -->
+        <string id="tFHfVCDK" text="发送"/>
+        
+        <!-- GlobalEffectsConfig -->
+        <!-- Effects Config -->
+        <string id="cBeIA9V1" text="效果配置"/>
+        <!-- Disable Effects In Tournaments -->
+        <string id="cUN7xx0t" text="在锦标赛中禁用效果"/>
+        <!-- Whether effects are disabled in a tournament -->
+        <string id="X0AtIvbh" text="锦标赛中是否禁用效果"/>
+    </strings>
+</base>

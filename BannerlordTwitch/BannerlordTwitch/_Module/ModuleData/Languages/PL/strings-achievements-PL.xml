@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Polski"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Common -->
+        <!-- Reward {ITEMNAME} -->
+        <string id="W47g8bCB" text="Nagroda {ITEMNAME}"/>
+        <!-- {viewer} is {name}! -->
+        <string id="TAWcPGIc" text="{viewer} is {name}!"/>
+        
+        
+        <!-- {ITEMNAME} of Fealty -->
+        <string id="IvV04W31" text="{ITEMNAME} z Fealty"/>
+        <!-- Renegades {ITEMNAME} -->
+        <string id="UQtSgnog" text="Renegaci {ITEMNAME}"/>
+        <!-- Stream Sniper {ITEMNAME} -->
+        <string id="xI41h8NA" text="Snajper strumieniowy {ITEMNAME}"/>
+        
+        <!-- Reliable -->
+        <string id="ODWiNBng" text="Wiarygodny"/>
+        <!-- Trusted -->
+        <string id="fWTqF2sw" text="Zaufane"/>
+        <!-- Loyal -->
+        <string id="fe9J8von" text="Wierny"/>
+        <!-- Rebellious -->
+        <string id="HdYFegeb" text="Buntowniczy"/>
+        <!-- Traitorous -->
+        <string id="gDHR7f8r" text="Zdradziecki"/>
+        <!-- Renegade -->
+        <string id="VEH582e7" text="Renegat"/>
+        <!-- Stream Sniper -->
+        <string id="Aj0gXKgZ" text="Snajper strumieniowy"/>
+        
+        
+    </strings>
+</base>

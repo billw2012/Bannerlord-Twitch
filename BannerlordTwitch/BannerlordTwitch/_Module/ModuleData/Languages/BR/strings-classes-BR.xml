@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Português"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Common -->        
+        <!-- Fireblade -->
+        <string id="yEtkv5ML" text="Lâmina de fogo"/>
+        <!-- infantry -->
+        <string id="m8bz4drX" text="infantaria"/>
+        <!-- Healthy -->
+        <string id="ROXuJJq8" text="Saudável"/>
+        <!-- Explosive Arrows -->
+        <string id="skyn1cL6" text="Setas Explosivas"/>
+        <!-- archer -->
+        <string id="4tflp34a" text="arqueiro"/>
+        <!-- Fleet Footed -->
+        <string id="NE9Li2Hb" text="Fleet Footed"/>
+        <!-- Explosive Arrows -->
+        <string id="xgnH5owv" text="Setas Explosivas"/>
+        <!-- heavyarcher -->
+        <string id="JncRD8tX" text="heavyarcher"/>
+        <!-- Healthy -->
+        <string id="ZrmsIMPE" text="Saudável"/>
+        <!-- Heavy Bolts -->
+        <string id="QZD9XdpC" text="Parafusos Pesados"/>
+        <!-- crossbow -->
+        <string id="wV6R9Si5" text="besta"/>
+        <!-- Self Healing -->
+        <string id="FvNPPHLJ" text="Autocura"/>
+        <!-- Explosive Bolts -->
+        <string id="7GmE3SfQ" text="Parafusos Explosivos"/>
+        <!-- heavycrossbow -->
+        <string id="bpzytNbP" text="arco cruzado pesado"/>
+        <!-- Healthy -->
+        <string id="k7booFb2" text="Saudável"/>
+        <!-- Trample -->
+        <string id="ZEGEpycY" text="Atropelar"/>
+        <!-- cavalry -->
+        <string id="jNaFWF9t" text="cavalaria"/>
+        <!-- A Good Horse -->
+        <string id="YghplAdF" text="Um bom cavalo"/>
+        <!-- Trample -->
+        <string id="mmeJSrm9" text="Atropelar"/>
+        <!-- camelry -->
+        <string id="mJ8RVORq" text="camelo"/>
+        <!-- A Good Camel -->
+        <string id="atGMPeNF" text="Um bom camelo"/>
+        <!-- Explosive Arrows -->
+        <string id="YpIUHASp" text="Setas Explosivas"/>
+        <!-- horsearcher -->
+        <string id="p5qJfkkp" text="horsearcher"/>
+        <!-- Mounted Archery -->
+        <string id="zxgdfSIS" text="Tiro com arco montado"/>
+        <!-- Heavy Arrows -->
+        <string id="FrX7AiyI" text="Setas pesadas"/>
+        <!-- camelarcher -->
+        <string id="HreZWoyd" text="camelarcher"/>
+        <!-- Mounted Archery -->
+        <string id="szdoTAQj" text="Tiro com arco montado"/>
+        <!-- Break Through -->
+        <string id="E3qGC3fs" text="Avanço"/>
+        <!-- skirmisher -->
+        <string id="9euSgzCd" text="escaramuçador"/>
+        <!-- Retribution -->
+        <string id="Lw8xQu1P" text="Retribuição"/>
+        <!-- Berserker Rage -->
+        <string id="1DSLInEJ" text="Berserker Rage"/>
+        <!-- berserker -->
+        <string id="wVjXAFal" text="berserker"/>
+        <!-- Glass Cannon -->
+        <string id="nB4Qb0mD" text="Canhão de vidro"/>
+        <!-- Retribution -->
+        <string id="rzIl9tm3" text="Retribuição"/>
+        <!-- looter -->
+        <string id="4JffsJMD" text="saqueador"/>
+        <!-- Grenades -->
+        <string id="nmjVjakS" text="Granadas"/>
+    </strings>
+</base>

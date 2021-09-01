@@ -1,0 +1,434 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="한국인"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- AchievementDef -->
+        <!-- Achievement Definition -->
+        <string id="CEZZzIAq" text="성취 정의"/>
+        
+        <!-- Requirements -->
+        <string id="TFbiD0CZ" text="요구 사항"/>
+        <!-- Reward -->
+        <string id="sHWjkhId" text="보상"/>
+        
+        <!-- New Achievement -->
+        <string id="nLaRVBVV" text="새로운 업적"/>
+
+        <!-- Notification Text -->
+        <string id="guJFFskH" text="알림 텍스트"/>
+        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement. -->
+        <string id="SwIUyQNw" text="업적을 달성하고 플레이어가 업적을 나열할 때 표시될 텍스트입니다. 자리 표시자: 업적 이름의 경우 {viewer} for the viewers name, and {name}입니다."/>
+        
+        <!-- Requirements -->
+        <string id="TfwiBMGr" text="요구 사항"/>
+
+        <!-- Gold Gain -->
+        <string id="NitYwoHr" text="골드 이득"/>
+        <!-- Gold awarded for gaining this achievement. -->
+        <string id="l0xBVhOe" text="이 업적을 달성하면 골드가 수여됩니다."/>
+        
+        <!-- XP Gain -->
+        <string id="JShqb5Be" text="경험치 획득"/>
+        <!-- Experience awarded for gaining this achievement. -->
+        <string id="tx7YV26l" text="이 업적을 달성하여 획득한 경험치입니다."/>
+        
+        <!-- Give Item Reward -->
+        <string id="OmwtPK7J" text="아이템 보상 제공"/>
+        <!-- Whether to give a custom item as reward (defined below) -->
+        <string id="vTb0ysRw" text="커스텀 아이템을 보상으로 제공할지 여부(아래 정의)"/>
+        
+        <!-- Item Reward -->
+        <string id="ZJikxJYo" text="아이템 보상"/>
+        <!-- Specifications of the custom item reward, if enabled -->
+        <string id="B4gODHog" text="활성화된 경우 사용자 지정 항목 보상의 사양"/>
+        
+        <!-- AchievementStatsData.Statistic -->
+        <!-- Total Kills -->
+        <string id="5RXxYH32" text="총 킬"/>
+        <!-- Total Hero Kills -->
+        <string id="FqBQumbv" text="총 영웅 처치"/>
+        <!-- Total Viewer Kills -->
+        <string id="WMYfysby" text="총 시청자 킬"/>
+        <!-- Total Streamer Kills -->
+        <string id="qPjwIfaF" text="총 스트리머 킬"/>
+        <!-- Total Mount Kills -->
+        <string id="ZTI6irGZ" text="총 마운트 킬"/>
+        <!-- Total Deaths -->
+        <string id="6IHF7HQb" text="총 사망자 수"/>
+        <!-- Total Hero Deaths -->
+        <string id="UHvCzzit" text="총 영웅 사망"/>
+        <!-- Total Viewer Deaths -->
+        <string id="mhcnLFBv" text="총 시청자 사망"/>
+        <!-- Total Streamer Deaths -->
+        <string id="rKVsbROz" text="총 스트리머 사망자 수"/>
+        <!-- Total Mount Deaths -->
+        <string id="6N8KiovH" text="총 탈것 사망"/>
+        <!-- Summons -->
+        <string id="YDiK48rp" text="소환장"/>
+        <!-- Attacks -->
+        <string id="facIgBFe" text="공격"/>
+        <!-- Battles -->
+        <string id="yTIq9zWS" text="전투"/>
+        <!-- Consecutive Summons -->
+        <string id="VwyXMINi" text="연속 소환"/>
+        <!-- Consecutive Attacks -->
+        <string id="Ju3c6Iz4" text="연속 공격"/>
+        <!-- TotalTournament Round Wins -->
+        <string id="dRD94FMl" text="토탈 토너먼트 라운드 승리"/>
+        <!-- TotalTournament Round Losses -->
+        <string id="GPMB5BPI" text="총 토너먼트 라운드 손실"/>
+        <!-- TotalTournament Final Wins -->
+        <string id="WdZWU9GV" text="TotalTournament 최종 우승"/>
+        
+        <!-- ClassLevelRequirement -->
+        <!-- Class Level Requirement -->
+        <string id="XLXBwBEj" text="클래스 레벨 요구 사항"/>
+        <!-- Min Level -->
+        <string id="s4N0bhG1" text="최소 레벨"/>
+        <!-- Minimum class level allowed -->
+        <string id="phf8JXQC" text="허용되는 최소 수업 수준"/>
+        <!-- Max Level -->
+        <string id="BT59iHQ5" text="최대 레벨"/>
+        <!-- Maximum class level allowed -->
+        <string id="lk60ZYwc" text="허용되는 최대 클래스 레벨"/>
+        <!-- AT LEAST {MinLevel} -->
+        <string id="j3QY6MkC" text="최소 {MinLevel}"/>
+        <!-- {MinLevel} TO {MaxLevel} -->
+        <string id="puNSSMYD" text="{MinLevel} TO {MaxLevel}"/>
+        <!-- CLASS LEVEL {Description} -->
+        <string id="boWoZsH4" text="클래스 레벨 {Description}"/>
+        
+        <!-- StatisticClassSpecificRequirement -->
+        <!-- Statistic Class Specific Requirement -->
+        <string id="ziuB7eSV" text="통계 클래스 특정 요구 사항"/>
+        <!-- Current Class -->
+        <string id="WwKyvotH" text="현재 수업"/>
+        <!-- Requirement uses current class, useful for class power unlocks so you don't have to specify the class explicitly -->
+        <string id="S9kGgf0r" text="요구 사항은 현재 클래스를 사용하므로 클래스 전원 잠금 해제에 유용하므로 클래스를 명시적으로 지정할 필요가 없습니다."/>
+        <!-- Required Class -->
+        <string id="5QwSEOc3" text="필수 클래스"/>
+        <!-- Class required to get this achievement. If (none) is specified then the achievement will apply ONLY when the hero doesn't have a class set. -->
+        <string id="G34P8lCu" text="이 업적을 달성하는 데 필요한 클래스입니다. (없음)을 지정하면 영웅이 직업을 설정하지 않은 경우에만 업적이 적용됩니다."/>
+        <!-- class -->
+        <string id="j3YG9dCh" text="수업"/>
+        <!-- (current) -->
+        <string id="RXXuHIdN" text="(현재의)"/>
+        <!-- (none) -->
+        <string id="dPEnuHsk" text="(없음)"/>
+        
+        <!-- StatisticRequirement -->
+        <!-- Statistic Requirement -->
+        <string id="CkgaxlDY" text="통계 요구 사항"/>
+        <!-- Statistic -->
+        <string id="ienuHzOP" text="통계량"/>
+        <!-- The statistic this achievement relates to. -->
+        <string id="OKuz3zwY" text="이 업적과 관련된 통계입니다."/>
+        <!-- Comparison -->
+        <string id="dXBsEW65" text="비교"/>
+        <!-- Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills. -->
+        <string id="4yoAe9WV" text="영웅이 지정된 값보다 많거나 적게 필요한지 여부. 예를 들어 영웅이 10명 미만으로 사망하고 100명 이상을 처치하도록 요구할 수 있습니다."/>
+        <!-- Value -->
+        <string id="a8Josr4g" text="값"/>
+        <!-- Value needed to obtain the achievement. -->
+        <string id="B9LEjEq8" text="업적을 달성하는 데 필요한 값입니다."/>
+        <!-- Other Statistic -->
+        <string id="nau8vg7o" text="기타 통계"/>
+        <!-- Other statistic to compare against (this overrides Value if specified). -->
+        <string id="A3EKQ7up" text="비교할 기타 통계입니다(지정된 경우 값을 재정의함)."/>
+        
+        <!-- HeroClassDef -->
+        <!-- Class Definition -->
+        <string id="ph50k2xB" text="클래스 정의"/>
+        <!-- Class Definition -->
+        <string id="iqYaiOhP" text="클래스 정의"/>
+        <!-- Whether this class is enabled for use in the game or not -->
+        <string id="XkL6MNLl" text="이 클래스가 게임에서 사용 가능한지 여부"/>
+        <!-- Name of the class that shall be passed to SetHeroClass actions -->
+        <string id="U9PyN7eb" text="SetHeroClass 작업에 전달할 클래스 이름"/>
+        <!-- Description -->
+        <string id="rZRKLuGI" text="설명"/>
+        <!-- Description of the class (used in documentation) -->
+        <string id="yRN3Jfwv" text="클래스 설명(문서에 사용됨)"/>
+        <!-- Formation -->
+        <string id="zy3uK94p" text="형성"/>
+        <!-- Which formation to add summoned units to -->
+        <string id="1kEMFWLD" text="소환된 유닛을 추가할 포메이션"/>
+        <!-- Slot 1 -->
+        <string id="48tkMBhb" text="슬롯 1"/>
+        <!-- Item type to put in slot 1 -->
+        <string id="kpDE6URE" text="슬롯 1에 넣을 항목 유형"/>
+        <!-- Slot 2 -->
+        <string id="vXtJLZlw" text="슬롯 2"/>
+        <!-- Item type to put in slot 2 -->
+        <string id="G5AN3s2D" text="슬롯 2에 넣을 아이템 종류"/>
+        <!-- Slot 3 -->
+        <string id="B4LLuesN" text="슬롯 3"/>
+        <!-- Item type to put in slot 3 -->
+        <string id="clxxPb9O" text="슬롯 3에 넣을 아이템 유형"/>
+        <!-- Slot 4 -->
+        <string id="h9PK7GnU" text="슬롯 4"/>
+        <!-- Item type to put in slot 4 -->
+        <string id="EUzbiqh5" text="슬롯 4에 넣을 아이템 유형"/>
+        <!-- Use Horse -->
+        <string id="MdYmGuin" text="말 사용"/>
+        <!-- Whether to allow horse (can be combined with Use Camel) -->
+        <string id="Q00NX1J9" text="말 허용 여부(낙타 사용과 조합 가능)"/>
+        <!-- Use Camel -->
+        <string id="1YsQ2fC3" text="낙타 사용"/>
+        <!-- Whether to allow camel (can be combined with Use Horse -->
+        <string id="Us7G1v2T" text="낙타 허용 여부(사용 말과 결합 가능"/>
+        <!-- Passive Power -->
+        <string id="MvddFKo4" text="패시브 파워"/>
+        <!-- Passive hero power: this will always apply to the hero (i.e. a permanent buff) -->
+        <string id="F8a2nXYo" text="패시브 영웅 능력: 이것은 항상 영웅에게 적용됩니다(즉, 영구적인 버프)."/>
+        <!-- Active Power -->
+        <string id="wdCMNOGd" text="유효 전력"/>
+        <!-- Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff) -->
+        <string id="I4ASwveG" text="활성 영웅 능력: 이 능력은 사용자가 보상 또는 명령(예: 임시 버프)을 통해 UseHeroPower 작업을 사용할 때만 트리거됩니다."/>
+        
+        <!-- Horse -->
+        <string id="YzIcRgBV" text="말"/>
+        <!-- Camel -->
+        <string id="HMclWXR8" text="낙타"/>
+        <!-- Use Horse -->
+        <string id="A1G6bq0G" text="말 사용"/>
+        <!-- Use Camel -->
+        <string id="FpgyZk0F" text="낙타 사용"/>
+        <!-- (none) -->
+        <string id="GFc6JLJ9" text="(없음)"/>
+        <!-- Details -->
+        <string id="A79HrgZ0" text="세부"/>
+        <!-- Tier {TierNumber} -->
+        <string id="Rs1XNM9K" text="계층 {TierNumber}"/>
+        <!-- Equipment -->
+        <string id="HyXJQJtW" text="장비"/>
+
+        <!-- Mount -->
+        <string id="iGdq37PI" text="산"/>
+        
+        <!-- KillStreakDef -->
+        <!-- Kill Streak -->
+        <string id="InTnlqz1" text="연속 죽이기"/>
+        <!-- Show Notification -->
+        <string id="poe8m8rn" text="알림 표시"/>
+        <!-- Notification Text -->
+        <string id="RQh3jIZW" text="알림 텍스트"/>
+        <!-- Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required. -->
+        <string id="04wTH1xo" text="연속 킬 달성 시 표시되는 텍스트입니다. 자리 표시자: 필요한 킬의 경우 {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills}입니다."/>
+        <!-- Kills Required -->
+        <string id="mG7HzT0z" text="필요한 처치"/>
+        <!-- Kills required to achieve the kill streak. -->
+        <string id="mLElTwb6" text="연속 킬 달성에 필요한 킬 수."/>
+        <!-- Gold Reward -->
+        <string id="zEqJgISl" text="골드 보상"/>
+        <!-- Gold rewarded when the kill streak is achieved. -->
+        <string id="CYg79sAT" text="연속 킬 달성 시 골드 보상."/>
+        <!-- XP Reward -->
+        <string id="vzCgh9PN" text="XP 보상"/>
+        <!-- Experience granted when the kill streak is achieved. -->
+        <string id="Q1TcztBP" text="연속 킬 달성 시 경험치 획득."/>
+        <!-- New Kill Streak -->
+        <string id="KtvBk2nR" text="새로운 연속 처치"/>
+        <!-- {viewer} got {name} ({kills} kills) -->
+        <string id="ipowOInD" text="{viewer} got {name} ({kills} 킬)"/>
+        <!-- {KillsRequired} kills -->
+        <string id="YZJ60Pxb" text="{KillsRequired} 킬"/>
+
+        <!-- SummonHero.FormationItemSource -->
+        <!-- Infantry -->
+        <string id="7gt8mcJc" text="보병"/>
+        <!-- Ranged -->
+        <string id="kDo9EtMh" text="원거리"/>
+        <!-- Cavalry -->
+        <string id="HcfkYEsF" text="기병대"/>
+        <!-- Horse Archer -->
+        <string id="Xx9xP7jK" text="말 궁수"/>
+        <!-- Skirmisher -->
+        <string id="PpZY6dPX" text="스커미셔"/>
+        <!-- Heavy Infantry -->
+        <string id="VT6VYeVp" text="중보병"/>
+        <!-- Light Cavalry -->
+        <string id="t5iTNQ5p" text="경기병"/>
+        <!-- Heavy Cavalry -->
+        <string id="vyVSsiBr" text="중기병"/>
+        
+        <!-- SkillRangeDef -->
+        <!-- Skill Range -->
+        <string id="uUWdyER4" text="기술 범위"/>
+        
+        <!-- The skill or skill group -->
+        <string id="WcQpCpdI" text="기술 또는 기술 그룹"/>
+        <!-- The min level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023) -->
+        <string id="fozHOKis" text="최소 레벨이어야 합니다(실제 값은 최소값과 최대값 사이에서 무작위로 선택되며 유효한 값은 0에서 1023까지입니다.)"/>
+        <!-- The max level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023) -->
+        <string id="I6hTb2OY" text="최대 레벨이어야 합니다(실제 값은 최소값과 최대값 사이에서 무작위로 선택되며 유효한 값은 0에서 1023까지입니다.)"/>
+        
+        <!-- ClassLevelRequirementsDef -->
+        <!-- Class Level Requirements Definition -->
+        <string id="uZUsZLGm" text="클래스 수준 요구 사항 정의"/>
+        <!-- ClassLevel -->
+        <string id="0raqv788" text="클래스레벨"/>
+        <!-- Class level -->
+        <string id="el4y84iD" text="클래스 레벨"/>
+        <!-- Requirements -->
+        <string id="aMGoiH53" text="요구 사항"/>
+        <!-- Requirements for this class level -->
+        <string id="G95DA4OM" text="이 수업 수준에 대한 요구 사항"/>
+
+        <!-- MissionInfo -->
+        <!-- Kills -->
+        <string id="AM2zlkem" text="킬"/>
+        <!-- +Retinue Kills -->
+        <string id="79JXI4JL" text="+ 수행원 처치"/>
+        <!-- Gold -->
+        <string id="o0Q8Y1Qg" text="금"/>
+        <!-- XP -->
+        <string id="VtEJiMWy" text="XP"/>
+        
+        <!-- Tournament -->
+        <!-- Tournament -->
+        <string id="PI83uB8j" text="토너먼트"/>
+        <!-- Betting is OPEN -->
+        <string id="WPTU6AGn" text="베팅이 열려 있습니다"/>
+        <!-- Betting is CLOSED -->
+        <string id="PLRsZCjL" text="베팅이 종료되었습니다"/>
+        <!-- Not taking bets -->
+        <string id="Sv04YKsL" text="내기를 하지 않음"/>
+                
+        <!-- GeneratedRewardDef -->
+        <!-- Reward Type -->
+        <string id="x6pmNHJT" text="보상 유형"/>
+        <!-- Reward Tier -->
+        <string id="Mmd0UleC" text="보상 등급"/>
+        <!-- Custom Item -->
+        <string id="zVqTKyQG" text="커스텀 아이템"/>
+        <!-- Weapon Weight -->
+        <string id="7yNTThry" text="무기 무게"/>
+        <!-- Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo. -->
+        <string id="WTWuy57X" text="무기가 될 보상의 상대적 비율. 여기에는 한손, 양손, 원거리 및 탄약이 모두 포함됩니다."/>
+        <!-- Armor Weight -->
+        <string id="Al3Px9lL" text="갑옷 무게"/>
+        <!-- Relative proportion of rewards that will be armor -->
+        <string id="WSXhTI0r" text="방어구가 될 보상의 상대적 비율"/>
+        <!-- Mount Weight -->
+        <string id="S6t7iUki" text="마운트 무게"/>
+        <!-- Relative proportion of rewards that will be mounts -->
+        <string id="4L1hJS6v" text="탈것에 대한 보상의 상대적 비율"/>
+        <!-- Reward Type Chances -->
+        <string id="h4CEbGun" text="보상 유형 기회"/>
+        <!-- The % chance for each item type -->
+        <string id="u9zCErHS" text="각 항목 유형에 대한 % 확률"/>
+        <!-- Tier 1 Weight -->
+        <string id="pqDOv12p" text="계층 1 무게"/>
+        <!-- Relative proportion of rewards that will be Tier 1 -->
+        <string id="aAZvoxk9" text="Tier 1이 될 보상의 상대적 비율"/>
+        <!-- Tier 2 Weight -->
+        <string id="ZDgMrJHH" text="티어 2 무게"/>
+        <!-- Relative proportion of rewards that will be Tier 2 -->
+        <string id="rvjbuCH4" text="Tier 2가 될 보상의 상대적 비율"/>
+        <!-- Tier 3 Weight -->
+        <string id="8UhZyGRj" text="3단계 무게"/>
+        <!-- Relative proportion of rewards that will be Tier 3 -->
+        <string id="CJwXH8cz" text="Tier 3가 될 보상의 상대적 비율"/>
+        <!-- Tier 4 Weight -->
+        <string id="v4wqC1mI" text="4단계 무게"/>
+        <!-- Relative proportion of rewards that will be Tier 4 -->
+        <string id="NoKi0iIC" text="Tier 4가 될 보상의 상대적 비율"/>
+        <!-- Tier 5 Weight -->
+        <string id="vXimyLH7" text="티어 5 무게"/>
+        <!-- Relative proportion of rewards that will be Tier 5 -->
+        <string id="rsGLtLyB" text="Tier 5가 될 보상의 상대적 비율"/>
+        <!-- Tier 6 Weight -->
+        <string id="HWHFIsUH" text="티어 6 무게"/>
+        <!-- Relative proportion of rewards that will be Tier 6 -->
+        <string id="991D0fok" text="Tier 6이 될 보상의 상대적 비율"/>
+        <!-- Custom Weight -->
+        <string id="R5TCrBo8" text="사용자 정의 무게"/>
+        <!-- Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below) -->
+        <string id="XL94fx52" text="사용자 정의가 될 보상의 상대적 비율(아래 사용자 정의 보상 설정에 따라 수정자가 있는 계층 6)"/>
+        <!-- Reward Tier Chances -->
+        <string id="zoBVNJBB" text="보상 등급 기회"/>
+        <!-- The % chance for each reward tier -->
+        <string id="ANPeZyy0" text="각 보상 등급에 대한 % 확률"/>
+        <!-- Custom Item Name -->
+        <string id="PBWEbYLT" text="사용자 정의 항목 이름"/>
+        <!-- Name format for custom item, {ITEMNAME} is the placeholder for the base item name. -->
+        <string id="vqNeCCNy" text="사용자 정의 항목의 이름 형식, {ITEMNAME}은 기본 항목 이름의 자리 표시자입니다."/>
+        <!-- Custom Item Power -->
+        <string id="THpMPPhd" text="커스텀 아이템 파워"/>
+        <!-- Custom item power multiplier, applies on top of the global multiplier -->
+        <string id="anUzQaU7" text="커스텀 아이템 파워 멀티플라이어, 글로벌 멀티플라이어 위에 적용"/>
+        <!-- Weapon -->
+        <string id="hpJN9wNo" text="무기"/>
+        <!-- Armor -->
+        <string id="YQdQrFG7" text="갑옷"/>
+        <!-- Mount -->
+        <string id="HGZVsIjn" text="산"/>
+        <!-- Custom -->
+        <string id="LKgozyEk" text="관습"/>
+        <!-- Tier {Tier} -->
+        <string id="JpB20FtS" text="계층 {Tier}"/>
+        
+        <!-- RandomItemModifierDef -->
+        <!-- Power -->
+        <string id="1NLO6Gee" text="힘"/>
+        <!-- Custom prize power, a global multiplier for the values below -->
+        <string id="LXo3mTnr" text="사용자 지정 상금, 아래 값에 대한 전역 승수"/>
+        <!-- Weapon Damage -->
+        <string id="g2DZKK7M" text="무기 피해"/>
+        <!-- Weapon damage modifier for custom weapon prize -->
+        <string id="R9lwIsrX" text="사용자 정의 무기 상품에 대한 무기 피해 수정자"/>
+        <!-- Weapon Speed -->
+        <string id="7TgyXbNe" text="무기 속도"/>
+        <!-- Speed modifier for custom weapon prize -->
+        <string id="1ZZDexjJ" text="맞춤형 무기 보상을 위한 속도 수정"/>
+        <!-- Weapon Missile Speed -->
+        <string id="4zhm204e" text="무기 미사일 속도"/>
+        <!-- Missile speed modifier for custom weapon prize -->
+        <string id="gFO8L8CR" text="맞춤형 무기 보상을 위한 미사일 속도 수정"/>
+        <!-- Ammo Damage -->
+        <string id="ny6l1USK" text="탄약 피해"/>
+        <!-- Ammo damage modifier for custom ammo prize -->
+        <string id="oTSCOXpf" text="맞춤형 탄약 보상을 위한 탄약 피해 수정치"/>
+        <!-- Arrow Stack -->
+        <string id="2ehIq5eD" text="애로우 스택"/>
+        <!-- Arrow stack size modifier for custom arrow prize -->
+        <string id="inawRS8e" text="사용자 지정 화살표 상품에 대한 화살표 스택 크기 수정자"/>
+        <!-- Throwing Stack -->
+        <string id="JUXQcKMR" text="스택 던지기"/>
+        <!-- Throwing stack size modifier for custom throwing prize -->
+        <string id="QAUf8zj0" text="사용자 정의 투척 상품을 위한 투척 스택 크기 수정자"/>
+        <!-- Armor -->
+        <string id="MrOZ69tP" text="갑옷"/>
+        <!-- Armor modifier for custom armor prize -->
+        <string id="1x2YSVSz" text="커스텀 방어구 보상을 위한 방어구 수정자"/>
+        <!-- Mount Maneuver -->
+        <string id="BYekTOq6" text="마운트 기동"/>
+        <!-- Maneuver multiplier for custom mount prize -->
+        <string id="7cZ5JfEk" text="맞춤형 탈것을 위한 기동 승수"/>
+        <!-- Mount Speed -->
+        <string id="6yURxqNY" text="마운트 속도"/>
+        <!-- Speed multiplier for custom mount prize -->
+        <string id="eJZxwZc1" text="맞춤형 마운트 상품을 위한 속도 배율기"/>
+        <!-- Mount Charge Damage -->
+        <string id="ZmiOntW1" text="마운트 차지 데미지"/>
+        <!-- Charge damage multiplier for custom mount prize -->
+        <string id="MZm0DJcs" text="커스텀 탈것 보상을 위한 차지 데미지 배율"/>
+        <!-- Mount Hit Points -->
+        <string id="M8drveMF" text="마운트 히트 포인트"/>
+        <!-- Hitpoints multiplier for custom mount prize -->
+        <string id="ewC5EV3Q" text="맞춤형 탈것 상품에 대한 HP 승수"/>
+        
+        <!-- RewardHelpers -->
+        <!-- received {ItemName} -->
+        <string id="RczvXuxP" text="받은 {ItemName}"/>
+        <!-- sold {ItemName} for {ItemValue}{GoldIcon} (not needed) -->
+        <string id="bNX0NiQ9" text="{ItemName} for {ItemValue}{GoldIcon} 판매됨(필요하지 않음)"/>
+        <!-- received {ItemName} (put in storage) -->
+        <string id="R7VwlLzg" text="{ItemName}을(를) 받았습니다(저장에 넣음)"/>
+    </strings>
+</base>

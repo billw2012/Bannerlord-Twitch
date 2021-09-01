@@ -1,0 +1,805 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Français"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+                
+        <!-- AddGoldToHero -->
+        <!-- Add Gold To Hero -->
+        <string id="kn4uxAWs" text="Ajouter de l&amp;#39;or au héros"/>
+        <!-- Gives gold to the adopted hero -->
+        <string id="vkgPfcAu" text="Donne de l&amp;#39;or au héros adopté"/>
+        
+        <!-- How much gold to give the adopted hero -->
+        <string id="S2CeRdjR" text="Combien d&amp;#39;or donner au héros adopté"/>
+        
+        <!-- AdoptAHero -->
+        <!-- Adopt A Hero -->
+        <string id="NkZXnSQI" text="Adoptez un héros"/>
+        <!-- Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands -->
+        <string id="fd7G5N0Q" text="Permet au spectateur d&amp;#39;&amp;quot;adopter&amp;quot; un héros dans le jeu - le nom du héros changera pour le nom du spectateur, et ils peuvent le contrôler avec d&amp;#39;autres commandes"/>
+
+        <!-- Create New -->
+        <string id="TLrDxhlh" text="Créer un nouveau"/>
+        <!-- Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern) -->
+        <string id="F1KDzuZZ" text="Créez un nouveau héros au lieu d&amp;#39;en adopter un existant (ils seront un vagabond dans une taverne aléatoire)"/>
+        <!-- Allow Noble -->
+        <string id="nPIcT2s7" text="Autoriser les nobles"/>
+        <!-- Allow noble heroes (if CreateNew is false) -->
+        <string id="XvZN7OOY" text="Autoriser les héros nobles (si CreateNew est faux)"/>
+        <!-- Allow Wanderer -->
+        <string id="VVFsa8LQ" text="Autoriser le vagabond"/>
+        <!-- Allow wanderer heroes (if CreateNew is false) -->
+        <string id="9lE2KSvC" text="Autoriser les héros vagabonds (si CreateNew est faux)"/>
+        <!-- Allow Player Companion -->
+        <string id="A8G9ctbn" text="Autoriser le compagnon de jeu"/>
+        <!-- Allow companions (not tested, if CreateNew is false) -->
+        <string id="6EjGRMkt" text="Autoriser les compagnons (non testé, si CreateNew est faux)"/>
+        <!-- Only Same Faction -->
+        <string id="B2z7T1xQ" text="Seulement la même faction"/>
+        <!-- Only allow heroes from same faction as player -->
+        <string id="QvQGwFyl" text="Autoriser uniquement les héros de la même faction que le joueur"/>
+        <!-- Inheritance -->
+        <string id="dvbkxJQz" text="Héritage"/>
+        <!-- What fraction of assets will be inherited when a new character is adopted after an old one died (0 to 1) -->
+        <string id="KLJtpEjg" text="Quelle fraction des actifs sera héritée lorsqu&amp;#39;un nouveau personnage est adopté après la mort d&amp;#39;un ancien (0 à 1)"/>
+        <!-- Maximum Inherited Custom Items -->
+        <string id="Bi19tTPj" text="Nombre maximal d&amp;#39;éléments personnalisés hérités"/>
+        <!-- How many custom items can be inherited -->
+        <string id="tFolfAOn" text="Combien d&amp;#39;éléments personnalisés peuvent être hérités"/>
+        <!-- Subscriber Only -->
+        <string id="O4DGlP9Z" text="Abonné seulement"/>
+        <!-- Only subscribers can adopt -->
+        <string id="TBNkHsLC" text="Seuls les abonnés peuvent adopter"/>
+        <!-- Minimum Subscribed Months -->
+        <string id="dO41CKIU" text="Mois minimum souscrits"/>
+        <!-- Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified -->
+        <string id="BVZwDqR0" text="Seuls les téléspectateurs qui sont abonnés depuis au moins ce nombre de mois peuvent adopter, ignoré si non spécifié"/>
+        <!-- Starting Gold -->
+        <string id="iOmYBC7I" text="Or de départ"/>
+        <!-- Gold the adopted hero will start with -->
+        <string id="pZMkJLix" text="L&amp;#39;or avec lequel le héros adopté commencera"/>
+        <!-- Override Age -->
+        <string id="ZXwbvbbq" text="Remplacer l&amp;#39;âge"/>
+        <!-- Override the heroes age -->
+        <string id="gxQgrAey" text="Remplacer l&amp;#39;âge des héros"/>
+        <!-- Starting Age Range -->
+        <string id="NEBQgHiX" text="Tranche d&amp;#39;âge de départ"/>
+        <!-- Random range of age when overriding it -->
+        <string id="TYqEBuLW" text="Tranche d&amp;#39;âge aléatoire lors de la substitution"/>
+        <!-- Starting Skills -->
+        <string id="9IOFHQjS" text="Compétences de départ"/>
+        <!-- Starting skills, if empty then default skills of the adopted hero will be left in tact -->
+        <string id="C4rV4f2F" text="Les compétences de départ, si vides, les compétences par défaut du héros adopté seront laissées intactes"/>
+        <!-- Starting Equipment Tier -->
+        <string id="IAKQCRa1" text="Niveau d&amp;#39;équipement de départ"/>
+        <!-- Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment -->
+        <string id="mQwjHXfC" text="Niveau d&amp;#39;équipement avec lequel le héros adopté commencera, si vous ne le spécifiez pas, ils obtiendront l&amp;#39;équipement existant du héros"/>
+        <!-- Starting Class -->
+        <string id="0vGFJdO1" text="Classe de départ"/>
+        <!-- Starting class of the hero -->
+        <string id="zgjyFL6i" text="Classe de départ du héros"/>
+        
+        
+        <!-- Subscriber Only -->
+        <string id="4zAUTiSP" text="Abonné seulement"/>
+        <!-- Newly created wanderer -->
+        <string id="cJQCU33B" text="Vagabond nouvellement créé"/>
+        <!-- Noble -->
+        <string id="fP84ES0X" text="noble"/>
+        <!-- Wanderer -->
+        <string id="ozRaAx6L" text="Vagabond"/>
+        <!-- Companions -->
+        <string id="YucejFfO" text="Compagnons"/>
+        <!-- Allowed -->
+        <string id="UNtHwNhx" text="Autorisé"/>
+        <!-- Same faction only -->
+        <string id="6W0OJKkA" text="Même faction seulement"/>
+        <!-- Starting Age Range -->
+        <string id="pDP8b5HR" text="Tranche d&amp;#39;âge de départ"/>
+        <!-- Starting Gold -->
+        <string id="FvhsCSd3" text="Or de départ"/>
+        <!-- Inheritance -->
+        <string id="wP0lfTf3" text="Héritage"/>
+        <!-- {Inheritance}% of gold spent on equipment and retinue -->
+        <string id="mDK67efh" text="{Inheritance}% d&amp;#39;or dépensé pour l&amp;#39;équipement et la suite"/>
+        <!-- no custom items -->
+        <string id="76NtQIGB" text="pas d&amp;#39;articles personnalisés"/>
+        <!-- up to {MaxInheritedCustomItems} custom items -->
+        <string id="sEDQrZCp" text="jusqu&amp;#39;à {MaxInheritedCustomItems}articles personnalisés"/>
+        
+        <!-- You have already adopted a hero! -->
+        <string id="mJfD7e2g" text="Vous avez déjà adopté un héros !"/>
+        <!-- You must be subscribed for at least {MinSubscribedMonths} months to adopt a hero with this command! -->
+        <string id="4K7Q7gR0" text="Vous devez être abonné depuis au moins {MinSubscribedMonths}mois pour adopter un héros avec cette commande!"/>
+        <!-- You must be subscribed to adopt a hero with this command! -->
+        <string id="0QeQPxYi" text="Vous devez être abonné pour adopter un héros avec cette commande !"/>
+        <!-- No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)! -->
+        <string id="XlQUIIsg" text="Aucun héros n&amp;#39;est disponible : le joueur n&amp;#39;est pas dans une faction (désactivez Player Faction Only ou rejoignez une faction) !"/>
+        <!-- You can't adopt a hero: no available hero matching the requirements was found! -->
+        <string id="E7wqQ2kg" text="Vous ne pouvez pas adopter un héros : aucun héros disponible correspondant aux critères n&amp;#39;a été trouvé !"/>
+        <!-- {OldName} is now known as {NewName}! -->
+        <string id="K7nuJVCN" text="{OldName} is now known as {NewName}!"/>
+        <!-- {OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})! -->
+        <string id="PAc5S0GY" text="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})!"/>
+        <!-- {OldName} is now known as {NewName}, they have {NewGold}! -->
+        <string id="lANBKEFN" text="{OldName} is now known as {NewName}, they have {NewGold}!"/>
+        
+        <!-- AttributePoints -->
+        <!-- Add Attribute Points -->
+        <string id="TmUJ8VU7" text="Ajouter des points d&amp;#39;attribut"/>
+        <!-- Improve adopted heroes attribute points -->
+        <string id="YrYFBWaw" text="Améliorer les points d&amp;#39;attribut des héros adoptés"/>
+        <!-- Random -->
+        <string id="ibuIZ39r" text="Aléatoire"/>
+        <!-- If set a random attribute is improved, otherwise the viewer should provide part of the name of the attribute to improve (this works best as a chat command) -->
+        <string id="2F4MZn5h" text="Si défini, un attribut aléatoire est amélioré, sinon le spectateur doit fournir une partie du nom de l&amp;#39;attribut à améliorer (cela fonctionne mieux comme commande de chat)"/>
+        <!-- Random attribute -->
+        <string id="JQdCfO2H" text="Attribut aléatoire"/>
+        <!-- Provide the attribute name (or part of it) when calling this -->
+        <string id="hSPAbHWb" text="Fournissez le nom de l&amp;#39;attribut (ou une partie de celui-ci) lors de l&amp;#39;appel"/>
+        
+        <!-- Couldn't improve any attributes, they are all at max level! -->
+        <string id="VxproTE2" text="Aucun attribut n&amp;#39;a pu être amélioré, ils sont tous au niveau maximum !"/>
+        <!-- Provide the attribute name to improve (or part of it) -->
+        <string id="i9ziqTXG" text="Fournissez le nom de l&amp;#39;attribut à améliorer (ou une partie de celui-ci)"/>
+        <!-- You have gained {Amount} points in {Attribute}, you now have {NewAmount}! -->
+        <string id="Sl1bdnfy" text="Vous avez gagné {Amount} points in {Attribute}, you now have {NewAmount}!"/>
+        <!-- You have gained a point in {Attribute}, you now have {NewAmount}! -->
+        <string id="2vli3BCR" text="Vous avez gagné un point en {Attribute}, you now have {NewAmount}!"/>
+        <!--  -->
+        <string id="YawQBjBG" text=""/>
+        
+        <!-- Couldn't find attribute matching '{Args}'! -->
+        <string id="LE3POzUs" text="Impossible de trouver l&amp;#39;attribut correspondant à &amp;#39;{Args}&amp;#39;!"/>
+        <!-- Couldn't improve {Attribute} attribute, it is already at max level! -->
+        <string id="R7X1dTqL" text="Impossible d&amp;#39;améliorer l&amp;#39;attribut {Attribute}, il est déjà au niveau maximum!"/>
+        
+        <!-- AuctionItem -->
+        <!-- Auction Item -->
+        <string id="Q1QZbwR3" text="Article d&amp;#39;enchère"/>
+        <!-- Allows viewers to auction custom items, for other viewers to bid on (make sure to add a bid command also) -->
+        <string id="024hOo3G" text="Permet aux téléspectateurs de mettre aux enchères des articles personnalisés, sur lesquels d&amp;#39;autres téléspectateurs peuvent enchérir (assurez-vous d&amp;#39;ajouter une commande d&amp;#39;enchère également)"/>
+        <!-- Auction Item -->
+        <string id="34GjlaWu" text="Article d&amp;#39;enchère"/>
+        <!-- How long the auction should last before the highest bidder wins -->
+        <string id="zsvhQABf" text="Combien de temps doit durer l&amp;#39;enchère avant que le plus offrant ne l&amp;#39;emporte"/>
+        <!-- Auction Item -->
+        <string id="ssmJ9c5L" text="Article d&amp;#39;enchère"/>
+        <!-- Interval at which to output a reminder of the auction -->
+        <string id="ijkjWj5q" text="Intervalle de sortie d&amp;#39;un rappel de l&amp;#39;enchère"/>
+        <!-- Another auction is already in progress -->
+        <string id="T2R35HHV" text="Une autre vente aux enchères est déjà en cours"/>
+        <!-- You have no items to auction -->
+        <string id="kYHEtOM7" text="Vous n&amp;#39;avez aucun objet à vendre aux enchères"/>
+        <!-- (reserve price) (partial item name) -->
+        <string id="lI4WCNeQ" text="(prix de réserve) (nom partiel de l&amp;#39;article)"/>
+        <!-- Invalid reserve price '{Arg}' -->
+        <string id="mm1ay4I7" text="Prix de réserve &amp;#39;{Arg}&amp;#39; invalide"/>
+        <!-- No items found matching '{ItemName}' -->
+        <string id="viO1RBr5" text="Aucun élément trouvé correspondant à &amp;#39;{ItemName}&amp;#39;"/>
+        <!-- {ItemCount} items found matching '{ItemName}', be more specific -->
+        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName}&amp;#39;, soyez plus précis"/>
+        
+        <!-- Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds. -->
+        <string id="BH5rnHNq" text="Enchère de &amp;#39;{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} secondes."/>
+        <!-- Bid On Item -->
+        <string id="rBAvqAh7" text="Enchérir sur l&amp;#39;article"/>
+        <!-- Allows viewers bid on an active custom item auction (make sure to add an auction command also) -->
+        <string id="XuvGyCwD" text="Permet aux téléspectateurs d&amp;#39;enchérir sur une vente aux enchères d&amp;#39;articles personnalisés active (assurez-vous d&amp;#39;ajouter également une commande d&amp;#39;enchère)"/>
+        <!-- (bid amount) -->
+        <string id="ewjqhPqj" text="(montant de l&amp;#39;offre)"/>
+        <!-- Invalid bid amount -->
+        <string id="dgG5WPrC" text="Montant de l&amp;#39;enchère invalide"/>
+        
+        <!-- EquipHero -->
+        <!-- Equip Hero -->
+        <string id="3zBXys4m" text="Équiper le héros"/>
+        <!-- Improve adopted heroes equipment -->
+        <string id="3QfHyF8g" text="Améliorer l&amp;#39;équipement des héros adoptés"/>
+        <!-- Allow Companion Upgrade -->
+        <string id="TGs8URfN" text="Autoriser la mise à niveau du compagnon"/>
+        <!-- Allow improvement of adopted heroes who are also companions of the player. -->
+        <string id="6zMgeovT" text="Permettre l&amp;#39;amélioration des héros adoptés qui sont aussi les compagnons du joueur."/>
+        <!-- Cost Tier 1 -->
+        <string id="8qUzSxsQ" text="Niveau de coût 1"/>
+        <!-- Gold cost for Tier 1 equipment -->
+        <string id="4ipwvHaR" text="Coût en or pour l&amp;#39;équipement de niveau 1"/>
+        <!-- Cost Tier 2 -->
+        <string id="bjAzHOqD" text="Niveau de coût 2"/>
+        <!-- Gold cost for Tier 2 equipment -->
+        <string id="3uRKzeJv" text="Coût en or pour l&amp;#39;équipement de niveau 2"/>
+        <!-- Cost Tier 3 -->
+        <string id="EUw3jfcC" text="Niveau de coût 3"/>
+        <!-- Gold cost for Tier 3 equipment -->
+        <string id="vRTR2AVO" text="Coût en or pour l&amp;#39;équipement de niveau 3"/>
+        <!-- Cost Tier 4 -->
+        <string id="cvWxBhFl" text="Niveau de coût 4"/>
+        <!-- Gold cost for Tier 4 equipment -->
+        <string id="LeCyJf6T" text="Coût en or pour l&amp;#39;équipement de niveau 4"/>
+        <!-- Cost Tier 5 -->
+        <string id="Im4cXqCx" text="Niveau de coût 5"/>
+        <!-- Gold cost for Tier 5 equipment -->
+        <string id="4a0P89lE" text="Coût en or pour l&amp;#39;équipement de niveau 5"/>
+        <!-- Cost Tier 6 -->
+        <string id="c1CI4H3y" text="Niveau de coût 6"/>
+        <!-- Gold cost for Tier 6 equipment -->
+        <string id="JkrTWsSf" text="Coût en or pour l&amp;#39;équipement de niveau 6"/>
+        <!-- Reequip Instead Of Upgrade -->
+        <string id="GaTe1vEL" text="Rééquiper au lieu de mettre à niveau"/>
+        <!-- Whether to re-equip the equipment INSTEAD of upgrading it (you should make TWO commands, one to upgrade and one to reequip) -->
+        <string id="zTiLpc9G" text="Que ce soit pour rééquiper l&amp;#39;équipement AU LIEU de le mettre à niveau (vous devez faire DEUX commandes, une pour mettre à niveau et une pour rééquiper)"/>
+        <!-- Re-rolls your equipment at your current tier -->
+        <string id="IJtXQh2D" text="Relance votre équipement à votre niveau actuel"/>
+        <!-- Disallowed for player companions -->
+        <string id="02iAT4Y8" text="Interdit pour les compagnons de jeu"/>
+        <!-- Tier costs -->
+        <string id="wORNXOT5" text="Coûts de niveau"/>
+        <!-- You are a player companion, you cannot change your own equipment! -->
+        <string id="C9Mhzohr" text="Vous êtes un compagnon de joueur, vous ne pouvez pas changer votre propre équipement !"/>
+        <!-- You cannot upgrade equipment, as a mission is active! -->
+        <string id="RoIXssEg" text="Vous ne pouvez pas améliorer l&amp;#39;équipement, car une mission est active !"/>
+        <!-- You cannot upgrade any further! -->
+        <string id="FZh7ZtGp" text="Vous ne pouvez plus mettre à niveau !"/>
+        <string id="fYksbZJp" text="Niveau équipé {ArmorTier} ({ClassName})"/>
+        <string id="0KHxea5e" text="Niveau rééquipé {ArmorTier} ({ClassName})"/>
+        <string id="VlnXNPYS" text="Pas de classe"/>
+        <!-- Focus Points -->
+        <string id="WihQZ5uq" text="Points de focalisation"/>
+        <!-- Add focus points to heroes skills -->
+        <string id="01L8w1ZW" text="Ajouter des points de focalisation aux compétences des héros"/>
+        <!-- Skills -->
+        <string id="QwuyvXBg" text="Compétences"/>
+        <!-- What skill to add focus to -->
+        <string id="w9liWZ9A" text="Sur quelle compétence mettre l&amp;#39;accent"/>
+        <!-- Auto -->
+        <string id="RiUjwmS5" text="Auto"/>
+        <!-- Chooses a random skill to add focus to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used. -->
+        <string id="EA4jsUhm" text="Choisit une compétence aléatoire à laquelle se concentrer, en préférant les compétences de classe, puis les compétences pour l&amp;#39;équipement actuel, puis d&amp;#39;autres compétences. Le réglage des compétences est ignoré lorsque auto est utilisé."/>
+        <!-- Focus points -->
+        <string id="UpHpjzFk" text="Points de focalisation"/>
+        <!-- Automatic, based on class, equipment, and existing skills -->
+        <string id="SIM2l7ta" text="Automatique, basé sur la classe, l&amp;#39;équipement et les compétences existantes"/>
+        <!-- Couldn't find a valid skill to add focus points to! -->
+        <string id="VXvS5xji" text="Impossible de trouver une compétence valide pour ajouter des points de focalisation !"/>
+        <!-- You have gained {Amount} focus points in {Skill}, you now have {NewAmount}! -->
+        <string id="6tcVqRIs" text="Vous avez gagné {Amount} focus points in {Skill}, you now have {NewAmount}!"/>
+        <!-- You have gained a focus point in {Skill}, you now have {NewAmount}! -->
+        <string id="HLFMWOJA" text="Vous avez gagné un point focal en {Skill}, you now have {NewAmount}!"/>
+        
+        <!-- DiscardItem -->
+        <!-- Discard Item -->
+        <string id="fmftNyHh" text="Jeter l&amp;#39;article"/>
+        <!-- Allows viewers to discard one of their own custom items -->
+        <string id="f3LrrLHP" text="Permet aux spectateurs de supprimer l&amp;#39;un de leurs propres éléments personnalisés"/>
+        <!-- You have no items to discard -->
+        <string id="oXQ4En4P" text="Vous n&amp;#39;avez aucun objet à jeter"/>
+        <!-- (partial item name) -->
+        <string id="by80aboy" text="(nom partiel de l&amp;#39;article)"/>
+        <!-- No items found matching '{Args}' -->
+        <string id="p0urrIvR" text="Aucun élément trouvé correspondant à &amp;#39;{Args}&amp;#39;"/>
+        <!-- {Count} items found matching '{Args}', be more specific -->
+        <string id="Pzo2UJrl" text="{Count} items found matching '{Args}&amp;#39;, soyez plus précis"/>
+        <!-- '{ItemName}' was discarded -->
+        <string id="bNqd3AzN" text="&amp;#39;{ItemName}&amp;#39; a été rejeté"/>
+        
+        <!-- GiveItem -->
+        <!-- Give Item -->
+        <string id="nAPjfF4C" text="Donner l&amp;#39;article"/>
+        <!-- Allows viewers to give one of their own custom items to another viewer -->
+        <string id="u9Jx6QUr" text="Permet aux téléspectateurs de donner l&amp;#39;un de leurs propres éléments personnalisés à un autre téléspectateur"/>
+        <!-- You have no items to give -->
+        <string id="Tfj1U5BB" text="Vous n&amp;#39;avez aucun objet à donner"/>
+        <!-- (recipient) (partial item name) -->
+        <string id="BClUoR9H" text="(destinataire) (nom partiel de l&amp;#39;article)"/>
+        <!-- Couldn't find recipient '{Name}' -->
+        <string id="vDsYxMKq" text="Impossible de trouver le destinataire &amp;#39;{Name}&amp;#39;"/>
+        <!-- '{ItemName}' was transferred from @{FromHero} to @{ToHero} -->
+        <string id="E1o7b5ht" text="&amp;#39;{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
+        
+        <!-- HeroInfoCommand -->
+        <!-- Show Hero Info -->
+        <string id="cj68a0l9" text="Afficher les informations sur le héros"/>
+        <!-- Will write various hero stats to chat -->
+        <string id="QsTQzceq" text="Écrire diverses statistiques de héros pour discuter"/>
+        <!-- Show Gold -->
+        <string id="oWtshHwx" text="Montrer l&amp;#39;or"/>
+        <!-- Show gold -->
+        <string id="O2mUbcue" text="Montrer l&amp;#39;or"/>
+        <!-- Show General -->
+        <string id="VmQECrnc" text="Afficher le général"/>
+        <!-- Show personal info: health, location, age -->
+        <string id="JWbk5Oko" text="Afficher les informations personnelles : santé, emplacement, âge"/>
+        <!-- Show Top Skills -->
+        <string id="tMKmlYeR" text="Afficher les meilleures compétences"/>
+        <!-- Shows skills (and focuse values) above the specified MinSkillToShow value -->
+        <string id="dayx7JEJ" text="Affiche les compétences (et les valeurs de focus) au-dessus de la valeur MinSkillToShow spécifiée"/>
+        <!-- Min Skill To Show -->
+        <string id="5VW8HXxS" text="Compétence minimale à afficher"/>
+        <!-- If ShowTopSkills is specified, this defines what skills are shown -->
+        <string id="4819Fxyv" text="Si ShowTopSkills est spécifié, cela définit quelles compétences sont affichées"/>
+        <!-- Show Attributes -->
+        <string id="lSM7JkvB" text="Afficher les attributs"/>
+        <!-- Shows all hero attributes -->
+        <string id="co5TLkOw" text="Affiche tous les attributs de héros"/>
+        <!-- Show Equipment -->
+        <string id="uLUxOyp2" text="Afficher l&amp;#39;équipement"/>
+        <!-- Shows the equipment tier of the hero -->
+        <string id="CnTMaEPC" text="Affiche le niveau d&amp;#39;équipement du héros"/>
+        <!-- Show Inventory -->
+        <string id="sp1iuH1y" text="Afficher l&amp;#39;inventaire"/>
+        <!-- Shows the full battle inventory of the hero -->
+        <string id="uhAC3hOZ" text="Affiche l&amp;#39;inventaire de combat complet du héros"/>
+        <!-- Show Storage -->
+        <string id="aRA1V1Jp" text="Afficher le stockage"/>
+        <!-- Shows the heroes storage (all their custom items) -->
+        <string id="Wjr33ERJ" text="Affiche le stockage des héros (tous leurs objets personnalisés)"/>
+        <!-- Show Civilian Inventory -->
+        <string id="ecvBeN44" text="Afficher l&amp;#39;inventaire civil"/>
+        <!-- Shows the full civilian inventory of the hero -->
+        <string id="fUggutW6" text="Affiche l&amp;#39;inventaire civil complet du héros"/>
+        <!-- Show Retinue -->
+        <string id="p0WEhay8" text="Afficher la suite"/>
+        <!-- Shows a summary of the retinue of the hero (count and tier) -->
+        <string id="AXnWeTzh" text="Affiche un résumé de la suite du héros (nombre et niveau)"/>
+        <!-- Show Retinue List -->
+        <string id="Vyatyyuh" text="Afficher la liste de la suite"/>
+        <!-- Shows the exact classes and counts of the retinue of the hero -->
+        <string id="CSTqzcOi" text="Affiche les classes exactes et les comptes de la suite du héros"/>
+        <!-- Show Achievements -->
+        <string id="1F3utCWA" text="Afficher les réalisations"/>
+        <!-- Shows all hero achievements -->
+        <string id="CKJd7KC9" text="Affiche toutes les réalisations de héros"/>
+        <!-- Show Tracked Stats -->
+        <string id="LNvYSMZj" text="Afficher les statistiques suivies"/>
+        <!-- Shows all hero tracked stats (kills, deaths, summons, attacks, tournament wins etc.) -->
+        <string id="FaUbhgTR" text="Affiche toutes les statistiques suivies par les héros (tués, morts, invocations, attaques, victoires en tournoi, etc.)"/>
+        <!-- Show Powers -->
+        <string id="cHaiwygJ" text="Afficher les pouvoirs"/>
+        <!-- Shows the heroes unlocked powers -->
+        <string id="YW8HsNEF" text="Montre les pouvoirs débloqués des héros"/>
+        <!-- Gold -->
+        <string id="YVhcZatv" text="Or"/>
+        <!-- Age, Clan, Culture, Health -->
+        <string id="jZigiKXG" text="Âge, Clan, Culture, Santé"/>
+        <!-- Skills greater than {MinSkillToShow} -->
+        <string id="6wVce2iI" text="Compétences supérieures à {MinSkillToShow}"/>
+        <!-- Attributes -->
+        <string id="74kcLopo" text="Les attributs"/>
+        <!-- Equipment tier -->
+        <string id="PeDxGcu7" text="Niveau d&amp;#39;équipement"/>
+        <!-- Battle equipment inventory -->
+        <string id="EVvlMCru" text="Inventaire de l&amp;#39;équipement de combat"/>
+        <!-- Civilian equipment inventory -->
+        <string id="DeffOla6" text="Inventaire du matériel civil"/>
+        <!-- Custom item storage -->
+        <string id="VSDDQdmJ" text="Stockage d&amp;#39;articles personnalisé"/>
+        <!-- Retinue count and average tier -->
+        <string id="C0mkGXlK" text="Nombre de suites et niveau moyen"/>
+        <!-- Retinue unit list -->
+        <string id="L4Rh6vFE" text="Liste des unités de suite"/>
+        <!-- Achievements -->
+        <string id="ZW9XlwY7" text="Réalisations"/>
+        <!-- Tracked stats -->
+        <string id="Xmo7pOpj" text="Statistiques suivies"/>
+        <!-- Powers -->
+        <string id="xVDOsWPq" text="Pouvoirs"/>
+        <!-- Shows -->
+        <string id="UB1bAtSI" text="Spectacles"/>
+        <!-- No Class -->
+        <string id="ZI2UKbNp" text="Pas de classe"/>
+        <!-- {Age} yrs -->
+        <string id="4TVRrlOw" text="{Age} ans"/>
+        <!-- {HP} / {MaxHP} HP -->
+        <string id="jY2QJdA3" text="{HP} / {MaxHP} HP"/>
+        <!-- Last seen near {Place} -->
+        <string id="B2xDasDx" text="Vu pour la dernière fois près de {Place}"/>
+        <!-- [LVL] -->
+        <string id="fRwyY6ms" text="[LVL]"/>
+        <!-- [SKILLS] -->
+        <string id="rTId8pBy" text="[COMPÉTENCES]"/>
+        <!-- [ATTR] -->
+        <string id="RSlhbJzO" text="[ATTR]"/>
+        <!-- [TIER] -->
+        <string id="64yw2YD0" text="[ÉTAGE]"/>
+        <!-- No Equip Class -->
+        <string id="u32KRqz8" text="Aucune classe d&amp;#39;équipement"/>
+        <!-- [BATTLE] -->
+        <string id="YVVlcDSK" text="[BATAILLE]"/>
+        <!-- [CIV] -->
+        <string id="zaVtcDWB" text="[CIV]"/>
+        <!-- [STORED] -->
+        <string id="U4HnxTCj" text="[STOCKÉ]"/>
+        <!-- [RETINUE] -->
+        <string id="hMBF1zLr" text="[SUITE]"/>
+        <!-- (nothing) -->
+        <string id="4IOefqsW" text="(rien)"/>
+        <!-- {RetinueCount} (avg Tier {Tier}) -->
+        <string id="XE2QRhyz" text="{RetinueCount} (avg Tier {Tier})"/>
+        <!-- [ACHIEV] -->
+        <string id="giS3vq1V" text="[RÉALISATION]"/>
+        <!-- K -->
+        <string id="ADjhFwlz" text="K"/>
+        <!-- D -->
+        <string id="aUj96cVC" text="ré"/>
+        <!-- KVwr -->
+        <string id="i02EMVP8" text="KVwr"/>
+        <!-- KStrmr -->
+        <string id="iGXwhVja" text="KStrmr"/>
+        <!-- Battles -->
+        <string id="APUC6wGt" text="Batailles"/>
+        <!-- Sums -->
+        <string id="6nwK1UF9" text="Sommes"/>
+        <!-- CSums -->
+        <string id="uDFykstd" text="CSums"/>
+        <!-- Atks -->
+        <string id="wtmfNCIj" text="Attaques"/>
+        <!-- CAtks -->
+        <string id="T29akAtY" text="CAtks"/>
+        <!-- TourRndW -->
+        <string id="NOkWgftX" text="TourRndW"/>
+        <!-- TourRndL -->
+        <string id="k5O3x52V" text="TourRndL"/>
+        <!-- TourW -->
+        <string id="J6yoXowD" text="TourW"/>
+        <!-- [STATS] -->
+        <string id="nL2E16fj" text="[STATISTIQUES]"/>
+        <!-- [ACTIVE] -->
+        <string id="gV1s8Ffw" text="[ACTIF]"/>
+        <!-- [PASSIVE] -->
+        <string id="z82jxnmF" text="[PASSIF]"/>
+        <!-- Amount Low -->
+        <string id="01yarGvZ" text="Montant bas"/>
+        <!-- Lower bound of amount to improve -->
+        <string id="UVKWPBjq" text="Limite inférieure du montant à améliorer"/>
+        <!-- Amount High -->
+        <string id="qi7FVuQB" text="Montant Élevé"/>
+        <!-- Upper bound of amount to improve -->
+        <string id="tU4rSLcx" text="Limite supérieure du montant à améliorer"/>
+        <!-- Gold Cost -->
+        <string id="DlZ7sV1N" text="Coût de l&amp;#39;or"/>
+        <!-- Gold that will be taken from the hero -->
+        <string id="pGwh9edB" text="L&amp;#39;or qui sera pris au héros"/>
+        
+        <!-- JoinTournament -->
+        <!-- Join Tournament -->
+        <string id="EZPZtyXo" text="Rejoindre le tournoi"/>
+        <!-- Puts adopted heroes in queue for the next tournament -->
+        <string id="1h8OT5VD" text="Met les héros adoptés en file d&amp;#39;attente pour le prochain tournoi"/>
+        <!-- Gold Cost -->
+        <string id="7D2UBlGC" text="Coût de l&amp;#39;or"/>
+        <!-- Gold cost to join -->
+        <string id="Upuhtmr6" text="Coût en or pour adhérer"/>
+        <!-- JOIN the viewer tournament -->
+        <string id="jUcsHkqk" text="REJOIGNEZ le tournoi des téléspectateurs"/>
+        <!-- WATCH the viewer tournament -->
+        <string id="hlVvENgP" text="REGARDER le tournoi des téléspectateurs"/>
+        
+        <!-- NameItem -->
+        <!-- Name Item -->
+        <string id="0YSdK3zK" text="Nom de l&amp;#39;article"/>
+        <!-- Allow viewer to name custom items -->
+        <string id="k7vnOEIN" text="Autoriser le spectateur à nommer des éléments personnalisés"/>
+        <!-- You have no nameable items -->
+        <string id="rXVOIMri" text="Vous n&amp;#39;avez aucun élément nommable"/>
+        <!-- You will rename your {Item} -->
+        <string id="Xb3eM5o7" text="Vous allez renommer votre {Item}"/>
+        <!-- {PreviousName} renamed to {NewName} -->
+        <string id="iqNEr6Y7" text="{PreviousName} renamed to {NewName}"/>
+        
+        <!-- Retinue -->
+        <string id="tLSFX9Xc" text="Suite"/>
+        <!-- Add and improve adopted heroes retinue -->
+        <string id="bhC3VcmU" text="Ajouter et améliorer la suite de héros adoptés"/>
+        <!-- Retinue Upgrade Settings -->
+        <string id="iNoFrKsN" text="Paramètres de mise à niveau de la suite"/>
+        <!-- All By Default -->
+        <string id="nIsuuFMC" text="Tout par défaut"/>
+        <!-- Whether this action should attempt to buy/upgrade as many times as possible when called with no parameter. -->
+        <string id="mJSGvWlR" text="Si cette action doit tenter d&amp;#39;acheter/mettre à niveau autant de fois que possible lorsqu&amp;#39;elle est appelée sans paramètre."/>
+        <!-- You cannot upgrade retinue, as a mission is active! -->
+        <string id="mCcpMwrN" text="Vous ne pouvez pas améliorer la suite, car une mission est active !"/>
+        <!-- (number, or all) -->
+        <string id="NexXxYvj" text="(nombre ou tous)"/>
+        
+        <!-- RetireMyHero -->
+        <!-- Retire Hero -->
+        <string id="sZhEiXyn" text="Héros à la retraite"/>
+        <!-- Retires the hero, allowing the viewer to adopt another (if that is enabled) -->
+        <string id="Eh0m4R54" text="Retire le héros, permettant au spectateur d&amp;#39;en adopter un autre (si cela est activé)"/>
+        <!-- yes -->
+        <string id="xSbB2Zw5" text="Oui"/>
+        <!-- You must enter '{Prompt}' at the prompt to retire your hero -->
+        <string id="0qVpLYfb" text="Vous devez entrer &amp;#39;{Prompt}&amp;#39; à l&amp;#39;invite pour retirer votre héros"/>
+        <!-- You cannot retire your hero, as a mission is active! -->
+        <string id="po20lHyz" text="Vous ne pouvez pas retirer votre héros, car une mission est active !"/>
+        <!-- {Name} has retired! -->
+        <string id="ihG4fs1r" text="{Name} a pris sa retraite!"/>
+        
+        <!-- SetHeroClass -->
+        <!-- Set Hero Class -->
+        <string id="pVblweVj" text="Définir la classe de héros"/>
+        <!-- Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied -->
+        <string id="7VWKYp1U" text="Permet de changer la &amp;#39;classe&amp;#39; d&amp;#39;un héros adopté, ce qui affecte l&amp;#39;équipement et où XP est appliqué"/>
+        <!-- First Equip Is Free -->
+        <string id="iLpDEiTq" text="Le premier équipement est gratuit"/>
+        <!-- If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class) -->
+        <string id="pRETwmGv" text="Si c&amp;#39;est gratuit quand le héros n&amp;#39;a pas encore de classe (cela ne peut arriver que si Adopt ne spécifie PAS de classe par défaut)"/>
+        <!-- Cost Tier 1 -->
+        <string id="N2OnDXOs" text="Niveau de coût 1"/>
+        <!-- Gold cost for Tier 1 class change -->
+        <string id="tuhth4ld" text="Coût en or pour le changement de classe de niveau 1"/>
+        <!-- Cost Tier 2 -->
+        <string id="jIQ5VYSh" text="Niveau de coût 2"/>
+        <!-- Gold cost for Tier 2 class change -->
+        <string id="V5CGr4lf" text="Coût en or pour le changement de classe de niveau 2"/>
+        <!-- Cost Tier 3 -->
+        <string id="lWOrthSS" text="Niveau de coût 3"/>
+        <!-- Gold cost for Tier 3 class change -->
+        <string id="NlXa6kJS" text="Coût en or pour le changement de classe de niveau 3"/>
+        <!-- Cost Tier 4 -->
+        <string id="wuKWOAwt" text="Niveau de coût 4"/>
+        <!-- Gold cost for Tier 4 class change -->
+        <string id="0X1TRYbP" text="Coût en or pour le changement de classe de niveau 4"/>
+        <!-- Cost Tier 5 -->
+        <string id="ZBzqCAyW" text="Niveau de coût 5"/>
+        <!-- Gold cost for Tier 5 class change -->
+        <string id="yelsar2J" text="Coût en or pour le changement de classe de niveau 5"/>
+        <!-- Cost Tier 6 -->
+        <string id="ZLdpLkbg" text="Niveau de coût 6"/>
+        <!-- Gold cost for Tier 6 class change -->
+        <string id="eYcOsu9h" text="Coût en or pour le changement de classe de niveau 6"/>
+        <!-- Update Equipment -->
+        <string id="rpkghdTp" text="Mettre à jour l&amp;#39;équipement"/>
+        <!-- Whether to immediately update equipment after changing class -->
+        <string id="cWQKOYEx" text="S&amp;#39;il faut mettre à jour immédiatement l&amp;#39;équipement après avoir changé de classe"/>
+        <!-- Tier costs -->
+        <string id="2WAi7pZN" text="Coûts de niveau"/>
+        <!-- Free if you do not already have a class -->
+        <string id="lW1KcoWD" text="Gratuit si vous n&amp;#39;avez pas encore de cours"/>
+        <!-- Updates equipment to match new class -->
+        <string id="qOR4RSqt" text="Met à jour l&amp;#39;équipement pour correspondre à la nouvelle classe"/>
+        <!-- You cannot change class, as a mission is active! -->
+        <string id="70vJ1jxZ" text="Vous ne pouvez pas changer de classe, car une mission est active !"/>
+        <!-- Provide class name -->
+        <string id="prmHmdGE" text="Indiquez le nom de la classe"/>
+        <!-- changed class to {ClassName} -->
+        <string id="giUCnkf2" text="changé la classe en {ClassName}"/>
+        
+        <!-- SkillXP -->
+        <!-- Skill XP -->
+        <string id="mpdzqyCK" text="XP de compétence"/>
+        <!-- Improve adopted heroes skills -->
+        <string id="Bc2HIByX" text="Améliorer les compétences des héros adoptés"/>
+        <!-- Skills -->
+        <string id="rAGAEUIH" text="Compétences"/>
+        <!-- What to improve -->
+        <string id="wo5VSDaj" text="Quoi améliorer"/>
+        <!-- Auto -->
+        <string id="LVp7Llay" text="Auto"/>
+        <!-- Chooses a random skill to add XP to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used. -->
+        <string id="CTCcqB3Y" text="Choisit une compétence aléatoire à laquelle ajouter de l&amp;#39;XP, en préférant les compétences de classe, puis les compétences pour l&amp;#39;équipement actuel, puis d&amp;#39;autres compétences. Le réglage des compétences est ignoré lorsque auto est utilisé."/>
+
+        <!-- Automatic, based on class, equipment, and existing skills -->
+        <string id="QJ9Cssr7" text="Automatique, basé sur la classe, l&amp;#39;équipement et les compétences existantes"/>
+        <!-- {AmountLow} to {AmountHigh} -->
+        <string id="vTkGnRBS" text="{AmountLow} to {AmountHigh}"/>
+        <!-- Costs -->
+        <string id="lz87CnyL" text="Frais"/>
+        <!-- Couldn't find a skill to improve -->
+        <string id="vK5z2Naq" text="Impossible de trouver une compétence à améliorer"/>
+        <!-- {Skill} capped, get more focus points -->
+        <string id="ozkK4mk7" text="{Skill} plafonné, obtenez plus de points de focalisation"/>
+
+        <!-- 1H -->
+        <string id="Ei8NyJSW" text="1H"/>
+        <!-- 2H -->
+        <string id="U38E72Ue" text="2H"/>
+        <!-- PA -->
+        <string id="Cg885bns" text="Pennsylvanie"/>
+        <!-- Bow -->
+        <string id="QpWRsKrc" text="Arc"/>
+        <!-- Xb -->
+        <string id="71M512iJ" text="Xb"/>
+        <!-- Thr -->
+        <string id="jMRloOi0" text="Thr"/>
+        <!-- Rid -->
+        <string id="ligWzK3s" text="Débarrasser"/>
+        <!-- Ath -->
+        <string id="1MJnisqR" text="Ath"/>
+        <!-- Smt -->
+        <string id="VjV54wik" text="CMS"/>
+        <!-- Tac -->
+        <string id="6iG2GJW5" text="Tactique"/>
+        <!-- Sct -->
+        <string id="AgaZsMEb" text="Sct"/>
+        <!-- Rog -->
+        <string id="6x33x91Z" text="Rog"/>
+        <!-- Cha -->
+        <string id="N9X9VVsM" text="Cha"/>
+        <!-- Trd -->
+        <string id="J8ElWB0P" text="Trd"/>
+        <!-- Stw -->
+        <string id="BD65Qr83" text="Stw"/>
+        <!-- Ldr -->
+        <string id="OYJ8tfhY" text="Ldr"/>
+        <!-- Med -->
+        <string id="PmKb4QCv" text="Moyenne"/>
+        <!-- Eng -->
+        <string id="wLkMFOky" text="Eng"/>
+        
+        <!-- SummonHero -->
+        <!-- Summon Hero -->
+        <string id="6uWk9iMM" text="Invocation de héros"/>
+        <!-- Spawns the adopted hero into the current active mission -->
+        <string id="ODnzMmBQ" text="Engendre le héros adopté dans la mission active actuelle"/>
+        <!-- Allowed Missions -->
+        <string id="i8P1EnE1" text="Missions autorisées"/>
+        <!-- Effects -->
+        <string id="tYGvtYKd" text="Effets"/>
+        
+        <!-- AllowFieldBattle -->
+        <string id="DkCdNiwF" text="Autoriser la bataille sur le terrain"/>
+        <!-- AllowVillageBattle -->
+        <string id="yVz54Nky" text="Autoriser la bataille de village"/>
+        <!-- AllowSiegeBattle -->
+        <string id="0X8bcuPE" text="Autoriser la bataille de siège"/>
+        <!-- AllowFriendlyMission -->
+        <string id="Sd1jguGc" text="Autoriser la mission amicale"/>
+        <!-- Allow Hide Out -->
+        <string id="1xJGhP2D" text="Autoriser la dissimulation"/>
+        <!-- On Player Side -->
+        <string id="i59Fm8zV" text="Côté joueur"/>
+        <!-- Gold Cost -->
+        <string id="HOZnxjGb" text="Coût de l&amp;#39;or"/>
+        <!-- Preferred Formation -->
+        <string id="sZRrJfKm" text="Formation préférée"/>
+        <!-- Alert Sound -->
+        <string id="74AvYKCg" text="Son d&amp;#39;alerte"/>
+        <!-- Sub Boost -->
+        <string id="H7B3Yzly" text="Sous-Boost"/>
+        <!-- Heal Per Second -->
+        <string id="cXeUjVur" text="Guérison par seconde"/>
+        
+        <!-- Can summon for normal field battles between parties -->
+        <string id="ddjUyXpV" text="Peut invoquer pour des batailles sur le terrain normales entre les parties"/>
+        <!-- Can summon in village battles -->
+        <string id="buLH4Spj" text="Peut invoquer dans les batailles de village"/>
+        <!-- Can summon in sieges -->
+        <string id="uk1kL79V" text="Peut invoquer dans les sièges"/>
+        <!-- This includes walking about village/town/dungeon/keep -->
+        <string id="1HaljOia" text="Cela comprend la marche dans le village/la ville/le donjon/le donjon"/>
+        <!-- Can summon in the hideout missions -->
+        <string id="NZTRYcGV" text="Peut invoquer dans les missions de cachette"/>
+        <!-- Whether the hero is on the player or enemy side -->
+        <string id="S86V5s0C" text="Que le héros soit du côté joueur ou ennemi"/>
+        <!-- Gold cost to summon -->
+        <string id="OQISx7Jz" text="Coût en or pour invoquer"/>
+        <!-- Which formation to add summoned heroes to (only applies to ones without a specified class) -->
+        <string id="vkFowOeg" text="À quelle formation ajouter les héros invoqués (ne s&amp;#39;applique qu&amp;#39;à ceux qui n&amp;#39;ont pas de classe spécifiée)"/>
+        <!-- Sound to play when summoned -->
+        <string id="R00Lx6aE" text="Son à jouer lors de l&amp;#39;invocation"/>
+        <!-- Multiplier applied to (positive) effects for subscribers -->
+        <string id="lFnV3cR9" text="Multiplicateur appliqué aux effets (positifs) pour les abonnés"/>
+        <!-- HP the hero gets every second they are alive in the mission -->
+        <string id="gnh3KY5a" text="HP le héros obtient chaque seconde qu&amp;#39;il est en vie dans la mission"/>
+        <!-- Side -->
+        <string id="Uu58rjgC" text="Côté"/>
+        <!-- Heals -->
+        <string id="uHTRhFAh" text="Guérit"/>
+        <!-- Cost -->
+        <string id="hCJhgl1m" text="Coût"/>
+        <!-- Streamers side -->
+        <string id="myKKaEl9" text="Côté streamers"/>
+        <!-- Enemy side -->
+        <string id="BTZ84Uww" text="Côté ennemi"/>
+        <!-- {HealPerSecond}HP per second while summoned -->
+        <string id="cR84crHC" text="{HealPerSecond}HP par seconde pendant l&amp;#39;invocation"/>
+        <!-- Field battle -->
+        <string id="SRdB89Ca" text="Bataille sur le terrain"/>
+        <!-- Village battle -->
+        <string id="M45VqXVa" text="Bataille de village"/>
+        <!-- Siege battle -->
+        <string id="hbWdpDwr" text="Bataille de siège"/>
+        <!-- Friendly mission -->
+        <string id="YIfbDpI9" text="Mission amicale"/>
+        <!-- Hide-out -->
+        <string id="pZ239vm5" text="Cachette"/>
+        <!-- Allowed in -->
+        <string id="zOB6Nadp" text="Autorisé dans"/>
+        
+        <!-- You cannot be summoned now! -->
+        <string id="TdykIizS" text="Vous ne pouvez pas être invoqué maintenant !"/>
+        <!-- You cannot be summoned now, this mission does not allow it! -->
+        <string id="HWnEJg1M" text="Vous ne pouvez pas être invoqué maintenant, cette mission ne le permet pas !"/>
+        <!-- You cannot be summoned now, the mission has not started yet! -->
+        <string id="v5dO40vi" text="Vous ne pouvez pas être invoqué maintenant, la mission n&amp;#39;a pas encore commencé !"/>
+        <!-- You cannot be summoned now, the mission is ending! -->
+        <string id="mTKKaYIf" text="Vous ne pouvez pas être invoqué maintenant, la mission se termine !"/>
+        <!-- You cannot be summoned, you are already here! -->
+        <string id="YTEgKnCW" text="Vous ne pouvez pas être invoqué, vous êtes déjà là !"/>
+        
+        <!-- You won {WonGold}{GoldIcon}! -->
+        <string id="pmj8vjZj" text="Vous avez gagné {WonGold}{GoldIcon}!"/>
+        <!-- You lost {LostGold}{GoldIcon}! -->
+        <string id="ajhKKeEo" text="Vous avez perdu {LostGold}{GoldIcon}!"/>
+        <!-- You have joined the battle! -->
+        <string id="Ft3cxfIx" text="Vous avez rejoint la bataille !"/>
+        <!-- You cannot be summoned now, the mission has not started yet! -->
+        <string id="YZ4V5e4V" text="Vous ne pouvez pas être invoqué maintenant, la mission n&amp;#39;a pas encore commencé !"/>
+        <!-- You cannot switch sides, you traitor! -->
+        <string id="2D2T6xP6" text="Tu ne peux pas changer de camp, espèce de traître !"/>
+        <!-- You cannot be summoned, you DIED! -->
+        <string id="RBTDviuM" text="Vous ne pouvez pas être invoqué, vous êtes MORT !"/>
+        <!-- You cannot be summoned, you are already here! -->
+        <string id="YMiZAluP" text="Vous ne pouvez pas être invoqué, vous êtes déjà là !"/>
+        <!-- {CoolDown}s cooldown remaining -->
+        <string id="kyUh29ij" text="{CoolDown}s de temps de recharge restant"/>
+        <!-- You cannot be summoned, your party is already here! -->
+        <string id="93Hrc2EA" text="Vous ne pouvez pas être invoqué, votre groupe est déjà là !"/>
+        <!-- Could not find a party for you to join! -->
+        <string id="jtqEqonE" text="Impossible de trouver une fête à laquelle vous pouvez vous joindre !"/>
+        <!-- You have joined the battle! -->
+        <string id="TvkEBZeY" text="Vous avez rejoint la bataille !"/>
+        <!-- Text -->
+        <string id="V3STT5Ar" text="Texte"/>
+        <!-- Text that will be displayed in game -->
+        <string id="wsIzPzfG" text="Texte qui sera affiché dans le jeu"/>
+        <!-- Enter shout text here -->
+        <string id="xf2mTWx8" text="Entrez le texte de cri ici"/>
+        <!-- Weight -->
+        <string id="bCbN9OmH" text="Poids"/>
+        <!-- Higher weight means more chance this shout is used -->
+        <string id="xqfCYYwN" text="Un poids plus élevé signifie plus de chances que ce cri soit utilisé"/>
+        <!-- Player Side -->
+        <string id="xK1fdx7s" text="Côté joueur"/>
+        <!-- Can be used when summoning on player side -->
+        <string id="BpDPlsfY" text="Peut être utilisé lors de l&amp;#39;invocation côté joueur"/>
+        <!-- Enemy Side -->
+        <string id="srN8yHp8" text="Côté ennemi"/>
+        <!-- Can be used when summoning on enemy side -->
+        <string id="0m4s9zXc" text="Peut être utilisé lors de l&amp;#39;invocation du côté ennemi"/>
+        <!-- General -->
+        <string id="MOOBN2Hz" text="Général"/>
+        <!-- Can be used in situations other than battle/siege -->
+        <string id="6TWSIu60" text="Peut être utilisé dans des situations autres que bataille/siège"/>
+        <!-- Field Battle -->
+        <string id="4KdKuusC" text="Champ de bataille"/>
+        <!-- Can be used when in a field battle -->
+        <string id="8aLSNsxr" text="Peut être utilisé lors d&amp;#39;une bataille sur le terrain"/>
+        <!-- Siege Defend -->
+        <string id="2yevL6dV" text="Défense de siège"/>
+        <!-- Can be used when on siege defender side -->
+        <string id="8HwihUK3" text="Peut être utilisé du côté du défenseur de siège"/>
+        <!-- Siege Attack -->
+        <string id="r5tvIQwx" text="Attaque de siège"/>
+        <!-- Can be used when on siege attacker side -->
+        <string id="mbIwJprm" text="Peut être utilisé du côté de l&amp;#39;attaquant de siège"/>
+        <!-- Shout -->
+        <string id="CXb5ALls" text="Crier"/>
+
+        <!-- TournamentBet -->
+        <!-- Invalid gold argument -->
+        <string id="GiU7feEu" text="Argument d&amp;#39;or non valide"/>
+        <!-- Betting not active -->
+        <string id="3AQKsF9f" text="Pari non actif"/>
+        <!-- Bet {GoldAmount}{GoldIcon} on {Team} -->
+        <string id="9tlhaGyH" text="Pari {GoldAmount}{GoldIcon} on {Team}"/>
+        <!-- (team) (gold) -->
+        <string id="8XQwqd4f" text="(équipe) (or)"/>
+        
+        <!-- UsePower -->
+        <!-- Use Power -->
+        <string id="Wpx7tHFL" text="Utiliser le pouvoir"/>
+        <!-- Allows activation of the adopted heroes class active powers -->
+        <string id="FJwn6kGW" text="Permet l&amp;#39;activation des pouvoirs actifs de la classe des héros adoptés"/>
+        <!-- You don't have a class, so no powers are available! -->
+        <string id="85HYGklq" text="Vous n&amp;#39;avez pas de classe, donc aucun pouvoir n&amp;#39;est disponible !"/>
+        <!-- You cannot activate your powers now: {FailReason}! -->
+        <string id="nXSUvuyD" text="Vous ne pouvez pas activer vos pouvoirs maintenant: {FailReason}!"/>
+        <!-- Your powers are already active! -->
+        <string id="o23xAj6M" text="Vos pouvoirs sont déjà actifs !"/>
+    </strings>
+</base>

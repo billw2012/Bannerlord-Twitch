@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Italiano"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Common -->
+        <!-- Reward {ITEMNAME} -->
+        <string id="W47g8bCB" text="Ricompensa {ITEMNAME}"/>
+        <!-- {viewer} is {name}! -->
+        <string id="TAWcPGIc" text="{viewer} is {name}!"/>
+        
+        <!-- {ITEMNAME} of Fealty -->
+        <string id="IvV04W31" text="{ITEMNAME} di fedeltà"/>
+        <!-- Renegades {ITEMNAME} -->
+        <string id="UQtSgnog" text="Rinnegati {ITEMNAME}"/>
+        <!-- Stream Sniper {ITEMNAME} -->
+        <string id="xI41h8NA" text="Cecchino in streaming {ITEMNAME}"/>
+        
+        <!-- Reliable -->
+        <string id="ODWiNBng" text="Affidabile"/>
+        <!-- Trusted -->
+        <string id="fWTqF2sw" text="Fidato"/>
+        <!-- Loyal -->
+        <string id="fe9J8von" text="Leale"/>
+        <!-- Rebellious -->
+        <string id="HdYFegeb" text="Ribelle"/>
+        <!-- Traitorous -->
+        <string id="gDHR7f8r" text="Traditore"/>
+        <!-- Renegade -->
+        <string id="VEH582e7" text="Rinnegato"/>
+        <!-- Stream Sniper -->
+        <string id="Aj0gXKgZ" text="Cecchino in streaming"/>
+        <!-- Killing Spree -->
+        <string id="QNbIUDrh" text="follia omicida"/>
+        <!-- Healthy I -->
+        <string id="dlrzqWyB" text="sano io"/>
+        <!-- Healthy II -->
+        <string id="QpSDATVx" text="sano II"/>
+        <!-- Healthy III -->
+        <string id="Cqkht54y" text="sano III"/>
+        <!-- Fragile I -->
+        <string id="qA2f6xBp" text="fragile io"/>
+        <!-- Fragile II -->
+        <string id="Hyuf4TSH" text="Fragile II"/>
+        <!-- Fragile III -->
+        <string id="v0ACBXmv" text="Fragile III"/>
+        <!-- Vampiric I -->
+        <string id="mJQ88gTg" text="vampiro io"/>
+        <!-- Vampiric II -->
+        <string id="EHkU2FPe" text="Vampiro II"/>
+        <!-- Vampiric III -->
+        <string id="gDsSjnnd" text="Vampiro III"/>
+        <!-- Heavy Hitting I -->
+        <string id="93p2ZAIG" text="Colpo pesante I"/>
+        <!-- Heavy Hitting II -->
+        <string id="Gm7OdO9y" text="Colpo pesante II"/>
+        <!-- Heavy Hitting III -->
+        <string id="OzBxlGDu" text="Colpo pesante III"/>
+        <!-- Retribution I -->
+        <string id="0vLSj7KR" text="punizione io"/>
+        <!-- Retribution II -->
+        <string id="vC5KggFz" text="Retribuzione II"/>
+        <!-- Retribution III -->
+        <string id="bS76hE3e" text="Retribuzione III"/>
+        
+        <!-- Fleet Footed I -->
+        <string id="FQKNvxVG" text="Fleet Footed I"/>
+        <!-- Fleet Footed II -->
+        <string id="rgQDzX4f" text="Piè di flotta II"/>
+        <!-- Fleet Footed III -->
+        <string id="f7L0oLCQ" text="Piè di flotta III"/>
+        <!-- Charge I -->
+        <string id="39yFtbp2" text="Carica I"/>
+        <!-- Charge II -->
+        <string id="6IFhNSH3" text="Carica II"/>
+        <!-- Charge III -->
+        <string id="l2eB9avA" text="Carica III"/>
+        <!-- Better Mount I -->
+        <string id="tqmxzUCq" text="Meglio Monte I"/>
+        <!-- Better Mount II -->
+        <string id="izG39s2J" text="Migliore Monte II"/>
+        <!-- Better Mount III -->
+        <string id="CVmPJOB4" text="Migliore Monte III"/>
+        <!-- Imposing Mount -->
+        <string id="tv2vTde5" text="Imponente cavalcatura"/>
+        <!-- Imposing -->
+        <string id="fFProg8j" text="Imponente"/>
+        <!-- Explosive Projectiles I -->
+        <string id="CTqMR9lV" text="Proiettili esplosivi I"/>
+        <!-- Explosive Projectiles II -->
+        <string id="miUEQpaQ" text="Proiettili esplosivi II"/>
+        <!-- Explosive Projectiles III -->
+        <string id="o2XgVhjA" text="Proiettili esplosivi III"/>
+        <!-- Fireblade I -->
+        <string id="7b7BkwRo" text="Fireblade I"/>
+        <!-- Fireblade II -->
+        <string id="d8BUyJ5i" text="Fireblade II"/>
+        <!-- Fireblade III -->
+        <string id="VGqA25nN" text="Lama di fuoco III"/>
+        <!-- Charge AoE I -->
+        <string id="R8u1d7M6" text="Carica AoE I"/>
+        <!-- Charge AoE II -->
+        <string id="lO56Rq9E" text="Carica AoE II"/>
+        <!-- Charge AoE III -->
+        <string id="X5LQvC0o" text="Carica AoE III"/>
+        <!-- Ranger I -->
+        <string id="7XNfzok8" text="Ranger io"/>
+        <!-- Ranger II -->
+        <string id="HxpAtast" text="Ranger II"/>
+        <!-- Ranger III -->
+        <string id="7YSCRTCg" text="Ranger III"/>
+
+        <!-- Heavy Projectiles I -->
+        <string id="r0Wn7FXu" text="Proiettili pesanti I"/>
+        <!-- Heavy Projectiles II -->
+        <string id="XXL8aXIK" text="Proiettili pesanti II"/>
+        <!-- Heavy Projectiles III -->
+        <string id="H3r0Zh8E" text="Proiettili pesanti III"/>
+        <!-- Crush Through I -->
+        <string id="xwlvLfJX" text="schiacciare attraverso io"/>
+        <!-- Crush Through II -->
+        <string id="7FJTIVa4" text="Crush Through II"/>
+        <!-- Crush Through III -->
+        <string id="dQqwtBEE" text="Crush Through III"/>
+        <!-- Knock Down I -->
+        <string id="MKUCQtsr" text="Abbattere I"/>
+        <!-- Knock Down II -->
+        <string id="KUdqJrOY" text="Abbattere II"/>
+        <!-- Knock Down III -->
+        <string id="Uc4Cai9H" text="Abbattere III"/>
+        <!-- Cut Through I -->
+        <string id="VsZLMOHX" text="Tagliare attraverso I"/>
+        <!-- Cut Through II -->
+        <string id="yXj1jqxx" text="Tagliare attraverso II"/>
+        <!-- Cut Through III -->
+        <string id="R537vuN0" text="Tagliare attraverso III"/>
+        <!-- Shatter Shield I -->
+        <string id="89ezJ7aW" text="Scudo in frantumi I"/>
+        <!-- Shatter Shield II -->
+        <string id="Dvjkoxi3" text="Scudo in frantumi II"/>
+        <!-- Shatter Shield III -->
+        <string id="V6RyPIQg" text="Scudo in frantumi III"/>
+        <!-- Shrug Off I -->
+        <string id="oyKzNISD" text="scrollare le spalle io"/>
+        <!-- Shrug Off II -->
+        <string id="zNj3xNd4" text="scrollarsi di dosso II"/>
+        <!-- Shrug Off III -->
+        <string id="5nsSdwel" text="scrollarsi di dosso III"/>
+        <!-- Athletic I -->
+        <string id="b3DBwSTA" text="atletico io"/>
+        <!-- Athletic II -->
+        <string id="oeSxcpzi" text="atletico II"/>
+        <!-- Athletic III -->
+        <string id="dMvjTTZb" text="Atletico III"/>
+        <!-- Ignore Armor I -->
+        <string id="ngiTK9F9" text="Ignora armatura I"/>
+        <!-- Ignore Armor II -->
+        <string id="Q7JOJL4l" text="Ignora armatura II"/>
+        <!-- Ignore Armor III -->
+        <string id="fLsEduav" text="Ignora armatura III"/>
+    </strings>
+</base>

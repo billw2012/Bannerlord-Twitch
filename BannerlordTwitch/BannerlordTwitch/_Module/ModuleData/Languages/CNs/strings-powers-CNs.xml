@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="简体中文"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Common -->
+        <!-- Reward {ITEMNAME} -->
+        <string id="W47g8bCB" text="奖励{ITEMNAME}"/>
+        <!-- {viewer} is {name}! -->
+        <string id="TAWcPGIc" text="{viewer} is {name}！"/>
+        
+        <!-- {ITEMNAME} of Fealty -->
+        <string id="IvV04W31" text="{ITEMNAME} 的忠诚"/>
+        <!-- Renegades {ITEMNAME} -->
+        <string id="UQtSgnog" text="叛徒{ITEMNAME}"/>
+        <!-- Stream Sniper {ITEMNAME} -->
+        <string id="xI41h8NA" text="流狙击手{ITEMNAME}"/>
+        
+        <!-- Reliable -->
+        <string id="ODWiNBng" text="可靠的"/>
+        <!-- Trusted -->
+        <string id="fWTqF2sw" text="值得信赖"/>
+        <!-- Loyal -->
+        <string id="fe9J8von" text="忠诚"/>
+        <!-- Rebellious -->
+        <string id="HdYFegeb" text="叛逆的"/>
+        <!-- Traitorous -->
+        <string id="gDHR7f8r" text="叛徒"/>
+        <!-- Renegade -->
+        <string id="VEH582e7" text="叛徒"/>
+        <!-- Stream Sniper -->
+        <string id="Aj0gXKgZ" text="流狙击手"/>
+        <!-- Killing Spree -->
+        <string id="QNbIUDrh" text="杀人狂魔"/>
+        <!-- Healthy I -->
+        <string id="dlrzqWyB" text="健康我"/>
+        <!-- Healthy II -->
+        <string id="QpSDATVx" text="健康二"/>
+        <!-- Healthy III -->
+        <string id="Cqkht54y" text="健康三"/>
+        <!-- Fragile I -->
+        <string id="qA2f6xBp" text="脆弱的我"/>
+        <!-- Fragile II -->
+        <string id="Hyuf4TSH" text="易碎II"/>
+        <!-- Fragile III -->
+        <string id="v0ACBXmv" text="易碎三"/>
+        <!-- Vampiric I -->
+        <string id="mJQ88gTg" text="吸血鬼我"/>
+        <!-- Vampiric II -->
+        <string id="EHkU2FPe" text="吸血鬼II"/>
+        <!-- Vampiric III -->
+        <string id="gDsSjnnd" text="吸血鬼三"/>
+        <!-- Heavy Hitting I -->
+        <string id="93p2ZAIG" text="重击我"/>
+        <!-- Heavy Hitting II -->
+        <string id="Gm7OdO9y" text="重击II"/>
+        <!-- Heavy Hitting III -->
+        <string id="OzBxlGDu" text="重击 III"/>
+        <!-- Retribution I -->
+        <string id="0vLSj7KR" text="报应一"/>
+        <!-- Retribution II -->
+        <string id="vC5KggFz" text="报应二"/>
+        <!-- Retribution III -->
+        <string id="bS76hE3e" text="报应三"/>
+        
+        <!-- Fleet Footed I -->
+        <string id="FQKNvxVG" text="舰队步我"/>
+        <!-- Fleet Footed II -->
+        <string id="rgQDzX4f" text="舰队步兵II"/>
+        <!-- Fleet Footed III -->
+        <string id="f7L0oLCQ" text="舰队步兵 III"/>
+        <!-- Charge I -->
+        <string id="39yFtbp2" text="充电一"/>
+        <!-- Charge II -->
+        <string id="6IFhNSH3" text="充电二"/>
+        <!-- Charge III -->
+        <string id="l2eB9avA" text="充电三"/>
+        <!-- Better Mount I -->
+        <string id="tqmxzUCq" text="更好的山我"/>
+        <!-- Better Mount II -->
+        <string id="izG39s2J" text="更好的坐骑 II"/>
+        <!-- Better Mount III -->
+        <string id="CVmPJOB4" text="更好的坐骑 III"/>
+        <!-- Imposing Mount -->
+        <string id="tv2vTde5" text="气势坐骑"/>
+        <!-- Imposing -->
+        <string id="fFProg8j" text="气势磅礴"/>
+        <!-- Explosive Projectiles I -->
+        <string id="CTqMR9lV" text="爆炸弹 I"/>
+        <!-- Explosive Projectiles II -->
+        <string id="miUEQpaQ" text="爆炸弹丸 II"/>
+        <!-- Explosive Projectiles III -->
+        <string id="o2XgVhjA" text="爆炸弹 III"/>
+        <!-- Fireblade I -->
+        <string id="7b7BkwRo" text="火刃我"/>
+        <!-- Fireblade II -->
+        <string id="d8BUyJ5i" text="火刃II"/>
+        <!-- Fireblade III -->
+        <string id="VGqA25nN" text="火刃III"/>
+        <!-- Charge AoE I -->
+        <string id="R8u1d7M6" text="冲锋范围 I"/>
+        <!-- Charge AoE II -->
+        <string id="lO56Rq9E" text="冲锋范围 II"/>
+        <!-- Charge AoE III -->
+        <string id="X5LQvC0o" text="冲锋范围 III"/>
+        <!-- Ranger I -->
+        <string id="7XNfzok8" text="游侠我"/>
+        <!-- Ranger II -->
+        <string id="HxpAtast" text="游侠二号"/>
+        <!-- Ranger III -->
+        <string id="7YSCRTCg" text="游侠III"/>
+
+        <!-- Heavy Projectiles I -->
+        <string id="r0Wn7FXu" text="重型弹丸 I"/>
+        <!-- Heavy Projectiles II -->
+        <string id="XXL8aXIK" text="重型弹丸 II"/>
+        <!-- Heavy Projectiles III -->
+        <string id="H3r0Zh8E" text="重型射弹 III"/>
+        <!-- Crush Through I -->
+        <string id="xwlvLfJX" text="粉碎我"/>
+        <!-- Crush Through II -->
+        <string id="7FJTIVa4" text="粉碎 II"/>
+        <!-- Crush Through III -->
+        <string id="dQqwtBEE" text="粉碎 III"/>
+        <!-- Knock Down I -->
+        <string id="MKUCQtsr" text="击倒我"/>
+        <!-- Knock Down II -->
+        <string id="KUdqJrOY" text="击倒 II"/>
+        <!-- Knock Down III -->
+        <string id="Uc4Cai9H" text="击倒 III"/>
+        <!-- Cut Through I -->
+        <string id="VsZLMOHX" text="切入我"/>
+        <!-- Cut Through II -->
+        <string id="yXj1jqxx" text="切入 II"/>
+        <!-- Cut Through III -->
+        <string id="R537vuN0" text="切入 III"/>
+        <!-- Shatter Shield I -->
+        <string id="89ezJ7aW" text="破碎之盾 I"/>
+        <!-- Shatter Shield II -->
+        <string id="Dvjkoxi3" text="破碎之盾 II"/>
+        <!-- Shatter Shield III -->
+        <string id="V6RyPIQg" text="破碎之盾 III"/>
+        <!-- Shrug Off I -->
+        <string id="oyKzNISD" text="耸耸肩我"/>
+        <!-- Shrug Off II -->
+        <string id="zNj3xNd4" text="耸耸肩II"/>
+        <!-- Shrug Off III -->
+        <string id="5nsSdwel" text="耸耸肩 III"/>
+        <!-- Athletic I -->
+        <string id="b3DBwSTA" text="运动我"/>
+        <!-- Athletic II -->
+        <string id="oeSxcpzi" text="运动II"/>
+        <!-- Athletic III -->
+        <string id="dMvjTTZb" text="运动三"/>
+        <!-- Ignore Armor I -->
+        <string id="ngiTK9F9" text="无视护甲 I"/>
+        <!-- Ignore Armor II -->
+        <string id="Q7JOJL4l" text="无视护甲 II"/>
+        <!-- Ignore Armor III -->
+        <string id="fLsEduav" text="无视护甲 III"/>
+    </strings>
+</base>

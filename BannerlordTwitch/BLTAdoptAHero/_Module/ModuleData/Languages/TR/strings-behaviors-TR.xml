@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Türkçe"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+                
+        <!-- BLTAdoptAHeroCampaignBehavior -->
+        <!-- Compensated @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} invalid custom items -->
+        <string id="hoRPbRrb" text="Telafi edilen @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} geçersiz özel öğe"/>
+        <!-- @{VictimName} {Verb} by @{KillerName}! -->
+        <string id="PCPU0lPX" text="@{VictimName} {Verb} by @{KillerName}!"/>
+        <!-- @{KillerName} {Verb}! -->
+        <string id="Bji2ULge" text="@{KillerName} {Verb}!"/>
+        <!-- @{HeroName} is now level {Level}! -->
+        <string id="8aTmTvl8" text="@{HeroName} is now level {Level}!"/>
+        <!-- @{HeroName} was taken prisoner by {PartyName}! -->
+        <string id="4PqVnFWY" text="@{HeroName} was taken prisoner by {PartyName}!"/>
+        <!-- @{HeroName} was taken prisoner! -->
+        <string id="WeRWLpKn" text="@{HeroName} esir alındı!"/>
+        <!-- @{HeroName} is no longer a prisoner of {PartyName}! -->
+        <string id="tQANBoTK" text="@{HeroName} is no longer a prisoner of {PartyName}!"/>
+        <!-- @{HeroName} is no longer a prisoner! -->
+        <string id="MQslOwr0" text="@{HeroName} artık bir mahkum değil!"/>
+        <!-- @{HeroName} moved from {FromClanName} to {ToClanName}! -->
+        <string id="SUdnIyfw" text="@{HeroName} moved from {FromClanName} to {ToClanName}!"/>
+        
+        <!-- deceased -->
+        <string id="ZtZL0lbX" text="merhum"/>
+        <!-- retired -->
+        <string id="ISrFBorj" text="emekli"/>
+        <!-- {OldName} is {RetireType}! -->
+        <string id="2PHPNmuv" text="{OldName} is {RetireType}!"/>
+        <!-- Dead or retired hero {OldName} renamed to {HeroName} -->
+        <string id="wzpkEmTL" text="Ölü veya emekli kahraman {OldName} renamed to {HeroName}"/>
+
+        <!-- You can't bid on your own item -->
+        <string id="2cbVbW91" text="Kendi öğeniz için teklif veremezsiniz"/>
+        <!-- Bid of {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon} -->
+        <string id="rbhzuJLm" text="{Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon} teklifi"/>
+        <!-- Another bid at {Bid}{GoldIcon} already exists -->
+        <string id="83uZcndH" text="{Bid}{GoldIcon} için başka bir teklif zaten var"/>
+        <!-- You already bid more ({Bid}{GoldIcon}), you can only raise your bid -->
+        <string id="qeLF80xw" text="Zaten daha fazla ({Bid}{GoldIcon}) teklif verdiniz, yalnızca teklifinizi artırabilirsiniz"/>
+        <!-- You cannot cover a bid of {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon} -->
+        <string id="Cqi0iYNR" text="{Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon} tutarında bir teklifi karşılayamazsınız"/>
+        <!-- Bid of {Bid}{GoldIcon} placed! -->
+        <string id="M2B9yQ4w" text="{Bid}{GoldIcon} teklifi verildi!"/>
+        
+        <!-- {Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName}) -->
+        <string id="TeeDJyJ1" text="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})"/>
+        <!-- {Time} seconds left in auction of '{ItemName}', no bids placed -->
+        <string id="jNkGaKZw" text="{Time} seconds left in auction of '{ItemName}&amp;#39;, teklif verilmedi"/>
+        <!-- Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}. -->
+        <string id="d9ooHVPU" text="{ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon} için açık artırma."/>
+        <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died. -->
+        <string id="SGuTRcui" text="{ItemName} is CANCELLED! @{ItemOwnerName} için açık artırma emekli oldu veya öldü."/>
+        <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} is no longer in possession of the item. -->
+        <string id="NRV4IstE" text="{ItemName} is CANCELLED! @{ItemOwnerName} için açık artırma artık öğeye sahip değil."/>
+        <!-- Auction for {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}. -->
+        <string id="jmbMoHta" text="{ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon} için açık artırma."/>
+        
+        <!-- No auction in progress -->
+        <string id="Cy38Ckpk" text="Devam eden açık artırma yok"/>
+        <!-- Max Retinue Size -->
+        <string id="wAGE7h6U" text="Maks. Maaş Boyutu"/>
+        <!-- Maximum number of units in the retinue. Recommend less than 20, summons to NOT obey the games unit limits. -->
+        <string id="EOGB8EWN" text="Maiyetteki maksimum birim sayısı. 20&amp;#39;den az tavsiye, oyun birimi sınırlarına UYMAMA çağrısı."/>
+        <!-- Cost Tier 1 -->
+        <string id="VvdtvdQJ" text="Maliyet Katmanı 1"/>
+        <!-- Gold cost for Tier 1 retinue -->
+        <string id="9bvn5R5A" text="1. Kademe maiyeti için altın maliyeti"/>
+        <!-- Cost Tier 2 -->
+        <string id="engRDMZx" text="Maliyet Katmanı 2"/>
+        <!-- Gold cost for Tier 2 retinue -->
+        <string id="pD2ZvRVH" text="2. Kademe maiyeti için altın maliyeti"/>
+        <!-- Cost Tier 3 -->
+        <string id="3jxmITht" text="Maliyet Katmanı 3"/>
+        <!-- Gold cost for Tier 3 retinue -->
+        <string id="dyB8loLF" text="3. Kademe maiyeti için altın maliyeti"/>
+        <!-- Cost Tier 4 -->
+        <string id="dhwd4ccF" text="Maliyet Katmanı 4"/>
+        <!-- Gold cost for Tier 4 retinue -->
+        <string id="aji2HxKa" text="4. Kademe maiyeti için altın maliyeti"/>
+        <!-- Cost Tier 5 -->
+        <string id="zJkb4AIh" text="Maliyet Katmanı 5"/>
+        <!-- Gold cost for Tier 5 retinue -->
+        <string id="fnEOFst7" text="5. Kademe maiyeti için altın maliyeti"/>
+        <!-- Cost Tier 6 -->
+        <string id="1hh3cOJO" text="Maliyet Katmanı 6"/>
+        <!-- Gold cost for Tier 6 retinue -->
+        <string id="PieENBSG" text="6. Kademe maiyeti için altın maliyeti"/>
+        <!-- Troop Types -->
+        <string id="qYhM3gcn" text="Birlik Türleri"/>
+        <!-- Use Heroes Culture Units -->
+        <string id="q1Rkm3Rq" text="Kahraman Kültür Birimlerini Kullan"/>
+        <!-- Whether to use the adopted hero's culture (if not enabled then a random one is used) -->
+        <string id="9qAD6eZR" text="Kabul edilen kahramanın kültürünün kullanılıp kullanılmayacağı (etkinleştirilmemişse rastgele bir kültür kullanılır)"/>
+        <!-- Include Bandit Units -->
+        <string id="dbU7WEKG" text="Haydut Birimlerini Dahil Et"/>
+        <!-- Whether to allow bandit units when UseHeroesCultureUnits is disabled -->
+        <string id="06KnYhyh" text="UseHeroesCultureUnits devre dışı bırakıldığında haydut birimlerine izin verilip verilmeyeceği"/>
+        <!-- Use Basic Troops -->
+        <string id="E2RBmb1K" text="Temel Birlikleri Kullan"/>
+        <!-- Whether to allow basic troops -->
+        <string id="uPwaOKdT" text="Temel birliklere izin verilip verilmeyeceği"/>
+        <!-- Use Elite Troops -->
+        <string id="lnz7d1BI" text="Elit Birlikleri Kullan"/>
+        <!-- Whether to allow elite troops -->
+        <string id="EPr2clqT" text="Seçkin birliklere izin verilip verilmeyeceği"/>
+        <!-- Max retinue -->
+        <string id="UhUpH8C8" text="Maksimum maiyet"/>
+        <!-- Tier costs -->
+        <string id="VBuncBq5" text="Katman maliyetleri"/>
+        <!-- Same culture only -->
+        <string id="R7rU0TbD" text="Sadece aynı kültür"/>
+        <!-- Bandits -->
+        <string id="c2qOsXvs" text="haydutlar"/>
+        <!-- Basic troops -->
+        <string id="RmTwEFzy" text="Temel birlikler"/>
+        <!-- Elite troops -->
+        <string id="3gumlthG" text="elit birlikler"/>
+        <!-- Allowed -->
+        <string id="uL7MfYPc" text="İzin verilmiş"/>
+        <!-- No valid troop types could be found, please check out settings -->
+        <string id="bBCyH0vV" text="Geçerli bir birlik türü bulunamadı, lütfen ayarlara göz atın"/>
+        <!-- Spent {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} remaining -->
+        <string id="zcbOq6Tb" text="Kalan {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} harcandı"/>
+        <!-- Can't upgrade retinue any further! -->
+        <string id="PQRLJ04i" text="Maiyeti daha fazla yükseltemezsiniz!"/>
+        <!-- was murdered -->
+        <string id="LhHul2lV" text="öldürüldü"/>
+        <!-- died in labor -->
+        <string id="HwjR45XN" text="doğumda öldü"/>
+        <!-- died of old age -->
+        <string id="5GOjfkzW" text="yaşlılıktan öldü"/>
+        <!-- died in battle -->
+        <string id="ZKrgqWav" text="savaşta öldü"/>
+        <!-- was wounded in battle -->
+        <string id="jp4sldTL" text="savaşta yaralandı"/>
+        <!-- was executed -->
+        <string id="SkFFXsI1" text="idam edildi"/>
+        <!-- was lost -->
+        <string id="HMHdXDaK" text="kayıptı"/>
+        <!-- was ended -->
+        <string id="lrOJnThZ" text="sona erdi"/>
+        
+        <!-- BLTTournamentBetMissionBehavior -->
+        <!-- Betting is now OPEN for round {RoundIndex} match: {Teams}! -->
+        <string id="wgGkXkyh" text="Bahisler artık {RoundIndex} match: {Teams}. tur için AÇIK!"/>
+        <!-- Betting is now OPEN for final match: {Teams}! -->
+        <string id="9BjHfivM" text="Bahisler artık son maç için AÇIK: {Teams}!"/>
+        <!-- vs -->
+        <string id="ixTCiaiv" text="vs"/>
+        <!-- blue -->
+        <string id="HrIifwJy" text="Mavi"/>
+        <!-- red -->
+        <string id="6ZGgsbe1" text="kırmızı"/>
+        <!-- green -->
+        <string id="qQZlsD8r" text="Yeşil"/>
+        <!-- yellow -->
+        <string id="JelyrtLJ" text="sarı"/>
+        <!-- Tournament is not active -->
+        <string id="FEZ1Opj1" text="Turnuva aktif değil"/>
+        <!-- Betting is disabled -->
+        <string id="uNUyZhDk" text="Bahis devre dışı"/>
+        <!-- Betting is closed -->
+        <string id="APTqGlHh" text="Bahis kapalı"/>
+        <!-- Betting is only allowed on the final -->
+        <string id="7yFW99H8" text="Bahislere sadece final için izin verilir"/>
+        <!-- Betting is not open -->
+        <string id="ATdvJKFI" text="Bahis açık değil"/>
+        <!-- Team name must be one of {Teams} -->
+        <string id="1rUYWox8" text="Takım adı şunlardan biri olmalıdır: {Teams}"/>
+        <!-- You can only bet on one team -->
+        <string id="7iveTGQp" text="Sadece bir takıma bahis oynayabilirsiniz"/>
+        <!-- Betting is now CLOSED: only one team bet on, bets refunded -->
+        <string id="Nm96SVXt" text="Bahisler artık KAPALI: sadece bir takım üzerine bahsi oynanır, bahisler iade edilir"/>
+        <!-- Betting is now CLOSED: no bets placed -->
+        <string id="GrI9bFCf" text="Bahisler artık KAPALI: bahis yapılmadı"/>
+        <!-- Betting is now CLOSED: {TotalBets} -->
+        <string id="Hj3oYnE0" text="Bahis artık KAPALI: {TotalBets}"/>
+        <!-- REFUNDED {Bet}{GoldIcon} bet -->
+        <string id="u4mPf1p0" text="İADE {Bet}{GoldIcon} bahis"/>
+        <!-- WON BET -->
+        <string id="majAmqDm" text="BAHİS KAZANDI"/>
+        
+        <!-- BLTTournamentMissionBehavior -->
+        <!-- WINNER! -->
+        <string id="jb5vaUCD" text="KAZANAN!"/>
+        <!-- no prize available for you! -->
+        <string id="80PitGR4" text="senin için ödül yok!"/>
+        
+        <!-- BLTTournamentQueueBehavior -->
+        <!-- You are already in the tournament queue! -->
+        <string id="JtZIstbB" text="Zaten turnuva kuyruğundasınız!"/>
+        <!-- You are position {QueuePosition} in the tournament queue! -->
+        <string id="1duM11Gt" text="Turnuva kuyruğunda {QueuePosition} konumundasınız!"/>
+    </strings>
+</base>

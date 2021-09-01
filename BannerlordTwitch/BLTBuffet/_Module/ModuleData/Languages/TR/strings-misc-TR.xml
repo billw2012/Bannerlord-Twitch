@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Türkçe"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- AddGoldToPlayer -->
+        <!-- Add Gold To Player -->
+        <string id="HSuPuNDk" text="Oyuncuya Altın Ekle"/>
+        <!-- Allows viewers to give the player gold, either for channel points and/or from their own hero -->
+        <string id="wqR23RYf" text="İzleyicilerin oyuncuya kanal puanları ve/veya kendi kahramanlarından altın vermelerine olanak tanır"/>
+        <!-- Gold Amount To Give -->
+        <string id="F51J5Qd5" text="Verilecek Altın Miktarı"/>
+        <!-- How much gold to give the player -->
+        <string id="Jg6qoYth" text="Oyuncuya ne kadar altın verilecek"/>
+        <!-- From Adopted Hero -->
+        <string id="yGnwXshi" text="Evlat Edinilen Kahramandan"/>
+        <!-- Whether to take the gold from the viewers adopted hero -->
+        <string id="uL8hjmZ9" text="İzleyicilerin evlat edindiği kahramanın altını alıp almamak"/>
+        <!-- Alert Sound -->
+        <string id="sNkcGnrw" text="Uyarı Sesi"/>
+        <!-- Alert sound to play for the message -->
+        <string id="TSi4MZiT" text="Mesaj için çalınacak uyarı sesi"/>
+        <!-- {UserName} gives you {GoldAmountToGive} gold -->
+        <string id="awjXw6yr" text="{UserName} gives you {GoldAmountToGive} altın"/>
+        <!-- {UserName} gives you {GoldAmountToGive} gold: '{Message}' -->
+        <string id="jOqdrS7h" text="{UserName} gives you {GoldAmountToGive} gold: '{Message}&amp;#39;"/>
+        <!-- Sent {GoldAmountToGive}{GoldIcon} to {PlayerName} -->
+        <string id="ziWoNEec" text="{GoldAmountToGive}{GoldIcon} to {PlayerName} gönderildi"/>
+        
+        <!-- CharacterEffect -->
+        <!-- Applies effects to a character / the player -->
+        <string id="aGfP5X2q" text="Bir karaktere / oyuncuya efektler uygular"/>
+        <!-- No mission is active! -->
+        <string id="ZXxpMpYi" text="Hiçbir görev aktif değil!"/>
+        <!-- Not allowed during tournament! -->
+        <string id="aK6wEWqw" text="Turnuva sırasında izin verilmez!"/>
+        <!-- The mission has not started yet! -->
+        <string id="0H0dMWam" text="Görev henüz başlamadı!"/>
+        <!-- The mission is ending! -->
+        <string id="f3Cwg2lw" text="Görev bitiyor!"/>
+        <!-- Couldn't find the target! -->
+        <string id="duuvGgDi" text="Hedefi bulamadı!"/>
+        <!-- CharacterEffect {Source} configuration error: Name is missing! -->
+        <string id="hr0ye4gl" text="CharacterEffect {Source} yapılandırma hatası: Ad eksik!"/>
+        <!-- {Target} already affected by {Config}! -->
+        <string id="yZuAmGOU" text="{Target} already affected by {Config}!"/>
+        <!-- {Target} is mounted so cannot be affected by {Config}! -->
+        <string id="gZtqmx0D" text="{Target} is mounted so cannot be affected by {Config}!"/>
+        <!-- {Config} is active on {Target}! -->
+        <string id="1S6mDVBM" text="{Config} is active on {Target}!"/>
+        <!-- {Config} is active on {Target}! -->
+        <string id="uV2gZjHI" text="{Config} is active on {Target}!"/>
+        <!-- {Config} expired on {Target}! -->
+        <string id="lpdl3sj9" text="{Config} expired on {Target}!"/>
+
+        <!-- CharacterEffect.Config -->
+        <!-- Player -->
+        <string id="92tZqqRy" text="oyuncu"/>
+        <!-- AdoptedHero -->
+        <string id="jyNFgLUD" text="Evlat Edilen Kahraman"/>
+        <!-- Any -->
+        <string id="qVaXXiEf" text="Herhangi"/>
+        <!-- EnemyTeam -->
+        <string id="Dc99H7LD" text="Düşman takım"/>
+        <!-- PlayerTeam -->
+        <string id="mWL1kGwD" text="OyuncuTakımı"/>
+        <!-- AllyTeam -->
+        <string id="8rqexAvY" text="AllyTeam"/>
+        <!-- Random -->
+        <string id="o3jTIv2S" text="Rastgele"/>
+        <!-- On Weapon -->
+        <string id="ry3Fo3Ph" text="Silahta"/>
+        <!-- On Hands -->
+        <string id="zfQ43utW" text="Ellerde"/>
+        <!-- On Head -->
+        <string id="P9e57ey1" text="Kafasında"/>
+        <!-- On Body -->
+        <string id="GZC5VUo0" text="Bedende"/>
+        <!-- Particle Effect Definition -->
+        <string id="F9u231DX" text="Parçacık Etkisi Tanımı"/>
+        <!-- Particle effect system name, see ParticleEffects.txt for the full vanilla list -->
+        <string id="8FGAgHIX" text="Parçacık efekti sistem adı, tam liste için ParticleEffects.txt&amp;#39;ye bakın"/>
+        <!-- Attach Point -->
+        <string id="7MIO0dPq" text="Nokta Ekle"/>
+        <!-- Where to attach the particles -->
+        <string id="jEEtBaKs" text="Parçacıkların nereye ekleneceği"/>
+        <!-- The property to modify -->
+        <string id="Dx5HUb1Q" text="Değiştirilecek özellik"/>
+        <!-- Add -->
+        <string id="Qu3sbJvR" text="Ekle"/>
+        <!-- Add to the property value -->
+        <string id="anOigmfO" text="Özellik değerine ekleyin"/>
+        <!-- Multiply -->
+        <string id="AQ7g1RuJ" text="Çarpmak"/>
+        <!-- Multiply the property value -->
+        <string id="35zcHc2g" text="Özellik değerini çarpın"/>
+        <!-- Name to use when referring to this effect -->
+        <string id="KdxwhYu6" text="Bu efektten bahsederken kullanılacak isim"/>
+        <!-- Target -->
+        <string id="hCfdaELu" text="Hedef"/>
+        <!-- Target of the effect -->
+        <string id="5bWknsD5" text="Efektin hedefi"/>
+        <!-- Target On Foot Only -->
+        <string id="wbj9ztiI" text="Yalnızca Yaya Hedef"/>
+        <!-- Will target unmounted soldiers only -->
+        <string id="RptjkipN" text="Yalnızca atsız askerleri hedef alacak"/>
+        <!-- Particle Effects -->
+        <string id="j7t8cjxA" text="Parçacık Etkileri"/>
+        <!-- Particle effects to apply -->
+        <string id="YiUto6gZ" text="Uygulanacak parçacık efektleri"/>
+        <!-- Properties -->
+        <string id="CN0a7XhW" text="Özellikler"/>
+        <!-- Properties to change, and how much by -->
+        <string id="JrmttiBW" text="Değiştirilecek özellikler ve ne kadar"/>
+        <!-- Heal Per Second -->
+        <string id="trYxwNFg" text="Saniyede İyileşme"/>
+        <!-- Heal amount per second -->
+        <string id="J19JbB4E" text="Saniyedeki iyileşme miktarı"/>
+        <!-- Damage Per Second -->
+        <string id="6Ikuo9Yl" text="Saniye başına hasar"/>
+        <!-- Damage amount per second -->
+        <string id="cQBHZWwK" text="Saniye başına hasar miktarı"/>
+        <!-- Duration -->
+        <string id="KxP51isR" text="Süre"/>
+        <!-- Duration the effect will last for, if not specified the effect will last until the end of the mission -->
+        <string id="1pG6eydt" text="Etkinin devam edeceği süre, belirtilmediği takdirde etki görevin sonuna kadar sürecektir."/>
+        <!-- Force Drop Weapons -->
+        <string id="rFxwAzgd" text="Silah Bırakmaya Zorla"/>
+        <!-- Force agent to drop weapons -->
+        <string id="ZW0x13Y8" text="Ajanı silah bırakmaya zorla"/>
+        <!-- Remove Armor -->
+        <string id="vZIAY076" text="Zırhı Kaldır"/>
+        <!-- Remove all armor -->
+        <string id="4kiY7cUb" text="Tüm zırhı kaldır"/>
+        <!-- Damage Multiplier -->
+        <string id="jJpRuWKR" text="Hasar Çarpanı"/>
+        <!-- Raw damage multiplier -->
+        <string id="FlfyDMlc" text="Ham hasar çarpanı"/>
+        <!-- Activate Particle Effect -->
+        <string id="qWGAG5l8" text="Parçacık Etkisini Etkinleştir"/>
+        <!-- One shot vfx to apply when the effect is activated -->
+        <string id="6HT3lQbV" text="Efekt etkinleştirildiğinde uygulanacak tek çekim vfx"/>
+        <!-- Activate Sound -->
+        <string id="deboEOcD" text="Sesi Etkinleştir"/>
+        <!-- Sound to play when effect is activated, see Sounds.txt for the full vanilla list -->
+        <string id="zZskrilN" text="Efekt etkinleştirildiğinde çalınacak ses, tam liste için Sounds.txt&amp;#39;e bakın"/>
+        <!-- Deactivate Particle Effect -->
+        <string id="FBH0P3a9" text="Parçacık Etkisini Devre Dışı Bırak"/>
+        <!-- One shot vfx to apply when the effect is deactivated, see ParticleEffects.txt for the full vanilla list -->
+        <string id="u1eFzwLY" text="Efekt devre dışı bırakıldığında uygulanacak tek çekim vfx, tam liste için ParticleEffects.txt&amp;#39;ye bakın"/>
+        <!-- Deactivate Sound -->
+        <string id="zfSYXHms" text="Sesi Devre Dışı Bırak"/>
+        <!-- Sound to play when effect is deactivated, see Sounds.txt for the full vanilla list -->
+        <string id="ziMmWmmY" text="Efekt devre dışı bırakıldığında çalınacak ses, tam liste için Sounds.txt&amp;#39;e bakın"/>
+        
+        <!-- SendMessage -->
+        <!-- Send Message -->
+        <string id="rXQWpj95" text="Mesaj gönder"/>
+        <!-- Allows viewers to send a message that will appear in game -->
+        <string id="htpylYKb" text="İzleyicilerin oyunda görünecek bir mesaj göndermesine izin verir"/>
+        <!-- Alert Sound -->
+        <string id="Anvcnpbh" text="Uyarı Sesi"/>
+        <!-- Alert sound to play for the message -->
+        <string id="V36Hg85n" text="Mesaj için çalınacak uyarı sesi"/>
+        <!-- No message provided! -->
+        <string id="cA8NQlDm" text="Mesaj verilmedi!"/>
+        <!-- Sent -->
+        <string id="tFHfVCDK" text="Gönderilmiş"/>
+        
+        <!-- GlobalEffectsConfig -->
+        <!-- Effects Config -->
+        <string id="cBeIA9V1" text="Efekt Yapılandırması"/>
+        <!-- Disable Effects In Tournaments -->
+        <string id="cUN7xx0t" text="Turnuvalarda Efektleri Devre Dışı Bırak"/>
+        <!-- Whether effects are disabled in a tournament -->
+        <string id="X0AtIvbh" text="Bir turnuvada efektlerin devre dışı bırakılıp bırakılmayacağı"/>
+    </strings>
+</base>

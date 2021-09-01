@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="简体中文"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
+        <string id="dirEUQc7" text="在游戏中获得英雄。几乎所有其他行动都需要一个被收养的英雄。"/>
+        <!-- Adds 10,000 gold to your adopted hero. -->
+        <string id="Y7GzhU5a" text="为你的领养英雄增加 10,000 金币。"/>
+        <!-- Adds 100,000 gold to your adopted hero. -->
+        <string id="Hbk74nei" text="为你的领养英雄增加 100,000 金币。"/>
+        <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue). -->
+        <string id="nI4dr4uZ" text="当主播进入战斗时使用它，在主播一方（以及你的随从）生成你的领养英雄。"/>
+        <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue). -->
+        <string id="flQofEFu" text="当主播进入战斗时使用它，在敌方（以及你的随从）生成你的领养英雄。"/>
+        <!-- Heals the streamers character in battle, over time. Doesn't work on the campaign map. -->
+        <string id="zLxgvsYd" text="随着时间的推移，在战斗中治愈飘带角色。不适用于战役地图。"/>
+        <!-- Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament. -->
+        <string id="KaE947T9" text="与您采用的英雄一起加入锦标赛队列。您可以在叠加层中看到队列。每个锦标赛最多可以有 16 个英雄，一旦满员，更多的英雄将留在下一场锦标赛的队列中。"/>
+        <!-- Sends a message in the game. If you have a hero then it will also show them next to the message. -->
+        <string id="5L3LWrUx" text="在游戏中发送消息。如果您有英雄，那么它也会在消息旁边显示他们。"/>
+        <!-- Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritance rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete. -->
+        <string id="SXzjFdG1" text="如果您不再希望与当前的英雄一起玩，请使用此选项。他们将被标记为（已退休），然后您就可以采用新的了。继承规则同样适用于退休和死亡。您必须在提示下输入 yes（完全按照书面形式，小写）才能完成退休。"/>
+        <!-- Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment. -->
+        <string id="ZfhTuaRR" text="将 50,000 XP 加到您收养的英雄身上。它所应用的技能将随机选择，但受您的职业和现有技能和装备的影响。"/>
+        <!-- Heals your hero over time. Only works in battle, when your hero is summoned. -->
+        <string id="pFwSBHnR" text="随着时间的推移治愈你的英雄。只在战斗中，当你的英雄被召唤时有效。"/>
+        <!-- Transfer 10,000 gold to the streamers character, from your hero. -->
+        <string id="CSmE7Y50" text="将 10,000 金币从您的英雄转移到飘带角色。"/>
+        <!-- Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay. -->
+        <string id="LO6Q2DCb" text="激活你的英雄的职业能力，如果你有的话。电源将持续一段有限的时间，如覆盖图所示。"/>
+        
+        <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
+        <string id="kL65xglO" text="在游戏中获得英雄。几乎所有其他行动都需要一个被收养的英雄。"/>
+        <!-- Add 10,000 gold to your adopted hero -->
+        <string id="xQTiKsVA" text="为你收养的英雄增加 10,000 金币"/>
+        <!-- Add 100,000 gold to your adopted hero -->
+        <string id="xeI0AXUl" text="为你的领养英雄增加 100,000 金币"/>
+        <!-- Your adopted hero joins the players side in battle -->
+        <string id="zmxI41XP" text="你收养的英雄加入玩家一方战斗"/>
+        <!-- Your adopted hero joins the enemies side in battle -->
+        <string id="ry25StNF" text="你收养的英雄在战斗中加入了敌人的一方"/>
+        <!-- Heal the streamer over time -->
+        <string id="a8DqM6AY" text="随着时间的推移治愈流光"/>
+        <!-- Join the tournament queue with your adopted hero -->
+        <string id="ODfWfHln" text="与您的领养英雄一起加入锦标赛队列"/>
+        <!-- Enter Message -->
+        <string id="m9IFHkZh" text="输入消息"/>
+        <!-- Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel -->
+        <string id="ZNGav9pi" text="输入 yes 退出你的英雄（它将不再由你控制），或关闭此窗口取消"/>
+        <!-- Add 50,000 XP to a random skill of your adopted hero -->
+        <string id="UCjOD22c" text="将 50,000 XP 添加到您所采用的英雄的随机技能中"/>
+        <!-- Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below: -->
+        <string id="1IDV1dAh" text="将 10,000 金币从您的英雄转移到飘带角色。在下方输入礼品信息："/>
+        <!-- Activate your class power on your hero, if you have one. -->
+        <string id="x5Agf9Wl" text="激活你的英雄的职业能力，如果你有的话。"/>
+        <!-- Adopt a Hero -->
+        <string id="Yc9dn4Sx" text="收养英雄"/>
+        <!-- 10k gold -->
+        <string id="s0GPjZKG" text="10K金"/>
+        <!-- 100k gold -->
+        <string id="ndi9p5jn" text="10万金"/>
+        <!-- Summon -->
+        <string id="dpnWybop" text="召唤"/>
+        <!-- Attack -->
+        <string id="IrF1VaBD" text="攻击"/>
+        <!-- Heal Streamer -->
+        <string id="MSpPJJhZ" text="治愈流光"/>
+        <!-- Tournament -->
+        <string id="IBrMU0VF" text="比赛"/>
+        <!-- Send Message In Game -->
+        <string id="FFvfbTgo" text="在游戏中发送消息"/>
+        <!-- Retire My Hero -->
+        <string id="AZMDg7St" text="退休我的英雄"/>
+        <!-- 50k XP -->
+        <string id="uA1yEnyO" text="50k 经验值"/>
+        <!-- Burn Player -->
+        <string id="2ciF79zR" text="刻录播放器"/>
+        <!-- Heal Hero -->
+        <string id="likTlNpu" text="治愈英雄"/>
+        <!-- Give Player Gold -->
+        <string id="9DoHhKeh" text="给予玩家金币"/>
+        <!-- Use Class Power -->
+        <string id="yoZSmM0b" text="使用阶级力量"/>
+    </strings>
+</base>

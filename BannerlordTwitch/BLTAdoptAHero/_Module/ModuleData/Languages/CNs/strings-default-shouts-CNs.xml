@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="简体中文"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Don't worry, I've got your back! -->
+        <string id="DczOKFsA" text="别担心，我支持你！"/>
+        <!-- I'm here! -->
+        <string id="pj9Z0M7G" text="我在这！"/>
+        <!-- Which one should I stab? -->
+        <string id="y8DOtj2H" text="我应该刺哪一个？"/>
+        <!-- Need a hand? -->
+        <string id="1i1OrZDd" text="需要帮忙？"/>
+        <!-- The price has been paid. I am at your service. -->
+        <string id="rVaJZ5Lo" text="已经付出了代价。我为您服务。"/>
+        <!-- Once more unto the breach! -->
+        <string id="QEyO8W82" text="再次违反！"/>
+        <!-- Freeeeeedddooooooommmm! -->
+        <string id="Bo11t6gj" text="Freeeeedddooooooommmmm！"/>
+        <!-- Remember the Alamo! -->
+        <string id="8uO8Isjm" text="记住阿拉莫！"/>
+        <!-- Alala! -->
+        <string id="A3KdQJok" text="阿拉！"/>
+        <!-- Eleleu! -->
+        <string id="pXVCAwAr" text="埃勒卢！"/>
+        <!-- Deus vult! -->
+        <string id="TlZjOFii" text="死神！"/>
+        <!-- Banzai! -->
+        <string id="xPFIIEzw" text="万岁！"/>
+        <!-- Liberty or Death! -->
+        <string id="gmN3YLPw" text="自由或死亡！"/>
+        <!-- Har Har Mahadev! -->
+        <string id="FoDIukJK" text="哈哈马哈德夫！"/>
+        <!-- Desperta ferro! -->
+        <string id="SSqdBzkY" text="铁血绝望！"/>
+        <!-- Alba gu bràth! -->
+        <string id="UHhpIpDU" text="阿尔巴古布拉斯！"/>
+        <!-- Santiago! -->
+        <string id="lDo1AOCS" text="圣地亚哥！"/>
+        <!-- Huzzah! -->
+        <string id="gT95E89y" text="哈扎！"/>
+        <!-- War... war never changes... -->
+        <string id="fKKpcZGQ" text="战争……战争永远不会改变……"/>
+        <!-- May we live to see the next sunrise! -->
+        <string id="vZgbxkW9" text="愿我们活着看到下一个日出！"/>
+        <!-- For glory, charge! -->
+        <string id="wn7zIy9f" text="为了荣耀，冲锋！"/>
+        <!-- Give them nothing, but take from them everything! -->
+        <string id="KH7Dnbe7" text="什么都不给他们，但从他们那里拿走一切！"/>
+        <!-- Fell deeds awake, fire and slaughter! -->
+        <string id="FyBFecip" text="堕落事迹苏醒，火与杀戮！"/>
+        <!-- Spooooooooooooooooooon! -->
+        <string id="H7asM2KG" text="Spooooooooooooooooon！"/>
+        <!-- Leeeeeeeerooooy Jeeeeenkins -->
+        <string id="ERDmbO2B" text="Leeeeeeeeerooooy Jeeeeenkins"/>
+        <!-- I live, I die, I live again! -->
+        <string id="hL0vmkUG" text="我活着，我死了，我又活了！"/>
+        <!-- Witness me!! -->
+        <string id="KMTRT2EN" text="目击我！！"/>
+        <!-- Now for wrath, now for ruin and a red nightfall! -->
+        <string id="F9WUaqdj" text="现在是愤怒，现在是毁灭和红色的夜幕！"/>
+        <!-- n -->
+        <string id="ZQiRFkFU" text="n"/>
+        <!-- Those are brave men knocking at our door, let's go kill them! -->
+        <string id="JlZ9pRbq" text="那些敲门的勇敢的人，我们去杀了他们！"/>
+        <!-- Lets take this city! -->
+        <string id="5gg0BcKk" text="让我们占领这座城市！"/>
+        <!-- Defend yourself! -->
+        <string id="lhWht8Em" text="保护自己！"/>
+        <!-- Time for you to die! -->
+        <string id="FmlTSg39" text="是时候让你死了！"/>
+        <!-- You killed my father, prepare to die! -->
+        <string id="GJpUfALs" text="你杀了我父亲，准备去死吧！"/>
+        <!-- En garde! -->
+        <string id="IKN2G1wi" text="前卫！"/>
+        <!-- It's stabbing time! For you. -->
+        <string id="yTHYR4i9" text="刺伤时间到了！为你。"/>
+        <!-- It's nothing personal! -->
+        <string id="4wYLe6f0" text="这不是个人的！"/>
+        <!-- Curse my sudden but inevitable betrayal! -->
+        <string id="37bg5QNX" text="诅咒我突如其来却不可避免的背叛！"/>
+        <!-- I just don't like you! -->
+        <string id="AOpbzIUP" text="我就是不喜欢你！"/>
+        <!-- I'm gonna put some dirt in your eye! -->
+        <string id="JFCcwLga" text="我要在你的眼睛里放点脏东西！"/>
+        <!-- I'll mount your head on a pike! -->
+        <string id="jCrCRbyA" text="我要把你的头搭在长矛上！"/>
+        <!-- Don't hate me, it's just business... -->
+        <string id="0uiD2HxZ" text="不要恨我，这只是生意......"/>
+        <!-- Never should have come here! -->
+        <string id="42Fuy9pm" text="永远不应该来这里！"/>
+        <!-- Your money or your life! -->
+        <string id="dClbnb2q" text="你的钱还是你的命！"/>
+        <!-- I'm sorry, but I must stop you. -->
+        <string id="uyjy1geA" text="我很抱歉，但我必须阻止你。"/>
+        <!-- I have the high ground! -->
+        <string id="dh0c96lo" text="我有制高点！"/>
+        <!-- DAMN IT DAVE! -->
+        <string id="EcD5q9th" text="该死的戴夫！"/>
+    </strings>
+</base>

@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Pусский"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- AddGoldToPlayer -->
+        <!-- Add Gold To Player -->
+        <string id="HSuPuNDk" text="Добавить золото игроку"/>
+        <!-- Allows viewers to give the player gold, either for channel points and/or from their own hero -->
+        <string id="wqR23RYf" text="Позволяет зрителям отдавать игроку золото либо за очки канала, либо от своего героя."/>
+        <!-- Gold Amount To Give -->
+        <string id="F51J5Qd5" text="Сумма в золоте для дачи"/>
+        <!-- How much gold to give the player -->
+        <string id="Jg6qoYth" text="Сколько золота дать игроку"/>
+        <!-- From Adopted Hero -->
+        <string id="yGnwXshi" text="От усыновленного героя"/>
+        <!-- Whether to take the gold from the viewers adopted hero -->
+        <string id="uL8hjmZ9" text="Стоит ли брать золото у приемного героя телезрителей"/>
+        <!-- Alert Sound -->
+        <string id="sNkcGnrw" text="Звуковой сигнал"/>
+        <!-- Alert sound to play for the message -->
+        <string id="TSi4MZiT" text="Звуковой сигнал для воспроизведения сообщения"/>
+        <!-- {UserName} gives you {GoldAmountToGive} gold -->
+        <string id="awjXw6yr" text="{UserName} gives you {GoldAmountToGive} золото"/>
+        <!-- {UserName} gives you {GoldAmountToGive} gold: '{Message}' -->
+        <string id="jOqdrS7h" text="{UserName} gives you {GoldAmountToGive} gold: '{Message} &amp;#39;"/>
+        <!-- Sent {GoldAmountToGive}{GoldIcon} to {PlayerName} -->
+        <string id="ziWoNEec" text="Отправлено {GoldAmountToGive}{GoldIcon} to {PlayerName}"/>
+        
+        <!-- CharacterEffect -->
+        <!-- Applies effects to a character / the player -->
+        <string id="aGfP5X2q" text="Применяет эффекты к персонажу / игроку"/>
+        <!-- No mission is active! -->
+        <string id="ZXxpMpYi" text="Нет активных миссий!"/>
+        <!-- Not allowed during tournament! -->
+        <string id="aK6wEWqw" text="Не допускается во время турнира!"/>
+        <!-- The mission has not started yet! -->
+        <string id="0H0dMWam" text="Миссия еще не началась!"/>
+        <!-- The mission is ending! -->
+        <string id="f3Cwg2lw" text="Миссия заканчивается!"/>
+        <!-- Couldn't find the target! -->
+        <string id="duuvGgDi" text="Не удалось найти цель!"/>
+        <!-- CharacterEffect {Source} configuration error: Name is missing! -->
+        <string id="hr0ye4gl" text="Ошибка конфигурации CharacterEffect {Source}: отсутствует имя!"/>
+        <!-- {Target} already affected by {Config}! -->
+        <string id="yZuAmGOU" text="{Target} already affected by {Config}!"/>
+        <!-- {Target} is mounted so cannot be affected by {Config}! -->
+        <string id="gZtqmx0D" text="{Target} is mounted so cannot be affected by {Config}!"/>
+        <!-- {Config} is active on {Target}! -->
+        <string id="1S6mDVBM" text="{Config} is active on {Target}!"/>
+        <!-- {Config} is active on {Target}! -->
+        <string id="uV2gZjHI" text="{Config} is active on {Target}!"/>
+        <!-- {Config} expired on {Target}! -->
+        <string id="lpdl3sj9" text="{Config} expired on {Target}!"/>
+
+        <!-- CharacterEffect.Config -->
+        <!-- Player -->
+        <string id="92tZqqRy" text="Игрок"/>
+        <!-- AdoptedHero -->
+        <string id="jyNFgLUD" text="Принял Герой"/>
+        <!-- Any -->
+        <string id="qVaXXiEf" text="Любой"/>
+        <!-- EnemyTeam -->
+        <string id="Dc99H7LD" text="EnemyTeam"/>
+        <!-- PlayerTeam -->
+        <string id="mWL1kGwD" text="PlayerTeam"/>
+        <!-- AllyTeam -->
+        <string id="8rqexAvY" text="Союзник"/>
+        <!-- Random -->
+        <string id="o3jTIv2S" text="Случайный"/>
+        <!-- On Weapon -->
+        <string id="ry3Fo3Ph" text="На оружии"/>
+        <!-- On Hands -->
+        <string id="zfQ43utW" text="На руках"/>
+        <!-- On Head -->
+        <string id="P9e57ey1" text="На голове"/>
+        <!-- On Body -->
+        <string id="GZC5VUo0" text="На теле"/>
+        <!-- Particle Effect Definition -->
+        <string id="F9u231DX" text="Определение эффекта частиц"/>
+        <!-- Particle effect system name, see ParticleEffects.txt for the full vanilla list -->
+        <string id="8FGAgHIX" text="Имя системы эффектов частиц, полный список ванили см. В ParticleEffects.txt."/>
+        <!-- Attach Point -->
+        <string id="7MIO0dPq" text="Присоединить точку"/>
+        <!-- Where to attach the particles -->
+        <string id="jEEtBaKs" text="Куда прикрепить частицы"/>
+        <!-- The property to modify -->
+        <string id="Dx5HUb1Q" text="Свойство для изменения"/>
+        <!-- Add -->
+        <string id="Qu3sbJvR" text="Добавлять"/>
+        <!-- Add to the property value -->
+        <string id="anOigmfO" text="Добавить к стоимости недвижимости"/>
+        <!-- Multiply -->
+        <string id="AQ7g1RuJ" text="Умножить"/>
+        <!-- Multiply the property value -->
+        <string id="35zcHc2g" text="Умножьте стоимость недвижимости"/>
+        <!-- Name to use when referring to this effect -->
+        <string id="KdxwhYu6" text="Имя для использования при обращении к этому эффекту"/>
+        <!-- Target -->
+        <string id="hCfdaELu" text="Цель"/>
+        <!-- Target of the effect -->
+        <string id="5bWknsD5" text="Цель эффекта"/>
+        <!-- Target On Foot Only -->
+        <string id="wbj9ztiI" text="Только цель пешком"/>
+        <!-- Will target unmounted soldiers only -->
+        <string id="RptjkipN" text="Будут нацелены только на неконтируемых солдат."/>
+        <!-- Particle Effects -->
+        <string id="j7t8cjxA" text="Эффекты частиц"/>
+        <!-- Particle effects to apply -->
+        <string id="YiUto6gZ" text="Эффекты частиц для применения"/>
+        <!-- Properties -->
+        <string id="CN0a7XhW" text="Характеристики"/>
+        <!-- Properties to change, and how much by -->
+        <string id="JrmttiBW" text="Свойства, которые нужно изменить, и на сколько"/>
+        <!-- Heal Per Second -->
+        <string id="trYxwNFg" text="Лечение в секунду"/>
+        <!-- Heal amount per second -->
+        <string id="J19JbB4E" text="Количество исцеления в секунду"/>
+        <!-- Damage Per Second -->
+        <string id="6Ikuo9Yl" text="Урон в секунду"/>
+        <!-- Damage amount per second -->
+        <string id="cQBHZWwK" text="Сумма урона в секунду"/>
+        <!-- Duration -->
+        <string id="KxP51isR" text="Продолжительность"/>
+        <!-- Duration the effect will last for, if not specified the effect will last until the end of the mission -->
+        <string id="1pG6eydt" text="Продолжительность действия эффекта, если не указано иное, эффект будет длиться до конца миссии."/>
+        <!-- Force Drop Weapons -->
+        <string id="rFxwAzgd" text="Силовое падение оружия"/>
+        <!-- Force agent to drop weapons -->
+        <string id="ZW0x13Y8" text="Заставить агента бросить оружие"/>
+        <!-- Remove Armor -->
+        <string id="vZIAY076" text="Снять броню"/>
+        <!-- Remove all armor -->
+        <string id="4kiY7cUb" text="Снять всю броню"/>
+        <!-- Damage Multiplier -->
+        <string id="jJpRuWKR" text="Множитель урона"/>
+        <!-- Raw damage multiplier -->
+        <string id="FlfyDMlc" text="Множитель чистого урона"/>
+        <!-- Activate Particle Effect -->
+        <string id="qWGAG5l8" text="Активировать эффект частиц"/>
+        <!-- One shot vfx to apply when the effect is activated -->
+        <string id="6HT3lQbV" text="Однократный визуальный эффект для применения при активации эффекта"/>
+        <!-- Activate Sound -->
+        <string id="deboEOcD" text="Активировать звук"/>
+        <!-- Sound to play when effect is activated, see Sounds.txt for the full vanilla list -->
+        <string id="zZskrilN" text="Звук для воспроизведения, когда эффект активирован, см. Sounds.txt для полного ванильного списка"/>
+        <!-- Deactivate Particle Effect -->
+        <string id="FBH0P3a9" text="Деактивировать эффект частиц"/>
+        <!-- One shot vfx to apply when the effect is deactivated, see ParticleEffects.txt for the full vanilla list -->
+        <string id="u1eFzwLY" text="One shot vfx для применения, когда эффект деактивирован, см. ParticleEffects.txt для полного ванильного списка"/>
+        <!-- Deactivate Sound -->
+        <string id="zfSYXHms" text="Отключить звук"/>
+        <!-- Sound to play when effect is deactivated, see Sounds.txt for the full vanilla list -->
+        <string id="ziMmWmmY" text="Звук для воспроизведения, когда эффект отключен, см. Sounds.txt для полного ванильного списка"/>
+        
+        <!-- SendMessage -->
+        <!-- Send Message -->
+        <string id="rXQWpj95" text="Отправить сообщение"/>
+        <!-- Allows viewers to send a message that will appear in game -->
+        <string id="htpylYKb" text="Позволяет зрителям отправлять сообщения, которые появятся в игре."/>
+        <!-- Alert Sound -->
+        <string id="Anvcnpbh" text="Звуковой сигнал"/>
+        <!-- Alert sound to play for the message -->
+        <string id="V36Hg85n" text="Звуковой сигнал для воспроизведения сообщения"/>
+        <!-- No message provided! -->
+        <string id="cA8NQlDm" text="Сообщение не предоставлено!"/>
+        <!-- Sent -->
+        <string id="tFHfVCDK" text="Отправлено"/>
+        
+        <!-- GlobalEffectsConfig -->
+        <!-- Effects Config -->
+        <string id="cBeIA9V1" text="Конфигурация эффектов"/>
+        <!-- Disable Effects In Tournaments -->
+        <string id="cUN7xx0t" text="Отключить эффекты в турнирах"/>
+        <!-- Whether effects are disabled in a tournament -->
+        <string id="X0AtIvbh" text="Отключены ли эффекты в турнире"/>
+    </strings>
+</base>

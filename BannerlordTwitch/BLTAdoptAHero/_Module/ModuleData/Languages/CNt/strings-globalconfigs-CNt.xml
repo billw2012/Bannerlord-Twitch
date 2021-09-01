@@ -1,0 +1,351 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="繁體中文"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- GlobalCommonConfig -->
+        <!-- Common Config -->
+        <string id="vDjnDtoL" text="通用配置"/>
+        <!-- Sub Boost -->
+        <string id="xwcKN7sH" text="副升壓"/>
+        <!-- Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently. -->
+        <string id="rX68wbfF" text="應用於訂閱者所有獎勵的乘數（小於或等於 1 表示沒有提升）。注意：這只是部分實現，它目前僅適用於機器人命令。"/>
+        <!-- Custom Reward Modifiers -->
+        <string id="O0LU5WBa" text="自定義獎勵修飾符"/>
+        <!-- The specification for custom item rewards, applies to tournament prize and achievement rewards -->
+        <string id="tp3YdGmo" text="自定義物品獎勵規範，適用於錦標賽獎勵和成就獎勵"/>
+        <!-- Start With Full Health -->
+        <string id="X8r0C5fx" text="從完全健康開始"/>
+        <!-- Whether the hero will always start with full health -->
+        <string id="HbNVrZuv" text="英雄是否總是以滿血開始"/>
+        <!-- Start Health Multiplier -->
+        <string id="fxZIKL65" text="啟動健康乘數"/>
+        <!-- Amount to multiply normal starting health by, to give heroes better staying power vs others -->
+        <string id="8yNIRS9S" text="將正常起始生命值乘以的數量，使英雄比其他人具有更好的持久力"/>
+        <!-- Start Retinue Health Multiplier -->
+        <string id="HvcTekVk" text="開始隨從健康乘數"/>
+        <!-- Amount to multiply normal retinue starting health by, to give retinue better staying power vs others -->
+        <string id="G6JJT2ot" text="乘以正常隨從的起始生命值，使隨從比其他人具有更好的持久力"/>
+        <!-- Morale Loss Factor -->
+        <string id="ZPmBe7XI" text="士氣損失係數"/>
+        <!-- Reduces morale loss when summoned heroes die -->
+        <string id="tpgJtS5q" text="被召喚的英雄死亡時減少士氣損失"/>
+        <!-- Retinue Use Heroes Formation -->
+        <string id="bXdC2trk" text="隨從英雄陣型"/>
+        <!-- Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations) -->
+        <string id="D8uDzXlV" text="被收養的英雄隨從是否應該在與英雄相同的陣型中生成（否則他們將進入默認陣型）"/>
+        <!-- Summon Cooldown In Seconds -->
+        <string id="OlJrCEyE" text="以秒為單位召喚冷卻"/>
+        <!-- Minimum time between summons for a specific hero -->
+        <string id="DeGB2BGZ" text="特定英雄召喚之間的最短時間"/>
+        <!-- Summon Cooldown Use Multiplier -->
+        <string id="f9HVD2cC" text="召喚冷卻使用倍數"/>
+        <!-- How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this. -->
+        <string id="4gZlfHzM" text="每次使用召喚時乘以多少冷卻時間。例如，如果召喚冷卻時間為 20 秒，並且 UseMultiplier 為 1.1（默認值），那麼第一次召喚的冷卻時間為 20 秒，接下來的 24 秒、第 10 次 52 秒和第 20 次 135 秒。請參閱 https://www.desmos.com/calculator/muej1o5eg5 以了解其可視化。"/>
+        <!-- Summon Cooldown Example -->
+        <string id="ViLoy0k3" text="召喚冷卻示例"/>
+        <!-- Shows the consecutive cooldowns (in seconds) for 10 summons -->
+        <string id="xZoSFrAb" text="顯示 10 次召喚的連續冷卻時間（以秒為單位）"/>
+        <!-- Allow Death -->
+        <string id="4sNJRQyw" text="允許死亡"/>
+        <!-- Whether an adopted hero is allowed to die -->
+        <string id="VbBUYOfc" text="收養的英雄是否允許死亡"/>
+        <!-- Final Death Chance Percent -->
+        <string id="ZEfAPyOm" text="最終死亡機率百分比"/>
+        <!-- Final death chance percent (includes vanilla chance) -->
+        <string id="xlt1pNuT" text="最終死亡機率百分比（包括香草機率）"/>
+        <!-- Apply Death Chance To All Heroes -->
+        <string id="sbc5Fp4o" text="對所有英雄應用死亡機率"/>
+        <!-- Whether to apply the Death Chance changes to all heroes, not just adopted ones -->
+        <string id="nbR7NLNz" text="是否將死亡機率更改應用於所有英雄，而不僅僅是採用的英雄"/>
+        <!-- Use Raw XP -->
+        <string id="lwU4dELT" text="使用原始經驗"/>
+        <!-- Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed.  -->
+        <string id="dICRr4BH" text="使用原始 XP 值而不是按焦點和屬性調整，也忽略技能上限。這可以避免在焦點和屬性分佈不均時角色卡住。"/>
+        <!-- Raw XP Skill Cap -->
+        <string id="S5FAna09" text="原始經驗技能上限"/>
+        <!-- Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap. -->
+        <string id="WUzqXuHN" text="使用 Raw XP 時的技能上限。技能不會超過這個值。 330 是香草 XP 技能上限。"/>
+        <!-- Gold Per Kill -->
+        <string id="94Ouh5It" text="每殺金幣"/>
+        <!-- Gold the hero gets for every kill -->
+        <string id="iSAMxZ8a" text="英雄每次擊殺都能獲得金幣"/>
+        <!-- XP Per Kill -->
+        <string id="DMGKBoJT" text="每次擊殺經驗"/>
+        <!-- XP the hero gets for every kill -->
+        <string id="kwW5pZT9" text="英雄每次擊殺都會獲得 XP"/>
+        <!-- XP Per Killed -->
+        <string id="a1zjEuUe" text="每殺死一個 XP"/>
+        <!-- XP the hero gets for being killed -->
+        <string id="bW8t2g5N" text="英雄因被殺而獲得的 XP"/>
+        <!-- Heal Per Kill -->
+        <string id="cRV9HDdf" text="每殺治愈"/>
+        <!-- HP the hero gets for every kill -->
+        <string id="7VWAZgfK" text="英雄每次擊殺獲得的 HP"/>
+        <!-- Retinue Gold Per Kill -->
+        <string id="lIhhHjih" text="每次擊殺獲得金幣"/>
+        <!-- Gold the hero gets for every kill their retinue gets -->
+        <string id="h93j0qw3" text="英雄每殺死他們的隨從獲得的金幣"/>
+        <!-- Retinue Heal Per Kill -->
+        <string id="KwlWrzDS" text="每次擊殺隨從治療"/>
+        <!-- HP the hero's retinue gets for every kill -->
+        <string id="Q3UVoHmt" text="每次擊殺英雄的隨從獲得的 HP"/>
+        <!-- Relative Level Scaling -->
+        <string id="wSzUkbNR" text="相對級別縮放"/>
+        <!-- How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health. -->
+        <string id="1LTDJZ7Y" text="根據兩個角色的相對等級，按比例增加擊殺獎勵多少。如果這是 0（或未設置），則獎勵始終與指定的一樣，如果高於 0，則如果被殺死的單位比英雄級別高，則獎勵增加，如果低於英雄，則獎勵減少。值 0.5（推薦），等級差異為 10 時，金幣、經驗值和生命值的獎勵大約是正常獎勵的 2.5 倍。"/>
+        <!-- Level Scaling Cap -->
+        <string id="BDk1G4nc" text="水平縮放上限"/>
+        <!-- Caps the maximum multiplier for the level difference, defaults to 5 if not specified -->
+        <string id="Vod0pJEN" text="限制電平差的最大乘數，如果未指定，則默認為 5"/>
+
+        <!-- Win Gold -->
+        <string id="IQTT5vYE" text="贏得金牌"/>
+        <!-- Lose Gold -->
+        <string id="lfCWK7aA" text="失去黃金"/>
+        <!-- Win XP -->
+        <string id="h8I3PWkV" text="贏XP"/>
+        <!-- Lose XP -->
+        <string id="Vobr36Bl" text="失去經驗"/>
+        
+        <!-- Gold won if the heroes side wins -->
+        <string id="pc3G0W39" text="如果英雄方獲勝，則獲得金牌"/>
+        <!-- XP the hero gets if the heroes side wins -->
+        <string id="F7Tw4D07" text="如果英雄一方獲勝，英雄獲得的 XP"/>
+        <!-- Gold lost if the heroes side loses -->
+        <string id="E209XRml" text="英雄方輸掉金幣"/>
+        <!-- XP the hero gets if the heroes side loses -->
+        <string id="itAfYdmO" text="如果英雄方輸了英雄獲得的XP"/>
+        <!-- Difficulty Scaling On Players Side -->
+        <string id="ihB1KMOY" text="玩家方面的困難擴展"/>
+        <!-- Apply difficulty scaling to players side -->
+        <string id="Bt1PS0aC" text="將難度縮放應用於玩家方面"/>
+        <!-- Difficulty Scaling On Enemy Side -->
+        <string id="nym7EtAd" text="敵方難以擴展"/>
+        <!-- Apply difficulty scaling to enemy side -->
+        <string id="U0hZef9L" text="對敵方應用難度縮放"/>
+        <!-- Difficulty Scaling -->
+        <string id="CaVuq5tE" text="難度縮放"/>
+        <!-- End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1) -->
+        <string id="IhhfIQ74" text="結束獎勵難度縮放：決定更高難度的戰鬥增加上述獎勵的程度（0到1）"/>
+        <!-- Difficulty Scaling Min -->
+        <string id="891WqOrJ" text="難度最小化"/>
+        <!-- Min difficulty scaling multiplier -->
+        <string id="FPXz7lBi" text="最小難度縮放乘數"/>
+        <!-- Difficulty Scaling Max -->
+        <string id="Wsho5Yns" text="難度縮放最大值"/>
+        <!-- Max difficulty scaling multiplier -->
+        <string id="ZW7O1JTv" text="最大難度縮放倍數"/>
+        <!-- Kill Streaks -->
+        <string id="3DZYc6hN" text="連續殺戮"/>
+        <!-- Show Kill Streak Popup -->
+        <string id="wQ7lXgLA" text="顯示連續殺戮彈出窗口"/>
+        <!-- Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled. -->
+        <string id="wDW3143d" text="是否使用彈出橫幅來宣布連續殺戮。如果禁用，將僅在覆蓋層中打印。"/>
+        <!-- Kill Streak Popup Alert Sound -->
+        <string id="rhwujKvf" text="Kill Streak 彈出提示音"/>
+        <!-- Sound to play when killstreak popup is disabled. -->
+        <string id="1GVV1fjY" text="禁用 killstreak 彈出窗口時播放的聲音。"/>
+        <!-- Reference Level Reward -->
+        <string id="dP9AoB9o" text="參考等級獎勵"/>
+        <!-- The level at which the rewards normalize and start to reduce (if relative level scaling is enabled). -->
+        <string id="y7AZjeSK" text="獎勵正常化並開始減少的級別（如果啟用了相對級別縮放）。"/>
+        <!-- Achievements -->
+        <string id="zTLei6dQ" text="成就"/>
+        <!-- Shouts -->
+        <string id="HkD6326j" text="吶喊"/>
+        <!-- Custom shouts -->
+        <string id="ufqtH5QV" text="自定義喊叫"/>
+        <!-- Include Default Shouts -->
+        <string id="wehigXCC" text="包括默認喊叫"/>
+        <!-- Whether to include default shouts -->
+        <string id="m6Vv2LBt" text="是否包含默認喊話"/>
+        <!-- Common Config -->
+        <string id="F6vM1OJo" text="通用配置"/>
+        
+        <!-- GlobalHeroClassConfig -->
+        <!-- Class Config -->
+        <string id="3rL4RHje" text="類配置"/>
+        <!-- Class Definitions -->
+        <string id="462kHfn2" text="類定義"/>
+        <!-- Defined classes -->
+        <string id="NFjlVt57" text="定義類"/>
+        <!-- Class Level Requirements -->
+        <string id="Q0yTbTCT" text="班級要求"/>
+        <!-- Requirements for class levels -->
+        <string id="y8LLccGK" text="班級要求"/>
+        <!-- Classes -->
+        <string id="E0CBnj57" text="班級"/>
+        <!-- (no requirements) -->
+        <string id="7WLbMjpz" text="（無要求）"/>
+        
+        <!-- GlobalHeroPowerConfig -->
+        <!-- Power Config -->
+        <string id="v75UOuDM" text="電源配置"/>
+        <!-- Power Defs -->
+        <string id="9vUtdRu2" text="電源定義"/>
+        <!-- Defined powers -->
+        <string id="ymGZUjoU" text="確定的權力"/>
+        <!-- Disable Powers In Tournaments -->
+        <string id="5CD7bmuC" text="在錦標賽中禁用權力"/>
+        <!-- Whether powers are disabled in a tournament -->
+        <string id="K7uKtO90" text="是否在比賽中禁用權力"/>
+        
+        <!-- GlobalTournamentConfig -->
+        <!-- Tournament Config -->
+        <string id="AkDCrLgg" text="比賽配置"/>
+        <!-- Equipment -->
+        <string id="i7ZDVTaw" text="設備"/>
+        <!-- Balancing -->
+        <string id="Zwh9GYUE" text="平衡"/>
+        <!-- Round Type -->
+        <string id="KOIu6Q7d" text="圓形"/>
+        <!-- Start Health Multiplier -->
+        <string id="P1ZCMZbp" text="啟動健康乘數"/>
+        <!-- Disable Kill Rewards In Tournament -->
+        <string id="x3wiU1LY" text="在錦標賽中禁用擊殺獎勵"/>
+        <!-- Disable Tracking Kills Tournament -->
+        <string id="ksB1FmZV" text="禁用追踪擊殺錦標賽"/>
+        <!-- No Horses -->
+        <string id="bBipANlh" text="沒有馬"/>
+        <!-- No Spears -->
+        <string id="CYVy4Hhx" text="沒有長矛"/>
+        <!-- Normalize Armor -->
+        <string id="Ed55OyZ5" text="使護甲正常化"/>
+        <!-- Normalize Armor Tier -->
+        <string id="xHJbcOaV" text="標準化護甲等級"/>
+        <!-- Randomize Weapon Types -->
+        <string id="5Y08IsDl" text="隨機化武器類型"/>
+        <!-- Previous Winner Debuffs -->
+        <string id="UCAbZYqU" text="以前的獲勝者減益"/>
+        <!-- Vanilla -->
+        <string id="WUQRg4yA" text="香草"/>
+        <!-- 1 Match 4 Teams -->
+        <string id="ErBd0iuP" text="1 場比賽 4 隊"/>
+        <!-- 1 Match 2 Teams -->
+        <string id="uuBzCFgM" text="1 賽 2 隊"/>
+        <!-- 2 Matches 2 Teams -->
+        <string id="SsArdTT9" text="2 場比賽 2 隊"/>
+        <!-- 2 Matches 4 Teams -->
+        <string id="qb1yo7DZ" text="2 場比賽 4 隊"/>
+        <!-- 4 Matches 2 Teams -->
+        <string id="WAzvdvAJ" text="4 場比賽 2 隊"/>
+        <!-- 4 Matches 4 Teams -->
+        <string id="sMCb8Xeu" text="4 場比賽 4 隊"/>
+        <!-- 8 Matches 2 Teams -->
+        <string id="URNM9UqS" text="8 場比賽 2 隊"/>
+        <!-- Round 1 Type -->
+        <string id="eivyBgAa" text="第一輪類型"/>
+        <!-- Round 2 Type -->
+        <string id="pefX6BdQ" text="第 2 輪類型"/>
+        <!-- Round 3 Type -->
+        <string id="GpV7pKPY" text="第 3 輪類型"/>
+        <!-- Round 1 Rewards -->
+        <string id="VeSh8k7c" text="第一輪獎勵"/>
+        <!-- Round 2 Rewards -->
+        <string id="gQ9YX7my" text="第二輪獎勵"/>
+        <!-- Round 3 Rewards -->
+        <string id="17pTC7NS" text="第三輪獎勵"/>
+        <!-- Round 4 Rewards -->
+        <string id="pxMWYe5J" text="第四輪獎勵"/>
+        <!-- Participate XP -->
+        <string id="5vMTYqdu" text="參與經驗"/>
+        <!-- Prize -->
+        <string id="Xu2KD7Kc" text="獎"/>
+        <!-- Enable Betting -->
+        <string id="rne7aMUR" text="啟用投注"/>
+        <!-- Betting On Final Only -->
+        <string id="njh9b5GB" text="只投注決賽"/>
+        <!-- Skill Reduction Percent Per Win -->
+        <string id="5a40vmYi" text="每次勝利的技能減少百分比"/>
+        <!-- Floor Percent -->
+        <string id="hMB4oFmk" text="樓層百分比"/>
+        <!-- Example -->
+        <string id="L7AKFlpb" text="例子"/>
+        <!-- Amount to multiply normal starting health by -->
+        <string id="n6Bc5M3s" text="將正常起始生命值乘以"/>
+        <!-- Heroes won't get any kill rewards in tournaments -->
+        <string id="j63d8DuH" text="英雄在錦標賽中不會獲得任何擊殺獎勵"/>
+        <!-- Tournament kills / deaths won't be counted towards achievements or kill streaks -->
+        <string id="o5aH9rTO" text="錦標賽擊殺/死亡不計入成就或連續擊殺"/>
+        <!-- Remove horses completely from the BLT tournaments (the horse AI is terrible) -->
+        <string id="sJ68yZs1" text="從 BLT 錦標賽中完全移除馬匹（馬匹 AI 很糟糕）"/>
+        <!-- Replaces all lances and spears with swords, because lance and spear combat is terrible -->
+        <string id="BjMC8Htn" text="用劍代替所有的長矛和長矛，因為長矛和長矛的戰鬥很可怕"/>
+        <!-- Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below) -->
+        <string id="kYFdZ8Yx" text="如果可能，根據文化將所有裝甲替換為固定層裝甲（由下面的標準化裝甲層指定）"/>
+        <!-- Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled -->
+        <string id="HnqCyrDD" text="如果啟用了標準化護甲，則將所有參賽者設置為（1 到 6）的護甲等級"/>
+        <!-- Randomizes the weapons used in each round, weighted based on the classes of the participants -->
+        <string id="oSCPOoqi" text="隨機分配每輪使用的武器，根據參與者的類別加權"/>
+        <!-- Applies skill debuffs to previous tournament winners -->
+        <string id="FrloGGew" text="對之前的錦標賽獲勝者應用技能減益"/>
+        <!-- Allow the vanilla round setup -->
+        <string id="nfYBftnO" text="允許香草圓形設置"/>
+        <!-- Allow 1 match with 2 teams of 2 -->
+        <string id="t9yLB8gB" text="允許 2 支球隊進行 1 場比賽"/>
+        <!-- Allow 1 match with 2 teams of 4 -->
+        <string id="5hLSHeuv" text="允許 2 隊 4 人進行 1 場比賽"/>
+        <!-- Allow 1 match with 4 teams of 1 -->
+        <string id="YfOnzOH6" text="允許 4 隊 1 隊進行 1 場比賽"/>
+        <!-- Allow 1 match with 4 teams of 2 -->
+        <string id="CLbRKpZp" text="允許 4 隊 2 人進行 1 場比賽"/>
+        <!-- Allow 1 match with 4 teams of 4 -->
+        <string id="5E1lXDYh" text="允許 4 隊 4 人進行 1 場比賽"/>
+        <!-- Allow 2 matches with 2 teams of 1 -->
+        <string id="OrZaS458" text="允許 2 支球隊 1 人進行 2 場比賽"/>
+        <!-- Allow 2 matches with 2 teams of 2 -->
+        <string id="Dr1Js5fB" text="允許 2 支球隊進行 2 場比賽，每隊 2 人"/>
+        <!-- Allow 2 matches with 2 teams of 4 -->
+        <string id="jEghMKUV" text="允許與 2 支 4 人的球隊進行 2 場比賽"/>
+        <!-- Allow 2 matches with 4 teams of 1 -->
+        <string id="nmMzoqeC" text="允許 4 隊 1 隊進行 2 場比賽"/>
+        <!-- Allow 2 matches with 4 teams of 2 -->
+        <string id="f8rXSGwN" text="允許 4 隊 2 人進行 2 場比賽"/>
+        <!-- Allow 4 matches with 2 teams of 2 -->
+        <string id="GPCYzshA" text="允許 2 支球隊進行 4 場比賽"/>
+        <!-- Allow 4 matches with 4 teams of 1 -->
+        <string id="MjsTFwUv" text="允許 4 支球隊進行 4 場比賽，每支球隊為 1"/>
+        <!-- Allow 4 matches with 2 teams of 1 -->
+        <string id="xMaA76xu" text="允許 2 支球隊進行 4 場比賽，每支球隊為 1"/>
+        <!-- Allow 8 matches with 2 teams of 1 -->
+        <string id="otwzXPTQ" text="允許 2 支球隊進行 8 場比賽，每支球隊為 1"/>
+        <!-- Gold won if the hero wins their match in the round -->
+        <string id="i7Ns7K2i" text="如果英雄在回合中贏得比賽，則贏得金牌"/>
+        <!-- XP given if the hero wins their match in the round -->
+        <string id="b0MeEmOS" text="如果英雄在回合中贏得比賽，則給予 XP"/>
+        <!-- XP given if the hero loses their match in a round -->
+        <string id="Oq7LMvoF" text="如果英雄在一輪中輸掉比賽，則給予 XP"/>
+        <!-- Gold won if the hero wins the tournaments -->
+        <string id="F8g49VCy" text="如果英雄贏得比賽，則贏得金牌"/>
+        <!-- XP given if the hero wins the tournaments -->
+        <string id="3BudXy0O" text="如果英雄贏得比賽，則給予 XP"/>
+        <!-- XP given if the hero participates in a tournament but doesn't win -->
+        <string id="TXqjPXh7" text="如果英雄參加錦標賽但沒有獲勝，則給予 XP"/>
+        <!-- Winners prize -->
+        <string id="wYzmyUCE" text="優勝者獎"/>
+        <!-- Enable betting -->
+        <string id="FOQEPZD5" text="啟用投注"/>
+        <!-- Only allow betting on the final betting -->
+        <string id="KGcz71VJ" text="只允許對最終投注進行投注"/>
+        <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
+        <string id="twgHWqU6" text="技能或技能組修改（組內所有技能都會修改）"/>
+        <!-- Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified. -->
+        <string id="zoMHI9O3" text="每次勝利的技能減少（百分比）。請參閱 https://www.desmos.com/calculator/ajydvitcer 以查看技能將如何修改的可視化。"/>
+        <!-- The lower limit (in %) that the skill(s) can be reduced to. -->
+        <string id="HebJIfaE" text="技能可以降低到的下限（以 % 為單位）。"/>
+        <!-- Shows the % reduction of the skill over 20 tournaments -->
+        <string id="vgXMv8oH" text="顯示技能在 20 場比賽中的減少百分比"/>
+        <!-- Prize {ITEMNAME} -->
+        <string id="hCNpHVJY" text="獎品{ITEMNAME}"/>
+        <!-- Round Rewards -->
+        <string id="g0A4pXY2" text="回合獎勵"/>
+        <!-- Rewards -->
+        <string id="FHkvQbcR" text="獎勵"/>
+        <!-- Betting -->
+        <string id="n1Agm9uJ" text="投注"/>
+    </strings>
+</base>

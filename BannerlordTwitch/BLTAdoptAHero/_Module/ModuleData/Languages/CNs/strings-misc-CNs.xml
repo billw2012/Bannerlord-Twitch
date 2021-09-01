@@ -1,0 +1,434 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="简体中文"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- AchievementDef -->
+        <!-- Achievement Definition -->
+        <string id="CEZZzIAq" text="成就定义"/>
+        
+        <!-- Requirements -->
+        <string id="TFbiD0CZ" text="要求"/>
+        <!-- Reward -->
+        <string id="sHWjkhId" text="报酬"/>
+        
+        <!-- New Achievement -->
+        <string id="nLaRVBVV" text="新成就"/>
+
+        <!-- Notification Text -->
+        <string id="guJFFskH" text="通知文本"/>
+        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement. -->
+        <string id="SwIUyQNw" text="当获得成就和玩家列出他们的成就时将显示的文本。占位符：{viewer} for the viewers name, and {name} 表示成就的名称。"/>
+        
+        <!-- Requirements -->
+        <string id="TfwiBMGr" text="要求"/>
+
+        <!-- Gold Gain -->
+        <string id="NitYwoHr" text="黄金收益"/>
+        <!-- Gold awarded for gaining this achievement. -->
+        <string id="l0xBVhOe" text="获得此成就可获得金奖。"/>
+        
+        <!-- XP Gain -->
+        <string id="JShqb5Be" text="经验增益"/>
+        <!-- Experience awarded for gaining this achievement. -->
+        <string id="tx7YV26l" text="获得此成就所获得的经验。"/>
+        
+        <!-- Give Item Reward -->
+        <string id="OmwtPK7J" text="给予物品奖励"/>
+        <!-- Whether to give a custom item as reward (defined below) -->
+        <string id="vTb0ysRw" text="是否给予自定义物品作为奖励（定义如下）"/>
+        
+        <!-- Item Reward -->
+        <string id="ZJikxJYo" text="物品奖励"/>
+        <!-- Specifications of the custom item reward, if enabled -->
+        <string id="B4gODHog" text="自定义物品奖励的规格（如果启用）"/>
+        
+        <!-- AchievementStatsData.Statistic -->
+        <!-- Total Kills -->
+        <string id="5RXxYH32" text="总击杀数"/>
+        <!-- Total Hero Kills -->
+        <string id="FqBQumbv" text="英雄总击杀数"/>
+        <!-- Total Viewer Kills -->
+        <string id="WMYfysby" text="总观众杀死"/>
+        <!-- Total Streamer Kills -->
+        <string id="qPjwIfaF" text="总流光杀死"/>
+        <!-- Total Mount Kills -->
+        <string id="ZTI6irGZ" text="坐骑总数"/>
+        <!-- Total Deaths -->
+        <string id="6IHF7HQb" text="总死亡人数"/>
+        <!-- Total Hero Deaths -->
+        <string id="UHvCzzit" text="英雄死亡总数"/>
+        <!-- Total Viewer Deaths -->
+        <string id="mhcnLFBv" text="观众死亡总数"/>
+        <!-- Total Streamer Deaths -->
+        <string id="rKVsbROz" text="主播死亡总数"/>
+        <!-- Total Mount Deaths -->
+        <string id="6N8KiovH" text="坐骑死亡总数"/>
+        <!-- Summons -->
+        <string id="YDiK48rp" text="传票"/>
+        <!-- Attacks -->
+        <string id="facIgBFe" text="攻击"/>
+        <!-- Battles -->
+        <string id="yTIq9zWS" text="战斗"/>
+        <!-- Consecutive Summons -->
+        <string id="VwyXMINi" text="连续传票"/>
+        <!-- Consecutive Attacks -->
+        <string id="Ju3c6Iz4" text="连续攻击"/>
+        <!-- TotalTournament Round Wins -->
+        <string id="dRD94FMl" text="总锦标赛胜场数"/>
+        <!-- TotalTournament Round Losses -->
+        <string id="GPMB5BPI" text="比赛总输球数"/>
+        <!-- TotalTournament Final Wins -->
+        <string id="WdZWU9GV" text="总锦标赛决赛胜利"/>
+        
+        <!-- ClassLevelRequirement -->
+        <!-- Class Level Requirement -->
+        <string id="XLXBwBEj" text="班级要求"/>
+        <!-- Min Level -->
+        <string id="s4N0bhG1" text="最低级别"/>
+        <!-- Minimum class level allowed -->
+        <string id="phf8JXQC" text="允许的最低等级"/>
+        <!-- Max Level -->
+        <string id="BT59iHQ5" text="最高等级"/>
+        <!-- Maximum class level allowed -->
+        <string id="lk60ZYwc" text="允许的最高等级"/>
+        <!-- AT LEAST {MinLevel} -->
+        <string id="j3QY6MkC" text="至少 {MinLevel}"/>
+        <!-- {MinLevel} TO {MaxLevel} -->
+        <string id="puNSSMYD" text="{MinLevel} TO {MaxLevel}"/>
+        <!-- CLASS LEVEL {Description} -->
+        <string id="boWoZsH4" text="班级{Description}"/>
+        
+        <!-- StatisticClassSpecificRequirement -->
+        <!-- Statistic Class Specific Requirement -->
+        <string id="ziuB7eSV" text="统计类特定要求"/>
+        <!-- Current Class -->
+        <string id="WwKyvotH" text="当前班级"/>
+        <!-- Requirement uses current class, useful for class power unlocks so you don't have to specify the class explicitly -->
+        <string id="S9kGgf0r" text="Requirement 使用当前类，对类功率解锁很有用，因此您不必明确指定类"/>
+        <!-- Required Class -->
+        <string id="5QwSEOc3" text="必修课"/>
+        <!-- Class required to get this achievement. If (none) is specified then the achievement will apply ONLY when the hero doesn't have a class set. -->
+        <string id="G34P8lCu" text="获得此成就所需的课程。如果指定了 (none)，那么只有当英雄没有设置职业时，成就才会应用。"/>
+        <!-- class -->
+        <string id="j3YG9dCh" text="班级"/>
+        <!-- (current) -->
+        <string id="RXXuHIdN" text="（当前的）"/>
+        <!-- (none) -->
+        <string id="dPEnuHsk" text="（没有任何）"/>
+        
+        <!-- StatisticRequirement -->
+        <!-- Statistic Requirement -->
+        <string id="CkgaxlDY" text="统计要求"/>
+        <!-- Statistic -->
+        <string id="ienuHzOP" text="统计"/>
+        <!-- The statistic this achievement relates to. -->
+        <string id="OKuz3zwY" text="与此成就相关的统计数据。"/>
+        <!-- Comparison -->
+        <string id="dXBsEW65" text="比较"/>
+        <!-- Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills. -->
+        <string id="4yoAe9WV" text="hero 是否需要多于或少于指定的值。例如，您可以要求英雄的死亡数少于 10 次，而击杀数超过 100 次。"/>
+        <!-- Value -->
+        <string id="a8Josr4g" text="价值"/>
+        <!-- Value needed to obtain the achievement. -->
+        <string id="B9LEjEq8" text="获得成就所需的价值。"/>
+        <!-- Other Statistic -->
+        <string id="nau8vg7o" text="其他统计"/>
+        <!-- Other statistic to compare against (this overrides Value if specified). -->
+        <string id="A3EKQ7up" text="其他要比较的统计数据（如果指定，这将覆盖 Value）。"/>
+        
+        <!-- HeroClassDef -->
+        <!-- Class Definition -->
+        <string id="ph50k2xB" text="类定义"/>
+        <!-- Class Definition -->
+        <string id="iqYaiOhP" text="类定义"/>
+        <!-- Whether this class is enabled for use in the game or not -->
+        <string id="XkL6MNLl" text="是否启用该类在游戏中使用"/>
+        <!-- Name of the class that shall be passed to SetHeroClass actions -->
+        <string id="U9PyN7eb" text="应传递给 SetHeroClass 操作的类的名称"/>
+        <!-- Description -->
+        <string id="rZRKLuGI" text="描述"/>
+        <!-- Description of the class (used in documentation) -->
+        <string id="yRN3Jfwv" text="类的描述（在文档中使用）"/>
+        <!-- Formation -->
+        <string id="zy3uK94p" text="编队"/>
+        <!-- Which formation to add summoned units to -->
+        <string id="1kEMFWLD" text="将召唤单位加入哪个阵型"/>
+        <!-- Slot 1 -->
+        <string id="48tkMBhb" text="插槽 1"/>
+        <!-- Item type to put in slot 1 -->
+        <string id="kpDE6URE" text="要放入插槽 1 的物品类型"/>
+        <!-- Slot 2 -->
+        <string id="vXtJLZlw" text="插槽 2"/>
+        <!-- Item type to put in slot 2 -->
+        <string id="G5AN3s2D" text="要放入插槽 2 的物品类型"/>
+        <!-- Slot 3 -->
+        <string id="B4LLuesN" text="插槽 3"/>
+        <!-- Item type to put in slot 3 -->
+        <string id="clxxPb9O" text="要放入插槽 3 的物品类型"/>
+        <!-- Slot 4 -->
+        <string id="h9PK7GnU" text="插槽 4"/>
+        <!-- Item type to put in slot 4 -->
+        <string id="EUzbiqh5" text="要放入插槽 4 的物品类型"/>
+        <!-- Use Horse -->
+        <string id="MdYmGuin" text="使用马"/>
+        <!-- Whether to allow horse (can be combined with Use Camel) -->
+        <string id="Q00NX1J9" text="是否允许骑马（可与Use Camel结合使用）"/>
+        <!-- Use Camel -->
+        <string id="1YsQ2fC3" text="使用骆驼"/>
+        <!-- Whether to allow camel (can be combined with Use Horse -->
+        <string id="Us7G1v2T" text="是否允许骆驼（可以结合Use Horse"/>
+        <!-- Passive Power -->
+        <string id="MvddFKo4" text="被动电源"/>
+        <!-- Passive hero power: this will always apply to the hero (i.e. a permanent buff) -->
+        <string id="F8a2nXYo" text="被动英雄力量：这将始终适用于英雄（即永久增益）"/>
+        <!-- Active Power -->
+        <string id="wdCMNOGd" text="有功功率"/>
+        <!-- Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff) -->
+        <string id="I4ASwveG" text="主动英雄能力：只有当观看者使用 UseHeroPower 动作时才会触发此能力，通过奖励或命令（即临时 buff）"/>
+        
+        <!-- Horse -->
+        <string id="YzIcRgBV" text="马"/>
+        <!-- Camel -->
+        <string id="HMclWXR8" text="骆驼"/>
+        <!-- Use Horse -->
+        <string id="A1G6bq0G" text="使用马"/>
+        <!-- Use Camel -->
+        <string id="FpgyZk0F" text="使用骆驼"/>
+        <!-- (none) -->
+        <string id="GFc6JLJ9" text="（没有任何）"/>
+        <!-- Details -->
+        <string id="A79HrgZ0" text="细节"/>
+        <!-- Tier {TierNumber} -->
+        <string id="Rs1XNM9K" text="{TierNumber} 级"/>
+        <!-- Equipment -->
+        <string id="HyXJQJtW" text="设备"/>
+
+        <!-- Mount -->
+        <string id="iGdq37PI" text="山"/>
+        
+        <!-- KillStreakDef -->
+        <!-- Kill Streak -->
+        <string id="InTnlqz1" text="连杀"/>
+        <!-- Show Notification -->
+        <string id="poe8m8rn" text="显示通知"/>
+        <!-- Notification Text -->
+        <string id="RQh3jIZW" text="通知文本"/>
+        <!-- Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required. -->
+        <string id="04wTH1xo" text="实现连续杀戮时显示的文本。占位符：{viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} 表示需要的杀戮。"/>
+        <!-- Kills Required -->
+        <string id="mG7HzT0z" text="需要击杀"/>
+        <!-- Kills required to achieve the kill streak. -->
+        <string id="mLElTwb6" text="达到连续杀戮所需的杀戮次数。"/>
+        <!-- Gold Reward -->
+        <string id="zEqJgISl" text="金奖"/>
+        <!-- Gold rewarded when the kill streak is achieved. -->
+        <string id="CYg79sAT" text="实现连续杀戮时获得金币奖励。"/>
+        <!-- XP Reward -->
+        <string id="vzCgh9PN" text="经验奖励"/>
+        <!-- Experience granted when the kill streak is achieved. -->
+        <string id="Q1TcztBP" text="实现连续杀戮时授予经验。"/>
+        <!-- New Kill Streak -->
+        <string id="KtvBk2nR" text="新连杀"/>
+        <!-- {viewer} got {name} ({kills} kills) -->
+        <string id="ipowOInD" text="{viewer} got {name} ({kills} 杀）"/>
+        <!-- {KillsRequired} kills -->
+        <string id="YZJ60Pxb" text="{KillsRequired} 杀"/>
+
+        <!-- SummonHero.FormationItemSource -->
+        <!-- Infantry -->
+        <string id="7gt8mcJc" text="步兵"/>
+        <!-- Ranged -->
+        <string id="kDo9EtMh" text="远程"/>
+        <!-- Cavalry -->
+        <string id="HcfkYEsF" text="骑兵"/>
+        <!-- Horse Archer -->
+        <string id="Xx9xP7jK" text="弓箭手"/>
+        <!-- Skirmisher -->
+        <string id="PpZY6dPX" text="前卫"/>
+        <!-- Heavy Infantry -->
+        <string id="VT6VYeVp" text="重步兵"/>
+        <!-- Light Cavalry -->
+        <string id="t5iTNQ5p" text="轻骑兵"/>
+        <!-- Heavy Cavalry -->
+        <string id="vyVSsiBr" text="重骑兵"/>
+        
+        <!-- SkillRangeDef -->
+        <!-- Skill Range -->
+        <string id="uUWdyER4" text="技能范围"/>
+        
+        <!-- The skill or skill group -->
+        <string id="WcQpCpdI" text="技能或技能组"/>
+        <!-- The min level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023) -->
+        <string id="fozHOKis" text="应该是的最小级别（实际值将在最小和最大之间随机选择，有效值为 0 到 1023）"/>
+        <!-- The max level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023) -->
+        <string id="I6hTb2OY" text="应该是的最大级别（实际值将在最小和最大之间随机选择，有效值为 0 到 1023）"/>
+        
+        <!-- ClassLevelRequirementsDef -->
+        <!-- Class Level Requirements Definition -->
+        <string id="uZUsZLGm" text="班级要求定义"/>
+        <!-- ClassLevel -->
+        <string id="0raqv788" text="班级"/>
+        <!-- Class level -->
+        <string id="el4y84iD" text="班级"/>
+        <!-- Requirements -->
+        <string id="aMGoiH53" text="要求"/>
+        <!-- Requirements for this class level -->
+        <string id="G95DA4OM" text="本班级要求"/>
+
+        <!-- MissionInfo -->
+        <!-- Kills -->
+        <string id="AM2zlkem" text="杀戮"/>
+        <!-- +Retinue Kills -->
+        <string id="79JXI4JL" text="+随从击杀"/>
+        <!-- Gold -->
+        <string id="o0Q8Y1Qg" text="金子"/>
+        <!-- XP -->
+        <string id="VtEJiMWy" text="经验值"/>
+        
+        <!-- Tournament -->
+        <!-- Tournament -->
+        <string id="PI83uB8j" text="比赛"/>
+        <!-- Betting is OPEN -->
+        <string id="WPTU6AGn" text="投注已开"/>
+        <!-- Betting is CLOSED -->
+        <string id="PLRsZCjL" text="投注已关闭"/>
+        <!-- Not taking bets -->
+        <string id="Sv04YKsL" text="不下注"/>
+                
+        <!-- GeneratedRewardDef -->
+        <!-- Reward Type -->
+        <string id="x6pmNHJT" text="奖励类型"/>
+        <!-- Reward Tier -->
+        <string id="Mmd0UleC" text="奖励等级"/>
+        <!-- Custom Item -->
+        <string id="zVqTKyQG" text="自定义项目"/>
+        <!-- Weapon Weight -->
+        <string id="7yNTThry" text="武器重量"/>
+        <!-- Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo. -->
+        <string id="WTWuy57X" text="武器奖励的相对比例。这包括所有的单手、双手、远程和弹药。"/>
+        <!-- Armor Weight -->
+        <string id="Al3Px9lL" text="装甲重量"/>
+        <!-- Relative proportion of rewards that will be armor -->
+        <string id="WSXhTI0r" text="盔甲奖励的相对比例"/>
+        <!-- Mount Weight -->
+        <string id="S6t7iUki" text="安装重量"/>
+        <!-- Relative proportion of rewards that will be mounts -->
+        <string id="4L1hJS6v" text="坐骑奖励的相对比例"/>
+        <!-- Reward Type Chances -->
+        <string id="h4CEbGun" text="奖励类型机会"/>
+        <!-- The % chance for each item type -->
+        <string id="u9zCErHS" text="每种物品类型的概率百分比"/>
+        <!-- Tier 1 Weight -->
+        <string id="pqDOv12p" text="一级重量"/>
+        <!-- Relative proportion of rewards that will be Tier 1 -->
+        <string id="aAZvoxk9" text="将成为第 1 层的奖励的相对比例"/>
+        <!-- Tier 2 Weight -->
+        <string id="ZDgMrJHH" text="第 2 层重量"/>
+        <!-- Relative proportion of rewards that will be Tier 2 -->
+        <string id="rvjbuCH4" text="将成为第 2 层的奖励的相对比例"/>
+        <!-- Tier 3 Weight -->
+        <string id="8UhZyGRj" text="第 3 层重量"/>
+        <!-- Relative proportion of rewards that will be Tier 3 -->
+        <string id="CJwXH8cz" text="将成为第 3 层的奖励的相对比例"/>
+        <!-- Tier 4 Weight -->
+        <string id="v4wqC1mI" text="第 4 层权重"/>
+        <!-- Relative proportion of rewards that will be Tier 4 -->
+        <string id="NoKi0iIC" text="将成为第 4 层的奖励的相对比例"/>
+        <!-- Tier 5 Weight -->
+        <string id="vXimyLH7" text="第 5 层权重"/>
+        <!-- Relative proportion of rewards that will be Tier 5 -->
+        <string id="rsGLtLyB" text="将成为第 5 层的奖励的相对比例"/>
+        <!-- Tier 6 Weight -->
+        <string id="HWHFIsUH" text="第 6 层权重"/>
+        <!-- Relative proportion of rewards that will be Tier 6 -->
+        <string id="991D0fok" text="6级奖励的相对比例"/>
+        <!-- Custom Weight -->
+        <string id="R5TCrBo8" text="自定义重量"/>
+        <!-- Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below) -->
+        <string id="XL94fx52" text="自定义奖励的相对比例（第 6 层，根据下面的自定义奖励设置进行修改）"/>
+        <!-- Reward Tier Chances -->
+        <string id="zoBVNJBB" text="奖励等级机会"/>
+        <!-- The % chance for each reward tier -->
+        <string id="ANPeZyy0" text="每个奖励等级的机会百分比"/>
+        <!-- Custom Item Name -->
+        <string id="PBWEbYLT" text="自定义项目名称"/>
+        <!-- Name format for custom item, {ITEMNAME} is the placeholder for the base item name. -->
+        <string id="vqNeCCNy" text="自定义项的名称格式，{ITEMNAME} 是基本项名称的占位符。"/>
+        <!-- Custom Item Power -->
+        <string id="THpMPPhd" text="自定义物品功率"/>
+        <!-- Custom item power multiplier, applies on top of the global multiplier -->
+        <string id="anUzQaU7" text="自定义物品功率倍增器，应用于全局倍增器之上"/>
+        <!-- Weapon -->
+        <string id="hpJN9wNo" text="武器"/>
+        <!-- Armor -->
+        <string id="YQdQrFG7" text="盔甲"/>
+        <!-- Mount -->
+        <string id="HGZVsIjn" text="山"/>
+        <!-- Custom -->
+        <string id="LKgozyEk" text="风俗"/>
+        <!-- Tier {Tier} -->
+        <string id="JpB20FtS" text="{Tier} 级"/>
+        
+        <!-- RandomItemModifierDef -->
+        <!-- Power -->
+        <string id="1NLO6Gee" text="力量"/>
+        <!-- Custom prize power, a global multiplier for the values below -->
+        <string id="LXo3mTnr" text="自定义奖励能力，以下值的全局乘数"/>
+        <!-- Weapon Damage -->
+        <string id="g2DZKK7M" text="武器伤害"/>
+        <!-- Weapon damage modifier for custom weapon prize -->
+        <string id="R9lwIsrX" text="自定义武器奖的武器伤害修正"/>
+        <!-- Weapon Speed -->
+        <string id="7TgyXbNe" text="武器速度"/>
+        <!-- Speed modifier for custom weapon prize -->
+        <string id="1ZZDexjJ" text="自定义武器奖品的速度修改器"/>
+        <!-- Weapon Missile Speed -->
+        <string id="4zhm204e" text="武器导弹速度"/>
+        <!-- Missile speed modifier for custom weapon prize -->
+        <string id="gFO8L8CR" text="自定义武器奖的导弹速度修改器"/>
+        <!-- Ammo Damage -->
+        <string id="ny6l1USK" text="弹药伤害"/>
+        <!-- Ammo damage modifier for custom ammo prize -->
+        <string id="oTSCOXpf" text="自定义弹药奖的弹药伤害修正"/>
+        <!-- Arrow Stack -->
+        <string id="2ehIq5eD" text="箭头堆栈"/>
+        <!-- Arrow stack size modifier for custom arrow prize -->
+        <string id="inawRS8e" text="自定义箭头奖的箭头堆栈大小修改器"/>
+        <!-- Throwing Stack -->
+        <string id="JUXQcKMR" text="投掷堆栈"/>
+        <!-- Throwing stack size modifier for custom throwing prize -->
+        <string id="QAUf8zj0" text="用于自定义投掷奖品的投掷堆栈大小修饰符"/>
+        <!-- Armor -->
+        <string id="MrOZ69tP" text="盔甲"/>
+        <!-- Armor modifier for custom armor prize -->
+        <string id="1x2YSVSz" text="自定义盔甲奖的盔甲修改器"/>
+        <!-- Mount Maneuver -->
+        <string id="BYekTOq6" text="机动山"/>
+        <!-- Maneuver multiplier for custom mount prize -->
+        <string id="7cZ5JfEk" text="自定义坐骑奖励的机动乘数"/>
+        <!-- Mount Speed -->
+        <string id="6yURxqNY" text="装载速度"/>
+        <!-- Speed multiplier for custom mount prize -->
+        <string id="eJZxwZc1" text="自定义坐骑奖励的速度倍增器"/>
+        <!-- Mount Charge Damage -->
+        <string id="ZmiOntW1" text="坐骑冲锋伤害"/>
+        <!-- Charge damage multiplier for custom mount prize -->
+        <string id="MZm0DJcs" text="自定义坐骑奖励的充电伤害乘数"/>
+        <!-- Mount Hit Points -->
+        <string id="M8drveMF" text="坐骑生命值"/>
+        <!-- Hitpoints multiplier for custom mount prize -->
+        <string id="ewC5EV3Q" text="自定义坐骑奖励的生命值乘数"/>
+        
+        <!-- RewardHelpers -->
+        <!-- received {ItemName} -->
+        <string id="RczvXuxP" text="收到{ItemName}"/>
+        <!-- sold {ItemName} for {ItemValue}{GoldIcon} (not needed) -->
+        <string id="bNX0NiQ9" text="售出 {ItemName} for {ItemValue}{GoldIcon}（不需要）"/>
+        <!-- received {ItemName} (put in storage) -->
+        <string id="R7VwlLzg" text="收到 {ItemName}（放入存储）"/>
+    </strings>
+</base>

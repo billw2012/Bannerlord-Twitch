@@ -1,0 +1,805 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="繁體中文"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+                
+        <!-- AddGoldToHero -->
+        <!-- Add Gold To Hero -->
+        <string id="kn4uxAWs" text="為英雄加金"/>
+        <!-- Gives gold to the adopted hero -->
+        <string id="vkgPfcAu" text="給收養的英雄金幣"/>
+        
+        <!-- How much gold to give the adopted hero -->
+        <string id="S2CeRdjR" text="給收養的英雄多少金幣"/>
+        
+        <!-- AdoptAHero -->
+        <!-- Adopt A Hero -->
+        <string id="NkZXnSQI" text="領養英雄"/>
+        <!-- Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands -->
+        <string id="fd7G5N0Q" text="允許觀眾在遊戲中“採用”一個英雄 - 英雄名稱將更改為觀眾的名字，他們可以通過進一步的命令來控制它"/>
+
+        <!-- Create New -->
+        <string id="TLrDxhlh" text="創建新的"/>
+        <!-- Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern) -->
+        <string id="F1KDzuZZ" text="創建一個新英雄而不是採用現有的英雄（他們將成為一個隨機酒館的流浪者）"/>
+        <!-- Allow Noble -->
+        <string id="nPIcT2s7" text="允許貴族"/>
+        <!-- Allow noble heroes (if CreateNew is false) -->
+        <string id="XvZN7OOY" text="允許貴族英雄（如果 CreateNew 為 false）"/>
+        <!-- Allow Wanderer -->
+        <string id="VVFsa8LQ" text="允許流浪者"/>
+        <!-- Allow wanderer heroes (if CreateNew is false) -->
+        <string id="9lE2KSvC" text="允許流浪英雄（如果 CreateNew 為 false）"/>
+        <!-- Allow Player Companion -->
+        <string id="A8G9ctbn" text="允許玩家同伴"/>
+        <!-- Allow companions (not tested, if CreateNew is false) -->
+        <string id="6EjGRMkt" text="允許同伴（未測試，如果 CreateNew 為 false）"/>
+        <!-- Only Same Faction -->
+        <string id="B2z7T1xQ" text="只有同一派系"/>
+        <!-- Only allow heroes from same faction as player -->
+        <string id="QvQGwFyl" text="只允許與玩家來自同一陣營的英雄"/>
+        <!-- Inheritance -->
+        <string id="dvbkxJQz" text="遺產"/>
+        <!-- What fraction of assets will be inherited when a new character is adopted after an old one died (0 to 1) -->
+        <string id="KLJtpEjg" text="舊角色死後採用新角色時，將繼承多少資產（0到1）"/>
+        <!-- Maximum Inherited Custom Items -->
+        <string id="Bi19tTPj" text="最大繼承自定義項"/>
+        <!-- How many custom items can be inherited -->
+        <string id="tFolfAOn" text="可以繼承多少個自定義項"/>
+        <!-- Subscriber Only -->
+        <string id="O4DGlP9Z" text="僅限訂閱者"/>
+        <!-- Only subscribers can adopt -->
+        <string id="TBNkHsLC" text="只有訂閱者可以採用"/>
+        <!-- Minimum Subscribed Months -->
+        <string id="dO41CKIU" text="最少訂閱月數"/>
+        <!-- Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified -->
+        <string id="BVZwDqR0" text="只有訂閱了至少幾個月的觀眾才能採用，如果未指定則忽略"/>
+        <!-- Starting Gold -->
+        <string id="iOmYBC7I" text="起始金牌"/>
+        <!-- Gold the adopted hero will start with -->
+        <string id="pZMkJLix" text="被收養的英雄將從黃金開始"/>
+        <!-- Override Age -->
+        <string id="ZXwbvbbq" text="覆蓋年齡"/>
+        <!-- Override the heroes age -->
+        <string id="gxQgrAey" text="覆蓋英雄年齡"/>
+        <!-- Starting Age Range -->
+        <string id="NEBQgHiX" text="起始年齡範圍"/>
+        <!-- Random range of age when overriding it -->
+        <string id="TYqEBuLW" text="覆蓋時的隨機年齡範圍"/>
+        <!-- Starting Skills -->
+        <string id="9IOFHQjS" text="起步技巧"/>
+        <!-- Starting skills, if empty then default skills of the adopted hero will be left in tact -->
+        <string id="C4rV4f2F" text="初始技能，如果為空，則保留所採用英雄的默認技能"/>
+        <!-- Starting Equipment Tier -->
+        <string id="IAKQCRa1" text="起始裝備等級"/>
+        <!-- Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment -->
+        <string id="mQwjHXfC" text="被採用的英雄將開始的裝備等級，如果您不指定，則他們將獲得英雄現有裝備"/>
+        <!-- Starting Class -->
+        <string id="0vGFJdO1" text="開始班"/>
+        <!-- Starting class of the hero -->
+        <string id="zgjyFL6i" text="英雄的起始等級"/>
+        
+        
+        <!-- Subscriber Only -->
+        <string id="4zAUTiSP" text="僅限訂閱者"/>
+        <!-- Newly created wanderer -->
+        <string id="cJQCU33B" text="新創建的流浪者"/>
+        <!-- Noble -->
+        <string id="fP84ES0X" text="高貴"/>
+        <!-- Wanderer -->
+        <string id="ozRaAx6L" text="流浪者"/>
+        <!-- Companions -->
+        <string id="YucejFfO" text="同伴"/>
+        <!-- Allowed -->
+        <string id="UNtHwNhx" text="允許"/>
+        <!-- Same faction only -->
+        <string id="6W0OJKkA" text="僅同一派系"/>
+        <!-- Starting Age Range -->
+        <string id="pDP8b5HR" text="起始年齡範圍"/>
+        <!-- Starting Gold -->
+        <string id="FvhsCSd3" text="起始金牌"/>
+        <!-- Inheritance -->
+        <string id="wP0lfTf3" text="遺產"/>
+        <!-- {Inheritance}% of gold spent on equipment and retinue -->
+        <string id="mDK67efh" text="{Inheritance}% 的黃金用於裝備和隨從"/>
+        <!-- no custom items -->
+        <string id="76NtQIGB" text="沒有自定義項目"/>
+        <!-- up to {MaxInheritedCustomItems} custom items -->
+        <string id="sEDQrZCp" text="最多 {MaxInheritedCustomItems} 個自定義項目"/>
+        
+        <!-- You have already adopted a hero! -->
+        <string id="mJfD7e2g" text="你已經收養了一個英雄！"/>
+        <!-- You must be subscribed for at least {MinSubscribedMonths} months to adopt a hero with this command! -->
+        <string id="4K7Q7gR0" text="您必須訂閱至少 {MinSubscribedMonths} 個月才能使用此命令收養英雄！"/>
+        <!-- You must be subscribed to adopt a hero with this command! -->
+        <string id="0QeQPxYi" text="您必須訂閱才能使用此命令收養英雄！"/>
+        <!-- No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)! -->
+        <string id="XlQUIIsg" text="沒有可用的英雄：玩家不在派系中（禁用僅限玩家派系，或加入派系）！"/>
+        <!-- You can't adopt a hero: no available hero matching the requirements was found! -->
+        <string id="E7wqQ2kg" text="您不能採用英雄：找不到符合要求的可用英雄！"/>
+        <!-- {OldName} is now known as {NewName}! -->
+        <string id="K7nuJVCN" text="{OldName} is now known as {NewName}！"/>
+        <!-- {OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})! -->
+        <string id="PAc5S0GY" text="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited}）！"/>
+        <!-- {OldName} is now known as {NewName}, they have {NewGold}! -->
+        <string id="lANBKEFN" text="{OldName} is now known as {NewName}, they have {NewGold}！"/>
+        
+        <!-- AttributePoints -->
+        <!-- Add Attribute Points -->
+        <string id="TmUJ8VU7" text="添加屬性點"/>
+        <!-- Improve adopted heroes attribute points -->
+        <string id="YrYFBWaw" text="提升英雄屬性點數"/>
+        <!-- Random -->
+        <string id="ibuIZ39r" text="隨機的"/>
+        <!-- If set a random attribute is improved, otherwise the viewer should provide part of the name of the attribute to improve (this works best as a chat command) -->
+        <string id="2F4MZn5h" text="如果設置一個隨機屬性被改進，否則查看者應該提供該屬性的部分名稱來改進（這最適合作為聊天命令）"/>
+        <!-- Random attribute -->
+        <string id="JQdCfO2H" text="隨機屬性"/>
+        <!-- Provide the attribute name (or part of it) when calling this -->
+        <string id="hSPAbHWb" text="調用時提供屬性名稱（或其中的一部分）"/>
+        
+        <!-- Couldn't improve any attributes, they are all at max level! -->
+        <string id="VxproTE2" text="無法提升任何屬性，都是滿級！"/>
+        <!-- Provide the attribute name to improve (or part of it) -->
+        <string id="i9ziqTXG" text="提供要改進的屬性名稱（或部分）"/>
+        <!-- You have gained {Amount} points in {Attribute}, you now have {NewAmount}! -->
+        <string id="Sl1bdnfy" text="您已獲得 {Amount} points in {Attribute}, you now have {NewAmount}！"/>
+        <!-- You have gained a point in {Attribute}, you now have {NewAmount}! -->
+        <string id="2vli3BCR" text="您已在 {Attribute}, you now have {NewAmount} 獲得一分！"/>
+        <!--  -->
+        <string id="YawQBjBG" text=""/>
+        
+        <!-- Couldn't find attribute matching '{Args}'! -->
+        <string id="LE3POzUs" text="找不到與“{Args}”匹配的屬性！"/>
+        <!-- Couldn't improve {Attribute} attribute, it is already at max level! -->
+        <string id="R7X1dTqL" text="無法改進 {Attribute} 屬性，它已達到最高級別！"/>
+        
+        <!-- AuctionItem -->
+        <!-- Auction Item -->
+        <string id="Q1QZbwR3" text="拍賣品"/>
+        <!-- Allows viewers to auction custom items, for other viewers to bid on (make sure to add a bid command also) -->
+        <string id="024hOo3G" text="允許觀眾拍賣自定義物品，供其他觀眾出價（確保同時添加出價命令）"/>
+        <!-- Auction Item -->
+        <string id="34GjlaWu" text="拍賣品"/>
+        <!-- How long the auction should last before the highest bidder wins -->
+        <string id="zsvhQABf" text="在最高出價者獲勝之前拍賣應持續多長時間"/>
+        <!-- Auction Item -->
+        <string id="ssmJ9c5L" text="拍賣品"/>
+        <!-- Interval at which to output a reminder of the auction -->
+        <string id="ijkjWj5q" text="輸出拍賣提醒的時間間隔"/>
+        <!-- Another auction is already in progress -->
+        <string id="T2R35HHV" text="另一場拍賣正在進行中"/>
+        <!-- You have no items to auction -->
+        <string id="kYHEtOM7" text="您沒有要拍賣的物品"/>
+        <!-- (reserve price) (partial item name) -->
+        <string id="lI4WCNeQ" text="（保留價）（部分商品名稱）"/>
+        <!-- Invalid reserve price '{Arg}' -->
+        <string id="mm1ay4I7" text="無效的底價“{Arg}”"/>
+        <!-- No items found matching '{ItemName}' -->
+        <string id="viO1RBr5" text="找不到與“{ItemName}”匹配的項目"/>
+        <!-- {ItemCount} items found matching '{ItemName}', be more specific -->
+        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName}&amp;#39;，更具體"/>
+        
+        <!-- Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds. -->
+        <string id="BH5rnHNq" text="&amp;#39;{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} 秒的拍賣。"/>
+        <!-- Bid On Item -->
+        <string id="rBAvqAh7" text="投標項目"/>
+        <!-- Allows viewers bid on an active custom item auction (make sure to add an auction command also) -->
+        <string id="XuvGyCwD" text="允許觀眾對活動的自定義物品拍賣進行投標（確保同時添加拍賣命令）"/>
+        <!-- (bid amount) -->
+        <string id="ewjqhPqj" text="（投標金額）"/>
+        <!-- Invalid bid amount -->
+        <string id="dgG5WPrC" text="投標金額無效"/>
+        
+        <!-- EquipHero -->
+        <!-- Equip Hero -->
+        <string id="3zBXys4m" text="裝備英雄"/>
+        <!-- Improve adopted heroes equipment -->
+        <string id="3QfHyF8g" text="改進採用的英雄裝備"/>
+        <!-- Allow Companion Upgrade -->
+        <string id="TGs8URfN" text="允許同伴升級"/>
+        <!-- Allow improvement of adopted heroes who are also companions of the player. -->
+        <string id="6zMgeovT" text="允許改進也是玩家同伴的採用英雄。"/>
+        <!-- Cost Tier 1 -->
+        <string id="8qUzSxsQ" text="成本等級 1"/>
+        <!-- Gold cost for Tier 1 equipment -->
+        <string id="4ipwvHaR" text="一級裝備的金幣成本"/>
+        <!-- Cost Tier 2 -->
+        <string id="bjAzHOqD" text="成本等級 2"/>
+        <!-- Gold cost for Tier 2 equipment -->
+        <string id="3uRKzeJv" text="Tier 2 裝備的金幣成本"/>
+        <!-- Cost Tier 3 -->
+        <string id="EUw3jfcC" text="成本等級 3"/>
+        <!-- Gold cost for Tier 3 equipment -->
+        <string id="vRTR2AVO" text="Tier 3 裝備的金幣成本"/>
+        <!-- Cost Tier 4 -->
+        <string id="cvWxBhFl" text="成本等級 4"/>
+        <!-- Gold cost for Tier 4 equipment -->
+        <string id="LeCyJf6T" text="第 4 層設備的金幣成本"/>
+        <!-- Cost Tier 5 -->
+        <string id="Im4cXqCx" text="成本等級 5"/>
+        <!-- Gold cost for Tier 5 equipment -->
+        <string id="4a0P89lE" text="第 5 層設備的金幣成本"/>
+        <!-- Cost Tier 6 -->
+        <string id="c1CI4H3y" text="成本等級 6"/>
+        <!-- Gold cost for Tier 6 equipment -->
+        <string id="JkrTWsSf" text="Tier 6 裝備的金幣成本"/>
+        <!-- Reequip Instead Of Upgrade -->
+        <string id="GaTe1vEL" text="重新裝備而不是升級"/>
+        <!-- Whether to re-equip the equipment INSTEAD of upgrading it (you should make TWO commands, one to upgrade and one to reequip) -->
+        <string id="zTiLpc9G" text="是否重新裝備而不是升級它（你應該發出兩個命令，一個升級，一個重新裝備）"/>
+        <!-- Re-rolls your equipment at your current tier -->
+        <string id="IJtXQh2D" text="將您的設備重新滾動到您當前的等級"/>
+        <!-- Disallowed for player companions -->
+        <string id="02iAT4Y8" text="不允許玩家同伴"/>
+        <!-- Tier costs -->
+        <string id="wORNXOT5" text="層級成本"/>
+        <!-- You are a player companion, you cannot change your own equipment! -->
+        <string id="C9Mhzohr" text="您是玩傢伙伴，您不能更換自己的裝備！"/>
+        <!-- You cannot upgrade equipment, as a mission is active! -->
+        <string id="RoIXssEg" text="您無法升級設備，因為任務處於活動狀態！"/>
+        <!-- You cannot upgrade any further! -->
+        <string id="FZh7ZtGp" text="你不能再升級了！"/>
+        <string id="fYksbZJp" text="裝備等級 {ArmorTier} ({ClassName})"/>
+        <string id="0KHxea5e" text="重新裝備第 {ArmorTier} ({ClassName} 級）"/>
+        <string id="VlnXNPYS" text="沒課"/>
+        <!-- Focus Points -->
+        <string id="WihQZ5uq" text="焦點"/>
+        <!-- Add focus points to heroes skills -->
+        <string id="01L8w1ZW" text="為英雄技能添加焦點"/>
+        <!-- Skills -->
+        <string id="QwuyvXBg" text="技能"/>
+        <!-- What skill to add focus to -->
+        <string id="w9liWZ9A" text="什麼技能可以增加焦點"/>
+        <!-- Auto -->
+        <string id="RiUjwmS5" text="汽車"/>
+        <!-- Chooses a random skill to add focus to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used. -->
+        <string id="EA4jsUhm" text="選擇一個隨機技能來增加焦點，優先選擇職業技能，然後是當前裝備的技能，然後是其他技能。使用自動時將忽略技能設置。"/>
+        <!-- Focus points -->
+        <string id="UpHpjzFk" text="關注點"/>
+        <!-- Automatic, based on class, equipment, and existing skills -->
+        <string id="SIM2l7ta" text="自動，基於等級、設備和現有技能"/>
+        <!-- Couldn't find a valid skill to add focus points to! -->
+        <string id="VXvS5xji" text="找不到可以添加焦點的有效技能！"/>
+        <!-- You have gained {Amount} focus points in {Skill}, you now have {NewAmount}! -->
+        <string id="6tcVqRIs" text="您已獲得 {Amount} focus points in {Skill}, you now have {NewAmount}！"/>
+        <!-- You have gained a focus point in {Skill}, you now have {NewAmount}! -->
+        <string id="HLFMWOJA" text="您在{Skill}, you now have {NewAmount}獲得了一個焦點！"/>
+        
+        <!-- DiscardItem -->
+        <!-- Discard Item -->
+        <string id="fmftNyHh" text="丟棄物品"/>
+        <!-- Allows viewers to discard one of their own custom items -->
+        <string id="f3LrrLHP" text="允許查看者丟棄他們自己的自定義項目之一"/>
+        <!-- You have no items to discard -->
+        <string id="oXQ4En4P" text="您沒有要丟棄的物品"/>
+        <!-- (partial item name) -->
+        <string id="by80aboy" text="（部分項目名稱）"/>
+        <!-- No items found matching '{Args}' -->
+        <string id="p0urrIvR" text="找不到與“{Args}”匹配的項目"/>
+        <!-- {Count} items found matching '{Args}', be more specific -->
+        <string id="Pzo2UJrl" text="{Count} items found matching '{Args}&amp;#39;，更具體"/>
+        <!-- '{ItemName}' was discarded -->
+        <string id="bNqd3AzN" text="“{ItemName}”被丟棄"/>
+        
+        <!-- GiveItem -->
+        <!-- Give Item -->
+        <string id="nAPjfF4C" text="贈送物品"/>
+        <!-- Allows viewers to give one of their own custom items to another viewer -->
+        <string id="u9Jx6QUr" text="允許查看者將他們自己的自定義項目之一提供給另一個查看者"/>
+        <!-- You have no items to give -->
+        <string id="Tfj1U5BB" text="您沒有可贈送的物品"/>
+        <!-- (recipient) (partial item name) -->
+        <string id="BClUoR9H" text="（收件人）（部分項目名稱）"/>
+        <!-- Couldn't find recipient '{Name}' -->
+        <string id="vDsYxMKq" text="找不到收件人“{Name}”"/>
+        <!-- '{ItemName}' was transferred from @{FromHero} to @{ToHero} -->
+        <string id="E1o7b5ht" text="&amp;#39;{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
+        
+        <!-- HeroInfoCommand -->
+        <!-- Show Hero Info -->
+        <string id="cj68a0l9" text="顯示英雄信息"/>
+        <!-- Will write various hero stats to chat -->
+        <string id="QsTQzceq" text="會寫各種英雄統計來聊天"/>
+        <!-- Show Gold -->
+        <string id="oWtshHwx" text="秀金"/>
+        <!-- Show gold -->
+        <string id="O2mUbcue" text="秀金"/>
+        <!-- Show General -->
+        <string id="VmQECrnc" text="顯示一般"/>
+        <!-- Show personal info: health, location, age -->
+        <string id="JWbk5Oko" text="顯示個人信息：健康、位置、年齡"/>
+        <!-- Show Top Skills -->
+        <string id="tMKmlYeR" text="展示頂級技能"/>
+        <!-- Shows skills (and focuse values) above the specified MinSkillToShow value -->
+        <string id="dayx7JEJ" text="顯示高於指定 MinSkillToShow 值的技能（和 focuse 值）"/>
+        <!-- Min Skill To Show -->
+        <string id="5VW8HXxS" text="顯示的最小技能"/>
+        <!-- If ShowTopSkills is specified, this defines what skills are shown -->
+        <string id="4819Fxyv" text="如果 ShowTopSkills 被指定，這定義了顯示什麼技能"/>
+        <!-- Show Attributes -->
+        <string id="lSM7JkvB" text="顯示屬性"/>
+        <!-- Shows all hero attributes -->
+        <string id="co5TLkOw" text="顯示所有英雄屬性"/>
+        <!-- Show Equipment -->
+        <string id="uLUxOyp2" text="展示設備"/>
+        <!-- Shows the equipment tier of the hero -->
+        <string id="CnTMaEPC" text="顯示英雄的裝備等級"/>
+        <!-- Show Inventory -->
+        <string id="sp1iuH1y" text="顯示庫存"/>
+        <!-- Shows the full battle inventory of the hero -->
+        <string id="uhAC3hOZ" text="顯示英雄的完整戰鬥清單"/>
+        <!-- Show Storage -->
+        <string id="aRA1V1Jp" text="顯示存儲"/>
+        <!-- Shows the heroes storage (all their custom items) -->
+        <string id="Wjr33ERJ" text="顯示英雄存儲（他們所有的自定義項目）"/>
+        <!-- Show Civilian Inventory -->
+        <string id="ecvBeN44" text="顯示平民庫存"/>
+        <!-- Shows the full civilian inventory of the hero -->
+        <string id="fUggutW6" text="顯示英雄的完整平民庫存"/>
+        <!-- Show Retinue -->
+        <string id="p0WEhay8" text="顯示隨從"/>
+        <!-- Shows a summary of the retinue of the hero (count and tier) -->
+        <string id="AXnWeTzh" text="顯示英雄隨從的摘要（計數和等級）"/>
+        <!-- Show Retinue List -->
+        <string id="Vyatyyuh" text="顯示隨從名單"/>
+        <!-- Shows the exact classes and counts of the retinue of the hero -->
+        <string id="CSTqzcOi" text="顯示英雄隨從的確切等級和人數"/>
+        <!-- Show Achievements -->
+        <string id="1F3utCWA" text="展示成就"/>
+        <!-- Shows all hero achievements -->
+        <string id="CKJd7KC9" text="顯示所有英雄成就"/>
+        <!-- Show Tracked Stats -->
+        <string id="LNvYSMZj" text="顯示跟踪統計"/>
+        <!-- Shows all hero tracked stats (kills, deaths, summons, attacks, tournament wins etc.) -->
+        <string id="FaUbhgTR" text="顯示所有英雄追踪的統計數據（擊殺、死亡、召喚、攻擊、錦標賽勝利等）"/>
+        <!-- Show Powers -->
+        <string id="cHaiwygJ" text="顯示力量"/>
+        <!-- Shows the heroes unlocked powers -->
+        <string id="YW8HsNEF" text="顯示英雄解鎖的力量"/>
+        <!-- Gold -->
+        <string id="YVhcZatv" text="金子"/>
+        <!-- Age, Clan, Culture, Health -->
+        <string id="jZigiKXG" text="年齡、宗族、文化、健康"/>
+        <!-- Skills greater than {MinSkillToShow} -->
+        <string id="6wVce2iI" text="大於 {MinSkillToShow} 的技能"/>
+        <!-- Attributes -->
+        <string id="74kcLopo" text="屬性"/>
+        <!-- Equipment tier -->
+        <string id="PeDxGcu7" text="裝備層"/>
+        <!-- Battle equipment inventory -->
+        <string id="EVvlMCru" text="戰鬥裝備庫存"/>
+        <!-- Civilian equipment inventory -->
+        <string id="DeffOla6" text="民用裝備庫存"/>
+        <!-- Custom item storage -->
+        <string id="VSDDQdmJ" text="自定義物品存儲"/>
+        <!-- Retinue count and average tier -->
+        <string id="C0mkGXlK" text="隨從人數和平均等級"/>
+        <!-- Retinue unit list -->
+        <string id="L4Rh6vFE" text="隨從單位名單"/>
+        <!-- Achievements -->
+        <string id="ZW9XlwY7" text="成就"/>
+        <!-- Tracked stats -->
+        <string id="Xmo7pOpj" text="跟踪統計"/>
+        <!-- Powers -->
+        <string id="xVDOsWPq" text="權力"/>
+        <!-- Shows -->
+        <string id="UB1bAtSI" text="節目"/>
+        <!-- No Class -->
+        <string id="ZI2UKbNp" text="沒課"/>
+        <!-- {Age} yrs -->
+        <string id="4TVRrlOw" text="{Age} 年"/>
+        <!-- {HP} / {MaxHP} HP -->
+        <string id="jY2QJdA3" text="{HP} / {MaxHP} 惠普"/>
+        <!-- Last seen near {Place} -->
+        <string id="B2xDasDx" text="最後一次出現在{Place}附近"/>
+        <!-- [LVL] -->
+        <string id="fRwyY6ms" text="[等級]"/>
+        <!-- [SKILLS] -->
+        <string id="rTId8pBy" text="[技能]"/>
+        <!-- [ATTR] -->
+        <string id="RSlhbJzO" text="[屬性]"/>
+        <!-- [TIER] -->
+        <string id="64yw2YD0" text="[等級]"/>
+        <!-- No Equip Class -->
+        <string id="u32KRqz8" text="無裝備類"/>
+        <!-- [BATTLE] -->
+        <string id="YVVlcDSK" text="[戰鬥]"/>
+        <!-- [CIV] -->
+        <string id="zaVtcDWB" text="[文明]"/>
+        <!-- [STORED] -->
+        <string id="U4HnxTCj" text="[存儲]"/>
+        <!-- [RETINUE] -->
+        <string id="hMBF1zLr" text="[隨從]"/>
+        <!-- (nothing) -->
+        <string id="4IOefqsW" text="（沒有）"/>
+        <!-- {RetinueCount} (avg Tier {Tier}) -->
+        <string id="XE2QRhyz" text="{RetinueCount} (avg Tier {Tier})"/>
+        <!-- [ACHIEV] -->
+        <string id="giS3vq1V" text="[達成]"/>
+        <!-- K -->
+        <string id="ADjhFwlz" text="鉀"/>
+        <!-- D -->
+        <string id="aUj96cVC" text="D"/>
+        <!-- KVwr -->
+        <string id="i02EMVP8" text="電壓值"/>
+        <!-- KStrmr -->
+        <string id="iGXwhVja" text="KStrmr"/>
+        <!-- Battles -->
+        <string id="APUC6wGt" text="戰鬥"/>
+        <!-- Sums -->
+        <string id="6nwK1UF9" text="總和"/>
+        <!-- CSums -->
+        <string id="uDFykstd" text="總和"/>
+        <!-- Atks -->
+        <string id="wtmfNCIj" text="攻擊力"/>
+        <!-- CAtks -->
+        <string id="T29akAtY" text="貓貓"/>
+        <!-- TourRndW -->
+        <string id="NOkWgftX" text="巡迴演出"/>
+        <!-- TourRndL -->
+        <string id="k5O3x52V" text="巡迴賽"/>
+        <!-- TourW -->
+        <string id="J6yoXowD" text="巡迴賽"/>
+        <!-- [STATS] -->
+        <string id="nL2E16fj" text="[統計]"/>
+        <!-- [ACTIVE] -->
+        <string id="gV1s8Ffw" text="[積極的]"/>
+        <!-- [PASSIVE] -->
+        <string id="z82jxnmF" text="[被動的]"/>
+        <!-- Amount Low -->
+        <string id="01yarGvZ" text="金額低"/>
+        <!-- Lower bound of amount to improve -->
+        <string id="UVKWPBjq" text="改善量下限"/>
+        <!-- Amount High -->
+        <string id="qi7FVuQB" text="金額高"/>
+        <!-- Upper bound of amount to improve -->
+        <string id="tU4rSLcx" text="提升金額上限"/>
+        <!-- Gold Cost -->
+        <string id="DlZ7sV1N" text="黃金成本"/>
+        <!-- Gold that will be taken from the hero -->
+        <string id="pGwh9edB" text="將從英雄身上奪走的金幣"/>
+        
+        <!-- JoinTournament -->
+        <!-- Join Tournament -->
+        <string id="EZPZtyXo" text="參加錦標賽"/>
+        <!-- Puts adopted heroes in queue for the next tournament -->
+        <string id="1h8OT5VD" text="將領養的英雄排在下一場比賽的隊列中"/>
+        <!-- Gold Cost -->
+        <string id="7D2UBlGC" text="黃金成本"/>
+        <!-- Gold cost to join -->
+        <string id="Upuhtmr6" text="加入金幣費用"/>
+        <!-- JOIN the viewer tournament -->
+        <string id="jUcsHkqk" text="加入觀眾錦標賽"/>
+        <!-- WATCH the viewer tournament -->
+        <string id="hlVvENgP" text="觀看觀眾錦標賽"/>
+        
+        <!-- NameItem -->
+        <!-- Name Item -->
+        <string id="0YSdK3zK" text="名稱項目"/>
+        <!-- Allow viewer to name custom items -->
+        <string id="k7vnOEIN" text="允許查看器命名自定義項目"/>
+        <!-- You have no nameable items -->
+        <string id="rXVOIMri" text="您沒有可命名的項目"/>
+        <!-- You will rename your {Item} -->
+        <string id="Xb3eM5o7" text="您將重命名您的 {Item}"/>
+        <!-- {PreviousName} renamed to {NewName} -->
+        <string id="iqNEr6Y7" text="{PreviousName} renamed to {NewName}"/>
+        
+        <!-- Retinue -->
+        <string id="tLSFX9Xc" text="隨從"/>
+        <!-- Add and improve adopted heroes retinue -->
+        <string id="bhC3VcmU" text="添加和改進採用的英雄隨從"/>
+        <!-- Retinue Upgrade Settings -->
+        <string id="iNoFrKsN" text="繼續升級設置"/>
+        <!-- All By Default -->
+        <string id="nIsuuFMC" text="全部默認"/>
+        <!-- Whether this action should attempt to buy/upgrade as many times as possible when called with no parameter. -->
+        <string id="mJSGvWlR" text="在不帶參數調用時，此操作是否應嘗試購買/升級盡可能多的次數。"/>
+        <!-- You cannot upgrade retinue, as a mission is active! -->
+        <string id="mCcpMwrN" text="您無法升級隨從，因為任務處於活動狀態！"/>
+        <!-- (number, or all) -->
+        <string id="NexXxYvj" text="（數量，或全部）"/>
+        
+        <!-- RetireMyHero -->
+        <!-- Retire Hero -->
+        <string id="sZhEiXyn" text="退休英雄"/>
+        <!-- Retires the hero, allowing the viewer to adopt another (if that is enabled) -->
+        <string id="Eh0m4R54" text="退休英雄，允許觀眾採用另一個（如果啟用）"/>
+        <!-- yes -->
+        <string id="xSbB2Zw5" text="是的"/>
+        <!-- You must enter '{Prompt}' at the prompt to retire your hero -->
+        <string id="0qVpLYfb" text="您必須在提示時輸入“{Prompt}”才能讓您的英雄退役"/>
+        <!-- You cannot retire your hero, as a mission is active! -->
+        <string id="po20lHyz" text="你不能讓你的英雄退休，因為任務是活躍的！"/>
+        <!-- {Name} has retired! -->
+        <string id="ihG4fs1r" text="{Name} 已退休！"/>
+        
+        <!-- SetHeroClass -->
+        <!-- Set Hero Class -->
+        <string id="pVblweVj" text="設置英雄職業"/>
+        <!-- Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied -->
+        <string id="7VWKYp1U" text="允許更改已收養的英雄的“等級”，這會影響裝備和 XP 應用的位置"/>
+        <!-- First Equip Is Free -->
+        <string id="iLpDEiTq" text="第一件裝備免費"/>
+        <!-- If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class) -->
+        <string id="pRETwmGv" text="如果在英雄還沒有職業的情況下這是免費的（只有當採用未指定默認職業時才會發生這種情況）"/>
+        <!-- Cost Tier 1 -->
+        <string id="N2OnDXOs" text="成本等級 1"/>
+        <!-- Gold cost for Tier 1 class change -->
+        <string id="tuhth4ld" text="第 1 層職業更改的金幣成本"/>
+        <!-- Cost Tier 2 -->
+        <string id="jIQ5VYSh" text="成本等級 2"/>
+        <!-- Gold cost for Tier 2 class change -->
+        <string id="V5CGr4lf" text="第 2 層職業變更的金幣成本"/>
+        <!-- Cost Tier 3 -->
+        <string id="lWOrthSS" text="成本等級 3"/>
+        <!-- Gold cost for Tier 3 class change -->
+        <string id="NlXa6kJS" text="第 3 層職業更改的金幣成本"/>
+        <!-- Cost Tier 4 -->
+        <string id="wuKWOAwt" text="成本等級 4"/>
+        <!-- Gold cost for Tier 4 class change -->
+        <string id="0X1TRYbP" text="第 4 層職業更改的金幣成本"/>
+        <!-- Cost Tier 5 -->
+        <string id="ZBzqCAyW" text="成本等級 5"/>
+        <!-- Gold cost for Tier 5 class change -->
+        <string id="yelsar2J" text="第 5 層職業更改的金幣成本"/>
+        <!-- Cost Tier 6 -->
+        <string id="ZLdpLkbg" text="成本等級 6"/>
+        <!-- Gold cost for Tier 6 class change -->
+        <string id="eYcOsu9h" text="第 6 層職業更改的金幣成本"/>
+        <!-- Update Equipment -->
+        <string id="rpkghdTp" text="更新設備"/>
+        <!-- Whether to immediately update equipment after changing class -->
+        <string id="cWQKOYEx" text="換班後是否立即更新裝備"/>
+        <!-- Tier costs -->
+        <string id="2WAi7pZN" text="層級成本"/>
+        <!-- Free if you do not already have a class -->
+        <string id="lW1KcoWD" text="如果您還沒有課程，則免費"/>
+        <!-- Updates equipment to match new class -->
+        <string id="qOR4RSqt" text="更新設備以匹配新課程"/>
+        <!-- You cannot change class, as a mission is active! -->
+        <string id="70vJ1jxZ" text="您無法更改課程，因為任務處於活動狀態！"/>
+        <!-- Provide class name -->
+        <string id="prmHmdGE" text="提供班級名稱"/>
+        <!-- changed class to {ClassName} -->
+        <string id="giUCnkf2" text="將班級更改為 {ClassName}"/>
+        
+        <!-- SkillXP -->
+        <!-- Skill XP -->
+        <string id="mpdzqyCK" text="技能經驗"/>
+        <!-- Improve adopted heroes skills -->
+        <string id="Bc2HIByX" text="提高采用的英雄技能"/>
+        <!-- Skills -->
+        <string id="rAGAEUIH" text="技能"/>
+        <!-- What to improve -->
+        <string id="wo5VSDaj" text="改進什麼"/>
+        <!-- Auto -->
+        <string id="LVp7Llay" text="汽車"/>
+        <!-- Chooses a random skill to add XP to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used. -->
+        <string id="CTCcqB3Y" text="選擇一個隨機技能來增加 XP，優先選擇職業技能，然後是當前裝備的技能，然後是其他技能。使用自動時將忽略技能設置。"/>
+
+        <!-- Automatic, based on class, equipment, and existing skills -->
+        <string id="QJ9Cssr7" text="自動，基於等級、設備和現有技能"/>
+        <!-- {AmountLow} to {AmountHigh} -->
+        <string id="vTkGnRBS" text="{AmountLow} to {AmountHigh}"/>
+        <!-- Costs -->
+        <string id="lz87CnyL" text="費用"/>
+        <!-- Couldn't find a skill to improve -->
+        <string id="vK5z2Naq" text="找不到可以提高的技能"/>
+        <!-- {Skill} capped, get more focus points -->
+        <string id="ozkK4mk7" text="{Skill} 個上限，獲得更多關注點"/>
+
+        <!-- 1H -->
+        <string id="Ei8NyJSW" text="1小時"/>
+        <!-- 2H -->
+        <string id="U38E72Ue" text="2小時"/>
+        <!-- PA -->
+        <string id="Cg885bns" text="公共廣播"/>
+        <!-- Bow -->
+        <string id="QpWRsKrc" text="弓"/>
+        <!-- Xb -->
+        <string id="71M512iJ" text="Xb"/>
+        <!-- Thr -->
+        <string id="jMRloOi0" text="Thr"/>
+        <!-- Rid -->
+        <string id="ligWzK3s" text="擺脫"/>
+        <!-- Ath -->
+        <string id="1MJnisqR" text="心電圖"/>
+        <!-- Smt -->
+        <string id="VjV54wik" text="貼片機"/>
+        <!-- Tac -->
+        <string id="6iG2GJW5" text="塔克"/>
+        <!-- Sct -->
+        <string id="AgaZsMEb" text="幹細胞"/>
+        <!-- Rog -->
+        <string id="6x33x91Z" text="羅格"/>
+        <!-- Cha -->
+        <string id="N9X9VVsM" text="查"/>
+        <!-- Trd -->
+        <string id="J8ElWB0P" text="趨勢"/>
+        <!-- Stw -->
+        <string id="BD65Qr83" text="標準"/>
+        <!-- Ldr -->
+        <string id="OYJ8tfhY" text="光驅"/>
+        <!-- Med -->
+        <string id="PmKb4QCv" text="醫學"/>
+        <!-- Eng -->
+        <string id="wLkMFOky" text="英"/>
+        
+        <!-- SummonHero -->
+        <!-- Summon Hero -->
+        <string id="6uWk9iMM" text="召喚英雄"/>
+        <!-- Spawns the adopted hero into the current active mission -->
+        <string id="ODnzMmBQ" text="將採用的英雄生成到當前的活動任務中"/>
+        <!-- Allowed Missions -->
+        <string id="i8P1EnE1" text="允許的任務"/>
+        <!-- Effects -->
+        <string id="tYGvtYKd" text="效果"/>
+        
+        <!-- AllowFieldBattle -->
+        <string id="DkCdNiwF" text="允許野戰"/>
+        <!-- AllowVillageBattle -->
+        <string id="yVz54Nky" text="允許村戰"/>
+        <!-- AllowSiegeBattle -->
+        <string id="0X8bcuPE" text="允許攻城戰"/>
+        <!-- AllowFriendlyMission -->
+        <string id="Sd1jguGc" text="允許友好任務"/>
+        <!-- Allow Hide Out -->
+        <string id="1xJGhP2D" text="允許隱藏"/>
+        <!-- On Player Side -->
+        <string id="i59Fm8zV" text="在玩家方面"/>
+        <!-- Gold Cost -->
+        <string id="HOZnxjGb" text="黃金成本"/>
+        <!-- Preferred Formation -->
+        <string id="sZRrJfKm" text="首選陣型"/>
+        <!-- Alert Sound -->
+        <string id="74AvYKCg" text="警報聲"/>
+        <!-- Sub Boost -->
+        <string id="H7B3Yzly" text="副升壓"/>
+        <!-- Heal Per Second -->
+        <string id="cXeUjVur" text="每秒治療"/>
+        
+        <!-- Can summon for normal field battles between parties -->
+        <string id="ddjUyXpV" text="可以召喚進行雙方之間的正常野戰"/>
+        <!-- Can summon in village battles -->
+        <string id="buLH4Spj" text="可以在村莊戰鬥中召喚"/>
+        <!-- Can summon in sieges -->
+        <string id="uk1kL79V" text="可以在圍城中召喚"/>
+        <!-- This includes walking about village/town/dungeon/keep -->
+        <string id="1HaljOia" text="這包括在村莊/城鎮/地牢/保持"/>
+        <!-- Can summon in the hideout missions -->
+        <string id="NZTRYcGV" text="可以在藏身處任務中召喚"/>
+        <!-- Whether the hero is on the player or enemy side -->
+        <string id="S86V5s0C" text="英雄是在玩家還是敵方"/>
+        <!-- Gold cost to summon -->
+        <string id="OQISx7Jz" text="召喚的金幣成本"/>
+        <!-- Which formation to add summoned heroes to (only applies to ones without a specified class) -->
+        <string id="vkFowOeg" text="將召喚英雄加入哪個陣型（僅適用於沒有指定職業的）"/>
+        <!-- Sound to play when summoned -->
+        <string id="R00Lx6aE" text="召喚時播放的聲音"/>
+        <!-- Multiplier applied to (positive) effects for subscribers -->
+        <string id="lFnV3cR9" text="乘數應用於訂閱者的（積極）影響"/>
+        <!-- HP the hero gets every second they are alive in the mission -->
+        <string id="gnh3KY5a" text="英雄在任務中活著的每一秒都會獲得 HP"/>
+        <!-- Side -->
+        <string id="Uu58rjgC" text="邊"/>
+        <!-- Heals -->
+        <string id="uHTRhFAh" text="治愈"/>
+        <!-- Cost -->
+        <string id="hCJhgl1m" text="成本"/>
+        <!-- Streamers side -->
+        <string id="myKKaEl9" text="飄帶側"/>
+        <!-- Enemy side -->
+        <string id="BTZ84Uww" text="敵方"/>
+        <!-- {HealPerSecond}HP per second while summoned -->
+        <string id="cR84crHC" text="{HealPerSecond}被召喚時每秒 HP"/>
+        <!-- Field battle -->
+        <string id="SRdB89Ca" text="野戰"/>
+        <!-- Village battle -->
+        <string id="M45VqXVa" text="村戰"/>
+        <!-- Siege battle -->
+        <string id="hbWdpDwr" text="攻城戰"/>
+        <!-- Friendly mission -->
+        <string id="YIfbDpI9" text="友好使命"/>
+        <!-- Hide-out -->
+        <string id="pZ239vm5" text="藏身之處"/>
+        <!-- Allowed in -->
+        <string id="zOB6Nadp" text="允許進入"/>
+        
+        <!-- You cannot be summoned now! -->
+        <string id="TdykIizS" text="你現在不能被召喚！"/>
+        <!-- You cannot be summoned now, this mission does not allow it! -->
+        <string id="HWnEJg1M" text="你現在不能被召喚，這個任務不允許！"/>
+        <!-- You cannot be summoned now, the mission has not started yet! -->
+        <string id="v5dO40vi" text="你現在不能被召喚，任務還沒有開始！"/>
+        <!-- You cannot be summoned now, the mission is ending! -->
+        <string id="mTKKaYIf" text="你現在不能被召喚，任務結束！"/>
+        <!-- You cannot be summoned, you are already here! -->
+        <string id="YTEgKnCW" text="你不能被召喚，你已經在了！"/>
+        
+        <!-- You won {WonGold}{GoldIcon}! -->
+        <string id="pmj8vjZj" text="您贏了 {WonGold}{GoldIcon}！"/>
+        <!-- You lost {LostGold}{GoldIcon}! -->
+        <string id="ajhKKeEo" text="你輸了 {LostGold}{GoldIcon}！"/>
+        <!-- You have joined the battle! -->
+        <string id="Ft3cxfIx" text="你加入了戰鬥！"/>
+        <!-- You cannot be summoned now, the mission has not started yet! -->
+        <string id="YZ4V5e4V" text="你現在不能被召喚，任務還沒有開始！"/>
+        <!-- You cannot switch sides, you traitor! -->
+        <string id="2D2T6xP6" text="你不能改變立場，你這個叛徒！"/>
+        <!-- You cannot be summoned, you DIED! -->
+        <string id="RBTDviuM" text="你不能被召喚，你死了！"/>
+        <!-- You cannot be summoned, you are already here! -->
+        <string id="YMiZAluP" text="你不能被召喚，你已經在了！"/>
+        <!-- {CoolDown}s cooldown remaining -->
+        <string id="kyUh29ij" text="{CoolDown} 剩餘冷卻時間"/>
+        <!-- You cannot be summoned, your party is already here! -->
+        <string id="93Hrc2EA" text="你不能被召喚，你的隊伍已經來了！"/>
+        <!-- Could not find a party for you to join! -->
+        <string id="jtqEqonE" text="找不到適合您參加的派對！"/>
+        <!-- You have joined the battle! -->
+        <string id="TvkEBZeY" text="你加入了戰鬥！"/>
+        <!-- Text -->
+        <string id="V3STT5Ar" text="文本"/>
+        <!-- Text that will be displayed in game -->
+        <string id="wsIzPzfG" text="將在遊戲中顯示的文字"/>
+        <!-- Enter shout text here -->
+        <string id="xf2mTWx8" text="在此處輸入喊話文本"/>
+        <!-- Weight -->
+        <string id="bCbN9OmH" text="重量"/>
+        <!-- Higher weight means more chance this shout is used -->
+        <string id="xqfCYYwN" text="更高的重量意味著更多的機會使用這個喊叫"/>
+        <!-- Player Side -->
+        <string id="xK1fdx7s" text="玩家方"/>
+        <!-- Can be used when summoning on player side -->
+        <string id="BpDPlsfY" text="可在玩家方召喚時使用"/>
+        <!-- Enemy Side -->
+        <string id="srN8yHp8" text="敵方"/>
+        <!-- Can be used when summoning on enemy side -->
+        <string id="0m4s9zXc" text="可在敵方召喚時使用"/>
+        <!-- General -->
+        <string id="MOOBN2Hz" text="一般的"/>
+        <!-- Can be used in situations other than battle/siege -->
+        <string id="6TWSIu60" text="可以在戰鬥/圍攻以外的情況下使用"/>
+        <!-- Field Battle -->
+        <string id="4KdKuusC" text="野戰"/>
+        <!-- Can be used when in a field battle -->
+        <string id="8aLSNsxr" text="可以在野戰時使用"/>
+        <!-- Siege Defend -->
+        <string id="2yevL6dV" text="攻城防線"/>
+        <!-- Can be used when on siege defender side -->
+        <string id="8HwihUK3" text="可以在攻城守方時使用"/>
+        <!-- Siege Attack -->
+        <string id="r5tvIQwx" text="攻城戰"/>
+        <!-- Can be used when on siege attacker side -->
+        <string id="mbIwJprm" text="可以在攻城方時使用"/>
+        <!-- Shout -->
+        <string id="CXb5ALls" text="喊"/>
+
+        <!-- TournamentBet -->
+        <!-- Invalid gold argument -->
+        <string id="GiU7feEu" text="黃金論證無效"/>
+        <!-- Betting not active -->
+        <string id="3AQKsF9f" text="投注不活躍"/>
+        <!-- Bet {GoldAmount}{GoldIcon} on {Team} -->
+        <string id="9tlhaGyH" text="投注{GoldAmount}{GoldIcon} on {Team}"/>
+        <!-- (team) (gold) -->
+        <string id="8XQwqd4f" text="（團隊）（金）"/>
+        
+        <!-- UsePower -->
+        <!-- Use Power -->
+        <string id="Wpx7tHFL" text="使用權力"/>
+        <!-- Allows activation of the adopted heroes class active powers -->
+        <string id="FJwn6kGW" text="允許激活所採用的英雄類主動能力"/>
+        <!-- You don't have a class, so no powers are available! -->
+        <string id="85HYGklq" text="您沒有課程，因此沒有可用的權力！"/>
+        <!-- You cannot activate your powers now: {FailReason}! -->
+        <string id="nXSUvuyD" text="你現在不能激活你的力量：{FailReason}！"/>
+        <!-- Your powers are already active! -->
+        <string id="o23xAj6M" text="你的力量已經激活！"/>
+    </strings>
+</base>

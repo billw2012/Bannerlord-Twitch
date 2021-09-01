@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="简体中文"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- TypeGroupDescription -->
+        <!-- Global Configs -->
+        <string id="S7fvEW5l" text="全局配置"/>
+        <!-- Channel Rewards -->
+        <string id="xljCKxH7" text="频道奖励"/>
+        <!-- Chat Commands -->
+        <string id="mHkSZwdI" text="聊天命令"/>
+        <!-- Sim Testing Config -->
+        <string id="c1lGU26j" text="模拟测试配置"/>
+    </strings>
+</base>

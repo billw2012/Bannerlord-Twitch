@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="简体中文"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Common -->
+        <!-- Reward {ITEMNAME} -->
+        <string id="W47g8bCB" text="奖励{ITEMNAME}"/>
+        <!-- {viewer} is {name}! -->
+        <string id="TAWcPGIc" text="{viewer} is {name}！"/>
+        
+        
+        <!-- {ITEMNAME} of Fealty -->
+        <string id="IvV04W31" text="{ITEMNAME} 的忠诚"/>
+        <!-- Renegades {ITEMNAME} -->
+        <string id="UQtSgnog" text="叛徒{ITEMNAME}"/>
+        <!-- Stream Sniper {ITEMNAME} -->
+        <string id="xI41h8NA" text="流狙击手{ITEMNAME}"/>
+        
+        <!-- Reliable -->
+        <string id="ODWiNBng" text="可靠的"/>
+        <!-- Trusted -->
+        <string id="fWTqF2sw" text="值得信赖"/>
+        <!-- Loyal -->
+        <string id="fe9J8von" text="忠诚"/>
+        <!-- Rebellious -->
+        <string id="HdYFegeb" text="叛逆的"/>
+        <!-- Traitorous -->
+        <string id="gDHR7f8r" text="叛徒"/>
+        <!-- Renegade -->
+        <string id="VEH582e7" text="叛徒"/>
+        <!-- Stream Sniper -->
+        <string id="Aj0gXKgZ" text="流狙击手"/>
+        
+        
+    </strings>
+</base>

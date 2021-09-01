@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="简体中文"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+                
+        <!-- BLTAdoptAHeroCampaignBehavior -->
+        <!-- Compensated @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} invalid custom items -->
+        <string id="hoRPbRrb" text="补偿了@{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} 个无效的自定义项目"/>
+        <!-- @{VictimName} {Verb} by @{KillerName}! -->
+        <string id="PCPU0lPX" text="@{VictimName} {Verb} by @{KillerName}！"/>
+        <!-- @{KillerName} {Verb}! -->
+        <string id="Bji2ULge" text="@{KillerName} {Verb}！"/>
+        <!-- @{HeroName} is now level {Level}! -->
+        <string id="8aTmTvl8" text="@{HeroName} is now level {Level}！"/>
+        <!-- @{HeroName} was taken prisoner by {PartyName}! -->
+        <string id="4PqVnFWY" text="@{HeroName} was taken prisoner by {PartyName}！"/>
+        <!-- @{HeroName} was taken prisoner! -->
+        <string id="WeRWLpKn" text="@{HeroName} 被俘！"/>
+        <!-- @{HeroName} is no longer a prisoner of {PartyName}! -->
+        <string id="tQANBoTK" text="@{HeroName} is no longer a prisoner of {PartyName}！"/>
+        <!-- @{HeroName} is no longer a prisoner! -->
+        <string id="MQslOwr0" text="@{HeroName} 不再是囚犯！"/>
+        <!-- @{HeroName} moved from {FromClanName} to {ToClanName}! -->
+        <string id="SUdnIyfw" text="@{HeroName} moved from {FromClanName} to {ToClanName}！"/>
+        
+        <!-- deceased -->
+        <string id="ZtZL0lbX" text="死者"/>
+        <!-- retired -->
+        <string id="ISrFBorj" text="退休"/>
+        <!-- {OldName} is {RetireType}! -->
+        <string id="2PHPNmuv" text="{OldName} is {RetireType}！"/>
+        <!-- Dead or retired hero {OldName} renamed to {HeroName} -->
+        <string id="wzpkEmTL" text="已故或退役的英雄{OldName} renamed to {HeroName}"/>
+
+        <!-- You can't bid on your own item -->
+        <string id="2cbVbW91" text="您不能对自己的物品出价"/>
+        <!-- Bid of {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon} -->
+        <string id="rbhzuJLm" text="{Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon} 的出价"/>
+        <!-- Another bid at {Bid}{GoldIcon} already exists -->
+        <string id="83uZcndH" text="{Bid}{GoldIcon} 的另一个出价已存在"/>
+        <!-- You already bid more ({Bid}{GoldIcon}), you can only raise your bid -->
+        <string id="qeLF80xw" text="您已经出价更高 ({Bid}{GoldIcon})，您只能提高出价"/>
+        <!-- You cannot cover a bid of {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon} -->
+        <string id="Cqi0iYNR" text="您不能涵盖 {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon} 的出价"/>
+        <!-- Bid of {Bid}{GoldIcon} placed! -->
+        <string id="M2B9yQ4w" text="已出价 {Bid}{GoldIcon}！"/>
+        
+        <!-- {Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName}) -->
+        <string id="TeeDJyJ1" text="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})"/>
+        <!-- {Time} seconds left in auction of '{ItemName}', no bids placed -->
+        <string id="jNkGaKZw" text="{Time} seconds left in auction of '{ItemName}&amp;#39;，没有出价"/>
+        <!-- Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}. -->
+        <string id="d9ooHVPU" text="{ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon} 的拍卖。"/>
+        <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died. -->
+        <string id="SGuTRcui" text="{ItemName} is CANCELLED! @{ItemOwnerName} 的拍卖已退役或死亡。"/>
+        <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} is no longer in possession of the item. -->
+        <string id="NRV4IstE" text="拍卖的 {ItemName} is CANCELLED! @{ItemOwnerName} 不再拥有该项目。"/>
+        <!-- Auction for {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}. -->
+        <string id="jmbMoHta" text="{ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon} 的拍卖。"/>
+        
+        <!-- No auction in progress -->
+        <string id="Cy38Ckpk" text="没有正在进行的拍卖"/>
+        <!-- Max Retinue Size -->
+        <string id="wAGE7h6U" text="最大随从大小"/>
+        <!-- Maximum number of units in the retinue. Recommend less than 20, summons to NOT obey the games unit limits. -->
+        <string id="EOGB8EWN" text="随从中的最大单位数。推荐少于 20，传票不遵守游戏单位限制。"/>
+        <!-- Cost Tier 1 -->
+        <string id="VvdtvdQJ" text="成本等级 1"/>
+        <!-- Gold cost for Tier 1 retinue -->
+        <string id="9bvn5R5A" text="1 级随从的金币成本"/>
+        <!-- Cost Tier 2 -->
+        <string id="engRDMZx" text="成本等级 2"/>
+        <!-- Gold cost for Tier 2 retinue -->
+        <string id="pD2ZvRVH" text="Tier 2 随从的金币成本"/>
+        <!-- Cost Tier 3 -->
+        <string id="3jxmITht" text="成本等级 3"/>
+        <!-- Gold cost for Tier 3 retinue -->
+        <string id="dyB8loLF" text="第 3 层随从的金币成本"/>
+        <!-- Cost Tier 4 -->
+        <string id="dhwd4ccF" text="成本等级 4"/>
+        <!-- Gold cost for Tier 4 retinue -->
+        <string id="aji2HxKa" text="第 4 层随从的金币成本"/>
+        <!-- Cost Tier 5 -->
+        <string id="zJkb4AIh" text="成本等级 5"/>
+        <!-- Gold cost for Tier 5 retinue -->
+        <string id="fnEOFst7" text="第 5 层随从的金币成本"/>
+        <!-- Cost Tier 6 -->
+        <string id="1hh3cOJO" text="成本等级 6"/>
+        <!-- Gold cost for Tier 6 retinue -->
+        <string id="PieENBSG" text="6 级随从的金币成本"/>
+        <!-- Troop Types -->
+        <string id="qYhM3gcn" text="部队类型"/>
+        <!-- Use Heroes Culture Units -->
+        <string id="q1Rkm3Rq" text="使用英雄文化单位"/>
+        <!-- Whether to use the adopted hero's culture (if not enabled then a random one is used) -->
+        <string id="9qAD6eZR" text="是否使用领养英雄的文化（如果未启用则使用随机一个）"/>
+        <!-- Include Bandit Units -->
+        <string id="dbU7WEKG" text="包括强盗单位"/>
+        <!-- Whether to allow bandit units when UseHeroesCultureUnits is disabled -->
+        <string id="06KnYhyh" text="禁用 UseHeroesCultureUnits 时是否允许强盗单位"/>
+        <!-- Use Basic Troops -->
+        <string id="E2RBmb1K" text="使用基本部队"/>
+        <!-- Whether to allow basic troops -->
+        <string id="uPwaOKdT" text="是否允许基础部队"/>
+        <!-- Use Elite Troops -->
+        <string id="lnz7d1BI" text="使用精英部队"/>
+        <!-- Whether to allow elite troops -->
+        <string id="EPr2clqT" text="是否允许精锐部队"/>
+        <!-- Max retinue -->
+        <string id="UhUpH8C8" text="最大随从"/>
+        <!-- Tier costs -->
+        <string id="VBuncBq5" text="层级成本"/>
+        <!-- Same culture only -->
+        <string id="R7rU0TbD" text="只有相同的文化"/>
+        <!-- Bandits -->
+        <string id="c2qOsXvs" text="土匪"/>
+        <!-- Basic troops -->
+        <string id="RmTwEFzy" text="基础部队"/>
+        <!-- Elite troops -->
+        <string id="3gumlthG" text="精锐部队"/>
+        <!-- Allowed -->
+        <string id="uL7MfYPc" text="允许"/>
+        <!-- No valid troop types could be found, please check out settings -->
+        <string id="bBCyH0vV" text="找不到有效的部队类型，请检查设置"/>
+        <!-- Spent {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} remaining -->
+        <string id="zcbOq6Tb" text="剩余消费 {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon}"/>
+        <!-- Can't upgrade retinue any further! -->
+        <string id="PQRLJ04i" text="不能再升级随从了！"/>
+        <!-- was murdered -->
+        <string id="LhHul2lV" text="被谋杀了"/>
+        <!-- died in labor -->
+        <string id="HwjR45XN" text="死于劳动"/>
+        <!-- died of old age -->
+        <string id="5GOjfkzW" text="年老而死"/>
+        <!-- died in battle -->
+        <string id="ZKrgqWav" text="战死"/>
+        <!-- was wounded in battle -->
+        <string id="jp4sldTL" text="在战斗中受伤"/>
+        <!-- was executed -->
+        <string id="SkFFXsI1" text="被处决"/>
+        <!-- was lost -->
+        <string id="HMHdXDaK" text="丢失了"/>
+        <!-- was ended -->
+        <string id="lrOJnThZ" text="结束了"/>
+        
+        <!-- BLTTournamentBetMissionBehavior -->
+        <!-- Betting is now OPEN for round {RoundIndex} match: {Teams}! -->
+        <string id="wgGkXkyh" text="第 {RoundIndex} match: {Teams} 轮的投注现已开放！"/>
+        <!-- Betting is now OPEN for final match: {Teams}! -->
+        <string id="9BjHfivM" text="最后一场比赛的投注现已开放：{Teams}！"/>
+        <!-- vs -->
+        <string id="ixTCiaiv" text="对比"/>
+        <!-- blue -->
+        <string id="HrIifwJy" text="蓝色"/>
+        <!-- red -->
+        <string id="6ZGgsbe1" text="红色的"/>
+        <!-- green -->
+        <string id="qQZlsD8r" text="绿色"/>
+        <!-- yellow -->
+        <string id="JelyrtLJ" text="黄色"/>
+        <!-- Tournament is not active -->
+        <string id="FEZ1Opj1" text="锦标赛不活跃"/>
+        <!-- Betting is disabled -->
+        <string id="uNUyZhDk" text="投注已禁用"/>
+        <!-- Betting is closed -->
+        <string id="APTqGlHh" text="投注已关闭"/>
+        <!-- Betting is only allowed on the final -->
+        <string id="7yFW99H8" text="只允许在决赛上投注"/>
+        <!-- Betting is not open -->
+        <string id="ATdvJKFI" text="投注未开放"/>
+        <!-- Team name must be one of {Teams} -->
+        <string id="1rUYWox8" text="团队名称必须是 {Teams} 之一"/>
+        <!-- You can only bet on one team -->
+        <string id="7iveTGQp" text="您只能投注一支球队"/>
+        <!-- Betting is now CLOSED: only one team bet on, bets refunded -->
+        <string id="Nm96SVXt" text="投注现已关闭：只投注一支球队，投注退款"/>
+        <!-- Betting is now CLOSED: no bets placed -->
+        <string id="GrI9bFCf" text="投注现已结束：没有投注"/>
+        <!-- Betting is now CLOSED: {TotalBets} -->
+        <string id="Hj3oYnE0" text="投注现已结束：{TotalBets}"/>
+        <!-- REFUNDED {Bet}{GoldIcon} bet -->
+        <string id="u4mPf1p0" text="已退款 {Bet}{GoldIcon} 个赌注"/>
+        <!-- WON BET -->
+        <string id="majAmqDm" text="赢了"/>
+        
+        <!-- BLTTournamentMissionBehavior -->
+        <!-- WINNER! -->
+        <string id="jb5vaUCD" text="优胜者！"/>
+        <!-- no prize available for you! -->
+        <string id="80PitGR4" text="没有奖品给你！"/>
+        
+        <!-- BLTTournamentQueueBehavior -->
+        <!-- You are already in the tournament queue! -->
+        <string id="JtZIstbB" text="您已经在锦标赛队列中！"/>
+        <!-- You are position {QueuePosition} in the tournament queue! -->
+        <string id="1duM11Gt" text="您在锦标赛队列中的位置是 {QueuePosition}！"/>
+    </strings>
+</base>

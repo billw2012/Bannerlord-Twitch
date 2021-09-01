@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="한국인"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Common -->        
+        <!-- Fireblade -->
+        <string id="yEtkv5ML" text="불의 날"/>
+        <!-- infantry -->
+        <string id="m8bz4drX" text="보병"/>
+        <!-- Healthy -->
+        <string id="ROXuJJq8" text="건강한"/>
+        <!-- Explosive Arrows -->
+        <string id="skyn1cL6" text="폭발 화살"/>
+        <!-- archer -->
+        <string id="4tflp34a" text="궁수"/>
+        <!-- Fleet Footed -->
+        <string id="NE9Li2Hb" text="함대 발"/>
+        <!-- Explosive Arrows -->
+        <string id="xgnH5owv" text="폭발 화살"/>
+        <!-- heavyarcher -->
+        <string id="JncRD8tX" text="무거운 궁수"/>
+        <!-- Healthy -->
+        <string id="ZrmsIMPE" text="건강한"/>
+        <!-- Heavy Bolts -->
+        <string id="QZD9XdpC" text="헤비 볼트"/>
+        <!-- crossbow -->
+        <string id="wV6R9Si5" text="석궁"/>
+        <!-- Self Healing -->
+        <string id="FvNPPHLJ" text="자가 치유"/>
+        <!-- Explosive Bolts -->
+        <string id="7GmE3SfQ" text="폭발 볼트"/>
+        <!-- heavycrossbow -->
+        <string id="bpzytNbP" text="무거운 석궁"/>
+        <!-- Healthy -->
+        <string id="k7booFb2" text="건강한"/>
+        <!-- Trample -->
+        <string id="ZEGEpycY" text="짓밟다"/>
+        <!-- cavalry -->
+        <string id="jNaFWF9t" text="기병대"/>
+        <!-- A Good Horse -->
+        <string id="YghplAdF" text="좋은 말"/>
+        <!-- Trample -->
+        <string id="mmeJSrm9" text="짓밟다"/>
+        <!-- camelry -->
+        <string id="mJ8RVORq" text="낙타"/>
+        <!-- A Good Camel -->
+        <string id="atGMPeNF" text="좋은 낙타"/>
+        <!-- Explosive Arrows -->
+        <string id="YpIUHASp" text="폭발 화살"/>
+        <!-- horsearcher -->
+        <string id="p5qJfkkp" text="말 궁수"/>
+        <!-- Mounted Archery -->
+        <string id="zxgdfSIS" text="기마 양궁"/>
+        <!-- Heavy Arrows -->
+        <string id="FrX7AiyI" text="무거운 화살"/>
+        <!-- camelarcher -->
+        <string id="HreZWoyd" text="낙타꾼"/>
+        <!-- Mounted Archery -->
+        <string id="szdoTAQj" text="기마 양궁"/>
+        <!-- Break Through -->
+        <string id="E3qGC3fs" text="돌파구"/>
+        <!-- skirmisher -->
+        <string id="9euSgzCd" text="척후병"/>
+        <!-- Retribution -->
+        <string id="Lw8xQu1P" text="보복"/>
+        <!-- Berserker Rage -->
+        <string id="1DSLInEJ" text="버서커 레이지"/>
+        <!-- berserker -->
+        <string id="wVjXAFal" text="맹렬한"/>
+        <!-- Glass Cannon -->
+        <string id="nB4Qb0mD" text="유리 대포"/>
+        <!-- Retribution -->
+        <string id="rzIl9tm3" text="보복"/>
+        <!-- looter -->
+        <string id="4JffsJMD" text="약탈자"/>
+        <!-- Grenades -->
+        <string id="nmjVjakS" text="수류탄"/>
+    </strings>
+</base>

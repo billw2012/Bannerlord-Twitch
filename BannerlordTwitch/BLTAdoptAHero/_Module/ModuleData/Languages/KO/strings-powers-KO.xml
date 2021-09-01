@@ -1,0 +1,377 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="한국인"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- ActivePowerGroupItem -->
+        <!-- Active Power Group Item -->
+        <string id="4xEkPMIy" text="유효 전력 그룹 항목"/>
+        <!-- Power -->
+        <string id="HGDApoLL" text="힘"/>
+
+        <!-- ActivePowerGroup -->
+        <!-- Active Power Group -->
+        <string id="HvTIrx0b" text="활성 전원 그룹"/>
+        <!-- The name of the power: how the power will be described in messages -->
+        <string id="EvVyh3WM" text="권력의 이름: 권력이 메시지에 어떻게 기술될 것인가"/>
+        <!-- Powers -->
+        <string id="acLMixuK" text="권한"/>
+        <!-- The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure). -->
+        <string id="6aKmeGgU" text="힘의 다양한 효과. 여기에는 사용자 정의 잠금 해제 요구 사항이있을 수 있으므로 시간이 지남에 따라 (또는 다른 방법으로) 강해지거나 약해지는 클래스를 가질 수 있습니다."/>
+        <!-- ActivateEffect -->
+        <string id="ticZtKY4" text="활성화 효과"/>
+        <!-- Particles/sound effects to play when this power group is activated -->
+        <string id="YWHa7H42" text="이 전원 그룹이 활성화될 때 재생할 입자/음향 효과"/>
+        <!-- DeactivateEffect -->
+        <string id="MXnon4pc" text="비활성화 효과"/>
+        <!-- Particles/sound effects to play when this power group is deactivated -->
+        <string id="V9fqIgvH" text="이 전원 그룹이 비활성화될 때 재생할 입자/음향 효과"/>
+        <!-- (no power) -->
+        <string id="ddNSQjWq" text="(전원 없음)"/>
+        
+        <!-- Not allowed in tournaments! -->
+        <string id="2NnCGjyI" text="토너먼트에서 허용되지 않습니다!"/>
+        <!-- No powers! -->
+        <string id="asncu3BX" text="권한이 없습니다!"/>
+        <!-- Powers not allowed in tournaments! -->
+        <string id="NMSDeunS" text="토너먼트에서 허용되지 않는 권한!"/>
+        <!-- {PowerName} expired! -->
+        <string id="xyvCYxTD" text="{PowerName} 만료되었습니다!"/>
+        <!-- {PowerName} activated! -->
+        <string id="WDfytZ7z" text="{PowerName} 활성화되었습니다!"/>
+        
+        <!-- DurationMissionHeroPowerDefBase -->
+        <!-- Power Duration Seconds -->
+        <string id="F03TlOOV" text="전원 지속 시간(초)"/>
+        <!-- Pfx -->
+        <string id="VS9ITIST" text="FX"/>
+        <!-- Duration the power will last for (when used as an active power), in seconds -->
+        <string id="km0QRxRs" text="전력이 지속되는 시간(유효 전력으로 사용되는 경우)(초)"/>
+        <!-- Effects to apply to the agent while the power is active -->
+        <string id="xmz0TzN7" text="전원이 활성화된 상태에서 에이전트에게 적용되는 효과"/>
+        <!-- No mission is active! -->
+        <string id="u48yBW5b" text="활성화된 임무가 없습니다!"/>
+        <!-- Mission has not started yet! -->
+        <string id="EbrlEg5C" text="미션은 아직 시작되지 않았습니다!"/>
+        <!-- Your hero is not alive! -->
+        <string id="SdQsQRB6" text="당신의 영웅은 살아 있지 않습니다!"/>
+        <!-- Already active! -->
+        <string id="C3Ag25zz" text="이미 활동 중입니다!"/>
+        
+        <!-- HeroPowerDefBase -->
+        <!-- Name of the power that will be shown in game -->
+        <string id="lzvJC8bf" text="게임에서 보여지는 힘의 이름"/>
+        <!-- Enter Name Here -->
+        <string id="aQgYs3mI" text="여기에 이름 입력"/>
+        
+        <!-- HitBehavior -->
+        <!-- Knock Back Chance Percent -->
+        <string id="mtZMAwbM" text="넉백 확률 퍼센트"/>
+        <!-- Percent chance (0 to 100) for target to get knocked back -->
+        <string id="wPgAMF92" text="대상이 넉백될 확률(0~100)"/>
+        <!-- Knock Down Chance Percent -->
+        <string id="9dla8vV1" text="넉다운 확률 퍼센트"/>
+        <!-- Percent chance (0 to 100) for target to get knocked down -->
+        <string id="MTqyFfDc" text="대상이 쓰러질 확률(0~100)"/>
+        <!-- Shrug Off Chance Percent -->
+        <string id="dCRbuRf8" text="어깨를 으쓱할 확률 퍼센트"/>
+        <!-- Percent chance (0 to 100) for target to shrug off blow (not visably reacting to it, damage will still apply) -->
+        <string id="adHeasi7" text="대상이 타격을 무시할 확률(0~100)(눈에 띄게 반응하지 않으면 피해가 계속 적용됨)"/>
+        <!-- Makes Rear Chance Percent -->
+        <string id="okiEp8HU" text="후방 확률을 만듭니다"/>
+        <!-- Percent chance (0 to 100) for target to rear (if it is a mount) -->
+        <string id="Cp9IZN6J" text="대상이 후방으로 이동할 확률(0~100)(탈것인 경우)"/>
+        <!-- Dismount Chance -->
+        <string id="lVXn7z6U" text="디스마운트 찬스"/>
+        <!-- Percent chance (0 to 100) for target to be dismounted -->
+        <string id="RrhP0L2t" text="대상이 내릴 확률(0~100)"/>
+        <!-- (inactive) -->
+        <string id="cM8NOj2B" text="(비활성)"/>
+        <!-- Knock Back -->
+        <string id="2UuwaRcc" text="노크백"/>
+        <!-- Knock Down -->
+        <string id="4iroX5zj" text="노크다운"/>
+        <!-- Shrug Off -->
+        <string id="DNqblCEf" text="어깨를 으쓱"/>
+        <!-- Mount Rear -->
+        <string id="F0o4A3mp" text="마운트 리어"/>
+        <!-- Dismount -->
+        <string id="bEO48IR4" text="내리다"/>
+        
+        <!-- PassivePowerGroupItem -->
+        <!-- Passive Power Group Item -->
+        <string id="sURt2dSt" text="수동 전원 그룹 항목"/>
+        <!-- Power -->
+        <string id="KHoc6FK5" text="힘"/>
+        <!-- (no power) -->
+        <string id="8mrSEyNk" text="(전원 없음)"/>
+        <!-- The name of the power: how the power will be described in messages -->
+        <string id="QsdqVpNE" text="권력의 이름: 권력이 메시지에 어떻게 기술될 것인가"/>
+        <!-- Powers -->
+        <string id="61fc3xTQ" text="권한"/>
+        <!-- The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure). -->
+        <string id="wtD908lt" text="힘의 다양한 효과. 여기에는 사용자 정의 잠금 해제 요구 사항이있을 수 있으므로 시간이 지남에 따라 (또는 다른 방법으로) 강해지거나 약해지는 클래스를 가질 수 있습니다."/>
+        
+        <!-- PowerGroupItemBase -->
+        <!-- Requirements -->
+        <string id="WLtUn4t7" text="요구 사항"/>
+        <!-- Optional unlock criteria -->
+        <string id="sl5ZoJdv" text="선택적 잠금 해제 기준"/>
+        <!-- requires {Requirements} -->
+        <string id="hPcS0MIw" text="{Requirements} 필요"/>
+        
+        <!-- AbsorbHealthPower -->
+        <!-- Absorb Health Power -->
+        <string id="HmDfLY2B" text="체력 흡수"/>
+        <!-- Absorbs a fraction of damage you do to enemies as health -->
+        <string id="ZHdogsAa" text="적에게 가하는 피해의 일부를 체력으로 흡수"/>
+        <!-- What percentage of damage done to absorb as health -->
+        <string id="8SE2asYO" text="생명력으로 흡수하기 위해 입힌 피해의 비율"/>
+        <!-- (disabled) -->
+        <string id="41sZdkDw" text="(장애가있는)"/>
+        <!-- Absorb {DamageToAbsorbPercent}% of damage dealt as HP -->
+        <string id="04WkC9p6" text="가한 피해의 {DamageToAbsorbPercent}%를 HP로 흡수"/>
+        
+        <!-- AddDamagePower -->
+        <!-- Add Damage Power -->
+        <string id="JgPVRq5W" text="데미지 파워 추가"/>
+        <!-- Adds fixed or relative amount of extra HP to the hero when they spawn -->
+        <string id="RGUwxlOx" text="영웅이 스폰될 때 고정 또는 상대적인 추가 HP를 추가합니다."/>
+        <!-- Damage Modifier Percent -->
+        <string id="0mhPe31m" text="피해 수정 퍼센트"/>
+        <!-- Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it) -->
+        <string id="tXh8oAaE" text="데미지 수정자(100% 미만으로 설정하면 데미지 감소, 100% 이상 설정하면 데미지 증가)"/>
+        <!-- Damage To Add -->
+        <string id="fPmJAchN" text="추가할 피해"/>
+        <!-- How much damage to add -->
+        <string id="lEbWq1of" text="추가 피해량"/>
+        <!-- Add Hit Behavior -->
+        <string id="RnGUD1jl" text="적중 동작 추가"/>
+        <!-- Behaviors to add to the damage -->
+        <string id="bse0NB6Z" text="피해를 가중시키는 행동"/>
+        <!-- Remove Hit Behavior -->
+        <string id="shUGx48n" text="적중 행위 제거"/>
+        <!-- Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always stunned when hit) -->
+        <string id="feiVAent" text="피해를 제거하기 위한 행동(예: 공격을 받았을 때 대상이 항상 기절하도록 어깨를 으쓱 해제를 제거)"/>
+        <!-- Armor To Ignore Percent -->
+        <string id="w5j3JYog" text="퍼센트 무시 방어구"/>
+        <!-- What fraction (0 to 1) of armor to ignore when applying damage -->
+        <string id="Sv4QLgYX" text="피해를 줄 때 무시할 갑옷의 비율(0~1)"/>
+        <!-- Unblockable Chance Percent -->
+        <string id="SOJgZOV3" text="차단 불가 확률 퍼센트"/>
+        <!-- Chance (0 to 1) that the hit will be unblockable -->
+        <string id="QoYMwBnz" text="적중을 차단할 수 없는 확률(0~1)"/>
+        <!-- Shatter Shield Chance Percent -->
+        <string id="L1ZqypsT" text="산산조각 난 방패 확률 퍼센트"/>
+        <!-- Chance (0 to 1) that the hit will shatter shield if it is blocked -->
+        <string id="MaDRQPhh" text="적중 시 보호막이 부서질 확률(0~1)"/>
+        <!-- Cut Through Chance Percent -->
+        <string id="xt70CI4q" text="통과 확률 퍼센트"/>
+        <!-- Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each collision, so a cut through chance of 1 will result in cutting through everyone with every hit) -->
+        <string id="uAsNXThU" text="적중이 마주치는 모든 유닛을 관통할 확률(0~1)(각 충돌 시 평가되므로 1의 관통 확률은 모든 적중 시 모든 사람을 관통하게 됨)"/>
+        <!-- Stagger Chance Percent -->
+        <string id="XxLPeI3i" text="비틀거림 확률 퍼센트"/>
+        <!-- Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR stagger, it can't do both, cut through chance is evaluated before this one) -->
+        <string id="8N18Zs1O" text="적중이 적중한 에이전트를 비틀거릴 확률(0에서 1)(적중은 관통하거나 비틀거릴 수 있으며 둘 다 수행할 수 없으며 관통 확률이 이 전에 평가됨)"/>
+        <!-- AoE -->
+        <string id="O4AUEtAO" text="효과"/>
+        <!-- Area of Effect damage to apply -->
+        <string id="5ke30xUG" text="적용할 효과 범위 피해"/>
+        <!-- Apply Against Non Heroes -->
+        <string id="0WAJwEvc" text="영웅이 아닌 대상에 적용"/>
+        <!-- Whether to apply this bonus damage against normal troops -->
+        <string id="guccTOSR" text="이 보너스 피해를 일반 부대에 적용할지 여부"/>
+        <!-- Apply Against Heroes -->
+        <string id="mMcjJkph" text="영웅을 상대로 신청"/>
+        <!-- Whether to apply this bonus damage against heroes -->
+        <string id="gYU28V1d" text="영웅에게 이 추가 피해를 적용할지 여부"/>
+        <!-- Apply Against Adopted Heroes -->
+        <string id="En7CxSs6" text="채택된 영웅에 대해 적용"/>
+        <!-- Whether to apply this bonus damage against adopted heroes -->
+        <string id="DcMwYE76" text="채택된 영웅에게 이 추가 피해를 적용할지 여부"/>
+        <!-- Apply Against Player -->
+        <string id="s3sYJipB" text="플레이어에 적용"/>
+        <!-- Whether to apply this bonus damage against the player -->
+        <string id="1sYObRIg" text="플레이어에게 이 추가 피해를 적용할지 여부"/>
+        <!-- Ranged -->
+        <string id="ITaXWnRJ" text="원거리"/>
+        <!-- Whether to apply this bonus damage when using ranged weapons -->
+        <string id="pfagbSNR" text="원거리 무기를 사용할 때 이 추가 피해를 적용할지 여부"/>
+        <!-- Melee -->
+        <string id="6pT4TAXW" text="난투"/>
+        <!-- Whether to apply this bonus damage when using melee weapons -->
+        <string id="TiGzhjIl" text="근접 무기를 사용할 때 이 추가 피해를 적용할지 여부"/>
+        <!-- Charge -->
+        <string id="JR0Rdbfj" text="요금"/>
+        <!-- Whether to apply this bonus damage from charge damage -->
+        <string id="65y7VWcS" text="차지 데미지로부터 이 보너스 데미지를 적용할지 여부"/>
+        <!-- Missile Trail Particle Effect -->
+        <string id="2GaGbTYR" text="미사일 흔적 입자 효과"/>
+        <!-- Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing fire/smoke effect) -->
+        <string id="UiCylfED" text="미사일에 부착할 입자 효과(후행 화재/연기 효과에 대해 psys_game_burning_agent 권장)"/>
+        <!-- Hit Effect -->
+        <string id="gEhH84HS" text="히트 효과"/>
+        <!-- Effect to play on hit (intended mainly for AoE effects) -->
+        <string id="r6D9pDIA" text="적중 시 재생 효과(주로 AoE 효과용)"/>
+        <!-- Non-heroes -->
+        <string id="RNh2zns4" text="비영웅"/>
+        <!-- Heroes -->
+        <string id="qWIzKnVw" text="영웅"/>
+        <!-- Adopted -->
+        <string id="djDGvCdQ" text="채택 된"/>
+        <!-- Player -->
+        <string id="8nDvdozx" text="플레이어"/>
+        <!-- Ranged -->
+        <string id="1t1hdpPr" text="원거리"/>
+        <!-- Melee -->
+        <string id="ibrr3fCK" text="난투"/>
+        <!-- Charge -->
+        <string id="X8RrfG7V" text="요금"/>
+
+        <!-- {DamageModifierPercent}% dmg -->
+        <string id="LbHOSj1l" text="{DamageModifierPercent}% 피해"/>
+        <!-- {DamageToAdd} dmg -->
+        <string id="mBmFK0OK" text="{DamageToAdd} 데미지"/>
+        <!-- Add: {AddHitBehavior} -->
+        <string id="ybyWP8jd" text="추가: {AddHitBehavior}"/>
+        <!-- Remove: {RemoveHitBehavior} -->
+        <string id="WJVreCCg" text="제거: {RemoveHitBehavior}"/>
+        <!-- Ignore {ArmorToIgnorePercent}% Armor -->
+        <string id="svDicWAa" text="{ArmorToIgnorePercent}% 방어도 무시"/>
+        <!-- {UnblockableChancePercent}% Unblockable -->
+        <string id="TkGVRcl0" text="{UnblockableChancePercent}% 차단 불가"/>
+        <!-- {ShatterShieldChancePercent}% Shatter Shield -->
+        <string id="xHMYpCMY" text="{ShatterShieldChancePercent}% 섀터 쉴드"/>
+        <!-- {CutThroughChancePercent}% Cut Through -->
+        <string id="I3BiKkXC" text="{CutThroughChancePercent}% 컷스루"/>
+        <!-- {StaggerChancePercent}% Stagger -->
+        <string id="NetyrPKo" text="{StaggerChancePercent}% 비틀거림"/>
+        <!-- AoE: {AoEDescription} -->
+        <string id="A6Vulmvy" text="효과 범위: {AoEDescription}"/>
+        
+        <!-- {Modifiers} from {AppliesFrom} against {AppliesAgainst} -->
+        <string id="UhEtVOWV" text="{Modifiers} from {AppliesFrom} against {AppliesAgainst}"/>
+        <!-- {Modifiers} from {AppliesFrom} -->
+        <string id="GrP7yeqP" text="{Modifiers} from {AppliesFrom}"/>
+        <!-- {Modifiers} against {AppliesAgainst} -->
+        <string id="dAObdN2r" text="{Modifiers} against {AppliesAgainst}"/>
+        <!-- {Modifiers} -->
+        <string id="ZXm0fYfO" text="{Modifiers}"/>
+        
+        <!-- AreaOfEffectDef -->
+        <!-- Range -->
+        <string id="DMsD70Yc" text="범위"/>
+        <!-- The radius to apply the damage in -->
+        <string id="yjmcKGuH" text="피해를 적용할 반경"/>
+        <!-- Only On Hit -->
+        <string id="u1EgbhAw" text="적중 시에만"/>
+        <!-- Only apply the damage if the attack hits an agent (as opposed to the ground, e.g. for arrows) -->
+        <string id="uxyVrVjV" text="공격이 에이전트를 명중한 경우에만 피해를 적용합니다(예: 화살의 경우)."/>
+        <!-- Damage At Center -->
+        <string id="oLCQliJn" text="중심 손상"/>
+        <!-- Damage at distance 0 from the hit -->
+        <string id="eLcjxP3j" text="적중 시 거리 0에서의 피해"/>
+        <!-- Max Agents To Damage -->
+        <string id="GpuS1lb5" text="손상시킬 최대 에이전트"/>
+        <!-- Maximum number of agents that can be affected -->
+        <string id="ZFsDLtEj" text="영향을 받을 수 있는 최대 에이전트 수"/>
+        <!-- Damage Type -->
+        <string id="zfp8aakV" text="손상 유형"/>
+        <!-- Damage type -->
+        <string id="VcfFbhYX" text="손상 유형"/>
+        <!-- Hit Behavior -->
+        <string id="MCTf7KFT" text="적중 행위"/>
+        <!-- Flags to apply to the damage -->
+        <string id="Ud0EJmY0" text="손상에 적용할 플래그"/>
+
+        <!-- {Distance}m: {Damage}dmg -->
+        <string id="GRtsL26e" text="{Distance}m: {Damage}dmg"/>
+        <!-- {Damage}dmg in {Distance}m with {HitBehavior} -->
+        <string id="S5DNQWpQ" text="{Damage}dmg in {Distance}m with {HitBehavior}"/>
+        <!-- {Damage}dmg in {Distance}m -->
+        <string id="MzOdRykr" text="{Damage}dmg in {Distance}분"/>
+        
+        <!-- AddHealthPower -->
+        <!-- Add Health Power -->
+        <string id="ZbxNmvem" text="체력 추가"/>
+        <!-- Adds fixed or relative amount of extra HP to the hero when they spawn -->
+        <string id="NlJXiSkn" text="영웅이 스폰될 때 고정 또는 상대적인 추가 HP를 추가합니다."/>
+        <!-- Health Modifier Percent -->
+        <string id="EQ16SH5A" text="건강 수정자 백분율"/>
+        <!-- Modifier to apply to base HP -->
+        <string id="Dr2whvVV" text="기본 HP에 적용되는 수정자"/>
+        <!-- Health To Add -->
+        <string id="pnr7P9sj" text="추가할 건강"/>
+        <!-- How much HP to add (applied after Modifier) -->
+        <string id="sprkIlxQ" text="추가할 HP량(Modifier 후 적용)"/>
+
+        <!-- ReflectDamagePower -->
+        <!-- Reflect Damage Power -->
+        <string id="7d0IdABV" text="데미지 파워 반사"/>
+        <!-- Adds fixed or relative amount of extra HP to the hero when they spawn -->
+        <string id="jcNZx1M0" text="영웅이 스폰될 때 고정 또는 상대적인 추가 HP를 추가합니다."/>
+        <!-- Reflect Percent -->
+        <string id="buBZhrP0" text="반영 비율"/>
+        <!-- What percent of damage to reflect back to attacker -->
+        <string id="ibxqpdtD" text="공격자에게 반사되는 피해의 비율"/>
+        <!-- Reflected Damage Is Subtracted -->
+        <string id="IxiHjT1Z" text="반사 피해 차감"/>
+        <!-- Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection) -->
+        <string id="Pdg6mCPA" text="반사되는 피해도 영웅이 받는 피해에서 차감되는지 여부(이것이 &amp;#39;클래식&amp;#39; 피해 반사)"/>
+        <!-- Hit Behavior -->
+        <string id="WDRb4mQ3" text="적중 행위"/>
+        <!-- Hit behavior for the reflected damage -->
+        <string id="SHlCPdpp" text="반사 피해에 대한 타격 동작"/>
+        <!-- Reflect {ReflectPercent}% damage with {HitBehavior} -->
+        <string id="vLGJf7ow" text="반영 {ReflectPercent}% damage with {HitBehavior}"/>
+        <!-- Reflect {ReflectPercent}% damage -->
+        <string id="12tMrCY7" text="{ReflectPercent}% 피해 반사"/>
+        <!-- Reflect -->
+        <string id="mDczhD1H" text="비추다"/>
+        <!-- Reflected damage is subtracted from incoming damage -->
+        <string id="yfmwtdMC" text="반사 피해는 받는 피해에서 차감됩니다."/>
+        
+        <!-- StatModifyPower -->
+        <!-- Stat Modify Power -->
+        <string id="pVdYFJNQ" text="스탯 수정 파워"/>
+        <!-- Applies modifiers to various character stats -->
+        <string id="AOaW2ORo" text="다양한 캐릭터 통계에 수정자를 적용합니다."/>
+        <!-- Modifiers -->
+        <string id="9gTYAifL" text="수정자"/>
+        <!-- What hero stat to modify -->
+        <string id="URinrDNq" text="수정할 영웅 스탯"/>
+        
+        <!-- TakeDamagePower -->
+        <!-- Take Damage Power -->
+        <string id="UJHquN95" text="데미지 파워 받기"/>
+        <!-- Changes the effects of incoming damage -->
+        <string id="F3TxyV4d" text="받는 피해의 효과를 변경합니다."/>
+        <!-- Damage Modifier Percent -->
+        <string id="jkYLVPpL" text="피해 수정 퍼센트"/>
+        <!-- Damage modifier (set less than 100% to reduce incoming damage, set greater than 100% to increase it) -->
+        <string id="1eJHtO06" text="피해 수정자(100% 미만으로 설정하면 받는 피해가 감소하고 100%보다 크게 설정하면 증가)"/>
+        <!-- Damage To Add -->
+        <string id="4XgEPe3Q" text="추가할 피해"/>
+        <!-- How much damage to add or subtract -->
+        <string id="wuOM9C4l" text="추가하거나 빼야 할 피해량"/>
+        <!-- Add Hit Behavior -->
+        <string id="2JFBV975" text="적중 동작 추가"/>
+        <!-- Behaviors to add to the damage (e.g. add Shrug Off to ensure the hero is never stunned when hit) -->
+        <string id="9t2oXdqy" text="피해에 추가할 동작(예: 공격을 받았을 때 영웅이 기절하지 않도록 어깨를 으쓱하는 동작 추가)"/>
+        <!-- Remove Hit Behavior -->
+        <string id="GLAvDJl5" text="적중 행위 제거"/>
+        <!-- Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit) -->
+        <string id="oA2TrarN" text="피해를 제거하기 위한 행동(예: 영웅이 공격을 받았을 때 항상 기절하도록 어깨를 으쓱하는 것을 제거)"/>
+        <!-- Armor To Ignore Percent -->
+        <string id="9Lwkwni0" text="퍼센트 무시 방어구"/>
+        <!-- What fraction (0 to 1) of armor to ignore when applying damage -->
+        <string id="wSkoeVw1" text="피해를 줄 때 무시할 갑옷의 비율(0~1)"/>
+        <!-- {DamageModifierPercent}% damage -->
+        <string id="stFtZvfp" text="{DamageModifierPercent}% 피해"/>
+        <!-- Damage -->
+        <string id="GrBznDeq" text="손상"/>
+    </strings>
+</base>
