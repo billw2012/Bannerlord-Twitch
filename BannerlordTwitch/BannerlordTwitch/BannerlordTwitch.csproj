@@ -418,9 +418,6 @@
         <Page Include="UI\RangeIntControl.xaml" />
         <Page Include="UI\SliderFloatControl.xaml" />
     </ItemGroup>
-    <ItemGroup>
-      <Folder Include="_Module\ModuleData\Languages\TR" />
-    </ItemGroup>
 
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     

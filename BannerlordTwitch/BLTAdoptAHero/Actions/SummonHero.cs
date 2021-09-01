@@ -58,25 +58,25 @@ namespace BLTAdoptAHero
         [CategoryOrder("Kill Effects", 4)]
         private class Settings : IDocumentable
         {
-            [LocDisplayName("{=DkCdNiwF}AllowFieldBattle"),
+            [LocDisplayName("{=DkCdNiwF}Allow Field Battle"),
              LocCategory("Allowed Missions", "{=i8P1EnE1}Allowed Missions"), 
              LocDescription("{=ddjUyXpV}Can summon for normal field battles between parties"), 
              PropertyOrder(1), UsedImplicitly]
             public bool AllowFieldBattle { get; set; }
             
-            [LocDisplayName("{=yVz54Nky}AllowVillageBattle"),
+            [LocDisplayName("{=yVz54Nky}Allow Village Battle"),
              LocCategory("Allowed Missions", "{=i8P1EnE1}Allowed Missions"), 
              LocDescription("{=buLH4Spj}Can summon in village battles"), 
              PropertyOrder(2), UsedImplicitly]
             public bool AllowVillageBattle { get; set; }
             
-            [LocDisplayName("{=0X8bcuPE}AllowSiegeBattle"),
+            [LocDisplayName("{=0X8bcuPE}Allow Siege Battle"),
              LocCategory("Allowed Missions", "{=i8P1EnE1}Allowed Missions"), 
              LocDescription("{=uk1kL79V}Can summon in sieges"), 
              PropertyOrder(3), UsedImplicitly]
             public bool AllowSiegeBattle { get; set; }
             
-            [LocDisplayName("{=Sd1jguGc}AllowFriendlyMission"),
+            [LocDisplayName("{=Sd1jguGc}Allow Friendly Mission"),
              LocCategory("Allowed Missions", "{=i8P1EnE1}Allowed Missions"), 
              LocDescription("{=1HaljOia}This includes walking about village/town/dungeon/keep"), 
              PropertyOrder(4), UsedImplicitly]

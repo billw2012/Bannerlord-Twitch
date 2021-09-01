@@ -641,13 +641,13 @@
         <string id="tYGvtYKd" text="Effects"/>
         
         <!-- AllowFieldBattle -->
-        <string id="DkCdNiwF" text="AllowFieldBattle"/>
+        <string id="DkCdNiwF" text="Allow Field Battle"/>
         <!-- AllowVillageBattle -->
-        <string id="yVz54Nky" text="AllowVillageBattle"/>
+        <string id="yVz54Nky" text="Allow Village Battle"/>
         <!-- AllowSiegeBattle -->
-        <string id="0X8bcuPE" text="AllowSiegeBattle"/>
+        <string id="0X8bcuPE" text="Allow Siege Battle"/>
         <!-- AllowFriendlyMission -->
-        <string id="Sd1jguGc" text="AllowFriendlyMission"/>
+        <string id="Sd1jguGc" text="Allow Friendly Mission"/>
         <!-- Allow Hide Out -->
         <string id="1xJGhP2D" text="Allow Hide Out"/>
         <!-- On Player Side -->
