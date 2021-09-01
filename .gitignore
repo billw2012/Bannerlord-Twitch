@@ -401,3 +401,5 @@ BannerlordTwitch/BLTConfigure/Properties/AssemblyInfo.cs
 AutoTranslate/.idea/
 
 AutoTranslate/.venv/
+
+AutoTranslate/.key/

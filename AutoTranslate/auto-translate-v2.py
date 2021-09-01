@@ -1,6 +1,7 @@
 import argparse
 from lxml import etree
-from pygoogletranslation import Translator
+import six
+from google.cloud import translate_v2
 import re
 import os
 import time
@@ -13,8 +14,9 @@ def namespace(element):
     return m.group(1) if m else ''
 
 
-def translate(source_file, language, language_code):
-    translator = Translator()
+def translate(source_file, language, language_code, subdir, service_account_file, allow_replace):
+    translate_client = translate_v2.Client.from_service_account_json(service_account_file)
+
     tree = etree.parse(source_file)
     root = tree.getroot()
     ns_map = {'': namespace(root)}
@@ -22,9 +24,13 @@ def translate(source_file, language, language_code):
     tag = tags.find('tag', ns_map)
     tag.set('language', language)
 
-    target_file = os.path.join(os.path.dirname(source_file), language_code.upper(), os.path.basename(source_file))
+    if not subdir:
+        subdir = language_code.upper()
 
-    if os.path.isfile(target_file):
+    filebase, ext = os.path.splitext(os.path.basename(source_file))
+    target_file = os.path.join(os.path.dirname(source_file), subdir, f'{filebase}-{subdir}{ext}')
+
+    if not allow_replace and os.path.isfile(target_file):
         print(f'Target file already exists, skipping {source_file}')
         return
 
@@ -32,7 +38,7 @@ def translate(source_file, language, language_code):
         tag = s.get('text')
         return tag and tag.strip()
 
-    tags = filter(non_empty_tag, root.find('strings', ns_map).findall('string', ns_map))
+    tags = list(filter(non_empty_tag, root.find('strings', ns_map).findall('string', ns_map)))
     strings = [tag.get('text') for tag in tags]
 
     if len(strings) == 0:
@@ -49,7 +55,7 @@ def translate(source_file, language, language_code):
 
     def unesc(s, unique_matches):
         for idx, m in enumerate(unique_matches):
-            s = s.replace(f'{{{idx}}}', '{' + m + '}')
+            s = s.replace(f'{{{idx}}}', '{' + m + '}').replace('\u00A0', '')
         return s
 
     escaped_strings = [esc(s) for s in strings]
@@ -68,27 +74,33 @@ def translate(source_file, language, language_code):
             yield lst[i:i + n]
 
     translations = []
-
-    print('  ', end='')
-    try:
-        CHUNK_SIZE = 50
-        for idx, c in enumerate(chunks(translatable_strings, CHUNK_SIZE)):
-            print(f'{int(CHUNK_SIZE * idx * 100 / len(translatable_strings))}%..', end='')
-            ct = translator.translate(c, src='en', dest=language_code)
-            if type(ct) == list:
-                translations.extend(ct)
-            elif ct:
-                translations.append(ct)
-            time.sleep(3)
-        print(f'100%')
-    except KeyboardInterrupt:
-        raise
-    except Exception as e:
-        print('\n  Error occurred while translating, try again: ', e)
-        return
+    CHUNK_SIZE = 10
+    for idx, c in enumerate(chunks(translatable_strings, CHUNK_SIZE)):
+        print(f'{int(CHUNK_SIZE * idx * 100 / len(translatable_strings))}%..', end='')
+        tchunk = translate_client.translate(c, source_language='en', target_language=language_code)
+        ct = [t["translatedText"] for t in tchunk]
+        translations.extend(ct)
+    print(f'100%')
+    # try:
+    #     translations = translate_client.translate(translatable_strings, source_language='en', target_language=language_code)
+    #     # CHUNK_SIZE = 50
+    #     # for idx, c in enumerate(chunks(translatable_strings, CHUNK_SIZE)):
+    #     #     print(f'{int(CHUNK_SIZE * idx * 100 / len(translatable_strings))}%..', end='')
+    #     #     ct = translator.translate(c, src='en', dest=language_code)
+    #     #     if type(ct) == list:
+    #     #         translations.extend(ct)
+    #     #     elif ct:
+    #     #         translations.append(ct)
+    #     #     time.sleep(3)
+    #     # print(f'100%')
+    # except KeyboardInterrupt:
+    #     raise
+    # except Exception as e:
+    #     print('  Error occurred while translating, try again: ', e)
+    #     return
 
     for tag, e, t in zip(tags, string_escapes, translations):
-        tag.set('text', unesc(t.text, e))
+        tag.set('text', unesc(t, e))
 
     os.makedirs(os.path.dirname(target_file), exist_ok=True)
     etree.ElementTree(root).write(target_file, encoding="utf-8", xml_declaration=True, pretty_print=True)
@@ -99,10 +111,13 @@ if __name__ == "__main__":
     parser.add_argument('glob_patterns', metavar='glob', type=str, nargs='+',
                         help='globs (wild card patterns) describing what files to translate, '
                              'output file is determined automatically')
+    parser.add_argument('--account', dest='service_account_file', action='store', help='Path to Google Service Account Credentials json file', required=True)
     parser.add_argument('--lang', dest='lang', action='store', help='Bannerlord language name',
                         required=True)
+    parser.add_argument('--replace', dest='replace', action='store_true', help='Allow replacing of existing translation files (WARNING: overwrites any manual changes in the target file)')
     parser.add_argument('--lang-code', dest='langcode', action='store', help='international language code for translation',
                         required=True)
+    parser.add_argument('--subdir-override', dest='subdiroverride', action='store', help='Subdirectory override (usually it is uppercased lang-code)')
     args = parser.parse_args()
 
     expanded_files = [glob.glob(g, recursive=True) for g in args.glob_patterns]
@@ -112,4 +127,4 @@ if __name__ == "__main__":
         print('No files found matching the provided globs!')
     else:
         for f in unique_files:
-            translate(f, args.lang, args.langcode)
+            translate(f, args.lang, args.langcode, args.subdiroverride, args.service_account_file, args.replace)

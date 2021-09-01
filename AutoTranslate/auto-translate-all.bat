@@ -1,0 +1,15 @@
+@echo off
+chcp 65001
+cd /d "%~dp0"
+python auto-translate-v2.py --lang Português --lang-code pt --subdir-override BR --replace --account "%~dp0.key\bannerlordtwitch-d69ae5f7983a.json" "%~dp0..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
+python auto-translate-v2.py --lang 简体中文 --lang-code zh --subdir-override CNs --replace --account "%~dp0.key\bannerlordtwitch-d69ae5f7983a.json" "%~dp0..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
+python auto-translate-v2.py --lang 繁體中文 --lang-code zh-HK --subdir-override CNt --replace --account "%~dp0.key\bannerlordtwitch-d69ae5f7983a.json" "%~dp0..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
+python auto-translate-v2.py --lang Deutsch --lang-code de --replace --account "%~dp0.key\bannerlordtwitch-d69ae5f7983a.json" "%~dp0..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
+python auto-translate-v2.py --lang Français --lang-code fr --replace --account "%~dp0.key\bannerlordtwitch-d69ae5f7983a.json" "%~dp0..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
+python auto-translate-v2.py --lang Italiano --lang-code it --replace --account "%~dp0.key\bannerlordtwitch-d69ae5f7983a.json" "%~dp0..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
+python auto-translate-v2.py --lang 日本語 --lang-code jp --replace --account "%~dp0.key\bannerlordtwitch-d69ae5f7983a.json" "%~dp0..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
+python auto-translate-v2.py --lang 한국인 --lang-code ko --replace --account "%~dp0.key\bannerlordtwitch-d69ae5f7983a.json" "%~dp0..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
+python auto-translate-v2.py --lang Polski --lang-code pl --replace --account "%~dp0.key\bannerlordtwitch-d69ae5f7983a.json" "%~dp0..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
+python auto-translate-v2.py --lang Pусский --lang-code ru --replace --account "%~dp0.key\bannerlordtwitch-d69ae5f7983a.json" "%~dp0..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
+python auto-translate-v2.py --lang Español --lang-code sp --replace --account "%~dp0.key\bannerlordtwitch-d69ae5f7983a.json" "%~dp0..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
+python auto-translate-v2.py --lang Türkçe --lang-code tr --replace --account "%~dp0.key\bannerlordtwitch-d69ae5f7983a.json" "%~dp0..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
