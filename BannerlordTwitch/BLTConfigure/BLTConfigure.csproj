@@ -173,7 +173,6 @@
     <ItemGroup>
         <Content Include="FodyWeavers.xml" />
         <Content Include="_Module\ModuleData\Languages\strings-misc.xml" />
-        <Content Include="_Module\ModuleData\Languages\TR\strings-misc.xml" />
     </ItemGroup>
     
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
