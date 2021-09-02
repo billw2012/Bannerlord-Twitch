@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="日本語-BLT"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Common -->
+        <!-- Reward {ITEMNAME} -->
+        <string id="W47g8bCB" text="報酬{ITEMNAME}"/>
+        <!-- {viewer} is {name}! -->
+        <string id="TAWcPGIc" text="{viewer} is {name}！"/>
+        
+        <!-- {ITEMNAME} of Fealty -->
+        <string id="IvV04W31" text="忠誠の{ITEMNAME}"/>
+        <!-- Renegades {ITEMNAME} -->
+        <string id="UQtSgnog" text="反逆者{ITEMNAME}"/>
+        <!-- Stream Sniper {ITEMNAME} -->
+        <string id="xI41h8NA" text="ストリームスナイパー{ITEMNAME}"/>
+        
+        <!-- Reliable -->
+        <string id="ODWiNBng" text="信頼性のある"/>
+        <!-- Trusted -->
+        <string id="fWTqF2sw" text="信頼できる"/>
+        <!-- Loyal -->
+        <string id="fe9J8von" text="忠実"/>
+        <!-- Rebellious -->
+        <string id="HdYFegeb" text="反抗的"/>
+        <!-- Traitorous -->
+        <string id="gDHR7f8r" text="裏切り者"/>
+        <!-- Renegade -->
+        <string id="VEH582e7" text="レネゲード"/>
+        <!-- Stream Sniper -->
+        <string id="Aj0gXKgZ" text="ストリームスナイパー"/>
+        <!-- Killing Spree -->
+        <string id="QNbIUDrh" text="殺し屋"/>
+        <!-- Healthy I -->
+        <string id="dlrzqWyB" text="健康な私"/>
+        <!-- Healthy II -->
+        <string id="QpSDATVx" text="ヘルシーII"/>
+        <!-- Healthy III -->
+        <string id="Cqkht54y" text="ヘルシーIII"/>
+        <!-- Fragile I -->
+        <string id="qA2f6xBp" text="壊れやすい私"/>
+        <!-- Fragile II -->
+        <string id="Hyuf4TSH" text="壊れやすいII"/>
+        <!-- Fragile III -->
+        <string id="v0ACBXmv" text="壊れやすいIII"/>
+        <!-- Vampiric I -->
+        <string id="mJQ88gTg" text="ヴァンパイアI"/>
+        <!-- Vampiric II -->
+        <string id="EHkU2FPe" text="ヴァンパイアII"/>
+        <!-- Vampiric III -->
+        <string id="gDsSjnnd" text="ヴァンパイアIII"/>
+        <!-- Heavy Hitting I -->
+        <string id="93p2ZAIG" text="ヘビーヒッティングI"/>
+        <!-- Heavy Hitting II -->
+        <string id="Gm7OdO9y" text="ヘビーヒッティングII"/>
+        <!-- Heavy Hitting III -->
+        <string id="OzBxlGDu" text="ヘビーヒッティングIII"/>
+        <!-- Retribution I -->
+        <string id="0vLSj7KR" text="報復I"/>
+        <!-- Retribution II -->
+        <string id="vC5KggFz" text="報復II"/>
+        <!-- Retribution III -->
+        <string id="bS76hE3e" text="報復III"/>
+        
+        <!-- Fleet Footed I -->
+        <string id="FQKNvxVG" text="Fleet Footed I"/>
+        <!-- Fleet Footed II -->
+        <string id="rgQDzX4f" text="フリートフットII"/>
+        <!-- Fleet Footed III -->
+        <string id="f7L0oLCQ" text="フリートフットIII"/>
+        <!-- Charge I -->
+        <string id="39yFtbp2" text="チャージI"/>
+        <!-- Charge II -->
+        <string id="6IFhNSH3" text="チャージII"/>
+        <!-- Charge III -->
+        <string id="l2eB9avA" text="チャージIII"/>
+        <!-- Better Mount I -->
+        <string id="tqmxzUCq" text="ベターマウントI"/>
+        <!-- Better Mount II -->
+        <string id="izG39s2J" text="ベターマウントII"/>
+        <!-- Better Mount III -->
+        <string id="CVmPJOB4" text="ベターマウントIII"/>
+        <!-- Imposing Mount -->
+        <string id="tv2vTde5" text="印象的なマウント"/>
+        <!-- Imposing -->
+        <string id="fFProg8j" text="堂々とした"/>
+        <!-- Explosive Projectiles I -->
+        <string id="CTqMR9lV" text="爆発物I"/>
+        <!-- Explosive Projectiles II -->
+        <string id="miUEQpaQ" text="爆発性の発射体II"/>
+        <!-- Explosive Projectiles III -->
+        <string id="o2XgVhjA" text="爆発性の発射体III"/>
+        <!-- Fireblade I -->
+        <string id="7b7BkwRo" text="ファイアブレードI"/>
+        <!-- Fireblade II -->
+        <string id="d8BUyJ5i" text="ファイアブレードII"/>
+        <!-- Fireblade III -->
+        <string id="VGqA25nN" text="ファイアブレードIII"/>
+        <!-- Charge AoE I -->
+        <string id="R8u1d7M6" text="AoEIを充電する"/>
+        <!-- Charge AoE II -->
+        <string id="lO56Rq9E" text="AoEIIを充電する"/>
+        <!-- Charge AoE III -->
+        <string id="X5LQvC0o" text="AoEIIIを充電する"/>
+        <!-- Ranger I -->
+        <string id="7XNfzok8" text="レンジャーI"/>
+        <!-- Ranger II -->
+        <string id="HxpAtast" text="レンジャーII"/>
+        <!-- Ranger III -->
+        <string id="7YSCRTCg" text="レンジャーIII"/>
+
+        <!-- Heavy Projectiles I -->
+        <string id="r0Wn7FXu" text="重い発射体I"/>
+        <!-- Heavy Projectiles II -->
+        <string id="XXL8aXIK" text="重い発射体II"/>
+        <!-- Heavy Projectiles III -->
+        <string id="H3r0Zh8E" text="重い発射体III"/>
+        <!-- Crush Through I -->
+        <string id="xwlvLfJX" text="クラッシュスルーI"/>
+        <!-- Crush Through II -->
+        <string id="7FJTIVa4" text="クラッシュスルーII"/>
+        <!-- Crush Through III -->
+        <string id="dQqwtBEE" text="クラッシュスルーIII"/>
+        <!-- Knock Down I -->
+        <string id="MKUCQtsr" text="ノックダウンI"/>
+        <!-- Knock Down II -->
+        <string id="KUdqJrOY" text="ノックダウンII"/>
+        <!-- Knock Down III -->
+        <string id="Uc4Cai9H" text="ノックダウンIII"/>
+        <!-- Cut Through I -->
+        <string id="VsZLMOHX" text="カットスルーI"/>
+        <!-- Cut Through II -->
+        <string id="yXj1jqxx" text="カットスルーII"/>
+        <!-- Cut Through III -->
+        <string id="R537vuN0" text="カットスルーIII"/>
+        <!-- Shatter Shield I -->
+        <string id="89ezJ7aW" text="シャッターシールドI"/>
+        <!-- Shatter Shield II -->
+        <string id="Dvjkoxi3" text="シャッターシールドII"/>
+        <!-- Shatter Shield III -->
+        <string id="V6RyPIQg" text="シャッターシールドIII"/>
+        <!-- Shrug Off I -->
+        <string id="oyKzNISD" text="肩をすくめる"/>
+        <!-- Shrug Off II -->
+        <string id="zNj3xNd4" text="肩をすくめるII"/>
+        <!-- Shrug Off III -->
+        <string id="5nsSdwel" text="肩をすくめるIII"/>
+        <!-- Athletic I -->
+        <string id="b3DBwSTA" text="アスレチックI"/>
+        <!-- Athletic II -->
+        <string id="oeSxcpzi" text="アスレチックII"/>
+        <!-- Athletic III -->
+        <string id="dMvjTTZb" text="アスレチックIII"/>
+        <!-- Ignore Armor I -->
+        <string id="ngiTK9F9" text="アーマーIを無視する"/>
+        <!-- Ignore Armor II -->
+        <string id="Q7JOJL4l" text="アーマーIIを無視する"/>
+        <!-- Ignore Armor III -->
+        <string id="fLsEduav" text="アーマーIIIを無視する"/>
+    </strings>
+</base>

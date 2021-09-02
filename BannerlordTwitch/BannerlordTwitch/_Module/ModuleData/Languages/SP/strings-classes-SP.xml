@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Español-BLT"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Common -->        
+        <!-- Fireblade -->
+        <string id="yEtkv5ML" text="Espada de fuego"/>
+        <!-- infantry -->
+        <string id="m8bz4drX" text="infantería"/>
+        <!-- Healthy -->
+        <string id="ROXuJJq8" text="Saludable"/>
+        <!-- Explosive Arrows -->
+        <string id="skyn1cL6" text="Flechas explosivas"/>
+        <!-- archer -->
+        <string id="4tflp34a" text="arquero"/>
+        <!-- Fleet Footed -->
+        <string id="NE9Li2Hb" text="Flota de pie"/>
+        <!-- Explosive Arrows -->
+        <string id="xgnH5owv" text="Flechas explosivas"/>
+        <!-- heavyarcher -->
+        <string id="JncRD8tX" text="pescador"/>
+        <!-- Healthy -->
+        <string id="ZrmsIMPE" text="Saludable"/>
+        <!-- Heavy Bolts -->
+        <string id="QZD9XdpC" text="Pernos pesados"/>
+        <!-- crossbow -->
+        <string id="wV6R9Si5" text="ballesta"/>
+        <!-- Self Healing -->
+        <string id="FvNPPHLJ" text="Autocuración"/>
+        <!-- Explosive Bolts -->
+        <string id="7GmE3SfQ" text="Pernos explosivos"/>
+        <!-- heavycrossbow -->
+        <string id="bpzytNbP" text="ballesta pesada"/>
+        <!-- Healthy -->
+        <string id="k7booFb2" text="Saludable"/>
+        <!-- Trample -->
+        <string id="ZEGEpycY" text="Pisotear"/>
+        <!-- cavalry -->
+        <string id="jNaFWF9t" text="caballería"/>
+        <!-- A Good Horse -->
+        <string id="YghplAdF" text="Un buen caballo"/>
+        <!-- Trample -->
+        <string id="mmeJSrm9" text="Pisotear"/>
+        <!-- camelry -->
+        <string id="mJ8RVORq" text="camello"/>
+        <!-- A Good Camel -->
+        <string id="atGMPeNF" text="Un buen camello"/>
+        <!-- Explosive Arrows -->
+        <string id="YpIUHASp" text="Flechas explosivas"/>
+        <!-- horsearcher -->
+        <string id="p5qJfkkp" text="jinete"/>
+        <!-- Mounted Archery -->
+        <string id="zxgdfSIS" text="Tiro con arco montado"/>
+        <!-- Heavy Arrows -->
+        <string id="FrX7AiyI" text="Flechas pesadas"/>
+        <!-- camelarcher -->
+        <string id="HreZWoyd" text="camelarcher"/>
+        <!-- Mounted Archery -->
+        <string id="szdoTAQj" text="Tiro con arco montado"/>
+        <!-- Break Through -->
+        <string id="E3qGC3fs" text="Descubrimiento"/>
+        <!-- skirmisher -->
+        <string id="9euSgzCd" text="tirador escondido"/>
+        <!-- Retribution -->
+        <string id="Lw8xQu1P" text="Venganza"/>
+        <!-- Berserker Rage -->
+        <string id="1DSLInEJ" text="Rabia berserker"/>
+        <!-- berserker -->
+        <string id="wVjXAFal" text="frenético"/>
+        <!-- Glass Cannon -->
+        <string id="nB4Qb0mD" text="Cañón de vidrio"/>
+        <!-- Retribution -->
+        <string id="rzIl9tm3" text="Venganza"/>
+        <!-- looter -->
+        <string id="4JffsJMD" text="saqueador"/>
+        <!-- Grenades -->
+        <string id="nmjVjakS" text="Granadas"/>
+    </strings>
+</base>

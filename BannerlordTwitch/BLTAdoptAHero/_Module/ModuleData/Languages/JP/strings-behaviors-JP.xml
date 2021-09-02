@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="日本語-BLT"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+                
+        <!-- BLTAdoptAHeroCampaignBehavior -->
+        <!-- Compensated @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} invalid custom items -->
+        <string id="hoRPbRrb" text="補正された@ {HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount}無効なカスタムアイテム"/>
+        <!-- @{VictimName} {Verb} by @{KillerName}! -->
+        <string id="PCPU0lPX" text="@ {VictimName} {Verb} by @{KillerName}！"/>
+        <!-- @{KillerName} {Verb}! -->
+        <string id="Bji2ULge" text="@ {KillerName} {Verb}！"/>
+        <!-- @{HeroName} is now level {Level}! -->
+        <string id="8aTmTvl8" text="@ {HeroName} is now level {Level}！"/>
+        <!-- @{HeroName} was taken prisoner by {PartyName}! -->
+        <string id="4PqVnFWY" text="@ {HeroName} was taken prisoner by {PartyName}！"/>
+        <!-- @{HeroName} was taken prisoner! -->
+        <string id="WeRWLpKn" text="@ {HeroName}は捕虜になりました！"/>
+        <!-- @{HeroName} is no longer a prisoner of {PartyName}! -->
+        <string id="tQANBoTK" text="@ {HeroName} is no longer a prisoner of {PartyName}！"/>
+        <!-- @{HeroName} is no longer a prisoner! -->
+        <string id="MQslOwr0" text="@ {HeroName}はもはや囚人ではありません！"/>
+        <!-- @{HeroName} moved from {FromClanName} to {ToClanName}! -->
+        <string id="SUdnIyfw" text="@ {HeroName} moved from {FromClanName} to {ToClanName}！"/>
+        
+        <!-- deceased -->
+        <string id="ZtZL0lbX" text="故人"/>
+        <!-- retired -->
+        <string id="ISrFBorj" text="引退"/>
+        <!-- {OldName} is {RetireType}! -->
+        <string id="2PHPNmuv" text="{OldName} is {RetireType}！"/>
+        <!-- Dead or retired hero {OldName} renamed to {HeroName} -->
+        <string id="wzpkEmTL" text="死んだまたは引退したヒーロー{OldName} renamed to {HeroName}"/>
+
+        <!-- You can't bid on your own item -->
+        <string id="2cbVbW91" text="自分の商品に入札することはできません"/>
+        <!-- Bid of {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon} -->
+        <string id="rbhzuJLm" text="{Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon}の入札"/>
+        <!-- Another bid at {Bid}{GoldIcon} already exists -->
+        <string id="83uZcndH" text="{Bid}{GoldIcon}での別の入札はすでに存在します"/>
+        <!-- You already bid more ({Bid}{GoldIcon}), you can only raise your bid -->
+        <string id="qeLF80xw" text="あなたはすでにもっと入札しました（{Bid}{GoldIcon}）、あなたはあなたの入札を上げることしかできません"/>
+        <!-- You cannot cover a bid of {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon} -->
+        <string id="Cqi0iYNR" text="{Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon}の入札をカバーすることはできません"/>
+        <!-- Bid of {Bid}{GoldIcon} placed! -->
+        <string id="M2B9yQ4w" text="{Bid}{GoldIcon}の入札が行われました！"/>
+        
+        <!-- {Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName}) -->
+        <string id="TeeDJyJ1" text="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName}）"/>
+        <!-- {Time} seconds left in auction of '{ItemName}', no bids placed -->
+        <string id="jNkGaKZw" text="{Time} seconds left in auction of '{ItemName} &amp;#39;、入札なし"/>
+        <!-- Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}. -->
+        <string id="d9ooHVPU" text="{ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}のオークション。"/>
+        <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died. -->
+        <string id="SGuTRcui" text="{ItemName} is CANCELLED! @{ItemOwnerName}のオークションは引退または死亡しました。"/>
+        <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} is no longer in possession of the item. -->
+        <string id="NRV4IstE" text="{ItemName} is CANCELLED! @{ItemOwnerName}のオークションはアイテムを所有しなくなりました。"/>
+        <!-- Auction for {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}. -->
+        <string id="jmbMoHta" text="{ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}のオークション。"/>
+        
+        <!-- No auction in progress -->
+        <string id="Cy38Ckpk" text="オークションは進行中ではありません"/>
+        <!-- Max Retinue Size -->
+        <string id="wAGE7h6U" text="最大従者サイズ"/>
+        <!-- Maximum number of units in the retinue. Recommend less than 20, summons to NOT obey the games unit limits. -->
+        <string id="EOGB8EWN" text="従者の最大ユニット数。 20未満を推奨し、ゲームユニットの制限に従わないように召喚します。"/>
+        <!-- Cost Tier 1 -->
+        <string id="VvdtvdQJ" text="コストティア1"/>
+        <!-- Gold cost for Tier 1 retinue -->
+        <string id="9bvn5R5A" text="Tier1従者のゴールドコスト"/>
+        <!-- Cost Tier 2 -->
+        <string id="engRDMZx" text="コストティア2"/>
+        <!-- Gold cost for Tier 2 retinue -->
+        <string id="pD2ZvRVH" text="Tier2従者のゴールドコスト"/>
+        <!-- Cost Tier 3 -->
+        <string id="3jxmITht" text="コストティア3"/>
+        <!-- Gold cost for Tier 3 retinue -->
+        <string id="dyB8loLF" text="Tier3従者のゴールドコスト"/>
+        <!-- Cost Tier 4 -->
+        <string id="dhwd4ccF" text="コストティア4"/>
+        <!-- Gold cost for Tier 4 retinue -->
+        <string id="aji2HxKa" text="Tier4従者のゴールドコスト"/>
+        <!-- Cost Tier 5 -->
+        <string id="zJkb4AIh" text="コストティア5"/>
+        <!-- Gold cost for Tier 5 retinue -->
+        <string id="fnEOFst7" text="Tier5従者のゴールドコスト"/>
+        <!-- Cost Tier 6 -->
+        <string id="1hh3cOJO" text="コストティア6"/>
+        <!-- Gold cost for Tier 6 retinue -->
+        <string id="PieENBSG" text="Tier6従者のゴールドコスト"/>
+        <!-- Troop Types -->
+        <string id="qYhM3gcn" text="部隊の種類"/>
+        <!-- Use Heroes Culture Units -->
+        <string id="q1Rkm3Rq" text="Heroesカルチャーユニットを使用する"/>
+        <!-- Whether to use the adopted hero's culture (if not enabled then a random one is used) -->
+        <string id="9qAD6eZR" text="採用されたヒーローの文化を使用するかどうか（有効になっていない場合はランダムな文化が使用されます）"/>
+        <!-- Include Bandit Units -->
+        <string id="dbU7WEKG" text="盗賊ユニットを含める"/>
+        <!-- Whether to allow bandit units when UseHeroesCultureUnits is disabled -->
+        <string id="06KnYhyh" text="UseHeroesCultureUnitsが無効になっているときに盗賊ユニットを許可するかどうか"/>
+        <!-- Use Basic Troops -->
+        <string id="E2RBmb1K" text="基本部隊を使用する"/>
+        <!-- Whether to allow basic troops -->
+        <string id="uPwaOKdT" text="基本的な軍隊を許可するかどうか"/>
+        <!-- Use Elite Troops -->
+        <string id="lnz7d1BI" text="エリート部隊を使用する"/>
+        <!-- Whether to allow elite troops -->
+        <string id="EPr2clqT" text="エリート部隊を許可するかどうか"/>
+        <!-- Max retinue -->
+        <string id="UhUpH8C8" text="最大従者"/>
+        <!-- Tier costs -->
+        <string id="VBuncBq5" text="ティアコスト"/>
+        <!-- Same culture only -->
+        <string id="R7rU0TbD" text="同じ文化のみ"/>
+        <!-- Bandits -->
+        <string id="c2qOsXvs" text="盗賊"/>
+        <!-- Basic troops -->
+        <string id="RmTwEFzy" text="基本部隊"/>
+        <!-- Elite troops -->
+        <string id="3gumlthG" text="エリート部隊"/>
+        <!-- Allowed -->
+        <string id="uL7MfYPc" text="許可された"/>
+        <!-- No valid troop types could be found, please check out settings -->
+        <string id="bBCyH0vV" text="有効な部隊タイプが見つかりませんでした。設定を確認してください"/>
+        <!-- Spent {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} remaining -->
+        <string id="zcbOq6Tb" text="使用済み{TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon}残り"/>
+        <!-- Can't upgrade retinue any further! -->
+        <string id="PQRLJ04i" text="これ以上従者をアップグレードすることはできません！"/>
+        <!-- was murdered -->
+        <string id="LhHul2lV" text="殺害されました"/>
+        <!-- died in labor -->
+        <string id="HwjR45XN" text="陣痛で亡くなりました"/>
+        <!-- died of old age -->
+        <string id="5GOjfkzW" text="老齢で亡くなりました"/>
+        <!-- died in battle -->
+        <string id="ZKrgqWav" text="戦いで死んだ"/>
+        <!-- was wounded in battle -->
+        <string id="jp4sldTL" text="戦闘で負傷した"/>
+        <!-- was executed -->
+        <string id="SkFFXsI1" text="処刑された"/>
+        <!-- was lost -->
+        <string id="HMHdXDaK" text="失われました"/>
+        <!-- was ended -->
+        <string id="lrOJnThZ" text="終了しました"/>
+        
+        <!-- BLTTournamentBetMissionBehavior -->
+        <!-- Betting is now OPEN for round {RoundIndex} match: {Teams}! -->
+        <string id="wgGkXkyh" text="ラウンド{RoundIndex} match: {Teams}の賭けが開始されました！"/>
+        <!-- Betting is now OPEN for final match: {Teams}! -->
+        <string id="9BjHfivM" text="ファイナルマッチの賭けが開始されました：{Teams}！"/>
+        <!-- vs -->
+        <string id="ixTCiaiv" text="vs"/>
+        <!-- blue -->
+        <string id="HrIifwJy" text="青"/>
+        <!-- red -->
+        <string id="6ZGgsbe1" text="赤"/>
+        <!-- green -->
+        <string id="qQZlsD8r" text="緑"/>
+        <!-- yellow -->
+        <string id="JelyrtLJ" text="黄"/>
+        <!-- Tournament is not active -->
+        <string id="FEZ1Opj1" text="トーナメントはアクティブではありません"/>
+        <!-- Betting is disabled -->
+        <string id="uNUyZhDk" text="賭けは無効です"/>
+        <!-- Betting is closed -->
+        <string id="APTqGlHh" text="賭けは締め切られました"/>
+        <!-- Betting is only allowed on the final -->
+        <string id="7yFW99H8" text="賭けは決勝でのみ許可されます"/>
+        <!-- Betting is not open -->
+        <string id="ATdvJKFI" text="賭けは開かれていません"/>
+        <!-- Team name must be one of {Teams} -->
+        <string id="1rUYWox8" text="チーム名は{Teams}のいずれかである必要があります"/>
+        <!-- You can only bet on one team -->
+        <string id="7iveTGQp" text="1つのチームにのみ賭けることができます"/>
+        <!-- Betting is now CLOSED: only one team bet on, bets refunded -->
+        <string id="Nm96SVXt" text="賭けは終了しました：1つのチームのみが賭け、賭けは返金されます"/>
+        <!-- Betting is now CLOSED: no bets placed -->
+        <string id="GrI9bFCf" text="賭けは終了しました：賭けは行われません"/>
+        <!-- Betting is now CLOSED: {TotalBets} -->
+        <string id="Hj3oYnE0" text="賭けは終了しました：{TotalBets}"/>
+        <!-- REFUNDED {Bet}{GoldIcon} bet -->
+        <string id="u4mPf1p0" text="払い戻し済みの{Bet}{GoldIcon}ベット"/>
+        <!-- WON BET -->
+        <string id="majAmqDm" text="勝ちました"/>
+        
+        <!-- BLTTournamentMissionBehavior -->
+        <!-- WINNER! -->
+        <string id="jb5vaUCD" text="勝者！"/>
+        <!-- no prize available for you! -->
+        <string id="80PitGR4" text="賞品はありません！"/>
+        
+        <!-- BLTTournamentQueueBehavior -->
+        <!-- You are already in the tournament queue! -->
+        <string id="JtZIstbB" text="あなたはすでにトーナメントキューに入っています！"/>
+        <!-- You are position {QueuePosition} in the tournament queue! -->
+        <string id="1duM11Gt" text="あなたはトーナメントキューの位置{QueuePosition}です！"/>
+    </strings>
+</base>

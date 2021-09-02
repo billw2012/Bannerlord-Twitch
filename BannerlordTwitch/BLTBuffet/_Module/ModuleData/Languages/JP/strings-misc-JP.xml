@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="日本語-BLT"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- AddGoldToPlayer -->
+        <!-- Add Gold To Player -->
+        <string id="HSuPuNDk" text="プレイヤーにゴールドを追加"/>
+        <!-- Allows viewers to give the player gold, either for channel points and/or from their own hero -->
+        <string id="wqR23RYf" text="視聴者がチャンネルポイントや自分のヒーローからプレーヤーにゴールドを与えることができます"/>
+        <!-- Gold Amount To Give -->
+        <string id="F51J5Qd5" text="与える金の量"/>
+        <!-- How much gold to give the player -->
+        <string id="Jg6qoYth" text="プレイヤーに与えるゴールドの量"/>
+        <!-- From Adopted Hero -->
+        <string id="yGnwXshi" text="養子縁組ヒーローから"/>
+        <!-- Whether to take the gold from the viewers adopted hero -->
+        <string id="uL8hjmZ9" text="視聴者採用ヒーローから金を取るかどうか"/>
+        <!-- Alert Sound -->
+        <string id="sNkcGnrw" text="アラート音"/>
+        <!-- Alert sound to play for the message -->
+        <string id="TSi4MZiT" text="メッセージに対して再生するアラート音"/>
+        <!-- {UserName} gives you {GoldAmountToGive} gold -->
+        <string id="awjXw6yr" text="{UserName} gives you {GoldAmountToGive}ゴールド"/>
+        <!-- {UserName} gives you {GoldAmountToGive} gold: '{Message}' -->
+        <string id="jOqdrS7h" text="{UserName} gives you {GoldAmountToGive} gold: '{Message} &amp;#39;"/>
+        <!-- Sent {GoldAmountToGive}{GoldIcon} to {PlayerName} -->
+        <string id="ziWoNEec" text="{GoldAmountToGive}{GoldIcon} to {PlayerName}を送信しました"/>
+        
+        <!-- CharacterEffect -->
+        <!-- Applies effects to a character / the player -->
+        <string id="aGfP5X2q" text="キャラクター/プレイヤーにエフェクトを適用します"/>
+        <!-- No mission is active! -->
+        <string id="ZXxpMpYi" text="アクティブなミッションはありません！"/>
+        <!-- Not allowed during tournament! -->
+        <string id="aK6wEWqw" text="トーナメント中は許可されていません！"/>
+        <!-- The mission has not started yet! -->
+        <string id="0H0dMWam" text="ミッションはまだ始まっていません！"/>
+        <!-- The mission is ending! -->
+        <string id="f3Cwg2lw" text="ミッションは終了です！"/>
+        <!-- Couldn't find the target! -->
+        <string id="duuvGgDi" text="ターゲットが見つかりませんでした！"/>
+        <!-- CharacterEffect {Source} configuration error: Name is missing! -->
+        <string id="hr0ye4gl" text="CharacterEffect {Source}構成エラー：名前がありません！"/>
+        <!-- {Target} already affected by {Config}! -->
+        <string id="yZuAmGOU" text="{Target} already affected by {Config}！"/>
+        <!-- {Target} is mounted so cannot be affected by {Config}! -->
+        <string id="gZtqmx0D" text="{Target} is mounted so cannot be affected by {Config}！"/>
+        <!-- {Config} is active on {Target}! -->
+        <string id="1S6mDVBM" text="{Config} is active on {Target}！"/>
+        <!-- {Config} is active on {Target}! -->
+        <string id="uV2gZjHI" text="{Config} is active on {Target}！"/>
+        <!-- {Config} expired on {Target}! -->
+        <string id="lpdl3sj9" text="{Config} expired on {Target}！"/>
+
+        <!-- CharacterEffect.Config -->
+        <!-- Player -->
+        <string id="92tZqqRy" text="プレーヤー"/>
+        <!-- AdoptedHero -->
+        <string id="jyNFgLUD" text="AdoptedHero"/>
+        <!-- Any -->
+        <string id="qVaXXiEf" text="どれでも"/>
+        <!-- EnemyTeam -->
+        <string id="Dc99H7LD" text="EnemyTeam"/>
+        <!-- PlayerTeam -->
+        <string id="mWL1kGwD" text="PlayerTeam"/>
+        <!-- AllyTeam -->
+        <string id="8rqexAvY" text="AllyTeam"/>
+        <!-- Random -->
+        <string id="o3jTIv2S" text="ランダム"/>
+        <!-- On Weapon -->
+        <string id="ry3Fo3Ph" text="武器について"/>
+        <!-- On Hands -->
+        <string id="zfQ43utW" text="手に"/>
+        <!-- On Head -->
+        <string id="P9e57ey1" text="頭の上"/>
+        <!-- On Body -->
+        <string id="GZC5VUo0" text="体に"/>
+        <!-- Particle Effect Definition -->
+        <string id="F9u231DX" text="パーティクルエフェクトの定義"/>
+        <!-- Particle effect system name, see ParticleEffects.txt for the full vanilla list -->
+        <string id="8FGAgHIX" text="パーティクルエフェクトシステム名。完全なバニラリストについては、ParticleEffects.txtを参照してください。"/>
+        <!-- Attach Point -->
+        <string id="7MIO0dPq" text="アタッチポイント"/>
+        <!-- Where to attach the particles -->
+        <string id="jEEtBaKs" text="粒子を付着させる場所"/>
+        <!-- The property to modify -->
+        <string id="Dx5HUb1Q" text="変更するプロパティ"/>
+        <!-- Add -->
+        <string id="Qu3sbJvR" text="追加"/>
+        <!-- Add to the property value -->
+        <string id="anOigmfO" text="プロパティ値に追加"/>
+        <!-- Multiply -->
+        <string id="AQ7g1RuJ" text="かける"/>
+        <!-- Multiply the property value -->
+        <string id="35zcHc2g" text="プロパティ値を乗算します"/>
+        <!-- Name to use when referring to this effect -->
+        <string id="KdxwhYu6" text="この効果を参照するときに使用する名前"/>
+        <!-- Target -->
+        <string id="hCfdaELu" text="目標"/>
+        <!-- Target of the effect -->
+        <string id="5bWknsD5" text="効果の対象"/>
+        <!-- Target On Foot Only -->
+        <string id="wbj9ztiI" text="足のみをターゲット"/>
+        <!-- Will target unmounted soldiers only -->
+        <string id="RptjkipN" text="マウントされていない兵士のみをターゲットにします"/>
+        <!-- Particle Effects -->
+        <string id="j7t8cjxA" text="パーティクルエフェクト"/>
+        <!-- Particle effects to apply -->
+        <string id="YiUto6gZ" text="適用するパーティクルエフェクト"/>
+        <!-- Properties -->
+        <string id="CN0a7XhW" text="プロパティ"/>
+        <!-- Properties to change, and how much by -->
+        <string id="JrmttiBW" text="変更するプロパティとその量"/>
+        <!-- Heal Per Second -->
+        <string id="trYxwNFg" text="1秒あたりの回復"/>
+        <!-- Heal amount per second -->
+        <string id="J19JbB4E" text="1秒あたりの回復量"/>
+        <!-- Damage Per Second -->
+        <string id="6Ikuo9Yl" text="毎秒のダメージ"/>
+        <!-- Damage amount per second -->
+        <string id="cQBHZWwK" text="1秒あたりのダメージ量"/>
+        <!-- Duration -->
+        <string id="KxP51isR" text="間隔"/>
+        <!-- Duration the effect will last for, if not specified the effect will last until the end of the mission -->
+        <string id="1pG6eydt" text="効果が持続する期間指定されていない場合、効果はミッションが終了するまで持続します"/>
+        <!-- Force Drop Weapons -->
+        <string id="rFxwAzgd" text="フォースドロップウェポン"/>
+        <!-- Force agent to drop weapons -->
+        <string id="ZW0x13Y8" text="エージェントに武器を落とすように強制する"/>
+        <!-- Remove Armor -->
+        <string id="vZIAY076" text="アーマーを取り除く"/>
+        <!-- Remove all armor -->
+        <string id="4kiY7cUb" text="すべての鎧を取り除く"/>
+        <!-- Damage Multiplier -->
+        <string id="jJpRuWKR" text="ダメージ乗数"/>
+        <!-- Raw damage multiplier -->
+        <string id="FlfyDMlc" text="生のダメージ乗数"/>
+        <!-- Activate Particle Effect -->
+        <string id="qWGAG5l8" text="パーティクルエフェクトをアクティブにする"/>
+        <!-- One shot vfx to apply when the effect is activated -->
+        <string id="6HT3lQbV" text="エフェクトがアクティブになったときに適用するワンショットvfx"/>
+        <!-- Activate Sound -->
+        <string id="deboEOcD" text="サウンドをアクティブにする"/>
+        <!-- Sound to play when effect is activated, see Sounds.txt for the full vanilla list -->
+        <string id="zZskrilN" text="エフェクトがアクティブになったときに再生されるサウンド。完全なバニラリストについては、Sounds.txtを参照してください。"/>
+        <!-- Deactivate Particle Effect -->
+        <string id="FBH0P3a9" text="パーティクルエフェクトを無効にする"/>
+        <!-- One shot vfx to apply when the effect is deactivated, see ParticleEffects.txt for the full vanilla list -->
+        <string id="u1eFzwLY" text="エフェクトが非アクティブ化されたときに適用するワンショットvfx。完全なバニラリストについては、ParticleEffects.txtを参照してください。"/>
+        <!-- Deactivate Sound -->
+        <string id="zfSYXHms" text="サウンドを非アクティブ化"/>
+        <!-- Sound to play when effect is deactivated, see Sounds.txt for the full vanilla list -->
+        <string id="ziMmWmmY" text="エフェクトが無効になっているときに再生されるサウンド。完全なバニラリストについては、Sounds.txtを参照してください。"/>
+        
+        <!-- SendMessage -->
+        <!-- Send Message -->
+        <string id="rXQWpj95" text="メッセージを送る"/>
+        <!-- Allows viewers to send a message that will appear in game -->
+        <string id="htpylYKb" text="視聴者がゲームに表示されるメッセージを送信できるようにします"/>
+        <!-- Alert Sound -->
+        <string id="Anvcnpbh" text="アラート音"/>
+        <!-- Alert sound to play for the message -->
+        <string id="V36Hg85n" text="メッセージに対して再生するアラート音"/>
+        <!-- No message provided! -->
+        <string id="cA8NQlDm" text="メッセージはありません！"/>
+        <!-- Sent -->
+        <string id="tFHfVCDK" text="送信済"/>
+        
+        <!-- GlobalEffectsConfig -->
+        <!-- Effects Config -->
+        <string id="cBeIA9V1" text="エフェクト構成"/>
+        <!-- Disable Effects In Tournaments -->
+        <string id="cUN7xx0t" text="トーナメントでエフェクトを無効にする"/>
+        <!-- Whether effects are disabled in a tournament -->
+        <string id="X0AtIvbh" text="トーナメントでエフェクトが無効になっているかどうか"/>
+    </strings>
+</base>

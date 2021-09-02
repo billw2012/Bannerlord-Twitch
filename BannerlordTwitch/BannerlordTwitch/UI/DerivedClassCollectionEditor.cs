@@ -28,7 +28,7 @@ namespace BannerlordTwitch.UI
 
         protected override void ResolveValueBinding(PropertyItem propertyItem)
         {
-            Editor.PropertyName = DefaultCollectionEditor.GetQualifiedName(propertyItem); //propertyItem.PropertyDescriptor?.Name.SplitCamelCase();
+            Editor.PropertyName = DefaultCollectionEditor.GetQualifiedName(propertyItem);
             Editor.ItemsSourceType = propertyItem.PropertyType;
             Editor.NewItemTypes = derivedTypes.Value;
             base.ResolveValueBinding(propertyItem);

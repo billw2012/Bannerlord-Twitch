@@ -34,7 +34,7 @@ namespace BannerlordTwitch.Helpers
         public float Apply(float skill) => skill * ModifierPercent / 100f + Add;
 
         [YamlIgnore, Browsable(false)]
-        public string SkillUIName => Skill.ToString().SplitCamelCase();
+        public string SkillUIName => Skill.GetDisplayName();
         
         [YamlIgnore, Browsable(false)]
         public string ModifiersDescription

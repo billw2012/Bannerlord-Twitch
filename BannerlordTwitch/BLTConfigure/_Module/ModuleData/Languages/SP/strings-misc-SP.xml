@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Español-BLT"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- TypeGroupDescription -->
+        <!-- Global Configs -->
+        <string id="S7fvEW5l" text="Configuraciones globales"/>
+        <!-- Channel Rewards -->
+        <string id="xljCKxH7" text="Recompensas del canal"/>
+        <!-- Chat Commands -->
+        <string id="mHkSZwdI" text="Comandos de chat"/>
+        <!-- Sim Testing Config -->
+        <string id="c1lGU26j" text="Configuración de prueba de Sim"/>
+    </strings>
+</base>

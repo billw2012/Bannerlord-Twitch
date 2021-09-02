@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="Français"/>
+        <tag language="Français-BLT"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -143,7 +143,7 @@
         <!-- Damage Modifier Percent -->
         <string id="0mhPe31m" text="Pourcentage du modificateur de dégâts"/>
         <!-- Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it) -->
-        <string id="tXh8oAaE" text="Modificateur de dégâts (défini à moins de 100 % pour réduire les dégâts, défini à plus de 100 % pour les augmenter)"/>
+        <string id="tXh8oAaE" text="Modificateur de dégâts (défini à moins de 100 % pour réduire les dégâts, défini à plus de 100 % pour les augmenter)"/>
         <!-- Damage To Add -->
         <string id="fPmJAchN" text="Dommages à ajouter"/>
         <!-- How much damage to add -->
@@ -320,7 +320,7 @@
         <!-- Reflected Damage Is Subtracted -->
         <string id="IxiHjT1Z" text="Les dommages réfléchis sont soustraits"/>
         <!-- Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection) -->
-        <string id="Pdg6mCPA" text="Si les dégâts réfléchis sont également soustraits des dégâts subis par le héros (il s&amp;#39;agit d&amp;#39;une réflexion de dégâts « classique »)"/>
+        <string id="Pdg6mCPA" text="Si les dégâts réfléchis sont également soustraits des dégâts subis par le héros (il s&amp;#39;agit d&amp;#39;une réflexion de dégâts « classique »)"/>
         <!-- Hit Behavior -->
         <string id="WDRb4mQ3" text="Comportement des coups"/>
         <!-- Hit behavior for the reflected damage -->
@@ -352,7 +352,7 @@
         <!-- Damage Modifier Percent -->
         <string id="jkYLVPpL" text="Pourcentage du modificateur de dégâts"/>
         <!-- Damage modifier (set less than 100% to reduce incoming damage, set greater than 100% to increase it) -->
-        <string id="1eJHtO06" text="Modificateur de dégâts (défini à moins de 100 % pour réduire les dégâts subis, défini à plus de 100 % pour les augmenter)"/>
+        <string id="1eJHtO06" text="Modificateur de dégâts (défini à moins de 100 % pour réduire les dégâts subis, défini à plus de 100 % pour les augmenter)"/>
         <!-- Damage To Add -->
         <string id="4XgEPe3Q" text="Dommages à ajouter"/>
         <!-- How much damage to add or subtract -->

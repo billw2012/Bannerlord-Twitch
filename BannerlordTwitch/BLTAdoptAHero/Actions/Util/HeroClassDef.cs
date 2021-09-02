@@ -115,7 +115,7 @@ namespace BLTAdoptAHero
         // For UI
         [YamlIgnore, Browsable(false)]
         public IEnumerable<string> SlotItemNames 
-            => SlotItems.Select(s => s.ToString().SplitCamelCase());
+            => SlotItems.Select(s => s.GetDisplayName());
         // For UI
         [YamlIgnore, Browsable(false)]
         public string MountDescription 

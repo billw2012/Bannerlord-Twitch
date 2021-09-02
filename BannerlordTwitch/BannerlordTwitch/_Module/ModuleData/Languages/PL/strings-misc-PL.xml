@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="Polski"/>
+        <tag language="Polski-BLT"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -582,5 +582,50 @@
         <string id="1NcKYexo" text="Czar"/>
         <!-- Leadership -->
         <string id="4684bsD7" text="Przywództwo"/>
+
+        <!-- EquipmentType -->
+        <!-- None -->
+        <string id="rMIAZRoT" text="Nic"/>
+        <!-- Dagger -->
+        <string id="2gjNbpQI" text="Sztylet"/>
+        <!-- One Handed Sword -->
+        <string id="OTlpiu1X" text="Miecz jednoręczny"/>
+        <!-- Two Handed Sword -->
+        <string id="LGaaSaY8" text="Miecz dwuręczny"/>
+        <!-- One Handed Axe -->
+        <string id="3teP1CbV" text="Topór jednoręczny"/>
+        <!-- Two Handed Axe -->
+        <string id="AufoIUAI" text="Dwuręczny topór"/>
+        <!-- One Handed Mace -->
+        <string id="74iFLLnE" text="Jednoręczna buława"/>
+        <!-- Two Handed Mace -->
+        <string id="EVEYPnFF" text="Dwuręczna buława"/>
+        <!-- One Handed Lance -->
+        <string id="bvOtwaZm" text="Lanca jednoręczna"/>
+        <!-- Two Handed Lance -->
+        <string id="6fEElc9f" text="Lanca dwuręczna"/>
+        <!-- One Handed Glaive -->
+        <string id="ICcCZnli" text="Jednoręczna Glewia"/>
+        <!-- Two Handed Glaive -->
+        <string id="KpYZoZE9" text="Glewia dwuręczna"/>
+        <!-- Bow -->
+        <string id="HKYDdm9S" text="Kokarda"/>
+        <!-- Crossbow -->
+        <string id="3jigLyuH" text="Kusza"/>
+        <!-- Arrows -->
+        <string id="UjKvUAX1" text="Strzałki"/>
+        <!-- Bolts -->
+        <string id="QBgdwwa3" text="Śruby"/>
+        <!-- Throwing Knives -->
+        <string id="IUmqXtY6" text="Rzucać nożami"/>
+        <!-- Throwing Axes -->
+        <string id="mSnnORJ1" text="Rzucanie siekier"/>
+        <!-- Throwing Javelins -->
+        <string id="WUrrIbmH" text="Rzucanie oszczepami"/>
+        <!-- Shield -->
+        <string id="om9ZF9Mu" text="Tarcza"/>
+        <!-- Stone -->
+        <string id="vIT4xG8X" text="Kamień"/>
+
     </strings>
 </base>

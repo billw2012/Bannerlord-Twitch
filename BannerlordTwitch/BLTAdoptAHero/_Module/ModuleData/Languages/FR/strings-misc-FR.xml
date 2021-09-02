@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="Français"/>
+        <tag language="Français-BLT"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -184,7 +184,7 @@
         <!-- Passive Power -->
         <string id="MvddFKo4" text="Puissance passive"/>
         <!-- Passive hero power: this will always apply to the hero (i.e. a permanent buff) -->
-        <string id="F8a2nXYo" text="Pouvoir de héros passif : cela s&amp;#39;appliquera toujours au héros (c&amp;#39;est-à-dire un buff permanent)"/>
+        <string id="F8a2nXYo" text="Pouvoir de héros passif : cela s&amp;#39;appliquera toujours au héros (c&amp;#39;est-à-dire un buff permanent)"/>
         <!-- Active Power -->
         <string id="wdCMNOGd" text="Puissance active"/>
         <!-- Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff) -->

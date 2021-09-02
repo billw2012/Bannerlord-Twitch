@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="日本語-BLT"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Common -->        
+        <!-- Fireblade -->
+        <string id="yEtkv5ML" text="ファイアブレード"/>
+        <!-- infantry -->
+        <string id="m8bz4drX" text="歩兵"/>
+        <!-- Healthy -->
+        <string id="ROXuJJq8" text="元気"/>
+        <!-- Explosive Arrows -->
+        <string id="skyn1cL6" text="爆発的な矢"/>
+        <!-- archer -->
+        <string id="4tflp34a" text="射手"/>
+        <!-- Fleet Footed -->
+        <string id="NE9Li2Hb" text="艦隊の足"/>
+        <!-- Explosive Arrows -->
+        <string id="xgnH5owv" text="爆発的な矢"/>
+        <!-- heavyarcher -->
+        <string id="JncRD8tX" text="ヘビーアーチャー"/>
+        <!-- Healthy -->
+        <string id="ZrmsIMPE" text="元気"/>
+        <!-- Heavy Bolts -->
+        <string id="QZD9XdpC" text="ヘビーボルト"/>
+        <!-- crossbow -->
+        <string id="wV6R9Si5" text="クロスボウ"/>
+        <!-- Self Healing -->
+        <string id="FvNPPHLJ" text="自己回復"/>
+        <!-- Explosive Bolts -->
+        <string id="7GmE3SfQ" text="爆発性ボルト"/>
+        <!-- heavycrossbow -->
+        <string id="bpzytNbP" text="ヘビークロスボウ"/>
+        <!-- Healthy -->
+        <string id="k7booFb2" text="元気"/>
+        <!-- Trample -->
+        <string id="ZEGEpycY" text="トランプル"/>
+        <!-- cavalry -->
+        <string id="jNaFWF9t" text="騎兵"/>
+        <!-- A Good Horse -->
+        <string id="YghplAdF" text="良い馬"/>
+        <!-- Trample -->
+        <string id="mmeJSrm9" text="トランプル"/>
+        <!-- camelry -->
+        <string id="mJ8RVORq" text="キャメルリー"/>
+        <!-- A Good Camel -->
+        <string id="atGMPeNF" text="良いラクダ"/>
+        <!-- Explosive Arrows -->
+        <string id="YpIUHASp" text="爆発的な矢"/>
+        <!-- horsearcher -->
+        <string id="p5qJfkkp" text="ホースアーチャー"/>
+        <!-- Mounted Archery -->
+        <string id="zxgdfSIS" text="弓騎兵"/>
+        <!-- Heavy Arrows -->
+        <string id="FrX7AiyI" text="太い矢"/>
+        <!-- camelarcher -->
+        <string id="HreZWoyd" text="キャメラーチャー"/>
+        <!-- Mounted Archery -->
+        <string id="szdoTAQj" text="弓騎兵"/>
+        <!-- Break Through -->
+        <string id="E3qGC3fs" text="突破"/>
+        <!-- skirmisher -->
+        <string id="9euSgzCd" text="小競り合い"/>
+        <!-- Retribution -->
+        <string id="Lw8xQu1P" text="報復"/>
+        <!-- Berserker Rage -->
+        <string id="1DSLInEJ" text="バーサーカーレイジ"/>
+        <!-- berserker -->
+        <string id="wVjXAFal" text="バーサーカー"/>
+        <!-- Glass Cannon -->
+        <string id="nB4Qb0mD" text="ガラスキャノン"/>
+        <!-- Retribution -->
+        <string id="rzIl9tm3" text="報復"/>
+        <!-- looter -->
+        <string id="4JffsJMD" text="略奪者"/>
+        <!-- Grenades -->
+        <string id="nmjVjakS" text="手榴弾"/>
+    </strings>
+</base>

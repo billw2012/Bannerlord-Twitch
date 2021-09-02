@@ -241,6 +241,12 @@
         <Content Include="_Module\ModuleData\Languages\IT\strings-globalconfigs-IT.xml" />
         <Content Include="_Module\ModuleData\Languages\IT\strings-misc-IT.xml" />
         <Content Include="_Module\ModuleData\Languages\IT\strings-powers-IT.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-actions-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-behaviors-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-default-shouts-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-globalconfigs-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-misc-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-powers-JP.xml" />
         <Content Include="_Module\ModuleData\Languages\KO\strings-actions-KO.xml" />
         <Content Include="_Module\ModuleData\Languages\KO\strings-behaviors-KO.xml" />
         <Content Include="_Module\ModuleData\Languages\KO\strings-default-shouts-KO.xml" />
@@ -259,6 +265,12 @@
         <Content Include="_Module\ModuleData\Languages\RU\strings-globalconfigs-RU.xml" />
         <Content Include="_Module\ModuleData\Languages\RU\strings-misc-RU.xml" />
         <Content Include="_Module\ModuleData\Languages\RU\strings-powers-RU.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-actions-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-behaviors-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-default-shouts-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-globalconfigs-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-misc-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-powers-SP.xml" />
         <Content Include="_Module\ModuleData\Languages\strings-actions.xml" />
         <Content Include="_Module\ModuleData\Languages\strings-behaviors.xml" />
         <Content Include="_Module\ModuleData\Languages\strings-default-shouts.xml" />

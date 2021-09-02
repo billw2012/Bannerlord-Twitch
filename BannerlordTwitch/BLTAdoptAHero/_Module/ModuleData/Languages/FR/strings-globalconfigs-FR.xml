@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="Français"/>
+        <tag language="Français-BLT"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -12,7 +12,7 @@
         <!-- Sub Boost -->
         <string id="xwcKN7sH" text="Sous-Boost"/>
         <!-- Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently. -->
-        <string id="rX68wbfF" text="Multiplicateur appliqué à toutes les récompenses pour les abonnés (inférieur ou égal à 1 signifie pas de boost). REMARQUE : Ceci n&amp;#39;est que partiellement implémenté, cela ne fonctionne que pour les commandes de bot actuellement."/>
+        <string id="rX68wbfF" text="Multiplicateur appliqué à toutes les récompenses pour les abonnés (inférieur ou égal à 1 signifie pas de boost). REMARQUE : Ceci n&amp;#39;est que partiellement implémenté, cela ne fonctionne que pour les commandes de bot actuellement."/>
         <!-- Custom Reward Modifiers -->
         <string id="O0LU5WBa" text="Modificateurs de récompense personnalisés"/>
         <!-- The specification for custom item rewards, applies to tournament prize and achievement rewards -->
@@ -130,7 +130,7 @@
         <!-- Difficulty Scaling -->
         <string id="CaVuq5tE" text="Mise à l&amp;#39;échelle de la difficulté"/>
         <!-- End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1) -->
-        <string id="IhhfIQ74" text="Mise à l&amp;#39;échelle de la difficulté de la récompense de fin : détermine dans quelle mesure les batailles de difficulté plus élevée augmentent les récompenses ci-dessus (0 à 1)"/>
+        <string id="IhhfIQ74" text="Mise à l&amp;#39;échelle de la difficulté de la récompense de fin : détermine dans quelle mesure les batailles de difficulté plus élevée augmentent les récompenses ci-dessus (0 à 1)"/>
         <!-- Difficulty Scaling Min -->
         <string id="891WqOrJ" text="Difficulté Échelle Min"/>
         <!-- Min difficulty scaling multiplier -->

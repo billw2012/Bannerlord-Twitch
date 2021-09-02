@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="한국인"/>
+        <tag language="한국인-BLT"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -582,5 +582,50 @@
         <string id="1NcKYexo" text="매력"/>
         <!-- Leadership -->
         <string id="4684bsD7" text="지도"/>
+
+        <!-- EquipmentType -->
+        <!-- None -->
+        <string id="rMIAZRoT" text="없음"/>
+        <!-- Dagger -->
+        <string id="2gjNbpQI" text="단검"/>
+        <!-- One Handed Sword -->
+        <string id="OTlpiu1X" text="한손검"/>
+        <!-- Two Handed Sword -->
+        <string id="LGaaSaY8" text="양손검"/>
+        <!-- One Handed Axe -->
+        <string id="3teP1CbV" text="한손 도끼"/>
+        <!-- Two Handed Axe -->
+        <string id="AufoIUAI" text="양손 도끼"/>
+        <!-- One Handed Mace -->
+        <string id="74iFLLnE" text="한손 철퇴"/>
+        <!-- Two Handed Mace -->
+        <string id="EVEYPnFF" text="양손 철퇴"/>
+        <!-- One Handed Lance -->
+        <string id="bvOtwaZm" text="한손 창"/>
+        <!-- Two Handed Lance -->
+        <string id="6fEElc9f" text="양손 창"/>
+        <!-- One Handed Glaive -->
+        <string id="ICcCZnli" text="한손검"/>
+        <!-- Two Handed Glaive -->
+        <string id="KpYZoZE9" text="양손검"/>
+        <!-- Bow -->
+        <string id="HKYDdm9S" text="절하다"/>
+        <!-- Crossbow -->
+        <string id="3jigLyuH" text="석궁"/>
+        <!-- Arrows -->
+        <string id="UjKvUAX1" text="화살표"/>
+        <!-- Bolts -->
+        <string id="QBgdwwa3" text="볼트"/>
+        <!-- Throwing Knives -->
+        <string id="IUmqXtY6" text="던지는 칼"/>
+        <!-- Throwing Axes -->
+        <string id="mSnnORJ1" text="던지는 도끼"/>
+        <!-- Throwing Javelins -->
+        <string id="WUrrIbmH" text="투창 투창"/>
+        <!-- Shield -->
+        <string id="om9ZF9Mu" text="방패"/>
+        <!-- Stone -->
+        <string id="vIT4xG8X" text="결석"/>
+
     </strings>
 </base>

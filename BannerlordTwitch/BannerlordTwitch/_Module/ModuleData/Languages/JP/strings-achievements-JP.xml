@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="日本語-BLT"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Common -->
+        <!-- Reward {ITEMNAME} -->
+        <string id="W47g8bCB" text="報酬{ITEMNAME}"/>
+        <!-- {viewer} is {name}! -->
+        <string id="TAWcPGIc" text="{viewer} is {name}！"/>
+        
+        
+        <!-- {ITEMNAME} of Fealty -->
+        <string id="IvV04W31" text="忠誠の{ITEMNAME}"/>
+        <!-- Renegades {ITEMNAME} -->
+        <string id="UQtSgnog" text="反逆者{ITEMNAME}"/>
+        <!-- Stream Sniper {ITEMNAME} -->
+        <string id="xI41h8NA" text="ストリームスナイパー{ITEMNAME}"/>
+        
+        <!-- Reliable -->
+        <string id="ODWiNBng" text="信頼性のある"/>
+        <!-- Trusted -->
+        <string id="fWTqF2sw" text="信頼できる"/>
+        <!-- Loyal -->
+        <string id="fe9J8von" text="忠実"/>
+        <!-- Rebellious -->
+        <string id="HdYFegeb" text="反抗的"/>
+        <!-- Traitorous -->
+        <string id="gDHR7f8r" text="裏切り者"/>
+        <!-- Renegade -->
+        <string id="VEH582e7" text="レネゲード"/>
+        <!-- Stream Sniper -->
+        <string id="Aj0gXKgZ" text="ストリームスナイパー"/>
+        
+        
+    </strings>
+</base>

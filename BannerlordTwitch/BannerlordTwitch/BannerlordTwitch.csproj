@@ -415,6 +415,13 @@
         <Content Include="_Module\ModuleData\Languages\IT\strings-misc-IT.xml" />
         <Content Include="_Module\ModuleData\Languages\IT\strings-powers-IT.xml" />
         <Content Include="_Module\ModuleData\Languages\IT\strings-rewards-IT.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-achievements-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-classes-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-commands-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-kill-streaks-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-misc-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-powers-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-rewards-JP.xml" />
         <Content Include="_Module\ModuleData\Languages\KO\strings-achievements-KO.xml" />
         <Content Include="_Module\ModuleData\Languages\KO\strings-classes-KO.xml" />
         <Content Include="_Module\ModuleData\Languages\KO\strings-commands-KO.xml" />
@@ -436,6 +443,13 @@
         <Content Include="_Module\ModuleData\Languages\RU\strings-misc-RU.xml" />
         <Content Include="_Module\ModuleData\Languages\RU\strings-powers-RU.xml" />
         <Content Include="_Module\ModuleData\Languages\RU\strings-rewards-RU.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-achievements-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-classes-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-commands-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-kill-streaks-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-misc-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-powers-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-rewards-SP.xml" />
         <Content Include="_Module\ModuleData\Languages\strings-achievements.xml" />
         <Content Include="_Module\ModuleData\Languages\strings-classes.xml" />
         <Content Include="_Module\ModuleData\Languages\strings-commands.xml" />

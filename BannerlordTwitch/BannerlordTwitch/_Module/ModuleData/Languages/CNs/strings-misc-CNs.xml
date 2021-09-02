@@ -582,5 +582,50 @@
         <string id="1NcKYexo" text="魅力"/>
         <!-- Leadership -->
         <string id="4684bsD7" text="领导"/>
+
+        <!-- EquipmentType -->
+        <!-- None -->
+        <string id="rMIAZRoT" text="没有任何"/>
+        <!-- Dagger -->
+        <string id="2gjNbpQI" text="匕首"/>
+        <!-- One Handed Sword -->
+        <string id="OTlpiu1X" text="单手剑"/>
+        <!-- Two Handed Sword -->
+        <string id="LGaaSaY8" text="双手剑"/>
+        <!-- One Handed Axe -->
+        <string id="3teP1CbV" text="单手斧"/>
+        <!-- Two Handed Axe -->
+        <string id="AufoIUAI" text="双手斧"/>
+        <!-- One Handed Mace -->
+        <string id="74iFLLnE" text="单手锤"/>
+        <!-- Two Handed Mace -->
+        <string id="EVEYPnFF" text="双手锤"/>
+        <!-- One Handed Lance -->
+        <string id="bvOtwaZm" text="单手长矛"/>
+        <!-- Two Handed Lance -->
+        <string id="6fEElc9f" text="双手长矛"/>
+        <!-- One Handed Glaive -->
+        <string id="ICcCZnli" text="单手战刃"/>
+        <!-- Two Handed Glaive -->
+        <string id="KpYZoZE9" text="双手剑"/>
+        <!-- Bow -->
+        <string id="HKYDdm9S" text="弓"/>
+        <!-- Crossbow -->
+        <string id="3jigLyuH" text="弩"/>
+        <!-- Arrows -->
+        <string id="UjKvUAX1" text="箭头"/>
+        <!-- Bolts -->
+        <string id="QBgdwwa3" text="螺栓"/>
+        <!-- Throwing Knives -->
+        <string id="IUmqXtY6" text="飞刀"/>
+        <!-- Throwing Axes -->
+        <string id="mSnnORJ1" text="投掷轴"/>
+        <!-- Throwing Javelins -->
+        <string id="WUrrIbmH" text="投掷标枪"/>
+        <!-- Shield -->
+        <string id="om9ZF9Mu" text="盾"/>
+        <!-- Stone -->
+        <string id="vIT4xG8X" text="石头"/>
+
     </strings>
 </base>

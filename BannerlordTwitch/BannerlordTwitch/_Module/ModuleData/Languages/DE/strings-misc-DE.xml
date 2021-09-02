@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="Deutsch"/>
+        <tag language="Deutsch-BLT"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -582,5 +582,50 @@
         <string id="1NcKYexo" text="Charme"/>
         <!-- Leadership -->
         <string id="4684bsD7" text="Führung"/>
+
+        <!-- EquipmentType -->
+        <!-- None -->
+        <string id="rMIAZRoT" text="Keiner"/>
+        <!-- Dagger -->
+        <string id="2gjNbpQI" text="Dolch"/>
+        <!-- One Handed Sword -->
+        <string id="OTlpiu1X" text="Einhändiges Schwert"/>
+        <!-- Two Handed Sword -->
+        <string id="LGaaSaY8" text="Zweihänder"/>
+        <!-- One Handed Axe -->
+        <string id="3teP1CbV" text="Einhandaxt"/>
+        <!-- Two Handed Axe -->
+        <string id="AufoIUAI" text="Zweihandaxt"/>
+        <!-- One Handed Mace -->
+        <string id="74iFLLnE" text="Einhandstreitkolben"/>
+        <!-- Two Handed Mace -->
+        <string id="EVEYPnFF" text="Zweihandstreitkolben"/>
+        <!-- One Handed Lance -->
+        <string id="bvOtwaZm" text="Einhandlanze"/>
+        <!-- Two Handed Lance -->
+        <string id="6fEElc9f" text="Zweihandlanze"/>
+        <!-- One Handed Glaive -->
+        <string id="ICcCZnli" text="Einhändige Gleve"/>
+        <!-- Two Handed Glaive -->
+        <string id="KpYZoZE9" text="Zweihändige Gleve"/>
+        <!-- Bow -->
+        <string id="HKYDdm9S" text="Sich beugen"/>
+        <!-- Crossbow -->
+        <string id="3jigLyuH" text="Armbrust"/>
+        <!-- Arrows -->
+        <string id="UjKvUAX1" text="Pfeile"/>
+        <!-- Bolts -->
+        <string id="QBgdwwa3" text="Schrauben"/>
+        <!-- Throwing Knives -->
+        <string id="IUmqXtY6" text="Messer werfen"/>
+        <!-- Throwing Axes -->
+        <string id="mSnnORJ1" text="Wurfäxte"/>
+        <!-- Throwing Javelins -->
+        <string id="WUrrIbmH" text="Wurfspeere"/>
+        <!-- Shield -->
+        <string id="om9ZF9Mu" text="Schild"/>
+        <!-- Stone -->
+        <string id="vIT4xG8X" text="Stein"/>
+
     </strings>
 </base>

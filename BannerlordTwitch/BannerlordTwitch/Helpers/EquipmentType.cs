@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
 using TaleWorlds.Core;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -8,27 +9,27 @@ namespace BannerlordTwitch.Helpers
 {
     public enum EquipmentType
     {
-        None,
-        Dagger,
-        OneHandedSword,
-        TwoHandedSword,
-        OneHandedAxe,
-        TwoHandedAxe,
-        OneHandedMace,
-        TwoHandedMace,
-        OneHandedLance,
-        TwoHandedLance,
-        OneHandedGlaive,
-        TwoHandedGlaive,
-        Bow,
-        Crossbow,
-        Arrows,
-        Bolts,
-        ThrowingKnives,
-        ThrowingAxes,
-        ThrowingJavelins,
-        Shield,
-        Stone,
+        [LocDisplayName("{=rMIAZRoT}None")] None,
+        [LocDisplayName("{=2gjNbpQI}Dagger")] Dagger,
+        [LocDisplayName("{=OTlpiu1X}One Handed Sword")] OneHandedSword,
+        [LocDisplayName("{=LGaaSaY8}Two Handed Sword")] TwoHandedSword,
+        [LocDisplayName("{=3teP1CbV}One Handed Axe")] OneHandedAxe,
+        [LocDisplayName("{=AufoIUAI}Two Handed Axe")] TwoHandedAxe,
+        [LocDisplayName("{=74iFLLnE}One Handed Mace")] OneHandedMace,
+        [LocDisplayName("{=EVEYPnFF}Two Handed Mace")] TwoHandedMace,
+        [LocDisplayName("{=bvOtwaZm}One Handed Lance")] OneHandedLance,
+        [LocDisplayName("{=6fEElc9f}Two Handed Lance")] TwoHandedLance,
+        [LocDisplayName("{=ICcCZnli}One Handed Glaive")] OneHandedGlaive,
+        [LocDisplayName("{=KpYZoZE9}Two Handed Glaive")] TwoHandedGlaive,
+        [LocDisplayName("{=HKYDdm9S}Bow")] Bow,
+        [LocDisplayName("{=3jigLyuH}Crossbow")] Crossbow,
+        [LocDisplayName("{=UjKvUAX1}Arrows")] Arrows,
+        [LocDisplayName("{=QBgdwwa3}Bolts")] Bolts,
+        [LocDisplayName("{=IUmqXtY6}Throwing Knives")] ThrowingKnives,
+        [LocDisplayName("{=mSnnORJ1}Throwing Axes")] ThrowingAxes,
+        [LocDisplayName("{=WUrrIbmH}Throwing Javelins")] ThrowingJavelins,
+        [LocDisplayName("{=om9ZF9Mu}Shield")] Shield,
+        [LocDisplayName("{=vIT4xG8X}Stone")] Stone,
         Num,
     }
 

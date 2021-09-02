@@ -85,7 +85,7 @@
         <ReplaceFileText File="$(OutputModuleRoot)\SubModule.xml" Regex="%(SubModuleOverrides.Regex)" ReplacementText="%(SubModuleOverrides.Replacement)" />
     </Target>
     
-    <Target Name="DeployToGameDirectory" DependsOnTargets="SetModuleVersion" AfterTargets="AfterBuild" Condition="Exists('$(DeployDir)')">
+    <Target Name="DeployToGameDirectory" DependsOnTargets="SetModuleVersion" AfterTargets="AfterBuild" Condition="Exists('$(DeployDir)..')">
         <Message Importance="High" Text="[BLT DEPLOY] Copying $(AssemblyName) staged files to game directory..." />
         <ItemGroup>
             <FilesToDeploy Include="$(OutputModuleRoot)**\*" />
@@ -100,7 +100,7 @@
         <RemoveDir Condition="!$(DeployDir.EndsWith('Modules\'))" Directories="$(DeployDir)" />
     </Target>
     
-    <Target Name="Package" DependsOnTargets="SetModuleVersion" AfterTargets="AfterBuild">
+    <Target Name="Package" DependsOnTargets="SetModuleVersion">
         <Message Importance="High" Text="[BLT PACKAGE] Creating deployment package $(PackageFullPath)..." />
         <Delete Files="$(PackageFullPath)" ContinueOnError="true"/>
         <Exec Command="7z a &quot;$(PackageFullPath)&quot; BannerlordTwitch BLTAdoptAHero BLTBuffet BLTConfigure" WorkingDirectory="$(OutputConfigRoot)"/>

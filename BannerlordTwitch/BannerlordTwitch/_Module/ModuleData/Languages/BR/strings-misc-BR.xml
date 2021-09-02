@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="Português"/>
+        <tag language="Português-BLT"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -582,5 +582,50 @@
         <string id="1NcKYexo" text="Charme"/>
         <!-- Leadership -->
         <string id="4684bsD7" text="Liderança"/>
+
+        <!-- EquipmentType -->
+        <!-- None -->
+        <string id="rMIAZRoT" text="Nenhum"/>
+        <!-- Dagger -->
+        <string id="2gjNbpQI" text="Punhal"/>
+        <!-- One Handed Sword -->
+        <string id="OTlpiu1X" text="Espada de Uma Mão"/>
+        <!-- Two Handed Sword -->
+        <string id="LGaaSaY8" text="Espada de Duas Mãos"/>
+        <!-- One Handed Axe -->
+        <string id="3teP1CbV" text="Machado de Uma Mão"/>
+        <!-- Two Handed Axe -->
+        <string id="AufoIUAI" text="Machado de Duas Mãos"/>
+        <!-- One Handed Mace -->
+        <string id="74iFLLnE" text="Macaco de uma mão"/>
+        <!-- Two Handed Mace -->
+        <string id="EVEYPnFF" text="Maça de duas mãos"/>
+        <!-- One Handed Lance -->
+        <string id="bvOtwaZm" text="Lança de uma mão"/>
+        <!-- Two Handed Lance -->
+        <string id="6fEElc9f" text="Lança de duas mãos"/>
+        <!-- One Handed Glaive -->
+        <string id="ICcCZnli" text="Glaive de uma mão"/>
+        <!-- Two Handed Glaive -->
+        <string id="KpYZoZE9" text="Glaive de duas mãos"/>
+        <!-- Bow -->
+        <string id="HKYDdm9S" text="Arco"/>
+        <!-- Crossbow -->
+        <string id="3jigLyuH" text="Besta"/>
+        <!-- Arrows -->
+        <string id="UjKvUAX1" text="Setas; flechas"/>
+        <!-- Bolts -->
+        <string id="QBgdwwa3" text="Parafusos"/>
+        <!-- Throwing Knives -->
+        <string id="IUmqXtY6" text="Facas de arremesso"/>
+        <!-- Throwing Axes -->
+        <string id="mSnnORJ1" text="Machados de arremesso"/>
+        <!-- Throwing Javelins -->
+        <string id="WUrrIbmH" text="Lançando dardos"/>
+        <!-- Shield -->
+        <string id="om9ZF9Mu" text="Escudo"/>
+        <!-- Stone -->
+        <string id="vIT4xG8X" text="Pedra"/>
+
     </strings>
 </base>

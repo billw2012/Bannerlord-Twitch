@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="Italiano"/>
+        <tag language="Italiano-BLT"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -582,5 +582,50 @@
         <string id="1NcKYexo" text="Fascino"/>
         <!-- Leadership -->
         <string id="4684bsD7" text="Comando"/>
+
+        <!-- EquipmentType -->
+        <!-- None -->
+        <string id="rMIAZRoT" text="Nessuno"/>
+        <!-- Dagger -->
+        <string id="2gjNbpQI" text="Pugnale"/>
+        <!-- One Handed Sword -->
+        <string id="OTlpiu1X" text="Spada a una mano"/>
+        <!-- Two Handed Sword -->
+        <string id="LGaaSaY8" text="Spada a due mani"/>
+        <!-- One Handed Axe -->
+        <string id="3teP1CbV" text="Ascia a una mano"/>
+        <!-- Two Handed Axe -->
+        <string id="AufoIUAI" text="Ascia a due mani"/>
+        <!-- One Handed Mace -->
+        <string id="74iFLLnE" text="Mazza a una mano"/>
+        <!-- Two Handed Mace -->
+        <string id="EVEYPnFF" text="Mazza a due mani"/>
+        <!-- One Handed Lance -->
+        <string id="bvOtwaZm" text="Lancia a una mano"/>
+        <!-- Two Handed Lance -->
+        <string id="6fEElc9f" text="Lancia a due mani"/>
+        <!-- One Handed Glaive -->
+        <string id="ICcCZnli" text="Glaive a una mano"/>
+        <!-- Two Handed Glaive -->
+        <string id="KpYZoZE9" text="Glaive a due mani"/>
+        <!-- Bow -->
+        <string id="HKYDdm9S" text="Arco"/>
+        <!-- Crossbow -->
+        <string id="3jigLyuH" text="Balestra"/>
+        <!-- Arrows -->
+        <string id="UjKvUAX1" text="frecce"/>
+        <!-- Bolts -->
+        <string id="QBgdwwa3" text="bulloni"/>
+        <!-- Throwing Knives -->
+        <string id="IUmqXtY6" text="Coltelli da lancio"/>
+        <!-- Throwing Axes -->
+        <string id="mSnnORJ1" text="Asce da lancio"/>
+        <!-- Throwing Javelins -->
+        <string id="WUrrIbmH" text="Lancio del giavellotto"/>
+        <!-- Shield -->
+        <string id="om9ZF9Mu" text="Scudo"/>
+        <!-- Stone -->
+        <string id="vIT4xG8X" text="Calcolo"/>
+
     </strings>
 </base>

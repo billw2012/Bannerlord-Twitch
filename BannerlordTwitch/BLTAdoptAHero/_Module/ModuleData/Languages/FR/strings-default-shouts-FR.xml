@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="Français"/>
+        <tag language="Français-BLT"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -18,11 +18,11 @@
         <!-- Once more unto the breach! -->
         <string id="QEyO8W82" text="Encore une fois à la brèche !"/>
         <!-- Freeeeeedddooooooommmm! -->
-        <string id="Bo11t6gj" text="Freeeeeedddoooooommmm !"/>
+        <string id="Bo11t6gj" text="Freeeeeedddoooooommmm !"/>
         <!-- Remember the Alamo! -->
         <string id="8uO8Isjm" text="Souvenez-vous de l&amp;#39;Alamo !"/>
         <!-- Alala! -->
-        <string id="A3KdQJok" text="Alala !"/>
+        <string id="A3KdQJok" text="Alala !"/>
         <!-- Eleleu! -->
         <string id="pXVCAwAr" text="Eléleu !"/>
         <!-- Deus vult! -->
@@ -40,19 +40,19 @@
         <!-- Santiago! -->
         <string id="lDo1AOCS" text="Santiago !"/>
         <!-- Huzzah! -->
-        <string id="gT95E89y" text="Huzzah !"/>
+        <string id="gT95E89y" text="Huzzah !"/>
         <!-- War... war never changes... -->
         <string id="fKKpcZGQ" text="La guerre, la guerre, ça ne change jamais..."/>
         <!-- May we live to see the next sunrise! -->
-        <string id="vZgbxkW9" text="Puissions-nous vivre pour voir le prochain lever de soleil !"/>
+        <string id="vZgbxkW9" text="Puissions-nous vivre pour voir le prochain lever de soleil !"/>
         <!-- For glory, charge! -->
         <string id="wn7zIy9f" text="Pour la gloire, chargez !"/>
         <!-- Give them nothing, but take from them everything! -->
         <string id="KH7Dnbe7" text="Ne leur donnez rien, mais prenez-leur tout !"/>
         <!-- Fell deeds awake, fire and slaughter! -->
-        <string id="FyBFecip" text="Fell les actes éveillés, le feu et le massacre !"/>
+        <string id="FyBFecip" text="Fell les actes éveillés, le feu et le massacre !"/>
         <!-- Spooooooooooooooooooon! -->
-        <string id="H7asM2KG" text="Spooooooooooooooooon !"/>
+        <string id="H7asM2KG" text="Spooooooooooooooooon !"/>
         <!-- Leeeeeeeerooooy Jeeeeenkins -->
         <string id="ERDmbO2B" text="Leeeeeeeerooooy Jeeeeenkins"/>
         <!-- I live, I die, I live again! -->

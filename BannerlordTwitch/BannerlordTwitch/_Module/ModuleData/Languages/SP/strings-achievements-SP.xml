@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Español-BLT"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        
+        <!-- Common -->
+        <!-- Reward {ITEMNAME} -->
+        <string id="W47g8bCB" text="Recompensa {ITEMNAME}"/>
+        <!-- {viewer} is {name}! -->
+        <string id="TAWcPGIc" text="{viewer} is {name}!"/>
+        
+        
+        <!-- {ITEMNAME} of Fealty -->
+        <string id="IvV04W31" text="{ITEMNAME} de fidelidad"/>
+        <!-- Renegades {ITEMNAME} -->
+        <string id="UQtSgnog" text="Renegados {ITEMNAME}"/>
+        <!-- Stream Sniper {ITEMNAME} -->
+        <string id="xI41h8NA" text="Transmitir francotirador {ITEMNAME}"/>
+        
+        <!-- Reliable -->
+        <string id="ODWiNBng" text="De confianza"/>
+        <!-- Trusted -->
+        <string id="fWTqF2sw" text="De confianza"/>
+        <!-- Loyal -->
+        <string id="fe9J8von" text="Leal"/>
+        <!-- Rebellious -->
+        <string id="HdYFegeb" text="Rebelde"/>
+        <!-- Traitorous -->
+        <string id="gDHR7f8r" text="Traidor"/>
+        <!-- Renegade -->
+        <string id="VEH582e7" text="Renegado"/>
+        <!-- Stream Sniper -->
+        <string id="Aj0gXKgZ" text="Stream Sniper"/>
+        
+        
+    </strings>
+</base>

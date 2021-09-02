@@ -582,5 +582,50 @@
         <string id="1NcKYexo" text="Cazibe"/>
         <!-- Leadership -->
         <string id="4684bsD7" text="Liderlik"/>
+
+        <!-- EquipmentType -->
+        <!-- None -->
+        <string id="rMIAZRoT" text="Hiçbiri"/>
+        <!-- Dagger -->
+        <string id="2gjNbpQI" text="Hançer"/>
+        <!-- One Handed Sword -->
+        <string id="OTlpiu1X" text="Tek Elli Kılıç"/>
+        <!-- Two Handed Sword -->
+        <string id="LGaaSaY8" text="İki elle tutulan Kılıç"/>
+        <!-- One Handed Axe -->
+        <string id="3teP1CbV" text="Tek Elli Balta"/>
+        <!-- Two Handed Axe -->
+        <string id="AufoIUAI" text="İki Elli Balta"/>
+        <!-- One Handed Mace -->
+        <string id="74iFLLnE" text="Tek Elli Topuz"/>
+        <!-- Two Handed Mace -->
+        <string id="EVEYPnFF" text="İki Elli Topuz"/>
+        <!-- One Handed Lance -->
+        <string id="bvOtwaZm" text="Tek Elli Mızrak"/>
+        <!-- Two Handed Lance -->
+        <string id="6fEElc9f" text="İki Elli Mızrak"/>
+        <!-- One Handed Glaive -->
+        <string id="ICcCZnli" text="Tek Elli Glaive"/>
+        <!-- Two Handed Glaive -->
+        <string id="KpYZoZE9" text="İki Elli Glaive"/>
+        <!-- Bow -->
+        <string id="HKYDdm9S" text="Yay"/>
+        <!-- Crossbow -->
+        <string id="3jigLyuH" text="tatar yayı"/>
+        <!-- Arrows -->
+        <string id="UjKvUAX1" text="Oklar"/>
+        <!-- Bolts -->
+        <string id="QBgdwwa3" text="Cıvatalar"/>
+        <!-- Throwing Knives -->
+        <string id="IUmqXtY6" text="Fırlatma Bıçakları"/>
+        <!-- Throwing Axes -->
+        <string id="mSnnORJ1" text="Fırlatma Eksenleri"/>
+        <!-- Throwing Javelins -->
+        <string id="WUrrIbmH" text="Cirit atma"/>
+        <!-- Shield -->
+        <string id="om9ZF9Mu" text="kalkan"/>
+        <!-- Stone -->
+        <string id="vIT4xG8X" text="Taş"/>
+
     </strings>
 </base>

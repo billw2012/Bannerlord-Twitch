@@ -582,5 +582,50 @@
         <string id="1NcKYexo" text="Charm"/>
         <!-- Leadership -->
         <string id="4684bsD7" text="Leadership"/>
+
+        <!-- EquipmentType -->
+        <!-- None -->
+        <string id="rMIAZRoT" text="None"/>
+        <!-- Dagger -->
+        <string id="2gjNbpQI" text="Dagger"/>
+        <!-- One Handed Sword -->
+        <string id="OTlpiu1X" text="One Handed Sword"/>
+        <!-- Two Handed Sword -->
+        <string id="LGaaSaY8" text="Two Handed Sword"/>
+        <!-- One Handed Axe -->
+        <string id="3teP1CbV" text="One Handed Axe"/>
+        <!-- Two Handed Axe -->
+        <string id="AufoIUAI" text="Two Handed Axe"/>
+        <!-- One Handed Mace -->
+        <string id="74iFLLnE" text="One Handed Mace"/>
+        <!-- Two Handed Mace -->
+        <string id="EVEYPnFF" text="Two Handed Mace"/>
+        <!-- One Handed Lance -->
+        <string id="bvOtwaZm" text="One Handed Lance"/>
+        <!-- Two Handed Lance -->
+        <string id="6fEElc9f" text="Two Handed Lance"/>
+        <!-- One Handed Glaive -->
+        <string id="ICcCZnli" text="One Handed Glaive"/>
+        <!-- Two Handed Glaive -->
+        <string id="KpYZoZE9" text="Two Handed Glaive"/>
+        <!-- Bow -->
+        <string id="HKYDdm9S" text="Bow"/>
+        <!-- Crossbow -->
+        <string id="3jigLyuH" text="Crossbow"/>
+        <!-- Arrows -->
+        <string id="UjKvUAX1" text="Arrows"/>
+        <!-- Bolts -->
+        <string id="QBgdwwa3" text="Bolts"/>
+        <!-- Throwing Knives -->
+        <string id="IUmqXtY6" text="Throwing Knives"/>
+        <!-- Throwing Axes -->
+        <string id="mSnnORJ1" text="Throwing Axes"/>
+        <!-- Throwing Javelins -->
+        <string id="WUrrIbmH" text="Throwing Javelins"/>
+        <!-- Shield -->
+        <string id="om9ZF9Mu" text="Shield"/>
+        <!-- Stone -->
+        <string id="vIT4xG8X" text="Stone"/>
+
     </strings>
 </base>

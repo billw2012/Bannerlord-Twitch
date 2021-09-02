@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="Français"/>
+        <tag language="Français-BLT"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -117,7 +117,7 @@
         <!-- You must be subscribed to adopt a hero with this command! -->
         <string id="0QeQPxYi" text="Vous devez être abonné pour adopter un héros avec cette commande !"/>
         <!-- No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)! -->
-        <string id="XlQUIIsg" text="Aucun héros n&amp;#39;est disponible : le joueur n&amp;#39;est pas dans une faction (désactivez Player Faction Only ou rejoignez une faction) !"/>
+        <string id="XlQUIIsg" text="Aucun héros n&amp;#39;est disponible : le joueur n&amp;#39;est pas dans une faction (désactivez Player Faction Only ou rejoignez une faction) !"/>
         <!-- You can't adopt a hero: no available hero matching the requirements was found! -->
         <string id="E7wqQ2kg" text="Vous ne pouvez pas adopter un héros : aucun héros disponible correspondant aux critères n&amp;#39;a été trouvé !"/>
         <!-- {OldName} is now known as {NewName}! -->
@@ -142,7 +142,7 @@
         <string id="hSPAbHWb" text="Fournissez le nom de l&amp;#39;attribut (ou une partie de celui-ci) lors de l&amp;#39;appel"/>
         
         <!-- Couldn't improve any attributes, they are all at max level! -->
-        <string id="VxproTE2" text="Aucun attribut n&amp;#39;a pu être amélioré, ils sont tous au niveau maximum !"/>
+        <string id="VxproTE2" text="Aucun attribut n&amp;#39;a pu être amélioré, ils sont tous au niveau maximum !"/>
         <!-- Provide the attribute name to improve (or part of it) -->
         <string id="i9ziqTXG" text="Fournissez le nom de l&amp;#39;attribut à améliorer (ou une partie de celui-ci)"/>
         <!-- You have gained {Amount} points in {Attribute}, you now have {NewAmount}! -->
@@ -240,9 +240,9 @@
         <!-- You are a player companion, you cannot change your own equipment! -->
         <string id="C9Mhzohr" text="Vous êtes un compagnon de joueur, vous ne pouvez pas changer votre propre équipement !"/>
         <!-- You cannot upgrade equipment, as a mission is active! -->
-        <string id="RoIXssEg" text="Vous ne pouvez pas améliorer l&amp;#39;équipement, car une mission est active !"/>
+        <string id="RoIXssEg" text="Vous ne pouvez pas améliorer l&amp;#39;équipement, car une mission est active !"/>
         <!-- You cannot upgrade any further! -->
-        <string id="FZh7ZtGp" text="Vous ne pouvez plus mettre à niveau !"/>
+        <string id="FZh7ZtGp" text="Vous ne pouvez plus mettre à niveau !"/>
         <string id="fYksbZJp" text="Niveau équipé {ArmorTier} ({ClassName})"/>
         <string id="0KHxea5e" text="Niveau rééquipé {ArmorTier} ({ClassName})"/>
         <string id="VlnXNPYS" text="Pas de classe"/>
@@ -263,7 +263,7 @@
         <!-- Automatic, based on class, equipment, and existing skills -->
         <string id="SIM2l7ta" text="Automatique, basé sur la classe, l&amp;#39;équipement et les compétences existantes"/>
         <!-- Couldn't find a valid skill to add focus points to! -->
-        <string id="VXvS5xji" text="Impossible de trouver une compétence valide pour ajouter des points de focalisation !"/>
+        <string id="VXvS5xji" text="Impossible de trouver une compétence valide pour ajouter des points de focalisation !"/>
         <!-- You have gained {Amount} focus points in {Skill}, you now have {NewAmount}! -->
         <string id="6tcVqRIs" text="Vous avez gagné {Amount} focus points in {Skill}, you now have {NewAmount}!"/>
         <!-- You have gained a focus point in {Skill}, you now have {NewAmount}! -->
@@ -311,7 +311,7 @@
         <!-- Show General -->
         <string id="VmQECrnc" text="Afficher le général"/>
         <!-- Show personal info: health, location, age -->
-        <string id="JWbk5Oko" text="Afficher les informations personnelles : santé, emplacement, âge"/>
+        <string id="JWbk5Oko" text="Afficher les informations personnelles : santé, emplacement, âge"/>
         <!-- Show Top Skills -->
         <string id="tMKmlYeR" text="Afficher les meilleures compétences"/>
         <!-- Shows skills (and focuse values) above the specified MinSkillToShow value -->
@@ -500,7 +500,7 @@
         <!-- Whether this action should attempt to buy/upgrade as many times as possible when called with no parameter. -->
         <string id="mJSGvWlR" text="Si cette action doit tenter d&amp;#39;acheter/mettre à niveau autant de fois que possible lorsqu&amp;#39;elle est appelée sans paramètre."/>
         <!-- You cannot upgrade retinue, as a mission is active! -->
-        <string id="mCcpMwrN" text="Vous ne pouvez pas améliorer la suite, car une mission est active !"/>
+        <string id="mCcpMwrN" text="Vous ne pouvez pas améliorer la suite, car une mission est active !"/>
         <!-- (number, or all) -->
         <string id="NexXxYvj" text="(nombre ou tous)"/>
         
@@ -711,13 +711,13 @@
         <string id="zOB6Nadp" text="Autorisé dans"/>
         
         <!-- You cannot be summoned now! -->
-        <string id="TdykIizS" text="Vous ne pouvez pas être invoqué maintenant !"/>
+        <string id="TdykIizS" text="Vous ne pouvez pas être invoqué maintenant !"/>
         <!-- You cannot be summoned now, this mission does not allow it! -->
         <string id="HWnEJg1M" text="Vous ne pouvez pas être invoqué maintenant, cette mission ne le permet pas !"/>
         <!-- You cannot be summoned now, the mission has not started yet! -->
         <string id="v5dO40vi" text="Vous ne pouvez pas être invoqué maintenant, la mission n&amp;#39;a pas encore commencé !"/>
         <!-- You cannot be summoned now, the mission is ending! -->
-        <string id="mTKKaYIf" text="Vous ne pouvez pas être invoqué maintenant, la mission se termine !"/>
+        <string id="mTKKaYIf" text="Vous ne pouvez pas être invoqué maintenant, la mission se termine !"/>
         <!-- You cannot be summoned, you are already here! -->
         <string id="YTEgKnCW" text="Vous ne pouvez pas être invoqué, vous êtes déjà là !"/>
         
@@ -740,7 +740,7 @@
         <!-- You cannot be summoned, your party is already here! -->
         <string id="93Hrc2EA" text="Vous ne pouvez pas être invoqué, votre groupe est déjà là !"/>
         <!-- Could not find a party for you to join! -->
-        <string id="jtqEqonE" text="Impossible de trouver une fête à laquelle vous pouvez vous joindre !"/>
+        <string id="jtqEqonE" text="Impossible de trouver une fête à laquelle vous pouvez vous joindre !"/>
         <!-- You have joined the battle! -->
         <string id="TvkEBZeY" text="Vous avez rejoint la bataille !"/>
         <!-- Text -->

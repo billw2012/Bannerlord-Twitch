@@ -187,7 +187,7 @@ namespace BLTAdoptAHero
                             {
                                 generator.TR(() =>
                                 {
-                                    generator.TD(s.Skill.ToString().SplitCamelCase());
+                                    generator.TD(s.Skill.GetDisplayName());
                                     generator.TD(s.IsFixed
                                         ? $"{s.MinLevel}"
                                         : "{=yVydxRHh}{From} to {To}".Translate(

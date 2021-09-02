@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="Pусский"/>
+        <tag language="Pусский-BLT"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -582,5 +582,50 @@
         <string id="1NcKYexo" text="Очарование"/>
         <!-- Leadership -->
         <string id="4684bsD7" text="Лидерство"/>
+
+        <!-- EquipmentType -->
+        <!-- None -->
+        <string id="rMIAZRoT" text="Никто"/>
+        <!-- Dagger -->
+        <string id="2gjNbpQI" text="Кинжал"/>
+        <!-- One Handed Sword -->
+        <string id="OTlpiu1X" text="Одноручный меч"/>
+        <!-- Two Handed Sword -->
+        <string id="LGaaSaY8" text="Двуручный меч"/>
+        <!-- One Handed Axe -->
+        <string id="3teP1CbV" text="Одноручный топор"/>
+        <!-- Two Handed Axe -->
+        <string id="AufoIUAI" text="Двуручный топор"/>
+        <!-- One Handed Mace -->
+        <string id="74iFLLnE" text="Одноручная булава"/>
+        <!-- Two Handed Mace -->
+        <string id="EVEYPnFF" text="Двуручная булава"/>
+        <!-- One Handed Lance -->
+        <string id="bvOtwaZm" text="Одноручное копье"/>
+        <!-- Two Handed Lance -->
+        <string id="6fEElc9f" text="Двуручное копье"/>
+        <!-- One Handed Glaive -->
+        <string id="ICcCZnli" text="Одноручная глефа"/>
+        <!-- Two Handed Glaive -->
+        <string id="KpYZoZE9" text="Двуручная глефа"/>
+        <!-- Bow -->
+        <string id="HKYDdm9S" text="Поклон"/>
+        <!-- Crossbow -->
+        <string id="3jigLyuH" text="Арбалет"/>
+        <!-- Arrows -->
+        <string id="UjKvUAX1" text="Стрелки"/>
+        <!-- Bolts -->
+        <string id="QBgdwwa3" text="Болты"/>
+        <!-- Throwing Knives -->
+        <string id="IUmqXtY6" text="Метательные ножи"/>
+        <!-- Throwing Axes -->
+        <string id="mSnnORJ1" text="Метательные топоры"/>
+        <!-- Throwing Javelins -->
+        <string id="WUrrIbmH" text="Метание копья"/>
+        <!-- Shield -->
+        <string id="om9ZF9Mu" text="Щит"/>
+        <!-- Stone -->
+        <string id="vIT4xG8X" text="Камень"/>
+
     </strings>
 </base>

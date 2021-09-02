@@ -108,9 +108,11 @@
         <Content Include="_Module\ModuleData\Languages\DE\strings-misc-DE.xml" />
         <Content Include="_Module\ModuleData\Languages\FR\strings-misc-FR.xml" />
         <Content Include="_Module\ModuleData\Languages\IT\strings-misc-IT.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-misc-JP.xml" />
         <Content Include="_Module\ModuleData\Languages\KO\strings-misc-KO.xml" />
         <Content Include="_Module\ModuleData\Languages\PL\strings-misc-PL.xml" />
         <Content Include="_Module\ModuleData\Languages\RU\strings-misc-RU.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-misc-SP.xml" />
         <Content Include="_Module\ModuleData\Languages\strings-misc.xml" />
         <Content Include="_Module\ModuleData\Languages\TR\strings-misc-TR.xml" />
     </ItemGroup>
