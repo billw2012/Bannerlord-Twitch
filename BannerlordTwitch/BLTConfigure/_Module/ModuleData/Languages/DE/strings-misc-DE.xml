@@ -5,15 +5,14 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- TypeGroupDescription -->
         <!-- Global Configs -->
-        <string id="S7fvEW5l" text="Globale Konfigurationen"/>
+        <string id="S7fvEW5l" text="Globale Konfigurationen" original="Global Configs"/>
         <!-- Channel Rewards -->
-        <string id="xljCKxH7" text="Kanalbelohnungen"/>
+        <string id="xljCKxH7" text="Kanalbelohnungen" original="Channel Rewards"/>
         <!-- Chat Commands -->
-        <string id="mHkSZwdI" text="Chat-Befehle"/>
+        <string id="mHkSZwdI" text="Chat-Befehle" original="Chat Commands"/>
         <!-- Sim Testing Config -->
-        <string id="c1lGU26j" text="Sim-Testkonfiguration"/>
+        <string id="c1lGU26j" text="Sim-Testkonfiguration" original="Sim Testing Config"/>
     </strings>
 </base>

@@ -5,36 +5,30 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- Common -->
         <!-- Reward {ITEMNAME} -->
-        <string id="W47g8bCB" text="Награда {ITEMNAME}"/>
+        <string id="W47g8bCB" text="Награда {ITEMNAME}" original="Reward {ITEMNAME}"/>
         <!-- {viewer} is {name}! -->
-        <string id="TAWcPGIc" text="{viewer} is {name}!"/>
-        
-        
+        <string id="TAWcPGIc" text="{viewer} is {name}!" original="{viewer} is {name}!"/>
         <!-- {ITEMNAME} of Fealty -->
-        <string id="IvV04W31" text="{ITEMNAME} верности"/>
+        <string id="IvV04W31" text="{ITEMNAME} верности" original="{ITEMNAME} of Fealty"/>
         <!-- Renegades {ITEMNAME} -->
-        <string id="UQtSgnog" text="Отступники {ITEMNAME}"/>
+        <string id="UQtSgnog" text="Отступники {ITEMNAME}" original="Renegades {ITEMNAME}"/>
         <!-- Stream Sniper {ITEMNAME} -->
-        <string id="xI41h8NA" text="Stream Sniper {ITEMNAME}"/>
-        
+        <string id="xI41h8NA" text="Stream Sniper {ITEMNAME}" original="Stream Sniper {ITEMNAME}"/>
         <!-- Reliable -->
-        <string id="ODWiNBng" text="Надежный"/>
+        <string id="ODWiNBng" text="Надежный" original="Reliable"/>
         <!-- Trusted -->
-        <string id="fWTqF2sw" text="Доверенный"/>
+        <string id="fWTqF2sw" text="Доверенный" original="Trusted"/>
         <!-- Loyal -->
-        <string id="fe9J8von" text="Верный"/>
+        <string id="fe9J8von" text="Верный" original="Loyal"/>
         <!-- Rebellious -->
-        <string id="HdYFegeb" text="Мятежный"/>
+        <string id="HdYFegeb" text="Мятежный" original="Rebellious"/>
         <!-- Traitorous -->
-        <string id="gDHR7f8r" text="Предатель"/>
+        <string id="gDHR7f8r" text="Предатель" original="Traitorous"/>
         <!-- Renegade -->
-        <string id="VEH582e7" text="Отступник"/>
+        <string id="VEH582e7" text="Отступник" original="Renegade"/>
         <!-- Stream Sniper -->
-        <string id="Aj0gXKgZ" text="Стрим Снайпер"/>
-        
-        
+        <string id="Aj0gXKgZ" text="Стрим Снайпер" original="Stream Sniper"/>
     </strings>
 </base>

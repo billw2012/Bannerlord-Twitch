@@ -5,161 +5,156 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- Common -->
         <!-- Reward {ITEMNAME} -->
-        <string id="W47g8bCB" text="보상 {ITEMNAME}"/>
+        <string id="W47g8bCB" text="보상 {ITEMNAME}" original="Reward {ITEMNAME}"/>
         <!-- {viewer} is {name}! -->
-        <string id="TAWcPGIc" text="{viewer} is {name}!"/>
-        
+        <string id="TAWcPGIc" text="{viewer} is {name}!" original="{viewer} is {name}!"/>
         <!-- {ITEMNAME} of Fealty -->
-        <string id="IvV04W31" text="충성의 {ITEMNAME}"/>
+        <string id="IvV04W31" text="충성의 {ITEMNAME}" original="{ITEMNAME} of Fealty"/>
         <!-- Renegades {ITEMNAME} -->
-        <string id="UQtSgnog" text="배신자 {ITEMNAME}"/>
+        <string id="UQtSgnog" text="배신자 {ITEMNAME}" original="Renegades {ITEMNAME}"/>
         <!-- Stream Sniper {ITEMNAME} -->
-        <string id="xI41h8NA" text="스트림 스나이퍼 {ITEMNAME}"/>
-        
+        <string id="xI41h8NA" text="스트림 스나이퍼 {ITEMNAME}" original="Stream Sniper {ITEMNAME}"/>
         <!-- Reliable -->
-        <string id="ODWiNBng" text="믿을 수있는"/>
+        <string id="ODWiNBng" text="믿을 수있는" original="Reliable"/>
         <!-- Trusted -->
-        <string id="fWTqF2sw" text="신뢰할 수 있음"/>
+        <string id="fWTqF2sw" text="신뢰할 수 있음" original="Trusted"/>
         <!-- Loyal -->
-        <string id="fe9J8von" text="충실한"/>
+        <string id="fe9J8von" text="충실한" original="Loyal"/>
         <!-- Rebellious -->
-        <string id="HdYFegeb" text="반항적인"/>
+        <string id="HdYFegeb" text="반항적인" original="Rebellious"/>
         <!-- Traitorous -->
-        <string id="gDHR7f8r" text="배신자"/>
+        <string id="gDHR7f8r" text="배신자" original="Traitorous"/>
         <!-- Renegade -->
-        <string id="VEH582e7" text="배신자"/>
+        <string id="VEH582e7" text="배신자" original="Renegade"/>
         <!-- Stream Sniper -->
-        <string id="Aj0gXKgZ" text="스트림 스나이퍼"/>
+        <string id="Aj0gXKgZ" text="스트림 스나이퍼" original="Stream Sniper"/>
         <!-- Killing Spree -->
-        <string id="QNbIUDrh" text="연속 살인"/>
+        <string id="QNbIUDrh" text="연속 살인" original="Killing Spree"/>
         <!-- Healthy I -->
-        <string id="dlrzqWyB" text="건강한 나"/>
+        <string id="dlrzqWyB" text="건강한 나" original="Healthy I"/>
         <!-- Healthy II -->
-        <string id="QpSDATVx" text="건강한 II"/>
+        <string id="QpSDATVx" text="건강한 II" original="Healthy II"/>
         <!-- Healthy III -->
-        <string id="Cqkht54y" text="건강한 III"/>
+        <string id="Cqkht54y" text="건강한 III" original="Healthy III"/>
         <!-- Fragile I -->
-        <string id="qA2f6xBp" text="깨지기 쉬운 I"/>
+        <string id="qA2f6xBp" text="깨지기 쉬운 I" original="Fragile I"/>
         <!-- Fragile II -->
-        <string id="Hyuf4TSH" text="깨지기 쉬운 II"/>
+        <string id="Hyuf4TSH" text="깨지기 쉬운 II" original="Fragile II"/>
         <!-- Fragile III -->
-        <string id="v0ACBXmv" text="깨지기 쉬운 III"/>
+        <string id="v0ACBXmv" text="깨지기 쉬운 III" original="Fragile III"/>
         <!-- Vampiric I -->
-        <string id="mJQ88gTg" text="뱀파이어 I"/>
+        <string id="mJQ88gTg" text="뱀파이어 I" original="Vampiric I"/>
         <!-- Vampiric II -->
-        <string id="EHkU2FPe" text="뱀파이어 II"/>
+        <string id="EHkU2FPe" text="뱀파이어 II" original="Vampiric II"/>
         <!-- Vampiric III -->
-        <string id="gDsSjnnd" text="뱀파이어 III"/>
+        <string id="gDsSjnnd" text="뱀파이어 III" original="Vampiric III"/>
         <!-- Heavy Hitting I -->
-        <string id="93p2ZAIG" text="강한 타격 I"/>
+        <string id="93p2ZAIG" text="강한 타격 I" original="Heavy Hitting I"/>
         <!-- Heavy Hitting II -->
-        <string id="Gm7OdO9y" text="헤비 히트 II"/>
+        <string id="Gm7OdO9y" text="헤비 히트 II" original="Heavy Hitting II"/>
         <!-- Heavy Hitting III -->
-        <string id="OzBxlGDu" text="헤비히팅 III"/>
+        <string id="OzBxlGDu" text="헤비히팅 III" original="Heavy Hitting III"/>
         <!-- Retribution I -->
-        <string id="0vLSj7KR" text="응징 I"/>
+        <string id="0vLSj7KR" text="응징 I" original="Retribution I"/>
         <!-- Retribution II -->
-        <string id="vC5KggFz" text="응징 II"/>
+        <string id="vC5KggFz" text="응징 II" original="Retribution II"/>
         <!-- Retribution III -->
-        <string id="bS76hE3e" text="응징 III"/>
-        
+        <string id="bS76hE3e" text="응징 III" original="Retribution III"/>
         <!-- Fleet Footed I -->
-        <string id="FQKNvxVG" text="함대 발 I"/>
+        <string id="FQKNvxVG" text="함대 발 I" original="Fleet Footed I"/>
         <!-- Fleet Footed II -->
-        <string id="rgQDzX4f" text="Fleet Footed II"/>
+        <string id="rgQDzX4f" text="Fleet Footed II" original="Fleet Footed II"/>
         <!-- Fleet Footed III -->
-        <string id="f7L0oLCQ" text="Fleet Footed III"/>
+        <string id="f7L0oLCQ" text="Fleet Footed III" original="Fleet Footed III"/>
         <!-- Charge I -->
-        <string id="39yFtbp2" text="충전 I"/>
+        <string id="39yFtbp2" text="충전 I" original="Charge I"/>
         <!-- Charge II -->
-        <string id="6IFhNSH3" text="차지 II"/>
+        <string id="6IFhNSH3" text="차지 II" original="Charge II"/>
         <!-- Charge III -->
-        <string id="l2eB9avA" text="차지 III"/>
+        <string id="l2eB9avA" text="차지 III" original="Charge III"/>
         <!-- Better Mount I -->
-        <string id="tqmxzUCq" text="더 나은 마운트 I"/>
+        <string id="tqmxzUCq" text="더 나은 마운트 I" original="Better Mount I"/>
         <!-- Better Mount II -->
-        <string id="izG39s2J" text="더 나은 마운트 II"/>
+        <string id="izG39s2J" text="더 나은 마운트 II" original="Better Mount II"/>
         <!-- Better Mount III -->
-        <string id="CVmPJOB4" text="더 나은 마운트 III"/>
+        <string id="CVmPJOB4" text="더 나은 마운트 III" original="Better Mount III"/>
         <!-- Imposing Mount -->
-        <string id="tv2vTde5" text="인상적인 마운트"/>
+        <string id="tv2vTde5" text="인상적인 마운트" original="Imposing Mount"/>
         <!-- Imposing -->
-        <string id="fFProg8j" text="인상적인"/>
+        <string id="fFProg8j" text="인상적인" original="Imposing"/>
         <!-- Explosive Projectiles I -->
-        <string id="CTqMR9lV" text="폭발성 투사체 I"/>
+        <string id="CTqMR9lV" text="폭발성 투사체 I" original="Explosive Projectiles I"/>
         <!-- Explosive Projectiles II -->
-        <string id="miUEQpaQ" text="폭발성 투사체 II"/>
+        <string id="miUEQpaQ" text="폭발성 투사체 II" original="Explosive Projectiles II"/>
         <!-- Explosive Projectiles III -->
-        <string id="o2XgVhjA" text="폭발성 투사체 III"/>
+        <string id="o2XgVhjA" text="폭발성 투사체 III" original="Explosive Projectiles III"/>
         <!-- Fireblade I -->
-        <string id="7b7BkwRo" text="화염검 I"/>
+        <string id="7b7BkwRo" text="화염검 I" original="Fireblade I"/>
         <!-- Fireblade II -->
-        <string id="d8BUyJ5i" text="파이어블레이드 II"/>
+        <string id="d8BUyJ5i" text="파이어블레이드 II" original="Fireblade II"/>
         <!-- Fireblade III -->
-        <string id="VGqA25nN" text="화염검 III"/>
+        <string id="VGqA25nN" text="화염검 III" original="Fireblade III"/>
         <!-- Charge AoE I -->
-        <string id="R8u1d7M6" text="차지 광역 I"/>
+        <string id="R8u1d7M6" text="차지 광역 I" original="Charge AoE I"/>
         <!-- Charge AoE II -->
-        <string id="lO56Rq9E" text="차지 광역 II"/>
+        <string id="lO56Rq9E" text="차지 광역 II" original="Charge AoE II"/>
         <!-- Charge AoE III -->
-        <string id="X5LQvC0o" text="차지 광역 III"/>
+        <string id="X5LQvC0o" text="차지 광역 III" original="Charge AoE III"/>
         <!-- Ranger I -->
-        <string id="7XNfzok8" text="레인저 I"/>
+        <string id="7XNfzok8" text="레인저 I" original="Ranger I"/>
         <!-- Ranger II -->
-        <string id="HxpAtast" text="레인저 II"/>
+        <string id="HxpAtast" text="레인저 II" original="Ranger II"/>
         <!-- Ranger III -->
-        <string id="7YSCRTCg" text="레인저 III"/>
-
+        <string id="7YSCRTCg" text="레인저 III" original="Ranger III"/>
         <!-- Heavy Projectiles I -->
-        <string id="r0Wn7FXu" text="무거운 투사체 I"/>
+        <string id="r0Wn7FXu" text="무거운 투사체 I" original="Heavy Projectiles I"/>
         <!-- Heavy Projectiles II -->
-        <string id="XXL8aXIK" text="무거운 투사체 II"/>
+        <string id="XXL8aXIK" text="무거운 투사체 II" original="Heavy Projectiles II"/>
         <!-- Heavy Projectiles III -->
-        <string id="H3r0Zh8E" text="무거운 투사체 III"/>
+        <string id="H3r0Zh8E" text="무거운 투사체 III" original="Heavy Projectiles III"/>
         <!-- Crush Through I -->
-        <string id="xwlvLfJX" text="크러쉬 스루 I"/>
+        <string id="xwlvLfJX" text="크러쉬 스루 I" original="Crush Through I"/>
         <!-- Crush Through II -->
-        <string id="7FJTIVa4" text="크러쉬 스루 II"/>
+        <string id="7FJTIVa4" text="크러쉬 스루 II" original="Crush Through II"/>
         <!-- Crush Through III -->
-        <string id="dQqwtBEE" text="크러시 스루 III"/>
+        <string id="dQqwtBEE" text="크러시 스루 III" original="Crush Through III"/>
         <!-- Knock Down I -->
-        <string id="MKUCQtsr" text="노크 다운 I"/>
+        <string id="MKUCQtsr" text="노크 다운 I" original="Knock Down I"/>
         <!-- Knock Down II -->
-        <string id="KUdqJrOY" text="녹다운 II"/>
+        <string id="KUdqJrOY" text="녹다운 II" original="Knock Down II"/>
         <!-- Knock Down III -->
-        <string id="Uc4Cai9H" text="녹다운 III"/>
+        <string id="Uc4Cai9H" text="녹다운 III" original="Knock Down III"/>
         <!-- Cut Through I -->
-        <string id="VsZLMOHX" text="컷 스루 I"/>
+        <string id="VsZLMOHX" text="컷 스루 I" original="Cut Through I"/>
         <!-- Cut Through II -->
-        <string id="yXj1jqxx" text="컷 스루 II"/>
+        <string id="yXj1jqxx" text="컷스루 II" original="Cut Through II"/>
         <!-- Cut Through III -->
-        <string id="R537vuN0" text="컷스루 III"/>
+        <string id="R537vuN0" text="컷스루 III" original="Cut Through III"/>
         <!-- Shatter Shield I -->
-        <string id="89ezJ7aW" text="섀터 쉴드 I"/>
+        <string id="89ezJ7aW" text="섀터 쉴드 I" original="Shatter Shield I"/>
         <!-- Shatter Shield II -->
-        <string id="Dvjkoxi3" text="섀터 쉴드 II"/>
+        <string id="Dvjkoxi3" text="섀터 쉴드 II" original="Shatter Shield II"/>
         <!-- Shatter Shield III -->
-        <string id="V6RyPIQg" text="섀터 쉴드 III"/>
+        <string id="V6RyPIQg" text="섀터 쉴드 III" original="Shatter Shield III"/>
         <!-- Shrug Off I -->
-        <string id="oyKzNISD" text="어깨를 으쓱하다 I"/>
+        <string id="oyKzNISD" text="어깨를 으쓱하다 I" original="Shrug Off I"/>
         <!-- Shrug Off II -->
-        <string id="zNj3xNd4" text="어깨를 으쓱하다 II"/>
+        <string id="zNj3xNd4" text="어깨를 으쓱하다 II" original="Shrug Off II"/>
         <!-- Shrug Off III -->
-        <string id="5nsSdwel" text="어깨를 으쓱하다 III"/>
+        <string id="5nsSdwel" text="어깨를 으쓱하다 III" original="Shrug Off III"/>
         <!-- Athletic I -->
-        <string id="b3DBwSTA" text="운동 I"/>
+        <string id="b3DBwSTA" text="운동 I" original="Athletic I"/>
         <!-- Athletic II -->
-        <string id="oeSxcpzi" text="운동 II"/>
+        <string id="oeSxcpzi" text="운동 II" original="Athletic II"/>
         <!-- Athletic III -->
-        <string id="dMvjTTZb" text="운동 III"/>
+        <string id="dMvjTTZb" text="운동 III" original="Athletic III"/>
         <!-- Ignore Armor I -->
-        <string id="ngiTK9F9" text="방어구 무시 I"/>
+        <string id="ngiTK9F9" text="방어구 무시 I" original="Ignore Armor I"/>
         <!-- Ignore Armor II -->
-        <string id="Q7JOJL4l" text="방어구 무시 II"/>
+        <string id="Q7JOJL4l" text="방어구 무시 II" original="Ignore Armor II"/>
         <!-- Ignore Armor III -->
-        <string id="fLsEduav" text="방어구 무시 III"/>
+        <string id="fLsEduav" text="방어구 무시 III" original="Ignore Armor III"/>
     </strings>
 </base>

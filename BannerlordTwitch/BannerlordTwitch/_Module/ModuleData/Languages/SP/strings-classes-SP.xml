@@ -5,79 +5,78 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
-        <!-- Common -->        
+        <!-- Common -->
         <!-- Fireblade -->
-        <string id="yEtkv5ML" text="Espada de fuego"/>
+        <string id="yEtkv5ML" text="Espada de fuego" original="Fireblade"/>
         <!-- infantry -->
-        <string id="m8bz4drX" text="infantería"/>
+        <string id="m8bz4drX" text="infantería" original="infantry"/>
         <!-- Healthy -->
-        <string id="ROXuJJq8" text="Saludable"/>
+        <string id="ROXuJJq8" text="Saludable" original="Healthy"/>
         <!-- Explosive Arrows -->
-        <string id="skyn1cL6" text="Flechas explosivas"/>
+        <string id="skyn1cL6" text="Flechas explosivas" original="Explosive Arrows"/>
         <!-- archer -->
-        <string id="4tflp34a" text="arquero"/>
+        <string id="4tflp34a" text="arquero" original="archer"/>
         <!-- Fleet Footed -->
-        <string id="NE9Li2Hb" text="Flota de pie"/>
+        <string id="NE9Li2Hb" text="Flota de pie" original="Fleet Footed"/>
         <!-- Explosive Arrows -->
-        <string id="xgnH5owv" text="Flechas explosivas"/>
+        <string id="xgnH5owv" text="Flechas explosivas" original="Explosive Arrows"/>
         <!-- heavyarcher -->
-        <string id="JncRD8tX" text="pescador"/>
+        <string id="JncRD8tX" text="pescador" original="heavyarcher"/>
         <!-- Healthy -->
-        <string id="ZrmsIMPE" text="Saludable"/>
+        <string id="ZrmsIMPE" text="Saludable" original="Healthy"/>
         <!-- Heavy Bolts -->
-        <string id="QZD9XdpC" text="Pernos pesados"/>
+        <string id="QZD9XdpC" text="Pernos pesados" original="Heavy Bolts"/>
         <!-- crossbow -->
-        <string id="wV6R9Si5" text="ballesta"/>
+        <string id="wV6R9Si5" text="ballesta" original="crossbow"/>
         <!-- Self Healing -->
-        <string id="FvNPPHLJ" text="Autocuración"/>
+        <string id="FvNPPHLJ" text="Autocuración" original="Self Healing"/>
         <!-- Explosive Bolts -->
-        <string id="7GmE3SfQ" text="Pernos explosivos"/>
+        <string id="7GmE3SfQ" text="Pernos explosivos" original="Explosive Bolts"/>
         <!-- heavycrossbow -->
-        <string id="bpzytNbP" text="ballesta pesada"/>
+        <string id="bpzytNbP" text="ballesta pesada" original="heavycrossbow"/>
         <!-- Healthy -->
-        <string id="k7booFb2" text="Saludable"/>
+        <string id="k7booFb2" text="Saludable" original="Healthy"/>
         <!-- Trample -->
-        <string id="ZEGEpycY" text="Pisotear"/>
+        <string id="ZEGEpycY" text="Pisotear" original="Trample"/>
         <!-- cavalry -->
-        <string id="jNaFWF9t" text="caballería"/>
+        <string id="jNaFWF9t" text="caballería" original="cavalry"/>
         <!-- A Good Horse -->
-        <string id="YghplAdF" text="Un buen caballo"/>
+        <string id="YghplAdF" text="Un buen caballo" original="A Good Horse"/>
         <!-- Trample -->
-        <string id="mmeJSrm9" text="Pisotear"/>
+        <string id="mmeJSrm9" text="Pisotear" original="Trample"/>
         <!-- camelry -->
-        <string id="mJ8RVORq" text="camello"/>
+        <string id="mJ8RVORq" text="camello" original="camelry"/>
         <!-- A Good Camel -->
-        <string id="atGMPeNF" text="Un buen camello"/>
+        <string id="atGMPeNF" text="Un buen camello" original="A Good Camel"/>
         <!-- Explosive Arrows -->
-        <string id="YpIUHASp" text="Flechas explosivas"/>
+        <string id="YpIUHASp" text="Flechas explosivas" original="Explosive Arrows"/>
         <!-- horsearcher -->
-        <string id="p5qJfkkp" text="jinete"/>
+        <string id="p5qJfkkp" text="jinete" original="horsearcher"/>
         <!-- Mounted Archery -->
-        <string id="zxgdfSIS" text="Tiro con arco montado"/>
+        <string id="zxgdfSIS" text="Tiro con arco montado" original="Mounted Archery"/>
         <!-- Heavy Arrows -->
-        <string id="FrX7AiyI" text="Flechas pesadas"/>
+        <string id="FrX7AiyI" text="Flechas pesadas" original="Heavy Arrows"/>
         <!-- camelarcher -->
-        <string id="HreZWoyd" text="camelarcher"/>
+        <string id="HreZWoyd" text="camelarcher" original="camelarcher"/>
         <!-- Mounted Archery -->
-        <string id="szdoTAQj" text="Tiro con arco montado"/>
+        <string id="szdoTAQj" text="Tiro con arco montado" original="Mounted Archery"/>
         <!-- Break Through -->
-        <string id="E3qGC3fs" text="Descubrimiento"/>
+        <string id="E3qGC3fs" text="Descubrimiento" original="Break Through"/>
         <!-- skirmisher -->
-        <string id="9euSgzCd" text="tirador escondido"/>
+        <string id="9euSgzCd" text="tirador escondido" original="skirmisher"/>
         <!-- Retribution -->
-        <string id="Lw8xQu1P" text="Venganza"/>
+        <string id="Lw8xQu1P" text="Venganza" original="Retribution"/>
         <!-- Berserker Rage -->
-        <string id="1DSLInEJ" text="Rabia berserker"/>
+        <string id="1DSLInEJ" text="Rabia berserker" original="Berserker Rage"/>
         <!-- berserker -->
-        <string id="wVjXAFal" text="frenético"/>
+        <string id="wVjXAFal" text="frenético" original="berserker"/>
         <!-- Glass Cannon -->
-        <string id="nB4Qb0mD" text="Cañón de vidrio"/>
+        <string id="nB4Qb0mD" text="Cañón de vidrio" original="Glass Cannon"/>
         <!-- Retribution -->
-        <string id="rzIl9tm3" text="Venganza"/>
+        <string id="rzIl9tm3" text="Venganza" original="Retribution"/>
         <!-- looter -->
-        <string id="4JffsJMD" text="saqueador"/>
+        <string id="4JffsJMD" text="saqueador" original="looter"/>
         <!-- Grenades -->
-        <string id="nmjVjakS" text="Granadas"/>
+        <string id="nmjVjakS" text="Granadas" original="Grenades"/>
     </strings>
 </base>

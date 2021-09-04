@@ -5,627 +5,597 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- Naming -->
         <!-- → -->
-        <string id="2Ncpkenz" text="→"/>
+        <string id="2Ncpkenz" text="→" original="→"/>
         <!-- + -->
-        <string id="83uNsc2Z" text="+"/>
+        <string id="83uNsc2Z" text="+" original="+"/>
         <!-- − -->
-        <string id="drHSxMvO" text="−"/>
+        <string id="drHSxMvO" text="−" original="−"/>
         <!-- ⦷ -->
-        <string id="BolFnYCO" text="⦷"/>
+        <string id="BolFnYCO" text="⦷" original="⦷"/>
         <!-- XP -->
-        <string id="JFCeRYdn" text="XP"/>
+        <string id="JFCeRYdn" text="XP" original="XP"/>
         <!-- HP -->
-        <string id="NtqSb7B7" text="HP"/>
+        <string id="NtqSb7B7" text="HP" original="HP"/>
         <!-- lvl -->
-        <string id="RQlq59mz" text="レベル"/>
+        <string id="RQlq59mz" text="レベル" original="lvl"/>
         <!-- Item -->
-        <string id="5rErcMGl" text="アイテム"/>
+        <string id="5rErcMGl" text="アイテム" original="Item"/>
         <!-- Skills -->
-        <string id="5gVLi7NA" text="スキル"/>
+        <string id="5gVLi7NA" text="スキル" original="Skills"/>
         <!--  ■ -->
-        <string id="aG3roJj3" text="■■"/>
+        <string id="aG3roJj3" text="■■" original=" ■"/>
         <!-- Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}! -->
-        <string id="fuwuk4bR" text="{GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}が足りません！"/>
-
+        <string id="fuwuk4bR" text="{GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}が足りません！" original="Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!"/>
         <!-- Common Phrases -->
         <!-- General -->
-        <string id="C5T5nnix" text="全般的"/>
+        <string id="C5T5nnix" text="全般的" original="General"/>
         <!-- Limits -->
-        <string id="1lHWj3nT" text="制限"/>
+        <string id="1lHWj3nT" text="制限" original="Limits"/>
         <!-- Initialization -->
-        <string id="DRNO9OAl" text="初期化"/>
+        <string id="DRNO9OAl" text="初期化" original="Initialization"/>
         <!-- Enabled -->
-        <string id="sPKWnVA0" text="有効"/>
+        <string id="sPKWnVA0" text="有効" original="Enabled"/>
         <!-- Name -->
-        <string id="uUzmy7Lh" text="名前"/>
+        <string id="uUzmy7Lh" text="名前" original="Name"/>
         <!-- {From} to {To} -->
-        <string id="yVydxRHh" text="{From} to {To}"/>
+        <string id="yVydxRHh" text="{From} to {To}" original="{From} to {To}"/>
         <!-- Skill -->
-        <string id="OEMBeawy" text="スキル"/>
+        <string id="OEMBeawy" text="スキル" original="Skill"/>
         <!-- Level -->
-        <string id="iu0dtUP5" text="レベル"/>
+        <string id="iu0dtUP5" text="レベル" original="Level"/>
         <!-- Amount -->
-        <string id="DKfKt4qP" text="額"/>
+        <string id="DKfKt4qP" text="額" original="Amount"/>
         <!-- Costs {GoldCost} -->
-        <string id="Diwd7dBo" text="費用{GoldCost}"/>
+        <string id="Diwd7dBo" text="費用{GoldCost}" original="Costs {GoldCost}"/>
         <!-- Costs -->
-        <string id="r7sc3Tvg" text="費用"/>
+        <string id="r7sc3Tvg" text="費用" original="Costs"/>
         <!-- None -->
-        <string id="FNK3LD2p" text="なし"/>
+        <string id="FNK3LD2p" text="なし" original="None"/>
         <!-- Enabled -->
-        <string id="kpv03CqK" text="有効"/>
+        <string id="kpv03CqK" text="有効" original="Enabled"/>
         <!-- Disabled -->
-        <string id="soS8qlsg" text="無効"/>
+        <string id="soS8qlsg" text="無効" original="Disabled"/>
         <!-- Cost -->
-        <string id="LnQoMDLT" text="費用"/>
+        <string id="LnQoMDLT" text="費用" original="Cost"/>
         <!-- Is Enabled -->
-        <string id="oi2yz7aS" text="有効になっています"/>
+        <string id="oi2yz7aS" text="有効になっています" original="Is Enabled"/>
         <!-- all -->
-        <string id="hHekZwYB" text="全て"/>
+        <string id="hHekZwYB" text="全て" original="all"/>
         <!-- Battle -->
-        <string id="9qAD6eZR" text="戦い"/>
+        <string id="9qAD6eZR" text="戦い" original="Battle"/>
         <!-- Death -->
-        <string id="dbU7WEKG" text="死"/>
+        <string id="dbU7WEKG" text="死" original="Death"/>
         <!-- XP -->
-        <string id="06KnYhyh" text="XP"/>
+        <string id="06KnYhyh" text="XP" original="XP"/>
         <!-- Kill Rewards -->
-        <string id="E2RBmb1K" text="報酬を殺す"/>
+        <string id="E2RBmb1K" text="報酬を殺す" original="Kill Rewards"/>
         <!-- Battle End Rewards -->
-        <string id="uPwaOKdT" text="バトルエンドリワード"/>
+        <string id="uPwaOKdT" text="バトルエンドリワード" original="Battle End Rewards"/>
         <!-- Kill Streak Rewards -->
-        <string id="lnz7d1BI" text="ストリーク報酬を殺す"/>
+        <string id="lnz7d1BI" text="ストリーク報酬を殺す" original="Kill Streak Rewards"/>
         <!-- Achievements -->
-        <string id="EPr2clqT" text="実績"/>
+        <string id="EPr2clqT" text="実績" original="Achievements"/>
         <!-- Shouts -->
-        <string id="UhUpH8C8" text="叫び"/>
+        <string id="UhUpH8C8" text="叫び" original="Shouts"/>
         <!-- Effect -->
-        <string id="VBuncBq5" text="効果"/>
+        <string id="VBuncBq5" text="効果" original="Effect"/>
         <!-- Targets -->
-        <string id="R7rU0TbD" text="ターゲット"/>
+        <string id="R7rU0TbD" text="ターゲット" original="Targets"/>
         <!-- Appearance -->
-        <string id="umALVhJG" text="外観"/>
-        
+        <string id="umALVhJG" text="外観" original="Appearance"/>
         <!-- Settings -->
         <!-- Commands -->
-        <string id="JlFpeaxe" text="コマンド"/>
+        <string id="JlFpeaxe" text="コマンド" original="Commands"/>
         <!-- Command -->
-        <string id="15umM0Xo" text="指示"/>
+        <string id="15umM0Xo" text="指示" original="Command"/>
         <!-- Description -->
-        <string id="J6daarYb" text="説明"/>
+        <string id="J6daarYb" text="説明" original="Description"/>
         <!-- Settings -->
-        <string id="e2Fu7JYS" text="設定"/>
+        <string id="e2Fu7JYS" text="設定" original="Settings"/>
         <!-- Channel Point Rewards -->
-        <string id="u6xsREDY" text="チャンネルポイント特典"/>
-        
+        <string id="u6xsREDY" text="チャンネルポイント特典" original="Channel Point Rewards"/>
         <!-- ActionManager -->
         <!-- The game isn't started yet -->
-        <string id="kvbqfThe" text="ゲームはまだ開始されていません"/>
+        <string id="kvbqfThe" text="ゲームはまだ開始されていません" original="The game isn't started yet"/>
         <!-- Action with the id {RewardId} doesn't exist -->
-        <string id="B39sGef4" text="ID {RewardId}のアクションは存在しません"/>
+        <string id="B39sGef4" text="ID {RewardId}のアクションは存在しません" original="Action with the id {RewardId} doesn't exist"/>
         <!-- Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow -->
-        <string id="yo8Yw3Mz" text="アクション{RewardId} took {TimeInMS} msをキューに入れます。これは遅すぎます"/>
-
+        <string id="yo8Yw3Mz" text="アクション{RewardId} took {TimeInMS} msをキューに入れます。これは遅すぎます" original="Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow"/>
         <!-- BLTAgentModifierBehavior -->
         <!-- Scale Percent -->
-        <string id="JzII0KRZ" text="スケールパーセント"/>
+        <string id="JzII0KRZ" text="スケールパーセント" original="Scale Percent"/>
         <!-- Changes the size of the target -->
-        <string id="fc1SmPXH" text="ターゲットのサイズを変更します"/>
+        <string id="fc1SmPXH" text="ターゲットのサイズを変更します" original="Changes the size of the target"/>
         <!-- Apply To Mount -->
-        <string id="0vqiI434" text="マウントに適用"/>
+        <string id="0vqiI434" text="マウントに適用" original="Apply To Mount"/>
         <!-- Apply to the mount of the target, instead of the target themselves (only some properties are valid on mounts) -->
-        <string id="U0wJHDSa" text="ターゲット自体ではなく、ターゲットのマウントに適用します（マウントで有効なプロパティは一部のみです）"/>
+        <string id="U0wJHDSa" text="ターゲット自体ではなく、ターゲットのマウントに適用します（マウントで有効なプロパティは一部のみです）" original="Apply to the mount of the target, instead of the target themselves (only some properties are valid on mounts)"/>
         <!-- Properties -->
-        <string id="RdCw0xo9" text="プロパティ"/>
+        <string id="RdCw0xo9" text="プロパティ" original="Properties"/>
         <!-- Properties to change, and how much by -->
-        <string id="ZKN8fZsA" text="変更するプロパティとその量"/>
+        <string id="ZKN8fZsA" text="変更するプロパティとその量" original="Properties to change, and how much by"/>
         <!-- Skills -->
-        <string id="iPI9zoqR" text="スキル"/>
+        <string id="iPI9zoqR" text="スキル" original="Skills"/>
         <!-- Skills to change, and how much by (these aren't compatible with Apply To Mount) -->
-        <string id="PanMmDx9" text="変更するスキルとその量（これらはApply To Mountと互換性がありません）"/>
+        <string id="PanMmDx9" text="変更するスキルとその量（これらはApply To Mountと互換性がありません）" original="Skills to change, and how much by (these aren't compatible with Apply To Mount)"/>
         <!-- Scale {ScalePercent}% -->
-        <string id="EkKFoK73" text="スケール{ScalePercent}％"/>
+        <string id="EkKFoK73" text="スケール{ScalePercent}％" original="Scale {ScalePercent}%"/>
         <!-- (on mount) -->
-        <string id="l7w0bPt0" text="（マウント上）"/>
+        <string id="l7w0bPt0" text="（マウント上）" original="(on mount)"/>
         <!-- Mount {ScalePercent}% normal size -->
-        <string id="qhIXgPGK" text="マウント{ScalePercent}％通常サイズ"/>
+        <string id="qhIXgPGK" text="マウント{ScalePercent}％通常サイズ" original="Mount {ScalePercent}% normal size"/>
         <!-- {ScalePercent}% normal size -->
-        <string id="yLT1lfRC" text="{ScalePercent}％通常サイズ"/>
-        
+        <string id="yLT1lfRC" text="{ScalePercent}％通常サイズ" original="{ScalePercent}% normal size"/>
         <!-- DocumentationHelpers -->
-        
         <!-- ParticleEffectDef -->
         <!-- Particle effect system name, see ParticleEffects.txt for the full vanilla list -->
-        <string id="xgnntAyd" text="パーティクルエフェクトシステム名。完全なバニラリストについては、ParticleEffects.txtを参照してください。"/>
+        <string id="xgnntAyd" text="パーティクルエフェクトシステム名。完全なバニラリストについては、ParticleEffects.txtを参照してください。" original="Particle effect system name, see ParticleEffects.txt for the full vanilla list"/>
         <!-- On Weapon -->
-        <string id="w3eb5kWA" text="武器について"/>
+        <string id="w3eb5kWA" text="武器について" original="On Weapon"/>
         <!-- On Hands -->
-        <string id="YLmpgn4j" text="手に"/>
+        <string id="YLmpgn4j" text="手に" original="On Hands"/>
         <!-- On Head -->
-        <string id="muuJpmaw" text="頭の上"/>
+        <string id="muuJpmaw" text="頭の上" original="On Head"/>
         <!-- On Body -->
-        <string id="m9p9nBjM" text="体に"/>
+        <string id="m9p9nBjM" text="体に" original="On Body"/>
         <!-- Attach Point -->
-        <string id="GCe3gQcz" text="アタッチポイント"/>
+        <string id="GCe3gQcz" text="アタッチポイント" original="Attach Point"/>
         <!-- Where to attach the particles -->
-        <string id="uNOYtEdN" text="粒子を付着させる場所"/>
-        
-        <!-- DrivenPropertyItemSource -->        
+        <string id="uNOYtEdN" text="粒子を付着させる場所" original="Where to attach the particles"/>
+        <!-- DrivenPropertyItemSource -->
         <!-- Armor Head -->
-        <string id="oUgW3q7p" text="アーマーヘッド"/>
+        <string id="oUgW3q7p" text="アーマーヘッド" original="Armor Head"/>
         <!-- Armor Torso -->
-        <string id="NYoNwE3R" text="アーマートルソ"/>
+        <string id="NYoNwE3R" text="アーマートルソ" original="Armor Torso"/>
         <!-- Armor Legs -->
-        <string id="VKAAkKbm" text="アーマーレッグ"/>
+        <string id="VKAAkKbm" text="アーマーレッグ" original="Armor Legs"/>
         <!-- Armor Arms -->
-        <string id="dzqBXvaS" text="アーマーアーム"/>
+        <string id="dzqBXvaS" text="アーマーアーム" original="Armor Arms"/>
         <!-- Armor Encumbrance -->
-        <string id="2EaDPdxT" text="アーマーエンカンブランス"/>
+        <string id="2EaDPdxT" text="アーマーエンカンブランス" original="Armor Encumbrance"/>
         <!-- Weapons Encumbrance -->
-        <string id="Kd1ZpiXo" text="武器の負担"/>
+        <string id="Kd1ZpiXo" text="武器の負担" original="Weapons Encumbrance"/>
         <!-- Top Speed Reach Duration -->
-        <string id="kZ2KuXHY" text="最高速度の到達時間"/>
+        <string id="kZ2KuXHY" text="最高速度の到達時間" original="Top Speed Reach Duration"/>
         <!-- Max Speed Multiplier -->
-        <string id="9yu9o5nH" text="最大速度乗数"/>
+        <string id="9yu9o5nH" text="最大速度乗数" original="Max Speed Multiplier"/>
         <!-- Combat Max Speed Multiplier -->
-        <string id="nvHAoLpy" text="戦闘最大速度乗数"/>
+        <string id="nvHAoLpy" text="Combat Max Speed Multiplier" original="Combat Max Speed Multiplier"/>
         <!-- Mount Charge Damage -->
-        <string id="RIMIU69S" text="マウントチャージダメージ"/>
+        <string id="RIMIU69S" text="マウントチャージダメージ" original="Mount Charge Damage"/>
         <!-- Mount Difficulty -->
-        <string id="9mYdZQI8" text="マウントの難しさ"/>
+        <string id="9mYdZQI8" text="マウントの難しさ" original="Mount Difficulty"/>
         <!-- Mount Maneuver -->
-        <string id="EaenR5S2" text="マウントマニューバ"/>
+        <string id="EaenR5S2" text="マウントマニューバ" original="Mount Maneuver"/>
         <!-- Mount Speed -->
-        <string id="NJpg1RsS" text="マウント速度"/>
+        <string id="NJpg1RsS" text="マウント速度" original="Mount Speed"/>
         <!-- Horse Archery Ability -->
-        <string id="UtGZ9B6F" text="弓騎兵の能力"/>
+        <string id="UtGZ9B6F" text="弓騎兵の能力" original="Horse Archery Ability"/>
         <!-- Riding Ability -->
-        <string id="pmUxn1vO" text="乗車能力"/>
+        <string id="pmUxn1vO" text="乗車能力" original="Riding Ability"/>
         <!-- Shield Ability -->
-        <string id="wLmAnuDu" text="シールド能力"/>
+        <string id="wLmAnuDu" text="シールド能力" original="Shield Ability"/>
         <!-- Handling Multiplier -->
-        <string id="YZt69g1x" text="乗数の取り扱い"/>
+        <string id="YZt69g1x" text="乗数の取り扱い" original="Handling Multiplier"/>
         <!-- Weapon Inaccuracy -->
-        <string id="Yem5BVmg" text="武器の不正確さ"/>
+        <string id="Yem5BVmg" text="武器の不正確さ" original="Weapon Inaccuracy"/>
         <!-- Swing Speed Multiplier -->
-        <string id="DUuJ6bM5" text="スイングスピード乗数"/>
+        <string id="DUuJ6bM5" text="スイングスピード乗数" original="Swing Speed Multiplier"/>
         <!-- Reload Speed -->
-        <string id="djGCJeM4" text="リロードの速さ"/>
+        <string id="djGCJeM4" text="リロードの速さ" original="Reload Speed"/>
         <!-- Reload Movement Penalty -->
-        <string id="4XrdvYDR" text="リロード移動ペナルティ"/>
+        <string id="4XrdvYDR" text="リロード移動ペナルティ" original="Reload Movement Penalty"/>
         <!-- Courage -->
-        <string id="GJftwazi" text="勇気"/>
+        <string id="GJftwazi" text="勇気" original="Courage"/>
         <!-- Shield Missile Collision Body Size Adder -->
-        <string id="8WAxev1i" text="シールドミサイル衝突ボディサイズ加算器"/>
+        <string id="8WAxev1i" text="シールドミサイル衝突ボディサイズ加算器" original="Shield Missile Collision Body Size Adder"/>
         <!-- Thrust Or Ranged Ready Speed Multiplier -->
-        <string id="xxkAFaWD" text="推力または遠隔レディスピード乗数"/>
+        <string id="xxkAFaWD" text="推力または遠隔レディスピード乗数" original="Thrust Or Ranged Ready Speed Multiplier"/>
         <!-- AI Shoot Frequency -->
-        <string id="iaxxNiiV" text="AI撮影頻度"/>
+        <string id="iaxxNiiV" text="AI撮影頻度" original="AI Shoot Frequency"/>
         <!-- AI Wait Before Shoot Factor -->
-        <string id="3HlCPScr" text="AIはシュートファクターの前に待つ"/>
+        <string id="3HlCPScr" text="AIはシュートファクターの前に待つ" original="AI Wait Before Shoot Factor"/>
         <!-- AI Block Chance -->
-        <string id="7xW74SvW" text="AIブロックチャンス"/>
+        <string id="7xW74SvW" text="AIブロックチャンス" original="AI Block Chance"/>
         <!-- AI Attack Chance -->
-        <string id="vIjQ6b5w" text="AI攻撃のチャンス"/>
+        <string id="vIjQ6b5w" text="AI攻撃のチャンス" original="AI Attack Chance"/>
         <!-- AI Kick -->
-        <string id="FgSI5C4F" text="AIキック"/>
-        
+        <string id="FgSI5C4F" text="AIキック" original="AI Kick"/>
         <!-- EquipmentType -->
         <!-- None -->
-        <string id="i7XX56i9" text="なし"/>
+        <string id="i7XX56i9" text="なし" original="None"/>
         <!-- Dagger -->
-        <string id="5HQtHOg4" text="短剣"/>
+        <string id="5HQtHOg4" text="短剣" original="Dagger"/>
         <!-- One Handed Sword -->
-        <string id="hZU8m8K9" text="片手剣"/>
+        <string id="hZU8m8K9" text="片手剣" original="One Handed Sword"/>
         <!-- Two Handed Sword -->
-        <string id="Lc70XOXH" text="両手剣"/>
+        <string id="Lc70XOXH" text="両手剣" original="Two Handed Sword"/>
         <!-- One Handed Axe -->
-        <string id="amKrRDlF" text="片手斧"/>
+        <string id="amKrRDlF" text="片手斧" original="One Handed Axe"/>
         <!-- Two Handed Axe -->
-        <string id="QPv8qS6h" text="両手斧"/>
+        <string id="QPv8qS6h" text="両手斧" original="Two Handed Axe"/>
         <!-- One Handed Mace -->
-        <string id="jTI9J3nq" text="片手メイス"/>
+        <string id="jTI9J3nq" text="片手メイス" original="One Handed Mace"/>
         <!-- Two Handed Mace -->
-        <string id="YzVmN0wN" text="両手メイス"/>
+        <string id="YzVmN0wN" text="両手メイス" original="Two Handed Mace"/>
         <!-- One Handed Lance -->
-        <string id="pP2mtmXu" text="片手ランス"/>
+        <string id="pP2mtmXu" text="片手ランス" original="One Handed Lance"/>
         <!-- Two Handed Lance -->
-        <string id="Y6CxpaYL" text="両手ランス"/>
+        <string id="Y6CxpaYL" text="両手ランス" original="Two Handed Lance"/>
         <!-- One Handed Glaive -->
-        <string id="r22oB2bm" text="片手グレイブ"/>
+        <string id="r22oB2bm" text="片手グレイブ" original="One Handed Glaive"/>
         <!-- Two Handed Glaive -->
-        <string id="BcmE6Y75" text="両手グレイブ"/>
+        <string id="BcmE6Y75" text="両手グレイブ" original="Two Handed Glaive"/>
         <!-- Bow -->
-        <string id="rroxl8j3" text="弓"/>
+        <string id="rroxl8j3" text="弓" original="Bow"/>
         <!-- Crossbow -->
-        <string id="CztMY8ZE" text="クロスボウ"/>
+        <string id="CztMY8ZE" text="クロスボウ" original="Crossbow"/>
         <!-- Arrows -->
-        <string id="DYYyhDUI" text="矢印"/>
+        <string id="DYYyhDUI" text="矢印" original="Arrows"/>
         <!-- Bolts -->
-        <string id="i281jKBH" text="ボルト"/>
+        <string id="i281jKBH" text="ボルト" original="Bolts"/>
         <!-- Throwing Knives -->
-        <string id="C1Qx1ZqP" text="投げナイフ"/>
+        <string id="C1Qx1ZqP" text="投げナイフ" original="Throwing Knives"/>
         <!-- Throwing Axes -->
-        <string id="S1NUKL4r" text="斧を投げる"/>
+        <string id="S1NUKL4r" text="斧を投げる" original="Throwing Axes"/>
         <!-- Throwing Javelins -->
-        <string id="ND1x0R2V" text="やり投げ"/>
+        <string id="ND1x0R2V" text="やり投げ" original="Throwing Javelins"/>
         <!-- Shield -->
-        <string id="p4eF4kc6" text="シールド"/>
+        <string id="p4eF4kc6" text="シールド" original="Shield"/>
         <!-- Stone -->
-        <string id="dYKgMqE8" text="結石"/>
-        
+        <string id="dYKgMqE8" text="結石" original="Stone"/>
         <!-- HeroHelpers.AllAttributes -->
         <!-- Vigor -->
-        <string id="IyK1yg5j" text="活力"/>
+        <string id="IyK1yg5j" text="活力" original="Vigor"/>
         <!-- Control -->
-        <string id="dHlLNy7j" text="コントロール"/>
+        <string id="dHlLNy7j" text="コントロール" original="Control"/>
         <!-- Endurance -->
-        <string id="qKVblzEJ" text="耐久"/>
+        <string id="qKVblzEJ" text="耐久" original="Endurance"/>
         <!-- Cunning -->
-        <string id="bJbFeqMG" text="狡猾"/>
+        <string id="bJbFeqMG" text="狡猾" original="Cunning"/>
         <!-- Social -->
-        <string id="lSrkwcJV" text="ソーシャル"/>
+        <string id="lSrkwcJV" text="ソーシャル" original="Social"/>
         <!-- Intelligence -->
-        <string id="qGfZfaai" text="知能"/>
-        
-        <!-- OneShotEffect -->                                 
+        <string id="qGfZfaai" text="知能" original="Intelligence"/>
+        <!-- OneShotEffect -->
         <!-- ParticleEffect -->
-        <string id="cv0hxm25" text="ParticleEffect"/>
+        <string id="cv0hxm25" text="ParticleEffect" original="ParticleEffect"/>
         <!-- Sound -->
-        <string id="FyXztxDH" text="音"/>
+        <string id="FyXztxDH" text="音" original="Sound"/>
         <!-- Particle Effect to play -->
-        <string id="N1WsBndO" text="再生するパーティクルエフェクト"/>
+        <string id="N1WsBndO" text="再生するパーティクルエフェクト" original="Particle Effect to play"/>
         <!-- Sound to play -->
-        <string id="2KrpVrR8" text="再生する音"/>
-        
+        <string id="2KrpVrR8" text="再生する音" original="Sound to play"/>
         <!-- PropertyModifierDef -->
         <!-- Name -->
-        <string id="ncGFtcFp" text="名前"/>
+        <string id="ncGFtcFp" text="名前" original="Name"/>
         <!-- ModifierPercent -->
-        <string id="RgtZnxLU" text="ModifierPercent"/>
+        <string id="RgtZnxLU" text="ModifierPercent" original="ModifierPercent"/>
         <!-- Add -->
-        <string id="uNduKTKf" text="追加"/>
+        <string id="uNduKTKf" text="追加" original="Add"/>
         <!-- The property to modify -->
-        <string id="SUI6n33o" text="変更するプロパティ"/>
+        <string id="SUI6n33o" text="変更するプロパティ" original="The property to modify"/>
         <!-- Percent modifier to apply to the property (100% will result in no chance) -->
-        <string id="fDNljlb9" text="プロパティに適用するパーセント修飾子（100％ではチャンスはありません）"/>
+        <string id="fDNljlb9" text="プロパティに適用するパーセント修飾子（100％ではチャンスはありません）" original="Percent modifier to apply to the property (100% will result in no chance)"/>
         <!-- How much to add or subtract from the property (0 will result in no change). This is applied AFTER Modifier. -->
-        <string id="CBWdKoGD" text="プロパティに追加またはプロパティから削除する量（0は変更されません）。これはモディファイヤの後に適用されます。"/>
+        <string id="CBWdKoGD" text="プロパティに追加またはプロパティから削除する量（0は変更されません）。これはモディファイヤの後に適用されます。" original="How much to add or subtract from the property (0 will result in no change). This is applied AFTER Modifier."/>
         <!-- (no change) -->
-        <string id="usihVSj3" text="（変化なし）"/>
-
+        <string id="usihVSj3" text="（変化なし）" original="(no change)"/>
         <!-- SkillModifierDef -->
         <!-- ModifierPercent -->
-        <string id="jgNUxcBa" text="ModifierPercent"/>
+        <string id="jgNUxcBa" text="ModifierPercent" original="ModifierPercent"/>
         <!-- Add -->
-        <string id="Au82n7kL" text="追加"/>
+        <string id="Au82n7kL" text="追加" original="Add"/>
         <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
-        <string id="46oj12tA" text="スキルまたはスキルグループから修飾子（グループ内のすべてのスキルが変更されます）"/>
+        <string id="46oj12tA" text="スキルまたはスキルグループから修飾子（グループ内のすべてのスキルが変更されます）" original="Skill or skill group to modifier (all skills in a group will be modified)"/>
         <!-- Percent modifier to apply to the skill (100% will result in no chance) -->
-        <string id="S34uXWMu" text="スキルに適用するパーセント修飾子（100％はチャンスがありません）"/>
+        <string id="S34uXWMu" text="スキルに適用するパーセント修飾子（100％はチャンスがありません）" original="Percent modifier to apply to the skill (100% will result in no chance)"/>
         <!-- How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier. -->
-        <string id="hPQpBmRR" text="スキルに追加またはスキルから削除する量（0は変更されません）。これはモディファイヤの後に適用されます。"/>
+        <string id="hPQpBmRR" text="スキルに追加またはスキルから削除する量（0は変更されません）。これはモディファイヤの後に適用されます。" original="How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier."/>
         <!-- (no change) -->
-        <string id="PsUcJvPZ" text="（変化なし）"/>
-        
+        <string id="PsUcJvPZ" text="（変化なし）" original="(no change)"/>
         <!-- BLTOverlay -->
         <!-- BLT Overlay -->
-        <string id="fmjzDasd" text="BLTオーバーレイ"/>
+        <string id="fmjzDasd" text="BLTオーバーレイ" original="BLT Overlay"/>
         <!-- For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again. -->
-        <string id="Kgi2isWy" text="BLTオーバーレイブラウザソースが機能するには、ポート{Port}を予約し、Windowsファイアウォール経由で許可する必要があります。\ nこれには管理者権限が必要です。管理者権限は、[OK]を押した後に要求されます。\ n成功した場合、これは表示されません。再びポップアップします。"/>
+        <string id="Kgi2isWy" text="BLTオーバーレイブラウザソースが機能するには、ポート{Port}を予約し、Windowsファイアウォール経由で許可する必要があります。\ nこれには管理者権限が必要です。管理者権限は、[OK]を押した後に要求されます。\ n成功した場合、これは表示されません。再びポップアップします。" original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
         <!-- Okay -->
-        <string id="yXwMSbr4" text="わかった"/>
+        <string id="yXwMSbr4" text="わかった" original="Okay"/>
         <!-- Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window. -->
-        <string id="6ucf05tp" text="構成が成功しました！\ n {UrlRoot}でオーバーレイにアクセスできるようになりました。\ nこのリンクは、[BLT構成]ウィンドウの[承認]タブに再び表示されます。"/>
+        <string id="6ucf05tp" text="構成が成功しました！\ n {UrlRoot}でオーバーレイにアクセスできるようになりました。\ nこのリンクは、[BLT構成]ウィンドウの[承認]タブに再び表示されます。" original="Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."/>
         <!-- Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord. -->
-        <string id="usADfORe" text="構成に失敗しました：\ n \ &amp;quot;{e.Message} \&amp;quot; \ nオーバーレイにアクセスできない可能性があります。\ nこの問題を不和で報告してください。"/>
-
+        <string id="usADfORe" text="構成に失敗しました：\ n \ &amp;quot;{e.Message} \&amp;quot; \ nオーバーレイにアクセスできない可能性があります。\ nこの問題を不和で報告してください。" original="Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord."/>
         <!-- ActionBase -->
         <!-- Whether this is enabled or not -->
-        <string id="YM1rP7sP" text="これが有効かどうか"/>
+        <string id="YM1rP7sP" text="これが有効かどうか" original="Whether this is enabled or not"/>
         <!-- Show response in the twitch chat -->
-        <string id="7IBsjc51" text="単収縮チャットで応答を表示する"/>
+        <string id="7IBsjc51" text="単収縮チャットで応答を表示する" original="Show response in the twitch chat"/>
         <!-- Show response in the overlay window feed -->
-        <string id="UQRfOFjs" text="オーバーレイウィンドウフィードに応答を表示する"/>
+        <string id="UQRfOFjs" text="オーバーレイウィンドウフィードに応答を表示する" original="Show response in the overlay window feed"/>
         <!-- Name of the handler -->
-        <string id="ErhzbqFu" text="ハンドラーの名前"/>
+        <string id="ErhzbqFu" text="ハンドラーの名前" original="Name of the handler"/>
         <!-- Custom config for the handler -->
-        <string id="cdEbk84n" text="ハンドラーのカスタム構成"/>
+        <string id="cdEbk84n" text="ハンドラーのカスタム構成" original="Custom config for the handler"/>
         <!-- What to show in the generated documentation -->
-        <string id="W6pzg6VJ" text="生成されたドキュメントに何を表示するか"/>
+        <string id="W6pzg6VJ" text="生成されたドキュメントに何を表示するか" original="What to show in the generated documentation"/>
         <!-- Respond In Twitch -->
-        <string id="86rc4cz6" text="Twitchで応答する"/>
+        <string id="86rc4cz6" text="Twitchで応答する" original="Respond In Twitch"/>
         <!-- Respond In Overlay -->
-        <string id="0MgBhdtw" text="オーバーレイで応答する"/>
+        <string id="0MgBhdtw" text="オーバーレイで応答する" original="Respond In Overlay"/>
         <!-- Handler -->
-        <string id="dteVl09D" text="ハンドラ"/>
+        <string id="dteVl09D" text="ハンドラ" original="Handler"/>
         <!-- Handler Config -->
-        <string id="Zj8ni08E" text="ハンドラー構成"/>
+        <string id="Zj8ni08E" text="ハンドラー構成" original="Handler Config"/>
         <!-- Documentation -->
-        <string id="UP0DjNMM" text="ドキュメンテーション"/>
-        
+        <string id="UP0DjNMM" text="ドキュメンテーション" original="Documentation"/>
         <!-- Documentation -->
         <!-- Title -->
         <!-- Bannerlord Twitch Viewer Guide -->
-        <string id="ctAF1ghX" text="BannerlordTwitchビューアガイド"/>
+        <string id="ctAF1ghX" text="BannerlordTwitchビューアガイド" original="Bannerlord Twitch Viewer Guide"/>
         <!-- Introduction -->
         <!-- Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to &apos;adopt&apos; a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include &apos;summoning&apos; your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes &apos;class&apos;.&lt;br&gt;If you aren&apos;t sure where to start, begin by using the channel point redemption &apos;Adopt a Hero&apos;. -->
-        <string id="rElL5v6I" text="Bannerlord Twitch（BLT）は、Mount＆Blade II：Bannerlord用のTwitch Integrationmodです。&lt;br&gt;視聴者は、チャンネルポイントの特典（利用可能な場合）とチャットコマンドを使用して、ストリーマーの再生中にゲームを操作できます。&lt;br&gt; BLTの主な機能は、ゲーム内のヒーローを「採用」できることです。つまり、ゲーム内のキャラクターがTwitch名を付けて割り当てられ、さらに対話できるようになります。&lt;br&gt;ヒーローでできることの例としては、ストリーマーが参加している戦闘にヒーローを「召喚」する、視聴者トーナメントに参加する、機器をアップグレードする、ヒーローを「クラス」にするなどがあります。&lt;br&gt;どこから始めればよいかわからない場合は、チャンネルポイントの引き換え「AdoptaHero」を使用することから始めます。"/>
-
+        <string id="rElL5v6I" text="Bannerlord Twitch（BLT）は、Mount＆Blade II：Bannerlord用のTwitch Integrationmodです。&lt;br&gt;視聴者は、チャンネルポイントの特典（利用可能な場合）とチャットコマンドを使用して、ストリーマーの再生中にゲームを操作できます。&lt;br&gt; BLTの主な機能は、ゲーム内のヒーローを「採用」できることです。つまり、ゲーム内のキャラクターがTwitch名を付けて割り当てられ、さらに対話できるようになります。&lt;br&gt;ヒーローでできることの例としては、ストリーマーが参加している戦闘にヒーローを「召喚」する、視聴者トーナメントに参加する、機器をアップグレードする、ヒーローを「クラス」にするなどがあります。&lt;br&gt;どこから始めればよいかわからない場合は、チャンネルポイントの引き換え「AdoptaHero」を使用することから始めます。" original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
         <!-- Command -->
         <!-- Bot command definition -->
-        <string id="8SbGSWFY" text="ボットコマンドの定義"/>
+        <string id="8SbGSWFY" text="ボットコマンドの定義" original="Bot command definition"/>
         <!-- Name -->
-        <string id="D1lt1bSQ" text="名前"/>
+        <string id="D1lt1bSQ" text="名前" original="Name"/>
         <!-- The command itself, not including the ! -->
-        <string id="u1Ua0LXJ" text="コマンド自体。！は含まれません。"/>
+        <string id="u1Ua0LXJ" text="コマンド自体。！は含まれません。" original="The command itself, not including the !"/>
         <!-- HideHelp -->
-        <string id="TpnV5Mpi" text="HideHelp"/>
+        <string id="TpnV5Mpi" text="HideHelp" original="HideHelp"/>
         <!-- Hides the command from the !help action -->
-        <string id="0AZVaBQN" text="！helpアクションからコマンドを非表示にします"/>
+        <string id="0AZVaBQN" text="！helpアクションからコマンドを非表示にします" original="Hides the command from the !help action"/>
         <!-- Help -->
-        <string id="JqNXbyIT" text="ヘルプ"/>
+        <string id="JqNXbyIT" text="ヘルプ" original="Help"/>
         <!-- What to show in the !help command -->
-        <string id="9QV7UzFh" text="！helpコマンドに表示する内容"/>
-        
+        <string id="9QV7UzFh" text="！helpコマンドに表示する内容" original="What to show in the !help command"/>
         <!-- Reward -->
         <!-- Channel points reward definition -->
-        <string id="KaFWtYmc" text="チャネルポイント報酬の定義"/>
+        <string id="KaFWtYmc" text="チャネルポイント報酬の定義" original="Channel points reward definition"/>
         <!-- Twitch channel points reward definition -->
-        <string id="zq79vZqY" text="Twitchチャンネルポイント報酬の定義"/>
+        <string id="zq79vZqY" text="Twitchチャンネルポイント報酬の定義" original="Twitch channel points reward definition"/>
         <!-- Reward Specification -->
-        <string id="sF4buTM8" text="報酬仕様"/>
-        
+        <string id="sF4buTM8" text="報酬仕様" original="Reward Specification"/>
         <!-- RewardSpec -->
         <!-- The Twitch specific part of the channel points reward specification -->
-        <string id="glIst7fu" text="チャネルポイントの報酬仕様のTwitch固有の部分"/>
+        <string id="glIst7fu" text="チャネルポイントの報酬仕様のTwitch固有の部分" original="The Twitch specific part of the channel points reward specification"/>
         <!-- The title of the reward -->
-        <string id="b8OBGhIk" text="報酬のタイトル"/>
+        <string id="b8OBGhIk" text="報酬のタイトル" original="The title of the reward"/>
         <!-- Whether the reward will automatically be set to fulfilled once completed in game. If you set this to true then the redemptions that successfully complete in game will stay in your redemption queue. This is useful if you are worried about people losing points if the game crashes, or you reload an older save. -->
-        <string id="Kunfq4KA" text="ゲームで完了すると、報酬が自動的に履行されるように設定されるかどうか。これをtrueに設定すると、ゲームで正常に完了した償還は償還キューに残ります。これは、ゲームがクラッシュした場合にポイントが失われるのではないかと心配している場合や、古いセーブをリロードする場合に便利です。"/>
+        <string id="Kunfq4KA" text="ゲームで完了すると、報酬が自動的に履行されるように設定されるかどうか。これをtrueに設定すると、ゲームで正常に完了した償還は償還キューに残ります。これは、ゲームがクラッシュした場合にポイントが失われるのではないかと心配している場合や、古いセーブをリロードする場合に便利です。" original="Whether the reward will automatically be set to fulfilled once completed in game. If you set this to true then the redemptions that successfully complete in game will stay in your redemption queue. This is useful if you are worried about people losing points if the game crashes, or you reload an older save."/>
         <!-- Description / prompt -->
-        <string id="yXhrzrGA" text="説明/プロンプト"/>
+        <string id="yXhrzrGA" text="説明/プロンプト" original="Description / prompt"/>
         <!-- The cost of the reward -->
-        <string id="dvYTG9UH" text="報酬のコスト"/>
+        <string id="dvYTG9UH" text="報酬のコスト" original="The cost of the reward"/>
         <!-- Is the reward currently enabled, if false the reward won’t show up to viewers. -->
-        <string id="iCzROk3u" text="報酬は現在有効になっていますか。falseの場合、報酬は視聴者に表示されません。"/>
+        <string id="iCzROk3u" text="報酬は現在有効になっていますか。falseの場合、報酬は視聴者に表示されません。" original="Is the reward currently enabled, if false the reward won’t show up to viewers."/>
         <!-- Custom background color for the reward -->
-        <string id="Bg62Iggr" text="報酬のカスタム背景色"/>
+        <string id="Bg62Iggr" text="報酬のカスタム背景色" original="Custom background color for the reward"/>
         <!-- Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown. -->
-        <string id="XqPRNwVc" text="ユーザーは特典を利用するときに情報を入力する必要がありますか？これが当てはまる場合、プロンプトが表示されます。"/>
+        <string id="XqPRNwVc" text="ユーザーは特典を利用するときに情報を入力する必要がありますか？これが当てはまる場合、プロンプトが表示されます。" original="Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown."/>
         <!-- Title -->
-        <string id="EJDKdXPV" text="題名"/>
+        <string id="EJDKdXPV" text="題名" original="Title"/>
         <!-- Disable Automatic Fulfillment -->
-        <string id="Obz1yM6k" text="自動フルフィルメントを無効にする"/>
+        <string id="Obz1yM6k" text="自動フルフィルメントを無効にする" original="Disable Automatic Fulfillment"/>
         <!-- Prompt -->
-        <string id="e9jiFSF4" text="促す"/>
+        <string id="e9jiFSF4" text="促す" original="Prompt"/>
         <!-- Background Color -->
-        <string id="YzP57nUK" text="背景色"/>
+        <string id="YzP57nUK" text="背景色" original="Background Color"/>
         <!-- Is User Input Required -->
-        <string id="9aESWqlM" text="ユーザー入力が必要ですか"/>
+        <string id="9aESWqlM" text="ユーザー入力が必要ですか" original="Is User Input Required"/>
         <!-- Max Per Stream -->
-        <string id="qAxLr567" text="ストリームあたりの最大数"/>
+        <string id="qAxLr567" text="ストリームあたりの最大数" original="Max Per Stream"/>
         <!-- Max Per User Per Stream -->
-        <string id="V5NnvzZH" text="ストリームあたりのユーザーあたりの最大数"/>
+        <string id="V5NnvzZH" text="ストリームあたりのユーザーあたりの最大数" original="Max Per User Per Stream"/>
         <!-- Global Cooldown Seconds -->
-        <string id="Rulwnhfz" text="グローバルクールダウン秒"/>
+        <string id="Rulwnhfz" text="グローバルクールダウン秒" original="Global Cooldown Seconds"/>
         <!-- Reward Title Here -->
-        <string id="6ORulLUR" text="報酬タイトルはこちら"/>
+        <string id="6ORulLUR" text="報酬タイトルはこちら" original="Reward Title Here"/>
         <!-- The maximum number per stream, defaults to unlimited -->
-        <string id="Ho1k72DC" text="ストリームあたりの最大数。デフォルトは無制限です。"/>
+        <string id="Ho1k72DC" text="ストリームあたりの最大数。デフォルトは無制限です。" original="The maximum number per stream, defaults to unlimited"/>
         <!-- The maximum number per user per stream, defaults to unlimited -->
-        <string id="cdWQe1En" text="ストリームごとのユーザーごとの最大数。デフォルトは無制限です。"/>
+        <string id="cdWQe1En" text="ストリームごとのユーザーごとの最大数。デフォルトは無制限です。" original="The maximum number per user per stream, defaults to unlimited"/>
         <!-- The cooldown in seconds, defaults to unlimited -->
-        <string id="yJRKVszb" text="秒単位のクールダウン、デフォルトは無制限"/>
-        
+        <string id="yJRKVszb" text="秒単位のクールダウン、デフォルトは無制限" original="The cooldown in seconds, defaults to unlimited"/>
         <!-- TwitchService -->
         <!-- Usage: !{cmd.Name} {args} -->
-        <string id="JSW1ryNl" text="使用法：！{cmd.Name} {args}"/>
+        <string id="JSW1ryNl" text="使用法：！{cmd.Name} {args}" original="Usage: !{cmd.Name} {args}"/>
         <!-- Usage: {args} -->
-        <string id="mdhbHYNM" text="使用法：{args}"/>
+        <string id="mdhbHYNM" text="使用法：{args}" original="Usage: {args}"/>
         <!-- Commands:  -->
-        <string id="luOJS8dL" text="コマンド："/>
+        <string id="luOJS8dL" text="コマンド：" original="Commands: "/>
         <!-- Also see Channel Point Rewards -->
-        <string id="0o3dPQSk" text="Channel PointRewardsも参照してください"/>
+        <string id="0o3dPQSk" text="Channel PointRewardsも参照してください" original="Also see Channel Point Rewards"/>
         <!-- TwitchService connected -->
-        <string id="BiYZ1CbN" text="TwitchServiceが接続されました"/>
+        <string id="BiYZ1CbN" text="TwitchServiceが接続されました" original="TwitchService connected"/>
         <!-- TwitchService stopped -->
-        <string id="mEcBdqNC" text="TwitchServiceが停止しました"/>
-        
+        <string id="mEcBdqNC" text="TwitchServiceが停止しました" original="TwitchService stopped"/>
         <!-- TwitchService.Bot -->
         <!-- [BLT]  -->
-        <string id="b4tJSNJG" text="[BLT]"/>
+        <string id="b4tJSNJG" text="[BLT]" original="[BLT] "/>
         <!-- Bot connected -->
-        <string id="DYWDiBCl" text="ボット接続"/>
+        <string id="DYWDiBCl" text="ボット接続" original="Bot connected"/>
         <!-- Bot disconnected -->
-        <string id="thucznzJ" text="ボットが切断されました"/>
+        <string id="thucznzJ" text="ボットが切断されました" original="Bot disconnected"/>
         <!-- @{BotUsername} has joined channel {Channel} -->
-        <string id="Hd6Q51eb" text="@ {BotUsername} has joined channel {Channel}"/>
+        <string id="Hd6Q51eb" text="@ {BotUsername} has joined channel {Channel}" original="@{BotUsername} has joined channel {Channel}"/>
         <!-- bot reporting for duty! -->
-        <string id="SbufvVIR" text="義務を報告するボット！"/>
+        <string id="SbufvVIR" text="義務を報告するボット！" original="bot reporting for duty!"/>
         <!-- Type !help for command list -->
-        <string id="vBtkF25N" text="コマンドリストに！helpと入力します"/>
-        
+        <string id="vBtkF25N" text="コマンドリストに！helpと入力します" original="Type !help for command list"/>
         <!-- OneShotParticleEffectItemSource -->
         <!-- (none) -->
-        <string id="a8ibMIfH" text="（なし）"/>
+        <string id="a8ibMIfH" text="（なし）" original="(none)"/>
         <!-- Medium size explosion -->
-        <string id="AOpeOmby" text="中型爆発"/>
+        <string id="AOpeOmby" text="中型爆発" original="Medium size explosion"/>
         <!-- Small explosion -->
-        <string id="mTt3ybmi" text="小さな爆発"/>
+        <string id="mTt3ybmi" text="小さな爆発" original="Small explosion"/>
         <!-- Medium size explosion - stones -->
-        <string id="xVuYoEtO" text="中型爆発-石"/>
+        <string id="xVuYoEtO" text="中型爆発-石" original="Medium size explosion - stones"/>
         <!-- Small explosion - stones -->
-        <string id="FNhlEMT4" text="小さな爆発-石"/>
+        <string id="FNhlEMT4" text="小さな爆発-石" original="Small explosion - stones"/>
         <!-- Medium size explosion - water -->
-        <string id="O2QdeZUC" text="中型爆発-水"/>
+        <string id="O2QdeZUC" text="中型爆発-水" original="Medium size explosion - water"/>
         <!-- Small explosion - water -->
-        <string id="TfFqsORr" text="小さな爆発-水"/>
+        <string id="TfFqsORr" text="小さな爆発-水" original="Small explosion - water"/>
         <!-- Medium size explosion - wood -->
-        <string id="1NGLTDFg" text="中型爆発-木材"/>
+        <string id="1NGLTDFg" text="中型爆発-木材" original="Medium size explosion - wood"/>
         <!-- Small explosion - wood -->
-        <string id="WPLRpBTx" text="小さな爆発-木"/>
+        <string id="WPLRpBTx" text="小さな爆発-木" original="Small explosion - wood"/>
         <!-- Small poof of dust -->
-        <string id="7l7425dm" text="ほこりの小さなプーフ"/>
+        <string id="7l7425dm" text="ほこりの小さなプーフ" original="Small poof of dust"/>
         <!-- Small poof of dust -->
-        <string id="RQ0zb9Ci" text="ほこりの小さなプーフ"/>
+        <string id="RQ0zb9Ci" text="ほこりの小さなプーフ" original="Small poof of dust"/>
         <!-- Some splash like effect -->
-        <string id="3cfuE0SV" text="いくつかのスプラッシュのような効果"/>
+        <string id="3cfuE0SV" text="いくつかのスプラッシュのような効果" original="Some splash like effect"/>
         <!-- Some splash like effect with rings -->
-        <string id="t48JfjdQ" text="リングでスプラッシュのような効果"/>
+        <string id="t48JfjdQ" text="リングでスプラッシュのような効果" original="Some splash like effect with rings"/>
         <!-- Fire -->
-        <string id="rnN93eKr" text="火"/>
+        <string id="rnN93eKr" text="火" original="Fire"/>
         <!-- Yellow particles (healing effect) -->
-        <string id="ZgJoMGLX" text="黄色い粒子（癒し効果）"/>
+        <string id="ZgJoMGLX" text="黄色い粒子（癒し効果）" original="Yellow particles (healing effect)"/>
         <!-- Stronger fire, not too much smoke -->
-        <string id="0fqC5sHu" text="火が強く、煙が多すぎない"/>
+        <string id="0fqC5sHu" text="火が強く、煙が多すぎない" original="Stronger fire, not too much smoke"/>
         <!-- Subtle sparks -->
-        <string id="93pkM6UH" text="微妙な火花"/>
+        <string id="93pkM6UH" text="微妙な火花" original="Subtle sparks"/>
         <!-- Slow medium flames -->
-        <string id="00WeRBxp" text="遅い中火"/>
+        <string id="00WeRBxp" text="遅い中火" original="Slow medium flames"/>
         <!-- Effusing smoke and flames when moving -->
-        <string id="MyZ14rJ5" text="移動時に煙と炎を放出する"/>
+        <string id="MyZ14rJ5" text="移動時に煙と炎を放出する" original="Effusing smoke and flames when moving"/>
         <!-- Rain further away -->
-        <string id="bqPUVJMB" text="さらに遠くに雨が降る"/>
+        <string id="bqPUVJMB" text="さらに遠くに雨が降る" original="Rain further away"/>
         <!-- Rain on player -->
-        <string id="h5KzPJM3" text="プレイヤーに雨が降る"/>
+        <string id="h5KzPJM3" text="プレイヤーに雨が降る" original="Rain on player"/>
         <!-- Very subtle small particles -->
-        <string id="29DVQzgQ" text="非常に微妙な小さな粒子"/>
+        <string id="29DVQzgQ" text="非常に微妙な小さな粒子" original="Very subtle small particles"/>
         <!-- Some fire -->
-        <string id="P7UjJvf8" text="いくつかの火"/>
+        <string id="P7UjJvf8" text="いくつかの火" original="Some fire"/>
         <!-- Black spooky smoke -->
-        <string id="2Oajfsfa" text="黒の不気味な煙"/>
+        <string id="2Oajfsfa" text="黒の不気味な煙" original="Black spooky smoke"/>
         <!-- Very dense smoke falling down -->
-        <string id="4tpSH1gO" text="非常に濃い煙が落ちる"/>
-        
+        <string id="4tpSH1gO" text="非常に濃い煙が落ちる" original="Very dense smoke falling down"/>
         <!-- RangeFloatControl -->
         <!-- Min -->
-        <string id="TZN2VR8Q" text="最小"/>
+        <string id="TZN2VR8Q" text="最小" original="Min"/>
         <!-- Max -->
-        <string id="bySwFF1n" text="マックス"/>
-        
+        <string id="bySwFF1n" text="マックス" original="Max"/>
         <!-- BLTModule -->
         <!-- This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now. -->
-        <string id="IO9rnFpk" text="このmodのビルドは、ゲームバージョン{ExpectedVersion}. You are running game version {GameVersion}用です。今終了します。"/>
+        <string id="IO9rnFpk" text="このmodのビルドは、ゲームバージョン{ExpectedVersion}. You are running game version {GameVersion}用です。今終了します。" original="This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now."/>
         <!-- Bannerlord Twitch ERROR -->
-        <string id="Oru6b9Cy" text="Bannerlord Twitch ERROR"/>
-        
+        <string id="Oru6b9Cy" text="Bannerlord Twitch ERROR" original="Bannerlord Twitch ERROR"/>
         <!-- Loaded v{ModVersion} -->
-        <string id="45Q44kgm" text="ロードされたv {ModVersion}"/>
+        <string id="45Q44kgm" text="ロードされたv {ModVersion}" original="Loaded v{ModVersion}"/>
         <!-- Action Manager initialized -->
-        <string id="5G73vqNS" text="アクションマネージャーが初期化されました"/>
-        
+        <string id="5G73vqNS" text="アクションマネージャーが初期化されました" original="Action Manager initialized"/>
         <!-- Bannerlord Twitch Mod WARNING -->
-        <string id="PhRzCo9t" text="Bannerlord TwitchMod警告"/>
+        <string id="PhRzCo9t" text="Bannerlord TwitchMod警告" original="Bannerlord Twitch Mod WARNING"/>
         <!-- You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less. -->
-        <string id="7b4tU6y9" text="自動保存が無効になっているため、クラッシュするとチャンネルポイントが失われる可能性があります！\ n15分以下に設定することをお勧めします。"/>
+        <string id="7b4tU6y9" text="自動保存が無効になっているため、クラッシュするとチャンネルポイントが失われる可能性があります！\ n15分以下に設定することをお勧めします。" original="You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less."/>
         <!-- Okay -->
-        <string id="hpFXglKx" text="わかった"/>
+        <string id="hpFXglKx" text="わかった" original="Okay"/>
         <!-- Bannerlord Twitch Mod DISABLED -->
-        <string id="Sphd7XTS" text="Bannerlord TwitchMod無効"/>
-        
+        <string id="Sphd7XTS" text="Bannerlord TwitchMod無効" original="Bannerlord Twitch Mod DISABLED"/>
         <!-- Bannerlord Twitch Mod STARTUP ERROR -->
-        <string id="cuXwwHRe" text="Bannerlord TwitchMod起動エラー"/>
+        <string id="cuXwwHRe" text="Bannerlord TwitchMod起動エラー" original="Bannerlord Twitch Mod STARTUP ERROR"/>
         <!-- Error in {Location}, please report this on the discord: {Error} -->
-        <string id="C0G8s2Lv" text="{Location}, please report this on the discord: {Error}のエラー"/>
-
+        <string id="C0G8s2Lv" text="{Location}, please report this on the discord: {Error}のエラー" original="Error in {Location}, please report this on the discord: {Error}"/>
         <!-- SkillGroup -->
         <!-- None -->
-        <string id="p2ImRezI" text="なし"/>
+        <string id="p2ImRezI" text="なし" original="None"/>
         <!-- All -->
-        <string id="ZJUJQl8V" text="全て"/>
+        <string id="ZJUJQl8V" text="全て" original="All"/>
         <!-- Melee -->
-        <string id="Mtc9BiNI" text="近接"/>
+        <string id="Mtc9BiNI" text="近接" original="Melee"/>
         <!-- One Handed -->
-        <string id="NRNrLcBt" text="片手"/>
+        <string id="NRNrLcBt" text="片手" original="One Handed"/>
         <!-- Two Handed -->
-        <string id="93kpWTwA" text="両手"/>
+        <string id="93kpWTwA" text="両手" original="Two Handed"/>
         <!-- Polearm -->
-        <string id="PWibGbJ4" text="ポールアーム"/>
+        <string id="PWibGbJ4" text="ポールアーム" original="Polearm"/>
         <!-- Ranged -->
-        <string id="oidnJJjF" text="遠隔"/>
+        <string id="oidnJJjF" text="遠隔" original="Ranged"/>
         <!-- Bow -->
-        <string id="HW64G8xr" text="弓"/>
+        <string id="HW64G8xr" text="弓" original="Bow"/>
         <!-- Throwing -->
-        <string id="yR8vmGlW" text="投げ"/>
+        <string id="yR8vmGlW" text="投げ" original="Throwing"/>
         <!-- Crossbow -->
-        <string id="UG5KpbT7" text="クロスボウ"/>
+        <string id="UG5KpbT7" text="クロスボウ" original="Crossbow"/>
         <!-- Movement -->
-        <string id="tVQs3vuO" text="動き"/>
+        <string id="tVQs3vuO" text="動き" original="Movement"/>
         <!-- Riding -->
-        <string id="14Unsmk1" text="ライディング"/>
+        <string id="14Unsmk1" text="ライディング" original="Riding"/>
         <!-- Athletics -->
-        <string id="4zlH32Z5" text="陸上競技"/>
+        <string id="4zlH32Z5" text="陸上競技" original="Athletics"/>
         <!-- Support -->
-        <string id="AZD2nxRg" text="サポート"/>
+        <string id="AZD2nxRg" text="サポート" original="Support"/>
         <!-- Scouting -->
-        <string id="pOYKEhhf" text="スカウト"/>
+        <string id="pOYKEhhf" text="スカウト" original="Scouting"/>
         <!-- Trade -->
-        <string id="ijZZGbRE" text="トレード"/>
+        <string id="ijZZGbRE" text="トレード" original="Trade"/>
         <!-- Steward -->
-        <string id="CQqpGRtH" text="スチュワード"/>
+        <string id="CQqpGRtH" text="スチュワード" original="Steward"/>
         <!-- Medicine -->
-        <string id="X6rHMhsQ" text="薬"/>
+        <string id="X6rHMhsQ" text="薬" original="Medicine"/>
         <!-- Engineering -->
-        <string id="tNC2NHRC" text="エンジニアリング"/>
+        <string id="tNC2NHRC" text="エンジニアリング" original="Engineering"/>
         <!-- Personal -->
-        <string id="eYTQ1TD7" text="個人的"/>
+        <string id="eYTQ1TD7" text="個人的" original="Personal"/>
         <!-- Crafting -->
-        <string id="PrE6W0WX" text="クラフト"/>
+        <string id="PrE6W0WX" text="クラフト" original="Crafting"/>
         <!-- Tactics -->
-        <string id="BfNX6sak" text="戦術"/>
+        <string id="BfNX6sak" text="戦術" original="Tactics"/>
         <!-- Roguery -->
-        <string id="OvyNv1El" text="不正"/>
+        <string id="OvyNv1El" text="不正" original="Roguery"/>
         <!-- Charm -->
-        <string id="1NcKYexo" text="魅力"/>
+        <string id="1NcKYexo" text="魅力" original="Charm"/>
         <!-- Leadership -->
-        <string id="4684bsD7" text="リーダーシップ"/>
-
+        <string id="4684bsD7" text="リーダーシップ" original="Leadership"/>
         <!-- EquipmentType -->
         <!-- None -->
-        <string id="rMIAZRoT" text="なし"/>
+        <string id="rMIAZRoT" text="なし" original="None"/>
         <!-- Dagger -->
-        <string id="2gjNbpQI" text="短剣"/>
+        <string id="2gjNbpQI" text="短剣" original="Dagger"/>
         <!-- One Handed Sword -->
-        <string id="OTlpiu1X" text="片手剣"/>
+        <string id="OTlpiu1X" text="片手剣" original="One Handed Sword"/>
         <!-- Two Handed Sword -->
-        <string id="LGaaSaY8" text="両手剣"/>
+        <string id="LGaaSaY8" text="両手剣" original="Two Handed Sword"/>
         <!-- One Handed Axe -->
-        <string id="3teP1CbV" text="片手斧"/>
+        <string id="3teP1CbV" text="片手斧" original="One Handed Axe"/>
         <!-- Two Handed Axe -->
-        <string id="AufoIUAI" text="両手斧"/>
+        <string id="AufoIUAI" text="両手斧" original="Two Handed Axe"/>
         <!-- One Handed Mace -->
-        <string id="74iFLLnE" text="片手メイス"/>
+        <string id="74iFLLnE" text="片手メイス" original="One Handed Mace"/>
         <!-- Two Handed Mace -->
-        <string id="EVEYPnFF" text="両手メイス"/>
+        <string id="EVEYPnFF" text="両手メイス" original="Two Handed Mace"/>
         <!-- One Handed Lance -->
-        <string id="bvOtwaZm" text="片手ランス"/>
+        <string id="bvOtwaZm" text="片手ランス" original="One Handed Lance"/>
         <!-- Two Handed Lance -->
-        <string id="6fEElc9f" text="両手ランス"/>
+        <string id="6fEElc9f" text="両手ランス" original="Two Handed Lance"/>
         <!-- One Handed Glaive -->
-        <string id="ICcCZnli" text="片手グレイブ"/>
+        <string id="ICcCZnli" text="片手グレイブ" original="One Handed Glaive"/>
         <!-- Two Handed Glaive -->
-        <string id="KpYZoZE9" text="両手グレイブ"/>
+        <string id="KpYZoZE9" text="両手グレイブ" original="Two Handed Glaive"/>
         <!-- Bow -->
-        <string id="HKYDdm9S" text="弓"/>
+        <string id="HKYDdm9S" text="弓" original="Bow"/>
         <!-- Crossbow -->
-        <string id="3jigLyuH" text="クロスボウ"/>
+        <string id="3jigLyuH" text="クロスボウ" original="Crossbow"/>
         <!-- Arrows -->
-        <string id="UjKvUAX1" text="矢印"/>
+        <string id="UjKvUAX1" text="矢印" original="Arrows"/>
         <!-- Bolts -->
-        <string id="QBgdwwa3" text="ボルト"/>
+        <string id="QBgdwwa3" text="ボルト" original="Bolts"/>
         <!-- Throwing Knives -->
-        <string id="IUmqXtY6" text="投げナイフ"/>
+        <string id="IUmqXtY6" text="投げナイフ" original="Throwing Knives"/>
         <!-- Throwing Axes -->
-        <string id="mSnnORJ1" text="斧を投げる"/>
+        <string id="mSnnORJ1" text="斧を投げる" original="Throwing Axes"/>
         <!-- Throwing Javelins -->
-        <string id="WUrrIbmH" text="やり投げ"/>
+        <string id="WUrrIbmH" text="やり投げ" original="Throwing Javelins"/>
         <!-- Shield -->
-        <string id="om9ZF9Mu" text="シールド"/>
+        <string id="om9ZF9Mu" text="シールド" original="Shield"/>
         <!-- Stone -->
-        <string id="vIT4xG8X" text="結石"/>
-
+        <string id="vIT4xG8X" text="結石" original="Stone"/>
     </strings>
 </base>

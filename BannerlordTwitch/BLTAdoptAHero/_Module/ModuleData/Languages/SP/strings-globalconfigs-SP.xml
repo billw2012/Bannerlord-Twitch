@@ -5,347 +5,341 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- GlobalCommonConfig -->
         <!-- Common Config -->
-        <string id="vDjnDtoL" text="Configuración común"/>
+        <string id="vDjnDtoL" text="Configuración común" original="Common Config"/>
         <!-- Sub Boost -->
-        <string id="xwcKN7sH" text="Sub Boost"/>
+        <string id="xwcKN7sH" text="Sub Boost" original="Sub Boost"/>
         <!-- Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently. -->
-        <string id="rX68wbfF" text="El multiplicador se aplica a todas las recompensas para los suscriptores (menos o igual a 1 significa que no hay impulso). NOTA: Esto solo está implementado parcialmente, funciona solo para comandos de bots actualmente."/>
+        <string id="rX68wbfF" text="El multiplicador se aplica a todas las recompensas para los suscriptores (menos o igual a 1 significa que no hay impulso). NOTA: Esto solo está implementado parcialmente, funciona solo para comandos de bots actualmente." original="Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently."/>
         <!-- Custom Reward Modifiers -->
-        <string id="O0LU5WBa" text="Modificadores de recompensa personalizados"/>
+        <string id="O0LU5WBa" text="Modificadores de recompensa personalizados" original="Custom Reward Modifiers"/>
         <!-- The specification for custom item rewards, applies to tournament prize and achievement rewards -->
-        <string id="tp3YdGmo" text="La especificación para las recompensas de artículos personalizados se aplica a los premios del torneo y las recompensas por logros."/>
+        <string id="tp3YdGmo" text="La especificación para las recompensas de artículos personalizados se aplica a los premios del torneo y las recompensas por logros." original="The specification for custom item rewards, applies to tournament prize and achievement rewards"/>
         <!-- Start With Full Health -->
-        <string id="X8r0C5fx" text="Comience con plena salud"/>
+        <string id="X8r0C5fx" text="Comience con plena salud" original="Start With Full Health"/>
         <!-- Whether the hero will always start with full health -->
-        <string id="HbNVrZuv" text="Si el héroe siempre comenzará con plena salud."/>
+        <string id="HbNVrZuv" text="Si el héroe siempre comenzará con plena salud." original="Whether the hero will always start with full health"/>
         <!-- Start Health Multiplier -->
-        <string id="fxZIKL65" text="Iniciar multiplicador de salud"/>
+        <string id="fxZIKL65" text="Iniciar multiplicador de salud" original="Start Health Multiplier"/>
         <!-- Amount to multiply normal starting health by, to give heroes better staying power vs others -->
-        <string id="8yNIRS9S" text="Cantidad para multiplicar la salud inicial normal por, para dar a los héroes un mejor poder de permanencia frente a otros."/>
+        <string id="8yNIRS9S" text="Cantidad para multiplicar la salud inicial normal por, para dar a los héroes un mejor poder de permanencia frente a otros." original="Amount to multiply normal starting health by, to give heroes better staying power vs others"/>
         <!-- Start Retinue Health Multiplier -->
-        <string id="HvcTekVk" text="Iniciar multiplicador de salud de séquito"/>
+        <string id="HvcTekVk" text="Iniciar multiplicador de salud de séquito" original="Start Retinue Health Multiplier"/>
         <!-- Amount to multiply normal retinue starting health by, to give retinue better staying power vs others -->
-        <string id="G6JJT2ot" text="Cantidad para multiplicar la salud inicial del séquito normal por, para darle al séquito un mejor poder de permanencia frente a otros"/>
+        <string id="G6JJT2ot" text="Cantidad para multiplicar la salud inicial del séquito normal por, para darle al séquito un mejor poder de permanencia frente a otros" original="Amount to multiply normal retinue starting health by, to give retinue better staying power vs others"/>
         <!-- Morale Loss Factor -->
-        <string id="ZPmBe7XI" text="Factor de pérdida de moral"/>
+        <string id="ZPmBe7XI" text="Factor de pérdida de moral" original="Morale Loss Factor"/>
         <!-- Reduces morale loss when summoned heroes die -->
-        <string id="tpgJtS5q" text="Reduce la pérdida de moral cuando mueren los héroes convocados."/>
+        <string id="tpgJtS5q" text="Reduce la pérdida de moral cuando mueren los héroes convocados." original="Reduces morale loss when summoned heroes die"/>
         <!-- Retinue Use Heroes Formation -->
-        <string id="bXdC2trk" text="Formación de héroes de uso de séquito"/>
+        <string id="bXdC2trk" text="Formación de héroes de uso de séquito" original="Retinue Use Heroes Formation"/>
         <!-- Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations) -->
-        <string id="D8uDzXlV" text="Si un séquito de héroes adoptados debe aparecer en la misma formación que el héroe (de lo contrario, entrarán en formaciones predeterminadas)"/>
+        <string id="D8uDzXlV" text="Si un séquito de héroes adoptados debe aparecer en la misma formación que el héroe (de lo contrario, entrarán en formaciones predeterminadas)" original="Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations)"/>
         <!-- Summon Cooldown In Seconds -->
-        <string id="OlJrCEyE" text="Reutilización de invocación en segundos"/>
+        <string id="OlJrCEyE" text="Reutilización de invocación en segundos" original="Summon Cooldown In Seconds"/>
         <!-- Minimum time between summons for a specific hero -->
-        <string id="DeGB2BGZ" text="Tiempo mínimo entre invocaciones para un héroe específico"/>
+        <string id="DeGB2BGZ" text="Tiempo mínimo entre invocaciones para un héroe específico" original="Minimum time between summons for a specific hero"/>
         <!-- Summon Cooldown Use Multiplier -->
-        <string id="f9HVD2cC" text="Multiplicador de uso de tiempo de reutilización de invocación"/>
+        <string id="f9HVD2cC" text="Multiplicador de uso de tiempo de reutilización de invocación" original="Summon Cooldown Use Multiplier"/>
         <!-- How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this. -->
-        <string id="4gZlfHzM" text="Cuánto multiplicar el tiempo de reutilización por cada vez que se usa la invocación. por ejemplo, si el tiempo de reutilización de la invocación es de 20 segundos y el multiplicador de uso es 1,1 (el valor predeterminado), entonces la primera invocación tiene un tiempo de reutilización de 20 segundos, y los siguientes 24 segundos, el décimo 52 segundos y el vigésimo 135 segundos. Consulte https://www.desmos.com/calculator/muej1o5eg5 para ver una visualización de esto."/>
+        <string id="4gZlfHzM" text="Cuánto multiplicar el tiempo de reutilización por cada vez que se usa la invocación. por ejemplo, si el tiempo de reutilización de la invocación es de 20 segundos y el multiplicador de uso es 1,1 (el valor predeterminado), entonces la primera invocación tiene un tiempo de reutilización de 20 segundos, y los siguientes 24 segundos, el décimo 52 segundos y el vigésimo 135 segundos. Consulte https://www.desmos.com/calculator/muej1o5eg5 para ver una visualización de esto." original="How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this."/>
         <!-- Summon Cooldown Example -->
-        <string id="ViLoy0k3" text="Ejemplo de recuperación de invocación"/>
+        <string id="ViLoy0k3" text="Ejemplo de recuperación de invocación" original="Summon Cooldown Example"/>
         <!-- Shows the consecutive cooldowns (in seconds) for 10 summons -->
-        <string id="xZoSFrAb" text="Muestra los tiempos de reutilización consecutivos (en segundos) para 10 invocaciones."/>
+        <string id="xZoSFrAb" text="Muestra los tiempos de reutilización consecutivos (en segundos) de 10 invocaciones." original="Shows the consecutive cooldowns (in seconds) for 10 summons"/>
         <!-- Allow Death -->
-        <string id="4sNJRQyw" text="Permitir la muerte"/>
+        <string id="4sNJRQyw" text="Permitir la muerte" original="Allow Death"/>
         <!-- Whether an adopted hero is allowed to die -->
-        <string id="VbBUYOfc" text="Si un héroe adoptado puede morir"/>
+        <string id="VbBUYOfc" text="Si un héroe adoptado puede morir" original="Whether an adopted hero is allowed to die"/>
         <!-- Final Death Chance Percent -->
-        <string id="ZEfAPyOm" text="Porcentaje de probabilidad de muerte final"/>
+        <string id="ZEfAPyOm" text="Porcentaje de probabilidad de muerte final" original="Final Death Chance Percent"/>
         <!-- Final death chance percent (includes vanilla chance) -->
-        <string id="xlt1pNuT" text="Porcentaje de probabilidad de muerte final (incluye probabilidad de vainilla)"/>
+        <string id="xlt1pNuT" text="Porcentaje de probabilidad de muerte final (incluye probabilidad de vainilla)" original="Final death chance percent (includes vanilla chance)"/>
         <!-- Apply Death Chance To All Heroes -->
-        <string id="sbc5Fp4o" text="Aplicar probabilidad de muerte a todos los héroes"/>
+        <string id="sbc5Fp4o" text="Aplicar probabilidad de muerte a todos los héroes" original="Apply Death Chance To All Heroes"/>
         <!-- Whether to apply the Death Chance changes to all heroes, not just adopted ones -->
-        <string id="nbR7NLNz" text="Ya sea para aplicar los cambios de Death Chance a todos los héroes, no solo a los adoptados."/>
+        <string id="nbR7NLNz" text="Ya sea para aplicar los cambios de Death Chance a todos los héroes, no solo a los adoptados." original="Whether to apply the Death Chance changes to all heroes, not just adopted ones"/>
         <!-- Use Raw XP -->
-        <string id="lwU4dELT" text="Utilice Raw XP"/>
+        <string id="lwU4dELT" text="Utilice Raw XP" original="Use Raw XP"/>
         <!-- Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed.  -->
-        <string id="dICRr4BH" text="Use valores de XP sin procesar en lugar de ajustar por enfoque y atributos, ignorando también el límite de habilidades. Esto evita que los personajes se atasquen cuando el enfoque y los atributos no están bien distribuidos."/>
+        <string id="dICRr4BH" text="Use valores de XP sin procesar en lugar de ajustar por enfoque y atributos, ignorando también el límite de habilidades. Esto evita que los personajes se atasquen cuando el enfoque y los atributos no están bien distribuidos." original="Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed. "/>
         <!-- Raw XP Skill Cap -->
-        <string id="S5FAna09" text="Límite de habilidad Raw XP"/>
+        <string id="S5FAna09" text="Límite de habilidad Raw XP" original="Raw XP Skill Cap"/>
         <!-- Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap. -->
-        <string id="WUzqXuHN" text="Límite de habilidad al usar Raw XP. Las habilidades no superarán este valor. 330 es el límite de habilidad de vainilla XP."/>
+        <string id="WUzqXuHN" text="Límite de habilidad al usar Raw XP. Las habilidades no superarán este valor. 330 es el límite de habilidad de vainilla XP." original="Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap."/>
         <!-- Gold Per Kill -->
-        <string id="94Ouh5It" text="Oro por muerte"/>
+        <string id="94Ouh5It" text="Oro por muerte" original="Gold Per Kill"/>
         <!-- Gold the hero gets for every kill -->
-        <string id="iSAMxZ8a" text="Oro que el héroe obtiene por cada muerte"/>
+        <string id="iSAMxZ8a" text="Oro que el héroe obtiene por cada muerte" original="Gold the hero gets for every kill"/>
         <!-- XP Per Kill -->
-        <string id="DMGKBoJT" text="XP por muerte"/>
+        <string id="DMGKBoJT" text="XP por muerte" original="XP Per Kill"/>
         <!-- XP the hero gets for every kill -->
-        <string id="kwW5pZT9" text="XP que obtiene el héroe por cada muerte"/>
+        <string id="kwW5pZT9" text="XP que obtiene el héroe por cada muerte" original="XP the hero gets for every kill"/>
         <!-- XP Per Killed -->
-        <string id="a1zjEuUe" text="XP por muerto"/>
+        <string id="a1zjEuUe" text="XP por muerto" original="XP Per Killed"/>
         <!-- XP the hero gets for being killed -->
-        <string id="bW8t2g5N" text="XP que obtiene el héroe por ser asesinado"/>
+        <string id="bW8t2g5N" text="XP que obtiene el héroe por ser asesinado" original="XP the hero gets for being killed"/>
         <!-- Heal Per Kill -->
-        <string id="cRV9HDdf" text="Curar por muerte"/>
+        <string id="cRV9HDdf" text="Curar por muerte" original="Heal Per Kill"/>
         <!-- HP the hero gets for every kill -->
-        <string id="7VWAZgfK" text="HP el héroe obtiene por cada muerte"/>
+        <string id="7VWAZgfK" text="HP el héroe obtiene por cada muerte" original="HP the hero gets for every kill"/>
         <!-- Retinue Gold Per Kill -->
-        <string id="lIhhHjih" text="Séquito de oro por muerte"/>
+        <string id="lIhhHjih" text="Séquito de oro por muerte" original="Retinue Gold Per Kill"/>
         <!-- Gold the hero gets for every kill their retinue gets -->
-        <string id="h93j0qw3" text="Oro que el héroe obtiene por cada muerte que obtiene su séquito"/>
+        <string id="h93j0qw3" text="Oro que el héroe obtiene por cada muerte que obtiene su séquito" original="Gold the hero gets for every kill their retinue gets"/>
         <!-- Retinue Heal Per Kill -->
-        <string id="KwlWrzDS" text="Sanación por muerte del séquito"/>
+        <string id="KwlWrzDS" text="Sanación por muerte del séquito" original="Retinue Heal Per Kill"/>
         <!-- HP the hero's retinue gets for every kill -->
-        <string id="Q3UVoHmt" text="HP el séquito del héroe obtiene por cada muerte"/>
+        <string id="Q3UVoHmt" text="HP el séquito del héroe obtiene por cada muerte" original="HP the hero's retinue gets for every kill"/>
         <!-- Relative Level Scaling -->
-        <string id="wSzUkbNR" text="Escala de nivel relativo"/>
+        <string id="wSzUkbNR" text="Escala de nivel relativo" original="Relative Level Scaling"/>
         <!-- How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health. -->
-        <string id="1LTDJZ7Y" text="Cuánto escalar las recompensas por muerte, según el nivel relativo de los dos personajes. Si es 0 (o no se establece), las recompensas son siempre las especificadas, si es superior a 0, las recompensas aumentan si la unidad muerta tiene un nivel superior al del héroe y disminuyen si es inferior. Con un valor de 0.5 (recomendado), una diferencia de nivel de 10 daría aproximadamente 2.5 veces las recompensas normales por oro, xp y salud."/>
+        <string id="1LTDJZ7Y" text="Cuánto escalar las recompensas por muerte, según el nivel relativo de los dos personajes. Si es 0 (o no se establece), las recompensas son siempre las especificadas, si es superior a 0, las recompensas aumentan si la unidad muerta tiene un nivel superior al del héroe y disminuyen si es inferior. Con un valor de 0.5 (recomendado), una diferencia de nivel de 10 daría aproximadamente 2.5 veces las recompensas normales por oro, xp y salud." original="How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."/>
         <!-- Level Scaling Cap -->
-        <string id="BDk1G4nc" text="Límite de escala de nivel"/>
+        <string id="BDk1G4nc" text="Límite de escala de nivel" original="Level Scaling Cap"/>
         <!-- Caps the maximum multiplier for the level difference, defaults to 5 if not specified -->
-        <string id="Vod0pJEN" text="Limita el multiplicador máximo para la diferencia de nivel, el valor predeterminado es 5 si no se especifica"/>
-
+        <string id="Vod0pJEN" text="Limita el multiplicador máximo para la diferencia de nivel, el valor predeterminado es 5 si no se especifica" original="Caps the maximum multiplier for the level difference, defaults to 5 if not specified"/>
         <!-- Win Gold -->
-        <string id="IQTT5vYE" text="Ganar oro"/>
+        <string id="IQTT5vYE" text="Ganar oro" original="Win Gold"/>
         <!-- Lose Gold -->
-        <string id="lfCWK7aA" text="Perder oro"/>
+        <string id="lfCWK7aA" text="Perder oro" original="Lose Gold"/>
         <!-- Win XP -->
-        <string id="h8I3PWkV" text="Ganar XP"/>
+        <string id="h8I3PWkV" text="Ganar XP" original="Win XP"/>
         <!-- Lose XP -->
-        <string id="Vobr36Bl" text="Pierde XP"/>
-        
+        <string id="Vobr36Bl" text="Pierde XP" original="Lose XP"/>
         <!-- Gold won if the heroes side wins -->
-        <string id="pc3G0W39" text="Oro ganado si gana el lado de los héroes"/>
+        <string id="pc3G0W39" text="Oro ganado si gana el lado de los héroes" original="Gold won if the heroes side wins"/>
         <!-- XP the hero gets if the heroes side wins -->
-        <string id="F7Tw4D07" text="XP que obtiene el héroe si gana el lado de los héroes"/>
+        <string id="F7Tw4D07" text="XP que obtiene el héroe si gana el lado de los héroes" original="XP the hero gets if the heroes side wins"/>
         <!-- Gold lost if the heroes side loses -->
-        <string id="E209XRml" text="Oro perdido si el lado de los héroes pierde"/>
+        <string id="E209XRml" text="Oro perdido si el lado de los héroes pierde" original="Gold lost if the heroes side loses"/>
         <!-- XP the hero gets if the heroes side loses -->
-        <string id="itAfYdmO" text="XP que obtiene el héroe si el lado de los héroes pierde"/>
+        <string id="itAfYdmO" text="XP que obtiene el héroe si el lado de los héroes pierde" original="XP the hero gets if the heroes side loses"/>
         <!-- Difficulty Scaling On Players Side -->
-        <string id="ihB1KMOY" text="Dificultad para escalar en el lado de los jugadores"/>
+        <string id="ihB1KMOY" text="Dificultad para escalar en el lado de los jugadores" original="Difficulty Scaling On Players Side"/>
         <!-- Apply difficulty scaling to players side -->
-        <string id="Bt1PS0aC" text="Aplicar escala de dificultad al lado de los jugadores"/>
+        <string id="Bt1PS0aC" text="Aplicar escala de dificultad al lado de los jugadores" original="Apply difficulty scaling to players side"/>
         <!-- Difficulty Scaling On Enemy Side -->
-        <string id="nym7EtAd" text="Dificultad para escalar en el lado enemigo"/>
+        <string id="nym7EtAd" text="Dificultad para escalar en el lado enemigo" original="Difficulty Scaling On Enemy Side"/>
         <!-- Apply difficulty scaling to enemy side -->
-        <string id="U0hZef9L" text="Aplicar dificultad para escalar al lado enemigo"/>
+        <string id="U0hZef9L" text="Aplicar dificultad para escalar al lado enemigo" original="Apply difficulty scaling to enemy side"/>
         <!-- Difficulty Scaling -->
-        <string id="CaVuq5tE" text="Escala de dificultad"/>
+        <string id="CaVuq5tE" text="Escala de dificultad" original="Difficulty Scaling"/>
         <!-- End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1) -->
-        <string id="IhhfIQ74" text="Escala de dificultad de recompensa final: determina hasta qué punto las batallas de mayor dificultad aumentan las recompensas anteriores (0 a 1)"/>
+        <string id="IhhfIQ74" text="Escala de dificultad de recompensa final: determina hasta qué punto las batallas de mayor dificultad aumentan las recompensas anteriores (0 a 1)" original="End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1)"/>
         <!-- Difficulty Scaling Min -->
-        <string id="891WqOrJ" text="Dificultad para escalar Min"/>
+        <string id="891WqOrJ" text="Dificultad para escalar Min" original="Difficulty Scaling Min"/>
         <!-- Min difficulty scaling multiplier -->
-        <string id="FPXz7lBi" text="Multiplicador de escala de dificultad mínima"/>
+        <string id="FPXz7lBi" text="Multiplicador de escala de dificultad mínima" original="Min difficulty scaling multiplier"/>
         <!-- Difficulty Scaling Max -->
-        <string id="Wsho5Yns" text="Dificultad para escalar máx."/>
+        <string id="Wsho5Yns" text="Dificultad para escalar máx." original="Difficulty Scaling Max"/>
         <!-- Max difficulty scaling multiplier -->
-        <string id="ZW7O1JTv" text="Multiplicador de escala de dificultad máxima"/>
+        <string id="ZW7O1JTv" text="Multiplicador de escala de dificultad máxima" original="Max difficulty scaling multiplier"/>
         <!-- Kill Streaks -->
-        <string id="3DZYc6hN" text="Matar rachas"/>
+        <string id="3DZYc6hN" text="Matar rachas" original="Kill Streaks"/>
         <!-- Show Kill Streak Popup -->
-        <string id="wQ7lXgLA" text="Mostrar ventana emergente de racha de muertes"/>
+        <string id="wQ7lXgLA" text="Mostrar ventana emergente de racha de muertes" original="Show Kill Streak Popup"/>
         <!-- Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled. -->
-        <string id="wDW3143d" text="Si usar el banner emergente para anunciar rachas de muertes. En su lugar, solo se imprimirá en la superposición si está desactivado."/>
+        <string id="wDW3143d" text="Si usar el banner emergente para anunciar rachas de muertes. En su lugar, solo se imprimirá en la superposición si está desactivado." original="Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled."/>
         <!-- Kill Streak Popup Alert Sound -->
-        <string id="rhwujKvf" text="Sonido de alerta emergente Kill Streak"/>
+        <string id="rhwujKvf" text="Sonido de alerta emergente Kill Streak" original="Kill Streak Popup Alert Sound"/>
         <!-- Sound to play when killstreak popup is disabled. -->
-        <string id="1GVV1fjY" text="Sonido para reproducir cuando la ventana emergente killstreak está deshabilitada."/>
+        <string id="1GVV1fjY" text="Sonido para reproducir cuando la ventana emergente killstreak está deshabilitada." original="Sound to play when killstreak popup is disabled."/>
         <!-- Reference Level Reward -->
-        <string id="dP9AoB9o" text="Recompensa de nivel de referencia"/>
+        <string id="dP9AoB9o" text="Recompensa de nivel de referencia" original="Reference Level Reward"/>
         <!-- The level at which the rewards normalize and start to reduce (if relative level scaling is enabled). -->
-        <string id="y7AZjeSK" text="El nivel en el que las recompensas se normalizan y comienzan a reducirse (si la escala de nivel relativo está habilitada)."/>
+        <string id="y7AZjeSK" text="El nivel en el que las recompensas se normalizan y comienzan a reducirse (si la escala de nivel relativo está habilitada)." original="The level at which the rewards normalize and start to reduce (if relative level scaling is enabled)."/>
         <!-- Achievements -->
-        <string id="zTLei6dQ" text="Logros"/>
+        <string id="zTLei6dQ" text="Logros" original="Achievements"/>
         <!-- Shouts -->
-        <string id="HkD6326j" text="Gritos"/>
+        <string id="HkD6326j" text="Gritos" original="Shouts"/>
         <!-- Custom shouts -->
-        <string id="ufqtH5QV" text="Gritos personalizados"/>
+        <string id="ufqtH5QV" text="Gritos personalizados" original="Custom shouts"/>
         <!-- Include Default Shouts -->
-        <string id="wehigXCC" text="Incluir gritos predeterminados"/>
+        <string id="wehigXCC" text="Incluir gritos predeterminados" original="Include Default Shouts"/>
         <!-- Whether to include default shouts -->
-        <string id="m6Vv2LBt" text="Ya sea para incluir gritos predeterminados"/>
+        <string id="m6Vv2LBt" text="Ya sea para incluir gritos predeterminados" original="Whether to include default shouts"/>
         <!-- Common Config -->
-        <string id="F6vM1OJo" text="Configuración común"/>
-        
+        <string id="F6vM1OJo" text="Configuración común" original="Common Config"/>
         <!-- GlobalHeroClassConfig -->
         <!-- Class Config -->
-        <string id="3rL4RHje" text="Configuración de clase"/>
+        <string id="3rL4RHje" text="Configuración de clase" original="Class Config"/>
         <!-- Class Definitions -->
-        <string id="462kHfn2" text="Definiciones de clases"/>
+        <string id="462kHfn2" text="Definiciones de clases" original="Class Definitions"/>
         <!-- Defined classes -->
-        <string id="NFjlVt57" text="Clases definidas"/>
+        <string id="NFjlVt57" text="Clases definidas" original="Defined classes"/>
         <!-- Class Level Requirements -->
-        <string id="Q0yTbTCT" text="Requisitos de nivel de clase"/>
+        <string id="Q0yTbTCT" text="Requisitos de nivel de clase" original="Class Level Requirements"/>
         <!-- Requirements for class levels -->
-        <string id="y8LLccGK" text="Requisitos para los niveles de clase"/>
+        <string id="y8LLccGK" text="Requisitos para los niveles de clase" original="Requirements for class levels"/>
         <!-- Classes -->
-        <string id="E0CBnj57" text="Clases"/>
+        <string id="E0CBnj57" text="Clases" original="Classes"/>
         <!-- (no requirements) -->
-        <string id="7WLbMjpz" text="(sin requisitos)"/>
-        
+        <string id="7WLbMjpz" text="(sin requisitos)" original="(no requirements)"/>
         <!-- GlobalHeroPowerConfig -->
         <!-- Power Config -->
-        <string id="v75UOuDM" text="Configuración de energía"/>
+        <string id="v75UOuDM" text="Configuración de energía" original="Power Config"/>
         <!-- Power Defs -->
-        <string id="9vUtdRu2" text="Power Defs"/>
+        <string id="9vUtdRu2" text="Power Defs" original="Power Defs"/>
         <!-- Defined powers -->
-        <string id="ymGZUjoU" text="Poderes definidos"/>
+        <string id="ymGZUjoU" text="Poderes definidos" original="Defined powers"/>
         <!-- Disable Powers In Tournaments -->
-        <string id="5CD7bmuC" text="Desactivar poderes en torneos"/>
+        <string id="5CD7bmuC" text="Desactivar poderes en torneos" original="Disable Powers In Tournaments"/>
         <!-- Whether powers are disabled in a tournament -->
-        <string id="K7uKtO90" text="Si los poderes están desactivados en un torneo"/>
-        
+        <string id="K7uKtO90" text="Si los poderes están desactivados en un torneo" original="Whether powers are disabled in a tournament"/>
         <!-- GlobalTournamentConfig -->
         <!-- Tournament Config -->
-        <string id="AkDCrLgg" text="Configuración del torneo"/>
+        <string id="AkDCrLgg" text="Configuración del torneo" original="Tournament Config"/>
         <!-- Equipment -->
-        <string id="i7ZDVTaw" text="Equipo"/>
+        <string id="i7ZDVTaw" text="Equipo" original="Equipment"/>
         <!-- Balancing -->
-        <string id="Zwh9GYUE" text="Equilibrio"/>
+        <string id="Zwh9GYUE" text="Equilibrio" original="Balancing"/>
         <!-- Round Type -->
-        <string id="KOIu6Q7d" text="Tipo redondo"/>
+        <string id="KOIu6Q7d" text="Tipo redondo" original="Round Type"/>
         <!-- Start Health Multiplier -->
-        <string id="P1ZCMZbp" text="Iniciar multiplicador de salud"/>
+        <string id="P1ZCMZbp" text="Iniciar multiplicador de salud" original="Start Health Multiplier"/>
         <!-- Disable Kill Rewards In Tournament -->
-        <string id="x3wiU1LY" text="Desactivar las recompensas por matar en el torneo"/>
+        <string id="x3wiU1LY" text="Desactivar las recompensas por matar en el torneo" original="Disable Kill Rewards In Tournament"/>
         <!-- Disable Tracking Kills Tournament -->
-        <string id="ksB1FmZV" text="Desactivar el torneo de seguimiento de muertes"/>
+        <string id="ksB1FmZV" text="Desactivar el torneo de seguimiento de muertes" original="Disable Tracking Kills Tournament"/>
         <!-- No Horses -->
-        <string id="bBipANlh" text="Sin caballos"/>
+        <string id="bBipANlh" text="Sin caballos" original="No Horses"/>
         <!-- No Spears -->
-        <string id="CYVy4Hhx" text="Sin lanzas"/>
+        <string id="CYVy4Hhx" text="Sin lanzas" original="No Spears"/>
         <!-- Normalize Armor -->
-        <string id="Ed55OyZ5" text="Normalizar armadura"/>
+        <string id="Ed55OyZ5" text="Normalizar armadura" original="Normalize Armor"/>
         <!-- Normalize Armor Tier -->
-        <string id="xHJbcOaV" text="Normalizar el nivel de armadura"/>
+        <string id="xHJbcOaV" text="Normalizar el nivel de armadura" original="Normalize Armor Tier"/>
         <!-- Randomize Weapon Types -->
-        <string id="5Y08IsDl" text="Aleatorizar tipos de armas"/>
+        <string id="5Y08IsDl" text="Aleatorizar tipos de armas" original="Randomize Weapon Types"/>
         <!-- Previous Winner Debuffs -->
-        <string id="UCAbZYqU" text="Desventajas de ganadores anteriores"/>
+        <string id="UCAbZYqU" text="Desventajas de ganadores anteriores" original="Previous Winner Debuffs"/>
         <!-- Vanilla -->
-        <string id="WUQRg4yA" text="Vainilla"/>
+        <string id="WUQRg4yA" text="Vainilla" original="Vanilla"/>
         <!-- 1 Match 4 Teams -->
-        <string id="ErBd0iuP" text="1 Match 4 equipos"/>
+        <string id="ErBd0iuP" text="1 Match 4 equipos" original="1 Match 4 Teams"/>
         <!-- 1 Match 2 Teams -->
-        <string id="uuBzCFgM" text="1 Match 2 equipos"/>
+        <string id="uuBzCFgM" text="1 Match 2 equipos" original="1 Match 2 Teams"/>
         <!-- 2 Matches 2 Teams -->
-        <string id="SsArdTT9" text="2 Partidos 2 Equipos"/>
+        <string id="SsArdTT9" text="2 Partidos 2 Equipos" original="2 Matches 2 Teams"/>
         <!-- 2 Matches 4 Teams -->
-        <string id="qb1yo7DZ" text="2 Partidos 4 Equipos"/>
+        <string id="qb1yo7DZ" text="2 Partidos 4 Equipos" original="2 Matches 4 Teams"/>
         <!-- 4 Matches 2 Teams -->
-        <string id="WAzvdvAJ" text="4 Partidos 2 Equipos"/>
+        <string id="WAzvdvAJ" text="4 Partidos 2 Equipos" original="4 Matches 2 Teams"/>
         <!-- 4 Matches 4 Teams -->
-        <string id="sMCb8Xeu" text="4 Partidos 4 Equipos"/>
+        <string id="sMCb8Xeu" text="4 Partidos 4 Equipos" original="4 Matches 4 Teams"/>
         <!-- 8 Matches 2 Teams -->
-        <string id="URNM9UqS" text="8 Partidos 2 Equipos"/>
+        <string id="URNM9UqS" text="8 Partidos 2 Equipos" original="8 Matches 2 Teams"/>
         <!-- Round 1 Type -->
-        <string id="eivyBgAa" text="Tipo Ronda 1"/>
+        <string id="eivyBgAa" text="Tipo Ronda 1" original="Round 1 Type"/>
         <!-- Round 2 Type -->
-        <string id="pefX6BdQ" text="Tipo Ronda 2"/>
+        <string id="pefX6BdQ" text="Tipo Ronda 2" original="Round 2 Type"/>
         <!-- Round 3 Type -->
-        <string id="GpV7pKPY" text="Ronda 3 Tipo"/>
+        <string id="GpV7pKPY" text="Ronda 3 Tipo" original="Round 3 Type"/>
         <!-- Round 1 Rewards -->
-        <string id="VeSh8k7c" text="Recompensas de la Ronda 1"/>
+        <string id="VeSh8k7c" text="Recompensas de la Ronda 1" original="Round 1 Rewards"/>
         <!-- Round 2 Rewards -->
-        <string id="gQ9YX7my" text="Recompensas de la Ronda 2"/>
+        <string id="gQ9YX7my" text="Recompensas de la Ronda 2" original="Round 2 Rewards"/>
         <!-- Round 3 Rewards -->
-        <string id="17pTC7NS" text="Recompensas de la ronda 3"/>
+        <string id="17pTC7NS" text="Recompensas de la ronda 3" original="Round 3 Rewards"/>
         <!-- Round 4 Rewards -->
-        <string id="pxMWYe5J" text="Recompensas de la Ronda 4"/>
+        <string id="pxMWYe5J" text="Recompensas de la Ronda 4" original="Round 4 Rewards"/>
         <!-- Participate XP -->
-        <string id="5vMTYqdu" text="Participar XP"/>
+        <string id="5vMTYqdu" text="Participar XP" original="Participate XP"/>
         <!-- Prize -->
-        <string id="Xu2KD7Kc" text="Premio"/>
+        <string id="Xu2KD7Kc" text="Premio" original="Prize"/>
         <!-- Enable Betting -->
-        <string id="rne7aMUR" text="Habilitar apuestas"/>
+        <string id="rne7aMUR" text="Habilitar apuestas" original="Enable Betting"/>
         <!-- Betting On Final Only -->
-        <string id="njh9b5GB" text="Apostar solo en la final"/>
+        <string id="njh9b5GB" text="Apostar solo en la final" original="Betting On Final Only"/>
         <!-- Skill Reduction Percent Per Win -->
-        <string id="5a40vmYi" text="Porcentaje de reducción de habilidades por victoria"/>
+        <string id="5a40vmYi" text="Porcentaje de reducción de habilidades por victoria" original="Skill Reduction Percent Per Win"/>
         <!-- Floor Percent -->
-        <string id="hMB4oFmk" text="Porcentaje de piso"/>
+        <string id="hMB4oFmk" text="Porcentaje de piso" original="Floor Percent"/>
         <!-- Example -->
-        <string id="L7AKFlpb" text="Ejemplo"/>
+        <string id="L7AKFlpb" text="Ejemplo" original="Example"/>
         <!-- Amount to multiply normal starting health by -->
-        <string id="n6Bc5M3s" text="Cantidad para multiplicar la salud inicial normal por"/>
+        <string id="n6Bc5M3s" text="Cantidad para multiplicar la salud inicial normal por" original="Amount to multiply normal starting health by"/>
         <!-- Heroes won't get any kill rewards in tournaments -->
-        <string id="j63d8DuH" text="Los héroes no obtendrán ninguna recompensa por matar en los torneos."/>
+        <string id="j63d8DuH" text="Los héroes no obtendrán ninguna recompensa por matar en los torneos." original="Heroes won't get any kill rewards in tournaments"/>
         <!-- Tournament kills / deaths won't be counted towards achievements or kill streaks -->
-        <string id="o5aH9rTO" text="Las muertes / muertes en torneos no se contarán para los logros o las rachas de muertes"/>
+        <string id="o5aH9rTO" text="Las muertes / muertes en torneos no se contarán para los logros o las rachas de muertes" original="Tournament kills / deaths won't be counted towards achievements or kill streaks"/>
         <!-- Remove horses completely from the BLT tournaments (the horse AI is terrible) -->
-        <string id="sJ68yZs1" text="Elimina los caballos por completo de los torneos BLT (la IA del caballo es terrible)"/>
+        <string id="sJ68yZs1" text="Elimina los caballos por completo de los torneos BLT (la IA del caballo es terrible)" original="Remove horses completely from the BLT tournaments (the horse AI is terrible)"/>
         <!-- Replaces all lances and spears with swords, because lance and spear combat is terrible -->
-        <string id="BjMC8Htn" text="Reemplaza todas las lanzas y lanzas por espadas, porque el combate con lanzas y lanzas es terrible"/>
+        <string id="BjMC8Htn" text="Reemplaza todas las lanzas y lanzas por espadas, porque el combate con lanzas y lanzas es terrible" original="Replaces all lances and spears with swords, because lance and spear combat is terrible"/>
         <!-- Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below) -->
-        <string id="kYFdZ8Yx" text="Reemplaza todas las armaduras con armaduras de nivel fijo, según la cultura si es posible (nivel especificado por Nivel de armadura normalizado a continuación)"/>
+        <string id="kYFdZ8Yx" text="Reemplaza todas las armaduras con armaduras de nivel fijo, según la cultura si es posible (nivel especificado por Nivel de armadura normalizado a continuación)" original="Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below)"/>
         <!-- Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled -->
-        <string id="HnqCyrDD" text="Nivel de armadura para establecer a todos los concursantes en (1 a 6), si Normalizar armadura está habilitado"/>
+        <string id="HnqCyrDD" text="Nivel de armadura para establecer a todos los concursantes en (1 a 6), si Normalizar armadura está habilitado" original="Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled"/>
         <!-- Randomizes the weapons used in each round, weighted based on the classes of the participants -->
-        <string id="oSCPOoqi" text="Aleatoriza las armas utilizadas en cada ronda, ponderadas según las clases de los participantes"/>
+        <string id="oSCPOoqi" text="Aleatoriza las armas utilizadas en cada ronda, ponderadas según las clases de los participantes" original="Randomizes the weapons used in each round, weighted based on the classes of the participants"/>
         <!-- Applies skill debuffs to previous tournament winners -->
-        <string id="FrloGGew" text="Aplica desventajas de habilidad a los ganadores de torneos anteriores."/>
+        <string id="FrloGGew" text="Aplica desventajas de habilidad a los ganadores de torneos anteriores." original="Applies skill debuffs to previous tournament winners"/>
         <!-- Allow the vanilla round setup -->
-        <string id="nfYBftnO" text="Permita la configuración redonda de vainilla"/>
+        <string id="nfYBftnO" text="Permita la configuración redonda de vainilla" original="Allow the vanilla round setup"/>
         <!-- Allow 1 match with 2 teams of 2 -->
-        <string id="t9yLB8gB" text="Permitir 1 partido con 2 equipos de 2"/>
+        <string id="t9yLB8gB" text="Permitir 1 partido con 2 equipos de 2" original="Allow 1 match with 2 teams of 2"/>
         <!-- Allow 1 match with 2 teams of 4 -->
-        <string id="5hLSHeuv" text="Permitir 1 partido con 2 equipos de 4"/>
+        <string id="5hLSHeuv" text="Permitir 1 partido con 2 equipos de 4" original="Allow 1 match with 2 teams of 4"/>
         <!-- Allow 1 match with 4 teams of 1 -->
-        <string id="YfOnzOH6" text="Permitir 1 partido con 4 equipos de 1"/>
+        <string id="YfOnzOH6" text="Permitir 1 partido con 4 equipos de 1" original="Allow 1 match with 4 teams of 1"/>
         <!-- Allow 1 match with 4 teams of 2 -->
-        <string id="CLbRKpZp" text="Permitir 1 partido con 4 equipos de 2"/>
+        <string id="CLbRKpZp" text="Permitir 1 partido con 4 equipos de 2" original="Allow 1 match with 4 teams of 2"/>
         <!-- Allow 1 match with 4 teams of 4 -->
-        <string id="5E1lXDYh" text="Permitir 1 partido con 4 equipos de 4"/>
+        <string id="5E1lXDYh" text="Permitir 1 partido con 4 equipos de 4" original="Allow 1 match with 4 teams of 4"/>
         <!-- Allow 2 matches with 2 teams of 1 -->
-        <string id="OrZaS458" text="Permitir 2 partidos con 2 equipos de 1"/>
+        <string id="OrZaS458" text="Permitir 2 partidos con 2 equipos de 1" original="Allow 2 matches with 2 teams of 1"/>
         <!-- Allow 2 matches with 2 teams of 2 -->
-        <string id="Dr1Js5fB" text="Permitir 2 partidos con 2 equipos de 2"/>
+        <string id="Dr1Js5fB" text="Permitir 2 partidos con 2 equipos de 2" original="Allow 2 matches with 2 teams of 2"/>
         <!-- Allow 2 matches with 2 teams of 4 -->
-        <string id="jEghMKUV" text="Permitir 2 partidos con 2 equipos de 4"/>
+        <string id="jEghMKUV" text="Permitir 2 partidos con 2 equipos de 4" original="Allow 2 matches with 2 teams of 4"/>
         <!-- Allow 2 matches with 4 teams of 1 -->
-        <string id="nmMzoqeC" text="Permitir 2 partidos con 4 equipos de 1"/>
+        <string id="nmMzoqeC" text="Permitir 2 partidos con 4 equipos de 1" original="Allow 2 matches with 4 teams of 1"/>
         <!-- Allow 2 matches with 4 teams of 2 -->
-        <string id="f8rXSGwN" text="Permitir 2 partidos con 4 equipos de 2"/>
+        <string id="f8rXSGwN" text="Permitir 2 partidos con 4 equipos de 2" original="Allow 2 matches with 4 teams of 2"/>
         <!-- Allow 4 matches with 2 teams of 2 -->
-        <string id="GPCYzshA" text="Permitir 4 partidos con 2 equipos de 2"/>
+        <string id="GPCYzshA" text="Permitir 4 partidos con 2 equipos de 2" original="Allow 4 matches with 2 teams of 2"/>
         <!-- Allow 4 matches with 4 teams of 1 -->
-        <string id="MjsTFwUv" text="Permitir 4 partidos con 4 equipos de 1"/>
+        <string id="MjsTFwUv" text="Permitir 4 partidos con 4 equipos de 1" original="Allow 4 matches with 4 teams of 1"/>
         <!-- Allow 4 matches with 2 teams of 1 -->
-        <string id="xMaA76xu" text="Permitir 4 partidos con 2 equipos de 1"/>
+        <string id="xMaA76xu" text="Permitir 4 partidos con 2 equipos de 1" original="Allow 4 matches with 2 teams of 1"/>
         <!-- Allow 8 matches with 2 teams of 1 -->
-        <string id="otwzXPTQ" text="Permitir 8 partidos con 2 equipos de 1"/>
+        <string id="otwzXPTQ" text="Permitir 8 partidos con 2 equipos de 1" original="Allow 8 matches with 2 teams of 1"/>
         <!-- Gold won if the hero wins their match in the round -->
-        <string id="i7Ns7K2i" text="Oro ganado si el héroe gana su partida en la ronda."/>
+        <string id="i7Ns7K2i" text="Oro ganado si el héroe gana su partida en la ronda." original="Gold won if the hero wins their match in the round"/>
         <!-- XP given if the hero wins their match in the round -->
-        <string id="b0MeEmOS" text="XP otorgado si el héroe gana su partida en la ronda"/>
+        <string id="b0MeEmOS" text="XP otorgado si el héroe gana su partida en la ronda" original="XP given if the hero wins their match in the round"/>
         <!-- XP given if the hero loses their match in a round -->
-        <string id="Oq7LMvoF" text="XP otorgado si el héroe pierde su partida en una ronda"/>
+        <string id="Oq7LMvoF" text="XP otorgado si el héroe pierde su partida en una ronda" original="XP given if the hero loses their match in a round"/>
         <!-- Gold won if the hero wins the tournaments -->
-        <string id="F8g49VCy" text="Oro ganado si el héroe gana los torneos."/>
+        <string id="F8g49VCy" text="Oro ganado si el héroe gana los torneos." original="Gold won if the hero wins the tournaments"/>
         <!-- XP given if the hero wins the tournaments -->
-        <string id="3BudXy0O" text="XP otorgado si el héroe gana los torneos"/>
+        <string id="3BudXy0O" text="XP otorgado si el héroe gana los torneos" original="XP given if the hero wins the tournaments"/>
         <!-- XP given if the hero participates in a tournament but doesn't win -->
-        <string id="TXqjPXh7" text="XP otorgado si el héroe participa en un torneo pero no gana"/>
+        <string id="TXqjPXh7" text="XP otorgado si el héroe participa en un torneo pero no gana" original="XP given if the hero participates in a tournament but doesn't win"/>
         <!-- Winners prize -->
-        <string id="wYzmyUCE" text="Premio de los ganadores"/>
+        <string id="wYzmyUCE" text="Premio de los ganadores" original="Winners prize"/>
         <!-- Enable betting -->
-        <string id="FOQEPZD5" text="Habilitar apuestas"/>
+        <string id="FOQEPZD5" text="Habilitar apuestas" original="Enable betting"/>
         <!-- Only allow betting on the final betting -->
-        <string id="KGcz71VJ" text="Permitir solo apostar en las apuestas finales"/>
+        <string id="KGcz71VJ" text="Permitir solo apostar en las apuestas finales" original="Only allow betting on the final betting"/>
         <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
-        <string id="twgHWqU6" text="Habilidad o grupo de habilidades a modificador (se modificarán todas las habilidades de un grupo)"/>
+        <string id="twgHWqU6" text="Habilidad o grupo de habilidades a modificador (se modificarán todas las habilidades de un grupo)" original="Skill or skill group to modifier (all skills in a group will be modified)"/>
         <!-- Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified. -->
-        <string id="zoMHI9O3" text="Reducción de la habilidad por victoria (en%). Consulte https://www.desmos.com/calculator/ajydvitcer para ver cómo se modificará la habilidad."/>
+        <string id="zoMHI9O3" text="Reducción de la habilidad por victoria (en%). Consulte https://www.desmos.com/calculator/ajydvitcer para ver cómo se modificará la habilidad." original="Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified."/>
         <!-- The lower limit (in %) that the skill(s) can be reduced to. -->
-        <string id="HebJIfaE" text="El límite inferior (en%) al que se pueden reducir las habilidades."/>
+        <string id="HebJIfaE" text="El límite inferior (en%) al que se pueden reducir las habilidades." original="The lower limit (in %) that the skill(s) can be reduced to."/>
         <!-- Shows the % reduction of the skill over 20 tournaments -->
-        <string id="vgXMv8oH" text="Muestra el% de reducción de la habilidad en 20 torneos."/>
+        <string id="vgXMv8oH" text="Muestra el% de reducción de la habilidad en 20 torneos." original="Shows the % reduction of the skill over 20 tournaments"/>
         <!-- Prize {ITEMNAME} -->
-        <string id="hCNpHVJY" text="Premio {ITEMNAME}"/>
+        <string id="hCNpHVJY" text="Premio {ITEMNAME}" original="Prize {ITEMNAME}"/>
         <!-- Round Rewards -->
-        <string id="g0A4pXY2" text="Recompensas redondas"/>
+        <string id="g0A4pXY2" text="Recompensas redondas" original="Round Rewards"/>
         <!-- Rewards -->
-        <string id="FHkvQbcR" text="Recompensas"/>
+        <string id="FHkvQbcR" text="Recompensas" original="Rewards"/>
         <!-- Betting -->
-        <string id="n1Agm9uJ" text="Apuesta"/>
+        <string id="n1Agm9uJ" text="Apuesta" original="Betting"/>
     </strings>
 </base>

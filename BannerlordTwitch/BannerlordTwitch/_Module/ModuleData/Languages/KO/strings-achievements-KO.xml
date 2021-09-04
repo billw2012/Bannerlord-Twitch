@@ -5,36 +5,30 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- Common -->
         <!-- Reward {ITEMNAME} -->
-        <string id="W47g8bCB" text="보상 {ITEMNAME}"/>
+        <string id="W47g8bCB" text="보상 {ITEMNAME}" original="Reward {ITEMNAME}"/>
         <!-- {viewer} is {name}! -->
-        <string id="TAWcPGIc" text="{viewer} is {name}!"/>
-        
-        
+        <string id="TAWcPGIc" text="{viewer} is {name}!" original="{viewer} is {name}!"/>
         <!-- {ITEMNAME} of Fealty -->
-        <string id="IvV04W31" text="충성의 {ITEMNAME}"/>
+        <string id="IvV04W31" text="충성의 {ITEMNAME}" original="{ITEMNAME} of Fealty"/>
         <!-- Renegades {ITEMNAME} -->
-        <string id="UQtSgnog" text="배신자 {ITEMNAME}"/>
+        <string id="UQtSgnog" text="배신자 {ITEMNAME}" original="Renegades {ITEMNAME}"/>
         <!-- Stream Sniper {ITEMNAME} -->
-        <string id="xI41h8NA" text="스트림 스나이퍼 {ITEMNAME}"/>
-        
+        <string id="xI41h8NA" text="스트림 스나이퍼 {ITEMNAME}" original="Stream Sniper {ITEMNAME}"/>
         <!-- Reliable -->
-        <string id="ODWiNBng" text="믿을 수있는"/>
+        <string id="ODWiNBng" text="믿을 수있는" original="Reliable"/>
         <!-- Trusted -->
-        <string id="fWTqF2sw" text="신뢰할 수 있음"/>
+        <string id="fWTqF2sw" text="신뢰할 수 있음" original="Trusted"/>
         <!-- Loyal -->
-        <string id="fe9J8von" text="충실한"/>
+        <string id="fe9J8von" text="충실한" original="Loyal"/>
         <!-- Rebellious -->
-        <string id="HdYFegeb" text="반항적인"/>
+        <string id="HdYFegeb" text="반항적인" original="Rebellious"/>
         <!-- Traitorous -->
-        <string id="gDHR7f8r" text="배신자"/>
+        <string id="gDHR7f8r" text="배신자" original="Traitorous"/>
         <!-- Renegade -->
-        <string id="VEH582e7" text="배신자"/>
+        <string id="VEH582e7" text="배신자" original="Renegade"/>
         <!-- Stream Sniper -->
-        <string id="Aj0gXKgZ" text="스트림 스나이퍼"/>
-        
-        
+        <string id="Aj0gXKgZ" text="스트림 스나이퍼" original="Stream Sniper"/>
     </strings>
 </base>

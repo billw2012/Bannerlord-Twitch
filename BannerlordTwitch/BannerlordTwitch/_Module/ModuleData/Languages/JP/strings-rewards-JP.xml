@@ -5,85 +5,83 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
-        <string id="dirEUQc7" text="ゲームでヒーローを獲得しましょう。他のほとんどすべての行動には養子縁組の英雄が必要です。"/>
+        <string id="dirEUQc7" text="ゲームでヒーローを獲得しましょう。他のほとんどすべての行動には養子縁組の英雄が必要です。" original="Get a hero in game. Almost all other actions require an adopted hero."/>
         <!-- Adds 10,000 gold to your adopted hero. -->
-        <string id="Y7GzhU5a" text="採用したヒーローに10,000ゴールドを追加します。"/>
+        <string id="Y7GzhU5a" text="採用したヒーローに10,000ゴールドを追加します。" original="Adds 10,000 gold to your adopted hero."/>
         <!-- Adds 100,000 gold to your adopted hero. -->
-        <string id="Hbk74nei" text="採用したヒーローに100,000ゴールドを追加します。"/>
+        <string id="Hbk74nei" text="採用したヒーローに100,000ゴールドを追加します。" original="Adds 100,000 gold to your adopted hero."/>
         <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue). -->
-        <string id="nI4dr4uZ" text="ストリーマーが戦闘に参加するときにこれを使用して、採用したヒーローをストリーマー側に（従者とともに）スポーンします。"/>
+        <string id="nI4dr4uZ" text="ストリーマーが戦闘に参加するときにこれを使用して、採用したヒーローをストリーマー側に（従者とともに）スポーンします。" original="Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue)."/>
         <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue). -->
-        <string id="flQofEFu" text="ストリーマーが戦闘に参加するときにこれを使用して、採用したヒーローを敵側に（従者とともに）スポーンします。"/>
+        <string id="flQofEFu" text="ストリーマーが戦闘に参加するときにこれを使用して、採用したヒーローを敵側に（従者とともに）スポーンします。" original="Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue)."/>
         <!-- Heals the streamers character in battle, over time. Doesn't work on the campaign map. -->
-        <string id="zLxgvsYd" text="時間の経過とともに、戦闘中のストリーマーキャラクターを癒します。キャンペーンマップでは機能しません。"/>
+        <string id="zLxgvsYd" text="時間の経過とともに、戦闘中のストリーマーキャラクターを癒します。キャンペーンマップでは機能しません。" original="Heals the streamers character in battle, over time. Doesn't work on the campaign map."/>
         <!-- Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament. -->
-        <string id="KaE947T9" text="採用したヒーローと一緒にトーナメントキューに参加してください。オーバーレイにキューが表示されます。各トーナメントには最大16人のヒーローを含めることができ、いっぱいになると、次のトーナメントのためにさらにヒーローがキューに残ります。"/>
+        <string id="KaE947T9" text="採用したヒーローと一緒にトーナメントキューに参加してください。オーバーレイにキューが表示されます。各トーナメントには最大16人のヒーローを含めることができ、いっぱいになると、次のトーナメントのためにさらにヒーローがキューに残ります。" original="Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament."/>
         <!-- Sends a message in the game. If you have a hero then it will also show them next to the message. -->
-        <string id="5L3LWrUx" text="ゲーム内でメッセージを送信します。ヒーローがいる場合は、メッセージの横にも表示されます。"/>
+        <string id="5L3LWrUx" text="ゲーム内でメッセージを送信します。ヒーローがいる場合は、メッセージの横にも表示されます。" original="Sends a message in the game. If you have a hero then it will also show them next to the message."/>
         <!-- Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritance rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete. -->
-        <string id="SXzjFdG1" text="現在のヒーローとプレイしたくない場合は、これを使用してください。それらは（廃止）としてマークされ、新しいものを採用できるようになります。相続規則は、死亡時と同じように退職にも適用されます。リタイアメントを完了するには、プロンプトでyesを入力する必要があります（小文字で正確に記述されているとおり）。"/>
+        <string id="SXzjFdG1" text="現在のヒーローとプレイしたくない場合は、これを使用してください。それらは（廃止）としてマークされ、新しいものを採用できるようになります。相続規則は、死亡時と同じように退職にも適用されます。リタイアメントを完了するには、プロンプトでyesを入力する必要があります（小文字で正確に記述されているとおり）。" original="Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritance rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete."/>
         <!-- Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment. -->
-        <string id="ZfhTuaRR" text="採用したヒーローに50,000XPを追加します。適用されるスキルはランダムに選択されますが、クラスと既存のスキルと装備の影響を受けます。"/>
+        <string id="ZfhTuaRR" text="採用したヒーローに50,000XPを追加します。適用されるスキルはランダムに選択されますが、クラスと既存のスキルと装備の影響を受けます。" original="Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment."/>
         <!-- Heals your hero over time. Only works in battle, when your hero is summoned. -->
-        <string id="pFwSBHnR" text="時間の経過とともにヒーローを癒します。あなたのヒーローが召喚されたとき、戦闘でのみ機能します。"/>
+        <string id="pFwSBHnR" text="時間の経過とともにヒーローを癒します。あなたのヒーローが召喚されたとき、戦闘でのみ機能します。" original="Heals your hero over time. Only works in battle, when your hero is summoned."/>
         <!-- Transfer 10,000 gold to the streamers character, from your hero. -->
-        <string id="CSmE7Y50" text="ヒーローからストリーマーキャラクターに10,000ゴールドを転送します。"/>
+        <string id="CSmE7Y50" text="ヒーローからストリーマーキャラクターに10,000ゴールドを転送します。" original="Transfer 10,000 gold to the streamers character, from your hero."/>
         <!-- Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay. -->
-        <string id="LO6Q2DCb" text="ヒーローがいる場合は、ヒーローのクラスパワーをアクティブにします。電力は、オーバーレイに示されているように、限られた期間持続します。"/>
-        
+        <string id="LO6Q2DCb" text="ヒーローがいる場合は、ヒーローのクラスパワーをアクティブにします。電力は、オーバーレイに示されているように、限られた期間持続します。" original="Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay."/>
         <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
-        <string id="kL65xglO" text="ゲームでヒーローを獲得しましょう。他のほとんどすべての行動には養子縁組の英雄が必要です。"/>
+        <string id="kL65xglO" text="ゲームでヒーローを獲得しましょう。他のほとんどすべての行動には養子縁組の英雄が必要です。" original="Get a hero in game. Almost all other actions require an adopted hero."/>
         <!-- Add 10,000 gold to your adopted hero -->
-        <string id="xQTiKsVA" text="採用したヒーローに10,000ゴールドを追加します"/>
+        <string id="xQTiKsVA" text="採用したヒーローに10,000ゴールドを追加します" original="Add 10,000 gold to your adopted hero"/>
         <!-- Add 100,000 gold to your adopted hero -->
-        <string id="xeI0AXUl" text="採用したヒーローに100,000ゴールドを追加します"/>
+        <string id="xeI0AXUl" text="採用したヒーローに100,000ゴールドを追加します" original="Add 100,000 gold to your adopted hero"/>
         <!-- Your adopted hero joins the players side in battle -->
-        <string id="zmxI41XP" text="養子縁組したヒーローがプレイヤー側に加わります"/>
+        <string id="zmxI41XP" text="養子縁組したヒーローがプレイヤー側に加わります" original="Your adopted hero joins the players side in battle"/>
         <!-- Your adopted hero joins the enemies side in battle -->
-        <string id="ry25StNF" text="養子となったヒーローが敵側に加わって戦闘に参加"/>
+        <string id="ry25StNF" text="養子となったヒーローが敵側に加わって戦闘に参加" original="Your adopted hero joins the enemies side in battle"/>
         <!-- Heal the streamer over time -->
-        <string id="a8DqM6AY" text="時間をかけてストリーマーを癒す"/>
+        <string id="a8DqM6AY" text="時間をかけてストリーマーを癒す" original="Heal the streamer over time"/>
         <!-- Join the tournament queue with your adopted hero -->
-        <string id="ODfWfHln" text="採用したヒーローと一緒にトーナメントキューに参加する"/>
+        <string id="ODfWfHln" text="採用したヒーローと一緒にトーナメントキューに参加する" original="Join the tournament queue with your adopted hero"/>
         <!-- Enter Message -->
-        <string id="m9IFHkZh" text="メッセージを入力してください"/>
+        <string id="m9IFHkZh" text="メッセージを入力してください" original="Enter Message"/>
         <!-- Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel -->
-        <string id="ZNGav9pi" text="はいを入力してヒーローを引退させるか（ヒーローは制御されなくなります）、このウィンドウを閉じてキャンセルします"/>
+        <string id="ZNGav9pi" text="はいを入力してヒーローを引退させるか（ヒーローは制御されなくなります）、このウィンドウを閉じてキャンセルします" original="Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel"/>
         <!-- Add 50,000 XP to a random skill of your adopted hero -->
-        <string id="UCjOD22c" text="採用したヒーローのランダムスキルに50,000XPを追加します"/>
+        <string id="UCjOD22c" text="採用したヒーローのランダムスキルに50,000XPを追加します" original="Add 50,000 XP to a random skill of your adopted hero"/>
         <!-- Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below: -->
-        <string id="1IDV1dAh" text="ヒーローからストリーマーキャラクターに10,000ゴールドを転送します。以下にギフトメッセージを入力してください。"/>
+        <string id="1IDV1dAh" text="ヒーローからストリーマーキャラクターに10,000ゴールドを転送します。以下にギフトメッセージを入力してください。" original="Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:"/>
         <!-- Activate your class power on your hero, if you have one. -->
-        <string id="x5Agf9Wl" text="ヒーローがいる場合は、ヒーローのクラスパワーをアクティブにします。"/>
+        <string id="x5Agf9Wl" text="ヒーローがいる場合は、ヒーローのクラスパワーをアクティブにします。" original="Activate your class power on your hero, if you have one."/>
         <!-- Adopt a Hero -->
-        <string id="Yc9dn4Sx" text="ヒーローを採用する"/>
+        <string id="Yc9dn4Sx" text="ヒーローを採用する" original="Adopt a Hero"/>
         <!-- 10k gold -->
-        <string id="s0GPjZKG" text="10Kゴールド"/>
+        <string id="s0GPjZKG" text="10Kゴールド" original="10k gold"/>
         <!-- 100k gold -->
-        <string id="ndi9p5jn" text="10万ゴールド"/>
+        <string id="ndi9p5jn" text="10万ゴールド" original="100k gold"/>
         <!-- Summon -->
-        <string id="dpnWybop" text="召喚"/>
+        <string id="dpnWybop" text="召喚" original="Summon"/>
         <!-- Attack -->
-        <string id="IrF1VaBD" text="攻撃"/>
+        <string id="IrF1VaBD" text="攻撃" original="Attack"/>
         <!-- Heal Streamer -->
-        <string id="MSpPJJhZ" text="ヒールストリーマー"/>
+        <string id="MSpPJJhZ" text="ヒールストリーマー" original="Heal Streamer"/>
         <!-- Tournament -->
-        <string id="IBrMU0VF" text="トーナメント"/>
+        <string id="IBrMU0VF" text="トーナメント" original="Tournament"/>
         <!-- Send Message In Game -->
-        <string id="FFvfbTgo" text="ゲーム内でメッセージを送信"/>
+        <string id="FFvfbTgo" text="ゲーム内でメッセージを送信" original="Send Message In Game"/>
         <!-- Retire My Hero -->
-        <string id="AZMDg7St" text="私のヒーローを引退"/>
+        <string id="AZMDg7St" text="私のヒーローを引退" original="Retire My Hero"/>
         <!-- 50k XP -->
-        <string id="uA1yEnyO" text="50k XP"/>
+        <string id="uA1yEnyO" text="50k XP" original="50k XP"/>
         <!-- Burn Player -->
-        <string id="2ciF79zR" text="バーンプレーヤー"/>
+        <string id="2ciF79zR" text="バーンプレーヤー" original="Burn Player"/>
         <!-- Heal Hero -->
-        <string id="likTlNpu" text="ヒールヒーロー"/>
+        <string id="likTlNpu" text="ヒールヒーロー" original="Heal Hero"/>
         <!-- Give Player Gold -->
-        <string id="9DoHhKeh" text="プレイヤーにゴールドを与える"/>
+        <string id="9DoHhKeh" text="プレイヤーにゴールドを与える" original="Give Player Gold"/>
         <!-- Use Class Power -->
-        <string id="yoZSmM0b" text="クラスパワーを使用する"/>
+        <string id="yoZSmM0b" text="クラスパワーを使用する" original="Use Class Power"/>
     </strings>
 </base>

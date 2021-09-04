@@ -5,801 +5,770 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-                
         <!-- AddGoldToHero -->
         <!-- Add Gold To Hero -->
-        <string id="kn4uxAWs" text="为英雄加金"/>
+        <string id="kn4uxAWs" text="为英雄加金" original="Add Gold To Hero"/>
         <!-- Gives gold to the adopted hero -->
-        <string id="vkgPfcAu" text="给收养的英雄金币"/>
-        
+        <string id="vkgPfcAu" text="给收养的英雄金币" original="Gives gold to the adopted hero"/>
         <!-- How much gold to give the adopted hero -->
-        <string id="S2CeRdjR" text="给收养的英雄多少金币"/>
-        
+        <string id="S2CeRdjR" text="给收养的英雄多少金币" original="How much gold to give the adopted hero"/>
         <!-- AdoptAHero -->
         <!-- Adopt A Hero -->
-        <string id="NkZXnSQI" text="领养英雄"/>
+        <string id="NkZXnSQI" text="领养英雄" original="Adopt A Hero"/>
         <!-- Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands -->
-        <string id="fd7G5N0Q" text="允许观众在游戏中“采用”一个英雄 - 英雄名称将更改为观众的名字，他们可以通过进一步的命令来控制它"/>
-
+        <string id="fd7G5N0Q" text="允许观众在游戏中“采用”一个英雄 - 英雄名称将更改为观众的名字，他们可以通过进一步的命令来控制它" original="Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands"/>
         <!-- Create New -->
-        <string id="TLrDxhlh" text="创建新的"/>
+        <string id="TLrDxhlh" text="创建新的" original="Create New"/>
         <!-- Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern) -->
-        <string id="F1KDzuZZ" text="创建一个新英雄而不是采用现有的英雄（他们将成为随机酒馆的流浪者）"/>
+        <string id="F1KDzuZZ" text="创建一个新英雄而不是采用现有的英雄（他们将成为随机酒馆的流浪者）" original="Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern)"/>
         <!-- Allow Noble -->
-        <string id="nPIcT2s7" text="允许贵族"/>
+        <string id="nPIcT2s7" text="允许贵族" original="Allow Noble"/>
         <!-- Allow noble heroes (if CreateNew is false) -->
-        <string id="XvZN7OOY" text="允许贵族英雄（如果 CreateNew 为 false）"/>
+        <string id="XvZN7OOY" text="允许贵族英雄（如果 CreateNew 为 false）" original="Allow noble heroes (if CreateNew is false)"/>
         <!-- Allow Wanderer -->
-        <string id="VVFsa8LQ" text="允许流浪者"/>
+        <string id="VVFsa8LQ" text="允许流浪者" original="Allow Wanderer"/>
         <!-- Allow wanderer heroes (if CreateNew is false) -->
-        <string id="9lE2KSvC" text="允许流浪英雄（如果 CreateNew 为 false）"/>
+        <string id="9lE2KSvC" text="允许流浪英雄（如果 CreateNew 为 false）" original="Allow wanderer heroes (if CreateNew is false)"/>
         <!-- Allow Player Companion -->
-        <string id="A8G9ctbn" text="允许玩家同伴"/>
+        <string id="A8G9ctbn" text="允许玩家同伴" original="Allow Player Companion"/>
         <!-- Allow companions (not tested, if CreateNew is false) -->
-        <string id="6EjGRMkt" text="允许同伴（未测试，如果 CreateNew 为 false）"/>
+        <string id="6EjGRMkt" text="允许同伴（未测试，如果 CreateNew 为 false）" original="Allow companions (not tested, if CreateNew is false)"/>
         <!-- Only Same Faction -->
-        <string id="B2z7T1xQ" text="只有同一派系"/>
+        <string id="B2z7T1xQ" text="只有同一派系" original="Only Same Faction"/>
         <!-- Only allow heroes from same faction as player -->
-        <string id="QvQGwFyl" text="只允许与玩家来自同一阵营的英雄"/>
+        <string id="QvQGwFyl" text="只允许与玩家来自同一阵营的英雄" original="Only allow heroes from same faction as player"/>
         <!-- Inheritance -->
-        <string id="dvbkxJQz" text="遗产"/>
+        <string id="dvbkxJQz" text="遗产" original="Inheritance"/>
         <!-- What fraction of assets will be inherited when a new character is adopted after an old one died (0 to 1) -->
-        <string id="KLJtpEjg" text="旧角色死后采用新角色时，将继承多少资产（0到1）"/>
+        <string id="KLJtpEjg" text="旧角色死亡后采用新角色时，将继承多少资产（0到1）" original="What fraction of assets will be inherited when a new character is adopted after an old one died (0 to 1)"/>
         <!-- Maximum Inherited Custom Items -->
-        <string id="Bi19tTPj" text="最大继承自定义项"/>
+        <string id="Bi19tTPj" text="最大继承自定义项" original="Maximum Inherited Custom Items"/>
         <!-- How many custom items can be inherited -->
-        <string id="tFolfAOn" text="可以继承多少个自定义项"/>
+        <string id="tFolfAOn" text="可以继承多少个自定义项" original="How many custom items can be inherited"/>
         <!-- Subscriber Only -->
-        <string id="O4DGlP9Z" text="仅限订阅者"/>
+        <string id="O4DGlP9Z" text="仅限订阅者" original="Subscriber Only"/>
         <!-- Only subscribers can adopt -->
-        <string id="TBNkHsLC" text="只有订阅者可以采用"/>
+        <string id="TBNkHsLC" text="只有订阅者可以采用" original="Only subscribers can adopt"/>
         <!-- Minimum Subscribed Months -->
-        <string id="dO41CKIU" text="最少订阅月数"/>
+        <string id="dO41CKIU" text="最少订阅月数" original="Minimum Subscribed Months"/>
         <!-- Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified -->
-        <string id="BVZwDqR0" text="只有订阅了至少几个月的观众才能采用，如果未指定则忽略"/>
+        <string id="BVZwDqR0" text="只有订阅了至少几个月的观众才能采用，如果未指定则忽略" original="Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified"/>
         <!-- Starting Gold -->
-        <string id="iOmYBC7I" text="起始金牌"/>
+        <string id="iOmYBC7I" text="起始金牌" original="Starting Gold"/>
         <!-- Gold the adopted hero will start with -->
-        <string id="pZMkJLix" text="被收养的英雄将从黄金开始"/>
+        <string id="pZMkJLix" text="被收养的英雄将从黄金开始" original="Gold the adopted hero will start with"/>
         <!-- Override Age -->
-        <string id="ZXwbvbbq" text="覆盖年龄"/>
+        <string id="ZXwbvbbq" text="覆盖年龄" original="Override Age"/>
         <!-- Override the heroes age -->
-        <string id="gxQgrAey" text="覆盖英雄年龄"/>
+        <string id="gxQgrAey" text="覆盖英雄年龄" original="Override the heroes age"/>
         <!-- Starting Age Range -->
-        <string id="NEBQgHiX" text="起始年龄范围"/>
+        <string id="NEBQgHiX" text="起始年龄范围" original="Starting Age Range"/>
         <!-- Random range of age when overriding it -->
-        <string id="TYqEBuLW" text="覆盖时的随机年龄范围"/>
+        <string id="TYqEBuLW" text="覆盖时的随机年龄范围" original="Random range of age when overriding it"/>
         <!-- Starting Skills -->
-        <string id="9IOFHQjS" text="起步技巧"/>
+        <string id="9IOFHQjS" text="起步技巧" original="Starting Skills"/>
         <!-- Starting skills, if empty then default skills of the adopted hero will be left in tact -->
-        <string id="C4rV4f2F" text="初始技能，如果为空，则保留所采用英雄的默认技能"/>
+        <string id="C4rV4f2F" text="初始技能，如果为空，则保留所采用英雄的默认技能" original="Starting skills, if empty then default skills of the adopted hero will be left in tact"/>
         <!-- Starting Equipment Tier -->
-        <string id="IAKQCRa1" text="起始装备等级"/>
+        <string id="IAKQCRa1" text="起始装备等级" original="Starting Equipment Tier"/>
         <!-- Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment -->
-        <string id="mQwjHXfC" text="被采用的英雄将开始的装备等级，如果您不指定，则他们将获得英雄现有装备"/>
+        <string id="mQwjHXfC" text="被采用的英雄将开始的装备等级，如果您不指定，则他们将获得英雄现有装备" original="Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment"/>
         <!-- Starting Class -->
-        <string id="0vGFJdO1" text="开始班"/>
+        <string id="0vGFJdO1" text="开始班" original="Starting Class"/>
         <!-- Starting class of the hero -->
-        <string id="zgjyFL6i" text="英雄的起始等级"/>
-        
-        
+        <string id="zgjyFL6i" text="英雄的起始等级" original="Starting class of the hero"/>
         <!-- Subscriber Only -->
-        <string id="4zAUTiSP" text="仅限订阅者"/>
+        <string id="4zAUTiSP" text="仅限订阅者" original="Subscriber Only"/>
         <!-- Newly created wanderer -->
-        <string id="cJQCU33B" text="新创建的流浪者"/>
+        <string id="cJQCU33B" text="新创建的流浪者" original="Newly created wanderer"/>
         <!-- Noble -->
-        <string id="fP84ES0X" text="高贵"/>
+        <string id="fP84ES0X" text="高贵" original="Noble"/>
         <!-- Wanderer -->
-        <string id="ozRaAx6L" text="流浪者"/>
+        <string id="ozRaAx6L" text="流浪者" original="Wanderer"/>
         <!-- Companions -->
-        <string id="YucejFfO" text="同伴"/>
+        <string id="YucejFfO" text="同伴" original="Companions"/>
         <!-- Allowed -->
-        <string id="UNtHwNhx" text="允许"/>
+        <string id="UNtHwNhx" text="允许" original="Allowed"/>
         <!-- Same faction only -->
-        <string id="6W0OJKkA" text="仅同一派系"/>
+        <string id="6W0OJKkA" text="仅同一派系" original="Same faction only"/>
         <!-- Starting Age Range -->
-        <string id="pDP8b5HR" text="起始年龄范围"/>
+        <string id="pDP8b5HR" text="起始年龄范围" original="Starting Age Range"/>
         <!-- Starting Gold -->
-        <string id="FvhsCSd3" text="起始金牌"/>
+        <string id="FvhsCSd3" text="起始金牌" original="Starting Gold"/>
         <!-- Inheritance -->
-        <string id="wP0lfTf3" text="遗产"/>
+        <string id="wP0lfTf3" text="遗产" original="Inheritance"/>
         <!-- {Inheritance}% of gold spent on equipment and retinue -->
-        <string id="mDK67efh" text="{Inheritance}% 的黄金用于装备和随从"/>
+        <string id="mDK67efh" text="{Inheritance}% 的黄金用于装备和随从" original="{Inheritance}% of gold spent on equipment and retinue"/>
         <!-- no custom items -->
-        <string id="76NtQIGB" text="没有自定义项目"/>
+        <string id="76NtQIGB" text="没有自定义项目" original="no custom items"/>
         <!-- up to {MaxInheritedCustomItems} custom items -->
-        <string id="sEDQrZCp" text="最多 {MaxInheritedCustomItems} 个自定义项目"/>
-        
+        <string id="sEDQrZCp" text="最多 {MaxInheritedCustomItems} 个自定义项目" original="up to {MaxInheritedCustomItems} custom items"/>
         <!-- You have already adopted a hero! -->
-        <string id="mJfD7e2g" text="你已经收养了一个英雄！"/>
+        <string id="mJfD7e2g" text="你已经收养了一个英雄！" original="You have already adopted a hero!"/>
         <!-- You must be subscribed for at least {MinSubscribedMonths} months to adopt a hero with this command! -->
-        <string id="4K7Q7gR0" text="您必须订阅至少 {MinSubscribedMonths} 个月才能使用此命令收养英雄！"/>
+        <string id="4K7Q7gR0" text="您必须订阅至少 {MinSubscribedMonths} 个月才能使用此命令收养英雄！" original="You must be subscribed for at least {MinSubscribedMonths} months to adopt a hero with this command!"/>
         <!-- You must be subscribed to adopt a hero with this command! -->
-        <string id="0QeQPxYi" text="您必须订阅才能使用此命令收养英雄！"/>
+        <string id="0QeQPxYi" text="您必须订阅才能使用此命令收养英雄！" original="You must be subscribed to adopt a hero with this command!"/>
         <!-- No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)! -->
-        <string id="XlQUIIsg" text="没有可用的英雄：玩家不在派系中（禁用仅限玩家派系，或加入派系）！"/>
+        <string id="XlQUIIsg" text="没有可用的英雄：玩家不在派系中（禁用仅玩家派系，或加入派系）！" original="No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)!"/>
         <!-- You can't adopt a hero: no available hero matching the requirements was found! -->
-        <string id="E7wqQ2kg" text="您不能采用英雄：找不到符合要求的可用英雄！"/>
+        <string id="E7wqQ2kg" text="您不能采用英雄：找不到符合要求的可用英雄！" original="You can't adopt a hero: no available hero matching the requirements was found!"/>
         <!-- {OldName} is now known as {NewName}! -->
-        <string id="K7nuJVCN" text="{OldName} is now known as {NewName}！"/>
+        <string id="K7nuJVCN" text="{OldName} is now known as {NewName}！" original="{OldName} is now known as {NewName}!"/>
         <!-- {OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})! -->
-        <string id="PAc5S0GY" text="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited}）！"/>
+        <string id="PAc5S0GY" text="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited}）！" original="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})!"/>
         <!-- {OldName} is now known as {NewName}, they have {NewGold}! -->
-        <string id="lANBKEFN" text="{OldName} is now known as {NewName}, they have {NewGold}！"/>
-        
+        <string id="lANBKEFN" text="{OldName} is now known as {NewName}, they have {NewGold}！" original="{OldName} is now known as {NewName}, they have {NewGold}!"/>
         <!-- AttributePoints -->
         <!-- Add Attribute Points -->
-        <string id="TmUJ8VU7" text="添加属性点"/>
+        <string id="TmUJ8VU7" text="添加属性点" original="Add Attribute Points"/>
         <!-- Improve adopted heroes attribute points -->
-        <string id="YrYFBWaw" text="提升英雄属性点数"/>
+        <string id="YrYFBWaw" text="提升英雄属性点数" original="Improve adopted heroes attribute points"/>
         <!-- Random -->
-        <string id="ibuIZ39r" text="随机的"/>
+        <string id="ibuIZ39r" text="随机的" original="Random"/>
         <!-- If set a random attribute is improved, otherwise the viewer should provide part of the name of the attribute to improve (this works best as a chat command) -->
-        <string id="2F4MZn5h" text="如果设置一个随机属性被改进，否则查看者应该提供该属性的部分名称来改进（这最适合作为聊天命令）"/>
+        <string id="2F4MZn5h" text="如果设置一个随机属性被改进，否则查看者应该提供该属性的部分名称来改进（这最适合作为聊天命令）" original="If set a random attribute is improved, otherwise the viewer should provide part of the name of the attribute to improve (this works best as a chat command)"/>
         <!-- Random attribute -->
-        <string id="JQdCfO2H" text="随机属性"/>
+        <string id="JQdCfO2H" text="随机属性" original="Random attribute"/>
         <!-- Provide the attribute name (or part of it) when calling this -->
-        <string id="hSPAbHWb" text="调用时提供属性名称（或其中的一部分）"/>
-        
+        <string id="hSPAbHWb" text="调用时提供属性名称（或其中的一部分）" original="Provide the attribute name (or part of it) when calling this"/>
         <!-- Couldn't improve any attributes, they are all at max level! -->
-        <string id="VxproTE2" text="无法提升任何属性，都是满级！"/>
+        <string id="VxproTE2" text="无法提升任何属性，都是满级！" original="Couldn't improve any attributes, they are all at max level!"/>
         <!-- Provide the attribute name to improve (or part of it) -->
-        <string id="i9ziqTXG" text="提供要改进的属性名称（或部分）"/>
+        <string id="i9ziqTXG" text="提供要改进的属性名称（或部分）" original="Provide the attribute name to improve (or part of it)"/>
         <!-- You have gained {Amount} points in {Attribute}, you now have {NewAmount}! -->
-        <string id="Sl1bdnfy" text="您已获得 {Amount} points in {Attribute}, you now have {NewAmount}！"/>
+        <string id="Sl1bdnfy" text="您已获得 {Amount} points in {Attribute}, you now have {NewAmount}！" original="You have gained {Amount} points in {Attribute}, you now have {NewAmount}!"/>
         <!-- You have gained a point in {Attribute}, you now have {NewAmount}! -->
-        <string id="2vli3BCR" text="您已在 {Attribute}, you now have {NewAmount} 获得一分！"/>
+        <string id="2vli3BCR" text="您已在 {Attribute}, you now have {NewAmount} 获得一分！" original="You have gained a point in {Attribute}, you now have {NewAmount}!"/>
         <!--  -->
         <string id="YawQBjBG" text=""/>
-        
         <!-- Couldn't find attribute matching '{Args}'! -->
-        <string id="LE3POzUs" text="找不到与“{Args}”匹配的属性！"/>
+        <string id="LE3POzUs" text="找不到与“{Args}”匹配的属性！" original="Couldn't find attribute matching '{Args}'!"/>
         <!-- Couldn't improve {Attribute} attribute, it is already at max level! -->
-        <string id="R7X1dTqL" text="无法改进 {Attribute} 属性，它已达到最高级别！"/>
-        
+        <string id="R7X1dTqL" text="无法改进 {Attribute} 属性，它已达到最高级别！" original="Couldn't improve {Attribute} attribute, it is already at max level!"/>
         <!-- AuctionItem -->
         <!-- Auction Item -->
-        <string id="Q1QZbwR3" text="拍卖品"/>
+        <string id="Q1QZbwR3" text="拍卖品" original="Auction Item"/>
         <!-- Allows viewers to auction custom items, for other viewers to bid on (make sure to add a bid command also) -->
-        <string id="024hOo3G" text="允许观众拍卖自定义物品，供其他观众出价（确保同时添加出价命令）"/>
+        <string id="024hOo3G" text="允许观众拍卖自定义物品，供其他观众出价（确保同时添加出价命令）" original="Allows viewers to auction custom items, for other viewers to bid on (make sure to add a bid command also)"/>
         <!-- Auction Item -->
-        <string id="34GjlaWu" text="拍卖品"/>
+        <string id="34GjlaWu" text="拍卖品" original="Auction Item"/>
         <!-- How long the auction should last before the highest bidder wins -->
-        <string id="zsvhQABf" text="在最高出价者获胜之前拍卖应持续多长时间"/>
+        <string id="zsvhQABf" text="在最高出价者获胜之前拍卖应该持续多长时间" original="How long the auction should last before the highest bidder wins"/>
         <!-- Auction Item -->
-        <string id="ssmJ9c5L" text="拍卖品"/>
+        <string id="ssmJ9c5L" text="拍卖品" original="Auction Item"/>
         <!-- Interval at which to output a reminder of the auction -->
-        <string id="ijkjWj5q" text="输出拍卖提醒的时间间隔"/>
+        <string id="ijkjWj5q" text="输出拍卖提醒的时间间隔" original="Interval at which to output a reminder of the auction"/>
         <!-- Another auction is already in progress -->
-        <string id="T2R35HHV" text="另一场拍卖正在进行中"/>
+        <string id="T2R35HHV" text="另一场拍卖正在进行中" original="Another auction is already in progress"/>
         <!-- You have no items to auction -->
-        <string id="kYHEtOM7" text="您没有要拍卖的物品"/>
+        <string id="kYHEtOM7" text="您没有要拍卖的物品" original="You have no items to auction"/>
         <!-- (reserve price) (partial item name) -->
-        <string id="lI4WCNeQ" text="（保留价）（部分商品名称）"/>
+        <string id="lI4WCNeQ" text="（保留价格）（部分商品名称）" original="(reserve price) (partial item name)"/>
         <!-- Invalid reserve price '{Arg}' -->
-        <string id="mm1ay4I7" text="无效的底价“{Arg}”"/>
+        <string id="mm1ay4I7" text="无效的底价“{Arg}”" original="Invalid reserve price '{Arg}'"/>
         <!-- No items found matching '{ItemName}' -->
-        <string id="viO1RBr5" text="找不到与“{ItemName}”匹配的项目"/>
+        <string id="viO1RBr5" text="找不到与“{ItemName}”匹配的项目" original="No items found matching '{ItemName}'"/>
         <!-- {ItemCount} items found matching '{ItemName}', be more specific -->
-        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName}&amp;#39;，更具体"/>
-        
+        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName}&amp;#39;，更具体" original="{ItemCount} items found matching '{ItemName}', be more specific"/>
         <!-- Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds. -->
-        <string id="BH5rnHNq" text="&amp;#39;{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} 秒的拍卖。"/>
+        <string id="BH5rnHNq" text="&amp;#39;{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} 秒的拍卖。" original="Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."/>
         <!-- Bid On Item -->
-        <string id="rBAvqAh7" text="投标项目"/>
+        <string id="rBAvqAh7" text="投标项目" original="Bid On Item"/>
         <!-- Allows viewers bid on an active custom item auction (make sure to add an auction command also) -->
-        <string id="XuvGyCwD" text="允许观众对活跃的自定义物品拍卖进行投标（确保同时添加拍卖命令）"/>
+        <string id="XuvGyCwD" text="允许观众对活动的自定义物品拍卖进行投标（确保同时添加拍卖命令）" original="Allows viewers bid on an active custom item auction (make sure to add an auction command also)"/>
         <!-- (bid amount) -->
-        <string id="ewjqhPqj" text="（投标金额）"/>
+        <string id="ewjqhPqj" text="（投标金额）" original="(bid amount)"/>
         <!-- Invalid bid amount -->
-        <string id="dgG5WPrC" text="投标金额无效"/>
-        
+        <string id="dgG5WPrC" text="投标金额无效" original="Invalid bid amount"/>
         <!-- EquipHero -->
         <!-- Equip Hero -->
-        <string id="3zBXys4m" text="装备英雄"/>
+        <string id="3zBXys4m" text="装备英雄" original="Equip Hero"/>
         <!-- Improve adopted heroes equipment -->
-        <string id="3QfHyF8g" text="改进采用的英雄装备"/>
+        <string id="3QfHyF8g" text="改进采用的英雄装备" original="Improve adopted heroes equipment"/>
         <!-- Allow Companion Upgrade -->
-        <string id="TGs8URfN" text="允许同伴升级"/>
+        <string id="TGs8URfN" text="允许同伴升级" original="Allow Companion Upgrade"/>
         <!-- Allow improvement of adopted heroes who are also companions of the player. -->
-        <string id="6zMgeovT" text="允许改进也是玩家同伴的采用英雄。"/>
+        <string id="6zMgeovT" text="允许改进也是玩家同伴的采用英雄。" original="Allow improvement of adopted heroes who are also companions of the player."/>
         <!-- Cost Tier 1 -->
-        <string id="8qUzSxsQ" text="成本等级 1"/>
+        <string id="8qUzSxsQ" text="成本等级 1" original="Cost Tier 1"/>
         <!-- Gold cost for Tier 1 equipment -->
-        <string id="4ipwvHaR" text="一级装备的金币成本"/>
+        <string id="4ipwvHaR" text="一级装备的金币成本" original="Gold cost for Tier 1 equipment"/>
         <!-- Cost Tier 2 -->
-        <string id="bjAzHOqD" text="成本等级 2"/>
+        <string id="bjAzHOqD" text="成本等级 2" original="Cost Tier 2"/>
         <!-- Gold cost for Tier 2 equipment -->
-        <string id="3uRKzeJv" text="Tier 2 装备的金币成本"/>
+        <string id="3uRKzeJv" text="Tier 2 装备的金币成本" original="Gold cost for Tier 2 equipment"/>
         <!-- Cost Tier 3 -->
-        <string id="EUw3jfcC" text="成本等级 3"/>
+        <string id="EUw3jfcC" text="成本等级 3" original="Cost Tier 3"/>
         <!-- Gold cost for Tier 3 equipment -->
-        <string id="vRTR2AVO" text="Tier 3 装备的金币成本"/>
+        <string id="vRTR2AVO" text="Tier 3 装备的金币成本" original="Gold cost for Tier 3 equipment"/>
         <!-- Cost Tier 4 -->
-        <string id="cvWxBhFl" text="成本等级 4"/>
+        <string id="cvWxBhFl" text="成本等级 4" original="Cost Tier 4"/>
         <!-- Gold cost for Tier 4 equipment -->
-        <string id="LeCyJf6T" text="第 4 层设备的金币成本"/>
+        <string id="LeCyJf6T" text="第 4 层设备的金币成本" original="Gold cost for Tier 4 equipment"/>
         <!-- Cost Tier 5 -->
-        <string id="Im4cXqCx" text="成本等级 5"/>
+        <string id="Im4cXqCx" text="成本等级 5" original="Cost Tier 5"/>
         <!-- Gold cost for Tier 5 equipment -->
-        <string id="4a0P89lE" text="第 5 层设备的金币成本"/>
+        <string id="4a0P89lE" text="第 5 层设备的金币成本" original="Gold cost for Tier 5 equipment"/>
         <!-- Cost Tier 6 -->
-        <string id="c1CI4H3y" text="成本等级 6"/>
+        <string id="c1CI4H3y" text="成本等级 6" original="Cost Tier 6"/>
         <!-- Gold cost for Tier 6 equipment -->
-        <string id="JkrTWsSf" text="Tier 6 装备的金币成本"/>
+        <string id="JkrTWsSf" text="Tier 6 装备的金币成本" original="Gold cost for Tier 6 equipment"/>
         <!-- Reequip Instead Of Upgrade -->
-        <string id="GaTe1vEL" text="重新装备而不是升级"/>
+        <string id="GaTe1vEL" text="重新装备而不是升级" original="Reequip Instead Of Upgrade"/>
         <!-- Whether to re-equip the equipment INSTEAD of upgrading it (you should make TWO commands, one to upgrade and one to reequip) -->
-        <string id="zTiLpc9G" text="是否重新装备而不是升级它（你应该发出两个命令，一个升级，一个重新装备）"/>
+        <string id="zTiLpc9G" text="是否重新装备而不是升级它（你应该发出两个命令，一个升级，一个重新装备）" original="Whether to re-equip the equipment INSTEAD of upgrading it (you should make TWO commands, one to upgrade and one to reequip)"/>
         <!-- Re-rolls your equipment at your current tier -->
-        <string id="IJtXQh2D" text="以您当前的等级重新滚动您的设备"/>
+        <string id="IJtXQh2D" text="将您的设备重新滚动到您当前的等级" original="Re-rolls your equipment at your current tier"/>
         <!-- Disallowed for player companions -->
-        <string id="02iAT4Y8" text="不允许玩家同伴"/>
+        <string id="02iAT4Y8" text="不允许玩家同伴" original="Disallowed for player companions"/>
         <!-- Tier costs -->
-        <string id="wORNXOT5" text="层级成本"/>
+        <string id="wORNXOT5" text="层级成本" original="Tier costs"/>
         <!-- You are a player companion, you cannot change your own equipment! -->
-        <string id="C9Mhzohr" text="您是玩家伙伴，您不能更换自己的装备！"/>
+        <string id="C9Mhzohr" text="您是玩家伙伴，您不能更换自己的装备！" original="You are a player companion, you cannot change your own equipment!"/>
         <!-- You cannot upgrade equipment, as a mission is active! -->
-        <string id="RoIXssEg" text="您无法升级设备，因为任务处于活动状态！"/>
+        <string id="RoIXssEg" text="您无法升级设备，因为任务处于活动状态！" original="You cannot upgrade equipment, as a mission is active!"/>
         <!-- You cannot upgrade any further! -->
-        <string id="FZh7ZtGp" text="你不能再升级了！"/>
-        <string id="fYksbZJp" text="装备等级 {ArmorTier} ({ClassName})"/>
-        <string id="0KHxea5e" text="重新装备第 {ArmorTier} ({ClassName} 级）"/>
-        <string id="VlnXNPYS" text="没课"/>
+        <string id="FZh7ZtGp" text="你不能再升级了！" original="You cannot upgrade any further!"/>
+        <string id="fYksbZJp" text="装备等级 {ArmorTier} ({ClassName})" original="Equipped Tier {ArmorTier} ({ClassName})"/>
+        <string id="0KHxea5e" text="重新装备第 {ArmorTier} ({ClassName} 级）" original="Re-equipped Tier {ArmorTier} ({ClassName})"/>
+        <string id="VlnXNPYS" text="没课" original="No Class"/>
         <!-- Focus Points -->
-        <string id="WihQZ5uq" text="焦点"/>
+        <string id="WihQZ5uq" text="焦点" original="Focus Points"/>
         <!-- Add focus points to heroes skills -->
-        <string id="01L8w1ZW" text="为英雄技能添加焦点"/>
+        <string id="01L8w1ZW" text="为英雄技能添加焦点" original="Add focus points to heroes skills"/>
         <!-- Skills -->
-        <string id="QwuyvXBg" text="技能"/>
+        <string id="QwuyvXBg" text="技能" original="Skills"/>
         <!-- What skill to add focus to -->
-        <string id="w9liWZ9A" text="什么技能可以增加焦点"/>
+        <string id="w9liWZ9A" text="什么技能可以增加焦点" original="What skill to add focus to"/>
         <!-- Auto -->
-        <string id="RiUjwmS5" text="汽车"/>
+        <string id="RiUjwmS5" text="汽车" original="Auto"/>
         <!-- Chooses a random skill to add focus to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used. -->
-        <string id="EA4jsUhm" text="选择一个随机技能来增加焦点，优先选择职业技能，然后是当前装备的技能，然后是其他技能。使用 auto 时会忽略技能设置。"/>
+        <string id="EA4jsUhm" text="选择一个随机技能来增加焦点，优先选择职业技能，然后是当前装备的技能，然后是其他技能。使用 auto 时会忽略技能设置。" original="Chooses a random skill to add focus to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used."/>
         <!-- Focus points -->
-        <string id="UpHpjzFk" text="关注点"/>
+        <string id="UpHpjzFk" text="关注点" original="Focus points"/>
         <!-- Automatic, based on class, equipment, and existing skills -->
-        <string id="SIM2l7ta" text="自动，基于等级、设备和现有技能"/>
+        <string id="SIM2l7ta" text="自动，基于等级、设备和现有技能" original="Automatic, based on class, equipment, and existing skills"/>
         <!-- Couldn't find a valid skill to add focus points to! -->
-        <string id="VXvS5xji" text="找不到可以添加焦点的有效技能！"/>
+        <string id="VXvS5xji" text="找不到可以添加焦点的有效技能！" original="Couldn't find a valid skill to add focus points to!"/>
         <!-- You have gained {Amount} focus points in {Skill}, you now have {NewAmount}! -->
-        <string id="6tcVqRIs" text="您已获得 {Amount} focus points in {Skill}, you now have {NewAmount}！"/>
+        <string id="6tcVqRIs" text="您已获得 {Amount} focus points in {Skill}, you now have {NewAmount}！" original="You have gained {Amount} focus points in {Skill}, you now have {NewAmount}!"/>
         <!-- You have gained a focus point in {Skill}, you now have {NewAmount}! -->
-        <string id="HLFMWOJA" text="您在{Skill}, you now have {NewAmount}获得了一个焦点！"/>
-        
+        <string id="HLFMWOJA" text="您在{Skill}, you now have {NewAmount}获得了一个焦点！" original="You have gained a focus point in {Skill}, you now have {NewAmount}!"/>
         <!-- DiscardItem -->
         <!-- Discard Item -->
-        <string id="fmftNyHh" text="丢弃物品"/>
+        <string id="fmftNyHh" text="丢弃物品" original="Discard Item"/>
         <!-- Allows viewers to discard one of their own custom items -->
-        <string id="f3LrrLHP" text="允许查看者丢弃他们自己的自定义项目之一"/>
+        <string id="f3LrrLHP" text="允许查看者丢弃他们自己的自定义项目之一" original="Allows viewers to discard one of their own custom items"/>
         <!-- You have no items to discard -->
-        <string id="oXQ4En4P" text="您没有要丢弃的物品"/>
+        <string id="oXQ4En4P" text="您没有要丢弃的物品" original="You have no items to discard"/>
         <!-- (partial item name) -->
-        <string id="by80aboy" text="（部分项目名称）"/>
+        <string id="by80aboy" text="（部分项目名称）" original="(partial item name)"/>
         <!-- No items found matching '{Args}' -->
-        <string id="p0urrIvR" text="找不到与“{Args}”匹配的项目"/>
+        <string id="p0urrIvR" text="找不到与“{Args}”匹配的项目" original="No items found matching '{Args}'"/>
         <!-- {Count} items found matching '{Args}', be more specific -->
-        <string id="Pzo2UJrl" text="{Count} items found matching '{Args}&amp;#39;，更具体"/>
+        <string id="Pzo2UJrl" text="{Count} items found matching '{Args}&amp;#39;，更具体" original="{Count} items found matching '{Args}', be more specific"/>
         <!-- '{ItemName}' was discarded -->
-        <string id="bNqd3AzN" text="“{ItemName}”被丢弃"/>
-        
+        <string id="bNqd3AzN" text="“{ItemName}”被丢弃" original="'{ItemName}' was discarded"/>
         <!-- GiveItem -->
         <!-- Give Item -->
-        <string id="nAPjfF4C" text="赠送物品"/>
+        <string id="nAPjfF4C" text="赠送物品" original="Give Item"/>
         <!-- Allows viewers to give one of their own custom items to another viewer -->
-        <string id="u9Jx6QUr" text="允许查看者将他们自己的自定义项目之一提供给另一个查看者"/>
+        <string id="u9Jx6QUr" text="允许查看者将他们自己的自定义项目之一提供给另一个查看者" original="Allows viewers to give one of their own custom items to another viewer"/>
         <!-- You have no items to give -->
-        <string id="Tfj1U5BB" text="您没有可赠送的物品"/>
+        <string id="Tfj1U5BB" text="您没有可赠送的物品" original="You have no items to give"/>
         <!-- (recipient) (partial item name) -->
-        <string id="BClUoR9H" text="（收件人）（部分项目名称）"/>
+        <string id="BClUoR9H" text="（收件人）（部分项目名称）" original="(recipient) (partial item name)"/>
         <!-- Couldn't find recipient '{Name}' -->
-        <string id="vDsYxMKq" text="找不到收件人“{Name}”"/>
+        <string id="vDsYxMKq" text="找不到收件人“{Name}”" original="Couldn't find recipient '{Name}'"/>
         <!-- '{ItemName}' was transferred from @{FromHero} to @{ToHero} -->
-        <string id="E1o7b5ht" text="&amp;#39;{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
-        
+        <string id="E1o7b5ht" text="&amp;#39;{ItemName}' was transferred from @{FromHero} to @{ToHero}" original="'{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
         <!-- HeroInfoCommand -->
         <!-- Show Hero Info -->
-        <string id="cj68a0l9" text="显示英雄信息"/>
+        <string id="cj68a0l9" text="显示英雄信息" original="Show Hero Info"/>
         <!-- Will write various hero stats to chat -->
-        <string id="QsTQzceq" text="会写各种英雄统计来聊天"/>
+        <string id="QsTQzceq" text="会写各种英雄统计来聊天" original="Will write various hero stats to chat"/>
         <!-- Show Gold -->
-        <string id="oWtshHwx" text="秀金"/>
+        <string id="oWtshHwx" text="秀金" original="Show Gold"/>
         <!-- Show gold -->
-        <string id="O2mUbcue" text="秀金"/>
+        <string id="O2mUbcue" text="秀金" original="Show gold"/>
         <!-- Show General -->
-        <string id="VmQECrnc" text="显示一般"/>
+        <string id="VmQECrnc" text="显示一般" original="Show General"/>
         <!-- Show personal info: health, location, age -->
-        <string id="JWbk5Oko" text="显示个人信息：健康、位置、年龄"/>
+        <string id="JWbk5Oko" text="显示个人信息：健康、位置、年龄" original="Show personal info: health, location, age"/>
         <!-- Show Top Skills -->
-        <string id="tMKmlYeR" text="展示顶级技能"/>
+        <string id="tMKmlYeR" text="展示顶级技能" original="Show Top Skills"/>
         <!-- Shows skills (and focuse values) above the specified MinSkillToShow value -->
-        <string id="dayx7JEJ" text="显示高于指定 MinSkillToShow 值的技能（和 focuse 值）"/>
+        <string id="dayx7JEJ" text="显示高于指定 MinSkillToShow 值的技能（和 focuse 值）" original="Shows skills (and focuse values) above the specified MinSkillToShow value"/>
         <!-- Min Skill To Show -->
-        <string id="5VW8HXxS" text="显示的最小技能"/>
+        <string id="5VW8HXxS" text="显示的最小技能" original="Min Skill To Show"/>
         <!-- If ShowTopSkills is specified, this defines what skills are shown -->
-        <string id="4819Fxyv" text="如果 ShowTopSkills 被指定，这定义了显示什么技能"/>
+        <string id="4819Fxyv" text="如果 ShowTopSkills 被指定，这定义了显示什么技能" original="If ShowTopSkills is specified, this defines what skills are shown"/>
         <!-- Show Attributes -->
-        <string id="lSM7JkvB" text="显示属性"/>
+        <string id="lSM7JkvB" text="显示属性" original="Show Attributes"/>
         <!-- Shows all hero attributes -->
-        <string id="co5TLkOw" text="显示所有英雄属性"/>
+        <string id="co5TLkOw" text="显示所有英雄属性" original="Shows all hero attributes"/>
         <!-- Show Equipment -->
-        <string id="uLUxOyp2" text="展示设备"/>
+        <string id="uLUxOyp2" text="展示设备" original="Show Equipment"/>
         <!-- Shows the equipment tier of the hero -->
-        <string id="CnTMaEPC" text="显示英雄的装备等级"/>
+        <string id="CnTMaEPC" text="显示英雄的装备等级" original="Shows the equipment tier of the hero"/>
         <!-- Show Inventory -->
-        <string id="sp1iuH1y" text="显示库存"/>
+        <string id="sp1iuH1y" text="显示库存" original="Show Inventory"/>
         <!-- Shows the full battle inventory of the hero -->
-        <string id="uhAC3hOZ" text="显示英雄的完整战斗清单"/>
+        <string id="uhAC3hOZ" text="显示英雄的完整战斗清单" original="Shows the full battle inventory of the hero"/>
         <!-- Show Storage -->
-        <string id="aRA1V1Jp" text="显示存储"/>
+        <string id="aRA1V1Jp" text="显示存储" original="Show Storage"/>
         <!-- Shows the heroes storage (all their custom items) -->
-        <string id="Wjr33ERJ" text="显示英雄存储（他们所有的自定义项目）"/>
+        <string id="Wjr33ERJ" text="显示英雄存储（他们所有的自定义项目）" original="Shows the heroes storage (all their custom items)"/>
         <!-- Show Civilian Inventory -->
-        <string id="ecvBeN44" text="显示平民库存"/>
+        <string id="ecvBeN44" text="显示平民库存" original="Show Civilian Inventory"/>
         <!-- Shows the full civilian inventory of the hero -->
-        <string id="fUggutW6" text="显示英雄的完整平民库存"/>
+        <string id="fUggutW6" text="显示英雄的完整平民库存" original="Shows the full civilian inventory of the hero"/>
         <!-- Show Retinue -->
-        <string id="p0WEhay8" text="显示随从"/>
+        <string id="p0WEhay8" text="显示随从" original="Show Retinue"/>
         <!-- Shows a summary of the retinue of the hero (count and tier) -->
-        <string id="AXnWeTzh" text="显示英雄随从的摘要（计数和等级）"/>
+        <string id="AXnWeTzh" text="显示英雄随从的摘要（计数和等级）" original="Shows a summary of the retinue of the hero (count and tier)"/>
         <!-- Show Retinue List -->
-        <string id="Vyatyyuh" text="显示随从名单"/>
+        <string id="Vyatyyuh" text="显示随从名单" original="Show Retinue List"/>
         <!-- Shows the exact classes and counts of the retinue of the hero -->
-        <string id="CSTqzcOi" text="显示英雄随从的确切等级和人数"/>
+        <string id="CSTqzcOi" text="显示英雄随从的确切等级和人数" original="Shows the exact classes and counts of the retinue of the hero"/>
         <!-- Show Achievements -->
-        <string id="1F3utCWA" text="展示成就"/>
+        <string id="1F3utCWA" text="展示成就" original="Show Achievements"/>
         <!-- Shows all hero achievements -->
-        <string id="CKJd7KC9" text="显示所有英雄成就"/>
+        <string id="CKJd7KC9" text="显示所有英雄成就" original="Shows all hero achievements"/>
         <!-- Show Tracked Stats -->
-        <string id="LNvYSMZj" text="显示跟踪统计"/>
+        <string id="LNvYSMZj" text="显示跟踪统计" original="Show Tracked Stats"/>
         <!-- Shows all hero tracked stats (kills, deaths, summons, attacks, tournament wins etc.) -->
-        <string id="FaUbhgTR" text="显示所有英雄追踪的统计数据（击杀、死亡、召唤、攻击、锦标赛胜利等）"/>
+        <string id="FaUbhgTR" text="显示所有英雄追踪的统计数据（击杀、死亡、召唤、攻击、锦标赛胜利等）" original="Shows all hero tracked stats (kills, deaths, summons, attacks, tournament wins etc.)"/>
         <!-- Show Powers -->
-        <string id="cHaiwygJ" text="显示力量"/>
+        <string id="cHaiwygJ" text="显示力量" original="Show Powers"/>
         <!-- Shows the heroes unlocked powers -->
-        <string id="YW8HsNEF" text="显示英雄解锁的力量"/>
+        <string id="YW8HsNEF" text="显示英雄解锁的力量" original="Shows the heroes unlocked powers"/>
         <!-- Gold -->
-        <string id="YVhcZatv" text="金子"/>
+        <string id="YVhcZatv" text="金子" original="Gold"/>
         <!-- Age, Clan, Culture, Health -->
-        <string id="jZigiKXG" text="年龄、宗族、文化、健康"/>
+        <string id="jZigiKXG" text="年龄、宗族、文化、健康" original="Age, Clan, Culture, Health"/>
         <!-- Skills greater than {MinSkillToShow} -->
-        <string id="6wVce2iI" text="大于 {MinSkillToShow} 的技能"/>
+        <string id="6wVce2iI" text="大于 {MinSkillToShow} 的技能" original="Skills greater than {MinSkillToShow}"/>
         <!-- Attributes -->
-        <string id="74kcLopo" text="属性"/>
+        <string id="74kcLopo" text="属性" original="Attributes"/>
         <!-- Equipment tier -->
-        <string id="PeDxGcu7" text="装备层"/>
+        <string id="PeDxGcu7" text="装备层" original="Equipment tier"/>
         <!-- Battle equipment inventory -->
-        <string id="EVvlMCru" text="战斗装备库存"/>
+        <string id="EVvlMCru" text="战斗装备库存" original="Battle equipment inventory"/>
         <!-- Civilian equipment inventory -->
-        <string id="DeffOla6" text="民用装备库存"/>
+        <string id="DeffOla6" text="民用装备库存" original="Civilian equipment inventory"/>
         <!-- Custom item storage -->
-        <string id="VSDDQdmJ" text="自定义物品存储"/>
+        <string id="VSDDQdmJ" text="自定义物品存储" original="Custom item storage"/>
         <!-- Retinue count and average tier -->
-        <string id="C0mkGXlK" text="随从人数和平均等级"/>
+        <string id="C0mkGXlK" text="随从人数和平均等级" original="Retinue count and average tier"/>
         <!-- Retinue unit list -->
-        <string id="L4Rh6vFE" text="随从单位名单"/>
+        <string id="L4Rh6vFE" text="随从单位名单" original="Retinue unit list"/>
         <!-- Achievements -->
-        <string id="ZW9XlwY7" text="成就"/>
+        <string id="ZW9XlwY7" text="成就" original="Achievements"/>
         <!-- Tracked stats -->
-        <string id="Xmo7pOpj" text="跟踪统计"/>
+        <string id="Xmo7pOpj" text="跟踪统计" original="Tracked stats"/>
         <!-- Powers -->
-        <string id="xVDOsWPq" text="权力"/>
+        <string id="xVDOsWPq" text="权力" original="Powers"/>
         <!-- Shows -->
-        <string id="UB1bAtSI" text="节目"/>
+        <string id="UB1bAtSI" text="节目" original="Shows"/>
         <!-- No Class -->
-        <string id="ZI2UKbNp" text="没课"/>
+        <string id="ZI2UKbNp" text="没课" original="No Class"/>
         <!-- {Age} yrs -->
-        <string id="4TVRrlOw" text="{Age} 年"/>
+        <string id="4TVRrlOw" text="{Age} 年" original="{Age} yrs"/>
         <!-- {HP} / {MaxHP} HP -->
-        <string id="jY2QJdA3" text="{HP} / {MaxHP} 惠普"/>
+        <string id="jY2QJdA3" text="{HP} / {MaxHP} 惠普" original="{HP} / {MaxHP} HP"/>
         <!-- Last seen near {Place} -->
-        <string id="B2xDasDx" text="最后一次出现在{Place}附近"/>
+        <string id="B2xDasDx" text="最后一次出现在{Place}附近" original="Last seen near {Place}"/>
         <!-- [LVL] -->
-        <string id="fRwyY6ms" text="[等级]"/>
+        <string id="fRwyY6ms" text="[等级]" original="[LVL]"/>
         <!-- [SKILLS] -->
-        <string id="rTId8pBy" text="[技能]"/>
+        <string id="rTId8pBy" text="[技能]" original="[SKILLS]"/>
         <!-- [ATTR] -->
-        <string id="RSlhbJzO" text="[属性]"/>
+        <string id="RSlhbJzO" text="[属性]" original="[ATTR]"/>
         <!-- [TIER] -->
-        <string id="64yw2YD0" text="[等级]"/>
+        <string id="64yw2YD0" text="[等级]" original="[TIER]"/>
         <!-- No Equip Class -->
-        <string id="u32KRqz8" text="无装备类"/>
+        <string id="u32KRqz8" text="无装备类" original="No Equip Class"/>
         <!-- [BATTLE] -->
-        <string id="YVVlcDSK" text="[战斗]"/>
+        <string id="YVVlcDSK" text="[战斗]" original="[BATTLE]"/>
         <!-- [CIV] -->
-        <string id="zaVtcDWB" text="[文明]"/>
+        <string id="zaVtcDWB" text="[文明]" original="[CIV]"/>
         <!-- [STORED] -->
-        <string id="U4HnxTCj" text="[存储]"/>
+        <string id="U4HnxTCj" text="[存储]" original="[STORED]"/>
         <!-- [RETINUE] -->
-        <string id="hMBF1zLr" text="[随从]"/>
+        <string id="hMBF1zLr" text="[随从]" original="[RETINUE]"/>
         <!-- (nothing) -->
-        <string id="4IOefqsW" text="（没有）"/>
+        <string id="4IOefqsW" text="（没有）" original="(nothing)"/>
         <!-- {RetinueCount} (avg Tier {Tier}) -->
-        <string id="XE2QRhyz" text="{RetinueCount} (avg Tier {Tier})"/>
+        <string id="XE2QRhyz" text="{RetinueCount} (avg Tier {Tier})" original="{RetinueCount} (avg Tier {Tier})"/>
         <!-- [ACHIEV] -->
-        <string id="giS3vq1V" text="[达成]"/>
+        <string id="giS3vq1V" text="[达成]" original="[ACHIEV]"/>
         <!-- K -->
-        <string id="ADjhFwlz" text="钾"/>
+        <string id="ADjhFwlz" text="钾" original="K"/>
         <!-- D -->
-        <string id="aUj96cVC" text="D"/>
+        <string id="aUj96cVC" text="D" original="D"/>
         <!-- KVwr -->
-        <string id="i02EMVP8" text="电压值"/>
+        <string id="i02EMVP8" text="电压值" original="KVwr"/>
         <!-- KStrmr -->
-        <string id="iGXwhVja" text="KStrmr"/>
+        <string id="iGXwhVja" text="KStrmr" original="KStrmr"/>
         <!-- Battles -->
-        <string id="APUC6wGt" text="战斗"/>
+        <string id="APUC6wGt" text="战斗" original="Battles"/>
         <!-- Sums -->
-        <string id="6nwK1UF9" text="总和"/>
+        <string id="6nwK1UF9" text="总和" original="Sums"/>
         <!-- CSums -->
-        <string id="uDFykstd" text="总和"/>
+        <string id="uDFykstd" text="总和" original="CSums"/>
         <!-- Atks -->
-        <string id="wtmfNCIj" text="攻击力"/>
+        <string id="wtmfNCIj" text="攻击力" original="Atks"/>
         <!-- CAtks -->
-        <string id="T29akAtY" text="猫猫"/>
+        <string id="T29akAtY" text="猫猫" original="CAtks"/>
         <!-- TourRndW -->
-        <string id="NOkWgftX" text="巡回演出"/>
+        <string id="NOkWgftX" text="巡回演出" original="TourRndW"/>
         <!-- TourRndL -->
-        <string id="k5O3x52V" text="巡回赛"/>
+        <string id="k5O3x52V" text="巡回赛" original="TourRndL"/>
         <!-- TourW -->
-        <string id="J6yoXowD" text="巡回赛"/>
+        <string id="J6yoXowD" text="巡回赛" original="TourW"/>
         <!-- [STATS] -->
-        <string id="nL2E16fj" text="[统计]"/>
+        <string id="nL2E16fj" text="[统计]" original="[STATS]"/>
         <!-- [ACTIVE] -->
-        <string id="gV1s8Ffw" text="[积极的]"/>
+        <string id="gV1s8Ffw" text="[积极的]" original="[ACTIVE]"/>
         <!-- [PASSIVE] -->
-        <string id="z82jxnmF" text="[被动的]"/>
+        <string id="z82jxnmF" text="[被动的]" original="[PASSIVE]"/>
         <!-- Amount Low -->
-        <string id="01yarGvZ" text="金额低"/>
+        <string id="01yarGvZ" text="金额低" original="Amount Low"/>
         <!-- Lower bound of amount to improve -->
-        <string id="UVKWPBjq" text="改善量下限"/>
+        <string id="UVKWPBjq" text="改善量下限" original="Lower bound of amount to improve"/>
         <!-- Amount High -->
-        <string id="qi7FVuQB" text="金额高"/>
+        <string id="qi7FVuQB" text="金额高" original="Amount High"/>
         <!-- Upper bound of amount to improve -->
-        <string id="tU4rSLcx" text="提升金额上限"/>
+        <string id="tU4rSLcx" text="提升金额上限" original="Upper bound of amount to improve"/>
         <!-- Gold Cost -->
-        <string id="DlZ7sV1N" text="黄金成本"/>
+        <string id="DlZ7sV1N" text="黄金成本" original="Gold Cost"/>
         <!-- Gold that will be taken from the hero -->
-        <string id="pGwh9edB" text="将从英雄身上夺走的金币"/>
-        
+        <string id="pGwh9edB" text="将从英雄身上夺走的金币" original="Gold that will be taken from the hero"/>
         <!-- JoinTournament -->
         <!-- Join Tournament -->
-        <string id="EZPZtyXo" text="参加锦标赛"/>
+        <string id="EZPZtyXo" text="参加锦标赛" original="Join Tournament"/>
         <!-- Puts adopted heroes in queue for the next tournament -->
-        <string id="1h8OT5VD" text="将领养的英雄排在下一场比赛的队列中"/>
+        <string id="1h8OT5VD" text="将领养的英雄排在下一场比赛的队列中" original="Puts adopted heroes in queue for the next tournament"/>
         <!-- Gold Cost -->
-        <string id="7D2UBlGC" text="黄金成本"/>
+        <string id="7D2UBlGC" text="黄金成本" original="Gold Cost"/>
         <!-- Gold cost to join -->
-        <string id="Upuhtmr6" text="加入金币费用"/>
+        <string id="Upuhtmr6" text="加入金币费用" original="Gold cost to join"/>
         <!-- JOIN the viewer tournament -->
-        <string id="jUcsHkqk" text="加入观众锦标赛"/>
+        <string id="jUcsHkqk" text="加入观众锦标赛" original="JOIN the viewer tournament"/>
         <!-- WATCH the viewer tournament -->
-        <string id="hlVvENgP" text="观看观众锦标赛"/>
-        
+        <string id="hlVvENgP" text="观看观众锦标赛" original="WATCH the viewer tournament"/>
         <!-- NameItem -->
         <!-- Name Item -->
-        <string id="0YSdK3zK" text="名称项目"/>
+        <string id="0YSdK3zK" text="名称项目" original="Name Item"/>
         <!-- Allow viewer to name custom items -->
-        <string id="k7vnOEIN" text="允许查看器命名自定义项目"/>
+        <string id="k7vnOEIN" text="允许查看器命名自定义项目" original="Allow viewer to name custom items"/>
         <!-- You have no nameable items -->
-        <string id="rXVOIMri" text="您没有可命名的项目"/>
+        <string id="rXVOIMri" text="您没有可命名的项目" original="You have no nameable items"/>
         <!-- You will rename your {Item} -->
-        <string id="Xb3eM5o7" text="您将重命名您的 {Item}"/>
+        <string id="Xb3eM5o7" text="您将重命名您的 {Item}" original="You will rename your {Item}"/>
         <!-- {PreviousName} renamed to {NewName} -->
-        <string id="iqNEr6Y7" text="{PreviousName} renamed to {NewName}"/>
-        
+        <string id="iqNEr6Y7" text="{PreviousName} renamed to {NewName}" original="{PreviousName} renamed to {NewName}"/>
         <!-- Retinue -->
-        <string id="tLSFX9Xc" text="随从"/>
+        <string id="tLSFX9Xc" text="随从" original="Retinue"/>
         <!-- Add and improve adopted heroes retinue -->
-        <string id="bhC3VcmU" text="添加和改进采用的英雄随从"/>
+        <string id="bhC3VcmU" text="添加和改进采用的英雄随从" original="Add and improve adopted heroes retinue"/>
         <!-- Retinue Upgrade Settings -->
-        <string id="iNoFrKsN" text="继续升级设置"/>
+        <string id="iNoFrKsN" text="继续升级设置" original="Retinue Upgrade Settings"/>
         <!-- All By Default -->
-        <string id="nIsuuFMC" text="全部默认"/>
+        <string id="nIsuuFMC" text="全部默认" original="All By Default"/>
         <!-- Whether this action should attempt to buy/upgrade as many times as possible when called with no parameter. -->
-        <string id="mJSGvWlR" text="在不带参数调用时，此操作是否应尝试购买/升级尽可能多的次数。"/>
+        <string id="mJSGvWlR" text="在不带参数调用时，此操作是否应尝试购买/升级尽可能多的次数。" original="Whether this action should attempt to buy/upgrade as many times as possible when called with no parameter."/>
         <!-- You cannot upgrade retinue, as a mission is active! -->
-        <string id="mCcpMwrN" text="您无法升级随从，因为任务处于活动状态！"/>
+        <string id="mCcpMwrN" text="您无法升级随从，因为任务处于活动状态！" original="You cannot upgrade retinue, as a mission is active!"/>
         <!-- (number, or all) -->
-        <string id="NexXxYvj" text="（数量，或全部）"/>
-        
+        <string id="NexXxYvj" text="（数量，或全部）" original="(number, or all)"/>
         <!-- RetireMyHero -->
         <!-- Retire Hero -->
-        <string id="sZhEiXyn" text="退休英雄"/>
+        <string id="sZhEiXyn" text="退休英雄" original="Retire Hero"/>
         <!-- Retires the hero, allowing the viewer to adopt another (if that is enabled) -->
-        <string id="Eh0m4R54" text="退休英雄，允许观众采用另一个（如果启用）"/>
+        <string id="Eh0m4R54" text="退休英雄，允许观众采用另一个（如果启用）" original="Retires the hero, allowing the viewer to adopt another (if that is enabled)"/>
         <!-- yes -->
-        <string id="xSbB2Zw5" text="是的"/>
+        <string id="xSbB2Zw5" text="是的" original="yes"/>
         <!-- You must enter '{Prompt}' at the prompt to retire your hero -->
-        <string id="0qVpLYfb" text="您必须在提示时输入“{Prompt}”才能让您的英雄退役"/>
+        <string id="0qVpLYfb" text="您必须在提示时输入“{Prompt}”才能让您的英雄退役" original="You must enter '{Prompt}' at the prompt to retire your hero"/>
         <!-- You cannot retire your hero, as a mission is active! -->
-        <string id="po20lHyz" text="你不能让你的英雄退休，因为任务是活跃的！"/>
+        <string id="po20lHyz" text="你不能让你的英雄退休，因为任务是活跃的！" original="You cannot retire your hero, as a mission is active!"/>
         <!-- {Name} has retired! -->
-        <string id="ihG4fs1r" text="{Name} 已退休！"/>
-        
+        <string id="ihG4fs1r" text="{Name} 已退休！" original="{Name} has retired!"/>
         <!-- SetHeroClass -->
         <!-- Set Hero Class -->
-        <string id="pVblweVj" text="设置英雄职业"/>
+        <string id="pVblweVj" text="设置英雄职业" original="Set Hero Class"/>
         <!-- Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied -->
-        <string id="7VWKYp1U" text="允许更改已收养的英雄的“等级”，这会影响装备和 XP 应用的位置"/>
+        <string id="7VWKYp1U" text="允许更改已收养的英雄的“等级”，这会影响装备和 XP 应用的位置" original="Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied"/>
         <!-- First Equip Is Free -->
-        <string id="iLpDEiTq" text="第一件装备免费"/>
+        <string id="iLpDEiTq" text="第一件装备免费" original="First Equip Is Free"/>
         <!-- If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class) -->
-        <string id="pRETwmGv" text="如果在英雄还没有职业的情况下这是免费的（只有当采用未指定默认职业时才会发生这种情况）"/>
+        <string id="pRETwmGv" text="如果在英雄还没有职业的情况下这是免费的（只有当采用未指定默认职业时才会发生这种情况）" original="If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class)"/>
         <!-- Cost Tier 1 -->
-        <string id="N2OnDXOs" text="成本等级 1"/>
+        <string id="N2OnDXOs" text="成本等级 1" original="Cost Tier 1"/>
         <!-- Gold cost for Tier 1 class change -->
-        <string id="tuhth4ld" text="第 1 层职业更改的金币成本"/>
+        <string id="tuhth4ld" text="第 1 层职业更改的金币成本" original="Gold cost for Tier 1 class change"/>
         <!-- Cost Tier 2 -->
-        <string id="jIQ5VYSh" text="成本等级 2"/>
+        <string id="jIQ5VYSh" text="成本等级 2" original="Cost Tier 2"/>
         <!-- Gold cost for Tier 2 class change -->
-        <string id="V5CGr4lf" text="第 2 层职业变更的金币成本"/>
+        <string id="V5CGr4lf" text="第 2 层职业变更的金币成本" original="Gold cost for Tier 2 class change"/>
         <!-- Cost Tier 3 -->
-        <string id="lWOrthSS" text="成本等级 3"/>
+        <string id="lWOrthSS" text="成本等级 3" original="Cost Tier 3"/>
         <!-- Gold cost for Tier 3 class change -->
-        <string id="NlXa6kJS" text="第 3 层职业更改的金币成本"/>
+        <string id="NlXa6kJS" text="第 3 层职业更改的金币成本" original="Gold cost for Tier 3 class change"/>
         <!-- Cost Tier 4 -->
-        <string id="wuKWOAwt" text="成本等级 4"/>
+        <string id="wuKWOAwt" text="成本等级 4" original="Cost Tier 4"/>
         <!-- Gold cost for Tier 4 class change -->
-        <string id="0X1TRYbP" text="第 4 层职业更改的金币成本"/>
+        <string id="0X1TRYbP" text="第 4 层职业更改的金币成本" original="Gold cost for Tier 4 class change"/>
         <!-- Cost Tier 5 -->
-        <string id="ZBzqCAyW" text="成本等级 5"/>
+        <string id="ZBzqCAyW" text="成本等级 5" original="Cost Tier 5"/>
         <!-- Gold cost for Tier 5 class change -->
-        <string id="yelsar2J" text="第 5 层职业更改的金币成本"/>
+        <string id="yelsar2J" text="第 5 层职业更改的金币成本" original="Gold cost for Tier 5 class change"/>
         <!-- Cost Tier 6 -->
-        <string id="ZLdpLkbg" text="成本等级 6"/>
+        <string id="ZLdpLkbg" text="成本等级 6" original="Cost Tier 6"/>
         <!-- Gold cost for Tier 6 class change -->
-        <string id="eYcOsu9h" text="第 6 层职业更改的金币成本"/>
+        <string id="eYcOsu9h" text="第 6 层职业更改的金币成本" original="Gold cost for Tier 6 class change"/>
         <!-- Update Equipment -->
-        <string id="rpkghdTp" text="更新设备"/>
+        <string id="rpkghdTp" text="更新设备" original="Update Equipment"/>
         <!-- Whether to immediately update equipment after changing class -->
-        <string id="cWQKOYEx" text="换班后是否立即更新装备"/>
+        <string id="cWQKOYEx" text="换班后是否立即更新装备" original="Whether to immediately update equipment after changing class"/>
         <!-- Tier costs -->
-        <string id="2WAi7pZN" text="层级成本"/>
+        <string id="2WAi7pZN" text="层级成本" original="Tier costs"/>
         <!-- Free if you do not already have a class -->
-        <string id="lW1KcoWD" text="如果您还没有课程，则免费"/>
+        <string id="lW1KcoWD" text="如果您还没有课程，则免费" original="Free if you do not already have a class"/>
         <!-- Updates equipment to match new class -->
-        <string id="qOR4RSqt" text="更新设备以匹配新课程"/>
+        <string id="qOR4RSqt" text="更新设备以匹配新课程" original="Updates equipment to match new class"/>
         <!-- You cannot change class, as a mission is active! -->
-        <string id="70vJ1jxZ" text="您无法更改课程，因为任务处于活动状态！"/>
+        <string id="70vJ1jxZ" text="您无法更改课程，因为任务处于活动状态！" original="You cannot change class, as a mission is active!"/>
         <!-- Provide class name -->
-        <string id="prmHmdGE" text="提供班级名称"/>
+        <string id="prmHmdGE" text="提供班级名称" original="Provide class name"/>
         <!-- changed class to {ClassName} -->
-        <string id="giUCnkf2" text="将班级更改为 {ClassName}"/>
-        
+        <string id="giUCnkf2" text="将班级更改为 {ClassName}" original="changed class to {ClassName}"/>
         <!-- SkillXP -->
         <!-- Skill XP -->
-        <string id="mpdzqyCK" text="技能经验"/>
+        <string id="mpdzqyCK" text="技能经验" original="Skill XP"/>
         <!-- Improve adopted heroes skills -->
-        <string id="Bc2HIByX" text="提高采用的英雄技能"/>
+        <string id="Bc2HIByX" text="提高采用的英雄技能" original="Improve adopted heroes skills"/>
         <!-- Skills -->
-        <string id="rAGAEUIH" text="技能"/>
+        <string id="rAGAEUIH" text="技能" original="Skills"/>
         <!-- What to improve -->
-        <string id="wo5VSDaj" text="改进什么"/>
+        <string id="wo5VSDaj" text="改进什么" original="What to improve"/>
         <!-- Auto -->
-        <string id="LVp7Llay" text="汽车"/>
+        <string id="LVp7Llay" text="汽车" original="Auto"/>
         <!-- Chooses a random skill to add XP to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used. -->
-        <string id="CTCcqB3Y" text="选择一个随机技能来增加 XP，优先选择职业技能，然后是当前装备的技能，然后是其他技能。使用 auto 时会忽略技能设置。"/>
-
+        <string id="CTCcqB3Y" text="选择一个随机技能来增加 XP，优先选择职业技能，然后是当前装备的技能，然后是其他技能。使用 auto 时会忽略技能设置。" original="Chooses a random skill to add XP to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used."/>
         <!-- Automatic, based on class, equipment, and existing skills -->
-        <string id="QJ9Cssr7" text="自动，基于等级、设备和现有技能"/>
+        <string id="QJ9Cssr7" text="自动，基于等级、设备和现有技能" original="Automatic, based on class, equipment, and existing skills"/>
         <!-- {AmountLow} to {AmountHigh} -->
-        <string id="vTkGnRBS" text="{AmountLow} to {AmountHigh}"/>
+        <string id="vTkGnRBS" text="{AmountLow} to {AmountHigh}" original="{AmountLow} to {AmountHigh}"/>
         <!-- Costs -->
-        <string id="lz87CnyL" text="费用"/>
+        <string id="lz87CnyL" text="费用" original="Costs"/>
         <!-- Couldn't find a skill to improve -->
-        <string id="vK5z2Naq" text="找不到可以提高的技能"/>
+        <string id="vK5z2Naq" text="找不到可以提高的技能" original="Couldn't find a skill to improve"/>
         <!-- {Skill} capped, get more focus points -->
-        <string id="ozkK4mk7" text="{Skill} 个上限，获得更多关注点"/>
-
+        <string id="ozkK4mk7" text="{Skill} 个上限，获得更多关注点" original="{Skill} capped, get more focus points"/>
         <!-- 1H -->
-        <string id="Ei8NyJSW" text="1小时"/>
+        <string id="Ei8NyJSW" text="1小时" original="1H"/>
         <!-- 2H -->
-        <string id="U38E72Ue" text="2小时"/>
+        <string id="U38E72Ue" text="2小时" original="2H"/>
         <!-- PA -->
-        <string id="Cg885bns" text="公共广播"/>
+        <string id="Cg885bns" text="公共广播" original="PA"/>
         <!-- Bow -->
-        <string id="QpWRsKrc" text="弓"/>
+        <string id="QpWRsKrc" text="弓" original="Bow"/>
         <!-- Xb -->
-        <string id="71M512iJ" text="Xb"/>
+        <string id="71M512iJ" text="Xb" original="Xb"/>
         <!-- Thr -->
-        <string id="jMRloOi0" text="Thr"/>
+        <string id="jMRloOi0" text="Thr" original="Thr"/>
         <!-- Rid -->
-        <string id="ligWzK3s" text="摆脱"/>
+        <string id="ligWzK3s" text="摆脱" original="Rid"/>
         <!-- Ath -->
-        <string id="1MJnisqR" text="心电图"/>
+        <string id="1MJnisqR" text="心电图" original="Ath"/>
         <!-- Smt -->
-        <string id="VjV54wik" text="贴片机"/>
+        <string id="VjV54wik" text="贴片机" original="Smt"/>
         <!-- Tac -->
-        <string id="6iG2GJW5" text="塔克"/>
+        <string id="6iG2GJW5" text="塔克" original="Tac"/>
         <!-- Sct -->
-        <string id="AgaZsMEb" text="干细胞"/>
+        <string id="AgaZsMEb" text="干细胞" original="Sct"/>
         <!-- Rog -->
-        <string id="6x33x91Z" text="罗格"/>
+        <string id="6x33x91Z" text="罗格" original="Rog"/>
         <!-- Cha -->
-        <string id="N9X9VVsM" text="查"/>
+        <string id="N9X9VVsM" text="查" original="Cha"/>
         <!-- Trd -->
-        <string id="J8ElWB0P" text="趋势"/>
+        <string id="J8ElWB0P" text="趋势" original="Trd"/>
         <!-- Stw -->
-        <string id="BD65Qr83" text="标准"/>
+        <string id="BD65Qr83" text="标准" original="Stw"/>
         <!-- Ldr -->
-        <string id="OYJ8tfhY" text="光驱"/>
+        <string id="OYJ8tfhY" text="光驱" original="Ldr"/>
         <!-- Med -->
-        <string id="PmKb4QCv" text="医学"/>
+        <string id="PmKb4QCv" text="医学" original="Med"/>
         <!-- Eng -->
-        <string id="wLkMFOky" text="英"/>
-        
+        <string id="wLkMFOky" text="英" original="Eng"/>
         <!-- SummonHero -->
         <!-- Summon Hero -->
-        <string id="6uWk9iMM" text="召唤英雄"/>
+        <string id="6uWk9iMM" text="召唤英雄" original="Summon Hero"/>
         <!-- Spawns the adopted hero into the current active mission -->
-        <string id="ODnzMmBQ" text="将采用的英雄生成到当前的活动任务中"/>
+        <string id="ODnzMmBQ" text="将采用的英雄生成到当前的活动任务中" original="Spawns the adopted hero into the current active mission"/>
         <!-- Allowed Missions -->
-        <string id="i8P1EnE1" text="允许的任务"/>
+        <string id="i8P1EnE1" text="允许的任务" original="Allowed Missions"/>
         <!-- Effects -->
-        <string id="tYGvtYKd" text="效果"/>
-        
+        <string id="tYGvtYKd" text="效果" original="Effects"/>
         <!-- AllowFieldBattle -->
-        <string id="DkCdNiwF" text="允许野战"/>
+        <string id="DkCdNiwF" text="允许野战" original="Allow Field Battle"/>
         <!-- AllowVillageBattle -->
-        <string id="yVz54Nky" text="允许村战"/>
+        <string id="yVz54Nky" text="允许村战" original="Allow Village Battle"/>
         <!-- AllowSiegeBattle -->
-        <string id="0X8bcuPE" text="允许攻城战"/>
+        <string id="0X8bcuPE" text="允许攻城战" original="Allow Siege Battle"/>
         <!-- AllowFriendlyMission -->
-        <string id="Sd1jguGc" text="允许友好任务"/>
+        <string id="Sd1jguGc" text="允许友好任务" original="Allow Friendly Mission"/>
         <!-- Allow Hide Out -->
-        <string id="1xJGhP2D" text="允许隐藏"/>
+        <string id="1xJGhP2D" text="允许隐藏" original="Allow Hide Out"/>
         <!-- On Player Side -->
-        <string id="i59Fm8zV" text="在玩家方面"/>
+        <string id="i59Fm8zV" text="在玩家方面" original="On Player Side"/>
         <!-- Gold Cost -->
-        <string id="HOZnxjGb" text="黄金成本"/>
+        <string id="HOZnxjGb" text="黄金成本" original="Gold Cost"/>
         <!-- Preferred Formation -->
-        <string id="sZRrJfKm" text="首选阵型"/>
+        <string id="sZRrJfKm" text="首选阵型" original="Preferred Formation"/>
         <!-- Alert Sound -->
-        <string id="74AvYKCg" text="警报声"/>
+        <string id="74AvYKCg" text="警报声" original="Alert Sound"/>
         <!-- Sub Boost -->
-        <string id="H7B3Yzly" text="副升压"/>
+        <string id="H7B3Yzly" text="副升压" original="Sub Boost"/>
         <!-- Heal Per Second -->
-        <string id="cXeUjVur" text="每秒治疗"/>
-        
+        <string id="cXeUjVur" text="每秒治疗" original="Heal Per Second"/>
         <!-- Can summon for normal field battles between parties -->
-        <string id="ddjUyXpV" text="可以召唤进行双方之间的正常野战"/>
+        <string id="ddjUyXpV" text="可以召唤进行双方之间的正常野战" original="Can summon for normal field battles between parties"/>
         <!-- Can summon in village battles -->
-        <string id="buLH4Spj" text="可以在村庄战斗中召唤"/>
+        <string id="buLH4Spj" text="可以在村庄战斗中召唤" original="Can summon in village battles"/>
         <!-- Can summon in sieges -->
-        <string id="uk1kL79V" text="可以在围城中召唤"/>
+        <string id="uk1kL79V" text="可以在围城中召唤" original="Can summon in sieges"/>
         <!-- This includes walking about village/town/dungeon/keep -->
-        <string id="1HaljOia" text="这包括在村庄/城镇/地牢/保持"/>
+        <string id="1HaljOia" text="这包括在村庄/城镇/地牢/保持" original="This includes walking about village/town/dungeon/keep"/>
         <!-- Can summon in the hideout missions -->
-        <string id="NZTRYcGV" text="可以在藏身处任务中召唤"/>
+        <string id="NZTRYcGV" text="可以在藏身处任务中召唤" original="Can summon in the hideout missions"/>
         <!-- Whether the hero is on the player or enemy side -->
-        <string id="S86V5s0C" text="英雄是在玩家还是敌方"/>
+        <string id="S86V5s0C" text="英雄是在玩家还是敌方" original="Whether the hero is on the player or enemy side"/>
         <!-- Gold cost to summon -->
-        <string id="OQISx7Jz" text="召唤的金币成本"/>
+        <string id="OQISx7Jz" text="召唤的金币成本" original="Gold cost to summon"/>
         <!-- Which formation to add summoned heroes to (only applies to ones without a specified class) -->
-        <string id="vkFowOeg" text="将召唤英雄加入哪个阵型（仅适用于没有指定职业的）"/>
+        <string id="vkFowOeg" text="将召唤英雄加入哪个阵型（仅适用于没有指定职业的）" original="Which formation to add summoned heroes to (only applies to ones without a specified class)"/>
         <!-- Sound to play when summoned -->
-        <string id="R00Lx6aE" text="召唤时播放的声音"/>
+        <string id="R00Lx6aE" text="召唤时播放的声音" original="Sound to play when summoned"/>
         <!-- Multiplier applied to (positive) effects for subscribers -->
-        <string id="lFnV3cR9" text="乘数应用于订阅者的（积极）影响"/>
+        <string id="lFnV3cR9" text="乘数应用于订阅者的（积极）影响" original="Multiplier applied to (positive) effects for subscribers"/>
         <!-- HP the hero gets every second they are alive in the mission -->
-        <string id="gnh3KY5a" text="英雄在任务中活着的每一秒都会获得 HP"/>
+        <string id="gnh3KY5a" text="英雄在任务中活着的每一秒都会获得 HP" original="HP the hero gets every second they are alive in the mission"/>
         <!-- Side -->
-        <string id="Uu58rjgC" text="边"/>
+        <string id="Uu58rjgC" text="边" original="Side"/>
         <!-- Heals -->
-        <string id="uHTRhFAh" text="治愈"/>
+        <string id="uHTRhFAh" text="治愈" original="Heals"/>
         <!-- Cost -->
-        <string id="hCJhgl1m" text="成本"/>
+        <string id="hCJhgl1m" text="成本" original="Cost"/>
         <!-- Streamers side -->
-        <string id="myKKaEl9" text="飘带侧"/>
+        <string id="myKKaEl9" text="飘带侧" original="Streamers side"/>
         <!-- Enemy side -->
-        <string id="BTZ84Uww" text="敌方"/>
+        <string id="BTZ84Uww" text="敌方" original="Enemy side"/>
         <!-- {HealPerSecond}HP per second while summoned -->
-        <string id="cR84crHC" text="{HealPerSecond}被召唤时每秒 HP"/>
+        <string id="cR84crHC" text="{HealPerSecond}被召唤时每秒 HP" original="{HealPerSecond}HP per second while summoned"/>
         <!-- Field battle -->
-        <string id="SRdB89Ca" text="野战"/>
+        <string id="SRdB89Ca" text="野战" original="Field battle"/>
         <!-- Village battle -->
-        <string id="M45VqXVa" text="村战"/>
+        <string id="M45VqXVa" text="村战" original="Village battle"/>
         <!-- Siege battle -->
-        <string id="hbWdpDwr" text="攻城战"/>
+        <string id="hbWdpDwr" text="攻城战" original="Siege battle"/>
         <!-- Friendly mission -->
-        <string id="YIfbDpI9" text="友好使命"/>
+        <string id="YIfbDpI9" text="友好使命" original="Friendly mission"/>
         <!-- Hide-out -->
-        <string id="pZ239vm5" text="藏身之处"/>
+        <string id="pZ239vm5" text="藏身之处" original="Hide-out"/>
         <!-- Allowed in -->
-        <string id="zOB6Nadp" text="允许进入"/>
-        
+        <string id="zOB6Nadp" text="允许进入" original="Allowed in"/>
         <!-- You cannot be summoned now! -->
-        <string id="TdykIizS" text="你现在不能被召唤！"/>
+        <string id="TdykIizS" text="你现在不能被召唤！" original="You cannot be summoned now!"/>
         <!-- You cannot be summoned now, this mission does not allow it! -->
-        <string id="HWnEJg1M" text="你现在不能被召唤，这个任务不允许！"/>
+        <string id="HWnEJg1M" text="你现在不能被召唤，这个任务不允许！" original="You cannot be summoned now, this mission does not allow it!"/>
         <!-- You cannot be summoned now, the mission has not started yet! -->
-        <string id="v5dO40vi" text="你现在不能被召唤，任务还没有开始！"/>
+        <string id="v5dO40vi" text="你现在不能被召唤，任务还没有开始！" original="You cannot be summoned now, the mission has not started yet!"/>
         <!-- You cannot be summoned now, the mission is ending! -->
-        <string id="mTKKaYIf" text="你现在不能被召唤，任务结束！"/>
+        <string id="mTKKaYIf" text="你现在不能被召唤，任务结束！" original="You cannot be summoned now, the mission is ending!"/>
         <!-- You cannot be summoned, you are already here! -->
-        <string id="YTEgKnCW" text="你不能被召唤，你已经在了！"/>
-        
+        <string id="YTEgKnCW" text="你不能被召唤，你已经在了！" original="You cannot be summoned, you are already here!"/>
         <!-- You won {WonGold}{GoldIcon}! -->
-        <string id="pmj8vjZj" text="您赢了 {WonGold}{GoldIcon}！"/>
+        <string id="pmj8vjZj" text="您赢了 {WonGold}{GoldIcon}！" original="You won {WonGold}{GoldIcon}!"/>
         <!-- You lost {LostGold}{GoldIcon}! -->
-        <string id="ajhKKeEo" text="你输了 {LostGold}{GoldIcon}！"/>
+        <string id="ajhKKeEo" text="你输了 {LostGold}{GoldIcon}！" original="You lost {LostGold}{GoldIcon}!"/>
         <!-- You have joined the battle! -->
-        <string id="Ft3cxfIx" text="你加入了战斗！"/>
+        <string id="Ft3cxfIx" text="你加入了战斗！" original="You have joined the battle!"/>
         <!-- You cannot be summoned now, the mission has not started yet! -->
-        <string id="YZ4V5e4V" text="你现在不能被召唤，任务还没有开始！"/>
+        <string id="YZ4V5e4V" text="你现在不能被召唤，任务还没有开始！" original="You cannot be summoned now, the mission has not started yet!"/>
         <!-- You cannot switch sides, you traitor! -->
-        <string id="2D2T6xP6" text="你不能改变立场，你这个叛徒！"/>
+        <string id="2D2T6xP6" text="你不能改变立场，你这个叛徒！" original="You cannot switch sides, you traitor!"/>
         <!-- You cannot be summoned, you DIED! -->
-        <string id="RBTDviuM" text="你不能被召唤，你死了！"/>
+        <string id="RBTDviuM" text="你不能被召唤，你死了！" original="You cannot be summoned, you DIED!"/>
         <!-- You cannot be summoned, you are already here! -->
-        <string id="YMiZAluP" text="你不能被召唤，你已经在了！"/>
+        <string id="YMiZAluP" text="你不能被召唤，你已经在了！" original="You cannot be summoned, you are already here!"/>
         <!-- {CoolDown}s cooldown remaining -->
-        <string id="kyUh29ij" text="{CoolDown} 剩余冷却时间"/>
+        <string id="kyUh29ij" text="{CoolDown} 剩余冷却时间" original="{CoolDown}s cooldown remaining"/>
         <!-- You cannot be summoned, your party is already here! -->
-        <string id="93Hrc2EA" text="你不能被召唤，你的队伍已经来了！"/>
+        <string id="93Hrc2EA" text="你不能被召唤，你的队伍已经来了！" original="You cannot be summoned, your party is already here!"/>
         <!-- Could not find a party for you to join! -->
-        <string id="jtqEqonE" text="找不到适合您参加的派对！"/>
+        <string id="jtqEqonE" text="找不到适合您参加的派对！" original="Could not find a party for you to join!"/>
         <!-- You have joined the battle! -->
-        <string id="TvkEBZeY" text="你加入了战斗！"/>
+        <string id="TvkEBZeY" text="你加入了战斗！" original="You have joined the battle!"/>
         <!-- Text -->
-        <string id="V3STT5Ar" text="文本"/>
+        <string id="V3STT5Ar" text="文本" original="Text"/>
         <!-- Text that will be displayed in game -->
-        <string id="wsIzPzfG" text="将在游戏中显示的文字"/>
+        <string id="wsIzPzfG" text="将在游戏中显示的文字" original="Text that will be displayed in game"/>
         <!-- Enter shout text here -->
-        <string id="xf2mTWx8" text="在此处输入喊话文本"/>
+        <string id="xf2mTWx8" text="在此处输入喊话文本" original="Enter shout text here"/>
         <!-- Weight -->
-        <string id="bCbN9OmH" text="重量"/>
+        <string id="bCbN9OmH" text="重量" original="Weight"/>
         <!-- Higher weight means more chance this shout is used -->
-        <string id="xqfCYYwN" text="更高的重量意味着更多的机会使用这个喊叫"/>
+        <string id="xqfCYYwN" text="更高的重量意味着更多的机会使用这个喊叫" original="Higher weight means more chance this shout is used"/>
         <!-- Player Side -->
-        <string id="xK1fdx7s" text="玩家方"/>
+        <string id="xK1fdx7s" text="玩家方" original="Player Side"/>
         <!-- Can be used when summoning on player side -->
-        <string id="BpDPlsfY" text="可在玩家方召唤时使用"/>
+        <string id="BpDPlsfY" text="可在玩家方召唤时使用" original="Can be used when summoning on player side"/>
         <!-- Enemy Side -->
-        <string id="srN8yHp8" text="敌方"/>
+        <string id="srN8yHp8" text="敌方" original="Enemy Side"/>
         <!-- Can be used when summoning on enemy side -->
-        <string id="0m4s9zXc" text="可在敌方召唤时使用"/>
+        <string id="0m4s9zXc" text="可在敌方召唤时使用" original="Can be used when summoning on enemy side"/>
         <!-- General -->
-        <string id="MOOBN2Hz" text="一般的"/>
+        <string id="MOOBN2Hz" text="一般的" original="General"/>
         <!-- Can be used in situations other than battle/siege -->
-        <string id="6TWSIu60" text="可以在战斗/攻城以外的情况下使用"/>
+        <string id="6TWSIu60" text="可以在战斗/攻城以外的情况下使用" original="Can be used in situations other than battle/siege"/>
         <!-- Field Battle -->
-        <string id="4KdKuusC" text="野战"/>
+        <string id="4KdKuusC" text="野战" original="Field Battle"/>
         <!-- Can be used when in a field battle -->
-        <string id="8aLSNsxr" text="可以在野战时使用"/>
+        <string id="8aLSNsxr" text="可以在野战时使用" original="Can be used when in a field battle"/>
         <!-- Siege Defend -->
-        <string id="2yevL6dV" text="攻城防线"/>
+        <string id="2yevL6dV" text="攻城防线" original="Siege Defend"/>
         <!-- Can be used when on siege defender side -->
-        <string id="8HwihUK3" text="可以在攻城守方时使用"/>
+        <string id="8HwihUK3" text="可在攻城守方时使用" original="Can be used when on siege defender side"/>
         <!-- Siege Attack -->
-        <string id="r5tvIQwx" text="攻城战"/>
+        <string id="r5tvIQwx" text="攻城战" original="Siege Attack"/>
         <!-- Can be used when on siege attacker side -->
-        <string id="mbIwJprm" text="可以在攻城方时使用"/>
+        <string id="mbIwJprm" text="可以在攻城方时使用" original="Can be used when on siege attacker side"/>
         <!-- Shout -->
-        <string id="CXb5ALls" text="喊"/>
-
+        <string id="CXb5ALls" text="喊" original="Shout"/>
         <!-- TournamentBet -->
         <!-- Invalid gold argument -->
-        <string id="GiU7feEu" text="黄金论证无效"/>
+        <string id="GiU7feEu" text="黄金论证无效" original="Invalid gold argument"/>
         <!-- Betting not active -->
-        <string id="3AQKsF9f" text="投注不活跃"/>
+        <string id="3AQKsF9f" text="投注不活跃" original="Betting not active"/>
         <!-- Bet {GoldAmount}{GoldIcon} on {Team} -->
-        <string id="9tlhaGyH" text="投注{GoldAmount}{GoldIcon} on {Team}"/>
+        <string id="9tlhaGyH" text="投注{GoldAmount}{GoldIcon} on {Team}" original="Bet {GoldAmount}{GoldIcon} on {Team}"/>
         <!-- (team) (gold) -->
-        <string id="8XQwqd4f" text="（团队）（金）"/>
-        
+        <string id="8XQwqd4f" text="（团队）（金）" original="(team) (gold)"/>
         <!-- UsePower -->
         <!-- Use Power -->
-        <string id="Wpx7tHFL" text="使用权力"/>
+        <string id="Wpx7tHFL" text="使用权力" original="Use Power"/>
         <!-- Allows activation of the adopted heroes class active powers -->
-        <string id="FJwn6kGW" text="允许激活所采用的英雄类主动能力"/>
+        <string id="FJwn6kGW" text="允许激活所采用的英雄类主动能力" original="Allows activation of the adopted heroes class active powers"/>
         <!-- You don't have a class, so no powers are available! -->
-        <string id="85HYGklq" text="您没有课程，因此没有可用的权力！"/>
+        <string id="85HYGklq" text="您没有课程，因此没有可用的权力！" original="You don't have a class, so no powers are available!"/>
         <!-- You cannot activate your powers now: {FailReason}! -->
-        <string id="nXSUvuyD" text="你现在不能激活你的力量：{FailReason}！"/>
+        <string id="nXSUvuyD" text="你现在不能激活你的力量：{FailReason}！" original="You cannot activate your powers now: {FailReason}!"/>
         <!-- Your powers are already active! -->
-        <string id="o23xAj6M" text="你的力量已经激活！"/>
+        <string id="o23xAj6M" text="你的力量已经激活！" original="Your powers are already active!"/>
     </strings>
 </base>

@@ -5,134 +5,115 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- stats -->
         <!-- Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue. -->
-        <string id="JiMaaypq" text="클랜, 골드, 위치, HP, 기술, 속성 및 수행원을 포함한 영웅의 일반 정보를 표시합니다."/>
+        <string id="JiMaaypq" text="클랜, 골드, 위치, HP, 기술, 속성 및 수행원을 포함한 영웅의 일반 정보를 표시합니다." original="Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue."/>
         <!-- show stats -->
-        <string id="tIVnWwGG" text="통계 표시"/>
+        <string id="tIVnWwGG" text="통계 표시" original="show stats"/>
         <!-- stats -->
-        <string id="J2AqvpeF" text="통계"/>
-
+        <string id="J2AqvpeF" text="통계" original="stats"/>
         <!-- inv -->
         <!-- Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage. -->
-        <string id="JneYk4pF" text="장비 등급, 전체 전투 및 민간 장비 목록, 보관 중인 모든 사용자 지정 항목을 포함한 영웅 인벤토리를 표시합니다."/>
+        <string id="JneYk4pF" text="장비 등급, 전체 전투 및 민간 장비 목록, 보관 중인 모든 사용자 지정 항목을 포함한 영웅 인벤토리를 표시합니다." original="Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage."/>
         <!-- show equipment -->
-        <string id="oVNKTdOy" text="쇼 장비"/>
+        <string id="oVNKTdOy" text="쇼 장비" original="show equipment"/>
         <!-- inv -->
-        <string id="UbklIEGh" text="인보이스"/>
-
+        <string id="UbklIEGh" text="인보이스" original="inv"/>
         <!-- equip -->
         <!-- Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to. -->
-        <string id="EZGcIEgQ" text="영웅 장비 등급을 업그레이드하여 맞춤 아이템을 제외한 하위 등급의 기존 장비를 교체합니다. 비용은 업그레이드하려는 계층에 따라 다릅니다."/>
+        <string id="EZGcIEgQ" text="영웅 장비 등급을 업그레이드하여 맞춤 아이템을 제외한 하위 등급의 기존 장비를 교체합니다. 비용은 업그레이드하려는 계층에 따라 다릅니다." original="Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to."/>
         <!-- upgrade equipment -->
-        <string id="vTo0NowP" text="장비 업그레이드"/>
+        <string id="vTo0NowP" text="장비 업그레이드" original="upgrade equipment"/>
         <!-- equip -->
-        <string id="wHqxd4kb" text="갖추어 주다"/>
-        
+        <string id="wHqxd4kb" text="갖추어 주다" original="equip"/>
         <!-- Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford. -->
-        <string id="zxAVjOW6" text="새로운 수행원을 구입하거나 한계에 도달한 경우 기존 병력을 다음 단계로 업그레이드합니다. 당신이 소환할 때 수행원은 전투에서 당신과 함께 나타나 그들이 죽일 때 당신에게 돈을 벌 것입니다. 명령에 숫자를 전달하여 구매하거나 업그레이드하려는 군대 수를 지정할 수 있습니다. 기본적으로 당신이 감당할 수 있는 만큼 많이 할 것입니다."/>
+        <string id="zxAVjOW6" text="새로운 수행원을 구입하거나 한계에 도달한 경우 기존 병력을 다음 단계로 업그레이드합니다. 당신이 소환할 때 수행원은 전투에서 당신과 함께 나타나 그들이 죽일 때 당신에게 돈을 벌 것입니다. 명령에 숫자를 전달하여 구매하거나 업그레이드하려는 군대 수를 지정할 수 있습니다. 기본적으로 당신이 감당할 수 있는 만큼 많이 할 것입니다." original="Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford."/>
         <!-- upgrade retinue -->
-        <string id="I7sm1ct6" text="수행원 업그레이드"/>
+        <string id="I7sm1ct6" text="수행원 업그레이드" original="upgrade retinue"/>
         <!-- retinue -->
-        <string id="mge9rH9J" text="시종"/>
-
-        <!-- class -->        
-        <!-- Selects a new class for your hero, updating your existing equipment to match the class requirements.&lt;br&gt;Usage is &lt;code&gt;!class (new class name)&lt;/code&gt;, e.g. &lt;code&gt;!class archer&lt;/code&gt;. -->
-        <string id="K3297TEM" text="영웅의 새 클래스를 선택하고 클래스 요구 사항에 맞게 기존 장비를 업데이트합니다.&lt;br&gt; 사용법은 &lt;code&gt;!class (new class name)&lt;/code&gt; , 예를 들어 &lt;code&gt;!class archer&lt;/code&gt; 입니다."/>
-        <!-- select new class -->
-        <string id="uN82Y7hR" text="새 클래스 선택"/>
+        <string id="mge9rH9J" text="시종" original="retinue"/>
         <!-- class -->
-        <string id="nV9iIsDC" text="수업"/>
-
+        <!-- Selects a new class for your hero, updating your existing equipment to match the class requirements.&lt;br&gt;Usage is &lt;code&gt;!class (new class name)&lt;/code&gt;, e.g. &lt;code&gt;!class archer&lt;/code&gt;. -->
+        <string id="K3297TEM" text="영웅의 새 클래스를 선택하고 클래스 요구 사항에 맞게 기존 장비를 업데이트합니다.&lt;br&gt; 사용법은 &lt;code&gt;!class (new class name)&lt;/code&gt; , 예를 들어 &lt;code&gt;!class archer&lt;/code&gt; 입니다." original="Selects a new class for your hero, updating your existing equipment to match the class requirements.&lt;br&gt;Usage is &lt;code&gt;!class (new class name)&lt;/code&gt;, e.g. &lt;code&gt;!class archer&lt;/code&gt;."/>
+        <!-- select new class -->
+        <string id="uN82Y7hR" text="새 클래스 선택" original="select new class"/>
+        <!-- class -->
+        <string id="nV9iIsDC" text="수업" original="class"/>
         <!-- reequip -->
         <!-- Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier. -->
-        <string id="zBIv0a4I" text="현재 계층에서 장비를 무작위로 지정합니다. 현재 티어보다 높은 아이템이나 커스텀 아이템은 대체하지 않습니다. 예를 들어 장비 3단계이지만 토너먼트에서 6단계 무기를 획득한 경우 이 명령은 해당 무기를 대체하지 않습니다. 특히 현재 계층에서 사용할 수 있는 유형의 항목이 많지 않은 경우 일부 항목이 변경되지 않는 경우가 있습니다."/>
+        <string id="zBIv0a4I" text="현재 계층에서 장비를 무작위로 지정합니다. 현재 티어보다 높은 아이템이나 커스텀 아이템은 대체하지 않습니다. 예를 들어 장비 3단계이지만 토너먼트에서 6단계 무기를 획득한 경우 이 명령은 해당 무기를 대체하지 않습니다. 특히 현재 계층에서 사용할 수 있는 유형의 항목이 많지 않은 경우 일부 항목이 변경되지 않는 경우가 있습니다." original="Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier."/>
         <!-- reroll equipment -->
-        <string id="3KYGJ0Mu" text="장비를 다시 굴리다"/>
+        <string id="3KYGJ0Mu" text="장비를 다시 굴리다" original="reroll equipment"/>
         <!-- reequip -->
-        <string id="fGfTaAoD" text="재장착"/>
-
+        <string id="fGfTaAoD" text="재장착" original="reequip"/>
         <!-- gold -->
         <!-- Show your heroes current gold. -->
-        <string id="eWI5oDce" text="영웅에게 현재 골드를 표시하십시오."/>
+        <string id="eWI5oDce" text="영웅에게 현재 골드를 표시하십시오." original="Show your heroes current gold."/>
         <!-- show gold -->
-        <string id="zdRj4blL" text="금을 보여"/>
+        <string id="zdRj4blL" text="금을 보여" original="show gold"/>
         <!-- gold -->
-        <string id="W5uX9HCJ" text="금"/>
-
+        <string id="W5uX9HCJ" text="금" original="gold"/>
         <!-- retinuelist -->
         <!-- Shows your current retinue troops. -->
-        <string id="BlBiEmbf" text="현재 수행원을 표시합니다."/>
+        <string id="BlBiEmbf" text="현재 수행원을 표시합니다." original="Shows your current retinue troops."/>
         <!-- retinue list -->
-        <string id="ysbFV5uT" text="수행원 목록"/>
+        <string id="ysbFV5uT" text="수행원 목록" original="retinue list"/>
         <!-- retinuelist -->
-        <string id="kG6yjBBR" text="수행원"/>
-
+        <string id="kG6yjBBR" text="수행원" original="retinuelist"/>
         <!-- adopt -->
         <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
-        <string id="MpvqvKef" text="게임에서 영웅을 얻으십시오. 거의 모든 다른 행동에는 입양된 영웅이 필요합니다."/>
+        <string id="MpvqvKef" text="게임에서 영웅을 얻으십시오. 거의 모든 다른 행동에는 입양된 영웅이 필요합니다." original="Get a hero in game. Almost all other actions require an adopted hero."/>
         <!-- adopt -->
-        <string id="0grO6hB5" text="입양하다"/>
-
+        <string id="0grO6hB5" text="입양하다" original="adopt"/>
         <!-- nameitem -->
         <!-- You can use this to name your custom items.&lt;br&gt;Usage is &lt;code&gt;!nameitem (name)&lt;/code&gt;, for example &lt;code&gt;!nameitem Foehammer&lt;/code&gt;.&lt;br&gt;If you call &lt;code&gt;!nameitem&lt;/code&gt; on its own it will tell you what item will be named next. -->
-        <string id="S1FZXQim" text="이것을 사용하여 사용자 정의 항목의 이름을 지정할 수 있습니다.&lt;br&gt; 사용법은 &lt;code&gt;!nameitem (name)&lt;/code&gt; 입니다(예: &lt;code&gt;!nameitem Foehammer&lt;/code&gt; .&lt;br&gt; &lt;code&gt;!nameitem&lt;/code&gt; 자체를 호출하면 다음에 어떤 항목의 이름이 지정될지 알려줍니다."/>
+        <string id="S1FZXQim" text="이것을 사용하여 사용자 정의 항목의 이름을 지정할 수 있습니다.&lt;br&gt; 사용법은 &lt;code&gt;!nameitem (name)&lt;/code&gt; 입니다(예: &lt;code&gt;!nameitem Foehammer&lt;/code&gt; .&lt;br&gt; &lt;code&gt;!nameitem&lt;/code&gt; 자체를 호출하면 다음에 어떤 항목의 이름이 지정될지 알려줍니다." original="You can use this to name your custom items.&lt;br&gt;Usage is &lt;code&gt;!nameitem (name)&lt;/code&gt;, for example &lt;code&gt;!nameitem Foehammer&lt;/code&gt;.&lt;br&gt;If you call &lt;code&gt;!nameitem&lt;/code&gt; on its own it will tell you what item will be named next."/>
         <!-- name a reward item -->
-        <string id="tNVmXpoc" text="보상 아이템 이름 지정"/>
+        <string id="tNVmXpoc" text="보상 아이템 이름 지정" original="name a reward item"/>
         <!-- nameitem -->
-        <string id="IFDecKha" text="이름 항목"/>
-
+        <string id="IFDecKha" text="이름 항목" original="nameitem"/>
         <!-- bltbet -->
         <!-- Use this to bet on tournament matches, when available.&lt;br&gt;Usage is &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt;, for example &lt;code&gt;!bltbet red 10000&lt;/code&gt; to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.&lt;br&gt;If only one team is bet upon, the bets will be refunded. -->
-        <string id="thajdk5s" text="가능한 경우 토너먼트 경기에 베팅하려면 이것을 사용하십시오.&lt;br&gt; 사용법은 &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt; 입니다. 예를 들어 &lt;code&gt;!bltbet red 10000&lt;/code&gt; 은 빨간색에 10000골드를 베팅합니다. 상금은 상대 배팅 규모에 따라 전체 팟에서 나누어집니다.&lt;br&gt; 한 팀만 베팅하는 경우 베팅은 환불됩니다."/>
+        <string id="thajdk5s" text="가능한 경우 토너먼트 경기에 베팅하려면 이것을 사용하십시오.&lt;br&gt; 사용법은 &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt; 입니다. 예를 들어 &lt;code&gt;!bltbet red 10000&lt;/code&gt; 은 빨간색에 10000골드를 베팅합니다. 상금은 상대 배팅 규모에 따라 전체 팟에서 나누어집니다.&lt;br&gt; 한 팀만 베팅하는 경우 베팅은 환불됩니다." original="Use this to bet on tournament matches, when available.&lt;br&gt;Usage is &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt;, for example &lt;code&gt;!bltbet red 10000&lt;/code&gt; to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.&lt;br&gt;If only one team is bet upon, the bets will be refunded."/>
         <!-- bet on tournament -->
-        <string id="xBgLXaf7" text="토너먼트에 내기"/>
+        <string id="xBgLXaf7" text="토너먼트에 내기" original="bet on tournament"/>
         <!-- bltbet -->
-        <string id="haKiwbsR" text="bltbet"/>
-
+        <string id="haKiwbsR" text="bltbet" original="bltbet"/>
         <!-- power -->
         <!-- power -->
-        <string id="NUQ5PsjF" text="힘"/>
+        <string id="NUQ5PsjF" text="힘" original="power"/>
         <!-- Show the heroes achievements and tracked stats. -->
-        <string id="ZVxCqyJL" text="영웅의 업적과 추적된 통계를 표시합니다."/>
-
+        <string id="ZVxCqyJL" text="영웅의 업적과 추적된 통계를 표시합니다." original="Show the heroes achievements and tracked stats."/>
         <!-- achievements -->
         <!-- achievements -->
-        <string id="aGPoAaM9" text="업적"/>
-
+        <string id="aGPoAaM9" text="업적" original="achievements"/>
         <!-- ach -->
         <!-- ach -->
-        <string id="woTpsqyV" text="아"/>
-
+        <string id="woTpsqyV" text="아" original="ach"/>
         <!-- auction -->
         <!-- Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.&lt;br&gt;Usage is &lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!auction 50000 Boots&lt;/code&gt; would start a new auction for your custom item with the word &quot;Boots&quot; in it, with a reserve of 50000. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
-        <string id="ma27zJHy" text="지정된 예약 가격으로 소유한 맞춤 항목에 대한 경매를 시작합니다. 다른 시청자가 귀하의 항목에 입찰할 수 있으며 경매가 끝나면 최고가 입찰자가 해당 항목을 받게 됩니다.&lt;br&gt; 사용법은 &lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt; . 예를 들어 &lt;code&gt;!auction 50000 Boots&lt;/code&gt; 는 50000의 예비비로 &amp;quot;Boots&amp;quot;라는 단어가 포함된 사용자 정의 항목에 대한 새 경매를 시작합니다. 항목이 두 개 이상인 경우 &amp;quot;Boots&amp;quot;가 있으면 명령이 거부됩니다. 부분 이름은 정확히 하나의 항목과 일치해야 합니다."/>
+        <string id="ma27zJHy" text="지정된 예약 가격으로 소유한 맞춤 항목에 대한 경매를 시작합니다. 다른 시청자가 귀하의 항목에 입찰할 수 있으며 경매가 끝나면 최고가 입찰자가 해당 항목을 받게 됩니다.&lt;br&gt; 사용법은 &lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt; . 예를 들어 &lt;code&gt;!auction 50000 Boots&lt;/code&gt; 는 50000의 예비비로 &amp;quot;Boots&amp;quot;라는 단어가 포함된 사용자 정의 항목에 대한 새 경매를 시작합니다. 항목이 두 개 이상인 경우 &amp;quot;Boots&amp;quot;가 있으면 명령이 거부됩니다. 부분 이름은 정확히 하나의 항목과 일치해야 합니다." original="Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.&lt;br&gt;Usage is &lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!auction 50000 Boots&lt;/code&gt; would start a new auction for your custom item with the word &quot;Boots&quot; in it, with a reserve of 50000. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item."/>
         <!-- auction -->
-        <string id="QQX2aboq" text="경매"/>
-
+        <string id="QQX2aboq" text="경매" original="auction"/>
         <!-- bid -->
         <!-- Place a bid on the current auction, if one is active.&lt;br&gt;Usage is &lt;code&gt;!bid (gold amount)&lt;/code&gt;, e.g. &lt;code&gt;!bid 100000&lt;/code&gt;. If there is no auction, or the bid doesn&apos;t exceed the reserve price, it will be rejected. -->
-        <string id="1TBIIJVZ" text="현재 경매가 활성화되어 있는 경우 해당 경매에 입찰하십시오.&lt;br&gt; 사용법은 &lt;code&gt;!bid (gold amount)&lt;/code&gt; (예: &lt;code&gt;!bid 100000&lt;/code&gt; . 경매가 없거나 입찰가가 예약 가격을 초과하지 않으면 거부됩니다."/>
+        <string id="1TBIIJVZ" text="현재 경매가 활성화되어 있는 경우 해당 경매에 입찰하십시오.&lt;br&gt; 사용법은 &lt;code&gt;!bid (gold amount)&lt;/code&gt; (예: &lt;code&gt;!bid 100000&lt;/code&gt; . 경매가 없거나 입찰가가 예약 가격을 초과하지 않으면 거부됩니다." original="Place a bid on the current auction, if one is active.&lt;br&gt;Usage is &lt;code&gt;!bid (gold amount)&lt;/code&gt;, e.g. &lt;code&gt;!bid 100000&lt;/code&gt;. If there is no auction, or the bid doesn't exceed the reserve price, it will be rejected."/>
         <!-- bid -->
-        <string id="taI6SRSG" text="매기다"/>
-
+        <string id="taI6SRSG" text="매기다" original="bid"/>
         <!-- discarditem -->
         <!-- Throw away one of your custom items.&lt;br&gt;Usage is &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!discarditem Boots&lt;/code&gt; would discard your custom item with the word &quot;Boots&quot; in it. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
-        <string id="vwPIXbeh" text="사용자 정의 항목 중 하나를 버리십시오.&lt;br&gt; 사용법은 &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt; . 예를 들어 &lt;code&gt;!discarditem Boots&lt;/code&gt; 는 &amp;quot;Boots&amp;quot;라는 단어가 포함된 사용자 정의 항목을 버립니다. 둘 이상의 항목에 &amp;quot;부츠&amp;quot;가 있으면 명령이 거부됩니다. 부분 이름은 정확히 하나의 항목과 일치해야 합니다."/>
+        <string id="vwPIXbeh" text="사용자 정의 항목 중 하나를 버리십시오.&lt;br&gt; 사용법은 &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt; . 예를 들어 &lt;code&gt;!discarditem Boots&lt;/code&gt; 는 &amp;quot;Boots&amp;quot;라는 단어가 포함된 사용자 정의 항목을 버립니다. 둘 이상의 항목에 &amp;quot;부츠&amp;quot;가 있으면 명령이 거부됩니다. 부분 이름은 정확히 하나의 항목과 일치해야 합니다." original="Throw away one of your custom items.&lt;br&gt;Usage is &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!discarditem Boots&lt;/code&gt; would discard your custom item with the word &quot;Boots&quot; in it. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item."/>
         <!-- discarditem -->
-        <string id="Pla3OVS4" text="폐기품"/>
-
+        <string id="Pla3OVS4" text="폐기품" original="discarditem"/>
         <!-- giveitem -->
         <!-- Give one of your custom items to another viewer.&lt;br&gt;Usage is &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; would give your custom item with the word &quot;Boots&quot; in it to the viewer called C4lad0g. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
-        <string id="RS37T7gG" text="다른 뷰어에게 사용자 정의 항목 중 하나를 제공합니다.&lt;br&gt; 사용법은 &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt; . 예를 들어 &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; 는 &amp;quot;Boots&amp;quot;라는 단어가 포함된 사용자 지정 항목을 C4lad0g라는 뷰어에 제공합니다. 둘 이상의 항목에 &amp;quot;부츠&amp;quot;가 있으면 명령이 거부됩니다. 부분 이름은 정확히 하나의 항목과 일치해야 합니다."/>
+        <string id="RS37T7gG" text="다른 뷰어에게 사용자 정의 항목 중 하나를 제공합니다.&lt;br&gt; 사용법은 &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt; . 예를 들어 &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; 는 &amp;quot;Boots&amp;quot;라는 단어가 포함된 사용자 지정 항목을 C4lad0g라는 뷰어에 제공합니다. 둘 이상의 항목에 &amp;quot;부츠&amp;quot;가 있으면 명령이 거부됩니다. 부분 이름은 정확히 하나의 항목과 일치해야 합니다." original="Give one of your custom items to another viewer.&lt;br&gt;Usage is &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; would give your custom item with the word &quot;Boots&quot; in it to the viewer called C4lad0g. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item."/>
         <!-- giveitem -->
-        <string id="osvl34my" text="기브아이템"/>
-
+        <string id="osvl34my" text="기브아이템" original="giveitem"/>
         <!-- powers -->
         <!-- Shows your available powers -->
-        <string id="GYYbCXmu" text="사용 가능한 능력을 보여줍니다"/>
+        <string id="GYYbCXmu" text="사용 가능한 능력을 보여줍니다" original="Shows your available powers"/>
         <!-- powers -->
-        <string id="GHCxNIaR" text="권한"/>
+        <string id="GHCxNIaR" text="권한" original="powers"/>
     </strings>
 </base>

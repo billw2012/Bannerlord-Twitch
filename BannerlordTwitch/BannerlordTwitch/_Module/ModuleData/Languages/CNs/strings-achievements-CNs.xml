@@ -5,36 +5,30 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- Common -->
         <!-- Reward {ITEMNAME} -->
-        <string id="W47g8bCB" text="奖励{ITEMNAME}"/>
+        <string id="W47g8bCB" text="奖励{ITEMNAME}" original="Reward {ITEMNAME}"/>
         <!-- {viewer} is {name}! -->
-        <string id="TAWcPGIc" text="{viewer} is {name}！"/>
-        
-        
+        <string id="TAWcPGIc" text="{viewer} is {name}！" original="{viewer} is {name}!"/>
         <!-- {ITEMNAME} of Fealty -->
-        <string id="IvV04W31" text="{ITEMNAME} 的忠诚"/>
+        <string id="IvV04W31" text="{ITEMNAME} 的忠诚" original="{ITEMNAME} of Fealty"/>
         <!-- Renegades {ITEMNAME} -->
-        <string id="UQtSgnog" text="叛徒{ITEMNAME}"/>
+        <string id="UQtSgnog" text="叛徒{ITEMNAME}" original="Renegades {ITEMNAME}"/>
         <!-- Stream Sniper {ITEMNAME} -->
-        <string id="xI41h8NA" text="流狙击手{ITEMNAME}"/>
-        
+        <string id="xI41h8NA" text="流狙击手{ITEMNAME}" original="Stream Sniper {ITEMNAME}"/>
         <!-- Reliable -->
-        <string id="ODWiNBng" text="可靠的"/>
+        <string id="ODWiNBng" text="可靠的" original="Reliable"/>
         <!-- Trusted -->
-        <string id="fWTqF2sw" text="值得信赖"/>
+        <string id="fWTqF2sw" text="值得信赖" original="Trusted"/>
         <!-- Loyal -->
-        <string id="fe9J8von" text="忠诚"/>
+        <string id="fe9J8von" text="忠诚" original="Loyal"/>
         <!-- Rebellious -->
-        <string id="HdYFegeb" text="叛逆的"/>
+        <string id="HdYFegeb" text="叛逆的" original="Rebellious"/>
         <!-- Traitorous -->
-        <string id="gDHR7f8r" text="叛徒"/>
+        <string id="gDHR7f8r" text="叛徒" original="Traitorous"/>
         <!-- Renegade -->
-        <string id="VEH582e7" text="叛徒"/>
+        <string id="VEH582e7" text="叛徒" original="Renegade"/>
         <!-- Stream Sniper -->
-        <string id="Aj0gXKgZ" text="流狙击手"/>
-        
-        
+        <string id="Aj0gXKgZ" text="流狙击手" original="Stream Sniper"/>
     </strings>
 </base>

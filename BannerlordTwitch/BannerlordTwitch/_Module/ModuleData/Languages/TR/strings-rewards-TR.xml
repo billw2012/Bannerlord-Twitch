@@ -5,85 +5,83 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
-        <string id="dirEUQc7" text="Oyunda bir kahraman edinin. Hemen hemen tüm diğer eylemler, benimsenen bir kahraman gerektirir."/>
+        <string id="dirEUQc7" text="Oyunda bir kahraman edinin. Hemen hemen tüm diğer eylemler, benimsenen bir kahraman gerektirir." original="Get a hero in game. Almost all other actions require an adopted hero."/>
         <!-- Adds 10,000 gold to your adopted hero. -->
-        <string id="Y7GzhU5a" text="Kabul ettiğiniz kahramana 10.000 altın ekler."/>
+        <string id="Y7GzhU5a" text="Kabul ettiğiniz kahramana 10.000 altın ekler." original="Adds 10,000 gold to your adopted hero."/>
         <!-- Adds 100,000 gold to your adopted hero. -->
-        <string id="Hbk74nei" text="Kabul ettiğiniz kahramana 100.000 altın ekler."/>
+        <string id="Hbk74nei" text="Kabul ettiğiniz kahramana 100.000 altın ekler." original="Adds 100,000 gold to your adopted hero."/>
         <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue). -->
-        <string id="nI4dr4uZ" text="Yayıncı bir savaşa girdiğinde, benimsediğiniz kahramanı yayıncılar tarafında (maiyetinizle birlikte) ortaya çıkarmak için kullanın."/>
+        <string id="nI4dr4uZ" text="Yayıncı bir savaşa girdiğinde, benimsediğiniz kahramanı yayıncılar tarafında (maiyetinizle birlikte) ortaya çıkarmak için bunu kullanın." original="Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue)."/>
         <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue). -->
-        <string id="flQofEFu" text="Yayıncı bir savaşa girdiğinde, evlat edindiğiniz kahramanı düşman tarafında (maiyetinizle birlikte) ortaya çıkarmak için bunu kullanın."/>
+        <string id="flQofEFu" text="Yayıncı bir savaşa girdiğinde, evlat edindiğiniz kahramanı düşman tarafında (maiyetinizle birlikte) ortaya çıkarmak için bunu kullanın." original="Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue)."/>
         <!-- Heals the streamers character in battle, over time. Doesn't work on the campaign map. -->
-        <string id="zLxgvsYd" text="Flamalar karakterini savaşta zamanla iyileştirir. Kampanya haritasında çalışmıyor."/>
+        <string id="zLxgvsYd" text="Flamalar karakterini savaşta zamanla iyileştirir. Kampanya haritasında çalışmıyor." original="Heals the streamers character in battle, over time. Doesn't work on the campaign map."/>
         <!-- Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament. -->
-        <string id="KaE947T9" text="Kabul ettiğiniz kahramanla turnuva kuyruğuna katılın. Sırayı bindirmede görebilirsiniz. Her turnuvada en fazla 16 kahraman olabilir, bir kez dolduğunda sonraki turnuva için başka kahramanlar sırada kalır."/>
+        <string id="KaE947T9" text="Kabul ettiğiniz kahramanla turnuva kuyruğuna katılın. Sırayı bindirmede görebilirsiniz. Her turnuvada en fazla 16 kahraman olabilir, bir kez dolduğunda sonraki turnuva için başka kahramanlar sırada kalır." original="Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament."/>
         <!-- Sends a message in the game. If you have a hero then it will also show them next to the message. -->
-        <string id="5L3LWrUx" text="Oyunda bir mesaj gönderir. Bir kahramanınız varsa, onları da mesajın yanında gösterecektir."/>
+        <string id="5L3LWrUx" text="Oyunda bir mesaj gönderir. Bir kahramanınız varsa, onları da mesajın yanında gösterecektir." original="Sends a message in the game. If you have a hero then it will also show them next to the message."/>
         <!-- Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritance rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete. -->
-        <string id="SXzjFdG1" text="Artık mevcut kahramanınızla oynamak istemiyorsanız bunu kullanın. (emekli) olarak işaretlenecekler ve daha sonra yeni bir tane benimseyebileceksiniz. Miras kuralları ölüme uygulandığı gibi emeklilik için de geçerlidir. Emekliliğin tamamlanması için komut istemine (tam olarak yazıldığı gibi, küçük harfle) evet girmelisiniz."/>
+        <string id="SXzjFdG1" text="Artık mevcut kahramanınızla oynamak istemiyorsanız bunu kullanın. (emekli) olarak işaretlenecekler ve daha sonra yeni bir tane benimseyebileceksiniz. Miras kuralları ölüme uygulandığı gibi emeklilik için de geçerlidir. Emekliliğin tamamlanması için komut istemine (tam olarak yazıldığı gibi, küçük harfle) evet girmelisiniz." original="Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritance rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete."/>
         <!-- Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment. -->
-        <string id="ZfhTuaRR" text="Kabul ettiğiniz kahramana 50.000 XP ekleyin. Uygulandığı beceri rastgele seçilecek, ancak sınıfınızdan ve mevcut beceri ve ekipmandan etkilenecek."/>
+        <string id="ZfhTuaRR" text="Kabul ettiğiniz kahramana 50.000 XP ekleyin. Uygulandığı beceri rastgele seçilecek, ancak sınıfınızdan ve mevcut beceri ve ekipmandan etkilenecek." original="Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment."/>
         <!-- Heals your hero over time. Only works in battle, when your hero is summoned. -->
-        <string id="pFwSBHnR" text="Kahramanınızı zamanla iyileştirir. Sadece kahramanınız çağrıldığında savaşta çalışır."/>
+        <string id="pFwSBHnR" text="Kahramanınızı zamanla iyileştirir. Sadece kahramanınız çağrıldığında savaşta çalışır." original="Heals your hero over time. Only works in battle, when your hero is summoned."/>
         <!-- Transfer 10,000 gold to the streamers character, from your hero. -->
-        <string id="CSmE7Y50" text="Kahramanınızdan yayıncı karakterine 10.000 altın aktarın."/>
+        <string id="CSmE7Y50" text="Kahramanınızdan yayıncı karakterine 10.000 altın aktarın." original="Transfer 10,000 gold to the streamers character, from your hero."/>
         <!-- Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay. -->
-        <string id="LO6Q2DCb" text="Varsa, kahramanınız üzerinde sınıf gücünüzü etkinleştirin. Güç, kaplamada belirtilen sınırlı bir süre boyunca devam edecektir."/>
-        
+        <string id="LO6Q2DCb" text="Varsa, kahramanınız üzerinde sınıf gücünüzü etkinleştirin. Güç, kaplamada belirtilen sınırlı bir süre boyunca devam edecektir." original="Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay."/>
         <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
-        <string id="kL65xglO" text="Oyunda bir kahraman edinin. Hemen hemen tüm diğer eylemler, benimsenen bir kahraman gerektirir."/>
+        <string id="kL65xglO" text="Oyunda bir kahraman edinin. Hemen hemen tüm diğer eylemler, benimsenen bir kahraman gerektirir." original="Get a hero in game. Almost all other actions require an adopted hero."/>
         <!-- Add 10,000 gold to your adopted hero -->
-        <string id="xQTiKsVA" text="Kabul ettiğiniz kahramana 10.000 altın ekleyin"/>
+        <string id="xQTiKsVA" text="Kabul ettiğiniz kahramana 10.000 altın ekleyin" original="Add 10,000 gold to your adopted hero"/>
         <!-- Add 100,000 gold to your adopted hero -->
-        <string id="xeI0AXUl" text="Kabul ettiğiniz kahramana 100.000 altın ekleyin"/>
+        <string id="xeI0AXUl" text="Kabul ettiğiniz kahramana 100.000 altın ekleyin" original="Add 100,000 gold to your adopted hero"/>
         <!-- Your adopted hero joins the players side in battle -->
-        <string id="zmxI41XP" text="Benimsenen kahramanın savaşta oyuncuların tarafına katılıyor"/>
+        <string id="zmxI41XP" text="Benimsenen kahramanın savaşta oyuncuların tarafına katılıyor" original="Your adopted hero joins the players side in battle"/>
         <!-- Your adopted hero joins the enemies side in battle -->
-        <string id="ry25StNF" text="Evlat edindiğiniz kahraman, savaşta düşman tarafına katılıyor"/>
+        <string id="ry25StNF" text="Evlat edindiğiniz kahraman, savaşta düşman tarafına katılıyor" original="Your adopted hero joins the enemies side in battle"/>
         <!-- Heal the streamer over time -->
-        <string id="a8DqM6AY" text="Yayıncıyı zamanla iyileştir"/>
+        <string id="a8DqM6AY" text="Yayıncıyı zamanla iyileştir" original="Heal the streamer over time"/>
         <!-- Join the tournament queue with your adopted hero -->
-        <string id="ODfWfHln" text="Kabul edilen kahramanınla turnuva kuyruğuna katıl"/>
+        <string id="ODfWfHln" text="Kabul edilen kahramanınla turnuva kuyruğuna katıl" original="Join the tournament queue with your adopted hero"/>
         <!-- Enter Message -->
-        <string id="m9IFHkZh" text="Mesaj Girin"/>
+        <string id="m9IFHkZh" text="Mesaj Girin" original="Enter Message"/>
         <!-- Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel -->
-        <string id="ZNGav9pi" text="Kahramanınızı emekliye ayırmak için evet girin (artık sizin kontrolünüzde olmayacak) veya iptal etmek için bu pencereyi kapatın"/>
+        <string id="ZNGav9pi" text="Kahramanınızı emekliye ayırmak için evet girin (artık sizin kontrolünüzde olmayacak) veya iptal etmek için bu pencereyi kapatın" original="Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel"/>
         <!-- Add 50,000 XP to a random skill of your adopted hero -->
-        <string id="UCjOD22c" text="Kabul ettiğiniz kahramanın rastgele bir becerisine 50.000 XP ekleyin"/>
+        <string id="UCjOD22c" text="Kabul ettiğiniz kahramanın rastgele bir becerisine 50.000 XP ekleyin" original="Add 50,000 XP to a random skill of your adopted hero"/>
         <!-- Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below: -->
-        <string id="1IDV1dAh" text="Kahramanınızdan yayıncı karakterine 10.000 altın aktarın. Hediye mesajını aşağıya girin:"/>
+        <string id="1IDV1dAh" text="Kahramanınızdan yayıncı karakterine 10.000 altın aktarın. Hediye mesajını aşağıya girin:" original="Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:"/>
         <!-- Activate your class power on your hero, if you have one. -->
-        <string id="x5Agf9Wl" text="Varsa, kahramanınız üzerinde sınıf gücünüzü etkinleştirin."/>
+        <string id="x5Agf9Wl" text="Varsa, kahramanınız üzerinde sınıf gücünüzü etkinleştirin." original="Activate your class power on your hero, if you have one."/>
         <!-- Adopt a Hero -->
-        <string id="Yc9dn4Sx" text="Bir Kahraman Kabul Edin"/>
+        <string id="Yc9dn4Sx" text="Bir Kahraman Kabul Edin" original="Adopt a Hero"/>
         <!-- 10k gold -->
-        <string id="s0GPjZKG" text="10k altın"/>
+        <string id="s0GPjZKG" text="10k altın" original="10k gold"/>
         <!-- 100k gold -->
-        <string id="ndi9p5jn" text="100k altın"/>
+        <string id="ndi9p5jn" text="100k altın" original="100k gold"/>
         <!-- Summon -->
-        <string id="dpnWybop" text="çağırmak"/>
+        <string id="dpnWybop" text="çağırmak" original="Summon"/>
         <!-- Attack -->
-        <string id="IrF1VaBD" text="Saldırı"/>
+        <string id="IrF1VaBD" text="Saldırı" original="Attack"/>
         <!-- Heal Streamer -->
-        <string id="MSpPJJhZ" text="İyileştirme Yayıncısı"/>
+        <string id="MSpPJJhZ" text="İyileştirme Yayıncısı" original="Heal Streamer"/>
         <!-- Tournament -->
-        <string id="IBrMU0VF" text="Turnuva"/>
+        <string id="IBrMU0VF" text="Turnuva" original="Tournament"/>
         <!-- Send Message In Game -->
-        <string id="FFvfbTgo" text="Oyunda Mesaj Gönder"/>
+        <string id="FFvfbTgo" text="Oyunda Mesaj Gönder" original="Send Message In Game"/>
         <!-- Retire My Hero -->
-        <string id="AZMDg7St" text="Kahramanımı Emekli Et"/>
+        <string id="AZMDg7St" text="Kahramanımı Emekli Et" original="Retire My Hero"/>
         <!-- 50k XP -->
-        <string id="uA1yEnyO" text="50 bin deneyim"/>
+        <string id="uA1yEnyO" text="50 bin deneyim" original="50k XP"/>
         <!-- Burn Player -->
-        <string id="2ciF79zR" text="Oyuncu Yakmak"/>
+        <string id="2ciF79zR" text="Oyuncu Yakmak" original="Burn Player"/>
         <!-- Heal Hero -->
-        <string id="likTlNpu" text="İyileştirme Kahramanı"/>
+        <string id="likTlNpu" text="İyileştirme Kahramanı" original="Heal Hero"/>
         <!-- Give Player Gold -->
-        <string id="9DoHhKeh" text="Oyuncu Altını Ver"/>
+        <string id="9DoHhKeh" text="Oyuncu Altını Ver" original="Give Player Gold"/>
         <!-- Use Class Power -->
-        <string id="yoZSmM0b" text="Sınıf Gücünü Kullan"/>
+        <string id="yoZSmM0b" text="Sınıf Gücünü Kullan" original="Use Class Power"/>
     </strings>
 </base>

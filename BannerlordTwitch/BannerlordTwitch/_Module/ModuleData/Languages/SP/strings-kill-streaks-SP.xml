@@ -5,8 +5,7 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- Killing Spree -->
-        <string id="QNbIUDrh" text="Matanza"/>
+        <string id="QNbIUDrh" text="Matanza" original="Killing Spree"/>
     </strings>
 </base>

@@ -5,79 +5,78 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
-        <!-- Common -->        
+        <!-- Common -->
         <!-- Fireblade -->
-        <string id="yEtkv5ML" text="ファイアブレード"/>
+        <string id="yEtkv5ML" text="ファイアブレード" original="Fireblade"/>
         <!-- infantry -->
-        <string id="m8bz4drX" text="歩兵"/>
+        <string id="m8bz4drX" text="歩兵" original="infantry"/>
         <!-- Healthy -->
-        <string id="ROXuJJq8" text="元気"/>
+        <string id="ROXuJJq8" text="元気" original="Healthy"/>
         <!-- Explosive Arrows -->
-        <string id="skyn1cL6" text="爆発的な矢"/>
+        <string id="skyn1cL6" text="爆発的な矢" original="Explosive Arrows"/>
         <!-- archer -->
-        <string id="4tflp34a" text="射手"/>
+        <string id="4tflp34a" text="射手" original="archer"/>
         <!-- Fleet Footed -->
-        <string id="NE9Li2Hb" text="艦隊の足"/>
+        <string id="NE9Li2Hb" text="艦隊の足" original="Fleet Footed"/>
         <!-- Explosive Arrows -->
-        <string id="xgnH5owv" text="爆発的な矢"/>
+        <string id="xgnH5owv" text="爆発的な矢" original="Explosive Arrows"/>
         <!-- heavyarcher -->
-        <string id="JncRD8tX" text="ヘビーアーチャー"/>
+        <string id="JncRD8tX" text="ヘビーアーチャー" original="heavyarcher"/>
         <!-- Healthy -->
-        <string id="ZrmsIMPE" text="元気"/>
+        <string id="ZrmsIMPE" text="元気" original="Healthy"/>
         <!-- Heavy Bolts -->
-        <string id="QZD9XdpC" text="ヘビーボルト"/>
+        <string id="QZD9XdpC" text="ヘビーボルト" original="Heavy Bolts"/>
         <!-- crossbow -->
-        <string id="wV6R9Si5" text="クロスボウ"/>
+        <string id="wV6R9Si5" text="クロスボウ" original="crossbow"/>
         <!-- Self Healing -->
-        <string id="FvNPPHLJ" text="自己回復"/>
+        <string id="FvNPPHLJ" text="自己回復" original="Self Healing"/>
         <!-- Explosive Bolts -->
-        <string id="7GmE3SfQ" text="爆発性ボルト"/>
+        <string id="7GmE3SfQ" text="爆発性ボルト" original="Explosive Bolts"/>
         <!-- heavycrossbow -->
-        <string id="bpzytNbP" text="ヘビークロスボウ"/>
+        <string id="bpzytNbP" text="ヘビークロスボウ" original="heavycrossbow"/>
         <!-- Healthy -->
-        <string id="k7booFb2" text="元気"/>
+        <string id="k7booFb2" text="元気" original="Healthy"/>
         <!-- Trample -->
-        <string id="ZEGEpycY" text="トランプル"/>
+        <string id="ZEGEpycY" text="トランプル" original="Trample"/>
         <!-- cavalry -->
-        <string id="jNaFWF9t" text="騎兵"/>
+        <string id="jNaFWF9t" text="騎兵" original="cavalry"/>
         <!-- A Good Horse -->
-        <string id="YghplAdF" text="良い馬"/>
+        <string id="YghplAdF" text="良い馬" original="A Good Horse"/>
         <!-- Trample -->
-        <string id="mmeJSrm9" text="トランプル"/>
+        <string id="mmeJSrm9" text="トランプル" original="Trample"/>
         <!-- camelry -->
-        <string id="mJ8RVORq" text="キャメルリー"/>
+        <string id="mJ8RVORq" text="キャメルリー" original="camelry"/>
         <!-- A Good Camel -->
-        <string id="atGMPeNF" text="良いラクダ"/>
+        <string id="atGMPeNF" text="良いラクダ" original="A Good Camel"/>
         <!-- Explosive Arrows -->
-        <string id="YpIUHASp" text="爆発的な矢"/>
+        <string id="YpIUHASp" text="爆発的な矢" original="Explosive Arrows"/>
         <!-- horsearcher -->
-        <string id="p5qJfkkp" text="ホースアーチャー"/>
+        <string id="p5qJfkkp" text="ホースアーチャー" original="horsearcher"/>
         <!-- Mounted Archery -->
-        <string id="zxgdfSIS" text="弓騎兵"/>
+        <string id="zxgdfSIS" text="弓騎兵" original="Mounted Archery"/>
         <!-- Heavy Arrows -->
-        <string id="FrX7AiyI" text="太い矢"/>
+        <string id="FrX7AiyI" text="太い矢" original="Heavy Arrows"/>
         <!-- camelarcher -->
-        <string id="HreZWoyd" text="キャメラーチャー"/>
+        <string id="HreZWoyd" text="キャメラーチャー" original="camelarcher"/>
         <!-- Mounted Archery -->
-        <string id="szdoTAQj" text="弓騎兵"/>
+        <string id="szdoTAQj" text="弓騎兵" original="Mounted Archery"/>
         <!-- Break Through -->
-        <string id="E3qGC3fs" text="突破"/>
+        <string id="E3qGC3fs" text="突破" original="Break Through"/>
         <!-- skirmisher -->
-        <string id="9euSgzCd" text="小競り合い"/>
+        <string id="9euSgzCd" text="小競り合い" original="skirmisher"/>
         <!-- Retribution -->
-        <string id="Lw8xQu1P" text="報復"/>
+        <string id="Lw8xQu1P" text="報復" original="Retribution"/>
         <!-- Berserker Rage -->
-        <string id="1DSLInEJ" text="バーサーカーレイジ"/>
+        <string id="1DSLInEJ" text="バーサーカーレイジ" original="Berserker Rage"/>
         <!-- berserker -->
-        <string id="wVjXAFal" text="バーサーカー"/>
+        <string id="wVjXAFal" text="バーサーカー" original="berserker"/>
         <!-- Glass Cannon -->
-        <string id="nB4Qb0mD" text="ガラスキャノン"/>
+        <string id="nB4Qb0mD" text="ガラスキャノン" original="Glass Cannon"/>
         <!-- Retribution -->
-        <string id="rzIl9tm3" text="報復"/>
+        <string id="rzIl9tm3" text="報復" original="Retribution"/>
         <!-- looter -->
-        <string id="4JffsJMD" text="略奪者"/>
+        <string id="4JffsJMD" text="略奪者" original="looter"/>
         <!-- Grenades -->
-        <string id="nmjVjakS" text="手榴弾"/>
+        <string id="nmjVjakS" text="手榴弾" original="Grenades"/>
     </strings>
 </base>

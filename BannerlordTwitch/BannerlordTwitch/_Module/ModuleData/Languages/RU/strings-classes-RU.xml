@@ -5,79 +5,78 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
-        <!-- Common -->        
+        <!-- Common -->
         <!-- Fireblade -->
-        <string id="yEtkv5ML" text="Огненный меч"/>
+        <string id="yEtkv5ML" text="Огненный меч" original="Fireblade"/>
         <!-- infantry -->
-        <string id="m8bz4drX" text="пехота"/>
+        <string id="m8bz4drX" text="пехота" original="infantry"/>
         <!-- Healthy -->
-        <string id="ROXuJJq8" text="Здоровый"/>
+        <string id="ROXuJJq8" text="Здоровый" original="Healthy"/>
         <!-- Explosive Arrows -->
-        <string id="skyn1cL6" text="Взрывные стрелы"/>
+        <string id="skyn1cL6" text="Взрывные стрелы" original="Explosive Arrows"/>
         <!-- archer -->
-        <string id="4tflp34a" text="лучник"/>
+        <string id="4tflp34a" text="лучник" original="archer"/>
         <!-- Fleet Footed -->
-        <string id="NE9Li2Hb" text="Флот Footed"/>
+        <string id="NE9Li2Hb" text="Флот Footed" original="Fleet Footed"/>
         <!-- Explosive Arrows -->
-        <string id="xgnH5owv" text="Взрывные стрелы"/>
+        <string id="xgnH5owv" text="Взрывные стрелы" original="Explosive Arrows"/>
         <!-- heavyarcher -->
-        <string id="JncRD8tX" text="тяжеловес"/>
+        <string id="JncRD8tX" text="тяжеловес" original="heavyarcher"/>
         <!-- Healthy -->
-        <string id="ZrmsIMPE" text="Здоровый"/>
+        <string id="ZrmsIMPE" text="Здоровый" original="Healthy"/>
         <!-- Heavy Bolts -->
-        <string id="QZD9XdpC" text="Тяжелые болты"/>
+        <string id="QZD9XdpC" text="Тяжелые болты" original="Heavy Bolts"/>
         <!-- crossbow -->
-        <string id="wV6R9Si5" text="арбалет"/>
+        <string id="wV6R9Si5" text="арбалет" original="crossbow"/>
         <!-- Self Healing -->
-        <string id="FvNPPHLJ" text="Самостоятельное исцеление"/>
+        <string id="FvNPPHLJ" text="Самостоятельное исцеление" original="Self Healing"/>
         <!-- Explosive Bolts -->
-        <string id="7GmE3SfQ" text="Взрывные болты"/>
+        <string id="7GmE3SfQ" text="Взрывные болты" original="Explosive Bolts"/>
         <!-- heavycrossbow -->
-        <string id="bpzytNbP" text="тяжелый арбалет"/>
+        <string id="bpzytNbP" text="тяжелый арбалет" original="heavycrossbow"/>
         <!-- Healthy -->
-        <string id="k7booFb2" text="Здоровый"/>
+        <string id="k7booFb2" text="Здоровый" original="Healthy"/>
         <!-- Trample -->
-        <string id="ZEGEpycY" text="Топтать"/>
+        <string id="ZEGEpycY" text="Топтать" original="Trample"/>
         <!-- cavalry -->
-        <string id="jNaFWF9t" text="кавалерия"/>
+        <string id="jNaFWF9t" text="кавалерия" original="cavalry"/>
         <!-- A Good Horse -->
-        <string id="YghplAdF" text="Хорошая лошадь"/>
+        <string id="YghplAdF" text="Хорошая лошадь" original="A Good Horse"/>
         <!-- Trample -->
-        <string id="mmeJSrm9" text="Топтать"/>
+        <string id="mmeJSrm9" text="Топтать" original="Trample"/>
         <!-- camelry -->
-        <string id="mJ8RVORq" text="верблюд"/>
+        <string id="mJ8RVORq" text="верблюд" original="camelry"/>
         <!-- A Good Camel -->
-        <string id="atGMPeNF" text="Хороший верблюд"/>
+        <string id="atGMPeNF" text="Хороший верблюд" original="A Good Camel"/>
         <!-- Explosive Arrows -->
-        <string id="YpIUHASp" text="Взрывные стрелы"/>
+        <string id="YpIUHASp" text="Взрывные стрелы" original="Explosive Arrows"/>
         <!-- horsearcher -->
-        <string id="p5qJfkkp" text="конный лучник"/>
+        <string id="p5qJfkkp" text="конный лучник" original="horsearcher"/>
         <!-- Mounted Archery -->
-        <string id="zxgdfSIS" text="Конная стрельба из лука"/>
+        <string id="zxgdfSIS" text="Конная стрельба из лука" original="Mounted Archery"/>
         <!-- Heavy Arrows -->
-        <string id="FrX7AiyI" text="Тяжелые стрелы"/>
+        <string id="FrX7AiyI" text="Тяжелые стрелы" original="Heavy Arrows"/>
         <!-- camelarcher -->
-        <string id="HreZWoyd" text="верблюдовщик"/>
+        <string id="HreZWoyd" text="верблюдовщик" original="camelarcher"/>
         <!-- Mounted Archery -->
-        <string id="szdoTAQj" text="Конная стрельба из лука"/>
+        <string id="szdoTAQj" text="Конная стрельба из лука" original="Mounted Archery"/>
         <!-- Break Through -->
-        <string id="E3qGC3fs" text="Прорвать"/>
+        <string id="E3qGC3fs" text="Прорвать" original="Break Through"/>
         <!-- skirmisher -->
-        <string id="9euSgzCd" text="застрельщик"/>
+        <string id="9euSgzCd" text="застрельщик" original="skirmisher"/>
         <!-- Retribution -->
-        <string id="Lw8xQu1P" text="Возмездие"/>
+        <string id="Lw8xQu1P" text="Возмездие" original="Retribution"/>
         <!-- Berserker Rage -->
-        <string id="1DSLInEJ" text="Ярость берсерка"/>
+        <string id="1DSLInEJ" text="Ярость берсерка" original="Berserker Rage"/>
         <!-- berserker -->
-        <string id="wVjXAFal" text="берсерк"/>
+        <string id="wVjXAFal" text="берсерк" original="berserker"/>
         <!-- Glass Cannon -->
-        <string id="nB4Qb0mD" text="Стеклянная пушка"/>
+        <string id="nB4Qb0mD" text="Стеклянная пушка" original="Glass Cannon"/>
         <!-- Retribution -->
-        <string id="rzIl9tm3" text="Возмездие"/>
+        <string id="rzIl9tm3" text="Возмездие" original="Retribution"/>
         <!-- looter -->
-        <string id="4JffsJMD" text="мародер"/>
+        <string id="4JffsJMD" text="мародер" original="looter"/>
         <!-- Grenades -->
-        <string id="nmjVjakS" text="Гранаты"/>
+        <string id="nmjVjakS" text="Гранаты" original="Grenades"/>
     </strings>
 </base>

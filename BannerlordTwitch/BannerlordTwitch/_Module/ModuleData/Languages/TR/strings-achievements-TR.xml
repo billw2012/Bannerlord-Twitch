@@ -5,36 +5,30 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- Common -->
         <!-- Reward {ITEMNAME} -->
-        <string id="W47g8bCB" text="Ödül {ITEMNAME}"/>
+        <string id="W47g8bCB" text="Ödül {ITEMNAME}" original="Reward {ITEMNAME}"/>
         <!-- {viewer} is {name}! -->
-        <string id="TAWcPGIc" text="{viewer} is {name}!"/>
-        
-        
+        <string id="TAWcPGIc" text="{viewer} is {name}!" original="{viewer} is {name}!"/>
         <!-- {ITEMNAME} of Fealty -->
-        <string id="IvV04W31" text="{ITEMNAME} Sadakat"/>
+        <string id="IvV04W31" text="{ITEMNAME} Sadakat" original="{ITEMNAME} of Fealty"/>
         <!-- Renegades {ITEMNAME} -->
-        <string id="UQtSgnog" text="dönekler {ITEMNAME}"/>
+        <string id="UQtSgnog" text="dönekler {ITEMNAME}" original="Renegades {ITEMNAME}"/>
         <!-- Stream Sniper {ITEMNAME} -->
-        <string id="xI41h8NA" text="Sniper {ITEMNAME} yayınlayın"/>
-        
+        <string id="xI41h8NA" text="Sniper {ITEMNAME} yayınlayın" original="Stream Sniper {ITEMNAME}"/>
         <!-- Reliable -->
-        <string id="ODWiNBng" text="Güvenilir"/>
+        <string id="ODWiNBng" text="Güvenilir" original="Reliable"/>
         <!-- Trusted -->
-        <string id="fWTqF2sw" text="güvenilir"/>
+        <string id="fWTqF2sw" text="güvenilir" original="Trusted"/>
         <!-- Loyal -->
-        <string id="fe9J8von" text="Sadık"/>
+        <string id="fe9J8von" text="Sadık" original="Loyal"/>
         <!-- Rebellious -->
-        <string id="HdYFegeb" text="asi"/>
+        <string id="HdYFegeb" text="asi" original="Rebellious"/>
         <!-- Traitorous -->
-        <string id="gDHR7f8r" text="Hain"/>
+        <string id="gDHR7f8r" text="Hain" original="Traitorous"/>
         <!-- Renegade -->
-        <string id="VEH582e7" text="Dönek"/>
+        <string id="VEH582e7" text="Dönek" original="Renegade"/>
         <!-- Stream Sniper -->
-        <string id="Aj0gXKgZ" text="Keskin Nişancı Akışı"/>
-        
-        
+        <string id="Aj0gXKgZ" text="Keskin Nişancı Akışı" original="Stream Sniper"/>
     </strings>
 </base>

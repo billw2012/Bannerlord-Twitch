@@ -5,627 +5,597 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- Naming -->
         <!-- → -->
-        <string id="2Ncpkenz" text="→"/>
+        <string id="2Ncpkenz" text="→" original="→"/>
         <!-- + -->
-        <string id="83uNsc2Z" text="+"/>
+        <string id="83uNsc2Z" text="+" original="+"/>
         <!-- − -->
-        <string id="drHSxMvO" text="−"/>
+        <string id="drHSxMvO" text="−" original="−"/>
         <!-- ⦷ -->
-        <string id="BolFnYCO" text="⦷"/>
+        <string id="BolFnYCO" text="⦷" original="⦷"/>
         <!-- XP -->
-        <string id="JFCeRYdn" text="PD"/>
+        <string id="JFCeRYdn" text="PD" original="XP"/>
         <!-- HP -->
-        <string id="NtqSb7B7" text="HP"/>
+        <string id="NtqSb7B7" text="HP" original="HP"/>
         <!-- lvl -->
-        <string id="RQlq59mz" text="lvl"/>
+        <string id="RQlq59mz" text="lvl" original="lvl"/>
         <!-- Item -->
-        <string id="5rErcMGl" text="Przedmiot"/>
+        <string id="5rErcMGl" text="Przedmiot" original="Item"/>
         <!-- Skills -->
-        <string id="5gVLi7NA" text="Umiejętności"/>
+        <string id="5gVLi7NA" text="Umiejętności" original="Skills"/>
         <!--  ■ -->
-        <string id="aG3roJj3" text="■"/>
+        <string id="aG3roJj3" text="■" original=" ■"/>
         <!-- Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}! -->
-        <string id="fuwuk4bR" text="Za mało {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!"/>
-
+        <string id="fuwuk4bR" text="Za mało {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!" original="Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!"/>
         <!-- Common Phrases -->
         <!-- General -->
-        <string id="C5T5nnix" text="Ogólny"/>
+        <string id="C5T5nnix" text="Ogólny" original="General"/>
         <!-- Limits -->
-        <string id="1lHWj3nT" text="Limity"/>
+        <string id="1lHWj3nT" text="Limity" original="Limits"/>
         <!-- Initialization -->
-        <string id="DRNO9OAl" text="Inicjalizacja"/>
+        <string id="DRNO9OAl" text="Inicjalizacja" original="Initialization"/>
         <!-- Enabled -->
-        <string id="sPKWnVA0" text="Włączony"/>
+        <string id="sPKWnVA0" text="Włączony" original="Enabled"/>
         <!-- Name -->
-        <string id="uUzmy7Lh" text="Nazwa"/>
+        <string id="uUzmy7Lh" text="Nazwa" original="Name"/>
         <!-- {From} to {To} -->
-        <string id="yVydxRHh" text="{From} to {To}"/>
+        <string id="yVydxRHh" text="{From} to {To}" original="{From} to {To}"/>
         <!-- Skill -->
-        <string id="OEMBeawy" text="Umiejętność"/>
+        <string id="OEMBeawy" text="Umiejętność" original="Skill"/>
         <!-- Level -->
-        <string id="iu0dtUP5" text="Poziom"/>
+        <string id="iu0dtUP5" text="Poziom" original="Level"/>
         <!-- Amount -->
-        <string id="DKfKt4qP" text="Ilość"/>
+        <string id="DKfKt4qP" text="Ilość" original="Amount"/>
         <!-- Costs {GoldCost} -->
-        <string id="Diwd7dBo" text="Koszty {GoldCost}"/>
+        <string id="Diwd7dBo" text="Koszty {GoldCost}" original="Costs {GoldCost}"/>
         <!-- Costs -->
-        <string id="r7sc3Tvg" text="Koszty"/>
+        <string id="r7sc3Tvg" text="Koszty" original="Costs"/>
         <!-- None -->
-        <string id="FNK3LD2p" text="Nic"/>
+        <string id="FNK3LD2p" text="Nic" original="None"/>
         <!-- Enabled -->
-        <string id="kpv03CqK" text="Włączony"/>
+        <string id="kpv03CqK" text="Włączony" original="Enabled"/>
         <!-- Disabled -->
-        <string id="soS8qlsg" text="Wyłączone"/>
+        <string id="soS8qlsg" text="Wyłączone" original="Disabled"/>
         <!-- Cost -->
-        <string id="LnQoMDLT" text="Koszt"/>
+        <string id="LnQoMDLT" text="Koszt" original="Cost"/>
         <!-- Is Enabled -->
-        <string id="oi2yz7aS" text="Jest włączony"/>
+        <string id="oi2yz7aS" text="Jest włączony" original="Is Enabled"/>
         <!-- all -->
-        <string id="hHekZwYB" text="wszystko"/>
+        <string id="hHekZwYB" text="wszystko" original="all"/>
         <!-- Battle -->
-        <string id="9qAD6eZR" text="Bitwa"/>
+        <string id="9qAD6eZR" text="Bitwa" original="Battle"/>
         <!-- Death -->
-        <string id="dbU7WEKG" text="Śmierć"/>
+        <string id="dbU7WEKG" text="Śmierć" original="Death"/>
         <!-- XP -->
-        <string id="06KnYhyh" text="PD"/>
+        <string id="06KnYhyh" text="PD" original="XP"/>
         <!-- Kill Rewards -->
-        <string id="E2RBmb1K" text="Zabij nagrody"/>
+        <string id="E2RBmb1K" text="Zabij nagrody" original="Kill Rewards"/>
         <!-- Battle End Rewards -->
-        <string id="uPwaOKdT" text="Nagrody za koniec bitwy"/>
+        <string id="uPwaOKdT" text="Nagrody za koniec bitwy" original="Battle End Rewards"/>
         <!-- Kill Streak Rewards -->
-        <string id="lnz7d1BI" text="Nagrody za serię zabójstw"/>
+        <string id="lnz7d1BI" text="Nagrody za serię zabójstw" original="Kill Streak Rewards"/>
         <!-- Achievements -->
-        <string id="EPr2clqT" text="Osiągnięcia"/>
+        <string id="EPr2clqT" text="Osiągnięcia" original="Achievements"/>
         <!-- Shouts -->
-        <string id="UhUpH8C8" text="Krzyki"/>
+        <string id="UhUpH8C8" text="Krzyki" original="Shouts"/>
         <!-- Effect -->
-        <string id="VBuncBq5" text="Efekt"/>
+        <string id="VBuncBq5" text="Efekt" original="Effect"/>
         <!-- Targets -->
-        <string id="R7rU0TbD" text="Cele"/>
+        <string id="R7rU0TbD" text="Cele" original="Targets"/>
         <!-- Appearance -->
-        <string id="umALVhJG" text="Wygląd zewnętrzny"/>
-        
+        <string id="umALVhJG" text="Wygląd zewnętrzny" original="Appearance"/>
         <!-- Settings -->
         <!-- Commands -->
-        <string id="JlFpeaxe" text="Polecenia"/>
+        <string id="JlFpeaxe" text="Polecenia" original="Commands"/>
         <!-- Command -->
-        <string id="15umM0Xo" text="Komenda"/>
+        <string id="15umM0Xo" text="Komenda" original="Command"/>
         <!-- Description -->
-        <string id="J6daarYb" text="Opis"/>
+        <string id="J6daarYb" text="Opis" original="Description"/>
         <!-- Settings -->
-        <string id="e2Fu7JYS" text="Ustawienia"/>
+        <string id="e2Fu7JYS" text="Ustawienia" original="Settings"/>
         <!-- Channel Point Rewards -->
-        <string id="u6xsREDY" text="Nagrody za punkty kanału"/>
-        
+        <string id="u6xsREDY" text="Nagrody za punkty kanału" original="Channel Point Rewards"/>
         <!-- ActionManager -->
         <!-- The game isn't started yet -->
-        <string id="kvbqfThe" text="Gra jeszcze się nie rozpoczęła"/>
+        <string id="kvbqfThe" text="Gra jeszcze się nie rozpoczęła" original="The game isn't started yet"/>
         <!-- Action with the id {RewardId} doesn't exist -->
-        <string id="B39sGef4" text="Akcja o identyfikatorze {RewardId} nie istnieje"/>
+        <string id="B39sGef4" text="Akcja o identyfikatorze {RewardId} nie istnieje" original="Action with the id {RewardId} doesn't exist"/>
         <!-- Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow -->
-        <string id="yo8Yw3Mz" text="Akcja {RewardId} took {TimeInMS}ms to Enqueue, to jest zbyt wolne"/>
-
+        <string id="yo8Yw3Mz" text="Akcja {RewardId} took {TimeInMS}ms to Enqueue, to jest zbyt wolne" original="Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow"/>
         <!-- BLTAgentModifierBehavior -->
         <!-- Scale Percent -->
-        <string id="JzII0KRZ" text="Skaluj procent"/>
+        <string id="JzII0KRZ" text="Skaluj procent" original="Scale Percent"/>
         <!-- Changes the size of the target -->
-        <string id="fc1SmPXH" text="Zmienia rozmiar celu"/>
+        <string id="fc1SmPXH" text="Zmienia rozmiar celu" original="Changes the size of the target"/>
         <!-- Apply To Mount -->
-        <string id="0vqiI434" text="Zastosuj do montażu"/>
+        <string id="0vqiI434" text="Zastosuj do montażu" original="Apply To Mount"/>
         <!-- Apply to the mount of the target, instead of the target themselves (only some properties are valid on mounts) -->
-        <string id="U0wJHDSa" text="Zastosuj do wierzchowca celu, zamiast samego celu (tylko niektóre właściwości są ważne dla wierzchowców)"/>
+        <string id="U0wJHDSa" text="Zastosuj do wierzchowca celu, zamiast samego celu (tylko niektóre właściwości są ważne dla wierzchowców)" original="Apply to the mount of the target, instead of the target themselves (only some properties are valid on mounts)"/>
         <!-- Properties -->
-        <string id="RdCw0xo9" text="Nieruchomości"/>
+        <string id="RdCw0xo9" text="Nieruchomości" original="Properties"/>
         <!-- Properties to change, and how much by -->
-        <string id="ZKN8fZsA" text="Właściwości do zmiany i o ile"/>
+        <string id="ZKN8fZsA" text="Właściwości do zmiany i o ile" original="Properties to change, and how much by"/>
         <!-- Skills -->
-        <string id="iPI9zoqR" text="Umiejętności"/>
+        <string id="iPI9zoqR" text="Umiejętności" original="Skills"/>
         <!-- Skills to change, and how much by (these aren't compatible with Apply To Mount) -->
-        <string id="PanMmDx9" text="Umiejętności do zmiany i o ile (nie są kompatybilne z aplikacją Apply To Mount)"/>
+        <string id="PanMmDx9" text="Umiejętności do zmiany i o ile (nie są kompatybilne z aplikacją Apply To Mount)" original="Skills to change, and how much by (these aren't compatible with Apply To Mount)"/>
         <!-- Scale {ScalePercent}% -->
-        <string id="EkKFoK73" text="Skaluj {ScalePercent}%"/>
+        <string id="EkKFoK73" text="Skaluj {ScalePercent}%" original="Scale {ScalePercent}%"/>
         <!-- (on mount) -->
-        <string id="l7w0bPt0" text="(na uchwycie)"/>
+        <string id="l7w0bPt0" text="(na uchwycie)" original="(on mount)"/>
         <!-- Mount {ScalePercent}% normal size -->
-        <string id="qhIXgPGK" text="Zamontuj {ScalePercent}% normalnego rozmiaru"/>
+        <string id="qhIXgPGK" text="Zamontuj {ScalePercent}% normalnego rozmiaru" original="Mount {ScalePercent}% normal size"/>
         <!-- {ScalePercent}% normal size -->
-        <string id="yLT1lfRC" text="{ScalePercent}% normalnego rozmiaru"/>
-        
+        <string id="yLT1lfRC" text="{ScalePercent}% normalnego rozmiaru" original="{ScalePercent}% normal size"/>
         <!-- DocumentationHelpers -->
-        
         <!-- ParticleEffectDef -->
         <!-- Particle effect system name, see ParticleEffects.txt for the full vanilla list -->
-        <string id="xgnntAyd" text="Nazwa systemu efektów cząsteczkowych, zobacz ParticleEffects.txt, aby uzyskać pełną listę wanilii"/>
+        <string id="xgnntAyd" text="Nazwa systemu efektów cząsteczkowych, zobacz ParticleEffects.txt, aby uzyskać pełną listę wanilii" original="Particle effect system name, see ParticleEffects.txt for the full vanilla list"/>
         <!-- On Weapon -->
-        <string id="w3eb5kWA" text="Na broni"/>
+        <string id="w3eb5kWA" text="Na broni" original="On Weapon"/>
         <!-- On Hands -->
-        <string id="YLmpgn4j" text="Na rękach"/>
+        <string id="YLmpgn4j" text="Na rękach" original="On Hands"/>
         <!-- On Head -->
-        <string id="muuJpmaw" text="Na głowie"/>
+        <string id="muuJpmaw" text="Na głowie" original="On Head"/>
         <!-- On Body -->
-        <string id="m9p9nBjM" text="Na ciele"/>
+        <string id="m9p9nBjM" text="Na ciele" original="On Body"/>
         <!-- Attach Point -->
-        <string id="GCe3gQcz" text="Dołącz punkt"/>
+        <string id="GCe3gQcz" text="Dołącz punkt" original="Attach Point"/>
         <!-- Where to attach the particles -->
-        <string id="uNOYtEdN" text="Gdzie przymocować cząsteczki"/>
-        
-        <!-- DrivenPropertyItemSource -->        
+        <string id="uNOYtEdN" text="Gdzie przymocować cząsteczki" original="Where to attach the particles"/>
+        <!-- DrivenPropertyItemSource -->
         <!-- Armor Head -->
-        <string id="oUgW3q7p" text="Głowa zbroi"/>
+        <string id="oUgW3q7p" text="Głowa zbroi" original="Armor Head"/>
         <!-- Armor Torso -->
-        <string id="NYoNwE3R" text="Zbroja tułowia"/>
+        <string id="NYoNwE3R" text="Zbroja tułowia" original="Armor Torso"/>
         <!-- Armor Legs -->
-        <string id="VKAAkKbm" text="Nogi zbroi"/>
+        <string id="VKAAkKbm" text="Nogi zbroi" original="Armor Legs"/>
         <!-- Armor Arms -->
-        <string id="dzqBXvaS" text="Zbroja Ramiona"/>
+        <string id="dzqBXvaS" text="Zbroja Ramiona" original="Armor Arms"/>
         <!-- Armor Encumbrance -->
-        <string id="2EaDPdxT" text="Obciążenie pancerza"/>
+        <string id="2EaDPdxT" text="Obciążenie pancerza" original="Armor Encumbrance"/>
         <!-- Weapons Encumbrance -->
-        <string id="Kd1ZpiXo" text="Obciążenie broni"/>
+        <string id="Kd1ZpiXo" text="Obciążenie broni" original="Weapons Encumbrance"/>
         <!-- Top Speed Reach Duration -->
-        <string id="kZ2KuXHY" text="Czas osiągnięcia maksymalnej prędkości"/>
+        <string id="kZ2KuXHY" text="Czas osiągnięcia maksymalnej prędkości" original="Top Speed Reach Duration"/>
         <!-- Max Speed Multiplier -->
-        <string id="9yu9o5nH" text="Mnożnik maksymalnej prędkości"/>
+        <string id="9yu9o5nH" text="Mnożnik maksymalnej prędkości" original="Max Speed Multiplier"/>
         <!-- Combat Max Speed Multiplier -->
-        <string id="nvHAoLpy" text="Mnożnik maksymalnej prędkości walki"/>
+        <string id="nvHAoLpy" text="Mnożnik maksymalnej prędkości walki" original="Combat Max Speed Multiplier"/>
         <!-- Mount Charge Damage -->
-        <string id="RIMIU69S" text="Obrażenia podczas ładowania montowania"/>
+        <string id="RIMIU69S" text="Obrażenia podczas ładowania montowania" original="Mount Charge Damage"/>
         <!-- Mount Difficulty -->
-        <string id="9mYdZQI8" text="Trudność wznoszenia"/>
+        <string id="9mYdZQI8" text="Trudność wznoszenia" original="Mount Difficulty"/>
         <!-- Mount Maneuver -->
-        <string id="EaenR5S2" text="Manewr na górę"/>
+        <string id="EaenR5S2" text="Manewr na górę" original="Mount Maneuver"/>
         <!-- Mount Speed -->
-        <string id="NJpg1RsS" text="Prędkość montażu"/>
+        <string id="NJpg1RsS" text="Prędkość montażu" original="Mount Speed"/>
         <!-- Horse Archery Ability -->
-        <string id="UtGZ9B6F" text="Umiejętność łucznictwa konnego"/>
+        <string id="UtGZ9B6F" text="Umiejętność łucznictwa konnego" original="Horse Archery Ability"/>
         <!-- Riding Ability -->
-        <string id="pmUxn1vO" text="Umiejętność jazdy"/>
+        <string id="pmUxn1vO" text="Umiejętność jazdy" original="Riding Ability"/>
         <!-- Shield Ability -->
-        <string id="wLmAnuDu" text="Umiejętność tarczy"/>
+        <string id="wLmAnuDu" text="Umiejętność tarczy" original="Shield Ability"/>
         <!-- Handling Multiplier -->
-        <string id="YZt69g1x" text="Mnożnik obsługi"/>
+        <string id="YZt69g1x" text="Mnożnik obsługi" original="Handling Multiplier"/>
         <!-- Weapon Inaccuracy -->
-        <string id="Yem5BVmg" text="Niedokładność broni"/>
+        <string id="Yem5BVmg" text="Niedokładność broni" original="Weapon Inaccuracy"/>
         <!-- Swing Speed Multiplier -->
-        <string id="DUuJ6bM5" text="Mnożnik prędkości wymachu"/>
+        <string id="DUuJ6bM5" text="Mnożnik prędkości wymachu" original="Swing Speed Multiplier"/>
         <!-- Reload Speed -->
-        <string id="djGCJeM4" text="Prędkość przeładowania"/>
+        <string id="djGCJeM4" text="Prędkość przeładowania" original="Reload Speed"/>
         <!-- Reload Movement Penalty -->
-        <string id="4XrdvYDR" text="Kara za przeładowanie ruchu"/>
+        <string id="4XrdvYDR" text="Kara za przeładowanie ruchu" original="Reload Movement Penalty"/>
         <!-- Courage -->
-        <string id="GJftwazi" text="Odwaga"/>
+        <string id="GJftwazi" text="Odwaga" original="Courage"/>
         <!-- Shield Missile Collision Body Size Adder -->
-        <string id="8WAxev1i" text="Dodatek do wielkości ciała w przypadku kolizji tarczy"/>
+        <string id="8WAxev1i" text="Dodatek do wielkości ciała w przypadku kolizji tarczy" original="Shield Missile Collision Body Size Adder"/>
         <!-- Thrust Or Ranged Ready Speed Multiplier -->
-        <string id="xxkAFaWD" text="Mnożnik prędkości naporowej lub dystansowej"/>
+        <string id="xxkAFaWD" text="Mnożnik prędkości naporowej lub dystansowej" original="Thrust Or Ranged Ready Speed Multiplier"/>
         <!-- AI Shoot Frequency -->
-        <string id="iaxxNiiV" text="Częstotliwość zdjęć AI"/>
+        <string id="iaxxNiiV" text="Częstotliwość zdjęć AI" original="AI Shoot Frequency"/>
         <!-- AI Wait Before Shoot Factor -->
-        <string id="3HlCPScr" text="AI zaczekaj przed strzelaniem"/>
+        <string id="3HlCPScr" text="AI zaczekaj przed strzelaniem" original="AI Wait Before Shoot Factor"/>
         <!-- AI Block Chance -->
-        <string id="7xW74SvW" text="Szansa na blok AI"/>
+        <string id="7xW74SvW" text="Szansa na blok AI" original="AI Block Chance"/>
         <!-- AI Attack Chance -->
-        <string id="vIjQ6b5w" text="Szansa na atak AI"/>
+        <string id="vIjQ6b5w" text="Szansa na atak AI" original="AI Attack Chance"/>
         <!-- AI Kick -->
-        <string id="FgSI5C4F" text="AI Kick"/>
-        
+        <string id="FgSI5C4F" text="AI Kick" original="AI Kick"/>
         <!-- EquipmentType -->
         <!-- None -->
-        <string id="i7XX56i9" text="Nic"/>
+        <string id="i7XX56i9" text="Nic" original="None"/>
         <!-- Dagger -->
-        <string id="5HQtHOg4" text="Sztylet"/>
+        <string id="5HQtHOg4" text="Sztylet" original="Dagger"/>
         <!-- One Handed Sword -->
-        <string id="hZU8m8K9" text="Miecz jednoręczny"/>
+        <string id="hZU8m8K9" text="Miecz jednoręczny" original="One Handed Sword"/>
         <!-- Two Handed Sword -->
-        <string id="Lc70XOXH" text="Miecz dwuręczny"/>
+        <string id="Lc70XOXH" text="Miecz dwuręczny" original="Two Handed Sword"/>
         <!-- One Handed Axe -->
-        <string id="amKrRDlF" text="Topór jednoręczny"/>
+        <string id="amKrRDlF" text="Topór jednoręczny" original="One Handed Axe"/>
         <!-- Two Handed Axe -->
-        <string id="QPv8qS6h" text="Dwuręczny topór"/>
+        <string id="QPv8qS6h" text="Dwuręczny topór" original="Two Handed Axe"/>
         <!-- One Handed Mace -->
-        <string id="jTI9J3nq" text="Jednoręczna buława"/>
+        <string id="jTI9J3nq" text="Jednoręczna buława" original="One Handed Mace"/>
         <!-- Two Handed Mace -->
-        <string id="YzVmN0wN" text="Dwuręczna buława"/>
+        <string id="YzVmN0wN" text="Dwuręczna buława" original="Two Handed Mace"/>
         <!-- One Handed Lance -->
-        <string id="pP2mtmXu" text="Lanca jednoręczna"/>
+        <string id="pP2mtmXu" text="Lanca jednoręczna" original="One Handed Lance"/>
         <!-- Two Handed Lance -->
-        <string id="Y6CxpaYL" text="Lanca dwuręczna"/>
+        <string id="Y6CxpaYL" text="Lanca dwuręczna" original="Two Handed Lance"/>
         <!-- One Handed Glaive -->
-        <string id="r22oB2bm" text="Jednoręczna Glewia"/>
+        <string id="r22oB2bm" text="Jednoręczna Glewia" original="One Handed Glaive"/>
         <!-- Two Handed Glaive -->
-        <string id="BcmE6Y75" text="Glewia dwuręczna"/>
+        <string id="BcmE6Y75" text="Glewia dwuręczna" original="Two Handed Glaive"/>
         <!-- Bow -->
-        <string id="rroxl8j3" text="Kokarda"/>
+        <string id="rroxl8j3" text="Kokarda" original="Bow"/>
         <!-- Crossbow -->
-        <string id="CztMY8ZE" text="Kusza"/>
+        <string id="CztMY8ZE" text="Kusza" original="Crossbow"/>
         <!-- Arrows -->
-        <string id="DYYyhDUI" text="Strzałki"/>
+        <string id="DYYyhDUI" text="Strzałki" original="Arrows"/>
         <!-- Bolts -->
-        <string id="i281jKBH" text="Śruby"/>
+        <string id="i281jKBH" text="Śruby" original="Bolts"/>
         <!-- Throwing Knives -->
-        <string id="C1Qx1ZqP" text="Rzucać nożami"/>
+        <string id="C1Qx1ZqP" text="Rzucać nożami" original="Throwing Knives"/>
         <!-- Throwing Axes -->
-        <string id="S1NUKL4r" text="Rzucanie siekier"/>
+        <string id="S1NUKL4r" text="Rzucanie siekier" original="Throwing Axes"/>
         <!-- Throwing Javelins -->
-        <string id="ND1x0R2V" text="Rzucanie oszczepami"/>
+        <string id="ND1x0R2V" text="Rzucanie oszczepami" original="Throwing Javelins"/>
         <!-- Shield -->
-        <string id="p4eF4kc6" text="Tarcza"/>
+        <string id="p4eF4kc6" text="Tarcza" original="Shield"/>
         <!-- Stone -->
-        <string id="dYKgMqE8" text="Kamień"/>
-        
+        <string id="dYKgMqE8" text="Kamień" original="Stone"/>
         <!-- HeroHelpers.AllAttributes -->
         <!-- Vigor -->
-        <string id="IyK1yg5j" text="Wigor"/>
+        <string id="IyK1yg5j" text="Wigor" original="Vigor"/>
         <!-- Control -->
-        <string id="dHlLNy7j" text="Kontrola"/>
+        <string id="dHlLNy7j" text="Kontrola" original="Control"/>
         <!-- Endurance -->
-        <string id="qKVblzEJ" text="Wytrzymałość"/>
+        <string id="qKVblzEJ" text="Wytrzymałość" original="Endurance"/>
         <!-- Cunning -->
-        <string id="bJbFeqMG" text="Podstępny"/>
+        <string id="bJbFeqMG" text="Podstępny" original="Cunning"/>
         <!-- Social -->
-        <string id="lSrkwcJV" text="Społeczny"/>
+        <string id="lSrkwcJV" text="Społeczny" original="Social"/>
         <!-- Intelligence -->
-        <string id="qGfZfaai" text="Inteligencja"/>
-        
-        <!-- OneShotEffect -->                                 
+        <string id="qGfZfaai" text="Inteligencja" original="Intelligence"/>
+        <!-- OneShotEffect -->
         <!-- ParticleEffect -->
-        <string id="cv0hxm25" text="Efekt cząstek"/>
+        <string id="cv0hxm25" text="Efekt cząstek" original="ParticleEffect"/>
         <!-- Sound -->
-        <string id="FyXztxDH" text="Dźwięk"/>
+        <string id="FyXztxDH" text="Dźwięk" original="Sound"/>
         <!-- Particle Effect to play -->
-        <string id="N1WsBndO" text="Efekt cząsteczkowy do odtworzenia"/>
+        <string id="N1WsBndO" text="Efekt cząsteczkowy do odtworzenia" original="Particle Effect to play"/>
         <!-- Sound to play -->
-        <string id="2KrpVrR8" text="Dźwięk do odtworzenia"/>
-        
+        <string id="2KrpVrR8" text="Dźwięk do odtworzenia" original="Sound to play"/>
         <!-- PropertyModifierDef -->
         <!-- Name -->
-        <string id="ncGFtcFp" text="Nazwa"/>
+        <string id="ncGFtcFp" text="Nazwa" original="Name"/>
         <!-- ModifierPercent -->
-        <string id="RgtZnxLU" text="Procent modyfikatora"/>
+        <string id="RgtZnxLU" text="Procent modyfikatora" original="ModifierPercent"/>
         <!-- Add -->
-        <string id="uNduKTKf" text="Dodać"/>
+        <string id="uNduKTKf" text="Dodać" original="Add"/>
         <!-- The property to modify -->
-        <string id="SUI6n33o" text="Właściwość do modyfikacji"/>
+        <string id="SUI6n33o" text="Właściwość do modyfikacji" original="The property to modify"/>
         <!-- Percent modifier to apply to the property (100% will result in no chance) -->
-        <string id="fDNljlb9" text="Modyfikator procentowy do zastosowania do nieruchomości (100% spowoduje brak szans)"/>
+        <string id="fDNljlb9" text="Modyfikator procentowy do zastosowania do nieruchomości (100% spowoduje brak szans)" original="Percent modifier to apply to the property (100% will result in no chance)"/>
         <!-- How much to add or subtract from the property (0 will result in no change). This is applied AFTER Modifier. -->
-        <string id="CBWdKoGD" text="Ile dodać lub odjąć od właściwości (0 spowoduje brak zmian). Jest to stosowane PO Modyfikatorze."/>
+        <string id="CBWdKoGD" text="Ile dodać lub odjąć od właściwości (0 spowoduje brak zmian). Jest to stosowane PO Modyfikatorze." original="How much to add or subtract from the property (0 will result in no change). This is applied AFTER Modifier."/>
         <!-- (no change) -->
-        <string id="usihVSj3" text="(bez zmiany)"/>
-
+        <string id="usihVSj3" text="(bez zmiany)" original="(no change)"/>
         <!-- SkillModifierDef -->
         <!-- ModifierPercent -->
-        <string id="jgNUxcBa" text="Procent modyfikatora"/>
+        <string id="jgNUxcBa" text="Procent modyfikatora" original="ModifierPercent"/>
         <!-- Add -->
-        <string id="Au82n7kL" text="Dodać"/>
+        <string id="Au82n7kL" text="Dodać" original="Add"/>
         <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
-        <string id="46oj12tA" text="Umiejętność lub grupa umiejętności do modyfikatora (wszystkie umiejętności w grupie zostaną zmodyfikowane)"/>
+        <string id="46oj12tA" text="Umiejętność lub grupa umiejętności do modyfikatora (wszystkie umiejętności w grupie zostaną zmodyfikowane)" original="Skill or skill group to modifier (all skills in a group will be modified)"/>
         <!-- Percent modifier to apply to the skill (100% will result in no chance) -->
-        <string id="S34uXWMu" text="Modyfikator procentu do zastosowania do umiejętności (100% oznacza brak szans)"/>
+        <string id="S34uXWMu" text="Modyfikator procentu do zastosowania do umiejętności (100% oznacza brak szans)" original="Percent modifier to apply to the skill (100% will result in no chance)"/>
         <!-- How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier. -->
-        <string id="hPQpBmRR" text="Ile dodać lub odjąć od umiejętności (0 spowoduje brak zmian). Jest to stosowane PO Modyfikatorze."/>
+        <string id="hPQpBmRR" text="Ile dodać lub odjąć od umiejętności (0 spowoduje brak zmian). Jest to stosowane PO Modyfikatorze." original="How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier."/>
         <!-- (no change) -->
-        <string id="PsUcJvPZ" text="(bez zmiany)"/>
-        
+        <string id="PsUcJvPZ" text="(bez zmiany)" original="(no change)"/>
         <!-- BLTOverlay -->
         <!-- BLT Overlay -->
-        <string id="fmjzDasd" text="Nakładka BLT"/>
+        <string id="fmjzDasd" text="Nakładka BLT" original="BLT Overlay"/>
         <!-- For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again. -->
-        <string id="Kgi2isWy" text="Aby źródło przeglądarki nakładki BLT mogło działać, musi zarezerwować port {Port} i zezwolić na to przez Zaporę systemu Windows.\nWymaga to uprawnień administratora, o które zostaniesz poproszony po naciśnięciu Ok.\nJeśli się powiedzie, nie zobaczysz tego wyskakujące okienko ponownie."/>
+        <string id="Kgi2isWy" text="Aby źródło przeglądarki nakładki BLT mogło działać, musi zarezerwować port {Port} i zezwolić na to przez Zaporę systemu Windows.\nWymaga to uprawnień administratora, o które zostaniesz poproszony po naciśnięciu Ok.\nJeśli się powiedzie, nie zobaczysz tego wyskakujące okienko ponownie." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
         <!-- Okay -->
-        <string id="yXwMSbr4" text="W porządku"/>
+        <string id="yXwMSbr4" text="W porządku" original="Okay"/>
         <!-- Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window. -->
-        <string id="6ucf05tp" text="Konfiguracja powiodła się!\nMożesz teraz uzyskać dostęp do nakładki pod adresem {UrlRoot}.\nMożesz znaleźć ten link ponownie na karcie Autoryzuj w oknie Konfiguracja BLT."/>
+        <string id="6ucf05tp" text="Konfiguracja powiodła się!\nMożesz teraz uzyskać dostęp do nakładki pod adresem {UrlRoot}.\nMożesz znaleźć ten link ponownie na karcie Autoryzuj w oknie Konfiguracja BLT." original="Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."/>
         <!-- Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord. -->
-        <string id="usADfORe" text="Konfiguracja NIEUDANA:\n \&amp;quot;{e.Message}\&amp;quot;\nMożesz nie mieć dostępu do nakładki.\nZgłoś ten problem w niezgodzie."/>
-
+        <string id="usADfORe" text="Konfiguracja NIEUDANA:\n \&amp;quot;{e.Message}\&amp;quot;\nMożesz nie mieć dostępu do nakładki.\nZgłoś ten problem w niezgodzie." original="Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord."/>
         <!-- ActionBase -->
         <!-- Whether this is enabled or not -->
-        <string id="YM1rP7sP" text="Czy to jest włączone, czy nie"/>
+        <string id="YM1rP7sP" text="Czy to jest włączone, czy nie" original="Whether this is enabled or not"/>
         <!-- Show response in the twitch chat -->
-        <string id="7IBsjc51" text="Pokaż odpowiedź na czacie Twitcha"/>
+        <string id="7IBsjc51" text="Pokaż odpowiedź na czacie Twitcha" original="Show response in the twitch chat"/>
         <!-- Show response in the overlay window feed -->
-        <string id="UQRfOFjs" text="Pokaż odpowiedź w kanale nakładki"/>
+        <string id="UQRfOFjs" text="Pokaż odpowiedź w kanale nakładki" original="Show response in the overlay window feed"/>
         <!-- Name of the handler -->
-        <string id="ErhzbqFu" text="Imię i nazwisko przewodnika"/>
+        <string id="ErhzbqFu" text="Imię i nazwisko przewodnika" original="Name of the handler"/>
         <!-- Custom config for the handler -->
-        <string id="cdEbk84n" text="Niestandardowa konfiguracja obsługi"/>
+        <string id="cdEbk84n" text="Niestandardowa konfiguracja obsługi" original="Custom config for the handler"/>
         <!-- What to show in the generated documentation -->
-        <string id="W6pzg6VJ" text="Co pokazać w wygenerowanej dokumentacji"/>
+        <string id="W6pzg6VJ" text="Co pokazać w wygenerowanej dokumentacji" original="What to show in the generated documentation"/>
         <!-- Respond In Twitch -->
-        <string id="86rc4cz6" text="Odpowiedz na Twitchu"/>
+        <string id="86rc4cz6" text="Odpowiedz na Twitchu" original="Respond In Twitch"/>
         <!-- Respond In Overlay -->
-        <string id="0MgBhdtw" text="Odpowiedz w nakładce"/>
+        <string id="0MgBhdtw" text="Odpowiedz w nakładce" original="Respond In Overlay"/>
         <!-- Handler -->
-        <string id="dteVl09D" text="Treser"/>
+        <string id="dteVl09D" text="Treser" original="Handler"/>
         <!-- Handler Config -->
-        <string id="Zj8ni08E" text="Konfiguracja obsługi"/>
+        <string id="Zj8ni08E" text="Konfiguracja obsługi" original="Handler Config"/>
         <!-- Documentation -->
-        <string id="UP0DjNMM" text="Dokumentacja"/>
-        
+        <string id="UP0DjNMM" text="Dokumentacja" original="Documentation"/>
         <!-- Documentation -->
         <!-- Title -->
         <!-- Bannerlord Twitch Viewer Guide -->
-        <string id="ctAF1ghX" text="Przewodnik po przeglądarce Twitch Bannerlord"/>
+        <string id="ctAF1ghX" text="Przewodnik po przeglądarce Twitch Bannerlord" original="Bannerlord Twitch Viewer Guide"/>
         <!-- Introduction -->
         <!-- Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to &apos;adopt&apos; a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include &apos;summoning&apos; your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes &apos;class&apos;.&lt;br&gt;If you aren&apos;t sure where to start, begin by using the channel point redemption &apos;Adopt a Hero&apos;. -->
-        <string id="rElL5v6I" text="Bannerlord Twitch (BLT) to mod Twitch Integration dla Mount &amp;amp; Blade II: Bannerlord.&lt;br&gt; Jako widz możesz korzystać z nagród za punkty kanału (jeśli są dostępne) i poleceń czatu, aby wchodzić w interakcję z grą, gdy streamer gra.&lt;br&gt; Podstawową cechą BLT jest umożliwienie ci „zaadoptowania” bohatera w grze, tzn. postać w grze zostanie do ciebie przypisana, poda twoje imię na Twitchu i będzie dostępna do dalszej interakcji.&lt;br&gt; Niektóre przykłady rzeczy, które możesz zrobić ze swoim bohaterem, obejmują „przyzywanie” swojego bohatera do bitew, w których bierze udział streamer, dołączanie do turniejów widzów, ulepszanie sprzętu, wybieranie „klasy” bohatera.&lt;br&gt; Jeśli nie wiesz, od czego zacząć, zacznij od wykorzystania punktów kanału „Adoptuj bohatera”."/>
-
+        <string id="rElL5v6I" text="Bannerlord Twitch (BLT) to mod Twitch Integration dla Mount &amp;amp; Blade II: Bannerlord.&lt;br&gt; Jako widz możesz korzystać z nagród za punkty kanału (jeśli są dostępne) i poleceń czatu, aby wchodzić w interakcję z grą, gdy streamer gra.&lt;br&gt; Podstawową cechą BLT jest umożliwienie ci „zaadoptowania” bohatera w grze, tzn. postać w grze zostanie do ciebie przypisana, poda twoje imię na Twitchu i będzie dostępna do dalszej interakcji.&lt;br&gt; Niektóre przykłady rzeczy, które możesz zrobić ze swoim bohaterem, obejmują „przywoływanie” swojego bohatera do bitew, w których bierze udział streamer, dołączanie do turniejów widzów, ulepszanie sprzętu, wybieranie „klasy” bohatera.&lt;br&gt; Jeśli nie wiesz, od czego zacząć, zacznij od wykorzystania punktów kanału „Adoptuj bohatera”." original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
         <!-- Command -->
         <!-- Bot command definition -->
-        <string id="8SbGSWFY" text="Definicja polecenia bota"/>
+        <string id="8SbGSWFY" text="Definicja polecenia bota" original="Bot command definition"/>
         <!-- Name -->
-        <string id="D1lt1bSQ" text="Nazwa"/>
+        <string id="D1lt1bSQ" text="Nazwa" original="Name"/>
         <!-- The command itself, not including the ! -->
-        <string id="u1Ua0LXJ" text="Samo polecenie, bez !"/>
+        <string id="u1Ua0LXJ" text="Samo polecenie, bez !" original="The command itself, not including the !"/>
         <!-- HideHelp -->
-        <string id="TpnV5Mpi" text="UkryjPomoc"/>
+        <string id="TpnV5Mpi" text="UkryjPomoc" original="HideHelp"/>
         <!-- Hides the command from the !help action -->
-        <string id="0AZVaBQN" text="Ukrywa polecenie z akcji !help"/>
+        <string id="0AZVaBQN" text="Ukrywa polecenie z akcji !help" original="Hides the command from the !help action"/>
         <!-- Help -->
-        <string id="JqNXbyIT" text="Pomoc"/>
+        <string id="JqNXbyIT" text="Pomoc" original="Help"/>
         <!-- What to show in the !help command -->
-        <string id="9QV7UzFh" text="Co pokazać w !poleceniu pomocy"/>
-        
+        <string id="9QV7UzFh" text="Co pokazać w !poleceniu pomocy" original="What to show in the !help command"/>
         <!-- Reward -->
         <!-- Channel points reward definition -->
-        <string id="KaFWtYmc" text="Definicja nagrody za punkty kanału"/>
+        <string id="KaFWtYmc" text="Definicja nagrody za punkty kanału" original="Channel points reward definition"/>
         <!-- Twitch channel points reward definition -->
-        <string id="zq79vZqY" text="Definicja nagrody za punkty kanału Twitch"/>
+        <string id="zq79vZqY" text="Definicja nagrody za punkty kanału Twitch" original="Twitch channel points reward definition"/>
         <!-- Reward Specification -->
-        <string id="sF4buTM8" text="Specyfikacja nagrody"/>
-        
+        <string id="sF4buTM8" text="Specyfikacja nagrody" original="Reward Specification"/>
         <!-- RewardSpec -->
         <!-- The Twitch specific part of the channel points reward specification -->
-        <string id="glIst7fu" text="Specyficzna dla Twitcha część specyfikacji nagród za punkty kanału"/>
+        <string id="glIst7fu" text="Specyficzna dla Twitcha część specyfikacji nagród za punkty kanału" original="The Twitch specific part of the channel points reward specification"/>
         <!-- The title of the reward -->
-        <string id="b8OBGhIk" text="Tytuł nagrody"/>
+        <string id="b8OBGhIk" text="Tytuł nagrody" original="The title of the reward"/>
         <!-- Whether the reward will automatically be set to fulfilled once completed in game. If you set this to true then the redemptions that successfully complete in game will stay in your redemption queue. This is useful if you are worried about people losing points if the game crashes, or you reload an older save. -->
-        <string id="Kunfq4KA" text="Czy nagroda zostanie automatycznie wypełniona po ukończeniu w grze. Jeśli ustawisz to na true, nagrody, które zostały pomyślnie ukończone w grze, pozostaną w Twojej kolejce. Jest to przydatne, jeśli martwisz się, że ludzie stracą punkty w przypadku awarii gry lub przeładujesz starszy zapis."/>
+        <string id="Kunfq4KA" text="Czy nagroda zostanie automatycznie wypełniona po ukończeniu w grze. Jeśli ustawisz to na wartość prawda, nagrody, które zostały pomyślnie ukończone w grze, pozostaną w Twojej kolejce. Jest to przydatne, jeśli martwisz się, że ludzie stracą punkty w przypadku awarii gry lub przeładujesz starszy zapis." original="Whether the reward will automatically be set to fulfilled once completed in game. If you set this to true then the redemptions that successfully complete in game will stay in your redemption queue. This is useful if you are worried about people losing points if the game crashes, or you reload an older save."/>
         <!-- Description / prompt -->
-        <string id="yXhrzrGA" text="Opis/podpowiedź"/>
+        <string id="yXhrzrGA" text="Opis/podpowiedź" original="Description / prompt"/>
         <!-- The cost of the reward -->
-        <string id="dvYTG9UH" text="Koszt nagrody"/>
+        <string id="dvYTG9UH" text="Koszt nagrody" original="The cost of the reward"/>
         <!-- Is the reward currently enabled, if false the reward won’t show up to viewers. -->
-        <string id="iCzROk3u" text="Czy nagroda jest obecnie włączona, jeśli jest fałszem, nagroda nie pojawi się widzom."/>
+        <string id="iCzROk3u" text="Czy nagroda jest obecnie włączona, jeśli jest fałszem, nagroda nie pojawi się widzom." original="Is the reward currently enabled, if false the reward won’t show up to viewers."/>
         <!-- Custom background color for the reward -->
-        <string id="Bg62Iggr" text="Niestandardowy kolor tła nagrody"/>
+        <string id="Bg62Iggr" text="Niestandardowy kolor tła nagrody" original="Custom background color for the reward"/>
         <!-- Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown. -->
-        <string id="XqPRNwVc" text="Czy użytkownik musi wprowadzić informacje podczas odbierania nagrody. Jeśli to prawda, zostanie wyświetlony monit."/>
+        <string id="XqPRNwVc" text="Czy użytkownik musi wprowadzić informacje podczas odbierania nagrody. Jeśli to prawda, zostanie wyświetlony monit." original="Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown."/>
         <!-- Title -->
-        <string id="EJDKdXPV" text="Tytuł"/>
+        <string id="EJDKdXPV" text="Tytuł" original="Title"/>
         <!-- Disable Automatic Fulfillment -->
-        <string id="Obz1yM6k" text="Wyłącz automatyczną realizację"/>
+        <string id="Obz1yM6k" text="Wyłącz automatyczną realizację" original="Disable Automatic Fulfillment"/>
         <!-- Prompt -->
-        <string id="e9jiFSF4" text="Podpowiedź"/>
+        <string id="e9jiFSF4" text="Podpowiedź" original="Prompt"/>
         <!-- Background Color -->
-        <string id="YzP57nUK" text="Kolor tła"/>
+        <string id="YzP57nUK" text="Kolor tła" original="Background Color"/>
         <!-- Is User Input Required -->
-        <string id="9aESWqlM" text="Czy wymagane jest wprowadzenie danych?"/>
+        <string id="9aESWqlM" text="Czy wymagane jest wprowadzenie danych?" original="Is User Input Required"/>
         <!-- Max Per Stream -->
-        <string id="qAxLr567" text="Maks. na strumień"/>
+        <string id="qAxLr567" text="Maks. na strumień" original="Max Per Stream"/>
         <!-- Max Per User Per Stream -->
-        <string id="V5NnvzZH" text="Maks. na użytkownika na strumień"/>
+        <string id="V5NnvzZH" text="Maks. na użytkownika na strumień" original="Max Per User Per Stream"/>
         <!-- Global Cooldown Seconds -->
-        <string id="Rulwnhfz" text="Globalne sekundy odnowienia"/>
+        <string id="Rulwnhfz" text="Globalne sekundy odnowienia" original="Global Cooldown Seconds"/>
         <!-- Reward Title Here -->
-        <string id="6ORulLUR" text="Tytuł nagrody tutaj"/>
+        <string id="6ORulLUR" text="Tytuł nagrody tutaj" original="Reward Title Here"/>
         <!-- The maximum number per stream, defaults to unlimited -->
-        <string id="Ho1k72DC" text="Maksymalna liczba na strumień, domyślnie nieograniczona"/>
+        <string id="Ho1k72DC" text="Maksymalna liczba na strumień, domyślnie nieograniczona" original="The maximum number per stream, defaults to unlimited"/>
         <!-- The maximum number per user per stream, defaults to unlimited -->
-        <string id="cdWQe1En" text="Maksymalna liczba na użytkownika na strumień, domyślnie nieograniczona"/>
+        <string id="cdWQe1En" text="Maksymalna liczba na użytkownika na strumień, domyślnie nieograniczona" original="The maximum number per user per stream, defaults to unlimited"/>
         <!-- The cooldown in seconds, defaults to unlimited -->
-        <string id="yJRKVszb" text="Czas odnowienia w sekundach, domyślnie nieograniczony"/>
-        
+        <string id="yJRKVszb" text="Czas odnowienia w sekundach, domyślnie nieograniczony" original="The cooldown in seconds, defaults to unlimited"/>
         <!-- TwitchService -->
         <!-- Usage: !{cmd.Name} {args} -->
-        <string id="JSW1ryNl" text="Użycie: !{cmd.Name} {args}"/>
+        <string id="JSW1ryNl" text="Użycie: !{cmd.Name} {args}" original="Usage: !{cmd.Name} {args}"/>
         <!-- Usage: {args} -->
-        <string id="mdhbHYNM" text="Użycie: {args}"/>
+        <string id="mdhbHYNM" text="Użycie: {args}" original="Usage: {args}"/>
         <!-- Commands:  -->
-        <string id="luOJS8dL" text="Polecenia:"/>
+        <string id="luOJS8dL" text="Polecenia:" original="Commands: "/>
         <!-- Also see Channel Point Rewards -->
-        <string id="0o3dPQSk" text="Zobacz także Nagrody za punkty kanału"/>
+        <string id="0o3dPQSk" text="Zobacz także Nagrody za punkty kanału" original="Also see Channel Point Rewards"/>
         <!-- TwitchService connected -->
-        <string id="BiYZ1CbN" text="Połączono z usługą Twitch"/>
+        <string id="BiYZ1CbN" text="Połączono z usługą Twitch" original="TwitchService connected"/>
         <!-- TwitchService stopped -->
-        <string id="mEcBdqNC" text="Usługa Twitch została zatrzymana"/>
-        
+        <string id="mEcBdqNC" text="Usługa Twitch została zatrzymana" original="TwitchService stopped"/>
         <!-- TwitchService.Bot -->
         <!-- [BLT]  -->
-        <string id="b4tJSNJG" text="[BLT]"/>
+        <string id="b4tJSNJG" text="[BLT]" original="[BLT] "/>
         <!-- Bot connected -->
-        <string id="DYWDiBCl" text="Połączono z botem"/>
+        <string id="DYWDiBCl" text="Połączono z botem" original="Bot connected"/>
         <!-- Bot disconnected -->
-        <string id="thucznzJ" text="Bot odłączony"/>
+        <string id="thucznzJ" text="Bot odłączony" original="Bot disconnected"/>
         <!-- @{BotUsername} has joined channel {Channel} -->
-        <string id="Hd6Q51eb" text="@{BotUsername} has joined channel {Channel}"/>
+        <string id="Hd6Q51eb" text="@{BotUsername} has joined channel {Channel}" original="@{BotUsername} has joined channel {Channel}"/>
         <!-- bot reporting for duty! -->
-        <string id="SbufvVIR" text="zgłaszanie bota do służby!"/>
+        <string id="SbufvVIR" text="zgłaszanie bota do służby!" original="bot reporting for duty!"/>
         <!-- Type !help for command list -->
-        <string id="vBtkF25N" text="Wpisz !help dla listy poleceń"/>
-        
+        <string id="vBtkF25N" text="Wpisz !help dla listy poleceń" original="Type !help for command list"/>
         <!-- OneShotParticleEffectItemSource -->
         <!-- (none) -->
-        <string id="a8ibMIfH" text="(Żaden)"/>
+        <string id="a8ibMIfH" text="(Żaden)" original="(none)"/>
         <!-- Medium size explosion -->
-        <string id="AOpeOmby" text="Eksplozja średniej wielkości"/>
+        <string id="AOpeOmby" text="Eksplozja średniej wielkości" original="Medium size explosion"/>
         <!-- Small explosion -->
-        <string id="mTt3ybmi" text="Mała eksplozja"/>
+        <string id="mTt3ybmi" text="Mała eksplozja" original="Small explosion"/>
         <!-- Medium size explosion - stones -->
-        <string id="xVuYoEtO" text="Eksplozja średniej wielkości - kamienie"/>
+        <string id="xVuYoEtO" text="Eksplozja średniej wielkości - kamienie" original="Medium size explosion - stones"/>
         <!-- Small explosion - stones -->
-        <string id="FNhlEMT4" text="Mała eksplozja - kamienie"/>
+        <string id="FNhlEMT4" text="Mała eksplozja - kamienie" original="Small explosion - stones"/>
         <!-- Medium size explosion - water -->
-        <string id="O2QdeZUC" text="Eksplozja średniej wielkości - woda"/>
+        <string id="O2QdeZUC" text="Eksplozja średniej wielkości - woda" original="Medium size explosion - water"/>
         <!-- Small explosion - water -->
-        <string id="TfFqsORr" text="Mała eksplozja - woda"/>
+        <string id="TfFqsORr" text="Mała eksplozja - woda" original="Small explosion - water"/>
         <!-- Medium size explosion - wood -->
-        <string id="1NGLTDFg" text="Eksplozja średniej wielkości - drewno"/>
+        <string id="1NGLTDFg" text="Eksplozja średniej wielkości - drewno" original="Medium size explosion - wood"/>
         <!-- Small explosion - wood -->
-        <string id="WPLRpBTx" text="Mała eksplozja - drewno"/>
+        <string id="WPLRpBTx" text="Mała eksplozja - drewno" original="Small explosion - wood"/>
         <!-- Small poof of dust -->
-        <string id="7l7425dm" text="Mały puch kurzu"/>
+        <string id="7l7425dm" text="Mały puch kurzu" original="Small poof of dust"/>
         <!-- Small poof of dust -->
-        <string id="RQ0zb9Ci" text="Mały puch kurzu"/>
+        <string id="RQ0zb9Ci" text="Mały puch kurzu" original="Small poof of dust"/>
         <!-- Some splash like effect -->
-        <string id="3cfuE0SV" text="Jakiś efekt pluskania"/>
+        <string id="3cfuE0SV" text="Jakiś efekt pluskania" original="Some splash like effect"/>
         <!-- Some splash like effect with rings -->
-        <string id="t48JfjdQ" text="Jakiś efekt pluskania z pierścieniami"/>
+        <string id="t48JfjdQ" text="Jakiś efekt pluskania z pierścieniami" original="Some splash like effect with rings"/>
         <!-- Fire -->
-        <string id="rnN93eKr" text="Ogień"/>
+        <string id="rnN93eKr" text="Ogień" original="Fire"/>
         <!-- Yellow particles (healing effect) -->
-        <string id="ZgJoMGLX" text="Żółte cząsteczki (efekt leczniczy)"/>
+        <string id="ZgJoMGLX" text="Żółte cząsteczki (efekt leczniczy)" original="Yellow particles (healing effect)"/>
         <!-- Stronger fire, not too much smoke -->
-        <string id="0fqC5sHu" text="Silniejszy ogień, nie za dużo dymu"/>
+        <string id="0fqC5sHu" text="Silniejszy ogień, nie za dużo dymu" original="Stronger fire, not too much smoke"/>
         <!-- Subtle sparks -->
-        <string id="93pkM6UH" text="Subtelne iskry"/>
+        <string id="93pkM6UH" text="Subtelne iskry" original="Subtle sparks"/>
         <!-- Slow medium flames -->
-        <string id="00WeRBxp" text="Powolne średnie płomienie"/>
+        <string id="00WeRBxp" text="Powolne średnie płomienie" original="Slow medium flames"/>
         <!-- Effusing smoke and flames when moving -->
-        <string id="MyZ14rJ5" text="Rozpuszczanie dymu i płomieni podczas ruchu"/>
+        <string id="MyZ14rJ5" text="Rozpuszczanie dymu i płomieni podczas ruchu" original="Effusing smoke and flames when moving"/>
         <!-- Rain further away -->
-        <string id="bqPUVJMB" text="Deszcz dalej"/>
+        <string id="bqPUVJMB" text="Deszcz dalej" original="Rain further away"/>
         <!-- Rain on player -->
-        <string id="h5KzPJM3" text="Deszcz na gracza"/>
+        <string id="h5KzPJM3" text="Deszcz na gracza" original="Rain on player"/>
         <!-- Very subtle small particles -->
-        <string id="29DVQzgQ" text="Bardzo subtelne małe cząsteczki"/>
+        <string id="29DVQzgQ" text="Bardzo subtelne małe cząsteczki" original="Very subtle small particles"/>
         <!-- Some fire -->
-        <string id="P7UjJvf8" text="Trochę ognia"/>
+        <string id="P7UjJvf8" text="Trochę ognia" original="Some fire"/>
         <!-- Black spooky smoke -->
-        <string id="2Oajfsfa" text="Czarny upiorny dym"/>
+        <string id="2Oajfsfa" text="Czarny upiorny dym" original="Black spooky smoke"/>
         <!-- Very dense smoke falling down -->
-        <string id="4tpSH1gO" text="Opada bardzo gęsty dym"/>
-        
+        <string id="4tpSH1gO" text="Opada bardzo gęsty dym" original="Very dense smoke falling down"/>
         <!-- RangeFloatControl -->
         <!-- Min -->
-        <string id="TZN2VR8Q" text="Min"/>
+        <string id="TZN2VR8Q" text="Min" original="Min"/>
         <!-- Max -->
-        <string id="bySwFF1n" text="Maks."/>
-        
+        <string id="bySwFF1n" text="Maks." original="Max"/>
         <!-- BLTModule -->
         <!-- This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now. -->
-        <string id="IO9rnFpk" text="Ta kompilacja moda jest przeznaczona dla wersji gry {ExpectedVersion}. You are running game version {GameVersion}. Wychodzę teraz."/>
+        <string id="IO9rnFpk" text="Ta kompilacja moda jest przeznaczona dla wersji gry {ExpectedVersion}. You are running game version {GameVersion}. Wychodzę teraz." original="This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now."/>
         <!-- Bannerlord Twitch ERROR -->
-        <string id="Oru6b9Cy" text="BŁĄD Twitcha Bannerlorda"/>
-        
+        <string id="Oru6b9Cy" text="BŁĄD Twitcha Bannerlorda" original="Bannerlord Twitch ERROR"/>
         <!-- Loaded v{ModVersion} -->
-        <string id="45Q44kgm" text="Wczytano w{ModVersion}"/>
+        <string id="45Q44kgm" text="Wczytano w{ModVersion}" original="Loaded v{ModVersion}"/>
         <!-- Action Manager initialized -->
-        <string id="5G73vqNS" text="Uruchomiono Menedżera akcji"/>
-        
+        <string id="5G73vqNS" text="Uruchomiono Menedżera akcji" original="Action Manager initialized"/>
         <!-- Bannerlord Twitch Mod WARNING -->
-        <string id="PhRzCo9t" text="Bannerlord Twitch Mod OSTRZEŻENIE"/>
+        <string id="PhRzCo9t" text="Bannerlord Twitch Mod OSTRZEŻENIE" original="Bannerlord Twitch Mod WARNING"/>
         <!-- You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less. -->
-        <string id="7b4tU6y9" text="Masz wyłączony autozapis, awarie mogą spowodować utratę punktów kanału!\nZalecane ustawienie na 15 minut lub mniej."/>
+        <string id="7b4tU6y9" text="Masz wyłączony autozapis, awarie mogą spowodować utratę punktów kanału!\nZalecane ustawienie na 15 minut lub mniej." original="You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less."/>
         <!-- Okay -->
-        <string id="hpFXglKx" text="W porządku"/>
+        <string id="hpFXglKx" text="W porządku" original="Okay"/>
         <!-- Bannerlord Twitch Mod DISABLED -->
-        <string id="Sphd7XTS" text="Bannerlord Twitch Mod WYŁĄCZONY"/>
-        
+        <string id="Sphd7XTS" text="Bannerlord Twitch Mod WYŁĄCZONY" original="Bannerlord Twitch Mod DISABLED"/>
         <!-- Bannerlord Twitch Mod STARTUP ERROR -->
-        <string id="cuXwwHRe" text="BŁĄD URUCHOMIENIA Bannerlord Twitch Mod"/>
+        <string id="cuXwwHRe" text="BŁĄD URUCHOMIENIA Bannerlord Twitch Mod" original="Bannerlord Twitch Mod STARTUP ERROR"/>
         <!-- Error in {Location}, please report this on the discord: {Error} -->
-        <string id="C0G8s2Lv" text="Błąd w {Location}, please report this on the discord: {Error}"/>
-
+        <string id="C0G8s2Lv" text="Błąd w {Location}, please report this on the discord: {Error}" original="Error in {Location}, please report this on the discord: {Error}"/>
         <!-- SkillGroup -->
         <!-- None -->
-        <string id="p2ImRezI" text="Nic"/>
+        <string id="p2ImRezI" text="Nic" original="None"/>
         <!-- All -->
-        <string id="ZJUJQl8V" text="Wszystko"/>
+        <string id="ZJUJQl8V" text="Wszystko" original="All"/>
         <!-- Melee -->
-        <string id="Mtc9BiNI" text="Bijatyka"/>
+        <string id="Mtc9BiNI" text="Bijatyka" original="Melee"/>
         <!-- One Handed -->
-        <string id="NRNrLcBt" text="Jednoręczny"/>
+        <string id="NRNrLcBt" text="Jednoręczny" original="One Handed"/>
         <!-- Two Handed -->
-        <string id="93kpWTwA" text="Dwuręczny"/>
+        <string id="93kpWTwA" text="Dwuręczny" original="Two Handed"/>
         <!-- Polearm -->
-        <string id="PWibGbJ4" text="Broń drzewcowa"/>
+        <string id="PWibGbJ4" text="Broń drzewcowa" original="Polearm"/>
         <!-- Ranged -->
-        <string id="oidnJJjF" text="Dystansowy"/>
+        <string id="oidnJJjF" text="Dystansowy" original="Ranged"/>
         <!-- Bow -->
-        <string id="HW64G8xr" text="Kokarda"/>
+        <string id="HW64G8xr" text="Kokarda" original="Bow"/>
         <!-- Throwing -->
-        <string id="yR8vmGlW" text="Rzucanie"/>
+        <string id="yR8vmGlW" text="Rzucanie" original="Throwing"/>
         <!-- Crossbow -->
-        <string id="UG5KpbT7" text="Kusza"/>
+        <string id="UG5KpbT7" text="Kusza" original="Crossbow"/>
         <!-- Movement -->
-        <string id="tVQs3vuO" text="Ruch"/>
+        <string id="tVQs3vuO" text="Ruch" original="Movement"/>
         <!-- Riding -->
-        <string id="14Unsmk1" text="Jazda konna"/>
+        <string id="14Unsmk1" text="Jazda konna" original="Riding"/>
         <!-- Athletics -->
-        <string id="4zlH32Z5" text="lekkoatletyka"/>
+        <string id="4zlH32Z5" text="lekkoatletyka" original="Athletics"/>
         <!-- Support -->
-        <string id="AZD2nxRg" text="Wsparcie"/>
+        <string id="AZD2nxRg" text="Wsparcie" original="Support"/>
         <!-- Scouting -->
-        <string id="pOYKEhhf" text="Zwiady"/>
+        <string id="pOYKEhhf" text="Zwiady" original="Scouting"/>
         <!-- Trade -->
-        <string id="ijZZGbRE" text="Handel"/>
+        <string id="ijZZGbRE" text="Handel" original="Trade"/>
         <!-- Steward -->
-        <string id="CQqpGRtH" text="Steward"/>
+        <string id="CQqpGRtH" text="Steward" original="Steward"/>
         <!-- Medicine -->
-        <string id="X6rHMhsQ" text="Medycyna"/>
+        <string id="X6rHMhsQ" text="Medycyna" original="Medicine"/>
         <!-- Engineering -->
-        <string id="tNC2NHRC" text="Inżynieria"/>
+        <string id="tNC2NHRC" text="Inżynieria" original="Engineering"/>
         <!-- Personal -->
-        <string id="eYTQ1TD7" text="Osobisty"/>
+        <string id="eYTQ1TD7" text="Osobisty" original="Personal"/>
         <!-- Crafting -->
-        <string id="PrE6W0WX" text="Rzemiosło"/>
+        <string id="PrE6W0WX" text="Rzemiosło" original="Crafting"/>
         <!-- Tactics -->
-        <string id="BfNX6sak" text="Taktyka"/>
+        <string id="BfNX6sak" text="Taktyka" original="Tactics"/>
         <!-- Roguery -->
-        <string id="OvyNv1El" text="Łajdactwo"/>
+        <string id="OvyNv1El" text="Łajdactwo" original="Roguery"/>
         <!-- Charm -->
-        <string id="1NcKYexo" text="Czar"/>
+        <string id="1NcKYexo" text="Czar" original="Charm"/>
         <!-- Leadership -->
-        <string id="4684bsD7" text="Przywództwo"/>
-
+        <string id="4684bsD7" text="Przywództwo" original="Leadership"/>
         <!-- EquipmentType -->
         <!-- None -->
-        <string id="rMIAZRoT" text="Nic"/>
+        <string id="rMIAZRoT" text="Nic" original="None"/>
         <!-- Dagger -->
-        <string id="2gjNbpQI" text="Sztylet"/>
+        <string id="2gjNbpQI" text="Sztylet" original="Dagger"/>
         <!-- One Handed Sword -->
-        <string id="OTlpiu1X" text="Miecz jednoręczny"/>
+        <string id="OTlpiu1X" text="Miecz jednoręczny" original="One Handed Sword"/>
         <!-- Two Handed Sword -->
-        <string id="LGaaSaY8" text="Miecz dwuręczny"/>
+        <string id="LGaaSaY8" text="Miecz dwuręczny" original="Two Handed Sword"/>
         <!-- One Handed Axe -->
-        <string id="3teP1CbV" text="Topór jednoręczny"/>
+        <string id="3teP1CbV" text="Topór jednoręczny" original="One Handed Axe"/>
         <!-- Two Handed Axe -->
-        <string id="AufoIUAI" text="Dwuręczny topór"/>
+        <string id="AufoIUAI" text="Dwuręczny topór" original="Two Handed Axe"/>
         <!-- One Handed Mace -->
-        <string id="74iFLLnE" text="Jednoręczna buława"/>
+        <string id="74iFLLnE" text="Jednoręczna buława" original="One Handed Mace"/>
         <!-- Two Handed Mace -->
-        <string id="EVEYPnFF" text="Dwuręczna buława"/>
+        <string id="EVEYPnFF" text="Dwuręczna buława" original="Two Handed Mace"/>
         <!-- One Handed Lance -->
-        <string id="bvOtwaZm" text="Lanca jednoręczna"/>
+        <string id="bvOtwaZm" text="Lanca jednoręczna" original="One Handed Lance"/>
         <!-- Two Handed Lance -->
-        <string id="6fEElc9f" text="Lanca dwuręczna"/>
+        <string id="6fEElc9f" text="Lanca dwuręczna" original="Two Handed Lance"/>
         <!-- One Handed Glaive -->
-        <string id="ICcCZnli" text="Jednoręczna Glewia"/>
+        <string id="ICcCZnli" text="Jednoręczna Glewia" original="One Handed Glaive"/>
         <!-- Two Handed Glaive -->
-        <string id="KpYZoZE9" text="Glewia dwuręczna"/>
+        <string id="KpYZoZE9" text="Glewia dwuręczna" original="Two Handed Glaive"/>
         <!-- Bow -->
-        <string id="HKYDdm9S" text="Kokarda"/>
+        <string id="HKYDdm9S" text="Kokarda" original="Bow"/>
         <!-- Crossbow -->
-        <string id="3jigLyuH" text="Kusza"/>
+        <string id="3jigLyuH" text="Kusza" original="Crossbow"/>
         <!-- Arrows -->
-        <string id="UjKvUAX1" text="Strzałki"/>
+        <string id="UjKvUAX1" text="Strzałki" original="Arrows"/>
         <!-- Bolts -->
-        <string id="QBgdwwa3" text="Śruby"/>
+        <string id="QBgdwwa3" text="Śruby" original="Bolts"/>
         <!-- Throwing Knives -->
-        <string id="IUmqXtY6" text="Rzucać nożami"/>
+        <string id="IUmqXtY6" text="Rzucać nożami" original="Throwing Knives"/>
         <!-- Throwing Axes -->
-        <string id="mSnnORJ1" text="Rzucanie siekier"/>
+        <string id="mSnnORJ1" text="Rzucanie siekier" original="Throwing Axes"/>
         <!-- Throwing Javelins -->
-        <string id="WUrrIbmH" text="Rzucanie oszczepami"/>
+        <string id="WUrrIbmH" text="Rzucanie oszczepami" original="Throwing Javelins"/>
         <!-- Shield -->
-        <string id="om9ZF9Mu" text="Tarcza"/>
+        <string id="om9ZF9Mu" text="Tarcza" original="Shield"/>
         <!-- Stone -->
-        <string id="vIT4xG8X" text="Kamień"/>
-
+        <string id="vIT4xG8X" text="Kamień" original="Stone"/>
     </strings>
 </base>

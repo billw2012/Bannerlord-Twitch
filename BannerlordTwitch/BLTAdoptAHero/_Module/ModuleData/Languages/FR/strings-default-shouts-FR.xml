@@ -6,98 +6,98 @@
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- Don't worry, I've got your back! -->
-        <string id="DczOKFsA" text="Ne t&amp;#39;inquiète pas, je te soutiens !"/>
+        <string id="DczOKFsA" text="Ne t&amp;#39;inquiète pas, je te soutiens !" original="Don't worry, I've got your back!"/>
         <!-- I'm here! -->
-        <string id="pj9Z0M7G" text="Je suis ici!"/>
+        <string id="pj9Z0M7G" text="Je suis ici!" original="I'm here!"/>
         <!-- Which one should I stab? -->
-        <string id="y8DOtj2H" text="Lequel dois-je poignarder ?"/>
+        <string id="y8DOtj2H" text="Lequel dois-je poignarder ?" original="Which one should I stab?"/>
         <!-- Need a hand? -->
-        <string id="1i1OrZDd" text="Besoin d&amp;#39;un coup de main?"/>
+        <string id="1i1OrZDd" text="Besoin d&amp;#39;un coup de main?" original="Need a hand?"/>
         <!-- The price has been paid. I am at your service. -->
-        <string id="rVaJZ5Lo" text="Le prix a été payé. Je suis à votre service."/>
+        <string id="rVaJZ5Lo" text="Le prix a été payé. Je suis à votre service." original="The price has been paid. I am at your service."/>
         <!-- Once more unto the breach! -->
-        <string id="QEyO8W82" text="Encore une fois à la brèche !"/>
+        <string id="QEyO8W82" text="Encore une fois à la brèche !" original="Once more unto the breach!"/>
         <!-- Freeeeeedddooooooommmm! -->
-        <string id="Bo11t6gj" text="Freeeeeedddoooooommmm !"/>
+        <string id="Bo11t6gj" text="Freeeeeedddoooooommmm !" original="Freeeeeedddooooooommmm!"/>
         <!-- Remember the Alamo! -->
-        <string id="8uO8Isjm" text="Souvenez-vous de l&amp;#39;Alamo !"/>
+        <string id="8uO8Isjm" text="Souvenez-vous de l&amp;#39;Alamo !" original="Remember the Alamo!"/>
         <!-- Alala! -->
-        <string id="A3KdQJok" text="Alala !"/>
+        <string id="A3KdQJok" text="Alala !" original="Alala!"/>
         <!-- Eleleu! -->
-        <string id="pXVCAwAr" text="Eléleu !"/>
+        <string id="pXVCAwAr" text="Eléleu !" original="Eleleu!"/>
         <!-- Deus vult! -->
-        <string id="TlZjOFii" text="Deus vulte !"/>
+        <string id="TlZjOFii" text="Deus vulte !" original="Deus vult!"/>
         <!-- Banzai! -->
-        <string id="xPFIIEzw" text="Banzaï !"/>
+        <string id="xPFIIEzw" text="Banzaï !" original="Banzai!"/>
         <!-- Liberty or Death! -->
-        <string id="gmN3YLPw" text="La liberté ou la mort!"/>
+        <string id="gmN3YLPw" text="La liberté ou la mort!" original="Liberty or Death!"/>
         <!-- Har Har Mahadev! -->
-        <string id="FoDIukJK" text="Har Har Mahadev !"/>
+        <string id="FoDIukJK" text="Har Har Mahadev !" original="Har Har Mahadev!"/>
         <!-- Desperta ferro! -->
-        <string id="SSqdBzkY" text="Desperta ferro !"/>
+        <string id="SSqdBzkY" text="Desperta ferro !" original="Desperta ferro!"/>
         <!-- Alba gu bràth! -->
-        <string id="UHhpIpDU" text="Alba gu bràth!"/>
+        <string id="UHhpIpDU" text="Alba gu bràth!" original="Alba gu bràth!"/>
         <!-- Santiago! -->
-        <string id="lDo1AOCS" text="Santiago !"/>
+        <string id="lDo1AOCS" text="Santiago !" original="Santiago!"/>
         <!-- Huzzah! -->
-        <string id="gT95E89y" text="Huzzah !"/>
+        <string id="gT95E89y" text="Huzzah !" original="Huzzah!"/>
         <!-- War... war never changes... -->
-        <string id="fKKpcZGQ" text="La guerre, la guerre, ça ne change jamais..."/>
+        <string id="fKKpcZGQ" text="La guerre, la guerre, ça ne change jamais..." original="War... war never changes..."/>
         <!-- May we live to see the next sunrise! -->
-        <string id="vZgbxkW9" text="Puissions-nous vivre pour voir le prochain lever de soleil !"/>
+        <string id="vZgbxkW9" text="Puissions-nous vivre pour voir le prochain lever de soleil !" original="May we live to see the next sunrise!"/>
         <!-- For glory, charge! -->
-        <string id="wn7zIy9f" text="Pour la gloire, chargez !"/>
+        <string id="wn7zIy9f" text="Pour la gloire, chargez !" original="For glory, charge!"/>
         <!-- Give them nothing, but take from them everything! -->
-        <string id="KH7Dnbe7" text="Ne leur donnez rien, mais prenez-leur tout !"/>
+        <string id="KH7Dnbe7" text="Ne leur donnez rien, mais prenez-leur tout !" original="Give them nothing, but take from them everything!"/>
         <!-- Fell deeds awake, fire and slaughter! -->
-        <string id="FyBFecip" text="Fell les actes éveillés, le feu et le massacre !"/>
+        <string id="FyBFecip" text="Fell les actes éveillés, le feu et le massacre !" original="Fell deeds awake, fire and slaughter!"/>
         <!-- Spooooooooooooooooooon! -->
-        <string id="H7asM2KG" text="Spooooooooooooooooon !"/>
+        <string id="H7asM2KG" text="Spooooooooooooooooon !" original="Spooooooooooooooooooon!"/>
         <!-- Leeeeeeeerooooy Jeeeeenkins -->
-        <string id="ERDmbO2B" text="Leeeeeeeerooooy Jeeeeenkins"/>
+        <string id="ERDmbO2B" text="Leeeeeeeerooooy Jeeeeenkins" original="Leeeeeeeerooooy Jeeeeenkins"/>
         <!-- I live, I die, I live again! -->
-        <string id="hL0vmkUG" text="Je vis, je meurs, je revis !"/>
+        <string id="hL0vmkUG" text="Je vis, je meurs, je revis !" original="I live, I die, I live again!"/>
         <!-- Witness me!! -->
-        <string id="KMTRT2EN" text="Témoin moi !!"/>
+        <string id="KMTRT2EN" text="Témoin moi !!" original="Witness me!!"/>
         <!-- Now for wrath, now for ruin and a red nightfall! -->
-        <string id="F9WUaqdj" text="Maintenant pour la colère, maintenant pour la ruine et une nuit rouge !"/>
+        <string id="F9WUaqdj" text="Maintenant pour la colère, maintenant pour la ruine et une nuit rouge !" original="Now for wrath, now for ruin and a red nightfall!"/>
         <!-- n -->
-        <string id="ZQiRFkFU" text="m"/>
+        <string id="ZQiRFkFU" text="m" original="n"/>
         <!-- Those are brave men knocking at our door, let's go kill them! -->
-        <string id="JlZ9pRbq" text="Ce sont des braves qui frappent à notre porte, allons les tuer !"/>
+        <string id="JlZ9pRbq" text="Ce sont des braves qui frappent à notre porte, allons les tuer !" original="Those are brave men knocking at our door, let's go kill them!"/>
         <!-- Lets take this city! -->
-        <string id="5gg0BcKk" text="Prenons cette ville !"/>
+        <string id="5gg0BcKk" text="Prenons cette ville !" original="Lets take this city!"/>
         <!-- Defend yourself! -->
-        <string id="lhWht8Em" text="Défendez-vous !"/>
+        <string id="lhWht8Em" text="Défendez-vous !" original="Defend yourself!"/>
         <!-- Time for you to die! -->
-        <string id="FmlTSg39" text="Il est temps que tu meures !"/>
+        <string id="FmlTSg39" text="Il est temps que tu meures !" original="Time for you to die!"/>
         <!-- You killed my father, prepare to die! -->
-        <string id="GJpUfALs" text="Tu as tué mon père, prépare toi à mourir!"/>
+        <string id="GJpUfALs" text="Tu as tué mon père, prépare toi à mourir!" original="You killed my father, prepare to die!"/>
         <!-- En garde! -->
-        <string id="IKN2G1wi" text="En garde !"/>
+        <string id="IKN2G1wi" text="En garde !" original="En garde!"/>
         <!-- It's stabbing time! For you. -->
-        <string id="yTHYR4i9" text="C&amp;#39;est l&amp;#39;heure du poignard ! Pour vous."/>
+        <string id="yTHYR4i9" text="C&amp;#39;est l&amp;#39;heure du poignard ! Pour vous." original="It's stabbing time! For you."/>
         <!-- It's nothing personal! -->
-        <string id="4wYLe6f0" text="C&amp;#39;est rien de personnel!"/>
+        <string id="4wYLe6f0" text="C&amp;#39;est rien de personnel!" original="It's nothing personal!"/>
         <!-- Curse my sudden but inevitable betrayal! -->
-        <string id="37bg5QNX" text="Maudit soit ma trahison soudaine mais inévitable !"/>
+        <string id="37bg5QNX" text="Maudit soit ma trahison soudaine mais inévitable !" original="Curse my sudden but inevitable betrayal!"/>
         <!-- I just don't like you! -->
-        <string id="AOpbzIUP" text="Je ne t&amp;#39;aime tout simplement pas !"/>
+        <string id="AOpbzIUP" text="Je ne t&amp;#39;aime tout simplement pas !" original="I just don't like you!"/>
         <!-- I'm gonna put some dirt in your eye! -->
-        <string id="JFCcwLga" text="Je vais te mettre de la saleté dans les yeux !"/>
+        <string id="JFCcwLga" text="Je vais te mettre de la saleté dans les yeux !" original="I'm gonna put some dirt in your eye!"/>
         <!-- I'll mount your head on a pike! -->
-        <string id="jCrCRbyA" text="Je te monterai la tête sur un brochet !"/>
+        <string id="jCrCRbyA" text="Je te monterai la tête sur un brochet !" original="I'll mount your head on a pike!"/>
         <!-- Don't hate me, it's just business... -->
-        <string id="0uiD2HxZ" text="Ne me déteste pas, c&amp;#39;est juste pour les affaires..."/>
+        <string id="0uiD2HxZ" text="Ne me déteste pas, c&amp;#39;est juste pour les affaires..." original="Don't hate me, it's just business..."/>
         <!-- Never should have come here! -->
-        <string id="42Fuy9pm" text="Je n&amp;#39;aurais jamais dû venir ici !"/>
+        <string id="42Fuy9pm" text="Je n&amp;#39;aurais jamais dû venir ici !" original="Never should have come here!"/>
         <!-- Your money or your life! -->
-        <string id="dClbnb2q" text="Ton argent ou ta vie!"/>
+        <string id="dClbnb2q" text="Ton argent ou ta vie!" original="Your money or your life!"/>
         <!-- I'm sorry, but I must stop you. -->
-        <string id="uyjy1geA" text="Je suis désolé, mais je dois vous arrêter."/>
+        <string id="uyjy1geA" text="Je suis désolé, mais je dois vous arrêter." original="I'm sorry, but I must stop you."/>
         <!-- I have the high ground! -->
-        <string id="dh0c96lo" text="J&amp;#39;ai la hauteur !"/>
+        <string id="dh0c96lo" text="J&amp;#39;ai la hauteur !" original="I have the high ground!"/>
         <!-- DAMN IT DAVE! -->
-        <string id="EcD5q9th" text="MERDE DAVE !"/>
+        <string id="EcD5q9th" text="MERDE DAVE !" original="DAMN IT DAVE!"/>
     </strings>
 </base>

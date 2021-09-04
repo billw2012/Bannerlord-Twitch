@@ -5,373 +5,355 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- ActivePowerGroupItem -->
         <!-- Active Power Group Item -->
-        <string id="4xEkPMIy" text="Aktif Güç Grubu Öğesi"/>
+        <string id="4xEkPMIy" text="Aktif Güç Grubu Öğesi" original="Active Power Group Item"/>
         <!-- Power -->
-        <string id="HGDApoLL" text="Güç"/>
-
+        <string id="HGDApoLL" text="Güç" original="Power"/>
         <!-- ActivePowerGroup -->
         <!-- Active Power Group -->
-        <string id="HvTIrx0b" text="Aktif Güç Grubu"/>
+        <string id="HvTIrx0b" text="Aktif Güç Grubu" original="Active Power Group"/>
         <!-- The name of the power: how the power will be described in messages -->
-        <string id="EvVyh3WM" text="Gücün adı: Mesajlarda gücün nasıl anlatılacağı"/>
+        <string id="EvVyh3WM" text="Gücün adı: Mesajlarda gücün nasıl anlatılacağı" original="The name of the power: how the power will be described in messages"/>
         <!-- Powers -->
-        <string id="acLMixuK" text="güçler"/>
+        <string id="acLMixuK" text="güçler" original="Powers"/>
         <!-- The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure). -->
-        <string id="6aKmeGgU" text="Güçteki çeşitli etkiler. Bunlar ayrıca özelleştirilmiş kilit açma gereksinimlerine sahip olabilir, böylece zamanla (veya başka herhangi bir önlemle) güçlenen (veya zayıflayan!) sınıflara sahip olabilirsiniz."/>
+        <string id="6aKmeGgU" text="Güçteki çeşitli etkiler. Bunlar ayrıca özelleştirilmiş kilit açma gereksinimlerine sahip olabilir, böylece zamanla (veya başka herhangi bir önlemle) güçlenen (veya zayıflayan!) sınıflara sahip olabilirsiniz." original="The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure)."/>
         <!-- ActivateEffect -->
-        <string id="ticZtKY4" text="ActivateEffect"/>
+        <string id="ticZtKY4" text="ActivateEffect" original="ActivateEffect"/>
         <!-- Particles/sound effects to play when this power group is activated -->
-        <string id="YWHa7H42" text="Bu güç grubu etkinleştirildiğinde oynatılacak parçacıklar/ses efektleri"/>
+        <string id="YWHa7H42" text="Bu güç grubu etkinleştirildiğinde oynatılacak parçacıklar/ses efektleri" original="Particles/sound effects to play when this power group is activated"/>
         <!-- DeactivateEffect -->
-        <string id="MXnon4pc" text="Etkiyi Devre Dışı Bırak"/>
+        <string id="MXnon4pc" text="Etkiyi Devre Dışı Bırak" original="DeactivateEffect"/>
         <!-- Particles/sound effects to play when this power group is deactivated -->
-        <string id="V9fqIgvH" text="Bu güç grubu devre dışı bırakıldığında oynatılacak parçacıklar/ses efektleri"/>
+        <string id="V9fqIgvH" text="Bu güç grubu devre dışı bırakıldığında oynatılacak parçacıklar/ses efektleri" original="Particles/sound effects to play when this power group is deactivated"/>
         <!-- (no power) -->
-        <string id="ddNSQjWq" text="(güç yok)"/>
-        
+        <string id="ddNSQjWq" text="(güç yok)" original="(no power)"/>
         <!-- Not allowed in tournaments! -->
-        <string id="2NnCGjyI" text="Turnuvalarda yasaktır!"/>
+        <string id="2NnCGjyI" text="Turnuvalarda yasaktır!" original="Not allowed in tournaments!"/>
         <!-- No powers! -->
-        <string id="asncu3BX" text="Güç yok!"/>
+        <string id="asncu3BX" text="Güç yok!" original="No powers!"/>
         <!-- Powers not allowed in tournaments! -->
-        <string id="NMSDeunS" text="Turnuvalarda yetkilere izin verilmez!"/>
+        <string id="NMSDeunS" text="Turnuvalarda yetkilere izin verilmez!" original="Powers not allowed in tournaments!"/>
         <!-- {PowerName} expired! -->
-        <string id="xyvCYxTD" text="{PowerName} süresi doldu!"/>
+        <string id="xyvCYxTD" text="{PowerName} süresi doldu!" original="{PowerName} expired!"/>
         <!-- {PowerName} activated! -->
-        <string id="WDfytZ7z" text="{PowerName} etkinleştirildi!"/>
-        
+        <string id="WDfytZ7z" text="{PowerName} etkinleştirildi!" original="{PowerName} activated!"/>
         <!-- DurationMissionHeroPowerDefBase -->
         <!-- Power Duration Seconds -->
-        <string id="F03TlOOV" text="Güç Süresi Saniye"/>
+        <string id="F03TlOOV" text="Güç Süresi Saniye" original="Power Duration Seconds"/>
         <!-- Pfx -->
-        <string id="VS9ITIST" text="Pfx"/>
+        <string id="VS9ITIST" text="Pfx" original="Pfx"/>
         <!-- Duration the power will last for (when used as an active power), in seconds -->
-        <string id="km0QRxRs" text="Gücün dayanacağı süre (aktif güç olarak kullanıldığında), saniye cinsinden"/>
+        <string id="km0QRxRs" text="Gücün dayanacağı süre (aktif güç olarak kullanıldığında), saniye cinsinden" original="Duration the power will last for (when used as an active power), in seconds"/>
         <!-- Effects to apply to the agent while the power is active -->
-        <string id="xmz0TzN7" text="Güç aktifken ajana uygulanacak etkiler"/>
+        <string id="xmz0TzN7" text="Güç aktifken ajana uygulanacak etkiler" original="Effects to apply to the agent while the power is active"/>
         <!-- No mission is active! -->
-        <string id="u48yBW5b" text="Hiçbir görev aktif değil!"/>
+        <string id="u48yBW5b" text="Hiçbir görev aktif değil!" original="No mission is active!"/>
         <!-- Mission has not started yet! -->
-        <string id="EbrlEg5C" text="Görev henüz başlamadı!"/>
+        <string id="EbrlEg5C" text="Görev henüz başlamadı!" original="Mission has not started yet!"/>
         <!-- Your hero is not alive! -->
-        <string id="SdQsQRB6" text="Kahramanınız hayatta değil!"/>
+        <string id="SdQsQRB6" text="Kahramanınız hayatta değil!" original="Your hero is not alive!"/>
         <!-- Already active! -->
-        <string id="C3Ag25zz" text="Zaten aktif!"/>
-        
+        <string id="C3Ag25zz" text="Zaten aktif!" original="Already active!"/>
         <!-- HeroPowerDefBase -->
         <!-- Name of the power that will be shown in game -->
-        <string id="lzvJC8bf" text="Oyunda gösterilecek gücün adı"/>
+        <string id="lzvJC8bf" text="Oyunda gösterilecek gücün adı" original="Name of the power that will be shown in game"/>
         <!-- Enter Name Here -->
-        <string id="aQgYs3mI" text="Buraya isim gir"/>
-        
+        <string id="aQgYs3mI" text="Buraya isim gir" original="Enter Name Here"/>
         <!-- HitBehavior -->
         <!-- Knock Back Chance Percent -->
-        <string id="mtZMAwbM" text="Geri Çarpma Şansı Yüzdesi"/>
+        <string id="mtZMAwbM" text="Geri Çarpma Şansı Yüzdesi" original="Knock Back Chance Percent"/>
         <!-- Percent chance (0 to 100) for target to get knocked back -->
-        <string id="wPgAMF92" text="Hedefin geri savrulma şansı yüzde (0 ila 100)"/>
+        <string id="wPgAMF92" text="Hedefin geri savrulma şansı yüzde (0 ila 100)" original="Percent chance (0 to 100) for target to get knocked back"/>
         <!-- Knock Down Chance Percent -->
-        <string id="9dla8vV1" text="Düşürme Şansı Yüzdesi"/>
+        <string id="9dla8vV1" text="Düşürme Şansı Yüzdesi" original="Knock Down Chance Percent"/>
         <!-- Percent chance (0 to 100) for target to get knocked down -->
-        <string id="MTqyFfDc" text="Hedefin devrilme olasılığı yüzde (0 ila 100)"/>
+        <string id="MTqyFfDc" text="Hedefin devrilme olasılığı yüzde (0 ila 100)" original="Percent chance (0 to 100) for target to get knocked down"/>
         <!-- Shrug Off Chance Percent -->
-        <string id="dCRbuRf8" text="Omuz silkme Şans Yüzdesi"/>
+        <string id="dCRbuRf8" text="Omuz silkme Şans Yüzdesi" original="Shrug Off Chance Percent"/>
         <!-- Percent chance (0 to 100) for target to shrug off blow (not visably reacting to it, damage will still apply) -->
-        <string id="adHeasi7" text="Hedefin darbeyi savuşturma şansı yüzde (0 ila 100) (görünür bir şekilde tepki vermiyor, hasar yine de geçerli olacak)"/>
+        <string id="adHeasi7" text="Hedefin darbeyi savuşturma şansı yüzde (0 ila 100) (görünür bir şekilde tepki vermiyor, hasar yine de geçerli olacak)" original="Percent chance (0 to 100) for target to shrug off blow (not visably reacting to it, damage will still apply)"/>
         <!-- Makes Rear Chance Percent -->
-        <string id="okiEp8HU" text="Geri Şans Yüzdesi Yapar"/>
+        <string id="okiEp8HU" text="Geri Şans Yüzdesi Yapar" original="Makes Rear Chance Percent"/>
         <!-- Percent chance (0 to 100) for target to rear (if it is a mount) -->
-        <string id="Cp9IZN6J" text="Hedefin arkaya gelme şansı (binekse) yüzde şansı (0 ila 100)"/>
+        <string id="Cp9IZN6J" text="Hedefin arkaya gelme şansı (binekse) yüzde şansı (0 ila 100)" original="Percent chance (0 to 100) for target to rear (if it is a mount)"/>
         <!-- Dismount Chance -->
-        <string id="lVXn7z6U" text="Düşme Şansı"/>
+        <string id="lVXn7z6U" text="Düşme Şansı" original="Dismount Chance"/>
         <!-- Percent chance (0 to 100) for target to be dismounted -->
-        <string id="RrhP0L2t" text="Hedefin atından indirilmesi için yüzde şansı (0 ila 100)"/>
+        <string id="RrhP0L2t" text="Hedefin atından indirilme şansı yüzde (0 ila 100)" original="Percent chance (0 to 100) for target to be dismounted"/>
         <!-- (inactive) -->
-        <string id="cM8NOj2B" text="(etkin değil)"/>
+        <string id="cM8NOj2B" text="(etkin değil)" original="(inactive)"/>
         <!-- Knock Back -->
-        <string id="2UuwaRcc" text="geri tepme"/>
+        <string id="2UuwaRcc" text="geri tepme" original="Knock Back"/>
         <!-- Knock Down -->
-        <string id="4iroX5zj" text="Yere sermek"/>
+        <string id="4iroX5zj" text="Yere sermek" original="Knock Down"/>
         <!-- Shrug Off -->
-        <string id="DNqblCEf" text="Umursamamak"/>
+        <string id="DNqblCEf" text="Umursamamak" original="Shrug Off"/>
         <!-- Mount Rear -->
-        <string id="F0o4A3mp" text="Arkaya Montaj"/>
+        <string id="F0o4A3mp" text="Arkaya Montaj" original="Mount Rear"/>
         <!-- Dismount -->
-        <string id="bEO48IR4" text="attan in"/>
-        
+        <string id="bEO48IR4" text="attan in" original="Dismount"/>
         <!-- PassivePowerGroupItem -->
         <!-- Passive Power Group Item -->
-        <string id="sURt2dSt" text="Pasif Güç Grubu Öğesi"/>
+        <string id="sURt2dSt" text="Pasif Güç Grubu Öğesi" original="Passive Power Group Item"/>
         <!-- Power -->
-        <string id="KHoc6FK5" text="Güç"/>
+        <string id="KHoc6FK5" text="Güç" original="Power"/>
         <!-- (no power) -->
-        <string id="8mrSEyNk" text="(güç yok)"/>
+        <string id="8mrSEyNk" text="(güç yok)" original="(no power)"/>
         <!-- The name of the power: how the power will be described in messages -->
-        <string id="QsdqVpNE" text="Gücün adı: Mesajlarda gücün nasıl anlatılacağı"/>
+        <string id="QsdqVpNE" text="Gücün adı: Mesajlarda gücün nasıl anlatılacağı" original="The name of the power: how the power will be described in messages"/>
         <!-- Powers -->
-        <string id="61fc3xTQ" text="güçler"/>
+        <string id="61fc3xTQ" text="güçler" original="Powers"/>
         <!-- The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure). -->
-        <string id="wtD908lt" text="Güçteki çeşitli etkiler. Bunlar ayrıca özelleştirilmiş kilit açma gereksinimlerine sahip olabilir, böylece zamanla (veya başka herhangi bir önlemle) güçlenen (veya zayıflayan!) sınıflara sahip olabilirsiniz."/>
-        
+        <string id="wtD908lt" text="Güçteki çeşitli etkiler. Bunlar ayrıca özelleştirilmiş kilit açma gereksinimlerine sahip olabilir, böylece zamanla (veya başka herhangi bir önlemle) güçlenen (veya zayıflayan!) sınıflara sahip olabilirsiniz." original="The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure)."/>
         <!-- PowerGroupItemBase -->
         <!-- Requirements -->
-        <string id="WLtUn4t7" text="Gereksinimler"/>
+        <string id="WLtUn4t7" text="Gereksinimler" original="Requirements"/>
         <!-- Optional unlock criteria -->
-        <string id="sl5ZoJdv" text="İsteğe bağlı kilit açma kriterleri"/>
+        <string id="sl5ZoJdv" text="İsteğe bağlı kilit açma kriterleri" original="Optional unlock criteria"/>
         <!-- requires {Requirements} -->
-        <string id="hPcS0MIw" text="{Requirements} gerektirir"/>
-        
+        <string id="hPcS0MIw" text="{Requirements} gerektirir" original="requires {Requirements}"/>
         <!-- AbsorbHealthPower -->
         <!-- Absorb Health Power -->
-        <string id="HmDfLY2B" text="Sağlık Gücünü Emme"/>
+        <string id="HmDfLY2B" text="Sağlık Gücünü Emme" original="Absorb Health Power"/>
         <!-- Absorbs a fraction of damage you do to enemies as health -->
-        <string id="ZHdogsAa" text="Sağlık olarak düşmanlara verdiğiniz hasarın bir kısmını emer"/>
+        <string id="ZHdogsAa" text="Sağlık olarak düşmanlara verdiğiniz hasarın bir kısmını emer" original="Absorbs a fraction of damage you do to enemies as health"/>
         <!-- What percentage of damage done to absorb as health -->
-        <string id="8SE2asYO" text="Sağlık olarak absorbe etmek için verilen hasarın yüzde kaçı"/>
+        <string id="8SE2asYO" text="Sağlık olarak absorbe etmek için verilen hasarın yüzde kaçı" original="What percentage of damage done to absorb as health"/>
         <!-- (disabled) -->
-        <string id="41sZdkDw" text="(engelli)"/>
+        <string id="41sZdkDw" text="(engelli)" original="(disabled)"/>
         <!-- Absorb {DamageToAbsorbPercent}% of damage dealt as HP -->
-        <string id="04WkC9p6" text="Can olarak verilen hasarın %{DamageToAbsorbPercent} kadarını em"/>
-        
+        <string id="04WkC9p6" text="Can olarak verilen hasarın %{DamageToAbsorbPercent} kadarını em" original="Absorb {DamageToAbsorbPercent}% of damage dealt as HP"/>
         <!-- AddDamagePower -->
         <!-- Add Damage Power -->
-        <string id="JgPVRq5W" text="Hasar Gücü Ekle"/>
+        <string id="JgPVRq5W" text="Hasar Gücü Ekle" original="Add Damage Power"/>
         <!-- Adds fixed or relative amount of extra HP to the hero when they spawn -->
-        <string id="RGUwxlOx" text="Kahraman ortaya çıktığında sabit veya göreli miktarda fazladan HP ekler"/>
+        <string id="RGUwxlOx" text="Kahraman ortaya çıktıklarında sabit veya göreli miktarda fazladan HP ekler" original="Adds fixed or relative amount of extra HP to the hero when they spawn"/>
         <!-- Damage Modifier Percent -->
-        <string id="0mhPe31m" text="Hasar Değiştirici Yüzdesi"/>
+        <string id="0mhPe31m" text="Hasar Değiştirici Yüzdesi" original="Damage Modifier Percent"/>
         <!-- Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it) -->
-        <string id="tXh8oAaE" text="Hasar değiştirici (hasarı azaltmak için %100&amp;#39;den az, artırmak için %100&amp;#39;den büyük olarak ayarlayın)"/>
+        <string id="tXh8oAaE" text="Hasar değiştirici (hasarı azaltmak için %100&amp;#39;den az, artırmak için %100&amp;#39;den büyük olarak ayarlayın)" original="Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it)"/>
         <!-- Damage To Add -->
-        <string id="fPmJAchN" text="Eklenecek Hasar"/>
+        <string id="fPmJAchN" text="Eklenecek Hasar" original="Damage To Add"/>
         <!-- How much damage to add -->
-        <string id="lEbWq1of" text="Eklemek için ne kadar hasar"/>
+        <string id="lEbWq1of" text="Eklemek için ne kadar hasar" original="How much damage to add"/>
         <!-- Add Hit Behavior -->
-        <string id="RnGUD1jl" text="Hit Davranışı Ekle"/>
+        <string id="RnGUD1jl" text="Hit Davranışı Ekle" original="Add Hit Behavior"/>
         <!-- Behaviors to add to the damage -->
-        <string id="bse0NB6Z" text="Zararı artıran davranışlar"/>
+        <string id="bse0NB6Z" text="Zararı artıran davranışlar" original="Behaviors to add to the damage"/>
         <!-- Remove Hit Behavior -->
-        <string id="shUGx48n" text="Vuruş Davranışını Kaldır"/>
+        <string id="shUGx48n" text="Vuruş Davranışını Kaldır" original="Remove Hit Behavior"/>
         <!-- Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always stunned when hit) -->
-        <string id="feiVAent" text="Hasarı ortadan kaldıracak davranışlar (örneğin, hedefin vurulduğunda her zaman sersemlemesini sağlamak için Shrug Off&amp;#39;u kaldırın)"/>
+        <string id="feiVAent" text="Hasarı ortadan kaldıracak davranışlar (örneğin, hedefin vurulduğunda her zaman sersemlemesini sağlamak için Shrug Off&amp;#39;u kaldırın)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always stunned when hit)"/>
         <!-- Armor To Ignore Percent -->
-        <string id="w5j3JYog" text="Yüzde Yok Sayılacak Zırh"/>
+        <string id="w5j3JYog" text="Yüzde Yok Sayılacak Zırh" original="Armor To Ignore Percent"/>
         <!-- What fraction (0 to 1) of armor to ignore when applying damage -->
-        <string id="Sv4QLgYX" text="Hasar uygularken göz ardı edilecek zırh oranı (0 ila 1)"/>
+        <string id="Sv4QLgYX" text="Hasar uygularken göz ardı edilecek zırh oranı (0 ila 1)" original="What fraction (0 to 1) of armor to ignore when applying damage"/>
         <!-- Unblockable Chance Percent -->
-        <string id="SOJgZOV3" text="Engellenemez Şans Yüzdesi"/>
+        <string id="SOJgZOV3" text="Engellenemez Şans Yüzdesi" original="Unblockable Chance Percent"/>
         <!-- Chance (0 to 1) that the hit will be unblockable -->
-        <string id="QoYMwBnz" text="İsabetin engellenemez olma şansı (0&amp;#39;dan 1)"/>
+        <string id="QoYMwBnz" text="İsabetin engellenemez olma şansı (0&amp;#39;a 1)" original="Chance (0 to 1) that the hit will be unblockable"/>
         <!-- Shatter Shield Chance Percent -->
-        <string id="L1ZqypsT" text="Paramparça Kalkan Şans Yüzdesi"/>
+        <string id="L1ZqypsT" text="Paramparça Kalkan Şans Yüzdesi" original="Shatter Shield Chance Percent"/>
         <!-- Chance (0 to 1) that the hit will shatter shield if it is blocked -->
-        <string id="MaDRQPhh" text="Engellenirse, vuruşun kalkanı parçalama şansı (0 ila 1)"/>
+        <string id="MaDRQPhh" text="Engellenirse, vuruşun kalkanı parçalama şansı (0 ila 1)" original="Chance (0 to 1) that the hit will shatter shield if it is blocked"/>
         <!-- Cut Through Chance Percent -->
-        <string id="xt70CI4q" text="Şans Yüzdesini Kes"/>
+        <string id="xt70CI4q" text="Şans Yüzdesini Kes" original="Cut Through Chance Percent"/>
         <!-- Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each collision, so a cut through chance of 1 will result in cutting through everyone with every hit) -->
-        <string id="uAsNXThU" text="Darbenin karşılaştığı herhangi bir birimi kesme olasılığı (0 ila 1) (her çarpışmada değerlendirilir, dolayısıyla 1&amp;#39;lik bir kesme şansı, her vuruşta herkesi kesmeye neden olur)"/>
+        <string id="uAsNXThU" text="Darbenin karşılaştığı herhangi bir birimi kesme olasılığı (0 ila 1) (her çarpışmada değerlendirilir, dolayısıyla 1&amp;#39;lik bir kesme şansı, her vuruşta herkesi kesmeye neden olur)" original="Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each collision, so a cut through chance of 1 will result in cutting through everyone with every hit)"/>
         <!-- Stagger Chance Percent -->
-        <string id="XxLPeI3i" text="Şaşırtma Şans Yüzdesi"/>
+        <string id="XxLPeI3i" text="Şaşırtma Şans Yüzdesi" original="Stagger Chance Percent"/>
         <!-- Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR stagger, it can't do both, cut through chance is evaluated before this one) -->
-        <string id="8N18Zs1O" text="Vuruşun vurduğu aracıyı şaşırtma olasılığı (0 ila 1) (isabet ya kesebilir VEYA sendeleyebilir, ikisini birden yapamaz, kesme şansı bundan önce değerlendirilir)"/>
+        <string id="8N18Zs1O" text="Vuruşun vurduğu aracıyı şaşırtma olasılığı (0 ila 1) (isabet ya kesebilir VEYA sendeleyebilir, ikisini birden yapamaz, kesme şansı bundan önce değerlendirilir)" original="Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR stagger, it can't do both, cut through chance is evaluated before this one)"/>
         <!-- AoE -->
-        <string id="O4AUEtAO" text="Etki Alanı"/>
+        <string id="O4AUEtAO" text="Etki Alanı" original="AoE"/>
         <!-- Area of Effect damage to apply -->
-        <string id="5ke30xUG" text="Uygulanacak Etki Alanı hasarı"/>
+        <string id="5ke30xUG" text="Uygulanacak Etki Alanı hasarı" original="Area of Effect damage to apply"/>
         <!-- Apply Against Non Heroes -->
-        <string id="0WAJwEvc" text="Kahraman Olmayanlara Karşı Başvurun"/>
+        <string id="0WAJwEvc" text="Kahraman Olmayanlara Karşı Başvurun" original="Apply Against Non Heroes"/>
         <!-- Whether to apply this bonus damage against normal troops -->
-        <string id="guccTOSR" text="Bu bonus hasarın normal birliklere uygulanıp uygulanmayacağı"/>
+        <string id="guccTOSR" text="Bu bonus hasarın normal birliklere uygulanıp uygulanmayacağı" original="Whether to apply this bonus damage against normal troops"/>
         <!-- Apply Against Heroes -->
-        <string id="mMcjJkph" text="Kahramanlara Karşı Uygula"/>
+        <string id="mMcjJkph" text="Kahramanlara Karşı Uygula" original="Apply Against Heroes"/>
         <!-- Whether to apply this bonus damage against heroes -->
-        <string id="gYU28V1d" text="Bu bonus hasarın kahramanlara karşı uygulanıp uygulanmayacağı"/>
+        <string id="gYU28V1d" text="Bu bonus hasarın kahramanlara karşı uygulanıp uygulanmayacağı" original="Whether to apply this bonus damage against heroes"/>
         <!-- Apply Against Adopted Heroes -->
-        <string id="En7CxSs6" text="Kabul Edilen Kahramanlara Karşı Başvurun"/>
+        <string id="En7CxSs6" text="Kabul Edilen Kahramanlara Karşı Başvurun" original="Apply Against Adopted Heroes"/>
         <!-- Whether to apply this bonus damage against adopted heroes -->
-        <string id="DcMwYE76" text="Bu bonus hasarın benimsenen kahramanlara karşı uygulanıp uygulanmayacağı"/>
+        <string id="DcMwYE76" text="Bu bonus hasarın benimsenen kahramanlara karşı uygulanıp uygulanmayacağı" original="Whether to apply this bonus damage against adopted heroes"/>
         <!-- Apply Against Player -->
-        <string id="s3sYJipB" text="Oyuncuya Karşı Uygula"/>
+        <string id="s3sYJipB" text="Oyuncuya Karşı Uygula" original="Apply Against Player"/>
         <!-- Whether to apply this bonus damage against the player -->
-        <string id="1sYObRIg" text="Bu bonus hasarın oyuncuya uygulanıp uygulanmayacağı"/>
+        <string id="1sYObRIg" text="Bu bonus hasarın oyuncuya uygulanıp uygulanmayacağı" original="Whether to apply this bonus damage against the player"/>
         <!-- Ranged -->
-        <string id="ITaXWnRJ" text="menzilli"/>
+        <string id="ITaXWnRJ" text="menzilli" original="Ranged"/>
         <!-- Whether to apply this bonus damage when using ranged weapons -->
-        <string id="pfagbSNR" text="Menzilli silahları kullanırken bu bonus hasarın uygulanıp uygulanmayacağı"/>
+        <string id="pfagbSNR" text="Menzilli silahları kullanırken bu bonus hasarın uygulanıp uygulanmayacağı" original="Whether to apply this bonus damage when using ranged weapons"/>
         <!-- Melee -->
-        <string id="6pT4TAXW" text="yakın dövüş"/>
+        <string id="6pT4TAXW" text="yakın dövüş" original="Melee"/>
         <!-- Whether to apply this bonus damage when using melee weapons -->
-        <string id="TiGzhjIl" text="Yakın dövüş silahlarını kullanırken bu bonus hasarın uygulanıp uygulanmayacağı"/>
+        <string id="TiGzhjIl" text="Yakın dövüş silahlarını kullanırken bu bonus hasarın uygulanıp uygulanmayacağı" original="Whether to apply this bonus damage when using melee weapons"/>
         <!-- Charge -->
-        <string id="JR0Rdbfj" text="Şarj etmek"/>
+        <string id="JR0Rdbfj" text="Şarj etmek" original="Charge"/>
         <!-- Whether to apply this bonus damage from charge damage -->
-        <string id="65y7VWcS" text="Bu bonus hasarın ücret hasarından uygulanıp uygulanmayacağı"/>
+        <string id="65y7VWcS" text="Bu bonus hasarın ücret hasarından uygulanıp uygulanmayacağı" original="Whether to apply this bonus damage from charge damage"/>
         <!-- Missile Trail Particle Effect -->
-        <string id="2GaGbTYR" text="Füze İzi Parçacık Etkisi"/>
+        <string id="2GaGbTYR" text="Füze İzi Parçacık Etkisi" original="Missile Trail Particle Effect"/>
         <!-- Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing fire/smoke effect) -->
-        <string id="UiCylfED" text="Füzeye eklenecek Parçacık Etkisi (sondaki ateş/duman etkisi için psys_game_burning_agent&amp;#39;ı tavsiye edin)"/>
+        <string id="UiCylfED" text="Füzeye eklenecek Parçacık Etkisi (sondaki ateş/duman etkisi için psys_game_burning_agent&amp;#39;ı tavsiye edin)" original="Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing fire/smoke effect)"/>
         <!-- Hit Effect -->
-        <string id="gEhH84HS" text="Vuruş Etkisi"/>
+        <string id="gEhH84HS" text="Vuruş Etkisi" original="Hit Effect"/>
         <!-- Effect to play on hit (intended mainly for AoE effects) -->
-        <string id="r6D9pDIA" text="Vuruşta oynama efekti (esas olarak AoE efektleri için tasarlanmıştır)"/>
+        <string id="r6D9pDIA" text="Vuruşta oynama efekti (esas olarak AoE efektleri için tasarlanmıştır)" original="Effect to play on hit (intended mainly for AoE effects)"/>
         <!-- Non-heroes -->
-        <string id="RNh2zns4" text="Kahraman olmayanlar"/>
+        <string id="RNh2zns4" text="Kahraman olmayanlar" original="Non-heroes"/>
         <!-- Heroes -->
-        <string id="qWIzKnVw" text="kahramanlar"/>
+        <string id="qWIzKnVw" text="kahramanlar" original="Heroes"/>
         <!-- Adopted -->
-        <string id="djDGvCdQ" text="Kabul edilen"/>
+        <string id="djDGvCdQ" text="Kabul edilen" original="Adopted"/>
         <!-- Player -->
-        <string id="8nDvdozx" text="oyuncu"/>
+        <string id="8nDvdozx" text="oyuncu" original="Player"/>
         <!-- Ranged -->
-        <string id="1t1hdpPr" text="menzilli"/>
+        <string id="1t1hdpPr" text="menzilli" original="Ranged"/>
         <!-- Melee -->
-        <string id="ibrr3fCK" text="yakın dövüş"/>
+        <string id="ibrr3fCK" text="yakın dövüş" original="Melee"/>
         <!-- Charge -->
-        <string id="X8RrfG7V" text="Şarj etmek"/>
-
+        <string id="X8RrfG7V" text="Şarj etmek" original="Charge"/>
         <!-- {DamageModifierPercent}% dmg -->
-        <string id="LbHOSj1l" text="%{DamageModifierPercent} dmg"/>
+        <string id="LbHOSj1l" text="%{DamageModifierPercent} dmg" original="{DamageModifierPercent}% dmg"/>
         <!-- {DamageToAdd} dmg -->
-        <string id="mBmFK0OK" text="{DamageToAdd} dmg"/>
+        <string id="mBmFK0OK" text="{DamageToAdd} dmg" original="{DamageToAdd} dmg"/>
         <!-- Add: {AddHitBehavior} -->
-        <string id="ybyWP8jd" text="Ekle: {AddHitBehavior}"/>
+        <string id="ybyWP8jd" text="Ekle: {AddHitBehavior}" original="Add: {AddHitBehavior}"/>
         <!-- Remove: {RemoveHitBehavior} -->
-        <string id="WJVreCCg" text="Kaldır: {RemoveHitBehavior}"/>
+        <string id="WJVreCCg" text="Kaldır: {RemoveHitBehavior}" original="Remove: {RemoveHitBehavior}"/>
         <!-- Ignore {ArmorToIgnorePercent}% Armor -->
-        <string id="svDicWAa" text="%{ArmorToIgnorePercent} Zırhı Yoksay"/>
+        <string id="svDicWAa" text="%{ArmorToIgnorePercent} Zırhı Yoksay" original="Ignore {ArmorToIgnorePercent}% Armor"/>
         <!-- {UnblockableChancePercent}% Unblockable -->
-        <string id="TkGVRcl0" text="%{UnblockableChancePercent} Engellenemez"/>
+        <string id="TkGVRcl0" text="%{UnblockableChancePercent} Engellenemez" original="{UnblockableChancePercent}% Unblockable"/>
         <!-- {ShatterShieldChancePercent}% Shatter Shield -->
-        <string id="xHMYpCMY" text="%{ShatterShieldChancePercent} Paramparça Kalkanı"/>
+        <string id="xHMYpCMY" text="%{ShatterShieldChancePercent} Paramparça Kalkanı" original="{ShatterShieldChancePercent}% Shatter Shield"/>
         <!-- {CutThroughChancePercent}% Cut Through -->
-        <string id="I3BiKkXC" text="%{CutThroughChancePercent} Kesinti"/>
+        <string id="I3BiKkXC" text="%{CutThroughChancePercent} Kesinti" original="{CutThroughChancePercent}% Cut Through"/>
         <!-- {StaggerChancePercent}% Stagger -->
-        <string id="NetyrPKo" text="%{StaggerChancePercent} Şaşırtma"/>
+        <string id="NetyrPKo" text="%{StaggerChancePercent} Şaşırtma" original="{StaggerChancePercent}% Stagger"/>
         <!-- AoE: {AoEDescription} -->
-        <string id="A6Vulmvy" text="Etki Alanı: {AoEDescription}"/>
-        
+        <string id="A6Vulmvy" text="Etki Alanı: {AoEDescription}" original="AoE: {AoEDescription}"/>
         <!-- {Modifiers} from {AppliesFrom} against {AppliesAgainst} -->
-        <string id="UhEtVOWV" text="{Modifiers} from {AppliesFrom} against {AppliesAgainst}"/>
+        <string id="UhEtVOWV" text="{Modifiers} from {AppliesFrom} against {AppliesAgainst}" original="{Modifiers} from {AppliesFrom} against {AppliesAgainst}"/>
         <!-- {Modifiers} from {AppliesFrom} -->
-        <string id="GrP7yeqP" text="{Modifiers} from {AppliesFrom}"/>
+        <string id="GrP7yeqP" text="{Modifiers} from {AppliesFrom}" original="{Modifiers} from {AppliesFrom}"/>
         <!-- {Modifiers} against {AppliesAgainst} -->
-        <string id="dAObdN2r" text="{Modifiers} against {AppliesAgainst}"/>
+        <string id="dAObdN2r" text="{Modifiers} against {AppliesAgainst}" original="{Modifiers} against {AppliesAgainst}"/>
         <!-- {Modifiers} -->
-        <string id="ZXm0fYfO" text="{Modifiers}"/>
-        
+        <string id="ZXm0fYfO" text="{Modifiers}" original="{Modifiers}"/>
         <!-- AreaOfEffectDef -->
         <!-- Range -->
-        <string id="DMsD70Yc" text="Menzil"/>
+        <string id="DMsD70Yc" text="Menzil" original="Range"/>
         <!-- The radius to apply the damage in -->
-        <string id="yjmcKGuH" text="Hasarın uygulanacağı yarıçap"/>
+        <string id="yjmcKGuH" text="Hasarın uygulanacağı yarıçap" original="The radius to apply the damage in"/>
         <!-- Only On Hit -->
-        <string id="u1EgbhAw" text="Sadece Vuruşta"/>
+        <string id="u1EgbhAw" text="Sadece Vuruşta" original="Only On Hit"/>
         <!-- Only apply the damage if the attack hits an agent (as opposed to the ground, e.g. for arrows) -->
-        <string id="uxyVrVjV" text="Hasarı yalnızca saldırı bir ajanı vurursa uygulayın (yerenin aksine, örneğin oklar için)"/>
+        <string id="uxyVrVjV" text="Hasarı yalnızca saldırı bir ajanı vurursa uygulayın (yerenin aksine, örneğin oklar için)" original="Only apply the damage if the attack hits an agent (as opposed to the ground, e.g. for arrows)"/>
         <!-- Damage At Center -->
-        <string id="oLCQliJn" text="Merkezde Hasar"/>
+        <string id="oLCQliJn" text="Merkezde Hasar" original="Damage At Center"/>
         <!-- Damage at distance 0 from the hit -->
-        <string id="eLcjxP3j" text="Vuruştan 0 mesafede hasar"/>
+        <string id="eLcjxP3j" text="Vuruştan 0 mesafede hasar" original="Damage at distance 0 from the hit"/>
         <!-- Max Agents To Damage -->
-        <string id="GpuS1lb5" text="Hasar Verecek Maksimum Ajan"/>
+        <string id="GpuS1lb5" text="Hasar Verecek Maksimum Ajan" original="Max Agents To Damage"/>
         <!-- Maximum number of agents that can be affected -->
-        <string id="ZFsDLtEj" text="Etkilenebilecek maksimum aracı sayısı"/>
+        <string id="ZFsDLtEj" text="Etkilenebilecek maksimum aracı sayısı" original="Maximum number of agents that can be affected"/>
         <!-- Damage Type -->
-        <string id="zfp8aakV" text="Hasar Türü"/>
+        <string id="zfp8aakV" text="Hasar Türü" original="Damage Type"/>
         <!-- Damage type -->
-        <string id="VcfFbhYX" text="Hasar türü"/>
+        <string id="VcfFbhYX" text="Hasar türü" original="Damage type"/>
         <!-- Hit Behavior -->
-        <string id="MCTf7KFT" text="Vuruş Davranışı"/>
+        <string id="MCTf7KFT" text="Vuruş Davranışı" original="Hit Behavior"/>
         <!-- Flags to apply to the damage -->
-        <string id="Ud0EJmY0" text="Hasara uygulanacak bayraklar"/>
-
+        <string id="Ud0EJmY0" text="Hasara uygulanacak bayraklar" original="Flags to apply to the damage"/>
         <!-- {Distance}m: {Damage}dmg -->
-        <string id="GRtsL26e" text="{Distance}m: {Damage}dmg"/>
+        <string id="GRtsL26e" text="{Distance}m: {Damage}dmg" original="{Distance}m: {Damage}dmg"/>
         <!-- {Damage}dmg in {Distance}m with {HitBehavior} -->
-        <string id="S5DNQWpQ" text="{Damage}dmg in {Distance}m with {HitBehavior}"/>
+        <string id="S5DNQWpQ" text="{Damage}dmg in {Distance}m with {HitBehavior}" original="{Damage}dmg in {Distance}m with {HitBehavior}"/>
         <!-- {Damage}dmg in {Distance}m -->
-        <string id="MzOdRykr" text="{Damage}dmg in {Distance}m"/>
-        
+        <string id="MzOdRykr" text="{Damage}dmg in {Distance}m" original="{Damage}dmg in {Distance}m"/>
         <!-- AddHealthPower -->
         <!-- Add Health Power -->
-        <string id="ZbxNmvem" text="Sağlık Gücü Ekle"/>
+        <string id="ZbxNmvem" text="Sağlık Gücü Ekle" original="Add Health Power"/>
         <!-- Adds fixed or relative amount of extra HP to the hero when they spawn -->
-        <string id="NlJXiSkn" text="Kahraman ortaya çıktığında sabit veya göreli miktarda fazladan HP ekler"/>
+        <string id="NlJXiSkn" text="Kahraman ortaya çıktıklarında sabit veya göreli miktarda fazladan HP ekler" original="Adds fixed or relative amount of extra HP to the hero when they spawn"/>
         <!-- Health Modifier Percent -->
-        <string id="EQ16SH5A" text="Sağlık Değiştirici Yüzdesi"/>
+        <string id="EQ16SH5A" text="Sağlık Değiştirici Yüzdesi" original="Health Modifier Percent"/>
         <!-- Modifier to apply to base HP -->
-        <string id="Dr2whvVV" text="Temel HP&amp;#39;ye uygulanacak değiştirici"/>
+        <string id="Dr2whvVV" text="Temel HP&amp;#39;ye uygulanacak değiştirici" original="Modifier to apply to base HP"/>
         <!-- Health To Add -->
-        <string id="pnr7P9sj" text="Eklenecek Sağlık"/>
+        <string id="pnr7P9sj" text="Eklenecek Sağlık" original="Health To Add"/>
         <!-- How much HP to add (applied after Modifier) -->
-        <string id="sprkIlxQ" text="Ne kadar HP eklenmeli (Değiştiriciden sonra uygulanır)"/>
-
+        <string id="sprkIlxQ" text="Ne kadar HP eklenmeli (Değiştiriciden sonra uygulanır)" original="How much HP to add (applied after Modifier)"/>
         <!-- ReflectDamagePower -->
         <!-- Reflect Damage Power -->
-        <string id="7d0IdABV" text="Hasar Gücünü Yansıt"/>
+        <string id="7d0IdABV" text="Hasar Gücünü Yansıt" original="Reflect Damage Power"/>
         <!-- Adds fixed or relative amount of extra HP to the hero when they spawn -->
-        <string id="jcNZx1M0" text="Kahraman ortaya çıktığında sabit veya göreli miktarda fazladan HP ekler"/>
+        <string id="jcNZx1M0" text="Kahraman ortaya çıktıklarında sabit veya göreli miktarda fazladan HP ekler" original="Adds fixed or relative amount of extra HP to the hero when they spawn"/>
         <!-- Reflect Percent -->
-        <string id="buBZhrP0" text="Yüzdeyi Yansıt"/>
+        <string id="buBZhrP0" text="Yüzdeyi Yansıt" original="Reflect Percent"/>
         <!-- What percent of damage to reflect back to attacker -->
-        <string id="ibxqpdtD" text="Saldırana geri yansıtılacak hasarın yüzde kaçı"/>
+        <string id="ibxqpdtD" text="Saldırana geri yansıtılacak hasarın yüzde kaçı" original="What percent of damage to reflect back to attacker"/>
         <!-- Reflected Damage Is Subtracted -->
-        <string id="IxiHjT1Z" text="Yansıyan Hasar Çıkarılır"/>
+        <string id="IxiHjT1Z" text="Yansıyan Hasar Çıkarılır" original="Reflected Damage Is Subtracted"/>
         <!-- Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection) -->
-        <string id="Pdg6mCPA" text="Yansıyan hasarın kahramanın aldığı hasardan düşülüp düşülmediği (bu &amp;#39;klasik&amp;#39; hasar yansımasıdır)"/>
+        <string id="Pdg6mCPA" text="Yansıyan hasarın kahramanın aldığı hasardan düşülüp düşülmediği (bu &amp;#39;klasik&amp;#39; hasar yansımasıdır)" original="Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection)"/>
         <!-- Hit Behavior -->
-        <string id="WDRb4mQ3" text="Vuruş Davranışı"/>
+        <string id="WDRb4mQ3" text="Vuruş Davranışı" original="Hit Behavior"/>
         <!-- Hit behavior for the reflected damage -->
-        <string id="SHlCPdpp" text="Yansıyan hasar için vuruş davranışı"/>
+        <string id="SHlCPdpp" text="Yansıyan hasar için vuruş davranışı" original="Hit behavior for the reflected damage"/>
         <!-- Reflect {ReflectPercent}% damage with {HitBehavior} -->
-        <string id="vLGJf7ow" text="{ReflectPercent}% damage with {HitBehavior} yansıt"/>
+        <string id="vLGJf7ow" text="{ReflectPercent}% damage with {HitBehavior} yansıt" original="Reflect {ReflectPercent}% damage with {HitBehavior}"/>
         <!-- Reflect {ReflectPercent}% damage -->
-        <string id="12tMrCY7" text="%{ReflectPercent} hasarı yansıt"/>
+        <string id="12tMrCY7" text="%{ReflectPercent} hasarı yansıt" original="Reflect {ReflectPercent}% damage"/>
         <!-- Reflect -->
-        <string id="mDczhD1H" text="Yansıtmak"/>
+        <string id="mDczhD1H" text="Yansıtmak" original="Reflect"/>
         <!-- Reflected damage is subtracted from incoming damage -->
-        <string id="yfmwtdMC" text="Yansıyan hasar, gelen hasardan çıkarılır"/>
-        
+        <string id="yfmwtdMC" text="Yansıyan hasar, gelen hasardan çıkarılır" original="Reflected damage is subtracted from incoming damage"/>
         <!-- StatModifyPower -->
         <!-- Stat Modify Power -->
-        <string id="pVdYFJNQ" text="Stat Değiştirme Gücü"/>
+        <string id="pVdYFJNQ" text="Stat Değiştirme Gücü" original="Stat Modify Power"/>
         <!-- Applies modifiers to various character stats -->
-        <string id="AOaW2ORo" text="Değiştiricileri çeşitli karakter istatistiklerine uygular"/>
+        <string id="AOaW2ORo" text="Değiştiricileri çeşitli karakter istatistiklerine uygular" original="Applies modifiers to various character stats"/>
         <!-- Modifiers -->
-        <string id="9gTYAifL" text="değiştiriciler"/>
+        <string id="9gTYAifL" text="değiştiriciler" original="Modifiers"/>
         <!-- What hero stat to modify -->
-        <string id="URinrDNq" text="Hangi kahraman statüsü değiştirilecek"/>
-        
+        <string id="URinrDNq" text="Hangi kahraman statüsü değiştirilecek" original="What hero stat to modify"/>
         <!-- TakeDamagePower -->
         <!-- Take Damage Power -->
-        <string id="UJHquN95" text="Hasar Gücünü Alın"/>
+        <string id="UJHquN95" text="Hasar Gücünü Alın" original="Take Damage Power"/>
         <!-- Changes the effects of incoming damage -->
-        <string id="F3TxyV4d" text="Gelen hasarın etkilerini değiştirir"/>
+        <string id="F3TxyV4d" text="Gelen hasarın etkilerini değiştirir" original="Changes the effects of incoming damage"/>
         <!-- Damage Modifier Percent -->
-        <string id="jkYLVPpL" text="Hasar Değiştirici Yüzdesi"/>
+        <string id="jkYLVPpL" text="Hasar Değiştirici Yüzdesi" original="Damage Modifier Percent"/>
         <!-- Damage modifier (set less than 100% to reduce incoming damage, set greater than 100% to increase it) -->
-        <string id="1eJHtO06" text="Hasar değiştirici (gelen hasarı azaltmak için %100&amp;#39;den az, artırmak için %100&amp;#39;den büyük olarak ayarlayın)"/>
+        <string id="1eJHtO06" text="Hasar değiştirici (gelen hasarı azaltmak için %100&amp;#39;den az, artırmak için %100&amp;#39;den büyük olarak ayarlayın)" original="Damage modifier (set less than 100% to reduce incoming damage, set greater than 100% to increase it)"/>
         <!-- Damage To Add -->
-        <string id="4XgEPe3Q" text="Eklenecek Hasar"/>
+        <string id="4XgEPe3Q" text="Eklenecek Hasar" original="Damage To Add"/>
         <!-- How much damage to add or subtract -->
-        <string id="wuOM9C4l" text="Eklemek veya çıkarmak için ne kadar hasar"/>
+        <string id="wuOM9C4l" text="Eklemek veya çıkarmak için ne kadar hasar" original="How much damage to add or subtract"/>
         <!-- Add Hit Behavior -->
-        <string id="2JFBV975" text="Hit Davranışı Ekle"/>
+        <string id="2JFBV975" text="Hit Davranışı Ekle" original="Add Hit Behavior"/>
         <!-- Behaviors to add to the damage (e.g. add Shrug Off to ensure the hero is never stunned when hit) -->
-        <string id="9t2oXdqy" text="Hasarı artıracak davranışlar (örneğin, kahramanın vurulduğunda asla sersemletilmemesini sağlamak için Shrug Off&amp;#39;u ekleyin)"/>
+        <string id="9t2oXdqy" text="Hasarı artıracak davranışlar (örneğin, kahramanın vurulduğunda asla sersemletilmemesini sağlamak için Shrug Off&amp;#39;u ekleyin)" original="Behaviors to add to the damage (e.g. add Shrug Off to ensure the hero is never stunned when hit)"/>
         <!-- Remove Hit Behavior -->
-        <string id="GLAvDJl5" text="Vuruş Davranışını Kaldır"/>
+        <string id="GLAvDJl5" text="Vuruş Davranışını Kaldır" original="Remove Hit Behavior"/>
         <!-- Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit) -->
-        <string id="oA2TrarN" text="Hasardan kurtulmak için davranışlar (örneğin, kahramanın vurulduğunda her zaman sersemlemesini sağlamak için Shrug Off&amp;#39;u kaldırın)"/>
+        <string id="oA2TrarN" text="Hasardan kurtulmak için davranışlar (örneğin, kahramanın vurulduğunda her zaman sersemlemesini sağlamak için Shrug Off&amp;#39;u kaldırın)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit)"/>
         <!-- Armor To Ignore Percent -->
-        <string id="9Lwkwni0" text="Yüzde Yok Sayılacak Zırh"/>
+        <string id="9Lwkwni0" text="Yüzde Yok Sayılacak Zırh" original="Armor To Ignore Percent"/>
         <!-- What fraction (0 to 1) of armor to ignore when applying damage -->
-        <string id="wSkoeVw1" text="Hasar uygularken göz ardı edilecek zırh oranı (0 ila 1)"/>
+        <string id="wSkoeVw1" text="Hasar uygularken göz ardı edilecek zırh oranı (0 ila 1)" original="What fraction (0 to 1) of armor to ignore when applying damage"/>
         <!-- {DamageModifierPercent}% damage -->
-        <string id="stFtZvfp" text="%{DamageModifierPercent} hasar"/>
+        <string id="stFtZvfp" text="%{DamageModifierPercent} hasar" original="{DamageModifierPercent}% damage"/>
         <!-- Damage -->
-        <string id="GrBznDeq" text="Hasar"/>
+        <string id="GrBznDeq" text="Hasar" original="Damage"/>
     </strings>
 </base>

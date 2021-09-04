@@ -5,801 +5,770 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-                
         <!-- AddGoldToHero -->
         <!-- Add Gold To Hero -->
-        <string id="kn4uxAWs" text="영웅에 골드 추가"/>
+        <string id="kn4uxAWs" text="영웅에 골드 추가" original="Add Gold To Hero"/>
         <!-- Gives gold to the adopted hero -->
-        <string id="vkgPfcAu" text="입양된 영웅에게 골드를 줍니다."/>
-        
+        <string id="vkgPfcAu" text="입양된 영웅에게 골드를 줍니다." original="Gives gold to the adopted hero"/>
         <!-- How much gold to give the adopted hero -->
-        <string id="S2CeRdjR" text="입양된 영웅에게 얼마만큼의 금을 줄 것인지"/>
-        
+        <string id="S2CeRdjR" text="입양된 영웅에게 얼마만큼의 금을 줄 것인지" original="How much gold to give the adopted hero"/>
         <!-- AdoptAHero -->
         <!-- Adopt A Hero -->
-        <string id="NkZXnSQI" text="영웅을 입양하다"/>
+        <string id="NkZXnSQI" text="영웅을 입양하다" original="Adopt A Hero"/>
         <!-- Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands -->
-        <string id="fd7G5N0Q" text="시청자가 게임에서 영웅을 &amp;#39;채택&amp;#39;할 수 있습니다. 영웅 이름이 시청자 이름으로 변경되며 추가 명령으로 제어할 수 있습니다."/>
-
+        <string id="fd7G5N0Q" text="시청자가 게임에서 영웅을 &amp;#39;채택&amp;#39;할 수 있습니다. 영웅 이름이 시청자 이름으로 변경되며 추가 명령으로 제어할 수 있습니다." original="Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands"/>
         <!-- Create New -->
-        <string id="TLrDxhlh" text="새로 만들기"/>
+        <string id="TLrDxhlh" text="새로 만들기" original="Create New"/>
         <!-- Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern) -->
-        <string id="F1KDzuZZ" text="기존 영웅을 채택하는 대신 새로운 영웅 생성(임의의 선술집에서 방랑자가 됩니다)"/>
+        <string id="F1KDzuZZ" text="기존 영웅을 채택하는 대신 새로운 영웅 생성(임의의 선술집에서 방랑자가 됩니다)" original="Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern)"/>
         <!-- Allow Noble -->
-        <string id="nPIcT2s7" text="귀족 허용"/>
+        <string id="nPIcT2s7" text="귀족 허용" original="Allow Noble"/>
         <!-- Allow noble heroes (if CreateNew is false) -->
-        <string id="XvZN7OOY" text="고귀한 영웅 허용(CreateNew가 false인 경우)"/>
+        <string id="XvZN7OOY" text="고귀한 영웅 허용(CreateNew가 false인 경우)" original="Allow noble heroes (if CreateNew is false)"/>
         <!-- Allow Wanderer -->
-        <string id="VVFsa8LQ" text="방랑자 허용"/>
+        <string id="VVFsa8LQ" text="방랑자 허용" original="Allow Wanderer"/>
         <!-- Allow wanderer heroes (if CreateNew is false) -->
-        <string id="9lE2KSvC" text="방랑 영웅 허용(CreateNew가 false인 경우)"/>
+        <string id="9lE2KSvC" text="방랑 영웅 허용(CreateNew가 false인 경우)" original="Allow wanderer heroes (if CreateNew is false)"/>
         <!-- Allow Player Companion -->
-        <string id="A8G9ctbn" text="플레이어 동반자 허용"/>
+        <string id="A8G9ctbn" text="플레이어 동반자 허용" original="Allow Player Companion"/>
         <!-- Allow companions (not tested, if CreateNew is false) -->
-        <string id="6EjGRMkt" text="동반자 허용(CreateNew가 false인 경우 테스트되지 않음)"/>
+        <string id="6EjGRMkt" text="동반자 허용(CreateNew가 false인 경우 테스트되지 않음)" original="Allow companions (not tested, if CreateNew is false)"/>
         <!-- Only Same Faction -->
-        <string id="B2z7T1xQ" text="같은 진영만"/>
+        <string id="B2z7T1xQ" text="같은 진영만" original="Only Same Faction"/>
         <!-- Only allow heroes from same faction as player -->
-        <string id="QvQGwFyl" text="플레이어와 같은 진영의 영웅만 허용"/>
+        <string id="QvQGwFyl" text="플레이어와 같은 진영의 영웅만 허용" original="Only allow heroes from same faction as player"/>
         <!-- Inheritance -->
-        <string id="dvbkxJQz" text="계승"/>
+        <string id="dvbkxJQz" text="계승" original="Inheritance"/>
         <!-- What fraction of assets will be inherited when a new character is adopted after an old one died (0 to 1) -->
-        <string id="KLJtpEjg" text="이전 캐릭터가 사망한 후 새 캐릭터가 채택될 때 상속되는 자산의 비율(0~1)"/>
+        <string id="KLJtpEjg" text="이전 캐릭터가 사망한 후 새 캐릭터가 채택될 때 상속되는 자산의 비율(0~1)" original="What fraction of assets will be inherited when a new character is adopted after an old one died (0 to 1)"/>
         <!-- Maximum Inherited Custom Items -->
-        <string id="Bi19tTPj" text="최대 상속된 사용자 지정 항목"/>
+        <string id="Bi19tTPj" text="최대 상속된 사용자 지정 항목" original="Maximum Inherited Custom Items"/>
         <!-- How many custom items can be inherited -->
-        <string id="tFolfAOn" text="상속할 수 있는 사용자 지정 항목 수"/>
+        <string id="tFolfAOn" text="상속할 수 있는 사용자 지정 항목 수" original="How many custom items can be inherited"/>
         <!-- Subscriber Only -->
-        <string id="O4DGlP9Z" text="가입자 전용"/>
+        <string id="O4DGlP9Z" text="가입자 전용" original="Subscriber Only"/>
         <!-- Only subscribers can adopt -->
-        <string id="TBNkHsLC" text="가입자만 채택할 수 있습니다."/>
+        <string id="TBNkHsLC" text="가입자만 채택할 수 있습니다." original="Only subscribers can adopt"/>
         <!-- Minimum Subscribed Months -->
-        <string id="dO41CKIU" text="최소 구독 월"/>
+        <string id="dO41CKIU" text="최소 구독 월" original="Minimum Subscribed Months"/>
         <!-- Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified -->
-        <string id="BVZwDqR0" text="최소 이 수개월 동안 구독자였던 시청자만 채택할 수 있으며 지정하지 않으면 무시됩니다."/>
+        <string id="BVZwDqR0" text="최소 이 수개월 동안 구독자였던 시청자만 채택할 수 있으며 지정하지 않으면 무시됩니다." original="Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified"/>
         <!-- Starting Gold -->
-        <string id="iOmYBC7I" text="스타팅 골드"/>
+        <string id="iOmYBC7I" text="스타팅 골드" original="Starting Gold"/>
         <!-- Gold the adopted hero will start with -->
-        <string id="pZMkJLix" text="채택된 영웅은 골드로 시작합니다."/>
+        <string id="pZMkJLix" text="채택된 영웅은 골드로 시작합니다." original="Gold the adopted hero will start with"/>
         <!-- Override Age -->
-        <string id="ZXwbvbbq" text="나이 무시"/>
+        <string id="ZXwbvbbq" text="나이 무시" original="Override Age"/>
         <!-- Override the heroes age -->
-        <string id="gxQgrAey" text="영웅의 나이를 무시"/>
+        <string id="gxQgrAey" text="영웅의 나이를 무시" original="Override the heroes age"/>
         <!-- Starting Age Range -->
-        <string id="NEBQgHiX" text="시작 연령 범위"/>
+        <string id="NEBQgHiX" text="시작 연령 범위" original="Starting Age Range"/>
         <!-- Random range of age when overriding it -->
-        <string id="TYqEBuLW" text="재정의할 때 임의의 연령 범위"/>
+        <string id="TYqEBuLW" text="재정의할 때 임의의 연령 범위" original="Random range of age when overriding it"/>
         <!-- Starting Skills -->
-        <string id="9IOFHQjS" text="시작 기술"/>
+        <string id="9IOFHQjS" text="시작 기술" original="Starting Skills"/>
         <!-- Starting skills, if empty then default skills of the adopted hero will be left in tact -->
-        <string id="C4rV4f2F" text="시작 기술, 비어 있으면 채택된 영웅의 기본 기술이 그대로 유지됩니다."/>
+        <string id="C4rV4f2F" text="시작 기술, 비어 있으면 채택된 영웅의 기본 기술이 그대로 유지됩니다." original="Starting skills, if empty then default skills of the adopted hero will be left in tact"/>
         <!-- Starting Equipment Tier -->
-        <string id="IAKQCRa1" text="시작 장비 등급"/>
+        <string id="IAKQCRa1" text="시작 장비 등급" original="Starting Equipment Tier"/>
         <!-- Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment -->
-        <string id="mQwjHXfC" text="장비 등급은 채택된 영웅이 시작하며, 지정하지 않으면 영웅이 기존 장비를 가져옵니다."/>
+        <string id="mQwjHXfC" text="장비 등급은 채택된 영웅이 시작하며, 지정하지 않으면 영웅이 기존 장비를 가져옵니다." original="Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment"/>
         <!-- Starting Class -->
-        <string id="0vGFJdO1" text="수업 시작"/>
+        <string id="0vGFJdO1" text="수업 시작" original="Starting Class"/>
         <!-- Starting class of the hero -->
-        <string id="zgjyFL6i" text="영웅의 시작 클래스"/>
-        
-        
+        <string id="zgjyFL6i" text="영웅의 시작 클래스" original="Starting class of the hero"/>
         <!-- Subscriber Only -->
-        <string id="4zAUTiSP" text="가입자 전용"/>
+        <string id="4zAUTiSP" text="가입자 전용" original="Subscriber Only"/>
         <!-- Newly created wanderer -->
-        <string id="cJQCU33B" text="새로 생성된 방랑자"/>
+        <string id="cJQCU33B" text="새로 생성된 방랑자" original="Newly created wanderer"/>
         <!-- Noble -->
-        <string id="fP84ES0X" text="고귀한"/>
+        <string id="fP84ES0X" text="고귀한" original="Noble"/>
         <!-- Wanderer -->
-        <string id="ozRaAx6L" text="뜨내기"/>
+        <string id="ozRaAx6L" text="뜨내기" original="Wanderer"/>
         <!-- Companions -->
-        <string id="YucejFfO" text="동반자"/>
+        <string id="YucejFfO" text="동반자" original="Companions"/>
         <!-- Allowed -->
-        <string id="UNtHwNhx" text="허용 된"/>
+        <string id="UNtHwNhx" text="허용 된" original="Allowed"/>
         <!-- Same faction only -->
-        <string id="6W0OJKkA" text="같은 세력만"/>
+        <string id="6W0OJKkA" text="같은 세력만" original="Same faction only"/>
         <!-- Starting Age Range -->
-        <string id="pDP8b5HR" text="시작 연령 범위"/>
+        <string id="pDP8b5HR" text="시작 연령 범위" original="Starting Age Range"/>
         <!-- Starting Gold -->
-        <string id="FvhsCSd3" text="스타팅 골드"/>
+        <string id="FvhsCSd3" text="스타팅 골드" original="Starting Gold"/>
         <!-- Inheritance -->
-        <string id="wP0lfTf3" text="계승"/>
+        <string id="wP0lfTf3" text="계승" original="Inheritance"/>
         <!-- {Inheritance}% of gold spent on equipment and retinue -->
-        <string id="mDK67efh" text="장비 및 수행원에 사용된 골드의 {Inheritance}%"/>
+        <string id="mDK67efh" text="장비 및 수행원에 사용된 골드의 {Inheritance}%" original="{Inheritance}% of gold spent on equipment and retinue"/>
         <!-- no custom items -->
-        <string id="76NtQIGB" text="사용자 정의 항목 없음"/>
+        <string id="76NtQIGB" text="사용자 정의 항목 없음" original="no custom items"/>
         <!-- up to {MaxInheritedCustomItems} custom items -->
-        <string id="sEDQrZCp" text="최대 {MaxInheritedCustomItems}개의 맞춤 항목"/>
-        
+        <string id="sEDQrZCp" text="최대 {MaxInheritedCustomItems}개의 맞춤 항목" original="up to {MaxInheritedCustomItems} custom items"/>
         <!-- You have already adopted a hero! -->
-        <string id="mJfD7e2g" text="당신은 이미 영웅을 입양했습니다!"/>
+        <string id="mJfD7e2g" text="당신은 이미 영웅을 입양했습니다!" original="You have already adopted a hero!"/>
         <!-- You must be subscribed for at least {MinSubscribedMonths} months to adopt a hero with this command! -->
-        <string id="4K7Q7gR0" text="이 명령으로 영웅을 입양하려면 최소 {MinSubscribedMonths}개월 동안 구독해야 합니다!"/>
+        <string id="4K7Q7gR0" text="이 명령으로 영웅을 입양하려면 최소 {MinSubscribedMonths}개월 동안 구독해야 합니다!" original="You must be subscribed for at least {MinSubscribedMonths} months to adopt a hero with this command!"/>
         <!-- You must be subscribed to adopt a hero with this command! -->
-        <string id="0QeQPxYi" text="이 명령으로 영웅을 입양하려면 구독해야 합니다!"/>
+        <string id="0QeQPxYi" text="이 명령으로 영웅을 입양하려면 구독해야 합니다!" original="You must be subscribed to adopt a hero with this command!"/>
         <!-- No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)! -->
-        <string id="XlQUIIsg" text="사용할 수 있는 영웅이 없습니다. 플레이어가 파벌에 속해 있지 않습니다(플레이어 파벌만 비활성화하거나 파벌에 가입)!"/>
+        <string id="XlQUIIsg" text="사용할 수 있는 영웅이 없습니다. 플레이어가 파벌에 속해 있지 않습니다(플레이어 파벌만 비활성화하거나 파벌에 가입)!" original="No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)!"/>
         <!-- You can't adopt a hero: no available hero matching the requirements was found! -->
-        <string id="E7wqQ2kg" text="영웅을 입양할 수 없습니다. 요구 사항과 일치하는 사용 가능한 영웅이 없습니다!"/>
+        <string id="E7wqQ2kg" text="영웅을 입양할 수 없습니다. 요구 사항과 일치하는 사용 가능한 영웅이 없습니다!" original="You can't adopt a hero: no available hero matching the requirements was found!"/>
         <!-- {OldName} is now known as {NewName}! -->
-        <string id="K7nuJVCN" text="{OldName} is now known as {NewName}!"/>
+        <string id="K7nuJVCN" text="{OldName} is now known as {NewName}!" original="{OldName} is now known as {NewName}!"/>
         <!-- {OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})! -->
-        <string id="PAc5S0GY" text="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})!"/>
+        <string id="PAc5S0GY" text="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})!" original="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})!"/>
         <!-- {OldName} is now known as {NewName}, they have {NewGold}! -->
-        <string id="lANBKEFN" text="{OldName} is now known as {NewName}, they have {NewGold}!"/>
-        
+        <string id="lANBKEFN" text="{OldName} is now known as {NewName}, they have {NewGold}!" original="{OldName} is now known as {NewName}, they have {NewGold}!"/>
         <!-- AttributePoints -->
         <!-- Add Attribute Points -->
-        <string id="TmUJ8VU7" text="속성 포인트 추가"/>
+        <string id="TmUJ8VU7" text="속성 포인트 추가" original="Add Attribute Points"/>
         <!-- Improve adopted heroes attribute points -->
-        <string id="YrYFBWaw" text="채택된 영웅 속성 포인트 개선"/>
+        <string id="YrYFBWaw" text="채택된 영웅 속성 포인트 개선" original="Improve adopted heroes attribute points"/>
         <!-- Random -->
-        <string id="ibuIZ39r" text="무작위의"/>
+        <string id="ibuIZ39r" text="무작위의" original="Random"/>
         <!-- If set a random attribute is improved, otherwise the viewer should provide part of the name of the attribute to improve (this works best as a chat command) -->
-        <string id="2F4MZn5h" text="무작위 속성을 설정하면 개선되고, 그렇지 않으면 뷰어는 개선할 속성 이름의 일부를 제공해야 합니다(채팅 명령으로 가장 잘 작동함)"/>
+        <string id="2F4MZn5h" text="무작위 속성을 설정하면 개선되고, 그렇지 않으면 뷰어는 개선할 속성 이름의 일부를 제공해야 합니다(채팅 명령으로 가장 잘 작동함)" original="If set a random attribute is improved, otherwise the viewer should provide part of the name of the attribute to improve (this works best as a chat command)"/>
         <!-- Random attribute -->
-        <string id="JQdCfO2H" text="랜덤 속성"/>
+        <string id="JQdCfO2H" text="랜덤 속성" original="Random attribute"/>
         <!-- Provide the attribute name (or part of it) when calling this -->
-        <string id="hSPAbHWb" text="이것을 호출할 때 속성 이름(또는 그 일부)을 제공하십시오."/>
-        
+        <string id="hSPAbHWb" text="이것을 호출할 때 속성 이름(또는 그 일부)을 제공하십시오." original="Provide the attribute name (or part of it) when calling this"/>
         <!-- Couldn't improve any attributes, they are all at max level! -->
-        <string id="VxproTE2" text="속성을 개선할 수 없습니다. 모두 최대 레벨입니다!"/>
+        <string id="VxproTE2" text="속성을 개선할 수 없습니다. 모두 최대 레벨입니다!" original="Couldn't improve any attributes, they are all at max level!"/>
         <!-- Provide the attribute name to improve (or part of it) -->
-        <string id="i9ziqTXG" text="개선할 속성 이름(또는 일부) 제공"/>
+        <string id="i9ziqTXG" text="개선할 속성 이름(또는 일부) 제공" original="Provide the attribute name to improve (or part of it)"/>
         <!-- You have gained {Amount} points in {Attribute}, you now have {NewAmount}! -->
-        <string id="Sl1bdnfy" text="{Amount} points in {Attribute}, you now have {NewAmount}을(를) 얻었습니다!"/>
+        <string id="Sl1bdnfy" text="{Amount} points in {Attribute}, you now have {NewAmount}을(를) 얻었습니다!" original="You have gained {Amount} points in {Attribute}, you now have {NewAmount}!"/>
         <!-- You have gained a point in {Attribute}, you now have {NewAmount}! -->
-        <string id="2vli3BCR" text="{Attribute}, you now have {NewAmount}에서 포인트를 얻었습니다!"/>
+        <string id="2vli3BCR" text="{Attribute}, you now have {NewAmount}에서 포인트를 얻었습니다!" original="You have gained a point in {Attribute}, you now have {NewAmount}!"/>
         <!--  -->
         <string id="YawQBjBG" text=""/>
-        
         <!-- Couldn't find attribute matching '{Args}'! -->
-        <string id="LE3POzUs" text="&amp;#39;{Args}&amp;#39;과(와) 일치하는 속성을 찾을 수 없습니다!"/>
+        <string id="LE3POzUs" text="&amp;#39;{Args}&amp;#39;과(와) 일치하는 속성을 찾을 수 없습니다!" original="Couldn't find attribute matching '{Args}'!"/>
         <!-- Couldn't improve {Attribute} attribute, it is already at max level! -->
-        <string id="R7X1dTqL" text="{Attribute} 속성을 개선할 수 없습니다. 이미 최대 레벨에 있습니다!"/>
-        
+        <string id="R7X1dTqL" text="{Attribute} 속성을 개선할 수 없습니다. 이미 최대 레벨에 있습니다!" original="Couldn't improve {Attribute} attribute, it is already at max level!"/>
         <!-- AuctionItem -->
         <!-- Auction Item -->
-        <string id="Q1QZbwR3" text="경매 품목"/>
+        <string id="Q1QZbwR3" text="경매 품목" original="Auction Item"/>
         <!-- Allows viewers to auction custom items, for other viewers to bid on (make sure to add a bid command also) -->
-        <string id="024hOo3G" text="다른 시청자가 입찰할 수 있도록 시청자가 맞춤 항목을 경매할 수 있습니다(입찰 명령도 추가해야 함)."/>
+        <string id="024hOo3G" text="다른 시청자가 입찰할 수 있도록 시청자가 맞춤 항목을 경매할 수 있습니다(입찰 명령도 추가해야 함)." original="Allows viewers to auction custom items, for other viewers to bid on (make sure to add a bid command also)"/>
         <!-- Auction Item -->
-        <string id="34GjlaWu" text="경매 품목"/>
+        <string id="34GjlaWu" text="경매 품목" original="Auction Item"/>
         <!-- How long the auction should last before the highest bidder wins -->
-        <string id="zsvhQABf" text="가장 높은 입찰자가 낙찰받기까지 경매가 지속되어야 하는 기간"/>
+        <string id="zsvhQABf" text="가장 높은 입찰자가 낙찰받기까지 경매가 지속되어야 하는 기간" original="How long the auction should last before the highest bidder wins"/>
         <!-- Auction Item -->
-        <string id="ssmJ9c5L" text="경매 품목"/>
+        <string id="ssmJ9c5L" text="경매 품목" original="Auction Item"/>
         <!-- Interval at which to output a reminder of the auction -->
-        <string id="ijkjWj5q" text="경매 알림을 출력하는 간격"/>
+        <string id="ijkjWj5q" text="경매 알림을 출력하는 간격" original="Interval at which to output a reminder of the auction"/>
         <!-- Another auction is already in progress -->
-        <string id="T2R35HHV" text="다른 경매가 이미 진행 중입니다."/>
+        <string id="T2R35HHV" text="다른 경매가 이미 진행 중입니다." original="Another auction is already in progress"/>
         <!-- You have no items to auction -->
-        <string id="kYHEtOM7" text="경매할 아이템이 없습니다"/>
+        <string id="kYHEtOM7" text="경매할 아이템이 없습니다" original="You have no items to auction"/>
         <!-- (reserve price) (partial item name) -->
-        <string id="lI4WCNeQ" text="(예약 가격) (일부 품목 이름)"/>
+        <string id="lI4WCNeQ" text="(예약 가격) (일부 품목 이름)" original="(reserve price) (partial item name)"/>
         <!-- Invalid reserve price '{Arg}' -->
-        <string id="mm1ay4I7" text="유효하지 않은 예약 가격 &amp;#39;{Arg}&amp;#39;"/>
+        <string id="mm1ay4I7" text="유효하지 않은 예약 가격 &amp;#39;{Arg}&amp;#39;" original="Invalid reserve price '{Arg}'"/>
         <!-- No items found matching '{ItemName}' -->
-        <string id="viO1RBr5" text="&amp;#39;{ItemName}&amp;#39;과(와) 일치하는 항목을 찾을 수 없습니다."/>
+        <string id="viO1RBr5" text="&amp;#39;{ItemName}&amp;#39;과(와) 일치하는 항목을 찾을 수 없습니다." original="No items found matching '{ItemName}'"/>
         <!-- {ItemCount} items found matching '{ItemName}', be more specific -->
-        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName}&amp;#39;, 더 구체적으로"/>
-        
+        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName}&amp;#39;, 더 구체적으로" original="{ItemCount} items found matching '{ItemName}', be more specific"/>
         <!-- Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds. -->
-        <string id="BH5rnHNq" text="&amp;#39;{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds}초 경매."/>
+        <string id="BH5rnHNq" text="&amp;#39;{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds}초 경매." original="Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."/>
         <!-- Bid On Item -->
-        <string id="rBAvqAh7" text="항목에 입찰"/>
+        <string id="rBAvqAh7" text="항목에 입찰" original="Bid On Item"/>
         <!-- Allows viewers bid on an active custom item auction (make sure to add an auction command also) -->
-        <string id="XuvGyCwD" text="시청자가 활성 사용자 지정 항목 경매에 입찰할 수 있습니다(경매 명령도 추가해야 함)."/>
+        <string id="XuvGyCwD" text="시청자가 활성 사용자 지정 항목 경매에 입찰할 수 있습니다(경매 명령도 추가해야 함)." original="Allows viewers bid on an active custom item auction (make sure to add an auction command also)"/>
         <!-- (bid amount) -->
-        <string id="ewjqhPqj" text="(입찰금액)"/>
+        <string id="ewjqhPqj" text="(입찰금액)" original="(bid amount)"/>
         <!-- Invalid bid amount -->
-        <string id="dgG5WPrC" text="잘못된 입찰 금액"/>
-        
+        <string id="dgG5WPrC" text="잘못된 입찰 금액" original="Invalid bid amount"/>
         <!-- EquipHero -->
         <!-- Equip Hero -->
-        <string id="3zBXys4m" text="영웅 장착"/>
+        <string id="3zBXys4m" text="영웅 장착" original="Equip Hero"/>
         <!-- Improve adopted heroes equipment -->
-        <string id="3QfHyF8g" text="채택된 영웅 장비 개선"/>
+        <string id="3QfHyF8g" text="채택된 영웅 장비 개선" original="Improve adopted heroes equipment"/>
         <!-- Allow Companion Upgrade -->
-        <string id="TGs8URfN" text="동반자 업그레이드 허용"/>
+        <string id="TGs8URfN" text="동반자 업그레이드 허용" original="Allow Companion Upgrade"/>
         <!-- Allow improvement of adopted heroes who are also companions of the player. -->
-        <string id="6zMgeovT" text="플레이어의 동료이기도 한 입양된 영웅의 개선을 허용합니다."/>
+        <string id="6zMgeovT" text="플레이어의 동료이기도 한 입양된 영웅의 개선을 허용합니다." original="Allow improvement of adopted heroes who are also companions of the player."/>
         <!-- Cost Tier 1 -->
-        <string id="8qUzSxsQ" text="비용 계층 1"/>
+        <string id="8qUzSxsQ" text="비용 계층 1" original="Cost Tier 1"/>
         <!-- Gold cost for Tier 1 equipment -->
-        <string id="4ipwvHaR" text="Tier 1 장비의 골드 비용"/>
+        <string id="4ipwvHaR" text="Tier 1 장비의 골드 비용" original="Gold cost for Tier 1 equipment"/>
         <!-- Cost Tier 2 -->
-        <string id="bjAzHOqD" text="비용 계층 2"/>
+        <string id="bjAzHOqD" text="비용 계층 2" original="Cost Tier 2"/>
         <!-- Gold cost for Tier 2 equipment -->
-        <string id="3uRKzeJv" text="Tier 2 장비의 골드 비용"/>
+        <string id="3uRKzeJv" text="Tier 2 장비의 골드 비용" original="Gold cost for Tier 2 equipment"/>
         <!-- Cost Tier 3 -->
-        <string id="EUw3jfcC" text="비용 계층 3"/>
+        <string id="EUw3jfcC" text="비용 계층 3" original="Cost Tier 3"/>
         <!-- Gold cost for Tier 3 equipment -->
-        <string id="vRTR2AVO" text="Tier 3 장비의 골드 비용"/>
+        <string id="vRTR2AVO" text="Tier 3 장비의 골드 비용" original="Gold cost for Tier 3 equipment"/>
         <!-- Cost Tier 4 -->
-        <string id="cvWxBhFl" text="비용 계층 4"/>
+        <string id="cvWxBhFl" text="비용 계층 4" original="Cost Tier 4"/>
         <!-- Gold cost for Tier 4 equipment -->
-        <string id="LeCyJf6T" text="Tier 4 장비의 골드 비용"/>
+        <string id="LeCyJf6T" text="Tier 4 장비의 골드 비용" original="Gold cost for Tier 4 equipment"/>
         <!-- Cost Tier 5 -->
-        <string id="Im4cXqCx" text="비용 계층 5"/>
+        <string id="Im4cXqCx" text="비용 계층 5" original="Cost Tier 5"/>
         <!-- Gold cost for Tier 5 equipment -->
-        <string id="4a0P89lE" text="Tier 5 장비의 골드 비용"/>
+        <string id="4a0P89lE" text="Tier 5 장비의 골드 비용" original="Gold cost for Tier 5 equipment"/>
         <!-- Cost Tier 6 -->
-        <string id="c1CI4H3y" text="비용 계층 6"/>
+        <string id="c1CI4H3y" text="비용 계층 6" original="Cost Tier 6"/>
         <!-- Gold cost for Tier 6 equipment -->
-        <string id="JkrTWsSf" text="Tier 6 장비의 골드 비용"/>
+        <string id="JkrTWsSf" text="Tier 6 장비의 골드 비용" original="Gold cost for Tier 6 equipment"/>
         <!-- Reequip Instead Of Upgrade -->
-        <string id="GaTe1vEL" text="업그레이드 대신 재장착"/>
+        <string id="GaTe1vEL" text="업그레이드 대신 재장착" original="Reequip Instead Of Upgrade"/>
         <!-- Whether to re-equip the equipment INSTEAD of upgrading it (you should make TWO commands, one to upgrade and one to reequip) -->
-        <string id="zTiLpc9G" text="장비를 업그레이드하는 대신 장비를 다시 장착할지 여부(두 가지 명령을 수행해야 합니다. 하나는 업그레이드하고 하나는 재장착해야 함)"/>
+        <string id="zTiLpc9G" text="장비를 업그레이드하는 대신 장비를 다시 장착할지 여부(두 가지 명령을 수행해야 합니다. 하나는 업그레이드하고 하나는 재장착해야 함)" original="Whether to re-equip the equipment INSTEAD of upgrading it (you should make TWO commands, one to upgrade and one to reequip)"/>
         <!-- Re-rolls your equipment at your current tier -->
-        <string id="IJtXQh2D" text="현재 단계에서 장비를 다시 굴립니다."/>
+        <string id="IJtXQh2D" text="현재 단계에서 장비를 다시 굴립니다." original="Re-rolls your equipment at your current tier"/>
         <!-- Disallowed for player companions -->
-        <string id="02iAT4Y8" text="플레이어 동반자에게 허용되지 않음"/>
+        <string id="02iAT4Y8" text="플레이어 동반자에게 허용되지 않음" original="Disallowed for player companions"/>
         <!-- Tier costs -->
-        <string id="wORNXOT5" text="계층 비용"/>
+        <string id="wORNXOT5" text="계층 비용" original="Tier costs"/>
         <!-- You are a player companion, you cannot change your own equipment! -->
-        <string id="C9Mhzohr" text="당신은 플레이어 동반자이며 자신의 장비를 변경할 수 없습니다!"/>
+        <string id="C9Mhzohr" text="당신은 플레이어 동반자이며 자신의 장비를 변경할 수 없습니다!" original="You are a player companion, you cannot change your own equipment!"/>
         <!-- You cannot upgrade equipment, as a mission is active! -->
-        <string id="RoIXssEg" text="임무가 진행 중이므로 장비를 업그레이드할 수 없습니다!"/>
+        <string id="RoIXssEg" text="임무가 진행 중이므로 장비를 업그레이드할 수 없습니다!" original="You cannot upgrade equipment, as a mission is active!"/>
         <!-- You cannot upgrade any further! -->
-        <string id="FZh7ZtGp" text="더 이상 업그레이드할 수 없습니다!"/>
-        <string id="fYksbZJp" text="장착 계층 {ArmorTier} ({ClassName})"/>
-        <string id="0KHxea5e" text="재장착 계층 {ArmorTier} ({ClassName})"/>
-        <string id="VlnXNPYS" text="공강"/>
+        <string id="FZh7ZtGp" text="더 이상 업그레이드할 수 없습니다!" original="You cannot upgrade any further!"/>
+        <string id="fYksbZJp" text="장착 계층 {ArmorTier} ({ClassName})" original="Equipped Tier {ArmorTier} ({ClassName})"/>
+        <string id="0KHxea5e" text="재장착 계층 {ArmorTier} ({ClassName})" original="Re-equipped Tier {ArmorTier} ({ClassName})"/>
+        <string id="VlnXNPYS" text="공강" original="No Class"/>
         <!-- Focus Points -->
-        <string id="WihQZ5uq" text="초점 포인트"/>
+        <string id="WihQZ5uq" text="초점 포인트" original="Focus Points"/>
         <!-- Add focus points to heroes skills -->
-        <string id="01L8w1ZW" text="영웅 스킬에 포커스 포인트 추가"/>
+        <string id="01L8w1ZW" text="영웅 스킬에 포커스 포인트 추가" original="Add focus points to heroes skills"/>
         <!-- Skills -->
-        <string id="QwuyvXBg" text="기술"/>
+        <string id="QwuyvXBg" text="기술" original="Skills"/>
         <!-- What skill to add focus to -->
-        <string id="w9liWZ9A" text="초점을 추가할 기술"/>
+        <string id="w9liWZ9A" text="초점을 추가할 기술" original="What skill to add focus to"/>
         <!-- Auto -->
-        <string id="RiUjwmS5" text="자동"/>
+        <string id="RiUjwmS5" text="자동" original="Auto"/>
         <!-- Chooses a random skill to add focus to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used. -->
-        <string id="EA4jsUhm" text="초점을 추가할 무작위 기술을 선택하고 클래스 기술을 선호하고 현재 장비에 대한 기술을 선택한 다음 다른 기술을 선호합니다. 자동 사용 시 스킬 설정이 무시됩니다."/>
+        <string id="EA4jsUhm" text="초점을 추가할 무작위 기술을 선택하고 클래스 기술을 선호하고 현재 장비에 대한 기술을 선택한 다음 다른 기술을 선호합니다. 자동 사용 시 스킬 설정이 무시됩니다." original="Chooses a random skill to add focus to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used."/>
         <!-- Focus points -->
-        <string id="UpHpjzFk" text="초점 포인트"/>
+        <string id="UpHpjzFk" text="초점 포인트" original="Focus points"/>
         <!-- Automatic, based on class, equipment, and existing skills -->
-        <string id="SIM2l7ta" text="자동, 클래스, 장비 및 기존 기술 기반"/>
+        <string id="SIM2l7ta" text="자동, 클래스, 장비 및 기존 기술 기반" original="Automatic, based on class, equipment, and existing skills"/>
         <!-- Couldn't find a valid skill to add focus points to! -->
-        <string id="VXvS5xji" text="초점을 추가할 유효한 기술을 찾을 수 없습니다!"/>
+        <string id="VXvS5xji" text="초점을 추가할 유효한 기술을 찾을 수 없습니다!" original="Couldn't find a valid skill to add focus points to!"/>
         <!-- You have gained {Amount} focus points in {Skill}, you now have {NewAmount}! -->
-        <string id="6tcVqRIs" text="{Amount} focus points in {Skill}, you now have {NewAmount}을(를) 얻었습니다!"/>
+        <string id="6tcVqRIs" text="{Amount} focus points in {Skill}, you now have {NewAmount}을(를) 얻었습니다!" original="You have gained {Amount} focus points in {Skill}, you now have {NewAmount}!"/>
         <!-- You have gained a focus point in {Skill}, you now have {NewAmount}! -->
-        <string id="HLFMWOJA" text="{Skill}, you now have {NewAmount}에서 포커스 포인트를 얻었습니다!"/>
-        
+        <string id="HLFMWOJA" text="{Skill}, you now have {NewAmount}에서 포커스 포인트를 얻었습니다!" original="You have gained a focus point in {Skill}, you now have {NewAmount}!"/>
         <!-- DiscardItem -->
         <!-- Discard Item -->
-        <string id="fmftNyHh" text="아이템 버리기"/>
+        <string id="fmftNyHh" text="아이템 버리기" original="Discard Item"/>
         <!-- Allows viewers to discard one of their own custom items -->
-        <string id="f3LrrLHP" text="시청자가 자신의 맞춤 항목 중 하나를 버릴 수 있습니다."/>
+        <string id="f3LrrLHP" text="시청자가 자신의 맞춤 항목 중 하나를 버릴 수 있습니다." original="Allows viewers to discard one of their own custom items"/>
         <!-- You have no items to discard -->
-        <string id="oXQ4En4P" text="폐기할 항목이 없습니다."/>
+        <string id="oXQ4En4P" text="폐기할 항목이 없습니다." original="You have no items to discard"/>
         <!-- (partial item name) -->
-        <string id="by80aboy" text="(항목 이름의 일부)"/>
+        <string id="by80aboy" text="(항목 이름의 일부)" original="(partial item name)"/>
         <!-- No items found matching '{Args}' -->
-        <string id="p0urrIvR" text="&amp;#39;{Args}&amp;#39;과(와) 일치하는 항목을 찾을 수 없습니다."/>
+        <string id="p0urrIvR" text="&amp;#39;{Args}&amp;#39;과(와) 일치하는 항목을 찾을 수 없습니다." original="No items found matching '{Args}'"/>
         <!-- {Count} items found matching '{Args}', be more specific -->
-        <string id="Pzo2UJrl" text="{Count} items found matching '{Args}&amp;#39;, 더 구체적으로"/>
+        <string id="Pzo2UJrl" text="{Count} items found matching '{Args}&amp;#39;, 더 구체적으로" original="{Count} items found matching '{Args}', be more specific"/>
         <!-- '{ItemName}' was discarded -->
-        <string id="bNqd3AzN" text="&amp;#39;{ItemName}&amp;#39;이(가) 삭제되었습니다."/>
-        
+        <string id="bNqd3AzN" text="&amp;#39;{ItemName}&amp;#39;이(가) 삭제되었습니다." original="'{ItemName}' was discarded"/>
         <!-- GiveItem -->
         <!-- Give Item -->
-        <string id="nAPjfF4C" text="아이템 주기"/>
+        <string id="nAPjfF4C" text="아이템 주기" original="Give Item"/>
         <!-- Allows viewers to give one of their own custom items to another viewer -->
-        <string id="u9Jx6QUr" text="시청자가 자신의 사용자 지정 항목 중 하나를 다른 시청자에게 줄 수 있습니다."/>
+        <string id="u9Jx6QUr" text="시청자가 자신의 사용자 지정 항목 중 하나를 다른 시청자에게 줄 수 있습니다." original="Allows viewers to give one of their own custom items to another viewer"/>
         <!-- You have no items to give -->
-        <string id="Tfj1U5BB" text="줄 아이템이 없습니다"/>
+        <string id="Tfj1U5BB" text="줄 아이템이 없습니다" original="You have no items to give"/>
         <!-- (recipient) (partial item name) -->
-        <string id="BClUoR9H" text="(받는 사람) (항목 이름의 일부)"/>
+        <string id="BClUoR9H" text="(받는 사람) (항목 이름의 일부)" original="(recipient) (partial item name)"/>
         <!-- Couldn't find recipient '{Name}' -->
-        <string id="vDsYxMKq" text="수신자 &amp;#39;{Name}&amp;#39;을(를) 찾을 수 없습니다."/>
+        <string id="vDsYxMKq" text="수신자 &amp;#39;{Name}&amp;#39;을(를) 찾을 수 없습니다." original="Couldn't find recipient '{Name}'"/>
         <!-- '{ItemName}' was transferred from @{FromHero} to @{ToHero} -->
-        <string id="E1o7b5ht" text="&amp;#39;{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
-        
+        <string id="E1o7b5ht" text="&amp;#39;{ItemName}' was transferred from @{FromHero} to @{ToHero}" original="'{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
         <!-- HeroInfoCommand -->
         <!-- Show Hero Info -->
-        <string id="cj68a0l9" text="영웅 정보 표시"/>
+        <string id="cj68a0l9" text="영웅 정보 표시" original="Show Hero Info"/>
         <!-- Will write various hero stats to chat -->
-        <string id="QsTQzceq" text="다양한 영웅 통계를 작성하여 채팅합니다."/>
+        <string id="QsTQzceq" text="다양한 영웅 통계를 작성하여 채팅합니다." original="Will write various hero stats to chat"/>
         <!-- Show Gold -->
-        <string id="oWtshHwx" text="쇼 골드"/>
+        <string id="oWtshHwx" text="쇼 골드" original="Show Gold"/>
         <!-- Show gold -->
-        <string id="O2mUbcue" text="골드 표시"/>
+        <string id="O2mUbcue" text="골드 표시" original="Show gold"/>
         <!-- Show General -->
-        <string id="VmQECrnc" text="일반 보기"/>
+        <string id="VmQECrnc" text="일반 보기" original="Show General"/>
         <!-- Show personal info: health, location, age -->
-        <string id="JWbk5Oko" text="개인 정보 표시: 건강, 위치, 나이"/>
+        <string id="JWbk5Oko" text="개인 정보 표시: 건강, 위치, 나이" original="Show personal info: health, location, age"/>
         <!-- Show Top Skills -->
-        <string id="tMKmlYeR" text="최고의 기술 표시"/>
+        <string id="tMKmlYeR" text="최고의 기술 표시" original="Show Top Skills"/>
         <!-- Shows skills (and focuse values) above the specified MinSkillToShow value -->
-        <string id="dayx7JEJ" text="지정된 MinSkillToShow 값보다 높은 기술(및 포커스 값)을 표시합니다."/>
+        <string id="dayx7JEJ" text="지정된 MinSkillToShow 값보다 높은 기술(및 포커스 값)을 표시합니다." original="Shows skills (and focuse values) above the specified MinSkillToShow value"/>
         <!-- Min Skill To Show -->
-        <string id="5VW8HXxS" text="표시할 최소 기술"/>
+        <string id="5VW8HXxS" text="표시할 최소 기술" original="Min Skill To Show"/>
         <!-- If ShowTopSkills is specified, this defines what skills are shown -->
-        <string id="4819Fxyv" text="ShowTopSkills가 지정된 경우 표시되는 기술을 정의합니다."/>
+        <string id="4819Fxyv" text="ShowTopSkills가 지정된 경우 표시되는 기술을 정의합니다." original="If ShowTopSkills is specified, this defines what skills are shown"/>
         <!-- Show Attributes -->
-        <string id="lSM7JkvB" text="속성 표시"/>
+        <string id="lSM7JkvB" text="속성 표시" original="Show Attributes"/>
         <!-- Shows all hero attributes -->
-        <string id="co5TLkOw" text="모든 영웅 속성을 표시합니다."/>
+        <string id="co5TLkOw" text="모든 영웅 속성을 표시합니다." original="Shows all hero attributes"/>
         <!-- Show Equipment -->
-        <string id="uLUxOyp2" text="쇼 장비"/>
+        <string id="uLUxOyp2" text="쇼 장비" original="Show Equipment"/>
         <!-- Shows the equipment tier of the hero -->
-        <string id="CnTMaEPC" text="영웅의 장비 등급을 보여줍니다."/>
+        <string id="CnTMaEPC" text="영웅의 장비 등급을 보여줍니다." original="Shows the equipment tier of the hero"/>
         <!-- Show Inventory -->
-        <string id="sp1iuH1y" text="인벤토리 표시"/>
+        <string id="sp1iuH1y" text="인벤토리 표시" original="Show Inventory"/>
         <!-- Shows the full battle inventory of the hero -->
-        <string id="uhAC3hOZ" text="영웅의 전체 전투 인벤토리를 보여줍니다"/>
+        <string id="uhAC3hOZ" text="영웅의 전체 전투 인벤토리를 보여줍니다" original="Shows the full battle inventory of the hero"/>
         <!-- Show Storage -->
-        <string id="aRA1V1Jp" text="스토리지 표시"/>
+        <string id="aRA1V1Jp" text="스토리지 표시" original="Show Storage"/>
         <!-- Shows the heroes storage (all their custom items) -->
-        <string id="Wjr33ERJ" text="영웅 저장소(모든 사용자 정의 항목)를 표시합니다."/>
+        <string id="Wjr33ERJ" text="영웅 저장소(모든 사용자 정의 항목)를 표시합니다." original="Shows the heroes storage (all their custom items)"/>
         <!-- Show Civilian Inventory -->
-        <string id="ecvBeN44" text="민간인 인벤토리 표시"/>
+        <string id="ecvBeN44" text="민간인 인벤토리 표시" original="Show Civilian Inventory"/>
         <!-- Shows the full civilian inventory of the hero -->
-        <string id="fUggutW6" text="영웅의 전체 민간 인벤토리를 표시합니다."/>
+        <string id="fUggutW6" text="영웅의 전체 민간 인벤토리를 표시합니다." original="Shows the full civilian inventory of the hero"/>
         <!-- Show Retinue -->
-        <string id="p0WEhay8" text="수행원 표시"/>
+        <string id="p0WEhay8" text="수행원 표시" original="Show Retinue"/>
         <!-- Shows a summary of the retinue of the hero (count and tier) -->
-        <string id="AXnWeTzh" text="영웅의 수행원 요약을 표시합니다(수 및 계층)."/>
+        <string id="AXnWeTzh" text="영웅의 수행원 요약을 표시합니다(수 및 계층)." original="Shows a summary of the retinue of the hero (count and tier)"/>
         <!-- Show Retinue List -->
-        <string id="Vyatyyuh" text="수행원 목록 표시"/>
+        <string id="Vyatyyuh" text="수행원 목록 표시" original="Show Retinue List"/>
         <!-- Shows the exact classes and counts of the retinue of the hero -->
-        <string id="CSTqzcOi" text="영웅 수행원의 정확한 클래스와 수를 표시합니다."/>
+        <string id="CSTqzcOi" text="영웅 수행원의 정확한 클래스와 수를 표시합니다." original="Shows the exact classes and counts of the retinue of the hero"/>
         <!-- Show Achievements -->
-        <string id="1F3utCWA" text="업적 표시"/>
+        <string id="1F3utCWA" text="업적 표시" original="Show Achievements"/>
         <!-- Shows all hero achievements -->
-        <string id="CKJd7KC9" text="모든 영웅 업적 표시"/>
+        <string id="CKJd7KC9" text="모든 영웅 업적 표시" original="Shows all hero achievements"/>
         <!-- Show Tracked Stats -->
-        <string id="LNvYSMZj" text="추적된 통계 표시"/>
+        <string id="LNvYSMZj" text="추적된 통계 표시" original="Show Tracked Stats"/>
         <!-- Shows all hero tracked stats (kills, deaths, summons, attacks, tournament wins etc.) -->
-        <string id="FaUbhgTR" text="모든 영웅 추적 통계(킬, 사망, 소환, 공격, 토너먼트 승리 등)를 표시합니다."/>
+        <string id="FaUbhgTR" text="모든 영웅 추적 통계(사망, 사망, 소환, 공격, 토너먼트 승리 등)를 표시합니다." original="Shows all hero tracked stats (kills, deaths, summons, attacks, tournament wins etc.)"/>
         <!-- Show Powers -->
-        <string id="cHaiwygJ" text="능력을 보여라"/>
+        <string id="cHaiwygJ" text="능력을 보여라" original="Show Powers"/>
         <!-- Shows the heroes unlocked powers -->
-        <string id="YW8HsNEF" text="영웅의 잠금 해제된 능력을 보여줍니다."/>
+        <string id="YW8HsNEF" text="영웅의 잠금 해제된 능력을 보여줍니다." original="Shows the heroes unlocked powers"/>
         <!-- Gold -->
-        <string id="YVhcZatv" text="금"/>
+        <string id="YVhcZatv" text="금" original="Gold"/>
         <!-- Age, Clan, Culture, Health -->
-        <string id="jZigiKXG" text="나이, 씨족, 문화, 건강"/>
+        <string id="jZigiKXG" text="나이, 씨족, 문화, 건강" original="Age, Clan, Culture, Health"/>
         <!-- Skills greater than {MinSkillToShow} -->
-        <string id="6wVce2iI" text="{MinSkillToShow} 이상의 기술"/>
+        <string id="6wVce2iI" text="{MinSkillToShow} 이상의 기술" original="Skills greater than {MinSkillToShow}"/>
         <!-- Attributes -->
-        <string id="74kcLopo" text="속성"/>
+        <string id="74kcLopo" text="속성" original="Attributes"/>
         <!-- Equipment tier -->
-        <string id="PeDxGcu7" text="장비 등급"/>
+        <string id="PeDxGcu7" text="장비 등급" original="Equipment tier"/>
         <!-- Battle equipment inventory -->
-        <string id="EVvlMCru" text="전투 장비 인벤토리"/>
+        <string id="EVvlMCru" text="전투 장비 인벤토리" original="Battle equipment inventory"/>
         <!-- Civilian equipment inventory -->
-        <string id="DeffOla6" text="민간 장비 인벤토리"/>
+        <string id="DeffOla6" text="민간 장비 인벤토리" original="Civilian equipment inventory"/>
         <!-- Custom item storage -->
-        <string id="VSDDQdmJ" text="커스텀 아이템 보관"/>
+        <string id="VSDDQdmJ" text="커스텀 아이템 보관" original="Custom item storage"/>
         <!-- Retinue count and average tier -->
-        <string id="C0mkGXlK" text="수행원 수 및 평균 등급"/>
+        <string id="C0mkGXlK" text="수행원 수 및 평균 등급" original="Retinue count and average tier"/>
         <!-- Retinue unit list -->
-        <string id="L4Rh6vFE" text="수행원 목록"/>
+        <string id="L4Rh6vFE" text="수행원 목록" original="Retinue unit list"/>
         <!-- Achievements -->
-        <string id="ZW9XlwY7" text="업적"/>
+        <string id="ZW9XlwY7" text="업적" original="Achievements"/>
         <!-- Tracked stats -->
-        <string id="Xmo7pOpj" text="추적된 통계"/>
+        <string id="Xmo7pOpj" text="추적된 통계" original="Tracked stats"/>
         <!-- Powers -->
-        <string id="xVDOsWPq" text="권한"/>
+        <string id="xVDOsWPq" text="권한" original="Powers"/>
         <!-- Shows -->
-        <string id="UB1bAtSI" text="쇼"/>
+        <string id="UB1bAtSI" text="쇼" original="Shows"/>
         <!-- No Class -->
-        <string id="ZI2UKbNp" text="공강"/>
+        <string id="ZI2UKbNp" text="공강" original="No Class"/>
         <!-- {Age} yrs -->
-        <string id="4TVRrlOw" text="{Age}년"/>
+        <string id="4TVRrlOw" text="{Age}년" original="{Age} yrs"/>
         <!-- {HP} / {MaxHP} HP -->
-        <string id="jY2QJdA3" text="{HP} / {MaxHP} HP"/>
+        <string id="jY2QJdA3" text="{HP} / {MaxHP} HP" original="{HP} / {MaxHP} HP"/>
         <!-- Last seen near {Place} -->
-        <string id="B2xDasDx" text="{Place} 근처에서 마지막으로 본"/>
+        <string id="B2xDasDx" text="{Place} 근처에서 마지막으로 본" original="Last seen near {Place}"/>
         <!-- [LVL] -->
-        <string id="fRwyY6ms" text="[LVL]"/>
+        <string id="fRwyY6ms" text="[LVL]" original="[LVL]"/>
         <!-- [SKILLS] -->
-        <string id="rTId8pBy" text="[스킬]"/>
+        <string id="rTId8pBy" text="[스킬]" original="[SKILLS]"/>
         <!-- [ATTR] -->
-        <string id="RSlhbJzO" text="[ATTR]"/>
+        <string id="RSlhbJzO" text="[ATTR]" original="[ATTR]"/>
         <!-- [TIER] -->
-        <string id="64yw2YD0" text="[층]"/>
+        <string id="64yw2YD0" text="[층]" original="[TIER]"/>
         <!-- No Equip Class -->
-        <string id="u32KRqz8" text="장비 등급 없음"/>
+        <string id="u32KRqz8" text="장비 등급 없음" original="No Equip Class"/>
         <!-- [BATTLE] -->
-        <string id="YVVlcDSK" text="[전투]"/>
+        <string id="YVVlcDSK" text="[전투]" original="[BATTLE]"/>
         <!-- [CIV] -->
-        <string id="zaVtcDWB" text="[CIV]"/>
+        <string id="zaVtcDWB" text="[CIV]" original="[CIV]"/>
         <!-- [STORED] -->
-        <string id="U4HnxTCj" text="[저장됨]"/>
+        <string id="U4HnxTCj" text="[저장됨]" original="[STORED]"/>
         <!-- [RETINUE] -->
-        <string id="hMBF1zLr" text="[시종]"/>
+        <string id="hMBF1zLr" text="[시종]" original="[RETINUE]"/>
         <!-- (nothing) -->
-        <string id="4IOefqsW" text="(아무것도 아님)"/>
+        <string id="4IOefqsW" text="(아무것도 아님)" original="(nothing)"/>
         <!-- {RetinueCount} (avg Tier {Tier}) -->
-        <string id="XE2QRhyz" text="{RetinueCount} (avg Tier {Tier})"/>
+        <string id="XE2QRhyz" text="{RetinueCount} (avg Tier {Tier})" original="{RetinueCount} (avg Tier {Tier})"/>
         <!-- [ACHIEV] -->
-        <string id="giS3vq1V" text="[달성]"/>
+        <string id="giS3vq1V" text="[달성]" original="[ACHIEV]"/>
         <!-- K -->
-        <string id="ADjhFwlz" text="케이"/>
+        <string id="ADjhFwlz" text="케이" original="K"/>
         <!-- D -->
-        <string id="aUj96cVC" text="NS"/>
+        <string id="aUj96cVC" text="NS" original="D"/>
         <!-- KVwr -->
-        <string id="i02EMVP8" text="KVwr"/>
+        <string id="i02EMVP8" text="KVwr" original="KVwr"/>
         <!-- KStrmr -->
-        <string id="iGXwhVja" text="KStrmr"/>
+        <string id="iGXwhVja" text="KStrmr" original="KStrmr"/>
         <!-- Battles -->
-        <string id="APUC6wGt" text="전투"/>
+        <string id="APUC6wGt" text="전투" original="Battles"/>
         <!-- Sums -->
-        <string id="6nwK1UF9" text="합계"/>
+        <string id="6nwK1UF9" text="합계" original="Sums"/>
         <!-- CSums -->
-        <string id="uDFykstd" text="CSums"/>
+        <string id="uDFykstd" text="CSums" original="CSums"/>
         <!-- Atks -->
-        <string id="wtmfNCIj" text="공격"/>
+        <string id="wtmfNCIj" text="공격" original="Atks"/>
         <!-- CAtks -->
-        <string id="T29akAtY" text="고양이"/>
+        <string id="T29akAtY" text="고양이" original="CAtks"/>
         <!-- TourRndW -->
-        <string id="NOkWgftX" text="둘러보기"/>
+        <string id="NOkWgftX" text="둘러보기" original="TourRndW"/>
         <!-- TourRndL -->
-        <string id="k5O3x52V" text="둘러보기"/>
+        <string id="k5O3x52V" text="둘러보기" original="TourRndL"/>
         <!-- TourW -->
-        <string id="J6yoXowD" text="투어W"/>
+        <string id="J6yoXowD" text="투어W" original="TourW"/>
         <!-- [STATS] -->
-        <string id="nL2E16fj" text="[통계]"/>
+        <string id="nL2E16fj" text="[통계]" original="[STATS]"/>
         <!-- [ACTIVE] -->
-        <string id="gV1s8Ffw" text="[활동적인]"/>
+        <string id="gV1s8Ffw" text="[활동적인]" original="[ACTIVE]"/>
         <!-- [PASSIVE] -->
-        <string id="z82jxnmF" text="[수동적 인]"/>
+        <string id="z82jxnmF" text="[수동적 인]" original="[PASSIVE]"/>
         <!-- Amount Low -->
-        <string id="01yarGvZ" text="낮은 금액"/>
+        <string id="01yarGvZ" text="낮은 금액" original="Amount Low"/>
         <!-- Lower bound of amount to improve -->
-        <string id="UVKWPBjq" text="개선할 금액의 하한"/>
+        <string id="UVKWPBjq" text="개선할 금액의 하한" original="Lower bound of amount to improve"/>
         <!-- Amount High -->
-        <string id="qi7FVuQB" text="높은 금액"/>
+        <string id="qi7FVuQB" text="높은 금액" original="Amount High"/>
         <!-- Upper bound of amount to improve -->
-        <string id="tU4rSLcx" text="개선할 금액의 상한"/>
+        <string id="tU4rSLcx" text="개선할 금액의 상한" original="Upper bound of amount to improve"/>
         <!-- Gold Cost -->
-        <string id="DlZ7sV1N" text="골드 비용"/>
+        <string id="DlZ7sV1N" text="골드 비용" original="Gold Cost"/>
         <!-- Gold that will be taken from the hero -->
-        <string id="pGwh9edB" text="영웅에게서 빼앗을 금"/>
-        
+        <string id="pGwh9edB" text="영웅에게서 빼앗을 금" original="Gold that will be taken from the hero"/>
         <!-- JoinTournament -->
         <!-- Join Tournament -->
-        <string id="EZPZtyXo" text="토너먼트 참가"/>
+        <string id="EZPZtyXo" text="토너먼트 참가" original="Join Tournament"/>
         <!-- Puts adopted heroes in queue for the next tournament -->
-        <string id="1h8OT5VD" text="채택된 영웅을 다음 토너먼트 대기열에 넣습니다."/>
+        <string id="1h8OT5VD" text="채택된 영웅을 다음 토너먼트 대기열에 넣습니다." original="Puts adopted heroes in queue for the next tournament"/>
         <!-- Gold Cost -->
-        <string id="7D2UBlGC" text="골드 비용"/>
+        <string id="7D2UBlGC" text="골드 비용" original="Gold Cost"/>
         <!-- Gold cost to join -->
-        <string id="Upuhtmr6" text="가입 골드 비용"/>
+        <string id="Upuhtmr6" text="가입 골드 비용" original="Gold cost to join"/>
         <!-- JOIN the viewer tournament -->
-        <string id="jUcsHkqk" text="시청자 토너먼트에 참여하세요"/>
+        <string id="jUcsHkqk" text="시청자 토너먼트에 참여하세요" original="JOIN the viewer tournament"/>
         <!-- WATCH the viewer tournament -->
-        <string id="hlVvENgP" text="시청자 토너먼트 보기"/>
-        
+        <string id="hlVvENgP" text="시청자 토너먼트 보기" original="WATCH the viewer tournament"/>
         <!-- NameItem -->
         <!-- Name Item -->
-        <string id="0YSdK3zK" text="이름 항목"/>
+        <string id="0YSdK3zK" text="이름 항목" original="Name Item"/>
         <!-- Allow viewer to name custom items -->
-        <string id="k7vnOEIN" text="뷰어가 사용자 정의 항목의 이름을 지정할 수 있도록 허용"/>
+        <string id="k7vnOEIN" text="뷰어가 사용자 정의 항목의 이름을 지정할 수 있도록 허용" original="Allow viewer to name custom items"/>
         <!-- You have no nameable items -->
-        <string id="rXVOIMri" text="명명할 수 있는 항목이 없습니다."/>
+        <string id="rXVOIMri" text="명명할 수 있는 항목이 없습니다." original="You have no nameable items"/>
         <!-- You will rename your {Item} -->
-        <string id="Xb3eM5o7" text="{Item}의 이름을 바꾸게 됩니다."/>
+        <string id="Xb3eM5o7" text="{Item}의 이름을 바꾸게 됩니다." original="You will rename your {Item}"/>
         <!-- {PreviousName} renamed to {NewName} -->
-        <string id="iqNEr6Y7" text="{PreviousName} renamed to {NewName}"/>
-        
+        <string id="iqNEr6Y7" text="{PreviousName} renamed to {NewName}" original="{PreviousName} renamed to {NewName}"/>
         <!-- Retinue -->
-        <string id="tLSFX9Xc" text="시종"/>
+        <string id="tLSFX9Xc" text="시종" original="Retinue"/>
         <!-- Add and improve adopted heroes retinue -->
-        <string id="bhC3VcmU" text="채택된 영웅 수행원 추가 및 개선"/>
+        <string id="bhC3VcmU" text="채택된 영웅 수행원 추가 및 개선" original="Add and improve adopted heroes retinue"/>
         <!-- Retinue Upgrade Settings -->
-        <string id="iNoFrKsN" text="수행원 업그레이드 설정"/>
+        <string id="iNoFrKsN" text="수행원 업그레이드 설정" original="Retinue Upgrade Settings"/>
         <!-- All By Default -->
-        <string id="nIsuuFMC" text="기본적으로 모두"/>
+        <string id="nIsuuFMC" text="기본적으로 모두" original="All By Default"/>
         <!-- Whether this action should attempt to buy/upgrade as many times as possible when called with no parameter. -->
-        <string id="mJSGvWlR" text="이 작업이 매개변수 없이 호출될 때 가능한 한 많이 구매/업그레이드를 시도해야 하는지 여부입니다."/>
+        <string id="mJSGvWlR" text="이 작업이 매개변수 없이 호출될 때 가능한 한 많이 구매/업그레이드를 시도해야 하는지 여부입니다." original="Whether this action should attempt to buy/upgrade as many times as possible when called with no parameter."/>
         <!-- You cannot upgrade retinue, as a mission is active! -->
-        <string id="mCcpMwrN" text="임무가 진행 중이므로 수행원을 업그레이드할 수 없습니다!"/>
+        <string id="mCcpMwrN" text="임무가 진행 중이므로 수행원을 업그레이드할 수 없습니다!" original="You cannot upgrade retinue, as a mission is active!"/>
         <!-- (number, or all) -->
-        <string id="NexXxYvj" text="(숫자 또는 모두)"/>
-        
+        <string id="NexXxYvj" text="(숫자 또는 모두)" original="(number, or all)"/>
         <!-- RetireMyHero -->
         <!-- Retire Hero -->
-        <string id="sZhEiXyn" text="은퇴 영웅"/>
+        <string id="sZhEiXyn" text="은퇴 영웅" original="Retire Hero"/>
         <!-- Retires the hero, allowing the viewer to adopt another (if that is enabled) -->
-        <string id="Eh0m4R54" text="시청자가 다른 영웅을 채택할 수 있도록 영웅을 은퇴시킵니다(활성화된 경우)."/>
+        <string id="Eh0m4R54" text="시청자가 다른 영웅을 채택할 수 있도록 영웅을 은퇴시킵니다(활성화된 경우)." original="Retires the hero, allowing the viewer to adopt another (if that is enabled)"/>
         <!-- yes -->
-        <string id="xSbB2Zw5" text="예"/>
+        <string id="xSbB2Zw5" text="예" original="yes"/>
         <!-- You must enter '{Prompt}' at the prompt to retire your hero -->
-        <string id="0qVpLYfb" text="영웅을 은퇴시키려면 프롬프트에 &amp;#39;{Prompt}&amp;#39;을(를) 입력해야 합니다."/>
+        <string id="0qVpLYfb" text="영웅을 은퇴시키려면 프롬프트에 &amp;#39;{Prompt}&amp;#39;을(를) 입력해야 합니다." original="You must enter '{Prompt}' at the prompt to retire your hero"/>
         <!-- You cannot retire your hero, as a mission is active! -->
-        <string id="po20lHyz" text="임무가 진행 중이므로 영웅을 은퇴할 수 없습니다!"/>
+        <string id="po20lHyz" text="임무가 진행 중이므로 영웅을 은퇴할 수 없습니다!" original="You cannot retire your hero, as a mission is active!"/>
         <!-- {Name} has retired! -->
-        <string id="ihG4fs1r" text="{Name}이(가) 은퇴했습니다!"/>
-        
+        <string id="ihG4fs1r" text="{Name}이(가) 은퇴했습니다!" original="{Name} has retired!"/>
         <!-- SetHeroClass -->
         <!-- Set Hero Class -->
-        <string id="pVblweVj" text="영웅 클래스 설정"/>
+        <string id="pVblweVj" text="영웅 클래스 설정" original="Set Hero Class"/>
         <!-- Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied -->
-        <string id="7VWKYp1U" text="장비와 XP가 적용되는 위치에 영향을 주는 입양된 영웅의 &amp;#39;클래스&amp;#39;를 변경할 수 있습니다."/>
+        <string id="7VWKYp1U" text="장비와 XP가 적용되는 위치에 영향을 주는 입양된 영웅의 &amp;#39;클래스&amp;#39;를 변경할 수 있습니다." original="Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied"/>
         <!-- First Equip Is Free -->
-        <string id="iLpDEiTq" text="첫 번째 장비는 무료입니다"/>
+        <string id="iLpDEiTq" text="첫 번째 장비는 무료입니다" original="First Equip Is Free"/>
         <!-- If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class) -->
-        <string id="pRETwmGv" text="영웅에게 아직 클래스가 없을 때 이것이 무료인 경우(Adopt가 기본 클래스를 지정하지 않은 경우에만 발생할 수 있음)"/>
+        <string id="pRETwmGv" text="영웅에게 아직 클래스가 없을 때 이것이 무료인 경우(Adopt가 기본 클래스를 지정하지 않은 경우에만 발생할 수 있음)" original="If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class)"/>
         <!-- Cost Tier 1 -->
-        <string id="N2OnDXOs" text="비용 계층 1"/>
+        <string id="N2OnDXOs" text="비용 계층 1" original="Cost Tier 1"/>
         <!-- Gold cost for Tier 1 class change -->
-        <string id="tuhth4ld" text="Tier 1 클래스 변경을 위한 골드 비용"/>
+        <string id="tuhth4ld" text="Tier 1 클래스 변경을 위한 골드 비용" original="Gold cost for Tier 1 class change"/>
         <!-- Cost Tier 2 -->
-        <string id="jIQ5VYSh" text="비용 계층 2"/>
+        <string id="jIQ5VYSh" text="비용 계층 2" original="Cost Tier 2"/>
         <!-- Gold cost for Tier 2 class change -->
-        <string id="V5CGr4lf" text="Tier 2 클래스 변경을 위한 골드 비용"/>
+        <string id="V5CGr4lf" text="Tier 2 클래스 변경을 위한 골드 비용" original="Gold cost for Tier 2 class change"/>
         <!-- Cost Tier 3 -->
-        <string id="lWOrthSS" text="비용 계층 3"/>
+        <string id="lWOrthSS" text="비용 계층 3" original="Cost Tier 3"/>
         <!-- Gold cost for Tier 3 class change -->
-        <string id="NlXa6kJS" text="Tier 3 클래스 변경을 위한 골드 비용"/>
+        <string id="NlXa6kJS" text="Tier 3 클래스 변경을 위한 골드 비용" original="Gold cost for Tier 3 class change"/>
         <!-- Cost Tier 4 -->
-        <string id="wuKWOAwt" text="비용 계층 4"/>
+        <string id="wuKWOAwt" text="비용 계층 4" original="Cost Tier 4"/>
         <!-- Gold cost for Tier 4 class change -->
-        <string id="0X1TRYbP" text="Tier 4 클래스 변경을 위한 골드 비용"/>
+        <string id="0X1TRYbP" text="Tier 4 클래스 변경을 위한 골드 비용" original="Gold cost for Tier 4 class change"/>
         <!-- Cost Tier 5 -->
-        <string id="ZBzqCAyW" text="비용 계층 5"/>
+        <string id="ZBzqCAyW" text="비용 계층 5" original="Cost Tier 5"/>
         <!-- Gold cost for Tier 5 class change -->
-        <string id="yelsar2J" text="Tier 5 클래스 변경을 위한 골드 비용"/>
+        <string id="yelsar2J" text="Tier 5 클래스 변경을 위한 골드 비용" original="Gold cost for Tier 5 class change"/>
         <!-- Cost Tier 6 -->
-        <string id="ZLdpLkbg" text="비용 계층 6"/>
+        <string id="ZLdpLkbg" text="비용 계층 6" original="Cost Tier 6"/>
         <!-- Gold cost for Tier 6 class change -->
-        <string id="eYcOsu9h" text="Tier 6 클래스 변경을 위한 골드 비용"/>
+        <string id="eYcOsu9h" text="Tier 6 클래스 변경을 위한 골드 비용" original="Gold cost for Tier 6 class change"/>
         <!-- Update Equipment -->
-        <string id="rpkghdTp" text="장비 업데이트"/>
+        <string id="rpkghdTp" text="장비 업데이트" original="Update Equipment"/>
         <!-- Whether to immediately update equipment after changing class -->
-        <string id="cWQKOYEx" text="클래스 변경 후 즉시 장비 업데이트 여부"/>
+        <string id="cWQKOYEx" text="클래스 변경 후 즉시 장비 업데이트 여부" original="Whether to immediately update equipment after changing class"/>
         <!-- Tier costs -->
-        <string id="2WAi7pZN" text="계층 비용"/>
+        <string id="2WAi7pZN" text="계층 비용" original="Tier costs"/>
         <!-- Free if you do not already have a class -->
-        <string id="lW1KcoWD" text="아직 수업이 없는 경우 무료"/>
+        <string id="lW1KcoWD" text="아직 수업이 없는 경우 무료" original="Free if you do not already have a class"/>
         <!-- Updates equipment to match new class -->
-        <string id="qOR4RSqt" text="새로운 클래스에 맞게 장비 업데이트"/>
+        <string id="qOR4RSqt" text="새로운 클래스에 맞게 장비 업데이트" original="Updates equipment to match new class"/>
         <!-- You cannot change class, as a mission is active! -->
-        <string id="70vJ1jxZ" text="임무가 진행 중이므로 클래스를 변경할 수 없습니다!"/>
+        <string id="70vJ1jxZ" text="임무가 진행 중이므로 클래스를 변경할 수 없습니다!" original="You cannot change class, as a mission is active!"/>
         <!-- Provide class name -->
-        <string id="prmHmdGE" text="클래스 이름 제공"/>
+        <string id="prmHmdGE" text="클래스 이름 제공" original="Provide class name"/>
         <!-- changed class to {ClassName} -->
-        <string id="giUCnkf2" text="수업을 {ClassName}(으)로 변경했습니다."/>
-        
+        <string id="giUCnkf2" text="수업을 {ClassName}(으)로 변경했습니다." original="changed class to {ClassName}"/>
         <!-- SkillXP -->
         <!-- Skill XP -->
-        <string id="mpdzqyCK" text="스킬 XP"/>
+        <string id="mpdzqyCK" text="스킬 XP" original="Skill XP"/>
         <!-- Improve adopted heroes skills -->
-        <string id="Bc2HIByX" text="채택된 영웅 기술 향상"/>
+        <string id="Bc2HIByX" text="채택된 영웅 기술 향상" original="Improve adopted heroes skills"/>
         <!-- Skills -->
-        <string id="rAGAEUIH" text="기술"/>
+        <string id="rAGAEUIH" text="기술" original="Skills"/>
         <!-- What to improve -->
-        <string id="wo5VSDaj" text="개선할 사항"/>
+        <string id="wo5VSDaj" text="개선할 사항" original="What to improve"/>
         <!-- Auto -->
-        <string id="LVp7Llay" text="자동"/>
+        <string id="LVp7Llay" text="자동" original="Auto"/>
         <!-- Chooses a random skill to add XP to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used. -->
-        <string id="CTCcqB3Y" text="XP를 추가할 무작위 기술을 선택하고 클래스 기술을 선호하고 현재 장비에 대한 기술을 선택한 다음 다른 기술을 선호합니다. 자동 사용 시 스킬 설정이 무시됩니다."/>
-
+        <string id="CTCcqB3Y" text="XP를 추가할 무작위 기술을 선택하고 클래스 기술을 선호하고 현재 장비에 대한 기술을 선택한 다음 다른 기술을 선호합니다. 자동 사용 시 스킬 설정이 무시됩니다." original="Chooses a random skill to add XP to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used."/>
         <!-- Automatic, based on class, equipment, and existing skills -->
-        <string id="QJ9Cssr7" text="자동, 클래스, 장비 및 기존 기술 기반"/>
+        <string id="QJ9Cssr7" text="자동, 클래스, 장비 및 기존 기술 기반" original="Automatic, based on class, equipment, and existing skills"/>
         <!-- {AmountLow} to {AmountHigh} -->
-        <string id="vTkGnRBS" text="{AmountLow} to {AmountHigh}"/>
+        <string id="vTkGnRBS" text="{AmountLow} to {AmountHigh}" original="{AmountLow} to {AmountHigh}"/>
         <!-- Costs -->
-        <string id="lz87CnyL" text="소송 비용"/>
+        <string id="lz87CnyL" text="소송 비용" original="Costs"/>
         <!-- Couldn't find a skill to improve -->
-        <string id="vK5z2Naq" text="개선할 기술을 찾을 수 없음"/>
+        <string id="vK5z2Naq" text="개선할 기술을 찾을 수 없음" original="Couldn't find a skill to improve"/>
         <!-- {Skill} capped, get more focus points -->
-        <string id="ozkK4mk7" text="{Skill} 제한, 더 많은 초점을 얻습니다."/>
-
+        <string id="ozkK4mk7" text="{Skill} 제한, 더 많은 초점을 얻습니다." original="{Skill} capped, get more focus points"/>
         <!-- 1H -->
-        <string id="Ei8NyJSW" text="1시간"/>
+        <string id="Ei8NyJSW" text="1시간" original="1H"/>
         <!-- 2H -->
-        <string id="U38E72Ue" text="2시간"/>
+        <string id="U38E72Ue" text="2시간" original="2H"/>
         <!-- PA -->
-        <string id="Cg885bns" text="아빠"/>
+        <string id="Cg885bns" text="아빠" original="PA"/>
         <!-- Bow -->
-        <string id="QpWRsKrc" text="절하다"/>
+        <string id="QpWRsKrc" text="절하다" original="Bow"/>
         <!-- Xb -->
-        <string id="71M512iJ" text="Xb"/>
+        <string id="71M512iJ" text="Xb" original="Xb"/>
         <!-- Thr -->
-        <string id="jMRloOi0" text="시간"/>
+        <string id="jMRloOi0" text="시간" original="Thr"/>
         <!-- Rid -->
-        <string id="ligWzK3s" text="제거하다"/>
+        <string id="ligWzK3s" text="제거하다" original="Rid"/>
         <!-- Ath -->
-        <string id="1MJnisqR" text="아트"/>
+        <string id="1MJnisqR" text="아트" original="Ath"/>
         <!-- Smt -->
-        <string id="VjV54wik" text="smt"/>
+        <string id="VjV54wik" text="smt" original="Smt"/>
         <!-- Tac -->
-        <string id="6iG2GJW5" text="전술"/>
+        <string id="6iG2GJW5" text="전술" original="Tac"/>
         <!-- Sct -->
-        <string id="AgaZsMEb" text="Sct"/>
+        <string id="AgaZsMEb" text="Sct" original="Sct"/>
         <!-- Rog -->
-        <string id="6x33x91Z" text="로그"/>
+        <string id="6x33x91Z" text="로그" original="Rog"/>
         <!-- Cha -->
-        <string id="N9X9VVsM" text="차"/>
+        <string id="N9X9VVsM" text="차" original="Cha"/>
         <!-- Trd -->
-        <string id="J8ElWB0P" text="트르드"/>
+        <string id="J8ElWB0P" text="트르드" original="Trd"/>
         <!-- Stw -->
-        <string id="BD65Qr83" text="스트"/>
+        <string id="BD65Qr83" text="스트" original="Stw"/>
         <!-- Ldr -->
-        <string id="OYJ8tfhY" text="주임"/>
+        <string id="OYJ8tfhY" text="주임" original="Ldr"/>
         <!-- Med -->
-        <string id="PmKb4QCv" text="메드"/>
+        <string id="PmKb4QCv" text="메드" original="Med"/>
         <!-- Eng -->
-        <string id="wLkMFOky" text="영어"/>
-        
+        <string id="wLkMFOky" text="영어" original="Eng"/>
         <!-- SummonHero -->
         <!-- Summon Hero -->
-        <string id="6uWk9iMM" text="영웅 소환"/>
+        <string id="6uWk9iMM" text="영웅 소환" original="Summon Hero"/>
         <!-- Spawns the adopted hero into the current active mission -->
-        <string id="ODnzMmBQ" text="현재 활성 임무에 입양된 영웅을 생성합니다."/>
+        <string id="ODnzMmBQ" text="현재 활성 임무에 입양된 영웅을 생성합니다." original="Spawns the adopted hero into the current active mission"/>
         <!-- Allowed Missions -->
-        <string id="i8P1EnE1" text="허용된 임무"/>
+        <string id="i8P1EnE1" text="허용된 임무" original="Allowed Missions"/>
         <!-- Effects -->
-        <string id="tYGvtYKd" text="효과"/>
-        
+        <string id="tYGvtYKd" text="효과" original="Effects"/>
         <!-- AllowFieldBattle -->
-        <string id="DkCdNiwF" text="필드 배틀 허용"/>
+        <string id="DkCdNiwF" text="필드 배틀 허용" original="Allow Field Battle"/>
         <!-- AllowVillageBattle -->
-        <string id="yVz54Nky" text="마을 전투 허용"/>
+        <string id="yVz54Nky" text="마을 전투 허용" original="Allow Village Battle"/>
         <!-- AllowSiegeBattle -->
-        <string id="0X8bcuPE" text="공성전 허용"/>
+        <string id="0X8bcuPE" text="공성전 허용" original="Allow Siege Battle"/>
         <!-- AllowFriendlyMission -->
-        <string id="Sd1jguGc" text="친선 임무 허용"/>
+        <string id="Sd1jguGc" text="친선 임무 허용" original="Allow Friendly Mission"/>
         <!-- Allow Hide Out -->
-        <string id="1xJGhP2D" text="숨기기 허용"/>
+        <string id="1xJGhP2D" text="숨기기 허용" original="Allow Hide Out"/>
         <!-- On Player Side -->
-        <string id="i59Fm8zV" text="플레이어 측에서"/>
+        <string id="i59Fm8zV" text="플레이어 측에서" original="On Player Side"/>
         <!-- Gold Cost -->
-        <string id="HOZnxjGb" text="골드 비용"/>
+        <string id="HOZnxjGb" text="골드 비용" original="Gold Cost"/>
         <!-- Preferred Formation -->
-        <string id="sZRrJfKm" text="선호하는 포메이션"/>
+        <string id="sZRrJfKm" text="선호하는 포메이션" original="Preferred Formation"/>
         <!-- Alert Sound -->
-        <string id="74AvYKCg" text="경고음"/>
+        <string id="74AvYKCg" text="경고음" original="Alert Sound"/>
         <!-- Sub Boost -->
-        <string id="H7B3Yzly" text="서브 부스트"/>
+        <string id="H7B3Yzly" text="서브 부스트" original="Sub Boost"/>
         <!-- Heal Per Second -->
-        <string id="cXeUjVur" text="초당 치유"/>
-        
+        <string id="cXeUjVur" text="초당 치유" original="Heal Per Second"/>
         <!-- Can summon for normal field battles between parties -->
-        <string id="ddjUyXpV" text="파티간 일반 필드 배틀 소환 가능"/>
+        <string id="ddjUyXpV" text="파티간 일반 필드 배틀 소환 가능" original="Can summon for normal field battles between parties"/>
         <!-- Can summon in village battles -->
-        <string id="buLH4Spj" text="마을 전투에서 소환 가능"/>
+        <string id="buLH4Spj" text="마을 전투에서 소환 가능" original="Can summon in village battles"/>
         <!-- Can summon in sieges -->
-        <string id="uk1kL79V" text="공성전에서 소환 가능"/>
+        <string id="uk1kL79V" text="공성전에서 소환 가능" original="Can summon in sieges"/>
         <!-- This includes walking about village/town/dungeon/keep -->
-        <string id="1HaljOia" text="여기에는 마을/마을/던전/지킴이 산책이 포함됩니다."/>
+        <string id="1HaljOia" text="여기에는 마을/마을/던전/지킴이 산책이 포함됩니다." original="This includes walking about village/town/dungeon/keep"/>
         <!-- Can summon in the hideout missions -->
-        <string id="NZTRYcGV" text="은신처 임무에서 소환 가능"/>
+        <string id="NZTRYcGV" text="은신처 임무에서 소환 가능" original="Can summon in the hideout missions"/>
         <!-- Whether the hero is on the player or enemy side -->
-        <string id="S86V5s0C" text="영웅이 플레이어 쪽에 있든 적 쪽에 있든"/>
+        <string id="S86V5s0C" text="영웅이 플레이어 쪽에 있든 적 쪽에 있든" original="Whether the hero is on the player or enemy side"/>
         <!-- Gold cost to summon -->
-        <string id="OQISx7Jz" text="소환에 필요한 골드"/>
+        <string id="OQISx7Jz" text="소환에 필요한 골드" original="Gold cost to summon"/>
         <!-- Which formation to add summoned heroes to (only applies to ones without a specified class) -->
-        <string id="vkFowOeg" text="소환된 영웅을 추가할 포메이션(지정된 클래스가 없는 경우에만 적용)"/>
+        <string id="vkFowOeg" text="소환된 영웅을 추가할 포메이션(지정된 클래스가 없는 경우에만 적용)" original="Which formation to add summoned heroes to (only applies to ones without a specified class)"/>
         <!-- Sound to play when summoned -->
-        <string id="R00Lx6aE" text="소환 시 재생되는 사운드"/>
+        <string id="R00Lx6aE" text="소환 시 재생되는 사운드" original="Sound to play when summoned"/>
         <!-- Multiplier applied to (positive) effects for subscribers -->
-        <string id="lFnV3cR9" text="가입자에 대한 (긍정) 효과에 승수 적용"/>
+        <string id="lFnV3cR9" text="가입자에 대한 (긍정적인) 효과에 승수 적용" original="Multiplier applied to (positive) effects for subscribers"/>
         <!-- HP the hero gets every second they are alive in the mission -->
-        <string id="gnh3KY5a" text="HP 영웅은 임무에서 살아 있는 1초마다 얻습니다."/>
+        <string id="gnh3KY5a" text="HP 영웅은 임무에서 살아 있는 1초마다 얻습니다." original="HP the hero gets every second they are alive in the mission"/>
         <!-- Side -->
-        <string id="Uu58rjgC" text="옆"/>
+        <string id="Uu58rjgC" text="옆" original="Side"/>
         <!-- Heals -->
-        <string id="uHTRhFAh" text="치유"/>
+        <string id="uHTRhFAh" text="치유" original="Heals"/>
         <!-- Cost -->
-        <string id="hCJhgl1m" text="비용"/>
+        <string id="hCJhgl1m" text="비용" original="Cost"/>
         <!-- Streamers side -->
-        <string id="myKKaEl9" text="스트리머 쪽"/>
+        <string id="myKKaEl9" text="스트리머 쪽" original="Streamers side"/>
         <!-- Enemy side -->
-        <string id="BTZ84Uww" text="적 측"/>
+        <string id="BTZ84Uww" text="적 측" original="Enemy side"/>
         <!-- {HealPerSecond}HP per second while summoned -->
-        <string id="cR84crHC" text="{HealPerSecond}소환 시 초당 HP"/>
+        <string id="cR84crHC" text="{HealPerSecond}소환 시 초당 HP" original="{HealPerSecond}HP per second while summoned"/>
         <!-- Field battle -->
-        <string id="SRdB89Ca" text="필드 배틀"/>
+        <string id="SRdB89Ca" text="필드 배틀" original="Field battle"/>
         <!-- Village battle -->
-        <string id="M45VqXVa" text="마을 전투"/>
+        <string id="M45VqXVa" text="마을 전투" original="Village battle"/>
         <!-- Siege battle -->
-        <string id="hbWdpDwr" text="공성전"/>
+        <string id="hbWdpDwr" text="공성전" original="Siege battle"/>
         <!-- Friendly mission -->
-        <string id="YIfbDpI9" text="친선 미션"/>
+        <string id="YIfbDpI9" text="친선 미션" original="Friendly mission"/>
         <!-- Hide-out -->
-        <string id="pZ239vm5" text="은신처"/>
+        <string id="pZ239vm5" text="은신처" original="Hide-out"/>
         <!-- Allowed in -->
-        <string id="zOB6Nadp" text="허용됨"/>
-        
+        <string id="zOB6Nadp" text="허용됨" original="Allowed in"/>
         <!-- You cannot be summoned now! -->
-        <string id="TdykIizS" text="지금은 소환할 수 없습니다!"/>
+        <string id="TdykIizS" text="지금은 소환할 수 없습니다!" original="You cannot be summoned now!"/>
         <!-- You cannot be summoned now, this mission does not allow it! -->
-        <string id="HWnEJg1M" text="당신은 지금 소환할 수 없습니다, 이 임무는 그것을 허용하지 않습니다!"/>
+        <string id="HWnEJg1M" text="당신은 지금 소환할 수 없습니다, 이 임무는 그것을 허용하지 않습니다!" original="You cannot be summoned now, this mission does not allow it!"/>
         <!-- You cannot be summoned now, the mission has not started yet! -->
-        <string id="v5dO40vi" text="당신은 지금 소환할 수 없습니다, 임무는 아직 시작되지 않았습니다!"/>
+        <string id="v5dO40vi" text="당신은 지금 소환할 수 없습니다, 임무는 아직 시작되지 않았습니다!" original="You cannot be summoned now, the mission has not started yet!"/>
         <!-- You cannot be summoned now, the mission is ending! -->
-        <string id="mTKKaYIf" text="지금은 소환할 수 없습니다. 미션이 종료됩니다!"/>
+        <string id="mTKKaYIf" text="지금은 소환할 수 없습니다. 미션이 종료됩니다!" original="You cannot be summoned now, the mission is ending!"/>
         <!-- You cannot be summoned, you are already here! -->
-        <string id="YTEgKnCW" text="당신은 소환할 수 없습니다, 당신은 이미 여기에 있습니다!"/>
-        
+        <string id="YTEgKnCW" text="당신은 소환할 수 없습니다, 당신은 이미 여기에 있습니다!" original="You cannot be summoned, you are already here!"/>
         <!-- You won {WonGold}{GoldIcon}! -->
-        <string id="pmj8vjZj" text="{WonGold}{GoldIcon} 승리했습니다!"/>
+        <string id="pmj8vjZj" text="{WonGold}{GoldIcon} 승리했습니다!" original="You won {WonGold}{GoldIcon}!"/>
         <!-- You lost {LostGold}{GoldIcon}! -->
-        <string id="ajhKKeEo" text="{LostGold}{GoldIcon}을(를) 잃었습니다!"/>
+        <string id="ajhKKeEo" text="{LostGold}{GoldIcon}을(를) 잃었습니다!" original="You lost {LostGold}{GoldIcon}!"/>
         <!-- You have joined the battle! -->
-        <string id="Ft3cxfIx" text="전투에 참여했습니다!"/>
+        <string id="Ft3cxfIx" text="전투에 참여했습니다!" original="You have joined the battle!"/>
         <!-- You cannot be summoned now, the mission has not started yet! -->
-        <string id="YZ4V5e4V" text="당신은 지금 소환할 수 없습니다, 임무는 아직 시작되지 않았습니다!"/>
+        <string id="YZ4V5e4V" text="당신은 지금 소환할 수 없습니다, 임무는 아직 시작되지 않았습니다!" original="You cannot be summoned now, the mission has not started yet!"/>
         <!-- You cannot switch sides, you traitor! -->
-        <string id="2D2T6xP6" text="편을 바꿀 수 없다, 이 배신자!"/>
+        <string id="2D2T6xP6" text="편을 바꿀 수 없다, 이 배신자!" original="You cannot switch sides, you traitor!"/>
         <!-- You cannot be summoned, you DIED! -->
-        <string id="RBTDviuM" text="당신은 소환될 수 없습니다, 당신은 죽었습니다!"/>
+        <string id="RBTDviuM" text="당신은 소환될 수 없습니다, 당신은 죽었습니다!" original="You cannot be summoned, you DIED!"/>
         <!-- You cannot be summoned, you are already here! -->
-        <string id="YMiZAluP" text="당신은 소환할 수 없습니다, 당신은 이미 여기에 있습니다!"/>
+        <string id="YMiZAluP" text="당신은 소환할 수 없습니다, 당신은 이미 여기에 있습니다!" original="You cannot be summoned, you are already here!"/>
         <!-- {CoolDown}s cooldown remaining -->
-        <string id="kyUh29ij" text="남은 재사용 대기시간 {CoolDown}"/>
+        <string id="kyUh29ij" text="남은 재사용 대기시간 {CoolDown}" original="{CoolDown}s cooldown remaining"/>
         <!-- You cannot be summoned, your party is already here! -->
-        <string id="93Hrc2EA" text="당신은 소환할 수 없습니다, 당신의 파티는 이미 여기에 있습니다!"/>
+        <string id="93Hrc2EA" text="당신은 소환할 수 없습니다, 당신의 파티는 이미 여기에 있습니다!" original="You cannot be summoned, your party is already here!"/>
         <!-- Could not find a party for you to join! -->
-        <string id="jtqEqonE" text="참여할 파티를 찾을 수 없습니다!"/>
+        <string id="jtqEqonE" text="참가할 파티를 찾을 수 없습니다!" original="Could not find a party for you to join!"/>
         <!-- You have joined the battle! -->
-        <string id="TvkEBZeY" text="전투에 참여했습니다!"/>
+        <string id="TvkEBZeY" text="전투에 참여했습니다!" original="You have joined the battle!"/>
         <!-- Text -->
-        <string id="V3STT5Ar" text="텍스트"/>
+        <string id="V3STT5Ar" text="텍스트" original="Text"/>
         <!-- Text that will be displayed in game -->
-        <string id="wsIzPzfG" text="게임에 표시될 텍스트"/>
+        <string id="wsIzPzfG" text="게임에 표시될 텍스트" original="Text that will be displayed in game"/>
         <!-- Enter shout text here -->
-        <string id="xf2mTWx8" text="여기에 외침 텍스트를 입력하세요."/>
+        <string id="xf2mTWx8" text="여기에 외침 텍스트를 입력하세요." original="Enter shout text here"/>
         <!-- Weight -->
-        <string id="bCbN9OmH" text="무게"/>
+        <string id="bCbN9OmH" text="무게" original="Weight"/>
         <!-- Higher weight means more chance this shout is used -->
-        <string id="xqfCYYwN" text="가중치가 높을수록 이 외침이 사용될 확률이 높아집니다."/>
+        <string id="xqfCYYwN" text="가중치가 높을수록 이 외침이 사용될 확률이 높아집니다." original="Higher weight means more chance this shout is used"/>
         <!-- Player Side -->
-        <string id="xK1fdx7s" text="플레이어 측"/>
+        <string id="xK1fdx7s" text="플레이어 측" original="Player Side"/>
         <!-- Can be used when summoning on player side -->
-        <string id="BpDPlsfY" text="플레이어 측에서 소환할 때 사용할 수 있습니다."/>
+        <string id="BpDPlsfY" text="플레이어 측에서 소환할 때 사용할 수 있습니다." original="Can be used when summoning on player side"/>
         <!-- Enemy Side -->
-        <string id="srN8yHp8" text="적 측"/>
+        <string id="srN8yHp8" text="적 측" original="Enemy Side"/>
         <!-- Can be used when summoning on enemy side -->
-        <string id="0m4s9zXc" text="적 측 소환 시 사용 가능"/>
+        <string id="0m4s9zXc" text="적 측 소환 시 사용 가능" original="Can be used when summoning on enemy side"/>
         <!-- General -->
-        <string id="MOOBN2Hz" text="일반적인"/>
+        <string id="MOOBN2Hz" text="일반적인" original="General"/>
         <!-- Can be used in situations other than battle/siege -->
-        <string id="6TWSIu60" text="전투/공성 이외의 상황에서 사용 가능"/>
+        <string id="6TWSIu60" text="전투/공성 이외의 상황에서 사용 가능" original="Can be used in situations other than battle/siege"/>
         <!-- Field Battle -->
-        <string id="4KdKuusC" text="필드 배틀"/>
+        <string id="4KdKuusC" text="필드 배틀" original="Field Battle"/>
         <!-- Can be used when in a field battle -->
-        <string id="8aLSNsxr" text="필드 배틀 시 사용 가능"/>
+        <string id="8aLSNsxr" text="필드 배틀 시 사용 가능" original="Can be used when in a field battle"/>
         <!-- Siege Defend -->
-        <string id="2yevL6dV" text="공성 방어"/>
+        <string id="2yevL6dV" text="공성 방어" original="Siege Defend"/>
         <!-- Can be used when on siege defender side -->
-        <string id="8HwihUK3" text="공성 수비수 측에서 사용할 수 있습니다."/>
+        <string id="8HwihUK3" text="공성 수비수 측에서 사용할 수 있습니다." original="Can be used when on siege defender side"/>
         <!-- Siege Attack -->
-        <string id="r5tvIQwx" text="공성 공격"/>
+        <string id="r5tvIQwx" text="공성 공격" original="Siege Attack"/>
         <!-- Can be used when on siege attacker side -->
-        <string id="mbIwJprm" text="공성 공격자 측에서 사용할 수 있습니다."/>
+        <string id="mbIwJprm" text="공성 공격자 측에서 사용할 수 있습니다." original="Can be used when on siege attacker side"/>
         <!-- Shout -->
-        <string id="CXb5ALls" text="외침"/>
-
+        <string id="CXb5ALls" text="외침" original="Shout"/>
         <!-- TournamentBet -->
         <!-- Invalid gold argument -->
-        <string id="GiU7feEu" text="잘못된 금 인수"/>
+        <string id="GiU7feEu" text="잘못된 금 인수" original="Invalid gold argument"/>
         <!-- Betting not active -->
-        <string id="3AQKsF9f" text="베팅이 활성화되지 않음"/>
+        <string id="3AQKsF9f" text="베팅이 활성화되지 않음" original="Betting not active"/>
         <!-- Bet {GoldAmount}{GoldIcon} on {Team} -->
-        <string id="9tlhaGyH" text="{GoldAmount}{GoldIcon} on {Team} 베팅"/>
+        <string id="9tlhaGyH" text="{GoldAmount}{GoldIcon} on {Team} 베팅" original="Bet {GoldAmount}{GoldIcon} on {Team}"/>
         <!-- (team) (gold) -->
-        <string id="8XQwqd4f" text="(팀) (금)"/>
-        
+        <string id="8XQwqd4f" text="(팀) (금)" original="(team) (gold)"/>
         <!-- UsePower -->
         <!-- Use Power -->
-        <string id="Wpx7tHFL" text="전원 사용"/>
+        <string id="Wpx7tHFL" text="전원 사용" original="Use Power"/>
         <!-- Allows activation of the adopted heroes class active powers -->
-        <string id="FJwn6kGW" text="채택된 영웅 클래스 활성 능력의 활성화를 허용합니다."/>
+        <string id="FJwn6kGW" text="채택된 영웅 클래스 활성 능력의 활성화를 허용합니다." original="Allows activation of the adopted heroes class active powers"/>
         <!-- You don't have a class, so no powers are available! -->
-        <string id="85HYGklq" text="클래스가 없으므로 사용할 수 있는 권한이 없습니다!"/>
+        <string id="85HYGklq" text="클래스가 없으므로 사용할 수 있는 권한이 없습니다!" original="You don't have a class, so no powers are available!"/>
         <!-- You cannot activate your powers now: {FailReason}! -->
-        <string id="nXSUvuyD" text="지금은 능력을 활성화할 수 없습니다: {FailReason}!"/>
+        <string id="nXSUvuyD" text="지금은 능력을 활성화할 수 없습니다: {FailReason}!" original="You cannot activate your powers now: {FailReason}!"/>
         <!-- Your powers are already active! -->
-        <string id="o23xAj6M" text="당신의 능력은 이미 활성화되어 있습니다!"/>
+        <string id="o23xAj6M" text="당신의 능력은 이미 활성화되어 있습니다!" original="Your powers are already active!"/>
     </strings>
 </base>

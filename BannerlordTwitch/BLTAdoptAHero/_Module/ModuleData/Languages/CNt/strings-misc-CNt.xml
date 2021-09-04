@@ -5,430 +5,404 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- AchievementDef -->
         <!-- Achievement Definition -->
-        <string id="CEZZzIAq" text="成就定義"/>
-        
+        <string id="CEZZzIAq" text="成就定義" original="Achievement Definition"/>
         <!-- Requirements -->
-        <string id="TFbiD0CZ" text="要求"/>
+        <string id="TFbiD0CZ" text="要求" original="Requirements"/>
         <!-- Reward -->
-        <string id="sHWjkhId" text="報酬"/>
-        
+        <string id="sHWjkhId" text="報酬" original="Reward"/>
         <!-- New Achievement -->
-        <string id="nLaRVBVV" text="新成就"/>
-
+        <string id="nLaRVBVV" text="新成就" original="New Achievement"/>
         <!-- Notification Text -->
-        <string id="guJFFskH" text="通知文本"/>
+        <string id="guJFFskH" text="通知文本" original="Notification Text"/>
         <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement. -->
-        <string id="SwIUyQNw" text="當獲得成就和玩家列出他們的成就時將顯示的文本。佔位符：{viewer} for the viewers name, and {name} 表示成就的名稱。"/>
-        
+        <string id="SwIUyQNw" text="當獲得成就和玩家列出他們的成就時將顯示的文本。佔位符：{viewer} for the viewers name, and {name} 表示成就的名稱。" original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement."/>
         <!-- Requirements -->
-        <string id="TfwiBMGr" text="要求"/>
-
+        <string id="TfwiBMGr" text="要求" original="Requirements"/>
         <!-- Gold Gain -->
-        <string id="NitYwoHr" text="黃金收益"/>
+        <string id="NitYwoHr" text="黃金收益" original="Gold Gain"/>
         <!-- Gold awarded for gaining this achievement. -->
-        <string id="l0xBVhOe" text="獲得此成就可獲得金獎。"/>
-        
+        <string id="l0xBVhOe" text="獲得此成就可獲得金獎。" original="Gold awarded for gaining this achievement."/>
         <!-- XP Gain -->
-        <string id="JShqb5Be" text="經驗增益"/>
+        <string id="JShqb5Be" text="經驗增益" original="XP Gain"/>
         <!-- Experience awarded for gaining this achievement. -->
-        <string id="tx7YV26l" text="獲得此成就所獲得的經驗。"/>
-        
+        <string id="tx7YV26l" text="獲得此成就所獲得的經驗。" original="Experience awarded for gaining this achievement."/>
         <!-- Give Item Reward -->
-        <string id="OmwtPK7J" text="給予物品獎勵"/>
+        <string id="OmwtPK7J" text="給予物品獎勵" original="Give Item Reward"/>
         <!-- Whether to give a custom item as reward (defined below) -->
-        <string id="vTb0ysRw" text="是否給予自定義物品作為獎勵（定義如下）"/>
-        
+        <string id="vTb0ysRw" text="是否給予自定義物品作為獎勵（定義如下）" original="Whether to give a custom item as reward (defined below)"/>
         <!-- Item Reward -->
-        <string id="ZJikxJYo" text="物品獎勵"/>
+        <string id="ZJikxJYo" text="物品獎勵" original="Item Reward"/>
         <!-- Specifications of the custom item reward, if enabled -->
-        <string id="B4gODHog" text="自定義物品獎勵的規格（如果啟用）"/>
-        
+        <string id="B4gODHog" text="自定義物品獎勵的規格（如果啟用）" original="Specifications of the custom item reward, if enabled"/>
         <!-- AchievementStatsData.Statistic -->
         <!-- Total Kills -->
-        <string id="5RXxYH32" text="總擊殺數"/>
+        <string id="5RXxYH32" text="總擊殺數" original="Total Kills"/>
         <!-- Total Hero Kills -->
-        <string id="FqBQumbv" text="英雄總擊殺數"/>
+        <string id="FqBQumbv" text="英雄總擊殺數" original="Total Hero Kills"/>
         <!-- Total Viewer Kills -->
-        <string id="WMYfysby" text="總觀眾殺死"/>
+        <string id="WMYfysby" text="總觀眾殺死" original="Total Viewer Kills"/>
         <!-- Total Streamer Kills -->
-        <string id="qPjwIfaF" text="總流光殺死"/>
+        <string id="qPjwIfaF" text="總流光殺死" original="Total Streamer Kills"/>
         <!-- Total Mount Kills -->
-        <string id="ZTI6irGZ" text="坐騎總數"/>
+        <string id="ZTI6irGZ" text="坐騎總數" original="Total Mount Kills"/>
         <!-- Total Deaths -->
-        <string id="6IHF7HQb" text="總死亡人數"/>
+        <string id="6IHF7HQb" text="總死亡人數" original="Total Deaths"/>
         <!-- Total Hero Deaths -->
-        <string id="UHvCzzit" text="英雄死亡總數"/>
+        <string id="UHvCzzit" text="英雄死亡總數" original="Total Hero Deaths"/>
         <!-- Total Viewer Deaths -->
-        <string id="mhcnLFBv" text="觀眾死亡總數"/>
+        <string id="mhcnLFBv" text="觀眾死亡總數" original="Total Viewer Deaths"/>
         <!-- Total Streamer Deaths -->
-        <string id="rKVsbROz" text="主播死亡總數"/>
+        <string id="rKVsbROz" text="主播死亡總數" original="Total Streamer Deaths"/>
         <!-- Total Mount Deaths -->
-        <string id="6N8KiovH" text="坐騎死亡總數"/>
+        <string id="6N8KiovH" text="坐騎死亡總數" original="Total Mount Deaths"/>
         <!-- Summons -->
-        <string id="YDiK48rp" text="傳票"/>
+        <string id="YDiK48rp" text="傳票" original="Summons"/>
         <!-- Attacks -->
-        <string id="facIgBFe" text="攻擊"/>
+        <string id="facIgBFe" text="攻擊" original="Attacks"/>
         <!-- Battles -->
-        <string id="yTIq9zWS" text="戰鬥"/>
+        <string id="yTIq9zWS" text="戰鬥" original="Battles"/>
         <!-- Consecutive Summons -->
-        <string id="VwyXMINi" text="連續傳票"/>
+        <string id="VwyXMINi" text="連續傳票" original="Consecutive Summons"/>
         <!-- Consecutive Attacks -->
-        <string id="Ju3c6Iz4" text="連續攻擊"/>
+        <string id="Ju3c6Iz4" text="連續攻擊" original="Consecutive Attacks"/>
         <!-- TotalTournament Round Wins -->
-        <string id="dRD94FMl" text="總錦標賽勝場數"/>
+        <string id="dRD94FMl" text="總錦標賽勝場數" original="TotalTournament Round Wins"/>
         <!-- TotalTournament Round Losses -->
-        <string id="GPMB5BPI" text="比賽總輸球數"/>
+        <string id="GPMB5BPI" text="比賽總輸球數" original="TotalTournament Round Losses"/>
         <!-- TotalTournament Final Wins -->
-        <string id="WdZWU9GV" text="總錦標賽決賽勝利"/>
-        
+        <string id="WdZWU9GV" text="總錦標賽決賽勝利" original="TotalTournament Final Wins"/>
         <!-- ClassLevelRequirement -->
         <!-- Class Level Requirement -->
-        <string id="XLXBwBEj" text="班級要求"/>
+        <string id="XLXBwBEj" text="班級要求" original="Class Level Requirement"/>
         <!-- Min Level -->
-        <string id="s4N0bhG1" text="最低級別"/>
+        <string id="s4N0bhG1" text="最低級別" original="Min Level"/>
         <!-- Minimum class level allowed -->
-        <string id="phf8JXQC" text="允許的最低等級"/>
+        <string id="phf8JXQC" text="允許的最低等級" original="Minimum class level allowed"/>
         <!-- Max Level -->
-        <string id="BT59iHQ5" text="最高等級"/>
+        <string id="BT59iHQ5" text="最高等級" original="Max Level"/>
         <!-- Maximum class level allowed -->
-        <string id="lk60ZYwc" text="允許的最高等級"/>
+        <string id="lk60ZYwc" text="允許的最高等級" original="Maximum class level allowed"/>
         <!-- AT LEAST {MinLevel} -->
-        <string id="j3QY6MkC" text="至少 {MinLevel}"/>
+        <string id="j3QY6MkC" text="至少 {MinLevel}" original="AT LEAST {MinLevel}"/>
         <!-- {MinLevel} TO {MaxLevel} -->
-        <string id="puNSSMYD" text="{MinLevel} TO {MaxLevel}"/>
+        <string id="puNSSMYD" text="{MinLevel} TO {MaxLevel}" original="{MinLevel} TO {MaxLevel}"/>
         <!-- CLASS LEVEL {Description} -->
-        <string id="boWoZsH4" text="班級{Description}"/>
-        
+        <string id="boWoZsH4" text="班級{Description}" original="CLASS LEVEL {Description}"/>
         <!-- StatisticClassSpecificRequirement -->
         <!-- Statistic Class Specific Requirement -->
-        <string id="ziuB7eSV" text="統計類特定要求"/>
+        <string id="ziuB7eSV" text="統計類特定要求" original="Statistic Class Specific Requirement"/>
         <!-- Current Class -->
-        <string id="WwKyvotH" text="當前班級"/>
+        <string id="WwKyvotH" text="當前班級" original="Current Class"/>
         <!-- Requirement uses current class, useful for class power unlocks so you don't have to specify the class explicitly -->
-        <string id="S9kGgf0r" text="Requirement 使用當前類，對類功率解鎖很有用，因此您不必明確指定類"/>
+        <string id="S9kGgf0r" text="Requirement 使用當前類，對類功率解鎖很有用，因此您不必明確指定類" original="Requirement uses current class, useful for class power unlocks so you don't have to specify the class explicitly"/>
         <!-- Required Class -->
-        <string id="5QwSEOc3" text="必修課"/>
+        <string id="5QwSEOc3" text="必修課" original="Required Class"/>
         <!-- Class required to get this achievement. If (none) is specified then the achievement will apply ONLY when the hero doesn't have a class set. -->
-        <string id="G34P8lCu" text="獲得此成就所需的課程。如果指定了 (none)，那麼只有當英雄沒有設置職業時，成就才會應用。"/>
+        <string id="G34P8lCu" text="獲得此成就所需的課程。如果指定了 (none)，那麼只有當英雄沒有設置職業時，成就才會應用。" original="Class required to get this achievement. If (none) is specified then the achievement will apply ONLY when the hero doesn't have a class set."/>
         <!-- class -->
-        <string id="j3YG9dCh" text="班級"/>
+        <string id="j3YG9dCh" text="班級" original="class"/>
         <!-- (current) -->
-        <string id="RXXuHIdN" text="（當前的）"/>
+        <string id="RXXuHIdN" text="（當前的）" original="(current)"/>
         <!-- (none) -->
-        <string id="dPEnuHsk" text="（沒有任何）"/>
-        
+        <string id="dPEnuHsk" text="（沒有任何）" original="(none)"/>
         <!-- StatisticRequirement -->
         <!-- Statistic Requirement -->
-        <string id="CkgaxlDY" text="統計要求"/>
+        <string id="CkgaxlDY" text="統計要求" original="Statistic Requirement"/>
         <!-- Statistic -->
-        <string id="ienuHzOP" text="統計"/>
+        <string id="ienuHzOP" text="統計" original="Statistic"/>
         <!-- The statistic this achievement relates to. -->
-        <string id="OKuz3zwY" text="與此成就相關的統計數據。"/>
+        <string id="OKuz3zwY" text="與此成就相關的統計數據。" original="The statistic this achievement relates to."/>
         <!-- Comparison -->
-        <string id="dXBsEW65" text="比較"/>
+        <string id="dXBsEW65" text="比較" original="Comparison"/>
         <!-- Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills. -->
-        <string id="4yoAe9WV" text="英雄需要的值是否大於或小於指定的值。例如，您可以要求英雄的死亡數少於 10 次，而擊殺數超過 100 次。"/>
+        <string id="4yoAe9WV" text="hero 是否需要多於或少於指定的值。例如，您可以要求英雄的死亡數少於 10 次，而擊殺數超過 100 次。" original="Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills."/>
         <!-- Value -->
-        <string id="a8Josr4g" text="價值"/>
+        <string id="a8Josr4g" text="價值" original="Value"/>
         <!-- Value needed to obtain the achievement. -->
-        <string id="B9LEjEq8" text="獲得成就所需的價值。"/>
+        <string id="B9LEjEq8" text="獲得成就所需的價值。" original="Value needed to obtain the achievement."/>
         <!-- Other Statistic -->
-        <string id="nau8vg7o" text="其他統計"/>
+        <string id="nau8vg7o" text="其他統計" original="Other Statistic"/>
         <!-- Other statistic to compare against (this overrides Value if specified). -->
-        <string id="A3EKQ7up" text="其他要比較的統計數據（如果指定，這將覆蓋 Value）。"/>
-        
+        <string id="A3EKQ7up" text="其他要比較的統計數據（如果指定，這將覆蓋 Value）。" original="Other statistic to compare against (this overrides Value if specified)."/>
         <!-- HeroClassDef -->
         <!-- Class Definition -->
-        <string id="ph50k2xB" text="類定義"/>
+        <string id="ph50k2xB" text="類定義" original="Class Definition"/>
         <!-- Class Definition -->
-        <string id="iqYaiOhP" text="類定義"/>
+        <string id="iqYaiOhP" text="類定義" original="Class Definition"/>
         <!-- Whether this class is enabled for use in the game or not -->
-        <string id="XkL6MNLl" text="是否啟用該類在遊戲中使用"/>
+        <string id="XkL6MNLl" text="是否啟用該類在遊戲中使用" original="Whether this class is enabled for use in the game or not"/>
         <!-- Name of the class that shall be passed to SetHeroClass actions -->
-        <string id="U9PyN7eb" text="應傳遞給 SetHeroClass 操作的類的名稱"/>
+        <string id="U9PyN7eb" text="應傳遞給 SetHeroClass 操作的類的名稱" original="Name of the class that shall be passed to SetHeroClass actions"/>
         <!-- Description -->
-        <string id="rZRKLuGI" text="描述"/>
+        <string id="rZRKLuGI" text="描述" original="Description"/>
         <!-- Description of the class (used in documentation) -->
-        <string id="yRN3Jfwv" text="類的描述（在文檔中使用）"/>
+        <string id="yRN3Jfwv" text="類的描述（在文檔中使用）" original="Description of the class (used in documentation)"/>
         <!-- Formation -->
-        <string id="zy3uK94p" text="編隊"/>
+        <string id="zy3uK94p" text="編隊" original="Formation"/>
         <!-- Which formation to add summoned units to -->
-        <string id="1kEMFWLD" text="將召喚單位加入哪個陣型"/>
+        <string id="1kEMFWLD" text="將召喚單位加入哪個陣型" original="Which formation to add summoned units to"/>
         <!-- Slot 1 -->
-        <string id="48tkMBhb" text="插槽 1"/>
+        <string id="48tkMBhb" text="插槽 1" original="Slot 1"/>
         <!-- Item type to put in slot 1 -->
-        <string id="kpDE6URE" text="要放入插槽 1 的物品類型"/>
+        <string id="kpDE6URE" text="要放入插槽 1 的物品類型" original="Item type to put in slot 1"/>
         <!-- Slot 2 -->
-        <string id="vXtJLZlw" text="插槽 2"/>
+        <string id="vXtJLZlw" text="插槽 2" original="Slot 2"/>
         <!-- Item type to put in slot 2 -->
-        <string id="G5AN3s2D" text="要放入插槽 2 的物品類型"/>
+        <string id="G5AN3s2D" text="要放入插槽 2 的物品類型" original="Item type to put in slot 2"/>
         <!-- Slot 3 -->
-        <string id="B4LLuesN" text="插槽 3"/>
+        <string id="B4LLuesN" text="插槽 3" original="Slot 3"/>
         <!-- Item type to put in slot 3 -->
-        <string id="clxxPb9O" text="要放入插槽 3 的物品類型"/>
+        <string id="clxxPb9O" text="要放入插槽 3 的物品類型" original="Item type to put in slot 3"/>
         <!-- Slot 4 -->
-        <string id="h9PK7GnU" text="插槽 4"/>
+        <string id="h9PK7GnU" text="插槽 4" original="Slot 4"/>
         <!-- Item type to put in slot 4 -->
-        <string id="EUzbiqh5" text="要放入插槽 4 的物品類型"/>
+        <string id="EUzbiqh5" text="要放入插槽 4 的物品類型" original="Item type to put in slot 4"/>
         <!-- Use Horse -->
-        <string id="MdYmGuin" text="使用馬"/>
+        <string id="MdYmGuin" text="使用馬" original="Use Horse"/>
         <!-- Whether to allow horse (can be combined with Use Camel) -->
-        <string id="Q00NX1J9" text="是否允許騎馬（可與Use Camel結合使用）"/>
+        <string id="Q00NX1J9" text="是否允許騎馬（可與Use Camel結合使用）" original="Whether to allow horse (can be combined with Use Camel)"/>
         <!-- Use Camel -->
-        <string id="1YsQ2fC3" text="使用駱駝"/>
+        <string id="1YsQ2fC3" text="使用駱駝" original="Use Camel"/>
         <!-- Whether to allow camel (can be combined with Use Horse -->
-        <string id="Us7G1v2T" text="是否允許駱駝（可以結合Use Horse"/>
+        <string id="Us7G1v2T" text="是否允許駱駝（可以結合Use Horse" original="Whether to allow camel (can be combined with Use Horse"/>
         <!-- Passive Power -->
-        <string id="MvddFKo4" text="被動電源"/>
+        <string id="MvddFKo4" text="被動電源" original="Passive Power"/>
         <!-- Passive hero power: this will always apply to the hero (i.e. a permanent buff) -->
-        <string id="F8a2nXYo" text="被動英雄力量：這將始終適用於英雄（即永久增益）"/>
+        <string id="F8a2nXYo" text="被動英雄力量：這將始終適用於英雄（即永久增益）" original="Passive hero power: this will always apply to the hero (i.e. a permanent buff)"/>
         <!-- Active Power -->
-        <string id="wdCMNOGd" text="有功功率"/>
+        <string id="wdCMNOGd" text="有功功率" original="Active Power"/>
         <!-- Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff) -->
-        <string id="I4ASwveG" text="主動英雄能力：只有當觀看者使用 UseHeroPower 動作時才會觸發此能力，通過獎勵或命令（即臨時 buff）"/>
-        
+        <string id="I4ASwveG" text="主動英雄能力：只有當觀看者使用 UseHeroPower 動作時才會觸發此能力，通過獎勵或命令（即臨時 buff）" original="Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff)"/>
         <!-- Horse -->
-        <string id="YzIcRgBV" text="馬"/>
+        <string id="YzIcRgBV" text="馬" original="Horse"/>
         <!-- Camel -->
-        <string id="HMclWXR8" text="駱駝"/>
+        <string id="HMclWXR8" text="駱駝" original="Camel"/>
         <!-- Use Horse -->
-        <string id="A1G6bq0G" text="使用馬"/>
+        <string id="A1G6bq0G" text="使用馬" original="Use Horse"/>
         <!-- Use Camel -->
-        <string id="FpgyZk0F" text="使用駱駝"/>
+        <string id="FpgyZk0F" text="使用駱駝" original="Use Camel"/>
         <!-- (none) -->
-        <string id="GFc6JLJ9" text="（沒有任何）"/>
+        <string id="GFc6JLJ9" text="（沒有任何）" original="(none)"/>
         <!-- Details -->
-        <string id="A79HrgZ0" text="細節"/>
+        <string id="A79HrgZ0" text="細節" original="Details"/>
         <!-- Tier {TierNumber} -->
-        <string id="Rs1XNM9K" text="{TierNumber} 級"/>
+        <string id="Rs1XNM9K" text="{TierNumber} 級" original="Tier {TierNumber}"/>
         <!-- Equipment -->
-        <string id="HyXJQJtW" text="設備"/>
-
+        <string id="HyXJQJtW" text="設備" original="Equipment"/>
         <!-- Mount -->
-        <string id="iGdq37PI" text="山"/>
-        
+        <string id="iGdq37PI" text="山" original="Mount"/>
         <!-- KillStreakDef -->
         <!-- Kill Streak -->
-        <string id="InTnlqz1" text="連殺"/>
+        <string id="InTnlqz1" text="連殺" original="Kill Streak"/>
         <!-- Show Notification -->
-        <string id="poe8m8rn" text="顯示通知"/>
+        <string id="poe8m8rn" text="顯示通知" original="Show Notification"/>
         <!-- Notification Text -->
-        <string id="RQh3jIZW" text="通知文本"/>
+        <string id="RQh3jIZW" text="通知文本" original="Notification Text"/>
         <!-- Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required. -->
-        <string id="04wTH1xo" text="實現連續殺戮時顯示的文本。佔位符：{viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} 表示需要的殺戮。"/>
+        <string id="04wTH1xo" text="實現連續殺戮時顯示的文本。佔位符：{viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} 表示需要的殺戮。" original="Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required."/>
         <!-- Kills Required -->
-        <string id="mG7HzT0z" text="需要擊殺"/>
+        <string id="mG7HzT0z" text="需要擊殺" original="Kills Required"/>
         <!-- Kills required to achieve the kill streak. -->
-        <string id="mLElTwb6" text="達到連續殺戮所需的殺戮次數。"/>
+        <string id="mLElTwb6" text="達到連續殺戮所需的殺戮次數。" original="Kills required to achieve the kill streak."/>
         <!-- Gold Reward -->
-        <string id="zEqJgISl" text="金獎"/>
+        <string id="zEqJgISl" text="金獎" original="Gold Reward"/>
         <!-- Gold rewarded when the kill streak is achieved. -->
-        <string id="CYg79sAT" text="實現連續殺戮時獲得金幣獎勵。"/>
+        <string id="CYg79sAT" text="實現連續殺戮時獲得金幣獎勵。" original="Gold rewarded when the kill streak is achieved."/>
         <!-- XP Reward -->
-        <string id="vzCgh9PN" text="經驗獎勵"/>
+        <string id="vzCgh9PN" text="經驗獎勵" original="XP Reward"/>
         <!-- Experience granted when the kill streak is achieved. -->
-        <string id="Q1TcztBP" text="實現連續殺戮時授予經驗。"/>
+        <string id="Q1TcztBP" text="實現連續殺戮時授予經驗。" original="Experience granted when the kill streak is achieved."/>
         <!-- New Kill Streak -->
-        <string id="KtvBk2nR" text="新連殺"/>
+        <string id="KtvBk2nR" text="新連殺" original="New Kill Streak"/>
         <!-- {viewer} got {name} ({kills} kills) -->
-        <string id="ipowOInD" text="{viewer} got {name} ({kills} 殺）"/>
+        <string id="ipowOInD" text="{viewer} got {name} ({kills} 殺）" original="{viewer} got {name} ({kills} kills)"/>
         <!-- {KillsRequired} kills -->
-        <string id="YZJ60Pxb" text="{KillsRequired} 殺"/>
-
+        <string id="YZJ60Pxb" text="{KillsRequired} 殺" original="{KillsRequired} kills"/>
         <!-- SummonHero.FormationItemSource -->
         <!-- Infantry -->
-        <string id="7gt8mcJc" text="步兵"/>
+        <string id="7gt8mcJc" text="步兵" original="Infantry"/>
         <!-- Ranged -->
-        <string id="kDo9EtMh" text="遠程"/>
+        <string id="kDo9EtMh" text="遠程" original="Ranged"/>
         <!-- Cavalry -->
-        <string id="HcfkYEsF" text="騎兵"/>
+        <string id="HcfkYEsF" text="騎兵" original="Cavalry"/>
         <!-- Horse Archer -->
-        <string id="Xx9xP7jK" text="弓箭手"/>
+        <string id="Xx9xP7jK" text="弓箭手" original="Horse Archer"/>
         <!-- Skirmisher -->
-        <string id="PpZY6dPX" text="前衛"/>
+        <string id="PpZY6dPX" text="前衛" original="Skirmisher"/>
         <!-- Heavy Infantry -->
-        <string id="VT6VYeVp" text="重步兵"/>
+        <string id="VT6VYeVp" text="重步兵" original="Heavy Infantry"/>
         <!-- Light Cavalry -->
-        <string id="t5iTNQ5p" text="輕騎兵"/>
+        <string id="t5iTNQ5p" text="輕騎兵" original="Light Cavalry"/>
         <!-- Heavy Cavalry -->
-        <string id="vyVSsiBr" text="重騎兵"/>
-        
+        <string id="vyVSsiBr" text="重騎兵" original="Heavy Cavalry"/>
         <!-- SkillRangeDef -->
         <!-- Skill Range -->
-        <string id="uUWdyER4" text="技能範圍"/>
-        
+        <string id="uUWdyER4" text="技能範圍" original="Skill Range"/>
         <!-- The skill or skill group -->
-        <string id="WcQpCpdI" text="技能或技能組"/>
+        <string id="WcQpCpdI" text="技能或技能組" original="The skill or skill group"/>
         <!-- The min level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023) -->
-        <string id="fozHOKis" text="應該是的最小級別（實際值將在最小和最大之間隨機選擇，有效值為 0 到 1023）"/>
+        <string id="fozHOKis" text="應該是的最小級別（實際值將在最小和最大之間隨機選擇，有效值為 0 到 1023）" original="The min level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023)"/>
         <!-- The max level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023) -->
-        <string id="I6hTb2OY" text="應該是的最大級別（實際值將在最小和最大之間隨機選擇，有效值為 0 到 1023）"/>
-        
+        <string id="I6hTb2OY" text="應該是的最大級別（實際值將在最小和最大之間隨機選擇，有效值為 0 到 1023）" original="The max level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023)"/>
         <!-- ClassLevelRequirementsDef -->
         <!-- Class Level Requirements Definition -->
-        <string id="uZUsZLGm" text="班級要求定義"/>
+        <string id="uZUsZLGm" text="班級要求定義" original="Class Level Requirements Definition"/>
         <!-- ClassLevel -->
-        <string id="0raqv788" text="班級"/>
+        <string id="0raqv788" text="班級" original="ClassLevel"/>
         <!-- Class level -->
-        <string id="el4y84iD" text="班級"/>
+        <string id="el4y84iD" text="班級" original="Class level"/>
         <!-- Requirements -->
-        <string id="aMGoiH53" text="要求"/>
+        <string id="aMGoiH53" text="要求" original="Requirements"/>
         <!-- Requirements for this class level -->
-        <string id="G95DA4OM" text="本班級要求"/>
-
+        <string id="G95DA4OM" text="本班級要求" original="Requirements for this class level"/>
         <!-- MissionInfo -->
         <!-- Kills -->
-        <string id="AM2zlkem" text="殺戮"/>
+        <string id="AM2zlkem" text="殺戮" original="Kills"/>
         <!-- +Retinue Kills -->
-        <string id="79JXI4JL" text="+隨從擊殺"/>
+        <string id="79JXI4JL" text="+隨從擊殺" original="+Retinue Kills"/>
         <!-- Gold -->
-        <string id="o0Q8Y1Qg" text="金子"/>
+        <string id="o0Q8Y1Qg" text="金子" original="Gold"/>
         <!-- XP -->
-        <string id="VtEJiMWy" text="經驗值"/>
-        
+        <string id="VtEJiMWy" text="經驗值" original="XP"/>
         <!-- Tournament -->
         <!-- Tournament -->
-        <string id="PI83uB8j" text="比賽"/>
+        <string id="PI83uB8j" text="比賽" original="Tournament"/>
         <!-- Betting is OPEN -->
-        <string id="WPTU6AGn" text="投注已開"/>
+        <string id="WPTU6AGn" text="投注已開" original="Betting is OPEN"/>
         <!-- Betting is CLOSED -->
-        <string id="PLRsZCjL" text="投注已關閉"/>
+        <string id="PLRsZCjL" text="投注已關閉" original="Betting is CLOSED"/>
         <!-- Not taking bets -->
-        <string id="Sv04YKsL" text="不下注"/>
-                
+        <string id="Sv04YKsL" text="不下注" original="Not taking bets"/>
         <!-- GeneratedRewardDef -->
         <!-- Reward Type -->
-        <string id="x6pmNHJT" text="獎勵類型"/>
+        <string id="x6pmNHJT" text="獎勵類型" original="Reward Type"/>
         <!-- Reward Tier -->
-        <string id="Mmd0UleC" text="獎勵等級"/>
+        <string id="Mmd0UleC" text="獎勵等級" original="Reward Tier"/>
         <!-- Custom Item -->
-        <string id="zVqTKyQG" text="自定義項目"/>
+        <string id="zVqTKyQG" text="自定義項目" original="Custom Item"/>
         <!-- Weapon Weight -->
-        <string id="7yNTThry" text="武器重量"/>
+        <string id="7yNTThry" text="武器重量" original="Weapon Weight"/>
         <!-- Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo. -->
-        <string id="WTWuy57X" text="武器獎勵的相對比例。這包括所有的單手、雙手、遠程和彈藥。"/>
+        <string id="WTWuy57X" text="武器獎勵的相對比例。這包括所有的單手、雙手、遠程和彈藥。" original="Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo."/>
         <!-- Armor Weight -->
-        <string id="Al3Px9lL" text="裝甲重量"/>
+        <string id="Al3Px9lL" text="裝甲重量" original="Armor Weight"/>
         <!-- Relative proportion of rewards that will be armor -->
-        <string id="WSXhTI0r" text="盔甲獎勵的相對比例"/>
+        <string id="WSXhTI0r" text="盔甲獎勵的相對比例" original="Relative proportion of rewards that will be armor"/>
         <!-- Mount Weight -->
-        <string id="S6t7iUki" text="安裝重量"/>
+        <string id="S6t7iUki" text="安裝重量" original="Mount Weight"/>
         <!-- Relative proportion of rewards that will be mounts -->
-        <string id="4L1hJS6v" text="坐騎獎勵的相對比例"/>
+        <string id="4L1hJS6v" text="坐騎獎勵的相對比例" original="Relative proportion of rewards that will be mounts"/>
         <!-- Reward Type Chances -->
-        <string id="h4CEbGun" text="獎勵類型機會"/>
+        <string id="h4CEbGun" text="獎勵類型機會" original="Reward Type Chances"/>
         <!-- The % chance for each item type -->
-        <string id="u9zCErHS" text="每種物品類型的概率百分比"/>
+        <string id="u9zCErHS" text="每種物品類型的概率百分比" original="The % chance for each item type"/>
         <!-- Tier 1 Weight -->
-        <string id="pqDOv12p" text="一級重量"/>
+        <string id="pqDOv12p" text="一級重量" original="Tier 1 Weight"/>
         <!-- Relative proportion of rewards that will be Tier 1 -->
-        <string id="aAZvoxk9" text="將成為第 1 層的獎勵的相對比例"/>
+        <string id="aAZvoxk9" text="將成為第 1 層的獎勵的相對比例" original="Relative proportion of rewards that will be Tier 1"/>
         <!-- Tier 2 Weight -->
-        <string id="ZDgMrJHH" text="第 2 層重量"/>
+        <string id="ZDgMrJHH" text="第 2 層重量" original="Tier 2 Weight"/>
         <!-- Relative proportion of rewards that will be Tier 2 -->
-        <string id="rvjbuCH4" text="將成為第 2 層的獎勵的相對比例"/>
+        <string id="rvjbuCH4" text="將成為第 2 層的獎勵的相對比例" original="Relative proportion of rewards that will be Tier 2"/>
         <!-- Tier 3 Weight -->
-        <string id="8UhZyGRj" text="第 3 層重量"/>
+        <string id="8UhZyGRj" text="第 3 層重量" original="Tier 3 Weight"/>
         <!-- Relative proportion of rewards that will be Tier 3 -->
-        <string id="CJwXH8cz" text="將成為第 3 層的獎勵的相對比例"/>
+        <string id="CJwXH8cz" text="將成為第 3 層的獎勵的相對比例" original="Relative proportion of rewards that will be Tier 3"/>
         <!-- Tier 4 Weight -->
-        <string id="v4wqC1mI" text="第 4 層權重"/>
+        <string id="v4wqC1mI" text="第 4 層權重" original="Tier 4 Weight"/>
         <!-- Relative proportion of rewards that will be Tier 4 -->
-        <string id="NoKi0iIC" text="將成為第 4 層的獎勵的相對比例"/>
+        <string id="NoKi0iIC" text="將成為第 4 層的獎勵的相對比例" original="Relative proportion of rewards that will be Tier 4"/>
         <!-- Tier 5 Weight -->
-        <string id="vXimyLH7" text="第 5 層權重"/>
+        <string id="vXimyLH7" text="第 5 層權重" original="Tier 5 Weight"/>
         <!-- Relative proportion of rewards that will be Tier 5 -->
-        <string id="rsGLtLyB" text="將成為第 5 層的獎勵的相對比例"/>
+        <string id="rsGLtLyB" text="將成為第 5 層的獎勵的相對比例" original="Relative proportion of rewards that will be Tier 5"/>
         <!-- Tier 6 Weight -->
-        <string id="HWHFIsUH" text="第 6 層權重"/>
+        <string id="HWHFIsUH" text="第 6 層權重" original="Tier 6 Weight"/>
         <!-- Relative proportion of rewards that will be Tier 6 -->
-        <string id="991D0fok" text="6級獎勵的相對比例"/>
+        <string id="991D0fok" text="6級獎勵的相對比例" original="Relative proportion of rewards that will be Tier 6"/>
         <!-- Custom Weight -->
-        <string id="R5TCrBo8" text="自定義重量"/>
+        <string id="R5TCrBo8" text="自定義重量" original="Custom Weight"/>
         <!-- Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below) -->
-        <string id="XL94fx52" text="自定義獎勵的相對比例（第 6 層，根據下面的自定義獎勵設置進行修改）"/>
+        <string id="XL94fx52" text="自定義獎勵的相對比例（第 6 層，根據下面的自定義獎勵設置進行修改）" original="Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below)"/>
         <!-- Reward Tier Chances -->
-        <string id="zoBVNJBB" text="獎勵等級機會"/>
+        <string id="zoBVNJBB" text="獎勵等級機會" original="Reward Tier Chances"/>
         <!-- The % chance for each reward tier -->
-        <string id="ANPeZyy0" text="每個獎勵等級的機會百分比"/>
+        <string id="ANPeZyy0" text="每個獎勵等級的機會百分比" original="The % chance for each reward tier"/>
         <!-- Custom Item Name -->
-        <string id="PBWEbYLT" text="自定義項目名稱"/>
+        <string id="PBWEbYLT" text="自定義項目名稱" original="Custom Item Name"/>
         <!-- Name format for custom item, {ITEMNAME} is the placeholder for the base item name. -->
-        <string id="vqNeCCNy" text="自定義項目的名稱格式，{ITEMNAME} 是基本項目名稱的佔位符。"/>
+        <string id="vqNeCCNy" text="自定義項的名稱格式，{ITEMNAME} 是基本項名稱的佔位符。" original="Name format for custom item, {ITEMNAME} is the placeholder for the base item name."/>
         <!-- Custom Item Power -->
-        <string id="THpMPPhd" text="自定義物品功率"/>
+        <string id="THpMPPhd" text="自定義物品功率" original="Custom Item Power"/>
         <!-- Custom item power multiplier, applies on top of the global multiplier -->
-        <string id="anUzQaU7" text="自定義物品功率倍增器，應用於全局倍增器之上"/>
+        <string id="anUzQaU7" text="自定義物品功率倍增器，應用於全局倍增器之上" original="Custom item power multiplier, applies on top of the global multiplier"/>
         <!-- Weapon -->
-        <string id="hpJN9wNo" text="武器"/>
+        <string id="hpJN9wNo" text="武器" original="Weapon"/>
         <!-- Armor -->
-        <string id="YQdQrFG7" text="盔甲"/>
+        <string id="YQdQrFG7" text="盔甲" original="Armor"/>
         <!-- Mount -->
-        <string id="HGZVsIjn" text="山"/>
+        <string id="HGZVsIjn" text="山" original="Mount"/>
         <!-- Custom -->
-        <string id="LKgozyEk" text="風俗"/>
+        <string id="LKgozyEk" text="風俗" original="Custom"/>
         <!-- Tier {Tier} -->
-        <string id="JpB20FtS" text="{Tier} 級"/>
-        
+        <string id="JpB20FtS" text="{Tier} 級" original="Tier {Tier}"/>
         <!-- RandomItemModifierDef -->
         <!-- Power -->
-        <string id="1NLO6Gee" text="力量"/>
+        <string id="1NLO6Gee" text="力量" original="Power"/>
         <!-- Custom prize power, a global multiplier for the values below -->
-        <string id="LXo3mTnr" text="自定義獎勵能力，以下值的全局乘數"/>
+        <string id="LXo3mTnr" text="自定義獎勵能力，以下值的全局乘數" original="Custom prize power, a global multiplier for the values below"/>
         <!-- Weapon Damage -->
-        <string id="g2DZKK7M" text="武器傷害"/>
+        <string id="g2DZKK7M" text="武器傷害" original="Weapon Damage"/>
         <!-- Weapon damage modifier for custom weapon prize -->
-        <string id="R9lwIsrX" text="自定義武器獎的武器傷害修正"/>
+        <string id="R9lwIsrX" text="自定義武器獎的武器傷害修正" original="Weapon damage modifier for custom weapon prize"/>
         <!-- Weapon Speed -->
-        <string id="7TgyXbNe" text="武器速度"/>
+        <string id="7TgyXbNe" text="武器速度" original="Weapon Speed"/>
         <!-- Speed modifier for custom weapon prize -->
-        <string id="1ZZDexjJ" text="自定義武器獎品的速度修改器"/>
+        <string id="1ZZDexjJ" text="自定義武器獎品的速度修改器" original="Speed modifier for custom weapon prize"/>
         <!-- Weapon Missile Speed -->
-        <string id="4zhm204e" text="武器導彈速度"/>
+        <string id="4zhm204e" text="武器導彈速度" original="Weapon Missile Speed"/>
         <!-- Missile speed modifier for custom weapon prize -->
-        <string id="gFO8L8CR" text="自定義武器獎的導彈速度修改器"/>
+        <string id="gFO8L8CR" text="自定義武器獎的導彈速度修改器" original="Missile speed modifier for custom weapon prize"/>
         <!-- Ammo Damage -->
-        <string id="ny6l1USK" text="彈藥傷害"/>
+        <string id="ny6l1USK" text="彈藥傷害" original="Ammo Damage"/>
         <!-- Ammo damage modifier for custom ammo prize -->
-        <string id="oTSCOXpf" text="自定義彈藥獎的彈藥傷害修正"/>
+        <string id="oTSCOXpf" text="自定義彈藥獎的彈藥傷害修正" original="Ammo damage modifier for custom ammo prize"/>
         <!-- Arrow Stack -->
-        <string id="2ehIq5eD" text="箭頭堆棧"/>
+        <string id="2ehIq5eD" text="箭頭堆棧" original="Arrow Stack"/>
         <!-- Arrow stack size modifier for custom arrow prize -->
-        <string id="inawRS8e" text="自定義箭頭獎的箭頭堆棧大小修改器"/>
+        <string id="inawRS8e" text="自定義箭頭獎的箭頭堆棧大小修改器" original="Arrow stack size modifier for custom arrow prize"/>
         <!-- Throwing Stack -->
-        <string id="JUXQcKMR" text="投擲堆棧"/>
+        <string id="JUXQcKMR" text="投擲堆棧" original="Throwing Stack"/>
         <!-- Throwing stack size modifier for custom throwing prize -->
-        <string id="QAUf8zj0" text="用於自定義投擲獎品的投擲堆棧大小修飾符"/>
+        <string id="QAUf8zj0" text="用於自定義投擲獎品的投擲堆棧大小修飾符" original="Throwing stack size modifier for custom throwing prize"/>
         <!-- Armor -->
-        <string id="MrOZ69tP" text="盔甲"/>
+        <string id="MrOZ69tP" text="盔甲" original="Armor"/>
         <!-- Armor modifier for custom armor prize -->
-        <string id="1x2YSVSz" text="自定義盔甲獎的盔甲修改器"/>
+        <string id="1x2YSVSz" text="自定義盔甲獎的盔甲修改器" original="Armor modifier for custom armor prize"/>
         <!-- Mount Maneuver -->
-        <string id="BYekTOq6" text="機動山"/>
+        <string id="BYekTOq6" text="機動山" original="Mount Maneuver"/>
         <!-- Maneuver multiplier for custom mount prize -->
-        <string id="7cZ5JfEk" text="自定義坐騎獎勵的機動乘數"/>
+        <string id="7cZ5JfEk" text="自定義坐騎獎勵的機動乘數" original="Maneuver multiplier for custom mount prize"/>
         <!-- Mount Speed -->
-        <string id="6yURxqNY" text="裝載速度"/>
+        <string id="6yURxqNY" text="裝載速度" original="Mount Speed"/>
         <!-- Speed multiplier for custom mount prize -->
-        <string id="eJZxwZc1" text="自定義坐騎獎勵的速度倍增器"/>
+        <string id="eJZxwZc1" text="自定義坐騎獎勵的速度倍增器" original="Speed multiplier for custom mount prize"/>
         <!-- Mount Charge Damage -->
-        <string id="ZmiOntW1" text="坐騎衝鋒傷害"/>
+        <string id="ZmiOntW1" text="坐騎衝鋒傷害" original="Mount Charge Damage"/>
         <!-- Charge damage multiplier for custom mount prize -->
-        <string id="MZm0DJcs" text="自定義坐騎獎勵的充電傷害乘數"/>
+        <string id="MZm0DJcs" text="自定義坐騎獎勵的充電傷害乘數" original="Charge damage multiplier for custom mount prize"/>
         <!-- Mount Hit Points -->
-        <string id="M8drveMF" text="坐騎生命值"/>
+        <string id="M8drveMF" text="坐騎生命值" original="Mount Hit Points"/>
         <!-- Hitpoints multiplier for custom mount prize -->
-        <string id="ewC5EV3Q" text="自定義坐騎獎勵的生命值乘數"/>
-        
+        <string id="ewC5EV3Q" text="自定義坐騎獎勵的生命值乘數" original="Hitpoints multiplier for custom mount prize"/>
         <!-- RewardHelpers -->
         <!-- received {ItemName} -->
-        <string id="RczvXuxP" text="收到{ItemName}"/>
+        <string id="RczvXuxP" text="收到{ItemName}" original="received {ItemName}"/>
         <!-- sold {ItemName} for {ItemValue}{GoldIcon} (not needed) -->
-        <string id="bNX0NiQ9" text="售出 {ItemName} for {ItemValue}{GoldIcon}（不需要）"/>
+        <string id="bNX0NiQ9" text="售出 {ItemName} for {ItemValue}{GoldIcon}（不需要）" original="sold {ItemName} for {ItemValue}{GoldIcon} (not needed)"/>
         <!-- received {ItemName} (put in storage) -->
-        <string id="R7VwlLzg" text="收到 {ItemName}（放入存儲）"/>
+        <string id="R7VwlLzg" text="收到 {ItemName}（放入存儲）" original="received {ItemName} (put in storage)"/>
     </strings>
 </base>

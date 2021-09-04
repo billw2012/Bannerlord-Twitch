@@ -5,197 +5,189 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-                
         <!-- BLTAdoptAHeroCampaignBehavior -->
         <!-- Compensated @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} invalid custom items -->
-        <string id="hoRPbRrb" text="Zrekompensowane @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} nieprawidłowe elementy niestandardowe"/>
+        <string id="hoRPbRrb" text="Zrekompensowane @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} nieprawidłowe elementy niestandardowe" original="Compensated @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} invalid custom items"/>
         <!-- @{VictimName} {Verb} by @{KillerName}! -->
-        <string id="PCPU0lPX" text="@{VictimName} {Verb} by @{KillerName}!"/>
+        <string id="PCPU0lPX" text="@{VictimName} {Verb} by @{KillerName}!" original="@{VictimName} {Verb} by @{KillerName}!"/>
         <!-- @{KillerName} {Verb}! -->
-        <string id="Bji2ULge" text="@{KillerName} {Verb}!"/>
+        <string id="Bji2ULge" text="@{KillerName} {Verb}!" original="@{KillerName} {Verb}!"/>
         <!-- @{HeroName} is now level {Level}! -->
-        <string id="8aTmTvl8" text="@{HeroName} is now level {Level}!"/>
+        <string id="8aTmTvl8" text="@{HeroName} is now level {Level}!" original="@{HeroName} is now level {Level}!"/>
         <!-- @{HeroName} was taken prisoner by {PartyName}! -->
-        <string id="4PqVnFWY" text="@{HeroName} was taken prisoner by {PartyName}!"/>
+        <string id="4PqVnFWY" text="@{HeroName} was taken prisoner by {PartyName}!" original="@{HeroName} was taken prisoner by {PartyName}!"/>
         <!-- @{HeroName} was taken prisoner! -->
-        <string id="WeRWLpKn" text="@{HeroName} został wzięty do niewoli!"/>
+        <string id="WeRWLpKn" text="@{HeroName} został wzięty do niewoli!" original="@{HeroName} was taken prisoner!"/>
         <!-- @{HeroName} is no longer a prisoner of {PartyName}! -->
-        <string id="tQANBoTK" text="@{HeroName} is no longer a prisoner of {PartyName}!"/>
+        <string id="tQANBoTK" text="@{HeroName} is no longer a prisoner of {PartyName}!" original="@{HeroName} is no longer a prisoner of {PartyName}!"/>
         <!-- @{HeroName} is no longer a prisoner! -->
-        <string id="MQslOwr0" text="@{HeroName} nie jest już więźniem!"/>
+        <string id="MQslOwr0" text="@{HeroName} nie jest już więźniem!" original="@{HeroName} is no longer a prisoner!"/>
         <!-- @{HeroName} moved from {FromClanName} to {ToClanName}! -->
-        <string id="SUdnIyfw" text="@{HeroName} moved from {FromClanName} to {ToClanName}!"/>
-        
+        <string id="SUdnIyfw" text="@{HeroName} moved from {FromClanName} to {ToClanName}!" original="@{HeroName} moved from {FromClanName} to {ToClanName}!"/>
         <!-- deceased -->
-        <string id="ZtZL0lbX" text="zmarły"/>
+        <string id="ZtZL0lbX" text="zmarły" original="deceased"/>
         <!-- retired -->
-        <string id="ISrFBorj" text="emerytowany"/>
+        <string id="ISrFBorj" text="emerytowany" original="retired"/>
         <!-- {OldName} is {RetireType}! -->
-        <string id="2PHPNmuv" text="{OldName} is {RetireType}!"/>
+        <string id="2PHPNmuv" text="{OldName} is {RetireType}!" original="{OldName} is {RetireType}!"/>
         <!-- Dead or retired hero {OldName} renamed to {HeroName} -->
-        <string id="wzpkEmTL" text="Martwy lub emerytowany bohater {OldName} renamed to {HeroName}"/>
-
+        <string id="wzpkEmTL" text="Martwy lub emerytowany bohater {OldName} renamed to {HeroName}" original="Dead or retired hero {OldName} renamed to {HeroName}"/>
         <!-- You can't bid on your own item -->
-        <string id="2cbVbW91" text="Nie możesz licytować własnego przedmiotu"/>
+        <string id="2cbVbW91" text="Nie możesz licytować własnego przedmiotu" original="You can't bid on your own item"/>
         <!-- Bid of {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon} -->
-        <string id="rbhzuJLm" text="Oferta w wysokości {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon}"/>
+        <string id="rbhzuJLm" text="Oferta w wysokości {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon}" original="Bid of {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon}"/>
         <!-- Another bid at {Bid}{GoldIcon} already exists -->
-        <string id="83uZcndH" text="Istnieje już inna oferta o wartości {Bid}{GoldIcon}"/>
+        <string id="83uZcndH" text="Istnieje już inna oferta o wartości {Bid}{GoldIcon}" original="Another bid at {Bid}{GoldIcon} already exists"/>
         <!-- You already bid more ({Bid}{GoldIcon}), you can only raise your bid -->
-        <string id="qeLF80xw" text="Już licytujesz więcej ({Bid}{GoldIcon}), możesz tylko podnieść swoją ofertę"/>
+        <string id="qeLF80xw" text="Już licytujesz więcej ({Bid}{GoldIcon}), możesz tylko podnieść swoją ofertę" original="You already bid more ({Bid}{GoldIcon}), you can only raise your bid"/>
         <!-- You cannot cover a bid of {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon} -->
-        <string id="Cqi0iYNR" text="Nie możesz pokryć oferty w wysokości {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon}"/>
+        <string id="Cqi0iYNR" text="Nie możesz pokryć oferty w wysokości {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon}" original="You cannot cover a bid of {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon}"/>
         <!-- Bid of {Bid}{GoldIcon} placed! -->
-        <string id="M2B9yQ4w" text="Oferta w wysokości {Bid}{GoldIcon} została złożona!"/>
-        
+        <string id="M2B9yQ4w" text="Oferta w wysokości {Bid}{GoldIcon} została złożona!" original="Bid of {Bid}{GoldIcon} placed!"/>
         <!-- {Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName}) -->
-        <string id="TeeDJyJ1" text="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})"/>
+        <string id="TeeDJyJ1" text="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})" original="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})"/>
         <!-- {Time} seconds left in auction of '{ItemName}', no bids placed -->
-        <string id="jNkGaKZw" text="{Time} seconds left in auction of '{ItemName}&amp;#39;, brak ofert"/>
+        <string id="jNkGaKZw" text="{Time} seconds left in auction of '{ItemName}&amp;#39;, brak ofert" original="{Time} seconds left in auction of '{ItemName}', no bids placed"/>
         <!-- Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}. -->
-        <string id="d9ooHVPU" text="Aukcja dla {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}."/>
+        <string id="d9ooHVPU" text="Aukcja dla {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}." original="Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}."/>
         <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died. -->
-        <string id="SGuTRcui" text="Aukcja dla {ItemName} is CANCELLED! @{ItemOwnerName} przeszedł na emeryturę lub zmarł."/>
+        <string id="SGuTRcui" text="Aukcja dla {ItemName} is CANCELLED! @{ItemOwnerName} przeszedł na emeryturę lub zmarł." original="Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died."/>
         <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} is no longer in possession of the item. -->
-        <string id="NRV4IstE" text="Aukcja dla {ItemName} is CANCELLED! @{ItemOwnerName} nie jest już w posiadaniu przedmiotu."/>
+        <string id="NRV4IstE" text="Aukcja dla {ItemName} is CANCELLED! @{ItemOwnerName} nie jest już w posiadaniu przedmiotu." original="Auction for {ItemName} is CANCELLED! @{ItemOwnerName} is no longer in possession of the item."/>
         <!-- Auction for {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}. -->
-        <string id="jmbMoHta" text="Aukcja dla {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}."/>
-        
+        <string id="jmbMoHta" text="Aukcja dla {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}." original="Auction for {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}."/>
         <!-- No auction in progress -->
-        <string id="Cy38Ckpk" text="Brak trwającej aukcji"/>
+        <string id="Cy38Ckpk" text="Brak trwającej aukcji" original="No auction in progress"/>
         <!-- Max Retinue Size -->
-        <string id="wAGE7h6U" text="Maksymalny rozmiar orszaku"/>
+        <string id="wAGE7h6U" text="Maksymalny rozmiar orszaku" original="Max Retinue Size"/>
         <!-- Maximum number of units in the retinue. Recommend less than 20, summons to NOT obey the games unit limits. -->
-        <string id="EOGB8EWN" text="Maksymalna liczba jednostek w orszaku. Poleć mniej niż 20, wezwania NIE przestrzegają limitów jednostek gry."/>
+        <string id="EOGB8EWN" text="Maksymalna liczba jednostek w orszaku. Poleć mniej niż 20, wezwania NIE przestrzegają limitów jednostek gry." original="Maximum number of units in the retinue. Recommend less than 20, summons to NOT obey the games unit limits."/>
         <!-- Cost Tier 1 -->
-        <string id="VvdtvdQJ" text="Poziom kosztów 1"/>
+        <string id="VvdtvdQJ" text="Poziom kosztów 1" original="Cost Tier 1"/>
         <!-- Gold cost for Tier 1 retinue -->
-        <string id="9bvn5R5A" text="Koszt w złocie dla świty 1 poziomu"/>
+        <string id="9bvn5R5A" text="Koszt w złocie dla świty 1 poziomu" original="Gold cost for Tier 1 retinue"/>
         <!-- Cost Tier 2 -->
-        <string id="engRDMZx" text="Poziom kosztów 2"/>
+        <string id="engRDMZx" text="Poziom kosztów 2" original="Cost Tier 2"/>
         <!-- Gold cost for Tier 2 retinue -->
-        <string id="pD2ZvRVH" text="Koszt w złocie dla świty 2 poziomu"/>
+        <string id="pD2ZvRVH" text="Koszt w złocie dla świty 2 poziomu" original="Gold cost for Tier 2 retinue"/>
         <!-- Cost Tier 3 -->
-        <string id="3jxmITht" text="Poziom kosztów 3"/>
+        <string id="3jxmITht" text="Poziom kosztów 3" original="Cost Tier 3"/>
         <!-- Gold cost for Tier 3 retinue -->
-        <string id="dyB8loLF" text="Koszt w złocie dla świty 3 poziomu"/>
+        <string id="dyB8loLF" text="Koszt w złocie dla świty 3 poziomu" original="Gold cost for Tier 3 retinue"/>
         <!-- Cost Tier 4 -->
-        <string id="dhwd4ccF" text="Poziom kosztów 4"/>
+        <string id="dhwd4ccF" text="Poziom kosztów 4" original="Cost Tier 4"/>
         <!-- Gold cost for Tier 4 retinue -->
-        <string id="aji2HxKa" text="Koszt w złocie dla świty 4 poziomu"/>
+        <string id="aji2HxKa" text="Koszt w złocie dla świty 4 poziomu" original="Gold cost for Tier 4 retinue"/>
         <!-- Cost Tier 5 -->
-        <string id="zJkb4AIh" text="Poziom kosztów 5"/>
+        <string id="zJkb4AIh" text="Poziom kosztów 5" original="Cost Tier 5"/>
         <!-- Gold cost for Tier 5 retinue -->
-        <string id="fnEOFst7" text="Koszt w złocie dla świty poziomu 5"/>
+        <string id="fnEOFst7" text="Koszt w złocie dla świty poziomu 5" original="Gold cost for Tier 5 retinue"/>
         <!-- Cost Tier 6 -->
-        <string id="1hh3cOJO" text="Poziom kosztów 6"/>
+        <string id="1hh3cOJO" text="Poziom kosztów 6" original="Cost Tier 6"/>
         <!-- Gold cost for Tier 6 retinue -->
-        <string id="PieENBSG" text="Koszt w złocie dla świty 6 poziomu"/>
+        <string id="PieENBSG" text="Koszt w złocie dla świty 6 poziomu" original="Gold cost for Tier 6 retinue"/>
         <!-- Troop Types -->
-        <string id="qYhM3gcn" text="Rodzaje oddziałów"/>
+        <string id="qYhM3gcn" text="Rodzaje oddziałów" original="Troop Types"/>
         <!-- Use Heroes Culture Units -->
-        <string id="q1Rkm3Rq" text="Użyj jednostek kultury bohaterów"/>
+        <string id="q1Rkm3Rq" text="Użyj jednostek kultury bohaterów" original="Use Heroes Culture Units"/>
         <!-- Whether to use the adopted hero's culture (if not enabled then a random one is used) -->
-        <string id="9qAD6eZR" text="Czy używać kultury adoptowanego bohatera (jeśli nie jest włączona, używana jest losowa)"/>
+        <string id="9qAD6eZR" text="Czy używać kultury adoptowanego bohatera (jeśli nie jest włączona, używana jest losowa)" original="Whether to use the adopted hero's culture (if not enabled then a random one is used)"/>
         <!-- Include Bandit Units -->
-        <string id="dbU7WEKG" text="Uwzględnij jednostki bandytów"/>
+        <string id="dbU7WEKG" text="Uwzględnij jednostki bandytów" original="Include Bandit Units"/>
         <!-- Whether to allow bandit units when UseHeroesCultureUnits is disabled -->
-        <string id="06KnYhyh" text="Czy zezwalać na jednostki bandytów, gdy funkcja UseHeroesCultureUnits jest wyłączona"/>
+        <string id="06KnYhyh" text="Czy zezwalać na jednostki bandytów, gdy funkcja UseHeroesCultureUnits jest wyłączona" original="Whether to allow bandit units when UseHeroesCultureUnits is disabled"/>
         <!-- Use Basic Troops -->
-        <string id="E2RBmb1K" text="Użyj podstawowych oddziałów"/>
+        <string id="E2RBmb1K" text="Użyj podstawowych oddziałów" original="Use Basic Troops"/>
         <!-- Whether to allow basic troops -->
-        <string id="uPwaOKdT" text="Czy zezwolić na podstawowe wojska?"/>
+        <string id="uPwaOKdT" text="Czy zezwolić na podstawowe wojska?" original="Whether to allow basic troops"/>
         <!-- Use Elite Troops -->
-        <string id="lnz7d1BI" text="Użyj elitarnych oddziałów"/>
+        <string id="lnz7d1BI" text="Użyj elitarnych oddziałów" original="Use Elite Troops"/>
         <!-- Whether to allow elite troops -->
-        <string id="EPr2clqT" text="Czy zezwolić na elitarne oddziały?"/>
+        <string id="EPr2clqT" text="Czy zezwolić na elitarne oddziały?" original="Whether to allow elite troops"/>
         <!-- Max retinue -->
-        <string id="UhUpH8C8" text="Maks. orszak"/>
+        <string id="UhUpH8C8" text="Maks. orszak" original="Max retinue"/>
         <!-- Tier costs -->
-        <string id="VBuncBq5" text="Koszty poziomów"/>
+        <string id="VBuncBq5" text="Koszty poziomów" original="Tier costs"/>
         <!-- Same culture only -->
-        <string id="R7rU0TbD" text="Tylko ta sama kultura"/>
+        <string id="R7rU0TbD" text="Tylko ta sama kultura" original="Same culture only"/>
         <!-- Bandits -->
-        <string id="c2qOsXvs" text="Bandyci"/>
+        <string id="c2qOsXvs" text="Bandyci" original="Bandits"/>
         <!-- Basic troops -->
-        <string id="RmTwEFzy" text="Podstawowe wojska"/>
+        <string id="RmTwEFzy" text="Podstawowe wojska" original="Basic troops"/>
         <!-- Elite troops -->
-        <string id="3gumlthG" text="Elitarne oddziały"/>
+        <string id="3gumlthG" text="Elitarne oddziały" original="Elite troops"/>
         <!-- Allowed -->
-        <string id="uL7MfYPc" text="Dozwolony"/>
+        <string id="uL7MfYPc" text="Dozwolony" original="Allowed"/>
         <!-- No valid troop types could be found, please check out settings -->
-        <string id="bBCyH0vV" text="Nie znaleziono prawidłowych typów wojsk, sprawdź ustawienia"/>
+        <string id="bBCyH0vV" text="Nie znaleziono prawidłowych typów wojsk, sprawdź ustawienia" original="No valid troop types could be found, please check out settings"/>
         <!-- Spent {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} remaining -->
-        <string id="zcbOq6Tb" text="Wydano {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} pozostałe"/>
+        <string id="zcbOq6Tb" text="Wydano {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} pozostałe" original="Spent {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} remaining"/>
         <!-- Can't upgrade retinue any further! -->
-        <string id="PQRLJ04i" text="Nie można dalej ulepszać świty!"/>
+        <string id="PQRLJ04i" text="Nie można dalej ulepszać świty!" original="Can't upgrade retinue any further!"/>
         <!-- was murdered -->
-        <string id="LhHul2lV" text="został zamordowany"/>
+        <string id="LhHul2lV" text="został zamordowany" original="was murdered"/>
         <!-- died in labor -->
-        <string id="HwjR45XN" text="zmarł w pracy"/>
+        <string id="HwjR45XN" text="zmarł w pracy" original="died in labor"/>
         <!-- died of old age -->
-        <string id="5GOjfkzW" text="zmarł ze starości"/>
+        <string id="5GOjfkzW" text="zmarł ze starości" original="died of old age"/>
         <!-- died in battle -->
-        <string id="ZKrgqWav" text="zginął w bitwie"/>
+        <string id="ZKrgqWav" text="zginął w bitwie" original="died in battle"/>
         <!-- was wounded in battle -->
-        <string id="jp4sldTL" text="został ranny w bitwie"/>
+        <string id="jp4sldTL" text="został ranny w bitwie" original="was wounded in battle"/>
         <!-- was executed -->
-        <string id="SkFFXsI1" text="został stracony"/>
+        <string id="SkFFXsI1" text="został stracony" original="was executed"/>
         <!-- was lost -->
-        <string id="HMHdXDaK" text="zaginął"/>
+        <string id="HMHdXDaK" text="zaginął" original="was lost"/>
         <!-- was ended -->
-        <string id="lrOJnThZ" text="został zakończony"/>
-        
+        <string id="lrOJnThZ" text="został zakończony" original="was ended"/>
         <!-- BLTTournamentBetMissionBehavior -->
         <!-- Betting is now OPEN for round {RoundIndex} match: {Teams}! -->
-        <string id="wgGkXkyh" text="Zakłady są teraz OTWARTE na rundę {RoundIndex} match: {Teams}!"/>
+        <string id="wgGkXkyh" text="Zakłady są teraz OTWARTE na rundę {RoundIndex} match: {Teams}!" original="Betting is now OPEN for round {RoundIndex} match: {Teams}!"/>
         <!-- Betting is now OPEN for final match: {Teams}! -->
-        <string id="9BjHfivM" text="Zakłady są teraz OTWARTE na mecz finałowy: {Teams}!"/>
+        <string id="9BjHfivM" text="Zakłady są teraz OTWARTE na mecz finałowy: {Teams}!" original="Betting is now OPEN for final match: {Teams}!"/>
         <!-- vs -->
-        <string id="ixTCiaiv" text="vs"/>
+        <string id="ixTCiaiv" text="vs" original="vs"/>
         <!-- blue -->
-        <string id="HrIifwJy" text="niebieski"/>
+        <string id="HrIifwJy" text="niebieski" original="blue"/>
         <!-- red -->
-        <string id="6ZGgsbe1" text="czerwony"/>
+        <string id="6ZGgsbe1" text="czerwony" original="red"/>
         <!-- green -->
-        <string id="qQZlsD8r" text="Zielony"/>
+        <string id="qQZlsD8r" text="Zielony" original="green"/>
         <!-- yellow -->
-        <string id="JelyrtLJ" text="żółty"/>
+        <string id="JelyrtLJ" text="żółty" original="yellow"/>
         <!-- Tournament is not active -->
-        <string id="FEZ1Opj1" text="Turniej nie jest aktywny"/>
+        <string id="FEZ1Opj1" text="Turniej nie jest aktywny" original="Tournament is not active"/>
         <!-- Betting is disabled -->
-        <string id="uNUyZhDk" text="Zakłady są wyłączone"/>
+        <string id="uNUyZhDk" text="Zakłady są wyłączone" original="Betting is disabled"/>
         <!-- Betting is closed -->
-        <string id="APTqGlHh" text="Zakłady są zamknięte"/>
+        <string id="APTqGlHh" text="Zakłady są zamknięte" original="Betting is closed"/>
         <!-- Betting is only allowed on the final -->
-        <string id="7yFW99H8" text="Zakłady są dozwolone tylko na finał"/>
+        <string id="7yFW99H8" text="Zakłady są dozwolone tylko na finał" original="Betting is only allowed on the final"/>
         <!-- Betting is not open -->
-        <string id="ATdvJKFI" text="Zakłady nie są otwarte"/>
+        <string id="ATdvJKFI" text="Zakłady nie są otwarte" original="Betting is not open"/>
         <!-- Team name must be one of {Teams} -->
-        <string id="1rUYWox8" text="Nazwa zespołu musi być jedną z {Teams}"/>
+        <string id="1rUYWox8" text="Nazwa zespołu musi być jedną z {Teams}" original="Team name must be one of {Teams}"/>
         <!-- You can only bet on one team -->
-        <string id="7iveTGQp" text="Możesz obstawiać tylko jedną drużynę"/>
+        <string id="7iveTGQp" text="Możesz obstawiać tylko jedną drużynę" original="You can only bet on one team"/>
         <!-- Betting is now CLOSED: only one team bet on, bets refunded -->
-        <string id="Nm96SVXt" text="Zakłady są teraz ZAMKNIĘTE: tylko jedna drużyna postawiona, zakłady zwrócone"/>
+        <string id="Nm96SVXt" text="Zakłady są teraz ZAMKNIĘTE: tylko jedna drużyna postawiona, zakłady zwrócone" original="Betting is now CLOSED: only one team bet on, bets refunded"/>
         <!-- Betting is now CLOSED: no bets placed -->
-        <string id="GrI9bFCf" text="Zakłady są teraz ZAMKNIĘTE: brak zakładów"/>
+        <string id="GrI9bFCf" text="Zakłady są teraz ZAMKNIĘTE: brak zakładów" original="Betting is now CLOSED: no bets placed"/>
         <!-- Betting is now CLOSED: {TotalBets} -->
-        <string id="Hj3oYnE0" text="Zakłady są teraz ZAMKNIĘTE: {TotalBets}"/>
+        <string id="Hj3oYnE0" text="Zakłady są teraz ZAMKNIĘTE: {TotalBets}" original="Betting is now CLOSED: {TotalBets}"/>
         <!-- REFUNDED {Bet}{GoldIcon} bet -->
-        <string id="u4mPf1p0" text="ZWROT {Bet}{GoldIcon} zakład"/>
+        <string id="u4mPf1p0" text="ZWROT {Bet}{GoldIcon} zakład" original="REFUNDED {Bet}{GoldIcon} bet"/>
         <!-- WON BET -->
-        <string id="majAmqDm" text="WYGRANY ZAKŁAD"/>
-        
+        <string id="majAmqDm" text="WYGRANY ZAKŁAD" original="WON BET"/>
         <!-- BLTTournamentMissionBehavior -->
         <!-- WINNER! -->
-        <string id="jb5vaUCD" text="ZWYCIĘZCA!"/>
+        <string id="jb5vaUCD" text="ZWYCIĘZCA!" original="WINNER!"/>
         <!-- no prize available for you! -->
-        <string id="80PitGR4" text="brak nagrody dla Ciebie!"/>
-        
+        <string id="80PitGR4" text="brak nagrody dla Ciebie!" original="no prize available for you!"/>
         <!-- BLTTournamentQueueBehavior -->
         <!-- You are already in the tournament queue! -->
-        <string id="JtZIstbB" text="Jesteś już w kolejce turniejowej!"/>
+        <string id="JtZIstbB" text="Jesteś już w kolejce turniejowej!" original="You are already in the tournament queue!"/>
         <!-- You are position {QueuePosition} in the tournament queue! -->
-        <string id="1duM11Gt" text="Zajmujesz pozycję {QueuePosition} w kolejce turniejowej!"/>
+        <string id="1duM11Gt" text="Jesteś na pozycji {QueuePosition} w kolejce turniejowej!" original="You are position {QueuePosition} in the tournament queue!"/>
     </strings>
 </base>

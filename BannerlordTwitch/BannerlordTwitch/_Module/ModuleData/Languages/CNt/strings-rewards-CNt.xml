@@ -5,85 +5,83 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
-        <string id="dirEUQc7" text="在遊戲中獲得英雄。幾乎所有其他行動都需要一個被收養的英雄。"/>
+        <string id="dirEUQc7" text="在遊戲中獲得英雄。幾乎所有其他行動都需要一個被收養的英雄。" original="Get a hero in game. Almost all other actions require an adopted hero."/>
         <!-- Adds 10,000 gold to your adopted hero. -->
-        <string id="Y7GzhU5a" text="為你的領養英雄增加 10,000 金幣。"/>
+        <string id="Y7GzhU5a" text="為你的領養英雄增加 10,000 金幣。" original="Adds 10,000 gold to your adopted hero."/>
         <!-- Adds 100,000 gold to your adopted hero. -->
-        <string id="Hbk74nei" text="為你的領養英雄增加 100,000 金幣。"/>
+        <string id="Hbk74nei" text="為你的領養英雄增加 100,000 金幣。" original="Adds 100,000 gold to your adopted hero."/>
         <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue). -->
-        <string id="nI4dr4uZ" text="當主播進入戰鬥時使用它，在主播一方（以及你的隨從）生成你的領養英雄。"/>
+        <string id="nI4dr4uZ" text="當主播進入戰鬥時使用它，在主播一方（以及你的隨從）生成你的領養英雄。" original="Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue)."/>
         <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue). -->
-        <string id="flQofEFu" text="當主播進入戰鬥時使用它，在敵方（以及你的隨從）生成你的領養英雄。"/>
+        <string id="flQofEFu" text="當主播進入戰鬥時使用它，在敵方（以及你的隨從）生成你的領養英雄。" original="Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue)."/>
         <!-- Heals the streamers character in battle, over time. Doesn't work on the campaign map. -->
-        <string id="zLxgvsYd" text="隨著時間的推移，在戰鬥中治愈飄帶角色。不適用於戰役地圖。"/>
+        <string id="zLxgvsYd" text="隨著時間的推移，在戰鬥中治愈飄帶角色。不適用於戰役地圖。" original="Heals the streamers character in battle, over time. Doesn't work on the campaign map."/>
         <!-- Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament. -->
-        <string id="KaE947T9" text="與您採用的英雄一起加入錦標賽隊列。您可以在疊加層中看到隊列。每個錦標賽最多可以有 16 位英雄，一旦滿員，更多的英雄將留在下一場錦標賽的隊列中。"/>
+        <string id="KaE947T9" text="與您採用的英雄一起加入錦標賽隊列。您可以在疊加層中看到隊列。每個錦標賽最多可以有 16 位英雄，一旦滿員，更多的英雄將留在下一場錦標賽的隊列中。" original="Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament."/>
         <!-- Sends a message in the game. If you have a hero then it will also show them next to the message. -->
-        <string id="5L3LWrUx" text="在遊戲中發送消息。如果您有英雄，那麼它也會在消息旁邊顯示他們。"/>
+        <string id="5L3LWrUx" text="在遊戲中發送消息。如果您有英雄，那麼它也會在消息旁邊顯示他們。" original="Sends a message in the game. If you have a hero then it will also show them next to the message."/>
         <!-- Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritance rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete. -->
-        <string id="SXzjFdG1" text="如果您不再希望與當前的英雄一起玩，請使用此選項。他們將被標記為（已退休），然後您就可以採用新的了。繼承規則同樣適用於退休和死亡。您必須在提示符下輸入 yes（完全按照書面形式，小寫）才能完成退休。"/>
+        <string id="SXzjFdG1" text="如果您不再希望與當前的英雄一起玩，請使用此選項。他們將被標記為（已退休），然後您就可以採用新的了。繼承規則同樣適用於退休和死亡。您必須在提示符下輸入 yes（完全按照書面形式，小寫）才能完成退休。" original="Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritance rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete."/>
         <!-- Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment. -->
-        <string id="ZfhTuaRR" text="將 50,000 XP 加到您收養的英雄身上。它所應用的技能將隨機選擇，但受您的職業和現有技能和裝備的影響。"/>
+        <string id="ZfhTuaRR" text="將 50,000 XP 加到您收養的英雄身上。它所應用的技能將隨機選擇，但受您的職業和現有技能和裝備的影響。" original="Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment."/>
         <!-- Heals your hero over time. Only works in battle, when your hero is summoned. -->
-        <string id="pFwSBHnR" text="隨著時間的推移治愈你的英雄。僅在戰鬥中，當你的英雄被召喚時有效。"/>
+        <string id="pFwSBHnR" text="隨著時間的推移治愈你的英雄。僅在戰鬥中，當你的英雄被召喚時有效。" original="Heals your hero over time. Only works in battle, when your hero is summoned."/>
         <!-- Transfer 10,000 gold to the streamers character, from your hero. -->
-        <string id="CSmE7Y50" text="將 10,000 金幣從您的英雄轉移到飄帶角色。"/>
+        <string id="CSmE7Y50" text="將 10,000 金幣從您的英雄轉移到飄帶角色。" original="Transfer 10,000 gold to the streamers character, from your hero."/>
         <!-- Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay. -->
-        <string id="LO6Q2DCb" text="激活你的英雄的職業能力，如果你有的話。電源將持續一段有限的時間，如覆蓋圖所示。"/>
-        
+        <string id="LO6Q2DCb" text="激活你的英雄的職業能力，如果你有的話。電源將持續一段有限的時間，如覆蓋圖所示。" original="Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay."/>
         <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
-        <string id="kL65xglO" text="在遊戲中獲得英雄。幾乎所有其他行動都需要一個被收養的英雄。"/>
+        <string id="kL65xglO" text="在遊戲中獲得英雄。幾乎所有其他行動都需要一個被收養的英雄。" original="Get a hero in game. Almost all other actions require an adopted hero."/>
         <!-- Add 10,000 gold to your adopted hero -->
-        <string id="xQTiKsVA" text="為你收養的英雄增加 10,000 金幣"/>
+        <string id="xQTiKsVA" text="為你的領養英雄增加 10,000 金幣" original="Add 10,000 gold to your adopted hero"/>
         <!-- Add 100,000 gold to your adopted hero -->
-        <string id="xeI0AXUl" text="為你的領養英雄增加 100,000 金幣"/>
+        <string id="xeI0AXUl" text="為你的領養英雄增加 100,000 金幣" original="Add 100,000 gold to your adopted hero"/>
         <!-- Your adopted hero joins the players side in battle -->
-        <string id="zmxI41XP" text="你收養的英雄加入玩家一方戰鬥"/>
+        <string id="zmxI41XP" text="你收養的英雄加入玩家一方戰鬥" original="Your adopted hero joins the players side in battle"/>
         <!-- Your adopted hero joins the enemies side in battle -->
-        <string id="ry25StNF" text="你收養的英雄在戰鬥中加入敵方"/>
+        <string id="ry25StNF" text="你收養的英雄在戰鬥中加入敵方" original="Your adopted hero joins the enemies side in battle"/>
         <!-- Heal the streamer over time -->
-        <string id="a8DqM6AY" text="隨著時間的推移治愈流光"/>
+        <string id="a8DqM6AY" text="隨著時間的推移治愈流光" original="Heal the streamer over time"/>
         <!-- Join the tournament queue with your adopted hero -->
-        <string id="ODfWfHln" text="與您的領養英雄一起加入錦標賽隊列"/>
+        <string id="ODfWfHln" text="與您的領養英雄一起加入錦標賽隊列" original="Join the tournament queue with your adopted hero"/>
         <!-- Enter Message -->
-        <string id="m9IFHkZh" text="輸入消息"/>
+        <string id="m9IFHkZh" text="輸入消息" original="Enter Message"/>
         <!-- Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel -->
-        <string id="ZNGav9pi" text="輸入 yes 退出你的英雄（它將不再由你控制），或關閉此窗口取消"/>
+        <string id="ZNGav9pi" text="輸入 yes 退出你的英雄（它將不再由你控制），或關閉此窗口取消" original="Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel"/>
         <!-- Add 50,000 XP to a random skill of your adopted hero -->
-        <string id="UCjOD22c" text="將 50,000 經驗值添加到您所採用的英雄的隨機技能中"/>
+        <string id="UCjOD22c" text="將 50,000 經驗值添加到您所採用的英雄的隨機技能中" original="Add 50,000 XP to a random skill of your adopted hero"/>
         <!-- Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below: -->
-        <string id="1IDV1dAh" text="將 10,000 金幣從您的英雄轉移到飄帶角色。在下方輸入禮品信息："/>
+        <string id="1IDV1dAh" text="將 10,000 金幣從您的英雄轉移到飄帶角色。在下方輸入禮品信息：" original="Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:"/>
         <!-- Activate your class power on your hero, if you have one. -->
-        <string id="x5Agf9Wl" text="激活你的英雄的職業能力，如果你有的話。"/>
+        <string id="x5Agf9Wl" text="激活你的英雄的職業能力，如果你有的話。" original="Activate your class power on your hero, if you have one."/>
         <!-- Adopt a Hero -->
-        <string id="Yc9dn4Sx" text="收養英雄"/>
+        <string id="Yc9dn4Sx" text="收養英雄" original="Adopt a Hero"/>
         <!-- 10k gold -->
-        <string id="s0GPjZKG" text="10K金"/>
+        <string id="s0GPjZKG" text="10K金" original="10k gold"/>
         <!-- 100k gold -->
-        <string id="ndi9p5jn" text="10萬金"/>
+        <string id="ndi9p5jn" text="10萬金" original="100k gold"/>
         <!-- Summon -->
-        <string id="dpnWybop" text="召喚"/>
+        <string id="dpnWybop" text="召喚" original="Summon"/>
         <!-- Attack -->
-        <string id="IrF1VaBD" text="攻擊"/>
+        <string id="IrF1VaBD" text="攻擊" original="Attack"/>
         <!-- Heal Streamer -->
-        <string id="MSpPJJhZ" text="治愈流光"/>
+        <string id="MSpPJJhZ" text="治愈流光" original="Heal Streamer"/>
         <!-- Tournament -->
-        <string id="IBrMU0VF" text="比賽"/>
+        <string id="IBrMU0VF" text="比賽" original="Tournament"/>
         <!-- Send Message In Game -->
-        <string id="FFvfbTgo" text="在遊戲中發送消息"/>
+        <string id="FFvfbTgo" text="在遊戲中發送消息" original="Send Message In Game"/>
         <!-- Retire My Hero -->
-        <string id="AZMDg7St" text="退休我的英雄"/>
+        <string id="AZMDg7St" text="退休我的英雄" original="Retire My Hero"/>
         <!-- 50k XP -->
-        <string id="uA1yEnyO" text="50k 經驗值"/>
+        <string id="uA1yEnyO" text="50k 經驗值" original="50k XP"/>
         <!-- Burn Player -->
-        <string id="2ciF79zR" text="刻錄播放器"/>
+        <string id="2ciF79zR" text="刻錄播放器" original="Burn Player"/>
         <!-- Heal Hero -->
-        <string id="likTlNpu" text="治愈英雄"/>
+        <string id="likTlNpu" text="治愈英雄" original="Heal Hero"/>
         <!-- Give Player Gold -->
-        <string id="9DoHhKeh" text="給予玩家金幣"/>
+        <string id="9DoHhKeh" text="給予玩家金幣" original="Give Player Gold"/>
         <!-- Use Class Power -->
-        <string id="yoZSmM0b" text="使用階級力量"/>
+        <string id="yoZSmM0b" text="使用階級力量" original="Use Class Power"/>
     </strings>
 </base>

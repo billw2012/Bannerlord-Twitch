@@ -5,15 +5,14 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- TypeGroupDescription -->
         <!-- Global Configs -->
-        <string id="S7fvEW5l" text="全局配置"/>
+        <string id="S7fvEW5l" text="全局配置" original="Global Configs"/>
         <!-- Channel Rewards -->
-        <string id="xljCKxH7" text="頻道獎勵"/>
+        <string id="xljCKxH7" text="頻道獎勵" original="Channel Rewards"/>
         <!-- Chat Commands -->
-        <string id="mHkSZwdI" text="聊天命令"/>
+        <string id="mHkSZwdI" text="聊天命令" original="Chat Commands"/>
         <!-- Sim Testing Config -->
-        <string id="c1lGU26j" text="模擬測試配置"/>
+        <string id="c1lGU26j" text="模擬測試配置" original="Sim Testing Config"/>
     </strings>
 </base>

@@ -5,347 +5,341 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- GlobalCommonConfig -->
         <!-- Common Config -->
-        <string id="vDjnDtoL" text="공통 구성"/>
+        <string id="vDjnDtoL" text="공통 구성" original="Common Config"/>
         <!-- Sub Boost -->
-        <string id="xwcKN7sH" text="서브 부스트"/>
+        <string id="xwcKN7sH" text="서브 부스트" original="Sub Boost"/>
         <!-- Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently. -->
-        <string id="rX68wbfF" text="구독자의 모든 보상에 배율이 적용됩니다(1보다 작거나 같으면 부스트가 없음을 의미합니다). 참고: 이것은 부분적으로만 구현되었으며 현재 봇 명령에 대해서만 작동합니다."/>
+        <string id="rX68wbfF" text="구독자의 모든 보상에 배율이 적용됩니다(1보다 작거나 같으면 부스트가 없음을 의미합니다). 참고: 이것은 부분적으로만 구현되었으며 현재 봇 명령에 대해서만 작동합니다." original="Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently."/>
         <!-- Custom Reward Modifiers -->
-        <string id="O0LU5WBa" text="사용자 정의 보상 수정자"/>
+        <string id="O0LU5WBa" text="사용자 정의 보상 수정자" original="Custom Reward Modifiers"/>
         <!-- The specification for custom item rewards, applies to tournament prize and achievement rewards -->
-        <string id="tp3YdGmo" text="커스텀 아이템 보상 사양, 토너먼트 상금 및 업적 보상에 적용"/>
+        <string id="tp3YdGmo" text="커스텀 아이템 보상 사양, 토너먼트 상금 및 업적 보상에 적용" original="The specification for custom item rewards, applies to tournament prize and achievement rewards"/>
         <!-- Start With Full Health -->
-        <string id="X8r0C5fx" text="완전한 건강으로 시작하십시오"/>
+        <string id="X8r0C5fx" text="완전한 건강으로 시작하십시오" original="Start With Full Health"/>
         <!-- Whether the hero will always start with full health -->
-        <string id="HbNVrZuv" text="영웅이 항상 완전한 건강으로 시작하는지 여부"/>
+        <string id="HbNVrZuv" text="영웅이 항상 완전한 건강으로 시작하는지 여부" original="Whether the hero will always start with full health"/>
         <!-- Start Health Multiplier -->
-        <string id="fxZIKL65" text="건강 승수 시작"/>
+        <string id="fxZIKL65" text="건강 승수 시작" original="Start Health Multiplier"/>
         <!-- Amount to multiply normal starting health by, to give heroes better staying power vs others -->
-        <string id="8yNIRS9S" text="영웅에게 다른 영웅에 비해 더 나은 지속력을 주기 위해 정상적인 시작 체력을 곱한 양"/>
+        <string id="8yNIRS9S" text="영웅에게 다른 영웅에 비해 더 나은 지속력을 주기 위해 정상적인 시작 체력을 곱한 양" original="Amount to multiply normal starting health by, to give heroes better staying power vs others"/>
         <!-- Start Retinue Health Multiplier -->
-        <string id="HvcTekVk" text="수행원 건강 승수 시작"/>
+        <string id="HvcTekVk" text="수행원 건강 승수 시작" original="Start Retinue Health Multiplier"/>
         <!-- Amount to multiply normal retinue starting health by, to give retinue better staying power vs others -->
-        <string id="G6JJT2ot" text="일반 수행원의 시작 체력을 곱하여 다른 수행원에 비해 더 나은 지속력을 제공합니다."/>
+        <string id="G6JJT2ot" text="일반 수행원의 시작 체력을 곱하여 다른 수행원에 비해 더 나은 지속력을 제공합니다." original="Amount to multiply normal retinue starting health by, to give retinue better staying power vs others"/>
         <!-- Morale Loss Factor -->
-        <string id="ZPmBe7XI" text="사기 저하 요인"/>
+        <string id="ZPmBe7XI" text="사기 저하 요인" original="Morale Loss Factor"/>
         <!-- Reduces morale loss when summoned heroes die -->
-        <string id="tpgJtS5q" text="소환 영웅 사망 시 사기 감소"/>
+        <string id="tpgJtS5q" text="소환 영웅 사망 시 사기 감소" original="Reduces morale loss when summoned heroes die"/>
         <!-- Retinue Use Heroes Formation -->
-        <string id="bXdC2trk" text="수행원 사용 영웅 형성"/>
+        <string id="bXdC2trk" text="수행원 사용 영웅 형성" original="Retinue Use Heroes Formation"/>
         <!-- Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations) -->
-        <string id="D8uDzXlV" text="채택된 영웅 수행원이 영웅과 동일한 대형으로 생성되어야 하는지 여부(그렇지 않으면 기본 대형으로 이동)"/>
+        <string id="D8uDzXlV" text="채택된 영웅 수행원이 영웅과 동일한 대형으로 생성되어야 하는지 여부(그렇지 않으면 기본 대형으로 이동)" original="Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations)"/>
         <!-- Summon Cooldown In Seconds -->
-        <string id="OlJrCEyE" text="몇 초 만에 소환 쿨다운"/>
+        <string id="OlJrCEyE" text="몇 초 만에 소환 쿨다운" original="Summon Cooldown In Seconds"/>
         <!-- Minimum time between summons for a specific hero -->
-        <string id="DeGB2BGZ" text="특정 영웅 소환 사이의 최소 시간"/>
+        <string id="DeGB2BGZ" text="특정 영웅 소환 사이의 최소 시간" original="Minimum time between summons for a specific hero"/>
         <!-- Summon Cooldown Use Multiplier -->
-        <string id="f9HVD2cC" text="소환 쿨다운 사용 승수"/>
+        <string id="f9HVD2cC" text="소환 쿨다운 사용 승수" original="Summon Cooldown Use Multiplier"/>
         <!-- How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this. -->
-        <string id="4gZlfHzM" text="소환을 사용할 때마다 재사용 대기시간을 곱할 수 있습니다. 예를 들어 Summon Cooldown이 20초이고 UseMultiplier가 1.1(기본값)인 경우 첫 번째 소환의 재사용 대기시간은 20초이고 다음 24초, 10번째 52초, 20번째 135초입니다. 이에 대한 시각화는 https://www.desmos.com/calculator/muej1o5eg5를 참조하십시오."/>
+        <string id="4gZlfHzM" text="소환을 사용할 때마다 재사용 대기시간을 곱할 수 있습니다. 예를 들어 Summon Cooldown이 20초이고 UseMultiplier가 1.1(기본값)인 경우 첫 번째 소환의 재사용 대기시간은 20초이고 다음 24초, 10번째 52초, 20번째 135초입니다. 이에 대한 시각화는 https://www.desmos.com/calculator/muej1o5eg5를 참조하십시오." original="How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this."/>
         <!-- Summon Cooldown Example -->
-        <string id="ViLoy0k3" text="소환 쿨다운 예시"/>
+        <string id="ViLoy0k3" text="소환 쿨다운 예시" original="Summon Cooldown Example"/>
         <!-- Shows the consecutive cooldowns (in seconds) for 10 summons -->
-        <string id="xZoSFrAb" text="10번의 소환에 대한 연속 재사용 대기시간(초)을 표시합니다."/>
+        <string id="xZoSFrAb" text="10번의 소환에 대한 연속적인 재사용 대기시간(초)을 표시합니다." original="Shows the consecutive cooldowns (in seconds) for 10 summons"/>
         <!-- Allow Death -->
-        <string id="4sNJRQyw" text="죽음을 허용하다"/>
+        <string id="4sNJRQyw" text="죽음을 허용하다" original="Allow Death"/>
         <!-- Whether an adopted hero is allowed to die -->
-        <string id="VbBUYOfc" text="입양된 영웅의 죽음 허용 여부"/>
+        <string id="VbBUYOfc" text="입양된 영웅의 죽음 허용 여부" original="Whether an adopted hero is allowed to die"/>
         <!-- Final Death Chance Percent -->
-        <string id="ZEfAPyOm" text="최종 사망 확률"/>
+        <string id="ZEfAPyOm" text="최종 사망 확률" original="Final Death Chance Percent"/>
         <!-- Final death chance percent (includes vanilla chance) -->
-        <string id="xlt1pNuT" text="최종 사망 확률(바닐라 확률 포함)"/>
+        <string id="xlt1pNuT" text="최종 사망 확률(바닐라 확률 포함)" original="Final death chance percent (includes vanilla chance)"/>
         <!-- Apply Death Chance To All Heroes -->
-        <string id="sbc5Fp4o" text="모든 영웅에게 사망 확률 적용"/>
+        <string id="sbc5Fp4o" text="모든 영웅에게 사망 확률 적용" original="Apply Death Chance To All Heroes"/>
         <!-- Whether to apply the Death Chance changes to all heroes, not just adopted ones -->
-        <string id="nbR7NLNz" text="데스 찬스 변경 사항을 입양한 영웅뿐만 아니라 모든 영웅에 적용할지 여부"/>
+        <string id="nbR7NLNz" text="데스 찬스 변경 사항을 입양한 영웅뿐만 아니라 모든 영웅에 적용할지 여부" original="Whether to apply the Death Chance changes to all heroes, not just adopted ones"/>
         <!-- Use Raw XP -->
-        <string id="lwU4dELT" text="원시 XP 사용"/>
+        <string id="lwU4dELT" text="원시 XP 사용" original="Use Raw XP"/>
         <!-- Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed.  -->
-        <string id="dICRr4BH" text="초점과 속성으로 조정하는 대신 원시 XP 값을 사용하고 스킬 상한도 무시합니다. 이렇게 하면 포커스와 속성이 잘 분산되지 않을 때 캐릭터가 갇히는 것을 방지할 수 있습니다."/>
+        <string id="dICRr4BH" text="초점과 속성으로 조정하는 대신 원시 XP 값을 사용하고 스킬 상한도 무시합니다. 이렇게 하면 포커스와 속성이 잘 분산되지 않을 때 캐릭터가 갇히는 것을 방지할 수 있습니다." original="Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed. "/>
         <!-- Raw XP Skill Cap -->
-        <string id="S5FAna09" text="원시 XP 스킬 캡"/>
+        <string id="S5FAna09" text="원시 XP 스킬 캡" original="Raw XP Skill Cap"/>
         <!-- Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap. -->
-        <string id="WUzqXuHN" text="Raw XP 사용 시 스킬 상한. 스킬은 이 값을 초과하지 않습니다. 330은 바닐라 XP 스킬 캡입니다."/>
+        <string id="WUzqXuHN" text="Raw XP 사용 시 스킬 상한. 스킬은 이 값을 초과하지 않습니다. 330은 바닐라 XP 스킬 캡입니다." original="Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap."/>
         <!-- Gold Per Kill -->
-        <string id="94Ouh5It" text="킬당 골드"/>
+        <string id="94Ouh5It" text="킬당 골드" original="Gold Per Kill"/>
         <!-- Gold the hero gets for every kill -->
-        <string id="iSAMxZ8a" text="영웅이 처치할 때마다 얻는 골드"/>
+        <string id="iSAMxZ8a" text="영웅이 처치할 때마다 얻는 골드" original="Gold the hero gets for every kill"/>
         <!-- XP Per Kill -->
-        <string id="DMGKBoJT" text="처치당 XP"/>
+        <string id="DMGKBoJT" text="처치당 XP" original="XP Per Kill"/>
         <!-- XP the hero gets for every kill -->
-        <string id="kwW5pZT9" text="영웅이 적을 죽일 때마다 얻는 XP"/>
+        <string id="kwW5pZT9" text="영웅이 적을 죽일 때마다 얻는 XP" original="XP the hero gets for every kill"/>
         <!-- XP Per Killed -->
-        <string id="a1zjEuUe" text="처치당 XP"/>
+        <string id="a1zjEuUe" text="처치당 XP" original="XP Per Killed"/>
         <!-- XP the hero gets for being killed -->
-        <string id="bW8t2g5N" text="영웅이 죽으면 XP를 얻습니다."/>
+        <string id="bW8t2g5N" text="영웅이 죽으면 XP를 얻습니다." original="XP the hero gets for being killed"/>
         <!-- Heal Per Kill -->
-        <string id="cRV9HDdf" text="처치당 치유"/>
+        <string id="cRV9HDdf" text="처치당 치유" original="Heal Per Kill"/>
         <!-- HP the hero gets for every kill -->
-        <string id="7VWAZgfK" text="영웅이 적을 죽일 때마다 얻는 HP"/>
+        <string id="7VWAZgfK" text="영웅이 적을 죽일 때마다 얻는 HP" original="HP the hero gets for every kill"/>
         <!-- Retinue Gold Per Kill -->
-        <string id="lIhhHjih" text="처치당 수행원 골드"/>
+        <string id="lIhhHjih" text="처치당 수행원 골드" original="Retinue Gold Per Kill"/>
         <!-- Gold the hero gets for every kill their retinue gets -->
-        <string id="h93j0qw3" text="영웅은 수행원을 처치할 때마다 골드를 얻습니다."/>
+        <string id="h93j0qw3" text="영웅은 수행원을 처치할 때마다 골드를 얻습니다." original="Gold the hero gets for every kill their retinue gets"/>
         <!-- Retinue Heal Per Kill -->
-        <string id="KwlWrzDS" text="처치당 지속 치유"/>
+        <string id="KwlWrzDS" text="처치당 지속 치유" original="Retinue Heal Per Kill"/>
         <!-- HP the hero's retinue gets for every kill -->
-        <string id="Q3UVoHmt" text="영웅의 수행원은 적을 죽일 때마다 HP를 얻습니다."/>
+        <string id="Q3UVoHmt" text="영웅의 수행원은 적을 죽일 때마다 HP를 얻습니다." original="HP the hero's retinue gets for every kill"/>
         <!-- Relative Level Scaling -->
-        <string id="wSzUkbNR" text="상대적 레벨 스케일링"/>
+        <string id="wSzUkbNR" text="상대적 레벨 스케일링" original="Relative Level Scaling"/>
         <!-- How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health. -->
-        <string id="1LTDJZ7Y" text="두 캐릭터의 상대 레벨에 따라 처치 보상을 얼마나 조정할 것인지입니다. 이 값이 0(또는 설정되지 않은 경우)이면 보상은 항상 지정된 대로이고, 이 값이 0보다 높으면 사망한 유닛이 영웅보다 높은 레벨이면 보상이 증가하고, 낮으면 감소합니다. 값이 0.5(권장)일 때 레벨 차이가 10이면 골드, 경험치 및 건강에 대한 일반 보상의 약 2.5배를 제공합니다."/>
+        <string id="1LTDJZ7Y" text="두 캐릭터의 상대 레벨에 따라 처치 보상을 얼마나 조정할 것인지입니다. 이 값이 0(또는 설정되지 않은 경우)이면 보상은 항상 지정된 대로이고, 이 값이 0보다 높으면 사망한 유닛이 영웅보다 높은 레벨이면 보상이 증가하고, 낮으면 감소합니다. 값이 0.5(권장)일 때 레벨 차이가 10이면 골드, 경험치 및 건강에 대한 일반 보상의 약 2.5배를 제공합니다." original="How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."/>
         <!-- Level Scaling Cap -->
-        <string id="BDk1G4nc" text="레벨 스케일링 캡"/>
+        <string id="BDk1G4nc" text="레벨 스케일링 캡" original="Level Scaling Cap"/>
         <!-- Caps the maximum multiplier for the level difference, defaults to 5 if not specified -->
-        <string id="Vod0pJEN" text="레벨 차이에 대한 최대 승수를 제한하고 지정하지 않으면 기본값은 5입니다."/>
-
+        <string id="Vod0pJEN" text="레벨 차이에 대한 최대 승수를 제한하고 지정하지 않으면 기본값은 5입니다." original="Caps the maximum multiplier for the level difference, defaults to 5 if not specified"/>
         <!-- Win Gold -->
-        <string id="IQTT5vYE" text="골드 획득"/>
+        <string id="IQTT5vYE" text="골드 획득" original="Win Gold"/>
         <!-- Lose Gold -->
-        <string id="lfCWK7aA" text="골드를 잃다"/>
+        <string id="lfCWK7aA" text="골드를 잃다" original="Lose Gold"/>
         <!-- Win XP -->
-        <string id="h8I3PWkV" text="승리 XP"/>
+        <string id="h8I3PWkV" text="승리 XP" original="Win XP"/>
         <!-- Lose XP -->
-        <string id="Vobr36Bl" text="XP를 잃다"/>
-        
+        <string id="Vobr36Bl" text="XP를 잃다" original="Lose XP"/>
         <!-- Gold won if the heroes side wins -->
-        <string id="pc3G0W39" text="영웅 측이 이기면 금메달이 이깁니다."/>
+        <string id="pc3G0W39" text="영웅 측이 이기면 금메달이 이깁니다." original="Gold won if the heroes side wins"/>
         <!-- XP the hero gets if the heroes side wins -->
-        <string id="F7Tw4D07" text="영웅 측이 이기면 영웅이 얻는 XP"/>
+        <string id="F7Tw4D07" text="영웅 측이 이기면 영웅이 얻는 XP" original="XP the hero gets if the heroes side wins"/>
         <!-- Gold lost if the heroes side loses -->
-        <string id="E209XRml" text="영웅 측이 패배하면 골드가 손실됩니다."/>
+        <string id="E209XRml" text="영웅 측이 패배하면 골드가 손실됩니다." original="Gold lost if the heroes side loses"/>
         <!-- XP the hero gets if the heroes side loses -->
-        <string id="itAfYdmO" text="영웅 측이 패배하면 영웅이 얻는 XP"/>
+        <string id="itAfYdmO" text="영웅 측이 패배하면 영웅이 얻는 XP" original="XP the hero gets if the heroes side loses"/>
         <!-- Difficulty Scaling On Players Side -->
-        <string id="ihB1KMOY" text="플레이어 측의 어려움 확장"/>
+        <string id="ihB1KMOY" text="플레이어 측의 어려움 확장" original="Difficulty Scaling On Players Side"/>
         <!-- Apply difficulty scaling to players side -->
-        <string id="Bt1PS0aC" text="플레이어 측에 난이도 조정 적용"/>
+        <string id="Bt1PS0aC" text="플레이어 측에 난이도 조정 적용" original="Apply difficulty scaling to players side"/>
         <!-- Difficulty Scaling On Enemy Side -->
-        <string id="nym7EtAd" text="적 측의 난이도 조정"/>
+        <string id="nym7EtAd" text="적 측의 난이도 조정" original="Difficulty Scaling On Enemy Side"/>
         <!-- Apply difficulty scaling to enemy side -->
-        <string id="U0hZef9L" text="적 측에 난이도 조정 적용"/>
+        <string id="U0hZef9L" text="적 측에 난이도 조정 적용" original="Apply difficulty scaling to enemy side"/>
         <!-- Difficulty Scaling -->
-        <string id="CaVuq5tE" text="난이도 조정"/>
+        <string id="CaVuq5tE" text="난이도 조정" original="Difficulty Scaling"/>
         <!-- End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1) -->
-        <string id="IhhfIQ74" text="최종 보상 난이도 조정: 더 높은 난이도의 전투가 위의 보상을 증가시키는 정도를 결정합니다(0에서 1)."/>
+        <string id="IhhfIQ74" text="최종 보상 난이도 조정: 더 높은 난이도의 전투가 위의 보상을 증가시키는 정도를 결정합니다(0에서 1)." original="End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1)"/>
         <!-- Difficulty Scaling Min -->
-        <string id="891WqOrJ" text="최소 난이도"/>
+        <string id="891WqOrJ" text="최소 난이도" original="Difficulty Scaling Min"/>
         <!-- Min difficulty scaling multiplier -->
-        <string id="FPXz7lBi" text="최소 난이도 배율 조정"/>
+        <string id="FPXz7lBi" text="최소 난이도 배율 조정" original="Min difficulty scaling multiplier"/>
         <!-- Difficulty Scaling Max -->
-        <string id="Wsho5Yns" text="최대 난이도"/>
+        <string id="Wsho5Yns" text="최대 난이도" original="Difficulty Scaling Max"/>
         <!-- Max difficulty scaling multiplier -->
-        <string id="ZW7O1JTv" text="최대 난이도 배율 배율"/>
+        <string id="ZW7O1JTv" text="최대 난이도 배율 배율" original="Max difficulty scaling multiplier"/>
         <!-- Kill Streaks -->
-        <string id="3DZYc6hN" text="연속 죽이기"/>
+        <string id="3DZYc6hN" text="연속 죽이기" original="Kill Streaks"/>
         <!-- Show Kill Streak Popup -->
-        <string id="wQ7lXgLA" text="연속 처치 팝업 표시"/>
+        <string id="wQ7lXgLA" text="연속 처치 팝업 표시" original="Show Kill Streak Popup"/>
         <!-- Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled. -->
-        <string id="wDW3143d" text="연속 킬을 알리기 위해 팝업 배너를 사용할지 여부입니다. 비활성화된 경우 오버레이에만 인쇄됩니다."/>
+        <string id="wDW3143d" text="연속 킬을 알리기 위해 팝업 배너를 사용할지 여부입니다. 비활성화된 경우 오버레이에만 인쇄됩니다." original="Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled."/>
         <!-- Kill Streak Popup Alert Sound -->
-        <string id="rhwujKvf" text="Kill Streak 팝업 경고음"/>
+        <string id="rhwujKvf" text="Kill Streak 팝업 경고음" original="Kill Streak Popup Alert Sound"/>
         <!-- Sound to play when killstreak popup is disabled. -->
-        <string id="1GVV1fjY" text="killstreak 팝업이 비활성화되었을 때 재생되는 사운드입니다."/>
+        <string id="1GVV1fjY" text="killstreak 팝업이 비활성화되었을 때 재생되는 사운드입니다." original="Sound to play when killstreak popup is disabled."/>
         <!-- Reference Level Reward -->
-        <string id="dP9AoB9o" text="참조 레벨 보상"/>
+        <string id="dP9AoB9o" text="참조 레벨 보상" original="Reference Level Reward"/>
         <!-- The level at which the rewards normalize and start to reduce (if relative level scaling is enabled). -->
-        <string id="y7AZjeSK" text="보상이 정상화되고 감소하기 시작하는 수준입니다(상대 수준 조정이 활성화된 경우)."/>
+        <string id="y7AZjeSK" text="보상이 정상화되고 감소하기 시작하는 수준입니다(상대 수준 조정이 활성화된 경우)." original="The level at which the rewards normalize and start to reduce (if relative level scaling is enabled)."/>
         <!-- Achievements -->
-        <string id="zTLei6dQ" text="업적"/>
+        <string id="zTLei6dQ" text="업적" original="Achievements"/>
         <!-- Shouts -->
-        <string id="HkD6326j" text="외침"/>
+        <string id="HkD6326j" text="외침" original="Shouts"/>
         <!-- Custom shouts -->
-        <string id="ufqtH5QV" text="맞춤 외침"/>
+        <string id="ufqtH5QV" text="맞춤 외침" original="Custom shouts"/>
         <!-- Include Default Shouts -->
-        <string id="wehigXCC" text="기본 외침 포함"/>
+        <string id="wehigXCC" text="기본 외침 포함" original="Include Default Shouts"/>
         <!-- Whether to include default shouts -->
-        <string id="m6Vv2LBt" text="기본 외침을 포함할지 여부"/>
+        <string id="m6Vv2LBt" text="기본 외침을 포함할지 여부" original="Whether to include default shouts"/>
         <!-- Common Config -->
-        <string id="F6vM1OJo" text="공통 구성"/>
-        
+        <string id="F6vM1OJo" text="공통 구성" original="Common Config"/>
         <!-- GlobalHeroClassConfig -->
         <!-- Class Config -->
-        <string id="3rL4RHje" text="클래스 구성"/>
+        <string id="3rL4RHje" text="클래스 구성" original="Class Config"/>
         <!-- Class Definitions -->
-        <string id="462kHfn2" text="클래스 정의"/>
+        <string id="462kHfn2" text="클래스 정의" original="Class Definitions"/>
         <!-- Defined classes -->
-        <string id="NFjlVt57" text="정의된 클래스"/>
+        <string id="NFjlVt57" text="정의된 클래스" original="Defined classes"/>
         <!-- Class Level Requirements -->
-        <string id="Q0yTbTCT" text="클래스 레벨 요구 사항"/>
+        <string id="Q0yTbTCT" text="클래스 레벨 요구 사항" original="Class Level Requirements"/>
         <!-- Requirements for class levels -->
-        <string id="y8LLccGK" text="클래스 레벨 요구 사항"/>
+        <string id="y8LLccGK" text="클래스 레벨 요구 사항" original="Requirements for class levels"/>
         <!-- Classes -->
-        <string id="E0CBnj57" text="클래스"/>
+        <string id="E0CBnj57" text="클래스" original="Classes"/>
         <!-- (no requirements) -->
-        <string id="7WLbMjpz" text="(요구사항 없음)"/>
-        
+        <string id="7WLbMjpz" text="(요구사항 없음)" original="(no requirements)"/>
         <!-- GlobalHeroPowerConfig -->
         <!-- Power Config -->
-        <string id="v75UOuDM" text="전원 구성"/>
+        <string id="v75UOuDM" text="전원 구성" original="Power Config"/>
         <!-- Power Defs -->
-        <string id="9vUtdRu2" text="파워 디프"/>
+        <string id="9vUtdRu2" text="파워 디프" original="Power Defs"/>
         <!-- Defined powers -->
-        <string id="ymGZUjoU" text="정의된 권한"/>
+        <string id="ymGZUjoU" text="정의된 권한" original="Defined powers"/>
         <!-- Disable Powers In Tournaments -->
-        <string id="5CD7bmuC" text="토너먼트에서 권한 비활성화"/>
+        <string id="5CD7bmuC" text="토너먼트에서 권한 비활성화" original="Disable Powers In Tournaments"/>
         <!-- Whether powers are disabled in a tournament -->
-        <string id="K7uKtO90" text="토너먼트에서 권한이 비활성화되었는지 여부"/>
-        
+        <string id="K7uKtO90" text="토너먼트에서 권한이 비활성화되었는지 여부" original="Whether powers are disabled in a tournament"/>
         <!-- GlobalTournamentConfig -->
         <!-- Tournament Config -->
-        <string id="AkDCrLgg" text="토너먼트 구성"/>
+        <string id="AkDCrLgg" text="토너먼트 구성" original="Tournament Config"/>
         <!-- Equipment -->
-        <string id="i7ZDVTaw" text="장비"/>
+        <string id="i7ZDVTaw" text="장비" original="Equipment"/>
         <!-- Balancing -->
-        <string id="Zwh9GYUE" text="밸런싱"/>
+        <string id="Zwh9GYUE" text="밸런싱" original="Balancing"/>
         <!-- Round Type -->
-        <string id="KOIu6Q7d" text="라운드형"/>
+        <string id="KOIu6Q7d" text="라운드형" original="Round Type"/>
         <!-- Start Health Multiplier -->
-        <string id="P1ZCMZbp" text="건강 승수 시작"/>
+        <string id="P1ZCMZbp" text="건강 승수 시작" original="Start Health Multiplier"/>
         <!-- Disable Kill Rewards In Tournament -->
-        <string id="x3wiU1LY" text="토너먼트에서 킬 보상 비활성화"/>
+        <string id="x3wiU1LY" text="토너먼트에서 킬 보상 비활성화" original="Disable Kill Rewards In Tournament"/>
         <!-- Disable Tracking Kills Tournament -->
-        <string id="ksB1FmZV" text="추적 킬 토너먼트 비활성화"/>
+        <string id="ksB1FmZV" text="추적 킬 토너먼트 비활성화" original="Disable Tracking Kills Tournament"/>
         <!-- No Horses -->
-        <string id="bBipANlh" text="말 없음"/>
+        <string id="bBipANlh" text="말 없음" original="No Horses"/>
         <!-- No Spears -->
-        <string id="CYVy4Hhx" text="창 없음"/>
+        <string id="CYVy4Hhx" text="창 없음" original="No Spears"/>
         <!-- Normalize Armor -->
-        <string id="Ed55OyZ5" text="방어구 정상화"/>
+        <string id="Ed55OyZ5" text="방어구 정상화" original="Normalize Armor"/>
         <!-- Normalize Armor Tier -->
-        <string id="xHJbcOaV" text="방어구 계층 정상화"/>
+        <string id="xHJbcOaV" text="방어구 계층 정상화" original="Normalize Armor Tier"/>
         <!-- Randomize Weapon Types -->
-        <string id="5Y08IsDl" text="무기 유형 무작위화"/>
+        <string id="5Y08IsDl" text="무기 유형 무작위화" original="Randomize Weapon Types"/>
         <!-- Previous Winner Debuffs -->
-        <string id="UCAbZYqU" text="이전 승자 디버프"/>
+        <string id="UCAbZYqU" text="이전 승자 디버프" original="Previous Winner Debuffs"/>
         <!-- Vanilla -->
-        <string id="WUQRg4yA" text="바닐라"/>
+        <string id="WUQRg4yA" text="바닐라" original="Vanilla"/>
         <!-- 1 Match 4 Teams -->
-        <string id="ErBd0iuP" text="1 경기 4 팀"/>
+        <string id="ErBd0iuP" text="1 경기 4 팀" original="1 Match 4 Teams"/>
         <!-- 1 Match 2 Teams -->
-        <string id="uuBzCFgM" text="1 경기 2 팀"/>
+        <string id="uuBzCFgM" text="1 경기 2 팀" original="1 Match 2 Teams"/>
         <!-- 2 Matches 2 Teams -->
-        <string id="SsArdTT9" text="2경기 2팀"/>
+        <string id="SsArdTT9" text="2경기 2팀" original="2 Matches 2 Teams"/>
         <!-- 2 Matches 4 Teams -->
-        <string id="qb1yo7DZ" text="2경기 4팀"/>
+        <string id="qb1yo7DZ" text="2경기 4팀" original="2 Matches 4 Teams"/>
         <!-- 4 Matches 2 Teams -->
-        <string id="WAzvdvAJ" text="4경기 2팀"/>
+        <string id="WAzvdvAJ" text="4경기 2팀" original="4 Matches 2 Teams"/>
         <!-- 4 Matches 4 Teams -->
-        <string id="sMCb8Xeu" text="4경기 4팀"/>
+        <string id="sMCb8Xeu" text="4경기 4팀" original="4 Matches 4 Teams"/>
         <!-- 8 Matches 2 Teams -->
-        <string id="URNM9UqS" text="8경기 2팀"/>
+        <string id="URNM9UqS" text="8경기 2팀" original="8 Matches 2 Teams"/>
         <!-- Round 1 Type -->
-        <string id="eivyBgAa" text="1라운드 유형"/>
+        <string id="eivyBgAa" text="1라운드 유형" original="Round 1 Type"/>
         <!-- Round 2 Type -->
-        <string id="pefX6BdQ" text="2라운드 유형"/>
+        <string id="pefX6BdQ" text="2라운드 유형" original="Round 2 Type"/>
         <!-- Round 3 Type -->
-        <string id="GpV7pKPY" text="3라운드 유형"/>
+        <string id="GpV7pKPY" text="3라운드 유형" original="Round 3 Type"/>
         <!-- Round 1 Rewards -->
-        <string id="VeSh8k7c" text="라운드 1 보상"/>
+        <string id="VeSh8k7c" text="라운드 1 보상" original="Round 1 Rewards"/>
         <!-- Round 2 Rewards -->
-        <string id="gQ9YX7my" text="라운드 2 보상"/>
+        <string id="gQ9YX7my" text="라운드 2 보상" original="Round 2 Rewards"/>
         <!-- Round 3 Rewards -->
-        <string id="17pTC7NS" text="3라운드 보상"/>
+        <string id="17pTC7NS" text="3라운드 보상" original="Round 3 Rewards"/>
         <!-- Round 4 Rewards -->
-        <string id="pxMWYe5J" text="4라운드 보상"/>
+        <string id="pxMWYe5J" text="4라운드 보상" original="Round 4 Rewards"/>
         <!-- Participate XP -->
-        <string id="5vMTYqdu" text="참여 XP"/>
+        <string id="5vMTYqdu" text="참여 XP" original="Participate XP"/>
         <!-- Prize -->
-        <string id="Xu2KD7Kc" text="상"/>
+        <string id="Xu2KD7Kc" text="상" original="Prize"/>
         <!-- Enable Betting -->
-        <string id="rne7aMUR" text="베팅 활성화"/>
+        <string id="rne7aMUR" text="베팅 활성화" original="Enable Betting"/>
         <!-- Betting On Final Only -->
-        <string id="njh9b5GB" text="최종에만 베팅"/>
+        <string id="njh9b5GB" text="최종에만 베팅" original="Betting On Final Only"/>
         <!-- Skill Reduction Percent Per Win -->
-        <string id="5a40vmYi" text="승리당 스킬 감소 비율"/>
+        <string id="5a40vmYi" text="승리당 스킬 감소 비율" original="Skill Reduction Percent Per Win"/>
         <!-- Floor Percent -->
-        <string id="hMB4oFmk" text="바닥 퍼센트"/>
+        <string id="hMB4oFmk" text="바닥 퍼센트" original="Floor Percent"/>
         <!-- Example -->
-        <string id="L7AKFlpb" text="예시"/>
+        <string id="L7AKFlpb" text="예시" original="Example"/>
         <!-- Amount to multiply normal starting health by -->
-        <string id="n6Bc5M3s" text="정상 시작 체력을 곱한 양"/>
+        <string id="n6Bc5M3s" text="정상 시작 체력을 곱한 양" original="Amount to multiply normal starting health by"/>
         <!-- Heroes won't get any kill rewards in tournaments -->
-        <string id="j63d8DuH" text="영웅은 토너먼트에서 킬 보상을 받지 않습니다."/>
+        <string id="j63d8DuH" text="영웅은 토너먼트에서 킬 보상을 받지 않습니다." original="Heroes won't get any kill rewards in tournaments"/>
         <!-- Tournament kills / deaths won't be counted towards achievements or kill streaks -->
-        <string id="o5aH9rTO" text="토너먼트 킬/사망은 업적 또는 연속 킬에 포함되지 않습니다."/>
+        <string id="o5aH9rTO" text="토너먼트 킬/사망은 업적 또는 연속 킬에 포함되지 않습니다." original="Tournament kills / deaths won't be counted towards achievements or kill streaks"/>
         <!-- Remove horses completely from the BLT tournaments (the horse AI is terrible) -->
-        <string id="sJ68yZs1" text="BLT 토너먼트에서 말을 완전히 제거합니다(말 AI는 끔찍합니다)."/>
+        <string id="sJ68yZs1" text="BLT 토너먼트에서 말을 완전히 제거합니다(말 AI는 끔찍합니다)." original="Remove horses completely from the BLT tournaments (the horse AI is terrible)"/>
         <!-- Replaces all lances and spears with swords, because lance and spear combat is terrible -->
-        <string id="BjMC8Htn" text="창과 창의 전투는 끔찍하기 때문에 모든 창과 창을 검으로 대체합니다."/>
+        <string id="BjMC8Htn" text="창과 창의 전투는 끔찍하기 때문에 모든 창과 창을 검으로 대체합니다." original="Replaces all lances and spears with swords, because lance and spear combat is terrible"/>
         <!-- Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below) -->
-        <string id="kYFdZ8Yx" text="가능한 경우 문화에 따라 모든 방어구를 고정 계층 방어구로 교체합니다(아래 Normalized Armor Tier로 지정된 계층)."/>
+        <string id="kYFdZ8Yx" text="가능한 경우 문화에 따라 모든 방어구를 고정 계층 방어구로 교체합니다(아래 Normalized Armor Tier로 지정된 계층)." original="Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below)"/>
         <!-- Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled -->
-        <string id="HnqCyrDD" text="Normalize Armor가 활성화된 경우 모든 참가자를 (1 ~ 6)으로 설정하는 갑옷 등급"/>
+        <string id="HnqCyrDD" text="Normalize Armor가 활성화된 경우 모든 참가자를 (1 ~ 6)으로 설정하는 갑옷 등급" original="Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled"/>
         <!-- Randomizes the weapons used in each round, weighted based on the classes of the participants -->
-        <string id="oSCPOoqi" text="각 라운드에 사용된 무기를 무작위로 지정하고 참가자의 클래스에 따라 가중치를 부여합니다."/>
+        <string id="oSCPOoqi" text="각 라운드에 사용된 무기를 무작위로 지정하고 참가자의 클래스에 따라 가중치를 부여합니다." original="Randomizes the weapons used in each round, weighted based on the classes of the participants"/>
         <!-- Applies skill debuffs to previous tournament winners -->
-        <string id="FrloGGew" text="이전 토너먼트 우승자에게 스킬 디버프 적용"/>
+        <string id="FrloGGew" text="이전 토너먼트 우승자에게 스킬 디버프 적용" original="Applies skill debuffs to previous tournament winners"/>
         <!-- Allow the vanilla round setup -->
-        <string id="nfYBftnO" text="바닐라 라운드 설정 허용"/>
+        <string id="nfYBftnO" text="바닐라 라운드 설정 허용" original="Allow the vanilla round setup"/>
         <!-- Allow 1 match with 2 teams of 2 -->
-        <string id="t9yLB8gB" text="2인 2팀으로 1경기 허용"/>
+        <string id="t9yLB8gB" text="2인 2팀으로 1경기 허용" original="Allow 1 match with 2 teams of 2"/>
         <!-- Allow 1 match with 2 teams of 4 -->
-        <string id="5hLSHeuv" text="4인 2팀으로 1경기 허용"/>
+        <string id="5hLSHeuv" text="4인 2팀으로 1경기 허용" original="Allow 1 match with 2 teams of 4"/>
         <!-- Allow 1 match with 4 teams of 1 -->
-        <string id="YfOnzOH6" text="1인 4팀으로 1경기 허용"/>
+        <string id="YfOnzOH6" text="1인 4팀으로 1경기 허용" original="Allow 1 match with 4 teams of 1"/>
         <!-- Allow 1 match with 4 teams of 2 -->
-        <string id="CLbRKpZp" text="2인 4팀으로 1경기 허용"/>
+        <string id="CLbRKpZp" text="2인 4팀으로 1경기 허용" original="Allow 1 match with 4 teams of 2"/>
         <!-- Allow 1 match with 4 teams of 4 -->
-        <string id="5E1lXDYh" text="4인 4팀으로 1경기 허용"/>
+        <string id="5E1lXDYh" text="4인 4팀으로 1경기 허용" original="Allow 1 match with 4 teams of 4"/>
         <!-- Allow 2 matches with 2 teams of 1 -->
-        <string id="OrZaS458" text="1인 2팀으로 2경기 허용"/>
+        <string id="OrZaS458" text="1인 2팀으로 2경기 허용" original="Allow 2 matches with 2 teams of 1"/>
         <!-- Allow 2 matches with 2 teams of 2 -->
-        <string id="Dr1Js5fB" text="2인 2팀으로 2경기 허용"/>
+        <string id="Dr1Js5fB" text="2인 2팀으로 2경기 허용" original="Allow 2 matches with 2 teams of 2"/>
         <!-- Allow 2 matches with 2 teams of 4 -->
-        <string id="jEghMKUV" text="4인 2팀으로 2경기 허용"/>
+        <string id="jEghMKUV" text="4인 2팀으로 2경기 허용" original="Allow 2 matches with 2 teams of 4"/>
         <!-- Allow 2 matches with 4 teams of 1 -->
-        <string id="nmMzoqeC" text="1인 4팀으로 2경기 허용"/>
+        <string id="nmMzoqeC" text="1인 4팀으로 2경기 허용" original="Allow 2 matches with 4 teams of 1"/>
         <!-- Allow 2 matches with 4 teams of 2 -->
-        <string id="f8rXSGwN" text="2인 4팀으로 2경기 허용"/>
+        <string id="f8rXSGwN" text="2인 4팀으로 2경기 허용" original="Allow 2 matches with 4 teams of 2"/>
         <!-- Allow 4 matches with 2 teams of 2 -->
-        <string id="GPCYzshA" text="2인 2팀으로 4경기 허용"/>
+        <string id="GPCYzshA" text="2인 2팀으로 4경기 허용" original="Allow 4 matches with 2 teams of 2"/>
         <!-- Allow 4 matches with 4 teams of 1 -->
-        <string id="MjsTFwUv" text="1인 4팀으로 4경기 허용"/>
+        <string id="MjsTFwUv" text="1인 4팀으로 4경기 허용" original="Allow 4 matches with 4 teams of 1"/>
         <!-- Allow 4 matches with 2 teams of 1 -->
-        <string id="xMaA76xu" text="1인 2팀으로 4경기 허용"/>
+        <string id="xMaA76xu" text="1인 2팀으로 4경기 허용" original="Allow 4 matches with 2 teams of 1"/>
         <!-- Allow 8 matches with 2 teams of 1 -->
-        <string id="otwzXPTQ" text="1인 2팀으로 8경기 허용"/>
+        <string id="otwzXPTQ" text="1인 2팀으로 8경기 허용" original="Allow 8 matches with 2 teams of 1"/>
         <!-- Gold won if the hero wins their match in the round -->
-        <string id="i7Ns7K2i" text="영웅이 라운드에서 경기에서 승리하면 금메달 획득"/>
+        <string id="i7Ns7K2i" text="영웅이 라운드에서 경기에서 승리하면 금메달 획득" original="Gold won if the hero wins their match in the round"/>
         <!-- XP given if the hero wins their match in the round -->
-        <string id="b0MeEmOS" text="영웅이 라운드에서 자신의 경기에서 승리할 경우 제공되는 XP"/>
+        <string id="b0MeEmOS" text="영웅이 라운드에서 자신의 경기에서 승리하면 주어지는 XP" original="XP given if the hero wins their match in the round"/>
         <!-- XP given if the hero loses their match in a round -->
-        <string id="Oq7LMvoF" text="영웅이 한 라운드에서 경기에서 졌을 때 주어지는 XP"/>
+        <string id="Oq7LMvoF" text="영웅이 한 라운드에서 경기에서 졌을 때 주어지는 XP" original="XP given if the hero loses their match in a round"/>
         <!-- Gold won if the hero wins the tournaments -->
-        <string id="F8g49VCy" text="영웅이 토너먼트에서 승리하면 금메달 획득"/>
+        <string id="F8g49VCy" text="영웅이 토너먼트에서 승리하면 금메달 획득" original="Gold won if the hero wins the tournaments"/>
         <!-- XP given if the hero wins the tournaments -->
-        <string id="3BudXy0O" text="영웅이 토너먼트에서 승리하면 주어지는 XP"/>
+        <string id="3BudXy0O" text="영웅이 토너먼트에서 승리하면 주어지는 XP" original="XP given if the hero wins the tournaments"/>
         <!-- XP given if the hero participates in a tournament but doesn't win -->
-        <string id="TXqjPXh7" text="영웅이 토너먼트에 참가했지만 승리하지 못한 경우 제공되는 XP"/>
+        <string id="TXqjPXh7" text="영웅이 토너먼트에 참가했지만 승리하지 못한 경우 제공되는 XP" original="XP given if the hero participates in a tournament but doesn't win"/>
         <!-- Winners prize -->
-        <string id="wYzmyUCE" text="수상자 상금"/>
+        <string id="wYzmyUCE" text="수상자 상금" original="Winners prize"/>
         <!-- Enable betting -->
-        <string id="FOQEPZD5" text="베팅 활성화"/>
+        <string id="FOQEPZD5" text="베팅 활성화" original="Enable betting"/>
         <!-- Only allow betting on the final betting -->
-        <string id="KGcz71VJ" text="최종 베팅에만 베팅 허용"/>
+        <string id="KGcz71VJ" text="최종 베팅에만 베팅 허용" original="Only allow betting on the final betting"/>
         <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
-        <string id="twgHWqU6" text="스킬 또는 스킬 그룹을 수정자로 수정(그룹의 모든 스킬이 수정됨)"/>
+        <string id="twgHWqU6" text="스킬 또는 스킬 그룹을 수정자로 수정(그룹의 모든 스킬이 수정됨)" original="Skill or skill group to modifier (all skills in a group will be modified)"/>
         <!-- Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified. -->
-        <string id="zoMHI9O3" text="승리당 스킬 감소(%). 기술 수정 방법에 대한 시각화는 https://www.desmos.com/calculator/ajydvitcer를 참조하십시오."/>
+        <string id="zoMHI9O3" text="승리당 스킬 감소(%). 기술 수정 방법에 대한 시각화는 https://www.desmos.com/calculator/ajydvitcer를 참조하십시오." original="Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified."/>
         <!-- The lower limit (in %) that the skill(s) can be reduced to. -->
-        <string id="HebJIfaE" text="스킬이 감소될 수 있는 하한(%)입니다."/>
+        <string id="HebJIfaE" text="스킬이 감소될 수 있는 하한(%)입니다." original="The lower limit (in %) that the skill(s) can be reduced to."/>
         <!-- Shows the % reduction of the skill over 20 tournaments -->
-        <string id="vgXMv8oH" text="20개 토너먼트에서 스킬 감소율을 보여줍니다."/>
+        <string id="vgXMv8oH" text="20개 토너먼트에서 스킬 감소율을 보여줍니다." original="Shows the % reduction of the skill over 20 tournaments"/>
         <!-- Prize {ITEMNAME} -->
-        <string id="hCNpHVJY" text="상 {ITEMNAME}"/>
+        <string id="hCNpHVJY" text="상 {ITEMNAME}" original="Prize {ITEMNAME}"/>
         <!-- Round Rewards -->
-        <string id="g0A4pXY2" text="라운드 보상"/>
+        <string id="g0A4pXY2" text="라운드 보상" original="Round Rewards"/>
         <!-- Rewards -->
-        <string id="FHkvQbcR" text="보상"/>
+        <string id="FHkvQbcR" text="보상" original="Rewards"/>
         <!-- Betting -->
-        <string id="n1Agm9uJ" text="도박"/>
+        <string id="n1Agm9uJ" text="도박" original="Betting"/>
     </strings>
 </base>

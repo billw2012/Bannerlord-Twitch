@@ -5,134 +5,115 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- stats -->
         <!-- Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue. -->
-        <string id="JiMaaypq" text="クラン、ゴールド、場所、HP、スキル、属性、従者など、ヒーローの一般的な情報を表示します。"/>
+        <string id="JiMaaypq" text="クラン、ゴールド、場所、HP、スキル、属性、従者など、ヒーローの一般的な情報を表示します。" original="Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue."/>
         <!-- show stats -->
-        <string id="tIVnWwGG" text="統計を表示"/>
+        <string id="tIVnWwGG" text="統計を表示" original="show stats"/>
         <!-- stats -->
-        <string id="J2AqvpeF" text="統計"/>
-
+        <string id="J2AqvpeF" text="統計" original="stats"/>
         <!-- inv -->
         <!-- Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage. -->
-        <string id="JneYk4pF" text="装備ティア、完全な戦闘および民間装備リスト、およびストレージ内のすべてのカスタムアイテムを含む、ヒーローのインベントリを表示します。"/>
+        <string id="JneYk4pF" text="装備ティア、完全な戦闘および民間装備リスト、およびストレージ内のすべてのカスタムアイテムを含む、ヒーローのインベントリを表示します。" original="Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage."/>
         <!-- show equipment -->
-        <string id="oVNKTdOy" text="ショー機器"/>
+        <string id="oVNKTdOy" text="ショー機器" original="show equipment"/>
         <!-- inv -->
-        <string id="UbklIEGh" text="inv"/>
-
+        <string id="UbklIEGh" text="inv" original="inv"/>
         <!-- equip -->
         <!-- Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to. -->
-        <string id="EZGcIEgQ" text="カスタムアイテムを除いて、ヒーローの装備ティアをアップグレードし、下位ティアの既存の装備を置き換えます。コストは、アップグレードしようとしている層によって異なります。"/>
+        <string id="EZGcIEgQ" text="カスタムアイテムを除いて、ヒーローの装備ティアをアップグレードし、下位ティアの既存の装備を置き換えます。コストは、アップグレードしようとしている層によって異なります。" original="Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to."/>
         <!-- upgrade equipment -->
-        <string id="vTo0NowP" text="機器のアップグレード"/>
+        <string id="vTo0NowP" text="機器のアップグレード" original="upgrade equipment"/>
         <!-- equip -->
-        <string id="wHqxd4kb" text="装備"/>
-        
+        <string id="wHqxd4kb" text="装備" original="equip"/>
         <!-- Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford. -->
-        <string id="zxAVjOW6" text="新しい従者部隊を購入するか、制限に達した場合は既存の従者部隊を次の層にアップグレードします。あなたが召喚すると従者が戦闘に現れ、彼らが殺すとあなたにお金を稼ぎます。コマンドに番号を渡して、購入またはアップグレードする部隊の数を指定できます。デフォルトでは、可能な限り多くのことを実行します。"/>
+        <string id="zxAVjOW6" text="新しい従者部隊を購入するか、制限に達した場合は既存の従者部隊を次の層にアップグレードします。あなたが召喚すると従者が戦闘に現れ、彼らが殺すとあなたにお金を稼ぎます。コマンドに番号を渡して、購入またはアップグレードする部隊の数を指定できます。デフォルトでは、可能な限り多くのことを実行します。" original="Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford."/>
         <!-- upgrade retinue -->
-        <string id="I7sm1ct6" text="従者をアップグレードする"/>
+        <string id="I7sm1ct6" text="従者をアップグレードする" original="upgrade retinue"/>
         <!-- retinue -->
-        <string id="mge9rH9J" text="従者"/>
-
-        <!-- class -->        
-        <!-- Selects a new class for your hero, updating your existing equipment to match the class requirements.&lt;br&gt;Usage is &lt;code&gt;!class (new class name)&lt;/code&gt;, e.g. &lt;code&gt;!class archer&lt;/code&gt;. -->
-        <string id="K3297TEM" text="ヒーローの新しいクラスを選択し、クラスの要件に一致するように既存の機器を更新します。&lt;br&gt;使用法は&lt;code&gt;!class (new class name)&lt;/code&gt;です。例： &lt;code&gt;!class archer&lt;/code&gt;"/>
-        <!-- select new class -->
-        <string id="uN82Y7hR" text="新しいクラスを選択"/>
+        <string id="mge9rH9J" text="従者" original="retinue"/>
         <!-- class -->
-        <string id="nV9iIsDC" text="クラス"/>
-
+        <!-- Selects a new class for your hero, updating your existing equipment to match the class requirements.&lt;br&gt;Usage is &lt;code&gt;!class (new class name)&lt;/code&gt;, e.g. &lt;code&gt;!class archer&lt;/code&gt;. -->
+        <string id="K3297TEM" text="ヒーローの新しいクラスを選択し、クラスの要件に一致するように既存の機器を更新します。&lt;br&gt;使用法は&lt;code&gt;!class (new class name)&lt;/code&gt;です。例： &lt;code&gt;!class archer&lt;/code&gt;" original="Selects a new class for your hero, updating your existing equipment to match the class requirements.&lt;br&gt;Usage is &lt;code&gt;!class (new class name)&lt;/code&gt;, e.g. &lt;code&gt;!class archer&lt;/code&gt;."/>
+        <!-- select new class -->
+        <string id="uN82Y7hR" text="新しいクラスを選択" original="select new class"/>
+        <!-- class -->
+        <string id="nV9iIsDC" text="クラス" original="class"/>
         <!-- reequip -->
         <!-- Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier. -->
-        <string id="zBIv0a4I" text="現在の階層で、機器をランダム化します。現在のティアよりも高いアイテムやカスタムアイテムは置き換えられません。たとえば、装備がTier 3であるが、トーナメントでTier 6の武器を獲得した場合、このコマンドはその武器に置き換わるものではありません。特に現在の階層で利用可能なそのタイプのアイテムが多くない場合は、一部のアイテムが変更されないままになることがあります。"/>
+        <string id="zBIv0a4I" text="現在の階層で、機器をランダム化します。現在のティアよりも高いアイテムやカスタムアイテムは置き換えられません。たとえば、装備がTier 3であるが、トーナメントでTier 6の武器を獲得した場合、このコマンドはその武器に置き換わるものではありません。特に現在の階層で利用可能なそのタイプのアイテムが多くない場合は、一部のアイテムが変更されないままになることがあります。" original="Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier."/>
         <!-- reroll equipment -->
-        <string id="3KYGJ0Mu" text="リロール装置"/>
+        <string id="3KYGJ0Mu" text="リロール装置" original="reroll equipment"/>
         <!-- reequip -->
-        <string id="fGfTaAoD" text="装備し直す"/>
-
+        <string id="fGfTaAoD" text="装備し直す" original="reequip"/>
         <!-- gold -->
         <!-- Show your heroes current gold. -->
-        <string id="eWI5oDce" text="ヒーローに現在のゴールドを見せてください。"/>
+        <string id="eWI5oDce" text="ヒーローに現在のゴールドを見せてください。" original="Show your heroes current gold."/>
         <!-- show gold -->
-        <string id="zdRj4blL" text="ゴールドを表示"/>
+        <string id="zdRj4blL" text="ゴールドを表示" original="show gold"/>
         <!-- gold -->
-        <string id="W5uX9HCJ" text="ゴールド"/>
-
+        <string id="W5uX9HCJ" text="ゴールド" original="gold"/>
         <!-- retinuelist -->
         <!-- Shows your current retinue troops. -->
-        <string id="BlBiEmbf" text="現在の従者部隊を表示します。"/>
+        <string id="BlBiEmbf" text="現在の従者部隊を表示します。" original="Shows your current retinue troops."/>
         <!-- retinue list -->
-        <string id="ysbFV5uT" text="従者リスト"/>
+        <string id="ysbFV5uT" text="従者リスト" original="retinue list"/>
         <!-- retinuelist -->
-        <string id="kG6yjBBR" text="レチヌエリスト"/>
-
+        <string id="kG6yjBBR" text="レチヌエリスト" original="retinuelist"/>
         <!-- adopt -->
         <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
-        <string id="MpvqvKef" text="ゲームでヒーローを獲得しましょう。他のほとんどすべての行動には養子縁組の英雄が必要です。"/>
+        <string id="MpvqvKef" text="ゲームでヒーローを獲得しましょう。他のほとんどすべての行動には養子縁組の英雄が必要です。" original="Get a hero in game. Almost all other actions require an adopted hero."/>
         <!-- adopt -->
-        <string id="0grO6hB5" text="採用"/>
-
+        <string id="0grO6hB5" text="採用" original="adopt"/>
         <!-- nameitem -->
         <!-- You can use this to name your custom items.&lt;br&gt;Usage is &lt;code&gt;!nameitem (name)&lt;/code&gt;, for example &lt;code&gt;!nameitem Foehammer&lt;/code&gt;.&lt;br&gt;If you call &lt;code&gt;!nameitem&lt;/code&gt; on its own it will tell you what item will be named next. -->
-        <string id="S1FZXQim" text="これを使用して、カスタムアイテムに名前を付けることができます。&lt;br&gt;使用法は&lt;code&gt;!nameitem (name)&lt;/code&gt;です。たとえば、 &lt;code&gt;!nameitem Foehammer&lt;/code&gt;&lt;br&gt; &lt;code&gt;!nameitem&lt;/code&gt;を呼び出すと、次に名前が付けられるアイテムがわかります。"/>
+        <string id="S1FZXQim" text="これを使用して、カスタムアイテムに名前を付けることができます。&lt;br&gt;使用法は&lt;code&gt;!nameitem (name)&lt;/code&gt;です。たとえば、 &lt;code&gt;!nameitem Foehammer&lt;/code&gt;&lt;br&gt; &lt;code&gt;!nameitem&lt;/code&gt;を呼び出すと、次に名前が付けられるアイテムがわかります。" original="You can use this to name your custom items.&lt;br&gt;Usage is &lt;code&gt;!nameitem (name)&lt;/code&gt;, for example &lt;code&gt;!nameitem Foehammer&lt;/code&gt;.&lt;br&gt;If you call &lt;code&gt;!nameitem&lt;/code&gt; on its own it will tell you what item will be named next."/>
         <!-- name a reward item -->
-        <string id="tNVmXpoc" text="報酬アイテムに名前を付ける"/>
+        <string id="tNVmXpoc" text="報酬アイテムに名前を付ける" original="name a reward item"/>
         <!-- nameitem -->
-        <string id="IFDecKha" text="nameitem"/>
-
+        <string id="IFDecKha" text="nameitem" original="nameitem"/>
         <!-- bltbet -->
         <!-- Use this to bet on tournament matches, when available.&lt;br&gt;Usage is &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt;, for example &lt;code&gt;!bltbet red 10000&lt;/code&gt; to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.&lt;br&gt;If only one team is bet upon, the bets will be refunded. -->
-        <string id="thajdk5s" text="可能な場合は、これを使用してトーナメントの試合に賭けます。&lt;br&gt;使用法は&lt;code&gt;!bltbet (team) (gold)&lt;/code&gt;です。たとえば、 &lt;code&gt;!bltbet red 10000&lt;/code&gt;は、赤に10000ゴールドを賭けます。賞金は、相対的なベットサイズに基づいて、ポット全体から分割されます。&lt;br&gt; 1つのチームのみが賭けられた場合、賭けは返金されます。"/>
+        <string id="thajdk5s" text="可能な場合は、これを使用してトーナメントの試合に賭けます。&lt;br&gt;使用法は&lt;code&gt;!bltbet (team) (gold)&lt;/code&gt;です。たとえば、 &lt;code&gt;!bltbet red 10000&lt;/code&gt;は、赤に10000ゴールドを賭けます。賞金は、相対的なベットサイズに基づいて、ポット全体から分割されます。&lt;br&gt; 1つのチームのみが賭けられた場合、賭けは返金されます。" original="Use this to bet on tournament matches, when available.&lt;br&gt;Usage is &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt;, for example &lt;code&gt;!bltbet red 10000&lt;/code&gt; to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.&lt;br&gt;If only one team is bet upon, the bets will be refunded."/>
         <!-- bet on tournament -->
-        <string id="xBgLXaf7" text="トーナメントに賭ける"/>
+        <string id="xBgLXaf7" text="トーナメントに賭ける" original="bet on tournament"/>
         <!-- bltbet -->
-        <string id="haKiwbsR" text="bltbet"/>
-
+        <string id="haKiwbsR" text="bltbet" original="bltbet"/>
         <!-- power -->
         <!-- power -->
-        <string id="NUQ5PsjF" text="パワー"/>
+        <string id="NUQ5PsjF" text="パワー" original="power"/>
         <!-- Show the heroes achievements and tracked stats. -->
-        <string id="ZVxCqyJL" text="ヒーローの実績と追跡された統計を表示します。"/>
-
+        <string id="ZVxCqyJL" text="ヒーローの実績と追跡された統計を表示します。" original="Show the heroes achievements and tracked stats."/>
         <!-- achievements -->
         <!-- achievements -->
-        <string id="aGPoAaM9" text="実績"/>
-
+        <string id="aGPoAaM9" text="実績" original="achievements"/>
         <!-- ach -->
         <!-- ach -->
-        <string id="woTpsqyV" text="ach"/>
-
+        <string id="woTpsqyV" text="ach" original="ach"/>
         <!-- auction -->
         <!-- Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.&lt;br&gt;Usage is &lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!auction 50000 Boots&lt;/code&gt; would start a new auction for your custom item with the word &quot;Boots&quot; in it, with a reserve of 50000. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
-        <string id="ma27zJHy" text="指定された予約価格で、所有しているカスタムアイテムのオークションを開始します。他の視聴者はあなたのアイテムに入札することができます、そして、最も高い入札者はオークションの終わりにそれを受け取ります。&lt;br&gt;使用法は&lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt; 。例： &lt;code&gt;!auction 50000 Boots&lt;/code&gt;は、「ブーツ」という単語が含まれるカスタムアイテムの新しいオークションを開始します。予約は50000です。複数のアイテムがある場合「Boots」が含まれている場合、コマンドは拒否されます。部分的な名前は、1つのアイテムと正確に一致する必要があります。"/>
+        <string id="ma27zJHy" text="指定された予約価格で、所有しているカスタムアイテムのオークションを開始します。他の視聴者はあなたのアイテムに入札することができます、そして、最も高い入札者はオークションの終わりにそれを受け取ります。&lt;br&gt;使用法は&lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt; 。例： &lt;code&gt;!auction 50000 Boots&lt;/code&gt;は、「ブーツ」という単語が含まれるカスタムアイテムの新しいオークションを開始します。予約は50000です。複数のアイテムがある場合「Boots」が含まれている場合、コマンドは拒否されます。部分的な名前は、1つのアイテムと正確に一致する必要があります。" original="Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.&lt;br&gt;Usage is &lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!auction 50000 Boots&lt;/code&gt; would start a new auction for your custom item with the word &quot;Boots&quot; in it, with a reserve of 50000. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item."/>
         <!-- auction -->
-        <string id="QQX2aboq" text="競売"/>
-
+        <string id="QQX2aboq" text="競売" original="auction"/>
         <!-- bid -->
         <!-- Place a bid on the current auction, if one is active.&lt;br&gt;Usage is &lt;code&gt;!bid (gold amount)&lt;/code&gt;, e.g. &lt;code&gt;!bid 100000&lt;/code&gt;. If there is no auction, or the bid doesn&apos;t exceed the reserve price, it will be rejected. -->
-        <string id="1TBIIJVZ" text="現在のオークションがアクティブな場合は、入札します。&lt;br&gt;使用法は&lt;code&gt;!bid (gold amount)&lt;/code&gt;です。例： &lt;code&gt;!bid 100000&lt;/code&gt;オークションがない場合、または入札が最低価格を超えない場合、入札は拒否されます。"/>
+        <string id="1TBIIJVZ" text="現在のオークションがアクティブな場合は、入札します。&lt;br&gt;使用法は&lt;code&gt;!bid (gold amount)&lt;/code&gt;です。例： &lt;code&gt;!bid 100000&lt;/code&gt;オークションがない場合、または入札が最低価格を超えない場合、入札は拒否されます。" original="Place a bid on the current auction, if one is active.&lt;br&gt;Usage is &lt;code&gt;!bid (gold amount)&lt;/code&gt;, e.g. &lt;code&gt;!bid 100000&lt;/code&gt;. If there is no auction, or the bid doesn't exceed the reserve price, it will be rejected."/>
         <!-- bid -->
-        <string id="taI6SRSG" text="入札"/>
-
+        <string id="taI6SRSG" text="入札" original="bid"/>
         <!-- discarditem -->
         <!-- Throw away one of your custom items.&lt;br&gt;Usage is &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!discarditem Boots&lt;/code&gt; would discard your custom item with the word &quot;Boots&quot; in it. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
-        <string id="vwPIXbeh" text="カスタムアイテムの1つを捨てます。&lt;br&gt;使用法は&lt;code&gt;!discarditem (part of the item name)&lt;/code&gt; 。たとえば、 &lt;code&gt;!discarditem Boots&lt;/code&gt;は、「Boots」という単語が含まれるカスタムアイテムを破棄します。複数のアイテムに「ブーツ」が含まれている場合、コマンドは拒否されます。部分的な名前は、1つのアイテムと正確に一致する必要があります。"/>
+        <string id="vwPIXbeh" text="カスタムアイテムの1つを捨てます。&lt;br&gt;使用法は&lt;code&gt;!discarditem (part of the item name)&lt;/code&gt; 。たとえば、 &lt;code&gt;!discarditem Boots&lt;/code&gt;は、「Boots」という単語が含まれるカスタムアイテムを破棄します。複数のアイテムに「ブーツ」が含まれている場合、コマンドは拒否されます。部分的な名前は、1つのアイテムと正確に一致する必要があります。" original="Throw away one of your custom items.&lt;br&gt;Usage is &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!discarditem Boots&lt;/code&gt; would discard your custom item with the word &quot;Boots&quot; in it. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item."/>
         <!-- discarditem -->
-        <string id="Pla3OVS4" text="廃棄アイテム"/>
-
+        <string id="Pla3OVS4" text="廃棄アイテム" original="discarditem"/>
         <!-- giveitem -->
         <!-- Give one of your custom items to another viewer.&lt;br&gt;Usage is &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; would give your custom item with the word &quot;Boots&quot; in it to the viewer called C4lad0g. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
-        <string id="RS37T7gG" text="カスタムアイテムの1つを別のビューアに渡します。&lt;br&gt;使用法は&lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt; 。たとえば、 &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt;は、「Boots」という単語を含むカスタムアイテムをC4lad0gというビューアに提供します。複数のアイテムに「ブーツ」が含まれている場合、コマンドは拒否されます。部分的な名前は、1つのアイテムと正確に一致する必要があります。"/>
+        <string id="RS37T7gG" text="カスタムアイテムの1つを別のビューアに渡します。&lt;br&gt;使用法は&lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt; 。たとえば、 &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt;は、「Boots」という単語を含むカスタムアイテムをC4lad0gというビューアに提供します。複数のアイテムに「ブーツ」が含まれている場合、コマンドは拒否されます。部分的な名前は、1つのアイテムと正確に一致する必要があります。" original="Give one of your custom items to another viewer.&lt;br&gt;Usage is &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; would give your custom item with the word &quot;Boots&quot; in it to the viewer called C4lad0g. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item."/>
         <!-- giveitem -->
-        <string id="osvl34my" text="giveitem"/>
-
+        <string id="osvl34my" text="giveitem" original="giveitem"/>
         <!-- powers -->
         <!-- Shows your available powers -->
-        <string id="GYYbCXmu" text="利用可能なパワーを表示します"/>
+        <string id="GYYbCXmu" text="利用可能なパワーを表示します" original="Shows your available powers"/>
         <!-- powers -->
-        <string id="GHCxNIaR" text="力"/>
+        <string id="GHCxNIaR" text="力" original="powers"/>
     </strings>
 </base>

@@ -5,347 +5,341 @@
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
-        
         <!-- GlobalCommonConfig -->
         <!-- Common Config -->
-        <string id="vDjnDtoL" text="共通構成"/>
+        <string id="vDjnDtoL" text="共通構成" original="Common Config"/>
         <!-- Sub Boost -->
-        <string id="xwcKN7sH" text="サブブースト"/>
+        <string id="xwcKN7sH" text="サブブースト" original="Sub Boost"/>
         <!-- Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently. -->
-        <string id="rX68wbfF" text="加入者のすべての報酬に適用される乗数（1以下はブーストがないことを意味します）。注：これは部分的にのみ実装されており、現在ボットコマンドでのみ機能します。"/>
+        <string id="rX68wbfF" text="加入者のすべての報酬に適用される乗数（1以下はブーストがないことを意味します）。注：これは部分的にのみ実装されており、現在ボットコマンドでのみ機能します。" original="Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently."/>
         <!-- Custom Reward Modifiers -->
-        <string id="O0LU5WBa" text="カスタム報酬修飾子"/>
+        <string id="O0LU5WBa" text="カスタム報酬修飾子" original="Custom Reward Modifiers"/>
         <!-- The specification for custom item rewards, applies to tournament prize and achievement rewards -->
-        <string id="tp3YdGmo" text="カスタムアイテム報酬の仕様は、トーナメント賞とアチーブメント報酬に適用されます"/>
+        <string id="tp3YdGmo" text="カスタムアイテム報酬の仕様は、トーナメント賞とアチーブメント報酬に適用されます" original="The specification for custom item rewards, applies to tournament prize and achievement rewards"/>
         <!-- Start With Full Health -->
-        <string id="X8r0C5fx" text="完全な健康から始める"/>
+        <string id="X8r0C5fx" text="完全な健康から始める" original="Start With Full Health"/>
         <!-- Whether the hero will always start with full health -->
-        <string id="HbNVrZuv" text="主人公が常に完全な健康状態で始まるかどうか"/>
+        <string id="HbNVrZuv" text="主人公が常に完全な健康状態で始まるかどうか" original="Whether the hero will always start with full health"/>
         <!-- Start Health Multiplier -->
-        <string id="fxZIKL65" text="HealthMultiplierを開始します"/>
+        <string id="fxZIKL65" text="HealthMultiplierを開始します" original="Start Health Multiplier"/>
         <!-- Amount to multiply normal starting health by, to give heroes better staying power vs others -->
-        <string id="8yNIRS9S" text="ヒーローに他の人よりも優れた滞在力を与えるために、通常の開始時の健康状態を乗算する量"/>
+        <string id="8yNIRS9S" text="ヒーローに他の人よりも優れた滞在力を与えるために、通常の開始時の健康状態を乗算する量" original="Amount to multiply normal starting health by, to give heroes better staying power vs others"/>
         <!-- Start Retinue Health Multiplier -->
-        <string id="HvcTekVk" text="Retinue HealthMultiplierを開始します"/>
+        <string id="HvcTekVk" text="Retinue HealthMultiplierを開始します" original="Start Retinue Health Multiplier"/>
         <!-- Amount to multiply normal retinue starting health by, to give retinue better staying power vs others -->
-        <string id="G6JJT2ot" text="正常な従者の健康を開始する量に、従者に他の従者よりも優れた滞在力を与える量"/>
+        <string id="G6JJT2ot" text="正常な従者の健康を開始する量に、従者に他の従者よりも優れた滞在力を与える量" original="Amount to multiply normal retinue starting health by, to give retinue better staying power vs others"/>
         <!-- Morale Loss Factor -->
-        <string id="ZPmBe7XI" text="士気損失係数"/>
+        <string id="ZPmBe7XI" text="士気損失係数" original="Morale Loss Factor"/>
         <!-- Reduces morale loss when summoned heroes die -->
-        <string id="tpgJtS5q" text="召喚されたヒーローが死んだときの士気の低下を減らします"/>
+        <string id="tpgJtS5q" text="召喚されたヒーローが死んだときの士気の低下を減らします" original="Reduces morale loss when summoned heroes die"/>
         <!-- Retinue Use Heroes Formation -->
-        <string id="bXdC2trk" text="従者使用ヒーローフォーメーション"/>
+        <string id="bXdC2trk" text="従者使用ヒーローフォーメーション" original="Retinue Use Heroes Formation"/>
         <!-- Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations) -->
-        <string id="D8uDzXlV" text="採用されたヒーローの従者がヒーローと同じフォーメーションでスポーンするかどうか（そうでない場合、デフォルトのフォーメーションになります）"/>
+        <string id="D8uDzXlV" text="採用されたヒーローの従者がヒーローと同じフォーメーションでスポーンするかどうか（そうでない場合、デフォルトのフォーメーションになります）" original="Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations)"/>
         <!-- Summon Cooldown In Seconds -->
-        <string id="OlJrCEyE" text="クールダウンを数秒で召喚"/>
+        <string id="OlJrCEyE" text="クールダウンを数秒で召喚" original="Summon Cooldown In Seconds"/>
         <!-- Minimum time between summons for a specific hero -->
-        <string id="DeGB2BGZ" text="特定のヒーローの召喚間の最小時間"/>
+        <string id="DeGB2BGZ" text="特定のヒーローの召喚間の最小時間" original="Minimum time between summons for a specific hero"/>
         <!-- Summon Cooldown Use Multiplier -->
-        <string id="f9HVD2cC" text="召喚クールダウン使用乗数"/>
+        <string id="f9HVD2cC" text="召喚クールダウン使用乗数" original="Summon Cooldown Use Multiplier"/>
         <!-- How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this. -->
-        <string id="4gZlfHzM" text="召喚が使用されるたびにクールダウンをどれだけ乗算するか。たとえば、召喚クールダウンが20秒で、UseMultiplierが1.1（デフォルト）の場合、最初の召喚のクールダウンは20秒で、次の24秒、10番目の52秒、20番目の135秒です。これを視覚化するには、https：//www.desmos.com/calculator/muej1o5eg5を参照してください。"/>
+        <string id="4gZlfHzM" text="召喚が使用されるたびにクールダウンをどれだけ乗算するか。たとえば、Summon Cooldownが20秒で、UseMultiplierが1.1（デフォルト）の場合、最初の召喚のクールダウンは20秒で、次の24秒、10番目の52秒、20番目の135秒です。これを視覚化するには、https：//www.desmos.com/calculator/muej1o5eg5を参照してください。" original="How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this."/>
         <!-- Summon Cooldown Example -->
-        <string id="ViLoy0k3" text="クールダウンの例を呼び出す"/>
+        <string id="ViLoy0k3" text="クールダウンの例を呼び出す" original="Summon Cooldown Example"/>
         <!-- Shows the consecutive cooldowns (in seconds) for 10 summons -->
-        <string id="xZoSFrAb" text="10回の召喚の連続したクールダウン（秒単位）を表示します"/>
+        <string id="xZoSFrAb" text="10回の召喚の連続したクールダウン（秒単位）を表示します" original="Shows the consecutive cooldowns (in seconds) for 10 summons"/>
         <!-- Allow Death -->
-        <string id="4sNJRQyw" text="死を許す"/>
+        <string id="4sNJRQyw" text="死を許す" original="Allow Death"/>
         <!-- Whether an adopted hero is allowed to die -->
-        <string id="VbBUYOfc" text="養子縁組された英雄が死ぬことを許されるかどうか"/>
+        <string id="VbBUYOfc" text="養子縁組された英雄が死ぬことを許されるかどうか" original="Whether an adopted hero is allowed to die"/>
         <!-- Final Death Chance Percent -->
-        <string id="ZEfAPyOm" text="最終死亡率"/>
+        <string id="ZEfAPyOm" text="最終死亡率" original="Final Death Chance Percent"/>
         <!-- Final death chance percent (includes vanilla chance) -->
-        <string id="xlt1pNuT" text="最終死亡確率パーセント（バニラ確率を含む）"/>
+        <string id="xlt1pNuT" text="最終死亡確率パーセント（バニラ確率を含む）" original="Final death chance percent (includes vanilla chance)"/>
         <!-- Apply Death Chance To All Heroes -->
-        <string id="sbc5Fp4o" text="すべてのヒーローにデスチャンスを適用する"/>
+        <string id="sbc5Fp4o" text="すべてのヒーローにデスチャンスを適用する" original="Apply Death Chance To All Heroes"/>
         <!-- Whether to apply the Death Chance changes to all heroes, not just adopted ones -->
-        <string id="nbR7NLNz" text="養子縁組だけでなく、すべてのヒーローにデスチャンスの変更を適用するかどうか"/>
+        <string id="nbR7NLNz" text="養子縁組だけでなく、すべてのヒーローにデスチャンスの変更を適用するかどうか" original="Whether to apply the Death Chance changes to all heroes, not just adopted ones"/>
         <!-- Use Raw XP -->
-        <string id="lwU4dELT" text="RawXPを使用する"/>
+        <string id="lwU4dELT" text="RawXPを使用する" original="Use Raw XP"/>
         <!-- Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed.  -->
-        <string id="dICRr4BH" text="フォーカスと属性で調整する代わりに、スキルキャップを無視して、生のXP値を使用します。これにより、フォーカスと属性が適切に分散されていない場合にキャラクターがスタックするのを防ぎます。"/>
+        <string id="dICRr4BH" text="フォーカスと属性で調整する代わりに、スキルキャップを無視して、生のXP値を使用します。これにより、フォーカスと属性が適切に分散されていない場合にキャラクターがスタックするのを防ぎます。" original="Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed. "/>
         <!-- Raw XP Skill Cap -->
-        <string id="S5FAna09" text="生のXPスキルキャップ"/>
+        <string id="S5FAna09" text="生のXPスキルキャップ" original="Raw XP Skill Cap"/>
         <!-- Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap. -->
-        <string id="WUzqXuHN" text="RawXP使用時のスキルキャップ。スキルはこの値を超えることはありません。 330はバニラXPスキルキャップです。"/>
+        <string id="WUzqXuHN" text="RawXP使用時のスキルキャップ。スキルはこの値を超えることはありません。 330はバニラXPスキルキャップです。" original="Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap."/>
         <!-- Gold Per Kill -->
-        <string id="94Ouh5It" text="キルあたりのゴールド"/>
+        <string id="94Ouh5It" text="キルあたりのゴールド" original="Gold Per Kill"/>
         <!-- Gold the hero gets for every kill -->
-        <string id="iSAMxZ8a" text="主人公が殺すたびに獲得するゴールド"/>
+        <string id="iSAMxZ8a" text="主人公が殺すたびに獲得するゴールド" original="Gold the hero gets for every kill"/>
         <!-- XP Per Kill -->
-        <string id="DMGKBoJT" text="キルあたりのXP"/>
+        <string id="DMGKBoJT" text="キルあたりのXP" original="XP Per Kill"/>
         <!-- XP the hero gets for every kill -->
-        <string id="kwW5pZT9" text="主人公が殺すたびに獲得するXP"/>
+        <string id="kwW5pZT9" text="主人公が殺すたびに獲得するXP" original="XP the hero gets for every kill"/>
         <!-- XP Per Killed -->
-        <string id="a1zjEuUe" text="殺されたあたりのXP"/>
+        <string id="a1zjEuUe" text="殺されたあたりのXP" original="XP Per Killed"/>
         <!-- XP the hero gets for being killed -->
-        <string id="bW8t2g5N" text="主人公が殺されることで得られるXP"/>
+        <string id="bW8t2g5N" text="主人公が殺されることで得られるXP" original="XP the hero gets for being killed"/>
         <!-- Heal Per Kill -->
-        <string id="cRV9HDdf" text="キルごとのヒール"/>
+        <string id="cRV9HDdf" text="キルごとのヒール" original="Heal Per Kill"/>
         <!-- HP the hero gets for every kill -->
-        <string id="7VWAZgfK" text="主人公が殺すたびに獲得するHP"/>
+        <string id="7VWAZgfK" text="主人公が殺すたびに獲得するHP" original="HP the hero gets for every kill"/>
         <!-- Retinue Gold Per Kill -->
-        <string id="lIhhHjih" text="キルごとにゴールドを維持する"/>
+        <string id="lIhhHjih" text="キルごとにゴールドを維持する" original="Retinue Gold Per Kill"/>
         <!-- Gold the hero gets for every kill their retinue gets -->
-        <string id="h93j0qw3" text="主人公が従者が得るすべての殺害のために得る金"/>
+        <string id="h93j0qw3" text="主人公が従者が得るすべての殺害のために得る金" original="Gold the hero gets for every kill their retinue gets"/>
         <!-- Retinue Heal Per Kill -->
-        <string id="KwlWrzDS" text="キルごとにヒールを継続"/>
+        <string id="KwlWrzDS" text="キルごとにヒールを継続" original="Retinue Heal Per Kill"/>
         <!-- HP the hero's retinue gets for every kill -->
-        <string id="Q3UVoHmt" text="HPヒーローの従者は殺すたびに取得します"/>
+        <string id="Q3UVoHmt" text="HPヒーローの従者は殺すたびに取得します" original="HP the hero's retinue gets for every kill"/>
         <!-- Relative Level Scaling -->
-        <string id="wSzUkbNR" text="相対レベルスケーリング"/>
+        <string id="wSzUkbNR" text="相対レベルスケーリング" original="Relative Level Scaling"/>
         <!-- How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health. -->
-        <string id="1LTDJZ7Y" text="2人のキャラクターの相対的なレベルに基づいて、キル報酬をどの程度スケーリングするか。これが0（または設定されていない）の場合、報酬は常に指定どおりになります。これが0より大きい場合、殺されたユニットがヒーローより高いレベルの場合は報酬が増加し、低い場合は報酬が減少します。レベル差が10の場合の値が0.5（推奨）の場合、ゴールド、xp、ヘルスの通常の報酬の約2.5倍になります。"/>
+        <string id="1LTDJZ7Y" text="2人のキャラクターの相対的なレベルに基づいて、キル報酬をどの程度スケーリングするか。これが0（または設定されていない）の場合、報酬は常に指定どおりになります。これが0より大きい場合、殺されたユニットがヒーローより高いレベルの場合は報酬が増加し、低い場合は報酬が減少します。レベル差が10の場合の値が0.5（推奨）の場合、ゴールド、xp、ヘルスの通常の報酬の約2.5倍になります。" original="How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."/>
         <!-- Level Scaling Cap -->
-        <string id="BDk1G4nc" text="レベルスケーリングキャップ"/>
+        <string id="BDk1G4nc" text="レベルスケーリングキャップ" original="Level Scaling Cap"/>
         <!-- Caps the maximum multiplier for the level difference, defaults to 5 if not specified -->
-        <string id="Vod0pJEN" text="レベル差の最大乗数を制限します。指定されていない場合、デフォルトは5です。"/>
-
+        <string id="Vod0pJEN" text="レベル差の最大乗数を制限します。指定されていない場合、デフォルトは5です。" original="Caps the maximum multiplier for the level difference, defaults to 5 if not specified"/>
         <!-- Win Gold -->
-        <string id="IQTT5vYE" text="ゴールドを獲得"/>
+        <string id="IQTT5vYE" text="ゴールドを獲得" original="Win Gold"/>
         <!-- Lose Gold -->
-        <string id="lfCWK7aA" text="ゴールドを失う"/>
+        <string id="lfCWK7aA" text="ゴールドを失う" original="Lose Gold"/>
         <!-- Win XP -->
-        <string id="h8I3PWkV" text="XPに勝つ"/>
+        <string id="h8I3PWkV" text="XPに勝つ" original="Win XP"/>
         <!-- Lose XP -->
-        <string id="Vobr36Bl" text="XPを失う"/>
-        
+        <string id="Vobr36Bl" text="XPを失う" original="Lose XP"/>
         <!-- Gold won if the heroes side wins -->
-        <string id="pc3G0W39" text="ヒーロー側が勝った場合はゴールドが勝ちました"/>
+        <string id="pc3G0W39" text="ヒーロー側が勝った場合はゴールドが勝ちました" original="Gold won if the heroes side wins"/>
         <!-- XP the hero gets if the heroes side wins -->
-        <string id="F7Tw4D07" text="ヒーロー側が勝った場合にヒーローが獲得するXP"/>
+        <string id="F7Tw4D07" text="ヒーロー側が勝った場合にヒーローが獲得するXP" original="XP the hero gets if the heroes side wins"/>
         <!-- Gold lost if the heroes side loses -->
-        <string id="E209XRml" text="ヒーロー側が負けるとゴールドが失われる"/>
+        <string id="E209XRml" text="ヒーロー側が負けるとゴールドが失われる" original="Gold lost if the heroes side loses"/>
         <!-- XP the hero gets if the heroes side loses -->
-        <string id="itAfYdmO" text="ヒーロー側が負けた場合にヒーローが獲得するXP"/>
+        <string id="itAfYdmO" text="ヒーロー側が負けた場合にヒーローが獲得するXP" original="XP the hero gets if the heroes side loses"/>
         <!-- Difficulty Scaling On Players Side -->
-        <string id="ihB1KMOY" text="プレイヤー側のスケーリングの難しさ"/>
+        <string id="ihB1KMOY" text="プレイヤー側のスケーリングの難しさ" original="Difficulty Scaling On Players Side"/>
         <!-- Apply difficulty scaling to players side -->
-        <string id="Bt1PS0aC" text="プレイヤー側に難易度スケーリングを適用する"/>
+        <string id="Bt1PS0aC" text="プレイヤー側に難易度スケーリングを適用する" original="Apply difficulty scaling to players side"/>
         <!-- Difficulty Scaling On Enemy Side -->
-        <string id="nym7EtAd" text="敵側でのスケーリングの難しさ"/>
+        <string id="nym7EtAd" text="敵側でのスケーリングの難しさ" original="Difficulty Scaling On Enemy Side"/>
         <!-- Apply difficulty scaling to enemy side -->
-        <string id="U0hZef9L" text="敵側に難易度スケーリングを適用する"/>
+        <string id="U0hZef9L" text="敵側に難易度スケーリングを適用する" original="Apply difficulty scaling to enemy side"/>
         <!-- Difficulty Scaling -->
-        <string id="CaVuq5tE" text="スケーリングの難しさ"/>
+        <string id="CaVuq5tE" text="スケーリングの難しさ" original="Difficulty Scaling"/>
         <!-- End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1) -->
-        <string id="IhhfIQ74" text="報酬の難易度のスケーリングを終了：難易度の高い戦闘で上記の報酬がどの程度増加するかを決定します（0から1）"/>
+        <string id="IhhfIQ74" text="報酬の難易度のスケーリングを終了：難易度の高い戦闘で上記の報酬がどの程度増加するかを決定します（0から1）" original="End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1)"/>
         <!-- Difficulty Scaling Min -->
-        <string id="891WqOrJ" text="最小スケーリングの難しさ"/>
+        <string id="891WqOrJ" text="最小スケーリングの難しさ" original="Difficulty Scaling Min"/>
         <!-- Min difficulty scaling multiplier -->
-        <string id="FPXz7lBi" text="最小難易度スケーリング乗数"/>
+        <string id="FPXz7lBi" text="最小難易度スケーリング乗数" original="Min difficulty scaling multiplier"/>
         <!-- Difficulty Scaling Max -->
-        <string id="Wsho5Yns" text="難易度スケーリング最大"/>
+        <string id="Wsho5Yns" text="難易度スケーリング最大" original="Difficulty Scaling Max"/>
         <!-- Max difficulty scaling multiplier -->
-        <string id="ZW7O1JTv" text="最大難易度スケーリング乗数"/>
+        <string id="ZW7O1JTv" text="最大難易度スケーリング乗数" original="Max difficulty scaling multiplier"/>
         <!-- Kill Streaks -->
-        <string id="3DZYc6hN" text="ストリークを殺す"/>
+        <string id="3DZYc6hN" text="ストリークを殺す" original="Kill Streaks"/>
         <!-- Show Kill Streak Popup -->
-        <string id="wQ7lXgLA" text="キルストリークポップアップを表示"/>
+        <string id="wQ7lXgLA" text="キルストリークポップアップを表示" original="Show Kill Streak Popup"/>
         <!-- Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled. -->
-        <string id="wDW3143d" text="ポップアップバナーを使用してキルストリークをアナウンスするかどうか。無効にした場合、代わりにオーバーレイでのみ印刷されます。"/>
+        <string id="wDW3143d" text="ポップアップバナーを使用してキルストリークをアナウンスするかどうか。無効にした場合、代わりにオーバーレイでのみ印刷されます。" original="Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled."/>
         <!-- Kill Streak Popup Alert Sound -->
-        <string id="rhwujKvf" text="ストリークポップアップアラートサウンドを殺す"/>
+        <string id="rhwujKvf" text="ストリークポップアップアラートサウンドを殺す" original="Kill Streak Popup Alert Sound"/>
         <!-- Sound to play when killstreak popup is disabled. -->
-        <string id="1GVV1fjY" text="killstreakポップアップが無効になっているときに再生するサウンド。"/>
+        <string id="1GVV1fjY" text="killstreakポップアップが無効になっているときに再生するサウンド。" original="Sound to play when killstreak popup is disabled."/>
         <!-- Reference Level Reward -->
-        <string id="dP9AoB9o" text="参照レベルの報酬"/>
+        <string id="dP9AoB9o" text="参照レベルの報酬" original="Reference Level Reward"/>
         <!-- The level at which the rewards normalize and start to reduce (if relative level scaling is enabled). -->
-        <string id="y7AZjeSK" text="報酬が正常化して減少し始めるレベル（相対レベルスケーリングが有効になっている場合）。"/>
+        <string id="y7AZjeSK" text="報酬が正常化して減少し始めるレベル（相対レベルスケーリングが有効になっている場合）。" original="The level at which the rewards normalize and start to reduce (if relative level scaling is enabled)."/>
         <!-- Achievements -->
-        <string id="zTLei6dQ" text="実績"/>
+        <string id="zTLei6dQ" text="実績" original="Achievements"/>
         <!-- Shouts -->
-        <string id="HkD6326j" text="叫び"/>
+        <string id="HkD6326j" text="叫び" original="Shouts"/>
         <!-- Custom shouts -->
-        <string id="ufqtH5QV" text="カスタムの叫び"/>
+        <string id="ufqtH5QV" text="カスタムの叫び" original="Custom shouts"/>
         <!-- Include Default Shouts -->
-        <string id="wehigXCC" text="デフォルトのシャウトを含める"/>
+        <string id="wehigXCC" text="デフォルトのシャウトを含める" original="Include Default Shouts"/>
         <!-- Whether to include default shouts -->
-        <string id="m6Vv2LBt" text="デフォルトの叫びを含めるかどうか"/>
+        <string id="m6Vv2LBt" text="デフォルトの叫びを含めるかどうか" original="Whether to include default shouts"/>
         <!-- Common Config -->
-        <string id="F6vM1OJo" text="共通構成"/>
-        
+        <string id="F6vM1OJo" text="共通構成" original="Common Config"/>
         <!-- GlobalHeroClassConfig -->
         <!-- Class Config -->
-        <string id="3rL4RHje" text="クラス構成"/>
+        <string id="3rL4RHje" text="クラス構成" original="Class Config"/>
         <!-- Class Definitions -->
-        <string id="462kHfn2" text="クラス定義"/>
+        <string id="462kHfn2" text="クラス定義" original="Class Definitions"/>
         <!-- Defined classes -->
-        <string id="NFjlVt57" text="定義されたクラス"/>
+        <string id="NFjlVt57" text="定義されたクラス" original="Defined classes"/>
         <!-- Class Level Requirements -->
-        <string id="Q0yTbTCT" text="クラスレベルの要件"/>
+        <string id="Q0yTbTCT" text="クラスレベルの要件" original="Class Level Requirements"/>
         <!-- Requirements for class levels -->
-        <string id="y8LLccGK" text="クラスレベルの要件"/>
+        <string id="y8LLccGK" text="クラスレベルの要件" original="Requirements for class levels"/>
         <!-- Classes -->
-        <string id="E0CBnj57" text="クラス"/>
+        <string id="E0CBnj57" text="クラス" original="Classes"/>
         <!-- (no requirements) -->
-        <string id="7WLbMjpz" text="（要件なし）"/>
-        
+        <string id="7WLbMjpz" text="（要件なし）" original="(no requirements)"/>
         <!-- GlobalHeroPowerConfig -->
         <!-- Power Config -->
-        <string id="v75UOuDM" text="電源構成"/>
+        <string id="v75UOuDM" text="電源構成" original="Power Config"/>
         <!-- Power Defs -->
-        <string id="9vUtdRu2" text="パワーデフ"/>
+        <string id="9vUtdRu2" text="パワーデフ" original="Power Defs"/>
         <!-- Defined powers -->
-        <string id="ymGZUjoU" text="定義された力"/>
+        <string id="ymGZUjoU" text="定義された力" original="Defined powers"/>
         <!-- Disable Powers In Tournaments -->
-        <string id="5CD7bmuC" text="トーナメントでパワーを無効にする"/>
+        <string id="5CD7bmuC" text="トーナメントでパワーを無効にする" original="Disable Powers In Tournaments"/>
         <!-- Whether powers are disabled in a tournament -->
-        <string id="K7uKtO90" text="トーナメントでパワーが無効になっているかどうか"/>
-        
+        <string id="K7uKtO90" text="トーナメントでパワーが無効になっているかどうか" original="Whether powers are disabled in a tournament"/>
         <!-- GlobalTournamentConfig -->
         <!-- Tournament Config -->
-        <string id="AkDCrLgg" text="トーナメント構成"/>
+        <string id="AkDCrLgg" text="トーナメント構成" original="Tournament Config"/>
         <!-- Equipment -->
-        <string id="i7ZDVTaw" text="装置"/>
+        <string id="i7ZDVTaw" text="装置" original="Equipment"/>
         <!-- Balancing -->
-        <string id="Zwh9GYUE" text="バランシング"/>
+        <string id="Zwh9GYUE" text="バランシング" original="Balancing"/>
         <!-- Round Type -->
-        <string id="KOIu6Q7d" text="ラウンドタイプ"/>
+        <string id="KOIu6Q7d" text="ラウンドタイプ" original="Round Type"/>
         <!-- Start Health Multiplier -->
-        <string id="P1ZCMZbp" text="HealthMultiplierを開始します"/>
+        <string id="P1ZCMZbp" text="HealthMultiplierを開始します" original="Start Health Multiplier"/>
         <!-- Disable Kill Rewards In Tournament -->
-        <string id="x3wiU1LY" text="トーナメントでキルリワードを無効にする"/>
+        <string id="x3wiU1LY" text="トーナメントでキルリワードを無効にする" original="Disable Kill Rewards In Tournament"/>
         <!-- Disable Tracking Kills Tournament -->
-        <string id="ksB1FmZV" text="追跡キルトーナメントを無効にする"/>
+        <string id="ksB1FmZV" text="追跡キルトーナメントを無効にする" original="Disable Tracking Kills Tournament"/>
         <!-- No Horses -->
-        <string id="bBipANlh" text="馬はいない"/>
+        <string id="bBipANlh" text="馬はいない" original="No Horses"/>
         <!-- No Spears -->
-        <string id="CYVy4Hhx" text="槍なし"/>
+        <string id="CYVy4Hhx" text="槍なし" original="No Spears"/>
         <!-- Normalize Armor -->
-        <string id="Ed55OyZ5" text="アーマーを正規化する"/>
+        <string id="Ed55OyZ5" text="アーマーを正規化する" original="Normalize Armor"/>
         <!-- Normalize Armor Tier -->
-        <string id="xHJbcOaV" text="アーマーティアを正規化する"/>
+        <string id="xHJbcOaV" text="アーマーティアを正規化する" original="Normalize Armor Tier"/>
         <!-- Randomize Weapon Types -->
-        <string id="5Y08IsDl" text="武器の種類をランダム化する"/>
+        <string id="5Y08IsDl" text="武器の種類をランダム化する" original="Randomize Weapon Types"/>
         <!-- Previous Winner Debuffs -->
-        <string id="UCAbZYqU" text="以前の勝者デバフ"/>
+        <string id="UCAbZYqU" text="以前の勝者デバフ" original="Previous Winner Debuffs"/>
         <!-- Vanilla -->
-        <string id="WUQRg4yA" text="バニラ"/>
+        <string id="WUQRg4yA" text="バニラ" original="Vanilla"/>
         <!-- 1 Match 4 Teams -->
-        <string id="ErBd0iuP" text="1試合4チーム"/>
+        <string id="ErBd0iuP" text="1試合4チーム" original="1 Match 4 Teams"/>
         <!-- 1 Match 2 Teams -->
-        <string id="uuBzCFgM" text="1試合2チーム"/>
+        <string id="uuBzCFgM" text="1試合2チーム" original="1 Match 2 Teams"/>
         <!-- 2 Matches 2 Teams -->
-        <string id="SsArdTT9" text="2試合2チーム"/>
+        <string id="SsArdTT9" text="2試合2チーム" original="2 Matches 2 Teams"/>
         <!-- 2 Matches 4 Teams -->
-        <string id="qb1yo7DZ" text="2試合4チーム"/>
+        <string id="qb1yo7DZ" text="2試合4チーム" original="2 Matches 4 Teams"/>
         <!-- 4 Matches 2 Teams -->
-        <string id="WAzvdvAJ" text="4試合2チーム"/>
+        <string id="WAzvdvAJ" text="4試合2チーム" original="4 Matches 2 Teams"/>
         <!-- 4 Matches 4 Teams -->
-        <string id="sMCb8Xeu" text="4試合4チーム"/>
+        <string id="sMCb8Xeu" text="4試合4チーム" original="4 Matches 4 Teams"/>
         <!-- 8 Matches 2 Teams -->
-        <string id="URNM9UqS" text="8試合2チーム"/>
+        <string id="URNM9UqS" text="8試合2チーム" original="8 Matches 2 Teams"/>
         <!-- Round 1 Type -->
-        <string id="eivyBgAa" text="ラウンド1タイプ"/>
+        <string id="eivyBgAa" text="ラウンド1タイプ" original="Round 1 Type"/>
         <!-- Round 2 Type -->
-        <string id="pefX6BdQ" text="ラウンド2タイプ"/>
+        <string id="pefX6BdQ" text="ラウンド2タイプ" original="Round 2 Type"/>
         <!-- Round 3 Type -->
-        <string id="GpV7pKPY" text="ラウンド3タイプ"/>
+        <string id="GpV7pKPY" text="ラウンド3タイプ" original="Round 3 Type"/>
         <!-- Round 1 Rewards -->
-        <string id="VeSh8k7c" text="ラウンド1リワード"/>
+        <string id="VeSh8k7c" text="ラウンド1リワード" original="Round 1 Rewards"/>
         <!-- Round 2 Rewards -->
-        <string id="gQ9YX7my" text="ラウンド2リワード"/>
+        <string id="gQ9YX7my" text="ラウンド2リワード" original="Round 2 Rewards"/>
         <!-- Round 3 Rewards -->
-        <string id="17pTC7NS" text="ラウンド3の報酬"/>
+        <string id="17pTC7NS" text="ラウンド3の報酬" original="Round 3 Rewards"/>
         <!-- Round 4 Rewards -->
-        <string id="pxMWYe5J" text="ラウンド4の報酬"/>
+        <string id="pxMWYe5J" text="ラウンド4の報酬" original="Round 4 Rewards"/>
         <!-- Participate XP -->
-        <string id="5vMTYqdu" text="XPに参加する"/>
+        <string id="5vMTYqdu" text="XPに参加する" original="Participate XP"/>
         <!-- Prize -->
-        <string id="Xu2KD7Kc" text="賞"/>
+        <string id="Xu2KD7Kc" text="賞" original="Prize"/>
         <!-- Enable Betting -->
-        <string id="rne7aMUR" text="賭けを有効にする"/>
+        <string id="rne7aMUR" text="賭けを有効にする" original="Enable Betting"/>
         <!-- Betting On Final Only -->
-        <string id="njh9b5GB" text="決勝のみに賭ける"/>
+        <string id="njh9b5GB" text="決勝のみに賭ける" original="Betting On Final Only"/>
         <!-- Skill Reduction Percent Per Win -->
-        <string id="5a40vmYi" text="勝利あたりのスキル削減率"/>
+        <string id="5a40vmYi" text="勝利あたりのスキル削減率" original="Skill Reduction Percent Per Win"/>
         <!-- Floor Percent -->
-        <string id="hMB4oFmk" text="床の割合"/>
+        <string id="hMB4oFmk" text="床の割合" original="Floor Percent"/>
         <!-- Example -->
-        <string id="L7AKFlpb" text="例"/>
+        <string id="L7AKFlpb" text="例" original="Example"/>
         <!-- Amount to multiply normal starting health by -->
-        <string id="n6Bc5M3s" text="通常の開始時の健康状態に次の値を掛ける量"/>
+        <string id="n6Bc5M3s" text="通常の開始時の健康状態に次の値を掛ける量" original="Amount to multiply normal starting health by"/>
         <!-- Heroes won't get any kill rewards in tournaments -->
-        <string id="j63d8DuH" text="ヒーローはトーナメントでキル報酬を獲得しません"/>
+        <string id="j63d8DuH" text="ヒーローはトーナメントでキル報酬を獲得しません" original="Heroes won't get any kill rewards in tournaments"/>
         <!-- Tournament kills / deaths won't be counted towards achievements or kill streaks -->
-        <string id="o5aH9rTO" text="トーナメントのキル/デスはアチーブメントやキルストリークにカウントされません"/>
+        <string id="o5aH9rTO" text="トーナメントのキル/デスはアチーブメントやキルストリークにカウントされません" original="Tournament kills / deaths won't be counted towards achievements or kill streaks"/>
         <!-- Remove horses completely from the BLT tournaments (the horse AI is terrible) -->
-        <string id="sJ68yZs1" text="BLTトーナメントから馬を完全に削除します（馬のAIはひどいです）"/>
+        <string id="sJ68yZs1" text="BLTトーナメントから馬を完全に削除します（馬のAIはひどいです）" original="Remove horses completely from the BLT tournaments (the horse AI is terrible)"/>
         <!-- Replaces all lances and spears with swords, because lance and spear combat is terrible -->
-        <string id="BjMC8Htn" text="槍と槍の戦闘はひどいので、すべての槍と槍を剣に置き換えます"/>
+        <string id="BjMC8Htn" text="槍と槍の戦闘はひどいので、すべての槍と槍を剣に置き換えます" original="Replaces all lances and spears with swords, because lance and spear combat is terrible"/>
         <!-- Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below) -->
-        <string id="kYFdZ8Yx" text="可能であれば、文化に基づいて、すべてのアーマーを固定ティアアーマーに置き換えます（以下の正規化アーマーティアで指定されたティア）"/>
+        <string id="kYFdZ8Yx" text="可能であれば、文化に基づいて、すべてのアーマーを固定ティアアーマーに置き換えます（以下の正規化アーマーティアで指定されたティア）" original="Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below)"/>
         <!-- Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled -->
-        <string id="HnqCyrDD" text="鎧の正規化が有効になっている場合、すべての出場者を（1から6）に設定する鎧ティア"/>
+        <string id="HnqCyrDD" text="鎧の正規化が有効になっている場合、すべての出場者を（1から6）に設定する鎧ティア" original="Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled"/>
         <!-- Randomizes the weapons used in each round, weighted based on the classes of the participants -->
-        <string id="oSCPOoqi" text="参加者のクラスに基づいて重み付けされた、各ラウンドで使用される武器をランダム化します"/>
+        <string id="oSCPOoqi" text="参加者のクラスに基づいて重み付けされた、各ラウンドで使用される武器をランダム化します" original="Randomizes the weapons used in each round, weighted based on the classes of the participants"/>
         <!-- Applies skill debuffs to previous tournament winners -->
-        <string id="FrloGGew" text="以前のトーナメントの勝者にスキルデバフを適用します"/>
+        <string id="FrloGGew" text="以前のトーナメントの勝者にスキルデバフを適用します" original="Applies skill debuffs to previous tournament winners"/>
         <!-- Allow the vanilla round setup -->
-        <string id="nfYBftnO" text="バニララウンドのセットアップを許可する"/>
+        <string id="nfYBftnO" text="バニララウンドのセットアップを許可する" original="Allow the vanilla round setup"/>
         <!-- Allow 1 match with 2 teams of 2 -->
-        <string id="t9yLB8gB" text="2チーム2チームで1試合を許可する"/>
+        <string id="t9yLB8gB" text="2チーム2チームで1試合を許可する" original="Allow 1 match with 2 teams of 2"/>
         <!-- Allow 1 match with 2 teams of 4 -->
-        <string id="5hLSHeuv" text="4チーム2チームで1試合を許可する"/>
+        <string id="5hLSHeuv" text="4チーム2チームで1試合を許可する" original="Allow 1 match with 2 teams of 4"/>
         <!-- Allow 1 match with 4 teams of 1 -->
-        <string id="YfOnzOH6" text="1チーム4チームで1試合を許可する"/>
+        <string id="YfOnzOH6" text="1チーム4チームで1試合を許可する" original="Allow 1 match with 4 teams of 1"/>
         <!-- Allow 1 match with 4 teams of 2 -->
-        <string id="CLbRKpZp" text="2チーム4チームで1試合を許可する"/>
+        <string id="CLbRKpZp" text="2チーム4チームで1試合を許可する" original="Allow 1 match with 4 teams of 2"/>
         <!-- Allow 1 match with 4 teams of 4 -->
-        <string id="5E1lXDYh" text="4チーム4チームで1試合を許可する"/>
+        <string id="5E1lXDYh" text="4チーム4チームで1試合を許可する" original="Allow 1 match with 4 teams of 4"/>
         <!-- Allow 2 matches with 2 teams of 1 -->
-        <string id="OrZaS458" text="1の2チームで2試合を許可する"/>
+        <string id="OrZaS458" text="1の2チームで2試合を許可する" original="Allow 2 matches with 2 teams of 1"/>
         <!-- Allow 2 matches with 2 teams of 2 -->
-        <string id="Dr1Js5fB" text="2チーム2チームで2試合を許可する"/>
+        <string id="Dr1Js5fB" text="2チーム2チームで2試合を許可する" original="Allow 2 matches with 2 teams of 2"/>
         <!-- Allow 2 matches with 2 teams of 4 -->
-        <string id="jEghMKUV" text="4人の2チームで2試合を許可する"/>
+        <string id="jEghMKUV" text="4人の2チームで2試合を許可する" original="Allow 2 matches with 2 teams of 4"/>
         <!-- Allow 2 matches with 4 teams of 1 -->
-        <string id="nmMzoqeC" text="1の4チームで2試合を許可する"/>
+        <string id="nmMzoqeC" text="1の4チームで2試合を許可する" original="Allow 2 matches with 4 teams of 1"/>
         <!-- Allow 2 matches with 4 teams of 2 -->
-        <string id="f8rXSGwN" text="2チーム4チームで2試合を許可する"/>
+        <string id="f8rXSGwN" text="2チーム4チームで2試合を許可する" original="Allow 2 matches with 4 teams of 2"/>
         <!-- Allow 4 matches with 2 teams of 2 -->
-        <string id="GPCYzshA" text="2チーム2チームで4試合を許可する"/>
+        <string id="GPCYzshA" text="2チーム2チームで4試合を許可する" original="Allow 4 matches with 2 teams of 2"/>
         <!-- Allow 4 matches with 4 teams of 1 -->
-        <string id="MjsTFwUv" text="1の4チームで4試合を許可する"/>
+        <string id="MjsTFwUv" text="1の4チームで4試合を許可する" original="Allow 4 matches with 4 teams of 1"/>
         <!-- Allow 4 matches with 2 teams of 1 -->
-        <string id="xMaA76xu" text="1の2チームで4試合を許可する"/>
+        <string id="xMaA76xu" text="1の2チームで4試合を許可する" original="Allow 4 matches with 2 teams of 1"/>
         <!-- Allow 8 matches with 2 teams of 1 -->
-        <string id="otwzXPTQ" text="1の2チームで8試合を許可する"/>
+        <string id="otwzXPTQ" text="1の2チームで8試合を許可する" original="Allow 8 matches with 2 teams of 1"/>
         <!-- Gold won if the hero wins their match in the round -->
-        <string id="i7Ns7K2i" text="ヒーローがラウンドで試合に勝った場合、ゴールドが勝ちました"/>
+        <string id="i7Ns7K2i" text="主人公がラウンドで試合に勝った場合、金メダルが獲得されました" original="Gold won if the hero wins their match in the round"/>
         <!-- XP given if the hero wins their match in the round -->
-        <string id="b0MeEmOS" text="ヒーローがラウンドで試合に勝った場合に与えられるXP"/>
+        <string id="b0MeEmOS" text="ヒーローがラウンドで試合に勝った場合に与えられるXP" original="XP given if the hero wins their match in the round"/>
         <!-- XP given if the hero loses their match in a round -->
-        <string id="Oq7LMvoF" text="主人公がラウンドで試合に負けた場合に与えられるXP"/>
+        <string id="Oq7LMvoF" text="ヒーローがラウンドで試合に負けた場合に与えられるXP" original="XP given if the hero loses their match in a round"/>
         <!-- Gold won if the hero wins the tournaments -->
-        <string id="F8g49VCy" text="主人公がトーナメントに勝った場合、金が勝ちました"/>
+        <string id="F8g49VCy" text="主人公がトーナメントに勝った場合、金メダルを獲得しました" original="Gold won if the hero wins the tournaments"/>
         <!-- XP given if the hero wins the tournaments -->
-        <string id="3BudXy0O" text="主人公がトーナメントに勝った場合に与えられるXP"/>
+        <string id="3BudXy0O" text="主人公がトーナメントに勝った場合に与えられるXP" original="XP given if the hero wins the tournaments"/>
         <!-- XP given if the hero participates in a tournament but doesn't win -->
-        <string id="TXqjPXh7" text="主人公がトーナメントに参加したが勝てなかった場合に与えられるXP"/>
+        <string id="TXqjPXh7" text="主人公がトーナメントに参加したが勝てなかった場合に与えられるXP" original="XP given if the hero participates in a tournament but doesn't win"/>
         <!-- Winners prize -->
-        <string id="wYzmyUCE" text="受賞者賞"/>
+        <string id="wYzmyUCE" text="受賞者賞" original="Winners prize"/>
         <!-- Enable betting -->
-        <string id="FOQEPZD5" text="賭けを有効にする"/>
+        <string id="FOQEPZD5" text="賭けを有効にする" original="Enable betting"/>
         <!-- Only allow betting on the final betting -->
-        <string id="KGcz71VJ" text="最終的な賭けにのみ賭けを許可する"/>
+        <string id="KGcz71VJ" text="最終的な賭けにのみ賭けを許可する" original="Only allow betting on the final betting"/>
         <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
-        <string id="twgHWqU6" text="スキルまたはスキルグループから修飾子（グループ内のすべてのスキルが変更されます）"/>
+        <string id="twgHWqU6" text="スキルまたはスキルグループから修飾子（グループ内のすべてのスキルが変更されます）" original="Skill or skill group to modifier (all skills in a group will be modified)"/>
         <!-- Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified. -->
-        <string id="zoMHI9O3" text="勝利あたりのスキルの減少（％）。スキルがどのように変更されるかを視覚化するには、https：//www.desmos.com/calculator/ajydvitcerを参照してください。"/>
+        <string id="zoMHI9O3" text="勝利あたりのスキルの減少（％）。スキルがどのように変更されるかを視覚化するには、https：//www.desmos.com/calculator/ajydvitcerを参照してください。" original="Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified."/>
         <!-- The lower limit (in %) that the skill(s) can be reduced to. -->
-        <string id="HebJIfaE" text="スキルを減らすことができる下限（％）。"/>
+        <string id="HebJIfaE" text="スキルを減らすことができる下限（％）。" original="The lower limit (in %) that the skill(s) can be reduced to."/>
         <!-- Shows the % reduction of the skill over 20 tournaments -->
-        <string id="vgXMv8oH" text="20トーナメントでのスキルの減少率を示します"/>
+        <string id="vgXMv8oH" text="20トーナメントでのスキルの減少率を示します" original="Shows the % reduction of the skill over 20 tournaments"/>
         <!-- Prize {ITEMNAME} -->
-        <string id="hCNpHVJY" text="賞品{ITEMNAME}"/>
+        <string id="hCNpHVJY" text="賞品{ITEMNAME}" original="Prize {ITEMNAME}"/>
         <!-- Round Rewards -->
-        <string id="g0A4pXY2" text="ラウンドリワード"/>
+        <string id="g0A4pXY2" text="ラウンドリワード" original="Round Rewards"/>
         <!-- Rewards -->
-        <string id="FHkvQbcR" text="報酬"/>
+        <string id="FHkvQbcR" text="報酬" original="Rewards"/>
         <!-- Betting -->
-        <string id="n1Agm9uJ" text="賭け"/>
+        <string id="n1Agm9uJ" text="賭け" original="Betting"/>
     </strings>
 </base>
