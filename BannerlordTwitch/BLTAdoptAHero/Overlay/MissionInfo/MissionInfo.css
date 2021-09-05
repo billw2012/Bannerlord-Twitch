@@ -209,6 +209,13 @@
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
-    background: cyan;
     margin: -0.15em 0.2em 0.2em 0.2em;
+}
+
+.hero-alive-retinue {
+    background: cyan;
+}
+
+.hero-dead-retinue {
+    background: red;
 }

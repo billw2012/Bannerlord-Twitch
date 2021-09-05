@@ -565,31 +565,13 @@ namespace BLTAdoptAHero
                 BLTAdoptAHeroCampaignBehavior.Current.IncreaseParticipationCount(adoptedHero, settings.OnPlayerSide);
             }
 
-            var troopOrigin = new PartyAgentOrigin(heroSummonState.Party, adoptedHero.CharacterObject);
-
             if (settings.OnPlayerSide)
             {
                 Campaign.Current.SetPlayerFormationPreference(adoptedHero.CharacterObject, formationClass);
             }
 
-            Mission.Current.SpawnTroop(
-                troopOrigin
-                , isPlayerSide: settings.OnPlayerSide
-                , hasFormation: true
-                , spawnWithHorse: adoptedHero.CharacterObject.IsMounted 
-                                  && BLTSummonBehavior.ShouldBeMounted(formationClass)
-                , isReinforcement: true
-                , enforceSpawningOnInitialPoint: false
-                , formationTroopCount: 1
-                , formationTroopIndex: 0
-                , isAlarmed: true
-                , wieldInitialWeapons: true
-#if e162
-                , forceDismounted: false
-                , initialPosition: null
-                , initialDirection: null
-#endif
-            );
+            BLTSummonBehavior.SpawnAgent(settings.OnPlayerSide, adoptedHero.CharacterObject, heroSummonState.Party, 
+                adoptedHero.CharacterObject.IsMounted && BLTSummonBehavior.ShouldBeMounted(formationClass));
 
             // Some random stuff that is required to ensure caches are updated
             var expireFn = AccessTools.Method(typeof(TeamQuerySystem), "Expire");

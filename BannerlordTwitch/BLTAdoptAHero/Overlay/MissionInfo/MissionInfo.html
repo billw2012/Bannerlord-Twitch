@@ -36,7 +36,8 @@
                 </div>
             </div>
             <div class='hero-retinue-list drop-shadow-2'>
-                <div v-for='index in Math.min(hero.Retinue, 5)' class='hero-retinue-list-item'></div>
+                <div v-for='index in Math.min(hero.Retinue, 5)' class='hero-retinue-list-item hero-alive-retinue'></div>
+                <div v-for='index in Math.min(hero.DeadRetinue, 5)' class='hero-retinue-list-item hero-dead-retinue'></div>
             </div>
         </div>
     </div>

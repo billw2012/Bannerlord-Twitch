@@ -580,6 +580,7 @@ GlobalConfigs:
     RawXPSkillCap: 330
     ReferenceLevelReward: 15
     RelativeLevelScaling: 0.5
+    RetinueDeathChance: 0.0250000004
     RetinueGoldPerKill: 2500
     RetinueHealPerKill: 50
     RetinueUseHeroesFormation: false
@@ -3649,13 +3650,19 @@ SimTesting:
     Type: Reward
     Weight: 0
   - Args: ''
-    Enabled: true
+    Enabled: false
     Id: '{=ndi9p5jn}100k gold'
     ID: 7698ddba-b00b-4243-bd54-3dc97a4e73cf
     Type: Reward
     Weight: 0
   - Args: ''
-    Enabled: true
+    Enabled: false
+    Id: '{=ndi9p5jn}100k gold'
+    ID: a9933fab-58d4-492a-93fb-34c0d6606c09
+    Type: Reward
+    Weight: 0
+  - Args: ''
+    Enabled: false
     Id: '{=ndi9p5jn}100k gold'
     ID: a9933fab-58d4-492a-93fb-34c0d6606c09
     Type: Reward
@@ -3667,19 +3674,13 @@ SimTesting:
     Type: Reward
     Weight: 0
   - Args: ''
-    Enabled: true
-    Id: '{=ndi9p5jn}100k gold'
-    ID: a9933fab-58d4-492a-93fb-34c0d6606c09
-    Type: Reward
-    Weight: 0
-  - Args: ''
-    Enabled: true
+    Enabled: false
     Id: retinue
     ID: a9933fab-58d4-492a-93fb-34c0d6606c09
     Type: Command
     Weight: 0
   - Args: ''
-    Enabled: true
+    Enabled: false
     Id: '{=IBrMU0VF}Tournament'
     ID: ca586ddf-b9b0-4c59-954c-d166f5c9b644
     Type: Reward
