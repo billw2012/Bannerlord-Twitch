@@ -3371,7 +3371,6 @@ Rewards:
     HealPerSecond: 0
     OnPlayerSide: true
     PreferredFormation: LightCavalry
-    SubBoost: 1
   ID: 77c1dbd8-02cb-47d7-9796-7308e989b7f3
   RespondInOverlay: true
   RespondInTwitch: false
@@ -3400,7 +3399,6 @@ Rewards:
     HealPerSecond: 0
     OnPlayerSide: false
     PreferredFormation: LightCavalry
-    SubBoost: 1
   ID: 422cc8d9-84cb-4cc9-afdf-889e615fdea6
   RespondInOverlay: true
   RespondInTwitch: false
@@ -3661,6 +3659,24 @@ SimTesting:
     Id: '{=ndi9p5jn}100k gold'
     ID: a9933fab-58d4-492a-93fb-34c0d6606c09
     Type: Reward
+    Weight: 0
+  - Args: ''
+    Enabled: true
+    Id: '{=ndi9p5jn}100k gold'
+    ID: a9933fab-58d4-492a-93fb-34c0d6606c09
+    Type: Reward
+    Weight: 0
+  - Args: ''
+    Enabled: true
+    Id: '{=ndi9p5jn}100k gold'
+    ID: a9933fab-58d4-492a-93fb-34c0d6606c09
+    Type: Reward
+    Weight: 0
+  - Args: ''
+    Enabled: true
+    Id: retinue
+    ID: a9933fab-58d4-492a-93fb-34c0d6606c09
+    Type: Command
     Weight: 0
   - Args: ''
     Enabled: true

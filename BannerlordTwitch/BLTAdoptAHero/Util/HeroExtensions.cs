@@ -18,5 +18,11 @@ namespace BLTAdoptAHero
         
         public static Agent GetAgent(this Hero hero)
             => Mission.Current?.Agents?.FirstOrDefault(a => a.Character == hero.CharacterObject);
+        
+        public static PartyBase GetMapEventParty(this Hero hero)
+        {
+            return (PartyBase.MainParty.MapEvent?.InvolvedParties ?? PartyBase.MainParty.SiegeEvent?.Parties)?
+                .FirstOrDefault(p => p.MemberRoster.GetTroopCount(hero.CharacterObject) != 0);
+        }
     }
 }

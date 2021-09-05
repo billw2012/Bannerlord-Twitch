@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
@@ -16,7 +15,6 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
-using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
@@ -49,13 +47,13 @@ namespace BLTAdoptAHero
 
             public ItemCollection GetValues() => FormationMapping;
         }
-        
-        [CategoryOrder("General", -1)]
-        [CategoryOrder("Allowed Missions", 0)]
-        [CategoryOrder("General", 1)]
-        [CategoryOrder("Effects", 2)]
-        [CategoryOrder("End Effects", 3)]
-        [CategoryOrder("Kill Effects", 4)]
+
+        [CategoryOrder("General", -1), 
+         CategoryOrder("Allowed Missions", 0),
+         CategoryOrder("General", 1),
+         CategoryOrder("Effects", 2),
+         CategoryOrder("End Effects", 3),
+         CategoryOrder("Kill Effects", 4)]
         private class Settings : IDocumentable
         {
             [LocDisplayName("{=DkCdNiwF}Allow Field Battle"),
@@ -112,12 +110,6 @@ namespace BLTAdoptAHero
              PropertyOrder(9), UsedImplicitly]
             public Log.Sound AlertSound { get; set; }
 
-            [LocDisplayName("{=H7B3Yzly}Sub Boost"),
-             LocCategory("Effects", "{=tYGvtYKd}Effects"), 
-             LocDescription("{=lFnV3cR9}Multiplier applied to (positive) effects for subscribers"), 
-             PropertyOrder(1), UsedImplicitly]
-            public float SubBoost { get; set; }
-
             [LocDisplayName("{=cXeUjVur}Heal Per Second"),
              LocCategory("Effects", "{=tYGvtYKd}Effects"), 
              LocDescription("{=gnh3KY5a}HP the hero gets every second they are alive in the mission"), 
@@ -167,17 +159,6 @@ namespace BLTAdoptAHero
             = (MissionAgentHandler_SpawnWanderingAgentDelegate) AccessTools.Method(typeof(MissionAgentHandler),
                     "SpawnWanderingAgent", new[] {typeof(LocationCharacter), typeof(MatrixFrame), typeof(bool), typeof(bool)})
                 .CreateDelegate(typeof(MissionAgentHandler_SpawnWanderingAgentDelegate));
-        
-        // private delegate Agent SpawnWanderingAgentAutoDelegate(
-        //     MissionAgentHandler instance,
-        //     LocationCharacter locationCharacter,
-        //     bool hasTorch);
-        //
-        // private static readonly SpawnWanderingAgentAutoDelegate SpawnWanderingAgentAuto = (SpawnWanderingAgentAutoDelegate)
-        //     AccessTools.Method(typeof(MissionAgentHandler),
-        //             "SpawnWanderingAgent",
-        //             new[] {typeof(LocationCharacter), typeof(bool)})
-        //         .CreateDelegate(typeof(SpawnWanderingAgentDelegate));
         
         private delegate MatrixFrame ArenaPracticeFightMissionController_GetSpawnFrameDelegate(
             ArenaPracticeFightMissionController instance, bool considerPlayerDistance, bool isInitialSpawn);
@@ -253,8 +234,7 @@ namespace BLTAdoptAHero
         };
 
         protected override void ExecuteInternal(Hero adoptedHero, ReplyContext context, object config,
-            Action<string> onSuccess,
-            Action<string> onFailure)
+            Action<string> onSuccess, Action<string> onFailure)
         {
             var settings = (Settings) config;
             int availableGold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
@@ -282,8 +262,7 @@ namespace BLTAdoptAHero
                || MissionHelpers.InFriendlyMission() && !settings.AllowFriendlyMission
                || MissionHelpers.InHideOutMission() && (!settings.AllowHideOut || !settings.OnPlayerSide)
                || MissionHelpers.InTrainingFieldMission()
-               || MissionHelpers.InArenaPracticeVisitingArea()
-            )
+               || MissionHelpers.InArenaPracticeVisitingArea())
             {
                 onFailure("{=HWnEJg1M}You cannot be summoned now, this mission does not allow it!".Translate());
                 return;
@@ -291,7 +270,8 @@ namespace BLTAdoptAHero
 
             if (!Mission.Current.IsLoadingFinished 
                 || Mission.Current.CurrentState != Mission.State.Continuing
-                || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null && Mission.Current.Mode != MissionMode.Battle)
+                || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null 
+                    && Mission.Current.Mode != MissionMode.Battle)
             {
                 onFailure("{=v5dO40vi}You cannot be summoned now, the mission has not started yet!".Translate());
                 return;
@@ -302,22 +282,349 @@ namespace BLTAdoptAHero
                 return;
             }
             
-            if (MissionHelpers.HeroIsSpawned(adoptedHero))
+            if (CampaignMission.Current.Location != null)
             {
-                onFailure("{=YTEgKnCW}You cannot be summoned, you are already here!".Translate());
+                SummonInLocation(adoptedHero, settings, context, onSuccess, onFailure);
+            }
+            else
+            {
+                // We need to synchronize troop spawning to the MissionBehaviour OnMissionTick, or occasional null pointer  
+                // crashes seem to happen in the engine...
+                BLTSummonBehavior.Current.DoNextTick(() =>
+                {
+                    SummonInBattle(adoptedHero, settings, context, onSuccess, onFailure);
+                });
+            }
+        }
+
+        private static void SummonInLocation(Hero adoptedHero, Settings settings, ReplyContext context, 
+            Action<string> onSuccess, Action<string> onFailure)
+        {
+            if (CampaignMission.Current.Location.ContainsCharacter(adoptedHero))
+            {
+                onFailure("{=YMiZAluP}You cannot be summoned, you are already here!");
+                return;
+            }
+            
+            var locationCharacter = LocationCharacter.CreateBodyguardHero(adoptedHero,
+                MobileParty.MainParty,
+                SandBoxManager.Instance.AgentBehaviorManager.AddBodyguardBehaviors);
+
+            var missionAgentHandler = Mission.Current.GetMissionBehaviour<MissionAgentHandler>();
+            var worldFrame = missionAgentHandler.Mission.MainAgent.GetWorldFrame();
+            worldFrame.Origin.SetVec2(worldFrame.Origin.AsVec2 + (worldFrame.Rotation.f * 10f + worldFrame.Rotation.s).AsVec2);
+
+            CampaignMission.Current.Location.AddCharacter(locationCharacter);
+
+            Agent agent;
+            if (MissionHelpers.InArenaPracticeMission())
+            {
+                var controller = Mission.Current.GetMissionBehaviour<ArenaPracticeFightMissionController>();
+                var pos = ArenaPracticeFightMissionController_GetSpawnFrame(controller, false, false);
+                agent = MissionAgentHandler_SpawnWanderingAgent(missionAgentHandler, locationCharacter, pos, false, true);
+                var _participantAgents = (List<Agent>)AccessTools
+                    .Field(typeof(ArenaPracticeFightMissionController), "_participantAgents")
+                    .GetValue(controller);
+                _participantAgents.Add(agent);
+            }
+            else
+            {
+                agent = missionAgentHandler.SpawnLocationCharacter(locationCharacter);
+            }
+
+            agent.SetTeam(settings.OnPlayerSide
+                ? missionAgentHandler.Mission.PlayerTeam
+                : missionAgentHandler.Mission.PlayerEnemyTeam, false);
+
+            // For player hostile situations we setup a 1v1 fight
+            if (!settings.OnPlayerSide)
+            {
+                Mission.Current.GetMissionBehaviour<MissionFightHandler>().StartCustomFight(
+                    new() { Agent.Main },
+                    new() { agent }, false, false, false,
+                    playerWon =>
+                    {
+                        if (BLTAdoptAHeroModule.CommonConfig.WinGold == 0)
+                            return;
+                        if (!playerWon)
+                        {
+                            Hero.MainHero.ChangeHeroGold(-BLTAdoptAHeroModule.CommonConfig.WinGold);
+                            // User gets their gold back also
+                            BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero,
+                                BLTAdoptAHeroModule.CommonConfig.WinGold + settings.GoldCost);
+                            ActionManager.SendReply(context,
+                                "{=pmj8vjZj}You won {WonGold}{GoldIcon}!".Translate(
+                                    ("WonGold", BLTAdoptAHeroModule.CommonConfig.WinGold),
+                                    ("GoldIcon", Naming.Gold)));
+                        }
+                        else if (BLTAdoptAHeroModule.CommonConfig.LoseGold > 0)
+                        {
+                            Hero.MainHero.ChangeHeroGold(BLTAdoptAHeroModule.CommonConfig.LoseGold);
+                            BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero,
+                                -BLTAdoptAHeroModule.CommonConfig.LoseGold);
+                            ActionManager.SendReply(context,
+                                "{=ajhKKeEo}You lost {LostGold}{GoldIcon}!".Translate(
+                                    ("LostGold", BLTAdoptAHeroModule.CommonConfig.WinGold),
+                                    ("GoldIcon", Naming.Gold)));
+                        }
+                    });
+            }
+
+            // Bodyguard
+            if (settings.OnPlayerSide && agent.GetComponent<CampaignAgentComponent>().AgentNavigator != null)
+            {
+                var behaviorGroup = agent.GetComponent<CampaignAgentComponent>().AgentNavigator
+                    .GetBehaviorGroup<DailyBehaviorGroup>();
+                (behaviorGroup.GetBehavior<FollowAgentBehavior>() ?? behaviorGroup.AddBehavior<FollowAgentBehavior>())
+                    .SetTargetAgent(Agent.Main);
+                behaviorGroup.SetScriptedBehavior<FollowAgentBehavior>();
+            }
+
+            BLTRemoveAgentsBehavior.Current.Add(adoptedHero);
+
+            Log.ShowInformation(!string.IsNullOrEmpty(context.Args)
+                    ? context.Args
+                    : GetShouts(settings).SelectRandomWeighted(shout => shout.Weight)?.Text?.ToString() ?? "...",
+                adoptedHero.CharacterObject, settings.AlertSound);
+
+            if (settings.GoldCost != 0)
+            {
+                BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
+            }
+
+            onSuccess("{=Ft3cxfIx}You have joined the battle!".Translate());
+        }
+
+        private static void SummonInBattle(Hero adoptedHero, Settings settings, ReplyContext context, Action<string> onSuccess,
+            Action<string> onFailure)
+        {
+            if (Mission.Current.CurrentState != Mission.State.Continuing)
+            {
+                onFailure("{=YZ4V5e4V}You cannot be summoned now, the mission has not started yet!".Translate());
                 return;
             }
 
-            bool onAttackingSide = Mission.Current.AttackerTeam.IsValid && 
+            var heroSummonState = BLTSummonBehavior.Current.GetHeroSummonState(adoptedHero);
+            if (heroSummonState != null && heroSummonState.WasPlayerSide != settings.OnPlayerSide)
+            {
+                onFailure("{=2D2T6xP6}You cannot switch sides, you traitor!".Translate());
+                return;
+            }
+
+            if (heroSummonState != null
+                && BLTAdoptAHeroModule.CommonConfig.AllowDeath
+                && heroSummonState.State == AgentState.Killed)
+            {
+                onFailure("{=RBTDviuM}You cannot be summoned, you DIED!".Translate());
+                return;
+            }
+
+            // Check again that the hero is alive, as this method is run on a later tick from the previous one
+            if (heroSummonState is { State: AgentState.Active })
+            {
+                onFailure("{=YMiZAluP}You cannot be summoned, you are already here!".Translate());
+                return;
+            }
+
+            if (heroSummonState?.InCooldown == true)
+            {
+                onFailure("{=kyUh29ij}{CoolDown}s cooldown remaining"
+                    .Translate(("CoolDown", heroSummonState.CooldownRemaining.ToString("0"))));
+                return;
+            }
+
+            var heroClass = BLTAdoptAHeroCampaignBehavior.Current.GetClass(adoptedHero);
+
+            // We don't support Unset, or General formations, and implement custom behaviour for Bodyguard
+            if (!Enum.TryParse(heroClass?.Formation ?? settings.PreferredFormation, out FormationClass formationClass)
+                || formationClass >= FormationClass.NumberOfRegularFormations)
+            {
+                formationClass = FormationClass.Infantry;
+            }
+            
+            bool firstSummon = heroSummonState == null;
+            if (firstSummon)
+            {
+                var party = adoptedHero.GetMapEventParty() ?? settings.OnPlayerSide switch
+                {
+                    true when Mission.Current?.PlayerTeam != null &&
+                              Mission.Current?.PlayerTeam?.ActiveAgents.Any() == true => PartyBase.MainParty,
+                    false when Mission.Current?.PlayerEnemyTeam != null &&
+                               Mission.Current?.PlayerEnemyTeam.ActiveAgents.Any() == true => Mission.Current
+                        .PlayerEnemyTeam?.TeamAgents?.Select(a => a.Origin?.BattleCombatant as PartyBase)
+                        .Where(p => p != null)
+                        .SelectRandom(),
+                    _ => null
+                };
+
+                if (party == null)
+                {
+                    onFailure("{=jtqEqonE}Could not find a party for you to join!".Translate());
+                    return;
+                }
+
+                var originalParty = adoptedHero.PartyBelongedTo;
+                bool wasLeader = adoptedHero.PartyBelongedTo?.LeaderHero == adoptedHero;
+                if (originalParty?.Party != party)
+                {
+                    originalParty?.Party?.AddMember(adoptedHero.CharacterObject, -1);
+                    party.AddMember(adoptedHero.CharacterObject, 1);
+                }
+
+                BLTAdoptAHeroCustomMissionBehavior.Current.AddListeners(adoptedHero,
+                    onSlowTick: dt =>
+                    {
+                        if (settings.HealPerSecond != 0)
+                        {
+                            var activeAgent = Mission.Current?.Agents?.FirstOrDefault(a =>
+                                a.IsActive() && a.Character == adoptedHero.CharacterObject);
+                            if (activeAgent?.IsActive() == true)
+                            {
+                                Log.Trace($"[{nameof(SummonHero)}] healing {adoptedHero}");
+                                activeAgent.Health = Math.Min(activeAgent.HealthLimit,
+                                    activeAgent.Health + settings.HealPerSecond * dt);
+                            }
+                        }
+                    },
+                    onMissionOver: () =>
+                    {
+                        if (adoptedHero.PartyBelongedTo != originalParty)
+                        {
+                            party.AddMember(adoptedHero.CharacterObject, -1);
+                            // Use insert at front to make sure we put the character back as party leader if they were previously
+                            originalParty?.Party?.MemberRoster.AddToCounts(adoptedHero.CharacterObject, 1, insertAtFront: wasLeader);
+                            Log.Trace($"[{nameof(SummonHero)}] moving {adoptedHero} from {party} back to {originalParty?.Party?.ToString() ?? "no party"}");
+                        }
+
+                        if (Mission.Current?.MissionResult != null)
+                        {
+                            var results = new List<string>();
+                            float finalRewardScaling =
+                                    (settings.OnPlayerSide
+                                        ? BLTAdoptAHeroCommonMissionBehavior.Current.PlayerSideRewardMultiplier
+                                        : BLTAdoptAHeroCommonMissionBehavior.Current.EnemySideRewardMultiplier)
+                                ;
+
+                            if (settings.OnPlayerSide == Mission.Current.MissionResult.PlayerVictory)
+                            {
+                                int actualGold = (int)(finalRewardScaling * BLTAdoptAHeroModule.CommonConfig.WinGold +
+                                                       settings.GoldCost);
+                                if (actualGold > 0)
+                                {
+                                    BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, actualGold);
+                                    results.Add(finalRewardScaling != 1
+                                        ? $"{Naming.Inc}{actualGold}{Naming.Gold} (x{finalRewardScaling:0.00})"
+                                        : $"{Naming.Inc}{actualGold}{Naming.Gold}");
+                                }
+
+                                if (BLTAdoptAHeroModule.CommonConfig.WinXP > 0)
+                                {
+                                    (bool success, string description) = SkillXP.ImproveSkill(adoptedHero, 
+                                        BLTAdoptAHeroModule.CommonConfig.WinXP, SkillsEnum.All, auto: true);
+                                    if (success)
+                                    {
+                                        results.Add(finalRewardScaling != 1
+                                            ? $"{description} (x{finalRewardScaling:0.00})"
+                                            : description);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (BLTAdoptAHeroModule.CommonConfig.LoseGold > 0)
+                                {
+                                    BLTAdoptAHeroCampaignBehavior.Current
+                                        .ChangeHeroGold(adoptedHero, -BLTAdoptAHeroModule.CommonConfig.LoseGold);
+                                    results.Add($"{Naming.Dec}{BLTAdoptAHeroModule.CommonConfig.LoseGold}{Naming.Gold}");
+                                }
+
+                                int xp = (int)(finalRewardScaling * BLTAdoptAHeroModule.CommonConfig.LoseXP);
+                                if (xp > 0)
+                                {
+                                    (bool success, string description) = SkillXP.ImproveSkill(adoptedHero, xp,
+                                        SkillsEnum.All, auto: true);
+                                    if (success)
+                                    {
+                                        results.Add(finalRewardScaling != 1
+                                            ? $"{description} (x{finalRewardScaling:0.00})"
+                                            : description);
+                                    }
+                                }
+                            }
+
+                            if (results.Any())
+                            {
+                                Log.LogFeedResponse(context.UserName, results.ToArray());
+                            }
+                        }
+                    },
+                    replaceExisting: false
+                );
+
+                heroSummonState = BLTSummonBehavior.Current.AddHeroSummonState(adoptedHero, settings.OnPlayerSide, party);
+                BLTAdoptAHeroCampaignBehavior.Current.IncreaseParticipationCount(adoptedHero, settings.OnPlayerSide);
+            }
+
+            var troopOrigin = new PartyAgentOrigin(heroSummonState.Party, adoptedHero.CharacterObject);
+
+            if (settings.OnPlayerSide)
+            {
+                Campaign.Current.SetPlayerFormationPreference(adoptedHero.CharacterObject, formationClass);
+            }
+
+            Mission.Current.SpawnTroop(
+                troopOrigin
+                , isPlayerSide: settings.OnPlayerSide
+                , hasFormation: true
+                , spawnWithHorse: adoptedHero.CharacterObject.IsMounted 
+                                  && BLTSummonBehavior.ShouldBeMounted(formationClass)
+                , isReinforcement: true
+                , enforceSpawningOnInitialPoint: false
+                , formationTroopCount: 1
+                , formationTroopIndex: 0
+                , isAlarmed: true
+                , wieldInitialWeapons: true
+#if e162
+                , forceDismounted: false
+                , initialPosition: null
+                , initialDirection: null
+#endif
+            );
+
+            // Some random stuff that is required to ensure caches are updated
+            var expireFn = AccessTools.Method(typeof(TeamQuerySystem), "Expire");
+            foreach (var team in Mission.Current.Teams)
+            {
+                expireFn.Invoke(team.QuerySystem, new object[] { }); // .Expire();
+            }
+            foreach (var formation in Mission.Current.Teams.SelectMany(t => t.Formations))
+            {
+                AccessTools.Field(typeof(Formation), "GroupSpawnIndex")
+                    .SetValue(formation, 0); //formation2.GroupSpawnIndex = 0;
+            }
+
+            // Finished
+            Log.ShowInformation(!string.IsNullOrEmpty(context.Args)
+                    ? context.Args
+                    : GetShouts(settings).SelectRandomWeighted(shout => shout.Weight)?.Text?.ToString() ?? "...",
+                adoptedHero.CharacterObject, settings.AlertSound);
+
+            BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
+
+            onSuccess("{=TvkEBZeY}You have joined the battle!".Translate());
+        }
+
+        private static IEnumerable<Shout> GetShouts(Settings settings)
+        {
+            bool onAttackingSide = Mission.Current.AttackerTeam.IsValid &&
                                    (settings.OnPlayerSide
                                        ? Mission.Current.AttackerTeam.IsFriendOf(Mission.Current.PlayerTeam)
-                                       : !Mission.Current.AttackerTeam.IsFriendOf(Mission.Current.PlayerTeam))
-                ;
+                                       : !Mission.Current.AttackerTeam.IsFriendOf(Mission.Current.PlayerTeam));
             bool doingSiegeAttack = MissionHelpers.InSiegeMission() && onAttackingSide;
             bool doingSiegeDefend = MissionHelpers.InSiegeMission() && !onAttackingSide;
             bool doingFieldBattle = MissionHelpers.InFieldBattleMission();
             bool doingGeneral = !doingSiegeAttack && !doingSiegeDefend && !doingFieldBattle;
-            var messages = (BLTAdoptAHeroModule.CommonConfig.IncludeDefaultShouts
+            return (BLTAdoptAHeroModule.CommonConfig.IncludeDefaultShouts
                     ? DefaultShouts
                     : Enumerable.Empty<Shout>())
                 .Concat(BLTAdoptAHeroModule.CommonConfig.Shouts ?? Enumerable.Empty<Shout>())
@@ -326,482 +633,11 @@ namespace BLTAdoptAHero
                     && (s.General || !doingGeneral)
                     && (s.FieldBattle || !doingFieldBattle)
                     && (s.SiegeAttack || !doingSiegeAttack)
-                    && (s.SiegeDefend || !doingSiegeDefend)
-                );
-
-            if (CampaignMission.Current.Location != null)
-            {
-                var locationCharacter = LocationCharacter.CreateBodyguardHero(adoptedHero,
-                    MobileParty.MainParty,
-                    SandBoxManager.Instance.AgentBehaviorManager.AddBodyguardBehaviors);
-                
-                var missionAgentHandler = Mission.Current.GetMissionBehaviour<MissionAgentHandler>();
-                var worldFrame = missionAgentHandler.Mission.MainAgent.GetWorldFrame();
-                worldFrame.Origin.SetVec2(worldFrame.Origin.AsVec2 + (worldFrame.Rotation.f * 10f + worldFrame.Rotation.s).AsVec2);
-                
-                CampaignMission.Current.Location.AddCharacter(locationCharacter);
-
-                Agent agent;
-                if (MissionHelpers.InArenaPracticeMission())
-                {
-                    var controller = Mission.Current.GetMissionBehaviour<ArenaPracticeFightMissionController>();
-                    var pos = ArenaPracticeFightMissionController_GetSpawnFrame(controller, false, false);
-                    agent = MissionAgentHandler_SpawnWanderingAgent(missionAgentHandler, locationCharacter, pos, false, true);
-                    var _participantAgents = (List<Agent>)AccessTools.Field(typeof(ArenaPracticeFightMissionController), "_participantAgents")
-                        .GetValue(controller);
-                    _participantAgents.Add(agent);
-                }
-                else
-                {
-                    agent = missionAgentHandler.SpawnLocationCharacter(locationCharacter);
-                }
-
-                agent.SetTeam(settings.OnPlayerSide 
-                    ? missionAgentHandler.Mission.PlayerTeam
-                    : missionAgentHandler.Mission.PlayerEnemyTeam, false);
-                
-                // For player hostile situations we setup a 1v1 fight
-                if (!settings.OnPlayerSide)
-                {
-                    Mission.Current.GetMissionBehaviour<MissionFightHandler>().StartCustomFight(
-                        new() {Agent.Main},
-                        new() {agent}, false, false, false,
-                        playerWon =>
-                        {
-                            if (BLTAdoptAHeroModule.CommonConfig.WinGold != 0)
-                            {
-                                if (!playerWon)
-                                {
-                                    Hero.MainHero.ChangeHeroGold(-BLTAdoptAHeroModule.CommonConfig.WinGold);
-                                    // User gets their gold back also
-                                    BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, BLTAdoptAHeroModule.CommonConfig.WinGold + settings.GoldCost);
-                                    ActionManager.SendReply(context, 
-                                        "{=pmj8vjZj}You won {WonGold}{GoldIcon}!".Translate(
-                                                ("WonGold", BLTAdoptAHeroModule.CommonConfig.WinGold),
-                                                ("GoldIcon", Naming.Gold)
-                                                ));
-                                }
-                                else if(BLTAdoptAHeroModule.CommonConfig.LoseGold > 0)
-                                {
-                                    Hero.MainHero.ChangeHeroGold(BLTAdoptAHeroModule.CommonConfig.LoseGold);
-                                    BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -BLTAdoptAHeroModule.CommonConfig.LoseGold);
-                                    ActionManager.SendReply(context,
-                                        "{=ajhKKeEo}You lost {LostGold}{GoldIcon}!".Translate(
-                                            ("LostGold", BLTAdoptAHeroModule.CommonConfig.WinGold),
-                                            ("GoldIcon", Naming.Gold)
-                                        ));
-
-                                    //$@"You lost {BLTAdoptAHeroModule.CommonConfig.LoseGold + settings.GoldCost}{Naming.Gold}!");
-                                }
-                            }
-                        });
-                }
-
-                // Bodyguard
-                if (settings.OnPlayerSide && agent.GetComponent<CampaignAgentComponent>().AgentNavigator != null)
-                {
-                    var behaviorGroup = agent.GetComponent<CampaignAgentComponent>().AgentNavigator.GetBehaviorGroup<DailyBehaviorGroup>();
-                    (behaviorGroup.GetBehavior<FollowAgentBehavior>() ?? behaviorGroup.AddBehavior<FollowAgentBehavior>()).SetTargetAgent(Agent.Main);
-                    behaviorGroup.SetScriptedBehavior<FollowAgentBehavior>();
-                }
-                
-                BLTRemoveAgentsBehavior.Current.Add(adoptedHero);
-                // missionAgentHandler.SimulateAgent(agent);
-                
-                //SetAgentHealth(agent);
-
-                Log.ShowInformation(!string.IsNullOrEmpty(context.Args) 
-                        ? context.Args 
-                        : messages.SelectRandomWeighted(shout => shout.Weight)?.Text?.ToString() ?? "...",
-                    adoptedHero.CharacterObject, settings.AlertSound);
-
-                BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
-
-                onSuccess("{=Ft3cxfIx}You have joined the battle!".Translate());
-            }
-            else
-            {
-                // We need to synchronize troop spawning to the MissionBehaviour OnMissionTick, or occasional null pointer  
-                // crashes seem to happen in the engine...
-                BLTSummonBehavior.Current.DoNextTick(() =>
-                {
-                    if (Mission.Current.CurrentState != Mission.State.Continuing)
-                    {
-                        onFailure("{=YZ4V5e4V}You cannot be summoned now, the mission has not started yet!".Translate());
-                        return;
-                    }
-
-                    var existingHero = BLTSummonBehavior.Current.GetSummonedHero(adoptedHero);
-                    if (existingHero != null && existingHero.WasPlayerSide != settings.OnPlayerSide)
-                    {
-                        onFailure("{=2D2T6xP6}You cannot switch sides, you traitor!".Translate());
-                        return;
-                    }
-
-                    if (existingHero != null
-                        && BLTAdoptAHeroModule.CommonConfig.AllowDeath
-                        && existingHero.State == AgentState.Killed)
-                    {
-                        onFailure("{=RBTDviuM}You cannot be summoned, you DIED!".Translate());
-                        return;
-                    }
-                    
-                    // Check again, as tick is delayed...
-                    if (existingHero is {State: AgentState.Active})
-                    {
-                        onFailure("{=YMiZAluP}You cannot be summoned, you are already here!".Translate());
-                        return;
-                    }
-
-                    if (existingHero?.InCooldown == true)
-                    {
-                        onFailure("{=kyUh29ij}{CoolDown}s cooldown remaining"
-                            .Translate(("CoolDown", existingHero.CooldownRemaining.ToString("0"))));
-                        return;
-                    }
-
-                    float actualBoost = context.IsSubscriber ? Math.Max(settings.SubBoost, 1) : 1;
-
-                    bool firstSummon = existingHero == null; 
-                    if (firstSummon)
-                    {
-                        // If the hero exists in one of the parties already they cannot summon
-                        // TODO: let them summon their retinue anyway
-                        var existingParty = (PartyBase.MainParty.MapEvent?.InvolvedParties ?? PartyBase.MainParty.SiegeEvent?.Parties)?
-                            .FirstOrDefault(p => p.MemberRoster.GetTroopCount(adoptedHero.CharacterObject) != 0);
-
-                        if(existingParty != null)
-                        {
-                            onFailure("{=93Hrc2EA}You cannot be summoned, your party is already here!".Translate());
-                            return;
-                        }
-                        
-                        var party = settings.OnPlayerSide switch
-                        {
-                            true when Mission.Current?.PlayerTeam != null &&
-                                      Mission.Current?.PlayerTeam?.ActiveAgents.Any() == true => PartyBase.MainParty,
-                            false when Mission.Current?.PlayerEnemyTeam != null &&
-                                       Mission.Current?.PlayerEnemyTeam.ActiveAgents.Any() == true => Mission.Current
-                                .PlayerEnemyTeam?.TeamAgents?.Select(a => a.Origin?.BattleCombatant as PartyBase)
-                                .Where(p => p != null)
-                                .SelectRandom(),
-                            _ => null
-                        };
-
-                        if (party == null)
-                        {
-                            onFailure("{=jtqEqonE}Could not find a party for you to join!".Translate());
-                            return;
-                        }
-
-                        var originalParty = adoptedHero.PartyBelongedTo;
-                        bool wasLeader = adoptedHero.PartyBelongedTo?.LeaderHero == adoptedHero;
-                        if (originalParty?.Party != party)
-                        {
-                            originalParty?.Party?.AddMember(adoptedHero.CharacterObject, -1);
-                            party.AddMember(adoptedHero.CharacterObject, 1);
-                        }
-
-                        var heroClass = BLTAdoptAHeroCampaignBehavior.Current.GetClass(adoptedHero);
-
-                        // We don't support Unset, or General formations, and implement custom behaviour for Bodyguard
-                        if (!Enum.TryParse(heroClass?.Formation ?? settings.PreferredFormation, out FormationClass formationClass)
-                                 || formationClass >= FormationClass.NumberOfRegularFormations)
-                        {
-                            formationClass = FormationClass.Infantry;
-                        }
-
-                        BLTAdoptAHeroCustomMissionBehavior.Current.AddListeners(adoptedHero,
-                            onSlowTick: dt =>
-                            {
-                                if (settings.HealPerSecond != 0)
-                                {
-                                    var activeAgent = Mission.Current?.Agents?.FirstOrDefault(a =>
-                                        a.IsActive() && a.Character == adoptedHero.CharacterObject);
-                                    if (activeAgent?.IsActive() == true)
-                                    {
-                                        Log.Trace($"[{nameof(SummonHero)}] healing {adoptedHero}");
-                                        activeAgent.Health = Math.Min(activeAgent.HealthLimit,
-                                            activeAgent.Health + settings.HealPerSecond * dt * actualBoost);
-                                    }
-                                }
-                            },
-                            onMissionOver: () =>
-                            {
-                                if (adoptedHero.PartyBelongedTo != originalParty)
-                                {
-                                    party.AddMember(adoptedHero.CharacterObject, -1);
-                                    // Use insert at front to make sure we put the character back as party leader if they were previously
-                                    originalParty?.Party?.MemberRoster.AddToCounts(adoptedHero.CharacterObject, 1,
-                                        insertAtFront: wasLeader);
-                                    Log.Trace($"[{nameof(SummonHero)}] moving {adoptedHero} from {party} back to {originalParty?.Party?.ToString() ?? "no party"}");
-                                }
-
-                                if (Mission.Current?.MissionResult != null)
-                                {
-                                    var results = new List<string>();
-                                    float finalRewardScaling =
-                                            actualBoost * 
-                                            (settings.OnPlayerSide 
-                                            ? BLTAdoptAHeroCommonMissionBehavior.Current.PlayerSideRewardMultiplier
-                                            : BLTAdoptAHeroCommonMissionBehavior.Current.EnemySideRewardMultiplier)
-                                        ;
-                                    
-                                    if (settings.OnPlayerSide == Mission.Current.MissionResult.PlayerVictory)
-                                    {
-                                        int actualGold = (int) (finalRewardScaling * BLTAdoptAHeroModule.CommonConfig.WinGold + settings.GoldCost);
-                                        if (actualGold > 0)
-                                        {
-                                            int newGold = BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, actualGold);
-                                            results.Add(finalRewardScaling != 1
-                                                ? $"{Naming.Inc}{actualGold}{Naming.Gold} (x{finalRewardScaling:0.00})"
-                                                : $"{Naming.Inc}{actualGold}{Naming.Gold}");
-                                        }
-
-                                        int xp = (int) (BLTAdoptAHeroModule.CommonConfig.WinXP * actualBoost);
-                                        if (xp > 0)
-                                        {
-                                            (bool success, string description) = SkillXP.ImproveSkill(adoptedHero, xp,
-                                                SkillsEnum.All, auto: true);
-                                            if (success)
-                                            {
-                                                results.Add(finalRewardScaling != 1
-                                                    ? $"{description} (x{finalRewardScaling:0.00})"
-                                                    : description);
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (BLTAdoptAHeroModule.CommonConfig.LoseGold > 0)
-                                        {
-                                            BLTAdoptAHeroCampaignBehavior.Current
-                                                .ChangeHeroGold(adoptedHero, -BLTAdoptAHeroModule.CommonConfig.LoseGold);
-                                            results.Add($"{Naming.Dec}{BLTAdoptAHeroModule.CommonConfig.LoseGold}{Naming.Gold}");
-                                        }
-
-                                        int xp = (int) (finalRewardScaling * BLTAdoptAHeroModule.CommonConfig.LoseXP);
-                                        if (xp > 0)
-                                        {
-                                            (bool success, string description) = SkillXP.ImproveSkill(adoptedHero, xp,
-                                                SkillsEnum.All, auto: true);
-                                            if (success)
-                                            {
-                                                results.Add(finalRewardScaling != 1
-                                                    ? $"{description} (x{finalRewardScaling:0.00})"
-                                                    : description);
-                                            }
-                                        }
-                                    }
-
-                                    if (results.Any())
-                                    {
-                                        Log.LogFeedResponse(context.UserName, results.ToArray());
-                                    }
-                                }
-                            },
-                            replaceExisting: false
-                        );
-                        existingHero = BLTSummonBehavior.Current.AddSummonedHero(adoptedHero, settings.OnPlayerSide, formationClass, party);
-                        BLTAdoptAHeroCampaignBehavior.Current.IncreaseParticipationCount(adoptedHero, settings.OnPlayerSide);
-                    }
-                    
-                    var troopOrigin = new PartyAgentOrigin(existingHero.Party, adoptedHero.CharacterObject);
-                    bool isMounted = Mission.Current.Mode != MissionMode.Stealth 
-                                     && !MissionHelpers.InSiegeMission() 
-                                     && existingHero.Formation is
-                                         FormationClass.Cavalry or
-                                         FormationClass.LightCavalry or
-                                         FormationClass.HeavyCavalry or
-                                         FormationClass.HorseArcher
-                                     ;
-
-                    // The standard MissionAgentSpawnLogic.SpawnTroops does this for formations also,
-                    // however it is difficult to do for us as the class required is a private subclass,
-                    // and not accessible except through raw reflection. 
-                    // It doesn't seem to be necessary as the required formations appear to be created dynamically
-                    // anyway, so it might just be legacy code.
-                    // var formation = Mission.GetAgentTeam(troopOrigin, settings.OnPlayerSide).GetFormation(existingHero.Formation);
-                    // if (formation != null && !(bool)AccessTools.Field(typeof(Formation), "HasBeenPositioned").GetValue(formation))
-                    // {
-                    //     formation.BeginSpawn(1, isMounted);
-                    //     Mission.Current.SpawnFormation(formation, 1, Mission.Current.Mode != MissionMode.Stealth 
-                    //                                                  && !InSiegeMission(), isMounted, true);
-                    //     var spawnLogic = Mission.Current.GetMissionBehaviour<MissionAgentSpawnLogic>();
-                    //     var _spawnedFormations = (MBList<Formation>) AccessTools
-                    //         .Field(typeof(MissionAgentSpawnLogic), "_spawnedFormations").GetValue(spawnLogic);
-                    //     _spawnedFormations.Add(formation);
-                    // }
-
-                    bool allowRetinue = firstSummon
-                                        && !MissionHelpers.InHideOutMission()
-                                        && !MissionHelpers.InArenaPracticeMission()
-                                        && !MissionHelpers.InTournament()
-                                        && !MissionHelpers.InFriendlyMission();
-
-                    var retinueTroops = allowRetinue 
-                        ? BLTAdoptAHeroCampaignBehavior.Current.GetRetinue(adoptedHero).ToList() 
-                        : Enumerable.Empty<CharacterObject>().ToList();
-
-                    int formationTroopIdx = 0;
-
-                    int totalTroopsCount = 1 + retinueTroops.Count;
-                    if (settings.OnPlayerSide)
-                    {
-                        Campaign.Current.SetPlayerFormationPreference(adoptedHero.CharacterObject,
-                            existingHero.Formation);
-                    }
-
-                    existingHero.CurrentAgent = Mission.Current.SpawnTroop(
-                          troopOrigin
-                        , isPlayerSide: settings.OnPlayerSide
-                        , hasFormation: true
-                        , spawnWithHorse: adoptedHero.CharacterObject.IsMounted && isMounted
-                        , isReinforcement: true
-                        , enforceSpawningOnInitialPoint: false
-                        , formationTroopCount: totalTroopsCount
-                        , formationTroopIndex: formationTroopIdx++
-                        , isAlarmed: true
-                        , wieldInitialWeapons: true
-                        #if e162
-                        , forceDismounted: false
-                        , initialPosition: null
-                        , initialDirection: null
-                        #endif
-                        );
-
-                    existingHero.State = AgentState.Active;
-                    existingHero.TimesSummoned++;
-                    existingHero.SummonTime = MBCommon.GetTime(MBCommon.TimeType.Mission);
-
-                    // if (settings.OnPlayerSide && existingHero.Formation == FormationClass.Bodyguard)
-                    // {
-                    //     var spawnPos = Vec2.Forward * (3 + MBRandom.RandomFloat * 5);
-                    //     spawnPos.RotateCCW(MathF.PI * 2 * MBRandom.RandomFloat);
-                    //     existingHero.CurrentAgent.SetColumnwiseFollowAgent(Agent.Main, ref spawnPos);
-                    //     // agent.HumanAIComponent.FollowAgent(Agent.Main);
-                    // }
-
-                    if (allowRetinue)
-                    {
-                        bool retinueMounted = Mission.Current.Mode != MissionMode.Stealth 
-                                              && !MissionHelpers.InSiegeMission() 
-                                              && (isMounted || !BLTAdoptAHeroModule.CommonConfig.RetinueUseHeroesFormation);
-                        var agent_name = AccessTools.Field(typeof(Agent), "_name");
-                        foreach (var retinueTroop in retinueTroops)
-                        {
-                            // Don't modify formation for non-player side spawn as we don't really care
-                            bool hasPrevFormation = Campaign.Current.PlayerFormationPreferences
-                                                        .TryGetValue(retinueTroop, out var prevFormation)
-                                                    && settings.OnPlayerSide
-                                                    && BLTAdoptAHeroModule.CommonConfig.RetinueUseHeroesFormation;
-
-                            if (settings.OnPlayerSide && BLTAdoptAHeroModule.CommonConfig.RetinueUseHeroesFormation)
-                            {
-                                Campaign.Current.SetPlayerFormationPreference(retinueTroop, existingHero.Formation);
-                            }
-
-                            existingHero.Party.MemberRoster.AddToCounts(retinueTroop, 1);
-                            var retinueAgent = Mission.Current.SpawnTroop(
-                                  new PartyAgentOrigin(existingHero.Party, retinueTroop)
-                                , isPlayerSide: settings.OnPlayerSide
-                                , hasFormation: true
-                                , spawnWithHorse: retinueTroop.IsMounted && retinueMounted
-                                , isReinforcement: true
-                                , enforceSpawningOnInitialPoint: false
-                                , formationTroopCount: totalTroopsCount
-                                , formationTroopIndex: formationTroopIdx++
-                                , isAlarmed: true
-                                , wieldInitialWeapons: true
-                                #if e162
-                                , forceDismounted: false
-                                , initialPosition: null
-                                , initialDirection: null
-                                #endif
-                                );
-
-                            existingHero.Retinue.Add(new()
-                            {
-                                Troop = retinueTroop,
-                                Agent = retinueAgent,
-                                State = AgentState.Active,
-                            });
-
-                            agent_name.SetValue(retinueAgent,
-                                new TextObject($"{retinueAgent.Name} ({context.UserName})"));
-
-                            retinueAgent.BaseHealthLimit *= Math.Max(1,
-                                BLTAdoptAHeroModule.CommonConfig.StartRetinueHealthMultiplier);
-                            retinueAgent.HealthLimit *= Math.Max(1,
-                                BLTAdoptAHeroModule.CommonConfig.StartRetinueHealthMultiplier);
-                            retinueAgent.Health *= Math.Max(1,
-                                BLTAdoptAHeroModule.CommonConfig.StartRetinueHealthMultiplier);
-
-                            BLTAdoptAHeroCustomMissionBehavior.Current.AddListeners(retinueAgent,
-                                onGotAKill: (killer, killed, state) =>
-                                {
-                                    Log.Trace($"[{nameof(SummonHero)}] {retinueAgent.Name} killed {killed?.ToString() ?? "unknown"}");
-                                    BLTAdoptAHeroCommonMissionBehavior.Current.ApplyKillEffects(
-                                        adoptedHero, killer, killed, state,
-                                        BLTAdoptAHeroModule.CommonConfig.RetinueGoldPerKill,
-                                        BLTAdoptAHeroModule.CommonConfig.RetinueHealPerKill,
-                                        0,
-                                        actualBoost,
-                                        BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,
-                                        BLTAdoptAHeroModule.CommonConfig.LevelScalingCap
-                                    );
-                                }
-                            );
-                            // if (settings.OnPlayerSide && existingHero.Formation == FormationClass.Bodyguard)
-                            // {
-                            //     var spawnPos = Vec2.Forward * (3 + MBRandom.RandomFloat * 5);
-                            //     spawnPos.RotateCCW(MathF.PI * 2 * MBRandom.RandomFloat);
-                            //     retinueAgent.SetColumnwiseFollowAgent(Agent.Main, ref spawnPos);
-                            //     // agent.HumanAIComponent.FollowAgent(Agent.Main);
-                            // }
-
-                            if (hasPrevFormation)
-                            {
-                                Campaign.Current.SetPlayerFormationPreference(retinueTroop, prevFormation);
-                            }
-                        }
-
-                        // BLTAdoptAHeroCommonMissionBehavior.Current.RegisterRetinue(adoptedHero, existingHero.Retinue.Select(r => r.Agent).ToList());
-                    }
-
-                    // All the units try to occupy the same exact spot if standard body guard is used
-                    // if (existingHero.Formation == FormationClass.Bodyguard)
-                    // {
-                    //     if (settings.OnPlayerSide)
-                    //         agent.SetGuardState(Agent.Main, isGuarding: true);
-                    //     else if (Mission.Current.PlayerEnemyTeam?.GeneralAgent != null)
-                    //         agent.SetGuardState(Mission.Current.PlayerEnemyTeam?.GeneralAgent, isGuarding: true);
-                    // }
-
-                    var expireFn = AccessTools.Method(typeof(TeamQuerySystem), "Expire");
-                    foreach (var team in Mission.Current.Teams)
-                    {
-                        expireFn.Invoke(team.QuerySystem, new object[] { }); // .Expire();
-                    }
-                    foreach (var formation in Mission.Current.Teams.SelectMany(t => t.Formations))
-                    {
-                        AccessTools.Field(typeof(Formation), "GroupSpawnIndex").SetValue(formation, 0); //formation2.GroupSpawnIndex = 0;
-                    }
-                    
-                    Log.ShowInformation(!string.IsNullOrEmpty(context.Args) 
-                        ? context.Args 
-                        : (messages.SelectRandomWeighted(shout => shout.Weight)?.Text?.ToString() ?? "..."),
-                        adoptedHero.CharacterObject, settings.AlertSound);
-
-                    BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(adoptedHero, -settings.GoldCost);
-
-                    onSuccess("{=TvkEBZeY}You have joined the battle!".Translate());
-                });
-            }
+                    && (s.SiegeDefend || !doingSiegeDefend));
         }
 
         // Modified KillAgentCheat (usually Ctrl+F4 in debug mode) that can actually kill sometimes instead of only knock out.
-        // For testing...
+        // For testing death mechanics
         // ReSharper disable once UnusedMember.Local
         private static void KillAgentCheat(Agent agent)
         {

@@ -260,7 +260,7 @@ namespace BLTAdoptAHero
                     }
                 }
 
-                var affectorRetinueOwner = BLTSummonBehavior.Current?.GetSummonedHeroForRetinue(affectorAgent);
+                var affectorRetinueOwner = BLTSummonBehavior.Current?.GetHeroSummonStateForRetinue(affectorAgent);
                 if (affectorRetinueOwner != null)
                 {
                     GetHeroMissionState(affectorRetinueOwner.Hero).RetinueKills++;
@@ -333,7 +333,7 @@ namespace BLTAdoptAHero
                 activeHeroes.Add(hero);
             }
 
-            var summonState = BLTSummonBehavior.Current?.GetSummonedHero(hero);
+            var summonState = BLTSummonBehavior.Current?.GetHeroSummonState(hero);
             
             var agent = summonState?.CurrentAgent ?? hero.GetAgent();
 
