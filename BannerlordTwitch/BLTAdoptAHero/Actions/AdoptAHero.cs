@@ -264,6 +264,7 @@ namespace BLTAdoptAHero
         private static (bool success, string message) ExecuteInternal(string userName, Settings settings)
         {
             Hero newHero = null;
+
             // Create or find a hero for adopting
             if (settings.CreateNew)
             {
@@ -280,9 +281,9 @@ namespace BLTAdoptAHero
             {
                 newHero = BLTAdoptAHeroCampaignBehavior.GetAvailableHeroes(h =>
                         // Filter by allowed types
-                        (settings.AllowPlayerCompanion && h.IsPlayerCompanion
-                         || settings.AllowNoble && h.IsNoble
-                         || settings.AllowWanderer && h.IsWanderer)
+                        (settings.AllowNoble || !h.IsNoble) 
+                        && (settings.AllowWanderer || !h.IsWanderer)
+                        && (settings.AllowPlayerCompanion || !h.IsPlayerCompanion)
                         // Select correct clan faction
                         && (!settings.OnlySameFaction
                             || Clan.PlayerClan?.MapFaction != null
