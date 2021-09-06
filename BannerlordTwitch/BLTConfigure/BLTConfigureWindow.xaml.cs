@@ -540,12 +540,6 @@ namespace BLTConfigure
         {
             Clipboard.SetText(OverlayUrl);
         }
-
-        private void SaveButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            ConfigurationRoot.SaveSettings();
-            ConfigurationRoot.SaveAuth();
-        }
         
         public event PropertyChangedEventHandler PropertyChanged;
 
