@@ -97,7 +97,7 @@ namespace BLTAdoptAHero
             CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, () =>
             {
                 // Ensure all existing heroes are registered
-                foreach (var hero in HeroHelpers.AllHeroes.Where(h => h.IsAdopted()))
+                foreach (var hero in CampaignHelpers.AllHeroes.Where(h => h.IsAdopted()))
                 {
                     GetHeroData(hero);
                 }
@@ -370,7 +370,7 @@ namespace BLTAdoptAHero
             
             string desc = hero.IsDead ? "{=ZtZL0lbX}deceased".Translate() : "{=ISrFBorj}retired".Translate();
             var oldName = hero.Name;
-            HeroHelpers.SetHeroName(hero, new (hero.FirstName + $" {ToRoman(data.Iteration + 1)} ({desc})"));
+            CampaignHelpers.SetHeroName(hero, new (hero.FirstName + $" {ToRoman(data.Iteration + 1)} ({desc})"));
             Campaign.Current.EncyclopediaManager.BookmarksTracker.RemoveBookmarkFromItem(hero);
 
             Log.LogFeedEvent("{=2PHPNmuv}{OldName} is {RetireType}!"
@@ -417,15 +417,14 @@ namespace BLTAdoptAHero
             return inheritance;
         }
 
-        private IEnumerable<HeroData> GetAncestors(string name)
-        {
-            var ancestors = heroData
-                .Where(h => h.Value.IsRetiredOrDead 
-                            && string.Equals(h.Value.Owner, name, StringComparison.CurrentCultureIgnoreCase))
+        private List<HeroData> GetAncestors(string name) =>
+            heroData
+                .Where(h 
+                    => h.Value.IsRetiredOrDead
+                       && string.Equals(h.Value.Owner, name, StringComparison.CurrentCultureIgnoreCase))
                 .Select(kv => kv.Value)
-                .OrderBy(d => d.Iteration);
-            return ancestors;
-        }
+                .OrderBy(d => d.Iteration)
+                .ToList();
 
         #endregion
 
@@ -924,7 +923,7 @@ namespace BLTAdoptAHero
 
         public (bool success, string status) UpgradeRetinue(Hero hero, RetinueSettings settings, int maxToUpgrade)
         {
-            var availableTroops = HeroHelpers.AllCultures
+            var availableTroops = CampaignHelpers.AllCultures
                 .Where(c => settings.IncludeBanditUnits || c.IsMainCulture)
                 .SelectMany(c =>
                 {
@@ -1095,7 +1094,7 @@ namespace BLTAdoptAHero
         }
 
         public static IEnumerable<Hero> GetAvailableHeroes(Func<Hero, bool> filter = null) =>
-            HeroHelpers.AliveHeroes.Where(h =>
+            CampaignHelpers.AliveHeroes.Where(h =>
                     // Some buggy mods can result in null heroes
                     h != null &&
                     // Some buggy mods can result in heroes with out valid names
@@ -1109,13 +1108,13 @@ namespace BLTAdoptAHero
                 .Where(filter ?? (_ => true))
                 .Where(n => !n.Name.Contains(BLTAdoptAHeroModule.Tag));
 
-        public static IEnumerable<Hero> GetAllAdoptedHeroes() => HeroHelpers.AliveHeroes.Where(n => n.Name?.Contains(BLTAdoptAHeroModule.Tag) == true);
+        public static IEnumerable<Hero> GetAllAdoptedHeroes() => CampaignHelpers.AliveHeroes.Where(n => n.Name?.Contains(BLTAdoptAHeroModule.Tag) == true);
 
         public static string GetFullName(string name) => $"{name} {BLTAdoptAHeroModule.Tag}";
 
         public static void SetHeroAdoptedName(Hero hero, string userName)
         {
-            HeroHelpers.SetHeroName(hero, new (GetFullName(userName)), new (userName));
+            CampaignHelpers.SetHeroName(hero, new (GetFullName(userName)), new (userName));
         }
 
         private HeroData GetHeroData(Hero hero, bool suppressAutoRetire = false)

@@ -104,7 +104,7 @@ namespace BLTAdoptAHero
                 );
 
                 // Other skills         weight x 1
-                selectedSkills.AddRange(HeroHelpers.AllSkillObjects
+                selectedSkills.AddRange(CampaignHelpers.AllSkillObjects
                     .Except(selectedSkills.Select(s => s.skill))
                     .Select(skill => (skill, weight: 1f))
                 );

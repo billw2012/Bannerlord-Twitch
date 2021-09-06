@@ -122,7 +122,7 @@ namespace BannerlordTwitch.Helpers
         
         public static IEnumerable<SkillObject> GetSkills(IEnumerable<string> sk) 
             => sk.Select(sn 
-                => HeroHelpers.AllSkillObjects.FirstOrDefault(so 
+                => CampaignHelpers.AllSkillObjects.FirstOrDefault(so 
                     => string.Equals(so.StringId, sn, StringComparison.CurrentCultureIgnoreCase)));
         
         public static IEnumerable<ItemObject.ItemTypeEnum> GetItemsForSkills(params SkillsEnum[] sk)

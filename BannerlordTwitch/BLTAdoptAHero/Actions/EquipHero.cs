@@ -447,7 +447,7 @@ namespace BLTAdoptAHero
             Func<ItemObject, bool> filter = null)
         {
             var items =
-                HeroHelpers.AllItems.Where(item =>
+                CampaignHelpers.AllItems.Where(item =>
                     // Non-merchandise includes some weird items like testing ones in some cases
                     (!item.NotMerchandise || flags.HasFlag(FindFlags.AllowNonMerchandise))
                     // Usable

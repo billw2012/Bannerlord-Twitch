@@ -56,7 +56,7 @@ namespace BLTAdoptAHero
             string args)
         {
             // Get attributes that can be buffed
-            var improvableAttributes = HeroHelpers.AllAttributes
+            var improvableAttributes = CampaignHelpers.AllAttributes
                 .Where(a => adoptedHero.GetAttributeValue(a) < 10)
                 .ToList();
 
@@ -71,7 +71,7 @@ namespace BLTAdoptAHero
             }
 
             // ReSharper disable once RedundantAssignment
-            var attribute = HeroHelpers.DefaultAttribute;
+            var attribute = CampaignHelpers.DefaultAttribute;
             if (random)
             {
                 attribute = improvableAttributes.SelectRandom();
@@ -79,13 +79,13 @@ namespace BLTAdoptAHero
             else
             {
                 // We do this because in <=1.5.10 attributes are an enum, which doesn't have a useful default for FirstOrDefault (default is the same as the first enum value)
-                if (!HeroHelpers.AllAttributes
-                    .Any(a => HeroHelpers.GetAttributeName(a).ToLower().Contains(args.ToLower())))
+                if (!CampaignHelpers.AllAttributes
+                    .Any(a => CampaignHelpers.GetAttributeName(a).ToLower().Contains(args.ToLower())))
                 {
                     return (false, "{=LE3POzUs}Couldn't find attribute matching '{Args}'!".Translate(("Args", args)));
                 } 
-                attribute = HeroHelpers.AllAttributes
-                    .First(a => HeroHelpers.GetAttributeName(a).ToLower().Contains(args.ToLower()));
+                attribute = CampaignHelpers.AllAttributes
+                    .First(a => CampaignHelpers.GetAttributeName(a).ToLower().Contains(args.ToLower()));
                 if (!improvableAttributes.Contains(attribute))
                 {
                     return (false, "{=R7X1dTqL}Couldn't improve {Attribute} attribute, it is already at max level!"

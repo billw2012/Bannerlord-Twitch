@@ -49,7 +49,7 @@ namespace BLTAdoptAHero
             activeTournament.AddRange(viewersToAdd);
             tournamentQueue.RemoveRange(0, viewersToAddCount);
             
-            var basicTroops = HeroHelpers.AllCultures
+            var basicTroops = CampaignHelpers.AllCultures
                 .SelectMany(c => new[] {c.BasicTroop, c.EliteBasicTroop})
                 .Where(t => t != null)
                 .ToList();
@@ -100,7 +100,7 @@ namespace BLTAdoptAHero
             
         private static IEnumerable<(Equipment equipment, IEnumerable<EquipmentType> types)> GetAllTournamentEquipment()
         {
-            return HeroHelpers.AllCultures.SelectMany(c => 
+            return CampaignHelpers.AllCultures.SelectMany(c => 
                     (c.TournamentTeamTemplatesForOneParticipant ?? Enumerable.Empty<CharacterObject>())
                         .Concat(c.TournamentTeamTemplatesForTwoParticipant ?? Enumerable.Empty<CharacterObject>())
                         .Concat(c.TournamentTeamTemplatesForFourParticipant ?? Enumerable.Empty<CharacterObject>()))
@@ -187,7 +187,7 @@ namespace BLTAdoptAHero
             }
             else if (BLTAdoptAHeroModule.TournamentConfig.NoSpears)
             {
-                var replacementWeapon = HeroHelpers.AllItems
+                var replacementWeapon = CampaignHelpers.AllItems
                     .FirstOrDefault(i => i.StringId == "empire_sword_1_t2_blunt");
                 if (replacementWeapon != null)
                 {
@@ -216,9 +216,9 @@ namespace BLTAdoptAHero
                     (
                         slot: slotItemTypePair.slot, 
                         item: EquipHero.SelectRandomItemNearestTier(
-                                  HeroHelpers.AllItems.Where(i 
+                                  CampaignHelpers.AllItems.Where(i 
                                       => i.Culture == culture && i.ItemType == slotItemTypePair.itemType), (int)tier)
-                              ?? EquipHero.SelectRandomItemNearestTier(HeroHelpers.AllItems.Where(i => i.ItemType == slotItemTypePair.itemType), (int)tier)
+                              ?? EquipHero.SelectRandomItemNearestTier(CampaignHelpers.AllItems.Where(i => i.ItemType == slotItemTypePair.itemType), (int)tier)
                     )).ToList();
                     
                 foreach (var (slot, item) in replacements)

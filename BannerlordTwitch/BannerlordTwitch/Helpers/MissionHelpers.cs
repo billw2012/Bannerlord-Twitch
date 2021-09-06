@@ -5,6 +5,7 @@ using StoryMode.Missions;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.Source.Missions.Handlers;
 
 namespace BannerlordTwitch.Helpers
 {
@@ -14,13 +15,23 @@ namespace BannerlordTwitch.Helpers
             => //CampaignMission.Current.Location?.ContainsCharacter(hero) == true || 
                 Mission.Current?.Agents.Any(a => a.Character == hero.CharacterObject) == true;
 
-        public static bool InHideOutMission() => Mission.Current?.GetMissionBehaviour<HideoutMissionController>() != null;
+        public static bool InHideOutMission() 
+            => Mission.Current?.GetMissionBehaviour<HideoutMissionController>() != null;
 
-        public static bool InFieldBattleMission() => Mission.Current?.IsFieldBattle == true;
+        public static bool InFieldBattleMission() 
+            => Mission.Current?.IsFieldBattle == true;
+        
+        public static bool InLordsHallBattleMission() 
+        #if e159 || e1510 || e160
+            => false;
+        #else
+            => Mission.Current?.GetMissionBehaviour<LordsHallFightMissionController>() != null;
+        #endif
 
         public static bool InSiegeMission() 
             => Mission.Current?.IsFieldBattle != true 
-               && Mission.Current?.GetMissionBehaviour<CampaignSiegeStateHandler>() != null;
+               && Mission.Current?.GetMissionBehaviour<CampaignSiegeStateHandler>() != null
+               && !InLordsHallBattleMission();
 
         public static bool InArenaPracticeMission() 
             => CampaignMission.Current?.Location?.StringId == "arena"

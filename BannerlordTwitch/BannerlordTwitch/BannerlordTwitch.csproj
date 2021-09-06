@@ -262,7 +262,7 @@
         <Compile Include="Helpers\AutoMissionBehavior.cs" />
         <Compile Include="Helpers\DrivenPropertyItemSource.cs" />
         <Compile Include="Helpers\EquipmentType.cs" />
-        <Compile Include="Helpers\HeroHelpers.cs" />
+        <Compile Include="Helpers\CampaignHelpers.cs" />
         <Compile Include="Helpers\MissionHelpers.cs" />
         <Compile Include="Helpers\OneShotEffect.cs" />
         <Compile Include="Helpers\PropertyModifierDef.cs" />

@@ -230,7 +230,7 @@ namespace BLTAdoptAHero
             }
                     
             // Find mounts of the correct family type and tier
-            var mount = HeroHelpers.AllItems
+            var mount = CampaignHelpers.AllItems
                 .Where(item =>
                     item.IsMountable
                     // If we are making a custom mount then use any mount over Tier 2, otherwise match the tier exactly 

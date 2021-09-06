@@ -46,7 +46,7 @@ namespace BLTAdoptAHero.Actions.Util
         [UsedImplicitly]
         public static string TestModifiedArmor(List<string> strings)
         {
-            var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.BodyArmor)
+            var item = CampaignHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.BodyArmor)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
                 .FirstOrDefault();
@@ -60,7 +60,7 @@ namespace BLTAdoptAHero.Actions.Util
         [UsedImplicitly]
         public static string TestModifiedWeapon(List<string> strings)
         {
-            var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.TwoHandedWeapon)
+            var item = CampaignHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.TwoHandedWeapon)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
                 .FirstOrDefault();
@@ -74,7 +74,7 @@ namespace BLTAdoptAHero.Actions.Util
         [UsedImplicitly]
         public static string TestModifiedBow(List<string> strings)
         {
-            var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Bow)
+            var item = CampaignHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Bow)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
                 .FirstOrDefault();
@@ -88,7 +88,7 @@ namespace BLTAdoptAHero.Actions.Util
         [UsedImplicitly]
         public static string TestModifiedAmmo(List<string> strings)
         {
-            var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Arrows)
+            var item = CampaignHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Arrows)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
                 .FirstOrDefault();
@@ -102,7 +102,7 @@ namespace BLTAdoptAHero.Actions.Util
         [UsedImplicitly]
         public static string TestModifiedMount(List<string> strings)
         {
-            var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Horse)
+            var item = CampaignHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Horse)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
                 .FirstOrDefault();

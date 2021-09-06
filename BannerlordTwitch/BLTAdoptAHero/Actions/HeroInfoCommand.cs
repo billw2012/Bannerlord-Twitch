@@ -145,7 +145,7 @@ namespace BLTAdoptAHero
                                     $" {adoptedHero.Level}");
                     infoStrings.Add("{=rTId8pBy}[SKILLS]".Translate() +
                                     " " + string.Join(Naming.Sep, 
-                        HeroHelpers.AllSkillObjects
+                        CampaignHelpers.AllSkillObjects
                             .Where(s => adoptedHero.GetSkillValue(s) >= settings.MinSkillToShow)
                             .OrderByDescending(s => adoptedHero.GetSkillValue(s))
                             .Select(skill => $"{SkillXP.GetShortSkillName(skill)} {adoptedHero.GetSkillValue(skill)} " +
@@ -156,9 +156,9 @@ namespace BLTAdoptAHero
                 if (settings.ShowAttributes)
                 {
                     infoStrings.Add("{=RSlhbJzO}[ATTR]".Translate() +
-                                    " " + string.Join(Naming.Sep, HeroHelpers.AllAttributes
+                                    " " + string.Join(Naming.Sep, CampaignHelpers.AllAttributes
                         .Select(a 
-                            => $"{HeroHelpers.GetShortAttributeName(a)} {adoptedHero.GetAttributeValue(a)}")));
+                            => $"{CampaignHelpers.GetShortAttributeName(a)} {adoptedHero.GetAttributeValue(a)}")));
                 }
                 
                 if (settings.ShowEquipment)

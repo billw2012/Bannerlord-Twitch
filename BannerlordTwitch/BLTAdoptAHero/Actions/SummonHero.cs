@@ -256,6 +256,7 @@ namespace BLTAdoptAHero
             if(MissionHelpers.InArenaPracticeMission() 
                || MissionHelpers.InTournament()
                || MissionHelpers.InConversationMission()
+               || MissionHelpers.InLordsHallBattleMission() // Just disabled in the lords hall battle for now
                || MissionHelpers.InFieldBattleMission() && !settings.AllowFieldBattle
                || MissionHelpers.InVillageEncounter() && !settings.AllowVillageBattle
                || MissionHelpers.InSiegeMission() && !settings.AllowSiegeBattle
@@ -498,6 +499,13 @@ namespace BLTAdoptAHero
 
                         if (Mission.Current?.MissionResult != null)
                         {
+                            bool playerWon = Mission.Current.MissionResult.PlayerVictory
+#if !e159 && !e1510 && !e160 
+                                             // When siege retreat happens
+                                             || MapEvent.PlayerMapEvent.PlayerSide == BattleSideEnum.Attacker 
+                                             && Mission.Current.MissionResult.BattleState == BattleState.DefenderPullBack
+#endif
+                                ; 
                             var results = new List<string>();
                             float finalRewardScaling =
                                     (settings.OnPlayerSide
@@ -505,7 +513,7 @@ namespace BLTAdoptAHero
                                         : BLTAdoptAHeroCommonMissionBehavior.Current.EnemySideRewardMultiplier)
                                 ;
 
-                            if (settings.OnPlayerSide == Mission.Current.MissionResult.PlayerVictory)
+                            if (settings.OnPlayerSide && playerWon)
                             {
                                 int actualGold = (int)(finalRewardScaling * BLTAdoptAHeroModule.CommonConfig.WinGold +
                                                        settings.GoldCost);
@@ -529,7 +537,7 @@ namespace BLTAdoptAHero
                                     }
                                 }
                             }
-                            else
+                            else if(!settings.OnPlayerSide && !playerWon)
                             {
                                 if (BLTAdoptAHeroModule.CommonConfig.LoseGold > 0)
                                 {

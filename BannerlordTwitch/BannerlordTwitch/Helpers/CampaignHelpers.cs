@@ -9,7 +9,7 @@ using TaleWorlds.ObjectSystem;
 
 namespace BannerlordTwitch.Helpers
 {
-    public class HeroHelpers
+    public static class CampaignHelpers
     {
 #if e159 || e1510
         public static IEnumerable<CharacterAttributesEnum> AllAttributes =>
