@@ -33,7 +33,7 @@ namespace BLTAdoptAHero
          LocDescription("{=U9PyN7eb}Name of the class that shall be passed to SetHeroClass actions"), 
          InstanceName, 
          PropertyOrder(1), UsedImplicitly]
-        public LocString Name { get; set; } = "Enter Name Here";
+        public LocString Name { get; set; } = "{=aQgYs3mI}Enter Name Here";
         
         [LocDisplayName("{=rZRKLuGI}Description"),
          LocDescription("{=yRN3Jfwv}Description of the class (used in documentation)"), 

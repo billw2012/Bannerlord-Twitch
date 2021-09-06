@@ -66,7 +66,7 @@ namespace BannerlordTwitch.Localization
             CultureInfo culture, object value, Type destinationType)
         {
             return destinationType == typeof(string) 
-                ? ((LocString)value).Value 
+                ? ((LocString)value).ToString() 
                 : base.ConvertTo(context, culture, value, destinationType);
         }
     }

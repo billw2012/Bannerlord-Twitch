@@ -37,7 +37,7 @@ namespace BLTAdoptAHero.Powers
         [LocDisplayName("{=uUzmy7Lh}Name"),
          LocDescription("{=EvVyh3WM}The name of the power: how the power will be described in messages"), 
          PropertyOrder(1), UsedImplicitly]
-        public string Name { get; set; } = "Enter Name Here";
+        public LocString Name { get; set; } = "{=aQgYs3mI}Enter Name Here";
 
         [LocDisplayName("{=acLMixuK}Powers"),
          LocDescription("{=6aKmeGgU}The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure)."), 
@@ -150,7 +150,7 @@ namespace BLTAdoptAHero.Powers
         #region IDocumentable
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
-            generator.P("power-title", Name);
+            generator.P("power-title", Name.ToString());
             foreach (var power in Powers)
             {
                 if (power is IDocumentable docPower)
