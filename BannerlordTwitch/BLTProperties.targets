@@ -5,6 +5,19 @@
         <DefineConstants/>
     </PropertyGroup>
 
+    <!-- Required to trick IDE into setting the configs -->
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.5.10|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.5.9|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.6.0|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.6.1|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.6.2|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.5.10|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.5.9|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.6.0|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.6.1|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.6.2|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.6.4|AnyCPU' "/>
+    
     <PropertyGroup Condition="$(Configuration.StartsWith('Debug'))">
         <Optimize>false</Optimize>
         <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
@@ -50,6 +63,13 @@
         <GameVersion>1.6.2</GameVersion>
         <DefineConstants>$(DefineConstants);e162</DefineConstants>
         <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_6_2)</BANNERLORD_GAME_DIR>
+        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord $(GameVersion)</BANNERLORD_GAME_DIR>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(Configuration.EndsWith(' 1.6.4'))">
+        <GameVersion>1.6.4</GameVersion>
+        <DefineConstants>$(DefineConstants);e164</DefineConstants>
+        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_6_4)</BANNERLORD_GAME_DIR>
         <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</BANNERLORD_GAME_DIR>
     </PropertyGroup>
 
