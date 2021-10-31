@@ -106,8 +106,13 @@ namespace BLTAdoptAHero
              #endif
              )
         ]
+
         // ReSharper disable once RedundantAssignment
-        public static void MissionNameMarkerVMConstructorPostfix(MissionNameMarkerVM __instance, Mission mission, ref Vec3 ____heightOffset)
+        public static void MissionNameMarkerVMConstructorPostfix(MissionNameMarkerVM __instance, Mission mission, ref Vec3 ____heightOffset
+            #if !e159 && !e1510 && !e160 && !e161 && !e162
+            , Dictionary<Agent, MissionNameMarkerTargetVM.QuestType> additionalTargetAgents
+            #endif
+        )
         {
             ____heightOffset = new (0, 0, 4);
         }

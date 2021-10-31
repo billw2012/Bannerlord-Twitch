@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.UI;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -126,14 +127,14 @@ namespace BLTAdoptAHero
             {
                 if (lastTickT == 0)
                 {
-                    lastTickT = MBCommon.GetTime(MBCommon.TimeType.Application);
+                    lastTickT = HeroHelpers.GetApplicationTime();
                     return;
                 }
 
                 const float TickTime = 0.25f;
-                if (MBCommon.GetTime(MBCommon.TimeType.Application) - lastTickT > TickTime)
+                if (HeroHelpers.GetApplicationTime() - lastTickT > TickTime)
                 {
-                    lastTickT = MBCommon.GetTime(MBCommon.TimeType.Application);
+                    lastTickT = HeroHelpers.GetApplicationTime();
 
                     foreach (var h in activeHeroes)
                     {

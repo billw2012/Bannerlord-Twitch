@@ -491,13 +491,25 @@ namespace BLTAdoptAHero
                                 {
                                     var results = new List<string>();
                                     float finalRewardScaling =
-                                            actualBoost * 
-                                            (settings.OnPlayerSide 
-                                            ? BLTAdoptAHeroCommonMissionBehavior.Current.PlayerSideRewardMultiplier
-                                            : BLTAdoptAHeroCommonMissionBehavior.Current.EnemySideRewardMultiplier)
+                                            actualBoost *
+                                            (settings.OnPlayerSide
+                                                ? BLTAdoptAHeroCommonMissionBehavior.Current.PlayerSideRewardMultiplier
+                                                : BLTAdoptAHeroCommonMissionBehavior.Current.EnemySideRewardMultiplier)
                                         ;
+
+                                    bool HasPlayerWon()
+                                    {
+#if e159 || e1510 || e160 || e161
+                                        return settings.OnPlayerSide == Mission.Current.MissionResult.PlayerVictory;
+#else
+                                        // Need to consider siege fall back mechanics added in 162
+                                        bool siegeFallback = MissionHelpers.InSiegeMission() && Mission.Current.MissionResult.BattleState == BattleState.DefenderPullBack;
+                                        return siegeFallback && settings.OnPlayerSide && Mission.Current.AttackerTeam.IsPlayerTeam
+                                               || !siegeFallback && settings.OnPlayerSide == Mission.Current.MissionResult.PlayerVictory;
+#endif
+                                    }
                                     
-                                    if (settings.OnPlayerSide == Mission.Current.MissionResult.PlayerVictory)
+                                    if (HasPlayerWon())
                                     {
                                         int actualGold = (int) (finalRewardScaling * BLTAdoptAHeroModule.CommonConfig.WinGold + settings.GoldCost);
                                         if (actualGold > 0)
@@ -585,6 +597,9 @@ namespace BLTAdoptAHero
 
                     bool allowRetinue = firstSummon
                                         && !MissionHelpers.InHideOutMission()
+#if e159 || e1510 || e160 || e161
+                                        && !(MissionHelpers.InSiegeMission() && Mission.Current.MissionTeamAIType == Mission.MissionTeamAITypeEnum.NoTeamAI)
+#endif
                                         && !MissionHelpers.InArenaPracticeMission()
                                         && !MissionHelpers.InTournament()
                                         && !MissionHelpers.InFriendlyMission();
@@ -613,7 +628,7 @@ namespace BLTAdoptAHero
                         , formationTroopIndex: formationTroopIdx++
                         , isAlarmed: true
                         , wieldInitialWeapons: true
-                        #if e162
+                        #if !e159 && !e1510 && !e160 && !e161
                         , forceDismounted: false
                         , initialPosition: null
                         , initialDirection: null
@@ -622,7 +637,7 @@ namespace BLTAdoptAHero
 
                     existingHero.State = AgentState.Active;
                     existingHero.TimesSummoned++;
-                    existingHero.SummonTime = MBCommon.GetTime(MBCommon.TimeType.Mission);
+                    existingHero.SummonTime = MBCommon.GetTotalMissionTime();
 
                     // if (settings.OnPlayerSide && existingHero.Formation == FormationClass.Bodyguard)
                     // {
@@ -663,7 +678,7 @@ namespace BLTAdoptAHero
                                 , formationTroopIndex: formationTroopIdx++
                                 , isAlarmed: true
                                 , wieldInitialWeapons: true
-                                #if e162
+                                #if !e159 && !e1510 && !e160 && !e161
                                 , forceDismounted: false
                                 , initialPosition: null
                                 , initialDirection: null

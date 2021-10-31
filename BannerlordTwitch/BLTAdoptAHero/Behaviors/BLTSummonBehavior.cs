@@ -36,8 +36,8 @@ namespace BLTAdoptAHero
             private float CooldownTime => BLTAdoptAHeroModule.CommonConfig.CooldownEnabled
                 ? BLTAdoptAHeroModule.CommonConfig.GetCooldownTime(TimesSummoned) : 0;
 
-            public bool InCooldown => BLTAdoptAHeroModule.CommonConfig.CooldownEnabled && SummonTime + CooldownTime > MBCommon.GetTime(MBCommon.TimeType.Mission);
-            public float CooldownRemaining => !BLTAdoptAHeroModule.CommonConfig.CooldownEnabled ? 0 : Math.Max(0, SummonTime + CooldownTime - MBCommon.GetTime(MBCommon.TimeType.Mission));
+            public bool InCooldown => BLTAdoptAHeroModule.CommonConfig.CooldownEnabled && SummonTime + CooldownTime > HeroHelpers.GetTotalMissionTime();
+            public float CooldownRemaining => !BLTAdoptAHeroModule.CommonConfig.CooldownEnabled ? 0 : Math.Max(0, SummonTime + CooldownTime - HeroHelpers.GetTotalMissionTime());
             public float CoolDownFraction => !BLTAdoptAHeroModule.CommonConfig.CooldownEnabled ? 1 : 1f - CooldownRemaining / CooldownTime;
         }
 
@@ -57,7 +57,7 @@ namespace BLTAdoptAHero
                 WasPlayerSide = playerSide,
                 Formation = formationClass,
                 Party = party,
-                SummonTime = MBCommon.GetTime(MBCommon.TimeType.Mission), 
+                SummonTime = HeroHelpers.GetTotalMissionTime(), 
             };
             summonedHeroes.Add(newSummonedHero);
             return newSummonedHero;
