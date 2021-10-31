@@ -77,9 +77,9 @@ namespace BLTAdoptAHero
         [UsedImplicitly, HarmonyPostfix, 
          HarmonyPatch(typeof(MissionNameMarkerTargetVM), MethodType.Constructor
              , typeof(Agent)
-             #if e162
+#if !e159 && !e1510 && !e160 && !e161
              , typeof(bool)
-             #endif
+#endif
              )
         ]
         public static void MissionNameMarkerTargetVMConstructorPostfix(MissionNameMarkerTargetVM __instance, Agent agent)
@@ -101,18 +101,13 @@ namespace BLTAdoptAHero
          HarmonyPatch(typeof(MissionNameMarkerVM), MethodType.Constructor
              , typeof(Mission)
              , typeof(Camera)
-             #if e162
+#if !e159 && !e1510 && !e160 && !e161 && !e162
              , typeof(Dictionary<Agent, MissionNameMarkerTargetVM.QuestType>)
-             #endif
+#endif
              )
         ]
-
         // ReSharper disable once RedundantAssignment
-        public static void MissionNameMarkerVMConstructorPostfix(MissionNameMarkerVM __instance, Mission mission, ref Vec3 ____heightOffset
-            #if !e159 && !e1510 && !e160 && !e161 && !e162
-            , Dictionary<Agent, MissionNameMarkerTargetVM.QuestType> additionalTargetAgents
-            #endif
-        )
+        public static void MissionNameMarkerVMConstructorPostfix(MissionNameMarkerVM __instance, Mission mission, ref Vec3 ____heightOffset)
         {
             ____heightOffset = new (0, 0, 4);
         }
