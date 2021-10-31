@@ -2,6 +2,7 @@
 using System.Linq;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Library;
 
 namespace BannerlordTwitch.Util
@@ -69,6 +70,27 @@ namespace BannerlordTwitch.Util
             return BLTModule.RestartTwitchService()
                 ? "Success"
                 : "Failed";
+        }
+        
+        [CommandLineFunctionality.CommandLineArgumentFunction("start_player_vs_world_war", "blt")]
+        [UsedImplicitly]
+        public static string StartPlayerVsWorldWar(List<string> strings)
+        {
+            foreach (var faction in Campaign.Current.Factions
+                .Where(f => f != Clan.PlayerClan || f != Hero.MainHero.MapFaction)
+                .Where(f => f.Leader != null))
+            {
+                try
+                {
+                    DeclareWarAction.Apply(faction, Clan.PlayerClan);
+                }
+                catch
+                {
+                    // ignored
+                }
+            }
+
+            return "Success";
         }
     }
 }
