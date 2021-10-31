@@ -134,6 +134,22 @@ namespace BLTAdoptAHero
          Description("Whether to apply the Death Chance changes to all heroes, not just adopted ones"), 
          PropertyOrder(5), Document, UsedImplicitly]
         public bool ApplyDeathChanceToAllHeroes { get; set; } = true;
+        
+        [DisplayName("Retinue Death Chance Percent"),
+         Category("Death"),
+         Description("Retinue death chance percent (this determines the chance that a killing blow will " +
+                        "actually kill the retinue, removing them from the adopted hero's retinue list)"),
+         PropertyOrder(6),
+         Range(0, 100), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
+         YamlIgnore, Document, UsedImplicitly] 
+        public float RetinueDeathChancePercent
+        { 
+            get => RetinueDeathChance * 100f;
+            set => RetinueDeathChance = value * 0.01f;
+        }
+                
+        [Browsable(false), UsedImplicitly]
+        public float RetinueDeathChance { get; set; } = 0.025f;
         #endregion
 
         #region XP

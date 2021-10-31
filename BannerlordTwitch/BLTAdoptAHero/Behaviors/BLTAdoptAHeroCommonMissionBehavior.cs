@@ -362,6 +362,7 @@ namespace BLTAdoptAHero
                     ActivePowerFractionRemaining = state is AgentState.Active ? ActivePowerFractionRemaining(hero) : 0,
                     State = state.ToString().ToLower(),
                     Retinue = summonState?.ActiveRetinue ?? 0,
+                    DeadRetinue = summonState?.DeadRetinue ?? 0,
                     GoldEarned = heroState.WonGold,
                     XPEarned = heroState.WonXP,
                     Kills = heroState.Kills,

@@ -958,6 +958,22 @@ namespace BLTAdoptAHero
             
             return (retinueChanges.Any(), Naming.JoinList(troopUpgradeSummary.Concat(results)));
         }
+
+        public void KillRetinue(Hero retinueOwnerHero, BasicCharacterObject retinueCharacterObject)
+        {
+            var heroRetinue = GetHeroData(retinueOwnerHero).Retinue;
+            var matchingRetinue = heroRetinue.FirstOrDefault(r => r.TroopType == retinueCharacterObject);
+            if (matchingRetinue != null)
+            {
+                heroRetinue.Remove(matchingRetinue);
+            }
+            else
+            {
+                Log.Error($"Couldn't find matching retinue type {retinueCharacterObject} " +
+                          $"for {retinueOwnerHero} to remove");
+            }
+        }
+
         #endregion
 
         #region Helper Functions
@@ -978,7 +994,7 @@ namespace BLTAdoptAHero
             agent.HealthLimit *= Math.Max(1, multiplier);
             agent.Health *= Math.Max(1, multiplier);
         }
-        
+
         public static IEnumerable<Hero> GetAvailableHeroes(Func<Hero, bool> filter = null) =>
             HeroHelpers.AliveHeroes.Where(h =>
                     // Some buggy mods can result in null heroes
@@ -1072,8 +1088,9 @@ namespace BLTAdoptAHero
         }
 
         #endregion
-        
+
         #region Console Commands
+
         [CommandLineFunctionality.CommandLineArgumentFunction("addstat", "blt")]
         [UsedImplicitly]
         public static string SetHeroStat(List<string> strings)
@@ -1105,6 +1122,7 @@ namespace BLTAdoptAHero
 
             return $"Added {amount} to {stat} stat of {hero.Name}";
         }
+
         #endregion
     }
 }

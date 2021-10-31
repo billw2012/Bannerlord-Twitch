@@ -19,6 +19,7 @@ namespace BLTAdoptAHero
             public Agent Agent;
             // We must record this separately, as the Agent.State is undefined once the Agent is deleted (the internal handle gets reused by the engine)
             public AgentState State;
+            public bool Died;
         }
 
         public class HeroSummonState
@@ -33,6 +34,7 @@ namespace BLTAdoptAHero
             public List<RetinueState> Retinue { get; set; } = new();
 
             public int ActiveRetinue => Retinue.Count(r => r.State == AgentState.Active);
+            public int DeadRetinue => Retinue.Count(r => r.Died);
 
             private float CooldownTime => BLTAdoptAHeroModule.CommonConfig.CooldownEnabled
                 ? BLTAdoptAHeroModule.CommonConfig.GetCooldownTime(TimesSummoned) : 0;
@@ -48,7 +50,8 @@ namespace BLTAdoptAHero
         public HeroSummonState GetHeroSummonState(Hero hero)
             => heroSummonStates.FirstOrDefault(h => h.Hero == hero);
 
-        public HeroSummonState GetHeroSummonStateForRetinue(Agent retinueAgent) => heroSummonStates.FirstOrDefault(h => h.Retinue.Any(r => r.Agent == retinueAgent));
+        public HeroSummonState GetHeroSummonStateForRetinue(Agent retinueAgent) 
+            => heroSummonStates.FirstOrDefault(h => h.Retinue.Any(r => r.Agent == retinueAgent));
 
         public HeroSummonState AddHeroSummonState(Hero hero, bool playerSide, PartyBase party)
         {
@@ -84,7 +87,8 @@ namespace BLTAdoptAHero
                 if (heroSummonState.TimesSummoned == 0 && RetinueAllowed())
                 {
                     var formationClass = agent.Formation.FormationIndex;
-                    SpawnRetinue(adoptedHero, ShouldBeMounted(formationClass), formationClass, heroSummonState, heroSummonState.WasPlayerSide);
+                    SpawnRetinue(adoptedHero, ShouldBeMounted(formationClass), formationClass, 
+                        heroSummonState, heroSummonState.WasPlayerSide);
                 }
 
                 heroSummonState.CurrentAgent = agent;
@@ -107,13 +111,25 @@ namespace BLTAdoptAHero
                 }
 
                 // Set the final retinue state
-                var retinue = heroSummonStates
-                    .SelectMany(h => h.Retinue)
-                    .FirstOrDefault(r => r.Agent == affectedAgent);
+                var (retinueOwner, retinueState) = heroSummonStates
+                    .Select(h 
+                        => (state: h, retinue: h.Retinue.FirstOrDefault(r => r.Agent == affectedAgent)))
+                    .FirstOrDefault(h => h.retinue != null);
 
-                if (retinue != null)
+                if (retinueOwner != null)
                 {
-                    retinue.State = agentState;
+                    if (agentState == AgentState.Killed &&
+                        MBRandom.RandomFloat <= BLTAdoptAHeroModule.CommonConfig.RetinueDeathChance)
+                    {
+                        retinueState.Died = true;
+                        BLTAdoptAHeroCampaignBehavior.Current.KillRetinue(retinueOwner.Hero, affectedAgent.Character);
+                        if (retinueOwner.Hero.FirstName != null)
+                        {
+                            Log.LogFeedResponse(retinueOwner.Hero.FirstName.ToString(),
+                                $"Your {affectedAgent.Character} was killed in battle!");
+                        }
+                    }
+                    retinueState.State = agentState;
                 }
             });
         }
@@ -151,14 +167,14 @@ namespace BLTAdoptAHero
             });
         }
         
-        private static void SpawnRetinue(Hero adoptedHero, bool isMounted, FormationClass formationClass,
+        private static void SpawnRetinue(Hero adoptedHero, bool ownerIsMounted, FormationClass ownerFormationClass,
             HeroSummonState existingHero, bool onPlayerSide)
         {
             var retinueTroops = BLTAdoptAHeroCampaignBehavior.Current.GetRetinue(adoptedHero).ToList();
 
             bool retinueMounted = Mission.Current.Mode != MissionMode.Stealth
                                   && !MissionHelpers.InSiegeMission()
-                                  && (isMounted || !BLTAdoptAHeroModule.CommonConfig.RetinueUseHeroesFormation);
+                                  && (ownerIsMounted || !BLTAdoptAHeroModule.CommonConfig.RetinueUseHeroesFormation);
             var agent_name = AccessTools.Field(typeof(Agent), "_name");
             foreach (var retinueTroop in retinueTroops)
             {
@@ -170,27 +186,13 @@ namespace BLTAdoptAHero
 
                 if (onPlayerSide && BLTAdoptAHeroModule.CommonConfig.RetinueUseHeroesFormation)
                 {
-                    Campaign.Current.SetPlayerFormationPreference(retinueTroop, formationClass);
+                    Campaign.Current.SetPlayerFormationPreference(retinueTroop, ownerFormationClass);
                 }
 
                 existingHero.Party.MemberRoster.AddToCounts(retinueTroop, 1);
-                var retinueAgent = Mission.Current.SpawnTroop(
-                    new PartyAgentOrigin(existingHero.Party, retinueTroop)
-                    , isPlayerSide: onPlayerSide
-                    , hasFormation: true
-                    , spawnWithHorse: retinueTroop.IsMounted && retinueMounted
-                    , isReinforcement: true
-                    , enforceSpawningOnInitialPoint: false
-                    , formationTroopCount: 1
-                    , formationTroopIndex: 0
-                    , isAlarmed: true
-                    , wieldInitialWeapons: true
-#if !e159 && !e1510 && !e160 && !e161
-                    , forceDismounted: false
-                    , initialPosition: null
-                    , initialDirection: null
-#endif
-                );
+
+                var retinueAgent = SpawnAgent(onPlayerSide, retinueTroop, existingHero.Party, 
+                    retinueTroop.IsMounted && retinueMounted);
 
                 existingHero.Retinue.Add(new()
                 {
@@ -208,7 +210,7 @@ namespace BLTAdoptAHero
                 BLTAdoptAHeroCustomMissionBehavior.Current.AddListeners(retinueAgent,
                     onGotAKill: (killer, killed, state) =>
                     {
-                        Log.Trace($"[{nameof(SummonHero)}] {retinueAgent.Name} killed {killed?.ToString() ?? "unknown"}");
+                        Log.Trace($"[{nameof(SummonHero)}] {retinueAgent.Name} killed {killed?.Name ?? "unknown"}");
                         BLTAdoptAHeroCommonMissionBehavior.Current.ApplyKillEffects(
                             adoptedHero, killer, killed, state,
                             BLTAdoptAHeroModule.CommonConfig.RetinueGoldPerKill,
@@ -225,6 +227,30 @@ namespace BLTAdoptAHero
                     Campaign.Current.SetPlayerFormationPreference(retinueTroop, prevFormation);
                 }
             }
+        }
+
+        public static Agent SpawnAgent(bool onPlayerSide, CharacterObject troop, PartyBase party, bool spawnWithHorse)
+        {
+            var agent = Mission.Current.SpawnTroop(
+                new PartyAgentOrigin(party, troop)
+                , isPlayerSide: onPlayerSide
+                , hasFormation: true
+                , spawnWithHorse: spawnWithHorse
+                , isReinforcement: true
+                , enforceSpawningOnInitialPoint: false
+                , formationTroopCount: 1
+                , formationTroopIndex: 0
+                , isAlarmed: true
+                , wieldInitialWeapons: true
+#if !e159 && !e1510 && !e160 && !e161
+                , forceDismounted: false
+                , initialPosition: null
+                , initialDirection: null
+#endif
+            );
+            agent.MountAgent?.FadeIn();
+            agent.FadeIn();
+            return agent;
         }
 
         public static bool ShouldBeMounted(FormationClass formationClass)
