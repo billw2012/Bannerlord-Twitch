@@ -148,7 +148,7 @@ namespace BLTAdoptAHero.Actions.Util
             var itemsOfCorrectType = new List<ItemObject>();
             do
             {
-                var crafting = new Crafting(validTemplates.SelectRandom(), hero.Culture);
+                var crafting = CampaignHelpers.NewCrafting(validTemplates.SelectRandom(), hero.Culture);
                 crafting.Init();
                 crafting.Randomize();
 
@@ -178,6 +178,7 @@ namespace BLTAdoptAHero.Actions.Util
             
             bestItem.StringId = Guid.NewGuid().ToString();
             CompleteCraftedItem(bestItem);
+
             return MBObjectManager.Instance.RegisterObject(bestItem);
         }
 

@@ -499,13 +499,6 @@ namespace BLTAdoptAHero
 
                         if (Mission.Current?.MissionResult != null)
                         {
-                            bool playerWon = Mission.Current.MissionResult.PlayerVictory
-#if !e159 && !e1510 && !e160 
-                                             // When siege retreat happens
-                                             || MapEvent.PlayerMapEvent.PlayerSide == BattleSideEnum.Attacker 
-                                             && Mission.Current.MissionResult.BattleState == BattleState.DefenderPullBack
-#endif
-                                ; 
                             var results = new List<string>();
                             float finalRewardScaling =
                                     (settings.OnPlayerSide
@@ -513,7 +506,7 @@ namespace BLTAdoptAHero
                                         : BLTAdoptAHeroCommonMissionBehavior.Current.EnemySideRewardMultiplier)
                                 ;
 
-                            if (settings.OnPlayerSide && playerWon)
+                            if (settings.OnPlayerSide == Mission.Current.MissionResult.PlayerVictory)
                             {
                                 int actualGold = (int)(finalRewardScaling * BLTAdoptAHeroModule.CommonConfig.WinGold +
                                                        settings.GoldCost);
@@ -537,7 +530,7 @@ namespace BLTAdoptAHero
                                     }
                                 }
                             }
-                            else if(!settings.OnPlayerSide && !playerWon)
+                            else
                             {
                                 if (BLTAdoptAHeroModule.CommonConfig.LoseGold > 0)
                                 {

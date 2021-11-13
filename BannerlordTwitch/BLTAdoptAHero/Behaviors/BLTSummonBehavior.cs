@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Helpers;
@@ -39,8 +39,8 @@ namespace BLTAdoptAHero
             private float CooldownTime => BLTAdoptAHeroModule.CommonConfig.CooldownEnabled
                 ? BLTAdoptAHeroModule.CommonConfig.GetCooldownTime(TimesSummoned) : 0;
 
-            public bool InCooldown => BLTAdoptAHeroModule.CommonConfig.CooldownEnabled && SummonTime + CooldownTime > MBCommon.GetTime(MBCommon.TimeType.Mission);
-            public float CooldownRemaining => !BLTAdoptAHeroModule.CommonConfig.CooldownEnabled ? 0 : Math.Max(0, SummonTime + CooldownTime - MBCommon.GetTime(MBCommon.TimeType.Mission));
+            public bool InCooldown => BLTAdoptAHeroModule.CommonConfig.CooldownEnabled && SummonTime + CooldownTime > CampaignHelpers.GetTotalMissionTime();
+            public float CooldownRemaining => !BLTAdoptAHeroModule.CommonConfig.CooldownEnabled ? 0 : Math.Max(0, SummonTime + CooldownTime - CampaignHelpers.GetTotalMissionTime());
             public float CoolDownFraction => !BLTAdoptAHeroModule.CommonConfig.CooldownEnabled ? 1 : 1f - CooldownRemaining / CooldownTime;
         }
 
@@ -60,7 +60,7 @@ namespace BLTAdoptAHero
                 Hero = hero,
                 WasPlayerSide = playerSide,
                 Party = party,
-                SummonTime = MBCommon.GetTime(MBCommon.TimeType.Mission), 
+                SummonTime = CampaignHelpers.GetTotalMissionTime(), 
             };
             heroSummonStates.Add(heroSummonState);
             return heroSummonState;
@@ -94,7 +94,7 @@ namespace BLTAdoptAHero
                 heroSummonState.CurrentAgent = agent;
                 heroSummonState.State = AgentState.Active;
                 heroSummonState.TimesSummoned++;
-                heroSummonState.SummonTime = MBCommon.GetTime(MBCommon.TimeType.Mission);
+                heroSummonState.SummonTime = CampaignHelpers.GetTotalMissionTime();
                 // If hero isn't registered yet then this must be a hero that is part of one of the involved parties
                 // already
             });
@@ -242,7 +242,7 @@ namespace BLTAdoptAHero
                 , formationTroopIndex: 0
                 , isAlarmed: true
                 , wieldInitialWeapons: true
-#if e162
+#if !e159 && !e1510 && !e160 && !e161
                 , forceDismounted: false
                 , initialPosition: null
                 , initialDirection: null

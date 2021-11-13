@@ -72,7 +72,7 @@ namespace BLTAdoptAHero.Powers
 
         void IHeroPowerActive.Activate(Hero hero, Action expiryCallback)
         {
-            expiry[hero] = MBCommon.GetTime(MBCommon.TimeType.Mission) + PowerDurationSeconds;
+            expiry[hero] = CampaignHelpers.GetTotalMissionTime() + PowerDurationSeconds;
             
             var agent = hero.GetAgent();
             var pfx = agent == null ? null : new AgentPfx(agent, Pfx);
@@ -83,7 +83,7 @@ namespace BLTAdoptAHero.Powers
                 var deactivationHandler = new DeactivationHandler();
                 handlers.OnSlowTick += _ =>
                 {
-                    if (MBCommon.GetTime(MBCommon.TimeType.Mission) > expiry[hero])
+                    if (CampaignHelpers.GetTotalMissionTime() > expiry[hero])
                     {
                         BLTHeroPowersMissionBehavior.PowerHandler.ClearHandlers(hero, this);
                         pfx?.Stop();
@@ -117,7 +117,7 @@ namespace BLTAdoptAHero.Powers
             }
 
             return (PowerDurationSeconds, 
-                Math.Max(0, Math.Min(PowerDurationSeconds, expiryVal - MBCommon.GetTime(MBCommon.TimeType.Mission))));
+                Math.Max(0, Math.Min(PowerDurationSeconds, expiryVal - CampaignHelpers.GetTotalMissionTime())));
         }
 
         #endregion

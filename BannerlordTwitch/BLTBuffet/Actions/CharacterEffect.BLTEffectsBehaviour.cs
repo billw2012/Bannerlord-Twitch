@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Util;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -15,7 +16,7 @@ namespace BLTBuffet
             public readonly Agent agent;
             public readonly Config config;
 
-            public float started = MBCommon.GetTime(MBCommon.TimeType.Mission);
+            public float started = CampaignHelpers.GetTotalMissionTime();
             public class PfxState
             {
                 public List<GameEntityComponent> weaponEffects;
@@ -86,7 +87,7 @@ namespace BLTBuffet
             public bool CheckRemove()
             {
                 if (config.Duration.HasValue 
-                    && MBCommon.GetTime(MBCommon.TimeType.Mission) > config.Duration.Value + started)
+                    && CampaignHelpers.GetTotalMissionTime() > config.Duration.Value + started)
                 {
                     Log.LogFeedEvent("{Config} expired on {Target}!"
                         .Translate(("Config", config.Name), ("Target", agent.Name)));

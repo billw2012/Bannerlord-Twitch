@@ -5,6 +5,7 @@ using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
+using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 
 namespace BannerlordTwitch.Helpers
@@ -74,6 +75,30 @@ namespace BannerlordTwitch.Helpers
         
         public static IEnumerable<ItemObject> AllItems => Items.All;
 #endif
+        
+        public static float GetApplicationTime() => 
+#if e159 || e1510 || e160 || e161 || e162
+            MBCommon.GetTime(MBCommon.TimeType.Application)
+#else
+            MBCommon.GetApplicationTime()
+#endif
+        ;
+        
+        public static float GetTotalMissionTime() => 
+#if e159 || e1510 || e160 || e161 || e162
+            MBCommon.GetTime(MBCommon.TimeType.Mission)
+#else
+            MBCommon.GetTotalMissionTime()
+#endif
+        ;
+        
+        public static Crafting NewCrafting(CraftingTemplate craftingTemplate, BasicCultureObject culture) => 
+#if e159 || e1510 || e160 || e161 || e162
+            new Crafting(craftingTemplate, culture)
+#else
+            new Crafting(craftingTemplate, culture, craftingTemplate.TemplateName)
+#endif
+        ;
 
         public static IEnumerable<Hero> AliveHeroes => Campaign.Current.AliveHeroes;
         public static IEnumerable<Hero> AllHeroes => AliveHeroes.Concat(DeadOrDisabledHeroes).Distinct();
