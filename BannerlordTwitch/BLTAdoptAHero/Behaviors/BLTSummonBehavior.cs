@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Helpers;
@@ -80,7 +80,9 @@ namespace BLTAdoptAHero
 
                 var heroSummonState = GetHeroSummonState(adoptedHero) 
                                    ?? AddHeroSummonState(adoptedHero, 
-                                       agent.Team.IsFriendOf(Mission.PlayerTeam),
+                                       Mission != null 
+                                       && agent.Team != null 
+                                       && agent.Team.IsFriendOf(Mission.PlayerTeam),
                                        adoptedHero.GetMapEventParty());
                 
                 // First spawn, so spawn retinue also
