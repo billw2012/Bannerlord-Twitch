@@ -32,7 +32,7 @@ namespace BLTAdoptAHero
 
         public static PowerHandler PowerHandler => Current?.powerHandler;
 
-        #region MissionBehaviour Overrides
+        #region MissionBehavior Overrides
 
         private readonly HashSet<Hero> activeHeroes = new();
         public override void OnAgentCreated(Agent agent)
@@ -64,7 +64,7 @@ namespace BLTAdoptAHero
                 => handlers.MissileCollisionReaction(collisionReaction, attackerAgent, attachedAgent, 
                     attachedBoneIndex, attachedToShield, attachLocalFrame, missile));
 
-        protected override void OnAgentControllerChanged(Agent agent)
+        protected override void OnAgentControllerChanged(Agent agent, Agent.ControllerType oldController)
             => powerHandler.CallHandlersForAgent(agent, 
                 handlers => handlers.AgentControllerChanged(agent));
 

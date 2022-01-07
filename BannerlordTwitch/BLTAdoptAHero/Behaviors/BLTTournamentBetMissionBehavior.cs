@@ -29,7 +29,7 @@ namespace BLTAdoptAHero
             
         public List<int> GetTotalBets()
         {
-            var tournamentBehavior = MissionState.Current?.CurrentMission?.GetMissionBehaviour<TournamentBehavior>();
+            var tournamentBehavior = MissionState.Current?.CurrentMission?.GetMissionBehavior<TournamentBehavior>();
             if (tournamentBehavior != null && activeBets != null)
             {
                 int teamsCount = tournamentBehavior.CurrentMatch.Teams.Count();
@@ -90,7 +90,7 @@ namespace BLTAdoptAHero
             
         public (bool success, string failReason) PlaceBet(Hero hero, string team, int bet)
         {
-            var tournamentBehavior = Mission.Current?.GetMissionBehaviour<TournamentBehavior>();
+            var tournamentBehavior = Mission.Current?.GetMissionBehavior<TournamentBehavior>();
             if (tournamentBehavior == null)
             {
                 return (false, "{=FEZ1Opj1}Tournament is not active".Translate());

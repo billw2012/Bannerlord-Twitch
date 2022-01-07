@@ -16,7 +16,7 @@ namespace BannerlordTwitch.Helpers
                 Mission.Current?.Agents.Any(a => a.Character == hero.CharacterObject) == true;
 
         public static bool InHideOutMission() 
-            => Mission.Current?.GetMissionBehaviour<HideoutMissionController>() != null;
+            => Mission.Current?.GetMissionBehavior<HideoutMissionController>() != null;
 
         public static bool InFieldBattleMission() 
             => Mission.Current?.IsFieldBattle == true;
@@ -25,12 +25,12 @@ namespace BannerlordTwitch.Helpers
         #if e159 || e1510 || e160
             => false;
         #else
-            => Mission.Current?.GetMissionBehaviour<LordsHallFightMissionController>() != null;
+            => Mission.Current?.GetMissionBehavior<LordsHallFightMissionController>() != null;
         #endif
 
         public static bool InSiegeMission() 
             => Mission.Current?.IsFieldBattle != true 
-               && Mission.Current?.GetMissionBehaviour<CampaignSiegeStateHandler>() != null
+               && Mission.Current?.GetMissionBehavior<CampaignSiegeStateHandler>() != null
                && !InLordsHallBattleMission();
 
         public static bool InArenaPracticeMission() 
@@ -42,7 +42,7 @@ namespace BannerlordTwitch.Helpers
                && Mission.Current?.Mode != MissionMode.Battle;
 
         public static bool InTournament()
-            => Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null 
+            => Mission.Current?.GetMissionBehavior<TournamentFightMissionController>() != null 
                && Mission.Current?.Mode == MissionMode.Battle;
 
         public static bool InFriendlyMission() 
@@ -50,12 +50,12 @@ namespace BannerlordTwitch.Helpers
 
         public static bool InConversation() => Mission.Current?.Mode == MissionMode.Conversation;
         
-        public static bool InConversationMission() => Mission.Current?.GetMissionBehaviour<ConversationMissionLogic>() != null;
+        public static bool InConversationMission() => Mission.Current?.GetMissionBehavior<ConversationMissionLogic>() != null;
 
         public static bool InTrainingFieldMission()
-            => Mission.Current?.GetMissionBehaviour<TrainingFieldMissionController>() != null;
+            => Mission.Current?.GetMissionBehavior<TrainingFieldMissionController>() != null;
 
         public static bool InVillageEncounter()
-            => PlayerEncounter.LocationEncounter?.GetType() == typeof(VillageEncouter);
+            => PlayerEncounter.LocationEncounter?.GetType() == typeof(VillageEncounter);
     }
 }

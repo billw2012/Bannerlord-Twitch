@@ -49,61 +49,56 @@ namespace BLTAdoptAHero
             MissionInfoHub.Register();
         }
 
-        public override void OnMissionBehaviourInitialize(Mission mission)
+        public override void OnMissionBehaviorInitialize(Mission mission)
         {
             try
             {
                 // Add the marker overlay for appropriate mission types
-                if (mission.GetMissionBehaviour<MissionNameMarkerUIHandler>() == null
+                if (mission.GetMissionBehavior<MissionNameMarkerUIHandler>() == null
                     && (MissionHelpers.InSiegeMission()
                         || MissionHelpers.InFieldBattleMission()
-                        || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null))
+                        || Mission.Current?.GetMissionBehavior<TournamentFightMissionController>() != null))
                 {
-                    mission.AddMissionBehaviour(SandBoxViewCreator.CreateMissionNameMarkerUIHandler(mission));
+                    mission.AddMissionBehavior(SandBoxViewCreator.CreateMissionNameMarkerUIHandler(mission));
                 }
 
-                mission.AddMissionBehaviour(new BLTAdoptAHeroCommonMissionBehavior());
-                mission.AddMissionBehaviour(new BLTAdoptAHeroCustomMissionBehavior());
-                mission.AddMissionBehaviour(new BLTSummonBehavior());
-                mission.AddMissionBehaviour(new BLTRemoveAgentsBehavior());
-                mission.AddMissionBehaviour(new BLTHeroPowersMissionBehavior());
+                mission.AddMissionBehavior(new BLTAdoptAHeroCommonMissionBehavior());
+                mission.AddMissionBehavior(new BLTAdoptAHeroCustomMissionBehavior());
+                mission.AddMissionBehavior(new BLTSummonBehavior());
+                mission.AddMissionBehavior(new BLTRemoveAgentsBehavior());
+                mission.AddMissionBehavior(new BLTHeroPowersMissionBehavior());
             }
             catch (Exception e)
             {
-                Log.Exception(nameof(OnMissionBehaviourInitialize), e);
+                Log.Exception(nameof(OnMissionBehaviorInitialize), e);
             }
         }
         
         [UsedImplicitly, HarmonyPostfix, 
-         HarmonyPatch(typeof(MissionNameMarkerTargetVM), MethodType.Constructor
-             , typeof(Agent)
-#if !e159 && !e1510 && !e160 && !e161
-             , typeof(bool)
-#endif
-             )
-        ]
+         HarmonyPatch(typeof(MissionNameMarkerTargetVM), MethodType.Constructor, typeof(Agent), typeof(bool))]
         public static void MissionNameMarkerTargetVMConstructorPostfix(MissionNameMarkerTargetVM __instance, Agent agent)
         {
             if (MissionHelpers.InSiegeMission() || MissionHelpers.InFieldBattleMission() || MissionHelpers.InHideOutMission())
             {
                 if (Agent.Main != null && agent.IsEnemyOf(Agent.Main) || agent.Team.IsEnemyOf(Mission.Current.PlayerTeam))
                 {
-                    __instance.MarkerType = 2;
+                    __instance.NameType = "Enemy";
+                    __instance.IsFriendly = false;
+                    __instance.IsEnemy = true;
                 }
                 else if (Agent.Main != null && agent.IsFriendOf(Agent.Main) || agent.Team.IsFriendOf(Mission.Current.PlayerTeam))
                 {
-                    __instance.MarkerType = 0;
+                    __instance.NameType = "Friendly";
+                    __instance.IsFriendly = true;
+                    __instance.IsEnemy = false;
                 }
             }
         }
 
         [UsedImplicitly, HarmonyPostfix, 
-         HarmonyPatch(typeof(MissionNameMarkerVM), MethodType.Constructor
-             , typeof(Mission)
-             , typeof(Camera)
-#if !e159 && !e1510 && !e160 && !e161 && !e162
-             , typeof(Dictionary<Agent, MissionNameMarkerTargetVM.QuestType>)
-#endif
+         HarmonyPatch(typeof(MissionNameMarkerVM), MethodType.Constructor, typeof(Mission), typeof(Camera)
+             , typeof(Dictionary<Agent, SandBoxUIHelper.IssueQuestFlags>)
+             , typeof(Dictionary<string, ValueTuple<Vec3, string, string>>)
              )
         ]
         // ReSharper disable once RedundantAssignment

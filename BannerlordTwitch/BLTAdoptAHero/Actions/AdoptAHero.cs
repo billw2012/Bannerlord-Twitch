@@ -268,9 +268,7 @@ namespace BLTAdoptAHero
             // Create or find a hero for adopting
             if (settings.CreateNew)
             {
-                var character = CharacterObject.Templates
-                    .Where(x => x.Occupation == Occupation.Wanderer)
-                    .SelectRandom();
+                var character = CampaignHelpers.WandererTemplates.SelectRandom();
                 if (character != null)
                 {
                     newHero = HeroCreator.CreateSpecialHero(character);
@@ -379,9 +377,9 @@ namespace BLTAdoptAHero
                 BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentClass(newHero, classDef);
             }
 
-            if(Campaign.Current != null && !Campaign.Current.EncyclopediaManager.BookmarksTracker.IsBookmarked(newHero))
+            if(Campaign.Current != null && !Campaign.Current.EncyclopediaManager.ViewDataTracker.EncyclopediaIsBookmarked(newHero))
             {
-                Campaign.Current.EncyclopediaManager.BookmarksTracker.AddBookmarkToItem(newHero);
+                Campaign.Current.EncyclopediaManager.ViewDataTracker.EncyclopediaAddBookmarkToItem(newHero);
             }
             
             BLTAdoptAHeroCampaignBehavior.Current.SetHeroGold(newHero, settings.StartingGold);

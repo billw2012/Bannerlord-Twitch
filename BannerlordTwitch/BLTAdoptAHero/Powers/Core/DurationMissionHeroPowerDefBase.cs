@@ -52,7 +52,7 @@ namespace BLTAdoptAHero.Powers
 
             if (!Mission.Current.IsLoadingFinished
                 || Mission.Current.CurrentState != Mission.State.Continuing
-                || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null &&
+                || Mission.Current?.GetMissionBehavior<TournamentFightMissionController>() != null &&
                 Mission.Current.Mode != MissionMode.Battle)
             {
                 return (false, "{=EbrlEg5C}Mission has not started yet!".Translate());

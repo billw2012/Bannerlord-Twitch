@@ -7,6 +7,7 @@ using BannerlordTwitch.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.SandBox.Source.TournamentGames;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.SaveSystem;
 
@@ -135,9 +136,9 @@ namespace BLTAdoptAHero
             startingTournament.PrepareForTournamentGame();
             
             // Mission is created by PrepareForTournamentGame, so we can add to it here
-            MissionState.Current.CurrentMission.AddMissionBehaviour(startingTournament);
-            MissionState.Current.CurrentMission.AddMissionBehaviour(new BLTTournamentBetMissionBehavior());
-            MissionState.Current.CurrentMission.AddMissionBehaviour(new BLTTournamentSkillAdjustBehavior());
+            MissionState.Current.CurrentMission.AddMissionBehavior(startingTournament);
+            MissionState.Current.CurrentMission.AddMissionBehavior(new BLTTournamentBetMissionBehavior());
+            MissionState.Current.CurrentMission.AddMissionBehavior(new BLTTournamentSkillAdjustBehavior());
 
             startingTournament = null;
         }
@@ -184,9 +185,8 @@ namespace BLTAdoptAHero
         
         // MissionState.Current.CurrentMission doesn't have any behaviours yet added during this function,
         // so we split the initialization that requires access to mission behaviours into another patch below
-        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(TournamentGame), nameof(TournamentGame.GetParticipantCharacters))]
-        public static void GetParticipantCharactersPostfix(Settlement settlement,
-            int maxParticipantCount, bool includePlayer, List<CharacterObject> __result)
+        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(FightTournamentGame), nameof(FightTournamentGame.GetParticipantCharacters))]
+        public static void GetParticipantCharactersPostfix(Settlement settlement, List<CharacterObject> __result)
         {
             SafeCallStatic(() => Current?.GetParticipantCharactersPostfixImpl(settlement, __result));
         }

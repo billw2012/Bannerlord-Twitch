@@ -10,6 +10,7 @@ using BannerlordTwitch.Testing;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TwitchLib.Api;
 using TwitchLib.Api.Core.Enums;
 using TwitchLib.Api.Helix.Models.ChannelPoints.GetCustomReward;

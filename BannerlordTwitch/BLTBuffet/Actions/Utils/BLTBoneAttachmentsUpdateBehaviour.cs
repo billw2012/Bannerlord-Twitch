@@ -44,9 +44,9 @@ namespace BLTBuffet
         }
     }
 
-    public class BLTBoneAttachmentsUpdateBehaviour : MissionBehaviour
+    public class BLTBoneAttachmentsUpdateBehaviour : MissionBehavior
     {
-        public override MissionBehaviourType BehaviourType => MissionBehaviourType.Other;
+        public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
 
         private readonly List<BoneAttachments> attachmentsList = new();
 
@@ -92,11 +92,11 @@ namespace BLTBuffet
 
         public static BLTBoneAttachmentsUpdateBehaviour Get()
         {
-            var beh = Mission.Current.GetMissionBehaviour<BLTBoneAttachmentsUpdateBehaviour>();
+            var beh = Mission.Current.GetMissionBehavior<BLTBoneAttachmentsUpdateBehaviour>();
             if (beh == null)
             {
                 beh = new BLTBoneAttachmentsUpdateBehaviour();
-                Mission.Current.AddMissionBehaviour(beh);
+                Mission.Current.AddMissionBehavior(beh);
             }
 
             return beh;

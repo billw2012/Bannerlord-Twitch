@@ -92,17 +92,18 @@ namespace BannerlordTwitch.Helpers
 #endif
         ;
         
-        public static Crafting NewCrafting(CraftingTemplate craftingTemplate, BasicCultureObject culture) => 
-#if e159 || e1510 || e160 || e161 || e162
-            new Crafting(craftingTemplate, culture)
-#else
+        public static Crafting NewCrafting(CraftingTemplate craftingTemplate, BasicCultureObject culture) =>
             new Crafting(craftingTemplate, culture, craftingTemplate.TemplateName)
-#endif
         ;
 
         public static IEnumerable<Hero> AliveHeroes => Campaign.Current.AliveHeroes;
         public static IEnumerable<Hero> AllHeroes => AliveHeroes.Concat(DeadOrDisabledHeroes).Distinct();
 
         public static IEnumerable<CultureObject> AllCultures => MBObjectManager.Instance.GetObjectTypeList<CultureObject>();
+
+        public static IEnumerable<CharacterObject> WandererTemplates =>
+            AllCultures.Where(c => c.IsMainCulture).SelectMany(c =>
+                c.NotableAndWandererTemplates.Where(w => w.Occupation == Occupation.Wanderer))
+        ;
     }
 }

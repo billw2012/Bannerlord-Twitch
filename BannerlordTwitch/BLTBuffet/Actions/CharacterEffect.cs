@@ -41,7 +41,7 @@ namespace BLTBuffet
             
             if (!Mission.Current.IsLoadingFinished 
                 || Mission.Current.CurrentState != Mission.State.Continuing
-                || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null && Mission.Current.Mode != MissionMode.Battle)
+                || Mission.Current?.GetMissionBehavior<TournamentFightMissionController>() != null && Mission.Current.Mode != MissionMode.Battle)
             {
                 onFailure("{=0H0dMWam}The mission has not started yet!".Translate());
                 return;

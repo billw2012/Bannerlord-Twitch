@@ -12,6 +12,7 @@ using BannerlordTwitch.Util;
 using BLTOverlay;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 #pragma warning disable IDE0051 // Remove unused private members
@@ -28,18 +29,8 @@ namespace BannerlordTwitch
 		private static extern int SetWindowText(IntPtr hWnd, string text);
 
 		private const string ExpectedVersion =
-#if e159
-				"e1.5.9"
-#elif e1510
-				"e1.5.10"
-#elif e160
-				"e1.6.0"
-#elif e161
-				"e1.6.1"
-#elif e162
-				"e1.6.2"
-#elif e164
-				"e1.6.4"
+#if e170
+				"e1.7.0"
 #endif
 			;
 
@@ -168,10 +159,10 @@ namespace BannerlordTwitch
 			TwitchService = null;
 		}
 		
-		public override void OnMissionBehaviourInitialize(Mission mission)
+		public override void OnMissionBehaviorInitialize(Mission mission)
 		{
-			mission.AddMissionBehaviour(new BLTAgentModifierBehavior());
-			mission.AddMissionBehaviour(new BLTAgentPfxBehaviour());
+			mission.AddMissionBehavior(new BLTAgentModifierBehavior());
+			mission.AddMissionBehavior(new BLTAgentPfxBehaviour());
 		}
 
 		public static bool RestartTwitchService()

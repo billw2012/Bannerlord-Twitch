@@ -117,7 +117,7 @@ namespace BLTBuffet
             }
         }
 
-        internal class BLTEffectsBehaviour : MissionBehaviour
+        internal class BLTEffectsBehaviour : MissionBehavior
         {
             private readonly Dictionary<Agent, List<CharacterEffectState>> agentEffectsActive = new();
 
@@ -144,11 +144,11 @@ namespace BLTBuffet
 
             public static BLTEffectsBehaviour Get()
             {
-                var beh = Mission.Current.GetMissionBehaviour<BLTEffectsBehaviour>();
+                var beh = Mission.Current.GetMissionBehavior<BLTEffectsBehaviour>();
                 if (beh == null)
                 {
                     beh = new BLTEffectsBehaviour();
-                    Mission.Current.AddMissionBehaviour(beh);
+                    Mission.Current.AddMissionBehavior(beh);
                 }
 
                 return beh;
@@ -300,7 +300,7 @@ namespace BLTBuffet
                 }
             }
 
-            public override MissionBehaviourType BehaviourType => MissionBehaviourType.Other;
+            public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
         }
     }
 }

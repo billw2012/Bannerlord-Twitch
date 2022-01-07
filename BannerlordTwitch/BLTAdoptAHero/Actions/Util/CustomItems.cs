@@ -135,7 +135,7 @@ namespace BLTAdoptAHero.Actions.Util
             // var equipmentTypes = weaponTypes.ToList();
             var equipmentWeaponClass = EquipmentTypeHelpers.GetWeaponClass(weaponType);
             var validTemplates = CraftingTemplate.All
-                .Where(t => t.WeaponUsageDatas?.Any(w => w.WeaponClass == equipmentWeaponClass) == true)
+                .Where(t => t.WeaponDescriptions?.Any(w => w.WeaponClass == equipmentWeaponClass) == true)
                 .ToList();
 
             if (!validTemplates.Any())

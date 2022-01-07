@@ -271,7 +271,7 @@ namespace BLTAdoptAHero
 
             if (!Mission.Current.IsLoadingFinished 
                 || Mission.Current.CurrentState != Mission.State.Continuing
-                || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null 
+                || Mission.Current?.GetMissionBehavior<TournamentFightMissionController>() != null 
                     && Mission.Current.Mode != MissionMode.Battle)
             {
                 onFailure("{=v5dO40vi}You cannot be summoned now, the mission has not started yet!".Translate());
@@ -289,7 +289,7 @@ namespace BLTAdoptAHero
             }
             else
             {
-                // We need to synchronize troop spawning to the MissionBehaviour OnMissionTick, or occasional null pointer  
+                // We need to synchronize troop spawning to the MissionBehavior OnMissionTick, or occasional null pointer  
                 // crashes seem to happen in the engine...
                 BLTSummonBehavior.Current.DoNextTick(() =>
                 {
@@ -311,7 +311,7 @@ namespace BLTAdoptAHero
                 MobileParty.MainParty,
                 SandBoxManager.Instance.AgentBehaviorManager.AddBodyguardBehaviors);
 
-            var missionAgentHandler = Mission.Current.GetMissionBehaviour<MissionAgentHandler>();
+            var missionAgentHandler = Mission.Current.GetMissionBehavior<MissionAgentHandler>();
             var worldFrame = missionAgentHandler.Mission.MainAgent.GetWorldFrame();
             worldFrame.Origin.SetVec2(worldFrame.Origin.AsVec2 + (worldFrame.Rotation.f * 10f + worldFrame.Rotation.s).AsVec2);
 
@@ -320,7 +320,7 @@ namespace BLTAdoptAHero
             Agent agent;
             if (MissionHelpers.InArenaPracticeMission())
             {
-                var controller = Mission.Current.GetMissionBehaviour<ArenaPracticeFightMissionController>();
+                var controller = Mission.Current.GetMissionBehavior<ArenaPracticeFightMissionController>();
                 var pos = ArenaPracticeFightMissionController_GetSpawnFrame(controller, false, false);
                 agent = MissionAgentHandler_SpawnWanderingAgent(missionAgentHandler, locationCharacter, pos, false, true);
                 var _participantAgents = (List<Agent>)AccessTools
@@ -340,7 +340,7 @@ namespace BLTAdoptAHero
             // For player hostile situations we setup a 1v1 fight
             if (!settings.OnPlayerSide)
             {
-                Mission.Current.GetMissionBehaviour<MissionFightHandler>().StartCustomFight(
+                Mission.Current.GetMissionBehavior<MissionFightHandler>().StartCustomFight(
                     new() { Agent.Main },
                     new() { agent }, false, false, false,
                     playerWon =>
@@ -648,14 +648,15 @@ namespace BLTAdoptAHero
             __result = !__instance.Mission.Teams.Where(t => t.Side == side).Any(t => t.ActiveAgents.Any());
         }
 
-        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(DefaultBattleMoraleModel), nameof(DefaultBattleMoraleModel.GetImportance))]
-        public static void GetImportancePostfix(DefaultBattleMoraleModel __instance, Agent agent, ref float __result)
-        {
-            if (agent.IsAdopted())
-            {
-                __result *= BLTAdoptAHeroModule.CommonConfig.MoraleLossFactor;
-            }
-        }
+        // TODO: Disabled for updating
+        // [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(SandboxBattleMoraleModel), nameof(SandboxBattleMoraleModel.morale))]
+        // public static void GetImportancePostfix(SandboxBattleMoraleModel __instance, Agent agent, ref float __result)
+        // {
+        //     if (agent.IsAdopted())
+        //     {
+        //         __result *= BLTAdoptAHeroModule.CommonConfig.MoraleLossFactor;
+        //     }
+        // }
     }
 
     [LocDisplayName("{=CXb5ALls}Shout")]

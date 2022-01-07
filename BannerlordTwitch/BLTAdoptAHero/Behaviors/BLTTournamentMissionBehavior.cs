@@ -132,7 +132,7 @@ namespace BLTAdoptAHero
                 // Each participant has a set of skills associated with their class.
                 // Randomly select tournament equipment set weighted by how well it matches the participants skills.
                     
-                var tournamentBehavior = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>();
+                var tournamentBehavior = MissionState.Current.CurrentMission.GetMissionBehavior<TournamentBehavior>();
                     
                 // Get all equipment sets, and their associated skills
                 var availableEquipment = GetAllTournamentEquipment()
@@ -174,7 +174,7 @@ namespace BLTAdoptAHero
                     .equipment;
 
                 MissionState.Current.CurrentMission
-                    .GetMissionBehaviour<BLTTournamentSkillAdjustBehavior>()
+                    .GetMissionBehavior<BLTTournamentSkillAdjustBehavior>()
                     .UnarmedRound = tournamentSet.IsEmpty();
 
                 foreach (var e in equipments)
@@ -234,13 +234,13 @@ namespace BLTAdoptAHero
 
         public void PrepareForTournamentGame()
         {
-            MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>()
+            MissionState.Current.CurrentMission.GetMissionBehavior<TournamentBehavior>()
                 .TournamentEnd += OnTournamentEnd;
         }
 
         private void OnTournamentEnd()
         {
-            var tournamentBehavior = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>();
+            var tournamentBehavior = MissionState.Current.CurrentMission.GetMissionBehavior<TournamentBehavior>();
 
             // Win results, put winner last
             foreach (var entry in activeTournament.OrderBy(e => e.Hero == tournamentBehavior.Winner.Character?.HeroObject))

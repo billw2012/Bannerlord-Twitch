@@ -279,7 +279,7 @@ namespace BannerlordTwitch.Util
 				camera = Camera.CreateCamera();
 			}
 			itemFrame = MatrixFrame.Identity;
-			WeaponClass weaponClass = item.WeaponDesign.Template.WeaponUsageDatas.First<WeaponUsageData>().WeaponClass;
+			WeaponClass weaponClass = item.WeaponDesign.Template.WeaponDescriptions.First().WeaponClass;
 			Vec3 u = itemFrame.rotation.u;
 			Vec3 v = itemFrame.origin - u * (item.WeaponDesign.CraftedWeaponLength * 0.5f);
 			Vec3 v2 = v + u * item.WeaponDesign.CraftedWeaponLength;
