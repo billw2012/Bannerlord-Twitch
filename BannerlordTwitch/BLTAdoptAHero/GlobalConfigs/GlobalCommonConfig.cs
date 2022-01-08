@@ -78,7 +78,7 @@ namespace BLTAdoptAHero
          Document, UsedImplicitly]
         public float StartRetinueHealthMultiplier { get; set; } = 2;
 
-        [LocDisplayName("{=ZPmBe7XI}Morale Loss Factor"),
+        [LocDisplayName("{=ZPmBe7XI}Morale Loss Factor (not implemented)"),
          LocCategory("Battle", "{=9qAD6eZR}Battle"),
          LocDescription("{=tpgJtS5q}Reduces morale loss when summoned heroes die"),
          PropertyOrder(4),

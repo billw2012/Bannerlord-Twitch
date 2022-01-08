@@ -80,13 +80,13 @@ namespace BLTAdoptAHero
         {
             if (MissionHelpers.InSiegeMission() || MissionHelpers.InFieldBattleMission() || MissionHelpers.InHideOutMission())
             {
-                if (Agent.Main != null && agent.IsEnemyOf(Agent.Main) || agent.Team.IsEnemyOf(Mission.Current.PlayerTeam))
+                if (Agent.Main != null && agent.IsEnemyOf(Agent.Main) || Mission.Current.PlayerTeam?.IsValid == true && agent.Team.IsEnemyOf(Mission.Current.PlayerTeam))
                 {
                     __instance.NameType = "Enemy";
                     __instance.IsFriendly = false;
                     __instance.IsEnemy = true;
                 }
-                else if (Agent.Main != null && agent.IsFriendOf(Agent.Main) || agent.Team.IsFriendOf(Mission.Current.PlayerTeam))
+                else if (Agent.Main != null && agent.IsFriendOf(Agent.Main) || Mission.Current.PlayerTeam?.IsValid == true && agent.Team.IsFriendOf(Mission.Current.PlayerTeam))
                 {
                     __instance.NameType = "Friendly";
                     __instance.IsFriendly = true;

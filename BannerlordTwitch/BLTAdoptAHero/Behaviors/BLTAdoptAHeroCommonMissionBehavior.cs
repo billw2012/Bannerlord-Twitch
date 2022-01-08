@@ -108,7 +108,7 @@ namespace BLTAdoptAHero
 
                 if (!agent.IsMount && agent.Team?.IsValid == true && Mission.PlayerTeam?.IsValid == true)
                 {
-                    if (agent.Team.IsFriendOf(Mission.PlayerTeam))
+                    if (Mission.PlayerTeam?.IsValid == true && agent.Team.IsFriendOf(Mission.PlayerTeam))
                     {
                         PlayerSidePower += agent.Character.GetPower();
                     }

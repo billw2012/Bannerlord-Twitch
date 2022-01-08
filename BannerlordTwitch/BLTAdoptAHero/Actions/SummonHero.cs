@@ -448,10 +448,8 @@ namespace BLTAdoptAHero
             {
                 var party = adoptedHero.GetMapEventParty() ?? settings.OnPlayerSide switch
                 {
-                    true when Mission.Current?.PlayerTeam != null &&
-                              Mission.Current?.PlayerTeam?.ActiveAgents.Any() == true => PartyBase.MainParty,
-                    false when Mission.Current?.PlayerEnemyTeam != null &&
-                               Mission.Current?.PlayerEnemyTeam.ActiveAgents.Any() == true => Mission.Current
+                    true when Mission.Current.PlayerTeam?.ActiveAgents.Any() == true => PartyBase.MainParty,
+                    false when Mission.Current.PlayerEnemyTeam?.ActiveAgents.Any() == true => Mission.Current
                         .PlayerEnemyTeam?.TeamAgents?.Select(a => a.Origin?.BattleCombatant as PartyBase)
                         .Where(p => p != null)
                         .SelectRandom(),
@@ -492,8 +490,12 @@ namespace BLTAdoptAHero
                         if (adoptedHero.PartyBelongedTo != originalParty)
                         {
                             party.AddMember(adoptedHero.CharacterObject, -1);
-                            // Use insert at front to make sure we put the character back as party leader if they were previously
                             originalParty?.Party?.MemberRoster.AddToCounts(adoptedHero.CharacterObject, 1, insertAtFront: wasLeader);
+                            // Make sure to reassign the hero as party leader if they were previously
+                            if (wasLeader)
+                            {
+                                originalParty?.PartyComponent.ChangePartyLeader(adoptedHero);
+                            }
                             Log.Trace($"[{nameof(SummonHero)}] moving {adoptedHero} from {party} back to {originalParty?.Party?.ToString() ?? "no party"}");
                         }
 
@@ -600,6 +602,7 @@ namespace BLTAdoptAHero
         private static IEnumerable<Shout> GetShouts(Settings settings)
         {
             bool onAttackingSide = Mission.Current.AttackerTeam.IsValid &&
+                                   Mission.Current.PlayerTeam?.IsValid == true &&
                                    (settings.OnPlayerSide
                                        ? Mission.Current.AttackerTeam.IsFriendOf(Mission.Current.PlayerTeam)
                                        : !Mission.Current.AttackerTeam.IsFriendOf(Mission.Current.PlayerTeam));

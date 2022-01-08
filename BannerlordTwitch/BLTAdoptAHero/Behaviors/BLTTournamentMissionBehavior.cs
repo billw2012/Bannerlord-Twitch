@@ -417,9 +417,18 @@ namespace BLTAdoptAHero
             SafeCallStatic(() => Current?.EndCurrentMatchPostfixImpl(__instance));
         }
         
-        #endregion
+        [UsedImplicitly, HarmonyPrefix, HarmonyPatch(typeof(TournamentManager), "GivePrizeToWinner")]
+        public static bool GivePrizeToWinnerPrefix(Hero winner)
+        {
+            // The default implementation of GivePrizeToWinner expects CurrentSettlement to not be null, which isn't 
+            // true for our tournaments as we pull heroes from wherever they happen to be.
+            // This check WILL mean that adopted heroes don't get tournament prizes in normal tournaments they happen
+            // to be in, but this isn't a big issue. 
+            return SafeCallStatic(() => !winner.IsAdopted() && winner.CurrentSettlement != null, true);
+        }
         
-                
+        #endregion
+
 #if DEBUG
         [CommandLineFunctionality.CommandLineArgumentFunction("testprize", "blt")]
         [UsedImplicitly]

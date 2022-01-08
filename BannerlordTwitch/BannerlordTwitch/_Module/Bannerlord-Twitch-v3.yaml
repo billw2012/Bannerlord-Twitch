@@ -3280,7 +3280,7 @@ Rewards:
     AllowNoble: true
     AllowPlayerCompanion: false
     AllowWanderer: true
-    CreateNew: true
+    CreateNew: false
     Inheritance: 0.25
     MaxInheritedCustomItems: 2
     MinSubscribedMonths: 

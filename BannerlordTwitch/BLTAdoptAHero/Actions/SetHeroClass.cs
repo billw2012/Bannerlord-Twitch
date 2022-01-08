@@ -142,7 +142,7 @@ namespace BLTAdoptAHero
                 EquipHero.UpgradeEquipment(adoptedHero, equipmentTier, newClass, replaceSameTier: false);
                 BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentClass(adoptedHero, newClass);
             }
-            onSuccess("{=giUCnkf2}changed class to {ClassName}".Translate(("ClassName", newClass.Name)));
+            onSuccess("{=giUCnkf2}changed class to {ClassName}".Translate(("ClassName", newClass.Name.ToString())));
         }
     }
 }

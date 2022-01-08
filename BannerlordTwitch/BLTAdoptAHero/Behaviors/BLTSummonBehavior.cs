@@ -82,6 +82,7 @@ namespace BLTAdoptAHero
                                    ?? AddHeroSummonState(adoptedHero, 
                                        Mission != null 
                                        && agent.Team != null 
+                                       && Mission.PlayerTeam?.IsValid == true
                                        && agent.Team.IsFriendOf(Mission.PlayerTeam),
                                        adoptedHero.GetMapEventParty());
                 
