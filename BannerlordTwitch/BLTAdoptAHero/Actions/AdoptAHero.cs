@@ -46,20 +46,35 @@ namespace BLTAdoptAHero
              LocDescription("{=XvZN7OOY}Allow noble heroes (if CreateNew is false)"), 
              PropertyOrder(1), UsedImplicitly]
             public bool AllowNoble { get; set; } = true;
+            
             [LocDisplayName("{=VVFsa8LQ}Allow Wanderer"), 
              LocCategory("Limits", "{=1lHWj3nT}Limits"), 
              LocDescription("{=9lE2KSvC}Allow wanderer heroes (if CreateNew is false)"), 
              PropertyOrder(2), UsedImplicitly]
             public bool AllowWanderer { get; set; } = true;
+            
+            [LocDisplayName("{=FUsqiXdp}Allow Party Leader"), 
+             LocCategory("Limits", "{=1lHWj3nT}Limits"), 
+             LocDescription("{=L4cLwv9E}Allow heroes that lead parties (if CreateNew is false)"), 
+             PropertyOrder(3), UsedImplicitly]
+            public bool AllowPartyLeader { get; set; } = false;
+            
+            [LocDisplayName("{=9DdalaHK}Allow Minor Faction Hero"), 
+             LocCategory("Limits", "{=1lHWj3nT}Limits"), 
+             LocDescription("{=NCrSbTGc}Allow heroes that lead minor factions (if CreateNew is false)"), 
+             PropertyOrder(4), UsedImplicitly]
+            public bool AllowMinorFactionHero { get; set; } = false;
+            
+            
             [LocDisplayName("{=A8G9ctbn}Allow Player Companion"), 
              LocCategory("Limits", "{=1lHWj3nT}Limits"), 
              LocDescription("{=6EjGRMkt}Allow companions (not tested, if CreateNew is false)"), 
-             PropertyOrder(3), UsedImplicitly]
+             PropertyOrder(5), UsedImplicitly]
             public bool AllowPlayerCompanion { get; set; }
             [LocDisplayName("{=B2z7T1xQ}Only Same Faction"), 
              LocCategory("Limits", "{=1lHWj3nT}Limits"), 
              LocDescription("{=QvQGwFyl}Only allow heroes from same faction as player"), 
-             PropertyOrder(4), UsedImplicitly]
+             PropertyOrder(6), UsedImplicitly]
             public bool OnlySameFaction { get; set; }
 
             [LocDisplayName("{=dvbkxJQz}Inheritance"), 
@@ -67,26 +82,26 @@ namespace BLTAdoptAHero
              LocDescription("{=KLJtpEjg}What fraction of assets will be inherited when a new character is adopted after an old one died (0 to 1)"),
              UIRangeAttribute(0, 1, 0.05f),
              Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-             PropertyOrder(6), UsedImplicitly]
+             PropertyOrder(7), UsedImplicitly]
             public float Inheritance { get; set; } = 0.25f;
             
             [LocDisplayName("{=Bi19tTPj}Maximum Inherited Custom Items"), 
              LocCategory("Limits", "{=1lHWj3nT}Limits"), 
              LocDescription("{=tFolfAOn}How many custom items can be inherited"), 
              Range(0, Int32.MaxValue),
-             PropertyOrder(7), UsedImplicitly]
+             PropertyOrder(8), UsedImplicitly]
             public int MaxInheritedCustomItems { get; set; } = 2;
             
             [LocDisplayName("{=O4DGlP9Z}Subscriber Only"), 
              LocCategory("Limits", "{=1lHWj3nT}Limits"), 
              LocDescription("{=TBNkHsLC}Only subscribers can adopt"), 
-             PropertyOrder(7), UsedImplicitly]
+             PropertyOrder(9), UsedImplicitly]
             public bool SubscriberOnly { get; set; }
 
             [LocDisplayName("{=dO41CKIU}Minimum Subscribed Months"), 
              LocCategory("Limits", "{=1lHWj3nT}Limits"),
              LocDescription("{=BVZwDqR0}Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified"),
-             PropertyOrder(8), UsedImplicitly]
+             PropertyOrder(10), UsedImplicitly]
             public int? MinSubscribedMonths { get; set; }
 
             [LocDisplayName("{=iOmYBC7I}Starting Gold"), 
@@ -281,6 +296,8 @@ namespace BLTAdoptAHero
                         // Filter by allowed types
                         (settings.AllowNoble || !h.IsNoble) 
                         && (settings.AllowWanderer || !h.IsWanderer)
+                        && (settings.AllowPartyLeader || !h.IsPartyLeader)
+                        && (settings.AllowMinorFactionHero || !h.IsMinorFactionHero)
                         && (settings.AllowPlayerCompanion || !h.IsPlayerCompanion)
                         // Select correct clan faction
                         && (!settings.OnlySameFaction

@@ -176,7 +176,9 @@ Commands:
   Enabled: false
   Handler: AdoptAHero
   HandlerConfig:
+    AllowMinorFactionHero: false
     AllowNoble: true
+    AllowPartyLeader: false
     AllowPlayerCompanion: false
     AllowWanderer: true
     CreateNew: false
@@ -3277,7 +3279,9 @@ Rewards:
   Enabled: true
   Handler: AdoptAHero
   HandlerConfig:
+    AllowMinorFactionHero: false
     AllowNoble: true
+    AllowPartyLeader: false
     AllowPlayerCompanion: false
     AllowWanderer: true
     CreateNew: false
