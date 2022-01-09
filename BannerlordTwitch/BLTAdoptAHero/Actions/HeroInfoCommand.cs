@@ -234,17 +234,12 @@ namespace BLTAdoptAHero
                     var achievements = BLTAdoptAHeroCampaignBehavior.Current
                         .GetAchievements(adoptedHero)
                         .ToList();
-                    if (achievements.Any())
-                    {
-                        infoStrings.Add("{=giS3vq1V}[ACHIEV]".Translate() +
-                                        $" " + string.Join(Naming.Sep, achievements
-                            .Select(e => e.Name)));
-                    }
-                    else
-                    {
-                        infoStrings.Add("{=giS3vq1V}[ACHIEV]".Translate() + $" " +
-                                        "{=FNK3LD2p}None".Translate());
-                    }
+                    infoStrings.Add("{=giS3vq1V}[ACHIEV]".Translate() +
+                                    " " + 
+                                    (achievements.Any() 
+                                        ? string.Join(Naming.Sep, achievements.Select(e => e.Name))
+                                        : "{=ktM8kF1Q}(none)".Translate()
+                                    ));
                 }
 
                 if (settings.ShowTrackedStats)
@@ -279,17 +274,27 @@ namespace BLTAdoptAHero
                     var heroClass = adoptedHero.GetClass();
                     if(heroClass != null)
                     {
-                        var activePowers 
-                            = heroClass.ActivePower.GetUnlockedPowers(adoptedHero).OfType<HeroPowerDefBase>();
+                        var activePowers = heroClass.ActivePower
+                            .GetUnlockedPowers(adoptedHero)
+                            .OfType<HeroPowerDefBase>()
+                            .ToList();
                         infoStrings.Add("{=gV1s8Ffw}[ACTIVE]".Translate() +
-                                        " " + 
-                                        string.Join(Naming.Sep, activePowers.Select(p => p.Name)));
-                        
-                        var passivePowers 
-                            = heroClass.PassivePower.GetUnlockedPowers(adoptedHero).OfType<HeroPowerDefBase>();
+                                        " " +
+                                        (activePowers.Any()
+                                            ? string.Join(Naming.Sep, activePowers.Select(p => p.Name))
+                                            : "{=ktM8kF1Q}(none)".Translate()
+                                        ));
+
+                        var passivePowers = heroClass.PassivePower
+                            .GetUnlockedPowers(adoptedHero)
+                            .OfType<HeroPowerDefBase>()
+                            .ToList();
                         infoStrings.Add("{=z82jxnmF}[PASSIVE]".Translate() +
                                         " " + 
-                                        string.Join(Naming.Sep, passivePowers.Select(p => p.Name)));
+                                        (passivePowers.Any() 
+                                            ? string.Join(Naming.Sep, passivePowers.Select(p => p.Name)) 
+                                            : "{=ktM8kF1Q}(none)".Translate()
+                                        ));
                     }
                 }
             }
