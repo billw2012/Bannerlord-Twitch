@@ -53,7 +53,7 @@ namespace BLTAdoptAHero
         public HeroSummonState GetHeroSummonStateForRetinue(Agent retinueAgent) 
             => heroSummonStates.FirstOrDefault(h => h.Retinue.Any(r => r.Agent == retinueAgent));
 
-        public HeroSummonState AddHeroSummonState(Hero hero, bool playerSide, PartyBase party)
+        public HeroSummonState AddHeroSummonState(Hero hero, bool playerSide, PartyBase party, bool summon = false)
         {
             var heroSummonState = new HeroSummonState
             {
@@ -63,6 +63,14 @@ namespace BLTAdoptAHero
                 SummonTime = CampaignHelpers.GetTotalMissionTime(), 
             };
             heroSummonStates.Add(heroSummonState);
+            
+            // Don't increase participation count when not summoned or a player companion: 
+            // it will mess up peoples streaks outside of their control
+            if (summon || hero.IsPlayerCompanion)
+            {
+                BLTAdoptAHeroCampaignBehavior.Current.IncreaseParticipationCount(hero, playerSide);
+            }
+
             return heroSummonState;
         }
 

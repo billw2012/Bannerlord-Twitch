@@ -564,8 +564,7 @@ namespace BLTAdoptAHero
                     replaceExisting: false
                 );
 
-                heroSummonState = BLTSummonBehavior.Current.AddHeroSummonState(adoptedHero, settings.OnPlayerSide, party);
-                BLTAdoptAHeroCampaignBehavior.Current.IncreaseParticipationCount(adoptedHero, settings.OnPlayerSide);
+                heroSummonState = BLTSummonBehavior.Current.AddHeroSummonState(adoptedHero, settings.OnPlayerSide, party, summon: true);
             }
 
             if (settings.OnPlayerSide)
