@@ -371,7 +371,7 @@ namespace BLTAdoptAHero
             string desc = hero.IsDead ? "{=ZtZL0lbX}deceased".Translate() : "{=ISrFBorj}retired".Translate();
             var oldName = hero.Name;
             CampaignHelpers.SetHeroName(hero, new (hero.FirstName + $" {ToRoman(data.Iteration + 1)} ({desc})"));
-            Campaign.Current.EncyclopediaManager.ViewDataTracker.EncyclopediaRemoveBookmarkFromItem(hero);
+            CampaignHelpers.RemoveEncyclopediaBookmarkFromItem(hero);
 
 
             Log.LogFeedEvent("{=2PHPNmuv}{OldName} is {RetireType}!"

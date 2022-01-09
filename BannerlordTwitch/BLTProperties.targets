@@ -30,6 +30,14 @@
         <GameVersion>1.7.0</GameVersion>
         <DefineConstants>$(DefineConstants);e170</DefineConstants>
         <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_7_0)</BANNERLORD_GAME_DIR>
+        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.7.0</BANNERLORD_GAME_DIR>
+    </PropertyGroup>
+
+
+    <PropertyGroup Condition="$(Configuration.EndsWith(' 1.7.1'))">
+        <GameVersion>1.7.1</GameVersion>
+        <DefineConstants>$(DefineConstants);e171</DefineConstants>
+        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_7_1)</BANNERLORD_GAME_DIR>
         <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</BANNERLORD_GAME_DIR>
     </PropertyGroup>
     

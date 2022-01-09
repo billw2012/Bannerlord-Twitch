@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
@@ -105,5 +106,43 @@ namespace BannerlordTwitch.Helpers
             AllCultures.Where(c => c.IsMainCulture).SelectMany(c =>
                 c.NotableAndWandererTemplates.Where(w => w.Occupation == Occupation.Wanderer))
         ;
+
+        public static void AddEncyclopediaBookmarkToItem<T>(T t)
+        {
+            if (Campaign.Current == null) return;
+            
+#if e170
+            typeof(ViewDataTracker).GetMethod(nameof(ViewDataTracker.EncyclopediaAddBookmarkToItem)
+#else
+            typeof(IViewDataTracker).GetMethod(nameof(IViewDataTracker.AddEncyclopediaBookmarkToItem)
+#endif
+                , new[] { t.GetType() })?.Invoke(Campaign.Current.EncyclopediaManager.ViewDataTracker,
+                new object[] { t });
+        }
+        
+        public static void RemoveEncyclopediaBookmarkFromItem<T>(T t)
+        {
+            if (Campaign.Current == null) return;
+#if e170
+            typeof(ViewDataTracker).GetMethod(nameof(ViewDataTracker.EncyclopediaRemoveBookmarkFromItem)
+#else
+            typeof(IViewDataTracker).GetMethod(nameof(IViewDataTracker.RemoveEncyclopediaBookmarkFromItem)
+#endif
+                , new[] { t.GetType() })?.Invoke(Campaign.Current.EncyclopediaManager.ViewDataTracker,
+                new object[] { t });
+        }
+        
+        public static bool IsEncyclopediaBookmarked<T>(T t)
+        {
+            if (Campaign.Current == null) return false;
+            object result = 
+#if e170
+                typeof(ViewDataTracker).GetMethod(nameof(ViewDataTracker.EncyclopediaIsBookmarked)
+#else
+                typeof(IViewDataTracker).GetMethod(nameof(IViewDataTracker.IsEncyclopediaBookmarked)
+#endif
+                , new[] { t.GetType() })?.Invoke(Campaign.Current.EncyclopediaManager.ViewDataTracker, new object[] { t });
+            return result != null && (bool)result;
+        }
     }
 }

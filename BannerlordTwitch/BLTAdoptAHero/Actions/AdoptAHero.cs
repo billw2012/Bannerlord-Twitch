@@ -394,9 +394,9 @@ namespace BLTAdoptAHero
                 BLTAdoptAHeroCampaignBehavior.Current.SetEquipmentClass(newHero, classDef);
             }
 
-            if(Campaign.Current != null && !Campaign.Current.EncyclopediaManager.ViewDataTracker.EncyclopediaIsBookmarked(newHero))
+            if(!CampaignHelpers.IsEncyclopediaBookmarked(newHero))
             {
-                Campaign.Current.EncyclopediaManager.ViewDataTracker.EncyclopediaAddBookmarkToItem(newHero);
+                CampaignHelpers.AddEncyclopediaBookmarkToItem(newHero);
             }
             
             BLTAdoptAHeroCampaignBehavior.Current.SetHeroGold(newHero, settings.StartingGold);

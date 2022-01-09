@@ -31,6 +31,8 @@ namespace BannerlordTwitch
 		private const string ExpectedVersion =
 #if e170
 				"e1.7.0"
+#elif e171
+				"e1.7.1"
 #endif
 			;
 
