@@ -29,7 +29,11 @@ using BannerlordTwitch.Util;
 using BLTConfigure.UI;
 using Newtonsoft.Json;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
+using TaleWorlds.Library;
 using Xceed.Wpf.Toolkit.PropertyGrid;
+using BinaryReader = System.IO.BinaryReader;
+using BinaryWriter = System.IO.BinaryWriter;
 
 namespace BLTConfigure
 {
@@ -384,6 +388,15 @@ namespace BLTConfigure
                 GenerateDocumentationResult.Text =
                     $"Couldn't generate the documentation: {ex.Message}";
             }
+
+            MainThreadSync.Run(() =>
+                InformationManager.ShowInquiry(
+                    new InquiryData(
+                        "You must reload your save now!",
+                        "After generating documentation you must reload your save before continuing, as the state has been changed by the generation process.",
+                        true, false, "{=hpFXglKx}Okay".Translate(), null,
+                        () => { }, () => { }), true)
+            );
 
             GenerateDocumentationButton.IsEnabled = true;
         }
