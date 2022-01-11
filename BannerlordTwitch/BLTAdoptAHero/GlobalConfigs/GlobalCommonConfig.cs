@@ -424,7 +424,7 @@ namespace BLTAdoptAHero
                             .TH("{=sHWjkhId}Reward".Translate())
                         );
                         foreach (var a in achievements
-                            .OrderBy(a => a.Name))
+                            .OrderBy(a => a.Name.ToString()))
                         {
                             generator.TR(() =>
                                 generator.TD(a.Name.ToString())

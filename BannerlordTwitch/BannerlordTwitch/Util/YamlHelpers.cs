@@ -27,7 +27,7 @@ namespace BannerlordTwitch.Util
 
             public void WriteYaml(IEmitter emitter, object value, Type type)
             {
-                emitter.Emit(new Scalar(((LocString)value).Value));
+                emitter.Emit(new Scalar((value as LocString)?.Value ?? string.Empty));
             }
         }
         

@@ -12,7 +12,7 @@ namespace BannerlordTwitch
         [LocDisplayName("{=D1lt1bSQ}Name"), LocCategory("General", "{=C5T5nnix}General"), 
          LocDescription("{=u1Ua0LXJ}The command itself, not including the !"), 
          PropertyOrder(1), UsedImplicitly]
-        public LocString Name { get; set; }
+        public LocString Name { get; set; } = string.Empty;
         [LocDisplayName("{=TpnV5Mpi}HideHelp"), LocCategory("General", "{=C5T5nnix}General"), 
          LocDescription("{=0AZVaBQN}Hides the command from the !help action"), 
          PropertyOrder(2), UsedImplicitly]
@@ -20,7 +20,7 @@ namespace BannerlordTwitch
         [LocDisplayName("{=JqNXbyIT}Help"), LocCategory("General", "{=C5T5nnix}General"), 
          LocDescription("{=9QV7UzFh}What to show in the !help command"), 
          PropertyOrder(3), UsedImplicitly]
-        public LocString Help { get; set; }
+        public LocString Help { get; set; } = string.Empty;
         
         [ItemsSource(typeof(CommandHandlerItemsSource))]
         public override string Handler { get; set; }

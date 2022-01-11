@@ -38,7 +38,7 @@ namespace BLTAdoptAHero
         [LocDisplayName("{=rZRKLuGI}Description"),
          LocDescription("{=yRN3Jfwv}Description of the class (used in documentation)"), 
          PropertyOrder(1), UsedImplicitly]
-        public LocString Description { get; set; } = "";
+        public LocString Description { get; set; } = string.Empty;
 
         [LocDisplayName("{=zy3uK94p}Formation"),
          LocDescription("{=1kEMFWLD}Which formation to add summoned units to"), 

@@ -21,9 +21,9 @@ namespace BannerlordTwitch
         [PropertyOrder(1), UsedImplicitly]
         public SimActionType Type { get; set; }
         [PropertyOrder(2), UsedImplicitly]
-        public LocString Id { get; set; }
+        public LocString Id { get; set; } = string.Empty;
         [PropertyOrder(3), UsedImplicitly]
-        public LocString Args { get; set; }
+        public LocString Args { get; set; } = string.Empty;
         [PropertyOrder(4), UsedImplicitly]
         public float Weight { get; set; } = 1f;
         [PropertyOrder(5), ReadOnly(true), UsedImplicitly]

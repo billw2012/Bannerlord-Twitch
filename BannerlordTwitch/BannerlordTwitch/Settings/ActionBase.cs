@@ -40,11 +40,11 @@ namespace BannerlordTwitch
          ExpandableObject, Expand, ReadOnly(true), 
          PropertyOrder(2), UsedImplicitly]
         public object HandlerConfig { get; set; }
-        
-        [LocDisplayName("{=UP0DjNMM}Documentation"), LocCategory("General", "{=C5T5nnix}General"), 
-         LocDescription("{=W6pzg6VJ}What to show in the generated documentation"), 
+
+        [LocDisplayName("{=UP0DjNMM}Documentation"), LocCategory("General", "{=C5T5nnix}General"),
+         LocDescription("{=W6pzg6VJ}What to show in the generated documentation"),
          PropertyOrder(3), UsedImplicitly]
-        public LocString Documentation { get; set; }
+        public LocString Documentation { get; set; } = string.Empty;
 
         [YamlIgnore, Browsable(false), UsedImplicitly]
         public virtual bool IsValid => !Enabled || !string.IsNullOrEmpty(Handler);
