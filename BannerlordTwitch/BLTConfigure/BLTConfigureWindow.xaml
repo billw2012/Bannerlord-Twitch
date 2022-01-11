@@ -160,6 +160,7 @@
                                 <Bold>3.</Bold> Load into a campaign save (it doesn't matter which one)<LineBreak/>
                                 <Bold>4.</Bold> Click the Generate Documentation Button<LineBreak/>
                                 <Bold>5.</Bold> Click the Upload Documentation Button<LineBreak/><LineBreak/>
+                                <Bold>6.</Bold> Reload your save (the process messes up the game state, so you need to reload your save)<LineBreak/><LineBreak/>
                                 Once the files have finished uploading your documentation website should be available. <LineBreak/>
                                 The link is at the top of dashboard page: 
                                 <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
