@@ -113,6 +113,14 @@ namespace BLTAdoptAHero
             return (true, "{=1duM11Gt}You are position {QueuePosition} in the tournament queue!"
                 .Translate(("QueuePosition", TournamentQueue.Count)));
         }
+
+        public void RemoveFromQueue(Hero hero)
+        {
+            if(TournamentQueue.RemoveAll(e => e.Hero == hero) > 0)
+            {
+                TournamentHub.UpdateEntrants();
+            }
+        }
         
         public void JoinViewerTournament()
         {

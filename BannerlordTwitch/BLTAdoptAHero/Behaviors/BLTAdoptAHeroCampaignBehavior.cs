@@ -372,8 +372,10 @@ namespace BLTAdoptAHero
             var oldName = hero.Name;
             CampaignHelpers.SetHeroName(hero, new (hero.FirstName + $" {ToRoman(data.Iteration + 1)} ({desc})"));
             CampaignHelpers.RemoveEncyclopediaBookmarkFromItem(hero);
-
-
+            
+            // Don't leave retired heroes in the tournament queue 
+            BLTTournamentQueueBehavior.Current.RemoveFromQueue(hero);
+            
             Log.LogFeedEvent("{=2PHPNmuv}{OldName} is {RetireType}!"
                 .Translate(("OldName", oldName), ("RetireType", desc)));
             Log.Info("{=wzpkEmTL}Dead or retired hero {OldName} renamed to {HeroName}"

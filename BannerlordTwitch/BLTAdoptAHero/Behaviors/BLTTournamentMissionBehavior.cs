@@ -243,7 +243,9 @@ namespace BLTAdoptAHero
             var tournamentBehavior = MissionState.Current.CurrentMission.GetMissionBehavior<TournamentBehavior>();
 
             // Win results, put winner last
-            foreach (var entry in activeTournament.OrderBy(e => e.Hero == tournamentBehavior.Winner.Character?.HeroObject))
+            foreach (var entry in activeTournament
+                         .Where(e => e.Hero.IsAdopted())
+                         .OrderBy(e => e.Hero == tournamentBehavior.Winner.Character?.HeroObject))
             {
                 float actualBoost = entry.IsSub ? Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1) : 1;
                 var results = new List<string>();
@@ -329,7 +331,7 @@ namespace BLTAdoptAHero
             ];
                 
             // End round effects (as there is no event handler for it :/)
-            foreach (var entry in activeTournament)
+            foreach (var entry in activeTournament.Where(e => e.Hero.IsAdopted()))
             {
                 float actualBoost = entry.IsSub ? Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1) : 1;
                         
