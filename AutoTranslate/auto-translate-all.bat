@@ -10,6 +10,6 @@ python auto-translate-v2.py --lang Italiano-BLT --lang-code it --update-changed 
 python auto-translate-v2.py --lang 日本語-BLT --lang-code ja --subdir-override JP --update-changed --account ".key\bannerlordtwitch-d69ae5f7983a.json" "..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
 python auto-translate-v2.py --lang 한국인-BLT --lang-code ko --update-changed --account ".key\bannerlordtwitch-d69ae5f7983a.json" "..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
 python auto-translate-v2.py --lang Polski-BLT --lang-code pl --update-changed --account ".key\bannerlordtwitch-d69ae5f7983a.json" "..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
-python auto-translate-v2.py --lang Pусский-BLT --lang-code ru --update-changed --account ".key\bannerlordtwitch-d69ae5f7983a.json" "..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
+python auto-translate-v2.py --lang Русский --lang-code ru --update-changed --account ".key\bannerlordtwitch-d69ae5f7983a.json" "..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
 python auto-translate-v2.py --lang Español-BLT --lang-code es --subdir-override SP --update-changed --account ".key\bannerlordtwitch-d69ae5f7983a.json" "..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
 python auto-translate-v2.py --lang Türkçe --lang-code tr --update-changed --account ".key\bannerlordtwitch-d69ae5f7983a.json" "..\BannerlordTwitch\*\_Module\ModuleData\Languages\*.xml"
