@@ -7,7 +7,7 @@
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- AchievementDef -->
         <!-- Achievement Definition -->
-        <string id="CEZZzIAq" text="Définition de réalisation" original="Achievement Definition"/>
+        <string id="CEZZzIAq" text="Définition des Succès" original="Achievement Definition"/>
         <!-- Requirements -->
         <string id="TFbiD0CZ" text="Conditions" original="Requirements"/>
         <!-- Reward -->
@@ -23,11 +23,11 @@
         <!-- Gold Gain -->
         <string id="NitYwoHr" text="Gain d&amp;#39;or" original="Gold Gain"/>
         <!-- Gold awarded for gaining this achievement. -->
-        <string id="l0xBVhOe" text="Or décerné pour l&amp;#39;obtention de cette réalisation." original="Gold awarded for gaining this achievement."/>
+        <string id="l0xBVhOe" text="Or décerné pour l&amp;#39;obtention de ce succès." original="Gold awarded for gaining this achievement."/>
         <!-- XP Gain -->
         <string id="JShqb5Be" text="Gain d&amp;#39;XP" original="XP Gain"/>
         <!-- Experience awarded for gaining this achievement. -->
-        <string id="tx7YV26l" text="Expérience récompensée pour l&amp;#39;obtention de cette réalisation." original="Experience awarded for gaining this achievement."/>
+        <string id="tx7YV26l" text="Expérience récompensée pour l&amp;#39;obtention de ce succès." original="Experience awarded for gaining this achievement."/>
         <!-- Give Item Reward -->
         <string id="OmwtPK7J" text="Donner une récompense d&amp;#39;objet" original="Give Item Reward"/>
         <!-- Whether to give a custom item as reward (defined below) -->
@@ -38,27 +38,27 @@
         <string id="B4gODHog" text="Spécifications de la récompense d&amp;#39;objet personnalisé, si activée" original="Specifications of the custom item reward, if enabled"/>
         <!-- AchievementStatsData.Statistic -->
         <!-- Total Kills -->
-        <string id="5RXxYH32" text="Total de tués" original="Total Kills"/>
+        <string id="5RXxYH32" text="Total d&amp;#39;éliminations" original="Total Kills"/>
         <!-- Total Hero Kills -->
-        <string id="FqBQumbv" text="Total de tués de héros" original="Total Hero Kills"/>
+        <string id="FqBQumbv" text="Total éliminations de héros" original="Total Hero Kills"/>
         <!-- Total Viewer Kills -->
         <string id="WMYfysby" text="Nombre total de spectateurs tués" original="Total Viewer Kills"/>
         <!-- Total Streamer Kills -->
         <string id="qPjwIfaF" text="Total de streamers tués" original="Total Streamer Kills"/>
         <!-- Total Mount Kills -->
-        <string id="ZTI6irGZ" text="Total Mount Kills" original="Total Mount Kills"/>
+        <string id="ZTI6irGZ" text="Total éliminations de montures" original="Total Mount Kills"/>
         <!-- Total Deaths -->
         <string id="6IHF7HQb" text="Nombre total de décès" original="Total Deaths"/>
         <!-- Total Hero Deaths -->
         <string id="UHvCzzit" text="Total des décès de héros" original="Total Hero Deaths"/>
         <!-- Total Viewer Deaths -->
-        <string id="mhcnLFBv" text="Nombre total de décès de téléspectateurs" original="Total Viewer Deaths"/>
+        <string id="mhcnLFBv" text="Nombre total de décès de spectateurs" original="Total Viewer Deaths"/>
         <!-- Total Streamer Deaths -->
         <string id="rKVsbROz" text="Total des décès de streamers" original="Total Streamer Deaths"/>
         <!-- Total Mount Deaths -->
         <string id="6N8KiovH" text="Total des décès de montures" original="Total Mount Deaths"/>
         <!-- Summons -->
-        <string id="YDiK48rp" text="Assignation" original="Summons"/>
+        <string id="YDiK48rp" text="Invocations" original="Summons"/>
         <!-- Attacks -->
         <string id="facIgBFe" text="Attaques" original="Attacks"/>
         <!-- Battles -->
@@ -68,11 +68,11 @@
         <!-- Consecutive Attacks -->
         <string id="Ju3c6Iz4" text="Attaques consécutives" original="Consecutive Attacks"/>
         <!-- TotalTournament Round Wins -->
-        <string id="dRD94FMl" text="Total des victoires des rondes du tournoi" original="TotalTournament Round Wins"/>
+        <string id="dRD94FMl" text="Total des manches du tournoi gagnées" original="TotalTournament Round Wins"/>
         <!-- TotalTournament Round Losses -->
-        <string id="GPMB5BPI" text="Total des pertes du tour de tournoi" original="TotalTournament Round Losses"/>
+        <string id="GPMB5BPI" text="Total des manches du tournoi perdues" original="TotalTournament Round Losses"/>
         <!-- TotalTournament Final Wins -->
-        <string id="WdZWU9GV" text="Total des victoires finales du tournoi" original="TotalTournament Final Wins"/>
+        <string id="WdZWU9GV" text="Total des victoires du tournoi" original="TotalTournament Final Wins"/>
         <!-- ClassLevelRequirement -->
         <!-- Class Level Requirement -->
         <string id="XLXBwBEj" text="Niveau de classe requis" original="Class Level Requirement"/>
@@ -87,7 +87,7 @@
         <!-- AT LEAST {MinLevel} -->
         <string id="j3QY6MkC" text="AU MOINS {MinLevel}" original="AT LEAST {MinLevel}"/>
         <!-- {MinLevel} TO {MaxLevel} -->
-        <string id="puNSSMYD" text="{MinLevel} TO {MaxLevel}" original="{MinLevel} TO {MaxLevel}"/>
+        <string id="puNSSMYD" text="{MinLevel} A {MaxLevel}" original="{MinLevel} TO {MaxLevel}"/>
         <!-- CLASS LEVEL {Description} -->
         <string id="boWoZsH4" text="NIVEAU DE LA CLASSE {Description}" original="CLASS LEVEL {Description}"/>
         <!-- StatisticClassSpecificRequirement -->
@@ -178,15 +178,15 @@
         <!-- Horse -->
         <string id="YzIcRgBV" text="Cheval" original="Horse"/>
         <!-- Camel -->
-        <string id="HMclWXR8" text="chameau" original="Camel"/>
+        <string id="HMclWXR8" text="Chameau" original="Camel"/>
         <!-- Use Horse -->
-        <string id="A1G6bq0G" text="Utiliser le cheval" original="Use Horse"/>
+        <string id="A1G6bq0G" text="Utiliser Cheval" original="Use Horse"/>
         <!-- Use Camel -->
-        <string id="FpgyZk0F" text="Utiliser le chameau" original="Use Camel"/>
+        <string id="FpgyZk0F" text="Utiliser Chameau" original="Use Camel"/>
         <!-- (none) -->
         <string id="GFc6JLJ9" text="(rien)" original="(none)"/>
         <!-- Details -->
-        <string id="A79HrgZ0" text="Des détails" original="Details"/>
+        <string id="A79HrgZ0" text="Détails" original="Details"/>
         <!-- Tier {TierNumber} -->
         <string id="Rs1XNM9K" text="Niveau {TierNumber}" original="Tier {TierNumber}"/>
         <!-- Equipment -->
@@ -195,7 +195,7 @@
         <string id="iGdq37PI" text="Monter" original="Mount"/>
         <!-- KillStreakDef -->
         <!-- Kill Streak -->
-        <string id="InTnlqz1" text="Série de meurtres" original="Kill Streak"/>
+        <string id="InTnlqz1" text="Série d&amp;#39;éliminations" original="Kill Streak"/>
         <!-- Show Notification -->
         <string id="poe8m8rn" text="Montrer les notifications" original="Show Notification"/>
         <!-- Notification Text -->
@@ -205,7 +205,7 @@
         <!-- Kills Required -->
         <string id="mG7HzT0z" text="Tue requis" original="Kills Required"/>
         <!-- Kills required to achieve the kill streak. -->
-        <string id="mLElTwb6" text="Kills requis pour atteindre la séquence de kills." original="Kills required to achieve the kill streak."/>
+        <string id="mLElTwb6" text="Éliminations requises pour obtenir une série." original="Kills required to achieve the kill streak."/>
         <!-- Gold Reward -->
         <string id="zEqJgISl" text="Récompense en or" original="Gold Reward"/>
         <!-- Gold rewarded when the kill streak is achieved. -->

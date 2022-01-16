@@ -85,13 +85,13 @@
         <!-- HP the hero gets for every kill -->
         <string id="7VWAZgfK" text="HP que le héros obtient pour chaque kill" original="HP the hero gets for every kill"/>
         <!-- Retinue Gold Per Kill -->
-        <string id="lIhhHjih" text="Retinuer l&amp;#39;or par kill" original="Retinue Gold Per Kill"/>
+        <string id="lIhhHjih" text="Or pour chaque mort provoqué par une escorte" original="Retinue Gold Per Kill"/>
         <!-- Gold the hero gets for every kill their retinue gets -->
         <string id="h93j0qw3" text="De l&amp;#39;or que le héros obtient pour chaque meurtre que sa suite obtient" original="Gold the hero gets for every kill their retinue gets"/>
         <!-- Retinue Heal Per Kill -->
-        <string id="KwlWrzDS" text="Guérison de la suite par kill" original="Retinue Heal Per Kill"/>
+        <string id="KwlWrzDS" text="Soin d&amp;#39;escorte après avoir tué" original="Retinue Heal Per Kill"/>
         <!-- HP the hero's retinue gets for every kill -->
-        <string id="Q3UVoHmt" text="HP que la suite du héros obtient pour chaque élimination" original="HP the hero's retinue gets for every kill"/>
+        <string id="Q3UVoHmt" text="PV que l&amp;#39;escorte du héros obtient pour chaque élimination" original="HP the hero's retinue gets for every kill"/>
         <!-- Relative Level Scaling -->
         <string id="wSzUkbNR" text="Mise à l&amp;#39;échelle du niveau relatif" original="Relative Level Scaling"/>
         <!-- How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health. -->
@@ -151,7 +151,7 @@
         <!-- The level at which the rewards normalize and start to reduce (if relative level scaling is enabled). -->
         <string id="y7AZjeSK" text="Le niveau auquel les récompenses se normalisent et commencent à diminuer (si la mise à l&amp;#39;échelle du niveau relatif est activée)." original="The level at which the rewards normalize and start to reduce (if relative level scaling is enabled)."/>
         <!-- Achievements -->
-        <string id="zTLei6dQ" text="Réalisations" original="Achievements"/>
+        <string id="zTLei6dQ" text="Succès" original="Achievements"/>
         <!-- Shouts -->
         <string id="HkD6326j" text="Des cris" original="Shouts"/>
         <!-- Custom shouts -->
@@ -179,7 +179,7 @@
         <string id="7WLbMjpz" text="(pas d&amp;#39;exigences)" original="(no requirements)"/>
         <!-- GlobalHeroPowerConfig -->
         <!-- Power Config -->
-        <string id="v75UOuDM" text="Configuration de l&amp;#39;alimentation" original="Power Config"/>
+        <string id="v75UOuDM" text="Configuration des Pouvoirs" original="Power Config"/>
         <!-- Power Defs -->
         <string id="9vUtdRu2" text="Defs de puissance" original="Power Defs"/>
         <!-- Defined powers -->

@@ -354,6 +354,6 @@
         <!-- {DamageModifierPercent}% damage -->
         <string id="stFtZvfp" text="{DamageModifierPercent}% de dégâts" original="{DamageModifierPercent}% damage"/>
         <!-- Damage -->
-        <string id="GrBznDeq" text="Dommage" original="Damage"/>
+        <string id="GrBznDeq" text="Dégâts" original="Damage"/>
     </strings>
 </base>

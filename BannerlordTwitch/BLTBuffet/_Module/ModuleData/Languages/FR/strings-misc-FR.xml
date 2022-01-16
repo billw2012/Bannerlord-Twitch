@@ -40,7 +40,7 @@
         <!-- The mission is ending! -->
         <string id="f3Cwg2lw" text="La mission se termine !" original="The mission is ending!"/>
         <!-- Couldn't find the target! -->
-        <string id="duuvGgDi" text="Impossible de trouver la cible !" original="Couldn't find the target!"/>
+        <string id="duuvGgDi" text="Impossible de trouver la cible !" original="Couldn't find the target!"/>
         <!-- CharacterEffect {Source} configuration error: Name is missing! -->
         <string id="hr0ye4gl" text="Erreur de configuration de CharacterEffect {Source}: le nom est manquant!" original="CharacterEffect {Source} configuration error: Name is missing!"/>
         <!-- {Target} already affected by {Config}! -->
@@ -48,11 +48,11 @@
         <!-- {Target} is mounted so cannot be affected by {Config}! -->
         <string id="gZtqmx0D" text="{Target} is mounted so cannot be affected by {Config}!" original="{Target} is mounted so cannot be affected by {Config}!"/>
         <!-- {Config} is active on {Target}! -->
-        <string id="1S6mDVBM" text="{Config} is active on {Target}!" original="{Config} is active on {Target}!"/>
+        <string id="1S6mDVBM" text="{Config} est actif sur {Target}!" original="{Config} is active on {Target}!"/>
         <!-- {Config} is active on {Target}! -->
-        <string id="uV2gZjHI" text="{Config} is active on {Target}!" original="{Config} is active on {Target}!"/>
+        <string id="uV2gZjHI" text="{Config} est actif sur {Target}!" original="{Config} is active on {Target}!"/>
         <!-- {Config} expired on {Target}! -->
-        <string id="lpdl3sj9" text="{Config} expired on {Target}!" original="{Config} expired on {Target}!"/>
+        <string id="lpdl3sj9" text="{Config} a expiré sur {Target}!" original="{Config} expired on {Target}!"/>
         <!-- CharacterEffect.Config -->
         <!-- Player -->
         <string id="92tZqqRy" text="Joueur" original="Player"/>
