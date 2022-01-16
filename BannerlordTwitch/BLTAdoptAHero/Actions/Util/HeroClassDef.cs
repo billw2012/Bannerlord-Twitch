@@ -292,9 +292,9 @@ namespace BLTAdoptAHero
             generator.Table("hero-class", () =>
             {
                 generator.TR(() 
-                    => generator.TD("{=MvddFKo4}Passive Power").TD(() => PassivePower.GenerateDocumentation(generator)));
+                    => generator.TD("{=MvddFKo4}Passive Power".Translate()).TD(() => PassivePower.GenerateDocumentation(generator)));
                 generator.TR(() 
-                    => generator.TD("{=wdCMNOGd}Active Power").TD(() => ActivePower.GenerateDocumentation(generator)));
+                    => generator.TD("{=wdCMNOGd}Active Power".Translate()).TD(() => ActivePower.GenerateDocumentation(generator)));
             });
         }
         #endregion
