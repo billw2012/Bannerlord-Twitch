@@ -105,8 +105,9 @@ def translate(source_file, language, language_code, subdir, service_account_file
         target_string_tags = list(filter(non_empty_tag, target_strings_root.findall('string', ns_map)))
         for idx, source_string_tag in enumerate(source_string_tags):
             source_id = source_string_tag.get('id')
-            source_original = source_string_tag.get('original')
             source_text = source_string_tag.get('text')
+            source_original = source_text
+            # source_string_tag.get('original')
             try:
                 target_string_tag = next(t for t in target_string_tags if t.get('id') == source_id)
                 target_original = target_string_tag.get('original')
