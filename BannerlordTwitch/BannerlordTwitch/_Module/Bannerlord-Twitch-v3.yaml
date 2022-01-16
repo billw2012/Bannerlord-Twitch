@@ -47,7 +47,7 @@ Commands:
   Name: '{=UbklIEGh}inv'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: '{EZGcIEgQ}Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to.'
+- Documentation: '{=EZGcIEgQ}Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to.'
   Enabled: true
   Handler: EquipHero
   HandlerConfig:
@@ -59,13 +59,13 @@ Commands:
     CostTier5: 275000
     CostTier6: 400000
     ReequipInsteadOfUpgrade: false
-  Help: '{vTo0NowP}upgrade equipment'
+  Help: '{=vTo0NowP}upgrade equipment'
   HideHelp: false
   ID: 90b571d1-dba8-4006-860c-a0401b6f8fd2
-  Name: '{wHqxd4kb}equip'
+  Name: '{=wHqxd4kb}equip'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: '{zxAVjOW6}Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford.'
+- Documentation: '{=zxAVjOW6}Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford.'
   Enabled: true
   Handler: Retinue
   HandlerConfig:
@@ -82,13 +82,13 @@ Commands:
       UseBasicTroops: true
       UseEliteTroops: true
       UseHeroesCultureUnits: true
-  Help: '{I7sm1ct6}upgrade retinue'
+  Help: '{=I7sm1ct6}upgrade retinue'
   HideHelp: false
   ID: 38eed507-87b9-47f4-b235-af921cef00c4
-  Name: '{mge9rH9J}retinue'
+  Name: '{=mge9rH9J}retinue'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: '{K3297TEM}Selects a new class for your hero, updating your existing equipment to match the class requirements.<br>Usage is <code>!class (new class name)</code>, e.g. <code>!class archer</code>.'
+- Documentation: '{=K3297TEM}Selects a new class for your hero, updating your existing equipment to match the class requirements.<br>Usage is <code>!class (new class name)</code>, e.g. <code>!class archer</code>.'
   Enabled: true
   Handler: SetHeroClass
   HandlerConfig:
@@ -100,13 +100,13 @@ Commands:
     CostTier6: 160000
     FirstEquipIsFree: true
     UpdateEquipment: true
-  Help: '{uN82Y7hR}select new class'
+  Help: '{=uN82Y7hR}select new class'
   HideHelp: false
   ID: da8416ca-e59b-458a-8953-31291d03c835
-  Name: '{nV9iIsDC}class'
+  Name: '{=nV9iIsDC}class'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: "{zBIv0a4I}Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier."
+- Documentation: "{=zBIv0a4I}Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier."
   Enabled: true
   Handler: EquipHero
   HandlerConfig:
@@ -118,13 +118,13 @@ Commands:
     CostTier5: 110000
     CostTier6: 160000
     ReequipInsteadOfUpgrade: true
-  Help: '{3KYGJ0Mu}reroll equipment'
+  Help: '{=3KYGJ0Mu}reroll equipment'
   HideHelp: false
   ID: d4fb255c-4bb3-454e-9e26-39b4d7a321f0
-  Name: '{fGfTaAoD}reequip'
+  Name: '{=fGfTaAoD}reequip'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: '{eWI5oDce}Show your heroes current gold.'
+- Documentation: '{=eWI5oDce}Show your heroes current gold.'
   Enabled: true
   Handler: HeroInfoCommand
   HandlerConfig:
@@ -142,13 +142,13 @@ Commands:
     ShowStorage: false
     ShowTopSkills: false
     ShowTrackedStats: false
-  Help: '{eWI5oDce}show gold'
+  Help: '{=eWI5oDce}show gold'
   HideHelp: false
   ID: 42e45ee9-647f-486f-9764-5e765507a70d
-  Name: '{eWI5oDce}gold'
+  Name: '{=eWI5oDce}gold'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: '{BlBiEmbf}Shows your current retinue troops.'
+- Documentation: '{=BlBiEmbf}Shows your current retinue troops.'
   Enabled: true
   Handler: HeroInfoCommand
   HandlerConfig:
@@ -166,13 +166,13 @@ Commands:
     ShowStorage: false
     ShowTopSkills: false
     ShowTrackedStats: false
-  Help: '{ysbFV5uT}retinue list'
+  Help: '{=ysbFV5uT}retinue list'
   HideHelp: false
   ID: afd51f50-caaf-40a8-bf29-d75447e34ef4
-  Name: '{kG6yjBBR}retinuelist'
+  Name: '{=kG6yjBBR}retinuelist'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: '{MpvqvKef}Get a hero in game. Almost all other actions require an adopted hero.'
+- Documentation: '{=MpvqvKef}Get a hero in game. Almost all other actions require an adopted hero.'
   Enabled: false
   Handler: AdoptAHero
   HandlerConfig:
@@ -210,27 +210,27 @@ Commands:
   Help: ''
   HideHelp: false
   ID: e317c63a-5a1f-455c-b953-6dcb92dc9424
-  Name: '{0grO6hB5}adopt'
+  Name: '{=0grO6hB5}adopt'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: '{S1FZXQim}You can use this to name your custom items.<br>Usage is <code>!nameitem (name)</code>, for example <code>!nameitem Foehammer</code>.<br>If you call <code>!nameitem</code> on its own it will tell you what item will be named next.'
+- Documentation: '{=S1FZXQim}You can use this to name your custom items.<br>Usage is <code>!nameitem (name)</code>, for example <code>!nameitem Foehammer</code>.<br>If you call <code>!nameitem</code> on its own it will tell you what item will be named next.'
   Enabled: true
   Handler: NameItem
   HandlerConfig: 
-  Help: '{tNVmXpoc}name a reward item'
+  Help: '{=tNVmXpoc}name a reward item'
   HideHelp: false
   ID: aef1ded6-f8dd-4b9a-9d70-96e96d17cb12
-  Name: '{IFDecKha}nameitem'
+  Name: '{=IFDecKha}nameitem'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: '{thajdk5s}Use this to bet on tournament matches, when available.<br>Usage is <code>!bltbet (team) (gold)</code>, for example <code>!bltbet red 10000</code> to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.<br>If only one team is bet upon, the bets will be refunded.'
+- Documentation: '{=thajdk5s}Use this to bet on tournament matches, when available.<br>Usage is <code>!bltbet (team) (gold)</code>, for example <code>!bltbet red 10000</code> to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.<br>If only one team is bet upon, the bets will be refunded.'
   Enabled: true
   Handler: TournamentBet
   HandlerConfig: 
-  Help: '{xBgLXaf7}bet on tournament'
+  Help: '{=xBgLXaf7}bet on tournament'
   HideHelp: false
   ID: 7cbdbc43-660c-4500-9029-d06e81c89f04
-  Name: '{haKiwbsR}bltbet'
+  Name: '{=haKiwbsR}bltbet'
   RespondInOverlay: true
   RespondInTwitch: true
 - Documentation: ''
@@ -240,10 +240,10 @@ Commands:
   Help: ''
   HideHelp: false
   ID: 4aa62cc4-9ac2-4920-b921-c641f6ad0e24
-  Name: '{NUQ5PsjF}power'
+  Name: '{=NUQ5PsjF}power'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: '{ZVxCqyJL}Show the heroes achievements and tracked stats.'
+- Documentation: '{=ZVxCqyJL}Show the heroes achievements and tracked stats.'
   Enabled: true
   Handler: HeroInfoCommand
   HandlerConfig:
@@ -261,13 +261,13 @@ Commands:
     ShowStorage: false
     ShowTopSkills: false
     ShowTrackedStats: true
-  Help: '{aGPoAaM9}achievements'
+  Help: '{=aGPoAaM9}achievements'
   HideHelp: false
   ID: 6b05f682-afe1-45e2-ba68-e6ee086ee412
-  Name: '{woTpsqyV}ach'
+  Name: '{=woTpsqyV}ach'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: '{ma27zJHy}Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.<br>Usage is <code>!auction (reserve price) (part of the item name)</code>, e.g. <code>!auction 50000 Boots</code> would start a new auction for your custom item with the word "Boots" in it, with a reserve of 50000. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.'
+- Documentation: '{=ma27zJHy}Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.<br>Usage is <code>!auction (reserve price) (part of the item name)</code>, e.g. <code>!auction 50000 Boots</code> would start a new auction for your custom item with the word "Boots" in it, with a reserve of 50000. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.'
   Enabled: true
   Handler: AuctionItem
   HandlerConfig:
@@ -276,40 +276,40 @@ Commands:
   Help: ''
   HideHelp: false
   ID: 303342d6-c3c3-4f58-8d0d-0daee20677f8
-  Name: '{QQX2aboq}auction'
+  Name: '{=QQX2aboq}auction'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: "{1TBIIJVZ}Place a bid on the current auction, if one is active.<br>Usage is <code>!bid (gold amount)</code>, e.g. <code>!bid 100000</code>. If there is no auction, or the bid doesn't exceed the reserve price, it will be rejected."
+- Documentation: "{=1TBIIJVZ}Place a bid on the current auction, if one is active.<br>Usage is <code>!bid (gold amount)</code>, e.g. <code>!bid 100000</code>. If there is no auction, or the bid doesn't exceed the reserve price, it will be rejected."
   Enabled: true
   Handler: BidOnItem
   HandlerConfig: 
   Help: ''
   HideHelp: false
   ID: 95bcd31c-154b-4d70-a3e6-cb247efe9fb4
-  Name: '{taI6SRSG}bid'
+  Name: '{=taI6SRSG}bid'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: '{vwPIXbeh}Throw away one of your custom items.<br>Usage is <code>!discarditem (part of the item name)</code>, e.g. <code>!discarditem Boots</code> would discard your custom item with the word "Boots" in it. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.'
+- Documentation: '{=vwPIXbeh}Throw away one of your custom items.<br>Usage is <code>!discarditem (part of the item name)</code>, e.g. <code>!discarditem Boots</code> would discard your custom item with the word "Boots" in it. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.'
   Enabled: true
   Handler: DiscardItem
   HandlerConfig: 
   Help: ''
   HideHelp: false
   ID: 752eb016-7df1-465c-83c7-80cc88f8c02d
-  Name: '{Pla3OVS4}discarditem'
+  Name: '{=Pla3OVS4}discarditem'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: '{RS37T7gG}Give one of your custom items to another viewer.<br>Usage is <code>!giveitem (viewer) (part of the item name)</code>, e.g. <code>!giveitem C4alad0g Boots</code> would give your custom item with the word "Boots" in it to the viewer called C4lad0g. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.'
+- Documentation: '{=RS37T7gG}Give one of your custom items to another viewer.<br>Usage is <code>!giveitem (viewer) (part of the item name)</code>, e.g. <code>!giveitem C4alad0g Boots</code> would give your custom item with the word "Boots" in it to the viewer called C4lad0g. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.'
   Enabled: true
   Handler: GiveItem
   HandlerConfig: 
   Help: ''
   HideHelp: false
   ID: 0e255e77-4c17-44ad-aeb8-ff01bbbe0bee
-  Name: '{osvl34my}giveitem'
+  Name: '{=osvl34my}giveitem'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: '{GYYbCXmu}Shows your available powers'
+- Documentation: '{=GYYbCXmu}Shows your available powers'
   Enabled: true
   Handler: HeroInfoCommand
   HandlerConfig:
@@ -330,7 +330,7 @@ Commands:
   Help: ''
   HideHelp: false
   ID: b595b0f2-ad40-409c-a286-c7f58ac87e13
-  Name: '{GHCxNIaR}powers'
+  Name: '{=GHCxNIaR}powers'
   RespondInOverlay: true
   RespondInTwitch: false
 DisableAutomaticFulfillment: false
@@ -3648,7 +3648,7 @@ Rewards:
 SimTesting:
   Init:
   - Args: ''
-    Enabled: true
+    Enabled: false
     Id: '{=Yc9dn4Sx}Adopt a Hero'
     ID: b50d0749-add5-458c-b3d4-c957f4bb85f3
     Type: Reward
@@ -3672,7 +3672,7 @@ SimTesting:
     Type: Reward
     Weight: 0
   - Args: ''
-    Enabled: true
+    Enabled: false
     Id: '{=ndi9p5jn}100k gold'
     ID: a9933fab-58d4-492a-93fb-34c0d6606c09
     Type: Reward
@@ -3691,12 +3691,18 @@ SimTesting:
     Weight: 0
   - Args: '{=4tflp34a}archer'
     Enabled: false
-    Id: '{nV9iIsDC}class'
+    Id: '{=nV9iIsDC}class'
     ID: 0c4706d4-882f-40ba-b2ec-6077a957fc78
     Type: Command
     Weight: 1
-  IntervalMaxMS: 200
-  IntervalMinMS: 200
+  - Args: ''
+    Enabled: false
+    Id: Summon
+    ID: f478486b-06ba-4d97-bb27-774cf985dd0c
+    Type: Reward
+    Weight: 1
+  IntervalMaxMS: 20
+  IntervalMinMS: 20
   Use:
   - Args: ''
     Enabled: true
@@ -3711,32 +3717,32 @@ SimTesting:
     Type: Reward
     Weight: 1
   - Args: ''
-    Enabled: true
+    Enabled: false
     Id: '{=ndi9p5jn}100k gold'
     ID: 7dc0e816-b2ec-42a4-ab70-b4e00c8501ba
     Type: Reward
     Weight: 1
   - Args: ''
-    Enabled: true
-    Id: '{wHqxd4kb}equip'
+    Enabled: false
+    Id: '{=wHqxd4kb}equip'
     ID: 06539d16-25cb-4314-8cdd-4aada76b27bc
     Type: Command
     Weight: 0.400000006
   - Args: ''
-    Enabled: true
-    Id: '{fGfTaAoD}reequip'
+    Enabled: false
+    Id: '{=fGfTaAoD}reequip'
     ID: 76efdf69-6fc5-4163-8271-4540402f28b3
     Type: Command
     Weight: 0.100000001
   - Args: ''
-    Enabled: true
+    Enabled: false
     Id: '{=IBrMU0VF}Tournament'
     ID: 4e066d86-ecac-48c2-9406-0ed931f14756
     Type: Reward
     Weight: 0.200000003
   - Args: ''
-    Enabled: true
-    Id: '{mge9rH9J}retinue'
+    Enabled: false
+    Id: '{=mge9rH9J}retinue'
     ID: 9513732e-6522-429c-ab92-e1eab16518ef
     Type: Command
     Weight: 0.200000003
@@ -3747,100 +3753,100 @@ SimTesting:
     Type: Reward
     Weight: 0.00999999978
   - Args: ''
-    Enabled: true
+    Enabled: false
     Id: '{=Yc9dn4Sx}Adopt a Hero'
     ID: df2ee94a-7262-47d5-a97c-f09034d36240
     Type: Reward
     Weight: 0.00999999978
   - Args: ''
-    Enabled: true
+    Enabled: false
     Id: '{=MSpPJJhZ}Heal Streamer'
     ID: f1f5a043-fdf6-43e5-9fe5-e70009c56bf5
     Type: Reward
     Weight: 0.0500000007
   - Args: '{=m8bz4drX}infantry'
-    Enabled: true
-    Id: '{nV9iIsDC}class'
+    Enabled: false
+    Id: '{=nV9iIsDC}class'
     ID: a67ca1e9-d434-4af1-a3b6-69979b72d804
     Type: Command
     Weight: 0.100000001
   - Args: '{=4tflp34a}archer'
-    Enabled: true
-    Id: '{nV9iIsDC}class'
+    Enabled: false
+    Id: '{=nV9iIsDC}class'
     ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
     Type: Command
     Weight: 0.100000001
   - Args: '{=JncRD8tX}heavyarcher'
-    Enabled: true
-    Id: '{nV9iIsDC}class'
+    Enabled: false
+    Id: '{=nV9iIsDC}class'
     ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
     Type: Command
     Weight: 0.100000001
   - Args: '{=wV6R9Si5}crossbow'
-    Enabled: true
-    Id: '{nV9iIsDC}class'
+    Enabled: false
+    Id: '{=nV9iIsDC}class'
     ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
     Type: Command
     Weight: 0.100000001
   - Args: '{=bpzytNbP}heavycrossbow'
-    Enabled: true
-    Id: '{nV9iIsDC}class'
+    Enabled: false
+    Id: '{=nV9iIsDC}class'
     ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
     Type: Command
     Weight: 0.100000001
   - Args: '{=jNaFWF9t}cavalry'
-    Enabled: true
-    Id: '{nV9iIsDC}class'
+    Enabled: false
+    Id: '{=nV9iIsDC}class'
     ID: 6162aec8-8ffd-4d65-bcdd-0529081528ee
     Type: Command
     Weight: 0.100000001
   - Args: '{=mJ8RVORq}camelry'
-    Enabled: true
-    Id: '{nV9iIsDC}class'
+    Enabled: false
+    Id: '{=nV9iIsDC}class'
     ID: 6162aec8-8ffd-4d65-bcdd-0529081528ee
     Type: Command
     Weight: 0.100000001
   - Args: '{=p5qJfkkp}horsearcher'
-    Enabled: true
-    Id: '{nV9iIsDC}class'
+    Enabled: false
+    Id: '{=nV9iIsDC}class'
     ID: 2e320a55-f238-4d01-86de-c734d29bf7a5
     Type: Command
     Weight: 0.100000001
   - Args: '{=HreZWoyd}camelarcher'
-    Enabled: true
-    Id: '{nV9iIsDC}class'
+    Enabled: false
+    Id: '{=nV9iIsDC}class'
     ID: 2e320a55-f238-4d01-86de-c734d29bf7a5
     Type: Command
     Weight: 0.100000001
   - Args: '{=9euSgzCd}skirmisher'
-    Enabled: true
-    Id: '{nV9iIsDC}class'
+    Enabled: false
+    Id: '{=nV9iIsDC}class'
     ID: 7032b576-86b5-4540-b0b8-5d933f0fd87a
     Type: Command
     Weight: 0.100000001
   - Args: '{=wVjXAFal}berserker'
-    Enabled: true
-    Id: '{nV9iIsDC}class'
+    Enabled: false
+    Id: '{=nV9iIsDC}class'
     ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
     Type: Command
     Weight: 0.100000001
   - Args: '{=4JffsJMD}looter'
-    Enabled: true
-    Id: '{nV9iIsDC}class'
+    Enabled: false
+    Id: '{=nV9iIsDC}class'
     ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
     Type: Command
     Weight: 0.100000001
   - Args: ''
-    Enabled: true
+    Enabled: false
     Id: '{=likTlNpu}Heal Hero'
     ID: 584c161e-da84-46af-8fa4-3aeb3768663b
     Type: Reward
     Weight: 0.0500000007
   - Args: ''
-    Enabled: true
+    Enabled: false
     Id: '{=yoZSmM0b}Use Class Power'
     ID: d701da05-a87d-4f81-a94c-07aadb937636
     Type: Reward
     Weight: 0.5
-  UserCount: 25
+  UserCount: 100
   UserStayTime: 300
