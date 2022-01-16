@@ -117,7 +117,7 @@
         <!-- Comparison -->
         <string id="dXBsEW65" text="Karşılaştırmak" original="Comparison"/>
         <!-- Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills. -->
-        <string id="4yoAe9WV" text="Kahramanın belirtilen Değerden daha fazla veya daha azına ihtiyacı olup olmadığı. Örneğin, kahramanın 10&amp;#39;dan az ölüme ve 100&amp;#39;den fazla öldürmeye sahip olmasını talep edebilirsiniz." original="Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills."/>
+        <string id="4yoAe9WV" text="Kahramanın belirtilen Değerden daha fazla veya daha azına ihtiyacı olup olmadığı. Örneğin, kahramanın 10'dan az ölüme ve 100'den fazla öldürmeye sahip olmasını talep edebilirsiniz." original="Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills."/>
         <!-- Value -->
         <string id="a8Josr4g" text="Değer" original="Value"/>
         <!-- Value needed to obtain the achievement. -->

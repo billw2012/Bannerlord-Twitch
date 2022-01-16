@@ -133,7 +133,7 @@
         <!-- Damage Modifier Percent -->
         <string id="0mhPe31m" text="Hasar Değiştirici Yüzdesi" original="Damage Modifier Percent"/>
         <!-- Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it) -->
-        <string id="tXh8oAaE" text="Hasar değiştirici (hasarı azaltmak için %100&amp;#39;den az, artırmak için %100&amp;#39;den büyük olarak ayarlayın)" original="Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it)"/>
+        <string id="tXh8oAaE" text="Hasar değiştirici (hasarı azaltmak için %100'den az, artırmak için %100'den büyük olarak ayarlayın)" original="Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it)"/>
         <!-- Damage To Add -->
         <string id="fPmJAchN" text="Eklenecek Hasar" original="Damage To Add"/>
         <!-- How much damage to add -->
@@ -145,7 +145,7 @@
         <!-- Remove Hit Behavior -->
         <string id="shUGx48n" text="Vuruş Davranışını Kaldır" original="Remove Hit Behavior"/>
         <!-- Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always stunned when hit) -->
-        <string id="feiVAent" text="Hasarı ortadan kaldıracak davranışlar (örneğin, hedefin vurulduğunda her zaman sersemlemesini sağlamak için Shrug Off&amp;#39;u kaldırın)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always stunned when hit)"/>
+        <string id="feiVAent" text="Hasarı ortadan kaldıracak davranışlar (örneğin, hedefin vurulduğunda her zaman sersemlemesini sağlamak için Shrug Off'u kaldırın)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always stunned when hit)"/>
         <!-- Armor To Ignore Percent -->
         <string id="w5j3JYog" text="Yüzde Yok Sayılacak Zırh" original="Armor To Ignore Percent"/>
         <!-- What fraction (0 to 1) of armor to ignore when applying damage -->
@@ -153,7 +153,7 @@
         <!-- Unblockable Chance Percent -->
         <string id="SOJgZOV3" text="Engellenemez Şans Yüzdesi" original="Unblockable Chance Percent"/>
         <!-- Chance (0 to 1) that the hit will be unblockable -->
-        <string id="QoYMwBnz" text="İsabetin engellenemez olma şansı (0&amp;#39;a 1)" original="Chance (0 to 1) that the hit will be unblockable"/>
+        <string id="QoYMwBnz" text="İsabetin engellenemez olma şansı (0'a 1)" original="Chance (0 to 1) that the hit will be unblockable"/>
         <!-- Shatter Shield Chance Percent -->
         <string id="L1ZqypsT" text="Paramparça Kalkan Şans Yüzdesi" original="Shatter Shield Chance Percent"/>
         <!-- Chance (0 to 1) that the hit will shatter shield if it is blocked -->
@@ -161,7 +161,7 @@
         <!-- Cut Through Chance Percent -->
         <string id="xt70CI4q" text="Şans Yüzdesini Kes" original="Cut Through Chance Percent"/>
         <!-- Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each collision, so a cut through chance of 1 will result in cutting through everyone with every hit) -->
-        <string id="uAsNXThU" text="Darbenin karşılaştığı herhangi bir birimi kesme olasılığı (0 ila 1) (her çarpışmada değerlendirilir, dolayısıyla 1&amp;#39;lik bir kesme şansı, her vuruşta herkesi kesmeye neden olur)" original="Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each collision, so a cut through chance of 1 will result in cutting through everyone with every hit)"/>
+        <string id="uAsNXThU" text="Darbenin karşılaştığı herhangi bir birimi kesme olasılığı (0 ila 1) (her çarpışmada değerlendirilir, dolayısıyla 1'lik bir kesme şansı, her vuruşta herkesi kesmeye neden olur)" original="Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each collision, so a cut through chance of 1 will result in cutting through everyone with every hit)"/>
         <!-- Stagger Chance Percent -->
         <string id="XxLPeI3i" text="Şaşırtma Şans Yüzdesi" original="Stagger Chance Percent"/>
         <!-- Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR stagger, it can't do both, cut through chance is evaluated before this one) -->
@@ -201,7 +201,7 @@
         <!-- Missile Trail Particle Effect -->
         <string id="2GaGbTYR" text="Füze İzi Parçacık Etkisi" original="Missile Trail Particle Effect"/>
         <!-- Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing fire/smoke effect) -->
-        <string id="UiCylfED" text="Füzeye eklenecek Parçacık Etkisi (sondaki ateş/duman etkisi için psys_game_burning_agent&amp;#39;ı tavsiye edin)" original="Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing fire/smoke effect)"/>
+        <string id="UiCylfED" text="Füzeye eklenecek Parçacık Etkisi (sondaki ateş/duman etkisi için psys_game_burning_agent'ı tavsiye edin)" original="Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing fire/smoke effect)"/>
         <!-- Hit Effect -->
         <string id="gEhH84HS" text="Vuruş Etkisi" original="Hit Effect"/>
         <!-- Effect to play on hit (intended mainly for AoE effects) -->
@@ -287,7 +287,7 @@
         <!-- Health Modifier Percent -->
         <string id="EQ16SH5A" text="Sağlık Değiştirici Yüzdesi" original="Health Modifier Percent"/>
         <!-- Modifier to apply to base HP -->
-        <string id="Dr2whvVV" text="Temel HP&amp;#39;ye uygulanacak değiştirici" original="Modifier to apply to base HP"/>
+        <string id="Dr2whvVV" text="Temel HP'ye uygulanacak değiştirici" original="Modifier to apply to base HP"/>
         <!-- Health To Add -->
         <string id="pnr7P9sj" text="Eklenecek Sağlık" original="Health To Add"/>
         <!-- How much HP to add (applied after Modifier) -->
@@ -304,7 +304,7 @@
         <!-- Reflected Damage Is Subtracted -->
         <string id="IxiHjT1Z" text="Yansıyan Hasar Çıkarılır" original="Reflected Damage Is Subtracted"/>
         <!-- Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection) -->
-        <string id="Pdg6mCPA" text="Yansıyan hasarın kahramanın aldığı hasardan düşülüp düşülmediği (bu &amp;#39;klasik&amp;#39; hasar yansımasıdır)" original="Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection)"/>
+        <string id="Pdg6mCPA" text="Yansıyan hasarın kahramanın aldığı hasardan düşülüp düşülmediği (bu 'klasik' hasar yansımasıdır)" original="Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection)"/>
         <!-- Hit Behavior -->
         <string id="WDRb4mQ3" text="Vuruş Davranışı" original="Hit Behavior"/>
         <!-- Hit behavior for the reflected damage -->
@@ -334,7 +334,7 @@
         <!-- Damage Modifier Percent -->
         <string id="jkYLVPpL" text="Hasar Değiştirici Yüzdesi" original="Damage Modifier Percent"/>
         <!-- Damage modifier (set less than 100% to reduce incoming damage, set greater than 100% to increase it) -->
-        <string id="1eJHtO06" text="Hasar değiştirici (gelen hasarı azaltmak için %100&amp;#39;den az, artırmak için %100&amp;#39;den büyük olarak ayarlayın)" original="Damage modifier (set less than 100% to reduce incoming damage, set greater than 100% to increase it)"/>
+        <string id="1eJHtO06" text="Hasar değiştirici (gelen hasarı azaltmak için %100'den az, artırmak için %100'den büyük olarak ayarlayın)" original="Damage modifier (set less than 100% to reduce incoming damage, set greater than 100% to increase it)"/>
         <!-- Damage To Add -->
         <string id="4XgEPe3Q" text="Eklenecek Hasar" original="Damage To Add"/>
         <!-- How much damage to add or subtract -->
@@ -342,11 +342,11 @@
         <!-- Add Hit Behavior -->
         <string id="2JFBV975" text="Hit Davranışı Ekle" original="Add Hit Behavior"/>
         <!-- Behaviors to add to the damage (e.g. add Shrug Off to ensure the hero is never stunned when hit) -->
-        <string id="9t2oXdqy" text="Hasarı artıracak davranışlar (örneğin, kahramanın vurulduğunda asla sersemletilmemesini sağlamak için Shrug Off&amp;#39;u ekleyin)" original="Behaviors to add to the damage (e.g. add Shrug Off to ensure the hero is never stunned when hit)"/>
+        <string id="9t2oXdqy" text="Hasarı artıracak davranışlar (örneğin, kahramanın vurulduğunda asla sersemletilmemesini sağlamak için Shrug Off'u ekleyin)" original="Behaviors to add to the damage (e.g. add Shrug Off to ensure the hero is never stunned when hit)"/>
         <!-- Remove Hit Behavior -->
         <string id="GLAvDJl5" text="Vuruş Davranışını Kaldır" original="Remove Hit Behavior"/>
         <!-- Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit) -->
-        <string id="oA2TrarN" text="Hasardan kurtulmak için davranışlar (örneğin, kahramanın vurulduğunda her zaman sersemlemesini sağlamak için Shrug Off&amp;#39;u kaldırın)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit)"/>
+        <string id="oA2TrarN" text="Hasardan kurtulmak için davranışlar (örneğin, kahramanın vurulduğunda her zaman sersemlemesini sağlamak için Shrug Off'u kaldırın)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit)"/>
         <!-- Armor To Ignore Percent -->
         <string id="9Lwkwni0" text="Yüzde Yok Sayılacak Zırh" original="Armor To Ignore Percent"/>
         <!-- What fraction (0 to 1) of armor to ignore when applying damage -->

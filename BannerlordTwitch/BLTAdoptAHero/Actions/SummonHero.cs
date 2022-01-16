@@ -231,6 +231,7 @@ namespace BLTAdoptAHero
             
             //          Ultra rare
             new("{=EcD5q9th}DAMN IT DAVE!") { PlayerSide = false, Weight = 0.01f },
+            new("{=4yUH9sfX}I'll mount your pike on a head!") { PlayerSide = false, Weight = 0.01f },
         };
 
         protected override void ExecuteInternal(Hero adoptedHero, ReplyContext context, object config,
@@ -499,7 +500,8 @@ namespace BLTAdoptAHero
                             Log.Trace($"[{nameof(SummonHero)}] moving {adoptedHero} from {party} back to {originalParty?.Party?.ToString() ?? "no party"}");
                         }
 
-                        if (Mission.Current?.MissionResult != null)
+                        // No rewards when defender pulled back to keep
+                        if (Mission.Current?.MissionResult != null && Mission.Current.MissionResult?.BattleState != BattleState.DefenderPullBack)
                         {
                             var results = new List<string>();
                             float finalRewardScaling =

@@ -16,7 +16,7 @@
         <!-- Adopt A Hero -->
         <string id="NkZXnSQI" text="Adote um herói" original="Adopt A Hero"/>
         <!-- Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands -->
-        <string id="fd7G5N0Q" text="Permite que o visualizador &amp;#39;adote&amp;#39; um herói no jogo - o nome do herói mudará para o nome do visualizador, e eles podem controlá-lo com comandos adicionais" original="Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands"/>
+        <string id="fd7G5N0Q" text="Permite que o visualizador 'adote' um herói no jogo - o nome do herói mudará para o nome do visualizador, e eles podem controlá-lo com comandos adicionais" original="Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands"/>
         <!-- Create New -->
         <string id="TLrDxhlh" text="Crie um novo" original="Create New"/>
         <!-- Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern) -->
@@ -143,7 +143,7 @@
         <!--  -->
         <string id="YawQBjBG" text=""/>
         <!-- Couldn't find attribute matching '{Args}'! -->
-        <string id="LE3POzUs" text="Não foi possível encontrar o atributo correspondente a &amp;#39;{Args}&amp;#39;!" original="Couldn't find attribute matching '{Args}'!"/>
+        <string id="LE3POzUs" text="Não foi possível encontrar o atributo correspondente a '{Args}'!" original="Couldn't find attribute matching '{Args}'!"/>
         <!-- Couldn't improve {Attribute} attribute, it is already at max level! -->
         <string id="R7X1dTqL" text="Não foi possível melhorar o atributo {Attribute}, ele já está no nível máximo!" original="Couldn't improve {Attribute} attribute, it is already at max level!"/>
         <!-- AuctionItem -->
@@ -166,13 +166,13 @@
         <!-- (reserve price) (partial item name) -->
         <string id="lI4WCNeQ" text="(preço de reserva) (nome do item parcial)" original="(reserve price) (partial item name)"/>
         <!-- Invalid reserve price '{Arg}' -->
-        <string id="mm1ay4I7" text="Preço de reserva inválido &amp;#39;{Arg}&amp;#39;" original="Invalid reserve price '{Arg}'"/>
+        <string id="mm1ay4I7" text="Preço de reserva inválido '{Arg}'" original="Invalid reserve price '{Arg}'"/>
         <!-- No items found matching '{ItemName}' -->
-        <string id="viO1RBr5" text="Nenhum item encontrado correspondente a &amp;#39;{ItemName}&amp;#39;" original="No items found matching '{ItemName}'"/>
+        <string id="viO1RBr5" text="Nenhum item encontrado correspondente a '{ItemName}'" original="No items found matching '{ItemName}'"/>
         <!-- {ItemCount} items found matching '{ItemName}', be more specific -->
-        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName} &amp;#39;, seja mais específico" original="{ItemCount} items found matching '{ItemName}', be more specific"/>
+        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName} ', seja mais específico" original="{ItemCount} items found matching '{ItemName}', be more specific"/>
         <!-- Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds. -->
-        <string id="BH5rnHNq" text="Leilão de &amp;#39;{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} segundos." original="Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."/>
+        <string id="BH5rnHNq" text="Leilão de '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} segundos." original="Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."/>
         <!-- Bid On Item -->
         <string id="rBAvqAh7" text="Licitar no item" original="Bid On Item"/>
         <!-- Allows viewers bid on an active custom item auction (make sure to add an auction command also) -->
@@ -265,11 +265,11 @@
         <!-- (partial item name) -->
         <string id="by80aboy" text="(nome do item parcial)" original="(partial item name)"/>
         <!-- No items found matching '{Args}' -->
-        <string id="p0urrIvR" text="Nenhum item encontrado correspondente a &amp;#39;{Args}&amp;#39;" original="No items found matching '{Args}'"/>
+        <string id="p0urrIvR" text="Nenhum item encontrado correspondente a '{Args}'" original="No items found matching '{Args}'"/>
         <!-- {Count} items found matching '{Args}', be more specific -->
-        <string id="Pzo2UJrl" text="{Count} items found matching '{Args} &amp;#39;, seja mais específico" original="{Count} items found matching '{Args}', be more specific"/>
+        <string id="Pzo2UJrl" text="{Count} items found matching '{Args} ', seja mais específico" original="{Count} items found matching '{Args}', be more specific"/>
         <!-- '{ItemName}' was discarded -->
-        <string id="bNqd3AzN" text="&amp;#39;{ItemName}&amp;#39; foi descartado" original="'{ItemName}' was discarded"/>
+        <string id="bNqd3AzN" text="'{ItemName}' foi descartado" original="'{ItemName}' was discarded"/>
         <!-- GiveItem -->
         <!-- Give Item -->
         <string id="nAPjfF4C" text="Dê o Item" original="Give Item"/>
@@ -280,9 +280,9 @@
         <!-- (recipient) (partial item name) -->
         <string id="BClUoR9H" text="(destinatário) (nome parcial do item)" original="(recipient) (partial item name)"/>
         <!-- Couldn't find recipient '{Name}' -->
-        <string id="vDsYxMKq" text="Não foi possível encontrar o destinatário &amp;#39;{Name}&amp;#39;" original="Couldn't find recipient '{Name}'"/>
+        <string id="vDsYxMKq" text="Não foi possível encontrar o destinatário '{Name}'" original="Couldn't find recipient '{Name}'"/>
         <!-- '{ItemName}' was transferred from @{FromHero} to @{ToHero} -->
-        <string id="E1o7b5ht" text="&amp;#39;{ItemName}' was transferred from @{FromHero} to @{ToHero}" original="'{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
+        <string id="E1o7b5ht" text="'{ItemName}' was transferred from @{FromHero} to @{ToHero}" original="'{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
         <!-- HeroInfoCommand -->
         <!-- Show Hero Info -->
         <string id="cj68a0l9" text="Mostrar informações do herói" original="Show Hero Info"/>
@@ -492,7 +492,7 @@
         <!-- yes -->
         <string id="xSbB2Zw5" text="sim" original="yes"/>
         <!-- You must enter '{Prompt}' at the prompt to retire your hero -->
-        <string id="0qVpLYfb" text="Você deve inserir &amp;#39;{Prompt}&amp;#39; no prompt para aposentar seu herói" original="You must enter '{Prompt}' at the prompt to retire your hero"/>
+        <string id="0qVpLYfb" text="Você deve inserir '{Prompt}' no prompt para aposentar seu herói" original="You must enter '{Prompt}' at the prompt to retire your hero"/>
         <!-- You cannot retire your hero, as a mission is active! -->
         <string id="po20lHyz" text="Você não pode aposentar seu herói, pois uma missão está ativa!" original="You cannot retire your hero, as a mission is active!"/>
         <!-- {Name} has retired! -->
@@ -501,7 +501,7 @@
         <!-- Set Hero Class -->
         <string id="pVblweVj" text="Definir classe de herói" original="Set Hero Class"/>
         <!-- Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied -->
-        <string id="7VWKYp1U" text="Permite mudar a &amp;#39;classe&amp;#39; de um herói adotado, que afeta o equipamento e onde o XP é aplicado" original="Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied"/>
+        <string id="7VWKYp1U" text="Permite mudar a 'classe' de um herói adotado, que afeta o equipamento e onde o XP é aplicado" original="Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied"/>
         <!-- First Equip Is Free -->
         <string id="iLpDEiTq" text="O primeiro equipamento é gratuito" original="First Equip Is Free"/>
         <!-- If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class) -->

@@ -25,7 +25,7 @@
         <!-- {UserName} gives you {GoldAmountToGive} gold -->
         <string id="awjXw6yr" text="{UserName} gives you {GoldAmountToGive} altın" original="{UserName} gives you {GoldAmountToGive} gold"/>
         <!-- {UserName} gives you {GoldAmountToGive} gold: '{Message}' -->
-        <string id="jOqdrS7h" text="{UserName} gives you {GoldAmountToGive} gold: '{Message}&amp;#39;" original="{UserName} gives you {GoldAmountToGive} gold: '{Message}'"/>
+        <string id="jOqdrS7h" text="{UserName} gives you {GoldAmountToGive} gold: '{Message}'" original="{UserName} gives you {GoldAmountToGive} gold: '{Message}'"/>
         <!-- Sent {GoldAmountToGive}{GoldIcon} to {PlayerName} -->
         <string id="ziWoNEec" text="{GoldAmountToGive}{GoldIcon} to {PlayerName} gönderildi" original="Sent {GoldAmountToGive}{GoldIcon} to {PlayerName}"/>
         <!-- CharacterEffect -->
@@ -79,7 +79,7 @@
         <!-- Particle Effect Definition -->
         <string id="F9u231DX" text="Parçacık Etkisi Tanımı" original="Particle Effect Definition"/>
         <!-- Particle effect system name, see ParticleEffects.txt for the full vanilla list -->
-        <string id="8FGAgHIX" text="Parçacık efekti sistem adı, tam liste için ParticleEffects.txt&amp;#39;ye bakın" original="Particle effect system name, see ParticleEffects.txt for the full vanilla list"/>
+        <string id="8FGAgHIX" text="Parçacık efekti sistem adı, tam liste için ParticleEffects.txt'ye bakın" original="Particle effect system name, see ParticleEffects.txt for the full vanilla list"/>
         <!-- Attach Point -->
         <string id="7MIO0dPq" text="Nokta Ekle" original="Attach Point"/>
         <!-- Where to attach the particles -->
@@ -143,15 +143,15 @@
         <!-- Activate Sound -->
         <string id="deboEOcD" text="Sesi Etkinleştir" original="Activate Sound"/>
         <!-- Sound to play when effect is activated, see Sounds.txt for the full vanilla list -->
-        <string id="zZskrilN" text="Efekt etkinleştirildiğinde çalınacak ses, tam vanilya listesi için Sounds.txt&amp;#39;e bakın" original="Sound to play when effect is activated, see Sounds.txt for the full vanilla list"/>
+        <string id="zZskrilN" text="Efekt etkinleştirildiğinde çalınacak ses, tam vanilya listesi için Sounds.txt'e bakın" original="Sound to play when effect is activated, see Sounds.txt for the full vanilla list"/>
         <!-- Deactivate Particle Effect -->
         <string id="FBH0P3a9" text="Parçacık Etkisini Devre Dışı Bırak" original="Deactivate Particle Effect"/>
         <!-- One shot vfx to apply when the effect is deactivated, see ParticleEffects.txt for the full vanilla list -->
-        <string id="u1eFzwLY" text="Efekt devre dışı bırakıldığında uygulanacak tek çekim vfx, tam liste için ParticleEffects.txt&amp;#39;ye bakın" original="One shot vfx to apply when the effect is deactivated, see ParticleEffects.txt for the full vanilla list"/>
+        <string id="u1eFzwLY" text="Efekt devre dışı bırakıldığında uygulanacak tek çekim vfx, tam liste için ParticleEffects.txt'ye bakın" original="One shot vfx to apply when the effect is deactivated, see ParticleEffects.txt for the full vanilla list"/>
         <!-- Deactivate Sound -->
         <string id="zfSYXHms" text="Sesi Devre Dışı Bırak" original="Deactivate Sound"/>
         <!-- Sound to play when effect is deactivated, see Sounds.txt for the full vanilla list -->
-        <string id="ziMmWmmY" text="Efekt devre dışı bırakıldığında çalınacak ses, tam liste için Sounds.txt&amp;#39;e bakın" original="Sound to play when effect is deactivated, see Sounds.txt for the full vanilla list"/>
+        <string id="ziMmWmmY" text="Efekt devre dışı bırakıldığında çalınacak ses, tam liste için Sounds.txt'e bakın" original="Sound to play when effect is deactivated, see Sounds.txt for the full vanilla list"/>
         <!-- SendMessage -->
         <!-- Send Message -->
         <string id="rXQWpj95" text="Mesaj gönder" original="Send Message"/>

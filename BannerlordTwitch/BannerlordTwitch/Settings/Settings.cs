@@ -253,9 +253,9 @@ namespace BannerlordTwitch
                 generator.H1("{=u6xsREDY}Channel Point Rewards".Translate());
                 generator.Table(() => {
                     generator.TR(() => generator
-                        .TH("{15umM0Xo}Command".Translate())
-                        .TH("{J6daarYb}Description".Translate())
-                        .TH("{e2Fu7JYS}Settings".Translate()));
+                        .TH("{=15umM0Xo}Command".Translate())
+                        .TH("{=J6daarYb}Description".Translate())
+                        .TH("{=e2Fu7JYS}Settings".Translate()));
                     foreach (var r in Rewards.Where(r => r.Enabled))
                     {
                         generator.TR(() =>

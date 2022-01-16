@@ -38,7 +38,7 @@ namespace BannerlordTwitch.Localization
             => !string.IsNullOrEmpty(str)
                 ? new TextObject(str, arg.ToDictionary(
                     kv => kv.key,
-                    kv => kv.value)).ToString()
+                    kv => kv.value is LocString ? kv.value.ToString() : kv.value)).ToString()
                 : string.Empty;
     }
 

@@ -13,12 +13,12 @@ namespace BannerlordTwitch.Helpers
 {
     public struct OneShotEffect
     {
-        [LocDisplayName("{cv0hxm25}ParticleEffect"), LocDescription("{N1WsBndO}Particle Effect to play"), 
+        [LocDisplayName("{=cv0hxm25}ParticleEffect"), LocDescription("{=N1WsBndO}Particle Effect to play"), 
          ItemsSource(typeof(OneShotParticleEffectItemSource)), 
          PropertyOrder(1), UsedImplicitly]
         public string ParticleEffect { get; set; }
 
-        [LocDisplayName("{FyXztxDH}Sound"), LocDescription("{2KrpVrR8}Sound to play"), 
+        [LocDisplayName("{=FyXztxDH}Sound"), LocDescription("{=2KrpVrR8}Sound to play"), 
          ItemsSource(typeof(SoundEffectItemSource)), 
          PropertyOrder(2), UsedImplicitly]
         public string Sound { get; set; }

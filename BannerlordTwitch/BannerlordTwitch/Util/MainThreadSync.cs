@@ -20,10 +20,18 @@ namespace BannerlordTwitch.Util
         {
             var st = new Stopwatch();
             st.Start();
-            while (st.ElapsedMilliseconds < 2 && actions.TryDequeue(out var action))
+            while (actions.TryDequeue(out var action))
             {
                 action.action();
                 action.completeEvent?.Set();
+                if (st.ElapsedMilliseconds > 2)
+                {
+                    // if (st.ElapsedMilliseconds > 10)
+                    // {
+                    //     Log.Info($"Action took {st.ElapsedMilliseconds}ms to Enqueue, this is too slow!");
+                    // }
+                    break;
+                }
             }
         }
 

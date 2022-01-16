@@ -142,10 +142,10 @@ Commands:
     ShowStorage: false
     ShowTopSkills: false
     ShowTrackedStats: false
-  Help: '{=eWI5oDce}show gold'
+  Help: '{=zdRj4blL}show gold'
   HideHelp: false
   ID: 42e45ee9-647f-486f-9764-5e765507a70d
-  Name: '{=eWI5oDce}gold'
+  Name: '{=W5uX9HCJ}gold'
   RespondInOverlay: true
   RespondInTwitch: true
 - Documentation: '{=BlBiEmbf}Shows your current retinue troops.'

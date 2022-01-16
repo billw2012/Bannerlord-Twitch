@@ -148,9 +148,9 @@ namespace BLTAdoptAHero
          PropertyOrder(5), Document, UsedImplicitly]
         public bool ApplyDeathChanceToAllHeroes { get; set; } = true;
         
-        [LocDisplayName("{=}Retinue Death Chance Percent"),
+        [LocDisplayName("{=TsGie7KT}Retinue Death Chance Percent"),
          LocCategory("Death", "{=dbU7WEKG}Death"),
-         LocDescription("{=}Retinue death chance percent (this determines the chance that a killing blow will " +
+         LocDescription("{=hbP7F9oz}Retinue death chance percent (this determines the chance that a killing blow will " +
                         "actually kill the retinue, removing them from the adopted hero's retinue list)"),
          PropertyOrder(6),
          Range(0, 100), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),

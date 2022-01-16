@@ -125,13 +125,13 @@
         <!-- (on mount) -->
         <string id="l7w0bPt0" text="(montajda)" original="(on mount)"/>
         <!-- Mount {ScalePercent}% normal size -->
-        <string id="qhIXgPGK" text="Normal boyutun %{ScalePercent}&amp;#39;ini bağla" original="Mount {ScalePercent}% normal size"/>
+        <string id="qhIXgPGK" text="Normal boyutun %{ScalePercent}'ini bağla" original="Mount {ScalePercent}% normal size"/>
         <!-- {ScalePercent}% normal size -->
         <string id="yLT1lfRC" text="%{ScalePercent} normal boyut" original="{ScalePercent}% normal size"/>
         <!-- DocumentationHelpers -->
         <!-- ParticleEffectDef -->
         <!-- Particle effect system name, see ParticleEffects.txt for the full vanilla list -->
-        <string id="xgnntAyd" text="Parçacık efekti sistem adı, tam liste için ParticleEffects.txt&amp;#39;ye bakın" original="Particle effect system name, see ParticleEffects.txt for the full vanilla list"/>
+        <string id="xgnntAyd" text="Parçacık efekti sistem adı, tam liste için ParticleEffects.txt'ye bakın" original="Particle effect system name, see ParticleEffects.txt for the full vanilla list"/>
         <!-- On Weapon -->
         <string id="w3eb5kWA" text="Silahta" original="On Weapon"/>
         <!-- On Hands -->
@@ -300,7 +300,7 @@
         <!-- BLT Overlay -->
         <string id="fmjzDasd" text="BLT Yerleşimi" original="BLT Overlay"/>
         <!-- For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again. -->
-        <string id="Kgi2isWy" text="BLT Yer Paylaşımlı Tarayıcı Kaynağının çalışması için {Port} bağlantı noktasını ayırması ve Windows Güvenlik Duvarı üzerinden buna izin vermesi gerekir.\nBu, Tamam&amp;#39;a bastıktan sonra istenecek olan yönetici ayrıcalıkları gerektirir.\nBaşarılı olursa, bunu görmezsiniz tekrar açılır." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
+        <string id="Kgi2isWy" text="BLT Yer Paylaşımlı Tarayıcı Kaynağının çalışması için {Port} bağlantı noktasını ayırması ve Windows Güvenlik Duvarı üzerinden buna izin vermesi gerekir.\nBu, Tamam'a bastıktan sonra istenecek olan yönetici ayrıcalıkları gerektirir.\nBaşarılı olursa, bunu görmezsiniz tekrar açılır." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
         <!-- Okay -->
         <string id="yXwMSbr4" text="Peki" original="Okay"/>
         <!-- Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window. -->
@@ -321,7 +321,7 @@
         <!-- What to show in the generated documentation -->
         <string id="W6pzg6VJ" text="Oluşturulan belgelerde ne gösterilecek?" original="What to show in the generated documentation"/>
         <!-- Respond In Twitch -->
-        <string id="86rc4cz6" text="Twitch&amp;#39;te Yanıt Ver" original="Respond In Twitch"/>
+        <string id="86rc4cz6" text="Twitch'te Yanıt Ver" original="Respond In Twitch"/>
         <!-- Respond In Overlay -->
         <string id="0MgBhdtw" text="Yer Paylaşımlı Yanıtla" original="Respond In Overlay"/>
         <!-- Handler -->
@@ -336,7 +336,7 @@
         <string id="ctAF1ghX" text="Bannerlord Twitch Görüntüleyici Kılavuzu" original="Bannerlord Twitch Viewer Guide"/>
         <!-- Introduction -->
         <!-- Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to &apos;adopt&apos; a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include &apos;summoning&apos; your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes &apos;class&apos;.&lt;br&gt;If you aren&apos;t sure where to start, begin by using the channel point redemption &apos;Adopt a Hero&apos;. -->
-        <string id="rElL5v6I" text="Bannerlord Twitch (BLT), Mount &amp;amp; Blade II: Bannerlord için bir Twitch Entegrasyon modudur.&lt;br&gt; İzleyici olarak, yayıncı oynarken oyunla etkileşim kurmak için kanal puanı ödüllerini (varsa) ve sohbet komutlarını kullanabilirsiniz.&lt;br&gt; BLT&amp;#39;nin birincil özelliği, oyunda bir kahramanı &amp;#39;evlat edinmenize&amp;#39; izin vermesidir, yani oyundaki bir karakter, Twitch adınız verilerek size atanacak ve daha fazla etkileşimde bulunmanız için hazır olacaktır.&lt;br&gt; Kahramanınızla yapabileceğiniz bazı örnekler arasında, yayıncının yer aldığı savaşlara kahramanınızı &amp;quot;çağırmak&amp;quot;, izleyici turnuvalarına katılmak, ekipmanı yükseltmek, kahramanınızın &amp;quot;sınıfını&amp;quot; seçmek yer alır.&lt;br&gt; Nereden başlayacağınızdan emin değilseniz, &amp;#39;Bir Kahraman Kabul Et&amp;#39; kanal puanı ödemesini kullanarak başlayın." original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
+        <string id="rElL5v6I" text="Bannerlord Twitch (BLT), Mount &amp;amp; Blade II: Bannerlord için bir Twitch Entegrasyon modudur.&lt;br&gt; İzleyici olarak, yayıncı oynarken oyunla etkileşim kurmak için kanal puanı ödüllerini (varsa) ve sohbet komutlarını kullanabilirsiniz.&lt;br&gt; BLT'nin birincil özelliği, oyunda bir kahramanı 'evlat edinmenize' izin vermesidir, yani oyundaki bir karakter, Twitch adınız verilerek size atanacak ve daha fazla etkileşimde bulunmanız için hazır olacaktır.&lt;br&gt; Kahramanınızla yapabileceğiniz bazı örnekler arasında, yayıncının yer aldığı savaşlara kahramanınızı &amp;quot;çağırmak&amp;quot;, izleyici turnuvalarına katılmak, ekipmanı yükseltmek, kahramanınızın &amp;quot;sınıfını&amp;quot; seçmek yer alır.&lt;br&gt; Nereden başlayacağınızdan emin değilseniz, 'Bir Kahraman Kabul Et' kanal puanı ödemesini kullanarak başlayın." original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
         <!-- Command -->
         <!-- Bot command definition -->
         <string id="8SbGSWFY" text="Bot komut tanımı" original="Bot command definition"/>
@@ -361,7 +361,7 @@
         <string id="sF4buTM8" text="Ödül Şartnamesi" original="Reward Specification"/>
         <!-- RewardSpec -->
         <!-- The Twitch specific part of the channel points reward specification -->
-        <string id="glIst7fu" text="Kanal puanları ödül spesifikasyonunun Twitch&amp;#39;e özel kısmı" original="The Twitch specific part of the channel points reward specification"/>
+        <string id="glIst7fu" text="Kanal puanları ödül spesifikasyonunun Twitch'e özel kısmı" original="The Twitch specific part of the channel points reward specification"/>
         <!-- The title of the reward -->
         <string id="b8OBGhIk" text="Ödülün adı" original="The title of the reward"/>
         <!-- Whether the reward will automatically be set to fulfilled once completed in game. If you set this to true then the redemptions that successfully complete in game will stay in your redemption queue. This is useful if you are worried about people losing points if the game crashes, or you reload an older save. -->

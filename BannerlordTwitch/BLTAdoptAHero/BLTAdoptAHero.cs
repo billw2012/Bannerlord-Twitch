@@ -82,30 +82,33 @@ namespace BLTAdoptAHero
             {
                 if (Agent.Main != null && agent.IsEnemyOf(Agent.Main) || Mission.Current.PlayerTeam?.IsValid == true && agent.Team.IsEnemyOf(Mission.Current.PlayerTeam))
                 {
-                    __instance.NameType = "Enemy";
+                    __instance.NameType = MissionNameMarkerTargetVM.NameTypeEnemy;
                     __instance.IsFriendly = false;
                     __instance.IsEnemy = true;
+                    __instance.IsTracked = true;
+
                 }
                 else if (Agent.Main != null && agent.IsFriendOf(Agent.Main) || Mission.Current.PlayerTeam?.IsValid == true && agent.Team.IsFriendOf(Mission.Current.PlayerTeam))
                 {
-                    __instance.NameType = "Friendly";
+                    __instance.NameType = MissionNameMarkerTargetVM.NameTypeFriendly;
                     __instance.IsFriendly = true;
                     __instance.IsEnemy = false;
+                    __instance.IsTracked = true;
                 }
             }
         }
 
-        [UsedImplicitly, HarmonyPostfix, 
-         HarmonyPatch(typeof(MissionNameMarkerVM), MethodType.Constructor, typeof(Mission), typeof(Camera)
-             , typeof(Dictionary<Agent, SandBoxUIHelper.IssueQuestFlags>)
-             , typeof(Dictionary<string, ValueTuple<Vec3, string, string>>)
-             )
-        ]
-        // ReSharper disable once RedundantAssignment
-        public static void MissionNameMarkerVMConstructorPostfix(MissionNameMarkerVM __instance, Mission mission, ref Vec3 ____heightOffset)
-        {
-            ____heightOffset = new (0, 0, 4);
-        }
+        // [UsedImplicitly, HarmonyPostfix, 
+        //  HarmonyPatch(typeof(MissionNameMarkerVM), MethodType.Constructor, typeof(Mission), typeof(Camera)
+        //      , typeof(Dictionary<Agent, SandBoxUIHelper.IssueQuestFlags>)
+        //      , typeof(Dictionary<string, ValueTuple<Vec3, string, string>>)
+        //      )
+        // ]
+        // // ReSharper disable once RedundantAssignment
+        // public static void MissionNameMarkerVMConstructorPostfix(MissionNameMarkerVM __instance, Mission mission, ref Vec3 ____heightOffset)
+        // {
+        //     ____heightOffset = new (0, 0, 0);
+        // }
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {

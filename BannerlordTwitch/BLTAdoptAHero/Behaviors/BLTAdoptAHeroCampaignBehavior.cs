@@ -983,44 +983,48 @@ namespace BLTAdoptAHero
                     heroRetinue.Add(retinue);
                     retinueChanges.Add(retinue, (null, cost));
                 }
-
-                // upgrade the lowest tier unit
-                var retinueToUpgrade = heroRetinue
-                    .OrderBy(h => h.TroopType.Tier)
-                    .FirstOrDefault(t => t.TroopType.UpgradeTargets?.Any() == true);
-
-                if (retinueToUpgrade != null)
+                else
                 {
-                    int cost = settings.GetTierCost(retinueToUpgrade.Level);
-                    if (totalCost + cost > heroGold)
-                    {
-                        results.Add(retinueChanges.IsEmpty()
-                            ? Naming.NotEnoughGold(cost, heroGold)
-                            : "{=zcbOq6Tb}Spent {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} remaining"
-                                .Translate(
-                                    ("TotalCost", totalCost),
-                                    ("GoldIcon", Naming.Gold),
-                                    ("RemainingGold", heroGold - totalCost)));
-                        break;
-                    }
-                    totalCost += cost;
+                    // upgrade the lowest tier unit
+                    var retinueToUpgrade = heroRetinue
+                        .OrderBy(h => h.TroopType.Tier)
+                        .FirstOrDefault(t => t.TroopType.UpgradeTargets?.Any() == true);
 
-                    var oldTroopType = retinueToUpgrade.TroopType;
-                    retinueToUpgrade.TroopType = oldTroopType.UpgradeTargets.SelectRandom();
-                    retinueToUpgrade.Level++;
-                    if (retinueChanges.TryGetValue(retinueToUpgrade, out var upgradeRecord))
+                    if (retinueToUpgrade != null)
                     {
-                        retinueChanges[retinueToUpgrade] = (upgradeRecord.oldTroopType, upgradeRecord.totalSpent + cost);
+                        int cost = settings.GetTierCost(retinueToUpgrade.Level);
+                        if (totalCost + cost > heroGold)
+                        {
+                            results.Add(retinueChanges.IsEmpty()
+                                ? Naming.NotEnoughGold(cost, heroGold)
+                                : "{=zcbOq6Tb}Spent {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} remaining"
+                                    .Translate(
+                                        ("TotalCost", totalCost),
+                                        ("GoldIcon", Naming.Gold),
+                                        ("RemainingGold", heroGold - totalCost)));
+                            break;
+                        }
+
+                        totalCost += cost;
+
+                        var oldTroopType = retinueToUpgrade.TroopType;
+                        retinueToUpgrade.TroopType = oldTroopType.UpgradeTargets.SelectRandom();
+                        retinueToUpgrade.Level++;
+                        if (retinueChanges.TryGetValue(retinueToUpgrade, out var upgradeRecord))
+                        {
+                            retinueChanges[retinueToUpgrade] =
+                                (upgradeRecord.oldTroopType ?? oldTroopType, upgradeRecord.totalSpent + cost);
+                        }
+                        else
+                        {
+                            retinueChanges.Add(retinueToUpgrade, (oldTroopType, cost));
+                        }
                     }
                     else
                     {
-                        retinueChanges.Add(retinueToUpgrade, (oldTroopType, cost));
+                        results.Add("{=PQRLJ04i}Can't upgrade retinue any further!".Translate());
+                        break;
                     }
-                }
-                else
-                {
-                    results.Add("{=PQRLJ04i}Can't upgrade retinue any further!".Translate());
-                    break;
                 }
             }
 

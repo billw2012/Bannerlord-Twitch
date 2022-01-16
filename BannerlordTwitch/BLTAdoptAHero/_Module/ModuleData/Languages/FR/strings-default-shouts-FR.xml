@@ -6,13 +6,13 @@
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- Don't worry, I've got your back! -->
-        <string id="DczOKFsA" text="Ne t&amp;#39;inquiète pas, je suis avec toi !" original="Don't worry, I've got your back!"/>
+        <string id="DczOKFsA" text="Ne t'inquiète pas, je suis avec toi !" original="Don't worry, I've got your back!"/>
         <!-- I'm here! -->
         <string id="pj9Z0M7G" text="Je suis là !" original="I'm here!"/>
         <!-- Which one should I stab? -->
         <string id="y8DOtj2H" text="Lequel dois-je poignarder ?" original="Which one should I stab?"/>
         <!-- Need a hand? -->
-        <string id="1i1OrZDd" text="Besoin d&amp;#39;un coup de main?" original="Need a hand?"/>
+        <string id="1i1OrZDd" text="Besoin d'un coup de main?" original="Need a hand?"/>
         <!-- The price has been paid. I am at your service. -->
         <string id="rVaJZ5Lo" text="Le prix a été payé. Je suis à votre service." original="The price has been paid. I am at your service."/>
         <!-- Once more unto the breach! -->
@@ -20,7 +20,7 @@
         <!-- Freeeeeedddooooooommmm! -->
         <string id="Bo11t6gj" text="Libertéééééééééeeeee!" original="Freeeeeedddooooooommmm!"/>
         <!-- Remember the Alamo! -->
-        <string id="8uO8Isjm" text="Souvenez-vous de l&amp;#39;Alamo !" original="Remember the Alamo!"/>
+        <string id="8uO8Isjm" text="Souvenez-vous de l'Alamo !" original="Remember the Alamo!"/>
         <!-- Alala! -->
         <string id="A3KdQJok" text="Alala !" original="Alala!"/>
         <!-- Eleleu! -->
@@ -76,27 +76,27 @@
         <!-- En garde! -->
         <string id="IKN2G1wi" text="En garde !" original="En garde!"/>
         <!-- It's stabbing time! For you. -->
-        <string id="yTHYR4i9" text="C&amp;#39;est l&amp;#39;heure du poignard ! Pour vous." original="It's stabbing time! For you."/>
+        <string id="yTHYR4i9" text="C'est l'heure du poignard ! Pour vous." original="It's stabbing time! For you."/>
         <!-- It's nothing personal! -->
-        <string id="4wYLe6f0" text="C&amp;#39;est rien de personnel!" original="It's nothing personal!"/>
+        <string id="4wYLe6f0" text="C'est rien de personnel!" original="It's nothing personal!"/>
         <!-- Curse my sudden but inevitable betrayal! -->
         <string id="37bg5QNX" text="Maudit soit ma trahison soudaine mais inévitable !" original="Curse my sudden but inevitable betrayal!"/>
         <!-- I just don't like you! -->
-        <string id="AOpbzIUP" text="Je ne t&amp;#39;aime tout simplement pas !" original="I just don't like you!"/>
+        <string id="AOpbzIUP" text="Je ne t'aime tout simplement pas !" original="I just don't like you!"/>
         <!-- I'm gonna put some dirt in your eye! -->
         <string id="JFCcwLga" text="Je vais te mettre de la saleté dans les yeux !" original="I'm gonna put some dirt in your eye!"/>
         <!-- I'll mount your head on a pike! -->
         <string id="jCrCRbyA" text="Je te monterai la tête sur une pique !" original="I'll mount your head on a pike!"/>
         <!-- Don't hate me, it's just business... -->
-        <string id="0uiD2HxZ" text="Ne me déteste pas, c&amp;#39;est juste pour les affaires..." original="Don't hate me, it's just business..."/>
+        <string id="0uiD2HxZ" text="Ne me déteste pas, c'est juste pour les affaires..." original="Don't hate me, it's just business..."/>
         <!-- Never should have come here! -->
-        <string id="42Fuy9pm" text="Je n&amp;#39;aurais jamais dû venir ici !" original="Never should have come here!"/>
+        <string id="42Fuy9pm" text="Je n'aurais jamais dû venir ici !" original="Never should have come here!"/>
         <!-- Your money or your life! -->
         <string id="dClbnb2q" text="La Bourse ou la Vie!" original="Your money or your life!"/>
         <!-- I'm sorry, but I must stop you. -->
         <string id="uyjy1geA" text="Je suis désolé, mais je dois vous arrêter." original="I'm sorry, but I must stop you."/>
         <!-- I have the high ground! -->
-        <string id="dh0c96lo" text="J&amp;#39;ai la hauteur !" original="I have the high ground!"/>
+        <string id="dh0c96lo" text="J'ai la hauteur !" original="I have the high ground!"/>
         <!-- DAMN IT DAVE! -->
         <string id="EcD5q9th" text="MERDE DAVE !" original="DAMN IT DAVE!"/>
     </strings>

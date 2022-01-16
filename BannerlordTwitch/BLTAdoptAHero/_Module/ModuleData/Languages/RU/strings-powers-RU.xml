@@ -304,7 +304,7 @@
         <!-- Reflected Damage Is Subtracted -->
         <string id="IxiHjT1Z" text="Отраженный урон вычитается" original="Reflected Damage Is Subtracted"/>
         <!-- Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection) -->
-        <string id="Pdg6mCPA" text="Вычитается ли отраженный урон из урона, который получает герой (это `` классическое &amp;#39;&amp;#39; отражение урона)" original="Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection)"/>
+        <string id="Pdg6mCPA" text="Вычитается ли отраженный урон из урона, который получает герой (это `` классическое '' отражение урона)" original="Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection)"/>
         <!-- Hit Behavior -->
         <string id="WDRb4mQ3" text="Hit Behavior" original="Hit Behavior"/>
         <!-- Hit behavior for the reflected damage -->

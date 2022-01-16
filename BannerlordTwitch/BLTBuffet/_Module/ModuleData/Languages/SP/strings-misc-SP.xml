@@ -25,7 +25,7 @@
         <!-- {UserName} gives you {GoldAmountToGive} gold -->
         <string id="awjXw6yr" text="{UserName} gives you {GoldAmountToGive} oro" original="{UserName} gives you {GoldAmountToGive} gold"/>
         <!-- {UserName} gives you {GoldAmountToGive} gold: '{Message}' -->
-        <string id="jOqdrS7h" text="{UserName} gives you {GoldAmountToGive} gold: '{Message} &amp;#39;" original="{UserName} gives you {GoldAmountToGive} gold: '{Message}'"/>
+        <string id="jOqdrS7h" text="{UserName} gives you {GoldAmountToGive} gold: '{Message} '" original="{UserName} gives you {GoldAmountToGive} gold: '{Message}'"/>
         <!-- Sent {GoldAmountToGive}{GoldIcon} to {PlayerName} -->
         <string id="ziWoNEec" text="Enviado {GoldAmountToGive}{GoldIcon} to {PlayerName}" original="Sent {GoldAmountToGive}{GoldIcon} to {PlayerName}"/>
         <!-- CharacterEffect -->

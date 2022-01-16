@@ -143,7 +143,7 @@
         <!--  -->
         <string id="YawQBjBG" text=""/>
         <!-- Couldn't find attribute matching '{Args}'! -->
-        <string id="LE3POzUs" text="Es konnte kein Attribut gefunden werden, das mit &amp;#39;{Args}&amp;#39; übereinstimmt!" original="Couldn't find attribute matching '{Args}'!"/>
+        <string id="LE3POzUs" text="Es konnte kein Attribut gefunden werden, das mit '{Args}' übereinstimmt!" original="Couldn't find attribute matching '{Args}'!"/>
         <!-- Couldn't improve {Attribute} attribute, it is already at max level! -->
         <string id="R7X1dTqL" text="Das {Attribute}-Attribut konnte nicht verbessert werden, es ist bereits auf dem maximalen Level!" original="Couldn't improve {Attribute} attribute, it is already at max level!"/>
         <!-- AuctionItem -->
@@ -166,13 +166,13 @@
         <!-- (reserve price) (partial item name) -->
         <string id="lI4WCNeQ" text="(Mindestpreis) (Teilname des Artikels)" original="(reserve price) (partial item name)"/>
         <!-- Invalid reserve price '{Arg}' -->
-        <string id="mm1ay4I7" text="Ungültiger Mindestpreis &amp;#39;{Arg}&amp;#39;" original="Invalid reserve price '{Arg}'"/>
+        <string id="mm1ay4I7" text="Ungültiger Mindestpreis '{Arg}'" original="Invalid reserve price '{Arg}'"/>
         <!-- No items found matching '{ItemName}' -->
-        <string id="viO1RBr5" text="Keine Artikel gefunden, die mit &amp;#39;{ItemName}&amp;#39; übereinstimmen" original="No items found matching '{ItemName}'"/>
+        <string id="viO1RBr5" text="Keine Artikel gefunden, die mit '{ItemName}' übereinstimmen" original="No items found matching '{ItemName}'"/>
         <!-- {ItemCount} items found matching '{ItemName}', be more specific -->
-        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName}&amp;#39;, sei genauer" original="{ItemCount} items found matching '{ItemName}', be more specific"/>
+        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName}', sei genauer" original="{ItemCount} items found matching '{ItemName}', be more specific"/>
         <!-- Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds. -->
-        <string id="BH5rnHNq" text="Auktion von &amp;#39;{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} Sekunden." original="Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."/>
+        <string id="BH5rnHNq" text="Auktion von '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} Sekunden." original="Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."/>
         <!-- Bid On Item -->
         <string id="rBAvqAh7" text="Auf Artikel bieten" original="Bid On Item"/>
         <!-- Allows viewers bid on an active custom item auction (make sure to add an auction command also) -->
@@ -265,11 +265,11 @@
         <!-- (partial item name) -->
         <string id="by80aboy" text="(teilweiser Artikelname)" original="(partial item name)"/>
         <!-- No items found matching '{Args}' -->
-        <string id="p0urrIvR" text="Keine Artikel gefunden, die mit &amp;#39;{Args}&amp;#39; übereinstimmen" original="No items found matching '{Args}'"/>
+        <string id="p0urrIvR" text="Keine Artikel gefunden, die mit '{Args}' übereinstimmen" original="No items found matching '{Args}'"/>
         <!-- {Count} items found matching '{Args}', be more specific -->
-        <string id="Pzo2UJrl" text="{Count} items found matching '{Args}&amp;#39;, sei genauer" original="{Count} items found matching '{Args}', be more specific"/>
+        <string id="Pzo2UJrl" text="{Count} items found matching '{Args}', sei genauer" original="{Count} items found matching '{Args}', be more specific"/>
         <!-- '{ItemName}' was discarded -->
-        <string id="bNqd3AzN" text="&amp;#39;{ItemName}&amp;#39; wurde verworfen" original="'{ItemName}' was discarded"/>
+        <string id="bNqd3AzN" text="'{ItemName}' wurde verworfen" original="'{ItemName}' was discarded"/>
         <!-- GiveItem -->
         <!-- Give Item -->
         <string id="nAPjfF4C" text="Gegenstand verschenken" original="Give Item"/>
@@ -280,9 +280,9 @@
         <!-- (recipient) (partial item name) -->
         <string id="BClUoR9H" text="(Empfänger) (Teilartikelname)" original="(recipient) (partial item name)"/>
         <!-- Couldn't find recipient '{Name}' -->
-        <string id="vDsYxMKq" text="Der Empfänger &amp;#39;{Name}&amp;#39; konnte nicht gefunden werden" original="Couldn't find recipient '{Name}'"/>
+        <string id="vDsYxMKq" text="Der Empfänger '{Name}' konnte nicht gefunden werden" original="Couldn't find recipient '{Name}'"/>
         <!-- '{ItemName}' was transferred from @{FromHero} to @{ToHero} -->
-        <string id="E1o7b5ht" text="&amp;#39;{ItemName}' was transferred from @{FromHero} to @{ToHero}" original="'{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
+        <string id="E1o7b5ht" text="'{ItemName}' was transferred from @{FromHero} to @{ToHero}" original="'{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
         <!-- HeroInfoCommand -->
         <!-- Show Hero Info -->
         <string id="cj68a0l9" text="Heldeninfo anzeigen" original="Show Hero Info"/>
@@ -492,7 +492,7 @@
         <!-- yes -->
         <string id="xSbB2Zw5" text="Jawohl" original="yes"/>
         <!-- You must enter '{Prompt}' at the prompt to retire your hero -->
-        <string id="0qVpLYfb" text="Sie müssen bei der Eingabeaufforderung &amp;#39;{Prompt}&amp;#39; eingeben, um Ihren Helden zurückzuziehen" original="You must enter '{Prompt}' at the prompt to retire your hero"/>
+        <string id="0qVpLYfb" text="Sie müssen bei der Eingabeaufforderung '{Prompt}' eingeben, um Ihren Helden zurückzuziehen" original="You must enter '{Prompt}' at the prompt to retire your hero"/>
         <!-- You cannot retire your hero, as a mission is active! -->
         <string id="po20lHyz" text="Sie können Ihren Helden nicht zurückziehen, da eine Mission aktiv ist!" original="You cannot retire your hero, as a mission is active!"/>
         <!-- {Name} has retired! -->
@@ -501,7 +501,7 @@
         <!-- Set Hero Class -->
         <string id="pVblweVj" text="Heldenklasse einstellen" original="Set Hero Class"/>
         <!-- Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied -->
-        <string id="7VWKYp1U" text="Ermöglicht das Ändern der &amp;#39;Klasse&amp;#39; eines adoptierten Helden, was sich auf die Ausrüstung auswirkt und wo XP angewendet wird" original="Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied"/>
+        <string id="7VWKYp1U" text="Ermöglicht das Ändern der 'Klasse' eines adoptierten Helden, was sich auf die Ausrüstung auswirkt und wo XP angewendet wird" original="Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied"/>
         <!-- First Equip Is Free -->
         <string id="iLpDEiTq" text="Erste Ausrüstung ist kostenlos" original="First Equip Is Free"/>
         <!-- If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class) -->
