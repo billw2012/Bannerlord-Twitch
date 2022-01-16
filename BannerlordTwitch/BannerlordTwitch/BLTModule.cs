@@ -14,6 +14,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using Debug = TaleWorlds.Library.Debug;
 
 #pragma warning disable IDE0051 // Remove unused private members
 namespace BannerlordTwitch
@@ -52,16 +53,24 @@ namespace BannerlordTwitch
 			SetWindowText(Process.GetCurrentProcess().MainWindowHandle, "Bannerlord Game Window");
 
 			MainThreadSync.InitMainThread();
-			AssemblyHelper.Redirect("Newtonsoft.Json", Version.Parse("13.0.0.0"), "30ad4fe6b2a6aeed");
-			AssemblyHelper.Redirect("Microsoft.Extensions.Logging.Abstractions", Version.Parse("3.1.5.0"), "adb9793829ddae60");
-			
-			AppDomain.CurrentDomain.AssemblyResolve += (_, args) =>
+
+            AssemblyHelper.Redirect("Microsoft.Extensions.Logging.Abstractions", Version.Parse("3.1.5.0"), "adb9793829ddae60");
+            AssemblyHelper.Redirect("Microsoft.Owin", Version.Parse("4.2.0.0"), "31bf3856ad364e35");
+            AssemblyHelper.Redirect("Microsoft.Owin.FileSystems", Version.Parse("4.2.0.0"), "31bf3856ad364e35");
+            AssemblyHelper.Redirect("Microsoft.Owin.Security", Version.Parse("4.2.0.0"), "31bf3856ad364e35");
+            AssemblyHelper.Redirect("Newtonsoft.Json", Version.Parse("13.0.0.0"), "30ad4fe6b2a6aeed");
+
+            AppDomain.CurrentDomain.AssemblyResolve += (_, args) =>
 			{
 				string folderPath = Path.GetDirectoryName(typeof(BLTModule).Assembly.Location);
 				string assemblyPath = Path.Combine(folderPath ?? string.Empty, new AssemblyName(args.Name).Name + ".dll");
-				if (!File.Exists(assemblyPath)) return null;
-				var assembly = Assembly.LoadFrom(assemblyPath);
-				return assembly;
+                if (!File.Exists(assemblyPath))
+                {
+                    Debug.Print($"[BLT] Couldn't resolve assembly {args.Name} with {assemblyPath}");
+                    return null;
+                }
+                Debug.Print($"[BLT] Resolved assembly {args.Name} with {assemblyPath}");
+				return Assembly.LoadFrom(assemblyPath);
 			};
         }
 

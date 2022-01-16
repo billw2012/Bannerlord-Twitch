@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Reflection;
+using TaleWorlds.Library;
 
 namespace BannerlordTwitch.Util
 {
@@ -23,6 +24,8 @@ namespace BannerlordTwitch.Util
                 requestedAssembly.CultureInfo = CultureInfo.InvariantCulture;
 
                 // AppDomain.CurrentDomain.AssemblyResolve -= handler;
+                
+                Debug.Print($"[BLT] Redirecting assembly {args.Name} to version {targetVersion}");
 
                 return Assembly.Load(requestedAssembly);
             };
