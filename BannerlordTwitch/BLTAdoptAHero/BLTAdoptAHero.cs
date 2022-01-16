@@ -82,13 +82,13 @@ namespace BLTAdoptAHero
             {
                 if (Agent.Main != null && agent.IsEnemyOf(Agent.Main) || Mission.Current.PlayerTeam?.IsValid == true && agent.Team.IsEnemyOf(Mission.Current.PlayerTeam))
                 {
-                    __instance.NameType = "Enemy";
+                    __instance.NameType = MissionNameMarkerTargetVM.NameTypeEnemy;
                     __instance.IsFriendly = false;
                     __instance.IsEnemy = true;
                 }
                 else if (Agent.Main != null && agent.IsFriendOf(Agent.Main) || Mission.Current.PlayerTeam?.IsValid == true && agent.Team.IsFriendOf(Mission.Current.PlayerTeam))
                 {
-                    __instance.NameType = "Friendly";
+                    __instance.NameType = MissionNameMarkerTargetVM.NameTypeFriendly;
                     __instance.IsFriendly = true;
                     __instance.IsEnemy = false;
                 }
