@@ -231,6 +231,7 @@ namespace BLTAdoptAHero
             
             //          Ultra rare
             new("{=EcD5q9th}DAMN IT DAVE!") { PlayerSide = false, Weight = 0.01f },
+            new("{=4yUH9sfX}I'll mount your pike on a head!") { PlayerSide = false, Weight = 0.01f },
         };
 
         protected override void ExecuteInternal(Hero adoptedHero, ReplyContext context, object config,
