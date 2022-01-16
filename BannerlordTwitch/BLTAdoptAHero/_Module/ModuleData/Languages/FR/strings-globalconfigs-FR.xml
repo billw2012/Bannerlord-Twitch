@@ -58,6 +58,10 @@
         <string id="xlt1pNuT" text="Pourcentage final de chance de mort (y compris la chance vanille)" original="Final death chance percent (includes vanilla chance)"/>
         <!-- Apply Death Chance To All Heroes -->
         <string id="sbc5Fp4o" text="Appliquer la chance de mort à tous les héros" original="Apply Death Chance To All Heroes"/>
+
+        <string id="TsGie7KT" text="Pourcentage de chance de décès de l'escorte" original="Retinue Death Chance Percent"/>
+        <string id="hbP7F9oz" text="Pourcentage de chance de mort de l'escorte (ceci détermine la probabilité qu'un coup fatal tue réellement la suite, en la supprimant de la liste de la suite du héros adopté)" original="Retinue death chance percent (this determines the chance that a killing blow will actually kill the retinue, removing them from the adopted hero's retinue list)"/>
+
         <!-- Whether to apply the Death Chance changes to all heroes, not just adopted ones -->
         <string id="nbR7NLNz" text="S&amp;#39;il faut appliquer les changements de chance de mort à tous les héros, pas seulement à ceux adoptés" original="Whether to apply the Death Chance changes to all heroes, not just adopted ones"/>
         <!-- Use Raw XP -->
