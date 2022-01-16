@@ -161,7 +161,7 @@ namespace BLTAdoptAHero
          LocCategory("Custom Item", "{=zVqTKyQG}Custom Item"), 
          LocDescription("{=vqNeCCNy}Name format for custom item, {ITEMNAME} is the placeholder for the base item name."),
          PropertyOrder(1), UsedImplicitly]
-        public LocString CustomItemName { get; set; } = "{=W47g8bCB}Reward {ITEMNAME}";
+        public string CustomItemName { get; set; } = "{=W47g8bCB}Reward {ITEMNAME}";
 
         [LocDisplayName("{=THpMPPhd}Custom Item Power"),
          LocCategory("Custom Item", "{=zVqTKyQG}Custom Item"), 
@@ -214,7 +214,7 @@ namespace BLTAdoptAHero
                         tiers.Select(tier 
                             => RewardHelpers.GenerateRewardType(type.type, tier.tier, hero, heroClass, 
                                 allowDuplicates, BLTAdoptAHeroModule.CommonConfig.CustomRewardModifiers,
-                                CustomItemName.ToString(), CustomItemPower)))
+                                CustomItemName, CustomItemPower)))
                     .FirstOrDefault(i => i != default);
             }
 
