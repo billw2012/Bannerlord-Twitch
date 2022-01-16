@@ -151,7 +151,7 @@
         <!-- The level at which the rewards normalize and start to reduce (if relative level scaling is enabled). -->
         <string id="y7AZjeSK" text="Le niveau auquel les récompenses se normalisent et commencent à diminuer (si la mise à l&amp;#39;échelle du niveau relatif est activée)." original="The level at which the rewards normalize and start to reduce (if relative level scaling is enabled)."/>
         <!-- Achievements -->
-        <string id="zTLei6dQ" text="Réalisations" original="Achievements"/>
+        <string id="zTLei6dQ" text="Succès" original="Achievements"/>
         <!-- Shouts -->
         <string id="HkD6326j" text="Des cris" original="Shouts"/>
         <!-- Custom shouts -->
@@ -179,7 +179,7 @@
         <string id="7WLbMjpz" text="(pas d&amp;#39;exigences)" original="(no requirements)"/>
         <!-- GlobalHeroPowerConfig -->
         <!-- Power Config -->
-        <string id="v75UOuDM" text="Configuration de l&amp;#39;alimentation" original="Power Config"/>
+        <string id="v75UOuDM" text="Configuration des Pouvoirs" original="Power Config"/>
         <!-- Power Defs -->
         <string id="9vUtdRu2" text="Defs de puissance" original="Power Defs"/>
         <!-- Defined powers -->

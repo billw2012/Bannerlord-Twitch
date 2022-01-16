@@ -11,8 +11,8 @@
         <!-- Channel Rewards -->
         <string id="xljCKxH7" text="Points de Chaîne" original="Channel Rewards"/>
         <!-- Chat Commands -->
-        <string id="mHkSZwdI" text="Commandes de discussion" original="Chat Commands"/>
+        <string id="mHkSZwdI" text="Commandes de Chat" original="Chat Commands"/>
         <!-- Sim Testing Config -->
-        <string id="c1lGU26j" text="Configuration de test de simulation" original="Sim Testing Config"/>
+        <string id="c1lGU26j" text="Configuration la Simulation de Test" original="Sim Testing Config"/>
     </strings>
 </base>

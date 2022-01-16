@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="Français-BLT"/>
+        <tag language="Français"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -76,7 +76,7 @@
         <!-- Kill Streak Rewards -->
         <string id="lnz7d1BI" text="Récompenses élimination multiple" original="Kill Streak Rewards"/>
         <!-- Achievements -->
-        <string id="EPr2clqT" text="Réalisations" original="Achievements"/>
+        <string id="EPr2clqT" text="Succès" original="Achievements"/>
         <!-- Shouts -->
         <string id="UhUpH8C8" text="Cris" original="Shouts"/>
         <!-- Effect -->
@@ -410,9 +410,9 @@
         <!-- Also see Channel Point Rewards -->
         <string id="0o3dPQSk" text="Voir également les récompenses en points de chaîne" original="Also see Channel Point Rewards"/>
         <!-- TwitchService connected -->
-        <string id="BiYZ1CbN" text="TwitchService connecté" original="TwitchService connected"/>
+        <string id="BiYZ1CbN" text="Service Twitch connecté" original="TwitchService connected"/>
         <!-- TwitchService stopped -->
-        <string id="mEcBdqNC" text="TwitchService arrêté" original="TwitchService stopped"/>
+        <string id="mEcBdqNC" text="Service Twitch arrêté" original="TwitchService stopped"/>
         <!-- TwitchService.Bot -->
         <!-- [BLT]  -->
         <string id="b4tJSNJG" text="[BLT]" original="[BLT] "/>

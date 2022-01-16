@@ -109,7 +109,7 @@
         <!-- Tier costs -->
         <string id="VBuncBq5" text="Coûts de niveau" original="Tier costs"/>
         <!-- Same culture only -->
-        <string id="R7rU0TbD" text="Même culture seulement" original="Same culture only"/>
+        <string id="R7rU0TbD" text="Même culture uniquement" original="Same culture only"/>
         <!-- Bandits -->
         <string id="c2qOsXvs" text="Bandits" original="Bandits"/>
         <!-- Basic troops -->
