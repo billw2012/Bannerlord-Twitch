@@ -7,7 +7,7 @@
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- AchievementDef -->
         <!-- Achievement Definition -->
-        <string id="CEZZzIAq" text="Définition de réalisation" original="Achievement Definition"/>
+        <string id="CEZZzIAq" text="Définition des Succès" original="Achievement Definition"/>
         <!-- Requirements -->
         <string id="TFbiD0CZ" text="Conditions" original="Requirements"/>
         <!-- Reward -->

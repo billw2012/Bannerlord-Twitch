@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="Français"/>
+        <tag language="Français-BLT"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -13,21 +13,21 @@
         <!-- − -->
         <string id="drHSxMvO" text="−" original="−"/>
         <!-- ⦷ -->
-        <string id="BolFnYCO" text="??" original="⦷"/>
+        <string id="BolFnYCO" text="⦷" original="⦷"/>
         <!-- XP -->
         <string id="JFCeRYdn" text="XP" original="XP"/>
         <!-- HP -->
-        <string id="NtqSb7B7" text="HP" original="HP"/>
+        <string id="NtqSb7B7" text="PV" original="HP"/>
         <!-- lvl -->
         <string id="RQlq59mz" text="niveau" original="lvl"/>
         <!-- Item -->
-        <string id="5rErcMGl" text="Article" original="Item"/>
+        <string id="5rErcMGl" text="Objet" original="Item"/>
         <!-- Skills -->
         <string id="5gVLi7NA" text="Compétences" original="Skills"/>
         <!--  ■ -->
         <string id="aG3roJj3" text="■" original=" ■"/>
         <!-- Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}! -->
-        <string id="fuwuk4bR" text="Pas assez {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!" original="Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!"/>
+        <string id="fuwuk4bR" text="Pas assez de {GoldIcon}: besoin de {NeededGold}{GoldIcon} et vous possédez {HaveGold}{GoldIcon}!" original="Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!"/>
         <!-- Common Phrases -->
         <!-- General -->
         <string id="C5T5nnix" text="Général" original="General"/>
@@ -40,7 +40,7 @@
         <!-- Name -->
         <string id="uUzmy7Lh" text="Nom" original="Name"/>
         <!-- {From} to {To} -->
-        <string id="yVydxRHh" text="{From} to {To}" original="{From} to {To}"/>
+        <string id="yVydxRHh" text="{From} à {To}" original="{From} to {To}"/>
         <!-- Skill -->
         <string id="OEMBeawy" text="Compétence" original="Skill"/>
         <!-- Level -->
@@ -48,7 +48,7 @@
         <!-- Amount -->
         <string id="DKfKt4qP" text="Montant" original="Amount"/>
         <!-- Costs {GoldCost} -->
-        <string id="Diwd7dBo" text="Coûts {GoldCost}" original="Costs {GoldCost}"/>
+        <string id="Diwd7dBo" text="Coût {GoldCost}" original="Costs {GoldCost}"/>
         <!-- Costs -->
         <string id="r7sc3Tvg" text="Frais" original="Costs"/>
         <!-- None -->
@@ -62,7 +62,7 @@
         <!-- Is Enabled -->
         <string id="oi2yz7aS" text="Est autorisé" original="Is Enabled"/>
         <!-- all -->
-        <string id="hHekZwYB" text="tous" original="all"/>
+        <string id="hHekZwYB" text="tout" original="all"/>
         <!-- Battle -->
         <string id="9qAD6eZR" text="Bataille" original="Battle"/>
         <!-- Death -->
@@ -70,15 +70,15 @@
         <!-- XP -->
         <string id="06KnYhyh" text="XP" original="XP"/>
         <!-- Kill Rewards -->
-        <string id="E2RBmb1K" text="Tuer des récompenses" original="Kill Rewards"/>
+        <string id="E2RBmb1K" text="Récompense d'élimination" original="Kill Rewards"/>
         <!-- Battle End Rewards -->
         <string id="uPwaOKdT" text="Récompenses de fin de bataille" original="Battle End Rewards"/>
         <!-- Kill Streak Rewards -->
-        <string id="lnz7d1BI" text="Récompenses Kill Streak" original="Kill Streak Rewards"/>
+        <string id="lnz7d1BI" text="Récompenses élimination multiple" original="Kill Streak Rewards"/>
         <!-- Achievements -->
         <string id="EPr2clqT" text="Réalisations" original="Achievements"/>
         <!-- Shouts -->
-        <string id="UhUpH8C8" text="Des cris" original="Shouts"/>
+        <string id="UhUpH8C8" text="Cris" original="Shouts"/>
         <!-- Effect -->
         <string id="VBuncBq5" text="Effet" original="Effect"/>
         <!-- Targets -->
@@ -91,7 +91,7 @@
         <!-- Command -->
         <string id="15umM0Xo" text="Commander" original="Command"/>
         <!-- Description -->
-        <string id="J6daarYb" text="La description" original="Description"/>
+        <string id="J6daarYb" text="Description" original="Description"/>
         <!-- Settings -->
         <string id="e2Fu7JYS" text="Paramètres" original="Settings"/>
         <!-- Channel Point Rewards -->
@@ -102,24 +102,24 @@
         <!-- Action with the id {RewardId} doesn't exist -->
         <string id="B39sGef4" text="L&amp;#39;action avec l&amp;#39;identifiant {RewardId} n&amp;#39;existe pas" original="Action with the id {RewardId} doesn't exist"/>
         <!-- Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow -->
-        <string id="yo8Yw3Mz" text="Action {RewardId} took {TimeInMS}ms pour mettre en file d&amp;#39;attente, c&amp;#39;est trop lent" original="Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow"/>
+        <string id="yo8Yw3Mz" text="Action {RewardId} a mis {TimeInMS}ms pour être mise en file d&amp;#39;attente, c&amp;#39;est trop lent" original="Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow"/>
         <!-- BLTAgentModifierBehavior -->
         <!-- Scale Percent -->
-        <string id="JzII0KRZ" text="Pourcentage d&amp;#39;échelle" original="Scale Percent"/>
+        <string id="JzII0KRZ" text="Pourcentage de mise à l&amp;#39;échelle" original="Scale Percent"/>
         <!-- Changes the size of the target -->
         <string id="fc1SmPXH" text="Modifie la taille de la cible" original="Changes the size of the target"/>
         <!-- Apply To Mount -->
-        <string id="0vqiI434" text="Appliquer au montage" original="Apply To Mount"/>
+        <string id="0vqiI434" text="Appliquer à la monture" original="Apply To Mount"/>
         <!-- Apply to the mount of the target, instead of the target themselves (only some properties are valid on mounts) -->
         <string id="U0wJHDSa" text="Appliquer à la monture de la cible, au lieu de la cible elle-même (seules certaines propriétés sont valides sur les montures)" original="Apply to the mount of the target, instead of the target themselves (only some properties are valid on mounts)"/>
         <!-- Properties -->
         <string id="RdCw0xo9" text="Propriétés" original="Properties"/>
         <!-- Properties to change, and how much by -->
-        <string id="ZKN8fZsA" text="Propriétés à modifier, et combien par" original="Properties to change, and how much by"/>
+        <string id="ZKN8fZsA" text="Propriétés à modifier, et de combien" original="Properties to change, and how much by"/>
         <!-- Skills -->
         <string id="iPI9zoqR" text="Compétences" original="Skills"/>
         <!-- Skills to change, and how much by (these aren't compatible with Apply To Mount) -->
-        <string id="PanMmDx9" text="Compétences à modifier et de combien (elles ne sont pas compatibles avec Apply To Mount)" original="Skills to change, and how much by (these aren't compatible with Apply To Mount)"/>
+        <string id="PanMmDx9" text="Compétences à modifier et de combien (elles ne sont pas compatibles avec Appliquer à la Monture)" original="Skills to change, and how much by (these aren't compatible with Apply To Mount)"/>
         <!-- Scale {ScalePercent}% -->
         <string id="EkKFoK73" text="Échelle {ScalePercent}%" original="Scale {ScalePercent}%"/>
         <!-- (on mount) -->
@@ -168,9 +168,9 @@
         <!-- Mount Difficulty -->
         <string id="9mYdZQI8" text="Difficulté de la monture" original="Mount Difficulty"/>
         <!-- Mount Maneuver -->
-        <string id="EaenR5S2" text="Manœuvre du mont" original="Mount Maneuver"/>
+        <string id="EaenR5S2" text="Manœuvre de la monture" original="Mount Maneuver"/>
         <!-- Mount Speed -->
-        <string id="NJpg1RsS" text="Vitesse de montage" original="Mount Speed"/>
+        <string id="NJpg1RsS" text="Vitesse de la monture" original="Mount Speed"/>
         <!-- Horse Archery Ability -->
         <string id="UtGZ9B6F" text="Capacité de tir à l&amp;#39;arc à cheval" original="Horse Archery Ability"/>
         <!-- Riding Ability -->
@@ -205,7 +205,7 @@
         <string id="FgSI5C4F" text="Coup de pied d&amp;#39;IA" original="AI Kick"/>
         <!-- EquipmentType -->
         <!-- None -->
-        <string id="i7XX56i9" text="Rien" original="None"/>
+        <string id="i7XX56i9" text="Vide" original="None"/>
         <!-- Dagger -->
         <string id="5HQtHOg4" text="Dague" original="Dagger"/>
         <!-- One Handed Sword -->
@@ -243,18 +243,18 @@
         <!-- Throwing Javelins -->
         <string id="ND1x0R2V" text="Lancer des javelots" original="Throwing Javelins"/>
         <!-- Shield -->
-        <string id="p4eF4kc6" text="Protéger" original="Shield"/>
+        <string id="p4eF4kc6" text="Bouclier" original="Shield"/>
         <!-- Stone -->
-        <string id="dYKgMqE8" text="Calcul" original="Stone"/>
+        <string id="dYKgMqE8" text="Cailloux" original="Stone"/>
         <!-- HeroHelpers.AllAttributes -->
         <!-- Vigor -->
         <string id="IyK1yg5j" text="Vigueur" original="Vigor"/>
         <!-- Control -->
-        <string id="dHlLNy7j" text="Contrôler" original="Control"/>
+        <string id="dHlLNy7j" text="Contrôle" original="Control"/>
         <!-- Endurance -->
         <string id="qKVblzEJ" text="Endurance" original="Endurance"/>
         <!-- Cunning -->
-        <string id="bJbFeqMG" text="Rusé" original="Cunning"/>
+        <string id="bJbFeqMG" text="Ruse" original="Cunning"/>
         <!-- Social -->
         <string id="lSrkwcJV" text="Social" original="Social"/>
         <!-- Intelligence -->
@@ -263,7 +263,7 @@
         <!-- ParticleEffect -->
         <string id="cv0hxm25" text="Effet de particule" original="ParticleEffect"/>
         <!-- Sound -->
-        <string id="FyXztxDH" text="Sonner" original="Sound"/>
+        <string id="FyXztxDH" text="Son" original="Sound"/>
         <!-- Particle Effect to play -->
         <string id="N1WsBndO" text="Effet de particule à jouer" original="Particle Effect to play"/>
         <!-- Sound to play -->
@@ -300,7 +300,7 @@
         <!-- BLT Overlay -->
         <string id="fmjzDasd" text="Superposition BLT" original="BLT Overlay"/>
         <!-- For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again. -->
-        <string id="Kgi2isWy" text="Pour que le BLT Overlay Browser Source fonctionne, il doit réserver le port {Port} et l&amp;#39;autoriser via le pare-feu Windows.\nCela nécessite des privilèges d&amp;#39;administrateur, qui seront demandés après avoir appuyé sur OK.\nEn cas de succès, vous ne le verrez pas pop-up à nouveau." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
+        <string id="Kgi2isWy" text="Pour que la Superposition BLT par source navigateur fonctionne, il doit réserver le port {Port} et l&amp;#39;autoriser via le pare-feu Windows.\nCela nécessite des privilèges d&amp;#39;administrateur, qui seront demandés après avoir appuyé sur OK.\nEn cas de succès, vous ne le verrez pas pop-up à nouveau." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
         <!-- Okay -->
         <string id="yXwMSbr4" text="D&amp;#39;accord" original="Okay"/>
         <!-- Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window. -->
@@ -421,11 +421,11 @@
         <!-- Bot disconnected -->
         <string id="thucznzJ" text="Bot déconnecté" original="Bot disconnected"/>
         <!-- @{BotUsername} has joined channel {Channel} -->
-        <string id="Hd6Q51eb" text="@{BotUsername} has joined channel {Channel}" original="@{BotUsername} has joined channel {Channel}"/>
+        <string id="Hd6Q51eb" text="@{BotUsername} a rejoins le canal {Channel}" original="@{BotUsername} has joined channel {Channel}"/>
         <!-- bot reporting for duty! -->
-        <string id="SbufvVIR" text="bot se présentant au travail !" original="bot reporting for duty!"/>
+        <string id="SbufvVIR" text="bot prêt faire son devoir !" original="bot reporting for duty!"/>
         <!-- Type !help for command list -->
-        <string id="vBtkF25N" text="Tapez !help pour la liste des commandes" original="Type !help for command list"/>
+        <string id="vBtkF25N" text="Saisir !help pour la liste des commandes" original="Type !help for command list"/>
         <!-- OneShotParticleEffectItemSource -->
         <!-- (none) -->
         <string id="a8ibMIfH" text="(rien)" original="(none)"/>

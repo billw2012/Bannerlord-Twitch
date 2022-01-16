@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="Français"/>
+        <tag language="Français-BLT"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -17,15 +17,15 @@
         <!-- archer -->
         <string id="4tflp34a" text="archer" original="archer"/>
         <!-- Fleet Footed -->
-        <string id="NE9Li2Hb" text="Pied de flotte" original="Fleet Footed"/>
+        <string id="NE9Li2Hb" text="Pied Léger" original="Fleet Footed"/>
         <!-- Explosive Arrows -->
         <string id="xgnH5owv" text="Flèches explosives" original="Explosive Arrows"/>
         <!-- heavyarcher -->
-        <string id="JncRD8tX" text="archer lourd" original="heavyarcher"/>
+        <string id="JncRD8tX" text="archer-lourd" original="heavyarcher"/>
         <!-- Healthy -->
         <string id="ZrmsIMPE" text="Sain" original="Healthy"/>
         <!-- Heavy Bolts -->
-        <string id="QZD9XdpC" text="Boulons lourds" original="Heavy Bolts"/>
+        <string id="QZD9XdpC" text="Carreaux lourds" original="Heavy Bolts"/>
         <!-- crossbow -->
         <string id="wV6R9Si5" text="arbalète" original="crossbow"/>
         <!-- Self Healing -->
@@ -33,7 +33,7 @@
         <!-- Explosive Bolts -->
         <string id="7GmE3SfQ" text="Boulons explosifs" original="Explosive Bolts"/>
         <!-- heavycrossbow -->
-        <string id="bpzytNbP" text="arbalète lourde" original="heavycrossbow"/>
+        <string id="bpzytNbP" text="arbalete-lourde" original="heavycrossbow"/>
         <!-- Healthy -->
         <string id="k7booFb2" text="Sain" original="Healthy"/>
         <!-- Trample -->
@@ -51,13 +51,13 @@
         <!-- Explosive Arrows -->
         <string id="YpIUHASp" text="Flèches explosives" original="Explosive Arrows"/>
         <!-- horsearcher -->
-        <string id="p5qJfkkp" text="archer" original="horsearcher"/>
+        <string id="p5qJfkkp" text="archer-monte" original="horsearcher"/>
         <!-- Mounted Archery -->
         <string id="zxgdfSIS" text="Tir à l&amp;#39;arc monté" original="Mounted Archery"/>
         <!-- Heavy Arrows -->
         <string id="FrX7AiyI" text="Flèches lourdes" original="Heavy Arrows"/>
         <!-- camelarcher -->
-        <string id="HreZWoyd" text="camelarcher" original="camelarcher"/>
+        <string id="HreZWoyd" text="archer-sur-chameau" original="camelarcher"/>
         <!-- Mounted Archery -->
         <string id="szdoTAQj" text="Tir à l&amp;#39;arc monté" original="Mounted Archery"/>
         <!-- Break Through -->

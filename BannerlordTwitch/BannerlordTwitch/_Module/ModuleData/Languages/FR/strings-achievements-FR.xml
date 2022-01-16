@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
-        <tag language="Français"/>
+        <tag language="Français-BLT"/>
     </tags>
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
@@ -9,26 +9,26 @@
         <!-- Reward {ITEMNAME} -->
         <string id="W47g8bCB" text="Récompense {ITEMNAME}" original="Reward {ITEMNAME}"/>
         <!-- {viewer} is {name}! -->
-        <string id="TAWcPGIc" text="{viewer} is {name}!" original="{viewer} is {name}!"/>
+        <string id="TAWcPGIc" text="{viewer} est {name}!" original="{viewer} is {name}!"/>
         <!-- {ITEMNAME} of Fealty -->
-        <string id="IvV04W31" text="{ITEMNAME} de fidélité" original="{ITEMNAME} of Fealty"/>
+        <string id="IvV04W31" text="{ITEMNAME} de Loyauté" original="{ITEMNAME} of Fealty"/>
         <!-- Renegades {ITEMNAME} -->
         <string id="UQtSgnog" text="Renégats {ITEMNAME}" original="Renegades {ITEMNAME}"/>
         <!-- Stream Sniper {ITEMNAME} -->
-        <string id="xI41h8NA" text="Sniper de flux {ITEMNAME}" original="Stream Sniper {ITEMNAME}"/>
+        <string id="xI41h8NA" text="Sniper du streamer {ITEMNAME}" original="Stream Sniper {ITEMNAME}"/>
         <!-- Reliable -->
         <string id="ODWiNBng" text="Fiable" original="Reliable"/>
         <!-- Trusted -->
-        <string id="fWTqF2sw" text="De confiance" original="Trusted"/>
+        <string id="fWTqF2sw" text="De Confiance" original="Trusted"/>
         <!-- Loyal -->
-        <string id="fe9J8von" text="Fidèle" original="Loyal"/>
+        <string id="fe9J8von" text="Le Fidèle" original="Loyal"/>
         <!-- Rebellious -->
-        <string id="HdYFegeb" text="Rebelle" original="Rebellious"/>
+        <string id="HdYFegeb" text="Le Rebelle" original="Rebellious"/>
         <!-- Traitorous -->
-        <string id="gDHR7f8r" text="Traître" original="Traitorous"/>
+        <string id="gDHR7f8r" text="Le Traître" original="Traitorous"/>
         <!-- Renegade -->
-        <string id="VEH582e7" text="Renégat" original="Renegade"/>
+        <string id="VEH582e7" text="Le Renégat" original="Renegade"/>
         <!-- Stream Sniper -->
-        <string id="Aj0gXKgZ" text="Sniper de flux" original="Stream Sniper"/>
+        <string id="Aj0gXKgZ" text="Sniper de streamer" original="Stream Sniper"/>
     </strings>
 </base>

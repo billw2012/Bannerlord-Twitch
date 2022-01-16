@@ -574,7 +574,7 @@
         <!-- 2H -->
         <string id="U38E72Ue" text="2H" original="2H"/>
         <!-- PA -->
-        <string id="Cg885bns" text="Pennsylvanie" original="PA"/>
+        <string id="Cg885bns" text="AH" original="PA"/>
         <!-- Bow -->
         <string id="QpWRsKrc" text="Arc" original="Bow"/>
         <!-- Xb -->
@@ -582,29 +582,29 @@
         <!-- Thr -->
         <string id="jMRloOi0" text="Thr" original="Thr"/>
         <!-- Rid -->
-        <string id="ligWzK3s" text="Débarrasser" original="Rid"/>
+        <string id="ligWzK3s" text="Monter" original="Rid"/>
         <!-- Ath -->
         <string id="1MJnisqR" text="Ath" original="Ath"/>
         <!-- Smt -->
-        <string id="VjV54wik" text="CMS" original="Smt"/>
+        <string id="VjV54wik" text="Forge" original="Smt"/>
         <!-- Tac -->
-        <string id="6iG2GJW5" text="Tactique" original="Tac"/>
+        <string id="6iG2GJW5" text="Tact" original="Tac"/>
         <!-- Sct -->
-        <string id="AgaZsMEb" text="Sct" original="Sct"/>
+        <string id="AgaZsMEb" text="Reco" original="Sct"/>
         <!-- Rog -->
         <string id="6x33x91Z" text="Rog" original="Rog"/>
         <!-- Cha -->
         <string id="N9X9VVsM" text="Cha" original="Cha"/>
         <!-- Trd -->
-        <string id="J8ElWB0P" text="Trd" original="Trd"/>
+        <string id="J8ElWB0P" text="Com" original="Trd"/>
         <!-- Stw -->
-        <string id="BD65Qr83" text="Stw" original="Stw"/>
+        <string id="BD65Qr83" text="Intend" original="Stw"/>
         <!-- Ldr -->
-        <string id="OYJ8tfhY" text="Ldr" original="Ldr"/>
+        <string id="OYJ8tfhY" text="Meneur" original="Ldr"/>
         <!-- Med -->
-        <string id="PmKb4QCv" text="Moyenne" original="Med"/>
+        <string id="PmKb4QCv" text="Médecine" original="Med"/>
         <!-- Eng -->
-        <string id="wLkMFOky" text="Eng" original="Eng"/>
+        <string id="wLkMFOky" text="Ingé" original="Eng"/>
         <!-- SummonHero -->
         <!-- Summon Hero -->
         <string id="6uWk9iMM" text="Invocation de héros" original="Summon Hero"/>
@@ -635,9 +635,9 @@
         <!-- Sub Boost -->
         <string id="H7B3Yzly" text="Sous-Boost" original="Sub Boost"/>
         <!-- Heal Per Second -->
-        <string id="cXeUjVur" text="Guérison par seconde" original="Heal Per Second"/>
+        <string id="cXeUjVur" text="Soin par seconde" original="Heal Per Second"/>
         <!-- Can summon for normal field battles between parties -->
-        <string id="ddjUyXpV" text="Peut invoquer pour des batailles sur le terrain normales entre les parties" original="Can summon for normal field battles between parties"/>
+        <string id="ddjUyXpV" text="Peut invoquer pour des batailles sur le terrain normales entre les armées" original="Can summon for normal field battles between parties"/>
         <!-- Can summon in village battles -->
         <string id="buLH4Spj" text="Peut invoquer dans les batailles de village" original="Can summon in village battles"/>
         <!-- Can summon in sieges -->
@@ -683,13 +683,13 @@
         <!-- Allowed in -->
         <string id="zOB6Nadp" text="Autorisé dans" original="Allowed in"/>
         <!-- You cannot be summoned now! -->
-        <string id="TdykIizS" text="Vous ne pouvez pas être invoqué maintenant !" original="You cannot be summoned now!"/>
+        <string id="TdykIizS" text="Vous ne pouvez pas être invoqué maintenant !" original="You cannot be summoned now!"/>
         <!-- You cannot be summoned now, this mission does not allow it! -->
         <string id="HWnEJg1M" text="Vous ne pouvez pas être invoqué maintenant, cette mission ne le permet pas !" original="You cannot be summoned now, this mission does not allow it!"/>
         <!-- You cannot be summoned now, the mission has not started yet! -->
         <string id="v5dO40vi" text="Vous ne pouvez pas être invoqué maintenant, la mission n&amp;#39;a pas encore commencé !" original="You cannot be summoned now, the mission has not started yet!"/>
         <!-- You cannot be summoned now, the mission is ending! -->
-        <string id="mTKKaYIf" text="Vous ne pouvez pas être invoqué maintenant, la mission se termine !" original="You cannot be summoned now, the mission is ending!"/>
+        <string id="mTKKaYIf" text="Vous ne pouvez pas être invoqué maintenant, la mission se termine !" original="You cannot be summoned now, the mission is ending!"/>
         <!-- You cannot be summoned, you are already here! -->
         <string id="YTEgKnCW" text="Vous ne pouvez pas être invoqué, vous êtes déjà là !" original="You cannot be summoned, you are already here!"/>
         <!-- You won {WonGold}{GoldIcon}! -->
@@ -711,7 +711,7 @@
         <!-- You cannot be summoned, your party is already here! -->
         <string id="93Hrc2EA" text="Vous ne pouvez pas être invoqué, votre groupe est déjà là !" original="You cannot be summoned, your party is already here!"/>
         <!-- Could not find a party for you to join! -->
-        <string id="jtqEqonE" text="Impossible de trouver une fête à laquelle vous pouvez vous joindre !" original="Could not find a party for you to join!"/>
+        <string id="jtqEqonE" text="Impossible de trouver une armée à laquelle vous pouvez vous joindre !" original="Could not find a party for you to join!"/>
         <!-- You have joined the battle! -->
         <string id="TvkEBZeY" text="Vous avez rejoint la bataille !" original="You have joined the battle!"/>
         <!-- Text -->
@@ -719,7 +719,7 @@
         <!-- Text that will be displayed in game -->
         <string id="wsIzPzfG" text="Texte qui sera affiché dans le jeu" original="Text that will be displayed in game"/>
         <!-- Enter shout text here -->
-        <string id="xf2mTWx8" text="Entrez le texte de cri ici" original="Enter shout text here"/>
+        <string id="xf2mTWx8" text="Entrez le texte à crier ici" original="Enter shout text here"/>
         <!-- Weight -->
         <string id="bCbN9OmH" text="Poids" original="Weight"/>
         <!-- Higher weight means more chance this shout is used -->
@@ -754,9 +754,9 @@
         <!-- Invalid gold argument -->
         <string id="GiU7feEu" text="Argument d&amp;#39;or non valide" original="Invalid gold argument"/>
         <!-- Betting not active -->
-        <string id="3AQKsF9f" text="Pari non actif" original="Betting not active"/>
+        <string id="3AQKsF9f" text="Les paris ne sont pas ouverts" original="Betting not active"/>
         <!-- Bet {GoldAmount}{GoldIcon} on {Team} -->
-        <string id="9tlhaGyH" text="Pari {GoldAmount}{GoldIcon} on {Team}" original="Bet {GoldAmount}{GoldIcon} on {Team}"/>
+        <string id="9tlhaGyH" text="Pari {GoldAmount}{GoldIcon} sur {Team}" original="Bet {GoldAmount}{GoldIcon} on {Team}"/>
         <!-- (team) (gold) -->
         <string id="8XQwqd4f" text="(équipe) (or)" original="(team) (gold)"/>
         <!-- UsePower -->
