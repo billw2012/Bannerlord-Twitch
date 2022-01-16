@@ -16,17 +16,17 @@
         <!-- Adopt A Hero -->
         <string id="NkZXnSQI" text="Bir Kahramanı Kabul Edin" original="Adopt A Hero"/>
         <!-- Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands -->
-        <string id="fd7G5N0Q" text="İzleyicinin oyunda bir kahramanı &amp;#39;evlat edinmesine&amp;#39; izin verir - kahraman adı izleyici adına değişir ve izleyiciler onu başka komutlarla kontrol edebilirler." original="Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands"/>
+        <string id="fd7G5N0Q" text="İzleyicinin oyunda bir kahramanı 'evlat edinmesine' izin verir - kahraman adı izleyici adına değişir ve izleyiciler onu başka komutlarla kontrol edebilirler." original="Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands"/>
         <!-- Create New -->
         <string id="TLrDxhlh" text="Yeni oluşturmak" original="Create New"/>
         <!-- Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern) -->
         <string id="F1KDzuZZ" text="Mevcut bir kahramanı benimsemek yerine yeni bir kahraman yaratın (rastgele bir meyhanede gezgin olacaklar)" original="Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern)"/>
         <!-- Allow Noble -->
-        <string id="nPIcT2s7" text="Noble&amp;#39;a izin ver" original="Allow Noble"/>
+        <string id="nPIcT2s7" text="Noble'a izin ver" original="Allow Noble"/>
         <!-- Allow noble heroes (if CreateNew is false) -->
         <string id="XvZN7OOY" text="Asil kahramanlara izin ver (CreateNew yanlışsa)" original="Allow noble heroes (if CreateNew is false)"/>
         <!-- Allow Wanderer -->
-        <string id="VVFsa8LQ" text="Wanderer&amp;#39;a izin ver" original="Allow Wanderer"/>
+        <string id="VVFsa8LQ" text="Wanderer'a izin ver" original="Allow Wanderer"/>
         <!-- Allow wanderer heroes (if CreateNew is false) -->
         <string id="9lE2KSvC" text="Gezgin kahramanlara izin ver (CreateNew yanlışsa)" original="Allow wanderer heroes (if CreateNew is false)"/>
         <!-- Allow Player Companion -->
@@ -98,7 +98,7 @@
         <!-- Inheritance -->
         <string id="wP0lfTf3" text="Miras" original="Inheritance"/>
         <!-- {Inheritance}% of gold spent on equipment and retinue -->
-        <string id="mDK67efh" text="Ekipman ve maiyet için harcanan altının %{Inheritance}&amp;#39;si" original="{Inheritance}% of gold spent on equipment and retinue"/>
+        <string id="mDK67efh" text="Ekipman ve maiyet için harcanan altının %{Inheritance}'si" original="{Inheritance}% of gold spent on equipment and retinue"/>
         <!-- no custom items -->
         <string id="76NtQIGB" text="özel öğe yok" original="no custom items"/>
         <!-- up to {MaxInheritedCustomItems} custom items -->
@@ -110,7 +110,7 @@
         <!-- You must be subscribed to adopt a hero with this command! -->
         <string id="0QeQPxYi" text="Bu komutla bir kahramanı benimsemek için abone olmalısınız!" original="You must be subscribed to adopt a hero with this command!"/>
         <!-- No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)! -->
-        <string id="XlQUIIsg" text="Kullanılabilir kahraman yok: oyuncu bir ulusta değil (Yalnızca Player Fraction&amp;#39;ı devre dışı bırakın veya bir fraksiyona katılın)!" original="No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)!"/>
+        <string id="XlQUIIsg" text="Kullanılabilir kahraman yok: oyuncu bir ulusta değil (Yalnızca Player Fraction'ı devre dışı bırakın veya bir fraksiyona katılın)!" original="No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)!"/>
         <!-- You can't adopt a hero: no available hero matching the requirements was found! -->
         <string id="E7wqQ2kg" text="Bir kahramanı sahiplenemezsiniz: Gereksinimleri karşılayan uygun bir kahraman bulunamadı!" original="You can't adopt a hero: no available hero matching the requirements was found!"/>
         <!-- {OldName} is now known as {NewName}! -->
@@ -143,7 +143,7 @@
         <!--  -->
         <string id="YawQBjBG" text=""/>
         <!-- Couldn't find attribute matching '{Args}'! -->
-        <string id="LE3POzUs" text="&amp;#39;{Args}&amp;#39; ile eşleşen özellik bulunamadı!" original="Couldn't find attribute matching '{Args}'!"/>
+        <string id="LE3POzUs" text="'{Args}' ile eşleşen özellik bulunamadı!" original="Couldn't find attribute matching '{Args}'!"/>
         <!-- Couldn't improve {Attribute} attribute, it is already at max level! -->
         <string id="R7X1dTqL" text="{Attribute} özelliği iyileştirilemedi, zaten maksimum seviyede!" original="Couldn't improve {Attribute} attribute, it is already at max level!"/>
         <!-- AuctionItem -->
@@ -166,13 +166,13 @@
         <!-- (reserve price) (partial item name) -->
         <string id="lI4WCNeQ" text="(yedek fiyat) (kısmi ürün adı)" original="(reserve price) (partial item name)"/>
         <!-- Invalid reserve price '{Arg}' -->
-        <string id="mm1ay4I7" text="Geçersiz rezerv fiyatı &amp;#39;{Arg}&amp;#39;" original="Invalid reserve price '{Arg}'"/>
+        <string id="mm1ay4I7" text="Geçersiz rezerv fiyatı '{Arg}'" original="Invalid reserve price '{Arg}'"/>
         <!-- No items found matching '{ItemName}' -->
-        <string id="viO1RBr5" text="&amp;#39;{ItemName}&amp;#39; ile eşleşen öğe bulunamadı" original="No items found matching '{ItemName}'"/>
+        <string id="viO1RBr5" text="'{ItemName}' ile eşleşen öğe bulunamadı" original="No items found matching '{ItemName}'"/>
         <!-- {ItemCount} items found matching '{ItemName}', be more specific -->
-        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName}&amp;#39;, daha spesifik olun" original="{ItemCount} items found matching '{ItemName}', be more specific"/>
+        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName}', daha spesifik olun" original="{ItemCount} items found matching '{ItemName}', be more specific"/>
         <!-- Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds. -->
-        <string id="BH5rnHNq" text="&amp;#39;{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} saniyelik açık artırma." original="Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."/>
+        <string id="BH5rnHNq" text="'{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} saniyelik açık artırma." original="Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."/>
         <!-- Bid On Item -->
         <string id="rBAvqAh7" text="Ürüne Teklif Ver" original="Bid On Item"/>
         <!-- Allows viewers bid on an active custom item auction (make sure to add an auction command also) -->
@@ -265,11 +265,11 @@
         <!-- (partial item name) -->
         <string id="by80aboy" text="(kısmi öğe adı)" original="(partial item name)"/>
         <!-- No items found matching '{Args}' -->
-        <string id="p0urrIvR" text="&amp;#39;{Args}&amp;#39; ile eşleşen öğe bulunamadı" original="No items found matching '{Args}'"/>
+        <string id="p0urrIvR" text="'{Args}' ile eşleşen öğe bulunamadı" original="No items found matching '{Args}'"/>
         <!-- {Count} items found matching '{Args}', be more specific -->
-        <string id="Pzo2UJrl" text="{Count} items found matching '{Args}&amp;#39;, daha spesifik olun" original="{Count} items found matching '{Args}', be more specific"/>
+        <string id="Pzo2UJrl" text="{Count} items found matching '{Args}', daha spesifik olun" original="{Count} items found matching '{Args}', be more specific"/>
         <!-- '{ItemName}' was discarded -->
-        <string id="bNqd3AzN" text="&amp;#39;{ItemName}&amp;#39; atıldı" original="'{ItemName}' was discarded"/>
+        <string id="bNqd3AzN" text="'{ItemName}' atıldı" original="'{ItemName}' was discarded"/>
         <!-- GiveItem -->
         <!-- Give Item -->
         <string id="nAPjfF4C" text="Öğe ver" original="Give Item"/>
@@ -280,9 +280,9 @@
         <!-- (recipient) (partial item name) -->
         <string id="BClUoR9H" text="(alıcı) (kısmi öğe adı)" original="(recipient) (partial item name)"/>
         <!-- Couldn't find recipient '{Name}' -->
-        <string id="vDsYxMKq" text="&amp;#39;{Name}&amp;#39; alıcısı bulunamadı" original="Couldn't find recipient '{Name}'"/>
+        <string id="vDsYxMKq" text="'{Name}' alıcısı bulunamadı" original="Couldn't find recipient '{Name}'"/>
         <!-- '{ItemName}' was transferred from @{FromHero} to @{ToHero} -->
-        <string id="E1o7b5ht" text="&amp;#39;{ItemName}' was transferred from @{FromHero} to @{ToHero}" original="'{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
+        <string id="E1o7b5ht" text="'{ItemName}' was transferred from @{FromHero} to @{ToHero}" original="'{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
         <!-- HeroInfoCommand -->
         <!-- Show Hero Info -->
         <string id="cj68a0l9" text="Kahraman Bilgilerini Göster" original="Show Hero Info"/>
@@ -417,7 +417,7 @@
         <!-- Sums -->
         <string id="6nwK1UF9" text="toplamlar" original="Sums"/>
         <!-- CSums -->
-        <string id="uDFykstd" text="CSum&amp;#39;lar" original="CSums"/>
+        <string id="uDFykstd" text="CSum'lar" original="CSums"/>
         <!-- Atks -->
         <string id="wtmfNCIj" text="atks" original="Atks"/>
         <!-- CAtks -->
@@ -492,7 +492,7 @@
         <!-- yes -->
         <string id="xSbB2Zw5" text="Evet" original="yes"/>
         <!-- You must enter '{Prompt}' at the prompt to retire your hero -->
-        <string id="0qVpLYfb" text="Kahramanınızı emekliye ayırmak için komut istemine &amp;#39;{Prompt}&amp;#39; girmelisiniz" original="You must enter '{Prompt}' at the prompt to retire your hero"/>
+        <string id="0qVpLYfb" text="Kahramanınızı emekliye ayırmak için komut istemine '{Prompt}' girmelisiniz" original="You must enter '{Prompt}' at the prompt to retire your hero"/>
         <!-- You cannot retire your hero, as a mission is active! -->
         <string id="po20lHyz" text="Bir görev aktif olduğu için kahramanınızı emekli edemezsiniz!" original="You cannot retire your hero, as a mission is active!"/>
         <!-- {Name} has retired! -->
@@ -501,7 +501,7 @@
         <!-- Set Hero Class -->
         <string id="pVblweVj" text="Kahraman Sınıfını Ayarla" original="Set Hero Class"/>
         <!-- Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied -->
-        <string id="7VWKYp1U" text="Ekipmanı etkileyen ve XP&amp;#39;nin uygulandığı bir kahramanın &amp;#39;sınıfını&amp;#39; değiştirmeye izin verir" original="Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied"/>
+        <string id="7VWKYp1U" text="Ekipmanı etkileyen ve XP'nin uygulandığı bir kahramanın 'sınıfını' değiştirmeye izin verir" original="Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied"/>
         <!-- First Equip Is Free -->
         <string id="iLpDEiTq" text="İlk Teçhizat Ücretsizdir" original="First Equip Is Free"/>
         <!-- If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class) -->
@@ -548,7 +548,7 @@
         <string id="giUCnkf2" text="sınıfı {ClassName} olarak değiştirdi" original="changed class to {ClassName}"/>
         <!-- SkillXP -->
         <!-- Skill XP -->
-        <string id="mpdzqyCK" text="Beceri XP&amp;#39;si" original="Skill XP"/>
+        <string id="mpdzqyCK" text="Beceri XP'si" original="Skill XP"/>
         <!-- Improve adopted heroes skills -->
         <string id="Bc2HIByX" text="Kabul edilen kahramanların becerilerini geliştirin" original="Improve adopted heroes skills"/>
         <!-- Skills -->

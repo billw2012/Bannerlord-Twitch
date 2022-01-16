@@ -100,7 +100,7 @@
         <!-- The game isn't started yet -->
         <string id="kvbqfThe" text="Il gioco non è ancora iniziato" original="The game isn't started yet"/>
         <!-- Action with the id {RewardId} doesn't exist -->
-        <string id="B39sGef4" text="L&amp;#39;azione con l&amp;#39;id {RewardId} non esiste" original="Action with the id {RewardId} doesn't exist"/>
+        <string id="B39sGef4" text="L'azione con l'id {RewardId} non esiste" original="Action with the id {RewardId} doesn't exist"/>
         <!-- Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow -->
         <string id="yo8Yw3Mz" text="Azione {RewardId} took {TimeInMS}ms per accodare, è troppo lenta" original="Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow"/>
         <!-- BLTAgentModifierBehavior -->
@@ -131,9 +131,9 @@
         <!-- DocumentationHelpers -->
         <!-- ParticleEffectDef -->
         <!-- Particle effect system name, see ParticleEffects.txt for the full vanilla list -->
-        <string id="xgnntAyd" text="Nome del sistema dell&amp;#39;effetto particellare, vedere ParticleEffects.txt per l&amp;#39;elenco completo della vaniglia" original="Particle effect system name, see ParticleEffects.txt for the full vanilla list"/>
+        <string id="xgnntAyd" text="Nome del sistema dell'effetto particellare, vedere ParticleEffects.txt per l'elenco completo della vaniglia" original="Particle effect system name, see ParticleEffects.txt for the full vanilla list"/>
         <!-- On Weapon -->
-        <string id="w3eb5kWA" text="sull&amp;#39;arma" original="On Weapon"/>
+        <string id="w3eb5kWA" text="sull'arma" original="On Weapon"/>
         <!-- On Hands -->
         <string id="YLmpgn4j" text="Sulle mani" original="On Hands"/>
         <!-- On Head -->
@@ -146,13 +146,13 @@
         <string id="uNOYtEdN" text="Dove attaccare le particelle" original="Where to attach the particles"/>
         <!-- DrivenPropertyItemSource -->
         <!-- Armor Head -->
-        <string id="oUgW3q7p" text="Testa dell&amp;#39;armatura" original="Armor Head"/>
+        <string id="oUgW3q7p" text="Testa dell'armatura" original="Armor Head"/>
         <!-- Armor Torso -->
         <string id="NYoNwE3R" text="Torso di armatura" original="Armor Torso"/>
         <!-- Armor Legs -->
-        <string id="VKAAkKbm" text="Gambe dell&amp;#39;armatura" original="Armor Legs"/>
+        <string id="VKAAkKbm" text="Gambe dell'armatura" original="Armor Legs"/>
         <!-- Armor Arms -->
-        <string id="dzqBXvaS" text="Armi dell&amp;#39;armatura" original="Armor Arms"/>
+        <string id="dzqBXvaS" text="Armi dell'armatura" original="Armor Arms"/>
         <!-- Armor Encumbrance -->
         <string id="2EaDPdxT" text="Ingombro armatura" original="Armor Encumbrance"/>
         <!-- Weapons Encumbrance -->
@@ -172,7 +172,7 @@
         <!-- Mount Speed -->
         <string id="NJpg1RsS" text="Velocità di montaggio" original="Mount Speed"/>
         <!-- Horse Archery Ability -->
-        <string id="UtGZ9B6F" text="Abilità di tiro con l&amp;#39;arco a cavallo" original="Horse Archery Ability"/>
+        <string id="UtGZ9B6F" text="Abilità di tiro con l'arco a cavallo" original="Horse Archery Ability"/>
         <!-- Riding Ability -->
         <string id="pmUxn1vO" text="Abilità di guida" original="Riding Ability"/>
         <!-- Shield Ability -->
@@ -180,7 +180,7 @@
         <!-- Handling Multiplier -->
         <string id="YZt69g1x" text="Moltiplicatore di manipolazione" original="Handling Multiplier"/>
         <!-- Weapon Inaccuracy -->
-        <string id="Yem5BVmg" text="Imprecisione dell&amp;#39;arma" original="Weapon Inaccuracy"/>
+        <string id="Yem5BVmg" text="Imprecisione dell'arma" original="Weapon Inaccuracy"/>
         <!-- Swing Speed Multiplier -->
         <string id="DUuJ6bM5" text="Moltiplicatore della velocità di oscillazione" original="Swing Speed Multiplier"/>
         <!-- Reload Speed -->
@@ -202,7 +202,7 @@
         <!-- AI Attack Chance -->
         <string id="vIjQ6b5w" text="Possibilità di attacco IA" original="AI Attack Chance"/>
         <!-- AI Kick -->
-        <string id="FgSI5C4F" text="Calcio d&amp;#39;intelligenza artificiale" original="AI Kick"/>
+        <string id="FgSI5C4F" text="Calcio d'intelligenza artificiale" original="AI Kick"/>
         <!-- EquipmentType -->
         <!-- None -->
         <string id="i7XX56i9" text="Nessuno" original="None"/>
@@ -276,7 +276,7 @@
         <!-- Add -->
         <string id="uNduKTKf" text="Aggiungere" original="Add"/>
         <!-- The property to modify -->
-        <string id="SUI6n33o" text="L&amp;#39;immobile da modificare" original="The property to modify"/>
+        <string id="SUI6n33o" text="L'immobile da modificare" original="The property to modify"/>
         <!-- Percent modifier to apply to the property (100% will result in no chance) -->
         <string id="fDNljlb9" text="Modificatore percentuale da applicare alla proprietà (il 100% non comporterà alcuna possibilità)" original="Percent modifier to apply to the property (100% will result in no chance)"/>
         <!-- How much to add or subtract from the property (0 will result in no change). This is applied AFTER Modifier. -->
@@ -291,9 +291,9 @@
         <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
         <string id="46oj12tA" text="Abilità o gruppo di abilità al modificatore (tutte le abilità in un gruppo verranno modificate)" original="Skill or skill group to modifier (all skills in a group will be modified)"/>
         <!-- Percent modifier to apply to the skill (100% will result in no chance) -->
-        <string id="S34uXWMu" text="Modificatore percentuale da applicare all&amp;#39;abilità (il 100% non comporterà alcuna possibilità)" original="Percent modifier to apply to the skill (100% will result in no chance)"/>
+        <string id="S34uXWMu" text="Modificatore percentuale da applicare all'abilità (il 100% non comporterà alcuna possibilità)" original="Percent modifier to apply to the skill (100% will result in no chance)"/>
         <!-- How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier. -->
-        <string id="hPQpBmRR" text="Quanto aggiungere o sottrarre dall&amp;#39;abilità (0 non comporterà alcun cambiamento). Viene applicato dopo il modificatore." original="How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier."/>
+        <string id="hPQpBmRR" text="Quanto aggiungere o sottrarre dall'abilità (0 non comporterà alcun cambiamento). Viene applicato dopo il modificatore." original="How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier."/>
         <!-- (no change) -->
         <string id="PsUcJvPZ" text="(nessun cambiamento)" original="(no change)"/>
         <!-- BLTOverlay -->
@@ -304,9 +304,9 @@
         <!-- Okay -->
         <string id="yXwMSbr4" text="Va bene" original="Okay"/>
         <!-- Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window. -->
-        <string id="6ucf05tp" text="Configurazione riuscita!\nOra puoi accedere all&amp;#39;overlay su {UrlRoot}.\nPuoi ritrovare questo link nella scheda Autorizza nella finestra Configura BLT." original="Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."/>
+        <string id="6ucf05tp" text="Configurazione riuscita!\nOra puoi accedere all'overlay su {UrlRoot}.\nPuoi ritrovare questo link nella scheda Autorizza nella finestra Configura BLT." original="Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."/>
         <!-- Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord. -->
-        <string id="usADfORe" text="Configurazione FALLITA:\n \&amp;quot;{e.Message}\&amp;quot;\nPotresti non essere in grado di accedere all&amp;#39;overlay.\nSegnala questo problema in discord." original="Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord."/>
+        <string id="usADfORe" text="Configurazione FALLITA:\n \&amp;quot;{e.Message}\&amp;quot;\nPotresti non essere in grado di accedere all'overlay.\nSegnala questo problema in discord." original="Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord."/>
         <!-- ActionBase -->
         <!-- Whether this is enabled or not -->
         <string id="YM1rP7sP" text="Se questo è abilitato o meno" original="Whether this is enabled or not"/>
@@ -336,7 +336,7 @@
         <string id="ctAF1ghX" text="Guida per i visualizzatori di Twitch di Bannerlord" original="Bannerlord Twitch Viewer Guide"/>
         <!-- Introduction -->
         <!-- Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to &apos;adopt&apos; a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include &apos;summoning&apos; your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes &apos;class&apos;.&lt;br&gt;If you aren&apos;t sure where to start, begin by using the channel point redemption &apos;Adopt a Hero&apos;. -->
-        <string id="rElL5v6I" text="Bannerlord Twitch (BLT) è una mod di integrazione Twitch per Mount &amp;amp; Blade II: Bannerlord.&lt;br&gt; In qualità di spettatore, puoi utilizzare i premi in punti canale (se disponibili) e i comandi della chat per interagire con il gioco mentre lo streamer sta giocando.&lt;br&gt; La caratteristica principale di BLT ti consente di &amp;quot;adottare&amp;quot; un eroe nel gioco, ad esempio un personaggio nel gioco ti verrà assegnato, dato il tuo nome Twitch, e sarà disponibile per interagire ulteriormente.&lt;br&gt; Alcuni esempi di cose che puoi fare con il tuo eroe includono &amp;quot;convocare&amp;quot; il tuo eroe nelle battaglie a cui sta prendendo parte lo streamer, partecipare a tornei di spettatori, aggiornare l&amp;#39;equipaggiamento, selezionare la &amp;quot;classe&amp;quot; dei tuoi eroi.&lt;br&gt; Se non sai da dove cominciare, inizia utilizzando il riscatto dei punti canale &amp;quot;Adotta un eroe&amp;quot;." original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
+        <string id="rElL5v6I" text="Bannerlord Twitch (BLT) è una mod di integrazione Twitch per Mount &amp;amp; Blade II: Bannerlord.&lt;br&gt; In qualità di spettatore, puoi utilizzare i premi in punti canale (se disponibili) e i comandi della chat per interagire con il gioco mentre lo streamer sta giocando.&lt;br&gt; La caratteristica principale di BLT ti consente di &amp;quot;adottare&amp;quot; un eroe nel gioco, ad esempio un personaggio nel gioco ti verrà assegnato, dato il tuo nome Twitch, e sarà disponibile per interagire ulteriormente.&lt;br&gt; Alcuni esempi di cose che puoi fare con il tuo eroe includono &amp;quot;convocare&amp;quot; il tuo eroe nelle battaglie a cui sta prendendo parte lo streamer, partecipare a tornei di spettatori, aggiornare l'equipaggiamento, selezionare la &amp;quot;classe&amp;quot; dei tuoi eroi.&lt;br&gt; Se non sai da dove cominciare, inizia utilizzando il riscatto dei punti canale &amp;quot;Adotta un eroe&amp;quot;." original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
         <!-- Command -->
         <!-- Bot command definition -->
         <string id="8SbGSWFY" text="Definizione del comando del bot" original="Bot command definition"/>
@@ -347,7 +347,7 @@
         <!-- HideHelp -->
         <string id="TpnV5Mpi" text="NascondiAiuto" original="HideHelp"/>
         <!-- Hides the command from the !help action -->
-        <string id="0AZVaBQN" text="Nasconde il comando dall&amp;#39;azione !help" original="Hides the command from the !help action"/>
+        <string id="0AZVaBQN" text="Nasconde il comando dall'azione !help" original="Hides the command from the !help action"/>
         <!-- Help -->
         <string id="JqNXbyIT" text="Aiuto" original="Help"/>
         <!-- What to show in the !help command -->
@@ -375,7 +375,7 @@
         <!-- Custom background color for the reward -->
         <string id="Bg62Iggr" text="Colore di sfondo personalizzato per la ricompensa" original="Custom background color for the reward"/>
         <!-- Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown. -->
-        <string id="XqPRNwVc" text="L&amp;#39;utente deve inserire le informazioni quando riscatta il premio. Se questo è vero, verrà mostrato il prompt." original="Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown."/>
+        <string id="XqPRNwVc" text="L'utente deve inserire le informazioni quando riscatta il premio. Se questo è vero, verrà mostrato il prompt." original="Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown."/>
         <!-- Title -->
         <string id="EJDKdXPV" text="Titolo" original="Title"/>
         <!-- Disable Automatic Fulfillment -->
@@ -385,7 +385,7 @@
         <!-- Background Color -->
         <string id="YzP57nUK" text="Colore di sfondo" original="Background Color"/>
         <!-- Is User Input Required -->
-        <string id="9aESWqlM" text="È richiesto l&amp;#39;input dell&amp;#39;utente?" original="Is User Input Required"/>
+        <string id="9aESWqlM" text="È richiesto l'input dell'utente?" original="Is User Input Required"/>
         <!-- Max Per Stream -->
         <string id="qAxLr567" text="Massimo per streaming" original="Max Per Stream"/>
         <!-- Max Per User Per Stream -->
@@ -425,7 +425,7 @@
         <!-- bot reporting for duty! -->
         <string id="SbufvVIR" text="bot segnalazione per dovere!" original="bot reporting for duty!"/>
         <!-- Type !help for command list -->
-        <string id="vBtkF25N" text="Digita !help per l&amp;#39;elenco dei comandi" original="Type !help for command list"/>
+        <string id="vBtkF25N" text="Digita !help per l'elenco dei comandi" original="Type !help for command list"/>
         <!-- OneShotParticleEffectItemSource -->
         <!-- (none) -->
         <string id="a8ibMIfH" text="(nessuno)" original="(none)"/>
@@ -472,7 +472,7 @@
         <!-- Very subtle small particles -->
         <string id="29DVQzgQ" text="Piccole particelle molto sottili" original="Very subtle small particles"/>
         <!-- Some fire -->
-        <string id="P7UjJvf8" text="un po&amp;#39; di fuoco" original="Some fire"/>
+        <string id="P7UjJvf8" text="un po' di fuoco" original="Some fire"/>
         <!-- Black spooky smoke -->
         <string id="2Oajfsfa" text="Fumo nero spettrale" original="Black spooky smoke"/>
         <!-- Very dense smoke falling down -->

@@ -304,7 +304,7 @@
         <!-- Reflected Damage Is Subtracted -->
         <string id="IxiHjT1Z" text="Se resta el daño reflejado" original="Reflected Damage Is Subtracted"/>
         <!-- Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection) -->
-        <string id="Pdg6mCPA" text="Si el daño que se refleja también se resta del daño que recibe el héroe (este es el reflejo de daño &amp;#39;clásico&amp;#39;)" original="Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection)"/>
+        <string id="Pdg6mCPA" text="Si el daño que se refleja también se resta del daño que recibe el héroe (este es el reflejo de daño 'clásico')" original="Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection)"/>
         <!-- Hit Behavior -->
         <string id="WDRb4mQ3" text="Comportamiento de golpe" original="Hit Behavior"/>
         <!-- Hit behavior for the reflected damage -->

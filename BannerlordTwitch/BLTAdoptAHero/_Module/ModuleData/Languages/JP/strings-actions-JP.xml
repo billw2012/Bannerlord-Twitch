@@ -143,7 +143,7 @@
         <!--  -->
         <string id="YawQBjBG" text=""/>
         <!-- Couldn't find attribute matching '{Args}'! -->
-        <string id="LE3POzUs" text="&amp;#39;{Args}&amp;#39;に一致する属性が見つかりませんでした！" original="Couldn't find attribute matching '{Args}'!"/>
+        <string id="LE3POzUs" text="'{Args}'に一致する属性が見つかりませんでした！" original="Couldn't find attribute matching '{Args}'!"/>
         <!-- Couldn't improve {Attribute} attribute, it is already at max level! -->
         <string id="R7X1dTqL" text="{Attribute}属性を改善できませんでした。すでに最大レベルになっています。" original="Couldn't improve {Attribute} attribute, it is already at max level!"/>
         <!-- AuctionItem -->
@@ -166,13 +166,13 @@
         <!-- (reserve price) (partial item name) -->
         <string id="lI4WCNeQ" text="（予約価格）（一部商品名）" original="(reserve price) (partial item name)"/>
         <!-- Invalid reserve price '{Arg}' -->
-        <string id="mm1ay4I7" text="予約価格が無効です &amp;#39;{Arg}&amp;#39;" original="Invalid reserve price '{Arg}'"/>
+        <string id="mm1ay4I7" text="予約価格が無効です '{Arg}'" original="Invalid reserve price '{Arg}'"/>
         <!-- No items found matching '{ItemName}' -->
-        <string id="viO1RBr5" text="&amp;#39;{ItemName}&amp;#39;に一致するアイテムが見つかりません" original="No items found matching '{ItemName}'"/>
+        <string id="viO1RBr5" text="'{ItemName}'に一致するアイテムが見つかりません" original="No items found matching '{ItemName}'"/>
         <!-- {ItemCount} items found matching '{ItemName}', be more specific -->
-        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName} &amp;#39;、より具体的に" original="{ItemCount} items found matching '{ItemName}', be more specific"/>
+        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName} '、より具体的に" original="{ItemCount} items found matching '{ItemName}', be more specific"/>
         <!-- Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds. -->
-        <string id="BH5rnHNq" text="&amp;#39;{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds}秒のオークション。" original="Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."/>
+        <string id="BH5rnHNq" text="'{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds}秒のオークション。" original="Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."/>
         <!-- Bid On Item -->
         <string id="rBAvqAh7" text="アイテムの入札" original="Bid On Item"/>
         <!-- Allows viewers bid on an active custom item auction (make sure to add an auction command also) -->
@@ -265,9 +265,9 @@
         <!-- (partial item name) -->
         <string id="by80aboy" text="（一部商品名）" original="(partial item name)"/>
         <!-- No items found matching '{Args}' -->
-        <string id="p0urrIvR" text="&amp;#39;{Args}&amp;#39;に一致するアイテムが見つかりません" original="No items found matching '{Args}'"/>
+        <string id="p0urrIvR" text="'{Args}'に一致するアイテムが見つかりません" original="No items found matching '{Args}'"/>
         <!-- {Count} items found matching '{Args}', be more specific -->
-        <string id="Pzo2UJrl" text="{Count} items found matching '{Args} &amp;#39;、より具体的に" original="{Count} items found matching '{Args}', be more specific"/>
+        <string id="Pzo2UJrl" text="{Count} items found matching '{Args} '、より具体的に" original="{Count} items found matching '{Args}', be more specific"/>
         <!-- '{ItemName}' was discarded -->
         <string id="bNqd3AzN" text="「{ItemName}」は破棄されました" original="'{ItemName}' was discarded"/>
         <!-- GiveItem -->
@@ -282,7 +282,7 @@
         <!-- Couldn't find recipient '{Name}' -->
         <string id="vDsYxMKq" text="受信者「{Name}」が見つかりませんでした" original="Couldn't find recipient '{Name}'"/>
         <!-- '{ItemName}' was transferred from @{FromHero} to @{ToHero} -->
-        <string id="E1o7b5ht" text="&amp;#39;{ItemName}' was transferred from @{FromHero} to @{ToHero}" original="'{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
+        <string id="E1o7b5ht" text="'{ItemName}' was transferred from @{FromHero} to @{ToHero}" original="'{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
         <!-- HeroInfoCommand -->
         <!-- Show Hero Info -->
         <string id="cj68a0l9" text="ヒーロー情報を表示" original="Show Hero Info"/>

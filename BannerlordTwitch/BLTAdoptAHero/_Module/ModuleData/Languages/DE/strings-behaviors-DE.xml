@@ -47,7 +47,7 @@
         <!-- {Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName}) -->
         <string id="TeeDJyJ1" text="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})" original="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})"/>
         <!-- {Time} seconds left in auction of '{ItemName}', no bids placed -->
-        <string id="jNkGaKZw" text="{Time} seconds left in auction of '{ItemName}&amp;#39;, keine Gebote abgegeben" original="{Time} seconds left in auction of '{ItemName}', no bids placed"/>
+        <string id="jNkGaKZw" text="{Time} seconds left in auction of '{ItemName}', keine Gebote abgegeben" original="{Time} seconds left in auction of '{ItemName}', no bids placed"/>
         <!-- Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}. -->
         <string id="d9ooHVPU" text="Auktion für {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}." original="Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}."/>
         <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died. -->

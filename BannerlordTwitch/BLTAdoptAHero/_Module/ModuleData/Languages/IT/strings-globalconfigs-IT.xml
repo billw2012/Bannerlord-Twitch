@@ -19,7 +19,7 @@
         <!-- Start With Full Health -->
         <string id="X8r0C5fx" text="Inizia con piena salute" original="Start With Full Health"/>
         <!-- Whether the hero will always start with full health -->
-        <string id="HbNVrZuv" text="Se l&amp;#39;eroe inizierà sempre con piena salute" original="Whether the hero will always start with full health"/>
+        <string id="HbNVrZuv" text="Se l'eroe inizierà sempre con piena salute" original="Whether the hero will always start with full health"/>
         <!-- Start Health Multiplier -->
         <string id="fxZIKL65" text="Avvia il moltiplicatore di salute" original="Start Health Multiplier"/>
         <!-- Amount to multiply normal starting health by, to give heroes better staying power vs others -->
@@ -35,15 +35,15 @@
         <!-- Retinue Use Heroes Formation -->
         <string id="bXdC2trk" text="Continua a usare la formazione degli eroi" original="Retinue Use Heroes Formation"/>
         <!-- Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations) -->
-        <string id="D8uDzXlV" text="Se un seguito di eroi adottati dovrebbe generarsi nella stessa formazione dell&amp;#39;eroe (altrimenti andranno in formazioni predefinite)" original="Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations)"/>
+        <string id="D8uDzXlV" text="Se un seguito di eroi adottati dovrebbe generarsi nella stessa formazione dell'eroe (altrimenti andranno in formazioni predefinite)" original="Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations)"/>
         <!-- Summon Cooldown In Seconds -->
         <string id="OlJrCEyE" text="Evoca ricarica in pochi secondi" original="Summon Cooldown In Seconds"/>
         <!-- Minimum time between summons for a specific hero -->
         <string id="DeGB2BGZ" text="Tempo minimo tra le evocazioni per un eroe specifico" original="Minimum time between summons for a specific hero"/>
         <!-- Summon Cooldown Use Multiplier -->
-        <string id="f9HVD2cC" text="Evoca il moltiplicatore di ricarica per l&amp;#39;uso" original="Summon Cooldown Use Multiplier"/>
+        <string id="f9HVD2cC" text="Evoca il moltiplicatore di ricarica per l'uso" original="Summon Cooldown Use Multiplier"/>
         <!-- How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this. -->
-        <string id="4gZlfHzM" text="Di quanto moltiplicare il tempo di recupero per ogni volta che viene utilizzata l&amp;#39;evocazione. ad esempio, se il tempo di recupero dell&amp;#39;evocazione è 20 secondi e UseMultiplier è 1,1 (predefinito), la prima evocazione ha un tempo di recupero di 20 secondi e i successivi 24 secondi, il decimo 52 secondi e il ventesimo 135 secondi. Vedere https://www.desmos.com/calculator/muej1o5eg5 per una visualizzazione di questo." original="How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this."/>
+        <string id="4gZlfHzM" text="Di quanto moltiplicare il tempo di recupero per ogni volta che viene utilizzata l'evocazione. ad esempio, se il tempo di recupero dell'evocazione è 20 secondi e UseMultiplier è 1,1 (predefinito), la prima evocazione ha un tempo di recupero di 20 secondi e i successivi 24 secondi, il decimo 52 secondi e il ventesimo 135 secondi. Vedere https://www.desmos.com/calculator/muej1o5eg5 per una visualizzazione di questo." original="How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this."/>
         <!-- Summon Cooldown Example -->
         <string id="ViLoy0k3" text="Evoca esempio di ricarica" original="Summon Cooldown Example"/>
         <!-- Shows the consecutive cooldowns (in seconds) for 10 summons -->
@@ -71,37 +71,37 @@
         <!-- Gold Per Kill -->
         <string id="94Ouh5It" text="Oro per uccisione" original="Gold Per Kill"/>
         <!-- Gold the hero gets for every kill -->
-        <string id="iSAMxZ8a" text="L&amp;#39;oro che l&amp;#39;eroe ottiene per ogni uccisione" original="Gold the hero gets for every kill"/>
+        <string id="iSAMxZ8a" text="L'oro che l'eroe ottiene per ogni uccisione" original="Gold the hero gets for every kill"/>
         <!-- XP Per Kill -->
         <string id="DMGKBoJT" text="XP per uccisione" original="XP Per Kill"/>
         <!-- XP the hero gets for every kill -->
-        <string id="kwW5pZT9" text="XP che l&amp;#39;eroe ottiene per ogni uccisione" original="XP the hero gets for every kill"/>
+        <string id="kwW5pZT9" text="XP che l'eroe ottiene per ogni uccisione" original="XP the hero gets for every kill"/>
         <!-- XP Per Killed -->
         <string id="a1zjEuUe" text="XP per uccisi" original="XP Per Killed"/>
         <!-- XP the hero gets for being killed -->
-        <string id="bW8t2g5N" text="XP che l&amp;#39;eroe ottiene per essere stato ucciso" original="XP the hero gets for being killed"/>
+        <string id="bW8t2g5N" text="XP che l'eroe ottiene per essere stato ucciso" original="XP the hero gets for being killed"/>
         <!-- Heal Per Kill -->
         <string id="cRV9HDdf" text="Guarigione per uccisione" original="Heal Per Kill"/>
         <!-- HP the hero gets for every kill -->
-        <string id="7VWAZgfK" text="HP che l&amp;#39;eroe ottiene per ogni uccisione" original="HP the hero gets for every kill"/>
+        <string id="7VWAZgfK" text="HP che l'eroe ottiene per ogni uccisione" original="HP the hero gets for every kill"/>
         <!-- Retinue Gold Per Kill -->
         <string id="lIhhHjih" text="Ritiro oro per uccisione" original="Retinue Gold Per Kill"/>
         <!-- Gold the hero gets for every kill their retinue gets -->
-        <string id="h93j0qw3" text="L&amp;#39;oro che l&amp;#39;eroe ottiene per ogni uccisione che ottiene il suo seguito" original="Gold the hero gets for every kill their retinue gets"/>
+        <string id="h93j0qw3" text="L'oro che l'eroe ottiene per ogni uccisione che ottiene il suo seguito" original="Gold the hero gets for every kill their retinue gets"/>
         <!-- Retinue Heal Per Kill -->
         <string id="KwlWrzDS" text="Guarigione continua per uccisione" original="Retinue Heal Per Kill"/>
         <!-- HP the hero's retinue gets for every kill -->
-        <string id="Q3UVoHmt" text="HP il seguito dell&amp;#39;eroe ottiene per ogni uccisione" original="HP the hero's retinue gets for every kill"/>
+        <string id="Q3UVoHmt" text="HP il seguito dell'eroe ottiene per ogni uccisione" original="HP the hero's retinue gets for every kill"/>
         <!-- Relative Level Scaling -->
         <string id="wSzUkbNR" text="Scala del livello relativo" original="Relative Level Scaling"/>
         <!-- How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health. -->
-        <string id="1LTDJZ7Y" text="Di quanto scalare le ricompense uccisioni, in base al livello relativo dei due personaggi. Se questo è 0 (o non è impostato), le ricompense sono sempre come specificato, se questo è maggiore di 0, le ricompense aumentano se l&amp;#39;unità uccisa è di livello superiore a quello dell&amp;#39;eroe e diminuiscono se è inferiore. Con un valore di 0,5 (consigliato) con una differenza di livello di 10 si otterrebbero circa 2,5 volte le normali ricompense per oro, xp e salute." original="How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."/>
+        <string id="1LTDJZ7Y" text="Di quanto scalare le ricompense uccisioni, in base al livello relativo dei due personaggi. Se questo è 0 (o non è impostato), le ricompense sono sempre come specificato, se questo è maggiore di 0, le ricompense aumentano se l'unità uccisa è di livello superiore a quello dell'eroe e diminuiscono se è inferiore. Con un valore di 0,5 (consigliato) con una differenza di livello di 10 si otterrebbero circa 2,5 volte le normali ricompense per oro, xp e salute." original="How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."/>
         <!-- Level Scaling Cap -->
         <string id="BDk1G4nc" text="Limite scala livello" original="Level Scaling Cap"/>
         <!-- Caps the maximum multiplier for the level difference, defaults to 5 if not specified -->
         <string id="Vod0pJEN" text="Limita il moltiplicatore massimo per la differenza di livello, il valore predefinito è 5 se non specificato" original="Caps the maximum multiplier for the level difference, defaults to 5 if not specified"/>
         <!-- Win Gold -->
-        <string id="IQTT5vYE" text="Vinci l&amp;#39;oro" original="Win Gold"/>
+        <string id="IQTT5vYE" text="Vinci l'oro" original="Win Gold"/>
         <!-- Lose Gold -->
         <string id="lfCWK7aA" text="Perdi oro" original="Lose Gold"/>
         <!-- Win XP -->
@@ -109,13 +109,13 @@
         <!-- Lose XP -->
         <string id="Vobr36Bl" text="Perdi XP" original="Lose XP"/>
         <!-- Gold won if the heroes side wins -->
-        <string id="pc3G0W39" text="L&amp;#39;oro vince se vince la fazione degli eroi" original="Gold won if the heroes side wins"/>
+        <string id="pc3G0W39" text="L'oro vince se vince la fazione degli eroi" original="Gold won if the heroes side wins"/>
         <!-- XP the hero gets if the heroes side wins -->
-        <string id="F7Tw4D07" text="XP che l&amp;#39;eroe ottiene se vince il lato degli eroi" original="XP the hero gets if the heroes side wins"/>
+        <string id="F7Tw4D07" text="XP che l'eroe ottiene se vince il lato degli eroi" original="XP the hero gets if the heroes side wins"/>
         <!-- Gold lost if the heroes side loses -->
         <string id="E209XRml" text="Oro perso se perde la parte degli eroi" original="Gold lost if the heroes side loses"/>
         <!-- XP the hero gets if the heroes side loses -->
-        <string id="itAfYdmO" text="XP che l&amp;#39;eroe ottiene se perde il lato degli eroi" original="XP the hero gets if the heroes side loses"/>
+        <string id="itAfYdmO" text="XP che l'eroe ottiene se perde il lato degli eroi" original="XP the hero gets if the heroes side loses"/>
         <!-- Difficulty Scaling On Players Side -->
         <string id="ihB1KMOY" text="Difficoltà a scalare dal lato dei giocatori" original="Difficulty Scaling On Players Side"/>
         <!-- Apply difficulty scaling to players side -->
@@ -141,7 +141,7 @@
         <!-- Show Kill Streak Popup -->
         <string id="wQ7lXgLA" text="Mostra popup serie di uccisioni" original="Show Kill Streak Popup"/>
         <!-- Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled. -->
-        <string id="wDW3143d" text="Se utilizzare il banner popup per annunciare le serie di uccisioni. Verrà invece stampato solo nell&amp;#39;overlay se disabilitato." original="Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled."/>
+        <string id="wDW3143d" text="Se utilizzare il banner popup per annunciare le serie di uccisioni. Verrà invece stampato solo nell'overlay se disabilitato." original="Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled."/>
         <!-- Kill Streak Popup Alert Sound -->
         <string id="rhwujKvf" text="Suono di avviso popup Kill Streak" original="Kill Streak Popup Alert Sound"/>
         <!-- Sound to play when killstreak popup is disabled. -->
@@ -208,7 +208,7 @@
         <!-- No Spears -->
         <string id="CYVy4Hhx" text="Niente lance" original="No Spears"/>
         <!-- Normalize Armor -->
-        <string id="Ed55OyZ5" text="Normalizza l&amp;#39;armatura" original="Normalize Armor"/>
+        <string id="Ed55OyZ5" text="Normalizza l'armatura" original="Normalize Armor"/>
         <!-- Normalize Armor Tier -->
         <string id="xHJbcOaV" text="Normalizza livello armatura" original="Normalize Armor Tier"/>
         <!-- Randomize Weapon Types -->
@@ -266,7 +266,7 @@
         <!-- Tournament kills / deaths won't be counted towards achievements or kill streaks -->
         <string id="o5aH9rTO" text="Le uccisioni/morti nei tornei non verranno conteggiate per gli obiettivi o le serie di uccisioni" original="Tournament kills / deaths won't be counted towards achievements or kill streaks"/>
         <!-- Remove horses completely from the BLT tournaments (the horse AI is terrible) -->
-        <string id="sJ68yZs1" text="Rimuovi completamente i cavalli dai tornei BLT (l&amp;#39;IA dei cavalli è terribile)" original="Remove horses completely from the BLT tournaments (the horse AI is terrible)"/>
+        <string id="sJ68yZs1" text="Rimuovi completamente i cavalli dai tornei BLT (l'IA dei cavalli è terribile)" original="Remove horses completely from the BLT tournaments (the horse AI is terrible)"/>
         <!-- Replaces all lances and spears with swords, because lance and spear combat is terrible -->
         <string id="BjMC8Htn" text="Sostituisce tutte le lance e le lance con le spade, perché il combattimento tra lancia e lancia è terribile" original="Replaces all lances and spears with swords, because lance and spear combat is terrible"/>
         <!-- Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below) -->
@@ -308,17 +308,17 @@
         <!-- Allow 8 matches with 2 teams of 1 -->
         <string id="otwzXPTQ" text="Consenti 8 partite con 2 squadre di 1" original="Allow 8 matches with 2 teams of 1"/>
         <!-- Gold won if the hero wins their match in the round -->
-        <string id="i7Ns7K2i" text="L&amp;#39;oro vince se l&amp;#39;eroe vince la partita nel round" original="Gold won if the hero wins their match in the round"/>
+        <string id="i7Ns7K2i" text="L'oro vince se l'eroe vince la partita nel round" original="Gold won if the hero wins their match in the round"/>
         <!-- XP given if the hero wins their match in the round -->
-        <string id="b0MeEmOS" text="XP dati se l&amp;#39;eroe vince la partita nel round" original="XP given if the hero wins their match in the round"/>
+        <string id="b0MeEmOS" text="XP dati se l'eroe vince la partita nel round" original="XP given if the hero wins their match in the round"/>
         <!-- XP given if the hero loses their match in a round -->
-        <string id="Oq7LMvoF" text="XP dati se l&amp;#39;eroe perde la partita in un round" original="XP given if the hero loses their match in a round"/>
+        <string id="Oq7LMvoF" text="XP dati se l'eroe perde la partita in un round" original="XP given if the hero loses their match in a round"/>
         <!-- Gold won if the hero wins the tournaments -->
-        <string id="F8g49VCy" text="L&amp;#39;oro vince se l&amp;#39;eroe vince i tornei" original="Gold won if the hero wins the tournaments"/>
+        <string id="F8g49VCy" text="L'oro vince se l'eroe vince i tornei" original="Gold won if the hero wins the tournaments"/>
         <!-- XP given if the hero wins the tournaments -->
-        <string id="3BudXy0O" text="XP dati se l&amp;#39;eroe vince i tornei" original="XP given if the hero wins the tournaments"/>
+        <string id="3BudXy0O" text="XP dati se l'eroe vince i tornei" original="XP given if the hero wins the tournaments"/>
         <!-- XP given if the hero participates in a tournament but doesn't win -->
-        <string id="TXqjPXh7" text="XP dati se l&amp;#39;eroe partecipa a un torneo ma non vince" original="XP given if the hero participates in a tournament but doesn't win"/>
+        <string id="TXqjPXh7" text="XP dati se l'eroe partecipa a un torneo ma non vince" original="XP given if the hero participates in a tournament but doesn't win"/>
         <!-- Winners prize -->
         <string id="wYzmyUCE" text="Premio dei vincitori" original="Winners prize"/>
         <!-- Enable betting -->
@@ -328,11 +328,11 @@
         <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
         <string id="twgHWqU6" text="Abilità o gruppo di abilità al modificatore (tutte le abilità in un gruppo verranno modificate)" original="Skill or skill group to modifier (all skills in a group will be modified)"/>
         <!-- Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified. -->
-        <string id="zoMHI9O3" text="Riduzione dell&amp;#39;abilità per vittoria (in %). Vedere https://www.desmos.com/calculator/ajydvitcer per visualizzare come verrà modificata l&amp;#39;abilità." original="Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified."/>
+        <string id="zoMHI9O3" text="Riduzione dell'abilità per vittoria (in %). Vedere https://www.desmos.com/calculator/ajydvitcer per visualizzare come verrà modificata l'abilità." original="Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified."/>
         <!-- The lower limit (in %) that the skill(s) can be reduced to. -->
         <string id="HebJIfaE" text="Il limite inferiore (in %) a cui possono essere ridotte le competenze." original="The lower limit (in %) that the skill(s) can be reduced to."/>
         <!-- Shows the % reduction of the skill over 20 tournaments -->
-        <string id="vgXMv8oH" text="Mostra la % di riduzione dell&amp;#39;abilità su 20 tornei" original="Shows the % reduction of the skill over 20 tournaments"/>
+        <string id="vgXMv8oH" text="Mostra la % di riduzione dell'abilità su 20 tornei" original="Shows the % reduction of the skill over 20 tournaments"/>
         <!-- Prize {ITEMNAME} -->
         <string id="hCNpHVJY" text="Premio {ITEMNAME}" original="Prize {ITEMNAME}"/>
         <!-- Round Rewards -->

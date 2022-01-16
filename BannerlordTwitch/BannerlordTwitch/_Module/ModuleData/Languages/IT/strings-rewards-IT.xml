@@ -10,7 +10,7 @@
         <!-- Adds 10,000 gold to your adopted hero. -->
         <string id="Y7GzhU5a" text="Aggiunge 10.000 oro al tuo eroe adottato." original="Adds 10,000 gold to your adopted hero."/>
         <!-- Adds 100,000 gold to your adopted hero. -->
-        <string id="Hbk74nei" text="Aggiunge 100.000 monete d&amp;#39;oro al tuo eroe adottato." original="Adds 100,000 gold to your adopted hero."/>
+        <string id="Hbk74nei" text="Aggiunge 100.000 monete d'oro al tuo eroe adottato." original="Adds 100,000 gold to your adopted hero."/>
         <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue). -->
         <string id="nI4dr4uZ" text="Usalo quando lo streamer entra in battaglia, per generare il tuo eroe adottivo dalla parte degli streamer (insieme al tuo seguito)." original="Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue)."/>
         <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue). -->
@@ -18,25 +18,25 @@
         <!-- Heals the streamers character in battle, over time. Doesn't work on the campaign map. -->
         <string id="zLxgvsYd" text="Cura il personaggio degli streamer in battaglia, nel tempo. Non funziona sulla mappa della campagna." original="Heals the streamers character in battle, over time. Doesn't work on the campaign map."/>
         <!-- Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament. -->
-        <string id="KaE947T9" text="Unisciti alla coda del torneo con il tuo eroe adottato. Puoi vedere la coda nell&amp;#39;overlay. Ogni torneo può avere fino a 16 eroi, una volta che è pieno altri eroi rimarranno in coda per il prossimo torneo." original="Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament."/>
+        <string id="KaE947T9" text="Unisciti alla coda del torneo con il tuo eroe adottato. Puoi vedere la coda nell'overlay. Ogni torneo può avere fino a 16 eroi, una volta che è pieno altri eroi rimarranno in coda per il prossimo torneo." original="Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament."/>
         <!-- Sends a message in the game. If you have a hero then it will also show them next to the message. -->
         <string id="5L3LWrUx" text="Invia un messaggio nel gioco. Se hai un eroe, lo mostrerà anche accanto al messaggio." original="Sends a message in the game. If you have a hero then it will also show them next to the message."/>
         <!-- Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritance rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete. -->
         <string id="SXzjFdG1" text="Usalo se non vuoi più giocare con il tuo eroe attuale. Saranno contrassegnati come (ritirati) e potrai quindi adottarne uno nuovo. Le regole di successione si applicano alla pensione come alla morte. È NECESSARIO inserire sì al prompt (esattamente come scritto, in minuscolo) per completare il ritiro." original="Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritance rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete."/>
         <!-- Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment. -->
-        <string id="ZfhTuaRR" text="Aggiungi 50.000 XP al tuo eroe adottato. L&amp;#39;abilità a cui viene applicata sarà scelta casualmente, ma sarà influenzata dalla tua classe e dalle abilità e dall&amp;#39;equipaggiamento esistenti." original="Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment."/>
+        <string id="ZfhTuaRR" text="Aggiungi 50.000 XP al tuo eroe adottato. L'abilità a cui viene applicata sarà scelta casualmente, ma sarà influenzata dalla tua classe e dalle abilità e dall'equipaggiamento esistenti." original="Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment."/>
         <!-- Heals your hero over time. Only works in battle, when your hero is summoned. -->
         <string id="pFwSBHnR" text="Guarisce il tuo eroe nel tempo. Funziona solo in battaglia, quando viene evocato il tuo eroe." original="Heals your hero over time. Only works in battle, when your hero is summoned."/>
         <!-- Transfer 10,000 gold to the streamers character, from your hero. -->
         <string id="CSmE7Y50" text="Trasferisci 10.000 oro al personaggio degli streamer, dal tuo eroe." original="Transfer 10,000 gold to the streamers character, from your hero."/>
         <!-- Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay. -->
-        <string id="LO6Q2DCb" text="Attiva il tuo potere di classe sul tuo eroe, se ne hai uno. L&amp;#39;alimentazione durerà per un periodo di tempo limitato, indicato sull&amp;#39;overlay." original="Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay."/>
+        <string id="LO6Q2DCb" text="Attiva il tuo potere di classe sul tuo eroe, se ne hai uno. L'alimentazione durerà per un periodo di tempo limitato, indicato sull'overlay." original="Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay."/>
         <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
         <string id="kL65xglO" text="Ottieni un eroe nel gioco. Quasi tutte le altre azioni richiedono un eroe adottato." original="Get a hero in game. Almost all other actions require an adopted hero."/>
         <!-- Add 10,000 gold to your adopted hero -->
         <string id="xQTiKsVA" text="Aggiungi 10.000 oro al tuo eroe adottato" original="Add 10,000 gold to your adopted hero"/>
         <!-- Add 100,000 gold to your adopted hero -->
-        <string id="xeI0AXUl" text="Aggiungi 100.000 monete d&amp;#39;oro al tuo eroe adottato" original="Add 100,000 gold to your adopted hero"/>
+        <string id="xeI0AXUl" text="Aggiungi 100.000 monete d'oro al tuo eroe adottato" original="Add 100,000 gold to your adopted hero"/>
         <!-- Your adopted hero joins the players side in battle -->
         <string id="zmxI41XP" text="Il tuo eroe adottivo si unisce ai giocatori in battaglia" original="Your adopted hero joins the players side in battle"/>
         <!-- Your adopted hero joins the enemies side in battle -->
@@ -50,7 +50,7 @@
         <!-- Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel -->
         <string id="ZNGav9pi" text="Inserisci sì per ritirare il tuo eroe (non sarà più controllato da te) o chiudi questa finestra per annullare" original="Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel"/>
         <!-- Add 50,000 XP to a random skill of your adopted hero -->
-        <string id="UCjOD22c" text="Aggiungi 50.000 XP a un&amp;#39;abilità casuale del tuo eroe adottato" original="Add 50,000 XP to a random skill of your adopted hero"/>
+        <string id="UCjOD22c" text="Aggiungi 50.000 XP a un'abilità casuale del tuo eroe adottato" original="Add 50,000 XP to a random skill of your adopted hero"/>
         <!-- Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below: -->
         <string id="1IDV1dAh" text="Trasferisci 10.000 oro al personaggio degli streamer, dal tuo eroe. Inserisci il messaggio regalo qui sotto:" original="Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:"/>
         <!-- Activate your class power on your hero, if you have one. -->

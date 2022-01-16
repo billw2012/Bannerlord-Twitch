@@ -98,14 +98,14 @@
         <string id="u6xsREDY" text="Récompenses en points de chaîne" original="Channel Point Rewards"/>
         <!-- ActionManager -->
         <!-- The game isn't started yet -->
-        <string id="kvbqfThe" text="Le jeu n&amp;#39;a pas encore commencé" original="The game isn't started yet"/>
+        <string id="kvbqfThe" text="Le jeu n'a pas encore commencé" original="The game isn't started yet"/>
         <!-- Action with the id {RewardId} doesn't exist -->
-        <string id="B39sGef4" text="L&amp;#39;action avec l&amp;#39;identifiant {RewardId} n&amp;#39;existe pas" original="Action with the id {RewardId} doesn't exist"/>
+        <string id="B39sGef4" text="L'action avec l'identifiant {RewardId} n'existe pas" original="Action with the id {RewardId} doesn't exist"/>
         <!-- Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow -->
-        <string id="yo8Yw3Mz" text="Action {RewardId} a mis {TimeInMS}ms pour être mise en file d&amp;#39;attente, c&amp;#39;est trop lent" original="Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow"/>
+        <string id="yo8Yw3Mz" text="Action {RewardId} a mis {TimeInMS}ms pour être mise en file d'attente, c'est trop lent" original="Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow"/>
         <!-- BLTAgentModifierBehavior -->
         <!-- Scale Percent -->
-        <string id="JzII0KRZ" text="Pourcentage de mise à l&amp;#39;échelle" original="Scale Percent"/>
+        <string id="JzII0KRZ" text="Pourcentage de mise à l'échelle" original="Scale Percent"/>
         <!-- Changes the size of the target -->
         <string id="fc1SmPXH" text="Modifie la taille de la cible" original="Changes the size of the target"/>
         <!-- Apply To Mount -->
@@ -131,9 +131,9 @@
         <!-- DocumentationHelpers -->
         <!-- ParticleEffectDef -->
         <!-- Particle effect system name, see ParticleEffects.txt for the full vanilla list -->
-        <string id="xgnntAyd" text="Nom du système d&amp;#39;effet de particules, voir ParticleEffects.txt pour la liste complète de vanille" original="Particle effect system name, see ParticleEffects.txt for the full vanilla list"/>
+        <string id="xgnntAyd" text="Nom du système d'effet de particules, voir ParticleEffects.txt pour la liste complète de vanille" original="Particle effect system name, see ParticleEffects.txt for the full vanilla list"/>
         <!-- On Weapon -->
-        <string id="w3eb5kWA" text="Sur l&amp;#39;arme" original="On Weapon"/>
+        <string id="w3eb5kWA" text="Sur l'arme" original="On Weapon"/>
         <!-- On Hands -->
         <string id="YLmpgn4j" text="Sur les mains" original="On Hands"/>
         <!-- On Head -->
@@ -141,24 +141,24 @@
         <!-- On Body -->
         <string id="m9p9nBjM" text="Sur le corps" original="On Body"/>
         <!-- Attach Point -->
-        <string id="GCe3gQcz" text="Point d&amp;#39;attache" original="Attach Point"/>
+        <string id="GCe3gQcz" text="Point d'attache" original="Attach Point"/>
         <!-- Where to attach the particles -->
         <string id="uNOYtEdN" text="Où attacher les particules" original="Where to attach the particles"/>
         <!-- DrivenPropertyItemSource -->
         <!-- Armor Head -->
-        <string id="oUgW3q7p" text="Tête d&amp;#39;armure" original="Armor Head"/>
+        <string id="oUgW3q7p" text="Tête d'armure" original="Armor Head"/>
         <!-- Armor Torso -->
-        <string id="NYoNwE3R" text="Torse d&amp;#39;armure" original="Armor Torso"/>
+        <string id="NYoNwE3R" text="Torse d'armure" original="Armor Torso"/>
         <!-- Armor Legs -->
-        <string id="VKAAkKbm" text="Jambes d&amp;#39;armure" original="Armor Legs"/>
+        <string id="VKAAkKbm" text="Jambes d'armure" original="Armor Legs"/>
         <!-- Armor Arms -->
-        <string id="dzqBXvaS" text="Armes d&amp;#39;armure" original="Armor Arms"/>
+        <string id="dzqBXvaS" text="Armes d'armure" original="Armor Arms"/>
         <!-- Armor Encumbrance -->
-        <string id="2EaDPdxT" text="Encombrement d&amp;#39;armure" original="Armor Encumbrance"/>
+        <string id="2EaDPdxT" text="Encombrement d'armure" original="Armor Encumbrance"/>
         <!-- Weapons Encumbrance -->
         <string id="Kd1ZpiXo" text="Encombrement des armes" original="Weapons Encumbrance"/>
         <!-- Top Speed Reach Duration -->
-        <string id="kZ2KuXHY" text="Durée d&amp;#39;atteinte de la vitesse maximale" original="Top Speed Reach Duration"/>
+        <string id="kZ2KuXHY" text="Durée d'atteinte de la vitesse maximale" original="Top Speed Reach Duration"/>
         <!-- Max Speed Multiplier -->
         <string id="9yu9o5nH" text="Multiplicateur de vitesse maximale" original="Max Speed Multiplier"/>
         <!-- Combat Max Speed Multiplier -->
@@ -172,15 +172,15 @@
         <!-- Mount Speed -->
         <string id="NJpg1RsS" text="Vitesse de la monture" original="Mount Speed"/>
         <!-- Horse Archery Ability -->
-        <string id="UtGZ9B6F" text="Capacité de tir à l&amp;#39;arc à cheval" original="Horse Archery Ability"/>
+        <string id="UtGZ9B6F" text="Capacité de tir à l'arc à cheval" original="Horse Archery Ability"/>
         <!-- Riding Ability -->
-        <string id="pmUxn1vO" text="Capacité d&amp;#39;équitation" original="Riding Ability"/>
+        <string id="pmUxn1vO" text="Capacité d'équitation" original="Riding Ability"/>
         <!-- Shield Ability -->
         <string id="wLmAnuDu" text="Capacité de bouclier" original="Shield Ability"/>
         <!-- Handling Multiplier -->
         <string id="YZt69g1x" text="Multiplicateur de traitement" original="Handling Multiplier"/>
         <!-- Weapon Inaccuracy -->
-        <string id="Yem5BVmg" text="L&amp;#39;imprécision de l&amp;#39;arme" original="Weapon Inaccuracy"/>
+        <string id="Yem5BVmg" text="L'imprécision de l'arme" original="Weapon Inaccuracy"/>
         <!-- Swing Speed Multiplier -->
         <string id="DUuJ6bM5" text="Multiplicateur de vitesse de swing" original="Swing Speed Multiplier"/>
         <!-- Reload Speed -->
@@ -194,15 +194,15 @@
         <!-- Thrust Or Ranged Ready Speed Multiplier -->
         <string id="xxkAFaWD" text="Multiplicateur de vitesse de poussée ou de portée" original="Thrust Or Ranged Ready Speed Multiplier"/>
         <!-- AI Shoot Frequency -->
-        <string id="iaxxNiiV" text="Fréquence de tir de l&amp;#39;IA" original="AI Shoot Frequency"/>
+        <string id="iaxxNiiV" text="Fréquence de tir de l'IA" original="AI Shoot Frequency"/>
         <!-- AI Wait Before Shoot Factor -->
-        <string id="3HlCPScr" text="Facteur d&amp;#39;attente de l&amp;#39;IA avant de tirer" original="AI Wait Before Shoot Factor"/>
+        <string id="3HlCPScr" text="Facteur d'attente de l'IA avant de tirer" original="AI Wait Before Shoot Factor"/>
         <!-- AI Block Chance -->
-        <string id="7xW74SvW" text="Chance de blocage de l&amp;#39;IA" original="AI Block Chance"/>
+        <string id="7xW74SvW" text="Chance de blocage de l'IA" original="AI Block Chance"/>
         <!-- AI Attack Chance -->
-        <string id="vIjQ6b5w" text="Chance d&amp;#39;attaque de l&amp;#39;IA" original="AI Attack Chance"/>
+        <string id="vIjQ6b5w" text="Chance d'attaque de l'IA" original="AI Attack Chance"/>
         <!-- AI Kick -->
-        <string id="FgSI5C4F" text="Coup de pied d&amp;#39;IA" original="AI Kick"/>
+        <string id="FgSI5C4F" text="Coup de pied d'IA" original="AI Kick"/>
         <!-- EquipmentType -->
         <!-- None -->
         <string id="i7XX56i9" text="Vide" original="None"/>
@@ -278,9 +278,9 @@
         <!-- The property to modify -->
         <string id="SUI6n33o" text="La propriété à modifier" original="The property to modify"/>
         <!-- Percent modifier to apply to the property (100% will result in no chance) -->
-        <string id="fDNljlb9" text="Modificateur de pourcentage à appliquer à la propriété (100 % n&amp;#39;entraînera aucune chance)" original="Percent modifier to apply to the property (100% will result in no chance)"/>
+        <string id="fDNljlb9" text="Modificateur de pourcentage à appliquer à la propriété (100 % n'entraînera aucune chance)" original="Percent modifier to apply to the property (100% will result in no chance)"/>
         <!-- How much to add or subtract from the property (0 will result in no change). This is applied AFTER Modifier. -->
-        <string id="CBWdKoGD" text="Combien ajouter ou soustraire de la propriété (0 n&amp;#39;entraînera aucun changement). Ceci est appliqué APRÈS le modificateur." original="How much to add or subtract from the property (0 will result in no change). This is applied AFTER Modifier."/>
+        <string id="CBWdKoGD" text="Combien ajouter ou soustraire de la propriété (0 n'entraînera aucun changement). Ceci est appliqué APRÈS le modificateur." original="How much to add or subtract from the property (0 will result in no change). This is applied AFTER Modifier."/>
         <!-- (no change) -->
         <string id="usihVSj3" text="(pas de changement)" original="(no change)"/>
         <!-- SkillModifierDef -->
@@ -289,22 +289,22 @@
         <!-- Add -->
         <string id="Au82n7kL" text="Ajouter" original="Add"/>
         <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
-        <string id="46oj12tA" text="Compétence ou groupe de compétences à modifier (toutes les compétences d&amp;#39;un groupe seront modifiées)" original="Skill or skill group to modifier (all skills in a group will be modified)"/>
+        <string id="46oj12tA" text="Compétence ou groupe de compétences à modifier (toutes les compétences d'un groupe seront modifiées)" original="Skill or skill group to modifier (all skills in a group will be modified)"/>
         <!-- Percent modifier to apply to the skill (100% will result in no chance) -->
-        <string id="S34uXWMu" text="Modificateur de pourcentage à appliquer à la compétence (100 % n&amp;#39;entraînera aucune chance)" original="Percent modifier to apply to the skill (100% will result in no chance)"/>
+        <string id="S34uXWMu" text="Modificateur de pourcentage à appliquer à la compétence (100 % n'entraînera aucune chance)" original="Percent modifier to apply to the skill (100% will result in no chance)"/>
         <!-- How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier. -->
-        <string id="hPQpBmRR" text="Combien ajouter ou soustraire de la compétence (0 n&amp;#39;entraînera aucun changement). Ceci est appliqué APRÈS le modificateur." original="How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier."/>
+        <string id="hPQpBmRR" text="Combien ajouter ou soustraire de la compétence (0 n'entraînera aucun changement). Ceci est appliqué APRÈS le modificateur." original="How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier."/>
         <!-- (no change) -->
         <string id="PsUcJvPZ" text="(pas de changement)" original="(no change)"/>
         <!-- BLTOverlay -->
         <!-- BLT Overlay -->
         <string id="fmjzDasd" text="Superposition BLT" original="BLT Overlay"/>
         <!-- For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again. -->
-        <string id="Kgi2isWy" text="Pour que la Superposition BLT par source navigateur fonctionne, il doit réserver le port {Port} et l&amp;#39;autoriser via le pare-feu Windows.\nCela nécessite des privilèges d&amp;#39;administrateur, qui seront demandés après avoir appuyé sur OK.\nEn cas de succès, vous ne le verrez pas pop-up à nouveau." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
+        <string id="Kgi2isWy" text="Pour que la Superposition BLT par source navigateur fonctionne, il doit réserver le port {Port} et l'autoriser via le pare-feu Windows.\nCela nécessite des privilèges d'administrateur, qui seront demandés après avoir appuyé sur OK.\nEn cas de succès, vous ne le verrez pas pop-up à nouveau." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
         <!-- Okay -->
-        <string id="yXwMSbr4" text="D&amp;#39;accord" original="Okay"/>
+        <string id="yXwMSbr4" text="D'accord" original="Okay"/>
         <!-- Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window. -->
-        <string id="6ucf05tp" text="Configuration réussie!\nVous pouvez maintenant accéder à la superposition à l&amp;#39;adresse {UrlRoot}.\nVous pouvez retrouver ce lien dans l&amp;#39;onglet Autoriser de la fenêtre Configurer BLT." original="Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."/>
+        <string id="6ucf05tp" text="Configuration réussie!\nVous pouvez maintenant accéder à la superposition à l'adresse {UrlRoot}.\nVous pouvez retrouver ce lien dans l'onglet Autoriser de la fenêtre Configurer BLT." original="Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."/>
         <!-- Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord. -->
         <string id="usADfORe" text="ÉCHEC de la configuration:\n \&amp;quot;{e.Message}\&amp;quot;\nVous ne pourrez peut-être pas accéder à la superposition.\nSignalez ce problème dans le discord." original="Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord."/>
         <!-- ActionBase -->
@@ -336,7 +336,7 @@
         <string id="ctAF1ghX" text="Guide de la visionneuse Twitch de Bannerlord" original="Bannerlord Twitch Viewer Guide"/>
         <!-- Introduction -->
         <!-- Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to &apos;adopt&apos; a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include &apos;summoning&apos; your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes &apos;class&apos;.&lt;br&gt;If you aren&apos;t sure where to start, begin by using the channel point redemption &apos;Adopt a Hero&apos;. -->
-        <string id="rElL5v6I" text="Bannerlord Twitch (BLT) est un mod d&amp;#39;intégration Twitch pour Mount &amp;amp; Blade II: Bannerlord.&lt;br&gt; En tant que spectateur, vous pouvez utiliser les récompenses de points de chaîne (si disponibles) et les commandes de chat pour interagir avec le jeu pendant que le streamer joue.&lt;br&gt; La principale caractéristique de BLT vous permet « d&amp;#39;adopter » un héros dans le jeu, c&amp;#39;est-à-dire qu&amp;#39;un personnage du jeu vous sera attribué, en fonction de votre nom Twitch, et sera disponible pour que vous puissiez interagir davantage.&lt;br&gt; Quelques exemples de choses que vous pouvez faire avec votre héros incluent « invoquer » votre héros dans des batailles auxquelles le streamer participe, rejoindre des tournois de téléspectateurs, améliorer l&amp;#39;équipement, sélectionner la « classe » de votre héros.&lt;br&gt; Si vous ne savez pas par où commencer, commencez par utiliser l&amp;#39;échange de points de canal « Adoptez un héros »." original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
+        <string id="rElL5v6I" text="Bannerlord Twitch (BLT) est un mod d'intégration Twitch pour Mount &amp;amp; Blade II: Bannerlord.&lt;br&gt; En tant que spectateur, vous pouvez utiliser les récompenses de points de chaîne (si disponibles) et les commandes de chat pour interagir avec le jeu pendant que le streamer joue.&lt;br&gt; La principale caractéristique de BLT vous permet « d'adopter » un héros dans le jeu, c'est-à-dire qu'un personnage du jeu vous sera attribué, en fonction de votre nom Twitch, et sera disponible pour que vous puissiez interagir davantage.&lt;br&gt; Quelques exemples de choses que vous pouvez faire avec votre héros incluent « invoquer » votre héros dans des batailles auxquelles le streamer participe, rejoindre des tournois de téléspectateurs, améliorer l'équipement, sélectionner la « classe » de votre héros.&lt;br&gt; Si vous ne savez pas par où commencer, commencez par utiliser l'échange de points de canal « Adoptez un héros »." original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
         <!-- Command -->
         <!-- Bot command definition -->
         <string id="8SbGSWFY" text="Définition de commande de bot" original="Bot command definition"/>
@@ -347,7 +347,7 @@
         <!-- HideHelp -->
         <string id="TpnV5Mpi" text="MasquerAide" original="HideHelp"/>
         <!-- Hides the command from the !help action -->
-        <string id="0AZVaBQN" text="Masque la commande de l&amp;#39;action !help" original="Hides the command from the !help action"/>
+        <string id="0AZVaBQN" text="Masque la commande de l'action !help" original="Hides the command from the !help action"/>
         <!-- Help -->
         <string id="JqNXbyIT" text="Aider" original="Help"/>
         <!-- What to show in the !help command -->
@@ -365,27 +365,27 @@
         <!-- The title of the reward -->
         <string id="b8OBGhIk" text="Le titre de la récompense" original="The title of the reward"/>
         <!-- Whether the reward will automatically be set to fulfilled once completed in game. If you set this to true then the redemptions that successfully complete in game will stay in your redemption queue. This is useful if you are worried about people losing points if the game crashes, or you reload an older save. -->
-        <string id="Kunfq4KA" text="Si la récompense sera automatiquement définie comme remplie une fois terminée dans le jeu. Si vous définissez cette valeur sur true, les rachats qui se terminent avec succès dans le jeu resteront dans votre file d&amp;#39;attente de rachat. Ceci est utile si vous craignez que des personnes perdent des points si le jeu plante ou si vous rechargez une sauvegarde plus ancienne." original="Whether the reward will automatically be set to fulfilled once completed in game. If you set this to true then the redemptions that successfully complete in game will stay in your redemption queue. This is useful if you are worried about people losing points if the game crashes, or you reload an older save."/>
+        <string id="Kunfq4KA" text="Si la récompense sera automatiquement définie comme remplie une fois terminée dans le jeu. Si vous définissez cette valeur sur true, les rachats qui se terminent avec succès dans le jeu resteront dans votre file d'attente de rachat. Ceci est utile si vous craignez que des personnes perdent des points si le jeu plante ou si vous rechargez une sauvegarde plus ancienne." original="Whether the reward will automatically be set to fulfilled once completed in game. If you set this to true then the redemptions that successfully complete in game will stay in your redemption queue. This is useful if you are worried about people losing points if the game crashes, or you reload an older save."/>
         <!-- Description / prompt -->
         <string id="yXhrzrGA" text="Description / invite" original="Description / prompt"/>
         <!-- The cost of the reward -->
         <string id="dvYTG9UH" text="Le coût de la récompense" original="The cost of the reward"/>
         <!-- Is the reward currently enabled, if false the reward won’t show up to viewers. -->
-        <string id="iCzROk3u" text="La récompense est-elle actuellement activée, si elle est fausse, la récompense n&amp;#39;apparaîtra pas aux téléspectateurs." original="Is the reward currently enabled, if false the reward won’t show up to viewers."/>
+        <string id="iCzROk3u" text="La récompense est-elle actuellement activée, si elle est fausse, la récompense n'apparaîtra pas aux téléspectateurs." original="Is the reward currently enabled, if false the reward won’t show up to viewers."/>
         <!-- Custom background color for the reward -->
         <string id="Bg62Iggr" text="Couleur de fond personnalisée pour la récompense" original="Custom background color for the reward"/>
         <!-- Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown. -->
-        <string id="XqPRNwVc" text="L&amp;#39;utilisateur doit-il saisir des informations lors de l&amp;#39;utilisation de la récompense. Si cela est vrai, l&amp;#39;invite s&amp;#39;affichera." original="Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown."/>
+        <string id="XqPRNwVc" text="L'utilisateur doit-il saisir des informations lors de l'utilisation de la récompense. Si cela est vrai, l'invite s'affichera." original="Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown."/>
         <!-- Title -->
         <string id="EJDKdXPV" text="Titre" original="Title"/>
         <!-- Disable Automatic Fulfillment -->
-        <string id="Obz1yM6k" text="Désactiver l&amp;#39;exécution automatique" original="Disable Automatic Fulfillment"/>
+        <string id="Obz1yM6k" text="Désactiver l'exécution automatique" original="Disable Automatic Fulfillment"/>
         <!-- Prompt -->
         <string id="e9jiFSF4" text="Rapide" original="Prompt"/>
         <!-- Background Color -->
-        <string id="YzP57nUK" text="Couleur de l&amp;#39;arrière plan" original="Background Color"/>
+        <string id="YzP57nUK" text="Couleur de l'arrière plan" original="Background Color"/>
         <!-- Is User Input Required -->
-        <string id="9aESWqlM" text="L&amp;#39;entrée de l&amp;#39;utilisateur est-elle requise" original="Is User Input Required"/>
+        <string id="9aESWqlM" text="L'entrée de l'utilisateur est-elle requise" original="Is User Input Required"/>
         <!-- Max Per Stream -->
         <string id="qAxLr567" text="Max par flux" original="Max Per Stream"/>
         <!-- Max Per User Per Stream -->
@@ -490,13 +490,13 @@
         <!-- Loaded v{ModVersion} -->
         <string id="45Q44kgm" text="Chargé v{ModVersion}" original="Loaded v{ModVersion}"/>
         <!-- Action Manager initialized -->
-        <string id="5G73vqNS" text="Gestionnaire d&amp;#39;actions initialisé" original="Action Manager initialized"/>
+        <string id="5G73vqNS" text="Gestionnaire d'actions initialisé" original="Action Manager initialized"/>
         <!-- Bannerlord Twitch Mod WARNING -->
         <string id="PhRzCo9t" text="Bannerlord Twitch Mod AVERTISSEMENT" original="Bannerlord Twitch Mod WARNING"/>
         <!-- You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less. -->
-        <string id="7b4tU6y9" text="Vous avez désactivé l&amp;#39;enregistrement automatique, les plantages peuvent entraîner la perte de points de chaîne !\nNous vous recommandons de le définir sur 15 minutes ou moins." original="You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less."/>
+        <string id="7b4tU6y9" text="Vous avez désactivé l'enregistrement automatique, les plantages peuvent entraîner la perte de points de chaîne !\nNous vous recommandons de le définir sur 15 minutes ou moins." original="You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less."/>
         <!-- Okay -->
-        <string id="hpFXglKx" text="D&amp;#39;accord" original="Okay"/>
+        <string id="hpFXglKx" text="D'accord" original="Okay"/>
         <!-- Bannerlord Twitch Mod DISABLED -->
         <string id="Sphd7XTS" text="Bannerlord Twitch Mod DÉSACTIVÉ" original="Bannerlord Twitch Mod DISABLED"/>
         <!-- Bannerlord Twitch Mod STARTUP ERROR -->
@@ -515,7 +515,7 @@
         <!-- Two Handed -->
         <string id="93kpWTwA" text="Deux mains" original="Two Handed"/>
         <!-- Polearm -->
-        <string id="PWibGbJ4" text="Arme d&amp;#39;hast" original="Polearm"/>
+        <string id="PWibGbJ4" text="Arme d'hast" original="Polearm"/>
         <!-- Ranged -->
         <string id="oidnJJjF" text="à distance" original="Ranged"/>
         <!-- Bow -->

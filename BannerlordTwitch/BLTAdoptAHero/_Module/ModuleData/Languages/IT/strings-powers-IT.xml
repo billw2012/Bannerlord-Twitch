@@ -47,7 +47,7 @@
         <!-- Duration the power will last for (when used as an active power), in seconds -->
         <string id="km0QRxRs" text="Durata della potenza (se utilizzata come potenza attiva), in secondi" original="Duration the power will last for (when used as an active power), in seconds"/>
         <!-- Effects to apply to the agent while the power is active -->
-        <string id="xmz0TzN7" text="Effetti da applicare all&amp;#39;agente mentre l&amp;#39;alimentazione è attiva" original="Effects to apply to the agent while the power is active"/>
+        <string id="xmz0TzN7" text="Effetti da applicare all'agente mentre l'alimentazione è attiva" original="Effects to apply to the agent while the power is active"/>
         <!-- No mission is active! -->
         <string id="u48yBW5b" text="Nessuna missione è attiva!" original="No mission is active!"/>
         <!-- Mission has not started yet! -->
@@ -129,7 +129,7 @@
         <!-- Add Damage Power -->
         <string id="JgPVRq5W" text="Aggiungi potere danno" original="Add Damage Power"/>
         <!-- Adds fixed or relative amount of extra HP to the hero when they spawn -->
-        <string id="RGUwxlOx" text="Aggiunge una quantità fissa o relativa di HP extra all&amp;#39;eroe quando si genera" original="Adds fixed or relative amount of extra HP to the hero when they spawn"/>
+        <string id="RGUwxlOx" text="Aggiunge una quantità fissa o relativa di HP extra all'eroe quando si genera" original="Adds fixed or relative amount of extra HP to the hero when they spawn"/>
         <!-- Damage Modifier Percent -->
         <string id="0mhPe31m" text="Percentuale modificatore di danno" original="Damage Modifier Percent"/>
         <!-- Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it) -->
@@ -165,11 +165,11 @@
         <!-- Stagger Chance Percent -->
         <string id="XxLPeI3i" text="Percentuale probabilità sbalorditiva" original="Stagger Chance Percent"/>
         <!-- Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR stagger, it can't do both, cut through chance is evaluated before this one) -->
-        <string id="8N18Zs1O" text="Possibilità (da 0 a 1) che l&amp;#39;hit scaglii l&amp;#39;agente che colpisce (l&amp;#39;hit può tagliare O barcollare, non può fare entrambe le cose, il cut through chance viene valutato prima di questo)" original="Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR stagger, it can't do both, cut through chance is evaluated before this one)"/>
+        <string id="8N18Zs1O" text="Possibilità (da 0 a 1) che l'hit scaglii l'agente che colpisce (l'hit può tagliare O barcollare, non può fare entrambe le cose, il cut through chance viene valutato prima di questo)" original="Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR stagger, it can't do both, cut through chance is evaluated before this one)"/>
         <!-- AoE -->
         <string id="O4AUEtAO" text="AoE" original="AoE"/>
         <!-- Area of Effect damage to apply -->
-        <string id="5ke30xUG" text="Danni ad area d&amp;#39;effetto da applicare" original="Area of Effect damage to apply"/>
+        <string id="5ke30xUG" text="Danni ad area d'effetto da applicare" original="Area of Effect damage to apply"/>
         <!-- Apply Against Non Heroes -->
         <string id="0WAJwEvc" text="Applicare contro i non eroi" original="Apply Against Non Heroes"/>
         <!-- Whether to apply this bonus damage against normal troops -->
@@ -256,7 +256,7 @@
         <!-- Only On Hit -->
         <string id="u1EgbhAw" text="Solo su Hit" original="Only On Hit"/>
         <!-- Only apply the damage if the attack hits an agent (as opposed to the ground, e.g. for arrows) -->
-        <string id="uxyVrVjV" text="Applica il danno solo se l&amp;#39;attacco colpisce un agente (al contrario del terreno, ad esempio per le frecce)" original="Only apply the damage if the attack hits an agent (as opposed to the ground, e.g. for arrows)"/>
+        <string id="uxyVrVjV" text="Applica il danno solo se l'attacco colpisce un agente (al contrario del terreno, ad esempio per le frecce)" original="Only apply the damage if the attack hits an agent (as opposed to the ground, e.g. for arrows)"/>
         <!-- Damage At Center -->
         <string id="oLCQliJn" text="Danni al centro" original="Damage At Center"/>
         <!-- Damage at distance 0 from the hit -->
@@ -283,7 +283,7 @@
         <!-- Add Health Power -->
         <string id="ZbxNmvem" text="Aggiungi il potere della salute" original="Add Health Power"/>
         <!-- Adds fixed or relative amount of extra HP to the hero when they spawn -->
-        <string id="NlJXiSkn" text="Aggiunge una quantità fissa o relativa di HP extra all&amp;#39;eroe quando si genera" original="Adds fixed or relative amount of extra HP to the hero when they spawn"/>
+        <string id="NlJXiSkn" text="Aggiunge una quantità fissa o relativa di HP extra all'eroe quando si genera" original="Adds fixed or relative amount of extra HP to the hero when they spawn"/>
         <!-- Health Modifier Percent -->
         <string id="EQ16SH5A" text="Percentuale modificatore di salute" original="Health Modifier Percent"/>
         <!-- Modifier to apply to base HP -->
@@ -296,15 +296,15 @@
         <!-- Reflect Damage Power -->
         <string id="7d0IdABV" text="Rifletti il potere del danno" original="Reflect Damage Power"/>
         <!-- Adds fixed or relative amount of extra HP to the hero when they spawn -->
-        <string id="jcNZx1M0" text="Aggiunge una quantità fissa o relativa di HP extra all&amp;#39;eroe quando si genera" original="Adds fixed or relative amount of extra HP to the hero when they spawn"/>
+        <string id="jcNZx1M0" text="Aggiunge una quantità fissa o relativa di HP extra all'eroe quando si genera" original="Adds fixed or relative amount of extra HP to the hero when they spawn"/>
         <!-- Reflect Percent -->
         <string id="buBZhrP0" text="Rifletti percentuale" original="Reflect Percent"/>
         <!-- What percent of damage to reflect back to attacker -->
-        <string id="ibxqpdtD" text="Quale percentuale di danno riflettere sull&amp;#39;attaccante?" original="What percent of damage to reflect back to attacker"/>
+        <string id="ibxqpdtD" text="Quale percentuale di danno riflettere sull'attaccante?" original="What percent of damage to reflect back to attacker"/>
         <!-- Reflected Damage Is Subtracted -->
         <string id="IxiHjT1Z" text="Il danno riflesso viene sottratto" original="Reflected Damage Is Subtracted"/>
         <!-- Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection) -->
-        <string id="Pdg6mCPA" text="Se il danno che viene riflesso viene sottratto anche dal danno che l&amp;#39;eroe subisce (questo è il riflesso del danno &amp;quot;classico&amp;quot;)" original="Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection)"/>
+        <string id="Pdg6mCPA" text="Se il danno che viene riflesso viene sottratto anche dal danno che l'eroe subisce (questo è il riflesso del danno &amp;quot;classico&amp;quot;)" original="Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection)"/>
         <!-- Hit Behavior -->
         <string id="WDRb4mQ3" text="Comportamento del colpo" original="Hit Behavior"/>
         <!-- Hit behavior for the reflected damage -->
@@ -342,11 +342,11 @@
         <!-- Add Hit Behavior -->
         <string id="2JFBV975" text="Aggiungi comportamento colpo" original="Add Hit Behavior"/>
         <!-- Behaviors to add to the damage (e.g. add Shrug Off to ensure the hero is never stunned when hit) -->
-        <string id="9t2oXdqy" text="Comportamenti da aggiungere al danno (ad esempio aggiungere Shrug Off per garantire che l&amp;#39;eroe non venga mai stordito quando viene colpito)" original="Behaviors to add to the damage (e.g. add Shrug Off to ensure the hero is never stunned when hit)"/>
+        <string id="9t2oXdqy" text="Comportamenti da aggiungere al danno (ad esempio aggiungere Shrug Off per garantire che l'eroe non venga mai stordito quando viene colpito)" original="Behaviors to add to the damage (e.g. add Shrug Off to ensure the hero is never stunned when hit)"/>
         <!-- Remove Hit Behavior -->
         <string id="GLAvDJl5" text="Rimuovi comportamento hit" original="Remove Hit Behavior"/>
         <!-- Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit) -->
-        <string id="oA2TrarN" text="Comportamenti da rimuovere dal danno (ad esempio rimuovere Shrug Off per garantire che l&amp;#39;eroe sia sempre stordito quando viene colpito)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit)"/>
+        <string id="oA2TrarN" text="Comportamenti da rimuovere dal danno (ad esempio rimuovere Shrug Off per garantire che l'eroe sia sempre stordito quando viene colpito)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit)"/>
         <!-- Armor To Ignore Percent -->
         <string id="9Lwkwni0" text="Armatura da ignorare in percentuale" original="Armor To Ignore Percent"/>
         <!-- What fraction (0 to 1) of armor to ignore when applying damage -->

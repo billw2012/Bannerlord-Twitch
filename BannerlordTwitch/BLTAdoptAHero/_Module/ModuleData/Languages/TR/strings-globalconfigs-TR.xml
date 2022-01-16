@@ -11,7 +11,7 @@
         <!-- Sub Boost -->
         <string id="xwcKN7sH" text="Alt Güçlendirme" original="Sub Boost"/>
         <!-- Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently. -->
-        <string id="rX68wbfF" text="Aboneler için tüm ödüllere uygulanan çarpan (1&amp;#39;den az veya eşit, destek yok anlamına gelir). NOT: Bu yalnızca kısmen uygulanmaktadır, şu anda yalnızca bot komutları için çalışmaktadır." original="Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently."/>
+        <string id="rX68wbfF" text="Aboneler için tüm ödüllere uygulanan çarpan (1'den az veya eşit, destek yok anlamına gelir). NOT: Bu yalnızca kısmen uygulanmaktadır, şu anda yalnızca bot komutları için çalışmaktadır." original="Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently."/>
         <!-- Custom Reward Modifiers -->
         <string id="O0LU5WBa" text="Özel Ödül Değiştiriciler" original="Custom Reward Modifiers"/>
         <!-- The specification for custom item rewards, applies to tournament prize and achievement rewards -->
@@ -61,7 +61,7 @@
         <!-- Whether to apply the Death Chance changes to all heroes, not just adopted ones -->
         <string id="nbR7NLNz" text="Ölüm Şansı değişikliklerinin sadece evlat edinilenlere değil, tüm kahramanlara uygulanıp uygulanmayacağı" original="Whether to apply the Death Chance changes to all heroes, not just adopted ones"/>
         <!-- Use Raw XP -->
-        <string id="lwU4dELT" text="Ham XP&amp;#39;yi kullan" original="Use Raw XP"/>
+        <string id="lwU4dELT" text="Ham XP'yi kullan" original="Use Raw XP"/>
         <!-- Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed.  -->
         <string id="dICRr4BH" text="Odak ve niteliklere göre ayarlamak yerine ham XP değerlerini kullanın, ayrıca beceri sınırını da göz ardı edin. Bu, odak ve nitelikler iyi dağıtılmadığında karakterlerin takılmasını önler." original="Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed. "/>
         <!-- Raw XP Skill Cap -->
@@ -95,11 +95,11 @@
         <!-- Relative Level Scaling -->
         <string id="wSzUkbNR" text="Göreli Düzey Ölçeklendirme" original="Relative Level Scaling"/>
         <!-- How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health. -->
-        <string id="1LTDJZ7Y" text="İki karakterin göreli düzeyine bağlı olarak öldürme ödüllerinin ne kadar ölçekleneceği. Bu 0 ise (veya ayarlanmamışsa) ödüller her zaman belirtildiği gibidir, bu 0&amp;#39;dan yüksekse, öldürülen birim kahramandan daha yüksekse ödüller artar ve daha düşükse azalır. 0,5 değerinde (önerilen) 10 seviye farkı altın, xp ve sağlık için normal ödüllerin yaklaşık 2,5 katını verir." original="How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."/>
+        <string id="1LTDJZ7Y" text="İki karakterin göreli düzeyine bağlı olarak öldürme ödüllerinin ne kadar ölçekleneceği. Bu 0 ise (veya ayarlanmamışsa) ödüller her zaman belirtildiği gibidir, bu 0'dan yüksekse, öldürülen birim kahramandan daha yüksekse ödüller artar ve daha düşükse azalır. 0,5 değerinde (önerilen) 10 seviye farkı altın, xp ve sağlık için normal ödüllerin yaklaşık 2,5 katını verir." original="How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."/>
         <!-- Level Scaling Cap -->
         <string id="BDk1G4nc" text="Seviye Ölçekleme Başlığı" original="Level Scaling Cap"/>
         <!-- Caps the maximum multiplier for the level difference, defaults to 5 if not specified -->
-        <string id="Vod0pJEN" text="Seviye farkı için maksimum çarpanı sınırlar, belirtilmemişse varsayılan olarak 5&amp;#39;tir" original="Caps the maximum multiplier for the level difference, defaults to 5 if not specified"/>
+        <string id="Vod0pJEN" text="Seviye farkı için maksimum çarpanı sınırlar, belirtilmemişse varsayılan olarak 5'tir" original="Caps the maximum multiplier for the level difference, defaults to 5 if not specified"/>
         <!-- Win Gold -->
         <string id="IQTT5vYE" text="Altın Kazan" original="Win Gold"/>
         <!-- Lose Gold -->
@@ -107,7 +107,7 @@
         <!-- Win XP -->
         <string id="h8I3PWkV" text="XP kazan" original="Win XP"/>
         <!-- Lose XP -->
-        <string id="Vobr36Bl" text="XP&amp;#39;yi Kaybet" original="Lose XP"/>
+        <string id="Vobr36Bl" text="XP'yi Kaybet" original="Lose XP"/>
         <!-- Gold won if the heroes side wins -->
         <string id="pc3G0W39" text="Kahramanlar tarafı kazanırsa altın kazandı" original="Gold won if the heroes side wins"/>
         <!-- XP the hero gets if the heroes side wins -->
@@ -127,7 +127,7 @@
         <!-- Difficulty Scaling -->
         <string id="CaVuq5tE" text="Zorluk Ölçeklendirme" original="Difficulty Scaling"/>
         <!-- End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1) -->
-        <string id="IhhfIQ74" text="Ödül zorluk ölçeğini sonlandır: Daha yüksek zorluktaki savaşların yukarıdaki ödülleri ne ölçüde artıracağını belirler (0&amp;#39;dan 1)" original="End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1)"/>
+        <string id="IhhfIQ74" text="Ödül zorluk ölçeğini sonlandır: Daha yüksek zorluktaki savaşların yukarıdaki ödülleri ne ölçüde artıracağını belirler (0'dan 1)" original="End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1)"/>
         <!-- Difficulty Scaling Min -->
         <string id="891WqOrJ" text="Zorluk Ölçeklendirme Min" original="Difficulty Scaling Min"/>
         <!-- Min difficulty scaling multiplier -->
@@ -246,7 +246,7 @@
         <!-- Round 4 Rewards -->
         <string id="pxMWYe5J" text="4. Tur Ödülleri" original="Round 4 Rewards"/>
         <!-- Participate XP -->
-        <string id="5vMTYqdu" text="XP&amp;#39;ye katıl" original="Participate XP"/>
+        <string id="5vMTYqdu" text="XP'ye katıl" original="Participate XP"/>
         <!-- Prize -->
         <string id="Xu2KD7Kc" text="Ödül" original="Prize"/>
         <!-- Enable Betting -->
@@ -276,7 +276,7 @@
         <!-- Randomizes the weapons used in each round, weighted based on the classes of the participants -->
         <string id="oSCPOoqi" text="Katılımcıların sınıflarına göre ağırlıklı olarak her turda kullanılan silahları rastgele ayarlar" original="Randomizes the weapons used in each round, weighted based on the classes of the participants"/>
         <!-- Applies skill debuffs to previous tournament winners -->
-        <string id="FrloGGew" text="Önceki turnuva kazananlarına beceri debuff&amp;#39;ları uygular" original="Applies skill debuffs to previous tournament winners"/>
+        <string id="FrloGGew" text="Önceki turnuva kazananlarına beceri debuff'ları uygular" original="Applies skill debuffs to previous tournament winners"/>
         <!-- Allow the vanilla round setup -->
         <string id="nfYBftnO" text="Vanilya yuvarlak kurulumuna izin ver" original="Allow the vanilla round setup"/>
         <!-- Allow 1 match with 2 teams of 2 -->
@@ -284,29 +284,29 @@
         <!-- Allow 1 match with 2 teams of 4 -->
         <string id="5hLSHeuv" text="4 kişilik 2 takımla 1 maça izin ver" original="Allow 1 match with 2 teams of 4"/>
         <!-- Allow 1 match with 4 teams of 1 -->
-        <string id="YfOnzOH6" text="1&amp;#39;er 4 takımla 1 maça izin ver" original="Allow 1 match with 4 teams of 1"/>
+        <string id="YfOnzOH6" text="1'er 4 takımla 1 maça izin ver" original="Allow 1 match with 4 teams of 1"/>
         <!-- Allow 1 match with 4 teams of 2 -->
-        <string id="CLbRKpZp" text="2&amp;#39;şer kişilik 4 takımla 1 maça izin ver" original="Allow 1 match with 4 teams of 2"/>
+        <string id="CLbRKpZp" text="2'şer kişilik 4 takımla 1 maça izin ver" original="Allow 1 match with 4 teams of 2"/>
         <!-- Allow 1 match with 4 teams of 4 -->
-        <string id="5E1lXDYh" text="4&amp;#39;er kişilik 4 takımla 1 maça izin ver" original="Allow 1 match with 4 teams of 4"/>
+        <string id="5E1lXDYh" text="4'er kişilik 4 takımla 1 maça izin ver" original="Allow 1 match with 4 teams of 4"/>
         <!-- Allow 2 matches with 2 teams of 1 -->
-        <string id="OrZaS458" text="1&amp;#39;er kişilik 2 takımla 2 maça izin ver" original="Allow 2 matches with 2 teams of 1"/>
+        <string id="OrZaS458" text="1'er kişilik 2 takımla 2 maça izin ver" original="Allow 2 matches with 2 teams of 1"/>
         <!-- Allow 2 matches with 2 teams of 2 -->
-        <string id="Dr1Js5fB" text="2&amp;#39;şer kişilik 2 takımla 2 maça izin ver" original="Allow 2 matches with 2 teams of 2"/>
+        <string id="Dr1Js5fB" text="2'şer kişilik 2 takımla 2 maça izin ver" original="Allow 2 matches with 2 teams of 2"/>
         <!-- Allow 2 matches with 2 teams of 4 -->
-        <string id="jEghMKUV" text="4&amp;#39;er kişilik 2 takımla 2 maça izin ver" original="Allow 2 matches with 2 teams of 4"/>
+        <string id="jEghMKUV" text="4'er kişilik 2 takımla 2 maça izin ver" original="Allow 2 matches with 2 teams of 4"/>
         <!-- Allow 2 matches with 4 teams of 1 -->
-        <string id="nmMzoqeC" text="1&amp;#39;er 4 takımla 2 maça izin ver" original="Allow 2 matches with 4 teams of 1"/>
+        <string id="nmMzoqeC" text="1'er 4 takımla 2 maça izin ver" original="Allow 2 matches with 4 teams of 1"/>
         <!-- Allow 2 matches with 4 teams of 2 -->
-        <string id="f8rXSGwN" text="2&amp;#39;şer kişilik 4 takımla 2 maça izin ver" original="Allow 2 matches with 4 teams of 2"/>
+        <string id="f8rXSGwN" text="2'şer kişilik 4 takımla 2 maça izin ver" original="Allow 2 matches with 4 teams of 2"/>
         <!-- Allow 4 matches with 2 teams of 2 -->
-        <string id="GPCYzshA" text="2&amp;#39;şer kişilik 2 takımla 4 maça izin ver" original="Allow 4 matches with 2 teams of 2"/>
+        <string id="GPCYzshA" text="2'şer kişilik 2 takımla 4 maça izin ver" original="Allow 4 matches with 2 teams of 2"/>
         <!-- Allow 4 matches with 4 teams of 1 -->
-        <string id="MjsTFwUv" text="1&amp;#39;er 4 takımla 4 maça izin ver" original="Allow 4 matches with 4 teams of 1"/>
+        <string id="MjsTFwUv" text="1'er 4 takımla 4 maça izin ver" original="Allow 4 matches with 4 teams of 1"/>
         <!-- Allow 4 matches with 2 teams of 1 -->
-        <string id="xMaA76xu" text="1&amp;#39;er kişilik 2 takımla 4 maça izin ver" original="Allow 4 matches with 2 teams of 1"/>
+        <string id="xMaA76xu" text="1'er kişilik 2 takımla 4 maça izin ver" original="Allow 4 matches with 2 teams of 1"/>
         <!-- Allow 8 matches with 2 teams of 1 -->
-        <string id="otwzXPTQ" text="1&amp;#39;er kişilik 2 takımla 8 maça izin ver" original="Allow 8 matches with 2 teams of 1"/>
+        <string id="otwzXPTQ" text="1'er kişilik 2 takımla 8 maça izin ver" original="Allow 8 matches with 2 teams of 1"/>
         <!-- Gold won if the hero wins their match in the round -->
         <string id="i7Ns7K2i" text="Kahraman rauntta maçı kazanırsa altın kazandı" original="Gold won if the hero wins their match in the round"/>
         <!-- XP given if the hero wins their match in the round -->

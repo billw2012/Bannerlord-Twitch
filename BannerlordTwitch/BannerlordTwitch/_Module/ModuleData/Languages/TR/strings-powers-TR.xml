@@ -97,11 +97,11 @@
         <!-- Fireblade III -->
         <string id="VGqA25nN" text="Ateş Bıçağı III" original="Fireblade III"/>
         <!-- Charge AoE I -->
-        <string id="R8u1d7M6" text="AoE I&amp;#39;yi şarj et" original="Charge AoE I"/>
+        <string id="R8u1d7M6" text="AoE I'yi şarj et" original="Charge AoE I"/>
         <!-- Charge AoE II -->
-        <string id="lO56Rq9E" text="AoE II&amp;#39;yi şarj edin" original="Charge AoE II"/>
+        <string id="lO56Rq9E" text="AoE II'yi şarj edin" original="Charge AoE II"/>
         <!-- Charge AoE III -->
-        <string id="X5LQvC0o" text="AoE III&amp;#39;ü şarj et" original="Charge AoE III"/>
+        <string id="X5LQvC0o" text="AoE III'ü şarj et" original="Charge AoE III"/>
         <!-- Ranger I -->
         <string id="7XNfzok8" text="korucu ben" original="Ranger I"/>
         <!-- Ranger II -->
@@ -125,7 +125,7 @@
         <!-- Knock Down II -->
         <string id="KUdqJrOY" text="Knock Down II" original="Knock Down II"/>
         <!-- Knock Down III -->
-        <string id="Uc4Cai9H" text="III&amp;#39;ü Düşürmek" original="Knock Down III"/>
+        <string id="Uc4Cai9H" text="III'ü Düşürmek" original="Knock Down III"/>
         <!-- Cut Through I -->
         <string id="VsZLMOHX" text="Benden Kes" original="Cut Through I"/>
         <!-- Cut Through II -->
@@ -153,8 +153,8 @@
         <!-- Ignore Armor I -->
         <string id="ngiTK9F9" text="Zırhı Yoksay I" original="Ignore Armor I"/>
         <!-- Ignore Armor II -->
-        <string id="Q7JOJL4l" text="Zırh II&amp;#39;yi Yoksay" original="Ignore Armor II"/>
+        <string id="Q7JOJL4l" text="Zırh II'yi Yoksay" original="Ignore Armor II"/>
         <!-- Ignore Armor III -->
-        <string id="fLsEduav" text="Zırh III&amp;#39;ü Yoksay" original="Ignore Armor III"/>
+        <string id="fLsEduav" text="Zırh III'ü Yoksay" original="Ignore Armor III"/>
     </strings>
 </base>

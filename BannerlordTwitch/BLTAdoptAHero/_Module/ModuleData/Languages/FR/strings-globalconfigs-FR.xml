@@ -11,11 +11,11 @@
         <!-- Sub Boost -->
         <string id="xwcKN7sH" text="Sous-Boost" original="Sub Boost"/>
         <!-- Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently. -->
-        <string id="rX68wbfF" text="Multiplicateur appliqué à toutes les récompenses pour les abonnés (inférieur ou égal à 1 signifie pas de boost). REMARQUE : Ceci n&amp;#39;est que partiellement implémenté, cela ne fonctionne que pour les commandes de bot actuellement." original="Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently."/>
+        <string id="rX68wbfF" text="Multiplicateur appliqué à toutes les récompenses pour les abonnés (inférieur ou égal à 1 signifie pas de boost). REMARQUE : Ceci n'est que partiellement implémenté, cela ne fonctionne que pour les commandes de bot actuellement." original="Multiplier applied to all rewards for subscribers (less or equal to 1 means no boost). NOTE: This is only partially implemented, it works for bot commands only currently."/>
         <!-- Custom Reward Modifiers -->
         <string id="O0LU5WBa" text="Modificateurs de récompense personnalisés" original="Custom Reward Modifiers"/>
         <!-- The specification for custom item rewards, applies to tournament prize and achievement rewards -->
-        <string id="tp3YdGmo" text="La spécification pour les récompenses d&amp;#39;objets personnalisés s&amp;#39;applique aux récompenses de prix de tournoi et de réussite" original="The specification for custom item rewards, applies to tournament prize and achievement rewards"/>
+        <string id="tp3YdGmo" text="La spécification pour les récompenses d'objets personnalisés s'applique aux récompenses de prix de tournoi et de réussite" original="The specification for custom item rewards, applies to tournament prize and achievement rewards"/>
         <!-- Start With Full Health -->
         <string id="X8r0C5fx" text="Commencez en pleine santé" original="Start With Full Health"/>
         <!-- Whether the hero will always start with full health -->
@@ -37,15 +37,15 @@
         <!-- Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations) -->
         <string id="D8uDzXlV" text="Si une suite de héros adoptés doit apparaître dans la même formation que le héros (sinon ils iront dans les formations par défaut)" original="Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations)"/>
         <!-- Summon Cooldown In Seconds -->
-        <string id="OlJrCEyE" text="Temps de recharge d&amp;#39;invocation en quelques secondes" original="Summon Cooldown In Seconds"/>
+        <string id="OlJrCEyE" text="Temps de recharge d'invocation en quelques secondes" original="Summon Cooldown In Seconds"/>
         <!-- Minimum time between summons for a specific hero -->
         <string id="DeGB2BGZ" text="Temps minimum entre les invocations pour un héros spécifique" original="Minimum time between summons for a specific hero"/>
         <!-- Summon Cooldown Use Multiplier -->
-        <string id="f9HVD2cC" text="Multiplicateur d&amp;#39;utilisation du temps de recharge d&amp;#39;invocation" original="Summon Cooldown Use Multiplier"/>
+        <string id="f9HVD2cC" text="Multiplicateur d'utilisation du temps de recharge d'invocation" original="Summon Cooldown Use Multiplier"/>
         <!-- How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this. -->
-        <string id="4gZlfHzM" text="De combien multiplier le temps de recharge à chaque fois que l&amp;#39;invocation est utilisée. Par exemple, si Summon Cooldown est de 20 secondes et UseMultiplier est de 1.1 (valeur par défaut), alors la première invocation a un temps de recharge de 20 secondes, et les 24 secondes suivantes, la 10e 52 secondes et la 20e 135 secondes. Voir https://www.desmos.com/calculator/muej1o5eg5 pour une visualisation de cela." original="How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this."/>
+        <string id="4gZlfHzM" text="De combien multiplier le temps de recharge à chaque fois que l'invocation est utilisée. Par exemple, si Summon Cooldown est de 20 secondes et UseMultiplier est de 1.1 (valeur par défaut), alors la première invocation a un temps de recharge de 20 secondes, et les 24 secondes suivantes, la 10e 52 secondes et la 20e 135 secondes. Voir https://www.desmos.com/calculator/muej1o5eg5 pour une visualisation de cela." original="How much to multiply the cooldown by each time summon is used. e.g. if Summon Cooldown is 20 seconds, and UseMultiplier is 1.1 (the default), then the first summon has a cooldown of 20 seconds, and the next 24 seconds, the 10th 52 seconds, and the 20th 135 seconds. See https://www.desmos.com/calculator/muej1o5eg5 for a visualization of this."/>
         <!-- Summon Cooldown Example -->
-        <string id="ViLoy0k3" text="Exemple de temps de recharge d&amp;#39;invocation" original="Summon Cooldown Example"/>
+        <string id="ViLoy0k3" text="Exemple de temps de recharge d'invocation" original="Summon Cooldown Example"/>
         <!-- Shows the consecutive cooldowns (in seconds) for 10 summons -->
         <string id="xZoSFrAb" text="Affiche les temps de recharge consécutifs (en secondes) pour 10 invocations" original="Shows the consecutive cooldowns (in seconds) for 10 summons"/>
         <!-- Allow Death -->
@@ -63,19 +63,19 @@
         <string id="hbP7F9oz" text="Pourcentage de chance de mort de l'escorte (ceci détermine la probabilité qu'un coup fatal tue réellement la suite, en la supprimant de la liste de la suite du héros adopté)" original="Retinue death chance percent (this determines the chance that a killing blow will actually kill the retinue, removing them from the adopted hero's retinue list)"/>
 
         <!-- Whether to apply the Death Chance changes to all heroes, not just adopted ones -->
-        <string id="nbR7NLNz" text="S&amp;#39;il faut appliquer les changements de chance de mort à tous les héros, pas seulement à ceux adoptés" original="Whether to apply the Death Chance changes to all heroes, not just adopted ones"/>
+        <string id="nbR7NLNz" text="S'il faut appliquer les changements de chance de mort à tous les héros, pas seulement à ceux adoptés" original="Whether to apply the Death Chance changes to all heroes, not just adopted ones"/>
         <!-- Use Raw XP -->
-        <string id="lwU4dELT" text="Utiliser l&amp;#39;XP brut" original="Use Raw XP"/>
+        <string id="lwU4dELT" text="Utiliser l'XP brut" original="Use Raw XP"/>
         <!-- Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed.  -->
-        <string id="dICRr4BH" text="Utilisez des valeurs d&amp;#39;XP brutes au lieu d&amp;#39;ajuster par focus et attributs, en ignorant également le plafond de compétence. Cela évite aux personnages de rester bloqués lorsque le focus et les attributs ne sont pas bien répartis." original="Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed. "/>
+        <string id="dICRr4BH" text="Utilisez des valeurs d'XP brutes au lieu d'ajuster par focus et attributs, en ignorant également le plafond de compétence. Cela évite aux personnages de rester bloqués lorsque le focus et les attributs ne sont pas bien répartis." original="Use raw XP values instead of adjusting by focus and attributes, also ignoring skill cap. This avoids characters getting stuck when focus and attributes are not well distributed. "/>
         <!-- Raw XP Skill Cap -->
-        <string id="S5FAna09" text="Limite de compétence d&amp;#39;XP brut" original="Raw XP Skill Cap"/>
+        <string id="S5FAna09" text="Limite de compétence d'XP brut" original="Raw XP Skill Cap"/>
         <!-- Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap. -->
-        <string id="WUzqXuHN" text="Limite de compétence lors de l&amp;#39;utilisation de Raw XP. Les compétences ne dépasseront pas cette valeur. 330 est la limite de compétence d&amp;#39;XP vanille." original="Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap."/>
+        <string id="WUzqXuHN" text="Limite de compétence lors de l'utilisation de Raw XP. Les compétences ne dépasseront pas cette valeur. 330 est la limite de compétence d'XP vanille." original="Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap."/>
         <!-- Gold Per Kill -->
         <string id="94Ouh5It" text="Or par kill" original="Gold Per Kill"/>
         <!-- Gold the hero gets for every kill -->
-        <string id="iSAMxZ8a" text="L&amp;#39;or que le héros obtient pour chaque kill" original="Gold the hero gets for every kill"/>
+        <string id="iSAMxZ8a" text="L'or que le héros obtient pour chaque kill" original="Gold the hero gets for every kill"/>
         <!-- XP Per Kill -->
         <string id="DMGKBoJT" text="XP par kill" original="XP Per Kill"/>
         <!-- XP the hero gets for every kill -->
@@ -91,27 +91,27 @@
         <!-- Retinue Gold Per Kill -->
         <string id="lIhhHjih" text="Or pour chaque mort provoqué par une escorte" original="Retinue Gold Per Kill"/>
         <!-- Gold the hero gets for every kill their retinue gets -->
-        <string id="h93j0qw3" text="De l&amp;#39;or que le héros obtient pour chaque meurtre que sa suite obtient" original="Gold the hero gets for every kill their retinue gets"/>
+        <string id="h93j0qw3" text="De l'or que le héros obtient pour chaque meurtre que sa suite obtient" original="Gold the hero gets for every kill their retinue gets"/>
         <!-- Retinue Heal Per Kill -->
-        <string id="KwlWrzDS" text="Soin d&amp;#39;escorte après avoir tué" original="Retinue Heal Per Kill"/>
+        <string id="KwlWrzDS" text="Soin d'escorte après avoir tué" original="Retinue Heal Per Kill"/>
         <!-- HP the hero's retinue gets for every kill -->
-        <string id="Q3UVoHmt" text="PV que l&amp;#39;escorte du héros obtient pour chaque élimination" original="HP the hero's retinue gets for every kill"/>
+        <string id="Q3UVoHmt" text="PV que l'escorte du héros obtient pour chaque élimination" original="HP the hero's retinue gets for every kill"/>
         <!-- Relative Level Scaling -->
-        <string id="wSzUkbNR" text="Mise à l&amp;#39;échelle du niveau relatif" original="Relative Level Scaling"/>
+        <string id="wSzUkbNR" text="Mise à l'échelle du niveau relatif" original="Relative Level Scaling"/>
         <!-- How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health. -->
-        <string id="1LTDJZ7Y" text="De combien augmenter les récompenses pour tuer, en fonction du niveau relatif des deux personnages. S&amp;#39;il est égal à 0 (ou non défini), les récompenses sont toujours telles que spécifiées, si elles sont supérieures à 0, les récompenses augmentent si l&amp;#39;unité tuée est de niveau supérieur au héros et diminuent si elles sont inférieures. À une valeur de 0,5 (recommandé) à une différence de niveau de 10 donnerait environ 2,5 fois les récompenses normales pour l&amp;#39;or, l&amp;#39;xp et la santé." original="How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."/>
+        <string id="1LTDJZ7Y" text="De combien augmenter les récompenses pour tuer, en fonction du niveau relatif des deux personnages. S'il est égal à 0 (ou non défini), les récompenses sont toujours telles que spécifiées, si elles sont supérieures à 0, les récompenses augmentent si l'unité tuée est de niveau supérieur au héros et diminuent si elles sont inférieures. À une valeur de 0,5 (recommandé) à une différence de niveau de 10 donnerait environ 2,5 fois les récompenses normales pour l'or, l'xp et la santé." original="How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."/>
         <!-- Level Scaling Cap -->
-        <string id="BDk1G4nc" text="Limite d&amp;#39;échelle de niveau" original="Level Scaling Cap"/>
+        <string id="BDk1G4nc" text="Limite d'échelle de niveau" original="Level Scaling Cap"/>
         <!-- Caps the maximum multiplier for the level difference, defaults to 5 if not specified -->
         <string id="Vod0pJEN" text="Limite le multiplicateur maximum pour la différence de niveau, par défaut à 5 si non spécifié" original="Caps the maximum multiplier for the level difference, defaults to 5 if not specified"/>
         <!-- Win Gold -->
-        <string id="IQTT5vYE" text="Gagner de l&amp;#39;or" original="Win Gold"/>
+        <string id="IQTT5vYE" text="Gagner de l'or" original="Win Gold"/>
         <!-- Lose Gold -->
-        <string id="lfCWK7aA" text="Perdre de l&amp;#39;or" original="Lose Gold"/>
+        <string id="lfCWK7aA" text="Perdre de l'or" original="Lose Gold"/>
         <!-- Win XP -->
-        <string id="h8I3PWkV" text="Gagner de l&amp;#39;XP" original="Win XP"/>
+        <string id="h8I3PWkV" text="Gagner de l'XP" original="Win XP"/>
         <!-- Lose XP -->
-        <string id="Vobr36Bl" text="Perdre de l&amp;#39;XP" original="Lose XP"/>
+        <string id="Vobr36Bl" text="Perdre de l'XP" original="Lose XP"/>
         <!-- Gold won if the heroes side wins -->
         <string id="pc3G0W39" text="Or gagné si le camp des héros gagne" original="Gold won if the heroes side wins"/>
         <!-- XP the hero gets if the heroes side wins -->
@@ -123,37 +123,37 @@
         <!-- Difficulty Scaling On Players Side -->
         <string id="ihB1KMOY" text="Difficulté à évoluer du côté des joueurs" original="Difficulty Scaling On Players Side"/>
         <!-- Apply difficulty scaling to players side -->
-        <string id="Bt1PS0aC" text="Appliquer l&amp;#39;échelle de difficulté du côté des joueurs" original="Apply difficulty scaling to players side"/>
+        <string id="Bt1PS0aC" text="Appliquer l'échelle de difficulté du côté des joueurs" original="Apply difficulty scaling to players side"/>
         <!-- Difficulty Scaling On Enemy Side -->
         <string id="nym7EtAd" text="Difficulté à évoluer du côté ennemi" original="Difficulty Scaling On Enemy Side"/>
         <!-- Apply difficulty scaling to enemy side -->
         <string id="U0hZef9L" text="Appliquer une échelle de difficulté au côté ennemi" original="Apply difficulty scaling to enemy side"/>
         <!-- Difficulty Scaling -->
-        <string id="CaVuq5tE" text="Mise à l&amp;#39;échelle de la difficulté" original="Difficulty Scaling"/>
+        <string id="CaVuq5tE" text="Mise à l'échelle de la difficulté" original="Difficulty Scaling"/>
         <!-- End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1) -->
-        <string id="IhhfIQ74" text="Mise à l&amp;#39;échelle de la difficulté de la récompense de fin : détermine dans quelle mesure les batailles de difficulté plus élevée augmentent les récompenses ci-dessus (0 à 1)" original="End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1)"/>
+        <string id="IhhfIQ74" text="Mise à l'échelle de la difficulté de la récompense de fin : détermine dans quelle mesure les batailles de difficulté plus élevée augmentent les récompenses ci-dessus (0 à 1)" original="End reward difficulty scaling: determines the extent to which higher difficulty battles increase the above rewards (0 to 1)"/>
         <!-- Difficulty Scaling Min -->
         <string id="891WqOrJ" text="Difficulté Échelle Min" original="Difficulty Scaling Min"/>
         <!-- Min difficulty scaling multiplier -->
-        <string id="FPXz7lBi" text="Multiplicateur de mise à l&amp;#39;échelle de la difficulté minimale" original="Min difficulty scaling multiplier"/>
+        <string id="FPXz7lBi" text="Multiplicateur de mise à l'échelle de la difficulté minimale" original="Min difficulty scaling multiplier"/>
         <!-- Difficulty Scaling Max -->
-        <string id="Wsho5Yns" text="Difficulté à l&amp;#39;échelle max" original="Difficulty Scaling Max"/>
+        <string id="Wsho5Yns" text="Difficulté à l'échelle max" original="Difficulty Scaling Max"/>
         <!-- Max difficulty scaling multiplier -->
-        <string id="ZW7O1JTv" text="Multiplicateur de mise à l&amp;#39;échelle de la difficulté maximale" original="Max difficulty scaling multiplier"/>
+        <string id="ZW7O1JTv" text="Multiplicateur de mise à l'échelle de la difficulté maximale" original="Max difficulty scaling multiplier"/>
         <!-- Kill Streaks -->
         <string id="3DZYc6hN" text="Tuer des séquences" original="Kill Streaks"/>
         <!-- Show Kill Streak Popup -->
         <string id="wQ7lXgLA" text="Afficher la fenêtre contextuelle Kill Streak" original="Show Kill Streak Popup"/>
         <!-- Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled. -->
-        <string id="wDW3143d" text="S&amp;#39;il faut utiliser la bannière contextuelle pour annoncer les séquences de mise à mort. N&amp;#39;imprimera dans la superposition que si elle est désactivée." original="Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled."/>
+        <string id="wDW3143d" text="S'il faut utiliser la bannière contextuelle pour annoncer les séquences de mise à mort. N'imprimera dans la superposition que si elle est désactivée." original="Whether to use the popup banner to announce kill streaks. Will only print in the overlay instead if disabled."/>
         <!-- Kill Streak Popup Alert Sound -->
-        <string id="rhwujKvf" text="Son d&amp;#39;alerte contextuelle Kill Streak" original="Kill Streak Popup Alert Sound"/>
+        <string id="rhwujKvf" text="Son d'alerte contextuelle Kill Streak" original="Kill Streak Popup Alert Sound"/>
         <!-- Sound to play when killstreak popup is disabled. -->
         <string id="1GVV1fjY" text="Son à jouer lorsque le popup killstreak est désactivé." original="Sound to play when killstreak popup is disabled."/>
         <!-- Reference Level Reward -->
         <string id="dP9AoB9o" text="Récompense de niveau de référence" original="Reference Level Reward"/>
         <!-- The level at which the rewards normalize and start to reduce (if relative level scaling is enabled). -->
-        <string id="y7AZjeSK" text="Le niveau auquel les récompenses se normalisent et commencent à diminuer (si la mise à l&amp;#39;échelle du niveau relatif est activée)." original="The level at which the rewards normalize and start to reduce (if relative level scaling is enabled)."/>
+        <string id="y7AZjeSK" text="Le niveau auquel les récompenses se normalisent et commencent à diminuer (si la mise à l'échelle du niveau relatif est activée)." original="The level at which the rewards normalize and start to reduce (if relative level scaling is enabled)."/>
         <!-- Achievements -->
         <string id="zTLei6dQ" text="Succès" original="Achievements"/>
         <!-- Shouts -->
@@ -163,7 +163,7 @@
         <!-- Include Default Shouts -->
         <string id="wehigXCC" text="Inclure les cris par défaut" original="Include Default Shouts"/>
         <!-- Whether to include default shouts -->
-        <string id="m6Vv2LBt" text="S&amp;#39;il faut inclure les cris par défaut" original="Whether to include default shouts"/>
+        <string id="m6Vv2LBt" text="S'il faut inclure les cris par défaut" original="Whether to include default shouts"/>
         <!-- Common Config -->
         <string id="F6vM1OJo" text="Configuration commune" original="Common Config"/>
         <!-- GlobalHeroClassConfig -->
@@ -180,7 +180,7 @@
         <!-- Classes -->
         <string id="E0CBnj57" text="Des classes" original="Classes"/>
         <!-- (no requirements) -->
-        <string id="7WLbMjpz" text="(pas d&amp;#39;exigences)" original="(no requirements)"/>
+        <string id="7WLbMjpz" text="(pas d'exigences)" original="(no requirements)"/>
         <!-- GlobalHeroPowerConfig -->
         <!-- Power Config -->
         <string id="v75UOuDM" text="Configuration des Pouvoirs" original="Power Config"/>
@@ -212,11 +212,11 @@
         <!-- No Spears -->
         <string id="CYVy4Hhx" text="Pas de lances" original="No Spears"/>
         <!-- Normalize Armor -->
-        <string id="Ed55OyZ5" text="Normaliser l&amp;#39;armure" original="Normalize Armor"/>
+        <string id="Ed55OyZ5" text="Normaliser l'armure" original="Normalize Armor"/>
         <!-- Normalize Armor Tier -->
-        <string id="xHJbcOaV" text="Normaliser le niveau d&amp;#39;armure" original="Normalize Armor Tier"/>
+        <string id="xHJbcOaV" text="Normaliser le niveau d'armure" original="Normalize Armor Tier"/>
         <!-- Randomize Weapon Types -->
-        <string id="5Y08IsDl" text="Randomiser les types d&amp;#39;armes" original="Randomize Weapon Types"/>
+        <string id="5Y08IsDl" text="Randomiser les types d'armes" original="Randomize Weapon Types"/>
         <!-- Previous Winner Debuffs -->
         <string id="UCAbZYqU" text="Débuffs du vainqueur précédent" original="Previous Winner Debuffs"/>
         <!-- Vanilla -->
@@ -266,17 +266,17 @@
         <!-- Amount to multiply normal starting health by -->
         <string id="n6Bc5M3s" text="Montant pour multiplier la santé de départ normale par" original="Amount to multiply normal starting health by"/>
         <!-- Heroes won't get any kill rewards in tournaments -->
-        <string id="j63d8DuH" text="Les héros n&amp;#39;obtiendront aucune récompense de kill dans les tournois" original="Heroes won't get any kill rewards in tournaments"/>
+        <string id="j63d8DuH" text="Les héros n'obtiendront aucune récompense de kill dans les tournois" original="Heroes won't get any kill rewards in tournaments"/>
         <!-- Tournament kills / deaths won't be counted towards achievements or kill streaks -->
-        <string id="o5aH9rTO" text="Les éliminations / décès en tournoi ne seront pas comptabilisés dans les succès ou les séquences d&amp;#39;élimination" original="Tournament kills / deaths won't be counted towards achievements or kill streaks"/>
+        <string id="o5aH9rTO" text="Les éliminations / décès en tournoi ne seront pas comptabilisés dans les succès ou les séquences d'élimination" original="Tournament kills / deaths won't be counted towards achievements or kill streaks"/>
         <!-- Remove horses completely from the BLT tournaments (the horse AI is terrible) -->
-        <string id="sJ68yZs1" text="Retirez complètement les chevaux des tournois BLT (l&amp;#39;IA des chevaux est terrible)" original="Remove horses completely from the BLT tournaments (the horse AI is terrible)"/>
+        <string id="sJ68yZs1" text="Retirez complètement les chevaux des tournois BLT (l'IA des chevaux est terrible)" original="Remove horses completely from the BLT tournaments (the horse AI is terrible)"/>
         <!-- Replaces all lances and spears with swords, because lance and spear combat is terrible -->
         <string id="BjMC8Htn" text="Remplace toutes les lances et les lances par des épées, car le combat à la lance et à la lance est terrible" original="Replaces all lances and spears with swords, because lance and spear combat is terrible"/>
         <!-- Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below) -->
-        <string id="kYFdZ8Yx" text="Remplace toutes les armures par une armure de niveau fixe, basée sur la culture si possible (niveau spécifié par le niveau d&amp;#39;armure normalisé ci-dessous)" original="Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below)"/>
+        <string id="kYFdZ8Yx" text="Remplace toutes les armures par une armure de niveau fixe, basée sur la culture si possible (niveau spécifié par le niveau d'armure normalisé ci-dessous)" original="Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below)"/>
         <!-- Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled -->
-        <string id="HnqCyrDD" text="Niveau d&amp;#39;armure pour définir tous les concurrents sur (1 à 6), si Normaliser l&amp;#39;armure est activé" original="Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled"/>
+        <string id="HnqCyrDD" text="Niveau d'armure pour définir tous les concurrents sur (1 à 6), si Normaliser l'armure est activé" original="Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled"/>
         <!-- Randomizes the weapons used in each round, weighted based on the classes of the participants -->
         <string id="oSCPOoqi" text="Randomise les armes utilisées à chaque tour, pondérées en fonction des classes des participants" original="Randomizes the weapons used in each round, weighted based on the classes of the participants"/>
         <!-- Applies skill debuffs to previous tournament winners -->
@@ -330,7 +330,7 @@
         <!-- Only allow betting on the final betting -->
         <string id="KGcz71VJ" text="Autoriser uniquement les paris sur le pari final" original="Only allow betting on the final betting"/>
         <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
-        <string id="twgHWqU6" text="Compétence ou groupe de compétences à modifier (toutes les compétences d&amp;#39;un groupe seront modifiées)" original="Skill or skill group to modifier (all skills in a group will be modified)"/>
+        <string id="twgHWqU6" text="Compétence ou groupe de compétences à modifier (toutes les compétences d'un groupe seront modifiées)" original="Skill or skill group to modifier (all skills in a group will be modified)"/>
         <!-- Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified. -->
         <string id="zoMHI9O3" text="Réduction à la compétence par victoire (en %). Voir https://www.desmos.com/calculator/ajydvitcer pour visualiser comment la compétence sera modifiée." original="Reduction to the skill per win (in %). See https://www.desmos.com/calculator/ajydvitcer for visualization of how skill will be modified."/>
         <!-- The lower limit (in %) that the skill(s) can be reduced to. -->

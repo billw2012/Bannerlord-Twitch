@@ -170,9 +170,9 @@
         <!-- No items found matching '{ItemName}' -->
         <string id="viO1RBr5" text="Ничего не найдено по запросу &amp;quot;{ItemName}&amp;quot;" original="No items found matching '{ItemName}'"/>
         <!-- {ItemCount} items found matching '{ItemName}', be more specific -->
-        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName} &amp;#39;, а точнее" original="{ItemCount} items found matching '{ItemName}', be more specific"/>
+        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName} ', а точнее" original="{ItemCount} items found matching '{ItemName}', be more specific"/>
         <!-- Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds. -->
-        <string id="BH5rnHNq" text="Аукцион &amp;#39;{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} секунд." original="Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."/>
+        <string id="BH5rnHNq" text="Аукцион '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} секунд." original="Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."/>
         <!-- Bid On Item -->
         <string id="rBAvqAh7" text="Ставка на товар" original="Bid On Item"/>
         <!-- Allows viewers bid on an active custom item auction (make sure to add an auction command also) -->
@@ -267,9 +267,9 @@
         <!-- No items found matching '{Args}' -->
         <string id="p0urrIvR" text="Ничего не найдено по запросу &amp;quot;{Args}&amp;quot;" original="No items found matching '{Args}'"/>
         <!-- {Count} items found matching '{Args}', be more specific -->
-        <string id="Pzo2UJrl" text="{Count} items found matching '{Args} &amp;#39;, а точнее" original="{Count} items found matching '{Args}', be more specific"/>
+        <string id="Pzo2UJrl" text="{Count} items found matching '{Args} ', а точнее" original="{Count} items found matching '{Args}', be more specific"/>
         <!-- '{ItemName}' was discarded -->
-        <string id="bNqd3AzN" text="&amp;#39;{ItemName}&amp;#39; было отброшено" original="'{ItemName}' was discarded"/>
+        <string id="bNqd3AzN" text="'{ItemName}' было отброшено" original="'{ItemName}' was discarded"/>
         <!-- GiveItem -->
         <!-- Give Item -->
         <string id="nAPjfF4C" text="Дать предмет" original="Give Item"/>
@@ -280,9 +280,9 @@
         <!-- (recipient) (partial item name) -->
         <string id="BClUoR9H" text="(получатель) (частичное название товара)" original="(recipient) (partial item name)"/>
         <!-- Couldn't find recipient '{Name}' -->
-        <string id="vDsYxMKq" text="Не удалось найти получателя &amp;#39;{Name}&amp;#39;" original="Couldn't find recipient '{Name}'"/>
+        <string id="vDsYxMKq" text="Не удалось найти получателя '{Name}'" original="Couldn't find recipient '{Name}'"/>
         <!-- '{ItemName}' was transferred from @{FromHero} to @{ToHero} -->
-        <string id="E1o7b5ht" text="&amp;#39;{ItemName}' was transferred from @{FromHero} to @{ToHero}" original="'{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
+        <string id="E1o7b5ht" text="'{ItemName}' was transferred from @{FromHero} to @{ToHero}" original="'{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
         <!-- HeroInfoCommand -->
         <!-- Show Hero Info -->
         <string id="cj68a0l9" text="Показать информацию о герое" original="Show Hero Info"/>
@@ -501,7 +501,7 @@
         <!-- Set Hero Class -->
         <string id="pVblweVj" text="Установить класс героя" original="Set Hero Class"/>
         <!-- Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied -->
-        <string id="7VWKYp1U" text="Позволяет изменить `` класс &amp;#39;&amp;#39; принятого героя, который влияет на экипировку и где применяется XP" original="Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied"/>
+        <string id="7VWKYp1U" text="Позволяет изменить `` класс '' принятого героя, который влияет на экипировку и где применяется XP" original="Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied"/>
         <!-- First Equip Is Free -->
         <string id="iLpDEiTq" text="Первое снаряжение бесплатно" original="First Equip Is Free"/>
         <!-- If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class) -->
