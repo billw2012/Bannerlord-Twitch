@@ -7,6 +7,7 @@ using BannerlordTwitch.Models;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Achievements;
 using BLTAdoptAHero.Actions.Util;
+using BLTAdoptAHero.UI;
 using BLTAdoptAHero.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
@@ -375,6 +376,8 @@ namespace BLTAdoptAHero
                     Log.LogFeedResponse(entry.Hero.FirstName.ToString(), results.ToArray());
                 }
             }
+            
+            MissionInfoHub.Clear();
         }
 
         private ItemObject originalPrize;
