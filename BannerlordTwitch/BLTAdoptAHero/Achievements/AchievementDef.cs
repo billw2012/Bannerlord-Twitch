@@ -94,7 +94,7 @@ namespace BLTAdoptAHero.Achievements
 
         public void Apply(Hero hero)
         {
-            var results = new List<string>{ "{Qtv96c9S}Unlocked {NAME}".Translate(("NAME", Name)) };
+            var results = new List<string>{ "{=Qtv96c9S}Unlocked {NAME}".Translate(("NAME", Name)) };
             if (GoldGain > 0)
             {
                 BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, GoldGain);

@@ -427,7 +427,7 @@ namespace BannerlordTwitch
                     .ToList();
                 if (settings.EnabledRewards.Any())
                 {
-                    help.Add("{=0o3dPQSk}Also see Channel Point Rewards");
+                    help.Add("{=0o3dPQSk}Also see Channel Point Rewards".Translate());
                 }
 
                 bot.SendChat(help.ToArray());
