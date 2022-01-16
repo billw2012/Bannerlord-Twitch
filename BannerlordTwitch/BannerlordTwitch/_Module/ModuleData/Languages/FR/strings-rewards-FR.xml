@@ -48,21 +48,21 @@
         <!-- Enter Message -->
         <string id="m9IFHkZh" text="Entrer un message" original="Enter Message"/>
         <!-- Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel -->
-        <string id="ZNGav9pi" text="Entrez oui pour retirer votre héros (il ne sera plus contrôlé par vous), ou fermez cette fenêtre pour annuler" original="Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel"/>
+        <string id="ZNGav9pi" text="Entrez oui pour que votre héros prenne sa retraite (il ne sera plus contrôlé par vous), ou fermez cette fenêtre pour annuler" original="Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel"/>
         <!-- Add 50,000 XP to a random skill of your adopted hero -->
-        <string id="UCjOD22c" text="Ajoutez 50 000 XP à une compétence aléatoire de votre héros adopté" original="Add 50,000 XP to a random skill of your adopted hero"/>
+        <string id="UCjOD22c" text="Ajoutez 50 000 XP à une compétence aléatoire de votre héros" original="Add 50,000 XP to a random skill of your adopted hero"/>
         <!-- Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below: -->
-        <string id="1IDV1dAh" text="Transférez 10 000 pièces d&amp;#39;or au personnage de streamers, de votre héros. Entrez le message cadeau ci-dessous :" original="Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:"/>
+        <string id="1IDV1dAh" text="Transférez 10 000 pièces d&amp;#39;or au personnage du streamers, depuis votre héros. Entrez le message cadeau ci-dessous :" original="Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:"/>
         <!-- Activate your class power on your hero, if you have one. -->
         <string id="x5Agf9Wl" text="Activez votre pouvoir de classe sur votre héros, si vous en avez un." original="Activate your class power on your hero, if you have one."/>
         <!-- Adopt a Hero -->
-        <string id="Yc9dn4Sx" text="Adoptez un héros" original="Adopt a Hero"/>
+        <string id="Yc9dn4Sx" text="Adopter un héros" original="Adopt a Hero"/>
         <!-- 10k gold -->
-        <string id="s0GPjZKG" text="or 10k" original="10k gold"/>
+        <string id="s0GPjZKG" text="10 000 Or" original="10k gold"/>
         <!-- 100k gold -->
-        <string id="ndi9p5jn" text="100k or" original="100k gold"/>
+        <string id="ndi9p5jn" text="100 000 Or" original="100k gold"/>
         <!-- Summon -->
-        <string id="dpnWybop" text="Convoquer" original="Summon"/>
+        <string id="dpnWybop" text="Invoquer" original="Summon"/>
         <!-- Attack -->
         <string id="IrF1VaBD" text="Attaque" original="Attack"/>
         <!-- Heal Streamer -->
@@ -70,18 +70,18 @@
         <!-- Tournament -->
         <string id="IBrMU0VF" text="Tournoi" original="Tournament"/>
         <!-- Send Message In Game -->
-        <string id="FFvfbTgo" text="Envoyer un message dans le jeu" original="Send Message In Game"/>
+        <string id="FFvfbTgo" text="Envoyer un message en jeu" original="Send Message In Game"/>
         <!-- Retire My Hero -->
-        <string id="AZMDg7St" text="Retraite mon héros" original="Retire My Hero"/>
+        <string id="AZMDg7St" text="Prendre ma retraite" original="Retire My Hero"/>
         <!-- 50k XP -->
         <string id="uA1yEnyO" text="50 000 XP" original="50k XP"/>
         <!-- Burn Player -->
-        <string id="2ciF79zR" text="Graver le lecteur" original="Burn Player"/>
+        <string id="2ciF79zR" text="Brûler le Joueur" original="Burn Player"/>
         <!-- Heal Hero -->
         <string id="likTlNpu" text="Guérir le héros" original="Heal Hero"/>
         <!-- Give Player Gold -->
-        <string id="9DoHhKeh" text="Donner de l&amp;#39;or au joueur" original="Give Player Gold"/>
+        <string id="9DoHhKeh" text="Donner de l&amp;#39;or au Joueur" original="Give Player Gold"/>
         <!-- Use Class Power -->
-        <string id="yoZSmM0b" text="Utiliser la puissance de classe" original="Use Class Power"/>
+        <string id="yoZSmM0b" text="Utiliser le pouvoir de classe" original="Use Class Power"/>
     </strings>
 </base>
