@@ -7,14 +7,14 @@
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- stats -->
         <!-- Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue. -->
-        <string id="JiMaaypq" text="Affiche des informations générales sur vos héros, y compris le clan, l&amp;#39;or, l&amp;#39;emplacement, les PV, les compétences, les attributs et l&amp;#39;escorte." original="Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue."/>
+        <string id="JiMaaypq" text="Affiche des informations générales sur votre héros, y compris le clan, l&amp;#39;or, l&amp;#39;emplacement, les PV, les compétences, les attributs et l&amp;#39;escorte." original="Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue."/>
         <!-- show stats -->
         <string id="tIVnWwGG" text="voir stats" original="show stats"/>
         <!-- stats -->
         <string id="J2AqvpeF" text="stats" original="stats"/>
         <!-- inv -->
         <!-- Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage. -->
-        <string id="JneYk4pF" text="Affiche l&amp;#39;inventaire de vos héros, y compris le niveau d&amp;#39;équipement, les listes complètes d&amp;#39;équipement de combat et d&amp;#39;équipement civil, ainsi que tous les objets personnalisés stockés." original="Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage."/>
+        <string id="JneYk4pF" text="Affiche l&amp;#39;inventaire de votre héros, y compris le niveau d&amp;#39;équipement, les listes complètes d&amp;#39;équipement de combat et d&amp;#39;équipement civil, ainsi que tous les objets personnalisés stockés." original="Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage."/>
         <!-- show equipment -->
         <string id="oVNKTdOy" text="montrer l&amp;#39;équipement" original="show equipment"/>
         <!-- inv -->
@@ -25,11 +25,11 @@
         <!-- upgrade equipment -->
         <string id="vTo0NowP" text="équipement de mise à niveau" original="upgrade equipment"/>
         <!-- equip -->
-        <string id="wHqxd4kb" text="équiper" original="equip"/>
+        <string id="wHqxd4kb" text="equiper" original="equip"/>
         <!-- Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford. -->
-        <string id="zxAVjOW6" text="Achète de nouvelles troupes de la suite ou améliore les troupes existantes au niveau suivant si vous avez atteint la limite. La suite apparaîtra avec vous au combat lorsque vous invoquerez, vous faisant gagner de l&amp;#39;argent lorsqu&amp;#39;ils tuent. Vous pouvez transmettre un numéro au commandement pour spécifier le nombre de troupes que vous souhaitez acheter ou améliorer. Par défaut, il en fera autant que vous pouvez vous le permettre." original="Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford."/>
+        <string id="zxAVjOW6" text="Achète de nouvelles troupes pour votre escorte ou améliore les troupes existantes au niveau suivant si vous avez atteint la limite. L&amp;#39;escorte apparaîtra avec vous au combat lorsque vous invoquerez, vous faisant gagner de l&amp;#39;argent lorsqu&amp;#39;ils tuent. Vous pouvez transmettre un numéro au commandement pour spécifier le nombre de troupes que vous souhaitez acheter ou améliorer. Par défaut, il en fera autant que vous pouvez vous le permettre." original="Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford."/>
         <!-- upgrade retinue -->
-        <string id="I7sm1ct6" text="mise à niveau de la suite" original="upgrade retinue"/>
+        <string id="I7sm1ct6" text="mise à niveau de l&amp;#39;escorte" original="upgrade retinue"/>
         <!-- retinue -->
         <string id="mge9rH9J" text="escorte" original="retinue"/>
         <!-- class -->
@@ -45,17 +45,17 @@
         <!-- reroll equipment -->
         <string id="3KYGJ0Mu" text="relancer l&amp;#39;équipement" original="reroll equipment"/>
         <!-- reequip -->
-        <string id="fGfTaAoD" text="rééquiper" original="reequip"/>
+        <string id="fGfTaAoD" text="reequiper" original="reequip"/>
         <!-- gold -->
         <!-- Show your heroes current gold. -->
-        <string id="eWI5oDce" text="Montrez à vos héros l&amp;#39;or actuel." original="Show your heroes current gold."/>
+        <string id="eWI5oDce" text="Afficher la quantité d&amp;#39;or que vous avez." original="Show your heroes current gold."/>
         <!-- show gold -->
         <string id="zdRj4blL" text="montrer de l&amp;#39;or" original="show gold"/>
         <!-- gold -->
         <string id="W5uX9HCJ" text="or" original="gold"/>
         <!-- retinuelist -->
         <!-- Shows your current retinue troops. -->
-        <string id="BlBiEmbf" text="Affiche vos troupes de suite actuelles." original="Shows your current retinue troops."/>
+        <string id="BlBiEmbf" text="Affiche vos troupes d&amp;#39;escorte actuelles." original="Shows your current retinue troops."/>
         <!-- retinue list -->
         <string id="ysbFV5uT" text="liste escorte" original="retinue list"/>
         <!-- retinuelist -->

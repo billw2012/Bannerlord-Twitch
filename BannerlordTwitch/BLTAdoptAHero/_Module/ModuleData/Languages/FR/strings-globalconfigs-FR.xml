@@ -33,7 +33,7 @@
         <!-- Reduces morale loss when summoned heroes die -->
         <string id="tpgJtS5q" text="Réduit la perte de moral lorsque les héros invoqués meurent" original="Reduces morale loss when summoned heroes die"/>
         <!-- Retinue Use Heroes Formation -->
-        <string id="bXdC2trk" text="La suite utilise la formation des héros" original="Retinue Use Heroes Formation"/>
+        <string id="bXdC2trk" text="L&amp;#39;escorte utilise la formation des héros" original="Retinue Use Heroes Formation"/>
         <!-- Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations) -->
         <string id="D8uDzXlV" text="Si une suite de héros adoptés doit apparaître dans la même formation que le héros (sinon ils iront dans les formations par défaut)" original="Whether an adopted heroes retinue should spawn in the same formation as the hero (otherwise they will go into default formations)"/>
         <!-- Summon Cooldown In Seconds -->
