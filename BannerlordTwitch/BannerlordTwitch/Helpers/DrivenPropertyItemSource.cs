@@ -51,8 +51,9 @@ namespace BannerlordTwitch.Helpers
             { DrivenProperty.WeaponUnsteadyBeginTime, "WeaponUnsteadyBeginTime" }, 
             { DrivenProperty.WeaponUnsteadyEndTime, "WeaponUnsteadyEndTime" }, 
             { DrivenProperty.WeaponRotationalAccuracyPenaltyInRadians, "WeaponRotationalAccuracyPenaltyInRadians" }, 
-            { DrivenProperty.LongestRangedWeaponSlotIndex, "LongestRangedWeaponSlotIndex" }, 
-            { DrivenProperty.LongestRangedWeaponInaccuracy, "LongestRangedWeaponInaccuracy" }, 
+            // gone since 180
+            //{ DrivenProperty.LongestRangedWeaponSlotIndex, "LongestRangedWeaponSlotIndex" }, 
+            //{ DrivenProperty.LongestRangedWeaponInaccuracy, "LongestRangedWeaponInaccuracy" }, 
             { DrivenProperty.ShieldBashStunDurationMultiplier, "ShieldBashStunDurationMultiplier" }, 
             { DrivenProperty.KickStunDurationMultiplier, "KickStunDurationMultiplier" }, 
             { DrivenProperty.BipedalRangedReadySpeedMultiplier, "BipedalRangedReadySpeedMultiplier" }, 
@@ -76,8 +77,12 @@ namespace BannerlordTwitch.Helpers
             { DrivenProperty.AIRealizeBlockingFromIncorrectSideAbility, "AIRealizeBlockingFromIncorrectSideAbility" }, 
             { DrivenProperty.AiAttackingShieldDefenseChance, "AiAttackingShieldDefenseChance" }, 
             { DrivenProperty.AiAttackingShieldDefenseTimer, "AiAttackingShieldDefenseTimer" }, 
-            { DrivenProperty.AiCheckMovementIntervalFactor, "AiCheckMovementIntervalFactor" }, 
-            { DrivenProperty.AiMovemetDelayFactor, "AiMovemetDelayFactor" }, 
+            { DrivenProperty.AiCheckMovementIntervalFactor, "AiCheckMovementIntervalFactor" },
+            #if e180
+            { DrivenProperty.AiMovementDelayFactor, "AiMovementDelayFactor" },
+            #else
+            { DrivenProperty.AiMovemetDelayFactor, "AiMovemetDelayFactor" },
+            #endif
             { DrivenProperty.AiParryDecisionChangeValue, "AiParryDecisionChangeValue" }, 
             { DrivenProperty.AiDefendWithShieldDecisionChanceValue, "AiDefendWithShieldDecisionChanceValue" }, 
             { DrivenProperty.AiMoveEnemySideTimeValue, "AiMoveEnemySideTimeValue" }, 

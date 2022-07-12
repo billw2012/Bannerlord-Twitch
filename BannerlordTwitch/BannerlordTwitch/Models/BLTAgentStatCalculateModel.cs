@@ -5,6 +5,9 @@ using SandBox;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+#if e180
+using SandBox.GameComponents;
+#endif
 
 namespace BannerlordTwitch.Models
 {

@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <!-- Required to trick IDE into setting the configs -->
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.7.0|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.8.0|AnyCPU' "/>
     
     <PropertyGroup Condition="$(Configuration.StartsWith('Debug'))">
         <OutputPackageRoot>$(SolutionDir)deploy\debug\</OutputPackageRoot>
@@ -26,19 +26,11 @@
         <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
 
-    <PropertyGroup Condition="$(Configuration.EndsWith(' 1.7.0'))">
-        <GameVersion>1.7.0</GameVersion>
-        <DefineConstants>$(DefineConstants);e170</DefineConstants>
-        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_7_0)</BANNERLORD_GAME_DIR>
+    <PropertyGroup Condition="$(Configuration.EndsWith(' 1.8.0'))">
+        <GameVersion>1.8.0</GameVersion>
+        <DefineConstants>$(DefineConstants);e180</DefineConstants>
+        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_8_0)</BANNERLORD_GAME_DIR>
         <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</BANNERLORD_GAME_DIR>
-    </PropertyGroup>
-
-
-    <PropertyGroup Condition="$(Configuration.EndsWith(' 1.7.1'))">
-        <GameVersion>1.7.1</GameVersion>
-        <DefineConstants>$(DefineConstants);e171</DefineConstants>
-        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_7_1)</BANNERLORD_GAME_DIR>
-        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.7.1</BANNERLORD_GAME_DIR>
     </PropertyGroup>
     
     <PropertyGroup>

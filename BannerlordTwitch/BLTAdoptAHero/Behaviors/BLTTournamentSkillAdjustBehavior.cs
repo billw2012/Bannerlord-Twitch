@@ -6,7 +6,7 @@ using BLTAdoptAHero.Achievements;
 using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Annotations;
 using HarmonyLib;
-using SandBox.TournamentMissions.Missions;
+//using SandBox.TournamentMissions.Missions;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;

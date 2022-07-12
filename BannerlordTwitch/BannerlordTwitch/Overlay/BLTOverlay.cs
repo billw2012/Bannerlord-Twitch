@@ -15,6 +15,7 @@ using Microsoft.Owin.Logging;
 using Microsoft.Owin.StaticFiles;
 using Owin;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 
 namespace BLTOverlay
 {

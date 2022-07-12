@@ -13,6 +13,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade.View;
+using TaleWorlds.MountAndBlade.View.Tableaus;
 using Path = System.IO.Path;
 
 namespace BannerlordTwitch

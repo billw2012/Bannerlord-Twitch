@@ -1,8 +1,12 @@
 ﻿using System.Linq;
 using SandBox;
+using SandBox.Conversation.MissionLogics;
+using SandBox.Missions.MissionLogics;
 using SandBox.Source.Missions;
+using SandBox.Tournaments.MissionLogics;
 using StoryMode.Missions;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Encounters;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Source.Missions.Handlers;

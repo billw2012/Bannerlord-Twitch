@@ -7,9 +7,11 @@ using BannerlordTwitch.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.SandBox.Source.TournamentGames;
+//using TaleWorlds.CampaignSystem.SandBox.Source.TournamentGames;
+using TaleWorlds.CampaignSystem.Settlements;
+using TaleWorlds.CampaignSystem.TournamentGames;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.SaveSystem;
+//using TaleWorlds.SaveSystem;
 
 namespace BLTAdoptAHero
 {

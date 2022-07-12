@@ -2,6 +2,8 @@
 using System.Linq;
 using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.MapEvents;
+using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.MountAndBlade;
 
 namespace BLTAdoptAHero
@@ -21,7 +23,7 @@ namespace BLTAdoptAHero
         
         public static PartyBase GetMapEventParty(this Hero hero)
         {
-            return (PartyBase.MainParty.MapEvent?.InvolvedParties ?? PartyBase.MainParty.SiegeEvent?.Parties)?
+            return (PartyBase.MainParty.MapEvent?.InvolvedParties ?? PartyBase.MainParty.SiegeEvent?.GetInvolvedPartiesForEventType(MapEvent.BattleTypes.Siege))?
                 .FirstOrDefault(p => p.MemberRoster.GetTroopCount(hero.CharacterObject) != 0);
         }
     }

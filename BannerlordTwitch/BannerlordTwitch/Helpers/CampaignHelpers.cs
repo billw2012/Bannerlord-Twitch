@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
+#if e180
+using TaleWorlds.CampaignSystem.Extensions;
+#else // Older versions
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
+#endif
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;

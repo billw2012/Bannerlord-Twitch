@@ -10,6 +10,7 @@ using BannerlordTwitch.Util;
 using BLTAdoptAHero;
 using JetBrains.Annotations;
 using SandBox;
+using SandBox.Tournaments.MissionLogics;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;

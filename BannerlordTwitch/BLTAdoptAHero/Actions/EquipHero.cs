@@ -10,6 +10,7 @@ using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Annotations;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.CharacterDevelopment;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;

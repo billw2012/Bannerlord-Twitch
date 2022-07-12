@@ -105,8 +105,8 @@ namespace BannerlordTwitch.Util
                 return "Usage example: blt.speed 0.25";
             if (float.TryParse(strings[0], out float factor))
             {
-                Mission.Current.Scene.SlowMotionFactor = Math.Max(0.001f, factor);
-                Mission.Current.Scene.SlowMotionMode = factor != 1;
+                Mission.Current.Scene.TimeSpeed = Math.Max(0.001f, factor);
+                // Mission.Current.Scene.time.SlowMotionMode = factor != 1;
                 return $"Speed set to {factor}";
             }
             return "Usage example: blt.speed 0.25";

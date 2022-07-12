@@ -2,6 +2,7 @@
 using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Util;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Settlements.Locations;
 
 namespace BLTAdoptAHero
 {
