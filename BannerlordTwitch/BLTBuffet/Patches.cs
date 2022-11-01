@@ -12,15 +12,32 @@ namespace BLTBuffet
         [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(Mission), "GetAttackCollisionResults",
              new[]
              {
-                 typeof(Agent), typeof(Agent), typeof(GameEntity), typeof(float), typeof(AttackCollisionData),
-                 typeof(MissionWeapon), typeof(bool), typeof(bool), typeof(bool), typeof(WeaponComponentData),
-                 typeof(CombatLogData)
+                 typeof(Agent), // attackerAgent
+                 typeof(Agent), // victimAgent
+                 typeof(GameEntity), // hitObject
+                 typeof(float), // momentumRemaining
+                 typeof(MissionWeapon), // attackerWeapon
+                 typeof(bool), // crushedThrough
+                 typeof(bool), // cancelDamage
+                 typeof(bool), // crushedThroughWithoutAgentCollision
+                 typeof(AttackCollisionData), // attackCollisionData
+                 typeof(WeaponComponentData), // shieldOnBack
+                 typeof(CombatLogData), // combatLogData
              },
-             new[]
+            new[]
              {
-                 ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Ref,
-                 ArgumentType.Ref, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Out,
-                 ArgumentType.Out
+                 ArgumentType.Normal, // attackerAgent
+                 ArgumentType.Normal, // victimAgent
+                 ArgumentType.Normal, // hitObject
+                 ArgumentType.Normal, // momentumRemaining
+                 ArgumentType.Ref, // in attackerWeapon
+                 ArgumentType.Normal, // crushedThrough
+                 ArgumentType.Normal, // cancelDamage
+                 ArgumentType.Normal, // crushedThroughWithoutAgentCollision
+                 ArgumentType.Ref, // ref attackCollisionData
+                 ArgumentType.Out, // out shieldOnBack
+                 ArgumentType.Out, // out combatLogData
+                 
              })]
 
         public static void GetAttackCollisionResultsPostfix(Mission __instance, Agent attackerAgent, Agent victimAgent, ref AttackCollisionData attackCollisionData)

@@ -9,12 +9,11 @@ using System.Security.Principal;
 using BannerlordTwitch.Util;
 using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Cors;
-using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.Hosting;
 using Microsoft.Owin.Logging;
 using Microsoft.Owin.StaticFiles;
 using Owin;
-using TaleWorlds.Core;
+using TaleWorlds.Library;
 
 namespace BLTOverlay
 {

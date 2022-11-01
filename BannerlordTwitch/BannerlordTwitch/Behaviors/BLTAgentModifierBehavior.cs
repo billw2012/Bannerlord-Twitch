@@ -11,7 +11,6 @@ using JetBrains.Annotations;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
-using YamlDotNet.Serialization;
 
 namespace BannerlordTwitch
 {

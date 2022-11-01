@@ -30,10 +30,8 @@ namespace BannerlordTwitch
 		private static extern int SetWindowText(IntPtr hWnd, string text);
 
 		private const string ExpectedVersion =
-#if e170
-				"e1.7.0"
-#elif e171
-				"e1.7.1"
+#if ev100
+			"v1.0.0"
 #endif
 			;
 

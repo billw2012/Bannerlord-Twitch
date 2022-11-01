@@ -9,7 +9,6 @@ using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Testing;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
-using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TwitchLib.Api;
 using TwitchLib.Api.Core.Enums;

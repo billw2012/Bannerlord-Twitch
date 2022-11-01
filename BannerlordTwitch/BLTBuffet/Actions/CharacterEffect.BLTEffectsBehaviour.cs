@@ -37,7 +37,7 @@ namespace BLTBuffet
                     agent.Health = Math.Min(agent.HealthLimit, agent.Health + Math.Abs(config.HealPerSecond) * dt);
                 }
 
-                if(config.DamagePerSecond != 0 && !agent.Invulnerable && !Mission.DisableDying)
+                if(config.DamagePerSecond != 0 && agent.CurrentMortalityState == Agent.MortalityState.Mortal && Mission.Current?.DisableDying != true)
                 {
                     var blow = new Blow(agent.Index)
                     {
@@ -55,7 +55,7 @@ namespace BLTBuffet
                         Direction = agent.LookDirection.NormalizedCopy(),
                         DamageCalculated = true
                     };
-                    agent.RegisterBlow(blow);
+                    agent.RegisterBlow(blow, AgentHelpers.CreateCollisionDataFromBlow(agent, agent, blow));
                 }
 
                 if (config.ForceDropWeapons)
@@ -154,8 +154,7 @@ namespace BLTBuffet
                 return beh;
             }
 
-            public void ApplyHitDamage(Agent attackerAgent, Agent victimAgent,
-                ref AttackCollisionData attackCollisionData)
+            public void ApplyHitDamage(Agent attackerAgent, Agent victimAgent, ref AttackCollisionData attackCollisionData)
             {
                 try
                 {

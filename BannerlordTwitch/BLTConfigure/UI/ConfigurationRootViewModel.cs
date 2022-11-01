@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using BannerlordTwitch;
-using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
-using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace BLTConfigure.UI
 {

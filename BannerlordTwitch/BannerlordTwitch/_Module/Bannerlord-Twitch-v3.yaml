@@ -3648,31 +3648,31 @@ Rewards:
 SimTesting:
   Init:
   - Args: ''
-    Enabled: false
+    Enabled: true
     Id: '{=Yc9dn4Sx}Adopt a Hero'
     ID: b50d0749-add5-458c-b3d4-c957f4bb85f3
     Type: Reward
     Weight: 0
   - Args: ''
-    Enabled: false
+    Enabled: true
     Id: '{=ndi9p5jn}100k gold'
     ID: 7698ddba-b00b-4243-bd54-3dc97a4e73cf
     Type: Reward
     Weight: 0
   - Args: ''
-    Enabled: false
+    Enabled: true
     Id: '{=ndi9p5jn}100k gold'
     ID: a9933fab-58d4-492a-93fb-34c0d6606c09
     Type: Reward
     Weight: 0
   - Args: ''
-    Enabled: false
+    Enabled: true
     Id: '{=ndi9p5jn}100k gold'
     ID: a9933fab-58d4-492a-93fb-34c0d6606c09
     Type: Reward
     Weight: 0
   - Args: ''
-    Enabled: false
+    Enabled: true
     Id: '{=ndi9p5jn}100k gold'
     ID: a9933fab-58d4-492a-93fb-34c0d6606c09
     Type: Reward
@@ -3701,8 +3701,8 @@ SimTesting:
     ID: f478486b-06ba-4d97-bb27-774cf985dd0c
     Type: Reward
     Weight: 1
-  IntervalMaxMS: 20
-  IntervalMinMS: 20
+  IntervalMaxMS: 500
+  IntervalMinMS: 50
   Use:
   - Args: ''
     Enabled: true
@@ -3723,7 +3723,7 @@ SimTesting:
     Type: Reward
     Weight: 1
   - Args: ''
-    Enabled: false
+    Enabled: true
     Id: '{=wHqxd4kb}equip'
     ID: 06539d16-25cb-4314-8cdd-4aada76b27bc
     Type: Command
@@ -3735,13 +3735,13 @@ SimTesting:
     Type: Command
     Weight: 0.100000001
   - Args: ''
-    Enabled: false
+    Enabled: true
     Id: '{=IBrMU0VF}Tournament'
     ID: 4e066d86-ecac-48c2-9406-0ed931f14756
     Type: Reward
     Weight: 0.200000003
   - Args: ''
-    Enabled: false
+    Enabled: true
     Id: '{=mge9rH9J}retinue'
     ID: 9513732e-6522-429c-ab92-e1eab16518ef
     Type: Command
@@ -3759,91 +3759,91 @@ SimTesting:
     Type: Reward
     Weight: 0.00999999978
   - Args: ''
-    Enabled: false
+    Enabled: true
     Id: '{=MSpPJJhZ}Heal Streamer'
     ID: f1f5a043-fdf6-43e5-9fe5-e70009c56bf5
     Type: Reward
     Weight: 0.0500000007
   - Args: '{=m8bz4drX}infantry'
-    Enabled: false
+    Enabled: true
     Id: '{=nV9iIsDC}class'
     ID: a67ca1e9-d434-4af1-a3b6-69979b72d804
     Type: Command
     Weight: 0.100000001
   - Args: '{=4tflp34a}archer'
-    Enabled: false
+    Enabled: true
     Id: '{=nV9iIsDC}class'
     ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
     Type: Command
     Weight: 0.100000001
   - Args: '{=JncRD8tX}heavyarcher'
-    Enabled: false
+    Enabled: true
     Id: '{=nV9iIsDC}class'
     ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
     Type: Command
     Weight: 0.100000001
   - Args: '{=wV6R9Si5}crossbow'
-    Enabled: false
+    Enabled: true
     Id: '{=nV9iIsDC}class'
     ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
     Type: Command
     Weight: 0.100000001
   - Args: '{=bpzytNbP}heavycrossbow'
-    Enabled: false
+    Enabled: true
     Id: '{=nV9iIsDC}class'
     ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
     Type: Command
     Weight: 0.100000001
   - Args: '{=jNaFWF9t}cavalry'
-    Enabled: false
+    Enabled: true
     Id: '{=nV9iIsDC}class'
     ID: 6162aec8-8ffd-4d65-bcdd-0529081528ee
     Type: Command
     Weight: 0.100000001
   - Args: '{=mJ8RVORq}camelry'
-    Enabled: false
+    Enabled: true
     Id: '{=nV9iIsDC}class'
     ID: 6162aec8-8ffd-4d65-bcdd-0529081528ee
     Type: Command
     Weight: 0.100000001
   - Args: '{=p5qJfkkp}horsearcher'
-    Enabled: false
+    Enabled: true
     Id: '{=nV9iIsDC}class'
     ID: 2e320a55-f238-4d01-86de-c734d29bf7a5
     Type: Command
     Weight: 0.100000001
   - Args: '{=HreZWoyd}camelarcher'
-    Enabled: false
+    Enabled: true
     Id: '{=nV9iIsDC}class'
     ID: 2e320a55-f238-4d01-86de-c734d29bf7a5
     Type: Command
     Weight: 0.100000001
   - Args: '{=9euSgzCd}skirmisher'
-    Enabled: false
+    Enabled: true
     Id: '{=nV9iIsDC}class'
     ID: 7032b576-86b5-4540-b0b8-5d933f0fd87a
     Type: Command
     Weight: 0.100000001
   - Args: '{=wVjXAFal}berserker'
-    Enabled: false
+    Enabled: true
     Id: '{=nV9iIsDC}class'
     ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
     Type: Command
     Weight: 0.100000001
   - Args: '{=4JffsJMD}looter'
-    Enabled: false
+    Enabled: true
     Id: '{=nV9iIsDC}class'
     ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
     Type: Command
     Weight: 0.100000001
   - Args: ''
-    Enabled: false
+    Enabled: true
     Id: '{=likTlNpu}Heal Hero'
     ID: 584c161e-da84-46af-8fa4-3aeb3768663b
     Type: Reward
     Weight: 0.0500000007
   - Args: ''
-    Enabled: false
+    Enabled: true
     Id: '{=yoZSmM0b}Use Class Power'
     ID: d701da05-a87d-4f81-a94c-07aadb937636
     Type: Reward

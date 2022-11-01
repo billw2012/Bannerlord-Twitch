@@ -5,6 +5,8 @@ using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Util;
 using HarmonyLib;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.AgentOrigins;
+using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
@@ -248,16 +250,13 @@ namespace BLTAdoptAHero
                 , hasFormation: true
                 , spawnWithHorse: spawnWithHorse
                 , isReinforcement: true
-                , enforceSpawningOnInitialPoint: false
                 , formationTroopCount: 1
                 , formationTroopIndex: 0
                 , isAlarmed: true
                 , wieldInitialWeapons: true
-#if !e159 && !e1510 && !e160 && !e161
                 , forceDismounted: false
                 , initialPosition: null
                 , initialDirection: null
-#endif
             );
             agent.MountAgent?.FadeIn();
             agent.FadeIn();

@@ -10,9 +10,13 @@ using BannerlordTwitch.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
 using SandBox;
-using SandBox.Source.Missions.Handlers;
+using SandBox.Missions.AgentBehaviors;
+using SandBox.Missions.MissionLogics;
+using SandBox.Missions.MissionLogics.Arena;
+using SandBox.Tournaments.MissionLogics;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.SandBox;
+using TaleWorlds.CampaignSystem.Party;
+using TaleWorlds.CampaignSystem.Settlements.Locations;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -152,12 +156,11 @@ namespace BLTAdoptAHero
             MissionAgentHandler instance,
             LocationCharacter locationCharacter,
             MatrixFrame spawnPointFrame,
-            bool hasTorch,
             bool noHorses);
 
         private static readonly MissionAgentHandler_SpawnWanderingAgentDelegate MissionAgentHandler_SpawnWanderingAgent 
             = (MissionAgentHandler_SpawnWanderingAgentDelegate) AccessTools.Method(typeof(MissionAgentHandler),
-                    "SpawnWanderingAgent", new[] {typeof(LocationCharacter), typeof(MatrixFrame), typeof(bool), typeof(bool)})
+                    "SpawnWanderingAgent", new[] {typeof(LocationCharacter), typeof(MatrixFrame), typeof(bool)})
                 .CreateDelegate(typeof(MissionAgentHandler_SpawnWanderingAgentDelegate));
         
         private delegate MatrixFrame ArenaPracticeFightMissionController_GetSpawnFrameDelegate(
@@ -323,7 +326,7 @@ namespace BLTAdoptAHero
             {
                 var controller = Mission.Current.GetMissionBehavior<ArenaPracticeFightMissionController>();
                 var pos = ArenaPracticeFightMissionController_GetSpawnFrame(controller, false, false);
-                agent = MissionAgentHandler_SpawnWanderingAgent(missionAgentHandler, locationCharacter, pos, false, true);
+                agent = MissionAgentHandler_SpawnWanderingAgent(missionAgentHandler, locationCharacter, pos, true);
                 var _participantAgents = (List<Agent>)AccessTools
                     .Field(typeof(ArenaPracticeFightMissionController), "_participantAgents")
                     .GetValue(controller);
@@ -623,27 +626,27 @@ namespace BLTAdoptAHero
                     && (s.SiegeDefend || !doingSiegeDefend));
         }
 
-        // Modified KillAgentCheat (usually Ctrl+F4 in debug mode) that can actually kill sometimes instead of only knock out.
-        // For testing death mechanics
-        // ReSharper disable once UnusedMember.Local
-        private static void KillAgentCheat(Agent agent)
-        {
-            var blow = new Blow(Mission.Current.MainAgent?.Index ?? agent.Index)
-            {
-                DamageType = DamageTypes.Pierce,
-                BoneIndex = agent.Monster.HeadLookDirectionBoneIndex,
-                Position = agent.Position,
-                BaseMagnitude = 2000f,
-                InflictedDamage = 2000,
-                SwingDirection = agent.LookDirection,
-                Direction = agent.LookDirection,
-                DamageCalculated = true,
-                VictimBodyPart = BoneBodyPartType.Head,
-                WeaponRecord = new () { AffectorWeaponSlotOrMissileIndex = -1 }
-            };
-            blow.Position.z += agent.GetEyeGlobalHeight();
-            agent.RegisterBlow(blow);
-        }
+        // // Modified KillAgentCheat (usually Ctrl+F4 in debug mode) that can actually kill sometimes instead of only knock out.
+        // // For testing death mechanics
+        // // ReSharper disable once UnusedMember.Local
+        // private static void KillAgentCheat(Agent agent)
+        // {
+        //     var blow = new Blow(Mission.Current.MainAgent?.Index ?? agent.Index)
+        //     {
+        //         DamageType = DamageTypes.Pierce,
+        //         BoneIndex = agent.Monster.HeadLookDirectionBoneIndex,
+        //         Position = agent.Position,
+        //         BaseMagnitude = 2000f,
+        //         InflictedDamage = 2000,
+        //         SwingDirection = agent.LookDirection,
+        //         Direction = agent.LookDirection,
+        //         DamageCalculated = true,
+        //         VictimBodyPart = BoneBodyPartType.Head,
+        //         WeaponRecord = new () { AffectorWeaponSlotOrMissileIndex = -1 }
+        //     };
+        //     blow.Position.z += agent.GetEyeGlobalHeight();
+        //     agent.RegisterBlow(blow);
+        // }
         
         [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(MissionAgentSpawnLogic), nameof(MissionAgentSpawnLogic.IsSideDepleted))]
         // ReSharper disable once RedundantAssignment

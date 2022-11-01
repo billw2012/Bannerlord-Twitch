@@ -84,14 +84,15 @@ namespace BannerlordTwitch.Helpers
                         pfxState.boneAttachments = CreateAgentEffects(Agent,
                             pfx.Name,
                             MatrixFrame.Identity,
-                            Game.Current.HumanMonster.MainHandItemBoneIndex,
-                            Game.Current.HumanMonster.OffHandItemBoneIndex);
+                            Agent.Monster.MainHandItemBoneIndex,
+                            Agent.Monster.MainHandItemBoneIndex,
+                            Agent.Monster.OffHandItemBoneIndex);
                         break;
                     case ParticleEffectDef.AttachPointEnum.OnHead:
                         pfxState.boneAttachments = CreateAgentEffects(Agent,
                             pfx.Name,
                             MatrixFrame.Identity.Strafe(0.1f),
-                            Game.Current.HumanMonster.HeadLookDirectionBoneIndex);
+                            Agent.Monster.HeadLookDirectionBoneIndex);
                         break;
                     case ParticleEffectDef.AttachPointEnum.OnBody:
                         pfxState.boneAttachments = CreateAgentEffects(Agent, pfx.Name, MatrixFrame.Identity.Elevate(0.1f));
@@ -149,7 +150,7 @@ namespace BannerlordTwitch.Helpers
                         var localFrame = MatrixFrame.Identity.Elevate(i * 0.1f);
                         var particle = ParticleSystem.CreateParticleSystemAttachedToEntity(pfxSystem, wieldedWeaponEntity, ref localFrame);
                         particle.SetRuntimeEmissionRateMultiplier(MBRandom.RandomFloatRanged(0.75f, 1.25f));
-                        skeleton.AddComponentToBone(Game.Current.HumanMonster.MainHandItemBoneIndex, particle);
+                        skeleton.AddComponentToBone(agent.Monster.MainHandItemBoneIndex, particle);
                         components.Add(particle);
                     }
                     break;
@@ -165,7 +166,7 @@ namespace BannerlordTwitch.Helpers
                         var localFrame = MatrixFrame.Identity.Elevate(i * 0.1f);
                         var particle = ParticleSystem.CreateParticleSystemAttachedToEntity(pfxSystem, wieldedWeaponEntity, ref localFrame);
                         particle.SetRuntimeEmissionRateMultiplier(MBRandom.RandomFloatRanged(0.75f, 1.25f));
-                        skeleton.AddComponentToBone(Game.Current.HumanMonster.MainHandItemBoneIndex, particle);
+                        skeleton.AddComponentToBone(agent.Monster.MainHandItemBoneIndex, particle);
                         components.Add(particle);
                     }
                     break;

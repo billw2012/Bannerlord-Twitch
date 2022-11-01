@@ -7,9 +7,9 @@ using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
 using BLTAdoptAHero.Util;
 using HarmonyLib;
-using SandBox.TournamentMissions.Missions;
+using SandBox.Tournaments.MissionLogics;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.SandBox.Source.TournamentGames;
+using TaleWorlds.CampaignSystem.TournamentGames;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 

@@ -260,7 +260,7 @@ namespace BLTAdoptAHero.Powers
 			        OneShotEffect.Trigger("psys_game_shield_break", "event:/mission/combat/shield/broken",
 				        victimAgent.AgentVisuals.GetGlobalFrame()
 				        * victimAgent.AgentVisuals.GetSkeleton()
-					        .GetBoneEntitialFrame(Game.Current.HumanMonster.OffHandItemBoneIndex)
+					        .GetBoneEntitialFrame(victimAgent.Monster.OffHandItemBoneIndex)
 			        );
 
 			        victimAgent.ChangeWeaponHitPoints(slotIndex, 0);
@@ -403,8 +403,8 @@ namespace BLTAdoptAHero.Powers
 		        BlowFlag = hitBehavior.AddFlags(agent, BlowFlags.None),
                 WeaponRecord = new () { AffectorWeaponSlotOrMissileIndex = -1 }
             };
-
-	        agent.RegisterBlow(blow);
+	        
+	        agent.RegisterBlow(blow, AgentHelpers.CreateCollisionDataFromBlow(from, agent, blow));
         }
         #endregion
 

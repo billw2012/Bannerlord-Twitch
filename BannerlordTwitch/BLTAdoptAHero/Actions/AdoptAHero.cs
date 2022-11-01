@@ -10,12 +10,12 @@ using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
-using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Annotations;
 using Helpers;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
-using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.Towns;
+using TaleWorlds.CampaignSystem.CampaignBehaviors;
+using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -294,7 +294,7 @@ namespace BLTAdoptAHero
             {
                 newHero = BLTAdoptAHeroCampaignBehavior.GetAvailableHeroes(h =>
                         // Filter by allowed types
-                        (settings.AllowNoble || !h.IsNoble) 
+                        (settings.AllowNoble || !h.IsLord) 
                         && (settings.AllowWanderer || !h.IsWanderer)
                         && (settings.AllowPartyLeader || !h.IsPartyLeader)
                         && (settings.AllowMinorFactionHero || !h.IsMinorFactionHero)

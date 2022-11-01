@@ -4,7 +4,6 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Microsoft.Extensions.Logging;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using Debug = TaleWorlds.Library.Debug;
@@ -170,7 +169,7 @@ namespace BannerlordTwitch.Util
                 Sound.Notification1 => "event:/ui/notification/levelup",
                 _ => throw new ArgumentOutOfRangeException(nameof(sound), sound, null)
             }; 
-            InformationManager.AddQuickInformation(new TextObject(message), 1000, characterObject, soundStr);
+            MBInformationManager.AddQuickInformation(new TextObject(message), 1000, characterObject, soundStr);
         }
 
         public static long TimeFunction(Action action)

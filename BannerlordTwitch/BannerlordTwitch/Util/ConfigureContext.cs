@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BannerlordTwitch.Util
+﻿namespace BannerlordTwitch.Util
 {
     public static class ConfigureContext
     {
