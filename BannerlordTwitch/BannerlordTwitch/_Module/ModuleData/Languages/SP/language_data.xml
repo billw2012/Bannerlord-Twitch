@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="Español (LA)">
+  <LanguageFile xml_path="SP/strings-achievements-SP.xml" />
+  <LanguageFile xml_path="SP/strings-classes-SP.xml" />
+  <LanguageFile xml_path="SP/strings-commands-SP.xml" />
+  <LanguageFile xml_path="SP/strings-kill-streaks-SP.xml" />
+  <LanguageFile xml_path="SP/strings-misc-SP.xml" />
+  <LanguageFile xml_path="SP/strings-powers-SP.xml" />
+  <LanguageFile xml_path="SP/strings-rewards-SP.xml" />
+</LanguageData>

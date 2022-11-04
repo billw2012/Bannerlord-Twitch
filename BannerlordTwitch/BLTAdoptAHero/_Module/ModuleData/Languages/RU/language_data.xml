@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="Русский">
+  <LanguageFile xml_path="RU/strings-actions-RU.xml" />
+  <LanguageFile xml_path="RU/strings-behaviors-RU.xml" />
+  <LanguageFile xml_path="RU/strings-default-shouts-RU.xml" />
+  <LanguageFile xml_path="RU/strings-globalconfigs-RU.xml" />
+  <LanguageFile xml_path="RU/strings-misc-RU.xml" />
+  <LanguageFile xml_path="RU/strings-powers-RU.xml" />
+</LanguageData>

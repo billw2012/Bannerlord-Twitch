@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="Türkçe">
+  <LanguageFile xml_path="TR/strings-achievements-TR.xml" />
+  <LanguageFile xml_path="TR/strings-classes-TR.xml" />
+  <LanguageFile xml_path="TR/strings-commands-TR.xml" />
+  <LanguageFile xml_path="TR/strings-kill-streaks-TR.xml" />
+  <LanguageFile xml_path="TR/strings-misc-TR.xml" />
+  <LanguageFile xml_path="TR/strings-powers-TR.xml" />
+  <LanguageFile xml_path="TR/strings-rewards-TR.xml" />
+</LanguageData>

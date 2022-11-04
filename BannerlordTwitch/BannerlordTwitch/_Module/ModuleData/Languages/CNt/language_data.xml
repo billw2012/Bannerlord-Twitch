@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="繁體中文">
+  <LanguageFile xml_path="CNt/strings-achievements-CNt.xml" />
+  <LanguageFile xml_path="CNt/strings-classes-CNt.xml" />
+  <LanguageFile xml_path="CNt/strings-commands-CNt.xml" />
+  <LanguageFile xml_path="CNt/strings-kill-streaks-CNt.xml" />
+  <LanguageFile xml_path="CNt/strings-misc-CNt.xml" />
+  <LanguageFile xml_path="CNt/strings-powers-CNt.xml" />
+  <LanguageFile xml_path="CNt/strings-rewards-CNt.xml" />
+</LanguageData>

@@ -102,18 +102,30 @@
         <Content Include="CharacterEffectProperties.txt" />
         <Content Include="ParticleEffects.txt" />
         <Content Include="Sounds.txt" />
+        <Content Include="_Module\ModuleData\Languages\BR\language_data.xml" />
         <Content Include="_Module\ModuleData\Languages\BR\strings-misc-BR.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNs\language_data.xml" />
         <Content Include="_Module\ModuleData\Languages\CNs\strings-misc-CNs.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNt\language_data.xml" />
         <Content Include="_Module\ModuleData\Languages\CNt\strings-misc-CNt.xml" />
+        <Content Include="_Module\ModuleData\Languages\DE\language_data.xml" />
         <Content Include="_Module\ModuleData\Languages\DE\strings-misc-DE.xml" />
+        <Content Include="_Module\ModuleData\Languages\FR\language_data.xml" />
         <Content Include="_Module\ModuleData\Languages\FR\strings-misc-FR.xml" />
+        <Content Include="_Module\ModuleData\Languages\IT\language_data.xml" />
         <Content Include="_Module\ModuleData\Languages\IT\strings-misc-IT.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\language_data.xml" />
         <Content Include="_Module\ModuleData\Languages\JP\strings-misc-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\KO\language_data.xml" />
         <Content Include="_Module\ModuleData\Languages\KO\strings-misc-KO.xml" />
+        <Content Include="_Module\ModuleData\Languages\PL\language_data.xml" />
         <Content Include="_Module\ModuleData\Languages\PL\strings-misc-PL.xml" />
+        <Content Include="_Module\ModuleData\Languages\RU\language_data.xml" />
         <Content Include="_Module\ModuleData\Languages\RU\strings-misc-RU.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\language_data.xml" />
         <Content Include="_Module\ModuleData\Languages\SP\strings-misc-SP.xml" />
         <Content Include="_Module\ModuleData\Languages\strings-misc.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\language_data.xml" />
         <Content Include="_Module\ModuleData\Languages\TR\strings-misc-TR.xml" />
     </ItemGroup>
     <ItemGroup>
