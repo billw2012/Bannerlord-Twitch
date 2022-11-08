@@ -91,7 +91,7 @@ namespace BannerlordTwitch.Helpers
                 2,
                 blow.BoneIndex,
                 BoneBodyPartType.Head,
-                fromAgent.Monster.MainHandItemBoneIndex,
+                (sbyte)(fromAgent != null ? fromAgent.Monster.MainHandItemBoneIndex : -1),
                 Agent.UsageDirection.AttackLeft,
                 -1,
                 CombatHitResultFlags.NormalHit,

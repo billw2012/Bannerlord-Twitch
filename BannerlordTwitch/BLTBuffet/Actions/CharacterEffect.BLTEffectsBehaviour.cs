@@ -45,16 +45,18 @@ namespace BLTBuffet
                         //blow.BlowFlag |= BlowFlags.KnockDown;
                         //blow.BlowFlag = BlowFlags.CrushThrough;
                         BlowFlag = BlowFlags.ShrugOff,
-                        BoneIndex = agent.Monster.ThoraxLookDirectionBoneIndex,
+                        BoneIndex = 0,
                         Position = agent.Position,
                         // blow.Position.z += agent.GetEyeGlobalHeight();
-                        BaseMagnitude = 0f,
-                        WeaponRecord = new() { AffectorWeaponSlotOrMissileIndex = -1 },
+                        //BaseMagnitude = 0f,
+                        //WeaponRecord = new() { AffectorWeaponSlotOrMissileIndex = -1 },
                         InflictedDamage = (int) Math.Abs(config.DamagePerSecond * dt),
                         SwingDirection = agent.LookDirection.NormalizedCopy(),
                         Direction = agent.LookDirection.NormalizedCopy(),
                         DamageCalculated = true
                     };
+                    blow.BaseMagnitude = blow.InflictedDamage;
+                    blow.WeaponRecord.FillAsMeleeBlow(null, null, -1, 0);
                     agent.RegisterBlow(blow, AgentHelpers.CreateCollisionDataFromBlow(agent, agent, blow));
                 }
 
@@ -161,7 +163,7 @@ namespace BLTBuffet
                     float[] hitDamageMultipliers = agentEffectsActive
                         .Where(e => ReferenceEquals(e.Key, attackerAgent))
                         .SelectMany(e => e.Value
-                            .Select(f => f.config.DamageMultiplier ?? 0)
+                            .Select(f => f?.config?.DamageMultiplier ?? 0)
                             .Where(f => f != 0)
                         )
                         .ToArray();

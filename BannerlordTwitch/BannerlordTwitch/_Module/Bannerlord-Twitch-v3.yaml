@@ -3848,5 +3848,5 @@ SimTesting:
     ID: d701da05-a87d-4f81-a94c-07aadb937636
     Type: Reward
     Weight: 0.5
-  UserCount: 100
+  UserCount: 20
   UserStayTime: 300
