@@ -401,10 +401,10 @@
         <!-- The cooldown in seconds, defaults to unlimited -->
         <string id="yJRKVszb" text="以秒為單位的冷卻時間，默認為無限制" original="The cooldown in seconds, defaults to unlimited"/>
         <!-- TwitchService -->
-        <!-- Usage: !{cmd.Name} {args} -->
-        <string id="JSW1ryNl" text="用法：!{cmd.Name} {args}" original="Usage: !{cmd.Name} {args}"/>
-        <!-- Usage: {args} -->
-        <string id="mdhbHYNM" text="用法：{args}" original="Usage: {args}"/>
+        <!-- Usage: !{Name} {Args} -->
+        <string id="JSW1ryNl" text="用法：!{Name} {Args}" original="Usage: !{Name} {Args}"/>
+        <!-- Usage: {Args} -->
+        <string id="mdhbHYNM" text="用法：{Args}" original="Usage: {Args}"/>
         <!-- Commands:  -->
         <string id="luOJS8dL" text="命令：" original="Commands: "/>
         <!-- Also see Channel Point Rewards -->

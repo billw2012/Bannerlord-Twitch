@@ -401,10 +401,10 @@
         <!-- The cooldown in seconds, defaults to unlimited -->
         <string id="yJRKVszb" text="秒単位のクールダウン、デフォルトは無制限" original="The cooldown in seconds, defaults to unlimited"/>
         <!-- TwitchService -->
-        <!-- Usage: !{cmd.Name} {args} -->
-        <string id="JSW1ryNl" text="使用法：！{cmd.Name} {args}" original="Usage: !{cmd.Name} {args}"/>
-        <!-- Usage: {args} -->
-        <string id="mdhbHYNM" text="使用法：{args}" original="Usage: {args}"/>
+        <!-- Usage: !{Name} {Args} -->
+        <string id="JSW1ryNl" text="使用法：！{Name} {Args}" original="Usage: !{Name} {Args}"/>
+        <!-- Usage: {Args} -->
+        <string id="mdhbHYNM" text="使用法：{Args}" original="Usage: {Args}"/>
         <!-- Commands:  -->
         <string id="luOJS8dL" text="コマンド：" original="Commands: "/>
         <!-- Also see Channel Point Rewards -->

@@ -40,11 +40,11 @@ namespace BannerlordTwitch
         {
             if (Source is Command cmd)
             {
-                return "{=JSW1ryNl}Usage: !{cmd.Name} {args}".Translate(("cmd.Name", cmd.Name), ("args", args));
+                return "{=JSW1ryNl}Usage: !{Name} {Args}".Translate(("Name", cmd.Name), ("args", args));
             }
             else
             {
-                return "{=mdhbHYNM}Usage: {args}".Translate(("args", args));
+                return "{=mdhbHYNM}Usage: {Args}".Translate(("args", args));
             }
         }
 
