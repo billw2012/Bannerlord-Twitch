@@ -200,8 +200,7 @@ namespace BLTAdoptAHero.Powers
 		        return;
 	        }
 
-	        // We remove the shield when its a missile hit, as it won't be checked for removal
-	        ApplyShatterShieldChance(victimAgent, ref missileHitParams.collisionData, removeShield: true);
+	        ApplyShatterShieldChance(victimAgent, ref missileHitParams.collisionData);
 	        
             // Disabling unblockable for missiles for now as it is quite complicated
     	    // if (UnblockableChance != 0 && MBRandom.RandomFloat < UnblockableChance)
@@ -220,8 +219,7 @@ namespace BLTAdoptAHero.Powers
 		        return;
 	        }
 
-	        // We don't remove the shield for melee hit, as it will crash if we do
-	        ApplyShatterShieldChance(victimAgent, ref meleeHitParams.collisionData, removeShield: false);
+	        ApplyShatterShieldChance(victimAgent, ref meleeHitParams.collisionData);
         }
         
         private void OnPostDoMeleeHit(Agent attackerAgent, Agent victimAgent, 
@@ -238,7 +236,7 @@ namespace BLTAdoptAHero.Powers
 	        }
         }
 
-        private void ApplyShatterShieldChance(Agent victimAgent, ref AttackCollisionData collisionData, bool removeShield)
+        private void ApplyShatterShieldChance(Agent victimAgent, ref AttackCollisionData collisionData)
         {
 	        if (collisionData.AttackBlockedWithShield 
                 && ShatterShieldChancePercent != 0 
@@ -247,11 +245,6 @@ namespace BLTAdoptAHero.Powers
 		        // just makes sure any missile that hit the shield disappears
 		        collisionData.IsShieldBroken = true;
                 
-                // Hopefully this isn't needed in 161
-                #if e159 || e1510 || e160
-		        AttackCollisionData.UpdateDataForShieldPenetration(ref collisionData);
-                #endif
-
 		        var (element, slotIndex) = victimAgent.Equipment
 			        .YieldFilledSlots()
 			        .FirstOrDefault(s => s.element.IsShield());
@@ -262,9 +255,8 @@ namespace BLTAdoptAHero.Powers
 				        * victimAgent.AgentVisuals.GetSkeleton()
 					        .GetBoneEntitialFrame(victimAgent.Monster.OffHandItemBoneIndex)
 			        );
-
+			        // Set hit-points to 0, so the hit will always destroy the shield
 			        victimAgent.ChangeWeaponHitPoints(slotIndex, 0);
-			        if(removeShield) victimAgent.RemoveEquippedWeapon(slotIndex);
 		        }
 	        }
         }
