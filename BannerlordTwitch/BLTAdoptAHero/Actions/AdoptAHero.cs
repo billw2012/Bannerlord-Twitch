@@ -28,7 +28,7 @@ namespace BLTAdoptAHero
      UsedImplicitly]
     public class AdoptAHero : IRewardHandler, ICommandHandler
     {
-        public const string NoHeroMessage = "Couldn't find your hero, did you adopt one yet?";
+        public static string NoHeroMessage => "{=r8nXZgcY}Couldn't find your hero, did you adopt one yet?".Translate();
 
         [CategoryOrder("General", 0), 
          CategoryOrder("Limits", 1), 
@@ -64,44 +64,59 @@ namespace BLTAdoptAHero
              LocDescription("{=NCrSbTGc}Allow heroes that lead minor factions (if CreateNew is false)"), 
              PropertyOrder(4), UsedImplicitly]
             public bool AllowMinorFactionHero { get; set; } = false;
-            
-            
+
             [LocDisplayName("{=A8G9ctbn}Allow Player Companion"), 
              LocCategory("Limits", "{=1lHWj3nT}Limits"), 
              LocDescription("{=6EjGRMkt}Allow companions (not tested, if CreateNew is false)"), 
              PropertyOrder(5), UsedImplicitly]
             public bool AllowPlayerCompanion { get; set; }
+
             [LocDisplayName("{=B2z7T1xQ}Only Same Faction"), 
              LocCategory("Limits", "{=1lHWj3nT}Limits"), 
              LocDescription("{=QvQGwFyl}Only allow heroes from same faction as player"), 
              PropertyOrder(6), UsedImplicitly]
             public bool OnlySameFaction { get; set; }
 
+            public enum ViewerSelect
+            {
+                Nothing,
+                Culture,
+                Faction
+            }
+
+            [LocDisplayName("{=NoKO59t1}Viewer Selects"), 
+             LocCategory("Limits", "{=1lHWj3nT}Limits"), 
+             LocDescription("{=VSYokFLH}What criteria the viewer selects via text input (make sure to enable 'Is User Input " +
+                            "Required' it in the Reward Specification > Misc section if you set this to something other than None). " +
+                            "Faction selection is not compatible with Allow Wanderer or Create New, as wanderers do not have a faction until they are recruited."), 
+             PropertyOrder(7), UsedImplicitly]
+            public ViewerSelect ViewerSelects { get; set; }
+
             [LocDisplayName("{=dvbkxJQz}Inheritance"), 
              LocCategory("Limits", "{=1lHWj3nT}Limits"), 
              LocDescription("{=KLJtpEjg}What fraction of assets will be inherited when a new character is adopted after an old one died (0 to 1)"),
              UIRangeAttribute(0, 1, 0.05f),
              Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-             PropertyOrder(7), UsedImplicitly]
+             PropertyOrder(8), UsedImplicitly]
             public float Inheritance { get; set; } = 0.25f;
             
             [LocDisplayName("{=Bi19tTPj}Maximum Inherited Custom Items"), 
              LocCategory("Limits", "{=1lHWj3nT}Limits"), 
              LocDescription("{=tFolfAOn}How many custom items can be inherited"), 
              Range(0, Int32.MaxValue),
-             PropertyOrder(8), UsedImplicitly]
+             PropertyOrder(9), UsedImplicitly]
             public int MaxInheritedCustomItems { get; set; } = 2;
             
             [LocDisplayName("{=O4DGlP9Z}Subscriber Only"), 
              LocCategory("Limits", "{=1lHWj3nT}Limits"), 
              LocDescription("{=TBNkHsLC}Only subscribers can adopt"), 
-             PropertyOrder(9), UsedImplicitly]
+             PropertyOrder(10), UsedImplicitly]
             public bool SubscriberOnly { get; set; }
 
             [LocDisplayName("{=dO41CKIU}Minimum Subscribed Months"), 
              LocCategory("Limits", "{=1lHWj3nT}Limits"),
              LocDescription("{=BVZwDqR0}Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified"),
-             PropertyOrder(10), UsedImplicitly]
+             PropertyOrder(11), UsedImplicitly]
             public int? MinSubscribedMonths { get; set; }
 
             [LocDisplayName("{=iOmYBC7I}Starting Gold"), 
@@ -169,6 +184,8 @@ namespace BLTAdoptAHero
                 }
 
                 if (OnlySameFaction) generator.Value("{=6W0OJKkA}Same faction only".Translate());
+                if (ViewerSelects == ViewerSelect.Culture) generator.Value("{=Lg6V3rzn}Viewer selects culture".Translate());
+                if (ViewerSelects == ViewerSelect.Faction) generator.Value("{=kps5JINU}Viewer selects faction".Translate());
 
                 if (OverrideAge)
                 {
@@ -239,7 +256,7 @@ namespace BLTAdoptAHero
                 return;
             }
             var settings = (Settings)config;
-            (bool success, string message) = ExecuteInternal(context.UserName, settings);
+            (bool success, string message) = ExecuteInternal(context.UserName, settings, context.Args);
             if (success)
             {
                 ActionManager.NotifyComplete(context, message);
@@ -272,18 +289,72 @@ namespace BLTAdoptAHero
                 return;
             }
                 
-            (_, string message) = ExecuteInternal(context.UserName, settings);
+            (_, string message) = ExecuteInternal(context.UserName, settings, context.Args);
             ActionManager.SendReply(context, message);
         }
 
-        private static (bool success, string message) ExecuteInternal(string userName, Settings settings)
+        private static (bool success, string message) ExecuteInternal(string userName, Settings settings, string contextArgs)
         {
             Hero newHero = null;
 
+            if (settings.ViewerSelects == Settings.ViewerSelect.Faction && settings.AllowWanderer)
+            {
+                throw new Exception($"AdoptAHero config is incorrect: 'Viewer Select Faction' and 'Allow Wanderer' cannot both be enabled as wanderers do not have factions");
+            }
+
+            if (settings.ViewerSelects == Settings.ViewerSelect.Faction && settings.CreateNew)
+            {
+                throw new Exception($"AdoptAHero config is incorrect: 'Viewer Select Faction' and 'Create New' cannot both be enabled as it creates wanderers, which do not have factions");
+            }
+
+            if (settings.ViewerSelects == Settings.ViewerSelect.Faction && settings.OnlySameFaction)
+            {
+                throw new Exception($"AdoptAHero config is incorrect: 'Viewer Select Faction' and 'Only Same Faction' cannot both be enabled as they conflict");
+            }
+
+
+            CultureObject desiredCulture = null;
+            IFaction desiredFaction = null;
+            if (settings.ViewerSelects == Settings.ViewerSelect.Culture)
+            {
+                if (contextArgs.Length > 1)
+                {
+                    desiredCulture = CampaignHelpers.MainCultures.FirstOrDefault(c =>
+                        c.Name.ToString().StartsWith(contextArgs, StringComparison.CurrentCultureIgnoreCase));
+                    if (desiredCulture == null)
+                    {
+                        return (false, "{=dVVduPvy}No culture starting with '{Text}' found".Translate(("Text", contextArgs)));
+                    }
+                }
+                else
+                {
+                    return (false, "{=SViljL0E}Please enter one of {Cultures}".Translate(("Cultures", string.Join(", ", CampaignHelpers.MainCultures.Select(c => c.Name.ToString())))));
+                }                
+            }
+            else if (settings.ViewerSelects == Settings.ViewerSelect.Faction)
+            {
+                if (contextArgs.Length > 1)
+                {
+                    desiredFaction = CampaignHelpers.MainFactions.FirstOrDefault(c =>
+                        c.Name.ToString().StartsWith(contextArgs, StringComparison.CurrentCultureIgnoreCase));
+                    
+                    if (desiredFaction == null)
+                    {
+                        return (false, "{=k4Hj2rxu}No faction starting with '{Text}' found".Translate(("Text", contextArgs)));
+                    }
+                }
+                else
+                {
+                    return (false, "{=jjUmUpia}Please enter part of the name of the faction you wish to join");
+                }                
+            }
+            
             // Create or find a hero for adopting
             if (settings.CreateNew)
             {
-                var character = CampaignHelpers.WandererTemplates.SelectRandom();
+                var character = desiredCulture != null 
+                    ? CampaignHelpers.GetWandererTemplates(desiredCulture).SelectRandom()
+                    : CampaignHelpers.AllWandererTemplates.SelectRandom();
                 if (character != null)
                 {
                     newHero = HeroCreator.CreateSpecialHero(character);
@@ -305,6 +376,8 @@ namespace BLTAdoptAHero
                             && Clan.PlayerClan?.MapFaction == h.Clan?.MapFaction)
                         // Disallow rebel clans as they may get deleted if the rebellion fails
                         && h.Clan?.IsRebelClan != true
+                        && (desiredCulture == null || desiredCulture == h.Culture)
+                        && (desiredFaction == null || desiredFaction == h.Clan?.Kingdom)
                     )
                     .SelectRandom();
 

@@ -101,11 +101,15 @@ namespace BannerlordTwitch.Helpers
         public static IEnumerable<Hero> AllHeroes => AliveHeroes.Concat(DeadOrDisabledHeroes).Distinct();
 
         public static IEnumerable<CultureObject> AllCultures => MBObjectManager.Instance.GetObjectTypeList<CultureObject>();
+        
+        public static IEnumerable<CultureObject> MainCultures => AllCultures.Where(c => c.IsMainCulture);
 
-        public static IEnumerable<CharacterObject> WandererTemplates =>
-            AllCultures.Where(c => c.IsMainCulture).SelectMany(c =>
-                c.NotableAndWandererTemplates.Where(w => w.Occupation == Occupation.Wanderer))
-        ;
+        public static IEnumerable<IFaction> MainFactions => Campaign.Current.Kingdoms; //MBObjectManager.Instance.GetObjectTypeList<Kingdom>();
+
+        public static IEnumerable<CharacterObject> GetWandererTemplates(CultureObject culture) =>
+            culture.NotableAndWandererTemplates.Where(w => w.Occupation == Occupation.Wanderer);
+        
+        public static IEnumerable<CharacterObject> AllWandererTemplates => MainCultures.SelectMany(GetWandererTemplates);
 
         public static void AddEncyclopediaBookmarkToItem<T>(T t)
         {

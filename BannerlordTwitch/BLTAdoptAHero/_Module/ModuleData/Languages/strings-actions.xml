@@ -21,6 +21,8 @@
         <!-- Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands -->
         <string id="fd7G5N0Q" text="Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands"/>
 
+        <string id="r8nXZgcY" text="Couldn't find your hero, did you adopt one yet?"/>
+        
         <!-- Create New -->
         <string id="TLrDxhlh" text="Create New"/>
         <!-- Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern) -->
@@ -41,6 +43,8 @@
         <string id="B2z7T1xQ" text="Only Same Faction"/>
         <!-- Only allow heroes from same faction as player -->
         <string id="QvQGwFyl" text="Only allow heroes from same faction as player"/>
+        <string id="NoKO59t1" text="Viewer Selects Faction"/>
+        <string id="VSYokFLH" text="What criteria the viewer selects via text input (make sure to enable 'Is User Input Required' it in the Reward Specification > Misc section if you set this to something other than None). Faction selection is not compatible with Allow Wanderer, as wanderers do not have a faction until they are recruited."/>
         <!-- Inheritance -->
         <string id="dvbkxJQz" text="Inheritance"/>
         <!-- What fraction of assets will be inherited when a new character is adopted after an old one died (0 to 1) -->
@@ -97,6 +101,8 @@
         <string id="UNtHwNhx" text="Allowed"/>
         <!-- Same faction only -->
         <string id="6W0OJKkA" text="Same faction only"/>
+        <string id="Lg6V3rzn" text="Viewer selects culture"/>
+        <string id="kps5JINU" text="Viewer selects faction"/>
         <!-- Starting Age Range -->
         <string id="pDP8b5HR" text="Starting Age Range"/>
         <!-- Starting Gold -->
@@ -116,6 +122,11 @@
         <string id="4K7Q7gR0" text="You must be subscribed for at least {MinSubscribedMonths} months to adopt a hero with this command!"/>
         <!-- You must be subscribed to adopt a hero with this command! -->
         <string id="0QeQPxYi" text="You must be subscribed to adopt a hero with this command!"/>
+        <string id="dVVduPvy" text="No culture starting with '{Text}' found"/>
+        <string id="SViljL0E" text="Please enter one of {Cultures} when adopting"/>
+        <string id="k4Hj2rxu" text="No faction starting with '{Text}' found"/>
+        <string id="jjUmUpia" text="Please enter part of the name of the faction you wish to join"/>
+        
         <!-- No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)! -->
         <string id="XlQUIIsg" text="No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)!"/>
         <!-- You can't adopt a hero: no available hero matching the requirements was found! -->
