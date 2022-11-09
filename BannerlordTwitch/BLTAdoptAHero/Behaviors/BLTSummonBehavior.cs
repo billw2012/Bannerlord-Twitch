@@ -242,14 +242,14 @@ namespace BLTAdoptAHero
             }
         }
 
-        public static Agent SpawnAgent(bool onPlayerSide, CharacterObject troop, PartyBase party, bool spawnWithHorse)
+        public static Agent SpawnAgent(bool onPlayerSide, CharacterObject troop, PartyBase party, bool spawnWithHorse, bool isReinforcement = false)
         {
             var agent = Mission.Current.SpawnTroop(
                 new PartyAgentOrigin(party, troop)
                 , isPlayerSide: onPlayerSide
                 , hasFormation: true
                 , spawnWithHorse: spawnWithHorse
-                , isReinforcement: true
+                , isReinforcement: isReinforcement
                 , formationTroopCount: 1
                 , formationTroopIndex: 0
                 , isAlarmed: true
