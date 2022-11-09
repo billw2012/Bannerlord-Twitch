@@ -3372,6 +3372,7 @@ Rewards:
     AllowHideOut: true
     AllowSiegeBattle: true
     AllowVillageBattle: true
+    AllowWhenDepleted: false
     GoldCost: 0
     HealPerSecond: 0
     OnPlayerSide: true
@@ -3400,6 +3401,7 @@ Rewards:
     AllowHideOut: true
     AllowSiegeBattle: true
     AllowVillageBattle: true
+    AllowWhenDepleted: false
     GoldCost: 0
     HealPerSecond: 0
     OnPlayerSide: false

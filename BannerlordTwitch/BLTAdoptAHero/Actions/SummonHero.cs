@@ -89,12 +89,18 @@ namespace BLTAdoptAHero
              LocDescription("{=NZTRYcGV}Can summon in the hideout missions"), 
              PropertyOrder(7), UsedImplicitly]
             public bool AllowHideOut { get; set; }
-            
+
             [LocDisplayName("{=i59Fm8zV}On Player Side"),
              LocCategory("General", "{=C5T5nnix}General"), 
              LocDescription("{=S86V5s0C}Whether the hero is on the player or enemy side"), 
              PropertyOrder(1), UsedImplicitly]
             public bool OnPlayerSide { get; set; }
+            
+            [LocDisplayName("{=WrEr2Ovi}Allow When Depleted"),
+             LocCategory("General", "{=C5T5nnix}General"), 
+             LocDescription("{=K0vIkJBp}Whether this summon is allowed when no vanilla troops are left, only applies to battles and sieges"), 
+             PropertyOrder(2), UsedImplicitly]
+            public bool AllowWhenDepleted { get; set; }
             
             [LocDisplayName("{=HOZnxjGb}Gold Cost"),
              LocCategory("General", "{=C5T5nnix}General"), 
@@ -438,6 +444,16 @@ namespace BLTAdoptAHero
                 return;
             }
 
+            var team = settings.OnPlayerSide ? Mission.Current.PlayerTeam : Mission.Current.PlayerEnemyTeam;
+            
+            // If all agents in all ally teams are adopted heroes then the team is depleted 
+            if(!settings.AllowWhenDepleted && team.QuerySystem?.AllyTeams?
+                   .All(t => t.Team?.ActiveAgents?.All(a => a?.IsAdopted() == true) == true) == true) 
+            {
+                onFailure("{=JuJSYmP2}You cannot be summoned, your side is depleted!".Translate());
+                return;
+            }
+
             var heroClass = BLTAdoptAHeroCampaignBehavior.Current.GetClass(adoptedHero);
 
             // We don't support Unset, or General formations, and implement custom behaviour for Bodyguard
@@ -581,15 +597,13 @@ namespace BLTAdoptAHero
                 adoptedHero.CharacterObject.IsMounted && BLTSummonBehavior.ShouldBeMounted(formationClass));
 
             // Some random stuff that is required to ensure caches are updated
-            var expireFn = AccessTools.Method(typeof(TeamQuerySystem), "Expire");
-            foreach (var team in Mission.Current.Teams)
+            foreach (var t in Mission.Current.Teams)
             {
-                expireFn.Invoke(team.QuerySystem, new object[] { }); // .Expire();
+                t.QuerySystem.Expire();
             }
             foreach (var formation in Mission.Current.Teams.SelectMany(t => t.Formations))
             {
-                AccessTools.Field(typeof(Formation), "GroupSpawnIndex")
-                    .SetValue(formation, 0); //formation2.GroupSpawnIndex = 0;
+                formation.GroupSpawnIndex = 0;
             }
 
             // Finished

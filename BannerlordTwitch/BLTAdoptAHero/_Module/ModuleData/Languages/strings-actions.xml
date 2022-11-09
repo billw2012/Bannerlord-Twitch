@@ -652,6 +652,8 @@
         <string id="1xJGhP2D" text="Allow Hide Out"/>
         <!-- On Player Side -->
         <string id="i59Fm8zV" text="On Player Side"/>
+        <string id="WrEr2Ovi" text="Allow When Depleted"/>
+        <string id="K0vIkJBp" text="Whether this summon is allowed when no vanilla troops are left, only applies to battles and sieges"/>
         <!-- Gold Cost -->
         <string id="HOZnxjGb" text="Gold Cost"/>
         <!-- Preferred Formation -->
@@ -662,6 +664,8 @@
         <string id="H7B3Yzly" text="Sub Boost"/>
         <!-- Heal Per Second -->
         <string id="cXeUjVur" text="Heal Per Second"/>
+
+        
         
         <!-- Can summon for normal field battles between parties -->
         <string id="ddjUyXpV" text="Can summon for normal field battles between parties"/>
@@ -735,6 +739,7 @@
         <string id="RBTDviuM" text="You cannot be summoned, you DIED!"/>
         <!-- You cannot be summoned, you are already here! -->
         <string id="YMiZAluP" text="You cannot be summoned, you are already here!"/>
+        <string id="JuJSYmP2" text="You cannot be summoned, your side is depleted!"/>
         <!-- {CoolDown}s cooldown remaining -->
         <string id="kyUh29ij" text="{CoolDown}s cooldown remaining"/>
         <!-- You cannot be summoned, your party is already here! -->
