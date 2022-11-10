@@ -12,6 +12,7 @@ using JetBrains.Annotations;
 using TaleWorlds.Library;
 using TwitchLib.Api;
 using TwitchLib.Api.Core.Enums;
+using TwitchLib.Api.Core.Exceptions;
 using TwitchLib.Api.Helix.Models.ChannelPoints.GetCustomReward;
 using TwitchLib.Api.Helix.Models.ChannelPoints.UpdateCustomRewardRedemptionStatus;
 using TwitchLib.Client.Models;
@@ -219,10 +220,18 @@ namespace BannerlordTwitch
                     failures.Add($"{rewardDef.RewardSpec.Title}: you must give it a cost greater than 0");
                     continue;
                 }
+
                 try
                 {
-                    var createdReward = (await api.Helix.ChannelPoints.CreateCustomRewards(channelId, rewardDef.RewardSpec.GetTwitchSpec(), authSettings.AccessToken)).Data.First();
+                    var createdReward = (await api.Helix.ChannelPoints.CreateCustomRewards(channelId,
+                        rewardDef.RewardSpec.GetTwitchSpec(), authSettings.AccessToken)).Data.First();
                     Log.Info($"Created reward {createdReward.Title} ({createdReward.Id})");
+                }
+                catch (BadRequestException e)
+                {
+                    Log.Error($"Couldn't create reward {rewardDef.RewardSpec.Title}: {e.Message} " +
+                              $"(this can also happen if you have too many custom rewards on your account already, the limit is 50 including disabled ones)");
+                    failures.Add($"{rewardDef.RewardSpec.Title}: {e.Message}");
                 }
                 catch (Exception e)
                 {
