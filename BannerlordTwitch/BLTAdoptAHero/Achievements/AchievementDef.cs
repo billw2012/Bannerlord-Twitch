@@ -32,9 +32,9 @@ namespace BLTAdoptAHero.Achievements
         public LocString Name { get; set; } = "{=nLaRVBVV}New Achievement";
 
         [LocDisplayName("{=guJFFskH}Notification Text"), LocCategory("General", "{=C5T5nnix}General"), 
-         LocDescription("{=SwIUyQNw}Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement."), 
+         LocDescription("{=SwIUyQNw}Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."), 
          PropertyOrder(3), UsedImplicitly]
-        public LocString NotificationText { get; set; } = "{=TAWcPGIc}{viewer} got {name}!";
+        public LocString NotificationText { get; set; } = "{=TAWcPGIc}[viewer] got [name]!";
 
         [LocDisplayName("{=TfwiBMGr}Requirements"), LocCategory("Requirements", "{=TFbiD0CZ}Requirements"), 
          PropertyOrder(1), UsedImplicitly, 

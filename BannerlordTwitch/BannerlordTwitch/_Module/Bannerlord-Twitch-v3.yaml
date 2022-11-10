@@ -356,7 +356,7 @@ GlobalConfigs:
         Tier6Weight: 0
         WeaponWeight: 0
       Name: '{=ODWiNBng}Reliable'
-      NotificationText: '{=TAWcPGIc}{viewer} is {name}!'
+      NotificationText: '{=TAWcPGIc}[viewer] is [name]!'
       Requirements:
       - !StatisticRequirement
         Comparison: GreaterOrEqual
@@ -382,7 +382,7 @@ GlobalConfigs:
         Tier6Weight: 0.649999976
         WeaponWeight: 0
       Name: '{=fWTqF2sw}Trusted'
-      NotificationText: '{=TAWcPGIc}{viewer} is {name}!'
+      NotificationText: '{=TAWcPGIc}[viewer] is [name]!'
       Requirements:
       - !StatisticRequirement
         Comparison: GreaterOrEqual
@@ -408,7 +408,7 @@ GlobalConfigs:
         Tier6Weight: 0
         WeaponWeight: 1
       Name: '{=fe9J8von}Loyal'
-      NotificationText: '{=TAWcPGIc}{viewer} is {name}!'
+      NotificationText: '{=TAWcPGIc}[viewer] is [name]!'
       Requirements:
       - !StatisticRequirement
         Comparison: GreaterOrEqual
@@ -434,7 +434,7 @@ GlobalConfigs:
         Tier6Weight: 0
         WeaponWeight: 0
       Name: '{=HdYFegeb}Rebellious'
-      NotificationText: '{=TAWcPGIc}{viewer} is {name}!'
+      NotificationText: '{=TAWcPGIc}[viewer] is [name]!'
       Requirements:
       - !StatisticRequirement
         Comparison: GreaterOrEqual
@@ -460,7 +460,7 @@ GlobalConfigs:
         Tier6Weight: 0.649999976
         WeaponWeight: 0
       Name: '{=gDHR7f8r}Traitorous'
-      NotificationText: '{=TAWcPGIc}{viewer} is {name}!'
+      NotificationText: '{=TAWcPGIc}[viewer] is [name]!'
       Requirements:
       - !StatisticRequirement
         Comparison: GreaterOrEqual
@@ -486,7 +486,7 @@ GlobalConfigs:
         Tier6Weight: 0
         WeaponWeight: 1
       Name: '{=VEH582e7}Renegade'
-      NotificationText: '{viewer} is a {name}!'
+      NotificationText: '[viewer] is a [name]!'
       Requirements:
       - !StatisticRequirement
         Comparison: GreaterOrEqual
@@ -512,7 +512,7 @@ GlobalConfigs:
         Tier6Weight: 0
         WeaponWeight: 1
       Name: '{=Aj0gXKgZ}Stream Sniper'
-      NotificationText: '{viewer} is a {name}: they killed {streamer} 5 times!'
+      NotificationText: '[viewer] is a [name]: they killed [streamer] 5 times!'
       Requirements:
       - !StatisticRequirement
         Comparison: GreaterOrEqual
@@ -573,7 +573,7 @@ GlobalConfigs:
       ID: 45d75aa1-9d90-407f-a333-4aef16aef3a3
       KillsRequired: 5
       Name: '{=QNbIUDrh}Killing Spree'
-      NotificationText: '{viewer} is on a {name}: {kills} kills!'
+      NotificationText: '[viewer] is on a [name]: [kills] kills!'
       ShowNotification: false
       XPReward: 0
     LevelScalingCap: 5

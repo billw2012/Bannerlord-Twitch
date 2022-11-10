@@ -16,8 +16,8 @@
         <string id="nLaRVBVV" text="Nouveau succès" original="New Achievement"/>
         <!-- Notification Text -->
         <string id="guJFFskH" text="Texte de notification" original="Notification Text"/>
-        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement. -->
-        <string id="SwIUyQNw" text="Texte qui s'affichera lorsque le succès sera obtenu et lorsque le joueur listera ses succès. Espaces réservés: {viewer} for the viewers name, and {name} pour le nom de la réussite." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement."/>
+        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement. -->
+        <string id="SwIUyQNw" text="Texte qui s'affichera lorsque le succès sera obtenu et lorsque le joueur listera ses succès. Espaces réservés: [viewer] for the viewers name, and [name] pour le nom de la réussite." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
         <!-- Requirements -->
         <string id="TfwiBMGr" text="Conditions" original="Requirements"/>
         <!-- Gold Gain -->
@@ -200,8 +200,8 @@
         <string id="poe8m8rn" text="Montrer les notifications" original="Show Notification"/>
         <!-- Notification Text -->
         <string id="RQh3jIZW" text="Texte de notification" original="Notification Text"/>
-        <!-- Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required. -->
-        <string id="04wTH1xo" text="Texte qui s'affiche lorsque la séquence d'élimination est atteinte. Espaces réservés: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} pour les kills requis." original="Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required."/>
+        <!-- Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required. -->
+        <string id="04wTH1xo" text="Texte qui s'affiche lorsque la séquence d'élimination est atteinte. Espaces réservés: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] pour les kills requis." original="Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required."/>
         <!-- Kills Required -->
         <string id="mG7HzT0z" text="Tue requis" original="Kills Required"/>
         <!-- Kills required to achieve the kill streak. -->
@@ -216,8 +216,8 @@
         <string id="Q1TcztBP" text="Expérience accordée lorsque la séquence d'élimination est atteinte." original="Experience granted when the kill streak is achieved."/>
         <!-- New Kill Streak -->
         <string id="KtvBk2nR" text="Nouvelle séquence de meurtres" original="New Kill Streak"/>
-        <!-- {viewer} got {name} ({kills} kills) -->
-        <string id="ipowOInD" text="{viewer} got {name} ({kills} tués)" original="{viewer} got {name} ({kills} kills)"/>
+        <!-- [viewer] got [name] ([kills] kills) -->
+        <string id="ipowOInD" text="[viewer] got [name] ([kills] tués)" original="[viewer] got [name] ([kills] kills)"/>
         <!-- {KillsRequired} kills -->
         <string id="YZJ60Pxb" text="{KillsRequired} tue" original="{KillsRequired} kills"/>
         <!-- SummonHero.FormationItemSource -->

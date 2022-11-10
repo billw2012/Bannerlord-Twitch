@@ -10,8 +10,8 @@
         <!-- Reward {ITEMNAME} -->
         <string id="W47g8bCB" text="Reward {ITEMNAME}" />
 
-        <!-- {viewer} is {name}! -->
-        <string id="TAWcPGIc" text="{viewer} is {name}!" />
+        <!-- [viewer] is [name]! -->
+        <string id="TAWcPGIc" text="[viewer] is [name]!" />
         
         
         <!-- {ITEMNAME} of Fealty -->

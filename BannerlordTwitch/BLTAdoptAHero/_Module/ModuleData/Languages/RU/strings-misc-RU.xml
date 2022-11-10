@@ -16,8 +16,8 @@
         <string id="nLaRVBVV" text="Новое достижение" original="New Achievement"/>
         <!-- Notification Text -->
         <string id="guJFFskH" text="Текст уведомления" original="Notification Text"/>
-        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement. -->
-        <string id="SwIUyQNw" text="Текст, который будет отображаться, когда достижение будет получено, и когда игрок перечислит свои достижения. Заполнители: {viewer} for the viewers name, and {name} для названия достижения." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement."/>
+        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement. -->
+        <string id="SwIUyQNw" text="Текст, который будет отображаться, когда достижение будет получено, и когда игрок перечислит свои достижения. Заполнители: [viewer] for the viewers name, and [name] для названия достижения." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
         <!-- Requirements -->
         <string id="TfwiBMGr" text="Требования" original="Requirements"/>
         <!-- Gold Gain -->
@@ -200,8 +200,8 @@
         <string id="poe8m8rn" text="Показать уведомление" original="Show Notification"/>
         <!-- Notification Text -->
         <string id="RQh3jIZW" text="Текст уведомления" original="Notification Text"/>
-        <!-- Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required. -->
-        <string id="04wTH1xo" text="Текст, который отображается, когда достигается серия убийств. Заполнители: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} для требуемых убийств." original="Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required."/>
+        <!-- Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required. -->
+        <string id="04wTH1xo" text="Текст, который отображается, когда достигается серия убийств. Заполнители: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] для требуемых убийств." original="Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required."/>
         <!-- Kills Required -->
         <string id="mG7HzT0z" text="Требуются убийства" original="Kills Required"/>
         <!-- Kills required to achieve the kill streak. -->
@@ -216,8 +216,8 @@
         <string id="Q1TcztBP" text="Опыт даётся, когда достигается серия убийств." original="Experience granted when the kill streak is achieved."/>
         <!-- New Kill Streak -->
         <string id="KtvBk2nR" text="Новая серия убийств" original="New Kill Streak"/>
-        <!-- {viewer} got {name} ({kills} kills) -->
-        <string id="ipowOInD" text="{viewer} got {name} ({kills} убийств)" original="{viewer} got {name} ({kills} kills)"/>
+        <!-- [viewer] got [name] ([kills] kills) -->
+        <string id="ipowOInD" text="[viewer] got [name] ([kills] убийств)" original="[viewer] got [name] ([kills] kills)"/>
         <!-- {KillsRequired} kills -->
         <string id="YZJ60Pxb" text="{KillsRequired} убивает" original="{KillsRequired} kills"/>
         <!-- SummonHero.FormationItemSource -->

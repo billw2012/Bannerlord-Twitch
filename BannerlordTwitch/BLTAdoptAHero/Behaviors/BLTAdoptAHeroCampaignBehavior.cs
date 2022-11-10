@@ -508,10 +508,10 @@ namespace BLTAdoptAHero
             {
                 if (!LocString.IsNullOrEmpty(achievement.NotificationText))
                 {
-                    string message = achievement.NotificationText.ToString(
-                        ("{viewer}", hero.FirstName.ToString()),
-                        ("{player}", hero.FirstName.ToString()),
-                        ("{name}", achievement.Name));
+                    string message = achievement.NotificationText.ToString()
+                        .Replace("[viewer]", hero.FirstName.ToString())
+                        .Replace("[name]", achievement.Name.ToString())
+                        ;
                     Log.ShowInformation(message, hero.CharacterObject,
                         BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
                 }

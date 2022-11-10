@@ -292,11 +292,11 @@ namespace BLTAdoptAHero
                     && currKillStreak.ShowNotification 
                     && !LocString.IsNullOrEmpty(currKillStreak.NotificationText))
                 {
-                    string message = currKillStreak.NotificationText.ToString(
-                        ("{viewer}", hero.FirstName.ToString()),
-                        ("{player}", hero.FirstName.ToString()),
-                        ("{kills}",currKillStreak.KillsRequired.ToString()),
-                        ("{name}",currKillStreak.Name));
+                    string message = currKillStreak.NotificationText.ToString()
+                        .Replace("[viewer]", hero.FirstName.ToString())
+                        .Replace("[kills]", currKillStreak.KillsRequired.ToString())
+                        .Replace("[name]", currKillStreak.Name.ToString())
+                        ;
                     Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
                 }
                 ApplyStreakEffects(hero, currKillStreak.GoldReward, currKillStreak.XPReward,

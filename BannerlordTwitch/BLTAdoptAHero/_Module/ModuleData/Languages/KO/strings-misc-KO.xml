@@ -16,8 +16,8 @@
         <string id="nLaRVBVV" text="새로운 업적" original="New Achievement"/>
         <!-- Notification Text -->
         <string id="guJFFskH" text="알림 텍스트" original="Notification Text"/>
-        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement. -->
-        <string id="SwIUyQNw" text="업적을 달성하고 플레이어가 업적을 나열할 때 표시될 텍스트입니다. 자리 표시자: 업적 이름의 경우 {viewer} for the viewers name, and {name}입니다." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement."/>
+        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement. -->
+        <string id="SwIUyQNw" text="업적을 달성하고 플레이어가 업적을 나열할 때 표시될 텍스트입니다. 자리 표시자: 업적 이름의 경우 [viewer] for the viewers name, and [name]입니다." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
         <!-- Requirements -->
         <string id="TfwiBMGr" text="요구 사항" original="Requirements"/>
         <!-- Gold Gain -->
@@ -200,8 +200,8 @@
         <string id="poe8m8rn" text="알림 표시" original="Show Notification"/>
         <!-- Notification Text -->
         <string id="RQh3jIZW" text="알림 텍스트" original="Notification Text"/>
-        <!-- Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required. -->
-        <string id="04wTH1xo" text="연속 킬 달성 시 표시되는 텍스트입니다. 자리 표시자: 필요한 킬의 경우 {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills}입니다." original="Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required."/>
+        <!-- Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required. -->
+        <string id="04wTH1xo" text="연속 킬 달성 시 표시되는 텍스트입니다. 자리 표시자: 필요한 킬의 경우 [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills]입니다." original="Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required."/>
         <!-- Kills Required -->
         <string id="mG7HzT0z" text="필요한 처치" original="Kills Required"/>
         <!-- Kills required to achieve the kill streak. -->
@@ -216,8 +216,8 @@
         <string id="Q1TcztBP" text="연속 킬 달성 시 경험치 획득." original="Experience granted when the kill streak is achieved."/>
         <!-- New Kill Streak -->
         <string id="KtvBk2nR" text="새로운 연속 처치" original="New Kill Streak"/>
-        <!-- {viewer} got {name} ({kills} kills) -->
-        <string id="ipowOInD" text="{viewer} got {name} ({kills} 킬)" original="{viewer} got {name} ({kills} kills)"/>
+        <!-- [viewer] got [name] ([kills] kills) -->
+        <string id="ipowOInD" text="[viewer] got [name] ([kills] 킬)" original="[viewer] got [name] ([kills] kills)"/>
         <!-- {KillsRequired} kills -->
         <string id="YZJ60Pxb" text="{KillsRequired} 킬" original="{KillsRequired} kills"/>
         <!-- SummonHero.FormationItemSource -->
