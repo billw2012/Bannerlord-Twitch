@@ -345,6 +345,7 @@
         <Compile Include="Settings\SimTestingConfig.cs" />
         <Compile Include="Settings\SimTestingItem.cs" />
         <Compile Include="Testing\SimulationTest.cs" />
+        <Compile Include="Twitch\CustomTwitchHttpClient.cs" />
         <Compile Include="Twitch\Dummy\AffiliateSpoofingHttpCallHandler.cs" />
         <Compile Include="Twitch\Dummy\TwitchRedirectingHttpCallHandler.cs" />
         <Compile Include="Twitch\TwitchService.Bot.cs" />
