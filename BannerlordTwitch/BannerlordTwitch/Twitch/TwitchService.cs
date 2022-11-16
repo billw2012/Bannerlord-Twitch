@@ -173,6 +173,7 @@ namespace BannerlordTwitch
                     //_pubSub.OnWhisper += OnWhisper;
                     pubSub.OnPubSubServiceConnected += OnPubSubServiceConnected;
                     pubSub.OnChannelPointsRewardRedeemed += OnRewardRedeemed;
+                    pubSub.ListenToChannelPoints(channelId);
                     // pubSub.OnRewardRedeemed += OnRewardRedeemed;
                     pubSub.OnLog += (_, args) =>
                     {
@@ -192,6 +193,7 @@ namespace BannerlordTwitch
 
                     // Connect
                     pubSub.Connect();
+                    pubSub.SendTopics(authSettings.AccessToken);
                 });
             });
         }
@@ -234,8 +236,6 @@ namespace BannerlordTwitch
                         throw new Exception("Max Per Stream must be either blank or greater than 0, it must NOT be 0");
                     }
 
-                try
-                {
                     var createdReward = (await api.Helix.ChannelPoints.CreateCustomRewardsAsync(channelId, rewardDef.RewardSpec.GetTwitchSpec(), authSettings.AccessToken)).Data.First();
                     Log.Info($"Created reward {createdReward.Title} ({createdReward.Id})");
                 }
@@ -312,7 +312,7 @@ namespace BannerlordTwitch
                 try
                 {
 #endif
-                    redemptionCache.TryAdd(redeemedArgs.RewardRedeemed.Redemption.Reward.Id, redeemedArgs);
+                    redemptionCache.TryAdd(redeemedArgs.RewardRedeemed.Redemption.Id, redeemedArgs);
                     ActionManager.HandleReward(reward.Handler, context, reward.HandlerConfig);
 #if !DEBUG
                 }
