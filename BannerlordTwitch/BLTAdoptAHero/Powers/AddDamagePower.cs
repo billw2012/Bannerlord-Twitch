@@ -433,10 +433,10 @@ namespace BLTAdoptAHero.Powers
                         .Translate(("DamageToAdd", (DamageToAdd > 0 ? "+" : "") + DamageToAdd)));
                 if (AddHitBehavior.IsEnabled)
                     modifiers.Add("{=ybyWP8jd}Add: {AddHitBehavior}"
-                        .Translate(("AddHitBehavior", AddHitBehavior)));
+                        .Translate(("AddHitBehavior", AddHitBehavior.ToString())));
                 if (RemoveHitBehavior.IsEnabled)
                     modifiers.Add("{=WJVreCCg}Remove: {RemoveHitBehavior}"
-                        .Translate(("RemoveHitBehavior", RemoveHitBehavior)));
+                        .Translate(("RemoveHitBehavior", RemoveHitBehavior.ToString())));
                 if (ArmorToIgnorePercent != 0)
                     modifiers.Add("{=svDicWAa}Ignore {ArmorToIgnorePercent}% Armor"
                         .Translate(("ArmorToIgnorePercent", ArmorToIgnorePercent)));
