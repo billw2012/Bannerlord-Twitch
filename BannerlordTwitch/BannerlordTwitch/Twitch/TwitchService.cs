@@ -215,12 +215,24 @@ namespace BannerlordTwitch
             var failures = new List<string>();
             foreach (var rewardDef in settings.EnabledRewards.Where(r => existingRewards == null || existingRewards.Data.All(e => e.Title != r.RewardSpec?.Title.ToString())))
             {
-                if (rewardDef.RewardSpec.Cost <= 0)
+                try
                 {
-                    Log.Error($"Skipping creating reward {rewardDef.RewardSpec.Title}: you must give it a cost greater than 0");
-                    failures.Add($"{rewardDef.RewardSpec.Title}: you must give it a cost greater than 0");
-                    continue;
-                }
+                    if (rewardDef.RewardSpec.Cost <= 0)
+                    {
+                        throw new Exception("Cost must be greater than 0, it must NOT be 0");
+                    }
+                    if (rewardDef.RewardSpec.GlobalCooldownSeconds is <= 0)
+                    {
+                        throw new Exception("Global Cooldown must be either blank or greater than 0, it must NOT be 0");
+                    }
+                    if (rewardDef.RewardSpec.MaxPerUserPerStream is <= 0)
+                    {
+                        throw new Exception("Max Per User Per Stream must be either blank or greater than 0, it must NOT be 0");
+                    }
+                    if (rewardDef.RewardSpec.MaxPerStream is <= 0)
+                    {
+                        throw new Exception("Max Per Stream must be either blank or greater than 0, it must NOT be 0");
+                    }
 
                 try
                 {
