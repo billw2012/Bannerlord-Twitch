@@ -2707,7 +2707,7 @@ GlobalConfigs:
           - !ClassLevelRequirement
             MaxLevel: 2
             MinLevel: 2
-        - PowerID: 2bc4d80a-d945-4fe5-801a-026708d3c660
+        - PowerID: d157416b-6d38-41b2-9764-5be15823fd62
           Requirements:
           - !ClassLevelRequirement
             MaxLevel: 3
