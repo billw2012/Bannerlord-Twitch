@@ -316,12 +316,17 @@ namespace BLTAdoptAHero
                 onFailure("{=YMiZAluP}You cannot be summoned, you are already here!");
                 return;
             }
-            
+            var missionAgentHandler = Mission.Current.GetMissionBehavior<MissionAgentHandler>();
+            if(missionAgentHandler.Mission.MainAgent == null)
+            {
+                onFailure("{=YMiZAluP}You cannot be summoned, player is not there!");
+                return;
+            }
+
             var locationCharacter = LocationCharacter.CreateBodyguardHero(adoptedHero,
                 MobileParty.MainParty,
                 SandBoxManager.Instance.AgentBehaviorManager.AddBodyguardBehaviors);
 
-            var missionAgentHandler = Mission.Current.GetMissionBehavior<MissionAgentHandler>();
             var worldFrame = missionAgentHandler.Mission.MainAgent.GetWorldFrame();
             worldFrame.Origin.SetVec2(worldFrame.Origin.AsVec2 + (worldFrame.Rotation.f * 10f + worldFrame.Rotation.s).AsVec2);
 
