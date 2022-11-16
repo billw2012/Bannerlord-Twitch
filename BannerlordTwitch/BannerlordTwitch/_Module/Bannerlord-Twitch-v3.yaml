@@ -3751,7 +3751,7 @@ SimTesting:
     Type: Command
     Weight: 0
   - Args: ''
-    Enabled: false
+    Enabled: true
     Id: '{=IBrMU0VF}Tournament'
     ID: ca586ddf-b9b0-4c59-954c-d166f5c9b644
     Type: Reward

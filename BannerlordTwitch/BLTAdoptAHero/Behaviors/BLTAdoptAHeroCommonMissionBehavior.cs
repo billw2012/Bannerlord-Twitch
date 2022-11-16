@@ -137,7 +137,8 @@ namespace BLTAdoptAHero
                 {
                     lastTickT = CampaignHelpers.GetApplicationTime();
 
-                    foreach (var h in activeHeroes)
+                    // Take a copy of the array so we can remove items from activeHeroes in UpdateHeroVM
+                    foreach (var h in activeHeroes.ToList())
                     {
                         UpdateHeroVM(h);
                     }
@@ -346,6 +347,7 @@ namespace BLTAdoptAHero
             if (shouldRemove)
             {
                 MissionInfoHub.Remove(hero.FirstName.Raw());
+                activeHeroes.Remove(hero);
             }
             else
             {
