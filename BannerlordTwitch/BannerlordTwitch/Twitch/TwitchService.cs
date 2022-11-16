@@ -18,6 +18,7 @@ using TwitchLib.Api.Helix.Models.ChannelPoints.UpdateCustomRewardRedemptionStatu
 using TwitchLib.Client.Models;
 using TwitchLib.PubSub;
 using TwitchLib.PubSub.Events;
+using TwitchLib.PubSub.Models.Responses.Messages.Redemption;
 
 namespace BannerlordTwitch
 {
@@ -78,12 +79,12 @@ namespace BannerlordTwitch
         //         Source = source,
         //     };
         
-        public static ReplyContext FromRedemption(ActionBase source, OnChannelPointsRewardRedeemedArgs args) =>
+        public static ReplyContext FromRedemption(ActionBase source, Redemption redemption) =>
             new()
             {
-                UserName = CleanDisplayName(args.RewardRedeemed.Redemption.User.DisplayName),
-                Args = args.RewardRedeemed.Redemption.UserInput,
-                RedemptionId = args.RewardRedeemed.Redemption.Id,
+                UserName = CleanDisplayName(redemption.User.DisplayName),
+                Args = redemption.UserInput,
+                RedemptionId = redemption.Id,
                 Source = source,
             };
         
@@ -106,8 +107,8 @@ namespace BannerlordTwitch
         private readonly AuthSettings authSettings;
 
         private readonly Settings settings;
-
-        private readonly ConcurrentDictionary<string, OnChannelPointsRewardRedeemedArgs> redemptionCache = new();
+        
+        private readonly ConcurrentDictionary<string, Redemption> redemptionCache = new();
         private Bot bot;
 
         public TwitchService()
@@ -129,7 +130,7 @@ namespace BannerlordTwitch
                 Log.LogFeedSystem($"Affiliate spoofing enabled");
                 affiliateSpoofing = new Dummy.AffiliateSpoofingHttpCallHandler();
                 api = new TwitchAPI(http: affiliateSpoofing);
-                affiliateSpoofing.OnRewardRedeemed += OnRewardRedeemed;
+                affiliateSpoofing.OnRewardRedeemed += OnRewardRedeemedInternal;
             }
             else
             {
@@ -287,32 +288,40 @@ namespace BannerlordTwitch
 
         private void OnRewardRedeemed(object sender, OnChannelPointsRewardRedeemedArgs redeemedArgs)
         {
+            if (redeemedArgs.ChannelId == channelId)
+            {
+                OnRewardRedeemedInternal(sender, redeemedArgs.RewardRedeemed.Redemption);
+            }
+        }
+
+        private void OnRewardRedeemedInternal(object sender, Redemption redemption)
+        {
             MainThreadSync.Run(() =>
             {
-                var reward = settings.Rewards.FirstOrDefault(r => r.RewardSpec.Title.ToString() == redeemedArgs.RewardRedeemed.Redemption.Reward.Title);
+                var reward = settings.Rewards.FirstOrDefault(r => r.RewardSpec.Title.ToString() == redemption.Reward.Title);
                 if (reward == null)
                 {
-                    Log.Info($"Reward {redeemedArgs.RewardRedeemed.Redemption.Reward.Title} not owned by this extension, ignoring it");
+                    Log.Info($"Reward {redemption.Reward.Title} not owned by this extension, ignoring it");
                     // We don't cancel redemptions we don't know about!
                     // RedemptionCancelled(e.RedemptionId, $"Reward {e.RewardRedeemed.Redemption.Reward.Title} not found");
                     return;
                 }
 
-                if (redeemedArgs.RewardRedeemed.Redemption.Status != "UNFULFILLED")
+                if (redemption.Status != "UNFULFILLED")
                 {
-                    Log.Info($"Reward {redeemedArgs.RewardRedeemed.Redemption.Reward.Title} status {redeemedArgs.RewardRedeemed.Redemption.Status} is not interesting, " +
+                    Log.Info($"Reward {redemption.Reward.Title} status {redemption.Status} is not interesting, " +
                              $"ignoring it");
                     return;
                 }
 
-                Log.Info($"Redemption of {redeemedArgs.RewardRedeemed.Redemption.Reward.Title} from {redeemedArgs.RewardRedeemed.Redemption.User.DisplayName} received!");
+                Log.Info($"Redemption of {redemption.Reward.Title} from {redemption.User.DisplayName} received!");
 
-                var context = ReplyContext.FromRedemption(reward, redeemedArgs);
+                var context = ReplyContext.FromRedemption(reward, redemption);
 #if !DEBUG
                 try
                 {
 #endif
-                    redemptionCache.TryAdd(redeemedArgs.RewardRedeemed.Redemption.Id, redeemedArgs);
+                    redemptionCache.TryAdd(redemption.Id, redemption);
                     ActionManager.HandleReward(reward.Handler, context, reward.HandlerConfig);
 #if !DEBUG
                 }
@@ -499,7 +508,7 @@ namespace BannerlordTwitch
                 ActionManager.SendReply(context, info);
             }
 
-            if (!string.IsNullOrEmpty(redemption.ChannelId))
+            if (affiliateSpoofing == null)
             {
                 if (!settings.DisableAutomaticFulfillment && (context.Source as Reward)?.RewardSpec?.DisableAutomaticFulfillment != true)
                 {
@@ -507,7 +516,7 @@ namespace BannerlordTwitch
                 }
                 else
                 {
-                    Log.Info($"Skipped marking {redemption.RewardRedeemed.Redemption.Reward.Title} for {redemption.RewardRedeemed.Redemption.User.DisplayName} as fulfilled as DisableAutomaticFulfillment is set");
+                    Log.Info($"Skipped marking {redemption.Reward.Title} for {redemption.User.DisplayName} as fulfilled as DisableAutomaticFulfillment is set");
                 }
             }
             else
@@ -529,7 +538,7 @@ namespace BannerlordTwitch
                 ActionManager.SendReply(context, reason);
             }
 
-            if (!string.IsNullOrEmpty(redemption.ChannelId))
+            if (affiliateSpoofing == null)
             {
                 _ = SetRedemptionStatusAsync(redemption, CustomRewardRedemptionStatus.CANCELED);
             }
@@ -539,14 +548,14 @@ namespace BannerlordTwitch
             }
         }
 
-        private async Task SetRedemptionStatusAsync(OnChannelPointsRewardRedeemedArgs redemption, CustomRewardRedemptionStatus status)
+        private async Task SetRedemptionStatusAsync(Redemption redemption, CustomRewardRedemptionStatus status)
         {
             try
             {
                 await api.Helix.ChannelPoints.UpdateRedemptionStatusAsync(
                     redemption.ChannelId,
-                    redemption.RewardRedeemed.Redemption.Reward.Id,
-                    new List<string> {redemption.RewardRedeemed.Redemption.Id},
+                    redemption.Reward.Id,
+                    new List<string> {redemption.Id},
                     new UpdateCustomRewardRedemptionStatusRequest {Status = status},
                     authSettings.AccessToken
                 );
@@ -554,7 +563,7 @@ namespace BannerlordTwitch
             }
             catch (Exception e)
             {
-                Log.Error($"Failed to set redemption status of {redemption.RewardRedeemed.Redemption.Id} ({redemption.RewardRedeemed.Redemption.Reward.Title} for {redemption.RewardRedeemed.Redemption.User.DisplayName}) to {status}: {e.Message}");
+                Log.Error($"Failed to set redemption status of {redemption.Id} ({redemption.Reward.Title} for {redemption.User.DisplayName}) to {status}: {e.Message}");
             }
         }
 

@@ -3732,34 +3732,16 @@ Rewards:
     Title: '{=yoZSmM0b}Use Class Power'
 SimTesting:
   Init:
-  - Args: xa
+  - Args: ''
     Enabled: true
-    Id: Adopt a Faction Hero
+    Id: Adopt a Hero
     ID: b50d0749-add5-458c-b3d4-c957f4bb85f3
     Type: Reward
     Weight: 0
   - Args: ''
     Enabled: true
-    Id: '{=ndi9p5jn}100k gold'
+    Id: Daily Gold
     ID: 7698ddba-b00b-4243-bd54-3dc97a4e73cf
-    Type: Reward
-    Weight: 0
-  - Args: ''
-    Enabled: true
-    Id: '{=ndi9p5jn}100k gold'
-    ID: a9933fab-58d4-492a-93fb-34c0d6606c09
-    Type: Reward
-    Weight: 0
-  - Args: ''
-    Enabled: false
-    Id: '{=ndi9p5jn}100k gold'
-    ID: a9933fab-58d4-492a-93fb-34c0d6606c09
-    Type: Reward
-    Weight: 0
-  - Args: ''
-    Enabled: false
-    Id: '{=ndi9p5jn}100k gold'
-    ID: a9933fab-58d4-492a-93fb-34c0d6606c09
     Type: Reward
     Weight: 0
   - Args: ''
@@ -3803,7 +3785,7 @@ SimTesting:
     Weight: 1
   - Args: ''
     Enabled: false
-    Id: '{=ndi9p5jn}100k gold'
+    Id: Daily Gold
     ID: 7dc0e816-b2ec-42a4-ab70-b4e00c8501ba
     Type: Reward
     Weight: 1

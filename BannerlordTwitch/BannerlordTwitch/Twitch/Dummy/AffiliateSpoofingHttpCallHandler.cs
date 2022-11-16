@@ -65,7 +65,7 @@ namespace BannerlordTwitch.Dummy
         
         private readonly JsonSerializerSettings deserializerSettings = new() { NullValueHandling = NullValueHandling.Ignore, MissingMemberHandling = MissingMemberHandling.Ignore };
 
-        public event EventHandler<OnChannelPointsRewardRedeemedArgs> OnRewardRedeemed;
+        public event EventHandler<TwitchLib.PubSub.Models.Responses.Messages.Redemption.Redemption> OnRewardRedeemed;
         
         public AffiliateSpoofingHttpCallHandler(IHttpCallHandler http = null, ILogger<TwitchHttpClient> logger = null) : base(http, logger)
         {
@@ -83,18 +83,36 @@ namespace BannerlordTwitch.Dummy
             {
                 var id = Guid.NewGuid();
                 activeRedemptions.Add(new Redemption(id.ToString(), user, args, reward.Id, reward.Title));
-                // TODO: fix
-                // OnRewardRedeemed?.Invoke(this, new OnChannelPointsRewardRedeemedArgs {
-                //     
-                //     ChannelId = user + "channel",
-                //     Login = user,
-                //     DisplayName = user,
-                //     Message = args,
-                //     RewardId = Guid.Parse(reward.Id),
-                //     RewardTitle = reward.Title, 
-                //     Status = "UNFULFILLED",
-                //     RedemptionId = id,
-                //     });
+                OnRewardRedeemed?.Invoke(this,
+                    JsonConvert.DeserializeObject<TwitchLib.PubSub.Models.Responses.Messages.Redemption.Redemption>(
+                        JsonConvert.SerializeObject(new
+                        {
+                            id = id,
+                            user = new
+                            {
+                                id = user,
+                                login = user,
+                                display_name = user
+                            },
+                            channel_id = "spoofchannel",
+                            reward = new
+                            {
+                                id = reward.Id,
+                                title = reward.Title,
+                            },
+                            user_input = args,
+                            status = "UNFULFILLED",
+                        })));
+                    //new OnChannelPointsRewardRedeemedArgs {
+                    // ChannelId = user + "channel",
+                    // Login = user,
+                    // DisplayName = user,
+                    // Message = args,
+                    // RewardId = Guid.Parse(reward.Id),
+                    // RewardTitle = reward.Title, 
+                    // Status = "UNFULFILLED",
+                    // RedemptionId = id,
+                    // });
                 return true;
             }
 
