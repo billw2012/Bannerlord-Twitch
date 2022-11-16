@@ -58,6 +58,16 @@ namespace BannerlordTwitch
                     ThrottlingPeriod = TimeSpan.FromSeconds(30)
                 };
                 var customClient = new WebSocketClient(clientOptions);
+                // Double check to destroy the client
+                if (client != null)
+                {
+                    client.OnLog -= Client_OnLog;
+                    client.OnJoinedChannel -= Client_OnJoinedChannel;
+                    client.OnMessageReceived -= Client_OnMessageReceived;
+                    client.OnConnected -= Client_OnConnected;
+                    client.OnDisconnected -= Client_OnDisconnected;
+                    client.Disconnect();
+                }
                 client = new TwitchClient(customClient);
                 client.Initialize(credentials, channel);
 
@@ -216,8 +226,13 @@ namespace BannerlordTwitch
                 SendChat("{=SbufvVIR}bot reporting for duty!".Translate(), "{=vBtkF25N}Type !help for command list".Translate());
             }
 
+            private HashSet<string> handledMessages = new();
             private void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)
             {
+                // Double check we didn't already handle this message, as sometimes bot can be receiving them twice
+                if (!handledMessages.Add(e.ChatMessage.Id))
+                    return;
+                
                 // Register the user info always and before doing anything else, so it is appropriately up to date in
                 // case a bot command is being issued
                 TwitchHub.AddUser(e.ChatMessage.DisplayName, e.ChatMessage.ColorHex);
