@@ -191,7 +191,7 @@ namespace BLTAdoptAHero
         public static void UpgradeEquipment(Hero adoptedHero, int targetTier, HeroClassDef classDef, bool replaceSameTier, Func<EquipmentElement, bool> customKeepFilter = null)
         {
             customKeepFilter ??= _ => true;
-            
+
             // Take existing equipment and the heroes custom items, so we can (re)use them if appropriate
             var availableItems =
                 BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero).Concat(
@@ -202,7 +202,7 @@ namespace BLTAdoptAHero
                     .Where(e => classDef?.Mounted != true || IsItemUsableMounted(adoptedHero, e.Item)))
                     .Where(customKeepFilter)
                 .ToList();
-            
+
             // These functions select new equipment, preferring to use the availableItems list above, then
             // falling back to the full item list
             EquipmentElement FindNewEquipment(Func<ItemObject, bool> filter = null, FindFlags flags = FindFlags.None)
@@ -216,11 +216,12 @@ namespace BLTAdoptAHero
                     return default;
                 return new(foundItem);
             }
+
             EquipmentElement FindNewEquipmentBySkill(SkillObject skill, Func<ItemObject, bool> filter = null, FindFlags flags = FindFlags.None)
                 => FindNewEquipment(o => o.RelevantSkill == skill && filter?.Invoke(o) != false, flags);
             EquipmentElement FindNewEquipmentByType(ItemObject.ItemTypeEnum itemType, Func<ItemObject, bool> filter = null, FindFlags flags = FindFlags.None)
                 => FindNewEquipment(o => o.ItemType == itemType && filter?.Invoke(o) != false, flags);
-            
+
             // Clear the equipment slots
             foreach (var x in adoptedHero.BattleEquipment.YieldEquipmentSlots())
             {

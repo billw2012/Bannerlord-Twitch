@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using BannerlordTwitch.Helpers;
@@ -16,6 +17,8 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.ComponentInterfaces;
+using TaleWorlds.MountAndBlade.GauntletUI.Widgets.Mission.NameMarker;
+using TaleWorlds.MountAndBlade.Source.Missions;
 
 #pragma warning disable 649
 
@@ -51,9 +54,8 @@ namespace BLTAdoptAHero
             {
                 // Add the marker overlay for appropriate mission types
                 if (mission.GetMissionBehavior<MissionNameMarkerUIHandler>() == null
-                    && (MissionHelpers.InSiegeMission()
-                        || MissionHelpers.InFieldBattleMission()
-                        || Mission.Current?.GetMissionBehavior<TournamentFightMissionController>() != null))
+                    && (mission.GetMissionBehavior<BattleSpawnLogic>() != null
+                        || mission.GetMissionBehavior<TournamentFightMissionController>() != null))
                 {
                     mission.AddMissionBehavior(SandBoxViewCreator.CreateMissionNameMarkerUIHandler(mission));
                 }
@@ -94,17 +96,14 @@ namespace BLTAdoptAHero
             }
         }
 
-        // [UsedImplicitly, HarmonyPostfix, 
-        //  HarmonyPatch(typeof(MissionNameMarkerVM), MethodType.Constructor, typeof(Mission), typeof(Camera)
-        //      , typeof(Dictionary<Agent, SandBoxUIHelper.IssueQuestFlags>)
-        //      , typeof(Dictionary<string, ValueTuple<Vec3, string, string>>)
-        //      )
-        // ]
-        // // ReSharper disable once RedundantAssignment
-        // public static void MissionNameMarkerVMConstructorPostfix(MissionNameMarkerVM __instance, Mission mission, ref Vec3 ____heightOffset)
-        // {
-        //     ____heightOffset = new (0, 0, 0);
-        // }
+        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(NameMarkerScreenWidget), "OnLateUpdate")]
+        public static void NameMarkerScreenWidget_OnLateUpdatePostfix(List<NameMarkerListPanel> ____markers)
+        {
+            foreach (var marker in ____markers)
+            {
+                marker.IsFocused = marker.IsInScreenBoundaries;
+            }
+        }
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
@@ -146,13 +145,7 @@ namespace BLTAdoptAHero
         public override void BeginGameStart(Game game)
         {
         }
-        
-        // public override void OnCampaignStart(Game game, object starterObject)
-        // {
-        //     base.OnCampaignStart(game, starterObject);
-        //     // JoinTournament.SetupGameMenus(starterObject as CampaignGameStarter);
-        // }
-        
+
         public override void OnGameEnd(Game game)
         {
             base.OnGameEnd(game);
