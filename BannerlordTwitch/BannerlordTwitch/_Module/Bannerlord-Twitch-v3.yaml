@@ -3316,7 +3316,7 @@ Rewards:
   RespondInOverlay: true
   RespondInTwitch: true
   RewardSpec:
-    BackgroundColorText: 
+    BackgroundColorText: '#FF000000'
     Cost: 75
     DisableAutomaticFulfillment: false
     GlobalCooldownSeconds: 
@@ -3426,25 +3426,6 @@ Rewards:
     MaxPerUserPerStream: 
     Prompt: '{=6amYI1lf}Get a hero in game with a specific culture. Almost all other actions require an adopted hero. Enter part of the culture name:'
     Title: '{=SbhEiAC3}Adopt a Culture Hero'
-- Documentation: '{=Y7GzhU5a}Adds 10,000 gold to your adopted hero.'
-  Enabled: true
-  Handler: AddGoldToHero
-  HandlerConfig:
-    Amount: 10000
-  ID: 7e0991eb-4304-496d-a9b4-874a1c114bae
-  RespondInOverlay: true
-  RespondInTwitch: false
-  RewardSpec:
-    BackgroundColorText: 
-    Cost: 500
-    DisableAutomaticFulfillment: false
-    GlobalCooldownSeconds: 
-    IsEnabled: true
-    IsUserInputRequired: false
-    MaxPerStream: 
-    MaxPerUserPerStream: 
-    Prompt: '{=xQTiKsVA}Add 10,000 gold to your adopted hero'
-    Title: '{=s0GPjZKG}10k gold'
 - Documentation: '{=Hbk74nei}Adds 100,000 gold to your adopted hero.'
   Enabled: true
   Handler: AddGoldToHero
@@ -3454,16 +3435,16 @@ Rewards:
   RespondInOverlay: true
   RespondInTwitch: false
   RewardSpec:
-    BackgroundColorText: 
+    BackgroundColorText: '#FF000000'
     Cost: 4000
     DisableAutomaticFulfillment: false
     GlobalCooldownSeconds: 
     IsEnabled: true
     IsUserInputRequired: false
     MaxPerStream: 
-    MaxPerUserPerStream: 
-    Prompt: '{=xeI0AXUl}Add 100,000 gold to your adopted hero'
-    Title: '{=ndi9p5jn}100k gold'
+    MaxPerUserPerStream: 1
+    Prompt: Add 100,000 gold to your adopted hero, once per stream
+    Title: Daily Gold
 - Documentation: '{=nI4dr4uZ}Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue).'
   Enabled: true
   Handler: SummonHero
@@ -3626,16 +3607,16 @@ Rewards:
   RespondInOverlay: true
   RespondInTwitch: false
   RewardSpec:
-    BackgroundColorText: 
-    Cost: 1000
+    BackgroundColorText: '#FF000000'
+    Cost: 10
     DisableAutomaticFulfillment: false
     GlobalCooldownSeconds: 
     IsEnabled: true
     IsUserInputRequired: false
     MaxPerStream: 
-    MaxPerUserPerStream: 
-    Prompt: '{=UCjOD22c}Add 50,000 XP to a random skill of your adopted hero'
-    Title: '{=uA1yEnyO}50k XP'
+    MaxPerUserPerStream: 1
+    Prompt: Add 50,000 XP to a random skill of your adopted hero, once per stream
+    Title: Daily XP
 - Documentation: ''
   Enabled: false
   Handler: CharacterEffect
