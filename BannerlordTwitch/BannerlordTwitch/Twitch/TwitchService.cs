@@ -327,7 +327,7 @@ namespace BannerlordTwitch
                 }
                 catch (Exception e)
                 {
-                    Log.Error($"Exception happened while trying to enqueue redemption {redeemedArgs.RewardRedeemed.Redemption.Id}: {e.Message}");
+                    Log.Error($"Exception happened while trying to enqueue redemption {redemption.Id}: {e.Message}");
                     RedemptionCancelled(context, $"Exception occurred: {e.Message}");
                 }
 #endif
