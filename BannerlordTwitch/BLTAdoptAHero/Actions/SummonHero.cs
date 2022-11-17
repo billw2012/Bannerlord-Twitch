@@ -590,7 +590,7 @@ namespace BLTAdoptAHero
                     replaceExisting: false
                 );
 
-                heroSummonState = BLTSummonBehavior.Current.AddHeroSummonState(adoptedHero, settings.OnPlayerSide, party, summon: true);
+                heroSummonState = BLTSummonBehavior.Current.AddHeroSummonState(adoptedHero, settings.OnPlayerSide, party, forced: false);
             }
 
             if (settings.OnPlayerSide)

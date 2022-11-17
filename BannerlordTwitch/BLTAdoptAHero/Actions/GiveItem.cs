@@ -45,7 +45,7 @@ namespace BLTAdoptAHero
             if (targetHero == null)
             {
                 ActionManager.SendReply(context, 
-                    "{=vDsYxMKq}Couldn't find recipient '{Name}'".Translate(("Name",argParts[0])));
+                    "{=vDsYxMKq}Couldn't find recipient '{Name}'".Translate(("Name", argParts[0])));
                 return;
             }
 

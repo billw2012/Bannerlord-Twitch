@@ -449,11 +449,11 @@ namespace BLTAdoptAHero
             IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalKills, 1);
         }
 
-        public void IncreaseParticipationCount(Hero hero, bool playerSide)
+        public void IncreaseParticipationCount(Hero hero, bool playerSide, bool forced)
         {
             IncreaseStatistic(hero, playerSide
                 ? AchievementStatsData.Statistic.Summons
-                : AchievementStatsData.Statistic.Attacks, 1);
+                : AchievementStatsData.Statistic.Attacks, 1, forced);
         }
 
         public void IncreaseHeroDeaths(Hero hero, Agent killer)
@@ -487,11 +487,11 @@ namespace BLTAdoptAHero
         public void IncreaseTournamentChampionships(Hero hero) 
             => IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalTournamentFinalWins, 1);
 
-        private void IncreaseStatistic(Hero hero, AchievementStatsData.Statistic statistic, int amount)
+        private void IncreaseStatistic(Hero hero, AchievementStatsData.Statistic statistic, int amount, bool forced = false)
         {
             var achievementStatsData = GetHeroData(hero).AchievementStats;
             
-            achievementStatsData.UpdateValue(statistic, hero.GetClass()?.ID ?? default, amount);
+            achievementStatsData.UpdateValue(statistic, hero.GetClass()?.ID ?? default, amount, forced);
            
             CheckForAchievements(hero);
         }
