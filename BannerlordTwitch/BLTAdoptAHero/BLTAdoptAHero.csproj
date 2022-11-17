@@ -127,6 +127,7 @@
         <Compile Include="Actions\AuctionItem.cs" />
         <Compile Include="Actions\SetHeroClass.cs" />
         <Compile Include="Actions\SkillXP.cs" />
+        <Compile Include="Actions\SmithItem.cs" />
         <Compile Include="Actions\SummonHero.cs" />
         <Compile Include="Actions\TournamentBet.cs" />
         <Compile Include="Actions\UsePower.cs" />

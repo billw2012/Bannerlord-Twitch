@@ -190,16 +190,17 @@ namespace BLTAdoptAHero
             }
         }
 
-        public (ItemObject item, ItemModifier modifier, EquipmentIndex slot) Generate(Hero hero)
+        public (ItemObject item, ItemModifier modifier, EquipmentIndex slot) Generate(Hero hero, bool forceHorse = false)
         {
             var heroClass = BLTAdoptAHeroCampaignBehavior.Current.GetClass(hero);
 
             // Randomize the reward tier order, by random weighting
             var tiers = TierWeights
+                .Where(tier => tier.weight > 0)
                 .OrderRandomWeighted(tier => tier.weight)
                 .ToList();
             //int tier = RewardTierWeights.SelectRandomWeighted(t => t.weight).tier;
-            bool shouldUseHorse = EquipHero.HeroShouldUseHorse(hero, heroClass);
+            bool shouldUseHorse = EquipHero.HeroShouldUseHorse(hero, heroClass) || forceHorse;
 
             (ItemObject item, ItemModifier modifier, EquipmentIndex slot) 
                 GenerateRandomWeightedReward(bool allowDuplicates)
@@ -207,7 +208,7 @@ namespace BLTAdoptAHero
                 return RewardTypeWeights
                     // Exclude mount when it shouldn't be used by the hero or they already have a tournament reward
                     // horse
-                    .Where(p => shouldUseHorse || p.type != RewardHelpers.RewardType.Mount)
+                    .Where(p => p.weight > 0 && (shouldUseHorse || p.type != RewardHelpers.RewardType.Mount))
                     // Randomize the reward type order, by random weighting
                     .OrderRandomWeighted(type => type.weight)
                     .SelectMany(type => 

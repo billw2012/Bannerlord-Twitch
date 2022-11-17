@@ -51,13 +51,13 @@ Commands:
   Enabled: true
   Handler: EquipHero
   HandlerConfig:
-    AllowCompanionUpgrade: false
+    AllowCompanionUpgrade: true
     CostTier1: 25000
     CostTier2: 50000
     CostTier3: 100000
-    CostTier4: 175000
-    CostTier5: 275000
-    CostTier6: 400000
+    CostTier4: 200000
+    CostTier5: 400000
+    CostTier6: 1000000
     ReequipInsteadOfUpgrade: false
   Help: '{=vTo0NowP}upgrade equipment'
   HideHelp: false
@@ -74,9 +74,9 @@ Commands:
       CostTier1: 25000
       CostTier2: 50000
       CostTier3: 100000
-      CostTier4: 175000
-      CostTier5: 275000
-      CostTier6: 400000
+      CostTier4: 200000
+      CostTier5: 400000
+      CostTier6: 800000
       IncludeBanditUnits: false
       MaxRetinueSize: 5
       UseBasicTroops: true
@@ -110,13 +110,13 @@ Commands:
   Enabled: true
   Handler: EquipHero
   HandlerConfig:
-    AllowCompanionUpgrade: false
+    AllowCompanionUpgrade: true
     CostTier1: 10000
-    CostTier2: 20000
-    CostTier3: 40000
-    CostTier4: 70000
-    CostTier5: 110000
-    CostTier6: 160000
+    CostTier2: 25000
+    CostTier3: 50000
+    CostTier4: 100000
+    CostTier5: 200000
+    CostTier6: 400000
     ReequipInsteadOfUpgrade: true
   Help: '{=3KYGJ0Mu}reroll equipment'
   HideHelp: false
@@ -334,6 +334,102 @@ Commands:
   Name: '{=GHCxNIaR}powers'
   RespondInOverlay: true
   RespondInTwitch: false
+- Documentation: ''
+  Enabled: true
+  Handler: SmithItem
+  HandlerConfig:
+    GoldCost: 1000000
+    Item:
+      ArmorWeight: 0
+      CustomItemName: '{=}Smithed {ITEMNAME}'
+      CustomItemPower: 2
+      CustomWeight: 1
+      MountWeight: 0
+      Tier1Weight: 0
+      Tier2Weight: 0
+      Tier3Weight: 0
+      Tier4Weight: 0
+      Tier5Weight: 0
+      Tier6Weight: 0
+      WeaponWeight: 1
+  Help: ''
+  HideHelp: false
+  ID: a2b33796-a5f0-4bc9-be7c-8e887d3f00c4
+  Name: smithweapon
+  RespondInOverlay: true
+  RespondInTwitch: true
+- Documentation: ''
+  Enabled: true
+  Handler: SmithItem
+  HandlerConfig:
+    GoldCost: 500000
+    Item:
+      ArmorWeight: 1
+      CustomItemName: '{=}Smithed {ITEMNAME}'
+      CustomItemPower: 2
+      CustomWeight: 1
+      MountWeight: 0
+      Tier1Weight: 0
+      Tier2Weight: 0
+      Tier3Weight: 0
+      Tier4Weight: 0
+      Tier5Weight: 0
+      Tier6Weight: 0
+      WeaponWeight: 0
+  Help: ''
+  HideHelp: false
+  ID: 2d829c81-f451-4b59-b9b2-ae12962986e9
+  Name: smitharmor
+  RespondInOverlay: true
+  RespondInTwitch: true
+- Documentation: ''
+  Enabled: true
+  Handler: SmithItem
+  HandlerConfig:
+    GoldCost: 25000
+    Item:
+      ArmorWeight: 1
+      CustomItemName: '{=}Random {ITEMNAME}'
+      CustomItemPower: 1
+      CustomWeight: 0.100000001
+      MountWeight: 0.100000001
+      Tier1Weight: 0.550000012
+      Tier2Weight: 1.45000005
+      Tier3Weight: 2.29999995
+      Tier4Weight: 1.75
+      Tier5Weight: 1.14999998
+      Tier6Weight: 0.550000012
+      WeaponWeight: 0.300000012
+  Help: ''
+  HideHelp: false
+  ID: 814acf33-9340-4e1f-99d8-48f16c069955
+  Name: smithrandom
+  RespondInOverlay: true
+  RespondInTwitch: true
+- Documentation: ''
+  Enabled: true
+  Handler: SmithItem
+  HandlerConfig:
+    GoldCost: 1250000
+    Item:
+      ArmorWeight: 0
+      CustomItemName: '{=}Fancy {ITEMNAME}'
+      CustomItemPower: 1.5
+      CustomWeight: 1
+      MountWeight: 1
+      Tier1Weight: 0
+      Tier2Weight: 0
+      Tier3Weight: 0
+      Tier4Weight: 0
+      Tier5Weight: 0
+      Tier6Weight: 0
+      WeaponWeight: 0
+  Help: ''
+  HideHelp: false
+  ID: 87bed827-fbe4-472e-a300-f6f85e46dd28
+  Name: buymount
+  RespondInOverlay: true
+  RespondInTwitch: true
 DisableAutomaticFulfillment: false
 GlobalConfigs:
 - Config:
@@ -3362,7 +3458,7 @@ Rewards:
       Skill: Riding
     SubscriberOnly: false
     ViewerSelects: Faction
-  ID: e072adb0-83a2-4408-87bb-b2cff3f12ee2
+  ID: 55918467-fe58-49a0-a354-57af0be6cd24
   RespondInOverlay: true
   RespondInTwitch: true
   RewardSpec:
@@ -3412,7 +3508,7 @@ Rewards:
       Skill: Riding
     SubscriberOnly: false
     ViewerSelects: Culture
-  ID: e072adb0-83a2-4408-87bb-b2cff3f12ee2
+  ID: eafbd312-1127-4930-bca0-47b83e205c7b
   RespondInOverlay: true
   RespondInTwitch: true
   RewardSpec:
@@ -3436,7 +3532,7 @@ Rewards:
   RespondInTwitch: false
   RewardSpec:
     BackgroundColorText: '#FF000000'
-    Cost: 4000
+    Cost: 50
     DisableAutomaticFulfillment: false
     GlobalCooldownSeconds: 
     IsEnabled: true
@@ -3507,15 +3603,15 @@ Rewards:
   Enabled: true
   Handler: CharacterEffect
   HandlerConfig:
-    ActivateParticleEffect: 
+    ActivateParticleEffect: psys_game_stone_water_coll
     ActivateSound: 
     DamageMultiplier: 
     DamagePerSecond: 0
     DeactivateParticleEffect: 
     DeactivateSound: 
-    Duration: 30
+    Duration: 15
     ForceDropWeapons: false
-    HealPerSecond: 1
+    HealPerSecond: 2
     Name: Healing
     ParticleEffects:
     - AttachPoint: OnBody
@@ -3608,7 +3704,7 @@ Rewards:
   RespondInTwitch: false
   RewardSpec:
     BackgroundColorText: '#FF000000'
-    Cost: 10
+    Cost: 50
     DisableAutomaticFulfillment: false
     GlobalCooldownSeconds: 
     IsEnabled: true
@@ -3630,7 +3726,7 @@ Rewards:
     Duration: 30
     ForceDropWeapons: false
     HealPerSecond: 0
-    Name: 
+    Name: Burn Player
     ParticleEffects:
     - AttachPoint: OnBody
       Name: psys_campfire
@@ -3662,7 +3758,7 @@ Rewards:
   Enabled: true
   Handler: CharacterEffect
   HandlerConfig:
-    ActivateParticleEffect: 
+    ActivateParticleEffect: psys_game_stone_water_coll
     ActivateSound: 
     DamageMultiplier: 
     DamagePerSecond: 0
@@ -3670,7 +3766,7 @@ Rewards:
     DeactivateSound: 
     Duration: 10
     ForceDropWeapons: false
-    HealPerSecond: 3
+    HealPerSecond: 6
     Name: Healing
     ParticleEffects: 
     Properties: 
@@ -3767,6 +3863,12 @@ SimTesting:
     Id: Summon
     ID: f478486b-06ba-4d97-bb27-774cf985dd0c
     Type: Reward
+    Weight: 1
+  - Args: ''
+    Enabled: true
+    Id: buymount
+    ID: d95e0ecc-ec57-4196-8738-22522b3001ef
+    Type: Command
     Weight: 1
   IntervalMaxMS: 500
   IntervalMinMS: 50
@@ -3915,5 +4017,29 @@ SimTesting:
     ID: d701da05-a87d-4f81-a94c-07aadb937636
     Type: Reward
     Weight: 0.5
+  - Args: ''
+    Enabled: false
+    Id: smithweapon
+    ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
+    Type: Command
+    Weight: 0.100000001
+  - Args: ''
+    Enabled: false
+    Id: smitharmor
+    ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
+    Type: Command
+    Weight: 0.100000001
+  - Args: ''
+    Enabled: false
+    Id: smithsale
+    ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
+    Type: Command
+    Weight: 0.100000001
+  - Args: ''
+    Enabled: false
+    Id: buymount
+    ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
+    Type: Command
+    Weight: 0.100000001
   UserCount: 20
   UserStayTime: 300
