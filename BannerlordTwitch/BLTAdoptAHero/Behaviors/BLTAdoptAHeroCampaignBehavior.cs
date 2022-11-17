@@ -466,14 +466,15 @@ namespace BLTAdoptAHero
             {
                 IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalStreamerDeaths, 1);
             }
-            else if (killer?.IsHero == true)
-            {
-                IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalHeroDeaths, 1);
-            }
             else if (killer?.IsMount == true)
             {
                 IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalMountDeaths, 1);
             }
+            else if (killer?.Character?.IsHero == true)
+            {
+                IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalHeroDeaths, 1);
+            }
+
             IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalDeaths, 1);
         }
 
