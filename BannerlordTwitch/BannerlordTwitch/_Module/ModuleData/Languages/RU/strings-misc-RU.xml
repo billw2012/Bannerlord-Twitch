@@ -19,15 +19,15 @@
         <!-- HP -->
         <string id="NtqSb7B7" text="HP" original="HP"/>
         <!-- lvl -->
-        <string id="RQlq59mz" text="lvl" original="lvl"/>
+        <string id="RQlq59mz" text="ур." original="lvl"/>
         <!-- Item -->
-        <string id="5rErcMGl" text="Элемент" original="Item"/>
+        <string id="5rErcMGl" text="Предмет" original="Item"/>
         <!-- Skills -->
-        <string id="5gVLi7NA" text="Навыки и умения" original="Skills"/>
+        <string id="5gVLi7NA" text="Навыки" original="Skills"/>
         <!--  ■ -->
         <string id="aG3roJj3" text="■" original=" ■"/>
         <!-- Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}! -->
-        <string id="fuwuk4bR" text="Недостаточно {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!" original="Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!"/>
+        <string id="fuwuk4bR" text="Недостаточно {GoldIcon}: надо {NeededGold}{GoldIcon}, есть {HaveGold}{GoldIcon}!" original="Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!"/>
         <!-- Common Phrases -->
         <!-- General -->
         <string id="C5T5nnix" text="Общий" original="General"/>
@@ -40,7 +40,7 @@
         <!-- Name -->
         <string id="uUzmy7Lh" text="Имя" original="Name"/>
         <!-- {From} to {To} -->
-        <string id="yVydxRHh" text="{From} to {To}" original="{From} to {To}"/>
+        <string id="yVydxRHh" text="{From} к {To}" original="{From} to {To}"/>
         <!-- Skill -->
         <string id="OEMBeawy" text="Навык" original="Skill"/>
         <!-- Level -->
@@ -48,7 +48,7 @@
         <!-- Amount -->
         <string id="DKfKt4qP" text="Количество" original="Amount"/>
         <!-- Costs {GoldCost} -->
-        <string id="Diwd7dBo" text="Затраты {GoldCost}" original="Costs {GoldCost}"/>
+        <string id="Diwd7dBo" text="Расходы {GoldCost}" original="Costs {GoldCost}"/>
         <!-- Costs -->
         <string id="r7sc3Tvg" text="Расходы" original="Costs"/>
         <!-- None -->

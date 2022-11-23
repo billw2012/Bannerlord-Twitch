@@ -9,13 +9,13 @@
         <!-- Reward {ITEMNAME} -->
         <string id="W47g8bCB" text="Награда {ITEMNAME}" original="Reward {ITEMNAME}"/>
         <!-- [viewer] is [name]! -->
-        <string id="TAWcPGIc" text="[viewer] is [name]!" original="[viewer] is [name]!"/>
+        <string id="TAWcPGIc" text="[viewer] это [name]!" original="[viewer] is [name]!"/>
         <!-- {ITEMNAME} of Fealty -->
         <string id="IvV04W31" text="{ITEMNAME} верности" original="{ITEMNAME} of Fealty"/>
         <!-- Renegades {ITEMNAME} -->
         <string id="UQtSgnog" text="Отступники {ITEMNAME}" original="Renegades {ITEMNAME}"/>
         <!-- Stream Sniper {ITEMNAME} -->
-        <string id="xI41h8NA" text="Stream Sniper {ITEMNAME}" original="Stream Sniper {ITEMNAME}"/>
+        <string id="xI41h8NA" text="Стрим Снайпер {ITEMNAME}" original="Stream Sniper {ITEMNAME}"/>
         <!-- Reliable -->
         <string id="ODWiNBng" text="Надежный" original="Reliable"/>
         <!-- Trusted -->
@@ -33,13 +33,13 @@
         <!-- Killing Spree -->
         <string id="QNbIUDrh" text="Серия убийств" original="Killing Spree"/>
         <!-- Healthy I -->
-        <string id="dlrzqWyB" text="Здоровый я" original="Healthy I"/>
+        <string id="dlrzqWyB" text="Здоровый I" original="Healthy I"/>
         <!-- Healthy II -->
         <string id="QpSDATVx" text="Здоровый II" original="Healthy II"/>
         <!-- Healthy III -->
         <string id="Cqkht54y" text="Здоровый III" original="Healthy III"/>
         <!-- Fragile I -->
-        <string id="qA2f6xBp" text="Хрупкий я" original="Fragile I"/>
+        <string id="qA2f6xBp" text="Хрупкий I" original="Fragile I"/>
         <!-- Fragile II -->
         <string id="Hyuf4TSH" text="Хрупкий II" original="Fragile II"/>
         <!-- Fragile III -->
@@ -63,11 +63,11 @@
         <!-- Retribution III -->
         <string id="bS76hE3e" text="Возмездие III" original="Retribution III"/>
         <!-- Fleet Footed I -->
-        <string id="FQKNvxVG" text="Флот Footed I" original="Fleet Footed I"/>
+        <string id="FQKNvxVG" text="Флотские ногиI" original="Fleet Footed I"/>
         <!-- Fleet Footed II -->
-        <string id="rgQDzX4f" text="Флот Footed II" original="Fleet Footed II"/>
+        <string id="rgQDzX4f" text="Флотские ногиII" original="Fleet Footed II"/>
         <!-- Fleet Footed III -->
-        <string id="f7L0oLCQ" text="Флот Ног III" original="Fleet Footed III"/>
+        <string id="f7L0oLCQ" text="Флотские ногиIII" original="Fleet Footed III"/>
         <!-- Charge I -->
         <string id="39yFtbp2" text="Заряд I" original="Charge I"/>
         <!-- Charge II -->
@@ -75,11 +75,11 @@
         <!-- Charge III -->
         <string id="l2eB9avA" text="Заряд III" original="Charge III"/>
         <!-- Better Mount I -->
-        <string id="tqmxzUCq" text="Лучше Mount I" original="Better Mount I"/>
+        <string id="tqmxzUCq" text="Лучший наездник I" original="Better Mount I"/>
         <!-- Better Mount II -->
-        <string id="izG39s2J" text="Лучшее крепление II" original="Better Mount II"/>
+        <string id="izG39s2J" text="Лучший наездник II" original="Better Mount II"/>
         <!-- Better Mount III -->
-        <string id="CVmPJOB4" text="Лучше Mount III" original="Better Mount III"/>
+        <string id="CVmPJOB4" text="Лучший наездник III" original="Better Mount III"/>
         <!-- Imposing Mount -->
         <string id="tv2vTde5" text="Внушительное крепление" original="Imposing Mount"/>
         <!-- Imposing -->
@@ -115,19 +115,19 @@
         <!-- Heavy Projectiles III -->
         <string id="H3r0Zh8E" text="Тяжелые снаряды III" original="Heavy Projectiles III"/>
         <!-- Crush Through I -->
-        <string id="xwlvLfJX" text="Раздавить я" original="Crush Through I"/>
+        <string id="xwlvLfJX" text="Раздавить I" original="Crush Through I"/>
         <!-- Crush Through II -->
-        <string id="7FJTIVa4" text="Раздавить 2" original="Crush Through II"/>
+        <string id="7FJTIVa4" text="Раздавить II" original="Crush Through II"/>
         <!-- Crush Through III -->
         <string id="dQqwtBEE" text="Раздавить III" original="Crush Through III"/>
         <!-- Knock Down I -->
-        <string id="MKUCQtsr" text="Нокдаун я" original="Knock Down I"/>
+        <string id="MKUCQtsr" text="Нокдаун I" original="Knock Down I"/>
         <!-- Knock Down II -->
         <string id="KUdqJrOY" text="Нокдаун II" original="Knock Down II"/>
         <!-- Knock Down III -->
         <string id="Uc4Cai9H" text="Нокдаун III" original="Knock Down III"/>
         <!-- Cut Through I -->
-        <string id="VsZLMOHX" text="Прорезать я" original="Cut Through I"/>
+        <string id="VsZLMOHX" text="Прорезать I" original="Cut Through I"/>
         <!-- Cut Through II -->
         <string id="yXj1jqxx" text="Прорезать II" original="Cut Through II"/>
         <!-- Cut Through III -->
@@ -139,11 +139,11 @@
         <!-- Shatter Shield III -->
         <string id="V6RyPIQg" text="Расколотый щит III" original="Shatter Shield III"/>
         <!-- Shrug Off I -->
-        <string id="oyKzNISD" text="Отбрось я" original="Shrug Off I"/>
+        <string id="oyKzNISD" text="Отброс I" original="Shrug Off I"/>
         <!-- Shrug Off II -->
-        <string id="zNj3xNd4" text="Отбрось плечами II" original="Shrug Off II"/>
+        <string id="zNj3xNd4" text="Отброс II" original="Shrug Off II"/>
         <!-- Shrug Off III -->
-        <string id="5nsSdwel" text="Отбрось плечи III" original="Shrug Off III"/>
+        <string id="5nsSdwel" text="Отброс III" original="Shrug Off III"/>
         <!-- Athletic I -->
         <string id="b3DBwSTA" text="Атлетик I" original="Athletic I"/>
         <!-- Athletic II -->
