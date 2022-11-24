@@ -402,7 +402,7 @@
         <string id="yJRKVszb" text="Время восстановления в секундах, по умолчанию неограниченное." original="The cooldown in seconds, defaults to unlimited"/>
         <!-- TwitchService -->
         <!-- Usage: !{Name} {Args} -->
-        <string id="JSW1ryNl" text="Использование:! {Name} {Args}" original="Usage: !{Name} {Args}"/>
+        <string id="JSW1ryNl" text="Использование: !{Name} {Args}" original="Usage: !{Name} {Args}"/>
         <!-- Usage: {Args} -->
         <string id="mdhbHYNM" text="Использование: {Args}" original="Usage: {Args}"/>
         <!-- Commands:  -->
@@ -421,11 +421,11 @@
         <!-- Bot disconnected -->
         <string id="thucznzJ" text="Бот отключен" original="Bot disconnected"/>
         <!-- @{BotUsername} has joined channel {Channel} -->
-        <string id="Hd6Q51eb" text="@ {BotUsername} has joined channel {Channel}" original="@{BotUsername} has joined channel {Channel}"/>
+        <string id="Hd6Q51eb" text="@{BotUsername} присоединился к каналу {Channel}" original="@{BotUsername} has joined channel {Channel}"/>
         <!-- bot reporting for duty! -->
         <string id="SbufvVIR" text="бот сообщает о дежурстве!" original="bot reporting for duty!"/>
         <!-- Type !help for command list -->
-        <string id="vBtkF25N" text="Введите! Help для получения списка команд." original="Type !help for command list"/>
+        <string id="vBtkF25N" text="Введите !help для получения списка команд" original="Type !help for command list"/>
         <!-- OneShotParticleEffectItemSource -->
         <!-- (none) -->
         <string id="a8ibMIfH" text="(никто)" original="(none)"/>
@@ -481,20 +481,20 @@
         <!-- Min -->
         <string id="TZN2VR8Q" text="Мин." original="Min"/>
         <!-- Max -->
-        <string id="bySwFF1n" text="Максимум" original="Max"/>
+        <string id="bySwFF1n" text="Макс." original="Max"/>
         <!-- BLTModule -->
         <!-- This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now. -->
-        <string id="IO9rnFpk" text="Эта сборка мода предназначена для версии игры {ExpectedVersion}. You are running game version {GameVersion}. Выходим сейчас." original="This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now."/>
+        <string id="IO9rnFpk" text="Эта сборка мода предназначена для версии игры {ExpectedVersion}. Вы используете версию игры {GameVersion}. Выхожу сейчас." original="This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now."/>
         <!-- Bannerlord Twitch ERROR -->
         <string id="Oru6b9Cy" text="Bannerlord Twitch ОШИБКА" original="Bannerlord Twitch ERROR"/>
         <!-- Loaded v{ModVersion} -->
-        <string id="45Q44kgm" text="Загружено v {ModVersion}" original="Loaded v{ModVersion}"/>
+        <string id="45Q44kgm" text="Загружен v{ModVersion}" original="Loaded v{ModVersion}"/>
         <!-- Action Manager initialized -->
         <string id="5G73vqNS" text="Менеджер действий инициализирован" original="Action Manager initialized"/>
         <!-- Bannerlord Twitch Mod WARNING -->
-        <string id="PhRzCo9t" text="ВНИМАНИЕ! Bannerlord Twitch Mod ВНИМАНИЕ!" original="Bannerlord Twitch Mod WARNING"/>
+        <string id="PhRzCo9t" text="Bannerlord Twitch Mod ВНИМАНИЕ" original="Bannerlord Twitch Mod WARNING"/>
         <!-- You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less. -->
-        <string id="7b4tU6y9" text="У вас отключено автосохранение, сбои могут привести к потере очков канала! \ NРекомендуем установить его на 15 минут или меньше." original="You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less."/>
+        <string id="7b4tU6y9" text="У вас отключено автосохранение, сбои могут привести к потере очков канала!\nРекомендуем установить его на 15 минут или меньше." original="You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less."/>
         <!-- Okay -->
         <string id="hpFXglKx" text="Хорошо" original="Okay"/>
         <!-- Bannerlord Twitch Mod DISABLED -->
@@ -502,10 +502,10 @@
         <!-- Bannerlord Twitch Mod STARTUP ERROR -->
         <string id="cuXwwHRe" text="Bannerlord Twitch Mod ОШИБКА ЗАПУСКА" original="Bannerlord Twitch Mod STARTUP ERROR"/>
         <!-- Error in {Location}, please report this on the discord: {Error} -->
-        <string id="C0G8s2Lv" text="Ошибка в {Location}, please report this on the discord: {Error}" original="Error in {Location}, please report this on the discord: {Error}"/>
+        <string id="C0G8s2Lv" text="Ошибка в {Location}, пожалуйста, сообщите об этом в discord: {Error}" original="Error in {Location}, please report this on the discord: {Error}"/>
         <!-- SkillGroup -->
         <!-- None -->
-        <string id="p2ImRezI" text="Никто" original="None"/>
+        <string id="p2ImRezI" text="Отсутствуют" original="None"/>
         <!-- All -->
         <string id="ZJUJQl8V" text="Все" original="All"/>
         <!-- Melee -->
@@ -513,13 +513,13 @@
         <!-- One Handed -->
         <string id="NRNrLcBt" text="Одноручное" original="One Handed"/>
         <!-- Two Handed -->
-        <string id="93kpWTwA" text="Двуручный" original="Two Handed"/>
+        <string id="93kpWTwA" text="Двуручное" original="Two Handed"/>
         <!-- Polearm -->
         <string id="PWibGbJ4" text="Древковое оружие" original="Polearm"/>
         <!-- Ranged -->
         <string id="oidnJJjF" text="Дальний бой" original="Ranged"/>
         <!-- Bow -->
-        <string id="HW64G8xr" text="Поклон" original="Bow"/>
+        <string id="HW64G8xr" text="Лук" original="Bow"/>
         <!-- Throwing -->
         <string id="yR8vmGlW" text="Метание" original="Throwing"/>
         <!-- Crossbow -->
@@ -529,9 +529,9 @@
         <!-- Riding -->
         <string id="14Unsmk1" text="Верховая езда" original="Riding"/>
         <!-- Athletics -->
-        <string id="4zlH32Z5" text="легкая атлетика" original="Athletics"/>
+        <string id="4zlH32Z5" text="Атлетика" original="Athletics"/>
         <!-- Support -->
-        <string id="AZD2nxRg" text="Служба поддержки" original="Support"/>
+        <string id="AZD2nxRg" text="Поддержка" original="Support"/>
         <!-- Scouting -->
         <string id="pOYKEhhf" text="Разведка" original="Scouting"/>
         <!-- Trade -->
@@ -556,7 +556,7 @@
         <string id="4684bsD7" text="Лидерство" original="Leadership"/>
         <!-- EquipmentType -->
         <!-- None -->
-        <string id="rMIAZRoT" text="Никто" original="None"/>
+        <string id="rMIAZRoT" text="Отсутствуют" original="None"/>
         <!-- Dagger -->
         <string id="2gjNbpQI" text="Кинжал" original="Dagger"/>
         <!-- One Handed Sword -->
@@ -580,11 +580,11 @@
         <!-- Two Handed Glaive -->
         <string id="KpYZoZE9" text="Двуручная глефа" original="Two Handed Glaive"/>
         <!-- Bow -->
-        <string id="HKYDdm9S" text="Поклон" original="Bow"/>
+        <string id="HKYDdm9S" text="Лук" original="Bow"/>
         <!-- Crossbow -->
         <string id="3jigLyuH" text="Арбалет" original="Crossbow"/>
         <!-- Arrows -->
-        <string id="UjKvUAX1" text="Стрелки" original="Arrows"/>
+        <string id="UjKvUAX1" text="Стрелы" original="Arrows"/>
         <!-- Bolts -->
         <string id="QBgdwwa3" text="Болты" original="Bolts"/>
         <!-- Throwing Knives -->
@@ -592,7 +592,7 @@
         <!-- Throwing Axes -->
         <string id="mSnnORJ1" text="Метательные топоры" original="Throwing Axes"/>
         <!-- Throwing Javelins -->
-        <string id="WUrrIbmH" text="Метание копья" original="Throwing Javelins"/>
+        <string id="WUrrIbmH" text="Метательные копья" original="Throwing Javelins"/>
         <!-- Shield -->
         <string id="om9ZF9Mu" text="Щит" original="Shield"/>
         <!-- Stone -->

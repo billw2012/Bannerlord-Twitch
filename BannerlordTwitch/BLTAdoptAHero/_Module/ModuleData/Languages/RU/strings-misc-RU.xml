@@ -17,15 +17,15 @@
         <!-- Notification Text -->
         <string id="guJFFskH" text="Текст уведомления" original="Notification Text"/>
         <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement. -->
-        <string id="SwIUyQNw" text="Текст, который будет отображаться, когда достижение будет получено, и когда игрок перечислит свои достижения. Заполнители: [viewer] for the viewers name, and [name] для названия достижения." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
+        <string id="SwIUyQNw" text="Текст, который будет отображаться, когда достижение будет получено, и когда игрок перечислит свои достижения. Заполнители: [viewer] для имени зрителей, и [name] для названия достижения." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
         <!-- Requirements -->
         <string id="TfwiBMGr" text="Требования" original="Requirements"/>
         <!-- Gold Gain -->
-        <string id="NitYwoHr" text="Прирост золота" original="Gold Gain"/>
+        <string id="NitYwoHr" text="Награда золота" original="Gold Gain"/>
         <!-- Gold awarded for gaining this achievement. -->
-        <string id="l0xBVhOe" text="Золото присуждается за получение этого достижения." original="Gold awarded for gaining this achievement."/>
+        <string id="l0xBVhOe" text="За получение этого достижения награждается золото." original="Gold awarded for gaining this achievement."/>
         <!-- XP Gain -->
-        <string id="JShqb5Be" text="Прирост опыта" original="XP Gain"/>
+        <string id="JShqb5Be" text="Награда опыта" original="XP Gain"/>
         <!-- Experience awarded for gaining this achievement. -->
         <string id="tx7YV26l" text="За получение этого достижения награждается опыт." original="Experience awarded for gaining this achievement."/>
         <!-- Give Item Reward -->
@@ -104,9 +104,9 @@
         <!-- class -->
         <string id="j3YG9dCh" text="класс" original="class"/>
         <!-- (current) -->
-        <string id="RXXuHIdN" text="(Текущий)" original="(current)"/>
+        <string id="RXXuHIdN" text="(текущий)" original="(current)"/>
         <!-- (none) -->
-        <string id="dPEnuHsk" text="(никто)" original="(none)"/>
+        <string id="dPEnuHsk" text="(ничего)" original="(none)"/>
         <!-- StatisticRequirement -->
         <!-- Statistic Requirement -->
         <string id="CkgaxlDY" text="Статистические требования" original="Statistic Requirement"/>
@@ -119,9 +119,9 @@
         <!-- Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills. -->
         <string id="4yoAe9WV" text="Требуется ли герою больше или меньше указанного значения. Например, вы можете сделать требования, чтобы у героя было менее 10 смертей и более 100 убийств." original="Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills."/>
         <!-- Value -->
-        <string id="a8Josr4g" text="Ценить" original="Value"/>
+        <string id="a8Josr4g" text="Значение" original="Value"/>
         <!-- Value needed to obtain the achievement. -->
-        <string id="B9LEjEq8" text="Стоимость, необходимая для получения достижения." original="Value needed to obtain the achievement."/>
+        <string id="B9LEjEq8" text="Значение, необходимое для получения достижения." original="Value needed to obtain the achievement."/>
         <!-- Other Statistic -->
         <string id="nau8vg7o" text="Другая статистика" original="Other Statistic"/>
         <!-- Other statistic to compare against (this overrides Value if specified). -->
@@ -180,19 +180,19 @@
         <!-- Camel -->
         <string id="HMclWXR8" text="Верблюд" original="Camel"/>
         <!-- Use Horse -->
-        <string id="A1G6bq0G" text="Использовать лошадь" original="Use Horse"/>
+        <string id="A1G6bq0G" text="Использовать Лошадь" original="Use Horse"/>
         <!-- Use Camel -->
-        <string id="FpgyZk0F" text="Используйте Camel" original="Use Camel"/>
+        <string id="FpgyZk0F" text="Использовать Верблюд" original="Use Camel"/>
         <!-- (none) -->
-        <string id="GFc6JLJ9" text="(никто)" original="(none)"/>
+        <string id="GFc6JLJ9" text="(ничего)" original="(none)"/>
         <!-- Details -->
         <string id="A79HrgZ0" text="Подробности" original="Details"/>
         <!-- Tier {TierNumber} -->
         <string id="Rs1XNM9K" text="Уровень {TierNumber}" original="Tier {TierNumber}"/>
         <!-- Equipment -->
-        <string id="HyXJQJtW" text="Оборудование" original="Equipment"/>
+        <string id="HyXJQJtW" text="Снаряжение" original="Equipment"/>
         <!-- Mount -->
-        <string id="iGdq37PI" text="устанавливать" original="Mount"/>
+        <string id="iGdq37PI" text="Верховое" original="Mount"/>
         <!-- KillStreakDef -->
         <!-- Kill Streak -->
         <string id="InTnlqz1" text="Серия убийств" original="Kill Streak"/>
@@ -219,7 +219,7 @@
         <!-- [viewer] got [name] ([kills] kills) -->
         <string id="ipowOInD" text="[viewer] got [name] ([kills] убийств)" original="[viewer] got [name] ([kills] kills)"/>
         <!-- {KillsRequired} kills -->
-        <string id="YZJ60Pxb" text="{KillsRequired} убивает" original="{KillsRequired} kills"/>
+        <string id="YZJ60Pxb" text="{KillsRequired} убийств" original="{KillsRequired} kills"/>
         <!-- SummonHero.FormationItemSource -->
         <!-- Infantry -->
         <string id="7gt8mcJc" text="Пехота" original="Infantry"/>
@@ -259,9 +259,9 @@
         <string id="G95DA4OM" text="Требования для этого уровня класса" original="Requirements for this class level"/>
         <!-- MissionInfo -->
         <!-- Kills -->
-        <string id="AM2zlkem" text="Убивает" original="Kills"/>
+        <string id="AM2zlkem" text="Убийства" original="Kills"/>
         <!-- +Retinue Kills -->
-        <string id="79JXI4JL" text="+ Убийства свиты" original="+Retinue Kills"/>
+        <string id="79JXI4JL" text="+Свитой" original="+Retinue Kills"/>
         <!-- Gold -->
         <string id="o0Q8Y1Qg" text="Золото" original="Gold"/>
         <!-- XP -->
