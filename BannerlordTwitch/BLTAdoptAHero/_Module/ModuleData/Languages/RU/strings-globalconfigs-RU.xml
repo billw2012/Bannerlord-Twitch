@@ -246,7 +246,7 @@
         <!-- Round 4 Rewards -->
         <string id="pxMWYe5J" text="Награды за 4-й раунд" original="Round 4 Rewards"/>
         <!-- Participate XP -->
-        <string id="5vMTYqdu" text="Участвуйте в XP" original="Participate XP"/>
+        <string id="5vMTYqdu" text="XP за участие" original="Participate XP"/>
         <!-- Prize -->
         <string id="Xu2KD7Kc" text="Приз" original="Prize"/>
         <!-- Enable Betting -->
@@ -280,27 +280,27 @@
         <!-- Allow the vanilla round setup -->
         <string id="nfYBftnO" text="Разрешить ванильную круглую настройку" original="Allow the vanilla round setup"/>
         <!-- Allow 1 match with 2 teams of 2 -->
-        <string id="t9yLB8gB" text="Разрешить 1 матч с 2 командами по 2 человека" original="Allow 1 match with 2 teams of 2"/>
+        <string id="t9yLB8gB" text="Разрешить 1 матч с 2 командами по 2" original="Allow 1 match with 2 teams of 2"/>
         <!-- Allow 1 match with 2 teams of 4 -->
-        <string id="5hLSHeuv" text="Разрешить 1 матч с 2 командами по 4 человека" original="Allow 1 match with 2 teams of 4"/>
+        <string id="5hLSHeuv" text="Разрешить 1 матч с 2 командами по 4" original="Allow 1 match with 2 teams of 4"/>
         <!-- Allow 1 match with 4 teams of 1 -->
         <string id="YfOnzOH6" text="Разрешить 1 матч с 4 командами по 1" original="Allow 1 match with 4 teams of 1"/>
         <!-- Allow 1 match with 4 teams of 2 -->
-        <string id="CLbRKpZp" text="Разрешить 1 матч с 4 командами по 2 человека" original="Allow 1 match with 4 teams of 2"/>
+        <string id="CLbRKpZp" text="Разрешить 1 матч с 4 командами по 2" original="Allow 1 match with 4 teams of 2"/>
         <!-- Allow 1 match with 4 teams of 4 -->
-        <string id="5E1lXDYh" text="Разрешить 1 матч с 4 командами по 4 человека" original="Allow 1 match with 4 teams of 4"/>
+        <string id="5E1lXDYh" text="Разрешить 1 матч с 4 командами по 4" original="Allow 1 match with 4 teams of 4"/>
         <!-- Allow 2 matches with 2 teams of 1 -->
         <string id="OrZaS458" text="Разрешить 2 матча с 2 командами по 1" original="Allow 2 matches with 2 teams of 1"/>
         <!-- Allow 2 matches with 2 teams of 2 -->
-        <string id="Dr1Js5fB" text="Разрешить 2 матча с 2 командами по 2 человека" original="Allow 2 matches with 2 teams of 2"/>
+        <string id="Dr1Js5fB" text="Разрешить 2 матча с 2 командами по 2" original="Allow 2 matches with 2 teams of 2"/>
         <!-- Allow 2 matches with 2 teams of 4 -->
-        <string id="jEghMKUV" text="Разрешить 2 матча с 2 командами по 4 человека" original="Allow 2 matches with 2 teams of 4"/>
+        <string id="jEghMKUV" text="Разрешить 2 матча с 2 командами по 4" original="Allow 2 matches with 2 teams of 4"/>
         <!-- Allow 2 matches with 4 teams of 1 -->
         <string id="nmMzoqeC" text="Разрешить 2 матча с 4 командами по 1" original="Allow 2 matches with 4 teams of 1"/>
         <!-- Allow 2 matches with 4 teams of 2 -->
-        <string id="f8rXSGwN" text="Разрешить 2 матча с 4 командами по 2 человека" original="Allow 2 matches with 4 teams of 2"/>
+        <string id="f8rXSGwN" text="Разрешить 2 матча с 4 командами по 2" original="Allow 2 matches with 4 teams of 2"/>
         <!-- Allow 4 matches with 2 teams of 2 -->
-        <string id="GPCYzshA" text="Разрешить 4 матча с 2 командами по 2 человека" original="Allow 4 matches with 2 teams of 2"/>
+        <string id="GPCYzshA" text="Разрешить 4 матча с 2 командами по 2" original="Allow 4 matches with 2 teams of 2"/>
         <!-- Allow 4 matches with 4 teams of 1 -->
         <string id="MjsTFwUv" text="Разрешить 4 матча с 4 командами по 1" original="Allow 4 matches with 4 teams of 1"/>
         <!-- Allow 4 matches with 2 teams of 1 -->
@@ -310,7 +310,7 @@
         <!-- Gold won if the hero wins their match in the round -->
         <string id="i7Ns7K2i" text="Золото выиграно, если герой выиграет свой матч в раунде" original="Gold won if the hero wins their match in the round"/>
         <!-- XP given if the hero wins their match in the round -->
-        <string id="b0MeEmOS" text="XP предоставляется, если герой выигрывает матч в раунде." original="XP given if the hero wins their match in the round"/>
+        <string id="b0MeEmOS" text="XP даётся, если герой выигрывает матч в раунде." original="XP given if the hero wins their match in the round"/>
         <!-- XP given if the hero loses their match in a round -->
         <string id="Oq7LMvoF" text="XP даётся, если герой проигрывает матч в раунде" original="XP given if the hero loses their match in a round"/>
         <!-- Gold won if the hero wins the tournaments -->
@@ -318,7 +318,7 @@
         <!-- XP given if the hero wins the tournaments -->
         <string id="3BudXy0O" text="XP даётся, если герой выигрывает турниры" original="XP given if the hero wins the tournaments"/>
         <!-- XP given if the hero participates in a tournament but doesn't win -->
-        <string id="TXqjPXh7" text="XP предоставляется, если герой участвует в турнире, но не выигрывает." original="XP given if the hero participates in a tournament but doesn't win"/>
+        <string id="TXqjPXh7" text="XP даётся, если герой участвует в турнире, но не выигрывает." original="XP given if the hero participates in a tournament but doesn't win"/>
         <!-- Winners prize -->
         <string id="wYzmyUCE" text="Приз победителей" original="Winners prize"/>
         <!-- Enable betting -->
