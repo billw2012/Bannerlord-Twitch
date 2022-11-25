@@ -659,7 +659,7 @@
         <!-- HP the hero gets every second they are alive in the mission -->
         <string id="gnh3KY5a" text="HP герой получает каждую секунду его жизни в миссии." original="HP the hero gets every second they are alive in the mission"/>
         <!-- Side -->
-        <string id="Uu58rjgC" text="Боковая сторона" original="Side"/>
+        <string id="Uu58rjgC" text="Бок" original="Side"/>
         <!-- Heals -->
         <string id="uHTRhFAh" text="Лечит" original="Heals"/>
         <!-- Cost -->
@@ -669,7 +669,7 @@
         <!-- Enemy side -->
         <string id="BTZ84Uww" text="Сторона врага" original="Enemy side"/>
         <!-- {HealPerSecond}HP per second while summoned -->
-        <string id="cR84crHC" text="{HealPerSecond}HP в секунду при вызове" original="{HealPerSecond}HP per second while summoned"/>
+        <string id="cR84crHC" text="{HealPerSecond}HP в секунду пока вызван" original="{HealPerSecond}HP per second while summoned"/>
         <!-- Field battle -->
         <string id="SRdB89Ca" text="Полевое сражение" original="Field battle"/>
         <!-- Village battle -->
@@ -723,7 +723,7 @@
         <!-- Weight -->
         <string id="bCbN9OmH" text="Масса" original="Weight"/>
         <!-- Higher weight means more chance this shout is used -->
-        <string id="xqfCYYwN" text="Чем больше вес, тем больше шансов использовать этот крик" original="Higher weight means more chance this shout is used"/>
+        <string id="xqfCYYwN" text="Чем больше доля, тем больше шансов использовать этот крик" original="Higher weight means more chance this shout is used"/>
         <!-- Player Side -->
         <string id="xK1fdx7s" text="Сторона игрока" original="Player Side"/>
         <!-- Can be used when summoning on player side -->
@@ -731,23 +731,23 @@
         <!-- Enemy Side -->
         <string id="srN8yHp8" text="Сторона врага" original="Enemy Side"/>
         <!-- Can be used when summoning on enemy side -->
-        <string id="0m4s9zXc" text="Можно использовать при вызове на стороне врага." original="Can be used when summoning on enemy side"/>
+        <string id="0m4s9zXc" text="Можно использовать при вызове на стороне врага" original="Can be used when summoning on enemy side"/>
         <!-- General -->
         <string id="MOOBN2Hz" text="Общий" original="General"/>
         <!-- Can be used in situations other than battle/siege -->
-        <string id="6TWSIu60" text="Может использоваться в любых ситуациях, кроме битвы / осады." original="Can be used in situations other than battle/siege"/>
+        <string id="6TWSIu60" text="Может использоваться в любых ситуациях, кроме битвы / осады" original="Can be used in situations other than battle/siege"/>
         <!-- Field Battle -->
         <string id="4KdKuusC" text="Полевая битва" original="Field Battle"/>
         <!-- Can be used when in a field battle -->
-        <string id="8aLSNsxr" text="Можно использовать в полевом бою." original="Can be used when in a field battle"/>
+        <string id="8aLSNsxr" text="Можно использовать в полевом бою" original="Can be used when in a field battle"/>
         <!-- Siege Defend -->
         <string id="2yevL6dV" text="Осадная защита" original="Siege Defend"/>
         <!-- Can be used when on siege defender side -->
-        <string id="8HwihUK3" text="Можно использовать на стороне осадного защитника." original="Can be used when on siege defender side"/>
+        <string id="8HwihUK3" text="Можно использовать на стороне осадного защитника" original="Can be used when on siege defender side"/>
         <!-- Siege Attack -->
         <string id="r5tvIQwx" text="Осадная атака" original="Siege Attack"/>
         <!-- Can be used when on siege attacker side -->
-        <string id="mbIwJprm" text="Может использоваться на стороне атакующего." original="Can be used when on siege attacker side"/>
+        <string id="mbIwJprm" text="Может использоваться на стороне атакующего" original="Can be used when on siege attacker side"/>
         <!-- Shout -->
         <string id="CXb5ALls" text="Кричать" original="Shout"/>
         <!-- TournamentBet -->

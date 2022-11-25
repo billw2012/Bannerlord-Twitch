@@ -283,15 +283,15 @@
         <!-- Custom Item -->
         <string id="zVqTKyQG" text="Пользовательский предмет" original="Custom Item"/>
         <!-- Weapon Weight -->
-        <string id="7yNTThry" text="Вес оружия" original="Weapon Weight"/>
+        <string id="7yNTThry" text="Доля оружия" original="Weapon Weight"/>
         <!-- Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo. -->
         <string id="WTWuy57X" text="Относительная доля наград, которые будут представлять собой оружие. Сюда входят все одноручные, двуручные, дальнобойные и боеприпасы." original="Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo."/>
         <!-- Armor Weight -->
-        <string id="Al3Px9lL" text="Вес брони" original="Armor Weight"/>
+        <string id="Al3Px9lL" text="Доля брони" original="Armor Weight"/>
         <!-- Relative proportion of rewards that will be armor -->
         <string id="WSXhTI0r" text="Относительная доля наград, составляющих броню" original="Relative proportion of rewards that will be armor"/>
         <!-- Mount Weight -->
-        <string id="S6t7iUki" text="Вес крепления" original="Mount Weight"/>
+        <string id="S6t7iUki" text="Доля крепления" original="Mount Weight"/>
         <!-- Relative proportion of rewards that will be mounts -->
         <string id="4L1hJS6v" text="Относительная доля наград, которые будут ездить на животных" original="Relative proportion of rewards that will be mounts"/>
         <!-- Reward Type Chances -->
@@ -299,43 +299,43 @@
         <!-- The % chance for each item type -->
         <string id="u9zCErHS" text="% Шанс для каждого типа предмета" original="The % chance for each item type"/>
         <!-- Tier 1 Weight -->
-        <string id="pqDOv12p" text="Вес уровня 1" original="Tier 1 Weight"/>
+        <string id="pqDOv12p" text="Доля уровня 1" original="Tier 1 Weight"/>
         <!-- Relative proportion of rewards that will be Tier 1 -->
-        <string id="aAZvoxk9" text="Относительная доля наград первого уровня" original="Relative proportion of rewards that will be Tier 1"/>
+        <string id="aAZvoxk9" text="Относительная доля наград уровня 1" original="Relative proportion of rewards that will be Tier 1"/>
         <!-- Tier 2 Weight -->
-        <string id="ZDgMrJHH" text="Уровень 2 Вес" original="Tier 2 Weight"/>
+        <string id="ZDgMrJHH" text="Доля уровня 2" original="Tier 2 Weight"/>
         <!-- Relative proportion of rewards that will be Tier 2 -->
-        <string id="rvjbuCH4" text="Относительная доля наград 2-го уровня" original="Relative proportion of rewards that will be Tier 2"/>
+        <string id="rvjbuCH4" text="Относительная доля наград уровня 2" original="Relative proportion of rewards that will be Tier 2"/>
         <!-- Tier 3 Weight -->
-        <string id="8UhZyGRj" text="Уровень 3 Вес" original="Tier 3 Weight"/>
+        <string id="8UhZyGRj" text="Доля уровня 3" original="Tier 3 Weight"/>
         <!-- Relative proportion of rewards that will be Tier 3 -->
-        <string id="CJwXH8cz" text="Относительная доля наград третьего уровня" original="Relative proportion of rewards that will be Tier 3"/>
+        <string id="CJwXH8cz" text="Относительная доля наград уровня 3" original="Relative proportion of rewards that will be Tier 3"/>
         <!-- Tier 4 Weight -->
-        <string id="v4wqC1mI" text="Вес 4-го уровня" original="Tier 4 Weight"/>
+        <string id="v4wqC1mI" text="Доля уровня 4" original="Tier 4 Weight"/>
         <!-- Relative proportion of rewards that will be Tier 4 -->
-        <string id="NoKi0iIC" text="Относительная доля наград 4-го уровня" original="Relative proportion of rewards that will be Tier 4"/>
+        <string id="NoKi0iIC" text="Относительная доля наград уровня 4" original="Relative proportion of rewards that will be Tier 4"/>
         <!-- Tier 5 Weight -->
-        <string id="vXimyLH7" text="Вес 5-го уровня" original="Tier 5 Weight"/>
+        <string id="vXimyLH7" text="Доля уровня 5" original="Tier 5 Weight"/>
         <!-- Relative proportion of rewards that will be Tier 5 -->
-        <string id="rsGLtLyB" text="Относительная доля наград 5 уровня" original="Relative proportion of rewards that will be Tier 5"/>
+        <string id="rsGLtLyB" text="Относительная доля наград уровня 5" original="Relative proportion of rewards that will be Tier 5"/>
         <!-- Tier 6 Weight -->
-        <string id="HWHFIsUH" text="Вес уровня 6" original="Tier 6 Weight"/>
+        <string id="HWHFIsUH" text="Доля уровня 6" original="Tier 6 Weight"/>
         <!-- Relative proportion of rewards that will be Tier 6 -->
-        <string id="991D0fok" text="Относительная доля наград 6 уровня" original="Relative proportion of rewards that will be Tier 6"/>
+        <string id="991D0fok" text="Относительная доля наград уровня 6" original="Relative proportion of rewards that will be Tier 6"/>
         <!-- Custom Weight -->
-        <string id="R5TCrBo8" text="Пользовательский вес" original="Custom Weight"/>
+        <string id="R5TCrBo8" text="Доля пользовательского" original="Custom Weight"/>
         <!-- Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below) -->
-        <string id="XL94fx52" text="Относительная доля наград, которые будут индивидуальными (уровень 6 с модификаторами в соответствии с настройками специальных наград ниже)" original="Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below)"/>
+        <string id="XL94fx52" text="Относительная доля наград, которые будут индивидуальными (уровень 6 с модификаторами в соответствии с настройками пользовательских наград ниже)" original="Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below)"/>
         <!-- Reward Tier Chances -->
         <string id="zoBVNJBB" text="Шансы на получение награды" original="Reward Tier Chances"/>
         <!-- The % chance for each reward tier -->
         <string id="ANPeZyy0" text="% Шанс для каждого уровня награды" original="The % chance for each reward tier"/>
         <!-- Custom Item Name -->
-        <string id="PBWEbYLT" text="Имя настраиваемого предмета" original="Custom Item Name"/>
+        <string id="PBWEbYLT" text="Имя пользовательского предмета" original="Custom Item Name"/>
         <!-- Name format for custom item, {ITEMNAME} is the placeholder for the base item name. -->
-        <string id="vqNeCCNy" text="Формат имени для настраиваемого предмета, {ITEMNAME} - это название базового предмета." original="Name format for custom item, {ITEMNAME} is the placeholder for the base item name."/>
+        <string id="vqNeCCNy" text="Формат имени для пользовательского предмета, {ITEMNAME} - это название базового предмета." original="Name format for custom item, {ITEMNAME} is the placeholder for the base item name."/>
         <!-- Custom Item Power -->
-        <string id="THpMPPhd" text="Сила настраиваемого предмета" original="Custom Item Power"/>
+        <string id="THpMPPhd" text="Сила пользовательского предмета" original="Custom Item Power"/>
         <!-- Custom item power multiplier, applies on top of the global multiplier -->
         <string id="anUzQaU7" text="Пользовательский множитель силы предметов, применяется поверх глобального множителя." original="Custom item power multiplier, applies on top of the global multiplier"/>
         <!-- Weapon -->
@@ -343,66 +343,66 @@
         <!-- Armor -->
         <string id="YQdQrFG7" text="Броня" original="Armor"/>
         <!-- Mount -->
-        <string id="HGZVsIjn" text="устанавливать" original="Mount"/>
+        <string id="HGZVsIjn" text="Верховое" original="Mount"/>
         <!-- Custom -->
-        <string id="LKgozyEk" text="Обычай" original="Custom"/>
+        <string id="LKgozyEk" text="Пользовательский" original="Custom"/>
         <!-- Tier {Tier} -->
         <string id="JpB20FtS" text="Уровень {Tier}" original="Tier {Tier}"/>
         <!-- RandomItemModifierDef -->
         <!-- Power -->
-        <string id="1NLO6Gee" text="Власть" original="Power"/>
+        <string id="1NLO6Gee" text="Сила" original="Power"/>
         <!-- Custom prize power, a global multiplier for the values below -->
         <string id="LXo3mTnr" text="Настраиваемая призовая сила, глобальный множитель для значений ниже" original="Custom prize power, a global multiplier for the values below"/>
         <!-- Weapon Damage -->
         <string id="g2DZKK7M" text="Урон от оружия" original="Weapon Damage"/>
         <!-- Weapon damage modifier for custom weapon prize -->
-        <string id="R9lwIsrX" text="Модификатор урона оружия для специального приза оружия" original="Weapon damage modifier for custom weapon prize"/>
+        <string id="R9lwIsrX" text="Модификатор урона оружия для пользовательского приза оружия" original="Weapon damage modifier for custom weapon prize"/>
         <!-- Weapon Speed -->
         <string id="7TgyXbNe" text="Скорость оружия" original="Weapon Speed"/>
         <!-- Speed modifier for custom weapon prize -->
-        <string id="1ZZDexjJ" text="Модификатор скорости для специального приза оружия" original="Speed modifier for custom weapon prize"/>
+        <string id="1ZZDexjJ" text="Модификатор скорости для пользовательского приза оружия" original="Speed modifier for custom weapon prize"/>
         <!-- Weapon Missile Speed -->
-        <string id="4zhm204e" text="Скорость Оружия" original="Weapon Missile Speed"/>
+        <string id="4zhm204e" text="Скорость снаряда оружия" original="Weapon Missile Speed"/>
         <!-- Missile speed modifier for custom weapon prize -->
-        <string id="gFO8L8CR" text="Модификатор скорости снаряда для специального приза оружия" original="Missile speed modifier for custom weapon prize"/>
+        <string id="gFO8L8CR" text="Модификатор скорости снаряда для пользовательского приза оружия" original="Missile speed modifier for custom weapon prize"/>
         <!-- Ammo Damage -->
         <string id="ny6l1USK" text="Урон боеприпасов" original="Ammo Damage"/>
         <!-- Ammo damage modifier for custom ammo prize -->
-        <string id="oTSCOXpf" text="Модификатор урона боеприпасов для специального приза боеприпасов" original="Ammo damage modifier for custom ammo prize"/>
+        <string id="oTSCOXpf" text="Модификатор урона боеприпасов для пользовательского приза боеприпасов" original="Ammo damage modifier for custom ammo prize"/>
         <!-- Arrow Stack -->
-        <string id="2ehIq5eD" text="Стрелка Стек" original="Arrow Stack"/>
+        <string id="2ehIq5eD" text="Количество стрел" original="Arrow Stack"/>
         <!-- Arrow stack size modifier for custom arrow prize -->
-        <string id="inawRS8e" text="Модификатор размера стека стрелок для настраиваемого приза стрелы" original="Arrow stack size modifier for custom arrow prize"/>
+        <string id="inawRS8e" text="Модификатор размера стека стрелок для пользовательского приза стрелы" original="Arrow stack size modifier for custom arrow prize"/>
         <!-- Throwing Stack -->
-        <string id="JUXQcKMR" text="Бросок стопки" original="Throwing Stack"/>
+        <string id="JUXQcKMR" text="Количество метательных" original="Throwing Stack"/>
         <!-- Throwing stack size modifier for custom throwing prize -->
-        <string id="QAUf8zj0" text="Модификатор размера метательного стека для пользовательского метательного приза" original="Throwing stack size modifier for custom throwing prize"/>
+        <string id="QAUf8zj0" text="Модификатор размера метательного стака для пользовательского приза метательного" original="Throwing stack size modifier for custom throwing prize"/>
         <!-- Armor -->
         <string id="MrOZ69tP" text="Броня" original="Armor"/>
         <!-- Armor modifier for custom armor prize -->
-        <string id="1x2YSVSz" text="Модификатор брони для специального приза брони" original="Armor modifier for custom armor prize"/>
+        <string id="1x2YSVSz" text="Модификатор брони для пользовательского приза брони" original="Armor modifier for custom armor prize"/>
         <!-- Mount Maneuver -->
-        <string id="BYekTOq6" text="Mount Maneuver" original="Mount Maneuver"/>
+        <string id="BYekTOq6" text="Манёвренность верхового" original="Mount Maneuver"/>
         <!-- Maneuver multiplier for custom mount prize -->
-        <string id="7cZ5JfEk" text="Множитель маневра для приза особого маунта" original="Maneuver multiplier for custom mount prize"/>
+        <string id="7cZ5JfEk" text="Множитель маневра для приза особого верхового" original="Maneuver multiplier for custom mount prize"/>
         <!-- Mount Speed -->
-        <string id="6yURxqNY" text="Скорость передвижения" original="Mount Speed"/>
+        <string id="6yURxqNY" text="Скорость верхового" original="Mount Speed"/>
         <!-- Speed multiplier for custom mount prize -->
-        <string id="eJZxwZc1" text="Множитель скорости для приза особого маунта" original="Speed multiplier for custom mount prize"/>
+        <string id="eJZxwZc1" text="Множитель скорости для приза особого верхового" original="Speed multiplier for custom mount prize"/>
         <!-- Mount Charge Damage -->
-        <string id="ZmiOntW1" text="Маунт-рывок: урон" original="Mount Charge Damage"/>
+        <string id="ZmiOntW1" text="Урон при столкновении верхового" original="Mount Charge Damage"/>
         <!-- Charge damage multiplier for custom mount prize -->
-        <string id="MZm0DJcs" text="Множитель урона от заряда для приза особого маунта" original="Charge damage multiplier for custom mount prize"/>
+        <string id="MZm0DJcs" text="Множитель урона от заряда для приза особого верхового" original="Charge damage multiplier for custom mount prize"/>
         <!-- Mount Hit Points -->
-        <string id="M8drveMF" text="Mount Hit Points" original="Mount Hit Points"/>
+        <string id="M8drveMF" text="Очки здоровья верхового" original="Mount Hit Points"/>
         <!-- Hitpoints multiplier for custom mount prize -->
-        <string id="ewC5EV3Q" text="Множитель здоровья для приза особого маунта" original="Hitpoints multiplier for custom mount prize"/>
+        <string id="ewC5EV3Q" text="Множитель здоровья для приза особого верхового" original="Hitpoints multiplier for custom mount prize"/>
         <!-- RewardHelpers -->
         <!-- received {ItemName} -->
         <string id="RczvXuxP" text="получил {ItemName}" original="received {ItemName}"/>
         <!-- sold {ItemName} for {ItemValue}{GoldIcon} (not needed) -->
-        <string id="bNX0NiQ9" text="продано {ItemName} for {ItemValue}{GoldIcon} (не требуется)" original="sold {ItemName} for {ItemValue}{GoldIcon} (not needed)"/>
+        <string id="bNX0NiQ9" text="продал {ItemName} за {ItemValue}{GoldIcon} (не требуется)" original="sold {ItemName} for {ItemValue}{GoldIcon} (not needed)"/>
         <!-- received {ItemName} (put in storage) -->
-        <string id="R7VwlLzg" text="получено {ItemName} (сдано на хранение)" original="received {ItemName} (put in storage)"/>
+        <string id="R7VwlLzg" text="получил {ItemName} (сдано на хранение)" original="received {ItemName} (put in storage)"/>
     </strings>
 </base>

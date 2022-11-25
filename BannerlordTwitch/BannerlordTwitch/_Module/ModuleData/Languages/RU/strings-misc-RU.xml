@@ -225,9 +225,9 @@
         <!-- Two Handed Lance -->
         <string id="Y6CxpaYL" text="Двуручное копье" original="Two Handed Lance"/>
         <!-- One Handed Glaive -->
-        <string id="r22oB2bm" text="Одноручная глефа" original="One Handed Glaive"/>
+        <string id="r22oB2bm" text="Одноручная древковое" original="One Handed Glaive"/>
         <!-- Two Handed Glaive -->
-        <string id="BcmE6Y75" text="Двуручная глефа" original="Two Handed Glaive"/>
+        <string id="BcmE6Y75" text="Двуручная древковое" original="Two Handed Glaive"/>
         <!-- Bow -->
         <string id="rroxl8j3" text="Лук" original="Bow"/>
         <!-- Crossbow -->
@@ -272,9 +272,9 @@
         <!-- Name -->
         <string id="ncGFtcFp" text="Имя" original="Name"/>
         <!-- ModifierPercent -->
-        <string id="RgtZnxLU" text="ModifierPercent" original="ModifierPercent"/>
+        <string id="RgtZnxLU" text="Процент изменения" original="ModifierPercent"/>
         <!-- Add -->
-        <string id="uNduKTKf" text="Добавлять" original="Add"/>
+        <string id="uNduKTKf" text="Добавить" original="Add"/>
         <!-- The property to modify -->
         <string id="SUI6n33o" text="Свойство для изменения" original="The property to modify"/>
         <!-- Percent modifier to apply to the property (100% will result in no chance) -->
@@ -285,7 +285,7 @@
         <string id="usihVSj3" text="(без изменений)" original="(no change)"/>
         <!-- SkillModifierDef -->
         <!-- ModifierPercent -->
-        <string id="jgNUxcBa" text="ModifierPercent" original="ModifierPercent"/>
+        <string id="jgNUxcBa" text="Процент изменения" original="ModifierPercent"/>
         <!-- Add -->
         <string id="Au82n7kL" text="Добавлять" original="Add"/>
         <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
@@ -298,7 +298,7 @@
         <string id="PsUcJvPZ" text="(без изменений)" original="(no change)"/>
         <!-- BLTOverlay -->
         <!-- BLT Overlay -->
-        <string id="fmjzDasd" text="BLT Overlay" original="BLT Overlay"/>
+        <string id="fmjzDasd" text="BLT Оверлей" original="BLT Overlay"/>
         <!-- For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again. -->
         <string id="Kgi2isWy" text="Для работы BLT Overlay Browser Source для работы ему необходимо зарезервировать порт {Port} и разрешить его через брандмауэр Windows.\nЭто требует прав администратора, которые будут запрошены после того, как вы нажмете Ok.\nВ случае успеха вы не увидите этого снова всплывающее окно." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
         <!-- Okay -->
@@ -311,9 +311,9 @@
         <!-- Whether this is enabled or not -->
         <string id="YM1rP7sP" text="Включено это или нет" original="Whether this is enabled or not"/>
         <!-- Show response in the twitch chat -->
-        <string id="7IBsjc51" text="Показать ответ в твич-чате" original="Show response in the twitch chat"/>
+        <string id="7IBsjc51" text="Показать ответ в чате Twitch" original="Show response in the twitch chat"/>
         <!-- Show response in the overlay window feed -->
-        <string id="UQRfOFjs" text="Показать ответ в ленте окна оверлея" original="Show response in the overlay window feed"/>
+        <string id="UQRfOFjs" text="Показать ответ в ленте окна Оверлея" original="Show response in the overlay window feed"/>
         <!-- Name of the handler -->
         <string id="ErhzbqFu" text="Имя обработчика" original="Name of the handler"/>
         <!-- Custom config for the handler -->
@@ -343,11 +343,11 @@
         <!-- Name -->
         <string id="D1lt1bSQ" text="Имя" original="Name"/>
         <!-- The command itself, not including the ! -->
-        <string id="u1Ua0LXJ" text="Сама команда, не считая!" original="The command itself, not including the !"/>
+        <string id="u1Ua0LXJ" text="Сама команда, не считая !" original="The command itself, not including the !"/>
         <!-- HideHelp -->
-        <string id="TpnV5Mpi" text="HideHelp" original="HideHelp"/>
+        <string id="TpnV5Mpi" text="Скрывать помощь" original="HideHelp"/>
         <!-- Hides the command from the !help action -->
-        <string id="0AZVaBQN" text="Скрывает команду от действия! Help" original="Hides the command from the !help action"/>
+        <string id="0AZVaBQN" text="Скрывает команду от действия !help" original="Hides the command from the !help action"/>
         <!-- Help -->
         <string id="JqNXbyIT" text="Помощь" original="Help"/>
         <!-- What to show in the !help command -->
@@ -515,21 +515,21 @@
         <!-- Two Handed -->
         <string id="93kpWTwA" text="Двуручное" original="Two Handed"/>
         <!-- Polearm -->
-        <string id="PWibGbJ4" text="Древковое оружие" original="Polearm"/>
+        <string id="PWibGbJ4" text="Древковое" original="Polearm"/>
         <!-- Ranged -->
         <string id="oidnJJjF" text="Дальний бой" original="Ranged"/>
         <!-- Bow -->
         <string id="HW64G8xr" text="Лук" original="Bow"/>
         <!-- Throwing -->
-        <string id="yR8vmGlW" text="Метание" original="Throwing"/>
+        <string id="yR8vmGlW" text="Метательное" original="Throwing"/>
         <!-- Crossbow -->
         <string id="UG5KpbT7" text="Арбалет" original="Crossbow"/>
         <!-- Movement -->
         <string id="tVQs3vuO" text="Движение" original="Movement"/>
         <!-- Riding -->
-        <string id="14Unsmk1" text="Верховая езда" original="Riding"/>
+        <string id="14Unsmk1" text="Езда верхом" original="Riding"/>
         <!-- Athletics -->
-        <string id="4zlH32Z5" text="Атлетика" original="Athletics"/>
+        <string id="4zlH32Z5" text="Атлетичность" original="Athletics"/>
         <!-- Support -->
         <string id="AZD2nxRg" text="Поддержка" original="Support"/>
         <!-- Scouting -->
@@ -537,7 +537,7 @@
         <!-- Trade -->
         <string id="ijZZGbRE" text="Торговля" original="Trade"/>
         <!-- Steward -->
-        <string id="CQqpGRtH" text="Стюард" original="Steward"/>
+        <string id="CQqpGRtH" text="Управление" original="Steward"/>
         <!-- Medicine -->
         <string id="X6rHMhsQ" text="Медицина" original="Medicine"/>
         <!-- Engineering -->
@@ -545,7 +545,7 @@
         <!-- Personal -->
         <string id="eYTQ1TD7" text="Личное" original="Personal"/>
         <!-- Crafting -->
-        <string id="PrE6W0WX" text="Ремесло" original="Crafting"/>
+        <string id="PrE6W0WX" text="Кузнечное дело" original="Crafting"/>
         <!-- Tactics -->
         <string id="BfNX6sak" text="Тактика" original="Tactics"/>
         <!-- Roguery -->
@@ -556,7 +556,7 @@
         <string id="4684bsD7" text="Лидерство" original="Leadership"/>
         <!-- EquipmentType -->
         <!-- None -->
-        <string id="rMIAZRoT" text="Отсутствуют" original="None"/>
+        <string id="rMIAZRoT" text="Ничего" original="None"/>
         <!-- Dagger -->
         <string id="2gjNbpQI" text="Кинжал" original="Dagger"/>
         <!-- One Handed Sword -->
@@ -576,9 +576,9 @@
         <!-- Two Handed Lance -->
         <string id="6fEElc9f" text="Двуручное копье" original="Two Handed Lance"/>
         <!-- One Handed Glaive -->
-        <string id="ICcCZnli" text="Одноручная глефа" original="One Handed Glaive"/>
+        <string id="ICcCZnli" text="Одноручное древковое" original="One Handed Glaive"/>
         <!-- Two Handed Glaive -->
-        <string id="KpYZoZE9" text="Двуручная глефа" original="Two Handed Glaive"/>
+        <string id="KpYZoZE9" text="Двуручное древковое" original="Two Handed Glaive"/>
         <!-- Bow -->
         <string id="HKYDdm9S" text="Лук" original="Bow"/>
         <!-- Crossbow -->
