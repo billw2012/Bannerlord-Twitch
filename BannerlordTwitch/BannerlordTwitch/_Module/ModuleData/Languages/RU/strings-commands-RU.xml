@@ -7,7 +7,7 @@
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- stats -->
         <!-- Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue. -->
-        <string id="JiMaaypq" text="Показывает общую информацию о вашем герое, включая клан, золото, местоположение, здоровье, навыки, атрибуты и свиту." original="Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue."/>
+        <string id="JiMaaypq" text="Показывает общую информацию о вашем герое, включая клан, золото, местоположение, HP, навыки, атрибуты и свиту." original="Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue."/>
         <!-- show stats -->
         <string id="tIVnWwGG" text="показать статистику" original="show stats"/>
         <!-- stats -->
@@ -16,7 +16,7 @@
         <!-- Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage. -->
         <string id="JneYk4pF" text="Показывает инвентарь вашего героя, включая уровень снаряжения, полный список боевого и гражданского снаряжения, а также все пользовательские предметы в хранилище." original="Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage."/>
         <!-- show equipment -->
-        <string id="oVNKTdOy" text="показать оборудование" original="show equipment"/>
+        <string id="oVNKTdOy" text="показать снаряжение" original="show equipment"/>
         <!-- inv -->
         <string id="UbklIEGh" text="инв" original="inv"/>
         <!-- equip -->
@@ -59,7 +59,7 @@
         <!-- retinue list -->
         <string id="ysbFV5uT" text="список свиты" original="retinue list"/>
         <!-- retinuelist -->
-        <string id="kG6yjBBR" text="перекличка" original="retinuelist"/>
+        <string id="kG6yjBBR" text="списоксвиты" original="retinuelist"/>
         <!-- adopt -->
         <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
         <string id="MpvqvKef" text="Получите героя в игре. Почти все остальные действия требуют наличия усыновленного героя." original="Get a hero in game. Almost all other actions require an adopted hero."/>

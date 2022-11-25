@@ -25,7 +25,7 @@
         <!-- Skills -->
         <string id="5gVLi7NA" text="Навыки" original="Skills"/>
         <!--  ■ -->
-        <string id="aG3roJj3" text="■" original=" ■"/>
+        <string id="aG3roJj3" text=" ■" original=" ■"/>
         <!-- Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}! -->
         <string id="fuwuk4bR" text="Недостаточно {GoldIcon}: надо {NeededGold}{GoldIcon}, есть {HaveGold}{GoldIcon}!" original="Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!"/>
         <!-- Common Phrases -->
@@ -117,15 +117,15 @@
         <!-- Properties to change, and how much by -->
         <string id="ZKN8fZsA" text="Свойства, которые нужно изменить, и на сколько" original="Properties to change, and how much by"/>
         <!-- Skills -->
-        <string id="iPI9zoqR" text="Навыки и умения" original="Skills"/>
+        <string id="iPI9zoqR" text="Навыки" original="Skills"/>
         <!-- Skills to change, and how much by (these aren't compatible with Apply To Mount) -->
         <string id="PanMmDx9" text="Навыки, которые нужно изменить, и в какой степени (они не совместимы с Apply To Mount)" original="Skills to change, and how much by (these aren't compatible with Apply To Mount)"/>
         <!-- Scale {ScalePercent}% -->
         <string id="EkKFoK73" text="Масштаб {ScalePercent}%" original="Scale {ScalePercent}%"/>
         <!-- (on mount) -->
-        <string id="l7w0bPt0" text="(на горе)" original="(on mount)"/>
+        <string id="l7w0bPt0" text="(на верховом)" original="(on mount)"/>
         <!-- Mount {ScalePercent}% normal size -->
-        <string id="qhIXgPGK" text="Установить {ScalePercent}% нормального размера" original="Mount {ScalePercent}% normal size"/>
+        <string id="qhIXgPGK" text="Верховое {ScalePercent}% нормального размера" original="Mount {ScalePercent}% normal size"/>
         <!-- {ScalePercent}% normal size -->
         <string id="yLT1lfRC" text="{ScalePercent}% нормальный размер" original="{ScalePercent}% normal size"/>
         <!-- DocumentationHelpers -->
@@ -148,9 +148,9 @@
         <!-- Armor Head -->
         <string id="oUgW3q7p" text="Броня Голова" original="Armor Head"/>
         <!-- Armor Torso -->
-        <string id="NYoNwE3R" text="Броня торса" original="Armor Torso"/>
+        <string id="NYoNwE3R" text="Броня Торса" original="Armor Torso"/>
         <!-- Armor Legs -->
-        <string id="VKAAkKbm" text="Доспехи Ноги" original="Armor Legs"/>
+        <string id="VKAAkKbm" text="Броня Ноги" original="Armor Legs"/>
         <!-- Armor Arms -->
         <string id="dzqBXvaS" text="Броня Оружие" original="Armor Arms"/>
         <!-- Armor Encumbrance -->
@@ -168,7 +168,7 @@
         <!-- Mount Difficulty -->
         <string id="9mYdZQI8" text="Сложность крепления" original="Mount Difficulty"/>
         <!-- Mount Maneuver -->
-        <string id="EaenR5S2" text="Mount Maneuver" original="Mount Maneuver"/>
+        <string id="EaenR5S2" text="Верховая маневренность" original="Mount Maneuver"/>
         <!-- Mount Speed -->
         <string id="NJpg1RsS" text="Скорость передвижения" original="Mount Speed"/>
         <!-- Horse Archery Ability -->
@@ -202,10 +202,10 @@
         <!-- AI Attack Chance -->
         <string id="vIjQ6b5w" text="Шанс атаки ИИ" original="AI Attack Chance"/>
         <!-- AI Kick -->
-        <string id="FgSI5C4F" text="AI Kick" original="AI Kick"/>
+        <string id="FgSI5C4F" text="ИИ пинок" original="AI Kick"/>
         <!-- EquipmentType -->
         <!-- None -->
-        <string id="i7XX56i9" text="Никто" original="None"/>
+        <string id="i7XX56i9" text="Ничего" original="None"/>
         <!-- Dagger -->
         <string id="5HQtHOg4" text="Кинжал" original="Dagger"/>
         <!-- One Handed Sword -->
@@ -229,11 +229,11 @@
         <!-- Two Handed Glaive -->
         <string id="BcmE6Y75" text="Двуручная глефа" original="Two Handed Glaive"/>
         <!-- Bow -->
-        <string id="rroxl8j3" text="Поклон" original="Bow"/>
+        <string id="rroxl8j3" text="Лук" original="Bow"/>
         <!-- Crossbow -->
         <string id="CztMY8ZE" text="Арбалет" original="Crossbow"/>
         <!-- Arrows -->
-        <string id="DYYyhDUI" text="Стрелки" original="Arrows"/>
+        <string id="DYYyhDUI" text="Стрелкы" original="Arrows"/>
         <!-- Bolts -->
         <string id="i281jKBH" text="Болты" original="Bolts"/>
         <!-- Throwing Knives -->
@@ -300,13 +300,13 @@
         <!-- BLT Overlay -->
         <string id="fmjzDasd" text="BLT Overlay" original="BLT Overlay"/>
         <!-- For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again. -->
-        <string id="Kgi2isWy" text="Для работы BLT Overlay Browser Source для работы ему необходимо зарезервировать порт {Port} и разрешить его через брандмауэр Windows. \ NЭто требует прав администратора, которые будут запрошены после того, как вы нажмете Ok. \ NВ случае успеха вы не увидите этого снова всплывающее окно." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
+        <string id="Kgi2isWy" text="Для работы BLT Overlay Browser Source для работы ему необходимо зарезервировать порт {Port} и разрешить его через брандмауэр Windows.\nЭто требует прав администратора, которые будут запрошены после того, как вы нажмете Ok.\nВ случае успеха вы не увидите этого снова всплывающее окно." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
         <!-- Okay -->
         <string id="yXwMSbr4" text="Хорошо" original="Okay"/>
         <!-- Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window. -->
-        <string id="6ucf05tp" text="Конфигурация выполнена успешно! \ NТеперь вы можете получить доступ к оверлею по адресу {UrlRoot}. \ NВы можете снова найти эту ссылку на вкладке &amp;quot;Авторизация&amp;quot; в окне настройки BLT." original="Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."/>
+        <string id="6ucf05tp" text="Конфигурация выполнена успешно!\nТеперь вы можете получить доступ к оверлею по адресу {UrlRoot}.\nВы можете снова найти эту ссылку на вкладке Авторизация в окне настройки BLT." original="Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."/>
         <!-- Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord. -->
-        <string id="usADfORe" text="Ошибка конфигурации: \ n \ &amp;quot;{e.Message} \&amp;quot; \ nВозможно, у вас нет доступа к оверлею. \ NСообщите об этой проблеме в Discord." original="Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord."/>
+        <string id="usADfORe" text="Ошибка конфигурации:\n\&quot;{e.Message}\&quot;\nВозможно, у вас нет доступа к оверлею.\nСообщите об этой проблеме в Discord." original="Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord."/>
         <!-- ActionBase -->
         <!-- Whether this is enabled or not -->
         <string id="YM1rP7sP" text="Включено это или нет" original="Whether this is enabled or not"/>
@@ -323,7 +323,7 @@
         <!-- Respond In Twitch -->
         <string id="86rc4cz6" text="Ответить в Twitch" original="Respond In Twitch"/>
         <!-- Respond In Overlay -->
-        <string id="0MgBhdtw" text="Ответить в оверлее" original="Respond In Overlay"/>
+        <string id="0MgBhdtw" text="Ответить в Оверлее" original="Respond In Overlay"/>
         <!-- Handler -->
         <string id="dteVl09D" text="Обработчик" original="Handler"/>
         <!-- Handler Config -->
@@ -336,7 +336,7 @@
         <string id="ctAF1ghX" text="Руководство Bannerlord Twitch Viewer" original="Bannerlord Twitch Viewer Guide"/>
         <!-- Introduction -->
         <!-- Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to &apos;adopt&apos; a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include &apos;summoning&apos; your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes &apos;class&apos;.&lt;br&gt;If you aren&apos;t sure where to start, begin by using the channel point redemption &apos;Adopt a Hero&apos;. -->
-        <string id="rElL5v6I" text="Bannerlord Twitch (BLT) - это мод интеграции Twitch для Mount &amp;amp; Blade II: Bannerlord.&lt;br&gt; В качестве зрителя вы можете использовать награды в виде баллов за канал (если они доступны) и команды чата, чтобы взаимодействовать с игрой во время игры стримера.&lt;br&gt; Основная особенность BLT - это возможность «усыновить» героя в игре, то есть персонаж в игре будет назначен вам с учетом вашего имени Twitch и будет доступен для дальнейшего взаимодействия.&lt;br&gt; Некоторые примеры того, что вы можете делать со своим героем, включают «вызов» своего героя в битвах, в которых принимает участие стример, участие в турнирах зрителей, обновление оборудования, выбор класса героев.&lt;br&gt; Если вы не знаете, с чего начать, начните с использования погашения баллов канала «Принять героя»." original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
+        <string id="rElL5v6I" text="Bannerlord Twitch (BLT) - это мод интеграции Twitch для Mount &amp;amp; Blade II: Bannerlord.&lt;br&gt; В качестве зрителя вы можете использовать награды в виде баллов за канал (если они доступны) и команды чата, чтобы взаимодействовать с игрой во время игры стримера.&lt;br&gt; Основная особенность BLT - это возможность «усыновить» героя в игре, то есть персонаж в игре будет назначен вам с учетом вашего имени Twitch и будет доступен для дальнейшего взаимодействия.&lt;br&gt; Некоторые примеры того, что вы можете делать со своим героем, включают «вызов» своего героя в битвах, в которых принимает участие стример, участие в турнирах зрителей, обновление снаряжения, выбор класса героев.&lt;br&gt; Если вы не знаете, с чего начать, начните с использования погашения баллов канала «Принять героя»." original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
         <!-- Command -->
         <!-- Bot command definition -->
         <string id="8SbGSWFY" text="Определение команды бота" original="Bot command definition"/>

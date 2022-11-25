@@ -7,7 +7,7 @@
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- ActivePowerGroupItem -->
         <!-- Active Power Group Item -->
-        <string id="4xEkPMIy" text="Элемент группы активной мощности" original="Active Power Group Item"/>
+        <string id="4xEkPMIy" text="Предмет группы активной мощности" original="Active Power Group Item"/>
         <!-- Power -->
         <string id="HGDApoLL" text="Власть" original="Power"/>
         <!-- ActivePowerGroup -->

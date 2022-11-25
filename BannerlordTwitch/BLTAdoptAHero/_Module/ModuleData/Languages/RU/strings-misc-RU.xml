@@ -17,7 +17,7 @@
         <!-- Notification Text -->
         <string id="guJFFskH" text="Текст уведомления" original="Notification Text"/>
         <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement. -->
-        <string id="SwIUyQNw" text="Текст, который будет отображаться, когда достижение будет получено, и когда игрок перечислит свои достижения. Заполнители: [viewer] для имени зрителей, и [name] для названия достижения." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
+        <string id="SwIUyQNw" text="Текст, который будет отображаться, когда достижение будет получено, и когда игрок перечислит свои достижения. Заполнить: [viewer] для имени зрителей, и [name] для названия достижения." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
         <!-- Requirements -->
         <string id="TfwiBMGr" text="Требования" original="Requirements"/>
         <!-- Gold Gain -->
@@ -25,9 +25,9 @@
         <!-- Gold awarded for gaining this achievement. -->
         <string id="l0xBVhOe" text="За получение этого достижения награждается золото." original="Gold awarded for gaining this achievement."/>
         <!-- XP Gain -->
-        <string id="JShqb5Be" text="Награда опыта" original="XP Gain"/>
+        <string id="JShqb5Be" text="Награда XP" original="XP Gain"/>
         <!-- Experience awarded for gaining this achievement. -->
-        <string id="tx7YV26l" text="За получение этого достижения награждается опыт." original="Experience awarded for gaining this achievement."/>
+        <string id="tx7YV26l" text="За получение этого достижения награждается XP." original="Experience awarded for gaining this achievement."/>
         <!-- Give Item Reward -->
         <string id="OmwtPK7J" text="Дать предмет в награду" original="Give Item Reward"/>
         <!-- Whether to give a custom item as reward (defined below) -->
@@ -201,7 +201,7 @@
         <!-- Notification Text -->
         <string id="RQh3jIZW" text="Текст уведомления" original="Notification Text"/>
         <!-- Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required. -->
-        <string id="04wTH1xo" text="Текст, который отображается, когда достигается серия убийств. Заполнители: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] для требуемых убийств." original="Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required."/>
+        <string id="04wTH1xo" text="Текст, который отображается, когда достигается серия убийств. Заполнить: [viewer] для имени зрителя, и [name] для названия Серии Убийств, и [kills] для требуемых убийств." original="Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required."/>
         <!-- Kills Required -->
         <string id="mG7HzT0z" text="Требуются убийства" original="Kills Required"/>
         <!-- Kills required to achieve the kill streak. -->
@@ -211,13 +211,13 @@
         <!-- Gold rewarded when the kill streak is achieved. -->
         <string id="CYg79sAT" text="Золото награждается, когда достигается серия убийств." original="Gold rewarded when the kill streak is achieved."/>
         <!-- XP Reward -->
-        <string id="vzCgh9PN" text="Награда опыта" original="XP Reward"/>
+        <string id="vzCgh9PN" text="Награда XP" original="XP Reward"/>
         <!-- Experience granted when the kill streak is achieved. -->
-        <string id="Q1TcztBP" text="Опыт даётся, когда достигается серия убийств." original="Experience granted when the kill streak is achieved."/>
+        <string id="Q1TcztBP" text="XP даётся, когда достигается серия убийств." original="Experience granted when the kill streak is achieved."/>
         <!-- New Kill Streak -->
         <string id="KtvBk2nR" text="Новая серия убийств" original="New Kill Streak"/>
         <!-- [viewer] got [name] ([kills] kills) -->
-        <string id="ipowOInD" text="[viewer] got [name] ([kills] убийств)" original="[viewer] got [name] ([kills] kills)"/>
+        <string id="ipowOInD" text="[viewer] получил [name] ([kills] убийств)" original="[viewer] got [name] ([kills] kills)"/>
         <!-- {KillsRequired} kills -->
         <string id="YZJ60Pxb" text="{KillsRequired} убийств" original="{KillsRequired} kills"/>
         <!-- SummonHero.FormationItemSource -->
@@ -281,7 +281,7 @@
         <!-- Reward Tier -->
         <string id="Mmd0UleC" text="Уровень награды" original="Reward Tier"/>
         <!-- Custom Item -->
-        <string id="zVqTKyQG" text="Пользовательский элемент" original="Custom Item"/>
+        <string id="zVqTKyQG" text="Пользовательский предмет" original="Custom Item"/>
         <!-- Weapon Weight -->
         <string id="7yNTThry" text="Вес оружия" original="Weapon Weight"/>
         <!-- Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo. -->
@@ -331,9 +331,9 @@
         <!-- The % chance for each reward tier -->
         <string id="ANPeZyy0" text="% Шанс для каждого уровня награды" original="The % chance for each reward tier"/>
         <!-- Custom Item Name -->
-        <string id="PBWEbYLT" text="Имя настраиваемого элемента" original="Custom Item Name"/>
+        <string id="PBWEbYLT" text="Имя настраиваемого предмета" original="Custom Item Name"/>
         <!-- Name format for custom item, {ITEMNAME} is the placeholder for the base item name. -->
-        <string id="vqNeCCNy" text="Формат имени для настраиваемого элемента, {ITEMNAME} - это название базового элемента." original="Name format for custom item, {ITEMNAME} is the placeholder for the base item name."/>
+        <string id="vqNeCCNy" text="Формат имени для настраиваемого предмета, {ITEMNAME} - это название базового предмета." original="Name format for custom item, {ITEMNAME} is the placeholder for the base item name."/>
         <!-- Custom Item Power -->
         <string id="THpMPPhd" text="Сила настраиваемого предмета" original="Custom Item Power"/>
         <!-- Custom item power multiplier, applies on top of the global multiplier -->
