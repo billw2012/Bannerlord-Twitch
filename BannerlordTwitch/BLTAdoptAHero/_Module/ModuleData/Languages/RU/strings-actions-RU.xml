@@ -116,9 +116,9 @@
         <!-- {OldName} is now known as {NewName}! -->
         <string id="K7nuJVCN" text="{OldName} теперь известно как {NewName}!" original="{OldName} is now known as {NewName}!"/>
         <!-- {OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})! -->
-        <string id="PAc5S0GY" text="{OldName} теперь известен как {NewName}, у них {NewGold} (наследует {Inherited})!" original="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})!"/>
+        <string id="PAc5S0GY" text="{OldName} теперь известен как {NewName}, у вас {NewGold} (наследует {Inherited})!" original="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})!"/>
         <!-- {OldName} is now known as {NewName}, they have {NewGold}! -->
-        <string id="lANBKEFN" text="{OldName} теперь известен как {NewName}, у них есть {NewGold}!" original="{OldName} is now known as {NewName}, they have {NewGold}!"/>
+        <string id="lANBKEFN" text="{OldName} теперь известен как {NewName}, у вас {NewGold}!" original="{OldName} is now known as {NewName}, they have {NewGold}!"/>
         <!-- AttributePoints -->
         <!-- Add Attribute Points -->
         <string id="TmUJ8VU7" text="Добавить очки атрибутов" original="Add Attribute Points"/>
@@ -369,7 +369,7 @@
         <!-- Tracked stats -->
         <string id="Xmo7pOpj" text="Отслеживаемая статистика" original="Tracked stats"/>
         <!-- Powers -->
-        <string id="xVDOsWPq" text="Полномочия" original="Powers"/>
+        <string id="xVDOsWPq" text="Силы" original="Powers"/>
         <!-- Shows -->
         <string id="UB1bAtSI" text="Показывает" original="Shows"/>
         <!-- No Class -->
@@ -543,9 +543,9 @@
         <!-- You cannot change class, as a mission is active! -->
         <string id="70vJ1jxZ" text="Вы не можете сменить класс, так как миссия активна!" original="You cannot change class, as a mission is active!"/>
         <!-- Provide class name -->
-        <string id="prmHmdGE" text="Укажите название класса" original="Provide class name"/>
+        <string id="prmHmdGE" text="Укажите название класса из" original="Provide class name"/>
         <!-- changed class to {ClassName} -->
-        <string id="giUCnkf2" text="изменил курс на {ClassName}" original="changed class to {ClassName}"/>
+        <string id="giUCnkf2" text="изменил класс на {ClassName}" original="changed class to {ClassName}"/>
         <!-- SkillXP -->
         <!-- Skill XP -->
         <string id="mpdzqyCK" text="XP навыков" original="Skill XP"/>

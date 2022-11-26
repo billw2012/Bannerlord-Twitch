@@ -162,17 +162,17 @@
         <!-- Use Horse -->
         <string id="MdYmGuin" text="Использовать лошадь" original="Use Horse"/>
         <!-- Whether to allow horse (can be combined with Use Camel) -->
-        <string id="Q00NX1J9" text="Разрешить ли лошадь (можно комбинировать с Use Camel)" original="Whether to allow horse (can be combined with Use Camel)"/>
+        <string id="Q00NX1J9" text="Разрешить ли лошадь (можно комбинировать с Использовать лошадь)" original="Whether to allow horse (can be combined with Use Camel)"/>
         <!-- Use Camel -->
-        <string id="1YsQ2fC3" text="Используйте Camel" original="Use Camel"/>
+        <string id="1YsQ2fC3" text="Использовать верблюд" original="Use Camel"/>
         <!-- Whether to allow camel (can be combined with Use Horse -->
-        <string id="Us7G1v2T" text="Разрешить ли верблюд (можно комбинировать с Use Horse" original="Whether to allow camel (can be combined with Use Horse"/>
+        <string id="Us7G1v2T" text="Разрешить ли верблюд (можно комбинировать с Использовать верблюд" original="Whether to allow camel (can be combined with Use Horse"/>
         <!-- Passive Power -->
         <string id="MvddFKo4" text="Пассивная сила" original="Passive Power"/>
         <!-- Passive hero power: this will always apply to the hero (i.e. a permanent buff) -->
         <string id="F8a2nXYo" text="Пассивная сила героя: всегда будет применяться к герою (т.е. постоянный бафф)" original="Passive hero power: this will always apply to the hero (i.e. a permanent buff)"/>
         <!-- Active Power -->
-        <string id="wdCMNOGd" text="Активная мощность" original="Active Power"/>
+        <string id="wdCMNOGd" text="Активная сила" original="Active Power"/>
         <!-- Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff) -->
         <string id="I4ASwveG" text="Активная сила героя: эта способность срабатывает только тогда, когда действие UseHeroPower используется зрителем через награду или команду (то есть временный бафф)." original="Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff)"/>
         <!-- Horse -->
@@ -274,7 +274,7 @@
         <!-- Betting is CLOSED -->
         <string id="PLRsZCjL" text="Ставки ЗАКРЫТЫ" original="Betting is CLOSED"/>
         <!-- Not taking bets -->
-        <string id="Sv04YKsL" text="Не принимать ставки" original="Not taking bets"/>
+        <string id="Sv04YKsL" text="Ставки не принимаются" original="Not taking bets"/>
         <!-- GeneratedRewardDef -->
         <!-- Reward Type -->
         <string id="x6pmNHJT" text="Тип награды" original="Reward Type"/>

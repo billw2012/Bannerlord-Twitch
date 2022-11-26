@@ -63,11 +63,11 @@
         <!-- Retribution III -->
         <string id="bS76hE3e" text="Возмездие III" original="Retribution III"/>
         <!-- Fleet Footed I -->
-        <string id="FQKNvxVG" text="Флотские ногиI" original="Fleet Footed I"/>
+        <string id="FQKNvxVG" text="Флотские ноги I" original="Fleet Footed I"/>
         <!-- Fleet Footed II -->
-        <string id="rgQDzX4f" text="Флотские ногиII" original="Fleet Footed II"/>
+        <string id="rgQDzX4f" text="Флотские ноги II" original="Fleet Footed II"/>
         <!-- Fleet Footed III -->
-        <string id="f7L0oLCQ" text="Флотские ногиIII" original="Fleet Footed III"/>
+        <string id="f7L0oLCQ" text="Флотские ноги III" original="Fleet Footed III"/>
         <!-- Charge I -->
         <string id="39yFtbp2" text="Заряд I" original="Charge I"/>
         <!-- Charge II -->
@@ -81,7 +81,7 @@
         <!-- Better Mount III -->
         <string id="CVmPJOB4" text="Лучший наездник III" original="Better Mount III"/>
         <!-- Imposing Mount -->
-        <string id="tv2vTde5" text="Внушительное крепление" original="Imposing Mount"/>
+        <string id="tv2vTde5" text="Внушительное верховое" original="Imposing Mount"/>
         <!-- Imposing -->
         <string id="fFProg8j" text="Внушительный" original="Imposing"/>
         <!-- Explosive Projectiles I -->
@@ -97,11 +97,11 @@
         <!-- Fireblade III -->
         <string id="VGqA25nN" text="Огненный клинок III" original="Fireblade III"/>
         <!-- Charge AoE I -->
-        <string id="R8u1d7M6" text="Заряд AoE I" original="Charge AoE I"/>
+        <string id="R8u1d7M6" text="Столкновение AoE I" original="Charge AoE I"/>
         <!-- Charge AoE II -->
-        <string id="lO56Rq9E" text="Заряд AoE II" original="Charge AoE II"/>
+        <string id="lO56Rq9E" text="Столкновение AoE II" original="Charge AoE II"/>
         <!-- Charge AoE III -->
-        <string id="X5LQvC0o" text="Заряд AoE III" original="Charge AoE III"/>
+        <string id="X5LQvC0o" text="Столкновение AoE III" original="Charge AoE III"/>
         <!-- Ranger I -->
         <string id="7XNfzok8" text="Рейнджер I" original="Ranger I"/>
         <!-- Ranger II -->
@@ -133,17 +133,17 @@
         <!-- Cut Through III -->
         <string id="R537vuN0" text="Прорезать III" original="Cut Through III"/>
         <!-- Shatter Shield I -->
-        <string id="89ezJ7aW" text="Расколотый щит I" original="Shatter Shield I"/>
+        <string id="89ezJ7aW" text="Раскол щита I" original="Shatter Shield I"/>
         <!-- Shatter Shield II -->
-        <string id="Dvjkoxi3" text="Раскол Щит II" original="Shatter Shield II"/>
+        <string id="Dvjkoxi3" text="Раскол щита II" original="Shatter Shield II"/>
         <!-- Shatter Shield III -->
-        <string id="V6RyPIQg" text="Расколотый щит III" original="Shatter Shield III"/>
+        <string id="V6RyPIQg" text="Раскол щита III" original="Shatter Shield III"/>
         <!-- Shrug Off I -->
-        <string id="oyKzNISD" text="Отброс I" original="Shrug Off I"/>
+        <string id="oyKzNISD" text="Стойкость I" original="Shrug Off I"/>
         <!-- Shrug Off II -->
-        <string id="zNj3xNd4" text="Отброс II" original="Shrug Off II"/>
+        <string id="zNj3xNd4" text="Стойкость II" original="Shrug Off II"/>
         <!-- Shrug Off III -->
-        <string id="5nsSdwel" text="Отброс III" original="Shrug Off III"/>
+        <string id="5nsSdwel" text="Стойкость III" original="Shrug Off III"/>
         <!-- Athletic I -->
         <string id="b3DBwSTA" text="Атлетик I" original="Athletic I"/>
         <!-- Athletic II -->

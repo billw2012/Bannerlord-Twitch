@@ -12,11 +12,11 @@
         <!-- Adds 100,000 gold to your adopted hero. -->
         <string id="Hbk74nei" text="Добавляет 100,000 золота вашему приемному герою." original="Adds 100,000 gold to your adopted hero."/>
         <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue). -->
-        <string id="nI4dr4uZ" text="Используйте это, когда стример вступает в бой, чтобы вызвать вашего принятого героя на стороне стримеров (вместе со своей свитой)." original="Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue)."/>
+        <string id="nI4dr4uZ" text="Используйте это, когда стример вступает в бой, чтобы вызвать вашего принятого героя на стороне стримера (вместе со своей свитой)." original="Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue)."/>
         <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue). -->
         <string id="flQofEFu" text="Используйте это, когда стример вступает в бой, чтобы вызвать вашего принятого героя на стороне врага (вместе со своей свитой)." original="Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue)."/>
         <!-- Heals the streamers character in battle, over time. Doesn't work on the campaign map. -->
-        <string id="zLxgvsYd" text="С течением времени лечит персонажа стримеров в бою. Не работает на карте кампании." original="Heals the streamers character in battle, over time. Doesn't work on the campaign map."/>
+        <string id="zLxgvsYd" text="Лечит персонажа стримера в бою, в течении времени. Не работает на карте кампании." original="Heals the streamers character in battle, over time. Doesn't work on the campaign map."/>
         <!-- Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament. -->
         <string id="KaE947T9" text="Присоединяйтесь к очереди на турнир со своим приемным героем. Вы можете увидеть очередь в оверлее. В каждом турнире может участвовать до 16 героев, после его заполнения другие герои останутся в очереди на следующий турнир." original="Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament."/>
         <!-- Sends a message in the game. If you have a hero then it will also show them next to the message. -->
@@ -26,11 +26,11 @@
         <!-- Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment. -->
         <string id="ZfhTuaRR" text="Добавьте 50,000 XP своему усыновленному герою. Навык, к которому он применяется, будет выбран случайным образом, но на него будет влиять ваш класс, а также существующие навыки и снаряжение." original="Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment."/>
         <!-- Heals your hero over time. Only works in battle, when your hero is summoned. -->
-        <string id="pFwSBHnR" text="Со временем лечит вашего героя. Работает только в бою, когда ваш герой вызван." original="Heals your hero over time. Only works in battle, when your hero is summoned."/>
+        <string id="pFwSBHnR" text="Лечит вашего героя в течение времени. Работает только в бою, когда ваш герой вызван." original="Heals your hero over time. Only works in battle, when your hero is summoned."/>
         <!-- Transfer 10,000 gold to the streamers character, from your hero. -->
         <string id="CSmE7Y50" text="Передайте 10,000 золота персонажу стримеров от своего героя." original="Transfer 10,000 gold to the streamers character, from your hero."/>
         <!-- Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay. -->
-        <string id="LO6Q2DCb" text="Активируйте силу своего класса на своем герое, если она у вас есть. Электропитания хватит на ограниченный период времени, указанный на накладке." original="Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay."/>
+        <string id="LO6Q2DCb" text="Активируйте силу класса на своем герое, если он у вас есть. Сила будет действовать в течение ограниченного периода времени, показанного в оверлее." original="Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay."/>
         <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
         <string id="kL65xglO" text="Получите героя в игре. Практически все остальные действия требуют усыновленного героя." original="Get a hero in game. Almost all other actions require an adopted hero."/>
         <!-- Add 10,000 gold to your adopted hero -->
@@ -42,7 +42,7 @@
         <!-- Your adopted hero joins the enemies side in battle -->
         <string id="ry25StNF" text="Ваш приемный герой присоединяется к врагу в битве" original="Your adopted hero joins the enemies side in battle"/>
         <!-- Heal the streamer over time -->
-        <string id="a8DqM6AY" text="Исцелить стример со временем" original="Heal the streamer over time"/>
+        <string id="a8DqM6AY" text="Лечить стримера в течении времени" original="Heal the streamer over time"/>
         <!-- Join the tournament queue with your adopted hero -->
         <string id="ODfWfHln" text="Присоединяйтесь к очереди на турнир со своим приемным героем" original="Join the tournament queue with your adopted hero"/>
         <!-- Enter Message -->

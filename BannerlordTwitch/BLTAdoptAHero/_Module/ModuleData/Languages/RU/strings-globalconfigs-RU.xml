@@ -164,11 +164,11 @@
         <string id="F6vM1OJo" text="Общая конфигурация" original="Common Config"/>
         <!-- GlobalHeroClassConfig -->
         <!-- Class Config -->
-        <string id="3rL4RHje" text="Конфигурация класса" original="Class Config"/>
+        <string id="3rL4RHje" text="Конфигурация Класса" original="Class Config"/>
         <!-- Class Definitions -->
-        <string id="462kHfn2" text="Определения классов" original="Class Definitions"/>
+        <string id="462kHfn2" text="Определения Классов" original="Class Definitions"/>
         <!-- Defined classes -->
-        <string id="NFjlVt57" text="Определенные классы" original="Defined classes"/>
+        <string id="NFjlVt57" text="Определенные Классы" original="Defined classes"/>
         <!-- Class Level Requirements -->
         <string id="Q0yTbTCT" text="Требования к уровню класса" original="Class Level Requirements"/>
         <!-- Requirements for class levels -->
@@ -179,24 +179,24 @@
         <string id="7WLbMjpz" text="(требований нет)" original="(no requirements)"/>
         <!-- GlobalHeroPowerConfig -->
         <!-- Power Config -->
-        <string id="v75UOuDM" text="Конфигурация питания" original="Power Config"/>
+        <string id="v75UOuDM" text="Конфигурация Силы" original="Power Config"/>
         <!-- Power Defs -->
-        <string id="9vUtdRu2" text="Защита от силы" original="Power Defs"/>
+        <string id="9vUtdRu2" text="Определения Силы" original="Power Defs"/>
         <!-- Defined powers -->
-        <string id="ymGZUjoU" text="Определенные полномочия" original="Defined powers"/>
+        <string id="ymGZUjoU" text="Определенные Силы" original="Defined powers"/>
         <!-- Disable Powers In Tournaments -->
-        <string id="5CD7bmuC" text="Отключить полномочия в турнирах" original="Disable Powers In Tournaments"/>
+        <string id="5CD7bmuC" text="Отключить Силы в Турнирах" original="Disable Powers In Tournaments"/>
         <!-- Whether powers are disabled in a tournament -->
-        <string id="K7uKtO90" text="Отключены ли способности в турнире" original="Whether powers are disabled in a tournament"/>
+        <string id="K7uKtO90" text="Отключены ли силы в турнире" original="Whether powers are disabled in a tournament"/>
         <!-- GlobalTournamentConfig -->
         <!-- Tournament Config -->
-        <string id="AkDCrLgg" text="Конфигурация турнира" original="Tournament Config"/>
+        <string id="AkDCrLgg" text="Конфигурация Турнира" original="Tournament Config"/>
         <!-- Equipment -->
         <string id="i7ZDVTaw" text="Снаряжение" original="Equipment"/>
         <!-- Balancing -->
         <string id="Zwh9GYUE" text="Балансировка" original="Balancing"/>
         <!-- Round Type -->
-        <string id="KOIu6Q7d" text="Круглый Тип" original="Round Type"/>
+        <string id="KOIu6Q7d" text="Тип рауда" original="Round Type"/>
         <!-- Start Health Multiplier -->
         <string id="P1ZCMZbp" text="Начальный множитель здоровья" original="Start Health Multiplier"/>
         <!-- Disable Kill Rewards In Tournament -->
@@ -206,7 +206,7 @@
         <!-- No Horses -->
         <string id="bBipANlh" text="Без лошадей" original="No Horses"/>
         <!-- No Spears -->
-        <string id="CYVy4Hhx" text="Нет копья" original="No Spears"/>
+        <string id="CYVy4Hhx" text="Нет копьям" original="No Spears"/>
         <!-- Normalize Armor -->
         <string id="Ed55OyZ5" text="Нормализовать броню" original="Normalize Armor"/>
         <!-- Normalize Armor Tier -->
@@ -242,9 +242,9 @@
         <!-- Round 2 Rewards -->
         <string id="gQ9YX7my" text="Награды за 2 раунд" original="Round 2 Rewards"/>
         <!-- Round 3 Rewards -->
-        <string id="17pTC7NS" text="Награды за 3-й раунд" original="Round 3 Rewards"/>
+        <string id="17pTC7NS" text="Награды за 3 раунд" original="Round 3 Rewards"/>
         <!-- Round 4 Rewards -->
-        <string id="pxMWYe5J" text="Награды за 4-й раунд" original="Round 4 Rewards"/>
+        <string id="pxMWYe5J" text="Награды за 4 раунд" original="Round 4 Rewards"/>
         <!-- Participate XP -->
         <string id="5vMTYqdu" text="XP за участие" original="Participate XP"/>
         <!-- Prize -->
@@ -278,7 +278,7 @@
         <!-- Applies skill debuffs to previous tournament winners -->
         <string id="FrloGGew" text="Применяет дебаффы навыков к предыдущим победителям турниров" original="Applies skill debuffs to previous tournament winners"/>
         <!-- Allow the vanilla round setup -->
-        <string id="nfYBftnO" text="Разрешить ванильную круглую настройку" original="Allow the vanilla round setup"/>
+        <string id="nfYBftnO" text="Разрешить настройку ванильного раунда" original="Allow the vanilla round setup"/>
         <!-- Allow 1 match with 2 teams of 2 -->
         <string id="t9yLB8gB" text="Разрешить 1 матч с 2 командами по 2" original="Allow 1 match with 2 teams of 2"/>
         <!-- Allow 1 match with 2 teams of 4 -->

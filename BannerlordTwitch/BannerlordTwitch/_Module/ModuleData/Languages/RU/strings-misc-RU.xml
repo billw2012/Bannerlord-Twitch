@@ -52,7 +52,7 @@
         <!-- Costs -->
         <string id="r7sc3Tvg" text="Расходы" original="Costs"/>
         <!-- None -->
-        <string id="FNK3LD2p" text="Никто" original="None"/>
+        <string id="FNK3LD2p" text="Никого" original="None"/>
         <!-- Enabled -->
         <string id="kpv03CqK" text="Включено" original="Enabled"/>
         <!-- Disabled -->
@@ -194,9 +194,9 @@
         <!-- Thrust Or Ranged Ready Speed Multiplier -->
         <string id="xxkAFaWD" text="Множитель скорости тяги или дальнобойной готовности" original="Thrust Or Ranged Ready Speed Multiplier"/>
         <!-- AI Shoot Frequency -->
-        <string id="iaxxNiiV" text="Частота съемки AI" original="AI Shoot Frequency"/>
+        <string id="iaxxNiiV" text="Частота выстрелов AI" original="AI Shoot Frequency"/>
         <!-- AI Wait Before Shoot Factor -->
-        <string id="3HlCPScr" text="Фактор ожидания перед съемкой AI" original="AI Wait Before Shoot Factor"/>
+        <string id="3HlCPScr" text="Фактор ожидания перед выстрелом ИИ" original="AI Wait Before Shoot Factor"/>
         <!-- AI Block Chance -->
         <string id="7xW74SvW" text="Шанс блокировки ИИ" original="AI Block Chance"/>
         <!-- AI Attack Chance -->
@@ -428,7 +428,7 @@
         <string id="vBtkF25N" text="Введите !help для получения списка команд" original="Type !help for command list"/>
         <!-- OneShotParticleEffectItemSource -->
         <!-- (none) -->
-        <string id="a8ibMIfH" text="(никто)" original="(none)"/>
+        <string id="a8ibMIfH" text="(ничего)" original="(none)"/>
         <!-- Medium size explosion -->
         <string id="AOpeOmby" text="Взрыв среднего размера" original="Medium size explosion"/>
         <!-- Small explosion -->
