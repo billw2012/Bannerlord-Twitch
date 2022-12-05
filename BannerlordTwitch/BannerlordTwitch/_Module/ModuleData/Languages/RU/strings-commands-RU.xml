@@ -11,7 +11,7 @@
         <!-- show stats -->
         <string id="tIVnWwGG" text="показать статистику" original="show stats"/>
         <!-- stats -->
-        <string id="J2AqvpeF" text="статистика" original="stats"/>
+        <string id="J2AqvpeF" text="стат" original="stats"/>
         <!-- inv -->
         <!-- Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage. -->
         <string id="JneYk4pF" text="Показывает инвентарь вашего героя, включая уровень снаряжения, полный список боевого и гражданского снаряжения, а также все пользовательские предметы в хранилище." original="Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage."/>
@@ -25,7 +25,7 @@
         <!-- upgrade equipment -->
         <string id="vTo0NowP" text="улучшить снаряжение" original="upgrade equipment"/>
         <!-- equip -->
-        <string id="wHqxd4kb" text="снаряжение" original="equip"/>
+        <string id="wHqxd4kb" text="снаряга" original="equip"/>
         <!-- Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford. -->
         <string id="zxAVjOW6" text="Покупает новые войска свиты или повышает уровень существующих войск до следующего уровня, если вы достигли предела. Свита будет появляться вместе с вами в бою, когда вы ее вызываете, и зарабатывать вам деньги, когда они совершают убийства. Вы можете передать команде число, чтобы указать, сколько войск вы хотите купить или обновить. По умолчанию их будет столько, сколько вы можете себе позволить." original="Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford."/>
         <!-- upgrade retinue -->
@@ -45,7 +45,7 @@
         <!-- reroll equipment -->
         <string id="3KYGJ0Mu" text="перебросить снаряжение" original="reroll equipment"/>
         <!-- reequip -->
-        <string id="fGfTaAoD" text="переснарядиться" original="reequip"/>
+        <string id="fGfTaAoD" text="новаяснаряга" original="reequip"/>
         <!-- gold -->
         <!-- Show your heroes current gold. -->
         <string id="eWI5oDce" text="Показать текущее золото вашего героя." original="Show your heroes current gold."/>
