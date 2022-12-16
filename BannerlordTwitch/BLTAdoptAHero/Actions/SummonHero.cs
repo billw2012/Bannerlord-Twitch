@@ -10,9 +10,13 @@ using BannerlordTwitch.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
 using SandBox;
-using SandBox.Source.Missions.Handlers;
+using SandBox.Missions.AgentBehaviors;
+using SandBox.Missions.MissionLogics;
+using SandBox.Missions.MissionLogics.Arena;
+using SandBox.Tournaments.MissionLogics;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.SandBox;
+using TaleWorlds.CampaignSystem.Party;
+using TaleWorlds.CampaignSystem.Settlements.Locations;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -85,12 +89,18 @@ namespace BLTAdoptAHero
              LocDescription("{=NZTRYcGV}Can summon in the hideout missions"), 
              PropertyOrder(7), UsedImplicitly]
             public bool AllowHideOut { get; set; }
-            
+
             [LocDisplayName("{=i59Fm8zV}On Player Side"),
              LocCategory("General", "{=C5T5nnix}General"), 
              LocDescription("{=S86V5s0C}Whether the hero is on the player or enemy side"), 
              PropertyOrder(1), UsedImplicitly]
             public bool OnPlayerSide { get; set; }
+            
+            [LocDisplayName("{=WrEr2Ovi}Allow When Depleted"),
+             LocCategory("General", "{=C5T5nnix}General"), 
+             LocDescription("{=K0vIkJBp}Whether this summon is allowed when no vanilla troops are left, only applies to battles and sieges"), 
+             PropertyOrder(2), UsedImplicitly]
+            public bool AllowWhenDepleted { get; set; }
             
             [LocDisplayName("{=HOZnxjGb}Gold Cost"),
              LocCategory("General", "{=C5T5nnix}General"), 
@@ -152,12 +162,11 @@ namespace BLTAdoptAHero
             MissionAgentHandler instance,
             LocationCharacter locationCharacter,
             MatrixFrame spawnPointFrame,
-            bool hasTorch,
             bool noHorses);
 
         private static readonly MissionAgentHandler_SpawnWanderingAgentDelegate MissionAgentHandler_SpawnWanderingAgent 
             = (MissionAgentHandler_SpawnWanderingAgentDelegate) AccessTools.Method(typeof(MissionAgentHandler),
-                    "SpawnWanderingAgent", new[] {typeof(LocationCharacter), typeof(MatrixFrame), typeof(bool), typeof(bool)})
+                    "SpawnWanderingAgent", new[] {typeof(LocationCharacter), typeof(MatrixFrame), typeof(bool)})
                 .CreateDelegate(typeof(MissionAgentHandler_SpawnWanderingAgentDelegate));
         
         private delegate MatrixFrame ArenaPracticeFightMissionController_GetSpawnFrameDelegate(
@@ -307,12 +316,17 @@ namespace BLTAdoptAHero
                 onFailure("{=YMiZAluP}You cannot be summoned, you are already here!");
                 return;
             }
-            
+            var missionAgentHandler = Mission.Current.GetMissionBehavior<MissionAgentHandler>();
+            if(missionAgentHandler.Mission.MainAgent == null)
+            {
+                onFailure("{=YMiZAluP}You cannot be summoned, player is not there!");
+                return;
+            }
+
             var locationCharacter = LocationCharacter.CreateBodyguardHero(adoptedHero,
                 MobileParty.MainParty,
                 SandBoxManager.Instance.AgentBehaviorManager.AddBodyguardBehaviors);
 
-            var missionAgentHandler = Mission.Current.GetMissionBehavior<MissionAgentHandler>();
             var worldFrame = missionAgentHandler.Mission.MainAgent.GetWorldFrame();
             worldFrame.Origin.SetVec2(worldFrame.Origin.AsVec2 + (worldFrame.Rotation.f * 10f + worldFrame.Rotation.s).AsVec2);
 
@@ -323,7 +337,7 @@ namespace BLTAdoptAHero
             {
                 var controller = Mission.Current.GetMissionBehavior<ArenaPracticeFightMissionController>();
                 var pos = ArenaPracticeFightMissionController_GetSpawnFrame(controller, false, false);
-                agent = MissionAgentHandler_SpawnWanderingAgent(missionAgentHandler, locationCharacter, pos, false, true);
+                agent = MissionAgentHandler_SpawnWanderingAgent(missionAgentHandler, locationCharacter, pos, true);
                 var _participantAgents = (List<Agent>)AccessTools
                     .Field(typeof(ArenaPracticeFightMissionController), "_participantAgents")
                     .GetValue(controller);
@@ -432,6 +446,16 @@ namespace BLTAdoptAHero
             {
                 onFailure("{=kyUh29ij}{CoolDown}s cooldown remaining"
                     .Translate(("CoolDown", heroSummonState.CooldownRemaining.ToString("0"))));
+                return;
+            }
+
+            var team = settings.OnPlayerSide ? Mission.Current.PlayerTeam : Mission.Current.PlayerEnemyTeam;
+            
+            // If all agents in all ally teams are adopted heroes then the team is depleted 
+            if(!settings.AllowWhenDepleted && team.QuerySystem?.AllyTeams?
+                   .All(t => t.Team?.ActiveAgents?.All(a => a?.IsAdopted() == true) == true) == true) 
+            {
+                onFailure("{=JuJSYmP2}You cannot be summoned, your side is depleted!".Translate());
                 return;
             }
 
@@ -566,7 +590,7 @@ namespace BLTAdoptAHero
                     replaceExisting: false
                 );
 
-                heroSummonState = BLTSummonBehavior.Current.AddHeroSummonState(adoptedHero, settings.OnPlayerSide, party, summon: true);
+                heroSummonState = BLTSummonBehavior.Current.AddHeroSummonState(adoptedHero, settings.OnPlayerSide, party, forced: false);
             }
 
             if (settings.OnPlayerSide)
@@ -578,15 +602,13 @@ namespace BLTAdoptAHero
                 adoptedHero.CharacterObject.IsMounted && BLTSummonBehavior.ShouldBeMounted(formationClass));
 
             // Some random stuff that is required to ensure caches are updated
-            var expireFn = AccessTools.Method(typeof(TeamQuerySystem), "Expire");
-            foreach (var team in Mission.Current.Teams)
+            foreach (var t in Mission.Current.Teams)
             {
-                expireFn.Invoke(team.QuerySystem, new object[] { }); // .Expire();
+                t.QuerySystem.Expire();
             }
             foreach (var formation in Mission.Current.Teams.SelectMany(t => t.Formations))
             {
-                AccessTools.Field(typeof(Formation), "GroupSpawnIndex")
-                    .SetValue(formation, 0); //formation2.GroupSpawnIndex = 0;
+                formation.GroupSpawnIndex = 0;
             }
 
             // Finished
@@ -623,27 +645,27 @@ namespace BLTAdoptAHero
                     && (s.SiegeDefend || !doingSiegeDefend));
         }
 
-        // Modified KillAgentCheat (usually Ctrl+F4 in debug mode) that can actually kill sometimes instead of only knock out.
-        // For testing death mechanics
-        // ReSharper disable once UnusedMember.Local
-        private static void KillAgentCheat(Agent agent)
-        {
-            var blow = new Blow(Mission.Current.MainAgent?.Index ?? agent.Index)
-            {
-                DamageType = DamageTypes.Pierce,
-                BoneIndex = agent.Monster.HeadLookDirectionBoneIndex,
-                Position = agent.Position,
-                BaseMagnitude = 2000f,
-                InflictedDamage = 2000,
-                SwingDirection = agent.LookDirection,
-                Direction = agent.LookDirection,
-                DamageCalculated = true,
-                VictimBodyPart = BoneBodyPartType.Head,
-                WeaponRecord = new () { AffectorWeaponSlotOrMissileIndex = -1 }
-            };
-            blow.Position.z += agent.GetEyeGlobalHeight();
-            agent.RegisterBlow(blow);
-        }
+        // // Modified KillAgentCheat (usually Ctrl+F4 in debug mode) that can actually kill sometimes instead of only knock out.
+        // // For testing death mechanics
+        // // ReSharper disable once UnusedMember.Local
+        // private static void KillAgentCheat(Agent agent)
+        // {
+        //     var blow = new Blow(Mission.Current.MainAgent?.Index ?? agent.Index)
+        //     {
+        //         DamageType = DamageTypes.Pierce,
+        //         BoneIndex = agent.Monster.HeadLookDirectionBoneIndex,
+        //         Position = agent.Position,
+        //         BaseMagnitude = 2000f,
+        //         InflictedDamage = 2000,
+        //         SwingDirection = agent.LookDirection,
+        //         Direction = agent.LookDirection,
+        //         DamageCalculated = true,
+        //         VictimBodyPart = BoneBodyPartType.Head,
+        //         WeaponRecord = new () { AffectorWeaponSlotOrMissileIndex = -1 }
+        //     };
+        //     blow.Position.z += agent.GetEyeGlobalHeight();
+        //     agent.RegisterBlow(blow);
+        // }
         
         [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(MissionAgentSpawnLogic), nameof(MissionAgentSpawnLogic.IsSideDepleted))]
         // ReSharper disable once RedundantAssignment

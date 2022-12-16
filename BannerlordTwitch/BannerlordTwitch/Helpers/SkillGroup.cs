@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Localization;
 using TaleWorlds.Core;
-using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BannerlordTwitch.Helpers
 {

@@ -1,7 +1,4 @@
-﻿using System.Windows;
-using Xceed.Wpf.Toolkit;
-using Xceed.Wpf.Toolkit.PropertyGrid;
-using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
+﻿using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace BLTConfigure.UI
 {

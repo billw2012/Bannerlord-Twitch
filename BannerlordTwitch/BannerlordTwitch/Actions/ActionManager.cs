@@ -263,7 +263,7 @@ namespace BannerlordTwitch.Rewards
             if (st.ElapsedMilliseconds > 5)
             {
                 Log.Info("{=yo8Yw3Mz}Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow!"
-                    .Translate(("RewardId", rewardId), ("TimeInMS", st.ElapsedMilliseconds)));
+                    .Translate(("RewardId", rewardId), ("TimeInMS", st.ElapsedMilliseconds.ToString())));
             }
 
             return true;

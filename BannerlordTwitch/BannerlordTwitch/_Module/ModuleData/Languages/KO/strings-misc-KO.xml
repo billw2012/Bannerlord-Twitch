@@ -401,10 +401,10 @@
         <!-- The cooldown in seconds, defaults to unlimited -->
         <string id="yJRKVszb" text="재사용 대기시간(초), 기본값은 무제한" original="The cooldown in seconds, defaults to unlimited"/>
         <!-- TwitchService -->
-        <!-- Usage: !{cmd.Name} {args} -->
-        <string id="JSW1ryNl" text="사용법: !{cmd.Name} {args}" original="Usage: !{cmd.Name} {args}"/>
-        <!-- Usage: {args} -->
-        <string id="mdhbHYNM" text="사용법: {args}" original="Usage: {args}"/>
+        <!-- Usage: !{Name} {Args} -->
+        <string id="JSW1ryNl" text="사용법: !{Name} {Args}" original="Usage: !{Name} {Args}"/>
+        <!-- Usage: {Args} -->
+        <string id="mdhbHYNM" text="사용법: {Args}" original="Usage: {Args}"/>
         <!-- Commands:  -->
         <string id="luOJS8dL" text="명령:" original="Commands: "/>
         <!-- Also see Channel Point Rewards -->

@@ -16,8 +16,8 @@
         <string id="nLaRVBVV" text="Nuovo traguardo" original="New Achievement"/>
         <!-- Notification Text -->
         <string id="guJFFskH" text="Testo di notifica" original="Notification Text"/>
-        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement. -->
-        <string id="SwIUyQNw" text="Testo che verrà visualizzato quando l'obiettivo viene raggiunto e quando il giocatore elenca i propri obiettivi. Segnaposto: {viewer} for the viewers name, and {name} per il nome dell'obiettivo." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement."/>
+        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement. -->
+        <string id="SwIUyQNw" text="Testo che verrà visualizzato quando l'obiettivo viene raggiunto e quando il giocatore elenca i propri obiettivi. Segnaposto: [viewer] for the viewers name, and [name] per il nome dell'obiettivo." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
         <!-- Requirements -->
         <string id="TfwiBMGr" text="Requisiti" original="Requirements"/>
         <!-- Gold Gain -->
@@ -200,8 +200,8 @@
         <string id="poe8m8rn" text="Mostra notifica" original="Show Notification"/>
         <!-- Notification Text -->
         <string id="RQh3jIZW" text="Testo di notifica" original="Notification Text"/>
-        <!-- Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required. -->
-        <string id="04wTH1xo" text="Testo che viene visualizzato quando viene raggiunta la serie di uccisioni. Segnaposto: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} per le uccisioni richieste." original="Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required."/>
+        <!-- Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required. -->
+        <string id="04wTH1xo" text="Testo che viene visualizzato quando viene raggiunta la serie di uccisioni. Segnaposto: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] per le uccisioni richieste." original="Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required."/>
         <!-- Kills Required -->
         <string id="mG7HzT0z" text="Uccisioni richieste" original="Kills Required"/>
         <!-- Kills required to achieve the kill streak. -->
@@ -216,8 +216,8 @@
         <string id="Q1TcztBP" text="Esperienza concessa quando viene raggiunta la serie di uccisioni." original="Experience granted when the kill streak is achieved."/>
         <!-- New Kill Streak -->
         <string id="KtvBk2nR" text="Nuova serie di uccisioni" original="New Kill Streak"/>
-        <!-- {viewer} got {name} ({kills} kills) -->
-        <string id="ipowOInD" text="{viewer} got {name} ({kills} uccisioni)" original="{viewer} got {name} ({kills} kills)"/>
+        <!-- [viewer] got [name] ([kills] kills) -->
+        <string id="ipowOInD" text="[viewer] got [name] ([kills] uccisioni)" original="[viewer] got [name] ([kills] kills)"/>
         <!-- {KillsRequired} kills -->
         <string id="YZJ60Pxb" text="{KillsRequired} uccide" original="{KillsRequired} kills"/>
         <!-- SummonHero.FormationItemSource -->

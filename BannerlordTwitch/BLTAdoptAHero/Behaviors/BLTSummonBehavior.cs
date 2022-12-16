@@ -5,6 +5,8 @@ using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Util;
 using HarmonyLib;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.AgentOrigins;
+using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
@@ -53,7 +55,15 @@ namespace BLTAdoptAHero
         public HeroSummonState GetHeroSummonStateForRetinue(Agent retinueAgent) 
             => heroSummonStates.FirstOrDefault(h => h.Retinue.Any(r => r.Agent == retinueAgent));
 
-        public HeroSummonState AddHeroSummonState(Hero hero, bool playerSide, PartyBase party, bool summon = false)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hero"></param>
+        /// <param name="playerSide"></param>
+        /// <param name="party"></param>
+        /// <param name="forced">Whether the player chose to summon, or was part of the battle without choosing it. This affects what statistics will be updated, so streaks etc. aren't broken</param>
+        /// <returns></returns>
+        public HeroSummonState AddHeroSummonState(Hero hero, bool playerSide, PartyBase party, bool forced)
         {
             var heroSummonState = new HeroSummonState
             {
@@ -64,12 +74,7 @@ namespace BLTAdoptAHero
             };
             heroSummonStates.Add(heroSummonState);
             
-            // Don't increase participation count when not summoned or a player companion: 
-            // it will mess up peoples streaks outside of their control
-            if (summon || hero.IsPlayerCompanion)
-            {
-                BLTAdoptAHeroCampaignBehavior.Current.IncreaseParticipationCount(hero, playerSide);
-            }
+            BLTAdoptAHeroCampaignBehavior.Current.IncreaseParticipationCount(hero, playerSide, forced);
 
             return heroSummonState;
         }
@@ -92,7 +97,8 @@ namespace BLTAdoptAHero
                                        && agent.Team != null 
                                        && Mission.PlayerTeam?.IsValid == true
                                        && agent.Team.IsFriendOf(Mission.PlayerTeam),
-                                       adoptedHero.GetMapEventParty());
+                                       adoptedHero.GetMapEventParty(), 
+                                       forced: true);
                 
                 // First spawn, so spawn retinue also
                 if (heroSummonState.TimesSummoned == 0 && RetinueAllowed())
@@ -240,24 +246,21 @@ namespace BLTAdoptAHero
             }
         }
 
-        public static Agent SpawnAgent(bool onPlayerSide, CharacterObject troop, PartyBase party, bool spawnWithHorse)
+        public static Agent SpawnAgent(bool onPlayerSide, CharacterObject troop, PartyBase party, bool spawnWithHorse, bool isReinforcement = false)
         {
             var agent = Mission.Current.SpawnTroop(
                 new PartyAgentOrigin(party, troop)
                 , isPlayerSide: onPlayerSide
                 , hasFormation: true
                 , spawnWithHorse: spawnWithHorse
-                , isReinforcement: true
-                , enforceSpawningOnInitialPoint: false
+                , isReinforcement: isReinforcement
                 , formationTroopCount: 1
                 , formationTroopIndex: 0
                 , isAlarmed: true
                 , wieldInitialWeapons: true
-#if !e159 && !e1510 && !e160 && !e161
                 , forceDismounted: false
                 , initialPosition: null
                 , initialDirection: null
-#endif
             );
             agent.MountAgent?.FadeIn();
             agent.FadeIn();

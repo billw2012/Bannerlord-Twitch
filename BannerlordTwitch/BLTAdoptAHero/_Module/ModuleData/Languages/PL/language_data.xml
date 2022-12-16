@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="Polski">
+  <LanguageFile xml_path="PL/strings-actions-PL.xml" />
+  <LanguageFile xml_path="PL/strings-behaviors-PL.xml" />
+  <LanguageFile xml_path="PL/strings-default-shouts-PL.xml" />
+  <LanguageFile xml_path="PL/strings-globalconfigs-PL.xml" />
+  <LanguageFile xml_path="PL/strings-misc-PL.xml" />
+  <LanguageFile xml_path="PL/strings-powers-PL.xml" />
+</LanguageData>

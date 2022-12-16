@@ -3,7 +3,6 @@ using System.ComponentModel;
 using BannerlordTwitch.Localization;
 using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
-using YamlDotNet.Serialization;
 
 namespace BannerlordTwitch
 {

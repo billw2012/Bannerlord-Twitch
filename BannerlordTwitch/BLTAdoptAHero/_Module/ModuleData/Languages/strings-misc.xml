@@ -20,8 +20,8 @@
 
         <!-- Notification Text -->
         <string id="guJFFskH" text="Notification Text"/>
-        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement. -->
-        <string id="SwIUyQNw" text="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement."/>
+        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement. -->
+        <string id="SwIUyQNw" text="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
         
         <!-- Requirements -->
         <string id="TfwiBMGr" text="Requirements"/>
@@ -217,8 +217,8 @@
         <string id="poe8m8rn" text="Show Notification"/>
         <!-- Notification Text -->
         <string id="RQh3jIZW" text="Notification Text"/>
-        <!-- Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required. -->
-        <string id="04wTH1xo" text="Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required."/>
+        <!-- Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required. -->
+        <string id="04wTH1xo" text="Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required."/>
         <!-- Kills Required -->
         <string id="mG7HzT0z" text="Kills Required"/>
         <!-- Kills required to achieve the kill streak. -->
@@ -233,8 +233,8 @@
         <string id="Q1TcztBP" text="Experience granted when the kill streak is achieved."/>
         <!-- New Kill Streak -->
         <string id="KtvBk2nR" text="New Kill Streak"/>
-        <!-- {viewer} got {name} ({kills} kills) -->
-        <string id="ipowOInD" text="{viewer} got {name} ({kills} kills)"/>
+        <!-- [viewer] got [name] ([kills] kills) -->
+        <string id="ipowOInD" text="[viewer] got [name] ([kills] kills)"/>
         <!-- {KillsRequired} kills -->
         <string id="YZJ60Pxb" text="{KillsRequired} kills"/>
 

@@ -56,27 +56,37 @@ namespace BLTAdoptAHero.Achievements
         public List<Guid> Achievements { get; set; } = new();
 
         // Update class and total stats together
-        public void UpdateValue(Statistic type, Guid classId, int amount)
+        public void UpdateValue(Statistic type, Guid classId, int amount, bool forced = false)
         {
             TotalStats.AddInt(type, amount);
             ClassStats.AddInt((classId, type), amount);
 
+            // Here we update the consecutive streak, optionally resetting if the viewer is switching sides.
+            // If the summon/attack is forced (i.e. the viewer hero was already in the battle parties) then we don't
+            // change the consecutive stats if it would cause a reset.
+            void UpdateStatPair(Statistic stat, Statistic otherStat)
+            {
+                if (!forced || TotalStats[otherStat] == 0)
+                {
+                    TotalStats.AddInt(stat, amount);
+                    TotalStats[otherStat] = 0;
+                }
+                if (!forced || ClassStats[(classId, otherStat)] == 0)
+                {
+                    ClassStats.AddInt((classId, stat), amount);
+                    ClassStats[(classId, otherStat)] = 0;
+                }
+            }
+
             if (type is Statistic.Summons)
             {
-                TotalStats.AddInt(Statistic.ConsecutiveSummons, amount);
-                ClassStats.AddInt((classId, Statistic.ConsecutiveSummons), amount);
-                // Reset consecutive attacks, now that hero summoned
-                TotalStats[Statistic.ConsecutiveAttacks] = 0;
-                ClassStats[(classId, Statistic.ConsecutiveAttacks)] = 0;
+                UpdateStatPair(Statistic.ConsecutiveAttacks, Statistic.ConsecutiveSummons);
             }
             else if (type is Statistic.Attacks)
             {
-                TotalStats.AddInt(Statistic.ConsecutiveAttacks, amount);
-                ClassStats.AddInt((classId, Statistic.ConsecutiveAttacks), amount);
-                // Reset consecutive summons, now that hero attacked
-                TotalStats[Statistic.ConsecutiveSummons] = 0;
-                ClassStats[(classId, Statistic.ConsecutiveSummons)] = 0;
+                UpdateStatPair(Statistic.ConsecutiveSummons, Statistic.ConsecutiveAttacks);
             }
+            
             if (type is Statistic.Summons or Statistic.Attacks)
             {
                 TotalStats.AddInt(Statistic.Battles, amount);

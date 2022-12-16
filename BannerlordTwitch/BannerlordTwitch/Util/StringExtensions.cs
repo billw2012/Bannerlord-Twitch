@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using BannerlordTwitch.Localization;
-using TaleWorlds.Localization;
 
 namespace BannerlordTwitch.Util
 {

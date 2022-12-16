@@ -11,8 +11,7 @@ using BannerlordTwitch.Rewards;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
-using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.SandBox.Source.TournamentGames;
+using TaleWorlds.CampaignSystem.TournamentGames;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using YamlDotNet.Serialization;
 

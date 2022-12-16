@@ -1,6 +1,4 @@
-﻿using System.Windows;
-using BannerlordTwitch.UI;
-using BannerlordTwitch.Util;
+﻿using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 

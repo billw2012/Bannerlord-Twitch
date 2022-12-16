@@ -10,7 +10,6 @@ using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Powers;
 using JetBrains.Annotations;
-using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {

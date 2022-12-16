@@ -28,9 +28,9 @@ namespace BLTAdoptAHero.Actions.Util
         public LocString Name { get; set; } = "{=KtvBk2nR}New Kill Streak";
         
         [LocDisplayName("{=RQh3jIZW}Notification Text"),
-         LocDescription("{=04wTH1xo}Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required."), 
+         LocDescription("{=04wTH1xo}Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required."), 
          PropertyOrder(4), UsedImplicitly]
-        public LocString NotificationText { get; set; } = "{=ipowOInD}{viewer} got {name} ({kills} kills)";
+        public LocString NotificationText { get; set; } = "{=ipowOInD}[viewer] got [name] ([kills] kills)";
         
         [LocDisplayName("{=mG7HzT0z}Kills Required"),
          LocDescription("{=mLElTwb6}Kills required to achieve the kill streak."), 

@@ -1,5 +1,4 @@
 ﻿using TaleWorlds.CampaignSystem;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace BannerlordTwitch.Helpers

@@ -16,8 +16,7 @@
         <string id="nLaRVBVV" text="新成就" original="New Achievement"/>
         <!-- Notification Text -->
         <string id="guJFFskH" text="通知文本" original="Notification Text"/>
-        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement. -->
-        <string id="SwIUyQNw" text="当获得成就和玩家列出他们的成就时将显示的文本。占位符：{viewer} for the viewers name, and {name} 表示成就的名称。" original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement."/>
+        <string id="SwIUyQNw" text="当获得成就和玩家列出他们的成就时将显示的文本。占位符：[viewer] for the viewers name, and [name] 表示成就的名称。" original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
         <!-- Requirements -->
         <string id="TfwiBMGr" text="要求" original="Requirements"/>
         <!-- Gold Gain -->
@@ -200,8 +199,8 @@
         <string id="poe8m8rn" text="显示通知" original="Show Notification"/>
         <!-- Notification Text -->
         <string id="RQh3jIZW" text="通知文本" original="Notification Text"/>
-        <!-- Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required. -->
-        <string id="04wTH1xo" text="实现连续杀戮时显示的文本。占位符：{viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} 表示需要的杀戮。" original="Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required."/>
+        <!-- Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required. -->
+        <string id="04wTH1xo" text="实现连续杀戮时显示的文本。占位符：[viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] 表示需要的杀戮。" original="Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required."/>
         <!-- Kills Required -->
         <string id="mG7HzT0z" text="需要击杀" original="Kills Required"/>
         <!-- Kills required to achieve the kill streak. -->
@@ -216,8 +215,8 @@
         <string id="Q1TcztBP" text="实现连续杀戮时授予经验。" original="Experience granted when the kill streak is achieved."/>
         <!-- New Kill Streak -->
         <string id="KtvBk2nR" text="新连杀" original="New Kill Streak"/>
-        <!-- {viewer} got {name} ({kills} kills) -->
-        <string id="ipowOInD" text="{viewer} got {name} ({kills} 杀）" original="{viewer} got {name} ({kills} kills)"/>
+        <!-- [viewer] got [name] ([kills] kills) -->
+        <string id="ipowOInD" text="[viewer] got [name] ([kills] 杀）" original="[viewer] got [name] ([kills] kills)"/>
         <!-- {KillsRequired} kills -->
         <string id="YZJ60Pxb" text="{KillsRequired} 杀" original="{KillsRequired} kills"/>
         <!-- SummonHero.FormationItemSource -->

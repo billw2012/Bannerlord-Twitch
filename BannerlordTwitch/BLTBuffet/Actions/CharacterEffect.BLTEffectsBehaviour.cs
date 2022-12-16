@@ -37,7 +37,7 @@ namespace BLTBuffet
                     agent.Health = Math.Min(agent.HealthLimit, agent.Health + Math.Abs(config.HealPerSecond) * dt);
                 }
 
-                if(config.DamagePerSecond != 0 && !agent.Invulnerable && !Mission.DisableDying)
+                if(config.DamagePerSecond != 0 && agent.CurrentMortalityState == Agent.MortalityState.Mortal && Mission.Current?.DisableDying != true)
                 {
                     var blow = new Blow(agent.Index)
                     {
@@ -45,17 +45,19 @@ namespace BLTBuffet
                         //blow.BlowFlag |= BlowFlags.KnockDown;
                         //blow.BlowFlag = BlowFlags.CrushThrough;
                         BlowFlag = BlowFlags.ShrugOff,
-                        BoneIndex = agent.Monster.ThoraxLookDirectionBoneIndex,
+                        BoneIndex = 0,
                         Position = agent.Position,
                         // blow.Position.z += agent.GetEyeGlobalHeight();
-                        BaseMagnitude = 0f,
-                        WeaponRecord = new() { AffectorWeaponSlotOrMissileIndex = -1 },
+                        //BaseMagnitude = 0f,
+                        //WeaponRecord = new() { AffectorWeaponSlotOrMissileIndex = -1 },
                         InflictedDamage = (int) Math.Abs(config.DamagePerSecond * dt),
                         SwingDirection = agent.LookDirection.NormalizedCopy(),
                         Direction = agent.LookDirection.NormalizedCopy(),
                         DamageCalculated = true
                     };
-                    agent.RegisterBlow(blow);
+                    blow.BaseMagnitude = blow.InflictedDamage;
+                    blow.WeaponRecord.FillAsMeleeBlow(null, null, -1, 0);
+                    agent.RegisterBlow(blow, AgentHelpers.CreateCollisionDataFromBlow(agent, agent, blow));
                 }
 
                 if (config.ForceDropWeapons)
@@ -154,15 +156,14 @@ namespace BLTBuffet
                 return beh;
             }
 
-            public void ApplyHitDamage(Agent attackerAgent, Agent victimAgent,
-                ref AttackCollisionData attackCollisionData)
+            public void ApplyHitDamage(Agent attackerAgent, Agent victimAgent, ref AttackCollisionData attackCollisionData)
             {
                 try
                 {
                     float[] hitDamageMultipliers = agentEffectsActive
                         .Where(e => ReferenceEquals(e.Key, attackerAgent))
                         .SelectMany(e => e.Value
-                            .Select(f => f.config.DamageMultiplier ?? 0)
+                            .Select(f => f?.config?.DamageMultiplier ?? 0)
                             .Where(f => f != 0)
                         )
                         .ToArray();

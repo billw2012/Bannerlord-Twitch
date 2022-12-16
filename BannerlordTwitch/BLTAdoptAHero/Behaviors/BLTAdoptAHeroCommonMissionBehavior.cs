@@ -4,11 +4,11 @@ using System.Linq;
 using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
-using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.UI;
 using HarmonyLib;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Encounters;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -137,7 +137,8 @@ namespace BLTAdoptAHero
                 {
                     lastTickT = CampaignHelpers.GetApplicationTime();
 
-                    foreach (var h in activeHeroes)
+                    // Take a copy of the array so we can remove items from activeHeroes in UpdateHeroVM
+                    foreach (var h in activeHeroes.ToList())
                     {
                         UpdateHeroVM(h);
                     }
@@ -292,11 +293,11 @@ namespace BLTAdoptAHero
                     && currKillStreak.ShowNotification 
                     && !LocString.IsNullOrEmpty(currKillStreak.NotificationText))
                 {
-                    string message = currKillStreak.NotificationText.ToString(
-                        ("{viewer}", hero.FirstName.ToString()),
-                        ("{player}", hero.FirstName.ToString()),
-                        ("{kills}",currKillStreak.KillsRequired.ToString()),
-                        ("{name}",currKillStreak.Name));
+                    string message = currKillStreak.NotificationText.ToString()
+                        .Replace("[viewer]", hero.FirstName.ToString())
+                        .Replace("[kills]", currKillStreak.KillsRequired.ToString())
+                        .Replace("[name]", currKillStreak.Name.ToString())
+                        ;
                     Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
                 }
                 ApplyStreakEffects(hero, currKillStreak.GoldReward, currKillStreak.XPReward,
@@ -346,6 +347,7 @@ namespace BLTAdoptAHero
             if (shouldRemove)
             {
                 MissionInfoHub.Remove(hero.FirstName.Raw());
+                activeHeroes.Remove(hero);
             }
             else
             {

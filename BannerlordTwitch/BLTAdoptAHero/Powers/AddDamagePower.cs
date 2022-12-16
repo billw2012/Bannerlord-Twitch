@@ -200,8 +200,7 @@ namespace BLTAdoptAHero.Powers
 		        return;
 	        }
 
-	        // We remove the shield when its a missile hit, as it won't be checked for removal
-	        ApplyShatterShieldChance(victimAgent, ref missileHitParams.collisionData, removeShield: true);
+	        ApplyShatterShieldChance(victimAgent, ref missileHitParams.collisionData);
 	        
             // Disabling unblockable for missiles for now as it is quite complicated
     	    // if (UnblockableChance != 0 && MBRandom.RandomFloat < UnblockableChance)
@@ -220,8 +219,7 @@ namespace BLTAdoptAHero.Powers
 		        return;
 	        }
 
-	        // We don't remove the shield for melee hit, as it will crash if we do
-	        ApplyShatterShieldChance(victimAgent, ref meleeHitParams.collisionData, removeShield: false);
+	        ApplyShatterShieldChance(victimAgent, ref meleeHitParams.collisionData);
         }
         
         private void OnPostDoMeleeHit(Agent attackerAgent, Agent victimAgent, 
@@ -238,7 +236,7 @@ namespace BLTAdoptAHero.Powers
 	        }
         }
 
-        private void ApplyShatterShieldChance(Agent victimAgent, ref AttackCollisionData collisionData, bool removeShield)
+        private void ApplyShatterShieldChance(Agent victimAgent, ref AttackCollisionData collisionData)
         {
 	        if (collisionData.AttackBlockedWithShield 
                 && ShatterShieldChancePercent != 0 
@@ -247,11 +245,6 @@ namespace BLTAdoptAHero.Powers
 		        // just makes sure any missile that hit the shield disappears
 		        collisionData.IsShieldBroken = true;
                 
-                // Hopefully this isn't needed in 161
-                #if e159 || e1510 || e160
-		        AttackCollisionData.UpdateDataForShieldPenetration(ref collisionData);
-                #endif
-
 		        var (element, slotIndex) = victimAgent.Equipment
 			        .YieldFilledSlots()
 			        .FirstOrDefault(s => s.element.IsShield());
@@ -260,11 +253,10 @@ namespace BLTAdoptAHero.Powers
 			        OneShotEffect.Trigger("psys_game_shield_break", "event:/mission/combat/shield/broken",
 				        victimAgent.AgentVisuals.GetGlobalFrame()
 				        * victimAgent.AgentVisuals.GetSkeleton()
-					        .GetBoneEntitialFrame(Game.Current.HumanMonster.OffHandItemBoneIndex)
+					        .GetBoneEntitialFrame(victimAgent.Monster.OffHandItemBoneIndex)
 			        );
-
+			        // Set hit-points to 0, so the hit will always destroy the shield
 			        victimAgent.ChangeWeaponHitPoints(slotIndex, 0);
-			        if(removeShield) victimAgent.RemoveEquippedWeapon(slotIndex);
 		        }
 	        }
         }
@@ -403,8 +395,8 @@ namespace BLTAdoptAHero.Powers
 		        BlowFlag = hitBehavior.AddFlags(agent, BlowFlags.None),
                 WeaponRecord = new () { AffectorWeaponSlotOrMissileIndex = -1 }
             };
-
-	        agent.RegisterBlow(blow);
+	        
+	        agent.RegisterBlow(blow, AgentHelpers.CreateCollisionDataFromBlow(from, agent, blow));
         }
         #endregion
 
@@ -441,10 +433,10 @@ namespace BLTAdoptAHero.Powers
                         .Translate(("DamageToAdd", (DamageToAdd > 0 ? "+" : "") + DamageToAdd)));
                 if (AddHitBehavior.IsEnabled)
                     modifiers.Add("{=ybyWP8jd}Add: {AddHitBehavior}"
-                        .Translate(("AddHitBehavior", AddHitBehavior)));
+                        .Translate(("AddHitBehavior", AddHitBehavior.ToString())));
                 if (RemoveHitBehavior.IsEnabled)
                     modifiers.Add("{=WJVreCCg}Remove: {RemoveHitBehavior}"
-                        .Translate(("RemoveHitBehavior", RemoveHitBehavior)));
+                        .Translate(("RemoveHitBehavior", RemoveHitBehavior.ToString())));
                 if (ArmorToIgnorePercent != 0)
                     modifiers.Add("{=svDicWAa}Ignore {ArmorToIgnorePercent}% Armor"
                         .Translate(("ArmorToIgnorePercent", ArmorToIgnorePercent)));

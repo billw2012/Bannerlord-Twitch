@@ -421,10 +421,10 @@
         <string id="yJRKVszb" text="The cooldown in seconds, defaults to unlimited"/>
         
         <!-- TwitchService -->
-        <!-- Usage: !{cmd.Name} {args} -->
-        <string id="JSW1ryNl" text="Usage: !{cmd.Name} {args}"/>
-        <!-- Usage: {args} -->
-        <string id="mdhbHYNM" text="Usage: {args}"/>
+        <!-- Usage: !{Name} {Args} -->
+        <string id="JSW1ryNl" text="Usage: !{Name} {Args}"/>
+        <!-- Usage: {Args} -->
+        <string id="mdhbHYNM" text="Usage: {Args}"/>
         <!-- Commands:  -->
         <string id="luOJS8dL" text="Commands: "/>
         <!-- Also see Channel Point Rewards -->

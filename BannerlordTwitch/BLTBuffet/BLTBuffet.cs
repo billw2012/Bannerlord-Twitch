@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;

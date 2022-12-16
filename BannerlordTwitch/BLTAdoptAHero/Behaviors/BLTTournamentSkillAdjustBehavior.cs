@@ -1,12 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using BannerlordTwitch.Helpers;
-using BannerlordTwitch.Util;
 using BLTAdoptAHero.Achievements;
-using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Annotations;
 using HarmonyLib;
-using SandBox.TournamentMissions.Missions;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -40,7 +36,7 @@ namespace BLTAdoptAHero
 
                 blow.InflictedDamage = (int) blow.BaseMagnitude;
 
-                victim.RegisterBlow(blow);
+                victim.RegisterBlow(blow, collisionData);
             }
         }
 

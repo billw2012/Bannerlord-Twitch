@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
@@ -9,7 +8,7 @@ using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero;
 using JetBrains.Annotations;
-using SandBox;
+using SandBox.Tournaments.MissionLogics;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
@@ -122,14 +121,14 @@ namespace BLTBuffet
                         pfxState.boneAttachments = CreateAgentEffects(target,
                             pfx.Name,
                             MatrixFrame.Identity,
-                            Game.Current.HumanMonster.MainHandItemBoneIndex,
-                            Game.Current.HumanMonster.OffHandItemBoneIndex);
+                            target.Monster.MainHandItemBoneIndex,
+                            target.Monster.OffHandItemBoneIndex);
                         break;
                     case ParticleEffectDef.AttachPointEnum.OnHead:
                         pfxState.boneAttachments = CreateAgentEffects(target,
                             pfx.Name,
                             MatrixFrame.Identity.Strafe(0.1f),
-                            Game.Current.HumanMonster.HeadLookDirectionBoneIndex);
+                            target.Monster.HeadLookDirectionBoneIndex);
                         break;
                     case ParticleEffectDef.AttachPointEnum.OnBody:
                         pfxState.boneAttachments = CreateAgentEffects(target, pfx.Name, MatrixFrame.Identity.Elevate(0.1f));
@@ -219,7 +218,7 @@ namespace BLTBuffet
                         var localFrame = MatrixFrame.Identity.Elevate(i * 0.1f);
                         var particle = ParticleSystem.CreateParticleSystemAttachedToEntity(pfxSystem, wieldedWeaponEntity, ref localFrame);
                         particle.SetRuntimeEmissionRateMultiplier(MBRandom.RandomFloatRanged(0.75f, 1.25f));
-                        skeleton.AddComponentToBone(Game.Current.HumanMonster.MainHandItemBoneIndex, particle);
+                        skeleton.AddComponentToBone(agent.Monster.MainHandItemBoneIndex, particle);
                         components.Add(particle);
                     }
                     break;
@@ -235,7 +234,7 @@ namespace BLTBuffet
                         var localFrame = MatrixFrame.Identity.Elevate(i * 0.1f);
                         var particle = ParticleSystem.CreateParticleSystemAttachedToEntity(pfxSystem, wieldedWeaponEntity, ref localFrame);
                         particle.SetRuntimeEmissionRateMultiplier(MBRandom.RandomFloatRanged(0.75f, 1.25f));
-                        skeleton.AddComponentToBone(Game.Current.HumanMonster.MainHandItemBoneIndex, particle);
+                        skeleton.AddComponentToBone(agent.Monster.MainHandItemBoneIndex, particle);
                         components.Add(particle);
                     }
                     break;
@@ -271,7 +270,7 @@ namespace BLTBuffet
             light.Intensity = lightIntensity;
             light.LightColor = lightColor;
             light.Frame = MatrixFrame.Identity.Advance(1);
-            skeleton.AddComponentToBone(Game.Current.HumanMonster.MainHandItemBoneIndex, light);
+            skeleton.AddComponentToBone(agent.Monster.MainHandItemBoneIndex, light);
             return light;
         }
 

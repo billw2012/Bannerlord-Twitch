@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Localization;
@@ -46,7 +45,7 @@ namespace BLTAdoptAHero
             if (targetHero == null)
             {
                 ActionManager.SendReply(context, 
-                    "{=vDsYxMKq}Couldn't find recipient '{Name}'".Translate(("Name",argParts[0])));
+                    "{=vDsYxMKq}Couldn't find recipient '{Name}'".Translate(("Name", argParts[0])));
                 return;
             }
 

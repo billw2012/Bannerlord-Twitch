@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
     <PropertyGroup>
-        <ModuleVersion>3.2.5</ModuleVersion>
+        <ModuleVersion>4.1.1</ModuleVersion>
         <DefineConstants/>
         <OutputBuildRoot>$(SolutionDir)build\</OutputBuildRoot>
         <OutputConfigRoot>$(OutputBuildRoot)$(Configuration)\</OutputConfigRoot>
@@ -25,20 +25,11 @@
         <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
         <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
-
-    <PropertyGroup Condition="$(Configuration.EndsWith(' 1.7.0'))">
-        <GameVersion>1.7.0</GameVersion>
-        <DefineConstants>$(DefineConstants);e170</DefineConstants>
-        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_7_0)</BANNERLORD_GAME_DIR>
+    <PropertyGroup Condition="$(Configuration.EndsWith(' 1.0.1'))">
+        <GameVersion>1.0.1</GameVersion>
+        <DefineConstants>$(DefineConstants);ev101</DefineConstants>
+        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_v1_0_1)</BANNERLORD_GAME_DIR>
         <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</BANNERLORD_GAME_DIR>
-    </PropertyGroup>
-
-
-    <PropertyGroup Condition="$(Configuration.EndsWith(' 1.7.1'))">
-        <GameVersion>1.7.1</GameVersion>
-        <DefineConstants>$(DefineConstants);e171</DefineConstants>
-        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_1_7_1)</BANNERLORD_GAME_DIR>
-        <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord 1.7.1</BANNERLORD_GAME_DIR>
     </PropertyGroup>
     
     <PropertyGroup>
@@ -46,11 +37,11 @@
     </PropertyGroup>
     
     <PropertyGroup Condition="$(Configuration.StartsWith('Debug'))">
-        <PackageName>BLT-v$(ModuleVersion)-For-Game-Version-e$(GameVersion)-Debug.7z</PackageName>
+        <PackageName>BLT-v$(ModuleVersion)-For-Game-Version-v$(GameVersion)-Debug.7z</PackageName>
     </PropertyGroup>
 
     <PropertyGroup Condition="$(Configuration.StartsWith('Release'))">
-        <PackageName>BLT-v$(ModuleVersion)-For-Game-Version-e$(GameVersion).7z</PackageName>
+        <PackageName>BLT-v$(ModuleVersion)-For-Game-Version-v$(GameVersion).7z</PackageName>
     </PropertyGroup>
     
     <PropertyGroup>

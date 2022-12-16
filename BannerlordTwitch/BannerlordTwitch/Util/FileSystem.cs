@@ -2,7 +2,6 @@
 using System.IO;
 using Path = System.IO.Path;
 #endif
-using System.Linq;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 

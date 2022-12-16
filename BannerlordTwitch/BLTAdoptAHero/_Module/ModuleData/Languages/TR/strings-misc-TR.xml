@@ -16,8 +16,8 @@
         <string id="nLaRVBVV" text="Yeni Başarı" original="New Achievement"/>
         <!-- Notification Text -->
         <string id="guJFFskH" text="Bildirim Metni" original="Notification Text"/>
-        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement. -->
-        <string id="SwIUyQNw" text="Başarı kazanıldığında ve oyuncu başarılarını listelediğinde görüntülenecek metin. Yer tutucular: Başarının adı için {viewer} for the viewers name, and {name}." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement."/>
+        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement. -->
+        <string id="SwIUyQNw" text="Başarı kazanıldığında ve oyuncu başarılarını listelediğinde görüntülenecek metin. Yer tutucular: Başarının adı için [viewer] for the viewers name, and [name]." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
         <!-- Requirements -->
         <string id="TfwiBMGr" text="Gereksinimler" original="Requirements"/>
         <!-- Gold Gain -->
@@ -200,8 +200,8 @@
         <string id="poe8m8rn" text="Bildirimleri göster" original="Show Notification"/>
         <!-- Notification Text -->
         <string id="RQh3jIZW" text="Bildirim Metni" original="Notification Text"/>
-        <!-- Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required. -->
-        <string id="04wTH1xo" text="Öldürme serisine ulaşıldığında görüntülenen metin. Yer tutucular: Gerekli Öldürmeler için {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills}." original="Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required."/>
+        <!-- Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required. -->
+        <string id="04wTH1xo" text="Öldürme serisine ulaşıldığında görüntülenen metin. Yer tutucular: Gerekli Öldürmeler için [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills]." original="Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required."/>
         <!-- Kills Required -->
         <string id="mG7HzT0z" text="Öldürme Gerekli" original="Kills Required"/>
         <!-- Kills required to achieve the kill streak. -->
@@ -216,8 +216,8 @@
         <string id="Q1TcztBP" text="Öldürme serisine ulaşıldığında kazanılan deneyim." original="Experience granted when the kill streak is achieved."/>
         <!-- New Kill Streak -->
         <string id="KtvBk2nR" text="Yeni Öldürme Serisi" original="New Kill Streak"/>
-        <!-- {viewer} got {name} ({kills} kills) -->
-        <string id="ipowOInD" text="{viewer} got {name} ({kills} öldürme)" original="{viewer} got {name} ({kills} kills)"/>
+        <!-- [viewer] got [name] ([kills] kills) -->
+        <string id="ipowOInD" text="[viewer] got [name] ([kills] öldürme)" original="[viewer] got [name] ([kills] kills)"/>
         <!-- {KillsRequired} kills -->
         <string id="YZJ60Pxb" text="{KillsRequired} öldürme" original="{KillsRequired} kills"/>
         <!-- SummonHero.FormationItemSource -->

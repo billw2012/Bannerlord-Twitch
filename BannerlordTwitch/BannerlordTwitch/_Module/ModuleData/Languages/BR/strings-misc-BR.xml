@@ -401,10 +401,10 @@
         <!-- The cooldown in seconds, defaults to unlimited -->
         <string id="yJRKVszb" text="O resfriamento em segundos, o padrão é ilimitado" original="The cooldown in seconds, defaults to unlimited"/>
         <!-- TwitchService -->
-        <!-- Usage: !{cmd.Name} {args} -->
-        <string id="JSW1ryNl" text="Uso:! {cmd.Name} {args}" original="Usage: !{cmd.Name} {args}"/>
-        <!-- Usage: {args} -->
-        <string id="mdhbHYNM" text="Uso: {args}" original="Usage: {args}"/>
+        <!-- Usage: !{Name} {Args} -->
+        <string id="JSW1ryNl" text="Uso:! {Name} {Args}" original="Usage: !{Name} {Args}"/>
+        <!-- Usage: {Args} -->
+        <string id="mdhbHYNM" text="Uso: {Args}" original="Usage: {Args}"/>
         <!-- Commands:  -->
         <string id="luOJS8dL" text="Comandos:" original="Commands: "/>
         <!-- Also see Channel Point Rewards -->

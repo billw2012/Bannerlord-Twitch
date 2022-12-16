@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors.Towns;
+using TaleWorlds.CampaignSystem.CampaignBehaviors;
 using TaleWorlds.Core;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
@@ -61,27 +60,27 @@ namespace BLTAdoptAHero
             var skill = GetSkill(hero, skills, auto, so 
                 => BLTAdoptAHeroModule.CommonConfig.UseRawXP && hero.GetSkillValue(so) < BLTAdoptAHeroModule.CommonConfig.RawXPSkillCap
                    || hero.HeroDeveloper.GetFocusFactor(so) > 0);
-            if (skill == null) return (false, "{=vK5z2Naq}Couldn't find a skill to improve".Translate());
-            float prevSkill = hero.HeroDeveloper.GetPropertyValue(skill);
+            if (skill == null)
+            {
+                return (false, "{=vK5z2Naq}Couldn't find a skill to improve".Translate());
+            }
+
+            int prevSkill = hero.HeroDeveloper.GetSkillXpProgress(skill);
             int prevLevel = hero.GetSkillValue(skill);
             hero.HeroDeveloper.AddSkillXp(skill, amount,
                 isAffectedByFocusFactor: !BLTAdoptAHeroModule.CommonConfig.UseRawXP);
             // Force this immediately instead of waiting for the daily campaign tick
-            #if e159 || e1510
-            CharacterDevelopmentCampaignBehaivor.DevelopCharacterStats(hero);
-            #else
             Campaign.Current?.GetCampaignBehavior<CharacterDevelopmentCampaignBehavior>()?.DevelopCharacterStats(hero);
-            #endif
 
-            float newXp = hero.HeroDeveloper.GetPropertyValue(skill);
-            float realGainedXp = newXp - prevSkill;
+            int newXp = hero.HeroDeveloper.GetSkillXpProgress(skill);
+            int realGainedXp = newXp - prevSkill;
             int newLevel = hero.GetSkillValue(skill);
             int gainedLevels = newLevel - prevLevel;
-            return realGainedXp < 1f
-                ? (false, "{=ozkK4mk7}{Skill} capped, get more focus points".Translate(("Skill", skill.Name)))
-                : gainedLevels > 0
-                    ? (true, $"{Naming.Inc}{gainedLevels} {Naming.Lvl} {GetShortSkillName(skill)}{Naming.To}{newLevel}")
-                    : (true, $"{Naming.Inc}{realGainedXp:0} {Naming.XP} {GetShortSkillName(skill)}{Naming.To}{newXp}");
+            return gainedLevels > 0
+                ? (true, $"{Naming.Inc}{gainedLevels} {Naming.Lvl} {GetShortSkillName(skill)}{Naming.To}{newLevel}")
+                : realGainedXp > 0
+                    ? (true, $"{Naming.Inc}{realGainedXp} {Naming.XP} {GetShortSkillName(skill)}{Naming.To}{newXp}")
+                    : (false, "{=ozkK4mk7}{Skill} capped, get more focus points".Translate(("Skill", skill.Name)));
         }
 
         public static string GetShortSkillName(SkillObject skill)

@@ -16,8 +16,8 @@
         <string id="nLaRVBVV" text="新しい成果" original="New Achievement"/>
         <!-- Notification Text -->
         <string id="guJFFskH" text="通知テキスト" original="Notification Text"/>
-        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement. -->
-        <string id="SwIUyQNw" text="アチーブメントが獲得されたとき、およびプレーヤーがアチーブメントをリストしたときに表示されるテキスト。プレースホルダー：アチーブメントの名前は{viewer} for the viewers name, and {name}。" original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: {viewer} for the viewers name, and {name} for the name of the achievement."/>
+        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement. -->
+        <string id="SwIUyQNw" text="アチーブメントが獲得されたとき、およびプレーヤーがアチーブメントをリストしたときに表示されるテキスト。プレースホルダー：アチーブメントの名前は[viewer] for the viewers name, and [name]。" original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
         <!-- Requirements -->
         <string id="TfwiBMGr" text="要件" original="Requirements"/>
         <!-- Gold Gain -->
@@ -200,8 +200,8 @@
         <string id="poe8m8rn" text="通知を表示" original="Show Notification"/>
         <!-- Notification Text -->
         <string id="RQh3jIZW" text="通知テキスト" original="Notification Text"/>
-        <!-- Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required. -->
-        <string id="04wTH1xo" text="キルストリークが達成されたときに表示されるテキスト。プレースホルダー：キルが必要な場合は{viewer} for the viewers name, and {name} for the Kill Streak name, and {kills}。" original="Text that displays when the kill streak is achieved. Placeholders: {viewer} for the viewers name, and {name} for the Kill Streak name, and {kills} for the Kills Required."/>
+        <!-- Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required. -->
+        <string id="04wTH1xo" text="キルストリークが達成されたときに表示されるテキスト。プレースホルダー：キルが必要な場合は[viewer] for the viewers name, and [name] for the Kill Streak name, and [kills]。" original="Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required."/>
         <!-- Kills Required -->
         <string id="mG7HzT0z" text="必要なキル" original="Kills Required"/>
         <!-- Kills required to achieve the kill streak. -->
@@ -216,8 +216,8 @@
         <string id="Q1TcztBP" text="キルストリークが達成されたときに付与される経験。" original="Experience granted when the kill streak is achieved."/>
         <!-- New Kill Streak -->
         <string id="KtvBk2nR" text="新しいキルストリーク" original="New Kill Streak"/>
-        <!-- {viewer} got {name} ({kills} kills) -->
-        <string id="ipowOInD" text="{viewer} got {name} ({kills}キル）" original="{viewer} got {name} ({kills} kills)"/>
+        <!-- [viewer] got [name] ([kills] kills) -->
+        <string id="ipowOInD" text="[viewer] got [name] ([kills]キル）" original="[viewer] got [name] ([kills] kills)"/>
         <!-- {KillsRequired} kills -->
         <string id="YZJ60Pxb" text="{KillsRequired}キル" original="{KillsRequired} kills"/>
         <!-- SummonHero.FormationItemSource -->

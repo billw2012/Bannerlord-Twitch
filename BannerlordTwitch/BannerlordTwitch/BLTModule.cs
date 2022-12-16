@@ -30,10 +30,10 @@ namespace BannerlordTwitch
 		private static extern int SetWindowText(IntPtr hWnd, string text);
 
 		private const string ExpectedVersion =
-#if e170
-				"e1.7.0"
-#elif e171
-				"e1.7.1"
+#if ev100
+			"v1.0.0"
+#elif ev101
+			"v1.0.1"
 #endif
 			;
 
@@ -54,7 +54,7 @@ namespace BannerlordTwitch
 
 			MainThreadSync.InitMainThread();
 
-            AssemblyHelper.Redirect("Microsoft.Extensions.Logging.Abstractions", Version.Parse("3.1.5.0"), "adb9793829ddae60");
+            // AssemblyHelper.Redirect("Microsoft.Extensions.Logging.Abstractions", Version.Parse("3.1.5.0"), "adb9793829ddae60");
             AssemblyHelper.Redirect("Microsoft.Owin", Version.Parse("4.2.0.0"), "31bf3856ad364e35");
             AssemblyHelper.Redirect("Microsoft.Owin.FileSystems", Version.Parse("4.2.0.0"), "31bf3856ad364e35");
             AssemblyHelper.Redirect("Microsoft.Owin.Security", Version.Parse("4.2.0.0"), "31bf3856ad364e35");

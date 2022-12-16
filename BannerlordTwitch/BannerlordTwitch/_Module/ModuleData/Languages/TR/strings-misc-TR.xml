@@ -401,10 +401,10 @@
         <!-- The cooldown in seconds, defaults to unlimited -->
         <string id="yJRKVszb" text="Saniye cinsinden bekleme süresi, varsayılan olarak sınırsızdır" original="The cooldown in seconds, defaults to unlimited"/>
         <!-- TwitchService -->
-        <!-- Usage: !{cmd.Name} {args} -->
-        <string id="JSW1ryNl" text="Kullanım: !{cmd.Name} {args}" original="Usage: !{cmd.Name} {args}"/>
-        <!-- Usage: {args} -->
-        <string id="mdhbHYNM" text="Kullanım: {args}" original="Usage: {args}"/>
+        <!-- Usage: !{Name} {Args} -->
+        <string id="JSW1ryNl" text="Kullanım: !{Name} {Args}" original="Usage: !{Name} {Args}"/>
+        <!-- Usage: {Args} -->
+        <string id="mdhbHYNM" text="Kullanım: {Args}" original="Usage: {Args}"/>
         <!-- Commands:  -->
         <string id="luOJS8dL" text="Komutlar:" original="Commands: "/>
         <!-- Also see Channel Point Rewards -->

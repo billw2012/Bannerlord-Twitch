@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Windows;
-using BannerlordTwitch.Util;
-using Xceed.Wpf.Toolkit;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="繁體中文">
+  <LanguageFile xml_path="CNt/strings-actions-CNt.xml" />
+  <LanguageFile xml_path="CNt/strings-behaviors-CNt.xml" />
+  <LanguageFile xml_path="CNt/strings-default-shouts-CNt.xml" />
+  <LanguageFile xml_path="CNt/strings-globalconfigs-CNt.xml" />
+  <LanguageFile xml_path="CNt/strings-misc-CNt.xml" />
+  <LanguageFile xml_path="CNt/strings-powers-CNt.xml" />
+</LanguageData>

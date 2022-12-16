@@ -65,7 +65,7 @@ namespace BLTAdoptAHero.Powers
                     WeaponRecord = new () { AffectorWeaponSlotOrMissileIndex = -1 },
                 };
                 // blow.WeaponRecord.FillAsMeleeBlow(null, null, -1, -1);
-                attackerAgent.RegisterBlow(blow);
+                attackerAgent.RegisterBlow(blow, blowParams.collisionData);
                 if (ReflectedDamageIsSubtracted)
                 {
                     blowParams.blow.InflictedDamage = Math.Max(0, blowParams.blow.InflictedDamage - damage);

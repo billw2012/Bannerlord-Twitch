@@ -7,7 +7,6 @@ using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.ObjectSystem;
-using TaleWorlds.SaveSystem;
 
 namespace BLTAdoptAHero
 {

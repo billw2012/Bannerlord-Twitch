@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="日本語">
+  <LanguageFile xml_path="JP/strings-actions-JP.xml" />
+  <LanguageFile xml_path="JP/strings-behaviors-JP.xml" />
+  <LanguageFile xml_path="JP/strings-default-shouts-JP.xml" />
+  <LanguageFile xml_path="JP/strings-globalconfigs-JP.xml" />
+  <LanguageFile xml_path="JP/strings-misc-JP.xml" />
+  <LanguageFile xml_path="JP/strings-powers-JP.xml" />
+</LanguageData>

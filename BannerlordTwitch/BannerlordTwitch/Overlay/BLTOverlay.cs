@@ -9,12 +9,11 @@ using System.Security.Principal;
 using BannerlordTwitch.Util;
 using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Cors;
-using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.Hosting;
 using Microsoft.Owin.Logging;
 using Microsoft.Owin.StaticFiles;
 using Owin;
-using TaleWorlds.Core;
+using TaleWorlds.Library;
 
 namespace BLTOverlay
 {
@@ -102,7 +101,7 @@ namespace BLTOverlay
         {
             InformationManager.ShowInquiry(
                 new ("{=fmjzDasd}BLT Overlay".Translate(),
-                    "{=Kgi2isWy}For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again.".Translate(("Port", Port)),
+                    "{=Kgi2isWy}For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall. This requires administrator privileges, which will be requested after you press Ok. If successful, you won't see this popup again.".Translate(("Port", Port)),
                     true, false, "{=yXwMSbr4}Okay".Translate(), null,
                     () =>
                     {
@@ -117,12 +116,12 @@ namespace BLTOverlay
                         {
                             // Get the translated version of the "everyone" user account
                             var sid = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
-                            var account = (NTAccount) sid?.Translate(typeof(NTAccount)); 
+                            string everyone = sid?.Translate(typeof(NTAccount))?.Value ?? "everyone"; 
                             
                             var proc = Process.Start(new ProcessStartInfo("cmd.exe")
                             {
                                 Arguments =
-                                    $"/c netsh http add urlacl url={UrlBinding} user={account?.Value ?? "everyone"} " +
+                                    $"/c netsh http add urlacl url={UrlBinding} user=\"{everyone}\" " +
                                     $"& netsh advfirewall firewall add rule name=BLTOverlay dir=in action=allow protocol=TCP localport={Port}",
                                 UseShellExecute = true,
                                 Verb = "runas"
@@ -130,7 +129,7 @@ namespace BLTOverlay
                             proc?.WaitForExit(5000);
                             InformationManager.ShowInquiry(
                                 new ("{=fmjzDasd}BLT Overlay".Translate(),
-                                    "{=6ucf05tp}Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."
+                                    "{=6ucf05tp}Configuration Successful! You can now access the overlay at {UrlRoot}. You can find this link again on the Authorize tab in the BLT Configure window."
                                         .Translate(("UrlRoot", UrlRoot)),
                                     true, false, "Okay", null,
                                     Start, () => {}), true);

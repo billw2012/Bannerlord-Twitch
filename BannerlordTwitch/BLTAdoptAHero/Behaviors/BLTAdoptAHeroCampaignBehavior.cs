@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
@@ -13,13 +12,10 @@ using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Achievements;
-using BLTAdoptAHero.Actions.Util;
-using Helpers;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.SaveSystem;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
@@ -453,11 +449,11 @@ namespace BLTAdoptAHero
             IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalKills, 1);
         }
 
-        public void IncreaseParticipationCount(Hero hero, bool playerSide)
+        public void IncreaseParticipationCount(Hero hero, bool playerSide, bool forced)
         {
             IncreaseStatistic(hero, playerSide
                 ? AchievementStatsData.Statistic.Summons
-                : AchievementStatsData.Statistic.Attacks, 1);
+                : AchievementStatsData.Statistic.Attacks, 1, forced);
         }
 
         public void IncreaseHeroDeaths(Hero hero, Agent killer)
@@ -470,14 +466,15 @@ namespace BLTAdoptAHero
             {
                 IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalStreamerDeaths, 1);
             }
-            else if (killer?.IsHero == true)
-            {
-                IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalHeroDeaths, 1);
-            }
             else if (killer?.IsMount == true)
             {
                 IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalMountDeaths, 1);
             }
+            else if (killer?.Character?.IsHero == true)
+            {
+                IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalHeroDeaths, 1);
+            }
+
             IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalDeaths, 1);
         }
 
@@ -490,11 +487,11 @@ namespace BLTAdoptAHero
         public void IncreaseTournamentChampionships(Hero hero) 
             => IncreaseStatistic(hero, AchievementStatsData.Statistic.TotalTournamentFinalWins, 1);
 
-        private void IncreaseStatistic(Hero hero, AchievementStatsData.Statistic statistic, int amount)
+        private void IncreaseStatistic(Hero hero, AchievementStatsData.Statistic statistic, int amount, bool forced = false)
         {
             var achievementStatsData = GetHeroData(hero).AchievementStats;
             
-            achievementStatsData.UpdateValue(statistic, hero.GetClass()?.ID ?? default, amount);
+            achievementStatsData.UpdateValue(statistic, hero.GetClass()?.ID ?? default, amount, forced);
            
             CheckForAchievements(hero);
         }
@@ -512,10 +509,10 @@ namespace BLTAdoptAHero
             {
                 if (!LocString.IsNullOrEmpty(achievement.NotificationText))
                 {
-                    string message = achievement.NotificationText.ToString(
-                        ("{viewer}", hero.FirstName.ToString()),
-                        ("{player}", hero.FirstName.ToString()),
-                        ("{name}", achievement.Name));
+                    string message = achievement.NotificationText.ToString()
+                        .Replace("[viewer]", hero.FirstName.ToString())
+                        .Replace("[name]", achievement.Name.ToString())
+                        ;
                     Log.ShowInformation(message, hero.CharacterObject,
                         BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
                 }
