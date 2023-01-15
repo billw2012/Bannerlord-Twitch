@@ -21,6 +21,7 @@
 .bltconsole-entry {
     transition: all 0.2s;
     word-wrap: break-word;
+    text-shadow: 0 0 15px #000000bb;
 }
 
 :root {
