@@ -51,8 +51,14 @@ namespace BLTAdoptAHero
         [LocDisplayName("{=O0LU5WBa}Custom Reward Modifiers"),
          LocCategory("General", "{=C5T5nnix}General"), 
          LocDescription("{=tp3YdGmo}The specification for custom item rewards, applies to tournament prize and achievement rewards"), 
-         PropertyOrder(3), ExpandableObject, UsedImplicitly]
+         PropertyOrder(2), ExpandableObject, UsedImplicitly]
         public RandomItemModifierDef CustomRewardModifiers { get; set; } = new();
+        
+        [LocDisplayName("{=}Custom Inventory Item Limit"),
+         LocCategory("General", "{=C5T5nnix}General"),
+         LocDescription("{=}Maximum custom inventory items allowed. This only applies when smithing, other rewards will always be added to inventory (but they will contribute to the limit). If you set this high then inventory management and console spam may become a problem."),
+         PropertyOrder(3), UsedImplicitly]
+        public int CustomItemLimit { get; set; } = 8;
         #endregion
 
         #region Battle

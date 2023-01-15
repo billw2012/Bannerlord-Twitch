@@ -550,9 +550,45 @@ namespace BLTAdoptAHero
         #endregion
 
         #region Custom Items
-        public EquipmentElement FindCustomItem(Hero hero, Func<EquipmentElement, bool> predicate)
-            => GetHeroData(hero).CustomItems.Where(predicate).SelectRandom();
-        
+
+        public (EquipmentElement element, string error) FindCustomItemByIndex(Hero hero, string itemIndexStr) 
+            => FindCustomItem(hero, itemIndexStr.StartsWith("#") ? itemIndexStr : "#" + itemIndexStr);
+
+        public (EquipmentElement element, string error) FindCustomItem(Hero hero, string itemName)
+        {
+            var customItems = GetCustomItems(hero);
+            if (!customItems.Any())
+            {
+                return (EquipmentElement.Invalid, "{=Tfj1U5BB}No custom items".Translate());
+            }
+
+            if (itemName.StartsWith("#"))
+            {
+                // Index is 1 based, not 0
+                if (!int.TryParse(itemName.Substring(1), out int index) || index < 1 || index > customItems.Count)
+                {
+                    return (EquipmentElement.Invalid, "{=}Invalid item index".Translate());
+                }
+                return (customItems[index - 1], default);
+            }
+            var matchingItems = customItems.Where(i => i.GetModifiedItemName()
+                    .ToString().IndexOf(itemName, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                .ToList();
+
+            if (matchingItems.Count == 0)
+            {
+                return (EquipmentElement.Invalid, "{=p0urrIvR}No custom items found matching '{Args}'".Translate(("Args", itemName)));
+            }
+
+            if (matchingItems.Count > 1)
+            {
+                return (EquipmentElement.Invalid, "{=Pzo2UJrl}{Count} custom items found matching '{Args}', be more specific"
+                        .Translate(("Count", matchingItems.Count), ("Args", itemName)));
+            }
+            
+            return (matchingItems.First(), default);
+        }
+
         public List<EquipmentElement> GetCustomItems(Hero hero) => GetHeroData(hero).CustomItems;
         
         public void AddCustomItem(Hero hero, EquipmentElement element)
@@ -709,7 +745,7 @@ namespace BLTAdoptAHero
                         output("{=TeeDJyJ1}{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})"
                             .Translate(
                                 ("Time", seconds),
-                                ("ItemName", item.GetModifiedItemName()),
+                                ("ItemName", RewardHelpers.GetItemNameAndModifiers(item)),
                                 ("HighestBid", highestBid.bid),
                                 ("GoldIcon", Naming.Gold),
                                 ("HighestBidderName", highestBid.hero.FirstName)));
@@ -719,7 +755,7 @@ namespace BLTAdoptAHero
                         output("{=jNkGaKZw}{Time} seconds left in auction of '{ItemName}', no bids placed"
                             .Translate(
                                 ("Time", seconds),
-                                ("ItemName", item.GetModifiedItemName())));
+                                ("ItemName", RewardHelpers.GetItemNameAndModifiers(item))));
                     }
                 });
             }
@@ -733,9 +769,9 @@ namespace BLTAdoptAHero
                     var highestBid = currentAuction.GetHighestValidBid();
                     if (highestBid == default)
                     {
-                        output("{=d9ooHVPU}Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}."
+                        output("{=d9ooHVPU}Auction for '{ItemName}' is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}."
                             .Translate(
-                                ("ItemName", currentAuction.item.GetModifiedItemName()),
+                                ("ItemName", RewardHelpers.GetItemNameAndModifiers(currentAuction.item)),
                                 ("ItemOwnerName", currentAuction.itemOwner.FirstName),
                                 ("ReservePrice", currentAuction.reservePrice),
                                 ("GoldIcon", Naming.Gold)));
@@ -744,25 +780,25 @@ namespace BLTAdoptAHero
 
                     if (!currentAuction.itemOwner.IsAdopted() || currentAuction.itemOwner.IsDead)
                     {
-                        output("{=SGuTRcui}Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died."
+                        output("{=SGuTRcui}Auction for '{ItemName}' is CANCELLED! @{ItemOwnerName} retired or died."
                             .Translate(
-                                ("ItemName", currentAuction.item.GetModifiedItemName()),
+                                ("ItemName", RewardHelpers.GetItemNameAndModifiers(currentAuction.item)),
                                 ("ItemOwnerName", currentAuction.itemOwner.FirstName)));
                         return;
                     }
 
                     if (!GetCustomItems(currentAuction.itemOwner).Any(i => i.IsEqualTo(currentAuction.item)))
                     {
-                        output("{=NRV4IstE}Auction for {ItemName} is CANCELLED! @{ItemOwnerName} is no longer in possession of the item."
+                        output("{=NRV4IstE}Auction for '{ItemName}' is CANCELLED! @{ItemOwnerName} is no longer in possession of the item."
                             .Translate(
-                                ("ItemName", currentAuction.item.GetModifiedItemName()),
+                                ("ItemName", RewardHelpers.GetItemNameAndModifiers(currentAuction.item)),
                                 ("ItemOwnerName", currentAuction.itemOwner.FirstName)));
                         return;
                     }
 
-                    output("{=jmbMoHta}Auction for {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}."
+                    output("{=jmbMoHta}Auction for '{ItemName}' is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}."
                         .Translate(
-                            ("ItemName", currentAuction.item.GetModifiedItemName()),
+                            ("ItemName", RewardHelpers.GetItemNameAndModifiers(currentAuction.item)),
                             ("HighestBidderName", highestBid.hero.FirstName),
                             ("HighestBid", highestBid.bid),
                             ("GoldIcon", Naming.Gold)));

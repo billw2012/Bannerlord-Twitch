@@ -47,8 +47,7 @@ namespace BLTAdoptAHero
             {
                 hero.BattleEquipment[slot] = element;
                 return "{=RczvXuxP}received {ItemName}"
-                           .Translate(("ItemName", element.GetModifiedItemName()))
-                       + " (" + GetModifiersDescription(itemModifier, element.Item) + ")";
+                           .Translate(("ItemName", RewardHelpers.GetItemNameAndModifiers(element)));
             }
             else if (!isCustom)
             {
@@ -63,9 +62,8 @@ namespace BLTAdoptAHero
             else
             {
                 return "{=RczvXuxP}received {ItemName}"
-                           .Translate(("ItemName", element.GetModifiedItemName()))
-                       + " (" + GetModifiersDescription(itemModifier, element.Item) + ")"
-                       + " (" + "{=}put in storage".Translate() + ")";
+                           .Translate(("ItemName", RewardHelpers.GetItemNameAndModifiers(element)))
+                           + " (" + "{=}not equipped".Translate() + ")";
             }
         }
 
@@ -267,6 +265,9 @@ namespace BLTAdoptAHero
             }
         }
 
+        public static string GetItemNameAndModifiers(EquipmentElement item) 
+            => item.GetModifiedItemName() + " (" + GetModifiersDescription(item.ItemModifier, item.Item) + ")";
+
         public static string GetModifiersDescription(ItemModifier itemModifier, ItemObject itemObject)
         {
             if (itemModifier == null)
@@ -317,7 +318,7 @@ namespace BLTAdoptAHero
                 return "{=}no modifiers".Translate();
             }
 
-            return string.Join(Naming.Sep, modifiers);
+            return string.Join(" ", modifiers);
         }
     }
 }

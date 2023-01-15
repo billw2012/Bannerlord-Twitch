@@ -38,7 +38,7 @@ Commands:
     ShowPowers: false
     ShowRetinue: false
     ShowRetinueList: false
-    ShowStorage: true
+    ShowStorage: false
     ShowTopSkills: false
     ShowTrackedStats: false
   Help: '{=oVNKTdOy}show equipment'
@@ -214,7 +214,7 @@ Commands:
   Name: '{=0grO6hB5}adopt'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: '{=S1FZXQim}You can use this to name your custom items.<br>Usage is <code>!nameitem (name)</code>, for example <code>!nameitem Foehammer</code>.<br>If you call <code>!nameitem</code> on its own it will tell you what item will be named next.'
+- Documentation: You can use this to name your custom items.<br>Usage is <code>!nameitem (custom item index) (name)</code>, for example <code>!nameitem 3 Foehammer</code>. The custom item index is shown in the 'customs' command (or equivalent).
   Enabled: true
   Handler: NameItem
   HandlerConfig: 
@@ -268,7 +268,7 @@ Commands:
   Name: '{=woTpsqyV}ach'
   RespondInOverlay: true
   RespondInTwitch: false
-- Documentation: '{=ma27zJHy}Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.<br>Usage is <code>!auction (reserve price) (part of the item name)</code>, e.g. <code>!auction 50000 Boots</code> would start a new auction for your custom item with the word "Boots" in it, with a reserve of 50000. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.'
+- Documentation: Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.<br>Usage is <code>!auction (custom item index) (reserve price)</code>, e.g. <code>!auction 3 50000</code> would start a new auction for your custom item with the index of 3 (as shown by the 'customs' command or equivalent), with a reserve price of 50000.
   Enabled: true
   Handler: AuctionItem
   HandlerConfig:
@@ -290,7 +290,7 @@ Commands:
   Name: '{=taI6SRSG}bid'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: '{=vwPIXbeh}Throw away one of your custom items.<br>Usage is <code>!discarditem (part of the item name)</code>, e.g. <code>!discarditem Boots</code> would discard your custom item with the word "Boots" in it. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.'
+- Documentation: Throw away one of your custom items.<br>Usage is <code>!discarditem (custom item index)</code>, e.g. <code>!discarditem 3</code> would discard your custom item with the index 3. The custom item index is shown in the 'customs' command (or equivalent).
   Enabled: true
   Handler: DiscardItem
   HandlerConfig: 
@@ -300,7 +300,7 @@ Commands:
   Name: '{=Pla3OVS4}discarditem'
   RespondInOverlay: true
   RespondInTwitch: true
-- Documentation: '{=RS37T7gG}Give one of your custom items to another viewer.<br>Usage is <code>!giveitem (viewer) (part of the item name)</code>, e.g. <code>!giveitem C4alad0g Boots</code> would give your custom item with the word "Boots" in it to the viewer called C4lad0g. If more than one item has "Boots" in it, the command will be rejected. The partial name must match exactly one item.'
+- Documentation: Give one of your custom items to another viewer.<br>Usage is <code>!giveitem (custom item index) (viewer)</code>, e.g. <code>!giveitem 3 C4alad0g</code> would give your custom item with the index 3 to the viewer called C4lad0g. The custom item index is shown in the 'customs' command (or equivalent).
   Enabled: true
   Handler: GiveItem
   HandlerConfig: 
@@ -339,19 +339,9 @@ Commands:
   Handler: SmithItem
   HandlerConfig:
     GoldCost: 1000000
-    Item:
-      ArmorWeight: 0
-      CustomItemName: '{=}Smithed {ITEMNAME}'
-      CustomItemPower: 2
-      CustomWeight: 1
-      MountWeight: 0
-      Tier1Weight: 0
-      Tier2Weight: 0
-      Tier3Weight: 0
-      Tier4Weight: 0
-      Tier5Weight: 0
-      Tier6Weight: 0
-      WeaponWeight: 1
+    ItemName: '{=}Smithed {ITEMNAME}'
+    ItemPower: 1.25
+    Type: Weapon
   Help: ''
   HideHelp: false
   ID: a2b33796-a5f0-4bc9-be7c-8e887d3f00c4
@@ -363,19 +353,9 @@ Commands:
   Handler: SmithItem
   HandlerConfig:
     GoldCost: 500000
-    Item:
-      ArmorWeight: 1
-      CustomItemName: '{=}Smithed {ITEMNAME}'
-      CustomItemPower: 2
-      CustomWeight: 1
-      MountWeight: 0
-      Tier1Weight: 0
-      Tier2Weight: 0
-      Tier3Weight: 0
-      Tier4Weight: 0
-      Tier5Weight: 0
-      Tier6Weight: 0
-      WeaponWeight: 0
+    ItemName: '{=}Smithed {ITEMNAME}'
+    ItemPower: 1.25
+    Type: Armor
   Help: ''
   HideHelp: false
   ID: 2d829c81-f451-4b59-b9b2-ae12962986e9
@@ -386,50 +366,40 @@ Commands:
   Enabled: true
   Handler: SmithItem
   HandlerConfig:
-    GoldCost: 25000
-    Item:
-      ArmorWeight: 1
-      CustomItemName: '{=}Random {ITEMNAME}'
-      CustomItemPower: 1
-      CustomWeight: 0.100000001
-      MountWeight: 0.100000001
-      Tier1Weight: 0.550000012
-      Tier2Weight: 1.45000005
-      Tier3Weight: 2.29999995
-      Tier4Weight: 1.75
-      Tier5Weight: 1.14999998
-      Tier6Weight: 0.550000012
-      WeaponWeight: 0.300000012
-  Help: ''
-  HideHelp: false
-  ID: 814acf33-9340-4e1f-99d8-48f16c069955
-  Name: smithrandom
-  RespondInOverlay: true
-  RespondInTwitch: true
-- Documentation: ''
-  Enabled: true
-  Handler: SmithItem
-  HandlerConfig:
     GoldCost: 1250000
-    Item:
-      ArmorWeight: 0
-      CustomItemName: '{=}Fancy {ITEMNAME}'
-      CustomItemPower: 1.5
-      CustomWeight: 1
-      MountWeight: 1
-      Tier1Weight: 0
-      Tier2Weight: 0
-      Tier3Weight: 0
-      Tier4Weight: 0
-      Tier5Weight: 0
-      Tier6Weight: 0
-      WeaponWeight: 0
+    ItemName: '{=}Champion {ITEMNAME}'
+    ItemPower: 1.25
+    Type: Mount
   Help: ''
   HideHelp: false
   ID: 87bed827-fbe4-472e-a300-f6f85e46dd28
   Name: buymount
   RespondInOverlay: true
   RespondInTwitch: true
+- Documentation: Shows the viewers custom item list, which is required so they know what item index to use in the custom item related commands.
+  Enabled: true
+  Handler: HeroInfoCommand
+  HandlerConfig:
+    MinSkillToShow: 100
+    ShowAchievements: false
+    ShowAttributes: false
+    ShowCivilianInventory: false
+    ShowEquipment: false
+    ShowGeneral: false
+    ShowGold: false
+    ShowInventory: false
+    ShowPowers: false
+    ShowRetinue: false
+    ShowRetinueList: false
+    ShowStorage: true
+    ShowTopSkills: false
+    ShowTrackedStats: false
+  Help: ''
+  HideHelp: false
+  ID: a0b89b07-f834-43e2-92df-51e975c2c829
+  Name: customs
+  RespondInOverlay: true
+  RespondInTwitch: false
 DisableAutomaticFulfillment: false
 GlobalConfigs:
 - Config:
@@ -618,6 +588,7 @@ GlobalConfigs:
       XPGain: 0
     AllowDeath: true
     ApplyDeathChanceToAllHeroes: true
+    CustomItemLimit: 8
     CustomRewardModifiers:
       AmmoDamage:
         Max: 20
