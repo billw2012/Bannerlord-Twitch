@@ -7,47 +7,47 @@
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- ActivePowerGroupItem -->
         <!-- Active Power Group Item -->
-        <string id="4xEkPMIy" text="Gruppengegenstand Wirkleistung" original="Active Power Group Item"/>
+        <string id="4xEkPMIy" text="Akive Fähigkeit Gruppen Gegenstand" original="Active Power Group Item"/>
         <!-- Power -->
-        <string id="HGDApoLL" text="Leistung" original="Power"/>
+        <string id="HGDApoLL" text="Fähigkeit" original="Power"/>
         <!-- ActivePowerGroup -->
         <!-- Active Power Group -->
-        <string id="HvTIrx0b" text="Wirkleistungsgruppe" original="Active Power Group"/>
+        <string id="HvTIrx0b" text="Aktive Fähigkeit Gruppe" original="Active Power Group"/>
         <!-- The name of the power: how the power will be described in messages -->
-        <string id="EvVyh3WM" text="Der Name der Macht: wie die Macht in Nachrichten beschrieben wird" original="The name of the power: how the power will be described in messages"/>
+        <string id="EvVyh3WM" text="Der Name der Fähigkeit: wie die Fähigkeit in Nachrichten beschrieben wird" original="The name of the power: how the power will be described in messages"/>
         <!-- Powers -->
-        <string id="acLMixuK" text="Befugnisse" original="Powers"/>
+        <string id="acLMixuK" text="Fähigkeiten" original="Powers"/>
         <!-- The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure). -->
-        <string id="6aKmeGgU" text="Die verschiedenen Effekte in der Macht. Diese können auch angepasste Freischaltanforderungen haben, sodass Sie Klassen haben können, die im Laufe der Zeit (oder durch jede andere Maßnahme) stärker (oder schwächer!) werden." original="The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure)."/>
+        <string id="6aKmeGgU" text="Die verschiedenen Effekte der Fähigkeiten. Diese können auch angepasste Freischaltanforderungen haben, sodass Sie Klassen haben können, die im Laufe der Zeit (oder durch jede andere Maßnahme) stärker (oder schwächer!) werden." original="The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure)."/>
         <!-- ActivateEffect -->
-        <string id="ticZtKY4" text="AktiviereEffekt" original="ActivateEffect"/>
+        <string id="ticZtKY4" text="AktiviereFähigkeit" original="ActivateEffect"/>
         <!-- Particles/sound effects to play when this power group is activated -->
-        <string id="YWHa7H42" text="Partikel/Soundeffekte zum Abspielen, wenn diese Energiegruppe aktiviert ist" original="Particles/sound effects to play when this power group is activated"/>
+        <string id="YWHa7H42" text="Partikel/Soundeffekte zum Abspielen, wenn diese Fähigkeitsgruppe aktiviert ist" original="Particles/sound effects to play when this power group is activated"/>
         <!-- DeactivateEffect -->
         <string id="MXnon4pc" text="Effekt deaktivieren" original="DeactivateEffect"/>
         <!-- Particles/sound effects to play when this power group is deactivated -->
-        <string id="V9fqIgvH" text="Partikel/Soundeffekte zum Abspielen, wenn diese Energiegruppe deaktiviert ist" original="Particles/sound effects to play when this power group is deactivated"/>
+        <string id="V9fqIgvH" text="Partikel/Soundeffekte zum Abspielen, wenn diese Fähigkeitsgruppe deaktiviert ist" original="Particles/sound effects to play when this power group is deactivated"/>
         <!-- (no power) -->
-        <string id="ddNSQjWq" text="(keine Energie)" original="(no power)"/>
+        <string id="ddNSQjWq" text="(keine Fähigkeit)" original="(no power)"/>
         <!-- Not allowed in tournaments! -->
         <string id="2NnCGjyI" text="Bei Turnieren nicht erlaubt!" original="Not allowed in tournaments!"/>
         <!-- No powers! -->
-        <string id="asncu3BX" text="Keine Befugnisse!" original="No powers!"/>
+        <string id="asncu3BX" text="Keine Fähigkeiten!" original="No powers!"/>
         <!-- Powers not allowed in tournaments! -->
-        <string id="NMSDeunS" text="In Turnieren nicht erlaubte Kräfte!" original="Powers not allowed in tournaments!"/>
+        <string id="NMSDeunS" text="In Turnieren sind Kräfte nicht erlaubt!" original="Powers not allowed in tournaments!"/>
         <!-- {PowerName} expired! -->
         <string id="xyvCYxTD" text="{PowerName} abgelaufen!" original="{PowerName} expired!"/>
         <!-- {PowerName} activated! -->
         <string id="WDfytZ7z" text="{PowerName} aktiviert!" original="{PowerName} activated!"/>
         <!-- DurationMissionHeroPowerDefBase -->
         <!-- Power Duration Seconds -->
-        <string id="F03TlOOV" text="Leistungsdauer Sekunden" original="Power Duration Seconds"/>
+        <string id="F03TlOOV" text="Fähigkeitsdauer Sekunden" original="Power Duration Seconds"/>
         <!-- Pfx -->
         <string id="VS9ITIST" text="Pfx" original="Pfx"/>
         <!-- Duration the power will last for (when used as an active power), in seconds -->
-        <string id="km0QRxRs" text="Dauer der Leistung (bei Verwendung als Wirkleistung), in Sekunden" original="Duration the power will last for (when used as an active power), in seconds"/>
+        <string id="km0QRxRs" text="Dauer der Fähigkeit (bei Verwendung als aktive Fähigkeit), in Sekunden" original="Duration the power will last for (when used as an active power), in seconds"/>
         <!-- Effects to apply to the agent while the power is active -->
-        <string id="xmz0TzN7" text="Effekte, die auf den Agenten angewendet werden sollen, während der Strom aktiv ist" original="Effects to apply to the agent while the power is active"/>
+        <string id="xmz0TzN7" text="Effekte, die auf den Agenten angewendet werden sollen, während die Fähigkeit aktiv ist" original="Effects to apply to the agent while the power is active"/>
         <!-- No mission is active! -->
         <string id="u48yBW5b" text="Keine Mission ist aktiv!" original="No mission is active!"/>
         <!-- Mission has not started yet! -->
@@ -58,30 +58,30 @@
         <string id="C3Ag25zz" text="Bereits aktiv!" original="Already active!"/>
         <!-- HeroPowerDefBase -->
         <!-- Name of the power that will be shown in game -->
-        <string id="lzvJC8bf" text="Name der Macht, die im Spiel angezeigt wird" original="Name of the power that will be shown in game"/>
+        <string id="lzvJC8bf" text="Name der Fähigkeit, die im Spiel angezeigt wird" original="Name of the power that will be shown in game"/>
         <!-- Enter Name Here -->
         <string id="aQgYs3mI" text="Namen hier eingeben" original="Enter Name Here"/>
         <!-- HitBehavior -->
         <!-- Knock Back Chance Percent -->
-        <string id="mtZMAwbM" text="Knock-Back-Chance in Prozent" original="Knock Back Chance Percent"/>
+        <string id="mtZMAwbM" text="Zurückstoßen Chance in Prozent" original="Knock Back Chance Percent"/>
         <!-- Percent chance (0 to 100) for target to get knocked back -->
         <string id="wPgAMF92" text="Prozentuale Chance (0 bis 100) für das Ziel, zurückgestoßen zu werden" original="Percent chance (0 to 100) for target to get knocked back"/>
         <!-- Knock Down Chance Percent -->
-        <string id="9dla8vV1" text="Knock-Down-Chance in Prozent" original="Knock Down Chance Percent"/>
+        <string id="9dla8vV1" text="Niederschlagen Chance in Prozent" original="Knock Down Chance Percent"/>
         <!-- Percent chance (0 to 100) for target to get knocked down -->
         <string id="MTqyFfDc" text="Prozentuale Chance (0 bis 100), dass das Ziel niedergeschlagen wird" original="Percent chance (0 to 100) for target to get knocked down"/>
         <!-- Shrug Off Chance Percent -->
-        <string id="dCRbuRf8" text="Shrug-Off-Chance in Prozent" original="Shrug Off Chance Percent"/>
+        <string id="dCRbuRf8" text="Widerstehen Chance in Prozent" original="Shrug Off Chance Percent"/>
         <!-- Percent chance (0 to 100) for target to shrug off blow (not visably reacting to it, damage will still apply) -->
-        <string id="adHeasi7" text="Prozentuale Chance (0 bis 100) für das Ziel, den Schlag abzuschütteln (nicht sichtbar darauf zu reagieren, Schaden wird weiterhin angewendet)" original="Percent chance (0 to 100) for target to shrug off blow (not visably reacting to it, damage will still apply)"/>
+        <string id="adHeasi7" text="Prozentuale Chance (0 bis 100) für das Ziel, dem Schlag widerstehen (nicht sichtbar darauf zu reagieren, Schaden wird weiterhin angewendet)" original="Percent chance (0 to 100) for target to shrug off blow (not visably reacting to it, damage will still apply)"/>
         <!-- Makes Rear Chance Percent -->
-        <string id="okiEp8HU" text="Macht hintere Chance in Prozent" original="Makes Rear Chance Percent"/>
+        <string id="okiEp8HU" text="Aufrichten Chance in Prozent" original="Makes Rear Chance Percent"/>
         <!-- Percent chance (0 to 100) for target to rear (if it is a mount) -->
         <string id="Cp9IZN6J" text="Prozentuale Chance (0 bis 100) für das Ziel, sich aufzurichten (wenn es sich um ein Reittier handelt)" original="Percent chance (0 to 100) for target to rear (if it is a mount)"/>
         <!-- Dismount Chance -->
-        <string id="lVXn7z6U" text="Abstieg Chance" original="Dismount Chance"/>
+        <string id="lVXn7z6U" text="Abwerfen Chance" original="Dismount Chance"/>
         <!-- Percent chance (0 to 100) for target to be dismounted -->
-        <string id="RrhP0L2t" text="Prozentuale Chance (0 bis 100) für das Absteigen des Ziels" original="Percent chance (0 to 100) for target to be dismounted"/>
+        <string id="RrhP0L2t" text="Prozentuale Chance (0 bis 100) für das Abwerfen des Ziels" original="Percent chance (0 to 100) for target to be dismounted"/>
         <!-- (inactive) -->
         <string id="cM8NOj2B" text="(inaktiv)" original="(inactive)"/>
         <!-- Knock Back -->
@@ -89,24 +89,24 @@
         <!-- Knock Down -->
         <string id="4iroX5zj" text="Niederschlagen" original="Knock Down"/>
         <!-- Shrug Off -->
-        <string id="DNqblCEf" text="Achselzucken" original="Shrug Off"/>
+        <string id="DNqblCEf" text="Widerstehen" original="Shrug Off"/>
         <!-- Mount Rear -->
-        <string id="F0o4A3mp" text="Montage hinten" original="Mount Rear"/>
+        <string id="F0o4A3mp" text="Aufrichten" original="Mount Rear"/>
         <!-- Dismount -->
-        <string id="bEO48IR4" text="Abgang" original="Dismount"/>
+        <string id="bEO48IR4" text="Abwerfen" original="Dismount"/>
         <!-- PassivePowerGroupItem -->
         <!-- Passive Power Group Item -->
-        <string id="sURt2dSt" text="Passiver Energiegruppengegenstand" original="Passive Power Group Item"/>
+        <string id="sURt2dSt" text="Passive Fähigkeiten Gruppen Gegenstand" original="Passive Power Group Item"/>
         <!-- Power -->
-        <string id="KHoc6FK5" text="Leistung" original="Power"/>
+        <string id="KHoc6FK5" text="Fähigkeit" original="Power"/>
         <!-- (no power) -->
-        <string id="8mrSEyNk" text="(keine Energie)" original="(no power)"/>
+        <string id="8mrSEyNk" text="(keine Fähigkeit)" original="(no power)"/>
         <!-- The name of the power: how the power will be described in messages -->
-        <string id="QsdqVpNE" text="Der Name der Macht: wie die Macht in Nachrichten beschrieben wird" original="The name of the power: how the power will be described in messages"/>
+        <string id="QsdqVpNE" text="Der Name der Fähigkeit: wie die Fähigkeit in Nachrichten beschrieben wird" original="The name of the power: how the power will be described in messages"/>
         <!-- Powers -->
-        <string id="61fc3xTQ" text="Befugnisse" original="Powers"/>
+        <string id="61fc3xTQ" text="Fähigkeiten" original="Powers"/>
         <!-- The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure). -->
-        <string id="wtD908lt" text="Die verschiedenen Effekte in der Macht. Diese können auch angepasste Freischaltanforderungen haben, sodass Sie Klassen haben können, die im Laufe der Zeit (oder durch jede andere Maßnahme) stärker (oder schwächer!) werden." original="The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure)."/>
+        <string id="wtD908lt" text="Die verschiedenen Effekte der Fähigkeit. Diese können auch angepasste Freischaltanforderungen haben, sodass Sie Klassen haben können, die im Laufe der Zeit (oder durch jede andere Maßnahme) stärker (oder schwächer!) werden." original="The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure)."/>
         <!-- PowerGroupItemBase -->
         <!-- Requirements -->
         <string id="WLtUn4t7" text="Anforderungen" original="Requirements"/>
@@ -122,7 +122,7 @@
         <!-- What percentage of damage done to absorb as health -->
         <string id="8SE2asYO" text="Wie viel Prozent des Schadens wird als Gesundheit absorbiert?" original="What percentage of damage done to absorb as health"/>
         <!-- (disabled) -->
-        <string id="41sZdkDw" text="(Behinderte)" original="(disabled)"/>
+        <string id="41sZdkDw" text="(deaktiviert)" original="(disabled)"/>
         <!-- Absorb {DamageToAbsorbPercent}% of damage dealt as HP -->
         <string id="04WkC9p6" text="Absorbiere {DamageToAbsorbPercent}% des verursachten Schadens als HP" original="Absorb {DamageToAbsorbPercent}% of damage dealt as HP"/>
         <!-- AddDamagePower -->
@@ -137,7 +137,7 @@
         <!-- Damage To Add -->
         <string id="fPmJAchN" text="Schaden zum Hinzufügen" original="Damage To Add"/>
         <!-- How much damage to add -->
-        <string id="lEbWq1of" text="Wie viel Schaden muss hinzugefügt werden?" original="How much damage to add"/>
+        <string id="lEbWq1of" text="Wie viel Schaden soll hinzugefügt werden?" original="How much damage to add"/>
         <!-- Add Hit Behavior -->
         <string id="RnGUD1jl" text="Trefferverhalten hinzufügen" original="Add Hit Behavior"/>
         <!-- Behaviors to add to the damage -->
@@ -145,7 +145,7 @@
         <!-- Remove Hit Behavior -->
         <string id="shUGx48n" text="Trefferverhalten entfernen" original="Remove Hit Behavior"/>
         <!-- Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always stunned when hit) -->
-        <string id="feiVAent" text="Verhaltensweisen, die vom Schaden entfernt werden sollen (z. B. Shrug Off entfernen, um sicherzustellen, dass das Ziel bei einem Treffer immer betäubt ist)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always stunned when hit)"/>
+        <string id="feiVAent" text="Verhaltensweisen, die vom Schaden entfernt werden sollen (z. B. Widerstehen entfernen, um sicherzustellen, dass das Ziel bei einem Treffer immer betäubt ist)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always stunned when hit)"/>
         <!-- Armor To Ignore Percent -->
         <string id="w5j3JYog" text="Rüstung zum Ignorieren von Prozent" original="Armor To Ignore Percent"/>
         <!-- What fraction (0 to 1) of armor to ignore when applying damage -->
@@ -159,31 +159,31 @@
         <!-- Chance (0 to 1) that the hit will shatter shield if it is blocked -->
         <string id="MaDRQPhh" text="Chance (0 bis 1), dass der Treffer den Schild zertrümmert, wenn er geblockt wird" original="Chance (0 to 1) that the hit will shatter shield if it is blocked"/>
         <!-- Cut Through Chance Percent -->
-        <string id="xt70CI4q" text="Cut-Through-Chance in Prozent" original="Cut Through Chance Percent"/>
+        <string id="xt70CI4q" text="Durchschneiden Chance in Prozent" original="Cut Through Chance Percent"/>
         <!-- Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each collision, so a cut through chance of 1 will result in cutting through everyone with every hit) -->
         <string id="uAsNXThU" text="Chance (0 bis 1), dass der Treffer jede Einheit, auf die er trifft, durchschneidet (bewertet bei jeder Kollision, so dass eine Durchschlagswahrscheinlichkeit von 1 dazu führt, dass jeder bei jedem Treffer durchschneidet)" original="Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each collision, so a cut through chance of 1 will result in cutting through everyone with every hit)"/>
         <!-- Stagger Chance Percent -->
-        <string id="XxLPeI3i" text="Staffelungswahrscheinlichkeit in Prozent" original="Stagger Chance Percent"/>
+        <string id="XxLPeI3i" text="Taumeln Chance in Prozent" original="Stagger Chance Percent"/>
         <!-- Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR stagger, it can't do both, cut through chance is evaluated before this one) -->
-        <string id="8N18Zs1O" text="Chance (0 bis 1), dass der Treffer den getroffenen Agenten taumelt (der Treffer kann entweder durchschneiden ODER taumeln, er kann nicht beides, die Durchgangswahrscheinlichkeit wird vor diesem bewertet)" original="Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR stagger, it can't do both, cut through chance is evaluated before this one)"/>
+        <string id="8N18Zs1O" text="Chance (0 bis 1), dass der Treffer den getroffenen Agenten taumeln läasst (der Treffer kann entweder durchschneiden ODER taumeln, er kann nicht beides, die Durchgangswahrscheinlichkeit wird vor diesem bewertet)" original="Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR stagger, it can't do both, cut through chance is evaluated before this one)"/>
         <!-- AoE -->
         <string id="O4AUEtAO" text="AoE" original="AoE"/>
         <!-- Area of Effect damage to apply -->
         <string id="5ke30xUG" text="Anzuwendender Wirkungsbereich-Schaden" original="Area of Effect damage to apply"/>
         <!-- Apply Against Non Heroes -->
-        <string id="0WAJwEvc" text="Bewerben Sie sich gegen Nicht-Helden" original="Apply Against Non Heroes"/>
+        <string id="0WAJwEvc" text="Auf Nicht-Helden anwenden" original="Apply Against Non Heroes"/>
         <!-- Whether to apply this bonus damage against normal troops -->
         <string id="guccTOSR" text="Ob dieser Bonusschaden gegen normale Truppen angewendet werden soll" original="Whether to apply this bonus damage against normal troops"/>
         <!-- Apply Against Heroes -->
-        <string id="mMcjJkph" text="Bewerben Sie sich gegen Helden" original="Apply Against Heroes"/>
+        <string id="mMcjJkph" text="Auf Helden anwenden" original="Apply Against Heroes"/>
         <!-- Whether to apply this bonus damage against heroes -->
         <string id="gYU28V1d" text="Ob dieser Bonusschaden gegen Helden angewendet werden soll" original="Whether to apply this bonus damage against heroes"/>
         <!-- Apply Against Adopted Heroes -->
-        <string id="En7CxSs6" text="Bewerben Sie sich gegen adoptierte Helden" original="Apply Against Adopted Heroes"/>
+        <string id="En7CxSs6" text="Auf adoptierte Helden anwenden" original="Apply Against Adopted Heroes"/>
         <!-- Whether to apply this bonus damage against adopted heroes -->
         <string id="DcMwYE76" text="Ob dieser Bonusschaden gegen adoptierte Helden angewendet werden soll" original="Whether to apply this bonus damage against adopted heroes"/>
         <!-- Apply Against Player -->
-        <string id="s3sYJipB" text="Gegen Spieler bewerben" original="Apply Against Player"/>
+        <string id="s3sYJipB" text="Auf Spieler anwenden" original="Apply Against Player"/>
         <!-- Whether to apply this bonus damage against the player -->
         <string id="1sYObRIg" text="Ob dieser Bonusschaden gegen den Spieler angewendet werden soll" original="Whether to apply this bonus damage against the player"/>
         <!-- Ranged -->
@@ -195,9 +195,9 @@
         <!-- Whether to apply this bonus damage when using melee weapons -->
         <string id="TiGzhjIl" text="Ob dieser Bonusschaden bei der Verwendung von Nahkampfwaffen angewendet werden soll" original="Whether to apply this bonus damage when using melee weapons"/>
         <!-- Charge -->
-        <string id="JR0Rdbfj" text="Aufladen" original="Charge"/>
+        <string id="JR0Rdbfj" text="Anstürmen" original="Charge"/>
         <!-- Whether to apply this bonus damage from charge damage -->
-        <string id="65y7VWcS" text="Ob dieser Bonusschaden durch Aufladungsschaden angewendet werden soll" original="Whether to apply this bonus damage from charge damage"/>
+        <string id="65y7VWcS" text="Ob dieser Bonusschaden durch Ansturmschaden angewendet werden soll" original="Whether to apply this bonus damage from charge damage"/>
         <!-- Missile Trail Particle Effect -->
         <string id="2GaGbTYR" text="Partikeleffekt der Raketenspur" original="Missile Trail Particle Effect"/>
         <!-- Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing fire/smoke effect) -->
@@ -211,7 +211,7 @@
         <!-- Heroes -->
         <string id="qWIzKnVw" text="Helden" original="Heroes"/>
         <!-- Adopted -->
-        <string id="djDGvCdQ" text="Angenommen" original="Adopted"/>
+        <string id="djDGvCdQ" text="Adoptierte" original="Adopted"/>
         <!-- Player -->
         <string id="8nDvdozx" text="Spieler" original="Player"/>
         <!-- Ranged -->
@@ -219,11 +219,11 @@
         <!-- Melee -->
         <string id="ibrr3fCK" text="Nahkampf" original="Melee"/>
         <!-- Charge -->
-        <string id="X8RrfG7V" text="Aufladen" original="Charge"/>
+        <string id="X8RrfG7V" text="Anstürmen" original="Charge"/>
         <!-- {DamageModifierPercent}% dmg -->
-        <string id="LbHOSj1l" text="{DamageModifierPercent}% Schaden" original="{DamageModifierPercent}% dmg"/>
+        <string id="LbHOSj1l" text="{DamageModifierPercent}% schaden" original="{DamageModifierPercent}% dmg"/>
         <!-- {DamageToAdd} dmg -->
-        <string id="mBmFK0OK" text="{DamageToAdd} dmg" original="{DamageToAdd} dmg"/>
+        <string id="mBmFK0OK" text="{DamageToAdd} schaden" original="{DamageToAdd} dmg"/>
         <!-- Add: {AddHitBehavior} -->
         <string id="ybyWP8jd" text="Hinzufügen: {AddHitBehavior}" original="Add: {AddHitBehavior}"/>
         <!-- Remove: {RemoveHitBehavior} -->
@@ -233,26 +233,26 @@
         <!-- {UnblockableChancePercent}% Unblockable -->
         <string id="TkGVRcl0" text="{UnblockableChancePercent}% nicht blockierbar" original="{UnblockableChancePercent}% Unblockable"/>
         <!-- {ShatterShieldChancePercent}% Shatter Shield -->
-        <string id="xHMYpCMY" text="{ShatterShieldChancePercent}% Splitterschild" original="{ShatterShieldChancePercent}% Shatter Shield"/>
+        <string id="xHMYpCMY" text="{ShatterShieldChancePercent}% Schild zerschmettern" original="{ShatterShieldChancePercent}% Shatter Shield"/>
         <!-- {CutThroughChancePercent}% Cut Through -->
         <string id="I3BiKkXC" text="{CutThroughChancePercent}% durchschneiden" original="{CutThroughChancePercent}% Cut Through"/>
         <!-- {StaggerChancePercent}% Stagger -->
-        <string id="NetyrPKo" text="{StaggerChancePercent}% Staffelung" original="{StaggerChancePercent}% Stagger"/>
+        <string id="NetyrPKo" text="{StaggerChancePercent}% Taumeln" original="{StaggerChancePercent}% Stagger"/>
         <!-- AoE: {AoEDescription} -->
         <string id="A6Vulmvy" text="Wirkungsbereich: {AoEDescription}" original="AoE: {AoEDescription}"/>
         <!-- {Modifiers} from {AppliesFrom} against {AppliesAgainst} -->
-        <string id="UhEtVOWV" text="{Modifiers} from {AppliesFrom} against {AppliesAgainst}" original="{Modifiers} from {AppliesFrom} against {AppliesAgainst}"/>
+        <string id="UhEtVOWV" text="{Modifiers} von {AppliesFrom} gegen {AppliesAgainst}" original="{Modifiers} from {AppliesFrom} against {AppliesAgainst}"/>
         <!-- {Modifiers} from {AppliesFrom} -->
-        <string id="GrP7yeqP" text="{Modifiers} from {AppliesFrom}" original="{Modifiers} from {AppliesFrom}"/>
+        <string id="GrP7yeqP" text="{Modifiers} von {AppliesFrom}" original="{Modifiers} from {AppliesFrom}"/>
         <!-- {Modifiers} against {AppliesAgainst} -->
-        <string id="dAObdN2r" text="{Modifiers} against {AppliesAgainst}" original="{Modifiers} against {AppliesAgainst}"/>
+        <string id="dAObdN2r" text="{Modifiers} gegen {AppliesAgainst}" original="{Modifiers} against {AppliesAgainst}"/>
         <!-- {Modifiers} -->
         <string id="ZXm0fYfO" text="{Modifiers}" original="{Modifiers}"/>
         <!-- AreaOfEffectDef -->
         <!-- Range -->
-        <string id="DMsD70Yc" text="Bereich" original="Range"/>
+        <string id="DMsD70Yc" text="Reichweite" original="Range"/>
         <!-- The radius to apply the damage in -->
-        <string id="yjmcKGuH" text="Der Radius, um den Schaden in anzuwenden" original="The radius to apply the damage in"/>
+        <string id="yjmcKGuH" text="Der Radius in de Schaden angewendet werden soll " original="The radius to apply the damage in"/>
         <!-- Only On Hit -->
         <string id="u1EgbhAw" text="Nur bei Treffer" original="Only On Hit"/>
         <!-- Only apply the damage if the attack hits an agent (as opposed to the ground, e.g. for arrows) -->
@@ -274,14 +274,14 @@
         <!-- Flags to apply to the damage -->
         <string id="Ud0EJmY0" text="Markierungen für den Schaden" original="Flags to apply to the damage"/>
         <!-- {Distance}m: {Damage}dmg -->
-        <string id="GRtsL26e" text="{Distance}m: {Damage}dmg" original="{Distance}m: {Damage}dmg"/>
+        <string id="GRtsL26e" text="{Distance}Meter: {Damage}Schaden" original="{Distance}m: {Damage}dmg"/>
         <!-- {Damage}dmg in {Distance}m with {HitBehavior} -->
-        <string id="S5DNQWpQ" text="{Damage}dmg in {Distance}m with {HitBehavior}" original="{Damage}dmg in {Distance}m with {HitBehavior}"/>
+        <string id="S5DNQWpQ" text="{Damage}Schaden in {Distance}Meter mit {HitBehavior}" original="{Damage}dmg in {Distance}m with {HitBehavior}"/>
         <!-- {Damage}dmg in {Distance}m -->
-        <string id="MzOdRykr" text="{Damage}dmg in {Distance}m" original="{Damage}dmg in {Distance}m"/>
+        <string id="MzOdRykr" text="{Damage}Schaden in {Distance}Meter" original="{Damage}dmg in {Distance}m"/>
         <!-- AddHealthPower -->
         <!-- Add Health Power -->
-        <string id="ZbxNmvem" text="Gesundheitskraft hinzufügen" original="Add Health Power"/>
+        <string id="ZbxNmvem" text="Gesundheitsfähigkeit hinzufügen" original="Add Health Power"/>
         <!-- Adds fixed or relative amount of extra HP to the hero when they spawn -->
         <string id="NlJXiSkn" text="Fügt dem Helden beim Spawnen eine feste oder relative Menge an zusätzlichen HP hinzu" original="Adds fixed or relative amount of extra HP to the hero when they spawn"/>
         <!-- Health Modifier Percent -->
@@ -294,7 +294,7 @@
         <string id="sprkIlxQ" text="Wie viel HP muss hinzugefügt werden (wird nach dem Modifikator angewendet)" original="How much HP to add (applied after Modifier)"/>
         <!-- ReflectDamagePower -->
         <!-- Reflect Damage Power -->
-        <string id="7d0IdABV" text="Schadenskraft reflektieren" original="Reflect Damage Power"/>
+        <string id="7d0IdABV" text="Schaden reflektieren Fähigkeit" original="Reflect Damage Power"/>
         <!-- Adds fixed or relative amount of extra HP to the hero when they spawn -->
         <string id="jcNZx1M0" text="Fügt dem Helden beim Spawnen eine feste oder relative Menge an zusätzlichen HP hinzu" original="Adds fixed or relative amount of extra HP to the hero when they spawn"/>
         <!-- Reflect Percent -->
@@ -310,7 +310,7 @@
         <!-- Hit behavior for the reflected damage -->
         <string id="SHlCPdpp" text="Trefferverhalten für den reflektierten Schaden" original="Hit behavior for the reflected damage"/>
         <!-- Reflect {ReflectPercent}% damage with {HitBehavior} -->
-        <string id="vLGJf7ow" text="Reflektiere {ReflectPercent}% damage with {HitBehavior}" original="Reflect {ReflectPercent}% damage with {HitBehavior}"/>
+        <string id="vLGJf7ow" text="Reflektiere {ReflectPercent}% Schaden mit {HitBehavior}" original="Reflect {ReflectPercent}% damage with {HitBehavior}"/>
         <!-- Reflect {ReflectPercent}% damage -->
         <string id="12tMrCY7" text="Reflektiere {ReflectPercent}% Schaden" original="Reflect {ReflectPercent}% damage"/>
         <!-- Reflect -->
@@ -319,16 +319,16 @@
         <string id="yfmwtdMC" text="Reflektierter Schaden wird vom eingehenden Schaden abgezogen" original="Reflected damage is subtracted from incoming damage"/>
         <!-- StatModifyPower -->
         <!-- Stat Modify Power -->
-        <string id="pVdYFJNQ" text="Stat-Modifikationskraft" original="Stat Modify Power"/>
+        <string id="pVdYFJNQ" text="Stat Modifikationsfähigkeit" original="Stat Modify Power"/>
         <!-- Applies modifiers to various character stats -->
         <string id="AOaW2ORo" text="Wendet Modifikatoren auf verschiedene Charakterstatistiken an" original="Applies modifiers to various character stats"/>
         <!-- Modifiers -->
         <string id="9gTYAifL" text="Modifikatoren" original="Modifiers"/>
         <!-- What hero stat to modify -->
-        <string id="URinrDNq" text="Welche Heldenstatistik muss geändert werden?" original="What hero stat to modify"/>
+        <string id="URinrDNq" text="Welche Heldenstatistik soll geändert werden?" original="What hero stat to modify"/>
         <!-- TakeDamagePower -->
         <!-- Take Damage Power -->
-        <string id="UJHquN95" text="Nimm Schadenskraft" original="Take Damage Power"/>
+        <string id="UJHquN95" text="Schaden nehmen Fähigkeit" original="Take Damage Power"/>
         <!-- Changes the effects of incoming damage -->
         <string id="F3TxyV4d" text="Ändert die Auswirkungen von eingehendem Schaden" original="Changes the effects of incoming damage"/>
         <!-- Damage Modifier Percent -->
@@ -348,7 +348,7 @@
         <!-- Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit) -->
         <string id="oA2TrarN" text="Verhaltensweisen, die vom Schaden entfernt werden sollen (z. B. Shrug Off entfernen, um sicherzustellen, dass der Held bei einem Treffer immer betäubt ist)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit)"/>
         <!-- Armor To Ignore Percent -->
-        <string id="9Lwkwni0" text="Rüstung zum Ignorieren von Prozent" original="Armor To Ignore Percent"/>
+        <string id="9Lwkwni0" text="Rüstung zum Ignorieren in Prozent" original="Armor To Ignore Percent"/>
         <!-- What fraction (0 to 1) of armor to ignore when applying damage -->
         <string id="wSkoeVw1" text="Welcher Bruchteil (0 bis 1) der Rüstung soll beim Anwenden von Schaden ignoriert werden?" original="What fraction (0 to 1) of armor to ignore when applying damage"/>
         <!-- {DamageModifierPercent}% damage -->

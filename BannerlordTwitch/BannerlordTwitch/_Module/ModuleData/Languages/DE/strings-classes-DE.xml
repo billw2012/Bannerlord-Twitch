@@ -17,7 +17,7 @@
         <!-- archer -->
         <string id="4tflp34a" text="Bogenschütze" original="archer"/>
         <!-- Fleet Footed -->
-        <string id="NE9Li2Hb" text="Flottenfuß" original="Fleet Footed"/>
+        <string id="NE9Li2Hb" text="Leichtfüßig" original="Fleet Footed"/>
         <!-- Explosive Arrows -->
         <string id="xgnH5owv" text="Explosive Pfeile" original="Explosive Arrows"/>
         <!-- heavyarcher -->
@@ -45,19 +45,19 @@
         <!-- Trample -->
         <string id="mmeJSrm9" text="Trampeln" original="Trample"/>
         <!-- camelry -->
-        <string id="mJ8RVORq" text="Kamelien" original="camelry"/>
+        <string id="mJ8RVORq" text="Kamelreiter" original="camelry"/>
         <!-- A Good Camel -->
         <string id="atGMPeNF" text="Ein gutes Kamel" original="A Good Camel"/>
         <!-- Explosive Arrows -->
         <string id="YpIUHASp" text="Explosive Pfeile" original="Explosive Arrows"/>
         <!-- horsearcher -->
-        <string id="p5qJfkkp" text="Bogenschütze" original="horsearcher"/>
+        <string id="p5qJfkkp" text="Berittener Bogenschütze" original="horsearcher"/>
         <!-- Mounted Archery -->
         <string id="zxgdfSIS" text="Berittenes Bogenschießen" original="Mounted Archery"/>
         <!-- Heavy Arrows -->
         <string id="FrX7AiyI" text="Schwere Pfeile" original="Heavy Arrows"/>
         <!-- camelarcher -->
-        <string id="HreZWoyd" text="Kameltreiber" original="camelarcher"/>
+        <string id="HreZWoyd" text="Kamelreiter Bogenschütze" original="camelarcher"/>
         <!-- Mounted Archery -->
         <string id="szdoTAQj" text="Berittenes Bogenschießen" original="Mounted Archery"/>
         <!-- Break Through -->

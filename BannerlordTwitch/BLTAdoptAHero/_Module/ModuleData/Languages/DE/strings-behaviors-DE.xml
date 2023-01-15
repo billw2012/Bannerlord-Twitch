@@ -7,61 +7,61 @@
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- BLTAdoptAHeroCampaignBehavior -->
         <!-- Compensated @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} invalid custom items -->
-        <string id="hoRPbRrb" text="@{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} ungültige benutzerdefinierte Artikel kompensiert" original="Compensated @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} invalid custom items"/>
+        <string id="hoRPbRrb" text="@{HeroName} mit {GoldAmount}{GoldSymbol} für {CustomItemsCount} ungültige benutzerdefinierte Artikel kompensiert." original="Compensated @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} invalid custom items"/>
         <!-- @{VictimName} {Verb} by @{KillerName}! -->
-        <string id="PCPU0lPX" text="@{VictimName} {Verb} by @{KillerName}!" original="@{VictimName} {Verb} by @{KillerName}!"/>
+        <string id="PCPU0lPX" text="@{VictimName} {Verb} von @{KillerName}!" original="@{VictimName} {Verb} by @{KillerName}!"/>
         <!-- @{KillerName} {Verb}! -->
         <string id="Bji2ULge" text="@{KillerName} {Verb}!" original="@{KillerName} {Verb}!"/>
         <!-- @{HeroName} is now level {Level}! -->
-        <string id="8aTmTvl8" text="@{HeroName} is now level {Level}!" original="@{HeroName} is now level {Level}!"/>
+        <string id="8aTmTvl8" text="@{HeroName} ist jetzt Level {Level}!" original="@{HeroName} is now level {Level}!"/>
         <!-- @{HeroName} was taken prisoner by {PartyName}! -->
-        <string id="4PqVnFWY" text="@{HeroName} was taken prisoner by {PartyName}!" original="@{HeroName} was taken prisoner by {PartyName}!"/>
+        <string id="4PqVnFWY" text="@{HeroName} wurde von {PartyName} gefangen genommen!" original="@{HeroName} was taken prisoner by {PartyName}!"/>
         <!-- @{HeroName} was taken prisoner! -->
         <string id="WeRWLpKn" text="@{HeroName} wurde gefangen genommen!" original="@{HeroName} was taken prisoner!"/>
         <!-- @{HeroName} is no longer a prisoner of {PartyName}! -->
-        <string id="tQANBoTK" text="@{HeroName} is no longer a prisoner of {PartyName}!" original="@{HeroName} is no longer a prisoner of {PartyName}!"/>
+        <string id="tQANBoTK" text="@{HeroName} ist nicht länger Gefangener von {PartyName}!" original="@{HeroName} is no longer a prisoner of {PartyName}!"/>
         <!-- @{HeroName} is no longer a prisoner! -->
         <string id="MQslOwr0" text="@{HeroName} ist kein Gefangener mehr!" original="@{HeroName} is no longer a prisoner!"/>
         <!-- @{HeroName} moved from {FromClanName} to {ToClanName}! -->
-        <string id="SUdnIyfw" text="@{HeroName} moved from {FromClanName} to {ToClanName}!" original="@{HeroName} moved from {FromClanName} to {ToClanName}!"/>
+        <string id="SUdnIyfw" text="@{HeroName} bewegte sich von {FromClanName} nach {ToClanName}!" original="@{HeroName} moved from {FromClanName} to {ToClanName}!"/>
         <!-- deceased -->
         <string id="ZtZL0lbX" text="verstorben" original="deceased"/>
         <!-- retired -->
         <string id="ISrFBorj" text="im Ruhestand" original="retired"/>
         <!-- {OldName} is {RetireType}! -->
-        <string id="2PHPNmuv" text="{OldName} is {RetireType}!" original="{OldName} is {RetireType}!"/>
+        <string id="2PHPNmuv" text="{OldName} ist {RetireType}!" original="{OldName} is {RetireType}!"/>
         <!-- Dead or retired hero {OldName} renamed to {HeroName} -->
-        <string id="wzpkEmTL" text="Toter oder pensionierter Held {OldName} renamed to {HeroName}" original="Dead or retired hero {OldName} renamed to {HeroName}"/>
+        <string id="wzpkEmTL" text="Toter oder pensionierter Held {OldName} umbenannt zu {HeroName}." original="Dead or retired hero {OldName} renamed to {HeroName}"/>
         <!-- You can't bid on your own item -->
-        <string id="2cbVbW91" text="Sie können nicht auf Ihren eigenen Artikel bieten" original="You can't bid on your own item"/>
+        <string id="2cbVbW91" text="Sie können nicht auf Ihren eigenen Artikel bieten." original="You can't bid on your own item"/>
         <!-- Bid of {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon} -->
-        <string id="rbhzuJLm" text="Gebot von {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon}" original="Bid of {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon}"/>
+        <string id="rbhzuJLm" text="Gebot von {Bid}{GoldIcon} erreicht nicht den Mindestpreis von {ReservePrice}{GoldIcon}" original="Bid of {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon}"/>
         <!-- Another bid at {Bid}{GoldIcon} already exists -->
         <string id="83uZcndH" text="Ein weiteres Gebot bei {Bid}{GoldIcon} ist bereits vorhanden" original="Another bid at {Bid}{GoldIcon} already exists"/>
         <!-- You already bid more ({Bid}{GoldIcon}), you can only raise your bid -->
         <string id="qeLF80xw" text="Sie bieten bereits mehr ({Bid}{GoldIcon}), Sie können Ihr Gebot nur erhöhen" original="You already bid more ({Bid}{GoldIcon}), you can only raise your bid"/>
         <!-- You cannot cover a bid of {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon} -->
-        <string id="Cqi0iYNR" text="Sie können ein Gebot von {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon} nicht abdecken" original="You cannot cover a bid of {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon}"/>
+        <string id="Cqi0iYNR" text="Sie können sich ein Gebot von {Bid}{GoldIcon} nicht leisten, Sie besitzen nur {BidderGold}{GoldIcon}" original="You cannot cover a bid of {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon}"/>
         <!-- Bid of {Bid}{GoldIcon} placed! -->
         <string id="M2B9yQ4w" text="Gebot von {Bid}{GoldIcon} abgegeben!" original="Bid of {Bid}{GoldIcon} placed!"/>
         <!-- {Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName}) -->
-        <string id="TeeDJyJ1" text="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})" original="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})"/>
+        <string id="TeeDJyJ1" text="{Time} Sekunden übrig bei der Auktion von: '{ItemName}', höchstes Gebot ist: {HighestBid}{GoldIcon} (@{HighestBidderName})" original="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})"/>
         <!-- {Time} seconds left in auction of '{ItemName}', no bids placed -->
-        <string id="jNkGaKZw" text="{Time} seconds left in auction of '{ItemName}', keine Gebote abgegeben" original="{Time} seconds left in auction of '{ItemName}', no bids placed"/>
+        <string id="jNkGaKZw" text="{Time} Sekunden übrig bei der Auktion von '{ItemName}', keine Gebote abgegeben" original="{Time} seconds left in auction of '{ItemName}', no bids placed"/>
         <!-- Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}. -->
-        <string id="d9ooHVPU" text="Auktion für {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}." original="Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}."/>
+        <string id="d9ooHVPU" text="Auktion von {ItemName} ist BEENDET! Der Gegenstand bleibt bei @{ItemOwnerName}, da der mindestpreis von {ReservePrice}{GoldIcon} nicht erreicht wurde." original="Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}."/>
         <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died. -->
-        <string id="SGuTRcui" text="Auktion für {ItemName} is CANCELLED! @{ItemOwnerName} im Ruhestand oder gestorben." original="Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died."/>
+        <string id="SGuTRcui" text="Auktion für {ItemName} wurde ABGEBROCHEN! @{ItemOwnerName} im Ruhestand oder gestorben." original="Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died."/>
         <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} is no longer in possession of the item. -->
-        <string id="NRV4IstE" text="Auktion für {ItemName} is CANCELLED! @{ItemOwnerName} ist nicht mehr im Besitz des Artikels." original="Auction for {ItemName} is CANCELLED! @{ItemOwnerName} is no longer in possession of the item."/>
+        <string id="NRV4IstE" text="Auktion für {ItemName} wurde ABGEBROCHEN! @{ItemOwnerName} ist nicht mehr im Besitz des Artikels." original="Auction for {ItemName} is CANCELLED! @{ItemOwnerName} is no longer in possession of the item."/>
         <!-- Auction for {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}. -->
-        <string id="jmbMoHta" text="Auktion für {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}." original="Auction for {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}."/>
+        <string id="jmbMoHta" text="Auktion für {ItemName} ist BEENDET! Der Gegenstand geht an @{HighestBidderName} für {HighestBid}{GoldIcon}." original="Auction for {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}."/>
         <!-- No auction in progress -->
-        <string id="Cy38Ckpk" text="Keine Auktion läuft" original="No auction in progress"/>
+        <string id="Cy38Ckpk" text="Es läuft gerade keine Auktion." original="No auction in progress"/>
         <!-- Max Retinue Size -->
         <string id="wAGE7h6U" text="Maximale Gefolgegröße" original="Max Retinue Size"/>
         <!-- Maximum number of units in the retinue. Recommend less than 20, summons to NOT obey the games unit limits. -->
-        <string id="EOGB8EWN" text="Maximale Anzahl von Einheiten im Gefolge. Empfehlen Sie weniger als 20, Aufforderungen, die Einheitenlimits des Spiels NICHT einzuhalten." original="Maximum number of units in the retinue. Recommend less than 20, summons to NOT obey the games unit limits."/>
+        <string id="EOGB8EWN" text="Maximale Anzahl von Einheiten im Gefolge. Empfehlen sind weniger als 20, da Beschwörungen sich NICHT an das Einheitenlimit halten." original="Maximum number of units in the retinue. Recommend less than 20, summons to NOT obey the games unit limits."/>
         <!-- Cost Tier 1 -->
         <string id="VvdtvdQJ" text="Kostenstufe 1" original="Cost Tier 1"/>
         <!-- Gold cost for Tier 1 retinue -->
@@ -117,7 +117,7 @@
         <!-- Elite troops -->
         <string id="3gumlthG" text="Elitetruppen" original="Elite troops"/>
         <!-- Allowed -->
-        <string id="uL7MfYPc" text="Dürfen" original="Allowed"/>
+        <string id="uL7MfYPc" text="Erlaubt" original="Allowed"/>
         <!-- No valid troop types could be found, please check out settings -->
         <string id="bBCyH0vV" text="Es konnten keine gültigen Truppentypen gefunden werden, bitte überprüfen Sie die Einstellungen" original="No valid troop types could be found, please check out settings"/>
         <!-- Spent {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} remaining -->
@@ -135,44 +135,44 @@
         <!-- was wounded in battle -->
         <string id="jp4sldTL" text="wurde im Kampf verwundet" original="was wounded in battle"/>
         <!-- was executed -->
-        <string id="SkFFXsI1" text="wurde ausgeführt" original="was executed"/>
+        <string id="SkFFXsI1" text="wurde hingerichtet" original="was executed"/>
         <!-- was lost -->
-        <string id="HMHdXDaK" text="war verloren" original="was lost"/>
+        <string id="HMHdXDaK" text="wurde verloren" original="was lost"/>
         <!-- was ended -->
-        <string id="lrOJnThZ" text="war beendet" original="was ended"/>
+        <string id="lrOJnThZ" text="wurde beendet" original="was ended"/>
         <!-- BLTTournamentBetMissionBehavior -->
         <!-- Betting is now OPEN for round {RoundIndex} match: {Teams}! -->
-        <string id="wgGkXkyh" text="Das Wetten ist jetzt für Runde {RoundIndex} match: {Teams} geöffnet!" original="Betting is now OPEN for round {RoundIndex} match: {Teams}!"/>
+        <string id="wgGkXkyh" text="Das Wetten ist jetzt ERÖFFNET für Runde {RoundIndex} Match: {Teams} geöffnet!" original="Betting is now OPEN for round {RoundIndex} match: {Teams}!"/>
         <!-- Betting is now OPEN for final match: {Teams}! -->
-        <string id="9BjHfivM" text="Wetten sind jetzt OFFEN für das letzte Spiel: {Teams}!" original="Betting is now OPEN for final match: {Teams}!"/>
+        <string id="9BjHfivM" text="Wetten sind jetzt OFFEN für das finale Spiel: {Teams}!" original="Betting is now OPEN for final match: {Teams}!"/>
         <!-- vs -->
         <string id="ixTCiaiv" text="vs" original="vs"/>
         <!-- blue -->
-        <string id="HrIifwJy" text="Blau" original="blue"/>
+        <string id="HrIifwJy" text="blau" original="blue"/>
         <!-- red -->
         <string id="6ZGgsbe1" text="rot" original="red"/>
         <!-- green -->
-        <string id="qQZlsD8r" text="Grün" original="green"/>
+        <string id="qQZlsD8r" text="grün" original="green"/>
         <!-- yellow -->
-        <string id="JelyrtLJ" text="Gelb" original="yellow"/>
+        <string id="JelyrtLJ" text="gelb" original="yellow"/>
         <!-- Tournament is not active -->
         <string id="FEZ1Opj1" text="Turnier ist nicht aktiv" original="Tournament is not active"/>
         <!-- Betting is disabled -->
         <string id="uNUyZhDk" text="Wetten ist deaktiviert" original="Betting is disabled"/>
         <!-- Betting is closed -->
-        <string id="APTqGlHh" text="Wetten ist geschlossen" original="Betting is closed"/>
+        <string id="APTqGlHh" text="Wetten sind geschlossen" original="Betting is closed"/>
         <!-- Betting is only allowed on the final -->
         <string id="7yFW99H8" text="Wetten sind nur auf das Finale erlaubt" original="Betting is only allowed on the final"/>
         <!-- Betting is not open -->
-        <string id="ATdvJKFI" text="Wetten ist nicht geöffnet" original="Betting is not open"/>
+        <string id="ATdvJKFI" text="Wetten sind nicht geöffnet" original="Betting is not open"/>
         <!-- Team name must be one of {Teams} -->
         <string id="1rUYWox8" text="Der Teamname muss einer von {Teams} sein" original="Team name must be one of {Teams}"/>
         <!-- You can only bet on one team -->
         <string id="7iveTGQp" text="Sie können nur auf ein Team wetten" original="You can only bet on one team"/>
         <!-- Betting is now CLOSED: only one team bet on, bets refunded -->
-        <string id="Nm96SVXt" text="Wetten sind jetzt GESCHLOSSEN: nur eine Mannschaftswette, Wetten zurückerstattet" original="Betting is now CLOSED: only one team bet on, bets refunded"/>
+        <string id="Nm96SVXt" text="Wetten sind jetzt GESCHLOSSEN: nur eine Mannschaftswette, Wetten werden zurückerstattet" original="Betting is now CLOSED: only one team bet on, bets refunded"/>
         <!-- Betting is now CLOSED: no bets placed -->
-        <string id="GrI9bFCf" text="Wetten ist jetzt GESCHLOSSEN: keine Wetten platziert" original="Betting is now CLOSED: no bets placed"/>
+        <string id="GrI9bFCf" text="Wetten sind jetzt GESCHLOSSEN: keine Wetten platziert" original="Betting is now CLOSED: no bets placed"/>
         <!-- Betting is now CLOSED: {TotalBets} -->
         <string id="Hj3oYnE0" text="Wetten sind jetzt GESCHLOSSEN: {TotalBets}" original="Betting is now CLOSED: {TotalBets}"/>
         <!-- REFUNDED {Bet}{GoldIcon} bet -->
@@ -183,7 +183,7 @@
         <!-- WINNER! -->
         <string id="jb5vaUCD" text="GEWINNER!" original="WINNER!"/>
         <!-- no prize available for you! -->
-        <string id="80PitGR4" text="kein Gewinn für Sie verfügbar!" original="no prize available for you!"/>
+        <string id="80PitGR4" text="Kein Gewinn für Sie verfügbar!" original="no prize available for you!"/>
         <!-- BLTTournamentQueueBehavior -->
         <!-- You are already in the tournament queue! -->
         <string id="JtZIstbB" text="Sie befinden sich bereits in der Turnierwarteschlange!" original="You are already in the tournament queue!"/>
