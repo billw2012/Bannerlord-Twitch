@@ -19,9 +19,9 @@
         <!-- Start With Full Health -->
         <string id="X8r0C5fx" text="Commencez en pleine santé" original="Start With Full Health"/>
         <!-- Whether the hero will always start with full health -->
-        <string id="HbNVrZuv" text="Si le héros commencera toujours avec une pleine santé" original="Whether the hero will always start with full health"/>
+        <string id="HbNVrZuv" text="Si le héros commencera toujours en pleine santé" original="Whether the hero will always start with full health"/>
         <!-- Start Health Multiplier -->
-        <string id="fxZIKL65" text="Démarrer le multiplicateur de santé" original="Start Health Multiplier"/>
+        <string id="fxZIKL65" text="Multiplicateur de santé de départ" original="Start Health Multiplier"/>
         <!-- Amount to multiply normal starting health by, to give heroes better staying power vs others -->
         <string id="8yNIRS9S" text="Montant pour multiplier la santé de départ normale par, pour donner aux héros une meilleure endurance par rapport aux autres" original="Amount to multiply normal starting health by, to give heroes better staying power vs others"/>
         <!-- Start Retinue Health Multiplier -->
@@ -73,11 +73,11 @@
         <!-- Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap. -->
         <string id="WUzqXuHN" text="Limite de compétence lors de l'utilisation de Raw XP. Les compétences ne dépasseront pas cette valeur. 330 est la limite de compétence d'XP vanille." original="Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap."/>
         <!-- Gold Per Kill -->
-        <string id="94Ouh5It" text="Or par kill" original="Gold Per Kill"/>
+        <string id="94Ouh5It" text="Or par tué" original="Gold Per Kill"/>
         <!-- Gold the hero gets for every kill -->
         <string id="iSAMxZ8a" text="L'or que le héros obtient pour chaque kill" original="Gold the hero gets for every kill"/>
         <!-- XP Per Kill -->
-        <string id="DMGKBoJT" text="XP par kill" original="XP Per Kill"/>
+        <string id="DMGKBoJT" text="XP par tué" original="XP Per Kill"/>
         <!-- XP the hero gets for every kill -->
         <string id="kwW5pZT9" text="XP que le héros obtient pour chaque kill" original="XP the hero gets for every kill"/>
         <!-- XP Per Killed -->
@@ -85,7 +85,7 @@
         <!-- XP the hero gets for being killed -->
         <string id="bW8t2g5N" text="XP que le héros obtient pour avoir été tué" original="XP the hero gets for being killed"/>
         <!-- Heal Per Kill -->
-        <string id="cRV9HDdf" text="Guérir par kill" original="Heal Per Kill"/>
+        <string id="cRV9HDdf" text="Guéri par tué" original="Heal Per Kill"/>
         <!-- HP the hero gets for every kill -->
         <string id="7VWAZgfK" text="HP que le héros obtient pour chaque kill" original="HP the hero gets for every kill"/>
         <!-- Retinue Gold Per Kill -->
@@ -157,9 +157,9 @@
         <!-- Achievements -->
         <string id="zTLei6dQ" text="Succès" original="Achievements"/>
         <!-- Shouts -->
-        <string id="HkD6326j" text="Des cris" original="Shouts"/>
+        <string id="HkD6326j" text="Cris" original="Shouts"/>
         <!-- Custom shouts -->
-        <string id="ufqtH5QV" text="Des cris personnalisés" original="Custom shouts"/>
+        <string id="ufqtH5QV" text="Cris personnalisés" original="Custom shouts"/>
         <!-- Include Default Shouts -->
         <string id="wehigXCC" text="Inclure les cris par défaut" original="Include Default Shouts"/>
         <!-- Whether to include default shouts -->
@@ -256,7 +256,7 @@
         <!-- Enable Betting -->
         <string id="rne7aMUR" text="Activer les paris" original="Enable Betting"/>
         <!-- Betting On Final Only -->
-        <string id="njh9b5GB" text="Parier sur la finale uniquement" original="Betting On Final Only"/>
+        <string id="njh9b5GB" text="Parier uniquement sur la finale" original="Betting On Final Only"/>
         <!-- Skill Reduction Percent Per Win -->
         <string id="5a40vmYi" text="Pourcentage de réduction des compétences par victoire" original="Skill Reduction Percent Per Win"/>
         <!-- Floor Percent -->

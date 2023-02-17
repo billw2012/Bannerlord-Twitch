@@ -29,7 +29,7 @@
         <!-- Experience awarded for gaining this achievement. -->
         <string id="tx7YV26l" text="Expérience récompensée pour l'obtention de ce succès." original="Experience awarded for gaining this achievement."/>
         <!-- Give Item Reward -->
-        <string id="OmwtPK7J" text="Donner une récompense d'objet" original="Give Item Reward"/>
+        <string id="OmwtPK7J" text="Donner un objet en récompense" original="Give Item Reward"/>
         <!-- Whether to give a custom item as reward (defined below) -->
         <string id="vTb0ysRw" text="Donner ou non un objet personnalisé en récompense (défini ci-dessous)" original="Whether to give a custom item as reward (defined below)"/>
         <!-- Item Reward -->
@@ -217,9 +217,9 @@
         <!-- New Kill Streak -->
         <string id="KtvBk2nR" text="Nouvelle séquence de meurtres" original="New Kill Streak"/>
         <!-- [viewer] got [name] ([kills] kills) -->
-        <string id="ipowOInD" text="[viewer] got [name] ([kills] tués)" original="[viewer] got [name] ([kills] kills)"/>
+        <string id="ipowOInD" text="[viewer] a [name] ([kills] tués)" original="[viewer] got [name] ([kills] kills)"/>
         <!-- {KillsRequired} kills -->
-        <string id="YZJ60Pxb" text="{KillsRequired} tue" original="{KillsRequired} kills"/>
+        <string id="YZJ60Pxb" text="{KillsRequired} tués" original="{KillsRequired} kills"/>
         <!-- SummonHero.FormationItemSource -->
         <!-- Infantry -->
         <string id="7gt8mcJc" text="Infanterie" original="Infantry"/>
@@ -259,7 +259,7 @@
         <string id="G95DA4OM" text="Exigences pour ce niveau de classe" original="Requirements for this class level"/>
         <!-- MissionInfo -->
         <!-- Kills -->
-        <string id="AM2zlkem" text="Tue" original="Kills"/>
+        <string id="AM2zlkem" text="Morts" original="Kills"/>
         <!-- +Retinue Kills -->
         <string id="79JXI4JL" text="+ Éliminations d&amp;#39;Escorte" original="+Retinue Kills"/>
         <!-- Gold -->
@@ -270,9 +270,9 @@
         <!-- Tournament -->
         <string id="PI83uB8j" text="Tournoi" original="Tournament"/>
         <!-- Betting is OPEN -->
-        <string id="WPTU6AGn" text="Le pari est OUVERT" original="Betting is OPEN"/>
+        <string id="WPTU6AGn" text="Les paris sont OUVERTS" original="Betting is OPEN"/>
         <!-- Betting is CLOSED -->
-        <string id="PLRsZCjL" text="Le pari est FERMÉ" original="Betting is CLOSED"/>
+        <string id="PLRsZCjL" text="Les paris sont FERMÉS" original="Betting is CLOSED"/>
         <!-- Not taking bets -->
         <string id="Sv04YKsL" text="Ne pas prendre de paris" original="Not taking bets"/>
         <!-- GeneratedRewardDef -->
@@ -386,7 +386,7 @@
         <!-- Maneuver multiplier for custom mount prize -->
         <string id="7cZ5JfEk" text="Multiplicateur de manœuvre pour un prix de monture personnalisée" original="Maneuver multiplier for custom mount prize"/>
         <!-- Mount Speed -->
-        <string id="6yURxqNY" text="Vitesse de montage" original="Mount Speed"/>
+        <string id="6yURxqNY" text="Vitesse de la monture" original="Mount Speed"/>
         <!-- Speed multiplier for custom mount prize -->
         <string id="eJZxwZc1" text="Multiplicateur de vitesse pour le prix de la monture personnalisée" original="Speed multiplier for custom mount prize"/>
         <!-- Mount Charge Damage -->
