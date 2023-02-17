@@ -116,13 +116,20 @@ namespace BLTOverlay
                         {
                             // Get the translated version of the "everyone" user account
                             var sid = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
-                            string everyone = sid?.Translate(typeof(NTAccount))?.Value ?? "everyone"; 
+                            string everyone = sid?.Translate(typeof(NTAccount))?.Value ?? "everyone";
+
+                            string aclCmd = $"netsh http add urlacl url={UrlBinding} user=\"{everyone}\"";
+                            Log.Info($"Adding Url ACL with command {aclCmd}");
+                            string firewallCmd = $"netsh advfirewall firewall add rule name=BLTOverlay dir=in action=allow protocol=TCP localport={Port}";
+                            Log.Info($"Adding firewall rule with command {firewallCmd}");
                             
                             var proc = Process.Start(new ProcessStartInfo("cmd.exe")
                             {
                                 Arguments =
-                                    $"/c netsh http add urlacl url={UrlBinding} user=\"{everyone}\" " +
-                                    $"& netsh advfirewall firewall add rule name=BLTOverlay dir=in action=allow protocol=TCP localport={Port}",
+                                    "/c " +
+                                    aclCmd +
+                                    " & " +
+                                    firewallCmd,
                                 UseShellExecute = true,
                                 Verb = "runas"
                             });

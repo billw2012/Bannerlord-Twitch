@@ -7,7 +7,7 @@
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- stats -->
         <!-- Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue. -->
-        <string id="JiMaaypq" text="Zeigt allgemeine Informationen zu deinen Helden an, einschließlich Clan, Gold, Standort, HP, Fähigkeiten, Attribute und Gefolge." original="Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue."/>
+        <string id="JiMaaypq" text="Zeigt allgemeine Informationen zu deinem Helden an, einschließlich Clan, Gold, Standort, HP, Fähigkeiten, Attribute und Gefolge." original="Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue."/>
         <!-- show stats -->
         <string id="tIVnWwGG" text="Statistiken anzeigen" original="show stats"/>
         <!-- stats -->
@@ -43,12 +43,12 @@
         <!-- Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier. -->
         <string id="zBIv0a4I" text="Verändert deine Ausrüstung zufällig auf der aktuellen Stufe. Es ersetzt keine Artikel, die höher als Ihre aktuelle Stufe sind, oder benutzerdefinierte Artikel. Wenn Sie zB Ausrüstungsstufe 3 sind, aber auch eine Waffe der Stufe 6 in einem Turnier gewonnen haben, ersetzt dieser Befehl diese Waffe nicht. Manchmal werden sich einige Gegenstände nicht ändern, insbesondere wenn nicht viele Gegenstände dieses Typs auf Ihrer aktuellen Stufe verfügbar sind." original="Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier."/>
         <!-- reroll equipment -->
-        <string id="3KYGJ0Mu" text="Ausrüstung aufrollen" original="reroll equipment"/>
+        <string id="3KYGJ0Mu" text="Zufällige neue Ausrüstung" original="reroll equipment"/>
         <!-- reequip -->
-        <string id="fGfTaAoD" text="umrüsten" original="reequip"/>
+        <string id="fGfTaAoD" text="Umrüsten" original="reequip"/>
         <!-- gold -->
         <!-- Show your heroes current gold. -->
-        <string id="eWI5oDce" text="Zeigen Sie Ihren Helden aktuelles Gold." original="Show your heroes current gold."/>
+        <string id="eWI5oDce" text="Zeigt den aktuellen Goldstand des Helfen an." original="Show your heroes current gold."/>
         <!-- show gold -->
         <string id="zdRj4blL" text="Gold zeigen" original="show gold"/>
         <!-- gold -->
@@ -69,12 +69,12 @@
         <!-- You can use this to name your custom items.&lt;br&gt;Usage is &lt;code&gt;!nameitem (name)&lt;/code&gt;, for example &lt;code&gt;!nameitem Foehammer&lt;/code&gt;.&lt;br&gt;If you call &lt;code&gt;!nameitem&lt;/code&gt; on its own it will tell you what item will be named next. -->
         <string id="S1FZXQim" text="Sie können dies verwenden, um Ihre benutzerdefinierten Elemente zu benennen.&lt;br&gt; Die Verwendung ist &lt;code&gt;!nameitem (name)&lt;/code&gt; , zum Beispiel &lt;code&gt;!nameitem Foehammer&lt;/code&gt; .&lt;br&gt; Wenn Sie &lt;code&gt;!nameitem&lt;/code&gt; alleine aufrufen, wird Ihnen mitgeteilt, welches Element als nächstes benannt wird." original="You can use this to name your custom items.&lt;br&gt;Usage is &lt;code&gt;!nameitem (name)&lt;/code&gt;, for example &lt;code&gt;!nameitem Foehammer&lt;/code&gt;.&lt;br&gt;If you call &lt;code&gt;!nameitem&lt;/code&gt; on its own it will tell you what item will be named next."/>
         <!-- name a reward item -->
-        <string id="tNVmXpoc" text="nenne einen Belohnungsgegenstand" original="name a reward item"/>
+        <string id="tNVmXpoc" text="Benenne einen Belohnungsgegenstand" original="name a reward item"/>
         <!-- nameitem -->
         <string id="IFDecKha" text="Namensgegenstand" original="nameitem"/>
         <!-- bltbet -->
         <!-- Use this to bet on tournament matches, when available.&lt;br&gt;Usage is &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt;, for example &lt;code&gt;!bltbet red 10000&lt;/code&gt; to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.&lt;br&gt;If only one team is bet upon, the bets will be refunded. -->
-        <string id="thajdk5s" text="Verwenden Sie diese Option, um auf Turnierspiele zu wetten, sofern verfügbar.&lt;br&gt; Die Verwendung ist &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt; , zum Beispiel &lt;code&gt;!bltbet red 10000&lt;/code&gt; um 10000 gold on red zu wetten. Die Gewinne werden aus dem gesamten Pot geteilt, basierend auf der relativen Höhe des Einsatzes.&lt;br&gt; Wenn nur auf ein Team gewettet wird, werden die Wetten zurückerstattet." original="Use this to bet on tournament matches, when available.&lt;br&gt;Usage is &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt;, for example &lt;code&gt;!bltbet red 10000&lt;/code&gt; to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.&lt;br&gt;If only one team is bet upon, the bets will be refunded."/>
+        <string id="thajdk5s" text="Verwenden Sie diese Option, um auf Turnierspiele zu wetten, sofern verfügbar.&lt;br&gt; Die Verwendung ist &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt; , zum Beispiel &lt;code&gt;!bltbet rot 10000&lt;/code&gt; um 10000 Gold auf Rot zu wetten. Die Gewinne werden aus dem gesamten Pot geteilt, basierend auf der relativen Höhe des Einsatzes.&lt;br&gt; Wenn nur auf ein Team gewettet wird, werden die Wetten zurückerstattet." original="Use this to bet on tournament matches, when available.&lt;br&gt;Usage is &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt;, for example &lt;code&gt;!bltbet red 10000&lt;/code&gt; to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.&lt;br&gt;If only one team is bet upon, the bets will be refunded."/>
         <!-- bet on tournament -->
         <string id="xBgLXaf7" text="Wette auf Turnier" original="bet on tournament"/>
         <!-- bltbet -->
@@ -104,12 +104,12 @@
         <!-- Throw away one of your custom items.&lt;br&gt;Usage is &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!discarditem Boots&lt;/code&gt; would discard your custom item with the word &quot;Boots&quot; in it. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
         <string id="vwPIXbeh" text="Werfen Sie einen Ihrer benutzerdefinierten Artikel weg.&lt;br&gt; Die Verwendung ist &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt; , zB würde &lt;code&gt;!discarditem Boots&lt;/code&gt; Ihren benutzerdefinierten Artikel mit dem Wort &amp;quot;Boots&amp;quot; darin verwerfen. Wenn mehr als ein Element &amp;quot;Boots&amp;quot; enthält, wird der Befehl abgelehnt. Der Teilname muss genau einem Element entsprechen." original="Throw away one of your custom items.&lt;br&gt;Usage is &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!discarditem Boots&lt;/code&gt; would discard your custom item with the word &quot;Boots&quot; in it. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item."/>
         <!-- discarditem -->
-        <string id="Pla3OVS4" text="wegwerfartikel" original="discarditem"/>
+        <string id="Pla3OVS4" text="gegenstandwegwerfen" original="discarditem"/>
         <!-- giveitem -->
         <!-- Give one of your custom items to another viewer.&lt;br&gt;Usage is &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; would give your custom item with the word &quot;Boots&quot; in it to the viewer called C4lad0g. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
-        <string id="RS37T7gG" text="Geben Sie eines Ihrer benutzerdefinierten Elemente an einen anderen Betrachter weiter.&lt;br&gt; Die Verwendung ist &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt; , zB würde &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; Ihren benutzerdefinierten Artikel mit dem Wort &amp;quot;Boots&amp;quot; an den Viewer namens C4lad0g geben. Wenn mehr als ein Element &amp;quot;Boots&amp;quot; enthält, wird der Befehl abgelehnt. Der Teilname muss genau einem Element entsprechen." original="Give one of your custom items to another viewer.&lt;br&gt;Usage is &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; would give your custom item with the word &quot;Boots&quot; in it to the viewer called C4lad0g. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item."/>
+        <string id="RS37T7gG" text="Geben Sie eines Ihrer benutzerdefinierten Elemente an einen anderen Zuschauer weiter.&lt;br&gt; Die Verwendung ist &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt; , zB würde &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; Ihren benutzerdefinierten Artikel mit dem Wort &amp;quot;Boots&amp;quot; an den Viewer namens C4lad0g geben. Wenn mehr als ein Element &amp;quot;Boots&amp;quot; enthält, wird der Befehl abgelehnt. Der Teilname muss genau einem Element entsprechen." original="Give one of your custom items to another viewer.&lt;br&gt;Usage is &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; would give your custom item with the word &quot;Boots&quot; in it to the viewer called C4lad0g. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item."/>
         <!-- giveitem -->
-        <string id="osvl34my" text="Geschenkartikel" original="giveitem"/>
+        <string id="osvl34my" text="gibgegenstand" original="giveitem"/>
         <!-- powers -->
         <!-- Shows your available powers -->
         <string id="GYYbCXmu" text="Zeigt deine verfügbaren Kräfte an" original="Shows your available powers"/>

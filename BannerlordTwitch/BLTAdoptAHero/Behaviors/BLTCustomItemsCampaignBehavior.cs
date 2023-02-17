@@ -132,8 +132,7 @@ namespace BLTAdoptAHero
 
         public bool IsRegistered(ItemModifier modifier) => modifier != null && customItemModifiers.ContainsKey(modifier);
         
-        public bool ItemCanBeNamed(ItemModifier itemModifier) 
-            => itemModifier != null && customItemModifiers.TryGetValue(itemModifier, out var modifierData) && modifierData.CustomName == null;
+        public bool ItemCanBeNamed(ItemModifier itemModifier) => itemModifier != null && customItemModifiers.ContainsKey(itemModifier);
 
         public void NameItem(ItemModifier itemModifier, string name)
         {

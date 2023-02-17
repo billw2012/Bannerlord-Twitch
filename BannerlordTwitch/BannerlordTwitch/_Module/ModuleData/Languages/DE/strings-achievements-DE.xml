@@ -8,8 +8,8 @@
         <!-- Common -->
         <!-- Reward {ITEMNAME} -->
         <string id="W47g8bCB" text="Belohnung {ITEMNAME}" original="Reward {ITEMNAME}"/>
-        <!-- [viewer] is [name]! -->
-        <string id="TAWcPGIc" text="[viewer] is [name]!" original="[viewer] is [name]!"/>
+        <!-- {viewer} is {name}! -->
+        <string id="TAWcPGIc" text="{viewer} ist {name}!" original="{viewer} is {name}!"/>
         <!-- {ITEMNAME} of Fealty -->
         <string id="IvV04W31" text="{ITEMNAME} von Treue" original="{ITEMNAME} of Fealty"/>
         <!-- Renegades {ITEMNAME} -->

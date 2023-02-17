@@ -300,13 +300,13 @@
         <!-- BLT Overlay -->
         <string id="fmjzDasd" text="Sobreposição BLT" original="BLT Overlay"/>
         <!-- For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again. -->
-        <string id="Kgi2isWy" text="Para que o BLT Overlay Browser Source funcione, ele precisa reservar a porta {Port} e permiti-la por meio do Firewall do Windows. \ NIsso requer privilégios de administrador, que serão solicitados após você pressionar Ok. \ NSe bem-sucedido, você não verá isso pop-up novamente." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
+        <string id="Kgi2isWy" text="Para que o BLT Overlay Browser Source funcione, ele precisa reservar a porta {Port} e permiti-la por meio do Firewall do Windows.\nIsso requer privilégios de administrador, que serão solicitados após você pressionar Ok.\nSe bem-sucedido, você não verá isso pop-up novamente." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
         <!-- Okay -->
         <string id="yXwMSbr4" text="OK" original="Okay"/>
         <!-- Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window. -->
-        <string id="6ucf05tp" text="Configuração bem-sucedida! \ NVocê agora pode acessar a sobreposição em {UrlRoot}. \ NVocê pode encontrar este link novamente na guia Autorizar na janela Configurar BLT." original="Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."/>
+        <string id="6ucf05tp" text="Configuração bem-sucedida!\nVocê agora pode acessar a sobreposição em {UrlRoot}.\nVocê pode encontrar este link novamente na guia Autorizar na janela Configurar BLT." original="Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."/>
         <!-- Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord. -->
-        <string id="usADfORe" text="Configuração FALHA: \ n \ &amp;quot;{e.Message} \&amp;quot; \ nVocê pode não conseguir acessar a sobreposição. \ NReportar este problema na discórdia." original="Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord."/>
+        <string id="usADfORe" text="Configuração FALHA:\n\ &amp;quot;{e.Message} \&amp;quot;\nVocê pode não conseguir acessar a sobreposição.\nReportar este problema na discórdia." original="Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord."/>
         <!-- ActionBase -->
         <!-- Whether this is enabled or not -->
         <string id="YM1rP7sP" text="Esteja habilitado ou não" original="Whether this is enabled or not"/>
@@ -494,7 +494,7 @@
         <!-- Bannerlord Twitch Mod WARNING -->
         <string id="PhRzCo9t" text="AVISO do Mod Bannerlord Twitch" original="Bannerlord Twitch Mod WARNING"/>
         <!-- You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less. -->
-        <string id="7b4tU6y9" text="Você desativou o salvamento automático, falhas podem resultar na perda de pontos de canal! \ NRecomendado que você defina para 15 minutos ou menos." original="You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less."/>
+        <string id="7b4tU6y9" text="Você desativou o salvamento automático, falhas podem resultar na perda de pontos de canal!\nRecomendado que você defina para 15 minutos ou menos." original="You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less."/>
         <!-- Okay -->
         <string id="hpFXglKx" text="OK" original="Okay"/>
         <!-- Bannerlord Twitch Mod DISABLED -->

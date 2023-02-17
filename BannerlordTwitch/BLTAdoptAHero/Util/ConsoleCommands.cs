@@ -35,7 +35,7 @@ namespace BLTAdoptAHero.Util
             }
             
             if (!PartyScreenAllowed)
-                return $"Can't open inventory now";
+                return "Hero screen not allowed now (you must be on the campaign map, not in a siege or encounter)";;
             
             if (ScreenManager.TopScreen is not MapScreen)
             {
@@ -81,7 +81,7 @@ namespace BLTAdoptAHero.Util
         [UsedImplicitly]
         public static string ShowHeroes(List<string> strings)
         {
-            return OpenAdoptedHeroScreen() ? "Opened hero screen" : "Hero screen already open";
+            return OpenAdoptedHeroScreen();
         }
 
         private static bool PartyScreenAllowed
@@ -104,10 +104,10 @@ namespace BLTAdoptAHero.Util
             }
         }
 
-        private static bool OpenAdoptedHeroScreen()
+        private static string OpenAdoptedHeroScreen()
         {
             if (!PartyScreenAllowed)
-                return false;
+                return "Heroes screen not allowed now (you must be on the campaign map, not in a siege or encounter)";
             
             if (ScreenManager.TopScreen is not MapScreen)
             {
@@ -126,7 +126,7 @@ namespace BLTAdoptAHero.Util
 
             if (heroRoster.Count == 0)
             {
-                return false;
+                return "No heroes to show";
             }
             
             PartyScreenManager.OpenScreenWithDummyRoster(
@@ -149,7 +149,7 @@ namespace BLTAdoptAHero.Util
              // partyState.InitializeLogic(_partyScreenLogic);
              // Game.Current.GameStateManager.PushState(partyState);
         
-            return true;
+            return "Heroes screen opened";
         }
     }
 }

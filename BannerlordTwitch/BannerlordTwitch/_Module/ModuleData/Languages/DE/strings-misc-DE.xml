@@ -21,13 +21,13 @@
         <!-- lvl -->
         <string id="RQlq59mz" text="lvl" original="lvl"/>
         <!-- Item -->
-        <string id="5rErcMGl" text="Artikel" original="Item"/>
+        <string id="5rErcMGl" text="Gegenstände" original="Item"/>
         <!-- Skills -->
         <string id="5gVLi7NA" text="Fähigkeiten" original="Skills"/>
         <!--  ■ -->
         <string id="aG3roJj3" text="■" original=" ■"/>
         <!-- Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}! -->
-        <string id="fuwuk4bR" text="Nicht genug {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!" original="Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!"/>
+        <string id="fuwuk4bR" text="Nicht genug {GoldIcon}: Benötigt: {NeededGold}{GoldIcon}, Vorhanden: {HaveGold}{GoldIcon}!" original="Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!"/>
         <!-- Common Phrases -->
         <!-- General -->
         <string id="C5T5nnix" text="Allgemein" original="General"/>
@@ -40,13 +40,13 @@
         <!-- Name -->
         <string id="uUzmy7Lh" text="Name" original="Name"/>
         <!-- {From} to {To} -->
-        <string id="yVydxRHh" text="{From} to {To}" original="{From} to {To}"/>
+        <string id="yVydxRHh" text="{From} zu {To}" original="{From} to {To}"/>
         <!-- Skill -->
         <string id="OEMBeawy" text="Fähigkeit" original="Skill"/>
         <!-- Level -->
-        <string id="iu0dtUP5" text="Niveau" original="Level"/>
+        <string id="iu0dtUP5" text="Level" original="Level"/>
         <!-- Amount -->
-        <string id="DKfKt4qP" text="Betragen" original="Amount"/>
+        <string id="DKfKt4qP" text="Betrag" original="Amount"/>
         <!-- Costs {GoldCost} -->
         <string id="Diwd7dBo" text="Kosten {GoldCost}" original="Costs {GoldCost}"/>
         <!-- Costs -->
@@ -80,7 +80,7 @@
         <!-- Shouts -->
         <string id="UhUpH8C8" text="Geschrei" original="Shouts"/>
         <!-- Effect -->
-        <string id="VBuncBq5" text="Wirkung" original="Effect"/>
+        <string id="VBuncBq5" text="Effeckt" original="Effect"/>
         <!-- Targets -->
         <string id="R7rU0TbD" text="Ziele" original="Targets"/>
         <!-- Appearance -->
@@ -109,9 +109,9 @@
         <!-- Changes the size of the target -->
         <string id="fc1SmPXH" text="Ändert die Größe des Ziels" original="Changes the size of the target"/>
         <!-- Apply To Mount -->
-        <string id="0vqiI434" text="Auf Halterung anwenden" original="Apply To Mount"/>
+        <string id="0vqiI434" text="Auf Reittier anwenden" original="Apply To Mount"/>
         <!-- Apply to the mount of the target, instead of the target themselves (only some properties are valid on mounts) -->
-        <string id="U0wJHDSa" text="Auf das Mount des Ziels anwenden, anstatt auf das Ziel selbst (nur einige Eigenschaften sind auf Mounts gültig)" original="Apply to the mount of the target, instead of the target themselves (only some properties are valid on mounts)"/>
+        <string id="U0wJHDSa" text="Auf das Reittier des Ziels anwenden, anstatt auf das Ziel selbst (nur einige Eigenschaften sind auf Reittiere gültig)" original="Apply to the mount of the target, instead of the target themselves (only some properties are valid on mounts)"/>
         <!-- Properties -->
         <string id="RdCw0xo9" text="Eigenschaften" original="Properties"/>
         <!-- Properties to change, and how much by -->
@@ -119,13 +119,13 @@
         <!-- Skills -->
         <string id="iPI9zoqR" text="Fähigkeiten" original="Skills"/>
         <!-- Skills to change, and how much by (these aren't compatible with Apply To Mount) -->
-        <string id="PanMmDx9" text="Fähigkeiten, die geändert werden müssen, und wie viel (diese sind nicht mit Apply To Mount kompatibel)" original="Skills to change, and how much by (these aren't compatible with Apply To Mount)"/>
+        <string id="PanMmDx9" text="Fähigkeiten, die geändert werden müssen, und wie viel (diese sind nicht mit Auf Reittier anwenden kompatibel)" original="Skills to change, and how much by (these aren't compatible with Apply To Mount)"/>
         <!-- Scale {ScalePercent}% -->
         <string id="EkKFoK73" text="Skalierung {ScalePercent}%" original="Scale {ScalePercent}%"/>
         <!-- (on mount) -->
-        <string id="l7w0bPt0" text="(auf der Halterung)" original="(on mount)"/>
+        <string id="l7w0bPt0" text="(auf Reittier)" original="(on mount)"/>
         <!-- Mount {ScalePercent}% normal size -->
-        <string id="qhIXgPGK" text="Mount {ScalePercent}% normale Größe" original="Mount {ScalePercent}% normal size"/>
+        <string id="qhIXgPGK" text="Reittier {ScalePercent}% normale Größe" original="Mount {ScalePercent}% normal size"/>
         <!-- {ScalePercent}% normal size -->
         <string id="yLT1lfRC" text="{ScalePercent}% normale Größe" original="{ScalePercent}% normal size"/>
         <!-- DocumentationHelpers -->
@@ -135,7 +135,7 @@
         <!-- On Weapon -->
         <string id="w3eb5kWA" text="Auf Waffe" original="On Weapon"/>
         <!-- On Hands -->
-        <string id="YLmpgn4j" text="Auf Händen" original="On Hands"/>
+        <string id="YLmpgn4j" text="Auf Hände" original="On Hands"/>
         <!-- On Head -->
         <string id="muuJpmaw" text="Auf den Kopf" original="On Head"/>
         <!-- On Body -->
@@ -146,13 +146,13 @@
         <string id="uNOYtEdN" text="Wo sollen die Partikel befestigt werden?" original="Where to attach the particles"/>
         <!-- DrivenPropertyItemSource -->
         <!-- Armor Head -->
-        <string id="oUgW3q7p" text="Rüstungskopf" original="Armor Head"/>
+        <string id="oUgW3q7p" text="Rüstung Kopf" original="Armor Head"/>
         <!-- Armor Torso -->
         <string id="NYoNwE3R" text="Rüstung Torso" original="Armor Torso"/>
         <!-- Armor Legs -->
-        <string id="VKAAkKbm" text="Rüstungsbeine" original="Armor Legs"/>
+        <string id="VKAAkKbm" text="Rüstung Beine" original="Armor Legs"/>
         <!-- Armor Arms -->
-        <string id="dzqBXvaS" text="Rüstungswaffen" original="Armor Arms"/>
+        <string id="dzqBXvaS" text="Rüstung Arme" original="Armor Arms"/>
         <!-- Armor Encumbrance -->
         <string id="2EaDPdxT" text="Rüstungsbelastung" original="Armor Encumbrance"/>
         <!-- Weapons Encumbrance -->
@@ -166,11 +166,11 @@
         <!-- Mount Charge Damage -->
         <string id="RIMIU69S" text="Reittier-Ladungsschaden" original="Mount Charge Damage"/>
         <!-- Mount Difficulty -->
-        <string id="9mYdZQI8" text="Schwierigkeitsgrad beim Aufsteigen" original="Mount Difficulty"/>
+        <string id="9mYdZQI8" text="Reittier Schwierigkeitsgrad" original="Mount Difficulty"/>
         <!-- Mount Maneuver -->
-        <string id="EaenR5S2" text="Mount-Manöver" original="Mount Maneuver"/>
+        <string id="EaenR5S2" text="Reittier-Manöver" original="Mount Maneuver"/>
         <!-- Mount Speed -->
-        <string id="NJpg1RsS" text="Mount-Geschwindigkeit" original="Mount Speed"/>
+        <string id="NJpg1RsS" text="Reittier-Geschwindigkeit" original="Mount Speed"/>
         <!-- Horse Archery Ability -->
         <string id="UtGZ9B6F" text="Fähigkeit des Pferdebogenschießens" original="Horse Archery Ability"/>
         <!-- Riding Ability -->
@@ -186,7 +186,7 @@
         <!-- Reload Speed -->
         <string id="djGCJeM4" text="Nachladegeschwindigkeit" original="Reload Speed"/>
         <!-- Reload Movement Penalty -->
-        <string id="4XrdvYDR" text="Strafe für Nachladebewegungen" original="Reload Movement Penalty"/>
+        <string id="4XrdvYDR" text="Strafe für Bewegung beim Nachladen" original="Reload Movement Penalty"/>
         <!-- Courage -->
         <string id="GJftwazi" text="Mut" original="Courage"/>
         <!-- Shield Missile Collision Body Size Adder -->
@@ -229,15 +229,15 @@
         <!-- Two Handed Glaive -->
         <string id="BcmE6Y75" text="Zweihändige Gleve" original="Two Handed Glaive"/>
         <!-- Bow -->
-        <string id="rroxl8j3" text="Sich beugen" original="Bow"/>
+        <string id="rroxl8j3" text="Bogen" original="Bow"/>
         <!-- Crossbow -->
         <string id="CztMY8ZE" text="Armbrust" original="Crossbow"/>
         <!-- Arrows -->
         <string id="DYYyhDUI" text="Pfeile" original="Arrows"/>
         <!-- Bolts -->
-        <string id="i281jKBH" text="Schrauben" original="Bolts"/>
+        <string id="i281jKBH" text="Bolzen" original="Bolts"/>
         <!-- Throwing Knives -->
-        <string id="C1Qx1ZqP" text="Messer werfen" original="Throwing Knives"/>
+        <string id="C1Qx1ZqP" text="Wurfmesser" original="Throwing Knives"/>
         <!-- Throwing Axes -->
         <string id="S1NUKL4r" text="Wurfäxte" original="Throwing Axes"/>
         <!-- Throwing Javelins -->
@@ -293,7 +293,7 @@
         <!-- Percent modifier to apply to the skill (100% will result in no chance) -->
         <string id="S34uXWMu" text="Prozentualer Modifikator, der auf die Fertigkeit angewendet werden soll (100% ergeben keine Chance)" original="Percent modifier to apply to the skill (100% will result in no chance)"/>
         <!-- How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier. -->
-        <string id="hPQpBmRR" text="Wie viel der Fertigkeit hinzugefügt oder davon abgezogen werden soll (0 führt zu keiner Änderung). Dies wird AFTER Modifier angewendet." original="How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier."/>
+        <string id="hPQpBmRR" text="Wie viel der Fertigkeit hinzugefügt oder davon abgezogen werden soll (0 führt zu keiner Änderung). Dies wird NACH dem Modifier angewendet." original="How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier."/>
         <!-- (no change) -->
         <string id="PsUcJvPZ" text="(Keine Änderung)" original="(no change)"/>
         <!-- BLTOverlay -->
@@ -336,7 +336,7 @@
         <string id="ctAF1ghX" text="Bannerlord Twitch Viewer-Anleitung" original="Bannerlord Twitch Viewer Guide"/>
         <!-- Introduction -->
         <!-- Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to &apos;adopt&apos; a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include &apos;summoning&apos; your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes &apos;class&apos;.&lt;br&gt;If you aren&apos;t sure where to start, begin by using the channel point redemption &apos;Adopt a Hero&apos;. -->
-        <string id="rElL5v6I" text="Bannerlord Twitch (BLT) ist ein Twitch-Integrations-Mod für Mount &amp;amp; Blade II: Bannerlord.&lt;br&gt; Als Zuschauer können Sie Kanalpunkt-Belohnungen (sofern verfügbar) und Chat-Befehle verwenden, um mit dem Spiel zu interagieren, während der Streamer spielt.&lt;br&gt; Die Hauptfunktion von BLT besteht darin, dass Sie einen Helden im Spiel „adoptieren“ können, dh ein Charakter im Spiel wird Ihnen mit Ihrem Twitch-Namen zugewiesen und steht für Sie zur weiteren Interaktion zur Verfügung.&lt;br&gt; Einige Beispiele für Dinge, die Sie mit Ihrem Helden tun können, sind das „Beschwören“ Ihres Helden in Schlachten, an denen der Streamer teilnimmt, die Teilnahme an Zuschauerturnieren, das Aufrüsten der Ausrüstung und die Auswahl der „Klasse“ Ihres Helden.&lt;br&gt; Wenn du dir nicht sicher bist, wo du anfangen sollst, beginne mit der Einlösung von Channel-Punkten „Adoptiere einen Helden“." original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
+        <string id="rElL5v6I" text="Bannerlord Twitch (BLT) ist ein Twitch-Integrations-Mod für Mount &amp;amp; Blade II: Bannerlord.&lt;br&gt; Als Zuschauer können Sie Kanalpunkt-Belohnungen (sofern verfügbar) und Chat-Befehle verwenden, um mit dem Spiel zu interagieren, während der Streamer spielt.&lt;br&gt; Die Hauptfunktion von BLT besteht darin, dass Sie einen Helden im Spiel „adoptieren“ können, d.h. ein Charakter im Spiel wird Ihnen mit Ihrem Twitch-Namen zugewiesen und steht für Sie zur weiteren Interaktion zur Verfügung.&lt;br&gt; Einige Beispiele für Dinge, die Sie mit Ihrem Helden tun können, sind das „Beschwören“ Ihres Helden in Schlachten, an denen der Streamer teilnimmt, die Teilnahme an Zuschauerturnieren, das Aufrüsten der Ausrüstung und die Auswahl der „Klasse“ Ihres Helden.&lt;br&gt; Wenn du dir nicht sicher bist, wo du anfangen sollst, beginne mit der Einlösung von Channel-Punkten „Adoptiere einen Helden“." original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
         <!-- Command -->
         <!-- Bot command definition -->
         <string id="8SbGSWFY" text="Bot-Befehlsdefinition" original="Bot command definition"/>
@@ -421,7 +421,7 @@
         <!-- Bot disconnected -->
         <string id="thucznzJ" text="Bot getrennt" original="Bot disconnected"/>
         <!-- @{BotUsername} has joined channel {Channel} -->
-        <string id="Hd6Q51eb" text="@{BotUsername} has joined channel {Channel}" original="@{BotUsername} has joined channel {Channel}"/>
+        <string id="Hd6Q51eb" text="@{BotUsername} ist dem Kanal {Channel} beigetreten!" original="@{BotUsername} has joined channel {Channel}"/>
         <!-- bot reporting for duty! -->
         <string id="SbufvVIR" text="Bot meldet sich zum Dienst!" original="bot reporting for duty!"/>
         <!-- Type !help for command list -->
@@ -479,12 +479,12 @@
         <string id="4tpSH1gO" text="Sehr dichter Rauch fällt herunter" original="Very dense smoke falling down"/>
         <!-- RangeFloatControl -->
         <!-- Min -->
-        <string id="TZN2VR8Q" text="Mindest" original="Min"/>
+        <string id="TZN2VR8Q" text="Minimum" original="Min"/>
         <!-- Max -->
-        <string id="bySwFF1n" text="Max" original="Max"/>
+        <string id="bySwFF1n" text="Maximum" original="Max"/>
         <!-- BLTModule -->
         <!-- This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now. -->
-        <string id="IO9rnFpk" text="Dieser Build des Mods ist für die Spielversion {ExpectedVersion}. You are running game version {GameVersion}. Jetzt aussteigen." original="This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now."/>
+        <string id="IO9rnFpk" text="Diese Version des Mods ist für die Spielversion {ExpectedVersion}. Du hast aktuell die Spielversion {GameVersion}. Spiel wird beendet." original="This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now."/>
         <!-- Bannerlord Twitch ERROR -->
         <string id="Oru6b9Cy" text="Bannerlord Twitch ERROR" original="Bannerlord Twitch ERROR"/>
         <!-- Loaded v{ModVersion} -->
@@ -519,7 +519,7 @@
         <!-- Ranged -->
         <string id="oidnJJjF" text="Fernkampf" original="Ranged"/>
         <!-- Bow -->
-        <string id="HW64G8xr" text="Sich beugen" original="Bow"/>
+        <string id="HW64G8xr" text="Bogen" original="Bow"/>
         <!-- Throwing -->
         <string id="yR8vmGlW" text="Werfen" original="Throwing"/>
         <!-- Crossbow -->
@@ -533,19 +533,19 @@
         <!-- Support -->
         <string id="AZD2nxRg" text="Unterstützung" original="Support"/>
         <!-- Scouting -->
-        <string id="pOYKEhhf" text="Pfadfinder" original="Scouting"/>
+        <string id="pOYKEhhf" text="Auskundschaften" original="Scouting"/>
         <!-- Trade -->
         <string id="ijZZGbRE" text="Handel" original="Trade"/>
         <!-- Steward -->
-        <string id="CQqpGRtH" text="Steward" original="Steward"/>
+        <string id="CQqpGRtH" text="Verwalter" original="Steward"/>
         <!-- Medicine -->
         <string id="X6rHMhsQ" text="Medizin" original="Medicine"/>
         <!-- Engineering -->
         <string id="tNC2NHRC" text="Maschinenbau" original="Engineering"/>
         <!-- Personal -->
-        <string id="eYTQ1TD7" text="persönlich" original="Personal"/>
+        <string id="eYTQ1TD7" text="Persönlich" original="Personal"/>
         <!-- Crafting -->
-        <string id="PrE6W0WX" text="Basteln" original="Crafting"/>
+        <string id="PrE6W0WX" text="Handwerk" original="Crafting"/>
         <!-- Tactics -->
         <string id="BfNX6sak" text="Taktik" original="Tactics"/>
         <!-- Roguery -->
@@ -580,13 +580,13 @@
         <!-- Two Handed Glaive -->
         <string id="KpYZoZE9" text="Zweihändige Gleve" original="Two Handed Glaive"/>
         <!-- Bow -->
-        <string id="HKYDdm9S" text="Sich beugen" original="Bow"/>
+        <string id="HKYDdm9S" text="Bogen" original="Bow"/>
         <!-- Crossbow -->
         <string id="3jigLyuH" text="Armbrust" original="Crossbow"/>
         <!-- Arrows -->
         <string id="UjKvUAX1" text="Pfeile" original="Arrows"/>
         <!-- Bolts -->
-        <string id="QBgdwwa3" text="Schrauben" original="Bolts"/>
+        <string id="QBgdwwa3" text="Bolzen" original="Bolts"/>
         <!-- Throwing Knives -->
         <string id="IUmqXtY6" text="Messer werfen" original="Throwing Knives"/>
         <!-- Throwing Axes -->

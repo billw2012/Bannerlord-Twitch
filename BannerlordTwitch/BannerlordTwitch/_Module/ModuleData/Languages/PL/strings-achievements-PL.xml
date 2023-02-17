@@ -9,17 +9,17 @@
         <!-- Reward {ITEMNAME} -->
         <string id="W47g8bCB" text="Nagroda {ITEMNAME}" original="Reward {ITEMNAME}"/>
         <!-- [viewer] is [name]! -->
-        <string id="TAWcPGIc" text="[viewer] is [name]!" original="[viewer] is [name]!"/>
+        <string id="TAWcPGIc" text="[viewer] zostaje [name]!" original="[viewer] is [name]!"/>
         <!-- {ITEMNAME} of Fealty -->
-        <string id="IvV04W31" text="{ITEMNAME} z Fealty" original="{ITEMNAME} of Fealty"/>
+        <string id="IvV04W31" text="{ITEMNAME} Wierności" original="{ITEMNAME} of Fealty"/>
         <!-- Renegades {ITEMNAME} -->
-        <string id="UQtSgnog" text="Renegaci {ITEMNAME}" original="Renegades {ITEMNAME}"/>
+        <string id="UQtSgnog" text="Renegacki {ITEMNAME}" original="Renegades {ITEMNAME}"/>
         <!-- Stream Sniper {ITEMNAME} -->
-        <string id="xI41h8NA" text="Snajper strumieniowy {ITEMNAME}" original="Stream Sniper {ITEMNAME}"/>
+        <string id="xI41h8NA" text="Stream Sniper {ITEMNAME}" original="Stream Sniper {ITEMNAME}"/>
         <!-- Reliable -->
         <string id="ODWiNBng" text="Wiarygodny" original="Reliable"/>
         <!-- Trusted -->
-        <string id="fWTqF2sw" text="Zaufane" original="Trusted"/>
+        <string id="fWTqF2sw" text="Zaufany" original="Trusted"/>
         <!-- Loyal -->
         <string id="fe9J8von" text="Wierny" original="Loyal"/>
         <!-- Rebellious -->
@@ -29,6 +29,6 @@
         <!-- Renegade -->
         <string id="VEH582e7" text="Renegat" original="Renegade"/>
         <!-- Stream Sniper -->
-        <string id="Aj0gXKgZ" text="Snajper strumieniowy" original="Stream Sniper"/>
+        <string id="Aj0gXKgZ" text="Stream Sniper" original="Stream Sniper"/>
     </strings>
 </base>

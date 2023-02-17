@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
     <PropertyGroup>
-        <ModuleVersion>4.1.1</ModuleVersion>
+        <ModuleVersion>4.3.0</ModuleVersion>
         <DefineConstants/>
         <OutputBuildRoot>$(SolutionDir)build\</OutputBuildRoot>
         <OutputConfigRoot>$(OutputBuildRoot)$(Configuration)\</OutputConfigRoot>
@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <!-- Required to trick IDE into setting the configs -->
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.7.0|AnyCPU' "/>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' "/>
     
     <PropertyGroup Condition="$(Configuration.StartsWith('Debug'))">
         <OutputPackageRoot>$(SolutionDir)deploy\debug\</OutputPackageRoot>
@@ -25,10 +25,9 @@
         <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
         <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
-    <PropertyGroup Condition="$(Configuration.EndsWith(' 1.0.1'))">
-        <GameVersion>1.0.1</GameVersion>
-        <DefineConstants>$(DefineConstants);ev101</DefineConstants>
-        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR_v1_0_1)</BANNERLORD_GAME_DIR>
+    <PropertyGroup>
+        <GameVersion>1.0.3</GameVersion>
+        <BANNERLORD_GAME_DIR>$(BANNERLORD_GAME_DIR)</BANNERLORD_GAME_DIR>
         <BANNERLORD_GAME_DIR Condition=" '$(BANNERLORD_GAME_DIR)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</BANNERLORD_GAME_DIR>
     </PropertyGroup>
     

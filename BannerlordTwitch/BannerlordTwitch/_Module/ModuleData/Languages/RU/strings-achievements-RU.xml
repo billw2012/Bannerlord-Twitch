@@ -9,13 +9,13 @@
         <!-- Reward {ITEMNAME} -->
         <string id="W47g8bCB" text="Награда {ITEMNAME}" original="Reward {ITEMNAME}"/>
         <!-- [viewer] is [name]! -->
-        <string id="TAWcPGIc" text="[viewer] is [name]!" original="[viewer] is [name]!"/>
+        <string id="TAWcPGIc" text="[viewer] это [name]!" original="[viewer] is [name]!"/>
         <!-- {ITEMNAME} of Fealty -->
         <string id="IvV04W31" text="{ITEMNAME} верности" original="{ITEMNAME} of Fealty"/>
         <!-- Renegades {ITEMNAME} -->
         <string id="UQtSgnog" text="Отступники {ITEMNAME}" original="Renegades {ITEMNAME}"/>
         <!-- Stream Sniper {ITEMNAME} -->
-        <string id="xI41h8NA" text="Stream Sniper {ITEMNAME}" original="Stream Sniper {ITEMNAME}"/>
+        <string id="xI41h8NA" text="Стрим Снайпер {ITEMNAME}" original="Stream Sniper {ITEMNAME}"/>
         <!-- Reliable -->
         <string id="ODWiNBng" text="Надежный" original="Reliable"/>
         <!-- Trusted -->

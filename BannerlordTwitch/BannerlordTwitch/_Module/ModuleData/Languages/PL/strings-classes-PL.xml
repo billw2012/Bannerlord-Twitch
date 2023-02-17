@@ -17,7 +17,7 @@
         <!-- archer -->
         <string id="4tflp34a" text="łucznik" original="archer"/>
         <!-- Fleet Footed -->
-        <string id="NE9Li2Hb" text="Flota stąpająca" original="Fleet Footed"/>
+        <string id="NE9Li2Hb" text="Pośpiech" original="Fleet Footed"/>
         <!-- Explosive Arrows -->
         <string id="xgnH5owv" text="Wybuchowe strzały" original="Explosive Arrows"/>
         <!-- heavyarcher -->
@@ -25,47 +25,47 @@
         <!-- Healthy -->
         <string id="ZrmsIMPE" text="Zdrowy" original="Healthy"/>
         <!-- Heavy Bolts -->
-        <string id="QZD9XdpC" text="Ciężkie śruby" original="Heavy Bolts"/>
+        <string id="QZD9XdpC" text="Ciężkie Bełty" original="Heavy Bolts"/>
         <!-- crossbow -->
         <string id="wV6R9Si5" text="kusza" original="crossbow"/>
         <!-- Self Healing -->
-        <string id="FvNPPHLJ" text="Samo leczenie" original="Self Healing"/>
+        <string id="FvNPPHLJ" text="Samoleczenie" original="Self Healing"/>
         <!-- Explosive Bolts -->
-        <string id="7GmE3SfQ" text="Wybuchowe bełty" original="Explosive Bolts"/>
+        <string id="7GmE3SfQ" text="Wybuchowe Bełty" original="Explosive Bolts"/>
         <!-- heavycrossbow -->
         <string id="bpzytNbP" text="ciężka kusza" original="heavycrossbow"/>
         <!-- Healthy -->
         <string id="k7booFb2" text="Zdrowy" original="Healthy"/>
         <!-- Trample -->
-        <string id="ZEGEpycY" text="Deptać" original="Trample"/>
+        <string id="ZEGEpycY" text="Kopnięcie" original="Trample"/>
         <!-- cavalry -->
         <string id="jNaFWF9t" text="kawaleria" original="cavalry"/>
         <!-- A Good Horse -->
-        <string id="YghplAdF" text="Dobry koń" original="A Good Horse"/>
+        <string id="YghplAdF" text="Dobry Koń" original="A Good Horse"/>
         <!-- Trample -->
-        <string id="mmeJSrm9" text="Deptać" original="Trample"/>
+        <string id="mmeJSrm9" text="Kopnięcie" original="Trample"/>
         <!-- camelry -->
         <string id="mJ8RVORq" text="wielbłąd" original="camelry"/>
         <!-- A Good Camel -->
         <string id="atGMPeNF" text="Dobry wielbłąd" original="A Good Camel"/>
         <!-- Explosive Arrows -->
-        <string id="YpIUHASp" text="Wybuchowe strzały" original="Explosive Arrows"/>
+        <string id="YpIUHASp" text="Wybuchowe Strzały" original="Explosive Arrows"/>
         <!-- horsearcher -->
-        <string id="p5qJfkkp" text="jeźdźcy" original="horsearcher"/>
+        <string id="p5qJfkkp" text="łucznik konny" original="horsearcher"/>
         <!-- Mounted Archery -->
-        <string id="zxgdfSIS" text="Łucznictwo konne" original="Mounted Archery"/>
+        <string id="zxgdfSIS" text="Łucznictwo Konne" original="Mounted Archery"/>
         <!-- Heavy Arrows -->
-        <string id="FrX7AiyI" text="Ciężkie strzały" original="Heavy Arrows"/>
+        <string id="FrX7AiyI" text="Ciężkie Strzały" original="Heavy Arrows"/>
         <!-- camelarcher -->
-        <string id="HreZWoyd" text="camelarcher" original="camelarcher"/>
+        <string id="HreZWoyd" text="łucznik wielbłądzi" original="camelarcher"/>
         <!-- Mounted Archery -->
-        <string id="szdoTAQj" text="Łucznictwo konne" original="Mounted Archery"/>
+        <string id="szdoTAQj" text="Łucznictwo Konne" original="Mounted Archery"/>
         <!-- Break Through -->
-        <string id="E3qGC3fs" text="Przełom" original="Break Through"/>
+        <string id="E3qGC3fs" text="Wyłom" original="Break Through"/>
         <!-- skirmisher -->
         <string id="9euSgzCd" text="harcownik" original="skirmisher"/>
         <!-- Retribution -->
-        <string id="Lw8xQu1P" text="Zemsta" original="Retribution"/>
+        <string id="Lw8xQu1P" text="Odwet" original="Retribution"/>
         <!-- Berserker Rage -->
         <string id="1DSLInEJ" text="Szał Berserkera" original="Berserker Rage"/>
         <!-- berserker -->
@@ -73,9 +73,9 @@
         <!-- Glass Cannon -->
         <string id="nB4Qb0mD" text="Szklana armata" original="Glass Cannon"/>
         <!-- Retribution -->
-        <string id="rzIl9tm3" text="Zemsta" original="Retribution"/>
+        <string id="rzIl9tm3" text="Odwet" original="Retribution"/>
         <!-- looter -->
-        <string id="4JffsJMD" text="szabrownik" original="looter"/>
+        <string id="4JffsJMD" text="Grabieżca" original="looter"/>
         <!-- Grenades -->
         <string id="nmjVjakS" text="Granaty" original="Grenades"/>
     </strings>

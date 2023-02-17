@@ -66,12 +66,12 @@ namespace BLTAdoptAHero.Achievements
             // change the consecutive stats if it would cause a reset.
             void UpdateStatPair(Statistic stat, Statistic otherStat)
             {
-                if (!forced || TotalStats[otherStat] == 0)
+                if (!forced || TotalStats.GetInt(otherStat) == 0)
                 {
                     TotalStats.AddInt(stat, amount);
                     TotalStats[otherStat] = 0;
                 }
-                if (!forced || ClassStats[(classId, otherStat)] == 0)
+                if (!forced || ClassStats.GetInt((classId, otherStat)) == 0)
                 {
                     ClassStats.AddInt((classId, stat), amount);
                     ClassStats[(classId, otherStat)] = 0;
@@ -80,11 +80,11 @@ namespace BLTAdoptAHero.Achievements
 
             if (type is Statistic.Summons)
             {
-                UpdateStatPair(Statistic.ConsecutiveAttacks, Statistic.ConsecutiveSummons);
+                UpdateStatPair(Statistic.ConsecutiveSummons, Statistic.ConsecutiveAttacks);
             }
             else if (type is Statistic.Attacks)
             {
-                UpdateStatPair(Statistic.ConsecutiveSummons, Statistic.ConsecutiveAttacks);
+                UpdateStatPair(Statistic.ConsecutiveAttacks, Statistic.ConsecutiveSummons);
             }
             
             if (type is Statistic.Summons or Statistic.Attacks)
