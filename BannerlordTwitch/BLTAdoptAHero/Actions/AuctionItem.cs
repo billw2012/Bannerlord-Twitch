@@ -6,6 +6,7 @@ using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
@@ -41,67 +42,42 @@ namespace BLTAdoptAHero
                     "{=T2R35HHV}Another auction is already in progress".Translate());
                 return;
             }
-            
-            var auctionItems = 
-                BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero).ToList();
-
-            if (!auctionItems.Any())
-            {
-                ActionManager.SendReply(context, 
-                    "{=kYHEtOM7}You have no items to auction".Translate());
-                return;
-            }
 
             if (string.IsNullOrWhiteSpace(context.Args))
             {
                 ActionManager.SendReply(context, 
-                    context.ArgsErrorMessage("{=lI4WCNeQ}(reserve price) (partial item name)".Translate()));
+                    context.ArgsErrorMessage("{=}(custom item index) (reserve price)".Translate()));
                 return;
             }
 
             var argParts = context.Args.Trim().Split(' ').ToList();
-            if (argParts.Count == 1)
+            if (argParts.Count != 2)
             {
-                ActionManager.SendReply(context, 
-                    "{=lI4WCNeQ}(reserve price) (partial item name)".Translate());
+                ActionManager.SendReply(context, "{=}(custom item index) (reserve price)".Translate());
                 return;
             }
 
-            if (!int.TryParse(argParts[0], out int reservePrice) || reservePrice < 0)
+            (var element, string error) = BLTAdoptAHeroCampaignBehavior.Current.FindCustomItemByIndex(adoptedHero, argParts[0]);
+            if (element.IsEqualTo(EquipmentElement.Invalid))
             {
-                ActionManager.SendReply(context, 
-                    "{=mm1ay4I7}Invalid reserve price '{Arg}'".Translate(("Arg", argParts[0])));
+                ActionManager.SendReply(context, error ?? "(unknown error)");
+                return;
+            }
+            
+            if (!int.TryParse(argParts[1], out int reservePrice) || reservePrice < 0)
+            {
+                ActionManager.SendReply(context, "{=mm1ay4I7}Invalid reserve price '{Arg}'".Translate(("Arg", argParts[1])));
                 return;
             }
 
-            string itemName = context.Args.Substring(argParts[0].Length + 1).Trim();
-            var matchingItems = auctionItems.Where(i => i.GetModifiedItemName()
-                    .ToString().IndexOf(itemName, StringComparison.CurrentCultureIgnoreCase) >= 0)
-                .ToList();
-
-            if (matchingItems.Count == 0)
-            {
-                ActionManager.SendReply(context, 
-                    "{=viO1RBr5}No items found matching '{ItemName}'".Translate(("ItemName", itemName)));
-                return;
-            }
-            if (matchingItems.Count > 1)
-            {
-                ActionManager.SendReply(context, 
-                    "{=S2cszVBa}{ItemCount} items found matching '{ItemName}', be more specific"
-                        .Translate(("ItemCount", matchingItems.Count), ("ItemName", itemName)));
-                return; 
-            }
-
-            var item = matchingItems.First();
-            BLTAdoptAHeroCampaignBehavior.Current.StartItemAuction(item, adoptedHero, reservePrice,
+            BLTAdoptAHeroCampaignBehavior.Current.StartItemAuction(element, adoptedHero, reservePrice,
                 settings.AuctionDurationInSeconds, settings.AuctionReminderIntervalInSeconds,
                 s => ActionManager.SendNonReply(context, s));
             
             ActionManager.SendNonReply(context,
                 "{=BH5rnHNq}Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."
                     .Translate(
-                        ("ItemName", item.GetModifiedItemName()),
+                        ("ItemName", RewardHelpers.GetItemNameAndModifiers(element)),
                         ("ReservePrice", reservePrice),
                         ("GoldIcon", Naming.Gold),
                         ("AuctionDurationInSeconds", settings.AuctionDurationInSeconds)

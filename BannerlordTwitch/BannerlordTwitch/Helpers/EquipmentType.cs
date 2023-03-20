@@ -63,7 +63,7 @@ namespace BannerlordTwitch.Helpers
         public ItemCollection GetValues() => items;
         
         public static string GetFriendlyName(EquipmentType value) 
-            => items.FirstOrDefault(p => (EquipmentType) p.Value == value)?.DisplayName ?? "(none)";
+            => items.FirstOrDefault(p => (EquipmentType) p.Value == value)?.DisplayName ?? "{=a8ibMIfH}(none)".Translate();
     }
 
     public static class EquipmentTypeHelpers

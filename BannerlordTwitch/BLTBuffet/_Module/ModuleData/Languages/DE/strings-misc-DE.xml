@@ -85,7 +85,7 @@
         <!-- EnemyTeam -->
         <string id="Dc99H7LD" text="Gegnerisches Team" original="EnemyTeam"/>
         <!-- PlayerTeam -->
-        <string id="mWL1kGwD" text="SpielerTeam" original="PlayerTeam"/>
+        <string id="mWL1kGwD" text="Spieler Team" original="PlayerTeam"/>
         <!-- AllyTeam -->
         <string id="8rqexAvY" text="VerbündetesTeam" original="AllyTeam"/>
         <!-- Random -->
@@ -93,11 +93,11 @@
         <!-- On Weapon -->
         <string id="ry3Fo3Ph" text="Auf Waffe" original="On Weapon"/>
         <!-- On Hands -->
-        <string id="zfQ43utW" text="Auf Händen" original="On Hands"/>
+        <string id="zfQ43utW" text="Auf Hände" original="On Hands"/>
         <!-- On Head -->
         <string id="P9e57ey1" text="Auf den Kopf" original="On Head"/>
         <!-- On Body -->
-        <string id="GZC5VUo0" text="Auf dem Körper" original="On Body"/>
+        <string id="GZC5VUo0" text="Auf den Körper" original="On Body"/>
         <!-- Particle Effect Definition -->
         <string id="F9u231DX" text="Partikeleffekt-Definition" original="Particle Effect Definition"/>
         <!-- Particle effect system name, see ParticleEffects.txt for the full vanilla list -->
@@ -158,7 +158,7 @@
             text="Dauer, für die der Effekt anhält, wenn nicht angegeben, hält der Effekt bis zum Ende der Mission an"
             original="Duration the effect will last for, if not specified the effect will last until the end of the mission"/>
         <!-- Force Drop Weapons -->
-        <string id="rFxwAzgd" text="Waffen erzwingen" original="Force Drop Weapons"/>
+        <string id="rFxwAzgd" text="Waffen fallen lassen erzwingen" original="Force Drop Weapons"/>
         <!-- Force agent to drop weapons -->
         <string id="ZW0x13Y8" text="Agenten zwingen, Waffen fallen zu lassen"
             original="Force agent to drop weapons"/>

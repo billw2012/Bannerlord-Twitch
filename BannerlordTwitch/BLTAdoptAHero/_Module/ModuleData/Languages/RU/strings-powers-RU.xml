@@ -7,16 +7,16 @@
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- ActivePowerGroupItem -->
         <!-- Active Power Group Item -->
-        <string id="4xEkPMIy" text="Элемент группы активной мощности" original="Active Power Group Item"/>
+        <string id="4xEkPMIy" text="Предмет группы активной силы" original="Active Power Group Item"/>
         <!-- Power -->
-        <string id="HGDApoLL" text="Власть" original="Power"/>
+        <string id="HGDApoLL" text="Сила" original="Power"/>
         <!-- ActivePowerGroup -->
         <!-- Active Power Group -->
-        <string id="HvTIrx0b" text="Группа активной мощности" original="Active Power Group"/>
+        <string id="HvTIrx0b" text="Группа активной силы" original="Active Power Group"/>
         <!-- The name of the power: how the power will be described in messages -->
         <string id="EvVyh3WM" text="Название силы: как власть будет описываться в сообщениях" original="The name of the power: how the power will be described in messages"/>
         <!-- Powers -->
-        <string id="acLMixuK" text="Полномочия" original="Powers"/>
+        <string id="acLMixuK" text="Силы" original="Powers"/>
         <!-- The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure). -->
         <string id="6aKmeGgU" text="Различные эффекты в силе. У них также могут быть индивидуальные требования к разблокировке, поэтому у вас могут быть классы, которые со временем становятся сильнее (или слабее!) (Или по любой другой мере)." original="The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure)."/>
         <!-- ActivateEffect -->
@@ -28,11 +28,11 @@
         <!-- Particles/sound effects to play when this power group is deactivated -->
         <string id="V9fqIgvH" text="Частицы / звуковые эффекты для воспроизведения, когда эта группа мощности отключена" original="Particles/sound effects to play when this power group is deactivated"/>
         <!-- (no power) -->
-        <string id="ddNSQjWq" text="(Нет питания)" original="(no power)"/>
+        <string id="ddNSQjWq" text="(нет силы)" original="(no power)"/>
         <!-- Not allowed in tournaments! -->
         <string id="2NnCGjyI" text="Не допускается в турнирах!" original="Not allowed in tournaments!"/>
         <!-- No powers! -->
-        <string id="asncu3BX" text="Никаких полномочий!" original="No powers!"/>
+        <string id="asncu3BX" text="Никаких сил!" original="No powers!"/>
         <!-- Powers not allowed in tournaments! -->
         <string id="NMSDeunS" text="Силы запрещены в турнирах!" original="Powers not allowed in tournaments!"/>
         <!-- {PowerName} expired! -->
@@ -41,7 +41,7 @@
         <string id="WDfytZ7z" text="{PowerName} активирован!" original="{PowerName} activated!"/>
         <!-- DurationMissionHeroPowerDefBase -->
         <!-- Power Duration Seconds -->
-        <string id="F03TlOOV" text="Продолжительность питания в секундах" original="Power Duration Seconds"/>
+        <string id="F03TlOOV" text="Продолжительность силы в секундах" original="Power Duration Seconds"/>
         <!-- Pfx -->
         <string id="VS9ITIST" text="Pfx" original="Pfx"/>
         <!-- Duration the power will last for (when used as an active power), in seconds -->
@@ -71,7 +71,7 @@
         <!-- Percent chance (0 to 100) for target to get knocked down -->
         <string id="MTqyFfDc" text="Процентный шанс (от 0 до 100) для цели быть сбитым с ног" original="Percent chance (0 to 100) for target to get knocked down"/>
         <!-- Shrug Off Chance Percent -->
-        <string id="dCRbuRf8" text="Процент шанса сбросить плечи" original="Shrug Off Chance Percent"/>
+        <string id="dCRbuRf8" text="Процент шанса стойкости" original="Shrug Off Chance Percent"/>
         <!-- Percent chance (0 to 100) for target to shrug off blow (not visably reacting to it, damage will still apply) -->
         <string id="adHeasi7" text="Процентный шанс (от 0 до 100) для цели отразить удар (не реагируя на него визуально, урон все равно будет нанесен)" original="Percent chance (0 to 100) for target to shrug off blow (not visably reacting to it, damage will still apply)"/>
         <!-- Makes Rear Chance Percent -->
@@ -89,22 +89,22 @@
         <!-- Knock Down -->
         <string id="4iroX5zj" text="Сбить" original="Knock Down"/>
         <!-- Shrug Off -->
-        <string id="DNqblCEf" text="Пожимать плечами" original="Shrug Off"/>
+        <string id="DNqblCEf" text="Стойкость" original="Shrug Off"/>
         <!-- Mount Rear -->
-        <string id="F0o4A3mp" text="Крепление сзади" original="Mount Rear"/>
+        <string id="F0o4A3mp" text="Оттолкнуть верховое" original="Mount Rear"/>
         <!-- Dismount -->
-        <string id="bEO48IR4" text="Демонтировать" original="Dismount"/>
+        <string id="bEO48IR4" text="Спешиться" original="Dismount"/>
         <!-- PassivePowerGroupItem -->
         <!-- Passive Power Group Item -->
-        <string id="sURt2dSt" text="Предмет группы пассивной силы" original="Passive Power Group Item"/>
+        <string id="sURt2dSt" text="Элнмент группы пассивной силы" original="Passive Power Group Item"/>
         <!-- Power -->
-        <string id="KHoc6FK5" text="Власть" original="Power"/>
+        <string id="KHoc6FK5" text="Сила" original="Power"/>
         <!-- (no power) -->
         <string id="8mrSEyNk" text="(Нет питания)" original="(no power)"/>
         <!-- The name of the power: how the power will be described in messages -->
-        <string id="QsdqVpNE" text="Название силы: как власть будет описываться в сообщениях" original="The name of the power: how the power will be described in messages"/>
+        <string id="QsdqVpNE" text="Название силы: как сила будет описываться в сообщениях" original="The name of the power: how the power will be described in messages"/>
         <!-- Powers -->
-        <string id="61fc3xTQ" text="Полномочия" original="Powers"/>
+        <string id="61fc3xTQ" text="Силы" original="Powers"/>
         <!-- The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure). -->
         <string id="wtD908lt" text="Различные эффекты в силе. У них также могут быть индивидуальные требования к разблокировке, поэтому у вас могут быть классы, которые со временем становятся сильнее (или слабее!) (Или по любой другой мере)." original="The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure)."/>
         <!-- PowerGroupItemBase -->
@@ -113,7 +113,7 @@
         <!-- Optional unlock criteria -->
         <string id="sl5ZoJdv" text="Дополнительные критерии разблокировки" original="Optional unlock criteria"/>
         <!-- requires {Requirements} -->
-        <string id="hPcS0MIw" text="требуется {Requirements}" original="requires {Requirements}"/>
+        <string id="hPcS0MIw" text="требует {Requirements}" original="requires {Requirements}"/>
         <!-- AbsorbHealthPower -->
         <!-- Absorb Health Power -->
         <string id="HmDfLY2B" text="Поглощение силы здоровья" original="Absorb Health Power"/>
@@ -135,7 +135,7 @@
         <!-- Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it) -->
         <string id="tXh8oAaE" text="Модификатор урона (установите меньше 100%, чтобы уменьшить урон, установите больше 100%, чтобы увеличить)" original="Damage modifier (set less than 100% to reduce damage, set greater than 100% to increase it)"/>
         <!-- Damage To Add -->
-        <string id="fPmJAchN" text="Ущерб, чтобы добавить" original="Damage To Add"/>
+        <string id="fPmJAchN" text="Добавка урона" original="Damage To Add"/>
         <!-- How much damage to add -->
         <string id="lEbWq1of" text="Сколько урона добавить" original="How much damage to add"/>
         <!-- Add Hit Behavior -->
@@ -145,7 +145,7 @@
         <!-- Remove Hit Behavior -->
         <string id="shUGx48n" text="Удалить поведение при попадании" original="Remove Hit Behavior"/>
         <!-- Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always stunned when hit) -->
-        <string id="feiVAent" text="Поведение, которое нужно убрать из повреждений (например, уберите Shrug Off, чтобы цель всегда была оглушена при попадании)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always stunned when hit)"/>
+        <string id="feiVAent" text="Поведение, которое нужно убрать из повреждений (например, уберите Стойкость, чтобы цель всегда была оглушена при попадании)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the target is always stunned when hit)"/>
         <!-- Armor To Ignore Percent -->
         <string id="w5j3JYog" text="Процент игнорирования брони" original="Armor To Ignore Percent"/>
         <!-- What fraction (0 to 1) of armor to ignore when applying damage -->
@@ -155,7 +155,7 @@
         <!-- Chance (0 to 1) that the hit will be unblockable -->
         <string id="QoYMwBnz" text="Вероятность (от 0 до 1), что удар будет неблокируемым" original="Chance (0 to 1) that the hit will be unblockable"/>
         <!-- Shatter Shield Chance Percent -->
-        <string id="L1ZqypsT" text="Процент шанса разрушить щит" original="Shatter Shield Chance Percent"/>
+        <string id="L1ZqypsT" text="Процент шанса Раскола щита" original="Shatter Shield Chance Percent"/>
         <!-- Chance (0 to 1) that the hit will shatter shield if it is blocked -->
         <string id="MaDRQPhh" text="Шанс (от 0 до 1), что удар разрушит щит, если он заблокирован" original="Chance (0 to 1) that the hit will shatter shield if it is blocked"/>
         <!-- Cut Through Chance Percent -->
@@ -163,7 +163,7 @@
         <!-- Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each collision, so a cut through chance of 1 will result in cutting through everyone with every hit) -->
         <string id="uAsNXThU" text="Вероятность (от 0 до 1), что удар прорежет любой встреченный юнит (оценивается при каждом столкновении, поэтому шанс прорезания, равный 1, приведет к прорезанию всех при каждом ударе)" original="Chance (0 to 1) that the hit will cut through any unit it encounters (evaluated on each collision, so a cut through chance of 1 will result in cutting through everyone with every hit)"/>
         <!-- Stagger Chance Percent -->
-        <string id="XxLPeI3i" text="Процент шанса пошатнуться" original="Stagger Chance Percent"/>
+        <string id="XxLPeI3i" text="Процент шанса Пошатнуться" original="Stagger Chance Percent"/>
         <!-- Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR stagger, it can't do both, cut through chance is evaluated before this one) -->
         <string id="8N18Zs1O" text="Шанс (от 0 до 1), что попадание поразит агента, которого оно поражает (попадание может либо прорезать, либо шатнуть, он не может делать и то, и другое, шанс прорезания оценивается перед этим)" original="Chance (0 to 1) that the hit will stagger the agent it hits (hit can either cut through OR stagger, it can't do both, cut through chance is evaluated before this one)"/>
         <!-- AoE -->
@@ -201,9 +201,9 @@
         <!-- Missile Trail Particle Effect -->
         <string id="2GaGbTYR" text="Эффект частиц ракетного следа" original="Missile Trail Particle Effect"/>
         <!-- Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing fire/smoke effect) -->
-        <string id="UiCylfED" text="Эффект частиц для прикрепления к ракете (рекомендуется psys_game_burning_agent для эффекта следящего огня / дыма)" original="Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing fire/smoke effect)"/>
+        <string id="UiCylfED" text="Эффект частиц для прикрепления к ракете (рекомендуется psys_game_burning_agent для эффекта следящего огня/дыма)" original="Particle Effect to attach to the missile (recommend psys_game_burning_agent for trailing fire/smoke effect)"/>
         <!-- Hit Effect -->
-        <string id="gEhH84HS" text="Эффект удара" original="Hit Effect"/>
+        <string id="gEhH84HS" text="Эффект попадания" original="Hit Effect"/>
         <!-- Effect to play on hit (intended mainly for AoE effects) -->
         <string id="r6D9pDIA" text="Эффект для воспроизведения при попадании (предназначен в основном для эффектов AoE)" original="Effect to play on hit (intended mainly for AoE effects)"/>
         <!-- Non-heroes -->
@@ -219,33 +219,33 @@
         <!-- Melee -->
         <string id="ibrr3fCK" text="Рукопашный бой" original="Melee"/>
         <!-- Charge -->
-        <string id="X8RrfG7V" text="Плата" original="Charge"/>
+        <string id="X8RrfG7V" text="Столкновение" original="Charge"/>
         <!-- {DamageModifierPercent}% dmg -->
-        <string id="LbHOSj1l" text="{DamageModifierPercent}% dmg" original="{DamageModifierPercent}% dmg"/>
+        <string id="LbHOSj1l" text="{DamageModifierPercent}% урона" original="{DamageModifierPercent}% dmg"/>
         <!-- {DamageToAdd} dmg -->
-        <string id="mBmFK0OK" text="{DamageToAdd} dmg" original="{DamageToAdd} dmg"/>
+        <string id="mBmFK0OK" text="{DamageToAdd} урона" original="{DamageToAdd} dmg"/>
         <!-- Add: {AddHitBehavior} -->
         <string id="ybyWP8jd" text="Добавить: {AddHitBehavior}" original="Add: {AddHitBehavior}"/>
         <!-- Remove: {RemoveHitBehavior} -->
-        <string id="WJVreCCg" text="Удалить: {RemoveHitBehavior}" original="Remove: {RemoveHitBehavior}"/>
+        <string id="WJVreCCg" text="Убрать: {RemoveHitBehavior}" original="Remove: {RemoveHitBehavior}"/>
         <!-- Ignore {ArmorToIgnorePercent}% Armor -->
         <string id="svDicWAa" text="Игнорировать {ArmorToIgnorePercent}% брони" original="Ignore {ArmorToIgnorePercent}% Armor"/>
         <!-- {UnblockableChancePercent}% Unblockable -->
-        <string id="TkGVRcl0" text="{UnblockableChancePercent}% неблокируемых" original="{UnblockableChancePercent}% Unblockable"/>
+        <string id="TkGVRcl0" text="{UnblockableChancePercent}% Неблокируемого" original="{UnblockableChancePercent}% Unblockable"/>
         <!-- {ShatterShieldChancePercent}% Shatter Shield -->
-        <string id="xHMYpCMY" text="{ShatterShieldChancePercent}% Раскол Щит" original="{ShatterShieldChancePercent}% Shatter Shield"/>
+        <string id="xHMYpCMY" text="{ShatterShieldChancePercent}% Раскол Щита" original="{ShatterShieldChancePercent}% Shatter Shield"/>
         <!-- {CutThroughChancePercent}% Cut Through -->
-        <string id="I3BiKkXC" text="{CutThroughChancePercent}% прорезания" original="{CutThroughChancePercent}% Cut Through"/>
+        <string id="I3BiKkXC" text="{CutThroughChancePercent}% Прорезания" original="{CutThroughChancePercent}% Cut Through"/>
         <!-- {StaggerChancePercent}% Stagger -->
-        <string id="NetyrPKo" text="{StaggerChancePercent}% Stagger" original="{StaggerChancePercent}% Stagger"/>
+        <string id="NetyrPKo" text="{StaggerChancePercent}% Пошатнуться" original="{StaggerChancePercent}% Stagger"/>
         <!-- AoE: {AoEDescription} -->
-        <string id="A6Vulmvy" text="Область: {AoEDescription}" original="AoE: {AoEDescription}"/>
+        <string id="A6Vulmvy" text="AoE: {AoEDescription}" original="AoE: {AoEDescription}"/>
         <!-- {Modifiers} from {AppliesFrom} against {AppliesAgainst} -->
-        <string id="UhEtVOWV" text="{Modifiers} from {AppliesFrom} against {AppliesAgainst}" original="{Modifiers} from {AppliesFrom} against {AppliesAgainst}"/>
+        <string id="UhEtVOWV" text="{Modifiers} от {AppliesFrom} против {AppliesAgainst}" original="{Modifiers} from {AppliesFrom} against {AppliesAgainst}"/>
         <!-- {Modifiers} from {AppliesFrom} -->
-        <string id="GrP7yeqP" text="{Modifiers} from {AppliesFrom}" original="{Modifiers} from {AppliesFrom}"/>
+        <string id="GrP7yeqP" text="{Modifiers} от {AppliesFrom}" original="{Modifiers} from {AppliesFrom}"/>
         <!-- {Modifiers} against {AppliesAgainst} -->
-        <string id="dAObdN2r" text="{Modifiers} against {AppliesAgainst}" original="{Modifiers} against {AppliesAgainst}"/>
+        <string id="dAObdN2r" text="{Modifiers} против {AppliesAgainst}" original="{Modifiers} against {AppliesAgainst}"/>
         <!-- {Modifiers} -->
         <string id="ZXm0fYfO" text="{Modifiers}" original="{Modifiers}"/>
         <!-- AreaOfEffectDef -->
@@ -270,15 +270,15 @@
         <!-- Damage type -->
         <string id="VcfFbhYX" text="Тип повреждения" original="Damage type"/>
         <!-- Hit Behavior -->
-        <string id="MCTf7KFT" text="Hit Behavior" original="Hit Behavior"/>
+        <string id="MCTf7KFT" text="Поведение попадания" original="Hit Behavior"/>
         <!-- Flags to apply to the damage -->
         <string id="Ud0EJmY0" text="Флаги для нанесения ущерба" original="Flags to apply to the damage"/>
         <!-- {Distance}m: {Damage}dmg -->
-        <string id="GRtsL26e" text="{Distance}m: {Damage} dmg" original="{Distance}m: {Damage}dmg"/>
+        <string id="GRtsL26e" text="{Distance}м: {Damage}урона" original="{Distance}m: {Damage}dmg"/>
         <!-- {Damage}dmg in {Distance}m with {HitBehavior} -->
-        <string id="S5DNQWpQ" text="{Damage}dmg in {Distance}m with {HitBehavior}" original="{Damage}dmg in {Distance}m with {HitBehavior}"/>
+        <string id="S5DNQWpQ" text="{Damage}урона на {Distance}м от {HitBehavior}" original="{Damage}dmg in {Distance}m with {HitBehavior}"/>
         <!-- {Damage}dmg in {Distance}m -->
-        <string id="MzOdRykr" text="{Damage}dmg in {Distance} м" original="{Damage}dmg in {Distance}m"/>
+        <string id="MzOdRykr" text="{Damage}урона на {Distance}м" original="{Damage}dmg in {Distance}m"/>
         <!-- AddHealthPower -->
         <!-- Add Health Power -->
         <string id="ZbxNmvem" text="Добавить силу здоровья" original="Add Health Power"/>
@@ -304,22 +304,22 @@
         <!-- Reflected Damage Is Subtracted -->
         <string id="IxiHjT1Z" text="Отраженный урон вычитается" original="Reflected Damage Is Subtracted"/>
         <!-- Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection) -->
-        <string id="Pdg6mCPA" text="Вычитается ли отраженный урон из урона, который получает герой (это `` классическое '' отражение урона)" original="Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection)"/>
+        <string id="Pdg6mCPA" text="Вычитается ли отраженный урон из урона, который получает герой (это 'классическое' отражение урона)" original="Whether the damage that is reflected is also subtracted from the damage the hero takes (this is 'classic' damage reflection)"/>
         <!-- Hit Behavior -->
-        <string id="WDRb4mQ3" text="Hit Behavior" original="Hit Behavior"/>
+        <string id="WDRb4mQ3" text="Поведение попадания" original="Hit Behavior"/>
         <!-- Hit behavior for the reflected damage -->
-        <string id="SHlCPdpp" text="Поведение удара для отраженного урона" original="Hit behavior for the reflected damage"/>
+        <string id="SHlCPdpp" text="Поведение попадания для отраженного урона" original="Hit behavior for the reflected damage"/>
         <!-- Reflect {ReflectPercent}% damage with {HitBehavior} -->
-        <string id="vLGJf7ow" text="Отражение {ReflectPercent}% damage with {HitBehavior}" original="Reflect {ReflectPercent}% damage with {HitBehavior}"/>
+        <string id="vLGJf7ow" text="Отражение {ReflectPercent}% урона от {HitBehavior}" original="Reflect {ReflectPercent}% damage with {HitBehavior}"/>
         <!-- Reflect {ReflectPercent}% damage -->
-        <string id="12tMrCY7" text="Отразить {ReflectPercent}% урона" original="Reflect {ReflectPercent}% damage"/>
+        <string id="12tMrCY7" text="Отражение {ReflectPercent}% урона" original="Reflect {ReflectPercent}% damage"/>
         <!-- Reflect -->
-        <string id="mDczhD1H" text="Отражать" original="Reflect"/>
+        <string id="mDczhD1H" text="Отражение" original="Reflect"/>
         <!-- Reflected damage is subtracted from incoming damage -->
         <string id="yfmwtdMC" text="Отраженный урон вычитается из входящего урона." original="Reflected damage is subtracted from incoming damage"/>
         <!-- StatModifyPower -->
         <!-- Stat Modify Power -->
-        <string id="pVdYFJNQ" text="Stat Modify Power" original="Stat Modify Power"/>
+        <string id="pVdYFJNQ" text="Стта модификаторы силы" original="Stat Modify Power"/>
         <!-- Applies modifiers to various character stats -->
         <string id="AOaW2ORo" text="Применяет модификаторы к различным характеристикам персонажей" original="Applies modifiers to various character stats"/>
         <!-- Modifiers -->
@@ -336,24 +336,24 @@
         <!-- Damage modifier (set less than 100% to reduce incoming damage, set greater than 100% to increase it) -->
         <string id="1eJHtO06" text="Модификатор урона (установите меньше 100%, чтобы уменьшить входящий урон, установите больше 100%, чтобы увеличить)" original="Damage modifier (set less than 100% to reduce incoming damage, set greater than 100% to increase it)"/>
         <!-- Damage To Add -->
-        <string id="4XgEPe3Q" text="Ущерб, чтобы добавить" original="Damage To Add"/>
+        <string id="4XgEPe3Q" text="Добавка урона" original="Damage To Add"/>
         <!-- How much damage to add or subtract -->
         <string id="wuOM9C4l" text="Сколько урона добавить или убавить" original="How much damage to add or subtract"/>
         <!-- Add Hit Behavior -->
         <string id="2JFBV975" text="Добавить поведение попадания" original="Add Hit Behavior"/>
         <!-- Behaviors to add to the damage (e.g. add Shrug Off to ensure the hero is never stunned when hit) -->
-        <string id="9t2oXdqy" text="Поведение для увеличения урона (например, добавьте Shrug Off, чтобы герой никогда не оглушался при ударе)" original="Behaviors to add to the damage (e.g. add Shrug Off to ensure the hero is never stunned when hit)"/>
+        <string id="9t2oXdqy" text="Поведение для увеличения урона (например, добавьте Стойкость, чтобы герой никогда не оглушался при ударе)" original="Behaviors to add to the damage (e.g. add Shrug Off to ensure the hero is never stunned when hit)"/>
         <!-- Remove Hit Behavior -->
         <string id="GLAvDJl5" text="Удалить поведение при попадании" original="Remove Hit Behavior"/>
         <!-- Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit) -->
-        <string id="oA2TrarN" text="Поведение, которое нужно убрать из урона (например, уберите Shrug Off, чтобы герой всегда был оглушен при ударе)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit)"/>
+        <string id="oA2TrarN" text="Поведение, которое нужно убрать из урона (например, уберите Стойкость, чтобы герой всегда был оглушен при ударе)" original="Behaviors to remove from the damage (e.g. remove Shrug Off to ensure the hero is always stunned when hit)"/>
         <!-- Armor To Ignore Percent -->
         <string id="9Lwkwni0" text="Процент игнорирования брони" original="Armor To Ignore Percent"/>
         <!-- What fraction (0 to 1) of armor to ignore when applying damage -->
         <string id="wSkoeVw1" text="Какую долю брони (от 0 до 1) игнорировать при нанесении урона" original="What fraction (0 to 1) of armor to ignore when applying damage"/>
         <!-- {DamageModifierPercent}% damage -->
-        <string id="stFtZvfp" text="{DamageModifierPercent}% повреждений" original="{DamageModifierPercent}% damage"/>
+        <string id="stFtZvfp" text="{DamageModifierPercent}% урона" original="{DamageModifierPercent}% damage"/>
         <!-- Damage -->
-        <string id="GrBznDeq" text="Повреждать" original="Damage"/>
+        <string id="GrBznDeq" text="Урон" original="Damage"/>
     </strings>
 </base>

@@ -23,11 +23,11 @@
         <!-- Alert sound to play for the message -->
         <string id="TSi4MZiT" text="Звуковой сигнал для воспроизведения сообщения" original="Alert sound to play for the message"/>
         <!-- {UserName} gives you {GoldAmountToGive} gold -->
-        <string id="awjXw6yr" text="{UserName} gives you {GoldAmountToGive} золото" original="{UserName} gives you {GoldAmountToGive} gold"/>
+        <string id="awjXw6yr" text="{UserName} дает вам {GoldAmountToGive} золото" original="{UserName} gives you {GoldAmountToGive} gold"/>
         <!-- {UserName} gives you {GoldAmountToGive} gold: '{Message}' -->
-        <string id="jOqdrS7h" text="{UserName} gives you {GoldAmountToGive} gold: '{Message} '" original="{UserName} gives you {GoldAmountToGive} gold: '{Message}'"/>
+        <string id="jOqdrS7h" text="{UserName} дает вам {GoldAmountToGive} золота: '{Message}'" original="{UserName} gives you {GoldAmountToGive} gold: '{Message}'"/>
         <!-- Sent {GoldAmountToGive}{GoldIcon} to {PlayerName} -->
-        <string id="ziWoNEec" text="Отправлено {GoldAmountToGive}{GoldIcon} to {PlayerName}" original="Sent {GoldAmountToGive}{GoldIcon} to {PlayerName}"/>
+        <string id="ziWoNEec" text="Отправлено {GoldAmountToGive}{GoldIcon} на {PlayerName}" original="Sent {GoldAmountToGive}{GoldIcon} to {PlayerName}"/>
         <!-- CharacterEffect -->
         <!-- Applies effects to a character / the player -->
         <string id="aGfP5X2q" text="Применяет эффекты к персонажу / игроку" original="Applies effects to a character / the player"/>
@@ -42,30 +42,30 @@
         <!-- Couldn't find the target! -->
         <string id="duuvGgDi" text="Не удалось найти цель!" original="Couldn't find the target!"/>
         <!-- CharacterEffect {Source} configuration error: Name is missing! -->
-        <string id="hr0ye4gl" text="Ошибка конфигурации CharacterEffect {Source}: отсутствует имя!" original="CharacterEffect {Source} configuration error: Name is missing!"/>
+        <string id="hr0ye4gl" text="CharacterEffect {Source} Ошибка конфигурации: Имя отсутствует!" original="CharacterEffect {Source} configuration error: Name is missing!"/>
         <!-- {Target} already affected by {Config}! -->
-        <string id="yZuAmGOU" text="{Target} already affected by {Config}!" original="{Target} already affected by {Config}!"/>
+        <string id="yZuAmGOU" text="{Target} уже затронута {Config}!" original="{Target} already affected by {Config}!"/>
         <!-- {Target} is mounted so cannot be affected by {Config}! -->
-        <string id="gZtqmx0D" text="{Target} is mounted so cannot be affected by {Config}!" original="{Target} is mounted so cannot be affected by {Config}!"/>
+        <string id="gZtqmx0D" text="{Target} верхом, поэтому не может быть затронута {Config}!"." original="{Target} is mounted so cannot be affected by {Config}!"/>
         <!-- {Config} is active on {Target}! -->
-        <string id="1S6mDVBM" text="{Config} is active on {Target}!" original="{Config} is active on {Target}!"/>
+        <string id="1S6mDVBM" text="{Config} активна на {Target}!" original="{Config} is active on {Target}!"/>
         <!-- {Config} is active on {Target}! -->
-        <string id="uV2gZjHI" text="{Config} is active on {Target}!" original="{Config} is active on {Target}!"/>
+        <string id="uV2gZjHI" text="{Config} активна на {Target}!" original="{Config} is active on {Target}!"/>
         <!-- {Config} expired on {Target}! -->
-        <string id="lpdl3sj9" text="{Config} expired on {Target}!" original="{Config} expired on {Target}!"/>
+        <string id="lpdl3sj9" text="{Config} истекла на {Target}!" original="{Config} expired on {Target}!"/>
         <!-- CharacterEffect.Config -->
         <!-- Player -->
         <string id="92tZqqRy" text="Игрок" original="Player"/>
         <!-- AdoptedHero -->
-        <string id="jyNFgLUD" text="Принял Герой" original="AdoptedHero"/>
+        <string id="jyNFgLUD" text="Усыновленный герой" original="Adopted Hero"/>
         <!-- Any -->
         <string id="qVaXXiEf" text="Любой" original="Any"/>
         <!-- EnemyTeam -->
-        <string id="Dc99H7LD" text="EnemyTeam" original="EnemyTeam"/>
+        <string id="Dc99H7LD" text="Вражеская команда" original="Enemy Team"/>
         <!-- PlayerTeam -->
-        <string id="mWL1kGwD" text="PlayerTeam" original="PlayerTeam"/>
+        <string id="mWL1kGwD" text="Команда игроков" original="Player Team"/>
         <!-- AllyTeam -->
-        <string id="8rqexAvY" text="Союзник" original="AllyTeam"/>
+        <string id="8rqexAvY" text="Союзник" original="Ally Team"/>
         <!-- Random -->
         <string id="o3jTIv2S" text="Случайный" original="Random"/>
         <!-- On Weapon -->
@@ -79,9 +79,9 @@
         <!-- Particle Effect Definition -->
         <string id="F9u231DX" text="Определение эффекта частиц" original="Particle Effect Definition"/>
         <!-- Particle effect system name, see ParticleEffects.txt for the full vanilla list -->
-        <string id="8FGAgHIX" text="Имя системы эффектов частиц, полный список ванили см. В ParticleEffects.txt." original="Particle effect system name, see ParticleEffects.txt for the full vanilla list"/>
+        <string id="8FGAgHIX" text="Имя системы эффектов частиц, см. ParticleEffects.txt для полного списка ванилей" original="Particle effect system name, see ParticleEffects.txt for the full vanilla list"/>
         <!-- Attach Point -->
-        <string id="7MIO0dPq" text="Присоединить точку" original="Attach Point"/>
+        <string id="7MIO0dPq" text="Точка крепления" original="Attach Point"/>
         <!-- Where to attach the particles -->
         <string id="jEEtBaKs" text="Куда прикрепить частицы" original="Where to attach the particles"/>
         <!-- The property to modify -->

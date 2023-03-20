@@ -187,17 +187,17 @@
         <string id="kpDE6URE" text="Gegenstandstyp für Steckplatz 1"
             original="Item type to put in slot 1"/>
         <!-- Slot 2 -->
-        <string id="vXtJLZlw" text="Steckplatz 2" original="Slot 2"/>
+        <string id="vXtJLZlw" text="Platz 2" original="Slot 2"/>
         <!-- Item type to put in slot 2 -->
         <string id="G5AN3s2D" text="Gegenstandstyp zum Platzieren in Slot 2"
             original="Item type to put in slot 2"/>
         <!-- Slot 3 -->
-        <string id="B4LLuesN" text="Steckplatz 3" original="Slot 3"/>
+        <string id="B4LLuesN" text="Platz 3" original="Slot 3"/>
         <!-- Item type to put in slot 3 -->
         <string id="clxxPb9O" text="Gegenstandstyp zum Platzieren in Slot 3"
             original="Item type to put in slot 3"/>
         <!-- Slot 4 -->
-        <string id="h9PK7GnU" text="Steckplatz 4" original="Slot 4"/>
+        <string id="h9PK7GnU" text="Platz 4" original="Slot 4"/>
         <!-- Item type to put in slot 4 -->
         <string id="EUzbiqh5" text="Gegenstandstyp zum Einfügen in Slot 4"
             original="Item type to put in slot 4"/>
@@ -245,7 +245,7 @@
         <string id="iGdq37PI" text="Reittier" original="Mount"/>
         <!-- KillStreakDef -->
         <!-- Kill Streak -->
-        <string id="InTnlqz1" text="Kill Streak" original="Kill Streak"/>
+        <string id="InTnlqz1" text="Killserie" original="Kill Streak"/>
         <!-- Show Notification -->
         <string id="poe8m8rn" text="Benachrichtigung anzeigen" original="Show Notification"/>
         <!-- Notification Text -->
@@ -261,7 +261,7 @@
         <string id="mLElTwb6" text="Erforderliche Kills, um den Kill Streak zu erreichen."
             original="Kills required to achieve the kill streak."/>
         <!-- Gold Reward -->
-        <string id="zEqJgISl" text="Gold-Belohnung" original="Gold Reward"/>
+        <string id="zEqJgISl" text="Goldbelohnung" original="Gold Reward"/>
         <!-- Gold rewarded when the kill streak is achieved. -->
         <string id="CYg79sAT" text="Gold wird belohnt, wenn der Kill Streak erreicht ist."
             original="Gold rewarded when the kill streak is achieved."/>

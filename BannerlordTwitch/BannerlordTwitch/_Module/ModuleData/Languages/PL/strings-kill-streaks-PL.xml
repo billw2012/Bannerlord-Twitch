@@ -6,6 +6,6 @@
     <strings>
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- Killing Spree -->
-        <string id="QNbIUDrh" text="Zabijanie Spree" original="Killing Spree"/>
+        <string id="QNbIUDrh" text="Seria zabójstw" original="Killing Spree"/>
     </strings>
 </base>

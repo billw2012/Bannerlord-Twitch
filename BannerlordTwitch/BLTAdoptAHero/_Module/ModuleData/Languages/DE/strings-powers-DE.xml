@@ -28,7 +28,7 @@
             text="Die verschiedenen Effekte der Kraft. Diese können auch angepasste Freischaltanforderungen haben, sodass du Klassen haben kannst, die im Laufe der Zeit (oder durch jede andere Maßnahme) stärker (oder schwächer!) werden."
             original="The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure)."/>
         <!-- ActivateEffect -->
-        <string id="ticZtKY4" text="AktiviereEffekt" original="ActivateEffect"/>
+        <string id="ticZtKY4" text="AktiviereFähigkeit" original="ActivateEffect"/>
         <!-- Particles/sound effects to play when this power group is activated -->
         <string id="YWHa7H42"
             text="Partikel/Soundeffekte zum Abspielen, wenn diese Kraftgruppe aktiviert ist"
@@ -84,7 +84,7 @@
         <string id="aQgYs3mI" text="Namen hier eingeben" original="Enter Name Here"/>
         <!-- HitBehavior -->
         <!-- Knock Back Chance Percent -->
-        <string id="mtZMAwbM" text="Knock-Back-Chance in Prozent"
+        <string id="mtZMAwbM" text="Zurückstoßen-Chance in Prozent"
             original="Knock Back Chance Percent"/>
         <!-- Percent chance (0 to 100) for target to get knocked back -->
         <string id="wPgAMF92"
@@ -123,7 +123,7 @@
         <!-- Knock Down -->
         <string id="4iroX5zj" text="Niederschlagen" original="Knock Down"/>
         <!-- Shrug Off -->
-        <string id="DNqblCEf" text="Achselzucken" original="Shrug Off"/>
+        <string id="DNqblCEf" text="Widerstehen" original="Shrug Off"/>
         <!-- Mount Rear -->
         <string id="F0o4A3mp" text="Reittier hinten" original="Mount Rear"/>
         <!-- Dismount -->
@@ -353,7 +353,7 @@
         <string id="ZXm0fYfO" text="{Modifiers}" original="{Modifiers}"/>
         <!-- AreaOfEffectDef -->
         <!-- Range -->
-        <string id="DMsD70Yc" text="Bereich" original="Range"/>
+        <string id="DMsD70Yc" text="Reichweite" original="Range"/>
         <!-- The radius to apply the damage in -->
         <string id="yjmcKGuH" text="Der Radius, um den Schaden in anzuwenden"
             original="The radius to apply the damage in"/>
@@ -413,7 +413,7 @@
             original="How much HP to add (applied after Modifier)"/>
         <!-- ReflectDamagePower -->
         <!-- Reflect Damage Power -->
-        <string id="7d0IdABV" text="Schadenskraft reflektieren" original="Reflect Damage Power"/>
+        <string id="7d0IdABV" text="Schaden reflektieren Fähigkeit" original="Reflect Damage Power"/>
         <!-- Adds fixed or relative amount of extra HP to the hero when they spawn -->
         <string id="jcNZx1M0"
             text="Fügt dem Helden beim Spawnen eine feste oder relative Menge an zusätzlichen HP hinzu"
@@ -450,7 +450,7 @@
             original="Reflected damage is subtracted from incoming damage"/>
         <!-- StatModifyPower -->
         <!-- Stat Modify Power -->
-        <string id="pVdYFJNQ" text="Stat-Modifikationskraft" original="Stat Modify Power"/>
+        <string id="pVdYFJNQ" text="Stat Modifikationsfähigkeit" original="Stat Modify Power"/>
         <!-- Applies modifiers to various character stats -->
         <string id="AOaW2ORo" text="Wendet Modifikatoren auf verschiedene Charakterstatistiken an"
             original="Applies modifiers to various character stats"/>
@@ -461,7 +461,7 @@
             original="What hero stat to modify"/>
         <!-- TakeDamagePower -->
         <!-- Take Damage Power -->
-        <string id="UJHquN95" text="Nimm Schadenskraft" original="Take Damage Power"/>
+        <string id="UJHquN95" text="Schaden nehmen Fähigkeit" original="Take Damage Power"/>
         <!-- Changes the effects of incoming damage -->
         <string id="F3TxyV4d" text="Ändert die Auswirkungen von eingehendem Schaden"
             original="Changes the effects of incoming damage"/>

@@ -132,9 +132,9 @@
         <!-- Cut Through I -->
         <string id="VsZLMOHX" text="Durchschneiden I" original="Cut Through I"/>
         <!-- Cut Through II -->
-        <string id="yXj1jqxx" text="Durchschneiden II" original="Cut Through II"/>
+        <string id="yXj1jqxx" text="Zerschneiden II" original="Cut Through II"/>
         <!-- Cut Through III -->
-        <string id="R537vuN0" text="Durchschneiden III" original="Cut Through III"/>
+        <string id="R537vuN0" text="Zerschneiden III" original="Cut Through III"/>
         <!-- Shatter Shield I -->
         <string id="89ezJ7aW" text="Schild zerschmettern I" original="Shatter Shield I"/>
         <!-- Shatter Shield II -->
@@ -142,11 +142,11 @@
         <!-- Shatter Shield III -->
         <string id="V6RyPIQg" text="Schild zerschmettern III" original="Shatter Shield III"/>
         <!-- Shrug Off I -->
-        <string id="oyKzNISD" text="Achselzucken I" original="Shrug Off I"/>
+        <string id="oyKzNISD" text="Schmerzunterdrückung I" original="Shrug Off I"/>
         <!-- Shrug Off II -->
-        <string id="zNj3xNd4" text="Achselzucken II" original="Shrug Off II"/>
+        <string id="zNj3xNd4" text="Schmerzunterdrückung II" original="Shrug Off II"/>
         <!-- Shrug Off III -->
-        <string id="5nsSdwel" text="Achselzucken III" original="Shrug Off III"/>
+        <string id="5nsSdwel" text="Schmerzunterdrückung III" original="Shrug Off III"/>
         <!-- Athletic I -->
         <string id="b3DBwSTA" text="Sportlich I" original="Athletic I"/>
         <!-- Athletic II -->

@@ -67,19 +67,19 @@
         <!-- Raw XP Skill Cap -->
         <string id="S5FAna09" text="Ограничение навыка Raw XP" original="Raw XP Skill Cap"/>
         <!-- Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap. -->
-        <string id="WUzqXuHN" text="Ограничение навыка при использовании Raw XP. Навыки не будут выше этого значения. 330 - это максимальное количество опыта ванили." original="Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap."/>
+        <string id="WUzqXuHN" text="Ограничение навыка при использовании Raw XP. Навыки не будут выше этого значения. 330 - это максимальное количество XP ванили." original="Skill cap when using Raw XP. Skills will not go above this value. 330 is the vanilla XP skill cap."/>
         <!-- Gold Per Kill -->
         <string id="94Ouh5It" text="Золото за убийство" original="Gold Per Kill"/>
         <!-- Gold the hero gets for every kill -->
         <string id="iSAMxZ8a" text="Золото герой получает за каждое убийство" original="Gold the hero gets for every kill"/>
         <!-- XP Per Kill -->
-        <string id="DMGKBoJT" text="Опыт за убийство" original="XP Per Kill"/>
+        <string id="DMGKBoJT" text="XP за убийство" original="XP Per Kill"/>
         <!-- XP the hero gets for every kill -->
-        <string id="kwW5pZT9" text="Опыт, который герой получает за каждое убийство" original="XP the hero gets for every kill"/>
+        <string id="kwW5pZT9" text="XP, который герой получает за каждое убийство" original="XP the hero gets for every kill"/>
         <!-- XP Per Killed -->
-        <string id="a1zjEuUe" text="Опыт за убитого" original="XP Per Killed"/>
+        <string id="a1zjEuUe" text="XP за убитого" original="XP Per Killed"/>
         <!-- XP the hero gets for being killed -->
-        <string id="bW8t2g5N" text="Опыт, который получает герой за убийство" original="XP the hero gets for being killed"/>
+        <string id="bW8t2g5N" text="XP, который получает герой за убийство" original="XP the hero gets for being killed"/>
         <!-- Heal Per Kill -->
         <string id="cRV9HDdf" text="Лечение за убийство" original="Heal Per Kill"/>
         <!-- HP the hero gets for every kill -->
@@ -95,7 +95,7 @@
         <!-- Relative Level Scaling -->
         <string id="wSzUkbNR" text="Относительное масштабирование уровня" original="Relative Level Scaling"/>
         <!-- How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health. -->
-        <string id="1LTDJZ7Y" text="Насколько масштабировать награду за убийство в зависимости от относительного уровня двух персонажей. Если это 0 (или не установлено), то награды всегда соответствуют указанному, если это больше 0, тогда награды увеличиваются, если убитый юнит выше уровня героя, и уменьшается, если он ниже. При значении 0,5 (рекомендуется) при разнице уровней 10 будет примерно в 2,5 раза больше обычных наград в виде золота, опыта и здоровья." original="How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."/>
+        <string id="1LTDJZ7Y" text="Насколько масштабировать награду за убийство в зависимости от относительного уровня двух персонажей. Если это 0 (или не установлено), то награды всегда соответствуют указанному, если это больше 0, тогда награды увеличиваются, если убитый юнит выше уровня героя, и уменьшается, если он ниже. При значении 0,5 (рекомендуется) при разнице уровней 10 будет примерно в 2,5 раза больше обычных наград в виде золота, XP и здоровья." original="How much to scale the kill rewards by, based on relative level of the two characters. If this is 0 (or not set) then the rewards are always as specified, if this is higher than 0 then the rewards increase if the killed unit is higher level than the hero, and decrease if it is lower. At a value of 0.5 (recommended) at level difference of 10 would give about 2.5 times the normal rewards for gold, xp and health."/>
         <!-- Level Scaling Cap -->
         <string id="BDk1G4nc" text="Ограничение масштабирования уровня" original="Level Scaling Cap"/>
         <!-- Caps the maximum multiplier for the level difference, defaults to 5 if not specified -->
@@ -107,15 +107,15 @@
         <!-- Win XP -->
         <string id="h8I3PWkV" text="Win XP" original="Win XP"/>
         <!-- Lose XP -->
-        <string id="Vobr36Bl" text="Терять опыт" original="Lose XP"/>
+        <string id="Vobr36Bl" text="Терять XP" original="Lose XP"/>
         <!-- Gold won if the heroes side wins -->
         <string id="pc3G0W39" text="Золото выиграно, если победит сторона героев" original="Gold won if the heroes side wins"/>
         <!-- XP the hero gets if the heroes side wins -->
-        <string id="F7Tw4D07" text="Опыт, который получает герой, если сторона героя побеждает" original="XP the hero gets if the heroes side wins"/>
+        <string id="F7Tw4D07" text="XP, который получает герой, если сторона героя побеждает" original="XP the hero gets if the heroes side wins"/>
         <!-- Gold lost if the heroes side loses -->
         <string id="E209XRml" text="Золото потеряно, если проиграет сторона героев" original="Gold lost if the heroes side loses"/>
         <!-- XP the hero gets if the heroes side loses -->
-        <string id="itAfYdmO" text="Опыт, который получает герой, если сторона героя проигрывает" original="XP the hero gets if the heroes side loses"/>
+        <string id="itAfYdmO" text="XP, который получает герой, если сторона героя проигрывает" original="XP the hero gets if the heroes side loses"/>
         <!-- Difficulty Scaling On Players Side -->
         <string id="ihB1KMOY" text="Масштабирование сложности на стороне игроков" original="Difficulty Scaling On Players Side"/>
         <!-- Apply difficulty scaling to players side -->
@@ -164,11 +164,11 @@
         <string id="F6vM1OJo" text="Общая конфигурация" original="Common Config"/>
         <!-- GlobalHeroClassConfig -->
         <!-- Class Config -->
-        <string id="3rL4RHje" text="Конфигурация класса" original="Class Config"/>
+        <string id="3rL4RHje" text="Конфигурация Класса" original="Class Config"/>
         <!-- Class Definitions -->
-        <string id="462kHfn2" text="Определения классов" original="Class Definitions"/>
+        <string id="462kHfn2" text="Определения Классов" original="Class Definitions"/>
         <!-- Defined classes -->
-        <string id="NFjlVt57" text="Определенные классы" original="Defined classes"/>
+        <string id="NFjlVt57" text="Определенные Классы" original="Defined classes"/>
         <!-- Class Level Requirements -->
         <string id="Q0yTbTCT" text="Требования к уровню класса" original="Class Level Requirements"/>
         <!-- Requirements for class levels -->
@@ -179,24 +179,24 @@
         <string id="7WLbMjpz" text="(требований нет)" original="(no requirements)"/>
         <!-- GlobalHeroPowerConfig -->
         <!-- Power Config -->
-        <string id="v75UOuDM" text="Конфигурация питания" original="Power Config"/>
+        <string id="v75UOuDM" text="Конфигурация Силы" original="Power Config"/>
         <!-- Power Defs -->
-        <string id="9vUtdRu2" text="Защита от силы" original="Power Defs"/>
+        <string id="9vUtdRu2" text="Определения Силы" original="Power Defs"/>
         <!-- Defined powers -->
-        <string id="ymGZUjoU" text="Определенные полномочия" original="Defined powers"/>
+        <string id="ymGZUjoU" text="Определенные Силы" original="Defined powers"/>
         <!-- Disable Powers In Tournaments -->
-        <string id="5CD7bmuC" text="Отключить полномочия в турнирах" original="Disable Powers In Tournaments"/>
+        <string id="5CD7bmuC" text="Отключить Силы в Турнирах" original="Disable Powers In Tournaments"/>
         <!-- Whether powers are disabled in a tournament -->
-        <string id="K7uKtO90" text="Отключены ли способности в турнире" original="Whether powers are disabled in a tournament"/>
+        <string id="K7uKtO90" text="Отключены ли силы в турнире" original="Whether powers are disabled in a tournament"/>
         <!-- GlobalTournamentConfig -->
         <!-- Tournament Config -->
-        <string id="AkDCrLgg" text="Конфигурация турнира" original="Tournament Config"/>
+        <string id="AkDCrLgg" text="Конфигурация Турнира" original="Tournament Config"/>
         <!-- Equipment -->
-        <string id="i7ZDVTaw" text="Оборудование" original="Equipment"/>
+        <string id="i7ZDVTaw" text="Снаряжение" original="Equipment"/>
         <!-- Balancing -->
         <string id="Zwh9GYUE" text="Балансировка" original="Balancing"/>
         <!-- Round Type -->
-        <string id="KOIu6Q7d" text="Круглый Тип" original="Round Type"/>
+        <string id="KOIu6Q7d" text="Тип рауда" original="Round Type"/>
         <!-- Start Health Multiplier -->
         <string id="P1ZCMZbp" text="Начальный множитель здоровья" original="Start Health Multiplier"/>
         <!-- Disable Kill Rewards In Tournament -->
@@ -206,7 +206,7 @@
         <!-- No Horses -->
         <string id="bBipANlh" text="Без лошадей" original="No Horses"/>
         <!-- No Spears -->
-        <string id="CYVy4Hhx" text="Нет копья" original="No Spears"/>
+        <string id="CYVy4Hhx" text="Нет копьям" original="No Spears"/>
         <!-- Normalize Armor -->
         <string id="Ed55OyZ5" text="Нормализовать броню" original="Normalize Armor"/>
         <!-- Normalize Armor Tier -->
@@ -242,11 +242,11 @@
         <!-- Round 2 Rewards -->
         <string id="gQ9YX7my" text="Награды за 2 раунд" original="Round 2 Rewards"/>
         <!-- Round 3 Rewards -->
-        <string id="17pTC7NS" text="Награды за 3-й раунд" original="Round 3 Rewards"/>
+        <string id="17pTC7NS" text="Награды за 3 раунд" original="Round 3 Rewards"/>
         <!-- Round 4 Rewards -->
-        <string id="pxMWYe5J" text="Награды за 4-й раунд" original="Round 4 Rewards"/>
+        <string id="pxMWYe5J" text="Награды за 4 раунд" original="Round 4 Rewards"/>
         <!-- Participate XP -->
-        <string id="5vMTYqdu" text="Участвуйте в XP" original="Participate XP"/>
+        <string id="5vMTYqdu" text="XP за участие" original="Participate XP"/>
         <!-- Prize -->
         <string id="Xu2KD7Kc" text="Приз" original="Prize"/>
         <!-- Enable Betting -->
@@ -278,29 +278,29 @@
         <!-- Applies skill debuffs to previous tournament winners -->
         <string id="FrloGGew" text="Применяет дебаффы навыков к предыдущим победителям турниров" original="Applies skill debuffs to previous tournament winners"/>
         <!-- Allow the vanilla round setup -->
-        <string id="nfYBftnO" text="Разрешить ванильную круглую настройку" original="Allow the vanilla round setup"/>
+        <string id="nfYBftnO" text="Разрешить настройку ванильного раунда" original="Allow the vanilla round setup"/>
         <!-- Allow 1 match with 2 teams of 2 -->
-        <string id="t9yLB8gB" text="Разрешить 1 матч с 2 командами по 2 человека" original="Allow 1 match with 2 teams of 2"/>
+        <string id="t9yLB8gB" text="Разрешить 1 матч с 2 командами по 2" original="Allow 1 match with 2 teams of 2"/>
         <!-- Allow 1 match with 2 teams of 4 -->
-        <string id="5hLSHeuv" text="Разрешить 1 матч с 2 командами по 4 человека" original="Allow 1 match with 2 teams of 4"/>
+        <string id="5hLSHeuv" text="Разрешить 1 матч с 2 командами по 4" original="Allow 1 match with 2 teams of 4"/>
         <!-- Allow 1 match with 4 teams of 1 -->
         <string id="YfOnzOH6" text="Разрешить 1 матч с 4 командами по 1" original="Allow 1 match with 4 teams of 1"/>
         <!-- Allow 1 match with 4 teams of 2 -->
-        <string id="CLbRKpZp" text="Разрешить 1 матч с 4 командами по 2 человека" original="Allow 1 match with 4 teams of 2"/>
+        <string id="CLbRKpZp" text="Разрешить 1 матч с 4 командами по 2" original="Allow 1 match with 4 teams of 2"/>
         <!-- Allow 1 match with 4 teams of 4 -->
-        <string id="5E1lXDYh" text="Разрешить 1 матч с 4 командами по 4 человека" original="Allow 1 match with 4 teams of 4"/>
+        <string id="5E1lXDYh" text="Разрешить 1 матч с 4 командами по 4" original="Allow 1 match with 4 teams of 4"/>
         <!-- Allow 2 matches with 2 teams of 1 -->
         <string id="OrZaS458" text="Разрешить 2 матча с 2 командами по 1" original="Allow 2 matches with 2 teams of 1"/>
         <!-- Allow 2 matches with 2 teams of 2 -->
-        <string id="Dr1Js5fB" text="Разрешить 2 матча с 2 командами по 2 человека" original="Allow 2 matches with 2 teams of 2"/>
+        <string id="Dr1Js5fB" text="Разрешить 2 матча с 2 командами по 2" original="Allow 2 matches with 2 teams of 2"/>
         <!-- Allow 2 matches with 2 teams of 4 -->
-        <string id="jEghMKUV" text="Разрешить 2 матча с 2 командами по 4 человека" original="Allow 2 matches with 2 teams of 4"/>
+        <string id="jEghMKUV" text="Разрешить 2 матча с 2 командами по 4" original="Allow 2 matches with 2 teams of 4"/>
         <!-- Allow 2 matches with 4 teams of 1 -->
         <string id="nmMzoqeC" text="Разрешить 2 матча с 4 командами по 1" original="Allow 2 matches with 4 teams of 1"/>
         <!-- Allow 2 matches with 4 teams of 2 -->
-        <string id="f8rXSGwN" text="Разрешить 2 матча с 4 командами по 2 человека" original="Allow 2 matches with 4 teams of 2"/>
+        <string id="f8rXSGwN" text="Разрешить 2 матча с 4 командами по 2" original="Allow 2 matches with 4 teams of 2"/>
         <!-- Allow 4 matches with 2 teams of 2 -->
-        <string id="GPCYzshA" text="Разрешить 4 матча с 2 командами по 2 человека" original="Allow 4 matches with 2 teams of 2"/>
+        <string id="GPCYzshA" text="Разрешить 4 матча с 2 командами по 2" original="Allow 4 matches with 2 teams of 2"/>
         <!-- Allow 4 matches with 4 teams of 1 -->
         <string id="MjsTFwUv" text="Разрешить 4 матча с 4 командами по 1" original="Allow 4 matches with 4 teams of 1"/>
         <!-- Allow 4 matches with 2 teams of 1 -->
@@ -310,7 +310,7 @@
         <!-- Gold won if the hero wins their match in the round -->
         <string id="i7Ns7K2i" text="Золото выиграно, если герой выиграет свой матч в раунде" original="Gold won if the hero wins their match in the round"/>
         <!-- XP given if the hero wins their match in the round -->
-        <string id="b0MeEmOS" text="Опыт предоставляется, если герой выигрывает матч в раунде." original="XP given if the hero wins their match in the round"/>
+        <string id="b0MeEmOS" text="XP даётся, если герой выигрывает матч в раунде." original="XP given if the hero wins their match in the round"/>
         <!-- XP given if the hero loses their match in a round -->
         <string id="Oq7LMvoF" text="XP даётся, если герой проигрывает матч в раунде" original="XP given if the hero loses their match in a round"/>
         <!-- Gold won if the hero wins the tournaments -->
@@ -318,7 +318,7 @@
         <!-- XP given if the hero wins the tournaments -->
         <string id="3BudXy0O" text="XP даётся, если герой выигрывает турниры" original="XP given if the hero wins the tournaments"/>
         <!-- XP given if the hero participates in a tournament but doesn't win -->
-        <string id="TXqjPXh7" text="Опыт предоставляется, если герой участвует в турнире, но не выигрывает." original="XP given if the hero participates in a tournament but doesn't win"/>
+        <string id="TXqjPXh7" text="XP даётся, если герой участвует в турнире, но не выигрывает." original="XP given if the hero participates in a tournament but doesn't win"/>
         <!-- Winners prize -->
         <string id="wYzmyUCE" text="Приз победителей" original="Winners prize"/>
         <!-- Enable betting -->

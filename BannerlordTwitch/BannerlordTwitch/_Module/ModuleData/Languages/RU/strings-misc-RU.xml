@@ -19,15 +19,15 @@
         <!-- HP -->
         <string id="NtqSb7B7" text="HP" original="HP"/>
         <!-- lvl -->
-        <string id="RQlq59mz" text="lvl" original="lvl"/>
+        <string id="RQlq59mz" text="ур." original="lvl"/>
         <!-- Item -->
-        <string id="5rErcMGl" text="Элемент" original="Item"/>
+        <string id="5rErcMGl" text="Предмет" original="Item"/>
         <!-- Skills -->
-        <string id="5gVLi7NA" text="Навыки и умения" original="Skills"/>
+        <string id="5gVLi7NA" text="Навыки" original="Skills"/>
         <!--  ■ -->
-        <string id="aG3roJj3" text="■" original=" ■"/>
+        <string id="aG3roJj3" text=" ■" original=" ■"/>
         <!-- Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}! -->
-        <string id="fuwuk4bR" text="Недостаточно {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!" original="Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!"/>
+        <string id="fuwuk4bR" text="Недостаточно {GoldIcon}: надо {NeededGold}{GoldIcon}, есть {HaveGold}{GoldIcon}!" original="Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!"/>
         <!-- Common Phrases -->
         <!-- General -->
         <string id="C5T5nnix" text="Общий" original="General"/>
@@ -40,7 +40,7 @@
         <!-- Name -->
         <string id="uUzmy7Lh" text="Имя" original="Name"/>
         <!-- {From} to {To} -->
-        <string id="yVydxRHh" text="{From} to {To}" original="{From} to {To}"/>
+        <string id="yVydxRHh" text="{From} к {To}" original="{From} to {To}"/>
         <!-- Skill -->
         <string id="OEMBeawy" text="Навык" original="Skill"/>
         <!-- Level -->
@@ -48,11 +48,11 @@
         <!-- Amount -->
         <string id="DKfKt4qP" text="Количество" original="Amount"/>
         <!-- Costs {GoldCost} -->
-        <string id="Diwd7dBo" text="Затраты {GoldCost}" original="Costs {GoldCost}"/>
+        <string id="Diwd7dBo" text="Расходы {GoldCost}" original="Costs {GoldCost}"/>
         <!-- Costs -->
         <string id="r7sc3Tvg" text="Расходы" original="Costs"/>
         <!-- None -->
-        <string id="FNK3LD2p" text="Никто" original="None"/>
+        <string id="FNK3LD2p" text="Никого" original="None"/>
         <!-- Enabled -->
         <string id="kpv03CqK" text="Включено" original="Enabled"/>
         <!-- Disabled -->
@@ -117,15 +117,15 @@
         <!-- Properties to change, and how much by -->
         <string id="ZKN8fZsA" text="Свойства, которые нужно изменить, и на сколько" original="Properties to change, and how much by"/>
         <!-- Skills -->
-        <string id="iPI9zoqR" text="Навыки и умения" original="Skills"/>
+        <string id="iPI9zoqR" text="Навыки" original="Skills"/>
         <!-- Skills to change, and how much by (these aren't compatible with Apply To Mount) -->
         <string id="PanMmDx9" text="Навыки, которые нужно изменить, и в какой степени (они не совместимы с Apply To Mount)" original="Skills to change, and how much by (these aren't compatible with Apply To Mount)"/>
         <!-- Scale {ScalePercent}% -->
         <string id="EkKFoK73" text="Масштаб {ScalePercent}%" original="Scale {ScalePercent}%"/>
         <!-- (on mount) -->
-        <string id="l7w0bPt0" text="(на горе)" original="(on mount)"/>
+        <string id="l7w0bPt0" text="(на верховом)" original="(on mount)"/>
         <!-- Mount {ScalePercent}% normal size -->
-        <string id="qhIXgPGK" text="Установить {ScalePercent}% нормального размера" original="Mount {ScalePercent}% normal size"/>
+        <string id="qhIXgPGK" text="Верховое {ScalePercent}% нормального размера" original="Mount {ScalePercent}% normal size"/>
         <!-- {ScalePercent}% normal size -->
         <string id="yLT1lfRC" text="{ScalePercent}% нормальный размер" original="{ScalePercent}% normal size"/>
         <!-- DocumentationHelpers -->
@@ -148,9 +148,9 @@
         <!-- Armor Head -->
         <string id="oUgW3q7p" text="Броня Голова" original="Armor Head"/>
         <!-- Armor Torso -->
-        <string id="NYoNwE3R" text="Броня торса" original="Armor Torso"/>
+        <string id="NYoNwE3R" text="Броня Торса" original="Armor Torso"/>
         <!-- Armor Legs -->
-        <string id="VKAAkKbm" text="Доспехи Ноги" original="Armor Legs"/>
+        <string id="VKAAkKbm" text="Броня Ноги" original="Armor Legs"/>
         <!-- Armor Arms -->
         <string id="dzqBXvaS" text="Броня Оружие" original="Armor Arms"/>
         <!-- Armor Encumbrance -->
@@ -168,7 +168,7 @@
         <!-- Mount Difficulty -->
         <string id="9mYdZQI8" text="Сложность крепления" original="Mount Difficulty"/>
         <!-- Mount Maneuver -->
-        <string id="EaenR5S2" text="Mount Maneuver" original="Mount Maneuver"/>
+        <string id="EaenR5S2" text="Верховая маневренность" original="Mount Maneuver"/>
         <!-- Mount Speed -->
         <string id="NJpg1RsS" text="Скорость передвижения" original="Mount Speed"/>
         <!-- Horse Archery Ability -->
@@ -194,18 +194,18 @@
         <!-- Thrust Or Ranged Ready Speed Multiplier -->
         <string id="xxkAFaWD" text="Множитель скорости тяги или дальнобойной готовности" original="Thrust Or Ranged Ready Speed Multiplier"/>
         <!-- AI Shoot Frequency -->
-        <string id="iaxxNiiV" text="Частота съемки AI" original="AI Shoot Frequency"/>
+        <string id="iaxxNiiV" text="Частота выстрелов AI" original="AI Shoot Frequency"/>
         <!-- AI Wait Before Shoot Factor -->
-        <string id="3HlCPScr" text="Фактор ожидания перед съемкой AI" original="AI Wait Before Shoot Factor"/>
+        <string id="3HlCPScr" text="Фактор ожидания перед выстрелом ИИ" original="AI Wait Before Shoot Factor"/>
         <!-- AI Block Chance -->
         <string id="7xW74SvW" text="Шанс блокировки ИИ" original="AI Block Chance"/>
         <!-- AI Attack Chance -->
         <string id="vIjQ6b5w" text="Шанс атаки ИИ" original="AI Attack Chance"/>
         <!-- AI Kick -->
-        <string id="FgSI5C4F" text="AI Kick" original="AI Kick"/>
+        <string id="FgSI5C4F" text="ИИ пинок" original="AI Kick"/>
         <!-- EquipmentType -->
         <!-- None -->
-        <string id="i7XX56i9" text="Никто" original="None"/>
+        <string id="i7XX56i9" text="Ничего" original="None"/>
         <!-- Dagger -->
         <string id="5HQtHOg4" text="Кинжал" original="Dagger"/>
         <!-- One Handed Sword -->
@@ -225,15 +225,15 @@
         <!-- Two Handed Lance -->
         <string id="Y6CxpaYL" text="Двуручное копье" original="Two Handed Lance"/>
         <!-- One Handed Glaive -->
-        <string id="r22oB2bm" text="Одноручная глефа" original="One Handed Glaive"/>
+        <string id="r22oB2bm" text="Одноручная древковое" original="One Handed Glaive"/>
         <!-- Two Handed Glaive -->
-        <string id="BcmE6Y75" text="Двуручная глефа" original="Two Handed Glaive"/>
+        <string id="BcmE6Y75" text="Двуручная древковое" original="Two Handed Glaive"/>
         <!-- Bow -->
-        <string id="rroxl8j3" text="Поклон" original="Bow"/>
+        <string id="rroxl8j3" text="Лук" original="Bow"/>
         <!-- Crossbow -->
         <string id="CztMY8ZE" text="Арбалет" original="Crossbow"/>
         <!-- Arrows -->
-        <string id="DYYyhDUI" text="Стрелки" original="Arrows"/>
+        <string id="DYYyhDUI" text="Стрелкы" original="Arrows"/>
         <!-- Bolts -->
         <string id="i281jKBH" text="Болты" original="Bolts"/>
         <!-- Throwing Knives -->
@@ -272,9 +272,9 @@
         <!-- Name -->
         <string id="ncGFtcFp" text="Имя" original="Name"/>
         <!-- ModifierPercent -->
-        <string id="RgtZnxLU" text="ModifierPercent" original="ModifierPercent"/>
+        <string id="RgtZnxLU" text="Процент изменения" original="ModifierPercent"/>
         <!-- Add -->
-        <string id="uNduKTKf" text="Добавлять" original="Add"/>
+        <string id="uNduKTKf" text="Добавить" original="Add"/>
         <!-- The property to modify -->
         <string id="SUI6n33o" text="Свойство для изменения" original="The property to modify"/>
         <!-- Percent modifier to apply to the property (100% will result in no chance) -->
@@ -285,7 +285,7 @@
         <string id="usihVSj3" text="(без изменений)" original="(no change)"/>
         <!-- SkillModifierDef -->
         <!-- ModifierPercent -->
-        <string id="jgNUxcBa" text="ModifierPercent" original="ModifierPercent"/>
+        <string id="jgNUxcBa" text="Процент изменения" original="ModifierPercent"/>
         <!-- Add -->
         <string id="Au82n7kL" text="Добавлять" original="Add"/>
         <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
@@ -298,22 +298,22 @@
         <string id="PsUcJvPZ" text="(без изменений)" original="(no change)"/>
         <!-- BLTOverlay -->
         <!-- BLT Overlay -->
-        <string id="fmjzDasd" text="BLT Overlay" original="BLT Overlay"/>
+        <string id="fmjzDasd" text="BLT Оверлей" original="BLT Overlay"/>
         <!-- For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again. -->
-        <string id="Kgi2isWy" text="Для работы BLT Overlay Browser Source для работы ему необходимо зарезервировать порт {Port} и разрешить его через брандмауэр Windows. \ NЭто требует прав администратора, которые будут запрошены после того, как вы нажмете Ok. \ NВ случае успеха вы не увидите этого снова всплывающее окно." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
+        <string id="Kgi2isWy" text="Для работы BLT Overlay Browser Source для работы ему необходимо зарезервировать порт {Port} и разрешить его через брандмауэр Windows.\nЭто требует прав администратора, которые будут запрошены после того, как вы нажмете Ok.\nВ случае успеха вы не увидите этого снова всплывающее окно." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
         <!-- Okay -->
         <string id="yXwMSbr4" text="Хорошо" original="Okay"/>
         <!-- Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window. -->
-        <string id="6ucf05tp" text="Конфигурация выполнена успешно! \ NТеперь вы можете получить доступ к оверлею по адресу {UrlRoot}. \ NВы можете снова найти эту ссылку на вкладке &amp;quot;Авторизация&amp;quot; в окне настройки BLT." original="Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."/>
+        <string id="6ucf05tp" text="Конфигурация выполнена успешно!\nТеперь вы можете получить доступ к оверлею по адресу {UrlRoot}.\nВы можете снова найти эту ссылку на вкладке Авторизация в окне настройки BLT." original="Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."/>
         <!-- Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord. -->
-        <string id="usADfORe" text="Ошибка конфигурации: \ n \ &amp;quot;{e.Message} \&amp;quot; \ nВозможно, у вас нет доступа к оверлею. \ NСообщите об этой проблеме в Discord." original="Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord."/>
+        <string id="usADfORe" text="Ошибка конфигурации:\n\&quot;{e.Message}\&quot;\nВозможно, у вас нет доступа к оверлею.\nСообщите об этой проблеме в Discord." original="Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord."/>
         <!-- ActionBase -->
         <!-- Whether this is enabled or not -->
         <string id="YM1rP7sP" text="Включено это или нет" original="Whether this is enabled or not"/>
         <!-- Show response in the twitch chat -->
-        <string id="7IBsjc51" text="Показать ответ в твич-чате" original="Show response in the twitch chat"/>
+        <string id="7IBsjc51" text="Показать ответ в чате Twitch" original="Show response in the twitch chat"/>
         <!-- Show response in the overlay window feed -->
-        <string id="UQRfOFjs" text="Показать ответ в ленте окна оверлея" original="Show response in the overlay window feed"/>
+        <string id="UQRfOFjs" text="Показать ответ в ленте окна Оверлея" original="Show response in the overlay window feed"/>
         <!-- Name of the handler -->
         <string id="ErhzbqFu" text="Имя обработчика" original="Name of the handler"/>
         <!-- Custom config for the handler -->
@@ -323,7 +323,7 @@
         <!-- Respond In Twitch -->
         <string id="86rc4cz6" text="Ответить в Twitch" original="Respond In Twitch"/>
         <!-- Respond In Overlay -->
-        <string id="0MgBhdtw" text="Ответить в оверлее" original="Respond In Overlay"/>
+        <string id="0MgBhdtw" text="Ответить в Оверлее" original="Respond In Overlay"/>
         <!-- Handler -->
         <string id="dteVl09D" text="Обработчик" original="Handler"/>
         <!-- Handler Config -->
@@ -336,18 +336,18 @@
         <string id="ctAF1ghX" text="Руководство Bannerlord Twitch Viewer" original="Bannerlord Twitch Viewer Guide"/>
         <!-- Introduction -->
         <!-- Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to &apos;adopt&apos; a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include &apos;summoning&apos; your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes &apos;class&apos;.&lt;br&gt;If you aren&apos;t sure where to start, begin by using the channel point redemption &apos;Adopt a Hero&apos;. -->
-        <string id="rElL5v6I" text="Bannerlord Twitch (BLT) - это мод интеграции Twitch для Mount &amp;amp; Blade II: Bannerlord.&lt;br&gt; В качестве зрителя вы можете использовать награды в виде баллов за канал (если они доступны) и команды чата, чтобы взаимодействовать с игрой во время игры стримера.&lt;br&gt; Основная особенность BLT - это возможность «усыновить» героя в игре, то есть персонаж в игре будет назначен вам с учетом вашего имени Twitch и будет доступен для дальнейшего взаимодействия.&lt;br&gt; Некоторые примеры того, что вы можете делать со своим героем, включают «вызов» своего героя в битвах, в которых принимает участие стример, участие в турнирах зрителей, обновление оборудования, выбор класса героев.&lt;br&gt; Если вы не знаете, с чего начать, начните с использования погашения баллов канала «Принять героя»." original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
+        <string id="rElL5v6I" text="Bannerlord Twitch (BLT) - это мод интеграции Twitch для Mount &amp;amp; Blade II: Bannerlord.&lt;br&gt; В качестве зрителя вы можете использовать награды в виде баллов за канал (если они доступны) и команды чата, чтобы взаимодействовать с игрой во время игры стримера.&lt;br&gt; Основная особенность BLT - это возможность «усыновить» героя в игре, то есть персонаж в игре будет назначен вам с учетом вашего имени Twitch и будет доступен для дальнейшего взаимодействия.&lt;br&gt; Некоторые примеры того, что вы можете делать со своим героем, включают «вызов» своего героя в битвах, в которых принимает участие стример, участие в турнирах зрителей, обновление снаряжения, выбор класса героев.&lt;br&gt; Если вы не знаете, с чего начать, начните с использования погашения баллов канала «Принять героя»." original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
         <!-- Command -->
         <!-- Bot command definition -->
         <string id="8SbGSWFY" text="Определение команды бота" original="Bot command definition"/>
         <!-- Name -->
         <string id="D1lt1bSQ" text="Имя" original="Name"/>
         <!-- The command itself, not including the ! -->
-        <string id="u1Ua0LXJ" text="Сама команда, не считая!" original="The command itself, not including the !"/>
+        <string id="u1Ua0LXJ" text="Сама команда, не считая !" original="The command itself, not including the !"/>
         <!-- HideHelp -->
-        <string id="TpnV5Mpi" text="HideHelp" original="HideHelp"/>
+        <string id="TpnV5Mpi" text="Скрывать помощь" original="HideHelp"/>
         <!-- Hides the command from the !help action -->
-        <string id="0AZVaBQN" text="Скрывает команду от действия! Help" original="Hides the command from the !help action"/>
+        <string id="0AZVaBQN" text="Скрывает команду от действия !help" original="Hides the command from the !help action"/>
         <!-- Help -->
         <string id="JqNXbyIT" text="Помощь" original="Help"/>
         <!-- What to show in the !help command -->
@@ -402,7 +402,7 @@
         <string id="yJRKVszb" text="Время восстановления в секундах, по умолчанию неограниченное." original="The cooldown in seconds, defaults to unlimited"/>
         <!-- TwitchService -->
         <!-- Usage: !{Name} {Args} -->
-        <string id="JSW1ryNl" text="Использование:! {Name} {Args}" original="Usage: !{Name} {Args}"/>
+        <string id="JSW1ryNl" text="Использование: !{Name} {Args}" original="Usage: !{Name} {Args}"/>
         <!-- Usage: {Args} -->
         <string id="mdhbHYNM" text="Использование: {Args}" original="Usage: {Args}"/>
         <!-- Commands:  -->
@@ -421,14 +421,14 @@
         <!-- Bot disconnected -->
         <string id="thucznzJ" text="Бот отключен" original="Bot disconnected"/>
         <!-- @{BotUsername} has joined channel {Channel} -->
-        <string id="Hd6Q51eb" text="@ {BotUsername} has joined channel {Channel}" original="@{BotUsername} has joined channel {Channel}"/>
+        <string id="Hd6Q51eb" text="@{BotUsername} присоединился к каналу {Channel}" original="@{BotUsername} has joined channel {Channel}"/>
         <!-- bot reporting for duty! -->
         <string id="SbufvVIR" text="бот сообщает о дежурстве!" original="bot reporting for duty!"/>
         <!-- Type !help for command list -->
-        <string id="vBtkF25N" text="Введите! Help для получения списка команд." original="Type !help for command list"/>
+        <string id="vBtkF25N" text="Введите !help для получения списка команд" original="Type !help for command list"/>
         <!-- OneShotParticleEffectItemSource -->
         <!-- (none) -->
-        <string id="a8ibMIfH" text="(никто)" original="(none)"/>
+        <string id="a8ibMIfH" text="(ничего)" original="(none)"/>
         <!-- Medium size explosion -->
         <string id="AOpeOmby" text="Взрыв среднего размера" original="Medium size explosion"/>
         <!-- Small explosion -->
@@ -481,20 +481,20 @@
         <!-- Min -->
         <string id="TZN2VR8Q" text="Мин." original="Min"/>
         <!-- Max -->
-        <string id="bySwFF1n" text="Максимум" original="Max"/>
+        <string id="bySwFF1n" text="Макс." original="Max"/>
         <!-- BLTModule -->
         <!-- This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now. -->
-        <string id="IO9rnFpk" text="Эта сборка мода предназначена для версии игры {ExpectedVersion}. You are running game version {GameVersion}. Выходим сейчас." original="This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now."/>
+        <string id="IO9rnFpk" text="Эта сборка мода предназначена для версии игры {ExpectedVersion}. Вы используете версию игры {GameVersion}. Выхожу сейчас." original="This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now."/>
         <!-- Bannerlord Twitch ERROR -->
         <string id="Oru6b9Cy" text="Bannerlord Twitch ОШИБКА" original="Bannerlord Twitch ERROR"/>
         <!-- Loaded v{ModVersion} -->
-        <string id="45Q44kgm" text="Загружено v {ModVersion}" original="Loaded v{ModVersion}"/>
+        <string id="45Q44kgm" text="Загружен v{ModVersion}" original="Loaded v{ModVersion}"/>
         <!-- Action Manager initialized -->
         <string id="5G73vqNS" text="Менеджер действий инициализирован" original="Action Manager initialized"/>
         <!-- Bannerlord Twitch Mod WARNING -->
-        <string id="PhRzCo9t" text="ВНИМАНИЕ! Bannerlord Twitch Mod ВНИМАНИЕ!" original="Bannerlord Twitch Mod WARNING"/>
+        <string id="PhRzCo9t" text="Bannerlord Twitch Mod ВНИМАНИЕ" original="Bannerlord Twitch Mod WARNING"/>
         <!-- You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less. -->
-        <string id="7b4tU6y9" text="У вас отключено автосохранение, сбои могут привести к потере очков канала! \ NРекомендуем установить его на 15 минут или меньше." original="You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less."/>
+        <string id="7b4tU6y9" text="У вас отключено автосохранение, сбои могут привести к потере очков канала!\nРекомендуем установить его на 15 минут или меньше." original="You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less."/>
         <!-- Okay -->
         <string id="hpFXglKx" text="Хорошо" original="Okay"/>
         <!-- Bannerlord Twitch Mod DISABLED -->
@@ -502,10 +502,10 @@
         <!-- Bannerlord Twitch Mod STARTUP ERROR -->
         <string id="cuXwwHRe" text="Bannerlord Twitch Mod ОШИБКА ЗАПУСКА" original="Bannerlord Twitch Mod STARTUP ERROR"/>
         <!-- Error in {Location}, please report this on the discord: {Error} -->
-        <string id="C0G8s2Lv" text="Ошибка в {Location}, please report this on the discord: {Error}" original="Error in {Location}, please report this on the discord: {Error}"/>
+        <string id="C0G8s2Lv" text="Ошибка в {Location}, пожалуйста, сообщите об этом в discord: {Error}" original="Error in {Location}, please report this on the discord: {Error}"/>
         <!-- SkillGroup -->
         <!-- None -->
-        <string id="p2ImRezI" text="Никто" original="None"/>
+        <string id="p2ImRezI" text="Отсутствуют" original="None"/>
         <!-- All -->
         <string id="ZJUJQl8V" text="Все" original="All"/>
         <!-- Melee -->
@@ -513,31 +513,31 @@
         <!-- One Handed -->
         <string id="NRNrLcBt" text="Одноручное" original="One Handed"/>
         <!-- Two Handed -->
-        <string id="93kpWTwA" text="Двуручный" original="Two Handed"/>
+        <string id="93kpWTwA" text="Двуручное" original="Two Handed"/>
         <!-- Polearm -->
-        <string id="PWibGbJ4" text="Древковое оружие" original="Polearm"/>
+        <string id="PWibGbJ4" text="Древковое" original="Polearm"/>
         <!-- Ranged -->
         <string id="oidnJJjF" text="Дальний бой" original="Ranged"/>
         <!-- Bow -->
-        <string id="HW64G8xr" text="Поклон" original="Bow"/>
+        <string id="HW64G8xr" text="Лук" original="Bow"/>
         <!-- Throwing -->
-        <string id="yR8vmGlW" text="Метание" original="Throwing"/>
+        <string id="yR8vmGlW" text="Метательное" original="Throwing"/>
         <!-- Crossbow -->
         <string id="UG5KpbT7" text="Арбалет" original="Crossbow"/>
         <!-- Movement -->
         <string id="tVQs3vuO" text="Движение" original="Movement"/>
         <!-- Riding -->
-        <string id="14Unsmk1" text="Верховая езда" original="Riding"/>
+        <string id="14Unsmk1" text="Езда верхом" original="Riding"/>
         <!-- Athletics -->
-        <string id="4zlH32Z5" text="легкая атлетика" original="Athletics"/>
+        <string id="4zlH32Z5" text="Атлетичность" original="Athletics"/>
         <!-- Support -->
-        <string id="AZD2nxRg" text="Служба поддержки" original="Support"/>
+        <string id="AZD2nxRg" text="Поддержка" original="Support"/>
         <!-- Scouting -->
         <string id="pOYKEhhf" text="Разведка" original="Scouting"/>
         <!-- Trade -->
         <string id="ijZZGbRE" text="Торговля" original="Trade"/>
         <!-- Steward -->
-        <string id="CQqpGRtH" text="Стюард" original="Steward"/>
+        <string id="CQqpGRtH" text="Управление" original="Steward"/>
         <!-- Medicine -->
         <string id="X6rHMhsQ" text="Медицина" original="Medicine"/>
         <!-- Engineering -->
@@ -545,7 +545,7 @@
         <!-- Personal -->
         <string id="eYTQ1TD7" text="Личное" original="Personal"/>
         <!-- Crafting -->
-        <string id="PrE6W0WX" text="Ремесло" original="Crafting"/>
+        <string id="PrE6W0WX" text="Кузнечное дело" original="Crafting"/>
         <!-- Tactics -->
         <string id="BfNX6sak" text="Тактика" original="Tactics"/>
         <!-- Roguery -->
@@ -556,7 +556,7 @@
         <string id="4684bsD7" text="Лидерство" original="Leadership"/>
         <!-- EquipmentType -->
         <!-- None -->
-        <string id="rMIAZRoT" text="Никто" original="None"/>
+        <string id="rMIAZRoT" text="Ничего" original="None"/>
         <!-- Dagger -->
         <string id="2gjNbpQI" text="Кинжал" original="Dagger"/>
         <!-- One Handed Sword -->
@@ -576,15 +576,15 @@
         <!-- Two Handed Lance -->
         <string id="6fEElc9f" text="Двуручное копье" original="Two Handed Lance"/>
         <!-- One Handed Glaive -->
-        <string id="ICcCZnli" text="Одноручная глефа" original="One Handed Glaive"/>
+        <string id="ICcCZnli" text="Одноручное древковое" original="One Handed Glaive"/>
         <!-- Two Handed Glaive -->
-        <string id="KpYZoZE9" text="Двуручная глефа" original="Two Handed Glaive"/>
+        <string id="KpYZoZE9" text="Двуручное древковое" original="Two Handed Glaive"/>
         <!-- Bow -->
-        <string id="HKYDdm9S" text="Поклон" original="Bow"/>
+        <string id="HKYDdm9S" text="Лук" original="Bow"/>
         <!-- Crossbow -->
         <string id="3jigLyuH" text="Арбалет" original="Crossbow"/>
         <!-- Arrows -->
-        <string id="UjKvUAX1" text="Стрелки" original="Arrows"/>
+        <string id="UjKvUAX1" text="Стрелы" original="Arrows"/>
         <!-- Bolts -->
         <string id="QBgdwwa3" text="Болты" original="Bolts"/>
         <!-- Throwing Knives -->
@@ -592,7 +592,7 @@
         <!-- Throwing Axes -->
         <string id="mSnnORJ1" text="Метательные топоры" original="Throwing Axes"/>
         <!-- Throwing Javelins -->
-        <string id="WUrrIbmH" text="Метание копья" original="Throwing Javelins"/>
+        <string id="WUrrIbmH" text="Метательные копья" original="Throwing Javelins"/>
         <!-- Shield -->
         <string id="om9ZF9Mu" text="Щит" original="Shield"/>
         <!-- Stone -->

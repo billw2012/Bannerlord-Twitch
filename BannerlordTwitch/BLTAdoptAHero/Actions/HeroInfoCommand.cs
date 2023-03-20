@@ -190,9 +190,12 @@ namespace BLTAdoptAHero
                 {
                     var customItems 
                         = BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero);
-                    infoStrings.Add("{=U4HnxTCj}[STORED]".Translate() +
-                                    " " + (customItems.Any() ? string.Join(Naming.Sep, customItems
-                        .Select(e => e.GetModifiedItemName())) : "{=4IOefqsW}(nothing)".Translate()));
+                    infoStrings.Add("{=}[CUSTOMS]".Translate() + " " + 
+                                    (customItems.Any()
+                                        ? string.Join(Naming.Sep, customItems
+                                            .Select((e, idx) => 
+                                                $"#{idx + 1} " + RewardHelpers.GetItemNameAndModifiers(e))) 
+                                        : "{=4IOefqsW}(nothing)".Translate()));
                 }
 
                 if (settings.ShowRetinue)

@@ -165,13 +165,13 @@
             text="Begrenzt den maximalen Multiplikator für die Stufendifferenz, standardmäßig auf 5, wenn nicht angegeben"
             original="Caps the maximum multiplier for the level difference, defaults to 5 if not specified"/>
         <!-- Win Gold -->
-        <string id="IQTT5vYE" text="Gold gewinnen" original="Win Gold"/>
+        <string id="IQTT5vYE" text="Gold beim gewinnen" original="Win Gold"/>
         <!-- Lose Gold -->
-        <string id="lfCWK7aA" text="Gold verlieren" original="Lose Gold"/>
+        <string id="lfCWK7aA" text="Gold beim verlieren" original="Lose Gold"/>
         <!-- Win XP -->
-        <string id="h8I3PWkV" text="XP gewinnen" original="Win XP"/>
+        <string id="h8I3PWkV" text="XP beim gewinnen" original="Win XP"/>
         <!-- Lose XP -->
-        <string id="Vobr36Bl" text="XP verlieren" original="Lose XP"/>
+        <string id="Vobr36Bl" text="XP beim verlieren" original="Lose XP"/>
         <!-- Gold won if the heroes side wins -->
         <string id="pc3G0W39" text="Gewonnenes Gold, wenn die Heldenseite gewinnt"
             original="Gold won if the heroes side wins"/>
@@ -336,7 +336,7 @@
         <!-- Round 2 Rewards -->
         <string id="gQ9YX7my" text="Runde 2 Belohnungen" original="Round 2 Rewards"/>
         <!-- Round 3 Rewards -->
-        <string id="17pTC7NS" text="Belohnungen für Runde 3" original="Round 3 Rewards"/>
+        <string id="17pTC7NS" text="Runde 3 Belohnungen" original="Round 3 Rewards"/>
         <!-- Round 4 Rewards -->
         <string id="pxMWYe5J" text="Runde 4 Belohnungen" original="Round 4 Rewards"/>
         <!-- Participate XP -->

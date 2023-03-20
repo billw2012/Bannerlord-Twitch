@@ -154,7 +154,7 @@
         <!-- On Weapon -->
         <string id="w3eb5kWA" text="Auf Waffe" original="On Weapon"/>
         <!-- On Hands -->
-        <string id="YLmpgn4j" text="Auf Händen" original="On Hands"/>
+        <string id="YLmpgn4j" text="Auf Hände" original="On Hands"/>
         <!-- On Head -->
         <string id="muuJpmaw" text="Auf den Kopf" original="On Head"/>
         <!-- On Body -->
@@ -264,9 +264,9 @@
         <!-- Arrows -->
         <string id="DYYyhDUI" text="Pfeile" original="Arrows"/>
         <!-- Bolts -->
-        <string id="i281jKBH" text="Schrauben" original="Bolts"/>
+        <string id="i281jKBH" text="Bolzen" original="Bolts"/>
         <!-- Throwing Knives -->
-        <string id="C1Qx1ZqP" text="Messer werfen" original="Throwing Knives"/>
+        <string id="C1Qx1ZqP" text="Wurfmesser" original="Throwing Knives"/>
         <!-- Throwing Axes -->
         <string id="S1NUKL4r" text="Wurfäxte" original="Throwing Axes"/>
         <!-- Throwing Javelins -->
@@ -585,9 +585,9 @@
             original="Very dense smoke falling down"/>
         <!-- RangeFloatControl -->
         <!-- Min -->
-        <string id="TZN2VR8Q" text="Mindest" original="Min"/>
+        <string id="TZN2VR8Q" text="Minimum" original="Min"/>
         <!-- Max -->
-        <string id="bySwFF1n" text="Max" original="Max"/>
+        <string id="bySwFF1n" text="Maximum" original="Max"/>
         <!-- BLTModule -->
         <!-- This build of the mod is for game version {ExpectedVersion}. You are running game
         version {GameVersion}. Exiting now. -->

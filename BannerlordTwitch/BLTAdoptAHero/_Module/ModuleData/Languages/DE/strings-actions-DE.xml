@@ -112,7 +112,7 @@
         <!-- Newly created wanderer -->
         <string id="cJQCU33B" text="Neu erstellter Wanderer" original="Newly created wanderer"/>
         <!-- Noble -->
-        <string id="fP84ES0X" text="Edel" original="Noble"/>
+        <string id="fP84ES0X" text="Adliger" original="Noble"/>
         <!-- Wanderer -->
         <string id="ozRaAx6L" text="Wanderer" original="Wanderer"/>
         <!-- Companions -->
@@ -170,7 +170,7 @@
             original="{OldName} is now known as {NewName}, they have {NewGold}!"/>
         <!-- AttributePoints -->
         <!-- Add Attribute Points -->
-        <string id="TmUJ8VU7" text="Attributpunkte hinzufügen" original="Add Attribute Points"/>
+        <string id="TmUJ8VU7" text="Attributspunkte hinzufügen" original="Add Attribute Points"/>
         <!-- Improve adopted heroes attribute points -->
         <string id="YrYFBWaw" text="Attributpunkte von übernommenen Helden verbessern"
             original="Improve adopted heroes attribute points"/>
@@ -1019,7 +1019,7 @@
         <string id="mbIwJprm" text="Kann auf der Seite des Belagerungsangriffs verwendet werden"
             original="Can be used when on siege attacker side"/>
         <!-- Shout -->
-        <string id="CXb5ALls" text="Schreien" original="Shout"/>
+        <string id="CXb5ALls" text="Rufen" original="Shout"/>
         <!-- TournamentBet -->
         <!-- Invalid gold argument -->
         <string id="GiU7feEu" text="Ungültiges Goldargument" original="Invalid gold argument"/>

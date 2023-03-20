@@ -71,7 +71,7 @@
         <!-- reroll equipment -->
         <string id="3KYGJ0Mu" text="Ausrüstung neu würfeln" original="reroll equipment"/>
         <!-- reequip -->
-        <string id="fGfTaAoD" text="umrüsten" original="reequip"/>
+        <string id="fGfTaAoD" text="Umrüsten" original="reequip"/>
         <!-- gold -->
         <!-- Show your heroes current gold. -->
         <string id="eWI5oDce" text="Zeigt an, wie viel Gold du aktuell besitzt."
