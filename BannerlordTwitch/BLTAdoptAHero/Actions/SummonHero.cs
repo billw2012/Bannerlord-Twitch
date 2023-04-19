@@ -357,7 +357,7 @@ namespace BLTAdoptAHero
             {
                 Mission.Current.GetMissionBehavior<MissionFightHandler>().StartCustomFight(
                     new() { Agent.Main },
-                    new() { agent }, false, false, false,
+                    new() { agent }, false, false,
                     playerWon =>
                     {
                         if (BLTAdoptAHeroModule.CommonConfig.WinGold == 0)
@@ -452,8 +452,7 @@ namespace BLTAdoptAHero
             var team = settings.OnPlayerSide ? Mission.Current.PlayerTeam : Mission.Current.PlayerEnemyTeam;
             
             // If all agents in all ally teams are adopted heroes then the team is depleted 
-            if(!settings.AllowWhenDepleted && team.QuerySystem?.AllyTeams?
-                   .All(t => t.Team?.ActiveAgents?.All(a => a?.IsAdopted() == true) == true) == true) 
+            if(!settings.AllowWhenDepleted && team?.ActiveAgents?.All(a => a?.IsAdopted() == true) == true) 
             {
                 onFailure("{=JuJSYmP2}You cannot be summoned, your side is depleted!".Translate());
                 return;
@@ -606,9 +605,9 @@ namespace BLTAdoptAHero
             {
                 t.QuerySystem.Expire();
             }
-            foreach (var formation in Mission.Current.Teams.SelectMany(t => t.Formations))
+            foreach (var formation in Mission.Current.Teams.SelectMany(t => t.FormationsIncludingSpecialAndEmpty))
             {
-                formation.GroupSpawnIndex = 0;
+                formation.SetSpawnIndex(0);
             }
 
             // Finished

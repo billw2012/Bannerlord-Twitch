@@ -130,10 +130,10 @@ namespace BLTAdoptAHero
                     infoStrings.Add("{=4TVRrlOw}{Age} yrs".Translate(("Age", (int)Math.Ceiling(adoptedHero.Age))));
                     infoStrings.Add("{=jY2QJdA3}{HP} / {MaxHP} HP".Translate(
                         ("HP", adoptedHero.HitPoints), ("MaxHP", adoptedHero.CharacterObject.MaxHitPoints())));
-                    if (adoptedHero.LastSeenPlace != null)
+                    if (adoptedHero.LastKnownClosestSettlement != null)
                     {
                         infoStrings.Add("{=B2xDasDx}Last seen near {Place}"
-                            .Translate(("Place", adoptedHero.LastSeenPlace.Name)));
+                            .Translate(("Place", adoptedHero.LastKnownClosestSettlement.Name)));
                     }
                 }
                 

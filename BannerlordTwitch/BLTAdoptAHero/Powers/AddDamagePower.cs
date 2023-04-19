@@ -552,18 +552,19 @@ namespace BLTAdoptAHero.Powers
 
         public void Apply(Agent from, List<Agent> ignoreAgents, Vec3 position)
         {
-            foreach ((var agent, float distance) in Mission.Current
-                .GetAgentsInRange(position.AsVec2, Range * 1, true)
-                .Where(a => 
-                        a.State == AgentState.Active	// alive only
-                        && !ignoreAgents.Contains(a)	// not in the ignore list
-                        && a.IsEnemyOf(from)			// enemies only
-                )
-                .Select(a => (agent: a, distance: a.Position.Distance(position)))
-                .OrderBy(a => a.distance)
-                // ToList is required due to potential collection change exception when agents are killed below
-                .Take(MaxAgentsToDamage).ToList() 
-            )
+	        var agents = new MBList<Agent>();
+	        foreach ((var agent, float distance) in Mission.Current
+		                 .GetNearbyAgents(position.AsVec2, Range * 1, agents)
+		                 .Where(a => 
+				                 a.State == AgentState.Active	// alive only
+				                 && !ignoreAgents.Contains(a)	// not in the ignore list
+				                 && a.IsEnemyOf(from)			// enemies only
+		                 )
+		                 .Select(a => (agent: a, distance: a.Position.Distance(position)))
+		                 .OrderBy(a => a.distance)
+		                 // ToList is required due to potential collection change exception when agents are killed below
+		                 .Take(MaxAgentsToDamage).ToList() 
+	                )
             {
                 int damage = CalculateDamage(distance); 
                 AddDamagePower.DoAgentDamage(from, agent, damage, (agent.Position - position).NormalizedCopy(), 

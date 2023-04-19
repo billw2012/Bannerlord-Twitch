@@ -82,7 +82,7 @@ namespace BannerlordTwitch.Util
             {
                 try
                 {
-                    DeclareWarAction.Apply(faction, Clan.PlayerClan);
+                    DeclareWarAction.ApplyByPlayerHostility(faction, Clan.PlayerClan);
                 }
                 catch
                 {

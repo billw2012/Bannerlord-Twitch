@@ -254,7 +254,7 @@ namespace BLTAdoptAHero
             TournamentHub.UpdateBets();
         }
 
-        private void CreateTorunamentTreePostfixImpl(TournamentBehavior tournamentBehavior)
+        private void CreateTournamentTreePostfixImpl(TournamentBehavior tournamentBehavior)
         {
             tournamentBehavior.Rounds[0] = BLTAdoptAHeroModule.TournamentConfig.Round1Type
                 .GetRandomRound(tournamentBehavior.Rounds[0], tournamentBehavior.TournamentGame.Mode); 
@@ -272,10 +272,10 @@ namespace BLTAdoptAHero
             SafeCallStatic(() => Current?.OpenBetting(__instance));
         }
         
-        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(TournamentBehavior), "CreateTorunamentTree")]
-        public static void CreateTorunamentTreePostfix(TournamentBehavior __instance)
+        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(TournamentBehavior), "CreateTournamentTree")]
+        public static void CreateTournamentTreePostfix(TournamentBehavior __instance)
         {
-            SafeCallStatic(() => Current?.CreateTorunamentTreePostfixImpl(__instance));
+            SafeCallStatic(() => Current?.CreateTournamentTreePostfixImpl(__instance));
         }
 
         [UsedImplicitly, HarmonyPrefix, HarmonyPatch(typeof(TournamentBehavior), "StartMatch")]
