@@ -7,14 +7,14 @@
         <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- AddGoldToHero -->
         <!-- Add Gold To Hero -->
-        <string id="kn4uxAWs" text="Ajouter de l'or au héros" original="Add Gold To Hero"/>
+        <string id="kn4uxAWs" text="Donner de l'or au Streameur" original="Add Gold To Hero"/>
         <!-- Gives gold to the adopted hero -->
-        <string id="vkgPfcAu" text="Donne de l'or au héros adopté" original="Gives gold to the adopted hero"/>
+        <string id="vkgPfcAu" text="Donner de l'or à mon Héro" original="Gives gold to the adopted hero"/>
         <!-- How much gold to give the adopted hero -->
-        <string id="S2CeRdjR" text="Combien d'or donner au héros adopté" original="How much gold to give the adopted hero"/>
+        <string id="S2CeRdjR" text="Combien d'or donner à mon Héro" original="How much gold to give the adopted hero"/>
         <!-- AdoptAHero -->
         <!-- Adopt A Hero -->
-        <string id="NkZXnSQI" text="Adoptez un héros" original="Adopt A Hero"/>
+        <string id="NkZXnSQI" text="Adopter un héros" original="Adopt A Hero"/>
         <!-- Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands -->
         <string id="fd7G5N0Q" text="Permet au spectateur d'&amp;quot;adopter&amp;quot; un héros dans le jeu - le nom du héros changera pour le nom du spectateur, et ils peuvent le contrôler avec d'autres commandes" original="Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands"/>
         <!-- Create New -->
@@ -24,9 +24,9 @@
         <!-- Allow Noble -->
         <string id="nPIcT2s7" text="Autoriser les nobles" original="Allow Noble"/>
         <!-- Allow noble heroes (if CreateNew is false) -->
-        <string id="XvZN7OOY" text="Autoriser les héros nobles (si CreateNew est faux)" original="Allow noble heroes (if CreateNew is false)"/>
+        <string id="XvZN7OOY" text="Autoriser les héros nobles (si créer nouveau est faux)" original="Allow noble heroes (if CreateNew is false)"/>
         <!-- Allow Wanderer -->
-        <string id="VVFsa8LQ" text="Autoriser le vagabond" original="Allow Wanderer"/>
+        <string id="VVFsa8LQ" text="Autoriser les Vagabonds" original="Allow Wanderer"/>
         <!-- Allow wanderer heroes (if CreateNew is false) -->
         <string id="9lE2KSvC" text="Autoriser les héros vagabonds (si CreateNew est faux)" original="Allow wanderer heroes (if CreateNew is false)"/>
         <!-- Allow Player Companion -->
@@ -387,7 +387,7 @@
         <!-- [ATTR] -->
         <string id="RSlhbJzO" text="[ATTR]" original="[ATTR]"/>
         <!-- [TIER] -->
-        <string id="64yw2YD0" text="[ÉTAGE]" original="[TIER]"/>
+        <string id="64yw2YD0" text="[ECHELON]" original="[TIER]"/>
         <!-- No Equip Class -->
         <string id="u32KRqz8" text="Aucune classe d'équipement" original="No Equip Class"/>
         <!-- [BATTLE] -->
@@ -401,9 +401,9 @@
         <!-- (nothing) -->
         <string id="4IOefqsW" text="(rien)" original="(nothing)"/>
         <!-- {RetinueCount} (avg Tier {Tier}) -->
-        <string id="XE2QRhyz" text="{RetinueCount} (avg Tier {Tier})" original="{RetinueCount} (avg Tier {Tier})"/>
+        <string id="XE2QRhyz" text="{RetinueCount} (Echelon Moyen {Tier})" original="{RetinueCount} (avg Tier {Tier})"/>
         <!-- [ACHIEV] -->
-        <string id="giS3vq1V" text="[RÉALISATION]" original="[ACHIEV]"/>
+        <string id="giS3vq1V" text="[SUCCESS]" original="[ACHIEV]"/>
         <!-- K -->
         <string id="ADjhFwlz" text="K" original="K"/>
         <!-- D -->
@@ -443,7 +443,7 @@
         <!-- Upper bound of amount to improve -->
         <string id="tU4rSLcx" text="Limite supérieure du montant à améliorer" original="Upper bound of amount to improve"/>
         <!-- Gold Cost -->
-        <string id="DlZ7sV1N" text="Coût de l'or" original="Gold Cost"/>
+        <string id="DlZ7sV1N" text="Coût en or" original="Gold Cost"/>
         <!-- Gold that will be taken from the hero -->
         <string id="pGwh9edB" text="L'or qui sera pris au héros" original="Gold that will be taken from the hero"/>
         <!-- JoinTournament -->
@@ -452,7 +452,7 @@
         <!-- Puts adopted heroes in queue for the next tournament -->
         <string id="1h8OT5VD" text="Met les héros adoptés en file d'attente pour le prochain tournoi" original="Puts adopted heroes in queue for the next tournament"/>
         <!-- Gold Cost -->
-        <string id="7D2UBlGC" text="Coût de l'or" original="Gold Cost"/>
+        <string id="7D2UBlGC" text="Coût en or" original="Gold Cost"/>
         <!-- Gold cost to join -->
         <string id="Upuhtmr6" text="Coût en or pour adhérer" original="Gold cost to join"/>
         <!-- JOIN the viewer tournament -->
@@ -578,11 +578,11 @@
         <!-- Bow -->
         <string id="QpWRsKrc" text="Arc" original="Bow"/>
         <!-- Xb -->
-        <string id="71M512iJ" text="Xb" original="Xb"/>
+        <string id="71M512iJ" text="Arb" original="Xb"/>
         <!-- Thr -->
         <string id="jMRloOi0" text="Thr" original="Thr"/>
         <!-- Rid -->
-        <string id="ligWzK3s" text="Monter" original="Rid"/>
+        <string id="ligWzK3s" text="Equi" original="Rid"/>
         <!-- Ath -->
         <string id="1MJnisqR" text="Ath" original="Ath"/>
         <!-- Smt -->
@@ -665,7 +665,7 @@
         <!-- Cost -->
         <string id="hCJhgl1m" text="Coût" original="Cost"/>
         <!-- Streamers side -->
-        <string id="myKKaEl9" text="Côté streamers" original="Streamers side"/>
+        <string id="myKKaEl9" text="Côté streamer" original="Streamers side"/>
         <!-- Enemy side -->
         <string id="BTZ84Uww" text="Côté ennemi" original="Enemy side"/>
         <!-- {HealPerSecond}HP per second while summoned -->
@@ -725,7 +725,7 @@
         <!-- Higher weight means more chance this shout is used -->
         <string id="xqfCYYwN" text="Un poids plus élevé signifie plus de chances que ce cri soit utilisé" original="Higher weight means more chance this shout is used"/>
         <!-- Player Side -->
-        <string id="xK1fdx7s" text="Côté joueur" original="Player Side"/>
+        <string id="xK1fdx7s" text="Côté streameur" original="Player Side"/>
         <!-- Can be used when summoning on player side -->
         <string id="BpDPlsfY" text="Peut être utilisé lors de l'invocation côté joueur" original="Can be used when summoning on player side"/>
         <!-- Enemy Side -->
