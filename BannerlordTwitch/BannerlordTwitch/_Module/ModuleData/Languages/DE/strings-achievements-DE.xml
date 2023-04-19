@@ -1,27 +1,30 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
         <tag language="Deutsch"/>
     </tags>
     <strings>
-        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Get more string codes here:
+        https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- Common -->
         <!-- Reward {ITEMNAME} -->
-        <string id="W47g8bCB" text="Belohnung {ITEMNAME}" original="Reward {ITEMNAME}"/>
-        <!-- {viewer} is {name}! -->
-        <string id="TAWcPGIc" text="{viewer} ist {name}!" original="{viewer} is {name}!"/>
+        <string id="W47g8bCB" text="Die Belohnung ist {ITEMNAME}" original="Reward {ITEMNAME}"/>
+        <!-- [viewer] is [name]! -->
+        <string id="TAWcPGIc" text="[viewer] ist [name]!" original="[viewer] is [name]!"/>
         <!-- {ITEMNAME} of Fealty -->
-        <string id="IvV04W31" text="{ITEMNAME} von Treue" original="{ITEMNAME} of Fealty"/>
+        <string id="IvV04W31" text="{ITEMNAME} der Treue" original="{ITEMNAME} of Fealty"/>
         <!-- Renegades {ITEMNAME} -->
-        <string id="UQtSgnog" text="Abtrünnige {ITEMNAME}" original="Renegades {ITEMNAME}"/>
+        <string id="UQtSgnog" text="{ITEMNAME} der Abtrünnigen" original="Renegades {ITEMNAME}"/>
         <!-- Stream Sniper {ITEMNAME} -->
-        <string id="xI41h8NA" text="Stream-Scharfschütze {ITEMNAME}" original="Stream Sniper {ITEMNAME}"/>
+        <string id="xI41h8NA" text="Stream-Scharfschütze {ITEMNAME}"
+            original="Stream Sniper {ITEMNAME}"/>
         <!-- Reliable -->
         <string id="ODWiNBng" text="Zuverlässig" original="Reliable"/>
         <!-- Trusted -->
-        <string id="fWTqF2sw" text="Vertrauenswürdige" original="Trusted"/>
+        <string id="fWTqF2sw" text="Vertrauenswürdig" original="Trusted"/>
         <!-- Loyal -->
-        <string id="fe9J8von" text="Treu" original="Loyal"/>
+        <string id="fe9J8von" text="Loyal" original="Loyal"/>
         <!-- Rebellious -->
         <string id="HdYFegeb" text="Rebellisch" original="Rebellious"/>
         <!-- Traitorous -->

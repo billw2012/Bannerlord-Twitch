@@ -1,27 +1,30 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
         <tag language="Deutsch"/>
     </tags>
     <strings>
-        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Get more string codes here:
+        https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- Common -->
         <!-- Reward {ITEMNAME} -->
-        <string id="W47g8bCB" text="Belohnung {ITEMNAME}" original="Reward {ITEMNAME}"/>
+        <string id="W47g8bCB" text="Die Belohnung ist {ITEMNAME}" original="Reward {ITEMNAME}"/>
         <!-- [viewer] is [name]! -->
         <string id="TAWcPGIc" text="[viewer] ist [name]!" original="[viewer] is [name]!"/>
         <!-- {ITEMNAME} of Fealty -->
-        <string id="IvV04W31" text="{ITEMNAME} von Treue" original="{ITEMNAME} of Fealty"/>
+        <string id="IvV04W31" text="{ITEMNAME} der Treue" original="{ITEMNAME} of Fealty"/>
         <!-- Renegades {ITEMNAME} -->
-        <string id="UQtSgnog" text="Abtrünnige {ITEMNAME}" original="Renegades {ITEMNAME}"/>
+        <string id="UQtSgnog" text="{ITEMNAME} der Abtrünnigen" original="Renegades {ITEMNAME}"/>
         <!-- Stream Sniper {ITEMNAME} -->
-        <string id="xI41h8NA" text="Stream-Scharfschütze {ITEMNAME}" original="Stream Sniper {ITEMNAME}"/>
+        <string id="xI41h8NA" text="Stream-Scharfschütze {ITEMNAME}"
+            original="Stream Sniper {ITEMNAME}"/>
         <!-- Reliable -->
         <string id="ODWiNBng" text="Zuverlässig" original="Reliable"/>
         <!-- Trusted -->
         <string id="fWTqF2sw" text="Vertrauenswürdige" original="Trusted"/>
         <!-- Loyal -->
-        <string id="fe9J8von" text="Treu" original="Loyal"/>
+        <string id="fe9J8von" text="Loyal" original="Loyal"/>
         <!-- Rebellious -->
         <string id="HdYFegeb" text="Rebellisch" original="Rebellious"/>
         <!-- Traitorous -->
@@ -31,7 +34,7 @@
         <!-- Stream Sniper -->
         <string id="Aj0gXKgZ" text="Stream-Scharfschütze" original="Stream Sniper"/>
         <!-- Killing Spree -->
-        <string id="QNbIUDrh" text="Amoklauf" original="Killing Spree"/>
+        <string id="QNbIUDrh" text="Blutrausch" original="Killing Spree"/>
         <!-- Healthy I -->
         <string id="dlrzqWyB" text="Gesund I" original="Healthy I"/>
         <!-- Healthy II -->
@@ -63,17 +66,17 @@
         <!-- Retribution III -->
         <string id="bS76hE3e" text="Vergeltung III" original="Retribution III"/>
         <!-- Fleet Footed I -->
-        <string id="FQKNvxVG" text="Leichtfüßig I" original="Fleet Footed I"/>
+        <string id="FQKNvxVG" text="Flinkfüßig I" original="Fleet Footed I"/>
         <!-- Fleet Footed II -->
-        <string id="rgQDzX4f" text="Leichtfüßig II" original="Fleet Footed II"/>
+        <string id="rgQDzX4f" text="Flinkfüßig II" original="Fleet Footed II"/>
         <!-- Fleet Footed III -->
-        <string id="f7L0oLCQ" text="Leichtfüßig III" original="Fleet Footed III"/>
+        <string id="f7L0oLCQ" text="Flinkfüßig III" original="Fleet Footed III"/>
         <!-- Charge I -->
-        <string id="39yFtbp2" text="Ladung I" original="Charge I"/>
+        <string id="39yFtbp2" text="Anstürmen I" original="Charge I"/>
         <!-- Charge II -->
-        <string id="6IFhNSH3" text="Ladung II" original="Charge II"/>
+        <string id="6IFhNSH3" text="Anstürmen II" original="Charge II"/>
         <!-- Charge III -->
-        <string id="l2eB9avA" text="Ladung III" original="Charge III"/>
+        <string id="l2eB9avA" text="Anstürmen III" original="Charge III"/>
         <!-- Better Mount I -->
         <string id="tqmxzUCq" text="Besseres Reittier I" original="Better Mount I"/>
         <!-- Better Mount II -->
@@ -97,11 +100,11 @@
         <!-- Fireblade III -->
         <string id="VGqA25nN" text="Feuerklinge III" original="Fireblade III"/>
         <!-- Charge AoE I -->
-        <string id="R8u1d7M6" text="AoE aufladen I" original="Charge AoE I"/>
+        <string id="R8u1d7M6" text="Anstürmen (Flächenschaden) I" original="Charge AoE I"/>
         <!-- Charge AoE II -->
-        <string id="lO56Rq9E" text="AoE aufladen II" original="Charge AoE II"/>
+        <string id="lO56Rq9E" text="Anstürmen (Flächenschaden) II" original="Charge AoE II"/>
         <!-- Charge AoE III -->
-        <string id="X5LQvC0o" text="AoE aufladen III" original="Charge AoE III"/>
+        <string id="X5LQvC0o" text="Anstürmen (Flächenschaden) III" original="Charge AoE III"/>
         <!-- Ranger I -->
         <string id="7XNfzok8" text="Waldläufer I" original="Ranger I"/>
         <!-- Ranger II -->
@@ -127,7 +130,7 @@
         <!-- Knock Down III -->
         <string id="Uc4Cai9H" text="Niederschlagen III" original="Knock Down III"/>
         <!-- Cut Through I -->
-        <string id="VsZLMOHX" text="Zerschneiden I" original="Cut Through I"/>
+        <string id="VsZLMOHX" text="Durchschneiden I" original="Cut Through I"/>
         <!-- Cut Through II -->
         <string id="yXj1jqxx" text="Zerschneiden II" original="Cut Through II"/>
         <!-- Cut Through III -->

@@ -1,13 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
     <tags>
         <tag language="Deutsch"/>
     </tags>
     <strings>
-        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Get more string codes here:
+        https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
         <!-- Common -->
         <!-- Fireblade -->
-        <string id="yEtkv5ML" text="Feuerschwert" original="Fireblade"/>
+        <string id="yEtkv5ML" text="Feuerklinge" original="Fireblade"/>
         <!-- infantry -->
         <string id="m8bz4drX" text="Infanterie" original="infantry"/>
         <!-- Healthy -->
@@ -17,23 +19,23 @@
         <!-- archer -->
         <string id="4tflp34a" text="Bogenschütze" original="archer"/>
         <!-- Fleet Footed -->
-        <string id="NE9Li2Hb" text="Leichtfüßig" original="Fleet Footed"/>
+        <string id="NE9Li2Hb" text="Flinkfüßig" original="Fleet Footed"/>
         <!-- Explosive Arrows -->
         <string id="xgnH5owv" text="Explosive Pfeile" original="Explosive Arrows"/>
         <!-- heavyarcher -->
-        <string id="JncRD8tX" text="schwerer Bogenschütze" original="heavyarcher"/>
+        <string id="JncRD8tX" text="Schwerer Bogenschütze" original="heavyarcher"/>
         <!-- Healthy -->
         <string id="ZrmsIMPE" text="Gesund" original="Healthy"/>
         <!-- Heavy Bolts -->
         <string id="QZD9XdpC" text="Schwere Bolzen" original="Heavy Bolts"/>
         <!-- crossbow -->
-        <string id="wV6R9Si5" text="Armbrust" original="crossbow"/>
+        <string id="wV6R9Si5" text="Armbrustschütze" original="crossbow"/>
         <!-- Self Healing -->
         <string id="FvNPPHLJ" text="Selbstheilung" original="Self Healing"/>
         <!-- Explosive Bolts -->
         <string id="7GmE3SfQ" text="Explosive Bolzen" original="Explosive Bolts"/>
         <!-- heavycrossbow -->
-        <string id="bpzytNbP" text="schwere Armbrust" original="heavycrossbow"/>
+        <string id="bpzytNbP" text="Schwerer Armbrustschütze" original="heavycrossbow"/>
         <!-- Healthy -->
         <string id="k7booFb2" text="Gesund" original="Healthy"/>
         <!-- Trample -->
@@ -57,7 +59,7 @@
         <!-- Heavy Arrows -->
         <string id="FrX7AiyI" text="Schwere Pfeile" original="Heavy Arrows"/>
         <!-- camelarcher -->
-        <string id="HreZWoyd" text="Kamelreiter Bogenschütze" original="camelarcher"/>
+        <string id="HreZWoyd" text="Kamel-Bogenschütze" original="camelarcher"/>
         <!-- Mounted Archery -->
         <string id="szdoTAQj" text="Berittenes Bogenschießen" original="Mounted Archery"/>
         <!-- Break Through -->
@@ -67,7 +69,7 @@
         <!-- Retribution -->
         <string id="Lw8xQu1P" text="Vergeltung" original="Retribution"/>
         <!-- Berserker Rage -->
-        <string id="1DSLInEJ" text="Berserker Wut" original="Berserker Rage"/>
+        <string id="1DSLInEJ" text="Berserkerwut" original="Berserker Rage"/>
         <!-- berserker -->
         <string id="wVjXAFal" text="Berserker" original="berserker"/>
         <!-- Glass Cannon -->
