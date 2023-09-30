@@ -42,7 +42,7 @@ Possible changes:
 
 1. Install [Bannerlord Harmony](https://www.nexusmods.com/mountandblade2bannerlord/mods/2006?tab=files) and [ButterLib](https://www.nexusmods.com/mountandblade2bannerlord/mods/2018?tab=files).
    
-2. Unzip to the Bannerlords Modules directory (by default at `C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules`).
+2. Unzip to the Bannerlord Modules directory (by default at `C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules`).
    It should create the `BannerlordTwitch` directory, and the `BannerlordTwitch.dll` should be at `Modules\BannerlordTwitch\bin\Win64_Shipping_Client\BannerlordTwitch.dll`
    ![image](https://user-images.githubusercontent.com/1453936/115397098-9daae880-a1dd-11eb-87c7-0bda9af4c79d.png)
    It should also create the `BLTAdoptAHero`, `BLTBuffet`, and `BLTConfigure` directories.
@@ -69,7 +69,44 @@ If you have problems you can search for `[BLT]` lines in the `rgl_log` files at 
 
 If you need help then join the [Discord](https://discord.gg/q2p4eHsxFn).
 
-# Writing an Extension
+# Developer Guide
+This guide only explains things specific to developing the BLT mod, if there are other words, concepts or procedures you don't understand mentioned here then you should google them!
+
+## Requirements
+You need Bannerlord installed to be able to build or run this mod.
+
+You also need 7zip installed and available on the path environment variable. 
+
+The project uses a number of NuGet packages, these should be installed automatically by your build system when you try to compile, debug or run the mod via your IDE. If they aren't then check you have this feature enabled, and/or use your IDEs NuGet package manager to run a package restore manually. Until package restore has been done (automatically or manually), the solution will likely show many "intellisense" errors related to missing references. Once packages are restored these should go away (it may take a while or require an IDE restart though). If some still remain then you may have a different version of the game dlls than the mod supports, see the Setup instructions below for more details.
+
+## Developer Setup
+1. Clone the repo locally.
+2. Setup the `BANNERLORD_GAME_DIR` property, either as an environment variable (if you want to avoid modifying a repo file), or directly in the `BLTProperties.targets` file at line 31 (you can see there where it should point to). This value is used to allow the project to directly reference your installed Bannerlord dlls, and to enable deployment and debugging.
+3. Ensure the `GameVersion` property in `BLTProperties.targets` at line 29 matches the game version installed. If it doesn't then either you intend to update the mod to support a newer version of the game (which is an advanced operation*), or you don't and should switch the installed game beta in steam to the match the value.
+4. Try running the default "Bannerlord" debugging configuration. This configuration is specified at lines 29 to 34 of the `BannerlordTwitch.csproj` project file. You can see there that it uses the `BANNERLORD_GAME_DIR` property, and specifies an explicit module list that includes only the main game and BLT modules. Any mods you have installed will not be loaded when you are debugging BLT in this manner, if you want them then add them to the commandline here, or via your IDEs debugging configuration editor. 
+5. The mod should now be compiled (including restoring required NuGet packages), deployed to your game directory (replacing any BLT files that already exist), then run with the debugger attached.
+
+## Updating for a New Game Version
+This is potentially an advanced operation, if any of the hooked functions have changed or been removed then it requires an understanding of function hooking with Harmony, what the previously used function did, and how it can be replaced or its functionality replicated (requiring deep understanding of the mod, and how to view the implementation of the method that was removed).
+
+Then again if nothing the mod depends on changed, then its a trivial operation involving only updating the version numbers!
+
+You won't necessarily know if something has changed until you run the mod, the function hooking is done during startup, and the log will show if there were any hooking errors. Even if there aren't hooking errors there is still a small chance that the meaning of a function parameter, of the functions behaviour itself, changed, without changing the function signature (which is what hooking relies on).  Detecting this is most easily done by in game testing: exceptions, crashes, weird behavior might be explained by this. 
+
+1. Update the version number in `BLTProperties.targets` at line 29.
+2. Update the version number in `BannerlordTwitch\BLTModule.cs` at line 32.
+3. Debug the mod using the provided debug configuration.
+4. Once at the main menu, or crashed, check the log file for hooking errors.
+5. If you have hooking errors and don't know where to start with addressing them then you are probably done, either go back to using an older game version and make the changes you want without updating the mod game version, or get ready to learn some .NET black magic, starting with what Harmony is.
+
+## Sharing a New Build
+First you should make sure to update the `ModuleVersion` property in `BLTProperties.targets` at line 4. This uses an approximation of [semver versioning](https://semver.org/). Basically if you are updating only for a new game version or making a small tweak that doesn't suggest starting a new campaign, then increment the "patch" version, e.g., `1.1.1` becomes `1.1.2`. If the change is large enough that starting a new campaign would make sense then increment the "minor" version, e.g., `1.1.1` becomes `1.2.0`. Finally for large changes that would require a new campaign, or significantly change or add to the experience, you should increment the "major" version, e.g., `1.1.1` becomes `2.0.0`. Note that the smaller parts of the version are reset to zero when a higher part is changed.
+
+The Release config build process generates a sharable package which will be found in the `BannerlordTwitch\deploy\release` under the cloned repo. It should include the game and updated mod version number. This package can be released as is through appropriate channels.
+
+It would be preferable, although not required as per the MIT license, that 
+
+## Writing an Extension
 You can implement new reward actions and command handlers quite easily:
 1. Make another mod that depends on `BannerlordTwitch` (in the `Submodule.xml`, AND reference the dll itself)
 2. Implement a new class derived from `IActionHandler` (for channel point rewards), `ICommandHandler` (for bot commands) or `ActionAndCommandBase` (to make both in one class)

@@ -406,7 +406,6 @@
         <Content Include="Overlay\ConsoleFeed\ConsoleFeed.js">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-        <Content Include="README.md" />
         <Content Include="SaveSystem\ButterLibLicense.txt" />
         <Content Include="Web.config" />
         <Content Include="_Module\Bannerlord-Twitch-Auth.yaml" />
