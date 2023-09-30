@@ -158,16 +158,16 @@ namespace BLTAdoptAHero
 
         protected override Type ConfigType => typeof(Settings);
         
-        private delegate Agent MissionAgentHandler_SpawnWanderingAgentDelegate(
+        private delegate Agent MissionAgentHandler_SpawnWanderingAgentWithInitialFrameDelegate(
             MissionAgentHandler instance,
             LocationCharacter locationCharacter,
             MatrixFrame spawnPointFrame,
             bool noHorses);
 
-        private static readonly MissionAgentHandler_SpawnWanderingAgentDelegate MissionAgentHandler_SpawnWanderingAgent 
-            = (MissionAgentHandler_SpawnWanderingAgentDelegate) AccessTools.Method(typeof(MissionAgentHandler),
-                    "SpawnWanderingAgent", new[] {typeof(LocationCharacter), typeof(MatrixFrame), typeof(bool)})
-                .CreateDelegate(typeof(MissionAgentHandler_SpawnWanderingAgentDelegate));
+        private static readonly MissionAgentHandler_SpawnWanderingAgentWithInitialFrameDelegate MissionAgentHandler_SpawnWanderingAgentWithInitialFrame 
+            = (MissionAgentHandler_SpawnWanderingAgentWithInitialFrameDelegate) AccessTools.Method(typeof(MissionAgentHandler),
+                    "SpawnWanderingAgentWithInitialFrame", new[] {typeof(LocationCharacter), typeof(MatrixFrame), typeof(bool)})
+                .CreateDelegate(typeof(MissionAgentHandler_SpawnWanderingAgentWithInitialFrameDelegate));
         
         private delegate MatrixFrame ArenaPracticeFightMissionController_GetSpawnFrameDelegate(
             ArenaPracticeFightMissionController instance, bool considerPlayerDistance, bool isInitialSpawn);
@@ -337,7 +337,7 @@ namespace BLTAdoptAHero
             {
                 var controller = Mission.Current.GetMissionBehavior<ArenaPracticeFightMissionController>();
                 var pos = ArenaPracticeFightMissionController_GetSpawnFrame(controller, false, false);
-                agent = MissionAgentHandler_SpawnWanderingAgent(missionAgentHandler, locationCharacter, pos, true);
+                agent = MissionAgentHandler_SpawnWanderingAgentWithInitialFrame(missionAgentHandler, locationCharacter, pos, true);
                 var _participantAgents = (List<Agent>)AccessTools
                     .Field(typeof(ArenaPracticeFightMissionController), "_participantAgents")
                     .GetValue(controller);

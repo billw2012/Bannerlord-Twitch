@@ -25,7 +25,7 @@ namespace BLTAdoptAHero
                     AttackType = attacker.IsMount ? AgentAttackType.Collision : AgentAttackType.Standard,
                     DamageType = DamageTypes.Blunt,
                     BoneIndex = victim.Monster.HeadLookDirectionBoneIndex,
-                    Position = victim.Position,
+                    GlobalPosition = victim.Position,
                     BaseMagnitude = collisionData.BaseMagnitude * 10,
                     SwingDirection = collisionData.WeaponBlowDir,
                     Direction = collisionData.WeaponBlowDir,

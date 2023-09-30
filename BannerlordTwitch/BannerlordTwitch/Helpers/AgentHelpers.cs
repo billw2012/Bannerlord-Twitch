@@ -105,7 +105,7 @@ namespace BannerlordTwitch.Helpers
                 0f,
                 Vec3.Up,
                 blow.Direction,
-                blow.Position,
+                blow.GlobalPosition,
                 Vec3.Zero,
                 Vec3.Zero,
                 toAgent.Velocity,

@@ -37,10 +37,5 @@ namespace BLTAdoptAHero
         {
             SafeCall(RemoveHeroes);
         }
-
-        public override void OnMissionRestart()
-        {
-            SafeCall(RemoveHeroes);
-        }
     }
 }

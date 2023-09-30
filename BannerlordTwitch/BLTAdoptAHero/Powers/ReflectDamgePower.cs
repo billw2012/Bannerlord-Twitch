@@ -55,7 +55,7 @@ namespace BLTAdoptAHero.Powers
                     AttackType = attackerAgent.IsMount ? AgentAttackType.Collision : AgentAttackType.Standard,
                     DamageType = attackerAgent.IsMount ? DamageTypes.Blunt : blowParams.blow.DamageType,
                     BoneIndex = agent.Monster.ThoraxLookDirectionBoneIndex,
-                    Position = agent.Position,
+                    GlobalPosition = agent.Position,
                     BlowFlag = HitBehavior.AddFlags(agent, BlowFlags.None),
                     BaseMagnitude = 0f,
                     InflictedDamage = damage,

@@ -184,16 +184,11 @@ namespace BLTAdoptAHero.Actions.Util
 
         private static void SetItemName(ItemObject item, TextObject name) => AccessTools.Property(typeof(ItemObject), nameof(ItemObject.Name)).SetValue(item, name);
 
-        private static void CompleteCraftedItem(ItemObject item, Crafting.OverrideData overrideData = null)
+        private static void CompleteCraftedItem(ItemObject item)
         {
             ItemObject.InitAsPlayerCraftedItem(ref item);
             MBObjectManager.Instance.RegisterObject(item);
-            #if e159 || e1510
-            AccessTools.Method(typeof(CampaignEventDispatcher), "OnNewItemCrafted")
-                .Invoke(CampaignEventDispatcher.Instance, new object[] { item, overrideData });
-            #else
-            CampaignEventDispatcher.Instance.OnNewItemCrafted(item, overrideData, false);
-            #endif
+            CampaignEventDispatcher.Instance.OnNewItemCrafted(item, null, false);
         }
         
         // The vanilla tier calculation for weapons:

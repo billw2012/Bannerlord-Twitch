@@ -104,7 +104,7 @@ First you should make sure to update the `ModuleVersion` property in `BLTPropert
 
 The Release config build process generates a sharable package which will be found in the `BannerlordTwitch\deploy\release` under the cloned repo. It should include the game and updated mod version number. This package can be released as is through appropriate channels.
 
-It would be preferable, although not required as per the MIT license, that 
+As per the LGPL (under which this code is licensed), deployment of changes in binary form also requires sharing of the source code of those changes. This is most easily done by using GitHub forks to make changes, and pushing changes back to them. 
 
 ## Writing an Extension
 You can implement new reward actions and command handlers quite easily:

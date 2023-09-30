@@ -196,16 +196,21 @@ namespace BLTAdoptAHero
             }
         }
 
-        public override void CalculateCollisionStunMultipliers(Agent attackerAgent, Agent defenderAgent, bool isAlternativeAttack,
+        public override void CalculateDefendedBlowStunMultipliers(Agent attackerAgent, Agent defenderAgent,
             CombatCollisionResult collisionResult, WeaponComponentData attackerWeapon, WeaponComponentData defenderWeapon,
             out float attackerStunMultiplier, out float defenderStunMultiplier)
         {
-            previousModel.CalculateCollisionStunMultipliers(attackerAgent, defenderAgent, isAlternativeAttack, collisionResult, attackerWeapon, defenderWeapon, out attackerStunMultiplier, out defenderStunMultiplier);
+            previousModel.CalculateDefendedBlowStunMultipliers(attackerAgent, defenderAgent, collisionResult, attackerWeapon, defenderWeapon, out attackerStunMultiplier, out defenderStunMultiplier);
         }
 
         public override float CalculateStaggerThresholdMultiplier(Agent defenderAgent)
         {
             return previousModel.CalculateStaggerThresholdMultiplier(defenderAgent);
+        }
+
+        public override float CalculateAlternativeAttackDamage(BasicCharacterObject attackerCharacter, WeaponComponentData weapon)
+        {
+            return previousModel.CalculateAlternativeAttackDamage(attackerCharacter, weapon);
         }
 
         public override float CalculatePassiveAttackDamage(BasicCharacterObject attackerCharacter, in AttackCollisionData collisionData,
@@ -224,9 +229,9 @@ namespace BLTAdoptAHero
             return previousModel.CalculateShieldDamage(in attackInformation, baseDamage);
         }
 
-        public override float GetDamageMultiplierForBodyPart(BoneBodyPartType bodyPart, DamageTypes type, bool isHuman)
+        public override float GetDamageMultiplierForBodyPart(BoneBodyPartType bodyPart, DamageTypes type, bool isHuman, bool isMissile)
         {
-            return previousModel.GetDamageMultiplierForBodyPart(bodyPart, type, isHuman);
+            return previousModel.GetDamageMultiplierForBodyPart(bodyPart, type, isHuman, isMissile);
         }
 
         public override bool CanWeaponIgnoreFriendlyFireChecks(WeaponComponentData weapon)

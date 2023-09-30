@@ -385,7 +385,7 @@ namespace BLTAdoptAHero.Powers
                 AttackType = from.IsMount ? AgentAttackType.Collision : AgentAttackType.Standard,
 		        DamageType = from.IsMount ? DamageTypes.Blunt : damageType,
 		        BoneIndex = agent.Monster.HeadLookDirectionBoneIndex,
-		        Position = agent.Position,
+		        GlobalPosition = agent.Position,
 		        BaseMagnitude = damage,
 		        InflictedDamage = damage,
 		        SwingDirection = direction,

@@ -109,11 +109,10 @@ namespace BannerlordTwitch.Models
             return previousModel.GetMaxCameraZoom(agent);
         }
 
-        public override int GetEffectiveSkill(BasicCharacterObject agentCharacter, IAgentOriginBase agentOrigin, 
-            Formation agentFormation, SkillObject skill)
+        public override int GetEffectiveSkill(Agent agent, SkillObject skill)
         {
-            float baseModifiedSkill = previousModel.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill);
-            var hero = (agentCharacter as CharacterObject)?.HeroObject;
+            float baseModifiedSkill = previousModel.GetEffectiveSkill(agent, skill);
+            var hero = agent?.GetHero();
             if (hero != null && activeModifiers.TryGetValue(hero, out var modifiers))
             {
                 baseModifiedSkill = modifiers
@@ -123,6 +122,21 @@ namespace BannerlordTwitch.Models
 
             return (int) baseModifiedSkill;
         }
+
+        // public override int GetEffectiveSkill(BasicCharacterObject agentCharacter, IAgentOriginBase agentOrigin, 
+        //     Formation agentFormation, SkillObject skill)
+        // {
+        //     float baseModifiedSkill = previousModel.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill);
+        //     var hero = (agentCharacter as CharacterObject)?.HeroObject;
+        //     if (hero != null && activeModifiers.TryGetValue(hero, out var modifiers))
+        //     {
+        //         baseModifiedSkill = modifiers
+        //             .Where(m => SkillGroup.GetSkills(m.Skill).Contains(skill))
+        //             .Aggregate(baseModifiedSkill, (current, m) => m.Apply(current));
+        //     }
+        //
+        //     return (int) baseModifiedSkill;
+        // }
 
         public override string GetMissionDebugInfoForAgent(Agent agent)
         {

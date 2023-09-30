@@ -46,7 +46,7 @@ namespace BLTBuffet
                         //blow.BlowFlag = BlowFlags.CrushThrough;
                         BlowFlag = BlowFlags.ShrugOff,
                         BoneIndex = 0,
-                        Position = agent.Position,
+                        GlobalPosition = agent.Position,
                         // blow.Position.z += agent.GetEyeGlobalHeight();
                         //BaseMagnitude = 0f,
                         //WeaponRecord = new() { AffectorWeaponSlotOrMissileIndex = -1 },
