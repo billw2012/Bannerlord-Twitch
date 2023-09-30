@@ -29,23 +29,24 @@
                         +{{hero.RetinueKills}}</div>
                     <div class='mission-hero-gold-xp'>
                         <div v-show='hero.GoldEarned > 0' class='mission-hero-gold drop-shadow-2'>
-                            {{Math.round(hero.GoldEarned / 1000)}}k</div>
+                            {{formatNumber(hero.GoldEarned)}}</div>
                         <div v-show='hero.XPEarned > 0' class='mission-hero-xp drop-shadow-2'>
-                            {{Math.round(hero.XPEarned / 1000)}}k</div>
+                            {{formatNumber(hero.XPEarned)}}</div>
                     </div>
                 </div>
             </div>
             <div class='hero-retinue-list drop-shadow-2'>
-                <div v-for='index in Math.min(hero.Retinue, 5)' class='hero-retinue-list-item'></div>
+                <div v-for='index in Math.min(hero.Retinue, 5)' class='hero-retinue-list-item hero-alive-retinue'></div>
+                <div v-for='index in Math.min(hero.DeadRetinue, 5)' class='hero-retinue-list-item hero-dead-retinue'></div>
             </div>
         </div>
     </div>
     <div id='mission-key' v-if='sortedHeroes.length > 0'>
         <div class='mission-hero-score-row drop-shadow'>
-            <div class='mission-hero-kills'>Kills</div>
-            <div class='mission-hero-retinue-kills'>+Retinue Kills</div>
-            <div class='mission-hero-gold'>Gold</div>
-            <div class='mission-hero-xp'>XP</div>
+            <div class='mission-hero-kills'>{{keyLabels.Kills}}</div>
+            <div class='mission-hero-retinue-kills'>{{keyLabels.RetinueKills}}</div>
+            <div class='mission-hero-gold'>{{keyLabels.Gold}}</div>
+            <div class='mission-hero-xp'>{{keyLabels.XP}}</div>
         </div>
     </div>
 </div>

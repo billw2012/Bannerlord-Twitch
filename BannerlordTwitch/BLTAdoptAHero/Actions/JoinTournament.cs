@@ -1,6 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
@@ -10,18 +10,22 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTAdoptAHero
 {
-    [Description("Puts adopted heroes in queue for the next tournament"), UsedImplicitly]
+    [LocDisplayName("{=EZPZtyXo}Join Tournament"),
+     LocDescription("{=1h8OT5VD}Puts adopted heroes in queue for the next tournament"), 
+     UsedImplicitly]
     internal class JoinTournament : ActionHandlerBase
     {
-        [CategoryOrder("General", 1)]
         private class Settings : IDocumentable
         {
-            [Category("General"), Description("Gold cost to join"), PropertyOrder(4)]
+            [LocDisplayName("{=7D2UBlGC}Gold Cost"),
+             LocDescription("{=Upuhtmr6}Gold cost to join"), 
+             PropertyOrder(4)]
             public int GoldCost { get; [UsedImplicitly] set; }
 
             public void GenerateDocumentation(IDocumentationGenerator generator)
             {
-                if (GoldCost != 0) generator.PropertyValuePair("Cost", $"{GoldCost}{Naming.Gold}");
+                if (GoldCost != 0) 
+                    generator.PropertyValuePair("{=LnQoMDLT}Cost".Translate(), $"{GoldCost}{Naming.Gold}");
             }
         }
         
@@ -60,7 +64,8 @@ namespace BLTAdoptAHero
         public static void SetupGameMenus(CampaignGameStarter campaignGameSystemStarter)
         {
             campaignGameSystemStarter.AddGameMenuOption(
-                "town_arena", "blt_join_tournament", "JOIN the viewer tournament", 
+                "town_arena", "blt_join_tournament", 
+                "{=jUcsHkqk}JOIN the viewer tournament".Translate(), 
                 args =>
                 {
                     args.optionLeaveType = GameMenuOption.LeaveType.HostileAction;
@@ -73,7 +78,8 @@ namespace BLTAdoptAHero
                 }, 
                 index: 2);
             campaignGameSystemStarter.AddGameMenuOption(
-                "town_arena", "blt_watch_tournament", "WATCH the viewer tournament", 
+                "town_arena", "blt_watch_tournament", 
+                "{=hlVvENgP}WATCH the viewer tournament".Translate(), 
                 args =>
                 {
                     args.optionLeaveType = GameMenuOption.LeaveType.HostileAction;

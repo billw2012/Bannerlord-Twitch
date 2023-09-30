@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="Türkçe">
+  <LanguageFile xml_path="TR/strings-actions-TR.xml" />
+  <LanguageFile xml_path="TR/strings-behaviors-TR.xml" />
+  <LanguageFile xml_path="TR/strings-default-shouts-TR.xml" />
+  <LanguageFile xml_path="TR/strings-globalconfigs-TR.xml" />
+  <LanguageFile xml_path="TR/strings-misc-TR.xml" />
+  <LanguageFile xml_path="TR/strings-powers-TR.xml" />
+</LanguageData>

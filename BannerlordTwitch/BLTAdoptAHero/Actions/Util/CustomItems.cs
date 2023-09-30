@@ -46,7 +46,7 @@ namespace BLTAdoptAHero.Actions.Util
         [UsedImplicitly]
         public static string TestModifiedArmor(List<string> strings)
         {
-            var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.BodyArmor)
+            var item = CampaignHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.BodyArmor)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
                 .FirstOrDefault();
@@ -60,7 +60,7 @@ namespace BLTAdoptAHero.Actions.Util
         [UsedImplicitly]
         public static string TestModifiedWeapon(List<string> strings)
         {
-            var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.TwoHandedWeapon)
+            var item = CampaignHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.TwoHandedWeapon)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
                 .FirstOrDefault();
@@ -74,7 +74,7 @@ namespace BLTAdoptAHero.Actions.Util
         [UsedImplicitly]
         public static string TestModifiedBow(List<string> strings)
         {
-            var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Bow)
+            var item = CampaignHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Bow)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
                 .FirstOrDefault();
@@ -88,7 +88,7 @@ namespace BLTAdoptAHero.Actions.Util
         [UsedImplicitly]
         public static string TestModifiedAmmo(List<string> strings)
         {
-            var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Arrows)
+            var item = CampaignHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Arrows)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
                 .FirstOrDefault();
@@ -102,7 +102,7 @@ namespace BLTAdoptAHero.Actions.Util
         [UsedImplicitly]
         public static string TestModifiedMount(List<string> strings)
         {
-            var item = HeroHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Horse)
+            var item = CampaignHelpers.AllItems.Where(i => i.ItemType == ItemObject.ItemTypeEnum.Horse)
                 .Shuffle()
                 .OrderByDescending(i => i.Tier)
                 .FirstOrDefault();
@@ -135,7 +135,7 @@ namespace BLTAdoptAHero.Actions.Util
             // var equipmentTypes = weaponTypes.ToList();
             var equipmentWeaponClass = EquipmentTypeHelpers.GetWeaponClass(weaponType);
             var validTemplates = CraftingTemplate.All
-                .Where(t => t.WeaponUsageDatas?.Any(w => w.WeaponClass == equipmentWeaponClass) == true)
+                .Where(t => t.WeaponDescriptions?.Any(w => w.WeaponClass == equipmentWeaponClass) == true)
                 .ToList();
 
             if (!validTemplates.Any())
@@ -148,7 +148,7 @@ namespace BLTAdoptAHero.Actions.Util
             var itemsOfCorrectType = new List<ItemObject>();
             do
             {
-                var crafting = new Crafting(validTemplates.SelectRandom(), hero.Culture);
+                var crafting = CampaignHelpers.NewCrafting(validTemplates.SelectRandom(), hero.Culture);
                 crafting.Init();
                 crafting.Randomize();
 
@@ -178,21 +178,17 @@ namespace BLTAdoptAHero.Actions.Util
             
             bestItem.StringId = Guid.NewGuid().ToString();
             CompleteCraftedItem(bestItem);
+
             return MBObjectManager.Instance.RegisterObject(bestItem);
         }
 
         private static void SetItemName(ItemObject item, TextObject name) => AccessTools.Property(typeof(ItemObject), nameof(ItemObject.Name)).SetValue(item, name);
 
-        private static void CompleteCraftedItem(ItemObject item, Crafting.OverrideData overrideData = null)
+        private static void CompleteCraftedItem(ItemObject item)
         {
             ItemObject.InitAsPlayerCraftedItem(ref item);
             MBObjectManager.Instance.RegisterObject(item);
-            #if e159 || e1510
-            AccessTools.Method(typeof(CampaignEventDispatcher), "OnNewItemCrafted")
-                .Invoke(CampaignEventDispatcher.Instance, new object[] { item, overrideData });
-            #else
-            CampaignEventDispatcher.Instance.OnNewItemCrafted(item, overrideData, false);
-            #endif
+            CampaignEventDispatcher.Instance.OnNewItemCrafted(item, null, false);
         }
         
         // The vanilla tier calculation for weapons:

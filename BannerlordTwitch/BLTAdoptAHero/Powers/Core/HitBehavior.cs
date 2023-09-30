@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
@@ -15,26 +15,35 @@ namespace BLTAdoptAHero.Powers
 {
     public struct HitBehavior : IDocumentable
     {
-        [Description("Percent chance (0 to 100) for target to get knocked back"), PropertyOrder(1),
-         UIRange(0, 100, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+        [LocDisplayName("{=mtZMAwbM}Knock Back Chance Percent"),
+         LocDescription("{=wPgAMF92}Percent chance (0 to 100) for target to get knocked back"), 
+         UIRange(0, 100, 1),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         PropertyOrder(1), UsedImplicitly]
         public float KnockBackChancePercent { get; set; }
-        [Description("Percent chance (0 to 100) for target to get knocked down"), PropertyOrder(2),
-         UIRange(0, 100, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+        [LocDisplayName("{=9dla8vV1}Knock Down Chance Percent"),
+         LocDescription("{=MTqyFfDc}Percent chance (0 to 100) for target to get knocked down"), 
+         UIRange(0, 100, 1),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         PropertyOrder(2), UsedImplicitly]
         public float KnockDownChancePercent { get; set; }
-        [Description("Percent chance (0 to 100) for target to shrug off blow (not visably reacting to it, " +
-                     "damage will still apply)"), PropertyOrder(4),
-         UIRange(0, 100, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+        [LocDisplayName("{=dCRbuRf8}Shrug Off Chance Percent"),
+         LocDescription("{=adHeasi7}Percent chance (0 to 100) for target to shrug off blow (not visably reacting to it, damage will still apply)"), 
+         UIRange(0, 100, 1),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         PropertyOrder(4), UsedImplicitly]
         public float ShrugOffChancePercent { get; set; }
-        [Description("Percent chance (0 to 100) for target to rear (if it is a mount)"), PropertyOrder(5),
-         UIRange(0, 100, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+        [LocDisplayName("{=okiEp8HU}Makes Rear Chance Percent"),
+         LocDescription("{=Cp9IZN6J}Percent chance (0 to 100) for target to rear (if it is a mount)"), 
+         UIRange(0, 100, 1),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         PropertyOrder(5), UsedImplicitly]
         public float MakesRearChancePercent { get; set; }
-        [Description("Percent chance (0 to 100) for target to be dismounted"), PropertyOrder(6),
-         UIRange(0, 100, 1), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+        [LocDisplayName("{=lVXn7z6U}Dismount Chance"),
+         LocDescription("{=RrhP0L2t}Percent chance (0 to 100) for target to be dismounted"), 
+         UIRange(0, 100, 1),
+         Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         PropertyOrder(6), UsedImplicitly]
         public float DismountChance { get; set; }
 
         [YamlIgnore, Browsable(false)]
@@ -70,21 +79,31 @@ namespace BLTAdoptAHero.Powers
         public override string ToString()
         {
             var flags = new List<string>();
-            if(KnockBackChancePercent > 0) flags.Add($"{KnockBackChancePercent:0}% {nameof(BlowFlags.KnockBack).SplitCamelCase()}");
-            if(KnockDownChancePercent > 0) flags.Add($"{KnockDownChancePercent:0}% {nameof(BlowFlags.KnockDown).SplitCamelCase()}");
-            if(ShrugOffChancePercent > 0) flags.Add($"{ShrugOffChancePercent:0}% {nameof(BlowFlags.ShrugOff).SplitCamelCase()}");
-            if(MakesRearChancePercent > 0) flags.Add($"{MakesRearChancePercent:0}% {nameof(BlowFlags.MakesRear).SplitCamelCase()}");
-            if(DismountChance > 0) flags.Add($"{DismountChance:0}% {nameof(BlowFlags.CanDismount).SplitCamelCase()}");
-            return !flags.Any() ? "(inactive)" : string.Join(", ", flags);
+            if(KnockBackChancePercent > 0) 
+                flags.Add($"{KnockBackChancePercent:0}% " + "{=2UuwaRcc}Knock Back".Translate());
+            if(KnockDownChancePercent > 0) 
+                flags.Add($"{KnockDownChancePercent:0}% " + "{=4iroX5zj}Knock Down".Translate());
+            if(ShrugOffChancePercent > 0) 
+                flags.Add($"{ShrugOffChancePercent:0}% " + "{=DNqblCEf}Shrug Off".Translate());
+            if(MakesRearChancePercent > 0) 
+                flags.Add($"{MakesRearChancePercent:0}% " + "{=F0o4A3mp}Mount Rear".Translate());
+            if(DismountChance > 0) 
+                flags.Add($"{DismountChance:0}% " + "{=bEO48IR4}Dismount".Translate());
+            return !flags.Any() ? "{=cM8NOj2B}(inactive)".Translate() : string.Join(", ", flags);
         }
 
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
-            if(KnockBackChancePercent > 0) generator.PropertyValuePair(nameof(KnockBackChancePercent).SplitCamelCase(), $"{KnockBackChancePercent:0}%");
-            if(KnockDownChancePercent > 0) generator.PropertyValuePair(nameof(KnockDownChancePercent).SplitCamelCase(), $"{KnockDownChancePercent:0}%");
-            if(ShrugOffChancePercent > 0) generator.PropertyValuePair(nameof(ShrugOffChancePercent).SplitCamelCase(), $"{ShrugOffChancePercent:0}%");
-            if(MakesRearChancePercent > 0) generator.PropertyValuePair(nameof(MakesRearChancePercent).SplitCamelCase(), $"{MakesRearChancePercent:0}%");
-            if(DismountChance > 0) generator.PropertyValuePair(nameof(DismountChance).SplitCamelCase(), $"{DismountChance:0}%");
+            if(KnockBackChancePercent > 0) 
+                generator.PropertyValuePair("{=2UuwaRcc}Knock Back".Translate(), $"{KnockBackChancePercent:0}%");
+            if(KnockDownChancePercent > 0) 
+                generator.PropertyValuePair("{=4iroX5zj}Knock Down".Translate(), $"{KnockDownChancePercent:0}%");
+            if(ShrugOffChancePercent > 0) 
+                generator.PropertyValuePair("{=DNqblCEf}Shrug Off".Translate(), $"{ShrugOffChancePercent:0}%");
+            if(MakesRearChancePercent > 0) 
+                generator.PropertyValuePair("{=F0o4A3mp}Mount Rear".Translate(), $"{MakesRearChancePercent:0}%");
+            if(DismountChance > 0) 
+                generator.PropertyValuePair("{=bEO48IR4}Dismount".Translate(), $"{DismountChance:0}%");
         }
     }
 }

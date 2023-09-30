@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Español (LA)"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- stats -->
+        <!-- Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue. -->
+        <string id="JiMaaypq" text="Muestra información general de tus héroes, incluido el clan, el oro, la ubicación, los HP, las habilidades, los atributos y el séquito." original="Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue."/>
+        <!-- show stats -->
+        <string id="tIVnWwGG" text="mostrar estadísticas" original="show stats"/>
+        <!-- stats -->
+        <string id="J2AqvpeF" text="estadisticas" original="stats"/>
+        <!-- inv -->
+        <!-- Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage. -->
+        <string id="JneYk4pF" text="Muestra el inventario de tus héroes, incluido el nivel de equipo, listas completas de equipo civil y de batalla, y todos los artículos personalizados almacenados." original="Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage."/>
+        <!-- show equipment -->
+        <string id="oVNKTdOy" text="mostrar equipo" original="show equipment"/>
+        <!-- inv -->
+        <string id="UbklIEGh" text="inv" original="inv"/>
+        <!-- equip -->
+        <!-- Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to. -->
+        <string id="EZGcIEgQ" text="Mejora el nivel de equipo de tu héroe, reemplazando cualquier equipo existente de nivel inferior, excepto los artículos personalizados. El costo depende del nivel al que intente actualizar." original="Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to."/>
+        <!-- upgrade equipment -->
+        <string id="vTo0NowP" text="actualizar el equipo" original="upgrade equipment"/>
+        <!-- equip -->
+        <string id="wHqxd4kb" text="equipar" original="equip"/>
+        <!-- Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford. -->
+        <string id="zxAVjOW6" text="Compra nuevas tropas de séquito o actualiza las existentes al siguiente nivel si ha alcanzado el límite. El séquito aparecerá contigo en la batalla cuando convoques, lo que te hará ganar dinero cuando maten. Puede pasar un número al comando para especificar cuántas tropas desea comprar o actualizar. De forma predeterminada, hará todas las que pueda pagar." original="Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford."/>
+        <!-- upgrade retinue -->
+        <string id="I7sm1ct6" text="actualizar el séquito" original="upgrade retinue"/>
+        <!-- retinue -->
+        <string id="mge9rH9J" text="séquito" original="retinue"/>
+        <!-- class -->
+        <!-- Selects a new class for your hero, updating your existing equipment to match the class requirements.&lt;br&gt;Usage is &lt;code&gt;!class (new class name)&lt;/code&gt;, e.g. &lt;code&gt;!class archer&lt;/code&gt;. -->
+        <string id="K3297TEM" text="Selecciona una nueva clase para tu héroe, actualizando tu equipo existente para que coincida con los requisitos de la clase.&lt;br&gt; El uso es &lt;code&gt;!class (new class name)&lt;/code&gt; , por ejemplo &lt;code&gt;!class archer&lt;/code&gt; ." original="Selects a new class for your hero, updating your existing equipment to match the class requirements.&lt;br&gt;Usage is &lt;code&gt;!class (new class name)&lt;/code&gt;, e.g. &lt;code&gt;!class archer&lt;/code&gt;."/>
+        <!-- select new class -->
+        <string id="uN82Y7hR" text="seleccionar nueva clase" original="select new class"/>
+        <!-- class -->
+        <string id="nV9iIsDC" text="clase" original="class"/>
+        <!-- reequip -->
+        <!-- Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier. -->
+        <string id="zBIv0a4I" text="Aleatoriza tu equipo, en su nivel actual. No reemplazará artículos que sean más altos que su nivel actual ni artículos personalizados. Por ejemplo, si tienes un equipo de nivel 3, pero también tienes un arma de nivel 6 ganada en un torneo, este comando no reemplazará esa arma. A veces, terminará con algunos elementos que no cambian, especialmente si no hay muchos elementos de ese tipo disponibles en su nivel actual." original="Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier."/>
+        <!-- reroll equipment -->
+        <string id="3KYGJ0Mu" text="volver a enrollar el equipo" original="reroll equipment"/>
+        <!-- reequip -->
+        <string id="fGfTaAoD" text="reequipar" original="reequip"/>
+        <!-- gold -->
+        <!-- Show your heroes current gold. -->
+        <string id="eWI5oDce" text="Muestra el oro actual de tus héroes." original="Show your heroes current gold."/>
+        <!-- show gold -->
+        <string id="zdRj4blL" text="mostrar oro" original="show gold"/>
+        <!-- gold -->
+        <string id="W5uX9HCJ" text="oro" original="gold"/>
+        <!-- retinuelist -->
+        <!-- Shows your current retinue troops. -->
+        <string id="BlBiEmbf" text="Muestra las tropas de su séquito actual." original="Shows your current retinue troops."/>
+        <!-- retinue list -->
+        <string id="ysbFV5uT" text="lista de séquito" original="retinue list"/>
+        <!-- retinuelist -->
+        <string id="kG6yjBBR" text="retinuelista" original="retinuelist"/>
+        <!-- adopt -->
+        <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
+        <string id="MpvqvKef" text="Consigue un héroe en el juego. Casi todas las demás acciones requieren un héroe adoptado." original="Get a hero in game. Almost all other actions require an adopted hero."/>
+        <!-- adopt -->
+        <string id="0grO6hB5" text="adoptar" original="adopt"/>
+        <!-- nameitem -->
+        <!-- You can use this to name your custom items.&lt;br&gt;Usage is &lt;code&gt;!nameitem (name)&lt;/code&gt;, for example &lt;code&gt;!nameitem Foehammer&lt;/code&gt;.&lt;br&gt;If you call &lt;code&gt;!nameitem&lt;/code&gt; on its own it will tell you what item will be named next. -->
+        <string id="S1FZXQim" text="Puede usar esto para nombrar sus elementos personalizados.&lt;br&gt; El uso es &lt;code&gt;!nameitem (name)&lt;/code&gt; , por ejemplo &lt;code&gt;!nameitem Foehammer&lt;/code&gt; .&lt;br&gt; Si llama a &lt;code&gt;!nameitem&lt;/code&gt; por sí solo, le dirá qué elemento se nombrará a continuación." original="You can use this to name your custom items.&lt;br&gt;Usage is &lt;code&gt;!nameitem (name)&lt;/code&gt;, for example &lt;code&gt;!nameitem Foehammer&lt;/code&gt;.&lt;br&gt;If you call &lt;code&gt;!nameitem&lt;/code&gt; on its own it will tell you what item will be named next."/>
+        <!-- name a reward item -->
+        <string id="tNVmXpoc" text="nombrar un artículo de recompensa" original="name a reward item"/>
+        <!-- nameitem -->
+        <string id="IFDecKha" text="nombre del artículo" original="nameitem"/>
+        <!-- bltbet -->
+        <!-- Use this to bet on tournament matches, when available.&lt;br&gt;Usage is &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt;, for example &lt;code&gt;!bltbet red 10000&lt;/code&gt; to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.&lt;br&gt;If only one team is bet upon, the bets will be refunded. -->
+        <string id="thajdk5s" text="Úselo para apostar en partidos de torneos, cuando estén disponibles.&lt;br&gt; El uso es &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt; , por ejemplo &lt;code&gt;!bltbet red 10000&lt;/code&gt; para apostar 10000 gold sobre rojo. Las ganancias se dividen de todo el bote, según el tamaño relativo de la apuesta.&lt;br&gt; Si solo se apuesta a un equipo, las apuestas se reembolsarán." original="Use this to bet on tournament matches, when available.&lt;br&gt;Usage is &lt;code&gt;!bltbet (team) (gold)&lt;/code&gt;, for example &lt;code&gt;!bltbet red 10000&lt;/code&gt; to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.&lt;br&gt;If only one team is bet upon, the bets will be refunded."/>
+        <!-- bet on tournament -->
+        <string id="xBgLXaf7" text="apostar en el torneo" original="bet on tournament"/>
+        <!-- bltbet -->
+        <string id="haKiwbsR" text="bltbet" original="bltbet"/>
+        <!-- power -->
+        <!-- power -->
+        <string id="NUQ5PsjF" text="poder" original="power"/>
+        <!-- Show the heroes achievements and tracked stats. -->
+        <string id="ZVxCqyJL" text="Muestra los logros de los héroes y las estadísticas rastreadas." original="Show the heroes achievements and tracked stats."/>
+        <!-- achievements -->
+        <!-- achievements -->
+        <string id="aGPoAaM9" text="logros" original="achievements"/>
+        <!-- ach -->
+        <!-- ach -->
+        <string id="woTpsqyV" text="ach" original="ach"/>
+        <!-- auction -->
+        <!-- Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.&lt;br&gt;Usage is &lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!auction 50000 Boots&lt;/code&gt; would start a new auction for your custom item with the word &quot;Boots&quot; in it, with a reserve of 50000. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
+        <string id="ma27zJHy" text="Inicie una subasta en un artículo personalizado de su propiedad, con un precio de reserva específico. Otros espectadores pueden pujar por su artículo, y el mejor postor lo recibirá al final de la subasta.&lt;br&gt; El uso es &lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt; , por ejemplo &lt;code&gt;!auction 50000 Boots&lt;/code&gt; iniciaría una nueva subasta para su artículo personalizado con la palabra &amp;quot;Boots&amp;quot; en él, con una reserva de 50000. Si hay más de un artículo tiene &amp;quot;Boots&amp;quot;, el comando será rechazado. El nombre parcial debe coincidir exactamente con un elemento." original="Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.&lt;br&gt;Usage is &lt;code&gt;!auction (reserve price) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!auction 50000 Boots&lt;/code&gt; would start a new auction for your custom item with the word &quot;Boots&quot; in it, with a reserve of 50000. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item."/>
+        <!-- auction -->
+        <string id="QQX2aboq" text="subasta" original="auction"/>
+        <!-- bid -->
+        <!-- Place a bid on the current auction, if one is active.&lt;br&gt;Usage is &lt;code&gt;!bid (gold amount)&lt;/code&gt;, e.g. &lt;code&gt;!bid 100000&lt;/code&gt;. If there is no auction, or the bid doesn&apos;t exceed the reserve price, it will be rejected. -->
+        <string id="1TBIIJVZ" text="Haga una oferta en la subasta actual, si hay alguna activa.&lt;br&gt; El uso es &lt;code&gt;!bid (gold amount)&lt;/code&gt; , por ejemplo &lt;code&gt;!bid 100000&lt;/code&gt; . Si no hay subasta, o la oferta no excede el precio de reserva, será rechazada." original="Place a bid on the current auction, if one is active.&lt;br&gt;Usage is &lt;code&gt;!bid (gold amount)&lt;/code&gt;, e.g. &lt;code&gt;!bid 100000&lt;/code&gt;. If there is no auction, or the bid doesn't exceed the reserve price, it will be rejected."/>
+        <!-- bid -->
+        <string id="taI6SRSG" text="licitación" original="bid"/>
+        <!-- discarditem -->
+        <!-- Throw away one of your custom items.&lt;br&gt;Usage is &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!discarditem Boots&lt;/code&gt; would discard your custom item with the word &quot;Boots&quot; in it. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
+        <string id="vwPIXbeh" text="Deseche uno de sus artículos personalizados.&lt;br&gt; El uso es &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt; , por ejemplo &lt;code&gt;!discarditem Boots&lt;/code&gt; descartaría su artículo personalizado con la palabra &amp;quot;Boots&amp;quot; en él. Si más de un elemento tiene &amp;quot;Boots&amp;quot;, el comando será rechazado. El nombre parcial debe coincidir exactamente con un elemento." original="Throw away one of your custom items.&lt;br&gt;Usage is &lt;code&gt;!discarditem (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!discarditem Boots&lt;/code&gt; would discard your custom item with the word &quot;Boots&quot; in it. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item."/>
+        <!-- discarditem -->
+        <string id="Pla3OVS4" text="desechar" original="discarditem"/>
+        <!-- giveitem -->
+        <!-- Give one of your custom items to another viewer.&lt;br&gt;Usage is &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; would give your custom item with the word &quot;Boots&quot; in it to the viewer called C4lad0g. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item. -->
+        <string id="RS37T7gG" text="Dale uno de tus elementos personalizados a otro espectador.&lt;br&gt; El uso es &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt; , por ejemplo &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; daría su elemento personalizado con la palabra &amp;quot;Boots&amp;quot; al visor llamado C4lad0g. Si más de un elemento tiene &amp;quot;Boots&amp;quot;, el comando será rechazado. El nombre parcial debe coincidir exactamente con un elemento." original="Give one of your custom items to another viewer.&lt;br&gt;Usage is &lt;code&gt;!giveitem (viewer) (part of the item name)&lt;/code&gt;, e.g. &lt;code&gt;!giveitem C4alad0g Boots&lt;/code&gt; would give your custom item with the word &quot;Boots&quot; in it to the viewer called C4lad0g. If more than one item has &quot;Boots&quot; in it, the command will be rejected. The partial name must match exactly one item."/>
+        <!-- giveitem -->
+        <string id="osvl34my" text="dar artículo" original="giveitem"/>
+        <!-- powers -->
+        <!-- Shows your available powers -->
+        <string id="GYYbCXmu" text="Muestra tus poderes disponibles" original="Shows your available powers"/>
+        <!-- powers -->
+        <string id="GHCxNIaR" text="potestades" original="powers"/>
+    </strings>
+</base>

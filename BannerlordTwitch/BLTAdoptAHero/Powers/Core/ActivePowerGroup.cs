@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
@@ -15,38 +16,43 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
+    [LocDisplayName("{=4xEkPMIy}Active Power Group Item")]
     public class ActivePowerGroupItem : PowerGroupItemBase
     {
-        [PropertyOrder(0),
+        [LocDisplayName("{=HGDApoLL}Power"),
+         PropertyOrder(0),
          ItemsSource(typeof(HeroPowerDefBase.ItemSourceActive)), UsedImplicitly]
         public Guid PowerID { get; set; }
 
         [Browsable(false), YamlIgnore]
         public IHeroPowerActive Power => PowerConfig?.GetPower(PowerID) as IHeroPowerActive;
         
-        public override string ToString() => $"[{Power?.ToString() ?? "(no power)"}] {base.ToString()}";
+        public override string ToString() => $"[{Power?.ToString() ?? "{=ddNSQjWq}(no power)".Translate()}] {base.ToString()}";
     }
     
+    [LocDisplayName("{=HvTIrx0b}Active Power Group")]
     public class ActivePowerGroup : IDocumentable, ICloneable
     {
         #region User Editable
-        [PropertyOrder(1), Description("The name of the power: how the power will be described in messages"), 
-         UsedImplicitly]
-        public string Name { get; set; } = "Enter Name Here";
+        [LocDisplayName("{=uUzmy7Lh}Name"),
+         LocDescription("{=EvVyh3WM}The name of the power: how the power will be described in messages"), 
+         PropertyOrder(1), UsedImplicitly]
+        public LocString Name { get; set; } = "{=aQgYs3mI}Enter Name Here";
 
-        [PropertyOrder(2), 
-         Description("The various effects in the power. These can also have customized unlock requirements, so you " +
-                     "can have classes that get stronger (or weaker!) over time (or by any other measure)."), 
-         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
-         UsedImplicitly]
+        [LocDisplayName("{=acLMixuK}Powers"),
+         LocDescription("{=6aKmeGgU}The various effects in the power. These can also have customized unlock requirements, so you can have classes that get stronger (or weaker!) over time (or by any other measure)."), 
+         Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)), 
+         PropertyOrder(2), UsedImplicitly]
         public ObservableCollection<ActivePowerGroupItem> Powers { get; set; } = new();
 
-        [PropertyOrder(3), Description("Particles/sound effects to play when this power group is activated"),
-         ExpandableObject, UsedImplicitly]
+        [LocDisplayName("{=ticZtKY4}ActivateEffect"),
+         LocDescription("{=YWHa7H42}Particles/sound effects to play when this power group is activated"), 
+         PropertyOrder(3), ExpandableObject, UsedImplicitly]
         public OneShotEffect ActivateEffect { get; set; }
 
-        [PropertyOrder(4), Description("Particles/sound effects to play when this power group is deactivated"),
-         ExpandableObject, UsedImplicitly]
+        [LocDisplayName("{=MXnon4pc}DeactivateEffect"),
+         LocDescription("{=V9fqIgvH}Particles/sound effects to play when this power group is deactivated"), 
+         PropertyOrder(4), ExpandableObject, UsedImplicitly]
         public OneShotEffect DeactivateEffect { get; set; }
         #endregion
         
@@ -74,14 +80,14 @@ namespace BLTAdoptAHero.Powers
         {
             if (PowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
             {
-                return (false, "Not allowed in tournaments!");
+                return (false, "{=2NnCGjyI}Not allowed in tournaments!".Translate());
             }
 
             var unlockedPowers = GetUnlockedPowers(hero).ToList();
 
             if (!unlockedPowers.Any())
             {
-                return (false, "No powers!");
+                return (false, "{=asncu3BX}No powers!".Translate());
             }
 
             (bool _, string failReason) = unlockedPowers
@@ -96,7 +102,7 @@ namespace BLTAdoptAHero.Powers
         {
             if (PowerConfig.DisablePowersInTournaments && MissionHelpers.InTournament())
             {
-                return (false, $"Powers not allowed in tournaments!");
+                return (false, "{=NMSDeunS}Powers not allowed in tournaments!".Translate());
             }
 
             var activatedPowers = GetUnlockedPowers(hero).ToList();
@@ -106,13 +112,13 @@ namespace BLTAdoptAHero.Powers
                 {
                     if (activatedPowers.All(p => !p.IsActive(hero)))
                     {
-                        ActionManager.SendReply(context, $"{Name} expired!");
+                        ActionManager.SendReply(context, "{=xyvCYxTD}{PowerName} expired!".Translate(("PowerName", Name)));
                         DeactivateEffect.Trigger(hero);
                     }
                 });
             }
             ActivateEffect.Trigger(hero);
-            return (true, $"{Name} activated!");
+            return (true, "{=WDfytZ7z}{PowerName} activated!".Translate(("PowerName", Name)));
         }
 
         public (float duration, float remaining) DurationRemaining(Hero hero)
@@ -144,7 +150,7 @@ namespace BLTAdoptAHero.Powers
         #region IDocumentable
         public void GenerateDocumentation(IDocumentationGenerator generator)
         {
-            generator.P("power-title", Name);
+            generator.P("power-title", Name.ToString());
             foreach (var power in Powers)
             {
                 if (power is IDocumentable docPower)

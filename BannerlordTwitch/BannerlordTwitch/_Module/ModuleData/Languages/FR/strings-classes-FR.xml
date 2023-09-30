@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Français"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Common -->
+        <!-- Fireblade -->
+        <string id="yEtkv5ML" text="Lame de feu" original="Fireblade"/>
+        <!-- infantry -->
+        <string id="m8bz4drX" text="infanterie" original="infantry"/>
+        <!-- Healthy -->
+        <string id="ROXuJJq8" text="Sain" original="Healthy"/>
+        <!-- Explosive Arrows -->
+        <string id="skyn1cL6" text="Flèches explosives" original="Explosive Arrows"/>
+        <!-- archer -->
+        <string id="4tflp34a" text="archer" original="archer"/>
+        <!-- Fleet Footed -->
+        <string id="NE9Li2Hb" text="Pied Léger" original="Fleet Footed"/>
+        <!-- Explosive Arrows -->
+        <string id="xgnH5owv" text="Flèches explosives" original="Explosive Arrows"/>
+        <!-- heavyarcher -->
+        <string id="JncRD8tX" text="archer-lourd" original="heavyarcher"/>
+        <!-- Healthy -->
+        <string id="ZrmsIMPE" text="Sain" original="Healthy"/>
+        <!-- Heavy Bolts -->
+        <string id="QZD9XdpC" text="Carreaux lourds" original="Heavy Bolts"/>
+        <!-- crossbow -->
+        <string id="wV6R9Si5" text="arbalète" original="crossbow"/>
+        <!-- Self Healing -->
+        <string id="FvNPPHLJ" text="Auto-guérison" original="Self Healing"/>
+        <!-- Explosive Bolts -->
+        <string id="7GmE3SfQ" text="Boulons explosifs" original="Explosive Bolts"/>
+        <!-- heavycrossbow -->
+        <string id="bpzytNbP" text="arbalete-lourde" original="heavycrossbow"/>
+        <!-- Healthy -->
+        <string id="k7booFb2" text="Sain" original="Healthy"/>
+        <!-- Trample -->
+        <string id="ZEGEpycY" text="Piétiner" original="Trample"/>
+        <!-- cavalry -->
+        <string id="jNaFWF9t" text="cavalerie" original="cavalry"/>
+        <!-- A Good Horse -->
+        <string id="YghplAdF" text="Un bon cheval" original="A Good Horse"/>
+        <!-- Trample -->
+        <string id="mmeJSrm9" text="Piétiner" original="Trample"/>
+        <!-- camelry -->
+        <string id="mJ8RVORq" text="chameau" original="camelry"/>
+        <!-- A Good Camel -->
+        <string id="atGMPeNF" text="Un bon chameau" original="A Good Camel"/>
+        <!-- Explosive Arrows -->
+        <string id="YpIUHASp" text="Flèches explosives" original="Explosive Arrows"/>
+        <!-- horsearcher -->
+        <string id="p5qJfkkp" text="archer-monte" original="horsearcher"/>
+        <!-- Mounted Archery -->
+        <string id="zxgdfSIS" text="Tir à l'arc monté" original="Mounted Archery"/>
+        <!-- Heavy Arrows -->
+        <string id="FrX7AiyI" text="Flèches lourdes" original="Heavy Arrows"/>
+        <!-- camelarcher -->
+        <string id="HreZWoyd" text="archer-sur-chameau" original="camelarcher"/>
+        <!-- Mounted Archery -->
+        <string id="szdoTAQj" text="Tir à l'arc monté" original="Mounted Archery"/>
+        <!-- Break Through -->
+        <string id="E3qGC3fs" text="Percée" original="Break Through"/>
+        <!-- skirmisher -->
+        <string id="9euSgzCd" text="tirailleur" original="skirmisher"/>
+        <!-- Retribution -->
+        <string id="Lw8xQu1P" text="Châtiment" original="Retribution"/>
+        <!-- Berserker Rage -->
+        <string id="1DSLInEJ" text="Rage berserker" original="Berserker Rage"/>
+        <!-- berserker -->
+        <string id="wVjXAFal" text="berserker" original="berserker"/>
+        <!-- Glass Cannon -->
+        <string id="nB4Qb0mD" text="Canon de verre" original="Glass Cannon"/>
+        <!-- Retribution -->
+        <string id="rzIl9tm3" text="Châtiment" original="Retribution"/>
+        <!-- looter -->
+        <string id="4JffsJMD" text="pillard" original="looter"/>
+        <!-- Grenades -->
+        <string id="nmjVjakS" text="Grenades" original="Grenades"/>
+    </strings>
+</base>

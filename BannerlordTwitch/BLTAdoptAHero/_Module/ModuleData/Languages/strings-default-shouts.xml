@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="English" />
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Don't worry, I've got your back! -->
+        <string id="DczOKFsA" text="Don't worry, I've got your back!"/>
+        <!-- I'm here! -->
+        <string id="pj9Z0M7G" text="I'm here!"/>
+        <!-- Which one should I stab? -->
+        <string id="y8DOtj2H" text="Which one should I stab?"/>
+        <!-- Need a hand? -->
+        <string id="1i1OrZDd" text="Need a hand?"/>
+        <!-- The price has been paid. I am at your service. -->
+        <string id="rVaJZ5Lo" text="The price has been paid. I am at your service."/>
+        <!-- Once more unto the breach! -->
+        <string id="QEyO8W82" text="Once more unto the breach!"/>
+        <!-- Freeeeeedddooooooommmm! -->
+        <string id="Bo11t6gj" text="Freeeeeedddooooooommmm!"/>
+        <!-- Remember the Alamo! -->
+        <string id="8uO8Isjm" text="Remember the Alamo!"/>
+        <!-- Alala! -->
+        <string id="A3KdQJok" text="Alala!"/>
+        <!-- Eleleu! -->
+        <string id="pXVCAwAr" text="Eleleu!"/>
+        <!-- Deus vult! -->
+        <string id="TlZjOFii" text="Deus vult!"/>
+        <!-- Banzai! -->
+        <string id="xPFIIEzw" text="Banzai!"/>
+        <!-- Liberty or Death! -->
+        <string id="gmN3YLPw" text="Liberty or Death!"/>
+        <!-- Har Har Mahadev! -->
+        <string id="FoDIukJK" text="Har Har Mahadev!"/>
+        <!-- Desperta ferro! -->
+        <string id="SSqdBzkY" text="Desperta ferro!"/>
+        <!-- Alba gu bràth! -->
+        <string id="UHhpIpDU" text="Alba gu bràth!"/>
+        <!-- Santiago! -->
+        <string id="lDo1AOCS" text="Santiago!"/>
+        <!-- Huzzah! -->
+        <string id="gT95E89y" text="Huzzah!"/>
+        <!-- War... war never changes... -->
+        <string id="fKKpcZGQ" text="War... war never changes..."/>
+        <!-- May we live to see the next sunrise! -->
+        <string id="vZgbxkW9" text="May we live to see the next sunrise!"/>
+        <!-- For glory, charge! -->
+        <string id="wn7zIy9f" text="For glory, charge!"/>
+        <!-- Give them nothing, but take from them everything! -->
+        <string id="KH7Dnbe7" text="Give them nothing, but take from them everything!"/>
+        <!-- Fell deeds awake, fire and slaughter! -->
+        <string id="FyBFecip" text="Fell deeds awake, fire and slaughter!"/>
+        <!-- Spooooooooooooooooooon! -->
+        <string id="H7asM2KG" text="Spooooooooooooooooooon!"/>
+        <!-- Leeeeeeeerooooy Jeeeeenkins -->
+        <string id="ERDmbO2B" text="Leeeeeeeerooooy Jeeeeenkins"/>
+        <!-- I live, I die, I live again! -->
+        <string id="hL0vmkUG" text="I live, I die, I live again!"/>
+        <!-- Witness me!! -->
+        <string id="KMTRT2EN" text="Witness me!!"/>
+        <!-- Now for wrath, now for ruin and a red nightfall! -->
+        <string id="F9WUaqdj" text="Now for wrath, now for ruin and a red nightfall!"/>
+        <!-- n -->
+        <string id="ZQiRFkFU" text="n"/>
+        <!-- Those are brave men knocking at our door, let's go kill them! -->
+        <string id="JlZ9pRbq" text="Those are brave men knocking at our door, let's go kill them!"/>
+        <!-- Lets take this city! -->
+        <string id="5gg0BcKk" text="Lets take this city!"/>
+        <!-- Defend yourself! -->
+        <string id="lhWht8Em" text="Defend yourself!"/>
+        <!-- Time for you to die! -->
+        <string id="FmlTSg39" text="Time for you to die!"/>
+        <!-- You killed my father, prepare to die! -->
+        <string id="GJpUfALs" text="You killed my father, prepare to die!"/>
+        <!-- En garde! -->
+        <string id="IKN2G1wi" text="En garde!"/>
+        <!-- It's stabbing time! For you. -->
+        <string id="yTHYR4i9" text="It's stabbing time! For you."/>
+        <!-- It's nothing personal! -->
+        <string id="4wYLe6f0" text="It's nothing personal!"/>
+        <!-- Curse my sudden but inevitable betrayal! -->
+        <string id="37bg5QNX" text="Curse my sudden but inevitable betrayal!"/>
+        <!-- I just don't like you! -->
+        <string id="AOpbzIUP" text="I just don't like you!"/>
+        <!-- I'm gonna put some dirt in your eye! -->
+        <string id="JFCcwLga" text="I'm gonna put some dirt in your eye!"/>
+        <!-- I'll mount your head on a pike! -->
+        <string id="jCrCRbyA" text="I'll mount your head on a pike!"/>
+        <!-- Don't hate me, it's just business... -->
+        <string id="0uiD2HxZ" text="Don't hate me, it's just business..."/>
+        <!-- Never should have come here! -->
+        <string id="42Fuy9pm" text="Never should have come here!"/>
+        <!-- Your money or your life! -->
+        <string id="dClbnb2q" text="Your money or your life!"/>
+        <!-- I'm sorry, but I must stop you. -->
+        <string id="uyjy1geA" text="I'm sorry, but I must stop you."/>
+        <!-- I have the high ground! -->
+        <string id="dh0c96lo" text="I have the high ground!"/>
+        <!-- DAMN IT DAVE! -->
+        <string id="EcD5q9th" text="DAMN IT DAVE!"/>
+    </strings>
+</base>

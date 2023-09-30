@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
@@ -13,53 +13,65 @@ namespace BLTAdoptAHero
 {
     public class RandomItemModifierDef : ICloneable, INotifyPropertyChanged
     {
-        [Description("Custom prize power, a global multiplier for the values below"),
-         PropertyOrder(1),
-         Range(0.1, 10), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
-         UsedImplicitly]
+        [LocDisplayName("{=1NLO6Gee}Power"),
+         LocDescription("{=LXo3mTnr}Custom prize power, a global multiplier for the values below"),
+         Range(0.1, 10), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)), 
+         PropertyOrder(1), UsedImplicitly]
         public float Power { get; set; } = 1f;
         
-        [Description("Weapon damage modifier for custom weapon prize"), PropertyOrder(2), UsedImplicitly]
+        [LocDisplayName("{=g2DZKK7M}Weapon Damage"),
+         LocDescription("{=R9lwIsrX}Weapon damage modifier for custom weapon prize"), 
+         PropertyOrder(2), UsedImplicitly]
         public RangeInt WeaponDamage { get; set; } = new(25, 50);
 
-        [Description("Speed modifier for custom weapon prize"), PropertyOrder(3),
-         UsedImplicitly]
+        [LocDisplayName("{=7TgyXbNe}Weapon Speed"),
+         LocDescription("{=1ZZDexjJ}Speed modifier for custom weapon prize"), 
+         PropertyOrder(3), UsedImplicitly]
         public RangeInt WeaponSpeed { get; set; } = new(25, 50);
 
-        [Description("Missile speed modifier for custom weapon prize"), PropertyOrder(4),
-         UsedImplicitly]
+        [LocDisplayName("{=4zhm204e}Weapon Missile Speed"),
+         LocDescription("{=gFO8L8CR}Missile speed modifier for custom weapon prize"), 
+         PropertyOrder(4), UsedImplicitly]
         public RangeInt WeaponMissileSpeed { get; set; } = new(25, 50);
 
-        [Description("Ammo damage modifier for custom ammo prize"), PropertyOrder(5),
-         UsedImplicitly]
+        [LocDisplayName("{=ny6l1USK}Ammo Damage"),
+         LocDescription("{=oTSCOXpf}Ammo damage modifier for custom ammo prize"), 
+         PropertyOrder(5), UsedImplicitly]
         public RangeInt AmmoDamage { get; set; } = new(10, 30);
 
-        [Description("Arrow stack size modifier for custom arrow prize"),
+        [LocDisplayName("{=2ehIq5eD}Arrow Stack"),
+         LocDescription("{=inawRS8e}Arrow stack size modifier for custom arrow prize"),
          PropertyOrder(6), UsedImplicitly]
         public RangeInt ArrowStack { get; set; } = new(25, 50);
 
-        [Description("Throwing stack size modifier for custom throwing prize"),
+        [LocDisplayName("{=JUXQcKMR}Throwing Stack"),
+         LocDescription("{=QAUf8zj0}Throwing stack size modifier for custom throwing prize"),
          PropertyOrder(7), UsedImplicitly]
         public RangeInt ThrowingStack { get; set; } = new(2, 6);
 
-        [Description("Armor modifier for custom armor prize"), PropertyOrder(8),
-         UsedImplicitly]
+        [LocDisplayName("{=MrOZ69tP}Armor"),
+         LocDescription("{=1x2YSVSz}Armor modifier for custom armor prize"),
+         PropertyOrder(8), UsedImplicitly]
         public RangeInt Armor { get; set; } = new(10, 20);
 
-        [Description("Maneuver multiplier for custom mount prize"), PropertyOrder(9),
-         UsedImplicitly]
+        [LocDisplayName("{=BYekTOq6}Mount Maneuver"),
+         LocDescription("{=7cZ5JfEk}Maneuver multiplier for custom mount prize"),
+         PropertyOrder(9), UsedImplicitly]
         public RangeFloat MountManeuver { get; set; } = new(1.25f, 2f);
 
-        [Description("Speed multiplier for custom mount prize"), PropertyOrder(10),
-         UsedImplicitly]
+        [LocDisplayName("{=6yURxqNY}Mount Speed"),
+         LocDescription("{=eJZxwZc1}Speed multiplier for custom mount prize"),
+         PropertyOrder(10), UsedImplicitly]
         public RangeFloat MountSpeed { get; set; } = new(1.25f, 2f);
 
-        [Description("Charge damage multiplier for custom mount prize"),
+        [LocDisplayName("{=ZmiOntW1}Mount Charge Damage"),
+         LocDescription("{=MZm0DJcs}Charge damage multiplier for custom mount prize"),
          PropertyOrder(11), UsedImplicitly]
         public RangeFloat MountChargeDamage { get; set; } = new(1.25f, 2f);
 
-        [Description("Hitpoints multiplier for custom mount prize"), PropertyOrder(12),
-         UsedImplicitly]
+        [LocDisplayName("{=M8drveMF}Mount Hit Points"),
+         LocDescription("{=ewC5EV3Q}Hitpoints multiplier for custom mount prize"), 
+         PropertyOrder(12), UsedImplicitly]
         public RangeFloat MountHitPoints { get; set; } = new(1.25f, 2f);
 
         public override string ToString()

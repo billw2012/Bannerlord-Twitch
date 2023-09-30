@@ -1,0 +1,408 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="日本語"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- AchievementDef -->
+        <!-- Achievement Definition -->
+        <string id="CEZZzIAq" text="成果の定義" original="Achievement Definition"/>
+        <!-- Requirements -->
+        <string id="TFbiD0CZ" text="要件" original="Requirements"/>
+        <!-- Reward -->
+        <string id="sHWjkhId" text="褒美" original="Reward"/>
+        <!-- New Achievement -->
+        <string id="nLaRVBVV" text="新しい成果" original="New Achievement"/>
+        <!-- Notification Text -->
+        <string id="guJFFskH" text="通知テキスト" original="Notification Text"/>
+        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement. -->
+        <string id="SwIUyQNw" text="アチーブメントが獲得されたとき、およびプレーヤーがアチーブメントをリストしたときに表示されるテキスト。プレースホルダー：アチーブメントの名前は[viewer] for the viewers name, and [name]。" original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
+        <!-- Requirements -->
+        <string id="TfwiBMGr" text="要件" original="Requirements"/>
+        <!-- Gold Gain -->
+        <string id="NitYwoHr" text="ゴールドゲイン" original="Gold Gain"/>
+        <!-- Gold awarded for gaining this achievement. -->
+        <string id="l0xBVhOe" text="この成果を獲得したことでゴールドが授与されました。" original="Gold awarded for gaining this achievement."/>
+        <!-- XP Gain -->
+        <string id="JShqb5Be" text="XPゲイン" original="XP Gain"/>
+        <!-- Experience awarded for gaining this achievement. -->
+        <string id="tx7YV26l" text="この成果を達成したことで授与された経験。" original="Experience awarded for gaining this achievement."/>
+        <!-- Give Item Reward -->
+        <string id="OmwtPK7J" text="アイテム報酬を与える" original="Give Item Reward"/>
+        <!-- Whether to give a custom item as reward (defined below) -->
+        <string id="vTb0ysRw" text="カスタムアイテムを報酬として与えるかどうか（以下に定義）" original="Whether to give a custom item as reward (defined below)"/>
+        <!-- Item Reward -->
+        <string id="ZJikxJYo" text="アイテム報酬" original="Item Reward"/>
+        <!-- Specifications of the custom item reward, if enabled -->
+        <string id="B4gODHog" text="有効になっている場合、カスタムアイテム報酬の仕様" original="Specifications of the custom item reward, if enabled"/>
+        <!-- AchievementStatsData.Statistic -->
+        <!-- Total Kills -->
+        <string id="5RXxYH32" text="総キル数" original="Total Kills"/>
+        <!-- Total Hero Kills -->
+        <string id="FqBQumbv" text="ヒーローキルの合計" original="Total Hero Kills"/>
+        <!-- Total Viewer Kills -->
+        <string id="WMYfysby" text="合計視聴者キル" original="Total Viewer Kills"/>
+        <!-- Total Streamer Kills -->
+        <string id="qPjwIfaF" text="合計ストリーマーキル" original="Total Streamer Kills"/>
+        <!-- Total Mount Kills -->
+        <string id="ZTI6irGZ" text="マウントキルの合計" original="Total Mount Kills"/>
+        <!-- Total Deaths -->
+        <string id="6IHF7HQb" text="総死亡数" original="Total Deaths"/>
+        <!-- Total Hero Deaths -->
+        <string id="UHvCzzit" text="ヒーローの総死亡数" original="Total Hero Deaths"/>
+        <!-- Total Viewer Deaths -->
+        <string id="mhcnLFBv" text="視聴者の総死亡者数" original="Total Viewer Deaths"/>
+        <!-- Total Streamer Deaths -->
+        <string id="rKVsbROz" text="ストリーマーの総死亡数" original="Total Streamer Deaths"/>
+        <!-- Total Mount Deaths -->
+        <string id="6N8KiovH" text="マウントの総死亡数" original="Total Mount Deaths"/>
+        <!-- Summons -->
+        <string id="YDiK48rp" text="召喚" original="Summons"/>
+        <!-- Attacks -->
+        <string id="facIgBFe" text="攻撃" original="Attacks"/>
+        <!-- Battles -->
+        <string id="yTIq9zWS" text="戦い" original="Battles"/>
+        <!-- Consecutive Summons -->
+        <string id="VwyXMINi" text="連続召喚" original="Consecutive Summons"/>
+        <!-- Consecutive Attacks -->
+        <string id="Ju3c6Iz4" text="連続攻撃" original="Consecutive Attacks"/>
+        <!-- TotalTournament Round Wins -->
+        <string id="dRD94FMl" text="TotalTournamentラウンドが勝ちます" original="TotalTournament Round Wins"/>
+        <!-- TotalTournament Round Losses -->
+        <string id="GPMB5BPI" text="TotalTournamentラウンドロス" original="TotalTournament Round Losses"/>
+        <!-- TotalTournament Final Wins -->
+        <string id="WdZWU9GV" text="TotalTournamentの最終勝利" original="TotalTournament Final Wins"/>
+        <!-- ClassLevelRequirement -->
+        <!-- Class Level Requirement -->
+        <string id="XLXBwBEj" text="クラスレベルの要件" original="Class Level Requirement"/>
+        <!-- Min Level -->
+        <string id="s4N0bhG1" text="最小レベル" original="Min Level"/>
+        <!-- Minimum class level allowed -->
+        <string id="phf8JXQC" text="許可される最小クラスレベル" original="Minimum class level allowed"/>
+        <!-- Max Level -->
+        <string id="BT59iHQ5" text="最大レベル" original="Max Level"/>
+        <!-- Maximum class level allowed -->
+        <string id="lk60ZYwc" text="許可される最大クラスレベル" original="Maximum class level allowed"/>
+        <!-- AT LEAST {MinLevel} -->
+        <string id="j3QY6MkC" text="少なくとも{MinLevel}" original="AT LEAST {MinLevel}"/>
+        <!-- {MinLevel} TO {MaxLevel} -->
+        <string id="puNSSMYD" text="{MinLevel} TO {MaxLevel}" original="{MinLevel} TO {MaxLevel}"/>
+        <!-- CLASS LEVEL {Description} -->
+        <string id="boWoZsH4" text="クラスレベル{Description}" original="CLASS LEVEL {Description}"/>
+        <!-- StatisticClassSpecificRequirement -->
+        <!-- Statistic Class Specific Requirement -->
+        <string id="ziuB7eSV" text="統計クラス固有の要件" original="Statistic Class Specific Requirement"/>
+        <!-- Current Class -->
+        <string id="WwKyvotH" text="現在のクラス" original="Current Class"/>
+        <!-- Requirement uses current class, useful for class power unlocks so you don't have to specify the class explicitly -->
+        <string id="S9kGgf0r" text="要件は現在のクラスを使用します。これはクラスの電源ロックを解除するのに役立つため、クラスを明示的に指定する必要はありません。" original="Requirement uses current class, useful for class power unlocks so you don't have to specify the class explicitly"/>
+        <!-- Required Class -->
+        <string id="5QwSEOc3" text="必要なクラス" original="Required Class"/>
+        <!-- Class required to get this achievement. If (none) is specified then the achievement will apply ONLY when the hero doesn't have a class set. -->
+        <string id="G34P8lCu" text="この成果を得るにはクラスが必要です。 （なし）が指定されている場合、アチーブメントはヒーローにクラスが設定されていない場合にのみ適用されます。" original="Class required to get this achievement. If (none) is specified then the achievement will apply ONLY when the hero doesn't have a class set."/>
+        <!-- class -->
+        <string id="j3YG9dCh" text="クラス" original="class"/>
+        <!-- (current) -->
+        <string id="RXXuHIdN" text="（現在）" original="(current)"/>
+        <!-- (none) -->
+        <string id="dPEnuHsk" text="（なし）" original="(none)"/>
+        <!-- StatisticRequirement -->
+        <!-- Statistic Requirement -->
+        <string id="CkgaxlDY" text="統計要件" original="Statistic Requirement"/>
+        <!-- Statistic -->
+        <string id="ienuHzOP" text="統計" original="Statistic"/>
+        <!-- The statistic this achievement relates to. -->
+        <string id="OKuz3zwY" text="この成果に関連する統計。" original="The statistic this achievement relates to."/>
+        <!-- Comparison -->
+        <string id="dXBsEW65" text="比較" original="Comparison"/>
+        <!-- Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills. -->
+        <string id="4yoAe9WV" text="ヒーローが指定された値よりも多いか少ないか。たとえば、ヒーローの死亡数が10未満、キル数が100を超えるように要件を設定できます。" original="Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills."/>
+        <!-- Value -->
+        <string id="a8Josr4g" text="価値" original="Value"/>
+        <!-- Value needed to obtain the achievement. -->
+        <string id="B9LEjEq8" text="成果を得るために必要な価値。" original="Value needed to obtain the achievement."/>
+        <!-- Other Statistic -->
+        <string id="nau8vg7o" text="その他の統計" original="Other Statistic"/>
+        <!-- Other statistic to compare against (this overrides Value if specified). -->
+        <string id="A3EKQ7up" text="比較するその他の統計（指定されている場合、これは値をオーバーライドします）。" original="Other statistic to compare against (this overrides Value if specified)."/>
+        <!-- HeroClassDef -->
+        <!-- Class Definition -->
+        <string id="ph50k2xB" text="クラス定義" original="Class Definition"/>
+        <!-- Class Definition -->
+        <string id="iqYaiOhP" text="クラス定義" original="Class Definition"/>
+        <!-- Whether this class is enabled for use in the game or not -->
+        <string id="XkL6MNLl" text="このクラスがゲームで使用できるようになっているかどうか" original="Whether this class is enabled for use in the game or not"/>
+        <!-- Name of the class that shall be passed to SetHeroClass actions -->
+        <string id="U9PyN7eb" text="SetHeroClassアクションに渡されるクラスの名前" original="Name of the class that shall be passed to SetHeroClass actions"/>
+        <!-- Description -->
+        <string id="rZRKLuGI" text="説明" original="Description"/>
+        <!-- Description of the class (used in documentation) -->
+        <string id="yRN3Jfwv" text="クラスの説明（ドキュメントで使用）" original="Description of the class (used in documentation)"/>
+        <!-- Formation -->
+        <string id="zy3uK94p" text="形成" original="Formation"/>
+        <!-- Which formation to add summoned units to -->
+        <string id="1kEMFWLD" text="召喚ユニットを追加するフォーメーション" original="Which formation to add summoned units to"/>
+        <!-- Slot 1 -->
+        <string id="48tkMBhb" text="スロット1" original="Slot 1"/>
+        <!-- Item type to put in slot 1 -->
+        <string id="kpDE6URE" text="スロット1に入れるアイテムタイプ" original="Item type to put in slot 1"/>
+        <!-- Slot 2 -->
+        <string id="vXtJLZlw" text="スロット2" original="Slot 2"/>
+        <!-- Item type to put in slot 2 -->
+        <string id="G5AN3s2D" text="スロット2に入れるアイテムタイプ" original="Item type to put in slot 2"/>
+        <!-- Slot 3 -->
+        <string id="B4LLuesN" text="スロット3" original="Slot 3"/>
+        <!-- Item type to put in slot 3 -->
+        <string id="clxxPb9O" text="スロット3に入れるアイテムタイプ" original="Item type to put in slot 3"/>
+        <!-- Slot 4 -->
+        <string id="h9PK7GnU" text="スロット4" original="Slot 4"/>
+        <!-- Item type to put in slot 4 -->
+        <string id="EUzbiqh5" text="スロット4に入れるアイテムタイプ" original="Item type to put in slot 4"/>
+        <!-- Use Horse -->
+        <string id="MdYmGuin" text="馬を使う" original="Use Horse"/>
+        <!-- Whether to allow horse (can be combined with Use Camel) -->
+        <string id="Q00NX1J9" text="馬を許可するかどうか（Use Camelと組み合わせることができます）" original="Whether to allow horse (can be combined with Use Camel)"/>
+        <!-- Use Camel -->
+        <string id="1YsQ2fC3" text="キャメルを使用する" original="Use Camel"/>
+        <!-- Whether to allow camel (can be combined with Use Horse -->
+        <string id="Us7G1v2T" text="キャメルを許可するかどうか（UseHorseと組み合わせることができます" original="Whether to allow camel (can be combined with Use Horse"/>
+        <!-- Passive Power -->
+        <string id="MvddFKo4" text="パッシブパワー" original="Passive Power"/>
+        <!-- Passive hero power: this will always apply to the hero (i.e. a permanent buff) -->
+        <string id="F8a2nXYo" text="パッシブヒーローパワー：これは常にヒーローに適用されます（つまり、永続的なバフ）" original="Passive hero power: this will always apply to the hero (i.e. a permanent buff)"/>
+        <!-- Active Power -->
+        <string id="wdCMNOGd" text="有効電力" original="Active Power"/>
+        <!-- Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff) -->
+        <string id="I4ASwveG" text="アクティブなヒーローパワー：このパワーは、UseHeroPowerアクションが視聴者によって報酬またはコマンド（つまり一時的なバフ）を介して使用された場合にのみトリガーされます" original="Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff)"/>
+        <!-- Horse -->
+        <string id="YzIcRgBV" text="馬" original="Horse"/>
+        <!-- Camel -->
+        <string id="HMclWXR8" text="キャメル" original="Camel"/>
+        <!-- Use Horse -->
+        <string id="A1G6bq0G" text="馬を使う" original="Use Horse"/>
+        <!-- Use Camel -->
+        <string id="FpgyZk0F" text="キャメルを使用する" original="Use Camel"/>
+        <!-- (none) -->
+        <string id="GFc6JLJ9" text="（なし）" original="(none)"/>
+        <!-- Details -->
+        <string id="A79HrgZ0" text="詳細" original="Details"/>
+        <!-- Tier {TierNumber} -->
+        <string id="Rs1XNM9K" text="Tier {TierNumber}" original="Tier {TierNumber}"/>
+        <!-- Equipment -->
+        <string id="HyXJQJtW" text="装置" original="Equipment"/>
+        <!-- Mount -->
+        <string id="iGdq37PI" text="マウント" original="Mount"/>
+        <!-- KillStreakDef -->
+        <!-- Kill Streak -->
+        <string id="InTnlqz1" text="キルストリーク" original="Kill Streak"/>
+        <!-- Show Notification -->
+        <string id="poe8m8rn" text="通知を表示" original="Show Notification"/>
+        <!-- Notification Text -->
+        <string id="RQh3jIZW" text="通知テキスト" original="Notification Text"/>
+        <!-- Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required. -->
+        <string id="04wTH1xo" text="キルストリークが達成されたときに表示されるテキスト。プレースホルダー：キルが必要な場合は[viewer] for the viewers name, and [name] for the Kill Streak name, and [kills]。" original="Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required."/>
+        <!-- Kills Required -->
+        <string id="mG7HzT0z" text="必要なキル" original="Kills Required"/>
+        <!-- Kills required to achieve the kill streak. -->
+        <string id="mLElTwb6" text="キルストリークを達成するために必要なキル。" original="Kills required to achieve the kill streak."/>
+        <!-- Gold Reward -->
+        <string id="zEqJgISl" text="ゴールドリワード" original="Gold Reward"/>
+        <!-- Gold rewarded when the kill streak is achieved. -->
+        <string id="CYg79sAT" text="キルストリークが達成されるとゴールドが報酬になります。" original="Gold rewarded when the kill streak is achieved."/>
+        <!-- XP Reward -->
+        <string id="vzCgh9PN" text="XP報酬" original="XP Reward"/>
+        <!-- Experience granted when the kill streak is achieved. -->
+        <string id="Q1TcztBP" text="キルストリークが達成されたときに付与される経験。" original="Experience granted when the kill streak is achieved."/>
+        <!-- New Kill Streak -->
+        <string id="KtvBk2nR" text="新しいキルストリーク" original="New Kill Streak"/>
+        <!-- [viewer] got [name] ([kills] kills) -->
+        <string id="ipowOInD" text="[viewer] got [name] ([kills]キル）" original="[viewer] got [name] ([kills] kills)"/>
+        <!-- {KillsRequired} kills -->
+        <string id="YZJ60Pxb" text="{KillsRequired}キル" original="{KillsRequired} kills"/>
+        <!-- SummonHero.FormationItemSource -->
+        <!-- Infantry -->
+        <string id="7gt8mcJc" text="歩兵" original="Infantry"/>
+        <!-- Ranged -->
+        <string id="kDo9EtMh" text="遠隔" original="Ranged"/>
+        <!-- Cavalry -->
+        <string id="HcfkYEsF" text="騎兵" original="Cavalry"/>
+        <!-- Horse Archer -->
+        <string id="Xx9xP7jK" text="ホースアーチャー" original="Horse Archer"/>
+        <!-- Skirmisher -->
+        <string id="PpZY6dPX" text="小競り合い" original="Skirmisher"/>
+        <!-- Heavy Infantry -->
+        <string id="VT6VYeVp" text="重歩兵" original="Heavy Infantry"/>
+        <!-- Light Cavalry -->
+        <string id="t5iTNQ5p" text="軽騎兵" original="Light Cavalry"/>
+        <!-- Heavy Cavalry -->
+        <string id="vyVSsiBr" text="重騎兵" original="Heavy Cavalry"/>
+        <!-- SkillRangeDef -->
+        <!-- Skill Range -->
+        <string id="uUWdyER4" text="スキル範囲" original="Skill Range"/>
+        <!-- The skill or skill group -->
+        <string id="WcQpCpdI" text="スキルまたはスキルグループ" original="The skill or skill group"/>
+        <!-- The min level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023) -->
+        <string id="fozHOKis" text="最小レベル（実際の値は最小と最大の間でランダムに選択されます。有効な値は0〜1023です）" original="The min level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023)"/>
+        <!-- The max level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023) -->
+        <string id="I6hTb2OY" text="あるべき最大レベル（実際の値は最小と最大の間でランダムに選択され、有効な値は0〜1023です）" original="The max level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023)"/>
+        <!-- ClassLevelRequirementsDef -->
+        <!-- Class Level Requirements Definition -->
+        <string id="uZUsZLGm" text="クラスレベルの要件の定義" original="Class Level Requirements Definition"/>
+        <!-- ClassLevel -->
+        <string id="0raqv788" text="ClassLevel" original="ClassLevel"/>
+        <!-- Class level -->
+        <string id="el4y84iD" text="クラスレベル" original="Class level"/>
+        <!-- Requirements -->
+        <string id="aMGoiH53" text="要件" original="Requirements"/>
+        <!-- Requirements for this class level -->
+        <string id="G95DA4OM" text="このクラスレベルの要件" original="Requirements for this class level"/>
+        <!-- MissionInfo -->
+        <!-- Kills -->
+        <string id="AM2zlkem" text="殺す" original="Kills"/>
+        <!-- +Retinue Kills -->
+        <string id="79JXI4JL" text="+従者キル" original="+Retinue Kills"/>
+        <!-- Gold -->
+        <string id="o0Q8Y1Qg" text="ゴールド" original="Gold"/>
+        <!-- XP -->
+        <string id="VtEJiMWy" text="XP" original="XP"/>
+        <!-- Tournament -->
+        <!-- Tournament -->
+        <string id="PI83uB8j" text="トーナメント" original="Tournament"/>
+        <!-- Betting is OPEN -->
+        <string id="WPTU6AGn" text="賭けはオープンです" original="Betting is OPEN"/>
+        <!-- Betting is CLOSED -->
+        <string id="PLRsZCjL" text="賭けは締め切られました" original="Betting is CLOSED"/>
+        <!-- Not taking bets -->
+        <string id="Sv04YKsL" text="賭けをしない" original="Not taking bets"/>
+        <!-- GeneratedRewardDef -->
+        <!-- Reward Type -->
+        <string id="x6pmNHJT" text="報酬タイプ" original="Reward Type"/>
+        <!-- Reward Tier -->
+        <string id="Mmd0UleC" text="報酬階層" original="Reward Tier"/>
+        <!-- Custom Item -->
+        <string id="zVqTKyQG" text="カスタムアイテム" original="Custom Item"/>
+        <!-- Weapon Weight -->
+        <string id="7yNTThry" text="武器の重量" original="Weapon Weight"/>
+        <!-- Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo. -->
+        <string id="WTWuy57X" text="武器となる報酬の相対的な割合。これには、片手、両手、遠隔、弾薬のすべてが含まれます。" original="Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo."/>
+        <!-- Armor Weight -->
+        <string id="Al3Px9lL" text="装甲重量" original="Armor Weight"/>
+        <!-- Relative proportion of rewards that will be armor -->
+        <string id="WSXhTI0r" text="鎧になる報酬の相対的な割合" original="Relative proportion of rewards that will be armor"/>
+        <!-- Mount Weight -->
+        <string id="S6t7iUki" text="マウントウェイト" original="Mount Weight"/>
+        <!-- Relative proportion of rewards that will be mounts -->
+        <string id="4L1hJS6v" text="マウントされる報酬の相対的な割合" original="Relative proportion of rewards that will be mounts"/>
+        <!-- Reward Type Chances -->
+        <string id="h4CEbGun" text="報酬タイプのチャンス" original="Reward Type Chances"/>
+        <!-- The % chance for each item type -->
+        <string id="u9zCErHS" text="各アイテムタイプの％確率" original="The % chance for each item type"/>
+        <!-- Tier 1 Weight -->
+        <string id="pqDOv12p" text="Tier1ウェイト" original="Tier 1 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 1 -->
+        <string id="aAZvoxk9" text="Tier1になる報酬の相対的な割合" original="Relative proportion of rewards that will be Tier 1"/>
+        <!-- Tier 2 Weight -->
+        <string id="ZDgMrJHH" text="Tier2ウェイト" original="Tier 2 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 2 -->
+        <string id="rvjbuCH4" text="Tier2となる報酬の相対的な割合" original="Relative proportion of rewards that will be Tier 2"/>
+        <!-- Tier 3 Weight -->
+        <string id="8UhZyGRj" text="Tier3ウェイト" original="Tier 3 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 3 -->
+        <string id="CJwXH8cz" text="Tier3となる報酬の相対的な割合" original="Relative proportion of rewards that will be Tier 3"/>
+        <!-- Tier 4 Weight -->
+        <string id="v4wqC1mI" text="Tier4ウェイト" original="Tier 4 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 4 -->
+        <string id="NoKi0iIC" text="Tier4となる報酬の相対的な割合" original="Relative proportion of rewards that will be Tier 4"/>
+        <!-- Tier 5 Weight -->
+        <string id="vXimyLH7" text="Tier5ウェイト" original="Tier 5 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 5 -->
+        <string id="rsGLtLyB" text="Tier5となる報酬の相対的な割合" original="Relative proportion of rewards that will be Tier 5"/>
+        <!-- Tier 6 Weight -->
+        <string id="HWHFIsUH" text="Tier6ウェイト" original="Tier 6 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 6 -->
+        <string id="991D0fok" text="Tier6となる報酬の相対的な割合" original="Relative proportion of rewards that will be Tier 6"/>
+        <!-- Custom Weight -->
+        <string id="R5TCrBo8" text="カスタムウェイト" original="Custom Weight"/>
+        <!-- Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below) -->
+        <string id="XL94fx52" text="カスタムとなる報酬の相対的な割合（以下のカスタム報酬設定に従って修飾子を使用したTier 6）" original="Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below)"/>
+        <!-- Reward Tier Chances -->
+        <string id="zoBVNJBB" text="報酬層のチャンス" original="Reward Tier Chances"/>
+        <!-- The % chance for each reward tier -->
+        <string id="ANPeZyy0" text="各報酬ティアの％チャンス" original="The % chance for each reward tier"/>
+        <!-- Custom Item Name -->
+        <string id="PBWEbYLT" text="カスタムアイテム名" original="Custom Item Name"/>
+        <!-- Name format for custom item, {ITEMNAME} is the placeholder for the base item name. -->
+        <string id="vqNeCCNy" text="カスタムアイテムの名前の形式。{ITEMNAME}はベースアイテム名のプレースホルダーです。" original="Name format for custom item, {ITEMNAME} is the placeholder for the base item name."/>
+        <!-- Custom Item Power -->
+        <string id="THpMPPhd" text="カスタムアイテムパワー" original="Custom Item Power"/>
+        <!-- Custom item power multiplier, applies on top of the global multiplier -->
+        <string id="anUzQaU7" text="カスタムアイテムの電力乗数は、グローバル乗数の上に適用されます" original="Custom item power multiplier, applies on top of the global multiplier"/>
+        <!-- Weapon -->
+        <string id="hpJN9wNo" text="武器" original="Weapon"/>
+        <!-- Armor -->
+        <string id="YQdQrFG7" text="鎧" original="Armor"/>
+        <!-- Mount -->
+        <string id="HGZVsIjn" text="マウント" original="Mount"/>
+        <!-- Custom -->
+        <string id="LKgozyEk" text="カスタム" original="Custom"/>
+        <!-- Tier {Tier} -->
+        <string id="JpB20FtS" text="Tier {Tier}" original="Tier {Tier}"/>
+        <!-- RandomItemModifierDef -->
+        <!-- Power -->
+        <string id="1NLO6Gee" text="力" original="Power"/>
+        <!-- Custom prize power, a global multiplier for the values below -->
+        <string id="LXo3mTnr" text="カスタムプライズパワー、以下の値のグローバル乗数" original="Custom prize power, a global multiplier for the values below"/>
+        <!-- Weapon Damage -->
+        <string id="g2DZKK7M" text="武器のダメージ" original="Weapon Damage"/>
+        <!-- Weapon damage modifier for custom weapon prize -->
+        <string id="R9lwIsrX" text="カスタム武器賞の武器ダメージ修飾子" original="Weapon damage modifier for custom weapon prize"/>
+        <!-- Weapon Speed -->
+        <string id="7TgyXbNe" text="武器の速度" original="Weapon Speed"/>
+        <!-- Speed modifier for custom weapon prize -->
+        <string id="1ZZDexjJ" text="カスタム武器賞のスピードモディファイア" original="Speed modifier for custom weapon prize"/>
+        <!-- Weapon Missile Speed -->
+        <string id="4zhm204e" text="武器ミサイル速度" original="Weapon Missile Speed"/>
+        <!-- Missile speed modifier for custom weapon prize -->
+        <string id="gFO8L8CR" text="カスタム武器賞のミサイル速度修飾子" original="Missile speed modifier for custom weapon prize"/>
+        <!-- Ammo Damage -->
+        <string id="ny6l1USK" text="弾薬ダメージ" original="Ammo Damage"/>
+        <!-- Ammo damage modifier for custom ammo prize -->
+        <string id="oTSCOXpf" text="カスタム弾薬賞の弾薬ダメージ修正" original="Ammo damage modifier for custom ammo prize"/>
+        <!-- Arrow Stack -->
+        <string id="2ehIq5eD" text="アロースタック" original="Arrow Stack"/>
+        <!-- Arrow stack size modifier for custom arrow prize -->
+        <string id="inawRS8e" text="カスタムアロープライズのアロースタックサイズ修飾子" original="Arrow stack size modifier for custom arrow prize"/>
+        <!-- Throwing Stack -->
+        <string id="JUXQcKMR" text="スタックを投げる" original="Throwing Stack"/>
+        <!-- Throwing stack size modifier for custom throwing prize -->
+        <string id="QAUf8zj0" text="カスタム投擲賞の投擲スタックサイズ修飾子" original="Throwing stack size modifier for custom throwing prize"/>
+        <!-- Armor -->
+        <string id="MrOZ69tP" text="鎧" original="Armor"/>
+        <!-- Armor modifier for custom armor prize -->
+        <string id="1x2YSVSz" text="カスタムアーマープライズのアーマーモディファイア" original="Armor modifier for custom armor prize"/>
+        <!-- Mount Maneuver -->
+        <string id="BYekTOq6" text="マウントマニューバ" original="Mount Maneuver"/>
+        <!-- Maneuver multiplier for custom mount prize -->
+        <string id="7cZ5JfEk" text="カスタムマウント賞の操縦乗数" original="Maneuver multiplier for custom mount prize"/>
+        <!-- Mount Speed -->
+        <string id="6yURxqNY" text="マウント速度" original="Mount Speed"/>
+        <!-- Speed multiplier for custom mount prize -->
+        <string id="eJZxwZc1" text="カスタムマウント賞のスピード乗数" original="Speed multiplier for custom mount prize"/>
+        <!-- Mount Charge Damage -->
+        <string id="ZmiOntW1" text="マウントチャージダメージ" original="Mount Charge Damage"/>
+        <!-- Charge damage multiplier for custom mount prize -->
+        <string id="MZm0DJcs" text="カスタムマウントプライズのチャージダメージ乗数" original="Charge damage multiplier for custom mount prize"/>
+        <!-- Mount Hit Points -->
+        <string id="M8drveMF" text="ヒットポイントのマウント" original="Mount Hit Points"/>
+        <!-- Hitpoints multiplier for custom mount prize -->
+        <string id="ewC5EV3Q" text="カスタムマウント賞のヒットポイント乗数" original="Hitpoints multiplier for custom mount prize"/>
+        <!-- RewardHelpers -->
+        <!-- received {ItemName} -->
+        <string id="RczvXuxP" text="受信した{ItemName}" original="received {ItemName}"/>
+        <!-- sold {ItemName} for {ItemValue}{GoldIcon} (not needed) -->
+        <string id="bNX0NiQ9" text="販売{ItemName} for {ItemValue}{GoldIcon}（不要）" original="sold {ItemName} for {ItemValue}{GoldIcon} (not needed)"/>
+        <!-- received {ItemName} (put in storage) -->
+        <string id="R7VwlLzg" text="受信した{ItemName}（ストレージに入れる）" original="received {ItemName} (put in storage)"/>
+    </strings>
+</base>

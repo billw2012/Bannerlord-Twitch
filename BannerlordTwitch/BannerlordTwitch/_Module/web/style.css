@@ -1,0 +1,126 @@
+﻿body {
+    font-size: 115%;
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+    font-weight: 550;
+}
+
+.circular-progress-bar {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.drop-shadow {
+    filter:
+            drop-shadow(0          0    0.1em         #000F)
+            drop-shadow(0          0    0.05em         #000F)
+            drop-shadow(0          0    0.05em         #000F)
+;
+}
+
+.drop-shadow-2 {
+    filter:
+            drop-shadow(0           0         0.06em    #000F)
+            drop-shadow(0           0         0.06em    #000F)
+            drop-shadow(0           0         0.1em     #000F)
+;
+}
+
+.drop-shadow-highlight {
+    filter:
+            drop-shadow(0           0         0.1em     #000F)
+            drop-shadow(-0.1em    -0.1em    0.4em       #F003)
+            drop-shadow(-0.1em    -0.1em    0.4em       #F003)
+            drop-shadow(+0.16em    +0.16em    0.4em     #00F3)
+            drop-shadow(+0.16em    +0.16em    0.4em     #00F3)
+;
+}
+
+
+.glow {
+    filter:
+            drop-shadow(-0.05em    -0.05em    0 #FFF6)
+            drop-shadow(0       -0.05em    0 #FFF6)
+            drop-shadow(+0.05em    -0.05em    0 #FFF6)
+            drop-shadow(-0.05em    0       0 #FFF6)
+            drop-shadow(+0.05em    0       0 #FFF6)
+            drop-shadow(-0.05em    +0.05em    0 #FFF6)
+            drop-shadow(0       +0.05em    0 #FFF6)
+            drop-shadow(+0.05em    +0.05em    0 #FFF6)
+;
+}
+
+.outline {
+    filter:
+            drop-shadow(0           0         0.06em    #FF0F)
+            drop-shadow(0           0         0.06em    #FF0F)
+            drop-shadow(0           0         0.3em     #FF0F)
+    /*drop-shadow(-0.001em    -0.008em    0 #000)*/
+    /*drop-shadow(0           -0.008em    0 #000)*/
+    /*drop-shadow(+0.008em    -0.008em    0 #000)*/
+    /*drop-shadow(-0.001em     0          0 #000)*/
+    /*drop-shadow(+0.008em     0          0 #000)*/
+    /*drop-shadow(-0.001em    +0.005em    0 #000)*/
+    /*drop-shadow(0           +0.005em    0 #000)*/
+    /*drop-shadow(+0.008em    +0.005em    0 #000)*/
+;
+}
+
+.username-text-style {
+    color: #c7d8ff;
+}
+
+.gold-text-style {
+    color: white;
+    font-weight: 400;
+    filter:
+            drop-shadow(0 0 0.04em gold)
+            drop-shadow(0 0 0.02em gold)
+            drop-shadow(0 0 0.06em #000)
+;
+}
+
+.plus-text-style {
+    color: white;
+    font-weight: normal;
+    filter:
+            drop-shadow(0 0 0.04em #00ff00)
+            drop-shadow(0 0 0.02em #00ff00)
+            drop-shadow(0 0 0.06em #00ff00)
+;
+}
+
+.minus-text-style {
+    color: pink;
+    font-weight: bolder;
+    filter:
+            drop-shadow(0 0 0.04em red)
+            drop-shadow(0 0 0.02em red)
+            drop-shadow(0 0 0.06em red)
+;
+}
+
+.default-text-style {
+}
+
+.version-text {
+    filter: drop-shadow(0 0 0.1em #FFFF);
+    font-weight: 700;
+    align-self: flex-start;
+    font-size: 75%;
+    padding: 0;
+    margin: 0;
+    line-height: 0.8em;
+    color: #000F;
+    /*background: white;*/
+}
+
+#root {
+    margin: 1em;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+}

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
+using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
-using SandBox;
+using SandBox.Tournaments.MissionLogics;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -24,14 +25,17 @@ namespace BLTAdoptAHero.Powers
     public abstract class DurationMissionHeroPowerDefBase : HeroPowerDefBase, IHeroPowerActive
     {
         #region User Editable
-        [Category("Power Config"), 
-         Description("Duration the power will last for (when used as an active power), in seconds"), 
+        [LocDisplayName("{=F03TlOOV}Power Duration Seconds"),
+         LocCategory("Power Config", "{=75UOuDM}Power Config"), 
+         LocDescription("{=km0QRxRs}Duration the power will last for (when used as an active power), in seconds"), 
          UIRangeAttribute(0, 300, 5),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          PropertyOrder(0), UsedImplicitly]
         public float PowerDurationSeconds { get; set; } = 30f;
 
-        [Category("Power Config"), Description("Effects to apply to the agent while the power is active"), 
+        [LocDisplayName("{=VS9ITIST}Pfx"),
+         LocCategory("Power Config", "{=75UOuDM}Power Config"), 
+         LocDescription("{=xmz0TzN7}Effects to apply to the agent while the power is active"), 
          Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
          PropertyOrder(1), UsedImplicitly]
         public ObservableCollection<ParticleEffectDef> Pfx { get; set; } = new();
@@ -42,23 +46,23 @@ namespace BLTAdoptAHero.Powers
         {
             if (Mission.Current == null)
             {
-                return (false, "No mission is active!");
+                return (false, "{=u48yBW5b}No mission is active!".Translate());
             }
 
             if (!Mission.Current.IsLoadingFinished
                 || Mission.Current.CurrentState != Mission.State.Continuing
-                || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null &&
+                || Mission.Current?.GetMissionBehavior<TournamentFightMissionController>() != null &&
                 Mission.Current.Mode != MissionMode.Battle)
             {
-                return (false, "Mission has not started yet!");
+                return (false, "{=EbrlEg5C}Mission has not started yet!".Translate());
             }
 
             if (RequiresHeroAgent && hero.GetAgent() == null)
             {
-                return (false, "Your hero is not alive!");
+                return (false, "{=SdQsQRB6}Your hero is not alive!".Translate());
             }
             return ((IHeroPowerActive) this).IsActive(hero) 
-                ? (false, "Already active!") 
+                ? (false, "{=C3Ag25zz}Already active!".Translate()) 
                 : (true, null);
         }
 
@@ -67,7 +71,7 @@ namespace BLTAdoptAHero.Powers
 
         void IHeroPowerActive.Activate(Hero hero, Action expiryCallback)
         {
-            expiry[hero] = MBCommon.GetTime(MBCommon.TimeType.Mission) + PowerDurationSeconds;
+            expiry[hero] = CampaignHelpers.GetTotalMissionTime() + PowerDurationSeconds;
             
             var agent = hero.GetAgent();
             var pfx = agent == null ? null : new AgentPfx(agent, Pfx);
@@ -76,9 +80,9 @@ namespace BLTAdoptAHero.Powers
             BLTHeroPowersMissionBehavior.PowerHandler.ConfigureHandlers(hero, this, handlers =>
             {
                 var deactivationHandler = new DeactivationHandler();
-                handlers.OnSlowTick += (_, _) =>
+                handlers.OnSlowTick += _ =>
                 {
-                    if (MBCommon.GetTime(MBCommon.TimeType.Mission) > expiry[hero])
+                    if (CampaignHelpers.GetTotalMissionTime() > expiry[hero])
                     {
                         BLTHeroPowersMissionBehavior.PowerHandler.ClearHandlers(hero, this);
                         pfx?.Stop();
@@ -86,7 +90,7 @@ namespace BLTAdoptAHero.Powers
                         deactivationHandler.Deactivate(hero);
                     }
                 };
-                handlers.OnGotKilled += (_, _, _, _, _, _) =>
+                handlers.OnGotKilled += (_, _, _, _) =>
                 {
                     // Expire immediately
                     BLTHeroPowersMissionBehavior.PowerHandler.ClearHandlers(hero, this);
@@ -95,7 +99,7 @@ namespace BLTAdoptAHero.Powers
                     expiryCallback();
                     deactivationHandler.Deactivate(hero);
                 };
-                handlers.OnMissionOver += _ =>
+                handlers.OnMissionOver += () =>
                 {
                     // It will be called multiple times, but its not costly
                     expiry.Clear();
@@ -112,7 +116,7 @@ namespace BLTAdoptAHero.Powers
             }
 
             return (PowerDurationSeconds, 
-                Math.Max(0, Math.Min(PowerDurationSeconds, expiryVal - MBCommon.GetTime(MBCommon.TimeType.Mission))));
+                Math.Max(0, Math.Min(PowerDurationSeconds, expiryVal - CampaignHelpers.GetTotalMissionTime())));
         }
 
         #endregion

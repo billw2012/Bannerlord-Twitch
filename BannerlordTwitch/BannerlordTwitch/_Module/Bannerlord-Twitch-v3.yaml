@@ -1,0 +1,4016 @@
+Commands:
+- Documentation: '{=JiMaaypq}Shows your heroes general information, including clan, gold, location, HP, skills, attributes and retinue.'
+  Enabled: true
+  Handler: HeroInfoCommand
+  HandlerConfig:
+    MinSkillToShow: 100
+    ShowAchievements: false
+    ShowAttributes: true
+    ShowCivilianInventory: false
+    ShowEquipment: false
+    ShowGeneral: true
+    ShowGold: true
+    ShowInventory: false
+    ShowPowers: false
+    ShowRetinue: true
+    ShowRetinueList: false
+    ShowStorage: false
+    ShowTopSkills: true
+    ShowTrackedStats: false
+  Help: '{=tIVnWwGG}show stats'
+  HideHelp: false
+  ID: 1cf3abfd-3310-4a51-808e-e14d454eed05
+  Name: '{=J2AqvpeF}stats'
+  RespondInOverlay: true
+  RespondInTwitch: false
+- Documentation: '{=JneYk4pF}Shows your heroes inventory, including equipment tier, full battle and civilian equipment lists, and all custom items in storage.'
+  Enabled: true
+  Handler: HeroInfoCommand
+  HandlerConfig:
+    MinSkillToShow: 100
+    ShowAchievements: false
+    ShowAttributes: false
+    ShowCivilianInventory: false
+    ShowEquipment: true
+    ShowGeneral: false
+    ShowGold: true
+    ShowInventory: true
+    ShowPowers: false
+    ShowRetinue: false
+    ShowRetinueList: false
+    ShowStorage: false
+    ShowTopSkills: false
+    ShowTrackedStats: false
+  Help: '{=oVNKTdOy}show equipment'
+  HideHelp: false
+  ID: 7b6caafc-0246-47c2-8622-e091b10b8897
+  Name: '{=UbklIEGh}inv'
+  RespondInOverlay: true
+  RespondInTwitch: false
+- Documentation: '{=EZGcIEgQ}Upgrades your heroes equipment tier, replacing any existing equipment of lower tier, except for custom items. The cost depends on the tier you are trying to upgrade to.'
+  Enabled: true
+  Handler: EquipHero
+  HandlerConfig:
+    AllowCompanionUpgrade: true
+    CostTier1: 25000
+    CostTier2: 50000
+    CostTier3: 100000
+    CostTier4: 200000
+    CostTier5: 400000
+    CostTier6: 1000000
+    ReequipInsteadOfUpgrade: false
+  Help: '{=vTo0NowP}upgrade equipment'
+  HideHelp: false
+  ID: 90b571d1-dba8-4006-860c-a0401b6f8fd2
+  Name: '{=wHqxd4kb}equip'
+  RespondInOverlay: true
+  RespondInTwitch: false
+- Documentation: '{=zxAVjOW6}Purchases new retinue troops, or upgrades existing ones to the next tier if you have reached the limit. Retinue will appear with you in battle when you summon, earning you money when they make kills. You can pass a number to the command to specify how many troops you want to buy or upgrade. By default it will do as many as you can afford.'
+  Enabled: true
+  Handler: Retinue
+  HandlerConfig:
+    AllByDefault: true
+    Retinue:
+      CostTier1: 25000
+      CostTier2: 50000
+      CostTier3: 100000
+      CostTier4: 200000
+      CostTier5: 400000
+      CostTier6: 800000
+      IncludeBanditUnits: false
+      MaxRetinueSize: 5
+      UseBasicTroops: true
+      UseEliteTroops: true
+      UseHeroesCultureUnits: true
+  Help: '{=I7sm1ct6}upgrade retinue'
+  HideHelp: false
+  ID: 38eed507-87b9-47f4-b235-af921cef00c4
+  Name: '{=mge9rH9J}retinue'
+  RespondInOverlay: true
+  RespondInTwitch: false
+- Documentation: '{=K3297TEM}Selects a new class for your hero, updating your existing equipment to match the class requirements.<br>Usage is <code>!class (new class name)</code>, e.g. <code>!class archer</code>.'
+  Enabled: true
+  Handler: SetHeroClass
+  HandlerConfig:
+    CostTier1: 5000
+    CostTier2: 10000
+    CostTier3: 20000
+    CostTier4: 40000
+    CostTier5: 80000
+    CostTier6: 160000
+    FirstEquipIsFree: true
+    UpdateEquipment: true
+  Help: '{=uN82Y7hR}select new class'
+  HideHelp: false
+  ID: da8416ca-e59b-458a-8953-31291d03c835
+  Name: '{=nV9iIsDC}class'
+  RespondInOverlay: true
+  RespondInTwitch: true
+- Documentation: "{=zBIv0a4I}Randomizes your equipment, at its current tier. It will not replace items that are higher than your current tier, or custom items. e.g. if you are equipment tier 3, but also have a tier 6 weapon won in a tournament, this command will not replace that weapon. Sometimes you will end up with some items not changing, particularly if there aren't many items of that type available at your current tier."
+  Enabled: true
+  Handler: EquipHero
+  HandlerConfig:
+    AllowCompanionUpgrade: true
+    CostTier1: 10000
+    CostTier2: 25000
+    CostTier3: 50000
+    CostTier4: 100000
+    CostTier5: 200000
+    CostTier6: 400000
+    ReequipInsteadOfUpgrade: true
+  Help: '{=3KYGJ0Mu}reroll equipment'
+  HideHelp: false
+  ID: d4fb255c-4bb3-454e-9e26-39b4d7a321f0
+  Name: '{=fGfTaAoD}reequip'
+  RespondInOverlay: true
+  RespondInTwitch: false
+- Documentation: '{=eWI5oDce}Show your heroes current gold.'
+  Enabled: true
+  Handler: HeroInfoCommand
+  HandlerConfig:
+    MinSkillToShow: 100
+    ShowAchievements: false
+    ShowAttributes: false
+    ShowCivilianInventory: false
+    ShowEquipment: false
+    ShowGeneral: false
+    ShowGold: true
+    ShowInventory: false
+    ShowPowers: false
+    ShowRetinue: false
+    ShowRetinueList: false
+    ShowStorage: false
+    ShowTopSkills: false
+    ShowTrackedStats: false
+  Help: '{=zdRj4blL}show gold'
+  HideHelp: false
+  ID: 42e45ee9-647f-486f-9764-5e765507a70d
+  Name: '{=W5uX9HCJ}gold'
+  RespondInOverlay: true
+  RespondInTwitch: true
+- Documentation: '{=BlBiEmbf}Shows your current retinue troops.'
+  Enabled: true
+  Handler: HeroInfoCommand
+  HandlerConfig:
+    MinSkillToShow: 100
+    ShowAchievements: false
+    ShowAttributes: false
+    ShowCivilianInventory: false
+    ShowEquipment: false
+    ShowGeneral: false
+    ShowGold: false
+    ShowInventory: false
+    ShowPowers: false
+    ShowRetinue: false
+    ShowRetinueList: true
+    ShowStorage: false
+    ShowTopSkills: false
+    ShowTrackedStats: false
+  Help: '{=ysbFV5uT}retinue list'
+  HideHelp: false
+  ID: afd51f50-caaf-40a8-bf29-d75447e34ef4
+  Name: '{=kG6yjBBR}retinuelist'
+  RespondInOverlay: true
+  RespondInTwitch: false
+- Documentation: '{=MpvqvKef}Get a hero in game. Almost all other actions require an adopted hero.'
+  Enabled: false
+  Handler: AdoptAHero
+  HandlerConfig:
+    AllowMinorFactionHero: false
+    AllowNoble: true
+    AllowPartyLeader: false
+    AllowPlayerCompanion: false
+    AllowWanderer: true
+    CreateNew: false
+    Inheritance: 0.25
+    MaxInheritedCustomItems: 2
+    MinSubscribedMonths: 
+    OnlySameFaction: false
+    OverrideAge: false
+    StartingAgeRange:
+      Max: 35
+      Min: 18
+    StartingClass: 00000000-0000-0000-0000-000000000000
+    StartingEquipmentTier: 1
+    StartingGold: 0
+    StartingSkills:
+    - MaxLevel: 125
+      MinLevel: 50
+      Skill: Melee
+    - MaxLevel: 125
+      MinLevel: 50
+      Skill: Ranged
+    - MaxLevel: 75
+      MinLevel: 25
+      Skill: Riding
+    - MaxLevel: 75
+      MinLevel: 25
+      Skill: Athletics
+    SubscriberOnly: false
+    ViewerSelects: Nothing
+  Help: ''
+  HideHelp: false
+  ID: e317c63a-5a1f-455c-b953-6dcb92dc9424
+  Name: '{=0grO6hB5}adopt'
+  RespondInOverlay: true
+  RespondInTwitch: false
+- Documentation: You can use this to name your custom items.<br>Usage is <code>!nameitem (custom item index) (name)</code>, for example <code>!nameitem 3 Foehammer</code>. The custom item index is shown in the 'customs' command (or equivalent).
+  Enabled: true
+  Handler: NameItem
+  HandlerConfig: 
+  Help: '{=tNVmXpoc}name a reward item'
+  HideHelp: false
+  ID: aef1ded6-f8dd-4b9a-9d70-96e96d17cb12
+  Name: '{=IFDecKha}nameitem'
+  RespondInOverlay: true
+  RespondInTwitch: true
+- Documentation: '{=thajdk5s}Use this to bet on tournament matches, when available.<br>Usage is <code>!bltbet (team) (gold)</code>, for example <code>!bltbet red 10000</code> to bet 10000 gold on red. Winnings are divided up from the whole pot, based on relative bet size.<br>If only one team is bet upon, the bets will be refunded.'
+  Enabled: true
+  Handler: TournamentBet
+  HandlerConfig: 
+  Help: '{=xBgLXaf7}bet on tournament'
+  HideHelp: false
+  ID: 7cbdbc43-660c-4500-9029-d06e81c89f04
+  Name: '{=haKiwbsR}bltbet'
+  RespondInOverlay: true
+  RespondInTwitch: true
+- Documentation: ''
+  Enabled: false
+  Handler: UsePower
+  HandlerConfig: 
+  Help: ''
+  HideHelp: false
+  ID: 4aa62cc4-9ac2-4920-b921-c641f6ad0e24
+  Name: '{=NUQ5PsjF}power'
+  RespondInOverlay: true
+  RespondInTwitch: false
+- Documentation: '{=ZVxCqyJL}Show the heroes achievements and tracked stats.'
+  Enabled: true
+  Handler: HeroInfoCommand
+  HandlerConfig:
+    MinSkillToShow: 100
+    ShowAchievements: true
+    ShowAttributes: false
+    ShowCivilianInventory: false
+    ShowEquipment: false
+    ShowGeneral: false
+    ShowGold: false
+    ShowInventory: false
+    ShowPowers: false
+    ShowRetinue: false
+    ShowRetinueList: false
+    ShowStorage: false
+    ShowTopSkills: false
+    ShowTrackedStats: true
+  Help: '{=aGPoAaM9}achievements'
+  HideHelp: false
+  ID: 6b05f682-afe1-45e2-ba68-e6ee086ee412
+  Name: '{=woTpsqyV}ach'
+  RespondInOverlay: true
+  RespondInTwitch: false
+- Documentation: Start an auction on a custom item you own, with a specified reserve price. Other viewers are able to bid upon your item, and the highest bidder will receive it at the end of the auction.<br>Usage is <code>!auction (custom item index) (reserve price)</code>, e.g. <code>!auction 3 50000</code> would start a new auction for your custom item with the index of 3 (as shown by the 'customs' command or equivalent), with a reserve price of 50000.
+  Enabled: true
+  Handler: AuctionItem
+  HandlerConfig:
+    AuctionDurationInSeconds: 120
+    AuctionReminderIntervalInSeconds: 30
+  Help: ''
+  HideHelp: false
+  ID: 303342d6-c3c3-4f58-8d0d-0daee20677f8
+  Name: '{=QQX2aboq}auction'
+  RespondInOverlay: true
+  RespondInTwitch: true
+- Documentation: "{=1TBIIJVZ}Place a bid on the current auction, if one is active.<br>Usage is <code>!bid (gold amount)</code>, e.g. <code>!bid 100000</code>. If there is no auction, or the bid doesn't exceed the reserve price, it will be rejected."
+  Enabled: true
+  Handler: BidOnItem
+  HandlerConfig: 
+  Help: ''
+  HideHelp: false
+  ID: 95bcd31c-154b-4d70-a3e6-cb247efe9fb4
+  Name: '{=taI6SRSG}bid'
+  RespondInOverlay: true
+  RespondInTwitch: true
+- Documentation: Throw away one of your custom items.<br>Usage is <code>!discarditem (custom item index)</code>, e.g. <code>!discarditem 3</code> would discard your custom item with the index 3. The custom item index is shown in the 'customs' command (or equivalent).
+  Enabled: true
+  Handler: DiscardItem
+  HandlerConfig: 
+  Help: ''
+  HideHelp: false
+  ID: 752eb016-7df1-465c-83c7-80cc88f8c02d
+  Name: '{=Pla3OVS4}discarditem'
+  RespondInOverlay: true
+  RespondInTwitch: true
+- Documentation: Give one of your custom items to another viewer.<br>Usage is <code>!giveitem (custom item index) (viewer)</code>, e.g. <code>!giveitem 3 C4alad0g</code> would give your custom item with the index 3 to the viewer called C4lad0g. The custom item index is shown in the 'customs' command (or equivalent).
+  Enabled: true
+  Handler: GiveItem
+  HandlerConfig: 
+  Help: ''
+  HideHelp: false
+  ID: 0e255e77-4c17-44ad-aeb8-ff01bbbe0bee
+  Name: '{=osvl34my}giveitem'
+  RespondInOverlay: true
+  RespondInTwitch: true
+- Documentation: '{=GYYbCXmu}Shows your available powers'
+  Enabled: true
+  Handler: HeroInfoCommand
+  HandlerConfig:
+    MinSkillToShow: 100
+    ShowAchievements: false
+    ShowAttributes: false
+    ShowCivilianInventory: false
+    ShowEquipment: false
+    ShowGeneral: false
+    ShowGold: false
+    ShowInventory: false
+    ShowPowers: true
+    ShowRetinue: false
+    ShowRetinueList: false
+    ShowStorage: false
+    ShowTopSkills: false
+    ShowTrackedStats: false
+  Help: ''
+  HideHelp: false
+  ID: b595b0f2-ad40-409c-a286-c7f58ac87e13
+  Name: '{=GHCxNIaR}powers'
+  RespondInOverlay: true
+  RespondInTwitch: false
+- Documentation: ''
+  Enabled: true
+  Handler: SmithItem
+  HandlerConfig:
+    GoldCost: 1000000
+    ItemName: '{=}Smithed {ITEMNAME}'
+    ItemPower: 1.25
+    Type: Weapon
+  Help: ''
+  HideHelp: false
+  ID: a2b33796-a5f0-4bc9-be7c-8e887d3f00c4
+  Name: smithweapon
+  RespondInOverlay: true
+  RespondInTwitch: true
+- Documentation: ''
+  Enabled: true
+  Handler: SmithItem
+  HandlerConfig:
+    GoldCost: 500000
+    ItemName: '{=}Smithed {ITEMNAME}'
+    ItemPower: 1.25
+    Type: Armor
+  Help: ''
+  HideHelp: false
+  ID: 2d829c81-f451-4b59-b9b2-ae12962986e9
+  Name: smitharmor
+  RespondInOverlay: true
+  RespondInTwitch: true
+- Documentation: ''
+  Enabled: true
+  Handler: SmithItem
+  HandlerConfig:
+    GoldCost: 1250000
+    ItemName: '{=}Champion {ITEMNAME}'
+    ItemPower: 1.25
+    Type: Mount
+  Help: ''
+  HideHelp: false
+  ID: 87bed827-fbe4-472e-a300-f6f85e46dd28
+  Name: buymount
+  RespondInOverlay: true
+  RespondInTwitch: true
+- Documentation: Shows the viewers custom item list, which is required so they know what item index to use in the custom item related commands.
+  Enabled: true
+  Handler: HeroInfoCommand
+  HandlerConfig:
+    MinSkillToShow: 100
+    ShowAchievements: false
+    ShowAttributes: false
+    ShowCivilianInventory: false
+    ShowEquipment: false
+    ShowGeneral: false
+    ShowGold: false
+    ShowInventory: false
+    ShowPowers: false
+    ShowRetinue: false
+    ShowRetinueList: false
+    ShowStorage: true
+    ShowTopSkills: false
+    ShowTrackedStats: false
+  Help: ''
+  HideHelp: false
+  ID: a0b89b07-f834-43e2-92df-51e975c2c829
+  Name: customs
+  RespondInOverlay: true
+  RespondInTwitch: false
+DisableAutomaticFulfillment: false
+GlobalConfigs:
+- Config:
+    Achievements:
+    - Enabled: true
+      GiveItemReward: true
+      GoldGain: 20000
+      ID: 596fd61e-757e-46cc-99f4-b4f459018838
+      ItemReward:
+        ArmorWeight: 1
+        CustomItemName: '{=W47g8bCB}Reward {ITEMNAME}'
+        CustomItemPower: 1
+        CustomWeight: 0
+        MountWeight: 0
+        Tier1Weight: 0
+        Tier2Weight: 0.649999976
+        Tier3Weight: 0.649999976
+        Tier4Weight: 0.649999976
+        Tier5Weight: 0
+        Tier6Weight: 0
+        WeaponWeight: 0
+      Name: '{=ODWiNBng}Reliable'
+      NotificationText: '{=TAWcPGIc}[viewer] is [name]!'
+      Requirements:
+      - !StatisticRequirement
+        Comparison: GreaterOrEqual
+        OtherStatistic: None
+        Statistic: ConsecutiveSummons
+        Value: 5
+      XPGain: 0
+    - Enabled: true
+      GiveItemReward: true
+      GoldGain: 50000
+      ID: a98f179e-6a8f-457d-b422-472bb13ad582
+      ItemReward:
+        ArmorWeight: 1
+        CustomItemName: '{=W47g8bCB}Reward {ITEMNAME}'
+        CustomItemPower: 1
+        CustomWeight: 0
+        MountWeight: 0
+        Tier1Weight: 0
+        Tier2Weight: 0
+        Tier3Weight: 0
+        Tier4Weight: 0.649999976
+        Tier5Weight: 0.649999976
+        Tier6Weight: 0.649999976
+        WeaponWeight: 0
+      Name: '{=fWTqF2sw}Trusted'
+      NotificationText: '{=TAWcPGIc}[viewer] is [name]!'
+      Requirements:
+      - !StatisticRequirement
+        Comparison: GreaterOrEqual
+        OtherStatistic: None
+        Statistic: ConsecutiveSummons
+        Value: 20
+      XPGain: 0
+    - Enabled: true
+      GiveItemReward: true
+      GoldGain: 250000
+      ID: 96225687-88cc-4d79-b986-0d1778397d61
+      ItemReward:
+        ArmorWeight: 0
+        CustomItemName: '{=IvV04W31}{ITEMNAME} of Fealty'
+        CustomItemPower: 1
+        CustomWeight: 0.550000012
+        MountWeight: 0
+        Tier1Weight: 0
+        Tier2Weight: 0
+        Tier3Weight: 0
+        Tier4Weight: 0
+        Tier5Weight: 0
+        Tier6Weight: 0
+        WeaponWeight: 1
+      Name: '{=fe9J8von}Loyal'
+      NotificationText: '{=TAWcPGIc}[viewer] is [name]!'
+      Requirements:
+      - !StatisticRequirement
+        Comparison: GreaterOrEqual
+        OtherStatistic: None
+        Statistic: ConsecutiveSummons
+        Value: 50
+      XPGain: 50000
+    - Enabled: true
+      GiveItemReward: true
+      GoldGain: 20000
+      ID: d2968aea-79f5-44fd-b297-b30a141ef498
+      ItemReward:
+        ArmorWeight: 1
+        CustomItemName: '{=W47g8bCB}Reward {ITEMNAME}'
+        CustomItemPower: 1
+        CustomWeight: 0
+        MountWeight: 0
+        Tier1Weight: 0
+        Tier2Weight: 0.649999976
+        Tier3Weight: 0.649999976
+        Tier4Weight: 0.649999976
+        Tier5Weight: 0
+        Tier6Weight: 0
+        WeaponWeight: 0
+      Name: '{=HdYFegeb}Rebellious'
+      NotificationText: '{=TAWcPGIc}[viewer] is [name]!'
+      Requirements:
+      - !StatisticRequirement
+        Comparison: GreaterOrEqual
+        OtherStatistic: None
+        Statistic: ConsecutiveAttacks
+        Value: 5
+      XPGain: 0
+    - Enabled: true
+      GiveItemReward: true
+      GoldGain: 50000
+      ID: c3cd4e46-e0f0-4405-8739-446b9a9c097f
+      ItemReward:
+        ArmorWeight: 1
+        CustomItemName: '{=W47g8bCB}Reward {ITEMNAME}'
+        CustomItemPower: 1
+        CustomWeight: 0
+        MountWeight: 0
+        Tier1Weight: 0
+        Tier2Weight: 0
+        Tier3Weight: 0
+        Tier4Weight: 0.649999976
+        Tier5Weight: 0.649999976
+        Tier6Weight: 0.649999976
+        WeaponWeight: 0
+      Name: '{=gDHR7f8r}Traitorous'
+      NotificationText: '{=TAWcPGIc}[viewer] is [name]!'
+      Requirements:
+      - !StatisticRequirement
+        Comparison: GreaterOrEqual
+        OtherStatistic: None
+        Statistic: ConsecutiveAttacks
+        Value: 20
+      XPGain: 0
+    - Enabled: true
+      GiveItemReward: true
+      GoldGain: 250000
+      ID: a640c816-93a7-41fa-9d1b-1e74491fece4
+      ItemReward:
+        ArmorWeight: 0
+        CustomItemName: '{=UQtSgnog}Renegades {ITEMNAME}'
+        CustomItemPower: 1
+        CustomWeight: 0.550000012
+        MountWeight: 0
+        Tier1Weight: 0
+        Tier2Weight: 0
+        Tier3Weight: 0
+        Tier4Weight: 0
+        Tier5Weight: 0
+        Tier6Weight: 0
+        WeaponWeight: 1
+      Name: '{=VEH582e7}Renegade'
+      NotificationText: '[viewer] is a [name]!'
+      Requirements:
+      - !StatisticRequirement
+        Comparison: GreaterOrEqual
+        OtherStatistic: None
+        Statistic: ConsecutiveAttacks
+        Value: 50
+      XPGain: 50000
+    - Enabled: true
+      GiveItemReward: false
+      GoldGain: 0
+      ID: 267a6e67-c39c-4f75-8251-38392adeeaf7
+      ItemReward:
+        ArmorWeight: 0
+        CustomItemName: '{=xI41h8NA}Stream Sniper {ITEMNAME}'
+        CustomItemPower: 1
+        CustomWeight: 1
+        MountWeight: 0
+        Tier1Weight: 0
+        Tier2Weight: 0
+        Tier3Weight: 0
+        Tier4Weight: 0
+        Tier5Weight: 0
+        Tier6Weight: 0
+        WeaponWeight: 1
+      Name: '{=Aj0gXKgZ}Stream Sniper'
+      NotificationText: '[viewer] is a [name]: they killed [streamer] 5 times!'
+      Requirements:
+      - !StatisticRequirement
+        Comparison: GreaterOrEqual
+        OtherStatistic: None
+        Statistic: TotalStreamerKills
+        Value: 5
+      XPGain: 0
+    AllowDeath: true
+    ApplyDeathChanceToAllHeroes: true
+    CustomItemLimit: 8
+    CustomRewardModifiers:
+      AmmoDamage:
+        Max: 20
+        Min: 5
+      Armor:
+        Max: 15
+        Min: 5
+      ArrowStack:
+        Max: 20
+        Min: 5
+      MountChargeDamage:
+        Max: 5
+        Min: 2
+      MountHitPoints:
+        Max: 2
+        Min: 1.25
+      MountManeuver:
+        Max: 1.5
+        Min: 1.10000002
+      MountSpeed:
+        Max: 1.5
+        Min: 1.10000002
+      Power: 1
+      ThrowingStack:
+        Max: 6
+        Min: 2
+      WeaponDamage:
+        Max: 20
+        Min: 5
+      WeaponMissileSpeed:
+        Max: 20
+        Min: 5
+      WeaponSpeed:
+        Max: 20
+        Min: 5
+    DeathChance: 0.0500000007
+    DifficultyScaling: 1
+    DifficultyScalingMax: 3
+    DifficultyScalingMin: 0.200000003
+    DifficultyScalingOnEnemySide: true
+    DifficultyScalingOnPlayersSide: true
+    GoldPerKill: 5000
+    HealPerKill: 20
+    IncludeDefaultShouts: true
+    KillStreakPopupAlertSound: Horns2
+    KillStreaks:
+    - Enabled: true
+      GoldReward: 5000
+      ID: 45d75aa1-9d90-407f-a333-4aef16aef3a3
+      KillsRequired: 5
+      Name: '{=QNbIUDrh}Killing Spree'
+      NotificationText: '[viewer] is on a [name]: [kills] kills!'
+      ShowNotification: false
+      XPReward: 0
+    LevelScalingCap: 5
+    LoseGold: 5000
+    LoseXP: 5000
+    MoraleLossFactor: 0.5
+    RawXPSkillCap: 330
+    ReferenceLevelReward: 15
+    RelativeLevelScaling: 0.5
+    RetinueDeathChance: 0.0250000004
+    RetinueGoldPerKill: 2500
+    RetinueHealPerKill: 50
+    RetinueUseHeroesFormation: false
+    Shouts: []
+    ShowKillStreakPopup: true
+    StartHealthMultiplier: 2
+    StartRetinueHealthMultiplier: 2
+    StartWithFullHealth: true
+    SubBoost: 1
+    SummonCooldownInSeconds: 60
+    SummonCooldownUseMultiplier: 1.5
+    UseRawXP: true
+    WinGold: 10000
+    WinXP: 10000
+    XPPerKill: 5000
+    XPPerKilled: 2000
+  Id: Adopt A Hero - General Config
+- Config:
+    BettingOnFinalOnly: true
+    DisableKillRewardsInTournament: true
+    DisableTrackingKillsTournament: true
+    EnableBetting: true
+    NoHorses: true
+    NormalizeArmor: true
+    NormalizeArmorTier: 4
+    NoSpears: true
+    ParticipateXP: 10000
+    PreviousWinnerDebuffs:
+    - FloorPercent: 65
+      Skill: All
+      SkillReductionPercentPerWin: 10
+    Prize:
+      ArmorWeight: 1
+      CustomItemName: '{=W47g8bCB}Reward {ITEMNAME}'
+      CustomItemPower: 1
+      CustomWeight: 1
+      MountWeight: 0.100000001
+      Tier1Weight: 0
+      Tier2Weight: 0
+      Tier3Weight: 0
+      Tier4Weight: 0
+      Tier5Weight: 2
+      Tier6Weight: 1.5
+      WeaponWeight: 1
+    RandomizeWeaponTypes: true
+    Round1Rewards:
+      LoseXP: 20000
+      WinGold: 5000
+      WinXP: 5000
+    Round1Type:
+      Enable1Match4Teams: false
+      Enable2Match2Teams: false
+      Enable2Match4Teams: false
+      Enable4Match2Teams: false
+      Enable4Match4Teams: false
+      Enable8Match2Teams: false
+      EnableVanilla: true
+    Round2Rewards:
+      LoseXP: 10000
+      WinGold: 7500
+      WinXP: 7500
+    Round2Type:
+      Enable1Match2Teams: false
+      Enable1Match4Teams: false
+      Enable2Match2Teams: false
+      Enable2Match4Teams: false
+      Enable4Match2Teams: false
+      EnableVanilla: true
+    Round3Rewards:
+      LoseXP: 5000
+      WinGold: 10000
+      WinXP: 10000
+    Round3Type:
+      Enable1Match2Teams: false
+      Enable1Match4Teams: false
+      Enable2Match2Teams: false
+      EnableVanilla: true
+    Round4Rewards:
+      LoseXP: 0
+      WinGold: 0
+      WinXP: 0
+    StartHealthMultiplier: 2
+    WinGold: 50000
+    WinXP: 50000
+  Id: Adopt A Hero - Tournament Config
+- Config:
+    DisablePowersInTournaments: true
+    PowerDefs:
+    - !AddHealthPower
+      HealthModifierPercent: 125
+      HealthToAdd: 0
+      ID: 22ad10d6-34df-4d41-afec-7e98a56f8954
+      Name: '{=dlrzqWyB}Healthy I'
+    - !AddHealthPower
+      HealthModifierPercent: 150
+      HealthToAdd: 0
+      ID: c6356c32-c1e6-4e2a-ad09-e0f054eec108
+      Name: '{=QpSDATVx}Healthy II'
+    - !AddHealthPower
+      HealthModifierPercent: 200
+      HealthToAdd: 0
+      ID: a3b16d6d-5a2f-416c-9098-55f13f626f34
+      Name: '{=Cqkht54y}Healthy III'
+    - !AddHealthPower
+      HealthModifierPercent: 50
+      HealthToAdd: 0
+      ID: b99d374b-84d0-495e-a430-1811ad6e712b
+      Name: '{=qA2f6xBp}Fragile I'
+    - !AddHealthPower
+      HealthModifierPercent: 65
+      HealthToAdd: 0
+      ID: 9cf5d507-92ea-4068-85e6-3938db7170e1
+      Name: '{=Hyuf4TSH}Fragile II'
+    - !AddHealthPower
+      HealthModifierPercent: 90
+      HealthToAdd: 0
+      ID: 3d71f948-c58b-402f-a134-dfbcef1e28be
+      Name: '{=v0ACBXmv}Fragile III'
+    - !AbsorbHealthPower
+      DamageToAbsorbPercent: 10
+      ID: 4a60ed27-334e-446e-8e75-9804b1980c8b
+      Name: '{=mJQ88gTg}Vampiric I'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !AbsorbHealthPower
+      DamageToAbsorbPercent: 25
+      ID: b3e5da20-1b82-4820-a373-ff9a8190dd98
+      Name: '{=EHkU2FPe}Vampiric II'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !AbsorbHealthPower
+      DamageToAbsorbPercent: 50
+      ID: 936524f5-7bde-4793-828a-1e0cf4a8a6ba
+      Name: '{=gDsSjnnd}Vampiric III'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 125
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: 6a36fedb-0b2d-459c-b06b-c4230327589b
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=93p2ZAIG}Heavy Hitting I'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 150
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: a3e50729-68f2-4a25-ac3f-e5c3738965cf
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=Gm7OdO9y}Heavy Hitting II'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 200
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: 2355a51d-d813-48b3-9987-d997099d51ed
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=OzBxlGDu}Heavy Hitting III'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !ReflectDamagePower
+      HitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
+      Name: '{=0vLSj7KR}Retribution I'
+      Pfx: []
+      PowerDurationSeconds: 120
+      ReflectedDamageIsSubtracted: false
+      ReflectPercent: 10
+    - !ReflectDamagePower
+      HitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ID: 347cec61-aa6d-4002-87de-47d298ca3161
+      Name: '{=vC5KggFz}Retribution II'
+      Pfx: []
+      PowerDurationSeconds: 120
+      ReflectedDamageIsSubtracted: false
+      ReflectPercent: 25
+    - !ReflectDamagePower
+      HitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ID: 4341afec-1b6e-4ee9-8a70-c83a8d1c56c6
+      Name: '{=bS76hE3e}Retribution III'
+      Pfx: []
+      PowerDurationSeconds: 120
+      ReflectedDamageIsSubtracted: false
+      ReflectPercent: 50
+    - !StatModifyPower
+      ID: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
+      Modifiers:
+        ApplyToMount: false
+        Properties:
+        - Add: 0
+          ModifierPercent: 110
+          Name: MaxSpeedMultiplier
+        ScalePercent: 100
+        Skills: []
+      Name: '{=FQKNvxVG}Fleet Footed I'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: 79a9ca29-9a39-4cb3-b536-944d44bb92fd
+      Modifiers:
+        ApplyToMount: false
+        Properties:
+        - Add: 0
+          ModifierPercent: 125
+          Name: MaxSpeedMultiplier
+        ScalePercent: 100
+        Skills: []
+      Name: '{=rgQDzX4f}Fleet Footed II'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: 0d6daf6f-cc83-4508-9833-2c212fcfd4eb
+      Modifiers:
+        ApplyToMount: false
+        Properties:
+        - Add: 0
+          ModifierPercent: 150
+          Name: MaxSpeedMultiplier
+        ScalePercent: 100
+        Skills: []
+      Name: '{=f7L0oLCQ}Fleet Footed III'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: 20f6817e-8f45-4dc3-a513-77707fb9c96d
+      Modifiers:
+        ApplyToMount: true
+        Properties:
+        - Add: 0
+          ModifierPercent: 150
+          Name: MountChargeDamage
+        - Add: 0
+          ModifierPercent: 125
+          Name: MountManeuver
+        ScalePercent: 100
+        Skills: []
+      Name: '{=39yFtbp2}Charge I'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: 6cca75ef-a900-4593-8ea8-cf96163003c0
+      Modifiers:
+        ApplyToMount: true
+        Properties:
+        - Add: 0
+          ModifierPercent: 250
+          Name: MountChargeDamage
+        - Add: 0
+          ModifierPercent: 150
+          Name: MountManeuver
+        ScalePercent: 100
+        Skills: []
+      Name: '{=6IFhNSH3}Charge II'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: 64e3832f-9f08-40dd-b1ab-0be6a26ed091
+      Modifiers:
+        ApplyToMount: true
+        Properties:
+        - Add: 0
+          ModifierPercent: 500
+          Name: MountChargeDamage
+        - Add: 0
+          ModifierPercent: 200
+          Name: MountManeuver
+        ScalePercent: 100
+        Skills: []
+      Name: '{=l2eB9avA}Charge III'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 25
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 2
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: 6ad716bb-76e1-4cb1-9601-85f81f5d5425
+      Melee: false
+      MissileTrailParticleEffect: 
+      Name: '{=R8u1d7M6}Charge AoE I'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: false
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 2
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: 0c2ecb3e-a4e6-4e54-b87d-b860cc486613
+      Melee: false
+      MissileTrailParticleEffect: 
+      Name: '{=lO56Rq9E}Charge AoE II'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: false
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 100
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 2
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: b2da61f2-a12e-4834-9f41-a79040e90ec4
+      Melee: false
+      MissileTrailParticleEffect: 
+      Name: '{=X5LQvC0o}Charge AoE III'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: false
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !StatModifyPower
+      ID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
+      Modifiers:
+        ApplyToMount: true
+        Properties:
+        - Add: 0
+          ModifierPercent: 110
+          Name: MountSpeed
+        - Add: 0
+          ModifierPercent: 90
+          Name: TopSpeedReachDuration
+        - Add: 20
+          ModifierPercent: 100
+          Name: ArmorTorso
+        ScalePercent: 100
+        Skills: []
+      Name: '{=tqmxzUCq}Better Mount I'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: 46a9624a-2560-4e97-9627-3c13be41f947
+      Modifiers:
+        ApplyToMount: true
+        Properties:
+        - Add: 0
+          ModifierPercent: 125
+          Name: MountSpeed
+        - Add: 0
+          ModifierPercent: 75
+          Name: TopSpeedReachDuration
+        - Add: 40
+          ModifierPercent: 100
+          Name: ArmorTorso
+        ScalePercent: 100
+        Skills: []
+      Name: '{=izG39s2J}Better Mount II'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: ce6f6302-4db2-4a34-bffb-530f0ceac9c1
+      Modifiers:
+        ApplyToMount: true
+        Properties:
+        - Add: 0
+          ModifierPercent: 150
+          Name: MountSpeed
+        - Add: 0
+          ModifierPercent: 50
+          Name: TopSpeedReachDuration
+        - Add: 80
+          ModifierPercent: 100
+          Name: ArmorTorso
+        ScalePercent: 100
+        Skills: []
+      Name: '{=CVmPJOB4}Better Mount III'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: 80e8009c-2a09-476a-bd71-0aedc6b14011
+      Modifiers:
+        ApplyToMount: false
+        Properties:
+        - Add: 0
+          ModifierPercent: 115
+          Name: SwingSpeedMultiplier
+        ScalePercent: 100
+        Skills:
+        - Add: 25
+          ModifierPercent: 100
+          Skill: Melee
+      Name: '{=7b7BkwRo}Fireblade I'
+      Pfx:
+      - AttachPoint: OnWeapon
+        Name: psys_campfire
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: 66fe10bd-f8ff-4c36-9f4d-ef7b6e8fe12a
+      Modifiers:
+        ApplyToMount: false
+        Properties:
+        - Add: 0
+          ModifierPercent: 130
+          Name: SwingSpeedMultiplier
+        ScalePercent: 100
+        Skills:
+        - Add: 50
+          ModifierPercent: 100
+          Skill: Melee
+      Name: '{=d8BUyJ5i}Fireblade II'
+      Pfx:
+      - AttachPoint: OnWeapon
+        Name: psys_campfire
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: d83a689d-7e52-40a3-b1fe-8897fdd789d5
+      Modifiers:
+        ApplyToMount: false
+        Properties:
+        - Add: 0
+          ModifierPercent: 150
+          Name: SwingSpeedMultiplier
+        ScalePercent: 100
+        Skills:
+        - Add: 100
+          ModifierPercent: 100
+          Skill: Melee
+      Name: '{=VGqA25nN}Fireblade III'
+      Pfx:
+      - AttachPoint: OnWeapon
+        Name: psys_campfire
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
+      Modifiers:
+        ApplyToMount: false
+        Properties:
+        - Add: 0
+          ModifierPercent: 200
+          Name: AiShootFreq
+        - Add: 0
+          ModifierPercent: 50
+          Name: AiWaitBeforeShootFactor
+        ScalePercent: 100
+        Skills:
+        - Add: 0
+          ModifierPercent: 125
+          Skill: Ranged
+      Name: '{=7XNfzok8}Ranger I'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: 8dbbbf13-ceca-46d9-bc20-f3f2bc167094
+      Modifiers:
+        ApplyToMount: false
+        Properties:
+        - Add: 0
+          ModifierPercent: 200
+          Name: AiShootFreq
+        - Add: 0
+          ModifierPercent: 50
+          Name: AiWaitBeforeShootFactor
+        ScalePercent: 100
+        Skills:
+        - Add: 0
+          ModifierPercent: 150
+          Skill: Ranged
+      Name: '{=HxpAtast}Ranger II'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: ec81e3ce-7510-4934-93b7-c1220d4ecfe3
+      Modifiers:
+        ApplyToMount: false
+        Properties:
+        - Add: 0
+          ModifierPercent: 200
+          Name: AiShootFreq
+        - Add: 0
+          ModifierPercent: 50
+          Name: AiWaitBeforeShootFactor
+        ScalePercent: 100
+        Skills:
+        - Add: 0
+          ModifierPercent: 200
+          Skill: Ranged
+      Name: '{=7YSCRTCg}Ranger III'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 3
+        OnlyOnHit: false
+        Range: 4
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: false
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: psys_burning_projectile_default_coll
+        Sound: 
+      ID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
+      Melee: false
+      MissileTrailParticleEffect: psys_game_burning_agent
+      Name: '{=CTqMR9lV}Explosive Projectiles I'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 75
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 20
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 5
+        OnlyOnHit: false
+        Range: 4
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: false
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: psys_burning_projectile_default_coll
+        Sound: 
+      ID: 52e0f85f-c29a-413a-883c-0de4c7f12ead
+      Melee: false
+      MissileTrailParticleEffect: psys_game_burning_agent
+      Name: '{=miUEQpaQ}Explosive Projectiles II'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 100
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 50
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 15
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 7
+        OnlyOnHit: false
+        Range: 4
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: false
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: psys_burning_projectile_default_coll
+        Sound: 
+      ID: 88aaee42-f3ef-4fff-8320-cc06ceb3d9b5
+      Melee: false
+      MissileTrailParticleEffect: psys_game_burning_agent
+      Name: '{=o2XgVhjA}Explosive Projectiles III'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !StatModifyPower
+      ID: 2d18201b-1bad-477d-bd09-d857da76faad
+      Modifiers:
+        ApplyToMount: true
+        Properties: []
+        ScalePercent: 120
+        Skills: []
+      Name: '{=tv2vTde5}Imposing Mount'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: 60582ddc-3b22-4052-9437-cd43882bf5f9
+      Modifiers:
+        ApplyToMount: false
+        Properties: []
+        ScalePercent: 120
+        Skills: []
+      Name: '{=fFProg8j}Imposing'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 10
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 10
+        MakesRearChancePercent: 10
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: false
+      CutThroughChancePercent: 25
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: psys_burning_projectile_wood_coll_small
+        Sound: 
+      ID: 2bc4d80a-d945-4fe5-801a-026708d3c660
+      Melee: false
+      MissileTrailParticleEffect: psys_haze_1
+      Name: '{=r0Wn7FXu}Heavy Projectiles I'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 25
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 25
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 25
+        MakesRearChancePercent: 25
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 25
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 5
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: true
+        Range: 1
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: false
+      CutThroughChancePercent: 50
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: psys_burning_projectile_wood_coll_small
+        Sound: 
+      ID: d7b4d435-a3a1-4fd2-855d-fa3e044128f2
+      Melee: false
+      MissileTrailParticleEffect: psys_haze_1
+      Name: '{=XXL8aXIK}Heavy Projectiles II'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 50
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 50
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 50
+        MakesRearChancePercent: 50
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 40
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 5
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: true
+        Range: 1.5
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: false
+      CutThroughChancePercent: 90
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: psys_burning_projectile_wood_coll_small
+        Sound: 
+      ID: d157416b-6d38-41b2-9764-5be15823fd62
+      Melee: false
+      MissileTrailParticleEffect: psys_haze_1
+      Name: '{=H3r0Zh8E}Heavy Projectiles III'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 90
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: a9d8e86d-4a15-4f35-9ebf-209dc085336f
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=xwlvLfJX}Crush Through I'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 15
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 15
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: ddff3058-160f-4463-bd66-d72e70336300
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=7FJTIVa4}Crush Through II'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 30
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 30
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: fe9bdea0-95dd-4f75-9c8a-165b55ca3ea8
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=dQqwtBEE}Crush Through III'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 50
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 50
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 15
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: 98d5c8a7-a480-4f20-a219-e3c0af81e73a
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=MKUCQtsr}Knock Down I'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 30
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: 7ac9dfdb-5744-4dd6-b445-dab123e67e11
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=KUdqJrOY}Knock Down II'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 50
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: 745a57aa-e674-4cd3-a57c-ee0c39f945f1
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=Uc4Cai9H}Knock Down III'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: 3f5613bb-9bb6-4436-9cf9-a7927cc75387
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=VsZLMOHX}Cut Through I'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 25
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: e514dfef-57e4-44a5-acdb-c1214275e063
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=yXj1jqxx}Cut Through II'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 50
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: 087ec677-cb5b-4f4c-9773-1df8e8e69a1d
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=R537vuN0}Cut Through III'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 100
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: 584fa61d-7016-43d1-b9c3-b690b5dd18b5
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=89ezJ7aW}Shatter Shield I'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 15
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: aa9fdb10-a928-4480-8838-cd3e72774d03
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=Dvjkoxi3}Shatter Shield II'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 30
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 0
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: 49e6de04-d7d2-4f00-9006-0e9b8d01cec9
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=V6RyPIQg}Shatter Shield III'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 60
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !TakeDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 15
+      ArmorToIgnorePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      ID: bb45ba09-ffe1-4320-9c7e-248f4ad47045
+      Name: '{=oyKzNISD}Shrug Off I'
+      Pfx: []
+      PowerDurationSeconds: 120
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+    - !TakeDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 40
+      ArmorToIgnorePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      ID: 4be5a15a-82da-4c66-a5c1-979f30fa9239
+      Name: '{=zNj3xNd4}Shrug Off II'
+      Pfx: []
+      PowerDurationSeconds: 120
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+    - !TakeDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 80
+      ArmorToIgnorePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      ID: 97970d70-c651-4462-9156-17f666259d1a
+      Name: '{=5nsSdwel}Shrug Off III'
+      Pfx: []
+      PowerDurationSeconds: 120
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+    - !StatModifyPower
+      ID: e5e7eff7-b59d-43cb-bc3b-eea7470f794b
+      Modifiers:
+        ApplyToMount: false
+        Properties: []
+        ScalePercent: 100
+        Skills:
+        - Add: 25
+          ModifierPercent: 100
+          Skill: Athletics
+      Name: '{=b3DBwSTA}Athletic I'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: 718651fd-6056-4b05-bd6a-a0751ad9141e
+      Modifiers:
+        ApplyToMount: false
+        Properties: []
+        ScalePercent: 100
+        Skills:
+        - Add: 50
+          ModifierPercent: 100
+          Skill: Athletics
+      Name: '{=oeSxcpzi}Athletic II'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !StatModifyPower
+      ID: 17574666-b91e-4656-a0b9-87a8f9bf59ba
+      Modifiers:
+        ApplyToMount: false
+        Properties: []
+        ScalePercent: 100
+        Skills:
+        - Add: 100
+          ModifierPercent: 100
+          Skill: Athletics
+      Name: '{=dMvjTTZb}Athletic III'
+      Pfx: []
+      PowerDurationSeconds: 120
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 15
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: 0302cfb6-9d38-468a-9a6d-e53cb1245848
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=ngiTK9F9}Ignore Armor I'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 30
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: 355b4ff7-cfd4-4708-b795-adfec6fe5280
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=Q7JOJL4l}Ignore Armor II'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    - !AddDamagePower
+      AddHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      AoE:
+        DamageAtCenter: 50
+        DamageType: Blunt
+        HitBehavior:
+          DismountChance: 0
+          KnockBackChancePercent: 0
+          KnockDownChancePercent: 0
+          MakesRearChancePercent: 0
+          ShrugOffChancePercent: 0
+        MaxAgentsToDamage: 4
+        OnlyOnHit: false
+        Range: 0
+      ApplyAgainstAdoptedHeroes: true
+      ApplyAgainstHeroes: true
+      ApplyAgainstNonHeroes: true
+      ApplyAgainstPlayer: true
+      ArmorToIgnorePercent: 60
+      Charge: true
+      CutThroughChancePercent: 0
+      DamageModifierPercent: 100
+      DamageToAdd: 0
+      HitEffect:
+        ParticleEffect: 
+        Sound: 
+      ID: 4b5f06fc-4a12-4c0b-9264-4b94e1077dd5
+      Melee: true
+      MissileTrailParticleEffect: 
+      Name: '{=fLsEduav}Ignore Armor III'
+      Pfx: []
+      PowerDurationSeconds: 120
+      Ranged: true
+      RemoveHitBehavior:
+        DismountChance: 0
+        KnockBackChancePercent: 0
+        KnockDownChancePercent: 0
+        MakesRearChancePercent: 0
+        ShrugOffChancePercent: 0
+      ShatterShieldChancePercent: 0
+      StaggerChancePercent: 0
+      UnblockableChancePercent: 0
+    SavedPowerDefs: 
+  Id: Adopt A Hero - Power Config
+- Config:
+    ClassDefs:
+    - ActivePower:
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll_small
+          Sound: 
+        Name: '{=yEtkv5ML}Fireblade'
+        Powers:
+        - PowerID: 80e8009c-2a09-476a-bd71-0aedc6b14011
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 0302cfb6-9d38-468a-9a6d-e53cb1245848
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 66fe10bd-f8ff-4c36-9f4d-ef7b6e8fe12a
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 355b4ff7-cfd4-4708-b795-adfec6fe5280
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: d83a689d-7e52-40a3-b1fe-8897fdd789d5
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: 4b5f06fc-4a12-4c0b-9264-4b94e1077dd5
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: 4be5a15a-82da-4c66-a5c1-979f30fa9239
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Description: Basic foot soldier, the core around which every army is built.
+      Enabled: true
+      Formation: Ranged
+      ID: 9fa426af-af3e-41f6-9b48-0ffef6dc3553
+      Name: '{=m8bz4drX}infantry'
+      PassivePower:
+        Name: '{=ROXuJJq8}Healthy'
+        Powers:
+        - PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: e5e7eff7-b59d-43cb-bc3b-eea7470f794b
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: c6356c32-c1e6-4e2a-ad09-e0f054eec108
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 718651fd-6056-4b05-bd6a-a0751ad9141e
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: a3b16d6d-5a2f-416c-9098-55f13f626f34
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: 17574666-b91e-4656-a0b9-87a8f9bf59ba
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: a9d8e86d-4a15-4f35-9ebf-209dc085336f
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Slot1: OneHandedSword
+      Slot2: Shield
+      Slot3: None
+      Slot4: None
+      UseCamel: false
+      UseHorse: false
+    - ActivePower:
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll_small
+          Sound: 
+        Name: '{=skyn1cL6}Explosive Arrows'
+        Powers:
+        - PowerID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 52e0f85f-c29a-413a-883c-0de4c7f12ead
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 88aaee42-f3ef-4fff-8320-cc06ceb3d9b5
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Description: Ranged troop, quick on their feet, can use explosive arrows.
+      Enabled: true
+      Formation: Ranged
+      ID: 492c4b3a-d73e-4fe9-be31-f937d6461f93
+      Name: '{=4tflp34a}archer'
+      PassivePower:
+        Name: '{=NE9Li2Hb}Fleet Footed'
+        Powers:
+        - PowerID: 07dab6be-61f8-4cbe-953a-ece6c410c2bf
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 79a9ca29-9a39-4cb3-b536-944d44bb92fd
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 8dbbbf13-ceca-46d9-bc20-f3f2bc167094
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 0d6daf6f-cc83-4508-9833-2c212fcfd4eb
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: ec81e3ce-7510-4934-93b7-c1220d4ecfe3
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Slot1: Bow
+      Slot2: Arrows
+      Slot3: Arrows
+      Slot4: OneHandedAxe
+      UseCamel: false
+      UseHorse: false
+    - ActivePower:
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll_small
+          Sound: 
+        Name: '{=xgnH5owv}Explosive Arrows'
+        Powers:
+        - PowerID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 52e0f85f-c29a-413a-883c-0de4c7f12ead
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 88aaee42-f3ef-4fff-8320-cc06ceb3d9b5
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Description: Ranged troop, quick on their feet, can use explosive arrows.
+      Enabled: true
+      Formation: Ranged
+      ID: bf9dd845-0ed3-4da0-bce7-f718ac52fad7
+      Name: '{=JncRD8tX}heavyarcher'
+      PassivePower:
+        Name: '{=ZrmsIMPE}Healthy'
+        Powers:
+        - PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: c6356c32-c1e6-4e2a-ad09-e0f054eec108
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: a3b16d6d-5a2f-416c-9098-55f13f626f34
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Slot1: Bow
+      Slot2: Arrows
+      Slot3: Arrows
+      Slot4: TwoHandedAxe
+      UseCamel: false
+      UseHorse: false
+    - ActivePower:
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll_small
+          Sound: 
+        Name: '{=QZD9XdpC}Heavy Bolts'
+        Powers:
+        - PowerID: 2bc4d80a-d945-4fe5-801a-026708d3c660
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: d7b4d435-a3a1-4fd2-855d-fa3e044128f2
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: d157416b-6d38-41b2-9764-5be15823fd62
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Description: Ranged troop that specializes in crossbow, tougher but slower than the archer. Can use exposive bolts
+      Enabled: true
+      Formation: Ranged
+      ID: eed616b6-bb68-48aa-8f92-87ab3d744458
+      Name: '{=wV6R9Si5}crossbow'
+      PassivePower:
+        Name: '{=FvNPPHLJ}Self Healing'
+        Powers:
+        - PowerID: 4a60ed27-334e-446e-8e75-9804b1980c8b
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: b3e5da20-1b82-4820-a373-ff9a8190dd98
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 8dbbbf13-ceca-46d9-bc20-f3f2bc167094
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: b3e5da20-1b82-4820-a373-ff9a8190dd98
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: ec81e3ce-7510-4934-93b7-c1220d4ecfe3
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Slot1: Crossbow
+      Slot2: Bolts
+      Slot3: Bolts
+      Slot4: OneHandedSword
+      UseCamel: false
+      UseHorse: false
+    - ActivePower:
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll_small
+          Sound: 
+        Name: '{=7GmE3SfQ}Explosive Bolts'
+        Powers:
+        - PowerID: 2bc4d80a-d945-4fe5-801a-026708d3c660
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: d7b4d435-a3a1-4fd2-855d-fa3e044128f2
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: d157416b-6d38-41b2-9764-5be15823fd62
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Description: Ranged troop that specializes in crossbow, tougher but slower than the archer. Can use exposive bolts
+      Enabled: true
+      Formation: Ranged
+      ID: b7ff2652-db31-43bf-a75c-6fa906298da4
+      Name: '{=bpzytNbP}heavycrossbow'
+      PassivePower:
+        Name: '{=k7booFb2}Healthy'
+        Powers:
+        - PowerID: 22ad10d6-34df-4d41-afec-7e98a56f8954
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: c6356c32-c1e6-4e2a-ad09-e0f054eec108
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: a3b16d6d-5a2f-416c-9098-55f13f626f34
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Slot1: Crossbow
+      Slot2: Bolts
+      Slot3: Bolts
+      Slot4: TwoHandedSword
+      UseCamel: false
+      UseHorse: false
+    - ActivePower:
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll_small
+          Sound: 
+        Name: '{=ZEGEpycY}Trample'
+        Powers:
+        - PowerID: 6ad716bb-76e1-4cb1-9601-85f81f5d5425
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 0c2ecb3e-a4e6-4e54-b87d-b860cc486613
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: b2da61f2-a12e-4834-9f41-a79040e90ec4
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Description: Mounted troop with a strong horse, capable of doing extra charge damage.
+      Enabled: true
+      Formation: Cavalry
+      ID: d1006ce9-cac9-4416-b8f9-efe55e9eb878
+      Name: '{=jNaFWF9t}cavalry'
+      PassivePower:
+        Name: '{=YghplAdF}A Good Horse'
+        Powers:
+        - PowerID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 20f6817e-8f45-4dc3-a513-77707fb9c96d
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 46a9624a-2560-4e97-9627-3c13be41f947
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 6cca75ef-a900-4593-8ea8-cf96163003c0
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: ce6f6302-4db2-4a34-bffb-530f0ceac9c1
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: 64e3832f-9f08-40dd-b1ab-0be6a26ed091
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Slot1: OneHandedLance
+      Slot2: Shield
+      Slot3: OneHandedSword
+      Slot4: None
+      UseCamel: false
+      UseHorse: true
+    - ActivePower:
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll_small
+          Sound: 
+        Name: '{=mmeJSrm9}Trample'
+        Powers:
+        - PowerID: 6ad716bb-76e1-4cb1-9601-85f81f5d5425
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 0c2ecb3e-a4e6-4e54-b87d-b860cc486613
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: b2da61f2-a12e-4834-9f41-a79040e90ec4
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Description: Mounted troop with a strong horse, capable of doing extra charge damage.
+      Enabled: true
+      Formation: Cavalry
+      ID: 14f908f8-4983-479f-89f7-1dac81f7d0f9
+      Name: '{=mJ8RVORq}camelry'
+      PassivePower:
+        Name: '{=atGMPeNF}A Good Camel'
+        Powers:
+        - PowerID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 20f6817e-8f45-4dc3-a513-77707fb9c96d
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 46a9624a-2560-4e97-9627-3c13be41f947
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 6cca75ef-a900-4593-8ea8-cf96163003c0
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: ce6f6302-4db2-4a34-bffb-530f0ceac9c1
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: 64e3832f-9f08-40dd-b1ab-0be6a26ed091
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Slot1: OneHandedLance
+      Slot2: Shield
+      Slot3: OneHandedMace
+      Slot4: None
+      UseCamel: true
+      UseHorse: false
+    - ActivePower:
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll_small
+          Sound: 
+        Name: '{=YpIUHASp}Explosive Arrows'
+        Powers:
+        - PowerID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 52e0f85f-c29a-413a-883c-0de4c7f12ead
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 88aaee42-f3ef-4fff-8320-cc06ceb3d9b5
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Description: Mounted ranged unit, with a good horse, that can use exposive arrows.
+      Enabled: true
+      Formation: HorseArcher
+      ID: 2942cdb2-30ec-400a-ba8e-ed9bb3b47f48
+      Name: '{=p5qJfkkp}horsearcher'
+      PassivePower:
+        Name: '{=zxgdfSIS}Mounted Archery'
+        Powers:
+        - PowerID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 8dbbbf13-ceca-46d9-bc20-f3f2bc167094
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 46a9624a-2560-4e97-9627-3c13be41f947
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: ec81e3ce-7510-4934-93b7-c1220d4ecfe3
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: ce6f6302-4db2-4a34-bffb-530f0ceac9c1
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Slot1: Bow
+      Slot2: Arrows
+      Slot3: Arrows
+      Slot4: OneHandedSword
+      UseCamel: false
+      UseHorse: true
+    - ActivePower:
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll_small
+          Sound: 
+        Name: '{=FrX7AiyI}Heavy Arrows'
+        Powers:
+        - PowerID: 2bc4d80a-d945-4fe5-801a-026708d3c660
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: d7b4d435-a3a1-4fd2-855d-fa3e044128f2
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: d157416b-6d38-41b2-9764-5be15823fd62
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Description: Mounted ranged unit on a good camel, wielding a glaive. Can use exposive arrows.
+      Enabled: true
+      Formation: HorseArcher
+      ID: df54336d-52df-4d4b-a9c6-c1fe91cdc70f
+      Name: '{=HreZWoyd}camelarcher'
+      PassivePower:
+        Name: '{=szdoTAQj}Mounted Archery'
+        Powers:
+        - PowerID: 36ca0df1-85c9-49d6-9d6d-51773bd106d9
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 4432f8ab-d1c0-4ea5-ae7f-d3478738f87d
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 46a9624a-2560-4e97-9627-3c13be41f947
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 8dbbbf13-ceca-46d9-bc20-f3f2bc167094
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: ce6f6302-4db2-4a34-bffb-530f0ceac9c1
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: ec81e3ce-7510-4934-93b7-c1220d4ecfe3
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Slot1: Bow
+      Slot2: Arrows
+      Slot3: Arrows
+      Slot4: TwoHandedGlaive
+      UseCamel: true
+      UseHorse: false
+    - ActivePower:
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll
+          Sound: 
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_water_coll_small
+          Sound: 
+        Name: '{=E3qGC3fs}Break Through'
+        Powers:
+        - PowerID: 98d5c8a7-a480-4f20-a219-e3c0af81e73a
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 584fa61d-7016-43d1-b9c3-b690b5dd18b5
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 7ac9dfdb-5744-4dd6-b445-dab123e67e11
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: aa9fdb10-a928-4480-8838-cd3e72774d03
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 745a57aa-e674-4cd3-a57c-ee0c39f945f1
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: 49e6de04-d7d2-4f00-9006-0e9b8d01cec9
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Description: Foot soldier that can engage at range using javelins. Able to reflect a portion of incoming damage.
+      Enabled: true
+      Formation: Skirmisher
+      ID: 3d5b962a-f6ee-409e-940b-c2f2b8d4cf98
+      Name: '{=9euSgzCd}skirmisher'
+      PassivePower:
+        Name: '{=Lw8xQu1P}Retribution'
+        Powers:
+        - PowerID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 347cec61-aa6d-4002-87de-47d298ca3161
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 4341afec-1b6e-4ee9-8a70-c83a8d1c56c6
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Slot1: TwoHandedSword
+      Slot2: ThrowingJavelins
+      Slot3: ThrowingJavelins
+      Slot4: None
+      UseCamel: false
+      UseHorse: false
+    - ActivePower:
+        ActivateEffect:
+          ParticleEffect: psys_burning_projectile_default_coll
+          Sound: None
+        DeactivateEffect:
+          ParticleEffect: psys_burning_projectile_default_coll_small
+          Sound: None
+        Name: '{=1DSLInEJ}Berserker Rage'
+        Powers:
+        - PowerID: bb45ba09-ffe1-4320-9c7e-248f4ad47045
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 3f5613bb-9bb6-4436-9cf9-a7927cc75387
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 4be5a15a-82da-4c66-a5c1-979f30fa9239
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: e514dfef-57e4-44a5-acdb-c1214275e063
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 97970d70-c651-4462-9156-17f666259d1a
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: 087ec677-cb5b-4f4c-9773-1df8e8e69a1d
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Description: Foot soldier with lower health, that can gain health by doing damage.
+      Enabled: true
+      Formation: Skirmisher
+      ID: f04e7a10-950b-48a4-bed3-7aa2091aa268
+      Name: '{=wVjXAFal}berserker'
+      PassivePower:
+        Name: '{=nB4Qb0mD}Glass Cannon'
+        Powers:
+        - PowerID: b99d374b-84d0-495e-a430-1811ad6e712b
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 6a36fedb-0b2d-459c-b06b-c4230327589b
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 9cf5d507-92ea-4068-85e6-3938db7170e1
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: a3e50729-68f2-4a25-ac3f-e5c3738965cf
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 3d71f948-c58b-402f-a134-dfbcef1e28be
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: 2355a51d-d813-48b3-9987-d997099d51ed
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: 60582ddc-3b22-4052-9437-cd43882bf5f9
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: 98d5c8a7-a480-4f20-a219-e3c0af81e73a
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+        - PowerID: b3e5da20-1b82-4820-a373-ff9a8190dd98
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Slot1: TwoHandedAxe
+      Slot2: None
+      Slot3: None
+      Slot4: None
+      UseCamel: false
+      UseHorse: false
+    - ActivePower:
+        ActivateEffect:
+          ParticleEffect: 
+          Sound: None
+        DeactivateEffect:
+          ParticleEffect: 
+          Sound: 
+        Name: '{=rzIl9tm3}Retribution'
+        Powers:
+        - PowerID: 66b1245a-136d-4a11-b1f2-5368f0b78ca4
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 347cec61-aa6d-4002-87de-47d298ca3161
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 4341afec-1b6e-4ee9-8a70-c83a8d1c56c6
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Description: ''
+      Enabled: true
+      Formation: Skirmisher
+      ID: ab0fb1fb-ecd9-4ed0-9822-27b7682d1742
+      Name: '{=4JffsJMD}looter'
+      PassivePower:
+        Name: '{=nmjVjakS}Grenades'
+        Powers:
+        - PowerID: bd57817e-6bb4-4412-ac8d-36d6ced6193a
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 1
+            MinLevel: 1
+        - PowerID: 52e0f85f-c29a-413a-883c-0de4c7f12ead
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 2
+            MinLevel: 2
+        - PowerID: 88aaee42-f3ef-4fff-8320-cc06ceb3d9b5
+          Requirements:
+          - !ClassLevelRequirement
+            MaxLevel: 3
+            MinLevel: 3
+      Slot1: Stone
+      Slot2: Stone
+      Slot3: Stone
+      Slot4: Stone
+      UseCamel: false
+      UseHorse: false
+    ClassLevelRequirements:
+    - ClassLevel: 1
+      Enabled: true
+      ID: 96288bce-e636-4378-bc99-155fe3c2f8fa
+      Requirements:
+      - !StatisticClassSpecificRequirement
+        Comparison: GreaterOrEqual
+        CurrentClass: true
+        OtherStatistic: None
+        RequiredClass: 00000000-0000-0000-0000-000000000000
+        Statistic: Battles
+        Value: 5
+    - ClassLevel: 2
+      Enabled: true
+      ID: f7b334b7-d742-4eba-97b2-c273976d6b42
+      Requirements:
+      - !StatisticClassSpecificRequirement
+        Comparison: GreaterOrEqual
+        CurrentClass: true
+        OtherStatistic: None
+        RequiredClass: 00000000-0000-0000-0000-000000000000
+        Statistic: Battles
+        Value: 20
+    - ClassLevel: 3
+      Enabled: true
+      ID: 875963e9-8871-410c-bc51-c15e0accfcd4
+      Requirements:
+      - !StatisticClassSpecificRequirement
+        Comparison: GreaterOrEqual
+        CurrentClass: true
+        OtherStatistic: None
+        RequiredClass: 00000000-0000-0000-0000-000000000000
+        Statistic: Battles
+        Value: 50
+  Id: Adopt A Hero - Class Config
+- Config:
+    DisableEffectsInTournaments: true
+  Id: Buffet - Effects Config
+Rewards:
+- Documentation: '{=dirEUQc7}Get a hero in game. Almost all other actions require an adopted hero.'
+  Enabled: true
+  Handler: AdoptAHero
+  HandlerConfig:
+    AllowMinorFactionHero: false
+    AllowNoble: true
+    AllowPartyLeader: false
+    AllowPlayerCompanion: false
+    AllowWanderer: true
+    CreateNew: false
+    Inheritance: 0.25
+    MaxInheritedCustomItems: 2
+    MinSubscribedMonths: 
+    OnlySameFaction: false
+    OverrideAge: true
+    StartingAgeRange:
+      Max: 35
+      Min: 18
+    StartingClass: 00000000-0000-0000-0000-000000000000
+    StartingEquipmentTier: 1
+    StartingGold: 0
+    StartingSkills:
+    - MaxLevel: 50
+      MinLevel: 25
+      Skill: Melee
+    - MaxLevel: 50
+      MinLevel: 25
+      Skill: Ranged
+    - MaxLevel: 50
+      MinLevel: 25
+      Skill: Athletics
+    - MaxLevel: 50
+      MinLevel: 25
+      Skill: Riding
+    SubscriberOnly: false
+    ViewerSelects: Nothing
+  ID: e072adb0-83a2-4408-87bb-b2cff3f12ee2
+  RespondInOverlay: true
+  RespondInTwitch: true
+  RewardSpec:
+    BackgroundColorText: '#FF000000'
+    Cost: 75
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 
+    IsEnabled: true
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    Prompt: '{=kL65xglO}Get a hero in game. Almost all other actions require an adopted hero.'
+    Title: '{=Yc9dn4Sx}Adopt a Hero'
+- Documentation: '{=sfRvB3aN}Get a hero in game with a specific faction. Almost all other actions require an adopted hero.'
+  Enabled: true
+  Handler: AdoptAHero
+  HandlerConfig:
+    AllowMinorFactionHero: false
+    AllowNoble: true
+    AllowPartyLeader: false
+    AllowPlayerCompanion: false
+    AllowWanderer: false
+    CreateNew: false
+    Inheritance: 0.25
+    MaxInheritedCustomItems: 2
+    MinSubscribedMonths: 
+    OnlySameFaction: false
+    OverrideAge: true
+    StartingAgeRange:
+      Max: 35
+      Min: 18
+    StartingClass: 00000000-0000-0000-0000-000000000000
+    StartingEquipmentTier: 1
+    StartingGold: 0
+    StartingSkills:
+    - MaxLevel: 50
+      MinLevel: 25
+      Skill: Melee
+    - MaxLevel: 50
+      MinLevel: 25
+      Skill: Ranged
+    - MaxLevel: 50
+      MinLevel: 25
+      Skill: Athletics
+    - MaxLevel: 50
+      MinLevel: 25
+      Skill: Riding
+    SubscriberOnly: false
+    ViewerSelects: Faction
+  ID: 55918467-fe58-49a0-a354-57af0be6cd24
+  RespondInOverlay: true
+  RespondInTwitch: true
+  RewardSpec:
+    BackgroundColorText: 
+    Cost: 100
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 
+    IsEnabled: true
+    IsUserInputRequired: true
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    Prompt: '{=1ODCoogZ}Get a hero in game with a specific faction. Almost all other actions require an adopted hero. Enter part of the faction name:'
+    Title: '{=YLbN9TP6}Adopt a Faction Hero'
+- Documentation: '{=QvsPkvip}Get a hero in game with a specific culture. Almost all other actions require an adopted hero.'
+  Enabled: true
+  Handler: AdoptAHero
+  HandlerConfig:
+    AllowMinorFactionHero: false
+    AllowNoble: true
+    AllowPartyLeader: false
+    AllowPlayerCompanion: false
+    AllowWanderer: true
+    CreateNew: false
+    Inheritance: 0.25
+    MaxInheritedCustomItems: 2
+    MinSubscribedMonths: 
+    OnlySameFaction: false
+    OverrideAge: true
+    StartingAgeRange:
+      Max: 35
+      Min: 18
+    StartingClass: 00000000-0000-0000-0000-000000000000
+    StartingEquipmentTier: 1
+    StartingGold: 0
+    StartingSkills:
+    - MaxLevel: 50
+      MinLevel: 25
+      Skill: Melee
+    - MaxLevel: 50
+      MinLevel: 25
+      Skill: Ranged
+    - MaxLevel: 50
+      MinLevel: 25
+      Skill: Athletics
+    - MaxLevel: 50
+      MinLevel: 25
+      Skill: Riding
+    SubscriberOnly: false
+    ViewerSelects: Culture
+  ID: eafbd312-1127-4930-bca0-47b83e205c7b
+  RespondInOverlay: true
+  RespondInTwitch: true
+  RewardSpec:
+    BackgroundColorText: 
+    Cost: 100
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 
+    IsEnabled: true
+    IsUserInputRequired: true
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    Prompt: '{=6amYI1lf}Get a hero in game with a specific culture. Almost all other actions require an adopted hero. Enter part of the culture name:'
+    Title: '{=SbhEiAC3}Adopt a Culture Hero'
+- Documentation: '{=Hbk74nei}Adds 100,000 gold to your adopted hero.'
+  Enabled: true
+  Handler: AddGoldToHero
+  HandlerConfig:
+    Amount: 100000
+  ID: 2ccc7258-ad66-4afa-a45a-93863c1d7f35
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
+    BackgroundColorText: '#FF000000'
+    Cost: 50
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 
+    IsEnabled: true
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 1
+    Prompt: Add 100,000 gold to your adopted hero, once per stream
+    Title: Daily Gold
+- Documentation: '{=nI4dr4uZ}Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue).'
+  Enabled: true
+  Handler: SummonHero
+  HandlerConfig:
+    AlertSound: None
+    AllowFieldBattle: true
+    AllowFriendlyMission: true
+    AllowHideOut: true
+    AllowSiegeBattle: true
+    AllowVillageBattle: true
+    AllowWhenDepleted: false
+    GoldCost: 0
+    HealPerSecond: 0
+    OnPlayerSide: true
+    PreferredFormation: LightCavalry
+  ID: 77c1dbd8-02cb-47d7-9796-7308e989b7f3
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
+    BackgroundColorText: 
+    Cost: 24
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 
+    IsEnabled: true
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    Prompt: '{=zmxI41XP}Your adopted hero joins the players side in battle'
+    Title: '{=dpnWybop}Summon'
+- Documentation: '{=flQofEFu}Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue).'
+  Enabled: true
+  Handler: SummonHero
+  HandlerConfig:
+    AlertSound: None
+    AllowFieldBattle: true
+    AllowFriendlyMission: true
+    AllowHideOut: true
+    AllowSiegeBattle: true
+    AllowVillageBattle: true
+    AllowWhenDepleted: false
+    GoldCost: 0
+    HealPerSecond: 0
+    OnPlayerSide: false
+    PreferredFormation: LightCavalry
+  ID: 422cc8d9-84cb-4cc9-afdf-889e615fdea6
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
+    BackgroundColorText: 
+    Cost: 25
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 
+    IsEnabled: true
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    Prompt: '{=ry25StNF}Your adopted hero joins the enemies side in battle'
+    Title: '{=IrF1VaBD}Attack'
+- Documentation: "{=zLxgvsYd}Heals the streamers character in battle, over time. Doesn't work on the campaign map."
+  Enabled: true
+  Handler: CharacterEffect
+  HandlerConfig:
+    ActivateParticleEffect: psys_game_stone_water_coll
+    ActivateSound: 
+    DamageMultiplier: 
+    DamagePerSecond: 0
+    DeactivateParticleEffect: 
+    DeactivateSound: 
+    Duration: 15
+    ForceDropWeapons: false
+    HealPerSecond: 2
+    Name: Healing
+    ParticleEffects:
+    - AttachPoint: OnBody
+      Name: psys_bug_fly_1
+    Properties: 
+    RemoveArmor: false
+    Target: Player
+    TargetOnFootOnly: false
+  ID: f0b482c2-e121-4415-a2a6-95e592a4d7a9
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
+    BackgroundColorText: 
+    Cost: 100
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 
+    IsEnabled: true
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    Prompt: '{=a8DqM6AY}Heal the streamer over time'
+    Title: '{=MSpPJJhZ}Heal Streamer'
+- Documentation: '{=KaE947T9}Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament.'
+  Enabled: true
+  Handler: JoinTournament
+  HandlerConfig:
+    GoldCost: 0
+  ID: e1d775d0-0d60-4e12-baa7-39f0e791293a
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
+    BackgroundColorText: 
+    Cost: 26
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 
+    IsEnabled: true
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    Prompt: '{=ODfWfHln}Join the tournament queue with your adopted hero'
+    Title: '{=IBrMU0VF}Tournament'
+- Documentation: '{=5L3LWrUx}Sends a message in the game. If you have a hero then it will also show them next to the message.'
+  Enabled: true
+  Handler: SendMessage
+  HandlerConfig:
+    AlertSound: Notification1
+  ID: 1b1f00fe-fff8-4f76-8c09-8da0fd18c53b
+  RespondInOverlay: false
+  RespondInTwitch: false
+  RewardSpec:
+    BackgroundColorText: 
+    Cost: 100
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 15
+    IsEnabled: true
+    IsUserInputRequired: true
+    MaxPerStream: 
+    MaxPerUserPerStream: 10
+    Prompt: '{=m9IFHkZh}Enter Message'
+    Title: '{=FFvfbTgo}Send Message In Game'
+- Documentation: '{=SXzjFdG1}Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritence rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete.'
+  Enabled: true
+  Handler: RetireMyHero
+  HandlerConfig: 
+  ID: 60d43b2b-d1cb-4411-a126-d5089c264aca
+  RespondInOverlay: true
+  RespondInTwitch: true
+  RewardSpec:
+    BackgroundColorText: 
+    Cost: 500
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 60
+    IsEnabled: true
+    IsUserInputRequired: true
+    MaxPerStream: 
+    MaxPerUserPerStream: 3
+    Prompt: '{=ZNGav9pi}Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel'
+    Title: '{=AZMDg7St}Retire My Hero'
+- Documentation: '{=ZfhTuaRR}Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly choosen, but influenced by your class and existing skills and equipment.'
+  Enabled: true
+  Handler: SkillXP
+  HandlerConfig:
+    AmountHigh: 50000
+    AmountLow: 50000
+    Auto: true
+    GoldCost: 0
+    Skills: None
+  ID: fe103fc4-fcaa-4e0d-809d-235d22676b6a
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
+    BackgroundColorText: '#FF000000'
+    Cost: 50
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 
+    IsEnabled: true
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 1
+    Prompt: Add 50,000 XP to a random skill of your adopted hero, once per stream
+    Title: Daily XP
+- Documentation: ''
+  Enabled: false
+  Handler: CharacterEffect
+  HandlerConfig:
+    ActivateParticleEffect: psys_burning_projectile_default_coll_small
+    ActivateSound: 
+    DamageMultiplier: 2
+    DamagePerSecond: 1
+    DeactivateParticleEffect: 
+    DeactivateSound: 
+    Duration: 30
+    ForceDropWeapons: false
+    HealPerSecond: 0
+    Name: Burn Player
+    ParticleEffects:
+    - AttachPoint: OnBody
+      Name: psys_campfire
+    Properties:
+    - Add: 
+      Multiply: 2
+      Name: MaxSpeedMultiplier
+    - Add: 
+      Multiply: 2
+      Name: SwingSpeedMultiplier
+    RemoveArmor: false
+    Target: Player
+    TargetOnFootOnly: false
+  ID: 5af6308d-ce73-402d-aa29-2a9e0d9ad7e8
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
+    BackgroundColorText: 
+    Cost: 5000
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 300
+    IsEnabled: true
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 1
+    Prompt: ''
+    Title: '{=2ciF79zR}Burn Player'
+- Documentation: '{=pFwSBHnR}Heals your hero over time. Only works in battle, when your hero is summoned.'
+  Enabled: true
+  Handler: CharacterEffect
+  HandlerConfig:
+    ActivateParticleEffect: psys_game_stone_water_coll
+    ActivateSound: 
+    DamageMultiplier: 
+    DamagePerSecond: 0
+    DeactivateParticleEffect: 
+    DeactivateSound: 
+    Duration: 10
+    ForceDropWeapons: false
+    HealPerSecond: 6
+    Name: Healing
+    ParticleEffects: 
+    Properties: 
+    RemoveArmor: false
+    Target: AdoptedHero
+    TargetOnFootOnly: false
+  ID: 6e75b94c-23cf-43cf-a647-2df806460874
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
+    BackgroundColorText: 
+    Cost: 100
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 
+    IsEnabled: true
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    Prompt: ''
+    Title: '{=likTlNpu}Heal Hero'
+- Documentation: '{=CSmE7Y50}Transfer 10,000 gold to the streamers character, from your hero.'
+  Enabled: true
+  Handler: AddGoldToPlayer
+  HandlerConfig:
+    AlertSound: Notification1
+    FromAdoptedHero: true
+    GoldAmountToGive: 10000
+  ID: 4ff890a2-ff83-41fa-9441-156f32abd9e8
+  RespondInOverlay: true
+  RespondInTwitch: true
+  RewardSpec:
+    BackgroundColorText: 
+    Cost: 100
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 
+    IsEnabled: true
+    IsUserInputRequired: true
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    Prompt: '{=1IDV1dAh}Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:'
+    Title: '{=9DoHhKeh}Give Player Gold'
+- Documentation: '{=LO6Q2DCb}Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay.'
+  Enabled: true
+  Handler: UsePower
+  HandlerConfig: 
+  ID: 6f53994c-4513-4b81-95a3-21493d35b25d
+  RespondInOverlay: true
+  RespondInTwitch: false
+  RewardSpec:
+    BackgroundColorText: 
+    Cost: 75
+    DisableAutomaticFulfillment: false
+    GlobalCooldownSeconds: 
+    IsEnabled: true
+    IsUserInputRequired: false
+    MaxPerStream: 
+    MaxPerUserPerStream: 
+    Prompt: '{=x5Agf9Wl}Activate your class power on your hero, if you have one.'
+    Title: '{=yoZSmM0b}Use Class Power'
+SimTesting:
+  Init:
+  - Args: ''
+    Enabled: true
+    Id: Adopt a Hero
+    ID: b50d0749-add5-458c-b3d4-c957f4bb85f3
+    Type: Reward
+    Weight: 0
+  - Args: ''
+    Enabled: true
+    Id: Daily Gold
+    ID: 7698ddba-b00b-4243-bd54-3dc97a4e73cf
+    Type: Reward
+    Weight: 0
+  - Args: ''
+    Enabled: false
+    Id: retinue
+    ID: a9933fab-58d4-492a-93fb-34c0d6606c09
+    Type: Command
+    Weight: 0
+  - Args: ''
+    Enabled: true
+    Id: '{=IBrMU0VF}Tournament'
+    ID: ca586ddf-b9b0-4c59-954c-d166f5c9b644
+    Type: Reward
+    Weight: 0
+  - Args: '{=4tflp34a}archer'
+    Enabled: false
+    Id: '{=nV9iIsDC}class'
+    ID: 0c4706d4-882f-40ba-b2ec-6077a957fc78
+    Type: Command
+    Weight: 1
+  - Args: ''
+    Enabled: false
+    Id: Summon
+    ID: f478486b-06ba-4d97-bb27-774cf985dd0c
+    Type: Reward
+    Weight: 1
+  - Args: ''
+    Enabled: true
+    Id: buymount
+    ID: d95e0ecc-ec57-4196-8738-22522b3001ef
+    Type: Command
+    Weight: 1
+  IntervalMaxMS: 500
+  IntervalMinMS: 50
+  Use:
+  - Args: ''
+    Enabled: true
+    Id: '{=IrF1VaBD}Attack'
+    ID: 0711448a-2d82-42f2-b0e9-3e22faef2850
+    Type: Reward
+    Weight: 1
+  - Args: ''
+    Enabled: true
+    Id: '{=dpnWybop}Summon'
+    ID: 8e98ab07-c93a-42a2-8a58-278028b48565
+    Type: Reward
+    Weight: 1
+  - Args: ''
+    Enabled: false
+    Id: Daily Gold
+    ID: 7dc0e816-b2ec-42a4-ab70-b4e00c8501ba
+    Type: Reward
+    Weight: 1
+  - Args: ''
+    Enabled: true
+    Id: '{=wHqxd4kb}equip'
+    ID: 06539d16-25cb-4314-8cdd-4aada76b27bc
+    Type: Command
+    Weight: 0.400000006
+  - Args: ''
+    Enabled: false
+    Id: '{=fGfTaAoD}reequip'
+    ID: 76efdf69-6fc5-4163-8271-4540402f28b3
+    Type: Command
+    Weight: 0.100000001
+  - Args: ''
+    Enabled: true
+    Id: '{=IBrMU0VF}Tournament'
+    ID: 4e066d86-ecac-48c2-9406-0ed931f14756
+    Type: Reward
+    Weight: 0.200000003
+  - Args: ''
+    Enabled: true
+    Id: '{=mge9rH9J}retinue'
+    ID: 9513732e-6522-429c-ab92-e1eab16518ef
+    Type: Command
+    Weight: 0.200000003
+  - Args: '{=xSbB2Zw5}yes'
+    Enabled: false
+    Id: '{=AZMDg7St}Retire My Hero'
+    ID: 4e5da88a-b670-4d59-9c89-820e24fb0ab1
+    Type: Reward
+    Weight: 0.00999999978
+  - Args: ''
+    Enabled: false
+    Id: '{=Yc9dn4Sx}Adopt a Hero'
+    ID: df2ee94a-7262-47d5-a97c-f09034d36240
+    Type: Reward
+    Weight: 0.00999999978
+  - Args: ''
+    Enabled: true
+    Id: '{=MSpPJJhZ}Heal Streamer'
+    ID: f1f5a043-fdf6-43e5-9fe5-e70009c56bf5
+    Type: Reward
+    Weight: 0.0500000007
+  - Args: '{=m8bz4drX}infantry'
+    Enabled: true
+    Id: '{=nV9iIsDC}class'
+    ID: a67ca1e9-d434-4af1-a3b6-69979b72d804
+    Type: Command
+    Weight: 0.100000001
+  - Args: '{=4tflp34a}archer'
+    Enabled: true
+    Id: '{=nV9iIsDC}class'
+    ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
+    Type: Command
+    Weight: 0.100000001
+  - Args: '{=JncRD8tX}heavyarcher'
+    Enabled: true
+    Id: '{=nV9iIsDC}class'
+    ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
+    Type: Command
+    Weight: 0.100000001
+  - Args: '{=wV6R9Si5}crossbow'
+    Enabled: true
+    Id: '{=nV9iIsDC}class'
+    ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
+    Type: Command
+    Weight: 0.100000001
+  - Args: '{=bpzytNbP}heavycrossbow'
+    Enabled: true
+    Id: '{=nV9iIsDC}class'
+    ID: 5e33c3f4-40de-44cd-8cf8-493f304c203a
+    Type: Command
+    Weight: 0.100000001
+  - Args: '{=jNaFWF9t}cavalry'
+    Enabled: true
+    Id: '{=nV9iIsDC}class'
+    ID: 6162aec8-8ffd-4d65-bcdd-0529081528ee
+    Type: Command
+    Weight: 0.100000001
+  - Args: '{=mJ8RVORq}camelry'
+    Enabled: true
+    Id: '{=nV9iIsDC}class'
+    ID: 6162aec8-8ffd-4d65-bcdd-0529081528ee
+    Type: Command
+    Weight: 0.100000001
+  - Args: '{=p5qJfkkp}horsearcher'
+    Enabled: true
+    Id: '{=nV9iIsDC}class'
+    ID: 2e320a55-f238-4d01-86de-c734d29bf7a5
+    Type: Command
+    Weight: 0.100000001
+  - Args: '{=HreZWoyd}camelarcher'
+    Enabled: true
+    Id: '{=nV9iIsDC}class'
+    ID: 2e320a55-f238-4d01-86de-c734d29bf7a5
+    Type: Command
+    Weight: 0.100000001
+  - Args: '{=9euSgzCd}skirmisher'
+    Enabled: true
+    Id: '{=nV9iIsDC}class'
+    ID: 7032b576-86b5-4540-b0b8-5d933f0fd87a
+    Type: Command
+    Weight: 0.100000001
+  - Args: '{=wVjXAFal}berserker'
+    Enabled: true
+    Id: '{=nV9iIsDC}class'
+    ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
+    Type: Command
+    Weight: 0.100000001
+  - Args: '{=4JffsJMD}looter'
+    Enabled: true
+    Id: '{=nV9iIsDC}class'
+    ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
+    Type: Command
+    Weight: 0.100000001
+  - Args: ''
+    Enabled: true
+    Id: '{=likTlNpu}Heal Hero'
+    ID: 584c161e-da84-46af-8fa4-3aeb3768663b
+    Type: Reward
+    Weight: 0.0500000007
+  - Args: ''
+    Enabled: true
+    Id: '{=yoZSmM0b}Use Class Power'
+    ID: d701da05-a87d-4f81-a94c-07aadb937636
+    Type: Reward
+    Weight: 0.5
+  - Args: ''
+    Enabled: false
+    Id: smithweapon
+    ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
+    Type: Command
+    Weight: 0.100000001
+  - Args: ''
+    Enabled: false
+    Id: smitharmor
+    ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
+    Type: Command
+    Weight: 0.100000001
+  - Args: ''
+    Enabled: false
+    Id: smithsale
+    ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
+    Type: Command
+    Weight: 0.100000001
+  - Args: ''
+    Enabled: false
+    Id: buymount
+    ID: 71a8a8de-3be2-4e3c-8844-60bf9e9f08d7
+    Type: Command
+    Weight: 0.100000001
+  UserCount: 20
+  UserStayTime: 300

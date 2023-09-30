@@ -112,9 +112,15 @@ namespace BLTConfigure.UI
 
         private void CollectionPropertyEditor_OpenCollectionEditor(object sender, CollectionPropertyEditor.OpenCollectionEditorEventArgs e)
         {
-            this.NavigationService?.Navigate(new CollectionEditorPage(
+            NavigationService?.Navigate(new CollectionEditorPage(
                 e.PropertyName.Yield(), e.ItemsSource, e.ItemsSourceType, e.NewItemTypes
             ));
+        }
+
+        private void SaveButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            Model.SaveSettings();
+            Model.SaveAuth();
         }
     }
 }

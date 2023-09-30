@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="简体中文"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Common -->
+        <!-- Fireblade -->
+        <string id="yEtkv5ML" text="火刃" original="Fireblade"/>
+        <!-- infantry -->
+        <string id="m8bz4drX" text="步兵" original="infantry"/>
+        <!-- Healthy -->
+        <string id="ROXuJJq8" text="健康" original="Healthy"/>
+        <!-- Explosive Arrows -->
+        <string id="skyn1cL6" text="爆炸箭" original="Explosive Arrows"/>
+        <!-- archer -->
+        <string id="4tflp34a" text="射手" original="archer"/>
+        <!-- Fleet Footed -->
+        <string id="NE9Li2Hb" text="舰队步兵" original="Fleet Footed"/>
+        <!-- Explosive Arrows -->
+        <string id="xgnH5owv" text="爆炸箭" original="Explosive Arrows"/>
+        <!-- heavyarcher -->
+        <string id="JncRD8tX" text="重射手" original="heavyarcher"/>
+        <!-- Healthy -->
+        <string id="ZrmsIMPE" text="健康" original="Healthy"/>
+        <!-- Heavy Bolts -->
+        <string id="QZD9XdpC" text="重螺栓" original="Heavy Bolts"/>
+        <!-- crossbow -->
+        <string id="wV6R9Si5" text="弩" original="crossbow"/>
+        <!-- Self Healing -->
+        <string id="FvNPPHLJ" text="自愈" original="Self Healing"/>
+        <!-- Explosive Bolts -->
+        <string id="7GmE3SfQ" text="爆炸螺栓" original="Explosive Bolts"/>
+        <!-- heavycrossbow -->
+        <string id="bpzytNbP" text="重弩" original="heavycrossbow"/>
+        <!-- Healthy -->
+        <string id="k7booFb2" text="健康" original="Healthy"/>
+        <!-- Trample -->
+        <string id="ZEGEpycY" text="践踏" original="Trample"/>
+        <!-- cavalry -->
+        <string id="jNaFWF9t" text="骑兵" original="cavalry"/>
+        <!-- A Good Horse -->
+        <string id="YghplAdF" text="一匹好马" original="A Good Horse"/>
+        <!-- Trample -->
+        <string id="mmeJSrm9" text="践踏" original="Trample"/>
+        <!-- camelry -->
+        <string id="mJ8RVORq" text="骆驼" original="camelry"/>
+        <!-- A Good Camel -->
+        <string id="atGMPeNF" text="好骆驼" original="A Good Camel"/>
+        <!-- Explosive Arrows -->
+        <string id="YpIUHASp" text="爆炸箭" original="Explosive Arrows"/>
+        <!-- horsearcher -->
+        <string id="p5qJfkkp" text="骑马者" original="horsearcher"/>
+        <!-- Mounted Archery -->
+        <string id="zxgdfSIS" text="骑射射箭" original="Mounted Archery"/>
+        <!-- Heavy Arrows -->
+        <string id="FrX7AiyI" text="重箭" original="Heavy Arrows"/>
+        <!-- camelarcher -->
+        <string id="HreZWoyd" text="骆驼商" original="camelarcher"/>
+        <!-- Mounted Archery -->
+        <string id="szdoTAQj" text="骑射射箭" original="Mounted Archery"/>
+        <!-- Break Through -->
+        <string id="E3qGC3fs" text="突破" original="Break Through"/>
+        <!-- skirmisher -->
+        <string id="9euSgzCd" text="前卫" original="skirmisher"/>
+        <!-- Retribution -->
+        <string id="Lw8xQu1P" text="报应" original="Retribution"/>
+        <!-- Berserker Rage -->
+        <string id="1DSLInEJ" text="狂暴之怒" original="Berserker Rage"/>
+        <!-- berserker -->
+        <string id="wVjXAFal" text="狂战士" original="berserker"/>
+        <!-- Glass Cannon -->
+        <string id="nB4Qb0mD" text="玻璃大炮" original="Glass Cannon"/>
+        <!-- Retribution -->
+        <string id="rzIl9tm3" text="报应" original="Retribution"/>
+        <!-- looter -->
+        <string id="4JffsJMD" text="掠夺者" original="looter"/>
+        <!-- Grenades -->
+        <string id="nmjVjakS" text="手榴弹" original="Grenades"/>
+    </strings>
+</base>

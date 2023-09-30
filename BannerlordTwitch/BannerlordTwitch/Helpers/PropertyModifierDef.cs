@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
@@ -12,20 +12,22 @@ namespace BannerlordTwitch.Helpers
 {
     public class PropertyModifierDef : ICloneable, INotifyPropertyChanged
     {
-        [Description("The property to modify"),
+        [LocDisplayName("{=ncGFtcFp}Name"), 
+         LocDescription("{=SUI6n33o}The property to modify"),
          ItemsSource(typeof(DrivenPropertyItemSource)),
          PropertyOrder(1), UsedImplicitly]
         public DrivenProperty Name { get; set; } = DrivenProperty.ArmorHead;
 
-        [Description("Percent modifier to apply to the property (100% will result in no chance)"),
+        [LocDisplayName("{=RgtZnxLU}ModifierPercent"), 
+         LocDescription("{=fDNljlb9}Percent modifier to apply to the property (100% will result in no chance)"),
          PropertyOrder(2),
          UIRange(0, 1000, 5f),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          UsedImplicitly, Document]
         public float ModifierPercent { get; set; } = 100f;
         
-        [Description("How much to add or subtract from the property (0 will result in no change). " +
-                     "This is applied AFTER Modifier."),
+        [LocDisplayName("{=uNduKTKf}Add"), 
+         LocDescription("{=CBWdKoGD}How much to add or subtract from the property (0 will result in no change). This is applied AFTER Modifier."),
          PropertyOrder(3),
          UsedImplicitly, Document]
         public float Add { get; set; }
@@ -45,7 +47,7 @@ namespace BannerlordTwitch.Helpers
                 if (Add != 0) result += Add > 0 ? $"+{Add}" : $"{Add}";
                 if (ModifierPercent == 100 && Add == 0)
                 {
-                    result += "(no change)";
+                    result += "{=usihVSj3}(no change)".Translate();
                 }
                 return result;
             }

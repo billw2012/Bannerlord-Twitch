@@ -1,4 +1,5 @@
 ﻿using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.GameState;
 using TaleWorlds.Core;
 
 namespace BLTAdoptAHero.Util
@@ -10,7 +11,7 @@ namespace BLTAdoptAHero.Util
             if (gsm.ActiveState is InventoryState inventoryState
                 && (adoptedHero == null || inventoryState.InventoryLogic?.OwnerCharacter == adoptedHero.CharacterObject))
             {
-                inventoryState.InventoryLogic?.Reset();
+                inventoryState.InventoryLogic?.Reset(false);
             }
         }
     }

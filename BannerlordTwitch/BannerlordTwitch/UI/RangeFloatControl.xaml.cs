@@ -28,6 +28,9 @@ namespace BannerlordTwitch.UI
             get => Value.Max;
             set => Value = new RangeFloat(Min, value);
         }
+
+        public string MinLabel => "{=TZN2VR8Q}Min".Translate();
+        public string MaxLabel => "{=bySwFF1n}Max".Translate();
         
         public RangeFloatControl()
         {

@@ -1,53 +1,52 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
 
 namespace BLTAdoptAHero
 {
-    [UsedImplicitly, Description("Allows viewers to discard one of their own custom items")]
+    [LocDisplayName("{=fmftNyHh}Discard Item"),
+     LocDescription("{=f3LrrLHP}Allows viewers to discard one of their own custom items"), 
+     UsedImplicitly]
     public class DiscardItem : HeroCommandHandlerBase
     {
         protected override void ExecuteInternal(Hero adoptedHero, ReplyContext context, object config, 
             Action<string> onSuccess, Action<string> onFailure)
         {
-            var customItems = 
-                BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero).ToList();
-
-            if (!customItems.Any())
-            {
-                ActionManager.SendReply(context, $"You have no items to discard");
-                return;
-            }
+            // var customItems = 
+            //     BLTAdoptAHeroCampaignBehavior.Current.GetCustomItems(adoptedHero).ToList();
+            //
+            // if (!customItems.Any())
+            // {
+            //     ActionManager.SendReply(context, "{=oXQ4En4P}You have no items to discard".Translate());
+            //     return;
+            // }
 
             if (string.IsNullOrWhiteSpace(context.Args))
             {
-                ActionManager.SendReply(context, 
-                    $"Usage: !{((Command)context.Source).Name} (partial item name)");
+                ActionManager.SendReply(context, context.ArgsErrorMessage("{=by80aboy}(custom item index)".Translate()));
                 return;
             }
-
-            var matchingItems = customItems.Where(i => i.GetModifiedItemName()
-                    .ToString().IndexOf(context.Args, StringComparison.CurrentCultureIgnoreCase) >= 0)
-                .ToList();
-
-            if (matchingItems.Count == 0)
-            {
-                ActionManager.SendReply(context, $"No items found matching \"{context.Args}\"");
-                return;
-            }
-            if (matchingItems.Count > 1)
-            {
-                ActionManager.SendReply(context, $"{matchingItems.Count} items found matching \"{context.Args}\", be more specific");
-                return; 
-            }
-            var item = matchingItems.First();
-            BLTAdoptAHeroCampaignBehavior.Current.DiscardCustomItem(adoptedHero, item);
             
-            ActionManager.SendReply(context, $"\"{item.GetModifiedItemName()}\" was discarded");
+            (var element, string error) = BLTAdoptAHeroCampaignBehavior.Current.FindCustomItemByIndex(adoptedHero, context.Args);
+            if (element.IsEqualTo(EquipmentElement.Invalid))
+            {
+                ActionManager.SendReply(context, error ?? "(unknown error)");
+                return;
+            }
+            
+            BLTAdoptAHeroCampaignBehavior.Current.DiscardCustomItem(adoptedHero, element);
+            
+            ActionManager.SendReply(context, 
+                "{=bNqd3AzN}'{ItemName}' was discarded"
+                    .Translate(
+                        ("ItemName", RewardHelpers.GetItemNameAndModifiers(element))
+                        ));
         }
     }
 }

@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Italiano"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- AddGoldToPlayer -->
+        <!-- Add Gold To Player -->
+        <string id="HSuPuNDk" text="Aggiungi oro al giocatore" original="Add Gold To Player"/>
+        <!-- Allows viewers to give the player gold, either for channel points and/or from their own hero -->
+        <string id="wqR23RYf" text="Consente agli spettatori di dare oro al giocatore, sia per i punti canale che per il proprio eroe" original="Allows viewers to give the player gold, either for channel points and/or from their own hero"/>
+        <!-- Gold Amount To Give -->
+        <string id="F51J5Qd5" text="Quantità d'oro da dare" original="Gold Amount To Give"/>
+        <!-- How much gold to give the player -->
+        <string id="Jg6qoYth" text="Quanto oro dare al giocatore" original="How much gold to give the player"/>
+        <!-- From Adopted Hero -->
+        <string id="yGnwXshi" text="Da eroe adottato" original="From Adopted Hero"/>
+        <!-- Whether to take the gold from the viewers adopted hero -->
+        <string id="uL8hjmZ9" text="Se prendere l'oro dagli spettatori adottati eroe" original="Whether to take the gold from the viewers adopted hero"/>
+        <!-- Alert Sound -->
+        <string id="sNkcGnrw" text="Suono di avviso" original="Alert Sound"/>
+        <!-- Alert sound to play for the message -->
+        <string id="TSi4MZiT" text="Suono di avviso da riprodurre per il messaggio" original="Alert sound to play for the message"/>
+        <!-- {UserName} gives you {GoldAmountToGive} gold -->
+        <string id="awjXw6yr" text="{UserName} gives you {GoldAmountToGive} oro" original="{UserName} gives you {GoldAmountToGive} gold"/>
+        <!-- {UserName} gives you {GoldAmountToGive} gold: '{Message}' -->
+        <string id="jOqdrS7h" text="{UserName} gives you {GoldAmountToGive} gold: '{Message}'" original="{UserName} gives you {GoldAmountToGive} gold: '{Message}'"/>
+        <!-- Sent {GoldAmountToGive}{GoldIcon} to {PlayerName} -->
+        <string id="ziWoNEec" text="Inviato {GoldAmountToGive}{GoldIcon} to {PlayerName}" original="Sent {GoldAmountToGive}{GoldIcon} to {PlayerName}"/>
+        <!-- CharacterEffect -->
+        <!-- Applies effects to a character / the player -->
+        <string id="aGfP5X2q" text="Applica effetti a un personaggio/al giocatore" original="Applies effects to a character / the player"/>
+        <!-- No mission is active! -->
+        <string id="ZXxpMpYi" text="Nessuna missione è attiva!" original="No mission is active!"/>
+        <!-- Not allowed during tournament! -->
+        <string id="aK6wEWqw" text="Non consentito durante il torneo!" original="Not allowed during tournament!"/>
+        <!-- The mission has not started yet! -->
+        <string id="0H0dMWam" text="La missione non è ancora iniziata!" original="The mission has not started yet!"/>
+        <!-- The mission is ending! -->
+        <string id="f3Cwg2lw" text="La missione sta finendo!" original="The mission is ending!"/>
+        <!-- Couldn't find the target! -->
+        <string id="duuvGgDi" text="Impossibile trovare l'obiettivo!" original="Couldn't find the target!"/>
+        <!-- CharacterEffect {Source} configuration error: Name is missing! -->
+        <string id="hr0ye4gl" text="Errore di configurazione di CharacterEffect {Source}: Manca il nome!" original="CharacterEffect {Source} configuration error: Name is missing!"/>
+        <!-- {Target} already affected by {Config}! -->
+        <string id="yZuAmGOU" text="{Target} already affected by {Config}!" original="{Target} already affected by {Config}!"/>
+        <!-- {Target} is mounted so cannot be affected by {Config}! -->
+        <string id="gZtqmx0D" text="{Target} is mounted so cannot be affected by {Config}!" original="{Target} is mounted so cannot be affected by {Config}!"/>
+        <!-- {Config} is active on {Target}! -->
+        <string id="1S6mDVBM" text="{Config} is active on {Target}!" original="{Config} is active on {Target}!"/>
+        <!-- {Config} is active on {Target}! -->
+        <string id="uV2gZjHI" text="{Config} is active on {Target}!" original="{Config} is active on {Target}!"/>
+        <!-- {Config} expired on {Target}! -->
+        <string id="lpdl3sj9" text="{Config} expired on {Target}!" original="{Config} expired on {Target}!"/>
+        <!-- CharacterEffect.Config -->
+        <!-- Player -->
+        <string id="92tZqqRy" text="Giocatore" original="Player"/>
+        <!-- AdoptedHero -->
+        <string id="jyNFgLUD" text="Eroe Adottato" original="AdoptedHero"/>
+        <!-- Any -->
+        <string id="qVaXXiEf" text="Qualunque" original="Any"/>
+        <!-- EnemyTeam -->
+        <string id="Dc99H7LD" text="EnemyTeam" original="EnemyTeam"/>
+        <!-- PlayerTeam -->
+        <string id="mWL1kGwD" text="GiocatoreTeam" original="PlayerTeam"/>
+        <!-- AllyTeam -->
+        <string id="8rqexAvY" text="AllyTeam" original="AllyTeam"/>
+        <!-- Random -->
+        <string id="o3jTIv2S" text="A caso" original="Random"/>
+        <!-- On Weapon -->
+        <string id="ry3Fo3Ph" text="sull'arma" original="On Weapon"/>
+        <!-- On Hands -->
+        <string id="zfQ43utW" text="Sulle mani" original="On Hands"/>
+        <!-- On Head -->
+        <string id="P9e57ey1" text="Sulla testa" original="On Head"/>
+        <!-- On Body -->
+        <string id="GZC5VUo0" text="sul corpo" original="On Body"/>
+        <!-- Particle Effect Definition -->
+        <string id="F9u231DX" text="Definizione dell'effetto particellare" original="Particle Effect Definition"/>
+        <!-- Particle effect system name, see ParticleEffects.txt for the full vanilla list -->
+        <string id="8FGAgHIX" text="Nome del sistema dell'effetto particellare, vedere ParticleEffects.txt per l'elenco completo della vaniglia" original="Particle effect system name, see ParticleEffects.txt for the full vanilla list"/>
+        <!-- Attach Point -->
+        <string id="7MIO0dPq" text="Punto di attacco" original="Attach Point"/>
+        <!-- Where to attach the particles -->
+        <string id="jEEtBaKs" text="Dove attaccare le particelle" original="Where to attach the particles"/>
+        <!-- The property to modify -->
+        <string id="Dx5HUb1Q" text="L'immobile da modificare" original="The property to modify"/>
+        <!-- Add -->
+        <string id="Qu3sbJvR" text="Aggiungere" original="Add"/>
+        <!-- Add to the property value -->
+        <string id="anOigmfO" text="Aggiungi al valore della proprietà" original="Add to the property value"/>
+        <!-- Multiply -->
+        <string id="AQ7g1RuJ" text="Moltiplicare" original="Multiply"/>
+        <!-- Multiply the property value -->
+        <string id="35zcHc2g" text="Moltiplica il valore della proprietà" original="Multiply the property value"/>
+        <!-- Name to use when referring to this effect -->
+        <string id="KdxwhYu6" text="Nome da utilizzare quando si fa riferimento a questo effetto" original="Name to use when referring to this effect"/>
+        <!-- Target -->
+        <string id="hCfdaELu" text="Obbiettivo" original="Target"/>
+        <!-- Target of the effect -->
+        <string id="5bWknsD5" text="Obiettivo dell'effetto" original="Target of the effect"/>
+        <!-- Target On Foot Only -->
+        <string id="wbj9ztiI" text="Bersaglio solo a piedi" original="Target On Foot Only"/>
+        <!-- Will target unmounted soldiers only -->
+        <string id="RptjkipN" text="Prenderà di mira solo i soldati non a cavallo" original="Will target unmounted soldiers only"/>
+        <!-- Particle Effects -->
+        <string id="j7t8cjxA" text="Effetti delle particelle" original="Particle Effects"/>
+        <!-- Particle effects to apply -->
+        <string id="YiUto6gZ" text="Effetti particellari da applicare" original="Particle effects to apply"/>
+        <!-- Properties -->
+        <string id="CN0a7XhW" text="Proprietà" original="Properties"/>
+        <!-- Properties to change, and how much by -->
+        <string id="JrmttiBW" text="Proprietà da modificare e di quanto" original="Properties to change, and how much by"/>
+        <!-- Heal Per Second -->
+        <string id="trYxwNFg" text="Guarigione al secondo" original="Heal Per Second"/>
+        <!-- Heal amount per second -->
+        <string id="J19JbB4E" text="Quantità di guarigione al secondo" original="Heal amount per second"/>
+        <!-- Damage Per Second -->
+        <string id="6Ikuo9Yl" text="Danno per secondo" original="Damage Per Second"/>
+        <!-- Damage amount per second -->
+        <string id="cQBHZWwK" text="Quantità di danni al secondo" original="Damage amount per second"/>
+        <!-- Duration -->
+        <string id="KxP51isR" text="Durata" original="Duration"/>
+        <!-- Duration the effect will last for, if not specified the effect will last until the end of the mission -->
+        <string id="1pG6eydt" text="Durata dell'effetto, se non specificato l'effetto durerà fino alla fine della missione" original="Duration the effect will last for, if not specified the effect will last until the end of the mission"/>
+        <!-- Force Drop Weapons -->
+        <string id="rFxwAzgd" text="Armi a lancio forzato" original="Force Drop Weapons"/>
+        <!-- Force agent to drop weapons -->
+        <string id="ZW0x13Y8" text="Forza l'agente a lasciare le armi" original="Force agent to drop weapons"/>
+        <!-- Remove Armor -->
+        <string id="vZIAY076" text="Rimuovi armatura" original="Remove Armor"/>
+        <!-- Remove all armor -->
+        <string id="4kiY7cUb" text="Rimuovi tutte le armature" original="Remove all armor"/>
+        <!-- Damage Multiplier -->
+        <string id="jJpRuWKR" text="Moltiplicatore del danno" original="Damage Multiplier"/>
+        <!-- Raw damage multiplier -->
+        <string id="FlfyDMlc" text="Moltiplicatore del danno grezzo" original="Raw damage multiplier"/>
+        <!-- Activate Particle Effect -->
+        <string id="qWGAG5l8" text="Attiva effetto particella" original="Activate Particle Effect"/>
+        <!-- One shot vfx to apply when the effect is activated -->
+        <string id="6HT3lQbV" text="One shot vfx da applicare quando l'effetto è attivato" original="One shot vfx to apply when the effect is activated"/>
+        <!-- Activate Sound -->
+        <string id="deboEOcD" text="Attiva suono" original="Activate Sound"/>
+        <!-- Sound to play when effect is activated, see Sounds.txt for the full vanilla list -->
+        <string id="zZskrilN" text="Suono da riprodurre quando l'effetto è attivato, vedere Sounds.txt per l'elenco completo della vaniglia" original="Sound to play when effect is activated, see Sounds.txt for the full vanilla list"/>
+        <!-- Deactivate Particle Effect -->
+        <string id="FBH0P3a9" text="Disattiva effetto particella" original="Deactivate Particle Effect"/>
+        <!-- One shot vfx to apply when the effect is deactivated, see ParticleEffects.txt for the full vanilla list -->
+        <string id="u1eFzwLY" text="One shot vfx da applicare quando l'effetto è disattivato, vedere ParticleEffects.txt per l'elenco completo della vaniglia" original="One shot vfx to apply when the effect is deactivated, see ParticleEffects.txt for the full vanilla list"/>
+        <!-- Deactivate Sound -->
+        <string id="zfSYXHms" text="Disattiva audio" original="Deactivate Sound"/>
+        <!-- Sound to play when effect is deactivated, see Sounds.txt for the full vanilla list -->
+        <string id="ziMmWmmY" text="Suono da riprodurre quando l'effetto è disattivato, vedere Sounds.txt per l'elenco completo della vaniglia" original="Sound to play when effect is deactivated, see Sounds.txt for the full vanilla list"/>
+        <!-- SendMessage -->
+        <!-- Send Message -->
+        <string id="rXQWpj95" text="Invia messaggio" original="Send Message"/>
+        <!-- Allows viewers to send a message that will appear in game -->
+        <string id="htpylYKb" text="Consente agli spettatori di inviare un messaggio che apparirà nel gioco" original="Allows viewers to send a message that will appear in game"/>
+        <!-- Alert Sound -->
+        <string id="Anvcnpbh" text="Suono di avviso" original="Alert Sound"/>
+        <!-- Alert sound to play for the message -->
+        <string id="V36Hg85n" text="Suono di avviso da riprodurre per il messaggio" original="Alert sound to play for the message"/>
+        <!-- No message provided! -->
+        <string id="cA8NQlDm" text="Nessun messaggio fornito!" original="No message provided!"/>
+        <!-- Sent -->
+        <string id="tFHfVCDK" text="Inviato" original="Sent"/>
+        <!-- GlobalEffectsConfig -->
+        <!-- Effects Config -->
+        <string id="cBeIA9V1" text="Configurazione degli effetti" original="Effects Config"/>
+        <!-- Disable Effects In Tournaments -->
+        <string id="cUN7xx0t" text="Disattiva effetti nei tornei" original="Disable Effects In Tournaments"/>
+        <!-- Whether effects are disabled in a tournament -->
+        <string id="X0AtIvbh" text="Se gli effetti sono disabilitati in un torneo" original="Whether effects are disabled in a tournament"/>
+    </strings>
+</base>

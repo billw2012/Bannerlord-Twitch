@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Русский"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Don't worry, I've got your back! -->
+        <string id="DczOKFsA" text="Не волнуйся, я тебя поддержу!" original="Don't worry, I've got your back!"/>
+        <!-- I'm here! -->
+        <string id="pj9Z0M7G" text="Я здесь!" original="I'm here!"/>
+        <!-- Which one should I stab? -->
+        <string id="y8DOtj2H" text="Кого я должен нанести удар?" original="Which one should I stab?"/>
+        <!-- Need a hand? -->
+        <string id="1i1OrZDd" text="Нужна помощь?" original="Need a hand?"/>
+        <!-- The price has been paid. I am at your service. -->
+        <string id="rVaJZ5Lo" text="Цена была заплачена. Я к вашим услугам." original="The price has been paid. I am at your service."/>
+        <!-- Once more unto the breach! -->
+        <string id="QEyO8W82" text="Еще раз к прорыву!" original="Once more unto the breach!"/>
+        <!-- Freeeeeedddooooooommmm! -->
+        <string id="Bo11t6gj" text="Свообоооооооодаааааа!" original="Freeeeeedddooooooommmm!"/>
+        <!-- Remember the Alamo! -->
+        <string id="8uO8Isjm" text="Помните Аламо!" original="Remember the Alamo!"/>
+        <!-- Alala! -->
+        <string id="A3KdQJok" text="Алала!" original="Alala!"/>
+        <!-- Eleleu! -->
+        <string id="pXVCAwAr" text="Елелеу!" original="Eleleu!"/>
+        <!-- Deus vult! -->
+        <string id="TlZjOFii" text="Deus vult!" original="Deus vult!"/>
+        <!-- Banzai! -->
+        <string id="xPFIIEzw" text="Банзай!" original="Banzai!"/>
+        <!-- Liberty or Death! -->
+        <string id="gmN3YLPw" text="Свобода или смерть!" original="Liberty or Death!"/>
+        <!-- Har Har Mahadev! -->
+        <string id="FoDIukJK" text="Хар Хар Махадев!" original="Har Har Mahadev!"/>
+        <!-- Desperta ferro! -->
+        <string id="SSqdBzkY" text="Desperta ferro!" original="Desperta ferro!"/>
+        <!-- Alba gu bràth! -->
+        <string id="UHhpIpDU" text="Alba gu bràth!" original="Alba gu bràth!"/>
+        <!-- Santiago! -->
+        <string id="lDo1AOCS" text="Сантьяго!" original="Santiago!"/>
+        <!-- Huzzah! -->
+        <string id="gT95E89y" text="Ура!" original="Huzzah!"/>
+        <!-- War... war never changes... -->
+        <string id="fKKpcZGQ" text="Война... война никогда не меняется..." original="War... war never changes..."/>
+        <!-- May we live to see the next sunrise! -->
+        <string id="vZgbxkW9" text="Желаю нам дожить до следующего восхода солнца!" original="May we live to see the next sunrise!"/>
+        <!-- For glory, charge! -->
+        <string id="wn7zIy9f" text="За славу заряжайся!" original="For glory, charge!"/>
+        <!-- Give them nothing, but take from them everything! -->
+        <string id="KH7Dnbe7" text="Ничего не давайте им, но заберите у них все!" original="Give them nothing, but take from them everything!"/>
+        <!-- Fell deeds awake, fire and slaughter! -->
+        <string id="FyBFecip" text="Проснулись дела, огонь и бойня!" original="Fell deeds awake, fire and slaughter!"/>
+        <!-- Spooooooooooooooooooon! -->
+        <string id="H7asM2KG" text="Спооооооооооооооооон!" original="Spooooooooooooooooooon!"/>
+        <!-- Leeeeeeeerooooy Jeeeeenkins -->
+        <string id="ERDmbO2B" text="Leeeeeeeerooooy Jeeeeenkins" original="Leeeeeeeerooooy Jeeeeenkins"/>
+        <!-- I live, I die, I live again! -->
+        <string id="hL0vmkUG" text="Я живу, я умираю, я снова живу!" original="I live, I die, I live again!"/>
+        <!-- Witness me!! -->
+        <string id="KMTRT2EN" text="Посмотри на меня!!" original="Witness me!!"/>
+        <!-- Now for wrath, now for ruin and a red nightfall! -->
+        <string id="F9WUaqdj" text="Теперь гнев, теперь разруха и красная ночь!" original="Now for wrath, now for ruin and a red nightfall!"/>
+        <!-- n -->
+        <string id="ZQiRFkFU" text="п" original="n"/>
+        <!-- Those are brave men knocking at our door, let's go kill them! -->
+        <string id="JlZ9pRbq" text="Это храбрые люди стучатся в нашу дверь, давай убьем их!" original="Those are brave men knocking at our door, let's go kill them!"/>
+        <!-- Lets take this city! -->
+        <string id="5gg0BcKk" text="Возьмем этот город!" original="Lets take this city!"/>
+        <!-- Defend yourself! -->
+        <string id="lhWht8Em" text="Защищайся!" original="Defend yourself!"/>
+        <!-- Time for you to die! -->
+        <string id="FmlTSg39" text="Пора тебе умереть!" original="Time for you to die!"/>
+        <!-- You killed my father, prepare to die! -->
+        <string id="GJpUfALs" text="Ты убил моего отца, приготовься умереть!" original="You killed my father, prepare to die!"/>
+        <!-- En garde! -->
+        <string id="IKN2G1wi" text="En garde!" original="En garde!"/>
+        <!-- It's stabbing time! For you. -->
+        <string id="yTHYR4i9" text="Пора колоть! Для тебя." original="It's stabbing time! For you."/>
+        <!-- It's nothing personal! -->
+        <string id="4wYLe6f0" text="Ничего личного!" original="It's nothing personal!"/>
+        <!-- Curse my sudden but inevitable betrayal! -->
+        <string id="37bg5QNX" text="Прокляните мое внезапное, но неминуемое предательство!" original="Curse my sudden but inevitable betrayal!"/>
+        <!-- I just don't like you! -->
+        <string id="AOpbzIUP" text="Ты мне просто не нравишься!" original="I just don't like you!"/>
+        <!-- I'm gonna put some dirt in your eye! -->
+        <string id="JFCcwLga" text="Я запачкаю тебе глаз грязью!" original="I'm gonna put some dirt in your eye!"/>
+        <!-- I'll mount your head on a pike! -->
+        <string id="jCrCRbyA" text="Я тебе голову на щуку сяду!" original="I'll mount your head on a pike!"/>
+        <!-- Don't hate me, it's just business... -->
+        <string id="0uiD2HxZ" text="Не ненавидь меня, это просто бизнес ..." original="Don't hate me, it's just business..."/>
+        <!-- Never should have come here! -->
+        <string id="42Fuy9pm" text="Никогда не следовало сюда приходить!" original="Never should have come here!"/>
+        <!-- Your money or your life! -->
+        <string id="dClbnb2q" text="Ваши деньги или ваша жизнь!" original="Your money or your life!"/>
+        <!-- I'm sorry, but I must stop you. -->
+        <string id="uyjy1geA" text="Мне очень жаль, но я должен тебя остановить." original="I'm sorry, but I must stop you."/>
+        <!-- I have the high ground! -->
+        <string id="dh0c96lo" text="Я на высоте!" original="I have the high ground!"/>
+        <!-- DAMN IT DAVE! -->
+        <string id="EcD5q9th" text="ЧЕРТ ДЕЙВ!" original="DAMN IT DAVE!"/>
+    </strings>
+</base>

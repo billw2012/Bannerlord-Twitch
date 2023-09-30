@@ -87,14 +87,14 @@ namespace BannerlordTwitch.Testing
         {
             if (item.Type == SimActionType.Reward)
             {
-                BLTModule.TwitchService?.TestRedeem(item.Id, user.name, item.Args);
+                BLTModule.TwitchService?.TestRedeem(item.Id.ToString(), user.name, item.Args.ToString());
             }
             else
             {
-                var cmd = settings.GetCommand(item.Id);
+                var cmd = settings.GetCommand(item.Id.ToString());
                 if (cmd != null)
                 {
-                    ActionManager.HandleCommand(cmd.Handler, ReplyContext.FromUser(cmd, user.name, item.Args), cmd.HandlerConfig);
+                    ActionManager.HandleCommand(cmd.Handler, ReplyContext.FromUser(cmd, user.name, item.Args.ToString()), cmd.HandlerConfig);
                 }
             }
         }

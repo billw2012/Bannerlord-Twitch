@@ -5,11 +5,11 @@ using TaleWorlds.MountAndBlade;
 
 namespace BannerlordTwitch.Helpers
 {
-    public abstract class AutoMissionBehavior<T> : MissionBehaviour where T : MissionBehaviour
+    public abstract class AutoMissionBehavior<T> : MissionBehavior where T : MissionBehavior
     {
-        public override MissionBehaviourType BehaviourType => MissionBehaviourType.Other;
+        public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
 
-        public static T Current => MissionState.Current?.CurrentMission?.GetMissionBehaviour<T>();
+        public static T Current => MissionState.Current?.CurrentMission?.GetMissionBehavior<T>();
 
         protected void SafeCall(Action a, [CallerMemberName]string fnName = "")
         {
@@ -63,11 +63,11 @@ namespace BannerlordTwitch.Helpers
         // {
         //     get
         //     {
-        //         var current = MissionState.Current.CurrentMission.GetMissionBehaviour<T>();
+        //         var current = MissionState.Current.CurrentMission.GetMissionBehavior<T>();
         //         if (current == null)
         //         {
         //             current = new T();
-        //             MissionState.Current.CurrentMission.AddMissionBehaviour(current);
+        //             MissionState.Current.CurrentMission.AddMissionBehavior(current);
         //         }
         //
         //         return current;

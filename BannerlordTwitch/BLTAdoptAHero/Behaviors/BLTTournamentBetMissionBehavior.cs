@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
 using BLTAdoptAHero.Util;
 using HarmonyLib;
-using SandBox.TournamentMissions.Missions;
+using SandBox.Tournaments.MissionLogics;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.SandBox.Source.TournamentGames;
+using TaleWorlds.CampaignSystem.TournamentGames;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
@@ -28,7 +29,7 @@ namespace BLTAdoptAHero
             
         public List<int> GetTotalBets()
         {
-            var tournamentBehavior = MissionState.Current?.CurrentMission?.GetMissionBehaviour<TournamentBehavior>();
+            var tournamentBehavior = MissionState.Current?.CurrentMission?.GetMissionBehavior<TournamentBehavior>();
             if (tournamentBehavior != null && activeBets != null)
             {
                 int teamsCount = tournamentBehavior.CurrentMatch.Teams.Count();
@@ -66,10 +67,15 @@ namespace BLTAdoptAHero
                 && (tournamentBehavior.CurrentRoundIndex == 3 || !BLTAdoptAHeroModule.TournamentConfig.BettingOnFinalOnly))
             {
                 var teams = TournamentHelpers.TeamNames.Take(tournamentBehavior.CurrentMatch.Teams.Count());
-                string round = tournamentBehavior.CurrentRoundIndex < 3
-                    ? $"round {tournamentBehavior.CurrentRoundIndex + 1}"
-                    : "final";
-                string msg = $"Betting is now OPEN for {round} match: {string.Join(" vs ", teams)}!";
+                string msg = tournamentBehavior.CurrentRoundIndex < 3
+                    ? "{=wgGkXkyh}Betting is now OPEN for round {RoundIndex} match: {Teams}!"
+                        .Translate(
+                            ("RoundIndex", tournamentBehavior.CurrentRoundIndex + 1),
+                            ("Teams", string.Join(" " + "{=ixTCiaiv}vs".Translate() + " ", teams)))
+                    : "{=9BjHfivM}Betting is now OPEN for final match: {Teams}!"
+                        .Translate(
+                            ("Teams", string.Join(" " + "{=ixTCiaiv}vs".Translate() + " ", teams)))
+                        ;
                 Log.LogFeedMessage(msg);
                 ActionManager.SendChat(msg);
                 activeBets = new();
@@ -84,30 +90,30 @@ namespace BLTAdoptAHero
             
         public (bool success, string failReason) PlaceBet(Hero hero, string team, int bet)
         {
-            var tournamentBehavior = Mission.Current?.GetMissionBehaviour<TournamentBehavior>();
+            var tournamentBehavior = Mission.Current?.GetMissionBehavior<TournamentBehavior>();
             if (tournamentBehavior == null)
             {
-                return (false, "Tournament is not active");
+                return (false, "{=FEZ1Opj1}Tournament is not active".Translate());
             }
 
             if (!BLTAdoptAHeroModule.TournamentConfig.EnableBetting)
             {
-                return (false, "Betting is disabled");
+                return (false, "{=uNUyZhDk}Betting is disabled".Translate());
             }
                 
             if (CurrentBettingState == BettingState.closed)
             {
-                return (false, "Betting is closed");
+                return (false, "{=APTqGlHh}Betting is closed".Translate());
             }
                 
             if (tournamentBehavior.CurrentRoundIndex != 3 && BLTAdoptAHeroModule.TournamentConfig.BettingOnFinalOnly)
             {
-                return (false, "Betting is only allowed on the final");
+                return (false, "{=7yFW99H8}Betting is only allowed on the final".Translate());
             }
 
             if (CurrentBettingState != BettingState.open)
             {
-                return (false, "Betting is not open");
+                return (false, "{=ATdvJKFI}Betting is not open".Translate());
             }
 
             int teamsCount = tournamentBehavior.CurrentMatch.Teams.Count();
@@ -115,14 +121,15 @@ namespace BLTAdoptAHero
             int teamIdx = activeTeams.IndexOf(team.ToLower());
             if (teamIdx == -1)
             {
-                return (false, $"Team name must be one of {string.Join(", ", activeTeams)}");
+                return (false, "{=1rUYWox8}Team name must be one of {Teams}"
+                    .Translate(("Teams", string.Join(", ", activeTeams))));
             }
                 
             if (activeBets.TryGetValue(hero, out var existingBet))
             {
                 if (existingBet.team != teamIdx)
                 {
-                    return (false, "You can only bet on one team");
+                    return (false, "{=7iveTGQp}You can only bet on one team".Translate());
                 }
             }
                 
@@ -165,15 +172,17 @@ namespace BLTAdoptAHero
                     RefundBets();
                     activeBets = null;
                     CurrentBettingState = BettingState.disabled;
-                    Log.LogFeedMessage($"Betting is now CLOSED: only one team bet on, bets refunded");
-                    ActionManager.SendChat($"Betting is now CLOSED: only one team bet on, bets refunded");
+                    Log.LogFeedMessage(
+                        "{=Nm96SVXt}Betting is now CLOSED: only one team bet on, bets refunded".Translate());
+                    ActionManager.SendChat(
+                        "{=Nm96SVXt}Betting is now CLOSED: only one team bet on, bets refunded".Translate());
                 }
                 else if (!groupedBets.Any())
                 {
                     activeBets = null;
                     CurrentBettingState = BettingState.disabled;
-                    Log.LogFeedMessage($"Betting is now CLOSED: no bets placed");
-                    ActionManager.SendChat($"Betting is now CLOSED: no bets placed");
+                    Log.LogFeedMessage("{=GrI9bFCf}Betting is now CLOSED: no bets placed".Translate());
+                    ActionManager.SendChat("{=GrI9bFCf}Betting is now CLOSED: no bets placed".Translate());
                 }
                 else 
                 {
@@ -184,7 +193,8 @@ namespace BLTAdoptAHero
                             .Select(g => $"{g.Key} {g.Select(x => x.bet).Sum()}{Naming.Gold}")
                             .ToList()
                         ;
-                    string msg = $"Betting is now CLOSED: {string.Join(", ", betTotals)}";
+                    string msg = "{=Hj3oYnE0}Betting is now CLOSED: {TotalBets}"
+                        .Translate(("TotalBets", string.Join(", ", betTotals)));
                     Log.LogFeedMessage(msg);
                     ActionManager.SendChat(msg);
                 }
@@ -203,7 +213,9 @@ namespace BLTAdoptAHero
             {
                 foreach (var (hero, bet) in activeBets)
                 {
-                    Log.LogFeedResponse(hero.FirstName.ToString(), $"REFUNDED {bet.bet}{Naming.Gold} bet");
+                    Log.LogFeedResponse(hero.FirstName.ToString(), 
+                        "{=u4mPf1p0}REFUNDED {Bet}{GoldIcon} bet"
+                            .Translate(("Bet", bet.bet), ("GoldIcon", Naming.Gold)));
                     BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, bet.bet);
                 }
 
@@ -232,7 +244,8 @@ namespace BLTAdoptAHero
                     int winnings = (int) (totalBet * bet / winningTotalBet);
                     int newGold = BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, winnings);
                     Log.LogFeedResponse(hero.FirstName.ToString(),
-                        $"WON BET {Naming.Inc}{winnings}{Naming.Gold}{Naming.To}{newGold}{Naming.Gold}");
+                        "{=majAmqDm}WON BET".Translate() +
+                        $" {Naming.Inc}{winnings}{Naming.Gold}{Naming.To}{newGold}{Naming.Gold}");
                 }
 
                 activeBets = null;
@@ -241,7 +254,7 @@ namespace BLTAdoptAHero
             TournamentHub.UpdateBets();
         }
 
-        private void CreateTorunamentTreePostfixImpl(TournamentBehavior tournamentBehavior)
+        private void CreateTournamentTreePostfixImpl(TournamentBehavior tournamentBehavior)
         {
             tournamentBehavior.Rounds[0] = BLTAdoptAHeroModule.TournamentConfig.Round1Type
                 .GetRandomRound(tournamentBehavior.Rounds[0], tournamentBehavior.TournamentGame.Mode); 
@@ -259,10 +272,10 @@ namespace BLTAdoptAHero
             SafeCallStatic(() => Current?.OpenBetting(__instance));
         }
         
-        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(TournamentBehavior), "CreateTorunamentTree")]
-        public static void CreateTorunamentTreePostfix(TournamentBehavior __instance)
+        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(TournamentBehavior), "CreateTournamentTree")]
+        public static void CreateTournamentTreePostfix(TournamentBehavior __instance)
         {
-            SafeCallStatic(() => Current?.CreateTorunamentTreePostfixImpl(__instance));
+            SafeCallStatic(() => Current?.CreateTournamentTreePostfixImpl(__instance));
         }
 
         [UsedImplicitly, HarmonyPrefix, HarmonyPatch(typeof(TournamentBehavior), "StartMatch")]

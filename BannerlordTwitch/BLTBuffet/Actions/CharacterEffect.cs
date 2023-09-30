@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero;
 using JetBrains.Annotations;
-using SandBox;
+using SandBox.Tournaments.MissionLogics;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
@@ -16,7 +16,8 @@ using TaleWorlds.MountAndBlade;
 
 namespace BLTBuffet
 {
-    [Description("Applies effects to a character / the player"), UsedImplicitly]
+    [LocDescription("{=aGfP5X2q}Applies effects to a character / the player"), 
+     UsedImplicitly]
     public partial class CharacterEffect : ActionHandlerBase
     {
         protected override Type ConfigType => typeof(Config);
@@ -26,28 +27,28 @@ namespace BLTBuffet
         {
             if (Mission.Current == null)
             {
-                onFailure($"No mission is active!");
+                onFailure("{=ZXxpMpYi}No mission is active!".Translate());
                 return;
             }
 
             if (BLTBuffetModule.EffectsConfig.DisableEffectsInTournaments
                 && MissionHelpers.InTournament())
             {
-                onFailure($"Not allowed during tournament!");
+                onFailure("{=aK6wEWqw}Not allowed during tournament!".Translate());
                 return;
             }
             
             if (!Mission.Current.IsLoadingFinished 
                 || Mission.Current.CurrentState != Mission.State.Continuing
-                || Mission.Current?.GetMissionBehaviour<TournamentFightMissionController>() != null && Mission.Current.Mode != MissionMode.Battle)
+                || Mission.Current?.GetMissionBehavior<TournamentFightMissionController>() != null && Mission.Current.Mode != MissionMode.Battle)
             {
-                onFailure($"The mission has not started yet!");
+                onFailure("{=0H0dMWam}The mission has not started yet!".Translate());
                 return;
             }
             
             if (Mission.Current.IsMissionEnding || Mission.Current.MissionResult?.BattleResolved == true)
             {
-                onFailure($"The mission is ending!");
+                onFailure("{=f3Cwg2lw}The mission is ending!".Translate());
                 return;
             }
             
@@ -80,25 +81,29 @@ namespace BLTBuffet
 
             if (target == null || target.AgentVisuals == null)
             {
-                onFailure($"Couldn't find the target!");
+                onFailure("{=duuvGgDi}Couldn't find the target!"
+                    .Translate());
                 return;
             }
 
             if (string.IsNullOrEmpty(config.Name))
             {
-                onFailure($"CharacterEffect {context.Source} configuration error: Name is missing!");
+                onFailure("{=hr0ye4gl}CharacterEffect {Source} configuration error: Name is missing!"
+                    .Translate(("Source", context.Source)));
                 return;
             }
 
             if (effectsBehaviour.Contains(target, config))
             {
-                onFailure($"{target.Name} already affected by {config.Name}!");
+                onFailure("{=yZuAmGOU}{Target} already affected by {Config}!"
+                    .Translate(("Target", target.Name), ("Config", config.Name)));
                 return;
             }
             
             if (config.TargetOnFootOnly && target.HasMount)
             {
-                onFailure($"{target.Name} is mounted so cannot be affected by {config.Name}!");
+                onFailure("{=gZtqmx0D}{Target} is mounted so cannot be affected by {Config}!"
+                    .Translate(("Target", target.Name), ("Config", config.Name)));
                 return;
             }
             
@@ -116,14 +121,14 @@ namespace BLTBuffet
                         pfxState.boneAttachments = CreateAgentEffects(target,
                             pfx.Name,
                             MatrixFrame.Identity,
-                            Game.Current.HumanMonster.MainHandItemBoneIndex,
-                            Game.Current.HumanMonster.OffHandItemBoneIndex);
+                            target.Monster.MainHandItemBoneIndex,
+                            target.Monster.OffHandItemBoneIndex);
                         break;
                     case ParticleEffectDef.AttachPointEnum.OnHead:
                         pfxState.boneAttachments = CreateAgentEffects(target,
                             pfx.Name,
                             MatrixFrame.Identity.Strafe(0.1f),
-                            Game.Current.HumanMonster.HeadLookDirectionBoneIndex);
+                            target.Monster.HeadLookDirectionBoneIndex);
                         break;
                     case ParticleEffectDef.AttachPointEnum.OnBody:
                         pfxState.boneAttachments = CreateAgentEffects(target, pfx.Name, MatrixFrame.Identity.Elevate(0.1f));
@@ -163,14 +168,13 @@ namespace BLTBuffet
                 Mission.Current.MakeSound(SoundEvent.GetEventIdFromString(config.ActivateSound), target.AgentVisuals.GetGlobalFrame().origin, false, true, target.Index, -1);
             }
 
-            Log.LogFeedEvent($"{config.Name} is active on {target.Name}!");
-
-            onSuccess($"{config.Name} is active on {target.Name}!");
+            Log.LogFeedEvent("{Config} is active on {Target}!".Translate(("Config", config.Name), ("Target", target.Name)));
+            onSuccess("{Config} is active on {Target}!".Translate(("Config", config.Name), ("Target", target.Name)));
         }
 
         private static void ApplyPropertyModifiers(Agent target, Config config)
         {
-            foreach (var prop in config.Properties)
+            foreach (var prop in config.Properties ?? Enumerable.Empty<PropertyDef>())
             {
                 float baseValue = target.AgentDrivenProperties.GetStat(prop.Name);
                 if (prop.Multiply.HasValue)
@@ -214,7 +218,7 @@ namespace BLTBuffet
                         var localFrame = MatrixFrame.Identity.Elevate(i * 0.1f);
                         var particle = ParticleSystem.CreateParticleSystemAttachedToEntity(pfxSystem, wieldedWeaponEntity, ref localFrame);
                         particle.SetRuntimeEmissionRateMultiplier(MBRandom.RandomFloatRanged(0.75f, 1.25f));
-                        skeleton.AddComponentToBone(Game.Current.HumanMonster.MainHandItemBoneIndex, particle);
+                        skeleton.AddComponentToBone(agent.Monster.MainHandItemBoneIndex, particle);
                         components.Add(particle);
                     }
                     break;
@@ -230,7 +234,7 @@ namespace BLTBuffet
                         var localFrame = MatrixFrame.Identity.Elevate(i * 0.1f);
                         var particle = ParticleSystem.CreateParticleSystemAttachedToEntity(pfxSystem, wieldedWeaponEntity, ref localFrame);
                         particle.SetRuntimeEmissionRateMultiplier(MBRandom.RandomFloatRanged(0.75f, 1.25f));
-                        skeleton.AddComponentToBone(Game.Current.HumanMonster.MainHandItemBoneIndex, particle);
+                        skeleton.AddComponentToBone(agent.Monster.MainHandItemBoneIndex, particle);
                         components.Add(particle);
                     }
                     break;
@@ -266,7 +270,7 @@ namespace BLTBuffet
             light.Intensity = lightIntensity;
             light.LightColor = lightColor;
             light.Frame = MatrixFrame.Identity.Advance(1);
-            skeleton.AddComponentToBone(Game.Current.HumanMonster.MainHandItemBoneIndex, light);
+            skeleton.AddComponentToBone(agent.Monster.MainHandItemBoneIndex, light);
             return light;
         }
 

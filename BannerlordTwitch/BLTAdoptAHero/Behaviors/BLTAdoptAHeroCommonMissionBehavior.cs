@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.UI;
 using HarmonyLib;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Encounters;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -32,7 +34,7 @@ namespace BLTAdoptAHero
             public int KillStreak { get; set; }
         }
 
-        private Dictionary<Hero, HeroMissionState> heroMissionState = new();
+        private readonly Dictionary<Hero, HeroMissionState> heroMissionState = new();
         private readonly List<Agent> adoptedHeroMounts = new();
 
         public float PlayerSidePower { get; private set; }
@@ -106,7 +108,7 @@ namespace BLTAdoptAHero
 
                 if (!agent.IsMount && agent.Team?.IsValid == true && Mission.PlayerTeam?.IsValid == true)
                 {
-                    if (agent.Team.IsFriendOf(Mission.PlayerTeam))
+                    if (Mission.PlayerTeam?.IsValid == true && agent.Team.IsFriendOf(Mission.PlayerTeam))
                     {
                         PlayerSidePower += agent.Character.GetPower();
                     }
@@ -126,16 +128,17 @@ namespace BLTAdoptAHero
             {
                 if (lastTickT == 0)
                 {
-                    lastTickT = MBCommon.GetTime(MBCommon.TimeType.Application);
+                    lastTickT = CampaignHelpers.GetApplicationTime();
                     return;
                 }
 
                 const float TickTime = 0.25f;
-                if (MBCommon.GetTime(MBCommon.TimeType.Application) - lastTickT > TickTime)
+                if (CampaignHelpers.GetApplicationTime() - lastTickT > TickTime)
                 {
-                    lastTickT = MBCommon.GetTime(MBCommon.TimeType.Application);
+                    lastTickT = CampaignHelpers.GetApplicationTime();
 
-                    foreach (var h in activeHeroes)
+                    // Take a copy of the array so we can remove items from activeHeroes in UpdateHeroVM
+                    foreach (var h in activeHeroes.ToList())
                     {
                         UpdateHeroVM(h);
                     }
@@ -259,7 +262,7 @@ namespace BLTAdoptAHero
                     }
                 }
 
-                var affectorRetinueOwner = BLTSummonBehavior.Current?.GetSummonedHeroForRetinue(affectorAgent);
+                var affectorRetinueOwner = BLTSummonBehavior.Current?.GetHeroSummonStateForRetinue(affectorAgent);
                 if (affectorRetinueOwner != null)
                 {
                     GetHeroMissionState(affectorRetinueOwner.Hero).RetinueKills++;
@@ -286,16 +289,21 @@ namespace BLTAdoptAHero
             var currKillStreak = BLTAdoptAHeroModule.CommonConfig.KillStreaks?.FirstOrDefault(k => k.Enabled && heroState.KillStreak == k.KillsRequired);
             if (currKillStreak != null)
             {
-                string message = currKillStreak.NotificationText
-                    .Replace("{viewer}", hero.FirstName.ToString())
-                    .Replace("{player}", hero.FirstName.ToString())
-                    .Replace("{kills}",currKillStreak.KillsRequired.ToString())
-                    .Replace("{name}",currKillStreak.Name);
-                if (BLTAdoptAHeroModule.CommonConfig.ShowKillStreakPopup && currKillStreak.ShowNotification)
+                if (BLTAdoptAHeroModule.CommonConfig.ShowKillStreakPopup 
+                    && currKillStreak.ShowNotification 
+                    && !LocString.IsNullOrEmpty(currKillStreak.NotificationText))
                 {
+                    string message = currKillStreak.NotificationText.ToString()
+                        .Replace("[viewer]", hero.FirstName.ToString())
+                        .Replace("[kills]", currKillStreak.KillsRequired.ToString())
+                        .Replace("[name]", currKillStreak.Name.ToString())
+                        ;
                     Log.ShowInformation(message, hero.CharacterObject, BLTAdoptAHeroModule.CommonConfig.KillStreakPopupAlertSound);
                 }
-                ApplyStreakEffects(hero, currKillStreak.GoldReward, currKillStreak.XPReward,Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),currKillStreak.Name,BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,BLTAdoptAHeroModule.CommonConfig.LevelScalingCap, message);
+                ApplyStreakEffects(hero, currKillStreak.GoldReward, currKillStreak.XPReward,
+                    Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1),
+                    BLTAdoptAHeroModule.CommonConfig.RelativeLevelScaling,
+                    BLTAdoptAHeroModule.CommonConfig.LevelScalingCap);
             }
         }
 
@@ -327,7 +335,7 @@ namespace BLTAdoptAHero
                 activeHeroes.Add(hero);
             }
 
-            var summonState = BLTSummonBehavior.Current?.GetSummonedHero(hero);
+            var summonState = BLTSummonBehavior.Current?.GetHeroSummonState(hero);
             
             var agent = summonState?.CurrentAgent ?? hero.GetAgent();
 
@@ -339,6 +347,7 @@ namespace BLTAdoptAHero
             if (shouldRemove)
             {
                 MissionInfoHub.Remove(hero.FirstName.Raw());
+                activeHeroes.Remove(hero);
             }
             else
             {
@@ -359,6 +368,7 @@ namespace BLTAdoptAHero
                     ActivePowerFractionRemaining = state is AgentState.Active ? ActivePowerFractionRemaining(hero) : 0,
                     State = state.ToString().ToLower(),
                     Retinue = summonState?.ActiveRetinue ?? 0,
+                    DeadRetinue = summonState?.DeadRetinue ?? 0,
                     GoldEarned = heroState.WonGold,
                     XPEarned = heroState.WonXP,
                     Kills = heroState.Kills,
@@ -392,7 +402,7 @@ namespace BLTAdoptAHero
         public static float RelativeLevelScaling(int levelA, int levelB, float n, float max = float.MaxValue) 
             => Math.Min(MathF.Pow(1f - Math.Min(MaxLevelInPractice - 1, levelB - levelA) / (float)MaxLevelInPractice, -10f * MathF.Clamp(n, 0, 1)), max);
         
-        public void ApplyStreakEffects(Hero hero, int goldStreak, int xpStreak, float subBoost, string killStreakName, float? relativeLevelScaling, float? levelScalingCap, string message)
+        public void ApplyStreakEffects(Hero hero, int goldStreak, int xpStreak, float subBoost, float? relativeLevelScaling, float? levelScalingCap)
         {
             goldStreak = (int)(goldStreak * subBoost);
             xpStreak = (int)(xpStreak * subBoost);

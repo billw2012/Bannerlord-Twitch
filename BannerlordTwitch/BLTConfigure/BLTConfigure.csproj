@@ -15,19 +15,37 @@
         <LangVersion>9</LangVersion>
         <ProjectGuid>{BAD5698D-09BD-4C2F-8C93-1DF19BBE29CC}</ProjectGuid>
     </PropertyGroup>
-    <Import Project="$(SolutionDir)BLTProperties.targets" />
-    <PropertyGroup>
-        <DebugType>full</DebugType>
-        <PlatformTarget>x64</PlatformTarget>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <DebugSymbols>true</DebugSymbols>
-        <OutputPath>build\$(Configuration)\bin\Win64_Shipping_Client\</OutputPath>
-        <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-        <NoWarn>MSB3246;MSB3247;MSB3277;CS0649;CS0067</NoWarn>
-        <XamlDebuggingInformation>True</XamlDebuggingInformation>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.5.10|AnyCPU' ">
+      <OutputPath>bin\Debug 1.5.10\</OutputPath>
     </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.5.9|AnyCPU' ">
+      <OutputPath>bin\Debug 1.5.9\</OutputPath>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.6.0|AnyCPU' ">
+      <OutputPath>bin\Debug 1.6.0\</OutputPath>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.6.1|AnyCPU' ">
+      <OutputPath>bin\Debug 1.6.1\</OutputPath>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 1.6.2|AnyCPU' ">
+      <OutputPath>bin\Debug 1.6.2\</OutputPath>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.5.10|AnyCPU' ">
+      <OutputPath>bin\Release 1.5.10\</OutputPath>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.5.9|AnyCPU' ">
+      <OutputPath>bin\Release 1.5.9\</OutputPath>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.6.0|AnyCPU' ">
+      <OutputPath>bin\Release 1.6.0\</OutputPath>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.6.1|AnyCPU' ">
+      <OutputPath>bin\Release 1.6.1\</OutputPath>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 1.6.2|AnyCPU' ">
+      <OutputPath>bin\Release 1.6.2\</OutputPath>
+    </PropertyGroup>
+    <Import Project="$(SolutionDir)BLTProperties.targets" />
     <ItemGroup>
         <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>..\packages\Lib.Harmony.2.0.4\lib\net48\0Harmony.dll</HintPath>
@@ -105,12 +123,16 @@
         </Compile>
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="UI\CollectionEditorPage.xaml.cs">
-          <DependentUpon>CollectionEditorPage.xaml</DependentUpon>
+            <DependentUpon>CollectionEditorPage.xaml</DependentUpon>
         </Compile>
         <Compile Include="UI\ConfigurationRootViewModel.cs" />
         <Compile Include="UI\ConfigurationRootPage.xaml.cs">
-          <DependentUpon>ConfigurationRootPage.xaml</DependentUpon>
+            <DependentUpon>ConfigurationRootPage.xaml</DependentUpon>
         </Compile>
+        <Compile Include="UI\LocStringControl.xaml.cs">
+          <DependentUpon>LocStringControl.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="UI\LocStringEditor.cs" />
         <Compile Include="UI\Styles.cs" />
         <Compile Include="UI\WindowBehavior.cs" />
         <Compile Include="Utils\BoolToVisibilityConverter.cs" />
@@ -122,12 +144,13 @@
     <ItemGroup>
         <None Include="app.config" />
         <None Include="packages.config" />
-        <None Include="SubModule.xml" />
+        <None Include="_Module\SubModule.xml" />
     </ItemGroup>
     <ItemGroup>
         <Page Include="BLTConfigureWindow.xaml" />
         <Page Include="UI\CollectionEditorPage.xaml" />
         <Page Include="UI\ConfigurationRootPage.xaml" />
+        <Page Include="UI\LocStringControl.xaml" />
         <Page Include="UI\Styles.xaml" />
     </ItemGroup>
     <ItemGroup>
@@ -139,25 +162,48 @@
         <ProjectReference Include="..\BLTAdoptAHero\BLTAdoptAHero.csproj">
             <Project>{e475eb9d-3c49-461b-88f7-9d88b746a3aa}</Project>
             <Name>BLTAdoptAHero</Name>
+            <Private>False</Private>
+        </ProjectReference>
+        <ProjectReference Include="..\BLTBuffet\BLTBuffet.csproj">
+            <Project>{9c6729f7-a099-4878-bbbb-ec7911ea50b0}</Project>
+            <Name>BLTBuffet</Name>
+            <Private>False</Private>
         </ProjectReference>
     </ItemGroup>
     <ItemGroup>
         <Content Include="FodyWeavers.xml" />
+        <Content Include="_Module\ModuleData\Languages\BR\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\BR\strings-misc-BR.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNs\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNs\strings-misc-CNs.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNt\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNt\strings-misc-CNt.xml" />
+        <Content Include="_Module\ModuleData\Languages\DE\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\DE\strings-misc-DE.xml" />
+        <Content Include="_Module\ModuleData\Languages\FR\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\FR\strings-misc-FR.xml" />
+        <Content Include="_Module\ModuleData\Languages\IT\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\IT\strings-misc-IT.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-misc-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\KO\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\KO\strings-misc-KO.xml" />
+        <Content Include="_Module\ModuleData\Languages\PL\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\PL\strings-misc-PL.xml" />
+        <Content Include="_Module\ModuleData\Languages\RU\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\RU\strings-misc-RU.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-misc-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-misc.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-misc-TR.xml" />
     </ItemGroup>
+    
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <Target Name="AfterClean">
-        <RemoveDir Directories="$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)" />
-        <RemoveDir Directories="$(OutDir)..\..\..\..\build" />
-        <RemoveDir Directories="$(OutDir)..\..\..\..\obj" />
-    </Target>
-    <Target Name="AfterBuild">
-        <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
-        <ReplaceFileText File="$(OutDir)..\..\SubModule.xml" Regex="%(SubModuleOverrides.Regex)" ReplacementText="%(SubModuleOverrides.Replacement)" />
-        <ItemGroup>
-            <StagingDir Include="$(OutDir)\..\..\**\*" />
-        </ItemGroup>
-        <Copy SourceFiles="@(StagingDir)" DestinationFiles="@(StagingDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
-    </Target>
+    <Import Project="$(SolutionDir)BLTBuildTargets.targets" />
+    
+    <Target Name="FinalPackage" DependsOnTargets="Package" AfterTargets="AfterBuild" />
+    
     <Import Project="..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.1\build\Fody.targets')" />
     <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
         <PropertyGroup>

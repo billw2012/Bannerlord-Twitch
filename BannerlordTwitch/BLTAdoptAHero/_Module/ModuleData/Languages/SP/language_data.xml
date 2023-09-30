@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="Español (LA)">
+  <LanguageFile xml_path="SP/strings-actions-SP.xml" />
+  <LanguageFile xml_path="SP/strings-behaviors-SP.xml" />
+  <LanguageFile xml_path="SP/strings-default-shouts-SP.xml" />
+  <LanguageFile xml_path="SP/strings-globalconfigs-SP.xml" />
+  <LanguageFile xml_path="SP/strings-misc-SP.xml" />
+  <LanguageFile xml_path="SP/strings-powers-SP.xml" />
+</LanguageData>

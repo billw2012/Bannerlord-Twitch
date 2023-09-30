@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="한국어"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
+        <string id="dirEUQc7" text="게임에서 영웅을 얻으십시오. 거의 모든 다른 행동에는 입양된 영웅이 필요합니다." original="Get a hero in game. Almost all other actions require an adopted hero."/>
+        <!-- Adds 10,000 gold to your adopted hero. -->
+        <string id="Y7GzhU5a" text="입양한 영웅에게 10,000골드를 추가합니다." original="Adds 10,000 gold to your adopted hero."/>
+        <!-- Adds 100,000 gold to your adopted hero. -->
+        <string id="Hbk74nei" text="입양한 영웅에게 100,000골드를 추가합니다." original="Adds 100,000 gold to your adopted hero."/>
+        <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue). -->
+        <string id="nI4dr4uZ" text="스트리머가 전투에 참가할 때 이것을 사용하여 스트리머 측에 입양된 영웅을 스폰합니다(후속자와 함께)." original="Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue)."/>
+        <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue). -->
+        <string id="flQofEFu" text="스트리머가 전투에 참가할 때 이것을 사용하여 적군에 입양된 영웅을 스폰합니다(후속자와 함께)." original="Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue)."/>
+        <!-- Heals the streamers character in battle, over time. Doesn't work on the campaign map. -->
+        <string id="zLxgvsYd" text="시간이 지남에 따라 전투에서 스트리머 캐릭터를 치유합니다. 캠페인 맵에서는 작동하지 않습니다." original="Heals the streamers character in battle, over time. Doesn't work on the campaign map."/>
+        <!-- Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament. -->
+        <string id="KaE947T9" text="입양한 영웅과 함께 토너먼트 대기열에 참여하세요. 오버레이에서 대기열을 볼 수 있습니다. 각 토너먼트에는 최대 16명의 영웅이 포함될 수 있으며, 가득 차면 더 많은 영웅이 다음 토너먼트 대기열에 남습니다." original="Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament."/>
+        <!-- Sends a message in the game. If you have a hero then it will also show them next to the message. -->
+        <string id="5L3LWrUx" text="게임에서 메시지를 보냅니다. 영웅이 있는 경우 메시지 옆에도 표시됩니다." original="Sends a message in the game. If you have a hero then it will also show them next to the message."/>
+        <!-- Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritance rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete. -->
+        <string id="SXzjFdG1" text="현재 영웅과 더 이상 플레이하지 않으려면 이것을 사용하십시오. 그들은 (은퇴)로 표시되며 새 것을 채택할 수 있습니다. 상속 규칙은 사망 시와 마찬가지로 퇴직 시에도 동일하게 적용됩니다. 은퇴를 완료하려면 프롬프트에서 yes를 입력해야 합니다(문자 그대로 소문자로 작성)." original="Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritance rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete."/>
+        <!-- Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment. -->
+        <string id="ZfhTuaRR" text="입양한 영웅에게 50,000 XP를 추가하십시오. 적용되는 기술은 무작위로 선택되지만 클래스와 기존 기술 및 장비의 영향을 받습니다." original="Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment."/>
+        <!-- Heals your hero over time. Only works in battle, when your hero is summoned. -->
+        <string id="pFwSBHnR" text="시간이 지남에 따라 영웅을 치유합니다. 영웅이 소환된 전투에서만 작동합니다." original="Heals your hero over time. Only works in battle, when your hero is summoned."/>
+        <!-- Transfer 10,000 gold to the streamers character, from your hero. -->
+        <string id="CSmE7Y50" text="영웅의 스트리머 캐릭터에게 10,000골드를 이전하세요." original="Transfer 10,000 gold to the streamers character, from your hero."/>
+        <!-- Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay. -->
+        <string id="LO6Q2DCb" text="영웅이 있다면 클래스 파워를 활성화하십시오. 전원은 오버레이에 표시된 제한된 시간 동안 지속됩니다." original="Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay."/>
+        <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
+        <string id="kL65xglO" text="게임에서 영웅을 얻으십시오. 거의 모든 다른 행동에는 입양된 영웅이 필요합니다." original="Get a hero in game. Almost all other actions require an adopted hero."/>
+        <!-- Add 10,000 gold to your adopted hero -->
+        <string id="xQTiKsVA" text="입양한 영웅에게 10,000골드 추가" original="Add 10,000 gold to your adopted hero"/>
+        <!-- Add 100,000 gold to your adopted hero -->
+        <string id="xeI0AXUl" text="입양한 영웅에게 100,000골드 추가" original="Add 100,000 gold to your adopted hero"/>
+        <!-- Your adopted hero joins the players side in battle -->
+        <string id="zmxI41XP" text="입양한 영웅이 전투에서 플레이어 편에 합류합니다." original="Your adopted hero joins the players side in battle"/>
+        <!-- Your adopted hero joins the enemies side in battle -->
+        <string id="ry25StNF" text="입양한 영웅이 전투에서 적 편에 합류합니다." original="Your adopted hero joins the enemies side in battle"/>
+        <!-- Heal the streamer over time -->
+        <string id="a8DqM6AY" text="시간이 지남에 따라 스트리머 치유" original="Heal the streamer over time"/>
+        <!-- Join the tournament queue with your adopted hero -->
+        <string id="ODfWfHln" text="입양한 영웅과 함께 토너먼트 대기열에 참여하세요" original="Join the tournament queue with your adopted hero"/>
+        <!-- Enter Message -->
+        <string id="m9IFHkZh" text="메시지 입력" original="Enter Message"/>
+        <!-- Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel -->
+        <string id="ZNGav9pi" text="예를 입력하여 영웅을 은퇴시키거나(더 이상 사용자가 제어하지 않음) 취소하려면 이 창을 닫으십시오." original="Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel"/>
+        <!-- Add 50,000 XP to a random skill of your adopted hero -->
+        <string id="UCjOD22c" text="입양한 영웅의 무작위 스킬에 50,000 XP 추가" original="Add 50,000 XP to a random skill of your adopted hero"/>
+        <!-- Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below: -->
+        <string id="1IDV1dAh" text="영웅의 스트리머 캐릭터에게 10,000골드를 이전하세요. 아래에 선물 메시지를 입력하세요." original="Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:"/>
+        <!-- Activate your class power on your hero, if you have one. -->
+        <string id="x5Agf9Wl" text="영웅이 있다면 클래스 파워를 활성화하십시오." original="Activate your class power on your hero, if you have one."/>
+        <!-- Adopt a Hero -->
+        <string id="Yc9dn4Sx" text="영웅을 입양하세요" original="Adopt a Hero"/>
+        <!-- 10k gold -->
+        <string id="s0GPjZKG" text="1만 골드" original="10k gold"/>
+        <!-- 100k gold -->
+        <string id="ndi9p5jn" text="10만 골드" original="100k gold"/>
+        <!-- Summon -->
+        <string id="dpnWybop" text="소환" original="Summon"/>
+        <!-- Attack -->
+        <string id="IrF1VaBD" text="공격" original="Attack"/>
+        <!-- Heal Streamer -->
+        <string id="MSpPJJhZ" text="힐 스트리머" original="Heal Streamer"/>
+        <!-- Tournament -->
+        <string id="IBrMU0VF" text="토너먼트" original="Tournament"/>
+        <!-- Send Message In Game -->
+        <string id="FFvfbTgo" text="게임에서 메시지 보내기" original="Send Message In Game"/>
+        <!-- Retire My Hero -->
+        <string id="AZMDg7St" text="내 영웅을 은퇴" original="Retire My Hero"/>
+        <!-- 50k XP -->
+        <string id="uA1yEnyO" text="50,000 XP" original="50k XP"/>
+        <!-- Burn Player -->
+        <string id="2ciF79zR" text="플레이어 굽기" original="Burn Player"/>
+        <!-- Heal Hero -->
+        <string id="likTlNpu" text="힐 히어로" original="Heal Hero"/>
+        <!-- Give Player Gold -->
+        <string id="9DoHhKeh" text="플레이어 골드 제공" original="Give Player Gold"/>
+        <!-- Use Class Power -->
+        <string id="yoZSmM0b" text="클래스 파워 사용" original="Use Class Power"/>
+    </strings>
+</base>

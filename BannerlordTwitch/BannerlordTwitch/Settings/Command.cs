@@ -1,18 +1,24 @@
-﻿using System.ComponentModel;
+﻿using BannerlordTwitch.Localization;
 using JetBrains.Annotations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BannerlordTwitch
 {
-    [Description("Bot command definition")]
+    [LocDescription("{=8SbGSWFY}Bot command definition")]
     public class Command : ActionBase
     {
-        [Category("General"), Description("The command itself, not including the !"), PropertyOrder(1), UsedImplicitly]
-        public string Name { get; set; }
-        [Category("General"), Description("Hides the command from the !help action"), PropertyOrder(2), UsedImplicitly]
+        [LocDisplayName("{=D1lt1bSQ}Name"), LocCategory("General", "{=C5T5nnix}General"), 
+         LocDescription("{=u1Ua0LXJ}The command itself, not including the !"), 
+         PropertyOrder(1), UsedImplicitly]
+        public LocString Name { get; set; } = string.Empty;
+        [LocDisplayName("{=TpnV5Mpi}HideHelp"), LocCategory("General", "{=C5T5nnix}General"), 
+         LocDescription("{=0AZVaBQN}Hides the command from the !help action"), 
+         PropertyOrder(2), UsedImplicitly]
         public bool HideHelp { get; set; }
-        [Category("General"), Description("What to show in the !help command"), PropertyOrder(3), UsedImplicitly]
-        public string Help { get; set; }
+        [LocDisplayName("{=JqNXbyIT}Help"), LocCategory("General", "{=C5T5nnix}General"), 
+         LocDescription("{=9QV7UzFh}What to show in the !help command"), 
+         PropertyOrder(3), UsedImplicitly]
+        public LocString Help { get; set; } = string.Empty;
         
         [ItemsSource(typeof(CommandHandlerItemsSource))]
         public override string Handler { get; set; }

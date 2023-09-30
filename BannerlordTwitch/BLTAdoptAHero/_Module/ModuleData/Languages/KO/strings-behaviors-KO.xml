@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="한국어"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- BLTAdoptAHeroCampaignBehavior -->
+        <!-- Compensated @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} invalid custom items -->
+        <string id="hoRPbRrb" text="보상된 @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} 잘못된 맞춤 항목" original="Compensated @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} invalid custom items"/>
+        <!-- @{VictimName} {Verb} by @{KillerName}! -->
+        <string id="PCPU0lPX" text="@{VictimName} {Verb} by @{KillerName}!" original="@{VictimName} {Verb} by @{KillerName}!"/>
+        <!-- @{KillerName} {Verb}! -->
+        <string id="Bji2ULge" text="@{KillerName} {Verb}!" original="@{KillerName} {Verb}!"/>
+        <!-- @{HeroName} is now level {Level}! -->
+        <string id="8aTmTvl8" text="@{HeroName} is now level {Level}!" original="@{HeroName} is now level {Level}!"/>
+        <!-- @{HeroName} was taken prisoner by {PartyName}! -->
+        <string id="4PqVnFWY" text="@{HeroName} was taken prisoner by {PartyName}!" original="@{HeroName} was taken prisoner by {PartyName}!"/>
+        <!-- @{HeroName} was taken prisoner! -->
+        <string id="WeRWLpKn" text="@{HeroName}이(가) 포로로 잡혔습니다!" original="@{HeroName} was taken prisoner!"/>
+        <!-- @{HeroName} is no longer a prisoner of {PartyName}! -->
+        <string id="tQANBoTK" text="@{HeroName} is no longer a prisoner of {PartyName}!" original="@{HeroName} is no longer a prisoner of {PartyName}!"/>
+        <!-- @{HeroName} is no longer a prisoner! -->
+        <string id="MQslOwr0" text="@{HeroName}은(는) 더 이상 죄수가 아닙니다!" original="@{HeroName} is no longer a prisoner!"/>
+        <!-- @{HeroName} moved from {FromClanName} to {ToClanName}! -->
+        <string id="SUdnIyfw" text="@{HeroName} moved from {FromClanName} to {ToClanName}!" original="@{HeroName} moved from {FromClanName} to {ToClanName}!"/>
+        <!-- deceased -->
+        <string id="ZtZL0lbX" text="고인" original="deceased"/>
+        <!-- retired -->
+        <string id="ISrFBorj" text="은퇴한" original="retired"/>
+        <!-- {OldName} is {RetireType}! -->
+        <string id="2PHPNmuv" text="{OldName} is {RetireType}!" original="{OldName} is {RetireType}!"/>
+        <!-- Dead or retired hero {OldName} renamed to {HeroName} -->
+        <string id="wzpkEmTL" text="사망 또는 은퇴한 영웅 {OldName} renamed to {HeroName}" original="Dead or retired hero {OldName} renamed to {HeroName}"/>
+        <!-- You can't bid on your own item -->
+        <string id="2cbVbW91" text="자신의 항목에 입찰할 수 없습니다." original="You can't bid on your own item"/>
+        <!-- Bid of {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon} -->
+        <string id="rbhzuJLm" text="{Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon}의 입찰가" original="Bid of {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon}"/>
+        <!-- Another bid at {Bid}{GoldIcon} already exists -->
+        <string id="83uZcndH" text="{Bid}{GoldIcon}에 다른 입찰가가 이미 있습니다." original="Another bid at {Bid}{GoldIcon} already exists"/>
+        <!-- You already bid more ({Bid}{GoldIcon}), you can only raise your bid -->
+        <string id="qeLF80xw" text="이미 더 많이 입찰했습니다({Bid}{GoldIcon}). 입찰가를 높일 수만 있습니다." original="You already bid more ({Bid}{GoldIcon}), you can only raise your bid"/>
+        <!-- You cannot cover a bid of {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon} -->
+        <string id="Cqi0iYNR" text="{Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon}의 입찰가를 감당할 수 없습니다." original="You cannot cover a bid of {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon}"/>
+        <!-- Bid of {Bid}{GoldIcon} placed! -->
+        <string id="M2B9yQ4w" text="{Bid}{GoldIcon}의 입찰이 이루어졌습니다!" original="Bid of {Bid}{GoldIcon} placed!"/>
+        <!-- {Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName}) -->
+        <string id="TeeDJyJ1" text="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})" original="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})"/>
+        <!-- {Time} seconds left in auction of '{ItemName}', no bids placed -->
+        <string id="jNkGaKZw" text="{Time} seconds left in auction of '{ItemName}', 입찰가 없음" original="{Time} seconds left in auction of '{ItemName}', no bids placed"/>
+        <!-- Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}. -->
+        <string id="d9ooHVPU" text="{ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon} 경매." original="Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}."/>
+        <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died. -->
+        <string id="SGuTRcui" text="{ItemName} is CANCELLED! @{ItemOwnerName}에 대한 경매가 은퇴하거나 사망했습니다." original="Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died."/>
+        <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} is no longer in possession of the item. -->
+        <string id="NRV4IstE" text="{ItemName} is CANCELLED! @{ItemOwnerName}에 대한 경매는 더 이상 항목을 소유하지 않습니다." original="Auction for {ItemName} is CANCELLED! @{ItemOwnerName} is no longer in possession of the item."/>
+        <!-- Auction for {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}. -->
+        <string id="jmbMoHta" text="{ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon} 경매." original="Auction for {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}."/>
+        <!-- No auction in progress -->
+        <string id="Cy38Ckpk" text="진행중인 경매가 없습니다" original="No auction in progress"/>
+        <!-- Max Retinue Size -->
+        <string id="wAGE7h6U" text="최대 수행원 크기" original="Max Retinue Size"/>
+        <!-- Maximum number of units in the retinue. Recommend less than 20, summons to NOT obey the games unit limits. -->
+        <string id="EOGB8EWN" text="수행원의 최대 단위 수입니다. 20개 미만을 권장하고 게임 단위 제한을 준수하지 않도록 요청합니다." original="Maximum number of units in the retinue. Recommend less than 20, summons to NOT obey the games unit limits."/>
+        <!-- Cost Tier 1 -->
+        <string id="VvdtvdQJ" text="비용 계층 1" original="Cost Tier 1"/>
+        <!-- Gold cost for Tier 1 retinue -->
+        <string id="9bvn5R5A" text="티어 1 수행원의 골드 비용" original="Gold cost for Tier 1 retinue"/>
+        <!-- Cost Tier 2 -->
+        <string id="engRDMZx" text="비용 계층 2" original="Cost Tier 2"/>
+        <!-- Gold cost for Tier 2 retinue -->
+        <string id="pD2ZvRVH" text="Tier 2 수행원의 골드 비용" original="Gold cost for Tier 2 retinue"/>
+        <!-- Cost Tier 3 -->
+        <string id="3jxmITht" text="비용 계층 3" original="Cost Tier 3"/>
+        <!-- Gold cost for Tier 3 retinue -->
+        <string id="dyB8loLF" text="Tier 3 수행원의 골드 비용" original="Gold cost for Tier 3 retinue"/>
+        <!-- Cost Tier 4 -->
+        <string id="dhwd4ccF" text="비용 계층 4" original="Cost Tier 4"/>
+        <!-- Gold cost for Tier 4 retinue -->
+        <string id="aji2HxKa" text="Tier 4 수행원의 골드 비용" original="Gold cost for Tier 4 retinue"/>
+        <!-- Cost Tier 5 -->
+        <string id="zJkb4AIh" text="비용 계층 5" original="Cost Tier 5"/>
+        <!-- Gold cost for Tier 5 retinue -->
+        <string id="fnEOFst7" text="티어 5 수행원의 골드 비용" original="Gold cost for Tier 5 retinue"/>
+        <!-- Cost Tier 6 -->
+        <string id="1hh3cOJO" text="비용 계층 6" original="Cost Tier 6"/>
+        <!-- Gold cost for Tier 6 retinue -->
+        <string id="PieENBSG" text="티어 6 수행원의 골드 비용" original="Gold cost for Tier 6 retinue"/>
+        <!-- Troop Types -->
+        <string id="qYhM3gcn" text="부대 유형" original="Troop Types"/>
+        <!-- Use Heroes Culture Units -->
+        <string id="q1Rkm3Rq" text="영웅 문화 단위 사용" original="Use Heroes Culture Units"/>
+        <!-- Whether to use the adopted hero's culture (if not enabled then a random one is used) -->
+        <string id="9qAD6eZR" text="채택된 영웅의 문화를 사용할지 여부(활성화되지 않은 경우 임의의 문화가 사용됨)" original="Whether to use the adopted hero's culture (if not enabled then a random one is used)"/>
+        <!-- Include Bandit Units -->
+        <string id="dbU7WEKG" text="산적 유닛 포함" original="Include Bandit Units"/>
+        <!-- Whether to allow bandit units when UseHeroesCultureUnits is disabled -->
+        <string id="06KnYhyh" text="UseHeroesCultureUnits가 비활성화되었을 때 적기 유닛을 허용할지 여부" original="Whether to allow bandit units when UseHeroesCultureUnits is disabled"/>
+        <!-- Use Basic Troops -->
+        <string id="E2RBmb1K" text="기본 병력 사용" original="Use Basic Troops"/>
+        <!-- Whether to allow basic troops -->
+        <string id="uPwaOKdT" text="기본 병력 허용 여부" original="Whether to allow basic troops"/>
+        <!-- Use Elite Troops -->
+        <string id="lnz7d1BI" text="엘리트 부대 사용" original="Use Elite Troops"/>
+        <!-- Whether to allow elite troops -->
+        <string id="EPr2clqT" text="엘리트 부대 허용 여부" original="Whether to allow elite troops"/>
+        <!-- Max retinue -->
+        <string id="UhUpH8C8" text="최대 수행원" original="Max retinue"/>
+        <!-- Tier costs -->
+        <string id="VBuncBq5" text="계층 비용" original="Tier costs"/>
+        <!-- Same culture only -->
+        <string id="R7rU0TbD" text="같은 문화만" original="Same culture only"/>
+        <!-- Bandits -->
+        <string id="c2qOsXvs" text="산적" original="Bandits"/>
+        <!-- Basic troops -->
+        <string id="RmTwEFzy" text="기본 부대" original="Basic troops"/>
+        <!-- Elite troops -->
+        <string id="3gumlthG" text="엘리트 부대" original="Elite troops"/>
+        <!-- Allowed -->
+        <string id="uL7MfYPc" text="허용 된" original="Allowed"/>
+        <!-- No valid troop types could be found, please check out settings -->
+        <string id="bBCyH0vV" text="유효한 부대 유형을 찾을 수 없습니다. 설정을 확인하세요." original="No valid troop types could be found, please check out settings"/>
+        <!-- Spent {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} remaining -->
+        <string id="zcbOq6Tb" text="{TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon}을(를) 소비했습니다." original="Spent {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} remaining"/>
+        <!-- Can't upgrade retinue any further! -->
+        <string id="PQRLJ04i" text="수행원을 더 이상 업그레이드할 수 없습니다!" original="Can't upgrade retinue any further!"/>
+        <!-- was murdered -->
+        <string id="LhHul2lV" text="살해 당했다" original="was murdered"/>
+        <!-- died in labor -->
+        <string id="HwjR45XN" text="노동 중 사망" original="died in labor"/>
+        <!-- died of old age -->
+        <string id="5GOjfkzW" text="노년으로 사망" original="died of old age"/>
+        <!-- died in battle -->
+        <string id="ZKrgqWav" text="전투에서 사망" original="died in battle"/>
+        <!-- was wounded in battle -->
+        <string id="jp4sldTL" text="전투에서 부상당했다" original="was wounded in battle"/>
+        <!-- was executed -->
+        <string id="SkFFXsI1" text="처형되었다" original="was executed"/>
+        <!-- was lost -->
+        <string id="HMHdXDaK" text="길을 잃었다" original="was lost"/>
+        <!-- was ended -->
+        <string id="lrOJnThZ" text="종료되었다" original="was ended"/>
+        <!-- BLTTournamentBetMissionBehavior -->
+        <!-- Betting is now OPEN for round {RoundIndex} match: {Teams}! -->
+        <string id="wgGkXkyh" text="이제 {RoundIndex} match: {Teams} 라운드 베팅이 시작됩니다!" original="Betting is now OPEN for round {RoundIndex} match: {Teams}!"/>
+        <!-- Betting is now OPEN for final match: {Teams}! -->
+        <string id="9BjHfivM" text="이제 최종 경기에 대한 베팅이 시작됩니다: {Teams}!" original="Betting is now OPEN for final match: {Teams}!"/>
+        <!-- vs -->
+        <string id="ixTCiaiv" text="대" original="vs"/>
+        <!-- blue -->
+        <string id="HrIifwJy" text="파란색" original="blue"/>
+        <!-- red -->
+        <string id="6ZGgsbe1" text="빨간색" original="red"/>
+        <!-- green -->
+        <string id="qQZlsD8r" text="초록" original="green"/>
+        <!-- yellow -->
+        <string id="JelyrtLJ" text="노란색" original="yellow"/>
+        <!-- Tournament is not active -->
+        <string id="FEZ1Opj1" text="토너먼트가 활성화되지 않았습니다." original="Tournament is not active"/>
+        <!-- Betting is disabled -->
+        <string id="uNUyZhDk" text="베팅이 비활성화되었습니다." original="Betting is disabled"/>
+        <!-- Betting is closed -->
+        <string id="APTqGlHh" text="베팅이 종료되었습니다." original="Betting is closed"/>
+        <!-- Betting is only allowed on the final -->
+        <string id="7yFW99H8" text="베팅은 결승전에만 허용됩니다." original="Betting is only allowed on the final"/>
+        <!-- Betting is not open -->
+        <string id="ATdvJKFI" text="베팅이 열려 있지 않습니다." original="Betting is not open"/>
+        <!-- Team name must be one of {Teams} -->
+        <string id="1rUYWox8" text="팀 이름은 {Teams} 중 하나여야 합니다." original="Team name must be one of {Teams}"/>
+        <!-- You can only bet on one team -->
+        <string id="7iveTGQp" text="한 팀에만 베팅할 수 있습니다." original="You can only bet on one team"/>
+        <!-- Betting is now CLOSED: only one team bet on, bets refunded -->
+        <string id="Nm96SVXt" text="이제 베팅이 종료되었습니다. 한 팀만 베팅하고 베팅은 환불됩니다." original="Betting is now CLOSED: only one team bet on, bets refunded"/>
+        <!-- Betting is now CLOSED: no bets placed -->
+        <string id="GrI9bFCf" text="이제 베팅이 종료되었습니다: 베팅이 이루어지지 않았습니다." original="Betting is now CLOSED: no bets placed"/>
+        <!-- Betting is now CLOSED: {TotalBets} -->
+        <string id="Hj3oYnE0" text="이제 베팅이 종료되었습니다: {TotalBets}" original="Betting is now CLOSED: {TotalBets}"/>
+        <!-- REFUNDED {Bet}{GoldIcon} bet -->
+        <string id="u4mPf1p0" text="환불된 {Bet}{GoldIcon} 베팅" original="REFUNDED {Bet}{GoldIcon} bet"/>
+        <!-- WON BET -->
+        <string id="majAmqDm" text="원 벳" original="WON BET"/>
+        <!-- BLTTournamentMissionBehavior -->
+        <!-- WINNER! -->
+        <string id="jb5vaUCD" text="우승자!" original="WINNER!"/>
+        <!-- no prize available for you! -->
+        <string id="80PitGR4" text="사용할 수 있는 상품이 없습니다!" original="no prize available for you!"/>
+        <!-- BLTTournamentQueueBehavior -->
+        <!-- You are already in the tournament queue! -->
+        <string id="JtZIstbB" text="이미 토너먼트 대기열에 있습니다!" original="You are already in the tournament queue!"/>
+        <!-- You are position {QueuePosition} in the tournament queue! -->
+        <string id="1duM11Gt" text="귀하는 토너먼트 대기열에서 {QueuePosition} 위치에 있습니다!" original="You are position {QueuePosition} in the tournament queue!"/>
+    </strings>
+</base>

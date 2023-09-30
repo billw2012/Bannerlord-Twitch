@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="Português (BR)">
+  <LanguageFile xml_path="BR/strings-achievements-BR.xml" />
+  <LanguageFile xml_path="BR/strings-classes-BR.xml" />
+  <LanguageFile xml_path="BR/strings-commands-BR.xml" />
+  <LanguageFile xml_path="BR/strings-kill-streaks-BR.xml" />
+  <LanguageFile xml_path="BR/strings-misc-BR.xml" />
+  <LanguageFile xml_path="BR/strings-powers-BR.xml" />
+  <LanguageFile xml_path="BR/strings-rewards-BR.xml" />
+</LanguageData>

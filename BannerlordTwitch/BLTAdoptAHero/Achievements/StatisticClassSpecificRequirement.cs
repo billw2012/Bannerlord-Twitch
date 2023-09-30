@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -10,15 +11,17 @@ using YamlDotNet.Serialization;
 namespace BLTAdoptAHero.Achievements
 {
     [YamlTagged]
+    [LocDisplayName("{=ziuB7eSV}Statistic Class Specific Requirement")]
     public class StatisticClassSpecificRequirement : StatisticRequirement, ILoaded
     {
         #region User Editable
-        [Description("Requirement uses current class, useful for class power unlocks so you don't have to specify" +
-                     "the class explicitly"), PropertyOrder(5), UsedImplicitly]
+        [LocDisplayName("{=WwKyvotH}Current Class"),
+         LocDescription("{=S9kGgf0r}Requirement uses current class, useful for class power unlocks so you don't have to specify the class explicitly"), 
+         PropertyOrder(5), UsedImplicitly]
         public bool CurrentClass { get; set; }
         
-        [Description("Class required to get this achievement. If (none) is specified " +
-                     "then the achievement will apply ONLY when the hero doesn't have a class set."), 
+        [LocDisplayName("{=5QwSEOc3}Required Class"),
+         LocDescription("{=G34P8lCu}Class required to get this achievement. If (none) is specified then the achievement will apply ONLY when the hero doesn't have a class set."), 
          PropertyOrder(6), ItemsSource(typeof(HeroClassDef.ItemSource)), UsedImplicitly]
         public Guid RequiredClass { get; set; }
         #endregion
@@ -42,7 +45,13 @@ namespace BLTAdoptAHero.Achievements
                 ? null : GlobalHeroClassConfig.Get(ConfigureContext.CurrentlyEditedSettings);
         }
 
-        public override string Description => $"{base.Description} [class: {(CurrentClass ? "(current)" : ClassConfig.GetClass(RequiredClass)?.Name ?? "(none)")}]";
+        [YamlIgnore, Browsable(false)]
+        public override string Description 
+            => base.Description + " [" + "{=j3YG9dCh}class".Translate() + ": " +
+               ("Class",
+                   CurrentClass
+                    ? "{=RXXuHIdN}(current)".Translate() 
+                    : ClassConfig.GetClass(RequiredClass)?.Name ?? "{=dPEnuHsk}(none)".Translate());
         #endregion
         
         #region Implementation Details

@@ -58,6 +58,16 @@ namespace BannerlordTwitch
                     ThrottlingPeriod = TimeSpan.FromSeconds(30)
                 };
                 var customClient = new WebSocketClient(clientOptions);
+                // Double check to destroy the client
+                if (client != null)
+                {
+                    client.OnLog -= Client_OnLog;
+                    client.OnJoinedChannel -= Client_OnJoinedChannel;
+                    client.OnMessageReceived -= Client_OnMessageReceived;
+                    client.OnConnected -= Client_OnConnected;
+                    client.OnDisconnected -= Client_OnDisconnected;
+                    client.Disconnect();
+                }
                 client = new TwitchClient(customClient);
                 client.Initialize(credentials, channel);
 
@@ -91,6 +101,8 @@ namespace BannerlordTwitch
                 parts.Add(currPart);
                 return parts;  // string.Join(space, msg);
             }
+
+            private string BotPrefix => authSettings.BotMessagePrefix ?? "{=b4tJSNJG}[BLT] ".Translate();
             
             public void SendChat(params string[] msg)
             {
@@ -101,7 +113,7 @@ namespace BannerlordTwitch
                         var parts = FormatMessage(msg);
                         foreach (string part in parts)
                         {
-                            client.SendMessage(channel, (authSettings.BotMessagePrefix ?? "[BLT] ") + part);
+                            client.SendMessage(channel, BotPrefix + part);
                         }
                     }
                     catch (Exception e)
@@ -120,7 +132,7 @@ namespace BannerlordTwitch
                         var parts = FormatMessage(msg);
                         foreach (string part in parts)
                         {
-                            client.SendMessage(channel, $"{authSettings.BotMessagePrefix ?? "[BLT] "}@{userName} {part}");
+                            client.SendMessage(channel, $"{BotPrefix}@{userName} {part}");
                         }
                     }
                     catch (Exception e)
@@ -139,7 +151,7 @@ namespace BannerlordTwitch
                         var parts = FormatMessage(msg);
                         foreach (string part in parts)
                         {
-                            client.SendReply(channel, replyId, (authSettings.BotMessagePrefix ?? "[BLT] ") + part);
+                            client.SendReply(channel, replyId, BotPrefix + part);
                         }
                     }
                     catch (Exception e)
@@ -158,7 +170,7 @@ namespace BannerlordTwitch
                         var parts = FormatMessage(msg);
                         foreach (string part in parts)
                         {
-                            client.SendWhisper(userName, (authSettings.BotMessagePrefix ?? "[BLT] ") + part);
+                            client.SendWhisper(userName, BotPrefix + part);
                         }
                     }
                     catch (Exception e)
@@ -168,16 +180,16 @@ namespace BannerlordTwitch
                 }
             }
 
-            private void Client_OnLog(object sender, TwitchLib.Client.Events.OnLogArgs e)
+            private void Client_OnLog(object sender, OnLogArgs e)
             {
-                Log.Trace($"{e.DateTime.ToString()}: {e.BotUsername} - {e.Data}");
+                Log.Trace($"{e.DateTime}: {e.BotUsername} - {e.Data}");
             }
 
             private bool autoReconnect = true;
 
             private void Client_OnConnected(object sender, OnConnectedArgs e)
             {
-                Log.LogFeedSystem($"Bot connected");
+                Log.LogFeedSystem("{=DYWDiBCl}Bot connected".Translate());
 
                 // disconnectCts = new CancellationTokenSource();
                 // Task.Factory.StartNew(() => {
@@ -199,7 +211,7 @@ namespace BannerlordTwitch
             
             private void Client_OnDisconnected(object sender, OnDisconnectedEventArgs e)
             {
-                Log.LogFeedSystem($"Bot disconnected");
+                Log.LogFeedSystem("{=thucznzJ}Bot disconnected".Translate());
                 if (autoReconnect)
                 {
                     Connect();
@@ -209,12 +221,18 @@ namespace BannerlordTwitch
 
             private void Client_OnJoinedChannel(object sender, OnJoinedChannelArgs e)
             {
-                Log.LogFeedSystem($"@{e.BotUsername} has joined channel {e.Channel}");
-                SendChat("bot reporting for duty!", "Type !help for command list");
+                Log.LogFeedSystem("{=Hd6Q51eb}@{BotUsername} has joined channel {Channel}".Translate(
+                    ("BotUsername", e.BotUsername), ("Channel", e.Channel)));
+                SendChat("{=SbufvVIR}bot reporting for duty!".Translate(), "{=vBtkF25N}Type !help for command list".Translate());
             }
 
+            private HashSet<string> handledMessages = new();
             private void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)
             {
+                // Double check we didn't already handle this message, as sometimes bot can be receiving them twice
+                if (!handledMessages.Add(e.ChatMessage.Id))
+                    return;
+                
                 // Register the user info always and before doing anything else, so it is appropriately up to date in
                 // case a bot command is being issued
                 TwitchHub.AddUser(e.ChatMessage.DisplayName, e.ChatMessage.ColorHex);

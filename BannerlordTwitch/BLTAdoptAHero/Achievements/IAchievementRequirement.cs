@@ -1,5 +1,4 @@
-﻿using BannerlordTwitch.Util;
-using TaleWorlds.CampaignSystem;
+﻿using TaleWorlds.CampaignSystem;
 
 namespace BLTAdoptAHero.Achievements
 {

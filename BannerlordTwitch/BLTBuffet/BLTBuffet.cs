@@ -1,7 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
+using BLTAdoptAHero.Annotations;
 using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
@@ -49,13 +50,16 @@ namespace BLTBuffet
             }
         }
         
+        [LocDisplayName("{=cBeIA9V1}Effects Config")]
         internal class GlobalEffectsConfig
         {
             private const string ID = "Buffet - Effects Config";
             internal static void Register() => ActionManager.RegisterGlobalConfigType(ID, typeof(GlobalEffectsConfig));
             internal static GlobalEffectsConfig Get() => ActionManager.GetGlobalConfig<GlobalEffectsConfig>(ID);
         
-            [Description("Whether effects are disabled in a tournament")] 
+            [LocDisplayName("{=cUN7xx0t}Disable Effects In Tournaments"),
+             LocDescription("{=X0AtIvbh}Whether effects are disabled in a tournament"),
+             UsedImplicitly] 
             public bool DisableEffectsInTournaments { get; set; } = true;
         }
     }

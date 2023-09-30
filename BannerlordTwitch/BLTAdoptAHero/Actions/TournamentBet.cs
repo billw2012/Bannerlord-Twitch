@@ -1,5 +1,6 @@
 ﻿using System;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
@@ -23,36 +24,51 @@ namespace BLTAdoptAHero
             string[] parts = context.Args?.Split(' ');
             if (parts?.Length != 2)
             {
-                ActionManager.SendReply(context, $"Usage: !{((Command)context.Source).Name} team gold");
+                ActionManager.SendReply(context, 
+                    context.ArgsErrorMessage("{=8XQwqd4f}(team) (gold)".Translate()));
                 return;
             }
 
-            int gold = BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero);
-            int nameIdx = -1;
-            if (parts[0].ToLower() == "all" || int.TryParse(parts[0], out gold))
+            (int? gold, string team) ParseArgs(string[] args)
             {
-                nameIdx = 1;
+                if (string.Equals(args[0], "{=hHekZwYB}all".Translate(), StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return (BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero), args[1]);
+                }
+                else if (string.Equals(args[1], "{=hHekZwYB}all".Translate(), StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return (BLTAdoptAHeroCampaignBehavior.Current.GetHeroGold(adoptedHero), args[0]);
+                } 
+                else if (int.TryParse(args[0], out int gold0))
+                {
+                    return (gold0, args[1]);
+                }
+                else if (int.TryParse(args[1], out int gold1))
+                {
+                    return (gold1, args[0]);
+                }
+                return default;
             }
-            else if(parts[1].ToLower() == "all" || int.TryParse(parts[1], out gold))
+
+            (int? gold, string team) = ParseArgs(parts);
+            if(gold is null or <= 0)
             {
-                nameIdx = 0;
-            }
-            if(gold <= 0 || nameIdx == -1)
-            {
-                ActionManager.SendReply(context, $"Invalid gold argument");
+                ActionManager.SendReply(context, "{=GiU7feEu}Invalid gold argument".Translate());
                 return;
             }
+
+            (bool success, string failReason) 
+                = BLTTournamentBetMissionBehavior.Current?.PlaceBet(adoptedHero, team, gold.Value) 
+                  ?? (false, "{=3AQKsF9f}Betting not active".Translate());
             
-            string team = parts[nameIdx].ToLower();
-            (bool success, string failReason) = BLTTournamentBetMissionBehavior.Current?.PlaceBet(adoptedHero, team, gold) 
-                                                ?? (false, "Betting not active");
             if (!success)
             {
                 ActionManager.SendReply(context, failReason);
             }
             else
             {
-                ActionManager.SendReply(context, $"Bet {gold}{Naming.Gold} on {team}");
+                ActionManager.SendReply(context,  "{=9tlhaGyH}Bet {GoldAmount}{GoldIcon} on {Team}"
+                    .Translate(("GoldAmount", gold), ("GoldIcon", Naming.Gold), ("Team", team)));
             }
         }
     }

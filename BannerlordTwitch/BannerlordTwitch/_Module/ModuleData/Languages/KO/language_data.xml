@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="한국어">
+  <LanguageFile xml_path="KO/strings-achievements-KO.xml" />
+  <LanguageFile xml_path="KO/strings-classes-KO.xml" />
+  <LanguageFile xml_path="KO/strings-commands-KO.xml" />
+  <LanguageFile xml_path="KO/strings-kill-streaks-KO.xml" />
+  <LanguageFile xml_path="KO/strings-misc-KO.xml" />
+  <LanguageFile xml_path="KO/strings-powers-KO.xml" />
+  <LanguageFile xml_path="KO/strings-rewards-KO.xml" />
+</LanguageData>

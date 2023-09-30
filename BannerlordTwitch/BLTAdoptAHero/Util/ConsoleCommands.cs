@@ -5,10 +5,15 @@ using HarmonyLib;
 using JetBrains.Annotations;
 using SandBox.View.Map;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.GameState;
+using TaleWorlds.CampaignSystem.Inventory;
+using TaleWorlds.CampaignSystem.Party;
+using TaleWorlds.CampaignSystem.Roster;
+using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
-using TaleWorlds.Engine.Screens;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.ScreenSystem;
 
 namespace BLTAdoptAHero.Util
 {
@@ -30,15 +35,15 @@ namespace BLTAdoptAHero.Util
             }
             
             if (!PartyScreenAllowed)
-                return $"Can't open inventory now";
+                return "Hero screen not allowed now (you must be on the campaign map, not in a siege or encounter)";;
             
             if (ScreenManager.TopScreen is not MapScreen)
             {
                 Game.Current.GameStateManager.PopState();
             }
-
+        
             OpenScreenAsInventoryOf(hero.CharacterObject);
-
+        
             return $"Opened inventory of {strings[0]}";
         }
         
@@ -59,7 +64,10 @@ namespace BLTAdoptAHero.Util
         {
             var inventoryLogicFieldInfo = AccessTools.Field(typeof(InventoryManager), "_inventoryLogic");
             
-            var inventoryLogic = new InventoryLogic(Campaign.Current, null);
+            //InventoryManager.OpenScreenAsInventoryOf(MobileParty.MainParty, character);
+            
+            // Might be broken since 1.7.0
+            var inventoryLogic = new InventoryLogic(null);
             inventoryLogicFieldInfo.SetValue(InventoryManager.Instance, inventoryLogic);
             var memberRoster = new TroopRoster(null);
             memberRoster.AddToCounts(character, 1);
@@ -73,7 +81,7 @@ namespace BLTAdoptAHero.Util
         [UsedImplicitly]
         public static string ShowHeroes(List<string> strings)
         {
-            return OpenAdoptedHeroScreen() ? "Opened hero screen" : "Hero screen already open";
+            return OpenAdoptedHeroScreen();
         }
 
         private static bool PartyScreenAllowed
@@ -96,34 +104,52 @@ namespace BLTAdoptAHero.Util
             }
         }
 
-        private static bool OpenAdoptedHeroScreen()
+        private static string OpenAdoptedHeroScreen()
         {
             if (!PartyScreenAllowed)
-                return false;
+                return "Heroes screen not allowed now (you must be on the campaign map, not in a siege or encounter)";
             
             if (ScreenManager.TopScreen is not MapScreen)
             {
                 Game.Current.GameStateManager.PopState();
             }
-
-            var _partyScreenLogic = new PartyScreenLogic();
-            AccessTools.Field(typeof(PartyScreenManager), "_partyScreenLogic").SetValue(PartyScreenManager.Instance, _partyScreenLogic);
-            AccessTools.Field(typeof(PartyScreenManager), "_currentMode").SetValue(PartyScreenManager.Instance, PartyScreenMode.Normal);
+        
+            // var _partyScreenLogic = new PartyScreenLogic();
+            // AccessTools.Field(typeof(PartyScreenManager), "_partyScreenLogic").SetValue(PartyScreenManager.Instance, _partyScreenLogic);
+            // AccessTools.Field(typeof(PartyScreenManager), "_currentMode").SetValue(PartyScreenManager.Instance, PartyScreenMode.Normal);
             
             var heroRoster = new TroopRoster(null);
             foreach (var hero in BLTAdoptAHeroCampaignBehavior.GetAllAdoptedHeroes().OrderBy(h => h.Name.Raw().ToLower()))
             {
                 heroRoster.AddToCounts(hero.CharacterObject, 1);
             }
-            
-            _partyScreenLogic.Initialize(heroRoster, new(null), MobileParty.MainParty, false, new("Viewers"), 0, (_, _, _, _, _, _, _, _, _) => true, new("BLT Viewer Heroes"), false);
-            _partyScreenLogic.InitializeTrade(PartyScreenLogic.TransferState.NotTransferable, PartyScreenLogic.TransferState.NotTransferable, PartyScreenLogic.TransferState.NotTransferable);
-            _partyScreenLogic.SetTroopTransferableDelegate((_, _, _, _) => false);
-            var partyState = Game.Current.GameStateManager.CreateState<PartyState>();
-            partyState.InitializeLogic(_partyScreenLogic);
-            Game.Current.GameStateManager.PushState(partyState);
 
-            return true;
+            if (heroRoster.Count == 0)
+            {
+                return "No heroes to show";
+            }
+            
+            PartyScreenManager.OpenScreenWithDummyRoster(
+                heroRoster, 
+                new TroopRoster(null), 
+                new TroopRoster(null), 
+                new TroopRoster(null), new("Viewers"), 
+                null, 0, 0, null, null, null);
+
+            // _partyScreenLogic.Initialize(new PartyScreenLogicInitializationData
+            // {
+            //     LeftMemberRoster = heroRoster,
+            //     Header = new ("Viewers"),
+            // });
+            //_partyScreenLogic.Initialize(heroRoster, new(null), MobileParty.MainParty, false, new("Viewers"), 0, (_, _, _, _, _, _, _, _, _) => true, new("BLT Viewer Heroes"), false);
+            //_partyScreenLogic.InitializeTrade(PartyScreenLogic.TransferState.NotTransferable, PartyScreenLogic.TransferState.NotTransferable, PartyScreenLogic.TransferState.NotTransferable);
+            //_partyScreenLogic.SetTroopTransferableDelegate((_, _, _, _) => false);
+            
+             // var partyState = Game.Current.GameStateManager.CreateState<PartyState>();
+             // partyState.InitializeLogic(_partyScreenLogic);
+             // Game.Current.GameStateManager.PushState(partyState);
+        
+            return "Heroes screen opened";
         }
     }
 }

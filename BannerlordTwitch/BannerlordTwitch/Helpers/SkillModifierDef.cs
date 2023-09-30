@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
@@ -10,19 +11,22 @@ namespace BannerlordTwitch.Helpers
 {
     public class SkillModifierDef : ICloneable, INotifyPropertyChanged
     {
-        [Description("Skill or skill group to modifer (all skills in a group will be modified)"),
+        [LocDisplayName("{=OEMBeawy}Skill"), 
+         LocDescription("{=46oj12tA}Skill or skill group to modifier (all skills in a group will be modified)"),
          PropertyOrder(1), UsedImplicitly, Document]
         public SkillsEnum Skill { get; set; } = SkillsEnum.All;
 
-        [Description("Percent modifier to apply to the skill (100% will result in no chance)"),
+        [LocDisplayName("{=jgNUxcBa}ModifierPercent"), 
+         LocDescription("{=S34uXWMu}Percent modifier to apply to the skill (100% will result in no chance)"),
          PropertyOrder(2),
          UIRange(0, 1000, 5f),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          UsedImplicitly, Document]
         public float ModifierPercent { get; set; } = 100f;
 
-        [Description("How much to add or subtract from the skill (0 will result in no change). " +
-                     "This is applied AFTER Modifier."),
+        [LocDisplayName("{=Au82n7kL}Add"), 
+         LocDescription("{=hPQpBmRR}How much to add or subtract from the skill (0 will result in no change). " +
+                        "This is applied AFTER Modifier."),
          PropertyOrder(3),
          UsedImplicitly, Document]
         public int Add { get; set; }
@@ -30,7 +34,7 @@ namespace BannerlordTwitch.Helpers
         public float Apply(float skill) => skill * ModifierPercent / 100f + Add;
 
         [YamlIgnore, Browsable(false)]
-        public string SkillUIName => Skill.ToString().SplitCamelCase();
+        public string SkillUIName => Skill.GetDisplayName();
         
         [YamlIgnore, Browsable(false)]
         public string ModifiersDescription
@@ -42,7 +46,7 @@ namespace BannerlordTwitch.Helpers
                 if (Add != 0) result += Add > 0 ? $"+{Add}" : $"{Add}";
                 if (ModifierPercent == 100 && Add == 0)
                 {
-                    result += "(no change)";
+                    result += "{=PsUcJvPZ}(no change)".Translate();
                 }
                 return result;
             }

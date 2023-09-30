@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BannerlordTwitch.Helpers;
 using BannerlordTwitch.Util;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -15,7 +16,7 @@ namespace BLTBuffet
             public readonly Agent agent;
             public readonly Config config;
 
-            public float started = MBCommon.GetTime(MBCommon.TimeType.Mission);
+            public float started = CampaignHelpers.GetTotalMissionTime();
             public class PfxState
             {
                 public List<GameEntityComponent> weaponEffects;
@@ -36,7 +37,7 @@ namespace BLTBuffet
                     agent.Health = Math.Min(agent.HealthLimit, agent.Health + Math.Abs(config.HealPerSecond) * dt);
                 }
 
-                if(config.DamagePerSecond != 0 && !agent.Invulnerable && !Mission.DisableDying)
+                if(config.DamagePerSecond != 0 && agent.CurrentMortalityState == Agent.MortalityState.Mortal && Mission.Current?.DisableDying != true)
                 {
                     var blow = new Blow(agent.Index)
                     {
@@ -44,17 +45,19 @@ namespace BLTBuffet
                         //blow.BlowFlag |= BlowFlags.KnockDown;
                         //blow.BlowFlag = BlowFlags.CrushThrough;
                         BlowFlag = BlowFlags.ShrugOff,
-                        BoneIndex = agent.Monster.ThoraxLookDirectionBoneIndex,
-                        Position = agent.Position,
+                        BoneIndex = 0,
+                        GlobalPosition = agent.Position,
                         // blow.Position.z += agent.GetEyeGlobalHeight();
-                        BaseMagnitude = 0f,
-                        WeaponRecord = new() { AffectorWeaponSlotOrMissileIndex = -1 },
+                        //BaseMagnitude = 0f,
+                        //WeaponRecord = new() { AffectorWeaponSlotOrMissileIndex = -1 },
                         InflictedDamage = (int) Math.Abs(config.DamagePerSecond * dt),
                         SwingDirection = agent.LookDirection.NormalizedCopy(),
                         Direction = agent.LookDirection.NormalizedCopy(),
                         DamageCalculated = true
                     };
-                    agent.RegisterBlow(blow);
+                    blow.BaseMagnitude = blow.InflictedDamage;
+                    blow.WeaponRecord.FillAsMeleeBlow(null, null, -1, 0);
+                    agent.RegisterBlow(blow, AgentHelpers.CreateCollisionDataFromBlow(agent, agent, blow));
                 }
 
                 if (config.ForceDropWeapons)
@@ -86,9 +89,10 @@ namespace BLTBuffet
             public bool CheckRemove()
             {
                 if (config.Duration.HasValue 
-                    && MBCommon.GetTime(MBCommon.TimeType.Mission) > config.Duration.Value + started)
+                    && CampaignHelpers.GetTotalMissionTime() > config.Duration.Value + started)
                 {
-                    Log.LogFeedEvent($"{config.Name} expired on {agent.Name}!");
+                    Log.LogFeedEvent("{Config} expired on {Target}!"
+                        .Translate(("Config", config.Name), ("Target", agent.Name)));
                     if (!string.IsNullOrEmpty(config.DeactivateParticleEffect))
                     {
                         Mission.Current.Scene.CreateBurstParticle(ParticleSystemManager.GetRuntimeIdByName(config.DeactivateParticleEffect), agent.AgentVisuals.GetGlobalFrame());
@@ -115,7 +119,7 @@ namespace BLTBuffet
             }
         }
 
-        internal class BLTEffectsBehaviour : MissionBehaviour
+        internal class BLTEffectsBehaviour : MissionBehavior
         {
             private readonly Dictionary<Agent, List<CharacterEffectState>> agentEffectsActive = new();
 
@@ -142,25 +146,24 @@ namespace BLTBuffet
 
             public static BLTEffectsBehaviour Get()
             {
-                var beh = Mission.Current.GetMissionBehaviour<BLTEffectsBehaviour>();
+                var beh = Mission.Current.GetMissionBehavior<BLTEffectsBehaviour>();
                 if (beh == null)
                 {
                     beh = new BLTEffectsBehaviour();
-                    Mission.Current.AddMissionBehaviour(beh);
+                    Mission.Current.AddMissionBehavior(beh);
                 }
 
                 return beh;
             }
 
-            public void ApplyHitDamage(Agent attackerAgent, Agent victimAgent,
-                ref AttackCollisionData attackCollisionData)
+            public void ApplyHitDamage(Agent attackerAgent, Agent victimAgent, ref AttackCollisionData attackCollisionData)
             {
                 try
                 {
                     float[] hitDamageMultipliers = agentEffectsActive
                         .Where(e => ReferenceEquals(e.Key, attackerAgent))
                         .SelectMany(e => e.Value
-                            .Select(f => f.config.DamageMultiplier ?? 0)
+                            .Select(f => f?.config?.DamageMultiplier ?? 0)
                             .Where(f => f != 0)
                         )
                         .ToArray();
@@ -298,7 +301,7 @@ namespace BLTBuffet
                 }
             }
 
-            public override MissionBehaviourType BehaviourType => MissionBehaviourType.Other;
+            public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
         }
     }
 }

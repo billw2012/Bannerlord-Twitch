@@ -8,7 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Security.Authentication;
 using System.Security.Cryptography;
 using System.Text;
@@ -16,20 +15,19 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using BannerlordTwitch;
 using BannerlordTwitch.Annotations;
-using BannerlordTwitch.Rewards;
-using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using BLTConfigure.UI;
 using Newtonsoft.Json;
 using TaleWorlds.CampaignSystem;
-using Xceed.Wpf.Toolkit.PropertyGrid;
+using TaleWorlds.Library;
+using BinaryReader = System.IO.BinaryReader;
+using BinaryWriter = System.IO.BinaryWriter;
 
 namespace BLTConfigure
 {
@@ -124,10 +122,10 @@ namespace BLTConfigure
                 return item switch
                 {
                     null => "",
-                    GlobalConfig => "Global Configs",
-                    Reward => "Channel Rewards",
-                    Command => "Chat Commands",
-                    SimTestingConfig => "Sim Testing Config",
+                    GlobalConfig => "{=S7fvEW5l}Global Configs".Translate(),
+                    Reward => "{=xljCKxH7}Channel Rewards".Translate(),
+                    Command => "{=mHkSZwdI}Chat Commands".Translate(),
+                    SimTestingConfig => "{=c1lGU26j}Sim Testing Config".Translate(),
                     _ => item.GetType().Name
                 };
             }
@@ -385,6 +383,15 @@ namespace BLTConfigure
                     $"Couldn't generate the documentation: {ex.Message}";
             }
 
+            MainThreadSync.Run(() =>
+                InformationManager.ShowInquiry(
+                    new InquiryData(
+                        "You must reload your save now!",
+                        "After generating documentation you must reload your save before continuing, as the state has been changed by the generation process.",
+                        true, false, "{=hpFXglKx}Okay".Translate(), null,
+                        () => { }, () => { }), true)
+            );
+
             GenerateDocumentationButton.IsEnabled = true;
         }
 
@@ -539,12 +546,6 @@ namespace BLTConfigure
         private void CopyOverlayUrlButton_OnClick(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(OverlayUrl);
-        }
-
-        private void SaveButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            ConfigurationRoot.SaveSettings();
-            ConfigurationRoot.SaveAuth();
         }
         
         public event PropertyChangedEventHandler PropertyChanged;

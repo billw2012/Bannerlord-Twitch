@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="한국어">
+  <LanguageFile xml_path="KO/strings-actions-KO.xml" />
+  <LanguageFile xml_path="KO/strings-behaviors-KO.xml" />
+  <LanguageFile xml_path="KO/strings-default-shouts-KO.xml" />
+  <LanguageFile xml_path="KO/strings-globalconfigs-KO.xml" />
+  <LanguageFile xml_path="KO/strings-misc-KO.xml" />
+  <LanguageFile xml_path="KO/strings-powers-KO.xml" />
+</LanguageData>

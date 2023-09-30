@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="Italiano">
+  <LanguageFile xml_path="IT/strings-achievements-IT.xml" />
+  <LanguageFile xml_path="IT/strings-classes-IT.xml" />
+  <LanguageFile xml_path="IT/strings-commands-IT.xml" />
+  <LanguageFile xml_path="IT/strings-kill-streaks-IT.xml" />
+  <LanguageFile xml_path="IT/strings-misc-IT.xml" />
+  <LanguageFile xml_path="IT/strings-powers-IT.xml" />
+  <LanguageFile xml_path="IT/strings-rewards-IT.xml" />
+</LanguageData>

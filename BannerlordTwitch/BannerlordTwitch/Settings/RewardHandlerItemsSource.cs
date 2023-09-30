@@ -8,8 +8,8 @@ namespace BannerlordTwitch
         public ItemCollection GetValues()
         {
             var items = new ItemCollection();
-            foreach (string action in ActionManager.RewardHandlerNames)
-                items.Add(action);
+            foreach ((string id, string displayName) in ActionManager.RewardHandlerIDsAndDisplayNames)
+                items.Add(id, displayName);
             return items;
         }
     }

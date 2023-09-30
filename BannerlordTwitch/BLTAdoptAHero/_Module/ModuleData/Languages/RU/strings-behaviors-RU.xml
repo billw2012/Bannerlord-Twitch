@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Русский"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- BLTAdoptAHeroCampaignBehavior -->
+        <!-- Compensated @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} invalid custom items -->
+        <string id="hoRPbRrb" text="Компенсировал @{HeroName} с {GoldAmount}{GoldSymbol} за {CustomItemsCount} недействительные пользовательские предметы" original="Compensated @{HeroName} with {GoldAmount}{GoldSymbol} for {CustomItemsCount} invalid custom items"/>
+        <!-- @{VictimName} {Verb} by @{KillerName}! -->
+        <string id="PCPU0lPX" text="@{VictimName} {Verb} от @{KillerName}!" original="@{VictimName} {Verb} by @{KillerName}!"/>
+        <!-- @{KillerName} {Verb}! -->
+        <string id="Bji2ULge" text="@{KillerName} {Verb}!" original="@{KillerName} {Verb}!"/>
+        <!-- @{HeroName} is now level {Level}! -->
+        <string id="8aTmTvl8" text="@{HeroName} теперь уровеня {Level}!" original="@{HeroName} is now level {Level}!"/>
+        <!-- @{HeroName} was taken prisoner by {PartyName}! -->
+        <string id="4PqVnFWY" text="@{HeroName} был взят в плен {PartyName}!" original="@{HeroName} was taken prisoner by {PartyName}!"/>
+        <!-- @{HeroName} was taken prisoner! -->
+        <string id="WeRWLpKn" text="@{HeroName} попал в плен!" original="@{HeroName} was taken prisoner!"/>
+        <!-- @{HeroName} is no longer a prisoner of {PartyName}! -->
+        <string id="tQANBoTK" text="@{HeroName} больше не является пленником {PartyName}!" original="@{HeroName} is no longer a prisoner of {PartyName}!"/>
+        <!-- @{HeroName} is no longer a prisoner! -->
+        <string id="MQslOwr0" text="@{HeroName} больше не заключенный!" original="@{HeroName} is no longer a prisoner!"/>
+        <!-- @{HeroName} moved from {FromClanName} to {ToClanName}! -->
+        <string id="SUdnIyfw" text="@{HeroName} перешел из {FromClanName} в {ToClanName}!" original="@{HeroName} moved from {FromClanName} to {ToClanName}!"/>
+        <!-- deceased -->
+        <string id="ZtZL0lbX" text="покойный" original="deceased"/>
+        <!-- retired -->
+        <string id="ISrFBorj" text="в отставке" original="retired"/>
+        <!-- {OldName} is {RetireType}! -->
+        <string id="2PHPNmuv" text="{OldName} теперь {RetireType}!" original="{OldName} is {RetireType}!"/>
+        <!-- Dead or retired hero {OldName} renamed to {HeroName} -->
+        <string id="wzpkEmTL" text="Умерший или вышедший на пенсию герой {OldName} переименован в {HeroName}" original="Dead or retired hero {OldName} renamed to {HeroName}"/>
+        <!-- You can't bid on your own item -->
+        <string id="2cbVbW91" text="Вы не можете делать ставки на свой собственный товар" original="You can't bid on your own item"/>
+        <!-- Bid of {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon} -->
+        <string id="rbhzuJLm" text="Ставка {Bid}{GoldIcon} не соответствует резервной цене {ReservePrice}{GoldIcon}" original="Bid of {Bid}{GoldIcon} does not meet reserve price of {ReservePrice}{GoldIcon}"/>
+        <!-- Another bid at {Bid}{GoldIcon} already exists -->
+        <string id="83uZcndH" text="Другая ставка в {Bid}{GoldIcon} уже существует" original="Another bid at {Bid}{GoldIcon} already exists"/>
+        <!-- You already bid more ({Bid}{GoldIcon}), you can only raise your bid -->
+        <string id="qeLF80xw" text="Вы уже поставили больше ({Bid}{GoldIcon}), вы можете только поднять ставку" original="You already bid more ({Bid}{GoldIcon}), you can only raise your bid"/>
+        <!-- You cannot cover a bid of {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon} -->
+        <string id="Cqi0iYNR" text="Вы не можете покрыть ставку в размере {Bid}{GoldIcon}, у вас есть только {BidderGold}{GoldIcon}" original="You cannot cover a bid of {Bid}{GoldIcon}, you only have {BidderGold}{GoldIcon}"/>
+        <!-- Bid of {Bid}{GoldIcon} placed! -->
+        <string id="M2B9yQ4w" text="Ставка в размере {Bid}{GoldIcon} размещена!" original="Bid of {Bid}{GoldIcon} placed!"/>
+        <!-- {Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName}) -->
+        <string id="TeeDJyJ1" text="На аукционе '{ItemName}' осталось {Time} секунд, высокая ставка {HighestBid}{GoldIcon} (@{HighestBidderName})" original="{Time} seconds left in auction of '{ItemName}', high bid is {HighestBid}{GoldIcon} (@{HighestBidderName})"/>
+        <!-- {Time} seconds left in auction of '{ItemName}', no bids placed -->
+        <string id="jNkGaKZw" text="На аукционе '{ItemName}' осталось {Time} секунд, ставки не сделаны" original="{Time} seconds left in auction of '{ItemName}', no bids placed"/>
+        <!-- Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}. -->
+        <string id="d9ooHVPU" text="Аукцион для {ItemName} завершен! Товар останется у @{ItemOwnerName}, так как ни одна ставка не достигла резервной цены {ReservePrice}{GoldIcon}." original="Auction for {ItemName} is FINISHED! The item will remain with @{ItemOwnerName}, as no bid met the reserve price of {ReservePrice}{GoldIcon}."/>
+        <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died. -->
+        <string id="SGuTRcui" text="Аукцион для {ItemName} ОТМЕНЕН! @{ItemOwnerName} вышел на пенсию или умер." original="Auction for {ItemName} is CANCELLED! @{ItemOwnerName} retired or died."/>
+        <!-- Auction for {ItemName} is CANCELLED! @{ItemOwnerName} is no longer in possession of the item. -->
+        <string id="NRV4IstE" text="Аукцион для {ItemName} ОТМЕНЕН! @{ItemOwnerName} больше не владеет этим предметом." original="Auction for {ItemName} is CANCELLED! @{ItemOwnerName} is no longer in possession of the item."/>
+        <!-- Auction for {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}. -->
+        <string id="jmbMoHta" text="Аукцион на {ItemName} ЗАВЕРШЕН! Предмет переходит к @{HighestBidderName} за {HighestBid}{GoldIcon}." original="Auction for {ItemName} is FINISHED! The item will go to @{HighestBidderName} for {HighestBid}{GoldIcon}."/>
+        <!-- No auction in progress -->
+        <string id="Cy38Ckpk" text="Аукцион не ведется" original="No auction in progress"/>
+        <!-- Max Retinue Size -->
+        <string id="wAGE7h6U" text="Максимальный размер свиты" original="Max Retinue Size"/>
+        <!-- Maximum number of units in the retinue. Recommend less than 20, summons to NOT obey the games unit limits. -->
+        <string id="EOGB8EWN" text="Максимальное количество юнитов в свите. Рекомендуется меньше 20, призыв НЕ подчиняется ограничениям игровых юнитов." original="Maximum number of units in the retinue. Recommend less than 20, summons to NOT obey the games unit limits."/>
+        <!-- Cost Tier 1 -->
+        <string id="VvdtvdQJ" text="Уровень затрат 1" original="Cost Tier 1"/>
+        <!-- Gold cost for Tier 1 retinue -->
+        <string id="9bvn5R5A" text="Стоимость свиты 1 ранга в золоте" original="Gold cost for Tier 1 retinue"/>
+        <!-- Cost Tier 2 -->
+        <string id="engRDMZx" text="Уровень затрат 2" original="Cost Tier 2"/>
+        <!-- Gold cost for Tier 2 retinue -->
+        <string id="pD2ZvRVH" text="Стоимость свиты 2 уровня в золоте" original="Gold cost for Tier 2 retinue"/>
+        <!-- Cost Tier 3 -->
+        <string id="3jxmITht" text="Уровень затрат 3" original="Cost Tier 3"/>
+        <!-- Gold cost for Tier 3 retinue -->
+        <string id="dyB8loLF" text="Стоимость свиты 3 уровня в золоте" original="Gold cost for Tier 3 retinue"/>
+        <!-- Cost Tier 4 -->
+        <string id="dhwd4ccF" text="Уровень затрат 4" original="Cost Tier 4"/>
+        <!-- Gold cost for Tier 4 retinue -->
+        <string id="aji2HxKa" text="Стоимость свиты 4 уровня в золоте" original="Gold cost for Tier 4 retinue"/>
+        <!-- Cost Tier 5 -->
+        <string id="zJkb4AIh" text="Уровень затрат 5" original="Cost Tier 5"/>
+        <!-- Gold cost for Tier 5 retinue -->
+        <string id="fnEOFst7" text="Стоимость свиты 5 уровня в золоте" original="Gold cost for Tier 5 retinue"/>
+        <!-- Cost Tier 6 -->
+        <string id="1hh3cOJO" text="Уровень затрат 6" original="Cost Tier 6"/>
+        <!-- Gold cost for Tier 6 retinue -->
+        <string id="PieENBSG" text="Стоимость свиты 6 уровня в золоте" original="Gold cost for Tier 6 retinue"/>
+        <!-- Troop Types -->
+        <string id="qYhM3gcn" text="Типы войск" original="Troop Types"/>
+        <!-- Use Heroes Culture Units -->
+        <string id="q1Rkm3Rq" text="Используйте единицы культуры героев" original="Use Heroes Culture Units"/>
+        <!-- Whether to use the adopted hero's culture (if not enabled then a random one is used) -->
+        <string id="9qAD6eZR" text="Следует ли использовать культуру принятого героя (если не включена, используется случайная)" original="Whether to use the adopted hero's culture (if not enabled then a random one is used)"/>
+        <!-- Include Bandit Units -->
+        <string id="dbU7WEKG" text="Включить бандитские отряды" original="Include Bandit Units"/>
+        <!-- Whether to allow bandit units when UseHeroesCultureUnits is disabled -->
+        <string id="06KnYhyh" text="Разрешить ли бандитские отряды, когда UseHeroesCultureUnits отключен" original="Whether to allow bandit units when UseHeroesCultureUnits is disabled"/>
+        <!-- Use Basic Troops -->
+        <string id="E2RBmb1K" text="Используйте основные войска" original="Use Basic Troops"/>
+        <!-- Whether to allow basic troops -->
+        <string id="uPwaOKdT" text="Допускать ли основные войска" original="Whether to allow basic troops"/>
+        <!-- Use Elite Troops -->
+        <string id="lnz7d1BI" text="Используйте элитные войска" original="Use Elite Troops"/>
+        <!-- Whether to allow elite troops -->
+        <string id="EPr2clqT" text="Допускать ли элитные войска" original="Whether to allow elite troops"/>
+        <!-- Max retinue -->
+        <string id="UhUpH8C8" text="Макс свита" original="Max retinue"/>
+        <!-- Tier costs -->
+        <string id="VBuncBq5" text="Уровневые затраты" original="Tier costs"/>
+        <!-- Same culture only -->
+        <string id="R7rU0TbD" text="Только та же культура" original="Same culture only"/>
+        <!-- Bandits -->
+        <string id="c2qOsXvs" text="Бандиты" original="Bandits"/>
+        <!-- Basic troops -->
+        <string id="RmTwEFzy" text="Основные войска" original="Basic troops"/>
+        <!-- Elite troops -->
+        <string id="3gumlthG" text="Элитные войска" original="Elite troops"/>
+        <!-- Allowed -->
+        <string id="uL7MfYPc" text="Разрешается" original="Allowed"/>
+        <!-- No valid troop types could be found, please check out settings -->
+        <string id="bBCyH0vV" text="Не удалось найти допустимые типы войск, проверьте настройки" original="No valid troop types could be found, please check out settings"/>
+        <!-- Spent {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} remaining -->
+        <string id="zcbOq6Tb" text="Потрачено {TotalCost}{GoldIcon}, Осталось {RemainingGold}{GoldIcon}" original="Spent {TotalCost}{GoldIcon}, {RemainingGold}{GoldIcon} remaining"/>
+        <!-- Can't upgrade retinue any further! -->
+        <string id="PQRLJ04i" text="Больше нельзя улучшать свиту!" original="Can't upgrade retinue any further!"/>
+        <!-- was murdered -->
+        <string id="LhHul2lV" text="был убит" original="was murdered"/>
+        <!-- died in labor -->
+        <string id="HwjR45XN" text="умер во время родов" original="died in labor"/>
+        <!-- died of old age -->
+        <string id="5GOjfkzW" text="умер от старости" original="died of old age"/>
+        <!-- died in battle -->
+        <string id="ZKrgqWav" text="погиб в бою" original="died in battle"/>
+        <!-- was wounded in battle -->
+        <string id="jp4sldTL" text="был ранен в бою" original="was wounded in battle"/>
+        <!-- was executed -->
+        <string id="SkFFXsI1" text="был выполнен" original="was executed"/>
+        <!-- was lost -->
+        <string id="HMHdXDaK" text="был потерян" original="was lost"/>
+        <!-- was ended -->
+        <string id="lrOJnThZ" text="был закончен" original="was ended"/>
+        <!-- BLTTournamentBetMissionBehavior -->
+        <!-- Betting is now OPEN for round {RoundIndex} match: {Teams}! -->
+        <string id="wgGkXkyh" text="Ставки открыты на матч раунда {RoundIndex}: {Teams}!" original="Betting is now OPEN for round {RoundIndex} match: {Teams}!"/>
+        <!-- Betting is now OPEN for final match: {Teams}! -->
+        <string id="9BjHfivM" text="Теперь открыты ставки на финальный матч: {Teams}!" original="Betting is now OPEN for final match: {Teams}!"/>
+        <!-- vs -->
+        <string id="ixTCiaiv" text="против" original="vs"/>
+        <!-- blue -->
+        <string id="HrIifwJy" text="синий" original="blue"/>
+        <!-- red -->
+        <string id="6ZGgsbe1" text="красный" original="red"/>
+        <!-- green -->
+        <string id="qQZlsD8r" text="зеленый" original="green"/>
+        <!-- yellow -->
+        <string id="JelyrtLJ" text="желтый" original="yellow"/>
+        <!-- Tournament is not active -->
+        <string id="FEZ1Opj1" text="Турнир не активен" original="Tournament is not active"/>
+        <!-- Betting is disabled -->
+        <string id="uNUyZhDk" text="Ставки отключены" original="Betting is disabled"/>
+        <!-- Betting is closed -->
+        <string id="APTqGlHh" text="Ставки закрыты" original="Betting is closed"/>
+        <!-- Betting is only allowed on the final -->
+        <string id="7yFW99H8" text="Ставки разрешены только на финал" original="Betting is only allowed on the final"/>
+        <!-- Betting is not open -->
+        <string id="ATdvJKFI" text="Ставки не открыты" original="Betting is not open"/>
+        <!-- Team name must be one of {Teams} -->
+        <string id="1rUYWox8" text="Название команды должно быть одним из {Teams}" original="Team name must be one of {Teams}"/>
+        <!-- You can only bet on one team -->
+        <string id="7iveTGQp" text="Вы можете делать ставки только на одну команду" original="You can only bet on one team"/>
+        <!-- Betting is now CLOSED: only one team bet on, bets refunded -->
+        <string id="Nm96SVXt" text="Ставки ЗАКРЫТЫ: ставка только на одну команду, ставки возвращены" original="Betting is now CLOSED: only one team bet on, bets refunded"/>
+        <!-- Betting is now CLOSED: no bets placed -->
+        <string id="GrI9bFCf" text="Ставки ЗАКРЫТЫ: ставки не делались" original="Betting is now CLOSED: no bets placed"/>
+        <!-- Betting is now CLOSED: {TotalBets} -->
+        <string id="Hj3oYnE0" text="Ставки ЗАКРЫТЫ: {TotalBets}" original="Betting is now CLOSED: {TotalBets}"/>
+        <!-- REFUNDED {Bet}{GoldIcon} bet -->
+        <string id="u4mPf1p0" text="ВОЗВРАЩЕННАЯ ставка {Bet}{GoldIcon}" original="REFUNDED {Bet}{GoldIcon} bet"/>
+        <!-- WON BET -->
+        <string id="majAmqDm" text="ВЫИГРАТЬ СТАВКУ" original="WON BET"/>
+        <!-- BLTTournamentMissionBehavior -->
+        <!-- WINNER! -->
+        <string id="jb5vaUCD" text="ПОБЕДИТЕЛЬ!" original="WINNER!"/>
+        <!-- no prize available for you! -->
+        <string id="80PitGR4" text="для вас нет приза!" original="no prize available for you!"/>
+        <!-- BLTTournamentQueueBehavior -->
+        <!-- You are already in the tournament queue! -->
+        <string id="JtZIstbB" text="Вы уже в очереди на турнир!" original="You are already in the tournament queue!"/>
+        <!-- You are position {QueuePosition} in the tournament queue! -->
+        <string id="1duM11Gt" text="Вы находитесь на позиции {QueuePosition} в очереди на турнир!" original="You are position {QueuePosition} in the tournament queue!"/>
+    </strings>
+</base>

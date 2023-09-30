@@ -12,7 +12,9 @@ using BannerlordTwitch.Util;
 using BLTOverlay;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using Debug = TaleWorlds.Library.Debug;
 
 #pragma warning disable IDE0051 // Remove unused private members
 namespace BannerlordTwitch
@@ -27,23 +29,17 @@ namespace BannerlordTwitch
 		[DllImport("user32.dll")]
 		private static extern int SetWindowText(IntPtr hWnd, string text);
 
-		private const string ExpectedVersion =
-#if e159
-				"e1.5.9"
-#elif e1510
-				"e1.5.10"
-#elif e160
-				"e1.6.0"
-#elif e161
-				"e1.6.1"
-#endif
-			;
+		private const string ExpectedVersion = "v1.2.4";
 
 		static BLTModule()
 		{
 			if (!GameVersion.IsVersion(ExpectedVersion))
 			{
-				MessageBox.Show($"This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion.GameVersionString}. Exiting now.", "Bannerlord Twitch ERROR");
+				MessageBox.Show("{=IO9rnFpk}This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now."
+                    .Translate(
+                        ("ExpectedVersion", ExpectedVersion),
+                        ("GameVersion", GameVersion.GameVersionString)), 
+                    "{=Oru6b9Cy}Bannerlord Twitch ERROR".Translate());
 				Application.Current.Shutdown(1);
 			}
 			
@@ -51,16 +47,24 @@ namespace BannerlordTwitch
 			SetWindowText(Process.GetCurrentProcess().MainWindowHandle, "Bannerlord Game Window");
 
 			MainThreadSync.InitMainThread();
-			AssemblyHelper.Redirect("Newtonsoft.Json", Version.Parse("13.0.0.0"), "30ad4fe6b2a6aeed");
-			AssemblyHelper.Redirect("Microsoft.Extensions.Logging.Abstractions", Version.Parse("3.1.5.0"), "adb9793829ddae60");
-			
-			AppDomain.CurrentDomain.AssemblyResolve += (_, args) =>
+
+            // AssemblyHelper.Redirect("Microsoft.Extensions.Logging.Abstractions", Version.Parse("3.1.5.0"), "adb9793829ddae60");
+            AssemblyHelper.Redirect("Microsoft.Owin", Version.Parse("4.2.0.0"), "31bf3856ad364e35");
+            AssemblyHelper.Redirect("Microsoft.Owin.FileSystems", Version.Parse("4.2.0.0"), "31bf3856ad364e35");
+            AssemblyHelper.Redirect("Microsoft.Owin.Security", Version.Parse("4.2.0.0"), "31bf3856ad364e35");
+            AssemblyHelper.Redirect("Newtonsoft.Json", Version.Parse("13.0.0.0"), "30ad4fe6b2a6aeed");
+
+            AppDomain.CurrentDomain.AssemblyResolve += (_, args) =>
 			{
 				string folderPath = Path.GetDirectoryName(typeof(BLTModule).Assembly.Location);
 				string assemblyPath = Path.Combine(folderPath ?? string.Empty, new AssemblyName(args.Name).Name + ".dll");
-				if (!File.Exists(assemblyPath)) return null;
-				var assembly = Assembly.LoadFrom(assemblyPath);
-				return assembly;
+                if (!File.Exists(assemblyPath))
+                {
+                    Debug.Print($"[BLT] Couldn't resolve assembly {args.Name} with {assemblyPath}");
+                    return null;
+                }
+                Debug.Print($"[BLT] Resolved assembly {args.Name} with {assemblyPath}");
+				return Assembly.LoadFrom(assemblyPath);
 			};
         }
 
@@ -72,10 +76,11 @@ namespace BannerlordTwitch
 				{
 					harmony = new Harmony("mod.bannerlord.bannerlordtwitch");
 					harmony.PatchAll();
-					Log.LogFeedSystem($"Loaded v{Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}");
+					Log.LogFeedSystem("{=45Q44kgm}Loaded v{ModVersion}".Translate(
+                        ("ModVersion", Assembly.GetExecutingAssembly().GetName().Version.ToString(3))));
 
 					ActionManager.Init();
-					Log.LogFeedSystem("Action Manager initialized");
+					Log.LogFeedSystem("{=5G73vqNS}Action Manager initialized".Translate());
 				}
 				catch (Exception ex)
 				{
@@ -111,10 +116,9 @@ namespace BannerlordTwitch
 					{
 						InformationManager.ShowInquiry(
 							new InquiryData(
-								"Bannerlord Twitch Mod WARNING",
-								$"You have auto save disabled, crashes could result in lost channel points!\n" +
-								$"Recommended you set it to 15 minutes or less.",
-								true, false, "Okay", null,
+								"{=PhRzCo9t}Bannerlord Twitch Mod WARNING".Translate(),
+								"{=7b4tU6y9}You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less.".Translate(),
+								true, false, "{=hpFXglKx}Okay".Translate(), null,
 								() => { }, () => { }), true);
 					}
 					
@@ -138,7 +142,13 @@ namespace BannerlordTwitch
             catch (Exception e)
             {
                 Log.Exception(nameof(OnGameStart), e);
-                MessageBox.Show($"Error in BannerlordTwitch.{nameof(OnGameStart)}, please report this on the discord: {e}", "Bannerlord Twitch Mod STARTUP ERROR");
+                MessageBox.Show(
+                    "{=C0G8s2Lv}Error in {Location}, please report this on the discord: {Error}"
+                        .Translate(
+                            ("Location", $"BannerlordTwitch.{nameof(OnGameStart)}"),
+                            ("Error", e.ToString())
+                            ), 
+                    "{=cuXwwHRe}Bannerlord Twitch Mod STARTUP ERROR".Translate());
             }
 		}
 
@@ -154,10 +164,10 @@ namespace BannerlordTwitch
 			TwitchService = null;
 		}
 		
-		public override void OnMissionBehaviourInitialize(Mission mission)
+		public override void OnMissionBehaviorInitialize(Mission mission)
 		{
-			mission.AddMissionBehaviour(new BLTAgentModifierBehavior());
-			mission.AddMissionBehaviour(new BLTAgentPfxBehaviour());
+			mission.AddMissionBehavior(new BLTAgentModifierBehavior());
+			mission.AddMissionBehavior(new BLTAgentPfxBehaviour());
 		}
 
 		public static bool RestartTwitchService()
@@ -172,9 +182,9 @@ namespace BannerlordTwitch
 			{
 				InformationManager.ShowInquiry(
 					new InquiryData(
-						"Bannerlord Twitch Mod DISABLED",
+						"{=Sphd7XTS}Bannerlord Twitch Mod DISABLED".Translate(),
 						ex.Message,
-						true, false, "Okay", null,
+						true, false, "{=hpFXglKx}Okay".Translate(), null,
 						() => {}, () => {}), true);
 				TwitchService = null;
 				Log.Exception($"TwitchService could not start: {ex.Message}", ex);

@@ -1,0 +1,774 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="日本語"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- AddGoldToHero -->
+        <!-- Add Gold To Hero -->
+        <string id="kn4uxAWs" text="ヒーローにゴールドを追加" original="Add Gold To Hero"/>
+        <!-- Gives gold to the adopted hero -->
+        <string id="vkgPfcAu" text="養子縁組の英雄に金を与える" original="Gives gold to the adopted hero"/>
+        <!-- How much gold to give the adopted hero -->
+        <string id="S2CeRdjR" text="養子縁組の英雄に与える金の量" original="How much gold to give the adopted hero"/>
+        <!-- AdoptAHero -->
+        <!-- Adopt A Hero -->
+        <string id="NkZXnSQI" text="ヒーローを採用する" original="Adopt A Hero"/>
+        <!-- Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands -->
+        <string id="fd7G5N0Q" text="視聴者がゲーム内のヒーローを「採用」できるようにします-ヒーロー名は視聴者の名前に変更され、さらにコマンドを使用して制御できます" original="Allows viewer to 'adopt' a hero in game - the hero name will change to the viewers name, and they can control it with further commands"/>
+        <!-- Create New -->
+        <string id="TLrDxhlh" text="新しく作る" original="Create New"/>
+        <!-- Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern) -->
+        <string id="F1KDzuZZ" text="既存のヒーローを採用する代わりに、新しいヒーローを作成します（彼らはランダムな居酒屋で放浪者になります）" original="Create a new hero instead of adopting an existing one (they will be a wanderer at a random tavern)"/>
+        <!-- Allow Noble -->
+        <string id="nPIcT2s7" text="ノーブルを許可する" original="Allow Noble"/>
+        <!-- Allow noble heroes (if CreateNew is false) -->
+        <string id="XvZN7OOY" text="高貴なヒーローを許可する（CreateNewがfalseの場合）" original="Allow noble heroes (if CreateNew is false)"/>
+        <!-- Allow Wanderer -->
+        <string id="VVFsa8LQ" text="放浪者を許可する" original="Allow Wanderer"/>
+        <!-- Allow wanderer heroes (if CreateNew is false) -->
+        <string id="9lE2KSvC" text="放浪者のヒーローを許可する（CreateNewがfalseの場合）" original="Allow wanderer heroes (if CreateNew is false)"/>
+        <!-- Allow Player Companion -->
+        <string id="A8G9ctbn" text="プレーヤーのコンパニオンを許可する" original="Allow Player Companion"/>
+        <!-- Allow companions (not tested, if CreateNew is false) -->
+        <string id="6EjGRMkt" text="コンパニオンを許可する（CreateNewがfalseの場合、テストされていません）" original="Allow companions (not tested, if CreateNew is false)"/>
+        <!-- Only Same Faction -->
+        <string id="B2z7T1xQ" text="同じ派閥のみ" original="Only Same Faction"/>
+        <!-- Only allow heroes from same faction as player -->
+        <string id="QvQGwFyl" text="プレイヤーと同じ派閥のヒーローのみを許可する" original="Only allow heroes from same faction as player"/>
+        <!-- Inheritance -->
+        <string id="dvbkxJQz" text="継承" original="Inheritance"/>
+        <!-- What fraction of assets will be inherited when a new character is adopted after an old one died (0 to 1) -->
+        <string id="KLJtpEjg" text="古いキャラクターが死んだ後に新しいキャラクターが採用されたときに継承されるアセットの割合（0から1）" original="What fraction of assets will be inherited when a new character is adopted after an old one died (0 to 1)"/>
+        <!-- Maximum Inherited Custom Items -->
+        <string id="Bi19tTPj" text="継承されるカスタムアイテムの最大数" original="Maximum Inherited Custom Items"/>
+        <!-- How many custom items can be inherited -->
+        <string id="tFolfAOn" text="継承できるカスタムアイテムの数" original="How many custom items can be inherited"/>
+        <!-- Subscriber Only -->
+        <string id="O4DGlP9Z" text="サブスクライバーのみ" original="Subscriber Only"/>
+        <!-- Only subscribers can adopt -->
+        <string id="TBNkHsLC" text="加入者のみが採用できます" original="Only subscribers can adopt"/>
+        <!-- Minimum Subscribed Months -->
+        <string id="dO41CKIU" text="最小購読月数" original="Minimum Subscribed Months"/>
+        <!-- Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified -->
+        <string id="BVZwDqR0" text="少なくともこの数か月間チャンネル登録している視聴者のみが採用でき、指定されていない場合は無視されます" original="Only viewers who have been subscribers for at least this many months can adopt, ignored if not specified"/>
+        <!-- Starting Gold -->
+        <string id="iOmYBC7I" text="ゴールドの開始" original="Starting Gold"/>
+        <!-- Gold the adopted hero will start with -->
+        <string id="pZMkJLix" text="採用されたヒーローのゴールドは" original="Gold the adopted hero will start with"/>
+        <!-- Override Age -->
+        <string id="ZXwbvbbq" text="年齢を上書きする" original="Override Age"/>
+        <!-- Override the heroes age -->
+        <string id="gxQgrAey" text="ヒーローの年齢を上書きする" original="Override the heroes age"/>
+        <!-- Starting Age Range -->
+        <string id="NEBQgHiX" text="開始年齢範囲" original="Starting Age Range"/>
+        <!-- Random range of age when overriding it -->
+        <string id="TYqEBuLW" text="オーバーライドするときのランダムな年齢範囲" original="Random range of age when overriding it"/>
+        <!-- Starting Skills -->
+        <string id="9IOFHQjS" text="開始スキル" original="Starting Skills"/>
+        <!-- Starting skills, if empty then default skills of the adopted hero will be left in tact -->
+        <string id="C4rV4f2F" text="開始スキル、空の場合、採用されたヒーローのデフォルトスキルはそのまま残ります" original="Starting skills, if empty then default skills of the adopted hero will be left in tact"/>
+        <!-- Starting Equipment Tier -->
+        <string id="IAKQCRa1" text="開始機器層" original="Starting Equipment Tier"/>
+        <!-- Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment -->
+        <string id="mQwjHXfC" text="採用されたヒーローが開始する装備ティア、指定しない場合、彼らはヒーローに既存の装備を取得します" original="Equipment tier the adopted hero will start with, if you don't specify then they get the heroes existing equipment"/>
+        <!-- Starting Class -->
+        <string id="0vGFJdO1" text="開始クラス" original="Starting Class"/>
+        <!-- Starting class of the hero -->
+        <string id="zgjyFL6i" text="主人公の開始クラス" original="Starting class of the hero"/>
+        <!-- Subscriber Only -->
+        <string id="4zAUTiSP" text="サブスクライバーのみ" original="Subscriber Only"/>
+        <!-- Newly created wanderer -->
+        <string id="cJQCU33B" text="新しく作成された放浪者" original="Newly created wanderer"/>
+        <!-- Noble -->
+        <string id="fP84ES0X" text="ノーブル" original="Noble"/>
+        <!-- Wanderer -->
+        <string id="ozRaAx6L" text="放浪者" original="Wanderer"/>
+        <!-- Companions -->
+        <string id="YucejFfO" text="コンパニオン" original="Companions"/>
+        <!-- Allowed -->
+        <string id="UNtHwNhx" text="許可された" original="Allowed"/>
+        <!-- Same faction only -->
+        <string id="6W0OJKkA" text="同じ派閥のみ" original="Same faction only"/>
+        <!-- Starting Age Range -->
+        <string id="pDP8b5HR" text="開始年齢範囲" original="Starting Age Range"/>
+        <!-- Starting Gold -->
+        <string id="FvhsCSd3" text="ゴールドの開始" original="Starting Gold"/>
+        <!-- Inheritance -->
+        <string id="wP0lfTf3" text="継承" original="Inheritance"/>
+        <!-- {Inheritance}% of gold spent on equipment and retinue -->
+        <string id="mDK67efh" text="金の{Inheritance}％が機器と従者に費やされました" original="{Inheritance}% of gold spent on equipment and retinue"/>
+        <!-- no custom items -->
+        <string id="76NtQIGB" text="カスタムアイテムはありません" original="no custom items"/>
+        <!-- up to {MaxInheritedCustomItems} custom items -->
+        <string id="sEDQrZCp" text="最大{MaxInheritedCustomItems}個のカスタムアイテム" original="up to {MaxInheritedCustomItems} custom items"/>
+        <!-- You have already adopted a hero! -->
+        <string id="mJfD7e2g" text="あなたはすでにヒーローを採用しています！" original="You have already adopted a hero!"/>
+        <!-- You must be subscribed for at least {MinSubscribedMonths} months to adopt a hero with this command! -->
+        <string id="4K7Q7gR0" text="このコマンドでヒーローを採用するには、少なくとも{MinSubscribedMonths}か月間サブスクライブする必要があります。" original="You must be subscribed for at least {MinSubscribedMonths} months to adopt a hero with this command!"/>
+        <!-- You must be subscribed to adopt a hero with this command! -->
+        <string id="0QeQPxYi" text="このコマンドでヒーローを採用するには、サブスクライブする必要があります！" original="You must be subscribed to adopt a hero with this command!"/>
+        <!-- No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)! -->
+        <string id="XlQUIIsg" text="ヒーローは利用できません：プレイヤーは派閥にいません（プレイヤー派閥のみを無効にするか、派閥に参加してください）！" original="No hero is available: player is not in a faction (disable Player Faction Only, or join a faction)!"/>
+        <!-- You can't adopt a hero: no available hero matching the requirements was found! -->
+        <string id="E7wqQ2kg" text="ヒーローを採用することはできません。要件に一致する利用可能なヒーローが見つかりませんでした。" original="You can't adopt a hero: no available hero matching the requirements was found!"/>
+        <!-- {OldName} is now known as {NewName}! -->
+        <string id="K7nuJVCN" text="{OldName} is now known as {NewName}！" original="{OldName} is now known as {NewName}!"/>
+        <!-- {OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})! -->
+        <string id="PAc5S0GY" text="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited}）！" original="{OldName} is now known as {NewName}, they have {NewGold} (inheriting {Inherited})!"/>
+        <!-- {OldName} is now known as {NewName}, they have {NewGold}! -->
+        <string id="lANBKEFN" text="{OldName} is now known as {NewName}, they have {NewGold}！" original="{OldName} is now known as {NewName}, they have {NewGold}!"/>
+        <!-- AttributePoints -->
+        <!-- Add Attribute Points -->
+        <string id="TmUJ8VU7" text="属性ポイントの追加" original="Add Attribute Points"/>
+        <!-- Improve adopted heroes attribute points -->
+        <string id="YrYFBWaw" text="採用されたヒーローの属性ポイントを改善する" original="Improve adopted heroes attribute points"/>
+        <!-- Random -->
+        <string id="ibuIZ39r" text="ランダム" original="Random"/>
+        <!-- If set a random attribute is improved, otherwise the viewer should provide part of the name of the attribute to improve (this works best as a chat command) -->
+        <string id="2F4MZn5h" text="ランダムな属性を設定すると改善されます。そうでない場合、ビューアは改善する属性の名前の一部を提供する必要があります（これはチャットコマンドとして最適に機能します）" original="If set a random attribute is improved, otherwise the viewer should provide part of the name of the attribute to improve (this works best as a chat command)"/>
+        <!-- Random attribute -->
+        <string id="JQdCfO2H" text="ランダム属性" original="Random attribute"/>
+        <!-- Provide the attribute name (or part of it) when calling this -->
+        <string id="hSPAbHWb" text="これを呼び出すときに属性名（またはその一部）を指定します" original="Provide the attribute name (or part of it) when calling this"/>
+        <!-- Couldn't improve any attributes, they are all at max level! -->
+        <string id="VxproTE2" text="属性を改善できませんでした、それらはすべて最大レベルです！" original="Couldn't improve any attributes, they are all at max level!"/>
+        <!-- Provide the attribute name to improve (or part of it) -->
+        <string id="i9ziqTXG" text="改善する属性名（またはその一部）を指定します" original="Provide the attribute name to improve (or part of it)"/>
+        <!-- You have gained {Amount} points in {Attribute}, you now have {NewAmount}! -->
+        <string id="Sl1bdnfy" text="{Amount} points in {Attribute}, you now have {NewAmount}を獲得しました！" original="You have gained {Amount} points in {Attribute}, you now have {NewAmount}!"/>
+        <!-- You have gained a point in {Attribute}, you now have {NewAmount}! -->
+        <string id="2vli3BCR" text="{Attribute}, you now have {NewAmount}でポイントを獲得しました！" original="You have gained a point in {Attribute}, you now have {NewAmount}!"/>
+        <!--  -->
+        <string id="YawQBjBG" text=""/>
+        <!-- Couldn't find attribute matching '{Args}'! -->
+        <string id="LE3POzUs" text="'{Args}'に一致する属性が見つかりませんでした！" original="Couldn't find attribute matching '{Args}'!"/>
+        <!-- Couldn't improve {Attribute} attribute, it is already at max level! -->
+        <string id="R7X1dTqL" text="{Attribute}属性を改善できませんでした。すでに最大レベルになっています。" original="Couldn't improve {Attribute} attribute, it is already at max level!"/>
+        <!-- AuctionItem -->
+        <!-- Auction Item -->
+        <string id="Q1QZbwR3" text="オークションアイテム" original="Auction Item"/>
+        <!-- Allows viewers to auction custom items, for other viewers to bid on (make sure to add a bid command also) -->
+        <string id="024hOo3G" text="視聴者がカスタムアイテムをオークションにかけ、他の視聴者が入札できるようにします（入札コマンドも必ず追加してください）" original="Allows viewers to auction custom items, for other viewers to bid on (make sure to add a bid command also)"/>
+        <!-- Auction Item -->
+        <string id="34GjlaWu" text="オークションアイテム" original="Auction Item"/>
+        <!-- How long the auction should last before the highest bidder wins -->
+        <string id="zsvhQABf" text="落札者が落札するまでのオークション期間" original="How long the auction should last before the highest bidder wins"/>
+        <!-- Auction Item -->
+        <string id="ssmJ9c5L" text="オークションアイテム" original="Auction Item"/>
+        <!-- Interval at which to output a reminder of the auction -->
+        <string id="ijkjWj5q" text="オークションのリマインダーを出力する間隔" original="Interval at which to output a reminder of the auction"/>
+        <!-- Another auction is already in progress -->
+        <string id="T2R35HHV" text="別のオークションはすでに進行中です" original="Another auction is already in progress"/>
+        <!-- You have no items to auction -->
+        <string id="kYHEtOM7" text="オークションに出品する商品はありません" original="You have no items to auction"/>
+        <!-- (reserve price) (partial item name) -->
+        <string id="lI4WCNeQ" text="（予約価格）（一部商品名）" original="(reserve price) (partial item name)"/>
+        <!-- Invalid reserve price '{Arg}' -->
+        <string id="mm1ay4I7" text="予約価格が無効です '{Arg}'" original="Invalid reserve price '{Arg}'"/>
+        <!-- No items found matching '{ItemName}' -->
+        <string id="viO1RBr5" text="'{ItemName}'に一致するアイテムが見つかりません" original="No items found matching '{ItemName}'"/>
+        <!-- {ItemCount} items found matching '{ItemName}', be more specific -->
+        <string id="S2cszVBa" text="{ItemCount} items found matching '{ItemName} '、より具体的に" original="{ItemCount} items found matching '{ItemName}', be more specific"/>
+        <!-- Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds. -->
+        <string id="BH5rnHNq" text="'{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds}秒のオークション。" original="Auction of '{ItemName}' is OPEN! Reserve price is {ReservePrice}{GoldIcon}, bidding closes in {AuctionDurationInSeconds} seconds."/>
+        <!-- Bid On Item -->
+        <string id="rBAvqAh7" text="アイテムの入札" original="Bid On Item"/>
+        <!-- Allows viewers bid on an active custom item auction (make sure to add an auction command also) -->
+        <string id="XuvGyCwD" text="視聴者がアクティブなカスタムアイテムオークションに入札できるようにします（オークションコマンドも必ず追加してください）" original="Allows viewers bid on an active custom item auction (make sure to add an auction command also)"/>
+        <!-- (bid amount) -->
+        <string id="ewjqhPqj" text="（入札金額）" original="(bid amount)"/>
+        <!-- Invalid bid amount -->
+        <string id="dgG5WPrC" text="入札金額が無効です" original="Invalid bid amount"/>
+        <!-- EquipHero -->
+        <!-- Equip Hero -->
+        <string id="3zBXys4m" text="ヒーローを装備する" original="Equip Hero"/>
+        <!-- Improve adopted heroes equipment -->
+        <string id="3QfHyF8g" text="採用されたヒーローの装備を改善する" original="Improve adopted heroes equipment"/>
+        <!-- Allow Companion Upgrade -->
+        <string id="TGs8URfN" text="コンパニオンアップグレードを許可する" original="Allow Companion Upgrade"/>
+        <!-- Allow improvement of adopted heroes who are also companions of the player. -->
+        <string id="6zMgeovT" text="プレイヤーの仲間でもある養子縁組のヒーローの改善を許可します。" original="Allow improvement of adopted heroes who are also companions of the player."/>
+        <!-- Cost Tier 1 -->
+        <string id="8qUzSxsQ" text="コストティア1" original="Cost Tier 1"/>
+        <!-- Gold cost for Tier 1 equipment -->
+        <string id="4ipwvHaR" text="Tier1機器のゴールドコスト" original="Gold cost for Tier 1 equipment"/>
+        <!-- Cost Tier 2 -->
+        <string id="bjAzHOqD" text="コストティア2" original="Cost Tier 2"/>
+        <!-- Gold cost for Tier 2 equipment -->
+        <string id="3uRKzeJv" text="Tier2機器のゴールドコスト" original="Gold cost for Tier 2 equipment"/>
+        <!-- Cost Tier 3 -->
+        <string id="EUw3jfcC" text="コストティア3" original="Cost Tier 3"/>
+        <!-- Gold cost for Tier 3 equipment -->
+        <string id="vRTR2AVO" text="Tier3機器のゴールドコスト" original="Gold cost for Tier 3 equipment"/>
+        <!-- Cost Tier 4 -->
+        <string id="cvWxBhFl" text="コストティア4" original="Cost Tier 4"/>
+        <!-- Gold cost for Tier 4 equipment -->
+        <string id="LeCyJf6T" text="Tier4機器のゴールドコスト" original="Gold cost for Tier 4 equipment"/>
+        <!-- Cost Tier 5 -->
+        <string id="Im4cXqCx" text="コストティア5" original="Cost Tier 5"/>
+        <!-- Gold cost for Tier 5 equipment -->
+        <string id="4a0P89lE" text="Tier5機器のゴールドコスト" original="Gold cost for Tier 5 equipment"/>
+        <!-- Cost Tier 6 -->
+        <string id="c1CI4H3y" text="コストティア6" original="Cost Tier 6"/>
+        <!-- Gold cost for Tier 6 equipment -->
+        <string id="JkrTWsSf" text="Tier6機器のゴールドコスト" original="Gold cost for Tier 6 equipment"/>
+        <!-- Reequip Instead Of Upgrade -->
+        <string id="GaTe1vEL" text="アップグレードの代わりに再装備" original="Reequip Instead Of Upgrade"/>
+        <!-- Whether to re-equip the equipment INSTEAD of upgrading it (you should make TWO commands, one to upgrade and one to reequip) -->
+        <string id="zTiLpc9G" text="機器をアップグレードする代わりに再装備するかどうか（アップグレードするコマンドと再装備するコマンドの2つのコマンドを作成する必要があります）" original="Whether to re-equip the equipment INSTEAD of upgrading it (you should make TWO commands, one to upgrade and one to reequip)"/>
+        <!-- Re-rolls your equipment at your current tier -->
+        <string id="IJtXQh2D" text="現在の階層で機器を再ロールします" original="Re-rolls your equipment at your current tier"/>
+        <!-- Disallowed for player companions -->
+        <string id="02iAT4Y8" text="プレーヤーのコンパニオンには許可されていません" original="Disallowed for player companions"/>
+        <!-- Tier costs -->
+        <string id="wORNXOT5" text="ティアコスト" original="Tier costs"/>
+        <!-- You are a player companion, you cannot change your own equipment! -->
+        <string id="C9Mhzohr" text="あなたはプレイヤーの仲間です、あなたはあなた自身の装備を変えることはできません！" original="You are a player companion, you cannot change your own equipment!"/>
+        <!-- You cannot upgrade equipment, as a mission is active! -->
+        <string id="RoIXssEg" text="ミッションがアクティブであるため、機器をアップグレードすることはできません！" original="You cannot upgrade equipment, as a mission is active!"/>
+        <!-- You cannot upgrade any further! -->
+        <string id="FZh7ZtGp" text="これ以上アップグレードすることはできません！" original="You cannot upgrade any further!"/>
+        <string id="fYksbZJp" text="装備されたティア{ArmorTier} ({ClassName}）" original="Equipped Tier {ArmorTier} ({ClassName})"/>
+        <string id="0KHxea5e" text="再装備されたティア{ArmorTier} ({ClassName}）" original="Re-equipped Tier {ArmorTier} ({ClassName})"/>
+        <string id="VlnXNPYS" text="授業はありません" original="No Class"/>
+        <!-- Focus Points -->
+        <string id="WihQZ5uq" text="フォーカスポイント" original="Focus Points"/>
+        <!-- Add focus points to heroes skills -->
+        <string id="01L8w1ZW" text="ヒーローのスキルにフォーカスポイントを追加する" original="Add focus points to heroes skills"/>
+        <!-- Skills -->
+        <string id="QwuyvXBg" text="スキル" original="Skills"/>
+        <!-- What skill to add focus to -->
+        <string id="w9liWZ9A" text="フォーカスを追加するスキル" original="What skill to add focus to"/>
+        <!-- Auto -->
+        <string id="RiUjwmS5" text="自動" original="Auto"/>
+        <!-- Chooses a random skill to add focus to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used. -->
+        <string id="EA4jsUhm" text="フォーカスを追加するランダムなスキルを選択し、クラススキル、現在の機器のスキル、その他のスキルを優先します。自動を使用する場合、スキル設定は無視されます。" original="Chooses a random skill to add focus to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used."/>
+        <!-- Focus points -->
+        <string id="UpHpjzFk" text="フォーカスポイント" original="Focus points"/>
+        <!-- Automatic, based on class, equipment, and existing skills -->
+        <string id="SIM2l7ta" text="クラス、機器、および既存のスキルに基づいた自動" original="Automatic, based on class, equipment, and existing skills"/>
+        <!-- Couldn't find a valid skill to add focus points to! -->
+        <string id="VXvS5xji" text="フォーカスポイントを追加するための有効なスキルが見つかりませんでした！" original="Couldn't find a valid skill to add focus points to!"/>
+        <!-- You have gained {Amount} focus points in {Skill}, you now have {NewAmount}! -->
+        <string id="6tcVqRIs" text="{Amount} focus points in {Skill}, you now have {NewAmount}を獲得しました！" original="You have gained {Amount} focus points in {Skill}, you now have {NewAmount}!"/>
+        <!-- You have gained a focus point in {Skill}, you now have {NewAmount}! -->
+        <string id="HLFMWOJA" text="{Skill}, you now have {NewAmount}でフォーカスポイントを獲得しました！" original="You have gained a focus point in {Skill}, you now have {NewAmount}!"/>
+        <!-- DiscardItem -->
+        <!-- Discard Item -->
+        <string id="fmftNyHh" text="アイテムを破棄" original="Discard Item"/>
+        <!-- Allows viewers to discard one of their own custom items -->
+        <string id="f3LrrLHP" text="視聴者が自分のカスタムアイテムの1つを破棄できるようにします" original="Allows viewers to discard one of their own custom items"/>
+        <!-- You have no items to discard -->
+        <string id="oXQ4En4P" text="捨てるアイテムはありません" original="You have no items to discard"/>
+        <!-- (partial item name) -->
+        <string id="by80aboy" text="（一部商品名）" original="(partial item name)"/>
+        <!-- No items found matching '{Args}' -->
+        <string id="p0urrIvR" text="'{Args}'に一致するアイテムが見つかりません" original="No items found matching '{Args}'"/>
+        <!-- {Count} items found matching '{Args}', be more specific -->
+        <string id="Pzo2UJrl" text="{Count} items found matching '{Args} '、より具体的に" original="{Count} items found matching '{Args}', be more specific"/>
+        <!-- '{ItemName}' was discarded -->
+        <string id="bNqd3AzN" text="「{ItemName}」は破棄されました" original="'{ItemName}' was discarded"/>
+        <!-- GiveItem -->
+        <!-- Give Item -->
+        <string id="nAPjfF4C" text="アイテムを与える" original="Give Item"/>
+        <!-- Allows viewers to give one of their own custom items to another viewer -->
+        <string id="u9Jx6QUr" text="視聴者が自分のカスタムアイテムの1つを別の視聴者に提供できるようにします" original="Allows viewers to give one of their own custom items to another viewer"/>
+        <!-- You have no items to give -->
+        <string id="Tfj1U5BB" text="与えるアイテムはありません" original="You have no items to give"/>
+        <!-- (recipient) (partial item name) -->
+        <string id="BClUoR9H" text="（受取人）（一部商品名）" original="(recipient) (partial item name)"/>
+        <!-- Couldn't find recipient '{Name}' -->
+        <string id="vDsYxMKq" text="受信者「{Name}」が見つかりませんでした" original="Couldn't find recipient '{Name}'"/>
+        <!-- '{ItemName}' was transferred from @{FromHero} to @{ToHero} -->
+        <string id="E1o7b5ht" text="'{ItemName}' was transferred from @{FromHero} to @{ToHero}" original="'{ItemName}' was transferred from @{FromHero} to @{ToHero}"/>
+        <!-- HeroInfoCommand -->
+        <!-- Show Hero Info -->
+        <string id="cj68a0l9" text="ヒーロー情報を表示" original="Show Hero Info"/>
+        <!-- Will write various hero stats to chat -->
+        <string id="QsTQzceq" text="チャットするさまざまなヒーロー統計を書き込みます" original="Will write various hero stats to chat"/>
+        <!-- Show Gold -->
+        <string id="oWtshHwx" text="ゴールドを表示" original="Show Gold"/>
+        <!-- Show gold -->
+        <string id="O2mUbcue" text="ゴールドを表示" original="Show gold"/>
+        <!-- Show General -->
+        <string id="VmQECrnc" text="一般的な表示" original="Show General"/>
+        <!-- Show personal info: health, location, age -->
+        <string id="JWbk5Oko" text="個人情報を表示する：健康、場所、年齢" original="Show personal info: health, location, age"/>
+        <!-- Show Top Skills -->
+        <string id="tMKmlYeR" text="トップスキルを表示" original="Show Top Skills"/>
+        <!-- Shows skills (and focuse values) above the specified MinSkillToShow value -->
+        <string id="dayx7JEJ" text="指定されたMinSkillToShow値を超えるスキル（およびフォーカス値）を表示します" original="Shows skills (and focuse values) above the specified MinSkillToShow value"/>
+        <!-- Min Skill To Show -->
+        <string id="5VW8HXxS" text="表示する最小スキル" original="Min Skill To Show"/>
+        <!-- If ShowTopSkills is specified, this defines what skills are shown -->
+        <string id="4819Fxyv" text="ShowTopSkillsが指定されている場合、これは表示されるスキルを定義します" original="If ShowTopSkills is specified, this defines what skills are shown"/>
+        <!-- Show Attributes -->
+        <string id="lSM7JkvB" text="属性を表示" original="Show Attributes"/>
+        <!-- Shows all hero attributes -->
+        <string id="co5TLkOw" text="すべてのヒーロー属性を表示します" original="Shows all hero attributes"/>
+        <!-- Show Equipment -->
+        <string id="uLUxOyp2" text="機器を表示" original="Show Equipment"/>
+        <!-- Shows the equipment tier of the hero -->
+        <string id="CnTMaEPC" text="主人公の装備層を表示します" original="Shows the equipment tier of the hero"/>
+        <!-- Show Inventory -->
+        <string id="sp1iuH1y" text="在庫を表示" original="Show Inventory"/>
+        <!-- Shows the full battle inventory of the hero -->
+        <string id="uhAC3hOZ" text="ヒーローの完全な戦闘インベントリを表示します" original="Shows the full battle inventory of the hero"/>
+        <!-- Show Storage -->
+        <string id="aRA1V1Jp" text="ストレージを表示" original="Show Storage"/>
+        <!-- Shows the heroes storage (all their custom items) -->
+        <string id="Wjr33ERJ" text="ヒーローのストレージ（すべてのカスタムアイテム）を表示します" original="Shows the heroes storage (all their custom items)"/>
+        <!-- Show Civilian Inventory -->
+        <string id="ecvBeN44" text="民間人の目録を表示する" original="Show Civilian Inventory"/>
+        <!-- Shows the full civilian inventory of the hero -->
+        <string id="fUggutW6" text="主人公の完全な民間インベントリを表示します" original="Shows the full civilian inventory of the hero"/>
+        <!-- Show Retinue -->
+        <string id="p0WEhay8" text="従者を表示" original="Show Retinue"/>
+        <!-- Shows a summary of the retinue of the hero (count and tier) -->
+        <string id="AXnWeTzh" text="主人公の従者の概要を表示します（カウントとティア）" original="Shows a summary of the retinue of the hero (count and tier)"/>
+        <!-- Show Retinue List -->
+        <string id="Vyatyyuh" text="従者リストを表示" original="Show Retinue List"/>
+        <!-- Shows the exact classes and counts of the retinue of the hero -->
+        <string id="CSTqzcOi" text="主人公の従者の正確なクラスと数を表示します" original="Shows the exact classes and counts of the retinue of the hero"/>
+        <!-- Show Achievements -->
+        <string id="1F3utCWA" text="実績を表示する" original="Show Achievements"/>
+        <!-- Shows all hero achievements -->
+        <string id="CKJd7KC9" text="すべてのヒーローの成果を表示します" original="Shows all hero achievements"/>
+        <!-- Show Tracked Stats -->
+        <string id="LNvYSMZj" text="追跡された統計を表示する" original="Show Tracked Stats"/>
+        <!-- Shows all hero tracked stats (kills, deaths, summons, attacks, tournament wins etc.) -->
+        <string id="FaUbhgTR" text="ヒーローが追跡したすべての統計情報（キル、死亡、召喚、攻撃、トーナメントの勝利など）を表示します" original="Shows all hero tracked stats (kills, deaths, summons, attacks, tournament wins etc.)"/>
+        <!-- Show Powers -->
+        <string id="cHaiwygJ" text="パワーを表示" original="Show Powers"/>
+        <!-- Shows the heroes unlocked powers -->
+        <string id="YW8HsNEF" text="ヒーローのロック解除された力を示しています" original="Shows the heroes unlocked powers"/>
+        <!-- Gold -->
+        <string id="YVhcZatv" text="ゴールド" original="Gold"/>
+        <!-- Age, Clan, Culture, Health -->
+        <string id="jZigiKXG" text="年齢、一族、文化、健康" original="Age, Clan, Culture, Health"/>
+        <!-- Skills greater than {MinSkillToShow} -->
+        <string id="6wVce2iI" text="{MinSkillToShow}より大きいスキル" original="Skills greater than {MinSkillToShow}"/>
+        <!-- Attributes -->
+        <string id="74kcLopo" text="属性" original="Attributes"/>
+        <!-- Equipment tier -->
+        <string id="PeDxGcu7" text="機器層" original="Equipment tier"/>
+        <!-- Battle equipment inventory -->
+        <string id="EVvlMCru" text="戦闘装備の在庫" original="Battle equipment inventory"/>
+        <!-- Civilian equipment inventory -->
+        <string id="DeffOla6" text="民間機器の在庫" original="Civilian equipment inventory"/>
+        <!-- Custom item storage -->
+        <string id="VSDDQdmJ" text="カスタムアイテムの保管" original="Custom item storage"/>
+        <!-- Retinue count and average tier -->
+        <string id="C0mkGXlK" text="従者数と平均ティア" original="Retinue count and average tier"/>
+        <!-- Retinue unit list -->
+        <string id="L4Rh6vFE" text="従者ユニットリスト" original="Retinue unit list"/>
+        <!-- Achievements -->
+        <string id="ZW9XlwY7" text="実績" original="Achievements"/>
+        <!-- Tracked stats -->
+        <string id="Xmo7pOpj" text="追跡された統計" original="Tracked stats"/>
+        <!-- Powers -->
+        <string id="xVDOsWPq" text="パワーズ" original="Powers"/>
+        <!-- Shows -->
+        <string id="UB1bAtSI" text="ショー" original="Shows"/>
+        <!-- No Class -->
+        <string id="ZI2UKbNp" text="授業はありません" original="No Class"/>
+        <!-- {Age} yrs -->
+        <string id="4TVRrlOw" text="{Age}年" original="{Age} yrs"/>
+        <!-- {HP} / {MaxHP} HP -->
+        <string id="jY2QJdA3" text="{HP} / {MaxHP} HP" original="{HP} / {MaxHP} HP"/>
+        <!-- Last seen near {Place} -->
+        <string id="B2xDasDx" text="{Place}の近くで最後に見た" original="Last seen near {Place}"/>
+        <!-- [LVL] -->
+        <string id="fRwyY6ms" text="[LVL]" original="[LVL]"/>
+        <!-- [SKILLS] -->
+        <string id="rTId8pBy" text="[スキル]" original="[SKILLS]"/>
+        <!-- [ATTR] -->
+        <string id="RSlhbJzO" text="[ATTR]" original="[ATTR]"/>
+        <!-- [TIER] -->
+        <string id="64yw2YD0" text="[TIER]" original="[TIER]"/>
+        <!-- No Equip Class -->
+        <string id="u32KRqz8" text="装備クラスなし" original="No Equip Class"/>
+        <!-- [BATTLE] -->
+        <string id="YVVlcDSK" text="[戦い]" original="[BATTLE]"/>
+        <!-- [CIV] -->
+        <string id="zaVtcDWB" text="[CIV]" original="[CIV]"/>
+        <!-- [STORED] -->
+        <string id="U4HnxTCj" text="[保存済み]" original="[STORED]"/>
+        <!-- [RETINUE] -->
+        <string id="hMBF1zLr" text="[従者]" original="[RETINUE]"/>
+        <!-- (nothing) -->
+        <string id="4IOefqsW" text="（なし）" original="(nothing)"/>
+        <!-- {RetinueCount} (avg Tier {Tier}) -->
+        <string id="XE2QRhyz" text="{RetinueCount} (avg Tier {Tier}）" original="{RetinueCount} (avg Tier {Tier})"/>
+        <!-- [ACHIEV] -->
+        <string id="giS3vq1V" text="[ACHIEV]" original="[ACHIEV]"/>
+        <!-- K -->
+        <string id="ADjhFwlz" text="K" original="K"/>
+        <!-- D -->
+        <string id="aUj96cVC" text="NS" original="D"/>
+        <!-- KVwr -->
+        <string id="i02EMVP8" text="KVwr" original="KVwr"/>
+        <!-- KStrmr -->
+        <string id="iGXwhVja" text="KStrmr" original="KStrmr"/>
+        <!-- Battles -->
+        <string id="APUC6wGt" text="戦い" original="Battles"/>
+        <!-- Sums -->
+        <string id="6nwK1UF9" text="合計" original="Sums"/>
+        <!-- CSums -->
+        <string id="uDFykstd" text="CSums" original="CSums"/>
+        <!-- Atks -->
+        <string id="wtmfNCIj" text="攻撃" original="Atks"/>
+        <!-- CAtks -->
+        <string id="T29akAtY" text="CAtks" original="CAtks"/>
+        <!-- TourRndW -->
+        <string id="NOkWgftX" text="TourRndW" original="TourRndW"/>
+        <!-- TourRndL -->
+        <string id="k5O3x52V" text="TourRndL" original="TourRndL"/>
+        <!-- TourW -->
+        <string id="J6yoXowD" text="TourW" original="TourW"/>
+        <!-- [STATS] -->
+        <string id="nL2E16fj" text="[統計]" original="[STATS]"/>
+        <!-- [ACTIVE] -->
+        <string id="gV1s8Ffw" text="[アクティブ]" original="[ACTIVE]"/>
+        <!-- [PASSIVE] -->
+        <string id="z82jxnmF" text="[受動的]" original="[PASSIVE]"/>
+        <!-- Amount Low -->
+        <string id="01yarGvZ" text="金額が少ない" original="Amount Low"/>
+        <!-- Lower bound of amount to improve -->
+        <string id="UVKWPBjq" text="改善する量の下限" original="Lower bound of amount to improve"/>
+        <!-- Amount High -->
+        <string id="qi7FVuQB" text="金額が高い" original="Amount High"/>
+        <!-- Upper bound of amount to improve -->
+        <string id="tU4rSLcx" text="改善する量の上限" original="Upper bound of amount to improve"/>
+        <!-- Gold Cost -->
+        <string id="DlZ7sV1N" text="ゴールドコスト" original="Gold Cost"/>
+        <!-- Gold that will be taken from the hero -->
+        <string id="pGwh9edB" text="主人公から奪われる金" original="Gold that will be taken from the hero"/>
+        <!-- JoinTournament -->
+        <!-- Join Tournament -->
+        <string id="EZPZtyXo" text="トーナメントに参加する" original="Join Tournament"/>
+        <!-- Puts adopted heroes in queue for the next tournament -->
+        <string id="1h8OT5VD" text="採用されたヒーローを次のトーナメントのキューに入れます" original="Puts adopted heroes in queue for the next tournament"/>
+        <!-- Gold Cost -->
+        <string id="7D2UBlGC" text="ゴールドコスト" original="Gold Cost"/>
+        <!-- Gold cost to join -->
+        <string id="Upuhtmr6" text="参加するためのゴールドコスト" original="Gold cost to join"/>
+        <!-- JOIN the viewer tournament -->
+        <string id="jUcsHkqk" text="ビューアトーナメントに参加する" original="JOIN the viewer tournament"/>
+        <!-- WATCH the viewer tournament -->
+        <string id="hlVvENgP" text="視聴者トーナメントを見る" original="WATCH the viewer tournament"/>
+        <!-- NameItem -->
+        <!-- Name Item -->
+        <string id="0YSdK3zK" text="名前アイテム" original="Name Item"/>
+        <!-- Allow viewer to name custom items -->
+        <string id="k7vnOEIN" text="視聴者がカスタムアイテムに名前を付けることを許可する" original="Allow viewer to name custom items"/>
+        <!-- You have no nameable items -->
+        <string id="rXVOIMri" text="名前の付いたアイテムはありません" original="You have no nameable items"/>
+        <!-- You will rename your {Item} -->
+        <string id="Xb3eM5o7" text="{Item}の名前を変更します" original="You will rename your {Item}"/>
+        <!-- {PreviousName} renamed to {NewName} -->
+        <string id="iqNEr6Y7" text="{PreviousName} renamed to {NewName}" original="{PreviousName} renamed to {NewName}"/>
+        <!-- Retinue -->
+        <string id="tLSFX9Xc" text="従者" original="Retinue"/>
+        <!-- Add and improve adopted heroes retinue -->
+        <string id="bhC3VcmU" text="採用されたヒーローの従者を追加して改善する" original="Add and improve adopted heroes retinue"/>
+        <!-- Retinue Upgrade Settings -->
+        <string id="iNoFrKsN" text="アップグレード設定を継続する" original="Retinue Upgrade Settings"/>
+        <!-- All By Default -->
+        <string id="nIsuuFMC" text="すべてデフォルトで" original="All By Default"/>
+        <!-- Whether this action should attempt to buy/upgrade as many times as possible when called with no parameter. -->
+        <string id="mJSGvWlR" text="このアクションが、パラメーターなしで呼び出されたときに、できるだけ多くの購入/アップグレードを試行する必要があるかどうか。" original="Whether this action should attempt to buy/upgrade as many times as possible when called with no parameter."/>
+        <!-- You cannot upgrade retinue, as a mission is active! -->
+        <string id="mCcpMwrN" text="ミッションがアクティブであるため、従者をアップグレードすることはできません！" original="You cannot upgrade retinue, as a mission is active!"/>
+        <!-- (number, or all) -->
+        <string id="NexXxYvj" text="（数、またはすべて）" original="(number, or all)"/>
+        <!-- RetireMyHero -->
+        <!-- Retire Hero -->
+        <string id="sZhEiXyn" text="ヒーローを引退" original="Retire Hero"/>
+        <!-- Retires the hero, allowing the viewer to adopt another (if that is enabled) -->
+        <string id="Eh0m4R54" text="ヒーローを引退させ、視聴者が別のヒーローを採用できるようにします（それが有効になっている場合）" original="Retires the hero, allowing the viewer to adopt another (if that is enabled)"/>
+        <!-- yes -->
+        <string id="xSbB2Zw5" text="はい" original="yes"/>
+        <!-- You must enter '{Prompt}' at the prompt to retire your hero -->
+        <string id="0qVpLYfb" text="ヒーローを引退させるには、プロンプトで「{Prompt}」を入力する必要があります" original="You must enter '{Prompt}' at the prompt to retire your hero"/>
+        <!-- You cannot retire your hero, as a mission is active! -->
+        <string id="po20lHyz" text="ミッションがアクティブなので、ヒーローを引退させることはできません！" original="You cannot retire your hero, as a mission is active!"/>
+        <!-- {Name} has retired! -->
+        <string id="ihG4fs1r" text="{Name}は引退しました！" original="{Name} has retired!"/>
+        <!-- SetHeroClass -->
+        <!-- Set Hero Class -->
+        <string id="pVblweVj" text="ヒーロークラスを設定する" original="Set Hero Class"/>
+        <!-- Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied -->
+        <string id="7VWKYp1U" text="採用されたヒーローの「クラス」を変更できます。これは、装備とXPが適用される場所に影響します。" original="Allows changing the 'class' of an adopted hero, which affects the equipment and where XP is applied"/>
+        <!-- First Equip Is Free -->
+        <string id="iLpDEiTq" text="最初の装備は無料です" original="First Equip Is Free"/>
+        <!-- If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class) -->
+        <string id="pRETwmGv" text="ヒーローがまだクラスを持っていないときにこれが無料の場合（これは、Adoptがデフォルトのクラスを指定していない場合にのみ発生する可能性があります）" original="If this is free when the hero does not have a class already (this can only happen if Adopt does NOT specify a default class)"/>
+        <!-- Cost Tier 1 -->
+        <string id="N2OnDXOs" text="コストティア1" original="Cost Tier 1"/>
+        <!-- Gold cost for Tier 1 class change -->
+        <string id="tuhth4ld" text="Tier1クラス変更のゴールドコスト" original="Gold cost for Tier 1 class change"/>
+        <!-- Cost Tier 2 -->
+        <string id="jIQ5VYSh" text="コストティア2" original="Cost Tier 2"/>
+        <!-- Gold cost for Tier 2 class change -->
+        <string id="V5CGr4lf" text="Tier2クラス変更のゴールドコスト" original="Gold cost for Tier 2 class change"/>
+        <!-- Cost Tier 3 -->
+        <string id="lWOrthSS" text="コストティア3" original="Cost Tier 3"/>
+        <!-- Gold cost for Tier 3 class change -->
+        <string id="NlXa6kJS" text="Tier3クラス変更のゴールドコスト" original="Gold cost for Tier 3 class change"/>
+        <!-- Cost Tier 4 -->
+        <string id="wuKWOAwt" text="コストティア4" original="Cost Tier 4"/>
+        <!-- Gold cost for Tier 4 class change -->
+        <string id="0X1TRYbP" text="Tier4クラス変更のゴールドコスト" original="Gold cost for Tier 4 class change"/>
+        <!-- Cost Tier 5 -->
+        <string id="ZBzqCAyW" text="コストティア5" original="Cost Tier 5"/>
+        <!-- Gold cost for Tier 5 class change -->
+        <string id="yelsar2J" text="Tier5クラス変更のゴールドコスト" original="Gold cost for Tier 5 class change"/>
+        <!-- Cost Tier 6 -->
+        <string id="ZLdpLkbg" text="コストティア6" original="Cost Tier 6"/>
+        <!-- Gold cost for Tier 6 class change -->
+        <string id="eYcOsu9h" text="Tier6クラス変更のゴールドコスト" original="Gold cost for Tier 6 class change"/>
+        <!-- Update Equipment -->
+        <string id="rpkghdTp" text="機器の更新" original="Update Equipment"/>
+        <!-- Whether to immediately update equipment after changing class -->
+        <string id="cWQKOYEx" text="クラス変更後すぐに機器を更新するか" original="Whether to immediately update equipment after changing class"/>
+        <!-- Tier costs -->
+        <string id="2WAi7pZN" text="ティアコスト" original="Tier costs"/>
+        <!-- Free if you do not already have a class -->
+        <string id="lW1KcoWD" text="まだクラスがない場合は無料" original="Free if you do not already have a class"/>
+        <!-- Updates equipment to match new class -->
+        <string id="qOR4RSqt" text="新しいクラスに一致するように機器を更新します" original="Updates equipment to match new class"/>
+        <!-- You cannot change class, as a mission is active! -->
+        <string id="70vJ1jxZ" text="ミッションがアクティブなので、クラスを変更することはできません！" original="You cannot change class, as a mission is active!"/>
+        <!-- Provide class name -->
+        <string id="prmHmdGE" text="クラス名を入力してください" original="Provide class name"/>
+        <!-- changed class to {ClassName} -->
+        <string id="giUCnkf2" text="クラスを{ClassName}に変更しました" original="changed class to {ClassName}"/>
+        <!-- SkillXP -->
+        <!-- Skill XP -->
+        <string id="mpdzqyCK" text="スキルXP" original="Skill XP"/>
+        <!-- Improve adopted heroes skills -->
+        <string id="Bc2HIByX" text="採用されたヒーローのスキルを向上させる" original="Improve adopted heroes skills"/>
+        <!-- Skills -->
+        <string id="rAGAEUIH" text="スキル" original="Skills"/>
+        <!-- What to improve -->
+        <string id="wo5VSDaj" text="何を改善するか" original="What to improve"/>
+        <!-- Auto -->
+        <string id="LVp7Llay" text="自動" original="Auto"/>
+        <!-- Chooses a random skill to add XP to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used. -->
+        <string id="CTCcqB3Y" text="XPを追加するランダムなスキルを選択し、クラススキル、現在の機器のスキル、その他のスキルを優先します。自動を使用する場合、スキル設定は無視されます。" original="Chooses a random skill to add XP to, preferring class skills, then skills for current equipment, then other skills. Skills setting is ignored when auto is used."/>
+        <!-- Automatic, based on class, equipment, and existing skills -->
+        <string id="QJ9Cssr7" text="クラス、機器、および既存のスキルに基づいた自動" original="Automatic, based on class, equipment, and existing skills"/>
+        <!-- {AmountLow} to {AmountHigh} -->
+        <string id="vTkGnRBS" text="{AmountLow} to {AmountHigh}" original="{AmountLow} to {AmountHigh}"/>
+        <!-- Costs -->
+        <string id="lz87CnyL" text="費用" original="Costs"/>
+        <!-- Couldn't find a skill to improve -->
+        <string id="vK5z2Naq" text="改善するスキルが見つかりませんでした" original="Couldn't find a skill to improve"/>
+        <!-- {Skill} capped, get more focus points -->
+        <string id="ozkK4mk7" text="{Skill}上限あり、より多くのフォーカスポイントを取得" original="{Skill} capped, get more focus points"/>
+        <!-- 1H -->
+        <string id="Ei8NyJSW" text="1H" original="1H"/>
+        <!-- 2H -->
+        <string id="U38E72Ue" text="2H" original="2H"/>
+        <!-- PA -->
+        <string id="Cg885bns" text="PA" original="PA"/>
+        <!-- Bow -->
+        <string id="QpWRsKrc" text="弓" original="Bow"/>
+        <!-- Xb -->
+        <string id="71M512iJ" text="Xb" original="Xb"/>
+        <!-- Thr -->
+        <string id="jMRloOi0" text="Thr" original="Thr"/>
+        <!-- Rid -->
+        <string id="ligWzK3s" text="取り除く" original="Rid"/>
+        <!-- Ath -->
+        <string id="1MJnisqR" text="Ath" original="Ath"/>
+        <!-- Smt -->
+        <string id="VjV54wik" text="Smt" original="Smt"/>
+        <!-- Tac -->
+        <string id="6iG2GJW5" text="タック" original="Tac"/>
+        <!-- Sct -->
+        <string id="AgaZsMEb" text="Sct" original="Sct"/>
+        <!-- Rog -->
+        <string id="6x33x91Z" text="Rog" original="Rog"/>
+        <!-- Cha -->
+        <string id="N9X9VVsM" text="チャ" original="Cha"/>
+        <!-- Trd -->
+        <string id="J8ElWB0P" text="Trd" original="Trd"/>
+        <!-- Stw -->
+        <string id="BD65Qr83" text="Stw" original="Stw"/>
+        <!-- Ldr -->
+        <string id="OYJ8tfhY" text="Ldr" original="Ldr"/>
+        <!-- Med -->
+        <string id="PmKb4QCv" text="メッド" original="Med"/>
+        <!-- Eng -->
+        <string id="wLkMFOky" text="エンジニアリング" original="Eng"/>
+        <!-- SummonHero -->
+        <!-- Summon Hero -->
+        <string id="6uWk9iMM" text="ヒーローを召喚" original="Summon Hero"/>
+        <!-- Spawns the adopted hero into the current active mission -->
+        <string id="ODnzMmBQ" text="採用されたヒーローを現在のアクティブなミッションにスポーンします" original="Spawns the adopted hero into the current active mission"/>
+        <!-- Allowed Missions -->
+        <string id="i8P1EnE1" text="許可されたミッション" original="Allowed Missions"/>
+        <!-- Effects -->
+        <string id="tYGvtYKd" text="効果" original="Effects"/>
+        <!-- AllowFieldBattle -->
+        <string id="DkCdNiwF" text="フィールドバトルを許可する" original="Allow Field Battle"/>
+        <!-- AllowVillageBattle -->
+        <string id="yVz54Nky" text="村の戦いを許可する" original="Allow Village Battle"/>
+        <!-- AllowSiegeBattle -->
+        <string id="0X8bcuPE" text="攻城戦を許可する" original="Allow Siege Battle"/>
+        <!-- AllowFriendlyMission -->
+        <string id="Sd1jguGc" text="友好的な任務を許可する" original="Allow Friendly Mission"/>
+        <!-- Allow Hide Out -->
+        <string id="1xJGhP2D" text="非表示を許可する" original="Allow Hide Out"/>
+        <!-- On Player Side -->
+        <string id="i59Fm8zV" text="プレイヤー側" original="On Player Side"/>
+        <!-- Gold Cost -->
+        <string id="HOZnxjGb" text="ゴールドコスト" original="Gold Cost"/>
+        <!-- Preferred Formation -->
+        <string id="sZRrJfKm" text="優先フォーメーション" original="Preferred Formation"/>
+        <!-- Alert Sound -->
+        <string id="74AvYKCg" text="アラート音" original="Alert Sound"/>
+        <!-- Sub Boost -->
+        <string id="H7B3Yzly" text="サブブースト" original="Sub Boost"/>
+        <!-- Heal Per Second -->
+        <string id="cXeUjVur" text="1秒あたりの回復" original="Heal Per Second"/>
+        <!-- Can summon for normal field battles between parties -->
+        <string id="ddjUyXpV" text="パーティ間の通常のフィールドバトルを召喚できます" original="Can summon for normal field battles between parties"/>
+        <!-- Can summon in village battles -->
+        <string id="buLH4Spj" text="村の戦いで召喚できます" original="Can summon in village battles"/>
+        <!-- Can summon in sieges -->
+        <string id="uk1kL79V" text="包囲戦で召喚できます" original="Can summon in sieges"/>
+        <!-- This includes walking about village/town/dungeon/keep -->
+        <string id="1HaljOia" text="これには、村/町/ダンジョン/砦の周りを歩くことが含まれます" original="This includes walking about village/town/dungeon/keep"/>
+        <!-- Can summon in the hideout missions -->
+        <string id="NZTRYcGV" text="隠れ家ミッションで召喚できます" original="Can summon in the hideout missions"/>
+        <!-- Whether the hero is on the player or enemy side -->
+        <string id="S86V5s0C" text="主人公がプレイヤー側か敵側か" original="Whether the hero is on the player or enemy side"/>
+        <!-- Gold cost to summon -->
+        <string id="OQISx7Jz" text="召喚するためのゴールドコスト" original="Gold cost to summon"/>
+        <!-- Which formation to add summoned heroes to (only applies to ones without a specified class) -->
+        <string id="vkFowOeg" text="召喚されたヒーローを追加するフォーメーション（クラスが指定されていないものにのみ適用されます）" original="Which formation to add summoned heroes to (only applies to ones without a specified class)"/>
+        <!-- Sound to play when summoned -->
+        <string id="R00Lx6aE" text="召喚時に鳴る音" original="Sound to play when summoned"/>
+        <!-- Multiplier applied to (positive) effects for subscribers -->
+        <string id="lFnV3cR9" text="加入者の（プラスの）効果に適用される乗数" original="Multiplier applied to (positive) effects for subscribers"/>
+        <!-- HP the hero gets every second they are alive in the mission -->
+        <string id="gnh3KY5a" text="HPヒーローはミッションで生きている毎秒を取得します" original="HP the hero gets every second they are alive in the mission"/>
+        <!-- Side -->
+        <string id="Uu58rjgC" text="側" original="Side"/>
+        <!-- Heals -->
+        <string id="uHTRhFAh" text="癒し" original="Heals"/>
+        <!-- Cost -->
+        <string id="hCJhgl1m" text="費用" original="Cost"/>
+        <!-- Streamers side -->
+        <string id="myKKaEl9" text="ストリーマー側" original="Streamers side"/>
+        <!-- Enemy side -->
+        <string id="BTZ84Uww" text="敵側" original="Enemy side"/>
+        <!-- {HealPerSecond}HP per second while summoned -->
+        <string id="cR84crHC" text="召喚中の毎秒{HealPerSecond} HP" original="{HealPerSecond}HP per second while summoned"/>
+        <!-- Field battle -->
+        <string id="SRdB89Ca" text="フィールドバトル" original="Field battle"/>
+        <!-- Village battle -->
+        <string id="M45VqXVa" text="村の戦い" original="Village battle"/>
+        <!-- Siege battle -->
+        <string id="hbWdpDwr" text="攻城戦" original="Siege battle"/>
+        <!-- Friendly mission -->
+        <string id="YIfbDpI9" text="フレンドリーな使命" original="Friendly mission"/>
+        <!-- Hide-out -->
+        <string id="pZ239vm5" text="隠れ家" original="Hide-out"/>
+        <!-- Allowed in -->
+        <string id="zOB6Nadp" text="で許可" original="Allowed in"/>
+        <!-- You cannot be summoned now! -->
+        <string id="TdykIizS" text="今は召喚できません！" original="You cannot be summoned now!"/>
+        <!-- You cannot be summoned now, this mission does not allow it! -->
+        <string id="HWnEJg1M" text="あなたは今召喚することはできません、この任務はそれを許可しません！" original="You cannot be summoned now, this mission does not allow it!"/>
+        <!-- You cannot be summoned now, the mission has not started yet! -->
+        <string id="v5dO40vi" text="あなたは今召喚することはできません、ミッションはまだ始まっていません！" original="You cannot be summoned now, the mission has not started yet!"/>
+        <!-- You cannot be summoned now, the mission is ending! -->
+        <string id="mTKKaYIf" text="あなたは今召喚することはできません、任務は終わりです！" original="You cannot be summoned now, the mission is ending!"/>
+        <!-- You cannot be summoned, you are already here! -->
+        <string id="YTEgKnCW" text="あなたは召喚することはできません、あなたはすでにここにいます！" original="You cannot be summoned, you are already here!"/>
+        <!-- You won {WonGold}{GoldIcon}! -->
+        <string id="pmj8vjZj" text="{WonGold}{GoldIcon}勝ちました！" original="You won {WonGold}{GoldIcon}!"/>
+        <!-- You lost {LostGold}{GoldIcon}! -->
+        <string id="ajhKKeEo" text="{LostGold}{GoldIcon}を失いました！" original="You lost {LostGold}{GoldIcon}!"/>
+        <!-- You have joined the battle! -->
+        <string id="Ft3cxfIx" text="バトルに参加しました！" original="You have joined the battle!"/>
+        <!-- You cannot be summoned now, the mission has not started yet! -->
+        <string id="YZ4V5e4V" text="あなたは今召喚することはできません、ミッションはまだ始まっていません！" original="You cannot be summoned now, the mission has not started yet!"/>
+        <!-- You cannot switch sides, you traitor! -->
+        <string id="2D2T6xP6" text="あなたは側を切り替えることはできません、あなたは裏切り者です！" original="You cannot switch sides, you traitor!"/>
+        <!-- You cannot be summoned, you DIED! -->
+        <string id="RBTDviuM" text="あなたは召喚することはできません、あなたは死にました！" original="You cannot be summoned, you DIED!"/>
+        <!-- You cannot be summoned, you are already here! -->
+        <string id="YMiZAluP" text="あなたは召喚することはできません、あなたはすでにここにいます！" original="You cannot be summoned, you are already here!"/>
+        <!-- {CoolDown}s cooldown remaining -->
+        <string id="kyUh29ij" text="{CoolDown}のクールダウンが残っています" original="{CoolDown}s cooldown remaining"/>
+        <!-- You cannot be summoned, your party is already here! -->
+        <string id="93Hrc2EA" text="あなたは召喚することはできません、あなたのパーティーはすでにここにあります！" original="You cannot be summoned, your party is already here!"/>
+        <!-- Could not find a party for you to join! -->
+        <string id="jtqEqonE" text="参加するパーティーが見つかりませんでした！" original="Could not find a party for you to join!"/>
+        <!-- You have joined the battle! -->
+        <string id="TvkEBZeY" text="バトルに参加しました！" original="You have joined the battle!"/>
+        <!-- Text -->
+        <string id="V3STT5Ar" text="文章" original="Text"/>
+        <!-- Text that will be displayed in game -->
+        <string id="wsIzPzfG" text="ゲームに表示されるテキスト" original="Text that will be displayed in game"/>
+        <!-- Enter shout text here -->
+        <string id="xf2mTWx8" text="ここに叫びのテキストを入力してください" original="Enter shout text here"/>
+        <!-- Weight -->
+        <string id="bCbN9OmH" text="重さ" original="Weight"/>
+        <!-- Higher weight means more chance this shout is used -->
+        <string id="xqfCYYwN" text="体重が大きいほど、この叫び声が使われる可能性が高くなります" original="Higher weight means more chance this shout is used"/>
+        <!-- Player Side -->
+        <string id="xK1fdx7s" text="プレイヤー側" original="Player Side"/>
+        <!-- Can be used when summoning on player side -->
+        <string id="BpDPlsfY" text="プレイヤー側で召喚するときに使用できます" original="Can be used when summoning on player side"/>
+        <!-- Enemy Side -->
+        <string id="srN8yHp8" text="敵側" original="Enemy Side"/>
+        <!-- Can be used when summoning on enemy side -->
+        <string id="0m4s9zXc" text="敵側召喚時に使用できます" original="Can be used when summoning on enemy side"/>
+        <!-- General -->
+        <string id="MOOBN2Hz" text="全般的" original="General"/>
+        <!-- Can be used in situations other than battle/siege -->
+        <string id="6TWSIu60" text="戦闘/攻城戦以外の状況で使用できます" original="Can be used in situations other than battle/siege"/>
+        <!-- Field Battle -->
+        <string id="4KdKuusC" text="フィールドバトル" original="Field Battle"/>
+        <!-- Can be used when in a field battle -->
+        <string id="8aLSNsxr" text="フィールドバトル時に使用できます" original="Can be used when in a field battle"/>
+        <!-- Siege Defend -->
+        <string id="2yevL6dV" text="攻城戦" original="Siege Defend"/>
+        <!-- Can be used when on siege defender side -->
+        <string id="8HwihUK3" text="包囲ディフェンダー側で使用できます" original="Can be used when on siege defender side"/>
+        <!-- Siege Attack -->
+        <string id="r5tvIQwx" text="包囲攻撃" original="Siege Attack"/>
+        <!-- Can be used when on siege attacker side -->
+        <string id="mbIwJprm" text="包囲攻撃者側で使用できます" original="Can be used when on siege attacker side"/>
+        <!-- Shout -->
+        <string id="CXb5ALls" text="叫ぶ" original="Shout"/>
+        <!-- TournamentBet -->
+        <!-- Invalid gold argument -->
+        <string id="GiU7feEu" text="無効なゴールド引数" original="Invalid gold argument"/>
+        <!-- Betting not active -->
+        <string id="3AQKsF9f" text="賭けはアクティブではありません" original="Betting not active"/>
+        <!-- Bet {GoldAmount}{GoldIcon} on {Team} -->
+        <string id="9tlhaGyH" text="賭け{GoldAmount}{GoldIcon} on {Team}" original="Bet {GoldAmount}{GoldIcon} on {Team}"/>
+        <!-- (team) (gold) -->
+        <string id="8XQwqd4f" text="（チーム）（ゴールド）" original="(team) (gold)"/>
+        <!-- UsePower -->
+        <!-- Use Power -->
+        <string id="Wpx7tHFL" text="電力を使用する" original="Use Power"/>
+        <!-- Allows activation of the adopted heroes class active powers -->
+        <string id="FJwn6kGW" text="採用されたヒーロークラスのアクティブパワーのアクティブ化を許可します" original="Allows activation of the adopted heroes class active powers"/>
+        <!-- You don't have a class, so no powers are available! -->
+        <string id="85HYGklq" text="あなたはクラスを持っていないので、力は利用できません！" original="You don't have a class, so no powers are available!"/>
+        <!-- You cannot activate your powers now: {FailReason}! -->
+        <string id="nXSUvuyD" text="あなたは今あなたの力を活性化することはできません：{FailReason}！" original="You cannot activate your powers now: {FailReason}!"/>
+        <!-- Your powers are already active! -->
+        <string id="o23xAj6M" text="あなたの力はすでにアクティブです！" original="Your powers are already active!"/>
+    </strings>
+</base>

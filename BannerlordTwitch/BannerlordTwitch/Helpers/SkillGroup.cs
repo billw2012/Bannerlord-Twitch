@@ -1,42 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BannerlordTwitch.Localization;
 using TaleWorlds.Core;
-using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BannerlordTwitch.Helpers
 {
     [Flags]
     public enum SkillsEnum
     {
-        None,
-        All,
-        
-        Melee,
-        OneHanded, TwoHanded, Polearm,
-        
-        Ranged,
-        Bow, Throwing, Crossbow,
-        
-        Movement,
-        Riding, Athletics,
-        
-        Support,
-        Scouting, Trade, Steward, Medicine, Engineering,
-        
-        Personal,
-        Crafting, Tactics, Roguery, Charm, Leadership,
-    }
-
-    public class SingleSkillsItemSource : IItemsSource
-    {
-        public ItemCollection GetValues() => new() {
-            SkillsEnum.OneHanded, SkillsEnum.TwoHanded, SkillsEnum.Polearm,
-            SkillsEnum.Bow, SkillsEnum.Throwing, SkillsEnum.Crossbow,
-            SkillsEnum.Riding, SkillsEnum.Athletics,
-            SkillsEnum.Scouting, SkillsEnum.Trade, SkillsEnum.Steward, SkillsEnum.Medicine, SkillsEnum.Engineering,
-            SkillsEnum.Crafting, SkillsEnum.Tactics, SkillsEnum.Roguery, SkillsEnum.Charm, SkillsEnum.Leadership,
-        };
+        [LocDisplayName("{=p2ImRezI}None")] None,
+        [LocDisplayName("{=ZJUJQl8V}All")] All,
+        [LocDisplayName("{=Mtc9BiNI}Melee")] Melee,
+        [LocDisplayName("{=NRNrLcBt}One Handed")] OneHanded, 
+        [LocDisplayName("{=93kpWTwA}Two Handed")] TwoHanded, 
+        [LocDisplayName("{=PWibGbJ4}Polearm")] Polearm,
+        [LocDisplayName("{=oidnJJjF}Ranged")] Ranged,
+        [LocDisplayName("{=HW64G8xr}Bow")] Bow, 
+        [LocDisplayName("{=yR8vmGlW}Throwing")] Throwing, 
+        [LocDisplayName("{=UG5KpbT7}Crossbow")] Crossbow,
+        [LocDisplayName("{=tVQs3vuO}Movement")] Movement,
+        [LocDisplayName("{=14Unsmk1}Riding")] Riding, 
+        [LocDisplayName("{=4zlH32Z5}Athletics")] Athletics,
+        [LocDisplayName("{=AZD2nxRg}Support")] Support,
+        [LocDisplayName("{=pOYKEhhf}Scouting")] Scouting, 
+        [LocDisplayName("{=ijZZGbRE}Trade")] Trade, 
+        [LocDisplayName("{=CQqpGRtH}Steward")] Steward, 
+        [LocDisplayName("{=X6rHMhsQ}Medicine")] Medicine, 
+        [LocDisplayName("{=tNC2NHRC}Engineering")] Engineering,
+        [LocDisplayName("{=eYTQ1TD7}Personal")] Personal,
+        [LocDisplayName("{=PrE6W0WX}Crafting")] Crafting, 
+        [LocDisplayName("{=BfNX6sak}Tactics")] Tactics, 
+        [LocDisplayName("{=OvyNv1El}Roguery")] Roguery, 
+        [LocDisplayName("{=1NcKYexo}Charm")] Charm, 
+        [LocDisplayName("{=4684bsD7}Leadership")] Leadership,
     }
 
     public static class SkillGroup
@@ -89,31 +86,6 @@ namespace BannerlordTwitch.Helpers
             return ExpandSkills(skills).Select(s => s.ToString()).ToArray();
         }
 
-        // These must be properties not fields, as these values are dynamic
-        public static SkillObject[] MeleeSkills => new [] {
-            DefaultSkills.OneHanded,
-            DefaultSkills.TwoHanded,
-            DefaultSkills.Polearm,
-        };
-
-        public static ItemObject.ItemTypeEnum[] MeleeItems => new [] {
-            ItemObject.ItemTypeEnum.OneHandedWeapon,
-            ItemObject.ItemTypeEnum.TwoHandedWeapon,
-            ItemObject.ItemTypeEnum.Polearm,
-        };
-
-        public static SkillObject[] RangedSkills => new [] {
-            DefaultSkills.Bow,
-            DefaultSkills.Crossbow,
-            DefaultSkills.Throwing,
-        };
-
-        public static ItemObject.ItemTypeEnum[] RangedItems => new [] {
-            ItemObject.ItemTypeEnum.Bow,
-            ItemObject.ItemTypeEnum.Crossbow,
-            ItemObject.ItemTypeEnum.Thrown,
-        };
-        
         public static (SkillObject skill, ItemObject.ItemTypeEnum itemType)[] MeleeSkillItemPairs => new[]
         {
             (DefaultSkills.OneHanded, ItemObject.ItemTypeEnum.OneHandedWeapon),
@@ -121,12 +93,6 @@ namespace BannerlordTwitch.Helpers
             (DefaultSkills.Polearm, ItemObject.ItemTypeEnum.Polearm),
         };
         
-        public static (SkillObject skill, ItemObject.ItemTypeEnum itemType)[] RangedSkillItemPairs => new[]
-        {
-            (DefaultSkills.Bow, ItemObject.ItemTypeEnum.Bow),
-            (DefaultSkills.Crossbow, ItemObject.ItemTypeEnum.Crossbow),
-            (DefaultSkills.Throwing, ItemObject.ItemTypeEnum.Thrown),
-        };
         public static (SkillObject skill, ItemObject.ItemTypeEnum itemType)[] SkillItemPairs => new[]
         {
             (DefaultSkills.OneHanded, ItemObject.ItemTypeEnum.OneHandedWeapon),
@@ -136,22 +102,7 @@ namespace BannerlordTwitch.Helpers
             (DefaultSkills.Crossbow, ItemObject.ItemTypeEnum.Crossbow),
             (DefaultSkills.Throwing, ItemObject.ItemTypeEnum.Thrown),
         };
-
-        public static (SkillObject skill, WeaponClass[] weaponClasses)[] SkillWeaponClassPairs => new[]
-        {
-            (DefaultSkills.OneHanded, new [] { WeaponClass.OneHandedSword, WeaponClass.OneHandedAxe, WeaponClass.Mace }),
-            (DefaultSkills.TwoHanded, new [] { WeaponClass.TwoHandedSword, WeaponClass.TwoHandedAxe, WeaponClass.TwoHandedMace }),
-            (DefaultSkills.Polearm, new [] { WeaponClass.OneHandedPolearm, WeaponClass.TwoHandedPolearm }),
-            (DefaultSkills.Bow, new [] { WeaponClass.Bow, WeaponClass.Arrow }),
-            (DefaultSkills.Crossbow, new [] { WeaponClass.Crossbow, WeaponClass.Bolt }),
-            (DefaultSkills.Throwing, new [] { WeaponClass.ThrowingKnife, WeaponClass.ThrowingAxe, WeaponClass.Javelin }),
-        };
         
-        public static SkillObject[] MovementSkills => new [] {
-            DefaultSkills.Riding,
-            DefaultSkills.Athletics,
-        };
-
         // notice that ChestArmor is NOT here, its not currently used by the game, 
         // and including it will result in a failure to find any matching items
         public static readonly (EquipmentIndex slot, ItemObject.ItemTypeEnum itemType)[] ArmorIndexType = {
@@ -170,7 +121,7 @@ namespace BannerlordTwitch.Helpers
         
         public static IEnumerable<SkillObject> GetSkills(IEnumerable<string> sk) 
             => sk.Select(sn 
-                => HeroHelpers.AllSkillObjects.FirstOrDefault(so 
+                => CampaignHelpers.AllSkillObjects.FirstOrDefault(so 
                     => string.Equals(so.StringId, sn, StringComparison.CurrentCultureIgnoreCase)));
         
         public static IEnumerable<ItemObject.ItemTypeEnum> GetItemsForSkills(params SkillsEnum[] sk)

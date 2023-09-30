@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
@@ -10,17 +10,24 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
-    [Description("Adds fixed or relative amount of extra HP to the hero when they spawn"), UsedImplicitly]
+    [LocDisplayName("{=ZbxNmvem}Add Health Power"),
+     LocDescription("{=NlJXiSkn}Adds fixed or relative amount of extra HP to the hero when they spawn"), 
+     UsedImplicitly]
     public class AddHealthPower : HeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         #region User Editable
-        [Category("Power Config"), Description("Modifier to apply to base HP"),
+        [LocDisplayName("{=EQ16SH5A}Health Modifier Percent"),
+         LocCategory("Power Config", "{=75UOuDM}Power Config"), 
+         LocDescription("{=Dr2whvVV}Modifier to apply to base HP"),
          UIRange(0, 1000, 1f),
          Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          PropertyOrder(1), UsedImplicitly]
         public float HealthModifierPercent { get; set; } = 100f;
 
-        [Category("Power Config"), Description("How much HP to add (applied after Modifier)"), PropertyOrder(2), UsedImplicitly]
+        [LocDisplayName("{=pnr7P9sj}Health To Add"),
+         LocCategory("Power Config", "{=75UOuDM}Power Config"), 
+         LocDescription("{=sprkIlxQ}How much HP to add (applied after Modifier)"), 
+         PropertyOrder(2), UsedImplicitly]
         public float HealthToAdd { get; set; }
         #endregion
 
@@ -30,7 +37,7 @@ namespace BLTAdoptAHero.Powers
         #endregion
 
         #region Private Implementation
-        private void OnAgentBuild(Hero hero, Agent agent)
+        private void OnAgentBuild(Agent agent)
         {
             agent.BaseHealthLimit *= HealthModifierPercent / 100f;
             agent.HealthLimit *= HealthModifierPercent / 100f;
@@ -45,20 +52,21 @@ namespace BLTAdoptAHero.Powers
         #region Public Interface
         [YamlIgnore, Browsable(false)]
         public bool IsEnabled => HealthModifierPercent != 100 || HealthToAdd != 0;
-        public override string Description
+        [YamlIgnore, Browsable(false)]
+        public override LocString Description
         {
             get
             {
-                if (!IsEnabled) return "(disabled)";
+                if (!IsEnabled) return "{=41sZdkDw}(disabled)";
                 return (HealthModifierPercent != 100 ? $"{HealthModifierPercent:0}% " : "")
                        + (HealthToAdd > 0 ? "+" : "") + (HealthToAdd != 0 ? $"{HealthToAdd:0.0} " : "")
-                       + "HP";
+                       + Naming.HP;
             }
         }
         #endregion
 
         #region IDocumentable
-        public void GenerateDocumentation(IDocumentationGenerator generator) => generator.P(Description);
+        public void GenerateDocumentation(IDocumentationGenerator generator) => generator.P(Description.ToString());
         #endregion
     }
 }

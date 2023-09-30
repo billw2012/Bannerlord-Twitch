@@ -1,12 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using BannerlordTwitch.Helpers;
-using BannerlordTwitch.Util;
 using BLTAdoptAHero.Achievements;
-using BLTAdoptAHero.Actions.Util;
 using BLTAdoptAHero.Annotations;
 using HarmonyLib;
-using SandBox.TournamentMissions.Missions;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -29,7 +25,7 @@ namespace BLTAdoptAHero
                     AttackType = attacker.IsMount ? AgentAttackType.Collision : AgentAttackType.Standard,
                     DamageType = DamageTypes.Blunt,
                     BoneIndex = victim.Monster.HeadLookDirectionBoneIndex,
-                    Position = victim.Position,
+                    GlobalPosition = victim.Position,
                     BaseMagnitude = collisionData.BaseMagnitude * 10,
                     SwingDirection = collisionData.WeaponBlowDir,
                     Direction = collisionData.WeaponBlowDir,
@@ -40,7 +36,7 @@ namespace BLTAdoptAHero
 
                 blow.InflictedDamage = (int) blow.BaseMagnitude;
 
-                victim.RegisterBlow(blow);
+                victim.RegisterBlow(blow, collisionData);
             }
         }
 

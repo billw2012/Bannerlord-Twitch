@@ -20,12 +20,21 @@
         </Style>
     </Page.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="5" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
-        <Grid>
+        <StackPanel Grid.ColumnSpan="3" DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0 4">
+            <Button Click="SaveButton_OnClick" FontWeight="DemiBold" FontSize="16" Padding="15 0">Save</Button>
+            <TextBlock Text="{Binding Model.LastSavedMessage}" FontSize="16" 
+                       VerticalAlignment="Center" Margin="4 0"/>
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="0">
             <Grid.Resources>
                 <DataTemplate x:Key="NewItemHDT" DataType="{x:Type bltConfigure:NewActionViewModel}">
                     <Button Command="{Binding Command}"
@@ -135,8 +144,8 @@
             </ListBox>
             <DockPanel Grid.Row="1">
                 <Button HorizontalAlignment="Right" DockPanel.Dock="Top" Click="DeleteAction_OnClick"
-                        Content="Delete Selected" />
-                <xctk:DropDownButton Name="NewCommandDropDown" Content="New Command" HorizontalAlignment="Left"
+                        Content="Delete Selected" Margin="0 4"/>
+                <xctk:DropDownButton Name="NewCommandDropDown" Content="New Command" HorizontalAlignment="Left" Margin="0 0 4 0"
                                      DockPanel.Dock="Left">
                     <xctk:DropDownButton.DropDownContent>
                         <ItemsControl ItemsSource="{Binding CommandHandlersViewModel}"
@@ -156,9 +165,9 @@
                 </xctk:DropDownButton>
             </DockPanel>
         </Grid>
-        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+        <GridSplitter Grid.Row="1" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
         <xctk:PropertyGrid
-            Grid.Column="2"
+            Grid.Row="1" Grid.Column="2"
             x:Name="PropertyGrid"
             PropertyValueChanged="PropertyGrid_OnPropertyValueChanged">
             <xctk:PropertyGrid.CategoryGroupHeaderTemplate>

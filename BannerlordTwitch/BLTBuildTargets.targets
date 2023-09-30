@@ -1,0 +1,108 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Target Name="AddGameVersionMetadaAssemblyAttributes" BeforeTargets="CoreGenerateAssemblyInfo">
+        <ItemGroup>
+            <AssemblyAttribute Include="AssemblyVersion" Condition="$(ModuleVersion) != ''" >
+                <_Parameter1>$(ModuleVersion)</_Parameter1>
+            </AssemblyAttribute>
+        </ItemGroup>
+    </Target>
+    
+    <ItemGroup>
+        <SubModuleOverrides Include="ModuleVersion">
+            <Regex>\$version\$</Regex>
+            <Replacement>$(ModuleVersion)</Replacement>
+        </SubModuleOverrides>
+    </ItemGroup>
+
+    <Target Name="WriteAssemblyInfo" BeforeTargets="BeforeCompile">
+        <ItemGroup>
+            <AssemblyAttributes Include="AssemblyTitle">
+                <_Parameter1>$(AssemblyName)</_Parameter1>
+            </AssemblyAttributes>
+<!--            <AssemblyAttributes Include="AssemblyDescription">-->
+<!--                <_Parameter1>My Assembly</_Parameter1>-->
+<!--            </AssemblyAttributes>-->
+<!--            <AssemblyAttributes Include="AssemblyCompany">-->
+<!--                <_Parameter1>Assembly Company</_Parameter1>-->
+<!--            </AssemblyAttributes>-->
+<!--            <AssemblyAttributes Include="AssemblyProduct">-->
+<!--                <_Parameter1>My Product</_Parameter1>-->
+<!--            </AssemblyAttributes>-->
+<!--            <AssemblyAttributes Include="AssemblyCopyright">-->
+<!--                <_Parameter1>Copyright © 2020</_Parameter1>-->
+<!--            </AssemblyAttributes>-->
+<!--            <AssemblyAttributes Include="AssemblyCulture">-->
+<!--                <_Parameter1>-->
+<!--                </_Parameter1>-->
+<!--            </AssemblyAttributes>-->
+            <AssemblyAttributes Include="AssemblyVersion">
+                <_Parameter1>$(ModuleVersion)</_Parameter1>
+            </AssemblyAttributes>
+            <AssemblyAttributes Include="AssemblyFileVersion">
+                <_Parameter1>$(ModuleVersion)</_Parameter1>
+            </AssemblyAttributes>
+<!--            <AssemblyAttributes Include="System.Runtime.InteropServices.Guid">-->
+<!--                <_Parameter1>$(ProjectGuid)</_Parameter1>-->
+<!--            </AssemblyAttributes>-->
+        </ItemGroup>
+        <MakeDir Directories="Properties"/>
+        <WriteCodeFragment Language="C#" OutputFile="Properties/AssemblyInfo.cs" AssemblyAttributes="@(AssemblyAttributes)" />
+    </Target>
+
+    <UsingTask
+            TaskName="ReplaceFileText"
+            TaskFactory="RoslynCodeTaskFactory"
+            AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+        <ParameterGroup>
+            <File ParameterType="System.String" Required="true" />
+            <Regex ParameterType="System.String" Required="true" />
+            <ReplacementText ParameterType="System.String" Required="true" />
+        </ParameterGroup>
+        <Task>
+            <Code Type="Fragment" Language="cs">
+                <![CDATA[
+          System.IO.File.WriteAllText(
+            File,
+            System.Text.RegularExpressions.Regex.Replace(System.IO.File.ReadAllText(File), Regex, ReplacementText));
+        ]]>
+            </Code>
+        </Task>
+    </UsingTask>
+
+    <Target Name="CopyModuleContent" AfterTargets="AfterBuild">
+        <Message Importance="High" Text="[BLT BUILD] Copying $(AssemblyName) module content..." />
+        <ItemGroup>
+            <ModuleContent Include="_Module\**\*"/>
+        </ItemGroup>
+        <Copy SourceFiles="@(ModuleContent)" DestinationFolder="$(OutputModuleRoot)%(ModuleContent.RecursiveDir)" />
+        <ItemGroup>
+            <FileWrites Include="@(ModuleContent)"/>
+        </ItemGroup>
+    </Target>
+    
+    <Target Name="SetModuleVersion" DependsOnTargets="CopyModuleContent" AfterTargets="AfterBuild">
+        <Message Importance="High" Text="[BLT BUILD] Setting $(AssemblyName) module version..." />
+        <ReplaceFileText File="$(OutputModuleRoot)\SubModule.xml" Regex="%(SubModuleOverrides.Regex)" ReplacementText="%(SubModuleOverrides.Replacement)" />
+    </Target>
+    
+    <Target Name="DeployToGameDirectory" DependsOnTargets="SetModuleVersion" AfterTargets="AfterBuild" Condition="Exists('$(DeployDir)..')">
+        <Message Importance="High" Text="[BLT DEPLOY] Copying $(AssemblyName) staged files to game directory..." />
+        <ItemGroup>
+            <FilesToDeploy Include="$(OutputModuleRoot)**\*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(FilesToDeploy)" DestinationFolder="$(DeployDir)%(FilesToDeploy.RecursiveDir)" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+    </Target>
+    
+    <Target Name="AfterClean" >
+        <Message Importance="High" Text="[BLT CLEAN] Removing $(OutputModuleRoot)..." />
+        <RemoveDir Directories="$(OutputModuleRoot)" />
+        <Message Importance="High" Text="[BLT CLEAN] Removing $(DeployDir)..." />
+        <RemoveDir Condition="!$(DeployDir.EndsWith('Modules\'))" Directories="$(DeployDir)" />
+    </Target>
+    
+    <Target Name="Package" DependsOnTargets="SetModuleVersion">
+        <Message Importance="High" Text="[BLT PACKAGE] Creating deployment package $(PackageFullPath)..." />
+        <Delete Files="$(PackageFullPath)" ContinueOnError="true"/>
+        <Exec Command="7z a &quot;$(PackageFullPath)&quot; BannerlordTwitch BLTAdoptAHero BLTBuffet BLTConfigure" WorkingDirectory="$(OutputConfigRoot)"/>
+    </Target>
+</Project>

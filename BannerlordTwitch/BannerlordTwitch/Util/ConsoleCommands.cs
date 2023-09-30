@@ -2,6 +2,7 @@
 using System.Linq;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.Library;
 
 namespace BannerlordTwitch.Util
@@ -70,5 +71,43 @@ namespace BannerlordTwitch.Util
                 ? "Success"
                 : "Failed";
         }
+        
+        [CommandLineFunctionality.CommandLineArgumentFunction("start_player_vs_world_war", "blt")]
+        [UsedImplicitly]
+        public static string StartPlayerVsWorldWar(List<string> strings)
+        {
+            foreach (var faction in Campaign.Current.Factions
+                .Where(f => f != Clan.PlayerClan || f != Hero.MainHero.MapFaction)
+                .Where(f => f.Leader != null))
+            {
+                try
+                {
+                    DeclareWarAction.ApplyByPlayerHostility(faction, Clan.PlayerClan);
+                }
+                catch
+                {
+                    // ignored
+                }
+            }
+
+            return "Success";
+        }
+        
+        // [CommandLineFunctionality.CommandLineArgumentFunction("speed", "blt")]
+        // [UsedImplicitly]
+        // public static string Speed(List<string> strings)
+        // {
+        //     if (Mission.Current == null)
+        //         return "No mission is active";
+        //     if (strings.Count != 1)
+        //         return "Usage example: blt.speed 0.25";
+        //     if (float.TryParse(strings[0], out float factor))
+        //     {
+        //         Mission.Current.Scene.SlowMotionFactor = Math.Max(0.001f, factor);
+        //         Mission.Current.Scene.SlowMotionMode = factor != 1;
+        //         return $"Speed set to {factor}";
+        //     }
+        //     return "Usage example: blt.speed 0.25";
+        // }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Helpers;
-using BannerlordTwitch.Util;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -39,7 +38,7 @@ namespace BannerlordTwitch
             {
                 foreach (var a in attachments)
                 {
-                    var frame = skeleton.GetBoneEntitialFrame(a.boneIdx) * a.localFrame;
+                    var frame = skeleton.GetBoneEntitialFrame((sbyte)a.boneIdx) * a.localFrame;
                     a.particleSystem.SetLocalFrame(ref frame);
                 }
             }

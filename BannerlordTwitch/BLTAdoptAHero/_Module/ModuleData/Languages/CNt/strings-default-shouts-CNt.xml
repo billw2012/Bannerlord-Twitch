@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="繁體中文"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Don't worry, I've got your back! -->
+        <string id="DczOKFsA" text="別擔心，我支持你！" original="Don't worry, I've got your back!"/>
+        <!-- I'm here! -->
+        <string id="pj9Z0M7G" text="我在這！" original="I'm here!"/>
+        <!-- Which one should I stab? -->
+        <string id="y8DOtj2H" text="我應該刺哪一個？" original="Which one should I stab?"/>
+        <!-- Need a hand? -->
+        <string id="1i1OrZDd" text="需要幫忙？" original="Need a hand?"/>
+        <!-- The price has been paid. I am at your service. -->
+        <string id="rVaJZ5Lo" text="已經付出了代價。我為您服務。" original="The price has been paid. I am at your service."/>
+        <!-- Once more unto the breach! -->
+        <string id="QEyO8W82" text="再次違反！" original="Once more unto the breach!"/>
+        <!-- Freeeeeedddooooooommmm! -->
+        <string id="Bo11t6gj" text="Freeeeedddooooooommmmm！" original="Freeeeeedddooooooommmm!"/>
+        <!-- Remember the Alamo! -->
+        <string id="8uO8Isjm" text="記住阿拉莫！" original="Remember the Alamo!"/>
+        <!-- Alala! -->
+        <string id="A3KdQJok" text="阿拉！" original="Alala!"/>
+        <!-- Eleleu! -->
+        <string id="pXVCAwAr" text="埃勒盧！" original="Eleleu!"/>
+        <!-- Deus vult! -->
+        <string id="TlZjOFii" text="死神！" original="Deus vult!"/>
+        <!-- Banzai! -->
+        <string id="xPFIIEzw" text="萬歲！" original="Banzai!"/>
+        <!-- Liberty or Death! -->
+        <string id="gmN3YLPw" text="自由或死亡！" original="Liberty or Death!"/>
+        <!-- Har Har Mahadev! -->
+        <string id="FoDIukJK" text="哈哈馬哈德夫！" original="Har Har Mahadev!"/>
+        <!-- Desperta ferro! -->
+        <string id="SSqdBzkY" text="鐵血絕望！" original="Desperta ferro!"/>
+        <!-- Alba gu bràth! -->
+        <string id="UHhpIpDU" text="阿爾巴古布拉斯！" original="Alba gu bràth!"/>
+        <!-- Santiago! -->
+        <string id="lDo1AOCS" text="聖地亞哥！" original="Santiago!"/>
+        <!-- Huzzah! -->
+        <string id="gT95E89y" text="哈扎！" original="Huzzah!"/>
+        <!-- War... war never changes... -->
+        <string id="fKKpcZGQ" text="戰爭……戰爭永遠不會改變……" original="War... war never changes..."/>
+        <!-- May we live to see the next sunrise! -->
+        <string id="vZgbxkW9" text="願我們活著看到下一個日出！" original="May we live to see the next sunrise!"/>
+        <!-- For glory, charge! -->
+        <string id="wn7zIy9f" text="為了榮耀，衝鋒！" original="For glory, charge!"/>
+        <!-- Give them nothing, but take from them everything! -->
+        <string id="KH7Dnbe7" text="什麼都不給他們，但從他們那裡拿走一切！" original="Give them nothing, but take from them everything!"/>
+        <!-- Fell deeds awake, fire and slaughter! -->
+        <string id="FyBFecip" text="墮落事蹟甦醒，火與殺戮！" original="Fell deeds awake, fire and slaughter!"/>
+        <!-- Spooooooooooooooooooon! -->
+        <string id="H7asM2KG" text="Spooooooooooooooooon！" original="Spooooooooooooooooooon!"/>
+        <!-- Leeeeeeeerooooy Jeeeeenkins -->
+        <string id="ERDmbO2B" text="Leeeeeeeeerooooy Jeeeeenkins" original="Leeeeeeeerooooy Jeeeeenkins"/>
+        <!-- I live, I die, I live again! -->
+        <string id="hL0vmkUG" text="我活著，我死了，我又活了！" original="I live, I die, I live again!"/>
+        <!-- Witness me!! -->
+        <string id="KMTRT2EN" text="目擊我！！" original="Witness me!!"/>
+        <!-- Now for wrath, now for ruin and a red nightfall! -->
+        <string id="F9WUaqdj" text="現在是憤怒，現在是毀滅和紅色的夜幕！" original="Now for wrath, now for ruin and a red nightfall!"/>
+        <!-- n -->
+        <string id="ZQiRFkFU" text="n" original="n"/>
+        <!-- Those are brave men knocking at our door, let's go kill them! -->
+        <string id="JlZ9pRbq" text="那些敲門的勇敢的人，我們去殺了他們！" original="Those are brave men knocking at our door, let's go kill them!"/>
+        <!-- Lets take this city! -->
+        <string id="5gg0BcKk" text="讓我們佔領這座城市！" original="Lets take this city!"/>
+        <!-- Defend yourself! -->
+        <string id="lhWht8Em" text="保護自己！" original="Defend yourself!"/>
+        <!-- Time for you to die! -->
+        <string id="FmlTSg39" text="是時候讓你死了！" original="Time for you to die!"/>
+        <!-- You killed my father, prepare to die! -->
+        <string id="GJpUfALs" text="你殺了我父親，準備去死吧！" original="You killed my father, prepare to die!"/>
+        <!-- En garde! -->
+        <string id="IKN2G1wi" text="前衛！" original="En garde!"/>
+        <!-- It's stabbing time! For you. -->
+        <string id="yTHYR4i9" text="刺傷時間到了！為你。" original="It's stabbing time! For you."/>
+        <!-- It's nothing personal! -->
+        <string id="4wYLe6f0" text="這不是個人的！" original="It's nothing personal!"/>
+        <!-- Curse my sudden but inevitable betrayal! -->
+        <string id="37bg5QNX" text="詛咒我突如其來卻不可避免的背叛！" original="Curse my sudden but inevitable betrayal!"/>
+        <!-- I just don't like you! -->
+        <string id="AOpbzIUP" text="我就是不喜歡你！" original="I just don't like you!"/>
+        <!-- I'm gonna put some dirt in your eye! -->
+        <string id="JFCcwLga" text="我要在你的眼睛裡放點臟東西！" original="I'm gonna put some dirt in your eye!"/>
+        <!-- I'll mount your head on a pike! -->
+        <string id="jCrCRbyA" text="我要把你的頭搭在長矛上！" original="I'll mount your head on a pike!"/>
+        <!-- Don't hate me, it's just business... -->
+        <string id="0uiD2HxZ" text="不要恨我，這只是生意......" original="Don't hate me, it's just business..."/>
+        <!-- Never should have come here! -->
+        <string id="42Fuy9pm" text="永遠不應該來這裡！" original="Never should have come here!"/>
+        <!-- Your money or your life! -->
+        <string id="dClbnb2q" text="你的錢還是你的命！" original="Your money or your life!"/>
+        <!-- I'm sorry, but I must stop you. -->
+        <string id="uyjy1geA" text="我很抱歉，但我必須阻止你。" original="I'm sorry, but I must stop you."/>
+        <!-- I have the high ground! -->
+        <string id="dh0c96lo" text="我有製高點！" original="I have the high ground!"/>
+        <!-- DAMN IT DAVE! -->
+        <string id="EcD5q9th" text="該死的戴夫！" original="DAMN IT DAVE!"/>
+    </strings>
+</base>

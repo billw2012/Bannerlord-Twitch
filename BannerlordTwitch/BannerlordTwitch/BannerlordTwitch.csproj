@@ -3,13 +3,9 @@
     <Import Project="..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" />
     <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
 
-    
     <PropertyGroup>
         <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
         <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-        <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -31,19 +27,10 @@
     </PropertyGroup>
     <Import Project="$(SolutionDir)BLTProperties.targets" />
     <PropertyGroup>
-        <DebugType>full</DebugType>
-        <PlatformTarget>x64</PlatformTarget>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <DebugSymbols>true</DebugSymbols>
-        <OutputPath>build\$(Configuration)\bin\Win64_Shipping_Client\</OutputPath>
         <StartAction>Program</StartAction>
         <StartProgram>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client\Bannerlord.exe</StartProgram>
         <StartWorkingDirectory>$(BANNERLORD_GAME_DIR)\bin\Win64_Shipping_Client</StartWorkingDirectory>
         <StartArguments>/singleplayer _MODULES_%2aBannerlord.Harmony%2aNative%2aSandBoxCore%2aCustomBattle%2aSandbox%2aStoryMode%2aBannerlordTwitch%2aBLTAdoptAHero%2aBLTBuffet%2aBLTConfigure%2a_MODULES_</StartArguments>
-        <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-        <NoWarn>MSB3246;MSB3247;MSB3277;CS0067</NoWarn>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null">
@@ -75,7 +62,7 @@
             <Private>True</Private>
         </Reference>
         <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466">
-          <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+            <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
         </Reference>
         <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, PublicKeyToken=null">
             <HintPath>..\packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
@@ -89,42 +76,59 @@
             <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
             <Private>True</Private>
         </Reference>
+        <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+        </Reference>
         <Reference Include="Microsoft.CSharp" />
-        <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-            <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.5\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="Microsoft.Extensions.DependencyInjection, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+          <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.6.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+          <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.6.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+          <HintPath>..\packages\Microsoft.Extensions.Logging.6.0.0\lib\net461\Microsoft.Extensions.Logging.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+          <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.Options, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+          <HintPath>..\packages\Microsoft.Extensions.Options.6.0.0\lib\net461\Microsoft.Extensions.Options.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+          <HintPath>..\packages\Microsoft.Extensions.Primitives.6.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
         </Reference>
         <Reference Include="Microsoft.Owin, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-            <HintPath>..\packages\Microsoft.Owin.4.2.0\lib\net45\Microsoft.Owin.dll</HintPath>
-            <Private>True</Private>
+          <HintPath>..\packages\Microsoft.Owin.4.2.0\lib\net45\Microsoft.Owin.dll</HintPath>
+          <Private>True</Private>
         </Reference>
-        <Reference Include="Microsoft.Owin.Cors, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-            <HintPath>..\packages\Microsoft.Owin.Cors.4.2.0\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="Microsoft.Owin.Cors, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+          <HintPath>..\packages\Microsoft.Owin.Cors.4.0.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+          <Private>True</Private>
         </Reference>
-        <Reference Include="Microsoft.Owin.Diagnostics, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-            <HintPath>..\packages\Microsoft.Owin.Diagnostics.2.1.0\lib\net40\Microsoft.Owin.Diagnostics.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="Microsoft.Owin.Diagnostics, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+          <HintPath>..\packages\Microsoft.Owin.Diagnostics.4.0.1\lib\net45\Microsoft.Owin.Diagnostics.dll</HintPath>
+          <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.Owin.FileSystems, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
             <HintPath>..\packages\Microsoft.Owin.FileSystems.4.2.0\lib\net45\Microsoft.Owin.FileSystems.dll</HintPath>
             <Private>True</Private>
         </Reference>
-        <Reference Include="Microsoft.Owin.Host.HttpListener, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-            <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.2.1.0\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="Microsoft.Owin.Host.HttpListener, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+          <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.4.2.0\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+          <Private>True</Private>
         </Reference>
-        <Reference Include="Microsoft.Owin.Hosting, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-            <HintPath>..\packages\Microsoft.Owin.Hosting.2.1.0\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="Microsoft.Owin.Hosting, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+          <HintPath>..\packages\Microsoft.Owin.Hosting.4.0.1\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+          <Private>True</Private>
         </Reference>
-        <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-            <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="Microsoft.Owin.Security, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+          <HintPath>..\packages\Microsoft.Owin.Security.4.2.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+          <Private>True</Private>
         </Reference>
-        <Reference Include="Microsoft.Owin.StaticFiles, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-            <HintPath>..\packages\Microsoft.Owin.StaticFiles.4.2.0\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="Microsoft.Owin.StaticFiles, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+          <HintPath>..\packages\Microsoft.Owin.StaticFiles.4.0.1\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
+          <Private>True</Private>
         </Reference>
         <Reference Include="mscorlib" />
         <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
@@ -150,23 +154,39 @@
             <Private>True</Private>
         </Reference>
         <Reference Include="System" />
+        <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+        </Reference>
         <Reference Include="System.ComponentModel.Composition" />
         <Reference Include="System.ComponentModel.DataAnnotations" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
+        <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+        </Reference>
         <Reference Include="System.Drawing" />
         <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
             <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
             <Private>True</Private>
         </Reference>
+        <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+        </Reference>
         <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
             <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
             <Private>True</Private>
+        </Reference>
+        <Reference Include="System.Numerics" />
+        <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
         </Reference>
         <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
             <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
             <Private>True</Private>
             <Private>True</Private>
+        </Reference>
+        <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
         </Reference>
         <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
         <Reference Include="System.Security" />
@@ -188,6 +208,18 @@
             <Private>True</Private>
             <Private>True</Private>
         </Reference>
+        <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Text.Json, Version=6.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Text.Json.6.0.6\lib\net461\System.Text.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+        </Reference>
+        <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+        </Reference>
         <Reference Include="System.Web" />
         <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
             <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
@@ -196,33 +228,26 @@
         <Reference Include="System.Windows.Forms" />
         <Reference Include="System.Xaml" />
         <Reference Include="System.Xml" />
-        <Reference Include="TwitchLib.Api, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\packages\TwitchLib.Api.3.2.0\lib\netstandard2.0\TwitchLib.Api.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="TwitchLib.Api, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\TwitchLib.Api.3.8.0\lib\netstandard2.0\TwitchLib.Api.dll</HintPath>
         </Reference>
-        <Reference Include="TwitchLib.Api.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\packages\TwitchLib.Api.Core.3.2.0\lib\netstandard2.0\TwitchLib.Api.Core.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="TwitchLib.Api.Core, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\TwitchLib.Api.Core.3.8.0\lib\netstandard2.0\TwitchLib.Api.Core.dll</HintPath>
         </Reference>
-        <Reference Include="TwitchLib.Api.Core.Enums, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\packages\TwitchLib.Api.Core.Enums.3.2.0\lib\netstandard2.0\TwitchLib.Api.Core.Enums.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="TwitchLib.Api.Core.Enums, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\TwitchLib.Api.Core.Enums.3.8.0\lib\netstandard2.0\TwitchLib.Api.Core.Enums.dll</HintPath>
         </Reference>
-        <Reference Include="TwitchLib.Api.Core.Interfaces, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\packages\TwitchLib.Api.Core.Interfaces.3.2.0\lib\netstandard2.0\TwitchLib.Api.Core.Interfaces.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="TwitchLib.Api.Core.Interfaces, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\TwitchLib.Api.Core.Interfaces.3.8.0\lib\netstandard2.0\TwitchLib.Api.Core.Interfaces.dll</HintPath>
         </Reference>
-        <Reference Include="TwitchLib.Api.Core.Models, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\packages\TwitchLib.Api.Core.Models.3.2.0\lib\netstandard2.0\TwitchLib.Api.Core.Models.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="TwitchLib.Api.Core.Models, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\TwitchLib.Api.Core.Models.3.8.0\lib\netstandard2.0\TwitchLib.Api.Core.Models.dll</HintPath>
         </Reference>
-        <Reference Include="TwitchLib.Api.Helix, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\packages\TwitchLib.Api.Helix.3.2.0\lib\netstandard2.0\TwitchLib.Api.Helix.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="TwitchLib.Api.Helix, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\TwitchLib.Api.Helix.3.8.0\lib\netstandard2.0\TwitchLib.Api.Helix.dll</HintPath>
         </Reference>
-        <Reference Include="TwitchLib.Api.Helix.Models, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\packages\TwitchLib.Api.Helix.Models.3.2.0\lib\netstandard2.0\TwitchLib.Api.Helix.Models.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="TwitchLib.Api.Helix.Models, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\TwitchLib.Api.Helix.Models.3.8.0\lib\netstandard2.0\TwitchLib.Api.Helix.Models.dll</HintPath>
         </Reference>
         <Reference Include="TwitchLib.Api.V5, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>..\packages\TwitchLib.Api.V5.3.2.0\lib\netstandard2.0\TwitchLib.Api.V5.dll</HintPath>
@@ -232,25 +257,26 @@
             <HintPath>..\packages\TwitchLib.Api.V5.Models.3.2.0\lib\netstandard2.0\TwitchLib.Api.V5.Models.dll</HintPath>
             <Private>True</Private>
         </Reference>
-        <Reference Include="TwitchLib.Client, Version=3.2.2.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\packages\TwitchLib.Client.3.2.2-preview-fad69ab15afcde6e74c178736b666a6cad9381d3\lib\netstandard2.0\TwitchLib.Client.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="TwitchLib.Client, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\TwitchLib.Client.3.3.1\lib\netstandard2.0\TwitchLib.Client.dll</HintPath>
         </Reference>
-        <Reference Include="TwitchLib.Client.Enums, Version=3.2.2.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\packages\TwitchLib.Client.Enums.3.2.2-preview-fad69ab15afcde6e74c178736b666a6cad9381d3\lib\netstandard2.0\TwitchLib.Client.Enums.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="TwitchLib.Client.Enums, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\TwitchLib.Client.Enums.3.3.1\lib\netstandard2.0\TwitchLib.Client.Enums.dll</HintPath>
         </Reference>
-        <Reference Include="TwitchLib.Client.Models, Version=3.2.2.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\packages\TwitchLib.Client.Models.3.2.2-preview-fad69ab15afcde6e74c178736b666a6cad9381d3\lib\netstandard2.0\TwitchLib.Client.Models.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="TwitchLib.Client.Models, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\TwitchLib.Client.Models.3.3.1\lib\netstandard2.0\TwitchLib.Client.Models.dll</HintPath>
         </Reference>
-        <Reference Include="TwitchLib.Communication, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\packages\TwitchLib.Communication.1.0.3\lib\netstandard2.0\TwitchLib.Communication.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="TwitchLib.Communication, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\TwitchLib.Communication.1.0.4\lib\netstandard2.0\TwitchLib.Communication.dll</HintPath>
         </Reference>
-        <Reference Include="TwitchLib.PubSub, Version=3.2.2.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\packages\TwitchLib.PubSub.3.2.2-preview-f81ffdb933a8372061655ebf96ba45439c6443ab\lib\netstandard2.0\TwitchLib.PubSub.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="TwitchLib.EventSub.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\TwitchLib.EventSub.Core.2.0.0\lib\netstandard2.0\TwitchLib.EventSub.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="TwitchLib.EventSub.Websockets, Version=0.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\TwitchLib.EventSub.Websockets.0.0.3\lib\netstandard2.0\TwitchLib.EventSub.Websockets.dll</HintPath>
+        </Reference>
+        <Reference Include="TwitchLib.PubSub, Version=3.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\TwitchLib.PubSub.3.2.6\lib\netstandard2.0\TwitchLib.PubSub.dll</HintPath>
         </Reference>
         <Reference Include="WindowsBase" />
         <Reference Include="Xceed.Wpf.Toolkit">
@@ -275,12 +301,17 @@
         <Compile Include="Helpers\AutoMissionBehavior.cs" />
         <Compile Include="Helpers\DrivenPropertyItemSource.cs" />
         <Compile Include="Helpers\EquipmentType.cs" />
-        <Compile Include="Helpers\HeroHelpers.cs" />
+        <Compile Include="Helpers\CampaignHelpers.cs" />
         <Compile Include="Helpers\MissionHelpers.cs" />
         <Compile Include="Helpers\OneShotEffect.cs" />
         <Compile Include="Helpers\PropertyModifierDef.cs" />
         <Compile Include="Helpers\SkillGroup.cs" />
         <Compile Include="Helpers\SkillModifierDef.cs" />
+        <Compile Include="Localization\LocCategoryAttribute.cs" />
+        <Compile Include="Localization\LocDescriptionAttribute.cs" />
+        <Compile Include="Localization\LocDisplayNameAttribute.cs" />
+        <Compile Include="Localization\LocString.cs" />
+        <Compile Include="Localization\Naming.cs" />
         <Compile Include="Models\BLTAgentStatCalculateModel.cs" />
         <Compile Include="Overlay\BLTOverlay.cs" />
         <Compile Include="Actions\ICommandHandler.cs" />
@@ -296,9 +327,6 @@
         <Compile Include="SaveSystem\MBGUIDConverter.cs" />
         <Compile Include="SaveSystem\MBObjectBaseConverter.cs" />
         <Compile Include="SaveSystem\ScopedJsonSync.cs" />
-        <Compile Include="SaveSystem\TaleWorldsContractResolver.cs" />
-        <Compile Include="SaveSystem\TaleWorldsContractResolver2.cs" />
-        <Compile Include="SaveSystem\TaleWorldsContractResolverBase.cs" />
         <Compile Include="BLTModule.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Settings\ActionBase.cs" />
@@ -317,33 +345,35 @@
         <Compile Include="Settings\SimTestingConfig.cs" />
         <Compile Include="Settings\SimTestingItem.cs" />
         <Compile Include="Testing\SimulationTest.cs" />
+        <Compile Include="Twitch\CustomTwitchHttpClient.cs" />
         <Compile Include="Twitch\Dummy\AffiliateSpoofingHttpCallHandler.cs" />
         <Compile Include="Twitch\Dummy\TwitchRedirectingHttpCallHandler.cs" />
         <Compile Include="Twitch\TwitchService.Bot.cs" />
         <Compile Include="Twitch\TwitchService.cs" />
         <Compile Include="UI\CollectionPropertyEditor.xaml.cs">
-          <DependentUpon>CollectionPropertyEditor.xaml</DependentUpon>
+            <DependentUpon>CollectionPropertyEditor.xaml</DependentUpon>
         </Compile>
         <Compile Include="UI\DefaultCollectionEditor.cs" />
         <Compile Include="UI\DerivedClassCollectionEditor.cs" />
         <Compile Include="UI\ExpandAttribute.cs" />
         <Compile Include="UI\ParticleEffectItemSource.cs" />
         <Compile Include="UI\RangeFloatControl.xaml.cs">
-          <DependentUpon>RangeFloatControl.xaml</DependentUpon>
+            <DependentUpon>RangeFloatControl.xaml</DependentUpon>
         </Compile>
         <Compile Include="UI\RangeFloatEditor.cs" />
         <Compile Include="UI\RangeIntControl.xaml.cs">
-          <DependentUpon>RangeIntControl.xaml</DependentUpon>
+            <DependentUpon>RangeIntControl.xaml</DependentUpon>
         </Compile>
         <Compile Include="UI\RangeIntEditor.cs" />
         <Compile Include="UI\SliderFloatControl.xaml.cs">
-          <DependentUpon>SliderFloatControl.xaml</DependentUpon>
+            <DependentUpon>SliderFloatControl.xaml</DependentUpon>
         </Compile>
         <Compile Include="UI\SliderFloatEditor.cs" />
         <Compile Include="UI\SoundEffectItemSource.cs" />
         <Compile Include="UI\UIRangeAttribute.cs" />
         <Compile Include="Util\CloneHelpers.cs" />
         <Compile Include="Util\ConfigureContext.cs" />
+        <Compile Include="Util\DisplayNameExtensions.cs" />
         <Compile Include="Util\GameVersion.cs" />
         <Compile Include="Util\Assembly.cs" />
         <Compile Include="Util\ConsoleCommands.cs" />
@@ -353,22 +383,17 @@
         <Compile Include="Util\Log.cs" />
         <Compile Include="Util\MainThreadSync.cs" />
         <Compile Include="Util\MiscExtensions.cs" />
-        <Compile Include="Util\Naming.cs" />
         <Compile Include="Util\Paths.cs" />
         <Compile Include="Util\RangeFloat.cs" />
         <Compile Include="Util\RangeInt.cs" />
-        <Compile Include="Util\RenderExport.cs" />
         <Compile Include="Util\StaticRandom.cs" />
-        <Compile Include="Util\StringHelpers.cs" />
+        <Compile Include="Util\StringExtensions.cs" />
         <Compile Include="Util\YamlHelpers.cs" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="..\..\README.md">
             <Link>README.md</Link>
         </Content>
-        <Content Include="Bannerlord-Twitch-Auth.yaml" />
-        <Content Include="Bannerlord-Twitch-Documentation.css" />
-        <Content Include="Bannerlord-Twitch-v2.yaml" />
         <Content Include="delete-acl.bat" />
         <Content Include="FodyWeavers.xml" />
         <Content Include="FodyWeavers.xsd" />
@@ -381,79 +406,157 @@
         <Content Include="Overlay\ConsoleFeed\ConsoleFeed.js">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-        <Content Include="Overlay\web\index-template.html" />
-        <Content Include="Overlay\web\Scripts\jquery-1.6.4-vsdoc.js" />
-        <Content Include="Overlay\web\Scripts\jquery-1.6.4.js" />
-        <Content Include="Overlay\web\Scripts\jquery-1.6.4.min.js" />
-        <Content Include="Overlay\web\Scripts\jquery-3.4.1.js" />
-        <Content Include="Overlay\web\Scripts\jquery-3.4.1.min.js" />
-        <Content Include="Overlay\web\Scripts\jquery-3.4.1.min.map" />
-        <Content Include="Overlay\web\Scripts\jquery-3.4.1.slim.js" />
-        <Content Include="Overlay\web\Scripts\jquery-3.4.1.slim.min.js" />
-        <Content Include="Overlay\web\Scripts\jquery-3.4.1.slim.min.map" />
-        <Content Include="Overlay\web\Scripts\jquery.signalR-2.2.2.js" />
-        <Content Include="Overlay\web\Scripts\jquery.signalR-2.2.2.min.js" />
-        <Content Include="Overlay\web\Scripts\jquery.signalR-2.4.2.js" />
-        <Content Include="Overlay\web\Scripts\jquery.signalR-2.4.2.min.js" />
-        <Content Include="Overlay\web\Scripts\progress-ring.js" />
-        <Content Include="Overlay\web\Scripts\twitch.js" />
-        <Content Include="Overlay\web\Scripts\vue.js" />
-        <Content Include="Overlay\web\Scripts\vue.min.js" />
-        <Content Include="Overlay\web\style.css" />
-        <Content Include="README.md" />
         <Content Include="SaveSystem\ButterLibLicense.txt" />
         <Content Include="Web.config" />
+        <Content Include="_Module\Bannerlord-Twitch-Auth.yaml" />
+        <Content Include="_Module\Bannerlord-Twitch-Documentation.css" />
+        <Content Include="_Module\Bannerlord-Twitch-v3.yaml" />
+        <Content Include="_Module\ModuleData\Languages\BR\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\BR\strings-achievements-BR.xml" />
+        <Content Include="_Module\ModuleData\Languages\BR\strings-classes-BR.xml" />
+        <Content Include="_Module\ModuleData\Languages\BR\strings-commands-BR.xml" />
+        <Content Include="_Module\ModuleData\Languages\BR\strings-kill-streaks-BR.xml" />
+        <Content Include="_Module\ModuleData\Languages\BR\strings-misc-BR.xml" />
+        <Content Include="_Module\ModuleData\Languages\BR\strings-powers-BR.xml" />
+        <Content Include="_Module\ModuleData\Languages\BR\strings-rewards-BR.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNs\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNs\strings-achievements-CNs.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNs\strings-classes-CNs.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNs\strings-commands-CNs.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNs\strings-kill-streaks-CNs.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNs\strings-misc-CNs.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNs\strings-powers-CNs.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNs\strings-rewards-CNs.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNt\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNt\strings-achievements-CNt.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNt\strings-classes-CNt.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNt\strings-commands-CNt.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNt\strings-kill-streaks-CNt.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNt\strings-misc-CNt.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNt\strings-powers-CNt.xml" />
+        <Content Include="_Module\ModuleData\Languages\CNt\strings-rewards-CNt.xml" />
+        <Content Include="_Module\ModuleData\Languages\DE\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\DE\strings-achievements-DE.xml" />
+        <Content Include="_Module\ModuleData\Languages\DE\strings-classes-DE.xml" />
+        <Content Include="_Module\ModuleData\Languages\DE\strings-commands-DE.xml" />
+        <Content Include="_Module\ModuleData\Languages\DE\strings-kill-streaks-DE.xml" />
+        <Content Include="_Module\ModuleData\Languages\DE\strings-misc-DE.xml" />
+        <Content Include="_Module\ModuleData\Languages\DE\strings-powers-DE.xml" />
+        <Content Include="_Module\ModuleData\Languages\DE\strings-rewards-DE.xml" />
+        <Content Include="_Module\ModuleData\Languages\FR\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\FR\strings-achievements-FR.xml" />
+        <Content Include="_Module\ModuleData\Languages\FR\strings-classes-FR.xml" />
+        <Content Include="_Module\ModuleData\Languages\FR\strings-commands-FR.xml" />
+        <Content Include="_Module\ModuleData\Languages\FR\strings-kill-streaks-FR.xml" />
+        <Content Include="_Module\ModuleData\Languages\FR\strings-misc-FR.xml" />
+        <Content Include="_Module\ModuleData\Languages\FR\strings-powers-FR.xml" />
+        <Content Include="_Module\ModuleData\Languages\FR\strings-rewards-FR.xml" />
+        <Content Include="_Module\ModuleData\Languages\IT\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\IT\strings-achievements-IT.xml" />
+        <Content Include="_Module\ModuleData\Languages\IT\strings-classes-IT.xml" />
+        <Content Include="_Module\ModuleData\Languages\IT\strings-commands-IT.xml" />
+        <Content Include="_Module\ModuleData\Languages\IT\strings-kill-streaks-IT.xml" />
+        <Content Include="_Module\ModuleData\Languages\IT\strings-misc-IT.xml" />
+        <Content Include="_Module\ModuleData\Languages\IT\strings-powers-IT.xml" />
+        <Content Include="_Module\ModuleData\Languages\IT\strings-rewards-IT.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-achievements-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-classes-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-commands-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-kill-streaks-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-misc-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-powers-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\JP\strings-rewards-JP.xml" />
+        <Content Include="_Module\ModuleData\Languages\KO\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\KO\strings-achievements-KO.xml" />
+        <Content Include="_Module\ModuleData\Languages\KO\strings-classes-KO.xml" />
+        <Content Include="_Module\ModuleData\Languages\KO\strings-commands-KO.xml" />
+        <Content Include="_Module\ModuleData\Languages\KO\strings-kill-streaks-KO.xml" />
+        <Content Include="_Module\ModuleData\Languages\KO\strings-misc-KO.xml" />
+        <Content Include="_Module\ModuleData\Languages\KO\strings-powers-KO.xml" />
+        <Content Include="_Module\ModuleData\Languages\KO\strings-rewards-KO.xml" />
+        <Content Include="_Module\ModuleData\Languages\PL\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\PL\strings-achievements-PL.xml" />
+        <Content Include="_Module\ModuleData\Languages\PL\strings-classes-PL.xml" />
+        <Content Include="_Module\ModuleData\Languages\PL\strings-commands-PL.xml" />
+        <Content Include="_Module\ModuleData\Languages\PL\strings-kill-streaks-PL.xml" />
+        <Content Include="_Module\ModuleData\Languages\PL\strings-misc-PL.xml" />
+        <Content Include="_Module\ModuleData\Languages\PL\strings-powers-PL.xml" />
+        <Content Include="_Module\ModuleData\Languages\PL\strings-rewards-PL.xml" />
+        <Content Include="_Module\ModuleData\Languages\RU\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\RU\strings-achievements-RU.xml" />
+        <Content Include="_Module\ModuleData\Languages\RU\strings-classes-RU.xml" />
+        <Content Include="_Module\ModuleData\Languages\RU\strings-commands-RU.xml" />
+        <Content Include="_Module\ModuleData\Languages\RU\strings-kill-streaks-RU.xml" />
+        <Content Include="_Module\ModuleData\Languages\RU\strings-misc-RU.xml" />
+        <Content Include="_Module\ModuleData\Languages\RU\strings-powers-RU.xml" />
+        <Content Include="_Module\ModuleData\Languages\RU\strings-rewards-RU.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-achievements-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-classes-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-commands-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-kill-streaks-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-misc-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-powers-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\SP\strings-rewards-SP.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-achievements.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-classes.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-commands.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-kill-streaks.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-misc.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-powers.xml" />
+        <Content Include="_Module\ModuleData\Languages\strings-rewards.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\language_data.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-achievements-TR.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-classes-TR.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-commands-TR.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-kill-streaks-TR.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-misc-TR.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-powers-TR.xml" />
+        <Content Include="_Module\ModuleData\Languages\TR\strings-rewards-TR.xml" />
+        <Content Include="_Module\web\index-template.html" />
+        <Content Include="_Module\web\Scripts\jquery-1.6.4-vsdoc.js" />
+        <Content Include="_Module\web\Scripts\jquery-1.6.4.js" />
+        <Content Include="_Module\web\Scripts\jquery-1.6.4.min.js" />
+        <Content Include="_Module\web\Scripts\jquery-3.4.1.js" />
+        <Content Include="_Module\web\Scripts\jquery-3.4.1.min.js" />
+        <Content Include="_Module\web\Scripts\jquery-3.4.1.min.map" />
+        <Content Include="_Module\web\Scripts\jquery-3.4.1.slim.js" />
+        <Content Include="_Module\web\Scripts\jquery-3.4.1.slim.min.js" />
+        <Content Include="_Module\web\Scripts\jquery-3.4.1.slim.min.map" />
+        <Content Include="_Module\web\Scripts\jquery.signalR-2.2.2.js" />
+        <Content Include="_Module\web\Scripts\jquery.signalR-2.2.2.min.js" />
+        <Content Include="_Module\web\Scripts\jquery.signalR-2.4.2.js" />
+        <Content Include="_Module\web\Scripts\jquery.signalR-2.4.2.min.js" />
+        <Content Include="_Module\web\Scripts\progress-ring.js" />
+        <Content Include="_Module\web\Scripts\twitch.js" />
+        <Content Include="_Module\web\Scripts\vue.js" />
+        <Content Include="_Module\web\Scripts\vue.min.js" />
+        <Content Include="_Module\web\style.css" />
         <None Include="app.config" />
-        <None Include="Overlay\web\Scripts\jquery-3.4.1.intellisense.js" />
-        <None Include="SubModule.xml" />
         <None Include="Web.Debug.config">
             <DependentUpon>Web.config</DependentUpon>
         </None>
         <None Include="Web.Release.config">
             <DependentUpon>Web.config</DependentUpon>
         </None>
+        <None Include="_Module\SubModule.xml" />
+        <None Include="_Module\web\Scripts\jquery-3.4.1.intellisense.js" />
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
-      <Page Include="UI\CollectionPropertyEditor.xaml" />
-      <Page Include="UI\RangeFloatControl.xaml" />
-      <Page Include="UI\RangeIntControl.xaml" />
-      <Page Include="UI\SliderFloatControl.xaml" />
+        <Page Include="UI\CollectionPropertyEditor.xaml" />
+        <Page Include="UI\RangeFloatControl.xaml" />
+        <Page Include="UI\RangeIntControl.xaml" />
+        <Page Include="UI\SliderFloatControl.xaml" />
     </ItemGroup>
+
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <Target Name="AfterClean">
-        <RemoveDir Directories="$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)" />
-        <RemoveDir Directories="$(OutDir)..\..\..\..\build" />
-        <RemoveDir Directories="$(OutDir)..\..\..\..\obj" />
-    </Target>
-
-    <Target Name="AfterBuild">
-        <Message Importance="High" Text="Copying content files..." />
-        <Copy SourceFiles="Bannerlord-Twitch-Auth.yaml" DestinationFolder="$(OutDir)..\.." DestinationFiles="" />
-        <Copy SourceFiles="Bannerlord-Twitch-v2.yaml" DestinationFolder="$(OutDir)..\.." />
-        <Copy SourceFiles="Bannerlord-Twitch-Documentation.css" DestinationFolder="$(OutDir)..\.." />
-        <Copy SourceFiles="SubModule.xml" DestinationFolder="$(OutDir)..\.." />
-
-        <Message Importance="High" Text="Setting module version..." />
-        <ReplaceFileText File="$(OutDir)..\..\SubModule.xml" Regex="%(SubModuleOverrides.Regex)" ReplacementText="%(SubModuleOverrides.Replacement)" />
-        
-        <Copy SourceFiles="..\..\README.md" DestinationFolder="$(OutDir)..\.." />
-        <!--    <Copy SourceFiles="Overlay\web" DestinationFolder="$(OutDir)..\..\web" />-->
-
-        <Message Importance="High" Text="Copying overlay web..." />
-        <ItemGroup>
-            <OverlayContent Include="Overlay\web\**\*" />
-        </ItemGroup>
-        <Copy SourceFiles="@(OverlayContent)" DestinationFiles="@(OverlayContent->'$(OutDir)..\..\web\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
-
-        <Message Importance="High" Text="Copying staged files to game directory..." />
-        <ItemGroup>
-            <StagingDir Include="$(OutDir)\..\..\**\*" />
-        </ItemGroup>
-        <Copy SourceFiles="@(StagingDir)" DestinationFiles="@(StagingDir->'$(BANNERLORD_GAME_DIR)\Modules\$(ProjectName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
-    </Target>
+    
+    <Import Project="$(SolutionDir)BLTBuildTargets.targets" />
+    
     <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
     <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
     <Import Project="..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.1\build\Fody.targets')" />
@@ -463,5 +566,9 @@
         </PropertyGroup>
         <Error Condition="!Exists('..\packages\Fody.6.5.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.5.1\build\Fody.targets'))" />
         <Error Condition="!Exists('..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props'))" />
+        <Error Condition="!Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets'))" />
+        <Error Condition="!Exists('..\packages\System.Text.Json.6.0.6\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.6\build\System.Text.Json.targets'))" />
     </Target>
+    <Import Project="..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />
+    <Import Project="..\packages\System.Text.Json.6.0.6\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.6\build\System.Text.Json.targets')" />
 </Project>

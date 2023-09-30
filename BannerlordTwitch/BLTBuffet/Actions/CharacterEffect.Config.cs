@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
+using JetBrains.Annotations;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BLTBuffet
@@ -13,59 +14,46 @@ namespace BLTBuffet
     {
         internal enum Target
         {
+            [LocDisplayName("{=92tZqqRy}Player")]
             Player,
+            [LocDisplayName("{=jyNFgLUD}Adopted Hero")]
             AdoptedHero,
+            [LocDisplayName("{=qVaXXiEf}Any")]
             Any,
+            [LocDisplayName("{=Dc99H7LD}Enemy Team")]
             EnemyTeam,
+            [LocDisplayName("{=mWL1kGwD}Player Team")]
             PlayerTeam,
+            [LocDisplayName("{=8rqexAvY}Ally Team")]
             AllyTeam,
-            Random
+            [LocDisplayName("{=o3jTIv2S}Random")]
+            Random,
         }
-
-        internal class LightDef
-        {
-            public float Radius { get; set; }
-            public float Intensity { get; set; }
-            public string Color { get; set; }
-
-            public Vec3 ColorParsed
-            {
-                get
-                {
-                    if (string.IsNullOrEmpty(Color))
-                        return new Vec3();
-                    string[] parts = Color.Split(' ');
-                    var color = new Vec3();
-                    for (int index = 0; index < parts.Length && index < 3; index++)
-                    {
-                        if (!float.TryParse(parts[index], out float val))
-                        {
-                            return new Vec3();
-                        }
-
-                        color[index] = val;
-                    }
-
-                    return color;
-                }
-            }
-        }
-
+        
+        [LocDisplayName("{=F9u231DX}Particle Effect Definition")]
         internal class ParticleEffectDef
         {
-            [Description("Particle effect system name, see ParticleEffects.txt for the full vanilla list"),
-             ItemsSource(typeof(LoopingParticleEffectItemSource)), PropertyOrder(1)]
+            [LocDisplayName("{=uUzmy7Lh}Name"),
+             LocDescription("{=8FGAgHIX}Particle effect system name, see ParticleEffects.txt for the full vanilla list"),
+             ItemsSource(typeof(LoopingParticleEffectItemSource)),
+             PropertyOrder(1), UsedImplicitly]
             public string Name { get; set; }
 
             public enum AttachPointEnum
             {
+                [LocDisplayName("{=ry3Fo3Ph}On Weapon")] 
                 OnWeapon,
+                [LocDisplayName("{=zfQ43utW}On Hands")] 
                 OnHands,
+                [LocDisplayName("{=P9e57ey1}On Head")] 
                 OnHead,
+                [LocDisplayName("{=GZC5VUo0}On Body")] 
                 OnBody,
             }
 
-            [Description("Where to attach the particles"), PropertyOrder(2)]
+            [LocDisplayName("{=7MIO0dPq}Attach Point"),
+             LocDescription("{=jEEtBaKs}Where to attach the particles"), 
+             PropertyOrder(2), UsedImplicitly]
             public AttachPointEnum AttachPoint { get; set; }
 
             // [Description("Apply the effect to the weapon")]
@@ -76,21 +64,24 @@ namespace BLTBuffet
             // public bool OnHead { get; set; }
             // [Description("Apply the effect to the whole body")]
             // public bool OnBody { get; set; }
-            public override string ToString()
-            {
-                return $"{Name} {AttachPoint}";
-            }
+            public override string ToString() => $"{Name} {AttachPoint}";
         }
 
         internal class PropertyDef
         {
-            [Description("The property to modify"), PropertyOrder(1)]
+            [LocDisplayName("{=uUzmy7Lh}Name"),
+             LocDescription("{=Dx5HUb1Q}The property to modify"), 
+             PropertyOrder(1), UsedImplicitly]
             public DrivenProperty Name { get; set; }
 
-            [Description("Add to the property value"), PropertyOrder(2)]
+            [LocDisplayName("{=Qu3sbJvR}Add"),
+             LocDescription("{=anOigmfO}Add to the property value"), 
+             PropertyOrder(2), UsedImplicitly]
             public float? Add { get; set; }
 
-            [Description("Multiply the property value"), PropertyOrder(3)]
+            [LocDisplayName("{=AQ7g1RuJ}Multiply"),
+             LocDescription("{=35zcHc2g}Multiply the property value"), 
+             PropertyOrder(3), UsedImplicitly]
             public float? Multiply { get; set; }
 
             public override string ToString()
@@ -112,65 +103,85 @@ namespace BLTBuffet
 
         internal class Config
         {
-            [Description("Name to use when referring to this effect"), PropertyOrder(1)]
+            [LocDisplayName("{=uUzmy7Lh}Name"),
+             LocDescription("{=KdxwhYu6}Name to use when referring to this effect"), 
+             PropertyOrder(1), UsedImplicitly]
             public string Name { get; set; }
 
-            [Description("Target of the effect"), PropertyOrder(2)]
+            [LocDisplayName("{=hCfdaELu}Target"),
+             LocDescription("{=5bWknsD5}Target of the effect"), 
+             PropertyOrder(2), UsedImplicitly]
             public Target Target { get; set; }
 
-            [Description("Will target unmounted soldiers only"), PropertyOrder(3)]
+            [LocDisplayName("{=wbj9ztiI}Target On Foot Only"),
+             LocDescription("{=RptjkipN}Will target unmounted soldiers only"), 
+             PropertyOrder(3), UsedImplicitly]
             public bool TargetOnFootOnly { get; set; }
 
-            [Description("Particle effects to apply"),
+            [LocDisplayName("{=j7t8cjxA}Particle Effects"),
+             LocDescription("{=YiUto6gZ}Particle effects to apply"),
              Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
-             PropertyOrder(5)]
-            public ObservableCollection<ParticleEffectDef> ParticleEffects { get; set; }
+             PropertyOrder(5), UsedImplicitly]
+            public ObservableCollection<ParticleEffectDef> ParticleEffects { get; set; } = new();
 
-            [Description("Properties to change, and how much by"),
+            [LocDisplayName("{=CN0a7XhW}Properties"),
+             LocDescription("{=JrmttiBW}Properties to change, and how much by"),
              Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
-             PropertyOrder(6)]
-            public ObservableCollection<PropertyDef> Properties { get; set; }
-
-            // [Description("Creates a light attached to the target"), PropertyOrder(7)]
-            // public LightDef Light { get; set; }
-
-            [Description("Heal amount per second"), PropertyOrder(8)]
+             PropertyOrder(6), UsedImplicitly]
+            public ObservableCollection<PropertyDef> Properties { get; set; } = new();
+            
+            [LocDisplayName("{=trYxwNFg}Heal Per Second"),
+             LocDescription("{=J19JbB4E}Heal amount per second"), 
+             PropertyOrder(8), UsedImplicitly]
             public float HealPerSecond { get; set; }
 
-            [Description("Damage amount per second"), PropertyOrder(9)]
+            [LocDisplayName("{=6Ikuo9Yl}Damage Per Second"),
+             LocDescription("{=cQBHZWwK}Damage amount per second"), 
+             PropertyOrder(9), UsedImplicitly]
             public float DamagePerSecond { get; set; }
 
-            [Description(
-                 "Duration the effect will last for, if not specified the effect will last until the end of the mission"),
-             PropertyOrder(10), DefaultValue(null)]
+            [LocDisplayName("{=KxP51isR}Duration"),
+             LocDescription("{=1pG6eydt}Duration the effect will last for, if not specified the effect will last until the end of the mission"),
+             DefaultValue(null), PropertyOrder(10), UsedImplicitly]
             public float? Duration { get; set; }
 
-            [Description("Force agent to drop weapons"), PropertyOrder(11)]
+            [LocDisplayName("{=rFxwAzgd}Force Drop Weapons"),
+             LocDescription("{=ZW0x13Y8}Force agent to drop weapons"), 
+             PropertyOrder(11), UsedImplicitly]
             public bool ForceDropWeapons { get; set; }
-
-            // [Description("Force agent dismount"), PropertyOrder(12)]
-            // public bool ForceDismount { get; set; }
-            [Description("Remove all armor"), PropertyOrder(13)]
+            
+            [LocDisplayName("{=vZIAY076}Remove Armor"),
+             LocDescription("{=4kiY7cUb}Remove all armor"), 
+             PropertyOrder(13), UsedImplicitly]
             public bool RemoveArmor { get; set; }
 
-            [Description("Raw damage multiplier"), PropertyOrder(14)]
+            [LocDisplayName("{=jJpRuWKR}Damage Multiplier"),
+             LocDescription("{=FlfyDMlc}Raw damage multiplier"), 
+             PropertyOrder(14), UsedImplicitly]
             public float? DamageMultiplier { get; set; }
 
-            [Description("One shot vfx to apply when the effect is activated"),
-             ItemsSource(typeof(OneShotParticleEffectItemSource)), PropertyOrder(15)]
+            [LocDisplayName("{=qWGAG5l8}Activate Particle Effect"),
+             LocDescription("{=6HT3lQbV}One shot vfx to apply when the effect is activated"),
+             ItemsSource(typeof(OneShotParticleEffectItemSource)), 
+             PropertyOrder(15), UsedImplicitly]
             public string ActivateParticleEffect { get; set; }
 
-            [Description("Sound to play when effect is activated, see Sounds.txt for the full vanilla list"),
-             ItemsSource(typeof(SoundEffectItemSource)), PropertyOrder(16)]
+            [LocDisplayName("{=deboEOcD}Activate Sound"),
+             LocDescription("{=zZskrilN}Sound to play when effect is activated, see Sounds.txt for the full vanilla list"),
+             ItemsSource(typeof(SoundEffectItemSource)), 
+             PropertyOrder(16), UsedImplicitly]
             public string ActivateSound { get; set; }
 
-            [Description(
-                 "One shot vfx to apply when the effect is deactivated, see ParticleEffects.txt for the full vanilla list"),
-             ItemsSource(typeof(OneShotParticleEffectItemSource)), PropertyOrder(17)]
+            [LocDisplayName("{=FBH0P3a9}Deactivate Particle Effect"),
+             LocDescription("{=u1eFzwLY}One shot vfx to apply when the effect is deactivated, see ParticleEffects.txt for the full vanilla list"),
+             ItemsSource(typeof(OneShotParticleEffectItemSource)), 
+             PropertyOrder(17), UsedImplicitly]
             public string DeactivateParticleEffect { get; set; }
 
-            [Description("Sound to play when effect is deactivated, see Sounds.txt for the full vanilla list"),
-             ItemsSource(typeof(SoundEffectItemSource)), PropertyOrder(18)]
+            [LocDisplayName("{=zfSYXHms}Deactivate Sound"),
+             LocDescription("{=ziMmWmmY}Sound to play when effect is deactivated, see Sounds.txt for the full vanilla list"),
+             ItemsSource(typeof(SoundEffectItemSource)), 
+             PropertyOrder(18), UsedImplicitly]
             public string DeactivateSound { get; set; }
         }
     }

@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Türkçe"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Common -->
+        <!-- Fireblade -->
+        <string id="yEtkv5ML" text="Ateş kılıcı" original="Fireblade"/>
+        <!-- infantry -->
+        <string id="m8bz4drX" text="piyade" original="infantry"/>
+        <!-- Healthy -->
+        <string id="ROXuJJq8" text="Sağlıklı" original="Healthy"/>
+        <!-- Explosive Arrows -->
+        <string id="skyn1cL6" text="Patlayıcı Oklar" original="Explosive Arrows"/>
+        <!-- archer -->
+        <string id="4tflp34a" text="okçu" original="archer"/>
+        <!-- Fleet Footed -->
+        <string id="NE9Li2Hb" text="Filo Ayaklı" original="Fleet Footed"/>
+        <!-- Explosive Arrows -->
+        <string id="xgnH5owv" text="Patlayıcı Oklar" original="Explosive Arrows"/>
+        <!-- heavyarcher -->
+        <string id="JncRD8tX" text="ağır okçu" original="heavyarcher"/>
+        <!-- Healthy -->
+        <string id="ZrmsIMPE" text="Sağlıklı" original="Healthy"/>
+        <!-- Heavy Bolts -->
+        <string id="QZD9XdpC" text="Ağır Cıvatalar" original="Heavy Bolts"/>
+        <!-- crossbow -->
+        <string id="wV6R9Si5" text="tatar yayı" original="crossbow"/>
+        <!-- Self Healing -->
+        <string id="FvNPPHLJ" text="Kendi Kendini İyileştirme" original="Self Healing"/>
+        <!-- Explosive Bolts -->
+        <string id="7GmE3SfQ" text="Patlayıcı Cıvatalar" original="Explosive Bolts"/>
+        <!-- heavycrossbow -->
+        <string id="bpzytNbP" text="ağır tatar yayı" original="heavycrossbow"/>
+        <!-- Healthy -->
+        <string id="k7booFb2" text="Sağlıklı" original="Healthy"/>
+        <!-- Trample -->
+        <string id="ZEGEpycY" text="ezmek" original="Trample"/>
+        <!-- cavalry -->
+        <string id="jNaFWF9t" text="süvari" original="cavalry"/>
+        <!-- A Good Horse -->
+        <string id="YghplAdF" text="İyi Bir At" original="A Good Horse"/>
+        <!-- Trample -->
+        <string id="mmeJSrm9" text="ezmek" original="Trample"/>
+        <!-- camelry -->
+        <string id="mJ8RVORq" text="devecilik" original="camelry"/>
+        <!-- A Good Camel -->
+        <string id="atGMPeNF" text="İyi Bir Deve" original="A Good Camel"/>
+        <!-- Explosive Arrows -->
+        <string id="YpIUHASp" text="Patlayıcı Oklar" original="Explosive Arrows"/>
+        <!-- horsearcher -->
+        <string id="p5qJfkkp" text="atlı okçu" original="horsearcher"/>
+        <!-- Mounted Archery -->
+        <string id="zxgdfSIS" text="Atlı Okçuluk" original="Mounted Archery"/>
+        <!-- Heavy Arrows -->
+        <string id="FrX7AiyI" text="Ağır Oklar" original="Heavy Arrows"/>
+        <!-- camelarcher -->
+        <string id="HreZWoyd" text="camgöz" original="camelarcher"/>
+        <!-- Mounted Archery -->
+        <string id="szdoTAQj" text="Atlı Okçuluk" original="Mounted Archery"/>
+        <!-- Break Through -->
+        <string id="E3qGC3fs" text="Geçiş" original="Break Through"/>
+        <!-- skirmisher -->
+        <string id="9euSgzCd" text="avcı er" original="skirmisher"/>
+        <!-- Retribution -->
+        <string id="Lw8xQu1P" text="intikam" original="Retribution"/>
+        <!-- Berserker Rage -->
+        <string id="1DSLInEJ" text="çılgın öfke" original="Berserker Rage"/>
+        <!-- berserker -->
+        <string id="wVjXAFal" text="çılgın" original="berserker"/>
+        <!-- Glass Cannon -->
+        <string id="nB4Qb0mD" text="Cam Top" original="Glass Cannon"/>
+        <!-- Retribution -->
+        <string id="rzIl9tm3" text="intikam" original="Retribution"/>
+        <!-- looter -->
+        <string id="4JffsJMD" text="yağmacı" original="looter"/>
+        <!-- Grenades -->
+        <string id="nmjVjakS" text="el bombaları" original="Grenades"/>
+    </strings>
+</base>

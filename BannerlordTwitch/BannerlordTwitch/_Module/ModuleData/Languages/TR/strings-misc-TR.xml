@@ -1,0 +1,601 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Türkçe"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Naming -->
+        <!-- → -->
+        <string id="2Ncpkenz" text="→" original="→"/>
+        <!-- + -->
+        <string id="83uNsc2Z" text="+" original="+"/>
+        <!-- − -->
+        <string id="drHSxMvO" text="-" original="−"/>
+        <!-- ⦷ -->
+        <string id="BolFnYCO" text="⦷" original="⦷"/>
+        <!-- XP -->
+        <string id="JFCeRYdn" text="DP" original="XP"/>
+        <!-- HP -->
+        <string id="NtqSb7B7" text="HP" original="HP"/>
+        <!-- lvl -->
+        <string id="RQlq59mz" text="seviye" original="lvl"/>
+        <!-- Item -->
+        <string id="5rErcMGl" text="Kalem" original="Item"/>
+        <!-- Skills -->
+        <string id="5gVLi7NA" text="Yetenekler" original="Skills"/>
+        <!--  ■ -->
+        <string id="aG3roJj3" text="■" original=" ■"/>
+        <!-- Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}! -->
+        <string id="fuwuk4bR" text="Yeterli {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon} değil!" original="Not enough {GoldIcon}: need {NeededGold}{GoldIcon}, have {HaveGold}{GoldIcon}!"/>
+        <!-- Common Phrases -->
+        <!-- General -->
+        <string id="C5T5nnix" text="Genel" original="General"/>
+        <!-- Limits -->
+        <string id="1lHWj3nT" text="limitler" original="Limits"/>
+        <!-- Initialization -->
+        <string id="DRNO9OAl" text="başlatma" original="Initialization"/>
+        <!-- Enabled -->
+        <string id="sPKWnVA0" text="Etkinleştirilmiş" original="Enabled"/>
+        <!-- Name -->
+        <string id="uUzmy7Lh" text="İsim" original="Name"/>
+        <!-- {From} to {To} -->
+        <string id="yVydxRHh" text="{From} to {To}" original="{From} to {To}"/>
+        <!-- Skill -->
+        <string id="OEMBeawy" text="Beceri" original="Skill"/>
+        <!-- Level -->
+        <string id="iu0dtUP5" text="Seviye" original="Level"/>
+        <!-- Amount -->
+        <string id="DKfKt4qP" text="Miktar" original="Amount"/>
+        <!-- Costs {GoldCost} -->
+        <string id="Diwd7dBo" text="Maliyetler {GoldCost}" original="Costs {GoldCost}"/>
+        <!-- Costs -->
+        <string id="r7sc3Tvg" text="Maliyetler" original="Costs"/>
+        <!-- None -->
+        <string id="FNK3LD2p" text="Hiçbiri" original="None"/>
+        <!-- Enabled -->
+        <string id="kpv03CqK" text="Etkinleştirilmiş" original="Enabled"/>
+        <!-- Disabled -->
+        <string id="soS8qlsg" text="Engelli" original="Disabled"/>
+        <!-- Cost -->
+        <string id="LnQoMDLT" text="Maliyet" original="Cost"/>
+        <!-- Is Enabled -->
+        <string id="oi2yz7aS" text="Etkin" original="Is Enabled"/>
+        <!-- all -->
+        <string id="hHekZwYB" text="herşey" original="all"/>
+        <!-- Battle -->
+        <string id="9qAD6eZR" text="Savaş" original="Battle"/>
+        <!-- Death -->
+        <string id="dbU7WEKG" text="Ölüm" original="Death"/>
+        <!-- XP -->
+        <string id="06KnYhyh" text="DP" original="XP"/>
+        <!-- Kill Rewards -->
+        <string id="E2RBmb1K" text="Öldürme Ödülleri" original="Kill Rewards"/>
+        <!-- Battle End Rewards -->
+        <string id="uPwaOKdT" text="Savaş Sonu Ödülleri" original="Battle End Rewards"/>
+        <!-- Kill Streak Rewards -->
+        <string id="lnz7d1BI" text="Seri Ödüllerini Öldür" original="Kill Streak Rewards"/>
+        <!-- Achievements -->
+        <string id="EPr2clqT" text="Başarılar" original="Achievements"/>
+        <!-- Shouts -->
+        <string id="UhUpH8C8" text="Çığlıklar" original="Shouts"/>
+        <!-- Effect -->
+        <string id="VBuncBq5" text="Etki" original="Effect"/>
+        <!-- Targets -->
+        <string id="R7rU0TbD" text="Hedefler" original="Targets"/>
+        <!-- Appearance -->
+        <string id="umALVhJG" text="Dış görünüş" original="Appearance"/>
+        <!-- Settings -->
+        <!-- Commands -->
+        <string id="JlFpeaxe" text="Komutlar" original="Commands"/>
+        <!-- Command -->
+        <string id="15umM0Xo" text="Emretmek" original="Command"/>
+        <!-- Description -->
+        <string id="J6daarYb" text="Açıklama" original="Description"/>
+        <!-- Settings -->
+        <string id="e2Fu7JYS" text="Ayarlar" original="Settings"/>
+        <!-- Channel Point Rewards -->
+        <string id="u6xsREDY" text="Kanal Puanı Ödülleri" original="Channel Point Rewards"/>
+        <!-- ActionManager -->
+        <!-- The game isn't started yet -->
+        <string id="kvbqfThe" text="Oyun henüz başlamadı" original="The game isn't started yet"/>
+        <!-- Action with the id {RewardId} doesn't exist -->
+        <string id="B39sGef4" text="{RewardId} kimliğine sahip eylem mevcut değil" original="Action with the id {RewardId} doesn't exist"/>
+        <!-- Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow -->
+        <string id="yo8Yw3Mz" text="İşlem Sıraya Almak için {RewardId} took {TimeInMS}ms, bu çok yavaş" original="Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow"/>
+        <!-- BLTAgentModifierBehavior -->
+        <!-- Scale Percent -->
+        <string id="JzII0KRZ" text="Ölçek Yüzdesi" original="Scale Percent"/>
+        <!-- Changes the size of the target -->
+        <string id="fc1SmPXH" text="Hedefin boyutunu değiştirir" original="Changes the size of the target"/>
+        <!-- Apply To Mount -->
+        <string id="0vqiI434" text="Montaj için Uygula" original="Apply To Mount"/>
+        <!-- Apply to the mount of the target, instead of the target themselves (only some properties are valid on mounts) -->
+        <string id="U0wJHDSa" text="Hedefin kendisi yerine hedefin bineğine uygula (bineklerde yalnızca bazı özellikler geçerlidir)" original="Apply to the mount of the target, instead of the target themselves (only some properties are valid on mounts)"/>
+        <!-- Properties -->
+        <string id="RdCw0xo9" text="Özellikler" original="Properties"/>
+        <!-- Properties to change, and how much by -->
+        <string id="ZKN8fZsA" text="Değiştirilecek özellikler ve ne kadar" original="Properties to change, and how much by"/>
+        <!-- Skills -->
+        <string id="iPI9zoqR" text="Yetenekler" original="Skills"/>
+        <!-- Skills to change, and how much by (these aren't compatible with Apply To Mount) -->
+        <string id="PanMmDx9" text="Değiştirilecek beceriler ve ne kadar (bunlar Mount To Apply ile uyumlu değildir)" original="Skills to change, and how much by (these aren't compatible with Apply To Mount)"/>
+        <!-- Scale {ScalePercent}% -->
+        <string id="EkKFoK73" text="%{ScalePercent} ölçeklendir" original="Scale {ScalePercent}%"/>
+        <!-- (on mount) -->
+        <string id="l7w0bPt0" text="(montajda)" original="(on mount)"/>
+        <!-- Mount {ScalePercent}% normal size -->
+        <string id="qhIXgPGK" text="Normal boyutun %{ScalePercent}'ini bağla" original="Mount {ScalePercent}% normal size"/>
+        <!-- {ScalePercent}% normal size -->
+        <string id="yLT1lfRC" text="%{ScalePercent} normal boyut" original="{ScalePercent}% normal size"/>
+        <!-- DocumentationHelpers -->
+        <!-- ParticleEffectDef -->
+        <!-- Particle effect system name, see ParticleEffects.txt for the full vanilla list -->
+        <string id="xgnntAyd" text="Parçacık efekti sistem adı, tam liste için ParticleEffects.txt'ye bakın" original="Particle effect system name, see ParticleEffects.txt for the full vanilla list"/>
+        <!-- On Weapon -->
+        <string id="w3eb5kWA" text="Silahta" original="On Weapon"/>
+        <!-- On Hands -->
+        <string id="YLmpgn4j" text="Ellerde" original="On Hands"/>
+        <!-- On Head -->
+        <string id="muuJpmaw" text="Kafasında" original="On Head"/>
+        <!-- On Body -->
+        <string id="m9p9nBjM" text="Bedende" original="On Body"/>
+        <!-- Attach Point -->
+        <string id="GCe3gQcz" text="Nokta Ekle" original="Attach Point"/>
+        <!-- Where to attach the particles -->
+        <string id="uNOYtEdN" text="Parçacıkların nereye ekleneceği" original="Where to attach the particles"/>
+        <!-- DrivenPropertyItemSource -->
+        <!-- Armor Head -->
+        <string id="oUgW3q7p" text="Zırh Başlığı" original="Armor Head"/>
+        <!-- Armor Torso -->
+        <string id="NYoNwE3R" text="Zırh Gövdesi" original="Armor Torso"/>
+        <!-- Armor Legs -->
+        <string id="VKAAkKbm" text="Zırh Bacakları" original="Armor Legs"/>
+        <!-- Armor Arms -->
+        <string id="dzqBXvaS" text="Zırh Kolları" original="Armor Arms"/>
+        <!-- Armor Encumbrance -->
+        <string id="2EaDPdxT" text="Zırh Yükümlülüğü" original="Armor Encumbrance"/>
+        <!-- Weapons Encumbrance -->
+        <string id="Kd1ZpiXo" text="Silah Yükümlülüğü" original="Weapons Encumbrance"/>
+        <!-- Top Speed Reach Duration -->
+        <string id="kZ2KuXHY" text="En Yüksek Hız Erişim Süresi" original="Top Speed Reach Duration"/>
+        <!-- Max Speed Multiplier -->
+        <string id="9yu9o5nH" text="Maksimum Hız Çarpanı" original="Max Speed Multiplier"/>
+        <!-- Combat Max Speed Multiplier -->
+        <string id="nvHAoLpy" text="Savaş Maksimum Hız Çarpanı" original="Combat Max Speed Multiplier"/>
+        <!-- Mount Charge Damage -->
+        <string id="RIMIU69S" text="Binek Yükü Hasarı" original="Mount Charge Damage"/>
+        <!-- Mount Difficulty -->
+        <string id="9mYdZQI8" text="Zorluk Dağı" original="Mount Difficulty"/>
+        <!-- Mount Maneuver -->
+        <string id="EaenR5S2" text="Manevra Dağı" original="Mount Maneuver"/>
+        <!-- Mount Speed -->
+        <string id="NJpg1RsS" text="Montaj Hızı" original="Mount Speed"/>
+        <!-- Horse Archery Ability -->
+        <string id="UtGZ9B6F" text="Atlı Okçuluk Yeteneği" original="Horse Archery Ability"/>
+        <!-- Riding Ability -->
+        <string id="pmUxn1vO" text="Sürme Yeteneği" original="Riding Ability"/>
+        <!-- Shield Ability -->
+        <string id="wLmAnuDu" text="Kalkan Yeteneği" original="Shield Ability"/>
+        <!-- Handling Multiplier -->
+        <string id="YZt69g1x" text="İşlem Çarpanı" original="Handling Multiplier"/>
+        <!-- Weapon Inaccuracy -->
+        <string id="Yem5BVmg" text="Silah Yanlışlığı" original="Weapon Inaccuracy"/>
+        <!-- Swing Speed Multiplier -->
+        <string id="DUuJ6bM5" text="Salınım Hızı Çarpanı" original="Swing Speed Multiplier"/>
+        <!-- Reload Speed -->
+        <string id="djGCJeM4" text="Yeniden yükleme hızı" original="Reload Speed"/>
+        <!-- Reload Movement Penalty -->
+        <string id="4XrdvYDR" text="Hareket Cezasını Yeniden Yükle" original="Reload Movement Penalty"/>
+        <!-- Courage -->
+        <string id="GJftwazi" text="Cesaret" original="Courage"/>
+        <!-- Shield Missile Collision Body Size Adder -->
+        <string id="8WAxev1i" text="Kalkan Füze Çarpışma Gövde Boyutu Toplayıcı" original="Shield Missile Collision Body Size Adder"/>
+        <!-- Thrust Or Ranged Ready Speed Multiplier -->
+        <string id="xxkAFaWD" text="İtki veya Menzilli Hazır Hız Çarpanı" original="Thrust Or Ranged Ready Speed Multiplier"/>
+        <!-- AI Shoot Frequency -->
+        <string id="iaxxNiiV" text="AI Çekim Sıklığı" original="AI Shoot Frequency"/>
+        <!-- AI Wait Before Shoot Factor -->
+        <string id="3HlCPScr" text="AI, Vurmadan Önce Bekleyin Faktörü" original="AI Wait Before Shoot Factor"/>
+        <!-- AI Block Chance -->
+        <string id="7xW74SvW" text="AI Blok Şansı" original="AI Block Chance"/>
+        <!-- AI Attack Chance -->
+        <string id="vIjQ6b5w" text="AI Saldırı Şansı" original="AI Attack Chance"/>
+        <!-- AI Kick -->
+        <string id="FgSI5C4F" text="yapay zeka vuruşu" original="AI Kick"/>
+        <!-- EquipmentType -->
+        <!-- None -->
+        <string id="i7XX56i9" text="Hiçbiri" original="None"/>
+        <!-- Dagger -->
+        <string id="5HQtHOg4" text="Hançer" original="Dagger"/>
+        <!-- One Handed Sword -->
+        <string id="hZU8m8K9" text="Tek Elli Kılıç" original="One Handed Sword"/>
+        <!-- Two Handed Sword -->
+        <string id="Lc70XOXH" text="İki elle tutulan Kılıç" original="Two Handed Sword"/>
+        <!-- One Handed Axe -->
+        <string id="amKrRDlF" text="Tek Elli Balta" original="One Handed Axe"/>
+        <!-- Two Handed Axe -->
+        <string id="QPv8qS6h" text="İki Elli Balta" original="Two Handed Axe"/>
+        <!-- One Handed Mace -->
+        <string id="jTI9J3nq" text="Tek Elli Topuz" original="One Handed Mace"/>
+        <!-- Two Handed Mace -->
+        <string id="YzVmN0wN" text="İki Elli Topuz" original="Two Handed Mace"/>
+        <!-- One Handed Lance -->
+        <string id="pP2mtmXu" text="Tek Elli Mızrak" original="One Handed Lance"/>
+        <!-- Two Handed Lance -->
+        <string id="Y6CxpaYL" text="İki Elli Mızrak" original="Two Handed Lance"/>
+        <!-- One Handed Glaive -->
+        <string id="r22oB2bm" text="Tek Elli Glaive" original="One Handed Glaive"/>
+        <!-- Two Handed Glaive -->
+        <string id="BcmE6Y75" text="İki Elli Glaive" original="Two Handed Glaive"/>
+        <!-- Bow -->
+        <string id="rroxl8j3" text="Yay" original="Bow"/>
+        <!-- Crossbow -->
+        <string id="CztMY8ZE" text="tatar yayı" original="Crossbow"/>
+        <!-- Arrows -->
+        <string id="DYYyhDUI" text="Oklar" original="Arrows"/>
+        <!-- Bolts -->
+        <string id="i281jKBH" text="Cıvatalar" original="Bolts"/>
+        <!-- Throwing Knives -->
+        <string id="C1Qx1ZqP" text="Fırlatma Bıçakları" original="Throwing Knives"/>
+        <!-- Throwing Axes -->
+        <string id="S1NUKL4r" text="Fırlatma Eksenleri" original="Throwing Axes"/>
+        <!-- Throwing Javelins -->
+        <string id="ND1x0R2V" text="Cirit atma" original="Throwing Javelins"/>
+        <!-- Shield -->
+        <string id="p4eF4kc6" text="kalkan" original="Shield"/>
+        <!-- Stone -->
+        <string id="dYKgMqE8" text="Taş" original="Stone"/>
+        <!-- HeroHelpers.AllAttributes -->
+        <!-- Vigor -->
+        <string id="IyK1yg5j" text="canlılık" original="Vigor"/>
+        <!-- Control -->
+        <string id="dHlLNy7j" text="Kontrol" original="Control"/>
+        <!-- Endurance -->
+        <string id="qKVblzEJ" text="Dayanıklılık" original="Endurance"/>
+        <!-- Cunning -->
+        <string id="bJbFeqMG" text="Marifetli" original="Cunning"/>
+        <!-- Social -->
+        <string id="lSrkwcJV" text="Sosyal" original="Social"/>
+        <!-- Intelligence -->
+        <string id="qGfZfaai" text="Zeka" original="Intelligence"/>
+        <!-- OneShotEffect -->
+        <!-- ParticleEffect -->
+        <string id="cv0hxm25" text="parçacık etkisi" original="ParticleEffect"/>
+        <!-- Sound -->
+        <string id="FyXztxDH" text="Ses" original="Sound"/>
+        <!-- Particle Effect to play -->
+        <string id="N1WsBndO" text="Oynamak için Parçacık Etkisi" original="Particle Effect to play"/>
+        <!-- Sound to play -->
+        <string id="2KrpVrR8" text="Oynamak için ses" original="Sound to play"/>
+        <!-- PropertyModifierDef -->
+        <!-- Name -->
+        <string id="ncGFtcFp" text="İsim" original="Name"/>
+        <!-- ModifierPercent -->
+        <string id="RgtZnxLU" text="DeğiştiriciYüzde" original="ModifierPercent"/>
+        <!-- Add -->
+        <string id="uNduKTKf" text="Ekle" original="Add"/>
+        <!-- The property to modify -->
+        <string id="SUI6n33o" text="Değiştirilecek özellik" original="The property to modify"/>
+        <!-- Percent modifier to apply to the property (100% will result in no chance) -->
+        <string id="fDNljlb9" text="Mülke uygulanacak yüzde değiştirici (%100 şansa neden olmaz)" original="Percent modifier to apply to the property (100% will result in no chance)"/>
+        <!-- How much to add or subtract from the property (0 will result in no change). This is applied AFTER Modifier. -->
+        <string id="CBWdKoGD" text="Özelliğe ne kadar eklenip çıkarılacağı (0 hiçbir değişiklikle sonuçlanmaz). Bu, Değiştiriciden SONRA uygulanır." original="How much to add or subtract from the property (0 will result in no change). This is applied AFTER Modifier."/>
+        <!-- (no change) -->
+        <string id="usihVSj3" text="(değişiklik yok)" original="(no change)"/>
+        <!-- SkillModifierDef -->
+        <!-- ModifierPercent -->
+        <string id="jgNUxcBa" text="DeğiştiriciYüzde" original="ModifierPercent"/>
+        <!-- Add -->
+        <string id="Au82n7kL" text="Ekle" original="Add"/>
+        <!-- Skill or skill group to modifier (all skills in a group will be modified) -->
+        <string id="46oj12tA" text="Değiştirilecek beceri veya beceri grubu (bir gruptaki tüm beceriler değiştirilecektir)" original="Skill or skill group to modifier (all skills in a group will be modified)"/>
+        <!-- Percent modifier to apply to the skill (100% will result in no chance) -->
+        <string id="S34uXWMu" text="Yeteneğe uygulanacak yüzde değiştirici (%100 şansa neden olmaz)" original="Percent modifier to apply to the skill (100% will result in no chance)"/>
+        <!-- How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier. -->
+        <string id="hPQpBmRR" text="Beceriden ne kadar eklenip çıkarılacağı (0 hiçbir değişiklikle sonuçlanmaz). Bu, Değiştiriciden SONRA uygulanır." original="How much to add or subtract from the skill (0 will result in no change). This is applied AFTER Modifier."/>
+        <!-- (no change) -->
+        <string id="PsUcJvPZ" text="(değişiklik yok)" original="(no change)"/>
+        <!-- BLTOverlay -->
+        <!-- BLT Overlay -->
+        <string id="fmjzDasd" text="BLT Yerleşimi" original="BLT Overlay"/>
+        <!-- For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again. -->
+        <string id="Kgi2isWy" text="BLT Yer Paylaşımlı Tarayıcı Kaynağının çalışması için {Port} bağlantı noktasını ayırması ve Windows Güvenlik Duvarı üzerinden buna izin vermesi gerekir.\nBu, Tamam'a bastıktan sonra istenecek olan yönetici ayrıcalıkları gerektirir.\nBaşarılı olursa, bunu görmezsiniz tekrar açılır." original="For the BLT Overlay Browser Source to work it needs to reserve port {Port}, and allow it via the Windows Firewall.\nThis requires administrator privileges, which will be requested after you press Ok.\nIf successful, you won't see this popup again."/>
+        <!-- Okay -->
+        <string id="yXwMSbr4" text="Peki" original="Okay"/>
+        <!-- Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window. -->
+        <string id="6ucf05tp" text="Yapılandırma Başarılı!\nArtık yer paylaşımına {UrlRoot} adresinden erişebilirsiniz.\nBu bağlantıyı yeniden BLT Yapılandırma penceresindeki Yetkilendir sekmesinde bulabilirsiniz." original="Configuration Successful!\nYou can now access the overlay at {UrlRoot}.\nYou can find this link again on the Authorize tab in the BLT Configure window."/>
+        <!-- Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord. -->
+        <string id="usADfORe" text="Yapılandırma BAŞARISIZ:\n \&amp;quot;{e.Message}\&amp;quot;\nKaplamaya erişemeyebilirsiniz.\nBu sorunu anlaşmazlıkta bildirin." original="Configuration FAILED:\n  \&quot;{e.Message}\&quot;\nYou may not be able to access the overlay.\nReport this problem in the discord."/>
+        <!-- ActionBase -->
+        <!-- Whether this is enabled or not -->
+        <string id="YM1rP7sP" text="Bunun etkin olup olmadığı" original="Whether this is enabled or not"/>
+        <!-- Show response in the twitch chat -->
+        <string id="7IBsjc51" text="Yanıtı seğirme sohbetinde göster" original="Show response in the twitch chat"/>
+        <!-- Show response in the overlay window feed -->
+        <string id="UQRfOFjs" text="Yer paylaşımlı pencere beslemesinde yanıtı göster" original="Show response in the overlay window feed"/>
+        <!-- Name of the handler -->
+        <string id="ErhzbqFu" text="İşleyicinin adı" original="Name of the handler"/>
+        <!-- Custom config for the handler -->
+        <string id="cdEbk84n" text="İşleyici için özel yapılandırma" original="Custom config for the handler"/>
+        <!-- What to show in the generated documentation -->
+        <string id="W6pzg6VJ" text="Oluşturulan belgelerde ne gösterilecek?" original="What to show in the generated documentation"/>
+        <!-- Respond In Twitch -->
+        <string id="86rc4cz6" text="Twitch'te Yanıt Ver" original="Respond In Twitch"/>
+        <!-- Respond In Overlay -->
+        <string id="0MgBhdtw" text="Yer Paylaşımlı Yanıtla" original="Respond In Overlay"/>
+        <!-- Handler -->
+        <string id="dteVl09D" text="işleyici" original="Handler"/>
+        <!-- Handler Config -->
+        <string id="Zj8ni08E" text="İşleyici Yapılandırması" original="Handler Config"/>
+        <!-- Documentation -->
+        <string id="UP0DjNMM" text="belgeler" original="Documentation"/>
+        <!-- Documentation -->
+        <!-- Title -->
+        <!-- Bannerlord Twitch Viewer Guide -->
+        <string id="ctAF1ghX" text="Bannerlord Twitch Görüntüleyici Kılavuzu" original="Bannerlord Twitch Viewer Guide"/>
+        <!-- Introduction -->
+        <!-- Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to &apos;adopt&apos; a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include &apos;summoning&apos; your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes &apos;class&apos;.&lt;br&gt;If you aren&apos;t sure where to start, begin by using the channel point redemption &apos;Adopt a Hero&apos;. -->
+        <string id="rElL5v6I" text="Bannerlord Twitch (BLT), Mount &amp;amp; Blade II: Bannerlord için bir Twitch Entegrasyon modudur.&lt;br&gt; İzleyici olarak, yayıncı oynarken oyunla etkileşim kurmak için kanal puanı ödüllerini (varsa) ve sohbet komutlarını kullanabilirsiniz.&lt;br&gt; BLT'nin birincil özelliği, oyunda bir kahramanı 'evlat edinmenize' izin vermesidir, yani oyundaki bir karakter, Twitch adınız verilerek size atanacak ve daha fazla etkileşimde bulunmanız için hazır olacaktır.&lt;br&gt; Kahramanınızla yapabileceğiniz bazı örnekler arasında, yayıncının yer aldığı savaşlara kahramanınızı &amp;quot;çağırmak&amp;quot;, izleyici turnuvalarına katılmak, ekipmanı yükseltmek, kahramanınızın &amp;quot;sınıfını&amp;quot; seçmek yer alır.&lt;br&gt; Nereden başlayacağınızdan emin değilseniz, 'Bir Kahraman Kabul Et' kanal puanı ödemesini kullanarak başlayın." original="Bannerlord Twitch (BLT) is a Twitch Integration mod for Mount &amp; Blade II: Bannerlord.&lt;br&gt;As a viewer you can use channel point rewards (if available), and chat commands to interact with the game while the streamer is playing.&lt;br&gt;The primary feature of BLT is allowing you to 'adopt' a hero in the game, i.e. a character in the game will be assigned to you, given your Twitch name, and be available for you to interact with further.&lt;br&gt;Some examples of things you can do with your hero include 'summoning' your hero into battles that the streamer is taking part in, joining viewer tournaments, upgrading equipment, selecting your heroes 'class'.&lt;br&gt;If you aren't sure where to start, begin by using the channel point redemption 'Adopt a Hero'."/>
+        <!-- Command -->
+        <!-- Bot command definition -->
+        <string id="8SbGSWFY" text="Bot komut tanımı" original="Bot command definition"/>
+        <!-- Name -->
+        <string id="D1lt1bSQ" text="İsim" original="Name"/>
+        <!-- The command itself, not including the ! -->
+        <string id="u1Ua0LXJ" text="Komutun kendisi, !" original="The command itself, not including the !"/>
+        <!-- HideHelp -->
+        <string id="TpnV5Mpi" text="Yardımı Gizle" original="HideHelp"/>
+        <!-- Hides the command from the !help action -->
+        <string id="0AZVaBQN" text="!help eyleminden komutu gizler" original="Hides the command from the !help action"/>
+        <!-- Help -->
+        <string id="JqNXbyIT" text="Yardım" original="Help"/>
+        <!-- What to show in the !help command -->
+        <string id="9QV7UzFh" text="!help komutunda ne gösterilecek?" original="What to show in the !help command"/>
+        <!-- Reward -->
+        <!-- Channel points reward definition -->
+        <string id="KaFWtYmc" text="Kanal puanları ödül tanımı" original="Channel points reward definition"/>
+        <!-- Twitch channel points reward definition -->
+        <string id="zq79vZqY" text="Twitch kanal puanları ödül tanımı" original="Twitch channel points reward definition"/>
+        <!-- Reward Specification -->
+        <string id="sF4buTM8" text="Ödül Şartnamesi" original="Reward Specification"/>
+        <!-- RewardSpec -->
+        <!-- The Twitch specific part of the channel points reward specification -->
+        <string id="glIst7fu" text="Kanal puanları ödül spesifikasyonunun Twitch'e özel kısmı" original="The Twitch specific part of the channel points reward specification"/>
+        <!-- The title of the reward -->
+        <string id="b8OBGhIk" text="Ödülün adı" original="The title of the reward"/>
+        <!-- Whether the reward will automatically be set to fulfilled once completed in game. If you set this to true then the redemptions that successfully complete in game will stay in your redemption queue. This is useful if you are worried about people losing points if the game crashes, or you reload an older save. -->
+        <string id="Kunfq4KA" text="Ödül, oyunda tamamlandığında otomatik olarak yerine getirilecek şekilde ayarlanıp ayarlanmayacağı. Bunu true olarak ayarlarsanız, oyunda başarıyla tamamlanan ödemeler, ödeme kuyruğunuzda kalır. Bu, oyun çöktüğünde insanların puan kaybetmesinden endişeleniyorsanız veya daha eski bir kaydı yeniden yüklerseniz kullanışlıdır." original="Whether the reward will automatically be set to fulfilled once completed in game. If you set this to true then the redemptions that successfully complete in game will stay in your redemption queue. This is useful if you are worried about people losing points if the game crashes, or you reload an older save."/>
+        <!-- Description / prompt -->
+        <string id="yXhrzrGA" text="Açıklama / istem" original="Description / prompt"/>
+        <!-- The cost of the reward -->
+        <string id="dvYTG9UH" text="Ödülün maliyeti" original="The cost of the reward"/>
+        <!-- Is the reward currently enabled, if false the reward won’t show up to viewers. -->
+        <string id="iCzROk3u" text="Ödül şu anda etkin mi, yanlışsa ödül izleyicilere gösterilmez." original="Is the reward currently enabled, if false the reward won’t show up to viewers."/>
+        <!-- Custom background color for the reward -->
+        <string id="Bg62Iggr" text="Ödül için özel arka plan rengi" original="Custom background color for the reward"/>
+        <!-- Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown. -->
+        <string id="XqPRNwVc" text="Kullanıcının ödülü kullanırken bilgi girmesi gerekiyor mu? Bu doğruysa, İstem gösterilecektir." original="Does the user need to enter information when redeeming the reward. If this is true the Prompt will be shown."/>
+        <!-- Title -->
+        <string id="EJDKdXPV" text="Başlık" original="Title"/>
+        <!-- Disable Automatic Fulfillment -->
+        <string id="Obz1yM6k" text="Otomatik Gönderimi Devre Dışı Bırak" original="Disable Automatic Fulfillment"/>
+        <!-- Prompt -->
+        <string id="e9jiFSF4" text="Çabuk" original="Prompt"/>
+        <!-- Background Color -->
+        <string id="YzP57nUK" text="Arka plan rengi" original="Background Color"/>
+        <!-- Is User Input Required -->
+        <string id="9aESWqlM" text="Kullanıcı Girişi Gerekli mi" original="Is User Input Required"/>
+        <!-- Max Per Stream -->
+        <string id="qAxLr567" text="Akış Başına Maks." original="Max Per Stream"/>
+        <!-- Max Per User Per Stream -->
+        <string id="V5NnvzZH" text="Akış Başına Kullanıcı Başına Maks" original="Max Per User Per Stream"/>
+        <!-- Global Cooldown Seconds -->
+        <string id="Rulwnhfz" text="Küresel Bekleme Saniyesi" original="Global Cooldown Seconds"/>
+        <!-- Reward Title Here -->
+        <string id="6ORulLUR" text="Ödül Başlığı Burada" original="Reward Title Here"/>
+        <!-- The maximum number per stream, defaults to unlimited -->
+        <string id="Ho1k72DC" text="Akış başına maksimum sayı, varsayılan olarak sınırsızdır" original="The maximum number per stream, defaults to unlimited"/>
+        <!-- The maximum number per user per stream, defaults to unlimited -->
+        <string id="cdWQe1En" text="Akış başına kullanıcı başına maksimum sayı, varsayılan olarak sınırsızdır" original="The maximum number per user per stream, defaults to unlimited"/>
+        <!-- The cooldown in seconds, defaults to unlimited -->
+        <string id="yJRKVszb" text="Saniye cinsinden bekleme süresi, varsayılan olarak sınırsızdır" original="The cooldown in seconds, defaults to unlimited"/>
+        <!-- TwitchService -->
+        <!-- Usage: !{Name} {Args} -->
+        <string id="JSW1ryNl" text="Kullanım: !{Name} {Args}" original="Usage: !{Name} {Args}"/>
+        <!-- Usage: {Args} -->
+        <string id="mdhbHYNM" text="Kullanım: {Args}" original="Usage: {Args}"/>
+        <!-- Commands:  -->
+        <string id="luOJS8dL" text="Komutlar:" original="Commands: "/>
+        <!-- Also see Channel Point Rewards -->
+        <string id="0o3dPQSk" text="Ayrıca bkz. Kanal Puanı Ödülleri" original="Also see Channel Point Rewards"/>
+        <!-- TwitchService connected -->
+        <string id="BiYZ1CbN" text="TwitchService bağlandı" original="TwitchService connected"/>
+        <!-- TwitchService stopped -->
+        <string id="mEcBdqNC" text="TwitchService durduruldu" original="TwitchService stopped"/>
+        <!-- TwitchService.Bot -->
+        <!-- [BLT]  -->
+        <string id="b4tJSNJG" text="[BLT]" original="[BLT] "/>
+        <!-- Bot connected -->
+        <string id="DYWDiBCl" text="Bot bağlandı" original="Bot connected"/>
+        <!-- Bot disconnected -->
+        <string id="thucznzJ" text="Bot bağlantısı kesildi" original="Bot disconnected"/>
+        <!-- @{BotUsername} has joined channel {Channel} -->
+        <string id="Hd6Q51eb" text="@{BotUsername} has joined channel {Channel}" original="@{BotUsername} has joined channel {Channel}"/>
+        <!-- bot reporting for duty! -->
+        <string id="SbufvVIR" text="görev için bot raporlama!" original="bot reporting for duty!"/>
+        <!-- Type !help for command list -->
+        <string id="vBtkF25N" text="Komut listesi için !help yazın" original="Type !help for command list"/>
+        <!-- OneShotParticleEffectItemSource -->
+        <!-- (none) -->
+        <string id="a8ibMIfH" text="(Yok)" original="(none)"/>
+        <!-- Medium size explosion -->
+        <string id="AOpeOmby" text="Orta boy patlama" original="Medium size explosion"/>
+        <!-- Small explosion -->
+        <string id="mTt3ybmi" text="Küçük patlama" original="Small explosion"/>
+        <!-- Medium size explosion - stones -->
+        <string id="xVuYoEtO" text="Orta boy patlama - taşlar" original="Medium size explosion - stones"/>
+        <!-- Small explosion - stones -->
+        <string id="FNhlEMT4" text="Küçük patlama - taşlar" original="Small explosion - stones"/>
+        <!-- Medium size explosion - water -->
+        <string id="O2QdeZUC" text="Orta boy patlama - su" original="Medium size explosion - water"/>
+        <!-- Small explosion - water -->
+        <string id="TfFqsORr" text="Küçük patlama - su" original="Small explosion - water"/>
+        <!-- Medium size explosion - wood -->
+        <string id="1NGLTDFg" text="Orta boy patlama - ahşap" original="Medium size explosion - wood"/>
+        <!-- Small explosion - wood -->
+        <string id="WPLRpBTx" text="Küçük patlama - ahşap" original="Small explosion - wood"/>
+        <!-- Small poof of dust -->
+        <string id="7l7425dm" text="Küçük bir toz pufu" original="Small poof of dust"/>
+        <!-- Small poof of dust -->
+        <string id="RQ0zb9Ci" text="Küçük bir toz pufu" original="Small poof of dust"/>
+        <!-- Some splash like effect -->
+        <string id="3cfuE0SV" text="Bazı sıçrama gibi efekt" original="Some splash like effect"/>
+        <!-- Some splash like effect with rings -->
+        <string id="t48JfjdQ" text="Halkalarla bazı sıçrama benzeri efektler" original="Some splash like effect with rings"/>
+        <!-- Fire -->
+        <string id="rnN93eKr" text="Ateş" original="Fire"/>
+        <!-- Yellow particles (healing effect) -->
+        <string id="ZgJoMGLX" text="Sarı parçacıklar (iyileştirici etki)" original="Yellow particles (healing effect)"/>
+        <!-- Stronger fire, not too much smoke -->
+        <string id="0fqC5sHu" text="Daha güçlü ateş, çok fazla duman yok" original="Stronger fire, not too much smoke"/>
+        <!-- Subtle sparks -->
+        <string id="93pkM6UH" text="ince kıvılcımlar" original="Subtle sparks"/>
+        <!-- Slow medium flames -->
+        <string id="00WeRBxp" text="Yavaş orta alevler" original="Slow medium flames"/>
+        <!-- Effusing smoke and flames when moving -->
+        <string id="MyZ14rJ5" text="Hareket halindeyken yayılan duman ve alevler" original="Effusing smoke and flames when moving"/>
+        <!-- Rain further away -->
+        <string id="bqPUVJMB" text="Yağmur daha uzak" original="Rain further away"/>
+        <!-- Rain on player -->
+        <string id="h5KzPJM3" text="Oyuncuya yağmur" original="Rain on player"/>
+        <!-- Very subtle small particles -->
+        <string id="29DVQzgQ" text="Çok ince küçük parçacıklar" original="Very subtle small particles"/>
+        <!-- Some fire -->
+        <string id="P7UjJvf8" text="biraz ateş" original="Some fire"/>
+        <!-- Black spooky smoke -->
+        <string id="2Oajfsfa" text="Siyah ürkütücü duman" original="Black spooky smoke"/>
+        <!-- Very dense smoke falling down -->
+        <string id="4tpSH1gO" text="Çok yoğun duman düşüyor" original="Very dense smoke falling down"/>
+        <!-- RangeFloatControl -->
+        <!-- Min -->
+        <string id="TZN2VR8Q" text="Minimum" original="Min"/>
+        <!-- Max -->
+        <string id="bySwFF1n" text="Maks." original="Max"/>
+        <!-- BLTModule -->
+        <!-- This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now. -->
+        <string id="IO9rnFpk" text="Modun bu yapısı, oyun sürümü {ExpectedVersion}. You are running game version {GameVersion} içindir. Şimdi çıkılıyor." original="This build of the mod is for game version {ExpectedVersion}. You are running game version {GameVersion}. Exiting now."/>
+        <!-- Bannerlord Twitch ERROR -->
+        <string id="Oru6b9Cy" text="Bannerlord Twitch HATASI" original="Bannerlord Twitch ERROR"/>
+        <!-- Loaded v{ModVersion} -->
+        <string id="45Q44kgm" text="v{ModVersion} yüklendi" original="Loaded v{ModVersion}"/>
+        <!-- Action Manager initialized -->
+        <string id="5G73vqNS" text="Eylem Yöneticisi başlatıldı" original="Action Manager initialized"/>
+        <!-- Bannerlord Twitch Mod WARNING -->
+        <string id="PhRzCo9t" text="Bannerlord Twitch Mod UYARISI" original="Bannerlord Twitch Mod WARNING"/>
+        <!-- You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less. -->
+        <string id="7b4tU6y9" text="Otomatik kaydetmeyi devre dışı bıraktınız, çökmeler kanal puanlarının kaybolmasına neden olabilir!\nBunu 15 dakika veya daha kısa bir süreye ayarlamanız önerilir." original="You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less."/>
+        <!-- Okay -->
+        <string id="hpFXglKx" text="Peki" original="Okay"/>
+        <!-- Bannerlord Twitch Mod DISABLED -->
+        <string id="Sphd7XTS" text="Bannerlord Twitch Modu DEVRE DIŞI" original="Bannerlord Twitch Mod DISABLED"/>
+        <!-- Bannerlord Twitch Mod STARTUP ERROR -->
+        <string id="cuXwwHRe" text="Bannerlord Twitch Mod BAŞLANGIÇ HATASI" original="Bannerlord Twitch Mod STARTUP ERROR"/>
+        <!-- Error in {Location}, please report this on the discord: {Error} -->
+        <string id="C0G8s2Lv" text="{Location}, please report this on the discord: {Error} hatası" original="Error in {Location}, please report this on the discord: {Error}"/>
+        <!-- SkillGroup -->
+        <!-- None -->
+        <string id="p2ImRezI" text="Hiçbiri" original="None"/>
+        <!-- All -->
+        <string id="ZJUJQl8V" text="Tüm" original="All"/>
+        <!-- Melee -->
+        <string id="Mtc9BiNI" text="yakın dövüş" original="Melee"/>
+        <!-- One Handed -->
+        <string id="NRNrLcBt" text="Tek elli" original="One Handed"/>
+        <!-- Two Handed -->
+        <string id="93kpWTwA" text="İki elli" original="Two Handed"/>
+        <!-- Polearm -->
+        <string id="PWibGbJ4" text="kutuplu silah" original="Polearm"/>
+        <!-- Ranged -->
+        <string id="oidnJJjF" text="menzilli" original="Ranged"/>
+        <!-- Bow -->
+        <string id="HW64G8xr" text="Yay" original="Bow"/>
+        <!-- Throwing -->
+        <string id="yR8vmGlW" text="Atma" original="Throwing"/>
+        <!-- Crossbow -->
+        <string id="UG5KpbT7" text="tatar yayı" original="Crossbow"/>
+        <!-- Movement -->
+        <string id="tVQs3vuO" text="Hareket" original="Movement"/>
+        <!-- Riding -->
+        <string id="14Unsmk1" text="Binme" original="Riding"/>
+        <!-- Athletics -->
+        <string id="4zlH32Z5" text="Atletizm" original="Athletics"/>
+        <!-- Support -->
+        <string id="AZD2nxRg" text="Destek" original="Support"/>
+        <!-- Scouting -->
+        <string id="pOYKEhhf" text="izcilik" original="Scouting"/>
+        <!-- Trade -->
+        <string id="ijZZGbRE" text="Ticaret" original="Trade"/>
+        <!-- Steward -->
+        <string id="CQqpGRtH" text="kâhya" original="Steward"/>
+        <!-- Medicine -->
+        <string id="X6rHMhsQ" text="İlaç" original="Medicine"/>
+        <!-- Engineering -->
+        <string id="tNC2NHRC" text="Mühendislik" original="Engineering"/>
+        <!-- Personal -->
+        <string id="eYTQ1TD7" text="Kişiye özel" original="Personal"/>
+        <!-- Crafting -->
+        <string id="PrE6W0WX" text="Üretmek" original="Crafting"/>
+        <!-- Tactics -->
+        <string id="BfNX6sak" text="taktikler" original="Tactics"/>
+        <!-- Roguery -->
+        <string id="OvyNv1El" text="Çapkınlık" original="Roguery"/>
+        <!-- Charm -->
+        <string id="1NcKYexo" text="Cazibe" original="Charm"/>
+        <!-- Leadership -->
+        <string id="4684bsD7" text="Liderlik" original="Leadership"/>
+        <!-- EquipmentType -->
+        <!-- None -->
+        <string id="rMIAZRoT" text="Hiçbiri" original="None"/>
+        <!-- Dagger -->
+        <string id="2gjNbpQI" text="Hançer" original="Dagger"/>
+        <!-- One Handed Sword -->
+        <string id="OTlpiu1X" text="Tek Elli Kılıç" original="One Handed Sword"/>
+        <!-- Two Handed Sword -->
+        <string id="LGaaSaY8" text="İki elle tutulan Kılıç" original="Two Handed Sword"/>
+        <!-- One Handed Axe -->
+        <string id="3teP1CbV" text="Tek Elli Balta" original="One Handed Axe"/>
+        <!-- Two Handed Axe -->
+        <string id="AufoIUAI" text="İki Elli Balta" original="Two Handed Axe"/>
+        <!-- One Handed Mace -->
+        <string id="74iFLLnE" text="Tek Elli Topuz" original="One Handed Mace"/>
+        <!-- Two Handed Mace -->
+        <string id="EVEYPnFF" text="İki Elli Topuz" original="Two Handed Mace"/>
+        <!-- One Handed Lance -->
+        <string id="bvOtwaZm" text="Tek Elli Mızrak" original="One Handed Lance"/>
+        <!-- Two Handed Lance -->
+        <string id="6fEElc9f" text="İki Elli Mızrak" original="Two Handed Lance"/>
+        <!-- One Handed Glaive -->
+        <string id="ICcCZnli" text="Tek Elli Glaive" original="One Handed Glaive"/>
+        <!-- Two Handed Glaive -->
+        <string id="KpYZoZE9" text="İki Elli Glaive" original="Two Handed Glaive"/>
+        <!-- Bow -->
+        <string id="HKYDdm9S" text="Yay" original="Bow"/>
+        <!-- Crossbow -->
+        <string id="3jigLyuH" text="tatar yayı" original="Crossbow"/>
+        <!-- Arrows -->
+        <string id="UjKvUAX1" text="Oklar" original="Arrows"/>
+        <!-- Bolts -->
+        <string id="QBgdwwa3" text="Cıvatalar" original="Bolts"/>
+        <!-- Throwing Knives -->
+        <string id="IUmqXtY6" text="Fırlatma Bıçakları" original="Throwing Knives"/>
+        <!-- Throwing Axes -->
+        <string id="mSnnORJ1" text="Fırlatma Eksenleri" original="Throwing Axes"/>
+        <!-- Throwing Javelins -->
+        <string id="WUrrIbmH" text="Cirit atma" original="Throwing Javelins"/>
+        <!-- Shield -->
+        <string id="om9ZF9Mu" text="kalkan" original="Shield"/>
+        <!-- Stone -->
+        <string id="vIT4xG8X" text="Taş" original="Stone"/>
+    </strings>
+</base>

@@ -397,3 +397,11 @@ BannerlordTwitch/BannerlordTwitch/Properties/AssemblyInfo.cs
 BannerlordTwitch/BLTBuffet/Properties/AssemblyInfo.cs
 
 BannerlordTwitch/BLTConfigure/Properties/AssemblyInfo.cs
+
+AutoTranslate/.idea/
+
+AutoTranslate/.venv/
+
+AutoTranslate/.key/
+
+.idea

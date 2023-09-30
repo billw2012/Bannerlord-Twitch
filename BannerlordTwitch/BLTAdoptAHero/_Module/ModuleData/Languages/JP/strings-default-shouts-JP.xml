@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="日本語"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Don't worry, I've got your back! -->
+        <string id="DczOKFsA" text="心配しないでください、私はあなたの背中を持っています！" original="Don't worry, I've got your back!"/>
+        <!-- I'm here! -->
+        <string id="pj9Z0M7G" text="私はここにいます！" original="I'm here!"/>
+        <!-- Which one should I stab? -->
+        <string id="y8DOtj2H" text="どちらを刺す必要がありますか？" original="Which one should I stab?"/>
+        <!-- Need a hand? -->
+        <string id="1i1OrZDd" text="手が必要？" original="Need a hand?"/>
+        <!-- The price has been paid. I am at your service. -->
+        <string id="rVaJZ5Lo" text="代金は支払われました。私はあなたのサービスにいます。" original="The price has been paid. I am at your service."/>
+        <!-- Once more unto the breach! -->
+        <string id="QEyO8W82" text="もう一度違反に！" original="Once more unto the breach!"/>
+        <!-- Freeeeeedddooooooommmm! -->
+        <string id="Bo11t6gj" text="Freeeeeedddooooooommmm！" original="Freeeeeedddooooooommmm!"/>
+        <!-- Remember the Alamo! -->
+        <string id="8uO8Isjm" text="アラモを忘れないでください！" original="Remember the Alamo!"/>
+        <!-- Alala! -->
+        <string id="A3KdQJok" text="アララ！" original="Alala!"/>
+        <!-- Eleleu! -->
+        <string id="pXVCAwAr" text="エレレウ！" original="Eleleu!"/>
+        <!-- Deus vult! -->
+        <string id="TlZjOFii" text="デウス・ウルト！" original="Deus vult!"/>
+        <!-- Banzai! -->
+        <string id="xPFIIEzw" text="ばんざい！" original="Banzai!"/>
+        <!-- Liberty or Death! -->
+        <string id="gmN3YLPw" text="自由か死か！" original="Liberty or Death!"/>
+        <!-- Har Har Mahadev! -->
+        <string id="FoDIukJK" text="ハーハーマハデフ！" original="Har Har Mahadev!"/>
+        <!-- Desperta ferro! -->
+        <string id="SSqdBzkY" text="デスペルタフェロ！" original="Desperta ferro!"/>
+        <!-- Alba gu bràth! -->
+        <string id="UHhpIpDU" text="アルバグブラス！" original="Alba gu bràth!"/>
+        <!-- Santiago! -->
+        <string id="lDo1AOCS" text="サンティアゴ！" original="Santiago!"/>
+        <!-- Huzzah! -->
+        <string id="gT95E89y" text="万歳！" original="Huzzah!"/>
+        <!-- War... war never changes... -->
+        <string id="fKKpcZGQ" text="戦争...戦争は決して変わらない..." original="War... war never changes..."/>
+        <!-- May we live to see the next sunrise! -->
+        <string id="vZgbxkW9" text="次の日の出を見るために生きていきましょう！" original="May we live to see the next sunrise!"/>
+        <!-- For glory, charge! -->
+        <string id="wn7zIy9f" text="栄光のために、充電してください！" original="For glory, charge!"/>
+        <!-- Give them nothing, but take from them everything! -->
+        <string id="KH7Dnbe7" text="彼らに何も与えないでください、しかし彼らからすべてを取りなさい！" original="Give them nothing, but take from them everything!"/>
+        <!-- Fell deeds awake, fire and slaughter! -->
+        <string id="FyBFecip" text="目覚め、火と虐殺の行為を倒した！" original="Fell deeds awake, fire and slaughter!"/>
+        <!-- Spooooooooooooooooooon! -->
+        <string id="H7asM2KG" text="Spooooooooooooooooooon！" original="Spooooooooooooooooooon!"/>
+        <!-- Leeeeeeeerooooy Jeeeeenkins -->
+        <string id="ERDmbO2B" text="Leeeeeeeerooooy Jeeeeenkins" original="Leeeeeeeerooooy Jeeeeenkins"/>
+        <!-- I live, I die, I live again! -->
+        <string id="hL0vmkUG" text="私は生きる、死ぬ、また生きる！" original="I live, I die, I live again!"/>
+        <!-- Witness me!! -->
+        <string id="KMTRT2EN" text="私を目撃してください！" original="Witness me!!"/>
+        <!-- Now for wrath, now for ruin and a red nightfall! -->
+        <string id="F9WUaqdj" text="今、怒りのために、今、破滅と赤い日暮れのために！" original="Now for wrath, now for ruin and a red nightfall!"/>
+        <!-- n -->
+        <string id="ZQiRFkFU" text="NS" original="n"/>
+        <!-- Those are brave men knocking at our door, let's go kill them! -->
+        <string id="JlZ9pRbq" text="それらは私たちのドアをノックする勇敢な男性です、彼らを殺しに行きましょう！" original="Those are brave men knocking at our door, let's go kill them!"/>
+        <!-- Lets take this city! -->
+        <string id="5gg0BcKk" text="この街を取りましょう！" original="Lets take this city!"/>
+        <!-- Defend yourself! -->
+        <string id="lhWht8Em" text="身を守る！" original="Defend yourself!"/>
+        <!-- Time for you to die! -->
+        <string id="FmlTSg39" text="あなたが死ぬ時が来ました！" original="Time for you to die!"/>
+        <!-- You killed my father, prepare to die! -->
+        <string id="GJpUfALs" text="あなたは私の父を殺しました、死ぬ準備をしてください！" original="You killed my father, prepare to die!"/>
+        <!-- En garde! -->
+        <string id="IKN2G1wi" text="エンガルド！" original="En garde!"/>
+        <!-- It's stabbing time! For you. -->
+        <string id="yTHYR4i9" text="刺す時間です！あなたのために。" original="It's stabbing time! For you."/>
+        <!-- It's nothing personal! -->
+        <string id="4wYLe6f0" text="個人的なことではありません！" original="It's nothing personal!"/>
+        <!-- Curse my sudden but inevitable betrayal! -->
+        <string id="37bg5QNX" text="私の突然の、しかし避けられない裏切りを呪う！" original="Curse my sudden but inevitable betrayal!"/>
+        <!-- I just don't like you! -->
+        <string id="AOpbzIUP" text="私はあなたが好きではありません！" original="I just don't like you!"/>
+        <!-- I'm gonna put some dirt in your eye! -->
+        <string id="JFCcwLga" text="私はあなたの目に少し汚れを入れるつもりです！" original="I'm gonna put some dirt in your eye!"/>
+        <!-- I'll mount your head on a pike! -->
+        <string id="jCrCRbyA" text="パイクに頭を乗せます！" original="I'll mount your head on a pike!"/>
+        <!-- Don't hate me, it's just business... -->
+        <string id="0uiD2HxZ" text="私を憎まないでください、それはただのビジネスです..." original="Don't hate me, it's just business..."/>
+        <!-- Never should have come here! -->
+        <string id="42Fuy9pm" text="ここに来るべきではなかった！" original="Never should have come here!"/>
+        <!-- Your money or your life! -->
+        <string id="dClbnb2q" text="あなたのお金またはあなたの人生！" original="Your money or your life!"/>
+        <!-- I'm sorry, but I must stop you. -->
+        <string id="uyjy1geA" text="申し訳ありませんが、私はあなたを止めなければなりません。" original="I'm sorry, but I must stop you."/>
+        <!-- I have the high ground! -->
+        <string id="dh0c96lo" text="私は高みを持っています！" original="I have the high ground!"/>
+        <!-- DAMN IT DAVE! -->
+        <string id="EcD5q9th" text="DAMN IT DAVE！" original="DAMN IT DAVE!"/>
+    </strings>
+</base>

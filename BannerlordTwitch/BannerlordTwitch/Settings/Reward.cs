@@ -1,14 +1,15 @@
 ﻿using System.ComponentModel;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace BannerlordTwitch
 {
-    [Description("Channel points reward definition")]
+    [LocDescription("{=KaFWtYmc}Channel points reward definition")]
     public class Reward : ActionBase
     {
-        [Category("General"), 
-         Description("Twitch channel points reward definition"),
+        [LocDisplayName("{=sF4buTM8}Reward Specification"), LocCategory("General", "{=C5T5nnix}General"), 
+         LocDescription("{=zq79vZqY}Twitch channel points reward definition"),
          ExpandableObject, Expand, ReadOnly(true), PropertyOrder(1)]
         public RewardSpec RewardSpec { get; set; }
 

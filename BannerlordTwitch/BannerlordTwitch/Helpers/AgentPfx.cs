@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch.Annotations;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -16,19 +17,25 @@ namespace BannerlordTwitch.Helpers
     {
         // private int Id { get; set; }
         
-        [Description("Particle effect system name, see ParticleEffects.txt for the full vanilla list"),
+        [LocDisplayName("{=uUzmy7Lh}Name"), 
+         LocDescription("{=xgnntAyd}Particle effect system name, see ParticleEffects.txt for the full vanilla list"),
          ItemsSource(typeof(LoopingParticleEffectItemSource)), PropertyOrder(1), UsedImplicitly]
         public string Name { get; set; }
 
         public enum AttachPointEnum
         {
+            [LocDisplayName("{=w3eb5kWA}On Weapon")]
             OnWeapon,
+            [LocDisplayName("{=YLmpgn4j}On Hands")]
             OnHands,
+            [LocDisplayName("{=muuJpmaw}On Head")]
             OnHead,
+            [LocDisplayName("{=m9p9nBjM}On Body")]
             OnBody,
         }
 
-        [Description("Where to attach the particles"), PropertyOrder(2), UsedImplicitly]
+        [LocDisplayName("{=GCe3gQcz}Attach Point"), 
+         LocDescription("{=uNOYtEdN}Where to attach the particles"), PropertyOrder(2), UsedImplicitly]
         public AttachPointEnum AttachPoint { get; set; }
 
         public override string ToString() => $"{LoopingParticleEffectItemSource.GetFriendlyName(Name)} {AttachPoint}";
@@ -77,14 +84,15 @@ namespace BannerlordTwitch.Helpers
                         pfxState.boneAttachments = CreateAgentEffects(Agent,
                             pfx.Name,
                             MatrixFrame.Identity,
-                            Game.Current.HumanMonster.MainHandItemBoneIndex,
-                            Game.Current.HumanMonster.OffHandItemBoneIndex);
+                            Agent.Monster.MainHandItemBoneIndex,
+                            Agent.Monster.MainHandItemBoneIndex,
+                            Agent.Monster.OffHandItemBoneIndex);
                         break;
                     case ParticleEffectDef.AttachPointEnum.OnHead:
                         pfxState.boneAttachments = CreateAgentEffects(Agent,
                             pfx.Name,
                             MatrixFrame.Identity.Strafe(0.1f),
-                            Game.Current.HumanMonster.HeadLookDirectionBoneIndex);
+                            Agent.Monster.HeadLookDirectionBoneIndex);
                         break;
                     case ParticleEffectDef.AttachPointEnum.OnBody:
                         pfxState.boneAttachments = CreateAgentEffects(Agent, pfx.Name, MatrixFrame.Identity.Elevate(0.1f));
@@ -142,7 +150,7 @@ namespace BannerlordTwitch.Helpers
                         var localFrame = MatrixFrame.Identity.Elevate(i * 0.1f);
                         var particle = ParticleSystem.CreateParticleSystemAttachedToEntity(pfxSystem, wieldedWeaponEntity, ref localFrame);
                         particle.SetRuntimeEmissionRateMultiplier(MBRandom.RandomFloatRanged(0.75f, 1.25f));
-                        skeleton.AddComponentToBone(Game.Current.HumanMonster.MainHandItemBoneIndex, particle);
+                        skeleton.AddComponentToBone(agent.Monster.MainHandItemBoneIndex, particle);
                         components.Add(particle);
                     }
                     break;
@@ -158,7 +166,7 @@ namespace BannerlordTwitch.Helpers
                         var localFrame = MatrixFrame.Identity.Elevate(i * 0.1f);
                         var particle = ParticleSystem.CreateParticleSystemAttachedToEntity(pfxSystem, wieldedWeaponEntity, ref localFrame);
                         particle.SetRuntimeEmissionRateMultiplier(MBRandom.RandomFloatRanged(0.75f, 1.25f));
-                        skeleton.AddComponentToBone(Game.Current.HumanMonster.MainHandItemBoneIndex, particle);
+                        skeleton.AddComponentToBone(agent.Monster.MainHandItemBoneIndex, particle);
                         components.Add(particle);
                     }
                     break;

@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Models;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Achievements;
-using BLTAdoptAHero.Actions.Util;
+using BLTAdoptAHero.UI;
 using BLTAdoptAHero.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
-using SandBox;
-using SandBox.TournamentMissions.Missions;
+using SandBox.Tournaments.MissionLogics;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.SandBox.Source.TournamentGames;
+using TaleWorlds.CampaignSystem.TournamentGames;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.TwoDimension;
 
 namespace BLTAdoptAHero
 {
@@ -48,7 +47,7 @@ namespace BLTAdoptAHero
             activeTournament.AddRange(viewersToAdd);
             tournamentQueue.RemoveRange(0, viewersToAddCount);
             
-            var basicTroops = HeroHelpers.AllCultures
+            var basicTroops = CampaignHelpers.AllCultures
                 .SelectMany(c => new[] {c.BasicTroop, c.EliteBasicTroop})
                 .Where(t => t != null)
                 .ToList();
@@ -99,7 +98,7 @@ namespace BLTAdoptAHero
             
         private static IEnumerable<(Equipment equipment, IEnumerable<EquipmentType> types)> GetAllTournamentEquipment()
         {
-            return HeroHelpers.AllCultures.SelectMany(c => 
+            return CampaignHelpers.AllCultures.SelectMany(c => 
                     (c.TournamentTeamTemplatesForOneParticipant ?? Enumerable.Empty<CharacterObject>())
                         .Concat(c.TournamentTeamTemplatesForTwoParticipant ?? Enumerable.Empty<CharacterObject>())
                         .Concat(c.TournamentTeamTemplatesForFourParticipant ?? Enumerable.Empty<CharacterObject>()))
@@ -131,7 +130,7 @@ namespace BLTAdoptAHero
                 // Each participant has a set of skills associated with their class.
                 // Randomly select tournament equipment set weighted by how well it matches the participants skills.
                     
-                var tournamentBehavior = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>();
+                var tournamentBehavior = MissionState.Current.CurrentMission.GetMissionBehavior<TournamentBehavior>();
                     
                 // Get all equipment sets, and their associated skills
                 var availableEquipment = GetAllTournamentEquipment()
@@ -173,7 +172,7 @@ namespace BLTAdoptAHero
                     .equipment;
 
                 MissionState.Current.CurrentMission
-                    .GetMissionBehaviour<BLTTournamentSkillAdjustBehavior>()
+                    .GetMissionBehavior<BLTTournamentSkillAdjustBehavior>()
                     .UnarmedRound = tournamentSet.IsEmpty();
 
                 foreach (var e in equipments)
@@ -186,7 +185,7 @@ namespace BLTAdoptAHero
             }
             else if (BLTAdoptAHeroModule.TournamentConfig.NoSpears)
             {
-                var replacementWeapon = HeroHelpers.AllItems
+                var replacementWeapon = CampaignHelpers.AllItems
                     .FirstOrDefault(i => i.StringId == "empire_sword_1_t2_blunt");
                 if (replacementWeapon != null)
                 {
@@ -215,9 +214,9 @@ namespace BLTAdoptAHero
                     (
                         slot: slotItemTypePair.slot, 
                         item: EquipHero.SelectRandomItemNearestTier(
-                                  HeroHelpers.AllItems.Where(i 
+                                  CampaignHelpers.AllItems.Where(i 
                                       => i.Culture == culture && i.ItemType == slotItemTypePair.itemType), (int)tier)
-                              ?? EquipHero.SelectRandomItemNearestTier(HeroHelpers.AllItems.Where(i => i.ItemType == slotItemTypePair.itemType), (int)tier)
+                              ?? EquipHero.SelectRandomItemNearestTier(CampaignHelpers.AllItems.Where(i => i.ItemType == slotItemTypePair.itemType), (int)tier)
                     )).ToList();
                     
                 foreach (var (slot, item) in replacements)
@@ -230,29 +229,27 @@ namespace BLTAdoptAHero
 
             return false;
         }
-                
-        #region BLTBetMissionBehavior
-
-        #endregion
 
         public void PrepareForTournamentGame()
         {
-            MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>()
+            MissionState.Current.CurrentMission.GetMissionBehavior<TournamentBehavior>()
                 .TournamentEnd += OnTournamentEnd;
         }
 
         private void OnTournamentEnd()
         {
-            var tournamentBehavior = MissionState.Current.CurrentMission.GetMissionBehaviour<TournamentBehavior>();
+            var tournamentBehavior = MissionState.Current.CurrentMission.GetMissionBehavior<TournamentBehavior>();
 
             // Win results, put winner last
-            foreach (var entry in activeTournament.OrderBy(e => e.Hero == tournamentBehavior.Winner.Character?.HeroObject))
+            foreach (var entry in activeTournament
+                         .Where(e => e.Hero.IsAdopted())
+                         .OrderBy(e => e.Hero == tournamentBehavior.Winner.Character?.HeroObject))
             {
                 float actualBoost = entry.IsSub ? Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1) : 1;
                 var results = new List<string>();
                 if (entry.Hero != null && entry.Hero == tournamentBehavior.Winner.Character?.HeroObject)
                 {
-                    results.Add("WINNER!");
+                    results.Add("{=jb5vaUCD}WINNER!".Translate());
 
                     BLTAdoptAHeroCampaignBehavior.Current.IncreaseTournamentChampionships(entry.Hero);
                     // Winner gets their gold back also
@@ -276,7 +273,7 @@ namespace BLTAdoptAHero
                     var (item, itemModifier, slot) = BLTAdoptAHeroModule.TournamentConfig.Prize.Generate(entry.Hero);
 
                     results.Add(item == null
-                        ? $"no prize available for you!"
+                        ? "{=80PitGR4}no prize available for you!".Translate()
                         : RewardHelpers.AssignCustomReward(entry.Hero, item, itemModifier, slot));
                 }
                 else
@@ -332,7 +329,7 @@ namespace BLTAdoptAHero
             ];
                 
             // End round effects (as there is no event handler for it :/)
-            foreach (var entry in activeTournament)
+            foreach (var entry in activeTournament.Where(e => e.Hero.IsAdopted()))
             {
                 float actualBoost = entry.IsSub ? Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1) : 1;
                         
@@ -376,6 +373,8 @@ namespace BLTAdoptAHero
                     Log.LogFeedResponse(entry.Hero.FirstName.ToString(), results.ToArray());
                 }
             }
+            
+            MissionInfoHub.Clear();
         }
 
         private ItemObject originalPrize;
@@ -420,9 +419,18 @@ namespace BLTAdoptAHero
             SafeCallStatic(() => Current?.EndCurrentMatchPostfixImpl(__instance));
         }
         
-        #endregion
+        [UsedImplicitly, HarmonyPrefix, HarmonyPatch(typeof(TournamentManager), "GivePrizeToWinner")]
+        public static bool GivePrizeToWinnerPrefix(Hero winner)
+        {
+            // The default implementation of GivePrizeToWinner expects CurrentSettlement to not be null, which isn't 
+            // true for our tournaments as we pull heroes from wherever they happen to be.
+            // This check WILL mean that adopted heroes don't get tournament prizes in normal tournaments they happen
+            // to be in, but this isn't a big issue. 
+            return SafeCallStatic(() => !winner.IsAdopted() && winner.CurrentSettlement != null, true);
+        }
         
-                
+        #endregion
+
 #if DEBUG
         [CommandLineFunctionality.CommandLineArgumentFunction("testprize", "blt")]
         [UsedImplicitly]
@@ -454,7 +462,7 @@ namespace BLTAdoptAHero
                     var (item, modifier, _) = RewardHelpers.GenerateRewardType(rewardType, 6, 
                         Hero.MainHero, classDef, allowDuplicates: true,
                         BLTAdoptAHeroModule.CommonConfig.CustomRewardModifiers,
-                        BLTAdoptAHeroModule.TournamentConfig.Prize.CustomItemName, 
+                        BLTAdoptAHeroModule.TournamentConfig.Prize.CustomItemName.ToString(), 
                         BLTAdoptAHeroModule.TournamentConfig.Prize.CustomItemPower);
                     
                     if (item == null)

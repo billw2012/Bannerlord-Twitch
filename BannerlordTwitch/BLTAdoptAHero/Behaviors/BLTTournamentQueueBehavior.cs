@@ -7,8 +7,9 @@ using BannerlordTwitch.Util;
 using HarmonyLib;
 using JetBrains.Annotations;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Settlements;
+using TaleWorlds.CampaignSystem.TournamentGames;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.SaveSystem;
 
 namespace BLTAdoptAHero
 {
@@ -91,11 +92,8 @@ namespace BLTAdoptAHero
 
         private class TournamentQueueEntrySavable
         {
-            [SaveableProperty(0)]
             public int HeroIndex { get; set; }
-            [SaveableProperty(1)]
             public bool IsSub { get; set; }
-            [SaveableProperty(2)]
             public int EntryFee { get; set; }
         }
 
@@ -107,12 +105,21 @@ namespace BLTAdoptAHero
         {
             if (TournamentQueue.Any(sh => sh.Hero == hero))
             {
-                return (false, $"You are already in the tournament queue!");
+                return (false, "{=JtZIstbB}You are already in the tournament queue!".Translate());
             }
 
             TournamentQueue.Add(new TournamentQueueEntry(hero, isSub, entryFree));
             TournamentHub.UpdateEntrants();
-            return (true, $"You are position {TournamentQueue.Count} in the tournament queue!");
+            return (true, "{=1duM11Gt}You are position {QueuePosition} in the tournament queue!"
+                .Translate(("QueuePosition", TournamentQueue.Count)));
+        }
+
+        public void RemoveFromQueue(Hero hero)
+        {
+            if(TournamentQueue.RemoveAll(e => e.Hero == hero) > 0)
+            {
+                TournamentHub.UpdateEntrants();
+            }
         }
         
         public void JoinViewerTournament()
@@ -137,9 +144,9 @@ namespace BLTAdoptAHero
             startingTournament.PrepareForTournamentGame();
             
             // Mission is created by PrepareForTournamentGame, so we can add to it here
-            MissionState.Current.CurrentMission.AddMissionBehaviour(startingTournament);
-            MissionState.Current.CurrentMission.AddMissionBehaviour(new BLTTournamentBetMissionBehavior());
-            MissionState.Current.CurrentMission.AddMissionBehaviour(new BLTTournamentSkillAdjustBehavior());
+            MissionState.Current.CurrentMission.AddMissionBehavior(startingTournament);
+            MissionState.Current.CurrentMission.AddMissionBehavior(new BLTTournamentBetMissionBehavior());
+            MissionState.Current.CurrentMission.AddMissionBehavior(new BLTTournamentSkillAdjustBehavior());
 
             startingTournament = null;
         }
@@ -186,9 +193,8 @@ namespace BLTAdoptAHero
         
         // MissionState.Current.CurrentMission doesn't have any behaviours yet added during this function,
         // so we split the initialization that requires access to mission behaviours into another patch below
-        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(TournamentGame), nameof(TournamentGame.GetParticipantCharacters))]
-        public static void GetParticipantCharactersPostfix(Settlement settlement,
-            int maxParticipantCount, bool includePlayer, List<CharacterObject> __result)
+        [UsedImplicitly, HarmonyPostfix, HarmonyPatch(typeof(FightTournamentGame), nameof(FightTournamentGame.GetParticipantCharacters))]
+        public static void GetParticipantCharactersPostfix(Settlement settlement, List<CharacterObject> __result)
         {
             SafeCallStatic(() => Current?.GetParticipantCharactersPostfixImpl(settlement, __result));
         }

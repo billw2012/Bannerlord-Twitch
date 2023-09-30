@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
@@ -15,6 +16,7 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
+    [LocDisplayName("{=3rL4RHje}Class Config")]
     internal class GlobalHeroClassConfig : IUpdateFromDefault, IDocumentable
     {
         #region Static
@@ -25,15 +27,17 @@ namespace BLTAdoptAHero
         #endregion
         
         #region User Editable
-        [Description("Defined classes"),
+        [LocDisplayName("{=462kHfn2}Class Definitions"),
+         LocDescription("{=NFjlVt57}Defined classes"),
          Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
          PropertyOrder(1), UsedImplicitly] 
         public ObservableCollection<HeroClassDef> ClassDefs { get; set; } = new();
 
-        [Description("Requirements for class levels"),
+        [LocDisplayName("{=Q0yTbTCT}Class Level Requirements"),
+         LocDescription("{=y8LLccGK}Requirements for class levels"),
          Editor(typeof(DefaultCollectionEditor), typeof(DefaultCollectionEditor)),
          PropertyOrder(2), UsedImplicitly]
-        public ObservableCollection<ClassLevelRequirementsDef> ClassLevelRequirements { get; set; }
+        public ObservableCollection<ClassLevelRequirementsDef> ClassLevelRequirements { get; set; } = new();
         #endregion
 
         #region Public Interface
@@ -41,13 +45,13 @@ namespace BLTAdoptAHero
         public IEnumerable<HeroClassDef> ValidClasses => ClassDefs.Where(c => c.Enabled);
         
         [Browsable(false), YamlIgnore]
-        public IEnumerable<string> ClassNames => ValidClasses.Select(c => c.Name?.ToLower());
+        public IEnumerable<string> ClassNames => ValidClasses.Select(c => c.Name?.ToString().ToLower());
 
         public HeroClassDef GetClass(Guid id) 
             => ValidClasses.FirstOrDefault(c => c.ID == id);
 
         public HeroClassDef FindClass(string search) 
-            => ValidClasses.FirstOrDefault(c => c.Name.Equals(search, StringComparison.InvariantCultureIgnoreCase));
+            => ValidClasses.FirstOrDefault(c => c.Name.ToString().Equals(search, StringComparison.InvariantCultureIgnoreCase));
 
         [Browsable(false), YamlIgnore]
         public IEnumerable<ClassLevelRequirementsDef> ValidClassLevelRequirements 
@@ -70,6 +74,9 @@ namespace BLTAdoptAHero
         #region IUpdateFromDefault
         public void OnUpdateFromDefault(Settings defaultSettings)
         {
+            ClassDefs ??= new();
+            ClassLevelRequirements ??= new();
+            
             SettingsHelpers.MergeCollections(
                 ClassDefs, 
                 Get(defaultSettings).ClassDefs,
@@ -88,14 +95,14 @@ namespace BLTAdoptAHero
         {
             generator.Div("class-config", () =>
             {
-                generator.H1("Classes");
+                generator.H1("{=E0CBnj57}Classes".Translate());
                 // foreach (var cl in ClassDefs)
                 // {
                 //     generator.LinkToAnchor(cl.Name, () => generator.H2(cl.Name));
                 // }
                 foreach (var cl in ValidClasses)
                 {
-                    generator.MakeAnchor(cl.Name, () => generator.H2(cl.Name));
+                    generator.MakeAnchor(cl.Name.ToString(), () => generator.H2(cl.Name.ToString()));
                     cl.GenerateDocumentation(generator);
                     generator.Br();
                 }
@@ -104,6 +111,7 @@ namespace BLTAdoptAHero
         #endregion
     }
 
+    [LocDisplayName("{=uZUsZLGm}Class Level Requirements Definition")]
     public class ClassLevelRequirementsDef : INotifyPropertyChanged, ICloneable
     {
         #region User Editable
@@ -113,10 +121,14 @@ namespace BLTAdoptAHero
         [PropertyOrder(1), UsedImplicitly]
         public bool Enabled { get; set; }
                 
-        [PropertyOrder(2), Description("Class level"), UsedImplicitly] 
+        [LocDisplayName("{=0raqv788}ClassLevel"),
+         LocDescription("{=el4y84iD}Class level"), 
+         PropertyOrder(2), UsedImplicitly] 
         public int ClassLevel { get; set; }
 
-        [Description("Requirements for this class level"), PropertyOrder(3), UsedImplicitly, 
+        [LocDisplayName("{=aMGoiH53}Requirements"),
+         LocDescription("{=G95DA4OM}Requirements for this class level"),
+         PropertyOrder(3), UsedImplicitly, 
          Editor(typeof(DerivedClassCollectionEditor<IAchievementRequirement>), 
              typeof(DerivedClassCollectionEditor<IAchievementRequirement>))]
         public ObservableCollection<IAchievementRequirement> Requirements { get; set; } = new();
@@ -126,7 +138,7 @@ namespace BLTAdoptAHero
         public override string ToString() 
             => $"{ClassLevel}: "
                + (!Requirements.Any() 
-                   ? "(no requirements)" 
+                   ? "{=7WLbMjpz}(no requirements)".Translate() 
                    : string.Join(" + ", Requirements.Select(r => r.ToString())));
 
         public bool IsMet(Hero hero) => Requirements.All(r => r.IsMet(hero));

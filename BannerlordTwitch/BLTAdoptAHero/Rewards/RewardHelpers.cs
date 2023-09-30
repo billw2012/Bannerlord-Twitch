@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using BannerlordTwitch.Helpers;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Actions.Util;
-using BLTAdoptAHero.Annotations;
-using BLTAdoptAHero.Util;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 
 namespace BLTAdoptAHero
 {
@@ -48,17 +46,24 @@ namespace BLTAdoptAHero
             if (slot != EquipmentIndex.None)
             {
                 hero.BattleEquipment[slot] = element;
-                return $"received {element.GetModifiedItemName()}";
+                return "{=RczvXuxP}received {ItemName}"
+                           .Translate(("ItemName", RewardHelpers.GetItemNameAndModifiers(element)));
             }
             else if (!isCustom)
             {
                 // Sell non-custom items
                 BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(hero, item.Value * 5);
-                return $"sold {element.GetModifiedItemName()} for {item.Value}{Naming.Gold} (not needed)";
+                return "{=bNX0NiQ9}sold {ItemName} for {ItemValue}{GoldIcon} (not needed)"
+                    .Translate(
+                        ("ItemName", element.GetModifiedItemName()),
+                        ("ItemValue", item.Value),
+                        ("GoldIcon", Naming.Gold));
             }
             else
             {
-                return $"received {element.GetModifiedItemName()} (put in storage)";
+                return "{=RczvXuxP}received {ItemName}"
+                           .Translate(("ItemName", RewardHelpers.GetItemNameAndModifiers(element)))
+                           + " (" + "{=}not equipped".Translate() + ")";
             }
         }
 
@@ -223,7 +228,7 @@ namespace BLTAdoptAHero
             }
                     
             // Find mounts of the correct family type and tier
-            var mount = HeroHelpers.AllItems
+            var mount = CampaignHelpers.AllItems
                 .Where(item =>
                     item.IsMountable
                     // If we are making a custom mount then use any mount over Tier 2, otherwise match the tier exactly 
@@ -259,6 +264,61 @@ namespace BLTAdoptAHero
                 return CustomItems.CreateCraftedWeapon(hero, weaponType, 5);
             }
         }
-        
+
+        public static string GetItemNameAndModifiers(EquipmentElement item) 
+            => item.GetModifiedItemName() + " (" + GetModifiersDescription(item.ItemModifier, item.Item) + ")";
+
+        public static string GetModifiersDescription(ItemModifier itemModifier, ItemObject itemObject)
+        {
+            if (itemModifier == null)
+            {
+                return "{=}no modifiers".Translate();
+            }
+            
+            bool isWeaponMelee = itemObject.Type is 
+                ItemObject.ItemTypeEnum.OneHandedWeapon or
+                ItemObject.ItemTypeEnum.TwoHandedWeapon or
+                ItemObject.ItemTypeEnum.Polearm;
+            bool isWeaponRanged = itemObject.Type is 
+                ItemObject.ItemTypeEnum.Crossbow or
+                ItemObject.ItemTypeEnum.Bow;
+            bool isAmmo = itemObject.Type is 
+                ItemObject.ItemTypeEnum.Bolts or 
+                ItemObject.ItemTypeEnum.Arrows or 
+                ItemObject.ItemTypeEnum.Thrown;
+            bool isThrown = itemObject.Type is ItemObject.ItemTypeEnum.Thrown;
+            bool isShield = itemObject.Type is
+                ItemObject.ItemTypeEnum.Shield;
+            bool isArmor = itemObject.HasArmorComponent;
+            bool isHorseArmor = itemObject.Type is ItemObject.ItemTypeEnum.HorseHarness;
+            bool isHorse = itemObject.HorseComponent != null;
+
+            var modifiers = new[]
+                {
+                    // Only armor modifies armor
+                    (str: "{=}{Inc}{AMOUNT} Armor", mod: itemModifier.ModifyArmor(0), enabled: isArmor || isHorseArmor),
+                    // Only shields can modify HP
+                    (str: "{=}{Inc}{AMOUNT} HP", mod: itemModifier.ModifyHitPoints(0), enabled: isShield),
+                    // Only non-ranged weapons can modify speed, and speed refers to swing/thrust/handling
+                    (str: "{=}{Inc}{AMOUNT} Speed", mod: itemModifier.ModifySpeed(0), enabled: isWeaponMelee),
+                    (str: "{=}{Inc}{AMOUNT} Damage", mod: itemModifier.ModifyDamage(0), enabled: isWeaponMelee || isAmmo),
+                    (str: "{=}{Inc}{AMOUNT} Missile Speed", mod: itemModifier.ModifyMissileSpeed(0), enabled: isThrown || isWeaponRanged),
+                    (str: "{=}{Inc}{AMOUNT} Stack Count", mod: itemModifier.ModifyStackCount(0), enabled: isAmmo),
+                    (str: "{=}{Inc}{AMOUNT}% Mount Speed", mod: itemModifier.ModifyMountSpeed(100) - 100, enabled: isHorse || isHorseArmor),
+                    (str: "{=}{Inc}{AMOUNT}% Mount Charge", mod: itemModifier.ModifyMountCharge(100) - 100, enabled: isHorse || isHorseArmor),
+                    (str: "{=}{Inc}{AMOUNT}% Mount HP", mod: itemModifier.ModifyMountHitPoints(100) - 100, enabled: isHorse),
+                    (str: "{=}{Inc}{AMOUNT}% Mount Maneuver", mod: itemModifier.ModifyMountManeuver(100) - 100, enabled: isHorse || isHorseArmor),
+                }
+                .Where(x => x.mod != 0 && x.enabled)
+                .Select(x => x.str.Translate(("Inc", Naming.Inc), ("AMOUNT", x.mod)))
+                .ToList();
+            
+            if (!modifiers.Any())
+            {
+                return "{=}no modifiers".Translate();
+            }
+
+            return string.Join(" ", modifiers);
+        }
     }
 }

@@ -4,15 +4,16 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Rewards;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Powers;
 using JetBrains.Annotations;
-using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero
 {
+    [LocDisplayName("{=v75UOuDM}Power Config")]
     public class GlobalHeroPowerConfig : IUpdateFromDefault, ILoaded
     {
         #region Static
@@ -23,12 +24,16 @@ namespace BLTAdoptAHero
         #endregion
 
         #region User Editable
-        [Description("Defined powers"), UsedImplicitly,  
+        [LocDisplayName("{=9vUtdRu2}Power Definitions"),
+         LocDescription("{=ymGZUjoU}Defined powers"),
          Editor(typeof(DerivedClassCollectionEditor<HeroPowerDefBase>), 
-             typeof(DerivedClassCollectionEditor<HeroPowerDefBase>))] 
+             typeof(DerivedClassCollectionEditor<HeroPowerDefBase>)),  
+         UsedImplicitly] 
         public ObservableCollection<HeroPowerDefBase> PowerDefs { get; set; } = new();
         
-        [Description("Whether powers are disabled in a tournament"), UsedImplicitly] 
+        [LocDisplayName("{=5CD7bmuC}Disable Powers In Tournaments"),
+         LocDescription("{=K7uKtO90}Whether powers are disabled in a tournament"),
+         UsedImplicitly] 
         public bool DisablePowersInTournaments { get; set; } = true;
         
         #region Deprecated
@@ -71,6 +76,7 @@ namespace BLTAdoptAHero
                                 "C4213666-2176-42B4-8DBB-BFE0182BCCE1" => typeof(AddHealthPower),
                                 "FFE07DA3-E977-42D8-80CA-5DFFF66123EB" => typeof(ReflectDamagePower),
                                 "6DF1D8D6-02C6-4D30-8D12-CCE24077A4AA" => typeof(StatModifyPower),
+                                "366C25BD-5B20-4EB1-98F5-04B5FDDD6285" => typeof(TakeDamagePower),
                                 _ => throw new Exception($"Power type id {id} not found")
                             };
                             

@@ -11,49 +11,53 @@ using TaleWorlds.MountAndBlade;
 
 namespace BLTAdoptAHero
 {
+    /// Power application modes:
+    /// - always, based on some matching criteria
+    /// - only for a specific period of time, based on some matching criteria
+    /// criteria are only "is it this exact agent", or "is the agent this specific hero" 
+
     public class PowerHandler 
     {
-        
         public class Handlers
         {
             #region Mission Event Handler Delegates
-            public delegate void AgentBuildDelegate(Hero hero, Agent agent);
-            public delegate void MissionOverDelegate(Hero hero);
-            public delegate void GotAKillDelegate(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, 
+            public delegate void AgentBuildDelegate(Agent agent);
+            public delegate void MissionOverDelegate();
+            public delegate void GotAKillDelegate(Agent attackerAgent, Agent victimAgent, 
                 AgentState agentState, KillingBlow blow);
-            public delegate void GotKilledDelegate(Hero victimHero, Agent victimAgent, Hero attackerHero, Agent attackerAgent, 
+            public delegate void GotKilledDelegate(Agent victimAgent, Agent attackerAgent, 
                 AgentState agentState, KillingBlow blow);
 
-            public delegate void DoDamageDelegate(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, 
+            public delegate void DoDamageDelegate(Agent attackerAgent, Agent victimAgent, 
                 BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams);
-            public delegate void TakeDamageDelegate(Hero victimHero, Agent victimAgent, Hero attackerHero, Agent attackerAgent, 
+            public delegate void TakeDamageDelegate(Agent victimAgent, Agent attackerAgent, 
                 BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams);
 
-            public delegate void DecideWeaponCollisionReactionDelegate(Hero attackerHero, Agent attackerAgent, Hero victimHero,
-                Agent victimAgent, BLTHeroPowersMissionBehavior.DecideWeaponCollisionReactionParams decideWeaponCollisionReactionParams);
+            public delegate void DecideWeaponCollisionReactionDelegate(Agent attackerAgent, Agent victimAgent, 
+                BLTHeroPowersMissionBehavior.DecideWeaponCollisionReactionParams decideWeaponCollisionReactionParams);
             
-            public delegate void DoMeleeHitDelegate(Hero attackerHero, Agent attackerAgent, Hero victimHero,
-                Agent victimAgent, BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams);
-            public delegate void TakeMeleeHitDelegate(Hero attackerHero, Agent attackerAgent, Hero victimHero,
-                Agent victimAgent, BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams);
-            public delegate void DoMissileHitDelegate(Hero attackerHero, Agent attackerAgent, Hero victimHero,
+            public delegate void DoMeleeHitDelegate(Agent attackerAgent, Agent victimAgent, 
+                BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams);
+            public delegate void TakeMeleeHitDelegate(Agent attackerAgent, Agent victimAgent,
+                BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams);
+            public delegate void DoMissileHitDelegate(Agent attackerAgent,  
                 Agent victimAgent, BLTHeroPowersMissionBehavior.MissileHitParams missileHitParams);
-            public delegate void TakeMissileHitDelegate(Hero attackerHero, Agent attackerAgent, Hero victimHero,
+            public delegate void TakeMissileHitDelegate(Agent attackerAgent,   
                 Agent victimAgent, BLTHeroPowersMissionBehavior.MissileHitParams missileHitParams);
             
-            public delegate void MissionTickDelegate(Hero hero, float dt);
+            public delegate void MissionTickDelegate(float dt);
             public delegate void MissileCollisionDelegate(Mission.MissileCollisionReaction collisionReaction, 
-                Hero attackerHero, Agent attackerAgent, Agent attachedAgent, sbyte attachedBoneIndex, 
+                Agent attackerAgent, Agent attachedAgent, sbyte attachedBoneIndex, 
                 bool attachedToShield, MatrixFrame attachLocalFrame, Mission.Missile missile);
-            public delegate void AgentControllerChangedDelegate(Hero hero, Agent agent);
+            public delegate void AgentControllerChangedDelegate(Agent agent);
 
-            public delegate void AddMissileDelegate(Hero shooterHero, Agent shooterAgent, 
+            public delegate void AddMissileDelegate(Agent shooterAgent, 
                 RefHandle<WeaponData> weaponData, WeaponStatsData[] weaponStatsData);
             
-            public delegate void DecideCrushedThroughDelegate(Hero attackerHero, Agent attackerAgent, Hero victimHero,
+            public delegate void DecideCrushedThroughDelegate(Agent attackerAgent, 
                 Agent victimAgent, BLTAgentApplyDamageModel.DecideCrushedThroughParams meleeHitParams);
             
-            public delegate void DecideMissileWeaponFlagsDelegate(Hero attackerHero, Agent attackerAgent,
+            public delegate void DecideMissileWeaponFlagsDelegate(Agent attackerAgent,
                 BLTAgentApplyDamageModel.DecideMissileWeaponFlagsParams args);
 
             #endregion
@@ -79,20 +83,20 @@ namespace BLTAdoptAHero
             public event DecideCrushedThroughDelegate OnDecideCrushedThrough;
             public event DecideMissileWeaponFlagsDelegate OnDecideMissileWeaponFlags;
 
-            public void AgentBuild(Hero hero, Agent agent) => OnAgentBuild?.Invoke(hero, agent);
-            public void MissionOver(Hero hero) => OnMissionOver?.Invoke(hero);
-            public void GotAKill(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, AgentState agentState, KillingBlow blow) 
-                => OnGotAKill?.Invoke(attackerHero, attackerAgent, victimHero, victimAgent, agentState, blow);
-            public void GotKilled(Hero victimHero, Agent victimAgent, Hero attackerHero, Agent attackerAgent, AgentState agentState, KillingBlow blow) 
-                => OnGotKilled?.Invoke(victimHero, victimAgent, attackerHero, attackerAgent, agentState, blow);
+            public void AgentBuild(Agent agent) => OnAgentBuild?.Invoke(agent);
+            public void MissionOver() => OnMissionOver?.Invoke();
+            public void GotAKill(Agent attackerAgent, Agent victimAgent, AgentState agentState, KillingBlow blow) 
+                => OnGotAKill?.Invoke(attackerAgent, victimAgent, agentState, blow);
+            public void GotKilled(Agent victimAgent, Agent attackerAgent, AgentState agentState, KillingBlow blow) 
+                => OnGotKilled?.Invoke(victimAgent, attackerAgent, agentState, blow);
             
-            public void DoDamage(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, 
+            public void DoDamage(Agent attackerAgent, Agent victimAgent, 
                 BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams) 
-                => OnDoDamage?.Invoke(attackerHero, attackerAgent, victimHero, victimAgent, blowParams);
+                => OnDoDamage?.Invoke(attackerAgent, victimAgent, blowParams);
             
-            public void TakeDamage(Hero victimHero, Agent victimAgent, Hero attackerHero, Agent attackerAgent, 
+            public void TakeDamage(Agent victimAgent, Agent attackerAgent, 
                 BLTHeroPowersMissionBehavior.RegisterBlowParams blowParams) 
-                => OnTakeDamage?.Invoke(victimHero, victimAgent, attackerHero, attackerAgent, blowParams);
+                => OnTakeDamage?.Invoke(victimAgent, attackerAgent, blowParams);
             
             // public void DoDamage(Hero hero, Agent agent, 
             //     Hero victimHero, Agent victimAgent, RefHandle<AttackCollisionData> attackCollisionData) 
@@ -101,49 +105,49 @@ namespace BLTAdoptAHero
             //     Hero attackerHero, Agent attackerAgent, RefHandle<AttackCollisionData> attackCollisionData) 
             //     => OnTakeDamage?.Invoke(hero, agent, attackerHero, attackerAgent, attackCollisionData);
             
-            public void SlowTick(Hero hero, float dt) => OnSlowTick?.Invoke(hero, dt);
-            public void MissionTick(Hero hero, float dt) => OnMissionTick?.Invoke(hero, dt);
+            public void SlowTick(float dt) => OnSlowTick?.Invoke(dt);
+            public void MissionTick(float dt) => OnMissionTick?.Invoke(dt);
             public void MissileCollisionReaction(Mission.MissileCollisionReaction collisionReaction,
-                Hero attackerHero, Agent attackerAgent, Agent attachedAgent, sbyte attachedBoneIndex,
+                Agent attackerAgent, Agent attachedAgent, sbyte attachedBoneIndex,
                 bool attachedToShield, MatrixFrame attachLocalFrame, Mission.Missile missile) 
-                => OnMissileCollision?.Invoke(collisionReaction, attackerHero, attackerAgent, attachedAgent,
+                => OnMissileCollision?.Invoke(collisionReaction, attackerAgent, attachedAgent,
                     attachedBoneIndex, attachedToShield, attachLocalFrame, missile);
-            public void AgentControllerChanged(Hero hero, Agent agent) => OnAgentControllerChanged?.Invoke(hero, agent);
+            public void AgentControllerChanged(Agent agent) => OnAgentControllerChanged?.Invoke(agent);
 
-            public void AddMissile(Hero attackerHero, Agent attackerAgent, RefHandle<WeaponData> weaponData, WeaponStatsData[] weaponStatsData) 
-                => OnAddMissile?.Invoke(attackerHero, attackerAgent, weaponData, weaponStatsData);
+            public void AddMissile(Agent attackerAgent, RefHandle<WeaponData> weaponData, WeaponStatsData[] weaponStatsData) 
+                => OnAddMissile?.Invoke(attackerAgent, weaponData, weaponStatsData);
 
-            public void DoMeleeHit(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams) 
-                => OnDoMeleeHit?.Invoke(attackerHero, attackerAgent, victimHero, victimAgent, meleeHitParams);
+            public void DoMeleeHit(Agent attackerAgent, Agent victimAgent, BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams) 
+                => OnDoMeleeHit?.Invoke(attackerAgent, victimAgent, meleeHitParams);
 
-            public void TakeMeleeHit(Hero victimHero, Agent victimAgent, Hero attackerHero, Agent attackerAgent, BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams) 
-                => OnTakeMeleeHit?.Invoke(attackerHero, attackerAgent, victimHero, victimAgent, meleeHitParams);
+            public void TakeMeleeHit(Agent victimAgent, Agent attackerAgent, BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams) 
+                => OnTakeMeleeHit?.Invoke(attackerAgent, victimAgent, meleeHitParams);
             
-            public void PostDoMeleeHit(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams) 
-                => OnPostDoMeleeHit?.Invoke(attackerHero, attackerAgent, victimHero, victimAgent, meleeHitParams);
+            public void PostDoMeleeHit(Agent attackerAgent, Agent victimAgent, BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams) 
+                => OnPostDoMeleeHit?.Invoke(attackerAgent, victimAgent, meleeHitParams);
 
-            public void PostTakeMeleeHit(Hero victimHero, Agent victimAgent, Hero attackerHero, Agent attackerAgent, BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams) 
-                => OnPostTakeMeleeHit?.Invoke(attackerHero, attackerAgent, victimHero, victimAgent, meleeHitParams);
+            public void PostTakeMeleeHit(Agent victimAgent, Agent attackerAgent, BLTHeroPowersMissionBehavior.MeleeHitParams meleeHitParams) 
+                => OnPostTakeMeleeHit?.Invoke(attackerAgent, victimAgent, meleeHitParams);
             
-            public void DoMissileHit(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, BLTHeroPowersMissionBehavior.MissileHitParams missileHitParams) 
-                => OnDoMissileHit?.Invoke(attackerHero, attackerAgent, victimHero, victimAgent, missileHitParams);
+            public void DoMissileHit(Agent attackerAgent, Agent victimAgent, BLTHeroPowersMissionBehavior.MissileHitParams missileHitParams) 
+                => OnDoMissileHit?.Invoke(attackerAgent, victimAgent, missileHitParams);
 
-            public void TakeMissileHit(Hero victimHero, Agent victimAgent, Hero attackerHero, Agent attackerAgent, BLTHeroPowersMissionBehavior.MissileHitParams missileHitParams) 
-                => OnTakeMissileHit?.Invoke(attackerHero, attackerAgent, victimHero, victimAgent, missileHitParams);
+            public void TakeMissileHit(Agent victimAgent, Agent attackerAgent, BLTHeroPowersMissionBehavior.MissileHitParams missileHitParams) 
+                => OnTakeMissileHit?.Invoke(attackerAgent, victimAgent, missileHitParams);
 
-            public void DecideWeaponCollisionReaction(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent, BLTHeroPowersMissionBehavior.DecideWeaponCollisionReactionParams decideWeaponCollisionReactionParams)
-                => OnDecideWeaponCollisionReaction?.Invoke(attackerHero, attackerAgent, victimHero, victimAgent, decideWeaponCollisionReactionParams);
+            public void DecideWeaponCollisionReaction(Agent attackerAgent, Agent victimAgent, BLTHeroPowersMissionBehavior.DecideWeaponCollisionReactionParams decideWeaponCollisionReactionParams)
+                => OnDecideWeaponCollisionReaction?.Invoke(attackerAgent, victimAgent, decideWeaponCollisionReactionParams);
             
-            public void DecideCrushedThrough(Hero attackerHero, Agent attackerAgent, Hero victimHero, Agent victimAgent,
+            public void DecideCrushedThrough(Agent attackerAgent, Agent victimAgent,
                 BLTAgentApplyDamageModel.DecideCrushedThroughParams args)
             {
-                OnDecideCrushedThrough?.Invoke(attackerHero, attackerAgent, victimHero, victimAgent,
+                OnDecideCrushedThrough?.Invoke(attackerAgent, victimAgent,
                     args);
             }
 
-            public void DecideMissileWeaponFlags(Hero attackerHero, Agent attackerAgent, BLTAgentApplyDamageModel.DecideMissileWeaponFlagsParams args)
+            public void DecideMissileWeaponFlags(Agent attackerAgent, BLTAgentApplyDamageModel.DecideMissileWeaponFlagsParams args)
             {
-                OnDecideMissileWeaponFlags?.Invoke(attackerHero, attackerAgent, args);
+                OnDecideMissileWeaponFlags?.Invoke(attackerAgent, args);
             }
         }
 
@@ -178,14 +182,15 @@ namespace BLTAdoptAHero
             heroPowerHandlers.TryGetValue(hero, out var powerHandlers)
             && powerHandlers.ContainsKey(power);
 
-        public bool CallHandlersForAgent(Agent agent, Action<Hero, Handlers> call, [CallerMemberName] string callerName = "")
+        public bool CallHandlersForAgent(Agent agent, Action<Handlers> call, [CallerMemberName] string callerName = "")
         {
             var hero = agent?.IsMount == true 
                 ? agent.RiderAgent?.GetAdoptedHero() 
                 : agent?.GetAdoptedHero();
             
             if (hero == null) return false;
-            CallHandlersForHero(hero, handlers => call(hero, handlers), callerName);
+
+            CallHandlersForHero(hero, call, callerName);
             return true;
         }
 
@@ -203,7 +208,7 @@ namespace BLTAdoptAHero
             }, callerName);
         }
         
-        public void CallHandlersForAll(Action<Hero, Handlers> call, [CallerMemberName] string callerName = "")
+        public void CallHandlersForAll(Action<Handlers> call, [CallerMemberName] string callerName = "")
         {
             SafeCall(() =>
             {
@@ -211,15 +216,14 @@ namespace BLTAdoptAHero
                 {
                     foreach (var handlers in handlersMap.ToList())
                     {
-                        call(hero, handlers.Value);
+                        call(handlers.Value);
                     }
                 }
             }, callerName);
         }
 
-        public delegate void HeroPairCallbackDelegate(Handlers handlers, Hero attackerHero, Hero victimHero); 
         public bool CallHandlersForAgentPair(Agent attackerAgent, Agent victimAgent, 
-            HeroPairCallbackDelegate attackerCall, HeroPairCallbackDelegate victimCall)
+            Action<Handlers> attackerCall, Action<Handlers> victimCall = null)
         {
             var attackerHero = attackerAgent?.IsMount == true 
                 ? attackerAgent.RiderAgent?.GetAdoptedHero() 
@@ -233,11 +237,11 @@ namespace BLTAdoptAHero
 
             if (attackerHero != null)
             {
-                CallHandlersForHero(attackerHero, handlers => attackerCall(handlers, attackerHero, victimHero));
+                CallHandlersForHero(attackerHero, attackerCall);
             }
-            if (victimHero != null)
+            if (victimCall != null && victimHero != null)
             {
-                CallHandlersForHero(victimHero, handlers => victimCall(handlers, attackerHero, victimHero));
+                CallHandlersForHero(victimHero, victimCall);
             }
             return true;
         }

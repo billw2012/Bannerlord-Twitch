@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Util;
-using BLTAdoptAHero.Annotations;
-using BLTAdoptAHero.Util;
-using TaleWorlds.Core;
-using TaleWorlds.Library;
-using TaleWorlds.SaveSystem;
 
 namespace BLTAdoptAHero.Achievements
 {
@@ -14,58 +9,84 @@ namespace BLTAdoptAHero.Achievements
     {
         public enum Statistic
         {
+            [LocDisplayName("{=FNK3LD2p}None")]
             None,
+            [LocDisplayName("{=5RXxYH32}Total Kills")]
             TotalKills,
+            [LocDisplayName("{=FqBQumbv}Total Hero Kills")]
             TotalHeroKills,
+            [LocDisplayName("{=WMYfysby}Total Viewer Kills")]
             TotalViewerKills,
+            [LocDisplayName("{=qPjwIfaF}Total Streamer Kills")]
             TotalStreamerKills,
+            [LocDisplayName("{=ZTI6irGZ}Total Mount Kills")]
             TotalMountKills,
+            [LocDisplayName("{=6IHF7HQb}Total Deaths")]
             TotalDeaths,
+            [LocDisplayName("{=UHvCzzit}Total Hero Deaths")]
             TotalHeroDeaths,
+            [LocDisplayName("{=mhcnLFBv}Total Viewer Deaths")]
             TotalViewerDeaths,
+            [LocDisplayName("{=rKVsbROz}Total Streamer Deaths")]
             TotalStreamerDeaths,
+            [LocDisplayName("{=6N8KiovH}Total Mount Deaths")]
             TotalMountDeaths,
+            [LocDisplayName("{=YDiK48rp}Summons")]
             Summons,
+            [LocDisplayName("{=facIgBFe}Attacks")]
             Attacks,
+            [LocDisplayName("{=yTIq9zWS}Battles")]
             Battles,
+            [LocDisplayName("{=VwyXMINi}Consecutive Summons")]
             ConsecutiveSummons,
+            [LocDisplayName("{=Ju3c6Iz4}Consecutive Attacks")]
             ConsecutiveAttacks,
+            [LocDisplayName("{=dRD94FMl}TotalTournament Round Wins")]
             TotalTournamentRoundWins,
+            [LocDisplayName("{=GPMB5BPI}TotalTournament Round Losses")]
             TotalTournamentRoundLosses,
+            [LocDisplayName("{=WdZWU9GV}TotalTournament Final Wins")]
             TotalTournamentFinalWins,
         }
 
-        [SaveableProperty(0)]
         public Dictionary<Statistic, int> TotalStats { get; set; } = new();
 
-        [SaveableProperty(1)]
         public Dictionary<(Guid, Statistic), int> ClassStats { get; set; } = new();
 
-        [SaveableProperty(2)]
         public List<Guid> Achievements { get; set; } = new();
 
         // Update class and total stats together
-        public void UpdateValue(Statistic type, Guid classId, int amount)
+        public void UpdateValue(Statistic type, Guid classId, int amount, bool forced = false)
         {
             TotalStats.AddInt(type, amount);
             ClassStats.AddInt((classId, type), amount);
 
+            // Here we update the consecutive streak, optionally resetting if the viewer is switching sides.
+            // If the summon/attack is forced (i.e. the viewer hero was already in the battle parties) then we don't
+            // change the consecutive stats if it would cause a reset.
+            void UpdateStatPair(Statistic stat, Statistic otherStat)
+            {
+                if (!forced || TotalStats.GetInt(otherStat) == 0)
+                {
+                    TotalStats.AddInt(stat, amount);
+                    TotalStats[otherStat] = 0;
+                }
+                if (!forced || ClassStats.GetInt((classId, otherStat)) == 0)
+                {
+                    ClassStats.AddInt((classId, stat), amount);
+                    ClassStats[(classId, otherStat)] = 0;
+                }
+            }
+
             if (type is Statistic.Summons)
             {
-                TotalStats.AddInt(Statistic.ConsecutiveSummons, amount);
-                ClassStats.AddInt((classId, Statistic.ConsecutiveSummons), amount);
-                // Reset consecutive attacks, now that hero summoned
-                TotalStats[Statistic.ConsecutiveAttacks] = 0;
-                ClassStats[(classId, Statistic.ConsecutiveAttacks)] = 0;
+                UpdateStatPair(Statistic.ConsecutiveSummons, Statistic.ConsecutiveAttacks);
             }
             else if (type is Statistic.Attacks)
             {
-                TotalStats.AddInt(Statistic.ConsecutiveAttacks, amount);
-                ClassStats.AddInt((classId, Statistic.ConsecutiveAttacks), amount);
-                // Reset consecutive summons, now that hero attacked
-                TotalStats[Statistic.ConsecutiveSummons] = 0;
-                ClassStats[(classId, Statistic.ConsecutiveSummons)] = 0;
+                UpdateStatPair(Statistic.ConsecutiveAttacks, Statistic.ConsecutiveSummons);
             }
+            
             if (type is Statistic.Summons or Statistic.Attacks)
             {
                 TotalStats.AddInt(Statistic.Battles, amount);

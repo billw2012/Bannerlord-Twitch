@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Windows;
-using BannerlordTwitch.Util;
-using Xceed.Wpf.Toolkit;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
@@ -33,12 +30,7 @@ namespace BannerlordTwitch.UI
         public static string GetObjectName(object obj)
         {
             var prop = obj.GetType().GetProperties().FirstOrDefault(p => p.GetCustomAttribute<InstanceNameAttribute>() != null);
-            if (prop != null)
-            {
-                return (string)prop.GetValue(obj);
-            }
-
-            return obj.ToString();
+            return prop?.GetValue(obj)?.ToString() ?? obj.ToString();
         }
 
         public static string GetQualifiedName(PropertyItem propertyItem)

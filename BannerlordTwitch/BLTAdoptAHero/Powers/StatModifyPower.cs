@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.Models;
 using BannerlordTwitch.Util;
 using JetBrains.Annotations;
@@ -10,11 +11,15 @@ using YamlDotNet.Serialization;
 
 namespace BLTAdoptAHero.Powers
 {
-    [Description("Applies modifiers to various character stats"), UsedImplicitly]
+    [LocDisplayName("{=pVdYFJNQ}Stat Modify Power"),
+     LocDescription("{=AOaW2ORo}Applies modifiers to various character stats"), 
+     UsedImplicitly]
     public class StatModifyPower : DurationMissionHeroPowerDefBase, IHeroPowerPassive, IDocumentable
     {
         #region User Editable
-        [Category("Power Config"), Description("What hero stat to modify"), 
+        [LocDisplayName("{=9gTYAifL}Modifiers"),
+         LocCategory("Power Config", "{=75UOuDM}Power Config"), 
+         LocDescription("{=URinrDNq}What hero stat to modify"), 
          PropertyOrder(1), ExpandableObject, Expand, UsedImplicitly]
         public AgentModifierConfig Modifiers { get; set; } = new();
         #endregion
@@ -46,7 +51,8 @@ namespace BLTAdoptAHero.Powers
         #endregion
 
         #region Public Interface
-        public override string Description => $"{Modifiers}";
+        [YamlIgnore, Browsable(false)]
+        public override LocString Description => $"{Modifiers}";
         #endregion
 
         #region IDocumentable
@@ -59,7 +65,7 @@ namespace BLTAdoptAHero.Powers
         #region IHeroPowerPassive
         void IHeroPowerPassive.OnHeroJoinedBattle(Hero hero, PowerHandler.Handlers handlers)
         {
-            handlers.OnAgentBuild += (_, agent) => Activate(hero, agent);
+            handlers.OnAgentBuild += agent => Activate(hero, agent);
         }
         #endregion
     }

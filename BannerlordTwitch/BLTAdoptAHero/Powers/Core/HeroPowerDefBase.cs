@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
-using BannerlordTwitch.Rewards;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Annotations;
@@ -28,15 +26,17 @@ namespace BLTAdoptAHero.Powers
         [ReadOnly(true), UsedImplicitly]
         public Guid ID { get; set; } = Guid.NewGuid();
 
-        [Category("General"), Description("Name of the power that will be shown in game"), 
+        [LocDisplayName("{=uUzmy7Lh}Name"),
+         LocCategory("General", "{=C5T5nnix}General"),
+         LocDescription("{=lzvJC8bf}Name of the power that will be shown in game"), 
          InstanceName, PropertyOrder(1), UsedImplicitly]
-        public string Name { get; set; } = "Enter Name Here";
+        public LocString Name { get; set; } = "{=aQgYs3mI}Enter Name Here";
         #endregion
         
         #region Implementation Details
         public override string ToString() => $"{Name}: {Description}";
         [YamlIgnore, Browsable(false)]
-        public abstract string Description { get; }  
+        public abstract LocString Description { get; }  
         #endregion
 
         #region ICloneable
@@ -53,7 +53,7 @@ namespace BLTAdoptAHero.Powers
         {
             public ItemCollection GetValues()
             {
-                var col = new ItemCollection {{Guid.Empty, "(none)"}};
+                var col = new ItemCollection {{Guid.Empty, "{=dPEnuHsk}(none)".Translate()}};
 
                 var source = GlobalHeroPowerConfig.Get(ConfigureContext.CurrentlyEditedSettings);
                 if (source != null)
@@ -71,7 +71,7 @@ namespace BLTAdoptAHero.Powers
         {
             public ItemCollection GetValues()
             {
-                var col = new ItemCollection {{Guid.Empty, "(none)"}};
+                var col = new ItemCollection {{Guid.Empty, "{=dPEnuHsk}(none)".Translate()}};
 
                 var source = GlobalHeroPowerConfig.Get(ConfigureContext.CurrentlyEditedSettings);
                 if (source != null)

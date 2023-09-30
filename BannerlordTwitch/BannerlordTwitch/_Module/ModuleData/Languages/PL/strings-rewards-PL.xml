@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Polski"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
+        <string id="dirEUQc7" text="Zdobądź bohatera w grze. Prawie wszystkie inne akcje wymagają adoptowanego bohatera." original="Get a hero in game. Almost all other actions require an adopted hero."/>
+        <!-- Adds 10,000 gold to your adopted hero. -->
+        <string id="Y7GzhU5a" text="Dodaje 10 000 złota do adoptowanego bohatera." original="Adds 10,000 gold to your adopted hero."/>
+        <!-- Adds 100,000 gold to your adopted hero. -->
+        <string id="Hbk74nei" text="Dodaje 100 000 złota do adoptowanego bohatera." original="Adds 100,000 gold to your adopted hero."/>
+        <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue). -->
+        <string id="nI4dr4uZ" text="Użyj tego, gdy streamer wchodzi do bitwy, aby przywołać swojego adoptowanego bohatera po stronie streamera (wraz ze swoją kompanią)." original="Use this when the streamer enters a battle, to spawn your adopted hero on the streamers side (along with your retinue)."/>
+        <!-- Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue). -->
+        <string id="flQofEFu" text="Użyj tego, gdy streamer wchodzi do bitwy, aby przywołać swojego adoptowanego bohatera po stronie wroga (wraz ze swoją kompanią)." original="Use this when the streamer enters a battle, to spawn your adopted hero on the enemy side (along with your retinue)."/>
+        <!-- Heals the streamers character in battle, over time. Doesn't work on the campaign map. -->
+        <string id="zLxgvsYd" text="Z biegiem czasu leczy postać streamera w bitwie. Nie działa na mapie kampanii." original="Heals the streamers character in battle, over time. Doesn't work on the campaign map."/>
+        <!-- Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament. -->
+        <string id="KaE947T9" text="Dołącz do kolejki turniejowej ze swoim adoptowanym bohaterem. Możesz zobaczyć kolejkę w nakładce. Każdy turniej może mieć do 16 bohaterów, po jego zapełnieniu kolejni bohaterowie pozostaną w kolejce do następnego turnieju." original="Join the tournament queue with your adopted hero. You can see the queue in the overlay. Each tournament can have up to 16 heroes in it, once it is full further heroes will remain in the queue for the next tournament."/>
+        <!-- Sends a message in the game. If you have a hero then it will also show them next to the message. -->
+        <string id="5L3LWrUx" text="Wysyła wiadomość w grze. Jeśli masz bohatera, pojawi się on również obok wiadomości." original="Sends a message in the game. If you have a hero then it will also show them next to the message."/>
+        <!-- Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritance rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete. -->
+        <string id="SXzjFdG1" text="Użyj tego, jeśli nie chcesz już grać obecnym bohaterem. Zostanie on oznaczony jako (wycofany), a następnie będziesz mógł adoptować nowego. Zasady dziedziczenia dotyczą tak samo w przypadku przejścia na emeryturę, jak i śmierci. MUSISZ wpisać tak w monicie (dokładnie tak, jak napisano, małymi literami), aby wycofywanie się zakończyło." original="Use this if you no longer wish to play with your current hero. They will be marked as (retired), and you will then be able to adopt a new one. Inheritance rules apply the same to retirement as they do to death. You MUST enter yes at the prompt (exactly as written, in lower case) for the retirement to complete."/>
+        <!-- Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment. -->
+        <string id="ZfhTuaRR" text="Dodaj 50 000 PD do swojego adoptowanego bohatera. Umiejętność, do której zostaną zastosowane zostanie wybrana losowo, ale będzą miałt na to wpływ na Twoja klasa oraz istniejące umiejętności i wyposażenie." original="Add 50,000 XP to your adopted hero. The skill it is applied to will be randomly chosen, but influenced by your class and existing skills and equipment."/>
+        <!-- Heals your hero over time. Only works in battle, when your hero is summoned. -->
+        <string id="pFwSBHnR" text="Leczy twojego bohatera z biegiem czasu. Działa tylko w bitwie, gdy twój bohater jest wezwany." original="Heals your hero over time. Only works in battle, when your hero is summoned."/>
+        <!-- Transfer 10,000 gold to the streamers character, from your hero. -->
+        <string id="CSmE7Y50" text="Przenieś 10 000 złota na postać streamera." original="Transfer 10,000 gold to the streamers character, from your hero."/>
+        <!-- Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay. -->
+        <string id="LO6Q2DCb" text="Aktywuj moc klasową na swoim bohaterze, jeśli ją posiadasz. Moc będzie działać przez ograniczony czas, wskazany na nakładce." original="Activate your class power on your hero, if you have one. The power will last for a limited period of time, indicated on the overlay."/>
+        <!-- Get a hero in game. Almost all other actions require an adopted hero. -->
+        <string id="kL65xglO" text="Zdobądź bohatera w grze. Prawie wszystkie inne akcje wymagają adoptowanego bohatera." original="Get a hero in game. Almost all other actions require an adopted hero."/>
+        <!-- Add 10,000 gold to your adopted hero -->
+        <string id="xQTiKsVA" text="Dodaj 10 000 złota do swojego adoptowanego bohatera" original="Add 10,000 gold to your adopted hero"/>
+        <!-- Add 100,000 gold to your adopted hero -->
+        <string id="xeI0AXUl" text="Dodaj 100 000 złota do swojego adoptowanego bohatera" original="Add 100,000 gold to your adopted hero"/>
+        <!-- Your adopted hero joins the players side in battle -->
+        <string id="zmxI41XP" text="Twój adoptowany bohater dołącza w bitwie do strony streamera" original="Your adopted hero joins the players side in battle"/>
+        <!-- Your adopted hero joins the enemies side in battle -->
+        <string id="ry25StNF" text="Twój adoptowany bohater dołącza w bitwie do strony wroga" original="Your adopted hero joins the enemies side in battle"/>
+        <!-- Heal the streamer over time -->
+        <string id="a8DqM6AY" text="Ulecz streamera z czasem" original="Heal the streamer over time"/>
+        <!-- Join the tournament queue with your adopted hero -->
+        <string id="ODfWfHln" text="Dołącz do kolejki turniejowej ze swoim adoptowanym bohaterem" original="Join the tournament queue with your adopted hero"/>
+        <!-- Enter Message -->
+        <string id="m9IFHkZh" text="Wpisz wiadomość" original="Enter Message"/>
+        <!-- Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel -->
+        <string id="ZNGav9pi" text="Wpisz tak, aby wycofać swojego bohatera (nie będzie już przez ciebie kontrolowany) lub zamknij to okno, aby anulować" original="Enter yes to retire your hero (it will no longer be controlled by you), or close this window to cancel"/>
+        <!-- Add 50,000 XP to a random skill of your adopted hero -->
+        <string id="UCjOD22c" text="Dodaj 50 000 PD do losowej umiejętności adoptowanego bohatera" original="Add 50,000 XP to a random skill of your adopted hero"/>
+        <!-- Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below: -->
+        <string id="1IDV1dAh" text="Przenieś 10 000 złota na postać streamera. Wpisz wiadomość poniżej:" original="Transfer 10,000 gold to the streamers character, from your hero. Enter gift message below:"/>
+        <!-- Activate your class power on your hero, if you have one. -->
+        <string id="x5Agf9Wl" text="Aktywuj moc klasową na swoim bohaterze, jeśli ją posiadasz." original="Activate your class power on your hero, if you have one."/>
+        <!-- Adopt a Hero -->
+        <string id="Yc9dn4Sx" text="Adoptuj bohatera" original="Adopt a Hero"/>
+        <!-- 10k gold -->
+        <string id="s0GPjZKG" text="10k złota" original="10k gold"/>
+        <!-- 100k gold -->
+        <string id="ndi9p5jn" text="100k złota" original="100k gold"/>
+        <!-- Summon -->
+        <string id="dpnWybop" text="Wezwij" original="Summon"/>
+        <!-- Attack -->
+        <string id="IrF1VaBD" text="Atakuj" original="Attack"/>
+        <!-- Heal Streamer -->
+        <string id="MSpPJJhZ" text="Wylecz Streamera" original="Heal Streamer"/>
+        <!-- Tournament -->
+        <string id="IBrMU0VF" text="Turniej" original="Tournament"/>
+        <!-- Send Message In Game -->
+        <string id="FFvfbTgo" text="Wyślij wiadomość w grze" original="Send Message In Game"/>
+        <!-- Retire My Hero -->
+        <string id="AZMDg7St" text="Wycofaj mojego bohatera" original="Retire My Hero"/>
+        <!-- 50k XP -->
+        <string id="uA1yEnyO" text="50 000 PD" original="50k XP"/>
+        <!-- Burn Player -->
+        <string id="2ciF79zR" text="Podpal Streamera" original="Burn Player"/>
+        <!-- Heal Hero -->
+        <string id="likTlNpu" text="Wylecz bohatera" original="Heal Hero"/>
+        <!-- Give Player Gold -->
+        <string id="9DoHhKeh" text="Daj streamerowi złoto" original="Give Player Gold"/>
+        <!-- Use Class Power -->
+        <string id="yoZSmM0b" text="Użyj mocy klasy" original="Use Class Power"/>
+    </strings>
+</base>

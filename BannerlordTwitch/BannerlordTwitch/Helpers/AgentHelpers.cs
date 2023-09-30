@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace BannerlordTwitch.Helpers
@@ -67,6 +68,48 @@ namespace BannerlordTwitch.Helpers
             // animationSystemData.CrouchWalkingSpeedLimit *= scale;
             //animationSystemData.NumPaces = 10;
             //agent.SetActionSet(ref agentVisualsNativeData, ref animationSystemData);
+        }
+
+        public static AttackCollisionData CreateCollisionDataFromBlow(Agent fromAgent, Agent toAgent, Blow blow)
+        {
+            // Can only make these like this...
+            return AttackCollisionData.GetAttackCollisionDataForDebugPurpose(false,
+                false,
+                false,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                CombatCollisionResult.StrikeAgent,
+                -1,
+                0,
+                2,
+                blow.BoneIndex,
+                BoneBodyPartType.Head,
+                (sbyte)(fromAgent != null ? fromAgent.Monster.MainHandItemBoneIndex : -1),
+                Agent.UsageDirection.AttackLeft,
+                -1,
+                CombatHitResultFlags.NormalHit,
+                0.5f,
+                1f,
+                0f,
+                0f,
+                0f,
+                0f,
+                0f,
+                0f,
+                Vec3.Up,
+                blow.Direction,
+                blow.GlobalPosition,
+                Vec3.Zero,
+                Vec3.Zero,
+                toAgent.Velocity,
+                Vec3.Up);
         }
     }
 }

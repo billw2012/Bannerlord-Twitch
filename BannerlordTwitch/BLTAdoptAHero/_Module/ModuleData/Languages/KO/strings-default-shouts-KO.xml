@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="한국어"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Don't worry, I've got your back! -->
+        <string id="DczOKFsA" text="걱정하지 마세요." original="Don't worry, I've got your back!"/>
+        <!-- I'm here! -->
+        <string id="pj9Z0M7G" text="나 여기 있어!" original="I'm here!"/>
+        <!-- Which one should I stab? -->
+        <string id="y8DOtj2H" text="어느 쪽을 찔러야 할까요?" original="Which one should I stab?"/>
+        <!-- Need a hand? -->
+        <string id="1i1OrZDd" text="도움이 필요하세요?" original="Need a hand?"/>
+        <!-- The price has been paid. I am at your service. -->
+        <string id="rVaJZ5Lo" text="가격이 지불되었습니다. 나는 당신의 서비스에 있습니다." original="The price has been paid. I am at your service."/>
+        <!-- Once more unto the breach! -->
+        <string id="QEyO8W82" text="한 번 더 위반에!" original="Once more unto the breach!"/>
+        <!-- Freeeeeedddooooooommmm! -->
+        <string id="Bo11t6gj" text="ㅋㅋㅋㅋㅋㅋㅋㅋㅋ" original="Freeeeeedddooooooommmm!"/>
+        <!-- Remember the Alamo! -->
+        <string id="8uO8Isjm" text="알라모를 기억하십시오!" original="Remember the Alamo!"/>
+        <!-- Alala! -->
+        <string id="A3KdQJok" text="알라라!" original="Alala!"/>
+        <!-- Eleleu! -->
+        <string id="pXVCAwAr" text="엘레우!" original="Eleleu!"/>
+        <!-- Deus vult! -->
+        <string id="TlZjOFii" text="데우스 불트!" original="Deus vult!"/>
+        <!-- Banzai! -->
+        <string id="xPFIIEzw" text="반자이!" original="Banzai!"/>
+        <!-- Liberty or Death! -->
+        <string id="gmN3YLPw" text="자유 아니면 죽음!" original="Liberty or Death!"/>
+        <!-- Har Har Mahadev! -->
+        <string id="FoDIukJK" text="하하 마하데프!" original="Har Har Mahadev!"/>
+        <!-- Desperta ferro! -->
+        <string id="SSqdBzkY" text="데스페타 페로!" original="Desperta ferro!"/>
+        <!-- Alba gu bràth! -->
+        <string id="UHhpIpDU" text="알바 구 브라스!" original="Alba gu bràth!"/>
+        <!-- Santiago! -->
+        <string id="lDo1AOCS" text="산티아고!" original="Santiago!"/>
+        <!-- Huzzah! -->
+        <string id="gT95E89y" text="후자!" original="Huzzah!"/>
+        <!-- War... war never changes... -->
+        <string id="fKKpcZGQ" text="전쟁... 전쟁은 절대 변하지 않는다..." original="War... war never changes..."/>
+        <!-- May we live to see the next sunrise! -->
+        <string id="vZgbxkW9" text="우리가 다음 일출을 보기 위해 살기를 바랍니다!" original="May we live to see the next sunrise!"/>
+        <!-- For glory, charge! -->
+        <string id="wn7zIy9f" text="영광을 위해 돌격!" original="For glory, charge!"/>
+        <!-- Give them nothing, but take from them everything! -->
+        <string id="KH7Dnbe7" text="그들에게 아무것도 주지 말고 그들에게서 모든 것을 가져가십시오!" original="Give them nothing, but take from them everything!"/>
+        <!-- Fell deeds awake, fire and slaughter! -->
+        <string id="FyBFecip" text="타락한 행위가 깨어나고 불과 살육이여!" original="Fell deeds awake, fire and slaughter!"/>
+        <!-- Spooooooooooooooooooon! -->
+        <string id="H7asM2KG" text="ㅋㅋㅋㅋㅋㅋ" original="Spooooooooooooooooooon!"/>
+        <!-- Leeeeeeeerooooy Jeeeeenkins -->
+        <string id="ERDmbO2B" text="ㅋㅋㅋㅋㅋㅋㅋㅋㅋ" original="Leeeeeeeerooooy Jeeeeenkins"/>
+        <!-- I live, I die, I live again! -->
+        <string id="hL0vmkUG" text="나는 살고, 나는 죽고, 나는 다시 산다!" original="I live, I die, I live again!"/>
+        <!-- Witness me!! -->
+        <string id="KMTRT2EN" text="증인!!" original="Witness me!!"/>
+        <!-- Now for wrath, now for ruin and a red nightfall! -->
+        <string id="F9WUaqdj" text="이제 분노를 위해, 이제 파멸과 붉은 황혼을 위해!" original="Now for wrath, now for ruin and a red nightfall!"/>
+        <!-- n -->
+        <string id="ZQiRFkFU" text="N" original="n"/>
+        <!-- Those are brave men knocking at our door, let's go kill them! -->
+        <string id="JlZ9pRbq" text="저 용감한 놈들이 우리 문을 두드리고 있으니 죽이러 가자!" original="Those are brave men knocking at our door, let's go kill them!"/>
+        <!-- Lets take this city! -->
+        <string id="5gg0BcKk" text="이 도시를 차지하자!" original="Lets take this city!"/>
+        <!-- Defend yourself! -->
+        <string id="lhWht8Em" text="자신을 방어!" original="Defend yourself!"/>
+        <!-- Time for you to die! -->
+        <string id="FmlTSg39" text="당신이 죽을 시간입니다!" original="Time for you to die!"/>
+        <!-- You killed my father, prepare to die! -->
+        <string id="GJpUfALs" text="네가 내 아버지를 죽였어, 죽을 준비를 하라!" original="You killed my father, prepare to die!"/>
+        <!-- En garde! -->
+        <string id="IKN2G1wi" text="앙 가르드!" original="En garde!"/>
+        <!-- It's stabbing time! For you. -->
+        <string id="yTHYR4i9" text="찌르는 시간이다! 당신을위한." original="It's stabbing time! For you."/>
+        <!-- It's nothing personal! -->
+        <string id="4wYLe6f0" text="개인적인 일이 아닙니다!" original="It's nothing personal!"/>
+        <!-- Curse my sudden but inevitable betrayal! -->
+        <string id="37bg5QNX" text="나의 갑작스럽지만 피할 수 없는 배신을 저주하라!" original="Curse my sudden but inevitable betrayal!"/>
+        <!-- I just don't like you! -->
+        <string id="AOpbzIUP" text="난 그냥 당신이 싫어!" original="I just don't like you!"/>
+        <!-- I'm gonna put some dirt in your eye! -->
+        <string id="JFCcwLga" text="네 눈에 흙을 좀 넣어줄게!" original="I'm gonna put some dirt in your eye!"/>
+        <!-- I'll mount your head on a pike! -->
+        <string id="jCrCRbyA" text="나는 당신의 머리를 창에 올려 놓을 것입니다!" original="I'll mount your head on a pike!"/>
+        <!-- Don't hate me, it's just business... -->
+        <string id="0uiD2HxZ" text="날 미워하지마, 이건 그냥 사업이야..." original="Don't hate me, it's just business..."/>
+        <!-- Never should have come here! -->
+        <string id="42Fuy9pm" text="여기 오지 말았어야 했어!" original="Never should have come here!"/>
+        <!-- Your money or your life! -->
+        <string id="dClbnb2q" text="당신의 돈이나 당신의 생명!" original="Your money or your life!"/>
+        <!-- I'm sorry, but I must stop you. -->
+        <string id="uyjy1geA" text="미안하지만 난 당신을 중지해야합니다." original="I'm sorry, but I must stop you."/>
+        <!-- I have the high ground! -->
+        <string id="dh0c96lo" text="나는 높은 땅을 가지고있다!" original="I have the high ground!"/>
+        <!-- DAMN IT DAVE! -->
+        <string id="EcD5q9th" text="빌어먹을 데이브!" original="DAMN IT DAVE!"/>
+    </strings>
+</base>

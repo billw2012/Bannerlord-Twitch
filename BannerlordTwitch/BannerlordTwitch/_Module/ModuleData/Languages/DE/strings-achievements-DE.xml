@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Deutsch"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here:
+        https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- Common -->
+        <!-- Reward {ITEMNAME} -->
+        <string id="W47g8bCB" text="Die Belohnung ist {ITEMNAME}" original="Reward {ITEMNAME}"/>
+        <!-- [viewer] is [name]! -->
+        <string id="TAWcPGIc" text="[viewer] ist [name]!" original="[viewer] is [name]!"/>
+        <!-- {ITEMNAME} of Fealty -->
+        <string id="IvV04W31" text="{ITEMNAME} der Treue" original="{ITEMNAME} of Fealty"/>
+        <!-- Renegades {ITEMNAME} -->
+        <string id="UQtSgnog" text="{ITEMNAME} der Abtrünnigen" original="Renegades {ITEMNAME}"/>
+        <!-- Stream Sniper {ITEMNAME} -->
+        <string id="xI41h8NA" text="Stream-Scharfschütze {ITEMNAME}"
+            original="Stream Sniper {ITEMNAME}"/>
+        <!-- Reliable -->
+        <string id="ODWiNBng" text="Zuverlässig" original="Reliable"/>
+        <!-- Trusted -->
+        <string id="fWTqF2sw" text="Vertrauenswürdig" original="Trusted"/>
+        <!-- Loyal -->
+        <string id="fe9J8von" text="Loyal" original="Loyal"/>
+        <!-- Rebellious -->
+        <string id="HdYFegeb" text="Rebellisch" original="Rebellious"/>
+        <!-- Traitorous -->
+        <string id="gDHR7f8r" text="Verräterisch" original="Traitorous"/>
+        <!-- Renegade -->
+        <string id="VEH582e7" text="Abtrünnig" original="Renegade"/>
+        <!-- Stream Sniper -->
+        <string id="Aj0gXKgZ" text="Stream-Scharfschütze" original="Stream Sniper"/>
+    </strings>
+</base>

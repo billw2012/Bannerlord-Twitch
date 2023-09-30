@@ -27,7 +27,7 @@ namespace BLTBuffet
             {
                 active = CharacterEffect.CreateAgentEffects(Agent.Main, context.Args, 
                     MatrixFrame.Identity.Strafe(0.1f),
-                    Game.Current.HumanMonster.HeadLookDirectionBoneIndex);
+                    Agent.Main.Monster.HeadLookDirectionBoneIndex);
             }
         }
 

@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using BannerlordTwitch;
+using BannerlordTwitch.Localization;
 using BannerlordTwitch.UI;
 using BannerlordTwitch.Util;
 using BLTAdoptAHero.Achievements;
@@ -16,10 +16,11 @@ namespace BLTAdoptAHero.Powers
 {
     public class PowerGroupItemBase : ICloneable, ILoaded, INotifyPropertyChanged
     {
-        [PropertyOrder(1), 
-         Description("Optional unlock criteria"),
+        [LocDisplayName("{=WLtUn4t7}Requirements"),
+         LocDescription("{=sl5ZoJdv}Optional unlock criteria"),
          Editor(typeof(DerivedClassCollectionEditor<IAchievementRequirement>), 
-             typeof(DerivedClassCollectionEditor<IAchievementRequirement>)), UsedImplicitly]
+             typeof(DerivedClassCollectionEditor<IAchievementRequirement>)),
+         PropertyOrder(1), UsedImplicitly]
         public ObservableCollection<IAchievementRequirement> Requirements { get; set; } = new();
 
         public PowerGroupItemBase()
@@ -32,7 +33,8 @@ namespace BLTAdoptAHero.Powers
         public bool IsUnlocked(Hero hero) => Requirements.All(r => r.IsMet(hero));
 
         public override string ToString() 
-            => $"req {string.Join("+", Requirements.Select(r => r.ToString()))}";
+            => "{=hPcS0MIw}requires {Requirements}"
+                .Translate(("Requirements", string.Join("+", Requirements.Select(r => r.ToString()))));
 
         #region Implementation Detail
         [YamlIgnore, Browsable(false)] 

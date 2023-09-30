@@ -1,0 +1,408 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Русский"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- AchievementDef -->
+        <!-- Achievement Definition -->
+        <string id="CEZZzIAq" text="Определение достижения" original="Achievement Definition"/>
+        <!-- Requirements -->
+        <string id="TFbiD0CZ" text="Требования" original="Requirements"/>
+        <!-- Reward -->
+        <string id="sHWjkhId" text="Награда" original="Reward"/>
+        <!-- New Achievement -->
+        <string id="nLaRVBVV" text="Новое достижение" original="New Achievement"/>
+        <!-- Notification Text -->
+        <string id="guJFFskH" text="Текст уведомления" original="Notification Text"/>
+        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement. -->
+        <string id="SwIUyQNw" text="Текст, который будет отображаться, когда достижение будет получено, и когда игрок перечислит свои достижения. Заполнить: [viewer] для имени зрителей, и [name] для названия достижения." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
+        <!-- Requirements -->
+        <string id="TfwiBMGr" text="Требования" original="Requirements"/>
+        <!-- Gold Gain -->
+        <string id="NitYwoHr" text="Награда золота" original="Gold Gain"/>
+        <!-- Gold awarded for gaining this achievement. -->
+        <string id="l0xBVhOe" text="За получение этого достижения награждается золото." original="Gold awarded for gaining this achievement."/>
+        <!-- XP Gain -->
+        <string id="JShqb5Be" text="Награда XP" original="XP Gain"/>
+        <!-- Experience awarded for gaining this achievement. -->
+        <string id="tx7YV26l" text="За получение этого достижения награждается XP." original="Experience awarded for gaining this achievement."/>
+        <!-- Give Item Reward -->
+        <string id="OmwtPK7J" text="Дать предмет в награду" original="Give Item Reward"/>
+        <!-- Whether to give a custom item as reward (defined below) -->
+        <string id="vTb0ysRw" text="Следует ли давать индивидуальный предмет в качестве награды (определено ниже)" original="Whether to give a custom item as reward (defined below)"/>
+        <!-- Item Reward -->
+        <string id="ZJikxJYo" text="Награда за предмет" original="Item Reward"/>
+        <!-- Specifications of the custom item reward, if enabled -->
+        <string id="B4gODHog" text="Характеристики награды за настраиваемый предмет, если она включена" original="Specifications of the custom item reward, if enabled"/>
+        <!-- AchievementStatsData.Statistic -->
+        <!-- Total Kills -->
+        <string id="5RXxYH32" text="Всего убийств" original="Total Kills"/>
+        <!-- Total Hero Kills -->
+        <string id="FqBQumbv" text="Всего убийств героев" original="Total Hero Kills"/>
+        <!-- Total Viewer Kills -->
+        <string id="WMYfysby" text="Всего убийств зрителей" original="Total Viewer Kills"/>
+        <!-- Total Streamer Kills -->
+        <string id="qPjwIfaF" text="Всего убийств стримеров" original="Total Streamer Kills"/>
+        <!-- Total Mount Kills -->
+        <string id="ZTI6irGZ" text="Всего убийств ездовых животных" original="Total Mount Kills"/>
+        <!-- Total Deaths -->
+        <string id="6IHF7HQb" text="Всего смертей" original="Total Deaths"/>
+        <!-- Total Hero Deaths -->
+        <string id="UHvCzzit" text="Всего смертей героев" original="Total Hero Deaths"/>
+        <!-- Total Viewer Deaths -->
+        <string id="mhcnLFBv" text="Всего смертей зрителей" original="Total Viewer Deaths"/>
+        <!-- Total Streamer Deaths -->
+        <string id="rKVsbROz" text="Общее количество смертей стримеров" original="Total Streamer Deaths"/>
+        <!-- Total Mount Deaths -->
+        <string id="6N8KiovH" text="Общее количество смертей маунтов" original="Total Mount Deaths"/>
+        <!-- Summons -->
+        <string id="YDiK48rp" text="Вызывает" original="Summons"/>
+        <!-- Attacks -->
+        <string id="facIgBFe" text="Атаки" original="Attacks"/>
+        <!-- Battles -->
+        <string id="yTIq9zWS" text="Битвы" original="Battles"/>
+        <!-- Consecutive Summons -->
+        <string id="VwyXMINi" text="Последовательный вызов" original="Consecutive Summons"/>
+        <!-- Consecutive Attacks -->
+        <string id="Ju3c6Iz4" text="Последовательные атаки" original="Consecutive Attacks"/>
+        <!-- TotalTournament Round Wins -->
+        <string id="dRD94FMl" text="Всего побед в раундах турниров" original="TotalTournament Round Wins"/>
+        <!-- TotalTournament Round Losses -->
+        <string id="GPMB5BPI" text="Всего проигрышей в раундах турнира" original="TotalTournament Round Losses"/>
+        <!-- TotalTournament Final Wins -->
+        <string id="WdZWU9GV" text="TotalTournament Final Wins (Победы в финале турнира)" original="TotalTournament Final Wins"/>
+        <!-- ClassLevelRequirement -->
+        <!-- Class Level Requirement -->
+        <string id="XLXBwBEj" text="Требования к уровню класса" original="Class Level Requirement"/>
+        <!-- Min Level -->
+        <string id="s4N0bhG1" text="Мин. Уровень" original="Min Level"/>
+        <!-- Minimum class level allowed -->
+        <string id="phf8JXQC" text="Минимальный допустимый уровень класса" original="Minimum class level allowed"/>
+        <!-- Max Level -->
+        <string id="BT59iHQ5" text="Максимальный уровень" original="Max Level"/>
+        <!-- Maximum class level allowed -->
+        <string id="lk60ZYwc" text="Максимально допустимый уровень класса" original="Maximum class level allowed"/>
+        <!-- AT LEAST {MinLevel} -->
+        <string id="j3QY6MkC" text="КАК МИНИМУМ {MinLevel}" original="AT LEAST {MinLevel}"/>
+        <!-- {MinLevel} TO {MaxLevel} -->
+        <string id="puNSSMYD" text="{MinLevel} TO {MaxLevel}" original="{MinLevel} TO {MaxLevel}"/>
+        <!-- CLASS LEVEL {Description} -->
+        <string id="boWoZsH4" text="УРОВЕНЬ КЛАССА {Description}" original="CLASS LEVEL {Description}"/>
+        <!-- StatisticClassSpecificRequirement -->
+        <!-- Statistic Class Specific Requirement -->
+        <string id="ziuB7eSV" text="Специфические требования для статистического класса" original="Statistic Class Specific Requirement"/>
+        <!-- Current Class -->
+        <string id="WwKyvotH" text="Текущий класс" original="Current Class"/>
+        <!-- Requirement uses current class, useful for class power unlocks so you don't have to specify the class explicitly -->
+        <string id="S9kGgf0r" text="Требование использует текущий класс, что полезно для разблокировки мощности класса, поэтому вам не нужно явно указывать класс" original="Requirement uses current class, useful for class power unlocks so you don't have to specify the class explicitly"/>
+        <!-- Required Class -->
+        <string id="5QwSEOc3" text="Обязательный класс" original="Required Class"/>
+        <!-- Class required to get this achievement. If (none) is specified then the achievement will apply ONLY when the hero doesn't have a class set. -->
+        <string id="G34P8lCu" text="Класс, необходимый для получения этого достижения. Если указано (none), то достижение будет применяться ТОЛЬКО, если у героя не установлен класс." original="Class required to get this achievement. If (none) is specified then the achievement will apply ONLY when the hero doesn't have a class set."/>
+        <!-- class -->
+        <string id="j3YG9dCh" text="класс" original="class"/>
+        <!-- (current) -->
+        <string id="RXXuHIdN" text="(текущий)" original="(current)"/>
+        <!-- (none) -->
+        <string id="dPEnuHsk" text="(ничего)" original="(none)"/>
+        <!-- StatisticRequirement -->
+        <!-- Statistic Requirement -->
+        <string id="CkgaxlDY" text="Статистические требования" original="Statistic Requirement"/>
+        <!-- Statistic -->
+        <string id="ienuHzOP" text="Статистика" original="Statistic"/>
+        <!-- The statistic this achievement relates to. -->
+        <string id="OKuz3zwY" text="Статистика, к которой относится это достижение." original="The statistic this achievement relates to."/>
+        <!-- Comparison -->
+        <string id="dXBsEW65" text="Сравнение" original="Comparison"/>
+        <!-- Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills. -->
+        <string id="4yoAe9WV" text="Требуется ли герою больше или меньше указанного значения. Например, вы можете сделать требования, чтобы у героя было менее 10 смертей и более 100 убийств." original="Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills."/>
+        <!-- Value -->
+        <string id="a8Josr4g" text="Значение" original="Value"/>
+        <!-- Value needed to obtain the achievement. -->
+        <string id="B9LEjEq8" text="Значение, необходимое для получения достижения." original="Value needed to obtain the achievement."/>
+        <!-- Other Statistic -->
+        <string id="nau8vg7o" text="Другая статистика" original="Other Statistic"/>
+        <!-- Other statistic to compare against (this overrides Value if specified). -->
+        <string id="A3EKQ7up" text="Другая статистика для сравнения (переопределяет значение, если указано)." original="Other statistic to compare against (this overrides Value if specified)."/>
+        <!-- HeroClassDef -->
+        <!-- Class Definition -->
+        <string id="ph50k2xB" text="Определение класса" original="Class Definition"/>
+        <!-- Class Definition -->
+        <string id="iqYaiOhP" text="Определение класса" original="Class Definition"/>
+        <!-- Whether this class is enabled for use in the game or not -->
+        <string id="XkL6MNLl" text="Включен ли этот класс для использования в игре или нет" original="Whether this class is enabled for use in the game or not"/>
+        <!-- Name of the class that shall be passed to SetHeroClass actions -->
+        <string id="U9PyN7eb" text="Имя класса, передаваемого в действия SetHeroClass." original="Name of the class that shall be passed to SetHeroClass actions"/>
+        <!-- Description -->
+        <string id="rZRKLuGI" text="Описание" original="Description"/>
+        <!-- Description of the class (used in documentation) -->
+        <string id="yRN3Jfwv" text="Описание класса (используется в документации)" original="Description of the class (used in documentation)"/>
+        <!-- Formation -->
+        <string id="zy3uK94p" text="Формирование" original="Formation"/>
+        <!-- Which formation to add summoned units to -->
+        <string id="1kEMFWLD" text="В какое формирование добавить призванные отряды" original="Which formation to add summoned units to"/>
+        <!-- Slot 1 -->
+        <string id="48tkMBhb" text="Слот 1" original="Slot 1"/>
+        <!-- Item type to put in slot 1 -->
+        <string id="kpDE6URE" text="Тип предмета для размещения в слоте 1" original="Item type to put in slot 1"/>
+        <!-- Slot 2 -->
+        <string id="vXtJLZlw" text="Слот 2" original="Slot 2"/>
+        <!-- Item type to put in slot 2 -->
+        <string id="G5AN3s2D" text="Тип предмета для установки в слот 2" original="Item type to put in slot 2"/>
+        <!-- Slot 3 -->
+        <string id="B4LLuesN" text="Слот 3" original="Slot 3"/>
+        <!-- Item type to put in slot 3 -->
+        <string id="clxxPb9O" text="Тип предмета для установки в слот 3" original="Item type to put in slot 3"/>
+        <!-- Slot 4 -->
+        <string id="h9PK7GnU" text="Слот 4" original="Slot 4"/>
+        <!-- Item type to put in slot 4 -->
+        <string id="EUzbiqh5" text="Тип предмета для вставки в слот 4" original="Item type to put in slot 4"/>
+        <!-- Use Horse -->
+        <string id="MdYmGuin" text="Использовать лошадь" original="Use Horse"/>
+        <!-- Whether to allow horse (can be combined with Use Camel) -->
+        <string id="Q00NX1J9" text="Разрешить ли лошадь (можно комбинировать с Использовать лошадь)" original="Whether to allow horse (can be combined with Use Camel)"/>
+        <!-- Use Camel -->
+        <string id="1YsQ2fC3" text="Использовать верблюд" original="Use Camel"/>
+        <!-- Whether to allow camel (can be combined with Use Horse -->
+        <string id="Us7G1v2T" text="Разрешить ли верблюд (можно комбинировать с Использовать верблюд" original="Whether to allow camel (can be combined with Use Horse"/>
+        <!-- Passive Power -->
+        <string id="MvddFKo4" text="Пассивная сила" original="Passive Power"/>
+        <!-- Passive hero power: this will always apply to the hero (i.e. a permanent buff) -->
+        <string id="F8a2nXYo" text="Пассивная сила героя: всегда будет применяться к герою (т.е. постоянный бафф)" original="Passive hero power: this will always apply to the hero (i.e. a permanent buff)"/>
+        <!-- Active Power -->
+        <string id="wdCMNOGd" text="Активная сила" original="Active Power"/>
+        <!-- Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff) -->
+        <string id="I4ASwveG" text="Активная сила героя: эта способность срабатывает только тогда, когда действие UseHeroPower используется зрителем через награду или команду (то есть временный бафф)." original="Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff)"/>
+        <!-- Horse -->
+        <string id="YzIcRgBV" text="Лошадь" original="Horse"/>
+        <!-- Camel -->
+        <string id="HMclWXR8" text="Верблюд" original="Camel"/>
+        <!-- Use Horse -->
+        <string id="A1G6bq0G" text="Использовать Лошадь" original="Use Horse"/>
+        <!-- Use Camel -->
+        <string id="FpgyZk0F" text="Использовать Верблюд" original="Use Camel"/>
+        <!-- (none) -->
+        <string id="GFc6JLJ9" text="(ничего)" original="(none)"/>
+        <!-- Details -->
+        <string id="A79HrgZ0" text="Подробности" original="Details"/>
+        <!-- Tier {TierNumber} -->
+        <string id="Rs1XNM9K" text="Уровень {TierNumber}" original="Tier {TierNumber}"/>
+        <!-- Equipment -->
+        <string id="HyXJQJtW" text="Снаряжение" original="Equipment"/>
+        <!-- Mount -->
+        <string id="iGdq37PI" text="Верховое" original="Mount"/>
+        <!-- KillStreakDef -->
+        <!-- Kill Streak -->
+        <string id="InTnlqz1" text="Серия убийств" original="Kill Streak"/>
+        <!-- Show Notification -->
+        <string id="poe8m8rn" text="Показать уведомление" original="Show Notification"/>
+        <!-- Notification Text -->
+        <string id="RQh3jIZW" text="Текст уведомления" original="Notification Text"/>
+        <!-- Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required. -->
+        <string id="04wTH1xo" text="Текст, который отображается, когда достигается серия убийств. Заполнить: [viewer] для имени зрителя, и [name] для названия Серии Убийств, и [kills] для требуемых убийств." original="Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required."/>
+        <!-- Kills Required -->
+        <string id="mG7HzT0z" text="Требуются убийства" original="Kills Required"/>
+        <!-- Kills required to achieve the kill streak. -->
+        <string id="mLElTwb6" text="Убийства, необходимые для достижения серии убийств." original="Kills required to achieve the kill streak."/>
+        <!-- Gold Reward -->
+        <string id="zEqJgISl" text="Золотая награда" original="Gold Reward"/>
+        <!-- Gold rewarded when the kill streak is achieved. -->
+        <string id="CYg79sAT" text="Золото награждается, когда достигается серия убийств." original="Gold rewarded when the kill streak is achieved."/>
+        <!-- XP Reward -->
+        <string id="vzCgh9PN" text="Награда XP" original="XP Reward"/>
+        <!-- Experience granted when the kill streak is achieved. -->
+        <string id="Q1TcztBP" text="XP даётся, когда достигается серия убийств." original="Experience granted when the kill streak is achieved."/>
+        <!-- New Kill Streak -->
+        <string id="KtvBk2nR" text="Новая серия убийств" original="New Kill Streak"/>
+        <!-- [viewer] got [name] ([kills] kills) -->
+        <string id="ipowOInD" text="[viewer] получил [name] ([kills] убийств)" original="[viewer] got [name] ([kills] kills)"/>
+        <!-- {KillsRequired} kills -->
+        <string id="YZJ60Pxb" text="{KillsRequired} убийств" original="{KillsRequired} kills"/>
+        <!-- SummonHero.FormationItemSource -->
+        <!-- Infantry -->
+        <string id="7gt8mcJc" text="Пехота" original="Infantry"/>
+        <!-- Ranged -->
+        <string id="kDo9EtMh" text="Дальний бой" original="Ranged"/>
+        <!-- Cavalry -->
+        <string id="HcfkYEsF" text="Кавалерия" original="Cavalry"/>
+        <!-- Horse Archer -->
+        <string id="Xx9xP7jK" text="Конный лучник" original="Horse Archer"/>
+        <!-- Skirmisher -->
+        <string id="PpZY6dPX" text="Застрельщик" original="Skirmisher"/>
+        <!-- Heavy Infantry -->
+        <string id="VT6VYeVp" text="Тяжелая пехота" original="Heavy Infantry"/>
+        <!-- Light Cavalry -->
+        <string id="t5iTNQ5p" text="Легкая кавалерия" original="Light Cavalry"/>
+        <!-- Heavy Cavalry -->
+        <string id="vyVSsiBr" text="Тяжелая кавалерия" original="Heavy Cavalry"/>
+        <!-- SkillRangeDef -->
+        <!-- Skill Range -->
+        <string id="uUWdyER4" text="Диапазон навыков" original="Skill Range"/>
+        <!-- The skill or skill group -->
+        <string id="WcQpCpdI" text="Навык или группа навыков" original="The skill or skill group"/>
+        <!-- The min level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023) -->
+        <string id="fozHOKis" text="Минимальный уровень, которым он должен быть (фактическое значение будет случайным образом выбрано между минимальным и максимальным, допустимые значения от 0 до 1023)" original="The min level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023)"/>
+        <!-- The max level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023) -->
+        <string id="I6hTb2OY" text="Максимальный уровень, которым он должен быть (фактическое значение будет случайным образом выбрано между минимальным и максимальным, допустимые значения от 0 до 1023)" original="The max level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023)"/>
+        <!-- ClassLevelRequirementsDef -->
+        <!-- Class Level Requirements Definition -->
+        <string id="uZUsZLGm" text="Определение требований уровня класса" original="Class Level Requirements Definition"/>
+        <!-- ClassLevel -->
+        <string id="0raqv788" text="ClassLevel" original="ClassLevel"/>
+        <!-- Class level -->
+        <string id="el4y84iD" text="Уровень класса" original="Class level"/>
+        <!-- Requirements -->
+        <string id="aMGoiH53" text="Требования" original="Requirements"/>
+        <!-- Requirements for this class level -->
+        <string id="G95DA4OM" text="Требования для этого уровня класса" original="Requirements for this class level"/>
+        <!-- MissionInfo -->
+        <!-- Kills -->
+        <string id="AM2zlkem" text="Убийства" original="Kills"/>
+        <!-- +Retinue Kills -->
+        <string id="79JXI4JL" text="+Свитой" original="+Retinue Kills"/>
+        <!-- Gold -->
+        <string id="o0Q8Y1Qg" text="Золото" original="Gold"/>
+        <!-- XP -->
+        <string id="VtEJiMWy" text="XP" original="XP"/>
+        <!-- Tournament -->
+        <!-- Tournament -->
+        <string id="PI83uB8j" text="Турнир" original="Tournament"/>
+        <!-- Betting is OPEN -->
+        <string id="WPTU6AGn" text="Ставки ОТКРЫТЫ" original="Betting is OPEN"/>
+        <!-- Betting is CLOSED -->
+        <string id="PLRsZCjL" text="Ставки ЗАКРЫТЫ" original="Betting is CLOSED"/>
+        <!-- Not taking bets -->
+        <string id="Sv04YKsL" text="Ставки не принимаются" original="Not taking bets"/>
+        <!-- GeneratedRewardDef -->
+        <!-- Reward Type -->
+        <string id="x6pmNHJT" text="Тип награды" original="Reward Type"/>
+        <!-- Reward Tier -->
+        <string id="Mmd0UleC" text="Уровень награды" original="Reward Tier"/>
+        <!-- Custom Item -->
+        <string id="zVqTKyQG" text="Пользовательский предмет" original="Custom Item"/>
+        <!-- Weapon Weight -->
+        <string id="7yNTThry" text="Доля оружия" original="Weapon Weight"/>
+        <!-- Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo. -->
+        <string id="WTWuy57X" text="Относительная доля наград, которые будут представлять собой оружие. Сюда входят все одноручные, двуручные, дальнобойные и боеприпасы." original="Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo."/>
+        <!-- Armor Weight -->
+        <string id="Al3Px9lL" text="Доля брони" original="Armor Weight"/>
+        <!-- Relative proportion of rewards that will be armor -->
+        <string id="WSXhTI0r" text="Относительная доля наград, составляющих броню" original="Relative proportion of rewards that will be armor"/>
+        <!-- Mount Weight -->
+        <string id="S6t7iUki" text="Доля крепления" original="Mount Weight"/>
+        <!-- Relative proportion of rewards that will be mounts -->
+        <string id="4L1hJS6v" text="Относительная доля наград, которые будут ездить на животных" original="Relative proportion of rewards that will be mounts"/>
+        <!-- Reward Type Chances -->
+        <string id="h4CEbGun" text="Шансы на получение награды" original="Reward Type Chances"/>
+        <!-- The % chance for each item type -->
+        <string id="u9zCErHS" text="% Шанс для каждого типа предмета" original="The % chance for each item type"/>
+        <!-- Tier 1 Weight -->
+        <string id="pqDOv12p" text="Доля уровня 1" original="Tier 1 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 1 -->
+        <string id="aAZvoxk9" text="Относительная доля наград уровня 1" original="Relative proportion of rewards that will be Tier 1"/>
+        <!-- Tier 2 Weight -->
+        <string id="ZDgMrJHH" text="Доля уровня 2" original="Tier 2 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 2 -->
+        <string id="rvjbuCH4" text="Относительная доля наград уровня 2" original="Relative proportion of rewards that will be Tier 2"/>
+        <!-- Tier 3 Weight -->
+        <string id="8UhZyGRj" text="Доля уровня 3" original="Tier 3 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 3 -->
+        <string id="CJwXH8cz" text="Относительная доля наград уровня 3" original="Relative proportion of rewards that will be Tier 3"/>
+        <!-- Tier 4 Weight -->
+        <string id="v4wqC1mI" text="Доля уровня 4" original="Tier 4 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 4 -->
+        <string id="NoKi0iIC" text="Относительная доля наград уровня 4" original="Relative proportion of rewards that will be Tier 4"/>
+        <!-- Tier 5 Weight -->
+        <string id="vXimyLH7" text="Доля уровня 5" original="Tier 5 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 5 -->
+        <string id="rsGLtLyB" text="Относительная доля наград уровня 5" original="Relative proportion of rewards that will be Tier 5"/>
+        <!-- Tier 6 Weight -->
+        <string id="HWHFIsUH" text="Доля уровня 6" original="Tier 6 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 6 -->
+        <string id="991D0fok" text="Относительная доля наград уровня 6" original="Relative proportion of rewards that will be Tier 6"/>
+        <!-- Custom Weight -->
+        <string id="R5TCrBo8" text="Доля пользовательского" original="Custom Weight"/>
+        <!-- Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below) -->
+        <string id="XL94fx52" text="Относительная доля наград, которые будут индивидуальными (уровень 6 с модификаторами в соответствии с настройками пользовательских наград ниже)" original="Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below)"/>
+        <!-- Reward Tier Chances -->
+        <string id="zoBVNJBB" text="Шансы на получение награды" original="Reward Tier Chances"/>
+        <!-- The % chance for each reward tier -->
+        <string id="ANPeZyy0" text="% Шанс для каждого уровня награды" original="The % chance for each reward tier"/>
+        <!-- Custom Item Name -->
+        <string id="PBWEbYLT" text="Имя пользовательского предмета" original="Custom Item Name"/>
+        <!-- Name format for custom item, {ITEMNAME} is the placeholder for the base item name. -->
+        <string id="vqNeCCNy" text="Формат имени для пользовательского предмета, {ITEMNAME} - это название базового предмета." original="Name format for custom item, {ITEMNAME} is the placeholder for the base item name."/>
+        <!-- Custom Item Power -->
+        <string id="THpMPPhd" text="Сила пользовательского предмета" original="Custom Item Power"/>
+        <!-- Custom item power multiplier, applies on top of the global multiplier -->
+        <string id="anUzQaU7" text="Пользовательский множитель силы предметов, применяется поверх глобального множителя." original="Custom item power multiplier, applies on top of the global multiplier"/>
+        <!-- Weapon -->
+        <string id="hpJN9wNo" text="Оружие" original="Weapon"/>
+        <!-- Armor -->
+        <string id="YQdQrFG7" text="Броня" original="Armor"/>
+        <!-- Mount -->
+        <string id="HGZVsIjn" text="Верховое" original="Mount"/>
+        <!-- Custom -->
+        <string id="LKgozyEk" text="Пользовательский" original="Custom"/>
+        <!-- Tier {Tier} -->
+        <string id="JpB20FtS" text="Уровень {Tier}" original="Tier {Tier}"/>
+        <!-- RandomItemModifierDef -->
+        <!-- Power -->
+        <string id="1NLO6Gee" text="Сила" original="Power"/>
+        <!-- Custom prize power, a global multiplier for the values below -->
+        <string id="LXo3mTnr" text="Настраиваемая призовая сила, глобальный множитель для значений ниже" original="Custom prize power, a global multiplier for the values below"/>
+        <!-- Weapon Damage -->
+        <string id="g2DZKK7M" text="Урон от оружия" original="Weapon Damage"/>
+        <!-- Weapon damage modifier for custom weapon prize -->
+        <string id="R9lwIsrX" text="Модификатор урона оружия для пользовательского приза оружия" original="Weapon damage modifier for custom weapon prize"/>
+        <!-- Weapon Speed -->
+        <string id="7TgyXbNe" text="Скорость оружия" original="Weapon Speed"/>
+        <!-- Speed modifier for custom weapon prize -->
+        <string id="1ZZDexjJ" text="Модификатор скорости для пользовательского приза оружия" original="Speed modifier for custom weapon prize"/>
+        <!-- Weapon Missile Speed -->
+        <string id="4zhm204e" text="Скорость снаряда оружия" original="Weapon Missile Speed"/>
+        <!-- Missile speed modifier for custom weapon prize -->
+        <string id="gFO8L8CR" text="Модификатор скорости снаряда для пользовательского приза оружия" original="Missile speed modifier for custom weapon prize"/>
+        <!-- Ammo Damage -->
+        <string id="ny6l1USK" text="Урон боеприпасов" original="Ammo Damage"/>
+        <!-- Ammo damage modifier for custom ammo prize -->
+        <string id="oTSCOXpf" text="Модификатор урона боеприпасов для пользовательского приза боеприпасов" original="Ammo damage modifier for custom ammo prize"/>
+        <!-- Arrow Stack -->
+        <string id="2ehIq5eD" text="Количество стрел" original="Arrow Stack"/>
+        <!-- Arrow stack size modifier for custom arrow prize -->
+        <string id="inawRS8e" text="Модификатор размера стека стрелок для пользовательского приза стрелы" original="Arrow stack size modifier for custom arrow prize"/>
+        <!-- Throwing Stack -->
+        <string id="JUXQcKMR" text="Количество метательных" original="Throwing Stack"/>
+        <!-- Throwing stack size modifier for custom throwing prize -->
+        <string id="QAUf8zj0" text="Модификатор размера метательного стака для пользовательского приза метательного" original="Throwing stack size modifier for custom throwing prize"/>
+        <!-- Armor -->
+        <string id="MrOZ69tP" text="Броня" original="Armor"/>
+        <!-- Armor modifier for custom armor prize -->
+        <string id="1x2YSVSz" text="Модификатор брони для пользовательского приза брони" original="Armor modifier for custom armor prize"/>
+        <!-- Mount Maneuver -->
+        <string id="BYekTOq6" text="Манёвренность верхового" original="Mount Maneuver"/>
+        <!-- Maneuver multiplier for custom mount prize -->
+        <string id="7cZ5JfEk" text="Множитель маневра для приза особого верхового" original="Maneuver multiplier for custom mount prize"/>
+        <!-- Mount Speed -->
+        <string id="6yURxqNY" text="Скорость верхового" original="Mount Speed"/>
+        <!-- Speed multiplier for custom mount prize -->
+        <string id="eJZxwZc1" text="Множитель скорости для приза особого верхового" original="Speed multiplier for custom mount prize"/>
+        <!-- Mount Charge Damage -->
+        <string id="ZmiOntW1" text="Урон при столкновении верхового" original="Mount Charge Damage"/>
+        <!-- Charge damage multiplier for custom mount prize -->
+        <string id="MZm0DJcs" text="Множитель урона от заряда для приза особого верхового" original="Charge damage multiplier for custom mount prize"/>
+        <!-- Mount Hit Points -->
+        <string id="M8drveMF" text="Очки здоровья верхового" original="Mount Hit Points"/>
+        <!-- Hitpoints multiplier for custom mount prize -->
+        <string id="ewC5EV3Q" text="Множитель здоровья для приза особого верхового" original="Hitpoints multiplier for custom mount prize"/>
+        <!-- RewardHelpers -->
+        <!-- received {ItemName} -->
+        <string id="RczvXuxP" text="получил {ItemName}" original="received {ItemName}"/>
+        <!-- sold {ItemName} for {ItemValue}{GoldIcon} (not needed) -->
+        <string id="bNX0NiQ9" text="продал {ItemName} за {ItemValue}{GoldIcon} (не требуется)" original="sold {ItemName} for {ItemValue}{GoldIcon} (not needed)"/>
+        <!-- received {ItemName} (put in storage) -->
+        <string id="R7VwlLzg" text="получил {ItemName} (сдано на хранение)" original="received {ItemName} (put in storage)"/>
+    </strings>
+</base>

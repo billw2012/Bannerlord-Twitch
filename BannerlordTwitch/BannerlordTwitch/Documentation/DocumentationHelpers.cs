@@ -14,7 +14,7 @@ namespace BannerlordTwitch
         {
             if (obj is bool b)
             {
-                generator.P(b ? "Enabled" : "Disabled");
+                generator.P(b ? "{=kpv03CqK}Enabled".Translate() : "{=soS8qlsg}Disabled".Translate());
             }
             else if (obj.GetType().IsPrimitive || obj.GetType().IsEnum || obj is string)
             {
@@ -68,8 +68,10 @@ namespace BannerlordTwitch
                         p.p.GetCustomAttribute<PropertyOrderAttribute>()?.Order ?? -int.MaxValue);
                     foreach (var p in categoryItems)
                     {
-                        string name = p.doc?.Name ?? p.p.Name.SplitCamelCase();
-                        string desc = p.doc?.Description ?? p.p.GetCustomAttribute<DescriptionAttribute>()?.Description ?? string.Empty;
+                        string name = p.p.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName?.Translate() 
+                                      ?? p.p.Name.SplitCamelCase();
+                        string desc = p.p.GetCustomAttribute<DescriptionAttribute>()?.Description?.Translate() 
+                                      ?? string.Empty;
                         object value = p.p.GetValue(obj);
 
                         generator.TR(() =>

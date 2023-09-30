@@ -3,10 +3,8 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
-using BannerlordTwitch.Util;
 using JetBrains.Annotations;
 using TaleWorlds.MountAndBlade;
-using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace BLTConfigure
 {

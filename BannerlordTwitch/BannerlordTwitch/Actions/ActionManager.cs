@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
@@ -14,9 +15,21 @@ namespace BannerlordTwitch.Rewards
         private static readonly Dictionary<string, ICommandHandler> commandHandlers = new();
         private static readonly Dictionary<string, Type> globalConfigTypes = new();
 
-        public static IEnumerable<string> RewardHandlerNames => rewardHandlers.Keys;
+        public static IEnumerable<(string id, string displayName)> RewardHandlerIDsAndDisplayNames =>
+            rewardHandlers.Select(kv =>
+            {
+                var displayNameAttr = kv.Value.GetType().GetCustomAttribute<DisplayNameAttribute>();
+                return (kv.Key, displayNameAttr?.DisplayName ?? kv.Key);
+            });
+
         public static IEnumerable<IRewardHandler> RewardHandlers => rewardHandlers.Values;
-        public static IEnumerable<string> CommandHandlerNames => commandHandlers.Keys;
+        public static IEnumerable<(string id, string displayName)> CommandHandlerIDsAndDisplayNames =>
+            commandHandlers.Select(kv =>
+            {
+                var displayNameAttr = kv.Value.GetType().GetCustomAttribute<DisplayNameAttribute>();
+                return (kv.Key, displayNameAttr?.DisplayName ?? kv.Key);
+            });
+
         public static IEnumerable<ICommandHandler> CommandHandlers => commandHandlers.Values;
 
         public static void Init()
@@ -220,7 +233,7 @@ namespace BannerlordTwitch.Rewards
             }
         }
 
-        public const string NotStartedMessage = "The game isn't started yet";
+        public static readonly string NotStartedMessage = "{=kvbqfThe}The game isn't started yet".Translate();
 
         internal static bool HandleReward(string rewardId, ReplyContext context, object config)
         {
@@ -232,7 +245,8 @@ namespace BannerlordTwitch.Rewards
             
             if (!rewardHandlers.TryGetValue(rewardId, out var action))
             {
-                NotifyCancelled(context, $"Action with the id {rewardId} doesn't exist");
+                NotifyCancelled(context, "{=B39sGef4}Action with the id {RewardId} doesn't exist"
+                    .Translate(("RewardId", rewardId)));
                 return false;
             }
 
@@ -248,7 +262,8 @@ namespace BannerlordTwitch.Rewards
 
             if (st.ElapsedMilliseconds > 5)
             {
-                Log.Info($"Action {rewardId} took {st.ElapsedMilliseconds}ms to Enqueue, this is too slow!");
+                Log.Info("{=yo8Yw3Mz}Action {RewardId} took {TimeInMS}ms to Enqueue, this is too slow!"
+                    .Translate(("RewardId", rewardId), ("TimeInMS", st.ElapsedMilliseconds.ToString())));
             }
 
             return true;

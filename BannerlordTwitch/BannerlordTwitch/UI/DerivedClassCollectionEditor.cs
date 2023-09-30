@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Windows;
-using BannerlordTwitch.Util;
-using Xceed.Wpf.Toolkit;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
@@ -28,7 +24,7 @@ namespace BannerlordTwitch.UI
 
         protected override void ResolveValueBinding(PropertyItem propertyItem)
         {
-            Editor.PropertyName = DefaultCollectionEditor.GetQualifiedName(propertyItem); //propertyItem.PropertyDescriptor?.Name.SplitCamelCase();
+            Editor.PropertyName = DefaultCollectionEditor.GetQualifiedName(propertyItem);
             Editor.ItemsSourceType = propertyItem.PropertyType;
             Editor.NewItemTypes = derivedTypes.Value;
             base.ResolveValueBinding(propertyItem);

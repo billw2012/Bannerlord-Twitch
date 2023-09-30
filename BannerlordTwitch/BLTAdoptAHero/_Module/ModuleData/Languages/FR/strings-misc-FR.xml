@@ -1,0 +1,408 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+    <tags>
+        <tag language="Français"/>
+    </tags>
+    <strings>
+        <!-- Get more string codes here: https://www.random.org/strings/?num=100&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new-->
+        <!-- AchievementDef -->
+        <!-- Achievement Definition -->
+        <string id="CEZZzIAq" text="Définition des Succès" original="Achievement Definition"/>
+        <!-- Requirements -->
+        <string id="TFbiD0CZ" text="Conditions" original="Requirements"/>
+        <!-- Reward -->
+        <string id="sHWjkhId" text="Récompense" original="Reward"/>
+        <!-- New Achievement -->
+        <string id="nLaRVBVV" text="Nouveau succès" original="New Achievement"/>
+        <!-- Notification Text -->
+        <string id="guJFFskH" text="Texte de notification" original="Notification Text"/>
+        <!-- Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement. -->
+        <string id="SwIUyQNw" text="Texte qui s'affichera lorsque le succès sera obtenu et lorsque le joueur listera ses succès. Espaces réservés: [viewer] for the viewers name, and [name] pour le nom de la réussite." original="Text that will display when the achievement is gained and when the player lists their achievements. Placeholders: [viewer] for the viewers name, and [name] for the name of the achievement."/>
+        <!-- Requirements -->
+        <string id="TfwiBMGr" text="Conditions" original="Requirements"/>
+        <!-- Gold Gain -->
+        <string id="NitYwoHr" text="Gain d'or" original="Gold Gain"/>
+        <!-- Gold awarded for gaining this achievement. -->
+        <string id="l0xBVhOe" text="Or décerné pour l'obtention de ce succès." original="Gold awarded for gaining this achievement."/>
+        <!-- XP Gain -->
+        <string id="JShqb5Be" text="Gain d'XP" original="XP Gain"/>
+        <!-- Experience awarded for gaining this achievement. -->
+        <string id="tx7YV26l" text="Expérience récompensée pour l'obtention de ce succès." original="Experience awarded for gaining this achievement."/>
+        <!-- Give Item Reward -->
+        <string id="OmwtPK7J" text="Donner un objet en récompense" original="Give Item Reward"/>
+        <!-- Whether to give a custom item as reward (defined below) -->
+        <string id="vTb0ysRw" text="Donner ou non un objet personnalisé en récompense (défini ci-dessous)" original="Whether to give a custom item as reward (defined below)"/>
+        <!-- Item Reward -->
+        <string id="ZJikxJYo" text="Objet Récompense" original="Item Reward"/>
+        <!-- Specifications of the custom item reward, if enabled -->
+        <string id="B4gODHog" text="Spécifications de la récompense d'objet personnalisé, si activée" original="Specifications of the custom item reward, if enabled"/>
+        <!-- AchievementStatsData.Statistic -->
+        <!-- Total Kills -->
+        <string id="5RXxYH32" text="Total d'éliminations" original="Total Kills"/>
+        <!-- Total Hero Kills -->
+        <string id="FqBQumbv" text="Total éliminations de héros" original="Total Hero Kills"/>
+        <!-- Total Viewer Kills -->
+        <string id="WMYfysby" text="Nombre total de spectateurs tués" original="Total Viewer Kills"/>
+        <!-- Total Streamer Kills -->
+        <string id="qPjwIfaF" text="Total de streamers tués" original="Total Streamer Kills"/>
+        <!-- Total Mount Kills -->
+        <string id="ZTI6irGZ" text="Total éliminations de montures" original="Total Mount Kills"/>
+        <!-- Total Deaths -->
+        <string id="6IHF7HQb" text="Nombre total de décès" original="Total Deaths"/>
+        <!-- Total Hero Deaths -->
+        <string id="UHvCzzit" text="Total des décès de héros" original="Total Hero Deaths"/>
+        <!-- Total Viewer Deaths -->
+        <string id="mhcnLFBv" text="Nombre total de décès de spectateurs" original="Total Viewer Deaths"/>
+        <!-- Total Streamer Deaths -->
+        <string id="rKVsbROz" text="Total des décès de streamers" original="Total Streamer Deaths"/>
+        <!-- Total Mount Deaths -->
+        <string id="6N8KiovH" text="Total des décès de montures" original="Total Mount Deaths"/>
+        <!-- Summons -->
+        <string id="YDiK48rp" text="Invocations" original="Summons"/>
+        <!-- Attacks -->
+        <string id="facIgBFe" text="Attaques" original="Attacks"/>
+        <!-- Battles -->
+        <string id="yTIq9zWS" text="Batailles" original="Battles"/>
+        <!-- Consecutive Summons -->
+        <string id="VwyXMINi" text="Invocations Consécutives" original="Consecutive Summons"/>
+        <!-- Consecutive Attacks -->
+        <string id="Ju3c6Iz4" text="Attaques consécutives" original="Consecutive Attacks"/>
+        <!-- TotalTournament Round Wins -->
+        <string id="dRD94FMl" text="Total des manches du tournoi gagnées" original="TotalTournament Round Wins"/>
+        <!-- TotalTournament Round Losses -->
+        <string id="GPMB5BPI" text="Total des manches du tournoi perdues" original="TotalTournament Round Losses"/>
+        <!-- TotalTournament Final Wins -->
+        <string id="WdZWU9GV" text="Total des victoires du tournoi" original="TotalTournament Final Wins"/>
+        <!-- ClassLevelRequirement -->
+        <!-- Class Level Requirement -->
+        <string id="XLXBwBEj" text="Niveau de classe requis" original="Class Level Requirement"/>
+        <!-- Min Level -->
+        <string id="s4N0bhG1" text="Niveau minimum" original="Min Level"/>
+        <!-- Minimum class level allowed -->
+        <string id="phf8JXQC" text="Niveau de classe minimum autorisé" original="Minimum class level allowed"/>
+        <!-- Max Level -->
+        <string id="BT59iHQ5" text="Niveau maximum" original="Max Level"/>
+        <!-- Maximum class level allowed -->
+        <string id="lk60ZYwc" text="Niveau de classe maximum autorisé" original="Maximum class level allowed"/>
+        <!-- AT LEAST {MinLevel} -->
+        <string id="j3QY6MkC" text="AU MOINS {MinLevel}" original="AT LEAST {MinLevel}"/>
+        <!-- {MinLevel} TO {MaxLevel} -->
+        <string id="puNSSMYD" text="{MinLevel} A {MaxLevel}" original="{MinLevel} TO {MaxLevel}"/>
+        <!-- CLASS LEVEL {Description} -->
+        <string id="boWoZsH4" text="NIVEAU DE LA CLASSE {Description}" original="CLASS LEVEL {Description}"/>
+        <!-- StatisticClassSpecificRequirement -->
+        <!-- Statistic Class Specific Requirement -->
+        <string id="ziuB7eSV" text="Exigences spécifiques à la classe de statistiques" original="Statistic Class Specific Requirement"/>
+        <!-- Current Class -->
+        <string id="WwKyvotH" text="Classe actuelle" original="Current Class"/>
+        <!-- Requirement uses current class, useful for class power unlocks so you don't have to specify the class explicitly -->
+        <string id="S9kGgf0r" text="L'exigence utilise la classe actuelle, utile pour les déverrouillages de puissance de classe afin que vous n'ayez pas à spécifier la classe explicitement" original="Requirement uses current class, useful for class power unlocks so you don't have to specify the class explicitly"/>
+        <!-- Required Class -->
+        <string id="5QwSEOc3" text="Classe requise" original="Required Class"/>
+        <!-- Class required to get this achievement. If (none) is specified then the achievement will apply ONLY when the hero doesn't have a class set. -->
+        <string id="G34P8lCu" text="Classe requise pour obtenir ce succès. Si (aucun) est spécifié, le succès s'appliquera UNIQUEMENT lorsque le héros n'a pas de classe définie." original="Class required to get this achievement. If (none) is specified then the achievement will apply ONLY when the hero doesn't have a class set."/>
+        <!-- class -->
+        <string id="j3YG9dCh" text="classer" original="class"/>
+        <!-- (current) -->
+        <string id="RXXuHIdN" text="(courant)" original="(current)"/>
+        <!-- (none) -->
+        <string id="dPEnuHsk" text="(rien)" original="(none)"/>
+        <!-- StatisticRequirement -->
+        <!-- Statistic Requirement -->
+        <string id="CkgaxlDY" text="Exigences statistiques" original="Statistic Requirement"/>
+        <!-- Statistic -->
+        <string id="ienuHzOP" text="Statistique" original="Statistic"/>
+        <!-- The statistic this achievement relates to. -->
+        <string id="OKuz3zwY" text="La statistique à laquelle cette réalisation se rapporte." original="The statistic this achievement relates to."/>
+        <!-- Comparison -->
+        <string id="dXBsEW65" text="Comparaison" original="Comparison"/>
+        <!-- Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills. -->
+        <string id="4yoAe9WV" text="Si le héros a besoin de plus ou moins que la valeur spécifiée. Par exemple, vous pouvez exiger que le héros ait moins de 10 morts et plus de 100 tués." original="Whether hero needs more or less than the specifed Value. For instance you can make requirements for the hero to have less than 10 deaths and more than 100 kills."/>
+        <!-- Value -->
+        <string id="a8Josr4g" text="Valeur" original="Value"/>
+        <!-- Value needed to obtain the achievement. -->
+        <string id="B9LEjEq8" text="Valeur nécessaire pour obtenir la réalisation." original="Value needed to obtain the achievement."/>
+        <!-- Other Statistic -->
+        <string id="nau8vg7o" text="Autre statistique" original="Other Statistic"/>
+        <!-- Other statistic to compare against (this overrides Value if specified). -->
+        <string id="A3EKQ7up" text="Autre statistique à comparer (cela remplace la valeur si elle est spécifiée)." original="Other statistic to compare against (this overrides Value if specified)."/>
+        <!-- HeroClassDef -->
+        <!-- Class Definition -->
+        <string id="ph50k2xB" text="Définition de classe" original="Class Definition"/>
+        <!-- Class Definition -->
+        <string id="iqYaiOhP" text="Définition de classe" original="Class Definition"/>
+        <!-- Whether this class is enabled for use in the game or not -->
+        <string id="XkL6MNLl" text="Si cette classe est activée pour une utilisation dans le jeu ou non" original="Whether this class is enabled for use in the game or not"/>
+        <!-- Name of the class that shall be passed to SetHeroClass actions -->
+        <string id="U9PyN7eb" text="Nom de la classe qui doit être transmise aux actions SetHeroClass" original="Name of the class that shall be passed to SetHeroClass actions"/>
+        <!-- Description -->
+        <string id="rZRKLuGI" text="La description" original="Description"/>
+        <!-- Description of the class (used in documentation) -->
+        <string id="yRN3Jfwv" text="Description de la classe (utilisée dans la documentation)" original="Description of the class (used in documentation)"/>
+        <!-- Formation -->
+        <string id="zy3uK94p" text="Formation" original="Formation"/>
+        <!-- Which formation to add summoned units to -->
+        <string id="1kEMFWLD" text="À quelle formation ajouter les unités invoquées" original="Which formation to add summoned units to"/>
+        <!-- Slot 1 -->
+        <string id="48tkMBhb" text="Emplacement 1" original="Slot 1"/>
+        <!-- Item type to put in slot 1 -->
+        <string id="kpDE6URE" text="Type d'article à mettre dans l'emplacement 1" original="Item type to put in slot 1"/>
+        <!-- Slot 2 -->
+        <string id="vXtJLZlw" text="Emplacement 2" original="Slot 2"/>
+        <!-- Item type to put in slot 2 -->
+        <string id="G5AN3s2D" text="Type d'article à mettre dans l'emplacement 2" original="Item type to put in slot 2"/>
+        <!-- Slot 3 -->
+        <string id="B4LLuesN" text="Emplacement 3" original="Slot 3"/>
+        <!-- Item type to put in slot 3 -->
+        <string id="clxxPb9O" text="Type d'article à mettre dans l'emplacement 3" original="Item type to put in slot 3"/>
+        <!-- Slot 4 -->
+        <string id="h9PK7GnU" text="Emplacement 4" original="Slot 4"/>
+        <!-- Item type to put in slot 4 -->
+        <string id="EUzbiqh5" text="Type d'article à mettre dans l'emplacement 4" original="Item type to put in slot 4"/>
+        <!-- Use Horse -->
+        <string id="MdYmGuin" text="Utiliser le cheval" original="Use Horse"/>
+        <!-- Whether to allow horse (can be combined with Use Camel) -->
+        <string id="Q00NX1J9" text="Autoriser ou non le cheval (peut être combiné avec Use Camel)" original="Whether to allow horse (can be combined with Use Camel)"/>
+        <!-- Use Camel -->
+        <string id="1YsQ2fC3" text="Utiliser le chameau" original="Use Camel"/>
+        <!-- Whether to allow camel (can be combined with Use Horse -->
+        <string id="Us7G1v2T" text="Autoriser ou non le chameau (peut être combiné avec Use Horse" original="Whether to allow camel (can be combined with Use Horse"/>
+        <!-- Passive Power -->
+        <string id="MvddFKo4" text="Puissance passive" original="Passive Power"/>
+        <!-- Passive hero power: this will always apply to the hero (i.e. a permanent buff) -->
+        <string id="F8a2nXYo" text="Pouvoir de héros passif : cela s'appliquera toujours au héros (c'est-à-dire un buff permanent)" original="Passive hero power: this will always apply to the hero (i.e. a permanent buff)"/>
+        <!-- Active Power -->
+        <string id="wdCMNOGd" text="Puissance active" original="Active Power"/>
+        <!-- Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff) -->
+        <string id="I4ASwveG" text="Pouvoir de héros actif : ce pouvoir ne sera déclenché que lorsque l'action UseHeroPower est utilisée par le spectateur, via une récompense ou une commande (c'est-à-dire un buff temporaire)" original="Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff)"/>
+        <!-- Horse -->
+        <string id="YzIcRgBV" text="Cheval" original="Horse"/>
+        <!-- Camel -->
+        <string id="HMclWXR8" text="Chameau" original="Camel"/>
+        <!-- Use Horse -->
+        <string id="A1G6bq0G" text="Utiliser Cheval" original="Use Horse"/>
+        <!-- Use Camel -->
+        <string id="FpgyZk0F" text="Utiliser Chameau" original="Use Camel"/>
+        <!-- (none) -->
+        <string id="GFc6JLJ9" text="(rien)" original="(none)"/>
+        <!-- Details -->
+        <string id="A79HrgZ0" text="Détails" original="Details"/>
+        <!-- Tier {TierNumber} -->
+        <string id="Rs1XNM9K" text="Niveau {TierNumber}" original="Tier {TierNumber}"/>
+        <!-- Equipment -->
+        <string id="HyXJQJtW" text="Équipement" original="Equipment"/>
+        <!-- Mount -->
+        <string id="iGdq37PI" text="Monter" original="Mount"/>
+        <!-- KillStreakDef -->
+        <!-- Kill Streak -->
+        <string id="InTnlqz1" text="Série d'éliminations" original="Kill Streak"/>
+        <!-- Show Notification -->
+        <string id="poe8m8rn" text="Montrer les notifications" original="Show Notification"/>
+        <!-- Notification Text -->
+        <string id="RQh3jIZW" text="Texte de notification" original="Notification Text"/>
+        <!-- Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required. -->
+        <string id="04wTH1xo" text="Texte qui s'affiche lorsque la séquence d'élimination est atteinte. Espaces réservés: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] pour les kills requis." original="Text that displays when the kill streak is achieved. Placeholders: [viewer] for the viewers name, and [name] for the Kill Streak name, and [kills] for the Kills Required."/>
+        <!-- Kills Required -->
+        <string id="mG7HzT0z" text="Tue requis" original="Kills Required"/>
+        <!-- Kills required to achieve the kill streak. -->
+        <string id="mLElTwb6" text="Éliminations requises pour obtenir une série." original="Kills required to achieve the kill streak."/>
+        <!-- Gold Reward -->
+        <string id="zEqJgISl" text="Récompense en or" original="Gold Reward"/>
+        <!-- Gold rewarded when the kill streak is achieved. -->
+        <string id="CYg79sAT" text="L'or est récompensé lorsque la séquence d'élimination est atteinte." original="Gold rewarded when the kill streak is achieved."/>
+        <!-- XP Reward -->
+        <string id="vzCgh9PN" text="Récompense d'XP" original="XP Reward"/>
+        <!-- Experience granted when the kill streak is achieved. -->
+        <string id="Q1TcztBP" text="Expérience accordée lorsque la séquence d'élimination est atteinte." original="Experience granted when the kill streak is achieved."/>
+        <!-- New Kill Streak -->
+        <string id="KtvBk2nR" text="Nouvelle séquence de meurtres" original="New Kill Streak"/>
+        <!-- [viewer] got [name] ([kills] kills) -->
+        <string id="ipowOInD" text="[viewer] a [name] ([kills] tués)" original="[viewer] got [name] ([kills] kills)"/>
+        <!-- {KillsRequired} kills -->
+        <string id="YZJ60Pxb" text="{KillsRequired} tués" original="{KillsRequired} kills"/>
+        <!-- SummonHero.FormationItemSource -->
+        <!-- Infantry -->
+        <string id="7gt8mcJc" text="Infanterie" original="Infantry"/>
+        <!-- Ranged -->
+        <string id="kDo9EtMh" text="à distance" original="Ranged"/>
+        <!-- Cavalry -->
+        <string id="HcfkYEsF" text="Cavalerie" original="Cavalry"/>
+        <!-- Horse Archer -->
+        <string id="Xx9xP7jK" text="Archer à cheval" original="Horse Archer"/>
+        <!-- Skirmisher -->
+        <string id="PpZY6dPX" text="Tirailleur" original="Skirmisher"/>
+        <!-- Heavy Infantry -->
+        <string id="VT6VYeVp" text="Infanterie lourde" original="Heavy Infantry"/>
+        <!-- Light Cavalry -->
+        <string id="t5iTNQ5p" text="Cavalerie légère" original="Light Cavalry"/>
+        <!-- Heavy Cavalry -->
+        <string id="vyVSsiBr" text="Cavalerie lourde" original="Heavy Cavalry"/>
+        <!-- SkillRangeDef -->
+        <!-- Skill Range -->
+        <string id="uUWdyER4" text="Gamme de compétences" original="Skill Range"/>
+        <!-- The skill or skill group -->
+        <string id="WcQpCpdI" text="La compétence ou le groupe de compétences" original="The skill or skill group"/>
+        <!-- The min level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023) -->
+        <string id="fozHOKis" text="Le niveau minimum qu'il devrait être (la valeur réelle sera choisie au hasard entre le minimum et le maximum, les valeurs valides sont de 0 à 1023)" original="The min level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023)"/>
+        <!-- The max level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023) -->
+        <string id="I6hTb2OY" text="Le niveau maximum qu'il devrait être (la valeur réelle sera choisie au hasard entre min et max, les valeurs valides sont de 0 à 1023)" original="The max level it should be (actual value will be randomly selected between min and max, valid values are 0 to 1023)"/>
+        <!-- ClassLevelRequirementsDef -->
+        <!-- Class Level Requirements Definition -->
+        <string id="uZUsZLGm" text="Définition des exigences au niveau de la classe" original="Class Level Requirements Definition"/>
+        <!-- ClassLevel -->
+        <string id="0raqv788" text="Niveau de classe" original="ClassLevel"/>
+        <!-- Class level -->
+        <string id="el4y84iD" text="Niveau de classe" original="Class level"/>
+        <!-- Requirements -->
+        <string id="aMGoiH53" text="Conditions" original="Requirements"/>
+        <!-- Requirements for this class level -->
+        <string id="G95DA4OM" text="Exigences pour ce niveau de classe" original="Requirements for this class level"/>
+        <!-- MissionInfo -->
+        <!-- Kills -->
+        <string id="AM2zlkem" text="Morts" original="Kills"/>
+        <!-- +Retinue Kills -->
+        <string id="79JXI4JL" text="+ Éliminations d&amp;#39;Escorte" original="+Retinue Kills"/>
+        <!-- Gold -->
+        <string id="o0Q8Y1Qg" text="Or" original="Gold"/>
+        <!-- XP -->
+        <string id="VtEJiMWy" text="XP" original="XP"/>
+        <!-- Tournament -->
+        <!-- Tournament -->
+        <string id="PI83uB8j" text="Tournoi" original="Tournament"/>
+        <!-- Betting is OPEN -->
+        <string id="WPTU6AGn" text="Les paris sont OUVERTS" original="Betting is OPEN"/>
+        <!-- Betting is CLOSED -->
+        <string id="PLRsZCjL" text="Les paris sont FERMÉS" original="Betting is CLOSED"/>
+        <!-- Not taking bets -->
+        <string id="Sv04YKsL" text="Ne pas prendre de paris" original="Not taking bets"/>
+        <!-- GeneratedRewardDef -->
+        <!-- Reward Type -->
+        <string id="x6pmNHJT" text="Type de récompense" original="Reward Type"/>
+        <!-- Reward Tier -->
+        <string id="Mmd0UleC" text="Niveau de récompense" original="Reward Tier"/>
+        <!-- Custom Item -->
+        <string id="zVqTKyQG" text="Article personnalisé" original="Custom Item"/>
+        <!-- Weapon Weight -->
+        <string id="7yNTThry" text="Poids de l'arme" original="Weapon Weight"/>
+        <!-- Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo. -->
+        <string id="WTWuy57X" text="Proportion relative des récompenses qui seront des armes. Cela inclut toutes les armes à une main, à deux mains, à distance et les munitions." original="Relative proportion of rewards that will be weapons. This includes all one handed, two handed, ranged and ammo."/>
+        <!-- Armor Weight -->
+        <string id="Al3Px9lL" text="Poids de l'armure" original="Armor Weight"/>
+        <!-- Relative proportion of rewards that will be armor -->
+        <string id="WSXhTI0r" text="Proportion relative des récompenses qui seront des armures" original="Relative proportion of rewards that will be armor"/>
+        <!-- Mount Weight -->
+        <string id="S6t7iUki" text="Poids du support" original="Mount Weight"/>
+        <!-- Relative proportion of rewards that will be mounts -->
+        <string id="4L1hJS6v" text="Proportion relative des récompenses qui seront des montures" original="Relative proportion of rewards that will be mounts"/>
+        <!-- Reward Type Chances -->
+        <string id="h4CEbGun" text="Chances de type de récompense" original="Reward Type Chances"/>
+        <!-- The % chance for each item type -->
+        <string id="u9zCErHS" text="Le % de chance pour chaque type d'objet" original="The % chance for each item type"/>
+        <!-- Tier 1 Weight -->
+        <string id="pqDOv12p" text="Poids de niveau 1" original="Tier 1 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 1 -->
+        <string id="aAZvoxk9" text="Proportion relative des récompenses qui seront de niveau 1" original="Relative proportion of rewards that will be Tier 1"/>
+        <!-- Tier 2 Weight -->
+        <string id="ZDgMrJHH" text="Poids de niveau 2" original="Tier 2 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 2 -->
+        <string id="rvjbuCH4" text="Proportion relative des récompenses qui seront de niveau 2" original="Relative proportion of rewards that will be Tier 2"/>
+        <!-- Tier 3 Weight -->
+        <string id="8UhZyGRj" text="Poids de niveau 3" original="Tier 3 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 3 -->
+        <string id="CJwXH8cz" text="Proportion relative des récompenses qui seront de niveau 3" original="Relative proportion of rewards that will be Tier 3"/>
+        <!-- Tier 4 Weight -->
+        <string id="v4wqC1mI" text="Poids de niveau 4" original="Tier 4 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 4 -->
+        <string id="NoKi0iIC" text="Proportion relative des récompenses qui seront de niveau 4" original="Relative proportion of rewards that will be Tier 4"/>
+        <!-- Tier 5 Weight -->
+        <string id="vXimyLH7" text="Poids de niveau 5" original="Tier 5 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 5 -->
+        <string id="rsGLtLyB" text="Proportion relative des récompenses qui seront de niveau 5" original="Relative proportion of rewards that will be Tier 5"/>
+        <!-- Tier 6 Weight -->
+        <string id="HWHFIsUH" text="Poids de niveau 6" original="Tier 6 Weight"/>
+        <!-- Relative proportion of rewards that will be Tier 6 -->
+        <string id="991D0fok" text="Proportion relative des récompenses qui seront de niveau 6" original="Relative proportion of rewards that will be Tier 6"/>
+        <!-- Custom Weight -->
+        <string id="R5TCrBo8" text="Poids personnalisé" original="Custom Weight"/>
+        <!-- Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below) -->
+        <string id="XL94fx52" text="Proportion relative de récompenses qui seront personnalisées (niveau 6 avec modificateurs selon les paramètres de récompense personnalisée ci-dessous)" original="Relative proportion of rewards that will be Custom (Tier 6 with modifiers as per the Custom Reward settings below)"/>
+        <!-- Reward Tier Chances -->
+        <string id="zoBVNJBB" text="Chances de niveau de récompense" original="Reward Tier Chances"/>
+        <!-- The % chance for each reward tier -->
+        <string id="ANPeZyy0" text="Le % de chance pour chaque niveau de récompense" original="The % chance for each reward tier"/>
+        <!-- Custom Item Name -->
+        <string id="PBWEbYLT" text="Nom de l'article personnalisé" original="Custom Item Name"/>
+        <!-- Name format for custom item, {ITEMNAME} is the placeholder for the base item name. -->
+        <string id="vqNeCCNy" text="Format de nom pour l'élément personnalisé, {ITEMNAME} est l'espace réservé pour le nom de l'élément de base." original="Name format for custom item, {ITEMNAME} is the placeholder for the base item name."/>
+        <!-- Custom Item Power -->
+        <string id="THpMPPhd" text="Puissance de l'élément personnalisé" original="Custom Item Power"/>
+        <!-- Custom item power multiplier, applies on top of the global multiplier -->
+        <string id="anUzQaU7" text="Multiplicateur de puissance d'objet personnalisé, s'applique en plus du multiplicateur global" original="Custom item power multiplier, applies on top of the global multiplier"/>
+        <!-- Weapon -->
+        <string id="hpJN9wNo" text="Arme" original="Weapon"/>
+        <!-- Armor -->
+        <string id="YQdQrFG7" text="Armure" original="Armor"/>
+        <!-- Mount -->
+        <string id="HGZVsIjn" text="Monter" original="Mount"/>
+        <!-- Custom -->
+        <string id="LKgozyEk" text="Personnalisé" original="Custom"/>
+        <!-- Tier {Tier} -->
+        <string id="JpB20FtS" text="Niveau {Tier}" original="Tier {Tier}"/>
+        <!-- RandomItemModifierDef -->
+        <!-- Power -->
+        <string id="1NLO6Gee" text="Puissance" original="Power"/>
+        <!-- Custom prize power, a global multiplier for the values below -->
+        <string id="LXo3mTnr" text="Puissance de prix personnalisée, un multiplicateur global pour les valeurs ci-dessous" original="Custom prize power, a global multiplier for the values below"/>
+        <!-- Weapon Damage -->
+        <string id="g2DZKK7M" text="Dégâts d'armes" original="Weapon Damage"/>
+        <!-- Weapon damage modifier for custom weapon prize -->
+        <string id="R9lwIsrX" text="Modificateur de dégâts d'arme pour le prix d'arme personnalisé" original="Weapon damage modifier for custom weapon prize"/>
+        <!-- Weapon Speed -->
+        <string id="7TgyXbNe" text="Vitesse de l'arme" original="Weapon Speed"/>
+        <!-- Speed modifier for custom weapon prize -->
+        <string id="1ZZDexjJ" text="Modificateur de vitesse pour le prix de l'arme personnalisée" original="Speed modifier for custom weapon prize"/>
+        <!-- Weapon Missile Speed -->
+        <string id="4zhm204e" text="Vitesse des missiles de l'arme" original="Weapon Missile Speed"/>
+        <!-- Missile speed modifier for custom weapon prize -->
+        <string id="gFO8L8CR" text="Modificateur de vitesse de missile pour un prix d'arme personnalisé" original="Missile speed modifier for custom weapon prize"/>
+        <!-- Ammo Damage -->
+        <string id="ny6l1USK" text="Dégâts de munitions" original="Ammo Damage"/>
+        <!-- Ammo damage modifier for custom ammo prize -->
+        <string id="oTSCOXpf" text="Modificateur de dégâts de munitions pour un prix de munitions personnalisées" original="Ammo damage modifier for custom ammo prize"/>
+        <!-- Arrow Stack -->
+        <string id="2ehIq5eD" text="Pile de flèches" original="Arrow Stack"/>
+        <!-- Arrow stack size modifier for custom arrow prize -->
+        <string id="inawRS8e" text="Modificateur de taille de pile de flèches pour un prix de flèche personnalisé" original="Arrow stack size modifier for custom arrow prize"/>
+        <!-- Throwing Stack -->
+        <string id="JUXQcKMR" text="Pile de lancer" original="Throwing Stack"/>
+        <!-- Throwing stack size modifier for custom throwing prize -->
+        <string id="QAUf8zj0" text="Modificateur de taille de pile de lancer pour un prix de lancer personnalisé" original="Throwing stack size modifier for custom throwing prize"/>
+        <!-- Armor -->
+        <string id="MrOZ69tP" text="Armure" original="Armor"/>
+        <!-- Armor modifier for custom armor prize -->
+        <string id="1x2YSVSz" text="Modificateur d'armure pour un prix d'armure personnalisé" original="Armor modifier for custom armor prize"/>
+        <!-- Mount Maneuver -->
+        <string id="BYekTOq6" text="Manœuvre du mont" original="Mount Maneuver"/>
+        <!-- Maneuver multiplier for custom mount prize -->
+        <string id="7cZ5JfEk" text="Multiplicateur de manœuvre pour un prix de monture personnalisée" original="Maneuver multiplier for custom mount prize"/>
+        <!-- Mount Speed -->
+        <string id="6yURxqNY" text="Vitesse de la monture" original="Mount Speed"/>
+        <!-- Speed multiplier for custom mount prize -->
+        <string id="eJZxwZc1" text="Multiplicateur de vitesse pour le prix de la monture personnalisée" original="Speed multiplier for custom mount prize"/>
+        <!-- Mount Charge Damage -->
+        <string id="ZmiOntW1" text="Dégâts de charge de monture" original="Mount Charge Damage"/>
+        <!-- Charge damage multiplier for custom mount prize -->
+        <string id="MZm0DJcs" text="Multiplicateur de dégâts de charge pour le prix de la monture personnalisée" original="Charge damage multiplier for custom mount prize"/>
+        <!-- Mount Hit Points -->
+        <string id="M8drveMF" text="Points de vie des montures" original="Mount Hit Points"/>
+        <!-- Hitpoints multiplier for custom mount prize -->
+        <string id="ewC5EV3Q" text="Multiplicateur de points de vie pour le prix de monture personnalisé" original="Hitpoints multiplier for custom mount prize"/>
+        <!-- RewardHelpers -->
+        <!-- received {ItemName} -->
+        <string id="RczvXuxP" text="reçu {ItemName}" original="received {ItemName}"/>
+        <!-- sold {ItemName} for {ItemValue}{GoldIcon} (not needed) -->
+        <string id="bNX0NiQ9" text="vendu {ItemName} for {ItemValue}{GoldIcon} (pas nécessaire)" original="sold {ItemName} for {ItemValue}{GoldIcon} (not needed)"/>
+        <!-- received {ItemName} (put in storage) -->
+        <string id="R7VwlLzg" text="reçu {ItemName} (mis en stockage)" original="received {ItemName} (put in storage)"/>
+    </strings>
+</base>
